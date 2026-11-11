@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T12:05:19Z",
-  "last_verified_at_utc": "2026-11-11T12:05:19Z",
+  "captured_at_utc": "2026-11-11T12:19:00Z",
+  "last_verified_at_utc": "2026-11-11T12:19:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "77a339f638cb0b630c1d8986aa0f504f295e05f1",
+  "observed_integration_head_before_map_commit": "3e73459f0fbe297b5ea16b556f188e625abd8712",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,14 +13,14 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2015,
+    "ahead_by": 2016,
     "behind_by": 0,
-    "changed_files": 998,
+    "changed_files": 999,
     "workflow_files": 44,
-    "other_changed_paths": 954,
-    "head_sha": "77a339f638cb0b630c1d8986aa0f504f295e05f1",
+    "other_changed_paths": 955,
+    "head_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2015,
+    "commits": 2016,
     "additions": 236814,
     "deletions": 4363,
     "formal_approvals": 0,
@@ -28,7 +28,7 @@
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Open draft integration PR. Current parent head 77a339 has 3,423 full-suite passes and four current-map/test contract failures; core tests passed. Dependency audit and fail-closed gates passed. Corrective commit must rerun exact-head full suite. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
+    "note": "Open draft integration PR. Exact head 3e734 has 3,425 full-suite passes and two map-contract assertion failures; core tests passed. Dependency audit and fail-closed gates passed. Corrective map commit must rerun exact-head full suite. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -362,18 +362,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "77a339f638cb0b630c1d8986aa0f504f295e05f1",
+    "integration_head_before_current_map_commit": "3e73459f0fbe297b5ea16b556f188e625abd8712",
     "integration_pr": 1661,
-    "integration_ahead_by": 2015,
+    "integration_ahead_by": 2016,
     "integration_behind_by": 0,
-    "changed_files": 998,
+    "changed_files": 999,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 954,
+    "non_workflow_paths_changed": 955,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2263,
+    "integration_tree_entries": 2264,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -386,8 +386,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "HEAD_77A339_FULL_SUITE_FAILED_4_MAP_AND_TEST_CONTRACT_ASSERTIONS; 3423 PASSED; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
-    "last_reconciled_at_utc": "2026-11-11T12:05:19Z",
+    "latest_exact_head_ci": "HEAD_3E734_FULL_SUITE_FAILED_2_MAP_CONTRACT_ASSERTIONS; 3425 PASSED; 8 SUBTESTS; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
+    "last_reconciled_at_utc": "2026-11-11T12:19:00Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2153,
@@ -408,12 +408,19 @@
       "research/xrp_intelligence/20261111T120519Z-run24-xrp-market-microstructure-evernorth-ledger-and-exact-head-repair.json"
     ],
     "run24_expected_changed_files_after_artifact": 999,
-    "run24_expected_non_workflow_paths_after_artifact": 955
+    "run24_expected_non_workflow_paths_after_artifact": 955,
+    "current_head_before_run24b_corrective_commit": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+    "run24b_new_paths": [
+      "research/xrp_intelligence/20261111T121900Z-run24b-evernorth-capital-sbic-circle-ripple-custody-reconciliation.json"
+    ],
+    "run24b_expected_changed_files_after_artifact": 1000,
+    "run24b_expected_non_workflow_paths_after_artifact": 956,
+    "run24b_expected_integration_tree_entries": 2265
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
-    "integration_pr_run": 43015588813,
-    "integration_full_suite_job": 130505709598,
+    "integration_pr_run": 43018685729,
+    "integration_full_suite_job": 130516115790,
     "dependency_audit_run": 43012397124,
     "dependency_audit_job": 130359654212,
     "fail_closed_gate_run": 43012397190,
@@ -439,13 +446,13 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 43015588778
+      "run_id": 43018673790
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 43015588794,
-      "push_run_id": 43015581943
+      "run_id": 43018685710,
+      "push_run_id": 43018673778
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -484,39 +491,39 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "77a339f638cb0b630c1d8986aa0f504f295e05f1",
-      "run_id": 43015588813,
-      "full_suite_job": 130505709598,
+      "head_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+      "run_id": 43018685729,
+      "full_suite_job": 130516115790,
+      "core_suite_job": 130516115261,
       "conclusion": "failure",
       "full_repository_suite": {
-        "passed": 3423,
-        "failed": 4,
+        "passed": 3425,
+        "failed": 2,
         "subtests": 8,
         "coverage_percent": 59.98,
         "exact_head_verified": true,
-        "duration_seconds": 87.29,
+        "duration_seconds": 78.26,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
       "failing_tests": [
-        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_preserves_fail_closed_permissions_and_no_money_actions",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_least_privilege_and_external_action_gates_remain_closed",
         "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_tracks_current_integration_head"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_latest_market_refresh_is_research_only_and_preserves_provider_disagreement"
       ],
       "core_tests": "passed",
       "dependency_audit": {
         "passed": true,
-        "run_id": 43015588778,
+        "run_id": 43018673790,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
         "passed": true,
-        "run_id": 43015588794,
+        "run_id": 43018685710,
+        "push_run_id": 43018673778,
         "automatic_merge_enabled": false
       },
-      "failure_classification": "Exact-head full-suite failed four current-map/test contract assertions: two branch-protection wording checks, one missing effective-sample-size gap phrase, and one stale hard-coded Run20/current-head assertion. 3,423 tests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
+      "failure_classification": "Exact-head full-suite failed two map-contract assertions: missing literal 'synchronized multi-venue historical' in production gaps and missing 'not averaged' in current/latest derivative-provider reconciliation. 3,425 passed; eight subtests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -590,7 +597,8 @@
       "subtests": 8,
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
-    }
+    },
+    "core_suite_job": 130516115261
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
@@ -673,7 +681,8 @@
       "sufficient independent shadow outcomes",
       "production evaluator signing key",
       "demonstrated out-of-sample lift over all four baselines on Brier score and log loss",
-      "effective-sample-size correction and residual serial-dependence/shared-source correlation adjustment beyond non-overlapping interval counts"
+      "effective-sample-size correction and residual serial-dependence/shared-source correlation adjustment beyond non-overlapping interval counts",
+      "synchronized multi-venue historical spot/L2/derivatives/exchange-flow/collateral reconstruction across source vintages"
     ],
     "scheduled_workflow": "Hourly at minute 3; daily feature-store backup at 00:15 UTC; workflow runs only on main.",
     "main_branch_ingestion_verified": false,
@@ -885,7 +894,7 @@
         "short_liquidations_usd": 1100000,
         "url": "https://liqwall.com/coins/xrp"
       },
-      "reconciliation": "OI totals differ by venue/contract coverage and are not averaged. CoinGlass reports USD OI down 4.67% but XRP-denominated OI down 1.19%. Positive funding and long-heavy liquidations during a decline support a crowded-long/deleveraging risk hypothesis, not a price-direction forecast. Binance 30-day cumulative funding was reported at +0.18% (highest since Oct 2025); a separate OKX public-interface query reported 76/100 positive settlements (+0.39% since Oct 9), with OKX USD OI down 23% Nov 4-10 but XRP-denominated OI down only about 10%. These are secondary and venue-specific; positive funding amid a decline raises crowded-long/liquidation risk but can also reflect dip-buying. No directional forecast.",
+      "reconciliation": "OI totals differ by venue/contract coverage and are not averaged. CoinGlass reports USD OI down 4.67% but XRP-denominated OI down 1.19%. Positive funding and long-heavy liquidations during a decline support a crowded-long/deleveraging risk hypothesis, not a price-direction forecast. Binance 30-day cumulative funding was reported at +0.18% (highest since Oct 2025); a separate OKX public-interface query reported 76/100 positive settlements (+0.39% since Oct 9), with OKX USD OI down 23% Nov 4-10 but XRP-denominated OI down only about 10%. These are secondary and venue-specific; positive funding amid a decline raises crowded-long/liquidation risk but can also reflect dip-buying. No directional forecast. Provider OI totals are not averaged; preserve each vendor's exchange and contract universe.",
       "cryptoquant_binance_30d_funding": {
         "provider": "CryptoQuant via Darkfost, reported by CoinPedia/CryptoTicker",
         "snapshot_date": "2026-11-10",
@@ -1097,7 +1106,20 @@
       "evernorth_sbi_cash_investment_status": "SBI Group-disclosed cash investment; exact SBI-specific XRP purchase allocation not itemized",
       "circle_equity_investment_usd": 50000000,
       "circle_equity_investment_breakdown": "SBI Holdings $25M; SBI Shinsei Bank $25M; June 9, 2025",
-      "sbi_arc_token_presale": "SBI subsidiary participated May 12, 2026; consortium total $222M; SBI amount undisclosed; Circle Arc, not XRP"
+      "sbi_arc_token_presale": "SBI subsidiary participated May 12, 2026; consortium total $222M; SBI amount undisclosed; Circle Arc, not XRP",
+      "sbi_evernorth_cash_commitment_primary": "SBI Holdings disclosed a $200M cash contribution to Evernorth's PIPE on 2025-10-21; SEC aggregate advance funding is $214.05M, so the $200M is included, not additive. Exact SBI subscriber-level allocation is not itemized.",
+      "sbi_circle_investment_primary": {
+        "total_usd": 50000000,
+        "sbi_holdings_usd": 25000000,
+        "sbi_shinsei_bank_usd": 25000000,
+        "announcement_date": "2025-06-09",
+        "classification": "Circle equity investment; not XRP purchase or Ripple equity."
+      },
+      "sbi_vc_trade_stablecoin_rails": {
+        "usdc": "SBI VC Trade launched USDC retail handling in Japan on 2025-03-26 through the SBI/Circle partnership.",
+        "rlusd": "SBI VC Trade and Ripple subsidiary Standard Custody signed a Japan RLUSD issuance/distribution MoU on 2025-08-22; current map records handling began 2026-06-24.",
+        "interpretation": "USDC and RLUSD are separate stablecoin rails. Neither implies an XRP bridge transaction or XRP collateral demand."
+      }
     },
     "evernorth": {
       "closing_gross_cash_usd": 272600000,
@@ -1115,7 +1137,53 @@
       "separate_eloc_max_new_shares": 5218935,
       "separate_eloc_proceeds_received_as_of_2026_11_09": 0,
       "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
-      "effect_notice": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/xslEFFECTX01/primary_doc.xml"
+      "effect_notice": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/xslEFFECTX01/primary_doc.xml",
+      "advance_funding_cash_exact_usd": 214049995,
+      "advance_funding_in_kind_xrp": 600000,
+      "delayed_funding_cash_usd": 10500000,
+      "delayed_funding_in_kind_xrp": 200000,
+      "series_c_sponsor_xrp": 211319096.061435,
+      "ripple_related_party_entity_xrp": 50000000,
+      "gross_cash_proceeds_composition": "$272.6M = approximately $224.6M private-placement cash + approximately $48.0M SPAC trust released after redemptions, before transaction expenses.",
+      "private_placement_cash_composition": "$214.05M advance funding + $10.5M delayed funding; the advance cash was used to buy 84.365876M XRP.",
+      "advance_funding_cash_used_to_purchase_xrp": 84365876.3625,
+      "cash_purchased_xrp_average_cost_usd": 2.53657058,
+      "cash_purchased_xrp_mark_reference_usd": 1.05624033,
+      "cash_purchased_xrp_mark_value_usd": 89110641.09,
+      "cash_purchased_xrp_mark_change_vs_historical_cost_percent": -58.37,
+      "cash_purchased_xrp_mark_note": "Unrealized mark on the cash-purchased tranche only using an asynchronous normalized OKX/USDT reference; not realized loss and not a valuation of all Evernorth holdings.",
+      "in_kind_share_of_reported_closing_xrp_percent": 82.17,
+      "sbi_200m_included_in_advance_funding_pool": true,
+      "sbi_subscriber_specific_allocation_itemized": false,
+      "convertible_senior_pik_note": {
+        "principal_usd": 30000000,
+        "coupon_percent": 4,
+        "maturity_year": 2031,
+        "issued_date": "2026-10-12",
+        "proceeds_received_at_business_combination_closing": true,
+        "classification": "Debt financing; not equity and not automatically XRP purchase cash."
+      },
+      "company_facility": {
+        "borrowed_as_of_2026_06_30_usd": 6600000,
+        "repayment_terms": "Repay within five business days after Closing, or earlier on five business days' notice of demand by Ripple.",
+        "post_close_repayment_status": "Not confirmed in the retrieved filing section."
+      },
+      "cantor_eloc": {
+        "max_new_shares": 5218935,
+        "purchase_price_formula": "97% of VWAP, subject to registration and purchase conditions.",
+        "proceeds_received_as_of_2026_11_09_usd": 0,
+        "upfront_fee_usd": 521893.5,
+        "fee_non_refundable_regardless_of_purchases": true,
+        "classification": "Contingent equity capacity, not cash raised or XRP bought."
+      },
+      "resale_registration_detail": {
+        "registered_class_a_shares": 73688162,
+        "sponsor_warrants": 239653,
+        "company_proceeds_from_selling_holder_resales_usd": 0,
+        "potential_cash_warrant_exercise_gross_proceeds_if_all_exercised_usd": 2800000,
+        "classification": "Secondary resale registration is not new company capital; only cash warrant exercises may generate company proceeds."
+      },
+      "capital_reconciliation_rule": "Never add SBI's $200M commitment to the $214.05M advance-funding pool. SBI disclosed $200M cash, while the SEC filing reports the aggregate pool; subscriber-specific allocations are not itemized. Keep cash, XRP in kind, cash-purchased XRP, debt, drawn facilities, contingent ELOC capacity, resale registrations and possible warrant proceeds separate."
     },
     "sbi_stablecoin_strategy": {
       "jpysc": "SBI Shinsei Trust Bank issuer, SBI VC Trade distributor, Startale co-development; account-only initial launch; public-chain future scope.",
@@ -1240,10 +1308,18 @@
           "event": "Official Hamamatsu seminar 'Generative AI (ChatGPT): Present and Future'; Microsoft speaker; completed.",
           "url": "https://www.sbic.co.jp/seminar/20260305js/"
         }
-      ]
+      ],
+      "run24b_primary_training_reconfirmation": {
+        "source": "https://www.sbic.co.jp/training/20250612co/",
+        "date": "2025-06-12 to 2025-06-13",
+        "audience": "SBIC investee companies only; general companies ineligible",
+        "content": "Two-day generative-AI/machine-learning training included ChatGPT usage on day one and Copilot, APIs and RAG on day two.",
+        "instructor": "Takashi Otsuka, VOST",
+        "interpretation": "Educational portfolio-company training, not an OpenAI partnership or proof of a direct SBIC-OpenAI commercial relationship."
+      }
     },
     "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
-    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth's PIPE. Evernorth's SEC closing disclosure reports $272.6M gross cash, $388.911M XRP contributed in kind and 84.366M XRP purchased with $214.05M cash. The issuer's over-$1B total combines spot XRP and cash; it is not $1B cash. SBI's exact XRP allocation from its $200M is not separately itemized. Actual capital is not a standardized XRP metric; keep cash proceeds, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent equity capacity, resale registration and secondary sales separate.",
+    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized metric; do not collapse these categories.",
     "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor but contains no YouTube link and does not link a channel. Third-party directories list candidate @drkamilahstevenson; subscriber/video counts conflict materially (approximately 103K/633, 138K, and 143K/1.2K across providers). Other similarly named channels also appear. No first-party cross-link was found, and Camilla is not assumed to be the same person as Kamilah. Channel ownership and video attribution remain unverified. No personal-channel inventory is attributed.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
@@ -1366,7 +1442,11 @@
     "Spot order books show bid-heavy resting depth, but depth is time-stamped and cancellable; it can indicate absorption or spoofable liquidity and is not guaranteed support.",
     "Near-expiry options remain put-rich while longer expiries are closer to neutral/call-rich; vendor snapshots and skew sign conventions differ.",
     "Reported 691M XRP Binance whale deposits over Nov8-9 are secondary reporting of a CryptoQuant dataset; the Nov4 418.5M outflow is a separate event and neither establishes net reserve change or executed selling.",
-    "Evernorth's 370.35M XRP outside the 13-wallet attributed set may represent custody movement or other transfers; destination ownership and sale status are unresolved."
+    "Evernorth's 370.35M XRP outside the 13-wallet attributed set may represent custody movement or other transfers; destination ownership and sale status are unresolved.",
+    "Evernorth's $272.6M gross cash at closing is not all XRP purchase cash: approximately $224.6M was private-placement cash and $48M was SPAC trust; $388.91M XRP was contributed in kind.",
+    "SBI's disclosed $200M Evernorth cash contribution is included in the SEC-reported $214.05M advance-funding pool; adding it again would double count.",
+    "The $30M 4% PIK note is debt, the Cantor ELOC had zero proceeds as of Nov9, and resale registrations are not company cash. Potential warrant exercise proceeds are contingent.",
+    "SBI's $50M Circle equity investment ($25M SBI Holdings and $25M SBI Shinsei) is a stablecoin-equity investment, not XRP buying or Ripple equity."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -2254,6 +2334,41 @@
       "source_group": "XRP Insights rippled ledger attribution",
       "snapshot_at_utc": "2026-11-11T10:57:00Z",
       "model_eligible": false
+    },
+    {
+      "source": "SBI Holdings Evernorth investment announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "source_group": "SBI Holdings primary",
+      "published_at": "2025-10-21",
+      "model_eligible": false
+    },
+    {
+      "source": "SBI Holdings Circle investment announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_group": "SBI Holdings primary",
+      "published_at": "2025-06-09",
+      "model_eligible": false
+    },
+    {
+      "source": "SBI/Ripple Standard Custody RLUSD Japan MoU",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "source_group": "SBI/Ripple primary",
+      "published_at": "2025-08-22",
+      "model_eligible": false
+    },
+    {
+      "source": "Circle USDC Japan announcement",
+      "url": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "source_group": "Circle primary",
+      "published_at": "2025-03-24",
+      "model_eligible": false
+    },
+    {
+      "source": "Tokyo SBIC generative-AI training notice",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_group": "SBIC Tokyo primary",
+      "published_at": "2025-06-12",
+      "model_eligible": false
     }
   ],
   "backlog_classification": {
@@ -2280,9 +2395,9 @@
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Repair the four exact-head map/test contract failures on the existing #1661 branch; rerun the full repository suite on the resulting exact head.",
-    "After the corrective code head passes, update the canonical handoff and map with exact CI evidence; rerun exact-head CI on the documentation head.",
-    "Complete semantic review of the 954 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
+    "Repair the two exact-head map wording assertions on the existing #1661 branch; rerun the complete repository suite on the resulting exact head.",
+    "After the corrected code/map head passes, append the canonical Run24 handoff and BARROT_SYNC evidence, then verify the documentation head with exact CI.",
+    "Complete semantic review of the 955 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
     "Resolve authoritative branch-protection and approval requirements, OAuth revocation evidence and the 17 affected PR branch-tip copies without reading credential contents or rewriting history.",
     "Resolve automatic GitHub Pages publication authorization before any merge.",
     "Keep XRP collector off main until authorized merge; then verify the first read-only main ingestion and raw-source receipt chain.",
@@ -2465,7 +2580,7 @@
     }
   },
   "research_scope_status": {
-    "last_reconciled_at_utc": "2026-11-11T12:05:19Z",
+    "last_reconciled_at_utc": "2026-11-11T12:19:00Z",
     "sbic": "East/Tokyo, Central/Nagoya and West/Osaka identities supported by regional companies' primary pages; not SBI Holdings.",
     "ask_coin": "No verified XRP/XRPL relationship; three distinct ASK-labelled candidates retained.",
     "actual_capital": "SBI $200M Evernorth cash investment separated from >$1B combined spot-XRP-and-cash headline; SEC closing cash and in-kind XRP reconciled separately.",
@@ -2486,6 +2601,16 @@
       "evernorth_custody": "Third-party XRPL ledger attribution finds 103.129905M XRP in 13 wallets; 370.346663M moved outside the attributed set by Oct22, destinations unresolved; not assumed sold.",
       "kamilah_camilla_youtube": "Search returns multiple near-duplicate candidate channels, including @drkamilahstevenson; no first-party or platform verification linking candidate channel ownership to the identified person. No video inventory attributed.",
       "market": "Fresh OKX/Kraken, Fuelmaps, Basis, TradRadar, Liqwall, OptimistFi, Pandabull, WhaleRadar and ETF observations captured as web research only.",
+      "forecast_status": "NOT_ISSUED"
+    },
+    "run24b": {
+      "captured_at_utc": "2026-11-11T12:19:00Z",
+      "capital": "SEC Nov9 filing: $272.6M gross closing cash (about $224.6M private placements + $48M trust after redemptions), plus 388.910554M XRP in kind. $214.05M advance cash purchased 84.365876M XRP. SBI's $200M disclosed investment is within the advance pool, not additive. Separate $30M 4% PIK debt, $6.6M pre-close Ripple facility drawn as of Jun30, Cantor ELOC with zero proceeds as of Nov9, resale registration with no company proceeds and potential warrant exercise proceeds.",
+      "sbi_circle": "SBI Holdings and SBI Shinsei Bank each acquired $25M of Circle shares in June 2025; separate from SBI's $200M Evernorth cash commitment.",
+      "sbi_ripple": "SBI disclosed 9% Ripple equity and the 60/40 SBI Ripple Asia JV; Evernorth includes Ripple-linked in-kind XRP and SBI cash. SBI VC Trade USDC and RLUSD distribution rails are distinct from XRP bridge demand.",
+      "sbic": "Official Tokyo SBIC June 12-13 2025 investee-only training included ChatGPT and Copilot; educational training, not an OpenAI partnership. Exact phrase 'SBIC, ChatGPT SBIC' still has no verified primary-source match.",
+      "ask_coin": "Permission Coin ASK remains a separate Base/Polygon LayerZero OFT candidate; no XRPL/XRP relationship verified.",
+      "youtube": "Multiple Kamilah-named YouTube candidates; no first-party cross-link to the identified person. No personal-channel video inventory attributed.",
       "forecast_status": "NOT_ISSUED"
     }
   },
@@ -2728,7 +2853,7 @@
         ],
         "url": "https://alphafinance.io/liquidation-heatmap/xrp"
       },
-      "reconciliation": "TradRadar covers seven exchanges and reports $1.57B OI; Liqwall reports $1.16B across its exchange set. Do not average. Both show positive funding, falling OI and long-heavy liquidations; platform account ratios are not notional exposure. Hyperliquid tracked whales provide a counter-signal: their selected large positions are net short while all-account ratios are modestly long. Not a price-direction forecast.",
+      "reconciliation": "TradRadar covers seven exchanges and reports $1.57B OI; Liqwall reports $1.16B across its exchange set. Do not average. Both show positive funding, falling OI and long-heavy liquidations; platform account ratios are not notional exposure. Hyperliquid tracked whales provide a counter-signal: their selected large positions are net short while all-account ratios are modestly long. Not a price-direction forecast. Provider OI totals are not averaged; preserve each vendor's exchange and contract universe.",
       "hyperliquid_whale_positions": {
         "provider": "WhaleRadar",
         "snapshot_time_utc": "2026-11-11T07:24:00Z",
@@ -2887,8 +3012,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run24",
-  "latest_run_captured_at_utc": "2026-11-11T12:05:19Z",
+  "latest_run_id": "Run24b",
+  "latest_run_captured_at_utc": "2026-11-11T12:19:00Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4043,6 +4168,32 @@
       "fail_closed_gate_passed": true
     },
     "new_institutional_finding": "XRP Insights ledger attribution locates 103.13M of 473.276M Evernorth company-reported XRP in 13 wallets; 370.35M moved outside the attributed set by Oct22 with destinations unresolved. Not assumed sold.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "run24b_snapshot": {
+    "captured_at_utc": "2026-11-11T12:19:00Z",
+    "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "artifact_path": "research/xrp_intelligence/20261111T121900Z-run24b-evernorth-capital-sbic-circle-ripple-custody-reconciliation.json",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_parent_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+    "current_pr": 1661,
+    "exact_head_ci": {
+      "run_id": 43018685729,
+      "full_suite_passed": 3425,
+      "full_suite_failed": 2,
+      "core_passed": true,
+      "dependency_audit_passed": true,
+      "fail_closed_gate_passed": true
+    },
+    "primary_capital_findings": {
+      "evernorth_gross_cash_at_closing_usd": 272600000,
+      "private_placement_cash_usd": 224600000,
+      "spAC_trust_after_redemptions_usd": 48000000,
+      "in_kind_xrp": 388910554,
+      "cash_purchased_xrp": 84365876,
+      "sbi_cash_investment_usd": 200000000,
+      "eloc_proceeds_as_of_nov9_usd": 0
+    },
     "forecast_status": "NOT_ISSUED"
   }
 }
