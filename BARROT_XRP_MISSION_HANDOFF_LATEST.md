@@ -1226,3 +1226,50 @@ Still not production verified: independent WORM/timestamp anchor, replayable fea
 - Next: complete exact-head CI on this Run30 commit; finish semantic review of 969 non-workflow paths; resolve least privilege, branch-protection/approval visibility, credential revocation/remediation and Pages authorization; then continue integration. After any authorized merge, refetch main, verify merge commit/files, run main CI and inspect automatic Pages side effects.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+
+## Run33 — 2026-11-11 19:34 UTC
+XRP intelligence and prediction-engine mastery remain Barrot's highest-priority mission. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+### Repository state
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`; exact parent before this corrective commit: `570cd11ab16be1c61cb44a6b10740e7eb726b123`.
+- 2,040 commits ahead, zero behind; 1,016 changed files (44 workflows, 972 other paths); 374 open PRs (360 drafts, 14 non-drafts). Main tree 1,388 entries; integration 2,281.
+- GitHub API access succeeded; local Git clone remains unavailable because this environment cannot resolve github.com.
+### Exact-head CI diagnosis
+- Full suite on `570cd11`: **3,447 passed, 2 failed, eight subtests**, 59.99% coverage against 53% floor; 85.93 seconds. Core suite: 714 passed, zero failed.
+- Both failures are stale current-map assertions in `tests/test_xrp_nine_platform_current_map_run73.py`: repository snapshot compared ahead_by 2039 vs 2037; exact-head evidence compared tested head 1af8d45 vs latest attempt ed345e0. All other 3,447 tests passed. This is evidence-map synchronization, not a Barrot V3 runtime or prediction-engine regression.
+- Wheel build and installed-wheel verification were not reached on this failed attempt. Dependency audit passed six manifests/zero known vulnerabilities. Fail-closed PR gate, push dependency audit and push gate passed.
+- [Full CI 43076617980](https://github.com/Barrot-Agent/B-Agent/actions/runs/43076617980), [full-suite job 130717985219](https://github.com/Barrot-Agent/B-Agent/actions/runs/43076617980/job/130717985219). [Dependency audit 43076617995](https://github.com/Barrot-Agent/B-Agent/actions/runs/43076617995). [Fail-closed gate 43076617805](https://github.com/Barrot-Agent/B-Agent/actions/runs/43076617805). [Push audit 43076605066](https://github.com/Barrot-Agent/B-Agent/actions/runs/43076605066). [Push gate 43076605226](https://github.com/Barrot-Agent/B-Agent/actions/runs/43076605226).
+- Previous exact passing parent `ed345e0efc5d6794cef58220891fc03e3ac96ab7`: 3,449 passed/zero failed, eight subtests, wheel and installed mission verified in [CI 43069181417](https://github.com/Barrot-Agent/B-Agent/actions/runs/43069181417).
+- Run33 corrects the map to the live repository/PR state and scopes the failed evidence to `570cd11`. Exact-head CI on the new corrective commit is pending; do not reuse parent results as current-head verification.
+### Run33 XRP market research — research-only, not model-eligible
+- OKX XRP-USDT: 1.0561, bid 1.0560/ask 1.0561; event 19:34:20.774 UTC; rolling 24h open 1.0687, high 1.0807, low 1.0472; volume 43.35M XRP.
+- Kraken XRP/USD: last 1.05783, bid 1.05793/ask 1.05794; no event timestamp; UTC-day open 1.05511. Kraken USDT/USD midpoint 0.998955 normalizes OKX to about $1.05500, 0.278% below Kraken midpoint. Asynchronous; not executable arbitrage.
+- Bybit XRPUSDT 1.063 at 18:56:30.972 UTC, nearly 38 minutes older; not synchronized.
+- Fuelmaps 18:00 six-venue spot depth: within 1% $13.7M bids/$11.9M asks; within 5% $23.0M/$14.8M; within 10% $32.9M/$17.4M. Excludes Binance/Bitget; 94 minutes old; resting orders can be cancelled/moved.
+- CryptoTicker reports Binance cumulative funding +0.18% over 30 days via CryptoQuant; OKX 76/100 positive settlements since Oct9, +0.39% cumulative; current settlement +0.01%. OKX OI fell $132.1M to $101.9M Nov4–10 (-23% USD, about -10% XRP units); account long/short ratio 3.70.
+- Fexr 10:42 snapshot: OI $102.9M, annualized funding +6.72%, 24h liquidations $12.4M/92% longs. Single-venue/aggregator universe, not global OI.
+- TradRadar 17:25 OI $1.58B/+1.10%; Liqwall 17:32 $1.17B/-1.3%; Alpha heatmap 08:24 $2.32B. Different venue/contract universes; do not average.
+- Alpha Finance through Nov10: -$7.6M Nov10 and -$10.4M Nov9; seven-session -$18M, 30-session +$1.3M and cumulative +$1.71B. Similar CryptoTicker numbers share SoSoValue/issuer lineage; not independent confirmation.
+- Theft-linked wallet flow: 33.456M XRP moved to a collection wallet; 32.34M XRP reportedly left in 193 payments; 87% of 233.46M original theft passed on. Elliptic says most swapped to BTC via THORChain. Ledger transfers are primary; attribution is secondary; buyer and centralized-exchange sales unknown.
+- Macro: CPI +0.4% MoM vs +0.3% expected; 90% market-implied 25bp Fed-hike probability as reported by CoinDesk; BTC spot ETF outflows $95M Nov10 after three larger sessions; USDT market cap reportedly down $6.6B over 60 days; Coinbase Premium negative 30 days. Broad risk context, not XRP-specific flow; CoinDesk cites SoSoValue/CryptoQuant.
+### Evernorth SEC resale clarification
+- Nov9 SEC Form 424B3 registers up to 73,688,162 Class A shares for selling securityholders plus 239,653 Sponsor Warrants. Components include 19,102,635 issued shares, 31,392,746 potential Class C conversion shares, 22,953,128 potential Company Unit redemption/exchange shares and 239,653 warrant-exercise shares.
+- Evernorth receives **zero proceeds from selling-securityholder resales**. Sponsor Warrant cash-exercise proceeds are separate. Registration does not prove sales occurred and does not directly sell XRP from Evernorth's treasury. Secondary report says XRPN fell 23.5% Nov10 and XRP 3.9%; causation is not established.
+### Institutional, identity and platform status
+- OCC trust-bank records from Run32 remain: Circle affiliate effective July24; Ripple National Trust Bank Oct26; Coinbase National Trust Company Nov6. These are trust banks, not ordinary commercial banks; no automatic XRP demand.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate statutory regional SME investment-consultation companies, not SBI Holdings. ASK Coin XRP/XRPL integration not verified; “actual capital” is not a standardized XRP metric; exact “SBIC, ChatGPT SBIC” remains unresolved.
+- Candidate YouTube handle `@drkamilahstevenson` remains unverified as belonging to the verified public identity. No videos attributed; Camilla/Kamilah equivalence is not assumed.
+- Nine-platform status: ChatGPT/GitHub API verified but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested/no submission; Databricks HTTP403/no workspace write; LunaRoute declared canonical brain but endpoint authentication/data flow unverified. No external-model transfer.
+### Workflow and security audit
+- All 44 changed workflow patches rechecked; full contents of eight high-risk workflows inspected. 26 quarantined/disabled, 18 active. No added broad contents:write/actions:write/write-all/pull_request_target/workflow_run. No manual workflow dispatched.
+- barrot-ops is manual main-only with external-change confirmation; no Databricks/Kaggle action. coinbase-paper-trader is manual main-only with confirm=YES; no paper trade. deploy-a2a-worker requires confirm and separate secret-rotation confirmation; no deploy/rotation. sync-huggingface false guard; sync-self-hosted-brain false guard; XRP ingestion main-only/read-only.
+- Connector permissions admin/maintain/push/pull/triage: overprivileged. Main protection details HTTP403; visible Fall Back ruleset disabled. `.config/gh/hosts.yml` present in all 17 affected PR tips with same blob SHA; contents not read; provider-side OAuth revocation unverified. Security-alert endpoints inaccessible; no absence inferred. Main push auto-publishes Pages; authorization absent.
+### Prediction and merge decision
+- Implemented: 47 source definitions/45 scheduled; read-only collector; SHA-256 receipt/hash-chain logic; point-in-time SQLite prototype; four baselines; chronological purge/embargo walk-forward; calibration/PSI drift; fail-closed Ed25519 forecast ledger.
+- Outstanding: WORM/timestamp anchoring, replayable historical features, synchronized spot/L2/derivatives/flows/collateral, vintage-aware macro/event timeline, scenario/counter-hypothesis generation, production evaluator key, independent shadow outcomes and demonstrated out-of-sample lift.
+- Forecast `NOT_ISSUED`. Run33 web observations have no Barrot raw-source receipts and are not model-eligible.
+- #1661 remains open/draft, zero approvals. #1660: 972/972 paths represented, 949 identical/23 different/zero absent, three commits behind main; retain until successor merge. #1640: 244 identical/36 different; #1642: 0/7; #1643: 661/9. No source PR closed.
+- **No merge.** Exact-head CI on the corrective commit is pending; approval, protection, credential, semantic-review, least-privilege and Pages authorization blockers remain.
+- Next: verify exact-head full suite, wheel/installed mission, dependency audit and fail-closed gates on the Run33 corrective commit; continue semantic review; resolve security/approval/publication blockers. No forecast until all independent evidence gates pass.
+- No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure.
