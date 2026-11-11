@@ -172,3 +172,13 @@
 - Coinbase cbXRP displayed reserves 152.088M XRP vs 152.086M supply; excess 2,246.53 XRP.
 - Current Morpho state unverified. Forecast remains NOT_ISSUED.
 - PR #1661 remains blocked; no merge or external action.
+
+
+## Run35c sync — ETF, public-signal and exact-head correction
+
+- Exact tested parent head `831a29f`: 3,449 passed, zero failures, eight subtests, 59.99% coverage, 96.83s; six dependency manifests audited, zero known vulnerabilities; fail-closed gates passed.
+- Alpha Finance Nov10 five-fund flow -$7.6M includes GXRP -$7.2M; XRP Insights reports -27K XRP while excluding GXRP from flow totals, with 1.18597B XRP held and $1.25962B AUM across six spot funds plus BITW. Difference is mostly universe/data-gap coverage; do not average.
+- Withdraw previous unverified attribution of 1.405B XRP/ten products to XRP Insights.
+- Main public signal is stale sentiment-only score44/confidence0; current UI renders NULL but retains $9.99 checkout. Integration is NOT_ISSUED with no checkout. Pages push remains unauthorized.
+- Kamilah person identity confirmed; channel ownership unverified; ten seed videos remain candidate references, not an attributed inventory.
+- PR #1661 remains open/draft and blocked; no merge or external action.

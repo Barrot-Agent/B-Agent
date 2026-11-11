@@ -1466,3 +1466,51 @@ Coinbase's proof-of-reserves page displayed a 21:05 refresh (timezone unspecifie
 ### Decision
 
 The tested code head passed the full suite, dependency audit and fail-closed gates. PR #1661 nevertheless remains blocked: it is draft, formal approvals are absent, branch-protection requirements are not visible, connector permissions are overprivileged, credential-path/provider revocation evidence is incomplete, GitHub Pages publication is unauthorized and 974 non-workflow paths remain under semantic review. No merge or external action was performed.
+
+
+## Run35c — exact-head verification, ETF-flow reconciliation and public-interface safety
+
+### Exact-head verification
+
+Code/evidence head `831a29f98f5b34a6f80f92109172fee0fce7fe9e` passed the complete repository suite on its exact SHA:
+
+- Full suite: **3,449 passed, zero failures, eight subtests**.
+- Inclusive coverage: **59.99%** against a 53% floor; coverage scope is `barrot_agent`, not every repository package.
+- Duration: 96.83 seconds.
+- Core tests, wheel build and installed primary-mission verification passed.
+- Dependency audit: six manifests, zero known vulnerabilities.
+- PR and push fail-closed gates passed.
+
+Evidence: [Full CI 43102180175](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102180175) · [Dependency audit 43102180190](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102180190) · [PR fail-closed 43102180108](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102180108) · [Push dependency audit 43102172142](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102172142) · [Push fail-closed 43102172133](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102172133).
+
+Packaging warnings remain: deprecated `project.license` TOML table and two packages absent from explicit package configuration. The primary mission JSON was nevertheless included in the wheel and loaded after installation. Coverage beyond `barrot_agent` remains outstanding.
+
+### ETF-flow reconciliation and correction
+
+The direct source pages resolve most of the Nov10 difference:
+
+- Alpha Finance covers five US spot funds and reports **-$7.6M** on Nov10. Its breakdown is GXRP -$7.2M, XRPC -$449.8K and zero for XRP, XRPZ and TOXR.
+- XRP Insights reports seven products (six US spot funds plus BITW), **1.18597B XRP holdings**, **$1.25962B AUM**, and Nov10 net flow of **-27,000 XRP**. Crucially, it explicitly excludes GXRP from flow totals while a data gap is corrected, although GXRP holdings remain in total holdings.
+- The difference is therefore largely explained by Alpha including GXRP's -$7.2M while XRP Insights omits GXRP from flow calculations. The remaining difference is not independently reconciled. Do not average.
+- The Block's -$10.4M 24-hour snapshot matches Alpha's Nov9 -$10.4M session; do not assign it to Nov10 without a verified window.
+- The earlier 1.405B XRP/ten-product figure was misattributed to XRP Insights and is withdrawn; no source for that exact figure was verified.
+
+Sources: [Alpha Finance](https://alphafinance.io/etf/xrp/) · [XRP Insights](https://xrp-insights.com/).
+
+### Public-interface safety reconciliation
+
+Main `web/latest_signal.json` is a stale Oct29 sentiment-only artifact (score 44, confidence 0.0, provider failures). Main `web/signals.html` maps only exact scores 1/0/-1 to BUY/NULL/SELL; score 44 renders NULL. The legacy page still has a $9.99/month checkout. It is not currently issuing a directional forecast.
+
+Integration replaces this with schema-v2 `NOT_ISSUED`, marks the old sentiment artifact stale/descriptive-only/model-ineligible, and removes the checkout. Main Pages publication is automatic on push; authorization remains absent. No merge was performed.
+
+### Kamilah channel attribution
+
+The integration research file contains ten candidate video references, but the candidate channel handle is not first-party/platform verified. The person identity is confirmed; channel identity is only probable. No creator video inventory was attributed. Candidate references remain quarantined pending channel ownership evidence.
+
+### Current repository and merge decision
+
+At tested head `831a29f`: main `84f28ee`; 2,044 ahead/zero behind; tree 2,285 entries; PR #1661 open/draft, 1,020 changed files (44 workflows/976 other paths); 374 open PRs (360 drafts/14 non-drafts). PR API reports mergeable=true/clean, but it has zero formal reviews/approvals. Branch-protection details remain HTTP 403, connector permissions remain overprivileged, credential-path/provider revocation evidence is incomplete, Pages authorization is absent and 976 non-workflow paths require semantic review.
+
+This Run35c update is documentation/research only. Its new commit is a new Git head; exact-head CI must be observed on that tip before any merge. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push, history rewrite or PR closure occurred.
+
+Next: verify exact-head CI on the Run35c documentation commit, then resolve least-privilege, branch protection, credential remediation, Pages authorization and semantic review. Keep forecast issuance disabled.
