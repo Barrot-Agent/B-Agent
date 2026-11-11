@@ -138,7 +138,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert ci["dependency_audit"]["passed"] is True
     assert ci["fail_closed_gate"]["passed"] is True
     assert ci["fail_closed_gate"]["automatic_merge_enabled"] is False
-    assert "both push and pull_request full-suite runs completed successfully" in ci["caveat"]
+    assert "both push and pull_request full-suite runs completed successfully" in ci["caveat"].lower()
 
 
 def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
