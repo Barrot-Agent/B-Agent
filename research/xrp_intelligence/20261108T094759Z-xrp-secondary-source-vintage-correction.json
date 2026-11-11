@@ -1,0 +1,170 @@
+{
+  "artifact_type": "xrp_secondary_source_vintage_and_etf_flow_correction",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T094759Z-xrp-secondary-source-vintage-correction",
+  "repository": "Barrot-Agent/B-Agent",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "cf1d33527007a745cdb148d4c41b9a6c57169e7b",
+  "append_only": true,
+  "reference_time_utc": "2026-11-08T09:47:59Z",
+  "correction_of": "research/xrp_intelligence/20261108T093447Z-xrp-spot-etf-derivatives-liquidity-refresh.json",
+  "source_vintage_corrections": {
+    "webeconomia": {
+      "status": "SEARCH_SNIPPET_QUARANTINED_RENDERED_PAGE_VINTAGE_CONFLICT",
+      "earlier_search_snippet_claimed_as_of_utc": "2026-11-08T03:13:00Z",
+      "current_rendered_page_as_of_utc": "2026-11-06T20:43:00Z",
+      "corrected_rendered_values": {
+        "open_interest_usd": 1610000000,
+        "exchange_count": 7,
+        "binance_oi_change_30d_pct": -12.4,
+        "liquidations_24h_usd": 10200000,
+        "long_liquidation_share_pct": 95,
+        "funding_pct_per_8h": 0.0001,
+        "funding_7d_average_pct_per_8h": 0.0097,
+        "displayed_xrp_price_usd": 1.184
+      },
+      "coverage_explanation": "The rendered page says it includes only exchanges publishing verifiable liquidations; other aggregators may add Hyperliquid, Gate, Bitget and smaller venues or estimate Binance's unpublished liquidations, which can make totals roughly double.",
+      "quarantined_values_from_prior_search_snippet": {
+        "open_interest_usd": 1580000000,
+        "liquidations_24h_usd": 6200000,
+        "stablecoin_total_supply_usd_headline": 292300000000,
+        "stablecoin_total_supply_30d_change_usd_headline": -15060000000,
+        "stablecoin_total_supply_usd_later_line": 293600000000,
+        "stablecoin_total_supply_30d_change_usd_later_line": -12730000000
+      },
+      "disposition": "Do not use the 03:13 search-snippet values as a verified Webeconomia Nov 8 observation. Do not use its stablecoin totals; the currently rendered page does not substantiate those values. Preserve the snippet only as a quarantined search-index observation."
+    },
+    "tradradar": {
+      "page_updated_at_utc": "2026-11-08T09:05:00Z",
+      "price_usd": 1.1628,
+      "price_change_24h_pct": -1.04,
+      "open_interest_usd": 1910000000,
+      "oi_change_24h_pct": 0.11,
+      "funding_oi_weighted_pct_per_8h": 0.0073,
+      "liquidations_24h_lower_bound_usd": 1300000,
+      "long_liquidations_usd": 1230000,
+      "short_liquidations_usd": 72190,
+      "long_short_accounts_ratio": 3.82,
+      "long_account_share_pct": 79.2,
+      "display_delay_minutes": 15,
+      "change_from_0735_snapshot": "Same $1.91B OI, but funding, 24h OI change and short-liquidation values differ. Preserve both timestamped snapshots; do not overwrite or blend."
+    },
+    "cryptokeyhole": {
+      "page_updated_at_utc": "2026-11-08T09:47:00Z",
+      "nov6_flow_xrp": -752048,
+      "nov6_coverage": "3 of 4 daily-readable funds; Franklin XRPZ missing",
+      "latest_complete_day": "2026-11-05",
+      "nov2_to_nov5_complete_five_session_flow_xrp": -1137098,
+      "oct23_to_nov5_ten_session_flow_xrp": 3374507,
+      "partial_day_not_added_to_cumulative": true,
+      "latest_file_dates": {
+        "bitwise_issuer_stamp_utc": "2026-11-08T09:32:00Z",
+        "twentyone_shares_issuer_stamp_utc": "2026-11-08T09:00:00Z",
+        "latest_issuer_file_label": "2026-11-09 read at 2026-11-07T05:12:00Z"
+      },
+      "note": "Publisher distinguishes complete days from partial Nov 6; cumulative 10-session value is through Nov 5. Issuer file date labels and read times remain separate."
+    },
+    "xrp_insights": {
+      "dashboard_reference_utc": "2026-11-08T09:47:59Z",
+      "price_usd": 1.16,
+      "total_aum_usd": 1407230000,
+      "etfs_in_dashboard": 7,
+      "xrp_locked": 1195180000,
+      "week_45_net_flow_xrp": -810000,
+      "dated_nov6_flow_xrp": -663043,
+      "dated_nov2_to_nov6_week_flow_xrp": -812500,
+      "dated_nov6_combined_holdings_xrp_approx": 1200000000,
+      "dated_nov6_net_assets_usd_approx": 1430000000,
+      "scope_note": "Live dashboard AUM/locked/weekly tiles are an undated current snapshot; dated Nov 6 flow and net-assets figures are a separate historical observation. Do not treat $1.407B live AUM and $1.43B Nov 6 net assets as a same-time contradiction."
+    },
+    "alpha_finance": {
+      "as_of_date": "2026-11-06",
+      "fund_count": 5,
+      "nov6_flow_usd": 0,
+      "seven_session_flow_usd": 8400000,
+      "thirty_session_flow_usd": 45900000,
+      "cumulative_net_inflow_usd": 1730000000
+    }
+  },
+  "source_independence": {
+    "derivatives": "TradRadar and Webeconomia are separate secondary aggregators; both derive from exchange data but have different disclosed exchange/contract coverage. They are not fully independent market measurements.",
+    "etf": "CryptoKeyhole, XRP Insights and Alpha Finance are separate publishers using overlapping issuer files and differing fund universes; their flows are not independent confirmations."
+  },
+  "data_quality": {
+    "webEconomiaNov8_0313_search_snippet_quarantined": true,
+    "webEconomiaStablecoinSupplyFromPriorSnippet_quarantined": true,
+    "raw_issuer_files_captured_directly": false,
+    "raw_http_wire_bytes_captured": false,
+    "exact_retrieval_wall_clock_times_retained": false,
+    "live_dashboard_tiles_have_exact_publisher_timestamp": false,
+    "feature_store_admitted": false
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Secondary aggregator data with source-vintage conflict, partial ETF publication, mixed universes and no synchronized primary exchange features."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability_issued": false
+  },
+  "external_actions": {
+    "paper_trade": false,
+    "real_money": false,
+    "funds_transfer": false,
+    "external_model_transfer": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "webeconomia_xrp_rendered_page_vintage_correction",
+      "publisher": "Webeconomia",
+      "url": "https://www.webeconomia.it/mercati/crypto/derivati/xrp/",
+      "page_as_of_utc": "2026-11-06T20:43:00Z",
+      "retrieved_reference_utc": "2026-11-08T09:47:59Z",
+      "hash_scope": "SHA-256 of normalized rendered observation summary; not raw page bytes or HTTP headers.",
+      "excerpt": "agg. 6 Nov 2026, 20:43; displayed with a 15-minute delay.\nLiquidations 24 hours · XRP $10.2M · 95% long · 5% short.\nOpen interest XRP $1.61B · 7 exchanges · −12.4% in 30 days (Binance).\nAverage funding 8 hours +0.0001%; 7-day average +0.0097%; base 0.01%.\nBinance long/short accounts 75/25; top-trader positions 68% long.\nXRP price $1.1840 · −4.73% in 24 hours.\nLiquidations cover 48 perpetual contracts across Bybit, Binance, OKX, HTX and Bitfinex.\nThe page says totals include exchanges that publish verifiable liquidations; other sites may add Hyperliquid, Gate.io, Bitget and smaller venues or estimate Binance liquidations, so totals can be roughly double.",
+      "excerpt_sha256": "78f0a39644c10f76ae6b6561b6854cfc2d9dca8f19f55e60a89cdef1e3238718"
+    },
+    {
+      "source_id": "tradradar_xrp_derivatives_0905_update",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "page_updated_at_utc": "2026-11-08T09:05:00Z",
+      "retrieved_reference_utc": "2026-11-08T09:47:59Z",
+      "hash_scope": "SHA-256 of normalized rendered observation summary; not raw page bytes or HTTP headers.",
+      "excerpt": "XRP trades at $1.1628 (−1.04% in 24h), open interest $1.91B, mostly longs were liquidated over the day.\nPrice (Mark Price): $1.1628; 24h change: −1.04%.\nOpen interest, 7 exchanges: $1.91B; OI 24h change +0.11%.\nFunding, OI-weighted: +0.0073% per 8h.\nLiquidations, 24h, 5 exchanges: at least $1.30M; longs $1.23M; shorts $72.19K.\nLong/Short, 5 exchanges: 3.82 (79.2% long).\nUpdated: Nov 8, 2026, 9:05 AM UTC. Figures are shown with a 15-minute delay.",
+      "excerpt_sha256": "427b9ea3d2637f10d76fbf48f81ea6452bbc302e25b0437fa21cb46b878cff3a"
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_page_0947_update",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_updated_at_utc": "2026-11-08T09:47:00Z",
+      "retrieved_reference_utc": "2026-11-08T09:47:59Z",
+      "hash_scope": "SHA-256 of normalized rendered observation summary; not raw issuer-file bytes or HTTP headers.",
+      "excerpt": "On 5 November 2026 the 4 US spot XRP ETFs that CryptoKeyhole reads daily (of 6 listed) paid out a net 3,339 XRP ($4K).\nLast 5 complete trading days: −1,137,098 XRP, 30 Oct to 5 Nov 2026.\n6 November 2026: partial, 3 of 4 funds published; Franklin Templeton XRPZ missing.\n6 Nov 2026: XRP (Bitwise) 0; XRPZ missing; XRPC (Canary Capital) −752,048 XRP; TOXR (21Shares) 0; total −752,048 XRP, 3/4.\nUpdated 8 Nov 2026, 09:47 UTC.\nFrom 23 Oct 2026 to 5 Nov 2026: +3,374,507 XRP over 10 trading days; 2 inflow days and 7 outflow days. Today so far: −$886,665 (3 of 4 funds), not in the total.\nLatest issuer file: 9 Nov 2026, read at 05:12 UTC on 7 Nov 2026. Bitwise issuer stamp 8 Nov 2026, 09:32 UTC; 21Shares issuer stamp 8 Nov 2026, 09:00 UTC.",
+      "excerpt_sha256": "65eaf983f24f3c9728e20abf034b0e997bced8fc67643f6aef6b343e268bea5f"
+    },
+    {
+      "source_id": "xrp_insights_live_dashboard_and_dated_flows",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "page_as_of_utc": null,
+      "retrieved_reference_utc": "2026-11-08T09:47:59Z",
+      "hash_scope": "SHA-256 of normalized rendered observation summary; not raw dashboard bytes or HTTP headers.",
+      "excerpt": "Live dashboard: XRP price $1.16; total AUM $1,407.23M; 7 ETFs; XRP locked 1,195.18M; week 45 net flow −0.81M XRP.\nOn Fri, Nov 6, 2026, US XRP ETFs (the 6 spot funds plus BITW) recorded net outflows of 663,043 XRP (approximately $775.8K at that day's XRP price). Combined holdings ended the day at 1.20 billion XRP, with $1.43 billion in net assets.\nThe 6 spot ETFs alone held 1.17 billion XRP ($1.40 billion); the remainder is XRP held by BITW.\nLatest week net flow: Nov 2–6, 2026 · 5 trading days · −812.5K XRP (approximately −$978.3K).",
+      "excerpt_sha256": "5d543b0bd0e10d129ec9be4cba08f3e3cf72e3b353655f1c13ccd833d1416cd1"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_through_nov6",
+      "publisher": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "page_as_of_date": "2026-11-06",
+      "retrieved_reference_utc": "2026-11-08T09:47:59Z",
+      "hash_scope": "SHA-256 of normalized rendered observation summary; not raw dashboard bytes or HTTP headers.",
+      "excerpt": "Live covering 5 funds; session close through 2026-11-06.\nUS spot XRP ETFs, through the 6 Nov 2026 session: net flow 6 Nov $0; 30-session flow +$45.9M; cumulative inflow $1.73B.",
+      "excerpt_sha256": "07d0cbeb2dea1d4b0672007cde39a9337e1f23e16f107956c22836760bc066a9"
+    }
+  ]
+}

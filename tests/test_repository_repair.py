@@ -8,7 +8,11 @@ from pathlib import Path
 import pytest
 
 from barrot_agent.orchestration.repository_repair import (
+    AuditEngine,
     FailureEvidence,
+    ModelFailure,
+    ModelFailureCode,
+    RepairPlanner,
     GitGateway,
     PatchExecutor,
     ProjectIdentity,
@@ -22,6 +26,12 @@ from barrot_agent.orchestration.repository_repair import (
     safe_checkout_branch,
 )
 
+from barrot_agent.orchestration.repository_repair_loop import (
+    assert_clean_feature_worktree,
+    run_repository_repair_loop,
+)
+from barrot_agent.orchestration.shared_runtime import Capability, DefensiveWatchdog
+
 
 class FakeBrain:
     def __init__(self, *responses):
@@ -30,6 +40,32 @@ class FakeBrain:
 
     def think(self, message: str, history=None, system=None) -> str:
         del message, history, system
+        index = self.calls if self.calls < len(self._responses) else len(self._responses) - 1
+        response = self._responses[index]
+        self.calls += 1
+        if isinstance(response, Exception):
+            raise response
+        return response
+
+
+class ToolCapableFakeBrain:
+    def __init__(self, *responses):
+        self._responses = list(responses)
+        self.calls = 0
+        self.use_tools_calls = []
+        self.max_output_tokens_calls = []
+
+    def think(
+        self,
+        message: str,
+        history=None,
+        system=None,
+        use_tools: bool = False,
+        max_output_tokens=None,
+    ) -> str:
+        del message, history, system
+        self.use_tools_calls.append(use_tools)
+        self.max_output_tokens_calls.append(max_output_tokens)
         index = self.calls if self.calls < len(self._responses) else len(self._responses) - 1
         response = self._responses[index]
         self.calls += 1
@@ -146,11 +182,26 @@ def repair_payload(
     return json.dumps(payload)
 
 
+def authorized_watchdog(workspace: Path) -> DefensiveWatchdog:
+    return DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+
+
 def make_controller(workspace: Path, brain: FakeBrain) -> RepositoryRepairController:
     return RepositoryRepairController(
         brain=brain,
         workspace=workspace,
         planner_attempts=3,
+        watchdog=authorized_watchdog(workspace),
     )
 
 
@@ -202,16 +253,114 @@ def test_invalid_llm_json_fails_safely(tmp_path: Path) -> None:
     assert cycle.failure.code == "LLM_INVALID_JSON"
 
 
-def test_llm_rate_limit_uses_bounded_retries(tmp_path: Path) -> None:
+def test_llm_rate_limit_blocks_without_retry_and_runs_local_read_only_fallback(tmp_path: Path) -> None:
     workspace, _ = init_repo(tmp_path)
-    brain = FakeBrain(RuntimeError("429 rate limited"), RuntimeError("429 rate limited"), RuntimeError("429 rate limited"))
+    before_status = git(workspace, "status", "--porcelain=v1").stdout
+    brain = FakeBrain(RuntimeError("429 rate limited"), RuntimeError("429 rate limited"))
 
     cycle = run_cycle(workspace, brain)
 
-    assert cycle.status == "failed"
+    assert cycle.status == "blocked"
     assert cycle.failure is not None
     assert cycle.failure.code == "LLM_RATE_LIMITED"
-    assert brain.calls == 3
+    assert brain.calls == 1
+    report = json.loads(cycle.report)
+    assert report["mode"] == "read_only_provider_failure_snapshot"
+    assert report["provider_failure_code"] == "LLM_RATE_LIMITED"
+    assert report["same_provider_retry_performed"] is False
+    assert report["patch_applied"] is False
+    assert report["commit_created"] is False
+    assert report["remote_write_attempted"] is False
+    assert report["git_snapshot"]["head"]["returncode"] == 0
+    assert report["git_snapshot"]["status"]["stdout"] == before_status
+    assert git(workspace, "status", "--porcelain=v1").stdout == before_status
+    assert cycle.commit.created is False
+
+
+def test_tpm_413_is_classified_before_generic_http_413():
+    tpm = RepairPlanner._normalize_exception(
+        RuntimeError(
+            "Groq HTTP 413: Request too large on tokens per minute; "
+            "Limit 8000, Requested 8099."
+        )
+    )
+    context = RepairPlanner._normalize_exception(
+        RuntimeError("Groq HTTP 413: Request too large; maximum context window exceeded.")
+    )
+    assert tpm.code == ModelFailureCode.RATE_LIMITED_TPM
+    assert context.code == ModelFailureCode.CONTEXT_BUDGET
+
+
+def test_read_only_audit_tpm_limit_skips_planner_and_uses_local_fallback(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    before_status = git(workspace, "status", "--porcelain=v1").stdout
+    brain = ToolCapableFakeBrain(
+        RuntimeError(
+            "Groq HTTP 413: Request too large on tokens per minute; "
+            "Limit 8000, Requested 8099."
+        ),
+        repair_payload("barrot_agent/target.py"),
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_RATE_LIMITED_TPM"
+    assert brain.calls == 1
+    assert brain.use_tools_calls == [True]
+    report = json.loads(cycle.report)
+    assert report["failed_operation"] == "read_only_repository_audit"
+    assert report["same_provider_retry_performed"] is False
+    assert report["patch_applied"] is False
+    assert report["git_snapshot"]["status"]["stdout"] == before_status
+    assert git(workspace, "status", "--porcelain=v1").stdout == before_status
+    assert cycle.commit.created is False
+
+
+def test_planner_tpm_limit_blocks_and_captures_local_snapshot_after_audit(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = ToolCapableFakeBrain(
+        "Read-only audit completed with repository facts.",
+        RuntimeError(
+            "Groq HTTP 413: Request too large on tokens per minute; "
+            "Limit 8000, Requested 8099."
+        ),
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_RATE_LIMITED_TPM"
+    assert brain.calls == 2
+    assert brain.use_tools_calls == [True, False]
+    report = json.loads(cycle.report)
+    assert report["failed_operation"] == "repair_planner.generate"
+    assert report["same_provider_retry_performed"] is False
+    assert report["patch_applied"] is False
+    assert cycle.commit.created is False
+
+
+def test_planner_context_413_blocks_without_retry_and_captures_local_snapshot(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = ToolCapableFakeBrain(
+        "Read-only audit completed with repository facts.",
+        RuntimeError("Groq HTTP 413: Request too large; maximum context window exceeded."),
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_CONTEXT_BUDGET_EXCEEDED"
+    assert brain.calls == 2
+    assert brain.use_tools_calls == [True, False]
+    report = json.loads(cycle.report)
+    assert report["failed_operation"] == "repair_planner.generate"
+    assert report["patch_applied"] is False
+    assert report["same_provider_retry_performed"] is False
+    assert cycle.commit.created is False
 
 
 def test_llm_tool_conflict_is_classified_safely(tmp_path: Path) -> None:
@@ -299,6 +448,43 @@ def test_successful_commit_records_sha(tmp_path: Path) -> None:
     assert cycle.commit.created is True
     assert cycle.commit.exists is True
     assert len(cycle.commit.sha) == 40
+
+
+def test_git_gateway_requires_explicit_authorization_for_nonprotected_push(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path, origin=True)
+
+    result = GitGateway(workspace).push("origin", "repair/test")
+
+    assert result.success is False
+    assert "explicitly configured authorization gate" in result.error
+    assert git(workspace, "ls-remote", "--heads", "origin", "repair/test").stdout.strip() == ""
+
+
+def test_repository_repair_controller_blocks_before_patch_without_external_action_grant(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    controller = RepositoryRepairController(
+        brain=FakeBrain(repair_payload(path)),
+        workspace=workspace,
+    )
+
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "EXTERNAL_SYNC_NOT_AUTHORIZED"
+    assert cycle.failure.failed_operation == "authorize_remote_sync"
+    assert cycle.commit.created is False
+    assert cycle.changes_applied is False
+    assert (workspace / path).read_text(encoding="utf-8") == 'FLAG = "BROKEN"\n'
+    assert len(git(workspace, "log", "--oneline").stdout.splitlines()) == 1
+    assert git(workspace, "ls-remote", "--heads", "origin", "repair/test").stdout.strip() == ""
 
 
 def test_remote_sha_mismatch_blocks_complete(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -564,6 +750,7 @@ def test_repeated_identical_failed_plan_hits_retry_exhaustion(tmp_path: Path) ->
         workspace=workspace,
         planner_attempts=3,
         max_unchanged_attempts=1,
+        watchdog=authorized_watchdog(workspace),
     ).run(
         task_title="Repair target",
         task_body="Fix the reproduced defect in barrot_agent/target.py",
@@ -577,6 +764,7 @@ def test_repeated_identical_failed_plan_hits_retry_exhaustion(tmp_path: Path) ->
         workspace=workspace,
         planner_attempts=3,
         max_unchanged_attempts=1,
+        watchdog=authorized_watchdog(workspace),
     ).run(
         task_title="Repair target",
         task_body="Fix the reproduced defect in barrot_agent/target.py",
@@ -1131,3 +1319,162 @@ def test_patch_executor_refuses_to_create_new_git_ignored_path(tmp_path: Path) -
 
     assert not target.exists()
     assert git(workspace, "status", "--porcelain", "--untracked-files=all").stdout.strip() == ""
+
+
+def test_audit_engine_bounds_optional_context_and_preserves_task_and_safety_notes() -> None:
+    engine = AuditEngine()
+    prompt = engine.build_prompt(
+        task_title="Preserve the existing repair objective",
+        task_body="Do not weaken authorization, safety, or user-work preservation.",
+        audit_context={
+            "note": "PRESERVE AUTHORIZATION AND USER WORK.",
+            "file_context": "FILE_CONTEXT_BEGIN\n" + ("F" * 9_000),
+            "barrett_autonomous_audit": "AUDIT_REPORT_BEGIN\n" + ("A" * 5_000),
+            "github_context": "GITHUB_CONTEXT_BEGIN\n" + ("G" * 5_000),
+            "inventory": "INVENTORY_BEGIN\n" + ("I" * 5_000),
+            "directory_context": "DIRECTORY_BEGIN\n" + ("D" * 5_000),
+        },
+        previous_failure="Previous failure details must remain visible.",
+    )
+
+    assert len(prompt) <= engine.MAX_PROMPT_CHARS
+    assert "Preserve the existing repair objective" in prompt
+    assert "Do not weaken authorization, safety, or user-work preservation." in prompt
+    assert "PRESERVE AUTHORIZATION AND USER WORK." in prompt
+    assert "Previous failure details must remain visible." in prompt
+    assert "READ-ONLY REPOSITORY AUDIT" in prompt
+    assert "[TRUNCATED" in prompt
+
+
+def test_audit_engine_blocks_when_mandatory_task_text_exceeds_budget() -> None:
+    with pytest.raises(ModelFailure) as error:
+        AuditEngine().build_prompt(
+            task_title="Task",
+            task_body="x" * 15_000,
+            audit_context={},
+        )
+
+    assert error.value.code == ModelFailureCode.CONTEXT_BUDGET
+
+
+def test_repair_planner_uses_reduced_completion_budget_when_supported() -> None:
+    class BudgetAwareBrain:
+        max_output_tokens = None
+
+        def think(self, message, system=None, use_tools=None, max_output_tokens=None):
+            del message, system, use_tools
+            self.max_output_tokens = max_output_tokens
+            return json.dumps({"mode": "no_repair_required"})
+
+    brain = BudgetAwareBrain()
+    directive = RepairPlanner(brain).generate("A small bounded task.")
+
+    assert directive.mode == "no_repair_required"
+    assert brain.max_output_tokens == 768
+
+
+def test_context_budget_failure_blocks_without_repeating_the_same_request(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = FakeBrain(
+        RuntimeError(
+            "LLM_CONTEXT_BUDGET_EXCEEDED: Groq HTTP 413: Request too large; "
+            "maximum context window exceeded."
+        )
+    )
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.current_state == RepairState.BLOCKED.value
+    assert cycle.failure is not None
+    assert cycle.failure.code == ModelFailureCode.CONTEXT_BUDGET.value
+    assert brain.calls == 1
+
+
+def test_autonomous_audit_receives_real_task_and_uses_bounded_output(tmp_path: Path) -> None:
+    class AuditBrain:
+        message = ""
+        use_tools = None
+        max_output_tokens = None
+
+        def think(self, message, system=None, use_tools=None, max_output_tokens=None):
+            self.message = message
+            self.use_tools = use_tools
+            self.max_output_tokens = max_output_tokens
+            return "A" * 4_000
+
+    brain = AuditBrain()
+    controller = RepositoryRepairController(brain=brain, workspace=tmp_path)
+    report = controller._barrett_autonomous_audit(
+        task_title="Exact task title",
+        task_body="Exact task body",
+        repo="Barrot-Agent/B-Agent",
+        branch="barrot/task-example",
+    )
+
+    assert "Task title: Exact task title" in brain.message
+    assert "Exact task body" in brain.message
+    assert brain.use_tools is True
+    assert brain.max_output_tokens == 384
+    assert len(report) <= 2_500
+
+
+def test_clean_nondefault_worktree_passes_local_repair_guard(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert assert_clean_feature_worktree(workspace, default_branch="main") == workspace.resolve()
+
+
+def test_local_repair_guard_rejects_dirty_tracked_changes(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    (workspace / path).write_text('FLAG = "USER CHANGE"\\n', encoding="utf-8")
+    with pytest.raises(ValueError, match="tracked or untracked changes"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_local_repair_guard_rejects_untracked_files(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    (workspace / "user-notes.txt").write_text("preserve me\\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="tracked or untracked changes"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_local_repair_guard_rejects_default_branch(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert git(workspace, "checkout", "main").returncode == 0
+    with pytest.raises(ValueError, match="non-default feature branch"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_local_repair_guard_rejects_non_git_workspace(tmp_path: Path) -> None:
+    workspace = tmp_path / "not-a-repository"
+    workspace.mkdir()
+    with pytest.raises(ValueError, match="unable to verify Git worktree"):
+        assert_clean_feature_worktree(workspace, default_branch="main")
+
+
+def test_simple_repair_loop_cannot_modify_git_metadata(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    broken = workspace / "broken.py"
+    broken.write_text("def broken(:\\n", encoding="utf-8")
+    assert git(workspace, "add", "broken.py").returncode == 0
+    assert git(workspace, "commit", "-m", "add reproducible syntax defect").returncode == 0
+    git_config = workspace / ".git" / "config"
+    original_config = git_config.read_text(encoding="utf-8")
+
+    class FakeLLM:
+        def chat(self, messages):
+            del messages
+            return json.dumps({
+                "diagnosis": "attempt to change Git metadata",
+                "changes": [{
+                    "path": ".git/config",
+                    "old": original_config,
+                    "new": original_config + "\\n[unsafe]\\n",
+                }],
+            })
+
+    result = run_repository_repair_loop(workspace=workspace, llm=FakeLLM(), max_attempts=1)
+
+    assert result.success is False
+    assert "Protected repair path rejected" in result.message
+    assert git_config.read_text(encoding="utf-8") == original_config

@@ -1,0 +1,783 @@
+{
+  "run": 105,
+  "captured_at_utc": "2026-11-10T00:32:20Z",
+  "mission": "XRP intelligence and prediction-engine mastery priority one; preserve Barrot V3 execution, orchestration, safety and verification.",
+  "repository": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "code_test_head": "23cf9ee6fa55376b233cc8f7564807b8fd3e4e74",
+    "pr": 1640,
+    "branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "ahead": 867,
+    "behind": 0,
+    "changed_paths": 218,
+    "trees": {
+      "main": {
+        "entries": 1404,
+        "files": 1299,
+        "python": 493,
+        "tests": 90,
+        "workflows": 78
+      },
+      "integration": {
+        "entries": 1515,
+        "files": 1402,
+        "python": 564,
+        "tests": 144,
+        "workflows": 79
+      }
+    }
+  },
+  "ci": {
+    "head": "23cf9ee6fa55376b233cc8f7564807b8fd3e4e74",
+    "full_suite": {
+      "run_id": 42729321874,
+      "conclusion": "success",
+      "passed": 1316,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_pct": 59.36,
+      "wheel_build": "PASS",
+      "installed_wheel": "PASS"
+    },
+    "core_suite": {
+      "passed": 677,
+      "failed": 0,
+      "subtests": 8
+    },
+    "dependency_audit": {
+      "run_id": 42729321904,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42729321656,
+      "conclusion": "success",
+      "automatic_merge_disabled": true
+    },
+    "prior_failure": {
+      "head": "794ef1a8008fa97429f4a1b4a18c4104539f38c6",
+      "cause": "one stale hard-coded map-parent SHA assertion",
+      "repair": "23cf9ee6fa55376b233cc8f7564807b8fd3e4e74",
+      "change": "test now checks map parent against its recorded root observation and latest CI attempt against that parent"
+    }
+  },
+  "spot": {
+    "kraken": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "event_time_utc": null,
+      "last_usd": 1.10159,
+      "bid_usd": 1.10153,
+      "ask_usd": 1.10154,
+      "volume_24h_xrp": 29909076.84,
+      "vwap_24h_usd": 1.0974426,
+      "high_24h_usd": 1.12503,
+      "low_24h_usd": 1.07502
+    },
+    "okx": {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "event_time_utc": "2026-11-10T00:15:43.372Z",
+      "last_usdt": 1.1027,
+      "bid_usdt": 1.1028,
+      "ask_usdt": 1.1029,
+      "volume_24h_xrp": 73939254.48,
+      "high_24h_usdt": 1.1264,
+      "low_24h_usdt": 1.0764,
+      "age_at_cutoff_seconds": 996.6
+    },
+    "interpretation": "Asynchronous venue snapshots near $1.10; USDT not normalized to USD; no executable spread or model admission."
+  },
+  "derivatives": [
+    {
+      "source": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-09T20:32:00Z",
+      "oi_usd": 1230000000,
+      "oi_change_24h_pct": -5.9,
+      "funding_8h_pct": 0.0045,
+      "liquidations_usd": 37100000,
+      "long_liquidations_usd": 35700000,
+      "short_liquidations_usd": 1300000,
+      "long_accounts_pct": 74.8
+    },
+    {
+      "source": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "as_of_utc": "2026-11-09T23:00:00Z",
+      "oi_usd": 1670000000,
+      "oi_change_24h_pct": -3.68,
+      "funding_8h_pct": 0.0051,
+      "liquidations_min_usd": 10000000,
+      "long_liquidations_usd": 8590000,
+      "short_liquidations_usd": 1410000,
+      "long_accounts_pct": 79.9,
+      "oi_venues": 7,
+      "liquidation_venues": 5
+    },
+    {
+      "source": "WebEconomia",
+      "url": "https://www.webeconomia.it/",
+      "as_of_utc": "2026-11-09T21:13:00Z",
+      "oi_usd": 1390000000,
+      "funding_8h_pct": 0.003,
+      "liquidations_usd": 29300000,
+      "long_liquidation_share_pct": 96,
+      "binance_long_accounts_pct": 75
+    }
+  ],
+  "derivatives_interpretation": "Positive but small funding, falling OI and long-heavy liquidations/accounts. Venue coverage overlaps and differs; do not average. Descriptive deleveraging, not a directional signal.",
+  "etf": {
+    "coin365": {
+      "url": "https://coin365.com/etf-flows/xrp",
+      "session": "2026-11-09",
+      "reported_funds": 1,
+      "eligible_funds": 1,
+      "flow_usd": -1700000,
+      "flow_30d_usd": -5300000,
+      "flow_ytd_usd": 12800000,
+      "aum_usd": 302600000,
+      "xrp_holdings": 275123063
+    },
+    "bykaranteli": {
+      "url": "https://bykaranteli.com/etf/xrp",
+      "last_complete_day": "2026-11-06",
+      "daily_flow_usd": 0,
+      "flow_5d_usd": -530000,
+      "cumulative_net_inflow_usd": 1810000000,
+      "net_assets_usd": 1340000000
+    },
+    "xrp_insights": {
+      "url": "https://xrpinsights.ai/etf-flows",
+      "as_of": "2026-11-06",
+      "scope": "six spot funds plus BITW",
+      "holdings_xrp": 1195182552,
+      "holdings_change_nov2_to_nov6_xrp": -812529,
+      "derived_value_change_usd": -939000
+    },
+    "interpretation": "Nov 9 is one-fund-only; other trackers have older cutoffs and different universes/methods. No complete issuer-wide cash-flow conclusion."
+  },
+  "cftc_tff": {
+    "url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+    "report_date": "2026-11-03",
+    "release_date": "2026-11-06",
+    "contracts": [
+      {
+        "name": "CME XRP",
+        "code": "176740",
+        "oi_contracts": 7216,
+        "xrp_per_contract": 50000,
+        "xrp_equivalent": 360800000
+      },
+      {
+        "name": "Nano XRP",
+        "code": "176LM1",
+        "oi_contracts": 32505,
+        "xrp_per_contract": 500,
+        "xrp_equivalent": 16252500
+      },
+      {
+        "name": "Nano XRP Perp Style",
+        "code": "176LM3",
+        "oi_contracts": 38392,
+        "xrp_per_contract": 500,
+        "xrp_equivalent": 19196000
+      }
+    ],
+    "continuing_contract_xrp_equivalent": 396248500,
+    "dropped_contract": {
+      "name": "XRP Coinbase Derivatives",
+      "code": "176LM2",
+      "xrp_per_contract": 10000,
+      "previous_report": "2026-10-27",
+      "previous_oi_contracts": 28246,
+      "previous_xrp_equivalent": 282460000,
+      "previous_total_traders": 20,
+      "status": "CFTC lists it dropped from both futures-only and futures-and-options-combined reporting for Nov 3",
+      "index_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "faq": "CFTC says fewer than 20 reportable Large Traders can cause a market to disappear; previous total-trader count 20 does not establish that cause."
+    },
+    "interpretation": "Lagged Tuesday positioning released Friday; not spot flows, cash capital or collateral. Do not treat contract-equivalent notional as capital."
+  },
+  "xrpl_amendments": {
+    "url": "https://livenet.xrpl.org/amendments",
+    "as_of_utc": "2026-11-10T00:09:00Z",
+    "ledger": 108227973,
+    "validators": 35,
+    "required": 29,
+    "enabled": 98,
+    "in_flight": 9,
+    "countdown": 0,
+    "yes_votes": {
+      "SingleAssetVault": 23,
+      "LendingProtocol": 22,
+      "LendingProtocolV1_1": 22,
+      "ConfidentialTransfer": 21,
+      "DynamicMPT": 16,
+      "fixXChainRewardRounding": 10,
+      "Sponsor": 10,
+      "XChainBridge": 4,
+      "CryptoConditionsSuite": 0
+    },
+    "interpretation": "No listed amendment reached the 29-validator threshold."
+  },
+  "macro": {
+    "event": "U.S. October 2026 CPI",
+    "source": "BLS",
+    "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
+    "scheduled_utc": "2026-11-10T13:30:00Z",
+    "status": "FUTURE_NOT_RELEASED_AT_CUTOFF"
+  },
+  "sbic": {
+    "conclusion": "Three regional Small and Medium Business Investment & Consultation companies, not SBI Holdings subsidiaries.",
+    "entities": [
+      {
+        "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "identity": "SBIC East Japan",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "established": "1963-11-15",
+        "capital_jpy": 6673400000,
+        "coverage": "18 prefectures east of Niigata/Nagano/Shizuoka"
+      },
+      {
+        "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "identity": "SBIC Central Japan",
+        "url": "https://www.sbic-cj.co.jp/company/about/",
+        "established": "1963-11-18",
+        "capital_jpy": 4380000000,
+        "coverage": "Aichi/Gifu/Mie/Toyama/Ishikawa"
+      },
+      {
+        "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "identity": "SBIC West Japan",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "established": "1963-11-20",
+        "capital_jpy": 6822000000,
+        "coverage": "24 prefectures west of Fukui/Shiga/Nara/Wakayama; Osaka HQ and Kyushu branch"
+      }
+    ],
+    "law": "Small and Medium Business Investment & Consultation Companies Act, Act No. 101 of 1963",
+    "distinction": "Regional sister companies, not SBI Holdings."
+  },
+  "sbic_chatgpt": {
+    "sbi_holdings_chatgpt_enterprise": {
+      "url": "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+      "date": "2025-05-01",
+      "finding": "SBI Holdings and SBI Securities adopted ChatGPT Enterprise; customer adoption, not JV."
+    },
+    "sbi_anthropic": {
+      "url": "https://www.sbigroup.co.jp/news/2026/0602_16373.html",
+      "date": "2026-06-02",
+      "finding": "Separate SBI Holdings collaboration with Anthropic/Ridge-i."
+    },
+    "softbank_openai": {
+      "url": "https://group.softbank/en/news/press/20251105",
+      "date": "2025-11-05",
+      "finding": "SB OAI Japan GK launched by SoftBank Group, SoftBank Corp. and OpenAI; C Holdings 50%, OpenAI 50%; C Holdings owned 51% by SoftBank Corp. and 49% by SoftBank Group."
+    }
+  },
+  "ask_coin": {
+    "exchange": {
+      "name": "Ask Coin",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "website": "https://askcoin.net",
+      "status": "inactive/untracked",
+      "findings": [
+        "volume untracked",
+        "reserves unavailable",
+        "markets table blank",
+        "askcoin.net redirects to HugeDomains"
+      ]
+    },
+    "token": {
+      "name": "Permission Coin",
+      "ticker": "ASK",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "networks": [
+        "Base",
+        "Polygon"
+      ]
+    },
+    "xrp_link": "No verified XRP/XRPL integration for either candidate."
+  },
+  "actual_capital": {
+    "standardized_metric": false,
+    "evernorth_sec": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "prospectus_date": "2026-11-09",
+      "eloc": {
+        "capacity_shares": 5218935,
+        "price": "97% VWAP subject to conditions",
+        "ownership_cap_pct": 4.99,
+        "volume_cap_pct": 20,
+        "upfront_fee_usd": 521893.5,
+        "aggregate_fee_cap_usd": 1000000,
+        "proceeds_received_as_of_prospectus_usd": 0
+      },
+      "sponsor_warrants": {
+        "shares": 239653,
+        "exercise_price_usd": 11.5,
+        "maximum_proceeds_if_all_exercised_approx_usd": 2800000,
+        "actual_exercise_verified": false
+      },
+      "advance_funding": {
+        "cash_usd": 214050000,
+        "xrp_in_kind": 600000
+      },
+      "delayed_funding": {
+        "cash_usd": 10500000,
+        "xrp_in_kind": 200000
+      },
+      "series_c_sponsor_in_kind_xrp": 211319096,
+      "ripple_affiliate_in_kind_xrp": 50000000,
+      "issuer_risk_disclosure": "Current retail, commercial and payments use of XRP is limited; speculators make up a significant portion of users."
+    },
+    "separate_public_warrant_filing": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "shares": 11499992,
+      "exercise_price_usd": 11.5,
+      "max_proceeds_if_all_exercised_usd": 132249908,
+      "actual_exercise_verified": false
+    },
+    "classification": "Cash subscriptions, in-kind XRP, warrant capacity, ELOC capacity, fees and resale registrations are separate. ELOC capacity is not proceeds; zero ELOC proceeds were reported as of Nov 9."
+  },
+  "kamilah": {
+    "channel": "https://www.youtube.com/@drkamilahstevenson/videos",
+    "identity": "strongly corroborated",
+    "channel_page": "not readable in this run; no additional personal-channel uploads verified",
+    "prior_guest_videos": [
+      {
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+        "published": "2025-12-13"
+      },
+      {
+        "title": "Why XRP Matters More Than Your Paycheck",
+        "url": "https://www.youtube.com/watch?v=Us_FIT4RByY",
+        "published": "2026-04-17"
+      }
+    ],
+    "caution": "Guest byline is not proof of personal-channel upload."
+  },
+  "nine_platforms": {
+    "map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "last_verified_run": 104,
+    "status": {
+      "ChatGPT": "current session GitHub connector verified",
+      "Claude": "unverified",
+      "Grok": "unverified",
+      "Gemini": "unverified",
+      "Copilot": "one-off COMMENTED review only, not approval",
+      "Codex": "unverified",
+      "HuggingFace": "prior build error, no upload",
+      "Kaggle": "not tested, no submission",
+      "Databricks": "prior HTTP 403, no write"
+    },
+    "external_data_exchange": false
+  },
+  "prediction_engine": {
+    "endpoints": 40,
+    "hourly_sources": 36,
+    "weekly_cftc_sources": 2,
+    "excluded_xrpl_nodes": 2,
+    "implemented": [
+      "SHA-256 receipt chain",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "purged/embargoed chronological walk-forward",
+      "calibration diagnostics",
+      "drift monitoring",
+      "fail-closed forecast/outcome ledger",
+      "weekly CFTC TFF and contract-status raw capture"
+    ],
+    "limitations": [
+      "scheduled workflow is main-only and not active on main",
+      "no independent WORM/timestamp anchor",
+      "no complete synchronized history",
+      "no measured out-of-sample lift",
+      "no real-data calibration or shadow outcomes",
+      "CFTC remains raw-only"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "provenance": {
+    "raw_http_bytes_preserved": false,
+    "headers_preserved": false,
+    "sha256_source_receipts_created": false,
+    "model_admission": false,
+    "reason": "Rendered web pages and public exchange API pages were used; raw HTTP bodies and headers were not captured. No source hashes are fabricated.",
+    "source_url_corrections": {
+      "corrected": true,
+      "note": "Replaced previously guessed institutional URLs with verified SEC, OCC, Circle, Coinbase, Ripple and SBI source URLs. Raw HTTP bytes and response headers remain unpreserved; no SHA-256 source receipts are claimed."
+    }
+  },
+  "safety": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "force_push": false,
+    "destructive_worktree_operation": false
+  },
+  "institutional_network_addendum": {
+    "sources": {
+      "circle_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "coinbase_q3_2026_10q": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "coinbase_q3_2026_deck": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
+      "circle_usdc_supply": "https://www.circle.com/usdc",
+      "arc_mainnet": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "sbi_circle_equity": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "sbi_circle_jv": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "sbi_jpysc_lending": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "sbi_rlusd_listing": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "sbi_remit_xrp_odl": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "sbi_ripple_asia": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "sbi_tokenized_deposits_xrpl": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "sbi_ripple_stake": "https://www.sbigroup.co.jp/english/others/newyear/2026.html",
+      "coinbase_rlusd": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "ripple_prime_rlusd": "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/",
+      "standard_chartered_rlusd": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "sbi_ripple_asia_shareholding_presentation": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "ripple_q3_2026": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "ripple_national_trust_announcement": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "circle_q2_2026_results": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "occ_public_index": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "coinbase_occ_cas": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "occ_genius_final_rule": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "orderbook_depth": "https://edgeornot.com/order-book-heatmap/xrp"
+    },
+    "circle": {
+      "q3_2026": {
+        "end_usdc_circulation_usd": 73879000000,
+        "average_usdc_circulation_usd": 73264000000,
+        "reserve_return_pct": 3.5,
+        "end_usdc_on_circle_platform_usd": 13868000000,
+        "daily_weighted_average_platform_share_pct": 18.1,
+        "total_revenue_and_reserve_income_usd": 865000000,
+        "distribution_costs_to_coinbase_q3_usd": 331300000,
+        "distribution_costs_to_coinbase_9m_usd": 986600000
+      },
+      "coinbase_distribution_terms": "Coinbase receives allocations based on USDC held on Coinbase after issuer retention, plus half of the remaining broader ecosystem-growth amount after approved third-party participants. Circle records these deductions as distribution costs, not a separate stablecoin-issuance service.",
+      "circle_japan_jv": {
+        "ownership_circle_pct": 50,
+        "ownership_sbi_pct": 50,
+        "capital_contribution_circle_usd_approx": 1500000,
+        "capital_contribution_sbi_usd_approx": 1500000,
+        "as_of": "2026-09-30",
+        "operating_results": "No significant operating results to date",
+        "accounting": "Circle consolidates the VIE because it directs the significant activities and absorbs potentially significant losses/benefits; SBI interest is noncontrolling."
+      },
+      "arc_presale": {
+        "gross_proceeds_usd": 242200000,
+        "revenue_recognized_usd": 181800000,
+        "deferred_revenue_usd": 60400000,
+        "tokens_sold_millions": 807.5,
+        "price_per_token_usd": 0.3,
+        "cash_flow_note": "Circle's 10-Q says $242.2M presale proceeds were received during the nine months ended Sep 30; $181.8M recognized as revenue and $60.4M deferred."
+      },
+      "reserve_income_mix": {
+        "q3_share_of_total_revenue_pct": 76,
+        "nine_month_share_of_total_revenue_pct": 87.5,
+        "interpretation": "Reserve income remains a major earnings driver; the exact percentages are management-disclosed composition, not a forecast."
+      },
+      "current_supply": {
+        "as_of": "2026-11-05",
+        "usdc_circulation_usd": 69200000000,
+        "change_from_sep30_usd": -4679000000,
+        "change_pct": -6.33,
+        "interpretation": "Issuer page's Nov 5 circulation compared with Sep 30 10-Q end-of-period circulation; no cause attribution."
+      },
+      "arc_network": {
+        "mainnet_launch": "2026-09-16",
+        "validators_at_launch": 11,
+        "founding_validator_includes_sbi_group": true,
+        "coinbase_role": "listed as an exchange participant, not a founding validator",
+        "gas_asset": "USDC",
+        "launch_consensus": "permissioned validator set",
+        "network_scope": "Circle's separate L1, not XRPL",
+        "implication": "Potential alternative stablecoin-native settlement rail; its relationship to XRP is competitive for some routes and complementary where USDC is native on XRPL."
+      }
+    },
+    "coinbase": {
+      "q3_2026": {
+        "stablecoin_revenue_q3_usd": 306900000,
+        "stablecoin_revenue_9m_usd": 904500000,
+        "average_usdc_on_coinbase_products_usd": 22000000000,
+        "average_usdc_market_cap_usd": 73000000000,
+        "share_of_average_usdc_market_cap_pct": 30,
+        "off_platform_average_usdc_usd": 51000000000,
+        "assets_on_platform_usd": 376600000000,
+        "circle_agreement": "Renewed on same terms in 2026",
+        "customer_assets_on_platform_usd": 376600000000,
+        "xrp_specific_aop": "Not separately disclosed; grouped under Other if present, with no single Other asset above 5% of total AOP.",
+        "xrp_specific_customer_collateral": "Not separately disclosed in the reviewed 10-Q.",
+        "deck_claim": "Coinbase management said it captured approximately 50% of USDC economics over the prior year; treat as a company claim, not independently reconciled."
+      },
+      "disclosure": "Coinbase's Q3 2026 AOP table does not separately disclose XRP; it groups various crypto assets and payment stablecoins as Other, none individually exceeding 5% of total AOP. No XRP-specific customer-collateral amount was disclosed.",
+      "accounting_caution": "SEC 10-Q stablecoin revenue is not directly reconcilable to Circle's distribution-cost line; do not net the two."
+    },
+    "sbi": {
+      "circle_equity_investment": {
+        "total_usd": 50000000,
+        "sbi_holdings_usd": 25000000,
+        "sbi_shinsei_bank_usd": 25000000,
+        "date": "2025-06-05"
+      },
+      "circle_jv": {
+        "ownership_sbi_pct": 50,
+        "ownership_circle_pct": 50,
+        "contribution_each_usd_approx": 1500000,
+        "operating_results": "No significant operating results as of 2026-09-30"
+      },
+      "jpysc_lending": {
+        "as_of": "2026-11-02",
+        "lending_balance_jpy_over": 10000000000,
+        "handled_balance_jpy_over": 30000000000,
+        "source": "SBI VC Trade official release",
+        "not_xrp": true
+      },
+      "rlusd": {
+        "listing_start": "2026-06-24",
+        "platform": "SBI VC Trade VCTRADE service",
+        "source": "SBI VC Trade official release"
+      },
+      "ripple_relationship": {
+        "sbi_ripple_asia_sbi_group_voting_rights_pct": 60,
+        "ripple_pct": 40,
+        "as_of": "2026-03-31",
+        "sbi_holdings_ripple_equity_approx_pct": "9-10% based on SBI company disclosures in 2025-2026; exact current share register not public"
+      },
+      "remittance": {
+        "corridors": [
+          "Philippines",
+          "Vietnam",
+          "Indonesia"
+        ],
+        "announced": "2023-09-06",
+        "bridge_asset": "XRP",
+        "volume_publicly_disclosed": false
+      },
+      "xrpl_tokenized_deposit_poc": {
+        "date": "2026-02-26",
+        "status": "conceptual proof of concept",
+        "uses_xrpl": true,
+        "requires_xrp_bridge": false,
+        "commercial_volume": false
+      },
+      "card_rewards": {
+        "date": "2026-05-01",
+        "assets": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "interpretation": "Retail reward-conversion channel; scale and resulting spot demand not publicly quantified."
+      }
+    },
+    "ripple": {
+      "rlusd_on_sbi_vc_trade": "Live since 2026-06-24; SBI describes it as a Japan-first fourth-type electronic payment instrument.",
+      "rlusd_on_coinbase": "Retail, Exchange and Prime access announced in 2026; Coinbase Global Exchange collateral integration was described as future work, not verified live.",
+      "prime_collateral": "Ripple Prime/Hidden Road announced RLUSD collateral use across prime-brokerage products; public utilization/volume not disclosed.",
+      "custody_and_collateral": "Ripple National Trust final OCC approval is a custody/reserve-management development; Standard Chartered RLUSD custody is live, while LMAX collateral mirroring was described as planned.",
+      "xrp_caveat": "RLUSD collateral, USDC settlement, XRPL tokenized deposits and XRP bridge-currency use are distinct exposures.",
+      "company_reported_q3_2026": {
+        "source": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+        "annualized_product_revenue_run_rate_claim_usd": 900000000,
+        "payout_markets_claim": 60,
+        "lifetime_volume_claim_usd": 150000000000,
+        "institution_customer_count_claim": 1700,
+        "rlusd_market_cap_claim_usd": 2600000000,
+        "rlusd_use_claims": [
+          "Ripple Prime collateral",
+          "on-chain repo markets",
+          "Ripple Treasury 24/7 Returns"
+        ],
+        "status": "COMPANY_REPORTED_NOT_AUDITED_IN_THIS_RESEARCH_RUN",
+        "caution": "Product transaction volume and RLUSD supply are not XRP spot flows or XRP demand."
+      }
+    },
+    "relationship_hypotheses": {
+      "complement": "USDC/RLUSD issuance on XRPL and tokenized-deposit use may expand XRPL activity and liquidity, potentially creating ecosystem benefits.",
+      "substitution": "USDC/RLUSD and Arc's USDC-gas settlement can route value without XRP as a bridge asset, potentially substituting for XRP in some corridors.",
+      "deciding_evidence": [
+        "public corridor-level XRP volume and conversion legs",
+        "issuer/venue XRP inventory and collateral disclosures",
+        "XRPL asset-specific payment/DEX/AMM volumes",
+        "venue-level order-book depth and execution cost",
+        "stablecoin mint/burn and bridge flows"
+      ],
+      "current_conclusion": "Circle/Coinbase/SBI stablecoin distribution and Arc validator relationships are well evidenced; Ripple/SBI ODL is a separate XRP-bridge use case. Stablecoin and XRPL tokenization announcements do not prove incremental XRP demand. Measure corridor conversion legs, XRP inventories, asset-specific on-chain flows and venue execution."
+    },
+    "workflow_failure_triage": {
+      "main_pillars_consistency_check": {
+        "run_id": 42621970927,
+        "status": "FAILURE",
+        "cause": "GitHub App credentials unavailable, Databricks HTTP 403, Hugging Face stage BUILD_ERROR",
+        "classification": "BLOCKED_UNVERIFIED_EXTERNAL_ACCESS",
+        "action": "left fail-closed; no credentials or external writes attempted"
+      },
+      "main_hover_bike_updates": {
+        "run_id": 42572261311,
+        "status": "FAILURE",
+        "cause": "artifact paths not found after generator step",
+        "integration_branch_fix": "workflow now invokes generator from repository root to align its relative output paths",
+        "verification": "workflow itself not dispatched on PR branch"
+      },
+      "main_riemann_research_harvest": {
+        "run_id": 42556313011,
+        "status": "FAILURE",
+        "cause": "missing pydantic-settings in workflow environment",
+        "integration_branch_fix": "workflow now installs pydantic-settings before tests",
+        "verification": "workflow itself not dispatched on PR branch"
+      }
+    },
+    "data_integrity": {
+      "raw_http_bytes_preserved": false,
+      "source_hash_receipts_created": false,
+      "model_admission": false,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "market_depth": {
+      "source": "Edge or Not real-order-book heatmap",
+      "observed_utc": "2026-11-10T00:07:00Z",
+      "mid_usd": 1.1009,
+      "within_1pct": {
+        "bids_usd": 9400000,
+        "asks_usd": 8600000,
+        "bid_share_pct": 52.22,
+        "bid_ask_ratio": 1.093
+      },
+      "largest_ask_walls": [
+        {
+          "price_usd": 1.1042,
+          "size_usd": 1500000,
+          "distance_pct": 0.3
+        },
+        {
+          "price_usd": 1.1031,
+          "size_usd": 1100000,
+          "distance_pct": 0.2
+        },
+        {
+          "price_usd": 1.102,
+          "size_usd": 2200000,
+          "distance_pct": 0.1
+        }
+      ],
+      "largest_bid_walls": [
+        {
+          "price_usd": 1.0998,
+          "size_usd": 1600000,
+          "distance_pct": -0.1
+        },
+        {
+          "price_usd": 1.0976,
+          "size_usd": 1600000,
+          "distance_pct": -0.3
+        },
+        {
+          "price_usd": 1.0954,
+          "size_usd": 1400000,
+          "distance_pct": -0.5
+        }
+      ],
+      "methodology": "Binance spot and OKX XRP-USDT perpetual, full visible depth sampled each minute, averaged per 15 minutes, grouped in 0.05% buckets and converted to USD; within ±1.5%.",
+      "limitations": [
+        "spot and perpetual books are combined",
+        "other exchanges excluded",
+        "hidden/iceberg orders excluded",
+        "orders can be cancelled or spoofed",
+        "provider states its order-book signal has not been tested"
+      ],
+      "model_admission": false
+    },
+    "regulatory": {
+      "occ_public_index_observed": "2026-11-10",
+      "coinbase_national_trust": {
+        "status": "REGULATOR_VERIFIED_APPROVED_AND_CONSUMMATED",
+        "cas_control_number": "2025-Charter-343449",
+        "charter_number": 25390,
+        "approved": "2026-04-02",
+        "consummated_effective": "2026-11-06",
+        "trust_powers_requested": true,
+        "source": "OCC Corporate Applications Search"
+      },
+      "ripple_national_trust": {
+        "company_statement": "Ripple announced final OCC approval on 2026-10-26.",
+        "occ_public_index": "The OCC Interpretations & Decisions index still lists Conditional Approval 1359 dated 2025-12-12 as preliminary conditional approval; no final decision record surfaced in the index during this run.",
+        "classification": "COMPANY_REPORTED_FINAL_APPROVAL_NOT_INDEPENDENTLY_CONFIRMED_BY_PUBLIC_OCC_FINAL_ORDER"
+      },
+      "circle_national_trust": {
+        "company_statement": "Circle's 2026-08-05 Q2 results say Circle received final OCC approval to establish Circle National Trust.",
+        "occ_public_index": "No separate Circle National Trust final decision entry surfaced in the public OCC index during this run.",
+        "classification": "COMPANY_REPORTED_FINAL_APPROVAL_NOT_INDEPENDENTLY_CONFIRMED_BY_PUBLIC_OCC_FINAL_ORDER"
+      },
+      "genius_act_final_rule": {
+        "issued": "2026-10-21",
+        "effective": "2027-01-18",
+        "applications": "OCC says it will separately announce when it begins accepting/processing applications and waiver requests.",
+        "source": "OCC News Release 2026-92"
+      },
+      "interpretation": "Do not treat the Circle or Ripple trust-bank final-approval claims as regulator-index verified until a final OCC order is publicly located. Coinbase's charter is directly confirmed by OCC CAS. Trust charters are not deposit-taking bank status, stablecoin issuance approval, or evidence of XRP collateral."
+    }
+  },
+  "market_depth": {
+    "source": "Edge or Not real-order-book heatmap",
+    "observed_utc": "2026-11-10T00:07:00Z",
+    "mid_usd": 1.1009,
+    "within_1pct": {
+      "bids_usd": 9400000,
+      "asks_usd": 8600000,
+      "bid_share_pct": 52.22,
+      "bid_ask_ratio": 1.093
+    },
+    "largest_ask_walls": [
+      {
+        "price_usd": 1.1042,
+        "size_usd": 1500000,
+        "distance_pct": 0.3
+      },
+      {
+        "price_usd": 1.1031,
+        "size_usd": 1100000,
+        "distance_pct": 0.2
+      },
+      {
+        "price_usd": 1.102,
+        "size_usd": 2200000,
+        "distance_pct": 0.1
+      }
+    ],
+    "largest_bid_walls": [
+      {
+        "price_usd": 1.0998,
+        "size_usd": 1600000,
+        "distance_pct": -0.1
+      },
+      {
+        "price_usd": 1.0976,
+        "size_usd": 1600000,
+        "distance_pct": -0.3
+      },
+      {
+        "price_usd": 1.0954,
+        "size_usd": 1400000,
+        "distance_pct": -0.5
+      }
+    ],
+    "methodology": "Binance spot and OKX XRP-USDT perpetual, full visible depth sampled each minute, averaged per 15 minutes, grouped in 0.05% buckets and converted to USD; within ±1.5%.",
+    "limitations": [
+      "spot and perpetual books are combined",
+      "other exchanges excluded",
+      "hidden/iceberg orders excluded",
+      "orders can be cancelled or spoofed",
+      "provider states its order-book signal has not been tested"
+    ],
+    "model_admission": false
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "artifact_type": "binance_security_incident_xrp_flow_and_withdrawal_recovery",
+  "artifact_id": "binance-xrp-incident-20261106T052215Z",
+  "subject": "October 29 Binance cross-chain security incident, XRP Ledger transfers, attribution disagreement and November 6 withdrawal-recovery scope",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "capture": {
+    "retrieval_interval_start_utc": "2026-11-06T05:19:52Z",
+    "retrieval_interval_end_utc": "2026-11-06T05:22:15Z",
+    "exact_per_source_retrieval_timestamp_utc": null,
+    "raw_http_wire_bytes_captured": false,
+    "note": "Public official announcements, FBI advisory, Whale Alert transaction pages and secondary reporting were inspected during this bounded interval. Source publication times and on-chain event times are preserved separately. No raw HTTP bodies/headers or direct XRPL node ledger responses were captured."
+  },
+  "source_registry": [
+    {
+      "id": "BINANCE_SECURITY_INCIDENT_INITIAL_20261030",
+      "publisher": "Binance",
+      "source_type": "primary_exchange_incident_statement",
+      "url": "https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7",
+      "published_at_utc": "2026-10-30T02:23:00Z",
+      "updated_at_utc": "2026-10-30T11:36:00Z",
+      "independence_group": "binance_official",
+      "claims": [
+        "Estimated total impact approximately $6.3B.",
+        "Initial investigation suggested a compromised DevOps engineer laptop and service-container access.",
+        "Binance reported no evidence of wallet private keys being leaked.",
+        "Approximately $3B of affected assets had been frozen on-chain at the time of the update.",
+        "Binance said it would cover user losses with SAFU and company funds."
+      ],
+      "limitations": [
+        "Binance's preliminary account is not an independent forensic post-mortem.",
+        "The $6.3B is the exchange's estimated incident impact."
+      ]
+    },
+    {
+      "id": "FBI_TRADERTRAITOR_ADVISORY_20261031",
+      "publisher": "Federal Bureau of Investigation",
+      "source_type": "primary_government_cyber_attribution",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack/layout_view",
+      "published_at_utc": "2026-10-31",
+      "independence_group": "us_federal_law_enforcement",
+      "claims": [
+        "FBI attributes the October 29, 2026 theft of more than $6B from Binance to North Korea's TraderTraitor activity.",
+        "FBI says the actors were converting stolen assets primarily into Ether and expected further laundering through DeFi and instant-swap services."
+      ],
+      "limitations": [
+        "The FBI advisory does not establish that the XRP portion was sold or exchanged.",
+        "No attribution of the two November 2 XRP recipients is provided in the advisory."
+      ]
+    },
+    {
+      "id": "BINANCE_RECOVERY_UPDATE_7_20261104",
+      "publisher": "Binance",
+      "source_type": "primary_exchange_recovery_and_reserve_statement",
+      "url": "https://www.binance.com/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405",
+      "published_at_utc": "2026-11-04T15:23:00Z",
+      "independence_group": "binance_official",
+      "claims": [
+        "Approximately 98% of the affected amount had been replenished.",
+        "Binance said it had set aside more than 100% of the funds needed to cover user losses.",
+        "The remaining approximately 2% consisted of less-liquid tokens still being acquired through market and OTC channels.",
+        "A November 4 00:00 UTC proof-of-reserves snapshot expanded coverage to 44 tokens; generation of the full zero-knowledge proof was estimated at 50–60 hours."
+      ],
+      "limitations": [
+        "Replenished means Binance replacing user-facing balances; it is not the same as recovering stolen assets.",
+        "The 98% figure is aggregate across affected assets, not an XRP-specific recovery percentage.",
+        "The 44-token ZK proof completion status was not confirmed in this retrieval."
+      ]
+    },
+    {
+      "id": "BINANCE_RECOVERY_UPDATE_9_20261106",
+      "publisher": "Binance",
+      "source_type": "primary_exchange_network_withdrawal_announcement",
+      "url": "https://www.binance.com/en/support/announcement/detail/a2dd10b860a14c35a856fe9d66d6032c",
+      "published_at_utc": "2026-11-06T03:06:00Z",
+      "scheduled_start_utc": "2026-11-06T04:00:00Z",
+      "independence_group": "binance_official",
+      "claims": [
+        "Recovery Update #9 schedules progressive reopening of withdrawals for additional network/asset pairs.",
+        "The table lists XRP under the ETH network.",
+        "Binance says not all listed assets become available at once and rollout depends on security/readiness checks."
+      ],
+      "limitations": [
+        "The ETH network row is not evidence that native XRP Ledger withdrawals reopened.",
+        "The announcement is a scheduled progressive reopening, not confirmation that a specific customer withdrawal succeeded."
+      ]
+    },
+    {
+      "id": "BINANCE_NETWORK_STATUS_20261106",
+      "publisher": "Binance",
+      "source_type": "primary_exchange_dynamic_network_status_page",
+      "url": "https://www.binance.com/en/network",
+      "page_last_updated_display": "2026-11-06 05:14:15 AM",
+      "independence_group": "binance_official",
+      "claims": [
+        "The rendered page extraction showed 'No records' at the displayed last-updated time."
+      ],
+      "limitations": [
+        "The page is dynamically rendered and the extraction did not expose per-network rows.",
+        "Timezone for the displayed page timestamp was not exposed.",
+        "This does not establish that XRP or XRPL withdrawals were disabled or enabled."
+      ]
+    },
+    {
+      "id": "WHALE_ALERT_INITIAL_XRP_TRANSFER_20261029",
+      "publisher": "Whale Alert",
+      "source_type": "onchain_transfer_alert_and_transaction_record",
+      "url": "https://whale-alert.io/transaction/ripple/78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "event_timestamp_utc": "2026-10-29T20:05:00Z",
+      "transaction_hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "amount_xrp": 185017485,
+      "sender": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "independence_group": "whale_alert_onchain_index",
+      "limitations": [
+        "Whale Alert is an indexed alert provider, not a direct XRPL node receipt captured in this run.",
+        "This is one transaction; the reported five-transaction total of approximately 233.46M XRP is sourced from TRM Labs reporting and secondary summaries."
+      ]
+    },
+    {
+      "id": "WHALE_ALERT_XRP_TRANSFER_20261102_A",
+      "publisher": "Whale Alert",
+      "source_type": "onchain_transfer_alert_and_transaction_record",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "event_timestamp_utc": "2026-11-02T03:56:21Z",
+      "transaction_hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "amount_xrp": 40000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "receiver": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "independence_group": "whale_alert_onchain_index",
+      "limitations": [
+        "The sender and receiver are labeled 'Binance Hack 2026' by Whale Alert; labels do not establish beneficial ownership or current control.",
+        "The receiving account is not independently identified as an exchange deposit or Binance internal wallet."
+      ]
+    },
+    {
+      "id": "WHALE_ALERT_XRP_TRANSFER_20261102_B",
+      "publisher": "Whale Alert via The Crypto Basic transaction link",
+      "source_type": "onchain_transfer_redirect_reference",
+      "url": "https://whale-alert.io/transaction/ripple/DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A",
+      "event_timestamp_utc": "2026-11-02T03:55:31Z",
+      "transaction_hash": "DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A",
+      "amount_xrp": 40000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "receiver": null,
+      "independence_group": "whale_alert_onchain_index",
+      "limitations": [
+        "Hash extracted from the secondary article's redirect URL; Whale Alert transaction page was not accessible to the web reader in this run.",
+        "Recipient address and direct ledger fields were not independently verified."
+      ]
+    },
+    {
+      "id": "CRYPTO_BASIC_BINANCE_XRP_TRANSFER_REPORT_20261102",
+      "publisher": "The Crypto Basic",
+      "source_type": "secondary_onchain_reporting",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/",
+      "published_at_utc": "2026-11-02",
+      "independence_group": "secondary_reporting_whale_alert_based",
+      "claims": [
+        "Two 40M XRP transfers from the address labeled Binance Hack 2026 occurred 50 seconds apart at 03:55:31 and 03:56:21 UTC on November 2.",
+        "The sender had previously received approximately 233.46M XRP during the October 29 incident.",
+        "A separate 50M XRP transfer from a Binance-labeled wallet on November 1 was not linked by the article to the attacker."
+      ],
+      "limitations": [
+        "Underlying transfer alerts are from Whale Alert; secondary reports repeating them are not independent on-chain sources.",
+        "The article describes the recipients as unknown and does not establish sale or exchange deposit."
+      ]
+    },
+    {
+      "id": "UTODAY_BINANCE_XRP_WALLET_INTERPRETATION_20261105",
+      "publisher": "U.Today",
+      "source_type": "secondary_wallet_attribution_interpretation",
+      "url": "https://u.today/xrp-final-move-binance-empties-hacked-wallet-of-last-101-million",
+      "published_at_utc": "2026-11-05",
+      "independence_group": "secondary_reporting_whale_alert_and_explorer_labels",
+      "claims": [
+        "U.Today interprets the two 40M transfers as Binance moving the remaining 80M XRP to new internal wallets.",
+        "The article says the source address was labeled reported-as-hacked in network explorers and had a residual balance of 23.7 XRP after the transfers."
+      ],
+      "limitations": [
+        "The article does not provide an independently verified ownership proof for the recipient wallets.",
+        "Its 'internal wallet' interpretation conflicts with Whale Alert/The Crypto Basic descriptions of recipients as unknown.",
+        "XRPSCAN account page returned 403 in this run; the residual balance and label were not independently fetched."
+      ]
+    }
+  ],
+  "incident_timeline": [
+    {
+      "event_time_utc": "2026-10-29T20:05:00Z",
+      "event": "First individually identified 185,017,485 XRP transfer from Binance-labeled hot wallet to rK21... address.",
+      "source_ids": [
+        "WHALE_ALERT_INITIAL_XRP_TRANSFER_20261029"
+      ],
+      "status": "TRANSACTION_HASH_AND_ALERT_DETAILS_OBSERVED"
+    },
+    {
+      "event_time_window_utc": [
+        "2026-10-29T20:05:00Z",
+        "2026-10-29T20:09:00Z"
+      ],
+      "event": "Five Binance-controlled XRP Ledger wallets reportedly transferred approximately 233.46M XRP, valued near $296M at incident prices, to the address rK21... as part of the wider cross-chain incident.",
+      "source_ids": [
+        "FBI_TRADERTRAITOR_ADVISORY_20261031",
+        "WHALE_ALERT_INITIAL_XRP_TRANSFER_20261029"
+      ],
+      "status": "TOTAL_AND_FIVE_WALLET_SEQUENCE_REPORTED_BY_TRM_LABS_SUMMARIES; ONLY_ONE_TRANSACTION_HASH_CAPTURED_HERE"
+    },
+    {
+      "event_time_utc": "2026-10-29T20:05:00Z",
+      "event": "Binance reports the wider incident's estimated total impact at approximately $6.3B across token assets; no evidence of wallet private-key leakage was found in its preliminary investigation.",
+      "source_ids": [
+        "BINANCE_SECURITY_INCIDENT_INITIAL_20261030"
+      ],
+      "status": "EXCHANGE_STATED_PRELIMINARY_FINDING"
+    },
+    {
+      "event_time_utc": "2026-10-31",
+      "event": "FBI attributes theft of more than $6B to North Korea's TraderTraitor activity and says stolen assets were being converted primarily into Ether.",
+      "source_ids": [
+        "FBI_TRADERTRAITOR_ADVISORY_20261031"
+      ],
+      "status": "GOVERNMENT_ATTRIBUTION"
+    },
+    {
+      "event_time_utc": "2026-11-02T03:55:31Z",
+      "event": "40M XRP transferred from rK21... to an unidentified recipient; second 40M XRP transfer followed 50 seconds later.",
+      "source_ids": [
+        "WHALE_ALERT_XRP_TRANSFER_20261102_A",
+        "WHALE_ALERT_XRP_TRANSFER_20261102_B",
+        "CRYPTO_BASIC_BINANCE_XRP_TRANSFER_REPORT_20261102",
+        "UTODAY_BINANCE_XRP_WALLET_INTERPRETATION_20261105"
+      ],
+      "status": "TWO_40M_TRANSFERS_REPORTED; RECIPIENT_ATTRIBUTION_DISPUTED"
+    },
+    {
+      "event_time_utc": "2026-11-04T15:23:00Z",
+      "event": "Binance reports approximately 98% of affected assets replenished and more than 100% of required cover set aside; 44-token PoR snapshot taken November 4 00:00 UTC.",
+      "source_ids": [
+        "BINANCE_RECOVERY_UPDATE_7_20261104"
+      ],
+      "status": "EXCHANGE_STATED_AGGREGATE_RECOVERY; NOT_XRP_SPECIFIC"
+    },
+    {
+      "event_time_utc": "2026-11-06T03:06:00Z",
+      "event": "Binance Recovery Update #9 schedules progressive withdrawal reopening from 04:00 UTC and lists XRP under the ETH network.",
+      "source_ids": [
+        "BINANCE_RECOVERY_UPDATE_9_20261106"
+      ],
+      "status": "SCHEDULED_NETWORK_ASSET_REOPENING; NATIVE_XRPL_STATUS_NOT_ESTABLISHED"
+    }
+  ],
+  "xrp_flow_analysis": {
+    "initial_reported_incident_amount_xrp": 233460000,
+    "initial_reported_incident_value_usd": 296000000,
+    "individually_observed_initial_transfer_xrp": 185017485,
+    "nov2_two_transfer_total_xrp": 80000000,
+    "nov2_transfer_interval_seconds": 50,
+    "separate_nov1_binance_labeled_transfer_xrp": 50000000,
+    "separate_nov1_transfer_linked_to_incident": false,
+    "confirmed_exchange_deposit_from_nov2_transfers": false,
+    "confirmed_sale_or_swap_from_nov2_transfers": false,
+    "recipient_attribution_status": "UNRESOLVED",
+    "address_label_status": "WHALE_ALERT_LABELS_SOURCE_AND_ONE_RECIPIENT_BINANCE_HACK_2026; LABEL_IS_NOT_PROOF_OF_CONTROL",
+    "competing_interpretations": [
+      {
+        "hypothesis": "Attacker-controlled wallets continued moving stolen XRP.",
+        "support": [
+          "Whale Alert labels the source and first recipient as Binance Hack 2026.",
+          "The source address received the reported incident XRP."
+        ],
+        "disconfirming_or_missing": [
+          "No independently verified exchange deposit, sale or swap is established.",
+          "Recipient control and subsequent disposition are unknown."
+        ]
+      },
+      {
+        "hypothesis": "Binance regained control and swept residual XRP into internal wallets.",
+        "support": [
+          "U.Today interprets the 80M transfers as internal consolidation after the compromise.",
+          "Binance said it revoked affected address authorization and later replenished user balances."
+        ],
+        "disconfirming_or_missing": [
+          "The recipient wallets are not independently proven to be Binance-controlled.",
+          "Whale Alert and The Crypto Basic describe recipients as unknown; the XRPSCAN page was inaccessible."
+        ]
+      },
+      {
+        "hypothesis": "The transfers are custody/security consolidation unrelated to market sale.",
+        "support": [
+          "The transactions are wallet-to-wallet transfers and no exchange deposit or sale is confirmed."
+        ],
+        "disconfirming_or_missing": [
+          "The recipient beneficial ownership and subsequent transactions are not fully verified."
+        ]
+      }
+    ],
+    "market_impact_boundary": "The transfer amount is not sell pressure unless tokens reach an exchange, swap venue or other disposal route. The separate 50M XRP Binance-labeled withdrawal is not linked to the hack in the available reporting."
+  },
+  "withdrawal_and_reserve_analysis": {
+    "binance_replenished_affected_assets_percent_as_of_2026_11_04": 98,
+    "funds_set_aside_percent_of_required_cover": "more_than_100%",
+    "remaining_assets_percent": "approximately 2%",
+    "remaining_assets_description": "less-liquid assets, Binance says acquisition continues through market and OTC channels",
+    "xrp_100_percent_backed_statement": "Binance's November 2 Recovery Update #5 said XRP was among ten assets whose balances were 100% backed in the October 31 PoR snapshot; this is an exchange-published reserve statement.",
+    "nov6_withdrawal_update": {
+      "scheduled_start_utc": "2026-11-06T04:00:00Z",
+      "asset": "XRP",
+      "network_label": "ETH",
+      "progressive_rollout": true,
+      "native_xrpl_withdrawal_confirmed": false,
+      "live_status_confirmed": false
+    },
+    "limitations": [
+      "The 98% replenishment figure is aggregate, not XRP-specific.",
+      "Replenishment of customer balances is not the same as recovering the stolen assets.",
+      "The 44-token PoR ZK proof completion status was not confirmed in this retrieval.",
+      "XRP under the ETH network label must not be equated with native XRPL withdrawals.",
+      "The dynamic Binance network-status page did not expose per-network records in this retrieval."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-cross-chain-risk-repricing",
+      "proposition": "The Binance incident contributed to broad crypto risk repricing and temporary exchange-liquidity stress.",
+      "supporting_evidence": [
+        "The incident affected multiple hot-wallet assets and triggered temporary withdrawal suspensions.",
+        "Binance reported a $6.3B impact and a phased withdrawal restoration process."
+      ],
+      "disconfirming_evidence": [
+        "No causal estimate isolates the incident's contribution to XRP's price move.",
+        "The FBI says the stolen assets were being converted primarily into ETH, not specifically XRP."
+      ]
+    },
+    {
+      "id": "H2-xrp-specific-sell-pressure",
+      "proposition": "The stolen XRP transfers created immediate market sell pressure.",
+      "supporting_evidence": [
+        "Approximately 233.46M XRP was reported transferred from Binance hot wallets to a hack-linked address; 80M later moved again."
+      ],
+      "disconfirming_evidence": [
+        "No confirmed exchange deposit, swap, sale or liquidation from the 80M transfers is established.",
+        "The recipients may be internal/custody wallets; attribution is disputed."
+      ]
+    },
+    {
+      "id": "H3-binance-recovery-and-withdrawal-normalization",
+      "proposition": "Replenishment and phased reopening reduce the probability of persistent Binance-specific withdrawal stress.",
+      "supporting_evidence": [
+        "Binance reported 98% replenishment by November 4 and announced additional withdrawals, including XRP under the ETH network label, from November 6 04:00 UTC."
+      ],
+      "disconfirming_evidence": [
+        "The remaining 2% was less liquid and still being acquired.",
+        "The November 6 reopening was progressive; native XRPL availability was not confirmed."
+      ]
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "RESEARCH_ONLY",
+    "reasons": [
+      "The wallet attribution conflict is unresolved.",
+      "Only a subset of transaction hashes and direct ledger records were captured.",
+      "The XRPL explorer page was inaccessible; Whale Alert is an indexed provider, not a direct node receipt.",
+      "No exchange deposit, sale or swap from the 80M transfers is confirmed.",
+      "Withdrawal reopening is network-specific and progressive; native XRPL status is unknown.",
+      "The Binance recovery percentages are issuer statements and are not XRP-specific."
+    ]
+  },
+  "forecast": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "Security-event and wallet-flow evidence is incomplete and does not establish XRP-specific sell pressure or a causal price effect."
+  },
+  "next_actions": [
+    "Capture the five original Oct 29 XRP Ledger transaction hashes and direct validated XRPL node receipts.",
+    "Resolve rK21... and recipient-wallet beneficial ownership using multiple independent on-chain attribution sources.",
+    "Track subsequent transactions for exchange deposits, DEX swaps, bridges or issuer freezes; do not infer sale from transfers.",
+    "Verify native XRPL versus ETH-network XRP withdrawal availability using Binance's live network status and test only through read-only public status sources.",
+    "Reconcile Binance's 44-token PoR snapshot and zero-knowledge proof once published.",
+    "Keep the incident as a market-risk event, not an XRP-specific sell-flow feature, until disposition is proven."
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "schema_version": "barrot.xrp_research_snapshot.v1",
+  "run_id": 138,
+  "captured_at_utc": "2026-11-10T17:56:23Z",
+  "mission": {
+    "id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "foundation": "Barrot V3",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "market": {
+    "model_eligible": false,
+    "retrieval_cutoff_utc": "2026-11-10T17:56:23Z",
+    "quote_comparison": "asynchronous; not executable arbitrage",
+    "kraken_xrpusd": {
+      "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time_utc": null,
+      "last_usd": 1.05228,
+      "bid_usd": 1.05236,
+      "ask_usd": 1.05237,
+      "spread_bps": 0.095024,
+      "volume_24h_xrp": 35924463.65091953,
+      "vwap_24h_usd": 1.07275135,
+      "last_vs_vwap_pct": -1.908303,
+      "low_24h_usd": 1.03011,
+      "high_24h_usd": 1.10584,
+      "utc_day_open_usd": 1.09748,
+      "surfaced_response_text_sha256": "6d0e281a7d61c8f8fd0c0fbf448a3fb5a73e8047821e706efa2f4d4888c62ce2",
+      "raw_transport_bytes_preserved": false
+    },
+    "okx_xrpusdt": {
+      "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-10T17:31:10.269Z",
+      "age_seconds_at_retrieval": 1512.731,
+      "last_usdt": 1.0498,
+      "bid_usdt": 1.0499,
+      "ask_usdt": 1.05,
+      "open_24h_usdt": 1.0934,
+      "high_24h_usdt": 1.1073,
+      "low_24h_usdt": 1.0311,
+      "volume_24h_xrp": 75953782.91449,
+      "return_24h_pct": -3.987562,
+      "surfaced_response_text_sha256": "b7688a95f7eb3205edb5f8a3b6a26a4da06cce9268b4b982138ac036d848430b",
+      "raw_transport_bytes_preserved": false
+    },
+    "kraken_usdtusd": {
+      "source": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "provider_event_time_utc": null,
+      "last_usd": 0.99896,
+      "bid_usd": 0.99896,
+      "ask_usd": 0.99897,
+      "mid_usd": 0.998965,
+      "surfaced_response_text_sha256": "fa99b47de94970a609ad950784592f28321587789e51dd65c24901918122f99a",
+      "raw_transport_bytes_preserved": false
+    },
+    "normalized_comparison": {
+      "method": "OKX XRP-USDT last multiplied by Kraken USDT/USD midpoint",
+      "normalized_okx_usd": 1.048713457,
+      "gap_vs_kraken_last_pct": -0.338935,
+      "caveat": "venue observations are asynchronous; Kraken quote has no surfaced event time and OKX event time is about 25 minutes older"
+    },
+    "depth": {
+      "synchronized_spot_l2_obtained": false,
+      "synchronized_trade_tape_obtained": false,
+      "status": "NOT_CAPTURED",
+      "model_eligible": false
+    },
+    "receipt_limitation": "Hashes cover the exact surfaced JSON response text, not original HTTP transport bytes, headers, TLS session or signed exchange receipt."
+  },
+  "macro_events": [
+    {
+      "event": "U.S. CPI, October 2026",
+      "source": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "published_at_utc": "2026-11-10T13:30:00Z",
+      "retrieved_at_utc": "2026-11-10T17:56:23Z",
+      "headline_monthly_sa_pct": 0.4,
+      "prior_month_headline_sa_pct": 0.6,
+      "core_monthly_sa_pct": 0.3,
+      "food_monthly_pct": 0.5,
+      "energy_monthly_pct": 0.7,
+      "shelter_monthly_pct": 0.3,
+      "year_over_year_comparison": "not published for affected indexes because October 2025 survey data were not collected during the lapse in appropriations",
+      "model_eligible": false,
+      "admission_reason": "event source has not yet been integrated into a vintage-aware BLS adapter and point-in-time event store"
+    }
+  ],
+  "etf_flows": {
+    "date": "2026-11-09",
+    "model_eligible": false,
+    "cryptokeyhole": {
+      "source": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "reporting_funds": 3,
+      "total_daily_funds": 4,
+      "partial_net_change_xrp": -9216553,
+      "approximate_usd": -10100000,
+      "bitwise_xrp": -8594551,
+      "canary_xrpc_xrp": -427341,
+      "toxr_21shares_xrp": -194660,
+      "franklin_xrpz": "pending"
+    },
+    "alpha_finance": {
+      "source": "https://alphafinance.io/etf/xrp/",
+      "reported_net_flow_usd": -10400000,
+      "displayed_funds": 5,
+      "caveat": "aggregator methodology and issuer coverage differ"
+    },
+    "xrp_insights": {
+      "source": "https://xrp-insights.com/data",
+      "displayed_bitwise_holdings_xrp": 415365129,
+      "data_as_of": "2026-11-09",
+      "caveat": "differs from CryptoKeyhole's latest issuer-file value 406770578; difference approximately equals CryptoKeyhole's 8.595M XRP Bitwise outflow and may reflect a stale/asynchronous holdings row"
+    },
+    "source_independence": "not independent confirmations; aggregators overlap issuer files and use different update times and flow methods",
+    "admission_reason": "holdings changes do not establish cash redemption, in-kind redemption or exchange sale"
+  },
+  "repository": {
+    "main_sha": "e35f3d16b842d0f75847dd4bb0b51531f38c5f38",
+    "integration_head_before_research_handoff": "ad19dd7c02eef56a12a338817e6b2b8d2277d615",
+    "integration_pr": 1660,
+    "ahead_by": 1914,
+    "behind_by": 0,
+    "changed_files": 950,
+    "additions": 266683,
+    "deletions": 3655,
+    "main_tree": {
+      "entries": 1404,
+      "files": 1299,
+      "workflow_files": 86,
+      "xrp_research_files": 30
+    },
+    "integration_tree": {
+      "entries": 2245,
+      "files": 2131,
+      "workflow_files": 87,
+      "xrp_research_files": 495
+    },
+    "changed_workflow_files": 44,
+    "quarantined_changed_workflow_files": 25,
+    "open_prs": {
+      "total": 373,
+      "drafts": 358,
+      "non_drafts": 15
+    },
+    "pr_1660": {
+      "draft": false,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "formal_reviews": 0,
+      "approvals": 0,
+      "inline_review_comments": 0
+    },
+    "source_prs_preserved": [
+      1640,
+      1643,
+      1642
+    ],
+    "unique_prs_preserved": [
+      1653,
+      1641,
+      1269,
+      1614,
+      1611
+    ]
+  },
+  "verification": {
+    "exact_head": "ad19dd7c02eef56a12a338817e6b2b8d2277d615",
+    "push_ci": {
+      "run_id": 42870276639,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42870276639",
+      "result": "success",
+      "full_suite_passed": 3363,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_pct": 59.58,
+      "full_suite_duration_seconds": 75.19,
+      "wheel_build": "success",
+      "installed_wheel": "Barrot V3, primary XRP mission and canonical data assets verified"
+    },
+    "pr_ci": {
+      "run_id": 42870287477,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42870287477",
+      "result": "success"
+    },
+    "push_dependency_audit": {
+      "run_id": 42870276602,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42870276602",
+      "result": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "pr_dependency_audit": {
+      "run_id": 42870287357,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42870287357",
+      "result": "success"
+    },
+    "push_fail_closed_gate": {
+      "run_id": 42870276859,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42870276859",
+      "result": "success",
+      "automatic_merge_disabled": true
+    },
+    "pr_fail_closed_gate": {
+      "run_id": 42870287318,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42870287318",
+      "result": "success",
+      "automatic_merge_disabled": true
+    },
+    "repaired_failure": {
+      "previous_head": "3e0720657dde9c03837a597ef7b4aebe7add09eb",
+      "failure": "two historical regression tests raised NameError because math was not imported",
+      "fix_commit": "ad19dd7c02eef56a12a338817e6b2b8d2277d615",
+      "change": "added standard-library math import to one test file; no production code, data or forecast gate changed"
+    }
+  },
+  "safety": {
+    "branch_protection_details": "UNVERIFIED_HTTP_403",
+    "main_branch_protected": true,
+    "visible_fallback_ruleset": "disabled",
+    "pages_auto_publication_authorized": false,
+    "semantic_review_of_950_paths": "incomplete",
+    "core_v3_workflow_parity": "incomplete; 25 of 44 changed workflows are deliberately quarantined pending branch-only/artifact-first/least-privilege replacements",
+    "external_actions_dispatched": false,
+    "main_write": false,
+    "merge_performed": false
+  },
+  "platform_coordination": {
+    "ChatGPT": "current-session GitHub read/write on integration branch verified",
+    "Copilot": "comment-only activity; no formal approval",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Codex": "unverified",
+    "Hugging_Face": "prior BUILD_ERROR; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no workspace write",
+    "external_model_data_transfer": false
+  },
+  "next_actions": [
+    "Continue semantic review of the 950 changed files and 44 changed workflows, prioritizing core V3 operational parity and external-write controls.",
+    "Restore safe branch-only, artifact-first replacements for quarantined V3 workflows without re-enabling unattended main writes or unapproved external actions.",
+    "Add official BLS CPI vintages and macro event timestamps to the scheduled source registry and event timeline.",
+    "Add current synchronized multi-venue spot L2/trade capture; reject stale or missing event timestamps.",
+    "Reconcile issuer-level ETF holdings and cash-versus-in-kind redemptions before model admission.",
+    "Implement independent WORM/timestamp anchoring, raw receipt replay and durable cross-run feature-store reconstruction.",
+    "Keep forecast issuance disabled until independent out-of-sample and shadow-evaluation thresholds pass."
+  ]
+}

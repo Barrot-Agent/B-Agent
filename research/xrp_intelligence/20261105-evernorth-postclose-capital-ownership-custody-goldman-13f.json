@@ -1,0 +1,678 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "evernorth_postclose_capital_ownership_custody_goldman_13f_20261105",
+  "artifact_type": "xrp_treasury_company_closing_capital_ownership_custody_and_institutional_exposure",
+  "recorded_on_date": "2026-11-05",
+  "model_eligible": false,
+  "forecast_issued": false,
+  "source_capture_policy": {
+    "raw_sec_bytes_captured": false,
+    "raw_content_sha256": null,
+    "independent_timestamp_anchor": false,
+    "rendered_SEC_pages_are_not_raw_receipts": true,
+    "rule": "All claims are research-only until original SEC filing bytes and exhibits are captured, hashed, and reconciled against filing acceptance timestamps and subsequent amendments. Company-reported holdings and custody statements are not independent on-chain verification.",
+    "captured_at_utc": "2026-11-08T16:14:56Z",
+    "normalized_visible_excerpt_hashes": {
+      "sec_filing_index": "32556a4786ad52a550af9aea8443c4f1e7ecda7435f4fe47a67aeb01a3560b64",
+      "sec_13f_position_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31",
+      "cryptokeyhole_etf_flow_excerpt": "a8be02fd200e05ea200c230ea724f8468c74e7d8a624543fbf6c09b1fe004a83",
+      "xrp_insights_etf_flow_excerpt": "d7e41fd7d560a295ca228f7378ebc7dadfbc1d48efcf788dd3b337fc0c2e4a04",
+      "alpha_finance_etf_flow_excerpt": "99be1b861bd291c3c601b13cd1e9b6f21eb7801e19bd939f6571d3767d0da120",
+      "sec_13f_units_and_deadline_faq": "9ed20808109bcc0bb5b87513cbe21f9f2df2679180682358d70f75276fcbb8e6"
+    },
+    "hash_scope": "SHA-256 hashes are reproducible from the corresponding normalized_visible_excerpt_text values retained in this artifact. They cover normalized visible text transcribed from rendered SEC/aggregator pages, not raw HTTP wire bytes, signed publisher receipts or independent timestamp anchors.",
+    "normalized_visible_excerpt_text": {
+      "sec_filing_index": "Form 13F-HR - Quarterly report filed by institutional managers, Holdings\nSEC Accession No. 0000886982-26-000519\nFiling Date 2026-08-14\nAccepted 2026-08-14 17:15:03 UTC\nPeriod of Report 2026-06-30\nEffectiveness Date 2026-08-14\nDocument: InfoTable_2026-08-13_Final_1.html / INFORMATION TABLE\nFiler: GOLDMAN SACHS GROUP INC (CIK 0000886982)",
+      "sec_13f_position_rows": "21SHARES XRP ETF | CMN | 90137T103 | 8,206,363 | 806,126 | SH | DFND | 1\nBITWISE XRP ETF | CMN | 09174F107 | 25,756,345 | 2,208,949 | SH | DFND | 1\nCANARY XRP ETF | CMN | 13723M100 | 19,490,717 | 1,759,090 | SH | DFND | 1\nFRANKLIN XRP TRUST | CMN | 355233107 | 25,405,919 | 2,238,407 | SH | DFND | 1\nGRAYSCALE XRP TR ETF | CMN | 38965L106 | 7,646,785 | 377,619 | SH | DFND | 1",
+      "cryptokeyhole_etf_flow_excerpt": "On 5 November 2026 the 4 US spot XRP ETFs that CryptoKeyhole reads daily (of 6 listed) paid out a net 3,339 XRP. Last 5 complete trading days: -1,137,098 XRP, 30 Oct to 5 Nov 2026. Partial 6 November 2026: 3 of 4 funds published; waiting for Franklin XRPZ. Updated 8 Nov 2026, 15:33 UTC.\nDaily USD-thousands row 6 Nov 2026: XRP 0 | XRPZ … | XRPC -887 | TOXR 0 | total -887 (3/4).\nDaily XRP row 6 Nov 2026: XRP 0 | XRPZ … | XRPC -752,048 | TOXR 0 | total -752,048 (3/4).\nToday so far: -$886,665 (3 of 4 funds reported), not in the complete total.\nGoldman Sachs Group Inc: XRP, XRPZ, XRPC, TOXR; $78.9M.\nThe four-fund universe excludes the Grayscale XRP TR ETF.\nThe page's issuer-file table labels a Canary 9 Nov file as published 7 Nov 2026, 05:07-05:12 UTC; this date/publication ordering is anomalous and is quarantined.",
+      "xrp_insights_etf_flow_excerpt": "On Fri, Nov 6, 2026, US XRP ETFs (the 6 spot funds plus BITW) recorded net outflows of 663,043 XRP. Latest week Nov 2-6, 2026: -812.5K XRP. Combined holdings: 1.20 billion XRP. The six spot ETFs alone held 1.17 billion XRP. GXRP is left out of flow totals while a data gap is corrected; its holdings still count. BITW is included in the total. Flows are calculated as changes in issuer-reported XRP holdings.",
+      "alpha_finance_etf_flow_excerpt": "US spot XRP ETF dashboard through the 6 Nov 2026 session. Daily net flow 6 Nov: $0. 30-session flow: +$45.9M. Five-fund universe. Dashboard identifies CoinGlass as upstream source. This is not an issuer-file primary source.",
+      "sec_13f_units_and_deadline_faq": "SEC Form 13F FAQ, updated March 6, 2026:\nThe January 3, 2023 amended Form 13F requires individual position values to be rounded to the nearest dollar, rather than the prior nearest-thousand-dollar convention.\n3Q 2026 (September) Form 13F filing deadline: November 16, 2026 (Monday).\nThe SEC states that when a filing deadline falls on a Saturday, Sunday or holiday, the due date moves to the first business day thereafter."
+    }
+  },
+  "source_registry": [
+    {
+      "id": "evernorth_business_combination_closing_8k_20261009",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "source_type": "primary_current_report_8k",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "filing_date": "2026-10-09",
+      "event_date": "2026-10-09",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_8k",
+      "independence_group": "evernorth_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "Issuer-reported transaction and ownership information; not an independent ledger audit."
+      ]
+    },
+    {
+      "id": "evernorth_postclose_s1_20261030",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "source_type": "primary_registration_statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_date": "2026-10-30",
+      "prospectus_date": "2026-10-30",
+      "treasury_as_of_date": "2026-10-09",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_registration_statement",
+      "independence_group": "evernorth_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The 473 million XRP treasury figure is explicitly as of October 9, 2026, not a November 5 current balance.",
+        "The filing does not disclose public XRP wallet addresses or a public wallet-by-wallet balance reconciliation.",
+        "The filing is issuer-prepared; its statements about custody, yield strategies, and capital are not independently verified in this artifact."
+      ]
+    },
+    {
+      "id": "goldman_sachs_q2_2026_13f",
+      "publisher": "Goldman Sachs Group, Inc. / U.S. SEC",
+      "source_type": "primary_manager_reported_form_13f",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+      "filing_date": "2026-08-14",
+      "position_as_of_date": "2026-06-30",
+      "retrieved_at_utc": "2026-11-08T16:14:56Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_13F_information_table; normalized excerpt hash only",
+      "independence_group": "goldman_sachs_group_13f_filing",
+      "model_eligible": false,
+      "limitations": [
+        "13F reports securities over which the filer exercises investment discretion; holdings may be client assets and are not necessarily proprietary capital.",
+        "The Armada Acquisition Corp II holding predates the October 9 business-combination closing and does not establish a current XRPN position."
+      ],
+      "normalized_visible_excerpt_sha256": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31",
+      "source_line_references": {
+        "filing_index": [
+          9,
+          27
+        ],
+        "information_table": [
+          38,
+          1672,
+          2182,
+          4973,
+          5516
+        ]
+      }
+    },
+    {
+      "id": "goldman_sachs_q1_2026_13f",
+      "publisher": "Goldman Sachs Group, Inc. / U.S. SEC",
+      "source_type": "primary_manager_reported_form_13f",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/",
+      "filing_date": "2026-05-15",
+      "position_as_of_date": "2026-03-31",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_13F_filing_index_and_information_table",
+      "independence_group": "goldman_sachs_group_13f_filing",
+      "model_eligible": false,
+      "limitations": [
+        "No positions in the five Q2 XRP ETF CUSIPs were found in this Q1 information table; this does not prove absence of all other XRP exposure."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_flow_unit_and_vintage_reconciliation_20261108",
+      "publisher": "CryptoKeyhole",
+      "source_type": "secondary_issuer_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "retrieved_at_utc": "2026-11-08T16:14:56Z",
+      "raw_content_sha256": null,
+      "normalized_visible_excerpt_sha256": "a8be02fd200e05ea200c230ea724f8468c74e7d8a624543fbf6c09b1fe004a83",
+      "raw_capture_status": "rendered_webpage_excerpt",
+      "independence_group": "cryptokeyhole_issuer_holdings_aggregation",
+      "model_eligible": false,
+      "limitations": [
+        "Four-fund daily universe; excludes Grayscale daily data and XRPR; does not include BITW.",
+        "6 Nov is partial at 3/4 funds; 5 Nov is the latest complete day.",
+        "The 9 Nov issuer-file date paired with 7 Nov publication time is anomalous and quarantined.",
+        "USD-thousands and XRP tables are separate; -887 is USD thousands, not -887 XRP."
+      ]
+    },
+    {
+      "id": "xrp_insights_xrp_etf_flow_universe_20261108",
+      "publisher": "XRP Insights",
+      "source_type": "secondary_issuer_holdings_aggregation",
+      "url": "https://xrp-insights.com/",
+      "retrieved_at_utc": "2026-11-08T16:14:56Z",
+      "raw_content_sha256": null,
+      "normalized_visible_excerpt_sha256": "d7e41fd7d560a295ca228f7378ebc7dadfbc1d48efcf788dd3b337fc0c2e4a04",
+      "raw_capture_status": "rendered_webpage_excerpt",
+      "independence_group": "xrp_insights_issuer_page_aggregation",
+      "model_eligible": false,
+      "limitations": [
+        "Six spot funds plus BITW holdings universe; GXRP excluded from flow totals while a data gap is corrected.",
+        "Flows are changes in issuer-reported holdings, not a direct cash-flow statement.",
+        "Issuer holdings data overlaps with other aggregators and is not independent confirmation."
+      ]
+    },
+    {
+      "id": "alpha_finance_xrp_etf_flow_dashboard_20261108",
+      "publisher": "Alpha Finance",
+      "source_type": "secondary_dashboard_with_coinglass_upstream",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "retrieved_at_utc": "2026-11-08T16:14:56Z",
+      "raw_content_sha256": null,
+      "normalized_visible_excerpt_sha256": "99be1b861bd291c3c601b13cd1e9b6f21eb7801e19bd939f6571d3767d0da120",
+      "raw_capture_status": "rendered_search_excerpt",
+      "independence_group": "coinglass_dashboard_upstream",
+      "model_eligible": false,
+      "limitations": [
+        "Five-fund dashboard; CoinGlass identified as upstream source.",
+        "USD dashboard values are not directly comparable with XRP-denominated holdings deltas.",
+        "Zero daily dollar flow does not establish zero XRP holdings change across a different fund universe."
+      ]
+    },
+    {
+      "id": "sec_form13f_faq_20260306",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "primary_regulatory_guidance",
+      "url": "https://www.sec.gov/rules-regulations/staff-guidance/frequently-asked-questions-about-form-13f",
+      "retrieved_at_utc": "2026-11-08T16:14:56Z",
+      "raw_content_sha256": null,
+      "normalized_visible_excerpt_sha256": "9ed20808109bcc0bb5b87513cbe21f9f2df2679180682358d70f75276fcbb8e6",
+      "raw_capture_status": "rendered_SEC_FAQ_excerpt; normalized text hash only",
+      "independence_group": "sec_form13f_official_guidance",
+      "model_eligible": false,
+      "limitations": [
+        "Rendered SEC FAQ excerpt; raw HTTP bytes and signed receipt not captured.",
+        "The FAQ states the deadline and value-unit rule; it does not verify the Goldman holdings themselves."
+      ]
+    }
+  ],
+  "corporate_identity": {
+    "issuer": "Evernorth Holdings Inc.",
+    "predecessor_spac": "Armada Acquisition Corp II",
+    "public_class_a_ticker": "XRPN",
+    "public_warrant_ticker": "XRPNW",
+    "business_combination_closed_date": "2026-10-09",
+    "classification": "Public XRP treasury and active asset-management company; not a spot XRP ETF.",
+    "sbigroup_distinction": "SBI Holdings is the strategic investor identified in the Evernorth SEC ownership table. It is not SBIC East, SBIC Central or SBIC West."
+  },
+  "closing_capital_reconciliation": {
+    "spac_redemptions": {
+      "shares_redeemed": 18463753,
+      "redemption_percentage_of_shares_with_redemption_rights": 80.3,
+      "cash_redeemed_usd_approx": 195390000,
+      "trust_account_released_after_redemptions_usd_approx": 48000000
+    },
+    "gross_cash_proceeds_at_business_combination_usd_approx": 272600000,
+    "gross_cash_proceeds_before_transaction_expenses": true,
+    "components": {
+      "private_placement_cash_usd_approx": 224600000,
+      "remaining_spac_trust_usd_approx": 48000000,
+      "advance_subscription_cash_usd": 214050000,
+      "delayed_subscription_cash_usd": 10500000
+    },
+    "use_of_advance_cash": {
+      "amount_usd": 214050000,
+      "xrp_purchased": 84365876,
+      "use": "The Company states it used the advance cash proceeds to purchase 84,365,876 XRP.",
+      "note": "This cash was deployed into XRP before the business-combination closing and must not be counted again as cash on hand at closing."
+    },
+    "in_kind_xrp_contributions": {
+      "advance_funding_subscribers_xrp": 600000,
+      "delayed_funding_subscribers_xrp": 200000,
+      "arrington_xrp_capital_fund_xrp": 211319096.061435,
+      "larsen_lam_childrens_remainder_trust_xrp": 50000000,
+      "ripple_xrp": 126791458,
+      "total_in_kind_xrp": 388910554.061435
+    },
+    "derived_treasury_reconciliation": {
+      "cash_purchased_xrp": 84365876,
+      "in_kind_xrp": 388910554.061435,
+      "derived_total_xrp": 473276430.061435,
+      "company_reported_approximate_treasury_xrp": 473000000,
+      "company_reported_treasury_as_of": "2026-10-09",
+      "interpretation": "The derived total reconciles to the Company's approximately 473 million XRP disclosure. It is not a current November 5 wallet balance."
+    },
+    "signing_and_closing_price_adjustment": {
+      "signing_xrp_price_usd": 2.36609,
+      "closing_xrp_price_usd": 1.43069,
+      "closing_to_signing_ratio": 0.6045,
+      "decline_pct_approx": 39.5,
+      "adjustment_factor": 0.423264965,
+      "interpretation": "The lower closing reference price affected transaction share-adjustment mechanics; it is not a spot-market forecast."
+    },
+    "separate_financings": {
+      "convertible_senior_pik_notes": {
+        "principal_usd": 30000000,
+        "net_proceeds_before_transaction_expenses_usd_approx": 30000000,
+        "issuance_date": "2026-10-12",
+        "maturity_year": 2031,
+        "interest_rate_pct": 4,
+        "payment_form": "PIK interest capitalized",
+        "holder": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+        "conversion_earliest_date": "2027-10-12",
+        "conversion_settlement": "Cash, shares or a combination at holder option",
+        "maximum_cash_settlement_usd": 120000000,
+        "yield_to_put_pct_on_default_or_fundamental_transaction": 8,
+        "classification": "Actual post-close debt financing; not part of the $272.6 million closing gross cash proceeds.",
+        "issuance_costs_expensed_usd": 1000000,
+        "derived_proceeds_after_issuance_costs_usd_approx": 29000000,
+        "derived_post_expense_amount_is_not_separately_reported_as_cash_received": true
+      },
+      "ripple_company_facility": {
+        "borrowing_limit_usd": 10000000,
+        "amount_drawn_as_of_2026_10_07_usd": 9700000,
+        "interest_rate_pct": 3.81,
+        "repayment_terms": "Amounts borrowed were required to be repaid within five business days after the October 9 closing date, or earlier on five business days' notice from Ripple.",
+        "repayment_status": "UNVERIFIED",
+        "classification": "Related-party debt, not equity and not an XRP purchase."
+      },
+      "cantor_committed_equity_facility": {
+        "maximum_potential_gross_capacity_usd_approx": 76800000,
+        "maximum_shares": 5218935,
+        "purchase_price_pct_of_vwap": 97,
+        "proceeds_received_as_of_2026_10_30_usd": 0,
+        "upfront_commitment_fee_usd": 521893.5,
+        "aggregate_commitment_fee_cap_usd": 1000000,
+        "expense_reimbursement_cap_usd": 500000,
+        "classification": "Potential future equity issuance and dilution; not actual capital raised as of the prospectus date.",
+        "scenario_basis": "cover-price estimate; not a contractual dollar cap",
+        "not_contractual_dollar_cap": true
+      },
+      "warrants": {
+        "outstanding_warrants": 11739645,
+        "exercise_price_usd": 11.5,
+        "classification": "Potential future dilution if exercised; not current cash proceeds."
+      },
+      "tax_receivable_agreement": {
+        "share_of_realized_or_deemed_tax_savings_payable_to_tra_parties_pct": 85,
+        "beneficiaries_include": "Ripple, Larsen Lam-related parties and other TRA parties as defined in the agreement.",
+        "classification": "Future cash-flow obligation; not XRP collateral or purchase capital."
+      }
+    },
+    "correction_to_prior_research": {
+      "note_proceeds_measurement_reconciliation": {
+        "issuer_reported_net_proceeds_before_transaction_expenses_usd_approx": 30000000,
+        "issuance_costs_expensed_usd": 1000000,
+        "derived_proceeds_after_issuance_costs_usd_approx": 29000000,
+        "derived_post_expense_amount_is_not_separately_reported_as_cash_received": true,
+        "status": "RECONCILED_DIFFERENT_MEASUREMENT_BASES",
+        "explanation": "The SEC Form 8-K reports approximately $30M net proceeds before transaction expenses. The 424B3 separately identifies $1M of note issuance costs expensed as incurred. $29M is a derived post-expense residual, not a separately reported cash receipt; neither figure supersedes the other."
+      },
+      "previous_sbi_economic_percentage_rounded": 21.4,
+      "corrected_sbi_share_count_percentage": 21.64,
+      "correction_sbi": "The 39.9% figure is SBI Group's share of Class A voting stock; it is not 39.9% of total economic shares."
+    }
+  },
+  "postclose_share_structure": {
+    "class_a_voting_shares_outstanding": 22268905,
+    "class_c_non_voting_shares_outstanding": 32211992,
+    "total_class_a_and_c_common_shares": 54480897,
+    "sbi_holdings_group": {
+      "class_a_shares": 8885293,
+      "class_a_pct": 39.9,
+      "class_c_shares": 2905659,
+      "class_c_pct": 9,
+      "total_class_a_and_c_shares": 11790952,
+      "derived_share_count_economic_pct": 21.64,
+      "voting_interpretation": "39.9% of Class A voting shares; Class C is non-voting.",
+      "holding_entities": "SBI Ventures 2023A/2023B, SBI PE Holdings and SBI Holdings USA entities are identified in the beneficial-ownership footnotes.",
+      "per_holder_cash_subscription_amount_disclosed": false
+    },
+    "arrington_xrp_capital_fund": {
+      "class_a_shares": 4431512,
+      "class_a_pct": 19.9,
+      "class_c_shares": 29306333,
+      "class_c_pct": 91,
+      "total_class_a_and_c_shares": 33737845,
+      "derived_share_count_economic_pct": 61.93,
+      "voting_interpretation": "Class A is voting; Class C is non-voting. The 61.93% derived share-count exposure is not voting control."
+    },
+    "ripple": {
+      "class_a_shares": 1581112,
+      "class_a_pct": 7.1,
+      "company_units": 18139927,
+      "company_unit_rights": "Economic rights in the surviving subsidiary; generally no voting rights. Pubco is the sole managing member."
+    },
+    "larsen_lam_childrens_remainder_trust": {
+      "class_a_shares": 623509,
+      "class_a_pct": 2.8,
+      "company_units": 6529941,
+      "company_unit_rights": "Economic rights in the surviving subsidiary; generally no voting rights. Pubco is the sole managing member."
+    },
+    "governance_interpretation": [
+      "Class A shares carry voting rights; Class C shares are non-voting.",
+      "Company Units held by Ripple and the Larsen Lam trust carry economic rights but generally do not confer Pubco voting rights.",
+      "The SBI Group has substantial voting influence through 39.9% of Class A, while its share-count economic exposure across Class A and C is approximately 21.64%.",
+      "Arrington's 91% of Class C gives it very large non-voting share-count exposure, while its Class A stake is 19.9%.",
+      "The 85% tax receivable agreement creates future economic obligations to related parties."
+    ],
+    "lockup": "Certain sponsor, Ripple and Larsen Lam securities are subject to six-month post-closing transfer restrictions, subject to stated exceptions."
+  },
+  "custody_and_treasury_operations": {
+    "xrp_treasury_as_of_2026_10_09": 473000000,
+    "primary_custodian": "BitGo Bank & Trust, National Association",
+    "custodian_status": "OCC-chartered non-depository public trust company and qualified custodian, as described by the issuer.",
+    "all_xrp_in_custody_through_bitgo": true,
+    "cold_storage_pct_as_of_2026_10_30": 100,
+    "custody_controls": [
+      "Segregated custody accounts",
+      "Multi-signature key management",
+      "Hardware security modules",
+      "Multi-person approvals",
+      "Role-based access controls",
+      "Out-of-band confirmations"
+    ],
+    "insurance": {
+      "aggregate_coverage_usd_approx": 250000000,
+      "dedicated_to_evernorth": false,
+      "shared_across_bitgo_clients": true,
+      "pct_of_evernorth_xrp_value_as_of_2026_10_09": 36.9,
+      "issuer_warning": "Coverage may be insufficient if multiple claims occur or losses exceed policy limits."
+    },
+    "public_wallet_addresses_disclosed": false,
+    "independent_onchain_balance_verification_in_this_artifact": false,
+    "bitgo_use_restriction": "The Company says BitGo may not pledge, lend or otherwise use XRP unless expressly directed as part of Evernorth's yield-generation strategies.",
+    "additional_custodians": "Evernorth says it may engage additional custodians in the future to diversify counterparty and operational exposure."
+  },
+  "yield_and_collateral_status": {
+    "issuer_says_yield_strategies_commenced_following_closing": true,
+    "issuer_says_all_xrp_was_in_cold_storage_as_of_2026_10_30": true,
+    "stated_strategy_types": [
+      "Covered calls",
+      "Cash-secured puts",
+      "Premium collars",
+      "Structured products",
+      "Institutional XRP lending",
+      "Basis trades",
+      "DeFi lending",
+      "XRPL AMM liquidity provision",
+      "RLUSD/XRP AMM liquidity"
+    ],
+    "rlusd_role": "The prospectus says Evernorth intends to use RLUSD as a stable-value asset in XRP-based DeFi activity, including RLUSD/XRP AMM pools.",
+    "deployed_xrp_amount_disclosed": false,
+    "counterparties_and_notional_disclosed": false,
+    "xrp_collateral_posted_disclosed": false,
+    "yield_realized_disclosed": false,
+    "public_wallet_addresses_disclosed": false,
+    "unresolved_reconciliation": "The prospectus says yield strategies and DeFi participation commenced following the October 9 closing, while also stating that 100% of XRP was in cold storage as of October 30. These statements may coexist if early activity involved derivative overlays or limited/non-material activity, but the filing does not disclose deployed token amounts, counterparties, collateral or on-chain positions. Do not infer that XRP lending, collateralization or AMM deployment has occurred at a material scale."
+  },
+  "historical_financial_and_operational_context": {
+    "reporting_cutoff": "2026-06-30, pre-business-combination historical financials",
+    "evernorth_h1_2026_net_loss_usd_approx": 188100000,
+    "evernorth_revenue_generated_through_2026_06_30": false,
+    "evernorth_unrestricted_cash_as_of_2026_06_30_usd_approx": 100000,
+    "evernorth_net_working_capital_deficit_as_of_2026_06_30_usd_approx": 696100000,
+    "evernorth_accumulated_deficit_as_of_2026_06_30_usd_approx": 340900000,
+    "employee_count_as_of_prospectus": 9,
+    "caveat": "These are pre-close historical financial figures, not a post-close November 5 balance sheet. The large net loss was primarily attributed to digital-asset impairment and fair-value changes in refundable investor advances; it is not equivalent to cash outflow."
+  },
+  "goldman_sachs_institutional_exposure": {
+    "q2_2026_xrp_etf_reported_value_usd": 86506129,
+    "q2_2026_xrp_etf_reported_shares": 7390191,
+    "q2_2026_armada_acquisition_corp_ii_position": {
+      "value_usd": 3813470,
+      "shares": 365976,
+      "as_of_date": "2026-06-30",
+      "interpretation": "Pre-merger SPAC shares; the October 9 business combination later converted the issuer into Evernorth Holdings Inc. This does not establish Goldman retained XRPN after the merger."
+    },
+    "q1_2026_positions_in_five_xrp_etf_cusips_found": false,
+    "proprietary_capital_status": "UNKNOWN; Form 13F manager positions may represent client assets and do not identify beneficial owners.",
+    "q3_2026_13f_status": "NOT_YET_DUE_AS_OF_2026-11-08",
+    "expected_q3_2026_13f_due_date": "2026-11-16",
+    "q2_2026_xrp_etf_positions": [
+      {
+        "fund": "21Shares XRP ETF",
+        "ticker": "TOXR",
+        "cusip": "90137T103",
+        "value_usd": 8206363,
+        "shares": 806126,
+        "sec_info_table_line": 38
+      },
+      {
+        "fund": "Bitwise XRP ETF",
+        "ticker": "XRP",
+        "cusip": "09174F107",
+        "value_usd": 25756345,
+        "shares": 2208949,
+        "sec_info_table_line": 1672
+      },
+      {
+        "fund": "Canary XRP ETF",
+        "ticker": "XRPC",
+        "cusip": "13723M100",
+        "value_usd": 19490717,
+        "shares": 1759090,
+        "sec_info_table_line": 2182
+      },
+      {
+        "fund": "Franklin XRP Trust",
+        "ticker": "XRPZ",
+        "cusip": "355233107",
+        "value_usd": 25405919,
+        "shares": 2238407,
+        "sec_info_table_line": 4973
+      },
+      {
+        "fund": "Grayscale XRP Trust ETF",
+        "ticker": "GXRP",
+        "cusip": "38965L106",
+        "value_usd": 7646785,
+        "shares": 377619,
+        "sec_info_table_line": 5516
+      }
+    ],
+    "q2_2026_filing_metadata": {
+      "cik": "0000886982",
+      "accession": "0000886982-26-000519",
+      "form": "13F-HR",
+      "filing_date": "2026-08-14",
+      "accepted_at_utc": "2026-08-14T17:15:03Z",
+      "position_as_of_date": "2026-06-30",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm",
+      "information_table_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+      "sec_disclaimer": "The SEC states it has not necessarily reviewed the filing and has not determined whether it is accurate and complete.",
+      "value_unit_rule": "Individual 13F position values are rounded to the nearest dollar for filings on or after 2023-01-03; these values are USD, not USD thousands."
+    },
+    "q2_2026_universe_reconciliation": {
+      "sec_five_fund_total_usd": 86506129,
+      "sec_five_fund_total_shares": 7390191,
+      "cryptokeyhole_four_fund_subset_usd": 78859344,
+      "cryptokeyhole_four_fund_tickers": [
+        "TOXR",
+        "XRP",
+        "XRPC",
+        "XRPZ"
+      ],
+      "excluded_grayscale_value_usd": 7646785,
+      "reconciliation": "The SEC five-fund total exceeds CryptoKeyhole's four-fund subset by exactly the Grayscale row ($7,646,785). CryptoKeyhole's displayed $78.9M Goldman total is the four-fund subset, not a conflicting five-fund total.",
+      "sum_verified": true
+    },
+    "q3_2026_13f_deadline_source_id": "sec_form13f_faq_20260306",
+    "q3_2026_filing_deadline_reconciliation": {
+      "previous_recorded_date": "2026-11-14",
+      "corrected_due_date": "2026-11-16",
+      "correction_reason": "November 14, 2026 is Saturday. The SEC Form 13F FAQ lists the 3Q 2026 filing deadline as Monday, November 16, 2026.",
+      "source_id": "sec_form13f_faq_20260306",
+      "verified_as_of": "2026-11-08"
+    }
+  },
+  "counter_hypotheses": [
+    {
+      "id": "cold_storage_reduces_immediate_float",
+      "hypothesis": "If the approximately 473 million XRP treasury remains in cold storage, it may reduce immediately available exchange float.",
+      "alternative": "The prospectus says yield strategies commenced after closing, so some economic exposure could be created through derivatives or limited DeFi activity without the entire treasury leaving cold storage.",
+      "disconfirming_evidence_to_seek": [
+        "Daily treasury holdings and NAV",
+        "BitGo balance attestations",
+        "Wallet addresses or independently verifiable custody proofs",
+        "Actual yield strategy positions and deployed XRP amounts"
+      ]
+    },
+    {
+      "id": "institutional_sponsor_concentration",
+      "hypothesis": "SBI and Arrington have substantial economic and voting influence through different share classes.",
+      "alternative": "Class C and Company Units are non-voting or generally non-voting; economic share-count exposure must not be confused with voting control.",
+      "disconfirming_evidence_to_seek": [
+        "Updated beneficial ownership filings",
+        "Unit exchange/redemption notices",
+        "Voting agreements and subsequent share conversions"
+      ]
+    },
+    {
+      "id": "goldman_13f_not_proprietary_capital",
+      "hypothesis": "Goldman Sachs Group reported $86.5M of long XRP ETF share positions as of June 30.",
+      "alternative": "The positions may be client portfolios under investment discretion, not Goldman proprietary capital, and may be hedged or changed after quarter-end.",
+      "disconfirming_evidence_to_seek": [
+        "Q3 2026 13F",
+        "Fund-level beneficial-owner disclosures where available",
+        "Separate proprietary balance-sheet or investment disclosures"
+      ]
+    },
+    {
+      "id": "cash_and_dilution_constraints",
+      "hypothesis": "The business combination raised substantial gross cash and XRP contributions, but high redemptions, transaction expenses, related-party debt, PIK notes, warrants, ELOC capacity and the tax receivable agreement can affect liquidity and XRP per share.",
+      "alternative": "If future equity is issued at a premium to NAV and proceeds are accretively deployed, dilution may be offset by XRP-per-share growth.",
+      "disconfirming_evidence_to_seek": [
+        "Post-close audited balance sheet",
+        "Actual ELOC draws",
+        "PIK note conversion/cash settlement",
+        "Ripple facility repayment",
+        "Daily XRP-per-share disclosures"
+      ]
+    }
+  ],
+  "correction_history": [
+    {
+      "prior_claim": "Approximately $29 million net proceeds after a $1 million fee from the PIK note.",
+      "corrected_claim": "The October 30 SEC prospectus states approximately $30 million net proceeds before transaction expenses from the October 12 note issuance.",
+      "reason": "Primary SEC prospectus lines 3044-3047."
+    },
+    {
+      "prior_claim": "The $30 million PIK note could be included in the business-combination closing cash total.",
+      "corrected_claim": "The $30 million note was issued October 12, after the October 9 closing, and is separate post-close debt. The $272.6 million closing gross cash proceeds are before transaction expenses and exclude the note.",
+      "reason": "Primary SEC prospectus lines 3042-3047."
+    },
+    {
+      "prior_claim": "SBI economic ownership approximately 21.4%; voting rights approximately 39.9%.",
+      "corrected_claim": "The closing ownership table supports approximately 21.64% of total Class A plus Class C share count, 39.9% of Class A voting shares, and 9.0% of Class C non-voting shares.",
+      "reason": "Primary SEC 8-K beneficial ownership table; the 39.9% is not total economic ownership."
+    },
+    {
+      "prior_claim": "CryptoKeyhole's $78.9M Goldman Q2 13F figure conflicted with the SEC five-fund total of $86.506M.",
+      "corrected_claim": "The SEC five-fund position totals $86,506,129. CryptoKeyhole's four-fund subset totals $78,859,344 and excludes the $7,646,785 Grayscale position; the two figures reconcile by universe.",
+      "reason": "Goldman Sachs Group Inc. SEC Form 13F-HR accession 0000886982-26-000519, information-table rows 38, 1672, 2182, 4973 and 5516; CryptoKeyhole's four-fund scope and holder table."
+    },
+    {
+      "prior_claim": "A CryptoKeyhole search-result excerpt appeared to show a 6 Nov flow of -887 XRP.",
+      "corrected_claim": "The -887 value is in the USD-thousands table. The separate XRP table reports -752,048 XRP for the 6 Nov partial day (3 of 4 funds).",
+      "reason": "CryptoKeyhole page lines 207-223; separate unit-labelled tables."
+    },
+    {
+      "prior_claim": "Goldman Q3 2026 Form 13F was expected due 2026-11-14.",
+      "corrected_claim": "The SEC Form 13F FAQ lists the 3Q 2026 deadline as Monday 2026-11-16; as of 2026-11-08 the filing is not yet due.",
+      "reason": "SEC Form 13F FAQ, updated 2026-03-06; 3Q 2026 filing deadline table."
+    },
+    {
+      "prior_claim": "13F information-table position values could be interpreted using the older nearest-thousand-dollar convention.",
+      "corrected_claim": "For filings on or after 2023-01-03, individual Form 13F position values are rounded to the nearest dollar.",
+      "reason": "SEC Form 13F FAQ, updated 2026-03-06; amended reporting requirements."
+    }
+  ],
+  "predictive_admission": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "model_eligible": false,
+    "reasons": [
+      "The treasury quantity is as of October 9, not a current November 5 verified balance.",
+      "No public wallet addresses or independent on-chain reconciliation were included.",
+      "Yield strategies are described as commenced, but actual positions, deployed amounts, counterparties, collateral and realized yield are not disclosed.",
+      "Capital figures mix gross proceeds, previously deployed cash, in-kind XRP, post-close debt, related-party facilities and potential equity capacity; they cannot be summed as cash on hand.",
+      "13F holdings are manager-reported ETF shares, not direct XRP and not necessarily proprietary capital.",
+      "No synchronized historical feature set or out-of-sample predictive lift has been established.",
+      "The Q2 13F is a lagged ETF-share snapshot as of 2026-06-30, not a direct XRP token holding, current position or net capital flow.",
+      "ETF flow aggregators use different fund universes and units; the 6 Nov CryptoKeyhole partial value must be read from the XRP table, not the USD-thousands table.",
+      "SEC Form 13F position values are nearest-dollar USD from 2023-01-03, not thousands; this interpretation is now bound to the SEC FAQ excerpt hash."
+    ],
+    "next_data_requirements": [
+      "Obtain post-close daily XRP holdings, NAV and XRP-per-share disclosures.",
+      "Seek BitGo custody attestations, wallet addresses where publicly disclosed, and independent on-chain reconciliation.",
+      "Capture actual yield strategy, lending, derivative, collateral and XRPL AMM positions with counterparties, notional and dates.",
+      "Verify repayment of the $9.7 million Ripple facility.",
+      "Track PIK note conversion, cash settlement and ELOC drawdowns.",
+      "Reconcile warrant exercises, lock-up expirations and Company Unit exchanges.",
+      "Review Goldman Q3 2026 13F after its filing deadline.",
+      "Reconcile the Q3 2026 Goldman Form 13F after the November 14 filing deadline and compare exact CUSIPs/share counts; keep 13F positions as lagged ETF-share exposure, separate from direct XRP custody and capital flows.",
+      "Check the Q3 2026 Goldman 13F after the SEC's corrected November 16, 2026 deadline; compare exact ETF CUSIPs and shares, and retain the lagged manager-position versus beneficial-owner distinction."
+    ]
+  },
+  "etf_flow_vintage_reconciliation": {
+    "captured_at_utc": "2026-11-08T16:14:56Z",
+    "cryptokeyhole": {
+      "page_updated_at_utc": "2026-11-08T15:33:00Z",
+      "latest_complete_trading_day": "2026-11-05",
+      "nov_5_complete_four_fund_xrp": -3339,
+      "oct_30_to_nov_5_complete_five_day_xrp": -1137098,
+      "nov_6_partial_funds_reported": 3,
+      "nov_6_partial_funds_expected": 4,
+      "nov_6_partial_xrp": -752048,
+      "nov_6_partial_usd": -886665,
+      "nov_6_usd_thousands_table_value": -887,
+      "nov_6_usd_table_unit": "USD thousands",
+      "nov_6_xrp_table_value": -752048,
+      "nov_6_xrp_table_unit": "XRP",
+      "unit_correction": "The -887 figure is USD thousands, approximately -$887,000. The separate XRP-denominated row is -752,048 XRP. Never parse -887 as an XRP amount.",
+      "latest_issuer_file_date_anomaly": "A Canary file labelled 9 Nov 2026 is shown as published 7 Nov 2026 05:07-05:12 UTC. The date/publication ordering is impossible as displayed and is quarantined pending source correction.",
+      "source_lines": {
+        "summary": [
+          188,
+          197
+        ],
+        "usd_table": [
+          207,
+          208
+        ],
+        "xrp_table": [
+          222,
+          223
+        ],
+        "today_so_far": [
+          239,
+          262
+        ],
+        "four_fund_holder_universe": [
+          317,
+          338
+        ],
+        "publication_vintage": [
+          345,
+          350
+        ]
+      },
+      "model_eligible": false
+    },
+    "xrp_insights": {
+      "nov_6_holdings_delta_xrp": -663043,
+      "nov_2_to_6_weekly_holdings_delta_xrp": -812529,
+      "holdings_universe": "Six US spot XRP ETFs plus BITW",
+      "gxrp_flow_treatment": "GXRP holdings remain in holdings totals; GXRP is excluded from daily flow totals while a data gap is corrected.",
+      "method": "Day-over-day change in issuer-reported XRP holdings.",
+      "model_eligible": false
+    },
+    "alpha_finance": {
+      "nov_6_daily_usd_flow": 0,
+      "thirty_session_usd_flow": 45900000,
+      "fund_count": 5,
+      "upstream": "CoinGlass",
+      "model_eligible": false
+    },
+    "comparability": {
+      "independent_confirmation": false,
+      "directly_comparable": false,
+      "reasons": [
+        "Different fund universes: CryptoKeyhole four daily funds, XRP Insights six spot plus BITW holdings, Alpha Finance five funds.",
+        "Different upstreams and capture vintages; issuer files are shared upstream inputs, not independent source families.",
+        "CryptoKeyhole publishes both USD-thousands and XRP rows; unit separation is mandatory.",
+        "XRP Insights measures holdings deltas in XRP; Alpha Finance presents USD dashboard flows.",
+        "Holdings changes can include fees, fund/index rebalancing and other mechanics; they are not automatically direct cash creations/redemptions."
+      ],
+      "model_eligible": false
+    },
+    "forecast_status": "NOT_ISSUED"
+  }
+}
