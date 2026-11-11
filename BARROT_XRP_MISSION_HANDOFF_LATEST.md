@@ -1,3 +1,82 @@
+# Run29b — CI evidence-test repair and XRPL governance update
+
+Captured: 2026-11-11T15:52:03.641Z
+
+## Repository and CI state
+
+Main remains `84f28ee7755607236231545a14f3d093c1baaa85`. The existing consolidated PR is [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`. At capture, the branch head was `415e611a983117238af9a6af60d2b4619be93e6d`, 2,034 commits ahead and zero behind main, with 1,012 changed files (44 workflow files and 968 other paths). Open PR inventory: 374 (360 drafts, 14 non-drafts). Main tree: 1,388 entries; integration tree: 2,277 entries.
+
+The full suite on exact head `415e611` completed with 3,447 passed, two failed, eight subtests and 59.99% coverage. Core tests passed 714/0. Dependency audit (six manifests, zero known vulnerabilities) and fail-closed gate passed. The two failures are in `test_xrp_nine_platform_current_map_run73.py`:
+- The exact-head evidence test hard-coded the old `7a55848` head and 3,423-test count instead of matching the latest recorded attempt dynamically.
+- The backlog test requires the `SUPERSEDED_SOURCE` token for PR #1660, while the latest map label had been changed to a generic overlap candidate.
+
+The previous exact code head `c7095fa5` passed 3,449 tests, zero failures, eight subtests, 59.99% coverage; wheel build and installed Barrot V3/XRP mission verification passed. Evidence: [full CI 43049347225](https://github.com/Barrot-Agent/B-Agent/actions/runs/43049347225), [full-suite job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43049347225/job/130621875637), [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/43049347095), [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/43049347054).
+
+The Run29b commit updates the test to compare the current head and suite counts against the latest-attempt record, and restores explicit `SUPERSEDED_SOURCE_CANDIDATE` / `UNIQUE_UNREVIEWED` backlog labels. This commit must receive its own exact-head full suite, dependency audit and fail-closed verification. The two current failures are evidence-test/schema regressions, not ingestion or prediction-runtime failures.
+
+## XRP market update — November 11
+
+### Spot and order-book quality
+
+OKX XRP-USDT returned 1.0590 (bid 1.0589, ask 1.0590), provider event time 15:09:44.769 UTC. Kraken XRP/USD returned 1.05898 (bid 1.05904, ask 1.05905) with no provider event timestamp. USDT/USD was 0.99888; normalized OKX was about $1.057812, roughly 0.116% below Kraken's midpoint. These are asynchronous references, not an executable arbitrage signal.
+
+Fuelmaps' 15:00 UTC six-venue spot book had a $1.0558 mid. Within ±1% it showed $14.4M bids versus $10.6M asks; within ±5%, $25.2M versus $13.6M; within ±10%, $35.0M versus $16.0M. Binance and Bitget are excluded. The provider averages one-minute resting-book observations into hourly values; orders can be cancelled or moved.
+
+### Perpetuals and options
+
+TradRadar's fresher 15:15 UTC (15-minute delayed) snapshot: price $1.0604, +0.10% over 24h; OI $1.58B, down 2.31%; funding +0.0080% per eight hours; at least $9.18M liquidations, $8.30M long and $887.89K short; 79.6% of accounts long (3.90 account ratio). It combines seven exchanges for OI and five for liquidations/long-short.
+
+Liqwall at 15:22 UTC: OI $1.16B, down 2.6%; funding +0.0081%; $11.5M liquidations, $10.6M long and $893K short; 75.2% of Binance accounts long and 53.1% of Hyperliquid accounts long. The OI universes differ; do not average. Both show positive funding, falling OI and long-heavy liquidations, consistent with crowded-long deleveraging but not a directional forecast.
+
+OptimistFi/Deribit at 14:00 UTC: 30-day ATM IV 58.2%, +1.7-point 25-delta skew (calls richer), put/call 0.55, December 25 open interest $47.3M. Near expiries are put-rich while deferred expiries are call-rich. Preserve the term structure; max pain is not a forecast.
+
+### ETF flows
+
+Alpha Finance through the November 10 session reports five of five funds: -$7.6M on Nov 10, -$10.4M on Nov 9, -$18.0M over the last seven sessions, +$1.3M over 30 sessions, and +$1.71B cumulative net inflow since Nov 14, 2025. Cumulative net flow is +972.8M XRP, 1.532% of supply. GXRP/Grayscale was the largest Nov 10 outflow at -$7.2M. The dashboard does not publish AUM or holdings; cumulative flow is not current fund size. Redemptions can be arbitrage unwind and flow prints lag settlement.
+
+### XRPL governance, collateral and data quality
+
+The XRPL dashboard's own-node roll call at 15:32 UTC heard 35/35 validators; 29 yes votes are required. SingleAssetVault: 23/29; LendingProtocol: 22/29; LendingProtocolV1_1: 22/29; ConfidentialTransfer: 21/29; DynamicMPT: 16/29; Sponsor and fixXChainRewardRounding: 10/29; XChainBridge: 4/29; CryptoConditionsSuite: 0/29. There is no 14-day activation countdown. Both SingleAssetVault and LendingProtocol are required for native lending, so native XRPL lending remains inactive.
+
+The page shows 98 live amendments and nine in-flight. Credentials, PermissionedDomains, PermissionedDEX and TokenEscrow are live; fixCleanup3_4_0 activated November 4. ConfidentialTransfer applies to MPT transfers, but sender/destination remain visible and it does not support DEX, escrow or checks. DynamicMPT allows specified issuer properties to change. XLS-100 Smart Escrows remains in development and depends on a companion WASM engine/API specification.
+
+The dashboard says its data is cached for up to five minutes, but its footer showed 435.7 seconds at fetch. Its global header price was $1.0754 as of 15:36 UTC, while OKX/Kraken references were near $1.059 and TradRadar at $1.0604. Its separate PriceOracle page showed $1.0614 from DIA, last updated 14:36:24 UTC; the page snapshot was seven minutes old and DIA was the only production provider publishing to mainnet. Exclude the $1.0754 header and delayed DIA feed from live market features until event time/provider lineage are reconciled.
+
+### SBI, Ripple and regulation
+
+SBI VC Trade's November 2 release reports JPYSC customer-lending balance above ¥10B and handling balance above ¥30B. The lending balance represents customers lending JPYSC to SBI VC Trade, not XRP collateral or third-party borrower loans. SBI's September 7 release reports ¥1B of JPYSC trust reserves invested in short-term Japanese government bonds, with about ¥20.1B issuance and ¥6.9B lending applications. SBI/Startale/BlackRock's October 27 tokenized-MMF/JPYSC agreement is exploratory, not production settlement or an XRP corridor.
+
+Ripple reports final OCC approval for Ripple National Trust Bank on October 26; OCC CAS marks the application consummated/effective on the same date. RNTB is described as reserve manager, collateral trustee and fiduciary custodian; Standard Custody & Trust Company, LLC remains RLUSD issuer under NYDFS, and BNY is primary reserve custodian. Approval does not establish operational commencement.
+
+The OCC's GENIUS Act final rule 2026-21706 is effective January 18, 2027. Treasury Section 3 proposal 2026-16796 remains proposed, not final; comment deadline was October 19. Do not conflate the OCC final rule with the separate Treasury proposal or infer issuer-specific status for Circle, Ripple or SBI.
+
+### Identity and nine-platform status
+
+SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate regional SME investment companies, not SBI Holdings. No primary-source match for ASK Coin, “actual capital” as a standardized XRP metric, or “SBIC, ChatGPT SBIC” was found. Kamilah person identity is corroborated, but candidate YouTube channel ownership remains unverified; no personal-channel video inventory is attributed. Camilla remains separate/unresolved.
+
+ChatGPT/GitHub access is verified but connector permission metadata reports admin=true, maintain=true, push=true, pull=true and triage=true. Copilot has no formal PR approval. Claude, Grok, Gemini and Codex remain unverified; Hugging Face BUILD_ERROR; Kaggle untested/no submission; Databricks HTTP 403/no workspace write; LunaRoute declared canonical brain but endpoint auth/data flow unverified. No external-model data transfer occurred.
+
+## PR and merge state
+
+PR #1661 remains draft, open and currently has unstable checks due the two evidence-test failures. It has zero formal approvals/reviews and zero review threads. Branch-protection details remain HTTP 403; visible fallback ruleset disabled. Main and integration exclude `.config/gh/hosts.yml`; 17 other open PR tips still contain that path. Contents were not read; provider-side OAuth revocation remains unverified. Main pushes trigger GitHub Pages publication, which remains unauthorized.
+
+Current overlap reconciliation:
+- #1660: 972 paths represented in #1661; 948 identical blobs, 24 different. Mark as superseded-source candidate, retain until successor merge and main verification.
+- #1640: 280 represented; 244 identical, 36 different.
+- #1643: 670 represented; 661 identical, 9 different.
+- #1642: seven represented, all different.
+- #1653: three unique paths; #1614: 26 unique; #1611: one; #1610: two; #1608: two.
+- #1269: nine represented, three identical and six different; no unique path in current inventory.
+- #1317/#1318/#1320 and dependency PRs #1644–#1650/#1254/#1255 are represented but require blob-different semantic/version reconciliation.
+
+No source PR was closed. Preserve unique research, prediction, graph, safety and topology work. The XRP collector remains integration-only, read-only, main-guarded; Actions artifact/cache retention is not WORM. The feature store remains owner-mutable SQLite. Forecast stays NOT_ISSUED.
+
+No merge, deployment, credential rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+---
+
+Prior handoff history follows.
+
 # Run29 — exact-head CI repair, XRP market and regulatory reconciliation
 
 Captured: 2026-11-11T15:36:00Z

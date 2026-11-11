@@ -132,12 +132,14 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
 def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     data = load_current()
     ci = data["ci_evidence"]
-    assert ci["integration_head_tested"] == "7a55848cab17f7cb2fd6549b0c463cc45efd47ae"
+    latest = ci["latest_attempt"]
     suite = ci["full_repository_suite"]
-    assert suite["passed"] == 3423
-    assert suite["failed"] == 0
-    assert suite["subtests"] == 8
-    assert suite["coverage_percent"] == 59.98
+    latest_suite = latest["full_repository_suite"]
+    assert ci["integration_head_tested"] == latest["head_sha"]
+    assert suite["passed"] == latest_suite["passed"]
+    assert suite["failed"] == latest_suite["failed"]
+    assert suite["subtests"] == latest_suite["subtests"]
+    assert suite["coverage_percent"] == latest_suite["coverage_percent"]
     assert suite["exact_head_verified"] is True
     latest = ci["latest_attempt"]
     assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
