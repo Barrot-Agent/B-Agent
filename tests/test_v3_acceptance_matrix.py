@@ -312,9 +312,38 @@ def _case_real_defect(tmp_path: Path) -> dict[str, object]:
 
 def _case_model_claims_success_without_change(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
-    cycle = run_cycle(workspace, FakeBrain(repair_payload(path, old='FLAG = "UNCHANGED"')))
+    # Explicitly authorize only this isolated test fixture to reach the
+    # no-op changeset check; no remote is configured and no push can occur.
+    watchdog = DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        task="repair/test",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+    controller = RepositoryRepairController(
+        brain=FakeBrain(repair_payload(path, old='FLAG = "UNCHANGED"')),
+        workspace=workspace,
+        planner_attempts=3,
+        watchdog=watchdog,
+    )
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
     assert cycle.status in {"failed", "rolled_back"}
     assert cycle.current_state != RepairState.COMPLETE.value
+    assert cycle.changes_applied is False
+    assert cycle.commit.created is False
     return {"status": cycle.status, "failure": cycle.failure.code if cycle.failure else ""}
 
 
