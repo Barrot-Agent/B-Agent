@@ -20,56 +20,66 @@
     "pr_reviews": 0,
     "pr_approvals": 0,
     "pr_review_threads": 0,
-    "ahead": 2011,
+    "ahead": 2012,
     "behind": 0,
-    "changed_files": 995,
+    "changed_files": 996,
     "workflow_files": 44,
     "other_paths": 951,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2260,
-    "local_clone": "DNS blocked for github.com; authenticated remote GitHub API works"
+    "integration_tree_entries": 2261,
+    "local_clone": "DNS blocked for github.com; authenticated remote GitHub API works",
+    "integration_head_before_run22b": "bd7daf29642bc79249ee32816d248cd357639b26",
+    "changed_workflows": 44,
+    "changed_non_workflow_paths": 952
   },
   "exact_head_verification": {
-    "tested_head": "64b8738710f4823af1641a9704dd3948ccc640a1",
+    "tested_head": "bd7daf29642bc79249ee32816d248cd357639b26",
     "full_suite": {
       "passed": 3423,
       "failed": 0,
       "subtests": 8,
       "coverage_percent": 59.98,
-      "duration_seconds": 94.07,
-      "run": 43005232066,
-      "job": 130470931179,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43005232066"
+      "coverage_total_percent": 60,
+      "duration_seconds": 79.78,
+      "run": 43010469954,
+      "job": 130488490574,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43010469954"
     },
     "core_suite": {
       "passed": 714,
       "failed": 0,
       "subtests": 8,
-      "job": 130470931751
+      "run": 43010469954,
+      "job": 130488490222
     },
     "dependency_audit": {
       "status": "PASS",
       "manifests": 6,
       "known_vulnerabilities_reported": 0,
-      "run": 43005232071,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43005232071"
+      "pr_run": 43010469955,
+      "push_run": 43010461200
     },
-    "fail_closed_pr": {
+    "fail_closed_pr_gate": {
       "status": "PASS",
-      "run": 43005232185,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43005232185"
+      "run": 43010470014
     },
-    "fail_closed_push": {
+    "fail_closed_push_gate": {
       "status": "PASS",
-      "run": 43005224271,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43005224271"
+      "run": 43010461199
     },
+    "wheel_build_and_install": "PASS; packaged primary mission and canonical assets loaded",
     "coverage_floor_percent": 53,
-    "coverage_scope": "barrot_agent, not every repository package",
-    "quality_debt": "Floor remains below previous 70% target; Run22 documentation commit needs new exact-head CI."
+    "coverage_scope": "barrot_agent, not all repository packages",
+    "xrp_public_ingestion_module_coverage_percent": 78,
+    "quality_debt": [
+      "Coverage floor remains below prior 70% target.",
+      "Setuptools warns project.license table is deprecated.",
+      "Setuptools warns barrot_agent.data.missions and data.research are absent from explicit packages configuration; mission resource nevertheless verified in wheel.",
+      "Coverage report includes 32 files skipped due complete coverage."
+    ]
   },
   "main_workflow_audit": {
     "cross_analysis": {
@@ -453,7 +463,7 @@
   ],
   "model_eligibility": {
     "eligible": false,
-    "reason": "Web observations were not ingested through Barrot's raw-source receipt pipeline into a replayable point-in-time feature store; some are secondary, cached, partial-coverage or share underlying datasets.",
+    "reason": "Web observations were not ingested through Barrot's raw-source receipt pipeline into a replayable point-in-time feature store; some are secondary, cached, partial-coverage or share underlying datasets. New options, macro and SBIC observations were also not ingested through Barrot receipts; remain research-only.",
     "forecast_status": "NOT_ISSUED",
     "no_directional_forecast": true,
     "no_paper_trade": true,
@@ -539,6 +549,36 @@
       "id": "COINDESK_RIPPLE_PRIME",
       "url": "https://www.coindesk.com/business/2026/11/09/ripple-prime-head-marc-asch-to-step-down-noel-kimmel-named-successor",
       "group": "secondary_corporate_personnel"
+    },
+    {
+      "id": "FUELMAPS_DERIBIT_OPTIONS",
+      "url": "https://fuelmaps.io/options/",
+      "group": "options_aggregator_public_deribit_api"
+    },
+    {
+      "id": "BLS_OCT2026_CPI",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+      "group": "primary_macro_release"
+    },
+    {
+      "id": "SBIC_EAST_PROFILE",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "group": "primary_corporate_identity"
+    },
+    {
+      "id": "SBIC_CENTRAL_PROFILE",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "group": "primary_corporate_identity"
+    },
+    {
+      "id": "SBIC_WEST_PROFILE",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "group": "primary_corporate_identity"
+    },
+    {
+      "id": "SBIC_EAST_AI_TRAINING",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "group": "primary_educational_activity"
     }
   ],
   "next_actions": [
@@ -549,6 +589,170 @@
     "Capture SoSoValue issuer rows and correct the Nov 9 event date.",
     "Re-query theft-linked XRPL accounts using validated ledger and transaction hashes; leave recipient identity unresolved.",
     "Add XRPL Quantum proposal milestones and Ripple Prime leadership change as event-timeline context, not automatic price features.",
-    "Keep forecasts disabled until WORM anchoring, replayable point-in-time history, calibration, drift, shadow and out-of-sample gates pass."
-  ]
+    "Keep forecasts disabled until WORM anchoring, replayable point-in-time history, calibration, drift, shadow and out-of-sample gates pass.",
+    "Reproduce Fuelmaps' 20/928 beyond-3-sigma Deribit settlement result from raw option chain and settlement vintages before using it in tail calibration.",
+    "Resolve option-skew sign conventions by retaining raw calls/puts, delta convention, tenor and timestamp.",
+    "Add BLS CPI release vintage and October 2025 missing-data flag to macro point-in-time features.",
+    "Add Tokyo/Nagoya/Osaka SBIC legal identity and Tokyo SBIC AI-training record to the entity graph; mark education distinct from partnership."
+  ],
+  "options": {
+    "provider": "Fuelmaps / Deribit public options API",
+    "capture_utc": "2026-11-11T00:01:00Z",
+    "reference_price_usd": 1.0564,
+    "historical_tail_test": {
+      "settlement_time": "daily 08:00 UTC",
+      "sample_period": "2024-03 through 2026-10",
+      "days": 928,
+      "observations_beyond_3sigma": 20,
+      "observed_rate_percent": 2.2,
+      "normal_reference_rate_percent": 0.27,
+      "ratio_to_normal_reference": 8.15,
+      "caveat": "Source-reported backtest; not a calibrated probability forecast and may be affected by overlapping/serially dependent observations and model construction."
+    },
+    "expiries": [
+      {
+        "expiry_utc": "2026-11-12T08:00:00Z",
+        "hours_from_capture": 32,
+        "atm_iv_percent": 65.5,
+        "one_sigma_move_usd": 0.0418,
+        "one_sigma_move_percent": 3.96,
+        "one_sigma_range": [
+          1.0146,
+          1.0982
+        ],
+        "three_sigma_range": [
+          0.9373,
+          1.1886
+        ]
+      },
+      {
+        "expiry_utc": "2026-11-13T08:00:00Z",
+        "hours_from_capture": 56,
+        "atm_iv_percent": 66,
+        "one_sigma_move_usd": 0.0557,
+        "one_sigma_move_percent": 5.27,
+        "one_sigma_range": [
+          1.0007,
+          1.112
+        ],
+        "three_sigma_range": [
+          0.9005,
+          1.2357
+        ]
+      },
+      {
+        "expiry_utc": "2026-11-20T08:00:00Z",
+        "hours_from_capture": 224,
+        "atm_iv_percent": 61.6,
+        "one_sigma_move_usd": 0.104,
+        "one_sigma_move_percent": 9.82,
+        "one_sigma_range": [
+          0.9526,
+          1.1601
+        ],
+        "three_sigma_range": [
+          0.7822,
+          1.4128
+        ]
+      },
+      {
+        "expiry_utc": "2026-11-27T08:00:00Z",
+        "hours_from_capture": 392,
+        "atm_iv_percent": 59.4,
+        "one_sigma_move_usd": 0.132,
+        "one_sigma_move_percent": 12.51,
+        "one_sigma_range": [
+          0.9242,
+          1.1885
+        ],
+        "three_sigma_range": [
+          0.7187,
+          1.5283
+        ]
+      },
+      {
+        "expiry_utc": "2026-12-25T08:00:00Z",
+        "hours_from_capture": 1064,
+        "atm_iv_percent": 59,
+        "one_sigma_move_usd": 0.214,
+        "one_sigma_move_percent": 20.3,
+        "one_sigma_range": [
+          0.8419,
+          1.2705
+        ],
+        "three_sigma_range": [
+          0.5579,
+          1.9172
+        ]
+      }
+    ],
+    "source": "https://fuelmaps.io/options/",
+    "source_method": "Deribit public API; daily 00:01 UTC anchor; XRP USDC-settled options, 1 contract = 1,000 XRP.",
+    "limitations": [
+      "Implied ranges are not forecasts.",
+      "XRP options have fewer expiries/strikes than BTC/ETH; skew/ranges can move more.",
+      "Options flow can represent hedges, spreads or dealer inventory.",
+      "Historical 3-sigma exceedance rate is source-reported and requires independent reproduction before model use."
+    ],
+    "source_disagreement": "OptimistFi's Nov 10 22:00 snapshot reports 30-day ATM IV 58.6% and +1.1-point 25-delta skew with calls richer; Fuelmaps' Nov 11 00:01 snapshot reports tenor-specific IVs and defines positive 25-delta skew as puts richer. Different capture times, tenors and opposite sign conventions; no reconciliation without raw option chain and formula."
+  },
+  "macro": {
+    "source": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+    "release_date": "2026-11-10",
+    "reference_month": "2026-10",
+    "headline_cpi_mom_percent": 0.4,
+    "core_cpi_mom_percent": 0.3,
+    "prior_month_headline_percent": 0.6,
+    "food_mom_percent": 0.5,
+    "energy_mom_percent": 0.7,
+    "shelter_mom_percent": 0.3,
+    "data_gap": "BLS did not collect October 2025 survey data during lapse in appropriations; 12-month percent changes cannot be published for most October 2026 series.",
+    "interpretation": "Actual primary BLS observations are preserved separately from market-consensus surprise estimates. Broad macro context, not XRP-specific causation."
+  },
+  "identity_research": {
+    "japan_sbic": {
+      "east": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "label": "SBIC East Japan",
+        "source": "https://www.sbic.co.jp/company/profile/"
+      },
+      "central": {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "label": "SBIC Central Japan",
+        "source": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      "west": {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "label": "SBIC West Japan",
+        "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+      },
+      "distinction": "Three regional statutory SME investment/consultation companies; not SBI Holdings.",
+      "official_ai_training": {
+        "entity": "Tokyo SBIC / SBIC East Japan",
+        "dates": "2025-06-12 to 2025-06-13",
+        "audience": "investee companies",
+        "curriculum": [
+          "generative AI and machine learning",
+          "ChatGPT use",
+          "Copilot",
+          "API implementation",
+          "RAG",
+          "information-leak risk"
+        ],
+        "source": "https://www.sbic.co.jp/training/20250612co/",
+        "meaning": "Educational training provided by SBIC East; not an OpenAI partnership or proof of a combined SBIC/ChatGPT entity."
+      },
+      "west_chatgpt_seminar": {
+        "date": "2024-10-23",
+        "source": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "meaning": "Educational seminar, not a corporate partnership."
+      }
+    },
+    "exact_phrase_status": {
+      "SBIC, ChatGPT SBIC": "No primary source found for the exact combined phrase. Official SBIC East training and West seminar establish educational use only.",
+      "actual capital": "One secondary Evernorth article uses the phrase in connection with proceeds dependent on warrant exercise; not a formal defined term in primary filing. Continue separating cash received, cash deployed, in-kind XRP, debt, contingent facilities, ELOC capacity and resale registrations.",
+      "ASK Coin": "Ambiguous. Permission Coin ASK is a Base/Polygon LayerZero OFT candidate; no XRPL/XRP integration verified."
+    },
+    "youtube_attribution": "No Camilla/Kamilah Stevenson creator-video inventory attributed; first-party channel ownership remains unverified."
+  }
 }

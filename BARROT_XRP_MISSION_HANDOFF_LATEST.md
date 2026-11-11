@@ -97,3 +97,41 @@ Forecast remains `NOT_ISSUED`. These web observations are not model-eligible: no
 7. Keep forecast issuance disabled until WORM anchoring, replayable point-in-time data, independent shadow outcomes and out-of-sample lift pass.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+
+## Run22b — exact-head CI completion and additional options/macro/SBIC evidence
+
+### Exact-head CI completion
+
+The Run22 research/documentation commit `bd7daf29642bc79249ee32816d248cd357639b26` completed exact-head verification:
+
+- Full repository suite: **3,423 passed, zero failures, eight subtests**, 79.78 seconds.
+- Inclusive coverage: 59.98% for `barrot_agent`; total coverage report 60% across 23,403 statements. Coverage floor 53% passed.
+- Core suite: 714 passed, zero failures, eight subtests.
+- XRP public ingestion module coverage: 78% (2,156 statements).
+- Wheel built and installed; packaged primary mission and canonical data assets loaded successfully.
+- Six dependency manifests audited; zero known vulnerabilities reported.
+- Fail-closed PR and push gates passed.
+- Exact evidence: [CI 43010469954](https://github.com/Barrot-Agent/B-Agent/actions/runs/43010469954), full-suite job 130488490574; [dependency audit 43010469955](https://github.com/Barrot-Agent/B-Agent/actions/runs/43010469955), push audit 43010461200; [PR gate 43010470014](https://github.com/Barrot-Agent/B-Agent/actions/runs/43010470014), push gate 43010461199.
+- Packaging warnings remain: deprecated license-table metadata and setuptools package-discovery warnings for `barrot_agent.data.missions` and `data.research`. The mission resource was nevertheless verified in the wheel. Coverage floor 53% remains below the previous 70% target.
+
+### Options and tail-risk observation
+
+Fuelmaps' Deribit daily capture at 2026-11-11 00:01 UTC, reference XRP $1.0564, reports 30-day/tenor IV in the high-50s to mid-60s: 65.5% for Nov 12 expiry, 66.0% Nov 13, 61.6% Nov 20, 59.4% Nov 27 and 59.0% Dec 25. Its historical daily 08:00 UTC settlement test reports 20 of 928 days beyond the options-implied 3-sigma band (2.2%) versus 0.27% under a normal curve. This is roughly 8.1 times the Gaussian reference, but it is a source-reported, model-specific historical statistic, not a forecast or calibrated future probability. Reproduce from raw options/settlement vintages before use.
+
+The Nov 12 08:00 UTC 32-hour band is 1.0146–1.0982 at 1 sigma and 0.9373–1.1886 at 3 sigma; Nov 13 2d8h 1 sigma 1.0007–1.1120 and 3 sigma 0.9005–1.2357. The bands are options-implied, not forecasts. Fuelmaps notes XRP USDC-settled options have fewer strikes/expiries than BTC/ETH and one contract represents 1,000 XRP. OptimistFi's Nov 10 skew description and Fuelmaps' sign convention differ; preserve raw call/put IV and methodology rather than treating skew signs as directly comparable.
+
+### Macro primary-source correction
+
+BLS's November 10 primary October 2026 CPI release: headline +0.4% m/m, core +0.3%, food +0.5%, energy +0.7%, shelter +0.3%. Due the 2025 lapse in appropriations, October 2025 data were not collected and BLS cannot publish 12-month percentage changes for most October 2026 series. Consensus-surprise estimates come from market sources, not BLS. Source: https://www.bls.gov/news.release/archives/cpi_11102026.htm
+
+### SBIC identity and ChatGPT activity — primary evidence
+
+- Tokyo SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., explicitly labelled SBIC East Japan; its official profile names Nagoya and Osaka as sister companies: https://www.sbic.co.jp/company/profile/ .
+- Nagoya SBIC is SBIC Central Japan: https://www.sbic-cj.co.jp/company/about/ .
+- Osaka SBIC is SBIC West Japan: https://www.sbic-wj.co.jp/profiles/profile/ .
+- Tokyo SBIC's official June 12–13, 2025 training for investee companies covered generative AI/ML, ChatGPT use, Copilot, APIs, RAG and information-leak risk: https://www.sbic.co.jp/training/20250612co/ . This proves educational activity by SBIC East, not an OpenAI partnership.
+- West Japan's October 23, 2024 ChatGPT seminar likewise remains educational activity, not partnership.
+- Exact phrase “SBIC, ChatGPT SBIC” still has no primary-source match as a combined entity/partnership. Exact “actual capital” appears in secondary Evernorth coverage referring to proceeds contingent on warrant exercises; primary filings remain the authority for cash actually received/deployed. “ASK Coin” remains ambiguous; Permission Coin ASK is Base/Polygon LayerZero OFT, with no XRP/XRPL relationship verified. No Camilla/Kamilah Stevenson YouTube videos attributed without first-party channel verification.
+
+The artifact now contains these options, macro and SBIC observations with provenance, limitations and non-model-eligibility flags. The addendum itself is a documentation-only successor commit and requires its own exact-head CI.
