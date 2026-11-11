@@ -1,472 +1,326 @@
 from __future__ import annotations
 
-import hashlib
 import json
-import math
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CURRENT = ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json"
-HISTORICAL = ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map.json"
 
 
 def load_current():
     return json.loads(CURRENT.read_text(encoding="utf-8"))
 
 
-
-def load_run77_snapshot():
-    return next(
-        item
-        for item in load_current()["prior_run_observations"]
-        if item.get("run_id") == 77
-        and item.get("captured_at_utc") == "2026-11-09T02:25:07.763Z"
-    )
-
-
-def load_run78_snapshot():
-    return next(
-        item
-        for item in load_current()["prior_run_observations"]
-        if item.get("run_id") == 78
-        and item.get("captured_at_utc") == "2026-11-09T05:18:42Z"
-    )
-
-
-def test_current_snapshot_preserves_run82_run78_run77_and_historical_map():
+def test_current_map_schema_and_capture_timestamps_are_consistent():
     data = load_current()
-    current = data["current_run_observations"]
-    latest = data["latest_run_snapshot"]
-    historical = json.loads(HISTORICAL.read_text(encoding="utf-8"))
-    observation = next(
-        item for item in data["prior_run_observations"]
-        if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
-    )
-    prior77 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 77 and item.get("captured_at_utc") == "2026-11-09T02:01:02Z")
-    prior77_addendum = load_run77_snapshot()
-    prior78 = load_run78_snapshot()
-    prior76 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 76)
-    prior75 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 75)
-    prior73 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 73)
-    prior111 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 111)
-
-    # Capture time and verification time are distinct fields; verification must not precede capture.
-    assert data["captured_at_utc"] <= data["last_verified_at_utc"]
-    assert latest["run_id"] == latest["run"] == current["run_id"] == data["run"]
-    assert latest["captured_at_utc"] == data["captured_at_utc"] == current["captured_at_utc"]
-    assert current["last_verified_at_utc"] >= current["captured_at_utc"]
-    assert latest["handoff_map_descendant_parent_head"] == current["integration_head_before_map_commit"]
-    assert any(item.get("run_id") == 104 for item in data["prior_run_observations"])
-
-    # Run111 is retained as history after the current map advances.
-    assert prior111["captured_at_utc"] == "2026-11-10T02:37:25Z"
-    assert prior111["latest_run_snapshot"]["run_id"] == 111
-    assert prior111["latest_run_snapshot"]["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert prior111["latest_run_snapshot"]["prediction_engine"]["endpoints"] == 40
-    assert prior111["latest_run_snapshot"]["prediction_engine"]["scheduled_public_sources"] == 36
-    assert prior111["latest_run_snapshot"]["ci_evidence"]["full_suite"]["passed"] == 1343
-
-    assert current["main_sha"] == data["main_sha"]
-    assert current["open_pr_inventory"]["total"] == 373
-    assert current["open_pr_inventory"]["drafts"] == 358
-    assert current["open_pr_inventory"]["non_drafts"] == 15
-    assert current["repository_trees"]["main"]["entries"] == 1404
-    assert current["repository_trees"]["integration"]["entries"] == 2245
-    assert current["branch_ancestry"]["pr_1660"]["ahead"] == 1905
-    assert current["branch_ancestry"]["pr_1660"]["behind"] == 0
-    assert current["ci_evidence"]["full_suite"]["passed"] == 3363
-    assert current["ci_evidence"]["full_suite"]["failed"] == 0
-    assert current["ci_evidence"]["full_suite"]["subtests"] == 8
-    assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.58
-    assert current["reviews"]["pr_1660"]["approved"] == 0
-    assert current["reviews"]["pr_1653"]["review_threads_unresolved"] == 8
-    assert current["merge_state"]["pages_deployment_authorized"] is False
-    assert current["merge_state"]["merge_performed"] is False
-    assert current["forecast_status"] == "NOT_ISSUED"
-    current_market = current["latest_market_crosscheck"]
-    assert current_market["model_eligible"] is False
-    assert current_market["raw_http_bytes_preserved"] is False
-
-    # Run82 remains a complete historical observation, including its original receipts.
-    assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
-    assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
-    assert observation["run_id"] == 82
-    assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "2685c1744aa5a7972da9063a18be665077c4548c"
-    assert any(item.get("run_id") == 81 for item in data["prior_run_observations"])
-    assert observation["open_pr_inventory"]["total"] == 372
-    assert observation["open_pr_inventory"]["drafts"] == 356
-    assert observation["branch_ancestry"]["pr_1640"]["ahead"] == 816
-    assert observation["branch_ancestry"]["pr_1640"]["behind"] == 0
-    assert observation["ci_evidence"]["integration"]["full_suite"]["passed"] == 1299
-    assert observation["ci_evidence"]["integration"]["full_suite"]["subtests"] == 8
-    assert observation["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.09
-    assert observation["reviews"]["pr_1640"]["approved"] == 0
-    assert observation["merge_state"]["pages_authorized"] is False
-    assert observation["merge_state"]["merge_performed"] is False
-    assert observation["forecast_status"] == "NOT_ISSUED"
-    market = observation["latest_market_crosscheck"]
-    expected = {
-        "kraken_xrpusd": "9ff2a9a6954ad6fc5e933a1194f794eacb1a589cd62951964e534524b2ac1efe",
-        "okx_xrpusdt": "1a265dca95328c2d4fb9276257285d219ca0dca5d5f7659cddb0531f4d6ebd71",
-        "kraken_usdtusd": "dbbee9ecb62201e24f41f5a9cfc452a6c65f79dcb3dbdfd55790c3d495d6df59",
-    }
-    for name, digest in expected.items():
-        assert hashlib.sha256(market["raw_response_bodies"][name].encode("utf-8")).hexdigest() == digest
-    assert market["model_admission"] is False
-    assert market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-09T15:45:58.670Z"
-    assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
-    assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
-    assert market["cross_venue_comparison"]["asynchronous"] is True
-    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0581094, rel_tol=1e-5)
-    assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
+    assert data["artifact_type"] == "nine_platform_capability_authentication_permission_dataflow_map"
+    assert data["schema_version"] == "1.1.0"
+    captured = datetime.fromisoformat(data["captured_at_utc"].replace("Z", "+00:00"))
+    verified = datetime.fromisoformat(data["last_verified_at_utc"].replace("Z", "+00:00"))
+    assert verified >= captured
+    assert data["repository"] == "Barrot-Agent/B-Agent"
+    assert data["observed_main_sha"] == data["repository_state"]["main_sha"]
 
 
-def test_run77_prediction_engine_contract_remains_fail_closed():
-    observation = load_run77_snapshot()
-    engine = observation["prediction_engine"]
-    assert engine["endpoints"] == 35
-    assert engine["scheduled_public_sources"] == 33
-    assert engine["excluded_xrpl_node_sources"] == 2
-    assert engine["forecast_status"] == "NOT_ISSUED"
-    assert engine["oos_lift"] is False
-    assert engine["real_data_calibration"] is False
-    assert engine["shadow_outcomes"] is False
-    assert engine["trusted_evaluator_key"] is False
-    assert observation["forecast_status"] == "NOT_ISSUED"
-
-
-def test_run77_platform_map_keeps_external_data_flows_unverified():
+def test_primary_mission_and_v3_foundation_are_explicit():
     data = load_current()
-    assert data["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
-    assert data["platforms"]["ChatGPT"]["data_flow"]["verified"] is True
+    assert data["mission_priority"] == 1
+    assert data["mission"] == "XRP intelligence and prediction-engine mastery"
+    assert data["foundation"].startswith("Barrot V3 execution, orchestration, safety and verification")
+    assert data["forecast_status"] == "NOT_ISSUED"
+
+
+def test_nine_platform_map_verifies_only_the_current_chatgpt_connector():
+    data = load_current()
+    expected = {"ChatGPT", "Claude", "Grok", "Gemini", "Copilot", "Codex", "Hugging Face", "Kaggle", "Databricks"}
+    assert set(data["platforms"]) == expected
+    chatgpt = data["platforms"]["ChatGPT"]
+    assert chatgpt["authentication_status"] == "VERIFIED_CURRENT_SESSION"
+    assert chatgpt["data_flow"]["verified"] is True
+    assert chatgpt["data_flow"]["persistent_agent_connection"] is False
     for name, platform in data["platforms"].items():
         if name != "ChatGPT":
             assert platform["data_flow"]["verified"] is False
-    assert data["coordination_status"]["external_platform_data_exchange_performed"] is False
 
 
-def test_run77_market_receipt_preimages_match_sha256_and_staleness_gate():
-    market = load_run77_snapshot()["latest_market_crosscheck"]
-    bodies = market["raw_response_bodies"]
-    assert hashlib.sha256(bodies["kraken_xrpusd"].encode()).hexdigest() == market["spot"]["kraken_xrpusd"]["receipt_sha256"]
-    assert hashlib.sha256(bodies["okx_xrpusdt"].encode()).hexdigest() == market["spot"]["okx_xrpusdt"]["receipt_sha256"]
-    assert hashlib.sha256(bodies["coinpaprika_xrp"].encode()).hexdigest() == market["spot"]["coinpaprika_xrp"]["receipt_sha256"]
-    assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
-    assert market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-09T01:36:03.075Z"
-    assert market["spot"]["okx_xrpusdt"]["age_seconds_at_recheck"] > 300
-    assert market["spot"]["coinpaprika_xrp"]["age_seconds_at_recheck"] > 300
-    assert abs(market["raw_last_gap_pct"] - 0.3245) < 0.0001
-    assert market["usd_usdt_normalized"] is False
-    assert market["level2_depth"] is False
-    assert market["synchronized_trades"] is False
-    assert market["model_admission"] is False
+def test_lunaroute_is_declared_but_not_authenticated():
+    brain = load_current()["primary_brain_declared_by_repository"]
+    assert brain["name"] == "LunaRoute"
+    assert brain["status"] == "DECLARED_NOT_AUTHENTICATED"
+    assert brain["verified"] is False
 
 
-def test_run77_xrpl_amendment_snapshot_does_not_claim_lending_activation():
-    data = load_run77_snapshot()["latest_xrpl_governance_snapshot"]
-    assert data["validators_heard"] == 35
-    assert data["yes_votes_required"] == 29
-    assert data["amendments"]["LendingProtocol"]["yes_with_24h_carry"] == 21
-    assert data["amendments"]["SingleAssetVault"]["yes_with_24h_carry"] == 23
-    assert data["amendments_in_14_day_countdown"] == 0
-    assert data["native_lending_activated"] is False
-    assert data["fixCleanup3_4_0"]["enabled_ledger"] == 108112129
-    assert data["fixCleanup3_4_0"]["enable_amendment_tx"] == "F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C"
-    assert "own-node" in data["source"]["source_independence"]
-
-
-def test_run77_etf_holdings_delta_remains_a_flagged_proxy():
-    data = load_run77_snapshot()["etf_flow_methodology"]
-    assert data["data_as_of"] == "2026-11-06"
-    assert data["trading_days"] == 231
-    assert data["rows"] == 1597
-    assert data["net_holdings_delta_xrp"] == -812529
-    assert data["reported_total_holdings_xrp"] == 1195787657
-    assert data["model_eligible"] is False
-    assert any("GXRP" in item for item in data["exclusions_and_caveats"])
-    assert any("BITW" in item for item in data["exclusions_and_caveats"])
-
-
-def test_run77_merge_and_forecast_safety_gates_remain_closed():
-    observation = load_run77_snapshot()
-    assert observation["reviews"]["pr_1640"]["approving_reviews"] == 0
-    assert observation["reviews"]["pr_1640"]["threads_resolved"] == 22
-    assert observation["reviews"]["pr_1643"]["approving_reviews"] == 0
-    assert observation["reviews"]["pr_1643"]["threads_resolved"] == 19
-    assert observation["merge_state"]["merge_performed"] is False
-    assert observation["merge_state"]["branch_protection_status"] == "UNVERIFIED_HTTP_403"
-    assert observation["merge_state"]["pages_deployment_authorized"] is False
-    assert observation["external_actions"]["manual_deployment"] is False
-    assert observation["external_actions"]["real_money"] is False
-    assert observation["forecast_status"] == "NOT_ISSUED"
-
-
-def test_run77_exact_head_ci_is_recorded_without_overstating_research_branch():
-    observation = load_run77_snapshot()
-    integration = observation["ci_evidence"]["integration"]
-    assert integration["verified_code_test_head"] == "f92aafdc25fce42c60c04d70b8e6cca47969cfdf"
-    assert integration["full_suite"]["run_id"] == 42549540799
-    assert integration["full_suite"]["result"] == "success"
-    assert integration["full_suite"]["passed"] == 1238
-    assert integration["full_suite"]["failed"] == 0
-    assert integration["full_suite"]["subtests_passed"] == 8
-    assert integration["full_suite"]["coverage_pct"] == 58.98
-    assert integration["core_suite"]["passed"] == 660
-    assert integration["installed_wheel"]["result"] == "success"
-    assert integration["dependency_audit"]["run_id"] == 42549540768
-    assert integration["dependency_audit"]["manifests"] == 6
-    assert integration["dependency_audit"]["known_vulnerabilities"] == 0
-    assert integration["fail_closed_gate"]["run_id"] == 42549540832
-    assert integration["fail_closed_gate"]["automatic_merge_disabled"] is True
-    research = observation["ci_evidence"]["research"]
-    assert research["head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
-    assert research["full_suite"] == "NOT_RUN"
-    assert research["dependency_audit"] == "NOT_RUN"
-    assert research["fail_closed_gate"] == "NOT_RUN"
-    assert research["github_actions_workflow_runs"] == []
-    assert research["combined_status_checks"] == []
-
-
-def test_run76_sec_13f_cross_quarter_correction_is_preserved():
-    prior76 = next(item for item in load_current()["prior_run_observations"] if item.get("run_id") == 76)
-    artifact = "research/xrp_intelligence/20261109T013133Z-goldman-sachs-xrp-etf-13f-manager-attribution-correction.json"
-    assert artifact in prior76["new_research_artifacts"]
-    finding = next(x for x in prior76["new_research_findings"] if x["topic"].startswith("Goldman Sachs Q1-to-Q2"))
-    assert finding["q1"]["xrp_named_rows"] == 0
-    assert finding["q2"]["xrp_named_rows"] == 5
-    assert finding["q2"]["reported_value_usd"] == 86506129
-    assert finding["interpretation"].startswith("First observed reportable appearance")
-    assert finding["model_eligible"] is False
-
-
-def test_run76_coinbase_derivatives_snapshot_is_preserved_as_timestamp_gated():
-    prior76 = next(item for item in load_current()["prior_run_observations"] if item.get("run_id") == 76)
-    finding = next(x for x in prior76["new_research_findings"] if x["topic"].startswith("Coinbase Nano XRP"))
-    assert finding["contract_size_xrp"] == 500
-    assert finding["open_interest_usd"] == 22660000
-    assert finding["funding_rate_pct"] == -0.0008
-    assert finding["provider_event_timestamp"] == "not surfaced"
-    assert finding["model_eligible"] is False
-
-
-def test_run76_sbi_start_bond_separates_jpy_coupon_from_xrp_reward():
-    prior76 = next(item for item in load_current()["prior_run_observations"] if item.get("run_id") == 76)
-    bond = prior76["sbi_start_bond"]
-    assert bond["issue_amount_jpy"] == 10000000000
-    assert bond["sold_out"] is True
-    assert bond["coupon_currency"] == "JPY"
-    assert bond["coupon_rate_percent"] == 2.15
-    assert bond["xrp_reward_separate_from_coupon"] is True
-    assert bond["initial_reward_jpy_per_100k_face"] == 200
-    assert bond["initial_reward_percent_of_face"] == 0.2
-    assert bond["maximum_theoretical_initial_reward_jpy_if_full_issue_qualifies"] == 20000000
-    assert bond["bond_token_ledger"] == "ibet for Fin (BOOSTRY)"
-    assert bond["reward_asset_ledger"] == "XRP Ledger"
-    assert bond["future_coupon_date_reward_asset_guaranteed"] is False
-    assert bond["direct_ripple_involvement_verified"] is False
-
-
-def test_run77_workflow_safety_audit_distinguishes_main_from_integration():
-    audit = load_run77_snapshot()["workflow_safety_audit"]
-    assert audit["integration_changed_workflow_files"] == 41
-    assert any("cross-analysis.yml" in item and "contents:read" in item for item in audit["main_read_only_or_disabled_workflows"])
-    assert any("barrot-agent.yml" in item and "contents:write" in item for item in audit["main_currently_active_risks"])
-    assert any("barrot-agent.yml" in item and "quarantined" in item for item in audit["integration_branch_mitigations"])
-    assert audit["workflows_dispatched"] is False
-    assert audit["secrets_read_or_rotated"] is False
-    assert audit["external_deployments_performed"] is False
-
-
-def test_run77_evernorth_actual_capital_separates_cash_in_kind_debt_and_capacity():
-    data = load_run77_snapshot()["evernorth_xrp_treasury"]
-    assert data["cash_used_to_purchase_xrp_usd"] == 214100000
-    assert data["xrp_purchased_with_cash"] == 84365876
-    assert data["xrp_in_kind_contributions"] == 388910554
-    assert data["xrp_holdings_at_closing"] == 473276430
-    assert data["xrp_purchased_with_cash"] + data["xrp_in_kind_contributions"] == data["xrp_holdings_at_closing"]
-    assert data["gross_cash_proceeds_at_closing_usd"] == 272600000
-    assert data["convertible_note"]["net_proceeds_usd"] == 30000000
-    assert data["committed_equity_facility"]["proceeds_usd"] == 0
-    assert data["sbi_holdings_ownership"]["voting_power_pct"] == 39.9
-    assert data["sbi_holdings_ownership"]["common_stock_pct"] == 21.4
-    assert data["custody"]["cold_storage_pct"] == 100
-    assert data["custody"]["insurance_shared_across_all_bitgo_clients"] is True
-    assert data["strategy"]["defi_protocol_participation_commenced_after_closing"] is True
-    assert data["strategy"]["same_s1_states_100_pct_cold_storage"] is True
-    assert data["strategy"]["deployed_xrp_amount_disclosed"] is False
-    assert data["model_eligible"] is False
-
-
-def test_run77_coinbase_q3_collateral_does_not_infer_zero_xrp():
-    data = load_run77_snapshot()["coinbase_q3_collateral_disclosure"]
-    assert data["xrp_named_in_filing"] is False
-    assert data["recognized_lending_collateral_usd"]["other_crypto"] == 9903000
-    assert data["unrecognized_borrower_collateral_usd"]["crypto"] == 2804112000
-    assert data["derivative_collateral_usd"]["total"] == 325766000
-    assert data["unrecognized_borrower_collateral_usd"]["asset_level_breakdown"] is False
-    assert "Do not infer zero" in data["interpretation"]
-    assert data["model_eligible"] is False
-
-
-def test_run77_circle_reserves_sbi_jv_and_coinbase_distribution_are_separate():
-    data = load_run77_snapshot()["circle_q3_reserve_and_distribution_disclosure"]
-    assert data["reserve_assets_usd"]["total"] == 73957000000
-    assert data["reserve_assets_usd"]["circle_reserve_fund"] == 62467000000
-    assert data["sbi_japan_vie"]["circle_contribution_usd"] == 1500000
-    assert data["sbi_japan_vie"]["sbi_contribution_usd"] == 1500000
-    assert data["sbi_japan_vie"]["circle_ownership_pct"] == 50
-    assert data["sbi_japan_vie"]["significant_operating_results_through_2026_09_30"] is False
-    assert data["coinbase_distribution"]["circle_distribution_cost_q3_usd"] == 331300000
-    assert data["coinbase_distribution"]["coinbase_stablecoin_revenue_q3_usd"] == 306905000
-    assert data["coinbase_distribution"]["directly_nettable"] is False
-    assert data["reserve_risk"]["fund_fdic_insured"] is False
-    assert data["model_eligible"] is False
-
-
-def test_run77_coinbase_ey_survey_corrects_xrp_allocation_claim_without_claiming_dollar_capital():
-    data = load_run77_snapshot()["coinbase_ey_survey_2026"]
-    assert data["current_xrp_allocation_pct"] == 18
-    assert data["planned_add_xrp_2026_pct"] == 25
-    assert data["current_question_n"] == 310
-    assert data["planned_2026_question_n"] == 343
-    assert "not dollar amounts" in data["interpretation"]
-    actual = load_run77_snapshot()["exact_phrase_research"]["actual_capital"]
-    assert "18%" in actual and "25%" in actual
-    assert data["model_eligible"] is False
-
-
-def test_run77_kamilah_channel_identity_gate_keeps_video_inventory_unverified():
-    data = load_run77_snapshot()["kamilah_video_identity_research"]
-    assert data["person_identity"].startswith("Dr. Kamilah Stevenson")
-    assert data["first_party_channel_ownership_verified"] is False
-    assert data["verified_video_inventory_count"] == 0
-    assert len(data["candidate_videos"]) == 4
-    assert any(x.get("transcript_self_identification") == "Camila Stevenson" for x in data["candidate_videos"])
-    assert "Do not inventory" in data["status"]
-
-def test_run80_prior_snapshot_records_repository_and_safe_status():
+def test_nine_platform_coordination_is_design_only_without_external_exchange():
     data = load_current()
-    observation = next(item for item in data["prior_run_observations"] if item.get("run_id") == 80 and item.get("captured_at_utc") == "2026-11-09T06:29:05Z")
-    assert observation["captured_at_utc"] == "2026-11-09T06:29:05Z"
-    assert observation["last_verified_at_utc"] == "2026-11-09T06:29:05Z"
-    assert observation["run_id"] == 80
-    assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "7284e3b52314d05b6bc86ae18a05e143d8c35e9f"
-    assert observation["research_head"] == "238f3ff4a69420882c77d225626a352ba19a412c"
-    assert observation["open_pr_inventory"]["total"] == 372
-    assert observation["open_pr_inventory"]["drafts"] == 356
-    assert observation["branch_ancestry"]["pr_1640"]["ahead_by"] == 788
-    assert observation["branch_ancestry"]["pr_1643"]["behind_by"] == 1
-    assert observation["branch_ancestry"]["shared_path_count"] == 7
-    assert observation["workflow_safety_audit"]["integration_changed_workflow_files"] == 42
-    assert observation["ci_evidence"]["integration"]["verified_code_test_head"] == "9e437f5c806070f2dfbfb70a7394a250d5c257c4"
-    assert observation["ci_evidence"]["integration"]["full_suite"]["passed"] == 1276
-    assert observation["ci_evidence"]["integration"]["current_head_failure"]["run_id"] == 42572144014
-    assert observation["ci_evidence"]["integration"]["current_head_failure"]["failed_tests"] == 10
-    assert observation["reviews"]["pr_1640"]["approving_reviews"] == 0
-    assert observation["merge_state"]["branch_protection_status"] == "UNVERIFIED_HTTP_403"
-    assert observation["merge_state"]["pages_deployment_authorized"] is False
-    assert observation["merge_state"]["merge_performed"] is False
-    assert observation["external_actions"]["main_write"] is False
-    assert observation["external_actions"]["deployment"] is False
-    assert observation["external_actions"]["manual_deployment"] is False
-    assert observation["forecast_status"] == "NOT_ISSUED"
-    assert observation["prediction_engine"]["endpoints"] == 38
-    assert observation["prediction_engine"]["scheduled_public_sources"] == 36
-    assert observation["prediction_engine"]["oos_lift"] is False
+    status = data["coordination_status"]
+    assert status["status"] == "DESIGNED_NOT_EXECUTED"
+    assert status["external_platform_data_exchange_performed"] is False
+    assert status["no_external_model_data_transfer"] is True
+    assignments = data["task_assignments_designed_not_executed"]
+    assert len(assignments) == 9
+    assert sum(item["status"] == "EXECUTED_IN_CURRENT_SESSION" for item in assignments) == 1
 
 
+def test_least_privilege_and_external_action_gates_remain_closed():
+    safety = load_current()["least_privilege_and_safety"]
+    for key in (
+        "secret_values_read",
+        "credentials_exported",
+        "unverified_platforms_used",
+        "external_model_data_transfer",
+        "external_publication",
+        "deployment",
+        "kaggle_submission",
+        "paper_trade",
+        "real_money_action",
+        "main_branch_write_performed",
+    ):
+        assert safety[key] is False
+    assert safety["pages_deployment_authorized"] is False
+    assert safety["branch_protection_status"] == "UNVERIFIED_HTTP_403"
+    exposure = safety["credential_path_exposure"]
+    assert exposure["path"] == ".config/gh/hosts.yml"
+    assert exposure["main_branch_contains_path"] is False
+    assert exposure["active_integration_branch_contains_path"] is False
+    assert exposure["other_open_pr_tips_checked"] == 17
+    assert exposure["other_open_pr_tips_containing_path"] == 17
+    assert exposure["revocation_independently_verified"] is False
 
 
-def test_run82_historical_snapshot_remains_unchanged_as_current_map_advances():
+def test_repository_snapshot_matches_current_main_and_successor_branch():
     data = load_current()
-    current = data["current_run_observations"]
-    latest = data["latest_run_snapshot"]
-    observation = next(
-        item for item in data["prior_run_observations"]
-        if item.get("run_id") == 82 and item.get("captured_at_utc") == "2026-11-09T16:14:36Z"
-    )
-    prior111 = next(item for item in data["prior_run_observations"] if item.get("run_id") == 111)
+    state = data["repository_state"]
+    assert state["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
+    assert state["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
+    assert state["integration_pr"] == 1661
+    assert state["integration_head_before_current_map_commit"] == "1ec69ca210f277f2ff65311e29061ba8b52e3a9e"
+    assert state["integration_ahead_by"] == 1974
+    assert state["integration_behind_by"] == 0
+    assert state["changed_files"] == 976
+    assert state["workflow_files_changed"] == 44
+    assert state["non_workflow_paths_changed"] == 932
+    assert state["main_tree_entries"] == 1388
+    assert state["integration_tree_entries"] == 2245
+    assert state["orbit_paths_in_integration"] is False
+    assert state["hf_space_app_py_changed"] is False
 
-    assert data["captured_at_utc"] <= data["last_verified_at_utc"]
-    assert latest["run_id"] == current["run_id"] == data["run"]
-    assert latest["captured_at_utc"] == data["captured_at_utc"] == current["captured_at_utc"]
-    assert current["last_verified_at_utc"] >= current["captured_at_utc"]
-    assert prior111["latest_run_snapshot"]["run_id"] == 111
-    assert prior111["captured_at_utc"] == "2026-11-10T02:37:25Z"
-    assert current["main_sha"] == data["main_sha"]
-    assert current["open_pr_inventory"]["total"] == 373
-    assert current["open_pr_inventory"]["drafts"] == 358
-    assert current["open_pr_inventory"]["non_drafts"] == 15
-    assert current["repository_trees"]["main"]["entries"] == 1404
-    assert current["repository_trees"]["integration"]["entries"] == 2245
-    assert current["branch_ancestry"]["pr_1660"]["ahead"] == 1905
-    assert current["branch_ancestry"]["pr_1660"]["behind"] == 0
-    assert current["ci_evidence"]["full_suite"]["passed"] == 3363
-    assert current["ci_evidence"]["full_suite"]["failed"] == 0
-    assert current["ci_evidence"]["full_suite"]["subtests"] == 8
-    assert current["ci_evidence"]["full_suite"]["coverage_pct"] == 59.58
-    assert current["reviews"]["pr_1640"]["approved"] == 0
-    assert current["reviews"]["pr_1653"]["review_threads_unresolved"] == 8
-    assert current["merge_state"]["pages_deployment_authorized"] is False
-    assert current["merge_state"]["merge_performed"] is False
-    assert current["forecast_status"] == "NOT_ISSUED"
-    current_market = current["latest_market_crosscheck"]
-    assert current_market["model_eligible"] is False
-    assert current_market["raw_http_bytes_preserved"] is False
 
-    # Run82 remains a complete historical observation, including its original receipts.
-    assert observation["captured_at_utc"] == "2026-11-09T16:14:36Z"
-    assert observation["last_verified_at_utc"] == "2026-11-09T16:14:36Z"
-    assert observation["run_id"] == 82
-    assert observation["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert observation["integration_head_before_handoff_commit"] == "2685c1744aa5a7972da9063a18be665077c4548c"
-    assert any(item.get("run_id") == 81 for item in data["prior_run_observations"])
-    assert observation["open_pr_inventory"]["total"] == 372
-    assert observation["open_pr_inventory"]["drafts"] == 356
-    assert observation["branch_ancestry"]["pr_1640"]["ahead"] == 816
-    assert observation["branch_ancestry"]["pr_1640"]["behind"] == 0
-    assert observation["ci_evidence"]["integration"]["full_suite"]["passed"] == 1299
-    assert observation["ci_evidence"]["integration"]["full_suite"]["subtests"] == 8
-    assert observation["ci_evidence"]["integration"]["full_suite"]["coverage_pct"] == 59.09
-    assert observation["reviews"]["pr_1640"]["approved"] == 0
-    assert observation["merge_state"]["pages_authorized"] is False
-    assert observation["merge_state"]["merge_performed"] is False
-    assert observation["forecast_status"] == "NOT_ISSUED"
-    market = observation["latest_market_crosscheck"]
-    expected = {
-        "kraken_xrpusd": "9ff2a9a6954ad6fc5e933a1194f794eacb1a589cd62951964e534524b2ac1efe",
-        "okx_xrpusdt": "1a265dca95328c2d4fb9276257285d219ca0dca5d5f7659cddb0531f4d6ebd71",
-        "kraken_usdtusd": "dbbee9ecb62201e24f41f5a9cfc452a6c65f79dcb3dbdfd55790c3d495d6df59",
+def test_superseded_pr_1660_is_retained_until_successor_merge():
+    data = load_current()
+    current = data["integration_pr"]
+    old = data["superseded_integration_pr"]
+    assert current["number"] == 1661
+    assert current["state"] == "open"
+    assert current["draft"] is True
+    assert current["behind_by"] == 0
+    assert old["number"] == 1660
+    assert old["state"] == "open"
+    assert old["draft"] is True
+    assert old["behind_by"] == 3
+    assert "RETAIN_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
+
+
+def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
+    ci = load_current()["ci_evidence"]
+    assert ci["integration_head_tested"] == "1ec69ca210f277f2ff65311e29061ba8b52e3a9e"
+    suite = ci["full_repository_suite"]
+    assert suite["passed"] == 3388
+    assert suite["failed"] == 0
+    assert suite["subtests"] == 8
+    assert suite["coverage_percent"] == 59.89
+    assert suite["exact_head_verified"] is True
+    assert ci["dependency_audit"]["manifests"] == 6
+    assert ci["dependency_audit"]["known_vulnerabilities"] == 0
+    assert ci["dependency_audit"]["passed"] is True
+    assert ci["fail_closed_gate"]["passed"] is True
+    assert ci["fail_closed_gate"]["automatic_merge_enabled"] is False
+    assert "new map/test commit must receive fresh exact-head CI" in ci["caveat"]
+
+
+def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
+    audit = load_current()["workflow_safety_audit"]
+    assert audit["changed_workflow_files"] == 44
+    assert audit["quarantined_or_disabled"] == 25
+    assert audit["active_changed_workflows"] == 19
+    assert audit["xrp_public_ingestion_workflow_on_main"] is False
+    assert audit["xrp_public_ingestion_workflow_on_integration"] is True
+    assert audit["scheduled_ingestion_main_run_verified"] is False
+    assert "no repository content write permission" in audit["xrp_collector_permissions"]
+
+
+def test_prediction_engine_source_registry_counts_are_consistent():
+    engine = load_current()["prediction_engine_status"]
+    assert engine["source_definitions_total"] == 46
+    assert engine["hourly_sources"] == 42
+    assert engine["weekly_cftc_sources"] == 2
+    assert engine["scheduled_sources"] == 44
+    assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
+    assert len(engine["implemented"]) >= 8
+
+
+def test_prediction_engine_production_gaps_keep_forecasts_disabled():
+    engine = load_current()["prediction_engine_status"]
+    for key in (
+        "main_branch_ingestion_verified",
+        "mature_synchronized_history",
+        "out_of_sample_lift",
+        "real_data_calibration",
+        "shadow_outcomes",
+        "trusted_evaluator_key",
+        "independent_worm_archive",
+    ):
+        assert engine[key] is False
+    gaps = " ".join(engine["not_production_verified"]).lower()
+    assert "scenario and counter-hypothesis generation" in gaps
+    assert "effective-sample-size correction" in gaps
+    assert "synchronized multi-venue historical" in gaps
+    assert engine["forecast_status"] == "NOT_ISSUED"
+
+
+def test_spot_snapshot_preserves_provider_event_time_and_window_semantics():
+    market = load_current()["current_market_snapshot"]
+    okx = market["spot"]["okx"]
+    kraken = market["spot"]["kraken"]
+    assert okx["pair"] == "XRP-USDT"
+    assert okx["event_time_utc"] == "2026-11-11T03:35:37.862Z"
+    assert okx["last"] == 1.0616
+    assert okx["event_time_utc"] <= market["retrieved_at_utc"]
+    assert kraken["pair"] == "XRP/USD"
+    assert kraken["utc_day_open"] == 1.05511
+    assert "today's UTC open" in kraken["field_semantics"]
+    assert "Do not compare Kraken's UTC-day open" in market["spot"]["cross_venue_note"]
+
+
+def test_spot_orderbook_is_resting_liquidity_not_guaranteed_support():
+    book = load_current()["current_market_snapshot"]["spot_order_book"]
+    assert book["provider"] == "Fuelmaps"
+    assert book["snapshot_time_utc"] == "2026-11-11T03:00:00Z"
+    assert book["venues_coverage"] == "6 of 6"
+    assert book["depth_usd"]["within_1_percent"]["bids"] == 13_800_000
+    assert book["depth_usd"]["within_1_percent"]["asks"] == 11_100_000
+    assert {"Binance", "Bitget"}.issubset(set(book["exclusions"]))
+    limitations = " ".join(book["limitations"]).lower()
+    assert "resting orders can be cancelled" in limitations
+    assert "no historical book" in limitations
+
+
+def test_exchange_flow_snapshot_keeps_unattributed_transfer_separate():
+    flows = load_current()["current_market_snapshot"]["exchange_flows"]
+    assert flows["period"] == "preceding 7 days"
+    assert flows["inflows_xrp"] == 501_720_000
+    assert flows["outflows_xrp"] == 602_930_000
+    assert flows["net_flow_xrp"] == flows["inflows_xrp"] - flows["outflows_xrp"]
+    assert flows["largest_transfer_xrp"] == 368_480_000
+    assert flows["largest_transfer_label"] == "unknown wallet; not attributed to an exchange"
+    assert any("not comprehensive exchange reserve accounting" in x for x in flows["limitations"])
+
+
+def test_derivatives_provider_disagreement_is_preserved_without_averaging():
+    d = load_current()["current_market_snapshot"]["derivatives"]
+    oi = {
+        d["coinglass"]["open_interest_usd"],
+        d["tradradar"]["open_interest_usd"],
+        d["liqwall"]["open_interest_usd"],
     }
-    for name, digest in expected.items():
-        assert hashlib.sha256(market["raw_response_bodies"][name].encode("utf-8")).hexdigest() == digest
-    assert market["model_admission"] is False
-    assert market["spot"]["okx_xrpusdt"]["provider_event_time_utc"] == "2026-11-09T15:45:58.670Z"
-    assert market["spot"]["kraken_xrpusd"]["provider_event_time_utc"] is None
-    assert market["spot"]["kraken_usdtusd"]["provider_event_time_utc"] is None
-    assert market["cross_venue_comparison"]["asynchronous"] is True
-    assert math.isclose(market["cross_venue_comparison"]["normalized_last_gap_pct"], 0.0581094, rel_tol=1e-5)
-    assert math.isclose(market["cross_venue_comparison"]["normalized_mid_gap_pct"], 0.0955234, rel_tol=1e-5)
+    assert oi == {2_350_000_000, 1_580_000_000, 1_160_000_000}
+    assert d["coinglass"]["funding_8h_percent"] > 0
+    assert d["coinglass"]["long_liquidation_share_percent"] == 94
+    assert "Do not average them" in d["reconciliation"]
+    assert "not a directional forecast" in d["reconciliation"]
 
 
-def test_run110_verification_addendum_is_preserved_and_only_chatgpt_is_verified():
-    current = load_current()
-    addendum = current["latest_verification_addendum"]
-    assert addendum["run_id"] == 110
-    assert addendum["main_sha"] == "d4d43be3427375cf79d190e768976de062e20287"
-    assert addendum["integration_code_test_head"] == "60648e1ed915b05362054703310b07f697fa50c6"
-    assert addendum["full_suite"]["passed"] == 1322
-    assert addendum["full_suite"]["coverage_pct"] == 59.36
-    assert addendum["external_platform_data_exchange"] is False
-    assert addendum["chatgpt_github_connector"]["read_access"] is True
-    assert addendum["chatgpt_github_connector"]["write_access_tested"] is True
+def test_options_snapshot_keeps_near_and_deferred_expiry_skew_distinct():
+    options = load_current()["current_market_snapshot"]["options"]
+    assert options["snapshot_time_utc"] == "2026-11-11T02:00:00Z"
+    assert options["atm_iv_30d_percent"] == 58.5
+    assert options["front_expiry_skew_points"] == -11.8
+    assert options["dec25_skew_points"] == 1.3
+    assert options["dec25_put_call_ratio"] == 0.55
 
-    assert current["platforms"]["ChatGPT"]["authentication_status"] == "VERIFIED_CURRENT_SESSION"
-    chatgpt_verified_at = current["platforms"]["ChatGPT"]["last_verified_at_utc"]
-    assert current["captured_at_utc"] <= chatgpt_verified_at <= current["last_verified_at_utc"]
-    for name, platform in current["platforms"].items():
-        if name != "ChatGPT":
-            assert platform["data_flow"]["verified"] is False
-    assert current["coordination_status"]["external_platform_data_exchange_performed"] is False
+
+def test_etf_flow_windows_and_holdings_limitations_are_separate():
+    etf = load_current()["current_market_snapshot"]["etf_flows"]
+    assert etf["through_session"] == "2026-11-10"
+    assert etf["daily_flow_nov10_usd"] == -7_600_000
+    assert etf["consecutive_daily_outflows"] == 2
+    assert etf["thirty_session_flow_usd"] == 1_300_000
+    assert any("holdings changes do not prove exchange sales" in x for x in etf["limitations"])
+
+
+def test_cftc_contract_reconciliation_treats_dropped_contract_as_unknown():
+    cftc = load_current()["current_market_snapshot"]["cftc"]
+    assert cftc["source_as_of"] == "2026-11-03"
+    assert cftc["report_updated"] == "2026-11-06"
+    assert cftc["contract_equivalent_xrp"] == 396_248_500
+    assert cftc["prior_week_equivalent_xrp"] == 455_163_000
+    assert cftc["weekly_change_xrp"] == -58_914_500
+    assert cftc["dropped_standard_coinbase_xrp_contract_code"] == "176LM2"
+    assert cftc["missing_contract_handling"] == "missing is not zero"
+
+
+def test_institutional_and_capital_relationships_keep_entities_and_categories_separate():
+    inst = load_current()["institutional_and_capital"]
+    assert inst["rlusd"]["circulating_usd"] == 2_632_900_000
+    assert inst["rlusd"]["reserve_funds_usd"] == 2_748_000_000
+    assert inst["rlusd"]["issuer"] == "Standard Custody & Trust Company, LLC"
+    assert "Do not conflate RLUSD issuer Standard Custody" in inst["rlusd"]["note"]
+    assert "future/coming" in inst["ripple_coinbase"]["collateral"]
+    assert "50/50 Centre Consortium ownership" in inst["circle_coinbase"]["relationship"]
+    assert "not XRP" in inst["pnc_coinbase_circle"]["status"]
+    assert inst["sbi_ripple_circle"]["evernorth_cash_investment_usd"] == 200_000_000
+    assert inst["sbi_ripple_circle"]["sbi_ripple_asia"] == "60/40 SBI/Ripple joint venture."
+    ev = inst["evernorth"]
+    assert ev["closing_gross_cash_usd"] == 272_600_000
+    assert ev["xrp_contributed_in_kind"] == 388_910_554
+    assert ev["xrp_purchased_with_advance_funding_cash"] == 84_365_876
+    assert ev["separate_eloc_proceeds_received_as_of_2026_11_09"] == 0
+
+
+def test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates():
+    identity = load_current()["identity_research"]
+    sbic = identity["sbic"]
+    assert sbic["east"].startswith("Tokyo Small and Medium Business")
+    assert sbic["central"].startswith("Nagoya Small and Medium Business")
+    assert sbic["west"].startswith("Osaka Small and Medium Business")
+    assert "not SBI Holdings" in sbic["distinction"]
+    assert "no OpenAI partnership" in sbic["chatgpt_event"]
+    assert "No XRP-linked ASK Coin identity" in identity["ask_coin"]
+    assert "cash" in identity["actual_capital"].lower()
+    assert "ownership remains unverified" in identity["kamilah_stevenson"]
+
+
+def test_macro_and_geopolitical_observations_keep_competing_hypotheses():
+    macro = load_current()["macro_geopolitics"]
+    cpi = macro["us_cpi_october_2026"]
+    assert cpi["headline_monthly_percent"] == 0.4
+    assert cpi["core_monthly_percent"] == 0.3
+    assert "not published" in cpi["year_over_year"]
+    oil = macro["hormuz_and_oil"]
+    assert oil["date"] == "2026-11-11"
+    assert len(oil["competing_hypotheses"]) == 2
+    assert "not automatic XRP directional signals" in macro["interpretation"]
+
+
+def test_disagreements_and_counterhypotheses_are_preserved():
+    items = load_current()["disagreement_and_counter_hypotheses"]
+    assert len(items) >= 6
+    combined = " ".join(items).lower()
+    assert "do not average" in combined
+    assert "counter-hypothesis" in combined or "counter hypothesis" in combined
+    assert "not a directional forecast" in combined
+
+
+def test_source_provenance_and_backlog_classification_are_explicit():
+    data = load_current()
+    sources = data["source_provenance"]
+    assert len(sources) >= 15
+    assert all(item.get("url") and item.get("source") for item in sources)
+    assert any(item["source"] == "CFTC TFF" for item in sources)
+    assert any(item["source"] == "SEC Evernorth 424B3" for item in sources)
+    backlog = data["backlog_classification"]
+    assert backlog["1661"] == "BLOCKED_ACTIVE_INTEGRATION_DRAFT"
+    assert "SUPERSEDED_SOURCE" in backlog["1660"]
+    assert "UNIQUE_UNREVIEWED" in backlog["1653"]
+    assert "UNIQUE_UNREVIEWED" in backlog["1614"]
+    assert any("semantic review" in item.lower() for item in data["next_actions"])

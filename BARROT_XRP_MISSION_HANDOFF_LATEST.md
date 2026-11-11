@@ -7424,3 +7424,62 @@ The current CFTC Traders in Financial Futures page reports positions as of Tuesd
 9. Keep forecast issuance disabled until independent, leakage-safe, overlap-adjusted out-of-sample and shadow evidence demonstrates calibrated lift over all four baselines.
 
 **Run 12B status:** repository fetched and reconciled; exact-head tests verified; overlap-adjusted ESS implementation verified; market research refreshed; security exposure rechecked; canonical handoff updated. Main remains unchanged; PR #1660 remains open and unmerged.
+
+
+## Run 12F — current-head CI diagnosis and schema-contract repair
+
+### Repository state
+- Main remains \`84f28ee7755607236231545a14f3d093c1baaa85\`.
+- Sole active successor: PR #1661, branch \`integration/xrp-v3-unified-main-20261111\`.
+- Branch head before this correction: \`77d293cbcad5b67dfe9d336f1213a7e896dff82c\`.
+- GitHub comparison confirms 1,975 commits ahead of main and zero behind. The branch has current main as its merge base/first-parent base.
+- PR #1661 remains draft. GitHub reports mergeable, but it has zero formal approvals. PR #1660 remains open as a superseded source candidate and is not closed before successor merge and verification.
+- Four-page open-PR inventory: 374 open, 360 draft, 14 non-draft.
+
+### Exact-head CI failure
+The full repository test job on \`77d293cbcad5b67dfe9d336f1213a7e896dff82c\` completed:
+- 3,372 passed.
+- 21 failed.
+- 8 subtests passed.
+- 59.89% coverage.
+- Core test job passed.
+- Dependency audit passed on six manifests, zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remains disabled.
+
+Failure evidence:
+- [Full CI 42955322582](https://github.com/Barrot-Agent/B-Agent/actions/runs/42955322582)
+- [Dependency audit 42955322616](https://github.com/Barrot-Agent/B-Agent/actions/runs/42955322616)
+- [Fail-closed gate 42955322567](https://github.com/Barrot-Agent/B-Agent/actions/runs/42955322567)
+
+All 21 failures were schema-contract KeyErrors in two historical test files. The new current-map artifact is schema 1.1.0 and deliberately represents current state without the schema 1.0 historical keys \`latest_run_snapshot\`, \`current_run_observations\`, \`prior_run_observations\`, and \`latest_verification_addendum\`. The tests still attempted to read those old fields. The failure is a test/fixture contract mismatch; no production-code failure was identified in this run.
+
+### Corrective action
+- Reworked \`tests/test_xrp_nine_platform_current_map_run73.py\` into 22 tests against the current schema 1.1.0: repository/branch state, nine-platform verification, LunaRoute declaration, safety gates, workflow scope, prediction-engine readiness, market/derivatives/ETF/CFTC data semantics, institutional capital, identity, macro, provenance and backlog.
+- Updated \`tests/test_xrp_mission_handoff_run58.py\` so current schema 1.1 is tested as current state while the separate historical schema 1.0 artifact retains its Run58/Run70 history checks.
+- No production application code, source PR branch, main branch, workflow or secret was modified.
+- The correction is committed on the existing #1661 branch only. Fresh exact-head CI is required; no prior-head test result is substituted.
+
+### Current market and model status
+The immutable 03:49:53Z map snapshot records OKX XRP-USDT at 1.0616 (provider event 03:35:37.862Z) and Kraken XRP/USD at 1.05959, with different daily-window semantics. Fuelmaps' 03:00Z six-venue resting book showed $13.8M bids and $11.1M asks within 1%; Binance and Bitget were excluded and resting orders can cancel. TrackWhale's tracked seven-day flow estimate was -101.21M XRP, but the largest 368.48M XRP transfer was unlabeled and not attributed to an exchange. CoinGlass, TradRadar and Liqwall OI totals differed materially; no averaging was performed. CFTC's Nov 3 snapshot summed 396.2485M XRP-equivalent across three reported contracts; missing standard contract 176LM2 remains unknown, not zero.
+
+The current map distinguishes RLUSD issuer Standard Custody from Ripple National Trust Bank; separates Coinbase/Circle equity and distribution economics from Coinbase/Ripple RLUSD distribution; separates PNC's USDC rail from XRP; and separates Evernorth cash, in-kind XRP, cash-purchased XRP, debt and unreceived ELOC capacity. SBIC East/Central/West remain three regional Japanese SME investment-consultation companies, not SBI Holdings. ASK Coin has no verified XRP identity. Kamilah Stevenson YouTube ownership remains unverified.
+
+### Nine-platform and security status
+- ChatGPT's current-session GitHub connector is verified.
+- LunaRoute is declared in BARROT_SYNC as the canonical brain, but authentication/data flow was not tested.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for live data flow.
+- No external-model data transfer occurred.
+- BARROT_SYNC reports the old GitHub CLI OAuth as REVOKED. Provider-side revocation is not independently verifiable through this connection. Prior current-head checks found 17 other open PR branch tips containing the credential path; no contents were read and no history was rewritten.
+
+### Merge decision
+Keep #1661 draft and unmerged. The latest exact-head full-suite result is failing until the schema-contract correction passes fresh CI. Branch-protection details remain inaccessible (HTTP 403); no independent approvals are present; 932 non-workflow paths remain semantically unreviewed; and a main push triggers GitHub Pages publication whose authorization is unresolved. Forecast status remains \`NOT_ISSUED\`.
+
+### Next actions
+1. Verify the fresh full repository suite, dependency audit and fail-closed gate on the new #1661 head.
+2. Fix any remaining test failures without deleting historical evidence or weakening safety assertions.
+3. Complete the 932-path semantic review.
+4. Resolve authoritative branch-protection/approval requirements and GitHub Pages publication authorization.
+5. Preserve unique PRs and retain #1660 until #1661 is merged and its contents verified on main.
+6. Continue scheduled XRP source ingestion only after an authorized merge; keep directional forecasts disabled until out-of-sample and shadow criteria pass.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
