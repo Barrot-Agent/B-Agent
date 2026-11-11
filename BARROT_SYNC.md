@@ -232,3 +232,18 @@
 - Credential path absent from main/integration and all 17 current open PR diff inventories (all base main); provider-side revocation remains unverified. No credential contents read or token rotation/revocation.
 - PR #1661 remains draft; 2,052 ahead/0 behind, 1,023 files (44 workflows/979 other), zero reviews/approvals/threads. Merge blocked by branch-protection visibility, Pages authorization, semantic review and least-privilege/security follow-up.
 - Forecast NOT_ISSUED; public research not receipt-ingested/model-eligible. New handoff/map commit CI pending.
+
+
+
+## Run38 — 2026-11-11 23:15 UTC
+- Main `84f28ee7755607236231545a14f3d093c1baaa85`; integration parent before durable update `beaca9472be073f9a4cae49cb78371b4be2a1a4e`, 2,054 ahead/0 behind; #1661 open/draft, 1,023 files (44 workflows/979 other); 374 open PRs (360 draft/14 non-draft).
+- Exact parent CI [43117758597](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117758597): 3,449 passed/0 failed, 8 subtests, 59.99%, 93.85s; core 714/0; wheel and installed Barrot V3/XRP mission passed. Six-manifest dependency audit [43117758561] passed, zero known vulnerabilities reported. Push/PR fail-closed gates [43117751382](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117751382) and [43117758784](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117758784) passed. This pass is on parent `beaca9472be073f9a4cae49cb78371b4be2a1a4e`; new docs/artifact commit CI pending.
+- Spot: OKX XRP-USDT 1.0552 (22:46:51.363 UTC), Kraken XRP/USD $1.05405 (no event timestamp), USDT/USD 0.99884; normalized midpoint gap -0.00184%, asynchronous and not arbitrage. Current synchronized depth unavailable; Fuelmaps 14:00 snapshot stale.
+- Derivatives: Alpha heatmap 21:50 OI $2.29B, modeled $64.7M long clusters below/$32.5M short above; TradRadar 19:05 OI $1.57B, -0.97%, funding +0.0045%/8h, at least $2.85M liquidations. Different coverage, no averaging. Alpha six-venue funding 22:14 +0.0081%/8h average; positioning only.
+- ETF: Alpha five-fund Nov10 -$7.6M includes GXRP; XRP Insights six spot+BITW flow -27K XRP excludes GXRP from flow totals during a data-gap correction but includes holdings (1.18597B XRP). The Block -$10.4M is a separate rolling 24h window. Do not average.
+- Credential path absent from all 17 current open-PR changed-file inventories; provider-side OAuth revocation unverified. Connector overprivileged; branch-protection detail HTTP403; fallback ruleset disabled; Pages publication unauthorized.
+- Forecast `NOT_ISSUED`; web research not raw-byte receipted by Barrot and not model-eligible. No external-model transfer.
+- Backlog: #1661 blocked; #1660/#1643 superseded-source candidates; #1640 overlap review; #1642 differing/unique review; #1653 unique graph; #1645 exact duplicate candidate; #1644/#1647 workflow semantic review; #1649/#1648/#1646 dependency supersession candidates; #1650/#1254 title/path mismatch review; #1255 older dependency; preserve #1320/#1318/#1317/#1269 unique safety/MMI/topology. No source PR closed.
+- Artifact: `research/xrp_intelligence/20261111T231521Z-run38-current-spot-funding-liquidation-and-etf-flow-reconciliation.json`.
+- Next: exact-head CI on the new Run38 docs/artifact commit; then semantic review, least privilege, branch protection, credential revocation, Pages authorization, WORM anchoring and raw-to-feature-store rebuild.
+- No merge/deploy/secret rotation/Space restart/Kaggle submission/Databricks write/external-model transfer/paper trade/funds transfer/real-money action/force-push/history rewrite/destructive worktree operation/PR closure.
