@@ -321,3 +321,17 @@ This creates a genuine counter-hypothesis: the treasury represents institutional
 - Next: verify exact-head CI on the atomic Run25 commit; reduce connector permissions; resolve GitHub App, Databricks and Hugging Face health; obtain branch-protection/approval visibility; verify OAuth revocation and additively remediate the 17 affected tips; complete semantic review; resolve Pages authorization; then consider merge only if every gate passes.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+## Run25b — SEC entity-level scope correction — 2026-11-11T13:15:41Z
+
+A closer read of SEC Form 424B3 separates Pubco (Evernorth Holdings Inc., the parent Company) from the Evernorth operating subsidiary. The previous Run25 summary quoted the subsidiary figures correctly but did not clearly attribute the parent-level financing instruments.
+
+- Pubco parent, June 30, 2026: $0.8M unrestricted cash, $3.7M net working-capital deficit, $3.1M accumulated deficit, $2.2M operating loss and $2.138M operating cash used.
+- Evernorth operating subsidiary, June 30, 2026: no revenue generated; $0.1M unrestricted cash, $696.1M net working-capital deficit, $340.9M accumulated deficit, $265.6M operating loss and $188.1M six-month net loss. Its six-month operating cash use was $1.330M, not $188.1M. The latter includes $264.1M non-cash digital-asset impairment partly offset by a $77.5M non-cash fair-value gain.
+- Pubco Company Facility: $10M limit, $9.7M drawn as of October 7 at 3.81%. The filing says amounts were subject to repayment within five business days after the Closing Date or earlier on five business days' notice from Ripple; the later repayment/current balance is not established by this excerpt.
+- Separate Evernorth Facility: $1M limit, undrawn as of June 30.
+- Pubco convertible note: $30M 4% PIK note funded October 12. The holder chooses cash or share settlement; conversion value is capped at 4x principal, and specified default/fundamental-transaction events carry an 8% yield-to-put. These are conditional terms, not currently due cash payments.
+- Pubco Cantor ELOC: up to 5,218,935 shares at 97% VWAP, subject to registration, price, volume and ownership conditions; zero proceeds as of the prospectus.
+- The filing says the $30M note proceeds may fund general corporate purposes including XRP acquisition; it does not prove that those proceeds were used to buy XRP.
+
+This correction avoids mixing subsidiary financials with parent-level obligations. Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm

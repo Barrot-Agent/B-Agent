@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T13:02:17Z",
-  "last_verified_at_utc": "2026-11-11T13:02:17Z",
+  "captured_at_utc": "2026-11-11T13:15:41Z",
+  "last_verified_at_utc": "2026-11-11T13:15:41Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+  "observed_integration_head_before_map_commit": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,22 +13,22 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2020,
+    "ahead_by": 2021,
     "behind_by": 0,
-    "changed_files": 1000,
+    "changed_files": 1001,
     "workflow_files": 44,
-    "other_changed_paths": 956,
-    "head_sha": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "other_changed_paths": 957,
+    "head_sha": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2020,
-    "additions": 238998,
+    "commits": 2021,
+    "additions": 239872,
     "deletions": 4363,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Open draft integration PR. Exact code parent 7155eede passed 3,427 full-suite tests, zero failures, eight subtests, 59.98% coverage, wheel and installed mission verification; six-manifest audit found zero known vulnerabilities; fail-closed gate passed. The Run25 atomic handoff/map/research commit is documentation/evidence only and requires its own exact-head CI. Do not merge: draft, zero formal approvals/reviews, branch-protection details HTTP 403, visible fallback ruleset disabled, connector admin=true and overprivileged, 17 other PR tips retain credential-path copies, semantic review of 956 paths incomplete and Pages publication unauthorized."
+    "note": "Open draft integration PR. Code parent 7155eede passed 3,427 full-suite tests, zero failures, eight subtests, 59.98% coverage, wheel and installed mission verification; six-manifest audit found zero known vulnerabilities; fail-closed gate passed. Run25 documentation commit 9e98 CI was still in progress when Run25b corrected SEC entity attribution. This correction commit requires its own exact-head CI. Do not merge: draft, zero formal approvals/reviews, branch-protection details HTTP 403, fallback ruleset disabled, connector admin=true and overprivileged, 957 non-workflow paths require semantic review, 17 other PR tips retain credential-path copies and Pages publication is unauthorized."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -379,18 +379,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "integration_head_before_current_map_commit": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
     "integration_pr": 1661,
-    "integration_ahead_by": 2020,
+    "integration_ahead_by": 2021,
     "integration_behind_by": 0,
-    "changed_files": 1000,
+    "changed_files": 1001,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 956,
+    "non_workflow_paths_changed": 957,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2265,
+    "integration_tree_entries": 2266,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -403,11 +403,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "HEAD_7155EED_FULL_SUITE_PASSED_3427_ZERO_FAILURES; 8 SUBTESTS; 59.98_PERCENT_COVERAGE; WHEEL_AND_INSTALLED_MISSION_VERIFIED; SIX_MANIFEST_AUDIT_ZERO_KNOWN_VULNERABILITIES; FAIL_CLOSED_GATE_PASSED; RUN25_DOC_COMMIT_REQUIRES_EXACT_HEAD_CI",
-    "last_reconciled_at_utc": "2026-11-11T13:02:17Z",
+    "latest_exact_head_ci": "CODE_PARENT_7155EED_FULL_SUITE_PASSED_3427_ZERO_FAILURES; RUN25_DOC_HEAD_9E98_CI_IN_PROGRESS; RUN25B_SEC_ENTITY_SCOPE_CORRECTION_COMMIT_REQUIRES_EXACT_HEAD_CI",
+    "last_reconciled_at_utc": "2026-11-11T13:15:41Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2153,
+    "integration_tree_files": 2154,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -457,7 +457,12 @@
         "Hugging Face BUILD_ERROR"
       ],
       "read_only": true
-    }
+    },
+    "current_head_before_run25b_commit": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
+    "run25b_expected_changed_files_after_commit": 1001,
+    "run25b_expected_non_workflow_paths_after_commit": 957,
+    "run25b_expected_integration_tree_entries_after_commit": 2266,
+    "run25b_expected_ahead_by_after_commit": 2022
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
@@ -664,6 +669,19 @@
         "read_only": true,
         "not_main_code_ci": true
       }
+    },
+    "current_branch_head_verification": {
+      "tested_head": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
+      "full_suite_run_id": 43027351595,
+      "full_suite_job_id": 130545297065,
+      "status": "in_progress_at_run25b_capture",
+      "dependency_audit_pr_run_id": 43027351487,
+      "dependency_audit_push_run_id": 43027341321,
+      "dependency_audit_push_conclusion": "success",
+      "fail_closed_pr_run_id": 43027352796,
+      "fail_closed_pr_conclusion": "success",
+      "fail_closed_push_run_id": 43027341654,
+      "fail_closed_push_conclusion": "success"
     }
   },
   "workflow_safety_audit": {
@@ -1384,7 +1402,30 @@
       "operating_cash_used_six_months_usd": 1329805,
       "noncash_digital_asset_impairment_usd": 264146097,
       "noncash_gain_refundable_investor_advances_usd": 77477000,
-      "caveat": "Accounting losses are not cash burn; major noncash impairment/fair-value items. June30 liquidity predates later October financing."
+      "caveat": "Accounting losses are not cash burn; major noncash impairment/fair-value items. June30 liquidity predates later October financing.",
+      "pubco_parent_financials": {
+        "entity": "Evernorth Holdings Inc. (Pubco; the parent Company in the filing)",
+        "financials_as_of": "2026-06-30",
+        "unrestricted_cash_usd": 800000,
+        "net_working_capital_deficit_usd": 3700000,
+        "accumulated_deficit_usd": 3100000,
+        "reported_operating_loss_usd": 2200000,
+        "operating_cash_used_usd": 2138275
+      },
+      "evernorth_operating_subsidiary_financials": {
+        "entity": "Evernorth operating subsidiary (separately reported from Pubco)",
+        "financials_as_of": "2026-06-30",
+        "revenue": "None generated to the filing date",
+        "unrestricted_cash_usd": 100000,
+        "net_working_capital_deficit_usd": 696100000,
+        "accumulated_deficit_usd": 340900000,
+        "reported_operating_loss_usd": 265600000,
+        "net_loss_six_months_usd": 188100000,
+        "operating_cash_used_six_months_usd": 1329805,
+        "noncash_digital_asset_impairment_usd": 264100000,
+        "noncash_gain_from_fair_value_of_refundable_investor_advances_usd": 77500000
+      },
+      "entity_scope_note": "The filing reports Pubco parent and Evernorth operating subsidiary separately. Parent June30 cash/deficit/loss were $0.8M/$3.7M/$2.2M; subsidiary figures were $0.1M/$696.1M/$265.6M. The $30M note, $10M Company Facility and Cantor ELOC are Pubco-level; the separate $1M Evernorth Facility was undrawn at June30."
     },
     "latest_sbi_stablecoin_rail_update": {
       "standard_chartered_rlusd": {
@@ -1415,6 +1456,69 @@
         "status": "Tokenized-deposit concept proof using MoneyTap/XRPL; not verified production XRP payment volume.",
         "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html"
       }
+    },
+    "latest_evernorth_entity_scope_correction": {
+      "captured_at_utc": "2026-11-11T13:15:41Z",
+      "source": "SEC Form 424B3 accession 000162828026072223",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "entity_scope_correction": {
+        "pubco_parent": {
+          "entity": "Evernorth Holdings Inc. (Pubco; the parent Company in the filing)",
+          "financials_as_of": "2026-06-30",
+          "unrestricted_cash_usd": 800000,
+          "net_working_capital_deficit_usd": 3700000,
+          "accumulated_deficit_usd": 3100000,
+          "reported_operating_loss_usd": 2200000,
+          "operating_cash_used_usd": 2138275
+        },
+        "evernorth_operating_subsidiary": {
+          "entity": "Evernorth operating subsidiary (separately reported from Pubco)",
+          "financials_as_of": "2026-06-30",
+          "revenue": "None generated to the filing date",
+          "unrestricted_cash_usd": 100000,
+          "net_working_capital_deficit_usd": 696100000,
+          "accumulated_deficit_usd": 340900000,
+          "reported_operating_loss_usd": 265600000,
+          "net_loss_six_months_usd": 188100000,
+          "operating_cash_used_six_months_usd": 1329805,
+          "noncash_digital_asset_impairment_usd": 264100000,
+          "noncash_gain_from_fair_value_of_refundable_investor_advances_usd": 77500000
+        },
+        "related_party_facilities": {
+          "pubco_company_facility": {
+            "borrower": "Pubco parent",
+            "limit_usd": 10000000,
+            "drawn_as_of_2026_10_07_usd": 9700000,
+            "interest_rate_percent": 3.81,
+            "repayment_terms": "Amounts were subject to repayment within five business days after Closing Date or earlier upon five business days' notice of demand by Ripple; later repayment/current outstanding balance not established by this filing excerpt."
+          },
+          "evernorth_facility": {
+            "borrower": "Evernorth operating subsidiary",
+            "limit_usd": 1000000,
+            "drawn_as_of_2026_06_30_usd": 0,
+            "interest_rate_percent": 3.81
+          }
+        },
+        "pubco_convertible_notes": {
+          "issuer": "Pubco parent",
+          "principal_usd": 30000000,
+          "issued_and_funded_date": "2026-10-12",
+          "coupon_pik_percent": 4,
+          "maturity_year": 2031,
+          "holder_can_choose_cash_or_share_settlement": true,
+          "conversion_value_cap_usd": 120000000,
+          "put_yield_on_default_or_fundamental_transaction_percent": 8,
+          "use_of_proceeds": "General corporate purposes including acquisition of XRP; actual use to purchase XRP is not evidenced."
+        },
+        "pubco_cantor_eloc": {
+          "issuer": "Pubco parent",
+          "maximum_shares": 5218935,
+          "price_percent_vwap": 97,
+          "no_proceeds_as_of_prospectus": true,
+          "classification": "Contingent equity capacity, not cash raised or XRP purchased."
+        }
+      },
+      "correction_note": "The prior Run25 summary correctly quoted Evernorth subsidiary figures but did not clearly separate Pubco parent figures and obligations. The $30M note, $10M Company Facility and Cantor ELOC are Pubco-level; the separate $1M Evernorth Facility was undrawn at June30."
     }
   },
   "identity_research": {
@@ -2538,13 +2642,13 @@
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Run the full repository suite, dependency audit and fail-closed gates on the atomic Run25 handoff/map/research commit; do not reuse parent-head evidence as current-head verification.",
-    "Complete semantic review of the 956 pre-existing non-workflow paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger and public interfaces.",
+    "Verify exact-head CI on the Run25b SEC entity-scope correction commit; do not substitute 7155eede parent evidence or 9e98 in-progress evidence.",
+    "Complete semantic review of the 957 pre-existing non-workflow paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger and public interfaces.",
     "Reduce GitHub connector permissions to least privilege and obtain authoritative branch-protection/required-approval visibility; do not merge while connector is admin-exempt and requirements are unknown.",
-    "Resolve GitHub App environment/authentication, Databricks HTTP 403 and Hugging Face BUILD_ERROR through their owners; do not claim the nine-platform network is connected.",
+    "Resolve GitHub App environment/authentication, Databricks HTTP 403 and Hugging Face BUILD_ERROR through their owners.",
     "Verify provider-side OAuth revocation and remediate the 17 affected PR branch tips additively without reading credential contents or rewriting history.",
     "Resolve automatic GitHub Pages publication authorization before any merge.",
-    "Continue synchronized XRP spot/L2/flow/derivatives/collateral history and Evernorth financing event tracking; add scenario/counter-hypothesis generation and independent WORM/timestamp anchoring.",
+    "Continue synchronized XRP spot/L2/flow/derivatives/collateral history, Evernorth parent/subsidiary cash/debt events and scenario/counter-hypothesis generation; implement independent WORM/timestamp anchoring.",
     "Keep forecasts NOT_ISSUED until independent shadow outcomes, calibration, drift and out-of-sample lift gates pass."
   ],
   "latest_web_research": {
@@ -3157,8 +3261,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run25",
-  "latest_run_captured_at_utc": "2026-11-11T13:02:17Z",
+  "latest_run_id": "Run25b",
+  "latest_run_captured_at_utc": "2026-11-11T13:15:41Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4411,7 +4515,70 @@
       "ETF outflows differ by source universe/window; 30-session Alpha flow remains positive.",
       "XRPL.to token-market and DEX-stat pages disagree; neither measures native XRP/USD spot turnover.",
       "SEC Evernorth prospectus adds liquidity/funding risk: low historical cash, no revenue, related-party debt, $30M notes with conditional cash-settlement exposure and zero ELOC proceeds as of prospectus."
-    ]
+    ],
+    "entity_scope_correction": {
+      "captured_at_utc": "2026-11-11T13:15:41Z",
+      "source": "SEC Form 424B3 accession 000162828026072223",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "entity_scope_correction": {
+        "pubco_parent": {
+          "entity": "Evernorth Holdings Inc. (Pubco; the parent Company in the filing)",
+          "financials_as_of": "2026-06-30",
+          "unrestricted_cash_usd": 800000,
+          "net_working_capital_deficit_usd": 3700000,
+          "accumulated_deficit_usd": 3100000,
+          "reported_operating_loss_usd": 2200000,
+          "operating_cash_used_usd": 2138275
+        },
+        "evernorth_operating_subsidiary": {
+          "entity": "Evernorth operating subsidiary (separately reported from Pubco)",
+          "financials_as_of": "2026-06-30",
+          "revenue": "None generated to the filing date",
+          "unrestricted_cash_usd": 100000,
+          "net_working_capital_deficit_usd": 696100000,
+          "accumulated_deficit_usd": 340900000,
+          "reported_operating_loss_usd": 265600000,
+          "net_loss_six_months_usd": 188100000,
+          "operating_cash_used_six_months_usd": 1329805,
+          "noncash_digital_asset_impairment_usd": 264100000,
+          "noncash_gain_from_fair_value_of_refundable_investor_advances_usd": 77500000
+        },
+        "related_party_facilities": {
+          "pubco_company_facility": {
+            "borrower": "Pubco parent",
+            "limit_usd": 10000000,
+            "drawn_as_of_2026_10_07_usd": 9700000,
+            "interest_rate_percent": 3.81,
+            "repayment_terms": "Amounts were subject to repayment within five business days after Closing Date or earlier upon five business days' notice of demand by Ripple; later repayment/current outstanding balance not established by this filing excerpt."
+          },
+          "evernorth_facility": {
+            "borrower": "Evernorth operating subsidiary",
+            "limit_usd": 1000000,
+            "drawn_as_of_2026_06_30_usd": 0,
+            "interest_rate_percent": 3.81
+          }
+        },
+        "pubco_convertible_notes": {
+          "issuer": "Pubco parent",
+          "principal_usd": 30000000,
+          "issued_and_funded_date": "2026-10-12",
+          "coupon_pik_percent": 4,
+          "maturity_year": 2031,
+          "holder_can_choose_cash_or_share_settlement": true,
+          "conversion_value_cap_usd": 120000000,
+          "put_yield_on_default_or_fundamental_transaction_percent": 8,
+          "use_of_proceeds": "General corporate purposes including acquisition of XRP; actual use to purchase XRP is not evidenced."
+        },
+        "pubco_cantor_eloc": {
+          "issuer": "Pubco parent",
+          "maximum_shares": 5218935,
+          "price_percent_vwap": 97,
+          "no_proceeds_as_of_prospectus": true,
+          "classification": "Contingent equity capacity, not cash raised or XRP purchased."
+        }
+      },
+      "correction_note": "The prior Run25 summary correctly quoted Evernorth subsidiary figures but did not clearly separate Pubco parent figures and obligations. The $30M note, $10M Company Facility and Cantor ELOC are Pubco-level; the separate $1M Evernorth Facility was undrawn at June30."
+    }
   },
   "run25_snapshot": {
     "captured_at_utc": "2026-11-11T13:02:17Z",
@@ -4445,6 +4612,20 @@
         "Hugging Face BUILD_ERROR"
       ]
     },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "run25b_snapshot": {
+    "captured_at_utc": "2026-11-11T13:15:41Z",
+    "parent_sha": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
+    "correction": "Pubco parent and Evernorth operating subsidiary financials/facilities separated; Pubco note and ELOC attributed correctly.",
+    "prior_exact_code_parent": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "prior_exact_code_parent_full_suite": {
+      "passed": 3427,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.98
+    },
+    "head_9e98_ci_status": "in_progress_at_capture",
     "forecast_status": "NOT_ISSUED"
   }
 }

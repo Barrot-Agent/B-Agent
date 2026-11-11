@@ -1,22 +1,16 @@
 ## Last State
 
-**Run25 — 2026-11-11T13:02:17Z**
+**Run25b — 2026-11-11T13:15:41Z**
 
 - Main SHA 84f28ee7755607236231545a14f3d093c1baaa85.
-- Integration branch integration/xrp-v3-unified-main-20261111; verified code parent 7155eede2a852355e5626c4f00c9c79a5ed1d1c7, 2,020 ahead and zero behind.
-- PR #1661 open/draft/mergeable; 1,000 changed files (44 workflows, 956 other paths), 238,998 additions and 4,363 deletions; zero formal reviews/approvals/threads. Open PR inventory: 374 (360 drafts, 14 non-drafts).
-- Complete trees before this atomic Run25 commit: main 1,388 entries/1,288 files; integration 2,265 entries/2,153 files. Paginated PR file page 11 returned zero.
-- Exact code parent 7155eede passed 3,427 full-suite tests, zero failures, eight subtests, 59.98% coverage, 96.83s; wheel and installed Barrot V3/XRP mission verified. Six-manifest audit passed with zero known vulnerabilities; fail-closed gate passed. Runs 43020833064, 43020832903 and 43020833177.
-- Main Cross Analysis 43023990234 succeeded. Main read-only Pillars check 43025487840 failed: GitHub App environment variables missing, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
-- OKX/Kraken normalized asynchronous spot gap about 0.41%; Fuelmaps 12:00 spot depth bid-heavy; TradRadar/Liqwall positive funding, falling OI and long-heavy liquidations but different universes; Deribit 30-day skew modestly put-rich; ETF providers disagree on flow windows; XRPL.to token-market/DEX pages disagree and neither measures native XRP/USD spot.
-- SEC Evernorth prospectus adds liquidity risk: June30 cash $0.1M, no revenue, $696.1M working-capital deficit; $9.7M Ripple facility drawn by Oct7; $30M PIK notes with conditional cash-settlement exposure up to $120M; Cantor ELOC had zero proceeds as of prospectus. Accounting losses include large non-cash impairment; operating cash use was about $1.33M.
-- GitHub connector metadata reports admin=true, exceeding least privilege. Branch-protection endpoint HTTP 403; visible fallback ruleset disabled. No merge.
-- Nine-platform status: ChatGPT GitHub API verified but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no approval; HF BUILD_ERROR; Kaggle untested; Databricks 403; GitHub App missing required environment variables; LunaRoute endpoint unverified.
-- Forecast NOT_ISSUED. Run25 web observations excluded from model features because no Barrot raw receipts or trusted timestamp anchor were created.
-- Backlog: #1661 blocked; #1660 retained as superseded candidate; preserve unique/unreviewed research/prediction/safety/topology PRs; no source PR closed.
-- The atomic Run25 map/handoff/research commit is being applied to the existing #1661 branch with a fast-forward expected-SHA check. Its own exact-head CI remains required.
-- Next: verify exact-head CI on the Run25 commit; reduce connector permissions; resolve GitHub App/Databricks/HF health; obtain branch-protection/approval visibility; remediate 17 credential-path tips additively; complete semantic review; obtain Pages authorization; then consider merge only after all gates pass.
-- No merge, deployment, secret action, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+- Integration branch integration/xrp-v3-unified-main-20261111; correction parent 9e98cbcd43ec2a3e2b5062db8261c4b8653265de, 2,021 ahead and zero behind; PR #1661 has 1,001 changed files (44 workflows, 957 other paths).
+- Verified code parent 7155eede passed 3,427 full-suite tests, zero failures, eight subtests, 59.98% coverage; six-manifest dependency audit found zero known vulnerabilities; fail-closed gate passed. The 9e98 exact-head CI is still in progress; Run25b correction commit will require its own exact-head CI.
+- Main read-only Pillars check failed because GitHub App environment variables are missing, Databricks returned HTTP 403 and Hugging Face reported BUILD_ERROR; main Cross Analysis succeeded.
+- SEC entity-scope correction: Pubco parent June30 cash $0.8M/deficit $3.7M/loss $2.2M; Evernorth operating subsidiary cash $0.1M/deficit $696.1M/loss $265.6M and no revenue. Pubco's $10M Ripple facility was $9.7M drawn Oct7; separate $1M Evernorth facility undrawn June30. Pubco issued the $30M PIK note and entered the Cantor ELOC; ELOC proceeds were zero as of prospectus.
+- Market snapshot and source disagreement remain as recorded in Run25. Web data are not model-eligible without Barrot receipts.
+- ChatGPT GitHub connector remains admin=true and overprivileged; branch-protection details HTTP 403; fallback ruleset disabled; no merge.
+- Forecast NOT_ISSUED; no external-model transfer, paper trade or real-money action.
+- No merge, deployment, secret action, force-push, history rewrite, destructive worktree operation or PR closure.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
@@ -78,3 +72,6 @@
 
 
 - 2026-11-11T13:02:17Z — Run25: verified current main/integration trees, complete 374-PR inventory and #1661 file pagination; verified 3,427-test exact code parent, six-manifest zero-vulnerability audit and fail-closed gate; diagnosed main Pillars failure (GitHub App env missing, Databricks 403, Hugging Face BUILD_ERROR); refreshed spot/L2/derivatives/options/ETF/XRPL DEX; reconciled Evernorth SEC financing/liquidity risk and SBI/Ripple stablecoin rails; added one structured research artifact and updated the canonical handoff/map on the existing integration branch. No merge or external action.
+
+
+- 2026-11-11T13:15:41Z — Run25b corrected SEC entity attribution: separated Pubco parent and Evernorth operating subsidiary financials/facilities, attributed the $30M PIK note and Cantor ELOC to Pubco, and preserved the $1M Evernorth facility as undrawn at June30. Updated the existing Run25 artifact and canonical handoff/map; no new PR or external action.
