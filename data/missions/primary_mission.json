@@ -62,7 +62,7 @@
       "topic_id": "xrp_walk_forward_baselines",
       "priority": 5,
       "title": "Leakage-safe walk-forward evaluation",
-      "goal": "Populate synchronized historical XRP datasets and run chronological walk-forward evaluation with purge/embargo, point-in-time cutoffs, naive/class-prior, momentum, mean-reversion and volatility baselines. Report sample counts, target definitions, horizons, Brier score, log loss, accuracy and uncertainty; do not use future information."
+      "goal": "Populate synchronized historical XRP datasets and run chronological walk-forward evaluation with purge/embargo, point-in-time cutoffs, naive/class-prior, momentum, mean-reversion and volatility baselines. Report raw origins and overlap-adjusted effective sample size for each horizon; never count overlapping target windows as independent. Report target definitions, horizons, Brier score, log loss, accuracy and uncertainty; do not use future information."
     },
     {
       "topic_id": "xrp_calibration_drift_shadow",
@@ -74,7 +74,7 @@
       "topic_id": "xrp_forecast_outcome_ledger",
       "priority": 7,
       "title": "Forecast and outcome ledger",
-      "goal": "Verify that every permitted forecast records its data cutoff, horizon, target, assumptions, probabilities, competing scenarios, disconfirming evidence and eventual outcome. Keep directional issuance disabled until the documented readiness certificate passes; no paper trading or real-money execution."
+      "goal": "Verify that every permitted forecast records its data cutoff, horizon, target, assumptions, probabilities, competing scenarios, disconfirming evidence and eventual outcome. Require independently attested overlap-adjusted effective sample sizes for both out-of-sample and shadow cohorts. Keep directional issuance disabled until the versioned readiness certificate passes; no paper trading or real-money execution."
     }
   ],
   "continuation_goal": {
@@ -85,8 +85,8 @@
     "Scheduled public-data ingestion has verified successful runs and explicit failure/quality records.",
     "Original source bytes have immutable or independently verifiable receipts and SHA-256 hashes.",
     "A durable cross-run point-in-time feature store preserves provider event time, retrieval time, corrections and source independence.",
-    "Historical XRP datasets support leakage-safe chronological walk-forward evaluation against all four baselines.",
-    "Probability calibration, drift monitoring and shadow evaluation pass documented thresholds on independent out-of-sample outcomes.",
+    "Historical XRP datasets support leakage-safe chronological walk-forward evaluation against all four baselines, with overlap-adjusted effective sample sizes for every horizon.",
+    "Probability calibration, drift monitoring and shadow evaluation pass documented thresholds on independent out-of-sample outcomes, including at least ten independently attested non-overlapping target windows in both out-of-sample and shadow cohorts.",
     "Every issued forecast has a complete immutable forecast record and later outcome.",
     "No directional forecast is issued before all readiness gates pass.",
     "Barrot V3 execution, orchestration, safety and verification tests remain green."

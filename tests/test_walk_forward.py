@@ -87,6 +87,8 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
     assert result["live_forecast_issued"] is False
     assert result["paper_trade_executed"] is False
     assert result["forecast_count"] > 0
+    assert result["out_of_sample_effective_sample_size"] == result["out_of_sample_origin_count"]
+    assert result["effective_sample_size_method"] == "greedy_non_overlapping_target_intervals_v1"
     assert set(result["metrics"]) == {
         "naive_class_prior",
         "momentum_sign",
@@ -98,6 +100,7 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
         assert 0.0 <= metrics["accuracy"] <= 1.0
         assert math.isfinite(metrics["mean_brier_score"])
         assert math.isfinite(metrics["mean_log_loss"])
+        assert metrics["overlap_adjusted_effective_sample_size"] == metrics["forecast_count"]
         assert metrics["calibration"]["recalibration_applied"] is False
     for forecast in result["forecasts"]:
         assert forecast["forecast_type"] == "historical_backtest_only"
@@ -124,6 +127,7 @@ def test_backfilled_history_supports_training_only_at_or_after_its_capture_time(
         horizon_seconds=3600,
         min_train_samples=5,
         min_out_of_sample_samples=1,
+        min_effective_out_of_sample_samples=1,
         target_tolerance_seconds=5,
         venue="kraken",
         currency_pair="XRP/USD",
@@ -345,3 +349,48 @@ def test_walk_forward_calibration_uses_only_prior_resolved_oos_forecasts():
         assert "raw_mean_brier_score" in metrics
         assert "raw_mean_log_loss" in metrics
         assert metrics["calibration"]["method"] == "rolling_temporal_temperature_scaling_v1"
+
+
+def test_walk_forward_overlap_adjusted_effective_sample_size_gates_longer_horizons():
+    result = evaluate_chronological_walk_forward(
+        _series(120),
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=119, seconds=3)),
+        horizon_seconds=4 * 3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=100,
+        min_effective_out_of_sample_samples=30,
+        embargo_seconds=4 * 3600,
+        target_tolerance_seconds=5,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["out_of_sample_origin_count"] >= 100
+    assert result["out_of_sample_effective_sample_size"] < 30
+    assert result["out_of_sample_effective_sample_size"] < result["out_of_sample_origin_count"]
+    assert result["out_of_sample_overlap_adjustment_factor"] > 3.0
+    assert result["status"] == "INSUFFICIENT_EFFECTIVE_HISTORY"
+    assert result["insufficient_history_reason"].startswith(
+        "insufficient_overlap_adjusted_effective_sample_size:"
+    )
+    assert result["live_forecast_issued"] is False
+    assert result["paper_trade_executed"] is False
+
+
+def test_walk_forward_rejects_non_positive_effective_sample_minimum():
+    with pytest.raises(
+        WalkForwardEvaluationError,
+        match="min_effective_out_of_sample_samples must be a positive integer",
+    ):
+        evaluate_chronological_walk_forward(
+            _series(12),
+            feature_id=FEATURE_ID,
+            evaluation_as_of_utc=_stamp(BASE + timedelta(hours=11, seconds=3)),
+            horizon_seconds=3600,
+            min_train_samples=3,
+            min_effective_out_of_sample_samples=0,
+            target_tolerance_seconds=5,
+            venue="kraken",
+            currency_pair="XRP/USD",
+        )

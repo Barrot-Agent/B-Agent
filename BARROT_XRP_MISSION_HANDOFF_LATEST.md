@@ -1,4 +1,4 @@
-# Barrot XRP Mission — Canonical Handoff (latest: Run 12 — 2026-11-11T01:12Z)
+# Barrot XRP Mission — Canonical Handoff (latest: Run 12A — 2026-11-11)
 ## Latest verified status — Run 12 (2026-11-11 01:12 UTC)
 
 **Mission:** XRP intelligence and prediction-engine mastery remains priority 1. **Foundation:** Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
@@ -6959,3 +6959,70 @@ No PR was created or closed. No merge, deployment, secret rotation/revocation, S
 9. Activate the public XRP collector only after authorized merge; verify successful main scheduled runs and receipt/artifact recovery.
 10. Build independent WORM/timestamp anchoring, replayable feature-store history, vintage-aware event ingestion, counter-hypotheses and shadow evaluation.
 11. Keep forecasts disabled until independent out-of-sample evidence demonstrates calibrated lift over the four baselines.
+
+## Run 12A — overlap-adjusted effective sample size and institutional network update
+Recorded after the Run 12 market/repository reconciliation. The parent integration head ec6516a3ae94815e8d50cd64693972a252e0584b passed its exact-head full suite (3,376 passed, eight subtests, 59.78% coverage), dependency audit and fail-closed gate. This Run 12A commit adds one bounded evaluator/ledger change and updates its tests, contract and mission manifest. Its own exact-head CI is pending until GitHub Actions completes.
+
+### 1. Bounded prediction-engine implementation
+
+The previous walk-forward evaluator purged/embargoed training labels but counted hourly test origins as separate observations even when their fixed-horizon target windows overlapped. For 4h, 24h, 7d and 30d horizons, this could overstate independent evidence.
+
+**Implemented in the existing integration branch, not yet CI-verified on the new head:**
+- Added overlap-adjusted effective sample size using the maximum set of pairwise non-overlapping target intervals, selected by earliest-finish greedy interval scheduling.
+- Preserved raw origin count and added effective count, overlap-adjustment factor and method identifier to per-baseline metrics and the overall evaluation result.
+- The evaluator now reports INSUFFICIENT_EFFECTIVE_HISTORY when raw sample count passes but the configured effective-window minimum (default 10) does not.
+- Upgraded the independent forecast-readiness schema/policy from v3 to v4. Old v3 readiness reports are rejected.
+- Policy v4 requires the evaluator-attested method identifier, at least 10 effective out-of-sample windows and at least 10 effective shadow windows. Each effective count must be no greater than raw sample count and no greater than the horizon-span capacity.
+- The Ed25519 attestation domain is versioned to BARROT_XRP_MODEL_READINESS_V4.
+- Updated both byte-identical mission manifest copies and the forecast-ledger contract.
+- Added tests for 4h overlapping windows, insufficient effective history, invalid thresholds, missing/unsupported ESS method, ESS below ten, ESS greater than raw count and ESS greater than span capacity.
+
+**Method limitation:** this is a conservative overlap-only count. It does not correct residual serial dependence between disjoint windows, source/venue correlation, regime clustering or small-sample uncertainty. It does not provide HAC standard errors or block-bootstrap intervals. The independent evaluator must attest the ESS values; the ledger validates method, range and time-span capacity. No directional forecast is enabled by this change.
+
+### 2. Coinbase, Circle and Ripple — newly reconciled direct relationship
+
+- Coinbase's October 28, 2026 RLUSD listing announcement confirms RLUSD trading/listing on Coinbase Exchange, Coinbase Prime and retail Coinbase, with deposits/withdrawals on XRPL, Base and Ethereum. Ripple provides liquidity support for RLUSD on Base. Coinbase Global Exchange collateral support was described as coming later, not live at launch. This is a direct commercial/product integration between Coinbase and Ripple, but not evidence of Coinbase buying XRP or using XRP as the settlement asset for RLUSD.
+- Circle's Q3 2026 SEC 10-Q reports Coinbase distribution costs of $331.3M for Q3 and $986.6M for the first nine months of 2026. The filing explains that Coinbase's distribution allocation depends on USDC held on its platform and a share of broader ecosystem growth. This is a material direct economic relationship, not merely a generic listing partnership.
+- Coinbase's Q3 2026 shareholder results report average USDC held on Coinbase of approximately $22B, around 30% of average USDC market capitalization, and management's estimate that Coinbase captured approximately half of USDC economics over the preceding year. These are company-reported metrics, not independent market-share calculations.
+- Circle's Q3 2026 10-Q reports $181.8M of revenue related to its Arc token presale in the quarter. SBI previously announced participation in the Arc token presale through a subsidiary; its amount was not disclosed. This is a direct SBI/Circle ecosystem investment adjacency around Circle's L1, not an XRP investment or XRP integration.
+- Circle's USDC and Ripple's RLUSD both have XRPL presence. Stablecoin issuance/transfer on XRPL does not by itself establish XRP bridge demand, XRP treasury purchases or net XRP collateral demand.
+
+Sources:
+https://www.coinbase.com/blog/coinbase-lists-ripple-usd-rlusd-on-coinbase-exchange-prime-and-coinbase
+https://www.sec.gov/Archives/edgar/data/1876042/000187604226000093/crcl-20260930.htm
+https://investor.coinbase.com/financials/sec-filings/content/0001679788-26-000095/coin-20260930.htm
+https://www.circle.com/blog/usdc-launches-on-xrpl
+
+### 3. SBI and its distinct legal entities — important correction
+
+- Ripple's official SBI Ripple Asia customer page states that SBI Ripple Asia provides RippleNet software/services to financial institutions and does not handle XRP. Its page separately describes ODL services using XRP in Japan through SBI Remit, Coins.ph and SBI VC Trade. Therefore SBI Ripple Asia must not be described as the XRP trading, custody or bridge-liquidity entity.
+- SBI's 2016 joint-venture announcement records the historical 60/40 SBI/Ripple ownership structure; the current SBI group page identifies SBI Group as the 60% major shareholder. SBI's Ripple equity stake was described as approximately 9% in its June 2025 presentation; that is a dated disclosure, not a current share-register confirmation.
+- SBI VC Trade's June 24, 2026 RLUSD availability and SBI Remit's XRP ODL corridors are distinct activities. The May 1 Visa crypto-rewards card allows points to be converted into BTC, ETH or XRP; it is a retail accumulation path, not institutional XRP buying.
+- SBI's acquisition of bitbank completed October 1, 2026, making bitbank a wholly owned subsidiary. This expands SBI's exchange footprint, but no post-close XRP volume, market share or liquidity change was verified.
+- SBI announced a $100M investment in Erebor Bank on November 2, 2026. Treat it as an announced commitment until closing/deployment is confirmed. Erebor's stablecoin deposit/withdrawal and 24/7 blockchain settlement capabilities are not an XRP integration.
+- SBI and Startale joined the Open Standard consortium with 140+ participants, including Coinbase, and are exploring JPYSC/OUSD interoperability. This is an indirect multi-party consortium overlap, not a bilateral SBI-Coinbase commercial agreement.
+- SBI and SMBC announced a capital/business alliance to explore stablecoin financial services on October 30. No XRP use was disclosed.
+- SBI Circle Holdings remains a 50/50 SBI/Circle joint venture. SBI Holdings and SBI Shinsei Bank each disclosed a $25M Circle IPO investment in 2025. The present ownership percentage of Coinbase in Circle was not independently recalculated from the latest share register.
+
+Sources:
+https://ripple.com/customers/sbi-ripple-asia/
+https://www.sbigroup.co.jp/english/news/pdf/2016/0226_a_en.pdf
+https://www.sbigroup.co.jp/news/2025/0609_15492.html
+https://www.sbigroup.co.jp/news/2025/0609_15493.html
+https://www.sbigroup.co.jp/news/2025/1003_15844.html
+https://www.sbigroup.co.jp/news/2026/1001_16525.html
+https://www.sbigroup.co.jp/news/2026/1102_16589.html
+https://www.sbigroup.co.jp/news/2026/1016_16566.html
+https://www.sbigroup.co.jp/news/2026/1030_16583.html
+https://www.sbigroup.co.jp/news/2026/0501_16304.html
+https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+
+### 4. Exact-phrase and identity status
+
+The latest exact-phrase searches did not establish an XRP-linked ASK Coin project, a standardized XRP meaning for “actual capital”, or a ChatGPT/OpenAI partnership with SBIC. Permission Coin ASK remains a Base/Polygon candidate with no verified XRPL integration. SBIC East/Central/West remain distinct Japanese regional investment-consultation companies, not SBI Holdings. The candidate Kamilah Stevenson YouTube identity still lacks sufficient first-party cross-linking; no videos were attributed.
+
+### 5. Current market evidence remains descriptive
+
+Run 12's direct spot observations were around $1.052, with OKX event time 00:59:16.859Z on November 11 and Kraken retrieval around 01:12Z. TradRadar's 00:00Z November 11 snapshot showed approximately $1.57B open interest, down 5.48%, positive funding and long-heavy liquidations. Deribit options at 22:00Z November 10 showed 58.6% 30-day ATM IV and a mixed near-/long-dated skew. Alpha Finance's full five-fund November 9 ETF snapshot showed approximately $10.4M daily outflow but approximately $8.9M positive 30-session flow. CryptoQuant's November 10 posts separately reported a 691M XRP Binance whale inflow and broader net depositing-wallet growth on Coinbase, Bybit and Crypto.com. CFTC's November 6 report for November 3 showed a 12.94% decline in the three currently reported XRP futures products; dropped contract 176LM2 remains unknown, not zero. These inputs have different capture times and source families; they are not pooled into a directional signal.
+
+**Forecast status: NOT_ISSUED.** No real-money action, paper trade or forecast.

@@ -26,7 +26,7 @@ _TEST_EVALUATOR_PRIVATE_KEY = Ed25519PrivateKey.from_private_bytes(bytes(range(3
 _TEST_EVALUATOR_PUBLIC_KEY = _TEST_EVALUATOR_PRIVATE_KEY.public_key().public_bytes(
     Encoding.Raw, PublicFormat.Raw
 )
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V3\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V4\0"
 
 
 def _trusted_test_evaluator_keys():
@@ -197,10 +197,10 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         allow_nan=False,
     ).encode("utf-8")
     report = {
-        "schema_version": "barrot.xrp.model-readiness.v3",
+        "schema_version": "barrot.xrp.model-readiness.v4",
         "evaluation_type": "chronological_walk_forward_model_evaluation",
         "status": "PASS",
-        "policy_id": "xrp_forecast_readiness_v3",
+        "policy_id": "xrp_forecast_readiness_v4",
         "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}-{'-'.join(source_ids)}",
         "model_version": "xrp-test-v1",
         "baseline_model_version": "naive-frequency-v1",
@@ -216,6 +216,15 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         "training_sample_count": 1000,
         "out_of_sample_sample_count": 200,
         "shadow_evaluation_sample_count": 200,
+        "effective_sample_size_method": "greedy_non_overlapping_target_intervals_v1",
+        "out_of_sample_effective_sample_size": min(
+            200,
+            int((datetime.fromisoformat("2026-10-20T00:00:00+00:00") - datetime.fromisoformat("2026-10-01T00:00:00+00:00")).total_seconds() // horizon_seconds),
+        ),
+        "shadow_evaluation_effective_sample_size": min(
+            200,
+            int((datetime.fromisoformat("2026-11-03T15:00:00+00:00") - datetime.fromisoformat("2026-10-20T00:00:00+00:00")).total_seconds() // horizon_seconds),
+        ),
         "out_of_sample_start_utc": "2026-10-01T00:00:00Z",
         "out_of_sample_end_utc": "2026-10-20T00:00:00Z",
         "shadow_evaluation_start_utc": "2026-10-20T00:00:00Z",
@@ -256,7 +265,7 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         "certificate": {
             "report_sha256": report_sha256,
             "receipt_id": receipt_id,
-            "policy_id": "xrp_forecast_readiness_v3",
+            "policy_id": "xrp_forecast_readiness_v4",
             "status": "PASS",
         },
     }
@@ -1118,9 +1127,43 @@ def test_readiness_report_rejects_missing_or_invalid_embargo_policy():
         _validate_readiness_report(report)
 
 
-def test_readiness_policy_v3_uses_new_attestation_domain_and_horizon_sized_embargo():
+def test_readiness_policy_v4_requires_overlap_adjusted_effective_sample_size_and_horizon_sized_embargo():
     report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
-    assert report["schema_version"] == "barrot.xrp.model-readiness.v3"
-    assert report["policy_id"] == "xrp_forecast_readiness_v3"
+    assert report["schema_version"] == "barrot.xrp.model-readiness.v4"
+    assert report["policy_id"] == "xrp_forecast_readiness_v4"
+    assert report["effective_sample_size_method"] == "greedy_non_overlapping_target_intervals_v1"
+    assert report["out_of_sample_effective_sample_size"] >= 10
+    assert report["shadow_evaluation_effective_sample_size"] >= 10
     assert report["embargo_seconds"] >= report["horizon_seconds"]
     assert report["purge_policy"] == "training_start_and_outcome_available_by_cutoff_minus_embargo"
+    assert _EVALUATOR_ATTESTATION_DOMAIN == b"BARROT_XRP_MODEL_READINESS_V4\0"
+
+
+def test_readiness_rejects_missing_or_unsupported_effective_sample_size_method():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report.pop("effective_sample_size_method")
+    with pytest.raises(ForecastLedgerError, match="effective_sample_size_method is unsupported"):
+        _validate_readiness_report(report)
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["effective_sample_size_method"] = "raw_sample_count_only"
+    with pytest.raises(ForecastLedgerError, match="effective_sample_size_method is unsupported"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_effective_sample_size_below_independent_window_minimum():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["out_of_sample_effective_sample_size"] = 9
+    with pytest.raises(ForecastLedgerError, match="out_of_sample_effective_sample_size must be at least 10"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_effective_sample_size_above_raw_count_or_horizon_capacity():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["out_of_sample_effective_sample_size"] = 201
+    with pytest.raises(ForecastLedgerError, match="cannot exceed raw sample count"):
+        _validate_readiness_report(report)
+
+    report = json.loads(READINESS_FIXTURES[("XRP", 14400)]["report_bytes"])
+    report["out_of_sample_effective_sample_size"] += 1
+    with pytest.raises(ForecastLedgerError, match="exceeds horizon-span capacity"):
+        _validate_readiness_report(report)

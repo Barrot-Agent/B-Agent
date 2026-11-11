@@ -1,4 +1,4 @@
-# XRP fixed-horizon forecast ledger contract v3
+# XRP fixed-horizon forecast ledger contract v4
 
 ## Status
 The deterministic SQLite recording/scoring prototype is EXECUTED in `barrot_agent/evolution/forecast_ledger.py` and covered by `tests/test_forecast_ledger.py`. Readiness reports require an Ed25519 signature from an externally trusted evaluator key; the production default has no trusted keys and therefore fails closed. The ledger itself does not ingest data, generate forecasts, train a model or trade. The weekly CFTC adapter now captures both the TFF positions report and the COT added/dropped-contract index. It records total trader counts and per-contract XRP-equivalent open interest, preserves suppressed dot changes as null, and never zero-fills an absent optional contract. CFTC observations remain research-only and model-ineligible. PR #1640 defines 46 public endpoint records (42 hourly, two weekly CFTC sources: TFF positions and the COT contract-status index; two free non-commercial XRPL nodes excluded) and a workflow that trusts exact cache hits only; on a miss or partial cache restore it searches up to 30 pages of 100 completed main-branch ingestion runs, restoring the newest successful per-run checkpoint (7-day retention) and falling back to the daily/manual archive (90-day retention). It is not merged to main, no scheduled main-branch run is verified, and no mature multi-run XRP dataset exists. Cache is evictable and artifacts expire; this is bounded recovery, not external WORM persistence or independent timestamp anchoring. The database is runtime state and is excluded from Git.
@@ -15,7 +15,7 @@ The ledger is restricted to live/shadow issuance: each immutable issuance event 
 
 Every issuance requires an injected `HistoricalFeatureStore`. Each feature snapshot ID must be a 64-character SHA-256 ID and resolve to an exact snapshot whose manifest, rows, source lineage and SQLite integrity verify. The snapshot must cover the forecast asset, have a data cutoff no later than the forecast cutoff, and have been captured and stored no later than that cutoff. Forecast source IDs must exactly match the union of source IDs in the referenced asset-specific records. `feature_max_timestamp_utc` must equal the maximum of `known_at_utc`, `source_data_as_of_utc`, `ingested_at_utc` and `revision_available_at_utc` across those records. This closes the local cross-store reference gap; it does not authenticate external publishers or independently anchor store receipts.
 
-## Independent evaluator attestation (policy v3)
+## Independent evaluator attestation (policy v4)
 
 A readiness report is not trusted because it contains self-declared `PASS` fields or better metrics. Policy v3 requires all of the following:
 
@@ -27,11 +27,26 @@ A readiness report is not trusted because it contains self-declared `PASS` field
 
 The trust store is supplied through the `BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON` environment variable as a JSON object mapping evaluator key IDs to base64-encoded 32-byte Ed25519 public keys. The private signing key must remain with an independently operated evaluator and must never be committed to this repository or exposed to the model/training workflow. Key provisioning, evaluator independence and the evaluator's reproducible execution pipeline are not yet configured or verified. With no trusted key configured, readiness registration and forecast issuance are rejected. Test-only signing keys exist only in the test module and do not populate the production trust store.
 
-Policies v1 and v2 are not accepted by policy v3. The v3 attestation domain is `BARROT_XRP_MODEL_READINESS_V3\0`.
+Policies v1, v2 and v3 are not accepted by policy v4. The v4 attestation domain is `BARROT_XRP_MODEL_READINESS_V4\0`.
 
 ## Purged and embargoed evaluation requirement
 
-Every readiness report must include `embargo_seconds` as a non-boolean integer at least as large as `horizon_seconds`, and `purge_policy=training_start_and_outcome_available_by_cutoff_minus_embargo`. The walk-forward evaluator excludes training start and outcome records that were not available by `data_cutoff_utc - embargo_seconds`. The hourly scheduled collector evaluates the 1-hour horizon only. The daily 00:15 UTC schedule and manual dispatch evaluate 1h, 4h, 24h, 7d and 30d. Every horizon uses an embargo equal to that horizon, with 100 minimum point-in-time training examples and 100 minimum out-of-sample origins; insufficient history is reported and never relaxed. The source feature bars remain hourly. Origins therefore remain hourly and target windows overlap for horizons longer than one hour; no block bootstrap, HAC interval or effective-sample-size adjustment is implemented. These multi-horizon results are descriptive and remain model-ineligible. The momentum predictor may use the latest point-in-time feature return, but that predictor is not admitted as a training label inside the embargo window.
+Every readiness report must include `embargo_seconds` as a non-boolean integer at least as large as `horizon_seconds`, and `purge_policy=training_start_and_outcome_available_by_cutoff_minus_embargo`. The walk-forward evaluator excludes training start and outcome records that were not available by `data_cutoff_utc - embargo_seconds`. The hourly scheduled collector evaluates the 1-hour horizon only. The daily 00:15 UTC schedule and manual dispatch evaluate 1h, 4h, 24h, 7d and 30d. Every horizon uses an embargo equal to that horizon, with 100 minimum point-in-time training examples and 100 minimum out-of-sample origins; insufficient history is reported and never relaxed. The source feature bars remain hourly. Origins therefore remain hourly and target windows overlap for horizons longer than one hour. The walk-forward evaluator now reports a conservative overlap-adjusted effective sample size by greedily selecting the maximum number of pairwise non-overlapping target intervals. Its status is INSUFFICIENT_EFFECTIVE_HISTORY when this count is below the configured minimum, even if the raw origin count passes. This is an overlap-only correction: it does not remove residual serial dependence between disjoint windows or shared-source correlation, and it does not produce HAC standard errors or block-bootstrap confidence intervals. Mean scores and calibration bins remain descriptive. These multi-horizon results remain model-ineligible until mature independent XRP outcomes support the full readiness policy. The momentum predictor may use the latest point-in-time feature return, but that predictor is not admitted as a training label inside the embargo window.
+
+
+## Overlap-adjusted effective sample size (policy v4)
+
+The walk-forward evaluator reports both raw out-of-sample origins and an overlap-adjusted effective sample size. For each fixed-horizon forecast, the target interval is the half-open interval from its data cutoff to the observed target event. The evaluator sorts intervals by earliest finish and greedily selects the maximum set of pairwise non-overlapping intervals. The method identifier is greedy_non_overlapping_target_intervals_v1.
+
+The report preserves:
+- raw origin/sample count;
+- overlap-adjusted effective sample size;
+- overlap-adjustment factor (raw count divided by effective count);
+- method identifier and explicit limitations.
+
+The forecast ledger policy v4 requires an independently attested method identifier, at least 10 effective out-of-sample windows and at least 10 effective shadow windows, with each effective count no greater than its raw sample count or the maximum number of horizon-sized windows supported by the declared evaluation span. Missing, unsupported, over-counted or span-inconsistent values fail closed. The Ed25519 attestation domain is versioned to v4, so v3 readiness reports are not accepted.
+
+This is a conservative correction for overlapping target windows, not a claim that non-overlapping observations are statistically independent. Residual autocorrelation, common-source dependence, venue dependence and regime clustering still require separate diagnostics and uncertainty analysis. The effective sample size is a gate and reporting measure; it does not itself prove predictive lift or authorize a directional forecast.
 
 ## Forecast definition
 Supported horizons: 1 hour, 4 hours, 24 hours, 7 days and 30 days. Every record defines the exact XRP/USD target measure, venue convention, flat band and target timestamp. Down/flat/up classes are determined by a flat band fixed before the outcome is known.

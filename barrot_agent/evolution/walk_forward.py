@@ -15,6 +15,7 @@ from .probability_calibration import apply_temporal_temperature_calibration
 
 _CLASSES = ("down", "flat", "up")
 _BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
+_EFFECTIVE_SAMPLE_SIZE_METHOD = "greedy_non_overlapping_target_intervals_v1"
 
 
 class WalkForwardEvaluationError(ValueError):
@@ -169,10 +170,47 @@ def _score(probabilities: Mapping[str, float], actual: str) -> dict[str, Any]:
     }
 
 
+
+def _overlap_adjusted_effective_sample_size(forecasts: list[dict[str, Any]]) -> dict[str, Any]:
+    """Count the maximum non-overlapping fixed-horizon target intervals.
+
+    This is a conservative overlap-only effective sample size. It does not
+    correct residual serial dependence between disjoint windows or shared-source
+    correlation; those require separate uncertainty analysis.
+    """
+    intervals = set()
+    for forecast in forecasts:
+        start = _utc(forecast.get("data_cutoff_utc"), "data_cutoff_utc")
+        end_value = forecast.get("observed_target_event_time_utc") or forecast.get("target_time_utc")
+        end = _utc(end_value, "target_time_utc")
+        if end <= start:
+            raise WalkForwardEvaluationError("target interval must end after its forecast cutoff")
+        intervals.add((start, end))
+
+    ordered = sorted(intervals, key=lambda interval: (interval[1], interval[0]))
+    effective = 0
+    last_end: datetime | None = None
+    for start, end in ordered:
+        # Target windows are treated as half-open [cutoff, outcome), so
+        # adjacent windows that meet exactly do not overlap.
+        if last_end is None or start >= last_end:
+            effective += 1
+            last_end = end
+
+    raw_count = len(ordered)
+    return {
+        "raw_sample_count": raw_count,
+        "overlap_adjusted_effective_sample_size": effective,
+        "overlap_adjustment_factor": raw_count / effective if effective else None,
+        "effective_sample_size_method": _EFFECTIVE_SAMPLE_SIZE_METHOD,
+    }
+
+
 def _metrics(forecasts: list[dict[str, Any]], bin_count: int) -> dict[str, Any]:
     if not forecasts:
         return {"forecast_count": 0}
     count = len(forecasts)
+    overlap_metrics = _overlap_adjusted_effective_sample_size(forecasts)
     bins: dict[str, list[dict[str, float]]] = {
         label: [
             {"count": 0, "predicted_sum": 0.0, "observed_sum": 0.0}
@@ -225,6 +263,7 @@ def _metrics(forecasts: list[dict[str, Any]], bin_count: int) -> dict[str, Any]:
     ]
     return {
         "forecast_count": count,
+        **overlap_metrics,
         "accuracy": sum(item["scoring"]["correct"] for item in forecasts) / count,
         "mean_brier_score": statistics.fmean(item["scoring"]["brier_score"] for item in forecasts),
         "mean_log_loss": statistics.fmean(item["scoring"]["log_loss"] for item in forecasts),
@@ -259,6 +298,7 @@ def evaluate_chronological_walk_forward(
     currency_pair: str | None = None,
     min_train_samples: int = 100,
     min_out_of_sample_samples: int = 100,
+    min_effective_out_of_sample_samples: int = 10,
     flat_band_bps: float = 5.0,
     target_tolerance_seconds: int = 60,
     embargo_seconds: int = 0,
@@ -282,6 +322,9 @@ def evaluate_chronological_walk_forward(
     and leaves an explicit embargo buffer before the test origin. The test
     outcome is selected only from the later evaluation snapshot. Historical
     backfills captured together therefore do not create artificial origins.
+    The reported overlap-adjusted effective sample size is the maximum count
+    of non-overlapping target intervals. It gates the SCORED status but does not
+    claim to remove residual serial dependence or shared-source correlation.
     """
     if not isinstance(feature_id, str) or not feature_id.strip():
         raise WalkForwardEvaluationError("feature_id is required")
@@ -295,6 +338,8 @@ def evaluate_chronological_walk_forward(
         raise WalkForwardEvaluationError("min_train_samples must be a positive integer")
     if isinstance(min_out_of_sample_samples, bool) or not isinstance(min_out_of_sample_samples, int) or min_out_of_sample_samples < 1:
         raise WalkForwardEvaluationError("min_out_of_sample_samples must be a positive integer")
+    if isinstance(min_effective_out_of_sample_samples, bool) or not isinstance(min_effective_out_of_sample_samples, int) or min_effective_out_of_sample_samples < 1:
+        raise WalkForwardEvaluationError("min_effective_out_of_sample_samples must be a positive integer")
     if isinstance(target_tolerance_seconds, bool) or not isinstance(target_tolerance_seconds, int) or target_tolerance_seconds < 0:
         raise WalkForwardEvaluationError("target_tolerance_seconds must be a non-negative integer")
     if isinstance(embargo_seconds, bool) or not isinstance(embargo_seconds, int) or embargo_seconds < 0:
@@ -633,12 +678,23 @@ def evaluate_chronological_walk_forward(
 
     forecasts.sort(key=lambda item: (item["data_cutoff_utc"], item["model_id"]))
     out_of_sample_origin_count = len({item["data_cutoff_utc"] for item in forecasts})
-    status = "SCORED" if out_of_sample_origin_count >= min_out_of_sample_samples else "INSUFFICIENT_HISTORY"
-    insufficient_history_reason = (
-        None
-        if status == "SCORED"
-        else f"insufficient_out_of_sample_origins:{out_of_sample_origin_count}<{min_out_of_sample_samples}"
-    )
+    reference_forecasts = [item for item in forecasts if item["model_id"] == "naive_class_prior"]
+    overlap_metrics = _overlap_adjusted_effective_sample_size(reference_forecasts)
+    out_of_sample_effective_sample_size = overlap_metrics["overlap_adjusted_effective_sample_size"]
+    if out_of_sample_origin_count < min_out_of_sample_samples:
+        status = "INSUFFICIENT_HISTORY"
+        insufficient_history_reason = (
+            f"insufficient_out_of_sample_origins:{out_of_sample_origin_count}<{min_out_of_sample_samples}"
+        )
+    elif out_of_sample_effective_sample_size < min_effective_out_of_sample_samples:
+        status = "INSUFFICIENT_EFFECTIVE_HISTORY"
+        insufficient_history_reason = (
+            "insufficient_overlap_adjusted_effective_sample_size:"
+            f"{out_of_sample_effective_sample_size}<{min_effective_out_of_sample_samples}"
+        )
+    else:
+        status = "SCORED"
+        insufficient_history_reason = None
     metrics = {
         model_id: _metrics([item for item in forecasts if item["model_id"] == model_id], calibration_bin_count)
         for model_id in _BASELINES
@@ -649,7 +705,12 @@ def evaluate_chronological_walk_forward(
         "status": status,
         "min_train_samples": min_train_samples,
         "min_out_of_sample_samples": min_out_of_sample_samples,
+        "min_effective_out_of_sample_samples": min_effective_out_of_sample_samples,
         "out_of_sample_origin_count": out_of_sample_origin_count,
+        "out_of_sample_effective_sample_size": out_of_sample_effective_sample_size,
+        "out_of_sample_overlap_adjustment_factor": overlap_metrics["overlap_adjustment_factor"],
+        "effective_sample_size_method": _EFFECTIVE_SAMPLE_SIZE_METHOD,
+        "effective_sample_size_limitation": "non-overlapping target-window count only; residual serial dependence and source correlation are not removed",
         "insufficient_history_reason": insufficient_history_reason,
         "asset": asset,
         "feature_id": feature_id,

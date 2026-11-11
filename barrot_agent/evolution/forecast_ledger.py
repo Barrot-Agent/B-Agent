@@ -26,9 +26,9 @@ _HTTP_PROVENANCE_HEADER_NAMES = frozenset({
     "age", "cache-control", "content-type", "content-encoding",
     "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
 })
-READINESS_POLICY_ID = "xrp_forecast_readiness_v3"
+READINESS_POLICY_ID = "xrp_forecast_readiness_v4"
 _EVALUATOR_KEYS_ENV = "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON"
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V3\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V4\0"
 _REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
 _MIN_OOS_SAMPLES = 100
 _MIN_SHADOW_SAMPLES = 100
@@ -364,7 +364,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     """Validate an independently attested model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
         raise ForecastLedgerError("readiness report must be a JSON object")
-    if report.get("schema_version") != "barrot.xrp.model-readiness.v3":
+    if report.get("schema_version") != "barrot.xrp.model-readiness.v4":
         raise ForecastLedgerError("readiness report schema is unsupported")
     if report.get("evaluation_type") != "chronological_walk_forward_model_evaluation":
         raise ForecastLedgerError("baseline-only or non-chronological evaluation cannot authorize a forecast")
@@ -500,8 +500,20 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         return value
 
     sample_count("training_sample_count", _MIN_OOS_SAMPLES)
-    sample_count("out_of_sample_sample_count", _MIN_OOS_SAMPLES)
-    sample_count("shadow_evaluation_sample_count", _MIN_SHADOW_SAMPLES)
+    out_of_sample_count = sample_count("out_of_sample_sample_count", _MIN_OOS_SAMPLES)
+    shadow_sample_count = sample_count("shadow_evaluation_sample_count", _MIN_SHADOW_SAMPLES)
+    if report.get("effective_sample_size_method") != "greedy_non_overlapping_target_intervals_v1":
+        raise ForecastLedgerError("readiness report effective_sample_size_method is unsupported")
+    out_of_sample_effective_count = sample_count(
+        "out_of_sample_effective_sample_size", _MIN_HORIZON_MULTIPLE
+    )
+    shadow_effective_count = sample_count(
+        "shadow_evaluation_effective_sample_size", _MIN_HORIZON_MULTIPLE
+    )
+    if out_of_sample_effective_count > out_of_sample_count:
+        raise ForecastLedgerError("out-of-sample effective sample size cannot exceed raw sample count")
+    if shadow_effective_count > shadow_sample_count:
+        raise ForecastLedgerError("shadow effective sample size cannot exceed raw sample count")
 
     def span(start_field: str, end_field: str, label: str) -> tuple[datetime, datetime]:
         start = _utc(report.get(start_field), f"readiness report {start_field}")[0]
@@ -512,8 +524,14 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             )
         return start, end
 
-    _, oos_end = span("out_of_sample_start_utc", "out_of_sample_end_utc", "out-of-sample")
+    oos_start, oos_end = span("out_of_sample_start_utc", "out_of_sample_end_utc", "out-of-sample")
     shadow_start, shadow_end = span("shadow_evaluation_start_utc", "shadow_evaluation_end_utc", "shadow")
+    max_oos_non_overlapping = int((oos_end - oos_start).total_seconds() // horizon)
+    max_shadow_non_overlapping = int((shadow_end - shadow_start).total_seconds() // horizon)
+    if out_of_sample_effective_count > max_oos_non_overlapping:
+        raise ForecastLedgerError("out-of-sample effective sample size exceeds horizon-span capacity")
+    if shadow_effective_count > max_shadow_non_overlapping:
+        raise ForecastLedgerError("shadow effective sample size exceeds horizon-span capacity")
     if shadow_start < oos_end:
         raise ForecastLedgerError("shadow evaluation must follow the independent out-of-sample window")
 
