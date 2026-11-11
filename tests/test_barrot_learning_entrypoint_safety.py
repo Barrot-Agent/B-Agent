@@ -44,8 +44,9 @@ def test_knowledge_builder_requires_external_and_local_opt_in_on_clean_branch():
 
 def test_brain_external_gate_precedes_provider_calls_inside_think():
     source = _source("barrot_agent/barrot_brain.py")
-    think = source[source.index("    def think("):source.index("    @property
-    def backend_name")]
+    start = source.index("    def think(")
+    end = source.index("    @property", start)
+    think = source[start:end]
     assert "if not self.allow_external_inference:" in think
     assert think.index("if not self.allow_external_inference:") < think.index("requests.post(")
 
