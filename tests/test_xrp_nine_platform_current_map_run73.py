@@ -368,7 +368,7 @@ def test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates():
     assert sbi["circle_equity_investment_usd"] == 50000000
     assert sbi["circle_investment_split_usd"] == {"SBI Holdings": 25000000, "SBI Shinsei Bank": 25000000}
     assert "remain unverified" in identity["kamilah_stevenson"]
-    assert "No personal-channel inventory is attributed" in identity["kamilah_stevenson"]
+    assert "no personal-channel video inventory is attributed" in identity["kamilah_stevenson"].lower()
 
 
 def test_macro_and_geopolitical_observations_keep_competing_hypotheses():

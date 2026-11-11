@@ -32,7 +32,7 @@ def test_self_hosted_brain_workflow_is_quarantined_lunaroute_only():
     assert "inputs.confirm == 'YES'" in content
     assert "inputs.confirm_secret_rotation == 'YES'" in content
     assert "inputs.expected_main_sha == github.sha" in content
-    assert "permissions:\\n  contents: read" in content
+    assert "permissions:\n  contents: read" in content
     assert "persist-credentials: false" in content
 
 
