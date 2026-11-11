@@ -247,3 +247,10 @@
 - Artifact: `research/xrp_intelligence/20261111T231521Z-run38-current-spot-funding-liquidation-and-etf-flow-reconciliation.json`.
 - Next: exact-head CI on the new Run38 docs/artifact commit; then semantic review, least privilege, branch protection, credential revocation, Pages authorization, WORM anchoring and raw-to-feature-store rebuild.
 - No merge/deploy/secret rotation/Space restart/Kaggle submission/Databricks write/external-model transfer/paper trade/funds transfer/real-money action/force-push/history rewrite/destructive worktree operation/PR closure.
+
+
+## Run38 final verification — 2026-11-11 23:25 UTC
+- Exact parent `dd0152881ab6572b8a649a8bb4b87a9366335b92`: full suite 3,449/0, eight subtests, 59.99%, 84.72s; core 714/0; wheel and installed Barrot V3/XRP mission passed. [CI 43119172919](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119172919).
+- Exact-head dependency audit [43119172765](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119172765): six manifests, zero known vulnerabilities reported. PR/push fail-closed gates [43119172855](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119172855) and [43119162925](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119162925) passed. This result is on parent dd015288; the corrective handoff/map commit requires its own exact-head CI.
+- Backlog correction: #1650 HF Hub 2.4.0 is represented; #1254 HF Hub 2.3.0 is older; #1255 Databricks SDK 0.157.0 is older than 0.158.0; #1649 Databricks 0.158.0 represented; #1648 pytest 9.2.0 represented with older types-requests; #1646 types-requests 20261030 represented with older pytest. #1645 exact one-file duplicate candidate. #1644 one of eight workflow files exact; #1647 one of six exact; preserve differing workflow work. #1653 six unique graph paths; #1320/#1318/#1317/#1269 unique safety/MMI/topology. No PR closed.
+- Current PR #1661 remains draft with zero formal approvals/reviews. Security, branch-protection, credential-revocation, Pages-publication and semantic-review blockers remain. Forecast NOT_ISSUED.
