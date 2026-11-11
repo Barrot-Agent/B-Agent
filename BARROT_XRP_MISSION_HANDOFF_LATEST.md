@@ -1746,3 +1746,62 @@ No merge, deployment, secret rotation/revocation, Space restart, Kaggle submissi
 - #1661 remains draft with zero formal reviews, approvals and review threads. Main branch-protection details return HTTP 403; fallback ruleset disabled; connector permissions remain overprivileged; GitHub Pages publication is automatic on main push and not authorized; 979 non-workflow paths still need semantic review. No source PR was closed.
 - This final Run37 handoff/map/artifact commit is documentation/evidence-only. Its exact-head CI is pending; do not reuse the `dbbd106` pass as a test result for the new commit.
 - No merge, deployment, token rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+
+
+## Run38 — 2026-11-11 23:15 UTC
+
+### Mission and repository
+
+- Mission priority 1 remains XRP intelligence and prediction-engine mastery. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`. Integration branch: `integration/xrp-v3-unified-main-20261111`. Exact parent before this Run38 durable update: `beaca9472be073f9a4cae49cb78371b4be2a1a4e`; 2,054 ahead / 0 behind.
+- PR #1661 remains open, draft, reported mergeable/clean, with 1,023 changed files (44 workflow / 979 other paths), zero formal reviews, approvals and review threads. Full tree counts: main 1,388; integration 2,288. Open PR inventory: 374 (360 drafts, 14 non-drafts).
+
+### Exact-head CI repair and verification
+
+- Preceding head `0ddfc704ff2f6141db9f674bbf4d54e12f2c7593` failed one stale evidence-phrase assertion: 3,448 passed / 1 failed, eight subtests, 59.99% coverage. Core 714/0; dependency audit and fail-closed gates passed. The assertion required the exact phrase `exact-head full-suite passed` in the successful parent-head classification. The map wording was corrected; no tests were removed or weakened.
+- Exact corrected parent-head CI [43117758597](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117758597) on `beaca9472be073f9a4cae49cb78371b4be2a1a4e`: **3,449 passed, 0 failed, 8 subtests, 59.99% coverage, 93.85 seconds**. Core suite: 714/0. Wheel build succeeded; installed wheel verified Barrot V3, XRP mission and canonical data assets.
+- Dependency audit [43117758561](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117758561): six manifests (root runtime, development, supplemental `requirements.tx`, Hugging Face Space, legacy and PEP 621 project dependencies); zero known vulnerabilities reported. Push audit [43117751360](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117751360) passed. Fail-closed PR gate [43117758784](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117758784) and push gate [43117751382](https://github.com/Barrot-Agent/B-Agent/actions/runs/43117751382) passed; automatic merge remains disabled.
+- Packaging warnings remain: deprecated TOML license table and setuptools discovery warnings for `barrot_agent.data.missions` and `data.research`. Wheel build and installed mission verification nevertheless passed.
+- The 3,449/0 result is on parent `beaca9472be073f9a4cae49cb78371b4be2a1a4e`. The Run38 map/artifact/handoff/sync commits create newer heads; exact-head CI for the final durable head is pending and must be verified separately.
+
+### Fresh XRP market observations
+
+Capture: 2026-11-11 23:13:25 UTC. These are web-retrieved research observations, not Barrot raw-source receipts and not model-eligible.
+
+**Spot:** OKX XRP-USDT 1.0552 (bid 1.0552/ask 1.0553; provider timestamp 22:46:51.363 UTC; 24h volume 41.983M XRP). Kraken XRP/USD $1.05405 (bid $1.05403/ask $1.05405; no provider event timestamp; 24h volume 19.558M XRP). Kraken USDT/USD 0.99884. Normalized OKX midpoint $1.0540206 vs Kraken midpoint $1.05404, approximately -0.00184%; asynchronous, not executable arbitrage. [OKX](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT) · [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD) · [Kraken USDT/USD](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+**Depth:** no fresh synchronized depth retrieved. Fuelmaps' latest six-venue snapshot remains 14:00 UTC: within 1% $13.7M bids/$11.8M asks; 5% $25.0M/$14.7M; 10% $33.8M/$16.1M; excludes Binance/Bitget. More than nine hours old. Resting orders can be cancelled; current depth is missing, not imputed. [Fuelmaps](https://fuelmaps.io/order-book/).
+
+**Derivatives:** Alpha Finance liquidation heatmap at 21:50 UTC: all-exchange OI $2.29B, 24h volume $1.97B; modeled long liquidation pressure $64.7M below vs $32.5M short pressure above; largest modeled long cluster $5.1M at $1.0486 and short cluster $3.2M at $1.0780. Actual 24h long liquidations $1.5M and short $1.2M. These are modeled from OI/leverage tiers, not actual account-level orders or guaranteed triggers; no Binance map was drawn for this window. [Alpha heatmap](https://alphafinance.io/liquidation-heatmap/xrp/).
+
+TradRadar at 19:05 UTC: seven-exchange OI $1.57B (-0.97% 24h), OI-weighted funding +0.0045%/8h, at least $2.85M liquidations ($1.58M long/$1.27M short), 79.7% long accounts across five exchanges. Different coverage from Alpha; no averaging. [TradRadar](https://tradradar.io/markets/xrp).
+
+Alpha six-venue funding page, updated 22:14 UTC: average +0.0081%/8h; Binance +0.0076%, OKX +0.0095%, Bybit +0.0079%, Bitget +0.0069%, Gate +0.0098%, Hyperliquid +0.0072%. Positive funding is positioning context, not a forecast. [Alpha funding](https://alphafinance.io/crypto-funding-rates/).
+
+No fresh XRP-specific options snapshot was retrieved; the current Alpha options page displays BTC/ETH only. No substitution was made.
+
+**ETF flow reconciliation:** Alpha Finance's five-fund series through Nov10 reports -$7.6M; Grayscale GXRP -$7.2M and Canary XRPC -$449.8K; Bitwise XRP, Franklin XRPZ and 21Shares TOXR zero. Seven-session -$18.0M; 30-session +$1.3M; cumulative net inflow +$1.71B. Alpha includes GXRP and excludes XRPR/BITW. [Alpha ETF](https://alphafinance.io/etf/xrp/).
+
+XRP Insights tracks six spot funds plus BITW for holdings: 1.18597B XRP, $1.25962B AUM, 1.186% supply. Its Nov10 holdings-change flow is -27,000 XRP (~-$28.5K); Nov9 -9.54M XRP; Nov9–10 -9.57M XRP; week46 -9.21M XRP. It explicitly excludes GXRP from flow totals while a data gap is corrected, but still counts GXRP holdings. Its universe differs from Alpha. [XRP Insights](https://xrp-insights.com/).
+
+The Block reports -$10.4M and $1.1B AUM in a separate rolling 24h window updated 06:17 UTC. Preserve separately; do not average. [The Block](https://www.theblock.co/data/etfs).
+
+### Prediction engine
+
+- Implemented on integration: 47 public source definitions (43 hourly, two weekly CFTC; 45 scheduled; two non-commercial XRPL nodes excluded), read-only collector, SHA-256 content-addressed raw payloads and per-run receipt chain, point-in-time SQLite feature-store prototype with revision lineage, four deterministic baselines, chronological walk-forward with purge/embargo across 1h/4h/24h/7d/30d, baseline calibration using prior resolved OOS outcomes, univariate PSI drift diagnostics and fail-closed forecast ledger v4 with Ed25519 attestation contract.
+- Limits: spot Binance/Coinbase/Kraken/OKX; historical derivatives only Binance USD-M XRPUSDT. Several order-book sources remain raw-only due timestamp/sequence limitations. ETF-flow and exchange-wallet data remain research-only/hash-only, not model features. CFTC remains model-ineligible. Feature-store continuity uses evictable GitHub Actions cache/artifacts (per-run checkpoint 7 days; daily/manual archive 90 days); deterministic raw-to-feature rebuild is not implemented. No independent WORM/timestamp anchor, dependence-aware block-bootstrap intervals, independent shadow outcomes, trained predictive model or production evaluator key.
+- Forecast `NOT_ISSUED`. Run38 web observations have no Barrot raw-byte SHA-256 receipts or trusted timestamps and are excluded from model features. No paper trade or real-money action.
+
+### Security, platforms and backlog
+
+- `.config/gh/hosts.yml` is absent from main, integration and all 17 current open-PR changed-file inventories. No contents were read. Provider-side OAuth/token revocation remains unverified.
+- GitHub connector permissions remain overprivileged (admin/maintain/push/pull/triage). Main branch-protection details HTTP403; visible fallback ruleset disabled. Security-alert endpoints inaccessible; no absence inferred. GitHub Pages publication is automatic on main push and unauthorized.
+- Nine-platform map: ChatGPT/GitHub current-session access verified but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no formal PR approval; Hugging Face BUILD_ERROR; Kaggle untested/no submission; Databricks HTTP403/no write; LunaRoute declared canonical but endpoint authentication/data flow unverified. No external-model transfer.
+- Non-draft backlog: #1653 unique graph (six paths unique); #1650/#1254 title/path/version mismatch review; #1649/#1648/#1646 dependency supersession candidates; #1645 exact duplicate candidate; #1644/#1647 workflow semantic review; #1255 older databricks dependency; #1320/#1318/#1317/#1269 unique safety/MMI/topology. #1660/#1643/#1640/#1642 remain overlap candidates. Preserve all until verified successor merge and main verification; no source PR closed.
+
+### Merge decision
+
+**No merge.** Parent beaca947 passed technical gates, but #1661 remains draft with zero approvals/reviews; branch-protection details inaccessible; connector least privilege not met; provider-side token revocation unverified; Pages publication unauthorized; and 979 non-workflow paths need semantic review. Exact-head CI on the final Run38 durable commit is pending.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
