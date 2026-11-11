@@ -103,6 +103,41 @@ Prediction engine remains `NOT_ISSUED`. The branch contains 46 public source def
 
 **No merge.** #1661 remains draft with no formal approvals. Main branch-protection details are inaccessible (403), the visible fallback ruleset is disabled, 926 non-workflow paths remain semantically unreviewed, credential revocation is only repository-reported, and automatic Pages publication is not authorized. Do not mark the branch ready or close source PRs.
 
+## Run 12E addendum — branch-tip security recheck, Coinbase/Circle economics and RLUSD supply reconciliation (2026-11-11 03:24 UTC)
+
+### Corrected repository inventory and credential-path audit
+
+- Current main remains `84f28ee7755607236231545a14f3d093c1baaa85`. The successor branch's current documentation head is `d58a6fa4936c95c4b06daf3919076462f9179e18`; the exact code/test head immediately before that documentation-only commit was `c12ae0b66f81a71ec1e7e758231f7b8d84ab95b0`.
+- Current #1661 diff is 976 files: 44 workflow files and 932 non-workflow files; 275,077 additions and 3,936 deletions. The successor compares 1,972 commits ahead of main and zero behind. The complete open-PR inventory remains 374.
+- Rechecked the 17 previously flagged open PR branch tips by their current head SHA and recursive Git trees. **All 17 still contain `.config/gh/hosts.yml`**: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. Main and active successor #1661 do not contain that path.
+- Main `BARROT_SYNC.md` says OAuth is REVOKED. This is repository-reported status, not an independently verified token revocation. No branch file contents were read, copied or logged. No secret was rotated/revoked in this run; no branch was rewritten, force-pushed, deleted or closed. Treat the residual branch-tip copies as a public exposure footprint, with live-token status unverified.
+- The prior sentence in the first Run 12E section saying the 17 tips were not rechecked is superseded by this addendum. The PR body has also been corrected to 932 non-workflow files and records the 17-branch recheck.
+
+### Coinbase–Circle direct economic relationship
+
+- Circle remains the USDC issuer and assumed Centre governance/operations after Centre was dissolved. Coinbase received a minority equity stake in Circle under the August 2023 collaboration restructuring; the relationship is direct equity plus distribution economics, not merely a listing.
+- The collaboration economics allocate reserve-related income using balances held on each party's platform and share broader USDC distribution/usage economics after issuer retention and approved third-party ecosystem costs. Coinbase's 2025 10-K describes its receipt of 50% of the remaining payment base; Circle's 2026 Q2 10-Q reports `$655.3M` of first-half distribution costs in connection with Coinbase agreements.
+- Coinbase's Oct 29, 2026 Q3 earnings release reports average USDC balances in Coinbase products of `$22B` (roughly 30% of average USDC market capitalization) and says Coinbase captured approximately 50% of USDC economics over the prior year. The `$22B` is a platform/customer balance measure, not Coinbase proprietary holdings.
+- This is a materially stronger, quantified Coinbase–Circle relationship than Coinbase's separate Ripple/RLUSD listing. Coinbase/Ripple RLUSD availability is distribution/access; no equity or equivalent reserve-revenue agreement was established from the reviewed announcement.
+- Sources: https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/ ; https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm ; https://www.sec.gov/Archives/edgar/data/1679788/000167978826000047/coinbase2025ars.pdf ; https://www.coinbase.com/it/blog/ushering-in-the-next-chapter-for-usdc
+
+### RLUSD supply, reserves and network activity — do not conflate
+
+- Ripple's own transparency page reports total circulating RLUSD of `$2,632.9M` and reserve funds of `$2,748.0M` as of Nov 5, 2026. Ripple says monthly reports are conducted by an independent U.S.-licensed CPA and attest to circulating supply and backing assets. Reserve funds exceed circulating supply; they are not additional circulating tokens. Source: https://ripple.com/products/stablecoin/transparency/
+- XRP Radar's Nov 10 on-chain split reports approximately `$866M` on XRPL and `$1.80B` on Ethereum (about 33%/67%), summing to approximately `$2.666B`. This differs from Ripple's Nov 5 issuer-reported circulating amount by date and measurement scope. Keep the two series separate until reconciled; do not silently substitute one for the other.
+- Secondary reporting of October RLUSD transfer volume says XRPL processed `$20.056B` versus Ethereum `$15.449B`, while supply remained about 32.7% XRPL / 67.2% Ethereum. Ethereum still led cumulative transfer volume. This is transaction volume, not net new issuance, unique economic settlement or XRP bridge demand; repeated/internal transfers may contribute. The reporting traces to The Crypto Basic, so reprints are not independent confirmations. Source: https://www.digitaltoday.co.kr/en/view/123501/xrpl-overtakes-ethereum-in-monthly-rlusd-transfer-volume
+
+### CFTC open-interest reduction decomposition
+
+- The official Nov 3 CFTC TFF report shows CME XRP open interest down 845 contracts from Oct 27 (50,000 XRP each = `−42.250M XRP-equivalent`); Coinbase Nano XRP down 32,864 contracts (500 each = `−16.432M`); Coinbase Nano XRP Perp Style down 465 contracts (500 each = `−0.2325M`). Combined reduction is `−58.9145M XRP-equivalent`, about 12.94% from the prior week's reconstructed 455.163M to 396.2485M.
+- Most of that decline is CME (about 71.7%), not a uniform move across all products. The standard Coinbase XRP contract `176LM2` is absent from the report and remains unknown, not zero. Source: https://www.cftc.gov/dea/futures/financial_lf.htm
+
+### Exact-head verification on the preceding documentation head
+
+- On `d58a6fa4936c95c4b06daf3919076462f9179e18`, PR CI [42951655169](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951655169) completed the full repository suite: `3,388 passed`, zero failures, eight subtests, `59.89%` inclusive coverage; the wheel and packaged primary-mission checks passed.
+- Push CI [42951650219](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951650219) also completed successfully on the same head.
+- Dependency audit [42951655202](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951655202) passed; fail-closed gate [42951655204](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951655204) passed. The next documentation correction will create a new head and trigger another exact-head CI cycle.
+
 ### Next concrete actions
 
 1. Complete semantic review of the remaining 926 non-workflow paths, including package boundaries, data-flow, dependencies and security-sensitive files.
