@@ -201,3 +201,16 @@
 - Backlog: #1661 blocked; #1660/#1643 superseded-source candidates pending blob review; #1640/#1642/#1612 semantic overlap; preserve unique #1653/#1614/#1611/#1610/#1612/#1608. No source PR closed.
 - Next: exact-head CI on Run36 docs commits; semantic review; resolve branch protection, least privilege, credential and Pages blockers; build WORM/replay/scenario/out-of-sample readiness.
 - Artifact: \`research/xrp_intelligence/20261111T212842Z-run36-exact-head-ci-market-institutional-capital-and-cftc-reconciliation.json\`.
+
+
+## Run37 sync — 2026-11-11 21:58 UTC
+- Main `84f28ee7755607236231545a14f3d093c1baaa85`; integration parent before repair `043909f3a059b0ab0e2a48e110345a3e4244cd41`; 2,049 ahead/0 behind; #1661 open/draft; 1,022 files (44 workflows/978 other); 374 open PRs (360 draft/14 non-draft).
+- Exact-head CI 43107011650: 3,426 passed/23 failed, eight subtests, 59.99%; core 714/0. Failures are 23 current-map schema assertions after 043909f replaced the append-only schema. Dependency audit six manifests/zero known vulnerabilities and both fail-closed gates passed. Wheel step skipped.
+- Run37 restores the parent schema and appends Run36/Run37 records; do not weaken tests. New exact-head CI pending.
+- Spot: OKX 1.0631 at 21:45:44.972 UTC; Kraken 1.06217 no event time; USDT/USD 0.99887; asynchronous normalized gap -0.0043%.
+- Fuelmaps 14:00 UTC spot depth ±1% $13.7M/$11.8M, ±5% $25.0M/$14.7M; Basis 18:46 UTC perp ±1% $16.0M/$14.9M. Derivatives OI provider disagreement ($1.57B/-0.97% vs $1.17B/+0.6%), positive funding; do not average.
+- ETF Nov10: Alpha/ByKaranteli -$7.6M; CryptoETF.today partial -$6.9M; The Block separate 24h -$10.4M. TrackWhale net tracked 7D -64.78M XRP; XRP Insights same-wallet 7D +1.3M/30D -155.7M. Different methods/universes.
+- CFTC Nov3 equivalent 396.2485M XRP, -12.94% w/w; 176LM2 missing not zero. Macro CPI +0.4 headline/+0.3 core; Reuters DXY +0.64%, Brent $92.76 (+1.39%), FSB stablecoin supervision recommendations.
+- Forecast NOT_ISSUED; web data not receipt-ingested/model-eligible. No external-model transfer or money actions.
+- #1661 blocked; preserve #1660/#1643 pending verified merge, unique research/prediction/safety/topology work. No source PR closed.
+- Next: exact-head full suite + wheel/installed mission on repair head, then security/approval/Pages/semantic-review blockers.
