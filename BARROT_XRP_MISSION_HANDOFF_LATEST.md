@@ -47,7 +47,7 @@ Research retrieval cutoff: approximately `2026-11-11T03:05Z`. These are timestam
 
 - OKX XRP-USDT: last `1.0601`, bid `1.0600`, ask `1.0601`; provider event timestamp `2026-11-11T03:05:02.167Z`; 24h volume approximately `73.95M XRP`; reported 24h open `1.0947`, high `1.1063`, low `1.0311`.
 - Kraken XRP/USD: last approximately `$1.06042`, bid `$1.06027`, ask `$1.06040`; 24h volume approximately `35.93M XRP`; no provider event timestamp supplied. Kraken USDT/USD was approximately `0.99866`, making normalized OKX approximately `$1.05868`, about 0.16% below the Kraken last. The venue 24h-open fields are inconsistent in window semantics; do not infer a consensus daily return or executable arbitrage.
-- Current synchronized spot L2 was not obtained. The latest accessible cross-venue depth snapshot on OptimistFi is dated `2026-11-09 12:28 UTC` (36 venues): total open interest `$1.4B`, −10% over 24h; 24h volume `$1.7B`; funding `+6.4% APR` weighted; `$18.4M` liquidations; ±1% resting depth `$12.9M` (bids `$6.4M`, asks `$6.6M`). This snapshot is stale by more than a day and is not current executable liquidity. Source: https://optimistfi.com/perps/markets/xrp
+- At the initial 03:05Z retrieval no synchronized current spot L2 was available. A later six-venue Fuelmaps snapshot at 02:00Z Nov 11 is recorded in the Run 12E final addendum below; the older Nov 9 OptimistFi derivatives/depth snapshot remains historical context only.
 - Deribit options snapshot on OptimistFi, `2026-11-10 14:00 UTC`: 30-day ATM IV `57.9%`; 25-delta skew `−1.0` points; near expiries skew `−9.9` (Nov 11), `−8.7` (Nov 12), `−7.7` (Nov 13), versus `+0.5` Dec 25 and `+1.9` Mar 26, 2027. Dec 25 expiry open interest `$45.3M`; Nov 11 max-pain `$1.08` is descriptive only, not a forecast. Source: https://optimistfi.com/perps/options/xrp
 - XRP Radar (issuer/on-chain-derived dashboard, Nov 10): `22.33B XRP` attributed to 24 exchanges; notable wallet totals include Upbit `6.46B`, Coinbase `5.80B`, Binance `2.69B`, Bithumb `1.81B`, Uphold `1.69B`, Kraken `982M`, SBI VC Trade `57M`. These are mostly customer omnibus balances, include cold storage and some exchange-controlled reserves, and exclude unidentified wallets; they are not tradable float.
 - Same-wallet-set exchange-balance changes previously reported by XRP Radar: −`8.9M XRP` over seven days and −`150.9M` over 30 days. Two newly tracked wallets added roughly `512M`, distorting naive totals. Keep fixed-wallet cohorts separate from new-wallet coverage.
@@ -107,7 +107,7 @@ Prediction engine remains `NOT_ISSUED`. The branch contains 46 public source def
 
 ### Corrected repository inventory and credential-path audit
 
-- Current main remains `84f28ee7755607236231545a14f3d093c1baaa85`. The successor branch's current documentation head is `d58a6fa4936c95c4b06daf3919076462f9179e18`; the exact code/test head immediately before that documentation-only commit was `c12ae0b66f81a71ec1e7e758231f7b8d84ab95b0`.
+- Current main remains `84f28ee7755607236231545a14f3d093c1baaa85`. The exact code/test head immediately before documentation-only updates was `c12ae0b66f81a71ec1e7e758231f7b8d84ab95b0`; `d58a6fa` and `4f7cab9` are subsequent documentation heads. The live #1661 branch ref is authoritative for the current documentation head.
 - Current #1661 diff is 976 files: 44 workflow files and 932 non-workflow files; 275,077 additions and 3,936 deletions. The successor compares 1,972 commits ahead of main and zero behind. The complete open-PR inventory remains 374.
 - Rechecked the 17 previously flagged open PR branch tips by their current head SHA and recursive Git trees. **All 17 still contain `.config/gh/hosts.yml`**: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. Main and active successor #1661 do not contain that path.
 - Main `BARROT_SYNC.md` says OAuth is REVOKED. This is repository-reported status, not an independently verified token revocation. No branch file contents were read, copied or logged. No secret was rotated/revoked in this run; no branch was rewritten, force-pushed, deleted or closed. Treat the residual branch-tip copies as a public exposure footprint, with live-token status unverified.
@@ -137,6 +137,38 @@ Prediction engine remains `NOT_ISSUED`. The branch contains 46 public source def
 - On `d58a6fa4936c95c4b06daf3919076462f9179e18`, PR CI [42951655169](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951655169) completed the full repository suite: `3,388 passed`, zero failures, eight subtests, `59.89%` inclusive coverage; the wheel and packaged primary-mission checks passed.
 - Push CI [42951650219](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951650219) also completed successfully on the same head.
 - Dependency audit [42951655202](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951655202) passed; fail-closed gate [42951655204](https://github.com/Barrot-Agent/B-Agent/actions/runs/42951655204) passed. The next documentation correction will create a new head and trigger another exact-head CI cycle.
+
+## Run 12E final addendum — latest spot book and exact-head PR CI (2026-11-11 03:30 UTC)
+
+### Current integration verification
+
+- Main remains `84f28ee7755607236231545a14f3d093c1baaa85`. At this addendum, #1661 head was `4f7cab97220376571bc8547dd1278d817357a4a2`, based on main, draft and mergeable/clean. Diff: 976 files (44 workflow / 932 non-workflow), 275,112 additions and 3,936 deletions; 1,972 commits ahead, zero behind.
+- Exact-head PR CI [42952193494](https://github.com/Barrot-Agent/B-Agent/actions/runs/42952193494), full-suite job `130298836629`: **3,388 passed, zero failures, eight subtests passed, 59.89% coverage**; wheel and packaged primary-mission verification completed.
+- Exact-head dependency audit [42952193591](https://github.com/Barrot-Agent/B-Agent/actions/runs/42952193591) passed; six manifests, zero known vulnerabilities. Fail-closed gate [42952193459](https://github.com/Barrot-Agent/B-Agent/actions/runs/42952193459) passed; automatic merge remains disabled.
+- Duplicate push-triggered CI [42952187703](https://github.com/Barrot-Agent/B-Agent/actions/runs/42952187703) was still running at the final observation. The exact-head PR full-suite, dependency and fail-closed checks have passed; no result is inferred for the still-running duplicate push event.
+- The next handoff/sync documentation commit is documentation-only and will create a new head, triggering fresh exact-head CI. The successful `4f7cab9` result does not automatically verify that subsequent commit.
+
+### Fresh six-venue XRP spot order book
+
+Fuelmaps' latest accessible static snapshot was **02:00 UTC, Nov 11, 2026**, with XRP mid `$1.0526` across six venues:
+
+| Distance from mid | Resting bids | Resting asks | Bid share | Coverage |
+|---|---:|---:|---:|---:|
+| ±0.5% | `$9.4M` | `$7.4M` | 56.1% | 6/6 |
+| ±1% | `$14.2M` | `$10.8M` | 56.7% | 6/6 |
+| ±2% | `$18.6M` | `$13.7M` | 57.6% | 6/6 |
+| ±5% | `$29.0M` | `$14.6M` | 66.5% | 6/6 |
+| ±10% | `$35.3M` | `$17.3M` | 67.1% | 5/6 |
+
+Largest displayed levels within ±10%: bid `$1.000` / `$5.1M`, bid `$1.047` / `$2.4M`, bid `$1.049` / `$1.8M`; asks `$1.055` and `$1.054` / about `$1.8M` each.
+
+**Quality limits:** the map is spot-only, six venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini); Binance and Bitget are absent. It averages one-minute snapshots into hourly columns; hidden/iceberg orders are absent and resting orders can cancel. The page says it publishes hourly at five minutes after the hour and can be about 65 minutes old; this 02:00 snapshot was already older than that stated freshness window at retrieval. Do not treat the bid-heavy resting book as guaranteed support or a directional signal. Source/methodology: https://fuelmaps.io/order-book/
+
+At approximately 03:05 UTC, OKX XRP-USDT reported `1.0601` (event timestamp `2026-11-11T03:05:02.167Z`) and Kraken XRP/USD reported approximately `$1.06042` without an event timestamp. Those later marks are about 0.7% above the 02:00 Fuelmaps mid. OKX and Kraken rolling/day-open fields do not align; do not calculate a consensus daily return from them. Direct sources: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT and https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+### Final merge status
+
+Despite successful exact-head PR CI, dependency audit and fail-closed gate, #1661 remains draft with no formal approvals. Branch-protection details remain inaccessible (403), the visible fallback ruleset is disabled, 932 non-workflow paths remain semantically unreviewed, owner-reported OAuth revocation is not independently verified, and GitHub Pages publication authorization is unresolved. No merge, deployment, paper trade or real-money action occurred.
 
 ### Next concrete actions
 
