@@ -214,3 +214,13 @@
 - Forecast NOT_ISSUED; web data not receipt-ingested/model-eligible. No external-model transfer or money actions.
 - #1661 blocked; preserve #1660/#1643 pending verified merge, unique research/prediction/safety/topology work. No source PR closed.
 - Next: exact-head full suite + wheel/installed mission on repair head, then security/approval/Pages/semantic-review blockers.
+
+
+## Run37 post-repair verification — 2026-11-11 22:10 UTC
+- Exact repaired head `05ad5ab1120d1fa395e1de8e4ce2c99473ffae42`: full suite 3,449 passed/0 failed, 8 subtests, 59.99%, 94.41s; core 714/0, 8 subtests, 14.08s; wheel build and installed Barrot V3/XRP mission/canonical assets verified. [CI 43108561438](https://github.com/Barrot-Agent/B-Agent/actions/runs/43108561438).
+- Dependency audit [43108561589](https://github.com/Barrot-Agent/B-Agent/actions/runs/43108561589): 6 manifests, 0 known vulnerabilities. Fail-closed [43108561406](https://github.com/Barrot-Agent/B-Agent/actions/runs/43108561406) passed; automatic merge disabled.
+- The prior `043909f` map-schema regression (3,426 pass/23 fail) is retained in history and repaired by restoring the append-only map schema; tests were not weakened.
+- Credential path `.config/gh/hosts.yml`: absent from main and integration trees and all 17 rechecked open PR diff inventories (all 17 base main). Provider-side token revocation remains unverified; no token read/rotation/revocation occurred.
+- Liqwall 22:02 UTC OI $1.17B (+0.5%), funding +0.0084%; TradRadar 19:05 UTC OI $1.57B (-0.97%), funding +0.0045%. Different universes/times; no averaging. TrackWhale 21:48 UTC net tracked flow -64.78M XRP; XRP Insights same-wallet +1.3M 7D/-155.7M 30D. CryptoKeyhole Nov10 remains partial 3/4; latest complete Nov6 -752,048 XRP/-$887K.
+- PR #1661 remains open/draft; 2,050 ahead/0 behind, 1,023 files (44 workflows/979 other), zero approvals/reviews/threads. Merge blocked by approvals, branch protection visibility, Pages authorization and semantic review.
+- Forecast NOT_ISSUED; research not receipt-ingested/model-eligible. Current documentation/test update commit CI pending.

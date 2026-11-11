@@ -87,7 +87,10 @@ def test_least_privilege_and_external_action_gates_remain_closed():
     assert exposure["main_branch_contains_path"] is False
     assert exposure["active_integration_branch_contains_path"] is False
     assert exposure["other_open_pr_tips_checked"] == 17
-    assert exposure["other_open_pr_tips_containing_path"] == 17
+    assert exposure["other_open_pr_tips_containing_path"] == 0
+    assert exposure["path_absent_from_all_current_pr_file_inventories"] is True
+    assert exposure["all_17_target_prs_open_and_base_main"] is True
+    assert exposure["provider_side_revocation_verified"] is False
     assert exposure["revocation_independently_verified"] is False
 
 

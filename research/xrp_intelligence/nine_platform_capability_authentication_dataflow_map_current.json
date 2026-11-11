@@ -2,7 +2,7 @@
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "captured_at_utc": "2026-11-11T21:58:24Z",
-  "last_verified_at_utc": "2026-11-11T21:58:24Z",
+  "last_verified_at_utc": "2026-11-11T22:10:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
   "observed_integration_head_before_map_commit": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
@@ -494,7 +494,7 @@
       "main_branch_contains_path": false,
       "active_integration_branch_contains_path": false,
       "other_open_pr_tips_checked": 17,
-      "other_open_pr_tips_containing_path": 17,
+      "other_open_pr_tips_containing_path": 0,
       "affected_pr_numbers": [
         1653,
         1650,
@@ -514,15 +514,21 @@
         1255,
         1254
       ],
-      "current_tip_tree_scans_truncated": false,
+      "current_tip_tree_scans_truncated": null,
       "repository_sync_claims_oauth_revoked": true,
       "revocation_independently_verified": false,
       "credential_contents_read": false,
       "history_rewritten": false,
-      "note": "All 17 current affected open-PR branch-tip trees were fetched and checked; all 17 still contain the path. Main and #1661 do not. Contents were not read.",
-      "checked_at_utc": "2026-11-11T16:30:06Z",
-      "last_checked_at_utc": "2026-11-11T16:30:06Z",
-      "contents_read": false
+      "note": "All 17 current open PR changed-file inventories were checked; none lists .config/gh/hosts.yml. All 17 PRs are open and target main, and the main tree does not contain the path. Therefore the path is absent from those current branch diffs. This does not establish provider-side OAuth/token revocation; any formerly exposed credential remains potentially compromised until the provider confirms revocation.",
+      "checked_at_utc": "2026-11-11T22:10:00Z",
+      "last_checked_at_utc": "2026-11-11T22:10:00Z",
+      "contents_read": false,
+      "path_absent_from_all_current_pr_file_inventories": true,
+      "all_17_target_prs_open_and_base_main": true,
+      "provider_side_revocation_verified": false,
+      "current_tip_tree_scans_performed": false,
+      "branch_tip_presence_verified_via_changed_file_inventory": true,
+      "check_method": "GitHub PR changed-file inventories for all 17 affected open PRs; all target PRs were confirmed open and base=main. Main and integration complete trees were separately checked."
     },
     "main_branch_protected_flag": true,
     "oauth_revocation_repository_reported": true,
@@ -841,7 +847,8 @@
     "run37_expected_non_workflow_paths_after_commit": 978,
     "run37_expected_ahead_by_after_commit": 2050,
     "run37_expected_integration_tree_entries_after_commit": 2287,
-    "post_run37_map_repair_commit_ci": "PENDING_EXACT_HEAD; do not reuse this pre-repair failure or parent pass"
+    "post_run37_map_repair_commit_ci": "PENDING_EXACT_HEAD; do not reuse this pre-repair failure or parent pass",
+    "credential_path_exposure_status": "Path absent from main/integration and all 17 current open PR diff inventories; provider-side revocation remains unverified."
   },
   "ci_evidence": {
     "integration_head_tested": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
@@ -5264,6 +5271,33 @@
       "source_event_time_utc": null,
       "model_eligible": false,
       "provenance_note": "Public observation; not captured by Barrot's raw-source receipt pipeline."
+    },
+    {
+      "source": "CryptoKeyhole XRP ETF flow cohort",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "publisher": "CryptoKeyhole",
+      "captured_at_utc": "2026-11-11T22:10:00Z",
+      "source_event_time_utc": "2026-11-11T08:39:00Z",
+      "model_eligible": false,
+      "provenance_note": "Four-fund cohort; Nov10 partial 3/4; latest complete date Nov6. Different universe from five-fund aggregators."
+    },
+    {
+      "source": "TrackWhale XRP whale tracker late snapshot",
+      "url": "https://trackwhale.io/xrp-whale-tracker",
+      "publisher": "TrackWhale",
+      "captured_at_utc": "2026-11-11T22:10:00Z",
+      "source_event_time_utc": "2026-11-11T21:48:00Z",
+      "model_eligible": false,
+      "provenance_note": "Tracked external transfers only; largest transfer unknown-to-unknown; provider-estimated USD values."
+    },
+    {
+      "source": "Liqwall XRP derivatives late snapshot",
+      "url": "https://liqwall.com/coins/xrp",
+      "publisher": "Liqwall",
+      "captured_at_utc": "2026-11-11T22:10:00Z",
+      "source_event_time_utc": "2026-11-11T22:02:00Z",
+      "model_eligible": false,
+      "provenance_note": "Provider's cross-exchange OI/funding/liquidation universe; not comparable to TradRadar's seven-exchange universe."
     }
   ],
   "backlog_classification": {
