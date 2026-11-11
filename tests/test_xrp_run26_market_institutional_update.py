@@ -74,6 +74,7 @@ def test_run26_coinbase_circle_ripple_sbi_edges_keep_scope_limits() -> None:
     assert "coinbase-ripple-rlusd-distribution" in ids
     assert "sbi-vc-trade-ripple-rlusd-distribution" in ids
     assert "circle-usdc-xrpl" in ids
+    assert "XRPL" in data["stablecoin_and_institutional_relationships"]["circle_usdc"]["native_network_support"]
     assert "circle-ripple-direct-partnership" in ids
     not_established = next(
         edge for edge in data["stablecoin_and_institutional_relationships"]["relationships"]
@@ -86,8 +87,8 @@ def test_run26_coinbase_circle_ripple_sbi_edges_keep_scope_limits() -> None:
         edge for edge in data["stablecoin_and_institutional_relationships"]["relationships"]
         if edge["id"] == "sbi-vc-trade-ripple-rlusd-distribution"
     )
-    assert any("Ethereum as current" in item for item in sbi["limitations"])
-    assert any("XRPL is future" in item for item in sbi["limitations"])
+    assert any("Ethereum as supported" in item for item in sbi["limitations"])
+    assert any("XRPL as future/planned" in item for item in sbi["limitations"])
 
 
 def test_run26_competing_hypotheses_preserve_counterevidence_without_probabilities() -> None:
