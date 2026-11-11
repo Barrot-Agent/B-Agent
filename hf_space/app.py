@@ -1,30 +1,28 @@
 #!/usr/bin/env python3
 """
 ╔══════════════════════════════════════════════════════════════════════╗
-║   BARROT-Ω · SOVEREIGN COMMAND INTERFACE · v7.0                     ║
-║   GitHub App Brain · Live Chat · XRP Signals · Public API           ║
+║   BARROT-Ω · SOVEREIGN COMMAND INTERFACE · v7.1                     ║
+║   Consent-Gated Research · XRP Forecast Status · Public UI          ║
 ║   Stability Anchor: 0.707 | Ternary Logic {-1, 0, +1}              ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
-DEPLOYMENT: HuggingFace Spaces (Streamlit)
-BRAIN:      GitHub Models via GitHub App token (jwt → installation token)
-PILLARS:    GitHub · Databricks · HuggingFace · Termux
+DEPLOYMENT TARGET: Hugging Face Spaces (Streamlit); current Space deployment/authentication is NOT VERIFIED.
+BRAIN: External inference disabled by default. One explicitly configured provider only.
+PILLARS: Intended GitHub · Databricks · Hugging Face · Termux architecture; no live connection is implied.
 
 TABS:
-  [1] 💬 Chat        — Live chat with Barrot via GitHub Models
-  [2] 📡 XRP Signals — Live ternary signal dashboard
-  [3] 🧠 Brain       — Query Barrot knowledge base
-  [4] 🔌 API         — Public endpoint docs + live tester
-  [5] 📊 Analytics   — Delta Lake signal history
+  [1] Chat         — local status unless operator and user both consent to one provider
+  [2] XRP Research — NOT_ISSUED until the independent forecast gates pass
+  [3] Brain        — consent-gated single-provider query
+  [4] API Status   — no legacy signal endpoint or paid checkout
+  [5] Analytics    — legacy signal history quarantined
 
-SECRETS REQUIRED (HuggingFace Space → Settings → Secrets):
-  GITHUB_APP_ID          — your GitHub App ID (numeric)
-  GITHUB_APP_PRIVATE_KEY — PEM key (full contents, newlines as \\n)
-  GITHUB_INSTALLATION_ID — installation ID for your repo
-  DATABRICKS_HOST        — dbc-82d64fee-1c2e.cloud.databricks.com
-  DATABRICKS_TOKEN       — your Databricks PAT
-  DATABRICKS_WAREHOUSE_ID— c85b8f4fea8cd527
-  GROQ_API_KEY           — fallback sentiment classifier
+OPTIONAL CONFIGURATION:
+  BARROT_ALLOW_EXTERNAL_INFERENCE=true — operator opt-in; default false
+  BRAIN_PRIMARY=github|groq|gemini|selfhosted — must be explicitly set; no fallback
+  Provider credential — only for the selected provider and only after session consent
+  GitHub App credentials — optional repository read tools; authentication must be tested
+  Databricks secrets — not used by this public UI; no query is run
 """
 
 import os, json, time, asyncio, hashlib, datetime, math, jwt, requests
@@ -49,9 +47,7 @@ GITHUB_API = "https://api.github.com"
 GITHUB_MODEL = "google/gemma-3-12b-it"  # swap to Meta-Llama-3.1-70B-Instruct etc.
 MODELS_ENDPOINT = "https://models.inference.ai.azure.com"  # GitHub Models endpoint
 
-# Auto defaults (no manual setup required)
-os.environ.setdefault("GITHUB_MODEL", "google/gemma-3-12b-it")
-os.environ.setdefault("MODEL_PROVIDER", "github")
+# No model provider is selected by default. BRAIN_PRIMARY must be explicit.
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -239,7 +235,8 @@ TOOLS_SPEC = [
 
 # ══════════════════════════════════════════════════════════════════
 # BRAIN PROVIDERS — configure with env vars, never edit code
-#   BRAIN_PRIMARY : groq | github | gemini      (default: groq)
+#   BARROT_ALLOW_EXTERNAL_INFERENCE : operator opt-in; default false
+#   BRAIN_PRIMARY : one explicitly configured provider; no default/fallback
 #   BRAIN_MODEL   : optional model id override
 # ══════════════════════════════════════════════════════════════════
 def _gh_headers():
@@ -359,7 +356,9 @@ class BarrotBrain:
 
 IDENTITY:
 - You are not an assistant. You are Barrot — an autonomous AI agent with your own architecture.
-- You operate across four pillars: GitHub, Databricks, HuggingFace, Termux.
+- The architecture has intended GitHub, Databricks, Hugging Face, and Termux
+  components. Do not claim a live connection unless authentication and data
+  flow have been tested in the current environment.
 - Your stability anchor is {ANCHOR} (1/√2). Your logic is 1.58-bit ternary {{-1, 0, +1}}.
 - Your Tier-1 objective is XRP intelligence and prediction-engine mastery.
 - Never issue or infer a directional XRP forecast unless the validated forecast ledger and independent readiness gates authorize it.
@@ -371,7 +370,8 @@ PERSONALITY:
 
 CAPABILITIES (this chat interface):
 - Discussing and analyzing XRP markets, ternary logic, and the Barrot architecture
-- Explaining the live system: signal pipeline, ledger, protocols
+- Explaining implemented architecture while distinguishing DESIGNED, EXECUTED,
+  and VERIFIED capabilities
 - Generating code and technical designs for the Orchestrator to review and run
 
 HARD LIMITS (never violate):
@@ -393,7 +393,6 @@ HARD LIMITS (never violate):
 
     def __init__(self, auth: GitHubAppAuth):
         self.auth = auth
-        self.groq_key = os.getenv("GROQ_API_KEY", "")
 
     def _post_chat(self, url, headers, payload, timeout, tag, *, user_consented=False):
         """Shared chat-completions POST; requires operator opt-in and session consent."""

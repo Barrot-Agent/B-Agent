@@ -89,7 +89,7 @@ def test_api_tab_does_not_publish_legacy_signal_or_subscription_offer():
 
 def test_provider_consent_is_exposed_and_passed_to_chat_and_brain_query():
     assert "I authorize this session's messages and chat history" in SOURCE
-    assert SOURCE.count("user_consented=external_inference_consent") == 2
+    assert SOURCE.count("user_consented=external_inference_consent") == 3
     assert "External model inference is disabled by operator policy" in SOURCE
 
 
