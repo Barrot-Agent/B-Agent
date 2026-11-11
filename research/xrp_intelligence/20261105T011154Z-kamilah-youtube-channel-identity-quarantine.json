@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp_kamilah_channel_identity_followup_20261105",
+  "artifact_type": "creator_identity_resolution_addendum",
+  "captured_at_utc": "2026-11-05T01:11:54.872Z",
+  "data_cutoff_utc": "2026-11-05T01:11:54.872Z",
+  "research_scope": "Resolve whether the YouTube handle @drkamilahstevenson can be authoritatively linked to the Dr. Kamilah Stevenson interviewed on The XRP Podcast; do not expand the video inventory until channel ownership is verified.",
+  "person_identity": {
+    "status": "PERSON_VERIFIED_BY_FIRST_PERSON_INTERVIEW",
+    "name": "Dr. Kamilah Stevenson",
+    "brand_name": "The Wealth Doctor",
+    "name_variants": [
+      "Kamilah Stevenson",
+      "Kamilla Stevenson",
+      "Camila Stevenson",
+      "Camilla Stevenson"
+    ],
+    "primary_evidence": "The guest self-identifies her X, Instagram and YouTube display names in the June 11, 2026 iHeart interview transcript at approximately 40:07 and explicitly warns that fake pages exist.",
+    "corroboration": "The self-published learn.kamilahstevenson.com website identifies its author as Dr. Kamilah Stevenson, also known as The Wealth Doctor.",
+    "identity_scope_limit": "This verifies the interview guest's public identity; it does not verify ownership of any particular YouTube handle or third-party account."
+  },
+  "candidate_channel": {
+    "handle": "@drkamilahstevenson",
+    "url": "https://www.youtube.com/@drkamilahstevenson",
+    "status": "UNVERIFIED_CANDIDATE_ONLY",
+    "discovery_path": "A Linktree profile named DrKamilahstevenson1 links to this YouTube URL.",
+    "linktree_created": "2026-10",
+    "reasons_not_canonical": [
+      "The Linktree profile reports that it joined in October 2026, so it is a recent cross-link rather than long-standing independent ownership evidence.",
+      "The interviewed guest warned that fake pages exist.",
+      "The official self-published website retrieved in this run did not expose a link to this YouTube handle.",
+      "The YouTube About page did not expose owner-verification or linked-account details in the available page capture.",
+      "Third-party channel analytics and identity aggregators are not authoritative ownership records."
+    ],
+    "canonical_channel_url": null,
+    "confidence": "LOW_TO_MODERATE_CANDIDATE; NOT_VERIFIED"
+  },
+  "prior_video_inventory": {
+    "artifact_path": "research/xrp_intelligence/20261105T002500Z-phrase-entity-kamilah-video-inventory.json",
+    "person_identity_status": "VERIFIED_BY_FIRST_PERSON_INTERVIEW_SELF_IDENTIFICATION",
+    "attribution_status": "FOUR_VIDEO SEARCH-RESULT ATTRIBUTIONS REMAIN STRONGLY CORROBORATED AT THE PERSON LEVEL",
+    "channel_handle_status": "UNVERIFIED",
+    "action": "Preserve the four previously recorded video candidates and their limitations. Add no new videos and do not designate @drkamilahstevenson as canonical until an authoritative cross-link is obtained."
+  },
+  "source_registry": [
+    {
+      "source_id": "iheart_kamilah_first_person_interview_20260611",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "authority": "Primary interview transcript containing first-person guest self-identification",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "event_date": "2026-06-11",
+      "retrieved_at_utc": "2026-11-05T01:11:54.872Z",
+      "source_independence_group": "iheart_interview_primary",
+      "raw_capture_status": "web_rendered_auto_generated_transcript",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The guest is introduced as Dr. Kamilah Stevenson.",
+        "At approximately 40:07 the guest gives X, Instagram and YouTube display-name references, including the spoken YouTube name Doctor Camilla Stevenson.",
+        "The guest warns that fake pages exist."
+      ],
+      "limitations": [
+        "The transcript is automatically generated and may mis-transcribe spelling or handles.",
+        "A display name is not a canonical YouTube channel URL.",
+        "The interview does not independently verify @drkamilahstevenson."
+      ]
+    },
+    {
+      "source_id": "kamilah_wealth_doctor_official_site",
+      "publisher": "Dr. Kamilah Stevenson / The Wealth Doctor",
+      "authority": "Self-published brand website",
+      "url": "https://learn.kamilahstevenson.com/",
+      "event_date": null,
+      "retrieved_at_utc": "2026-11-05T01:11:54.872Z",
+      "source_independence_group": "kamilah_self_published_site",
+      "raw_capture_status": "web_rendered_HTML",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The site identifies its author as Dr. Kamilah Stevenson, also known as The Wealth Doctor.",
+        "The site describes a 90-Day Investor Accelerator and investing education."
+      ],
+      "limitations": [
+        "The retrieved page did not expose a YouTube channel link.",
+        "A self-published biography corroborates the name but does not authenticate a separate social account."
+      ]
+    },
+    {
+      "source_id": "linktree_drkamilahstevenson1",
+      "publisher": "Linktree profile DrKamilahstevenson1",
+      "authority": "Self-described social-link profile; ownership not independently verified",
+      "url": "https://linktr.ee/DrKamilahstevenson1",
+      "event_date": "2026-10",
+      "retrieved_at_utc": "2026-11-05T01:11:54.872Z",
+      "source_independence_group": "linktree_candidate_account",
+      "raw_capture_status": "web_rendered_profile_and_link_redirect",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The profile describes itself as an XRP educator and includes a YouTube link.",
+        "The YouTube link redirects to https://www.youtube.com/@drkamilahstevenson.",
+        "The Linktree About section reports that the account joined in October 2026."
+      ],
+      "limitations": [
+        "The profile is recent and does not independently prove that the interviewed guest controls it.",
+        "The profile name and description can be copied by an impersonator.",
+        "No authenticated cross-link from the guest's established X or Instagram account was retrieved."
+      ]
+    },
+    {
+      "source_id": "youtube_candidate_channel_page",
+      "publisher": "YouTube",
+      "authority": "First-party platform page",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "event_date": null,
+      "retrieved_at_utc": "2026-11-05T01:11:54.872Z",
+      "source_independence_group": "youtube_first_party_candidate",
+      "raw_capture_status": "channel_page_shell_rendered; About metadata unavailable",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The candidate handle resolves to a YouTube channel page."
+      ],
+      "limitations": [
+        "The available page capture did not expose owner-verification or linked social accounts.",
+        "Handle resolution alone does not establish the channel owner's identity."
+      ]
+    },
+    {
+      "source_id": "vling_channel_candidate_analytics",
+      "publisher": "Vling",
+      "authority": "Third-party channel analytics",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "event_date": null,
+      "retrieved_at_utc": "2026-11-05T01:11:54.872Z",
+      "source_independence_group": "third_party_channel_analytics",
+      "raw_capture_status": "search_result_extract",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The page labels channel ID UCqUPJMQdkCN6lsLVDnichPA as Kamilah Stevenson.",
+        "The provider reports approximately 143,000 subscribers, 1.2K videos and a 2015-08-25 channel join date."
+      ],
+      "limitations": [
+        "Third-party analytics do not establish account ownership.",
+        "The retrieved result does not prove that the channel ID corresponds to the Linktree-linked handle.",
+        "Subscriber and video counts are provider observations, not independently verified current metrics."
+      ]
+    },
+    {
+      "source_id": "idcrawl_kamilah_stevenson_profile_aggregation",
+      "publisher": "IDCrawl",
+      "authority": "Third-party identity aggregation and discovery",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "event_date": null,
+      "retrieved_at_utc": "2026-11-05T01:11:54.872Z",
+      "source_independence_group": "third_party_identity_aggregator",
+      "raw_capture_status": "web_rendered_aggregated_profile",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The aggregator lists numerous similarly named YouTube, Instagram and social profiles.",
+        "It lists @drkamilahstevenson as one candidate YouTube profile."
+      ],
+      "limitations": [
+        "The aggregator is not authoritative and may mix unrelated people or impersonators.",
+        "Its result is discovery evidence only and must not be used to assert account ownership."
+      ]
+    }
+  ],
+  "source_independence_groups": [
+    "iheart_interview_primary",
+    "kamilah_self_published_site",
+    "linktree_candidate_account",
+    "youtube_first_party_candidate",
+    "third_party_channel_analytics",
+    "third_party_identity_aggregator"
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "@drkamilahstevenson is controlled by the interviewed Dr. Kamilah Stevenson.",
+      "supporting_evidence": [
+        "The Linktree profile links to the handle and uses the same name/brand theme.",
+        "Third-party analytics identifies a channel named Kamilah Stevenson."
+      ],
+      "disconfirming_evidence": [
+        "The Linktree profile was created only in October 2026.",
+        "The guest warned about fake pages.",
+        "No authenticated cross-link from the established X/Instagram accounts or channel About page was obtained."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H2",
+      "statement": "The Linktree or YouTube candidate could be a lookalike or impersonation account.",
+      "supporting_evidence": [
+        "The profile is recent.",
+        "The guest explicitly warned about fake pages.",
+        "Third-party aggregators list many similar-name accounts."
+      ],
+      "disconfirming_evidence": [
+        "The Linktree profile links directly to the candidate YouTube handle and uses the same general branding."
+      ],
+      "status": "PLAUSIBLE_NOT_PROVEN"
+    }
+  ],
+  "disconfirming_evidence": [
+    "The interview guest explicitly warned that fake pages exist; this warning is retained as a controlling caution.",
+    "No cross-link from the official website to the candidate channel was found.",
+    "No authenticated X/Instagram-to-YouTube cross-link was retrieved.",
+    "The candidate Linktree was created in October 2026.",
+    "Third-party channel analytics and identity aggregators are not primary ownership evidence."
+  ],
+  "video_inventory": {
+    "status": "NO_NEW_VIDEOS_ADDED_PENDING_CANONICAL_CHANNEL_VERIFICATION",
+    "prior_candidates_preserved": 4,
+    "new_candidates_added": 0,
+    "canonical_channel_designated": false
+  },
+  "exact_phrase_followup": {
+    "Camilla/Kamilah Stevenson": "Person identity is supported by first-person interview self-identification and a matching self-published brand site; canonical YouTube handle remains unverified.",
+    "ASK Coin": "The existing research still identifies Permission Coin (ASK) as the strongest token candidate; no XRP/XRPL relationship established.",
+    "actual capital": "No new exact-phrase match tied to XRP, Ripple, SBIC or this creator was established.",
+    "SBIC, ChatGPT SBIC": "The separate SBIC America / Safecon ChatGPT Plus contest remains distinct from Japan's SBIC East/Central/West and SBI Holdings."
+  },
+  "data_quality": {
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "source_page_timestamps_independently_anchored": false,
+    "person_identity_quality": "FIRST_PERSON_INTERVIEW_VERIFIED",
+    "youtube_handle_quality": "UNVERIFIED_CANDIDATE",
+    "video_inventory_completeness": "PARTIAL; NO NEW ITEMS ADDED",
+    "model_eligible": false,
+    "model_eligibility_reason": "Identity-resolution evidence is qualitative and was captured as rendered web content without byte-complete source receipts or independent timestamp anchors."
+  },
+  "predictions": {
+    "forecast_issued": false,
+    "prediction_status": "NOT_ISSUED",
+    "directional_xrp_forecast": null
+  },
+  "next_actions": [
+    "Find the established X and Instagram accounts named by the interview guest and verify whether either directly links to @drkamilahstevenson.",
+    "Retrieve the candidate YouTube About page or official channel metadata when accessible.",
+    "Do not expand the video inventory or designate a canonical channel until an authoritative cross-link is found.",
+    "Preserve all prior video attribution limitations and the guest's fake-page warning."
+  ],
+  "artifact_filename_timestamp_utc": "2026-11-05T01:11:54Z",
+  "filename_timestamp_precision": "UTC seconds; captured_at_utc retains milliseconds"
+}

@@ -134,6 +134,109 @@ class TestRecursiveFeedbackLoop:
         assert 0.0 <= score <= 1.0
         assert 0.0 <= convergence <= 1.0
 
+    def test_unavailable_kimi_returns_no_synthetic_insight(self):
+        loop = RecursiveFeedbackLoop(kimi_client=Mock(is_available=False))
+        result = loop._analyze_with_kimi({"iteration": 1}, ["goal"])
+        assert result["status"] == "unavailable"
+        assert result["paradigm_shifts"] == []
+
+    def test_dry_run_proposals_are_not_reported_as_applied(self):
+        loop = RecursiveFeedbackLoop()
+        with patch("barrot_agent.recursive_feedback.UpgradeFlywheel") as flywheel_type:
+            flywheel = flywheel_type.return_value
+            flywheel.run.return_value.cycles = []
+            applied, changes = loop._apply_improvements(["META: proposal"], 10)
+        assert applied == []
+        assert changes["status"] == "dry_run_only"
+        assert changes["applied_count"] == 0
+        flywheel.close.assert_called_once()
+
+    def test_missing_evaluation_evidence_cannot_score_or_converge(self):
+        loop = RecursiveFeedbackLoop()
+        score, convergence = loop._verify_improvement(1, {"infrastructure": {"coverage_gain": 1.0}}, ["claimed"])
+        assert score == 0.0
+        assert convergence == 0.0
+        assert not loop._improvement_history
+
+    def test_paired_evaluation_evidence_scores_real_improvement(self):
+        loop = RecursiveFeedbackLoop()
+        state = {"evaluation": {
+            "baseline": {"run_id": "base-1", "revision": "rev-a", "metrics": {"loss": 1.0}},
+            "candidate": {"run_id": "candidate-1", "revision": "rev-b", "metrics": {"loss": 0.8}},
+            "lower_is_better": ["loss"],
+        }}
+        score, convergence = loop._verify_improvement(1, state, [])
+        assert score > 0.0
+        assert convergence == 0.0
+        assert list(loop._improvement_history) == [score]
+
+    def test_regressing_paired_evaluation_is_blocked(self):
+        loop = RecursiveFeedbackLoop()
+        state = {"evaluation": {
+            "baseline": {"run_id": "base-1", "revision": "rev-a", "metrics": {"loss": 1.0, "latency": 10.0}},
+            "candidate": {"run_id": "candidate-1", "revision": "rev-b", "metrics": {"loss": 0.8, "latency": 12.0}},
+            "lower_is_better": ["loss", "latency"],
+        }}
+        score, convergence = loop._verify_improvement(1, state, [])
+        assert score == 0.0
+        assert convergence == 0.0
+        assert not loop._improvement_history
+
+
+    def test_malformed_evaluation_evidence_is_rejected_without_raising(self):
+        loop = RecursiveFeedbackLoop()
+        bad_metrics = {
+            "baseline": {"run_id": "b", "revision": "a", "metrics": []},
+            "candidate": {"run_id": "c", "revision": "b", "metrics": {"loss": 1.0}},
+        }
+        assert loop._verify_improvement(1, {"evaluation": bad_metrics}, []) == (0.0, 0.0)
+        bad_tolerances = {
+            "baseline": {"run_id": "b", "revision": "a", "metrics": {"loss": 1.0}},
+            "candidate": {"run_id": "c", "revision": "b", "metrics": {"loss": 0.5}},
+            "tolerances": ["invalid"],
+        }
+        assert loop._verify_improvement(2, {"evaluation": bad_tolerances}, []) == (0.0, 0.0)
+
+
+    def test_unverified_iteration_resets_convergence_window(self):
+        loop = RecursiveFeedbackLoop()
+        loop._improvement_history.extend([0.1, 0.1, 0.1])
+        assert loop._verify_improvement(4, {"evaluation": None}, []) == (0.0, 0.0)
+        assert not loop._improvement_history
+
+    def test_reused_evaluation_pair_cannot_fake_convergence(self):
+        loop = RecursiveFeedbackLoop(loop_config=FeedbackLoopConfig(improvement_window=3))
+        state = {"evaluation": {
+            "baseline": {"run_id": "baseline-1", "revision": "rev-a", "metrics": {"accuracy": 0.5}},
+            "candidate": {"run_id": "candidate-1", "revision": "rev-b", "metrics": {"accuracy": 0.6}},
+        }}
+        results = [loop._verify_improvement(i, state, []) for i in range(1, 4)]
+        assert all(convergence == 0.0 for _, convergence in results)
+        assert len(loop._improvement_history) < loop.config.improvement_window
+
+    def test_distinct_evaluation_runs_can_fill_convergence_window(self):
+        loop = RecursiveFeedbackLoop(loop_config=FeedbackLoopConfig(improvement_window=3))
+        results = []
+        for index in range(3):
+            state = {"evaluation": {
+                "baseline": {"run_id": f"baseline-{index}", "revision": f"base-{index}", "metrics": {"accuracy": 0.5}},
+                "candidate": {"run_id": f"candidate-{index}", "revision": f"candidate-{index}", "metrics": {"accuracy": 0.6}},
+            }}
+            results.append(loop._verify_improvement(index + 1, state, []))
+        assert results[-1][0] > 0.0
+        assert results[-1][1] == 1.0
+
+    def test_overflowing_metric_evidence_is_unscored_and_clears_history(self):
+        loop = RecursiveFeedbackLoop()
+        loop._improvement_history.extend([0.2, 0.2])
+        state = {"evaluation": {
+            "baseline": {"run_id": "huge-base", "revision": "rev-a", "metrics": {"metric": 10 ** 10000}},
+            "candidate": {"run_id": "huge-candidate", "revision": "rev-b", "metrics": {"metric": 1.0}},
+        }}
+        assert loop._verify_improvement(1, state, []) == (0.0, 0.0)
+        assert not loop._improvement_history
+        assert not loop._evaluation_history
+
     @patch.object(RecursiveFeedbackLoop, "_observe_system_state")
     @patch.object(RecursiveFeedbackLoop, "_analyze_with_kimi")
     @patch.object(RecursiveFeedbackLoop, "_absorb_feedback")

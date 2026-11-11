@@ -1,4 +1,6 @@
 import json
+import re
+from pathlib import Path
 
 from scripts import signal_summary
 
@@ -149,8 +151,65 @@ def test_signal_summary_workflow_is_manual_read_only_and_artifact_based():
     assert "workflow_run:" not in workflow
     assert "permissions:" in workflow
     assert "contents: read" in workflow
-    assert "actions/upload-artifact@v4" in workflow
-    assert "retention-days: 30" in workflow
+    upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", workflow)
+    assert upload_ref and int(upload_ref.group(1)) >= 7
+    assert "retention-days: 7" in workflow
+    assert "inputs.confirm == 'YES'" in workflow
+    assert "expected_main_sha" in workflow
+    assert "persist-credentials: false" in workflow
+    assert "public/authorized" in workflow
+    assert "forecast_status remains NOT_ISSUED" in workflow
     assert "git commit" not in workflow
     assert "git push" not in workflow
     assert "contents: write" not in workflow
+
+def test_signal_accuracy_workflow_is_disabled_until_fixed_horizon_evaluator_is_verified() -> None:
+    workflow = Path(".github/workflows/check-signal-accuracy.yml").read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    for forbidden in (
+        "schedule:",
+        "contents: write",
+        "actions/checkout",
+        "scripts/check_signal_accuracy.py",
+        "git add",
+        "git commit",
+        "git push",
+        "requests",
+        "gh_token",
+    ):
+        assert forbidden not in lowered
+
+
+
+def test_explicit_not_issued_status_skips_model_and_tts(monkeypatch, tmp_path):
+    summary_path, _, audio_path = _prepare(monkeypatch, tmp_path, {
+        "schema_version": 2,
+        "asset": "XRP/USD",
+        "status": "NOT_ISSUED",
+        "forecast_status": "NOT_ISSUED",
+        "forecast_issued": False,
+        "reason_code": "OUT_OF_SAMPLE_VALIDATION_INCOMPLETE",
+        "data_cutoff_utc": None,
+        "target": None,
+        "horizon_seconds": None,
+        "probabilities": None,
+    })
+
+    def forbidden_provider(*args, **kwargs):
+        raise AssertionError("provider must not be called for NOT_ISSUED")
+
+    monkeypatch.setattr(signal_summary, "chat", forbidden_provider)
+    monkeypatch.setattr(signal_summary, "speak", forbidden_provider)
+
+    signal_summary.main()
+    artifact = json.loads(summary_path.read_text(encoding="utf-8"))
+
+    assert artifact["status"] == "NOT_ISSUED"
+    assert artifact["forecast_status"] == "NOT_ISSUED"
+    assert artifact["audio"] is None
+    assert artifact["tts_error"] == "skipped_invalid_signal"
+    assert not audio_path.exists()

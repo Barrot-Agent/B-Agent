@@ -1,0 +1,134 @@
+{
+  "schema_version": "barrot.xrp.macro-event-run.v1",
+  "run_id": "130B",
+  "captured_at_utc": "2026-11-10T13:31:08Z",
+  "repository_head_before_addendum": "45895ec7494941cc5f09a7452a416e1e2ca7ca81",
+  "exact_head_verification": {
+    "full_ci_run": 42824636726,
+    "full_ci_conclusion": "success",
+    "tests_passed": 1371,
+    "failed": 0,
+    "subtests_passed": 8,
+    "duration_seconds": 65.23,
+    "inclusive_coverage_pct": 59.58,
+    "wheel_build_install": "success",
+    "dependency_audit_run": 42824636655,
+    "dependency_audit_conclusion": "success",
+    "manifests_passed": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42824636707,
+    "fail_closed_gate_conclusion": "success"
+  },
+  "macro_event": {
+    "event": "U.S. October 2026 CPI",
+    "release_id": "USDL-26-1685",
+    "official_source": "https://www.bls.gov/news.release/cpi.nr0.htm",
+    "release_time_utc": "2026-11-10T13:30:00Z",
+    "observed_utc": "2026-11-10T13:30:26Z",
+    "first_release_vintage": true,
+    "headline_cpi_mom_sa_pct": 0.4,
+    "prior_month_headline_mom_sa_pct": 0.6,
+    "core_cpi_mom_sa_pct": 0.3,
+    "prior_month_core_mom_sa_pct": 0.3,
+    "components": {
+      "shelter_mom_sa_pct": 0.3,
+      "food_mom_sa_pct": 0.5,
+      "food_at_home_mom_sa_pct": 0.4,
+      "food_away_from_home_mom_sa_pct": 0.5,
+      "energy_mom_sa_pct": 0.7,
+      "gasoline_mom_sa_pct": 1,
+      "used_cars_and_trucks_mom_sa_pct": -1.2
+    },
+    "consensus_from_reuters_preview": {
+      "headline_mom_sa_pct": 0.3,
+      "core_mom_sa_pct": 0.2,
+      "source": "https://www.reuters.com/business/us-consumer-prices-expected-have-risen-slower-pace-october-2026-11-10/"
+    },
+    "surprise_vs_consensus_pp": {
+      "headline": 0.1,
+      "core": 0.1
+    },
+    "year_over_year": {
+      "headline_pct": null,
+      "core_pct": null,
+      "missing_reason": "BLS did not collect October 2025 survey data because of the lapse in appropriations and could not publish October 2025 indexes for most CPI series; therefore October 2026 12-month changes are unavailable for those series.",
+      "official_release_lines": "BLS release states the limitation and table uses '-' for most 12-month series.",
+      "official_missing_data_faq": "https://www.bls.gov/cpi/factsheets/approximating-missing-data.htm",
+      "model_rule": "Preserve null with explicit missing reason; never zero-fill, interpolate or synthesize an official YoY value."
+    },
+    "fed_context": {
+      "waller_conditional_statement": "Waller said core CPI at 0.3% m/m or higher should prompt consideration of a 50bp December move. Actual core print meets that stated threshold; this is one governor's view, not an FOMC decision.",
+      "source": "https://www.reuters.com/business/feds-waller-plans-support-least-quarter-point-rate-hike-december-2026-11-10/",
+      "pre_release_kalshi_snapshot": {
+        "observed_label": "2026-11-10 06:34 AM ET",
+        "hike_25bp_pct": 88,
+        "hike_50bp_pct": 5,
+        "hold_pct": 9,
+        "cuts_total_pct": 3,
+        "source": "https://kalshi.com/fed-rate-odds",
+        "classification": "PRE_RELEASE market pricing; not a post-CPI repricing."
+      },
+      "pre_release_reuters_futures_hike_probability_pct": 85,
+      "pre_release_lseg_hike_probability_pct": 98,
+      "disagreement": "Different instruments/providers and timestamps; preserve separately, do not average. No post-release market-pricing update independently verified by 13:31 UTC."
+    },
+    "interpretation": "Both headline and core monthly prints were 0.1 percentage point above the Reuters preview consensus. The core print meets Waller's stated 0.3% conditional threshold. Annual headline/core comparison is unavailable; do not compare to September's 3.7%/2.6% as if an October YoY print existed."
+  },
+  "market_observations": {
+    "pre_release_kraken_xrp_usd": {
+      "observed_utc": "2026-11-10T13:19:48Z",
+      "provider_event_time": null,
+      "last": 1.07712,
+      "bid": 1.07718,
+      "ask": 1.07719,
+      "volume_24h_xrp": 24112244.20640583,
+      "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "post_release_kraken_xrp_usd": {
+      "retrieval_utc": "2026-11-10T13:30:26Z",
+      "provider_event_time": null,
+      "last": 1.07765,
+      "bid": 1.0781,
+      "ask": 1.07811,
+      "volume_24h_xrp": 24243900.00877231,
+      "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "indicative_last_change_pct": 0.049204,
+    "post_release_okx": {
+      "last": 1.0784,
+      "bid": 1.0782,
+      "ask": 1.0783,
+      "provider_event_time_utc": "2026-11-10T13:17:53.462Z",
+      "age_at_post_release_utc_minutes": 12.54,
+      "classification": "STALE; excluded from post-release cross-venue comparison.",
+      "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "conclusion": "No synchronized post-release multi-venue snapshot with provider timestamps. The small difference between two Kraken retrievals is not a valid CPI event return and cannot establish a price reaction."
+  },
+  "model_admission": {
+    "cpi_headline_mom_sa": "Admit with BLS release ID, first-release vintage and exact timestamp.",
+    "cpi_core_mom_sa": "Admit with BLS release ID, first-release vintage and exact timestamp.",
+    "cpi_headline_yoy": "NULL — October 2025 base unavailable.",
+    "cpi_core_yoy": "NULL — October 2025 base unavailable.",
+    "source_independence": "BLS is primary; Reuters provides pre-release consensus and Waller context; Kalshi pricing snapshot is a separate prediction-market source, but predates release.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "sources": [
+    "https://www.bls.gov/news.release/cpi.nr0.htm",
+    "https://www.bls.gov/cpi/factsheets/approximating-missing-data.htm",
+    "https://www.reuters.com/business/us-consumer-prices-expected-have-risen-slower-pace-october-2026-11-10/",
+    "https://www.reuters.com/business/feds-waller-plans-support-least-quarter-point-rate-hike-december-2026-11-10/",
+    "https://kalshi.com/fed-rate-odds",
+    "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+  ],
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  }
+}

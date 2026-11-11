@@ -5,7 +5,20 @@ from enum import Enum
 from hashlib import sha256
 from pathlib import Path
 import json
+import os
 import time
+from datetime import datetime, timezone
+
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - non-POSIX fallback is single-writer only
+    fcntl = None
+
+from barrot_agent.evolution.source_independence import canonical_publisher_group
+from .structural_analysis import (
+    ConstraintResult, EvidenceStage, InvariantResult, RelationType,
+    StructuralAnalyzer, StructuralInput, StructuralRelation, VerificationStatus,
+)
 
 
 class ParseState(str, Enum):
@@ -94,6 +107,8 @@ class SourceRecord:
     depth: int = 1
     content_hash: str = ""
     observed_at: str = ""
+    # Canonical publisher/origin; shared groups are not independent.
+    independence_group: str = ""
 
 
 @dataclass
@@ -116,6 +131,7 @@ class EvidenceRecord:
     independent: bool = False
     content_hash: str = ""
     observed_at: str = ""
+    claim_id: str = ""
 
     def lineage_key(self) -> str:
         source = self.source_ids[0] if self.source_ids else "none"
@@ -155,6 +171,7 @@ class MMIRecord:
     acquisition_requests: list[str] = field(default_factory=list)
     self_upgrade_candidates: list[str] = field(default_factory=list)
     reconciliation: list[dict] = field(default_factory=list)
+    structural_signature: dict = field(default_factory=dict)
     negative_knowledge: list[dict] = field(default_factory=list)
     stages: list[StageRecord] = field(default_factory=list)
     protocol_completeness: float = 0.0
@@ -172,45 +189,308 @@ class MMIRecord:
 
         if self.component_max_depth != 4:
             errors.append("component depth must be 4")
-
         if self.source_max_depth != 4:
             errors.append("source depth must be 4")
 
+        stage_names = []
+        for index, stage in enumerate(self.stages):
+            name = getattr(stage, "name", None)
+            outcome = getattr(stage, "outcome", None)
+            if not isinstance(name, str) or name not in MMIStateMachine.ORDER:
+                errors.append(f"unknown or invalid MMI stage at index {index}")
+                continue
+            stage_names.append(name)
+            if not isinstance(outcome, StageOutcome):
+                errors.append(f"invalid stage outcome: {name}")
+        if len(stage_names) != len(set(stage_names)):
+            errors.append("duplicate MMI stage names")
+        positions = [MMIStateMachine.ORDER.index(name) for name in stage_names]
+        if positions != sorted(positions):
+            errors.append("MMI stages are not in protocol order")
+
         for item in self.scope:
-            if not isinstance(item.state, ParseState):
-                errors.append(f"invalid scope state: {item.path}")
+            if not isinstance(item, ScopeItem) or not isinstance(item.state, ParseState):
+                errors.append(f"invalid scope item: {getattr(item, 'path', '<unknown>')}")
 
+        component_ids = []
         for item in self.component_map:
-            if not 1 <= item.depth <= self.component_max_depth:
-                errors.append(f"component depth out of range: {item.component_id}")
+            component_id = getattr(item, "component_id", None)
+            depth = getattr(item, "depth", None)
+            if not isinstance(component_id, str) or not component_id.strip():
+                errors.append("component ID must be a non-empty string")
+                continue
+            component_ids.append(component_id)
+            if isinstance(depth, bool) or not isinstance(depth, int) or not 1 <= depth <= self.component_max_depth:
+                errors.append(f"component depth out of range: {component_id}")
+            if not isinstance(getattr(item, "state", None), ParseState):
+                errors.append(f"invalid component parse state: {component_id}")
+        if len(component_ids) != len(set(component_ids)):
+            errors.append("duplicate component IDs")
+        component_id_set = set(component_ids)
+        for item in self.component_map:
+            parent_id = getattr(item, "parent_id", None)
+            if parent_id is not None:
+                if not isinstance(parent_id, str) or not parent_id.strip():
+                    errors.append("component parent ID must be a non-empty string or null")
+                elif parent_id not in component_id_set:
+                    errors.append(f"unknown component parent: {parent_id}")
 
+        source_classes = {}
         for item in self.source_graph:
-            if not 1 <= item.depth <= self.source_max_depth:
-                errors.append(f"source depth out of range: {item.source_id}")
+            source_id = getattr(item, "source_id", None)
+            depth = getattr(item, "depth", None)
+            if not isinstance(source_id, str) or not source_id.strip():
+                errors.append("source ID must be a non-empty string")
+                continue
+            if source_id in source_classes:
+                errors.append("duplicate source IDs in source graph")
+            else:
+                provenance_class = getattr(item, "provenance_class", None)
+                source_classes[source_id] = provenance_class
+                if not isinstance(provenance_class, ProvenanceClass):
+                    errors.append(f"invalid source provenance class: {source_id}")
+            if isinstance(depth, bool) or not isinstance(depth, int) or not 1 <= depth <= self.source_max_depth:
+                errors.append(f"source depth out of range: {source_id}")
+            if not isinstance(getattr(item, "uri", None), str):
+                errors.append(f"source URI must be a string: {source_id}")
 
-        source_classes = {
-            s.source_id: s.provenance_class for s in self.source_graph
+        evidence_ids = []
+        for item in self.evidence:
+            evidence_id = getattr(item, "evidence_id", None)
+            if not isinstance(evidence_id, str) or not evidence_id.strip():
+                errors.append("evidence ID must be a non-empty string")
+                continue
+            evidence_ids.append(evidence_id)
+            if not isinstance(getattr(item, "state", None), ParseState):
+                errors.append(f"invalid evidence parse state: {evidence_id}")
+            source_ids = getattr(item, "source_ids", None)
+            if not isinstance(source_ids, list):
+                errors.append(f"evidence source_ids must be a list: {evidence_id}")
+                continue
+            for source_id in source_ids:
+                if not isinstance(source_id, str) or not source_id.strip():
+                    errors.append(f"invalid source reference in evidence: {evidence_id}")
+                elif source_id not in source_classes:
+                    errors.append(f"unknown source reference {source_id} in evidence: {evidence_id}")
+        if len(evidence_ids) != len(set(evidence_ids)):
+            errors.append("duplicate evidence IDs")
+
+        external_classes = {
+            ProvenanceClass.EXTERNAL_PRIMARY,
+            ProvenanceClass.EXTERNAL_SECONDARY,
+            ProvenanceClass.INDEPENDENT_EXTERNAL,
         }
-
-        for evidence in self.evidence:
-            if evidence.independent:
-                if not evidence.source_ids:
-                    errors.append(
-                        f"independent evidence has no source: {evidence.evidence_id}"
-                    )
-                if all(
-                    source_classes.get(s) in {
-                        ProvenanceClass.MODEL_DERIVED,
-                        ProvenanceClass.BARROT_GENERATED,
-                    }
-                    for s in evidence.source_ids
+        for item in self.evidence:
+            if getattr(item, "independent", False):
+                source_ids = getattr(item, "source_ids", None)
+                evidence_id = getattr(item, "evidence_id", "<unknown>")
+                if not isinstance(source_ids, list):
+                    # The first evidence pass records the malformed container.
+                    continue
+                valid_source_ids = [
+                    source_id for source_id in source_ids
+                    if isinstance(source_id, str) and source_id.strip()
+                ]
+                if not valid_source_ids:
+                    errors.append(f"independent evidence cannot be independent without a valid source: {evidence_id}")
+                elif any(source_id not in source_classes for source_id in valid_source_ids):
+                    errors.append(f"independent evidence cannot be independent with an unknown source: {evidence_id}")
+                elif any(
+                    not isinstance(source_classes[source_id], ProvenanceClass)
+                    or source_classes[source_id] not in external_classes
+                    for source_id in valid_source_ids
                 ):
+                    errors.append(f"independent evidence cannot be independent unless it references only external sources: {evidence_id}")
+
+        if self.structural_signature:
+            if not isinstance(self.structural_signature, dict):
+                errors.append("structural signature must be an object")
+            else:
+                valid_region = self.structural_signature.get("valid_region")
+                if not isinstance(valid_region, str) or valid_region not in {"valid", "unresolved", "invalid"}:
+                    errors.append("structural signature has an invalid valid_region")
+                identity_hash = self.structural_signature.get("identity_hash")
+                if not isinstance(identity_hash, str) or len(identity_hash) != 64 or any(ch not in "0123456789abcdef" for ch in identity_hash.lower()):
+                    errors.append("structural signature identity_hash must be a 64-character SHA-256 hex digest")
+
+        for index, result in enumerate(self.corroboration_results):
+            if not isinstance(result, dict):
+                errors.append(f"invalid corroboration result: {index}")
+                continue
+            status = str(result.get("status", "")).upper()
+            if status in {"CORROBORATED", "CONTRADICTORY"}:
+                if not self._claim_bound_corroboration(result):
                     errors.append(
-                        f"Barrot-derived evidence cannot be independent: "
-                        f"{evidence.evidence_id}"
+                        f"{status} result requires claim-bound observed evidence, "
+                        "source-linked publisher identities, and at least two "
+                        "distinct independence groups"
                     )
 
         return errors
+
+    def _independence_groups_for(self, source_ids):
+        if not isinstance(source_ids, list) or len(source_ids) < 2:
+            return None
+        if any(not isinstance(source_id, str) or not source_id.strip() for source_id in source_ids):
+            return None
+        if len(set(source_ids)) != len(source_ids):
+            return None
+
+        source_by_id = {}
+        for source in self.source_graph:
+            source_id = getattr(source, "source_id", None)
+            if not isinstance(source_id, str) or not source_id.strip() or source_id in source_by_id:
+                return None
+            source_by_id[source_id] = source
+        if any(source_id not in source_by_id for source_id in source_ids):
+            return None
+
+        external_classes = {
+            ProvenanceClass.EXTERNAL_PRIMARY,
+            ProvenanceClass.EXTERNAL_SECONDARY,
+            ProvenanceClass.INDEPENDENT_EXTERNAL,
+        }
+        groups = set()
+        for source_id in source_ids:
+            source = source_by_id[source_id]
+            provenance_class = getattr(source, "provenance_class", None)
+            if (
+                not isinstance(provenance_class, ProvenanceClass)
+                or provenance_class not in external_classes
+            ):
+                return None
+            uri = getattr(source, "uri", None)
+            if not isinstance(uri, str) or not uri.strip():
+                return None
+            resolved = canonical_publisher_group(uri)
+            declared = getattr(source, "independence_group", None)
+            if not resolved or not isinstance(declared, str):
+                return None
+            if declared.strip().casefold() != resolved.casefold():
+                return None
+            groups.add(resolved.casefold())
+        return groups
+
+    def _claim_bound_corroboration(self, result: dict) -> bool:
+        status = str(result.get("status", "")).upper()
+        claim_id = result.get("claim_id")
+        if not isinstance(claim_id, str) or not claim_id.strip():
+            return False
+
+        evidence_by_id = {}
+        for evidence in self.evidence:
+            evidence_id = getattr(evidence, "evidence_id", None)
+            if not isinstance(evidence_id, str) or not evidence_id.strip() or evidence_id in evidence_by_id:
+                return False
+            evidence_by_id[evidence_id] = evidence
+
+        if status == "CORROBORATED":
+            supporting_ids = result.get("supporting_evidence_ids")
+            if (
+                not isinstance(supporting_ids, list)
+                or len(supporting_ids) < 2
+                or any(not isinstance(evidence_id, str) or not evidence_id.strip() for evidence_id in supporting_ids)
+                or len(set(supporting_ids)) != len(supporting_ids)
+            ):
+                return False
+            if any(evidence_id not in evidence_by_id for evidence_id in supporting_ids):
+                return False
+            evidence_records = [evidence_by_id[eid] for eid in supporting_ids]
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not True
+                or not isinstance(evidence.state, ParseState)
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not isinstance(evidence.source_ids, list)
+                or not evidence.source_ids
+                or any(not isinstance(source_id, str) or not source_id.strip() for source_id in evidence.source_ids)
+                for evidence in evidence_records
+            ):
+                return False
+            if any(
+                evidence.claim_id == claim_id and evidence.supporting is False
+                for evidence in self.evidence
+            ):
+                return False
+        elif status == "CONTRADICTORY":
+            supporting_ids = result.get("supporting_evidence_ids")
+            contradicting_ids = result.get("contradicting_evidence_ids")
+            if not isinstance(supporting_ids, list) or not supporting_ids or not isinstance(contradicting_ids, list) or not contradicting_ids:
+                return False
+            all_ids = supporting_ids + contradicting_ids
+            if any(not isinstance(evidence_id, str) or not evidence_id.strip() for evidence_id in all_ids):
+                return False
+            if len(set(all_ids)) != len(all_ids):
+                return False
+            if any(evidence_id not in evidence_by_id for evidence_id in all_ids):
+                return False
+            supporting_records = [evidence_by_id[eid] for eid in supporting_ids]
+            contradicting_records = [evidence_by_id[eid] for eid in contradicting_ids]
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not True
+                or not isinstance(evidence.state, ParseState)
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not isinstance(evidence.source_ids, list)
+                or not evidence.source_ids
+                or any(not isinstance(source_id, str) or not source_id.strip() for source_id in evidence.source_ids)
+                for evidence in supporting_records
+            ):
+                return False
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not False
+                or not isinstance(evidence.state, ParseState)
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not isinstance(evidence.source_ids, list)
+                or not evidence.source_ids
+                or any(not isinstance(source_id, str) or not source_id.strip() for source_id in evidence.source_ids)
+                for evidence in contradicting_records
+            ):
+                return False
+            required_ids = set(all_ids)
+            reconciled_ids = set()
+            for item in self.reconciliation:
+                if not isinstance(item, dict):
+                    continue
+                evidence_ids = item.get("evidence_ids")
+                if isinstance(evidence_ids, list):
+                    reconciled_ids.update(eid for eid in evidence_ids if isinstance(eid, str) and eid.strip())
+            if not required_ids.issubset(reconciled_ids):
+                return False
+            evidence_records = supporting_records + contradicting_records
+        else:
+            return False
+
+        source_ids = {
+            source_id
+            for evidence in evidence_records
+            for source_id in evidence.source_ids
+        }
+        declared_source_ids = result.get("independent_source_ids")
+        if (
+            not isinstance(declared_source_ids, list)
+            or any(not isinstance(source_id, str) or not source_id.strip() for source_id in declared_source_ids)
+            or len(set(declared_source_ids)) != len(declared_source_ids)
+            or set(declared_source_ids) != source_ids
+        ):
+            return False
+
+        groups = self._independence_groups_for(declared_source_ids)
+        if groups is None or len(groups) < 2:
+            return False
+        if result.get("independent_sources") != len(groups):
+            return False
+        return True
+
+    def corroboration_complete(self) -> bool:
+        return any(
+            isinstance(result, dict)
+            and str(result.get("status", "")).upper()
+            in {"CORROBORATED", "CONTRADICTORY"}
+            and self._claim_bound_corroboration(result)
+            for result in self.corroboration_results
+        )
 
 
 class MMIStateMachine:
@@ -247,7 +527,12 @@ class MMIStateMachine:
         if any(outcomes.get(x) == StageOutcome.BLOCKED for x in required):
             return MMIResult.BLOCKED
 
-        if any(outcomes.get(x) == StageOutcome.PARTIAL for x in required):
+        if any(outcomes.get(x) != StageOutcome.COMPLETE for x in required):
+            return MMIResult.PARTIAL
+
+        if outcomes.get("CORROBORATION") == StageOutcome.BLOCKED:
+            return MMIResult.BLOCKED
+        if outcomes.get("CORROBORATION") == StageOutcome.PARTIAL:
             return MMIResult.PARTIAL
 
         # A COMPLETE label is not sufficient proof by itself.
@@ -261,7 +546,22 @@ class MMIStateMachine:
                 return MMIResult.PARTIAL
 
         if outcomes.get("CORROBORATION") == StageOutcome.COMPLETE:
-            if not record.corroboration_results:
+            if not record.corroboration_complete():
+                return MMIResult.PARTIAL
+
+        if outcomes.get("CORROBORATION") == StageOutcome.NOT_APPLICABLE:
+            corroboration_stage = next(
+                (
+                    stage
+                    for stage in record.stages
+                    if stage.name == "CORROBORATION"
+                ),
+                None,
+            )
+            if (
+                corroboration_stage is None
+                or not corroboration_stage.details.strip()
+            ):
                 return MMIResult.PARTIAL
 
         if all(
@@ -350,29 +650,51 @@ class MMIExecutionLedger:
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
     def append(self, event: dict) -> str:
-        previous = ""
-        if self.path.exists():
-            lines = self.path.read_text().splitlines()
-            if lines:
-                previous = json.loads(lines[-1]).get("event_hash", "")
+        if not isinstance(event, dict):
+            raise TypeError("MMI ledger event must be an object")
+        if "event_hash" in event or "previous_hash" in event or "ledger_recorded_at" in event:
+            raise ValueError("MMI ledger hash-chain fields are reserved")
+        self.path.parent.mkdir(parents=True, exist_ok=True)
 
-        payload = dict(event)
-        payload["previous_hash"] = previous
-        canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
-        event_hash = "sha256:" + sha256(canonical.encode()).hexdigest()
-        payload["event_hash"] = event_hash
+        with self.path.open("a+", encoding="utf-8") as handle:
+            locked = False
+            try:
+                if fcntl is not None:
+                    fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                    locked = True
+                if not self.verify():
+                    raise ValueError("MMI execution ledger integrity check failed; refusing append")
+                handle.seek(0)
+                lines = handle.read().splitlines()
+                last_record = next((line for line in reversed(lines) if line.strip()), None)
+                previous = json.loads(last_record).get("event_hash", "") if last_record else ""
 
-        with self.path.open("a") as f:
-            f.write(json.dumps(payload, sort_keys=True) + "\n")
+                payload = dict(event)
+                payload["ledger_recorded_at"] = datetime.now(timezone.utc).isoformat()
+                payload["previous_hash"] = previous
+                canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+                event_hash = "sha256:" + sha256(canonical.encode()).hexdigest()
+                payload["event_hash"] = event_hash
 
-        return event_hash
+                handle.seek(0, os.SEEK_END)
+                handle.write(json.dumps(payload, sort_keys=True) + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+                return event_hash
+            finally:
+                if locked and fcntl is not None:
+                    fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
     def verify(self) -> bool:
         if not self.path.exists():
             return True
 
         previous = ""
-        for line in self.path.read_text().splitlines():
+        try:
+            lines = self.path.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            return False
+        for line in lines:
             if not line.strip():
                 continue
 
@@ -431,14 +753,21 @@ class MMICompletenessReport:
                 else None
             )
 
-        protocol_complete = (
-            all(
-                outcome in {
-                    StageOutcome.COMPLETE.value,
-                    StageOutcome.NOT_APPLICABLE.value,
-                }
-                for outcome in required_stages.values()
+        if required_stages.get("CORROBORATION") == StageOutcome.NOT_APPLICABLE.value:
+            corroboration_stage = next(
+                (
+                    stage
+                    for stage in record.stages
+                    if stage.name == "CORROBORATION"
+                ),
+                None,
             )
+            if corroboration_stage is not None and corroboration_stage.details.strip():
+                artifact_presence["corroboration_results"] = True
+
+        state_result = MMIStateMachine.evaluate(record)
+        protocol_complete = (
+            state_result == MMIResult.COMPLETE
             and all(artifact_presence.values())
         )
 
@@ -449,6 +778,25 @@ class MMICompletenessReport:
             }
             for outcome in required_stages.values()
         )
+        if (
+            required_stages.get("CORROBORATION") == StageOutcome.COMPLETE.value
+            and not record.corroboration_complete()
+        ):
+            completed_stages = max(0, completed_stages - 1)
+        for stage_name in (
+            "RECEIVED",
+            "PROVENANCE_CAPTURED",
+            "EVIDENCE_NORMALIZED",
+            "VERIFICATION",
+        ):
+            if required_stages.get(stage_name) != StageOutcome.COMPLETE.value:
+                if required_stages.get(stage_name) == StageOutcome.NOT_APPLICABLE.value:
+                    completed_stages = max(0, completed_stages - 1)
+        completed_stages = max(
+            0,
+            completed_stages - sum(not present for present in artifact_presence.values()),
+        )
+
         protocol_completeness = (
             completed_stages / len(required_stages)
             if required_stages
@@ -463,11 +811,9 @@ class MMICompletenessReport:
             "knowledge_completeness": record.knowledge_completeness,
             "required_artifacts": artifact_presence,
             "stage_outcomes": required_stages,
-            "result": (
-                MMIResult.COMPLETE.value
-                if protocol_complete
-                else MMIResult.PARTIAL.value
-            ),
+            "corroboration_complete": record.corroboration_complete(),
+            "validation_errors": record.validate(),
+            "result": state_result.value,
         }
 
 
@@ -531,6 +877,98 @@ class MMIEngine:
             })
 
         return report
+
+    def analyze_structure(self, record: MMIRecord, analyzer: StructuralAnalyzer | None = None):
+        """Build and persist an evidence-aware structural signature for an MMI record.
+
+        This records deterministic descriptors and provenance relationships; it
+        does not claim mathematical equivalence or upgrade verification status.
+        """
+        analyzer = analyzer or StructuralAnalyzer()
+        validation_errors = record.validate()
+        dataset_digest = sha256(
+            StructuralAnalyzer._canonical(record.dataset).encode("utf-8")
+        ).hexdigest()
+        constraints = (
+            ConstraintResult(
+                name="mmi_record_validation",
+                status="violated" if validation_errors else "satisfied",
+                evidence_stage=EvidenceStage.COMPUTED,
+                verification=VerificationStatus.UNVERIFIED,
+                detail="; ".join(validation_errors),
+            ),
+        )
+        invariants = (
+            InvariantResult("component_count", len(record.component_map)),
+            InvariantResult("source_count", len(record.source_graph)),
+            InvariantResult("evidence_count", len(record.evidence)),
+            InvariantResult(
+                "maximum_component_depth",
+                max((item.depth for item in record.component_map), default=0),
+            ),
+            InvariantResult(
+                "maximum_source_depth",
+                max((item.depth for item in record.source_graph), default=0),
+            ),
+        )
+        relations = tuple(
+            StructuralRelation(
+                source_id=item.component_id,
+                target_id=item.parent_id,
+                relation=RelationType.DERIVED_FROM,
+                criterion=item.relationship,
+                evidence_stage=EvidenceStage.OBSERVED,
+                verification=VerificationStatus.UNVERIFIED,
+            )
+            for item in record.component_map
+            if item.parent_id
+        ) + tuple(
+            StructuralRelation(
+                source_id=evidence.evidence_id,
+                target_id=source_id,
+                relation=RelationType.DERIVED_FROM,
+                criterion="evidence source linkage",
+                evidence_stage=EvidenceStage.OBSERVED,
+                verification=VerificationStatus.UNVERIFIED,
+            )
+            for evidence in record.evidence
+            for source_id in evidence.source_ids
+        )
+        provenance = {
+            "ingestion_id": record.ingestion_id,
+            "dataset_sha256": dataset_digest,
+            "sources": [
+                {
+                    "source_id": source.source_id,
+                    "uri": source.uri,
+                    "content_hash": source.content_hash,
+                    "independence_group": source.independence_group,
+                }
+                for source in record.source_graph
+            ],
+        }
+        signature = analyzer.analyze(
+            StructuralInput(
+                representation={
+                    "ingestion_id": record.ingestion_id,
+                    "dataset_sha256": dataset_digest,
+                },
+                representation_type="mmi_record",
+                provenance=provenance,
+                constraints=constraints,
+                invariants=invariants,
+                relations=relations,
+            )
+        )
+        record.structural_signature = signature.to_dict()
+        if self.ledger is not None:
+            self.ledger.append({
+                "event": "MMI_STRUCTURAL_SIGNATURE_RECORDED",
+                "ingestion_id": record.ingestion_id,
+                "identity_hash": signature.identity_hash,
+                "valid_region": signature.valid_region,
+            })
+        return signature
 
     def serialize(self, record: MMIRecord) -> dict:
         return asdict(record)

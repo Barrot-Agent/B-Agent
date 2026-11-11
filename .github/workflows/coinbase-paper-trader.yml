@@ -1,25 +1,87 @@
-name: Coinbase Paper Trader
+name: Coinbase Paper Trader (manual artifact-only simulation)
+run-name: Paper trader simulation (${{ inputs.expected_main_sha }})
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: Type YES to approve one paper-trading simulation
+        required: true
+        type: string
+      expected_main_sha:
+        description: Exact 40-character current main commit to simulate and update
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: paper-trader-main
+  cancel-in-progress: false
 
 jobs:
-  trade:
+  simulate:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      PRODUCT_ID: "BTC-USD"
+      PRODUCT_ID: BTC-USD
       STARTING_BALANCE_USD: "10000"
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - name: Checkout exact approved main
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.expected_main_sha }}
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: python3 scripts/coinbase_paper_trader.py
-      - name: Commit
+      - name: Require explicit confirmation and unchanged main
+        shell: bash
+        env:
+          CONFIRM: ${{ inputs.confirm }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add web/paper_trading_state.json web/paper_trading_log.jsonl
-          git diff --cached --quiet || git commit -m "Paper trade cycle [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          set -euo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::Workflow must be dispatched from main"; exit 1; }
+          [[ "$CONFIRM" == "YES" ]] || { echo "::error::Explicit YES confirmation required"; exit 1; }
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::A full 40-character main SHA is required"; exit 1; }
+          git fetch --no-tags --depth=1 origin main
+          current_main="$(git rev-parse FETCH_HEAD)"
+          checked_out="$(git rev-parse HEAD)"
+          [[ "$current_main" == "$EXPECTED_MAIN_SHA" && "$checked_out" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main changed; refusing stale simulation"; exit 1; }
+          python3 - <<'PY'
+          import json
+          import math
+          import os
+          from pathlib import Path
+          state = json.loads(Path("web/paper_trading_state.json").read_text(encoding="utf-8"))
+          size = float(state.get("position_size", 0) or 0)
+          if not math.isfinite(size) or size < 0:
+              raise SystemExit("ABORT: non-finite or negative persisted position_size")
+          if size > 1e-8:
+              product = state.get("position_product")
+              configured = os.environ["PRODUCT_ID"]
+              if not isinstance(product, str) or not product.strip():
+                  raise SystemExit("ABORT: open paper position has no product identity; state preserved")
+              if product != configured:
+                  raise SystemExit(f"ABORT: configured product {configured} does not match open position {product}; state preserved")
+          print("Paper position identity preflight passed.")
+          PY
+      - name: Run guarded paper trader
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python3 scripts/coinbase_paper_trader.py
+      - name: Upload simulated state
+        uses: actions/upload-artifact@v7
+        with:
+          name: paper-trading-state
+          path: |
+            web/paper_trading_state.json
+            web/paper_trading_log.jsonl
+          if-no-files-found: error
+          retention-days: 7
+

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "correction_id": "sbi-rlusd-source-url-metadata-correction-20261107T234225Z",
+  "correction_type": "source_url_metadata_only",
+  "supersedes": {
+    "artifact": "research/xrp_intelligence/20261107T234225Z-xrpl-depth-exchange-balance-rlusd-agentic-payments.json",
+    "source_id": "sbi_vc_trade_rlusd_distribution_20260624",
+    "prior_url": "https://www.sbigroup.co.jp/news/2026/0624_16733.html"
+  },
+  "corrected": {
+    "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+    "publisher": "SBI Holdings / SBI VC Trade",
+    "page_title": "国内初の4号電子決済手段となるステーブルコインRLUSD取扱い開始のお知らせ (SBI VCトレード)",
+    "published_date": "2026-06-24"
+  },
+  "evidence": {
+    "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+    "verification": "The official SBI Holdings PR index resolves the June 24, 2026 RLUSD listing announcement to this exact URL.",
+    "factual_claims_changed": false,
+    "raw_source_excerpt_hash_changed": false
+  },
+  "note": "The earlier URL was provisional metadata and is superseded. The source identity, date and distribution claim are unchanged. The original Git commit remains in branch history."
+}

@@ -1,0 +1,167 @@
+{
+  "artifact_type": "xrp_institutional_rails_and_actual_capital_reconciliation",
+  "schema_version": "1.0.0",
+  "run_id": "139B",
+  "captured_at_utc": "2026-11-10T19:17:57Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3"
+  },
+  "repository": {
+    "main_sha": "e35f3d16b842d0f75847dd4bb0b51531f38c5f38",
+    "integration_head_before_run139b": "7e4a9605948cc4e343e9439de05a7fe5e170a00f",
+    "integration_pr": 1660,
+    "commits_ahead": 1920,
+    "commits_behind": 0,
+    "changed_files": 954,
+    "additions": 268052,
+    "deletions": 3655,
+    "main_tree_entries": 1404,
+    "integration_tree_entries": 2249,
+    "open_prs": 373,
+    "drafts": 358,
+    "non_drafts": 15
+  },
+  "exact_head_ci": {
+    "tested_head": "7e4a9605948cc4e343e9439de05a7fe5e170a00f",
+    "core_ci": {
+      "run_id": 42883427056,
+      "job_id": 130065410589,
+      "passed": 697,
+      "failed": 0,
+      "subtests_passed": 8,
+      "conclusion": "success"
+    },
+    "full_suite": {
+      "run_id": 42883427056,
+      "job_id": 130065410154,
+      "status": "in_progress_at_last_check",
+      "step": "Run every repository test with inclusive package coverage",
+      "conclusion": null
+    },
+    "dependency_audit": {
+      "run_id": 42883435048,
+      "status": "completed",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42883435003,
+      "status": "completed",
+      "conclusion": "success",
+      "automatic_merge_disabled": true
+    },
+    "prior_head_full_suite": {
+      "head": "7887781fae4bba90b51fff86d59be7e5a8f79457",
+      "run_id": 42882824671,
+      "passed": 3363,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_pct": 59.58,
+      "conclusion": "success"
+    }
+  },
+  "institutional_relationships": [
+    {
+      "date": "2026-10-27",
+      "entities": [
+        "C2FO",
+        "Ripple"
+      ],
+      "source": "C2FO primary announcement",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "verified": "C2FO Instant Pay financing and settlement activity is intended to use XRPL, with RLUSD as the settlement asset. Participating capital providers fund early payment; suppliers receive funds in seconds in the proposed workflow.",
+      "rollout": "C2FO product page shows a waitlist and limited U.S. rollout over coming months.",
+      "actual_capital": "Capital-provider identities, commitments, funded balances and XRPL transaction volumes are not disclosed.",
+      "exclusions": [
+        "RLUSD settlement on XRPL is not evidence that XRP is the bridge asset.",
+        "C2FO's more than $525B historical Early Pay working-capital figure is platform-wide historical activity, not Instant Pay volume, not XRP capital and not Ripple funding."
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "entities": [
+        "Ripple",
+        "Coinbase"
+      ],
+      "source": "Coinbase primary announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "verified": "RLUSD trading/management is live in supported regions on Coinbase Prime, Coinbase Exchange and Coinbase retail; deposits/withdrawals are supported on XRPL, Base and Ethereum; USD-to-RLUSD conversion is 1:1.",
+      "future": "Coinbase Global Exchange customer availability and use of RLUSD as collateral were explicitly future scope at launch.",
+      "xrp_classification": "Stablecoin distribution and XRPL rail support; no XRP purchase or bridge-volume disclosure."
+    },
+    {
+      "date": "2026-10-27",
+      "entities": [
+        "Ripple",
+        "Robinhood",
+        "Bitstamp"
+      ],
+      "source": "Ripple primary announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "verified": "RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; Robinhood app availability was expected later. Robinhood plans RLUSD use on XRPL for institutional settlement and integration of Ripple Treasury.",
+      "other_scope": "Ripple Prime already has a financing/liquidity relationship with Bitstamp; future perpetual-futures support was announced.",
+      "xrp_classification": "Institutional settlement and stablecoin distribution; no XRP bridge or proprietary XRP purchase quantified."
+    },
+    {
+      "date": "2026-10-27",
+      "entities": [
+        "Ripple",
+        "BNY",
+        "C2FO"
+      ],
+      "source": "BNY and Ripple primary announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "verified": "BNY Digital Asset Custody now supports XRP and RLUSD; BNY remains primary RLUSD reserve custodian and has a custody relationship with Ripple Prime.",
+      "future": "Direct RLUSD mint/redeem, broader XRPL tokenized assets and a C2FO supply-chain-finance initiative are intended/exploratory and subject to approvals/client requirements.",
+      "xrp_classification": "Actual XRP custody support is confirmed; custody balances and proprietary purchases are not disclosed."
+    },
+    {
+      "date": "2026-11-09",
+      "entities": [
+        "PNC",
+        "Coinbase",
+        "Circle"
+      ],
+      "source": "Reuters",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "verified": "Limited corporate/institutional pilot allows eligible PNC clients to receive Circle USDC, automatically converted into USD, with Coinbase supplying the infrastructure.",
+      "xrp_classification": "Competing USDC payment rail; not an XRP corridor."
+    }
+  ],
+  "ripple_company_reported_metrics": {
+    "date": "2026-10-28",
+    "source": "Ripple primary press release",
+    "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+    "metrics": {
+      "annualized_product_revenue_run_rate_usd": 900000000,
+      "transactions_enabled_across_products_2025_usd": 16000000000000,
+      "payout_markets": 60,
+      "lifetime_ripple_payments_volume_approaching_usd": 150000000000,
+      "institutions_corporates_enterprises": 1700,
+      "licenses": 85,
+      "rlusd_market_cap_usd": 2600000000
+    },
+    "classification": "Company-reported; not audited here. Annualized run rate is not realized revenue/cash capital; $16T covers all Ripple products, not XRP volume; $150B is Ripple Payments lifetime volume, not XRP on-ledger volume; RLUSD market cap is not XRP market cap."
+  },
+  "actual_capital_reconciliation": {
+    "c2fo_participating_capital_providers": "Unnamed; no amount or commitment disclosed.",
+    "c2fo_early_pay_525b": "Historical platform-wide early-payment working capital; not Instant Pay, XRP, Ripple financing or newly committed capital.",
+    "ripple_900m_run_rate": "Company-reported annualized product revenue; not cash raised or XRP purchases.",
+    "ripple_16t_2025": "Transactions enabled across Ripple products; not XRP settlement volume.",
+    "ripple_150b_lifetime": "Ripple Payments lifetime volume; not XRP volume.",
+    "status": "NO_NEW_VERIFIED_XRP_CAPITAL_OR_PURCHASE_AMOUNT"
+  },
+  "competing_hypotheses_and_disconfirming_evidence": [
+    "Institutional use of XRPL can increase ledger utility without requiring XRP to serve as the bridge asset; C2FO's announced settlement asset is RLUSD.",
+    "C2FO Instant Pay is on a waitlist/limited rollout; announced architecture is not demonstrated throughput.",
+    "Coinbase RLUSD distribution is live, but Coinbase Global Exchange collateral use was future scope at launch.",
+    "Robinhood app distribution was expected later; the announced institutional XRPL settlement use does not quantify XRP purchases.",
+    "BNY supports XRP custody, but custody capability is not evidence of BNY proprietary holdings or client balance scale.",
+    "PNC/Coinbase/Circle USDC is a competing dollar rail and may reduce the assumption that institutional stablecoin settlement necessarily routes through Ripple."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "paper_trade_or_real_money_actions": false
+}

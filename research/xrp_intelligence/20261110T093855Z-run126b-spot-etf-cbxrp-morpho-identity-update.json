@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run126B",
+  "capture_time_utc": "2026-11-10T09:38:55.286Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "integration_parent_sha": "14a6d5bd0a2187cba4c0e9e71ce8aaaef2b4a880",
+  "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+  "mission_priority": "xrp_intelligence_prediction_engine",
+  "foundation": "barrot_v3",
+  "research_status": "RESEARCH_ONLY_NOT_MODEL_ADMITTED",
+  "forecast_status": "NOT_ISSUED",
+  "market": {
+    "kraken_xrp_usd": {
+      "source": "Kraken public ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "last_usd": 1.08144,
+      "bid_usd": 1.08148,
+      "ask_usd": 1.08149,
+      "volume_24h_xrp": 23921988,
+      "vwap_24h_usd": 1.09496,
+      "open_24h_usd": 1.09748,
+      "high_24h_usd": 1.11573,
+      "low_24h_usd": 1.07502,
+      "return_from_24h_open_pct": -1.4615,
+      "range_position_pct": 15.8,
+      "provider_event_timestamp": null,
+      "timestamp_note": "Kraken response did not expose a provider event timestamp; capture time is not substituted for event time."
+    },
+    "okx_xrp_usdt": {
+      "source": "OKX public ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "last_usdt": 1.0812,
+      "bid_usdt": 1.0811,
+      "ask_usdt": 1.0812,
+      "volume_24h_xrp": 63124000,
+      "open_24h_usdt": 1.0964,
+      "high_24h_usdt": 1.1167,
+      "low_24h_usdt": 1.0764,
+      "return_from_24h_open_pct": -1.386,
+      "range_position_pct": 11.9,
+      "provider_event_timestamp_utc": "2026-11-10T09:15:26.275Z"
+    },
+    "kraken_usdt_usd_reference": {
+      "source": "Kraken public ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "last_usd": 0.99865,
+      "provider_event_timestamp": null,
+      "normalized_okx_reference_usd": 1.07974,
+      "normalized_difference_vs_kraken_pct": -0.157,
+      "limitation": "Asynchronous venue snapshots and quote-currency conversion; not an executable arbitrage signal."
+    },
+    "spot_depth": {
+      "source": "Fuelmaps multi-venue spot order-book snapshot",
+      "url": "https://fuelmaps.io/order-book/",
+      "snapshot_time_utc": "2026-11-10T07:00:00Z",
+      "venue_count": 6,
+      "bands_usd": {
+        "0.5pct": {
+          "bids": 7100000,
+          "asks": 5800000,
+          "bid_share_pct": 55.1
+        },
+        "1pct": {
+          "bids": 12400000,
+          "asks": 10000000,
+          "bid_share_pct": 55.4
+        },
+        "2pct": {
+          "bids": 17700000,
+          "asks": 10700000,
+          "bid_share_pct": 62.4
+        },
+        "5pct": {
+          "bids": 24100000,
+          "asks": 12900000,
+          "bid_share_pct": 65.1
+        }
+      },
+      "limitation": "Snapshot is 2h38m old at artifact capture, venue coverage excludes Binance and Bitget, and displayed depth is cancellable resting liquidity. No synchronized current raw exchange L2 capture was obtained."
+    }
+  },
+  "derivatives": [
+    {
+      "provider": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "observed_at_utc": "2026-11-10T09:32:00Z",
+      "open_interest_usd": 1190000000,
+      "open_interest_change_24h_pct": -2.5,
+      "liquidations_24h_usd": 4800000,
+      "long_liquidations_usd": 4200000,
+      "short_liquidations_usd": 634000,
+      "long_share_pct": 87,
+      "funding_8h_pct": 0.0068
+    },
+    {
+      "provider": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-10T08:40:00Z",
+      "open_interest_usd": 1640000000,
+      "open_interest_change_24h_pct": -4.5,
+      "liquidations_24h_usd": 3770000,
+      "long_liquidations_usd": 3020000,
+      "short_liquidations_usd": 757000,
+      "long_share_pct": 79.9,
+      "funding_8h_pct": 0.006
+    }
+  ],
+  "derivatives_interpretation": {
+    "open_interest_cross_provider_ratio": 1.378,
+    "common_observation": "Open interest is declining in both displays and liquidations are long-heavy while aggregate funding remains positive.",
+    "disagreement": "Open-interest aggregates differ by about 38%; venue coverage and aggregation methodology are not identical.",
+    "hypotheses": [
+      "Continued long deleveraging if spot bids fail and liquidation pressure persists.",
+      "Liquidation exhaustion and mean reversion if spot depth stabilizes, liquidations decay and funding normalizes."
+    ],
+    "disconfirming_evidence": "A fresh synchronized spot L2 and venue-level OI/funding panel were not captured; neither hypothesis is validated as predictive."
+  },
+  "etf_flows": {
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_updated_at_utc": "2026-11-10T09:22:00Z",
+      "trading_day": "2026-11-09",
+      "coverage": "3 of 4 daily-collected funds; Franklin XRPZ missing for the 9 Nov holdings date",
+      "components_xrp": {
+        "bitwise_xrp": -8594551,
+        "canary_xrpc": -427341,
+        "twentyone_shares_toxr": -194660
+      },
+      "calculated_component_sum_xrp": -9216552,
+      "page_displayed_total_xrp": -9216553,
+      "arithmetic_discrepancy_xrp": -1,
+      "page_displayed_usd_millions": -10.1,
+      "franklin_note": "Its 9 Nov file was observed 23:47–23:52 UTC on 9 Nov but its latest holdings row remained dated 6 Nov; it is not counted as a 9 Nov flow.",
+      "grayscale_note": "Quarterly SEC-file holdings only; not in daily flow.",
+      "rex_osprey_note": "Excluded because its direct-only holdings file does not represent indirect ETP exposure."
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "page_displayed_nov9_usd_millions": -10.4,
+      "displayed_funds": "5 of 5",
+      "methodology_warning": "The page displays zero flows for Franklin and Grayscale; those zeroes were not independently confirmed from current issuer daily holdings files."
+    },
+    "complete_day_reference": {
+      "day": "2026-11-06",
+      "xrp": -752048,
+      "usd_millions": -0.887,
+      "coverage": "4 of 4 daily-collected funds"
+    },
+    "rolling_reference": {
+      "last_five_complete_days_xrp": -765403,
+      "cumulative_oct23_to_nov6_xrp": 2622459,
+      "nov9_partial_excluded_from_cumulative": true
+    },
+    "classification": "PARTIAL_DISPUTED_RESEARCH_ONLY",
+    "limitation": "Holdings deltas are not automatically cash creations/redemptions or exchange sales; cash versus in-kind settlement and custody movements require issuer/transfer evidence."
+  },
+  "cbxrp_custody": {
+    "coinbase_proof_of_reserves": {
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "displayed_refresh_label": "2026-11-10 08:54 AM; timezone unspecified",
+      "reserves_xrp": 152372342.33,
+      "supply_cbxrp": 152370095.8,
+      "reserve_surplus_xrp": 2246.53,
+      "base_supply_cbxrp": 152370095.795,
+      "issuer_statement": "cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase.",
+      "classification": "FIRST_PARTY_RESERVE_AND_SUPPLY_SNAPSHOT",
+      "limitation": "Not customer balances or tradable float. Displayed refresh timezone and origin/cache semantics are unresolved; ingestion adapter remains raw-only."
+    },
+    "morpho_market": {
+      "url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+      "chain_id": 8453,
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "loan_asset": "USDC",
+      "collateral_asset": "cbXRP",
+      "liquidation_ltv_pct": 62.5,
+      "outstanding_usdc": 55580000,
+      "total_liquidity_usdc": 23540000,
+      "utilization_pct": 88.23,
+      "borrow_rate_pct": 7,
+      "lend_rate_pct": 6.14,
+      "total_market_size_usd": 79120000,
+      "realized_bad_debt_usdc": 0,
+      "unrealized_bad_debt_usdc": 0,
+      "latest_visible_activity_utc": "2026-11-10T08:43:00Z",
+      "latest_activity_examples": [
+        {
+          "time_utc": "2026-11-10T08:43:00Z",
+          "type": "repay",
+          "amount_usdc": 700
+        },
+        {
+          "time_utc": "2026-11-10T08:40:22Z",
+          "type": "withdraw",
+          "amount_usdc": 153583.88
+        },
+        {
+          "time_utc": "2026-11-10T08:33:28Z",
+          "type": "lend",
+          "amount_usdc": 67525.56
+        },
+        {
+          "time_utc": "2026-11-10T08:30:47Z",
+          "type": "supply_collateral",
+          "amount_cbxrp": 165.16
+        }
+      ],
+      "classification": "FIRST_PARTY_MARKET_UI_SNAPSHOT",
+      "limitation": "The page does not expose a synchronized total-collateral quantity or exact state block timestamp in the rendered text. Values remain research-only until token decimals, block alignment and oracle event semantics are normalized."
+    },
+    "historical_stress": {
+      "cryptoslate_nov6": {
+        "url": "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/",
+        "snapshot_time_utc": "2026-11-06T13:24:54Z",
+        "debt_within_further_5pct_drop_usdc": 3229610.99,
+        "debt_within_further_10pct_drop_usdc": 8844820.21,
+        "positions_5pct": 462,
+        "positions_10pct": 1070,
+        "market_debt_usdc": 59240000,
+        "collateral_cbxrp": 119870000,
+        "liquidation_ltv_pct": 62.5,
+        "scope": "Fixed-position oracle stress, not actual liquidations; 5% bucket is included in 10% bucket."
+      },
+      "catenaa_nov8": {
+        "url": "https://catenaa.com/markets/cryptocurrencies/cbxrp-loans-morpho-liquidation-risk/",
+        "snapshot_time_utc": "2026-11-08T02:21:00Z",
+        "debt_usdc": 58300000,
+        "collateral_cbxrp": 120600000,
+        "debt_at_risk_further_10pct_usdc": 8400000,
+        "positions_at_risk_10pct": 920,
+        "liquidations_nov6_nov7": 384,
+        "debt_repaid_usdc": 1600000,
+        "collateral_seized_cbxrp": 1530000,
+        "cumulative_liquidations_since_february": 3713,
+        "reported_bad_debt_usdc": 0
+      }
+    },
+    "interpretation": "Morpho liquidations transfer cbXRP on Base. Native XRP selling is not automatic; it requires a later redemption or sale, which must be verified separately. Nov 6/8 stress buckets are historical and must not be carried forward as current risk."
+  },
+  "exact_phrase_audit": {
+    "sbic_chatgpt": {
+      "exact_phrase": "SBIC, ChatGPT SBIC",
+      "result": "NO_EXACT_MATCH_FOUND",
+      "primary_context": "Tokyo SBIC's official 12–13 June 2025 training course includes ChatGPT and Microsoft Copilot instruction for investee companies; this is training, not an OpenAI partnership.",
+      "url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    "actual_capital": {
+      "exact_phrase": "actual capital",
+      "result": "NO_STANDARDIZED_XRP_METRIC_OR_EXACT_MATCH_IN_REVIEWED_EVERNORTH_SEC_PROSPECTUS",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "required_separation": [
+        "cash received",
+        "in-kind XRP",
+        "cash used to purchase XRP",
+        "delayed funding",
+        "convertible debt gross/net",
+        "contingent equity facility",
+        "secondary share resales",
+        "warrants"
+      ]
+    },
+    "ask_coin": {
+      "result": "AMBIGUOUS_IDENTITY",
+      "candidates": [
+        "Permission Coin ASK token",
+        "inactive Ask Coin exchange"
+      ],
+      "xrp_integration_verified": false
+    },
+    "kamilah_stevenson": {
+      "person_identity": "CONFIRMED",
+      "official_brand_site": "https://learn.kamilahstevenson.com/",
+      "linktree": "https://linktr.ee/drkamilahstevenson",
+      "linked_youtube_handle": "@drkamilahstevenson",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "channel_id_relation": "NOT_FIRST_PARTY_VERIFIED",
+      "clone_risk": "Multiple lookalike YouTube channels and third-party profiles exist.",
+      "verified_personal_channel_inventory_count": 0,
+      "candidate_references_in_repository": 10,
+      "policy": "Keep every video candidate-only; do not attribute or ingest as verified creator content until YouTube's canonical channel ID/handle relationship is verified through authorized platform metadata or a first-party reciprocal link."
+    }
+  },
+  "macro_timeline": {
+    "next_us_cpi_release_utc": "2026-11-10T13:30:00Z",
+    "status_at_capture": "SCHEDULED_FUTURE_RELEASE",
+    "result_observed": false,
+    "source": "https://www.bls.gov/schedule/2026/11_sched.htm"
+  },
+  "ingestion_architecture_correction": {
+    "endpoint_registry_records": 46,
+    "hourly_scheduled_sources": 42,
+    "weekly_cftc_sources": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "scheduled_sources_total": 44,
+    "morpho_endpoints_already_registered": true,
+    "coinbase_cbxrp_proof_of_reserves_already_registered": true,
+    "morpho_parsers": "Validate raw payload identity/shape but return no normalized model features pending decimals, units, block/indexer alignment and oracle time semantics.",
+    "coinbase_parser": "Validates reserve/supply page markers but remains raw-only pending locale refresh timezone and cache semantics.",
+    "no_new_endpoint_added": true
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Web/API observations are research-only; raw transport bytes and independent timestamp receipts were not preserved in this run; ETF and derivatives aggregators disagree; Morpho and Coinbase parsers remain raw-only.",
+    "directional_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_used": false
+  },
+  "source_provenance": [
+    {
+      "source": "Kraken public ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_class": "exchange_primary",
+      "provider_timestamp": "absent",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "OKX public ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_class": "exchange_primary",
+      "provider_timestamp": "2026-11-10T09:15:26.275Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Fuelmaps",
+      "url": "https://fuelmaps.io/order-book/",
+      "source_class": "aggregator",
+      "provider_timestamp": "2026-11-10T07:00:00Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_class": "derivatives_aggregator",
+      "provider_timestamp": "2026-11-10T09:32:00Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_class": "derivatives_aggregator",
+      "provider_timestamp": "2026-11-10T08:40:00Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_class": "issuer_file_aggregator",
+      "provider_timestamp": "2026-11-10T09:22:00Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_class": "flow_aggregator",
+      "provider_timestamp": "page_timestamp_not_independently_reconciled",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Coinbase proof of reserves",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "source_class": "issuer_primary",
+      "provider_timestamp": "2026-11-10 08:54 AM timezone unspecified",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Morpho market UI",
+      "url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+      "source_class": "protocol_primary_ui",
+      "provider_timestamp": "latest visible activity 2026-11-10T08:43:00Z; exact state block not exposed",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "CryptoSlate",
+      "url": "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/",
+      "source_class": "secondary_analysis_using_morpho_api",
+      "provider_timestamp": "2026-11-06T13:24:54Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Catenaa",
+      "url": "https://catenaa.com/markets/cryptocurrencies/cbxrp-loans-morpho-liquidation-risk/",
+      "source_class": "secondary_analysis_using_morpho_api",
+      "provider_timestamp": "2026-11-08T02:21:00Z",
+      "raw_transport_bytes_preserved": false
+    }
+  ]
+}

@@ -71,7 +71,7 @@ jobs:
 
       - name: Checkout the validated commit
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ steps.validate.outputs.validated_sha }}
           persist-credentials: false
@@ -132,7 +132,7 @@ jobs:
 
       - name: Upload validation evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: barrot-controlled-validation-${{ github.run_id }}
           path: validation-evidence/evidence.txt

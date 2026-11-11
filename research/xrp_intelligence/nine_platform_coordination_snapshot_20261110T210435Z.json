@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_id": "20261110T210435Z-run11",
+  "captured_at_utc": "2026-11-10T21:04:35Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "ec5f82122bf3fb2b74bd36ad72fc1e5d19067533",
+    "integration_branch": "integration/xrp-v3-unified-main-20261110",
+    "integration_head_before_snapshot_commit": "5c48f7af14dd95c8da141408bdcfd07a714f8947",
+    "active_pr": 1660,
+    "open_prs": 373,
+    "drafts": 358,
+    "non_drafts": 15
+  },
+  "mission_priority": {
+    "rank": 1,
+    "objective": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "platforms": {
+    "ChatGPT": {
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "permissions": {
+        "repository_read": true,
+        "integration_branch_write": true,
+        "main_write": false,
+        "branch_protection_admin": false,
+        "secrets_access": false,
+        "external_deployment": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": true,
+        "direction": "Current ChatGPT session <-> existing Barrot-Agent/B-Agent integration branch; public web evidence -> current session",
+        "persistent_external_model_exchange": false
+      }
+    },
+    "Claude": {
+      "authentication_status": "UNVERIFIED",
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Grok": {
+      "authentication_status": "UNVERIFIED",
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Gemini": {
+      "authentication_status": "UNVERIFIED",
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Copilot": {
+      "authentication_status": "NO_CURRENT_REVIEW_ON_PR_1660",
+      "permissions": {
+        "formal_approval": false,
+        "code_write_verified": false,
+        "persistent_external_data_flow": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Codex": {
+      "authentication_status": "UNVERIFIED",
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Hugging_Face": {
+      "authentication_status": "PRIOR_BUILD_ERROR",
+      "permissions": {
+        "upload": false,
+        "space_restart": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Kaggle": {
+      "authentication_status": "UNTESTED",
+      "permissions": {
+        "dataset_download": false,
+        "competition_submission": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    },
+    "Databricks": {
+      "authentication_status": "PRIOR_HTTP_403",
+      "permissions": {
+        "workspace_read": false,
+        "workspace_write": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      }
+    }
+  },
+  "independent_assignments": [
+    {
+      "platform": "ChatGPT",
+      "task": "Public research, repository integration, exact-head verification and canonical handoff",
+      "status": "EXECUTED"
+    },
+    {
+      "platform": "Claude",
+      "task": "Independent SEC/OCC/legal red-team review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Grok",
+      "task": "Independent spot/depth/derivatives and counter-hypothesis review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Gemini",
+      "task": "Independent XRPL ledger/amendment/oracle review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Copilot",
+      "task": "Independent code review",
+      "status": "NO_CURRENT_REVIEW_ON_PR_1660"
+    },
+    {
+      "platform": "Codex",
+      "task": "Independent code/test/dependency review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Hugging Face",
+      "task": "Model evaluation after verified build and authorization",
+      "status": "BLOCKED"
+    },
+    {
+      "platform": "Kaggle",
+      "task": "Benchmark research without submission",
+      "status": "UNTESTED"
+    },
+    {
+      "platform": "Databricks",
+      "task": "Warehouse/feature-store evaluation after authenticated access",
+      "status": "BLOCKED_HTTP_403"
+    }
+  ],
+  "red_team": {
+    "external_independent_review": "NOT_EXECUTED",
+    "minority_objections": "Preserve source disagreement; no external model opinions fabricated."
+  },
+  "least_privilege": {
+    "external_model_data_transfer": false,
+    "secret_transfer": false,
+    "main_write": false,
+    "unapproved_external_action": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "barrot.xrp.evidence-hash-correction.v1",
+  "correction_id": "20261110T135238Z-run130g-sbic-normalized-hash-correction",
+  "captured_at_utc": "2026-11-10T13:52:38Z",
+  "correction": {
+    "artifact_path": "research/xrp_intelligence/20261110T134556Z-run130f-japan-sbic-primary-identity-chatgpt-seminar.json",
+    "original_git_blob_sha": "d1d4d884158bbb7213fc520e09b1631bd6ecb618",
+    "original_recorded_normalized_sha256": "997029646b9f34eccc2707d4b3eb781ca3c8c8f0b715b70ad37fb5a58631b4ee",
+    "recomputed_normalized_sha256": "7a6bd33043ca9a3f3618051b7e496d19b29c132e658f635162e47cad9eb510db",
+    "normalization_method": "Parse committed UTF-8 JSON, remove normalized_evidence_sha256, serialize with sorted keys, compact separators, ensure_ascii=false and allow_nan=false, then SHA-256 the UTF-8 bytes.",
+    "root_cause": "The digest was calculated from a pre-serialization draft object whose not_sbi_holdings sentence differed from the committed JSON. The committed text is 'These are distinct legal entities, not SBI Holdings.'; the earlier draft contained an extra 'legal entities'. CI recomputed the digest from the committed artifact."
+  },
+  "preservation": {
+    "original_artifact_mutated": false,
+    "correction_append_only": true,
+    "original_git_blob_retained": true
+  },
+  "status": "CORRECTED_BY_APPEND_ONLY_RECEIPT",
+  "raw_http_wire_bytes_captured": false,
+  "raw_source_sha256_captured": false,
+  "model_admission": "NOT_APPLICABLE",
+  "forecast_status": "NOT_APPLICABLE"
+}

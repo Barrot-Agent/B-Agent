@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_market_and_xrpl_amendment_pre_activation_snapshot",
+  "record_id": "xrp-intel-2026-11-04-141402z-market-and-fixcleanup-preactivation",
+  "captured_at_utc": "2026-11-04T14:14:02Z",
+  "data_cutoff_utc": "2026-11-04T14:14:02Z",
+  "subject": "XRP spot/perpetual point-in-time observations and fixCleanup3_4_0 pre-activation status; activation window not yet reached at cutoff",
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261104_141402z",
+      "publisher": "Kraken",
+      "authority": "exchange public REST API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "source_event_timestamp": null,
+      "source_independence_group": "kraken_exchange_api",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web-rendered JSON; raw response bytes not captured",
+      "model_eligible": false,
+      "limitations": [
+        "The response has no source event timestamp; retrieval time is not a substitute for exchange event time.",
+        "One ticker is not full order-book depth or a synchronized multi-venue trade tape."
+      ]
+    },
+    {
+      "id": "binance_xrpusdt_premium_index_20261104_132955z",
+      "publisher": "Binance",
+      "authority": "USD-M perpetual public REST API",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "source_event_timestamp": "2026-11-04T13:29:55Z",
+      "source_independence_group": "binance_usdm_api",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web-rendered JSON; raw response bytes not captured",
+      "model_eligible": false,
+      "limitations": [
+        "The endpoint provides mark/index/funding metadata, not open interest or full depth.",
+        "Event time precedes retrieval by about 44 minutes; do not synchronize it to the Kraken ticker without an exchange timestamp."
+      ]
+    },
+    {
+      "id": "xrpldashboard_signed_amendment_snapshot_20261104_0100z",
+      "publisher": "XRPL Dashboard",
+      "authority": "signed public amendment snapshot",
+      "url": "https://xrpldashboard.com/amendments/2026-11-04",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "signed_at_utc": "2026-11-04T01:00:00Z",
+      "validated_ledger_index": 108104830,
+      "signed_snapshot_leaf_hash": "48f78f28237d",
+      "source_independence_group": "xrpldashboard_signed_snapshot",
+      "raw_content_sha256": null,
+      "raw_capture_status": "signed snapshot metadata rendered by web search; raw payload not captured",
+      "model_eligible": false,
+      "limitations": [
+        "The snapshot is signed for 01:00 UTC and is stale relative to the 14:14 UTC capture.",
+        "The displayed leaf hash is a snapshot/Merkle identifier, not a SHA-256 hash of the raw response."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup3_4_0_tracker_20261104_141402z",
+      "publisher": "XRPLWin",
+      "authority": "public amendment tracker",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "source_event_timestamp": null,
+      "source_independence_group": "xrplwin_tracker",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered web page; raw response bytes not captured",
+      "model_eligible": false,
+      "limitations": [
+        "Tracker status is not a validated-ledger proof of activation.",
+        "The page labels the amendment Activating while showing a future earliest activation time; retain the distinction."
+      ]
+    },
+    {
+      "id": "bithomp_fixcleanup3_4_0_tracker_20261104_141402z",
+      "publisher": "Bithomp",
+      "authority": "public amendment explorer",
+      "url": "https://bithomp.com/amendment/98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "source_event_timestamp": null,
+      "source_independence_group": "bithomp_explorer",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered web page; raw response bytes not captured",
+      "model_eligible": false,
+      "limitations": [
+        "Displayed activation ETA timezone is unspecified; do not compare it directly with UTC estimates.",
+        "The page displays a quorum field of 28/35 and 33 yes votes; the quorum field is not treated as the official >80% threshold."
+      ]
+    },
+    {
+      "id": "coindesk_fixcleanup3_4_0_activation_report_20261102",
+      "publisher": "CoinDesk",
+      "authority": "secondary technical reporting",
+      "url": "https://www.coindesk.com/tech/2026/11/02/xrp-ledger-set-to-fix-flaw-that-could-let-stablecoin-partners-print-new-tokens",
+      "published_at_utc": "2026-11-02",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "source_independence_group": "coindesk_reporting",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered article extract; raw bytes not captured",
+      "model_eligible": false,
+      "limitations": [
+        "Secondary reporting; it does not replace a validated ledger or independent public-node response."
+      ]
+    },
+    {
+      "id": "xrpl_official_amendment_process_docs",
+      "publisher": "XRP Ledger Foundation documentation",
+      "authority": "official protocol documentation",
+      "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+      "retrieved_at_utc": "2026-11-04T14:14:02Z",
+      "source_independence_group": "xrpl_official_docs",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered documentation; raw bytes not captured",
+      "model_eligible": false,
+      "limitations": [
+        "Describes protocol rules, not the current state of a particular amendment."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "kraken_xrpusd": {
+      "pair": "XXRPZUSD",
+      "last_usd": 1.28084,
+      "last_trade_volume_xrp": 963.90857632,
+      "bid_usd": 1.28076,
+      "ask_usd": 1.28085,
+      "bid_top_level_size_xrp": 1419,
+      "ask_top_level_size_xrp": 1419,
+      "midpoint_usd": 1.280805,
+      "spread_usd": 0.00009,
+      "spread_basis_points": 0.7026830782,
+      "volume_24h_xrp": 28538380.30166329,
+      "vwap_24h_usd": 1.27127641,
+      "high_24h_usd": 1.29666,
+      "low_24h_usd": 1.24016,
+      "open_24h_usd": 1.27513,
+      "event_timestamp_available": false,
+      "source_timestamp": null
+    },
+    "binance_xrpusdt_perpetual": {
+      "event_timestamp_utc": "2026-11-04T13:29:55Z",
+      "mark_price_usdt": 1.28208433,
+      "index_price_usdt": 1.28204424,
+      "estimated_settlement_price_usdt": 1.28105167,
+      "last_funding_rate": 0.0001,
+      "next_funding_time_utc": "2026-11-04T16:00:00Z",
+      "mark_minus_index_usdt": 0.00004009,
+      "mark_index_basis_bps": 0.3127037176,
+      "open_interest": "not captured",
+      "order_book_depth": "not captured"
+    },
+    "synchronization": {
+      "kraken_vs_binance_spot_perp_basis": "NOT_COMPUTED",
+      "reason": "Kraken ticker has no source event timestamp and Binance premium-index timestamp is 13:29:55Z; retrieval time does not make them synchronized.",
+      "open_interest_status": "NOT_CAPTURED",
+      "order_book_depth_status": "NOT_CAPTURED",
+      "inaccessible_web_endpoints": [
+        "https://fapi.binance.com/fapi/v1/openInterest?symbol=XRPUSDT",
+        "https://fapi.binance.com/fapi/v1/depth?symbol=XRPUSDT&limit=100"
+      ]
+    },
+    "xrpl_amendment": {
+      "name": "fixCleanup3_4_0",
+      "amendment_id": "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76",
+      "xrpldashboard_snapshot_signed_at_utc": "2026-11-04T01:00:00Z",
+      "xrpldashboard_snapshot_ledger_index": 108104830,
+      "xrpldashboard_counts": {
+        "enabled": 97,
+        "in_flight": 10,
+        "in_activation_countdown": 1,
+        "fixcleanup_votes_yes": 33,
+        "validators": 35,
+        "required_yes": 29
+      },
+      "xrplwin_counts": {
+        "votes_yes": 33,
+        "validators": 35,
+        "consensus_percent": 94.29,
+        "required_yes": 29,
+        "majority_since_utc": "2026-10-21T14:46:22Z",
+        "earliest_activation_utc": "2026-11-04T14:46:22Z",
+        "displayed_status": "Activating"
+      },
+      "bithomp_display": {
+        "votes_yes": 33,
+        "votes_no_or_not_voted": 2,
+        "quorum_field": "28/35",
+        "activation_eta_display": "2026-11-04 15:01:25",
+        "timezone": "unspecified"
+      },
+      "coindesk_reported_earliest_activation_utc": "2026-11-04T14:46:00Z",
+      "official_process": {
+        "required_support": "strictly more than 80% of trusted validators continuously for two weeks",
+        "flag_ledger_interval": "typically about 15 minutes",
+        "activation_sequence": "Flag Ledger -1 validators submit votes; Flag Ledger +1 records EnableAmendment status; Flag Ledger +2 applies enabled amendment to transactions."
+      },
+      "status_at_cutoff": "PENDING_WINDOW_NOT_REACHED_AND_NOT_NODE_VERIFIED",
+      "actual_activation_verified": false,
+      "lending_protocol_amendment_votes_reported": 19,
+      "single_asset_vault_amendment_votes_reported": 21,
+      "lending_amendments_active_verified": false
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-KRAKEN-XRPUSD-20261104-141402",
+      "classification": "exchange_ticker_observation",
+      "status": "observed",
+      "claim": "Kraken XRP/USD last was $1.28084 with a $1.28076 bid and $1.28085 ask; 24-hour reported volume was about 28.54M XRP.",
+      "evidence": [
+        "kraken_xrpusd_ticker_20261104_141402z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-BINANCE-XRPPERP-20261104-132955",
+      "classification": "perpetual_mark_funding_observation",
+      "status": "observed",
+      "claim": "Binance XRPUSDT perpetual mark was 1.28208433, index 1.28204424 and lastFundingRate 0.0001 at server time 13:29:55 UTC.",
+      "evidence": [
+        "binance_xrpusdt_premium_index_20261104_132955z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-FIXCLEANUP-20261104-PREACTIVATION",
+      "classification": "tracker_reported_future_protocol_event",
+      "status": "pending",
+      "claim": "fixCleanup3_4_0 had 33/35 votes in tracker views and an earliest activation estimate of 14:46:22 UTC, but the capture cutoff was 14:14:02 UTC and no validated-ledger activation evidence was retrieved.",
+      "evidence": [
+        "xrpldashboard_signed_amendment_snapshot_20261104_0100z",
+        "xrplwin_fixcleanup3_4_0_tracker_20261104_141402z",
+        "coindesk_fixcleanup3_4_0_activation_report_20261102",
+        "xrpl_official_amendment_process_docs"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-XRPL-LENDING-20261104",
+      "classification": "secondary_reported_validator_status",
+      "status": "not_active_verified",
+      "claim": "CoinDesk reported 19 votes for LendingProtocol and 21 for SingleAssetVault, below the 29/35 threshold; fixCleanup3_4_0 does not itself activate those separate amendments.",
+      "evidence": [
+        "coindesk_fixcleanup3_4_0_activation_report_20261102",
+        "xrpl_official_amendment_process_docs"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-XRP-DEPTH-OI-20261104",
+      "classification": "missing_market_observation",
+      "status": "unknown",
+      "claim": "No synchronized Binance open-interest or 100-level depth values were captured in this run.",
+      "evidence": [
+        "binance_xrpusdt_premium_index_20261104_132955z"
+      ],
+      "model_eligible": false
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "XRP Ledger validators",
+      "to": "fixCleanup3_4_0",
+      "relation": "trusted-validator amendment vote and two-week activation process",
+      "status": "33/35 tracker-reported support; future activation estimate only",
+      "evidence": [
+        "xrpldashboard_signed_amendment_snapshot_20261104_0100z",
+        "xrplwin_fixcleanup3_4_0_tracker_20261104_141402z",
+        "xrpl_official_amendment_process_docs"
+      ]
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "issued-token permission controls",
+      "relation": "bug-fix amendment affecting transaction processing",
+      "status": "not active verified at cutoff",
+      "evidence": [
+        "coindesk_fixcleanup3_4_0_activation_report_20261102",
+        "xrpl_official_amendment_process_docs"
+      ]
+    },
+    {
+      "from": "fixCleanup3_4_0",
+      "to": "LendingProtocol / SingleAssetVault",
+      "relation": "includes code corrections for future lending/vault functionality",
+      "status": "separate feature amendments remain below reported threshold",
+      "evidence": [
+        "coindesk_fixcleanup3_4_0_activation_report_20261102",
+        "xrpl_official_amendment_process_docs"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T141402Z-xrpl-amendment::H1",
+      "claim": "fixCleanup3_4_0 activates after the first eligible flag-ledger sequence following the 14-day majority window, if support remains above 80%.",
+      "support": [
+        "XRPLWin reports 33/35 and majority since Oct 21 14:46:22 UTC.",
+        "Official XRPL docs define the two-week support and flag-ledger process."
+      ],
+      "disconfirming_or_missing": [
+        "No direct node feature/ledger_entry response or EnableAmendment pseudo-transaction was captured.",
+        "Bithomp displays an ETA with unspecified timezone."
+      ],
+      "tests": [
+        "Query the Amendments ledger entry and feature method through at least two independent public XRPL nodes after the window.",
+        "Inspect validated ledgers around the first eligible flag ledger for the amendment ID in EnableAmendment with Flags absent/zero."
+      ]
+    },
+    {
+      "id": "20261104T141402Z-xrpl-amendment::H2",
+      "claim": "Activation may be delayed if trusted-validator support falls to 80% or less or the next flag-ledger sequence has not yet recorded enablement.",
+      "support": [
+        "Official XRPL docs say losing the majority resets the two-week period.",
+        "The tracker ETA is explicitly an earliest time, not an activation guarantee."
+      ],
+      "disconfirming_or_missing": [
+        "No post-cutoff validator-vote history was captured."
+      ],
+      "tests": [
+        "Recheck trusted-validator vote count and validated-ledger amendment state after 14:46 UTC; retain any majority-loss event."
+      ]
+    },
+    {
+      "id": "20261104T141402Z-xrpl-amendment::H3",
+      "claim": "fixCleanup3_4_0 activation does not mean native XRPL lending or SingleAssetVault becomes live.",
+      "support": [
+        "The lending and vault amendments are separate and were reported at 19 and 21 votes, below 29."
+      ],
+      "disconfirming_or_missing": [
+        "No direct node response for those separate amendment IDs was captured."
+      ],
+      "tests": [
+        "Query each separate amendment ID on independent public nodes and verify enabled status in validated ledger state."
+      ]
+    },
+    {
+      "id": "20261104T141402Z-xrpl-amendment::H4",
+      "claim": "The captured Kraken ticker and Binance perpetual premium-index values are not a synchronized cross-market basis or a directional signal.",
+      "support": [
+        "Kraken provides no source event timestamp; Binance event time is 13:29:55 UTC.",
+        "Open interest and order-book depth were not captured."
+      ],
+      "disconfirming_or_missing": [
+        "A future synchronized capture with exchange event times and comparable units could permit a valid basis/depth analysis."
+      ],
+      "tests": [
+        "Capture trades, best bid/ask, depth and OI with event timestamps from multiple venues; normalize contract units and cutoff rules."
+      ]
+    }
+  ],
+  "data_quality": {
+    "raw_content_sha256_available": false,
+    "source_independence": "Kraken, Binance, XRPLDashboard, XRPLWin, Bithomp, CoinDesk and official XRPL docs are kept as separate source groups; tracker counts are not averaged.",
+    "no_averaging_policy": "Do not average validator counts, activation ETAs, spot/perpetual quotes or provider aggregates.",
+    "model_eligibility": "quarantined",
+    "limitations": [
+      "Kraken event time missing.",
+      "Binance premium-index event time is earlier than retrieval.",
+      "Depth and open interest not captured.",
+      "Amendment status not verified from direct public nodes.",
+      "Dashboard signed snapshot is from 01:00 UTC, not current at cutoff.",
+      "Bithomp ETA timezone unspecified.",
+      "Secondary lending vote counts require node verification."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "The market capture is asynchronous, depth/open interest are missing and the amendment remains pre-activation at cutoff. No directional XRP forecast is supported."
+  }
+}

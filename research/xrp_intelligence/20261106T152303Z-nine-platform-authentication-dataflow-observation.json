@@ -1,0 +1,267 @@
+{
+  "schema_version": "barrot.xrp.platform-coordination.v1",
+  "artifact_id": "xrp_nine_platform_capability_authentication_dataflow_observation_20261106T152303Z",
+  "artifact_type": "nine_platform_capability_authentication_permissions_dataflow_observation",
+  "recorded_at_utc": "2026-11-06T15:23:03Z",
+  "timestamp_precision": "Minute-level observation time; repository/API event timestamps preserved where available; no independent external timestamp anchor.",
+  "source_lineage": {
+    "prior_snapshot_path": "research/xrp_intelligence/20261105T072000Z-nine-platform-capability-authentication-map.json",
+    "update_rule": "New dated observation; prior map and all earlier evidence remain preserved."
+  },
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "platform_count": 9,
+  "status": "DESIGNED_WITH_CHATGPT_GITHUB_PATH_VERIFIED_ONLY",
+  "verified_live_platform_count": 1,
+  "verified_live_platforms": [
+    "ChatGPT current session"
+  ],
+  "verified_connector_paths": [
+    "ChatGPT -> GitHub repository connector"
+  ],
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "connection_status": "VERIFIED_CURRENT_SESSION",
+      "authentication_status": "Authenticated current ChatGPT session; GitHub connector access tested in this run.",
+      "role": "Research coordinator, provenance, source reconciliation, scenario/counter-hypothesis design, repository integration and verification.",
+      "permissions": {
+        "observed": [
+          "Read public web sources.",
+          "Read main tree, open PR inventory, branch ancestry, changed paths, reviews, workflow runs and job logs.",
+          "Create commits on existing PR branches and post PR comments."
+        ],
+        "not_observed": [
+          "No main-branch write or merge.",
+          "No branch-protection administration; detailed endpoint returned HTTP 403.",
+          "No secrets, exchange credentials, broker access, deployment or market action."
+        ]
+      },
+      "data_flow": "Current ChatGPT session -> GitHub repository connector -> existing PR branches; public web evidence -> research artifacts and regression tests.",
+      "task": "Coordinate evidence intake, keep source independence and disagreement explicit, and verify exact-head CI."
+    },
+    {
+      "name": "Claude",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No authenticated session or connector verified.",
+      "role": "Independent adversarial review, source credibility, counter-hypotheses and predictive-method red-team.",
+      "permissions": {
+        "proposed": [
+          "Read-only public evidence packets.",
+          "No repository write, secrets, market credentials or external actions."
+        ]
+      },
+      "data_flow": "None verified; proposed structured evidence packet -> independent review -> attributed dissent packet.",
+      "task": "Challenge the leading XRP causal explanation and identify disconfirming evidence; pending authentication."
+    },
+    {
+      "name": "Grok",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No authenticated session or connector verified.",
+      "role": "Public social/event discovery with bot, repost and coordinated-amplification filtering.",
+      "permissions": {
+        "proposed": [
+          "Public-data-only research.",
+          "No posting, messaging, private-account access or market actions."
+        ]
+      },
+      "data_flow": "None verified; proposed public samples -> timestamped evidence packet -> claim ledger.",
+      "task": "Find original XRP event sources and separate original claims from reposts; pending authentication."
+    },
+    {
+      "name": "Gemini",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No authenticated session or connector verified.",
+      "role": "Independent factual and multilingual primary-source verification.",
+      "permissions": {
+        "proposed": [
+          "Read-only public-source research.",
+          "No repository write, secrets or external actions."
+        ]
+      },
+      "data_flow": "None verified; proposed Japanese/English primary-source comparison -> structured claim packet.",
+      "task": "Independently verify SBIC East/Central/West, SBI Holdings, JFSA, OCC and corporate filings; pending authentication."
+    },
+    {
+      "name": "Copilot",
+      "connection_status": "OBSERVED_ONE_OFF_GITHUB_HOSTED_REVIEW_NOT_PERSISTENT",
+      "authentication_status": "Prior GitHub-hosted Copilot review activity is visible in repository history; no standalone authenticated Copilot session or persistent data channel was verified. A prior review request produced an unexpected test-only branch commit.",
+      "role": "Repository review and code/workflow critique.",
+      "permissions": {
+        "observed": [
+          "One-off GitHub-hosted review comments.",
+          "Prior branch-write side effect on an existing PR branch."
+        ],
+        "not_established": [
+          "No persistent Copilot API/session connection.",
+          "No authority to merge main or deploy."
+        ]
+      },
+      "data_flow": "Observed prior flow: GitHub PR comment -> GitHub-hosted Copilot workflow -> review comment and a test-only branch commit. This is not a persistent connector and is write-capable.",
+      "task": "Use only when branch-write side effects are acceptable; do not treat comments as approvals."
+    },
+    {
+      "name": "Codex",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No Codex session or execution connection verified; GitHub connector is separate.",
+      "role": "Independent implementation, deterministic ingestion/evaluation scripts and regression-test review.",
+      "permissions": {
+        "proposed": [
+          "Branch-only writes after overlap preflight.",
+          "No main write, merge, force-push, secrets, deployment or market actions."
+        ]
+      },
+      "data_flow": "None verified; proposed implementation packet -> existing branch -> exact-head CI.",
+      "task": "Review prediction-engine implementation and tests; pending authentication."
+    },
+    {
+      "name": "Hugging Face",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No authenticated Hugging Face session or data flow verified. A manual-only repository workflow references a private Space but was not dispatched.",
+      "role": "Public dataset/model-card discovery and licensing/provenance review.",
+      "permissions": {
+        "proposed": [
+          "Read-only public dataset/model metadata.",
+          "No Space restart, secret rotation, deployment or private-data access without explicit approval."
+        ]
+      },
+      "data_flow": "None verified; proposed public metadata -> provenance packet.",
+      "task": "Discover lawful public datasets and model cards; pending authentication."
+    },
+    {
+      "name": "Kaggle",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No authenticated Kaggle connector or session verified. A manual-only repository workflow can download a dataset; no submission was dispatched.",
+      "role": "Historical dataset discovery and offline benchmark evaluation.",
+      "permissions": {
+        "proposed": [
+          "Public dataset read/download only after review.",
+          "No competition submission or account write without specific approval."
+        ]
+      },
+      "data_flow": "None verified; proposed dataset metadata and local evaluation results -> structured benchmark packet.",
+      "task": "Find reproducible historical datasets and evaluate baselines without submitting entries; pending authentication."
+    },
+    {
+      "name": "Databricks",
+      "connection_status": "NOT_VERIFIED_CONNECTED",
+      "authentication_status": "No authenticated Databricks session or data flow verified. A manual-only workflow contains workspace import with overwrite; it was not dispatched.",
+      "role": "Optional scalable feature engineering and historical data analysis.",
+      "permissions": {
+        "proposed": [
+          "Read-only workspace/data access first.",
+          "No workspace overwrite, job run, secret change or deployment without specific approval."
+        ]
+      },
+      "data_flow": "None verified; proposed approved data extract -> deterministic feature/evaluation packet.",
+      "task": "Assess whether a public/authorized historical dataset warrants scalable processing; pending authentication."
+    }
+  ],
+  "source_registry": [
+    {
+      "source_id": "github_main_ref",
+      "source_type": "repository_ref_metadata",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
+      "normalized_excerpt": "Repository main ref resolves to 9100dbacb5f9f1b973b053a65ef1e91e96b64f72 and reports protected=true.",
+      "normalized_excerpt_sha256": "4d7b3d125173c3a32ff4067c135049164d91ea54775a7b96a64d998e41bee7fb",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_repo_tree",
+      "source_type": "recursive_git_tree",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/git/trees/9100dbacb5f9f1b973b053a65ef1e91e96b64f72?recursive=1",
+      "normalized_excerpt": "Recursive main tree returned 1403 entries, 1298 files, 493 Python files, 87 tests/test*.py files, and 86 workflow files.",
+      "normalized_excerpt_sha256": "660c9a082a8671756fb9e2b6959b476f362d303b883f240df95275f39039a389",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_pr_access",
+      "source_type": "repository_connector_observation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls",
+      "normalized_excerpt": "Current connector read main tree, open PRs, branch commits, changed files, review threads, CI runs, job logs, and wrote to existing PR branches.",
+      "normalized_excerpt_sha256": "7b65d5fbd83cd0909aa40397d64c9f8fcf857ba3c7b414df4684eb24f1cdc532",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_user_permission",
+      "source_type": "collaborator_permission_query",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/collaborators/Scribedpengenius/permission",
+      "normalized_excerpt": "GitHub collaborator permission for Scribedpengenius is read; no approving-review capability is established for that account.",
+      "normalized_excerpt_sha256": "76b9134b7031674b1c4ccab6f353f30b6643f121b39883c62ef2783f468de256",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_codeowners",
+      "source_type": "repository_file",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/CODEOWNERS",
+      "normalized_excerpt": "CODEOWNERS assigns all paths to @Barrot-Agent; no individual human reviewer is listed.",
+      "normalized_excerpt_sha256": "f501cabf26b45a9add7be41c7a23433c6788f0b1cdab7a4e9ae7529f9f838388",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_protection",
+      "source_type": "repository_security_setting_observation",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
+      "normalized_excerpt": "Branch reports protected=true, detailed branch-protection endpoint returns HTTP 403, visible fallback ruleset is disabled.",
+      "normalized_excerpt_sha256": "3bd083d32d95d948d4c576d26f0eb124fd5c0e2156d3bbc149f67cd8d866adc9",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_copilot",
+      "source_type": "repository_workflow_history",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls/1640",
+      "normalized_excerpt": "A prior one-off GitHub-hosted Copilot review produced comments and an unexpected test-only branch commit; no persistent Copilot connection was verified.",
+      "normalized_excerpt_sha256": "be073f53a7b62becdb7ab529e5b5e7db4b766eccf20bc409346fc425b30e1b01",
+      "raw_http_bytes_captured": false
+    },
+    {
+      "source_id": "github_manual_flows",
+      "source_type": "workflow_configuration_observation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/tree/main/.github/workflows",
+      "normalized_excerpt": "HF, Databricks, Kaggle and deployment workflows are manual-gated; no dispatch or external write was executed in this run.",
+      "normalized_excerpt_sha256": "0700a2b9a6346e02537b3b0d00839d32bb04ad1a8cac1e5468ce6abb178dc72f",
+      "raw_http_bytes_captured": false
+    }
+  ],
+  "verified_data_flows": [
+    "ChatGPT current session -> GitHub repository connector"
+  ],
+  "unverified_data_flows": [
+    "Claude",
+    "Grok",
+    "Gemini",
+    "Copilot persistent session",
+    "Codex",
+    "Hugging Face",
+    "Kaggle",
+    "Databricks"
+  ],
+  "independent_task_assignments": {
+    "claude": "Adversarial counter-hypothesis and red-team review; not executed.",
+    "grok": "Public social/event discovery; not executed.",
+    "gemini": "Japanese primary-source identity/regulatory cross-check; not executed.",
+    "copilot": "GitHub review only with explicit branch-write side-effect awareness; not requested in this run.",
+    "codex": "Implementation/test review on existing branch; not executed.",
+    "hugging_face": "Public dataset/model-card discovery; not executed.",
+    "kaggle": "Offline historical benchmark evaluation only; no submissions; not executed.",
+    "databricks": "Read-only scalable feature-engineering assessment; no workspace writes; not executed."
+  },
+  "least_privilege_policy": {
+    "public_read_only_by_default": true,
+    "external_ai_data_transfer_authorized": false,
+    "repository_main_write_authorized": false,
+    "secrets_access_authorized": false,
+    "market_actions_authorized": false,
+    "deployments_authorized": false
+  },
+  "red_team_status": "No independent external AI red-team review was executed in this run. GitHub comments from prior Copilot/CodeRabbit activity are not independent nine-platform authentication or approval.",
+  "fallback_plan": "Use ChatGPT public-source research, deterministic local analysis and GitHub exact-head CI. Keep all other platforms unconnected until tested authentication and explicit least-privilege data flows exist.",
+  "no_data_sent_to_external_ai_providers": true,
+  "no_secret_values_read": true,
+  "no_nine_platform_live_coordination_claimed": true,
+  "github_existing_pr_branch_writes_executed": true,
+  "no_non_github_external_platform_write_executed": true
+}

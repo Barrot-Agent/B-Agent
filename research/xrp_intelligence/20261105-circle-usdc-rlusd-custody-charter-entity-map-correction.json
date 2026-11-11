@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "artifact_type": "circle_ripple_coinbase_state_and_federal_trust_charter_entity_map_correction",
+  "observed_on_utc_date": "2026-11-05",
+  "exact_per_source_retrieval_timestamp_utc": null,
+  "timestamp_note": "OCC CAS, NYDFS, issuer announcements and license pages were retrieved in this run. Their publication/action dates are retained separately; no synthetic event timestamps or byte-complete raw captures are claimed.",
+  "entities": {
+    "circle": {
+      "parent": "Circle Internet Group, Inc.",
+      "state_entity": {
+        "legal_name": "Circle Internet Trust Company LLC",
+        "dba": "Circle New York Trust",
+        "charter_type": "New York limited-purpose trust company",
+        "regulator": "New York Department of Financial Services",
+        "status": "Circle's Q2 2026 results say it received approval from NYDFS to open Circle New York Trust; the current Circle licenses page lists the entity as chartered.",
+        "issuer_role": "The retrieved current license page does not establish that this entity is presently the USDC issuer. Circle's 2025 OCC application described a plan to transition USDC issuance to a New York limited-purpose trust company; current Circle disclosures say USDC is issued by regulated affiliates.",
+        "source_ids": [
+          "CIRCLE_Q2_2026_RESULTS",
+          "CIRCLE_LICENSES",
+          "NYDFS_VIRTUAL_CURRENCY_LIST",
+          "CIRCLE_OCC_PUBLIC_APPLICATION_2025"
+        ]
+      },
+      "federal_entity": {
+        "legal_name": "First National Digital Currency Bank, N.A.",
+        "dba": "Circle National Trust",
+        "proposed_charter_number": "25361",
+        "occ_control_number": "2025-Charter-342299",
+        "direct_parent": "Circle Internet Holdings, Inc.",
+        "ultimate_parent": "Circle Internet Group, Inc.",
+        "occ_status_actions": [
+          {
+            "action": "Receipt",
+            "date": "2025-06-30"
+          },
+          {
+            "action": "Approved",
+            "date": "2025-12-12"
+          },
+          {
+            "action": "Consummated/Effective",
+            "date": "2026-07-24"
+          }
+        ],
+        "status_source": "OCC Corporate Applications Search",
+        "final_approval_announcement_date": "2026-07-10",
+        "approved_initial_scope": "Upon opening, fiduciary digital-asset custody for Circle and affiliates.",
+        "future_scope": "Management of the USDC Reserve is described by Circle as a future capability. Direct custody for a limited number of institutional clients is demand-dependent and not represented as active at launch.",
+        "operational_opening_verified": false,
+        "current_usdc_issuer": false,
+        "source_ids": [
+          "OCC_CIRCLE_FND_BANK_CAS",
+          "CIRCLE_FND_BANK_FINAL_APPROVAL",
+          "CIRCLE_LICENSES",
+          "CIRCLE_OCC_PUBLIC_APPLICATION_2025"
+        ]
+      }
+    },
+    "ripple": {
+      "state_entity": {
+        "legal_name": "Standard Custody & Trust Company, LLC",
+        "charter_type": "New York limited-purpose trust company",
+        "regulator": "New York Department of Financial Services",
+        "charter_listed_since": "2021-05",
+        "role": "RLUSD issuer, according to Ripple's October 26, 2026 announcement.",
+        "source_ids": [
+          "NYDFS_VIRTUAL_CURRENCY_LIST",
+          "RIPPLE_RNTB_FINAL_APPROVAL"
+        ]
+      },
+      "federal_entity": {
+        "legal_name": "Ripple National Trust Bank",
+        "proposed_charter_number": "25364",
+        "occ_control_number": "2025-Charter-342347",
+        "occ_status_actions": [
+          {
+            "action": "Receipt",
+            "date": "2025-07-02"
+          },
+          {
+            "action": "Approved",
+            "date": "2025-12-12"
+          },
+          {
+            "action": "Consummated/Effective",
+            "date": "2026-10-26"
+          }
+        ],
+        "status_source": "OCC Corporate Applications Search",
+        "approved_scope_described_by_ripple": [
+          "segregated RLUSD reserve management",
+          "reserve collateral-trustee function",
+          "fiduciary digital-asset custody upon opening"
+        ],
+        "operational_opening_verified": false,
+        "rlusd_issuer": false,
+        "source_ids": [
+          "OCC_RIPPLE_RNTB_CAS",
+          "RIPPLE_RNTB_FINAL_APPROVAL",
+          "NYDFS_VIRTUAL_CURRENCY_LIST"
+        ]
+      }
+    },
+    "coinbase": {
+      "state_entity": {
+        "legal_name": "Coinbase Custody Trust Company, LLC",
+        "charter_type": "New York limited-purpose trust company",
+        "regulator": "New York Department of Financial Services",
+        "charter_listed_since": "2018-10",
+        "role": "Existing state-chartered custody entity; separate from Coinbase National Trust Company.",
+        "source_ids": [
+          "NYDFS_VIRTUAL_CURRENCY_LIST"
+        ]
+      },
+      "federal_entity": {
+        "legal_name": "Coinbase National Trust Company",
+        "proposed_charter_number": "25390",
+        "occ_control_number": "2025-Charter-343449",
+        "occ_status_actions": [
+          {
+            "action": "Receipt",
+            "date": "2025-10-03"
+          },
+          {
+            "action": "Approved",
+            "date": "2026-04-02"
+          }
+        ],
+        "effective_action_visible_in_retrieved_cas_record": false,
+        "status_source": "OCC Corporate Applications Search",
+        "decision_source": "OCC Corporate Decision 1370",
+        "operational_opening_verified": false,
+        "distinct_from_state_custody_entity": true,
+        "migration_note": "OCC Corporate Decision 1370 describes a proposed migration plan over time; it does not establish that the state-chartered custody entity has already been replaced or that the federal bank is operational.",
+        "source_ids": [
+          "OCC_COINBASE_NTCO_CAS",
+          "OCC_COINBASE_DECISION_1370",
+          "NYDFS_VIRTUAL_CURRENCY_LIST"
+        ]
+      }
+    }
+  },
+  "comparison": {
+    "circle_state_lp_trust": true,
+    "circle_federal_national_trust_effective": true,
+    "ripple_state_lp_trust": true,
+    "ripple_federal_national_trust_effective": true,
+    "coinbase_state_lp_trust": true,
+    "coinbase_federal_national_trust_effective": false,
+    "coinbase_federal_status": "Approved on 2026-04-02; no Consummated/Effective row visible in retrieved CAS record",
+    "key_distinction": "The state limited-purpose trust companies and federal national trust banks are separate legal entities under different regulators. A federal charter status must not be conflated with an existing NYDFS custody charter.",
+    "nydfs_lp_trust_limitations": "NYDFS describes limited-purpose trust companies as not receiving deposits from the general public and generally not making loans except as incidental to fiduciary powers. This statement applies to the state LP trust-company category, not automatically to the OCC national trust-bank entities.",
+    "circle_bank_scope": "Circle says custody for Circle and affiliates is the initial service upon opening; USDC reserve management is a future capability, and direct institutional custody is demand-dependent.",
+    "ripple_bank_scope": "Ripple describes reserve management, collateral-trustee functions and fiduciary custody upon opening; current operating/customer volumes are not established.",
+    "coinbase_bank_scope": "The federal Coinbase National Trust application is approved but not shown as consummated/effective in the retrieved CAS record. Coinbase's separate NYDFS Coinbase Custody Trust Company remains listed.",
+    "issuer_separation": {
+      "usdc": "USDC is issued by Circle-regulated affiliates. Do not assume Circle National Trust itself issues USDC. Circle's 2025 application described a planned transition to a NY limited-purpose trust company; current retrieved disclosures do not identify the exact current issuing legal entity.",
+      "rlusd": "Standard Custody & Trust Company, LLC remains RLUSD issuer; Ripple National Trust Bank is a separate federal trust-bank entity."
+    }
+  },
+  "xrp_relevance": {
+    "institutional_custody_access": "Potentially relevant infrastructure context.",
+    "xrp_purchases_disclosed": false,
+    "xrp_assets_under_custody_disclosed": false,
+    "xrp_collateral_balances_disclosed": false,
+    "xrp_bridge_or_payment_volumes_disclosed": false,
+    "direct_circle_ripple_partnership_established": false,
+    "shared_bny_provider_relationship": "Separate Circle/USDC and Ripple/RLUSD relationships with BNY do not establish a direct Circle-Ripple partnership.",
+    "forecast_use": "Regulatory and entity-structure context only; not a directional XRP feature without measured adoption/flow and out-of-sample evidence."
+  },
+  "counter_hypotheses": [
+    {
+      "id": "H1_REGULATORY_OPTIONALITY",
+      "hypothesis": "Federal and state trust charters may reduce institutional custody and governance frictions over time.",
+      "disconfirming_evidence": [
+        "Operational opening and client onboarding remain unverified for the Circle and Ripple federal banks.",
+        "No XRP AUC, collateral, client balances or purchase flows are disclosed."
+      ]
+    },
+    {
+      "id": "H2_STABLECOIN_SUBSTITUTION",
+      "hypothesis": "USDC and RLUSD custody/reserve infrastructure may expand stablecoin settlement while substituting for XRP as a bridge asset in some workflows.",
+      "disconfirming_evidence": [
+        "XRPL fees, reserves and some liquidity workflows may still require XRP; actual usage is not measured."
+      ]
+    },
+    {
+      "id": "H3_CHARTER_STATUS_NOT_EQUAL_TO_OPERATION",
+      "hypothesis": "OCC Consummated/Effective status may precede operational opening, product launch and customer activity.",
+      "disconfirming_evidence": [
+        "Issuer announcements describe custody services as available upon opening and reserve management as future capability."
+      ]
+    },
+    {
+      "id": "H4_STATE_AND_FEDERAL_ENTITIES_ARE_COMPLEMENTARY",
+      "hypothesis": "Existing NYDFS custody subsidiaries may continue alongside new federal national trust banks during staged migration or specialization.",
+      "disconfirming_evidence": [
+        "Coinbase's OCC decision describes a migration plan, but actual completed migration is not established."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "OCC_CIRCLE_FND_BANK_CAS",
+      "publisher": "Office of the Comptroller of the Currency",
+      "date": "2026-07-24",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "regulatory CAS record",
+      "independence_group": "OCC_CAS",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "CIRCLE_FND_BANK_FINAL_APPROVAL",
+      "publisher": "Circle",
+      "date": "2026-07-10",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Receives-Final-OCC-Approval-to-Establish-National-Trust-Bank/default.aspx",
+      "type": "issuer final-approval announcement",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "CIRCLE_LICENSES",
+      "publisher": "Circle",
+      "date": "retrieved 2026-11-05",
+      "url": "https://www.circle.com/legal/licenses",
+      "type": "current issuer regulatory-authorization disclosure",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "CIRCLE_Q2_2026_RESULTS",
+      "publisher": "Circle",
+      "date": "2026-08-05",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "type": "issuer earnings release",
+      "independence_group": "CIRCLE_Q2_2026",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "CIRCLE_OCC_PUBLIC_APPLICATION_2025",
+      "publisher": "Circle",
+      "date": "2025-06-30",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/public-comment/first-national-digital-currency-bank-na-application.pdf",
+      "type": "public charter application",
+      "independence_group": "CIRCLE_OCC_APPLICATION",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "NYDFS_VIRTUAL_CURRENCY_LIST",
+      "publisher": "New York Department of Financial Services",
+      "date": "retrieved 2026-11-05",
+      "url": "https://www.dfs.ny.gov/virtual_currency_businesses",
+      "type": "regulator public entity list",
+      "independence_group": "NYDFS",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "NYDFS_LP_TRUST_LIMITS",
+      "publisher": "New York Department of Financial Services",
+      "date": "retrieved 2026-11-05",
+      "url": "https://www.dfs.ny.gov/who_we_supervise",
+      "type": "regulator institutional-category guidance",
+      "independence_group": "NYDFS",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "OCC_RIPPLE_RNTB_CAS",
+      "publisher": "Office of the Comptroller of the Currency",
+      "date": "2026-10-26",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "regulatory CAS record",
+      "independence_group": "OCC_CAS",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "RIPPLE_RNTB_FINAL_APPROVAL",
+      "publisher": "Ripple",
+      "date": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "type": "issuer final-approval announcement",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "OCC_COINBASE_NTCO_CAS",
+      "publisher": "Office of the Comptroller of the Currency",
+      "date": "2026-04-02",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "regulatory CAS record",
+      "independence_group": "OCC_CAS",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "OCC_COINBASE_DECISION_1370",
+      "publisher": "Office of the Comptroller of the Currency",
+      "date": "2026-04-02",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "type": "regulatory conditional-approval decision",
+      "independence_group": "OCC_COINBASE_DECISION",
+      "raw_bytes_captured": false
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "INSTITUTIONAL_REGULATORY_CONTEXT_ONLY",
+    "reasons": [
+      "No byte-complete source payloads or immutable SHA-256 receipts captured in this pass.",
+      "Charter effectiveness does not establish operational opening or customer adoption.",
+      "No XRP-specific custody, collateral, purchase or payment volume disclosed."
+    ],
+    "directional_forecast_issued": false
+  },
+  "preservation": {
+    "legal_entities_separated": true,
+    "state_and_federal_charters_not_conflated": true,
+    "issuer_entities_not_conflated_with_custody_entities": true,
+    "operational_status_not_inferred_from_charter_effectiveness": true,
+    "no_xrp_flow_or_collateral_inferred": true,
+    "source_independence_not_overstated": true,
+    "counter_hypotheses_preserved": true
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "artifact_id": "xrp_market_snapshot_20261109T193525Z_run97",
+  "captured_at_utc": "2026-11-09T19:35:25Z",
+  "purpose": "Research-only point-in-time market, derivatives, ETF, institutional-rail and macro reconciliation.",
+  "admission": {
+    "status": "blocked_not_model_admitted",
+    "raw_http_bytes_captured": false,
+    "sha256_receipts_created": false,
+    "reason": "Sources were inspected through web-rendered responses/search excerpts; exact raw HTTP response bytes were not preserved. Retrieval time is not substituted for missing provider event time.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "observations": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "source_event_time_utc": null,
+      "market": "XRP/USD",
+      "values": {
+        "last_usd": 1.0912,
+        "bid_usd": 1.09113,
+        "ask_usd": 1.09119,
+        "spread_bps": 0.55,
+        "volume_24h_xrp": 47657390.65986194,
+        "vwap_24h_usd": 1.10966982,
+        "high_24h_usd": 1.1564,
+        "low_24h_usd": 1.07502,
+        "utc_day_open_usd": 1.11203
+      },
+      "caveats": [
+        "No provider event timestamp in the response.",
+        "Kraken ticker o is the UTC-day open, not the rolling 24-hour open.",
+        "Top-of-book only; not executable depth."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker",
+      "publisher": "OKX",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "source_event_time_utc": "2026-11-09T19:35:03.368Z",
+      "market": "XRP-USDT",
+      "values": {
+        "last_usdt": 1.0895,
+        "bid_usdt": 1.0894,
+        "ask_usdt": 1.0895,
+        "volume_24h_xrp": 94791845.310361,
+        "quote_turnover_24h_usdt": 104803491.80054343,
+        "open_24h_usdt": 1.1559,
+        "high_24h_usdt": 1.1562,
+        "low_24h_usdt": 1.0764
+      },
+      "caveats": [
+        "USDT was not normalized to USD.",
+        "Do not compare directly with Kraken XRP/USD as an executable cross-venue spread."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "edgeornot_xrp_orderbook_heatmap",
+      "publisher": "Edge or Not",
+      "source_url": "https://edgeornot.com/order-book-heatmap/xrp",
+      "source_data_as_of_utc": "2026-11-09T19:15:00Z",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "market": "Combined Binance spot and OKX XRP-USDT perpetual",
+      "values": {
+        "mid_usd": 1.0918,
+        "bids_within_1pct_usd": 8800000,
+        "asks_within_1pct_usd": 8200000,
+        "bid_ask_ratio": 1.07317,
+        "largest_ask": {
+          "price": 1.0929,
+          "notional_usd": 2400000
+        },
+        "largest_bid": {
+          "price": 1.0897,
+          "notional_usd": 2100000
+        }
+      },
+      "caveats": [
+        "Minute sampling, 15-minute averaging.",
+        "Combines spot and perpetual books; overlaps OKX venue data.",
+        "Excludes hidden/iceberg size and other venues.",
+        "Resting orders can be cancelled; not a validated signal."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "liqwall_xrp_derivatives",
+      "publisher": "Liqwall",
+      "source_url": "https://liqwall.com/coins/xrp",
+      "source_data_as_of_utc": "2026-11-09T17:42:00Z",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "open_interest_usd": 1230000000,
+        "open_interest_change_24h_pct": -5.8,
+        "liquidations_24h_usd": 36800000,
+        "long_liquidations_usd": 35500000,
+        "short_liquidations_usd": 1400000,
+        "average_funding_8h_pct": -0.0002,
+        "binance_funding_8h_pct": 0.0057,
+        "binance_long_account_share_pct": 74.6
+      },
+      "caveats": [
+        "All-exchange aggregation; venue overlap with other providers.",
+        "Funding differs by venue and aggregation method."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "tradradar_xrp_derivatives",
+      "publisher": "TradRadar",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_data_as_of_utc": "2026-11-09T17:25:00Z",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "open_interest_usd": 1660000000,
+        "open_interest_change_24h_pct": -12.29,
+        "funding_oi_weighted_8h_pct": -0.0007,
+        "liquidations_24h_min_usd": 38450000,
+        "long_liquidations_usd": 36980000,
+        "short_liquidations_usd": 1480000,
+        "long_account_share_pct": 79.7,
+        "venue_count": 7
+      },
+      "caveats": [
+        "Liquidations reported as a lower bound because exchanges expose only part of real-time liquidation data.",
+        "Aggregated venue coverage overlaps other providers."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "alpha_finance_xrp_liquidation_heatmap",
+      "publisher": "Alpha Finance",
+      "source_url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "source_data_as_of_utc": "2026-11-09T14:04:00Z",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "spot_reference_usd": 1.0929,
+        "open_interest_usd": 2500000000,
+        "volume_24h_usd": 3710000000,
+        "long_liquidations_usd": 38800000,
+        "short_liquidations_usd": 1400000,
+        "modeled_short_cluster": {
+          "price_usd": 1.1157,
+          "notional_usd": 4800000
+        },
+        "modeled_long_cluster": {
+          "price_usd": 1.0739,
+          "notional_usd": 3300000
+        }
+      },
+      "caveats": [
+        "Liquidation clusters are modeled from open interest and leverage tiers, not verified individual liquidation executions.",
+        "Older cutoff than Liqwall and TradRadar."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "xrp_insights_issuer_holdings_etf_dataset",
+      "publisher": "XRP Insights",
+      "source_url": "https://xrp-insights.com/data",
+      "source_data_as_of_date": "2026-11-06",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "trading_days": 231,
+        "rows": 1597,
+        "funds_scope": "six US spot XRP ETFs plus BITW",
+        "total_holdings_xrp": 1195182552,
+        "derived_holdings_change_nov2_nov6_xrp": -812529,
+        "derived_flow_value_usd_approx": -939000
+      },
+      "caveats": [
+        "Flows are derived from day-over-day holdings changes, not issuer-confirmed cash creations/redemptions.",
+        "Flow-excluded funds contribute zero to aggregate.",
+        "Dataset includes reconstructed historical periods; inspect row_status before use."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "coin365_all_crypto_etf_flow",
+      "publisher": "Coin365",
+      "source_url": "https://www.coin365.io/etf",
+      "source_data_as_of_utc": "2026-11-09T16:10:00Z",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "daily_net_flow_all_assets_usd": -509300000,
+        "asset_scope": [
+          "BTC",
+          "ETH",
+          "SOL",
+          "XRP",
+          "LTC",
+          "HBAR"
+        ],
+        "fund_count": 25
+      },
+      "caveats": [
+        "All-asset aggregate; no XRP-specific flow was established from this figure."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "coinbase_digital_asset_disclosures",
+      "publisher": "Coinbase",
+      "source_url": "https://www.coinbase.com/legal/digital-asset-disclosures",
+      "source_data_as_of_date": "2026-03-31",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "us_trading_assets_xrp": {
+          "coinbase_holding": "Yes",
+          "commercial_engagement": "Yes"
+        },
+        "custody_trust_company_xrp": {
+          "coinbase_holding": "Yes",
+          "commercial_engagement": "Yes"
+        },
+        "custody_trust_company_cbxrp": {
+          "coinbase_holding": "Yes",
+          "commercial_engagement": "Yes"
+        },
+        "custody_trust_company_rlusd": {
+          "coinbase_holding": "No",
+          "commercial_engagement": "Yes"
+        }
+      },
+      "caveats": [
+        "Coinbase defines commercial engagement broadly and says it may have begun before or after asset support.",
+        "Disclosure does not quantify holdings or establish collateral utilization, proprietary inventory or XRP buying demand."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "pnc_coinbase_usdc_pilot",
+      "publisher": "Reuters",
+      "source_url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "publication_date": "2026-11-09",
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "pilot": "eligible corporate/institutional PNC clients receive USDC with automatic USD conversion",
+        "stablecoin": "USDC",
+        "partners": [
+          "PNC",
+          "Coinbase",
+          "Circle"
+        ]
+      },
+      "caveats": [
+        "Limited pilot; Reuters report.",
+        "A competing stablecoin payment rail, not an XRP corridor and not evidence of XRP demand."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "japan_mof_fx_intervention_breakdown",
+      "publisher": "Reuters reporting Japan Ministry of Finance data",
+      "source_url": "https://www.reuters.com/world/asia-pacific/japans-july-yen-buying-intervention-sets-fresh-daily-record-2026-11-09/",
+      "publication_date": "2026-11-09",
+      "event_dates": [
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03"
+      ],
+      "retrieved_at_utc": "2026-11-09T19:35:25Z",
+      "values": {
+        "total_intervention_jpy": 15399300000000,
+        "largest_daily_intervention_jpy": 7975600000000
+      },
+      "caveats": [
+        "Publication date is distinct from intervention event dates.",
+        "Macro/carry-trade context only; no XRP causal link established."
+      ],
+      "raw_bytes_captured": false,
+      "sha256": null,
+      "model_eligible": false
+    }
+  ],
+  "synthesis": {
+    "common_observation": "Long-side liquidations dominate the three derivative-provider snapshots.",
+    "disagreement": "Aggregated OI ranges from $1.23B to $2.50B and funding is near-zero/mixed; provider venue coverage and timestamps overlap and differ.",
+    "competing_hypotheses": [
+      "Further long deleveraging could extend weakness if spot demand fails to absorb selling.",
+      "A completed liquidation wave could exhaust forced selling and permit mean reversion if spot bids persist and funding normalizes."
+    ],
+    "disconfirming_evidence_to_collect": [
+      "Synchronized multi-venue USD-normalized spot and order-book snapshots with provider event timestamps.",
+      "Venue-level OI/funding and liquidation streams with exact instrument coverage.",
+      "Issuer-confirmed ETF creations/redemptions separated from holdings adjustments.",
+      "Exchange balance flows with wallet attribution, custody and omnibus-account exclusions."
+    ],
+    "forecast_status": "NOT_ISSUED"
+  }
+}
