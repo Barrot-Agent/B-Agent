@@ -144,7 +144,8 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["subtests"] == 8
     assert suite["exact_head_verified"] is True
     assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
-    assert "stale snapshot expectations" in latest["failure_classification"].lower().replace("_", " ")
+    assert "current map schema regression" in latest["failure_classification"].lower()
+    assert "not a runtime prediction-engine failure" in latest["failure_classification"].lower()
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
@@ -370,3 +371,29 @@ def test_source_provenance_and_backlog_classification_are_explicit():
     assert "UNIQUE_UNREVIEWED" in backlog["1653"]
     assert "UNIQUE_UNREVIEWED" in backlog["1614"]
     assert any("semantic review" in item.lower() for item in data["next_actions"])
+
+
+def test_latest_market_refresh_is_research_only_and_preserves_provider_disagreement():
+    refresh = load_current()["latest_market_refresh"]
+    assert refresh["point_in_time_eligibility"].startswith("RESEARCH_ONLY_NOT_MODEL_ELIGIBLE")
+    assert refresh["raw_source_receipts"]["captured_by_barrot"] is False
+    captured = datetime.fromisoformat(refresh["captured_at_utc"].replace("Z", "+00:00"))
+    okx = refresh["spot"]["okx"]
+    event = datetime.fromisoformat(okx["event_time_utc"].replace("Z", "+00:00"))
+    assert event <= captured
+    assert 0 < okx["bid"] <= okx["ask"]
+    kraken = refresh["spot"]["kraken"]
+    assert kraken["event_timestamp_available"] is False
+    assert "UTC-day open" in kraken["field_semantics"]
+    assert 0 < abs(refresh["spot"]["normalized_spread_vs_kraken_mid_percent"]) < 1
+    depth = refresh["spot_order_book"]["latest_primary_aggregated_snapshot"]
+    assert depth["snapshot_time_utc"] <= refresh["captured_at_utc"]
+    assert "resting orders can be cancelled or moved" in " ".join(depth["limitations"])
+    derivatives = refresh["derivatives"]
+    assert len({derivatives[k]["open_interest_usd"] for k in ("tradradar", "liqwall", "alpha_heatmap")}) == 3
+    assert "not averaged" in derivatives["reconciliation"]
+    etf = refresh["etf_flows"]
+    assert etf["alpha_finance"]["funds_complete"] == "5 of 5 tracked"
+    assert etf["cryptoetf_today"]["funds_reported"] == "4 of 5"
+    assert "do not average" in etf["reconciliation"].lower()
+    assert load_current()["forecast_status"] == "NOT_ISSUED"
