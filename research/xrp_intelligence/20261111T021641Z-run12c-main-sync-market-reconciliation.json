@@ -31,11 +31,13 @@
     "source_pr": {
       "number": 1660,
       "state": "open",
-      "draft": false,
+      "draft": true,
       "head_sha": "dc34a4aefbbace7c28eac03a77863264f7ad050f",
       "base_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
       "mergeable": false,
-      "changed_files": 972
+      "changed_files": 972,
+      "comment_id": 6785173030,
+      "superseded_by": 1661
     },
     "successor_branch": "integration/xrp-v3-unified-main-20261111",
     "main_commits_after_merge_base": [
@@ -164,7 +166,24 @@
       "non_drafts": 15,
       "source_pr_1660": "stale integration source",
       "unique_work_preserved": true
-    }
+    },
+    "successor_commit_sha": "6de2cf22e9da7019180713bb3f44ca290ceb7620",
+    "successor_pr": {
+      "number": 1661,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1661",
+      "state": "open",
+      "draft": true,
+      "base": "main",
+      "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "head_branch": "integration/xrp-v3-unified-main-20261111",
+      "head_sha": "6de2cf22e9da7019180713bb3f44ca290ceb7620",
+      "commits": 1964,
+      "changed_files": 974,
+      "additions": 274743,
+      "deletions": 3925,
+      "initial_mergeable": false
+    },
+    "merge_performed": false
   },
   "market": {
     "retrieved_at_utc": "2026-11-11T02:16:41Z",

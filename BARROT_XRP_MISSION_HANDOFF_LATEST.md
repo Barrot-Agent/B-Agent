@@ -14,6 +14,15 @@
 - Integration `b_agent.py` retains the safe LunaRoute-only, clean-feature-worktree and read-only proposal behavior. It contains no direct merge_pr or --auto-merge path. The current-main self-identification prompt change is merged into that safe version. `opencode.json` is identical on main and integration and points to LunaRoute.
 - Dependencies: requirements.txt identical; integration requirements-dev adds build/setuptools/wheel and raises pytest/types-requests; integration pyproject adds branch coverage and package-data configuration. These integration dependencies are retained.
 
+
+### Successor PR — executed
+
+- [PR #1661](https://github.com/Barrot-Agent/B-Agent/pull/1661) is the sole active current-main successor, opened as a draft at `6de2cf22e9da7019180713bb3f44ca290ceb7620` against main `84f28ee7755607236231545a14f3d093c1baaa85`.
+- GitHub's creation snapshot: 1,964 commits, 974 changed files, 274,743 additions and 3,925 deletions. Initial mergeability was reported false while GitHub recalculates; exact-head checks are pending.
+- [PR #1660](https://github.com/Barrot-Agent/B-Agent/pull/1660) is now an open draft source, with comment #6785173030 cross-referencing #1661. Its branch was not rewritten, deleted or closed.
+- Successor tree: 2,245 entries; no `.agents/skills/orbit` paths and no `.barrot/orbit/tools.json`; `.barrot/orbit/command_schema.json` retained.
+- No merge, deployment, secret action, paper trade or external mutation was performed.
+
 ### PR inventory and CI
 
 - 373 open PRs: 358 drafts, 15 non-drafts. #1660 is the stale integration source. #1653 is a separate knowledge-graph workstream; dependency updates and unique MMI, prediction, safety and topology work remain preserved. No unique PR is closed.
