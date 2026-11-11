@@ -109,7 +109,9 @@ def test_current_map_preserves_fail_closed_permissions_and_no_money_actions():
     for key in ("secret_values_read", "credentials_exported", "unverified_platforms_used", "external_model_data_transfer", "deployment", "kaggle_submission", "paper_trade", "real_money_action", "main_branch_write_performed"):
         assert safety[key] is False
     assert safety["pages_deployment_authorized"] is False
-    assert safety["branch_protection_status"] == "UNVERIFIED_HTTP_403"
+    assert safety["main_branch_protected_flag"] is True
+    assert "HTTP 403" in safety["branch_protection_status"]
+    assert "required checks and approval rules NOT_VISIBLE" in safety["branch_protection_status"]
 
 
 def test_current_map_task_assignments_are_design_only_until_authentication():

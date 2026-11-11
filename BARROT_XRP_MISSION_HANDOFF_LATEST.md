@@ -1,4 +1,67 @@
-# Barrot XRP Mission — Canonical Handoff (latest: Run 12E — 2026-11-11T03:15Z)
+# Barrot XRP Mission — Canonical Handoff (latest: Run 14 — 2026-11-11T07:00Z)
+
+## Run 14 — exact-head CI failure reconciliation, security branch audit and fresh XRP evidence (2026-11-11 07:00 UTC)
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation. LunaRoute remains the repository-declared sole brain; this ChatGPT session is a relay and did not authenticate to LunaRoute.
+
+### Repository state — EXECUTED / VERIFIED
+
+- Main: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`.
+- Parent head inspected before this Run 14 correction: `16b16bc1705cd596c4465aa5e945aef59d25520b`.
+- PR #1661: open, draft, GitHub `mergeable=true`, `mergeable_state=unstable`; 1,992 commits ahead / zero behind; 983 changed files (44 workflow files, 939 other paths).
+- Main recursive tree: 1,388 entries / 86 workflows. Integration recursive tree: 2,249 entries / 87 workflows. Both complete, not truncated.
+- Open PR inventory: 374 total, 360 drafts, 14 non-drafts. PR #1660 remains open/draft and dirty; retain it until #1661 is merged and verified on main.
+- Local Git transport still fails DNS resolution. The complete remote GitHub API inspection works; no local clone is claimed.
+
+### Exact-head CI correction — VERIFIED FAILURE
+
+On the preceding code head `3b11e39f253ac8d07d02eb5da0c770155614f814`, the full suite passed **3,407 tests, zero failures, eight subtests**, with 59.98% inclusive package coverage. Wheel build and installed primary-mission verification passed.
+
+On exact head `16b16bc1705cd596c4465aa5e945aef59d25520b`, run [42971142838](https://github.com/Barrot-Agent/B-Agent/actions/runs/42971142838), full repository job [130359654138](https://github.com/Barrot-Agent/B-Agent/actions/runs/42971142838/job/130359654138) completed **3,395 passed, 12 failed, eight subtests**, 59.98% coverage. The 12 failures are stale snapshot assertions in two research-map test files. They compare current map data to older repository SHAs/counts, old market timestamps/depth/options values, renamed provider fields and the previous ETF schema. The failure log reports no application-runtime exception among these 12 failures. The full suite failed; do not report this head as green.
+
+On the same exact head, dependency audit [42971142776](https://github.com/Barrot-Agent/B-Agent/actions/runs/42971142776) passed across six manifests with zero known vulnerabilities reported. Fail-closed gate [42971142715](https://github.com/Barrot-Agent/B-Agent/actions/runs/42971142715) passed and automatic merge remained disabled.
+
+**Run 14 correction:** update the stale assertions to validate the actual captured snapshot and its semantic constraints; do not weaken or skip tests. The resulting new head must run the full repository suite, dependency audit and fail-closed gate again before any merge decision.
+
+### Security and branch audit — VERIFIED
+
+The path `.config/gh/hosts.yml` is absent from current main and #1661. It remains present in the current tree of 17 other open PR tips: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. All 17 recursive tree responses were complete and not truncated. No credential file contents were read or reproduced.
+
+BARROT_SYNC reports OAuth revocation, but provider-side revocation remains independently unverified. Main reports `protected=true`; the detailed branch-protection endpoint returned HTTP 403, so required checks and approval rules are not visible. The only visible repository ruleset, `Fall Back`, is disabled. No protection was bypassed.
+
+### Fresh XRP observations — RESEARCH ONLY / NOT MODEL ELIGIBLE
+
+- Kraken public XRP/USD response captured during this run: last 1.05992, bid 1.06024, ask 1.06033, 24-hour volume 36.13M XRP, high 1.10473, low 1.03011, UTC-day open 1.05511. Kraken supplied no provider event timestamp. [Kraken public ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+- Binance's indexed XRP page displayed $1.056703 at 02:58 UTC; it is an older asynchronous comparison, not a synchronized cross-venue price. [Binance XRP reference](https://www.binance.com/en-GB/price/xrp).
+- ETF provider disagreement is material. Alpha Finance reports five of five funds complete through the November 10 session: -$7.6M daily, second consecutive outflow, +$1.3M over 30 sessions and +$1.71B cumulative net inflow. [Alpha Finance](https://alphafinance.io/etf/xrp/).
+- CryptoKeyhole's 02:12 UTC November 11 capture reports November 10 partial, only one of four tracked funds reported and zero so far; its latest complete session is November 6 at -752,048 XRP. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+- CryptoETF.today reports November 10 partial, four of five funds, -$6.9M, with XRPZ pending. [CryptoETF.today](https://cryptoetf.today/en/xrp-etf-flows).
+
+These ETF values use different issuer universes and update times. A reported zero in an incomplete cohort is not a final daily total. Preserve each provider vintage; do not average. Holdings changes do not prove exchange sales. Web/API observations were not captured through Barrot's raw receipt pipeline; no byte-exact source hashes were created and no market feature was admitted.
+
+The official CFTC TFF page remains positions as of November 3, published November 6. The three visible XRP futures products remain approximately 396.25M XRP-equivalent; standard Coinbase XRP contract code 176LM2 is absent and must remain unknown, not zero. [CFTC TFF](https://www.cftc.gov/dea/futures/financial_lf.htm).
+
+### Prediction and platform status
+
+- Public collector, 46 source definitions, SHA-256 receipts, SQLite point-in-time feature-store prototype, four baselines, chronological walk-forward, calibration/drift diagnostics and fail-closed forecast ledger are implemented on integration.
+- Independent WORM anchoring, replayable historical reconstruction, synchronized multi-venue history, production macro/event timeline, scenario generation, sufficient shadow outcomes and production evaluator key remain unverified.
+- Forecast: `NOT_ISSUED`.
+- ChatGPT GitHub connector access is verified for the current integration branch. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows remain unverified. LunaRoute is declared but not authenticated in this session. No external-model transfer occurred.
+
+### Merge decision and next actions
+
+Keep #1661 draft and unmerged. The latest exact-head full suite failed 12 stale snapshot assertions; the PR is draft, has zero formal reviews/approvals, required branch-protection details are not visible, 17 other PR tips retain the credential path, provider-side OAuth revocation is unverified, automatic Pages publication is unauthorized, 939 non-workflow paths remain under semantic review and the inclusive coverage floor is 53% versus the former 70% setting.
+
+1. Correct the 12 stale snapshot tests and update the current map/handoff/sync on the existing integration branch.
+2. Run the full repository suite, six-manifest dependency audit and fail-closed gate on the new exact head; inspect complete logs.
+3. Continue semantic review of all 939 non-workflow paths and raise the 53% coverage floor through additional tests.
+4. Verify provider-side OAuth revocation and arrange only additive branch-tip remediation; do not read credential contents or rewrite history.
+5. Obtain authoritative branch-protection/approval requirements and explicit authorization for automatic Pages publication.
+6. Preserve unique PR work; close exact source duplicates only after successor merge and main verification.
+7. Keep the XRP collector off main until an authorized merge; then verify its first successful read-only main ingestion and receipt chain.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
 
 ## Run 12E — current-main reconciliation, V3 test-harness correction and XRP evidence (2026-11-11 03:15 UTC)
 

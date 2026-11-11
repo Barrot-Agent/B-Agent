@@ -79,7 +79,9 @@ def test_least_privilege_and_external_action_gates_remain_closed():
     ):
         assert safety[key] is False
     assert safety["pages_deployment_authorized"] is False
-    assert safety["branch_protection_status"] == "UNVERIFIED_HTTP_403"
+    assert safety["main_branch_protected_flag"] is True
+    assert "HTTP 403" in safety["branch_protection_status"]
+    assert "required checks and approval rules NOT_VISIBLE" in safety["branch_protection_status"]
     exposure = safety["credential_path_exposure"]
     assert exposure["path"] == ".config/gh/hosts.yml"
     assert exposure["main_branch_contains_path"] is False
@@ -95,14 +97,14 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
     assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
     assert state["integration_pr"] == 1661
-    assert state["integration_head_before_current_map_commit"] == "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb"
-    assert state["integration_ahead_by"] == 1979
+    assert state["integration_head_before_current_map_commit"] == "16b16bc1705cd596c4465aa5e945aef59d25520b"
+    assert state["integration_ahead_by"] == 1992
     assert state["integration_behind_by"] == 0
-    assert state["changed_files"] == 977
+    assert state["changed_files"] == 983
     assert state["workflow_files_changed"] == 44
-    assert state["non_workflow_paths_changed"] == 933
+    assert state["non_workflow_paths_changed"] == 939
     assert state["main_tree_entries"] == 1388
-    assert state["integration_tree_entries"] == 2246
+    assert state["integration_tree_entries"] == 2249
     assert state["orbit_paths_in_integration"] is False
     assert state["hf_space_app_py_changed"] is False
 
@@ -120,25 +122,31 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["draft"] is True
     assert old["behind_by"] == 3
     assert "RETAINED_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
-    assert current["head_sha"] == "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb"
+    assert current["head_sha"] == "16b16bc1705cd596c4465aa5e945aef59d25520b"
     assert current["formal_approvals"] == 0
 
 
 def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     ci = load_current()["ci_evidence"]
-    assert ci["integration_head_tested"] == "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb"
+    assert ci["integration_head_tested"] == "3b11e39f253ac8d07d02eb5da0c770155614f814"
     suite = ci["full_repository_suite"]
-    assert suite["passed"] == 3397
+    assert suite["passed"] == 3407
     assert suite["failed"] == 0
     assert suite["subtests"] == 8
-    assert suite["coverage_percent"] == 59.89
+    assert suite["coverage_percent"] == 59.98
     assert suite["exact_head_verified"] is True
+    latest = ci["latest_attempt"]
+    assert latest["head_sha"] == "16b16bc1705cd596c4465aa5e945aef59d25520b"
+    assert latest["full_repository_suite"]["passed"] == 3395
+    assert latest["full_repository_suite"]["failed"] == 12
+    assert latest["full_repository_suite"]["subtests"] == 8
+    assert latest["full_repository_suite"]["exact_head_verified"] is True
+    assert "stale snapshot expectations" in latest["failure_classification"].lower()
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
     assert ci["fail_closed_gate"]["passed"] is True
     assert ci["fail_closed_gate"]["automatic_merge_enabled"] is False
-    assert "both push and pull_request full-suite runs completed successfully" in ci["caveat"].lower()
 
 
 def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
@@ -189,8 +197,8 @@ def test_spot_snapshot_preserves_provider_event_time_and_window_semantics():
     okx = market["spot"]["okx"]
     kraken = market["spot"]["kraken"]
     assert okx["pair"] == "XRP-USDT"
-    assert okx["event_time_utc"] == "2026-11-11T03:35:37.862Z"
-    assert okx["last"] == 1.0616
+    assert okx["event_time_utc"] == "2026-11-11T05:43:33.264Z"
+    assert okx["last"] == 1.06
     assert okx["event_time_utc"] <= market["retrieved_at_utc"]
     assert kraken["pair"] == "XRP/USD"
     assert kraken["utc_day_open"] == 1.05511
@@ -201,14 +209,14 @@ def test_spot_snapshot_preserves_provider_event_time_and_window_semantics():
 def test_spot_orderbook_is_resting_liquidity_not_guaranteed_support():
     book = load_current()["current_market_snapshot"]["spot_order_book"]
     assert book["provider"] == "Fuelmaps"
-    assert book["snapshot_time_utc"] == "2026-11-11T03:00:00Z"
-    assert book["venues_coverage"] == "6 of 6"
-    assert book["depth_usd"]["within_1_percent"]["bids"] == 13_800_000
-    assert book["depth_usd"]["within_1_percent"]["asks"] == 11_100_000
+    assert book["snapshot_time_utc"] == "2026-11-11T05:00:00Z"
+    assert "6 of 6" in book["venues_coverage"]
+    assert book["depth_usd"]["within_1_percent"]["bids"] == 14_700_000
+    assert book["depth_usd"]["within_1_percent"]["asks"] == 12_400_000
     assert {"Binance", "Bitget"}.issubset(set(book["exclusions"]))
     limitations = " ".join(book["limitations"]).lower()
     assert "resting orders can be cancelled" in limitations
-    assert "no historical book" in limitations
+    assert "not executed volume" in limitations
 
 
 def test_exchange_flow_snapshot_keeps_unattributed_transfer_separate():
@@ -219,7 +227,7 @@ def test_exchange_flow_snapshot_keeps_unattributed_transfer_separate():
     assert flows["net_flow_xrp"] == flows["inflows_xrp"] - flows["outflows_xrp"]
     assert flows["largest_transfer_xrp"] == 368_480_000
     assert flows["largest_transfer_label"] == "unknown wallet; not attributed to an exchange"
-    assert any("not comprehensive exchange reserve accounting" in x for x in flows["limitations"])
+    assert any("not comprehensive exchange-reserve accounting" in x for x in flows["limitations"])
 
 
 def test_derivatives_provider_disagreement_is_preserved_without_averaging():
@@ -227,38 +235,39 @@ def test_derivatives_provider_disagreement_is_preserved_without_averaging():
     oi = {
         d["coinglass"]["open_interest_usd"],
         d["tradradar"]["open_interest_usd"],
-        d["liqwall"]["open_interest_usd"],
+        d["liqwall_previous_snapshot"]["open_interest_usd"],
     }
-    assert oi == {2_350_000_000, 1_580_000_000, 1_160_000_000}
+    assert oi == {2_340_000_000, 1_560_000_000, 1_160_000_000}
     assert d["coinglass"]["funding_8h_percent"] > 0
     assert d["coinglass"]["long_liquidation_share_percent"] == 94
-    assert "Do not average them" in d["reconciliation"]
-    assert "not a directional forecast" in d["reconciliation"]
+    assert "not averaged" in d["reconciliation"]
+    assert "not a price-direction forecast" in d["reconciliation"]
 
 
 def test_options_snapshot_keeps_near_and_deferred_expiry_skew_distinct():
     options = load_current()["current_market_snapshot"]["options"]
-    assert options["snapshot_time_utc"] == "2026-11-11T02:00:00Z"
-    assert options["atm_iv_30d_percent"] == 58.5
-    assert options["front_expiry_skew_points"] == -11.8
-    assert options["dec25_skew_points"] == 1.3
-    assert options["dec25_put_call_ratio"] == 0.55
+    assert options["snapshot_time_utc"] == "2026-11-11T05:00:00Z"
+    assert options["atm_iv_30d_percent"] == 59
+    assert options["skew_25d_30d_points"] == 0.3
+    assert options["expiry_skews_points"]["2026-11-11"] == -11
+    assert options["expiry_skews_points"]["2026-12-25"] == 0.9
+    assert options["put_call_ratio"] == 0.55
 
 
 def test_etf_flow_windows_and_holdings_limitations_are_separate():
-    etf = load_current()["current_market_snapshot"]["etf_flows"]
-    assert etf["through_session"] == "2026-11-10"
-    assert etf["daily_flow_nov10_usd"] == -7_600_000
-    assert etf["consecutive_daily_outflows"] == 2
-    assert etf["thirty_session_flow_usd"] == 1_300_000
-    assert etf["model_eligible"] is False
-    assert len(etf["provider_disagreement"]) >= 4
-    alpha = next(x for x in etf["provider_disagreement"] if x["provider"] == "Alpha Finance")
-    crypto = next(x for x in etf["provider_disagreement"] if x["provider"] == "CryptoKeyhole")
-    assert alpha["status"] == "complete_5_of_5_reported_funds"
-    assert crypto["status"] == "XRP_row_pending"
+    market = load_current()["current_market_snapshot"]
+    etf = market["etf_flows"]
+    alpha = etf["alpha_finance"]
+    crypto = etf["cryptokeyhole_previous_capture"]
+    assert alpha["through_session"] == "2026-11-10"
+    assert alpha["daily_flow_nov10_usd"] == -7_600_000
+    assert alpha["consecutive_daily_outflows"] == 2
+    assert alpha["thirty_session_flow_usd"] == 1_300_000
+    assert "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE" in market["point_in_time_eligibility"]
+    assert crypto["nov10_status"].startswith("partial")
     assert crypto["latest_complete_net_flow_xrp"] == -752_048
-    assert any("holdings changes do not prove exchange sales" in x for x in etf["limitations"])
+    assert "missing issuer data is unknown, not zero" in " ".join(crypto["limitations"]).lower()
+    assert "different fund universe" in etf["reconciliation"].lower()
 
 
 def test_cftc_contract_reconciliation_treats_dropped_contract_as_unknown():
@@ -340,7 +349,7 @@ def test_source_provenance_and_backlog_classification_are_explicit():
     assert any(item["source"] == "CryptoKeyhole ETF flows dashboard" for item in sources)
     assert any(item["source"] == "Tokyo SBIC official generative-AI training notice" for item in sources)
     backlog = data["backlog_classification"]
-    assert backlog["1661"] == "BLOCKED_ACTIVE_INTEGRATION_DRAFT"
+    assert backlog["1661"].startswith("BLOCKED_ACTIVE_INTEGRATION_DRAFT")
     assert "SUPERSEDED_SOURCE" in backlog["1660"]
     assert "UNIQUE_UNREVIEWED" in backlog["1653"]
     assert "UNIQUE_UNREVIEWED" in backlog["1614"]
