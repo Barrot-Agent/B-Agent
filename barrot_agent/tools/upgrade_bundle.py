@@ -102,7 +102,7 @@ class XRPTelemetryMatrix:
             r = requests.get("https://cryptonews.com/news/xrp-news/feed/",
                              timeout=6,
                              headers={"User-Agent": "BarrotOmega/2.0"})
-            titles = re.findall(r"<title><!\[CDATA\[(.*?)\]\]></title>",
+            titles = re.findall(r"<title><!\\[CDATA\\[(.*?)\\]\\]></title>",
                                 r.text)[:5]
             if not titles:
                 return 0.0, "No headlines found"
