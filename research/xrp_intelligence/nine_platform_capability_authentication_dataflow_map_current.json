@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T12:19:00Z",
-  "last_verified_at_utc": "2026-11-11T12:19:00Z",
+  "captured_at_utc": "2026-11-11T12:24:10Z",
+  "last_verified_at_utc": "2026-11-11T12:24:10Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+  "observed_integration_head_before_map_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,14 +13,14 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2016,
+    "ahead_by": 2017,
     "behind_by": 0,
-    "changed_files": 999,
+    "changed_files": 1000,
     "workflow_files": 44,
-    "other_changed_paths": 955,
-    "head_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+    "other_changed_paths": 956,
+    "head_sha": "7b027617057e951bd4851c998e0f0bb11ed979e3",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2016,
+    "commits": 2017,
     "additions": 236814,
     "deletions": 4363,
     "formal_approvals": 0,
@@ -28,7 +28,7 @@
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Open draft integration PR. Exact head 3e734 has 3,425 full-suite passes and two map-contract assertion failures; core tests passed. Dependency audit and fail-closed gates passed. Corrective map commit must rerun exact-head full suite. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
+    "note": "Open draft integration PR. Exact head 7b027 has 3,426 full-suite passes and one identity-research literal phrase assertion failure; core tests passed. Dependency audit and fail-closed gates passed. One map wording correction is required before the next exact-head full suite. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -362,18 +362,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+    "integration_head_before_current_map_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
     "integration_pr": 1661,
-    "integration_ahead_by": 2016,
+    "integration_ahead_by": 2017,
     "integration_behind_by": 0,
-    "changed_files": 999,
+    "changed_files": 1000,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 955,
+    "non_workflow_paths_changed": 956,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2264,
+    "integration_tree_entries": 2265,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -386,8 +386,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "HEAD_3E734_FULL_SUITE_FAILED_2_MAP_CONTRACT_ASSERTIONS; 3425 PASSED; 8 SUBTESTS; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
-    "last_reconciled_at_utc": "2026-11-11T12:19:00Z",
+    "latest_exact_head_ci": "HEAD_7B027_FULL_SUITE_FAILED_1_IDENTITY_PHRASE_ASSERTION; 3426 PASSED; 8 SUBTESTS; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
+    "last_reconciled_at_utc": "2026-11-11T12:24:10Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2153,
@@ -415,12 +415,13 @@
     ],
     "run24b_expected_changed_files_after_artifact": 1000,
     "run24b_expected_non_workflow_paths_after_artifact": 956,
-    "run24b_expected_integration_tree_entries": 2265
+    "run24b_expected_integration_tree_entries": 2265,
+    "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3"
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
-    "integration_pr_run": 43018685729,
-    "integration_full_suite_job": 130516115790,
+    "integration_pr_run": 43019446250,
+    "integration_full_suite_job": 130518665760,
     "dependency_audit_run": 43012397124,
     "dependency_audit_job": 130359654212,
     "fail_closed_gate_run": 43012397190,
@@ -446,13 +447,13 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 43018673790
+      "run_id": 43019446305
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 43018685710,
-      "push_run_id": 43018673778
+      "run_id": 43019446044,
+      "push_run_id": 43019437009
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -491,39 +492,38 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
-      "run_id": 43018685729,
-      "full_suite_job": 130516115790,
-      "core_suite_job": 130516115261,
+      "head_sha": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+      "run_id": 43019446250,
+      "full_suite_job": 130518665760,
+      "core_suite_job": 130518665304,
       "conclusion": "failure",
       "full_repository_suite": {
-        "passed": 3425,
-        "failed": 2,
+        "passed": 3426,
+        "failed": 1,
         "subtests": 8,
         "coverage_percent": 59.98,
         "exact_head_verified": true,
-        "duration_seconds": 78.26,
+        "duration_seconds": 91.87,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
       "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_latest_market_refresh_is_research_only_and_preserves_provider_disagreement"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
       ],
       "core_tests": "passed",
       "dependency_audit": {
         "passed": true,
-        "run_id": 43018673790,
+        "run_id": 43019446305,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
         "passed": true,
-        "run_id": 43018685710,
-        "push_run_id": 43018673778,
+        "run_id": 43019446044,
+        "push_run_id": 43019437009,
         "automatic_merge_enabled": false
       },
-      "failure_classification": "Exact-head full-suite failed two map-contract assertions: missing literal 'synchronized multi-venue historical' in production gaps and missing 'not averaged' in current/latest derivative-provider reconciliation. 3,425 passed; eight subtests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
+      "failure_classification": "Exact-head full-suite failed one identity-research phrase assertion: the actual-capital field needed the literal 'not a standardized XRP metric'. 3,426 passed; eight subtests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -598,7 +598,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 130516115261
+    "core_suite_job": 130518665304
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
@@ -1319,7 +1319,7 @@
       }
     },
     "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
-    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized metric; do not collapse these categories.",
+    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized XRP metric; do not collapse these categories.",
     "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor but contains no YouTube link and does not link a channel. Third-party directories list candidate @drkamilahstevenson; subscriber/video counts conflict materially (approximately 103K/633, 138K, and 143K/1.2K across providers). Other similarly named channels also appear. No first-party cross-link was found, and Camilla is not assumed to be the same person as Kamilah. Channel ownership and video attribution remain unverified. No personal-channel inventory is attributed.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
@@ -2395,9 +2395,9 @@
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Repair the two exact-head map wording assertions on the existing #1661 branch; rerun the complete repository suite on the resulting exact head.",
+    "Verify the exact identity-research phrase correction on the next full-suite run; do not merge until the complete suite passes on the exact current head.",
     "After the corrected code/map head passes, append the canonical Run24 handoff and BARROT_SYNC evidence, then verify the documentation head with exact CI.",
-    "Complete semantic review of the 955 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
+    "Complete semantic review of the 956 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
     "Resolve authoritative branch-protection and approval requirements, OAuth revocation evidence and the 17 affected PR branch-tip copies without reading credential contents or rewriting history.",
     "Resolve automatic GitHub Pages publication authorization before any merge.",
     "Keep XRP collector off main until authorized merge; then verify the first read-only main ingestion and raw-source receipt chain.",
@@ -2611,7 +2611,8 @@
       "sbic": "Official Tokyo SBIC June 12-13 2025 investee-only training included ChatGPT and Copilot; educational training, not an OpenAI partnership. Exact phrase 'SBIC, ChatGPT SBIC' still has no verified primary-source match.",
       "ask_coin": "Permission Coin ASK remains a separate Base/Polygon LayerZero OFT candidate; no XRPL/XRP relationship verified.",
       "youtube": "Multiple Kamilah-named YouTube candidates; no first-party cross-link to the identified person. No personal-channel video inventory attributed.",
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "actual_capital": "SEC Nov9 424B3 separates $272.6M gross cash at closing (about $224.6M private placements + $48M trust after redemptions), plus 388.910554M XRP in kind. $214.05M advance cash purchased 84.365876M XRP. SBI's $200M commitment is included in the advance pool, not additive. Separate $30M 4% PIK debt, $6.6M pre-close Ripple facility drawn as of Jun30, Cantor ELOC with zero proceeds as of Nov9, resale registration with no company proceeds and potential warrant exercise proceeds. 'Actual capital' is not a standardized XRP metric."
     }
   },
   "latest_market_refresh": {
@@ -3012,8 +3013,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run24b",
-  "latest_run_captured_at_utc": "2026-11-11T12:19:00Z",
+  "latest_run_id": "Run24c",
+  "latest_run_captured_at_utc": "2026-11-11T12:24:10Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4178,9 +4179,9 @@
     "integration_parent_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
     "current_pr": 1661,
     "exact_head_ci": {
-      "run_id": 43018685729,
-      "full_suite_passed": 3425,
-      "full_suite_failed": 2,
+      "run_id": 43019446250,
+      "full_suite_passed": 3426,
+      "full_suite_failed": 1,
       "core_passed": true,
       "dependency_audit_passed": true,
       "fail_closed_gate_passed": true
@@ -4193,6 +4194,20 @@
       "cash_purchased_xrp": 84365876,
       "sbi_cash_investment_usd": 200000000,
       "eloc_proceeds_as_of_nov9_usd": 0
+    },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "run24c_snapshot": {
+    "captured_at_utc": "2026-11-11T12:24:10Z",
+    "parent_sha": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "correction": "Added the exact literal 'not a standardized XRP metric' to the actual-capital identity record; no capital figures changed.",
+    "exact_head_ci": {
+      "run_id": 43019446250,
+      "full_suite_passed": 3426,
+      "full_suite_failed": 1,
+      "core_passed": true,
+      "dependency_audit_passed": true,
+      "fail_closed_gate_passed": true
     },
     "forecast_status": "NOT_ISSUED"
   }
