@@ -17,8 +17,8 @@
 ## Last State
 - GitHub main: 84f28ee Add BARROT_SYNC.md - shared state for Termux + GPT.
 - GitHub Orbit-removal commit: 64dc43b Ditch Orbit. The Termux-side reference 71cdd8b remains recorded above; its equivalence to the GitHub commit is not verified.
-- Last sync: 2026-11-11T02:30Z; test-harness fixes are committed at 67f1458. Scoped fake approvals and valid mocked open-PR inventory replace unintended live gh calls; no GH_TOKEN was added to CI.
-- Next task: Obtain a fresh exact-head full repository suite, dependency audit and fail-closed gate on PR #1661; keep XRP forecasts NOT_ISSUED.
+- Last sync: 2026-11-11T03:15Z; main `84f28ee`; active successor PR #1661 code head `c12ae0b`. Exact-head PR and push full suites both pass: 3,388 tests, 8 subtests, 59.89% coverage; six dependency manifests audited with zero known vulnerabilities; fail-closed gate passes. Test-only fixtures now grant explicit capabilities to disposable local repositories; production watchdog remains fail-closed. Main records OAuth REVOKED (not independently verifiable through this integration). This documentation commit will trigger fresh exact-head CI.
+- Next task: Complete semantic review of 926 non-workflow paths; resolve branch-protection/approval and Pages-publication authorization; safely recheck credential-exposure source branches; restore safe V3 parity; keep XRP forecasts NOT_ISSUED.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
