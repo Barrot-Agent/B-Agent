@@ -1,3 +1,74 @@
+# Run31 — current-head CI diagnosis, XRP market refresh and institutional reconciliation
+
+Captured: 2026-11-11T17:05:39Z
+
+## Mission
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+## Repository
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Existing [PR #1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`; parent head `3e6a3ca8794cb90c7cb9c2add42fa8e722716e5d`, 2,036 ahead/0 behind.
+- 1,014 changed files (44 workflows, 970 other paths); main tree 1,388 entries/1,288 blobs; integration 2,279 entries/2,170 blobs.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts). #1661 open/draft, zero formal reviews/approvals/threads.
+
+## Exact-head CI
+On `3e6a3ca8794cb90c7cb9c2add42fa8e722716e5d`:
+- Full suite **3,445 passed, 4 failed, eight subtests**, 59.99% coverage; 86.44 seconds.
+- Core suite 714 passed, zero failed.
+- Four failures are stale current-map assertions in `tests/test_xrp_nine_platform_current_map_run73.py` comparing live branch/PR/CI metadata with old 415e611/4e7a7 values. No product runtime, ingestion or prediction-engine failure was observed.
+- [Full CI 43061303949](https://github.com/Barrot-Agent/B-Agent/actions/runs/43061303949), [full-suite job 130664304843](https://github.com/Barrot-Agent/B-Agent/actions/runs/43061303949/job/130664304843).
+- [Dependency audit 43061303705](https://github.com/Barrot-Agent/B-Agent/actions/runs/43061303705): six manifests, zero known vulnerabilities, passed.
+- [Fail-closed PR gate 43061303654](https://github.com/Barrot-Agent/B-Agent/actions/runs/43061303654) and [push gate 43061294425](https://github.com/Barrot-Agent/B-Agent/actions/runs/43061294425): passed.
+- Wheel/installed mission step was skipped after the full-suite failure. Current-map correction committed in Run31; exact-head rerun pending.
+
+## XRP market — capture 2026-11-11T17:05:39Z
+All web observations are research-only; no byte-complete raw-source receipt or SHA-256 raw hash was created by Barrot.
+- OKX XRP-USDT event 16:45:33.874 UTC: last 1.0684, bid 1.0686/ask 1.0687; rolling 24h open 1.0456, high 1.0797, low 1.0395; volume 44.36M XRP.
+- Kraken XRP/USD at retrieval: last 1.06924, bid 1.06949/ask 1.06950; UTC-day open 1.05511, high 1.07824, low 1.04241; volume 22.27M XRP. No event timestamp.
+- Kraken USDT/USD midpoint 0.998925. Normalized OKX midpoint $1.06750 vs Kraken $1.069495, asynchronous gap -0.1864%. OKX event is about 20 minutes old; Kraken timestamps unavailable; both last trades below best bids. Not arbitrage.
+- Basis Binance XRPUSDT perpetual depth at 16:16: 1,000-level bids $43.1M/offers $33.0M; within 1% bids/asks both $15.2M. Fuelmaps six-venue spot depth at 08:00: within 1% $14.0M bids/$11.1M asks; within 5% $23.8M/$14.3M. Different market types and freshness; no averaging.
+- TradRadar 14:40: OI $1.57B (-2.83%), funding +0.0080%/8h, at least $9.29M liquidations (longs $8.35M), 79.7% long accounts. Liqwall 16:32: OI $1.17B (-2.0%), funding +0.0062%, $2.7M liquidations (longs $1.3M, shorts $1.5M), 75.2% Binance accounts long. Different universes/windows; later short-liquidation edge is counter-evidence to persistent long-liquidation claims.
+- Alpha Finance through Nov10: -$7.6M Nov10, -$10.4M Nov9, -$18.0M over seven sessions, +$1.3M over 30 sessions, +$1.71B cumulative net inflow. Five of five tracked funds; no Nov11 flow. Not current AUM.
+
+## Institutional network
+- Ripple/Coinbase (Oct28): RLUSD available on Prime, Exchange and Retail across XRPL/Base/Ethereum. Ripple reported >$2.4B market cap. Coinbase Global Exchange collateral support was future scope, not live.
+- Ripple/BNY (Oct27): BNY supports XRP/RLUSD custody and is primary RLUSD reserve custodian. Direct mint/redeem, broader XRPL tokenization and C2FO trade-finance work remain future/exploratory.
+- JPYSC (June24): SBI Shinsei Trust issuer, SBI VC Trade distributor, Startale technical partner. Initially restricted to SBI VC Trade accounts; external wallet transfers disabled. Public-chain circulation conditional on legal/tax practice; no XRP settlement established.
+- Open Standard (Oct16): SBI/Startale considering JPYSC/OUSD interoperability POC; 140+ company participation claim includes Coinbase, Visa, Stripe, Mastercard and BlackRock. Exploratory, not production.
+- SBI/SMBC (Oct30): SMBC agreed to 5% capital participation in SBI Startale Marketing, the SBI/Startale JPYSC marketing JV; amount undisclosed. Not XRP purchase/Ripple equity.
+
+## Identity and platform status
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings.
+- No primary-source exact match for “SBIC, ChatGPT SBIC” or a standardized XRP “actual capital” metric.
+- Permission ASK official contract docs list Base/Polygon; no XRPL integration verified. No first-party Kamilah/Camilla YouTube channel ownership; no videos attributed.
+- ChatGPT/GitHub API authentication works, but connector reports admin/maintain/push/pull/triage privileges. Copilot no formal PR approval. Claude/Grok/Gemini/Codex unverified; Hugging Face prior BUILD_ERROR; Kaggle untested; Databricks prior HTTP 403; LunaRoute declared but endpoint unverified. No external-model transfer.
+
+## Prediction and safety
+Integration contains 47 source definitions/45 scheduled (43 hourly, two weekly; two non-commercial XRPL-node sources excluded), read-only collector, SHA-256 receipt/hash-chain logic, point-in-time SQLite prototype, four baselines, chronological purge/embargo walk-forward, calibration/PSI drift and fail-closed Ed25519 evaluator-attestation contract.
+Outstanding: independent WORM/timestamp anchor, replayable history, synchronized spot/L2/derivatives/flow/collateral, macro/geopolitical vintages, scenario/counter-hypothesis generation, production evaluator key, independent shadow outcomes and demonstrated out-of-sample lift. No main ingestion run. Forecast **NOT_ISSUED**.
+
+## Security, backlog and merge
+- Branch-protection details HTTP 403; fallback ruleset disabled; connector overprivileged.
+- `.config/gh/hosts.yml` present in all 17 rechecked affected open-PR branch tips; contents not read; provider-side OAuth revocation unverified.
+- Main push automatically publishes Pages; explicit publication authorization absent.
+- Workflow count discrepancy: map fields 26 quarantined/18 active vs Run30 narrative 25/19. Re-audit all 44 changed workflow diffs.
+- #1660: 972 paths represented in #1661, 937 identical/35 different/zero absent; three commits behind current main and dirty. Retain until successor merge/verification.
+- Preserve unique work (#1653, #1614, #1611, #1610, #1612, #1608 and topology/research branches). No PR closed.
+
+**No merge.** Current exact-head suite failed four stale evidence-map assertions. Map correction committed; exact-head rerun required. Zero approvals, protection requirements unavailable, semantic review incomplete, credential and Pages blockers unresolved.
+
+## Run31 durable files
+- Current map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json`.
+- Append-only artifact: `research/xrp_intelligence/20261111T170539Z-run31-exact-head-ci-repair-live-market-and-institutional-reconciliation.json`.
+- Canonical handoff: `BARROT_XRP_MISSION_HANDOFF_LATEST.md`.
+- Shared sync: `BARROT_SYNC.md`.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+---
+
+# Historical handoff — Run29b and earlier
+
 # Run29b — CI evidence-test repair and XRPL governance update
 
 Captured: 2026-11-11T15:52:03.641Z

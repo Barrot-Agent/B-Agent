@@ -1,24 +1,19 @@
 ## Last State
 
-**Run30 — 2026-11-11T16:30:06Z**
+**Run31 — 2026-11-11T17:05:39Z**
 
-- Mission priority 1: XRP intelligence and prediction-engine mastery. Barrot V3 remains the execution, orchestration, safety and verification foundation.
-- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85. LunaRoute remains the repository-declared sole brain; Termux is the canonical local runtime; ChatGPT is a relay, not a LunaRoute runtime. Orbit remains removed.
-- Existing integration PR #1661, branch integration/xrp-v3-unified-main-20261111; tested code head 4e7a7e5fabd1d9cf6f974e4d84545cc01d013061, 2,035 ahead/0 behind, 1,013 changed files (44 workflows, 969 other paths), draft, zero approvals/reviews/threads. Run30 documentation commit requires its own exact-head CI.
-- Exact code head 4e7a7: full suite 3,449 passed, zero failed, eight subtests, 59.99% coverage; core 714 passed; wheel and installed Barrot V3/XRP mission verified; six-manifest dependency audit and fail-closed PR/push gates passed.
-- Open PR inventory: 374 (360 drafts, 14 non-drafts). #1660 972 paths all represented in #1661 (949 identical, 23 different); #1643 670 (661/9); #1642 7 (0/7); #1640 280 (244/36). Differing blobs require semantic reconciliation. Preserve unique work; no PR closed.
-- All 44 changed workflow diffs rechecked: 25 disabled/quarantined, 19 active. No manual workflow dispatch. XRP ingestion is integration-only, main-guarded, read-only; 47 definitions, 45 scheduled; no main run. GitHub Actions retention is not WORM.
-- Main branch protection detail HTTP 403; visible fallback ruleset disabled; GitHub connector admin=true/maintain=true/push=true/pull=true/triage=true, overprivileged. .config/gh/hosts.yml absent from main/#1661 but present in 17 affected open-PR tips; contents not read; OAuth revocation remains provider-unverified. Pages publication on main push is automatic and unauthorized.
-- Run30 corrected Run25b's inverted SEC entity labels: Evernorth Holdings Inc. parent has about $0.1M cash/$696.1M working-capital deficit; Pathfinder Digital Assets LLC subsidiary has about $0.8M cash/$3.7M deficit. Parent debt and subsidiary facility remain distinct.
-- Fresh XRP research: OKX 1.0726 at 16:15:22 UTC; Kraken $1.07555 without event time; normalized async spread -0.385%. Fuelmaps 15:00 depth stale by 75 minutes. TradRadar 15:55 shows OI rising and short liquidations slightly larger; Liqwall 14:52 shows OI falling and long-heavy liquidations. Do not average.
-- Circle Q3: USDC average circulation $73.3B, onchain volume $13.9T, $182M ARC presale revenue included in $207M other revenue, reserve income down 8%; Binance announced $100M Circle equity and expanded USDC partnership. Coinbase average USDC held $22B. SBI's $50M Circle equity and approximately 9% Ripple ownership are separate equity positions, not XRP purchases.
-- SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings. SBI Holdings' ChatGPT Enterprise adoption and Claude collaboration are distinct from SBIC investee training. Official Permission ASK contracts are Base/Polygon only; no XRPL integration verified.
-- Nine-platform status: only ChatGPT/GitHub authenticated, but overprivileged. Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks HTTP 403; LunaRoute endpoint unverified. No external-model transfer.
-- Prediction engine: 47 source definitions, 45 scheduled; read-only collector, SHA-256 receipts/hash-chain logic, point-in-time SQLite, four baselines, chronological purge/embargo walk-forward, calibration/PSI drift, fail-closed Ed25519 evaluator contract. WORM, replayable history, synchronized historical market/collateral data, scenario generation, production key, shadow outcomes and OOS lift remain unverified. Forecast NOT_ISSUED.
-- Main Cross Analysis run 43052515532 succeeded. Main Pillars Consistency Check run 43025487840 failed on missing GitHub App env, Databricks 403 and Hugging Face BUILD_ERROR; this is platform health, not main Python CI.
-- Next: exact-head CI on Run30 commit; semantic review of 969 non-workflow paths; resolve branch-protection/approval visibility, least privilege, 17 credential-path tips and Pages authorization; preserve unique PRs; no merge until every gate passes.
-
-No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+- Priority 1: XRP intelligence and prediction-engine mastery; Barrot V3 remains execution/orchestration/safety/verification foundation.
+- Main `84f28ee`; #1661 parent head `3e6a3ca8794cb90c7cb9c2add42fa8e722716e5d`, 2,036 ahead/0 behind, 1,014 files (44 workflows/970 other paths), 2,279 tree entries/2,170 blobs. Open PRs 374 (360 drafts/14 non-drafts).
+- Exact-head CI 43061303949: 3,445 passed/4 failed/eight subtests, 59.99%; core 714 passed. Four failures are stale current-map assertions only. Dependency audit 43061303705 and fail-closed gates 43061303654/43061294425 passed. Current-map correction committed; exact-head rerun pending.
+- All 17 affected open-PR tips rechecked for `.config/gh/hosts.yml`; all 17 contain the path. No contents read; provider-side revocation unverified.
+- OKX 1.0684 at 16:45:33.874 UTC; Kraken last $1.06924, bid/ask $1.06949/$1.06950, no event time; USDT/USD midpoint 0.998925; normalized asynchronous gap -0.1864%, not arbitrage.
+- Basis Binance perpetual book 16:16: within 1% $15.2M/$15.2M; Fuelmaps spot book 08:00: within 1% $14.0M/$11.1M. TradRadar 14:40 OI $1.57B (-2.83%); Liqwall 16:32 $1.17B (-2.0%); different universes, not averaged; later liquidation mix is counter-evidence.
+- Alpha ETF flows through Nov10: -$18M over seven sessions, +$1.3M over 30 sessions, +$1.71B cumulative net inflow; no Nov11 figure.
+- RLUSD Coinbase distribution/collateral future scope; BNY XRP/RLUSD custody with future mint/redeem and C2FO work exploratory. JPYSC initially SBI VC Trade-account-only; Open Standard JPYSC/OUSD POC exploratory; SMBC 5% stake in SBI Startale Marketing, not XRP.
+- SBIC East/Central/West distinct from SBI Holdings. Exact SBIC/ChatGPT and standardized “actual capital” unresolved. Permission ASK Base/Polygon only; no XRPL link. Kamilah/Camilla YouTube ownership unverified.
+- Prediction engine 47 definitions/45 scheduled; read-only collector, hash receipts, point-in-time SQLite, four baselines, walk-forward, calibration/drift, Ed25519 gate. WORM, replayable history, synchronized history, scenario engine, production key, shadow outcomes and OOS lift remain outstanding. Forecast NOT_ISSUED.
+- Workflow count discrepancy 26/18 vs 25/19; re-audit 44 diffs. Branch protection HTTP 403, fallback ruleset disabled, connector overprivileged, Pages auto-publish unauthorized. No merge/deployment/external action.
+- #1660 972 paths represented in #1661, 937 identical/35 different, three behind main; retain. Preserve unique research/prediction/safety/topology PRs.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
