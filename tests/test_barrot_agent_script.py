@@ -321,6 +321,7 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
 def test_create_pull_request_fails_closed_without_explicit_approval(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
     monkeypatch.setenv("TASK_TITLE", "Repair issue")
     for name in (
         "BARROT_EXTERNAL_ACTION_APPROVED",
@@ -349,6 +350,7 @@ def test_create_pull_request_fails_closed_without_explicit_approval(monkeypatch)
 
 def test_persist_scientific_discovery_fails_closed_without_repository_sync_approval(monkeypatch, tmp_path) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
     monkeypatch.setenv("TASK_TITLE", "Scientific discovery")
     monkeypatch.setenv("BRANCH", "barrot/research-test")
     for name in (
@@ -362,7 +364,12 @@ def test_persist_scientific_discovery_fails_closed_without_repository_sync_appro
     ):
         monkeypatch.delenv(name, raising=False)
     module = load_script_module("barrot_scientific_discovery_gate_test")
-    monkeypatch.setattr(module, "write_collaboration_record", lambda payload: tmp_path / "latest.json")
+    module.ROOT = tmp_path
+    monkeypatch.setattr(
+        module,
+        "write_collaboration_record",
+        lambda payload: tmp_path / ".barrot" / "collaboration_records" / "latest.json",
+    )
 
     class EmptyInventory:
         returncode = 0
