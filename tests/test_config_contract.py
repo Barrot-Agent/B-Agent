@@ -10,6 +10,7 @@ stdlib-only so it runs under unittest (transmute loop) and pytest alike.
 import os
 import tempfile
 import unittest
+from pathlib import Path
 from unittest import mock
 
 from barrot_agent.config import (
@@ -21,10 +22,25 @@ from barrot_agent.config import (
     get_config,
 )
 
+# Env keys the config layer legitimately reads — must be absent for
+# default-value assertions regardless of what the host device exports.
+_CONFIG_ENV_KEYS = [
+    "APP_NAME", "APP_VERSION", "HOST", "PORT", "DEBUG", "ENVIRONMENT",
+    "LOG_LEVEL", "LOG_FILE", "LOG_JSON", "HF_TOKEN", "HF_CACHE_DIR",
+    "GITHUB_TOKEN", "GITHUB_DEFAULT_OWNER", "GITHUB_DEFAULT_REPO",
+    "GPT_API_HOST", "GPT_API_PORT",
+    "MODEL_ID", "MODEL_REVISION", "TENSOR_TYPE", "MAX_NEW_TOKENS",
+    "TEMPERATURE", "DEVICE", "LOAD_IN_8BIT", "LOAD_IN_4BIT",
+    "TRUST_REMOTE_CODE", "MODEL__TEMPERATURE",
+]
+
 
 class TestDefaults(unittest.TestCase):
     def test_model_defaults(self):
-        c = ModelConfig()
+        with mock.patch.dict(os.environ, {}, clear=False):
+            for k in _CONFIG_ENV_KEYS:
+                os.environ.pop(k, None)
+            c = ModelConfig()
         self.assertEqual(c.model_id, "ibm-granite/granite-4.0-3b-vision")
         self.assertEqual(c.model_revision, "main")
         self.assertEqual(c.tensor_type, "bf16")
@@ -35,7 +51,10 @@ class TestDefaults(unittest.TestCase):
         self.assertIs(c.trust_remote_code, True)
 
     def test_app_defaults(self):
-        c = AppConfig()
+        with mock.patch.dict(os.environ, {}, clear=False):
+            for k in _CONFIG_ENV_KEYS:
+                os.environ.pop(k, None)
+            c = AppConfig()
         self.assertIs(c.environment, Environment.DEVELOPMENT)
         self.assertIs(c.debug, False)
         self.assertEqual(c.app_name, "B-Agent")
@@ -50,7 +69,10 @@ class TestDefaults(unittest.TestCase):
         self.assertIs(c.log_json, False)
 
     def test_nested_defaults(self):
-        c = AppConfig()
+        with mock.patch.dict(os.environ, {}, clear=False):
+            for k in _CONFIG_ENV_KEYS:
+                os.environ.pop(k, None)
+            c = AppConfig()
         self.assertEqual(c.model.model_id, "ibm-granite/granite-4.0-3b-vision")
         self.assertIs(c.kimi.enabled, False)
         self.assertEqual(c.kimi.api_base, "https://api.moonshot.cn/v1")

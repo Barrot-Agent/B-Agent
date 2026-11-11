@@ -4,7 +4,6 @@ Runnable under pytest or plain unittest (stdlib only in the script itself).
 """
 
 import json
-import os
 import subprocess
 import sys
 import tempfile
@@ -62,21 +61,46 @@ class TestTransmute(unittest.TestCase):
         slow = transmute.score(rate=1.0, wall_ms=20, lines=5)
         self.assertGreater(fast, slow)
 
+    def _fake_evaluate_factory(self, base_wall: int, variant_wall: int):
+        """Deterministic evaluate() stand-in: metrics keyed off file content."""
+        import transmute
+
+        def fake_evaluate(target, cwd, runner, test_paths, repeats=1):
+            src = target.read_text()
+            if "def add(a, b)\n" in src:  # broken variant: no colon
+                return {"compile_ok": False, "compile_ms": 1,
+                        "lines": len(src.splitlines()), "tests": None,
+                        "tail": "SyntaxError", "score": None}
+            is_variant = "# fast path" in src
+            wall = variant_wall if is_variant else base_wall
+            lines = len(src.splitlines())
+            rate = 1.0
+            tests = {"ok": True, "rate": rate, "passed": 1, "total": 1,
+                     "wall_ms": wall, "cmd": "fake", "tail": "OK"}
+            return {"compile_ok": True, "compile_ms": 1, "lines": lines,
+                    "tests": tests, "tail": "",
+                    "score": transmute.score(rate, wall, lines)}
+        return fake_evaluate
+
     def test_variant_wins_and_log_written(self):
         sys.path.insert(0, str(REPO_ROOT / "scripts"))
         import transmute
+        from unittest import mock
 
         log = self.tmp / "log.json"
-        report = transmute.transmute(
-            target=self.tmp / "target_mod.py",
-            variants=[self.tmp / "variant_fast.py", self.tmp / "variant_broken.py"],
-            tests=[self.tmp / "test_target_mod.py"],
-            runner="unittest",
-            log_path=log,
-            keep_losers=True,
-            interactive=False,
-            repeats=3,
-        )
+        # Decisive 400-point gap (> TIE_EPS): variant genuinely faster.
+        fake = self._fake_evaluate_factory(base_wall=500, variant_wall=100)
+        with mock.patch.object(transmute, "evaluate", fake):
+            report = transmute.transmute(
+                target=self.tmp / "target_mod.py",
+                variants=[self.tmp / "variant_fast.py", self.tmp / "variant_broken.py"],
+                tests=[self.tmp / "test_target_mod.py"],
+                runner="unittest",
+                log_path=log,
+                keep_losers=True,
+                interactive=False,
+                repeats=1,
+            )
         # Winner applied to the target file.
         self.assertEqual(
             (self.tmp / "target_mod.py").read_text(), GOOD_FASTER
@@ -86,6 +110,27 @@ class TestTransmute(unittest.TestCase):
         runs = json.loads(log.read_text())
         self.assertEqual(runs[-1]["winner"], "variant_fast.py")
         self.assertIn("baseline", [c["name"] for c in runs[-1]["candidates"]])
+
+    def test_tie_band_favors_variant(self):
+        sys.path.insert(0, str(REPO_ROOT / "scripts"))
+        import transmute
+        from unittest import mock
+
+        # 50-point gap (<= TIE_EPS): rule 1 says the variant takes it.
+        fake = self._fake_evaluate_factory(base_wall=100, variant_wall=150)
+        with mock.patch.object(transmute, "evaluate", fake):
+            report = transmute.transmute(
+                target=self.tmp / "target_mod.py",
+                variants=[self.tmp / "variant_fast.py"],
+                tests=[self.tmp / "test_target_mod.py"],
+                runner="unittest",
+                log_path=self.tmp / "log2.json",
+                keep_losers=True,
+                interactive=False,
+                repeats=1,
+            )
+        self.assertEqual(report["winner"], "variant_fast.py")
+        self.assertEqual((self.tmp / "target_mod.py").read_text(), GOOD_FASTER)
 
     def test_broken_variant_never_replaces_target(self):
         sys.path.insert(0, str(REPO_ROOT / "scripts"))

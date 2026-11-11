@@ -67,5 +67,115 @@
       "variant_faster.py",
       "variant_robust.py"
     ]
+  },
+  {
+    "timestamp": "20261111_232742",
+    "target": "/data/data/com.termux/files/home/barrot/Barrot-Agent/barrot_agent/config.py",
+    "cwd": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_config_contract.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 600,
+        "lines": 137,
+        "test_ok": false,
+        "test_rate": 0.0,
+        "test_passed": 0,
+        "test_total": 0,
+        "test_wall_ms": 8792,
+        "score": -8929.0,
+        "tail": "ImportError while loading conftest '/data/data/com.termux/files/home/barrot/Barrot-Agent/tests/conftest.py'.\ntests/conftest.py:7: in <module>\n    from barrot_agent.config import AppConfig, Environment, ModelConfig\nbarrot_agent/config.py:10: in <module>\n    from pydantic import Field\nE   ModuleNotFoundError: No module named 'pydantic'\n"
+      },
+      {
+        "name": "variant_stdlib.py",
+        "compile_ok": true,
+        "compile_ms": 568,
+        "lines": 236,
+        "test_ok": false,
+        "test_rate": 0.8125,
+        "test_passed": 13,
+        "test_total": 16,
+        "test_wall_ms": 9293,
+        "score": 802971.0,
+        "tail": "contract.TestEnvironmentSources testMethod=test_env_var_beats_dotenv>\n\n    def test_env_var_beats_dotenv(self):\n        old_cwd = os.getcwd()\n        try:\n            with tempfile.TemporaryDirectory() as tmp:\n                os.chdir(tmp)\n>               Path(\".env\").write_text(\"APP_NAME=FromDotEnv\\n\")\n                ^^^^\nE               NameError: name 'Path' is not defined\n\ntests/test_config_contract.py:143: NameError\n=========================== short test summary info ============================\nFAILED tests/test_config_contract.py::TestDefaults::test_app_defaults - Asser...\nFAILED tests/test_config_contract.py::TestEnvironmentSources::test_dotenv_used_when_env_absent\nFAILED tests/test_config_contract.py::TestEnvironmentSources::test_env_var_beats_dotenv\n3 failed, 13 passed in 4.66s\n"
+      },
+      {
+        "name": "variant_dual.py",
+        "compile_ok": true,
+        "compile_ms": 610,
+        "lines": 297,
+        "test_ok": false,
+        "test_rate": 0.8125,
+        "test_passed": 13,
+        "test_total": 16,
+        "test_wall_ms": 9184,
+        "score": 803019.0,
+        "tail": "contract.TestEnvironmentSources testMethod=test_env_var_beats_dotenv>\n\n    def test_env_var_beats_dotenv(self):\n        old_cwd = os.getcwd()\n        try:\n            with tempfile.TemporaryDirectory() as tmp:\n                os.chdir(tmp)\n>               Path(\".env\").write_text(\"APP_NAME=FromDotEnv\\n\")\n                ^^^^\nE               NameError: name 'Path' is not defined\n\ntests/test_config_contract.py:143: NameError\n=========================== short test summary info ============================\nFAILED tests/test_config_contract.py::TestDefaults::test_app_defaults - Asser...\nFAILED tests/test_config_contract.py::TestEnvironmentSources::test_dotenv_used_when_env_absent\nFAILED tests/test_config_contract.py::TestEnvironmentSources::test_env_var_beats_dotenv\n3 failed, 13 passed in 4.69s\n"
+      }
+    ],
+    "winner": "variant_dual.py",
+    "applied": true,
+    "losers_deleted": [
+      "variant_stdlib.py"
+    ]
+  },
+  {
+    "timestamp": "20261111_233035",
+    "target": "/data/data/com.termux/files/home/barrot/Barrot-Agent/barrot_agent/config.py",
+    "cwd": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_config_contract.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 593,
+        "lines": 297,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 16,
+        "test_total": 16,
+        "test_wall_ms": 5567,
+        "score": 994136.0,
+        "tail": "................                                                         [100%]\n16 passed in 0.82s\n"
+      },
+      {
+        "name": "variant_stdlib.py",
+        "compile_ok": true,
+        "compile_ms": 588,
+        "lines": 236,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 16,
+        "test_total": 16,
+        "test_wall_ms": 4188,
+        "score": 995576.0,
+        "tail": "................                                                         [100%]\n16 passed in 0.40s\n"
+      },
+      {
+        "name": "variant_dual.py",
+        "compile_ok": true,
+        "compile_ms": 576,
+        "lines": 297,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 16,
+        "test_total": 16,
+        "test_wall_ms": 5994,
+        "score": 993709.0,
+        "tail": "................                                                         [100%]\n16 passed in 1.25s\n"
+      }
+    ],
+    "winner": "variant_stdlib.py",
+    "applied": true,
+    "losers_deleted": [
+      "variant_dual.py"
+    ]
   }
 ]
