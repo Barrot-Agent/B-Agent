@@ -1,45 +1,22 @@
-# BARROT SYNC - Single Source of Truth
-# This file is the shared brain-state between Termux Barrot (LunaRoute) and GPT Barrot.
-# BOTH must read this before answering. BOTH must update this after any change.
-
-## Identity
-- Brain: LunaRoute ONLY - https://gw.lunaroute.com/v1 - lunaroute/glm-5.3-flash
-- Canonical Barrot: Termux ~/barrot/Barrot-Agent via b_agent.py
-- Relay Barrot: GPT Project (ChatGPT) - NEVER claims to be LunaRoute brain
-- Repo: github.com/Barrot-Agent/B-Agent, branch main
-
-## Hard Rules
-- Do NOT re-add Orbit. Commit 71cdd8b. ORBIT_REMOVED.md exists.
-- Do NOT touch Orbitron font in hf_space/app.py
-- Do NOT use password auth. GH_TOKEN via x-access-token only.
-- Do NOT re-commit .config/gh/hosts.yml. OAuth revocation is repository-reported; provider-side revocation remains unverified.
-
 ## Last State
 
-**Run 17 — 2026-11-11T08:35:40Z**
+**Run 20 — 2026-11-11T09:59:17Z**
 
 - Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
-- Integration branch: `integration/xrp-v3-unified-main-20261111`; code parent audited at `5da539d6362b2535e02809d7f3b1c3acfa9eff19`.
-- PR #1661: open/draft, 1,999 commits ahead, zero behind, 989 changed files, 44 workflow files, 945 other paths.
-- Main full suite: 718 passed, zero failures, eight subtests; run 42944864014.
-- Integration code-parent full suite: 3,407 passed, zero failures, eight subtests; 59.98% coverage against 53% floor; run 42984729911. Dependency audit 42984729949 and fail-closed gate 42984729972 passed.
-- This handoff commit changes documentation/evidence only; exact-head CI must be verified after commit.
-- Main protected=true, but detailed branch-protection access returns HTTP 403; visible fallback ruleset disabled. PR #1661 has zero formal approvals and zero review threads and remains draft.
-- `.config/gh/hosts.yml` absent from main/integration but present on 17 other open PR tips. Contents not read. Repository sync reports OAuth revoked; provider-side revocation unverified.
-- Main still publishes October 29 stale signal (score 44, confidence 0, news 88, 11 headlines) and legacy $9.99 XRP Signal Service. Integration is `NOT_ISSUED`, XRP checkout paused. Main push automatically triggers Pages; publication authorization absent.
-- Latest spot: OKX 1.0608 USDT at 08:21:18.976 UTC; Kraken 1.0572 USD at retrieval. Spot depth 02:00 UTC; TrackWhale flows 01:30 UTC; TradRadar derivatives 07:25 UTC; ETF data through Nov 10.
-- New evidence: Coinbase National Trust effective Nov 6; Ripple National Trust Oct 26; Circle First National Digital Currency Bank July 24. EBA USDC significant-EMT oversight starts Nov 12. CFTC collateral guidance does not establish XRP acceptance by a named FCM/DCO.
-- Circle Q3 SEC filing: average USDC $73.264B, $13.9T on-chain volume, $657.6M reserve income; $181.8M ARC presale revenue is separate from USDC reserve income. Coinbase reported $22B average USDC held.
-- Japan SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional companies, not SBI Holdings. SBI Holdings/SBI Securities separately announced ChatGPT Enterprise.
-- Forecast: `NOT_ISSUED`. 46 source definitions, read-only collector, SHA-256 receipts, SQLite feature-store prototype, four baselines, walk-forward tests, calibration/drift diagnostics and fail-closed Ed25519 ledger exist on integration. Independent WORM/timestamp anchoring, replay, macro timeline, scenario generation and main ingestion remain incomplete.
-- Nine platforms: ChatGPT GitHub integration access verified; Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face prior build error/no deployment; Kaggle untested; Databricks previous HTTP 403/no write. LunaRoute endpoint auth/data flow unverified. No external-model transfer.
-- Current concise handoff: `BARROT_XRP_MISSION_HANDOFF_LATEST.md`.
-- Structured evidence: `research/xrp_intelligence/20261111T083540Z-run17-integrated-repository-market-institutional-and-prediction-audit.json`.
-- Current nine-platform map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json`.
-- Backlog: #1661 blocked; #1660 superseded candidate; #1640/#1642/#1643/#1644–#1650/#1317/#1318/#1320/#1254/#1255 overlap candidates; #1653/#1614/#1611/#1610/#1612/#1269 unique work preserved.
-- No PR merged/closed; no deployment, secret action, external transfer, paper trade, funds transfer or destructive Git action performed.
-
-**Next action:** complete exact-head CI for this documentation/evidence commit, then finish the 945-path semantic review and resolve approval, security and Pages-publication blockers before any merge.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`; parent head `0529030acf0df84e68d7626564b3d206dd95946b`; 2,006 commits ahead, zero behind.
+- PR #1661: open/draft/mergeable; 994 changed files (44 workflows, 950 other paths); zero formal reviews, approvals or review threads. No merge.
+- Complete trees: main 1,388 entries; integration 2,258 entries. GitHub API access verified; local clone remains blocked by DNS resolution for github.com.
+- Integration exact-head full suite: 3,417 passed, zero failed, eight subtests, 59.98% coverage (barrot_agent-only scope; 53% floor). Dependency audit across six manifests and fail-closed gates passed. Main full suite 718 passed; main Cross Analysis succeeded at 09:51 UTC; Pages deployment succeeded earlier at 02:17 UTC.
+- Market capture at 09:59 UTC: OKX 1.0593 USDT; Kraken 1.05372 USD; normalized mid difference ~0.312%, asynchronous. Latest Fuelmaps depth is 02:00 UTC and nearly eight hours old. TradRadar 09:05 UTC OI $1.56B (-4.2%), funding +0.0064%/8h, long liquidations $14.89M; Liqwall differs by venue scope. ETF provider data remains partial/disagreeing.
+- Evernorth SEC 424B3 (Nov 9): $272.6M gross closing cash, 388.910554M XRP in-kind, ~473M XRP held Oct 9; $30M PIK notes issued Oct12, $9.7M Ripple facility drawn Oct7, Cantor ELOC proceeds $0 as of filing, resale registration 73.688162M shares with no issuer proceeds from resales. Do not double-count private-placement XRP references.
+- SBI Circle: 50/50 JV and $50M Circle equity investment ($25M each SBI Holdings/SBI Shinsei); SBI Ripple Asia official profile shows 60% SBI-group voting; RLUSD distribution and JPYSC remain distinct from XRP demand. EBA USDC significant-EMT supervision begins Nov12.
+- Japan SBIC resolved by primary law: Tokyo/East, Nagoya/Central, Osaka/West are three separate regional companies, not SBI Holdings. ASK Permission Coin candidate has no verified XRPL link. Exact “actual capital”/“SBIC, ChatGPT SBIC” remain unresolved as entities. Kamilah/Camilla YouTube identity not verified; no videos attributed.
+- Forecast `NOT_ISSUED`; web observations not captured by Barrot receipts and remain model-ineligible.
+- Nine-platform status unchanged: ChatGPT current GitHub connector verified only on #1661; Claude/Grok/Gemini/Codex unverified; Copilot one-off review only; HF build error; Kaggle untested; Databricks prior 403; LunaRoute endpoint auth unverified. No external model transfer.
+- Security: main branch-protection API 403; visible fallback ruleset disabled; alert settings inaccessible; .config/gh/hosts.yml absent main/#1661 but last verified on 17 other open PR tips; provider-side OAuth revocation unverified.
+- Backlog: #1661 sole consolidated integration path; #1660 superseded candidate retained; #1653/#1614/#1612/#1611/#1610/#1269 unique work preserved; other overlap candidates remain open pending verified successor merge.
+- Next: exact-head CI on Run20 docs commit; finish 950-path semantic review; resolve credential/branch protection/approval/Pages blockers; preserve unique PRs; verify first main-only ingestion only after authorized merge.
+- No merge, deployment, secret action, external transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
@@ -77,3 +54,6 @@
 
 
 - 2026-11-11T09:40:12Z — Run19 final verification: exact code head f8a178eb5f3babb77ba97c1e77989367e9b6904c passed 3,417 full-suite tests, zero failures, eight subtests, 59.98% coverage, 93.60s; 714 core tests; wheel and installed mission verification; six-manifest dependency audit with zero known vulnerabilities; fail-closed PR/push gates. New public-tool contract test passed. Paginated PR-files API corrected diff count to 994 (44 workflows, 950 other paths). #1661 remains draft/unmerged; no external actions.
+
+
+- 2026-11-11T09:59:17Z — Run20 completed exact current-main/integration inspection, verified 3,417-test exact-head suite and six-manifest audit, refreshed XRP spot/depth/derivatives/options/ETF data, reconciled Evernorth SEC actual capital and SBI/Circle/Ripple/USDC/JPYSC relationships, resolved the three regional SBIC companies from primary law, and updated the canonical handoff/map. No merge or external action.
