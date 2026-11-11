@@ -47,7 +47,6 @@ jobs:
       - name: Generate research topics
         run: python scripts/research_topics.py
         env:
-      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - name: Preserve topic log as an artifact
         uses: actions/upload-artifact@v7
