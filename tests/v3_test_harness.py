@@ -123,7 +123,11 @@ def repair_payload(
     return json.dumps(payload)
 
 
-def make_controller(workspace: Path, brain: FakeBrain) -> RepositoryRepairController:
+def make_controller(
+    workspace: Path,
+    brain: FakeBrain,
+    **controller_options: Any,
+) -> RepositoryRepairController:
     # Test fixtures use disposable local repositories and, when configured,
     # a local bare origin. Grant EXTERNAL_ACTION explicitly so lifecycle tests
     # can reach patch validation and local push verification. Production
@@ -140,11 +144,12 @@ def make_controller(workspace: Path, brain: FakeBrain) -> RepositoryRepairContro
             Capability.EXTERNAL_ACTION,
         },
     )
+    controller_options.setdefault("planner_attempts", 3)
+    controller_options.setdefault("watchdog", watchdog)
     return RepositoryRepairController(
         brain=brain,
         workspace=workspace,
-        planner_attempts=3,
-        watchdog=watchdog,
+        **controller_options,
     )
 
 

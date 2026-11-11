@@ -26,6 +26,7 @@ from barrot_agent.research import (
 )
 from tests.v3_test_harness import (
     FakeBrain,
+    make_controller,
     defect_command,
     failure_command,
     git,
@@ -402,7 +403,7 @@ def _case_resolution_failure(tmp_path: Path) -> dict[str, object]:
 
 def _case_commit_failure(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
-    controller = RepositoryRepairController(brain=FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])), workspace=workspace, planner_attempts=3)
+    controller = make_controller(workspace, FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])))
     controller.git_gateway.commit = lambda message, expected_paths: (_ for _ in ()).throw(RepairError("git commit failed"))
     cycle = controller.run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
     assert cycle.status == "failed"
@@ -412,7 +413,7 @@ def _case_commit_failure(tmp_path: Path) -> dict[str, object]:
 
 def _case_remote_verification_failure(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path, origin=True)
-    controller = RepositoryRepairController(brain=FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])), workspace=workspace, planner_attempts=3)
+    controller = make_controller(workspace, FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])))
     controller.git_gateway.remote_head = lambda remote, branch: CommandEvidence(command={}, success=True, returncode=0, stdout="deadbeef", stderr="")
     cycle = controller.run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
     assert cycle.status == "failed"
@@ -504,8 +505,8 @@ def _case_interruption_resume(tmp_path: Path) -> dict[str, object]:
 def _case_retry_exhaustion(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
     payload = repair_payload(path, validation_commands=[failure_command()], resolution_commands=[success_command()])
-    first = RepositoryRepairController(brain=FakeBrain(payload), workspace=workspace, planner_attempts=3, max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
-    second = RepositoryRepairController(brain=FakeBrain(payload), workspace=workspace, planner_attempts=3, max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
+    first = make_controller(workspace, FakeBrain(payload), max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
+    second = make_controller(workspace, FakeBrain(payload), max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
     assert first.status == "rolled_back"
     assert second.status == "blocked"
     return {"first": first.status, "second": second.status, "failure": second.failure.code if second.failure else ""}
