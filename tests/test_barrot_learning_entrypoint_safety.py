@@ -25,6 +25,7 @@ def test_learning_daemon_requires_external_and_local_opt_in_and_never_publishes(
     assert "SEND BARROT LEARNING CONTEXT TO GITHUB MODELS OR GROQ" in source
     assert "START BARROT LEARNING ON CLEAN FEATURE BRANCH" in source
     assert "assert_clean_feature_worktree" in source
+    assert "from barrot_agent.orchestration.autonomous_actions import BarrotActionLoop" in source
     assert "ValidatedPublisher" not in source
     assert ".publish(" not in source
     assert "DISABLED_BY_PRIMARY_MISSION_GUARDRAIL" in source

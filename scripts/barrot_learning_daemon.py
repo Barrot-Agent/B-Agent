@@ -13,7 +13,7 @@ import time
 from datetime import datetime, timezone
 
 from barrot_agent.barrot_brain import BarrotBrain
-from barrot_agent.orchestration import BarrotActionLoop
+from barrot_agent.orchestration.autonomous_actions import BarrotActionLoop
 from barrot_agent.orchestration.repository_repair_loop import assert_clean_feature_worktree
 
 
