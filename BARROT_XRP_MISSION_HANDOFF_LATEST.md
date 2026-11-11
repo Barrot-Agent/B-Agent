@@ -7551,3 +7551,133 @@ ChatGPT's current-session GitHub connector is verified. LunaRoute is declared in
 Keep #1661 draft and unmerged. Despite exact-head tests, dependency audit and fail-closed gate passing, 933 non-workflow paths remain semantically unreviewed, formal approvals are absent, detailed branch-protection requirements remain inaccessible, the credential-history remediation is not independently verified, and automatic Pages publication authorization remains unresolved. Retain #1660 until #1661 is merged and its contents verified on main. Do not close unique PRs.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+
+---
+
+## Run 12H — current-main reconciliation, exact-head test repair and XRP ecosystem update
+
+**Capture:** 2026-11-11, approximately 04:40 UTC.  
+**Main:** `84f28ee7755607236231545a14f3d093c1baaa85`.  
+**#1661 code/test head before this handoff update:** `e97f14faf70d5db7426f281218e965d53e7eb765`.
+
+### Repository and integration state
+
+- Current main and full recursive tree were fetched through the GitHub API: 1,388 entries, untruncated.
+- Current successor branch and full recursive tree were fetched: 2,247 entries, untruncated.
+- Main is the exact first-parent base of #1661: 1,983 commits ahead, zero behind. PR #1661 is draft, open, GitHub-reported mergeable, with 978 changed files (44 workflow files + 934 other paths), 236,291 additions and 3,935 deletions.
+- PR #1660 is now the stale source integration: draft, unmergeable, based on `afb3024f`, 1,963 commits ahead and three behind current main. Preserve it unchanged until #1661 is merged and verified; do not close it early.
+- Open PR inventory: 374 total, 360 drafts, 14 non-drafts. #1661 has zero formal review submissions and zero review threads.
+- The active branch contains `data/missions/primary_mission.json` and `.github/workflows/xrp-public-ingestion.yml`; main contains neither. The mission and scheduled collector are therefore still integration-only.
+- The current main and #1661 trees do not contain `.config/gh/hosts.yml`. The allowed `.barrot/orbit/command_schema.json` and `ORBIT_REMOVED.md` remain; no `.agents/skills/orbit` or `.barrot/orbit/tools.json` path is present. `hf_space/app.py` was not changed by the successor.
+- A local `git ls-remote` attempt again failed DNS resolution for `github.com`. Repository metadata, recursive trees, source files, PRs and CI were inspected through the authenticated GitHub API instead. No local clone or local worktree is claimed.
+
+### Exact-head test failure and repair
+
+- The prior head `16715e6107955c49ef3b53861a99a5749357705e` had one full-suite failure: `tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved`. The test lowercased its combined text and then searched for an uppercase phrase, making the assertion case-sensitive and inconsistent with its own normalization.
+- Corrected only that assertion on the existing #1661 branch to search for the lowercase phrase. Commit: `e97f14faf70d5db7426f281218e965d53e7eb765`.
+- No production application code, main-branch file, workflow, secret or external service was changed by this repair.
+- Exact-head PR CI [42960200400](https://github.com/Barrot-Agent/B-Agent/actions/runs/42960200400): core tests passed; full repository suite still in progress at capture. The full-suite job had not reported a final result.
+- Exact-head dependency audit [42960200717](https://github.com/Barrot-Agent/B-Agent/actions/runs/42960200717) passed; fail-closed PR gate [42960200349](https://github.com/Barrot-Agent/B-Agent/actions/runs/42960200349) passed.
+- Push dependency audit [42960193482](https://github.com/Barrot-Agent/B-Agent/actions/runs/42960193482) passed; push fail-closed gate [42960193466](https://github.com/Barrot-Agent/B-Agent/actions/runs/42960193466) passed.
+- **Do not claim an exact-head full-suite pass for `e97f14f` until run 42960200400 completes.** Previous 3,397-test passes on `92f074e` apply only to that older head.
+- Current `.github/workflows/ci.yml` runs the full `pytest tests -v` suite with inclusive package coverage (minimum 53%), builds the wheel, verifies the packaged primary mission, installs it and checks Barrot V3/resource loading. The full suite runs on pull requests and main pushes; integration-branch pushes no longer trigger duplicate full-suite runs.
+- The XRP scheduled workflow is read-only (`contents: read`, `actions: read`), hourly at minute 3 and daily at 00:15 UTC. Its job has an explicit main-ref guard. It cannot provide production evidence while the workflow remains integration-only. No main-branch ingestion run has been verified.
+
+### Current XRP market snapshot
+
+**Spot retrieval, 2026-11-11:**
+- OKX XRP-USDT provider event time 04:07:19.369 UTC: last 1.0588 USDT; bid 1.0586; ask 1.0587; 24-hour open 1.0920, high 1.1063, low 1.0311; 24-hour volume 73.389M XRP; return from the provider's rolling 24-hour open approximately -3.04%.
+- Kraken XRP/USD retrieval: last $1.05815; bid $1.05811; ask $1.05818; 24-hour volume 35.996M XRP. Kraken's `o` field is the UTC-day open ($1.05511), not the rolling 24-hour open.
+- Kraken USDT/USD midpoint approximately 0.998665. Mechanically normalizing OKX's last gives approximately $1.05739, about 0.072% below Kraken's last. Observations are asynchronous and are not an executable arbitrage signal.
+- Sources: [OKX public ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP/USD ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [Kraken USDT/USD ticker](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+**Spot depth, Fuelmaps 04:00 UTC hourly snapshot:**
+- XRP mid $1.0570 across six venues.
+- Within ±0.5%: bids $8.3M / asks $6.6M.
+- Within ±1%: bids $14.2M / asks $12.2M.
+- Within ±2%: bids $18.7M / asks $13.3M.
+- Within ±5%: bids $23.6M / asks $15.4M.
+- Within ±10%: bids $34.0M / asks $17.0M, five of six venues.
+- Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini are included; Binance and Bitget are excluded. The hourly snapshot is a resting-book average; orders can be cancelled. It is not guaranteed support or executed volume. [Fuelmaps order-book methodology and snapshot](https://fuelmaps.io/order-book/).
+
+**Derivatives, different provider universes and capture times:**
+- Liqwall at 04:22 UTC: XRP approximately $1.06; aggregate OI $1.16B, -1.3% over 24 hours; average funding +0.0092% per eight hours; $18.3M liquidations, $17.2M longs and $1.1M shorts; 74.7% of Binance XRP accounts long (2.96 ratio).
+- TradRadar at 03:25 UTC: mark $1.062, -2.74% over 24 hours; OI $1.58B across seven exchanges, -4.02%; funding +0.0094% per eight hours; at least $16.32M liquidations, $15.22M longs and $1.10M shorts; 79.3% long across its five-exchange account sample.
+- Do not average $1.16B and $1.58B: venue and contract coverage differ. The shared observation is positive funding, declining OI and long-heavy liquidation, not a forecast. [Liqwall](https://liqwall.com/coins/xrp); [TradRadar](https://tradradar.io/markets/xrp).
+
+**Options, Deribit snapshot 03:00 UTC:**
+- 30-day ATM implied volatility 59.1%.
+- 25-delta 30-day skew +0.9 points (calls richer).
+- Near-expiry November 11 skew -12.2 points (puts richer); November 12 -3.1; November 13 -3.7.
+- December 25 open interest approximately $47.4M; November 11 max pain $1.08.
+- This term-structure split is preserved; the longer-tenor call richness does not erase near-expiry downside protection demand. [OptimistFi XRP options](https://optimistfi.com/perps/options/xrp).
+
+**Exchange balances and large transfers:**
+- XRP Insights' November 10, 08:00 UTC ledger snapshot: 22.33B XRP across 701 publicly attributed wallets and 24 exchanges. Same-wallet-set change: -8.9M XRP over seven days and -150.9M over 30 days. Two newly tracked wallets add 512M XRP to naive totals; tracked balances include cold storage and wrapped-asset reserves and are not tradable float. [XRP Insights exchange balances](https://xrp-insights.com/exchange-balances).
+- TrackWhale's November 11, 01:30 UTC update reports seven-day tracked transfers: 501.72M XRP into exchanges, 602.93M out, net -101.21M XRP; 10 inflow and 15 outflow transfers. The largest 368.48M XRP transfer is unlabeled. This transfer-event measure is not equivalent to same-wallet exchange balance change, and a transfer into a labeled exchange wallet is not proof of a customer sale. [TrackWhale XRP tracker](https://trackwhale.io/xrp-whale-tracker).
+
+**ETF coverage disagreement:**
+- XRP Insights' issuer-file dataset is through November 9; its November 10 row is provisional pending re-settlement. November 9: approximately -9.54M XRP / -$9.93M across six spot funds plus BITW; GXRP is excluded from flow totals because of a data gap but remains in holdings. [XRP Insights data](https://xrp-insights.com/data).
+- CryptoKeyhole updated November 11 at 02:12 UTC: November 10 was partial (one of four funds published); November 9 was partial (three of four); its latest complete day was November 6, four of six funds, -752,048 XRP. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+- Alpha Finance reports through the November 9 session: -$10.4M that day and +$8.9M over 30 sessions, with its own five-fund coverage. [Alpha Finance](https://alphafinance.io/etf/xrp/).
+- TheXRPInvestor's 12-product universe mixes six spot, four derivative, one index and one income product; its total AUM and volume are not spot-only. [TheXRPInvestor](https://www.thexrpinvestor.com/xrp-etf-tracker).
+- Preserve provider universe, session, missing issuer and settlement state. These aggregators reuse issuer files and are not independent raw settlement observations. ETF flows remain `model_eligible=false`.
+
+### Institutional and corporate relationships — primary-source refinements
+
+**Circle / SBI Japan entity:**
+- Circle's Q3 2026 SEC Form 10-Q explicitly states that Circle and SBI Holdings each contributed approximately $1.5M equivalent in Japanese yen to Circle SBI Japan K.K. in November 2025.
+- Circle owns a 50% interest and consolidates Circle Japan as a variable-interest entity because it controls the activities most affecting the entity and absorbs significant losses/benefits. SBI's interest and share of income/loss are recorded as noncontrolling interest. Circle reports no significant operating results to date.
+- This is direct evidence for the 50/50 economic ownership of Circle SBI Japan K.K.; do not conflate it with the separate $50M SBI strategic investment in Circle's IPO.
+- [Circle Q3 2026 SEC 10-Q, Circle SBI Japan K.K.](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+**Coinbase / Circle USDC economics:**
+- Circle's Q3 2026 10-Q reports $331.3M of Coinbase-related distribution costs for Q3 and $986.6M for the first nine months of 2026. The agreement allocates economics based on USDC held on Coinbase after issuer retention plus a share of broader ecosystem growth after approved third-party participants.
+- Coinbase's Q3 2026 earnings release reports average USDC held in Coinbase products of $22B, about 30% of average USDC market capitalization and +49% year over year. Coinbase management says it captured approximately 50% of USDC economics over the prior year. Coinbase's Q3 10-Q says its Circle arrangement was renewed on the same terms.
+- These are direct, material distribution/economic links. They are distinct from Coinbase's separate RLUSD listing with Ripple.
+- [Circle SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm); [Coinbase Q3 earnings release](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/); [Coinbase SEC 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+
+**Coinbase / Ripple RLUSD:**
+- Ripple's October 28 announcement confirms RLUSD distribution on Coinbase Prime, Coinbase Exchange and retail Coinbase, with support across XRPL, Base and Ethereum. Ripple supplies RLUSD liquidity on Base. Coinbase Global Exchange collateral support was described as future availability, not live at initial launch.
+- Listing/distribution does not establish Coinbase proprietary XRP purchases, XRP as RLUSD's bridge asset, or measured native-XRP settlement volume.
+- [Ripple primary announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+
+**SBI / Ripple / XRP:**
+- SBI Shinsei Bank's official English notice says SBI Holdings owns approximately 9% of Ripple as its largest external shareholder; SBI and SBI Shinsei Bank each invested $25M in Circle at its IPO. [SBI Shinsei Bank primary notice](https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html).
+- SBI's current group-company page reports SBI Group 60% voting ownership of SBI Ripple Asia as of March 31, 2026; Ripple holds the remaining 40%. [SBI Ripple Asia official company page](https://www.sbigroup.co.jp/company/group/sbirippleasia.html).
+- SBI Remit's 2021 Philippines ODL service explicitly uses XRP as bridge asset and SBI VC Trade supplies XRP liquidity. SBI's Japan–Vietnam 2019 service is described as Ripple DLT remittance, but not every DLT corridor should be assumed to use XRP. [SBI Remit Philippines ODL announcement](https://www.sbigroup.co.jp/news/2021/0728_12577).
+- SBI Remit's October 28, 2025 Japan–Cambodia fiat transfer announcement uses Ripple DLT technology but does not specify XRP bridge use; keep it separate from XRP ODL. [SBI Cambodia DLT announcement](https://www.sbigroup.co.jp/news/pr/2025/1028_15848.html).
+- SBI Ripple Asia's February 2026 tokenized-deposit / deposit-type digital-money concept proof and Japan–Korea remittance research explicitly consider XRPL, but are conceptual/research work, not proof of commercial XRP settlement volume. [Tokenized-deposit concept proof](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html); [Japan–Korea research](https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html).
+
+**RLUSD reserves:**
+- Ripple's official transparency page reports $2,632.9M circulating and $2,748.0M reserves as of November 5, 2026, an arithmetic reserve excess of $115.1M (approximately 104.37% coverage). This is issuer-level circulation/reserves, not an XRPL-only supply figure. [Ripple transparency](https://ripple.com/products/stablecoin/transparency/).
+
+### Security, coordination and forecast state
+
+- Rechecked all 17 flagged source PR tips at their current head SHAs using recursive tree metadata only: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. All 17 still contain the path `.config/gh/hosts.yml`; main and #1661 do not. No file contents were read. The repository's `BARROT_SYNC.md` says OAuth REVOKED, but provider-side revocation remains independently unverified. No secret was rotated and no history was rewritten.
+- Main branch-protection endpoint still returns HTTP 403. The only visible repository ruleset, `Fall Back`, is disabled. No formal approvals/reviews exist on #1661. Do not infer required checks from the green fail-closed job alone.
+- GitHub Pages publication remains an automatic main-push side effect. Authorization for another public publication is unresolved.
+- Nine-platform status is unchanged: ChatGPT GitHub API read/write is verified in this session; local Git transport is blocked by DNS. LunaRoute is declared as the Termux brain in `BARROT_SYNC.md`, but its authentication/data flow is not tested here. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for live data flow. No external-model transfer occurred.
+- **Forecast status: NOT_ISSUED.** Positive bid-skew in one six-venue resting book coexists with negative spot returns, positive funding, declining OI and long-heavy liquidations; ETF data are incomplete/disputed and exchange-transfer measures are not equivalent. No directional forecast is justified. No paper trade or real-money action occurred.
+
+### Backlog and merge decision
+
+- #1661: sole consolidated current-main integration workstream; draft, open, unmerged. Keep it draft until the remaining semantic review and all authorization/security gates are satisfied.
+- #1660: exact superseded source integration; retain unchanged until #1661 is merged and verified on main.
+- #1653 and unique research/prediction/topology/safety work remain unique or unreviewed; do not bulk-close.
+- The 44 workflow files were reviewed in the prior audit (25 quarantined, 19 active); 934 non-workflow paths remain without complete semantic review.
+- No merge: exact-head full suite on `e97f14f` is still running; #1661 is draft; there are no approvals; branch-protection requirements are inaccessible; credential path remains in 17 source PR tips; automatic Pages publication authorization is absent; and the 934 non-workflow paths are not fully reviewed.
+
+### Next concrete actions
+
+1. Complete exact-head full-suite verification on `e97f14f`; do not substitute predecessor-head results.
+2. Update this handoff and `BARROT_SYNC.md` after the final CI result, recording the new documentation head separately from the code/test head.
+3. Continue semantic review of the 934 non-workflow paths, prioritizing Barrot V3 execution/safety, XRP ingestion/feature store/forecast ledger, package manifests and user-facing signal publication.
+4. Resolve the 17 source-branch credential-path copies through owner-authorized safe remediation; no content reads or history rewrite.
+5. Obtain authoritative branch-protection/approval requirements and explicit authorization for the Pages side effect.
+6. Keep the scheduled collector disabled on main until the integration is properly merged; then verify its first successful read-only main run and immutable receipts.
+7. Continue synchronized historical spot/L2, derivatives, exchange-flow, ETF/issuer, collateral and vintage-aware macro ingestion.
+8. Keep forecast issuance disabled until out-of-sample calibration, effective sample size, drift and shadow-evaluation gates pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
