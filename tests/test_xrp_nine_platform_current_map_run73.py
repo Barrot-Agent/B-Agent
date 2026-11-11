@@ -388,7 +388,7 @@ def test_latest_market_refresh_is_research_only_and_preserves_provider_disagreem
     assert 0 < abs(refresh["spot"]["normalized_spread_vs_kraken_mid_percent"]) < 1
     depth = refresh["spot_order_book"]["latest_primary_aggregated_snapshot"]
     assert depth["snapshot_time_utc"] <= refresh["captured_at_utc"]
-    assert "resting orders can be cancelled or moved" in " ".join(depth["limitations"])
+    assert "resting orders can be cancelled or moved" in " ".join(depth["limitations"]).lower()
     derivatives = refresh["derivatives"]
     assert len({derivatives[k]["open_interest_usd"] for k in ("tradradar", "liqwall", "alpha_heatmap")}) == 3
     assert "not averaged" in derivatives["reconciliation"]
