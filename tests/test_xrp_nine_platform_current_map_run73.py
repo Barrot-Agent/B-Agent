@@ -309,7 +309,7 @@ def test_disagreements_and_counterhypotheses_are_preserved():
     combined = " ".join(items).lower()
     assert "no average is computed" in combined
     assert "counter-hypothesis" in combined or "counter hypothesis" in combined
-    assert "not a directional forecast" in combined
+    assert "neither is a directional forecast" in combined
 
 
 def test_source_provenance_and_backlog_classification_are_explicit():
