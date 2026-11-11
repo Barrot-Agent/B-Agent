@@ -1,3 +1,25 @@
+# Run32 — Canonical Barrot Sync State
+
+**Captured:** 2026-11-11T18:00:11Z
+
+- **Mission priority:** XRP intelligence and measured prediction-engine mastery.
+- **Protected foundation:** Barrot V3 remains execution, orchestration, safety and verification.
+- **Main:** `84f28ee7755607236231545a14f3d093c1baaa85`.
+- **Integration branch:** `integration/xrp-v3-unified-main-20261111`; head before this durable commit `ed345e0efc5d6794cef58220891fc03e3ac96ab7`; 2,039 ahead, zero behind.
+- **Integration PR:** #1661, open/draft; no formal reviews or approvals. Do not merge until all readiness, protection, approval, semantic-review and side-effect conditions pass.
+- **Exact parent-head evidence:** 3,449 passed, zero failed, eight subtests; 59.99% coverage; wheel and installed mission verified; six-manifest audit and fail-closed gates passed. This evidence is for `ed345e0efc5d6794cef58220891fc03e3ac96ab7`, not the Run32 commit.
+- **Latest main Cross Analysis:** run 43072200254 succeeded on main. Main CI 42944864014 passed 718 tests.
+- **XRP data:** Run32 spot-depth, derivatives, options, ETF, supply, stablecoin and institutional research is stored in `research/xrp_intelligence/20261111T180011Z-run32-market-microstructure-trust-charters-sbic-and-exact-head-ci.json`. Web observations are not Barrot raw receipts and are not model-eligible.
+- **Institutional correction:** Circle affiliate First National Digital Currency Bank effective July 24; Ripple National Trust Bank effective October 26; Coinbase National Trust Company effective November 6. Trust-charter effectiveness does not prove live XRP collateral use or first custody activity.
+- **SBIC identity:** Tokyo/East, Nagoya/Central and Osaka/West are the three distinct companies named in Japan's SME Investment & Consultation Companies Act, not SBI Holdings. The SBIC West ChatGPT seminar is education, not partnership evidence.
+- **Nine platforms:** ChatGPT/GitHub verified but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks 403; LunaRoute endpoint unverified.
+- **Credential preservation:** `.config/gh/hosts.yml` absent from main/integration; present in 17 other PR tips. No contents read; provider-side OAuth revocation unverified. No history rewrite or force-push.
+- **Orbit preservation:** legacy Orbit files remain as historical artifacts; no active Orbit runtime reintroduced. Orbitron font in `hf_space/app.py` remains unchanged.
+- **Forecast:** `NOT_ISSUED`. No paper trading or real-money action.
+- **Next:** exact-head CI on the Run32 commit; semantic review; least-privilege and protection resolution; credential and Pages authorization; then only authorized merge after all gates.
+
+---
+
 ## Last State
 
 **Run31b — 2026-11-11T17:18:50Z**

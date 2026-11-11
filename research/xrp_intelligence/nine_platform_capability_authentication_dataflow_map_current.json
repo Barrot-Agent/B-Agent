@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T17:18:50Z",
-  "last_verified_at_utc": "2026-11-11T17:18:50Z",
+  "captured_at_utc": "2026-11-11T18:00:11Z",
+  "last_verified_at_utc": "2026-11-11T18:00:11Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "1af8d45fd6352342248d0495f7cbdaf556784446",
+  "observed_integration_head_before_map_commit": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -392,7 +392,7 @@
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_head_before_current_map_commit": "1af8d45fd6352342248d0495f7cbdaf556784446",
     "integration_pr": 1661,
-    "integration_ahead_by": 2037,
+    "integration_ahead_by": 2039,
     "integration_behind_by": 0,
     "changed_files": 1015,
     "workflow_files_changed": 44,
@@ -414,7 +414,7 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "Exact head1af8d45: 3,449 passed/0 failed, eight subtests,59.99%,95.64s; wheel/installed mission verified; core714/0; six-manifest audit and fail-closed gates passed.",
+    "latest_exact_head_ci": "Exact head ed345e0efc5d6794cef58220891fc03e3ac96ab7: 3,449 passed/0 failed, eight subtests, 59.99% coverage, 95.58s; wheel/installed mission verified; core 714/0; six-manifest audit and fail-closed PR/push gates passed. This result is on the parent head before the Run32 durable commit.",
     "last_reconciled_at_utc": "2026-11-11T17:18:50Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
@@ -445,7 +445,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "1af8d45fd6352342248d0495f7cbdaf556784446",
+    "latest_full_suite_tested_head": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -601,7 +601,64 @@
     "non_workflow_paths_after_run31b_commit": 971,
     "integration_ahead_by_after_run31b_commit": 2038,
     "integration_tree_entries_after_run31b_commit": 2280,
-    "integration_tree_files_after_run31b_commit": 2171
+    "integration_tree_files_after_run31b_commit": 2171,
+    "integration_head_before_run32_commit": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
+    "current_head_before_run32_commit": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
+    "run32_new_paths": [
+      "research/xrp_intelligence/20261111T180011Z-run32-market-microstructure-trust-charters-sbic-and-exact-head-ci.json"
+    ],
+    "run32_expected_changed_files_after_commit": 1016,
+    "run32_expected_non_workflow_paths_after_commit": 972,
+    "run32_expected_integration_tree_entries_after_commit": 2281,
+    "run32_expected_ahead_by_after_commit": 2040,
+    "legacy_orbit_paths_in_integration": [
+      ".barrot/orbit/command_schema.json",
+      "ORBIT_REMOVED.md"
+    ],
+    "branch_protection_api_result": "HTTP 403; detailed required checks/approvals unavailable",
+    "fallback_ruleset_enforcement": "disabled",
+    "actions_permissions_api_access": "Not exposed by current fetch wrapper; no inference about repository Actions settings",
+    "security_alerts_api_access": "Not exposed by current fetch wrapper; no claim that alerts are absent",
+    "current_pr_review_state": {
+      "pr": 1661,
+      "draft": true,
+      "mergeable": true,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "run32_source_overlap_reconciliation": {
+      "1640": {
+        "changed_paths": 280,
+        "represented": 280,
+        "identical": 244,
+        "different": 36,
+        "missing": 0
+      },
+      "1642": {
+        "changed_paths": 7,
+        "represented": 7,
+        "identical": 0,
+        "different": 7,
+        "missing": 0
+      },
+      "1643": {
+        "changed_paths": 670,
+        "represented": 670,
+        "identical": 661,
+        "different": 9,
+        "missing": 0
+      },
+      "1660": {
+        "changed_paths": 972,
+        "represented": 972,
+        "identical": 949,
+        "different": 23,
+        "missing": 0
+      }
+    },
+    "latest_main_cross_analysis_run": 43072200254,
+    "latest_main_cross_analysis_conclusion": "success"
   },
   "ci_evidence": {
     "integration_head_tested": "1af8d45fd6352342248d0495f7cbdaf556784446",
@@ -646,12 +703,8 @@
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
       "passed": 718,
-      "failed": 0,
-      "subtests": 8,
-      "exact_head_verified": true,
-      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-      "run_id": 42944864014,
-      "duration_seconds": 12.32
+      "conclusion": "success",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85"
     },
     "main_pages_build_run": 42944862534,
     "main_pages_build_conclusion": "success",
@@ -678,64 +731,53 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "1af8d45fd6352342248d0495f7cbdaf556784446",
-      "run_id": 43065866159,
+      "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
+      "run_id": 43069181417,
       "status": "completed",
       "conclusion": "success",
-      "full_suite_job": 130680728322,
-      "core_suite_job": 130680728588,
+      "full_suite_job_id": 130692136572,
       "full_repository_suite": {
         "passed": 3449,
         "failed": 0,
         "subtests": 8,
         "coverage_percent": 59.99,
         "coverage_floor_percent": 53,
-        "duration_seconds": 95.64,
+        "duration_seconds": 95.58,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": true,
-        "installed_wheel_primary_mission_verified": true,
-        "statements": 23411,
-        "missed_statements": 8924,
-        "branches": 7112,
-        "partial_branches": 1423
+        "installed_wheel_primary_mission_verified": true
       },
       "core_tests": {
         "passed": 714,
         "failed": 0,
-        "subtests": 8,
         "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43065866267,
-        "job_id": 130680505152,
+        "run_id": 43069181401,
         "conclusion": "success",
         "passed": true,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43065866142,
-        "job_id": 130680504388,
+        "run_id": 43069181393,
         "conclusion": "success",
         "passed": true,
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
-      "push_fail_closed_gate": {
-        "run_id": 43065855296,
-        "job_id": 130680466888,
-        "conclusion": "success",
-        "passed": true
-      },
       "push_dependency_audit": {
-        "run_id": 43065855248,
-        "job_id": 130680467139,
+        "run_id": 43069171761,
         "conclusion": "success",
         "passed": true
       },
-      "failing_tests": [],
-      "failure_classification": "Exact-head full-suite passed (full repository suite); four previous stale current-map assertions are resolved."
+      "push_fail_closed_gate": {
+        "run_id": 43069171815,
+        "conclusion": "success",
+        "passed": true
+      },
+      "note": "Exact-head evidence applies to parent ed345e0; new Run32 commit requires its own run."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -960,7 +1002,7 @@
       "conclusion": "success",
       "passed": true
     },
-    "latest_run_head_sha": "1af8d45fd6352342248d0495f7cbdaf556784446",
+    "latest_run_head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
     "latest_run_conclusion": "success",
     "run30_documentation_commit_exact_head_ci": "PENDING",
     "historical_attempts": [
@@ -1085,12 +1127,18 @@
       }
     ],
     "main_cross_analysis": {
-      "run_id": 43062445551,
+      "run_id": 43072200254,
       "conclusion": "success",
-      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85"
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "created_at_utc": "2026-11-11T17:51:40Z"
     },
     "push_dependency_audit_job": 130680467139,
-    "push_fail_closed_gate_job": 130680466888
+    "push_fail_closed_gate_job": 130680466888,
+    "main_pillars_consistency_check": {
+      "run_id": 43025487840,
+      "conclusion": "failure",
+      "reason": "GitHub App credentials unavailable, Databricks HTTP 403, Hugging Face BUILD_ERROR"
+    }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
@@ -2270,6 +2318,94 @@
       "date": "2026-11-09",
       "status": "Limited corporate/institutional pilot receives USDC on Ethereum via Coinbase APIs and auto-converts to USD deposits; USDC rail, not XRP",
       "source": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients"
+    },
+    "run32_federal_trust_charter_reconciliation": [
+      {
+        "entity": "First National Digital Currency Bank, N.A.",
+        "group": "Circle affiliate",
+        "occ_effective_date": "2026-07-24",
+        "scope": "National trust bank; Circle Mint agreement says Circle Internet Financial LLC itself is not a trust company and may use this affiliate as subcustodian; customer assets are not FDIC-insured deposits."
+      },
+      {
+        "entity": "Ripple National Trust Bank",
+        "group": "Ripple",
+        "occ_effective_date": "2026-10-26",
+        "scope": "Ripple says reserve management for RLUSD, collateral trustee and fiduciary digital-asset custody upon opening; Standard Custody & Trust Company remains RLUSD issuer; BNY remains primary reserve custodian; first customer custody activity/transfer of reserve duties not independently verified."
+      },
+      {
+        "entity": "Coinbase National Trust Company",
+        "group": "Coinbase",
+        "occ_effective_date": "2026-11-06",
+        "scope": "Federal trust charter for institutional custody; Coinbase announced final approval Nov 9. Prime integration includes spot, US futures, global options and perps under one margin framework/daily settlement; no XRP-specific collateral eligibility verified."
+      }
+    ],
+    "run32_payment_rails": {
+      "national_trust_charters": [
+        {
+          "entity": "First National Digital Currency Bank, N.A.",
+          "group": "Circle affiliate",
+          "occ_effective_date": "2026-07-24",
+          "scope": "National trust bank; Circle Mint agreement says Circle Internet Financial LLC itself is not a trust company and may use this affiliate as subcustodian; customer assets are not FDIC-insured deposits."
+        },
+        {
+          "entity": "Ripple National Trust Bank",
+          "group": "Ripple",
+          "occ_effective_date": "2026-10-26",
+          "scope": "Ripple says reserve management for RLUSD, collateral trustee and fiduciary digital-asset custody upon opening; Standard Custody & Trust Company remains RLUSD issuer; BNY remains primary reserve custodian; first customer custody activity/transfer of reserve duties not independently verified."
+        },
+        {
+          "entity": "Coinbase National Trust Company",
+          "group": "Coinbase",
+          "occ_effective_date": "2026-11-06",
+          "scope": "Federal trust charter for institutional custody; Coinbase announced final approval Nov 9. Prime integration includes spot, US futures, global options and perps under one margin framework/daily settlement; no XRP-specific collateral eligibility verified."
+        }
+      ],
+      "pnc_coinbase_circle": {
+        "date": "2026-11-09",
+        "rail": "USDC on Ethereum through Coinbase Payment APIs",
+        "flow": "Eligible corporate/institutional clients receive USDC; incoming amount is automatically converted to USD and deposited into PNC account.",
+        "scope": "Limited pilot; no XRP settlement."
+      },
+      "deutsche_bank": {
+        "date": "2026-11-11",
+        "reuters_status": "Reuters reports custody service live for paying clients.",
+        "official_site_status": "Official product page still says services become available after regulatory timeline and technical readiness.",
+        "supported_assets_at_launch": [
+          "BTC",
+          "ETH",
+          "USDC",
+          "EURC",
+          "EURAU"
+        ],
+        "xrp_support": "Not listed",
+        "reconciliation": "Unresolved timing/scope discrepancy; may reflect limited paying-client launch versus broader service readiness."
+      },
+      "fsb_turkiye": {
+        "date": "2026-11-11",
+        "recommendations": [
+          "Dedicated stablecoin regime",
+          "Financial-stability monitoring framework",
+          "Stronger supervision and enforcement",
+          "Cross-border cooperation and information sharing"
+        ],
+        "context": "FSB says Turkey has made meaningful progress but still lacks a stablecoin-issuer framework; Turkey prohibits crypto-assets for domestic payments."
+      }
+    },
+    "run32_circle_entity_distinction": "First National Digital Currency Bank, N.A. is a separate Circle affiliate; Circle Internet Financial LLC is not itself the trust bank. Circle Mint may use the affiliate as subcustodian; no FDIC deposit insurance.",
+    "run32_coinbase_prime_scope": "Coinbase Prime markets unified access to spot, US futures, global options and perpetuals under one margin framework and daily settlement. This does not establish XRP-specific collateral eligibility.",
+    "run32_deutsche_bank_status_conflict": {
+      "date": "2026-11-11",
+      "reuters_status": "Reuters reports custody service live for paying clients.",
+      "official_site_status": "Official product page still says services become available after regulatory timeline and technical readiness.",
+      "supported_assets_at_launch": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "EURC",
+        "EURAU"
+      ],
+      "xrp_support": "Not listed",
+      "reconciliation": "Unresolved timing/scope discrepancy; may reflect limited paying-client launch versus broader service readiness."
     }
   },
   "identity_research": {
@@ -2336,7 +2472,7 @@
       "https://glasp.co/youtube/QslbjGQD0MU",
       "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/"
     ],
-    "last_rechecked_at_utc": "2026-11-11T14:59:22Z",
+    "last_rechecked_at_utc": "2026-11-11T18:00:11Z",
     "latest_run13_conclusion": {
       "sbic": "East/Central/West remain separate Tokyo/Nagoya/Osaka SME investment-consultation companies, not SBI Holdings; no new OpenAI partnership evidence.",
       "ask_coin": "Three ASK-labelled candidates remain distinct; no XRPL/XRP integration verified.",
@@ -2439,6 +2575,26 @@
       "person_identity": "Dr. Kamilah Stevenson has first-party identity evidence; Camilla/Kamilah are not assumed identical.",
       "channel_ownership": "No first-party YouTube link or platform-verified ownership established.",
       "inventory": "No videos attributed in this run."
+    },
+    "run32_primary_law_confirmation": {
+      "legal_basis": "Japan's Act on Investment and Consultation Companies for Small and Medium-Sized Enterprises, Article 2 names exactly Tokyo, Nagoya and Osaka companies.",
+      "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+      "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+      "distinction": "Three separate regional legal companies, not SBI Holdings.",
+      "chatgpt_evidence": "SBIC West's Oct 23, 2024 introductory generative-AI seminar for accountants/support institutions discussed ChatGPT; education event, not OpenAI partnership."
+    },
+    "run32_exact_phrase_research": {
+      "ASK Coin": "No primary-source XRPL/XRP identity or Ripple relationship verified; retain distinct Permission Coin ASK token and inactive exchange-listing candidates.",
+      "actual capital": "No standardized primary-source XRP metric found; keep cash settled, cash used to buy XRP, in-kind XRP, debt, drawn facilities, undrawn ELOC, collateral and secondary sales separate.",
+      "SBIC, ChatGPT SBIC": "No primary evidence of a formal entity or commercial partnership with that exact name."
+    },
+    "run32_youtube_recheck": {
+      "candidate_handle": "@drkamilahstevenson",
+      "status": "UNVERIFIED",
+      "evidence": "Third-party aggregators and a Telegram description mention the handle; no first-party cross-link from the verified public identity was found; YouTube page crawl is stale and aggregator subscriber/video counts disagree.",
+      "inventory_attributed": 0,
+      "camilla_kamilah_equivalence_assumed": false
     }
   },
   "macro_geopolitics": {
@@ -4216,26 +4372,25 @@
     "1648": "DEPENDABOT_OVERLAP_CANDIDATE; one path represented with different blob.",
     "1649": "DEPENDABOT_OVERLAP_CANDIDATE; one path represented with different blob.",
     "1650": "DEPENDABOT_OVERLAP_CANDIDATE; one path represented with different blob.",
-    "1653": "UNIQUE_UNREVIEWED_GRAPH_WORKSTREAM; 7 changed files, 3 paths unique to #1653; preserve the three unique code/docs/tests paths.",
+    "1653": "UNIQUE_UNREVIEWED_GRAPH_WORKSTREAM; preserve unique graph paths and review threads.",
     "1655": "UNIQUE_UNREVIEWED_STRUCTURAL_ANALYSIS_AND_FOUNDATION_CATALOG; preserve.",
     "1659": "BLOCKED_ARCHITECTURE_CONFLICT_LUNAROUTE_ONLY; local llama.cpp phone-chat branch is retained but must not be activated as a second Barrot brain while BARROT_SYNC.md declares LunaRoute sole brain.",
     "1660": "SUPERSEDED_SOURCE_CANDIDATE_RETAINED_UNTIL_SUCCESSOR_MERGE; 972 source paths represented in #1661, 937 identical/35 different/zero absent; behind current main by 3 and dirty. Retain until successor merge and verification.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; exact parent1af8d45 passed3,449/0 full suite,eight subtests,59.99%; core714/0; wheel/installed mission verified; six-manifest audit and fail-closed gates passed. Still draft, zero approvals; branch-protection detail HTTP403; fallback ruleset disabled; connector admin=true; Pages unauthorized;971 non-workflow paths need review; credential remediation/revocation unresolved.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; exact parent ed345e0 passed 3,449/0 full suite, eight subtests, 59.99%; core 714/0; wheel/installed mission verified; six-manifest audit and fail-closed gates passed. New Run32 commit requires exact-head CI. Still draft, zero approvals; branch-protection details HTTP 403; fallback ruleset disabled; connector overprivileged; Pages unauthorized; 971 non-workflow paths require semantic review; credential remediation/revocation unresolved.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
     "confirmed_duplicate_closures": "NONE; no source PR closed.",
-    "credential_path_audit": "17 affected current open-PR tips contain .config/gh/hosts.yml; contents not read. Main and #1661 do not.",
+    "credential_path_audit": "17 current open-PR tips rechecked; .config/gh/hosts.yml present in all 17; contents not read; provider-side OAuth revocation unverified.",
     "open_pr_inventory": "374 open PRs (360 drafts, 14 non-drafts). #1661 is the active consolidated XRP/V3 integration draft; unique research/safety/topology work remains unclosed."
   },
   "next_actions": [
-    "Run exact-head full suite on Run31b documentation/research commit; parent1af8d45 is verified but new head must pass independently.",
-    "Complete semantic review of971 non-workflow paths, prioritizing V3 runtime, ingestion, feature store, forecast ledger and public interfaces.",
-    "Resolve branch-protection/approval visibility, connector least privilege, provider-side OAuth revocation and Pages authorization.",
-    "Preserve unique PRs; reconcile blob-different source PRs before closure.",
-    "Raise coverage floor from53% toward70% and resolve setuptools package-discovery/license warnings.",
-    "Implement WORM/timestamp anchoring, replayable history, synchronized features, scenario engine, independent shadow outcomes and out-of-sample lift.",
-    "Keep forecasts NOT_ISSUED until independent readiness gates pass."
+    "Verify exact-head full-suite, dependency audit and fail-closed gates on the Run32 durable commit.",
+    "Continue semantic review of 971 non-workflow paths, prioritizing V3 runtime, ingestion, feature store, forecast ledger and public interfaces.",
+    "Resolve least-privilege connector permissions, branch-protection/approval visibility, OAuth revocation evidence and Pages authorization.",
+    "Reconcile blob-different source PRs while preserving unique graph, prediction, safety and topology work; do not close sources before verified successor merge.",
+    "Implement independent WORM/timestamp anchoring, replayable historical features, vintage-aware event timelines and scenario/counter-hypothesis generation.",
+    "Obtain independent shadow outcomes and demonstrate out-of-sample lift over all four baselines before enabling forecasts."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-11T07:58:26.504Z",
@@ -4857,8 +5012,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run31b",
-  "latest_run_captured_at_utc": "2026-11-11T17:18:50Z",
+  "latest_run_id": "Run32",
+  "latest_run_captured_at_utc": "2026-11-11T18:00:11Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -11990,5 +12145,1042 @@
       "paper_trade": false,
       "real_money": false
     }
+  },
+  "latest_market_refresh_run32": {
+    "spot_reference": {
+      "provider": "Fuelmaps six-venue spot aggregate",
+      "timestamp_utc": "2026-11-11T18:00:00Z",
+      "mid_usd": 1.0679,
+      "venues": 6,
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ],
+      "method": "Hourly average of one-minute resting-book observations; not an executable quote."
+    },
+    "order_book_depth_usd": {
+      "0.5_percent": {
+        "bids": 7800000,
+        "asks": 7000000,
+        "bid_share_percent": 52.6
+      },
+      "1_percent": {
+        "bids": 13700000,
+        "asks": 11900000,
+        "bid_share_percent": 53.6
+      },
+      "2_percent": {
+        "bids": 18600000,
+        "asks": 13700000,
+        "bid_share_percent": 57.7
+      },
+      "5_percent": {
+        "bids": 23000000,
+        "asks": 14800000,
+        "bid_share_percent": 60.8
+      },
+      "10_percent": {
+        "bids": 32900000,
+        "asks": 17400000,
+        "bid_share_percent": 65.4
+      }
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "timestamp_utc": "2026-11-11T17:25:00Z",
+        "price": 1.0734,
+        "price_change_24h_percent": 2.43,
+        "open_interest_usd": 1580000000,
+        "open_interest_change_24h_percent": 1.1,
+        "funding_percent_per_8h": 0.0046,
+        "liquidations_usd": 2860000,
+        "long_liquidations_usd": 1110000,
+        "short_liquidations_usd": 1750000,
+        "long_account_share_percent": 79.8,
+        "venue_coverage": "7 exchanges; 15-minute delay"
+      },
+      {
+        "provider": "Liqwall",
+        "timestamp_utc": "2026-11-11T17:32:00Z",
+        "price": 1.07,
+        "open_interest_usd": 1170000000,
+        "open_interest_change_24h_percent": -1.3,
+        "funding_percent_per_8h": 0.0043,
+        "liquidations_usd": 2800000,
+        "long_liquidations_usd": 1200000,
+        "short_liquidations_usd": 1600000,
+        "binance_long_account_share_percent": 75.3,
+        "venue_coverage": "Different venue/contract universe"
+      }
+    ],
+    "options": {
+      "provider": "OptimistFi/Deribit",
+      "timestamp_utc": "2026-11-11T15:00:00Z",
+      "atm_iv_30d_percent": 58.1,
+      "skew_25d_points": 1.8,
+      "put_call_ratio": 0.55,
+      "dec_25_open_interest_usd": 47400000,
+      "near_expiry": "Nov 12 skew -4.2; Nov 13 -3.0",
+      "deferred": "Dec 25 +2.9; Mar 2027 +4.5",
+      "interpretation": "Near expiries put-rich while deferred expiries call-rich; mixed term structure."
+    },
+    "etf_flows": {
+      "alpha_finance": {
+        "through": "2026-11-10",
+        "funds": 5,
+        "latest_session_net_flow_usd": -7600000,
+        "seven_session_net_flow_usd": -18000000,
+        "thirty_session_net_flow_usd": 1300000,
+        "cumulative_net_inflow_usd": 1710000000,
+        "largest_latest_outflow": "GXRP approximately $7.2M",
+        "holdings_or_aum_published": false
+      },
+      "xrp_insights": {
+        "data_as_of": "2026-11-10",
+        "generated_at_utc": "2026-11-11T17:14:00Z",
+        "products": 7,
+        "composition": "Six US spot ETFs plus the XRP sleeve of BITW index fund; not seven pure spot ETFs.",
+        "reported_holdings_xrp": 1190000000,
+        "flow_method": "Issuer holdings delta; GXRP flow excluded because of a capture gap; BITW rebalancing and XRP-paid fees can be counted as flow; some dates reconstructed from third-party estimates; latest row can be re-settled."
+      }
+    },
+    "supply_and_onchain": {
+      "escrow_xrp": 31100000000,
+      "exchange_wallet_balances_xrp": 22330000000,
+      "exchange_wallet_method": "701 publicly attributed wallets across 24 exchanges; floor, not ceiling; unattributed omnibus/cold wallets excluded.",
+      "corporate_treasury_reported_xrp": 473300000,
+      "defI_and_wrapped_xrp": 418900000,
+      "rlusd_total_supply_usd": 2710000000,
+      "rlusd_xrpl_supply_usd": 906000000,
+      "rlusd_ethereum_supply_usd": 1810000000,
+      "xrpl_rwa_total_usd": 4330000000,
+      "xrpl_rwa_distributed_transferable_usd": 276000000,
+      "xrpl_rwa_represented_registry_notional_usd": 4060000000,
+      "caveats": [
+        "Ripple operational XRP 4.74B is static from Q3 2024 company report, not a live on-chain balance.",
+        "Founder XRP 4.60B is an estimate dated Jan 16, 2026.",
+        "Other-circulating remainder inherits an oldest input dated Jan 16, 2026.",
+        "RWA values have individual last-verified dates from July 3 to October 23, 2026.",
+        "RLUSD small supply on Base, Optimism, Ink, Unichain and XRPL EVM is excluded from the stated XRPL/Ethereum total."
+      ]
+    },
+    "xrpl_agentic_payments": {
+      "operator": "t54 Labs XRPL x402 facilitator",
+      "reported_agent_transactions": 15541812,
+      "reported_active_agents": 191,
+      "reported_merchants": 193,
+      "reported_paid_service_endpoints": 5882,
+      "reported_all_time_settled_value": "7,030 XRP + 64,423 RLUSD",
+      "independence": "Operator-reported, not independently reconciled; transaction counts are not economic volume and the stated value is small."
+    },
+    "interpretation": "Resting spot depth is bid-heavy but cancellable. TradRadar and Liqwall disagree on OI direction (+1.10% vs -1.3%) while both show positive funding, high long-account concentration and slightly more short than long liquidations. Possible short-covering/deleveraging mix; venue universes differ. No directional inference."
+  },
+  "latest_web_research_run32": {
+    "captured_at_utc": "2026-11-11T18:00:11Z",
+    "source_receipts": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+    "model_eligible": false,
+    "source_index": [
+      {
+        "name": "Fuelmaps XRP spot order book",
+        "url": "https://fuelmaps.io/order-book/",
+        "published_at": "2026-11-11 18:00 UTC snapshot",
+        "independence": "Independent market-data aggregator; six venues; excludes Binance and Bitget; hourly average of one-minute resting-book observations."
+      },
+      {
+        "name": "TradRadar XRP derivatives",
+        "url": "https://tradradar.io/markets/xrp",
+        "published_at": "2026-11-11 17:25 UTC snapshot",
+        "independence": "Separate derivatives aggregator; seven exchanges; 15-minute delay; venue universe differs from Liqwall."
+      },
+      {
+        "name": "Liqwall XRP derivatives",
+        "url": "https://liqwall.com/coins/xrp",
+        "published_at": "2026-11-11 17:32 UTC snapshot",
+        "independence": "Separate derivatives aggregator; Binance account ratio is venue-specific; OI universe differs from TradRadar."
+      },
+      {
+        "name": "OptimistFi/Deribit XRP options",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "published_at": "2026-11-11 15:00 UTC snapshot",
+        "independence": "Options data provider; near-expiry and deferred expiries have different skew."
+      },
+      {
+        "name": "Alpha Finance XRP ETF dashboard",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "published_at": "Through 2026-11-10 session",
+        "independence": "Five-fund flow series; not an issuer-level source; reports no holdings/AUM."
+      },
+      {
+        "name": "XRP Insights XRP Radar",
+        "url": "https://xrp-insights.com/xrp-radar",
+        "published_at": "2026-11-11 17:44 UTC price; supply/on-chain data as individually dated",
+        "independence": "Separate tracker; exchange balances from attributed XRPL wallets; several fields are estimates or company-reported."
+      },
+      {
+        "name": "XRP Insights ETF flow JSON and methodology",
+        "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+        "published_at": "Data as of 2026-11-10; generated 2026-11-11 17:14 UTC",
+        "independence": "Holdings-delta model; excludes GXRP flow due capture gap; includes BITW XRP sleeve; some reconstructed rows and non-creation changes can count as flow."
+      },
+      {
+        "name": "OCC CAS — First National Digital Currency Bank, N.A.",
+        "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+        "published_at": "Consummated/effective 2026-07-24",
+        "independence": "Primary regulator record; legal entity is Circle-affiliated First National Digital Currency Bank, not Circle Internet Financial LLC itself."
+      },
+      {
+        "name": "OCC CAS — Ripple National Trust Bank",
+        "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "published_at": "Consummated/effective 2026-10-26",
+        "independence": "Primary regulator record; trust-bank charter status does not establish first customer custody transaction or reserve-duty transfer."
+      },
+      {
+        "name": "Ripple final OCC approval announcement",
+        "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+        "published_at": "2026-10-26",
+        "independence": "Company announcement; states approved activities and that Standard Custody remains RLUSD issuer."
+      },
+      {
+        "name": "OCC CAS — Coinbase National Trust Company",
+        "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "published_at": "Consummated/effective 2026-11-06",
+        "independence": "Primary regulator record; trust powers requested."
+      },
+      {
+        "name": "Coinbase National Trust Company announcement",
+        "url": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+        "published_at": "2026-11-09; related Prime article 2026-11-11",
+        "independence": "Company announcement; describes custody scope and Prime access, not XRP-specific collateral eligibility."
+      },
+      {
+        "name": "Reuters — PNC/Coinbase USDC pilot",
+        "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+        "published_at": "2026-11-09",
+        "independence": "Independent reporting; limited pilot, incoming USDC automatically converted to USD deposits."
+      },
+      {
+        "name": "Reuters — Deutsche Bank custody launch",
+        "url": "https://www.reuters.com/business/finance/deutsche-bank-launches-digital-asset-custody-service-2026-11-11/",
+        "published_at": "2026-11-11 08:03 UTC",
+        "independence": "Independent reporting says service live for paying clients; conflicts with current official product page's future-tense availability notice."
+      },
+      {
+        "name": "Deutsche Bank official custody product page",
+        "url": "https://digitalassets.db.com/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company page still says services become available after regulatory timeline and technical readiness; lists BTC, ETH, USDC, EURC and EURAU, not XRP."
+      },
+      {
+        "name": "FSB Türkiye peer review",
+        "url": "https://www.fsb.org/2026/11/fsb-recommends-turkiye-further-strengthens-its-regulatory-framework-for-crypto-assets-and-stablecoins/",
+        "published_at": "2026-11-11",
+        "independence": "Primary international standard-setter; recommends dedicated stablecoin regime, stability monitoring, supervision and cross-border cooperation."
+      },
+      {
+        "name": "Japan SME Investment & Consultation Companies Act, Article 2",
+        "url": "https://www.sbic-wj.co.jp/disclose/law/",
+        "published_at": "Current official law text",
+        "independence": "Primary statutory source naming Tokyo, Nagoya and Osaka companies."
+      },
+      {
+        "name": "Tokyo SBIC official company profile",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company source; identifies SBIC East Japan."
+      },
+      {
+        "name": "Nagoya SBIC official company profile",
+        "url": "https://www.sbic-cj.co.jp/company/about/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company source; identifies SBIC Central Japan."
+      },
+      {
+        "name": "Osaka SBIC official company profile",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company source; identifies SBIC West Japan."
+      },
+      {
+        "name": "SBIC West ChatGPT seminar PDF",
+        "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "published_at": "Seminar 2024-10-23",
+        "independence": "Primary event notice; educational seminar for accountants/support institutions, not OpenAI partnership evidence."
+      },
+      {
+        "name": "Kamilah Stevenson YouTube candidate",
+        "url": "https://www.youtube.com/@drkamilahstevenson",
+        "published_at": "Retrieved 2026-11-11; crawler page stale",
+        "independence": "First-party channel ownership not verified; third-party aggregators disagree on subscriber/video counts; no videos attributed."
+      }
+    ],
+    "summary": "Fresh spot depth, derivatives, options, ETF, supply, RLUSD, RWA, x402, institutional charter, PNC, Deutsche Bank, FSB and SBIC evidence. Preserve source-universe and publication-time disagreements."
+  },
+  "institutional_network_update_run32": {
+    "national_trust_charters": [
+      {
+        "entity": "First National Digital Currency Bank, N.A.",
+        "group": "Circle affiliate",
+        "occ_effective_date": "2026-07-24",
+        "scope": "National trust bank; Circle Mint agreement says Circle Internet Financial LLC itself is not a trust company and may use this affiliate as subcustodian; customer assets are not FDIC-insured deposits."
+      },
+      {
+        "entity": "Ripple National Trust Bank",
+        "group": "Ripple",
+        "occ_effective_date": "2026-10-26",
+        "scope": "Ripple says reserve management for RLUSD, collateral trustee and fiduciary digital-asset custody upon opening; Standard Custody & Trust Company remains RLUSD issuer; BNY remains primary reserve custodian; first customer custody activity/transfer of reserve duties not independently verified."
+      },
+      {
+        "entity": "Coinbase National Trust Company",
+        "group": "Coinbase",
+        "occ_effective_date": "2026-11-06",
+        "scope": "Federal trust charter for institutional custody; Coinbase announced final approval Nov 9. Prime integration includes spot, US futures, global options and perps under one margin framework/daily settlement; no XRP-specific collateral eligibility verified."
+      }
+    ],
+    "pnc_coinbase_circle": {
+      "date": "2026-11-09",
+      "rail": "USDC on Ethereum through Coinbase Payment APIs",
+      "flow": "Eligible corporate/institutional clients receive USDC; incoming amount is automatically converted to USD and deposited into PNC account.",
+      "scope": "Limited pilot; no XRP settlement."
+    },
+    "deutsche_bank": {
+      "date": "2026-11-11",
+      "reuters_status": "Reuters reports custody service live for paying clients.",
+      "official_site_status": "Official product page still says services become available after regulatory timeline and technical readiness.",
+      "supported_assets_at_launch": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "EURC",
+        "EURAU"
+      ],
+      "xrp_support": "Not listed",
+      "reconciliation": "Unresolved timing/scope discrepancy; may reflect limited paying-client launch versus broader service readiness."
+    },
+    "fsb_turkiye": {
+      "date": "2026-11-11",
+      "recommendations": [
+        "Dedicated stablecoin regime",
+        "Financial-stability monitoring framework",
+        "Stronger supervision and enforcement",
+        "Cross-border cooperation and information sharing"
+      ],
+      "context": "FSB says Turkey has made meaningful progress but still lacks a stablecoin-issuer framework; Turkey prohibits crypto-assets for domestic payments."
+    }
+  },
+  "run32_snapshot": {
+    "artifact_type": "barrot_xrp_run32_research_and_integration_evidence",
+    "schema_version": 1,
+    "run_id": "Run32",
+    "captured_at_utc": "2026-11-11T18:00:11Z",
+    "mission_priority": "HIGHEST — XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation",
+    "status": {
+      "designed": [
+        "47 public source definitions; 45 scheduled",
+        "Read-only collector with host allowlists, redirect rejection, response/cache controls",
+        "SHA-256 raw-source receipt-chain logic",
+        "Point-in-time SQLite feature-store prototype",
+        "Four deterministic baselines",
+        "Chronological walk-forward evaluation with purge/embargo",
+        "Calibration and PSI drift diagnostics",
+        "Fail-closed forecast ledger with Ed25519 evaluator-attestation contract"
+      ],
+      "executed": [
+        "Fetched current main and integration refs, complete recursive trees, current handoff, sync file, platform map, CI, PR inventory and current code",
+        "Inspected current source registry, ingestion, feature-store, forecast-ledger, tests and scheduled workflow",
+        "Reconciled current PR source overlaps and rechecked all 17 affected branch tips for the credential path without reading file contents",
+        "Retrieved fresh spot-depth, derivatives, options, ETF, supply, stablecoin, institutional-charter, payment-rail, FSB and SBIC primary-source evidence",
+        "Verified current integration exact-head full-suite CI"
+      ],
+      "verified": [
+        "Current integration head ed345e0 passed 3,449 tests, zero failures and eight subtests",
+        "Coverage 59.99% against 53% configured floor",
+        "Wheel build and installed Barrot V3/XRP mission verification passed",
+        "Six dependency manifests audited; zero known vulnerabilities reported",
+        "PR and push fail-closed gates passed",
+        "Latest main Cross Analysis succeeded on unchanged main SHA"
+      ]
+    },
+    "repository": {
+      "full_name": "Barrot-Agent/B-Agent",
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "integration_branch": "integration/xrp-v3-unified-main-20261111",
+      "integration_head_before_run32_commit": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
+      "parent_sha": "697a7c9a259df0cb6f0bd3c5ffb961c352638fa3",
+      "commits_ahead": 2039,
+      "commits_behind": 0,
+      "changed_files": 1015,
+      "changed_workflow_files": 44,
+      "changed_non_workflow_paths": 971,
+      "main_tree_entries": 1388,
+      "integration_tree_entries": 2280,
+      "open_prs": 374,
+      "drafts": 360,
+      "non_drafts": 14,
+      "local_git_clone": "NOT_ESTABLISHED — DNS resolution for github.com failed; remote GitHub API inspection succeeded",
+      "legacy_orbit_paths": [
+        ".barrot/orbit/command_schema.json",
+        "ORBIT_REMOVED.md"
+      ],
+      "legacy_orbit_note": "Legacy Orbit artifacts remain in main and integration trees; no active Orbit runtime was reintroduced and no Orbit paths were changed in this PR. The Orbitron font declarations in hf_space/app.py are unchanged from main.",
+      "integration_pr": 1661,
+      "integration_pr_state": "OPEN_DRAFT",
+      "integration_pr_mergeable": true,
+      "integration_pr_commits": 2039,
+      "integration_pr_changed_files": 1015,
+      "integration_pr_formal_reviews": 0,
+      "integration_pr_approvals": 0,
+      "integration_pr_review_threads": 0
+    },
+    "ci": {
+      "exact_head": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
+      "full_suite_run_id": 43069181417,
+      "full_suite_job_id": 130692136572,
+      "full_suite_conclusion": "success",
+      "tests_passed": 3449,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.99,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 95.58,
+      "core_tests_passed": 714,
+      "core_tests_failed": 0,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "dependency_audit_run_id": 43069181401,
+      "dependency_audit_conclusion": "success",
+      "dependency_manifests_audited": 6,
+      "known_vulnerabilities_reported": 0,
+      "fail_closed_pr_gate_run_id": 43069181393,
+      "fail_closed_pr_gate_conclusion": "success",
+      "push_dependency_audit_run_id": 43069171761,
+      "push_dependency_audit_conclusion": "success",
+      "push_fail_closed_gate_run_id": 43069171815,
+      "push_fail_closed_gate_conclusion": "success",
+      "main_ci_run_id": 42944864014,
+      "main_ci_conclusion": "success",
+      "main_ci_tests_passed": 718,
+      "latest_main_cross_analysis_run_id": 43072200254,
+      "latest_main_cross_analysis_conclusion": "success",
+      "main_pillars_consistency_check_run_id": 43025487840,
+      "main_pillars_consistency_check_conclusion": "failure — missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR",
+      "exact_head_after_run32_commit": "PENDING — this new durable commit will trigger a new exact-head run; the verified 3,449 result belongs to parent ed345e0."
+    },
+    "security_and_merge": {
+      "main_branch_protection_endpoint": "HTTP 403; required-check and approval configuration not visible",
+      "visible_rulesets": [
+        {
+          "name": "Fall Back",
+          "enforcement": "disabled"
+        }
+      ],
+      "github_connector_permissions": "admin=true, maintain=true, push=true, pull=true, triage=true; overprivileged for least-privilege research work",
+      "security_alert_endpoints": "Not exposed by the current GitHub fetch wrapper; no claim that alerts are absent",
+      "credential_path": ".config/gh/hosts.yml",
+      "credential_path_present_on_main": false,
+      "credential_path_present_on_integration": false,
+      "credential_path_present_on_17_other_open_pr_tips": true,
+      "credential_file_contents_read": false,
+      "provider_side_oauth_revocation_independently_verified": false,
+      "main_pages_build_run_id": 42944862534,
+      "main_pages_build_conclusion": "success",
+      "main_pages_publication_authorized": false,
+      "merge_decision": "DO NOT MERGE — PR remains draft with zero formal approvals; branch protection is not inspectable; security/least-privilege and Pages authorization blockers remain; full semantic review of 971 non-workflow paths is incomplete."
+    },
+    "overlap_reconciliation": {
+      "1640": {
+        "changed_paths": 280,
+        "represented_in_integration": 280,
+        "identical_blobs": 244,
+        "different_blobs": 36,
+        "missing_paths": 0
+      },
+      "1642": {
+        "changed_paths": 7,
+        "represented_in_integration": 7,
+        "identical_blobs": 0,
+        "different_blobs": 7,
+        "missing_paths": 0
+      },
+      "1643": {
+        "changed_paths": 670,
+        "represented_in_integration": 670,
+        "identical_blobs": 661,
+        "different_blobs": 9,
+        "missing_paths": 0
+      },
+      "1660": {
+        "changed_paths": 972,
+        "represented_in_integration": 972,
+        "identical_blobs": 949,
+        "different_blobs": 23,
+        "missing_paths": 0
+      },
+      "note": "Path and blob comparison only; differing blobs require semantic review. No source PR closed."
+    },
+    "credential_branch_tip_audit": {
+      "checked_prs": [
+        1653,
+        1650,
+        1649,
+        1648,
+        1647,
+        1646,
+        1645,
+        1644,
+        1643,
+        1642,
+        1640,
+        1320,
+        1318,
+        1317,
+        1269,
+        1255,
+        1254
+      ],
+      "count": 17,
+      "credential_path_present_on_all_17": true,
+      "file_contents_read": false,
+      "remediation": "Additive remediation only after credential owner/provider revocation evidence; no history rewrite or force push."
+    },
+    "market": {
+      "spot_reference": {
+        "provider": "Fuelmaps six-venue spot aggregate",
+        "timestamp_utc": "2026-11-11T18:00:00Z",
+        "mid_usd": 1.0679,
+        "venues": 6,
+        "excluded_venues": [
+          "Binance",
+          "Bitget"
+        ],
+        "method": "Hourly average of one-minute resting-book observations; not an executable quote."
+      },
+      "order_book_depth_usd": {
+        "0.5_percent": {
+          "bids": 7800000,
+          "asks": 7000000,
+          "bid_share_percent": 52.6
+        },
+        "1_percent": {
+          "bids": 13700000,
+          "asks": 11900000,
+          "bid_share_percent": 53.6
+        },
+        "2_percent": {
+          "bids": 18600000,
+          "asks": 13700000,
+          "bid_share_percent": 57.7
+        },
+        "5_percent": {
+          "bids": 23000000,
+          "asks": 14800000,
+          "bid_share_percent": 60.8
+        },
+        "10_percent": {
+          "bids": 32900000,
+          "asks": 17400000,
+          "bid_share_percent": 65.4
+        }
+      },
+      "derivatives": [
+        {
+          "provider": "TradRadar",
+          "timestamp_utc": "2026-11-11T17:25:00Z",
+          "price": 1.0734,
+          "price_change_24h_percent": 2.43,
+          "open_interest_usd": 1580000000,
+          "open_interest_change_24h_percent": 1.1,
+          "funding_percent_per_8h": 0.0046,
+          "liquidations_usd": 2860000,
+          "long_liquidations_usd": 1110000,
+          "short_liquidations_usd": 1750000,
+          "long_account_share_percent": 79.8,
+          "venue_coverage": "7 exchanges; 15-minute delay"
+        },
+        {
+          "provider": "Liqwall",
+          "timestamp_utc": "2026-11-11T17:32:00Z",
+          "price": 1.07,
+          "open_interest_usd": 1170000000,
+          "open_interest_change_24h_percent": -1.3,
+          "funding_percent_per_8h": 0.0043,
+          "liquidations_usd": 2800000,
+          "long_liquidations_usd": 1200000,
+          "short_liquidations_usd": 1600000,
+          "binance_long_account_share_percent": 75.3,
+          "venue_coverage": "Different venue/contract universe"
+        }
+      ],
+      "options": {
+        "provider": "OptimistFi/Deribit",
+        "timestamp_utc": "2026-11-11T15:00:00Z",
+        "atm_iv_30d_percent": 58.1,
+        "skew_25d_points": 1.8,
+        "put_call_ratio": 0.55,
+        "dec_25_open_interest_usd": 47400000,
+        "near_expiry": "Nov 12 skew -4.2; Nov 13 -3.0",
+        "deferred": "Dec 25 +2.9; Mar 2027 +4.5",
+        "interpretation": "Near expiries put-rich while deferred expiries call-rich; mixed term structure."
+      },
+      "etf_flows": {
+        "alpha_finance": {
+          "through": "2026-11-10",
+          "funds": 5,
+          "latest_session_net_flow_usd": -7600000,
+          "seven_session_net_flow_usd": -18000000,
+          "thirty_session_net_flow_usd": 1300000,
+          "cumulative_net_inflow_usd": 1710000000,
+          "largest_latest_outflow": "GXRP approximately $7.2M",
+          "holdings_or_aum_published": false
+        },
+        "xrp_insights": {
+          "data_as_of": "2026-11-10",
+          "generated_at_utc": "2026-11-11T17:14:00Z",
+          "products": 7,
+          "composition": "Six US spot ETFs plus the XRP sleeve of BITW index fund; not seven pure spot ETFs.",
+          "reported_holdings_xrp": 1190000000,
+          "flow_method": "Issuer holdings delta; GXRP flow excluded because of a capture gap; BITW rebalancing and XRP-paid fees can be counted as flow; some dates reconstructed from third-party estimates; latest row can be re-settled."
+        }
+      },
+      "supply_and_onchain": {
+        "escrow_xrp": 31100000000,
+        "exchange_wallet_balances_xrp": 22330000000,
+        "exchange_wallet_method": "701 publicly attributed wallets across 24 exchanges; floor, not ceiling; unattributed omnibus/cold wallets excluded.",
+        "corporate_treasury_reported_xrp": 473300000,
+        "defI_and_wrapped_xrp": 418900000,
+        "rlusd_total_supply_usd": 2710000000,
+        "rlusd_xrpl_supply_usd": 906000000,
+        "rlusd_ethereum_supply_usd": 1810000000,
+        "xrpl_rwa_total_usd": 4330000000,
+        "xrpl_rwa_distributed_transferable_usd": 276000000,
+        "xrpl_rwa_represented_registry_notional_usd": 4060000000,
+        "caveats": [
+          "Ripple operational XRP 4.74B is static from Q3 2024 company report, not a live on-chain balance.",
+          "Founder XRP 4.60B is an estimate dated Jan 16, 2026.",
+          "Other-circulating remainder inherits an oldest input dated Jan 16, 2026.",
+          "RWA values have individual last-verified dates from July 3 to October 23, 2026.",
+          "RLUSD small supply on Base, Optimism, Ink, Unichain and XRPL EVM is excluded from the stated XRPL/Ethereum total."
+        ]
+      },
+      "xrpl_agentic_payments": {
+        "operator": "t54 Labs XRPL x402 facilitator",
+        "reported_agent_transactions": 15541812,
+        "reported_active_agents": 191,
+        "reported_merchants": 193,
+        "reported_paid_service_endpoints": 5882,
+        "reported_all_time_settled_value": "7,030 XRP + 64,423 RLUSD",
+        "independence": "Operator-reported, not independently reconciled; transaction counts are not economic volume and the stated value is small."
+      },
+      "interpretation": "Resting spot depth is bid-heavy but cancellable. TradRadar and Liqwall disagree on OI direction (+1.10% vs -1.3%) while both show positive funding, high long-account concentration and slightly more short than long liquidations. Possible short-covering/deleveraging mix; venue universes differ. No directional inference."
+    },
+    "institutional_network": {
+      "national_trust_charters": [
+        {
+          "entity": "First National Digital Currency Bank, N.A.",
+          "group": "Circle affiliate",
+          "occ_effective_date": "2026-07-24",
+          "scope": "National trust bank; Circle Mint agreement says Circle Internet Financial LLC itself is not a trust company and may use this affiliate as subcustodian; customer assets are not FDIC-insured deposits."
+        },
+        {
+          "entity": "Ripple National Trust Bank",
+          "group": "Ripple",
+          "occ_effective_date": "2026-10-26",
+          "scope": "Ripple says reserve management for RLUSD, collateral trustee and fiduciary digital-asset custody upon opening; Standard Custody & Trust Company remains RLUSD issuer; BNY remains primary reserve custodian; first customer custody activity/transfer of reserve duties not independently verified."
+        },
+        {
+          "entity": "Coinbase National Trust Company",
+          "group": "Coinbase",
+          "occ_effective_date": "2026-11-06",
+          "scope": "Federal trust charter for institutional custody; Coinbase announced final approval Nov 9. Prime integration includes spot, US futures, global options and perps under one margin framework/daily settlement; no XRP-specific collateral eligibility verified."
+        }
+      ],
+      "pnc_coinbase_circle": {
+        "date": "2026-11-09",
+        "rail": "USDC on Ethereum through Coinbase Payment APIs",
+        "flow": "Eligible corporate/institutional clients receive USDC; incoming amount is automatically converted to USD and deposited into PNC account.",
+        "scope": "Limited pilot; no XRP settlement."
+      },
+      "deutsche_bank": {
+        "date": "2026-11-11",
+        "reuters_status": "Reuters reports custody service live for paying clients.",
+        "official_site_status": "Official product page still says services become available after regulatory timeline and technical readiness.",
+        "supported_assets_at_launch": [
+          "BTC",
+          "ETH",
+          "USDC",
+          "EURC",
+          "EURAU"
+        ],
+        "xrp_support": "Not listed",
+        "reconciliation": "Unresolved timing/scope discrepancy; may reflect limited paying-client launch versus broader service readiness."
+      },
+      "fsb_turkiye": {
+        "date": "2026-11-11",
+        "recommendations": [
+          "Dedicated stablecoin regime",
+          "Financial-stability monitoring framework",
+          "Stronger supervision and enforcement",
+          "Cross-border cooperation and information sharing"
+        ],
+        "context": "FSB says Turkey has made meaningful progress but still lacks a stablecoin-issuer framework; Turkey prohibits crypto-assets for domestic payments."
+      }
+    },
+    "identity_research": {
+      "sbic": {
+        "legal_basis": "Japan's Act on Investment and Consultation Companies for Small and Medium-Sized Enterprises, Article 2 names exactly Tokyo, Nagoya and Osaka companies.",
+        "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+        "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+        "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+        "distinction": "Three separate regional legal companies, not SBI Holdings.",
+        "chatgpt_evidence": "SBIC West's Oct 23, 2024 introductory generative-AI seminar for accountants/support institutions discussed ChatGPT; education event, not OpenAI partnership."
+      },
+      "exact_phrase_status": {
+        "ASK Coin": "No primary-source XRPL/XRP identity or Ripple relationship verified; retain distinct Permission Coin ASK token and inactive exchange-listing candidates.",
+        "actual capital": "No standardized primary-source XRP metric found; keep cash settled, cash used to buy XRP, in-kind XRP, debt, drawn facilities, undrawn ELOC, collateral and secondary sales separate.",
+        "SBIC, ChatGPT SBIC": "No primary evidence of a formal entity or commercial partnership with that exact name."
+      },
+      "youtube": {
+        "candidate_handle": "@drkamilahstevenson",
+        "status": "UNVERIFIED",
+        "evidence": "Third-party aggregators and a Telegram description mention the handle; no first-party cross-link from the verified public identity was found; YouTube page crawl is stale and aggregator subscriber/video counts disagree.",
+        "inventory_attributed": 0,
+        "camilla_kamilah_equivalence_assumed": false
+      }
+    },
+    "nine_platform_status": {
+      "ChatGPT": "GitHub API access verified in current session; connector reports admin/maintain/push/pull/triage permissions, overprivileged; no secrets read.",
+      "Claude": "Authentication/data flow unverified.",
+      "Grok": "Authentication/data flow unverified.",
+      "Gemini": "Authentication/data flow unverified.",
+      "Copilot": "One-off review activity only; no formal PR approval.",
+      "Codex": "Authentication/data flow unverified.",
+      "Hugging_Face": "BUILD_ERROR; no deployment.",
+      "Kaggle": "Untested; no submission.",
+      "Databricks": "HTTP 403; no workspace write.",
+      "LunaRoute": "Repository-declared canonical brain; endpoint authentication and data flow unverified."
+    },
+    "prediction_engine": {
+      "source_definitions": 47,
+      "scheduled_sources": 45,
+      "xrpl_node_sources_excluded_by_default": 2,
+      "implemented": [
+        "Read-only scheduled collector design",
+        "SHA-256 raw receipt/hash-chain logic",
+        "Point-in-time SQLite feature-store prototype",
+        "Four deterministic baselines",
+        "Chronological walk-forward with purge/embargo",
+        "Calibration and PSI drift diagnostics",
+        "Fail-closed forecast ledger requiring Ed25519 evaluator attestation"
+      ],
+      "outstanding": [
+        "Independent WORM storage and trusted timestamp anchoring",
+        "Replayable historical feature-store reconstruction",
+        "Synchronized historical spot/L2/derivatives/exchange-flow/collateral data",
+        "Vintage-aware macro/geopolitical event timeline",
+        "Scenario and counter-hypothesis generation",
+        "Production evaluator signing key",
+        "Independent shadow outcomes",
+        "Demonstrated out-of-sample lift over all four baselines"
+      ],
+      "execution_status": "Collector is gated to main; it has not been verified running on main because the integration is not merged. Run32 web observations are not model-eligible."
+    },
+    "forecast": {
+      "status": "NOT_ISSUED",
+      "reason": "No independent raw-source receipts for Run32 web observations; production anchoring, replay, scenario generation, shadow outcomes and out-of-sample lift remain incomplete.",
+      "directional_forecast_issued": false,
+      "paper_trade": false,
+      "real_money": false
+    },
+    "source_receipts": {
+      "barrot_ingestion_status": "NOT_CAPTURED",
+      "raw_sha256": null,
+      "immutable_receipt": null,
+      "model_eligible": false,
+      "reason": "Web research was retrieved for this handoff, not through Barrot's raw-source ingestion pipeline."
+    },
+    "sources": [
+      {
+        "name": "Fuelmaps XRP spot order book",
+        "url": "https://fuelmaps.io/order-book/",
+        "published_at": "2026-11-11 18:00 UTC snapshot",
+        "independence": "Independent market-data aggregator; six venues; excludes Binance and Bitget; hourly average of one-minute resting-book observations."
+      },
+      {
+        "name": "TradRadar XRP derivatives",
+        "url": "https://tradradar.io/markets/xrp",
+        "published_at": "2026-11-11 17:25 UTC snapshot",
+        "independence": "Separate derivatives aggregator; seven exchanges; 15-minute delay; venue universe differs from Liqwall."
+      },
+      {
+        "name": "Liqwall XRP derivatives",
+        "url": "https://liqwall.com/coins/xrp",
+        "published_at": "2026-11-11 17:32 UTC snapshot",
+        "independence": "Separate derivatives aggregator; Binance account ratio is venue-specific; OI universe differs from TradRadar."
+      },
+      {
+        "name": "OptimistFi/Deribit XRP options",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "published_at": "2026-11-11 15:00 UTC snapshot",
+        "independence": "Options data provider; near-expiry and deferred expiries have different skew."
+      },
+      {
+        "name": "Alpha Finance XRP ETF dashboard",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "published_at": "Through 2026-11-10 session",
+        "independence": "Five-fund flow series; not an issuer-level source; reports no holdings/AUM."
+      },
+      {
+        "name": "XRP Insights XRP Radar",
+        "url": "https://xrp-insights.com/xrp-radar",
+        "published_at": "2026-11-11 17:44 UTC price; supply/on-chain data as individually dated",
+        "independence": "Separate tracker; exchange balances from attributed XRPL wallets; several fields are estimates or company-reported."
+      },
+      {
+        "name": "XRP Insights ETF flow JSON and methodology",
+        "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+        "published_at": "Data as of 2026-11-10; generated 2026-11-11 17:14 UTC",
+        "independence": "Holdings-delta model; excludes GXRP flow due capture gap; includes BITW XRP sleeve; some reconstructed rows and non-creation changes can count as flow."
+      },
+      {
+        "name": "OCC CAS — First National Digital Currency Bank, N.A.",
+        "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+        "published_at": "Consummated/effective 2026-07-24",
+        "independence": "Primary regulator record; legal entity is Circle-affiliated First National Digital Currency Bank, not Circle Internet Financial LLC itself."
+      },
+      {
+        "name": "OCC CAS — Ripple National Trust Bank",
+        "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "published_at": "Consummated/effective 2026-10-26",
+        "independence": "Primary regulator record; trust-bank charter status does not establish first customer custody transaction or reserve-duty transfer."
+      },
+      {
+        "name": "Ripple final OCC approval announcement",
+        "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+        "published_at": "2026-10-26",
+        "independence": "Company announcement; states approved activities and that Standard Custody remains RLUSD issuer."
+      },
+      {
+        "name": "OCC CAS — Coinbase National Trust Company",
+        "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "published_at": "Consummated/effective 2026-11-06",
+        "independence": "Primary regulator record; trust powers requested."
+      },
+      {
+        "name": "Coinbase National Trust Company announcement",
+        "url": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+        "published_at": "2026-11-09; related Prime article 2026-11-11",
+        "independence": "Company announcement; describes custody scope and Prime access, not XRP-specific collateral eligibility."
+      },
+      {
+        "name": "Reuters — PNC/Coinbase USDC pilot",
+        "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+        "published_at": "2026-11-09",
+        "independence": "Independent reporting; limited pilot, incoming USDC automatically converted to USD deposits."
+      },
+      {
+        "name": "Reuters — Deutsche Bank custody launch",
+        "url": "https://www.reuters.com/business/finance/deutsche-bank-launches-digital-asset-custody-service-2026-11-11/",
+        "published_at": "2026-11-11 08:03 UTC",
+        "independence": "Independent reporting says service live for paying clients; conflicts with current official product page's future-tense availability notice."
+      },
+      {
+        "name": "Deutsche Bank official custody product page",
+        "url": "https://digitalassets.db.com/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company page still says services become available after regulatory timeline and technical readiness; lists BTC, ETH, USDC, EURC and EURAU, not XRP."
+      },
+      {
+        "name": "FSB Türkiye peer review",
+        "url": "https://www.fsb.org/2026/11/fsb-recommends-turkiye-further-strengthens-its-regulatory-framework-for-crypto-assets-and-stablecoins/",
+        "published_at": "2026-11-11",
+        "independence": "Primary international standard-setter; recommends dedicated stablecoin regime, stability monitoring, supervision and cross-border cooperation."
+      },
+      {
+        "name": "Japan SME Investment & Consultation Companies Act, Article 2",
+        "url": "https://www.sbic-wj.co.jp/disclose/law/",
+        "published_at": "Current official law text",
+        "independence": "Primary statutory source naming Tokyo, Nagoya and Osaka companies."
+      },
+      {
+        "name": "Tokyo SBIC official company profile",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company source; identifies SBIC East Japan."
+      },
+      {
+        "name": "Nagoya SBIC official company profile",
+        "url": "https://www.sbic-cj.co.jp/company/about/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company source; identifies SBIC Central Japan."
+      },
+      {
+        "name": "Osaka SBIC official company profile",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "published_at": "Retrieved 2026-11-11",
+        "independence": "Primary company source; identifies SBIC West Japan."
+      },
+      {
+        "name": "SBIC West ChatGPT seminar PDF",
+        "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "published_at": "Seminar 2024-10-23",
+        "independence": "Primary event notice; educational seminar for accountants/support institutions, not OpenAI partnership evidence."
+      },
+      {
+        "name": "Kamilah Stevenson YouTube candidate",
+        "url": "https://www.youtube.com/@drkamilahstevenson",
+        "published_at": "Retrieved 2026-11-11; crawler page stale",
+        "independence": "First-party channel ownership not verified; third-party aggregators disagree on subscriber/video counts; no videos attributed."
+      }
+    ],
+    "limitations": [
+      "No provider-side OAuth revocation evidence.",
+      "Branch-protection details unavailable via current API permission.",
+      "No verified first customer custody operation for Ripple National Trust Bank.",
+      "Deutsche Bank launch status conflicts between Reuters and its own product page.",
+      "ETF aggregators have different fund universes and flow methodologies.",
+      "No first-party YouTube ownership linkage for the candidate Kamilah channel."
+    ]
+  },
+  "run32_source_provenance": [
+    {
+      "name": "Fuelmaps XRP spot order book",
+      "url": "https://fuelmaps.io/order-book/",
+      "published_at": "2026-11-11 18:00 UTC snapshot",
+      "independence": "Independent market-data aggregator; six venues; excludes Binance and Bitget; hourly average of one-minute resting-book observations."
+    },
+    {
+      "name": "TradRadar XRP derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "published_at": "2026-11-11 17:25 UTC snapshot",
+      "independence": "Separate derivatives aggregator; seven exchanges; 15-minute delay; venue universe differs from Liqwall."
+    },
+    {
+      "name": "Liqwall XRP derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "published_at": "2026-11-11 17:32 UTC snapshot",
+      "independence": "Separate derivatives aggregator; Binance account ratio is venue-specific; OI universe differs from TradRadar."
+    },
+    {
+      "name": "OptimistFi/Deribit XRP options",
+      "url": "https://optimistfi.com/perps/options/xrp",
+      "published_at": "2026-11-11 15:00 UTC snapshot",
+      "independence": "Options data provider; near-expiry and deferred expiries have different skew."
+    },
+    {
+      "name": "Alpha Finance XRP ETF dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "published_at": "Through 2026-11-10 session",
+      "independence": "Five-fund flow series; not an issuer-level source; reports no holdings/AUM."
+    },
+    {
+      "name": "XRP Insights XRP Radar",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "published_at": "2026-11-11 17:44 UTC price; supply/on-chain data as individually dated",
+      "independence": "Separate tracker; exchange balances from attributed XRPL wallets; several fields are estimates or company-reported."
+    },
+    {
+      "name": "XRP Insights ETF flow JSON and methodology",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "published_at": "Data as of 2026-11-10; generated 2026-11-11 17:14 UTC",
+      "independence": "Holdings-delta model; excludes GXRP flow due capture gap; includes BITW XRP sleeve; some reconstructed rows and non-creation changes can count as flow."
+    },
+    {
+      "name": "OCC CAS — First National Digital Currency Bank, N.A.",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at": "Consummated/effective 2026-07-24",
+      "independence": "Primary regulator record; legal entity is Circle-affiliated First National Digital Currency Bank, not Circle Internet Financial LLC itself."
+    },
+    {
+      "name": "OCC CAS — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at": "Consummated/effective 2026-10-26",
+      "independence": "Primary regulator record; trust-bank charter status does not establish first customer custody transaction or reserve-duty transfer."
+    },
+    {
+      "name": "Ripple final OCC approval announcement",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "published_at": "2026-10-26",
+      "independence": "Company announcement; states approved activities and that Standard Custody remains RLUSD issuer."
+    },
+    {
+      "name": "OCC CAS — Coinbase National Trust Company",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at": "Consummated/effective 2026-11-06",
+      "independence": "Primary regulator record; trust powers requested."
+    },
+    {
+      "name": "Coinbase National Trust Company announcement",
+      "url": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+      "published_at": "2026-11-09; related Prime article 2026-11-11",
+      "independence": "Company announcement; describes custody scope and Prime access, not XRP-specific collateral eligibility."
+    },
+    {
+      "name": "Reuters — PNC/Coinbase USDC pilot",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published_at": "2026-11-09",
+      "independence": "Independent reporting; limited pilot, incoming USDC automatically converted to USD deposits."
+    },
+    {
+      "name": "Reuters — Deutsche Bank custody launch",
+      "url": "https://www.reuters.com/business/finance/deutsche-bank-launches-digital-asset-custody-service-2026-11-11/",
+      "published_at": "2026-11-11 08:03 UTC",
+      "independence": "Independent reporting says service live for paying clients; conflicts with current official product page's future-tense availability notice."
+    },
+    {
+      "name": "Deutsche Bank official custody product page",
+      "url": "https://digitalassets.db.com/",
+      "published_at": "Retrieved 2026-11-11",
+      "independence": "Primary company page still says services become available after regulatory timeline and technical readiness; lists BTC, ETH, USDC, EURC and EURAU, not XRP."
+    },
+    {
+      "name": "FSB Türkiye peer review",
+      "url": "https://www.fsb.org/2026/11/fsb-recommends-turkiye-further-strengthens-its-regulatory-framework-for-crypto-assets-and-stablecoins/",
+      "published_at": "2026-11-11",
+      "independence": "Primary international standard-setter; recommends dedicated stablecoin regime, stability monitoring, supervision and cross-border cooperation."
+    },
+    {
+      "name": "Japan SME Investment & Consultation Companies Act, Article 2",
+      "url": "https://www.sbic-wj.co.jp/disclose/law/",
+      "published_at": "Current official law text",
+      "independence": "Primary statutory source naming Tokyo, Nagoya and Osaka companies."
+    },
+    {
+      "name": "Tokyo SBIC official company profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "published_at": "Retrieved 2026-11-11",
+      "independence": "Primary company source; identifies SBIC East Japan."
+    },
+    {
+      "name": "Nagoya SBIC official company profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "published_at": "Retrieved 2026-11-11",
+      "independence": "Primary company source; identifies SBIC Central Japan."
+    },
+    {
+      "name": "Osaka SBIC official company profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "published_at": "Retrieved 2026-11-11",
+      "independence": "Primary company source; identifies SBIC West Japan."
+    },
+    {
+      "name": "SBIC West ChatGPT seminar PDF",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "published_at": "Seminar 2024-10-23",
+      "independence": "Primary event notice; educational seminar for accountants/support institutions, not OpenAI partnership evidence."
+    },
+    {
+      "name": "Kamilah Stevenson YouTube candidate",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "published_at": "Retrieved 2026-11-11; crawler page stale",
+      "independence": "First-party channel ownership not verified; third-party aggregators disagree on subscriber/video counts; no videos attributed."
+    }
+  ],
+  "run32_forecast_status": {
+    "status": "NOT_ISSUED",
+    "reason": "No independent raw-source receipts for Run32 web observations; production anchoring, replay, scenario generation, shadow outcomes and out-of-sample lift remain incomplete.",
+    "directional_forecast_issued": false,
+    "paper_trade": false,
+    "real_money": false
   }
 }
