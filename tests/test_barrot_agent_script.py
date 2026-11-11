@@ -387,6 +387,65 @@ def test_persist_scientific_discovery_fails_closed_without_repository_sync_appro
         })
 
 
+def test_checkout_branch_requires_explicit_approval_before_new_branch(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_TITLE", "Repair issue")
+    monkeypatch.setenv("BRANCH", "new-task-branch")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    for name in (
+        "BARROT_EXTERNAL_ACTION_APPROVED",
+        "BARROT_EXTERNAL_ACTION_APPROVAL_ID",
+        "BARROT_EXTERNAL_ACTION_REPO",
+        "BARROT_EXTERNAL_ACTION_BRANCH",
+        "BARROT_EXTERNAL_ACTIONS",
+        "BARROT_PR_DEDUP_VERIFIED",
+        "BARROT_PR_DEDUP_EVIDENCE",
+    ):
+        monkeypatch.delenv(name, raising=False)
+    module = load_script_module("barrot_branch_gate_test")
+
+    class EmptyInventory:
+        returncode = 0
+        stdout = "[]"
+        stderr = ""
+
+    monkeypatch.setattr(module, "run_gh", lambda args: EmptyInventory())
+    monkeypatch.setattr(
+        module,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(returncode=1, stdout="", stderr=""),
+    )
+    checked_out = []
+    monkeypatch.setattr(module, "safe_checkout_branch", lambda root, branch: checked_out.append(branch))
+
+    with pytest.raises(RuntimeError, match="repository_branch_create"):
+        module.checkout_branch("new-task-branch")
+    assert checked_out == []
+
+
+def test_post_issue_comment_requires_explicit_approval(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_TITLE", "Repair issue")
+    monkeypatch.setenv("ISSUE_NUMBER", "42")
+    monkeypatch.setenv("BRANCH", "barrot/task-42")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    for name in (
+        "BARROT_EXTERNAL_ACTION_APPROVED",
+        "BARROT_EXTERNAL_ACTION_APPROVAL_ID",
+        "BARROT_EXTERNAL_ACTION_REPO",
+        "BARROT_EXTERNAL_ACTION_BRANCH",
+        "BARROT_EXTERNAL_ACTIONS",
+    ):
+        monkeypatch.delenv(name, raising=False)
+    module = load_script_module("barrot_issue_comment_gate_test")
+    calls = []
+    monkeypatch.setattr(module, "run_gh", lambda args: calls.append(args))
+
+    module.post_issue_comment("This comment must not be posted without approval.")
+
+    assert calls == []
+
+
 def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "AUDIT AND RECOMMEND ONLY. No implementation changes are authorized by this issue.")

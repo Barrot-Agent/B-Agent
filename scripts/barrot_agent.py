@@ -1001,6 +1001,12 @@ def checkout_branch(branch: str) -> None:
 def post_issue_comment(message: str) -> None:
     if not ISSUE or ISSUE == "0":
         return
+    if not external_action_approval_valid("issue_comment", BRANCH):
+        print(
+            "ISSUE_COMMENT_BLOCKED=explicit issue_comment approval is absent for this repository/branch.",
+            file=sys.stderr,
+        )
+        return
     import tempfile
 
     with tempfile.TemporaryDirectory(prefix="barrot_comment_") as tmp_dir:
