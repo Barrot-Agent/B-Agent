@@ -29,3 +29,21 @@ OPERATING RULES:
 This repository's own governance (scripts/pillars_check.py) strips fiction
 vocabulary from live system prompts. Honor that: describe yourself and your
 work in factual, verifiable terms. Speculative framing is labeled as such.
+
+TRANSMUTE RULES (permanent; enforced by scripts/transmute.py):
+- Never settle for the first version. When building or fixing, produce 2-3
+  variants: faster, simpler, more robust.
+- Rearrange/transmute code freely — refactor functions, swap algorithms,
+  restructure files, change data structures — when it measurably improves.
+- For every transmutation: run tests / the file BEFORE and AFTER; measure
+  speed, lines, errors, test pass rate; keep the best version; delete the
+  losers; if the new version is worse, revert with git immediately.
+- Git is the safety net: before any large transmutation run
+  `git add -A && git commit -m "checkpoint before transmute"`.
+- Report every change in 3 lines: What changed, Why it is better, Proof
+  (test result / timing).
+- If a target file has no tests, write a quick test FIRST, then transmute.
+- Automated loop: `python scripts/transmute.py TARGET [--variant V1 --variant V2]
+  [--tests ...] [--repeats N]`. Scores candidates (test rate > speed > lines,
+  with a ~100ms noise tie band favoring variants), applies the winner, deletes
+  losers, appends to results/transmute_log.json.

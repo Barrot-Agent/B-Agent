@@ -1,0 +1,71 @@
+[
+  {
+    "timestamp": "20261111_230341",
+    "target": "/data/data/com.termux/files/home/barrot/Barrot-Agent/scripts/mmi_compiler.py",
+    "cwd": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+    "runner": "unittest",
+    "tests": [
+      "tests/test_mmi_compiler.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 598,
+        "lines": 21,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 6,
+        "test_total": 6,
+        "test_wall_ms": 1035,
+        "score": 998944.0,
+        "tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.033s\n\nOK\n"
+      },
+      {
+        "name": "variant_faster.py",
+        "compile_ok": true,
+        "compile_ms": 595,
+        "lines": 33,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 6,
+        "test_total": 6,
+        "test_wall_ms": 1033,
+        "score": 998934.0,
+        "tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.017s\n\nOK\n"
+      },
+      {
+        "name": "variant_robust.py",
+        "compile_ok": true,
+        "compile_ms": 540,
+        "lines": 35,
+        "test_ok": false,
+        "test_rate": 0.6666666666666666,
+        "test_passed": 4,
+        "test_total": 6,
+        "test_wall_ms": 914,
+        "score": 665717.67,
+        "tail": "~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'SIGNAL: ERROR' not found in 'SIGNAL: STRIKE_READY | AVG_BID: 10.5000'\n\n======================================================================\nFAIL: test_short_bid_line_is_error (tests.test_mmi_compiler.TestParseLiquidity.test_short_bid_line_is_error)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/data/data/com.termux/files/home/barrot/Barrot-Agent/tests/test_mmi_compiler.py\", line 55, in test_short_bid_line_is_error\n    self.assertIn(\"SIGNAL: ERROR\", out)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'SIGNAL: ERROR' not found in 'SIGNAL: NULL_LIQUIDITY'\n\n----------------------------------------------------------------------\nRan 6 tests in 0.014s\n\nFAILED (failures=2)\n"
+      },
+      {
+        "name": "variant_simpler.py",
+        "compile_ok": true,
+        "compile_ms": 564,
+        "lines": 20,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 6,
+        "test_total": 6,
+        "test_wall_ms": 1005,
+        "score": 998975.0,
+        "tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.023s\n\nOK\n"
+      }
+    ],
+    "winner": "variant_simpler.py",
+    "applied": true,
+    "losers_deleted": [
+      "variant_faster.py",
+      "variant_robust.py"
+    ]
+  }
+]
