@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T12:25:00Z",
-  "last_verified_at_utc": "2026-11-11T12:25:00Z",
+  "captured_at_utc": "2026-11-11T12:29:30Z",
+  "last_verified_at_utc": "2026-11-11T12:29:30Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
+  "observed_integration_head_before_map_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,14 +13,14 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2018,
+    "ahead_by": 2019,
     "behind_by": 0,
     "changed_files": 1000,
     "workflow_files": 44,
     "other_changed_paths": 956,
-    "head_sha": "3e8b0216e35fbd881abe054699246ed79693ab85",
+    "head_sha": "a41fa6497c8ad199026582518b5a5d522d267552",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2018,
+    "commits": 2019,
     "additions": 236814,
     "deletions": 4363,
     "formal_approvals": 0,
@@ -28,7 +28,7 @@
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Open draft integration PR. Latest completed full suite is on 7b027: 3,426 passed and one actual-capital identity phrase assertion failed. The phrase is corrected on 3e8b, but main's base CI path filters excluded the map-only commit, so no exact-head CI ran on 3e8b. This test-path update triggers the full suite on the new head. Dependency audit and fail-closed gates passed on the prior tested head. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
+    "note": "Open draft integration PR. Exact head a41fa has 3,425 full-suite passes and two current-map assertion failures: exact failure-classification wording and the SBI Circle investment split object. Core tests passed; dependency audit and fail-closed gates passed. These two map fields are corrected in the current commit; next exact-head full suite required. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -362,9 +362,9 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
+    "integration_head_before_current_map_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
     "integration_pr": 1661,
-    "integration_ahead_by": 2018,
+    "integration_ahead_by": 2019,
     "integration_behind_by": 0,
     "changed_files": 1000,
     "workflow_files_changed": 44,
@@ -386,8 +386,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "LATEST_FULL_SUITE_ON_7B027_FAILED_1_IDENTITY_PHRASE_ASSERTION; 3426 PASSED; CURRENT_MAP_FIX_ON_3E8B; CURRENT_HEAD_3E8B_NOT_YET_TESTED; CORE_AUDIT_AND_FAIL_CLOSED_PASSED",
-    "last_reconciled_at_utc": "2026-11-11T12:25:00Z",
+    "latest_exact_head_ci": "HEAD_A41F_FULL_SUITE_FAILED_2_MAP_ASSERTIONS; 3425 PASSED; 8 SUBTESTS; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
+    "last_reconciled_at_utc": "2026-11-11T12:29:30Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2153,
@@ -417,14 +417,15 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "latest_full_suite_tested_head": "a41fa6497c8ad199026582518b5a5d522d267552",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
-    "ci_trigger_note": "Main's base-branch CI workflow still has source/test path filters, so map-only commits did not trigger PR CI. Integration's changed ci.yml removes those filters; this test-path update triggers exact-head CI now and ensures all PR/main changes run full suite after merge."
+    "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
+    "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552"
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
-    "integration_pr_run": 43019446250,
-    "integration_full_suite_job": 130518665760,
+    "integration_pr_run": 43020294695,
+    "integration_full_suite_job": 130521515361,
     "dependency_audit_run": 43012397124,
     "dependency_audit_job": 130359654212,
     "fail_closed_gate_run": 43012397190,
@@ -450,13 +451,13 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 43019446305
+      "run_id": 43020294570
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 43019446044,
-      "push_run_id": 43019437009
+      "run_id": 43020294593,
+      "push_run_id": 43020284304
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -495,38 +496,39 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-      "run_id": 43019446250,
-      "full_suite_job": 130518665760,
-      "core_suite_job": 130518665304,
+      "head_sha": "a41fa6497c8ad199026582518b5a5d522d267552",
+      "run_id": 43020294695,
+      "full_suite_job": 130521515361,
+      "core_suite_job": 130521516135,
       "conclusion": "failure",
       "full_repository_suite": {
-        "passed": 3426,
-        "failed": 1,
+        "passed": 3425,
+        "failed": 2,
         "subtests": 8,
         "coverage_percent": 59.98,
         "exact_head_verified": true,
-        "duration_seconds": 91.87,
+        "duration_seconds": 60.54,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
       "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
         "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
       ],
       "core_tests": "passed",
       "dependency_audit": {
         "passed": true,
-        "run_id": 43019446305,
+        "run_id": 43020294570,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
         "passed": true,
-        "run_id": 43019446044,
-        "push_run_id": 43019437009,
+        "run_id": 43020294593,
+        "push_run_id": 43020284304,
         "automatic_merge_enabled": false
       },
-      "failure_classification": "Exact-head full-suite on 7b027 failed one identity-research phrase assertion: the actual-capital field needed the literal 'not a standardized XRP metric'. That wording is corrected on 3e8b, but main's base CI path filters did not run the full suite for the map-only commit. This test-path update triggers the complete suite on the new head. 3,426 passed; core, dependency audit and fail-closed gates passed. No runtime XRP engine failure was identified."
+      "failure_classification": "Exact-head full-suite failed two current-map assertions: the failure-classification field did not begin with the required exact phrase, and the SBI Circle investment split object was missing. 3,425 passed; eight subtests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -589,7 +591,7 @@
       },
       "conclusion": "failure"
     },
-    "push_dependency_audit_run": 43015581969,
+    "push_dependency_audit_run": 43020284312,
     "push_fail_closed_gate_run": 43012390401,
     "current_run23_documentation_test_commit_ci": "PENDING; this new commit will require its own exact-head CI before merge.",
     "previous_attempt_before_run23": {
@@ -601,7 +603,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 130518665304
+    "core_suite_job": 130521516135
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
@@ -631,9 +633,13 @@
       ],
       "full_suite_job_preserved": true,
       "exact_head_pr_verification_preserved": true,
-      "base_main_workflow_path_filters_block_research_only_changes": true,
-      "integration_workflow_removes_path_filters": true,
-      "test_path_update_used_to_trigger_exact_head_ci": true
+      "base_main_workflow_path_filters_block_research_only_changes": false,
+      "integration_workflow_removes_path_filters": false,
+      "test_path_update_used_to_trigger_exact_head_ci": false,
+      "base_main_workflow_has_path_filters": false,
+      "integration_workflow_has_path_filters": false,
+      "test_path_update_used_for_capital_assertions": true,
+      "pr_synchronize_trigger_verified": true
     },
     "main_cross_analysis": {
       "run_id": 43007129290,
@@ -1125,6 +1131,10 @@
         "usdc": "SBI VC Trade launched USDC retail handling in Japan on 2025-03-26 through the SBI/Circle partnership.",
         "rlusd": "SBI VC Trade and Ripple subsidiary Standard Custody signed a Japan RLUSD issuance/distribution MoU on 2025-08-22; current map records handling began 2026-06-24.",
         "interpretation": "USDC and RLUSD are separate stablecoin rails. Neither implies an XRP bridge transaction or XRP collateral demand."
+      },
+      "circle_investment_split_usd": {
+        "SBI Holdings": 25000000,
+        "SBI Shinsei Bank": 25000000
       }
     },
     "evernorth": {
@@ -2401,7 +2411,7 @@
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Run the complete repository suite on the new test-path-triggered exact head; verify all 3,427+ tests and packaged mission.",
+    "Verify the exact-head full repository suite after the two current-map corrections; require zero failures and successful installed-wheel verification.",
     "After the corrected code/map head passes, append the canonical Run24 handoff and BARROT_SYNC evidence, strengthen the test to require the recorded successful exact-head attempt, and verify that documentation head with exact CI.",
     "Complete semantic review of the 956 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
     "Resolve authoritative branch-protection and approval requirements, OAuth revocation evidence and the 17 affected PR branch-tip copies without reading credential contents or rewriting history.",
@@ -3019,8 +3029,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run24d",
-  "latest_run_captured_at_utc": "2026-11-11T12:25:00Z",
+  "latest_run_id": "Run24e",
+  "latest_run_captured_at_utc": "2026-11-11T12:29:30Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4231,6 +4241,31 @@
     },
     "current_head_test_status": "NOT_YET_RUN; test-path change added to trigger main-base PR CI",
     "capital_assertions_added": true,
+    "forecast_status": "NOT_ISSUED",
+    "exact_head_ci": {
+      "run_id": 43020294695,
+      "full_suite_passed": 3425,
+      "full_suite_failed": 2,
+      "core_passed": true,
+      "dependency_audit_passed": true,
+      "fail_closed_gate_passed": true
+    }
+  },
+  "run24e_snapshot": {
+    "captured_at_utc": "2026-11-11T12:29:30Z",
+    "parent_sha": "a41fa6497c8ad199026582518b5a5d522d267552",
+    "corrections": [
+      "Failure classification now starts with the exact required phrase 'Exact-head full-suite failed'.",
+      "Added SBI Circle investment split: $25M SBI Holdings and $25M SBI Shinsei Bank."
+    ],
+    "exact_head_ci": {
+      "run_id": 43020294695,
+      "full_suite_passed": 3425,
+      "full_suite_failed": 2,
+      "core_passed": true,
+      "dependency_audit_passed": true,
+      "fail_closed_gate_passed": true
+    },
     "forecast_status": "NOT_ISSUED"
   }
 }
