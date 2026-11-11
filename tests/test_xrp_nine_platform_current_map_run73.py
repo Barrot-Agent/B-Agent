@@ -297,14 +297,14 @@ def test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates():
     assert sbic["central"].startswith("Nagoya Small and Medium Business")
     assert sbic["west"].startswith("Osaka Small and Medium Business")
     assert "not SBI Holdings" in sbic["distinction"]
-    assert "no OpenAI partnership" in sbic["chatgpt_event"]
-    assert "2025-06-12" in sbic["chatgpt_event"] and "VOST" in sbic["chatgpt_event"]
+    assert "not evidence of an OpenAI commercial partnership" in sbic["chatgpt_event"]
+    assert "June 12-13, 2025" in sbic["chatgpt_event"] and "VOST" in sbic["chatgpt_event"]
     assert "No XRP-linked ASK Coin identity" in identity["ask_coin"]
     assert "UCID 4640" in identity["ask_coin"] and "UCID 7105" in identity["ask_coin"]
     assert "askcoin.net" in identity["ask_coin"] and "HugeDomains" in identity["ask_coin"]
     assert "not a standardized xrp metric" in identity["actual_capital"].lower()
-    assert "ownership remains unverified" in identity["kamilah_stevenson"]
-    assert "no personal-channel inventory" in identity["kamilah_stevenson"]
+    assert "remain unverified" in identity["kamilah_stevenson"]
+    assert "No personal-channel inventory is attributed" in identity["kamilah_stevenson"]
 
 
 def test_macro_and_geopolitical_observations_keep_competing_hypotheses():
