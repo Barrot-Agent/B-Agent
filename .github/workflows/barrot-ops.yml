@@ -77,11 +77,10 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
           if [ -z "$DATABRICKS_HOST" ] || [ -z "$DATABRICKS_TOKEN" ]; then
-            echo "::warning::DATABRICKS_HOST or DATABRICKS_TOKEN not set, skipping notebook upload"
-            exit 0
+            echo "::error::DATABRICKS_HOST and DATABRICKS_TOKEN are required after explicit Databricks import approval"
+            exit 1
           fi
-          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite || \
-            echo "::warning::Notebook upload failed; skipping upload-only step"
+          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite
 
       - name: Kaggle Data Refresh
         if: ${{ inputs.confirm_kaggle_dataset_download == 'YES' }}
@@ -89,8 +88,8 @@ jobs:
           KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
         run: |
           if [ -z "$KAGGLE_JSON" ]; then
-            echo "::warning::KAGGLE_JSON not set, skipping Kaggle refresh"
-            exit 0
+            echo "::error::KAGGLE_JSON is required after explicit Kaggle dataset-download approval"
+            exit 1
           fi
           pip install kaggle
           export KAGGLE_CONFIG_DIR="$RUNNER_TEMP/.kaggle"

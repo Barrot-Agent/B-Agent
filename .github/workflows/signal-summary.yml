@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   summary:
-    if: ${{ inputs.confirm == 'YES' && inputs.expected_main_sha != '' }}
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm == 'YES' && inputs.expected_main_sha != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -37,6 +37,7 @@ jobs:
       - name: Verify exact main SHA
         shell: bash
         run: |
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::External-model workflows must be dispatched from main"; exit 1; }
           if [[ ! "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]; then
             echo "::error::Expected main SHA must be exactly 40 lowercase hexadecimal characters."
             exit 1

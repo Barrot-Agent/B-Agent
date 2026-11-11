@@ -399,3 +399,38 @@ def test_ibm_bob_audit_remains_quarantined_without_repository_transfer() -> None
     assert "actions/upload-artifact@" not in content
     assert "secrets." not in content
     assert "No repository content may be transferred" in content
+
+
+def test_barrot_ops_fails_closed_when_approved_external_credentials_are_missing() -> None:
+    content = _read("barrot-ops.yml")
+    assert "DATABRICKS_HOST and DATABRICKS_TOKEN are required after explicit Databricks import approval" in content
+    assert "KAGGLE_JSON is required after explicit Kaggle dataset-download approval" in content
+    assert "exit 1" in content
+    assert "skipping notebook upload" not in content
+    assert "skipping Kaggle refresh" not in content
+    assert "databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite ||" not in content
+
+
+def test_all_groq_external_research_workflows_are_main_only_and_exact_sha_pinned() -> None:
+    names = (
+        "webmcp-trend-digest.yml",
+        "self-benchmark.yml",
+        "financial-data-refresh.yml",
+        "research-topics.yml",
+        "frontier-digest.yml",
+        "capability-10-design.yml",
+        "capability-discovery.yml",
+        "data-value-triage.yml",
+        "signal-summary.yml",
+    )
+    for name in names:
+        content = _read(name)
+        assert "github.ref == 'refs/heads/main'" in content, name
+        assert "expected_main_sha" in content, name
+        assert "ref: ${{ inputs.expected_main_sha }}" in content, name
+        assert "git ls-remote origin refs/heads/main" in content, name
+        assert "git rev-parse HEAD" in content, name
+        assert "persist-credentials: false" in content, name
+        assert "contents: read" in content, name
+        assert "contents: write" not in content, name
+        assert "GROQ_API_KEY" in content, name

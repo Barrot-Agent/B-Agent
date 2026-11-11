@@ -12,20 +12,39 @@ on:
           - YES
         default: NO
 
+      expected_main_sha:
+        description: "Exact 40-character current main SHA authorized for this external-model run."
+        required: true
+        default: ""
+
 permissions:
   contents: read
 
 jobs:
   benchmark:
-    if: ${{ inputs.confirm_external_research == 'YES' }}
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_external_research == 'YES' && inputs.expected_main_sha != '' }}
     runs-on: ubuntu-latest
     env:
+      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: ${{ inputs.expected_main_sha }}
           persist-credentials: false
+      - name: Verify main dispatch and exact approved revision
+        shell: bash
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::External-model workflows must be dispatched from main"; exit 1; }
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::A full 40-character main SHA is required"; exit 1; }
+          current_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          checked_out="$(git rev-parse HEAD)"
+          [[ "$current_main" == "$EXPECTED_MAIN_SHA" && "$checked_out" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main or checkout differs from the approved SHA"; exit 1; }
+
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
