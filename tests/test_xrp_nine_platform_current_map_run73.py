@@ -140,7 +140,9 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["coverage_percent"] == 59.98
     assert suite["exact_head_verified"] is True
     latest = ci["latest_attempt"]
-    assert latest["head_sha"] == data["integration_pr"]["head_sha"]
+    assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
+    assert len(latest["head_sha"]) == 40 and all(ch in "0123456789abcdef" for ch in latest["head_sha"])
+    assert data["repository_state"]["integration_head_before_current_map_commit"] == data["integration_pr"]["head_sha"]
     suite = latest["full_repository_suite"]
     assert suite["passed"] > 0
     assert suite["failed"] == len(latest["failing_tests"])
@@ -338,6 +340,17 @@ def test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates():
     assert "UCID 4640" in identity["ask_coin"] and "UCID 7105" in identity["ask_coin"]
     assert "askcoin.net" in identity["ask_coin"] and "HugeDomains" in identity["ask_coin"]
     assert "not a standardized xrp metric" in identity["actual_capital"].lower()
+    data = load_current()
+    capital = data["institutional_and_capital"]["evernorth"]
+    assert capital["advance_funding_cash_exact_usd"] == 214049995
+    assert capital["sbi_200m_included_in_advance_funding_pool"] is True
+    assert capital["cantor_eloc"]["proceeds_received_as_of_2026_11_09_usd"] == 0
+    assert capital["resale_registration_detail"]["company_proceeds_from_selling_holder_resales_usd"] == 0
+    assert capital["convertible_senior_pik_note"]["principal_usd"] == 30000000
+    assert capital["in_kind_share_of_reported_closing_xrp_percent"] == 82.17
+    sbi = data["institutional_and_capital"]["sbi_ripple_circle"]
+    assert sbi["circle_equity_investment_usd"] == 50000000
+    assert sbi["circle_investment_split_usd"] == {"SBI Holdings": 25000000, "SBI Shinsei Bank": 25000000}
     assert "remain unverified" in identity["kamilah_stevenson"]
     assert "No personal-channel inventory is attributed" in identity["kamilah_stevenson"]
 

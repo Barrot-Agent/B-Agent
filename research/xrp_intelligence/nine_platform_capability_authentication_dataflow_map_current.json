@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T12:24:10Z",
-  "last_verified_at_utc": "2026-11-11T12:24:10Z",
+  "captured_at_utc": "2026-11-11T12:25:00Z",
+  "last_verified_at_utc": "2026-11-11T12:25:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+  "observed_integration_head_before_map_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,14 +13,14 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2017,
+    "ahead_by": 2018,
     "behind_by": 0,
     "changed_files": 1000,
     "workflow_files": 44,
     "other_changed_paths": 956,
-    "head_sha": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "head_sha": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2017,
+    "commits": 2018,
     "additions": 236814,
     "deletions": 4363,
     "formal_approvals": 0,
@@ -28,7 +28,7 @@
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Open draft integration PR. Exact head 7b027 has 3,426 full-suite passes and one identity-research literal phrase assertion failure; core tests passed. Dependency audit and fail-closed gates passed. One map wording correction is required before the next exact-head full suite. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
+    "note": "Open draft integration PR. Latest completed full suite is on 7b027: 3,426 passed and one actual-capital identity phrase assertion failed. The phrase is corrected on 3e8b, but main's base CI path filters excluded the map-only commit, so no exact-head CI ran on 3e8b. This test-path update triggers the full suite on the new head. Dependency audit and fail-closed gates passed on the prior tested head. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -362,9 +362,9 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "integration_head_before_current_map_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "integration_pr": 1661,
-    "integration_ahead_by": 2017,
+    "integration_ahead_by": 2018,
     "integration_behind_by": 0,
     "changed_files": 1000,
     "workflow_files_changed": 44,
@@ -386,8 +386,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "HEAD_7B027_FULL_SUITE_FAILED_1_IDENTITY_PHRASE_ASSERTION; 3426 PASSED; 8 SUBTESTS; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
-    "last_reconciled_at_utc": "2026-11-11T12:24:10Z",
+    "latest_exact_head_ci": "LATEST_FULL_SUITE_ON_7B027_FAILED_1_IDENTITY_PHRASE_ASSERTION; 3426 PASSED; CURRENT_MAP_FIX_ON_3E8B; CURRENT_HEAD_3E8B_NOT_YET_TESTED; CORE_AUDIT_AND_FAIL_CLOSED_PASSED",
+    "last_reconciled_at_utc": "2026-11-11T12:25:00Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2153,
@@ -416,7 +416,10 @@
     "run24b_expected_changed_files_after_artifact": 1000,
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
-    "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3"
+    "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "latest_full_suite_tested_head": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
+    "ci_trigger_note": "Main's base-branch CI workflow still has source/test path filters, so map-only commits did not trigger PR CI. Integration's changed ci.yml removes those filters; this test-path update triggers exact-head CI now and ensures all PR/main changes run full suite after merge."
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
@@ -523,7 +526,7 @@
         "push_run_id": 43019437009,
         "automatic_merge_enabled": false
       },
-      "failure_classification": "Exact-head full-suite failed one identity-research phrase assertion: the actual-capital field needed the literal 'not a standardized XRP metric'. 3,426 passed; eight subtests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
+      "failure_classification": "Exact-head full-suite on 7b027 failed one identity-research phrase assertion: the actual-capital field needed the literal 'not a standardized XRP metric'. That wording is corrected on 3e8b, but main's base CI path filters did not run the full suite for the map-only commit. This test-path update triggers the complete suite on the new head. 3,426 passed; core, dependency audit and fail-closed gates passed. No runtime XRP engine failure was identified."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -627,7 +630,10 @@
         "main"
       ],
       "full_suite_job_preserved": true,
-      "exact_head_pr_verification_preserved": true
+      "exact_head_pr_verification_preserved": true,
+      "base_main_workflow_path_filters_block_research_only_changes": true,
+      "integration_workflow_removes_path_filters": true,
+      "test_path_update_used_to_trigger_exact_head_ci": true
     },
     "main_cross_analysis": {
       "run_id": 43007129290,
@@ -2395,8 +2401,8 @@
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Verify the exact identity-research phrase correction on the next full-suite run; do not merge until the complete suite passes on the exact current head.",
-    "After the corrected code/map head passes, append the canonical Run24 handoff and BARROT_SYNC evidence, then verify the documentation head with exact CI.",
+    "Run the complete repository suite on the new test-path-triggered exact head; verify all 3,427+ tests and packaged mission.",
+    "After the corrected code/map head passes, append the canonical Run24 handoff and BARROT_SYNC evidence, strengthen the test to require the recorded successful exact-head attempt, and verify that documentation head with exact CI.",
     "Complete semantic review of the 956 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
     "Resolve authoritative branch-protection and approval requirements, OAuth revocation evidence and the 17 affected PR branch-tip copies without reading credential contents or rewriting history.",
     "Resolve automatic GitHub Pages publication authorization before any merge.",
@@ -3013,8 +3019,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run24c",
-  "latest_run_captured_at_utc": "2026-11-11T12:24:10Z",
+  "latest_run_id": "Run24d",
+  "latest_run_captured_at_utc": "2026-11-11T12:25:00Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4209,6 +4215,22 @@
       "dependency_audit_passed": true,
       "fail_closed_gate_passed": true
     },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "run24d_snapshot": {
+    "captured_at_utc": "2026-11-11T12:25:00Z",
+    "parent_sha": "3e8b0216e35fbd881abe054699246ed79693ab85",
+    "current_pr": 1661,
+    "latest_full_suite_tested_head": "7b027617057e951bd4851c998e0f0bb11ed979e3",
+    "latest_full_suite": {
+      "run_id": 43019446250,
+      "passed": 3426,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_percent": 59.98
+    },
+    "current_head_test_status": "NOT_YET_RUN; test-path change added to trigger main-base PR CI",
+    "capital_assertions_added": true,
     "forecast_status": "NOT_ISSUED"
   }
 }
