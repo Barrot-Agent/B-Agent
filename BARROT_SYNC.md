@@ -1,24 +1,22 @@
 ## Last State
 
-**Run21 — 2026-11-11T10:26:35Z**
+**Run25 — 2026-11-11T13:02:17Z**
 
 - Main SHA 84f28ee7755607236231545a14f3d093c1baaa85.
-- Integration branch integration/xrp-v3-unified-main-20261111; tested head before this handoff commit a62bad5747fc89b7e851aa9e0b2f3f58ae94106e; 2,010 ahead, zero behind.
-- PR #1661 open/draft/clean; 995 changed files (44 workflows, 951 other paths); zero reviews, approvals or threads.
-- Complete trees: main 1,388 entries; integration 2,260. Open PRs: 374 (360 drafts, 14 non-drafts).
-- Exact head a62bad5747fc89b7e851aa9e0b2f3f58ae94106e: 3,423 full-suite tests passed, zero failures, eight subtests, 59.98% coverage, 95.96s; 714 core tests passed; wheel and mission verified; six-manifest audit with zero known vulnerabilities; fail-closed PR/push gates passed. CI 43003897822; audit 43003898372; gates 43003898327/43003891044.
-- Two prior failures on 4af844 were Run20 JSON wording assertions, not runtime failures; corrected in 01ab254 and a62bad.
-- Main CI 42944864014 passed 718 tests; latest scheduled Cross Analysis 42998707871 succeeded; Pages 42944862534 succeeded as automatic side effect.
-- Spot: OKX 1.0593 USDT (09:58:10.975 UTC); Kraken $1.05705 (no event timestamp); USDT/USD 0.99894; normalized asynchronous midpoint difference 0.0693%. Fuelmaps spot depth 02:00 UTC is stale; Basis perp book 06:28 UTC is separate.
-- TradRadar OI $1.57B (-4.96%) and Liqwall $1.15B (-2.2%) are non-comparable; positive funding and long-heavy liquidations. Alpha ETF Nov10 -$7.6M but 30-session +$1.3M; CryptoKeyhole Nov10 partial; XRP Insights Nov9 -9.54M XRP. Do not average.
-- Evernorth named Ripple/Kraken/Coinbase/BitGo as planned Q4 partners for its 473M XRP treasury; no deployment amount or yield verified. PNC pilot is USDC-to-USD; BNY custody and Ripple Treasury are not XRP purchase evidence.
-- October U.S. CPI beat consensus; Treasury yields and dollar rose. Broad risk-off context; no XRP directional forecast.
-- SBIC East/Central/West are distinct Japanese regional companies, not SBI Holdings. ASK candidates remain separate and unlinked to XRP. Kamilah person confirmed; candidate channel not verified; 21 candidate references, zero verified inventory.
-- Prediction engine: 46 source definitions, read-only scheduled collector on integration only, SHA-256 receipts, SQLite point-in-time store, four baselines, purged/embargoed walk-forward, calibration/PSI and Ed25519 ledger. WORM, replayable history, scenario engine, trusted key, shadow outcomes and OOS lift remain missing. Forecast NOT_ISSUED.
-- Security: .config/gh/hosts.yml absent main/integration, present on 17/17 rechecked PR tips; contents not read. Repo reports OAuth revoked; provider revocation unverified. Main protected, integration unprotected; protection endpoint 403; fallback ruleset disabled. Pages publication authorization unresolved.
-- Backlog: #1661 blocked; #1660 superseded candidate retained; #1653/#1614/#1611/#1610/#1612/#1269/#1608 unique or unreviewed. No source PR closed.
-- Next: finish 951-path semantic review; resolve branch protection/approvals, OAuth revocation evidence and Pages side effect; reconcile overlaps; only then consider merge and verify main/first ingestion.
-- No merge, deployment, secret action, external transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure.
+- Integration branch integration/xrp-v3-unified-main-20261111; verified code parent 7155eede2a852355e5626c4f00c9c79a5ed1d1c7, 2,020 ahead and zero behind.
+- PR #1661 open/draft/mergeable; 1,000 changed files (44 workflows, 956 other paths), 238,998 additions and 4,363 deletions; zero formal reviews/approvals/threads. Open PR inventory: 374 (360 drafts, 14 non-drafts).
+- Complete trees before this atomic Run25 commit: main 1,388 entries/1,288 files; integration 2,265 entries/2,153 files. Paginated PR file page 11 returned zero.
+- Exact code parent 7155eede passed 3,427 full-suite tests, zero failures, eight subtests, 59.98% coverage, 96.83s; wheel and installed Barrot V3/XRP mission verified. Six-manifest audit passed with zero known vulnerabilities; fail-closed gate passed. Runs 43020833064, 43020832903 and 43020833177.
+- Main Cross Analysis 43023990234 succeeded. Main read-only Pillars check 43025487840 failed: GitHub App environment variables missing, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+- OKX/Kraken normalized asynchronous spot gap about 0.41%; Fuelmaps 12:00 spot depth bid-heavy; TradRadar/Liqwall positive funding, falling OI and long-heavy liquidations but different universes; Deribit 30-day skew modestly put-rich; ETF providers disagree on flow windows; XRPL.to token-market/DEX pages disagree and neither measures native XRP/USD spot.
+- SEC Evernorth prospectus adds liquidity risk: June30 cash $0.1M, no revenue, $696.1M working-capital deficit; $9.7M Ripple facility drawn by Oct7; $30M PIK notes with conditional cash-settlement exposure up to $120M; Cantor ELOC had zero proceeds as of prospectus. Accounting losses include large non-cash impairment; operating cash use was about $1.33M.
+- GitHub connector metadata reports admin=true, exceeding least privilege. Branch-protection endpoint HTTP 403; visible fallback ruleset disabled. No merge.
+- Nine-platform status: ChatGPT GitHub API verified but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no approval; HF BUILD_ERROR; Kaggle untested; Databricks 403; GitHub App missing required environment variables; LunaRoute endpoint unverified.
+- Forecast NOT_ISSUED. Run25 web observations excluded from model features because no Barrot raw receipts or trusted timestamp anchor were created.
+- Backlog: #1661 blocked; #1660 retained as superseded candidate; preserve unique/unreviewed research/prediction/safety/topology PRs; no source PR closed.
+- The atomic Run25 map/handoff/research commit is being applied to the existing #1661 branch with a fast-forward expected-SHA check. Its own exact-head CI remains required.
+- Next: verify exact-head CI on the Run25 commit; reduce connector permissions; resolve GitHub App/Databricks/HF health; obtain branch-protection/approval visibility; remediate 17 credential-path tips additively; complete semantic review; obtain Pages authorization; then consider merge only after all gates pass.
+- No merge, deployment, secret action, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
@@ -77,3 +75,6 @@
 
 
 - 2026-11-11T11:35:50Z — Run23: fetched current main/integration trees, all 374 open PRs, #1661 ancestry/diff/reviews, exact-head CI, main Cross Analysis/Pages runs, dependencies and security metadata. Verified 3,423 full-suite tests on parent head 7a55848, six-manifest dependency audit, fail-closed gates and wheel/mission verification. Rechecked all 17 current credential-path PR tips without reading contents. Found GitHub connector metadata grants admin=true, main branch checks are empty/admin-exempt and fallback ruleset disabled. Corrected stale map/test claim: hf_space/app.py is changed for consent-gated NOT_ISSUED UI, but Orbitron typography is unchanged. Refreshed XRP spot, exchange-wallet balances, Evernorth on-chain attribution, cbXRP proof-of-reserves, RLUSD reserves, options tail-risk and XRPL quantum roadmap; all web observations remain non-model-eligible without Barrot raw receipts. No merge or external action.
+
+
+- 2026-11-11T13:02:17Z — Run25: verified current main/integration trees, complete 374-PR inventory and #1661 file pagination; verified 3,427-test exact code parent, six-manifest zero-vulnerability audit and fail-closed gate; diagnosed main Pillars failure (GitHub App env missing, Databricks 403, Hugging Face BUILD_ERROR); refreshed spot/L2/derivatives/options/ETF/XRPL DEX; reconciled Evernorth SEC financing/liquidity risk and SBI/Ripple stablecoin rails; added one structured research artifact and updated the canonical handoff/map on the existing integration branch. No merge or external action.

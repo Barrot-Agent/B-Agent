@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T12:29:30Z",
-  "last_verified_at_utc": "2026-11-11T12:29:30Z",
+  "captured_at_utc": "2026-11-11T13:02:17Z",
+  "last_verified_at_utc": "2026-11-11T13:02:17Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
+  "observed_integration_head_before_map_commit": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,22 +13,22 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2019,
+    "ahead_by": 2020,
     "behind_by": 0,
     "changed_files": 1000,
     "workflow_files": 44,
     "other_changed_paths": 956,
-    "head_sha": "a41fa6497c8ad199026582518b5a5d522d267552",
+    "head_sha": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2019,
-    "additions": 236814,
+    "commits": 2020,
+    "additions": 238998,
     "deletions": 4363,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Open draft integration PR. Exact head a41fa has 3,425 full-suite passes and two current-map assertion failures: exact failure-classification wording and the SBI Circle investment split object. Core tests passed; dependency audit and fail-closed gates passed. These two map fields are corrected in the current commit; next exact-head full suite required. Do not merge: draft, zero approvals/reviews, branch-protection details unavailable, visible fallback ruleset disabled, admin connector can bypass non-admin-only rules, credential-path copies remain on 17 other open PR tips, semantic review incomplete and Pages side effect not authorized."
+    "note": "Open draft integration PR. Exact code parent 7155eede passed 3,427 full-suite tests, zero failures, eight subtests, 59.98% coverage, wheel and installed mission verification; six-manifest audit found zero known vulnerabilities; fail-closed gate passed. The Run25 atomic handoff/map/research commit is documentation/evidence only and requires its own exact-head CI. Do not merge: draft, zero formal approvals/reviews, branch-protection details HTTP 403, visible fallback ruleset disabled, connector admin=true and overprivileged, 17 other PR tips retain credential-path copies, semantic review of 956 paths incomplete and Pages publication unauthorized."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -224,7 +224,22 @@
     "minority_objections": "Preserved in source records, provider disagreements, counter-hypotheses, and GitHub review threads.",
     "red_team_review": "Local review only; no independent external red-team run verified.",
     "no_unverified_platform_calls": true,
-    "no_external_model_data_transfer": true
+    "no_external_model_data_transfer": true,
+    "latest_main_pillars_check": {
+      "run_id": 43025487840,
+      "job_id": 130539023370,
+      "conclusion": "failure",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "created_at": "2026-11-11T13:02:07Z",
+      "completed_at": "2026-11-11T13:02:17Z",
+      "reasons": [
+        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ],
+      "read_only": true,
+      "not_main_code_ci": true
+    }
   },
   "task_assignments_designed_not_executed": [
     {
@@ -358,13 +373,15 @@
       "checked_at_utc": "2026-11-11T11:35:50Z"
     },
     "least_privilege_target_met": false,
-    "github_pages_side_effect": "Main Pages build 42944862534 succeeded after the prior main push; another main push would automatically publish. No new public publication was authorized."
+    "github_pages_side_effect": "Main Pages build 42944862534 succeeded after the prior main push; another main push would automatically publish. No new public publication was authorized.",
+    "github_connector_admin_permission_overprivileged": true,
+    "github_connector_permission_scope": "Repository metadata reports admin=true, maintain=true, push=true, pull=true and triage=true. This exceeds least privilege. No main write, secret-value read or branch-protection bypass was performed."
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
+    "integration_head_before_current_map_commit": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
     "integration_pr": 1661,
-    "integration_ahead_by": 2019,
+    "integration_ahead_by": 2020,
     "integration_behind_by": 0,
     "changed_files": 1000,
     "workflow_files_changed": 44,
@@ -386,8 +403,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "HEAD_A41F_FULL_SUITE_FAILED_2_MAP_ASSERTIONS; 3425 PASSED; 8 SUBTESTS; CORE_PASSED; DEPENDENCY_AUDIT_AND_FAIL_CLOSED_GATES_PASSED; NO_RUNTIME_XRP_ENGINE_FAILURE_IDENTIFIED",
-    "last_reconciled_at_utc": "2026-11-11T12:29:30Z",
+    "latest_exact_head_ci": "HEAD_7155EED_FULL_SUITE_PASSED_3427_ZERO_FAILURES; 8 SUBTESTS; 59.98_PERCENT_COVERAGE; WHEEL_AND_INSTALLED_MISSION_VERIFIED; SIX_MANIFEST_AUDIT_ZERO_KNOWN_VULNERABILITIES; FAIL_CLOSED_GATE_PASSED; RUN25_DOC_COMMIT_REQUIRES_EXACT_HEAD_CI",
+    "last_reconciled_at_utc": "2026-11-11T13:02:17Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2153,
@@ -417,18 +434,38 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "a41fa6497c8ad199026582518b5a5d522d267552",
+    "latest_full_suite_tested_head": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
-    "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552"
+    "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
+    "current_head_before_run25_commit": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "run25_new_paths": [
+      "research/xrp_intelligence/20261111T130217Z-run25-evernorth-financing-risk-market-microstructure-and-platform-health.json"
+    ],
+    "run25_expected_changed_files_after_commit": 1001,
+    "run25_expected_non_workflow_paths_after_commit": 957,
+    "run25_expected_integration_tree_entries_after_commit": 2266,
+    "run25_expected_ahead_by_after_commit": 2021,
+    "latest_main_pillars_check": {
+      "run_id": 43025487840,
+      "job_id": 130539023370,
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "conclusion": "failure",
+      "reasons": [
+        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ],
+      "read_only": true
+    }
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
-    "integration_pr_run": 43020294695,
-    "integration_full_suite_job": 130521515361,
-    "dependency_audit_run": 43012397124,
-    "dependency_audit_job": 130359654212,
-    "fail_closed_gate_run": 43012397190,
+    "integration_pr_run": 43020833064,
+    "integration_full_suite_job": 130523332780,
+    "dependency_audit_run": 43020832903,
+    "dependency_audit_job": 130523332180,
+    "fail_closed_gate_run": 43020833177,
     "fail_closed_gate_job": 130359653643,
     "full_repository_suite": {
       "passed": 3423,
@@ -451,13 +488,13 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 43020294570
+      "run_id": 43020832903,
+      "job_id": 130523332180
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 43020294593,
-      "push_run_id": 43020284304
+      "run_id": 43020833177
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -496,39 +533,40 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "a41fa6497c8ad199026582518b5a5d522d267552",
-      "run_id": 43020294695,
-      "full_suite_job": 130521515361,
-      "core_suite_job": 130521516135,
-      "conclusion": "failure",
+      "head_sha": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+      "run_id": 43020833064,
+      "full_suite_job": 130523332780,
+      "core_suite_job": 130523332437,
+      "conclusion": "success",
       "full_repository_suite": {
-        "passed": 3425,
-        "failed": 2,
+        "passed": 3427,
+        "failed": 0,
         "subtests": 8,
         "coverage_percent": 59.98,
         "exact_head_verified": true,
-        "duration_seconds": 60.54,
-        "wheel_build_verified": false,
-        "installed_wheel_primary_mission_verified": false
+        "duration_seconds": 96.83,
+        "wheel_build_verified": true,
+        "installed_wheel_primary_mission_verified": true,
+        "statements": 23403,
+        "missed_statements": 8923,
+        "branches": 7108,
+        "partial_branches": 1422
       },
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
-      ],
+      "failing_tests": [],
       "core_tests": "passed",
       "dependency_audit": {
         "passed": true,
-        "run_id": 43020294570,
+        "run_id": 43020832903,
+        "job_id": 130523332180,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
         "passed": true,
-        "run_id": 43020294593,
-        "push_run_id": 43020284304,
+        "run_id": 43020833177,
         "automatic_merge_enabled": false
       },
-      "failure_classification": "Exact-head full-suite failed two current-map assertions: the failure-classification field did not begin with the required exact phrase, and the SBI Circle investment split object was missing. 3,425 passed; eight subtests passed; core suite passed; dependency audit and fail-closed gates passed. No runtime XRP prediction-engine failure was identified."
+      "failure_classification": "Exact-head full-suite passed on 7155eede2a852355e5626c4f00c9c79a5ed1d1c7: 3,427 passed, zero failures, eight subtests, 59.98% coverage; wheel and installed Barrot V3/XRP mission verification passed. Six dependency manifests audited with zero known vulnerabilities. Fail-closed gate passed. The Run25 documentation/map/research commit requires its own exact-head CI."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -603,7 +641,30 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 130521516135
+    "core_suite_job": 130523332437,
+    "latest_main_workflows": {
+      "cross_analysis": {
+        "run_id": 43023990234,
+        "conclusion": "success",
+        "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+        "created_at": "2026-11-11T12:51:39Z"
+      },
+      "pillars_consistency_check": {
+        "run_id": 43025487840,
+        "job_id": 130539023370,
+        "conclusion": "failure",
+        "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+        "created_at": "2026-11-11T13:02:07Z",
+        "completed_at": "2026-11-11T13:02:17Z",
+        "reasons": [
+          "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+          "Databricks HTTP 403",
+          "Hugging Face BUILD_ERROR"
+        ],
+        "read_only": true,
+        "not_main_code_ci": true
+      }
+    }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
@@ -660,6 +721,27 @@
       "daily_feature_store_days": 90,
       "independent_worm": false,
       "assessment": "GitHub Actions artifacts/cache are not WORM or long-term immutable storage."
+    },
+    "latest_main_pillars_check": {
+      "run_id": 43025487840,
+      "job_id": 130539023370,
+      "conclusion": "failure",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "created_at": "2026-11-11T13:02:07Z",
+      "completed_at": "2026-11-11T13:02:17Z",
+      "reasons": [
+        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ],
+      "read_only": true,
+      "not_main_code_ci": true
+    },
+    "latest_main_cross_analysis": {
+      "run_id": 43023990234,
+      "conclusion": "success",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "created_at": "2026-11-11T12:51:39Z"
     }
   },
   "prediction_engine_status": {
@@ -1288,7 +1370,52 @@
         "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/"
       }
     ],
-    "no_new_verified_xrp_capital_in_this_run": "No new current-run XRP purchase identified. Historical capital reconciled: SBI disclosed $200M cash invested in Evernorth; issuer's >$1B headline combines cash and spot XRP."
+    "no_new_verified_xrp_capital_in_this_run": "No new current-run XRP purchase identified. Historical capital reconciled: SBI disclosed $200M cash invested in Evernorth; issuer's >$1B headline combines cash and spot XRP.",
+    "latest_evernorth_financing_risk_update": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "accession": "000162828026072223",
+      "financials_as_of": "2026-06-30",
+      "revenue": "None reported",
+      "unrestricted_cash_usd": 100000,
+      "net_working_capital_deficit_usd": 696100000,
+      "accumulated_deficit_usd": 340900000,
+      "reported_operating_loss_usd": 265600000,
+      "net_loss_six_months_usd": 188134733,
+      "operating_cash_used_six_months_usd": 1329805,
+      "noncash_digital_asset_impairment_usd": 264146097,
+      "noncash_gain_refundable_investor_advances_usd": 77477000,
+      "caveat": "Accounting losses are not cash burn; major noncash impairment/fair-value items. June30 liquidity predates later October financing."
+    },
+    "latest_sbi_stablecoin_rail_update": {
+      "standard_chartered_rlusd": {
+        "date": "2026-10-12",
+        "status": "RLUSD custody on XRPL live through DIFC branch; LMAX collateral integration remains planned, not proven live.",
+        "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/"
+      },
+      "sbi_rlusd": {
+        "date": "2026-06-24",
+        "status": "SBI VC Trade handling/distribution; not XRP purchase evidence.",
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+      },
+      "sbi_jpysc": {
+        "date": "2026-06-24",
+        "issuer": "SBI Shinsei Trust Bank",
+        "distributor": "SBI VC Trade",
+        "partner": "Startale Group",
+        "status": "JPYSC issuance/distribution rail; not XRP collateral.",
+        "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+      },
+      "sbi_jpysc_jgb": {
+        "date": "2026-09-07",
+        "status": "Part of JPYSC trust backing invested in Japanese government bonds; not XRP.",
+        "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+      },
+      "sbi_ripple_asia": {
+        "date": "2026-02-26",
+        "status": "Tokenized-deposit concept proof using MoneyTap/XRPL; not verified production XRP payment volume.",
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html"
+      }
+    }
   },
   "identity_research": {
     "sbic": {
@@ -2411,13 +2538,14 @@
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Verify the exact-head full repository suite after the two current-map corrections; require zero failures and successful installed-wheel verification.",
-    "After the corrected code/map head passes, append the canonical Run24 handoff and BARROT_SYNC evidence, strengthen the test to require the recorded successful exact-head attempt, and verify that documentation head with exact CI.",
-    "Complete semantic review of the 956 existing non-workflow paths, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.",
-    "Resolve authoritative branch-protection and approval requirements, OAuth revocation evidence and the 17 affected PR branch-tip copies without reading credential contents or rewriting history.",
+    "Run the full repository suite, dependency audit and fail-closed gates on the atomic Run25 handoff/map/research commit; do not reuse parent-head evidence as current-head verification.",
+    "Complete semantic review of the 956 pre-existing non-workflow paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger and public interfaces.",
+    "Reduce GitHub connector permissions to least privilege and obtain authoritative branch-protection/required-approval visibility; do not merge while connector is admin-exempt and requirements are unknown.",
+    "Resolve GitHub App environment/authentication, Databricks HTTP 403 and Hugging Face BUILD_ERROR through their owners; do not claim the nine-platform network is connected.",
+    "Verify provider-side OAuth revocation and remediate the 17 affected PR branch tips additively without reading credential contents or rewriting history.",
     "Resolve automatic GitHub Pages publication authorization before any merge.",
-    "Keep XRP collector off main until authorized merge; then verify the first read-only main ingestion and raw-source receipt chain.",
-    "Implement independent WORM/timestamp anchoring and replayable feature-store reconstruction; keep forecast issuance disabled until shadow and out-of-sample gates pass."
+    "Continue synchronized XRP spot/L2/flow/derivatives/collateral history and Evernorth financing event tracking; add scenario/counter-hypothesis generation and independent WORM/timestamp anchoring.",
+    "Keep forecasts NOT_ISSUED until independent shadow outcomes, calibration, drift and out-of-sample lift gates pass."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-11T07:58:26.504Z",
@@ -3029,8 +3157,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run24e",
-  "latest_run_captured_at_utc": "2026-11-11T12:29:30Z",
+  "latest_run_id": "Run25",
+  "latest_run_captured_at_utc": "2026-11-11T13:02:17Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4265,6 +4393,57 @@
       "core_passed": true,
       "dependency_audit_passed": true,
       "fail_closed_gate_passed": true
+    },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "latest_web_research_run25": {
+    "captured_at_utc": "2026-11-11T13:02:17Z",
+    "artifact_path": "research/xrp_intelligence/20261111T130217Z-run25-evernorth-financing-risk-market-microstructure-and-platform-health.json",
+    "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "parent_sha": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "raw_source_receipts_created": false,
+    "model_eligible": false,
+    "summary": [
+      "Normalized asynchronous OKX/Kraken gap about -0.41%; Kraken event timestamp unavailable.",
+      "Fuelmaps six-venue spot book bid-heavy near price; Binance/Bitget excluded and resting orders cancellable.",
+      "TradRadar/Liqwall show positive funding, falling OI and long-heavy liquidations; universes differ.",
+      "Deribit 30-day skew -0.6 points at 12:00 UTC; near expiries put-rich.",
+      "ETF outflows differ by source universe/window; 30-session Alpha flow remains positive.",
+      "XRPL.to token-market and DEX-stat pages disagree; neither measures native XRP/USD spot turnover.",
+      "SEC Evernorth prospectus adds liquidity/funding risk: low historical cash, no revenue, related-party debt, $30M notes with conditional cash-settlement exposure and zero ELOC proceeds as of prospectus."
+    ]
+  },
+  "run25_snapshot": {
+    "captured_at_utc": "2026-11-11T13:02:17Z",
+    "parent_sha": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "artifact_path": "research/xrp_intelligence/20261111T130217Z-run25-evernorth-financing-risk-market-microstructure-and-platform-health.json",
+    "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "repository": {
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "pr": 1661,
+      "ahead": 2020,
+      "behind": 0,
+      "changed_files_before_commit": 1000
+    },
+    "exact_head_ci": {
+      "run_id": 43020833064,
+      "passed": 3427,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "full_suite_job": 130523332780,
+      "dependency_audit_run": 43020832903,
+      "known_vulnerabilities": 0,
+      "fail_closed_gate_run": 43020833177
+    },
+    "main_pillars_check": {
+      "run_id": 43025487840,
+      "conclusion": "failure",
+      "reasons": [
+        "GitHub App environment missing",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ]
     },
     "forecast_status": "NOT_ISSUED"
   }
