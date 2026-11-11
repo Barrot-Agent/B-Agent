@@ -1,0 +1,28 @@
+name: Barrot Sync
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  barrot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run Barrot on LunaRoute
+        env:
+          LUNAROUTE_API_KEY: ${{ secrets.LUNAROUTE_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          echo "Barrot running on LunaRoute - $LUNAROUTE_API_KEY" | cut -c1-30
+          python b_agent.py --sync || echo "b_agent.py sync skipped - manual sync"
+      - name: Commit sync update if changed
+        run: |
+          git config user.name "Barrot"
+          git config user.email "barrot@lunaroute.local"
+          git add BARROT_SYNC.md || true
+          git diff --cached --quiet || git commit -m "Barrot Sync: update BARROT_SYNC.md via LunaRoute"
+          git push || true
