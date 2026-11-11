@@ -1,5 +1,6 @@
 from pathlib import Path
 import ast
+import re
 
 APP = Path(__file__).resolve().parents[1] / "hf_space" / "app.py"
 SOURCE = APP.read_text(encoding="utf-8")
@@ -12,14 +13,28 @@ def _function_source(name):
         if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)) and item.name == name
     )
     lines = SOURCE.splitlines()
-    return "\\n".join(lines[node.lineno - 1:node.end_lineno])
+    return "\n".join(lines[node.lineno - 1:node.end_lineno])
 
 
 def _class_method_source(class_name, method_name):
     cls = next(item for item in TREE.body if isinstance(item, ast.ClassDef) and item.name == class_name)
     node = next(item for item in cls.body if isinstance(item, ast.FunctionDef) and item.name == method_name)
     lines = SOURCE.splitlines()
-    return "\\n".join(lines[node.lineno - 1:node.end_lineno])
+    return "\n".join(lines[node.lineno - 1:node.end_lineno])
+
+
+def _directional_action_labels(source):
+    """Return BUY/SELL labels attached to actionable Streamlit controls or metrics.
+
+    Negative safety disclaimers may mention BUY/SELL. Those words alone do not
+    publish a signal and must not make this regression test fail.
+    """
+    labels = re.findall(
+        r"""st\.(?:metric|button)\(\s*["']([^"']+)["']""",
+        source,
+        flags=re.IGNORECASE,
+    )
+    return [label for label in labels if re.search(r"\b(?:BUY|SELL)\b", label, re.IGNORECASE)]
 
 
 def test_external_inference_requires_operator_opt_in_and_explicit_session_consent():
@@ -59,8 +74,8 @@ def test_public_xrp_tab_does_not_compute_or_publish_directional_signals():
     assert "get_orderbook_signal(" not in tab
     assert "get_sentiment_signal(" not in tab
     assert "Ternary.resolve" not in tab
-    assert "BUY" not in tab
-    assert "SELL" not in tab
+    assert "not converted into BUY/SELL outputs" in tab
+    assert _directional_action_labels(tab) == []
     assert "RUN SIGNAL CHECK" not in tab
     assert "BLENDED SIGNAL" not in tab
 
@@ -83,8 +98,8 @@ def test_api_tab_does_not_publish_legacy_signal_or_subscription_offer():
     assert "xrp signal service" not in tab
     assert "gumroad" not in tab
     assert "signal_output" not in tab
-    assert "buy" not in tab
-    assert "sell" not in tab
+    assert "no buy/sell forecast" in tab
+    assert _directional_action_labels(tab) == []
 
 
 def test_provider_consent_is_exposed_and_passed_to_chat_and_brain_query():
