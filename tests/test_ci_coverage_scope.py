@@ -36,3 +36,13 @@ def test_default_pyproject_coverage_config_includes_major_packages():
     for package in ("agi", "ingestion", "analysis", "monetization", "orchestration", "rendering"):
         assert f'"barrot_agent/{package}/*"' not in pyproject
     assert '"barrot_agent/smart_agent.py"' not in pyproject
+
+
+def test_integration_full_suite_runs_once_on_pull_request_not_duplicate_push():
+    content = WORKFLOW.read_text(encoding="utf-8")
+    push = content.split("  push:", 1)[1].split("  pull_request:", 1)[0]
+    pull_request = content.split("  pull_request:", 1)[1].split("  workflow_dispatch:", 1)[0]
+    assert "branches: [main]" in push
+    assert "integration/**" not in push
+    assert "branches: [main]" in pull_request
+    assert "  full-suite:" in content

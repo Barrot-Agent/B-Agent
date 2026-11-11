@@ -7483,3 +7483,71 @@ Keep #1661 draft and unmerged. The latest exact-head full-suite result is failin
 6. Continue scheduled XRP source ingestion only after an authorized merge; keep directional forecasts disabled until out-of-sample and shadow criteria pass.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+
+## Run 12G — exact-head prediction-engine verification and XRP identity/ETF reconciliation
+
+### Integrated repository and exact-head verification
+- Main SHA: \`84f28ee7755607236231545a14f3d093c1baaa85\`.
+- Active successor: PR #1661, branch \`integration/xrp-v3-unified-main-20261111\`, head before this Run12G update \`92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb\`.
+- GitHub compare: 1,979 commits ahead, zero behind; 977 changed files, 44 workflow files and 933 other changed paths.
+- Main tree: 1,388 entries, 86 workflows. Integration tree before this update: 2,246 entries, 87 workflows. No Orbit skill paths remain on the successor branch.
+- PR #1661 remains draft/open/mergeable with zero formal approvals and zero unresolved review threads. PR #1660 remains open as a superseded source candidate; it is not closed before successor merge and verification.
+- Main branch reports protected=true; detailed protection requirements remain unavailable through the current GitHub connection (HTTP 403).
+
+Exact-head CI on \`92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb\`:
+- Full repository suite: **3,397 passed, 0 failed, 8 subtests passed**.
+- Inclusive package coverage: **59.89%**, above the 53% gate.
+- Full-suite PR run: [42957736027](https://github.com/Barrot-Agent/B-Agent/actions/runs/42957736027), job 130316743950.
+- Full-suite push run on the same exact head: [42957728782](https://github.com/Barrot-Agent/B-Agent/actions/runs/42957728782), job 130316716184.
+- Wheel build and installed-wheel verification passed; Barrot V3, the XRP primary mission and packaged research resources loaded from the installed wheel.
+- Six dependency manifests audited; zero known vulnerabilities: [42957736104](https://github.com/Barrot-Agent/B-Agent/actions/runs/42957736104).
+- Fail-closed gate passed; automatic merge remained disabled: [42957736119](https://github.com/Barrot-Agent/B-Agent/actions/runs/42957736119).
+- Main CI also passed on exact main SHA \`84f28ee\`: [42944864014](https://github.com/Barrot-Agent/B-Agent/actions/runs/42944864014).
+- GitHub Actions cache budget is exhausted and cache writes are read-only. This caused a warning only; tests and wheel verification succeeded.
+
+The same integration head ran the full suite twice because CI listened to both push on integration branches and pull_request. This update narrows push to main only while preserving pull_request to main and the full-suite job. A test guards that behavior. The new workflow/test/handoff head requires its own fresh exact-head CI.
+
+### ETF flow disagreement — do not average
+The Alpha Finance dashboard reports five of five funds complete for the Nov 10 session: -$7.6M daily, -$18M over seven sessions, +$1.3M over 30 sessions and +$1.71B cumulative since Nov 14, 2025. It reports flows, not current holdings or AUM. [Alpha Finance](https://alphafinance.io/etf/xrp/)
+
+CryptoKeyhole's ETF dashboard has a different XRP issuer-coverage state: its Nov 10 XRP row is pending Franklin and Canary; Nov 9 is pending 21Shares TOXR; its latest complete XRP session is Nov 6, four of six funds, -752,048 XRP. [CryptoKeyhole ETF flows](https://cryptokeyhole.com/etf-flows/all/)
+
+XRP Insights' Nov 9 snapshot reports approximately -9.54M XRP across six spot products plus BITW, excluding GXRP from flow totals because of a data gap while retaining holdings. TheXRPInvestor's 12-product universe mixes six spot, four derivatives, one index and one income product; its mixed AUM/volume must not be treated as spot-only.
+
+These are different provider universes and issuer-file completeness states. They are not independent raw settlement observations. ETF flows are now explicitly \`model_eligible=false\` pending issuer-by-issuer fund-universe and cash/XRP settlement reconciliation. Missing issuer data is unknown, not zero. Holdings changes do not prove exchange sales.
+
+### ASK Coin identity resolution
+Three ASK-labeled records are now distinguished:
+1. **Askcoin token, CMC UCID 4640:** preview page; total and circulating supply displayed as zero; no max supply or social links; listed website askcoin.me and explorer.askcoin.me were unavailable during retrieval. No on-chain contract or XRP relationship was verified. [CoinMarketCap Askcoin](https://coinmarketcap.com/currencies/askcoin/)
+2. **Ask Coin exchange:** CMC marks the askcoin.net listing Untracked Listing, inactive, with reserve data unavailable. Direct domain retrieval redirects to HugeDomains parking. [CoinMarketCap Ask Coin exchange](https://coinmarketcap.com/exchanges/ask-coin/)
+3. **Permission Coin ASK, CMC UCID 7105:** separate Base/Polygon token, not the Askcoin UCID 4640 listing and not a verified XRPL integration. [CoinMarketCap Permission Coin](https://coinmarketcap.com/currencies/permission-coin/)
+
+No ASK-labeled candidate has verified XRP/XRPL integration. No fraud conclusion is inferred from a preview listing or parked domain.
+
+### Japan SBIC / ChatGPT
+Tokyo SBIC's primary notice confirms a June 12–13, 2025 two-day generative-AI and machine-learning course for SBIC investee companies only. Day one included ChatGPT usage; day two included Copilot, APIs and RAG. The instructor was Takashi Otsuka of VOST. This is a training event, not an OpenAI partnership. [Tokyo SBIC official training notice](https://www.sbic.co.jp/training/20250612co/)
+
+SBIC East/Central/West remain the distinct Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies, not SBI Holdings.
+
+### Actual capital and Kamilah/Camilla identity gate
+The phrase actual capital appears in secondary commentary but is not a standardized XRP metric. Evernorth cash proceeds, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent ELOC capacity and secondary resales remain separate.
+
+The first-party Kamilah Stevenson page identifies Dr. Kamilah Stevenson as The Wealth Doctor but does not cross-link a YouTube channel. A third-party directory lists multiple social/video links for a same-name person; it is not identity proof. A candidate Ripple video transcript uses the spelling Camila. No YouTube video is attributed or inventoried until a first-party cross-link or equivalent primary identity evidence is established. [First-party Kamilah Stevenson page](https://learn.kamilahstevenson.com/)
+
+### Prediction-engine status
+The integration branch still contains 46 public source definitions: 42 hourly, two weekly CFTC and two non-commercial XRPL node sources excluded by default. Read-only public ingestion, SHA-256 receipts, receipt-chain checks, SQLite point-in-time feature store, deterministic baselines, chronological purge/embargo walk-forward, calibration/drift diagnostics and fail-closed evaluator-attested forecast ledger are implemented in the integration branch.
+
+Production gaps remain: independent WORM/time anchoring, replayable raw-source reconstruction, synchronized historical spot/L2/derivatives/exchange-flow/collateral data, vintage-aware macro events, scenario/counter-hypothesis generation, effective sample-size correction, sufficient independent shadow outcomes and a production evaluator key. The scheduled collector remains integration-only; no successful main-branch ingestion run is verified.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade, real-money action or funds transfer occurred.
+
+### Security and external coordination
+BARROT_SYNC reports the former GitHub CLI OAuth credential as REVOKED; provider-side revocation is not independently verified. Seventeen other open PR tips were previously found to retain the credential path; no contents were read and no history was rewritten. No secret operation was performed.
+
+ChatGPT's current-session GitHub connector is verified. LunaRoute is declared in BARROT_SYNC but authentication/data flow remain unverified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for live data flow. No external-model data transfer occurred.
+
+### Merge decision
+Keep #1661 draft and unmerged. Despite exact-head tests, dependency audit and fail-closed gate passing, 933 non-workflow paths remain semantically unreviewed, formal approvals are absent, detailed branch-protection requirements remain inaccessible, the credential-history remediation is not independently verified, and automatic Pages publication authorization remains unresolved. Retain #1660 until #1661 is merged and its contents verified on main. Do not close unique PRs.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.

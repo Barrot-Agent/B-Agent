@@ -95,14 +95,14 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
     assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
     assert state["integration_pr"] == 1661
-    assert state["integration_head_before_current_map_commit"] == "1ec69ca210f277f2ff65311e29061ba8b52e3a9e"
-    assert state["integration_ahead_by"] == 1974
+    assert state["integration_head_before_current_map_commit"] == "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb"
+    assert state["integration_ahead_by"] == 1979
     assert state["integration_behind_by"] == 0
-    assert state["changed_files"] == 976
+    assert state["changed_files"] == 977
     assert state["workflow_files_changed"] == 44
-    assert state["non_workflow_paths_changed"] == 932
+    assert state["non_workflow_paths_changed"] == 933
     assert state["main_tree_entries"] == 1388
-    assert state["integration_tree_entries"] == 2245
+    assert state["integration_tree_entries"] == 2246
     assert state["orbit_paths_in_integration"] is False
     assert state["hf_space_app_py_changed"] is False
 
@@ -120,13 +120,15 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["draft"] is True
     assert old["behind_by"] == 3
     assert "RETAINED_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
+    assert current["head_sha"] == "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb"
+    assert current["formal_approvals"] == 0
 
 
 def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     ci = load_current()["ci_evidence"]
-    assert ci["integration_head_tested"] == "1ec69ca210f277f2ff65311e29061ba8b52e3a9e"
+    assert ci["integration_head_tested"] == "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb"
     suite = ci["full_repository_suite"]
-    assert suite["passed"] == 3388
+    assert suite["passed"] == 3397
     assert suite["failed"] == 0
     assert suite["subtests"] == 8
     assert suite["coverage_percent"] == 59.89
@@ -136,7 +138,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert ci["dependency_audit"]["passed"] is True
     assert ci["fail_closed_gate"]["passed"] is True
     assert ci["fail_closed_gate"]["automatic_merge_enabled"] is False
-    assert "new map/test commit must receive fresh exact-head CI" in ci["caveat"]
+    assert "both push and pull_request full-suite runs completed successfully" in ci["caveat"]
 
 
 def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
@@ -148,6 +150,9 @@ def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
     assert audit["xrp_public_ingestion_workflow_on_integration"] is True
     assert audit["scheduled_ingestion_main_run_verified"] is False
     assert "no repository content write permission" in audit["xrp_collector_permissions"]
+    assert audit["ci_trigger_optimization"]["committed_in_this_update"] is True
+    assert audit["ci_trigger_optimization"]["new_push_branches"] == ["main"]
+    assert audit["ci_trigger_optimization"]["full_suite_job_preserved"] is True
 
 
 def test_prediction_engine_source_registry_counts_are_consistent():
@@ -246,6 +251,13 @@ def test_etf_flow_windows_and_holdings_limitations_are_separate():
     assert etf["daily_flow_nov10_usd"] == -7_600_000
     assert etf["consecutive_daily_outflows"] == 2
     assert etf["thirty_session_flow_usd"] == 1_300_000
+    assert etf["model_eligible"] is False
+    assert len(etf["provider_disagreement"]) >= 4
+    alpha = next(x for x in etf["provider_disagreement"] if x["provider"] == "Alpha Finance")
+    crypto = next(x for x in etf["provider_disagreement"] if x["provider"] == "CryptoKeyhole")
+    assert alpha["status"] == "complete_5_of_5_reported_funds"
+    assert crypto["status"] == "XRP_row_pending"
+    assert crypto["latest_complete_net_flow_xrp"] == -752_048
     assert any("holdings changes do not prove exchange sales" in x for x in etf["limitations"])
 
 
@@ -286,9 +298,13 @@ def test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates():
     assert sbic["west"].startswith("Osaka Small and Medium Business")
     assert "not SBI Holdings" in sbic["distinction"]
     assert "no OpenAI partnership" in sbic["chatgpt_event"]
+    assert "2025-06-12" in sbic["chatgpt_event"] and "VOST" in sbic["chatgpt_event"]
     assert "No XRP-linked ASK Coin identity" in identity["ask_coin"]
-    assert "cash" in identity["actual_capital"].lower()
+    assert "UCID 4640" in identity["ask_coin"] and "UCID 7105" in identity["ask_coin"]
+    assert "askcoin.net" in identity["ask_coin"] and "HugeDomains" in identity["ask_coin"]
+    assert "not a standardized xrp metric" in identity["actual_capital"].lower()
     assert "ownership remains unverified" in identity["kamilah_stevenson"]
+    assert "no personal-channel inventory" in identity["kamilah_stevenson"]
 
 
 def test_macro_and_geopolitical_observations_keep_competing_hypotheses():
@@ -310,6 +326,7 @@ def test_disagreements_and_counterhypotheses_are_preserved():
     assert "no average is computed" in combined
     assert "counter-hypothesis" in combined or "counter hypothesis" in combined
     assert "neither is a directional forecast" in combined
+    assert "ETF flow coverage disagreement" in combined
 
 
 def test_source_provenance_and_backlog_classification_are_explicit():
@@ -319,6 +336,9 @@ def test_source_provenance_and_backlog_classification_are_explicit():
     assert all(item.get("url") and item.get("source") for item in sources)
     assert any(item["source"] == "CFTC TFF" for item in sources)
     assert any(item["source"] == "SEC Evernorth 424B3" for item in sources)
+    assert any(item["source"] == "CoinMarketCap Askcoin preview listing UCID 4640" for item in sources)
+    assert any(item["source"] == "CryptoKeyhole ETF flows dashboard" for item in sources)
+    assert any(item["source"] == "Tokyo SBIC official generative-AI training notice" for item in sources)
     backlog = data["backlog_classification"]
     assert backlog["1661"] == "BLOCKED_ACTIVE_INTEGRATION_DRAFT"
     assert "SUPERSEDED_SOURCE" in backlog["1660"]

@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T03:49:53.250Z",
-  "last_verified_at_utc": "2026-11-11T03:49:53.250Z",
+  "captured_at_utc": "2026-11-11T04:18:03Z",
+  "last_verified_at_utc": "2026-11-11T04:18:03Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "1ec69ca210f277f2ff65311e29061ba8b52e3a9e",
+  "observed_integration_head_before_map_commit": "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,11 +13,15 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "clean",
-    "ahead_by": 1974,
+    "ahead_by": 1979,
     "behind_by": 0,
-    "changed_files": 976,
+    "changed_files": 977,
     "workflow_files": 44,
-    "other_changed_paths": 932
+    "other_changed_paths": 933,
+    "head_sha": "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb",
+    "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "formal_approvals": 0,
+    "unresolved_review_threads": 0
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -318,22 +322,25 @@
       "credential_contents_read": false,
       "history_rewritten": false,
       "note": "Main and #1661 do not contain the path. All 17 other current PR branch tips still contain the path. BARROT_SYNC.md records OAuth REVOKED, but this GitHub connector cannot independently verify provider-side revocation."
-    }
+    },
+    "main_branch_protected_flag": true,
+    "oauth_revocation_repository_reported": true,
+    "revocation_independently_verified": false
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "1ec69ca210f277f2ff65311e29061ba8b52e3a9e",
+    "integration_head_before_current_map_commit": "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb",
     "integration_pr": 1661,
-    "integration_ahead_by": 1974,
+    "integration_ahead_by": 1979,
     "integration_behind_by": 0,
-    "changed_files": 976,
+    "changed_files": 977,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 932,
+    "non_workflow_paths_changed": 933,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2245,
+    "integration_tree_entries": 2246,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -341,36 +348,46 @@
     "local_git_clone": "FAILED_DNS_RESOLUTION; complete GitHub API metadata/tree/file snapshot was fetched instead"
   },
   "ci_evidence": {
-    "integration_head_tested": "1ec69ca210f277f2ff65311e29061ba8b52e3a9e",
-    "integration_pr_run": 42952712204,
-    "integration_push_run": 42952705756,
-    "dependency_audit_run": 42952712347,
-    "fail_closed_gate_run": 42952712384,
+    "integration_head_tested": "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb",
+    "integration_pr_run": 42957736027,
+    "integration_push_run": 42957728782,
+    "dependency_audit_run": 42957736104,
+    "fail_closed_gate_run": 42957736119,
     "full_repository_suite": {
-      "passed": 3388,
+      "passed": 3397,
       "failed": 0,
       "subtests": 8,
       "coverage_percent": 59.89,
-      "exact_head_verified": true
+      "exact_head_verified": true,
+      "run_id": 42957736027,
+      "job_id": 130316743950,
+      "duration_seconds": 78.59,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true
     },
     "dependency_audit": {
       "manifests": 6,
       "known_vulnerabilities": 0,
-      "passed": true
+      "passed": true,
+      "run_id": 42957736104
     },
     "fail_closed_gate": {
       "passed": true,
-      "automatic_merge_enabled": false
+      "automatic_merge_enabled": false,
+      "run_id": 42957736119
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
       "passed": 718,
       "failed": 0,
-      "subtests": 8
+      "subtests": 8,
+      "exact_head_verified": true,
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85"
     },
     "main_pages_build_run": 42944862534,
     "main_pages_build_conclusion": "success; automatic workflow side effect, not dispatched by this run",
-    "caveat": "These results are for the parent head before the current-map/test update. The new map/test commit must receive fresh exact-head CI before merge."
+    "cache_warning": "GitHub Actions cache budget is exhausted and cache is read-only; warning only, tests and wheel verification succeeded.",
+    "caveat": "Both push and pull_request full-suite runs completed successfully on this exact head. The integration push trigger is narrowed to main only in this update; pull_request continues to run the full suite on the exact integration head."
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
@@ -381,7 +398,26 @@
     "xrp_public_ingestion_workflow_on_integration": true,
     "scheduled_ingestion_main_run_verified": false,
     "xrp_collector_permissions": "contents:read, actions:read; no repository content write permission",
-    "pages_merge_side_effect": "A main push previously triggered Pages publication. A future merge would trigger public publication; explicit authorization remains absent."
+    "pages_merge_side_effect": "A main push previously triggered Pages publication. A future merge would trigger public publication; explicit authorization remains absent.",
+    "ci_trigger_optimization": {
+      "previous_push_branches": [
+        "main",
+        "integration/**"
+      ],
+      "pull_request_branches": [
+        "main"
+      ],
+      "observed_effect": "The same integration PR head ran the full suite twice (push and pull_request).",
+      "committed_in_this_update": true,
+      "new_push_branches": [
+        "main"
+      ],
+      "pull_request_branches_after_update": [
+        "main"
+      ],
+      "full_suite_job_preserved": true,
+      "exact_head_pr_verification_preserved": true
+    }
   },
   "prediction_engine_status": {
     "source_definitions_total": 46,
@@ -620,7 +656,73 @@
         "aggregator coverage and price-weighting matter",
         "holdings changes do not prove exchange sales"
       ],
-      "url": "https://alphafinance.io/etf/xrp/"
+      "url": "https://alphafinance.io/etf/xrp/",
+      "model_eligible": false,
+      "model_eligibility_reason": "Issuer-file coverage disagrees across aggregators; no settlement-level reconciliation. Keep ETF flows descriptive-only until fund universe, missing issuers, holdings and cash/XRP settlement are reconciled.",
+      "provider_disagreement": [
+        {
+          "provider": "Alpha Finance",
+          "url": "https://alphafinance.io/etf/xrp/",
+          "session": "2026-11-10",
+          "status": "complete_5_of_5_reported_funds",
+          "daily_flow_usd": -7600000,
+          "seven_session_flow_usd": -18000000,
+          "thirty_session_flow_usd": 1300000,
+          "cumulative_net_inflow_usd": 1710000000,
+          "limitations": [
+            "aggregated issuer-file flow series",
+            "not current holdings or AUM",
+            "no direct proof of exchange XRP sales"
+          ]
+        },
+        {
+          "provider": "CryptoKeyhole",
+          "url": "https://cryptokeyhole.com/etf-flows/all/",
+          "source_updated_at_utc": "2026-11-11T04:04:00Z",
+          "session": "2026-11-10",
+          "status": "XRP_row_pending",
+          "pending_issuers": [
+            "Franklin",
+            "Canary"
+          ],
+          "latest_complete_xrp_session": "2026-11-06",
+          "latest_complete_funds": "4 of 6",
+          "latest_complete_net_flow_xrp": -752048,
+          "nov9_status": "XRP row pending 21Shares TOXR",
+          "limitations": [
+            "different issuer coverage from Alpha Finance",
+            "pending issuer data is unknown, not zero",
+            "same underlying issuer filings are not independent raw evidence"
+          ]
+        },
+        {
+          "provider": "XRP Insights",
+          "url": "https://xrp-insights.com/etf-tracker",
+          "session": "2026-11-09",
+          "status": "coverage_limited",
+          "fund_universe": "six spot products plus BITW",
+          "reported_net_flow_xrp": -9540000,
+          "limitations": [
+            "GXRP excluded from flow totals because of a data gap while holdings remain displayed",
+            "no Nov 10 flow snapshot in this retrieval"
+          ]
+        },
+        {
+          "provider": "TheXRPInvestor",
+          "status": "mixed_product_universe",
+          "products_total": 12,
+          "composition": {
+            "spot": 6,
+            "derivatives": 4,
+            "index": 1,
+            "income": 1
+          },
+          "limitations": [
+            "mixed AUM and volume are not spot-only ETF metrics",
+            "not directly comparable with spot-only issuer-flow aggregators"
+          ]
+        }
+      ]
     },
     "cftc": {
       "source_as_of": "2026-11-03",
@@ -634,7 +736,8 @@
       "dropped_standard_coinbase_xrp_contract_code": "176LM2",
       "missing_contract_handling": "missing is not zero",
       "url": "https://www.cftc.gov/dea/futures/financial_lf.htm"
-    }
+    },
+    "market_snapshot_age_seconds_at_map_capture": 1690
   },
   "institutional_and_capital": {
     "rlusd": {
@@ -698,7 +801,7 @@
       "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
       "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
       "distinction": "Three separate regional companies under Japan's SME Investment & Consultation Companies law; not SBI Holdings.",
-      "chatgpt_event": "Tokyo SBIC's 2025-06-12/13 ChatGPT training was for portfolio companies and taught by Takashi Otsuka of VOST; no OpenAI partnership is evidenced.",
+      "chatgpt_event": "Primary Tokyo SBIC training notice confirms a two-day generative-AI and machine-learning course on June 12-13, 2025, for SBIC investee companies only (general companies were not eligible). Day one included ChatGPT usage; day two included Copilot, APIs and RAG. Instructor was Takashi Otsuka of VOST. This is a portfolio-company training event, not evidence of an OpenAI commercial partnership.",
       "sources": [
         "https://www.sbic.co.jp/company/profile/",
         "https://www.sbic-cj.co.jp/company/about/",
@@ -706,9 +809,9 @@
         "https://www.sbic.co.jp/training/20250612co/"
       ]
     },
-    "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration verified. Permission Coin ASK is a separate Base/Polygon candidate.",
-    "actual_capital": "No universal metric. Keep cash, in-kind XRP, debt, drawn facilities, ELOC capacity, registered resale shares and secondary resales separate.",
-    "kamilah_stevenson": "First-party site identifies Dr. Kamilah Stevenson/The Wealth Doctor but does not link the candidate YouTube channel. A Glasp-indexed Ripple video is attributed to Kamilah while its transcript says Camila; channel ownership remains unverified. No personal-channel inventory is attributed.",
+    "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
+    "actual_capital": "Exact-phrase research finds actual capital used in secondary commentary, but it is not a standardized XRP metric. For analysis, keep actual cash proceeds, XRP contributed in kind, XRP purchased with cash, debt, drawn facilities, contingent equity capacity, resale registrations and secondary resales separate. Evernorth's SEC 424B3 remains the primary capital source; unreceived ELOC capacity and unspent debt proceeds are not XRP purchases.",
+    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor. The retrieved first-party page does not cross-link a YouTube channel. IDCrawl is a third-party directory showing multiple social/video links for a same-name person, not identity proof. Candidate channel @drkamilahstevenson and Glasp-indexed Ripple videos remain unverified; one candidate transcript spells the speaker's name Camila. No personal-channel inventory is attributed until a first-party cross-link or equivalent primary identity proof is obtained.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
       "https://glasp.co/youtube/QslbjGQD0MU"
@@ -742,7 +845,8 @@
     "TrackWhale's seven-day net exchange outflow can coexist with isolated large deposits; the largest 368.48M XRP transfer is unlabeled and not attributed to an exchange.",
     "ETF daily outflows coexist with positive 30-session and cumulative net flows; windows and fund coverage must remain separate.",
     "Fuelmaps shows bid-heavy resting depth but excludes Binance/Bitget and resting orders can be cancelled; this is not executable support.",
-    "Oil risk from Hormuz shipping attacks competes with de-escalation hopes and inventory data; no mechanical XRP macro coefficient is assumed."
+    "Oil risk from Hormuz shipping attacks competes with de-escalation hopes and inventory data; no mechanical XRP macro coefficient is assumed.",
+    "ETF flow coverage disagreement: Alpha Finance reports five of five funds complete for Nov 10 at -$7.6M, while CryptoKeyhole's XRP row remains pending Franklin and Canary and its latest complete XRP day is Nov 6 (four of six funds, -752,048 XRP). XRP Insights reports Nov 9 across six spot products plus BITW, with GXRP excluded from flow totals because of a data gap. TheXRPInvestor's 12-product universe mixes spot, derivatives, index and income products. Preserve provider universes and missingness; do not average or infer exchange XRP sales."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -847,6 +951,107 @@
       "url": "https://ripple.com/products/stablecoin/transparency/",
       "as_of": "2026-11-05",
       "type": "issuer_reserve_report"
+    },
+    {
+      "source": "CryptoKeyhole ETF flows dashboard",
+      "url": "https://cryptokeyhole.com/etf-flows/all/",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "source_updated_at_utc": "2026-11-11T04:04:00Z",
+      "type": "issuer_file_etf_flow_coverage",
+      "independence_group": "issuer-file-etf-aggregators",
+      "limitations": [
+        "XRP Nov 10 row pending Franklin and Canary",
+        "latest complete XRP session Nov 6, four of six funds, -752048 XRP",
+        "different coverage from Alpha Finance; missing is not zero"
+      ]
+    },
+    {
+      "source": "CoinMarketCap Askcoin preview listing UCID 4640",
+      "url": "https://coinmarketcap.com/currencies/askcoin/",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "type": "third_party_token_listing_metadata",
+      "independence_group": "coinmarketcap_listing",
+      "limitations": [
+        "preview page",
+        "total and circulating supply shown as zero",
+        "no max supply or social links",
+        "askcoin.me and explorer.askcoin.me unavailable during retrieval",
+        "no XRPL contract verified"
+      ]
+    },
+    {
+      "source": "CoinMarketCap Ask Coin exchange listing",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "type": "third_party_exchange_listing_metadata",
+      "independence_group": "coinmarketcap_listing",
+      "limitations": [
+        "Untracked Listing",
+        "inactive",
+        "reserve data unavailable"
+      ]
+    },
+    {
+      "source": "Askcoin.net direct domain retrieval",
+      "url": "https://askcoin.net",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "type": "domain_resolution",
+      "independence_group": "direct_domain_retrieval",
+      "limitations": [
+        "redirected to HugeDomains parking",
+        "does not establish current exchange operation or ownership"
+      ]
+    },
+    {
+      "source": "CoinMarketCap Permission Coin listing UCID 7105",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "type": "third_party_token_listing_metadata",
+      "independence_group": "coinmarketcap_listing",
+      "limitations": [
+        "separate Permission Coin ASK token",
+        "Base/Polygon context",
+        "no XRPL integration verified"
+      ]
+    },
+    {
+      "source": "Tokyo SBIC official generative-AI training notice",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "event_dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "type": "primary_corporate_training_notice",
+      "independence_group": "primary_corporate",
+      "limitations": [
+        "training for investee companies only",
+        "ChatGPT use taught by VOST instructor",
+        "not an OpenAI partnership"
+      ]
+    },
+    {
+      "source": "Kamilah Stevenson first-party site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "type": "first_party_identity_source",
+      "independence_group": "first_party_identity",
+      "limitations": [
+        "identifies Dr Kamilah Stevenson/The Wealth Doctor",
+        "retrieved page does not cross-link a YouTube channel"
+      ]
+    },
+    {
+      "source": "IDCrawl Kamilah Stevenson social/video directory",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "retrieved_at_utc": "2026-11-11T04:18:03Z",
+      "type": "third_party_discovery_only",
+      "independence_group": "third_party_directory",
+      "limitations": [
+        "multiple social/video links",
+        "not primary identity verification",
+        "not sufficient to attribute YouTube videos"
+      ]
     }
   ],
   "backlog_classification": {
@@ -866,6 +1071,9 @@
     "Verify the first successful scheduled XRP ingestion on main only after authorized merge.",
     "Establish independent WORM anchoring, replayable feature-store rebuild and synchronized historical spot/L2/derivatives/flow/collateral data.",
     "Build vintage-aware macro/regulatory/event timelines and scenario/counter-hypothesis generation.",
-    "Accumulate independent non-overlapping OOS and shadow outcomes; keep forecast issuance disabled until calibrated lift is demonstrated."
+    "Accumulate independent non-overlapping OOS and shadow outcomes; keep forecast issuance disabled until calibrated lift is demonstrated.",
+    "Reconcile Alpha Finance and CryptoKeyhole issuer coverage and XRP ETF settlement data before admitting ETF flows as a model feature.",
+    "Resolve the three ASK-labeled candidates through official contract/explorer evidence; do not assume an XRP or XRPL relationship.",
+    "Verify Kamilah Stevenson YouTube ownership through a first-party cross-link before attributing or inventorying videos."
   ]
 }
