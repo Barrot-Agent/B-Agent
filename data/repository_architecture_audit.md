@@ -1,48 +1,75 @@
-# Repository Audit — Structural Review (File-Listing Evidence Only)
+# Repository Audit — Barrot-Agent/B-Agent
 
-## Scope and limitations
+**Scope and method.** The evidence provided is a partial file listing (alphabetical, beginning mid-entry at `…egration.py` and truncating at `apex_lattice/analyzers/capabilities.py`). I have not yet inspected file contents, so everything below is structural evidence only. Where I flag a contradiction or duplication, I mark it as *to verify* rather than asserting cause.
 
-What I received is a single file listing that **begins mid-entry** (`s/v3_acceptance_matrix/case-26.json` — almost certainly a truncated `.barrot/collaboration_records/...` path) and contains **no file contents**. Everything below is derived from names, paths, and counts only. Where I infer, I say so. I cannot verify code quality, workflow logic, test status, or secret exposure from names alone.
+---
 
-Notably, the listing contains **almost no application source code** (no `src/`, no top-level `*.py` outside `.barrot/`, no `pyproject.toml`/`requirements.txt`/`package.json`). Either the listing is incomplete or source lives elsewhere. This audit therefore covers repo governance and meta-structure, not the actual software architecture.
+## Finding 1 — HIGH: Autonomous merge surface is broad, and its integration test is disabled
 
-## Inventory (facts from the listing)
+Nine active workflows touch the PR/merge lifecycle:
 
-| Item | Count / observation |
-|---|---|
-| GitHub Actions workflows | ~86 files, of which 8 carry a `.disabled` suffix |
-| Top-level Markdown docs | ~45, predominantly status/summary-style (`*_SUMMARY.md`, `*_COMPLETE.md`, `*_RESPONSE_*.md`) |
-| `.barrot/` state directory | Acceptance-matrix records (cases 26–30 only), 4 disabled test files, execution ledger (`.jsonl`), identity/manifest/registry JSONs, 2 Python scripts |
-| CI systems | Both `.gitlab-ci.yml` and GitHub workflows present |
-| Committed personal environment files | `.bashrc`, `.gitconfig`, `.config/gh/config.yml`, `.termux/termux.properties`, `.termux_dna_harvest.log` |
-| Governance artifacts present | `SECURITY.md`, `CODEOWNERS`, `dependabot.yml`, `.pre-commit-config.yaml`, `dependency-audit.yml`, `barrot-transparency-audit.yml`, `LICENSE` |
+`auto-resolve-issues`, `barrot-approve-pr`, `barrot-auto-pr`, `barrot-autonomous-resolver`, `barrot-gated-merge`, `barrot-merge`, `barrot-merge-manual`, `barrot-pr-automerge`, `merge-queue`
 
-## Findings
+Two aggravating details:
 
-| # | Severity | Evidence | Concern | Verify by |
-|---|---|---|---|---|
-| 1 | **High** | `barrot-self-upgrade.yml`, `autonomous_self_deployment.yml`, `barrot-approve-pr.yml`, `barrot-pr-automerge.yml`, `barrot-merge.yml` | A self-modification loop combined with automated PR approval/merge is the highest-risk pattern in any repo: a buggy or manipulated workflow can merge its own changes without human review | Read all five workflow files; check permissions blocks, branch protection assumptions, and whether approval is human-gated |
-| 2 | **High** | `.bashrc`, `.gitconfig`, `.config/gh/config.yml`, `.termux/*` committed at repo root | Personal dotfiles in version control frequently leak tokens, host aliases, or history. `gh` config in particular warrants a secrets scan | Inspect contents; run `git log` on these paths; rotate any exposed credentials |
-| 3 | **High (hypothesis)** | `.barrot/disabled_tests/test_email_integration.py`, `test_transformative_insights.py`, `test_merge_conflict_integration.py`, `test_longevity_modules.py` — names correspond to root docs claiming completion (`EMAIL_FEATURE_SUMMARY.md`, `TRANSFORMATIVE_INSIGHTS_IMPLEMENTATION_SUMMARY.md`, `MERGE_CONFLICT_RESOLUTION_GUIDE.md`) | Pattern suggests features documented as delivered while their tests were disabled rather than fixed. This is a claim-vs-verification gap | Diff each disabled test against the corresponding feature code; check CI for whether these paths are excluded |
-| 4 | **Medium** | ~78 active workflows for one repo, including near-duplicates (`diag-cf`/`diag-cf2`, `barrot-merge`/`barrot-merge-manual`, `barrot-auto-pr`/`barrot-pr-automerge`, and `barrot-pr-automerge.yml` existing **both enabled and disabled**) | Workflow sprawl: expanded attack surface, Actions-minutes cost, unclear which path is authoritative | Map triggers (`push`/`schedule`/`workflow_dispatch`) per workflow; identify dead ones |
-| 5 | **Medium** | `capability-1`, `capability-9`, `capability-10` workflows present; `capability-2`–`8` absent | Numbering gap suggests removed or never-committed siblings; relevant if "capability" workflows are referenced by the agent's registry | Check `.barrot/target_registry.json` for references to missing capabilities |
-| 6 | **Medium** | `.gitlab-ci.yml` alongside GitHub workflows | Dual CI risks divergent pipelines (different gates on different platforms) | Compare job sets and gate strictness |
-| 7 | **Medium** | `dump-brain-corpus.yml`, `sync-self-hosted-brain.yml`, `sync-huggingface.yml`, `rotate-databricks-token.yml` | Data-egress and credential-rotation automation; destinations and secret scoping unverifiable from names | Audit target endpoints, token scopes, and least-privilege on the `GITHUB_TOKEN`/PATs used |
-| 8 | **Medium** | `.barrot/` contains `repository_identity.json`, `repo_state_manifest.json`, `barrot_self_repair.py`, `barrot_generated_practice.py` | An agent maintaining its own model of the repo inside the repo. If workflows read these files as input to merge/deploy decisions, the state files become a trust boundary | Trace which workflows consume these JSONs |
-| 9 | **Low** | ~45 status/summary Markdown files at root; no `docs/` visible | Root pollution; "implementation complete" docs are unverified claims, not documentation | Move to `docs/`; mark each as generated artifact |
-| 10 | **Low** | `.termux_dna_harvest.log` committed | Log files in VCS; may contain runtime data | Remove, gitignore |
-| 11 | **Info** | Acceptance matrix shows only cases 26–30 | Cases 1–25 either truncated from the listing or archived elsewhere | Obtain full listing |
+- `barrot-pr-automerge.yml` exists **both active and as `barrot-pr-automerge.yml.disabled`** — a disabled duplicate of a live workflow is a governance hazard in itself.
+- `.barrot/disabled_tests/test_merge_conflict_integration.py` — the merge-conflict integration test is disabled while at least nine autonomous merge/resolve workflows are active. This is the single sharpest risk in the listing: autonomous merge machinery whose conflict-handling test path is not running.
 
-## Positive controls observed
+**Ask:** map triggers and authority (which workflow may actually merge, under what conditions), and document why the conflict-integration test was disabled.
 
-`SECURITY.md`, `CODEOWNERS`, Dependabot, pre-commit hooks, a dependency-audit workflow, and a self-described transparency-audit workflow all exist. Their effectiveness cannot be assessed from names.
+## Finding 2 — HIGH: The system can modify its own safety net
 
-## To complete this audit, I need
+- Three tests relocated to `.barrot/disabled_tests/`: `test_longevity_modules.py`, `test_merge_conflict_integration.py`, `test_transformative_insights.py`. Placing them under a dot-directory removes them from normal test discovery, not just from execution.
+- `.barrot/practice/barrot_self_repair.py` and `barrot_generated_practice.py` exist alongside `barrot-self-upgrade.yml` and `autonomous_self_deployment.yml`.
 
-1. The **untruncated full listing** (entries before `.barrot/` are missing — including, critically, whether a real `.env` is committed).
-2. Contents of the five workflows in Finding 1.
-3. Contents of `.barrot/repository_identity.json`, `repo_state_manifest.json`, and `mmi_execution_ledger.jsonl` (tail).
-4. The four disabled test files and their corresponding feature code.
-5. `.gitignore` (to distinguish intentional exclusion from omission).
+Taken together: self-repair, self-upgrade, autonomous deployment, and agent-managed test disabling are all present with no visible guardrail file. For each disabled test I expect a written reason and a re-enable condition; none is evident from the listing.
 
-I have not characterized what "Barrot," "MMI," or the "orbit" subsystem actually do — the names alone don't support those claims, and I won't invent them.
+## Finding 3 — MEDIUM-HIGH: Workflow sprawl and duplication
+
+86 workflow files total; 78 active, 8 `.disabled`. Specific duplication signals:
+
+- Two pingpong workflows: `Barrot.Cognitive.PingPong.Engine.yml` and `pingpong.yml`.
+- Two diagnostics: `diag-cf.yml`, `diag-cf2.yml`.
+- Two signal cycles: `knowledge-signal-cycle.yml` and `knowledge-signal-cycle-btc.yml`.
+- Capability series is numbered 1, 9, 10 — `capability-2` … `capability-8` are absent from this listing (they would sort between `capability-10-design.yml` and `capability-9-data-resolver.yml`). *To verify:* consolidated into `capability-discovery.yml`, or lost?
+- Naming conventions drift across kebab-case, snake_case, and dotted names.
+- At least ten active deployment paths (HF Spaces, Cloudflare Worker via `a2a/wrangler.toml`, Databricks) plus three disabled deploy workflows (`deploy.yml.disabled`, `sovereign_deploy.yml.disabled`, `barrot_singularity.yml.disabled`).
+
+## Finding 4 — MEDIUM: Runtime state committed to git
+
+- `.barrot/mmi_execution_ledger.jsonl` — my MMI execution ledger is a JSONL log under version control.
+- `.barrot/repo_state_manifest.json`, `repository_identity.json`, `target_registry.json` — self-referential state in git.
+- `.termux_dna_harvest.log` — a raw log file committed.
+- `.bashrc` and `.gitconfig` committed — environment config in the repo; contents must be checked for secrets.
+
+This is the repo-as-database pattern: guaranteed churn, merge conflicts (ironic given Finding 1), and ledger contents are a secret-leak surface.
+
+## Finding 5 — MEDIUM: Documentation hygiene and one apparent contradiction
+
+Roughly fifty top-level Markdown files, many of which are dated or session-scoped artifacts: `INGESTION_RESPONSE_2025-12-30.md`, `INGESTION_RESPONSE_2025-12-31.md`, `TASK_COMPLETION_SUMMARY.md`, `PR_113_RESOLUTION_COMPLETE.md`, multiple `*_IMPLEMENTATION_SUMMARY.md`. These belong in `docs/` or an archive, not the root.
+
+**Contradiction to verify:** `ORBIT_REMOVED.md` exists, yet `.barrot/orbit/command_schema.json` is also present. Either the removal doc is stale or the orbit artifact is residual. One of them is wrong.
+
+**Docs without visible automation:** three `EMAIL_*.md` guides, but no `email-*` workflow appears in this fragment (it would sort before `entity-relations.yml`). Verify whether email handling is code-side only.
+
+## Finding 6 — MEDIUM: Scope cohesion
+
+One repository spans trading signals (`coinbase-paper-trader`, `check-signal-accuracy`, `signal_ledger`), research ingestion (`riemann-harvest`, `kaggle-competitions`, millennium-problems docs), content generation (`write-lyrics`, `free-image-gen`), monetization (`gumroad-metrics`, `webmcp-*`, `MONETIZATION_FRAMEWORK.md`), and multi-target deployment. `SYSTEM_SEPARATION.md` exists — verify whether the boundaries it describes are actually honored, because the workflow layout suggests they are not.
+
+## Finding 7 — LOW (needs contents)
+
+- `apex_lattice/analyzers/architecture.py` and `architecture_analyzer.py` — probable duplication; confirm.
+- Dual CI: `.gitlab-ci.yml` alongside GitHub Actions — drift risk.
+- `Dockerfile` + `Dockerfile.dev` + `.devcontainer/` — confirm a single source of truth for the environment.
+
+## What is done well
+
+`.env.example`, `SECURITY.md`, `LICENSE`, `CHANGELOG.md`, `CODEOWNERS`, PR/issue templates, `copilot-instructions.md`, `.pre-commit-config.yaml`, `.flake8`, `Makefile`, and `barrot-transparency-audit.yml` are all present. The hygiene baseline is real; the problems are governance and sprawl, not absence of tooling.
+
+## Requested next evidence
+
+1. Contents of the nine merge-lifecycle workflows (triggers, permissions, concurrency settings).
+2. The disable rationale for the three tests in `.barrot/disabled_tests/`.
+3. `.barrot/*.json` and the MMI ledger contents (secret scan).
+4. `ORBIT_REMOVED.md` vs. the orbit schema.
+5. The remainder of the file listing beyond `apex_lattice/analyzers/capabilities.py`.
