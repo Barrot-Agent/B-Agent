@@ -1420,3 +1420,49 @@ Forecast status remains `NOT_ISSUED`. No directional forecast, paper trade or re
 PR #1661 remains blocked. The current full-suite and security runs are queued with no jobs created; the last full-suite pass is on a different parent. PR remains draft with no formal approvals; branch-protection requirements, least-privilege remediation, credential-path/provider revocation evidence, Pages authorization and 974-path semantic review remain incomplete. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, funds transfer, paper trade, force-push, history rewrite or source-PR closure occurred.
 
 Next action: obtain exact-head full-suite/security results on the latest integration commit, then resolve least-privilege, branch-protection, credential and Pages authorization blockers before semantic reconciliation and any merge.
+
+
+## Run35b — exact-head CI and CFTC position refresh
+
+### Exact-head verification
+
+The Run35 code head `bd5a7e3a9ec4e3b1e3bae2c1a6b6cccdf16b5868` completed exact-head verification:
+
+- Full repository suite: **3,449 passed, zero failures, eight subtests**.
+- Coverage: **59.99%** against the configured 53% floor; scope is `barrot_agent`, not every repository package.
+- Duration: 95.58 seconds.
+- Wheel build and installed primary-mission verification passed.
+- Dependency audit: six manifests, no known vulnerabilities.
+- PR and push fail-closed gates passed.
+
+Exact evidence: [CI 43101310410](https://github.com/Barrot-Agent/B-Agent/actions/runs/43101310410) · [Dependency audit 43101310461](https://github.com/Barrot-Agent/B-Agent/actions/runs/43101310461) · [PR fail-closed 43101310416](https://github.com/Barrot-Agent/B-Agent/actions/runs/43101310416) · [Push audit 43101297331](https://github.com/Barrot-Agent/B-Agent/actions/runs/43101297331) · [Push fail-closed 43101297353](https://github.com/Barrot-Agent/B-Agent/actions/runs/43101297353).
+
+The full-suite result is verified on `bd5a7e3`. Any subsequent documentation-only handoff commit is a new Git head and requires its own exact-head CI before merge.
+
+### CFTC correction and contract-equivalent positioning
+
+The official CFTC Traders in Financial Futures report for positions as of November 3 (released November 6) contains:
+
+| Market | Code | OI contracts | Weekly change | XRP per contract | XRP-equivalent OI |
+|---|---|---:|---:|---:|---:|
+| CME XRP | 176740 | 7,216 | -845 | 50,000 | 360.800M |
+| Coinbase Nano XRP | 176LM1 | 32,505 | -32,864 | 500 | 16.2525M |
+| Coinbase Nano XRP Perp Style | 176LM3 | 38,392 | -465 | 500 | 19.196M |
+
+Reported markets total approximately **396.249M XRP-equivalent**, down approximately **58.915M (12.94%)** from the preceding report. This is regulated futures contract exposure, not spot holdings, cash capital or total XRP derivatives open interest. The large Nano XRP weekly OI decline requires contract-roll/expiration investigation before interpreting it as position liquidation.
+
+The standard Coinbase XRP market code `176LM2` is explicitly listed as dropped from reporting this week. CFTC's market-summary methodology includes contracts with 20 or more traders meeting reportable-position thresholds. A missing row is an observability gap, not zero open interest.
+
+Primary sources: [CFTC weekly TFF data](https://www.cftc.gov/dea/newcot/FinFutWk.txt) · [CFTC reporting methodology](https://www.cftc.gov/MarketReports/index.htm).
+
+### Supplementary spot and collateral refresh
+
+At 21:11:32.174 UTC, OKX XRP-USDT was 1.0670 (bid 1.0668 / ask 1.0669). Kraken XRP/USD was 1.06682 (bid 1.06689 / ask 1.06690), but Kraken did not provide an event timestamp. After USDT normalization, the asynchronous midpoint difference was approximately -0.113%; not executable arbitrage.
+
+Coinbase's proof-of-reserves page displayed a 21:05 refresh (timezone unspecified): 152,087,932.36 XRP reserves versus 152,085,685.83 cbXRP supply, an arithmetic excess of 2,246.53 XRP. This remains issuer-published information, not an independent audit. Current Morpho cbXRP borrower health and liquidation exposure remain unverified.
+
+[Run35b structured artifact](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261111/research/xrp_intelligence/20261111T211755Z-run35b-exact-head-ci-cftc-position-and-spot-refresh.json).
+
+### Decision
+
+The tested code head passed the full suite, dependency audit and fail-closed gates. PR #1661 nevertheless remains blocked: it is draft, formal approvals are absent, branch-protection requirements are not visible, connector permissions are overprivileged, credential-path/provider revocation evidence is incomplete, GitHub Pages publication is unauthorized and 974 non-workflow paths remain under semantic review. No merge or external action was performed.

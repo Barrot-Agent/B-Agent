@@ -160,3 +160,15 @@
 - Nine-platform auth map unchanged: only ChatGPT/GitHub tested; overprivileged; other external providers unverified/blocked.
 - No merge, deployment, external-model transfer, paper trade, funds movement, force-push or PR closure.
 - Next: exact-head CI, then resolve permissions/branch protection/credential remediation/Pages authorization and semantic review.
+
+
+## Run35b sync — exact-head verification
+
+- Verified code head: `bd5a7e3a9ec4e3b1e3bae2c1a6b6cccdf16b5868`.
+- Full suite: 3,449 passed, 0 failed, 8 subtests, 59.99% coverage, 95.58 seconds.
+- Dependency audit: 6 manifests, no known vulnerabilities; PR/push fail-closed gates passed.
+- CFTC Nov3 TFF reported XRP-equivalent OI: 396.249M, down 12.94% week over week; Coinbase standard XRP code 176LM2 dropped from reporting, not zero.
+- Supplementary spot quote 21:11 UTC: OKX 1.0670, Kraken 1.06682; normalized asynchronous midpoint gap approximately -0.113%.
+- Coinbase cbXRP displayed reserves 152.088M XRP vs 152.086M supply; excess 2,246.53 XRP.
+- Current Morpho state unverified. Forecast remains NOT_ISSUED.
+- PR #1661 remains blocked; no merge or external action.
