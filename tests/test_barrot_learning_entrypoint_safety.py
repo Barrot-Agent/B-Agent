@@ -105,7 +105,7 @@ def test_validated_publisher_preserves_preexisting_staged_changes(tmp_path, monk
         allow_remote_push=True,
     )
     assert result.success is False
-    assert "pre-existing staged changes" in result.reason
+    assert "pre-existing staged changes" in result.reason.lower()
     assert calls == [
         ("branch", "--show-current"),
         ("diff", "--cached", "--quiet"),
