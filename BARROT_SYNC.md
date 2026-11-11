@@ -224,3 +224,11 @@
 - Liqwall 22:02 UTC OI $1.17B (+0.5%), funding +0.0084%; TradRadar 19:05 UTC OI $1.57B (-0.97%), funding +0.0045%. Different universes/times; no averaging. TrackWhale 21:48 UTC net tracked flow -64.78M XRP; XRP Insights same-wallet +1.3M 7D/-155.7M 30D. CryptoKeyhole Nov10 remains partial 3/4; latest complete Nov6 -752,048 XRP/-$887K.
 - PR #1661 remains open/draft; 2,050 ahead/0 behind, 1,023 files (44 workflows/979 other), zero approvals/reviews/threads. Merge blocked by approvals, branch protection visibility, Pages authorization and semantic review.
 - Forecast NOT_ISSUED; research not receipt-ingested/model-eligible. Current documentation/test update commit CI pending.
+
+
+## Run37 current-head verification — 2026-11-11 22:24 UTC
+- Exact tested head `dbbd10657df10f84b81fb816ec742564f6197b32`: full suite 3,449 passed/0 failed, 8 subtests, 59.99%, 86.30s; core 714/0, 8 subtests, 11.87s; wheel build and installed Barrot V3/XRP mission/canonical assets verified. [CI 43109985748](https://github.com/Barrot-Agent/B-Agent/actions/runs/43109985748).
+- Dependency audit [43109986068](https://github.com/Barrot-Agent/B-Agent/actions/runs/43109986068): 6 manifests, 0 known vulnerabilities; fail-closed [43109985757](https://github.com/Barrot-Agent/B-Agent/actions/runs/43109985757) passed.
+- Credential path absent from main/integration and all 17 current open PR diff inventories (all base main); provider-side revocation remains unverified. No credential contents read or token rotation/revocation.
+- PR #1661 remains draft; 2,052 ahead/0 behind, 1,023 files (44 workflows/979 other), zero reviews/approvals/threads. Merge blocked by branch-protection visibility, Pages authorization, semantic review and least-privilege/security follow-up.
+- Forecast NOT_ISSUED; public research not receipt-ingested/model-eligible. New handoff/map commit CI pending.

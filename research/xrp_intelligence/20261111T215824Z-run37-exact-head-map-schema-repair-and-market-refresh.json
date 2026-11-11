@@ -8,7 +8,7 @@
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_branch": "integration/xrp-v3-unified-main-20261111",
     "integration_head_before_repair": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
-    "ahead_by": 2050,
+    "ahead_by": 2052,
     "behind_by": 0,
     "pr": 1661,
     "pr_state": "open",
@@ -26,26 +26,32 @@
     "current_head_after_repair": "05ad5ab1120d1fa395e1de8e4ce2c99473ffae42",
     "integration_blob_files": 2179,
     "integration_workflow_files": 87,
-    "pr_additions": 264014,
+    "pr_additions": 264530,
     "pr_deletions": 4362,
     "pr_formal_reviews": 0,
     "pr_formal_approvals": 0,
-    "pr_review_threads": 0
+    "pr_review_threads": 0,
+    "current_head_before_current_map_snapshot": "b838b56f9d2a81290e339c94483be2f1677a3704",
+    "current_ahead_by_before_current_map_snapshot": 2051,
+    "current_changed_files_before_current_map_snapshot": 1023,
+    "current_non_workflow_paths_before_current_map_snapshot": 979,
+    "current_integration_tree_entries_before_current_map_snapshot": 2288,
+    "current_head_before_final_handoff_commit": "dbbd10657df10f84b81fb816ec742564f6197b32"
   },
   "ci": {
     "latest": {
-      "head_sha": "05ad5ab1120d1fa395e1de8e4ce2c99473ffae42",
-      "run_id": 43108561438,
+      "head_sha": "dbbd10657df10f84b81fb816ec742564f6197b32",
+      "run_id": 43109985748,
       "status": "completed",
       "conclusion": "success",
-      "full_suite_job_id": 130818221927,
+      "full_suite_job_id": 130823138867,
       "full_repository_suite": {
         "passed": 3449,
         "failed": 0,
         "subtests": 8,
         "coverage_percent": 59.99,
         "coverage_floor_percent": 53,
-        "duration_seconds": 94.41,
+        "duration_seconds": 86.3,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": true,
@@ -55,28 +61,28 @@
         "passed": 714,
         "failed": 0,
         "subtests": 8,
-        "duration_seconds": 14.08,
+        "duration_seconds": 11.87,
         "conclusion": "success",
-        "job_id": 130818222529
+        "job_id": 130823139142
       },
       "dependency_audit": {
-        "run_id": 43108561589,
-        "job_id": 130818222615,
+        "run_id": 43109986068,
+        "job_id": 130823140580,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43108561406,
-        "job_id": 130818222233,
+        "run_id": 43109985757,
+        "job_id": 130823138336,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
       "failing_tests": [],
-      "failure_classification": "Exact-head full-suite passed: 3,449 tests, zero failures, eight subtests, 59.99% inclusive barrot_agent package coverage. Wheel build succeeded and the installed wheel loaded Barrot V3, the XRP mission and canonical data assets."
+      "failure_classification": "Exact current integration head passed: 3,449 repository tests, zero failures, eight subtests, 59.99% inclusive barrot_agent package coverage in 86.30 seconds. Wheel build and installed-wheel verification passed."
     },
     "previous_schema_regression_attempt": {
       "head_sha": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
@@ -612,39 +618,40 @@
     "note": "The path is absent from main and integration trees and from all 17 current open PR changed-file inventories. This does not prove that any credential formerly present in that file has been revoked."
   },
   "post_repair_verification": {
-    "tested_head": "05ad5ab1120d1fa395e1de8e4ce2c99473ffae42",
-    "full_ci_run": 43108561438,
-    "full_suite_job": 130818221927,
+    "tested_head": "dbbd10657df10f84b81fb816ec742564f6197b32",
+    "full_ci_run": 43109985748,
+    "full_suite_job": 130823138867,
     "full_suite": {
       "passed": 3449,
       "failed": 0,
       "subtests": 8,
       "coverage_percent": 59.99,
-      "duration_seconds": 94.41
+      "duration_seconds": 86.3
     },
-    "core_job": 130818222529,
+    "core_job": 130823139142,
     "core_tests": {
       "passed": 714,
       "failed": 0,
       "subtests": 8,
-      "duration_seconds": 14.08
+      "duration_seconds": 11.87
     },
-    "dependency_audit_run": 43108561589,
-    "dependency_audit_job": 130818222615,
+    "dependency_audit_run": 43109986068,
+    "dependency_audit_job": 130823140580,
     "dependency_manifests": 6,
     "known_vulnerabilities": 0,
-    "fail_closed_run": 43108561406,
-    "fail_closed_job": 130818222233,
+    "fail_closed_run": 43109985757,
+    "fail_closed_job": 130823138336,
     "fail_closed_passed": true,
     "automatic_merge_enabled": false,
     "wheel_build": "success",
-    "installed_wheel": "verified Barrot V3, XRP mission and canonical data assets",
+    "installed_wheel": "verified Barrot V3, the XRP mission and canonical data assets",
     "warnings": [
-      "Setuptools reports barrot_agent.data.missions and data.research absent from explicit package configuration.",
+      "Setuptools package discovery reports barrot_agent.data.missions and data.research absent from explicit package configuration.",
       "project.license table deprecation warning remains."
     ],
     "status": "VERIFIED_ON_EXACT_HEAD"
   },
-  "updated_at_utc": "2026-11-11T22:10:00Z",
-  "note": "Updated post-repair with exact-head CI success and a later credential-path inventory recheck. Raw source receipts were not created by Barrot; all public observations remain research-only."
+  "updated_at_utc": "2026-11-11T22:24:00Z",
+  "note": "Run37 current exact-head verification recorded on dbbd106. Public market observations remain research-only and were not captured by Barrot's raw-source receipt pipeline.",
+  "final_handoff_commit_ci": "PENDING_EXACT_HEAD"
 }
