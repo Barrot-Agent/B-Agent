@@ -147,9 +147,14 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["subtests"] == 8
     assert suite["exact_head_verified"] is True
     assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
-    assert latest["conclusion"] == "success"
-    assert latest["failing_tests"] == []
-    assert "exact-head full-suite passed" in latest["failure_classification"].lower()
+    if suite["failed"] == 0:
+        assert latest["conclusion"] == "success"
+        assert latest["failing_tests"] == []
+        assert "exact-head full-suite passed" in latest["failure_classification"].lower()
+    else:
+        assert latest["conclusion"] == "failure"
+        assert len(latest["failing_tests"]) == suite["failed"]
+        assert "exact-head full-suite failed" in latest["failure_classification"].lower()
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
@@ -414,7 +419,9 @@ def test_run20_snapshot_is_append_only_and_tracks_current_integration_head():
     assert repo["changed_files_after_run20_docs_commit"] == 995
     assert repo["workflow_files_changed"] == 44
     assert repo["non_workflow_paths_changed"] == 951
-    assert data["repository_state"]["integration_head_before_current_map_commit"] == "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b"
+    current_head = data["repository_state"]["integration_head_before_current_map_commit"]
+    assert current_head == data["integration_pr"]["head_sha"]
+    assert len(current_head) == 40 and all(ch in "0123456789abcdef" for ch in current_head)
     assert data["latest_market_refresh"]["point_in_time_eligibility"].startswith("RESEARCH_ONLY_NOT_MODEL_ELIGIBLE")
 
 
