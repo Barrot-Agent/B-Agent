@@ -1805,3 +1805,31 @@ The Block reports -$10.4M and $1.1B AUM in a separate rolling 24h window updated
 **No merge.** Parent beaca947 passed technical gates, but #1661 remains draft with zero approvals/reviews; branch-protection details inaccessible; connector least privilege not met; provider-side token revocation unverified; Pages publication unauthorized; and 979 non-workflow paths need semantic review. Exact-head CI on the final Run38 durable commit is pending.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run38 final exact-head verification and backlog reconciliation — 2026-11-11 23:25 UTC
+
+**Verified current parent head:** `dd0152881ab6572b8a649a8bb4b87a9366335b92` (2,058 ahead / 0 behind main; 1,024 changed files, 44 workflows / 980 other paths; tree 2,289 entries).
+
+- Full repository suite [43119172919](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119172919): **3,449 passed, zero failures, eight subtests, 59.99% coverage, 84.72 seconds**.
+- Core suite: 714 passed, zero failed, eight subtests.
+- Wheel build succeeded; installed wheel verified Barrot V3, XRP mission and canonical data assets.
+- Exact-head dependency audit [43119172765](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119172765): six manifests, zero known vulnerabilities reported.
+- Fail-closed PR gate [43119172855](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119172855) and push gate [43119162925](https://github.com/Barrot-Agent/B-Agent/actions/runs/43119162925) passed. Automatic merge remains disabled.
+- This 3,449/0 result is on parent `dd015288`. The corrective map/handoff/sync commit below creates a new head; its exact-head CI remains pending.
+
+### Dependabot/workflow backlog correction
+
+A line-by-line comparison corrected the earlier Run38 title/path-mismatch classification:
+
+- #1650 raises `huggingface_hub` from 2.2.0 to 2.4.0. Integration includes 2.4.0 and `databricks-sdk` 0.158.0; that source branch still has 0.153.0. Supersession candidate.
+- #1254 raises `huggingface_hub` to 2.3.0; integration has 2.4.0. Older supersession candidate.
+- #1255 raises `databricks-sdk` to 0.157.0; integration has 0.158.0. Older supersession candidate.
+- #1649's `databricks-sdk` 0.158.0 is represented in integration; #1648's pytest 9.2.0 and #1646's types-requests 2.33.0.20261030 are also represented, while their source branches retain older companion versions. Treat these as combined dependency supersession candidates, not exact duplicate PRs.
+- #1645's only changed workflow file is identical to integration: exact duplicate candidate.
+- #1644 has one identical file of eight; seven differ. #1647 has one identical file of six; five differ. Both remain workflow-overlap semantic-review candidates.
+- #1653 retains six unique graph paths. #1320/#1318/#1317/#1269 remain unique safety/MMI/topology work.
+
+No source PR was closed. Preserve every source branch until the consolidated successor is ready, merged, and its files are verified on main.
+
+**Merge remains blocked:** #1661 is draft with zero approvals/reviews; branch-protection details return HTTP403; connector permissions remain overprivileged; provider-side OAuth revocation is unverified; Pages publication is unauthorized; 980 non-workflow paths require semantic review. No merge or external action occurred.
