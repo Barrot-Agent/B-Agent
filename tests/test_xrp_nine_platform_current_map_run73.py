@@ -167,8 +167,9 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
 def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
     audit = load_current()["workflow_safety_audit"]
     assert audit["changed_workflow_files"] == 44
-    assert audit["quarantined_or_disabled"] == 25
-    assert audit["active_changed_workflows"] == 19
+    assert audit["quarantined_or_disabled"] == 26
+    assert audit["active_changed_workflows"] == 18
+    assert audit["secondary_brain_deployment_quarantined"] is True
     assert audit["xrp_public_ingestion_workflow_on_main"] is False
     assert audit["xrp_public_ingestion_workflow_on_integration"] is True
     assert audit["scheduled_ingestion_main_run_verified"] is False
@@ -176,6 +177,18 @@ def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
     assert audit["ci_trigger_optimization"]["committed_in_this_update"] is True
     assert audit["ci_trigger_optimization"]["new_push_branches"] == ["main"]
     assert audit["ci_trigger_optimization"]["full_suite_job_preserved"] is True
+
+
+def test_lunaroute_only_architecture_quarantines_secondary_brain_deployment():
+    workflow = ROOT / ".github/workflows/sync-self-hosted-brain.yml"
+    content = workflow.read_text(encoding="utf-8")
+    assert "permissions: {}" in content
+    assert "if: ${{ false }}" in content
+    for forbidden in ("HF_TOKEN", "upload_folder", "api.create_repo", "huggingface-cli"):
+        assert forbidden not in content
+    audit = load_current()["workflow_safety_audit"]
+    assert audit["secondary_brain_deployment_quarantined"] is True
+    assert audit["self_hosted_brain_workflow_status"] == "DISABLED_LUNAROUTE_ONLY"
 
 
 def test_prediction_engine_source_registry_counts_are_consistent():

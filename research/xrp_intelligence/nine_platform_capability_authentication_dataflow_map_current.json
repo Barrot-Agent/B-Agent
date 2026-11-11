@@ -1,8 +1,8 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T14:45:15.265Z",
-  "last_verified_at_utc": "2026-11-11T14:38:27.479Z",
+  "captured_at_utc": "2026-11-11T14:59:22Z",
+  "last_verified_at_utc": "2026-11-11T14:59:22Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
   "observed_integration_head_before_map_commit": "acf985960e1491634451daefb614eaa3c9707917",
@@ -13,24 +13,24 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2028,
+    "ahead_by": 2029,
     "behind_by": 0,
-    "changed_files": 1009,
+    "changed_files": 1010,
     "workflow_files": 44,
-    "other_changed_paths": 965,
-    "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+    "other_changed_paths": 966,
+    "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2028,
-    "additions": 242628,
+    "commits": 2029,
+    "additions": 245099,
     "deletions": 4363,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Draft consolidated integration. Exact head acf985960e1491634451daefb614eaa3c9707917: core 714 passed; full suite 3,436 passed, 11 failed, eight subtests. Four failures were stale endpoint-count expectations; seven were shared fake fetcher omissions for the new SBI VC Trade HTML source. New SBI parser/receipt tests passed. Six-manifest dependency audit and fail-closed gate passed. Fixture and docs repair is being committed on this branch. Do not merge: zero formal approvals, branch-protection details HTTP 403, fallback ruleset disabled, connector admin=true, Pages publication unauthorized.",
+    "note": "Active consolidated integration draft. Exact tested head 36602c9: core 714 passed; full repository suite 3,444 passed, 3 failed, eight subtests; coverage 59.98%. The three failures are evidence-contract defects: current-map timestamp ordering, stale exact-head failure classification, and 16 source records missing the canonical source label. Six-manifest dependency audit and fail-closed gate passed. Run28 fixes these contracts and disables the secondary self-hosted-brain deployment workflow to enforce the repository's LunaRoute-only brain declaration. New exact-head CI is pending. Do not merge: zero formal approvals; branch-protection details HTTP 403; fallback ruleset disabled; connector admin=true; Pages publication unauthorized; 966 non-workflow paths still require semantic review.",
     "issue_comments": 1,
-    "updated_at_utc": "2026-11-11T14:45:15.265Z"
+    "updated_at_utc": "2026-11-11T14:59:22Z"
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -377,27 +377,29 @@
     "least_privilege_target_met": false,
     "github_pages_side_effect": "Main Pages build 42944862534 succeeded after the prior main push; another main push would automatically publish. No new public publication was authorized.",
     "github_connector_admin_permission_overprivileged": true,
-    "github_connector_permission_scope": "Repository metadata reports admin=true, maintain=true, push=true, pull=true and triage=true. This exceeds least privilege. No main write, secret-value read or branch-protection bypass was performed."
+    "github_connector_permission_scope": "Repository metadata reports admin=true, maintain=true, push=true, pull=true and triage=true. This exceeds least privilege. No main write, secret-value read or branch-protection bypass was performed.",
+    "secondary_brain_deployment_disabled": true,
+    "main_branch_protection_independently_verified": false
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_head_before_current_map_commit": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
     "integration_pr": 1661,
-    "integration_ahead_by": 2028,
+    "integration_ahead_by": 2029,
     "integration_behind_by": 0,
-    "changed_files": 1009,
+    "changed_files": 1010,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 965,
+    "non_workflow_paths_changed": 966,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2274,
+    "integration_tree_entries": 2275,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
     "hf_space_app_py_changed": true,
-    "local_git_clone": "FAILED_DNS_RESOLUTION; complete recursive GitHub API trees, source files, PR inventory and CI evidence fetched successfully.",
+    "local_git_clone": "FAILED_DNS_RESOLUTION; complete GitHub API tree, file, PR and CI inspection succeeded",
     "integration_head_before_run13_commit": "3b11e39f253ac8d07d02eb5da0c770155614f814",
     "main_barrot_sync_status": "STALE_RELATIVE_TO_INTEGRATION; main BARROT_SYNC last updated by main commit 84f28ee at 2026-11-11T02:16:15Z.",
     "main_legacy_handoff_status": "STALE; legacy main handoff predates current integration handoff.",
@@ -405,8 +407,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "EXACT_HEAD_AD9A408_FULL_SUITE_FAILED_3443_PASSED_4_FAILED; core 714 passed; dependency audit and fail-closed gate passed; residual failures are stale current-map CI/head binding, 46/42/44 count assertions, adapter/parser version expectations, and Run124 count assertions.",
-    "last_reconciled_at_utc": "2026-11-11T14:45:15.265Z",
+    "latest_exact_head_ci": "EXACT_HEAD_36602C9_FULL_SUITE_FAILED_3444_PASSED_3_FAILED; core 714 passed; dependency audit and fail-closed gate passed; three failures are evidence-map timestamp, failure-classification and provenance-label contracts",
+    "last_reconciled_at_utc": "2026-11-11T14:59:22Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2165,
@@ -436,7 +438,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+    "latest_full_suite_tested_head": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -450,15 +452,14 @@
     "run25_expected_ahead_by_after_commit": 2021,
     "latest_main_pillars_check": {
       "run_id": 43025487840,
-      "job_id": 130539023370,
       "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "conclusion": "failure",
+      "read_only": true,
       "reasons": [
-        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "missing GitHub App credentials",
         "Databricks HTTP 403",
         "Hugging Face BUILD_ERROR"
-      ],
-      "read_only": true
+      ]
     },
     "current_head_before_run25b_commit": "9e98cbcd43ec2a3e2b5062db8261c4b8653265de",
     "run25b_expected_changed_files_after_commit": 1001,
@@ -482,7 +483,22 @@
     "run27_expected_changed_files_after_commit": 1010,
     "run27_expected_non_workflow_paths_after_commit": 966,
     "run27_expected_integration_tree_entries_after_commit": 2275,
-    "run27_expected_ahead_by_after_commit": 2029
+    "run27_expected_ahead_by_after_commit": 2029,
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run28_commit": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "main_pages_build_run": 42944862534,
+    "main_pages_build_conclusion": "success",
+    "main_pages_publication_authorized": false,
+    "main_ci_run": 42944864014,
+    "main_ci_conclusion": "success",
+    "main_ci_tests_passed": 718,
+    "run28_new_paths": [
+      "research/xrp_intelligence/20261111T145922Z-run28-institutional-capital-stablecoin-custody-and-collateral-reconciliation.json"
+    ],
+    "run28_expected_changed_files_after_commit": 1011,
+    "run28_expected_non_workflow_paths_after_commit": 967,
+    "run28_expected_integration_tree_entries_after_commit": 2276,
+    "run28_expected_ahead_by_after_commit": 2030
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
@@ -513,13 +529,18 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 43020832903,
-      "job_id": 130523332180
+      "run_id": 43041562146,
+      "job_id": 130523332180,
+      "conclusion": "success",
+      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff"
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 43020833177
+      "run_id": 43041562362,
+      "conclusion": "success",
+      "merge_disabled": true,
+      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff"
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -558,19 +579,17 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
-      "run_id": 43040465375,
-      "full_suite_job": 130590559362,
-      "core_suite_job": 130590559864,
+      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+      "run_id": 43041561932,
+      "full_suite_job": 130594397935,
+      "core_suite_job": 130594398463,
       "conclusion": "failure",
       "full_repository_suite": {
-        "passed": 3443,
-        "failed": 4,
+        "passed": 3444,
+        "failed": 3,
         "subtests": 8,
-        "collected": 3447,
         "coverage_percent": 59.98,
-        "duration_seconds": 57.49,
-        "exact_head_verified": true,
+        "exact_head": true,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
@@ -581,23 +600,22 @@
         "conclusion": "success"
       },
       "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
         "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
-        "tests/test_xrp_public_ingestion.py::test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt",
-        "tests/test_xrp_run124_market_evidence.py::test_run124_feature_store_contract_counts_weekly_cftc_sources"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
       ],
       "dependency_audit": {
-        "passed": true,
-        "run_id": 43040465368,
+        "run_id": 43041562146,
+        "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "passed": true,
-        "run_id": 43040465437,
-        "automatic_merge_enabled": false
+        "run_id": 43041562362,
+        "conclusion": "success",
+        "merge_disabled": true
       },
-      "failure_classification": "Run26e exact-head full suite on ad9a408: 3,443 passed and four failed. Two failures are current-map tests not yet updated for 47/43/45 counts and the latest-attempt head binding; one test still expects adapter/parser v3.22/v3.21 instead of v3.24/v3.23; one historical Run124 test still expects 46/42/44 in the current feature-store contract. The SBI HTML fixture repair worked: the prior seven ingestion receipt-count failures are gone. Core suite, dependency audit and fail-closed gate passed. Corrective changes are being applied on the same branch."
+      "failure_classification": "exact-head full-suite failed on 36602c9: 3,444 passed, 3 failed; eight subtests passed. The three failures are evidence-map contract defects: verified/captured timestamp ordering, stale exact-head CI failure classification, and 16 source-provenance records lacking a canonical source label. Core suite, six-manifest dependency audit, and fail-closed gate passed. No XRP adapter or prediction-runtime failure was observed in this run. Run28 corrects the evidence contracts and quarantines the secondary brain deployment; new exact-head CI is pending."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -712,9 +730,9 @@
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
-    "quarantined_or_disabled": 25,
-    "active_changed_workflows": 19,
-    "review_status": "All 44 changed workflow diffs were reviewed in the preceding audit; current PR parent head adds no workflow changes. 953 non-workflow changed paths remain for semantic review.",
+    "quarantined_or_disabled": 26,
+    "active_changed_workflows": 18,
+    "review_status": "All 44 changed workflow diffs were scanned; eight high-risk workflows were read in full. The secondary self-hosted-brain deployment is now quarantined because BARROT_SYNC.md declares LunaRoute as the sole Barrot brain. The XRP collector remains read-only and unexecuted on main. 967 non-workflow changed paths remain for semantic review.",
     "xrp_public_ingestion_workflow_on_main": false,
     "xrp_public_ingestion_workflow_on_integration": true,
     "scheduled_ingestion_main_run_verified": false,
@@ -786,7 +804,9 @@
       "conclusion": "success",
       "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "created_at": "2026-11-11T12:51:39Z"
-    }
+    },
+    "secondary_brain_deployment_quarantined": true,
+    "self_hosted_brain_workflow_status": "DISABLED_LUNAROUTE_ONLY"
   },
   "prediction_engine_status": {
     "source_definitions_total": 47,
@@ -846,7 +866,25 @@
     },
     "walk_forward_embargo": "Scheduled evaluator passes embargo_seconds equal to horizon_seconds.",
     "effective_sample_size": "Greedy non-overlapping target interval count is implemented; residual serial dependence and shared-source correlation remain uncorrected.",
-    "volatility_tail_risk_followup": "Fuelmaps reports 20 of 928 daily 08:00 UTC outcomes beyond its options-implied 3-sigma band (~2.16%) versus a 0.27% Gaussian reference. Source-reported, not independently reproduced. Test Student-t and empirical-quantile volatility baselines against volatility_normal before model admission."
+    "volatility_tail_risk_followup": "Fuelmaps reports 20 of 928 daily 08:00 UTC outcomes beyond its options-implied 3-sigma band (~2.16%) versus a 0.27% Gaussian reference. Source-reported, not independently reproduced. Test Student-t and empirical-quantile volatility baselines against volatility_normal before model admission.",
+    "bybit_public_adapter": {
+      "status": "IMPLEMENTED_ON_INTEGRATION; MOCKED_RESPONSE_TESTS_ONLY",
+      "public_endpoints": [
+        "GET /v5/market/tickers?category=spot",
+        "GET /v5/market/orderbook?category=spot&limit=100"
+      ],
+      "fields": [
+        "cts matching-engine time",
+        "ts system snapshot time",
+        "bid/ask validation",
+        "crossed/stale rejection",
+        "10/50/100 bps depth",
+        "order-book imbalance"
+      ],
+      "live_execution_verified": false,
+      "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
+      "model_eligible": false
+    }
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -1710,13 +1748,14 @@
       }
     },
     "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
-    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized XRP metric; do not collapse these categories.",
-    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor but contains no YouTube link and does not link a channel. Third-party directories list candidate @drkamilahstevenson; subscriber/video counts conflict materially (approximately 103K/633, 138K, and 143K/1.2K across providers). Other similarly named channels also appear. No first-party cross-link was found, and Camilla is not assumed to be the same person as Kamilah. Channel ownership and video attribution remain unverified. No personal-channel inventory is attributed.",
+    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized XRP metric; do not collapse these categories. Run28 additionally verified SBI Holdings and SBI Shinsei Bank's $50M Circle equity investment ($25M each) and SBI's 2025 statement that it held approximately 9% of Ripple; the latter is a dated issuer disclosure, not a refreshed current ownership percentage. These are equity relationships, not XRP token purchases.",
+    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson / The Wealth Doctor. The iHeart XRP Podcast episode 'Crypto Panics! with Dr. Kamilah Stevenson' has the guest verbally identify a YouTube name as 'doctor Camilla Stevenson' and warn that fake pages exist; the automated transcript spells the X/Instagram/YouTube names inconsistently (cam/Kamilla/Camilla). This corroborates the person and a self-reported channel name but does not verify an exact YouTube handle. The first-party site has no YouTube link. @drkamilahstevenson and @KamilahStevensonXrpStocks remain candidate/unverified; no personal-channel video inventory is attributed. Do not conflate other Camilla Stevenson identities.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
-      "https://glasp.co/youtube/QslbjGQD0MU"
+      "https://glasp.co/youtube/QslbjGQD0MU",
+      "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/"
     ],
-    "last_rechecked_at_utc": "2026-11-11T06:02:40Z",
+    "last_rechecked_at_utc": "2026-11-11T14:59:22Z",
     "latest_run13_conclusion": {
       "sbic": "East/Central/West remain separate Tokyo/Nagoya/Osaka SME investment-consultation companies, not SBI Holdings; no new OpenAI partnership evidence.",
       "ask_coin": "Three ASK-labelled candidates remain distinct; no XRPL/XRP integration verified.",
@@ -1748,13 +1787,21 @@
         "third_party_snapshot": "IDCrawl approximately 245 subscribers",
         "first_party_cross_link": false,
         "video_inventory_attributed": false
+      },
+      {
+        "handle": "@KamilahStevensonXrpStocks",
+        "status": "CANDIDATE_UNVERIFIED",
+        "discovery": "Public YouTube search result titled 'Kamilah Stevenson | XRP & Stocks'; no first-party cross-link found.",
+        "first_party_cross_link": false,
+        "video_inventory_attributed": false,
+        "warning": "iHeart interview guest warns that fake pages exist; do not attribute videos until the handle is authenticated."
       }
     ],
-    "camilla_kamilah_disambiguation": "No first-party evidence establishes that Camilla Stevenson and Dr. Kamilah Stevenson are the same person. Keep identities separate.",
+    "camilla_kamilah_disambiguation": "First-party site uses Kamilah; iHeart automated transcript uses Camilla/Kamilla variants for the guest's social handles and records a warning about fake pages. No first-party channel cross-link resolves the handle. Keep the transcript spelling discrepancy and any other Camilla Stevenson identities separate; do not attribute videos to an unverified channel.",
     "exact_phrase_searches": {
-      "ask_coin": "Exact-phrase searches did not establish an XRP/XRPL ASK Coin identity. Permission Coin ASK (UCID 7105) is a separate Base/Polygon token; Ask Coin exchange (UCID 4640) is an inactive/untracked listing. No XRPL contract or Ripple relationship verified.",
-      "actual_capital": "The phrase appears in commentary but is not a standardized XRP metric. Reconcile primary filings into cash received, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent equity capacity, resale registration and actual secondary sales.",
-      "sbic_chatgpt": "The exact phrase 'SBIC, ChatGPT SBIC' did not resolve to a formal company, product or OpenAI partnership. Tokyo SBIC has official ChatGPT/generative-AI training and seminar pages; educational activity is not a commercial partnership."
+      "ask_coin": "Run28 exact-phrase public searches still found no primary-source XRP/XRPL ASK Coin identity. Askcoin UCID 4640 and Permission Coin ASK UCID 7105 remain separate candidates; no XRPL contract or Ripple relationship verified.",
+      "actual_capital": "Run28 found no standardized metric named 'actual capital'. Reconcile cash settled, in-kind XRP, cash used to buy XRP, equity subscriptions, debt, drawn facilities, undrawn ELOC capacity, posted collateral, registered resale and actual secondary sales separately. SBI's $50M Circle equity investment is separate from XRP capital.",
+      "sbic_chatgpt": "No primary evidence for a formal entity or commercial partnership named exactly 'SBIC, ChatGPT SBIC'. Tokyo SBIC's 2025 ChatGPT/Copilot/RAG training for investee companies remains an education event, not an OpenAI partnership."
     },
     "latest_run27_reconciliation": {
       "sbic": "East/Tokyo, Central/Nagoya and West/Osaka are separate Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC's ChatGPT/Copilot training was education for investee companies, not an OpenAI partnership.",
@@ -1762,6 +1809,30 @@
       "actual_capital": "Not a standardized XRP metric. Separate settled cash, in-kind XRP, accepted subscriptions, cash deployed to buy XRP, debt, drawn facilities, posted collateral, ELOC capacity, registered resale and actual secondary sales.",
       "sbic_chatgpt": "No primary evidence of an entity or commercial partnership named exactly 'SBIC, ChatGPT SBIC'.",
       "kamilah_camilla": "First-party Kamilah site identifies Dr Kamilah Stevenson/The Wealth Doctor but does not link a YouTube channel. Candidate DailyCoin-linked XRP videos and same-name YouTube results remain unverified as the identified person's channel. No personal-video inventory attributed. Camilla remains separate/unresolved."
+    },
+    "latest_run28_reconciliation": {
+      "sbi_ripple": "SBI's June 9 2025 release states that SBI Holdings had invested in Ripple since 2016 and held approximately 9% as external largest shareholder; it also identifies SBI Ripple Asia as a JV. Current November 2026 percentage not independently refreshed.",
+      "sbi_circle": "SBI Holdings and SBI Shinsei Bank disclosed $50M Circle equity investment, split $25M each; SBI Circle Holdings JV established Aug 2025; SBI VC Trade distributes USDC in Japan.",
+      "arc": "Circle's Sep 16 2026 Arc mainnet release lists SBI Group as founding validator and Coinbase among exchange partners. Arc gas is USDC, with no volatile native token required; this is a distinct stablecoin-native network, not XRPL.",
+      "circle_xrpl": "Circle says native USDC has been live on XRPL since June 12 2025. This is a direct Circle-XRPL deployment, not proof of a direct Circle-Ripple partnership or XRP bridge demand.",
+      "coinbase_circle": "Circle's 2023 agreement says Coinbase took an equity stake and maintains a commercial relationship; Circle's Oct 2026 economics post identifies Coinbase as its largest and longest-standing partner and reports $20B average USDC held in Coinbase products in Q2 2026, up 44% year over year. Exact Coinbase share of partner economics not disclosed.",
+      "coinbase_ripple": "Ripple's Oct 28 2026 release says RLUSD is available through Coinbase Prime, Exchange and Retail on XRPL, Base and Ethereum; Global Exchange collateral availability was described as future.",
+      "cbxrp": "Coinbase's issuer proof page at 14:30 on Nov 11 displayed 151,709,177.16 XRP reserve and 151,706,930.63 cbXRP supply; 2,246.53 XRP displayed surplus (about 0.00148%). Issuer display, not independent audit.",
+      "ripple_prime": "Ripple Prime's Oct 15 2026 release describes 100+ RWA reference markets, Virtu, Trade.xyz/Hyperliquid and RLUSD collateral. No XRP collateral leg disclosed.",
+      "custody": "BNY's Oct 27 2026 release says it is primary RLUSD reserve custodian and now supports XRP and RLUSD custody; intended RLUSD mint/redeem and C2FO trade-finance work remain subject to approvals/exploration. Standard Chartered custody of RLUSD is live; its LMAX collateral-mirroring plan remains subject to final documentation, testing and approvals.",
+      "sbi_vc_trade_lending": "Direct SBI VC Trade lending page currently renders 29 assets including XRP, USDC and JPYSC; RLUSD absent. Search-result snippet reported 32, a page/index disagreement; direct rendered page retained as primary. Lending is customers lending assets to SBI, not proof of margin collateral or outstanding loan balances.",
+      "xrpl_lending": "Independent xrpldashboard live page at 14:28 UTC reported 35 validators, threshold 29, SingleAssetVault 23/35, LendingProtocol 22/35 and LendingProtocolV1_1 22/35, with zero amendments in countdown. Native lending is not active; SingleAssetVault can hold XRP, IOU or MPT, so XRP collateral is not mandatory.",
+      "k0": "SBI, Circle and Ripple relationships are multi-network and do not establish new XRP purchases. RLUSD/USDC distribution, custody, stablecoin settlement and Arc activity are not equivalent to XRP spot demand.",
+      "captured_at_utc": "2026-11-11T14:59:22Z",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+        "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+        "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+        "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+        "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/"
+      ]
     }
   },
   "macro_geopolitics": {
@@ -2776,7 +2847,8 @@
       "group": "xrpldashboard_own_node",
       "type": "live_dashboard",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "xrpldashboard"
     },
     {
       "id": "fuelmaps_xrp_spot_depth",
@@ -2786,7 +2858,8 @@
       "group": "fuelmaps_orderbook",
       "type": "six_venue_spot_book",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Fuelmaps"
     },
     {
       "id": "liqwall_xrp_derivatives",
@@ -2796,7 +2869,8 @@
       "group": "liqwall_derivatives",
       "type": "aggregated_perpetuals",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Liqwall"
     },
     {
       "id": "tradradar_xrp_derivatives",
@@ -2806,7 +2880,8 @@
       "group": "tradradar_derivatives",
       "type": "aggregated_perpetuals",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "TradRadar"
     },
     {
       "id": "optimistfi_xrp_options",
@@ -2816,7 +2891,8 @@
       "group": "deribit_options_aggregator",
       "type": "options_surface",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "OptimistFi/Deribit"
     },
     {
       "id": "xrp_insights_exchange_balances",
@@ -2826,7 +2902,8 @@
       "group": "xrp_insights_xrpl_wallets",
       "type": "attributed_exchange_wallets",
       "raw_receipt": "not captured by Barrot; integration collector is digest-only and main run unverified",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "XRP Insights"
     },
     {
       "id": "xrp_insights_etf_flows",
@@ -2836,7 +2913,8 @@
       "group": "xrp_insights_issuer_scraper",
       "type": "issuer_holdings_derived_flows",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "XRP Insights"
     },
     {
       "id": "evernorth_424b3_resale",
@@ -2846,7 +2924,8 @@
       "group": "SEC_EDGAR_primary",
       "type": "primary_filing",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "SEC EDGAR"
     },
     {
       "id": "sbi_vc_trade_lending",
@@ -2856,7 +2935,8 @@
       "group": "sbivc_primary",
       "type": "primary_product_terms",
       "raw_receipt": "digest-only collector source; no main receipt",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "SBI VC Trade"
     },
     {
       "id": "sbi_vc_trade_margin_rules",
@@ -2866,7 +2946,8 @@
       "group": "sbivc_primary",
       "type": "primary_margin_rules",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "SBI VC Trade"
     },
     {
       "id": "coinbase_cbxrp_reserves",
@@ -2876,7 +2957,8 @@
       "group": "coinbase_issuer",
       "type": "issuer_reserve_display",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Coinbase"
     },
     {
       "id": "ripple_prime_rwa_swaps",
@@ -2886,7 +2968,8 @@
       "group": "ripple_primary",
       "type": "primary_product_announcement",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Ripple"
     },
     {
       "id": "ripple_occ_bny_coinbase_integration",
@@ -2896,7 +2979,8 @@
       "group": "ripple_primary",
       "type": "primary_company_announcement",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Ripple"
     },
     {
       "id": "ripple_coinbase_rlusd",
@@ -2906,7 +2990,8 @@
       "group": "ripple_primary",
       "type": "primary_partnership_announcement",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Ripple"
     },
     {
       "id": "ripple_bny_custody",
@@ -2916,7 +3001,8 @@
       "group": "ripple_primary",
       "type": "primary_custody_announcement",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "Ripple"
     },
     {
       "id": "xrpl_native_lending_governance",
@@ -2926,7 +3012,143 @@
       "group": "xrpldashboard_own_node",
       "type": "live_validator_vote_aggregation",
       "raw_receipt": "not captured by Barrot",
-      "model_eligible": false
+      "model_eligible": false,
+      "source": "xrpldashboard"
+    },
+    {
+      "source": "SBI Holdings August 22 2025 Circle joint-venture establishment",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "publisher": "SBI Holdings",
+      "as_of": "2025-08-22",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "primary issuer press release",
+      "independence_group": "sbi_holdings_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "JV formation does not establish XRP purchases."
+      ]
+    },
+    {
+      "source": "Circle Arc mainnet launch and founding validator cohort",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "as_of": "2026-09-16",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer release",
+      "independence_group": "circle_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Company-reported network participation; Arc uses USDC for gas and is not XRPL."
+      ]
+    },
+    {
+      "source": "Circle native USDC on XRPL launch",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publisher": "Circle",
+      "as_of": "2025-06-12",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer product announcement",
+      "independence_group": "circle_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Native USDC on XRPL does not prove XRP bridge-asset volume."
+      ]
+    },
+    {
+      "source": "Circle USDC partner economics and Coinbase distribution position",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "publisher": "Circle",
+      "as_of": "2026-10-16",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer commercial blog",
+      "independence_group": "circle_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "USDC volume and economics are company-reported; Coinbase-specific payout amount is not disclosed."
+      ]
+    },
+    {
+      "source": "Circle-Coinbase USDC equity and commercial agreement",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "as_of": "2023-08-21",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "joint issuer announcement",
+      "independence_group": "circle_coinbase_joint",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Commercial terms and current equity percentage are not fully disclosed in this release."
+      ]
+    },
+    {
+      "source": "BNY-Ripple custody and tokenized trade finance collaboration",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publisher": "BNY",
+      "as_of": "2026-10-27",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "primary bank press release",
+      "independence_group": "bny_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "RLUSD mint/redeem and C2FO tokenized trade finance are intended/exploratory and subject to approvals."
+      ]
+    },
+    {
+      "source": "Standard Chartered RLUSD custody and planned LMAX collateral integration",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publisher": "Ripple",
+      "as_of": "2026-10-12",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer press release",
+      "independence_group": "ripple_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "RLUSD custody is described as live; collateral mirroring remains planned and subject to documentation, testing, laws and approvals."
+      ]
+    },
+    {
+      "source": "iHeart XRP Podcast interview with Dr Kamilah Stevenson",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "publisher": "iHeart / The XRP Podcast",
+      "as_of": "2026-06-11",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "third-party podcast transcript",
+      "independence_group": "iheart_media",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Automated transcript spells the self-reported YouTube name Camilla; guest warns of fake pages; no first-party channel cross-link."
+      ]
+    },
+    {
+      "source": "YouTube candidate channel Kamilah Stevenson XRP and Stocks",
+      "url": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+      "publisher": "YouTube",
+      "as_of": "retrieved 2026-11-11",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "unverified user-generated channel candidate",
+      "independence_group": "youtube_user_generated",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "No first-party cross-link; do not attribute videos until authenticated."
+      ]
     }
   ],
   "backlog_classification": {
@@ -2944,22 +3166,23 @@
     "1643": "OVERLAP_CANDIDATE_RETAINED; 670 changed paths represented in #1661, 661 identical blobs and nine different blobs; preserve research provenance and reconcile differences.",
     "1653": "UNIQUE_UNREVIEWED_GRAPH_WORKSTREAM; preserve six unique graph paths.",
     "1655": "UNIQUE_UNREVIEWED_STRUCTURAL_ANALYSIS_AND_FOUNDATION_CATALOG; preserve.",
-    "1659": "UNIQUE_UNREVIEWED_LOCAL_LLAMA_PHONE_CHAT_WORKSTREAM; preserve; no deployment.",
+    "1659": "BLOCKED_ARCHITECTURE_CONFLICT_LUNAROUTE_ONLY; local llama.cpp phone-chat branch is retained but must not be activated as a second Barrot brain while BARROT_SYNC.md declares LunaRoute sole brain.",
     "1660": "SUPERSEDED_SOURCE_CANDIDATE_RETAINED; open draft, 1,963 ahead/3 behind; all 972 changed paths represented in #1661, 959 identical blobs and 13 different blobs. Do not close until successor merge and main verification.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current parent head ad9a408 is 2,028 ahead/0 behind with 1,009 changed files (44 workflows, 965 other paths). Exact-head full suite: 3,443 passed, four failed; residual failures are stale map/head assertions, adapter/parser version assertion and Run124 count assertion. Corrective fixes are being applied on the existing branch. Dependency audit and fail-closed gate passed. Zero formal approvals; no merge.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current parent head 36602c9 is 2,029 ahead/0 behind with 1,010 changed files (44 workflows, 966 other paths). Exact-head full suite: 3,444 passed, three evidence-contract failures; core 714 passed; six-manifest dependency audit and fail-closed gate passed. Run28 repairs evidence contracts and quarantines secondary-brain deployment; new exact-head CI pending. Zero formal approvals; branch protection/Pages/credential blockers remain.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Verify the Run27 corrective commit's exact-head full suite, dependency audit and fail-closed gate; then update the PR description with exact results without changing the branch.",
-    "Complete semantic review of the 966 non-workflow changed paths, prioritizing Barrot V3 runtime, XRP collector, point-in-time feature store, forecast ledger and public interfaces.",
-    "Reduce the GitHub connector's admin-level permission and obtain authoritative branch-protection/required-approval visibility; do not merge while least-privilege and approval requirements remain unresolved.",
-    "Verify provider-side OAuth revocation and remediate the 17 affected PR branch tips additively without reading credential contents or rewriting history.",
-    "Resolve automatic GitHub Pages publication authorization before any merge.",
-    "Reconcile overlapping source PRs while preserving unique graph, prediction, safety, topology and research work; close only exact superseded duplicates after verified successor merge.",
-    "Keep forecasts NOT_ISSUED until independent WORM/timestamp anchoring, replayable feature reconstruction, synchronized data, independent shadow outcomes, calibration, drift and out-of-sample lift gates pass."
+    "Verify the Run28 commit's exact-head full repository suite, wheel build/installation, six-manifest dependency audit and fail-closed gate; do not merge on predecessor evidence.",
+    "Complete semantic review of the 967 non-workflow changed paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger, API boundaries and source provenance.",
+    "Obtain independent formal review and authoritative visibility into main branch protection/required checks; keep PR #1661 draft until all gates are satisfied.",
+    "Resolve GitHub connector admin-level permissions and independently verify provider-side OAuth revocation; 17 historical open PR tips were previously found to contain .config/gh/hosts.yml, whose contents were not read.",
+    "Resolve GitHub Pages publication authorization and determine whether the HF Space is linked for automatic rebuild before any merge.",
+    "Activate the scheduled public-data collector only after the integration is merged and the automatic artifact/cache behavior is verified; implement durable WORM/timestamp anchoring beyond 90-day artifacts.",
+    "Continue synchronized spot/depth/derivatives/ETF/capital-flow history, including USDC/RLUSD/Arc versus XRP hypotheses; retain minority objections and source disagreement.",
+    "Keep forecasts NOT_ISSUED until replayable point-in-time data, chronological walk-forward lift, calibration, drift and independent shadow outcomes pass."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-11T07:58:26.504Z",
@@ -3571,8 +3794,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": 27,
-  "latest_run_captured_at_utc": "2026-11-11T14:45:15.265Z",
+  "latest_run_id": 28,
+  "latest_run_captured_at_utc": "2026-11-11T14:59:22Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4953,18 +5176,19 @@
     "forecast_status": "NOT_ISSUED"
   },
   "ci_latest": {
-    "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
-    "run_id": 43040465375,
-    "full_suite_job": 130590559362,
-    "core_suite_job": 130590559864,
+    "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "run_id": 43041561932,
+    "full_suite_job": 130594397935,
+    "core_suite_job": 130594398463,
     "conclusion": "failure",
     "full_repository_suite": {
-      "passed": 3443,
-      "failed": 4,
+      "passed": 3444,
+      "failed": 3,
       "subtests": 8,
-      "collected": 3447,
       "coverage_percent": 59.98,
-      "duration_seconds": 57.49
+      "exact_head": true,
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false
     },
     "core_tests": {
       "passed": 714,
@@ -4972,24 +5196,23 @@
       "subtests": 8,
       "conclusion": "success"
     },
+    "failing_tests": [
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+    ],
     "dependency_audit": {
-      "passed": true,
-      "run_id": 43040465368,
+      "run_id": 43041562146,
+      "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "passed": true,
-      "run_id": 43040465437,
-      "automatic_merge_enabled": false
+      "run_id": 43041562362,
+      "conclusion": "success",
+      "merge_disabled": true
     },
-    "failing_tests": [
-      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-      "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
-      "tests/test_xrp_public_ingestion.py::test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt",
-      "tests/test_xrp_run124_market_evidence.py::test_run124_feature_store_contract_counts_weekly_cftc_sources"
-    ],
-    "failure_classification": "Run26e exact-head full suite on ad9a408: 3,443 passed and four failed. Two failures are current-map tests not yet updated for 47/43/45 counts and the latest-attempt head binding; one test still expects adapter/parser v3.22/v3.21 instead of v3.24/v3.23; one historical Run124 test still expects 46/42/44 in the current feature-store contract. The SBI HTML fixture repair worked: the prior seven ingestion receipt-count failures are gone. Core suite, dependency audit and fail-closed gate passed. Corrective changes are being applied on the same branch."
+    "failure_classification": "exact-head full-suite failed on 36602c9: 3,444 passed, 3 failed; eight subtests passed. The three failures are evidence-map contract defects: verified/captured timestamp ordering, stale exact-head CI failure classification, and 16 source-provenance records lacking a canonical source label. Core suite, six-manifest dependency audit, and fail-closed gate passed. No XRP adapter or prediction-runtime failure was observed in this run. Run28 corrects the evidence contracts and quarantines the secondary brain deployment; new exact-head CI is pending."
   },
   "run27_snapshot": {
     "artifact_type": "barrot_xrp_research_run",
@@ -6375,5 +6598,141 @@
       "no_main_write": true
     }
   },
-  "latest_run_summary": "Run27: repaired remaining exact-head test contracts; refreshed 14:00 UTC six-venue XRP spot depth, 14:34 UTC XRPL dashboard reference price, exchange-wallet balances, ETF vintages, derivatives/options, Evernorth resale registration, SBI VC Trade lending/margin terms, Coinbase cbXRP reserves, Ripple Prime RWA swaps, BNY custody and live XRPL lending amendment votes. All research excluded from model features; forecast NOT_ISSUED."
+  "latest_run_summary": "Run28: reconciled SBI Holdings' disclosed Ripple and Circle equity relationships; Circle's USDC/Arc network and Coinbase economics; native USDC on XRPL; Coinbase cbXRP reserve/supply; Ripple-Coinbase RLUSD distribution; Ripple Prime RLUSD-collateralized RWA swaps; BNY custody convergence; Standard Chartered/LMAX planned RLUSD collateral; Evernorth resale proceeds; SBI VC Trade's 29-asset lending page; live XRPL lending-amendment votes; and Kamilah Stevenson identity/channel ambiguity. Updated exact-head CI evidence, normalized source provenance, and quarantined the secondary self-hosted-brain deployment workflow. Research remains ineligible for prediction; forecast NOT_ISSUED.",
+  "run28_snapshot": {
+    "run_id": 28,
+    "captured_at_utc": "2026-11-11T14:59:22Z",
+    "forecast_status": "NOT_ISSUED",
+    "repository_state": {
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "integration_branch": "integration/xrp-v3-unified-main-20261111",
+      "integration_head_before_run28_commit": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+      "integration_pr": 1661,
+      "integration_ahead_by": 2029,
+      "integration_behind_by": 0,
+      "changed_files": 1010,
+      "workflow_files_changed": 44,
+      "non_workflow_paths_changed": 966,
+      "open_prs": 374,
+      "drafts": 360,
+      "non_drafts": 14,
+      "main_tree_entries": 1388,
+      "integration_tree_entries": 2275,
+      "main_tree_files": 1288,
+      "integration_tree_files": 2165,
+      "main_workflow_files": 86,
+      "integration_workflow_files": 87,
+      "hf_space_app_py_changed": true,
+      "main_primary_xrp_mission_present": false,
+      "integration_primary_xrp_mission_present": true,
+      "main_scheduled_xrp_collector_present": false,
+      "integration_scheduled_xrp_collector_present": true,
+      "local_git_clone": "FAILED_DNS_RESOLUTION; complete GitHub API tree, file, PR and CI inspection succeeded",
+      "main_pages_build_run": 42944862534,
+      "main_pages_build_conclusion": "success",
+      "main_pages_publication_authorized": false,
+      "main_ci_run": 42944864014,
+      "main_ci_conclusion": "success",
+      "main_ci_tests_passed": 718,
+      "latest_main_pillars_check": {
+        "run_id": 43025487840,
+        "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+        "conclusion": "failure",
+        "read_only": true,
+        "reasons": [
+          "missing GitHub App credentials",
+          "Databricks HTTP 403",
+          "Hugging Face BUILD_ERROR"
+        ]
+      },
+      "latest_full_suite_tested_head": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+      "latest_exact_head_ci": "EXACT_HEAD_36602C9_FULL_SUITE_FAILED_3444_PASSED_3_FAILED; core 714 passed; dependency audit and fail-closed gate passed; three failures are evidence-map timestamp, failure-classification and provenance-label contracts",
+      "last_reconciled_at_utc": "2026-11-11T14:59:22Z",
+      "run28_new_paths": [
+        "research/xrp_intelligence/20261111T145922Z-run28-institutional-capital-stablecoin-custody-and-collateral-reconciliation.json"
+      ],
+      "run28_expected_changed_files_after_commit": 1011,
+      "run28_expected_non_workflow_paths_after_commit": 967,
+      "run28_expected_integration_tree_entries_after_commit": 2276,
+      "run28_expected_ahead_by_after_commit": 2030
+    },
+    "exact_head_ci": {
+      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+      "run_id": 43041561932,
+      "full_suite_job": 130594397935,
+      "core_suite_job": 130594398463,
+      "conclusion": "failure",
+      "full_repository_suite": {
+        "passed": 3444,
+        "failed": 3,
+        "subtests": 8,
+        "coverage_percent": 59.98,
+        "exact_head": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
+      },
+      "core_tests": {
+        "passed": 714,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+      ],
+      "dependency_audit": {
+        "run_id": 43041562146,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43041562362,
+        "conclusion": "success",
+        "merge_disabled": true
+      },
+      "failure_classification": "exact-head full-suite failed on 36602c9: 3,444 passed, 3 failed; eight subtests passed. The three failures are evidence-map contract defects: verified/captured timestamp ordering, stale exact-head CI failure classification, and 16 source-provenance records lacking a canonical source label. Core suite, six-manifest dependency audit, and fail-closed gate passed. No XRP adapter or prediction-runtime failure was observed in this run. Run28 corrects the evidence contracts and quarantines the secondary brain deployment; new exact-head CI is pending."
+    },
+    "workflow_safety": {
+      "changed_workflows": 44,
+      "quarantined_or_disabled_after_run28": 26,
+      "active_after_run28": 18,
+      "secondary_brain_deploy_disabled": true,
+      "scheduled_xrp_collector_main_run_verified": false,
+      "pages_publication_authorized": false
+    },
+    "research_summary": {
+      "sbi_ripple_circle": "SBI disclosed approximately 9% Ripple ownership in 2025 and $50M Circle equity investment split $25M SBI Holdings/$25M SBI Shinsei; SBI Circle Holdings JV and SBI Ripple Asia are distinct relationships.",
+      "circle_arc": "Arc mainnet launched Sep 16 2026; SBI Group founding validator; Coinbase in exchange cohort; USDC gas; separate from XRPL.",
+      "usdc_xrpl": "Circle native USDC live on XRPL since Jun 12 2025; no direct Circle-Ripple partnership inferred.",
+      "coinbase": "Coinbase distributes RLUSD across Prime/Exchange/Retail; Global Exchange collateral was future at announcement. cbXRP reserve/supply is issuer-displayed, not independent audit.",
+      "ripple_prime": "RWA perpetual swaps use RLUSD collateral; no XRP leg disclosed.",
+      "custody": "BNY supports XRP/RLUSD custody and is primary RLUSD reserve custodian; future mint/redeem and C2FO trade finance subject to approvals. Standard Chartered custody live; LMAX collateral plan future.",
+      "capital": "Evernorth resale registration does not provide proceeds to issuer; distinguish cash, in-kind XRP, debt, ELOC capacity and secondary sales.",
+      "sbi_vc_trade": "Rendered lending page lists 29 assets including XRP/USDC/JPYSC; RLUSD absent; search snippet 32 conflicts; no actual loan/collateral balances disclosed.",
+      "xrpl_governance": "35 validators; needs 29; SingleAssetVault 23, LendingProtocol 22, LendingProtocolV1_1 22; no countdown; native lending inactive.",
+      "identity": "Kamilah person corroborated by first-party site and iHeart interview; channel handle remains unverified; no personal YouTube videos attributed. ASK Coin/actual capital/SBIC ChatGPT exact phrases remain unresolved as defined."
+    },
+    "raw_receipts": {
+      "web_raw_bytes_captured": false,
+      "sha256_receipts_created": false,
+      "independent_worm_archive": false,
+      "model_feature_admission": false
+    },
+    "next_action": "Verify the new Run28 commit's exact-head full suite, wheel build, dependency audit and fail-closed gate; then continue semantic review and resolve approval/Pages/credential blockers."
+  },
+  "latest_web_research_run28": {
+    "sbi_ripple_circle": "SBI disclosed approximately 9% Ripple ownership in 2025 and $50M Circle equity investment split $25M SBI Holdings/$25M SBI Shinsei; SBI Circle Holdings JV and SBI Ripple Asia are distinct relationships.",
+    "circle_arc": "Arc mainnet launched Sep 16 2026; SBI Group founding validator; Coinbase in exchange cohort; USDC gas; separate from XRPL.",
+    "usdc_xrpl": "Circle native USDC live on XRPL since Jun 12 2025; no direct Circle-Ripple partnership inferred.",
+    "coinbase": "Coinbase distributes RLUSD across Prime/Exchange/Retail; Global Exchange collateral was future at announcement. cbXRP reserve/supply is issuer-displayed, not independent audit.",
+    "ripple_prime": "RWA perpetual swaps use RLUSD collateral; no XRP leg disclosed.",
+    "custody": "BNY supports XRP/RLUSD custody and is primary RLUSD reserve custodian; future mint/redeem and C2FO trade finance subject to approvals. Standard Chartered custody live; LMAX collateral plan future.",
+    "capital": "Evernorth resale registration does not provide proceeds to issuer; distinguish cash, in-kind XRP, debt, ELOC capacity and secondary sales.",
+    "sbi_vc_trade": "Rendered lending page lists 29 assets including XRP/USDC/JPYSC; RLUSD absent; search snippet 32 conflicts; no actual loan/collateral balances disclosed.",
+    "xrpl_governance": "35 validators; needs 29; SingleAssetVault 23, LendingProtocol 22, LendingProtocolV1_1 22; no countdown; native lending inactive.",
+    "identity": "Kamilah person corroborated by first-party site and iHeart interview; channel handle remains unverified; no personal YouTube videos attributed. ASK Coin/actual capital/SBIC ChatGPT exact phrases remain unresolved as defined."
+  }
 }

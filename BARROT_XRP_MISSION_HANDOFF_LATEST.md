@@ -1,3 +1,114 @@
+# Run28 — XRP institutional network, capital taxonomy, current CI and LunaRoute-only safety
+
+Captured: 2026-11-11T14:59:22Z
+
+## Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain mission priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation. The current main SHA is `84f28ee7755607236231545a14f3d093c1baaa85`. The existing integration branch is `integration/xrp-v3-unified-main-20261111`; the Run28 evidence was captured from parent head `36602c9bc7c9e97d8319ec84d13d8971d208f4ff` before this Run28 commit. PR [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661) is the single active consolidated V3/XRP integration PR. It is open, draft, mergeable but unstable, 2,029 commits ahead/0 behind, with 1,010 changed files (44 workflow files and 966 non-workflow paths), 245,099 additions and 4,363 deletions. It has zero formal approvals/reviews and zero requested reviewers.
+
+The complete main tree has 1,388 entries; integration tree 2,275. Open PR inventory is 374 (360 drafts, 14 non-drafts). No new PR was created. PR #1660 remains a superseded-source candidate; #1640/#1642/#1643 remain overlap candidates. No source PR was closed.
+
+## Exact-head verification before Run28 correction
+
+On exact head `36602c9bc7c9e97d8319ec84d13d8971d208f4ff`:
+- Full repository suite: **3,444 passed, 3 failed, 8 subtests**, 59.98% inclusive coverage.
+- Core suite: 714 passed, 0 failed, 8 subtests.
+- Six-manifest dependency audit: passed, zero known vulnerabilities reported.
+- Fail-closed gate: passed, merge disabled.
+
+Runs: [full CI 43041561932](https://github.com/Barrot-Agent/B-Agent/actions/runs/43041561932), [dependency audit 43041562146](https://github.com/Barrot-Agent/B-Agent/actions/runs/43041562146), [fail-closed gate 43041562362](https://github.com/Barrot-Agent/B-Agent/actions/runs/43041562362).
+
+The three failures were evidence-contract defects: current-map timestamp ordering, stale exact-head failure classification, and 16 provenance records missing the canonical `source` label. No Bybit adapter or prediction-runtime failure was observed. Run28 normalizes the evidence map, updates exact CI state, and adds a regression test for secondary-brain workflow quarantine. **The new Run28 commit has not yet been tested; exact-head CI is pending.**
+
+## Workflow and security review
+
+All 44 changed workflow diffs were scanned; eight high-risk workflows were read in full. The `sync-self-hosted-brain.yml` workflow is now quarantined with no token permissions and an always-false job because `BARROT_SYNC.md` declares LunaRoute as the sole Barrot brain. The historical `self_hosted_brain/` code is retained; no deployment occurred. Changed workflows now classify as 26 quarantined/disabled and 18 active.
+
+The XRP public-data collector exists only on the integration branch. It defines 47 source endpoints: 43 hourly, two weekly and two excluded noncommercial XRPL node sources; 45 are scheduled. Its GitHub permissions are read-only (`contents:read`, `actions:read`) and it uploads artifacts rather than committing data. Bybit uses public ticker/order-book endpoints with matching-engine `cts`, system `ts`, depth and imbalance calculations; it has fixture/mocked tests only. U.S./Mainland China 403 restrictions fail closed; no proxy or bypass. Raw receipts are retained 90 days, per-run feature-store artifacts 7 days and daily backups 90 days. GitHub artifacts/cache are not WORM or permanent immutable storage. No scheduled ingestion run has executed on main.
+
+Other high-risk workflows remain gated and were not dispatched: Coinbase paper trader (manual confirmation, artifact-only), Databricks/Kaggle operations (explicit confirmations), A2A worker deployment (explicit deploy and secret-rotation confirmations), and PR approval workflow (human approval required). Hugging Face sync and Databricks bundle deployment are disabled. No paper trade, Kaggle submission, Databricks import, HF deployment, secret rotation or external deployment occurred.
+
+Main CI run 42944864014 succeeded (718 tests). Main Pages build 42944862534 succeeded after a prior main push; Pages publication is an automatic merge side effect and remains unauthorized. The current branch-protection endpoint returns HTTP 403, so effective required checks/approval rules cannot be independently verified; visible fallback ruleset 10863829 is disabled. The GitHub connector reports admin/maintain/push permissions, which exceeds least privilege. The path `.config/gh/hosts.yml` is absent from main and integration, but the previous verified inventory found it in 17 other open PR tips; contents were not read and provider-side revocation is not independently verified. Do not rewrite historical branches or read credential contents.
+
+## XRP and institutional relationship research
+
+### SBI, Ripple, Circle and Arc
+
+SBI Holdings' June 9, 2025 release states that SBI Holdings had invested in Ripple since 2016, held approximately 9% as an external largest shareholder, and operates the SBI Ripple Asia joint venture with Ripple. This is a dated issuer disclosure; current November 2026 ownership has not been refreshed.
+
+The same SBI release reports a $50M Circle equity investment split $25M SBI Holdings and $25M SBI Shinsei Bank. SBI and Circle later established SBI Circle Holdings to promote USDC in Japan; SBI VC Trade distributed USDC. These are equity and distribution relationships, not XRP purchases.
+
+Circle's September 16, 2026 Arc mainnet release names SBI Group as a founding validator and Coinbase among exchange partners. Arc fees are paid in USDC, without a volatile native gas token; Aave and Morpho anchor credit markets, and Circle lists BNY and other institutions in its ecosystem. Arc is a distinct stablecoin-native network, not XRPL. This supports a competing hypothesis: SBI and Coinbase participate across networks and stablecoins rather than exclusively backing XRP.
+
+Circle announced native USDC on XRPL on June 12, 2025. USDC and Ripple's RLUSD therefore coexist on XRPL, but this does not establish a direct Circle-Ripple commercial partnership or XRP bridge-asset volume.
+
+Circle's October 16, 2026 company blog reports H1 2026 USDC onchain volume above $36T, $315B mint/redemption, $819M distribution-partner and transaction costs, and approximately 77% of stablecoin transaction volume. It identifies Coinbase as its largest and longest-standing partner and quotes Coinbase average USDC held in products at $20B in Q2 2026, up 44% year over year. These are company-reported figures; Coinbase's exact share of Circle partner economics is not disclosed. Coinbase's 2023 agreement with Circle includes an equity stake and ongoing commercial relationship.
+
+### Coinbase, Ripple and wrapped XRP
+
+Ripple's October 28, 2026 announcement made RLUSD available through Coinbase Prime, Exchange and Retail on XRPL, Base and Ethereum. The announcement said Coinbase Global Exchange collateral availability would follow; it must not be represented as already live.
+
+Coinbase's cbXRP proof page refreshed at 14:30 on November 11 and displayed 151,709,177.16 XRP reserves against 151,706,930.63 cbXRP supply, a displayed surplus of 2,246.53 XRP (about 0.00148%). This is issuer-published, not an independent audit or proof of incremental spot buying.
+
+### Ripple Prime and custody/collateral
+
+Ripple Prime's October 15 release describes 24/7 RWA perpetual swaps across 100+ reference markets, including Virtu, using Trade.xyz contracts on Hyperliquid. RLUSD may be used as collateral. No XRP collateral leg is disclosed.
+
+BNY's October 27 release says it is primary reserve custodian for RLUSD and now supports XRP and RLUSD custody. Intended direct RLUSD mint/redeem and C2FO tokenized trade-finance work remain subject to approvals/exploration. BNY also provides Circle USDC reserve custody and mint/burn services, making it a common institutional custody node, not evidence of a direct Circle-Ripple partnership.
+
+Ripple's October 12 release says Standard Chartered RLUSD custody on XRPL is live through its DIFC branch. The planned LMAX RLUSD collateral-mirroring capability remains subject to final documentation, testing, applicable laws, internal approvals and jurisdictional readiness. This is RLUSD collateral, not XRP collateral.
+
+### SBI VC Trade and XRPL lending
+
+SBI VC Trade's directly rendered lending page states 29 supported assets, including XRP, USDC and JPYSC; RLUSD is absent. A search-result snippet reported 32, so the page/index discrepancy is preserved; the direct rendered page is used for this capture. The page describes customers lending assets to SBI VC Trade. It does not disclose actual XRP loan balances, utilization, margin-collateral eligibility or collateral haircuts. Its 10% USDC/84-day course is dated to the April 30, 2026 solicitation and is not a current guaranteed rate.
+
+The live XRPL amendment dashboard at 14:28 UTC reported 35 validators and a 29-vote threshold: SingleAssetVault 23/35, LendingProtocol 22/35 and LendingProtocolV1_1 22/35, with zero amendments in the 14-day countdown. Native lending is not active. SingleAssetVault can hold XRP, IOU or MPT, so XRP collateral is not mandatory even if the lending stack later activates.
+
+### Evernorth and actual capital
+
+The November 9 SEC 424B3 registers 73,688,162 Class A shares for potential resale and separately registers 239,653 sponsor warrants. Evernorth says it receives no proceeds from selling-securityholder resales, except amounts from warrant exercise. The share pool includes existing Class A, Class C conversion, company-unit redemption/exchange and warrant-exercise shares; registration is not immediate float or company cash.
+
+The SEC filing defines the Advance Funding Subscription as $214.05M cash plus 600,000 XRP. SBI's $200M commitment is included in that aggregate advance-funding pool, not additive. Keep this separate from XRP contributed in kind, cash used to buy XRP, debt, undrawn Cantor ELOC capacity, registered resale and actual secondary sales. "Actual capital" is not a standardized XRP metric.
+
+### Identity research
+
+SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three distinct Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC's 2025 ChatGPT/Copilot/RAG training was for investee companies and delivered by VOST; it is not an OpenAI partnership.
+
+"ASK Coin" remains unresolved: Askcoin UCID 4640 and Permission Coin ASK UCID 7105 are separate candidates; no XRP/XRPL contract or Ripple relationship is verified. "Actual capital" remains a nonstandard phrase and must be resolved through the categories above. Exact "SBIC, ChatGPT SBIC" searches did not find a formal entity or OpenAI partnership.
+
+First-party learn.kamilahstevenson.com identifies Dr Kamilah Stevenson/The Wealth Doctor. The iHeart XRP Podcast interview has the guest say her YouTube name is "doctor Camilla Stevenson" and warn of fake pages; the transcript spells social names inconsistently. No first-party YouTube cross-link verifies the handle. Candidate handles remain unverified; no personal-channel video inventory is attributed.
+
+## Prediction and data eligibility
+
+**Forecast status: NOT_ISSUED.** Run27 market observations remain asynchronous: the 14:00 six-venue spot snapshot and 14:34 dashboard reference are not synchronized; ETF flows disagree by provider and fund coverage; exchange-wallet labels include cold storage/newly tracked wallets; perpetual OI aggregates differ materially. Run28 institutional announcements are not XRP flow data. None of these records is admitted to the model feature store.
+
+The collector is designed and tested with fixtures, not verified as a scheduled main-branch service. SHA-256 raw-source receipts are designed, but this run captured no raw web bytes, created no raw-source hashes and has no independent WORM/timestamp anchor. Walk-forward evaluation, calibration, drift and shadow outcomes remain insufficient for directional forecasts.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** nine-platform capability/authentication map; point-in-time ingestion/feature store; source provenance; walk-forward baselines; forecast ledger; LunaRoute-only brain boundary.
+- **EXECUTED:** GitHub repository/tree/PR/workflow reads; 44 workflow diff scan; eight high-risk workflow full reads; public primary-source research; exact-head core/full-suite/dependency/gate runs; Run28 map/test/workflow/handoff correction on the existing integration branch.
+- **VERIFIED:** current main SHA and branch head before Run28; PR #1661 inventory; predecessor exact-head run 430415 results; dependency audit and fail-closed gate; source pages and their explicit limitations.
+- **NOT VERIFIED:** Run28 commit CI, live Bybit endpoint, scheduled collector on main, WORM archive, LunaRoute authentication, eight external platform connections, out-of-sample predictive lift, shadow outcomes, branch-protection requirements and publication authorization.
+
+## Backlog classification and next action
+
+- #1661 — active consolidated integration, **blocked** pending Run28 exact-head CI, semantic review, formal approval, branch-protection visibility, credential remediation and Pages authorization.
+- #1660 — **superseded-source candidate**, retain until #1661 is merged and verified on main.
+- #1640/#1642/#1643 — **overlap candidates**, retain and reconcile differing blobs after verified successor merge.
+- #1659 — **blocked** by LunaRoute-only brain declaration; retain historical code, no deployment.
+- #1653 — **unique/unreviewed** repository graph.
+- #1655 — **unique/unreviewed** structural analysis/catalog.
+- #1614/#1611 — **unique/unreviewed** point-in-time feature and forecast-ledger work.
+- #1610 — **unique/unreviewed** autonomous-writer safety.
+- #1608 — **unique/unreviewed** C2FO/Evernorth research.
+- #1269 — **unique/unreviewed** OBJ topology.
+
+Next concrete action: verify the new Run28 commit's exact-head full suite, wheel build/installation, dependency audit and fail-closed gate. If green, update PR #1661 description with exact evidence; do not mark ready or merge until semantic review, independent approvals, branch protection, credential revocation and publication authorization are resolved.
+
+No merge, main-branch write, deployment, secret rotation, Kaggle submission, Databricks import, HF Space restart, paper trade, real-money action, force-push, reset, clean, stash or discard occurred.
+
+
 # Run 26e — source-fixture repair, XRP lending governance and institutional collateral reconciliation
 
 Captured: 2026-11-11T14:38:27.479Z
