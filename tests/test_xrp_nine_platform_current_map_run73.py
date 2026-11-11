@@ -92,7 +92,7 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     data = load_current()
     state = data["repository_state"]
     assert state["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
-    assert state["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
+    assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
     assert state["integration_pr"] == 1661
     assert state["integration_head_before_current_map_commit"] == "1ec69ca210f277f2ff65311e29061ba8b52e3a9e"
     assert state["integration_ahead_by"] == 1974
@@ -118,7 +118,7 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["state"] == "open"
     assert old["draft"] is True
     assert old["behind_by"] == 3
-    assert "RETAIN_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
+    assert "RETAINED_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
 
 
 def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
