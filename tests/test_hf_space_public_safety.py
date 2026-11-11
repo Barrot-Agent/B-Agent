@@ -102,6 +102,20 @@ def test_api_tab_does_not_publish_legacy_signal_or_subscription_offer():
     assert _directional_action_labels(tab) == []
 
 
+def test_public_brain_tool_descriptions_match_not_issued_contract():
+    assert "Returns only the current XRP forecast publication status." in SOURCE
+    assert "NOT_ISSUED with no direction or confidence score." in SOURCE
+    assert "legacy directional signal-ledger rows are not exposed" in SOURCE
+    assert "Best-effort public XRP/USD spot reference; descriptive only" in SOURCE
+    assert "Current live ternary XRP signal with confidence score" not in SOURCE
+    assert "Last n entries of the git-timestamped public signal ledger." not in SOURCE
+    latest = _function_source("tool_latest_signal")
+    assert '"forecast_status": "NOT_ISSUED"' in latest
+    assert '"forecast_issued": False' in latest
+    ledger = _function_source("tool_ledger_tail")
+    assert "quarantined" in ledger
+
+
 def test_provider_consent_is_exposed_and_passed_to_chat_and_brain_query():
     assert "I authorize this session's messages and chat history" in SOURCE
     assert SOURCE.count("user_consented=external_inference_consent") == 3

@@ -130,3 +130,70 @@ Backlog:
 **No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.**
 
 The previous accumulated handoff remains recoverable in Git history at parent `5da539d6362b2535e02809d7f3b1c3acfa9eff19`; this file is now the concise latest state.
+
+
+## Run19 — 2026-11-11 09:33 UTC
+
+### Repository and exact-head verification
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`.
+- Run19 parent head: `3d846d6dc4323dddc5a6cfdcfba135128fd7ec23`; 2,004 commits ahead and zero behind main.
+- Recursive trees: main 1,388 entries / 86 workflows; integration 2,258 entries / 87 workflows.
+- PR #1661: 993 changed files, 44 workflow files, 949 other paths; remains draft/open. GitHub reports mergeable, but draft status and the outstanding merge gates prohibit merge.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts).
+- GitHub API tree/PR/CI access succeeded. Local Git transport still fails DNS resolution for github.com; no local clone was established.
+
+Exact-head CI on `3d846d6dc4323dddc5a6cfdcfba135128fd7ec23`:
+
+- Full repository suite: **3,416 passed, zero failed, eight subtests**, 59.98% inclusive `barrot_agent` coverage, 83.87 seconds; full-suite job 130438999125 in [CI run 42995652643](https://github.com/Barrot-Agent/B-Agent/actions/runs/42995652643).
+- Core suite: **714 passed, eight subtests**, job 130438999582.
+- Wheel build and installed-wheel verification passed; installed package loaded Barrot V3, the XRP primary mission and canonical data assets.
+- Dependency audit: all six manifests passed; zero known vulnerabilities reported; job 130438996355 in [audit run 42995652465](https://github.com/Barrot-Agent/B-Agent/actions/runs/42995652465).
+- Fail-closed merge gate passed in [PR run 42995652514](https://github.com/Barrot-Agent/B-Agent/actions/runs/42995652514) and [push run 42995642681](https://github.com/Barrot-Agent/B-Agent/actions/runs/42995642681). Automatic merge remains disabled.
+- The preceding head `038e3801` had two false-positive UI tests because safe negative disclaimers mentioned BUY/SELL. The test-only correction in `3d846d6` now checks actionable Streamlit metric/button labels rather than banning the words in safety copy. It also corrected source extraction from literal backslash-n joins to actual newline joins. The full suite is green on the corrected exact head.
+- Non-failing packaging warnings remain: deprecated `project.license` TOML table and setuptools package-discovery warnings for `barrot_agent.data.missions` and `data.research`. Wheel/package verification nevertheless passed.
+
+### Additional public-UI safety correction
+
+Source review found the public brain tool schema still described `get_latest_signal` as a live ternary signal with a confidence score and `get_ledger_tail` as exposing historical ledger rows, while their implementations return `NOT_ISSUED` and quarantine status only. Run19 updates those descriptions to match the actual fail-closed behavior, clarifies that spot is descriptive-only, and labels knowledge-base sentiment as source annotation rather than calibrated forecast probability. A regression test now binds those descriptions to the implementations. This correction is included in the Run19 commit; its exact-head CI is pending until the new commit's workflows finish.
+
+### Fresh market and capital research (research-only; not model eligible)
+
+- Spot capture in the latest structured research artifact: OKX XRP-USDT 1.0585 at 08:52:21 UTC; Kraken XRP/USD 1.05557 retrieved at 09:00:10 UTC. Kraken supplied no event timestamp. USDT normalization produced an asynchronous ~0.1614% difference; not executable arbitrage.
+- Fuelmaps six-venue resting-book snapshot at 07:00 UTC: within 1%, bids $13.5M / asks $10.1M; within 5%, bids $23.2M / asks $13.8M. Binance and Bitget excluded. Resting orders can be cancelled; not executed volume or guaranteed support.
+- TrackWhale seven-day external-transfer tracker: 501.72M XRP inflows, 602.93M outflows, net -101.21M XRP; 64 large-transfer records. The largest 368.48M transfer is attributed to an unknown wallet, not an exchange. XRP Insights separately reports 22.33B XRP across 701 wallets/24 exchanges, but includes cold storage and newly tracked wallets; not tradable float.
+- Derivatives providers remain non-comparable: TradRadar $1.57B OI; Liqwall $1.16B; Alpha heatmap $2.32B. Different venues/contract coverage; no average. Positive funding and long-heavy liquidations coexist with falling OI. These observations support crowded-long/deleveraging as one hypothesis, not a directional forecast.
+- New November 11 CryptoTicker public-API research: CryptoQuant's Binance cumulative funding was reported at +0.18% over 30 days, highest since October 2025; the article's OKX public-interface check found positive funding at 76/100 settlements since October 9, totaling +0.39%, and an OKX long/short account ratio of 3.70 on November 10. These are venue/window-specific measures and are not averaged with aggregator eight-hour rates. The article also states XRP fell about 30% from October 5 to November 11. Source: [CryptoTicker, November 11](https://cryptoticker.io/en/xrp-price-prediction-funding-rate-leverage-november-11-2026/).
+- ETF sources agree on the November 9 -$10.4M session. Alpha Finance reports November 10 another -$7.6M, two consecutive outflow sessions, but +$1.3M over 30 sessions and +$1.71B cumulative net inflows. 24/7 Wall St reports the November 9 redemption was concentrated in Bitwise (~$9.4M) and cumulative October 12–November 9 net outflow only ~$4.2M. This is not evidence of broad institutional exit. Sources: [Alpha Finance](https://alphafinance.io/etf/xrp/), [24/7 Wall St, November 10](https://247wallst.com/investing/cryptocurrency/2026/11/10/xrp-etfs-lost-10-4-million-in-one-day-how-much-has-left-since-xrp-started-falling/).
+- Binance theft-linked XRP: Elliptic's November 10, 11:00 UTC update estimated about 60M XRP remained, including ~33M in the last dormant wallet. A November 11 CryptoTicker XRPL query at ledger 108,255,241 reports that 33,455,915 XRP moved from that wallet to the collection wallet at 01:01 CET; the collection wallet held 29,466,416 XRP at 07:44 CET, after 32.34M XRP had left in 193 payments since the previous measurement. The two observations have different cutoffs and may reconcile; the newer amount is secondary-source reported and not independently re-queried by Barrot. Movement/swapping into BTC is not proof of fiat cash-out or a centralized-exchange sale. Sources: [Elliptic, last updated November 10](https://www.elliptic.co/insights/how-north-korea-is-laundering-the-6-4-billion-stolen-from-binance/), [CryptoTicker, November 11](https://cryptoticker.io/en/xrp-price-prediction-funding-rate-leverage-november-11-2026/).
+- Circle's Q3 2026 10-Q: average USDC circulation $73.3B (+8% YoY), on-chain volume $13.9T (+49%), Q3 revenue and reserve income $865M (+17%). Coinbase distribution costs were $331.3M in Q3 and $986.6M for nine months. The filing explains Coinbase's allocation is linked to USDC balances on its platform after issuer retention plus a share of broader ecosystem growth. This is a direct economic distribution relationship, not evidence of XRP purchases. Source: [Circle Q3 2026 Form 10-Q](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html).
+- SBI identity resolution: SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption on May 1, 2025 (SBI Securities from January 2025; SBI Holdings began partial employee rollout in March 2025). Separately, SBI Holdings announced a June 2, 2026 Claude/Anthropic AI-transformation collaboration with Ridge-i as core implementation partner. These are SBI Holdings corporate relationships, not the regional SBIC East/Central/West companies. SBIC West's October 23, 2024 ChatGPT seminar is educational activity, not an OpenAI partnership. Sources: [SBI/OpenAI announcement](https://www.sbigroup.co.jp/news/2025/0501_15410.html), [SBI/Anthropic announcement](https://www.sbigroup.co.jp/news/2026/0602_16373.html), [SBIC West seminar PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
+- SBI and Startale's October 16, 2026 Open Standard participation says they are considering a JPYSC/OUSD interoperability proof of concept. It is exploratory, not verified production settlement and not an XRP corridor. [SBI primary announcement](https://www.sbigroup.co.jp/news/2026/1016_16665.html).
+- ASK identity: CoinMarketCap identifies ASK as Permission Coin, a LayerZero OFT token on Base and Polygon, with 100B max supply and ~16.17B circulating. This is not evidence of an XRP Ledger deployment or XRP integration. [Permission Coin listing](https://coinmarketcap.com/currencies/permission-coin/).
+- Kamilah/Camilla Stevenson: search results surfaced many near-identical social profiles and several low-subscriber YouTube handles. No first-party cross-link from the previously identified professional site was established in this run; no channel or video inventory is attributed. The exact phrase `SBIC, ChatGPT SBIC` still has no verified primary-source match; the separate SBI Holdings and SBIC West facts above should not be conflated.
+- Circle/Coinbase/Ripple/SBI relationships remain entity-specific: USDC distribution economics, RLUSD distribution/custody, JPYSC/OUSD exploration, XRP bridge corridors and Evernorth equity/capital are distinct edges. No stablecoin adoption figure is converted into XRP demand.
+
+All web-rendered observations above remain `RESEARCH_ONLY_NOT_MODEL_ELIGIBLE`: Barrot's collector did not capture their raw bytes, receipt hashes or trusted timestamps in this run. No forecast was issued.
+
+### Security, PRs and merge decision
+
+- `.config/gh/hosts.yml` is absent from current main and #1661, but is present in the current recursive tree of 17 other open PR tips: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255, #1254. All 17 current head SHAs were rechecked; contents were not read. Repository notes report OAuth revocation, but provider-side revocation remains unverified.
+- Main reports `protected=true`; detailed branch-protection API returns HTTP 403. The visible `Fall Back` ruleset is disabled. PR #1661 has zero formal reviews/approvals; only a CodeRabbit draft-not-reviewed comment exists.
+- #1661 remains the sole integration PR and remains draft. #1660 is still open/draft, dirty and three commits behind its base; retain until successor merge and verification.
+- Preserve unique work: #1653 (six unique graph paths, eight unresolved review threads), #1614 (27 unique prediction paths), #1611 (one), #1610 (seven), #1612 (two), #1269 (eight). Keep overlap candidates #1640, #1642, #1643, #1644–#1650, #1317, #1318, #1320, #1254 and #1255 open until semantic reconciliation and verified successor merge.
+- Main full suite remains green on exact SHA `84f28ee`: 718 passed, eight subtests in 12.32 seconds; [main CI 42944864014](https://github.com/Barrot-Agent/B-Agent/actions/runs/42944864014). Main's scheduled Cross Analysis succeeded on that SHA at 08:51 UTC in [run 42990370490](https://github.com/Barrot-Agent/B-Agent/actions/runs/42990370490).
+- No merge: PR is draft; branch-protection requirements are inaccessible; formal approval absent; 949 non-workflow changed paths still need semantic review; credential remediation remains unresolved; main push triggers GitHub Pages publication and explicit publication authorization is absent. The integration still has 25 quarantined workflows, so safe Barrot V3 operational parity is incomplete.
+
+### Next actions
+
+1. Complete exact-head CI on the Run19 safety-description/evidence commit.
+2. Finish semantic review of all 949 non-workflow changed paths.
+3. Verify provider-side OAuth revocation and resolve 17 affected branch tips additively, without reading contents or rewriting history.
+4. Obtain authoritative branch-protection requirements and independent approval.
+5. Resolve automatic GitHub Pages publication authorization.
+6. Preserve unique graph, prediction, safety and topology PR work.
+7. After authorized merge, verify main SHA, merged files, main CI, Pages side effects and first main-only XRP ingestion receipts.
+8. Keep forecast issuance disabled until independent WORM anchoring, replayable features, synchronized history, calibration, drift and shadow/out-of-sample gates pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.

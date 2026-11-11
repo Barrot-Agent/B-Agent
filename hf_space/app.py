@@ -186,7 +186,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_knowledge",
-            "description": "Barrot's REAL persistent knowledge base: recent distilled XRP news with sentiment, relevance, and why it matters. Use this for any question about what Barrot has learned, remembers, or knows about the market.",
+            "description": "Recent distilled public research entries with recorded sentiment and XRP relevance labels. These are source annotations, not validated forecast probabilities or trading signals.",
             "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
         },
     },
@@ -194,7 +194,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_latest_signal",
-            "description": "Current live ternary XRP signal with confidence score from the public endpoint.",
+            "description": "Returns only the current XRP forecast publication status. Until independent readiness gates pass, the result is NOT_ISSUED with no direction or confidence score.",
             "parameters": {"type": "object", "properties": {}},
         },
     },
@@ -202,7 +202,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_ledger_tail",
-            "description": "Last n entries of the git-timestamped public signal ledger.",
+            "description": "Returns a quarantine status only; legacy directional signal-ledger rows are not exposed through the public interface.",
             "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
         },
     },
@@ -226,7 +226,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_xrp_price",
-            "description": "Live XRP/USD price.",
+            "description": "Best-effort public XRP/USD spot reference; descriptive only, not a forecast or recommendation.",
             "parameters": {"type": "object", "properties": {}},
         },
     },
