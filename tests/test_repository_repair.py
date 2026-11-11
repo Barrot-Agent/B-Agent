@@ -482,7 +482,7 @@ def test_repository_repair_controller_blocks_before_patch_without_external_actio
     assert cycle.failure.failed_operation == "authorize_remote_sync"
     assert cycle.commit.created is False
     assert cycle.changes_applied is False
-    assert (workspace / path).read_text(encoding="utf-8") == 'FLAG = "BROKEN"\\n'
+    assert (workspace / path).read_text(encoding="utf-8") == 'FLAG = "BROKEN"\n'
     assert len(git(workspace, "log", "--oneline").stdout.splitlines()) == 1
     assert git(workspace, "ls-remote", "--heads", "origin", "repair/test").stdout.strip() == ""
 
