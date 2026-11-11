@@ -30,6 +30,7 @@ from barrot_agent.orchestration.repository_repair_loop import (
     assert_clean_feature_worktree,
     run_repository_repair_loop,
 )
+from barrot_agent.orchestration.shared_runtime import Capability, DefensiveWatchdog
 
 
 class FakeBrain:
@@ -181,11 +182,26 @@ def repair_payload(
     return json.dumps(payload)
 
 
+def authorized_watchdog(workspace: Path) -> DefensiveWatchdog:
+    return DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+
+
 def make_controller(workspace: Path, brain: FakeBrain) -> RepositoryRepairController:
     return RepositoryRepairController(
         brain=brain,
         workspace=workspace,
         planner_attempts=3,
+        watchdog=authorized_watchdog(workspace),
     )
 
 
@@ -432,6 +448,43 @@ def test_successful_commit_records_sha(tmp_path: Path) -> None:
     assert cycle.commit.created is True
     assert cycle.commit.exists is True
     assert len(cycle.commit.sha) == 40
+
+
+def test_git_gateway_requires_explicit_authorization_for_nonprotected_push(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path, origin=True)
+
+    result = GitGateway(workspace).push("origin", "repair/test")
+
+    assert result.success is False
+    assert "explicitly configured authorization gate" in result.error
+    assert git(workspace, "ls-remote", "--heads", "origin", "repair/test").stdout.strip() == ""
+
+
+def test_repository_repair_controller_blocks_before_patch_without_external_action_grant(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    controller = RepositoryRepairController(
+        brain=FakeBrain(repair_payload(path)),
+        workspace=workspace,
+    )
+
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "EXTERNAL_SYNC_NOT_AUTHORIZED"
+    assert cycle.failure.failed_operation == "authorize_remote_sync"
+    assert cycle.commit.created is False
+    assert cycle.changes_applied is False
+    assert (workspace / path).read_text(encoding="utf-8") == 'FLAG = "BROKEN"\\n'
+    assert len(git(workspace, "log", "--oneline").stdout.splitlines()) == 1
+    assert git(workspace, "ls-remote", "--heads", "origin", "repair/test").stdout.strip() == ""
 
 
 def test_remote_sha_mismatch_blocks_complete(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -697,6 +750,7 @@ def test_repeated_identical_failed_plan_hits_retry_exhaustion(tmp_path: Path) ->
         workspace=workspace,
         planner_attempts=3,
         max_unchanged_attempts=1,
+        watchdog=authorized_watchdog(workspace),
     ).run(
         task_title="Repair target",
         task_body="Fix the reproduced defect in barrot_agent/target.py",
@@ -710,6 +764,7 @@ def test_repeated_identical_failed_plan_hits_retry_exhaustion(tmp_path: Path) ->
         workspace=workspace,
         planner_attempts=3,
         max_unchanged_attempts=1,
+        watchdog=authorized_watchdog(workspace),
     ).run(
         task_title="Repair target",
         task_body="Fix the reproduced defect in barrot_agent/target.py",

@@ -1723,30 +1723,37 @@ class GitGateway:
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
+        command = {"program": "git", "args": ["push", remote, f"HEAD:{branch}"]}
         if _is_protected_branch_target(branch):
             return CommandEvidence(
-                command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+                command=command,
                 success=False,
                 returncode=None,
                 error=f"Push to protected branch {branch!r} is blocked.",
             )
-        if self.watchdog is not None:
-            decision = self.watchdog.authorize(
-                Capability.EXTERNAL_ACTION,
-                f"git push {remote} HEAD:{branch}",
-                authorization="repository_sync",
-                process="git push",
+        if self.watchdog is None:
+            return CommandEvidence(
+                command=command,
+                success=False,
+                returncode=None,
+                error="Repository push requires an explicitly configured authorization gate.",
             )
-            if not decision.allowed:
-                return CommandEvidence(
-                    command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
-                    success=False,
-                    returncode=None,
-                    error=decision.reason or "Push blocked by watchdog.",
-                )
+        decision = self.watchdog.authorize(
+            Capability.EXTERNAL_ACTION,
+            f"git push {remote} HEAD:{branch}",
+            authorization="repository_sync",
+            process="git push",
+        )
+        if not decision.allowed:
+            return CommandEvidence(
+                command=command,
+                success=False,
+                returncode=None,
+                error=decision.reason or "Push blocked by watchdog.",
+            )
         result = self._run("push", remote, f"HEAD:{branch}")
         return CommandEvidence(
-            command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+            command=command,
             success=result.returncode == 0,
             returncode=result.returncode,
             stdout=result.stdout[-4000:],
@@ -1895,9 +1902,10 @@ Inspect the repository for this task and return only the evidence report.
         workspace_verifier: Callable[[str], tuple[bool, str]] | None = None,
         planner_attempts: int = 3,
         max_unchanged_attempts: int = 2,
+        watchdog: DefensiveWatchdog | None = None,
     ):
         self.workspace = Path(workspace).resolve()
-        self.watchdog = DefensiveWatchdog(self.workspace)
+        self.watchdog = watchdog if watchdog is not None else DefensiveWatchdog(self.workspace)
         self.causality = RepositoryCausality(self.workspace)
         self.audit_engine = AuditEngine()
         self.repair_planner = RepairPlanner(brain, max_attempts=planner_attempts)
@@ -2304,6 +2312,25 @@ Inspect the repository for this task and return only the evidence report.
                 "CHANGESET_FILES_INVALID",
                 "Changeset expected_files must be a non-empty-string list.",
                 failed_operation="validate_changeset_files",
+            )
+
+        sync_decision = self.watchdog.authorize(
+            Capability.EXTERNAL_ACTION,
+            f"git push origin HEAD:{branch_name}",
+            authorization="repository_sync",
+            process="git push",
+        )
+        if not sync_decision.allowed:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "EXTERNAL_SYNC_NOT_AUTHORIZED",
+                sync_decision.reason or "Repository synchronization requires explicit external-action authorization.",
+                failed_operation="authorize_remote_sync",
+                required_external_action=(
+                    "A trusted caller must inject a DefensiveWatchdog explicitly granting EXTERNAL_ACTION "
+                    after human approval for this repository and task branch. No patch, commit, or push was performed."
+                ),
             )
 
         try:
