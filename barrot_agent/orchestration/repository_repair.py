@@ -2329,7 +2329,7 @@ Inspect the repository for this task and return only the evidence report.
                 failed_operation="authorize_remote_sync",
                 required_external_action=(
                     "A trusted caller must inject a DefensiveWatchdog explicitly granting EXTERNAL_ACTION "
-                    after human approval for this repository and task branch. No patch, commit, or push was performed."
+                    "after human approval for this repository and task branch. No patch, commit, or push was performed."
                 ),
             )
 
