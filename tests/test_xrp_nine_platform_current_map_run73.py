@@ -397,3 +397,92 @@ def test_latest_market_refresh_is_research_only_and_preserves_provider_disagreem
     assert etf["cryptoetf_today"]["funds_reported"] == "4 of 5"
     assert "do not average" in etf["reconciliation"].lower()
     assert load_current()["forecast_status"] == "NOT_ISSUED"
+
+
+def test_run20_snapshot_is_append_only_and_tracks_current_integration_head():
+    data = load_current()
+    run20 = data["run20_snapshot"]
+    repo = run20["repository_state"]
+    assert repo["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
+    assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
+    assert repo["integration_head_before_run20_map_commit"] == "0529030acf0df84e68d7626564b3d206dd95946b"
+    assert repo["current_head_before_corrective_commit"] == "c39cc80591e257beb563aff1bf2a85d368edcb3b"
+    assert repo["changed_files_after_run20_docs_commit"] == 995
+    assert repo["workflow_files_changed"] == 44
+    assert repo["non_workflow_paths_changed"] == 951
+    assert data["repository_state"]["integration_head_before_current_map_commit"] == "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b"
+    assert data["latest_market_refresh"]["point_in_time_eligibility"].startswith("RESEARCH_ONLY_NOT_MODEL_ELIGIBLE")
+
+
+def test_run20_market_refresh_preserves_point_in_time_and_provider_disagreement():
+    run20 = load_current()["run20_snapshot"]
+    refresh = run20["latest_market_refresh"]
+    assert refresh["point_in_time_eligibility"].startswith("RESEARCH_ONLY_NOT_MODEL_ELIGIBLE")
+    assert refresh["raw_source_receipts"]["captured_by_barrot"] is False
+    assert refresh["spot"]["okx"]["event_time_utc"] <= refresh["captured_at_utc"]
+    assert refresh["spot"]["kraken"]["event_timestamp_available"] is False
+    assert "UTC-day open" in refresh["spot"]["kraken"]["field_semantics"]
+    assert 0 < abs(refresh["spot"]["normalized_spread_vs_kraken_mid_percent"]) < 1
+    depth = refresh["spot_order_book"]["latest_primary_aggregated_snapshot"]
+    assert depth["snapshot_time_utc"] <= refresh["captured_at_utc"]
+    assert "orders can be cancelled" in " ".join(depth["limitations"]).lower()
+
+
+def test_run20_ci_failure_is_classified_as_map_schema_not_runtime_failure():
+    ci = load_current()["run20_snapshot"]["ci_evidence"]
+    parent = ci["parent_head_full_suite"]
+    assert parent["passed"] == 3417
+    assert parent["failed"] == 0
+    assert parent["exact_head_verified"] is True
+    latest = ci["latest_docs_head_attempt"]
+    assert latest["passed"] == 3413
+    assert latest["failed"] == 4
+    assert latest["subtests"] == 8
+    assert latest["conclusion"] == "failure"
+    assert "map schema regression" in latest["failure_classification"].lower()
+    assert "not a runtime prediction-engine failure" in latest["failure_classification"].lower()
+    assert ci["dependency_audit"]["passed"] is True
+    assert all(gate["passed"] for gate in ci["fail_closed_gates"])
+
+
+def test_run20_evernorth_capital_reconciles_without_double_counting():
+    capital = load_current()["run20_snapshot"]["actual_capital"]
+    assert capital["sbi_group_cash_investment_usd"] == 200000000
+    assert capital["sbi_group_cash_investment_usd"] <= capital["advance_funding"]["cash_usd"]
+    assert capital["gross_cash_at_close_usd"] == 272600000
+    assert capital["advance_funding_cash_used_to_purchase_xrp_usd"] == 214050000
+    assert capital["xrp_purchased_with_advance_funding_cash"] == 84365876
+    assert abs(capital["xrp_in_kind_sum_check"] - capital["total_xrp_in_kind"]) < 0.001
+    assert capital["reported_xrp_holdings_as_of_2026_10_09_approx"] == 473000000
+    assert capital["cantor_eloc"]["proceeds_as_of_2026_11_09_usd"] == 0
+    assert capital["resale_registration"]["issuer_resale_proceeds_usd"] == 0
+    assert capital["ownership_limits"]["arrington_sponsor_series_c_percent"] == 19.9
+    assert "not a direct 19.9% owner" in capital["rippleworks"]
+
+
+def test_run20_collateral_distinguishes_wrapped_cbxrp_from_native_xrpl_lending():
+    collateral = load_current()["run20_snapshot"]["collateral"]
+    cbxrp = collateral["coinbase_cbxrp"]
+    assert cbxrp["reserves_xrp"] > cbxrp["supply_cbxrp"]
+    assert abs(cbxrp["excess_reserve_xrp"] - 2246.54) < 0.01
+    morpho = collateral["morpho_base_cbxrp"]
+    assert morpho["debt_exposed_within_10_percent_usd"] == 8840000
+    assert morpho["debt_exposed_within_5_percent_usd"] == 3230000
+    lending = collateral["xrpl_lending"]
+    assert lending["active"] is False
+    assert lending["lending_protocol_yes"] == 22
+    assert lending["validators"] == 35
+    assert "uncollateralized" in lending["design"].lower()
+
+
+def test_run20_sbi_and_sbic_entity_relationships_remain_separate():
+    run20 = load_current()["run20_snapshot"]
+    assert run20["identity"]["sbic_japan"]["entities"][0]["company"].startswith("Tokyo")
+    assert run20["identity"]["sbic_japan"]["entities"][1]["company"].startswith("Nagoya")
+    assert run20["identity"]["sbic_japan"]["entities"][2]["company"].startswith("Osaka")
+    assert "not SBI Holdings" in run20["identity"]["sbic_japan"]["distinction"]
+    assert run20["institutional"]["sbi_circle"]["ownership"] == {"sbi": 50, "circle": 50}
+    assert run20["institutional"]["sbi_ripple"]["sbi_ripple_asia_sbi_group_voting_percent"] == 60
+    assert run20["nine_platforms"]["Claude"] == "unverified"
+    assert run20["nine_platforms"]["Databricks"] == "prior HTTP 403; no workspace write"
+    assert run20["prediction_engine"]["forecast_status"] == "NOT_ISSUED"

@@ -282,3 +282,37 @@ PR #1661 remains draft and unmerged. Branch protection API returns HTTP 403; vis
 **No merge.** No deployment, secret action, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
 
 Next: verify the new documentation-only head's exact CI; complete 950-path semantic review; resolve credential-owner revocation and branch-protection/approval evidence; authorize or block Pages publication explicitly; preserve unique work; only after merge verify main and the first main-only ingestion receipts. Keep forecasts disabled until the full evaluation standard passes.
+
+## Run20b — 2026-11-11T10:14:30Z — exact-head CI diagnosis and append-only correction
+
+The Run20 documentation/evidence commit c39cc80591e257beb563aff1bf2a85d368edcb3b triggered CI 43001130749. Core tests passed. The full suite completed with 3,413 passed, 4 failed, eight subtests in 76.61 seconds; coverage remained 59.98% above the 53% floor. Six-manifest dependency audit 43001130288 passed; fail-closed gates 43001130207 and 43001121144 passed.
+
+All four failures are in tests/test_xrp_nine_platform_current_map_run73.py and are data-contract regressions, not runtime or prediction-engine failures: historical snapshot head 72247b2 was overwritten with 0529030; PR #1660 snapshot mismatch; prior exact-head evidence was overwritten rather than retained append-only; required point_in_time_eligibility field was renamed to eligibility.
+
+The preceding exact code head 0529030acf0df84e68d7626564b3d206dd95946b independently passed 3,417 tests, zero failures, eight subtests in 42997264579. Do not attribute that parent-head result to c39cc8.
+
+Corrective action: restore existing schema 1.1.0 and historical top-level snapshot exactly. Append Run20 as versioned run20_snapshot. Preserve point_in_time_eligibility, event_timestamp_available, field_semantics and normalized-spread keys. Add regression tests for Run20 market eligibility, Evernorth capital reconciliation and collateral distinctions.
+
+SBI's announced $200M cash investment is included within the $214.05M advance-funding cash pool, not additive. Advance funding also included 600,000 XRP. Delayed funding was $10.5M cash plus 200,000 XRP. Arrington XRP Capital Fund Series C contributed 211,319,096.061435 XRP; RippleWorks was a limited partner in Arrington and supplied this XRP to the Sponsor. Larsen Lam Children's Remainder Trust contributed 50M XRP. Ripple separately contributed 126,791,458 XRP. Together with 600K and 200K subscriptions, in-kind XRP totals 388,910,554.061435 XRP. The 261,919,096.061435 XRP private-placement subtotal is included in this aggregate, not additional.
+
+The $214.05M advance cash was used to purchase 84,365,876 XRP. Combined with in-kind XRP, Evernorth reported approximately 473M XRP held as of October 9. Gross closing cash was $272.6M before expenses: $224.6M private placements plus $48M trust cash after redemptions. SBI stockholders held 9,431,914 Class A and 2,359,038 Class C shares under a 39.9% cap. Ripple and the contributor-related-party entity are subject to a combined 9.9% cap. Arrington Sponsor's Series C voting cap is 19.9%; RippleWorks is its limited partner, not a direct 19.9% owner.
+
+$30M 4% PIK notes issued October 12, due 2031, may fund general corporate purposes including XRP acquisition; no additional XRP purchase from those proceeds is verified. Ripple facility: $9.7M drawn as of October 7 against a $10M limit, 3.81%, due within five business days after closing; repayment status not verified. Cantor ELOC: up to 5,218,935 shares, zero proceeds as of November 9. Resale registration: 73,688,162 shares; no issuer proceeds from selling-securityholder resales, except Sponsor Warrant exercise proceeds.
+
+BitGo is Evernorth's primary custodian. The SEC filing says 100% cold storage, multisignature/HSM controls and segregated accounts. Approximately $250M cold-storage insurance is shared among eligible BitGo clients and represented 36.9% of Evernorth's October 9 XRP holding value; it is not dedicated coverage. Evernorth says BitGo may not pledge or lend XRP unless expressly directed as part of yield strategies. SEC source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm ; SBI announcement: https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+
+Coinbase cbXRP proof-of-reserves refreshed November 11 at 05:11 UTC: 151,930,567.32 XRP reserve against 151,928,320.78 cbXRP supply, arithmetic excess about 2,246.54 XRP. Coinbase-published data, not an independent custody audit. https://www.coinbase.com/cbxrp/proof-of-reserves
+
+Morpho/Base latest timestamped stress is November 6: $8.84M USDC debt across 1,070 cbXRP-backed positions within a further 10% oracle decline; $3.23M across 462 positions within 5%. Conditional stress, not live borrower health; Base cbXRP liquidation does not prove native XRPL XRP sale. https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/
+
+Signed XRPL amendment snapshot November 10, ledger 108257773: LendingProtocol 22/35, SingleAssetVault 23/35, LendingProtocolV1_1 22/35. Live roll-call threshold 29 of 35; none activated. XLS-66 remains fixed-term uncollateralized lending with off-chain underwriting; vault deposits are funding capital, not borrower collateral. https://xrpldashboard.com/amendments/2026-11-10 ; https://xls.xrpl.org/xls/XLS-0066-lending-protocol.html
+
+Circle Q3 2026 filing: average USDC circulation $73.3B, Q3 on-chain volume $13.9T, $865M revenue and reserve income including $658M reserve income, plus $182M ARC presale revenue. Coinbase distribution costs were $331.3M in Q3 and $986.6M for nine months under their distribution agreement. ARC presale revenue is not recurring USDC reserve income; Coinbase distribution economics are not 50% of all Circle revenue. https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html
+
+EBA USDC significant-EMT supervision begins November 12, 2026. OCC GENIUS final rule effective January 18, 2027; application intake waits on OMB approval. https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union ; https://occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-50.html
+
+Broad macro: US money-market funds received $117.97B in the week to November 4; US equities fell November 10 after hotter-than-expected inflation and Treasury yields rose. Geopolitical risk remains elevated around Hormuz; Reuters reported the UAE tendered up to 1.87M barrels of Saudi crude recovered from a damaged tanker for ship-to-ship loading November 10-20. These are context, not XRP-specific causal features.
+
+TrackWhale updated 09:56 UTC: seven-day inflows 501.72M XRP, outflows 602.93M XRP, net -101.21M; largest 368.48M transfer remains an unknown wallet; Binance was most active by transfer count. This is tracked transfer activity, not comprehensive exchange-reserve accounting. https://trackwhale.io/xrp-whale-tracker
+
+Forecast remains NOT_ISSUED. No merge, deployment, secret action, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite or PR closure occurred.
