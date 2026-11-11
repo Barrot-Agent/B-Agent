@@ -142,3 +142,21 @@
 - Forecast NOT_ISSUED; web observations lack Barrot raw receipts. WORM, replay, scenario engine, evaluator key, shadow outcomes and OOS lift incomplete.
 - #1660 remains superseded-source candidate (972 represented/949 identical/23 different); #1640 244/36; #1642 0/7; #1643 661/9. Unique graph/prediction/safety/topology PRs preserved; no source PR closed.
 - Run34 artifact: research/xrp_intelligence/20261111T201854Z-run34-current-head-ci-capital-market-and-identity-reconciliation.json. Full handoff appended. No merge or external action.
+
+
+## Run35 sync — 2026-11-11
+
+- Mission priority: XRP intelligence/prediction engine #1; preserve Barrot V3 foundation.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration parent: `db934a4ee065fa7d45bb4fac4589a195903e09c7`; 2,042 ahead/0 behind; PR #1661 open/draft.
+- PR size: 1,018 files (44 workflows, 974 other paths); 374 open PRs (360 drafts/14 non-drafts).
+- Last verified full suite: 3,449 passed on `ed345e0`; current head runs are queued with no jobs. Do not attribute parent results to current head.
+- Current head CI run IDs: 43097485233, 43097485242, 43097485234, 43097479771, 43097479768.
+- Run35 research artifact: `research/xrp_intelligence/20261111T210116Z-run35-current-head-ci-market-flow-collateral-cftc-capital-and-institutional-network.json`.
+- Current market: OKX/Kraken spot around $1.061; Fuelmaps six-venue spot depth is a 14:00 UTC snapshot; Basis Binance perp book 20:31 UTC; TradRadar/Liqwall OI disagree ($1.57B vs $1.17B); TrackWhale 7D tracked net flow -64.78M XRP; cbXRP reserves/supply nearly 1:1.
+- Institutional update: Circle/Coinbase/Ripple Q3 results; SBI/SMBC 5% SBI Startale Marketing participation; SBI/Startale/BlackRock JPYSC/MMF MOU; SBI $100M Erebor investment; Evernorth SEC cash/in-kind/debt/facility reconciliation.
+- 47 unique public source IDs: 43 ordinary scheduled, two weekly CFTC added on capture windows, two XRPL nodes excluded by default. Collector remains main-gated.
+- Scenario/counter-hypothesis engine, vintage-aware macro timeline, WORM anchoring and production shadow outcomes remain missing. Forecast `NOT_ISSUED`.
+- Nine-platform auth map unchanged: only ChatGPT/GitHub tested; overprivileged; other external providers unverified/blocked.
+- No merge, deployment, external-model transfer, paper trade, funds movement, force-push or PR closure.
+- Next: exact-head CI, then resolve permissions/branch protection/credential remediation/Pages authorization and semantic review.
