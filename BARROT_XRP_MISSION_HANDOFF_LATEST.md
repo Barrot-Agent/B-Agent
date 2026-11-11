@@ -461,3 +461,64 @@ A closer read of SEC Form 424B3 separates Pubco (Evernorth Holdings Inc., the pa
 - The filing says the $30M note proceeds may fund general corporate purposes including XRP acquisition; it does not prove that those proceeds were used to buy XRP.
 
 This correction avoids mixing subsidiary financials with parent-level obligations. Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+
+## Run 27 — current XRP liquidity, exchange balances, Evernorth resale, Ripple Prime, SBI collateral and XRPL governance
+
+Captured: 2026-11-11T14:45:15.265Z. All public-web observations in this run are research-only and excluded from model features; no Barrot raw-source receipts were created by this research pass.
+
+### Repository and exact-head CI
+
+- Main remains `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Existing PR #1661 remains the sole consolidated integration PR; current inspected head `ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5`, 2,028 ahead/0 behind, 1,009 changed files (44 workflows, 965 non-workflow paths), draft and zero formal approvals.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts). No new branch or PR.
+- Run26e exact-head CI 43040465375 on `ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5`: 3,443 passed, four failed, eight subtests, 57.49s, 59.98% coverage. Core 714 passed. Dependency audit 43040465368 passed (six manifests, zero known vulnerabilities). Fail-closed gate 43040465437 passed.
+- The SBI HTML fixture repair removed all seven prior ingestion receipt-count failures. The four remaining failures were two current-map assertions (stale head binding and 46/42/44 counts), one adapter/parser version assertion (code v3.24/v3.23, test still v3.22/v3.21), and one Run124 historical test asserting old current-contract counts. These are test-contract mismatches, not evidence of a runtime prediction-engine failure. Corrective changes are being applied on the same branch.
+
+### Spot, liquidity, derivatives, exchange balances and ETF flows
+
+- xrpldashboard displays XRP at $1.0562 as of 14:34 UTC; this is a dashboard reference price, not a venue-executable quote.
+- Fuelmaps' 14:00 UTC six-venue spot book: mid $1.0611; within 0.5% $8.1M bids/$6.6M asks; 1% $13.7M/$11.8M; 2% $19.7M/$12.7M; 5% $25.0M/$14.7M; 10% $33.8M/$16.1M. Resting orders can be cancelled; Binance and Bitget are excluded.
+- Liqwall at 11:42 UTC: OI $1.16B, -2.0% 24h, average funding +0.0098%/8h, $16.8M liquidations ($15.7M longs), 75.1% Binance accounts long. TradRadar at 11:30 UTC reports OI $1.57B, -4.05%, +0.0092% funding, at least $15.16M liquidations ($14.04M longs), 79.6% long accounts. Different venue/contract coverage; do not average.
+- OptimistFi/Deribit at 05:00 UTC: 30-day ATM IV 59.0%, 25-delta skew +0.3 points (calls richer), but near-expiry skew is put-rich (Nov 11 -11.0, Nov 12 -7.3, Nov 13 -4.5). Term structure is mixed.
+- XRP Insights at 08:00 UTC: 22.33B XRP across 701 attributed wallets and 24 exchanges, 32.4% of circulating supply. Same-wallet change +1.3M over seven days and -155.7M over 30 days. Naive total change +356.3M includes two newly tracked wallets holding 512.1M. Upbit 6.47B, Coinbase 5.80B, Binance 2.69B. Includes cold storage, is not tradable float, excludes at least 323M in known untracked exchange wallets, and overlaps 149.6M cbXRP with DeFi totals.
+- XRP Insights ETF data through Nov 10: six spot funds plus BITW report -27K XRP, approximately -$28.6K, but Nov10 is provisional; Alpha Finance's five-fund subset reports -$7.6M; CryptoETF.today reports -$6.9M with four of five funds filed. Different fund universes and vintages; do not average or zero-fill missing issuers.
+- XRP escrow tracker: 31.10B in on-ledger escrow; up to 1B scheduled for Dec 1. Gross unlock is not net circulating supply or guaranteed sale; historical re-escrow behavior matters.
+
+### Evernorth actual capital and resale registration
+
+- SEC Form 424B3 (Nov 9) registers up to 73,688,162 XRPN Class A shares for resale: 19,102,635 issued; 31,392,746 issuable on Class C conversion; 22,953,128 issuable on Company Unit redemption/exchange; 239,653 sponsor-warrant exercise shares. Class A shares outstanding Oct 22: 26,094,680.
+- The registered amount is not immediate float. Conversion/redemption is subject to 9.9%, 19.9% and 39.9% ownership restrictions and may never occur; units may be cash-settled. Evernorth receives no proceeds from holder resales. SBI-related holders have 11,790,952 shares registered across four entities; Ripple Labs 18,139,927; Arrington 33,822,498. Registration does not prove any holder will sell and does not evidence XRP sales.
+- Prior cash/in-kind reconciliation remains: approximately 473.276M XRP at closing, 84.366M XRP purchased with $214.05M advance-funding cash, 388.911M XRP contributed in kind. SBI's $200M cash commitment is included in the $214.05M pool, not additive. Debt, drawn facilities, ELOC capacity and resale registration remain separate.
+
+### SBI collateral and stablecoin rails
+
+- SBI VC Trade's lending page lists 29 assets, including XRP, USDC and JPYSC, but not RLUSD. A dated USDC offer showed 10% annualized for 84 days, 100–5,000 USDC, dated Apr 30, 2026; it is historical, not a current guaranteed rate. Preserve the earlier 5%/12-week offer as a separate vintage.
+- SBI VC Trade service overview: retail leverage up to 2x, maintenance margin threshold 80%, generic crypto collateral valuation factor 50%, electronic-payment-instrument factor 100%. XRP is a listed leverage market; actual customer XRP collateral and lending balances/utilization are undisclosed. Lending eligibility is not the same as collateral eligibility.
+- Coinbase cbXRP proof-of-reserves display: 151,709,177.16 XRP reserve versus 151,706,930.63 cbXRP supply; excess 2,246.53 XRP. Refresh label Nov 11, 2:30 PM with timezone unspecified. Issuer display, not independent audit.
+
+### Ripple, Coinbase, Circle, SBI and XRPL protocol
+
+- Ripple Prime's Oct 15 RWA-perpetual launch names Virtu as an early institutional client and more than 100 reference markets; contracts reference Trade.xyz perpetuals on Hyperliquid, with Ripple Prime as principal. RLUSD can be collateral subject to jurisdiction. No XRP settlement/collateral leg, notional or RLUSD collateral balance is disclosed.
+- Ripple's Oct 28 company report says it is on track for $900M annualized product revenue, cites $16T transactions enabled in 2025, 1,700+ institutions/corporates, 85+ licenses and RLUSD market cap around $2.6B; it reports final OCC National Trust Bank charter approval. These are company-reported metrics, not independent XRP flow measurements.
+- Coinbase/Ripple RLUSD is live on Coinbase Prime, Exchange and Retail, with XRPL/Base/Ethereum deposit/withdrawal support. Coinbase Global Exchange collateral support was explicitly future scope, not verified live.
+- BNY is Ripple's primary RLUSD reserve custodian and now supports XRP and RLUSD custody. Direct RLUSD mint/redeem at BNY and tokenized trade finance with C2FO are future/exploratory and subject to approvals/client requirements.
+- Live XRPL amendment tracker at 14:22 UTC: SingleAssetVault 23/35, LendingProtocol 22/35, LendingProtocolV1_1 22/35; 29/35 required, with zero amendments in the 14-day countdown. Native XRPL lending is not active. XLS-65 vaults hold one asset; XLS-66 fixed-term credit leaves underwriting off-ledger and does not mandate XRP collateral.
+- XRPLF Discussion #617's proposed native XRP first-loss sleeve is a pre-standard community idea (one participant, zero comments), not an official amendment or current XRP demand.
+
+### Identity and exact phrases
+
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC ChatGPT/Copilot training was education for investee companies, not an OpenAI partnership.
+- Permission's official ASK docs list Base and Polygon only; no XRPL support. Askcoin and Permission ASK remain distinct; no XRP integration verified.
+- “Actual capital” is not a standardized XRP term; keep cash, in-kind XRP, debt, drawn facilities, posted collateral, ELOC capacity, resale registration and actual sales separate.
+- The first-party Kamilah site does not link a YouTube channel. Candidate videos remain unverified as the identified person's channel; no personal-video inventory is attributed. Camilla remains separate/unresolved.
+
+### Prediction and safety
+
+The integration registry has 47 source definitions: 43 hourly, two weekly CFTC and two noncommercial XRPL nodes excluded by default; 45 sources are scheduled. The SBI VC Trade page is digest-only and feature-ineligible; no main-branch receipt is verified. The feature store is not WORM, and replayable historical reconstruction, synchronized market/collateral history, scenario generation, independent shadow outcomes, production evaluator key and demonstrated out-of-sample lift remain unverified.
+
+**Forecast: NOT_ISSUED.** No trade, paper trade, real-money action, merge, deployment, secret rotation, external-model transfer or main write occurred. No source PR was closed.
+
+### Next action
+
+Verify the Run27 corrective commit's exact-head full suite, dependency audit and fail-closed gate. Then update PR #1661's description with exact evidence, continue semantic review of the 966 non-workflow paths, and resolve connector least-privilege, branch-protection, credential-remediation and Pages-publication blockers before any merge.

@@ -75,3 +75,6 @@
 
 
 - 2026-11-11T13:15:41Z — Run25b corrected SEC entity attribution: separated Pubco parent and Evernorth operating subsidiary financials/facilities, attributed the $30M PIK note and Cantor ELOC to Pubco, and preserved the $1M Evernorth facility as undrawn at June30. Updated the existing Run25 artifact and canonical handoff/map; no new PR or external action.
+
+
+- 2026-11-11T14:45:15.265Z — Run27: rechecked main/integration trees, PR #1661, 374 open PRs, dependencies, security gates and current exact-head CI. Run26e repair on ad9a408 reduced prior 11 failures to four: current-map CI/head and count assertions, adapter/parser version assertions, and one Run124 count assertion; core 714 passed, dependency audit and fail-closed gate passed. Prepared fixes on the same branch. Refreshed 14:00 UTC six-venue XRP spot depth, 14:34 UTC dashboard reference price, 08:00 UTC exchange-wallet balances, Nov10 ETF vintages, derivatives/options, Evernorth 73.7M-share resale registration, SBI VC Trade 29-asset lending and 50%/100% margin haircuts, cbXRP reserves, Ripple Prime RWA swaps, BNY custody and live XRPL lending amendment votes. All observations remain outside Barrot raw receipts/features. Forecast NOT_ISSUED; no merge or external action.

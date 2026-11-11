@@ -106,7 +106,7 @@ def test_run124_nine_platform_snapshot_only_verifies_chatgpt_data_flow():
 
 def test_run124_feature_store_contract_counts_weekly_cftc_sources():
     contract = FEATURE_CONTRACT.read_text(encoding="utf-8")
-    assert "46 public endpoint records" in contract
-    assert "46 public endpoint records: 42 hourly scheduled sources, two weekly scheduled CFTC sources" in contract
-    assert "Thus 44 sources are scheduled (42 hourly plus two weekly) and two are excluded." in contract
+    assert "47 public endpoint records" in contract
+    assert "47 public endpoint records: 43 hourly scheduled sources, two weekly scheduled CFTC sources" in contract
+    assert "Thus 45 sources are scheduled (43 hourly plus two weekly) and two are excluded." in contract
     assert "40 endpoint records: 36 hourly scheduled sources" not in contract

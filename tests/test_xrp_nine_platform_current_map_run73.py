@@ -180,10 +180,10 @@ def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
 
 def test_prediction_engine_source_registry_counts_are_consistent():
     engine = load_current()["prediction_engine_status"]
-    assert engine["source_definitions_total"] == 46
-    assert engine["hourly_sources"] == 42
+    assert engine["source_definitions_total"] == 47
+    assert engine["hourly_sources"] == 43
     assert engine["weekly_cftc_sources"] == 2
-    assert engine["scheduled_sources"] == 44
+    assert engine["scheduled_sources"] == 45
     assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
     assert len(engine["implemented"]) >= 8
 

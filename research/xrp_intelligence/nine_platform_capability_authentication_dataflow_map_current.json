@@ -1,7 +1,7 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T14:38:27.479Z",
+  "captured_at_utc": "2026-11-11T14:45:15.265Z",
   "last_verified_at_utc": "2026-11-11T14:38:27.479Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
@@ -13,22 +13,24 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2027,
+    "ahead_by": 2028,
     "behind_by": 0,
-    "changed_files": 1008,
+    "changed_files": 1009,
     "workflow_files": 44,
-    "other_changed_paths": 964,
-    "head_sha": "acf985960e1491634451daefb614eaa3c9707917",
+    "other_changed_paths": 965,
+    "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2027,
-    "additions": 242372,
+    "commits": 2028,
+    "additions": 242628,
     "deletions": 4363,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Draft consolidated integration. Exact head acf985960e1491634451daefb614eaa3c9707917: core 714 passed; full suite 3,436 passed, 11 failed, eight subtests. Four failures were stale endpoint-count expectations; seven were shared fake fetcher omissions for the new SBI VC Trade HTML source. New SBI parser/receipt tests passed. Six-manifest dependency audit and fail-closed gate passed. Fixture and docs repair is being committed on this branch. Do not merge: zero formal approvals, branch-protection details HTTP 403, fallback ruleset disabled, connector admin=true, Pages publication unauthorized."
+    "note": "Draft consolidated integration. Exact head acf985960e1491634451daefb614eaa3c9707917: core 714 passed; full suite 3,436 passed, 11 failed, eight subtests. Four failures were stale endpoint-count expectations; seven were shared fake fetcher omissions for the new SBI VC Trade HTML source. New SBI parser/receipt tests passed. Six-manifest dependency audit and fail-closed gate passed. Fixture and docs repair is being committed on this branch. Do not merge: zero formal approvals, branch-protection details HTTP 403, fallback ruleset disabled, connector admin=true, Pages publication unauthorized.",
+    "issue_comments": 1,
+    "updated_at_utc": "2026-11-11T14:45:15.265Z"
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -379,18 +381,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "acf985960e1491634451daefb614eaa3c9707917",
+    "integration_head_before_current_map_commit": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
     "integration_pr": 1661,
-    "integration_ahead_by": 2027,
+    "integration_ahead_by": 2028,
     "integration_behind_by": 0,
-    "changed_files": 1008,
+    "changed_files": 1009,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 964,
+    "non_workflow_paths_changed": 965,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2273,
+    "integration_tree_entries": 2274,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -403,11 +405,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "RUN26D_HEAD_ACF985_FULL_SUITE_FAILED_11_OF_3447; 3,436 passed, 11 failed, eight subtests; core 714 passed; dependency audit and fail-closed gate passed; cause: stale 46/42 inventory assertions and missing SBI HTML fixture.",
-    "last_reconciled_at_utc": "2026-11-11T14:38:27.479Z",
+    "latest_exact_head_ci": "EXACT_HEAD_AD9A408_FULL_SUITE_FAILED_3443_PASSED_4_FAILED; core 714 passed; dependency audit and fail-closed gate passed; residual failures are stale current-map CI/head binding, 46/42/44 count assertions, adapter/parser version expectations, and Run124 count assertions.",
+    "last_reconciled_at_utc": "2026-11-11T14:45:15.265Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2164,
+    "integration_tree_files": 2165,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -434,7 +436,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "7155eede2a852355e5626c4f00c9c79a5ed1d1c7",
+    "latest_full_suite_tested_head": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -465,7 +467,22 @@
     "run25b_expected_ahead_by_after_commit": 2022,
     "run26d_new_paths": [
       "research/xrp_intelligence/20261111T142003Z-run26d-sbi-vc-trade-lending-offer-and-xrp-eligibility-correction.json"
-    ]
+    ],
+    "current_head_before_run27_commit": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+    "run26e_new_paths": [
+      "research/xrp_intelligence/20261111T143827Z-run26e-ripple-prime-rwa-swaps-xrpl-lending-governance-and-exact-phrase-reconciliation.json"
+    ],
+    "run26e_expected_changed_files_after_commit": 1009,
+    "run26e_expected_non_workflow_paths_after_commit": 965,
+    "run26e_expected_integration_tree_entries": 2274,
+    "run26e_expected_ahead_by": 2028,
+    "run27_new_paths": [
+      "research/xrp_intelligence/20261111T144515Z-run27-xrp-liquidity-reserves-evernorth-resale-ripple-prime-and-sbi-collateral.json"
+    ],
+    "run27_expected_changed_files_after_commit": 1010,
+    "run27_expected_non_workflow_paths_after_commit": 966,
+    "run27_expected_integration_tree_entries_after_commit": 2275,
+    "run27_expected_ahead_by_after_commit": 2029
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
@@ -541,17 +558,21 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "acf985960e1491634451daefb614eaa3c9707917",
-      "run_id": 43038180059,
-      "full_suite_job": 130582532700,
-      "core_suite_job": 130582532302,
+      "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+      "run_id": 43040465375,
+      "full_suite_job": 130590559362,
+      "core_suite_job": 130590559864,
       "conclusion": "failure",
       "full_repository_suite": {
-        "passed": 3436,
-        "failed": 11,
+        "passed": 3443,
+        "failed": 4,
         "subtests": 8,
         "collected": 3447,
-        "duration_seconds": 86.18
+        "coverage_percent": 59.98,
+        "duration_seconds": 57.49,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
       },
       "core_tests": {
         "passed": 714,
@@ -559,18 +580,24 @@
         "subtests": 8,
         "conclusion": "success"
       },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
+        "tests/test_xrp_public_ingestion.py::test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt",
+        "tests/test_xrp_run124_market_evidence.py::test_run124_feature_store_contract_counts_weekly_cftc_sources"
+      ],
       "dependency_audit": {
         "passed": true,
-        "run_id": 43038179944,
+        "run_id": 43040465368,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
         "passed": true,
-        "run_id": 43038179873,
+        "run_id": 43040465437,
         "automatic_merge_enabled": false
       },
-      "failure_classification": "Four stale endpoint count assertions and seven ingestion fixture tests failed because the shared fake fetcher omitted sbi_vc_trade_lending_page; new source-specific tests passed."
+      "failure_classification": "Run26e exact-head full suite on ad9a408: 3,443 passed and four failed. Two failures are current-map tests not yet updated for 47/43/45 counts and the latest-attempt head binding; one test still expects adapter/parser v3.22/v3.21 instead of v3.24/v3.23; one historical Run124 test still expects 46/42/44 in the current feature-store contract. The SBI HTML fixture repair worked: the prior seven ingestion receipt-count failures are gone. Core suite, dependency audit and fail-closed gate passed. Corrective changes are being applied on the same branch."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -1519,6 +1546,123 @@
         }
       },
       "correction_note": "The prior Run25 summary correctly quoted Evernorth subsidiary figures but did not clearly separate Pubco parent figures and obligations. The $30M note, $10M Company Facility and Cantor ELOC are Pubco-level; the separate $1M Evernorth Facility was undrawn at June30."
+    },
+    "evernorth_resale_registration": {
+      "filing_date": "2026-11-09",
+      "accession": "000162828026072223",
+      "shares_registered_for_resale": 73688162,
+      "components": {
+        "issued_and_outstanding": 19102635,
+        "class_c_conversion": 31392746,
+        "company_unit_redemption_or_exchange": 22953128,
+        "sponsor_warrant_exercise_shares": 239653
+      },
+      "class_a_outstanding_as_of": "2026-10-22",
+      "class_a_outstanding": 26094680,
+      "ratio_registered_to_outstanding": 2.8238768208692346,
+      "sponsor_warrants_registered": 239653,
+      "sponsor_warrant_exercise_price_usd": 11.5,
+      "company_resale_proceeds_usd": 0,
+      "sbi_related_registered_shares_sum": 11790952,
+      "holders": [
+        {
+          "name": "Ripple Labs Inc.",
+          "shares_registered": 18139927
+        },
+        {
+          "name": "Arrington XRP Capital Fund, LP",
+          "shares_registered": 33822498
+        },
+        {
+          "name": "Larsen Lam Children's Remainder Trust",
+          "shares_registered": 7153450
+        },
+        {
+          "name": "SBI Holdings USA, Inc.",
+          "shares_registered": 8162967
+        },
+        {
+          "name": "SBI Venture Fund 2023A",
+          "shares_registered": 247603
+        },
+        {
+          "name": "SBI Venture Fund 2023B",
+          "shares_registered": 357061
+        },
+        {
+          "name": "SBI PE Holdings Co., Ltd.",
+          "shares_registered": 3023321
+        }
+      ],
+      "ownership_caps_percent": {
+        "contributor_group": 9.9,
+        "rippleworks_attributed": 19.9,
+        "sbi_group": 39.9
+      },
+      "interpretation": "Not immediate float: includes future Class C conversion and Company Unit redemption/exchange subject to ownership restrictions and possible cash settlement. Resale proceeds go to selling holders, not Evernorth. Registration does not prove a holder will sell and is not evidence of XRP sale or new XRP purchase.",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "sbi_vc_trade_lending_and_margin": {
+      "lending_page": "https://www.sbivc.co.jp/services/lending",
+      "listed_assets": 29,
+      "lending_assets_include": [
+        "XRP",
+        "USDC",
+        "JPYSC"
+      ],
+      "lending_assets_exclude": [
+        "RLUSD"
+      ],
+      "historical_usdc_offer": {
+        "annualized_rate_percent": 10,
+        "term_days": 84,
+        "min_usdc": 100,
+        "max_usdc": 5000,
+        "date": "2026-04-30",
+        "status": "historical offer, not a current guaranteed rate"
+      },
+      "margin_rules": {
+        "retail_max_leverage": 2,
+        "maintenance_margin_threshold_percent": 80,
+        "crypto_valuation_factor_percent": 50,
+        "electronic_payment_instrument_factor_percent": 100
+      },
+      "limitations": [
+        "The lending asset list is not automatically the leverage collateral eligibility list.",
+        "XRP is a supported leverage market, but actual XRP customer collateral balances and lending utilization are undisclosed.",
+        "The generic margin haircut does not prove any particular amount of XRP is pledged."
+      ]
+    },
+    "coinbase_cbxrp_latest": {
+      "reserve_xrp": 151709177.16,
+      "supply_cbxrp": 151706930.63,
+      "excess_xrp": 2246.53,
+      "refresh_label": "2026-11-11 2:30 PM",
+      "timezone": "not specified",
+      "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "limitation": "Issuer-published proof-of-reserves display, not an independent custody audit."
+    },
+    "ripple_prime_rwa_swaps": {
+      "announcement_date": "2026-10-15",
+      "reference_markets": ">100",
+      "early_client": "Virtu",
+      "venue": "Trade.xyz perpetual contracts on Hyperliquid",
+      "principal": "Ripple Prime",
+      "collateral": "RLUSD may be used subject to jurisdiction",
+      "xrp_leg_disclosed": false,
+      "notional_disclosed": false,
+      "actual_rlusd_collateral_balance_disclosed": false,
+      "source": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/"
+    },
+    "ripple_bny_custody": {
+      "bny_primary_rlusd_reserve_custodian": true,
+      "bny_custody_supports": [
+        "XRP",
+        "RLUSD"
+      ],
+      "future_rlusd_mint_redeem_directly_at_bny": "intended; subject to final BNY and regulatory approvals",
+      "tokenized_trade_finance": "exploratory with C2FO, subject to client requirements",
+      "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
     }
   },
   "identity_research": {
@@ -1611,6 +1755,13 @@
       "ask_coin": "Exact-phrase searches did not establish an XRP/XRPL ASK Coin identity. Permission Coin ASK (UCID 7105) is a separate Base/Polygon token; Ask Coin exchange (UCID 4640) is an inactive/untracked listing. No XRPL contract or Ripple relationship verified.",
       "actual_capital": "The phrase appears in commentary but is not a standardized XRP metric. Reconcile primary filings into cash received, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent equity capacity, resale registration and actual secondary sales.",
       "sbic_chatgpt": "The exact phrase 'SBIC, ChatGPT SBIC' did not resolve to a formal company, product or OpenAI partnership. Tokyo SBIC has official ChatGPT/generative-AI training and seminar pages; educational activity is not a commercial partnership."
+    },
+    "latest_run27_reconciliation": {
+      "sbic": "East/Tokyo, Central/Nagoya and West/Osaka are separate Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC's ChatGPT/Copilot training was education for investee companies, not an OpenAI partnership.",
+      "ask_coin": "Permission ASK is an EVM LayerZero OFT on Base and Polygon; no XRPL support listed. Separate Askcoin listing/parked domain remains distinct; no XRP integration verified.",
+      "actual_capital": "Not a standardized XRP metric. Separate settled cash, in-kind XRP, accepted subscriptions, cash deployed to buy XRP, debt, drawn facilities, posted collateral, ELOC capacity, registered resale and actual secondary sales.",
+      "sbic_chatgpt": "No primary evidence of an entity or commercial partnership named exactly 'SBIC, ChatGPT SBIC'.",
+      "kamilah_camilla": "First-party Kamilah site identifies Dr Kamilah Stevenson/The Wealth Doctor but does not link a YouTube channel. Candidate DailyCoin-linked XRP videos and same-name YouTube results remain unverified as the identified person's channel. No personal-video inventory attributed. Camilla remains separate/unresolved."
     }
   },
   "macro_geopolitics": {
@@ -2616,6 +2767,166 @@
       "source_group": "SBIC Tokyo primary",
       "published_at": "2025-06-12",
       "model_eligible": false
+    },
+    {
+      "id": "xrpldashboard_live_price_and_votes",
+      "url": "https://xrpldashboard.com/amendments",
+      "publisher": "xrpldashboard",
+      "as_of_utc": "2026-11-11T14:34:00Z",
+      "group": "xrpldashboard_own_node",
+      "type": "live_dashboard",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "fuelmaps_xrp_spot_depth",
+      "url": "https://fuelmaps.io/order-book/",
+      "publisher": "Fuelmaps",
+      "as_of_utc": "2026-11-11T14:00:00Z",
+      "group": "fuelmaps_orderbook",
+      "type": "six_venue_spot_book",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "liqwall_xrp_derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "publisher": "Liqwall",
+      "as_of_utc": "2026-11-11T11:42:00Z",
+      "group": "liqwall_derivatives",
+      "type": "aggregated_perpetuals",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "tradradar_xrp_derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "as_of_utc": "2026-11-11T11:30:00Z",
+      "group": "tradradar_derivatives",
+      "type": "aggregated_perpetuals",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "optimistfi_xrp_options",
+      "url": "https://optimistfi.com/perps/options/xrp",
+      "publisher": "OptimistFi/Deribit",
+      "as_of_utc": "2026-11-11T05:00:00Z",
+      "group": "deribit_options_aggregator",
+      "type": "options_surface",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_insights_exchange_balances",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "publisher": "XRP Insights",
+      "as_of_utc": "2026-11-11T08:00:00Z",
+      "group": "xrp_insights_xrpl_wallets",
+      "type": "attributed_exchange_wallets",
+      "raw_receipt": "not captured by Barrot; integration collector is digest-only and main run unverified",
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_insights_etf_flows",
+      "url": "https://xrp-insights.com/data",
+      "publisher": "XRP Insights",
+      "as_of": "2026-11-10_provisional",
+      "group": "xrp_insights_issuer_scraper",
+      "type": "issuer_holdings_derived_flows",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "evernorth_424b3_resale",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "publisher": "SEC EDGAR",
+      "as_of": "2026-11-09",
+      "group": "SEC_EDGAR_primary",
+      "type": "primary_filing",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "sbi_vc_trade_lending",
+      "url": "https://www.sbivc.co.jp/services/lending",
+      "publisher": "SBI VC Trade",
+      "as_of": "2026-11-11",
+      "group": "sbivc_primary",
+      "type": "primary_product_terms",
+      "raw_receipt": "digest-only collector source; no main receipt",
+      "model_eligible": false
+    },
+    {
+      "id": "sbi_vc_trade_margin_rules",
+      "url": "https://www.sbivc.co.jp/services/service-overview",
+      "publisher": "SBI VC Trade",
+      "as_of": "2026-11-11",
+      "group": "sbivc_primary",
+      "type": "primary_margin_rules",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "coinbase_cbxrp_reserves",
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "as_of": "2026-11-11",
+      "group": "coinbase_issuer",
+      "type": "issuer_reserve_display",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_prime_rwa_swaps",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "publisher": "Ripple",
+      "as_of": "2026-10-15",
+      "group": "ripple_primary",
+      "type": "primary_product_announcement",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_occ_bny_coinbase_integration",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "as_of": "2026-10-28",
+      "group": "ripple_primary",
+      "type": "primary_company_announcement",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_coinbase_rlusd",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "as_of": "2026-10-28",
+      "group": "ripple_primary",
+      "type": "primary_partnership_announcement",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_bny_custody",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple",
+      "as_of": "2026-10-27",
+      "group": "ripple_primary",
+      "type": "primary_custody_announcement",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
+    },
+    {
+      "id": "xrpl_native_lending_governance",
+      "url": "https://xrpldashboard.com/amendments",
+      "publisher": "xrpldashboard",
+      "as_of_utc": "2026-11-11T14:22:00Z",
+      "group": "xrpldashboard_own_node",
+      "type": "live_validator_vote_aggregation",
+      "raw_receipt": "not captured by Barrot",
+      "model_eligible": false
     }
   ],
   "backlog_classification": {
@@ -2635,21 +2946,20 @@
     "1655": "UNIQUE_UNREVIEWED_STRUCTURAL_ANALYSIS_AND_FOUNDATION_CATALOG; preserve.",
     "1659": "UNIQUE_UNREVIEWED_LOCAL_LLAMA_PHONE_CHAT_WORKSTREAM; preserve; no deployment.",
     "1660": "SUPERSEDED_SOURCE_CANDIDATE_RETAINED; open draft, 1,963 ahead/3 behind; all 972 changed paths represented in #1661, 959 identical blobs and 13 different blobs. Do not close until successor merge and main verification.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; parent head 7a55848 passed exact-head full suite (3,423 passed, zero failures, eight subtests, 59.98% coverage), dependency audit and fail-closed gates. PR remains draft with zero formal reviews/approvals; 997 files before Run23 artifact (44 workflows, 953 other paths), 2,014 commits ahead/0 behind. Run23 adds one research artifact and corrects map/test assertions; resulting head needs fresh exact-head CI. No merge.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current parent head ad9a408 is 2,028 ahead/0 behind with 1,009 changed files (44 workflows, 965 other paths). Exact-head full suite: 3,443 passed, four failed; residual failures are stale map/head assertions, adapter/parser version assertion and Run124 count assertion. Corrective fixes are being applied on the existing branch. Dependency audit and fail-closed gate passed. Zero formal approvals; no merge.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Verify exact-head CI on the Run25b SEC entity-scope correction commit; do not substitute 7155eede parent evidence or 9e98 in-progress evidence.",
-    "Complete semantic review of the 957 pre-existing non-workflow paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger and public interfaces.",
-    "Reduce GitHub connector permissions to least privilege and obtain authoritative branch-protection/required-approval visibility; do not merge while connector is admin-exempt and requirements are unknown.",
-    "Resolve GitHub App environment/authentication, Databricks HTTP 403 and Hugging Face BUILD_ERROR through their owners.",
+    "Verify the Run27 corrective commit's exact-head full suite, dependency audit and fail-closed gate; then update the PR description with exact results without changing the branch.",
+    "Complete semantic review of the 966 non-workflow changed paths, prioritizing Barrot V3 runtime, XRP collector, point-in-time feature store, forecast ledger and public interfaces.",
+    "Reduce the GitHub connector's admin-level permission and obtain authoritative branch-protection/required-approval visibility; do not merge while least-privilege and approval requirements remain unresolved.",
     "Verify provider-side OAuth revocation and remediate the 17 affected PR branch tips additively without reading credential contents or rewriting history.",
     "Resolve automatic GitHub Pages publication authorization before any merge.",
-    "Continue synchronized XRP spot/L2/flow/derivatives/collateral history, Evernorth parent/subsidiary cash/debt events and scenario/counter-hypothesis generation; implement independent WORM/timestamp anchoring.",
-    "Keep forecasts NOT_ISSUED until independent shadow outcomes, calibration, drift and out-of-sample lift gates pass."
+    "Reconcile overlapping source PRs while preserving unique graph, prediction, safety, topology and research work; close only exact superseded duplicates after verified successor merge.",
+    "Keep forecasts NOT_ISSUED until independent WORM/timestamp anchoring, replayable feature reconstruction, synchronized data, independent shadow outcomes, calibration, drift and out-of-sample lift gates pass."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-11T07:58:26.504Z",
@@ -3261,8 +3571,8 @@
       "primary_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
     }
   },
-  "latest_run_id": "Run25b",
-  "latest_run_captured_at_utc": "2026-11-11T13:15:41Z",
+  "latest_run_id": 27,
+  "latest_run_captured_at_utc": "2026-11-11T14:45:15.265Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -4641,5 +4951,1429 @@
       "10% historical USDC course dated 2026-04-30"
     ],
     "forecast_status": "NOT_ISSUED"
-  }
+  },
+  "ci_latest": {
+    "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+    "run_id": 43040465375,
+    "full_suite_job": 130590559362,
+    "core_suite_job": 130590559864,
+    "conclusion": "failure",
+    "full_repository_suite": {
+      "passed": 3443,
+      "failed": 4,
+      "subtests": 8,
+      "collected": 3447,
+      "coverage_percent": 59.98,
+      "duration_seconds": 57.49
+    },
+    "core_tests": {
+      "passed": 714,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "passed": true,
+      "run_id": 43040465368,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "passed": true,
+      "run_id": 43040465437,
+      "automatic_merge_enabled": false
+    },
+    "failing_tests": [
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
+      "tests/test_xrp_public_ingestion.py::test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt",
+      "tests/test_xrp_run124_market_evidence.py::test_run124_feature_store_contract_counts_weekly_cftc_sources"
+    ],
+    "failure_classification": "Run26e exact-head full suite on ad9a408: 3,443 passed and four failed. Two failures are current-map tests not yet updated for 47/43/45 counts and the latest-attempt head binding; one test still expects adapter/parser v3.22/v3.21 instead of v3.24/v3.23; one historical Run124 test still expects 46/42/44 in the current feature-store contract. The SBI HTML fixture repair worked: the prior seven ingestion receipt-count failures are gone. Core suite, dependency audit and fail-closed gate passed. Corrective changes are being applied on the same branch."
+  },
+  "run27_snapshot": {
+    "artifact_type": "barrot_xrp_research_run",
+    "schema_version": "1.0.0",
+    "run_id": 27,
+    "captured_at_utc": "2026-11-11T14:45:15.265Z",
+    "status": "PUBLIC_RESEARCH_NOT_MODEL_ELIGIBLE",
+    "mission_priority": 1,
+    "repository_snapshot": {
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "integration_branch": "integration/xrp-v3-unified-main-20261111",
+      "parent_head": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+      "pr_number": 1661,
+      "pr_draft": true,
+      "ahead_by": 2028,
+      "behind_by": 0,
+      "changed_files": 1009,
+      "workflow_files": 44,
+      "non_workflow_paths": 965,
+      "open_prs": 374,
+      "drafts": 360,
+      "non_drafts": 14,
+      "main_tree_entries": 1388,
+      "integration_tree_entries": 2274,
+      "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API used"
+    },
+    "ci_snapshot": {
+      "run_id": 43040465375,
+      "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+      "full_suite": {
+        "passed": 3443,
+        "failed": 4,
+        "subtests": 8,
+        "coverage_percent": 59.98,
+        "duration_seconds": 57.49
+      },
+      "core_suite": {
+        "run_id": 43040465375,
+        "job_id": 130590559864,
+        "passed": 714,
+        "failed": 0,
+        "subtests": 8
+      },
+      "dependency_audit": {
+        "run_id": 43040465368,
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43040465437,
+        "passed": true,
+        "automatic_merge_enabled": false
+      },
+      "failure_classification": "The SBI HTML fixture repair removed the seven previous ingestion receipt-count failures. Four remaining failures are stale map CI/head binding, map source counts, adapter/parser version assertions, and Run124 current contract counts."
+    },
+    "market_snapshot": {
+      "reference_price": {
+        "provider": "xrpldashboard",
+        "value_usd": 1.0562,
+        "as_of_utc": "2026-11-11T14:34:00Z",
+        "source": "https://xrpldashboard.com/amendments",
+        "limitation": "Dashboard reference price; no venue, executable quote or depth is specified."
+      },
+      "spot_order_book": {
+        "provider": "Fuelmaps",
+        "as_of_utc": "2026-11-11T14:00:00Z",
+        "mid_usd": 1.0611,
+        "venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "depth_usd": {
+          "within_0_5_percent": {
+            "bids": 8100000,
+            "asks": 6600000,
+            "bid_share_percent": 55.2
+          },
+          "within_1_percent": {
+            "bids": 13700000,
+            "asks": 11800000,
+            "bid_share_percent": 53.8
+          },
+          "within_2_percent": {
+            "bids": 19700000,
+            "asks": 12700000,
+            "bid_share_percent": 60.9
+          },
+          "within_5_percent": {
+            "bids": 25000000,
+            "asks": 14700000,
+            "bid_share_percent": 63
+          },
+          "within_10_percent": {
+            "bids": 33800000,
+            "asks": 16100000,
+            "bid_share_percent": 67.8
+          }
+        },
+        "largest_levels": [
+          {
+            "side": "bid",
+            "price": 1,
+            "usd": 3400000
+          },
+          {
+            "side": "bid",
+            "price": 1.059,
+            "usd": 2000000
+          },
+          {
+            "side": "ask",
+            "price": 1.063,
+            "usd": 1900000
+          },
+          {
+            "side": "bid",
+            "price": 1.058,
+            "usd": 1800000
+          },
+          {
+            "side": "ask",
+            "price": 1.068,
+            "usd": 1500000
+          }
+        ],
+        "limitations": [
+          "Resting orders can be cancelled or moved.",
+          "Hourly columns average one-minute snapshots; walls may be underweighted if present briefly.",
+          "Six spot venues; Binance and Bitget are excluded.",
+          "Not executed volume or guaranteed support."
+        ],
+        "source": "https://fuelmaps.io/order-book/"
+      },
+      "derivatives": {
+        "liqwall": {
+          "as_of_utc": "2026-11-11T11:42:00Z",
+          "price_usd": 1.06,
+          "open_interest_usd": 1160000000,
+          "oi_24h_change_percent": -2,
+          "funding_average_8h_percent": 0.0098,
+          "liquidations_24h_usd": 16800000,
+          "long_liquidations_usd": 15700000,
+          "short_liquidations_usd": 1100000,
+          "binance_long_account_share_percent": 75.1
+        },
+        "tradradar": {
+          "as_of_utc": "2026-11-11T11:30:00Z",
+          "mark_price_usd": 1.0574,
+          "open_interest_usd": 1570000000,
+          "oi_24h_change_percent": -4.05,
+          "funding_oi_weighted_8h_percent": 0.0092,
+          "liquidations_24h_min_usd": 15160000,
+          "long_liquidations_usd": 14040000,
+          "short_liquidations_usd": 1120000,
+          "long_short_account_ratio": 3.91,
+          "long_account_share_percent": 79.6
+        },
+        "reconciliation": "These aggregators cover different venue/contract universes; their OI totals are not additive or averageable. Both snapshots show positive funding, falling OI and long-heavy liquidations. The snapshots are delayed and are not current executable quotes."
+      },
+      "options": {
+        "provider": "OptimistFi/Deribit",
+        "as_of_utc": "2026-11-11T05:00:00Z",
+        "thirty_day_atm_iv_percent": 59,
+        "twenty_five_delta_skew_points": 0.3,
+        "put_call_ratio": 0.55,
+        "december_25_oi_usd": 47100000,
+        "near_expiry_skew_points": {
+          "nov11": -11,
+          "nov12": -7.3,
+          "nov13": -4.5
+        },
+        "interpretation": "30-day calls are modestly richer, while near-expiry puts remain richer; term structure is mixed, not a single directional signal."
+      },
+      "exchange_balances": {
+        "data_as_of_utc": "2026-11-11T08:00:00Z",
+        "total_xrp": 22330000000,
+        "wallet_count": 701,
+        "exchange_count": 24,
+        "circulating_supply_xrp": 68890000000,
+        "percent_circulating": 32.4,
+        "percent_total_supply": 22.3,
+        "same_wallet_change_7d_xrp": 1300000,
+        "same_wallet_change_30d_xrp": -155700000,
+        "naive_total_change_30d_xrp": 356300000,
+        "newly_tracked_wallets": 2,
+        "newly_tracked_wallets_balance_xrp": 512100000,
+        "daily_same_wallet_change_2026_11_11_xrp": -3800000,
+        "top_exchanges": [
+          {
+            "name": "Upbit",
+            "xrp": 6470000000
+          },
+          {
+            "name": "Coinbase",
+            "xrp": 5800000000
+          },
+          {
+            "name": "Binance",
+            "xrp": 2690000000
+          }
+        ],
+        "regional_totals": [
+          {
+            "region": "South Korea",
+            "xrp": 8590000000,
+            "share_percent": 38.5
+          },
+          {
+            "region": "United States",
+            "xrp": 8460000000,
+            "share_percent": 37.9
+          },
+          {
+            "region": "Japan",
+            "xrp": 1380000000,
+            "share_percent": 6.2
+          }
+        ],
+        "limitations": [
+          "Includes cold storage; not tradable float.",
+          "Same-wallet method excludes newly tracked wallets and cannot distinguish customer withdrawals from internal exchange movements or transfers to unlabeled wallets.",
+          "At least 323M XRP in wallets of roughly 36 untracked exchanges from provider's 2026-09-29 audit.",
+          "149.6M cbXRP backing overlaps Coinbase attributed balance and provider DeFi total; do not double count.",
+          "39.8% of tracked balances lack hot/cold labels."
+        ],
+        "source": "https://xrp-insights.com/exchange-balances",
+        "source_independence": "Single XRP Insights publisher using XRPL account_info balances and XRPSCAN labels; not independent of its XRP Radar pages."
+      },
+      "etf_flows": {
+        "xrp_insights": {
+          "fund_universe": "six spot funds plus BITW",
+          "date": "2026-11-10",
+          "net_flow_xrp": -27000,
+          "net_flow_usd_approx": -28600,
+          "holdings_xrp": 1190000000,
+          "net_assets_usd": 1280000000,
+          "row_status": "provisional until re-settled",
+          "source": "https://xrp-insights.com/data"
+        },
+        "alpha_finance": {
+          "fund_universe": "five spot funds",
+          "date": "2026-11-10",
+          "net_flow_usd": -7600000,
+          "largest_outflow": "GXRP approximately -$7.2M",
+          "thirty_session_net_flow_usd": 1300000,
+          "cumulative_net_flow_usd": 1710000000,
+          "source": "https://alphafinance.io/etf/xrp/"
+        },
+        "cryptoetf_today": {
+          "fund_universe": "five spot funds; four of five reported",
+          "date": "2026-11-10",
+          "net_flow_usd": -6900000,
+          "missing_fund": "XRPZ",
+          "source": "https://cryptoetf.today/en/xrp-etf-flows"
+        },
+        "reconciliation": "Different issuer universes, currency units and settlement completeness. XRP Insights Nov10 row provisional; Alpha five-fund subset; CryptoETF.today four-of-five partial. Do not average or treat missing issuers as zero."
+      },
+      "escrow": {
+        "xrp_in_ledger_escrow": 31100000000,
+        "as_of": "2026-11-11",
+        "next_unlock": "2026-12-01",
+        "maximum_scheduled_unlock_xrp": 1000000000,
+        "interpretation": "Gross unlock is not net circulating supply; most prior monthly releases were re-escrowed.",
+        "source": "https://xrp-insights.com/xrp-radar",
+        "same_publisher_as_exchange_balances": true
+      }
+    },
+    "institutional_and_capital": {
+      "evernorth_resale_registration": {
+        "filing_date": "2026-11-09",
+        "accession": "000162828026072223",
+        "shares_registered_for_resale": 73688162,
+        "components": {
+          "issued_and_outstanding": 19102635,
+          "class_c_conversion": 31392746,
+          "company_unit_redemption_or_exchange": 22953128,
+          "sponsor_warrant_exercise_shares": 239653
+        },
+        "class_a_outstanding_as_of": "2026-10-22",
+        "class_a_outstanding": 26094680,
+        "ratio_registered_to_outstanding": 2.8238768208692346,
+        "sponsor_warrants_registered": 239653,
+        "sponsor_warrant_exercise_price_usd": 11.5,
+        "company_resale_proceeds_usd": 0,
+        "sbi_related_registered_shares_sum": 11790952,
+        "holders": [
+          {
+            "name": "Ripple Labs Inc.",
+            "shares_registered": 18139927
+          },
+          {
+            "name": "Arrington XRP Capital Fund, LP",
+            "shares_registered": 33822498
+          },
+          {
+            "name": "Larsen Lam Children's Remainder Trust",
+            "shares_registered": 7153450
+          },
+          {
+            "name": "SBI Holdings USA, Inc.",
+            "shares_registered": 8162967
+          },
+          {
+            "name": "SBI Venture Fund 2023A",
+            "shares_registered": 247603
+          },
+          {
+            "name": "SBI Venture Fund 2023B",
+            "shares_registered": 357061
+          },
+          {
+            "name": "SBI PE Holdings Co., Ltd.",
+            "shares_registered": 3023321
+          }
+        ],
+        "ownership_caps_percent": {
+          "contributor_group": 9.9,
+          "rippleworks_attributed": 19.9,
+          "sbi_group": 39.9
+        },
+        "interpretation": "Not immediate float: includes future Class C conversion and Company Unit redemption/exchange subject to ownership restrictions and possible cash settlement. Resale proceeds go to selling holders, not Evernorth. Registration does not prove a holder will sell and is not evidence of XRP sale or new XRP purchase.",
+        "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+      },
+      "evernorth_actual_capital_reconciliation": {
+        "xrp_at_close_approx": 473276430,
+        "cash_purchased_xrp_approx": 84365876,
+        "in_kind_xrp_approx": 388910554,
+        "advance_funding_pool_usd": 214050000,
+        "sbi_cash_commitment_usd": 200000000,
+        "sbi_commitment_included_in_advance_funding_pool": true,
+        "do_not_add_again": true,
+        "parent_company_facility_drawn_as_of_2026_10_07_usd": 9700000,
+        "facility_limit_usd": 10000000,
+        "parent_convertible_note_funded_2026_10_12_usd": 30000000,
+        "cantor_eloc_proceeds_as_of_prospectus_usd": 0,
+        "interpretation": "Cash, in-kind XRP, debt, facilities, ELOC and resale registration remain separate; the note may fund XRP but actual use is not disclosed."
+      },
+      "sbi_vc_trade": {
+        "lending_page": "https://www.sbivc.co.jp/services/lending",
+        "listed_assets": 29,
+        "lending_assets_include": [
+          "XRP",
+          "USDC",
+          "JPYSC"
+        ],
+        "lending_assets_exclude": [
+          "RLUSD"
+        ],
+        "historical_usdc_offer": {
+          "annualized_rate_percent": 10,
+          "term_days": 84,
+          "min_usdc": 100,
+          "max_usdc": 5000,
+          "date": "2026-04-30",
+          "status": "historical offer, not a current guaranteed rate"
+        },
+        "margin_rules": {
+          "retail_max_leverage": 2,
+          "maintenance_margin_threshold_percent": 80,
+          "crypto_valuation_factor_percent": 50,
+          "electronic_payment_instrument_factor_percent": 100
+        },
+        "limitations": [
+          "The lending asset list is not automatically the leverage collateral eligibility list.",
+          "XRP is a supported leverage market, but actual XRP customer collateral balances and lending utilization are undisclosed.",
+          "The generic margin haircut does not prove any particular amount of XRP is pledged."
+        ]
+      },
+      "coinbase_cbxrp": {
+        "reserve_xrp": 151709177.16,
+        "supply_cbxrp": 151706930.63,
+        "excess_xrp": 2246.53,
+        "refresh_label": "2026-11-11 2:30 PM",
+        "timezone": "not specified",
+        "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "limitation": "Issuer-published proof-of-reserves display, not an independent custody audit."
+      },
+      "ripple_prime_rwa_swaps": {
+        "announcement_date": "2026-10-15",
+        "reference_markets": ">100",
+        "early_client": "Virtu",
+        "venue": "Trade.xyz perpetual contracts on Hyperliquid",
+        "principal": "Ripple Prime",
+        "collateral": "RLUSD may be used subject to jurisdiction",
+        "xrp_leg_disclosed": false,
+        "notional_disclosed": false,
+        "actual_rlusd_collateral_balance_disclosed": false,
+        "source": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/"
+      },
+      "ripple_corporate_report": {
+        "announcement_date": "2026-10-28",
+        "company_reported_annualized_product_revenue_run_rate_usd": 900000000,
+        "transactions_enabled_2025_usd": 16000000000000,
+        "institutions_corporates_enterprises": 1700,
+        "licenses": 85,
+        "payout_markets": 60,
+        "estimated_lifetime_ripple_payments_volume_by_year_end_usd": 150000000000,
+        "rlusd_market_cap_usd": 2600000000,
+        "occ_national_trust_bank_charter": "final approval reported by Ripple",
+        "limitation": "Issuer-reported company-wide metrics; not audited XRP sales, bridge volume or XRP capital flow.",
+        "source": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+      },
+      "ripple_coinbase": {
+        "rlusd_available_on": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase Retail"
+        ],
+        "supported_networks": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "coinbase_global_exchange_rlusd_collateral": "future scope; not verified live",
+        "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+      },
+      "ripple_bny": {
+        "bny_primary_rlusd_reserve_custodian": true,
+        "bny_custody_supports": [
+          "XRP",
+          "RLUSD"
+        ],
+        "future_rlusd_mint_redeem_directly_at_bny": "intended; subject to final BNY and regulatory approvals",
+        "tokenized_trade_finance": "exploratory with C2FO, subject to client requirements",
+        "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+      }
+    },
+    "xrpl_governance": {
+      "as_of_utc": "2026-11-11T14:22:00Z",
+      "current_ledger": 108262313,
+      "heard_validators": 35,
+      "required_yes": 29,
+      "threshold": "strictly more than 80% for 14 consecutive days",
+      "votes": {
+        "SingleAssetVault": "23/35",
+        "LendingProtocol": "22/35",
+        "LendingProtocolV1_1": "22/35"
+      },
+      "amendments_in_countdown": 0,
+      "native_lending_active": false,
+      "protocol_notes": {
+        "XLS65": "single-asset vault; asset can be XRP, IOU or MPT, not a mixed basket",
+        "XLS66": "fixed-term lending from vaults; credit judgment remains off-ledger; no mandatory XRP collateral"
+      },
+      "risk_sleeve_idea": {
+        "url": "https://github.com/XRPLF/XRPL-Standards/discussions/617",
+        "status": "pre-standard community idea; one participant, zero comments; not an official XLS/amendment",
+        "proposal": "mandatory XRP first-loss sleeve for some XRPL credit facilities",
+        "current_effect": "none"
+      },
+      "source": "https://xrpldashboard.com/amendments",
+      "limitation": "Dashboard reports its live vote counts; the signed daily leaf is reported as verified by the dashboard, but this run did not independently execute signature verification."
+    },
+    "identity_and_exact_phrase_research": {
+      "sbic": "East/Tokyo, Central/Nagoya and West/Osaka are separate Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC's ChatGPT/Copilot training was education for investee companies, not an OpenAI partnership.",
+      "ask_coin": "Permission ASK is an EVM LayerZero OFT on Base and Polygon; no XRPL support listed. Separate Askcoin listing/parked domain remains distinct; no XRP integration verified.",
+      "actual_capital": "Not a standardized XRP metric. Separate settled cash, in-kind XRP, accepted subscriptions, cash deployed to buy XRP, debt, drawn facilities, posted collateral, ELOC capacity, registered resale and actual secondary sales.",
+      "sbic_chatgpt": "No primary evidence of an entity or commercial partnership named exactly 'SBIC, ChatGPT SBIC'.",
+      "kamilah_camilla": "First-party Kamilah site identifies Dr Kamilah Stevenson/The Wealth Doctor but does not link a YouTube channel. Candidate DailyCoin-linked XRP videos and same-name YouTube results remain unverified as the identified person's channel. No personal-video inventory attributed. Camilla remains separate/unresolved."
+    },
+    "prediction_engine": {
+      "source_definitions_total": 47,
+      "hourly_sources": 43,
+      "weekly_cftc_sources": 2,
+      "excluded_noncommercial_xrpl_node_sources": 2,
+      "scheduled_sources": 45,
+      "sbi_lending_source": {
+        "scheduled_on_integration": true,
+        "digest_only": true,
+        "feature_emission": false,
+        "main_receipt_verified": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "gaps": [
+        "independent WORM/timestamp anchoring",
+        "replayable historical feature-store reconstruction",
+        "synchronized spot/L2/derivatives/exchange-flow/collateral history",
+        "vintage-aware macro/regulatory/geopolitical event timeline",
+        "scenario/counter-hypothesis generation",
+        "production Ed25519 evaluator key",
+        "independent shadow outcomes",
+        "demonstrated out-of-sample lift over all four baselines"
+      ]
+    },
+    "nine_platform_coordination": {
+      "status": "DESIGNED_NOT_EXECUTED",
+      "chatgpt_github": "authenticated; admin=true, maintain=true, push=true, pull=true, triage=true; overprivileged",
+      "claude": "unverified",
+      "grok": "unverified",
+      "gemini": "unverified",
+      "copilot": "no formal PR approval",
+      "codex": "unverified",
+      "hugging_face": "BUILD_ERROR; no deployment",
+      "kaggle": "untested; no submission",
+      "databricks": "HTTP 403; no workspace write",
+      "lunaroute": "canonical brain declared in repo; endpoint auth/data flow unverified",
+      "external_model_transfer": false
+    },
+    "counter_hypotheses": [
+      "Exchange-wallet balances include cold storage and newly tracked wallets; not tradable float.",
+      "Same-wallet exchange balance changes do not distinguish customer flows from internal movements or transfers to unlabeled wallets.",
+      "ETF data providers cover different funds and settlement vintages; Nov10 XRP Insights row is provisional.",
+      "Positive funding with falling OI and long-heavy liquidations is consistent with deleveraging but does not prove completion.",
+      "Evernorth's 73.7M registered resale is not immediate float or XRP selling; future conversions are capped and may never occur.",
+      "SBI VC Trade's lending list does not disclose actual loan balances or XRP pledged as collateral.",
+      "Ripple Prime RWA swaps use RLUSD collateral where permitted; no XRP collateral or settlement leg is disclosed.",
+      "XRPL native lending is not active until all required amendments pass >80% for 14 consecutive days."
+    ],
+    "sources": [
+      {
+        "id": "xrpldashboard_live_price_and_votes",
+        "url": "https://xrpldashboard.com/amendments",
+        "publisher": "xrpldashboard",
+        "as_of_utc": "2026-11-11T14:34:00Z",
+        "group": "xrpldashboard_own_node",
+        "type": "live_dashboard",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "fuelmaps_xrp_spot_depth",
+        "url": "https://fuelmaps.io/order-book/",
+        "publisher": "Fuelmaps",
+        "as_of_utc": "2026-11-11T14:00:00Z",
+        "group": "fuelmaps_orderbook",
+        "type": "six_venue_spot_book",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "liqwall_xrp_derivatives",
+        "url": "https://liqwall.com/coins/xrp",
+        "publisher": "Liqwall",
+        "as_of_utc": "2026-11-11T11:42:00Z",
+        "group": "liqwall_derivatives",
+        "type": "aggregated_perpetuals",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "tradradar_xrp_derivatives",
+        "url": "https://tradradar.io/markets/xrp",
+        "publisher": "TradRadar",
+        "as_of_utc": "2026-11-11T11:30:00Z",
+        "group": "tradradar_derivatives",
+        "type": "aggregated_perpetuals",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "optimistfi_xrp_options",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "publisher": "OptimistFi/Deribit",
+        "as_of_utc": "2026-11-11T05:00:00Z",
+        "group": "deribit_options_aggregator",
+        "type": "options_surface",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "xrp_insights_exchange_balances",
+        "url": "https://xrp-insights.com/exchange-balances",
+        "publisher": "XRP Insights",
+        "as_of_utc": "2026-11-11T08:00:00Z",
+        "group": "xrp_insights_xrpl_wallets",
+        "type": "attributed_exchange_wallets",
+        "raw_receipt": "not captured by Barrot; integration collector is digest-only and main run unverified",
+        "model_eligible": false
+      },
+      {
+        "id": "xrp_insights_etf_flows",
+        "url": "https://xrp-insights.com/data",
+        "publisher": "XRP Insights",
+        "as_of": "2026-11-10_provisional",
+        "group": "xrp_insights_issuer_scraper",
+        "type": "issuer_holdings_derived_flows",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "evernorth_424b3_resale",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+        "publisher": "SEC EDGAR",
+        "as_of": "2026-11-09",
+        "group": "SEC_EDGAR_primary",
+        "type": "primary_filing",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "sbi_vc_trade_lending",
+        "url": "https://www.sbivc.co.jp/services/lending",
+        "publisher": "SBI VC Trade",
+        "as_of": "2026-11-11",
+        "group": "sbivc_primary",
+        "type": "primary_product_terms",
+        "raw_receipt": "digest-only collector source; no main receipt",
+        "model_eligible": false
+      },
+      {
+        "id": "sbi_vc_trade_margin_rules",
+        "url": "https://www.sbivc.co.jp/services/service-overview",
+        "publisher": "SBI VC Trade",
+        "as_of": "2026-11-11",
+        "group": "sbivc_primary",
+        "type": "primary_margin_rules",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "coinbase_cbxrp_reserves",
+        "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "publisher": "Coinbase",
+        "as_of": "2026-11-11",
+        "group": "coinbase_issuer",
+        "type": "issuer_reserve_display",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_prime_rwa_swaps",
+        "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-15",
+        "group": "ripple_primary",
+        "type": "primary_product_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_occ_bny_coinbase_integration",
+        "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-28",
+        "group": "ripple_primary",
+        "type": "primary_company_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_coinbase_rlusd",
+        "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-28",
+        "group": "ripple_primary",
+        "type": "primary_partnership_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_bny_custody",
+        "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-27",
+        "group": "ripple_primary",
+        "type": "primary_custody_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "xrpl_native_lending_governance",
+        "url": "https://xrpldashboard.com/amendments",
+        "publisher": "xrpldashboard",
+        "as_of_utc": "2026-11-11T14:22:00Z",
+        "group": "xrpldashboard_own_node",
+        "type": "live_validator_vote_aggregation",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      }
+    ],
+    "raw_receipts_created": false,
+    "feature_store_admission": false,
+    "model_eligibility": "EXCLUDED",
+    "predictions": {
+      "issued": false,
+      "status": "NOT_ISSUED"
+    },
+    "safety": {
+      "no_trade": true,
+      "no_paper_trade": true,
+      "no_real_money": true,
+      "no_merge": true,
+      "no_deployment": true,
+      "no_secret_rotation": true,
+      "no_external_model_transfer": true,
+      "no_main_write": true
+    }
+  },
+  "latest_web_research_run27": {
+    "artifact_type": "barrot_xrp_research_run",
+    "schema_version": "1.0.0",
+    "run_id": 27,
+    "captured_at_utc": "2026-11-11T14:45:15.265Z",
+    "status": "PUBLIC_RESEARCH_NOT_MODEL_ELIGIBLE",
+    "mission_priority": 1,
+    "repository_snapshot": {
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "integration_branch": "integration/xrp-v3-unified-main-20261111",
+      "parent_head": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+      "pr_number": 1661,
+      "pr_draft": true,
+      "ahead_by": 2028,
+      "behind_by": 0,
+      "changed_files": 1009,
+      "workflow_files": 44,
+      "non_workflow_paths": 965,
+      "open_prs": 374,
+      "drafts": 360,
+      "non_drafts": 14,
+      "main_tree_entries": 1388,
+      "integration_tree_entries": 2274,
+      "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API used"
+    },
+    "ci_snapshot": {
+      "run_id": 43040465375,
+      "head_sha": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+      "full_suite": {
+        "passed": 3443,
+        "failed": 4,
+        "subtests": 8,
+        "coverage_percent": 59.98,
+        "duration_seconds": 57.49
+      },
+      "core_suite": {
+        "run_id": 43040465375,
+        "job_id": 130590559864,
+        "passed": 714,
+        "failed": 0,
+        "subtests": 8
+      },
+      "dependency_audit": {
+        "run_id": 43040465368,
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43040465437,
+        "passed": true,
+        "automatic_merge_enabled": false
+      },
+      "failure_classification": "The SBI HTML fixture repair removed the seven previous ingestion receipt-count failures. Four remaining failures are stale map CI/head binding, map source counts, adapter/parser version assertions, and Run124 current contract counts."
+    },
+    "market_snapshot": {
+      "reference_price": {
+        "provider": "xrpldashboard",
+        "value_usd": 1.0562,
+        "as_of_utc": "2026-11-11T14:34:00Z",
+        "source": "https://xrpldashboard.com/amendments",
+        "limitation": "Dashboard reference price; no venue, executable quote or depth is specified."
+      },
+      "spot_order_book": {
+        "provider": "Fuelmaps",
+        "as_of_utc": "2026-11-11T14:00:00Z",
+        "mid_usd": 1.0611,
+        "venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "depth_usd": {
+          "within_0_5_percent": {
+            "bids": 8100000,
+            "asks": 6600000,
+            "bid_share_percent": 55.2
+          },
+          "within_1_percent": {
+            "bids": 13700000,
+            "asks": 11800000,
+            "bid_share_percent": 53.8
+          },
+          "within_2_percent": {
+            "bids": 19700000,
+            "asks": 12700000,
+            "bid_share_percent": 60.9
+          },
+          "within_5_percent": {
+            "bids": 25000000,
+            "asks": 14700000,
+            "bid_share_percent": 63
+          },
+          "within_10_percent": {
+            "bids": 33800000,
+            "asks": 16100000,
+            "bid_share_percent": 67.8
+          }
+        },
+        "largest_levels": [
+          {
+            "side": "bid",
+            "price": 1,
+            "usd": 3400000
+          },
+          {
+            "side": "bid",
+            "price": 1.059,
+            "usd": 2000000
+          },
+          {
+            "side": "ask",
+            "price": 1.063,
+            "usd": 1900000
+          },
+          {
+            "side": "bid",
+            "price": 1.058,
+            "usd": 1800000
+          },
+          {
+            "side": "ask",
+            "price": 1.068,
+            "usd": 1500000
+          }
+        ],
+        "limitations": [
+          "Resting orders can be cancelled or moved.",
+          "Hourly columns average one-minute snapshots; walls may be underweighted if present briefly.",
+          "Six spot venues; Binance and Bitget are excluded.",
+          "Not executed volume or guaranteed support."
+        ],
+        "source": "https://fuelmaps.io/order-book/"
+      },
+      "derivatives": {
+        "liqwall": {
+          "as_of_utc": "2026-11-11T11:42:00Z",
+          "price_usd": 1.06,
+          "open_interest_usd": 1160000000,
+          "oi_24h_change_percent": -2,
+          "funding_average_8h_percent": 0.0098,
+          "liquidations_24h_usd": 16800000,
+          "long_liquidations_usd": 15700000,
+          "short_liquidations_usd": 1100000,
+          "binance_long_account_share_percent": 75.1
+        },
+        "tradradar": {
+          "as_of_utc": "2026-11-11T11:30:00Z",
+          "mark_price_usd": 1.0574,
+          "open_interest_usd": 1570000000,
+          "oi_24h_change_percent": -4.05,
+          "funding_oi_weighted_8h_percent": 0.0092,
+          "liquidations_24h_min_usd": 15160000,
+          "long_liquidations_usd": 14040000,
+          "short_liquidations_usd": 1120000,
+          "long_short_account_ratio": 3.91,
+          "long_account_share_percent": 79.6
+        },
+        "reconciliation": "These aggregators cover different venue/contract universes; their OI totals are not additive or averageable. Both snapshots show positive funding, falling OI and long-heavy liquidations. The snapshots are delayed and are not current executable quotes."
+      },
+      "options": {
+        "provider": "OptimistFi/Deribit",
+        "as_of_utc": "2026-11-11T05:00:00Z",
+        "thirty_day_atm_iv_percent": 59,
+        "twenty_five_delta_skew_points": 0.3,
+        "put_call_ratio": 0.55,
+        "december_25_oi_usd": 47100000,
+        "near_expiry_skew_points": {
+          "nov11": -11,
+          "nov12": -7.3,
+          "nov13": -4.5
+        },
+        "interpretation": "30-day calls are modestly richer, while near-expiry puts remain richer; term structure is mixed, not a single directional signal."
+      },
+      "exchange_balances": {
+        "data_as_of_utc": "2026-11-11T08:00:00Z",
+        "total_xrp": 22330000000,
+        "wallet_count": 701,
+        "exchange_count": 24,
+        "circulating_supply_xrp": 68890000000,
+        "percent_circulating": 32.4,
+        "percent_total_supply": 22.3,
+        "same_wallet_change_7d_xrp": 1300000,
+        "same_wallet_change_30d_xrp": -155700000,
+        "naive_total_change_30d_xrp": 356300000,
+        "newly_tracked_wallets": 2,
+        "newly_tracked_wallets_balance_xrp": 512100000,
+        "daily_same_wallet_change_2026_11_11_xrp": -3800000,
+        "top_exchanges": [
+          {
+            "name": "Upbit",
+            "xrp": 6470000000
+          },
+          {
+            "name": "Coinbase",
+            "xrp": 5800000000
+          },
+          {
+            "name": "Binance",
+            "xrp": 2690000000
+          }
+        ],
+        "regional_totals": [
+          {
+            "region": "South Korea",
+            "xrp": 8590000000,
+            "share_percent": 38.5
+          },
+          {
+            "region": "United States",
+            "xrp": 8460000000,
+            "share_percent": 37.9
+          },
+          {
+            "region": "Japan",
+            "xrp": 1380000000,
+            "share_percent": 6.2
+          }
+        ],
+        "limitations": [
+          "Includes cold storage; not tradable float.",
+          "Same-wallet method excludes newly tracked wallets and cannot distinguish customer withdrawals from internal exchange movements or transfers to unlabeled wallets.",
+          "At least 323M XRP in wallets of roughly 36 untracked exchanges from provider's 2026-09-29 audit.",
+          "149.6M cbXRP backing overlaps Coinbase attributed balance and provider DeFi total; do not double count.",
+          "39.8% of tracked balances lack hot/cold labels."
+        ],
+        "source": "https://xrp-insights.com/exchange-balances",
+        "source_independence": "Single XRP Insights publisher using XRPL account_info balances and XRPSCAN labels; not independent of its XRP Radar pages."
+      },
+      "etf_flows": {
+        "xrp_insights": {
+          "fund_universe": "six spot funds plus BITW",
+          "date": "2026-11-10",
+          "net_flow_xrp": -27000,
+          "net_flow_usd_approx": -28600,
+          "holdings_xrp": 1190000000,
+          "net_assets_usd": 1280000000,
+          "row_status": "provisional until re-settled",
+          "source": "https://xrp-insights.com/data"
+        },
+        "alpha_finance": {
+          "fund_universe": "five spot funds",
+          "date": "2026-11-10",
+          "net_flow_usd": -7600000,
+          "largest_outflow": "GXRP approximately -$7.2M",
+          "thirty_session_net_flow_usd": 1300000,
+          "cumulative_net_flow_usd": 1710000000,
+          "source": "https://alphafinance.io/etf/xrp/"
+        },
+        "cryptoetf_today": {
+          "fund_universe": "five spot funds; four of five reported",
+          "date": "2026-11-10",
+          "net_flow_usd": -6900000,
+          "missing_fund": "XRPZ",
+          "source": "https://cryptoetf.today/en/xrp-etf-flows"
+        },
+        "reconciliation": "Different issuer universes, currency units and settlement completeness. XRP Insights Nov10 row provisional; Alpha five-fund subset; CryptoETF.today four-of-five partial. Do not average or treat missing issuers as zero."
+      },
+      "escrow": {
+        "xrp_in_ledger_escrow": 31100000000,
+        "as_of": "2026-11-11",
+        "next_unlock": "2026-12-01",
+        "maximum_scheduled_unlock_xrp": 1000000000,
+        "interpretation": "Gross unlock is not net circulating supply; most prior monthly releases were re-escrowed.",
+        "source": "https://xrp-insights.com/xrp-radar",
+        "same_publisher_as_exchange_balances": true
+      }
+    },
+    "institutional_and_capital": {
+      "evernorth_resale_registration": {
+        "filing_date": "2026-11-09",
+        "accession": "000162828026072223",
+        "shares_registered_for_resale": 73688162,
+        "components": {
+          "issued_and_outstanding": 19102635,
+          "class_c_conversion": 31392746,
+          "company_unit_redemption_or_exchange": 22953128,
+          "sponsor_warrant_exercise_shares": 239653
+        },
+        "class_a_outstanding_as_of": "2026-10-22",
+        "class_a_outstanding": 26094680,
+        "ratio_registered_to_outstanding": 2.8238768208692346,
+        "sponsor_warrants_registered": 239653,
+        "sponsor_warrant_exercise_price_usd": 11.5,
+        "company_resale_proceeds_usd": 0,
+        "sbi_related_registered_shares_sum": 11790952,
+        "holders": [
+          {
+            "name": "Ripple Labs Inc.",
+            "shares_registered": 18139927
+          },
+          {
+            "name": "Arrington XRP Capital Fund, LP",
+            "shares_registered": 33822498
+          },
+          {
+            "name": "Larsen Lam Children's Remainder Trust",
+            "shares_registered": 7153450
+          },
+          {
+            "name": "SBI Holdings USA, Inc.",
+            "shares_registered": 8162967
+          },
+          {
+            "name": "SBI Venture Fund 2023A",
+            "shares_registered": 247603
+          },
+          {
+            "name": "SBI Venture Fund 2023B",
+            "shares_registered": 357061
+          },
+          {
+            "name": "SBI PE Holdings Co., Ltd.",
+            "shares_registered": 3023321
+          }
+        ],
+        "ownership_caps_percent": {
+          "contributor_group": 9.9,
+          "rippleworks_attributed": 19.9,
+          "sbi_group": 39.9
+        },
+        "interpretation": "Not immediate float: includes future Class C conversion and Company Unit redemption/exchange subject to ownership restrictions and possible cash settlement. Resale proceeds go to selling holders, not Evernorth. Registration does not prove a holder will sell and is not evidence of XRP sale or new XRP purchase.",
+        "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+      },
+      "evernorth_actual_capital_reconciliation": {
+        "xrp_at_close_approx": 473276430,
+        "cash_purchased_xrp_approx": 84365876,
+        "in_kind_xrp_approx": 388910554,
+        "advance_funding_pool_usd": 214050000,
+        "sbi_cash_commitment_usd": 200000000,
+        "sbi_commitment_included_in_advance_funding_pool": true,
+        "do_not_add_again": true,
+        "parent_company_facility_drawn_as_of_2026_10_07_usd": 9700000,
+        "facility_limit_usd": 10000000,
+        "parent_convertible_note_funded_2026_10_12_usd": 30000000,
+        "cantor_eloc_proceeds_as_of_prospectus_usd": 0,
+        "interpretation": "Cash, in-kind XRP, debt, facilities, ELOC and resale registration remain separate; the note may fund XRP but actual use is not disclosed."
+      },
+      "sbi_vc_trade": {
+        "lending_page": "https://www.sbivc.co.jp/services/lending",
+        "listed_assets": 29,
+        "lending_assets_include": [
+          "XRP",
+          "USDC",
+          "JPYSC"
+        ],
+        "lending_assets_exclude": [
+          "RLUSD"
+        ],
+        "historical_usdc_offer": {
+          "annualized_rate_percent": 10,
+          "term_days": 84,
+          "min_usdc": 100,
+          "max_usdc": 5000,
+          "date": "2026-04-30",
+          "status": "historical offer, not a current guaranteed rate"
+        },
+        "margin_rules": {
+          "retail_max_leverage": 2,
+          "maintenance_margin_threshold_percent": 80,
+          "crypto_valuation_factor_percent": 50,
+          "electronic_payment_instrument_factor_percent": 100
+        },
+        "limitations": [
+          "The lending asset list is not automatically the leverage collateral eligibility list.",
+          "XRP is a supported leverage market, but actual XRP customer collateral balances and lending utilization are undisclosed.",
+          "The generic margin haircut does not prove any particular amount of XRP is pledged."
+        ]
+      },
+      "coinbase_cbxrp": {
+        "reserve_xrp": 151709177.16,
+        "supply_cbxrp": 151706930.63,
+        "excess_xrp": 2246.53,
+        "refresh_label": "2026-11-11 2:30 PM",
+        "timezone": "not specified",
+        "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "limitation": "Issuer-published proof-of-reserves display, not an independent custody audit."
+      },
+      "ripple_prime_rwa_swaps": {
+        "announcement_date": "2026-10-15",
+        "reference_markets": ">100",
+        "early_client": "Virtu",
+        "venue": "Trade.xyz perpetual contracts on Hyperliquid",
+        "principal": "Ripple Prime",
+        "collateral": "RLUSD may be used subject to jurisdiction",
+        "xrp_leg_disclosed": false,
+        "notional_disclosed": false,
+        "actual_rlusd_collateral_balance_disclosed": false,
+        "source": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/"
+      },
+      "ripple_corporate_report": {
+        "announcement_date": "2026-10-28",
+        "company_reported_annualized_product_revenue_run_rate_usd": 900000000,
+        "transactions_enabled_2025_usd": 16000000000000,
+        "institutions_corporates_enterprises": 1700,
+        "licenses": 85,
+        "payout_markets": 60,
+        "estimated_lifetime_ripple_payments_volume_by_year_end_usd": 150000000000,
+        "rlusd_market_cap_usd": 2600000000,
+        "occ_national_trust_bank_charter": "final approval reported by Ripple",
+        "limitation": "Issuer-reported company-wide metrics; not audited XRP sales, bridge volume or XRP capital flow.",
+        "source": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+      },
+      "ripple_coinbase": {
+        "rlusd_available_on": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase Retail"
+        ],
+        "supported_networks": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "coinbase_global_exchange_rlusd_collateral": "future scope; not verified live",
+        "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+      },
+      "ripple_bny": {
+        "bny_primary_rlusd_reserve_custodian": true,
+        "bny_custody_supports": [
+          "XRP",
+          "RLUSD"
+        ],
+        "future_rlusd_mint_redeem_directly_at_bny": "intended; subject to final BNY and regulatory approvals",
+        "tokenized_trade_finance": "exploratory with C2FO, subject to client requirements",
+        "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+      }
+    },
+    "xrpl_governance": {
+      "as_of_utc": "2026-11-11T14:22:00Z",
+      "current_ledger": 108262313,
+      "heard_validators": 35,
+      "required_yes": 29,
+      "threshold": "strictly more than 80% for 14 consecutive days",
+      "votes": {
+        "SingleAssetVault": "23/35",
+        "LendingProtocol": "22/35",
+        "LendingProtocolV1_1": "22/35"
+      },
+      "amendments_in_countdown": 0,
+      "native_lending_active": false,
+      "protocol_notes": {
+        "XLS65": "single-asset vault; asset can be XRP, IOU or MPT, not a mixed basket",
+        "XLS66": "fixed-term lending from vaults; credit judgment remains off-ledger; no mandatory XRP collateral"
+      },
+      "risk_sleeve_idea": {
+        "url": "https://github.com/XRPLF/XRPL-Standards/discussions/617",
+        "status": "pre-standard community idea; one participant, zero comments; not an official XLS/amendment",
+        "proposal": "mandatory XRP first-loss sleeve for some XRPL credit facilities",
+        "current_effect": "none"
+      },
+      "source": "https://xrpldashboard.com/amendments",
+      "limitation": "Dashboard reports its live vote counts; the signed daily leaf is reported as verified by the dashboard, but this run did not independently execute signature verification."
+    },
+    "identity_and_exact_phrase_research": {
+      "sbic": "East/Tokyo, Central/Nagoya and West/Osaka are separate Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC's ChatGPT/Copilot training was education for investee companies, not an OpenAI partnership.",
+      "ask_coin": "Permission ASK is an EVM LayerZero OFT on Base and Polygon; no XRPL support listed. Separate Askcoin listing/parked domain remains distinct; no XRP integration verified.",
+      "actual_capital": "Not a standardized XRP metric. Separate settled cash, in-kind XRP, accepted subscriptions, cash deployed to buy XRP, debt, drawn facilities, posted collateral, ELOC capacity, registered resale and actual secondary sales.",
+      "sbic_chatgpt": "No primary evidence of an entity or commercial partnership named exactly 'SBIC, ChatGPT SBIC'.",
+      "kamilah_camilla": "First-party Kamilah site identifies Dr Kamilah Stevenson/The Wealth Doctor but does not link a YouTube channel. Candidate DailyCoin-linked XRP videos and same-name YouTube results remain unverified as the identified person's channel. No personal-video inventory attributed. Camilla remains separate/unresolved."
+    },
+    "prediction_engine": {
+      "source_definitions_total": 47,
+      "hourly_sources": 43,
+      "weekly_cftc_sources": 2,
+      "excluded_noncommercial_xrpl_node_sources": 2,
+      "scheduled_sources": 45,
+      "sbi_lending_source": {
+        "scheduled_on_integration": true,
+        "digest_only": true,
+        "feature_emission": false,
+        "main_receipt_verified": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "gaps": [
+        "independent WORM/timestamp anchoring",
+        "replayable historical feature-store reconstruction",
+        "synchronized spot/L2/derivatives/exchange-flow/collateral history",
+        "vintage-aware macro/regulatory/geopolitical event timeline",
+        "scenario/counter-hypothesis generation",
+        "production Ed25519 evaluator key",
+        "independent shadow outcomes",
+        "demonstrated out-of-sample lift over all four baselines"
+      ]
+    },
+    "nine_platform_coordination": {
+      "status": "DESIGNED_NOT_EXECUTED",
+      "chatgpt_github": "authenticated; admin=true, maintain=true, push=true, pull=true, triage=true; overprivileged",
+      "claude": "unverified",
+      "grok": "unverified",
+      "gemini": "unverified",
+      "copilot": "no formal PR approval",
+      "codex": "unverified",
+      "hugging_face": "BUILD_ERROR; no deployment",
+      "kaggle": "untested; no submission",
+      "databricks": "HTTP 403; no workspace write",
+      "lunaroute": "canonical brain declared in repo; endpoint auth/data flow unverified",
+      "external_model_transfer": false
+    },
+    "counter_hypotheses": [
+      "Exchange-wallet balances include cold storage and newly tracked wallets; not tradable float.",
+      "Same-wallet exchange balance changes do not distinguish customer flows from internal movements or transfers to unlabeled wallets.",
+      "ETF data providers cover different funds and settlement vintages; Nov10 XRP Insights row is provisional.",
+      "Positive funding with falling OI and long-heavy liquidations is consistent with deleveraging but does not prove completion.",
+      "Evernorth's 73.7M registered resale is not immediate float or XRP selling; future conversions are capped and may never occur.",
+      "SBI VC Trade's lending list does not disclose actual loan balances or XRP pledged as collateral.",
+      "Ripple Prime RWA swaps use RLUSD collateral where permitted; no XRP collateral or settlement leg is disclosed.",
+      "XRPL native lending is not active until all required amendments pass >80% for 14 consecutive days."
+    ],
+    "sources": [
+      {
+        "id": "xrpldashboard_live_price_and_votes",
+        "url": "https://xrpldashboard.com/amendments",
+        "publisher": "xrpldashboard",
+        "as_of_utc": "2026-11-11T14:34:00Z",
+        "group": "xrpldashboard_own_node",
+        "type": "live_dashboard",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "fuelmaps_xrp_spot_depth",
+        "url": "https://fuelmaps.io/order-book/",
+        "publisher": "Fuelmaps",
+        "as_of_utc": "2026-11-11T14:00:00Z",
+        "group": "fuelmaps_orderbook",
+        "type": "six_venue_spot_book",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "liqwall_xrp_derivatives",
+        "url": "https://liqwall.com/coins/xrp",
+        "publisher": "Liqwall",
+        "as_of_utc": "2026-11-11T11:42:00Z",
+        "group": "liqwall_derivatives",
+        "type": "aggregated_perpetuals",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "tradradar_xrp_derivatives",
+        "url": "https://tradradar.io/markets/xrp",
+        "publisher": "TradRadar",
+        "as_of_utc": "2026-11-11T11:30:00Z",
+        "group": "tradradar_derivatives",
+        "type": "aggregated_perpetuals",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "optimistfi_xrp_options",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "publisher": "OptimistFi/Deribit",
+        "as_of_utc": "2026-11-11T05:00:00Z",
+        "group": "deribit_options_aggregator",
+        "type": "options_surface",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "xrp_insights_exchange_balances",
+        "url": "https://xrp-insights.com/exchange-balances",
+        "publisher": "XRP Insights",
+        "as_of_utc": "2026-11-11T08:00:00Z",
+        "group": "xrp_insights_xrpl_wallets",
+        "type": "attributed_exchange_wallets",
+        "raw_receipt": "not captured by Barrot; integration collector is digest-only and main run unverified",
+        "model_eligible": false
+      },
+      {
+        "id": "xrp_insights_etf_flows",
+        "url": "https://xrp-insights.com/data",
+        "publisher": "XRP Insights",
+        "as_of": "2026-11-10_provisional",
+        "group": "xrp_insights_issuer_scraper",
+        "type": "issuer_holdings_derived_flows",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "evernorth_424b3_resale",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+        "publisher": "SEC EDGAR",
+        "as_of": "2026-11-09",
+        "group": "SEC_EDGAR_primary",
+        "type": "primary_filing",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "sbi_vc_trade_lending",
+        "url": "https://www.sbivc.co.jp/services/lending",
+        "publisher": "SBI VC Trade",
+        "as_of": "2026-11-11",
+        "group": "sbivc_primary",
+        "type": "primary_product_terms",
+        "raw_receipt": "digest-only collector source; no main receipt",
+        "model_eligible": false
+      },
+      {
+        "id": "sbi_vc_trade_margin_rules",
+        "url": "https://www.sbivc.co.jp/services/service-overview",
+        "publisher": "SBI VC Trade",
+        "as_of": "2026-11-11",
+        "group": "sbivc_primary",
+        "type": "primary_margin_rules",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "coinbase_cbxrp_reserves",
+        "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "publisher": "Coinbase",
+        "as_of": "2026-11-11",
+        "group": "coinbase_issuer",
+        "type": "issuer_reserve_display",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_prime_rwa_swaps",
+        "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-15",
+        "group": "ripple_primary",
+        "type": "primary_product_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_occ_bny_coinbase_integration",
+        "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-28",
+        "group": "ripple_primary",
+        "type": "primary_company_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_coinbase_rlusd",
+        "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-28",
+        "group": "ripple_primary",
+        "type": "primary_partnership_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "ripple_bny_custody",
+        "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+        "publisher": "Ripple",
+        "as_of": "2026-10-27",
+        "group": "ripple_primary",
+        "type": "primary_custody_announcement",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      },
+      {
+        "id": "xrpl_native_lending_governance",
+        "url": "https://xrpldashboard.com/amendments",
+        "publisher": "xrpldashboard",
+        "as_of_utc": "2026-11-11T14:22:00Z",
+        "group": "xrpldashboard_own_node",
+        "type": "live_validator_vote_aggregation",
+        "raw_receipt": "not captured by Barrot",
+        "model_eligible": false
+      }
+    ],
+    "raw_receipts_created": false,
+    "feature_store_admission": false,
+    "model_eligibility": "EXCLUDED",
+    "predictions": {
+      "issued": false,
+      "status": "NOT_ISSUED"
+    },
+    "safety": {
+      "no_trade": true,
+      "no_paper_trade": true,
+      "no_real_money": true,
+      "no_merge": true,
+      "no_deployment": true,
+      "no_secret_rotation": true,
+      "no_external_model_transfer": true,
+      "no_main_write": true
+    }
+  },
+  "latest_run_summary": "Run27: repaired remaining exact-head test contracts; refreshed 14:00 UTC six-venue XRP spot depth, 14:34 UTC XRPL dashboard reference price, exchange-wallet balances, ETF vintages, derivatives/options, Evernorth resale registration, SBI VC Trade lending/margin terms, Coinbase cbXRP reserves, Ripple Prime RWA swaps, BNY custody and live XRPL lending amendment votes. All research excluded from model features; forecast NOT_ISSUED."
 }
