@@ -182,3 +182,22 @@
 - Main public signal is stale sentiment-only score44/confidence0; current UI renders NULL but retains $9.99 checkout. Integration is NOT_ISSUED with no checkout. Pages push remains unauthorized.
 - Kamilah person identity confirmed; channel ownership unverified; ten seed videos remain candidate references, not an attributed inventory.
 - PR #1661 remains open/draft and blocked; no merge or external action.
+
+
+## Run36 — 2026-11-11 21:28 UTC
+
+- Mission priority 1: XRP intelligence and measured prediction-engine mastery. Preserve Barrot V3 as execution/orchestration/safety/verification foundation.
+- Main SHA: \`84f28ee7755607236231545a14f3d093c1baaa85\`; code head tested before Run36 documentation commits: \`601fb36cd2185843ab8592afc027a680946f7e85\`; 2,045 ahead / 0 behind.
+- PR #1661: draft, clean/mergeable, 1,021 files (44 workflows / 977 other), zero formal reviews/approvals/threads. Open PRs 374 (360 draft / 14 non-draft).
+- Exact CI on \`601fb36\`: 3,449 passed, zero failures, eight subtests, 59.99% coverage; core 714 passed; wheel/installed mission passed. [CI 43102911776](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102911776). Six-manifest dependency audit passed, zero known vulnerabilities [43102911840](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102911840); fail-closed PR gate passed [43102911873](https://github.com/Barrot-Agent/B-Agent/actions/runs/43102911873). Run36 documentation-only commits require their own exact-head CI.
+- Market snapshot 21:11 UTC: OKX 1.0670; Kraken 1.06682; USDT-normalized asynchronous mid difference -0.112%. Basis perpetual book 20:31 UTC; derivatives OI providers disagree ($1.17B vs $1.57B); funding positive. ETF Nov10 outflow Alpha -$7.6M / CryptoETF -$6.9M; different coverage, do not average. Same-wallet exchange balances +1.3M XRP 7d / -155.7M 30d; cold storage included.
+- CFTC Nov3 TFF: CME 7,216×50,000; Coinbase Nano XRP 32,505×500; Nano XRP Perp Style 38,392×500; total 396.2485M XRP-equivalent, -12.94% w/w. 176LM2 dropped from reporting; 176LM1/176LM3 remain. Missing is not zero.
+- Evernorth SEC correction: $272.6M gross cash proceeds, 80.3% redemptions, $47.564M trust release, $214.05M cash used to buy 84.366M XRP at $2.53657, 388.911M XRP in-kind, total 473.276M XRP. June30 standalone entity figures: Evernorth Holdings cash $97,745 / accumulated deficit $340.852M; Pathfinder cash $789,682 / accumulated deficit $3.126M. Both were Ripple-owned pre-close; Pathfinder became Evernorth subsidiary on October 9. Run32's reversed attribution is corrected in canonical handoff.
+- Circle/Coinbase/Ripple/SBI network: Circle Q3 average USDC $73.3B, $13.9T gross on-chain volume, Coinbase distribution costs $331.3M Q3/$986.6M nine months; Circle ARC presale revenue $181.8M recognized in Q3. OCC trust-bank effective dates: Circle affiliate Jul24, Ripple Oct26, Coinbase Nov6. SBI/SMBC 5% SBI Startale Marketing participation; SBI Circle $50M; SBI Ripple ~9% historical stake. These do not prove XRP demand.
+- SBIC East/Central/West are separate Japanese regional companies, not SBI Holdings. ASK candidates remain distinct; no XRPL deployment verified. Kamilah person identity first-party confirmed; YouTube channel not verified; no videos attributed.
+- Collector: 47 sources, 45 scheduled (43 hourly, 2 weekly; 2 XRPL-node excluded); hourly at minute 3 plus daily 00:15 UTC, main-only/read-only. No successful main ingestion. SQLite prototype, SHA-256 receipt chain, no WORM/trusted timestamp. Scenario engine, production evaluator key, shadow outcomes and measured OOS lift remain missing.
+- Forecast \`NOT_ISSUED\`; web research not raw-receipt ingested and not model-eligible.
+- Security: main protected=true but details HTTP403; fallback ruleset disabled; GitHub connector overprivileged; credential path in 17 other PR tips, absent main/integration, contents unread, OAuth revocation unverified; Pages auto-publication not authorized. No merge, deployment, rotation, external transfer, paper trade, money movement or PR closure.
+- Backlog: #1661 blocked; #1660/#1643 superseded-source candidates pending blob review; #1640/#1642/#1612 semantic overlap; preserve unique #1653/#1614/#1611/#1610/#1612/#1608. No source PR closed.
+- Next: exact-head CI on Run36 docs commits; semantic review; resolve branch protection, least privilege, credential and Pages blockers; build WORM/replay/scenario/out-of-sample readiness.
+- Artifact: \`research/xrp_intelligence/20261111T212842Z-run36-exact-head-ci-market-institutional-capital-and-cftc-reconciliation.json\`.
