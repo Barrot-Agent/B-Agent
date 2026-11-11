@@ -30,8 +30,8 @@ from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp"}
-ADAPTER_VERSION = "xrp-public-market-v3.23"
-PARSER_VERSION = "xrp-public-market-v3.22"
+ADAPTER_VERSION = "xrp-public-market-v3.24"
+PARSER_VERSION = "xrp-public-market-v3.23"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
@@ -3283,7 +3283,7 @@ def _raw_only_sbi_vc_trade_lending_page(payload: Any, *, captured: datetime, **_
     if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
         raise XRPIngestionError("SBI VC Trade lending page response must contain HTML text")
     normalized = payload["html_text"].casefold()
-    required_markers = ("貸コイン", "usdc", "xrp")
+    required_markers = ("sbi vcトレード", "貸コイン", "usdc", "xrp")
     if any(marker not in normalized for marker in required_markers):
         raise XRPIngestionError("SBI VC Trade lending-page identity or asset markers are missing")
     return (

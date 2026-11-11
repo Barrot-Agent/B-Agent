@@ -482,6 +482,7 @@ def _fake_fetcher(captured: datetime):
             "ripple_rlusd_transparency_dashboard",
             "xrpldashboard_rlusd_cross_chain_supply",
             "circle_usdc_transparency_dashboard",
+            "sbi_vc_trade_lending_page",
             "coinbase_cbxrp_proof_of_reserves",
             "cftc_contract_status_index",
             "cftc_tff_financial_futures",
@@ -496,6 +497,7 @@ def _fake_fetcher(captured: datetime):
                 "ripple_rlusd_transparency_dashboard": "<html><title>Ripple USD Transparency</title><h1>Ripple USD (RLUSD)</h1><h2>Total Circulating RLUSD</h2><p>RLUSD Reserve Funds</p><p>As of 11/05/2026</p></html>",
                 "xrpldashboard_rlusd_cross_chain_supply": "<html><title>RLUSD cross-chain supply</title><h1>RLUSD</h1><p>Ethereum</p><p>XRP Ledger</p><p>Snapshot</p></html>",
                 "circle_usdc_transparency_dashboard": "<html><title>Transparency and stability</title><h1>USDC</h1><p>EURC</p><p>Reserves</p><p>As of Nov 05, 2026</p></html>",
+                "sbi_vc_trade_lending_page": "<html><title>SBI VCトレード株式会社 貸コイン</title><p>USDC XRP JPYSC</p></html>",
                 "coinbase_cbxrp_proof_of_reserves": "<html><title>Coinbase cbXRP Proof of Reserves</title><p>cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase.</p><h2>Total reserve</h2><p>152372342.33 XRP</p><h2>Total supply</h2><p>152370095.80 cbXRP</p><h2>Supply by network</h2><p>Base</p><p>XRP/cbXRP data refreshed at 11/10/2026, 5:09 AM</p></html>",
                 "cftc_contract_status_index": """<html><body>
 <h2>New Futures Markets Added This Week</h2>

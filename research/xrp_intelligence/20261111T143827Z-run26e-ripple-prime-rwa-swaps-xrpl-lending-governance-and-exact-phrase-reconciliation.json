@@ -1,0 +1,189 @@
+{
+  "artifact_type": "xrp_ripple_prime_rwa_swaps_xrpl_lending_governance_and_exact_phrase_reconciliation",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-11T14:38:27.483Z",
+  "data_cutoff_utc": "2026-11-11T13:54:00Z",
+  "status": "PUBLIC_RESEARCH_NOT_MODEL_ELIGIBLE",
+  "ripple_prime": {
+    "announcement_date": "2026-10-15",
+    "source_url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+    "facts": [
+      "100+ RWA reference markets across equities, indices, ETFs, metals, energy and FX",
+      "Virtu named as an institutional client already trading",
+      "24/7 including weekends",
+      "Ripple Prime acts as principal",
+      "Reference contracts are Trade.xyz perpetual futures listed on Hyperliquid",
+      "RLUSD may be used as collateral subject to jurisdiction; offering currently out of Ripple Prime's CIV BVI license"
+    ],
+    "not_disclosed": [
+      "notional",
+      "open interest",
+      "RLUSD collateral balances",
+      "client count beyond Virtu",
+      "XRP settlement or collateral leg",
+      "actual capital deployed"
+    ],
+    "xrp_relationship": "No transaction-specific XRP settlement, collateral or purchase leg is disclosed. Indirect RLUSD/prime-brokerage hypotheses remain unmeasured."
+  },
+  "xrpl_native_lending": {
+    "live_dashboard": "https://xrpldashboard.com/amendments",
+    "signed_daily_leaf": "https://xrpldashboard.com/amendments/2026-11-11",
+    "live_roll_call_utc": "2026-11-11T13:48:00Z",
+    "signed_leaf_utc": "2026-11-11T02:00:05Z",
+    "leaf_sha256": "a6441e622ab4135729b1fd30aed7d362c404e251d314cafc0818eaad0726301d",
+    "chain_root": "3a5990a0c261ddef93e4c27248c3a8291f08bbd0d87d886ede5110e55a39d53c",
+    "signature_claim": "dashboard reports VERIFIED; this run did not independently rerun Ed25519 verification",
+    "threshold": "strictly more than 80% for 14 consecutive days; 29 of 35 yes votes required",
+    "votes": {
+      "SingleAssetVault": "23/35",
+      "LendingProtocol": "22/35",
+      "LendingProtocolV1_1": "22/35"
+    },
+    "countdown_amendments": 0,
+    "active": false,
+    "protocol_design": {
+      "XLS65": "single-asset vault can hold XRP, IOU or MPT; not a mixed-asset basket",
+      "XLS66": "fixed-term lending from vaults; credit underwriting off-ledger; no mandatory XRP collateral in the current design"
+    },
+    "separate_activation": "fixCleanup3_4_0 activated 2026-11-04; unrelated to LendingProtocol or SingleAssetVault"
+  },
+  "risk_sleeve_idea": {
+    "url": "https://github.com/XRPLF/XRPL-Standards/discussions/617",
+    "title": "Native Risk Sleeve for XRPL Credit Facilities",
+    "opened": "2026-09-03",
+    "category": "XLS Ideas (pre standard proposal)",
+    "participants": 1,
+    "comments": 0,
+    "labels": [],
+    "attachment": "XLS 67 draft.docx",
+    "proposal": "mandatory native XRP first-loss sleeve for credit facilities",
+    "status": "community idea only; not a formal XLS, approved amendment or active feature",
+    "potential": "could lock XRP as first-loss collateral if adopted",
+    "counterevidence": "current XLS-65/66 design does not require it"
+  },
+  "sbi_vc_trade": "Centralized SBI VC Trade lending list includes XRP, USDC and JPYSC; RLUSD is listed separately for trading but not in the 29-asset lending list. This is not native XRPL LendingProtocol. Actual loan balances are undisclosed.",
+  "kamilah_stevenson": {
+    "official_site": "https://learn.kamilahstevenson.com/",
+    "self_identity": "Dr. Kamilah Stevenson / The Wealth Doctor; investing and crypto education; site does not link a YouTube channel",
+    "videos": [
+      {
+        "title": "If You Hold XRP, You Need to Understand 24/7 Markets (Before It's Too Late)",
+        "id": "X3IkFZxhge8",
+        "url": "https://www.youtube.com/watch?v=X3IkFZxhge8",
+        "attribution": "DailyCoin link; channel ownership unverified"
+      },
+      {
+        "title": "The Wealthy Never Sell... Soon XRP Holders Won't Have To Either",
+        "id": "NChkamwOUEk",
+        "url": "https://www.youtube.com/watch?v=NChkamwOUEk",
+        "attribution": "DailyCoin link; channel ownership unverified"
+      },
+      {
+        "title": "Thinking Your Way Into Health",
+        "id": "VSgeDgOCexs",
+        "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+        "attribution": "TEDxWillowCreek event attribution; crypto-channel linkage unverified"
+      },
+      {
+        "title": "Same food Different Goal",
+        "id": "L_5bqd94rWo",
+        "url": "https://www.youtube.com/watch?v=L_5bqd94rWo",
+        "attribution": "same-name search result; identity linkage unverified"
+      },
+      {
+        "title": "What's Dangerous and Safe for Health?",
+        "id": "cIt1H7mJ-Oo",
+        "url": "https://www.youtube.com/watch?v=cIt1H7mJ-Oo",
+        "attribution": "same-name search result; identity linkage unverified"
+      }
+    ],
+    "camilla_spelling": "no verified link to a separate Camilla Stevenson"
+  },
+  "ask_coin": {
+    "permission_ask_docs": "https://docs.permission.ai/ask-token/ask-tokenomics",
+    "permission_ask": "Permission native ASK token; currently Base and Polygon, LayerZero OFT; no XRPL chain listed",
+    "separate_askcoin": "CoinMarketCap preview has zero supply/circulation and no active listing details; askcoin.net is parked",
+    "xrp_relationship": "none verified"
+  },
+  "actual_capital": {
+    "phrase_result": "no unique XRP/SBI-specific term identified",
+    "definition": "settled cash, in-kind XRP, accepted subscriptions, outstanding loans, posted collateral, actual XRP purchases/sales and settled payment flows; do not count announced capacity as deployed capital",
+    "false_positive": "historical U.S. SBIC legislative usage is unrelated to Japanese SBIC entities and XRP"
+  },
+  "sbic_identity": "SBIC East, Central and West are separate statutory companies, not SBI Holdings; ChatGPT seminar references do not establish a commercial OpenAI partnership.",
+  "source_registry": [
+    {
+      "id": "ripple_prime_rwa_swaps",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "publisher": "Ripple",
+      "group": "ripple-group",
+      "type": "primary"
+    },
+    {
+      "id": "xrpl_live_votes",
+      "url": "https://xrpldashboard.com/amendments",
+      "publisher": "xrpldashboard",
+      "group": "xrpldashboard-independent-node",
+      "type": "independent-node-aggregator"
+    },
+    {
+      "id": "xrpl_signed_leaf",
+      "url": "https://xrpldashboard.com/amendments/2026-11-11",
+      "publisher": "xrpldashboard",
+      "group": "xrpldashboard-independent-node",
+      "type": "signed-daily-snapshot"
+    },
+    {
+      "id": "risk_sleeve_discussion",
+      "url": "https://github.com/XRPLF/XRPL-Standards/discussions/617",
+      "publisher": "XRPLF community",
+      "group": "xrpl-standards-community",
+      "type": "pre-standard-idea"
+    },
+    {
+      "id": "permission_ask",
+      "url": "https://docs.permission.ai/ask-token/ask-tokenomics",
+      "publisher": "Permission",
+      "group": "permission",
+      "type": "primary-project-docs"
+    },
+    {
+      "id": "kamilah_site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "publisher": "Kamilah Stevenson",
+      "group": "kamilah-self-published",
+      "type": "self-identification"
+    },
+    {
+      "id": "dailycoin_video_attribution",
+      "url": "https://dailycoin.com/xrp-lending-proposal-still-remains-far-from-activation/",
+      "publisher": "DailyCoin",
+      "group": "dailycoin",
+      "type": "secondary"
+    }
+  ],
+  "source_independence": [
+    "Ripple is primary for its product terms and named early client.",
+    "xrpldashboard is one independent node operator; some vote counts cite XRPL Foundation validator history, so do not count 35 validators as 35 independent sources.",
+    "The signed daily leaf's signature was not independently reverified in this run.",
+    "XRPL Standards Discussion #617 is a community proposal, not an official amendment.",
+    "DailyCoin attributes the videos but does not prove YouTube channel ownership.",
+    "Permission documentation is primary for Permission's token network claims."
+  ],
+  "raw_receipts_created": false,
+  "feature_store_admission": false,
+  "model_eligibility": "EXCLUDED",
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED"
+  },
+  "safety": {
+    "no_trade": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "no_deployment": true,
+    "no_secret_rotation": true,
+    "no_external_model_transfer": true
+  }
+}

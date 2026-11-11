@@ -1,3 +1,54 @@
+# Run 26e — source-fixture repair, XRP lending governance and institutional collateral reconciliation
+
+Captured: 2026-11-11T14:38:27.479Z
+
+## Repository state before repair
+
+- Main: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Existing integration PR #1661: branch `integration/xrp-v3-unified-main-20261111`, pre-repair head `acf985960e1491634451daefb614eaa3c9707917`, 2,027 commits ahead, zero behind, 1,008 changed files, 44 workflow files; draft, zero formal approvals, zero formal reviews, zero unresolved threads.
+- Complete trees: main 1,388 entries / 1,288 files / 86 workflows; integration 2,273 entries / 2,164 files / 87 workflows.
+- Open PR inventory: 374 total, 360 drafts, 14 non-drafts.
+- No new PR or branch.
+
+## Run26d exact-head CI failure and root cause
+
+Head `acf985960e1491634451daefb614eaa3c9707917`:
+- Core suite: 714 passed, zero failed, eight subtests.
+- Full suite: 3,436 passed, 11 failed, eight subtests, 3,447 collected.
+- Dependency audit: six manifests, zero known vulnerabilities, passed.
+- Fail-closed gate: passed, automatic merging disabled.
+
+The 11 failures were diagnosed. Four documentation/contract tests retained the prior 46 endpoint / 42 hourly-source counts. Seven ingestion tests used the shared fake fetcher, which did not supply the newly added SBI VC Trade HTML source; this caused one fixture-only source failure and downstream receipt-count mismatches. The new SBI parser identity, HTML routing and digest-only archive tests themselves did not fail. The fix updates the shared fixture and every current inventory assertion/document; historical v1.1 snapshots remain historical.
+
+## Run26d inventory correction
+
+The collector now has 47 endpoint definitions: 43 hourly endpoints plus two weekly CFTC endpoints = 45 scheduled sources; two noncommercial XRPL nodes remain excluded by default. Earlier Run26d wording saying “43 scheduled” referred to hourly `SCHEDULED_ENDPOINTS` only; total scheduled including weekly sources is 45.
+
+## New XRP institutional and protocol research
+
+- Ripple officially announced 24/7 RWA perpetual swaps on October 15, 2026, with 100+ reference markets and Virtu named as an early institutional client. Ripple Prime is principal to the client; the reference contracts are Trade.xyz perpetuals on Hyperliquid. RLUSD collateral is jurisdiction-dependent. No XRP settlement or XRP collateral leg, notional, RLUSD collateral balance or actual capital amount is disclosed.
+- Independent xrpldashboard capture at 2026-11-11 13:48 UTC: SingleAssetVault 23/35, LendingProtocol 22/35, LendingProtocolV1_1 22/35. With 35 validators heard, strictly more than 80% requires 29 yes votes for 14 consecutive days. Zero amendments were in the activation countdown. A signed daily leaf at 02:00 UTC records 23/35, 22/35 and 22/35 respectively; leaf hash `a6441e622ab4135729b1fd30aed7d362c404e251d314cafc0818eaad0726301d`. The dashboard reports its signature verifier as VERIFIED; this run did not independently execute the verifier.
+- XLS-65 SingleAssetVault is single-asset (XRP, IOU or MPT), not a mixed-asset basket. XLS-66 LendingProtocol creates fixed-term loans from vaults; credit judgment remains off-ledger and the current design does not mandate XRP collateral. Both need activation for the native lending stack.
+- XRPLF Discussion #617 proposes a native XRP first-loss risk sleeve, but it is a pre-standard community idea (one participant, zero comments, no labels), not an official XLS or amendment. It could create XRP lockup only if adopted; it is not current demand.
+- SBI VC Trade's centralized lending asset list includes XRP, USDC and JPYSC; that is separate from native XRPL lending and no actual outstanding balances are disclosed.
+- Permission's official ASK token docs say current chains are Base and Polygon; no XRPL support is listed. A separate Askcoin listing preview shows zero supply and no active listing detail; askcoin.net is parked. Do not conflate Permission ASK and Askcoin.
+- Official Kamilah Stevenson site self-identifies Dr. Kamilah Stevenson / The Wealth Doctor and describes stock, crypto and real-estate investing education. DailyCoin links two XRP-related YouTube videos by that name, but the creator channel is not independently verified. The TEDx health talk is a verified event attribution; cross-linking it to the crypto channel remains unverified.
+- “Actual capital” remains an ambiguous phrase, not a unique XRP/SBI entity. Barrot records settled cash, in-kind XRP, accepted subscriptions, outstanding loans, posted collateral and actual purchases separately.
+
+Artifact: `research/xrp_intelligence/20261111T143827Z-run26e-ripple-prime-rwa-swaps-xrpl-lending-governance-and-exact-phrase-reconciliation.json`. All new web observations are research-only, no raw receipts or feature-store admission, no prediction.
+
+## Current integration and safety
+
+The source-adapter fixture repair, current endpoint-count corrections, updated contracts, current nine-platform map, Run26e research artifact and this handoff update are being committed on the existing #1661 branch. Exact-head full-suite, six-manifest audit and fail-closed checks must run again on the repair commit. Do not transfer any predecessor result.
+
+#1661 remains draft. #1660 remains a superseded-source candidate and is not closed. Unique PRs remain open. Main is unchanged. Main Pages deployment is still an automatic side effect and not authorized. Branch protection details remain HTTP 403; visible fallback ruleset is disabled; connector admin permission exceeds least privilege. The historical 17-branch credential-path exposure remains unremediated/independently unverified.
+
+Forecast: **NOT_ISSUED**. No synchronized XRP market panel or calibrated out-of-sample lift. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, reset, clean, stash, discard or PR closure occurred.
+
+Next: verify the repair commit with exact-head full suite, dependency audit and fail-closed gate; then add scheduled raw-only monitoring for Ripple Prime's official announcement and XRPL amendment voting, followed by scenario/counter-hypothesis generation. Keep forecast issuance disabled.
+
+---
+
 # Run 26d — SBI VC Trade lending terms, XRP lending eligibility and raw-only source ingestion
 
 Captured: 2026-11-11T14:24:14.339Z
