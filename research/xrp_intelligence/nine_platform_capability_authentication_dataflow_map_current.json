@@ -13,17 +13,17 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 1994,
+    "ahead_by": 1995,
     "behind_by": 0,
-    "changed_files": 984,
+    "changed_files": 985,
     "workflow_files": 44,
-    "other_changed_paths": 940,
-    "head_sha": "ab3763fd5b181672f989d7b9fcee7641ef572a9f",
+    "other_changed_paths": 941,
+    "head_sha": "800d4642735c61b0d3bade54d86772ffccd3c4f6",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
-    "note": "PR remains open and draft. Exact parent-head CI failed five snapshot-contract assertions; corrections are being committed on this same branch. No merge readiness claim."
+    "note": "PR remains open and draft. Exact parent-head CI failed two current-map snapshot assertions: one undefined local in the test and one missing Kamilah attribution-status phrase. Both are being corrected on this same branch. No merge readiness claim."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -334,18 +334,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "ab3763fd5b181672f989d7b9fcee7641ef572a9f",
+    "integration_head_before_current_map_commit": "800d4642735c61b0d3bade54d86772ffccd3c4f6",
     "integration_pr": 1661,
-    "integration_ahead_by": 1994,
+    "integration_ahead_by": 1995,
     "integration_behind_by": 0,
-    "changed_files": 984,
+    "changed_files": 985,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 940,
+    "non_workflow_paths_changed": 941,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2250,
+    "integration_tree_entries": 2251,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -358,8 +358,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "FAILED_5_STALE_SNAPSHOT_CONTRACT_ASSERTIONS",
-    "last_reconciled_at_utc": "2026-11-11T07:26:19Z"
+    "latest_exact_head_ci": "FAILED_2_SNAPSHOT_CONTRACT_ASSERTIONS",
+    "last_reconciled_at_utc": "2026-11-11T07:36:51Z"
   },
   "ci_evidence": {
     "integration_head_tested": "3b11e39f253ac8d07d02eb5da0c770155614f814",
@@ -390,12 +390,12 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 42978453447
+      "run_id": 42980105807
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 42978453581
+      "run_id": 42980105673
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -431,24 +431,21 @@
       "assessment": "Broader package coverage is now measured/enforced, but the floor is lower than the previous configured 70%. Treat 53% as transitional review debt and raise it with added tests."
     },
     "latest_attempt": {
-      "head_sha": "ab3763fd5b181672f989d7b9fcee7641ef572a9f",
-      "run_id": 42978453521,
-      "full_suite_job": 130382947054,
+      "head_sha": "800d4642735c61b0d3bade54d86772ffccd3c4f6",
+      "run_id": 42980105698,
+      "full_suite_job": 130388288744,
       "full_repository_suite": {
-        "passed": 3402,
-        "failed": 5,
+        "passed": 3405,
+        "failed": 2,
         "subtests": 8,
         "coverage_percent": 59.98,
         "exact_head_verified": true,
-        "duration_seconds": 59.97,
+        "duration_seconds": 94.93,
         "wheel_build_verified": false
       },
-      "failure_classification": "Stale snapshot expectations: five current-map contract assertions failed. Three used outdated integration-head references; two omitted the Kraken UTC-day-open comparison warning and the definition that actual capital is not a standardized XRP metric. The reported failure list contains no application-runtime exception.",
+      "failure_classification": "Two current-map snapshot-contract failures remain. The exact-head CI test referenced an undefined local variable after the prior dynamic-assertion correction; the Kamilah identity field lacked the required explicit statement that channel ownership and video attribution remain unverified. No application-runtime exception was reported in the failure summary.",
       "failing_tests": [
-        "test_repository_snapshot_matches_current_main_and_successor_branch",
-        "test_superseded_pr_1660_is_retained_until_successor_merge",
         "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
         "test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
       ],
       "dependency_audit": {
@@ -1023,7 +1020,7 @@
     },
     "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
     "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth's PIPE. Evernorth's SEC closing disclosure reports $272.6M gross cash, $388.911M XRP contributed in kind and 84.366M XRP purchased with $214.05M cash. The issuer's over-$1B total combines spot XRP and cash; it is not $1B cash. SBI's exact XRP allocation from its $200M is not separately itemized. Actual capital is not a standardized XRP metric; keep cash proceeds, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent equity capacity, resale registration and secondary sales separate.",
-    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor. The retrieved first-party page does not link a YouTube channel. Third-party analytics identify candidate channel ID UCqUPJMQdkCN6lsLVDnichPA, but provider snapshots disagree materially (about 143K subscribers/1.2K videos versus 103K/633). CryptoKrios also spells the creator Camila. Without first-party cross-link, no channel/video attribution.",
+    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor. The retrieved first-party page does not link a YouTube channel. Third-party analytics identify candidate channel ID UCqUPJMQdkCN6lsLVDnichPA, but provider snapshots disagree materially (about 143K subscribers/1.2K videos versus 103K/633). CryptoKrios also spells the creator Camila. Without first-party cross-link, no channel/video attribution. Channel ownership and video attribution remain unverified without first-party cross-link; no personal-channel inventory is attributed.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
       "https://glasp.co/youtube/QslbjGQD0MU"

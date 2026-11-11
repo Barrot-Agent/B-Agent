@@ -1,3 +1,75 @@
+# Barrot XRP Mission — Canonical Handoff (latest: Run 15B — 2026-11-11T07:36:51Z)
+
+## Run 15B — second exact-head CI correction
+
+### Repository state — VERIFIED
+
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Integration branch: integration/xrp-v3-unified-main-20261111.
+- Parent head inspected before this correction: 800d4642735c61b0d3bade54d86772ffccd3c4f6.
+- PR #1661 remains open and draft; GitHub reports mergeable=true, mergeable_state=unstable; 1,995 commits ahead / zero behind; 985 changed files (44 workflows, 941 other paths).
+- Complete recursive integration tree: 2,251 entries, 87 workflows, not truncated. Main tree: 1,388 entries, 86 workflows.
+- Open PR inventory remains 374 (360 drafts, 14 non-drafts).
+
+### Exact-head CI — VERIFIED FAILURE
+
+Run [42980105698](https://github.com/Barrot-Agent/B-Agent/actions/runs/42980105698), exact head 800d4642735c61b0d3bade54d86772ffccd3c4f6, full-suite job 130388288744: **3,405 passed, 2 failed, eight subtests**, 59.98% inclusive coverage, 94.93 seconds. The two failing tests are:
+
+1. test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head — NameError because the dynamic assertion referenced data before assigning it.
+2. test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates — the Kamilah identity note did not contain the explicit phrase that channel ownership and video attribution remain unverified.
+
+The reported failure summary contains no application-runtime exception. The full-suite gate remains failed; wheel build and packaged-mission verification were skipped.
+
+- [Dependency audit 42980105807](https://github.com/Barrot-Agent/B-Agent/actions/runs/42980105807): passed; six manifests, zero known vulnerabilities reported.
+- [Fail-closed gate 42980105673](https://github.com/Barrot-Agent/B-Agent/actions/runs/42980105673): passed; automatic merge disabled.
+- Core test job in 42980105698: passed.
+
+### Correction executed on the existing branch
+
+- Initialize the snapshot data object before comparing the latest CI attempt to the captured integration PR parent head.
+- Add an explicit statement that Kamilah channel ownership and video attribution remain unverified without a first-party cross-link; no personal-channel video inventory is attributed.
+- Update the point-in-time repository and exact-head CI snapshot to parent 800d4642735c61b0d3bade54d86772ffccd3c4f6, 1,995 ahead / zero behind, 985 changed files, 44 workflows, 941 other paths and 2,251 tree entries.
+- Preserve all tests and the 53% coverage gate. No test was skipped and no coverage threshold was lowered.
+
+The correction is being committed atomically to the same integration branch using a non-force, expected-parent ref update. The resulting head must complete the full suite, dependency audit and fail-closed gate before merge consideration.
+
+### Remaining blockers
+
+- PR #1661 remains draft with zero formal approvals/reviews. Branch-protection details return HTTP 403; visible fallback ruleset remains disabled.
+- 941 non-workflow paths still require complete semantic review. The 44 changed workflow files were previously individually reviewed (25 quarantined, 19 active).
+- Main still contains the stale October 29 public XRP signal and legacy XRP checkout. The integration branch uses NOT_ISSUED and disables XRP checkout. GitHub Pages publication is an automatic main-push side effect and remains unauthorized.
+- The credential path .config/gh/hosts.yml is absent from main and #1661 but remains in 17 other inspected open PR branch tips. Repository notes report OAuth revocation; provider-side revocation remains independently unverified. No credential contents were read.
+- The 53% coverage floor is transitional quality debt; inclusive coverage is 59.98%. Raise it with added tests, not exclusions.
+- No successful main-branch scheduled XRP ingestion run is verified. Independent WORM/timestamp anchoring, replayable point-in-time store, synchronized multi-venue history, macro/event ingestion, scenario generation, independent shadow outcomes and production evaluator key remain outstanding.
+
+### Prediction and platform status
+
+Forecast remains NOT_ISSUED. No directional forecast, paper trade or real-money action occurred. Public web snapshots remain model-ineligible until ingested through the receipt pipeline.
+
+ChatGPT current-session GitHub API access is verified. LunaRoute is repository-declared as the sole brain but its endpoint is not authenticated. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows remain unverified. No external-model data transfer occurred.
+
+### Backlog
+
+- #1661: blocked, sole consolidated V3/XRP integration draft.
+- #1660: superseded-source candidate; retain until #1661 is merged and verified on main.
+- #1653: unique graph work; preserve.
+- #1614, #1611, #1610, #1612, #1269: unique prediction/topology work; preserve.
+- #1640, #1642, #1643, #1317, #1318, #1320, #1644–#1650: overlapping/supersession candidates with blob differences; retain until semantic reconciliation and verified successor merge.
+- Other PRs remain unique/unreviewed or blocked; no bulk closure.
+
+### Next actions
+
+1. Verify the resulting correction commit and current PR head.
+2. Complete exact-head full-suite CI, dependency audit and fail-closed gate; inspect full logs and wheel verification.
+3. Continue semantic review of the 941 non-workflow paths and verify safe Barrot V3 operational parity.
+4. Verify provider-side OAuth revocation and arrange additive branch-tip remediation without reading secret contents or rewriting history.
+5. Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.
+6. Keep the XRP collector off main until authorized merge; then verify the first successful read-only main ingestion and receipt chain.
+7. Continue historical XRP market/flow/collateral data, independent receipt anchoring, replay, calibrated walk-forward and shadow evaluation. Keep forecasts disabled until evidence gates pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+---
 # Barrot XRP Mission — Canonical Handoff (latest: Run 15 — 2026-11-11T07:26:19Z)
 
 ## Run 15 — exact-head CI diagnosis and integration correction

@@ -127,7 +127,8 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
 
 
 def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
-    ci = load_current()["ci_evidence"]
+    data = load_current()
+    ci = data["ci_evidence"]
     assert ci["integration_head_tested"] == "3b11e39f253ac8d07d02eb5da0c770155614f814"
     suite = ci["full_repository_suite"]
     assert suite["passed"] == 3407
