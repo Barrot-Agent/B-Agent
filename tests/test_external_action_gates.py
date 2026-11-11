@@ -438,6 +438,7 @@ def test_all_groq_external_research_workflows_are_main_only_and_exact_sha_pinned
         assert "\n          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}" in content, name
         assert "\n      EXPECTED_MAIN_SHA:" not in content, name
         assert "\n          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}" in content, name
+        assert "\n    env:\n    steps:" not in content, name
 
 
 def test_research_topics_workflow_keeps_expected_sha_and_groq_secret_in_separate_step_envs() -> None:

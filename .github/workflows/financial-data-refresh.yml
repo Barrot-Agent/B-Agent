@@ -24,7 +24,6 @@ jobs:
   refresh:
     if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_external_research == 'YES' && inputs.expected_main_sha != '' }}
     runs-on: ubuntu-latest
-    env:
     steps:
       - uses: actions/checkout@v7
         with:
