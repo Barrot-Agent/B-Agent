@@ -197,3 +197,19 @@ All web-rendered observations above remain `RESEARCH_ONLY_NOT_MODEL_ELIGIBLE`: B
 8. Keep forecast issuance disabled until independent WORM anchoring, replayable features, synchronized history, calibration, drift and shadow/out-of-sample gates pass.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+
+## Run19 final exact-head verification — 2026-11-11 09:40 UTC
+
+The current code/test head `f8a178eb5f3babb77ba97c1e77989367e9b6904c` is now fully verified:
+
+- Full repository suite: **3,417 passed, zero failed, eight subtests**, 59.98% inclusive coverage, 93.60 seconds; [CI 42996613780](https://github.com/Barrot-Agent/B-Agent/actions/runs/42996613780), job 130442163542.
+- Core suite: **714 passed, eight subtests**, job 130442163374.
+- New public-tool contract test passed: `test_public_brain_tool_descriptions_match_not_issued_contract`.
+- Wheel build and installed-wheel verification passed; the installed package loaded Barrot V3, the XRP primary mission and canonical data assets.
+- All six dependency manifests passed pip-audit with zero known vulnerabilities reported; [audit 42996614124](https://github.com/Barrot-Agent/B-Agent/actions/runs/42996614124), job 130442168874.
+- Fail-closed gate passed on PR [42996613810](https://github.com/Barrot-Agent/B-Agent/actions/runs/42996613810) and push [42996607476](https://github.com/Barrot-Agent/B-Agent/actions/runs/42996607476). Automatic merge remains disabled.
+
+**PR file-count correction:** the first Run19 path listing returned 993 names. A paginated GitHub PR-files API check across ten pages returned 994 files exactly: 44 workflow files and 950 other paths. The earlier 993/949 figures were one file short and are superseded by this pagination-verified count.
+
+The handoff/evidence update that follows is documentation/data only; the exact tested code head remains `f8a178e`. PR #1661 remains draft and unmerged. The other merge blockers remain unchanged.

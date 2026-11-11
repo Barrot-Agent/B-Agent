@@ -2,7 +2,7 @@
   "artifact_type": "barrot_xrp_run_research_and_integration_audit",
   "schema_version": "1.0.0",
   "run_id": 19,
-  "captured_at_utc": "2026-11-11T09:33:39Z",
+  "captured_at_utc": "2026-11-11T09:40:12Z",
   "mission": {
     "priority": 1,
     "name": "XRP intelligence and prediction-engine mastery",
@@ -14,9 +14,9 @@
     "integration_head_before_run19_commit": "3d846d6dc4323dddc5a6cfdcfba135128fd7ec23",
     "commits_ahead": 2004,
     "commits_behind": 0,
-    "changed_files": 993,
+    "changed_files": 994,
     "changed_workflow_files": 44,
-    "other_changed_paths": 949,
+    "other_changed_paths": 950,
     "main_tree_entries": 1388,
     "integration_tree_entries": 2258,
     "main_workflows": 86,
@@ -24,26 +24,27 @@
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
-    "local_git_transport": "DNS resolution for github.com failed; authenticated GitHub API inspection succeeded; no local clone"
+    "local_git_transport": "DNS resolution for github.com failed; authenticated GitHub API inspection succeeded; no local clone",
+    "integration_head": "f8a178eb5f3babb77ba97c1e77989367e9b6904c"
   },
   "ci": {
-    "tested_head": "3d846d6dc4323dddc5a6cfdcfba135128fd7ec23",
+    "tested_head": "f8a178eb5f3babb77ba97c1e77989367e9b6904c",
     "full_suite": {
-      "passed": 3416,
+      "passed": 3417,
       "failed": 0,
       "subtests": 8,
       "coverage_percent": 59.98,
-      "duration_seconds": 83.87,
-      "run_id": 42995652643,
-      "job_id": 130438999125,
+      "duration_seconds": 93.6,
+      "run_id": 42996613780,
+      "job_id": 130442163542,
       "conclusion": "success"
     },
     "core_suite": {
       "passed": 714,
       "failed": 0,
       "subtests": 8,
-      "duration_seconds": 11.48,
-      "job_id": 130438999582,
+      "duration_seconds": 16.91,
+      "job_id": 130442163374,
       "conclusion": "success"
     },
     "wheel": {
@@ -54,15 +55,15 @@
     },
     "dependency_audit": {
       "passed": true,
-      "run_id": 42995652465,
-      "job_id": 130438996355,
+      "run_id": 42996614124,
+      "job_id": 130442168874,
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
       "passed": true,
-      "pr_run_id": 42995652514,
-      "push_run_id": 42995642681,
+      "pr_run_id": 42996613810,
+      "push_run_id": 42996607476,
       "automatic_merge_enabled": false
     },
     "prior_failure": {
@@ -77,7 +78,26 @@
       "project.license TOML table deprecated",
       "setuptools package-discovery warnings for barrot_agent.data.missions and data.research"
     ],
-    "next_commit_exact_head_ci": "pending"
+    "next_commit_exact_head_ci": "passed on f8a178eb5f3babb77ba97c1e77989367e9b6904c",
+    "pr_changed_files_pagination": {
+      "api_pages": 10,
+      "page_sizes": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        94
+      ],
+      "total": 994,
+      "workflow_files": 44,
+      "other_paths": 950
+    },
+    "ui_contract_regression_test": "tests/test_hf_space_public_safety.py::test_public_brain_tool_descriptions_match_not_issued_contract PASSED"
   },
   "ui_safety": {
     "prior_tool_description_mismatch": "get_latest_signal was described as a live ternary signal with confidence score; get_ledger_tail was described as exposing history, while implementations returned NOT_ISSUED/quarantine status.",
