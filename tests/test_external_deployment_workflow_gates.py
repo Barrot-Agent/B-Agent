@@ -4,7 +4,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEPLOYMENT_WORKFLOWS = (
     ROOT / ".github" / "workflows" / "deploy-a2a-worker.yml",
-    ROOT / ".github" / "workflows" / "sync-self-hosted-brain.yml",
 )
 
 
@@ -25,8 +24,20 @@ def test_push_triggered_external_deployments_require_manual_main_approval():
         assert "persist-credentials: false" in content
 
 
+def test_self_hosted_brain_workflow_is_quarantined_lunaroute_only():
+    content = (ROOT / ".github" / "workflows" / "sync-self-hosted-brain.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in content
+    assert "\\n  push:" not in content
+    assert "if: ${{ false &&" in content
+    assert "inputs.confirm == 'YES'" in content
+    assert "inputs.confirm_secret_rotation == 'YES'" in content
+    assert "inputs.expected_main_sha == github.sha" in content
+    assert "permissions:\\n  contents: read" in content
+    assert "persist-credentials: false" in content
+
+
 def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
-    content = DEPLOYMENT_WORKFLOWS[1].read_text(encoding="utf-8")
+    content = (ROOT / ".github" / "workflows" / "sync-self-hosted-brain.yml").read_text(encoding="utf-8")
     deploy_marker = "      - name: Deploy self_hosted_brain/"
     assert deploy_marker in content
     pre_deploy, deploy_tail = content.split(deploy_marker, 1)

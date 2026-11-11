@@ -1,8 +1,8 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T15:07:40Z",
-  "last_verified_at_utc": "2026-11-11T15:07:40Z",
+  "captured_at_utc": "2026-11-11T15:13:12Z",
+  "last_verified_at_utc": "2026-11-11T15:13:12Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
   "observed_integration_head_before_map_commit": "acf985960e1491634451daefb614eaa3c9707917",
@@ -13,24 +13,24 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2030,
+    "ahead_by": 2031,
     "behind_by": 0,
     "changed_files": 1011,
     "workflow_files": 44,
     "other_changed_paths": 967,
-    "head_sha": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+    "head_sha": "3455ddec286105d4e40cc575ecf940ae833225f8",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2030,
-    "additions": 246238,
-    "deletions": 4388,
+    "commits": 2031,
+    "additions": 246487,
+    "deletions": 4363,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Active consolidated draft. Parent head c0a893b core suite failed three legacy workflow-contract tests after a temporary stub removed the original manual exact-SHA, private-space and secret-rotation guards; full repository suite remained in progress. Dependency audit and fail-closed gate passed. Run28B restores the original guarded workflow but adds an unconditional false job condition, preserving read-only permissions and enforcing LunaRoute-only. New exact-head CI pending. Zero formal approvals; branch protection/Pages/credential blockers remain.",
+    "note": "Active consolidated integration draft. Exact tested parent head 3455ddec: core 714 passed; full suite 3,444 passed, 4 failed, eight subtests; coverage 59.99%. Four failures are bounded workflow/evidence contracts. Six-manifest dependency audit and fail-closed gate passed. No XRP adapter/runtime failure. Do not merge: zero formal approvals; branch-protection details HTTP 403; fallback ruleset disabled; connector admin=true; Pages publication unauthorized; 967 non-workflow paths still require semantic review.",
     "issue_comments": 1,
-    "updated_at_utc": "2026-11-11T15:07:40Z"
+    "updated_at_utc": "2026-11-11T15:13:12Z"
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -40,8 +40,8 @@
     "mergeable": false,
     "mergeable_state": "dirty",
     "behind_by": 3,
-    "disposition": "SUPERSEDED_SOURCE_CANDIDATE_RETAINED_UNTIL_SUCCESSOR_MERGE_AND_MAIN_VERIFICATION",
-    "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "disposition": "RETAINED_UNTIL_SUCCESSOR_MERGE; 972 paths represented in #1661, 959 identical blobs and 13 differing blobs; do not close until successor merge and main verification.",
+    "base_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
     "commits": 1963,
     "changed_files": 972,
     "ahead_by": 1963,
@@ -383,9 +383,9 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+    "integration_head_before_current_map_commit": "3455ddec286105d4e40cc575ecf940ae833225f8",
     "integration_pr": 1661,
-    "integration_ahead_by": 2030,
+    "integration_ahead_by": 2031,
     "integration_behind_by": 0,
     "changed_files": 1011,
     "workflow_files_changed": 44,
@@ -407,11 +407,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "Latest completed full-suite result remains head 36602c9: 3,444 passed, 3 failed. Current head c0a893b core suite failed 3 legacy workflow-contract tests after the disabled stub removed the original confirmation/private-space checks; full repository suite was still in progress at Run28B capture. Dependency audit and fail-closed gate passed.",
-    "last_reconciled_at_utc": "2026-11-11T15:07:40Z",
+    "latest_exact_head_ci": "EXACT_HEAD_3455DDEC_FULL_SUITE_FAILED_3444_PASSED_4_FAILED; core 714 passed; dependency audit and fail-closed gate passed; four failures are workflow/evidence-contract mismatches.",
+    "last_reconciled_at_utc": "2026-11-11T15:13:12Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2166,
+    "integration_tree_files": 2167,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -438,7 +438,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "latest_full_suite_tested_head": "3455ddec286105d4e40cc575ecf940ae833225f8",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -584,21 +584,17 @@
       "partial_branches": 1422
     },
     "dependency_audit": {
+      "run_id": 43045401660,
+      "passed": true,
       "manifests": 6,
       "known_vulnerabilities": 0,
-      "passed": true,
-      "run_id": 43041562146,
-      "job_id": 130523332180,
-      "conclusion": "success",
-      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff"
+      "conclusion": "success"
     },
     "fail_closed_gate": {
+      "run_id": 43045401754,
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 43041562362,
-      "conclusion": "success",
-      "merge_disabled": true,
-      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff"
+      "conclusion": "success"
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -637,17 +633,20 @@
       "assessment": "Broader barrot_agent package coverage is measured and enforced, but the 53% floor remains below the previous 70% target and is transitional quality debt."
     },
     "latest_attempt": {
-      "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
-      "run_id": 43041561932,
-      "full_suite_job": 130594397935,
-      "core_suite_job": 130594398463,
+      "head_sha": "3455ddec286105d4e40cc575ecf940ae833225f8",
+      "run_id": 43045401646,
+      "full_suite_job": 130607893432,
+      "core_suite_job": 130607892736,
       "conclusion": "failure",
       "full_repository_suite": {
         "passed": 3444,
-        "failed": 3,
+        "failed": 4,
         "subtests": 8,
-        "coverage_percent": 59.98,
+        "collected": 3448,
+        "coverage_percent": 59.99,
+        "duration_seconds": 60.95,
         "exact_head": true,
+        "exact_head_verified": true,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
@@ -658,22 +657,23 @@
         "conclusion": "success"
       },
       "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+        "tests/test_external_deployment_workflow_gates.py::test_push_triggered_external_deployments_require_manual_main_approval",
         "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_lunaroute_only_architecture_quarantines_secondary_brain_deployment",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
       ],
       "dependency_audit": {
-        "run_id": 43041562146,
+        "run_id": 43045401660,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43041562362,
+        "run_id": 43045401754,
         "conclusion": "success",
         "merge_disabled": true
       },
-      "failure_classification": "exact-head full-suite failed on 36602c9: 3,444 passed, 3 failed; eight subtests passed. The three failures are evidence-map contract defects: verified/captured timestamp ordering, stale exact-head CI failure classification, and 16 source-provenance records lacking a canonical source label. Core suite, six-manifest dependency audit, and fail-closed gate passed. No XRP adapter or prediction-runtime failure was observed in this run. Run28 corrects the evidence contracts and quarantines the secondary brain deployment; new exact-head CI is pending."
+      "failure_classification": "exact-head full-suite failed on 3455ddec: 3,444 passed, 4 failed; eight subtests passed. Failures are bounded workflow/evidence contracts: the active-deployment test treated the deliberately quarantined LunaRoute-only workflow as active; the current CI record lacked the exact_head_verified alias; the disabled workflow lacked an explicit inputs.expected_main_sha == github.sha guard; and the Kamilah identity text did not contain the required remain unverified wording. Core suite passed 714; six-manifest dependency audit and fail-closed gate passed. No XRP adapter or prediction-runtime test failure was observed."
     },
     "previous_attempt": {
       "head_sha": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
@@ -895,7 +895,9 @@
       "created_at": "2026-11-11T12:51:39Z"
     },
     "secondary_brain_deployment_quarantined": true,
-    "self_hosted_brain_workflow_status": "DISABLED_LUNAROUTE_ONLY"
+    "self_hosted_brain_workflow_status": "DISABLED_LUNAROUTE_ONLY",
+    "self_hosted_brain_job_if_false": true,
+    "self_hosted_brain_manual_exact_sha_guard_retained": true
   },
   "prediction_engine_status": {
     "source_definitions_total": 47,
@@ -1838,7 +1840,7 @@
     },
     "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
     "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized XRP metric; do not collapse these categories. Run28 additionally verified SBI Holdings and SBI Shinsei Bank's $50M Circle equity investment ($25M each) and SBI's 2025 statement that it held approximately 9% of Ripple; the latter is a dated issuer disclosure, not a refreshed current ownership percentage. These are equity relationships, not XRP token purchases.",
-    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson / The Wealth Doctor. The iHeart XRP Podcast episode 'Crypto Panics! with Dr. Kamilah Stevenson' has the guest verbally identify a YouTube name as 'doctor Camilla Stevenson' and warn that fake pages exist; the automated transcript spells the X/Instagram/YouTube names inconsistently (cam/Kamilla/Camilla). This corroborates the person and a self-reported channel name but does not verify an exact YouTube handle. The first-party site has no YouTube link. @drkamilahstevenson and @KamilahStevensonXrpStocks remain candidate/unverified; no personal-channel video inventory is attributed. Do not conflate other Camilla Stevenson identities.",
+    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson / The Wealth Doctor. The iHeart XRP Podcast episode 'Crypto Panics! with Dr. Kamilah Stevenson' has the guest verbally identify a YouTube name as 'doctor Camilla Stevenson' and warn that fake pages exist; the automated transcript spells the X/Instagram/YouTube names inconsistently (cam/Kamilla/Camilla). The person identity is corroborated, but the exact YouTube handle and channel ownership remain unverified. The first-party site has no YouTube link. @drkamilahstevenson and @KamilahStevensonXrpStocks remain candidates only; no personal-channel video inventory is attributed. Do not conflate other Camilla Stevenson identities.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
       "https://glasp.co/youtube/QslbjGQD0MU",
@@ -3257,22 +3259,20 @@
     "1655": "UNIQUE_UNREVIEWED_STRUCTURAL_ANALYSIS_AND_FOUNDATION_CATALOG; preserve.",
     "1659": "BLOCKED_ARCHITECTURE_CONFLICT_LUNAROUTE_ONLY; local llama.cpp phone-chat branch is retained but must not be activated as a second Barrot brain while BARROT_SYNC.md declares LunaRoute sole brain.",
     "1660": "SUPERSEDED_SOURCE_CANDIDATE_RETAINED; open draft, 1,963 ahead/3 behind; all 972 changed paths represented in #1661, 959 identical blobs and 13 different blobs. Do not close until successor merge and main verification.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; parent head c0a893b is 2,030 ahead/0 behind with 1,011 changed files (44 workflows, 967 other paths). The c0a core suite failed three legacy workflow-contract tests after the first quarantine stub removed existing manual deployment/private-space/secret-rotation checks; full suite was still in progress. Dependency audit and fail-closed gate passed. Run28B restores the original guarded workflow with an unconditional false job condition. New exact-head CI pending; zero formal approvals and Pages/branch-protection/credential blockers remain.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; exact-head full suite on 3455ddec failed four bounded workflow/evidence tests; corrective commit pending CI; zero approvals; branch-protection, least-privilege, credential and Pages blockers remain.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Verify Run28B exact-head full repository suite, core suite, wheel build/installation, six-manifest dependency audit and fail-closed gate; do not merge on predecessor evidence.",
-    "Confirm the self-hosted-brain job is always skipped while retaining exact-main-SHA, private-space and separate secret-rotation gates.",
-    "Complete semantic review of 967 non-workflow changed paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger, API boundaries and source provenance.",
-    "Obtain independent formal review and authoritative visibility into main branch protection/required checks; keep PR #1661 draft until all gates are satisfied.",
-    "Resolve GitHub connector admin-level permissions and independently verify provider-side OAuth revocation; 17 historical open PR tips were previously found to contain .config/gh/hosts.yml, whose contents were not read.",
-    "Resolve GitHub Pages publication authorization and determine whether the HF Space is linked for automatic rebuild before any merge.",
-    "Activate the scheduled public-data collector only after integration is merged and automatic artifact/cache behavior is verified; implement durable WORM/timestamp anchoring beyond 90-day artifacts.",
-    "Continue synchronized spot/depth/derivatives/ETF/capital-flow history, including USDC/RLUSD/Arc versus XRP hypotheses; retain minority objections and source disagreement.",
-    "Keep forecasts NOT_ISSUED until replayable point-in-time data, chronological walk-forward lift, calibration, drift and independent shadow outcomes pass."
+    "Verify exact-head full suite, dependency audit and fail-closed gate after the Run28C workflow/evidence corrections.",
+    "Complete semantic review of 967 non-workflow changed paths, prioritizing Barrot V3 runtime, validated publisher, XRP ingestion, feature store, forecast ledger and public interfaces.",
+    "Resolve authoritative branch-protection and approval requirements; detailed endpoint remains HTTP 403 and fallback ruleset is disabled.",
+    "Reduce connector privilege where possible; current GitHub connector permission snapshot reports admin=true, maintain=true, push=true, pull=true and triage=true.",
+    "Verify provider-side OAuth revocation and additively remediate the 17 affected open PR branch tips without reading credential-file contents or rewriting history.",
+    "Resolve GitHub Pages publication authorization before merge.",
+    "Keep XRP collector off main and forecast issuance disabled until independent WORM/timestamp anchoring, replayable history, shadow outcomes and out-of-sample lift are verified."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-11T07:58:26.504Z",
@@ -5266,17 +5266,20 @@
     "forecast_status": "NOT_ISSUED"
   },
   "ci_latest": {
-    "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
-    "run_id": 43041561932,
-    "full_suite_job": 130594397935,
-    "core_suite_job": 130594398463,
+    "head_sha": "3455ddec286105d4e40cc575ecf940ae833225f8",
+    "run_id": 43045401646,
+    "full_suite_job": 130607893432,
+    "core_suite_job": 130607892736,
     "conclusion": "failure",
     "full_repository_suite": {
       "passed": 3444,
-      "failed": 3,
+      "failed": 4,
       "subtests": 8,
-      "coverage_percent": 59.98,
+      "collected": 3448,
+      "coverage_percent": 59.99,
+      "duration_seconds": 60.95,
       "exact_head": true,
+      "exact_head_verified": true,
       "wheel_build_verified": false,
       "installed_wheel_primary_mission_verified": false
     },
@@ -5287,22 +5290,23 @@
       "conclusion": "success"
     },
     "failing_tests": [
-      "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+      "tests/test_external_deployment_workflow_gates.py::test_push_triggered_external_deployments_require_manual_main_approval",
       "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-      "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_lunaroute_only_architecture_quarantines_secondary_brain_deployment",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
     ],
     "dependency_audit": {
-      "run_id": 43041562146,
+      "run_id": 43045401660,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43041562362,
+      "run_id": 43045401754,
       "conclusion": "success",
       "merge_disabled": true
     },
-    "failure_classification": "exact-head full-suite failed on 36602c9: 3,444 passed, 3 failed; eight subtests passed. The three failures are evidence-map contract defects: verified/captured timestamp ordering, stale exact-head CI failure classification, and 16 source-provenance records lacking a canonical source label. Core suite, six-manifest dependency audit, and fail-closed gate passed. No XRP adapter or prediction-runtime failure was observed in this run. Run28 corrects the evidence contracts and quarantines the secondary brain deployment; new exact-head CI is pending."
+    "failure_classification": "exact-head full-suite failed on 3455ddec: 3,444 passed, 4 failed; eight subtests passed. Failures are bounded workflow/evidence contracts: the active-deployment test treated the deliberately quarantined LunaRoute-only workflow as active; the current CI record lacked the exact_head_verified alias; the disabled workflow lacked an explicit inputs.expected_main_sha == github.sha guard; and the Kamilah identity text did not contain the required remain unverified wording. Core suite passed 714; six-manifest dependency audit and fail-closed gate passed. No XRP adapter or prediction-runtime test failure was observed."
   },
   "run27_snapshot": {
     "artifact_type": "barrot_xrp_research_run",
@@ -6688,7 +6692,7 @@
       "no_main_write": true
     }
   },
-  "latest_run_summary": "Run28B: retained the original self-hosted-brain exact-main-SHA, private-space and separate secret-rotation safeguards while adding an unconditional false job condition to enforce LunaRoute-only architecture. The first Run28 stub broke three legacy workflow-contract tests; head c0a core suite failed 3, full suite remained in progress, while dependency audit and fail-closed gate passed. This correction restores the guarded workflow code and updates the current integration snapshot. New exact-head CI pending.",
+  "latest_run_summary": "Run28C: corrected the disabled secondary-brain workflow's exact-main-SHA guard and reclassified its deployment test as quarantined, not active. Updated current CI evidence and Kamilah identity wording. Exact-head 3455ddec full suite had 3,444 passed and 4 bounded workflow/evidence failures; corrective commit is pending exact-head CI. Forecast remains NOT_ISSUED; no merge or external action.",
   "run28_snapshot": {
     "run_id": 28,
     "captured_at_utc": "2026-11-11T14:59:22Z",
@@ -6908,5 +6912,6 @@
       ]
     },
     "forecast_status": "NOT_ISSUED"
-  }
+  },
+  "last_reconciled_at_utc": "2026-11-11T15:13:12Z"
 }
