@@ -1,18 +1,24 @@
 ## Last State
 
-**Run28B — 2026-11-11T15:07:40Z**
+**Run30 — 2026-11-11T16:30:06Z**
 
-- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`. LunaRoute remains the sole declared brain; Termux is the canonical local runtime; ChatGPT is a relay, not a LunaRoute runtime. Orbit remains removed.
-- Existing integration: PR [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`, parent head `c0a893b236af460f167ed9682fc5d578587fcbdb`, 2,030 ahead/0 behind, 1,011 changed files (44 workflows, 967 other paths), draft, zero formal approvals.
-- On parent head c0a893b, core suite: 711 passed, 3 failed, 8 subtests. Failures were caused by the temporary self-hosted-brain workflow stub removing existing exact-SHA, private-space and secret-rotation regression guards. Full repository suite remained in progress at capture; no full-suite result claimed. Dependency audit and fail-closed gate passed.
-- Run28B restores the original guarded self-hosted-brain workflow with `contents:read`, `persist-credentials:false` and an unconditional false job condition. Existing exact-SHA, private-space and separate secret-rotation checks remain. No second-brain deployment can execute.
-- XRP collector is integration-only: 47 endpoint definitions, 45 scheduled (43 hourly, 2 weekly), 2 excluded. No main-branch run. Bybit 403 restrictions fail closed; no proxy. Raw receipts/artifacts have 90-day retention and are not WORM.
-- 44 workflow diffs scanned; 26 disabled/quarantined, 18 active. High-risk manual workflows were not dispatched. Pages publication is automatic on main push and unauthorized. Branch-protection details return HTTP 403; fallback ruleset disabled; connector permission reports admin.
-- `.config/gh/hosts.yml` is absent from main/integration but was previously found in 17 other open PR tips; contents not read and revocation not independently verified.
-- Run28 research records SBI's disclosed Ripple/Circle stakes, Circle Arc and USDC on XRPL, Coinbase USDC/RLUSD/cbXRP relationships, BNY/Standard Chartered custody and collateral, Evernorth resale, SBI VC Trade lending and XRPL lending votes. Full provenance is in the Run28 artifact and mission handoff.
-- Nine-platform status: only ChatGPT/GitHub connector authentication is verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are unverified. LunaRoute is declared but not authenticated.
-- Forecast: `NOT_ISSUED`. No raw web receipts or WORM anchor created in Run28; no out-of-sample lift or shadow outcomes verified.
-- No merge, main write, deployment, secret rotation, Kaggle submission, Databricks import, HF restart, paper trade, real-money action, force-push, reset, clean, stash or discard.
+- Mission priority 1: XRP intelligence and prediction-engine mastery. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85. LunaRoute remains the repository-declared sole brain; Termux is the canonical local runtime; ChatGPT is a relay, not a LunaRoute runtime. Orbit remains removed.
+- Existing integration PR #1661, branch integration/xrp-v3-unified-main-20261111; tested code head 4e7a7e5fabd1d9cf6f974e4d84545cc01d013061, 2,035 ahead/0 behind, 1,013 changed files (44 workflows, 969 other paths), draft, zero approvals/reviews/threads. Run30 documentation commit requires its own exact-head CI.
+- Exact code head 4e7a7: full suite 3,449 passed, zero failed, eight subtests, 59.99% coverage; core 714 passed; wheel and installed Barrot V3/XRP mission verified; six-manifest dependency audit and fail-closed PR/push gates passed.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts). #1660 972 paths all represented in #1661 (949 identical, 23 different); #1643 670 (661/9); #1642 7 (0/7); #1640 280 (244/36). Differing blobs require semantic reconciliation. Preserve unique work; no PR closed.
+- All 44 changed workflow diffs rechecked: 25 disabled/quarantined, 19 active. No manual workflow dispatch. XRP ingestion is integration-only, main-guarded, read-only; 47 definitions, 45 scheduled; no main run. GitHub Actions retention is not WORM.
+- Main branch protection detail HTTP 403; visible fallback ruleset disabled; GitHub connector admin=true/maintain=true/push=true/pull=true/triage=true, overprivileged. .config/gh/hosts.yml absent from main/#1661 but present in 17 affected open-PR tips; contents not read; OAuth revocation remains provider-unverified. Pages publication on main push is automatic and unauthorized.
+- Run30 corrected Run25b's inverted SEC entity labels: Evernorth Holdings Inc. parent has about $0.1M cash/$696.1M working-capital deficit; Pathfinder Digital Assets LLC subsidiary has about $0.8M cash/$3.7M deficit. Parent debt and subsidiary facility remain distinct.
+- Fresh XRP research: OKX 1.0726 at 16:15:22 UTC; Kraken $1.07555 without event time; normalized async spread -0.385%. Fuelmaps 15:00 depth stale by 75 minutes. TradRadar 15:55 shows OI rising and short liquidations slightly larger; Liqwall 14:52 shows OI falling and long-heavy liquidations. Do not average.
+- Circle Q3: USDC average circulation $73.3B, onchain volume $13.9T, $182M ARC presale revenue included in $207M other revenue, reserve income down 8%; Binance announced $100M Circle equity and expanded USDC partnership. Coinbase average USDC held $22B. SBI's $50M Circle equity and approximately 9% Ripple ownership are separate equity positions, not XRP purchases.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings. SBI Holdings' ChatGPT Enterprise adoption and Claude collaboration are distinct from SBIC investee training. Official Permission ASK contracts are Base/Polygon only; no XRPL integration verified.
+- Nine-platform status: only ChatGPT/GitHub authenticated, but overprivileged. Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks HTTP 403; LunaRoute endpoint unverified. No external-model transfer.
+- Prediction engine: 47 source definitions, 45 scheduled; read-only collector, SHA-256 receipts/hash-chain logic, point-in-time SQLite, four baselines, chronological purge/embargo walk-forward, calibration/PSI drift, fail-closed Ed25519 evaluator contract. WORM, replayable history, synchronized historical market/collateral data, scenario generation, production key, shadow outcomes and OOS lift remain unverified. Forecast NOT_ISSUED.
+- Main Cross Analysis run 43052515532 succeeded. Main Pillars Consistency Check run 43025487840 failed on missing GitHub App env, Databricks 403 and Hugging Face BUILD_ERROR; this is platform health, not main Python CI.
+- Next: exact-head CI on Run30 commit; semantic review of 969 non-workflow paths; resolve branch-protection/approval visibility, least privilege, 17 credential-path tips and Pages authorization; preserve unique PRs; no merge until every gate passes.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
@@ -90,3 +96,6 @@
 
 
 - 2026-11-11T15:52:03.641Z — Run29b: exact-head 415e611 full suite 3,447 passed/2 stale evidence assertions failed, eight subtests, 59.99%; core 714 passed; dependency audit and fail-closed gate passed. Correcting dynamic current-head CI assertions and restoring SUPERSEDED_SOURCE/UNIQUE_UNREVIEWED backlog tokens. Refreshed TradRadar 15:15 UTC and XRPL governance/PriceOracle status; native lending remains below 29/35. Forecast NOT_ISSUED; PR #1661 remains draft/unmerged; no external action.
+
+
+- 2026-11-11T16:30:06Z — Run30: inspected current main/integration trees, full 374-PR inventory, exact #1661 head/CI, 44 workflow diffs, 17 credential-path tips, security metadata and overlapping PR trees; verified 3,449 exact-head tests and six-manifest audit; refreshed XRP spot/depth/derivatives/options/ETF/exchange balances/XRPL votes; corrected Evernorth SEC parent/subsidiary attribution; updated canonical handoff/map. No merge or external action.

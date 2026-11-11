@@ -878,3 +878,129 @@ The integration registry has 47 source definitions: 43 hourly, two weekly CFTC a
 ### Next action
 
 Verify the Run27 corrective commit's exact-head full suite, dependency audit and fail-closed gate. Then update PR #1661's description with exact evidence, continue semantic review of the 966 non-workflow paths, and resolve connector least-privilege, branch-protection, credential-remediation and Pages-publication blockers before any merge.
+
+## Run30 — exact-head CI, XRP market repricing, institutional capital and SEC entity correction
+
+Captured: 2026-11-11T16:30:06Z
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority one. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Existing integration PR: #1661, branch integration/xrp-v3-unified-main-20261111.
+- Tested code head at capture: 4e7a7e5fabd1d9cf6f974e4d84545cc01d013061, 2,035 commits ahead and zero behind main.
+- PR #1661: 1,013 changed files (44 workflow files, 969 other paths), 249,153 additions and 4,363 deletions.
+- Complete trees: main 1,388 entries/1,288 blobs; integration 2,278 entries/2,168 blobs; 86 and 87 workflows respectively.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts).
+- GitHub API inspection succeeded. Local Git clone still fails DNS resolution for github.com.
+
+### Exact-head verification
+
+The exact code head 4e7a7e5fabd1d9cf6f974e4d84545cc01d013061 passed:
+
+- Full repository suite: **3,449 passed, zero failed, eight subtests**.
+- Inclusive coverage: 59.99% against a 53% configured floor.
+- Core suite: 714 passed, zero failed, eight subtests.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Six dependency manifests audited; zero known vulnerabilities reported.
+- Fail-closed PR and push gates passed.
+
+Evidence: [Full CI 43052665205](https://github.com/Barrot-Agent/B-Agent/actions/runs/43052665205), [full-suite job 130633703409](https://github.com/Barrot-Agent/B-Agent/actions/runs/43052665205/job/130633703409), [dependency audit 43052664866](https://github.com/Barrot-Agent/B-Agent/actions/runs/43052664866), [fail-closed PR gate 43052664836](https://github.com/Barrot-Agent/B-Agent/actions/runs/43052664836), [fail-closed push gate 43052654340](https://github.com/Barrot-Agent/B-Agent/actions/runs/43052654340).
+
+The prior 415e611 attempt had 3,447 passed and two stale evidence assertions failed. Those assertions were corrected before 4e7a7. The Run30 documentation/research commit will trigger its own exact-head CI; that result is pending at commit time. Coverage remains below the earlier 70% target and is quality debt.
+
+### Workflow and security audit
+
+- All 44 changed workflow diffs were rechecked: 25 disabled/quarantined, 19 active. No added write permission was found in the changed workflow patches.
+- The XRP ingestion workflow is integration-only, main-guarded, read-only (actions:read, contents:read), no external credentials; 47 source definitions, 45 scheduled (43 hourly, two weekly), two noncommercial XRPL node sources excluded. It has not run on main.
+- GitHub Actions raw receipts/artifacts retain 90 days, per-run feature-store checkpoints seven days and daily checkpoints 90 days. This is not WORM storage.
+- No manual workflow dispatch occurred. Paper-trader, A2A deployment/secret-rotation, Databricks and Hugging Face workflows were not dispatched. The self-hosted-brain deployment job remains disabled by an unconditional false guard.
+- Main branch protection reports enabled, but detailed branch-protection access returns HTTP 403. The visible Fall Back ruleset is disabled. The GitHub connector reports admin=true, maintain=true, push=true, pull=true and triage=true: overprivileged for least privilege.
+- .config/gh/hosts.yml is absent from main and #1661 but remains present in all 17 rechecked affected open-PR branch-tip trees. No contents were read. Repository notes report OAuth revoked; provider-side revocation remains unverified.
+- Main GitHub Pages is enabled and a main push automatically publishes. Publication remains unauthorized. No main write occurred.
+- Main Cross Analysis succeeded at run 43052515532. The latest Pillars Consistency Check, run 43025487840, failed because GitHub App environment variables are missing, Databricks returned HTTP 403 and Hugging Face returned BUILD_ERROR. This is a platform-health check, not main Python CI.
+
+### Integration overlap reconciliation
+
+All source paths in these PRs are represented in #1661; no source-only paths were found:
+
+| PR | Shared paths | Identical blobs | Different blobs |
+|---|---:|---:|---:|
+| #1660 | 972 | 949 | 23 |
+| #1643 | 670 | 661 | 9 |
+| #1642 | 7 | 0 | 7 |
+| #1640 | 280 | 244 | 36 |
+
+#1660 remains a superseded-source candidate, not a PR to close before successor merge and main verification. Differing blobs require semantic reconciliation. Preserve unique/unreviewed work including #1653, #1614, #1611, #1610, #1612, #1269 and #1608. No source PR was closed.
+
+### XRP market update — November 11
+
+All observations below are public-web/API research, not Barrot raw receipts and not model-eligible.
+
+**Spot:** OKX XRP-USDT last 1.0726 (bid 1.0724/ask 1.0725), provider event time 16:15:22.244 UTC; 24h open 1.0478, high 1.0797, low 1.039, volume 44.58M XRP. Kraken XRP/USD last $1.07555 (bid $1.07554/ask $1.07555), no provider event timestamp; its open is UTC-day open 1.05511, not a rolling 24-hour open. USDT/USD was 0.99889; normalized OKX reference $1.07141, about 0.385% below Kraken. Asynchronous quotes, not executable arbitrage.
+
+**Spot depth:** Fuelmaps six-venue snapshot at 15:00 UTC had mid $1.0558; ±1% $14.4M bids/$10.6M asks; ±5% $25.2M/$13.6M; ±10% $35.0M/$16.0M. Binance and Bitget excluded. At the later 16:15 spot capture this book was about 75 minutes old and price had moved materially; resting orders can be cancelled.
+
+**Perpetuals:** TradRadar at 15:55 UTC showed price $1.0721 (+2.86%), OI $1.59B (+1.26%), funding +0.0077%/8h, $2.76M liquidations ($1.26M longs/$1.51M shorts), 79.8% long accounts. Liqwall at 14:52 UTC showed OI $1.16B (-2.4%), funding +0.0082%, $11.7M liquidations ($10.8M longs/$0.95M shorts), 75.3% Binance accounts long. Different venue/contract coverage and observation windows; do not average. The newer TradRadar snapshot shows a different liquidation mix from Liqwall.
+
+**Options:** OptimistFi/Deribit at 12:00 UTC: 30-day ATM IV 58.3%, 25-delta skew -0.6 points (puts richer), put/call 0.55, December 25 OI $47.2M. The earlier 05:00 snapshot was 59.0% IV and +0.3 skew. Preserve vintages and provider convention; near-expiry puts remain richer.
+
+**ETF flows:** Alpha Finance through November 10 (five of five funds) reports -$7.6M on Nov10, -$10.4M Nov9, -$18.0M over seven sessions, +$1.3M over 30 sessions and +$1.71B cumulative net inflows. It does not publish AUM/holdings. Cumulative flows are not current AUM or proof of exchange sales.
+
+**Exchange balances/flows:** XRP Insights at 08:00 UTC attributes 22.33B XRP to 701 wallets across 24 exchanges; same-wallet change +1.3M over seven days and -155.7M over 30 days. Newly tracked wallets distort naive total changes; cold storage is included and this is not tradable float. TrackWhale's 05:51 UTC seven-day tracked external transfers show 501.72M inflows, 602.93M outflows and -101.21M net; largest transfer 368.48M XRP is an unknown wallet, not an exchange attribution.
+
+**Evernorth on-chain:** XRP Insights at 15:58 UTC attributed 103.13M XRP to 13 wallets against 473.276M company-reported closing XRP; 370.347M moved outside the currently attributed set by October 22. This is an attribution gap, not proof of sale or loss.
+
+**XRPL governance:** own-node/roll-call tracker at 16:07 UTC, ledger 108,263,699, heard 35/35 validators, 29 yes required. SingleAssetVault 23/35, LendingProtocol 22/35 and LendingProtocolV1_1 22/35. No 14-day activation countdown; native XRPL lending remains inactive.
+
+### Material SEC entity-attribution correction
+
+A closer legal-entity review found that Run25b's parent/subsidiary labels were inverted. The SEC filing's financial-statement headings establish:
+
+- **Evernorth Holdings Inc. (Pubco parent):** about $97,745 unrestricted cash, $696.1M net working-capital deficit, $340.9M accumulated deficit, $265.6M six-month operating loss and $188.1M net loss. Operating cash used was about $1.33M; $264.1M digital-asset impairment and $77.5M non-cash fair-value gain explain why net loss is not cash burn.
+- **Pathfinder Digital Assets LLC (subsidiary):** about $789,682 unrestricted cash, $3.7M net working-capital deficit, $3.125M accumulated deficit, $2.2M operating loss and $2.138M operating cash used.
+- The $10M Ripple Company Facility with $9.7M drawn as of October 7 belongs to Pathfinder; separate $1M Evernorth Facility to the parent was undrawn as of June 30.
+- The $30M 4% PIK convertible note funded October 12 and the Cantor ELOC belong to Pubco. The note's 4x conversion cap and 8% yield-to-put are conditional terms, not currently due cash. The ELOC's 5,218,935-share capacity at 97% VWAP had generated zero proceeds as of the prospectus.
+- Reported closing XRP was 473.276M: 84.366M purchased with $214.05M advance cash and 388.911M contributed in kind. SBI's $200M disclosed cash commitment is included in the advance-funding pool, not additive.
+
+This correction is material: the parent has limited unrestricted cash and substantial working-capital deficit; the subsidiary has a much smaller deficit. Keep parent debt, subsidiary facility, cash purchase, in-kind XRP, ELOC capacity and resale registration separate. The filing warns XRP may need to be sold to meet obligations in adverse conditions.
+
+### Institutional network and capital distinctions
+
+- Circle Q3 2026: average USDC circulation $73.3B, Q3 on-chain volume $13.9T, revenue/reserve income $865M, reserve income $658M (-8% YoY), other revenue $207M including $182M ARC presale, distribution/transaction/other costs $412M, adjusted EBITDA $317M. The $182M ARC presale materially affects the EBITDA comparison. Circle reported $41.3B annualized CPN TPV, Arc public mainnet and a $100M Binance equity investment plus expanded USDC partnership.
+- Coinbase Q3: average USDC held $22B (+49% YoY), 10.7% trading market share, $719M net income versus $78M adjusted net income, $333M adjusted EBITDA. Coinbase reports it captured about 50% of USDC economics over the past year.
+- SBI's official disclosure says SBI Holdings and SBI Shinsei Bank invested $25M each in Circle ($50M total) and reports approximately 9% Ripple equity ownership as of its 2025 disclosure. These are separate equity investments, not XRP token purchases. SBI Ripple Asia is a separate joint venture; SBI's $200M Evernorth cash commitment is included in the aggregate advance-funding pool.
+- Ripple RLUSD is available on Coinbase Prime, Exchange and Retail across XRPL/Base/Ethereum; Coinbase Global Exchange collateral support was announced as future, not verified live.
+- BNY supports XRP and RLUSD custody and remains primary RLUSD reserve custodian. Standard Chartered's RLUSD custody on XRPL is live through its DIFC branch; Ripple/LMAX collateral integration remains planned.
+- PNC's limited corporate/institutional USDC pilot uses Ethereum and Coinbase APIs, with 1:1 USD deposit conversion. It is a USDC rail, not XRP settlement.
+
+### SBIC, AI and exact-phrase research
+
+- Tokyo SBIC's official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as SBIC East Japan and lists Nagoya and Osaka as sister companies. Official Nagoya and Osaka pages identify the Central and West regional companies. They are separate statutory SME investment/consultation companies, not SBI Holdings.
+- Tokyo SBIC's June 2025 investee-only training included ChatGPT, Copilot, APIs and RAG. SBI Holdings separately announced ChatGPT Enterprise adoption in May 2025 and an Anthropic/Claude AI transformation collaboration in June 2026. These are distinct corporate activities, not evidence of a regional SBIC-OpenAI partnership.
+- Official Permission docs identify Permission Coin ASK as LayerZero OFT-20 on Base and Polygon only. No XRPL contract/integration is documented by those official token docs. Other Askcoin and Ask Coin exchange listings remain separate candidates.
+- No primary-source match was established for the exact phrase “SBIC, ChatGPT SBIC” or “actual capital” as a standardized XRP metric. Keep capital categories separate.
+- Dr. Kamilah Stevenson person identity is supported by first-party evidence, but no first-party YouTube channel ownership link was verified in this pass. No public video inventory is attributed. Camilla/Kamilah are not assumed to be the same person.
+
+### Nine-platform coordination
+
+ChatGPT/GitHub API access is verified but overprivileged. Copilot has no formal PR approval. Claude, Grok, Gemini and Codex remain unverified; Hugging Face BUILD_ERROR; Kaggle untested/no submission; Databricks HTTP 403/no workspace write. LunaRoute remains repository-declared canonical brain, but endpoint authentication/data flow is unverified. No external-model transfer occurred.
+
+### Prediction-engine status and decision
+
+Implemented on integration: 47 public source definitions, 45 scheduled; read-only collector; SHA-256 receipt/hash-chain logic; point-in-time SQLite feature store; four deterministic baselines; chronological walk-forward with purge/embargo; calibration and PSI drift diagnostics; fail-closed Ed25519 evaluator-attestation contract.
+
+Still not production verified: independent WORM/timestamp anchor, replayable feature-store reconstruction, synchronized historical spot/L2/derivatives/flows/collateral, vintage-aware macro/event timeline, scenario/counter-hypothesis generator, production evaluator key, independent shadow outcomes and out-of-sample lift over all four baselines. The SQLite store is owner-mutable; GitHub Actions artifacts/cache are not WORM.
+
+**Forecast: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Backlog and next actions
+
+- #1661: blocked active integration draft; no formal approvals/reviews/threads. Exact code head passed; Run30 documentation commit CI pending.
+- #1660: superseded-source candidate; 972/972 paths represented, 949 identical and 23 different. Retain until successor merge and main verification.
+- #1643: 670 paths represented, 661 identical/9 different. #1642: 7 represented, all different. #1640: 280 represented, 244 identical/36 different. Reconcile differences before source closure.
+- Preserve unique/unreviewed graph, prediction, safety and topology work. No source PR was closed.
+- Next: complete exact-head CI on this Run30 commit; finish semantic review of 969 non-workflow paths; resolve least privilege, branch-protection/approval visibility, credential revocation/remediation and Pages authorization; then continue integration. After any authorized merge, refetch main, verify merge commit/files, run main CI and inspect automatic Pages side effects.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
