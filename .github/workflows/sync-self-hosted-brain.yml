@@ -1,21 +1,82 @@
-name: Sync Self-Hosted Brain (quarantined: LunaRoute-only architecture)
+name: Sync Self-Hosted Brain
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: Type YES to approve this Hugging Face Space deployment
+        required: true
+        type: choice
+        options: ["NO", "YES"]
+      confirm_secret_rotation:
+        description: "Set to YES only to authorize updating the Worker/Space secret during this deployment"
+        required: true
+        type: choice
+        options: ["NO", "YES"]
+      expected_main_sha:
+        description: Exact 40-character current main commit SHA
+        required: true
+        type: string
 
-# BARROT_SYNC.md declares LunaRoute as the sole Barrot brain.
-# Keep the historical self_hosted_brain/ code; do not deploy a second brain.
-# Re-enable only after an explicit architecture decision and separate authorization.
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
-  disabled:
-    if: ${{ false }}
+  deploy:
+    # Quarantined: LunaRoute is the sole declared brain; retain the original exact-SHA and secret-rotation gates as defense in depth.
+    if: ${{ false && (f: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm == 'YES' && inputs.confirm_secret_rotation == 'YES') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Explain quarantine
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Verify explicit approval and exact main revision
+        env:
+          CONFIRM: ${{ inputs.confirm }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
         run: |
-          echo "This workflow is intentionally disabled."
-          echo "LunaRoute is the sole declared Barrot brain."
-          echo "No second-brain deployment, secret access, or secret rotation is permitted here."
-          echo "Historical self_hosted_brain/ code is retained without deployment."
+          set -euo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::Dispatch from main is required"; exit 1; }
+          [[ "$CONFIRM" == "YES" ]] || { echo "::error::Explicit YES confirmation required"; exit 1; }
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::A full main SHA is required"; exit 1; }
+          git fetch --no-tags origin main
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::Checked-out SHA differs from approval"; exit 1; }
+          [[ "$(git rev-parse origin/main)" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main advanced after approval"; exit 1; }
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install huggingface_hub
+      - name: Deploy self_hosted_brain/ to its own Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}
+        run: |
+          python3 - << 'SCRIPT'
+          from huggingface_hub import HfApi
+          import os
+          secret = os.environ.get("BRAIN_SHARED_SECRET", "")
+          token = os.environ.get("HF_TOKEN", "")
+          if not secret.strip():
+              raise SystemExit("ABORT: BRAIN_SHARED_SECRET is required before deployment")
+          if not token.strip():
+              raise SystemExit("ABORT: HF_TOKEN is required before deployment")
+          api = HfApi(token=token)
+          repo_id = "Scribedpengenius/Barrot-Brain-SelfHosted"
+          try:
+              api.create_repo(repo_id, repo_type="space", space_sdk="docker", private=True, exist_ok=True)
+          except Exception as e:
+              print("create_repo note:", e)
+          space_info = api.repo_info(repo_id, repo_type="space")
+          if not bool(getattr(space_info, "private", False)):
+              raise SystemExit("ABORT: destination Space must be private; refusing to upload self-hosted brain code")
+          # Register the runtime secret before uploading code that may boot immediately.
+          api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
+          api.upload_folder(
+              folder_path="self_hosted_brain",
+              repo_id=repo_id,
+              repo_type="space",
+              commit_message="Deploy self-hosted brain",
+          )
+          print("shared secret registered before deployment")
+          print("DEPLOYED")
+          SCRIPT

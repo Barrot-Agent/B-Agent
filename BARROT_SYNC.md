@@ -1,15 +1,15 @@
 ## Last State
 
-**Run28 — 2026-11-11T14:59:22Z**
+**Run28B — 2026-11-11T15:07:40Z**
 
 - Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`. LunaRoute remains the sole declared brain; Termux is the canonical local runtime; ChatGPT is a relay, not a LunaRoute runtime. Orbit remains removed.
-- Existing integration: PR [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`, parent head `36602c9bc7c9e97d8319ec84d13d8971d208f4ff`, 2,029 ahead/0 behind, 1,010 changed files (44 workflows, 966 other paths), draft, zero formal approvals.
-- Exact parent-head CI: 3,444 passed, 3 failed, 8 subtests; core 714 passed; six-manifest dependency audit and fail-closed gate passed. Run28 corrects three evidence-map contracts; exact CI on the new commit is pending.
-- `sync-self-hosted-brain.yml` is quarantined with no token permissions and an always-false job. Historical code remains; no second brain is deployed.
+- Existing integration: PR [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`, parent head `c0a893b236af460f167ed9682fc5d578587fcbdb`, 2,030 ahead/0 behind, 1,011 changed files (44 workflows, 967 other paths), draft, zero formal approvals.
+- On parent head c0a893b, core suite: 711 passed, 3 failed, 8 subtests. Failures were caused by the temporary self-hosted-brain workflow stub removing existing exact-SHA, private-space and secret-rotation regression guards. Full repository suite remained in progress at capture; no full-suite result claimed. Dependency audit and fail-closed gate passed.
+- Run28B restores the original guarded self-hosted-brain workflow with `contents:read`, `persist-credentials:false` and an unconditional false job condition. Existing exact-SHA, private-space and separate secret-rotation checks remain. No second-brain deployment can execute.
 - XRP collector is integration-only: 47 endpoint definitions, 45 scheduled (43 hourly, 2 weekly), 2 excluded. No main-branch run. Bybit 403 restrictions fail closed; no proxy. Raw receipts/artifacts have 90-day retention and are not WORM.
 - 44 workflow diffs scanned; 26 disabled/quarantined, 18 active. High-risk manual workflows were not dispatched. Pages publication is automatic on main push and unauthorized. Branch-protection details return HTTP 403; fallback ruleset disabled; connector permission reports admin.
 - `.config/gh/hosts.yml` is absent from main/integration but was previously found in 17 other open PR tips; contents not read and revocation not independently verified.
-- Run28 research adds SBI's disclosed Ripple/Circle stakes, Circle Arc and USDC on XRPL, Coinbase USDC/RLUSD/cbXRP relationships, BNY/Standard Chartered custody and collateral, Evernorth resale, SBI VC Trade lending and XRPL lending votes. Full source provenance is in the Run28 artifact and mission handoff.
+- Run28 research records SBI's disclosed Ripple/Circle stakes, Circle Arc and USDC on XRPL, Coinbase USDC/RLUSD/cbXRP relationships, BNY/Standard Chartered custody and collateral, Evernorth resale, SBI VC Trade lending and XRPL lending votes. Full provenance is in the Run28 artifact and mission handoff.
 - Nine-platform status: only ChatGPT/GitHub connector authentication is verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are unverified. LunaRoute is declared but not authenticated.
 - Forecast: `NOT_ISSUED`. No raw web receipts or WORM anchor created in Run28; no out-of-sample lift or shadow outcomes verified.
 - No merge, main write, deployment, secret rotation, Kaggle submission, Databricks import, HF restart, paper trade, real-money action, force-push, reset, clean, stash or discard.
@@ -82,3 +82,5 @@
 - 2026-11-11T14:45:15.265Z — Run27: rechecked main/integration trees, PR #1661, 374 open PRs, dependencies, security gates and current exact-head CI. Run26e repair on ad9a408 reduced prior 11 failures to four: current-map CI/head and count assertions, adapter/parser version assertions, and one Run124 count assertion; core 714 passed, dependency audit and fail-closed gate passed. Prepared fixes on the same branch. Refreshed 14:00 UTC six-venue XRP spot depth, 14:34 UTC dashboard reference price, 08:00 UTC exchange-wallet balances, Nov10 ETF vintages, derivatives/options, Evernorth 73.7M-share resale registration, SBI VC Trade 29-asset lending and 50%/100% margin haircuts, cbXRP reserves, Ripple Prime RWA swaps, BNY custody and live XRPL lending amendment votes. All observations remain outside Barrot raw receipts/features. Forecast NOT_ISSUED; no merge or external action.
 
 - 2026-11-11T14:59:22Z — Run28: reconciled current main and #1661; added primary-source SBI/Circle/Ripple/Coinbase/BNY/Standard Chartered research; normalized provenance; corrected exact-head evidence; quarantined secondary self-hosted-brain deployment to preserve LunaRoute-only architecture. New exact-head CI pending.
+
+- 2026-11-11T15:07:40Z — Run28B: restored self-hosted-brain workflow safeguards and added unconditional false job guard; exact-head CI pending.

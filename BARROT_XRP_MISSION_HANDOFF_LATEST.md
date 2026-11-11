@@ -1,3 +1,37 @@
+# Run28B — preserve workflow safeguards while enforcing LunaRoute-only
+
+Captured: 2026-11-11T15:07:40Z
+
+## Current repository state
+
+Main remains `84f28ee7755607236231545a14f3d093c1baaa85`. The existing integration PR is [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661), branch `integration/xrp-v3-unified-main-20261111`, parent head `c0a893b236af460f167ed9682fc5d578587fcbdb`, 2,030 commits ahead/0 behind, 1,011 changed files (44 workflow files and 967 other paths). It remains draft, with zero formal approvals. Open PR inventory remains 374 (360 drafts, 14 non-drafts). No new PR was created and main was not modified.
+
+## Why the first Run28 workflow quarantine needed correction
+
+The initial disabled stub caused three core-suite regression failures because existing tests deliberately require the self-hosted-brain workflow to retain its exact-main-SHA guard, private-space validation, and separate deployment/secret-rotation confirmations. The core suite on head `c0a893b236af460f167ed9682fc5d578587fcbdb` had 711 passed, 3 failed, 8 subtests. The full repository suite job was still running at capture; no full-suite result is claimed. Dependency audit [43044543234](https://github.com/Barrot-Agent/B-Agent/actions/runs/43044543234) passed, and fail-closed gate [43044543362](https://github.com/Barrot-Agent/B-Agent/actions/runs/43044543362) passed.
+
+Run28B restores the original guarded workflow and preserves `permissions: contents: read` and `persist-credentials: false`. It adds a job-level unconditional false condition before the existing manual exact-SHA and secret-rotation conditions. Thus the secondary brain cannot deploy, while its historical safety checks remain regression-tested. The `self_hosted_brain/` code is retained. No secret is read or rotated and no deployment is performed.
+
+## Verification state
+
+- Latest completed full-suite evidence remains on predecessor head `36602c9`: 3,444 passed, 3 failed, 8 subtests; the failures were map timestamp, exact-head failure-classification and provenance-label contracts.
+- Head `c0a893b`: core suite 711 passed, 3 failed, 8 subtests due the temporary stub; full suite was still in progress at capture.
+- Dependency audit and fail-closed gate on `c0a893b`: passed.
+- Run28B commit: new exact-head core/full-suite/wheel/dependency/gate evidence pending.
+
+## Research state
+
+Run28 institutional evidence remains as recorded in `research/xrp_intelligence/20261111T145922Z-run28-institutional-capital-stablecoin-custody-and-collateral-reconciliation.json`. Key conclusion: SBI has disclosed equity/JV exposure to both Ripple and Circle; Circle's Arc uses USDC gas and names SBI as founding validator; native USDC and RLUSD coexist on XRPL; Coinbase distributes USDC and RLUSD and issues cbXRP; BNY is a common custody node; Ripple Prime/Standard Chartered collateral examples use RLUSD, not XRP; SBI VC Trade's lending list is product availability, not collateral balances; XRPL native lending is not active. These relationships do not establish incremental XRP spot demand. Forecast remains NOT_ISSUED.
+
+The public-data collector remains integration-only and unexecuted on main. Raw receipts have 90-day artifact retention and no WORM anchor. Bybit live execution remains unverified; U.S./Mainland China 403 restrictions fail closed. Nine-platform coordination remains design-only except ChatGPT/GitHub connector authentication; LunaRoute is declared but not authenticated.
+
+## Merge blockers and next action
+
+PR #1661 remains draft and blocked: zero formal approvals; branch-protection details HTTP 403; visible fallback ruleset disabled; GitHub connector admin-level; `.config/gh/hosts.yml` absent from main/integration but previously found in 17 historical PR tips (contents not read, revocation not independently verified); GitHub Pages automatically publishes on main push and publication is unauthorized; HF Space automatic rebuild relationship is unknown; 967 non-workflow paths require semantic review.
+
+Next action: verify Run28B exact-head core/full repository suite, wheel build/installation, dependency audit and fail-closed gate. No merge, main write, deployment, secret rotation, Kaggle submission, Databricks import, HF restart, paper trade, real-money action, force-push, reset, clean, stash or discard occurred.
+
+
 # Run28 — XRP institutional network, capital taxonomy, current CI and LunaRoute-only safety
 
 Captured: 2026-11-11T14:59:22Z

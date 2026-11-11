@@ -182,10 +182,13 @@ def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
 def test_lunaroute_only_architecture_quarantines_secondary_brain_deployment():
     workflow = ROOT / ".github/workflows/sync-self-hosted-brain.yml"
     content = workflow.read_text(encoding="utf-8")
-    assert "permissions: {}" in content
-    assert "if: ${{ false }}" in content
-    for forbidden in ("HF_TOKEN", "upload_folder", "api.create_repo", "huggingface-cli"):
-        assert forbidden not in content
+    assert "if: ${{ false &&" in content
+    permissions = content.split("permissions:", 1)[1].split("jobs:", 1)[0]
+    assert "contents: read" in permissions
+    assert "write" not in permissions
+    assert "inputs.confirm == 'YES'" in content
+    assert "inputs.confirm_secret_rotation == 'YES'" in content
+    assert "inputs.expected_main_sha == github.sha" in content
     audit = load_current()["workflow_safety_audit"]
     assert audit["secondary_brain_deployment_quarantined"] is True
     assert audit["self_hosted_brain_workflow_status"] == "DISABLED_LUNAROUTE_ONLY"

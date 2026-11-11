@@ -1,8 +1,8 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T14:59:22Z",
-  "last_verified_at_utc": "2026-11-11T14:59:22Z",
+  "captured_at_utc": "2026-11-11T15:07:40Z",
+  "last_verified_at_utc": "2026-11-11T15:07:40Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
   "observed_integration_head_before_map_commit": "acf985960e1491634451daefb614eaa3c9707917",
@@ -13,24 +13,24 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2029,
+    "ahead_by": 2030,
     "behind_by": 0,
-    "changed_files": 1010,
+    "changed_files": 1011,
     "workflow_files": 44,
-    "other_changed_paths": 966,
-    "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "other_changed_paths": 967,
+    "head_sha": "c0a893b236af460f167ed9682fc5d578587fcbdb",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2029,
-    "additions": 245099,
-    "deletions": 4363,
+    "commits": 2030,
+    "additions": 246238,
+    "deletions": 4388,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Active consolidated integration draft. Exact tested head 36602c9: core 714 passed; full repository suite 3,444 passed, 3 failed, eight subtests; coverage 59.98%. The three failures are evidence-contract defects: current-map timestamp ordering, stale exact-head failure classification, and 16 source records missing the canonical source label. Six-manifest dependency audit and fail-closed gate passed. Run28 fixes these contracts and disables the secondary self-hosted-brain deployment workflow to enforce the repository's LunaRoute-only brain declaration. New exact-head CI is pending. Do not merge: zero formal approvals; branch-protection details HTTP 403; fallback ruleset disabled; connector admin=true; Pages publication unauthorized; 966 non-workflow paths still require semantic review.",
+    "note": "Active consolidated draft. Parent head c0a893b core suite failed three legacy workflow-contract tests after a temporary stub removed the original manual exact-SHA, private-space and secret-rotation guards; full repository suite remained in progress. Dependency audit and fail-closed gate passed. Run28B restores the original guarded workflow but adds an unconditional false job condition, preserving read-only permissions and enforcing LunaRoute-only. New exact-head CI pending. Zero formal approvals; branch protection/Pages/credential blockers remain.",
     "issue_comments": 1,
-    "updated_at_utc": "2026-11-11T14:59:22Z"
+    "updated_at_utc": "2026-11-11T15:07:40Z"
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -383,18 +383,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "ad9a408bdfdd19c5b0b71fed4a2e5a36db6edcf5",
+    "integration_head_before_current_map_commit": "c0a893b236af460f167ed9682fc5d578587fcbdb",
     "integration_pr": 1661,
-    "integration_ahead_by": 2029,
+    "integration_ahead_by": 2030,
     "integration_behind_by": 0,
-    "changed_files": 1010,
+    "changed_files": 1011,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 966,
+    "non_workflow_paths_changed": 967,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2275,
+    "integration_tree_entries": 2276,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -407,11 +407,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "EXACT_HEAD_36602C9_FULL_SUITE_FAILED_3444_PASSED_3_FAILED; core 714 passed; dependency audit and fail-closed gate passed; three failures are evidence-map timestamp, failure-classification and provenance-label contracts",
-    "last_reconciled_at_utc": "2026-11-11T14:59:22Z",
+    "latest_exact_head_ci": "Latest completed full-suite result remains head 36602c9: 3,444 passed, 3 failed. Current head c0a893b core suite failed 3 legacy workflow-contract tests after the disabled stub removed the original confirmation/private-space checks; full repository suite was still in progress at Run28B capture. Dependency audit and fail-closed gate passed.",
+    "last_reconciled_at_utc": "2026-11-11T15:07:40Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2165,
+    "integration_tree_files": 2166,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -498,7 +498,65 @@
     "run28_expected_changed_files_after_commit": 1011,
     "run28_expected_non_workflow_paths_after_commit": 967,
     "run28_expected_integration_tree_entries_after_commit": 2276,
-    "run28_expected_ahead_by_after_commit": 2030
+    "run28_expected_ahead_by_after_commit": 2030,
+    "integration_head_before_run28b_commit": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+    "current_ci_attempt_head": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+    "current_ci_attempt_run": 43044543375,
+    "current_ci_attempt_status": "completed",
+    "current_ci_attempt_conclusion": "failure",
+    "current_ci_core_suite": {
+      "passed": 711,
+      "failed": 3,
+      "subtests": 8,
+      "conclusion": "failure"
+    },
+    "current_ci_full_suite": {
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "current_ci_dependency_audit": {
+      "run_id": 43044543234,
+      "conclusion": "success"
+    },
+    "current_ci_fail_closed_gate": {
+      "run_id": 43044543362,
+      "conclusion": "success"
+    },
+    "run28b_expected_ahead_by_after_commit": 2031,
+    "run28b_expected_changed_files_after_commit": 1011,
+    "run28b_expected_non_workflow_paths_after_commit": 967,
+    "run28b_expected_integration_tree_entries_after_commit": 2276,
+    "current_ci_attempt": {
+      "head_sha": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+      "run_id": 43044543375,
+      "status": "completed",
+      "conclusion": "failure",
+      "core_suite": {
+        "passed": 711,
+        "failed": 3,
+        "subtests": 8,
+        "conclusion": "failure",
+        "job_id": 130604892963
+      },
+      "full_repository_suite": {
+        "status": "in_progress",
+        "conclusion": null,
+        "job_id": 130604893600
+      },
+      "dependency_audit": {
+        "run_id": 43044543234,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 43044543362,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        "2026-11-11T15:04:15.3274324Z FAILED tests/test_external_deploys_require_confirmation.py::test_space_and_worker_secret_mutations_require_separate_explicit_approval - AssertionError: .github/workflows/sync-self-hosted-brain.yml",
+        "2026-11-11T15:04:15.3283258Z FAILED tests/test_external_action_gates.py::test_self_hosted_brain_fails_closed_without_secret_and_private_space - assert 'if not secret.strip()' in 'name: Sync Self-Hosted Brain (quarantined: LunaRoute-only architecture)\\n\\non:\\n  workflow_dispatch:\\n\\n# BARROT_SYNC.md declares LunaRoute as the sole Barrot brain.\\n# Keep the historical self_hosted_brain/ code; do not deploy a second brain.\\n# Re-enable only after an explicit architecture decision and separate authorization.\\npermissions: {}\\n\\njobs:\\n  disabled:\\n    if: ${{ false }}\\n    runs-on: ubuntu-latest\\n    steps:\\n      - name: Explain quarantine\\n        run: |\\n          echo \"This workflow is intentionally disabled.\"\\n          echo \"LunaRoute is the sole declared Barrot brain.\"\\n          echo \"No second-brain deployment, secret access, or secret rotation is permitted here.\"\\n          echo \"Historical self_hosted_brain/ code is retained without deployment.\"\\n'",
+        "2026-11-11T15:04:15.3286922Z FAILED tests/test_external_action_gates.py::test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation - AssertionError: sync-self-hosted-brain.yml"
+      ]
+    }
   },
   "ci_evidence": {
     "integration_head_tested": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
@@ -726,13 +784,44 @@
       "fail_closed_pr_conclusion": "success",
       "fail_closed_push_run_id": 43027341654,
       "fail_closed_push_conclusion": "success"
+    },
+    "current_attempt": {
+      "head_sha": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+      "run_id": 43044543375,
+      "status": "completed",
+      "conclusion": "failure",
+      "core_suite": {
+        "passed": 711,
+        "failed": 3,
+        "subtests": 8,
+        "conclusion": "failure",
+        "job_id": 130604892963
+      },
+      "full_repository_suite": {
+        "status": "in_progress",
+        "conclusion": null,
+        "job_id": 130604893600
+      },
+      "dependency_audit": {
+        "run_id": 43044543234,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 43044543362,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        "2026-11-11T15:04:15.3274324Z FAILED tests/test_external_deploys_require_confirmation.py::test_space_and_worker_secret_mutations_require_separate_explicit_approval - AssertionError: .github/workflows/sync-self-hosted-brain.yml",
+        "2026-11-11T15:04:15.3283258Z FAILED tests/test_external_action_gates.py::test_self_hosted_brain_fails_closed_without_secret_and_private_space - assert 'if not secret.strip()' in 'name: Sync Self-Hosted Brain (quarantined: LunaRoute-only architecture)\\n\\non:\\n  workflow_dispatch:\\n\\n# BARROT_SYNC.md declares LunaRoute as the sole Barrot brain.\\n# Keep the historical self_hosted_brain/ code; do not deploy a second brain.\\n# Re-enable only after an explicit architecture decision and separate authorization.\\npermissions: {}\\n\\njobs:\\n  disabled:\\n    if: ${{ false }}\\n    runs-on: ubuntu-latest\\n    steps:\\n      - name: Explain quarantine\\n        run: |\\n          echo \"This workflow is intentionally disabled.\"\\n          echo \"LunaRoute is the sole declared Barrot brain.\"\\n          echo \"No second-brain deployment, secret access, or secret rotation is permitted here.\"\\n          echo \"Historical self_hosted_brain/ code is retained without deployment.\"\\n'",
+        "2026-11-11T15:04:15.3286922Z FAILED tests/test_external_action_gates.py::test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation - AssertionError: sync-self-hosted-brain.yml"
+      ]
     }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 44,
     "quarantined_or_disabled": 26,
     "active_changed_workflows": 18,
-    "review_status": "All 44 changed workflow diffs were scanned; eight high-risk workflows were read in full. The secondary self-hosted-brain deployment is now quarantined because BARROT_SYNC.md declares LunaRoute as the sole Barrot brain. The XRP collector remains read-only and unexecuted on main. 967 non-workflow changed paths remain for semantic review.",
+    "review_status": "All 44 changed workflow diffs scanned; eight high-risk workflows read in full. The self-hosted-brain deployment retains its exact-main-SHA, private-space and separate secret-rotation safeguards but the deploy job is unconditionally disabled and the token remains contents:read only. LunaRoute remains the sole declared brain. 967 non-workflow paths remain for semantic review.",
     "xrp_public_ingestion_workflow_on_main": false,
     "xrp_public_ingestion_workflow_on_integration": true,
     "scheduled_ingestion_main_run_verified": false,
@@ -3168,19 +3257,20 @@
     "1655": "UNIQUE_UNREVIEWED_STRUCTURAL_ANALYSIS_AND_FOUNDATION_CATALOG; preserve.",
     "1659": "BLOCKED_ARCHITECTURE_CONFLICT_LUNAROUTE_ONLY; local llama.cpp phone-chat branch is retained but must not be activated as a second Barrot brain while BARROT_SYNC.md declares LunaRoute sole brain.",
     "1660": "SUPERSEDED_SOURCE_CANDIDATE_RETAINED; open draft, 1,963 ahead/3 behind; all 972 changed paths represented in #1661, 959 identical blobs and 13 different blobs. Do not close until successor merge and main verification.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current parent head 36602c9 is 2,029 ahead/0 behind with 1,010 changed files (44 workflows, 966 other paths). Exact-head full suite: 3,444 passed, three evidence-contract failures; core 714 passed; six-manifest dependency audit and fail-closed gate passed. Run28 repairs evidence contracts and quarantines secondary-brain deployment; new exact-head CI pending. Zero formal approvals; branch protection/Pages/credential blockers remain.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; parent head c0a893b is 2,030 ahead/0 behind with 1,011 changed files (44 workflows, 967 other paths). The c0a core suite failed three legacy workflow-contract tests after the first quarantine stub removed existing manual deployment/private-space/secret-rotation checks; full suite was still in progress. Dependency audit and fail-closed gate passed. Run28B restores the original guarded workflow with an unconditional false job condition. New exact-head CI pending; zero formal approvals and Pages/branch-protection/credential blockers remain.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
     "confirmed_duplicate_closures": "NONE; no source PR closed in Run23."
   },
   "next_actions": [
-    "Verify the Run28 commit's exact-head full repository suite, wheel build/installation, six-manifest dependency audit and fail-closed gate; do not merge on predecessor evidence.",
-    "Complete semantic review of the 967 non-workflow changed paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger, API boundaries and source provenance.",
+    "Verify Run28B exact-head full repository suite, core suite, wheel build/installation, six-manifest dependency audit and fail-closed gate; do not merge on predecessor evidence.",
+    "Confirm the self-hosted-brain job is always skipped while retaining exact-main-SHA, private-space and separate secret-rotation gates.",
+    "Complete semantic review of 967 non-workflow changed paths, prioritizing V3 runtime, XRP collector, point-in-time feature store, forecast ledger, API boundaries and source provenance.",
     "Obtain independent formal review and authoritative visibility into main branch protection/required checks; keep PR #1661 draft until all gates are satisfied.",
     "Resolve GitHub connector admin-level permissions and independently verify provider-side OAuth revocation; 17 historical open PR tips were previously found to contain .config/gh/hosts.yml, whose contents were not read.",
     "Resolve GitHub Pages publication authorization and determine whether the HF Space is linked for automatic rebuild before any merge.",
-    "Activate the scheduled public-data collector only after the integration is merged and the automatic artifact/cache behavior is verified; implement durable WORM/timestamp anchoring beyond 90-day artifacts.",
+    "Activate the scheduled public-data collector only after integration is merged and automatic artifact/cache behavior is verified; implement durable WORM/timestamp anchoring beyond 90-day artifacts.",
     "Continue synchronized spot/depth/derivatives/ETF/capital-flow history, including USDC/RLUSD/Arc versus XRP hypotheses; retain minority objections and source disagreement.",
     "Keep forecasts NOT_ISSUED until replayable point-in-time data, chronological walk-forward lift, calibration, drift and independent shadow outcomes pass."
   ],
@@ -3795,7 +3885,7 @@
     }
   },
   "latest_run_id": 28,
-  "latest_run_captured_at_utc": "2026-11-11T14:59:22Z",
+  "latest_run_captured_at_utc": "2026-11-11T15:07:40Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -6598,7 +6688,7 @@
       "no_main_write": true
     }
   },
-  "latest_run_summary": "Run28: reconciled SBI Holdings' disclosed Ripple and Circle equity relationships; Circle's USDC/Arc network and Coinbase economics; native USDC on XRPL; Coinbase cbXRP reserve/supply; Ripple-Coinbase RLUSD distribution; Ripple Prime RLUSD-collateralized RWA swaps; BNY custody convergence; Standard Chartered/LMAX planned RLUSD collateral; Evernorth resale proceeds; SBI VC Trade's 29-asset lending page; live XRPL lending-amendment votes; and Kamilah Stevenson identity/channel ambiguity. Updated exact-head CI evidence, normalized source provenance, and quarantined the secondary self-hosted-brain deployment workflow. Research remains ineligible for prediction; forecast NOT_ISSUED.",
+  "latest_run_summary": "Run28B: retained the original self-hosted-brain exact-main-SHA, private-space and separate secret-rotation safeguards while adding an unconditional false job condition to enforce LunaRoute-only architecture. The first Run28 stub broke three legacy workflow-contract tests; head c0a core suite failed 3, full suite remained in progress, while dependency audit and fail-closed gate passed. This correction restores the guarded workflow code and updates the current integration snapshot. New exact-head CI pending.",
   "run28_snapshot": {
     "run_id": 28,
     "captured_at_utc": "2026-11-11T14:59:22Z",
@@ -6734,5 +6824,89 @@
     "sbi_vc_trade": "Rendered lending page lists 29 assets including XRP/USDC/JPYSC; RLUSD absent; search snippet 32 conflicts; no actual loan/collateral balances disclosed.",
     "xrpl_governance": "35 validators; needs 29; SingleAssetVault 23, LendingProtocol 22, LendingProtocolV1_1 22; no countdown; native lending inactive.",
     "identity": "Kamilah person corroborated by first-party site and iHeart interview; channel handle remains unverified; no personal YouTube videos attributed. ASK Coin/actual capital/SBIC ChatGPT exact phrases remain unresolved as defined."
+  },
+  "run28b_snapshot": {
+    "captured_at_utc": "2026-11-11T15:07:40Z",
+    "repository_state": {
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "integration_branch": "integration/xrp-v3-unified-main-20261111",
+      "integration_head_before_run28b_commit": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+      "integration_ahead_by": 2030,
+      "integration_behind_by": 0,
+      "changed_files": 1011,
+      "workflow_files_changed": 44,
+      "non_workflow_paths_changed": 967,
+      "open_prs": 374,
+      "drafts": 360,
+      "non_drafts": 14,
+      "main_tree_entries": 1388,
+      "integration_tree_entries": 2276,
+      "main_tree_files": 1288,
+      "integration_tree_files": 2166,
+      "main_workflow_files": 86,
+      "integration_workflow_files": 87,
+      "latest_full_suite_tested_head": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+      "current_ci_attempt_head": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+      "current_ci_attempt_run": 43044543375,
+      "current_ci_attempt_status": "completed",
+      "current_ci_attempt_conclusion": "failure",
+      "current_ci_core_suite": {
+        "passed": 711,
+        "failed": 3,
+        "subtests": 8,
+        "conclusion": "failure"
+      },
+      "current_ci_full_suite": {
+        "status": "in_progress",
+        "conclusion": null
+      },
+      "current_ci_dependency_audit": {
+        "run_id": 43044543234,
+        "conclusion": "success"
+      },
+      "current_ci_fail_closed_gate": {
+        "run_id": 43044543362,
+        "conclusion": "success"
+      },
+      "latest_exact_head_ci": "Latest completed full-suite result remains head 36602c9: 3,444 passed, 3 failed. Current head c0a893b core suite failed 3 legacy workflow-contract tests after the disabled stub removed the original confirmation/private-space checks; full repository suite was still in progress at Run28B capture. Dependency audit and fail-closed gate passed.",
+      "last_reconciled_at_utc": "2026-11-11T15:07:40Z",
+      "run28b_expected_ahead_by_after_commit": 2031,
+      "run28b_expected_changed_files_after_commit": 1011,
+      "run28b_expected_non_workflow_paths_after_commit": 967,
+      "run28b_expected_integration_tree_entries_after_commit": 2276
+    },
+    "workflow_fix": "Original self-hosted-brain workflow restored with contents:read, persist-credentials:false, exact-main-SHA, private-space and separate secret-rotation checks retained; job-level if expression begins false && so deployment cannot execute.",
+    "current_ci_attempt": {
+      "head_sha": "c0a893b236af460f167ed9682fc5d578587fcbdb",
+      "run_id": 43044543375,
+      "status": "completed",
+      "conclusion": "failure",
+      "core_suite": {
+        "passed": 711,
+        "failed": 3,
+        "subtests": 8,
+        "conclusion": "failure",
+        "job_id": 130604892963
+      },
+      "full_repository_suite": {
+        "status": "in_progress",
+        "conclusion": null,
+        "job_id": 130604893600
+      },
+      "dependency_audit": {
+        "run_id": 43044543234,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 43044543362,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        "2026-11-11T15:04:15.3274324Z FAILED tests/test_external_deploys_require_confirmation.py::test_space_and_worker_secret_mutations_require_separate_explicit_approval - AssertionError: .github/workflows/sync-self-hosted-brain.yml",
+        "2026-11-11T15:04:15.3283258Z FAILED tests/test_external_action_gates.py::test_self_hosted_brain_fails_closed_without_secret_and_private_space - assert 'if not secret.strip()' in 'name: Sync Self-Hosted Brain (quarantined: LunaRoute-only architecture)\\n\\non:\\n  workflow_dispatch:\\n\\n# BARROT_SYNC.md declares LunaRoute as the sole Barrot brain.\\n# Keep the historical self_hosted_brain/ code; do not deploy a second brain.\\n# Re-enable only after an explicit architecture decision and separate authorization.\\npermissions: {}\\n\\njobs:\\n  disabled:\\n    if: ${{ false }}\\n    runs-on: ubuntu-latest\\n    steps:\\n      - name: Explain quarantine\\n        run: |\\n          echo \"This workflow is intentionally disabled.\"\\n          echo \"LunaRoute is the sole declared Barrot brain.\"\\n          echo \"No second-brain deployment, secret access, or secret rotation is permitted here.\"\\n          echo \"Historical self_hosted_brain/ code is retained without deployment.\"\\n'",
+        "2026-11-11T15:04:15.3286922Z FAILED tests/test_external_action_gates.py::test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation - AssertionError: sync-self-hosted-brain.yml"
+      ]
+    },
+    "forecast_status": "NOT_ISSUED"
   }
 }
