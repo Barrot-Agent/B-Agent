@@ -31,9 +31,7 @@ jobs:
     permissions:
       contents: read
     env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GAP_NAME: ${{ inputs.gap_name }}
-      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -41,6 +39,8 @@ jobs:
           persist-credentials: false
       - name: Verify exact main SHA
         shell: bash
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
         run: |
           [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::External-model workflows must be dispatched from main"; exit 1; }
           if [[ ! "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]; then
@@ -58,6 +58,8 @@ jobs:
           python-version: "3.11"
       - name: Discover candidate capabilities
         run: python3 scripts/capability_discovery.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - name: Mark output as unverified suggestions
         run: |
           echo "Groq-generated capability candidates are suggestions, not source evidence, verified integrations, or model features." >> "$GITHUB_STEP_SUMMARY"

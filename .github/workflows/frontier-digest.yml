@@ -25,9 +25,6 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_external_research == 'YES' && inputs.expected_main_sha != '' }}
     runs-on: ubuntu-latest
     env:
-      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -52,8 +49,14 @@ jobs:
         run: python3 scripts/frontier_ingest.py
       - name: Distill new entries
         run: python3 scripts/frontier_distill.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
       - name: Run gap analysis
         run: python3 scripts/frontier_gap_analysis.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
       - name: Preserve frontier findings as an artifact
         uses: actions/upload-artifact@v7
         with:

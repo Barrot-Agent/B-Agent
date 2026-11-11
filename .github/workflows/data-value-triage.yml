@@ -35,10 +35,8 @@ jobs:
     permissions:
       contents: read
     env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       TRIAGE_INPUT: ${{ inputs.triage_input }}
       ACTIVE_GOALS: ${{ inputs.active_goals }}
-      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -46,6 +44,8 @@ jobs:
           persist-credentials: false
       - name: Verify exact main SHA
         shell: bash
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
         run: |
           [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::External-model workflows must be dispatched from main"; exit 1; }
           if [[ ! "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]; then
@@ -63,6 +63,8 @@ jobs:
           python-version: "3.11"
       - name: Score triage candidates
         run: python3 scripts/data_value_triage.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - name: Mark output as unverified triage
         run: |
           echo "Groq-generated novelty/relevance/density scores are triage suggestions only. They are not source verification, feature values, or forecasts." >> "$GITHUB_STEP_SUMMARY"

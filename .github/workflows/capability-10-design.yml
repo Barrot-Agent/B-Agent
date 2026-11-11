@@ -35,10 +35,8 @@ jobs:
     permissions:
       contents: read
     env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       REQUIREMENTS: ${{ inputs.requirements }}
       CONSTRAINTS: ${{ inputs.constraints }}
-      EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -46,6 +44,8 @@ jobs:
           persist-credentials: false
       - name: Verify exact main SHA
         shell: bash
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
         run: |
           [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::External-model workflows must be dispatched from main"; exit 1; }
           if [[ ! "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]; then
@@ -63,6 +63,8 @@ jobs:
           python-version: "3.11"
       - name: Generate design proposal
         run: python3 scripts/autonomous_design_engine.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - name: Mark output as unverified design
         run: |
           echo "Groq-generated architecture and trade-off proposals are unverified design suggestions, not implemented code, source evidence, or model features." >> "$GITHUB_STEP_SUMMARY"
