@@ -1,24 +1,24 @@
 ## Last State
 
-**Run20b — 2026-11-11T10:14:30Z**
+**Run21 — 2026-11-11T10:26:35Z**
 
-- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
-- Integration branch: integration/xrp-v3-unified-main-20261111; pre-correction head c39cc80591e257beb563aff1bf2a85d368edcb3b; 2,006 commits ahead, zero behind; 995 changed files (44 workflows, 951 other paths).
-- PR #1661 remains open, draft and reported mergeable; zero reviews, approvals and review threads. No merge.
-- Complete trees: main 1,388 entries; integration 2,258 entries. GitHub API access works; local clone remains blocked by DNS for github.com.
-- Parent code head 0529030 passed 3,417 tests, zero failures, eight subtests, 59.98% barrot_agent-only coverage. Documentation head c39cc8 full suite failed four tests (3,413 passed, eight subtests) due to current-map schema regression: historical snapshot fields overwritten and point_in_time_eligibility omitted. Not a runtime prediction-engine failure. Core tests, six-manifest audit and fail-closed gates passed.
-- Corrective change: restore map schema 1.1.0 and historical top-level fields unchanged; append Run20 as versioned run20_snapshot; add tests for new snapshot, actual capital and collateral. New exact-head full suite pending.
-- Latest spot: OKX 1.0593 USDT at 09:58:10.975 UTC; Kraken 1.05372 USD with no event timestamp; normalized midpoint difference about 0.312%, asynchronous. Last numeric XRP L2 remains Fuelmaps 02:00 UTC. TradRadar 09:05 OI $1.56B (-4.2%), funding +0.0064%/8h, $14.89M long liquidations. ETF Nov10 reports differ: Alpha -$7.6M 5/5 versus CryptoETF -$6.9M 4/5; do not average.
-- Evernorth: SBI $200M cash is part of $214.05M advance funding; $10.5M delayed funding; $48M trust cash; $272.6M gross closing cash; 388.910554M XRP in kind; about 473M held Oct9. $30M PIK notes, $9.7M Ripple facility drawn, ELOC proceeds $0, resale registration 73.688162M shares with no issuer resale proceeds. Arrington 19.9% cap is not direct RippleWorks ownership.
-- Evernorth BitGo custody: 100% cold storage; shared $250M insurance equal to 36.9% of Oct9 holdings value, not dedicated. Coinbase cbXRP proof page: 151.930567M XRP reserve vs 151.928321M cbXRP supply. Morpho stress latest Nov6; XRPL LendingProtocol 22/35, SingleAssetVault23/35, V1_1 22/35, all below threshold. XLS-66 is uncollateralized.
-- Circle/Coinbase Q3: $73.3B average USDC, $13.9T on-chain volume, $865M revenue/reserve income; Coinbase distribution costs $331.3M Q3 and $986.6M nine months. SBI Circle 50/50 JV and $50M investment; SBI group 60% voting in SBI Ripple Asia; SBI's 9% Ripple stake and $200M Evernorth cash are separate.
-- EBA USDC supervision begins Nov12; OCC GENIUS final rule effective Jan18 2027. Japan SBIC is three separate companies: Tokyo/East, Nagoya/Central, Osaka/West, not SBI Holdings. ASK candidate has no XRPL link; exact phrases unresolved; Kamilah/Camilla YouTube identity not verified.
-- Nine platforms: ChatGPT GitHub integration verified only on #1661; Claude/Grok/Gemini/Codex unverified; Copilot one-off review only; Hugging Face prior build error; Kaggle untested; Databricks prior 403; LunaRoute endpoint auth unverified. No external model transfer.
-- Security: branch-protection API 403; fallback ruleset disabled; alert settings inaccessible; credential path absent main/#1661 but last verified on 17 other PR tips; provider-side OAuth revocation unverified.
-- Backlog: #1661 sole consolidated integration; #1660 superseded candidate retained; #1653/#1614/#1612/#1611/#1610/#1269 unique work preserved. No source PR closed.
-- Forecast NOT_ISSUED; web observations not promoted to model features because no Barrot raw-source receipts were created.
-- Next: validate append-only map correction with exact-head full suite; finish 951-path semantic review; resolve branch-protection/approval, credential and Pages blockers; preserve unique PRs; only then consider merge and verify main/first ingestion.
-- No merge, deployment, secret action, external transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure.
+- Main SHA 84f28ee7755607236231545a14f3d093c1baaa85.
+- Integration branch integration/xrp-v3-unified-main-20261111; tested head before this handoff commit a62bad5747fc89b7e851aa9e0b2f3f58ae94106e; 2,010 ahead, zero behind.
+- PR #1661 open/draft/clean; 995 changed files (44 workflows, 951 other paths); zero reviews, approvals or threads.
+- Complete trees: main 1,388 entries; integration 2,260. Open PRs: 374 (360 drafts, 14 non-drafts).
+- Exact head a62bad5747fc89b7e851aa9e0b2f3f58ae94106e: 3,423 full-suite tests passed, zero failures, eight subtests, 59.98% coverage, 95.96s; 714 core tests passed; wheel and mission verified; six-manifest audit with zero known vulnerabilities; fail-closed PR/push gates passed. CI 43003897822; audit 43003898372; gates 43003898327/43003891044.
+- Two prior failures on 4af844 were Run20 JSON wording assertions, not runtime failures; corrected in 01ab254 and a62bad.
+- Main CI 42944864014 passed 718 tests; latest scheduled Cross Analysis 42998707871 succeeded; Pages 42944862534 succeeded as automatic side effect.
+- Spot: OKX 1.0593 USDT (09:58:10.975 UTC); Kraken $1.05705 (no event timestamp); USDT/USD 0.99894; normalized asynchronous midpoint difference 0.0693%. Fuelmaps spot depth 02:00 UTC is stale; Basis perp book 06:28 UTC is separate.
+- TradRadar OI $1.57B (-4.96%) and Liqwall $1.15B (-2.2%) are non-comparable; positive funding and long-heavy liquidations. Alpha ETF Nov10 -$7.6M but 30-session +$1.3M; CryptoKeyhole Nov10 partial; XRP Insights Nov9 -9.54M XRP. Do not average.
+- Evernorth named Ripple/Kraken/Coinbase/BitGo as planned Q4 partners for its 473M XRP treasury; no deployment amount or yield verified. PNC pilot is USDC-to-USD; BNY custody and Ripple Treasury are not XRP purchase evidence.
+- October U.S. CPI beat consensus; Treasury yields and dollar rose. Broad risk-off context; no XRP directional forecast.
+- SBIC East/Central/West are distinct Japanese regional companies, not SBI Holdings. ASK candidates remain separate and unlinked to XRP. Kamilah person confirmed; candidate channel not verified; 21 candidate references, zero verified inventory.
+- Prediction engine: 46 source definitions, read-only scheduled collector on integration only, SHA-256 receipts, SQLite point-in-time store, four baselines, purged/embargoed walk-forward, calibration/PSI and Ed25519 ledger. WORM, replayable history, scenario engine, trusted key, shadow outcomes and OOS lift remain missing. Forecast NOT_ISSUED.
+- Security: .config/gh/hosts.yml absent main/integration, present on 17/17 rechecked PR tips; contents not read. Repo reports OAuth revoked; provider revocation unverified. Main protected, integration unprotected; protection endpoint 403; fallback ruleset disabled. Pages publication authorization unresolved.
+- Backlog: #1661 blocked; #1660 superseded candidate retained; #1653/#1614/#1611/#1610/#1612/#1269/#1608 unique or unreviewed. No source PR closed.
+- Next: finish 951-path semantic review; resolve branch protection/approvals, OAuth revocation evidence and Pages side effect; reconcile overlaps; only then consider merge and verify main/first ingestion.
+- No merge, deployment, secret action, external transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure.
 
 ## Conversation Log
 - 2026-11-10: User + ChatGPT established LunaRoute as sole brain, Orbit ditched.
@@ -62,3 +62,6 @@
 
 
 - 2026-11-11T10:14:30Z — Run20b diagnosed four full-suite failures on c39cc8 as current-map schema regression (3,413 passed, four failed, eight subtests; no runtime failures). Parent 0529030 passed 3,417. Append-only map restoration and regression tests prepared; new exact-head CI pending.
+
+
+- 2026-11-11T10:26:35Z — Run21: refreshed main/integration trees and 374-PR inventory; corrected two Run20 evidence wording assertions on existing #1661; verified exact head a62bad5747fc89b7e851aa9e0b2f3f58ae94106e with 3,423 full-suite tests, 714 core tests, six-manifest dependency audit, wheel/mission verification and fail-closed gates; rechecked all 17 credential-path PR tips without reading contents; refreshed spot/L2/perpetual/ETF/macro and Evernorth/PNC/BNY/Ripple evidence; updated canonical handoff. No merge, deployment, secret action, external-model transfer or forecast issuance.
