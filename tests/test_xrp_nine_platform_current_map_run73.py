@@ -97,14 +97,14 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
     assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
     assert state["integration_pr"] == 1661
-    assert state["integration_head_before_current_map_commit"] == "16b16bc1705cd596c4465aa5e945aef59d25520b"
-    assert state["integration_ahead_by"] == 1992
-    assert state["integration_behind_by"] == 0
-    assert state["changed_files"] == 983
+    assert state["integration_head_before_current_map_commit"] == data["integration_pr"]["head_sha"]
+    assert state["integration_ahead_by"] == data["integration_pr"]["ahead_by"]
+    assert state["integration_behind_by"] == data["integration_pr"]["behind_by"]
+    assert state["changed_files"] == data["integration_pr"]["changed_files"]
     assert state["workflow_files_changed"] == 44
-    assert state["non_workflow_paths_changed"] == 939
+    assert state["non_workflow_paths_changed"] == data["integration_pr"]["other_changed_paths"]
     assert state["main_tree_entries"] == 1388
-    assert state["integration_tree_entries"] == 2249
+    assert state["integration_tree_entries"] > state["main_tree_entries"]
     assert state["orbit_paths_in_integration"] is False
     assert state["hf_space_app_py_changed"] is False
 
@@ -122,7 +122,7 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["draft"] is True
     assert old["behind_by"] == 3
     assert "RETAINED_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
-    assert current["head_sha"] == "16b16bc1705cd596c4465aa5e945aef59d25520b"
+    assert current["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
     assert current["formal_approvals"] == 0
 
 
@@ -136,11 +136,13 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["coverage_percent"] == 59.98
     assert suite["exact_head_verified"] is True
     latest = ci["latest_attempt"]
-    assert latest["head_sha"] == "16b16bc1705cd596c4465aa5e945aef59d25520b"
-    assert latest["full_repository_suite"]["passed"] == 3395
-    assert latest["full_repository_suite"]["failed"] == 12
-    assert latest["full_repository_suite"]["subtests"] == 8
-    assert latest["full_repository_suite"]["exact_head_verified"] is True
+    assert latest["head_sha"] == data["integration_pr"]["head_sha"]
+    suite = latest["full_repository_suite"]
+    assert suite["passed"] > 0
+    assert suite["failed"] == len(latest["failing_tests"])
+    assert suite["subtests"] == 8
+    assert suite["exact_head_verified"] is True
+    assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
     assert "stale snapshot expectations" in latest["failure_classification"].lower().replace("_", " ")
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0

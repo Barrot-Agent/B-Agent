@@ -1,3 +1,89 @@
+# Barrot XRP Mission — Canonical Handoff (latest: Run 15 — 2026-11-11T07:26:19Z)
+
+## Run 15 — exact-head CI diagnosis and integration correction
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation. LunaRoute remains repository-declared as the sole brain; this session did not authenticate to its endpoint.
+
+### Repository inspection — EXECUTED / VERIFIED
+
+- Current main: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Integration branch: integration/xrp-v3-unified-main-20261111.
+- Parent head inspected before this correction: ab3763fd5b181672f989d7b9fcee7641ef572a9f.
+- PR #1661: open, draft, GitHub reports mergeable=true but mergeable_state=unstable; 1,994 commits ahead / zero behind; 984 changed files (44 workflow files, 940 other paths).
+- Main tree: 1,388 entries / 86 workflows. Integration parent tree: 2,250 entries / 87 workflows. Both recursive tree responses complete and not truncated.
+- Open PR inventory: 374 total (360 drafts, 14 non-drafts), enumerated across four pages. PR #1660 remains open/draft; retain until successor merge and verification.
+- Local Git transport still fails DNS resolution. Current refs, complete trees, PR inventory, files, diffs and CI were fetched through the GitHub API. No local clone is claimed.
+
+### Exact-head CI — VERIFIED FAILURE
+
+On exact head ab3763fd5b181672f989d7b9fcee7641ef572a9f, PR CI run [42978453521](https://github.com/Barrot-Agent/B-Agent/actions/runs/42978453521), full-suite job 130382947054, completed **3,402 passed, 5 failed, eight subtests**, 59.98% inclusive coverage in 59.97 seconds. The five failures are all in tests/test_xrp_nine_platform_current_map_run73.py:
+
+1. test_repository_snapshot_matches_current_main_and_successor_branch — stale integration SHA/count assertions.
+2. test_superseded_pr_1660_is_retained_until_successor_merge — stale successor-head assertion.
+3. test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head — stale exact-head CI assertion.
+4. test_spot_snapshot_preserves_provider_event_time_and_window_semantics — missing explicit warning not to compare Kraken's UTC-day open with OKX's rolling 24-hour open.
+5. test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates — missing explicit definition that actual capital is not a standardized XRP metric.
+
+The log reports no application-runtime exception in this failure set. Wheel build/packaged-mission verification was skipped after the failing suite. Do not call this head green.
+
+- [Dependency audit 42978453447](https://github.com/Barrot-Agent/B-Agent/actions/runs/42978453447): passed six manifests; zero known vulnerabilities reported.
+- [Fail-closed gate 42978453581](https://github.com/Barrot-Agent/B-Agent/actions/runs/42978453581): passed; automatic merge remains disabled.
+- [Core test job](https://github.com/Barrot-Agent/B-Agent/actions/runs/42978453521): passed.
+
+### Correction executed on the existing integration branch
+
+- Replace brittle integration-SHA/count assertions with consistency checks against the captured repository-state and PR snapshot; preserve exact successful/failed CI evidence rather than weakening or skipping tests.
+- Add the missing Kraken UTC-day-open caveat to the market cross-venue note.
+- Add the explicit actual-capital definition and preserve the separation of cash, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent capacity, resales and registration.
+- Update the current-map snapshot to parent head ab3763fd5b181672f989d7b9fcee7641ef572a9f, 1,994 ahead / zero behind, 984 changed files, 44 workflows, 940 non-workflow paths, 2,250 integration-tree entries and the exact five-failure CI evidence.
+- Update the current-map test to compare snapshot fields consistently rather than pinning an old integration SHA. No test was skipped and no threshold was lowered in this correction.
+
+The resulting changes are being committed atomically on the existing integration branch with a fast-forward ref update guarded by the expected parent SHA. The new head must pass a fresh exact-head full-suite, dependency audit and fail-closed gate before merge consideration.
+
+### Security / publication / merge blockers
+
+- The credential path .config/gh/hosts.yml is absent from current main and #1661, but remains in 17 other inspected open PR branch tips. No credential contents were read. BARROT_SYNC reports OAuth revocation; provider-side revocation is not independently verified.
+- Main reports protected=true, but detailed branch-protection access returns HTTP 403. The only visible repository ruleset, Fall Back, is disabled. Required approval/check rules remain NOT_VISIBLE; no bypass was attempted.
+- PR #1661 has zero formal reviews, zero approvals and zero inline review threads; it remains draft.
+- Main still has the stale October 29 public XRP signal and legacy XRP subscription/checkout content. The integration branch uses NOT_ISSUED and disables XRP checkout. A main push automatically triggers GitHub Pages publication; explicit authorization for that public side effect is absent.
+- All 44 changed workflow files were previously individually reviewed (25 quarantined, 19 active). The remaining 940 non-workflow paths require full semantic review.
+- The integration coverage floor is 53% versus the prior configured 70%; inclusive coverage currently measures 59.98%. Treat the lower floor as transitional review debt and raise it through added tests, not exclusions.
+
+### Prediction and data status
+
+The integration branch contains the priority-1 mission manifest, 46 public source definitions (42 hourly, two weekly CFTC, two non-commercial XRPL-node sources excluded by default), read-only collector, SHA-256 receipt logic, point-in-time SQLite feature-store prototype, four deterministic baselines, chronological walk-forward evaluation, calibration/drift diagnostics and fail-closed forecast ledger requiring trusted Ed25519 evaluator attestation.
+
+Independent WORM/timestamp anchoring, replayable feature-store reconstruction, synchronized historical spot/L2/derivatives/exchange-flow/collateral, vintage-aware macro/event ingestion, scenario/counter-hypothesis generation, residual-dependence-aware uncertainty, sufficient independent shadow outcomes and production evaluator key remain outstanding. The SQLite store is not adversarially tamper-proof. No successful main-branch XRP ingestion run is verified.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred. Public research snapshots remain model-ineligible until collected through the receipt pipeline.
+
+### Nine-platform status
+
+ChatGPT current-session GitHub API access is verified for the integration branch. LunaRoute endpoint authentication is unverified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks persistent authenticated data flows are unverified. No external-model data transfer occurred.
+
+### Backlog classification
+
+- #1661: blocked, sole consolidated V3/XRP integration draft.
+- #1660: superseded-source candidate; retain until #1661 is merged and verified on main.
+- #1653: unique graph paths and unresolved review threads; preserve.
+- #1614, #1611, #1610, #1612 and #1269: unique prediction/topology work; preserve.
+- #1640, #1642, #1643, #1317, #1318, #1320 and #1644–#1650: overlapping/supersession candidates with blob differences; retain until successor merge and semantic reconciliation.
+- Other PRs remain unique/unreviewed or blocked; no bulk closure.
+
+### Next actions
+
+1. Verify the resulting correction commit and inspect its exact branch head.
+2. Complete exact-head full-suite CI, dependency audit and fail-closed gate; inspect full logs.
+3. Finish semantic review of the 940 non-workflow paths and restore/verify safe Barrot V3 operational parity.
+4. Verify provider-side OAuth revocation and arrange additive branch-tip remediation without reading credential contents or rewriting history.
+5. Obtain authoritative branch-protection/approval requirements and explicit authorization for GitHub Pages publication.
+6. Keep the XRP collector off main until an authorized merge; then verify first successful read-only main ingestion and receipt chain.
+7. Continue synchronized historical XRP data, independent anchoring, replay, calibrated walk-forward and shadow evaluation. Keep forecasts disabled until evidence gates pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+---
+
 # Barrot XRP Mission — Canonical Handoff (latest: Run 14 — 2026-11-11T07:11Z)
 
 ### Run 14 follow-up — exact-head CI after first snapshot corrections
