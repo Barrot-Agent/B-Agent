@@ -84,7 +84,8 @@ def test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run
     assert current_data["primary_brain_declared_by_repository"]["verified"] is False
     assert current_data["least_privilege_and_safety"]["main_branch_write_performed"] is False
     assert current_data["least_privilege_and_safety"]["pages_deployment_authorized"] is False
-    assert current_data["coordination_status"]["external_platform_data_exchange_performed"] is False
+    assert current_data["coordination_status"]["no_external_model_data_transfer"] is True
+    assert current_data["coordination_status"]["structured_evidence_exchange_across_nine_platforms"] is False
     assert set(current_data["platforms"]) == {"ChatGPT", "Claude", "Grok", "Gemini", "Copilot", "Codex", "Hugging Face", "Kaggle", "Databricks"}
     for name, platform in current_data["platforms"].items():
         if name != "ChatGPT":

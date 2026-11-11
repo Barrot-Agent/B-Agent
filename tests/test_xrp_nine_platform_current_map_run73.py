@@ -55,7 +55,8 @@ def test_nine_platform_coordination_is_design_only_without_external_exchange():
     data = load_current()
     status = data["coordination_status"]
     assert status["status"] == "DESIGNED_NOT_EXECUTED"
-    assert status["external_platform_data_exchange_performed"] is False
+    assert status["no_external_model_data_transfer"] is True
+    assert status["structured_evidence_exchange_across_nine_platforms"] is False
     assert status["no_external_model_data_transfer"] is True
     assignments = data["task_assignments_designed_not_executed"]
     assert len(assignments) == 9
@@ -306,7 +307,7 @@ def test_disagreements_and_counterhypotheses_are_preserved():
     items = load_current()["disagreement_and_counter_hypotheses"]
     assert len(items) >= 6
     combined = " ".join(items).lower()
-    assert "do not average" in combined
+    assert "no average is computed" in combined
     assert "counter-hypothesis" in combined or "counter hypothesis" in combined
     assert "not a directional forecast" in combined
 
