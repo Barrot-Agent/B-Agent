@@ -58,3 +58,42 @@ Credential path .config/gh/hosts.yml absent main/integration but present on 17 o
 Complete semantic review of 951 non-workflow paths. Resolve branch protection, approvals, credential revocation evidence and Pages side effect. Preserve unique PRs. Only after authorized merge, verify merge commit, refetch main, verify files, run main CI and first read-only ingestion. Implement WORM anchoring and replayable store. Keep forecasts disabled.
 
 No merge, deployment, secret action, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure.
+
+
+## Run22 — 2026-11-11T11:08Z — exact-head verification, market microstructure, theft-linked flow, Ripple Prime leadership and XRPL quantum roadmap
+
+### Repository and CI
+- Main remains `84f28ee7755607236231545a14f3d093c1baaa85`; integration branch remains `integration/xrp-v3-unified-main-20261111`, parent/current head before this documentation update `64b8738710f4823af1641a9704dd3948ccc640a1`; 2,011 ahead, zero behind.
+- PR #1661 remains open/draft, reported mergeable; zero formal reviews, approvals and review threads. Open PR inventory: 374 (360 drafts, 14 non-drafts). Complete trees: main 1,388, integration 2,260. Local Git clone still fails DNS; remote GitHub API works.
+- Exact head `64b8738`: 3,423 full-suite tests passed, zero failures, eight subtests, 59.98% coverage in 94.07s; 714 core tests passed; wheel build/install and primary mission verification passed; six dependency manifests audited, zero known vulnerabilities reported; fail-closed PR/push gates passed. Full CI [43005232066](https://github.com/Barrot-Agent/B-Agent/actions/runs/43005232066), audit [43005232071](https://github.com/Barrot-Agent/B-Agent/actions/runs/43005232071), PR gate [43005232185](https://github.com/Barrot-Agent/B-Agent/actions/runs/43005232185), push gate [43005224271](https://github.com/Barrot-Agent/B-Agent/actions/runs/43005224271).
+- Coverage floor remains 53%, below the previous 70% target; measured coverage is 59.98% for barrot_agent, not all repository packages.
+- Main scheduled Cross Analysis [43007129290](https://github.com/Barrot-Agent/B-Agent/actions/runs/43007129290) succeeded. Its workflow has contents:read, persist-credentials:false, performs read-only entity/sentiment analysis and uploads artifacts; it does not commit or push. Main's legacy signal-accuracy workflow is disabled with permissions:{} and if:false. Main push still triggers Pages deployment; publication authorization remains unresolved.
+
+### Current XRP market and microstructure — descriptive only
+- OKX XRP-USDT at provider timestamp 2026-11-11T10:21:28.166Z: last 1.0625, bid 1.0622, ask 1.0623, 24h volume 68.13M XRP. Kraken XRP/USD retrieval: last $1.06507, bid $1.06483, ask $1.06484, 24h volume 33.45M XRP, no provider timestamp. Kraken USDT/USD midpoint about 0.999025. Normalized OKX/Kraken midpoint difference about 0.34%, asynchronous; Kraken last is above displayed ask. Do not use as an executable spread signal.
+- Fuelmaps spot order-book snapshot 11:00 UTC, mid $1.0605, six venues: within ±1%, $9.5M bids/$8.6M asks (52.6% bid share); ±5%, $19.6M/$13.2M (59.8%); ±10%, $28.3M/$14.5M (66.2%, five of six venues). Largest displayed bid $3.4M at $1.000. Binance and Bitget are excluded; orders can cancel; hourly book is an average of one-minute observations. This is resting spot liquidity, not guaranteed support.
+- Binance 30-day cumulative funding reached +0.18%, highest since October 2025, per CryptoQuant's original Nov 10 Quicktake. CryptoTicker reports its direct OKX query found 76 positive settlements out of the last 100 since Oct 9, cumulative +0.39%, current period +0.01%; raw response was not independently captured here. These are distinct venue/window measures.
+- Binance XRPUSDT via cached public-market page: OI about $323.31M, -5.37% 24h, funding +0.0100%/8h. Coinalyze partial 2/22 coverage at 07:31 UTC: Binance long accounts 74.65%, Bybit 81.42%; taker buy share about 48.5% and 50.5%, respectively. Account ratios are not notional exposure.
+- Liqwall all-exchange OI $1.15B at 10:22 UTC, -1.9%/24h; Kodexius seven contracts $639.27M at 06:09 UTC, weighted funding +0.0094%/8h. These universes differ; do not average.
+- TokenPost reports Binance spot CVD about -4.33M XRP on Nov 9: sell-initiated trading dominated the measured window, not equivalent cash outflow.
+- ETF correction: SoSoValue's $10.42M XRP ETF outflow belongs to **November 9**, not November 10; about $9.40M was Bitwise, $0.811M Canary, $0.213M 21Shares. Nov 3–6 were flat. Oct 12–Nov 9 cumulative net outflow was about $4.2M, roughly 0.3% of $1.24B net assets. Multiple outlets repeat the same SoSoValue dataset; this is one underlying source group, not independent confirmations.
+- Binance theft-linked XRP: CryptoTicker reports a direct query at validated ledger 108,255,241 (Nov 11 06:44 UTC): 33,455,915 XRP moved from the last dormant wallet at 00:01 UTC into collection wallet `ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx`; collection wallet held 29,466,416 XRP and had sent 32.34M XRP in 193 payments since the prior measurement. Elliptic is cited for mostly THORChain swaps into BTC. Explorer is JS-rendered and the ledger query was not independently replayed here. Payments are not proof of executed sales or final cash-out; buyer identity is unknown.
+
+### Institutional and protocol developments
+- CoinDesk reports Marc Asch will leave Ripple Prime at year-end 2026; Noel Kimmel, SVP, will take over leadership. Ripple Prime offers institutional prime brokerage, clearing and financing; Ripple says RLUSD is collateral for some products. This is not evidence of XRP collateral eligibility or XRP purchases.
+- XRPL Foundation's 2027 protocol roadmap lists Quantum as a proposed, unapproved amendment using ML-DSA-44. Migration study is scheduled for H1 2027; development/review/audit in late 2027 or 2028; 640 build hours, 400 Ripple review hours, $215k–$255k estimated cost. Quantum-signed payment size estimated 5,331 bytes versus 1,704 baseline (3.13x). Activation requires validator approval; roadmap items are not promised. Draft spec #295 still records cross-implementation seed derivation mismatch, incomplete admin RPC support, and testing/audit gaps. Long-horizon security milestone, not near-term XRP demand.
+- Exact phrase ASK Coin / “actual capital” / “SBIC, ChatGPT SBIC” remains unresolved at primary-source level. Regional SBIC entities remain distinct from SBI Holdings. Kamilah/Camilla YouTube inventory remains candidate-only pending platform-side channel verification.
+
+### Prediction and safety
+Forecast remains `NOT_ISSUED`. These web observations are not model-eligible: no Barrot collector raw receipts, trusted timestamps or replayable point-in-time feature-store admission were created in this run. Preserve competing hypotheses: crowded-long fragility; spot absorption/short-squeeze potential; macro-driven risk repricing; and positive funding caused by hedged basis/relative-value demand. Do not issue direction from this snapshot.
+
+### Next actions
+1. Finish 951-path semantic review, prioritizing V3 runtime, ingestion, point-in-time store, forecast ledger and public surfaces.
+2. Add source-receipted direct funding histories and hourly Fuelmaps depth with explicit venue coverage and stale-age controls.
+3. Reconcile derivatives by contract and XRP-denominated OI; never average incompatible vendor universes.
+4. Correct ETF event date to Nov 9 and preserve SoSoValue source-group dependence.
+5. Add XRPL Quantum proposal milestones and Ripple Prime leadership transition to the event timeline as non-price-causal context.
+6. Resolve authoritative branch-protection/approval requirements, OAuth revocation evidence, 17 affected PR branch-tip copies and automatic Pages publication authorization.
+7. Keep forecast issuance disabled until WORM anchoring, replayable point-in-time data, independent shadow outcomes and out-of-sample lift pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
