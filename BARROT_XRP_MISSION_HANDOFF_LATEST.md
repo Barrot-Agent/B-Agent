@@ -1,3 +1,46 @@
+## Run 16C — exact-head full suite green (2026-11-11T08:08:36.247Z)
+
+### Exact-head verification — VERIFIED
+
+On parent head `540fdad1f406d19349b4997e52956dd6ebc4a56d`, PR CI [42984147689](https://github.com/Barrot-Agent/B-Agent/actions/runs/42984147689), full-suite job 130401224459 completed successfully:
+
+- **3,407 passed, zero failed, eight subtests.**
+- Inclusive coverage: **59.98%**, above the current 53% gate.
+- Full suite duration: 63.46 seconds.
+- Wheel built successfully.
+- Installed wheel loaded Barrot V3, the XRP primary mission and canonical data assets.
+- Core test job passed.
+- Dependency audit [42984147681](https://github.com/Barrot-Agent/B-Agent/actions/runs/42984147681) passed across six manifests; zero known vulnerabilities reported.
+- Fail-closed gate [42984147691](https://github.com/Barrot-Agent/B-Agent/actions/runs/42984147691) passed; automatic merge remains disabled.
+- Push dependency audit [42984139451](https://github.com/Barrot-Agent/B-Agent/actions/runs/42984139451) and push fail-closed gate [42984139620](https://github.com/Barrot-Agent/B-Agent/actions/runs/42984139620) also succeeded.
+
+The preceding head `5a5ec55` failed two tests because they froze prior live OKX/Fuelmaps timestamps and depth amounts. The Run16B test-only correction changed those assertions to validate UTC chronology, quote/order-book invariants and resting-book semantics. No product runtime code or thresholds were weakened. The corrected suite is now green on exact head `540fdad`.
+
+### Repository snapshot
+
+- Main: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Parent integration head before this handoff commit: `540fdad1f406d19349b4997e52956dd6ebc4a56d`.
+- PR #1661: open, draft, 1,998 ahead / zero behind, 988 changed files (44 workflows, 944 other paths); 2,254 integration tree entries versus 1,388 on main.
+- 374 open PRs: 360 drafts, 14 non-drafts.
+- This Run16C handoff/artifact commit will trigger a new exact-head CI cycle; the green result above applies to parent `540fdad`, not the new documentation head.
+
+### Merge decision
+
+PR #1661 remains blocked despite the green parent-head suite. It has zero formal approvals, branch-protection details remain HTTP 403, the visible fallback ruleset is disabled, 17 other open PR branch tips still contain the credential path, 944 non-workflow paths remain for semantic review, 25 workflows remain quarantined, and GitHub Pages publication is an automatic merge side effect without explicit authorization. Main still serves stale legacy XRP signal assets; integration serves the safe `NOT_ISSUED` status.
+
+No PR was merged or closed. No deployment, secret action, external-model transfer, paper trade or real-money action occurred.
+
+### Next actions
+
+1. Verify exact-head full-suite, dependency and fail-closed checks on the new Run16C documentation commit.
+2. Complete semantic review of 944 non-workflow paths and restore safe Barrot V3 operational parity.
+3. Verify provider-side OAuth revocation and remediate 17 affected branch tips additively without reading contents or rewriting history.
+4. Obtain authoritative branch-protection/approval requirements and explicit Pages publication authorization.
+5. Raise inclusive coverage from 59.98% toward 70% through added tests; retain the 53% floor as disclosed debt until the higher target is achieved.
+6. Keep forecasts disabled until independent receipts, replay, calibration, drift, shadow outcomes and out-of-sample lift pass.
+
+---
+
 ## Run 16B — live-snapshot test contract correction (2026-11-11T08:04:07.277Z)
 
 ### Exact-head result
