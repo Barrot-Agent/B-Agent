@@ -170,3 +170,78 @@ The November 9, 2026 SEC Form 424B3 resolves the “actual capital” question. 
 Primary sources: [Evernorth SEC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm), [SBI $200M Evernorth announcement](https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf), [SBI $50M Circle investment / Ripple stake](https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf), [SBI FY2025 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf), [SBI/Startale investment](https://www.sbigroup.co.jp/news/2026/0326_16202.html), [SBI/RLUSD agreement](https://www.sbigroup.co.jp/news/2025/0822_15680.html), [SBI XRP remittance corridors](https://www.sbigroup.co.jp/news/2023/0906_14052.html).
 
 These capital/corporate observations remain research-only until raw filings and presentations are hashed, timestamped and admitted into Barrot's point-in-time store. Forecast remains `NOT_ISSUED`.
+
+
+## Run23 — 2026-11-11T11:35:50Z — repository, exchange reserves, Evernorth custody, stablecoin and model-risk reconciliation
+
+### Repository and exact-head verification
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`. Integration parent inspected: `7a55848cab17f7cb2fd6549b0c463cc45efd47ae`.
+- PR #1661: open, draft, mergeable-clean, 2,014 commits ahead/zero behind, 997 changed files (44 workflows, 953 other paths), 236,814 additions and 4,363 deletions. Complete trees: main 1,388 entries/1,288 files/86 workflows; integration 2,262 entries/2,153 files/87 workflows.
+- Open PR inventory: 374 total, 360 draft and 14 non-draft. #1661 remains the sole consolidated integration workstream. No new PR was created.
+- Exact parent-head CI on `7a55848` passed **3,423 tests, zero failures, eight subtests, 59.98% coverage, 93.67 seconds**. Wheel and installed Barrot V3/XRP mission verification passed. Six dependency manifests audited; zero known vulnerabilities reported. Dependency audit #43012397124 and fail-closed PR gate #43012397190 passed; push gate #43012390401 passed. [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/43012397193) · [full-suite job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43012397193/job/130495019833).
+- Main exact-head CI on `84f28ee` passed 718 tests/eight subtests. Main scheduled Cross Analysis #43007129290 succeeded. Main Pages build #42944862534 succeeded as an automatic push-triggered publication side effect.
+- Local Git transport still fails DNS resolution for `github.com`; complete remote inspection succeeded through the GitHub API.
+
+### Integration review corrections
+
+- The current PR file list includes `hf_space/app.py`. The prior map claim that it was unchanged was incorrect. The PR changes it from v7.0 to v7.1 for safety: external inference disabled by default; explicit operator opt-in plus session consent; one configured provider and no silent fallback; public forecast endpoint returns `NOT_ISSUED`; legacy directional ledger rows are quarantined. Orbitron and Share Tech Mono CSS declarations are unchanged. The archival `.barrot/orbit/command_schema.json` and `ORBIT_REMOVED.md` remain in both main and integration, but no Orbit path changed in #1661 and no active Orbit runtime was reintroduced.
+- Current blob-hash overlap: #1660 972/972 paths represented (959 identical, 13 different); #1643 670/670 (661 identical, nine different); #1642 seven/seven (zero identical, seven different); #1640 280/280 (253 identical, 27 different). These are overlap/supersession candidates, not confirmed duplicates. #1660 remains open/draft and three commits behind main.
+- The current-map test contract was stale: it asserted `hf_space/app.py` was unchanged and recorded older CI evidence. Run23 corrects those assertions, records the font-preservation invariant and exact parent-head CI, and adds tests for connector over-permission, research-only provenance and non-WORM retention. One new research artifact path is added; post-commit PR count must be verified.
+
+### Security and permissions
+
+- GitHub repository metadata reports connector permissions `admin=true`, `maintain=true`, `push=true`, `pull=true`, `triage=true`. This exceeds least privilege. No main write, secret-value read or branch-protection bypass was performed.
+- Main branch summary reports protected=true but `required_status_checks.contexts=[]` and `enforcement_level=non_admins`. Detailed branch-protection access returns HTTP 403. The visible fallback ruleset “Fall Back” is disabled. With connector metadata reporting admin=true, non-admin-only enforcement is not a sufficient merge gate.
+- `.config/gh/hosts.yml` remains absent from main and active integration but present in all 17 rechecked current open-PR tips: #1653, #1650–#1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254. No file contents were read. Repository sync reports OAuth revoked, but provider-side revocation is unverified. No secret was rotated/revoked and no history was rewritten.
+- Automatic GitHub Pages publication remains an unresolved side effect; explicit publication authorization is absent.
+
+### XRP market and capital findings
+
+**Spot and liquidity**
+- OKX XRP-USDT: 1.0583, event time 11:33:13.571 UTC; bid 1.0581/ask 1.0582. Kraken XRP/USD: $1.06031 without provider event timestamp. Kraken USDT/USD: 0.99902. Normalized OKX reference is $1.0572629, about 0.2874% below Kraken's last. Asynchronous; not executable arbitrage.
+- Fuelmaps' 09:00 UTC six-venue resting-book snapshot: $11.9M bids/$9.2M asks within 1%, $23.1M/$12.2M within 5%. Binance and Bitget excluded. More than two hours old at retrieval; resting orders can be cancelled.
+
+**Exchange balances versus external transfers**
+- XRP Insights reports 22.33B XRP in 701 attributed wallets across 24 exchanges at 08:00 UTC Nov 11; same-wallet change +1.3M XRP over seven days and -155.7M over 30 days. It includes cold storage and wrapped-token reserves: 48% labelled cold, 12% hot, 40% unclassified. Not tradable float, exchange liabilities or beneficial ownership.
+- Regional attributed balances: South Korea 8.59B, United States 8.46B, Japan 1.38B. SBI VC Trade is listed at 56.9M XRP in two wallets, over 99% labelled cold; exchange custody, not SBI Holdings corporate XRP.
+- Coinbase's 5.80B tracker balance includes a 149.6M cbXRP reserve annotation; Binance's 2.69B includes a 327.4M Binance-Peg reserve annotation. Wrapped backing may overlap DeFi categories; do not double count.
+- TrackWhale's prior seven-day tracked external-transfer snapshot showed 501.72M inflows and 602.93M outflows, net -101.21M XRP. Different, older large-transfer universe; it disagrees in sign with same-wallet exchange-balance change. Preserve both; do not average or infer customer withdrawals from wallet-label changes.
+
+**Evernorth actual capital and custody**
+- SEC Form 424B3 dated Nov 9 reports approximately 473.276430M XRP at closing/as of Oct 9: 84.365876M cash-purchased using $214.05M advance-funding cash at about $2.53657/XRP, plus 388.910554M in-kind. SBI's announced $200M is included within the $214.05M pool; exact subscriber-level allocation is not disclosed. Gross closing cash was $272.6M before expenses, including $10.5M delayed cash and $48M SPAC trust; this is not all XRP purchase cash.
+- XRP Insights' Nov 11 10:57 UTC ledger read attributes 103.129905M XRP to 13 Evernorth-linked wallets. It reports 370.346663M moved outside the attributed set, latest Oct 22. About 78.25% of the reported closing amount is outside that set. Destination ownership/custody is unknown; not proof of sale, disposal or loss of beneficial ownership.
+- At normalized OKX reference, the cash-purchased tranche mechanically marks near $89.20M versus $214.05M historical cost (-58.33%). This is an unrealized mark on the cash-purchased tranche only, not realized loss or valuation of all Evernorth holdings.
+
+**Wrapped XRP and stablecoins**
+- Coinbase cbXRP page displayed 151,866,756.78 XRP reserve against 151,864,510.253 cbXRP supply (2,246.527 XRP excess), refreshed Nov 11 at 10:40 AM with timezone unspecified. Issuer-published proof-of-reserves, not independent custody audit. XRP Insights' 149.6M reserve annotation differs by about 2.26M; reconcile wallet coverage/vintage before adding.
+- Ripple transparency reports $2.6329B RLUSD circulating and $2.748B reserves as of Nov 5 (104.37% coverage), with monthly independent CPA reserve reports. RLUSD issuance/custody is not automatically XRP demand or XRP collateral. Circle transparency page is dated Nov 9; static extraction did not expose numerical balances, so none are inferred.
+
+**Derivatives, options and protocol risk**
+- TradRadar 11:10 UTC snapshot: $1.57B OI, down 4.2%; funding +0.0092% per eight hours; $15.17M liquidations, $14.05M long and $1.13M short; 79.6% long accounts. Aggregator coverage is not interchangeable with other vendors.
+- Fuelmaps' Nov 11 00:01 UTC options snapshot reports 20 of 928 daily 08:00 UTC outcomes beyond its options-implied 3-sigma band (2.16%) versus 0.27% Gaussian reference, about eight times. Source-reported, not independently reproduced. It motivates a Student-t/empirical-quantile baseline experiment; not a future probability or forecast.
+- XRPL Foundation's 2027 roadmap lists ML-DSA-44 quantum signatures as proposed, not approved; validator vote required. Study target H1 2027 and development/review/audit late 2027 or 2028. Long-horizon security milestone, not near-term demand.
+- Ripple Prime leadership transition (Marc Asch to Noel Kimmel at year-end 2026) is secondary-source reporting attributed to a company spokesperson. RLUSD collateral use for some prime products is distinct from XRP collateral eligibility.
+
+### Prediction-engine audit
+
+- 46 source definitions: 42 hourly, two weekly CFTC and two optional non-commercial XRPL nodes; 44 scheduled. `xrp_exchange_balances_json` is scheduled but digest-only because raw redistribution permission is not explicit.
+- Raw receipts use SHA-256 content addressing and a per-run hash chain; not independent WORM. Workflow retains raw artifacts 90 days, per-run feature-store checkpoints seven days and daily backups 90 days. SQLite row guards are not adversarially tamper-proof.
+- Scheduled walk-forward evaluation sets embargo equal to forecast horizon; overlap-adjusted effective sample size uses greedy non-overlapping target intervals. Residual serial dependence/shared-source correlation remain uncorrected.
+- Four baselines: naive class prior, momentum sign, mean-reversion sign and Gaussian volatility normal. The options tail statistic requires reproducing raw vintages and testing heavy-tailed/empirical alternatives. A scenario/counter-hypothesis generator is not implemented; the ledger alternatives field is only a contract.
+- Readiness requires at least 100 OOS and 100 shadow raw samples, at least ten non-overlapping target windows in each, two source groups, stable drift, weighted calibration error <=0.05, lower Brier and log loss than all four baselines, and trusted Ed25519 evaluator attestation. No successful main-branch collector run, WORM archive, production evaluator key or OOS lift is verified.
+
+### Identity, platforms and forecast
+
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain resolved as distinct regional SME investment companies, not SBI Holdings. Exact “ASK Coin”, “actual capital” and “SBIC, ChatGPT SBIC” combined phrase remain unresolved at primary-source level. Kamilah/Camilla YouTube attribution remains gated on first-party identity verification.
+- ChatGPT GitHub connector is verified in this session but repository metadata reports admin=true. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have no new authenticated data flow. Copilot has no formal approval on #1661. LunaRoute remains repository-declared but endpoint authentication/data flow unverified. No external-model data transfer occurred.
+- Forecast remains `NOT_ISSUED`. All Run23 web observations lack Barrot raw receipts and are excluded from model features. No directional forecast, paper trade or real-money action occurred.
+
+### Backlog and decision
+
+- #1661: blocked, sole consolidated integration draft. Parent head passed exact CI; Run23 documentation/test-contract commit requires its own exact-head CI. Draft, zero approvals/reviews, admin-exempt branch protection, empty required-check contexts, disabled fallback ruleset, overprivileged connector, 953-path semantic review incomplete, Pages authorization absent.
+- #1660: superseded-source candidate; retain until successor merge and main verification. #1640/#1642/#1643: overlap candidates with differing blobs; reconcile before closure. #1644–#1650 and #1254/#1255: dependency candidates; preserve until compatibility/security reconciliation.
+- Preserve unique/unreviewed #1608, #1610, #1611, #1612, #1614, #1317, #1318, #1320, #1269, #1653, #1655 and #1659. No source PR was closed; no confirmed duplicate closure occurred.
+- Next: complete exact-head CI on the Run23 update; reduce GitHub connector permissions to least privilege and resolve branch-protection admin exemption; finish semantic review; verify OAuth revocation and additively remediate the 17 branch tips; obtain Pages authorization; build WORM/timestamp anchoring, heavy-tailed baselines and scenario generation. Keep forecasts disabled.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.

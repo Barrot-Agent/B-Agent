@@ -106,7 +106,10 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["main_tree_entries"] == 1388
     assert state["integration_tree_entries"] > state["main_tree_entries"]
     assert state["orbit_paths_in_integration"] is False
-    assert state["hf_space_app_py_changed"] is False
+    assert state["hf_space_app_py_changed"] is True
+    assert state["hf_space_app_font_preserved"] is True
+    assert state["orbit_paths_changed_in_pr"] is False
+    assert state["active_orbit_runtime_reintroduced"] is False
 
 
 def test_superseded_pr_1660_is_retained_until_successor_merge():
@@ -129,9 +132,9 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
 def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     data = load_current()
     ci = data["ci_evidence"]
-    assert ci["integration_head_tested"] == "3b11e39f253ac8d07d02eb5da0c770155614f814"
+    assert ci["integration_head_tested"] == "7a55848cab17f7cb2fd6549b0c463cc45efd47ae"
     suite = ci["full_repository_suite"]
-    assert suite["passed"] == 3407
+    assert suite["passed"] == 3423
     assert suite["failed"] == 0
     assert suite["subtests"] == 8
     assert suite["coverage_percent"] == 59.98
@@ -144,8 +147,9 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["subtests"] == 8
     assert suite["exact_head_verified"] is True
     assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
-    assert "current map schema regression" in latest["failure_classification"].lower()
-    assert "not a runtime prediction-engine failure" in latest["failure_classification"].lower()
+    assert latest["conclusion"] == "success"
+    assert latest["failing_tests"] == []
+    assert "exact-head full-suite passed" in latest["failure_classification"].lower()
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
@@ -486,3 +490,49 @@ def test_run20_sbi_and_sbic_entity_relationships_remain_separate():
     assert run20["nine_platforms"]["Claude"] == "unverified"
     assert run20["nine_platforms"]["Databricks"] == "prior HTTP 403; no workspace write"
     assert run20["prediction_engine"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_github_connector_admin_scope_is_explicitly_flagged():
+    safety = load_current()["least_privilege_and_safety"]
+    permissions = safety["github_connector_permissions"]
+    assert permissions["admin"] is True
+    assert permissions["maintain"] is True
+    assert permissions["push"] is True
+    assert safety["least_privilege_target_met"] is False
+    assert safety["main_branch_write_performed"] is False
+    assert safety["secret_values_read"] is False
+
+
+def test_run23_research_remains_non_model_eligible_and_preserves_disagreement():
+    run = load_current()["run23_snapshot"]
+    assert run["model_eligible"] is False
+    assert run["raw_source_receipts"]["captured_by_barrot"] is False
+    balances = run["exchange_balances"]["xrp_insights"]
+    assert balances["same_wallet_change_7d_xrp"] == 1_300_000
+    assert balances["same_wallet_change_30d_xrp"] == -155_700_000
+    assert run["external_flow_tracker"]["net_flow_xrp"] == -101_210_000
+    assert run["flow_reconciliation"]["must_not_average"] is True
+    evernorth = run["evernorth"]
+    assert evernorth["on_chain_attributed_xrp"] == 103_129_905
+    assert evernorth["moved_outside_attributed_set_xrp"] == 370_346_663
+    assert evernorth["unattributed_destination_is_not_proof_of_sale"] is True
+    assert run["forecast_status"] == "NOT_ISSUED"
+
+
+def test_hf_space_safety_update_preserves_orbitron_typography():
+    app = (ROOT / "hf_space/app.py").read_text(encoding="utf-8")
+    assert "Orbitron" in app
+    assert "Share+Tech+Mono" in app
+    assert "BARROT_ALLOW_EXTERNAL_INFERENCE" in app
+    assert "def _operator_allows_external_inference" in app
+    assert "NOT_ISSUED" in app
+
+
+def test_xrp_ingestion_artifact_retention_is_not_mislabeled_worm():
+    engine = load_current()["prediction_engine_status"]
+    retention = engine["scheduled_workflow_retention"]
+    assert retention["raw_receipts_days"] == 90
+    assert retention["per_run_feature_store_days"] == 7
+    assert retention["daily_feature_store_days"] == 90
+    assert retention["independent_worm"] is False
+    assert engine["main_branch_ingestion_verified"] is False
