@@ -99,7 +99,10 @@ class BarrotBrain:
     GITHUB_MODEL = "gpt-4o"
     GROQ_MODEL = "openai/gpt-oss-120b"
 
-    def __init__(self):
+    def __init__(self, *, allow_external_inference: bool = False):
+        if type(allow_external_inference) is not bool:
+            raise TypeError("allow_external_inference must be a bool")
+        self.allow_external_inference = allow_external_inference
         self.auth = GitHubAppAuth()
         self.groq_key = os.getenv("GROQ_API_KEY", "")
         self.fireworks_key = os.getenv("FIREWORKS_API_KEY", "")
@@ -166,6 +169,12 @@ class BarrotBrain:
         exceeded, estimated_input_tokens = exceeds_context_budget(messages)
         if exceeded:
             return context_budget_marker(estimated_input_tokens)
+
+        if not self.allow_external_inference:
+            return (
+                "[BARROT_EXTERNAL_INFERENCE_DISABLED] External model requests are disabled by default; "
+                "no provider request was sent. Obtain explicit operator consent before enabling GitHub Models or Groq."
+            )
 
         # Try GitHub Models first. Groq is the configured secondary provider.
         if self.auth.ready:
@@ -266,6 +275,8 @@ class BarrotBrain:
 
     @property
     def backend_name(self) -> str:
+        if not self.allow_external_inference:
+            return "None (external inference disabled)"
         if self.auth.ready:
             return "GitHub Models"
         if self.groq_key:
@@ -276,16 +287,38 @@ class BarrotBrain:
 
 
 def main() -> int:
-    """Run BarrotBrain as a command-line agent."""
+    """Run BarrotBrain only after explicit interactive provider-transfer approval."""
+    import argparse
     import sys
 
-    prompt = " ".join(sys.argv[1:]).strip()
+    parser = argparse.ArgumentParser(description="BarrotBrain CLI")
+    parser.add_argument(
+        "--allow-external-inference",
+        action="store_true",
+        help="Authorize sending the supplied prompt to GitHub Models or Groq.",
+    )
+    parser.add_argument("prompt", nargs="*")
+    args = parser.parse_args()
 
+    if not args.allow_external_inference:
+        print("External inference is disabled. Re-run with --allow-external-inference after reviewing the provider/data-transfer scope.")
+        return 3
+    if not sys.stdin.isatty():
+        print("External inference requires an interactive terminal and exact operator confirmation.")
+        return 3
+    confirmation = input(
+        "Type SEND THIS PROMPT TO GITHUB MODELS OR GROQ to authorize this request: "
+    ).strip()
+    if confirmation != "SEND THIS PROMPT TO GITHUB MODELS OR GROQ":
+        print("External inference was not authorized; no provider request was sent.")
+        return 3
+
+    prompt = " ".join(args.prompt).strip()
     if not prompt:
-        print("Usage: python -m barrot_agent.barrot_brain \"<instruction>\"")
+        print('Usage: python -m barrot_agent.barrot_brain --allow-external-inference "<instruction>"')
         return 2
 
-    brain = BarrotBrain()
+    brain = BarrotBrain(allow_external_inference=True)
     print(brain.think(prompt))
     return 0
 

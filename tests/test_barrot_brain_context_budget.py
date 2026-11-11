@@ -89,8 +89,28 @@ def test_barrot_brain_blocks_oversized_context_before_any_provider_call(monkeypa
     assert calls == []
 
 
-def test_groq_429_fails_fast_without_retry_or_fireworks_fallback(monkeypatch):
+
+def test_external_inference_is_disabled_by_default_without_provider_requests(monkeypatch):
     brain = BarrotBrain()
+    brain.auth = SimpleNamespace(ready=False)
+    brain.groq_key = "test-groq-key"
+    brain.fireworks_key = "test-fireworks-key"
+    brain.allow_fireworks_fallback = True
+    calls = []
+
+    def fake_post(*args, **kwargs):
+        calls.append((args, kwargs))
+        raise AssertionError("default-disabled external inference must not send HTTP")
+
+    monkeypatch.setattr("barrot_agent.barrot_brain.requests.post", fake_post)
+    result = brain.think("small request", system="short system")
+    assert result.startswith("[BARROT_EXTERNAL_INFERENCE_DISABLED]")
+    assert "no provider request was sent" in result
+    assert brain.backend_name == "None (external inference disabled)"
+    assert calls == []
+
+def test_groq_429_fails_fast_without_retry_or_fireworks_fallback(monkeypatch):
+    brain = BarrotBrain(allow_external_inference=True)
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
     brain.fireworks_key = "test-fireworks-key"
@@ -109,7 +129,7 @@ def test_groq_429_fails_fast_without_retry_or_fireworks_fallback(monkeypatch):
 
 
 def test_fireworks_fallback_is_disabled_without_explicit_opt_in(monkeypatch):
-    brain = BarrotBrain()
+    brain = BarrotBrain(allow_external_inference=True)
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
     brain.fireworks_key = "test-fireworks-key"
@@ -159,7 +179,7 @@ def test_repair_planner_preserves_full_safety_system_for_in_budget_request():
 
 def test_repository_repair_records_read_only_snapshot_after_planner_rate_limit(tmp_path, monkeypatch):
     _init_clean_task_repo(tmp_path)
-    brain = BarrotBrain()
+    brain = BarrotBrain(allow_external_inference=True)
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
     brain.fireworks_key = "test-fireworks-key"
