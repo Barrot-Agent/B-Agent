@@ -135,3 +135,38 @@ BLS's November 10 primary October 2026 CPI release: headline +0.4% m/m, core +0.
 - Exact phrase “SBIC, ChatGPT SBIC” still has no primary-source match as a combined entity/partnership. Exact “actual capital” appears in secondary Evernorth coverage referring to proceeds contingent on warrant exercises; primary filings remain the authority for cash actually received/deployed. “ASK Coin” remains ambiguous; Permission Coin ASK is Base/Polygon LayerZero OFT, with no XRP/XRPL relationship verified. No Camilla/Kamilah Stevenson YouTube videos attributed without first-party channel verification.
 
 The artifact now contains these options, macro and SBIC observations with provenance, limitations and non-model-eligibility flags. The addendum itself is a documentation-only successor commit and requires its own exact-head CI.
+
+
+## Run22c — Evernorth actual-capital bridge and SBI/Ripple/Circle entity graph (primary filings)
+
+The November 9, 2026 SEC Form 424B3 resolves the “actual capital” question. Do not collapse cash, token contributions, debt, contingent equity or resale registrations into one number.
+
+- SBI announced a **$200M cash contribution** on October 21, 2025. The SEC filing identifies four SBI-controlled stockholders in the Advance Funding Subscription Agreements and records a 39.9% SBI Group voting-ownership limitation. The Advance Funding pool is **$214.05M aggregate cash** plus 600,000 XRP. The filing does not disclose each subscriber's exact cash allocation. Cross-document reconciliation: SBI's $200M is within the aggregate pool; do not add $200M to $214.05M.
+- Advance Funding cash $214.05M was used to purchase **84,365,876.3625 XRP**, average **$2.53657/XRP**. Advance subscribers also contributed 600,000 XRP in kind. Delayed Funding added **$10.5M cash** and 200,000 XRP.
+- In-kind XRP totals **388,910,554.061435 XRP**: 211,319,096.061435 from RippleWorks via Arrington XRP Capital Fund Series C; 126,791,458 under Ripple's Contribution Agreement; 50M from Larsen Lam Children's Remainder Trust; 600,000 Advance; 200,000 Delayed.
+- Closing gross cash proceeds were **$272.6M before transaction expenses**: $224.6M private placements (Advance + Delayed) plus $48.0M SPAC trust after redemptions. This is not all XRP purchase cash.
+- As of **October 9, 2026**, Evernorth reported approximately **473M XRP**. The token blocks reconcile to 84.365876M cash-purchased + 388.910554M in-kind = 473.276430M. Approximately **82.2% was contributed in kind** and **17.8% bought with cash**.
+- At the Nov 11 10:21 UTC OKX quote of $1.0625, the cash-purchased tranche mechanically marks at about $89.64M versus $214.05M historical cost (-$124.41M / -58.1%). This is not a realized loss, accounting treatment or the value of all holdings.
+
+### Separate financing and dilution
+
+- Convertible notes: $30M principal, 4% PIK, due 2031, issued Oct 12. SEC 424B3 says approximately $30M net proceeds before transaction expenses; earlier secondary coverage described $29M after a $1M fee. Preserve discrepancy. Debt, not equity or proof of XRP purchase.
+- Ripple Company Facility: $10M cap after Oct 7 amendment; $9.7M drawn as of Oct 7, 3.81%. Repayment due within five business days after Closing or earlier upon Ripple demand with five business days' notice; post-close repayment status not established.
+- Evernorth Facility: separate $1M revolving facility, undrawn as of June 30, 2026.
+- Cantor ELOC: up to 5,218,935 new shares, generally 97% of VWAP, subject to registration, 4.99% ownership and 20% volume caps. **Zero proceeds as of Nov 9.** $521,893.50 fee fully earned/non-refundable regardless of purchases; aggregate fee cap $1M. Contingent dilution capacity, not capital raised.
+- Resale registration: up to 73,688,162 shares and 239,653 sponsor warrants. Evernorth receives no proceeds from selling-holder resales. Warrants could generate up to about $2.8M only if all are exercised for cash; no assurance.
+- As of June 30, 2026, Evernorth reported no revenue, $265.6M loss, $0.1M unrestricted cash and $696.1M working-capital deficit. Pre-close historical figures, not current post-close liquidity.
+- Disconfirming adoption evidence: the SEC prospectus says retail/commercial/payment use of XRP is limited and speculators make up a significant portion of users. It warns that adoption need not translate into XRP price appreciation and that permissioned DLTs, SWIFT, ACH and card networks compete with XRP.
+
+### Ownership and SBI ecosystem
+
+- SBI stockholders: SBI Venture Fund 2023A, SBI Venture Fund 2023B, SBI PE Holdings and SBI Holdings USA. Filing lists 9,431,914 Class A shares (36.1% of Class A) and 2,359,038 Class C shares (7.5% of Class C); separately, defined SBI Group voting cap was 39.9% as of Oct 9. Class C is ordinarily non-voting but convertible to Class A. Do not call 39.9% total economic ownership.
+- Ripple held 1,678,382 Class A shares (6.4%); Chris Larsen 2,340,249 Class A shares (9.0%), subject to beneficial-ownership qualifications. Contributor Group voting power capped at 9.9%. Arrington Sponsor held 4,704,137 Class A (18.0%) and 29,033,708 Class C (92.5%); 4,215,479 Class A side-pocket shares tied to RippleWorks' XRP contribution carry RippleWorks voting instructions and specified consent rights.
+- SBI's official June 2025 notice and May 2026 presentation report approximately **9% of Ripple equity** as largest external shareholder. SBI Ripple Asia is 60% SBI / 40% Ripple; SBI Remit uses XRP as bridge currency in Asian remittance corridors. This is equity in Ripple, not direct SBI XRP ownership.
+- SBI Holdings and SBI Shinsei Bank invested **$50M total** in Circle at its June 5, 2025 NYSE listing ($25M each). SBI/Circle alliance dates to Nov 2023; SBI VC Trade offered USDC in Japan in Mar 2025; Circle SBI Japan KK was planned. This is USDC, not XRP.
+- SBI separately announced **$200M cash** for Evernorth. SBI announced a $50M Startale investment in Mar 2026. JPYSC technology by Startale, issuer SBI Shinsei Trust Bank, distribution SBI VC Trade. SBI's strategy lists USDC, RLUSD and JPYSC as separate rails.
+- SBI's May 2026 presentation reports Ripple balances of 5.10B XRP outside escrow and 33.20B in escrow as of Apr 27, 2026. These are Ripple balances presented by SBI, not SBI holdings and not an independent on-chain audit. SBI's presentation lists Ripple acquisitions: Metaco ($250M), Standard Custody (undisclosed), Rail ($200M), Hidden Road ($1.25B), GTreasury ($1B).
+
+Primary sources: [Evernorth SEC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm), [SBI $200M Evernorth announcement](https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf), [SBI $50M Circle investment / Ripple stake](https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf), [SBI FY2025 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf), [SBI/Startale investment](https://www.sbigroup.co.jp/news/2026/0326_16202.html), [SBI/RLUSD agreement](https://www.sbigroup.co.jp/news/2025/0822_15680.html), [SBI XRP remittance corridors](https://www.sbigroup.co.jp/news/2023/0906_14052.html).
+
+These capital/corporate observations remain research-only until raw filings and presentations are hashed, timestamped and admitted into Barrot's point-in-time store. Forecast remains `NOT_ISSUED`.
