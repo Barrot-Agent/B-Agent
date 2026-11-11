@@ -2631,7 +2631,7 @@
         "subtests": 8,
         "duration_seconds": 76.61,
         "conclusion": "failure",
-        "failure_classification": "current map schema regression; historical snapshot fields overwritten and point_in_time_eligibility omitted; not runtime prediction-engine failure"
+        "failure_classification": "current map schema regression; historical snapshot fields overwritten and point_in_time_eligibility omitted; not a runtime prediction-engine failure"
       },
       "dependency_audit": {
         "run_id": 43001130288,
@@ -3013,7 +3013,7 @@
         "class_a_shares": 9431914,
         "class_c_nonvoting_shares": 2359038
       },
-      "rippleworks": "Limited partner in Arrington and source of 211.319096M XRP contributed to the Sponsor; not direct 19.9% owner.",
+      "rippleworks": "Limited partner in Arrington and source of 211.319096M XRP contributed to the Sponsor; not a direct 19.9% owner.",
       "no_double_count": "The 261.919096M XRP private-placement subtotal is included within 388.910554M total in-kind XRP, not additional."
     },
     "collateral": {
