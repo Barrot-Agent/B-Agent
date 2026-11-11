@@ -1,0 +1,507 @@
+{
+  "artifact_type": "barrot_xrp_intelligence_run",
+  "schema_version": "1.0.0",
+  "run_id": "Run29",
+  "captured_at_utc": "2026-11-11T15:36:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_evidence_commit": "c7095fa5c9ca7452c08296ed69c82d51ed75f36c",
+    "ahead_by": 2033,
+    "behind_by": 0,
+    "changed_files": 1011,
+    "workflow_files": 44,
+    "non_workflow_paths": 967,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14
+  },
+  "ci": {
+    "head_sha": "c7095fa5c9ca7452c08296ed69c82d51ed75f36c",
+    "run_id": 43049347225,
+    "full_suite_job": 130621875637,
+    "core_suite_job": 130621874644,
+    "conclusion": "success",
+    "full_repository_suite": {
+      "passed": 3449,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.99,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 74.86,
+      "exact_head": true,
+      "exact_head_verified": true,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "statements": 23411,
+      "missed_statements": 8924,
+      "branches": 7112,
+      "partial_branches": 1423
+    },
+    "core_tests": {
+      "passed": 714,
+      "failed": 0,
+      "subtests": 8,
+      "duration_seconds": 11.51,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 43049347095,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43049347054,
+      "conclusion": "success",
+      "merge_disabled": true
+    },
+    "failing_tests": [],
+    "failure_classification": "None on this exact head. The preceding 65e11c head had two brittle evidence assertions: one expected a literal backslash-n instead of an actual YAML newline; the other expected obsolete Kamilah wording. Both were corrected in c7095fa5. No XRP ingestion or prediction-runtime failure was observed."
+  },
+  "market": {
+    "spot": {
+      "okx": {
+        "pair": "XRP-USDT",
+        "event_time_utc": "2026-11-11T15:09:44.769Z",
+        "last": 1.059,
+        "bid": 1.0589,
+        "ask": 1.059,
+        "open_24h": 1.0658,
+        "high_24h": 1.0739,
+        "low_24h": 1.0311,
+        "volume_24h_xrp": 52831363.109305,
+        "quote_volume_24h_usdt": 55734091.106582806,
+        "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      "kraken": {
+        "pair": "XRP/USD",
+        "retrieved_at_utc": "2026-11-11T15:36:00Z",
+        "event_timestamp_available": false,
+        "last": 1.05898,
+        "bid": 1.05904,
+        "ask": 1.05905,
+        "volume_24h_xrp": 26424625.46059832,
+        "high_24h": 1.07279,
+        "low_24h": 1.03011,
+        "utc_day_open": 1.05511,
+        "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+      },
+      "usdt_usd": {
+        "last": 0.99888,
+        "bid": 0.99887,
+        "ask": 0.99888,
+        "source": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+      },
+      "normalized_okx_usd": 1.0578139199999999,
+      "kraken_mid": 1.059045,
+      "normalized_spread_percent": -0.116244352223005,
+      "limitation": "OKX event time is about 26 minutes before capture; Kraken provides no event timestamp. Asynchronous reference only, not executable arbitrage."
+    },
+    "spot_orderbook": {
+      "provider": "Fuelmaps",
+      "snapshot_time_utc": "2026-11-11T15:00:00Z",
+      "mid": 1.0558,
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "depth_usd": {
+        "within_0_5_percent": {
+          "bids": 8000000,
+          "asks": 6600000,
+          "bid_share_percent": 54.6
+        },
+        "within_1_percent": {
+          "bids": 14400000,
+          "asks": 10600000,
+          "bid_share_percent": 57.8
+        },
+        "within_2_percent": {
+          "bids": 19800000,
+          "asks": 13000000,
+          "bid_share_percent": 60.3
+        },
+        "within_5_percent": {
+          "bids": 25200000,
+          "asks": 13600000,
+          "bid_share_percent": 64.9
+        },
+        "within_10_percent": {
+          "bids": 35000000,
+          "asks": 16000000,
+          "bid_share_percent": 68.6
+        }
+      },
+      "largest_levels": [
+        {
+          "side": "bid",
+          "price": 1,
+          "usd": 3400000
+        },
+        {
+          "side": "bid",
+          "price": 1.053,
+          "usd": 2600000
+        },
+        {
+          "side": "bid",
+          "price": 1.049,
+          "usd": 2400000
+        },
+        {
+          "side": "ask",
+          "price": 1.058,
+          "usd": 1900000
+        }
+      ],
+      "limitations": [
+        "Hourly averages of one-minute resting-book observations.",
+        "Five of six venues cover ±10%; Binance and Bitget excluded.",
+        "Orders can be cancelled or moved; not executed volume or guaranteed support."
+      ],
+      "source": "https://fuelmaps.io/order-book/"
+    },
+    "derivatives": {
+      "tradradar": {
+        "snapshot_time_utc": "2026-11-11T14:40:00Z",
+        "price": 1.0558,
+        "price_24h_change_percent": -0.85,
+        "open_interest_usd": 1570000000,
+        "oi_24h_change_percent": -2.83,
+        "funding_8h_percent": 0.008,
+        "liquidations_24h_at_least_usd": 9290000,
+        "long_liquidations_usd": 8350000,
+        "short_liquidations_usd": 941730,
+        "long_account_share_percent": 79.7,
+        "coverage": "7 exchanges for OI; 5 for liquidations and long/short",
+        "delay_minutes": 15,
+        "source": "https://tradradar.io/markets/xrp"
+      },
+      "liqwall": {
+        "snapshot_time_utc": "2026-11-11T15:22:00Z",
+        "price": 1.06,
+        "open_interest_usd": 1160000000,
+        "oi_24h_change_percent": -2.6,
+        "funding_8h_percent": 0.0081,
+        "liquidations_24h_usd": 11500000,
+        "long_liquidations_usd": 10600000,
+        "short_liquidations_usd": 893000,
+        "binance_long_account_share_percent": 75.2,
+        "hyperliquid_all_account_long_share_percent": 53.1,
+        "source": "https://liqwall.com/coins/xrp"
+      },
+      "reconciliation": "Different exchange/contract coverage. Do not average OI or liquidation totals. Shared pattern: positive funding, falling OI and long-heavy liquidations; account ratios are not notional exposure."
+    },
+    "options": {
+      "provider": "OptimistFi/Deribit",
+      "snapshot_time_utc": "2026-11-11T14:00:00Z",
+      "atm_iv_30d_percent": 58.2,
+      "skew_25d_points": 1.7,
+      "skew_convention": "calls richer when positive",
+      "put_call_ratio": 0.55,
+      "dec_25_2026_open_interest_usd": 47300000,
+      "expiry_skew_put_minus_call_points": {
+        "2026-11-12": -3.8,
+        "2026-11-13": -4.1,
+        "2026-11-20": -0.5,
+        "2026-11-27": 0.6,
+        "2026-12-25": 2.9,
+        "2027-03-26": 4.7
+      },
+      "limitation": "Near expiries are put-rich while later expiries are call-rich; do not compress term structure into one directional signal.",
+      "source": "https://optimistfi.com/perps/options/xrp"
+    },
+    "etf_flows": {
+      "provider": "Alpha Finance",
+      "through_session": "2026-11-10",
+      "funds_complete": "5 of 5",
+      "daily_flow_nov10_usd": -7600000,
+      "daily_flow_nov9_usd": -10400000,
+      "seven_session_flow_usd": -18000000,
+      "thirty_session_flow_usd": 1300000,
+      "cumulative_net_inflow_since_2025_11_14_usd": 1710000000,
+      "cumulative_net_flow_xrp": 972800000,
+      "circulating_supply_share_percent": 1.532,
+      "largest_nov10_outflow": "GXRP/Grayscale -$7.2M",
+      "limitation": "No AUM or holdings published. Net redemptions can be arbitrage unwind, not necessarily directional selling; flows are lagged.",
+      "source": "https://alphafinance.io/etf/xrp/"
+    },
+    "xrpl_governance": {
+      "snapshot_time_utc": "2026-11-11T15:32:00Z",
+      "ledger_index": 108263167,
+      "validators_heard": 35,
+      "validators_total": 35,
+      "yes_votes_required": 29,
+      "amendments": {
+        "SingleAssetVault": 23,
+        "LendingProtocol": 22,
+        "LendingProtocolV1_1": 22,
+        "ConfidentialTransfer": 21,
+        "DynamicMPT": 16,
+        "fixXChainRewardRounding": 10,
+        "Sponsor": 10,
+        "XChainBridge": 4,
+        "CryptoConditionsSuite": 0
+      },
+      "live_amendments": 98,
+      "in_flight": 9,
+      "activation_countdown": 0,
+      "interpretation": "Native XRPL lending remains inactive; LendingProtocol and related amendments are below the 29/35 threshold.",
+      "source": "https://xrpldashboard.com/amendments",
+      "limitation": "Counts come from the dashboard operator's own-node validation stream; not an official Foundation vote feed."
+    },
+    "price_quality": {
+      "xrpl_price_oracle_page": {
+        "as_of_utc": "2026-11-11T08:16:00Z",
+        "provider": "DIA",
+        "last_update_utc": "2026-11-11T05:52:29Z",
+        "xrp_usd": 1.0614,
+        "status": "stale; about 2.4h old",
+        "source": "https://xrpldashboard.com/price-data"
+      },
+      "outlier": "XRPL amendments page global header showed $1.0754 at 15:36 UTC, about 1.55% above contemporaneous exchange references near $1.059. Its price methodology was not established; exclude from market features until independently reconciled.",
+      "model_eligible": false
+    }
+  },
+  "institutional": {
+    "jpysc": {
+      "nov2_lending_balance_jpy_gt": 10000000000,
+      "nov2_handling_balance_jpy_gt": 30000000000,
+      "sept7_short_term_jgb_allocation_jpy": 1000000000,
+      "sept7_issuance_outstanding_jpy": 20100000000,
+      "sept7_lending_applications_jpy": 6900000000,
+      "interpretation": "Actual JPYSC usage/reserve deployment; lending balance means customer JPYSC lent to SBI VC Trade, not XRP collateral or borrower loans to third parties.",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+        "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+      ]
+    },
+    "jpysc_blackrock_mmf": "SBI, Startale and BlackRock signed a basic agreement on 2026-10-27 to explore tokenized MMF/JPYSC linkage; not production settlement or XRP corridor.",
+    "ripple_national_trust_bank": "Ripple reports final OCC approval 2026-10-26; OCC CAS marks consummated/effective same date. RNTB reserve manager/collateral trustee/custodian; Standard Custody remains RLUSD issuer. Operational commencement not independently established.",
+    "genius_act": "OCC final rule 2026-21706 effective 2027-01-18; scope covers OCC-supervised stablecoin issuers and certain custody activities; RLUSD issuer and RNTB roles must remain separate."
+  },
+  "identity": {
+    "sbic": "Regional SBIC East/Central/West remain separate Japanese SME investment companies, not SBI Holdings.",
+    "exact_phrases": "No new primary match for ASK Coin, 'actual capital' as a standardized XRP term, or 'SBIC, ChatGPT SBIC'.",
+    "youtube": "Kamilah person corroborated; channel ownership unverified; no personal-channel video inventory attributed; Camilla separate/unresolved."
+  },
+  "regulation": {
+    "occ_genius_final_rule": {
+      "document": "2026-21706",
+      "effective_date": "2027-01-18",
+      "scope": "OCC-supervised payment stablecoin issuers and certain custody activities",
+      "source": "https://public-inspection.federalregister.gov/2026-21706.pdf"
+    },
+    "ripple_national_trust_bank": {
+      "ripple_reported_final_approval_date": "2026-10-26",
+      "occ_cas_status": "Consummated/Effective 2026-10-26",
+      "conditional_letter": "2025-12-12; final approval required before commencement of business",
+      "issuer": "Standard Custody & Trust Company, LLC (NYDFS)",
+      "bank_role": "reserve manager, collateral trustee, fiduciary custodian",
+      "operations_commencement": "not independently established",
+      "sources": [
+        "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+        "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf"
+      ]
+    }
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "public_web_observations_model_eligible": false,
+    "raw_source_receipts_created": false,
+    "production_gaps": [
+      "independent WORM/timestamp anchor",
+      "replayable historical feature-store reconstruction",
+      "synchronized spot/L2/derivatives/flows/collateral history",
+      "scenario/counter-hypothesis generation",
+      "production evaluator signing key",
+      "independent shadow outcomes",
+      "demonstrated out-of-sample lift over four baselines"
+    ],
+    "no_paper_trade": true,
+    "no_real_money": true
+  },
+  "nine_platform_status": {
+    "chatgpt_github_connector": "authenticated for this repository; permission snapshot admin=true, maintain=true, push=true, pull=true, triage=true; overprivileged",
+    "copilot": "no formal PR approval",
+    "claude": "authentication/data flow unverified",
+    "grok": "authentication/data flow unverified",
+    "gemini": "authentication/data flow unverified",
+    "codex": "authentication/data flow unverified",
+    "hugging_face": "BUILD_ERROR; no deployment",
+    "kaggle": "untested; no submission",
+    "databricks": "HTTP 403; no workspace write",
+    "lunaroute": "repository-declared canonical brain; endpoint auth/data flow unverified",
+    "external_model_data_transfer": false
+  },
+  "research_scope": {
+    "sbic": "regional SBIC East/Central/West are separate Japanese SME investment companies, not SBI Holdings",
+    "exact_phrases": "ASK Coin, actual capital as standardized XRP term, and 'SBIC, ChatGPT SBIC' remain unresolved at primary-source level",
+    "youtube": "Kamilah person corroborated; channel ownership unverified; no personal-channel video inventory attributed; Camilla separate/unresolved"
+  },
+  "source_provenance": [
+    {
+      "source": "OKX XRP-USDT ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "event_time_utc": "2026-11-11T15:09:44.769Z",
+      "independence_group": "okx_exchange",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "Kraken XRP/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-11T15:36:00Z",
+      "event_timestamp_available": false,
+      "independence_group": "kraken_exchange",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "Fuelmaps six-venue spot order book",
+      "url": "https://fuelmaps.io/order-book/",
+      "as_of_utc": "2026-11-11T15:00:00Z",
+      "independence_group": "fuelmaps_aggregator",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "TradRadar XRP derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "as_of_utc": "2026-11-11T14:40:00Z",
+      "independence_group": "tradradar_aggregator",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "Liqwall XRP derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-11T15:22:00Z",
+      "independence_group": "liqwall_aggregator",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "OptimistFi/Deribit XRP options",
+      "url": "https://optimistfi.com/perps/options/xrp",
+      "as_of_utc": "2026-11-11T14:00:00Z",
+      "independence_group": "optimistfi_deribit",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "Alpha Finance XRP ETF flows",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "as_of": "2026-11-10",
+      "independence_group": "alpha_finance_aggregator",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "XRPL amendments own-node tracker",
+      "url": "https://xrpldashboard.com/amendments",
+      "as_of_utc": "2026-11-11T15:32:00Z",
+      "independence_group": "xrpldashboard_own_node",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "XRPL PriceOracle status",
+      "url": "https://xrpldashboard.com/price-data",
+      "as_of_utc": "2026-11-11T08:16:00Z",
+      "independence_group": "xrpldashboard_oracle_walker",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "SBI JPYSC lending and handling balances",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "as_of": "2026-11-02",
+      "independence_group": "sbi_vc_trade_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "SBI JPYSC short-term JGB reserve deployment",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "as_of": "2026-09-07",
+      "independence_group": "sbi_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "SBI/Startale/BlackRock JPYSC tokenized MMF MOU",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "as_of": "2026-10-27",
+      "independence_group": "sbi_startale_blackrock_joint",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "Ripple RNTB final approval announcement",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "as_of": "2026-10-26",
+      "independence_group": "ripple_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "OCC Ripple National Trust Bank CAS",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "as_of": "2026-10-26",
+      "independence_group": "occ_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "OCC conditional approval letter for Ripple National Trust Bank",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+      "as_of": "2025-12-12",
+      "independence_group": "occ_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    },
+    {
+      "source": "OCC GENIUS Act final rule",
+      "url": "https://public-inspection.federalregister.gov/2026-21706.pdf",
+      "as_of": "2026-11-11",
+      "effective_date": "2027-01-18",
+      "independence_group": "occ_federal_register",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT_RAW_INGESTOR",
+      "model_eligible": false
+    }
+  ],
+  "disagreements": [
+    "TradRadar OI $1.57B and Liqwall OI $1.16B use different venue/contract universes; do not average.",
+    "TradRadar and Liqwall show positive funding, falling OI and long-heavy liquidations; account ratios are not notional exposure.",
+    "Fuelmaps spot depth is resting liquidity, not executed volume or guaranteed support.",
+    "Alpha Finance ETF flow is one aggregator with five tracked funds; no AUM/holdings published; redemptions can be arbitrage unwind.",
+    "XRPL amendments page header price $1.0754 conflicts with exchange references near $1.059; excluded as an unverified price outlier.",
+    "XRPL PriceOracle DIA feed is stale; 1.0614 is not a current market price.",
+    "RNTB final approval is reported by Ripple and OCC CAS marks the application consummated/effective; commencement of operations remains unverified."
+  ],
+  "merge_decision": "NO MERGE; PR #1661 remains draft with zero formal reviews/approvals, branch-protection details unavailable, least-privilege and credential remediation unresolved, Pages publication unauthorized, and 967 non-workflow paths pending semantic review."
+}

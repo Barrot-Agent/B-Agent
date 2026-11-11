@@ -84,3 +84,6 @@
 - 2026-11-11T14:59:22Z — Run28: reconciled current main and #1661; added primary-source SBI/Circle/Ripple/Coinbase/BNY/Standard Chartered research; normalized provenance; corrected exact-head evidence; quarantined secondary self-hosted-brain deployment to preserve LunaRoute-only architecture. New exact-head CI pending.
 
 - 2026-11-11T15:07:40Z — Run28B: restored self-hosted-brain workflow safeguards and added unconditional false job guard; exact-head CI pending.
+
+
+- 2026-11-11T15:36:00Z — Run29: fixed two brittle exact-head evidence tests on the existing #1661 branch; verified 3,449 full-suite tests, zero failures, eight subtests, 59.99% coverage, 714 core tests, installed wheel, six-manifest dependency audit and fail-closed gate on c7095fa5. Refreshed XRP spot/L2/derivatives/options/ETF/XRPL governance and identified an XRPL price-header outlier; updated SBI JPYSC usage/reserve deployment and Ripple National Trust Bank/OCC/GENIUS rule role distinctions. Reconciled current #1661 overlaps and rechecked 17 credential-path PR tips without reading contents. Forecast NOT_ISSUED; PR #1661 remains draft/unmerged; no external action.
