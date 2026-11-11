@@ -200,22 +200,35 @@ def test_spot_snapshot_preserves_provider_event_time_and_window_semantics():
     okx = market["spot"]["okx"]
     kraken = market["spot"]["kraken"]
     assert okx["pair"] == "XRP-USDT"
-    assert okx["event_time_utc"] == "2026-11-11T05:43:33.264Z"
-    assert okx["last"] == 1.06
-    assert okx["event_time_utc"] <= market["retrieved_at_utc"]
+    event_time = datetime.fromisoformat(okx["event_time_utc"].replace("Z", "+00:00"))
+    retrieved_at = datetime.fromisoformat(market["retrieved_at_utc"].replace("Z", "+00:00"))
+    assert event_time <= retrieved_at
+    assert okx["last"] > 0
+    assert 0 < okx["bid"] <= okx["ask"]
+    assert okx["low_24h"] <= okx["last"] <= okx["high_24h"]
+    assert okx["volume_24h_xrp"] > 0
     assert kraken["pair"] == "XRP/USD"
-    assert kraken["utc_day_open"] == 1.05511
+    assert kraken["utc_day_open"] > 0
     assert "UTC-day open" in kraken["field_semantics"]
-    assert "Do not compare Kraken's UTC-day open" in market["spot"]["cross_venue_note"]
+    cross_venue_note = market["spot"]["cross_venue_note"].lower()
+    assert "kraken utc-day open" in cross_venue_note
+    assert "okx rolling 24-hour open" in cross_venue_note
+    assert kraken["event_timestamp_available"] is False
+    assert kraken["repeated_response_same_as_prior_capture"] is True
 
 
 def test_spot_orderbook_is_resting_liquidity_not_guaranteed_support():
-    book = load_current()["current_market_snapshot"]["spot_order_book"]
+    market = load_current()["current_market_snapshot"]
+    book = market["spot_order_book"]
     assert book["provider"] == "Fuelmaps"
-    assert book["snapshot_time_utc"] == "2026-11-11T05:00:00Z"
+    snapshot_time = datetime.fromisoformat(book["snapshot_time_utc"].replace("Z", "+00:00"))
+    retrieved_at = datetime.fromisoformat(market["retrieved_at_utc"].replace("Z", "+00:00"))
+    assert snapshot_time <= retrieved_at
     assert "6 of 6" in book["venues_coverage"]
-    assert book["depth_usd"]["within_1_percent"]["bids"] == 14_700_000
-    assert book["depth_usd"]["within_1_percent"]["asks"] == 12_400_000
+    depth = book["depth_usd"]["within_1_percent"]
+    assert depth["bids"] > 0
+    assert depth["asks"] > 0
+    assert 0 <= depth["bid_share_percent"] <= 100
     assert {"Binance", "Bitget"}.issubset(set(book["exclusions"]))
     limitations = " ".join(book["limitations"]).lower()
     assert "resting orders can be cancelled" in limitations

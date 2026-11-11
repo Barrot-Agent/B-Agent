@@ -1,3 +1,36 @@
+## Run 16B — live-snapshot test contract correction (2026-11-11T08:04:07.277Z)
+
+### Exact-head result
+
+The Run16 documentation/evidence commit `5a5ec55bc346e992c06da2a444774d37d901fb11` ran the full repository suite on its exact head: **3,405 passed, 2 failed, eight subtests**, 59.98% coverage, 94.30 seconds. Both failures were brittle assertions in `tests/test_xrp_nine_platform_current_map_run73.py`, not product-runtime exceptions:
+
+- The spot test hard-coded OKX event time `05:43:33.264Z`, while the newer provider-timestamped observation is `07:50:55.569Z`.
+- The depth test hard-coded Fuelmaps snapshot `05:00Z` and exact bid/ask amounts, while the newer snapshot is `07:00Z` with different valid depth.
+
+The test-only correction on this commit replaces fixed live values with UTC timestamp parsing/chronology, positive and ordered bid/ask checks, high/low containment, positive volume/depth, and explicit resting-book limitations. It does not relax coverage, skip tests, alter product code or revert fresher data. Current-head verification after this correction is pending.
+
+- Full CI: [42983423156](https://github.com/Barrot-Agent/B-Agent/actions/runs/42983423156), job 130398918227.
+- Dependency audit: [42983423216](https://github.com/Barrot-Agent/B-Agent/actions/runs/42983423216), passed; six manifests, zero known vulnerabilities reported.
+- Fail-closed gate: [42983423193](https://github.com/Barrot-Agent/B-Agent/actions/runs/42983423193), passed; automatic merge disabled.
+
+### Current repository snapshot
+
+Main remains `84f28ee7755607236231545a14f3d093c1baaa85`. Parent integration head before this correction: `5a5ec55bc346e992c06da2a444774d37d901fb11`. PR #1661 remains open and draft, 1,996 ahead / zero behind, 987 changed files (44 workflows, 943 other paths). No approvals; detailed branch protection remains inaccessible; publication and security blockers remain.
+
+The current-map snapshot now records this parent head and the exact failure evidence. Run16B structured artifact is stored alongside Run16. No merge or external action occurred.
+
+### Market/research continuity
+
+Run16's current spot, 07:00Z Fuelmaps depth, funding/ETF observations, Binance theft-linked XRP tracing and Reuters Hormuz context remain research-only because no Barrot raw-source receipts were created. The approximately 60M XRP remaining estimate is Elliptic's November 10 11:00Z snapshot, not a fresh November 11 wallet query. Forecast remains `NOT_ISSUED`.
+
+### Next action
+
+Wait for exact-head full-suite, dependency and fail-closed checks on the new test-only commit. If green, update PR #1661's body to the resulting head and evidence while keeping it draft. Continue 943-path semantic review, OAuth branch-tip remediation, branch-protection/approval resolution and GitHub Pages publication authorization. Do not merge until every required gate is satisfied.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, destructive worktree operation or PR closure occurred.
+
+---
+
 # Barrot XRP Mission — Canonical Handoff (latest: Run 16 — 2026-11-11T07:58:26.504Z)
 
 ## Run 16 — current-head CI, market structure and theft-linked XRP reconciliation

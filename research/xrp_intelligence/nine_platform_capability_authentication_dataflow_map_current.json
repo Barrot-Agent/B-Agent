@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T07:58:26.504Z",
-  "last_verified_at_utc": "2026-11-11T07:58:26.504Z",
+  "captured_at_utc": "2026-11-11T08:04:07.277Z",
+  "last_verified_at_utc": "2026-11-11T08:04:07.277Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "26d9cb967996cc48a0c0930d4d5acfb8c379f34a",
+  "observed_integration_head_before_map_commit": "5a5ec55bc346e992c06da2a444774d37d901fb11",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -15,15 +15,15 @@
     "mergeable_state": "unstable",
     "ahead_by": 1996,
     "behind_by": 0,
-    "changed_files": 986,
+    "changed_files": 987,
     "workflow_files": 44,
-    "other_changed_paths": 942,
-    "head_sha": "26d9cb967996cc48a0c0930d4d5acfb8c379f34a",
+    "other_changed_paths": 943,
+    "head_sha": "5a5ec55bc346e992c06da2a444774d37d901fb11",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
-    "note": "PR remains open and draft. Exact-head full suite on 26d9cb9 failed two current-map assertion wording checks (3,405 passed, 2 failed); dependency audit and fail-closed gate passed. No merge readiness claim."
+    "note": "PR remains open and draft. Exact-head full suite on 5a5ec55 failed two brittle live-snapshot assertions that hard-coded older OKX and Fuelmaps timestamps; the new market observations are later and the test contract must validate timestamp chronology and market semantics instead of fixed values. Dependency audit and fail-closed gate passed."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -334,18 +334,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "26d9cb967996cc48a0c0930d4d5acfb8c379f34a",
+    "integration_head_before_current_map_commit": "5a5ec55bc346e992c06da2a444774d37d901fb11",
     "integration_pr": 1661,
     "integration_ahead_by": 1996,
     "integration_behind_by": 0,
-    "changed_files": 986,
+    "changed_files": 987,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 942,
+    "non_workflow_paths_changed": 943,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2252,
+    "integration_tree_entries": 2253,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -358,16 +358,16 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "FAILED_2_CURRENT_MAP_ASSERTION_WORDING_MISMATCHES",
-    "last_reconciled_at_utc": "2026-11-11T07:58:26.504Z"
+    "latest_exact_head_ci": "FAILED_2_HARD_CODED_LIVE_SNAPSHOT_TIMESTAMP_ASSERTIONS",
+    "last_reconciled_at_utc": "2026-11-11T08:04:07.277Z"
   },
   "ci_evidence": {
     "integration_head_tested": "3b11e39f253ac8d07d02eb5da0c770155614f814",
-    "integration_pr_run": 42980807226,
-    "integration_full_suite_job": 130390518665,
-    "dependency_audit_run": 42980807234,
+    "integration_pr_run": 42983423156,
+    "integration_full_suite_job": 130398918227,
+    "dependency_audit_run": 42983423216,
     "dependency_audit_job": 130359654212,
-    "fail_closed_gate_run": 42980807254,
+    "fail_closed_gate_run": 42983423193,
     "fail_closed_gate_job": 130359653643,
     "full_repository_suite": {
       "passed": 3407,
@@ -390,12 +390,12 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 42980807234
+      "run_id": 42983423216
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 42980807254
+      "run_id": 42983423193
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -431,33 +431,33 @@
       "assessment": "Broader package coverage is now measured/enforced, but the floor is lower than the previous configured 70%. Treat 53% as transitional review debt and raise it with added tests."
     },
     "latest_attempt": {
-      "head_sha": "26d9cb967996cc48a0c0930d4d5acfb8c379f34a",
-      "run_id": 42980807226,
-      "full_suite_job": 130390518665,
+      "head_sha": "5a5ec55bc346e992c06da2a444774d37d901fb11",
+      "run_id": 42983423156,
+      "full_suite_job": 130398918227,
       "full_repository_suite": {
         "passed": 3405,
         "failed": 2,
         "subtests": 8,
         "coverage_percent": 59.98,
         "exact_head_verified": true,
-        "duration_seconds": 92.98,
+        "duration_seconds": 94.3,
         "wheel_build_verified": false
       },
       "failing_tests": [
-        "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
+        "test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+        "test_spot_orderbook_is_resting_liquidity_not_guaranteed_support"
       ],
-      "failure_classification": "Two stale snapshot expectations remain in the current-map contract tests: the CI classification text does not include the required phrase 'stale snapshot expectations', and the Kamilah note expresses the attribution limitation with lowercase wording rather than the exact sentence 'No personal-channel inventory is attributed.' No application-runtime exception was reported.",
+      "failure_classification": "Two stale snapshot expectations in the current-map tests hard-code the previous OKX event timestamp 2026-11-11T05:43:33.264Z and Fuelmaps snapshot time 2026-11-11T05:00:00Z. Current verified observations are later (OKX 07:50:55.569Z; Fuelmaps 07:00:00Z). Update tests to validate parseable UTC chronology, quote/order-book invariants and resting-liquidity semantics rather than fixed live timestamps or amounts. No application-runtime exception was reported.",
       "core_tests": "passed",
       "dependency_audit": {
         "passed": true,
-        "run_id": 42980807234,
+        "run_id": 42983423216,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
         "passed": true,
-        "run_id": 42980807254,
+        "run_id": 42983423193,
         "automatic_merge_enabled": false
       },
       "conclusion": "failure"
@@ -1808,13 +1808,13 @@
     "1614": "UNIQUE_UNREVIEWED_27_PREDICTION_PATHS",
     "1653": "UNIQUE_UNREVIEWED_SIX_GRAPH_PATHS",
     "1660": "SUPERSEDED_SOURCE_DRAFT_RETAINED_UNTIL_SUCCESSOR_MERGE_AND_MAIN_VERIFICATION",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 986 changed files (44 workflows, 942 other paths); 1,996 ahead/0 behind; latest exact-head full suite 3,405 passed/2 failed due two current-map assertion wording mismatches; dependency and fail-closed gates passed; no approvals; security, semantic-review, publication and coverage gates remain.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 987 changed files (44 workflows, 943 other paths); 1,996 ahead/0 behind; latest exact-head full suite 3,405 passed/2 failed because two tests hard-code previous live OKX/Fuelmaps timestamps; dependency and fail-closed gates passed; no approvals; security, semantic-review, publication and coverage gates remain.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first"
   },
   "next_actions": [
-    "Correct the two current-map assertion wording mismatches on the existing integration branch without skipping tests or lowering thresholds, then rerun the complete exact-head suite.",
+    "Replace brittle fixed live-snapshot timestamps and depth amounts in the two current-map tests with UTC chronology, positive quote/depth and market-semantics invariants; rerun the full exact-head suite, dependency audit and fail-closed gate.",
     "Refresh the current-map repository snapshot and canonical handoff after verifying the new branch head and CI run IDs.",
-    "Complete semantic review of the 942 non-workflow paths, prioritizing V3 execution/safety, XRP ingestion/feature store/forecast ledger, package configuration and public signal assets.",
+    "Complete semantic review of the 943 non-workflow paths, prioritizing V3 execution/safety, XRP ingestion/feature store/forecast ledger, package configuration and public signal assets.",
     "Verify provider-side OAuth revocation and continue additive remediation of the 17 affected open-PR branch tips without reading credential contents or rewriting history.",
     "Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.",
     "Raise the 53% inclusive coverage floor toward the prior 70% through additional tests; do not hide the tradeoff or exclude major packages.",
