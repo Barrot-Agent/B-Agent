@@ -141,7 +141,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert latest["full_repository_suite"]["failed"] == 12
     assert latest["full_repository_suite"]["subtests"] == 8
     assert latest["full_repository_suite"]["exact_head_verified"] is True
-    assert "stale snapshot expectations" in latest["failure_classification"].lower()
+    assert "stale snapshot expectations" in latest["failure_classification"].lower().replace("_", " ")
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
@@ -202,7 +202,7 @@ def test_spot_snapshot_preserves_provider_event_time_and_window_semantics():
     assert okx["event_time_utc"] <= market["retrieved_at_utc"]
     assert kraken["pair"] == "XRP/USD"
     assert kraken["utc_day_open"] == 1.05511
-    assert "today's UTC open" in kraken["field_semantics"]
+    assert "UTC-day open" in kraken["field_semantics"]
     assert "Do not compare Kraken's UTC-day open" in market["spot"]["cross_venue_note"]
 
 
@@ -267,7 +267,7 @@ def test_etf_flow_windows_and_holdings_limitations_are_separate():
     assert crypto["nov10_status"].startswith("partial")
     assert crypto["latest_complete_net_flow_xrp"] == -752_048
     assert "missing issuer data is unknown, not zero" in " ".join(crypto["limitations"]).lower()
-    assert "different fund universe" in etf["reconciliation"].lower()
+    assert "do not average provider universes" in etf["reconciliation"].lower()
 
 
 def test_cftc_contract_reconciliation_treats_dropped_contract_as_unknown():

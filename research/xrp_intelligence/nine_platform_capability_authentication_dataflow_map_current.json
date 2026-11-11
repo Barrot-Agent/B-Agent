@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-11T07:00:00Z",
-  "last_verified_at_utc": "2026-11-11T07:00:00Z",
+  "captured_at_utc": "2026-11-11T07:11:00Z",
+  "last_verified_at_utc": "2026-11-11T07:11:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "16b16bc1705cd596c4465aa5e945aef59d25520b",
+  "observed_integration_head_before_map_commit": "aecf94f48f3385a86de293a76e45858ae1474fc9",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,17 +13,17 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 1992,
+    "ahead_by": 1993,
     "behind_by": 0,
-    "changed_files": 983,
+    "changed_files": 984,
     "workflow_files": 44,
-    "other_changed_paths": 939,
-    "head_sha": "16b16bc1705cd596c4465aa5e945aef59d25520b",
+    "other_changed_paths": 940,
+    "head_sha": "aecf94f48f3385a86de293a76e45858ae1474fc9",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
-    "note": "GitHub reports mergeable=true but mergeable_state=unstable because the latest exact-head full repository suite failed 12 stale snapshot assertions. PR remains draft and is not ready."
+    "note": "Latest exact-head full repository suite still has three stale research-map assertion wording mismatches. PR remains draft and is not ready."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -325,7 +325,7 @@
       "credential_contents_read": false,
       "history_rewritten": false,
       "note": "Current PR heads were re-read from all four open-PR inventory pages; each affected recursive tree still contains the path. No file content was read.",
-      "checked_at_utc": "2026-11-11T07:00:00Z"
+      "checked_at_utc": "2026-11-11T07:11:00Z"
     },
     "main_branch_protected_flag": true,
     "oauth_revocation_repository_reported": true,
@@ -334,18 +334,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "16b16bc1705cd596c4465aa5e945aef59d25520b",
+    "integration_head_before_current_map_commit": "aecf94f48f3385a86de293a76e45858ae1474fc9",
     "integration_pr": 1661,
-    "integration_ahead_by": 1992,
+    "integration_ahead_by": 1993,
     "integration_behind_by": 0,
-    "changed_files": 983,
+    "changed_files": 984,
     "workflow_files_changed": 44,
-    "non_workflow_paths_changed": 939,
+    "non_workflow_paths_changed": 940,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2249,
+    "integration_tree_entries": 2250,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -358,7 +358,7 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "FAILED_12_STALE_SNAPSHOT_ASSERTIONS"
+    "latest_exact_head_ci": "FAILED_3_STALE_RESEARCH_MAP_ASSERTIONS"
   },
   "ci_evidence": {
     "integration_head_tested": "3b11e39f253ac8d07d02eb5da0c770155614f814",
@@ -389,15 +389,15 @@
       "manifests": 6,
       "known_vulnerabilities": 0,
       "passed": true,
-      "run_id": 42971142776,
+      "run_id": 42977062081,
       "scope": "root runtime, development, supplemental, Hugging Face Space, legacy declarations, PEP 621 project dependencies",
-      "job_id": 130359654212
+      "job_id": 130378481380
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
-      "run_id": 42971142715,
-      "job_id": 130359653643
+      "run_id": 42977061972,
+      "job_id": 130378480613
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -433,37 +433,52 @@
       "assessment": "Broader package coverage is now measured/enforced, but the floor is lower than the previous configured 70%. Treat 53% as transitional review debt and raise it with added tests."
     },
     "latest_attempt": {
+      "head_sha": "aecf94f48f3385a86de293a76e45858ae1474fc9",
+      "run_id": 42977061956,
+      "full_suite_job": 130378480982,
+      "full_repository_suite": {
+        "passed": 3404,
+        "failed": 3,
+        "subtests": 8,
+        "coverage_percent": 59.98,
+        "exact_head_verified": true,
+        "duration_seconds": 92.68,
+        "wheel_build_verified": false
+      },
+      "failure_classification": "Stale snapshot expectations: three remaining assertion wording mismatches in CI failure classification, Kraken UTC-day-open field semantics and ETF reconciliation wording. The reported failure list contains no application-runtime exception.",
+      "failing_tests": [
+        "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+        "test_etf_flow_windows_and_holdings_limitations_are_separate"
+      ],
+      "dependency_audit": {
+        "passed": true,
+        "run_id": 42977062081,
+        "job_id": 130378481380,
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "run_id": 42977061972,
+        "job_id": 130378480613,
+        "automatic_merge_enabled": false
+      }
+    },
+    "previous_attempt": {
       "head_sha": "16b16bc1705cd596c4465aa5e945aef59d25520b",
       "run_id": 42971142838,
-      "full_suite_job": 130359654138,
       "full_repository_suite": {
         "passed": 3395,
         "failed": 12,
         "subtests": 8,
         "coverage_percent": 59.98,
-        "exact_head_verified": true,
-        "duration_seconds": 95.02,
-        "wheel_build_verified": false
+        "exact_head_verified": true
       },
-      "failure_classification": "STALE_SNAPSHOT_EXPECTATIONS_IN_TWO_RESEARCH_MAP_TEST_FILES; all 12 reported failures are assertions against superseded repository/market snapshot fields; no application-runtime failure appears in the reported failure list.",
-      "failing_tests": [
-        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_preserves_fail_closed_permissions_and_no_money_actions",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_least_privilege_and_external_action_gates_remain_closed",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_orderbook_is_resting_liquidity_not_guaranteed_support",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exchange_flow_snapshot_keeps_unattributed_transfer_separate",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_derivatives_provider_disagreement_is_preserved_without_averaging",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_options_snapshot_keeps_near_and_deferred_expiry_skew_distinct",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_etf_flow_windows_and_holdings_limitations_are_separate",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
-      ],
+      "failure_classification": "Twelve stale snapshot assertions across two research-map test files.",
       "dependency_audit": {
         "passed": true,
         "run_id": 42971142776,
-        "job_id": 130359654212,
         "manifests": 6,
         "known_vulnerabilities": 0
       },
@@ -875,7 +890,12 @@
         "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
         "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
         "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
-      ]
+      ],
+      "evernorth_sbi_cash_investment_usd": 200000000,
+      "evernorth_sbi_cash_investment_status": "SBI Group-disclosed cash investment; exact SBI-specific XRP purchase allocation not itemized",
+      "circle_equity_investment_usd": 50000000,
+      "circle_equity_investment_breakdown": "SBI Holdings $25M; SBI Shinsei Bank $25M; June 9, 2025",
+      "sbi_arc_token_presale": "SBI subsidiary participated May 12, 2026; consortium total $222M; SBI amount undisclosed; Circle Arc, not XRP"
     },
     "evernorth": {
       "closing_gross_cash_usd": 272600000,
@@ -896,17 +916,7 @@
       "effect_notice": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/xslEFFECTX01/primary_doc.xml"
     },
     "sbi_stablecoin_strategy": {
-      "jpysc": {
-        "issuer": "SBI Shinsei Trust Bank",
-        "distributor": "SBI VC Trade",
-        "initial_distribution": "account-limited VCTRADE service",
-        "public_chain_status": "future transition subject to legal/tax/regulatory readiness",
-        "as_of": "2026-11-02",
-        "lending_balance_jpy_greater_than": 10000000000,
-        "handling_balance_jpy_greater_than": 30000000000,
-        "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
-        "interpretation": "Company-reported JPYSC product balances, not XRP purchases, XRPL liquidity or XRP collateral."
-      },
+      "jpysc": "SBI Shinsei Trust Bank issuer, SBI VC Trade distributor, Startale co-development; account-only initial launch; public-chain future scope.",
       "smbc_capital_participation": {
         "announcement_date": "2026-10-30",
         "investor": "SMBC Group",
@@ -937,7 +947,8 @@
           "https://www.startale.com/en/news/openstandard-sbi"
         ],
         "interpretation": "Coinbase consortium relationship, not an equity tie or verified XRP corridor; OUSD, USDC, RLUSD and JPYSC are distinct rails."
-      }
+      },
+      "rlusd_japan": "SBI VC Trade began RLUSD handling June 24, 2026; issuer Standard Custody & Trust Company, LLC; no proof of XRP bridge demand."
     },
     "circle_q3_2026": {
       "announcement_date": "2026-11-04",
@@ -991,7 +1002,7 @@
         "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/"
       }
     ],
-    "no_new_verified_xrp_capital_in_this_run": true
+    "no_new_verified_xrp_capital_in_this_run": "No new current-run XRP purchase identified. Historical capital reconciled: SBI disclosed $200M cash invested in Evernorth; issuer's >$1B headline combines cash and spot XRP."
   },
   "identity_research": {
     "sbic": {
@@ -1004,12 +1015,14 @@
         "https://www.sbic.co.jp/company/profile/",
         "https://www.sbic-cj.co.jp/company/about/",
         "https://www.sbic-wj.co.jp/profiles/profile/",
-        "https://www.sbic.co.jp/training/20250612co/"
-      ]
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic-cj.co.jp/company/public/"
+      ],
+      "central_primary_confirmation": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. identifies itself on its official site and says it was established under Japan's Act on Investment and Consultation Companies for Small and Medium-Sized Enterprises. This confirms SBIC Central is the Nagoya regional company, distinct from SBI Holdings. Source: https://www.sbic-cj.co.jp/company/public/"
     },
     "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship.",
-    "actual_capital": "Exact-phrase research finds actual capital used in secondary commentary, but it is not a standardized XRP metric. For analysis, keep actual cash proceeds, XRP contributed in kind, XRP purchased with cash, debt, drawn facilities, contingent equity capacity, resale registrations and secondary resales separate. Evernorth's SEC 424B3 remains the primary capital source; unreceived ELOC capacity and unspent debt proceeds are not XRP purchases.",
-    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor. The retrieved first-party page does not cross-link a YouTube channel. IDCrawl is a third-party directory showing multiple social/video links for a same-name person, not identity proof. Candidate channel @drkamilahstevenson and Glasp-indexed Ripple videos remain unverified; one candidate transcript spells the speaker's name Camila. No personal-channel inventory is attributed until a first-party cross-link or equivalent primary identity proof is obtained.",
+    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth's PIPE. Evernorth's SEC closing disclosure reports $272.6M gross cash, $388.911M XRP contributed in kind and 84.366M XRP purchased with $214.05M cash. The issuer's over-$1B total combines spot XRP and cash; it is not $1B cash. SBI's exact XRP allocation from its $200M is not separately itemized.",
+    "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor. The retrieved first-party page does not link a YouTube channel. Third-party analytics identify candidate channel ID UCqUPJMQdkCN6lsLVDnichPA, but provider snapshots disagree materially (about 143K subscribers/1.2K videos versus 103K/633). CryptoKrios also spells the creator Camila. Without first-party cross-link, no channel/video attribution.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
       "https://glasp.co/youtube/QslbjGQD0MU"
@@ -1512,6 +1525,86 @@
       "source_type": "secondary_issuer_file_aggregator",
       "model_eligible": false,
       "independence_group": "issuer_file_aggregator_cryptoetf_today"
+    },
+    {
+      "source": "SBI Holdings official Evernorth investment announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_disclosure",
+      "model_eligible": false,
+      "independence_group": "SBI_Holdings"
+    },
+    {
+      "source": "SBI Holdings FY2026 financial results presentation Evernorth $200M cash",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_presentation",
+      "model_eligible": false,
+      "independence_group": "SBI_Holdings"
+    },
+    {
+      "source": "SBI Holdings ARC token presale participation announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_disclosure",
+      "model_eligible": false,
+      "independence_group": "SBI_Holdings_Circle"
+    },
+    {
+      "source": "SBI VC Trade RLUSD Japan launch announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_disclosure",
+      "model_eligible": false,
+      "independence_group": "SBI_Ripple"
+    },
+    {
+      "source": "SBI JPYSC launch announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_disclosure",
+      "model_eligible": false,
+      "independence_group": "SBI_Startale"
+    },
+    {
+      "source": "SBI Ripple Asia official ownership and company profile",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_profile",
+      "model_eligible": false,
+      "independence_group": "SBI_Ripple"
+    },
+    {
+      "source": "SBI Ripple Asia 60/40 and SBI Ripple investment presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_presentation",
+      "model_eligible": false,
+      "independence_group": "SBI_Ripple"
+    },
+    {
+      "source": "SBI Remit XRP ODL corridor expansion announcement",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_disclosure",
+      "model_eligible": false,
+      "independence_group": "SBI_Ripple"
+    },
+    {
+      "source": "Nagoya SBIC Central official public-information page",
+      "url": "https://www.sbic-cj.co.jp/company/public/",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "primary_corporate_profile",
+      "model_eligible": false,
+      "independence_group": "SBIC_Central"
+    },
+    {
+      "source": "Dr Kamilah Stevenson first-party professional website",
+      "url": "https://learn.kamilahstevenson.com/",
+      "captured_at_utc": "2026-11-11T07:11:00Z",
+      "source_type": "first_party_identity_source",
+      "model_eligible": false,
+      "independence_group": "Kamilah_Stevenson"
     }
   ],
   "backlog_classification": {
@@ -1522,7 +1615,7 @@
     "1614": "UNIQUE_UNREVIEWED_27_PREDICTION_PATHS",
     "1653": "UNIQUE_UNREVIEWED_SIX_GRAPH_PATHS",
     "1660": "SUPERSEDED_SOURCE_DRAFT_RETAINED_UNTIL_SUCCESSOR_MERGE_AND_MAIN_VERIFICATION",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 983 changed files; 44 workflows; 939 non-workflow paths; latest exact-head full suite has 12 stale snapshot assertion failures; no approvals; publication, security and coverage gates remain",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 984 changed files; 44 workflows; 940 non-workflow paths; latest exact-head full suite has three stale research-map assertion wording failures; no approvals; publication, security and coverage gates remain",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first"
   },
   "next_actions": [
@@ -1538,11 +1631,24 @@
     "Keep directional forecasts disabled until calibrated out-of-sample lift and residual-dependence-aware uncertainty meet the issuance standard."
   ],
   "latest_web_research": {
-    "captured_at_utc": "2026-11-11T07:00:00Z",
+    "captured_at_utc": "2026-11-11T07:11:00Z",
     "model_eligible": false,
     "raw_source_receipts_created": false,
     "spot": {
-      "kraken_xrpusd": {
+      "provider": "Kraken",
+      "pair": "XRP/USD",
+      "latest": {
+        "last": 1.05273,
+        "bid": 1.05254,
+        "ask": 1.05263,
+        "volume_24h_xrp": 35954241.86160657,
+        "low_24h": 1.03011,
+        "high_24h": 1.10387,
+        "utc_day_open": 1.05511,
+        "captured_at_utc": "2026-11-11T07:11:00Z",
+        "provider_event_time_available": false
+      },
+      "prior_retrieval": {
         "last": 1.05992,
         "bid": 1.06024,
         "ask": 1.06033,
@@ -1550,16 +1656,13 @@
         "low_24h": 1.03011,
         "high_24h": 1.10473,
         "utc_day_open": 1.05511,
-        "provider_event_time_available": false,
-        "retrieved_at_utc": "2026-11-11T07:00:00Z",
-        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+        "captured_at_utc": "2026-11-11T06:58:47Z",
+        "provider_event_time_available": false
       },
-      "binance_xrpusd": {
-        "last": 1.056703,
-        "provider_display_time_utc": "2026-11-11T02:58:00Z",
-        "status": "OLDER_SECONDARY_COMPARISON_NOT_SYNCHRONIZED",
-        "url": "https://www.binance.com/en-GB/price/xrp"
-      }
+      "capture_to_capture_change_pct": -0.6784,
+      "interpretation": "Two public ticker responses about 13 minutes apart show a lower last trade; neither response supplied a provider event timestamp. Not a synchronized multi-venue return.",
+      "depth_status": "Fresh Kraken Depth endpoint inaccessible; retained Fuelmaps snapshot 05:00 UTC is historical, not live depth.",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
     },
     "etf_flows": [
       {
@@ -1569,31 +1672,108 @@
         "daily_flow_usd": -7600000,
         "consecutive_daily_outflows": 2,
         "thirty_session_flow_usd": 1300000,
-        "cumulative_net_inflow_since_2025_11_14_usd": 1710000000,
-        "status": "provider-reported complete for its five-fund universe",
+        "cumulative_net_inflow_usd": 1710000000,
         "url": "https://alphafinance.io/etf/xrp/"
       },
       {
         "provider": "CryptoKeyhole",
-        "retrieved_at_utc": "2026-11-11T02:12:00Z",
+        "captured_at_utc": "2026-11-11T06:44:00Z",
+        "coverage": "3 of 4 daily-collected funds for Nov 10",
+        "nov10_status": "partial; subtotal -3,322 XRP; Franklin XRPZ pending; 21Shares TOXR new/no flow; Nov 9 incomplete",
+        "nov10_subtotal_xrp": -3322,
         "latest_complete_session": "2026-11-06",
         "latest_complete_flow_xrp": -752048,
-        "nov10_status": "partial; 1 of 4 funds reported; zero so far is not a complete daily total",
-        "status": "different issuer universe and publication timing",
+        "exclusions": "Grayscale GXRP not daily-collected; XRPR excluded",
         "url": "https://cryptokeyhole.com/etf-flows/xrp/"
       },
       {
         "provider": "CryptoETF.today",
         "through_session": "2026-11-10",
-        "coverage": "4 of 5 funds",
+        "coverage": "4 of 5; XRPZ pending",
         "daily_flow_usd": -6900000,
         "consecutive_daily_outflows": 2,
         "thirty_session_flow_usd": 115200000,
-        "status": "partial; XRPZ pending",
+        "cumulative_net_flow_usd": 1800000000,
         "url": "https://cryptoetf.today/en/xrp-etf-flows"
+      },
+      {
+        "provider": "XRP Insights",
+        "data_as_of": "2026-11-09",
+        "nov10_status": "provisional until re-settled",
+        "url": "https://xrp-insights.com/data"
       }
     ],
-    "reconciliation": "ETF providers disagree because fund universes, issuer-file availability and settlement/update times differ. Alpha Finance reports 5/5 complete for its five-fund universe; CryptoKeyhole reports only 1/4 for Nov 10 and CryptoETF.today 4/5. Preserve each provider vintage; do not average. Missing funds are not zero. Holdings changes do not prove exchange sales.",
-    "source_capture_limitations": "Rendered web/API observations were not captured through Barrot's raw-source receipt pipeline; no byte-exact SHA-256 receipts were created. Research-only and excluded from model features."
+    "etf_reconciliation": "Different daily fund universes and publication times. Alpha Finance 5/5 complete; CryptoKeyhole 3/4 partial (-3,322 XRP); CryptoETF.today 4/5 partial (-$6.9M); XRP Insights Nov10 provisional. Do not average provider universes or treat missing issuers as zero. Holdings changes do not prove exchange sales.",
+    "source_capture_limitations": "Web/API observations were not captured through Barrot's raw-source receipt pipeline; no byte-exact SHA-256 receipts were created. Research-only, excluded from model features."
+  },
+  "institutional_network_update": {
+    "captured_at_utc": "2026-11-11T07:11:00Z",
+    "model_eligible": false,
+    "evernorth_sbi_cash": {
+      "amount_usd": 200000000,
+      "status": "SBI Group disclosed $200M cash invested in Evernorth PIPE; exact SBI-specific XRP allocation not separately itemized in SEC prospectus.",
+      "sources": [
+        "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+      ]
+    },
+    "evernorth_total_raise": {
+      "issuer_presentation": "over $1B combined spot XRP and cash, not $1B cash",
+      "sec_closing_gross_cash_usd": 272600000,
+      "sec_private_placement_cash_usd": 224600000,
+      "sec_spac_trust_cash_usd": 48000000,
+      "xrp_contributed_in_kind": 388911000,
+      "xrp_purchased_with_cash": 84365876,
+      "cash_used_for_purchased_xrp_usd": 214050000
+    },
+    "sbi_circle": {
+      "circle_equity_investment_usd": 50000000,
+      "breakdown": {
+        "sbi_holdings_usd": 25000000,
+        "sbi_shinsei_bank_usd": 25000000
+      },
+      "date": "2025-06-09",
+      "source": "https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf"
+    },
+    "sbi_arc": {
+      "date": "2026-05-12",
+      "status": "SBI subsidiary participated in Circle Arc ARC token presale; consortium total $222M; SBI amount undisclosed",
+      "distinction": "Circle Arc ecosystem, not XRP/XRPL",
+      "source": "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+    },
+    "sbi_ripple_asia": {
+      "ownership": "SBI 60%, Ripple 40% per SBI presentation; current profile reports 60% SBI voting rights",
+      "ripple_equity": "SBI disclosed approximately 9% Ripple shareholding",
+      "remittance": "SBI Remit XRP ODL started 2021 and expanded to Vietnam and Indonesia in 2023",
+      "sources": [
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+        "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+        "https://www.sbigroup.co.jp/news/2021/0728_12577",
+        "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+      ]
+    },
+    "rlusd_japan": {
+      "date": "2026-06-24",
+      "issuer": "Standard Custody & Trust Company, LLC",
+      "distributor": "SBI VC Trade",
+      "classification": "Type IV electronic payment instrument per SBI VC Trade's Japanese-law treatment",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    },
+    "jpysc": {
+      "date": "2026-06-24",
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "co_development": "Startale Group",
+      "initial_availability": "SBI VC Trade accounts only; public-chain distribution future scope",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    }
+  },
+  "research_scope_status": {
+    "last_reconciled_at_utc": "2026-11-11T07:11:00Z",
+    "sbic": "East/Tokyo, Central/Nagoya and West/Osaka identities supported by regional companies' primary pages; not SBI Holdings.",
+    "ask_coin": "No verified XRP/XRPL relationship; three distinct ASK-labelled candidates retained.",
+    "actual_capital": "SBI $200M Evernorth cash investment separated from >$1B combined spot-XRP-and-cash headline; SEC closing cash and in-kind XRP reconciled separately.",
+    "kamilah_stevenson_youtube": "First-party person identity confirmed; candidate YouTube channel identity remains unverified; no video inventory attributed."
   }
 }
