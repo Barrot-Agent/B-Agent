@@ -569,6 +569,16 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
 def test_checkout_branch_uses_safe_task_branch_helper_and_rejects_unsafe_names(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script_module("barrot_agent_resume_branch_test")
+    monkeypatch.setattr(module, "list_open_pull_requests", lambda: [])
+    monkeypatch.setattr(module, "require_external_action_approval", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "require_pr_dedup_attestation", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        module,
+        "run",
+        lambda args, *, check=True, quiet=False: module.subprocess.CompletedProcess(
+            args, 1, stdout="", stderr=""
+        ),
+    )
     calls: list[tuple[Path, str]] = []
 
     def fake_safe_checkout(workspace, branch):
@@ -590,6 +600,13 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
     monkeypatch.setenv("ISSUE_NUMBER", "42")
     monkeypatch.setenv("BRANCH", "barrot/task-42")
     monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-science-approval")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "barrot/task-42")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "repository_sync,pull_request_create")
+    monkeypatch.setenv("BARROT_PR_DEDUP_VERIFIED", "YES")
+    monkeypatch.setenv("BARROT_PR_DEDUP_EVIDENCE", "test open-PR/path/commit review")
     module = load_script_module("barrot_agent_persist_science_test")
     module.ROOT = tmp_path
     calls: list[list[str]] = []
@@ -612,6 +629,8 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
         return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
 
     def fake_run_gh(args):
+        if args[:2] == ["pr", "list"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="[]", stderr="")
         pr_calls.append(args)
         return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
 
@@ -644,6 +663,13 @@ def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Pa
     monkeypatch.setenv("ISSUE_NUMBER", "42")
     monkeypatch.setenv("BRANCH", "barrot/task-42")
     monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-real-git-approval")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "barrot/task-42")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "repository_branch_create,repository_sync,pull_request_create")
+    monkeypatch.setenv("BARROT_PR_DEDUP_VERIFIED", "YES")
+    monkeypatch.setenv("BARROT_PR_DEDUP_EVIDENCE", "test open-PR/path/commit review")
     module = load_script_module("barrot_agent_real_git_persistence_test")
     remote = tmp_path / "origin.git"
     workspace = tmp_path / "workspace"
@@ -666,15 +692,17 @@ def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Pa
     module.REPO = "Barrot-Agent/B-Agent"
     module.ISSUE = "42"
     module.TITLE = "Navier-Stokes research"
-    module.checkout_branch(module.BRANCH)
 
     pr_calls: list[list[str]] = []
 
     def fake_run_gh(args):
+        if args[:2] == ["pr", "list"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="[]", stderr="")
         pr_calls.append(args)
         return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
 
     monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    module.checkout_branch(module.BRANCH)
     cycle = {
         "cycle_id": "cycle-42",
         "problem_id": "navier_stokes_millennium_prize",

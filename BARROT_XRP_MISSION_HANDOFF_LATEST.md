@@ -1,4 +1,23 @@
 # Barrot XRP Mission — Canonical Handoff (latest: Run 12C — 2026-11-11T02:16Z)
+## Run 12D — exact-head CI failure diagnosis and hermetic test correction (2026-11-11 02:27 UTC)
+
+**PR:** [#1661](https://github.com/Barrot-Agent/B-Agent/pull/1661). **Observed head:** `98045113ef44b97a3ec0fdae3ecc4a6e64209e4d`.
+
+### Exact-head CI finding
+
+The PR-triggered CI run `42946052265` and push-triggered CI run `42946046925` both reached the core test job and reported **709 passed, 4 failed, 8 subtests passed**. The failures are test-harness integration errors caused by the new fail-closed approval/dedup behavior:
+
+1. `tests/test_v3_scripts.py::test_barrot_issue_comment_temp_file_exists_during_gh_call` did not inject the explicit `issue_comment` test approval, so the safe production gate correctly returned before the fake GitHub CLI call; the test then read a missing captured body.
+2. Two `tests/test_scientific_discovery.py` cases invoked the real `gh pr list` from tests without a `GH_TOKEN`, rather than mocking the complete open-PR inventory. A third fake returned the text `draft PR created` to the inventory query, which is not valid JSON. The resulting fail-closed behavior is correct; CI must not receive a live repository token just to satisfy unit tests.
+
+### Test-harness correction
+
+The successor branch now updates only the affected tests: scoped fake approval variables are injected where the test explicitly exercises an approved issue comment or repository-sync/PR-creation path; the open-PR inventory is stubbed as valid JSON; and the local Git persistence test uses a fake GitHub CLI before branch checkout. No live GitHub write is performed by these tests, and no CI token is added to the workflow.
+
+The full repository suite job `130279006485` was still installing complete development dependencies at the last observation; it had not yet executed tests. The PR dependency audit `42946052029` was auditing the final PEP 621 manifest; the push-triggered dependency audit `42946047010` had completed successfully. Both fail-closed gate runs passed. The test-fix commit will trigger a fresh exact-head run; no prior-head result is substituted.
+
+**Merge status:** blocked. PR #1661 remains draft. No approval, branch-protection bypass, merge, deployment, secret action, paper trade or external action occurred.
+
 ## Latest verified status — Run 12C (2026-11-11 02:16 UTC)
 
 **Mission:** XRP intelligence and prediction-engine mastery remains priority 1. **Foundation:** Barrot V3 remains the protected execution, orchestration, safety and verification foundation.

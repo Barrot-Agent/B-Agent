@@ -269,5 +269,45 @@
     "review remaining non-workflow diff",
     "preserve #1660 as draft source until successor merge verified",
     "keep forecasts disabled pending calibrated out-of-sample lift"
-  ]
+  ],
+  "ci_failure": {
+    "observed_head": "98045113ef44b97a3ec0fdae3ecc4a6e64209e4d",
+    "core_runs": [
+      42946052265,
+      42946046925
+    ],
+    "core_test_result": {
+      "passed": 709,
+      "failed": 4,
+      "subtests": 8
+    },
+    "failures": [
+      {
+        "test": "tests/test_v3_scripts.py::test_barrot_issue_comment_temp_file_exists_during_gh_call",
+        "root_cause": "Test omitted explicit issue_comment approval; fail-closed production gate correctly skipped fake gh call."
+      },
+      {
+        "test": "tests/test_scientific_discovery.py::test_checkout_branch_uses_safe_task_branch_helper_and_rejects_unsafe_names",
+        "root_cause": "Test called real gh pr list without GH_TOKEN instead of mocking inventory."
+      },
+      {
+        "test": "tests/test_scientific_discovery.py::test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr",
+        "root_cause": "Fake gh returned non-JSON draft PR text for open-PR inventory query."
+      },
+      {
+        "test": "tests/test_scientific_discovery.py::test_scientific_evidence_survives_real_git_push_and_fresh_clone",
+        "root_cause": "Test invoked real gh pr list before installing its fake GitHub CLI."
+      }
+    ],
+    "full_suite_job": 130279006485,
+    "full_suite_status": "dependency installation in progress at last observation; test execution not started",
+    "dependency_audit_pr_run": 42946052029,
+    "dependency_audit_push_run": 42946047010,
+    "fail_closed_gate_runs": [
+      42946052077,
+      42946046870
+    ],
+    "remediation": "Test-only correction: inject exact scoped fake approval variables, stub open-PR inventory with valid JSON, and install fake gh before branch checkout. Do not grant CI a live GH_TOKEN.",
+    "remediation_committed": false
+  }
 }

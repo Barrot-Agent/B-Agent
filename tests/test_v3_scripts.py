@@ -449,6 +449,11 @@ def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
 def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("ISSUE_NUMBER", "1197")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-issue-comment-approval")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "barrot/comment-test")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "issue_comment")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
         "barrot_agent_comment_tempfile_lifetime_test",
@@ -456,6 +461,7 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
     observed: dict[str, str] = {}
     monkeypatch.setattr(module, "ISSUE", "1197")
     monkeypatch.setattr(module, "REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setattr(module, "BRANCH", "barrot/comment-test")
 
     class Result:
         returncode = 0
