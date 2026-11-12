@@ -1,3 +1,45 @@
+# Run47 — current integration/security reconciliation (2026-11-12T05:02:51Z)
+
+## Current successor
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration branch `integration/xrp-v3-unified-main-20261111`; pre-repair head `28eafc87d7a7c4709789c51bc19839264b12eff4`.
+- PR #1661 is open/draft, 2,082 ahead/0 behind, 1,047 files (49 workflows/998 other), zero formal reviews/approvals.
+- Exact-head CI on `28eafc87d7a7c4709789c51bc19839264b12eff4`: 3,500 passed/5 failed, 8 subtests, 61.34% coverage; core 716/0; dependency audit six manifests/zero known vulnerabilities; fail-closed gate passed.
+- Run47 corrects five test-contract/snapshot assertions: escaped GitHub run-id expectation, 17 inherited credential-path branch tips, stale path count, exact-head failure classification and four versus three 90-day artifact declarations. The new commit still requires exact-head CI and wheel verification.
+
+## Security hold — inherited credential path
+Complete recursive tree scans and current PR file inventories were rechecked for all 17 PRs: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255, #1254.
+- 17/17 branch-tip trees contain `.config/gh/hosts.yml`.
+- 0/17 PR changed-file inventories list the path.
+- All 17 are open and target main.
+- Main and active integration trees do not contain the path.
+- Contents were not read. Provider-side OAuth revocation remains unverified. No branch history was rewritten.
+- Preserve all 17 branches. Do not read the file, force-push, rewrite branches or bulk-close PRs.
+
+## Backlog disposition
+- #1661: **blocked active integration draft**; exact-head Run47 CI pending.
+- #1660: **superseded-source candidate**; 972/972 paths represented in #1661, last comparison 942 identical/30 different; retain until verified successor merge.
+- #1643: **overlap/superseded-source candidate**; 670 represented, 661 identical/9 different; retain until verified successor merge.
+- #1642: **unique prediction work**; seven paths differ; preserve.
+- #1640: **overlap candidate**; 280 represented, 244 identical/36 different; preserve pending semantic reconciliation.
+- #1653: **unique graph work**; preserve, security-held.
+- #1644/#1647: **partial workflow overlaps**; preserve differing files.
+- #1645: **exact duplicate candidate**; retain until verified successor merge.
+- #1646/#1648/#1649/#1650 and #1254/#1255: **dependency reconciliation candidates**; compare versions before closure.
+- #1269, #1317, #1318, #1320, #1608, #1610, #1611, #1612, #1614, #1655: **unique/unreviewed**; preserve, security-hold where listed above.
+- #1659: **blocked architecture conflict**; preserve historical self-hosted brain; do not activate a second brain while LunaRoute is canonical.
+- Confirmed duplicate closures: **none**.
+
+## Run47 research and forecast
+- Six curated events added for spot quote quality, six-venue depth, derivatives positioning, SoSoValue-derived ETF flows and Evernorth/SBI resale-lockup ambiguity.
+- Registry now has 20 events; all six new raw publisher hashes are null. Scenario assembly is wired to the scheduled collector on integration but remains research-only; no probabilities.
+- XRP market captures are web-only and model-ineligible; source timestamps and shared lineage are preserved.
+- Forecast status: **NOT_ISSUED**. No paper trading or real-money action.
+
+## Merge blockers
+Draft status and zero approvals; exact-head full suite pending; branch-protection detail HTTP 403; fallback ruleset disabled; GitHub connector admin/maintain/push/pull/triage overprivileged; provider-side OAuth revocation unverified; Pages auto-publication unauthorized; 998 non-workflow paths require semantic review. Do not merge or close source PRs.
+
+---
+
 # Barrot-Agent/B-Agent pull-request backlog triage
 
 ## Run 83 — current integration and backlog classification (2026-11-09T13:24Z)

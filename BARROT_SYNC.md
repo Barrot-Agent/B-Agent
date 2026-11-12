@@ -1,3 +1,23 @@
+# Run47 — 2026-11-12T05:02:51Z
+
+XRP intelligence remains mission priority 1; Barrot V3 remains the protected execution/orchestration/safety/verification foundation.
+
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85
+- Integration branch: integration/xrp-v3-unified-main-20261111; pre-Run47 head: 28eafc87d7a7c4709789c51bc19839264b12eff4
+- PR #1661: open/draft, 2,082 ahead/0 behind, 1,047 changed files (49 workflow, 998 other); zero formal approvals/reviews.
+- Exact-head CI on 28eafc87d7a7c4709789c51bc19839264b12eff4: 3,500 passed/5 failed, 8 subtests, 61.34% coverage. Core 716/0; six-manifest audit passed with zero known vulnerabilities; fail-closed gate passed. Run47 repairs the five test-contract/snapshot failures; resulting head requires its own full-suite/wheel verification.
+- Credential path: 17/17 affected open PR branch-tip trees contain inherited `.config/gh/hosts.yml`; 0/17 changed-file inventories list it; main/integration absent. Contents unread; provider-side revocation unverified; no history rewritten.
+- Run47 event registry: 20 curated events; six new market/ETF/Evernorth/SBI records; zero raw publisher hashes; model-ineligible; scenario assembler wired on integration but no probabilities.
+- Market: OKX timestamp 04:47:04.271 UTC is 946.7 seconds old; Kraken has no event timestamp. Fuelmaps 04:00 six-venue book is bid-heavy at wider bands but excludes Binance/Bitget. Liqwall 05:02 OI $1.16B, +1.4%, +0.0055% average funding, $4.0M liquidations ($2.9M longs). TradRadar differs in universe/time; do not average.
+- Evernorth: 73.688M maximum registered XRPN resale shares include conditional conversions/exchanges/warrant shares; SBI has 9.431M Class A and 2.359M Class C. SBI lock-up status unresolved; no completed sale verified; holder resales yield no issuer proceeds.
+- Nine-platform map retained; only ChatGPT/GitHub API access verified, and permissions are overprivileged. No external-model transfer.
+- Merge withheld. Pages auto-publication, branch-protection HTTP 403, disabled fallback ruleset, least privilege and 998-path semantic review remain blockers.
+- Forecast NOT_ISSUED. No paper trade or real-money action.
+
+See `BARROT_XRP_MISSION_HANDOFF_LATEST.md`, `research/xrp_intelligence/20261112T050251Z-run47-market-quality-evernorth-sbi-resale-and-exact-head-ci-repair.json` and the canonical nine-platform map for structured evidence. The Run47 commit must pass exact-head CI; parent-head evidence is not substituted.
+
+---
+
 # Run32 — Canonical Barrot Sync State
 
 **Captured:** 2026-11-11T18:00:11Z

@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run46-2026-11-12",
-  "captured_at_utc": "2026-11-12T04:36:06Z",
-  "source_receipt_status": "CURATED_WEB_RESEARCH_ONLY; publisher payload bytes were not captured by Barrot's raw receipt collector in this run.",
+  "registry_version": "run47-2026-11-12",
+  "captured_at_utc": "2026-11-12T05:02:51Z",
+  "source_receipt_status": "CURATED_REGISTRY_SHA256_ONLY; six Run47 events have null raw_source_sha256 because publisher bytes were not captured by Barrot's raw-source collector.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -546,6 +546,262 @@
         "Coinbase",
         "RLUSD",
         "distribution"
+      ]
+    },
+    {
+      "event_id": "xrp-okx-spot-2026-11-12T0447Z",
+      "event_type": "market_microstructure",
+      "event_name": "OKX XRP-USDT ticker",
+      "hypothesis_id": "xrp-spot-cross-venue-alignment-vs-staleness-run47",
+      "domain": "spot_structure",
+      "hypothesis": "Normalized OKX and Kraken spot quotes are near-parity, but too stale/asynchronous for an executable spread conclusion.",
+      "counter_hypothesis": "OKX is 946.7 seconds old at capture, beyond the 900-second freshness threshold; Kraken has no event timestamp.",
+      "claim": "OKX at 04:47:04.271 UTC: last 1.0454, bid 1.0451, ask 1.0452; age at 05:02:51 UTC 946.7 seconds.",
+      "source_id": "okx_xrp_usdt_ticker_run47",
+      "source_name": "OKX public ticker",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "independence_group": "exchange:okx",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T04:47:04.271Z",
+      "source_published_at_utc": "2026-11-12T04:47:04.271Z",
+      "available_at_utc": "2026-11-12T05:02:51Z",
+      "captured_at_utc": "2026-11-12T05:02:51Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "OKX ts is exchange event time.",
+        "900 seconds is the freshness threshold."
+      ],
+      "falsification_conditions": [
+        "Fresh synchronized exchange data materially changes the quote or timestamp."
+      ],
+      "related_entities": [
+        "XRP",
+        "OKX",
+        "USDT"
+      ],
+      "tags": [
+        "XRP",
+        "spot",
+        "quote-quality",
+        "stale-source"
+      ]
+    },
+    {
+      "event_id": "xrp-kraken-spot-2026-11-12T0502Z",
+      "event_type": "market_microstructure",
+      "event_name": "Kraken XRP/USD and USDT/USD tickers",
+      "hypothesis_id": "xrp-spot-cross-venue-alignment-vs-staleness-run47",
+      "domain": "spot_structure",
+      "hypothesis": "Normalized OKX and Kraken spot quotes are near-parity, but too stale/asynchronous for an executable spread conclusion.",
+      "counter_hypothesis": "Kraken provides no exchange event timestamp; retrieval time is not proof of quote freshness.",
+      "claim": "At retrieval Kraken returned XRP/USD last 1.04357, bid 1.04374, ask 1.04375; USDT/USD midpoint 0.998685. Normalized OKX midpoint $1.0437756 versus Kraken midpoint $1.043745, a 0.00293% asynchronous gap.",
+      "source_id": "kraken_xrpusd_usdtusd_run47",
+      "source_name": "Kraken public ticker API",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "exchange:kraken",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T05:02:51Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T05:02:51Z",
+      "captured_at_utc": "2026-11-12T05:02:51Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "No Kraken event timestamp is inferred."
+      ],
+      "falsification_conditions": [
+        "Fresh timestamped Kraken data materially changes normalized gap."
+      ],
+      "related_entities": [
+        "XRP",
+        "Kraken",
+        "USDT"
+      ],
+      "tags": [
+        "XRP",
+        "spot",
+        "cross-venue",
+        "quote-quality"
+      ]
+    },
+    {
+      "event_id": "xrp-fuelmaps-depth-2026-11-12T0400Z",
+      "event_type": "market_microstructure",
+      "event_name": "Fuelmaps six-venue XRP spot book",
+      "hypothesis_id": "xrp-resting-spot-depth-asymmetry-run47",
+      "domain": "order_book_liquidity",
+      "hypothesis": "The 04:00 UTC snapshot was near-balanced within 1% and bid-heavy at wider bands.",
+      "counter_hypothesis": "Resting orders can be cancelled; Binance and Bitget excluded; five of six venues at ±10%; snapshot can be up to 65 minutes old.",
+      "claim": "Fuelmaps mid $1.0487. ±1% bids/asks $12.5M/$11.6M; ±5% $29.0M/$15.5M; ±10% $34.3M/$16.6M.",
+      "source_id": "fuelmaps_xrp_depth_run47",
+      "source_name": "Fuelmaps order-book heatmap",
+      "source_url": "https://fuelmaps.io/order-book/",
+      "independence_group": "market-data-aggregator:fuelmaps",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T04:00:00Z",
+      "source_published_at_utc": "2026-11-12T04:00:00Z",
+      "available_at_utc": "2026-11-12T05:02:51Z",
+      "captured_at_utc": "2026-11-12T05:02:51Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Published depth bands and venue coverage are accurate."
+      ],
+      "falsification_conditions": [
+        "Synchronized full-venue book materially differs."
+      ],
+      "related_entities": [
+        "XRP",
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "tags": [
+        "XRP",
+        "spot-depth",
+        "resting-liquidity"
+      ]
+    },
+    {
+      "event_id": "xrp-liqwall-derivatives-2026-11-12T0502Z",
+      "event_type": "derivatives",
+      "event_name": "Liqwall XRP derivatives snapshot",
+      "hypothesis_id": "xrp-derivatives-long-crowding-vs-provider-universe-run47",
+      "domain": "derivatives_positioning",
+      "hypothesis": "Liqwall shows positive funding, long-heavy liquidations and a majority of Binance accounts long.",
+      "counter_hypothesis": "TradRadar's prior snapshot has a different OI total/direction and liquidation split; venue and contract coverage differ, so do not average.",
+      "claim": "Liqwall 05:02 UTC: OI $1.16B (+1.4% 24h), average funding +0.0055%/8h, $4.0M liquidations ($2.9M longs/$1.1M shorts), 75.5% of Binance accounts long; Binance funding +0.0027%.",
+      "source_id": "liqwall_xrp_derivatives_run47",
+      "source_name": "Liqwall XRP dashboard",
+      "source_url": "https://liqwall.com/coins/xrp",
+      "independence_group": "market-data-aggregator:liqwall",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T05:02:00Z",
+      "source_published_at_utc": "2026-11-12T05:02:00Z",
+      "available_at_utc": "2026-11-12T05:02:51Z",
+      "captured_at_utc": "2026-11-12T05:02:51Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Liqwall aggregation and timestamps are accurate.",
+        "Account ratios are not notional exposure."
+      ],
+      "falsification_conditions": [
+        "Direct exchange APIs on a common contract set contradict the aggregate."
+      ],
+      "related_entities": [
+        "XRP",
+        "Binance",
+        "OKX",
+        "Bybit",
+        "Gate",
+        "Hyperliquid",
+        "TradRadar"
+      ],
+      "tags": [
+        "XRP",
+        "perpetuals",
+        "open-interest",
+        "funding",
+        "liquidations"
+      ]
+    },
+    {
+      "event_id": "xrp-etf-flows-2026-11-10",
+      "event_type": "etf_flows",
+      "event_name": "Alpha Finance and Pre-Tick SoSoValue-derived flows",
+      "hypothesis_id": "xrp-etf-outflow-pulse-vs-cumulative-demand-run47",
+      "domain": "capital_flows",
+      "hypothesis": "XRP ETF flows were negative across Nov 9-10, creating a short-term flow headwind despite positive longer-window totals.",
+      "counter_hypothesis": "Both dashboards share SoSoValue lineage; they are not independent. Cumulative inflows are not current AUM or same-day purchases.",
+      "claim": "Alpha Finance: Nov 9 -$10.4M, Nov 10 -$7.6M, 30-session +$1.3M, cumulative net inflows $1.71B; Pre-Tick reports the same -$18M two-day SoSoValue-derived total.",
+      "source_id": "sosovalue_xrp_etf_flows_run47",
+      "source_name": "Alpha Finance / Pre-Tick SoSoValue-derived dashboards",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "independence_group": "sosovalue-derived:xrp-spot-etf-flows",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-10T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T05:02:51Z",
+      "captured_at_utc": "2026-11-12T05:02:51Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Nov 10 is a date-level anchor; exact close time unavailable.",
+        "Both dashboards accurately transcribe SoSoValue lineage."
+      ],
+      "falsification_conditions": [
+        "Fund issuer or SoSoValue primary data revises the totals."
+      ],
+      "related_entities": [
+        "XRP",
+        "U.S. spot XRP ETFs",
+        "SoSoValue",
+        "Alpha Finance",
+        "Pre-Tick"
+      ],
+      "tags": [
+        "XRP",
+        "ETF-flows",
+        "source-lineage"
+      ]
+    },
+    {
+      "event_id": "evernorth-sbi-lockup-ambiguity-2026-11-12",
+      "event_type": "corporate",
+      "event_name": "SEC Evernorth Form 424B3 — SBI resale and lock-up",
+      "hypothesis_id": "evernorth-sbi-equity-resale-supply-vs-locked-holdings-run47",
+      "domain": "institutional_capital",
+      "hypothesis": "The SEC prospectus registers substantial potential XRPN resale capacity and identifies a large SBI-controlled Class A position.",
+      "counter_hypothesis": "The registered 73.688M is not all outstanding; it includes potential conversions/exchanges/warrants. General resale language references lock-up provisions, while the specific signatory list names Ripple, Sponsor and Contributor Related Party Entity, not SBI. SBI's contractual restriction is unresolved. Registration is not proof of sale; holder resales yield no issuer proceeds.",
+      "claim": "The Nov 9 filing registers up to 73,688,162 Class A shares: 19,102,635 issued, 31,392,746 potential Class C conversions, 22,953,128 potential Company Unit redemptions/exchanges and 239,653 warrant exercise shares. SBI-controlled entities hold 9,431,914 Class A and 2,359,038 non-voting, unlisted, non-transferable Class C shares; 39.9% group ownership cap. Specific lock-up signatories cover 7,044,386 Class A shares (29.8% of Oct 9 outstanding).",
+      "source_id": "sec_evernorth_424b3_run47",
+      "source_name": "SEC Form 424B3 — Evernorth Holdings",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "independence_group": "regulator:sec-edgar-evernorth",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-09T16:18:57Z",
+      "source_published_at_utc": "2026-11-09T16:18:57Z",
+      "available_at_utc": "2026-11-12T05:02:51Z",
+      "captured_at_utc": "2026-11-12T05:02:51Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "SEC tables are accurate as of stated dates.",
+        "Generic lock-up language does not by itself resolve SBI's executed obligations."
+      ],
+      "falsification_conditions": [
+        "Executed SBI agreement/side letter or transfer-agent record establishes restrictions.",
+        "Subsequent SEC filing establishes completed resales."
+      ],
+      "related_entities": [
+        "Evernorth",
+        "Pathfinder",
+        "SBI Holdings",
+        "SBI Holdings USA",
+        "SBI Venture Fund 2023A",
+        "SBI Venture Fund 2023B",
+        "SBI PE Holdings",
+        "Ripple Labs",
+        "Arrington XRP Capital Fund"
+      ],
+      "tags": [
+        "Evernorth",
+        "XRPN",
+        "SBI",
+        "resale-registration",
+        "lock-up",
+        "capital-structure"
       ]
     }
   ]

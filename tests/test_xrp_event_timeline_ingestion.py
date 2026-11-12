@@ -104,5 +104,34 @@ def test_invalid_registry_schema_fails_closed(tmp_path):
 
 def test_xrp_ingestion_workflow_publishes_the_event_timeline_artifact():
     workflow = Path(".github/workflows/xrp-public-ingestion.yml").read_text(encoding="utf-8")
-    assert "xrp-public-events-\${{ github.run_id }}" in workflow
+    assert r"xrp-public-events-${{ github.run_id }}" in workflow
     assert "artifacts/xrp_ingestion/event_timeline.json" in workflow
+
+
+def test_run47_registry_retains_current_market_and_sbi_resale_counterevidence_without_raw_receipts():
+    path = Path("research/xrp_intelligence/event_registry_current.json")
+    registry = json.loads(path.read_text(encoding="utf-8"))
+    assert registry["registry_version"] == "run47-2026-11-12"
+    assert registry["captured_at_utc"] == "2026-11-12T05:02:51Z"
+    assert registry["model_eligible"] is False
+    assert registry["forecast_status"] == "NOT_ISSUED"
+    expected = {
+        "xrp-okx-spot-2026-11-12T0447Z",
+        "xrp-kraken-spot-2026-11-12T0502Z",
+        "xrp-fuelmaps-depth-2026-11-12T0400Z",
+        "xrp-liqwall-derivatives-2026-11-12T0502Z",
+        "xrp-etf-flows-2026-11-10",
+        "evernorth-sbi-lockup-ambiguity-2026-11-12",
+    }
+    by_id = {event["event_id"]: event for event in registry["events"]}
+    assert expected <= set(by_id)
+    assert all(by_id[event_id]["raw_source_sha256"] is None for event_id in expected)
+    assert "SBI is not named" in by_id["evernorth-sbi-lockup-ambiguity-2026-11-12"]["counter_hypothesis"]
+    timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
+    assert timeline["registry_status"] == "LOADED"
+    assert timeline["event_count"] == 20
+    assert timeline["receipt_complete"] is False
+    assert timeline["model_eligible"] is False
+    assert timeline["forecast_status"] == "NOT_ISSUED"
+    assert timeline["directional_forecast"] is False
+    assert timeline["scenario_count"] > 0
