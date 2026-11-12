@@ -2153,3 +2153,55 @@ No external-model data transfer occurred.
 ### Next concrete action
 
 Verify exact-head full-suite, dependency audit, fail-closed gate and installed-wheel verification on the Run40 commit. Then prioritize semantic review of V3 executor/public interfaces/XRP ingestion/feature store/forecast ledger, and implement an evidence-bound scenario/counter-hypothesis generator without probabilities or directional outputs. Keep forecast issuance disabled until WORM anchoring, mature synchronized history, independent shadow outcomes and measured out-of-sample lift pass.
+
+
+## Run41 — 2026-11-12 01:55 UTC
+
+### Mission and repository
+- XRP intelligence/prediction-engine mastery remains priority 1; Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`; integration branch: `integration/xrp-v3-unified-main-20261111`; head before this atomic Run41 update: `29cc4a220d264904d06cf463305f194fe580a552`.
+- Integration is 2,070 commits ahead / 0 behind main. Complete trees: main 1,388 entries (1,288 files); integration 2,292 entries (2,183 files). PR #1661 has 1,032 changed files: 49 workflows and 983 other paths. Open PR inventory: 374 (360 drafts, 14 non-drafts; 366 target main and 8 target other bases).
+- GitHub API access verified. Local Git clone remains unavailable due DNS resolution. No branch or PR created.
+
+### Exact-head CI failure and repair
+- Exact head `29cc4a220d264904d06cf463305f194fe580a552`, CI [43137072787](https://github.com/Barrot-Agent/B-Agent/actions/runs/43137072787): 3,459 passed, 1 failed, 8 subtests, 60.92% coverage; core 716/0.
+- Sole failure: `tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge`. The test requires machine-readable `RETAINED_UNTIL_SUCCESSOR_MERGE`; map contained prose-only `RETAINED UNTIL SUCCESSOR MERGE`. Metadata-contract mismatch, not an observed V3 runtime, ingestion, feature-store, walk-forward or forecast-ledger failure.
+- Repair restores the uppercase token while retaining the human-readable explanation. No test removed or weakened.
+- Six-manifest dependency audit [43137072836](https://github.com/Barrot-Agent/B-Agent/actions/runs/43137072836) passed; zero known vulnerabilities reported. Fail-closed PR gate [43137072949](https://github.com/Barrot-Agent/B-Agent/actions/runs/43137072949) and push gate [43137065046](https://github.com/Barrot-Agent/B-Agent/actions/runs/43137065046) passed. Wheel/installed-wheel verification skipped because pytest failed. New atomic repair commit requires exact-head CI.
+
+### Integrated code review
+- XRP collector: 47 public source definitions, 45 scheduled; HTTPS host allowlist; redirects rejected at transport; response cap 10 MiB; 5-minute live age and 60-second order-book age; provenance headers captured; raw bytes hashed/retained in content-addressed archive; receipt chain uses fsync and SHA-256.
+- Collector workflow is integration-only, scheduled hourly at minute 3 and daily at 00:15 UTC; job is main-ref gated, uses contents/actions read-only permissions and checkout with `persist-credentials: false`. Main has no collector workflow or scheduled-ingestion verification.
+- Feature store is a point-in-time SQLite prototype; store receipt time/revision lineage prevent backfilled data being treated as historically known. Source explicitly states SQLite triggers/unkeyed hashes are not adversarial tamper-proof; external signed/checkpointed or independently controlled immutable archive remains required.
+- Workflow artifacts retain raw receipt bundle 90 days, per-run feature-store checkpoint 7 days, daily feature/summary/walk-forward archive 90 days; Actions cache/artifacts are not WORM and are mutable/expiring.
+- Walk-forward baselines: naive class prior, momentum, mean reversion and Gaussian volatility-normal; chronological cutoff, purge/embargo, temporal calibration and non-overlapping target-window ESS. Its own limitation says residual serial dependence and source correlation are not removed. Heavy-tailed empirical volatility baseline remains missing.
+- Forecast ledger requires verified point-in-time feature snapshots, canonical raw receipts, at least two independent source groups, 100 OOS samples, 100 shadow samples, 10 non-overlapping horizon multiples, weighted calibration error <=0.05 and externally trusted Ed25519 evaluator attestation. Production evaluator key and independent shadow outcomes remain absent.
+- Barrot V3 executor parses argv and runs shell=False; autonomous loop limits commands to explicit read-only inspection, bounded pytest and compileall. Structured action executor retains workspace-bound path checks. External action gates remain fail-closed.
+
+### XRP market and institutional research — research-only
+- OKX XRP-USDT: last 1.0507, bid 1.0506, ask 1.0507; provider event time 2026-11-12 01:30:05.362 UTC; 24h high 1.0807, low 1.0409, volume 41.564M XRP.
+- Kraken XRP/USD: last 1.04818, bid 1.04792, ask 1.04799; no provider event timestamp; 24h high 1.07953, low 1.04004, volume 21.634M XRP. Asynchronous midpoint difference ~0.257% before any USDT/USD normalization; not an executable arbitrage signal.
+- Current order-book depth was not retrieved; direct OKX/Kraken depth endpoints were inaccessible through this retrieval path. Prior Fuelmaps snapshot is stale.
+- Liqwall at 01:42 UTC Nov12: OI $1.16B (+0.2%/24h), funding +0.0053%/8h average, $4.2M liquidations ($3.0M longs/$1.2M shorts), Binance long-account share 75.1% (ratio 3.02).
+- TradRadar at 19:05 UTC Nov11: OI $1.57B (-0.97%), funding +0.0045%/8h, at least $2.85M liquidations ($1.58M longs/$1.27M shorts), long/short ratio 3.92 (79.7% long). Different timestamp/venue/contract universes; do not average.
+- Alpha Finance five-fund ETF view through Nov10: -$7.6M daily, -$18M seven sessions, +$1.3M 30 sessions, +$1.71B cumulative; GXRP -$7.2M largest daily outflow. XRP Insights wider six-spot-plus-BITW holdings dataset: Nov9–10 -9.568M XRP (~$10.0M), 1.1856B XRP held Nov10; Nov11 row provisional. The Block rolling 24h: -$10.4M, AUM $1.1B. CryptoKeyhole Nov10 partial 3/4; latest complete Nov6 -752,048 XRP. Different universes/cutoffs/methods; do not average.
+- XRP Insights exchange-wallet tracker at Nov11 08:00 UTC: 22.33B XRP in 701 wallets across 24 exchanges; same-wallet 7D +1.3M, 30D -155.7M; naive total +356.3M includes two newly tracked wallets holding 512.1M. 39.8% of tracked XRP is unlabeled hot/cold; cold storage included; not tradable float.
+- TrackWhale Nov11 19:45 UTC: 178.61M XRP inflows, 243.39M outflows, net tracked -64.78M; largest 168.42M transfer unlabeled, not confirmed exchange flow.
+- Ripple/BNY Oct27: BNY supports XRP and RLUSD custody for eligible clients; direct RLUSD mint/redeem at BNY and tokenized trade-finance work remain future/approval-dependent. PNC/Coinbase Nov9 USDC pilot auto-converts to USD; not XRP settlement. Evernorth SEC 424B3 prior reconciliation: 473.276M XRP treasury, ~82.17% in-kind and ~17.83% cash-purchased; 73.688M registered XRPN shares are equity resale/conversion, not XRP token supply; no completed XRP sale established.
+- Reuters Nov12: DXY 102.85 (+0.63%), USD/JPY 159.58; stronger-than-expected October CPI and hawkish Fed comments increased rate-hike expectations. Broad macro context, not XRP-specific causation.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate regional SME investment/consultation companies, not SBI Holdings. Regional ChatGPT seminars are educational, not an OpenAI partnership. ASK Coin candidates remain distinct with no XRPL integration verified. “Actual capital” is not a standardized XRP metric. Kamilah/Camilla YouTube ownership remains unverified; no videos attributed.
+
+### Source eligibility and forecast
+- Web/API observations were not captured by Barrot's byte-exact raw receipt pipeline; current depth unavailable; some sources lack event timestamps and several aggregators have shared source lineage. All Run41 observations remain `model_eligible=false`.
+- Forecast status: `NOT_ISSUED`. No directional forecast, paper trade or real-money action.
+
+### PR/security/backlog
+- PR #1661 remains open/draft, mergeable, zero formal approvals/reviews/review threads. Branch-protection detail returns HTTP 403; visible fallback ruleset disabled; connector reports admin/maintain/push/pull/triage; provider-side OAuth revocation unverified; automatic Pages publication on main push not authorized; 983 non-workflow paths still require semantic review.
+- Rechecked `.config/gh/hosts.yml` in all 17 affected open PR file inventories (#1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255, #1254): absent from all 17; contents not read; provider-side revocation not verified.
+- Fresh overlap: #1660 972 paths represented in #1661 (942 identical/30 different/0 absent); #1643 670 (661/9/0); #1640 280 (236/44/0); #1642 seven (0/7/0, unique); #1653 seven changed paths, four represented with different blobs and three absent, preserve unique graph work. No source PR closed.
+- No merge. Draft status, approvals, branch-protection visibility, least privilege, credential-owner revocation evidence, Pages authorization and semantic review remain blockers.
+
+### Next action
+- Verify exact-head full-suite, dependency audit, fail-closed gates, wheel build and installed primary mission on the atomic Run41 repair commit. Then continue semantic review; prioritize WORM/timestamp anchoring, replayable history and deterministic scenario/counter-hypothesis generation. Keep forecast issuance disabled until independent shadow outcomes and measured OOS lift pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
