@@ -526,12 +526,19 @@
         "https://www.idcrawl.com/kamilah-stevenson"
       ],
       "data": {
-        "first_party_identity": "Dr. Kamilah Stevenson / The Wealth Doctor",
-        "first_party_youtube_crosslink": "not found",
-        "directory_youtube_handles": 20,
-        "attributed_videos": 0
+        "person_identity_status": "CONFIRMED",
+        "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+        "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "candidate_handle": "@drkamilahstevenson",
+        "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+        "candidate_references": 21,
+        "verified_personal_channel_uploads": 0,
+        "verified_external_references": {
+          "guest_appearance": "Sulo54IlQ60",
+          "third_party_clip": "5DzBk8DfoLs"
+        }
       },
-      "caveat": "directory is non-authoritative; no video attribution",
+      "caveat": "Older Nov 8 artifact's first-party search result resolves the channel ID/handle pair, not the person's ownership of that channel; the same artifact says person-to-channel match is not conclusive and direct upload metadata count is zero. Canonical profile/gate remains authoritative.",
       "raw_receipt_sha256": null,
       "model_eligible": false
     }
@@ -568,5 +575,33 @@
     "force_push": false,
     "history_rewrite": false,
     "source_pr_closure": false
+  },
+  "kamilah_identity_reconciliation": {
+    "person_identity_status": "CONFIRMED",
+    "person": "Dr. Kamilah Stevenson / The Wealth Doctor",
+    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_handle": "@drkamilahstevenson",
+    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "candidate_reference_count": 21,
+    "verified_personal_channel_upload_count": 0,
+    "inventory_complete": false,
+    "external_video_references": {
+      "paul_barron_podcast": {
+        "video_id": "Sulo54IlQ60",
+        "type": "verified_guest_appearance_not_own_channel_upload"
+      },
+      "alina_x_clip": {
+        "video_id": "5DzBk8DfoLs",
+        "type": "third_party_upload_not_own_channel_upload"
+      }
+    },
+    "conflicting_historical_artifact": {
+      "path": "research/xrp_intelligence/20261108T041850Z-kamilah-channel-identity-and-public-video-inventory.json",
+      "claim": "first-party YouTube search result resolved channel ID and handle",
+      "limitation": "the same artifact says person-to-channel match is strongly corroborated, not conclusive; direct watch-page upload metadata verified count is zero; inventory_complete is false",
+      "resolution": "treat channel identifier resolution separately from person/account ownership; canonical profile and identity gate are authoritative"
+    },
+    "attribution_gate": "DO_NOT_ATTRIBUTE_CANDIDATE_UPLOADS_OR_ADMIT_VIDEO_CLAIMS_AS_FEATURES"
   }
 }
