@@ -37,7 +37,12 @@ class TermuxBridge:
         supplied = Path(value).expanduser()
         if ".." in supplied.parts:
             raise ValueError("Target path traversal is not allowed.")
-        candidate = supplied if supplied.is_absolute() else Path.cwd() / supplied
+        if supplied.is_absolute():
+            candidate = supplied
+        else:
+            if len(self.allowed_roots) != 1:
+                raise ValueError("Relative targets require exactly one approved Termux root.")
+            candidate = self.allowed_roots[0] / supplied
         candidate = Path(os.path.abspath(candidate))
 
         for root in self.allowed_roots:
