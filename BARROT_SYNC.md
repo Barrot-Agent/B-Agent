@@ -515,3 +515,29 @@ XRP intelligence remains mission priority 1; Barrot V3 remains the protected exe
 - Branch-protection endpoint HTTP 403; fallback ruleset disabled; Pages auto-publication authorization unresolved; provider-side OAuth revocation unverified. No PR merged/closed. Forecast NOT_ISSUED.
 
 See `BARROT_XRP_MISSION_HANDOFF_LATEST.md` and the Run49 structured artifact for full source lineage and caveats. Merge withheld despite exact-head CI success because #1661 remains draft with no approvals, security/authorization blockers and incomplete semantic review.
+
+---
+
+# Run50 — 2026-11-12T07:30:31Z
+
+XRP intelligence and prediction-engine mastery remain priority 1; Barrot V3 remains the protected execution/orchestration/safety/verification foundation.
+
+- Main SHA 84f28ee7755607236231545a14f3d093c1baaa85; integration branch integration/xrp-v3-unified-main-20261111; pre-run head d302127e910a474740f0604e4fefb917270ce73f; 2,090 ahead / 0 behind; main/integration trees 1,388 / 2,309.
+- PR #1661 open/draft/mergeable-clean; 1,050 changed files (49 workflows/1,001 other); 374 open PRs (360 drafts/14 non-drafts); zero formal approvals/reviews/threads.
+- PR merge-ref CI on d302127 into main 84f28ee: 3,507 passed/0 failed/eight subtests; 61.35% coverage; 101.38s; core 716 passed/eight subtests; wheel and installed V3/XRP mission verified. CI 43167564042; six-manifest/15-dependency audit 43167564022 (zero known vulnerabilities); fail-closed 43167564102 (auto-merge disabled). Run50 commit needs its own exact-head checks.
+- Coverage caveat: integration measures barrot_agent, directive_platform and data with branch coverage/no major package omissions, but lowers global fail-under from main 70 to 53; observed 61.35%. Add package-level floors/ratchets.
+- Spot 07:22 UTC: OKX 1.0451 USDT, Kraken $1.04317, normalized gap about 0.029%; asynchronous, no fresh spot L2. Nov11 close $1.05; vendor 2026 YTD -42.94%.
+- Derivatives: TradRadar $1.57B OI/7 venues, -0.97%, +0.0045% funding/8h, 79.7% long accounts; OptimistFi $1.3B/36 venues at 00:35 UTC; Binance/Bybit Fibonomy show positive funding with different OI changes. Do not average.
+- ETF disagreement: Alpha 5/5 funds and $0 Nov11, 7-session -$18M; CryptoKeyhole 2/4 reported; XRP Insights Nov11 provisional, Nov9–10 -9.568M XRP, 1.1856B held across six funds plus BITW. Different cohorts/cutoffs.
+- Coinbase cbXRP PoR 07:20 UTC: 152,909,832.68 XRP reserve / 152,907,586.15 cbXRP supply, 2,246.53 XRP excess. Morpho Nov6 Base market: $59.24M USDC debt / 119.87M cbXRP collateral; $8.8448M debt within a further 10% oracle decline, conditional only.
+- XRPL DefiLlama Nov12: $32.18M TVL, $964.69M stablecoins, RLUSD 90.56%, $8.19M 24h DEX, 60,898 active addresses, 3.93M tx. RLUSD live supply ~2.701B, ~1.812B Ethereum/~874M XRPL/~16.1M Base; Ripple issuer page Nov5 $2.6329B circulating/$2.748B reserves; Sep30 attestation 105.17%. Different dates/definitions.
+- SBI: Oct30 SBI/SMFG alliance and 5% SMFG stake in SBI Startale Marketing; Oct27 SBI/Startale/BlackRock tokenized-MMF/JPYSC MoU; Oct16 Open Standard and proposed JPYSC/OUSD PoC. None establishes XRP settlement. JPYSC issuer SBI Shinsei Trust Bank; distributor SBI VC Trade.
+- Macro: Reuters Nov12 04:26 GMT Brent -1.58% to $91.29, WTI -1.43% to $85.29; EIA Nov STEO still forecasts 2.52M b/d Middle East shut-ins in 4Q26 and Brent about $100 Nov/Dec.
+- Exact phrase: no primary ASK Coin/XRPL match; actual capital is not a standardized XRP metric; no exact SBIC/ChatGPT partnership. Dr Kamilah first-party identity found but no verified YouTube channel cross-link; no videos attributed.
+- Event registry now contains 40 curated events. New web records have raw_source_sha256=null and remain receipt-incomplete/model-ineligible.
+- Nine-platform map last fully captured 05:02:51 UTC; GitHub/ChatGPT re-tested and overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks 403; LunaRoute endpoint unverified. No external-model transfer.
+- Security: branch protection HTTP 403; fallback ruleset disabled; connector admin/maintain/push/pull/triage; Pages auto-publication authorization unresolved; credential-path branch-tip finding last checked Run48, not rechecked Run50; OAuth revocation unverified.
+- PR overlaps: #1660 972 shared/940 same/32 different; #1643 670/661/9; #1640 280/234/46; #1642 7/0/7; #1653 7 shared/1 same/6 different plus 6 source-only; #1655 5 shared/0 same/5 different plus 3 source-only. Preserve unique work; no source PR closed.
+- Forecast NOT_ISSUED. Merge withheld. New Run50 commit needs exact-head CI; #1661 remains draft/no approvals and security, coverage-policy and semantic-review blockers remain.
+
+See BARROT_XRP_MISSION_HANDOFF_LATEST.md and research/xrp_intelligence/20261112T073031Z-run50-market-cbxrp-sbi-etf-and-exact-head-ci.json for full evidence and source lineage.
