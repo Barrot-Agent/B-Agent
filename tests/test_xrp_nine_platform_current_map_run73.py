@@ -130,7 +130,7 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["state"] == "open"
     assert old["draft"] is True
     assert old["behind_by"] == 3
-    assert "retain until successor merge" in old["disposition"].lower()
+    assert "retained until successor merge" in old["disposition"].lower().replace("_", " ")
     assert "exact main-file verification" in old["disposition"].lower()
     assert current["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
     assert current["formal_approvals"] == 0
