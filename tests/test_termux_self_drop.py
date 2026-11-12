@@ -44,6 +44,16 @@ def test_termux_drop_round_trip_is_deterministic_and_idempotent(tmp_path):
     assert first_content == second_content
 
 
+def test_termux_drop_relative_path_is_resolved_inside_single_approved_root(tmp_path):
+    bridge = TermuxBridge(allowed_roots=(str(tmp_path),))
+    target = tmp_path / "relative_bundle.txt"
+
+    result = bridge.drop_text(path="relative_bundle.txt", content="SAFE RELATIVE DROP\n")
+
+    assert result.success is True
+    assert target.read_text(encoding="utf-8") == "SAFE RELATIVE DROP\n"
+
+
 def test_termux_drop_refuses_to_overwrite_existing_user_file(tmp_path):
     executor = BarrotActionExecutor(workspace=tmp_path)
 
