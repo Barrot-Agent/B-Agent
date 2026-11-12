@@ -43,7 +43,7 @@ ignore_missing_imports = true
 disallow_untyped_defs = true
 
 [tool.coverage.run]
-source = ["barrot_agent"]
+source = ["barrot_agent", "directive_platform", "data"]
 branch = true
 omit = ["*/__pycache__/*", "tests/*"]
 
