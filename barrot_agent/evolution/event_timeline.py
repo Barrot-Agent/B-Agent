@@ -9,8 +9,9 @@ create market features, or issue forecasts.
 available_at_utc is when the evidence became available to Barrot.
 captured_at_utc is the actual capture/ingestion time. A historical event
 captured after a historical cutoff is excluded even if its publisher timestamp
-is old. Raw-source hashes are required for receipt completeness, but this
-module does not claim that a local hash chain is an independent WORM anchor.
+is old. A raw-source hash alone does not establish receipt completeness. This module cannot
+verify canonical receipt metadata, retained bytes, or an independent timestamp anchor;
+a local hash chain is not an independent WORM anchor.
 """
 from __future__ import annotations
 
@@ -237,7 +238,9 @@ def _normalize_event(
 
     publisher_group = canonical_publisher_group(source_url)
     receipt_status = (
-        "RAW_SHA256_PRESENT" if raw_hash is not None else "MISSING_RAW_RECEIPT_HASH"
+        "RAW_SHA256_PRESENT_UNVERIFIED"
+        if raw_hash is not None
+        else "MISSING_RAW_RECEIPT_HASH"
     )
     if exclusion_reason is not None:
         excluded_record = {
@@ -264,6 +267,7 @@ def _normalize_event(
             "source_status": source_status,
             "declared_stance": stance,
             "raw_source_sha256": raw_hash,
+            "raw_hash_present": raw_hash is not None,
             "receipt_status": receipt_status,
             "assumptions": assumptions,
             "falsification_conditions": falsification,
@@ -300,6 +304,7 @@ def _normalize_event(
         "assumptions": assumptions,
         "falsification_conditions": falsification,
         "raw_source_sha256": raw_hash,
+        "raw_hash_present": raw_hash is not None,
         "receipt_status": receipt_status,
         "model_eligible": False,
         "research_only": True,
@@ -414,9 +419,9 @@ def build_event_timeline(
     except (ScenarioHypothesisError, ValueError) as exc:
         raise EventTimelineError(str(exc)) from exc
 
-    receipt_complete = bool(timeline) and all(
-        item["raw_source_sha256"] is not None for item in timeline
-    )
+    raw_hash_present_count = sum(1 for item in timeline if item["raw_hash_present"])
+    # Timeline inputs carry hashes but not independently verified canonical receipts.
+    receipt_complete = False
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "artifact_type": "barrot.xrp.point_in_time_event_timeline",
@@ -430,6 +435,7 @@ def build_event_timeline(
         "source_independence_groups": independence_groups,
         "independent_source_group_count": len(independence_groups),
         "scenario_set": scenarios,
+        "raw_hash_present_count": raw_hash_present_count,
         "receipt_complete": receipt_complete,
         "forecast_status": "NOT_ISSUED",
         "directional_forecast": False,
@@ -438,7 +444,8 @@ def build_event_timeline(
         "research_only": True,
         "warnings": [
             "Event records are explicit inputs; this module does not discover or verify external events.",
-            "A local SHA-256 receipt is not an independent WORM or trusted timestamp anchor.",
+            "A publisher SHA-256 digest is not a verified canonical receipt; raw bytes and receipt metadata are not validated here.",
+            "A local SHA-256 chain is not an independent WORM or trusted timestamp anchor.",
             "Publisher independence is a conservative lineage heuristic, not proof of independent reporting.",
             "Scenario hypotheses are authored inputs; this module does not infer causality or forecast probabilities.",
             "Contrary evidence remains visible as minority objections; no majority-vote suppression occurs.",

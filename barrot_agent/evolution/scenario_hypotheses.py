@@ -223,7 +223,12 @@ def _normalize_evidence(
         "available_at_utc": available_at_text,
         "event_is_future": event_time > cutoff,
         "raw_source_sha256": raw_hash,
-        "receipt_status": "SHA256_PRESENT" if raw_hash else "MISSING_RAW_RECEIPT_HASH",
+        "raw_hash_present": raw_hash is not None,
+        "receipt_status": (
+            "RAW_SHA256_PRESENT_UNVERIFIED"
+            if raw_hash is not None
+            else "MISSING_RAW_RECEIPT_HASH"
+        ),
         "assumptions": assumptions,
         "falsification_conditions": falsification,
     }
@@ -370,9 +375,12 @@ def build_scenario_hypotheses(
                     },
                     key=str.casefold,
                 ),
-                "receipt_complete": all(
-                    item["raw_source_sha256"] is not None for item in records
+                "raw_hash_present_count": sum(
+                    1 for item in records if item["raw_hash_present"]
                 ),
+                # This assembler sees only a digest, not canonical receipt metadata
+                # or the retained source bytes, so it cannot verify completeness.
+                "receipt_complete": False,
                 "future_scheduled_event_count": sum(
                     1
                     for item in records
@@ -400,9 +408,11 @@ def build_scenario_hypotheses(
         "probabilities": None,
         "model_eligible": False,
         "research_only": True,
-        "receipt_complete": all(
-            item["raw_source_sha256"] is not None for item in normalized
+        "raw_hash_present_count": sum(
+            1 for item in normalized if item["raw_hash_present"]
         ),
+        # A payload digest alone is not a verified, byte-complete source receipt.
+        "receipt_complete": False,
         "evidence_fingerprint": _canonical_hash(normalized),
         "source_independence_note": (
             "Publisher and declared-lineage grouping is a conservative heuristic, "
@@ -412,6 +422,7 @@ def build_scenario_hypotheses(
             "Hypotheses and counter-hypotheses are explicitly authored inputs; this module does not infer causality.",
             "Contrary evidence is retained as minority_objections and is never removed by a majority vote.",
             "The output is research-only and cannot be used as a directional forecast or model feature.",
+            "A raw-source SHA-256 alone does not verify canonical receipt metadata, retained bytes, or an independent timestamp anchor.",
         ],
     }
     payload["artifact_id"] = "scenario-set:" + _canonical_hash(payload)[:24]

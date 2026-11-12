@@ -196,7 +196,24 @@ def test_missing_raw_hash_is_visible_and_never_model_eligible():
     scenario = result["scenarios"][0]
 
     assert scenario["receipt_complete"] is False
+    assert scenario["raw_hash_present"] is False
+    assert scenario["raw_hash_present_count"] == 0
     assert scenario["supporting_evidence"][0]["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+    assert result["raw_hash_present_count"] == 0
+    assert result["receipt_complete"] is False
+    assert result["model_eligible"] is False
+
+
+def test_payload_hash_alone_does_not_claim_a_complete_source_receipt():
+    result = build([evidence("hash-only")])
+    scenario = result["scenarios"][0]
+    item = scenario["supporting_evidence"][0]
+
+    assert item["raw_hash_present"] is True
+    assert item["receipt_status"] == "RAW_SHA256_PRESENT_UNVERIFIED"
+    assert scenario["raw_hash_present_count"] == 1
+    assert scenario["receipt_complete"] is False
+    assert result["raw_hash_present_count"] == 1
     assert result["receipt_complete"] is False
     assert result["model_eligible"] is False
 

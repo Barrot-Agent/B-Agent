@@ -66,6 +66,9 @@ def test_builds_deterministic_timeline_and_research_only_scenarios():
     assert first["directional_forecast"] is False
     assert first["probabilities"] is None
     assert first["model_eligible"] is False
+    assert first["receipt_complete"] is False
+    assert first["raw_hash_present_count"] == 2
+    assert first["event_timeline"][0]["receipt_status"] == "RAW_SHA256_PRESENT_UNVERIFIED"
     assert first["scenario_set"]["scenarios"][0]["disagreement_present"] is True
     assert first["scenario_set"]["scenarios"][0]["minority_objection_count"] == 1
 
@@ -169,6 +172,8 @@ def test_missing_raw_hash_is_visible_and_receipt_incomplete():
     result = build([event("missing-receipt", raw_source_sha256=None)])
 
     assert result["receipt_complete"] is False
+    assert result["raw_hash_present_count"] == 0
+    assert result["event_timeline"][0]["raw_hash_present"] is False
     assert result["event_timeline"][0]["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
     assert result["model_eligible"] is False
 
@@ -250,7 +255,8 @@ def test_excluded_events_retain_source_timestamps_lineage_and_receipt():
     assert excluded["source_published_at_utc"] == "2026-11-10T10:01:00Z"
     assert excluded["captured_at_utc"] == "2026-11-12T03:00:02Z"
     assert excluded["raw_source_sha256"] == "a" * 64
-    assert excluded["receipt_status"] == "RAW_SHA256_PRESENT"
+    assert excluded["raw_hash_present"] is True
+    assert excluded["receipt_status"] == "RAW_SHA256_PRESENT_UNVERIFIED"
     assert excluded["model_eligible"] is False
 
 
