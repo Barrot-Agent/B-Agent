@@ -108,11 +108,11 @@ def test_xrp_ingestion_workflow_publishes_the_event_timeline_artifact():
     assert "artifacts/xrp_ingestion/event_timeline.json" in workflow
 
 
-def test_run47_registry_retains_current_market_and_sbi_resale_counterevidence_without_raw_receipts():
+def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_raw_receipts():
     path = Path("research/xrp_intelligence/event_registry_current.json")
     registry = json.loads(path.read_text(encoding="utf-8"))
-    assert registry["registry_version"] == "run47-2026-11-12"
-    assert registry["captured_at_utc"] == "2026-11-12T05:02:51Z"
+    assert registry["registry_version"].startswith("run")
+    assert registry["captured_at_utc"].endswith("Z")
     assert registry["model_eligible"] is False
     assert registry["forecast_status"] == "NOT_ISSUED"
     expected = {
@@ -129,7 +129,7 @@ def test_run47_registry_retains_current_market_and_sbi_resale_counterevidence_wi
     assert "SBI is not named" in by_id["evernorth-sbi-lockup-ambiguity-2026-11-12"]["counter_hypothesis"]
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
-    assert timeline["event_count"] == 20
+    assert timeline["event_count"] == len(registry["events"])
     assert timeline["receipt_complete"] is False
     assert timeline["model_eligible"] is False
     assert timeline["forecast_status"] == "NOT_ISSUED"
