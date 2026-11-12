@@ -1,0 +1,301 @@
+{
+  "artifact_type": "xrp_spot_etf_custody_jpysc_reconciliation",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T130152Z-xrp-spot-etf-custody-jpysc-reconciliation",
+  "captured_at_utc": "2026-11-07T13:01:52Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_commit": "c21a3fc828bf413cdc08703ebd1e8b3ced72e0da",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "spot_market": {
+    "model_admission": "EXCLUDED",
+    "capture_reference_utc": "2026-11-07T13:01:52Z",
+    "sources": [
+      {
+        "source_id": "kraken_xrp_usd_ticker",
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "retrieval_interface": "web public endpoint retrieval",
+        "provider_event_timestamp_utc": null,
+        "freshness": "UNKNOWN_PROVIDER_EVENT_TIME",
+        "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16093000\",\"3790\",\"3790.000\"],\"b\":[\"1.16088000\",\"3756\",\"3756.000\"],\"c\":[\"1.16103000\",\"1432.66844914\"],\"v\":[\"11739663.99549352\",\"28281223.70837823\"],\"p\":[\"1.16518068\",\"1.17489364\"],\"t\":[12248,29727],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.19791000\"],\"o\":\"1.17749000\"}}}",
+        "raw_response_sha256": "3728a4a1aa7f1e6686d2cb3d8fc278bfc4d8030252352de9ea5cc323baabf89e",
+        "hash_scope": "SHA-256 of the exact JSON text returned by the retrieval interface; not original HTTP wire bytes or headers",
+        "normalized": {
+          "instrument": "XRP/USD",
+          "last_usd": 1.16103,
+          "best_bid_usd": 1.16088,
+          "best_ask_usd": 1.16093,
+          "level1_spread_bps": 0.4306984636994889,
+          "rolling_24h_volume_xrp": 28281223.70837823,
+          "rolling_24h_vwap_usd": 1.17489364,
+          "utc_day_open_usd": 1.17749,
+          "provider_timestamp_available": false
+        },
+        "limitations": [
+          "Level-1 ticker only; no full depth ladder.",
+          "No provider event timestamp; retrieval time is not an exchange event time."
+        ]
+      },
+      {
+        "source_id": "okx_xrp_usdt_ticker",
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "retrieval_interface": "web public endpoint retrieval",
+        "provider_event_timestamp_utc": "2026-11-07T12:53:58.767Z",
+        "provider_timestamp_epoch_ms": 1794056038767,
+        "age_at_capture_seconds": 473.233,
+        "freshness": "STALE_GT_300_SECONDS",
+        "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1624\",\"lastSz\":\"64.440378\",\"askPx\":\"1.1624\",\"askSz\":\"935.559622\",\"bidPx\":\"1.1623\",\"bidSz\":\"7814.828148\",\"open24h\":\"1.19\",\"high24h\":\"1.1996\",\"low24h\":\"1.1518\",\"volCcy24h\":\"56308808.1785640441\",\"vol24h\":\"47871582.051976\",\"ts\":\"1794056038767\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+        "raw_response_sha256": "374020feb38426718c49e2fe64b4c1521cc120f911aa9e57967325a18803f4cc",
+        "hash_scope": "SHA-256 of the exact JSON text returned by the retrieval interface; not original HTTP wire bytes or headers",
+        "normalized": {
+          "instrument": "XRP/USDT",
+          "last_usdt": 1.1624,
+          "best_bid_usdt": 1.1623,
+          "best_ask_usdt": 1.1624,
+          "best_bid_size_xrp": 7814.828148,
+          "best_ask_size_xrp": 935.559622,
+          "level1_spread_bps": 0.8603260635780013,
+          "rolling_24h_volume_xrp": 47871582.051976,
+          "rolling_24h_volume_usdt": 56308808.17856404,
+          "provider_timestamp_available": true
+        },
+        "limitations": [
+          "Provider event timestamp is older than the 300-second live-feature threshold.",
+          "Level-1 only; not a complete depth ladder."
+        ]
+      }
+    ],
+    "cross_venue": {
+      "raw_last_price_difference_pct": 0.11799867359156037,
+      "currencies": "USD versus USDT",
+      "fx_or_stablecoin_basis_normalized": false,
+      "event_times_synchronized": false,
+      "executable_depth_available": false,
+      "fees_slippage_and_transfer_latency_measured": false,
+      "interpretation": "Not an arbitrage observation and not a synchronized return. No cross-venue feature admitted."
+    },
+    "reference_context": {
+      "kraken_last_vs_rolling_24h_vwap_pct": -1.1799910671063008,
+      "kraken_last_vs_utc_day_open_pct": -1.3978887294159525,
+      "caveat": "These are within-response arithmetic comparisons; Kraken's event timestamp is unavailable."
+    }
+  },
+  "depth": {
+    "status": "NOT_CAPTURED",
+    "attempted_public_endpoints": [
+      "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=25",
+      "https://www.okx.com/api/v5/market/books?instId=XRP-USDT&sz=50"
+    ],
+    "retrieval_result": "The browser retrieval path could not access these depth endpoints.",
+    "interpretation": "No numeric multi-level depth, imbalance, resiliency or executable-size feature is available from this capture. This does not establish an exchange outage."
+  },
+  "etf_issuer_snapshots": {
+    "method": "Issuer pages only; preserve each issuer's explicit as-of date and field definitions.",
+    "daily_dollar_flows": "NOT_VERIFIED_FROM_ISSUER_PAGES",
+    "funds": [
+      {
+        "fund": "Bitwise XRP ETF",
+        "ticker": "XRP",
+        "issuer_source": "https://bitxrpetf.com/",
+        "as_of_date": "2026-11-05",
+        "xrp_in_trust": 415365129.04,
+        "net_assets_usd": 488684299,
+        "shares_outstanding": 37210000,
+        "trust_custodian": "BNY",
+        "digital_asset_custodian": "Coinbase Custody Trust Co., LLC",
+        "evidence_status": "PRIMARY_ISSUER_PAGE"
+      },
+      {
+        "fund": "Franklin XRP ETF",
+        "ticker": "XRPZ",
+        "issuer_source": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ",
+        "as_of_date": "2026-11-04",
+        "xrp_in_fund": 310430333.34,
+        "total_net_assets_usd": 403940000,
+        "shares_outstanding": 28600000,
+        "custodian": "Coinbase Custody Trust Company, LLC",
+        "evidence_status": "PRIMARY_ISSUER_PAGE"
+      },
+      {
+        "fund": "Grayscale XRP Trust ETF",
+        "ticker": "GXRP",
+        "issuer_source": "https://etfs.grayscale.com/gxrp",
+        "as_of_date": "2026-11-06",
+        "xrp_in_fund": 64838291.2993,
+        "assets_under_management_non_gaap_usd": 75953260,
+        "gaap_aum_usd": 75958058,
+        "shares_outstanding": 3350100,
+        "fund_administrator": "BNY",
+        "digital_asset_custodian": "Coinbase Custody Trust Company, LLC",
+        "additional_digital_asset_custodian": "Anchorage Digital Bank N.A.",
+        "evidence_status": "PRIMARY_ISSUER_PAGE"
+      },
+      {
+        "fund": "21shares XRP ETF",
+        "ticker": "TOXR",
+        "issuer_source": "https://www.21shares.com/en-us/products-us/toxr",
+        "as_of_date": "2026-11-06",
+        "aum_usd": 126271816.14,
+        "net_assets_usd": 126271816.14,
+        "shares_outstanding": 11020000,
+        "xrp_holdings_quantity": null,
+        "holdings_page_status": "BLANK_OR_NOT_RENDERED_IN_CAPTURE",
+        "custodians": [
+          "Anchorage Digital Bank N.A.",
+          "BitGo Bank & Trust, N.A.",
+          "Coinbase Custody International, Ltd"
+        ],
+        "evidence_status": "PRIMARY_ISSUER_PAGE_WITH_HOLDINGS_FIELD_UNAVAILABLE"
+      },
+      {
+        "fund": "Canary XRP ETF",
+        "ticker": "XRPC",
+        "issuer_source": "https://canaryetfs.com/xrpc/",
+        "as_of_date": null,
+        "xrp_holdings_quantity": null,
+        "evidence_status": "NO_PRIMARY_SNAPSHOT_ADMITTED_FOR_2026-11-07_CUTOFF",
+        "exclusion": "The current issuer page exposed a 2026-11-09 holdings date, which is after this run's 2026-11-07 cutoff. Future-dated values were excluded. A secondary article reported a Nov 6 quantity, but it was not independently validated against an accessible primary Nov 6 snapshot."
+      }
+    ],
+    "partial_known_xrp_holdings_sum": 790633753.6793,
+    "partial_sum_scope": "Bitwise Nov 5 + Franklin Nov 4 + Grayscale Nov 6 only",
+    "partial_sum_status": "INCOMPLETE_AND_NON_SYNCHRONIZED_NOT_TOTAL_MARKET_HOLDINGS",
+    "flow_disagreement": {
+      "secondary_source": "https://hold-hub.com/xrp-etf-inflows-check-real-numbers/",
+      "publication_date": "2026-11-06",
+      "observation": "The article reports that SoSoValue showed $0.00 for all five funds before the US open on Nov 6 while the history table was labelled 'Not updated'.",
+      "treatment": "MISSING_OR_NOT_UPDATED_NOT_CONFIRMED_ZERO_FLOW",
+      "source_independence": "Hold Hub's holdings table is derived from issuer pages; its aggregator-flow discussion is not an independent issuer cash-flow confirmation.",
+      "reason": "Issuer pages disclose holdings, shares and net assets but not daily dollar creations/redemptions. Different update dates and settlement timing prevent treating a stale zero as an actual zero."
+    }
+  },
+  "institutional_relationships": [
+    {
+      "relationship": "BNY <-> Ripple",
+      "source": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publication_date": "2026-10-27",
+      "verified_roles": [
+        "BNY is RLUSD's primary reserve custodian.",
+        "BNY has a custody relationship with Ripple Prime.",
+        "BNY's Digital Asset Custody platform now supports XRP and RLUSD for eligible institutional clients."
+      ],
+      "planned_or_conditional": [
+        "BNY and Ripple intend to enable BNY clients to mint and redeem RLUSD directly through BNY, subject to final BNY and regulatory approvals.",
+        "They intend to broaden support for tokenized assets and investment products issued on XRPL.",
+        "Ripple, BNY and C2FO are exploring a tokenized supply-chain-finance/approved-receivables initiative on XRPL."
+      ],
+      "interpretation": "Custody support is verified institutional infrastructure. It does not prove XRP balances, purchases, collateral utilization, lending or live tokenized trade-finance issuance."
+    },
+    {
+      "relationship": "Coinbase <-> XRP ETF issuers",
+      "sources": [
+        "https://bitxrpetf.com/",
+        "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ",
+        "https://etfs.grayscale.com/gxrp",
+        "https://www.21shares.com/en-us/products-us/toxr"
+      ],
+      "verified_roles": [
+        "Coinbase Custody is named as digital-asset custodian for Bitwise XRP, Franklin XRPZ and Grayscale GXRP.",
+        "21Shares lists Coinbase Custody International alongside Anchorage and BitGo as fund custodians."
+      ],
+      "interpretation": "Custody mandates establish service-provider relationships, not Coinbase proprietary XRP holdings, customer flow, ETF creation volume or collateral utilization."
+    },
+    {
+      "relationship": "Ripple <-> Coinbase RLUSD distribution",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publication_date": "2026-10-28",
+      "verified_roles": [
+        "RLUSD launched on Coinbase Prime, Coinbase Exchange and Coinbase Retail.",
+        "The announcement names XRPL, Base and Ethereum as supported networks."
+      ],
+      "planned_or_follow_on": [
+        "Coinbase Global Exchange availability and RLUSD collateral use were described as future follow-on access."
+      ],
+      "interpretation": "RLUSD distribution is not evidence of XRP purchases. Do not label RLUSD collateral on Coinbase Global Exchange as live based on this announcement."
+    }
+  ],
+  "jpysc_sbi": {
+    "primary_source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+    "publisher": "SBI VC Trade, an SBI Holdings consolidated subsidiary",
+    "as_of_date": "2026-11-02",
+    "issuer_and_distribution_roles_source": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+    "issuer_role": "SBI Shinsei Trust Bank issues JPYSC and manages the trust assets; SBI VC Trade acts as issuance委託者/electronic-payment-instrument operator and drives distribution and use cases.",
+    "reported_lending_balance_jpy": ">10000000000",
+    "reported_handled_balance_jpy": ">30000000000",
+    "handled_balance_definition": "SBI's footnote defines JPYSC handled balance as on-chain balance plus lending balance.",
+    "public_chain_status": "SBI says public-chain distribution is a future step after legal amendments; do not interpret the Nov 2 handled balance as proof of unrestricted public-chain circulation.",
+    "lending_courses_as_announced": [
+      {
+        "term_days": 28,
+        "annual_rate_pct": 2
+      },
+      {
+        "term_days": 84,
+        "annual_rate_pct": 2.5
+      },
+      {
+        "term_days": 168,
+        "annual_rate_pct": 3
+      }
+    ],
+    "risk_and_liquidity_notes": [
+      "SBI states JPYSC lending is not a bank deposit and is not covered by deposit insurance.",
+      "Early cancellation during the lending term is generally unavailable.",
+      "Rates and terms are subject to market conditions and may change."
+    ],
+    "interpretation": "The reported balance is a meaningful SBI-controlled yen stablecoin service/adoption metric, but it is not an XRP flow, XRP reserve or public-chain XRP liquidity metric."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Institutional custody and stablecoin distribution infrastructure around Ripple/XRPL is expanding.",
+      "support": [
+        "BNY supports XRP and RLUSD custody; Coinbase distributes RLUSD; SBI VC Trade distributes RLUSD and JPYSC."
+      ],
+      "counterevidence_or_limit": "Service availability and custody mandates do not establish usage, transaction volume, XRP balances or purchases."
+    },
+    {
+      "id": "H2",
+      "hypothesis": "If custody access is later paired with collateral, payment or tokenized trade-finance workflows, XRP utility or inventory demand could increase.",
+      "support": [
+        "BNY and Ripple explicitly discuss future payments, collateral and tokenized trade-finance workflows."
+      ],
+      "counterevidence_or_limit": "The direct mint/redeem and C2FO initiatives are planned/exploratory; client balances and XRP utilization are undisclosed."
+    },
+    {
+      "id": "H3",
+      "hypothesis": "Stablecoin rails may compete with or complement XRP as a bridge asset depending on route, liquidity, cost and regulatory design.",
+      "support": [
+        "RLUSD is available across XRPL, Base and Ethereum; SBI is scaling JPYSC services."
+      ],
+      "counterevidence_or_limit": "No comparative route-level volume, inventory or settlement-cost dataset was captured."
+    }
+  ],
+  "disconfirming_evidence": [
+    "Kraken event timestamp is unavailable and OKX's timestamp is 473.233 seconds old.",
+    "USD and USDT quotes were not normalized and no synchronized multi-level order books were captured.",
+    "Issuer ETF holdings are from different as-of dates; 21Shares holdings quantity was not exposed in the captured page; Canary's accessible issuer snapshot was future-dated and excluded.",
+    "A SoSoValue zero accompanied by 'Not updated' is missing data, not verified zero creations/redemptions.",
+    "BNY custody does not imply lending, collateral eligibility or actual XRP holdings.",
+    "BNY/Ripple direct mint/redeem and C2FO tokenized trade-finance work remain subject to approvals or exploratory.",
+    "SBI's JPYSC handled balance includes lending balance and does not establish public-chain circulation or XRP demand.",
+    "Coinbase RLUSD collateral availability on Global Exchange was described as future follow-on work."
+  ],
+  "model_admission": {
+    "admitted": false,
+    "excluded_from_price_features": true,
+    "reasons": [
+      "Spot observations are not synchronized or both fresh.",
+      "No full depth ladder or executable liquidity estimate.",
+      "ETF holdings have mixed cutoffs and no verified daily issuer flow.",
+      "Institutional custody/service availability is contextual event evidence, not measured XRP demand.",
+      "JPYSC balances are not XRP-specific and are not proof of public-chain circulation."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability_recorded": false,
+    "shadow_or_paper_trade_performed": false
+  }
+}

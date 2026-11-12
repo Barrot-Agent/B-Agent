@@ -1,20 +1,17 @@
-name: Diagnose Cloudflare Token
+name: Diagnose Cloudflare Token (quarantined pending explicit diagnostic authorization)
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
+
+permissions: {}
 
 jobs:
-  diag:
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - name: Compare account ID + check token permissions
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Explain quarantine
         run: |
-          echo "=== token verify ==="
-          curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/user/tokens/verify" | jq '{success, status: .result.status}'
-          echo "=== accounts this token can see, and whether the secret matches ==="
-          curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts" | jq --arg want "$CLOUDFLARE_ACCOUNT_ID" '{success, accounts: [.result[]? | {name, matches_secret: (.id == $want)}]}'
-          echo "=== direct call to the exact failing endpoint, bypassing wrangler entirely ==="
-          curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts" | jq '{success, errors}'
+          echo "The previous diagnostic used Cloudflare API credentials and emitted account names and token-scope metadata to workflow logs without a separate per-run authorization."
+          echo "It remains disabled until diagnostic scope, log visibility and public metadata disclosure are explicitly reviewed."
+          echo "No Cloudflare token is read, no API request is made, and no account metadata is emitted."

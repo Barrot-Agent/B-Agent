@@ -1,0 +1,507 @@
+{
+  "artifact_type": "barrot_xrp_run_research_and_integration_audit",
+  "schema_version": "1.0.0",
+  "run_id": 18,
+  "captured_at_utc": "2026-11-11T09:00:10Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run18_commit": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
+    "integration_pr": 1661,
+    "commits_ahead": 2000,
+    "commits_behind": 0,
+    "changed_files": 990,
+    "changed_workflow_files": 44,
+    "other_changed_paths": 946,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2256,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "local_git_transport": "DNS failure for github.com; authenticated GitHub API access succeeded"
+  },
+  "ci": {
+    "tested_head": "72247b2bfdfcf6b5e9a57d30f65f4a7a1e02df1b",
+    "full_suite": {
+      "passed": 3377,
+      "failed": 30,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "duration_seconds": 65.96,
+      "run_id": 42988957823,
+      "job_id": 130416831891,
+      "conclusion": "failure"
+    },
+    "core_suite": {
+      "conclusion": "success",
+      "job_id": 130416832276
+    },
+    "dependency_audit": {
+      "conclusion": "success",
+      "run_id": 42988957954,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "conclusion": "success",
+      "run_id": 42988957885,
+      "automatic_merge_enabled": false
+    },
+    "failing_tests": [
+      "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_is_nonempty_and_contains_the_nine_requested_platforms",
+      "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_never_claims_unverified_platforms_are_live",
+      "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_keeps_lunaroute_declared_but_not_authenticated",
+      "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_preserves_fail_closed_permissions_and_no_money_actions",
+      "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_task_assignments_are_design_only_until_authentication",
+      "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_primary_mission_and_v3_foundation_are_explicit",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_nine_platform_map_verifies_only_the_current_chatgpt_connector",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_lunaroute_is_declared_but_not_authenticated",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_nine_platform_coordination_is_design_only_without_external_exchange",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_least_privilege_and_external_action_gates_remain_closed",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_orderbook_is_resting_liquidity_not_guaranteed_support",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exchange_flow_snapshot_keeps_unattributed_transfer_separate",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_derivatives_provider_disagreement_is_preserved_without_averaging",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_options_snapshot_keeps_near_and_deferred_expiry_skew_distinct",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_etf_flow_windows_and_holdings_limitations_are_separate",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_cftc_contract_reconciliation_treats_dropped_contract_as_unknown",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_institutional_and_capital_relationships_keep_entities_and_categories_separate",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_macro_and_geopolitical_observations_keep_competing_hypotheses",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+    ],
+    "root_cause": "The Run17 commit replaced the required schema_version 1.1.0 object-shaped current capability map with a legacy schema_version 1.0 list-shaped artifact. The 30 failures are schema/map contract assertions. Core tests passed; no runtime XRP prediction-engine failure was reported.",
+    "repair": "Restore the schema_version 1.1.0 object contract from the prior verified tree, update the regression test to identify this schema failure accurately, and add tests for the latest research-only market refresh. Exact-head CI on the repair commit remains pending."
+  },
+  "overlap_reconciliation": {
+    "pr1660": {
+      "changed_paths": 972,
+      "identical_blobs": 959,
+      "different_blobs": 13,
+      "absent_paths": 0
+    },
+    "pr1643": {
+      "changed_paths": 670,
+      "identical_blobs": 661,
+      "different_blobs": 9,
+      "absent_paths": 0
+    },
+    "pr1642": {
+      "changed_paths": 7,
+      "identical_blobs": 0,
+      "different_blobs": 7,
+      "absent_paths": 0
+    },
+    "pr1653": {
+      "unique_paths": 6,
+      "shared_paths": 1
+    },
+    "pr1614": {
+      "unique_paths": 27,
+      "shared_paths": 30
+    },
+    "pr1611": {
+      "unique_paths": 1,
+      "shared_paths": 7
+    },
+    "pr1610": {
+      "unique_paths": 7,
+      "shared_paths": 7
+    },
+    "pr1612": {
+      "unique_paths": 2,
+      "shared_paths": 2
+    },
+    "pr1269": {
+      "unique_paths": 8,
+      "shared_paths": 1
+    }
+  },
+  "credential_path_audit": {
+    "path": ".config/gh/hosts.yml",
+    "main_contains": false,
+    "active_integration_contains": false,
+    "other_open_pr_tips_checked": 17,
+    "other_open_pr_tips_containing_path": 17,
+    "affected_prs": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1643,
+      1642,
+      1640,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ],
+    "contents_read": false,
+    "history_rewritten": false,
+    "provider_revocation_independently_verified": false
+  },
+  "latest_market_refresh": {
+    "captured_at_utc": "2026-11-11T09:00:10Z",
+    "retrieved_at_utc": "2026-11-11T09:00:10Z",
+    "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE; public web/API observations were not captured by Barrot's raw-source receipt pipeline.",
+    "raw_source_receipts": {
+      "captured_by_barrot": false,
+      "sha256_receipts_created": false,
+      "reason": "Web-rendered public API responses and provider pages were observed in this research run; no Barrot raw collector receipt was produced."
+    },
+    "spot": {
+      "okx": {
+        "pair": "XRP-USDT",
+        "event_time_utc": "2026-11-11T08:52:21.169Z",
+        "last": 1.0585,
+        "bid": 1.0585,
+        "ask": 1.0586,
+        "open_24h": 1.0857,
+        "high_24h": 1.0909,
+        "low_24h": 1.0311,
+        "volume_24h_xrp": 70440667.34339,
+        "volume_24h_quote_usdt": 74722912.92817385,
+        "return_from_open_24h_percent": -2.5053,
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      "kraken": {
+        "pair": "XRP/USD",
+        "retrieved_at_utc": "2026-11-11T09:00:10Z",
+        "event_timestamp_available": false,
+        "last": 1.05557,
+        "bid": 1.05555,
+        "ask": 1.05557,
+        "utc_day_open": 1.05511,
+        "high_24h": 1.08946,
+        "low_24h": 1.03011,
+        "volume_24h_xrp": 35306892.69489712,
+        "field_semantics": "Kraken o is the UTC-day open, not a rolling 24-hour open.",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+      },
+      "kraken_usdt_usd": {
+        "retrieved_at_utc": "2026-11-11T09:00:10Z",
+        "last": 0.99879,
+        "bid": 0.99878,
+        "ask": 0.99879,
+        "mid": 0.998785,
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+      },
+      "normalized_okx_usd": 1.05726386175,
+      "kraken_mid": 1.05556,
+      "normalized_spread_vs_kraken_mid_percent": 0.1614,
+      "cross_venue_note": "OKX supplied an event timestamp; Kraken did not. The normalized midpoint difference is asynchronous and descriptive, not executable arbitrage. Kraken's open field is UTC-day open; OKX open24h is rolling 24-hour open."
+    },
+    "spot_order_book": {
+      "latest_primary_aggregated_snapshot": {
+        "provider": "Fuelmaps",
+        "snapshot_time_utc": "2026-11-11T07:00:00Z",
+        "mid": 1.0548,
+        "venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "depth_usd": {
+          "within_0_5_percent": {
+            "bids": 6700000,
+            "asks": 6900000
+          },
+          "within_1_percent": {
+            "bids": 13500000,
+            "asks": 10100000
+          },
+          "within_2_percent": {
+            "bids": 18100000,
+            "asks": 12800000
+          },
+          "within_5_percent": {
+            "bids": 23200000,
+            "asks": 13800000
+          },
+          "within_10_percent": {
+            "bids": 33000000,
+            "asks": 16300000
+          }
+        },
+        "exclusions": [
+          "Binance",
+          "Bitget"
+        ],
+        "limitations": [
+          "Snapshot approximately two hours old at research cutoff.",
+          "Hourly averages of one-minute resting-book observations.",
+          "Resting orders can be cancelled or moved; not executed volume or guaranteed support."
+        ],
+        "url": "https://fuelmaps.io/order-book/"
+      },
+      "independent_coverage_snapshot": {
+        "provider": "EdgeOrNot",
+        "snapshot_time_utc": "2026-11-11T01:50:00Z",
+        "venues": [
+          "Binance spot",
+          "OKX perpetual"
+        ],
+        "within_1_percent": {
+          "bids": 10400000,
+          "asks": 10000000
+        },
+        "limitations": [
+          "Approximately 7h10m old at research cutoff.",
+          "Different market universe from Fuelmaps; not averaged."
+        ],
+        "url": "https://edgeornot.com/order-book-heatmap/xrp"
+      }
+    },
+    "exchange_flows": {
+      "trackwhale": {
+        "snapshot_time_utc": "2026-11-11T01:30:00Z",
+        "period": "preceding seven days",
+        "inflows_xrp": 501720000,
+        "outflows_xrp": 602930000,
+        "net_flow_xrp": -101210000,
+        "large_transfer_records": 64,
+        "largest_transfer_xrp": 368480000,
+        "largest_transfer_label": "unknown wallet; not attributed to an exchange",
+        "limitations": [
+          "Tracked external transfers only.",
+          "Not comprehensive exchange-reserve accounting.",
+          "USD values are estimates."
+        ],
+        "url": "https://trackwhale.io/xrp-whale-tracker"
+      },
+      "xrp_insights": {
+        "snapshot_time_utc": "2026-11-10T08:00:00Z",
+        "tracked_xrp": 22330000000,
+        "wallets": 701,
+        "exchanges": 24,
+        "circulating_supply_share_percent": 32.4,
+        "same_wallet_change_7d_xrp": -8900000,
+        "same_wallet_change_30d_xrp": -150900000,
+        "naive_total_change_xrp": 361100000,
+        "newly_tracked_wallets_xrp": 512000000,
+        "cbxrp_included_under_coinbase_xrp": 150100000,
+        "limitations": [
+          "Includes cold storage; not tradable float.",
+          "Coverage gaps for some exchange wallets.",
+          "Newly tracked wallets distort naive totals.",
+          "cbXRP reserves overlap the DeFi classification."
+        ],
+        "url": "https://xrp-insights.com/exchange-balances"
+      }
+    },
+    "derivatives": {
+      "tradradar": {
+        "snapshot_time_utc": "2026-11-11T05:45:00Z",
+        "open_interest_usd": 1570000000,
+        "oi_24h_change_percent": -4.96,
+        "funding_8h_percent": 0.0094,
+        "liquidations_24h_at_least_usd": 16450000,
+        "long_liquidations_usd": 15350000,
+        "short_liquidations_usd": 1100000,
+        "long_account_share_percent": 79.4,
+        "coverage_exchanges": 7,
+        "url": "https://tradradar.io/markets/xrp"
+      },
+      "liqwall": {
+        "snapshot_time_utc": "2026-11-11T06:02:00Z",
+        "open_interest_usd": 1160000000,
+        "oi_24h_change_percent": -1.7,
+        "funding_8h_percent": 0.0097,
+        "liquidations_24h_usd": 18300000,
+        "long_liquidations_usd": 17200000,
+        "short_liquidations_usd": 1100000,
+        "binance_long_account_share_percent": 74.7,
+        "url": "https://liqwall.com/coins/xrp"
+      },
+      "alpha_heatmap": {
+        "snapshot_time_utc": "2026-11-11T08:24:00Z",
+        "spot_reference": 1.059,
+        "open_interest_usd": 2320000000,
+        "volume_24h_usd": 3090000000,
+        "long_liquidations_24h_usd": 20100000,
+        "short_liquidations_24h_usd": 1200000,
+        "modelled_short_liquidation_liquidity_above_usd": 86000000,
+        "modelled_long_liquidation_liquidity_below_usd": 47700000,
+        "limitations": [
+          "Modelled liquidation clusters derived from OI and leverage tiers; not actual disclosed position-level liquidation prices.",
+          "Different venue universe from TradRadar and Liqwall."
+        ],
+        "url": "https://alphafinance.io/liquidation-heatmap/xrp"
+      },
+      "reconciliation": "OI totals are not averaged because venue coverage and contract universes differ. Positive funding, falling OI and long-heavy liquidations support a crowded-long/deleveraging hypothesis; alternative explanations include dip-buying, basis trades and hedging. No directional forecast."
+    },
+    "options": {
+      "fuelmaps": {
+        "snapshot_time_utc": "2026-11-11T00:01:00Z",
+        "reference_price": 1.0564,
+        "expiries": [
+          {
+            "expiry": "2026-11-11T08:00:00Z",
+            "atm_iv_percent": 68.3,
+            "one_sigma_move_percent": 2.06
+          },
+          {
+            "expiry": "2026-11-12T08:00:00Z",
+            "atm_iv_percent": 65.5,
+            "one_sigma_move_percent": 3.96
+          },
+          {
+            "expiry": "2026-11-13T08:00:00Z",
+            "atm_iv_percent": 66,
+            "one_sigma_move_percent": 5.27
+          },
+          {
+            "expiry": "2026-11-20T08:00:00Z",
+            "atm_iv_percent": 61.6,
+            "one_sigma_move_percent": 9.82
+          },
+          {
+            "expiry": "2026-11-27T08:00:00Z",
+            "atm_iv_percent": 59.4,
+            "one_sigma_move_percent": 12.51
+          }
+        ],
+        "backtest_3sigma_exceedances": 20,
+        "backtest_observations": 928,
+        "observed_exceedance_percent": 2.2,
+        "normal_reference_percent": 0.27,
+        "limitations": [
+          "Provider's daily 08:00 UTC settlement backtest; not an independent re-estimation by Barrot."
+        ],
+        "url": "https://fuelmaps.io/options/"
+      },
+      "optimistfi_previous": {
+        "snapshot_time_utc": "2026-11-10T22:00:00Z",
+        "atm_iv_30d_percent": 58.6,
+        "skew_25d_30d_points": 1.1,
+        "put_call_ratio": 0.58,
+        "dec25_open_interest_usd": 45200000,
+        "near_expiry_puts_richer": true,
+        "url": "https://optimistfi.com/perps/options/xrp"
+      },
+      "reconciliation": "Different snapshots and tenor definitions are preserved separately. Near-expiry downside skew and longer-dated call richness are not collapsed into one directional signal."
+    },
+    "etf_flows": {
+      "alpha_finance": {
+        "through_session": "2026-11-10",
+        "funds_complete": "5 of 5 tracked",
+        "daily_flow_nov10_usd": -7600000,
+        "thirty_session_flow_usd": 1300000,
+        "cumulative_net_inflow_since_2025_11_14_usd": 1710000000,
+        "largest_outflow_fund": "GXRP/Grayscale",
+        "url": "https://alphafinance.io/etf/xrp/"
+      },
+      "cryptoetf_today": {
+        "published_at_utc": "2026-11-11T05:47:00Z",
+        "session": "2026-11-10",
+        "funds_reported": "4 of 5",
+        "daily_flow_usd": -6900000,
+        "streak_outflow_sessions": 2,
+        "streak_total_usd": -17400000,
+        "thirty_session_flow_usd": 115200000,
+        "cumulative_net_flow_usd": 1800000000,
+        "net_assets_usd": 1200000000,
+        "missing_fund": "XRPZ/Franklin",
+        "url": "https://cryptoetf.today/en/xrp-etf-flows"
+      },
+      "cryptokeyhole": {
+        "latest_complete_session": "2026-11-06",
+        "latest_complete_funds": "4 of 6",
+        "net_flow_xrp": -752048,
+        "nov9_status": "partial; 3 of 4",
+        "latest_issuer_file_date": "2026-11-10",
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      "reconciliation": "Alpha Finance reports five of five tracked funds complete through Nov 10 and -$7.6M; CryptoETF.today reports four of five and partial -$6.9M. Different fund coverage and issuer-file timing; do not average. Missing issuer data is unknown, not zero. Cumulative flows are not current AUM."
+    },
+    "access_notes": [
+      "Coinbase Exchange public ticker endpoint was inaccessible through the web retrieval layer in this run; no Coinbase quote was invented.",
+      "Bybit public ticker returned HTTP 403 through the retrieval layer.",
+      "Binance endpoints were inaccessible/451 through the retrieval layer; no Binance spot or futures values are inferred."
+    ]
+  },
+  "identity_research": {
+    "sbic": "Tokyo/Nagoya/Osaka regional SME investment-consultation companies are separate from SBI Holdings. Tokyo SBIC's Nov 16, Oct 6 and Mar 5 generative-AI/ChatGPT events are education, not an OpenAI partnership.",
+    "ask_coin": "No verified XRP/XRPL ASK Coin relationship; Ask Coin exchange and Permission Coin ASK are distinct.",
+    "actual_capital": "Not a standardized XRP metric; cash, in-kind XRP, cash-purchased XRP, debt, facilities, ELOC capacity, resale registrations and actual secondary sales remain separate.",
+    "kamilah_stevenson": "First-party site identifies Dr Kamilah Stevenson but does not link a YouTube channel. Candidate handles are third-party only; no personal-channel video inventory attributed. Camilla and Kamilah not conflated."
+  },
+  "nine_platforms": {
+    "verified_current_session": "ChatGPT GitHub connector only",
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot persistent connection",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks",
+      "LunaRoute endpoint"
+    ],
+    "external_model_data_transfer": false
+  },
+  "prediction_engine": {
+    "source_definitions": 46,
+    "hourly_sources": 42,
+    "weekly_cftc_sources": 2,
+    "excluded_xrpl_node_sources": 2,
+    "implemented": [
+      "read-only collector",
+      "SHA-256 receipts",
+      "receipt chain",
+      "SQLite point-in-time feature-store prototype",
+      "four baselines",
+      "chronological walk-forward with purge/embargo",
+      "calibration diagnostics",
+      "drift diagnostics",
+      "fail-closed Ed25519 forecast ledger"
+    ],
+    "production_gaps": [
+      "independent WORM/timestamp anchoring",
+      "replayable feature-store reconstruction",
+      "synchronized multi-venue history",
+      "vintage-aware event timeline",
+      "scenario/counter-hypothesis generation",
+      "residual-dependence correction",
+      "independent shadow outcomes",
+      "production evaluator key",
+      "demonstrated out-of-sample lift"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "merge_decision": "DO_NOT_MERGE: PR remains draft, zero formal approvals, latest exact-head full suite failed before repair, detailed branch-protection rules remain HTTP 403, semantic review of 946 non-workflow paths incomplete, credential path exposure unresolved, and Pages publication authorization absent.",
+  "next_actions": [
+    "Verify full-suite, dependency and fail-closed CI on the Run18 map-schema repair commit; confirm 3,407 tests pass, wheel builds and installed primary mission loads.",
+    "Update the canonical handoff and PR #1661 description with exact repair-head CI evidence.",
+    "Complete semantic review of the 946 non-workflow changed paths, prioritizing Barrot V3 execution/safety, XRP collector/feature store/forecast ledger and public signal assets.",
+    "Reconcile the 13 blob-different paths from #1660, nine from #1643 and all seven from #1642; preserve unique research and feature work.",
+    "Verify provider-side OAuth revocation and continue additive remediation of the 17 affected branch tips without reading credential contents or rewriting history.",
+    "Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.",
+    "Raise the 53% inclusive coverage floor toward the previous 70% target with additional tests; do not exclude major packages.",
+    "Keep forecasts disabled until synchronized historical data, independent receipt anchoring, scenario generation, calibrated shadow outcomes and out-of-sample lift are verified."
+  ]
+}

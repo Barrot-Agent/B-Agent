@@ -1,0 +1,235 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "sbic_regional_company_primary_profile_vs_sbi_holdings_addendum_20261106T094856Z",
+  "artifact_type": "primary_source_corporate_identity_addendum",
+  "recorded_at_utc": "2026-11-06T09:48:56Z",
+  "retrieval_interval_utc": [
+    "2026-11-06T09:47:39Z",
+    "2026-11-06T09:48:56Z"
+  ],
+  "exact_per_request_retrieval_time": false,
+  "raw_html_bytes_captured": false,
+  "source_registry": [
+    {
+      "source_id": "SBIC_EAST_OFFICIAL_PROFILE_20261106",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "primary_source": true,
+      "raw_html_bytes_captured": false,
+      "retrieved_between_utc": [
+        "2026-11-06T09:47:39Z",
+        "2026-11-06T09:48:56Z"
+      ],
+      "content": {
+        "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_name_ja": "東京中小企業投資育成株式会社",
+        "regional_label": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "capital_jpy": 6673400000,
+        "shareholder_description": [
+          "18 local governments/prefectures",
+          "chambers of commerce",
+          "financial institutions",
+          "business companies"
+        ],
+        "coverage": "18 prefectures, east of Niigata/Nagano/Shizuoka and other areas",
+        "official_sister_companies": [
+          "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+        ]
+      },
+      "limitations": [
+        "The rendered profile gives shareholder categories, not a complete named shareholder register.",
+        "No byte-exact HTML capture or raw-source SHA-256 receipt was preserved in this run."
+      ]
+    },
+    {
+      "source_id": "SBIC_CENTRAL_OFFICIAL_PROFILE_20261106",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "primary_source": true,
+      "raw_html_bytes_captured": false,
+      "retrieved_between_utc": [
+        "2026-11-06T09:47:39Z",
+        "2026-11-06T09:48:56Z"
+      ],
+      "content": {
+        "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "regional_label": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "capital_jpy": 4380800000,
+        "coverage": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+        "official_sister_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+        ]
+      },
+      "limitations": [
+        "The shareholder composition is rendered as a chart; this retrieval did not establish a complete named shareholder register.",
+        "The profile page did not expose a corporate number in the retrieved text.",
+        "No byte-exact HTML capture or raw-source SHA-256 receipt was preserved."
+      ]
+    },
+    {
+      "source_id": "SBIC_WEST_OFFICIAL_PROFILE_20261106",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_profile_and_history",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "primary_source": true,
+      "raw_html_bytes_captured": false,
+      "retrieved_between_utc": [
+        "2026-11-06T09:47:39Z",
+        "2026-11-06T09:48:56Z"
+      ],
+      "content": {
+        "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "regional_label": "SBIC West Japan",
+        "established": "1963-11-20",
+        "capital_jpy": 6822000000,
+        "coverage": "24 prefectures in western Japan",
+        "official_sister_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Nagoya Small and Medium Business Investment & Consultation Co., Ltd."
+        ],
+        "statutory_basis": "Small and Medium Business Investment & Consultation Companies Act, 1963, Law No. 101"
+      },
+      "limitations": [
+        "The profile does not provide a complete named shareholder register in the retrieved text.",
+        "The profile page did not expose a corporate number in the retrieved text.",
+        "No byte-exact HTML capture or raw-source SHA-256 receipt was preserved."
+      ]
+    },
+    {
+      "source_id": "SBI_HOLDINGS_OFFICIAL_CORPORATE_PROFILE_20260626",
+      "publisher": "SBI Holdings, Inc.",
+      "source_type": "official_corporate_profile",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "primary_source": true,
+      "raw_html_bytes_captured": false,
+      "page_as_of_date": "2026-06-26",
+      "retrieved_between_utc": [
+        "2026-11-06T09:47:39Z",
+        "2026-11-06T09:48:56Z"
+      ],
+      "content": {
+        "legal_name": "SBI Holdings, Inc.",
+        "established": "1999-07-08",
+        "paid_in_capital_jpy_as_of_2026_03_31": 238019000000,
+        "principal_business": "Control and management of the SBI Group through share ownership."
+      },
+      "limitations": [
+        "This profile describes SBI Holdings and its group; it does not identify the regional SBIC companies as SBI Holdings subsidiaries.",
+        "The paid-in-capital figure is dated March 31, 2026."
+      ]
+    },
+    {
+      "source_id": "SBIC_EAST_CHATGPT_TRAINING_PRIOR_PRIMARY_SOURCE",
+      "publisher": "SBIC East Japan",
+      "source_type": "official_training_listing",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "primary_source": true,
+      "raw_html_bytes_captured": false,
+      "event_dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "source_capture_reference": "research/xrp_intelligence/20261105T173711Z-sbic-japan-chatgpt-primary-source-reconciliation.json",
+      "event_status": "official page marks course ended; individual attendance not verified"
+    },
+    {
+      "source_id": "SBIC_WEST_CHATGPT_EVENT_NOTICE_PRIOR_PRIMARY_SOURCE",
+      "publisher": "SBIC West Japan",
+      "source_type": "official_company_event_notice_pdf",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "primary_source": true,
+      "raw_pdf_bytes_captured": false,
+      "scheduled_event_date": "2024-10-23",
+      "source_capture_reference": "research/xrp_intelligence/20261105T174430Z-sbic-west-chatgpt-event-status-correction.json",
+      "event_status": "announced scheduled event; actual occurrence not independently verified"
+    }
+  ],
+  "entity_resolution": {
+    "regional_network_name": "Japanese Small and Medium Business Investment & Consultation companies (regional SBIC companies)",
+    "entities": [
+      {
+        "label": "SBIC East Japan",
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_name_ja": "東京中小企業投資育成株式会社",
+        "city": "Tokyo",
+        "established": "1963-11-15",
+        "capital_jpy": 6673400000,
+        "corporate_number": "9011001030621"
+      },
+      {
+        "label": "SBIC Central Japan",
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "city": "Nagoya",
+        "established": "1963-11-18",
+        "capital_jpy": 4380800000,
+        "corporate_number": null
+      },
+      {
+        "label": "SBIC West Japan",
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "city": "Osaka",
+        "established": "1963-11-20",
+        "capital_jpy": 6822000000,
+        "corporate_number": null
+      }
+    ],
+    "regional_relationship": "Each regional company's official profile identifies the other two as sister companies; the three companies divide Japan into east, central and west operating areas.",
+    "sbi_holdings_separate_entity": {
+      "legal_name": "SBI Holdings, Inc.",
+      "established": "1999-07-08",
+      "principal_business": "Control and management of the SBI Group through share ownership.",
+      "corporate_identity_distinct": true
+    },
+    "strongest_supported_conclusion": "SBIC East, SBIC Central and SBIC West are three distinct regional Japanese investment-development companies. They are not SBI Holdings, Inc. or alternate names for it. The official regional profiles describe the three as sister companies; SBI Holdings has a separate corporate profile, name, establishment date and group-control business description.",
+    "ownership_claim_boundary": "The official profile pages reviewed do not identify the regional SBIC companies as SBI Holdings subsidiaries. A complete named shareholder-register and beneficial-ownership audit was not performed, so this addendum does not claim that no SBI-affiliated entity could appear anywhere in any regional shareholder register.",
+    "academic_acronym_collision": "SBIC also means Social Bias Inference Corpus in AI research; that corpus is unrelated to the Japanese regional companies."
+  },
+  "chatgpt_phrase_reconciliation": {
+    "exact_phrase": "SBIC, ChatGPT SBIC",
+    "sbic_east": "Official June 2025 course page marks the course ended and lists ChatGPT on day one and Copilot on day two; the page names a VOST instructor and does not establish individual attendance or an OpenAI contract.",
+    "sbic_west": "Official 2024 PDF is an event notice for a ChatGPT-referencing seminar scheduled for October 23, 2024; actual occurrence is not independently verified.",
+    "sbic_central": "Targeted official-site search did not locate an explicit ChatGPT-branded event; non-discovery is not proof of absence.",
+    "not_established": [
+      "OpenAI partnership",
+      "OpenAI API or enterprise contract",
+      "SBI Holdings sponsorship or control of the regional SBIC companies",
+      "XRP, Ripple, Coinbase or Circle relationship",
+      "A ChatGPT product or company named SBIC"
+    ]
+  },
+  "source_independence": {
+    "regional_profile_publishers": [
+      "Tokyo SBIC",
+      "Nagoya SBIC",
+      "Osaka SBIC"
+    ],
+    "shared_relationship": "The three profiles describe the companies as sister companies; do not count them as independent corroboration for claims about their shared network structure.",
+    "sbi_holdings_profile": "Separate issuer source for SBI Holdings corporate identity.",
+    "limitation": "Rendered public pages were inspected; byte-exact HTML/PDF captures and immutable raw-payload receipts were not preserved in this run."
+  },
+  "model_eligibility": {
+    "eligible": false,
+    "reason": "Corporate identity and training-event evidence are contextual research, not market features or forecast inputs."
+  },
+  "forecast_status": {
+    "directional_forecast_issued": false,
+    "model_admission": false
+  },
+  "next_actions": [
+    "Capture byte-exact HTML/PDF payloads and SHA-256 receipts through the approved public-source ingestion adapter.",
+    "Verify Central and West corporate numbers against Japan's National Tax Agency corporate-number publication data.",
+    "Obtain named shareholder disclosures or authoritative corporate records before making an exhaustive SBI-affiliation ownership claim.",
+    "Keep the regional SBIC entities, SBI Holdings and the academic Social Bias Inference Corpus separate in entity resolution."
+  ]
+}

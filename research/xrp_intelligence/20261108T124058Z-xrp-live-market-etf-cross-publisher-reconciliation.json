@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_live_market_and_etf_cross_publisher_reconciliation",
+  "artifact_id": "20261108T124058Z-xrp-live-market-etf-cross-publisher-reconciliation",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "reference_time_utc": "2026-11-08T12:40:58Z",
+  "data_cutoff_utc": "2026-11-08T12:35:59Z",
+  "capture_method": "Public exchange REST responses and public ETF methodology/dashboard pages accessed through the web retrieval interface.",
+  "retrieval_limits": {
+    "exact_http_retrieval_time_exposed": false,
+    "raw_http_wire_bytes_or_headers_exposed": false,
+    "response_hash_scope": "Exact UTF-8 JSON response text surfaced by the retrieval interface for exchange endpoints; normalized excerpt text for HTML/metadata pages.",
+    "repeated_open_returned_identical_exchange_payloads": true,
+    "cache_headers_available": false,
+    "note": "The second open returned byte-identical payloads. Caching may be present but cannot be proven without response headers. Age values are computed at the explicit reference time and are lower bounds for the later retrieval."
+  },
+  "direct_market_receipts": [
+    {
+      "source_id": "kraken_xrp_usd_ticker_20261108_1234",
+      "publisher": "Kraken",
+      "source_class": "primary_exchange_public_rest",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "instrument": "XRP/USD",
+      "provider_event_timestamp_utc": null,
+      "age_seconds": null,
+      "freshness_status": "UNKNOWN_EVENT_TIME",
+      "model_eligible": false,
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16326000\",\"5346\",\"5346.000\"],\"b\":[\"1.16325000\",\"835\",\"835.000\"],\"c\":[\"1.16316000\",\"169.06717684\"],\"v\":[\"2505412.44253007\",\"10192524.58925842\"],\"p\":[\"1.16084752\",\"1.15944483\"],\"t\":[5113,15403],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16724000\",\"1.16771000\"],\"o\":\"1.16234000\"}}}",
+      "sha256": "1694a590fbf6a91d056247aa55f142489db460529b3209d8db23fb7a2b4c2c0e",
+      "hash_scope": "Exact UTF-8 JSON body surfaced by the retrieval interface; not raw HTTP wire bytes or headers."
+    },
+    {
+      "source_id": "okx_xrp_usdt_ticker_20261108_1234",
+      "publisher": "OKX",
+      "source_class": "primary_exchange_public_rest",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "instrument": "XRP/USDT",
+      "provider_event_timestamp_utc": "2026-11-08T12:34:36.967Z",
+      "age_seconds_at_reference": 382.033,
+      "freshness_limit_seconds": 300,
+      "freshness_status": "STALE_BY_82.033_SECONDS_AT_REFERENCE",
+      "model_eligible": false,
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1646\",\"lastSz\":\"1.5\",\"askPx\":\"1.1646\",\"askSz\":\"3280.735\",\"bidPx\":\"1.1645\",\"bidSz\":\"1494.308952\",\"open24h\":\"1.1633\",\"high24h\":\"1.1691\",\"low24h\":\"1.1495\",\"volCcy24h\":\"18669472.41214926\",\"vol24h\":\"16093026.760351\",\"ts\":\"1794141276967\",\"sodUtc0\":\"1.1639\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}",
+      "sha256": "0b7708b3e08273d066582a0a4e0d413359f571a681b8de3fd07805652b9e9cd1",
+      "hash_scope": "Exact UTF-8 JSON body surfaced by the retrieval interface; not raw HTTP wire bytes or headers."
+    },
+    {
+      "source_id": "binance_xrp_usdt_perpetual_premium_index_20261108_1235",
+      "publisher": "Binance",
+      "source_class": "primary_exchange_public_rest",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "instrument": "XRP/USDT perpetual",
+      "provider_event_timestamp_utc": "2026-11-08T12:35:59Z",
+      "age_seconds_at_reference": 299,
+      "freshness_limit_seconds": 300,
+      "freshness_status": "AT_300_SECOND_BOUNDARY_OR_STALE_BY_RETRIEVAL_COMPLETION",
+      "model_eligible": false,
+      "raw_response_text": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.16440000\",\"indexPrice\":\"1.16476259\",\"estimatedSettlePrice\":\"1.16536344\",\"lastFundingRate\":\"0.00009823\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794153600000,\"time\":1794141359000}",
+      "sha256": "15ae3180433c6bf4337d784a887c508e8a567199c655b772601e8a1b8d7518b4",
+      "hash_scope": "Exact UTF-8 JSON body surfaced by the retrieval interface; not raw HTTP wire bytes or headers."
+    }
+  ],
+  "direct_market_metrics": {
+    "kraken": {
+      "last_usd": 1.16316,
+      "bid_usd": 1.16325,
+      "ask_usd": 1.16326,
+      "spread_bps": 0.0859656739,
+      "volume_24h_xrp": 10192524.58925842,
+      "vwap_24h_usd": 1.15944483,
+      "high_24h_usd": 1.16771,
+      "low_24h_usd": 1.14888,
+      "daily_open_usd": 1.16234,
+      "last_vs_vwap_pct": 0.3204266304,
+      "last_vs_daily_open_pct": 0.0705473442,
+      "source_field_note": "Kraken ticker field o is the UTC-day open; do not label it rolling 24-hour open.",
+      "size_semantics": "Raw a/b size fields retained but not normalized into XRP because lot-volume semantics were not independently verified."
+    },
+    "okx": {
+      "last_usdt": 1.1646,
+      "bid_usdt": 1.1645,
+      "ask_usdt": 1.1646,
+      "spread_bps": 0.8587007857,
+      "bid_size_xrp": 1494.308952,
+      "ask_size_xrp": 3280.735,
+      "level1_bid_ask_imbalance": -0.3741171947227346,
+      "volume_24h_xrp": 16093026.760351,
+      "volume_24h_usdt": 18669472.41214926,
+      "open_24h_usdt": 1.1633,
+      "high_24h_usdt": 1.1691,
+      "low_24h_usdt": 1.1495,
+      "last_vs_24h_open_pct": 0.111751053,
+      "sod_utc0_usdt": 1.1639,
+      "sod_utc8_usdt": 1.1587
+    },
+    "binance_perpetual": {
+      "mark_usdt": 1.1644,
+      "index_usdt": 1.16476259,
+      "mark_index_basis_bps": -3.112994898,
+      "last_funding_rate_fraction": 0.00009823,
+      "funding_pct_per_8h": 0.009823,
+      "next_funding_time_utc": "2026-11-08T16:00:00Z"
+    },
+    "cross_venue": {
+      "raw_kraken_usd_vs_okx_usdt_last_gap_pct": 0.1238006809,
+      "interpretation": "Not an arbitrage signal: USD/USDT basis, asynchronous event times, fees, transfer constraints and slippage are not normalized."
+    }
+  },
+  "orderbook_depth": {
+    "multi_level_depth_captured": false,
+    "only_level_one_quotes_available": true,
+    "okx_level1_displayed_sizes": "Ask-heavy at the captured level only; not a depth curve or executable support.",
+    "kraken_size_normalization": "Not performed.",
+    "open_interest_and_liquidations": "Unavailable in these direct responses.",
+    "model_eligible": false
+  },
+  "etf_flow_reconciliation": {
+    "xrp_insights": {
+      "publisher": "XRP Insights",
+      "metadata_generated_at_utc": "2026-11-08T11:31:34.203Z",
+      "data_as_of": "2026-11-06",
+      "trading_days": 231,
+      "fund_day_rows": 1597,
+      "tickers": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "nov6_reported_holdings_delta_xrp": -663043,
+      "nov2_to_nov6_reported_holdings_delta_xrp": -812529,
+      "nov6_total_reported_holdings_xrp": 1195787657,
+      "stated_universe": "Six US spot funds plus BITW for combined holdings.",
+      "flow_status": "ISSUER_REPORTED_HOLDINGS_DELTA_PROXY_NOT_VERIFIED_CREATION_REDEMPTION",
+      "exclusions_and_caveats": [
+        "GXRP flow is excluded due the 2026-09-02 to 2026-09-28 issuer-page capture gap; GXRP holdings and AUM remain in totals.",
+        "BITW is a multi-asset index fund; XRP sleeve changes can reflect index rebalancing.",
+        "XRP-paid fees can change holdings and are counted as flow.",
+        "Several historical daily rows are reconstructed from third-party estimates between issuer-reported anchors; daily allocation is estimated.",
+        "Issuer files can settle overnight/next morning; provisional rows can be rewritten.",
+        "USD flow can use NAV-implied prices where spot snapshots are missing."
+      ]
+    },
+    "alpha_finance": {
+      "publisher": "Alpha Finance",
+      "data_as_of": "2026-11-06",
+      "upstream_dashboard_feed": "CoinGlass, per Alpha Finance methodology page.",
+      "fund_universe": [
+        "XRP/Bitwise",
+        "XRPZ/Franklin Templeton",
+        "XRPC/Canary Capital",
+        "GXRP/Grayscale",
+        "TOXR/21Shares"
+      ],
+      "excluded_from_five_fund_panel": [
+        "XRPR",
+        "BITW"
+      ],
+      "nov6_reported_daily_flow_usd": 0,
+      "seven_session_flow_usd": 8400000,
+      "seven_session_window": "2026-10-27 through 2026-11-06",
+      "thirty_session_flow_usd": 45900000,
+      "cumulative_flow_usd": 1730000000,
+      "fund_level_xrp_holdings_or_aum_displayed": false,
+      "methodology": "Alpha states figures are displayed as published, not smoothed or adjusted; its ETF Dashboard feed is CoinGlass."
+    },
+    "reconciliation_status": "UNRESOLVED_DIFFERENT_UNIVERSES_AND_UPSTREAM_FEEDS",
+    "why_not_comparable": [
+      "XRP Insights computes a day-over-day change in issuer-reported XRP holdings; Alpha's dashboard reads the CoinGlass ETF flow feed.",
+      "XRP Insights includes six spot products plus BITW in its holdings universe but excludes GXRP from computed flow; Alpha displays five funds including GXRP while omitting XRPR and BITW.",
+      "XRP Insights reports XRP units and USD valuation; Alpha reports USD flow and no fund-level holdings in the captured XRP panel.",
+      "Different fund coverage and publication vintages prevent the values from being averaged or interpreted as one market-wide creation/redemption total."
+    ],
+    "source_independence": "Distinct publishers and upstream pipelines are observed, but both may ultimately rely on overlapping issuer holdings/flow data. They are not independent confirmations of net primary-market capital."
+  },
+  "source_receipts": [
+    {
+      "source_id": "xrp_insights_etf_methodology_20261108",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data",
+      "metadata_url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "generated_at_utc": "2026-11-08T11:31:34.203Z",
+      "data_as_of": "2026-11-06",
+      "excerpt": "XRP Insights ETF data page, accessed 2026-11-08.\nDataset generated_at=2026-11-08T11:31:34.203Z; data_as_of=2026-11-06; trading_days=231; rows=1597; tickers=XRPC,XRP,XRPR,XRPZ,GXRP,TOXR,BITW.\nNov 6 holdings delta=-663043 XRP; Nov 2-Nov 6=-812529 XRP; total holdings=1195787657 XRP.\nMethod: daily flow is the day-over-day change in issuer-reported XRP holdings; changes under 100 XRP are treated as zero. GXRP flow is withheld because issuer-page access was blocked 2026-09-02 through 2026-09-28; GXRP holdings and AUM remain in totals. Reconstructed rows 2026-03-23 to 2026-03-27, 2026-03-31 to 2026-04-29, and 2026-05-12 use third-party daily estimates; the day-by-day split is an estimate. Issuer files can settle overnight or next morning; provisional rows can be rewritten. BITW index rebalancing and XRP-paid fees can change holdings and are counted as flow. USD pricing may use NAV-implied values when spot snapshots are missing.\nSources: https://xrp-insights.com/data ; https://xrp-insights.com/data/xrp-etf-flows.json",
+      "sha256": "a54b0c9cbed083d8e0d90d5df9605d487629969a2320bf870387c9dc2739939d",
+      "hash_scope": "SHA-256 of the normalized UTF-8 excerpt above, not raw page bytes, complete dataset or issuer files.",
+      "license_note": "Attribution required; commercial redistribution of the full CSV/JSON dataset requires written permission. Full dataset not copied."
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_methodology_20261108",
+      "publisher": "Alpha Finance / Block Media Pty Ltd",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "methodology_url": "https://alphafinance.io/methodology/",
+      "data_as_of": "2026-11-06",
+      "retrieved_at_utc": null,
+      "excerpt": "Alpha Finance XRP ETF dashboard, accessed 2026-11-08; data through 2026-11-06.\nFive-fund universe: XRP/Bitwise, XRPZ/Franklin Templeton, XRPC/Canary Capital, GXRP/Grayscale, TOXR/21Shares. XRPR and BITW are not listed in this five-fund panel.\nNov 6 daily flow=$0; seven sessions 2026-10-27 through 2026-11-06=+$8.4M; 30 sessions=+$45.9M; cumulative=+$1.73B.\nThe captured XRP panel does not display fund-level XRP holdings or AUM. Alpha Finance methodology identifies Coinglass as the feed for ETF Dashboards and states reported figures are displayed as published, not smoothed or adjusted.\nSources: https://alphafinance.io/etf/xrp/ ; https://alphafinance.io/methodology/",
+      "sha256": "3b67fc1bbc8a165299b03cefb6fe09e388395a65610e785c9c59497ca53c0a30",
+      "hash_scope": "SHA-256 of the normalized UTF-8 excerpt above, not raw page bytes or the upstream CoinGlass response."
+    }
+  ],
+  "related_research_artifacts": [
+    {
+      "path": "research/xrp_intelligence/20261108T100358Z-xrp-etf-holdings-flow-methodology-correction.json",
+      "blob_sha": "f636a4c13c455f2cf0c2462dc62bed9c768ca713"
+    },
+    {
+      "path": "research/xrp_intelligence/20261108T090727Z-xrpr-direct-and-lookthrough-exposure-correction.json",
+      "blob_sha": "6d527673bd9e489e03fac0f341b3fb0cb3850680"
+    },
+    {
+      "path": "research/xrp_intelligence/20261108T110240Z-xrp-market-microstructure-exchange-balance-derivatives-etf-crosscheck.json",
+      "blob_sha": "5dcc4b9fc5c83110dcce70816fa70a3c480ce57c"
+    }
+  ],
+  "source_disagreements_and_counter_hypotheses": {
+    "competing_etf_explanations": [
+      "Primary-market redemptions or creations.",
+      "XRP-paid fund fees and BITW index rebalancing altering holdings without equivalent investor cash flow.",
+      "Different fund universes, issuer publication lags, capture gaps, provisional settlements and CoinGlass versus issuer-scraped feeds.",
+      "XRPR mixed direct/indirect exposure may be counted differently by aggregators."
+    ],
+    "disconfirming_evidence": "The data do not provide a common fund universe with issuer-level primary-market creation/redemption records. Alpha's zero is not proof of no activity; XRP Insights' negative holdings delta is not proof of equivalent net cash outflow."
+  },
+  "model_admission": {
+    "admitted_to_feature_store": false,
+    "market_data_eligible": false,
+    "etf_flow_eligible": false,
+    "reasons": [
+      "Kraken provider event time is absent.",
+      "OKX observation is stale by 82.033 seconds at the reference time.",
+      "Binance observation is at the 300-second freshness boundary and the exact retrieval time is not exposed.",
+      "USD/USDT basis and execution costs are not normalized.",
+      "Only Level-1 order-book data are present; no full depth.",
+      "ETF metrics are non-comparable publisher-derived measures with different fund universes and methodologies.",
+      "No synchronized raw issuer creations/redemptions files were captured."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "feature_store_write": false,
+    "paper_trade": false,
+    "real_money": false,
+    "funds_transfer": false,
+    "external_model_transfer": false,
+    "deployment": false,
+    "secret_rotation": false
+  }
+}

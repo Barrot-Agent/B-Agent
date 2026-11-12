@@ -15,9 +15,9 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
@@ -79,11 +79,17 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_pillars_check_readonly.py \
             tests/test_xrp_research_artifact.py \
+            tests/test_xrp_receipt_chain.py \
             tests/test_forecast_ledger.py \
             tests/test_point_in_time_features.py \
             tests/test_automation_containment.py \
             tests/test_external_action_gates.py \
+            tests/test_structural_analysis.py \
+            tests/test_paper_trader_product_state.py \
+            tests/test_paper_trader_workflow_safety.py \
+            tests/test_ci_coverage_scope.py \
             -v --no-cov
 
   full-suite:
@@ -91,8 +97,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
           cache: "pip"
@@ -101,5 +107,70 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
-      - name: Run every repository test
-        run: python -m pytest tests -v --no-cov
+      - name: Configure inclusive package coverage
+        run: |
+          cat > "$RUNNER_TEMP/barrot-coverage.ini" <<'EOF'
+          [run]
+          branch = True
+          source = barrot_agent,directive_platform,data
+          omit =
+              */__pycache__/*
+              */tests/*
+          [report]
+          show_missing = True
+          fail_under = 53
+          EOF
+      - name: Run every repository test with inclusive package coverage
+        run: |
+          python -m pytest tests -v \
+            --cov=barrot_agent \
+            --cov=directive_platform \
+            --cov=data \
+            --cov-config="$RUNNER_TEMP/barrot-coverage.ini" \
+            --cov-report=term-missing:skip-covered \
+            --cov-fail-under=53
+      - name: Preserve legacy core-package coverage floor
+        run: |
+          python -m coverage report \
+            --include="barrot_agent/*" \
+            --omit="tests/*,**/__init__.py,barrot_agent/rendering/*,barrot_agent/smart_agent.py,barrot_agent/agi/*,barrot_agent/ingestion/*,barrot_agent/analysis/*,barrot_agent/monetization/*,barrot_agent/orchestration/*,barrot_agent/mem_palace.py" \
+            --show-missing \
+            --fail-under=70
+
+      - name: Build wheel and verify packaged primary mission
+        run: |
+          python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/barrot-wheel"
+          wheel="$(find "$RUNNER_TEMP/barrot-wheel" -maxdepth 1 -name '*.whl' -print -quit)"
+          test -n "$wheel"
+          python - "$wheel" <<'PY'
+          import sys
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          wheel = Path(sys.argv[1])
+          expected = "barrot_agent/data/missions/primary_mission.json"
+          with ZipFile(wheel) as archive:
+              if expected not in archive.namelist():
+                  raise SystemExit(f"wheel is missing required mission resource: {expected}")
+          print(f"verified packaged mission resource in {wheel.name}")
+          PY
+          python -m pip install --no-deps --target "$RUNNER_TEMP/barrot-wheel-install" "$wheel"
+          cd "$RUNNER_TEMP"
+          PYTHONPATH="$RUNNER_TEMP/barrot-wheel-install" python - <<'PY'
+          import barrot_agent
+          from directive_platform import DirectivePlatform
+          from barrot_agent import data_registry
+          from barrot_agent.orchestration.autonomous_actions import BarrotActionLoop
+          from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
+          from barrot_agent.orchestration.mission_registry import MissionRegistry
+
+          registry = MissionRegistry()
+          assets = data_registry.list_assets()
+          assert registry.mission_id == "xrp_intelligence_prediction_engine"
+          assert BarrotActionLoop is not None
+          assert DirectivePlatform is not None
+          assert LearningCurriculum is not None
+          assert barrot_agent.__version__
+          assert assets and all(asset["exists"] for asset in assets.values())
+          print("verified installed wheel loads Barrot V3, the XRP mission, and canonical data assets")
+          PY

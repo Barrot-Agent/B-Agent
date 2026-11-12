@@ -1,0 +1,399 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261110T142828Z-run132-october-cpi-sbic-primary-recheck-and-market-staleness",
+  "captured_at": "2026-11-10T14:28:28Z",
+  "mission_priority": 1,
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_pr": 1640,
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head_before_commit": "c63fee9e16f00d50f42e2651a01d0050f2164fc2",
+    "open_pull_requests": 372,
+    "main_tree_entries": 1571,
+    "main_tree_truncated": false
+  },
+  "macro_event": {
+    "event_id": "US_CPI_2026-10",
+    "publisher": "U.S. Bureau of Labor Statistics",
+    "publication_time": "2026-11-10T13:30:00Z",
+    "reference_period": "2026-10",
+    "values": {
+      "headline_cpi_mom_sa_pct": 0.4,
+      "prior_month_headline_cpi_mom_sa_pct": 0.6,
+      "core_cpi_mom_sa_pct": 0.3,
+      "core_cpi_prior_two_months_mom_sa_pct": [
+        0.3,
+        0.3
+      ],
+      "shelter_mom_sa_pct": 0.3,
+      "food_mom_sa_pct": 0.5,
+      "energy_mom_sa_pct": 0.7,
+      "prior_month_energy_mom_sa_pct": 5.2,
+      "gasoline_mom_sa_pct": 1,
+      "gasoline_mom_nsa_pct": -0.7,
+      "headline_cpi_yoy_pct": null,
+      "core_cpi_yoy_pct": null
+    },
+    "missing_data_reason": "BLS did not collect October 2025 survey data during the 2025 lapse in appropriations; for series lacking October 2025 indexes it cannot publish October 2026 12-month percent changes.",
+    "interpretation": {
+      "classification": "mixed_monthly_inflation_signal",
+      "supported": "Headline monthly inflation slowed from 0.6% in September to 0.4% in October; core remained 0.3% for a third consecutive month; no 12-month rate is published for the affected series.",
+      "not_established": [
+        "Federal Reserve decision or probability",
+        "XRP causal response",
+        "directional risk-asset effect"
+      ],
+      "seasonal_adjustment_note": "BLS reports gasoline +1.0% seasonally adjusted and -0.7% not seasonally adjusted; secondary descriptions of falling pump prices may refer to the unadjusted series and are not necessarily contradictory."
+    },
+    "secondary_context": [
+      {
+        "publisher": "Reuters",
+        "published_date": "2026-11-10",
+        "claim": "Reuters reported that markets had fully priced a 25-basis-point December Federal Reserve increase after the October CPI release.",
+        "source_url": "https://www.reuters.com/world/us/us-consumer-prices-rise-above-expectations-october-2026-11-10/",
+        "classification": "sourced_secondary_claim",
+        "model_eligible": false,
+        "limitation": "No synchronized fed-funds futures contract snapshot or independent rate-probability calculation was captured in this run."
+      }
+    ]
+  },
+  "market_observations": [
+    {
+      "venue": "Kraken",
+      "instrument": "XRP/USD",
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "provider_event_time": null,
+      "bid_usd": 1.06126,
+      "ask_usd": 1.06127,
+      "last_usd": 1.06138,
+      "best_bid_size_xrp": 1885,
+      "best_ask_size_xrp": 4179,
+      "volume_24h_xrp": 29104475.25703927,
+      "vwap_24h_usd": 1.08718024,
+      "high_24h_usd": 1.11573,
+      "low_24h_usd": 1.0475,
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "surfaced_json_sha256": "64a0ed45c99095071d4e0b377fe62122c5d3b4ed0adeead90962e3a5bf1b23b3",
+      "raw_wire_bytes_captured": false,
+      "raw_wire_sha256": null,
+      "model_eligible": false,
+      "exclusion_reason": "Provider event timestamp is absent from the surfaced response; this is ticker/top-of-book information, not full L2 depth; no synchronized pre/post-CPI snapshot was captured."
+    },
+    {
+      "venue": "OKX",
+      "instrument": "XRP-USDT",
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "provider_event_time": "2026-11-10T14:21:43.065Z",
+      "bid_usdt": 1.0636,
+      "ask_usdt": 1.0637,
+      "last_usdt": 1.0636,
+      "best_bid_size_xrp": 649.03,
+      "best_ask_size_xrp": 2898.1,
+      "volume_24h_xrp": 69383957.645284,
+      "volume_24h_usdt": 75483158.91844487,
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "surfaced_json_sha256": "c851843bd9da02c6c7e877fa343b64a98a987a623e2b82f242f84828dcd0b805",
+      "raw_wire_bytes_captured": false,
+      "raw_wire_sha256": null,
+      "model_eligible": false,
+      "exclusion_reason": "USDT quote; provider timestamp is 6m44.935s before the run capture; no synchronized USD conversion or full L2 depth."
+    },
+    {
+      "venue": "Kraken",
+      "instrument": "USDT/USD",
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "provider_event_time": null,
+      "bid_usd": 0.99871,
+      "ask_usd": 0.99872,
+      "last_usd": 0.99872,
+      "volume_24h_usdt": 298824425.9920172,
+      "vwap_24h_usd": 0.99877724,
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=USDTZUSD",
+      "surfaced_json_sha256": "67a599a456a18f691b4ef79fd6ff64b10ec5f3dca9154408ee775e1f0aaad3e4",
+      "raw_wire_bytes_captured": false,
+      "raw_wire_sha256": null,
+      "model_eligible": false,
+      "exclusion_reason": "Provider event timestamp is absent; quote is not synchronized to the OKX XRP-USDT event time."
+    }
+  ],
+  "derived_cross_venue_check": {
+    "okx_xrp_usdt_mid": 1.06365,
+    "kraken_usdt_usd_last": 0.99872,
+    "okx_xrp_mid_indicative_usd": 1.062288528,
+    "kraken_xrp_usd_mid": 1.061265,
+    "difference_basis_points": 9.6444149199,
+    "interpretation": "Indicative asynchronous quote difference only. Not executable arbitrage, not evidence of capital flow, and not a model feature. Fees, latency, venue-specific depth and synchronized FX conversion are absent."
+  },
+  "sbic_identity": {
+    "conclusion": "The exact Japanese SBIC entities are regional Small and Medium Business Investment & Consultation companies, not a synonym for SBI Holdings.",
+    "entities": [
+      {
+        "id": "SBIC_EAST",
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_name": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "area": "Shizuoka, Nagano, Niigata and eastward across 18 prefectures and others",
+        "shareholder_classes": [
+          "local governments (18 prefectures)",
+          "chambers of commerce",
+          "financial institutions",
+          "operating companies"
+        ],
+        "source_url": "https://www.sbic.co.jp/company/profile/",
+        "source_status": "primary_confirmed"
+      },
+      {
+        "id": "SBIC_CENTRAL",
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_name": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "area": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+        "sister_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+        ],
+        "source_url": "https://www.sbic-cj.co.jp/company/about/",
+        "source_status": "primary_confirmed"
+      },
+      {
+        "id": "SBIC_WEST",
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_name": "SBIC West Japan",
+        "established": "1963-11-20",
+        "area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+        "sister_companies": [
+          "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "Nagoya Small and Medium Business Investment & Consultation Co., Ltd."
+        ],
+        "source_url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "source_status": "primary_confirmed"
+      },
+      {
+        "id": "SBI_HOLDINGS",
+        "legal_name": "SBI Holdings, Inc.",
+        "established": "1999-07-08",
+        "principal_business": "Control and management of SBI Group through share ownership",
+        "source_url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+        "source_status": "primary_confirmed"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "SBIC_EAST",
+        "to": "SBIC_CENTRAL",
+        "type": "sister_company",
+        "status": "primary_confirmed"
+      },
+      {
+        "from": "SBIC_EAST",
+        "to": "SBIC_WEST",
+        "type": "sister_company",
+        "status": "primary_confirmed"
+      },
+      {
+        "from": "SBI_HOLDINGS",
+        "to": "SBI_GROUP",
+        "type": "group_control_and_management",
+        "status": "primary_confirmed"
+      },
+      {
+        "from": "SBI_HOLDINGS",
+        "to": "SBIC_EAST",
+        "type": "direct_ownership_or_control",
+        "status": "not_established",
+        "note": "The reviewed primary company profiles identify separate legal entities and do not establish an SBI Holdings ownership/control edge. Do not infer one from the acronym."
+      },
+      {
+        "from": "SBI_HOLDINGS",
+        "to": "SBIC_CENTRAL",
+        "type": "direct_ownership_or_control",
+        "status": "not_established"
+      },
+      {
+        "from": "SBI_HOLDINGS",
+        "to": "SBIC_WEST",
+        "type": "direct_ownership_or_control",
+        "status": "not_established"
+      },
+      {
+        "from": "SBIC_EAST",
+        "to": "ChatGPT",
+        "type": "educational_seminar_topic",
+        "date": "2025-02-26",
+        "status": "primary_confirmed",
+        "note": "Tokyo SBIC seminar on generative AI/ChatGPT; named speaker was a Microsoft Japan executive evangelist; Tokyo Chamber of Commerce Taito Branch co-sponsored; Japan Finance Corporation Tokyo/Ueno branches supported. OpenAI is identified as ChatGPT's developer, not as event partner."
+      }
+    ],
+    "xrp_relationship_status": "No direct XRP, Ripple, Coinbase or Circle relationship was established for the three regional SBIC companies by the reviewed primary profiles. SBI Holdings relationships must remain separately attributed to SBI Holdings and its named subsidiaries/JVs."
+  },
+  "exact_phrase_status": {
+    "SBIC, ChatGPT SBIC": "Resolved to Tokyo SBIC's 2025 educational seminar; not an OpenAI partnership.",
+    "ASK Coin": "Unresolved exact reference. Permission Coin's ASK is a candidate; no XRP/XRPL relationship established.",
+    "actual capital": "Evernorth's Cantor committed equity facility capacity is not actual cash received or XRP purchased. No drawdown/settlement confirmation was obtained in this run.",
+    "Camilla/Kamilah Stevenson": "Kamilah Stevenson is a candidate speaker identity for one public TEDx video; exact Camilla Stephenson channel ownership remains unverified. Do not bulk-attribute videos."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "SBI Holdings' named crypto subsidiaries/JVs and investments may increase XRP access/adoption through customer and institutional channels.",
+      "status": "supported_but_unquantified",
+      "disconfirming_or_limiting_evidence": [
+        "No SBIC East/Central/West XRP link established.",
+        "No product-level XRP acquisition volumes or net market purchases established.",
+        "Stablecoin and non-XRP rails coexist in SBI strategy."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "The SBIC acronym and Tokyo SBIC ChatGPT seminar imply an SBI Holdings/OpenAI commercial relationship.",
+      "status": "disconfirmed_by_primary_event_document",
+      "evidence": [
+        "The seminar is hosted/co-sponsored by Tokyo SBIC and Tokyo Chamber of Commerce Taito Branch.",
+        "The named speaker is a Microsoft Japan executive evangelist.",
+        "OpenAI appears as the developer of ChatGPT in descriptive text, not as a partner or sponsor."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "The October 2026 CPI release caused a directional XRP move.",
+      "status": "unresolved_not_testable_from_current_capture",
+      "limitation": "No synchronized pre/post release multi-venue spot/L2/derivatives observations or event-time rate/futures features."
+    },
+    {
+      "id": "H4",
+      "statement": "The displayed OKX XRP-USDT premium over Kraken XRP/USD is evidence of capital inflow or executable arbitrage.",
+      "status": "not_supported",
+      "limitation": "Asynchronous observations, unsynchronized USDT/USD conversion, no fees/latency/full depth, and no net-flow data."
+    }
+  ],
+  "source_receipts": [
+    {
+      "id": "BLS_CPI_OCT_2026",
+      "url": "https://www.bls.gov/news.release/CPI.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "published_at": "2026-11-10T13:30:00Z",
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "US_BLS",
+      "capture_type": "web_rendered_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "The Consumer Price Index for All Urban Consumers (CPI-U) increased 0.4 percent on a seasonally adjusted basis in October after rising 0.6 percent in September. The index for shelter rose 0.3 percent in October, accounting for over thirty percent of the monthly all items increase. The food index increased 0.5 percent in October. The index for energy increased 0.7 percent over the month following a 5.2-percent increase in September. The index for all items less food and energy rose 0.3 percent, as it did in September and August. BLS did not collect survey data for October 2025 because of a lapse in appropriations; for most CPI series, BLS could not publish October 2025 indexes and cannot publish 12-month percent changes for October 2026 where October 2025 data are unavailable. October 2026 CPI release embargo lifted 8:30 a.m. ET, November 10, 2026.",
+      "normalized_excerpt_sha256": "ebe920f18b1b796f92b81c405a1fc989818b6b36c59a94d9c4cca3262fddc7c3"
+    },
+    {
+      "id": "SBIC_EAST_PROFILE",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo SBIC",
+      "published_at": null,
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "SBIC_REGIONAL_NETWORK",
+      "capture_type": "web_rendered_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Tokyo Small and Medium Business Investment & Consultation CO., LTD. (SBIC East Japan). Corporate number 9011001030621. Established November 15, 1963. Shareholders: local governments (18 prefectures), chambers of commerce, financial institutions, operating companies. Sales area: Shizuoka, Nagano, Niigata and eastward across 18 prefectures and others.",
+      "normalized_excerpt_sha256": "6b1ece2f11ec33990fdbf1fce357c5145d3fabd8fee77bd461367bc71c1b6fa0"
+    },
+    {
+      "id": "SBIC_CENTRAL_PROFILE",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "Nagoya SBIC",
+      "published_at": null,
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "SBIC_REGIONAL_NETWORK",
+      "capture_type": "web_rendered_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Nagoya Small and Medium Business Investment & Consultation Co.,Ltd. (SBIC Central Japan). Established November 18, 1963. Sales area: Aichi, Gifu, Mie, Toyama, Ishikawa. Sister companies: Tokyo Small and Medium Business Investment & Consultation Co.,Ltd. and Osaka Small and Medium Business Investment & Consultation Co.,Ltd.",
+      "normalized_excerpt_sha256": "fbdfefade81c5140f1ac0538e7087271281c5d053419454b3fef2adf83f3202e"
+    },
+    {
+      "id": "SBIC_WEST_PROFILE",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "Osaka SBIC",
+      "published_at": null,
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "SBIC_REGIONAL_NETWORK",
+      "capture_type": "web_rendered_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Osaka Small and Medium Business Investment & Consultation Co.,Ltd. (SBIC West Japan). Established November 20, 1963. Capital 6,822 million yen. Business: investment in shares and convertible bonds; growth support. Sales area: 24 prefectures west of Fukui, Shiga, Nara and Wakayama.",
+      "normalized_excerpt_sha256": "7561b6de0043ac73cef9a69a640346782a000bd09f1ac5c33ce14df373ce43e8"
+    },
+    {
+      "id": "SBIC_CHATGPT_SEMINAR",
+      "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E成説明あり%E3%80%91.pdf",
+      "publisher": "Tokyo SBIC",
+      "published_at": "2025-02-26",
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "SBIC_REGIONAL_NETWORK",
+      "capture_type": "web_pdf_text_extraction",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Tokyo SBIC free seminar dated February 26, 2025, titled The Present and Future of Generative AI (ChatGPT). The seminar description says a Microsoft Japan executive evangelist would speak and demonstrate ChatGPT use. Co-sponsors: Tokyo SBIC and Tokyo Chamber of Commerce Taito Branch. Support: Japan Finance Corporation Tokyo and Ueno branches. The source does not establish an OpenAI partnership or XRP relationship.",
+      "normalized_excerpt_sha256": "2cea6f8a13968f39a4817a8eb327a2be94deae9457c30f01529ecfbdb2fb9ff5"
+    },
+    {
+      "id": "SBI_HOLDINGS_PROFILE",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "publisher": "SBI Holdings",
+      "published_at": "2026-06-26",
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "SBI_HOLDINGS",
+      "capture_type": "web_rendered_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "SBI Holdings, Inc. Established July 8, 1999. Principal business: control and management of SBI Group through share ownership. Paid-in capital 238,019 million yen as of March 31, 2026. Common stock 661,122,614 shares as of March 31, 2026.",
+      "normalized_excerpt_sha256": "5a8235662faa1622af1c8136dafd021ea10c90e70ef2dc55cdeae290461279ed"
+    },
+    {
+      "id": "KRAKEN_XRPUSD_TICKER",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "publisher": "Kraken public API",
+      "published_at": null,
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "KRAKEN",
+      "capture_type": "web_open_rendered_json",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "surfaced_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.06127000\",\"4179\",\"4179.000\"],\"b\":[\"1.06126000\",\"1885\",\"1885.000\"],\"c\":[\"1.06138000\",\"144.60186778\"],\"v\":[\"17653065.89770249\",\"29104475.25703927\"],\"p\":[\"1.08060636\",\"1.08718024\"],\"t\":[18243,33392],\"l\":[\"1.04750000\",\"1.04750000\"],\"h\":[\"1.10473000\",\"1.11573000\"],\"o\":\"1.09748000\"}}}",
+      "surfaced_response_sha256": "64a0ed45c99095071d4e0b377fe62122c5d3b4ed0adeead90962e3a5bf1b23b3"
+    },
+    {
+      "id": "OKX_XRPUSDT_TICKER",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "publisher": "OKX public API",
+      "published_at": null,
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "provider_event_time": "2026-11-10T14:21:43.065Z",
+      "source_independence_group": "OKX",
+      "capture_type": "web_open_rendered_json",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "surfaced_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.0636\",\"lastSz\":\"1500\",\"askPx\":\"1.0637\",\"askSz\":\"2898.1\",\"bidPx\":\"1.0636\",\"bidSz\":\"649.03\",\"open24h\":\"1.0962\",\"high24h\":\"1.1167\",\"low24h\":\"1.0486\",\"volCcy24h\":\"75483158.918444874\",\"vol24h\":\"69383957.645284\",\"ts\":\"1794320503065\",\"sodUtc0\":\"1.0988\",\"sodUtc8\":\"1.1144\"}],\"msg\":\"\"}",
+      "surfaced_response_sha256": "c851843bd9da02c6c7e877fa343b64a98a987a623e2b82f242f84828dcd0b805"
+    },
+    {
+      "id": "KRAKEN_USDTUSD_TICKER",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTZUSD",
+      "publisher": "Kraken public API",
+      "published_at": null,
+      "retrieved_at": "2026-11-10T14:28:28Z",
+      "source_independence_group": "KRAKEN",
+      "capture_type": "web_open_rendered_json",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "surfaced_response_text": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99872000\",\"259963\",\"259963.000\"],\"b\":[\"0.99871000\",\"1064506\",\"1064506.000\"],\"c\":[\"0.99872000\",\"155.99042085\"],\"v\":[\"90482898.74902850\",\"298824425.99201721\"],\"p\":[\"0.99868960\",\"0.99877724\"],\"t\":[12154,54507],\"l\":[\"0.99859000\",\"0.99850000\"],\"h\":[\"0.99877000\",\"0.99918000\"],\"o\":\"0.99872000\"}}}",
+      "surfaced_response_sha256": "67a599a456a18f691b4ef79fd6ff64b10ec5f3dca9154408ee775e1f0aaad3e4"
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "data_cutoff": "2026-11-10T14:28:28Z",
+    "reason": "No synchronized pre/post-CPI multi-venue USD spot/L2/derivatives dataset, no point-in-time rate/futures snapshot, no validated out-of-sample lift/calibration for this event, and no independent shadow outcomes.",
+    "directional_probability": null,
+    "model_feature_admission": false
+  },
+  "raw_receipt_limitation": "The web tool returned rendered/extracted text and JSON. Wire-level response bytes were not captured, so raw_byte_sha256 is null. The stored SHA-256 values cover the exact surfaced JSON text or the exact normalized excerpt strings in this artifact; they are not represented as raw-source wire hashes."
+}

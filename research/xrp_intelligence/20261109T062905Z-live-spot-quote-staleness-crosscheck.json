@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_live_spot_quote_staleness_crosscheck",
+  "artifact_id": "20261109T062905Z-live-spot-quote-staleness-crosscheck",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-09T06:29:05Z",
+  "data_cutoff_utc": "2026-11-09T06:29:05Z",
+  "capture_policy": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "hash_scope": "SHA-256 values cover the exact JSON text surfaced by the public endpoint renderer; not HTTP wire bytes, headers or a signed exchange receipt.",
+    "source_independence": "Kraken and OKX are distinct venue endpoints but their observations are not synchronized and their quote currencies differ. They are not independent confirmation of a common directional signal.",
+    "model_admission_policy": "Snapshot/context only. Kraken has no provider event timestamp; OKX event time is older than the 300-second freshness limit; USD and USDT are not normalized; no synchronized Level-2 depth, trades or direct derivatives data were admitted."
+  },
+  "spot": {
+    "kraken_xrpusd": {
+      "venue": "Kraken",
+      "instrument": "XRP/USD spot",
+      "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-09T06:29:05Z",
+      "provider_event_time_utc": null,
+      "event_time_status": "NOT_RETURNED_BY_ENDPOINT",
+      "raw_response_sha256": "0ee4d92322ee17acfaf6a6e1d803ad5f22ff70581f0164c0180c627815e117b3",
+      "raw_response_hash_scope": "Exact JSON text surfaced by web retrieval; not HTTP wire bytes.",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09552000\",\"4988\",\"4988.000\"],\"b\":[\"1.09527000\",\"3260\",\"3260.000\"],\"c\":[\"1.09554000\",\"35.37710363\"],\"v\":[\"9344808.79863909\",\"35524867.83840402\"],\"p\":[\"1.10698100\",\"1.12278777\"],\"t\":[9172,31672],\"l\":[\"1.09089000\",\"1.09089000\"],\"h\":[\"1.12503000\",\"1.16816000\"],\"o\":\"1.11203000\"}}}",
+      "observations": {
+        "last_usd": 1.09554,
+        "best_bid_usd": 1.09527,
+        "best_ask_usd": 1.09552,
+        "top_quote_mid_usd": 1.095395,
+        "top_quote_spread_absolute_usd": 0.00025,
+        "top_quote_spread_bps": 2.282281734,
+        "last_vs_24h_open_pct": -1.482873664,
+        "last_vs_24h_vwap_pct": -2.426796117,
+        "volume_24h_xrp": 35524867.83840402,
+        "vwap_24h_usd": 1.12278777,
+        "low_24h_usd": 1.09089,
+        "high_24h_usd": 1.16816,
+        "open_24h_usd": 1.11203,
+        "trade_count_24h": 31672
+      },
+      "quality": {
+        "status": "RETRIEVAL_TIME_ONLY_SINGLE_VENUE_QUOTE",
+        "model_eligible": false,
+        "reason_codes": [
+          "MISSING_PROVIDER_EVENT_TIME",
+          "SINGLE_VENUE",
+          "TOP_OF_BOOK_IS_NOT_DEPTH",
+          "NO_SYNCHRONIZED_TRADE_CAPTURE"
+        ],
+        "note": "The 2.28 bps spread is derived from the returned best bid/ask only. It is not full order-book depth, market-wide spread or executable slippage."
+      }
+    },
+    "okx_xrpusdt": {
+      "venue": "OKX",
+      "instrument": "XRP-USDT spot",
+      "endpoint": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "retrieved_at_utc": "2026-11-09T06:29:05Z",
+      "provider_event_time_utc": "2026-11-09T06:14:09.665Z",
+      "age_seconds_at_capture": 895.335,
+      "raw_response_sha256": "ac9a8d3dc7b99e780d8bfa4089fc25b595c5d52ec84dd7e4a894eef965108128",
+      "raw_response_hash_scope": "Exact JSON text surfaced by web retrieval; not HTTP wire bytes.",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.0989\",\"lastSz\":\"78.392\",\"askPx\":\"1.0989\",\"askSz\":\"2135.42\",\"bidPx\":\"1.0988\",\"bidSz\":\"4699.007362\",\"open24h\":\"1.1665\",\"high24h\":\"1.1697\",\"low24h\":\"1.0921\",\"volCcy24h\":\"67020465.193845138\",\"vol24h\":\"59584238.194865\",\"ts\":\"1794204849665\",\"sodUtc0\":\"1.1132\",\"sodUtc8\":\"1.1563\"}],\"msg\":\"\"}",
+      "observations": {
+        "last_usdt": 1.0989,
+        "best_bid_usdt": 1.0988,
+        "best_ask_usdt": 1.0989,
+        "top_quote_mid_usdt": 1.09885,
+        "top_quote_spread_absolute_usdt": 0.0001,
+        "top_quote_spread_bps": 0.910042317,
+        "volume_24h_xrp": 59584238.194865,
+        "quote_volume_24h_usdt": 67020465.19384514,
+        "open_24h_usdt": 1.1665,
+        "low_24h_usdt": 1.0921,
+        "high_24h_usdt": 1.1697
+      },
+      "quality": {
+        "status": "STALE_DIRECT_VENUE_QUOTE",
+        "model_eligible": false,
+        "freshness_limit_seconds": 300,
+        "reason_codes": [
+          "EVENT_AGE_EXCEEDS_300_SECONDS",
+          "NOT_SYNCHRONIZED_WITH_KRAKEN_SPOT",
+          "USDT_NOT_NORMALIZED_TO_USD",
+          "TOP_OF_BOOK_IS_NOT_DEPTH"
+        ],
+        "note": "The 0.91 bps spread is a stale top-of-book quote, not current executable liquidity."
+      }
+    }
+  },
+  "retrieval_failures": [
+    {
+      "source": "Binance spot ticker and depth",
+      "status": "Public endpoint could not be accessed by this retrieval renderer; no observation admitted."
+    },
+    {
+      "source": "Coinbase spot ticker and Level-2 book",
+      "status": "Public endpoint could not be accessed by this retrieval renderer; no observation admitted."
+    },
+    {
+      "source": "Kraken Level-2 depth",
+      "status": "Public endpoint could not be accessed by this retrieval renderer; no depth observation admitted."
+    },
+    {
+      "source": "Binance Futures premium index",
+      "status": "HTTP 451 Unavailable For Legal Reasons from this retrieval renderer; no observation admitted."
+    }
+  ],
+  "evidence_assessment": {
+    "supported_observations": [
+      "One Kraken XRP/USD ticker snapshot shows the last below its 24-hour open and 24-hour VWAP, but the endpoint does not provide provider event time.",
+      "One OKX XRP-USDT ticker snapshot carries an event time 895.335 seconds old at capture and is excluded by the 300-second freshness gate."
+    ],
+    "competing_hypotheses": [
+      "The two snapshots are consistent with a lower price level relative to their own reported 24-hour references, but their different event-time quality and quote currencies prevent a synchronized cross-venue conclusion.",
+      "The observed top-of-book spreads may reflect venue-local liquidity at retrieval, but no depth or executable slippage is available."
+    ],
+    "disconfirming_evidence": [
+      "Kraken has no provider event timestamp.",
+      "OKX is stale by nearly 15 minutes.",
+      "USD/USDT basis is unnormalized.",
+      "No direct depth, trades, or fresh derivatives were captured."
+    ],
+    "model_admission": false
+  },
+  "forecast_status": "NOT_ISSUED"
+}

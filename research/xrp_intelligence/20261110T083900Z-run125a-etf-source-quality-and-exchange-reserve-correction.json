@@ -1,0 +1,165 @@
+{
+  "schema_version": "barrot.xrp.research-correction.v1",
+  "run_id": "run125a",
+  "captured_at_utc": "2026-11-10T08:39:00Z",
+  "code_test_head": "58589d163c7d9a15c0f7a9f14e2b46e93a207b0a",
+  "exact_head_ci": {
+    "run": 42783870195,
+    "full_suite_tests": 1355,
+    "failed": 0,
+    "subtests": 8,
+    "coverage_percent": 59.48,
+    "core_tests": 677,
+    "dependency_audit_run": 42783870369,
+    "fail_closed_gate_run": 42783869910,
+    "all_conclusions": "success"
+  },
+  "exchange_balance_correction": {
+    "source": "XRP Insights; public XRPL account_info balances with XRPSCAN labels",
+    "url": "https://xrp-insights.com/exchange-balances",
+    "snapshot_time_utc": "2026-11-09T08:01:00Z",
+    "total_xrp": 22350000000,
+    "tracked_wallets": 701,
+    "exchanges": 24,
+    "same_wallet_change_7d_xrp": -25800000,
+    "same_wallet_change_30d_xrp": -138100000,
+    "same_wallet_daily_change_nov9_xrp": 9700000,
+    "same_wallet_daily_change_nov8_xrp": 18000000,
+    "newly_tracked_wallets": 2,
+    "newly_tracked_balance_xrp": 512000000,
+    "naive_total_change_xrp": 373900000,
+    "known_non_customer_reserves_xrp": {
+      "binance_peg_on_bnb_chain": 325800000,
+      "cbxrp_on_base": 152000000,
+      "insurance_and_charity": 5200000,
+      "total": 483000000
+    },
+    "exchange_wallet_balance_less_known_non_customer_reserves_xrp": 21867000000,
+    "largest_exchange_wallet_totals_xrp": {
+      "Upbit": 6450000000,
+      "Coinbase_including_cbXRP": 5800000000,
+      "Binance_including_binance_peg": 2730000000
+    },
+    "coverage_gaps": {
+      "estimated_xrp_in_wallets_of_36_untracked_exchanges_from_sep29_audit": 323000000,
+      "main_wallets_missing": [
+        "OKX",
+        "Coins.ph",
+        "Korbit"
+      ]
+    },
+    "limitations": [
+      "The 22.35B total includes cold and omnibus custody and known wrapped-asset reserves.",
+      "Subtracting the 483M known reserves does not produce customer deposits or tradable float; other institutional/cold balances remain.",
+      "Same-wallet changes exclude new wallets and are not proof of sales or withdrawals.",
+      "Untracked exchange wallets make the total a floor for labeled exchange wallets."
+    ]
+  },
+  "etf_source_quality": {
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "nov9_partial_xrpc_holdings_xrp": 242535412,
+      "shares": 22880000,
+      "xrp_per_share": 10.6003,
+      "aum_usd": 265200000,
+      "nav_usd": 12.485,
+      "nov9_change_xrp": -427341,
+      "file_observed_utc_window": "2026-11-10T05:22:00Z/2026-11-10T05:27:00Z",
+      "methodology": "Reads issuer daily holdings file; checks XRP against shares times XRP/share, NAV times shares against net assets, and net assets divided by price against coins, within 0.05% plus rounding.",
+      "limitation": "Secondary extraction of issuer file; no quarter-end SEC filing yet overlaps the daily series for independent quarter-end validation."
+    },
+    "canary_official_page": {
+      "url": "https://canaryetfs.com/xrpc/",
+      "as_of": "2026-11-06",
+      "net_assets_usd": 286858926.41,
+      "shares_outstanding": 22990000,
+      "nav_usd": 12.48,
+      "last_available_daily_table_date": "2026-11-06",
+      "conclusion": "Official product page is stale for Nov9 holdings and cannot independently confirm the Nov9 daily file."
+    },
+    "corpstacking": {
+      "url": "https://www.corpstacking.com/treasuries/canary-xrp-etf",
+      "displayed_holdings_xrp": 242962753.64,
+      "displayed_as_of": "2026-11-09",
+      "last_tracked_event": "2026-11-07",
+      "sponsor_page_as_of": "2026-11-06",
+      "conclusion": "Likely stale/misdated for Nov9; displayed figure is 427341 XRP above CryptoKeyhole's newer issuer-file extraction, exactly the latter's reported Nov9 change. Not primary evidence."
+    },
+    "coin365": {
+      "url": "https://www.coin365.io/etf/xrp/xrpc",
+      "displayed_holdings_xrp": 140376744,
+      "displayed_aum_usd": 153300000,
+      "displayed_category_share_percent": 100,
+      "displayed_as_of": "2026-11-09",
+      "conclusion": "Quarantined as internally inconsistent with issuer-linked holdings and other fund totals; not model-admitted."
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "reported_nov9_net_flow_usd": -10400000,
+      "coverage": "5/5 flow-series tickers",
+      "zero_filled_funds": [
+        "Franklin_XRPZ",
+        "Grayscale_GXRP"
+      ],
+      "conclusion": "Not reconciled to issuer-file holdings series; retain as a separate flow-series observation, do not average."
+    },
+    "decision": "Use CryptoKeyhole as a timestamped secondary extraction of issuer daily files with explicit partial coverage. Keep Canary sponsor page and CorpStacking stale for Nov9. Quarantine Coin365 until source/asset identity is resolved. No ETF flow is model-admitted."
+  },
+  "spot_refresh": {
+    "kraken_xrp_usd": {
+      "last": 1.08787,
+      "bid": 1.08772,
+      "ask": 1.08773,
+      "volume_24h_xrp": 23638136.93000221,
+      "vwap_24h": 1.09529981,
+      "high_24h": 1.11573,
+      "low_24h": 1.07502,
+      "retrieval_time_utc": "2026-11-10T08:39:00Z",
+      "provider_event_time": null,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "okx_xrp_usdt": {
+      "last": 1.092,
+      "bid": 1.0918,
+      "ask": 1.0919,
+      "provider_event_time_utc": "2026-11-10T08:14:39.071Z",
+      "stale_minutes_at_capture": 24.35,
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "note": "Kraken's current retrieval is lower than the earlier 08:26 retrieval, but Kraken event time is absent and OKX is stale. Do not infer a synchronized cross-venue spread or forecast."
+  },
+  "identity": {
+    "sbic_chatgpt": "No new exact-phrase match; Tokyo SBIC course remains evidence of training only.",
+    "ask_coin": "Permission Coin ASK candidate only; no XRPL integration established.",
+    "actual_capital": "Continue to separate cash, in-kind XRP, debt, drawn facilities, contingent capacity and secondary resales.",
+    "kamilah_stevenson": "No additional personal-channel upload verified."
+  },
+  "backlog_reconciliation": {
+    "1642": "All seven paths are present in #1640. The exact snapshot lookup, feature-store receipt clock, cross-store forecast preflight and all seven source PR tests are present; integration adds 19 further readiness/receipt/embargo tests. Classify as superseded content, but do not close until #1640 is merged and verified on main.",
+    "1643": "Preserve 663 unique research paths; stale/unmergeable.",
+    "1644": "All checkout@v7 changes are present in #1640 across the seven affected workflows; one file is byte-identical and the others contain the bump plus further integrated edits. Superseded-content candidate.",
+    "1645": "download-artifact@v8 change is byte-identical in #1640. Superseded-content candidate.",
+    "1646": "types-requests>=2.33.0.20261030 is present in integration requirements-dev.txt. Superseded-content candidate.",
+    "1647": "upload-artifact@v7 changes are present in integration workflows; some files also contain other integrated edits. Superseded-content candidate.",
+    "1648": "pytest>=9.2.0 is present in integration requirements-dev.txt. Superseded-content candidate.",
+    "1649": "databricks-sdk>=0.158.0 is present in integration legacy requirements. Superseded-content candidate.",
+    "1650": "huggingface_hub>=2.4.0 is present in integration legacy requirements. Superseded-content candidate.",
+    "1653": "Preserve six unique knowledge-graph paths; eight unresolved review threads.",
+    "others": "Preserve unique prediction, security, market-microstructure, institutional-research and topology work pending integrated review."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "provenance": {
+    "original_web_transport_bytes_preserved": false,
+    "sha256_receipts_for_web_observations": null,
+    "model_admission": false
+  },
+  "actions": {
+    "merge": false,
+    "close_prs": false,
+    "deploy": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "real_money": false,
+    "force_push": false
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "verified_xrp_sbi_circle_coinbase_relationship_update",
+  "captured_at_utc": "2026-11-03T22:43:51Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "research_status": "VERIFIED_PUBLIC_SOURCE_UPDATE",
+  "provenance_correction": {
+    "references": [
+      "research/xrp_intelligence/20261103T223519Z-research-artifact-clock-audit.json",
+      "research/xrp_intelligence/HANDOFF_20261103T223519Z-PROVENANCE-CLOCK-AUDIT.md"
+    ],
+    "treatment": "This artifact re-verifies selected claims from the seven quarantined records using direct official sources captured at the timestamp above. It does not rehabilitate unrelated claims or their invalid original timestamps.",
+    "prior_artifacts_preserved": true
+  },
+  "sources": [
+    {
+      "id": "sbic-east-japan-profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "authority": "official corporate profile",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. uses the English name SBIC East Japan.",
+        "Corporate number 9011001030621; established 1963-11-15; 96 employees; service area includes 18 prefectures; shareholders include local governments, chambers of commerce, financial institutions and operating companies."
+      ]
+    },
+    {
+      "id": "sbi-2025-ripple-presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+      "authority": "official SBI Holdings investor presentation",
+      "published_at_utc": "2025-02-07T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "SBI Group reported approximately 9% of Ripple shares based on actual holdings and described itself as Ripple's largest external shareholder.",
+        "SBI Ripple Asia was established with SBI 60% and Ripple 40%.",
+        "SBI Remit started Japan's first international remittance service using XRP as a bridge currency in 2021.",
+        "These are dated historical disclosures; the current 2026 Ripple equity percentage and current XRP remittance volumes were not established."
+      ]
+    },
+    {
+      "id": "sbi-circle-equity-release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "authority": "official SBI Holdings release",
+      "published_at_utc": "2025-06-09T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "SBI Holdings and SBI Shinsei Bank each acquired USD 25 million of Circle shares at Circle's 2025 IPO, USD 50 million combined."
+      ]
+    },
+    {
+      "id": "sbi-circle-jv-presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "authority": "official SBI Holdings investor presentation",
+      "published_at_utc": "2025-06-02T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "SBI Circle Holdings / Circle SBI Japan KK is a 50:50 SBI-Circle joint venture.",
+        "The JV agreement was signed on 2025-03-18 to promote USDC adoption and use cases in Japan."
+      ]
+    },
+    {
+      "id": "circle-q2-2026-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "authority": "SEC Form 10-Q",
+      "period_ended": "2026-06-30",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "USDC in circulation at quarter end was USD 73.269 billion; average circulation was USD 76.524 billion; reported Q2 onchain transaction volume was USD 14.8 trillion.",
+        "Reserve income was 95.2% of Q2 total revenue and 94.6% of H1 total revenue.",
+        "Circle reported USD 324.6 million of distribution costs connected with Coinbase agreements in Q2 and USD 655.3 million for H1.",
+        "Coinbase allocations depend partly on USDC held on its platform and broader ecosystem growth after specified third-party participant payments.",
+        "Circle describes Agent Stack components including policy-controlled agent wallets, Circle CLI, agent marketplace and USDC nanopayments."
+      ]
+    },
+    {
+      "id": "coinbase-q3-2026-results",
+      "url": "https://www.coinbase.com/blog/earnings-show-all-time-high-coinbase-one-subscribers-and-prediction-markets",
+      "authority": "official Coinbase Q3 2026 earnings announcement",
+      "published_at_utc": "2026-10-29T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "Coinbase reported 10.7% crypto trading-volume market share and platform assets equal to 12.5% of total crypto market capitalization.",
+        "Average USDC held in Coinbase products reached USD 22 billion, up 49% year over year and a fourteenth consecutive quarterly record.",
+        "Coinbase reported USD 307 million of stablecoin revenue and prediction markets above USD 200 million annualized revenue."
+      ]
+    },
+    {
+      "id": "coinbase-q3-2026-earnings-deck",
+      "url": "https://investor.coinbase.com/files/content_files/Q3_26-Earnings-Deck.pdf",
+      "authority": "official Coinbase investor earnings deck",
+      "published_at_utc": "2026-10-29T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "Average USDC held in Coinbase products was approximately 30% of average USDC market capitalization in Q3 2026.",
+        "Coinbase stated that it captured approximately 50% of USDC economics over the prior year; this is a Coinbase management statement, not an independently calculated market-wide measure."
+      ]
+    },
+    {
+      "id": "coinbase-xrp-cross-collateral-doc",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "authority": "official Coinbase Global Exchange help documentation",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "XRP is listed as an eligible collateral asset for perpetual-futures cross-collateral support.",
+        "Collateral use is capped by organization-level average-daily-quantity limits; excess above a limit does not contribute to portfolio value.",
+        "Eligibility does not disclose actual XRP collateral balances, borrowing, utilization or incremental spot purchases."
+      ]
+    },
+    {
+      "id": "circle-arc-mainnet-launch",
+      "url": "https://www.circle.com/fr/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "authority": "official Circle mainnet launch release",
+      "published_at_utc": "2026-09-16T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "Arc public mainnet launched 2026-09-16 as a Circle-led institutional Layer-1 for financial markets, real-time payments and agentic economic activity.",
+        "SBI Group is named in the founding validator cohort and Circle quotes SBI Chairman Yoshitaka Kitao confirming validator participation and collaboration.",
+        "USDC is used to pay Arc network fees; the release says Arc does not require a volatile native token for gas. ARC's initial token mint is described as a technical roadmap step, not a public token launch.",
+        "Coinbase is listed among centralized exchanges providing access to Arc, not among the founding validators.",
+        "Circle reports that USDC represented 98.8% of agent-driven transaction volume; this is an issuer-reported metric, not independently audited in this review.",
+        "Circle Payments Network is integrated with Arc; StableFX supports multi-currency stablecoin settlement. Roadmap throughput targets are not observed production performance."
+      ]
+    },
+    {
+      "id": "coinbase-rlusd-listing",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "authority": "official Coinbase product announcement",
+      "published_at_utc": "2026-10-28T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "RLUSD launched on Coinbase Prime, Coinbase Exchange and Coinbase retail app.",
+        "At launch, RLUSD deposits and withdrawals were supported on XRPL, Base and Ethereum with 1:1 USD conversion.",
+        "Coinbase said Global Exchange collateral support for RLUSD would follow; do not record it as already active at launch.",
+        "Ripple provides liquidity on Base for RLUSD."
+      ]
+    },
+    {
+      "id": "ripple-coinbase-rlusd-partnership",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "authority": "official Ripple partnership announcement",
+      "published_at_utc": "2026-10-28T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "Ripple and Coinbase announced a commercial RLUSD distribution partnership across Coinbase Prime, Exchange and Retail.",
+        "The partnership supports RLUSD on XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was described as forthcoming."
+      ]
+    },
+    {
+      "id": "ripple-sbi-rlusd-japan",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "authority": "official Ripple/SBI launch announcement",
+      "published_at_utc": "2026-06-24T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "RLUSD became available in Japan through SBI VC Trade following Japan FSA approval under the Payment Services Act framework for foreign-issued electronic payment instruments."
+      ]
+    },
+    {
+      "id": "c2fo-ripple-instant-pay",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "authority": "official Ripple/C2FO announcement",
+      "published_at_utc": "2026-10-27T00:00:00Z",
+      "retrieved_at_utc": "2026-11-03T22:43:51Z",
+      "claims": [
+        "C2FO Instant Pay is planned to use XRPL for financing and settlement activity, with RLUSD as the settlement asset.",
+        "The more-than-USD-520-billion figure refers to C2FO's existing Early Pay programs, not Instant Pay throughput.",
+        "No XRP bridge usage, XRP collateral usage, production volume or named capital-provider commitments were established by the announcement."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "edge": "equity ownership",
+      "status": "official historical disclosure",
+      "detail": "approximately 9% based on actual holdings, reported 2025-02-07; current percentage unknown"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Ripple Asia",
+      "edge": "ownership",
+      "status": "official",
+      "detail": "60% SBI / 40% Ripple"
+    },
+    {
+      "from": "SBI Remit",
+      "to": "XRP",
+      "edge": "bridge-currency remittance",
+      "status": "official historical disclosure",
+      "detail": "service began 2021; current corridor volumes unknown"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "edge": "strategic equity investment",
+      "status": "official",
+      "detail": "USD 25M SBI Holdings plus USD 25M SBI Shinsei Bank in 2025"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Circle Holdings / Circle SBI Japan KK",
+      "edge": "JV ownership",
+      "status": "official",
+      "detail": "50:50 with Circle; agreement 2025-03-18"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "edge": "founding validator / network operation",
+      "status": "official current launch announcement",
+      "detail": "Arc mainnet launched 2026-09-16"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "edge": "regulated distribution",
+      "status": "official",
+      "detail": "public USDC service began 2025-03-26"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "edge": "regulated distribution",
+      "status": "official",
+      "detail": "Japan launch 2026-06-24"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle USDC",
+      "edge": "strategic distribution / revenue sharing",
+      "status": "SEC disclosure",
+      "detail": "Q2 2026 distribution cost USD 324.6M; H1 USD 655.3M"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "edge": "commercial distribution",
+      "status": "official",
+      "detail": "Prime, Exchange and retail launch 2026-10-28; Global Exchange collateral support was forthcoming at launch"
+    },
+    {
+      "from": "Coinbase Global Exchange",
+      "to": "XRP",
+      "edge": "perpetual-futures collateral eligibility",
+      "status": "official product documentation",
+      "detail": "ADQ/UBO caps apply; actual usage unknown"
+    },
+    {
+      "from": "C2FO Instant Pay",
+      "to": "XRPL",
+      "edge": "planned financing and settlement",
+      "status": "official announcement",
+      "detail": "RLUSD settlement asset; XRP bridge use unconfirmed"
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "SBI Holdings",
+      "edge": "no relationship established",
+      "status": "unknown / do not conflate",
+      "detail": "SBIC East Japan is a separate Japanese legal entity"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "SBI is pursuing a multi-rail digital-finance strategy rather than an exclusive Ripple/XRP strategy.",
+      "support": [
+        "Historical Ripple equity and XRP remittance ties",
+        "50:50 Circle JV and USD 50M Circle equity investment",
+        "SBI Group founding validator on Circle Arc",
+        "JPYSC and RLUSD/USDC distribution"
+      ],
+      "disconfirming_or_limiting": [
+        "No current Ripple equity percentage or corridor volumes were found",
+        "Circle Arc activity and SBI validator operations require independent chain-level verification"
+      ],
+      "confidence": "strongly supported as a strategic interpretation; not proof of XRP divestment"
+    },
+    {
+      "id": "H2",
+      "claim": "Circle Arc may compete with XRPL for institutional stablecoin settlement and agentic payment activity.",
+      "support": [
+        "Arc mainnet live",
+        "USDC gas fees and native Circle Payments Network integration",
+        "SBI validator participation",
+        "Coinbase listed as an Arc access exchange",
+        "Circle-reported 98.8% USDC share of agent-driven transaction volume"
+      ],
+      "disconfirming_or_limiting": [
+        "Ripple's RLUSD is also distributed through Coinbase and SBI",
+        "C2FO announced XRPL financing/settlement using RLUSD",
+        "No comparative production volumes or customer migration data were found"
+      ],
+      "confidence": "plausible competitive pressure; displacement not established"
+    },
+    {
+      "id": "H3",
+      "claim": "Coinbase is a cross-issuer distribution and market-infrastructure hub for both Circle and Ripple.",
+      "support": [
+        "Circle SEC filing details substantial Coinbase distribution economics",
+        "Coinbase holds USD 22B average USDC in products",
+        "Coinbase launched RLUSD across Prime, Exchange and Retail",
+        "Coinbase supports XRP as eligible perpetual-futures collateral"
+      ],
+      "disconfirming_or_limiting": [
+        "RLUSD commercial economics and actual volume are undisclosed",
+        "XRP collateral utilization is not public",
+        "Coinbase's Arc participation is access/exchange, not founding-validator status"
+      ],
+      "confidence": "strongly supported for distribution/access; actual economic parity and utilization unknown"
+    },
+    {
+      "id": "H4",
+      "claim": "Stablecoin and XRPL adoption necessarily increases XRP spot demand.",
+      "support": [
+        "XRP remains a collateral-eligible asset on Coinbase Global Exchange",
+        "SBI Remit historically used XRP as bridge currency"
+      ],
+      "disconfirming_or_limiting": [
+        "C2FO announcement specifies RLUSD settlement, not XRP",
+        "Circle Arc uses USDC for gas",
+        "RLUSD can move across XRPL, Base and Ethereum without proof of XRP bridge use",
+        "No XRP collateral balances or routed XRP volume disclosed"
+      ],
+      "confidence": "not established; must not be assumed"
+    }
+  ],
+  "unknowns": [
+    "SBI Group's current 2026 Ripple equity percentage; the latest official percentage found in this review is approximately 9% as of February 2025.",
+    "Current SBI Remit XRP bridge-currency volumes and corridor-level liquidity.",
+    "Actual operating volume, users and onchain balances attributable to SBI Circle Holdings, Circle SBI Japan KK and JPYSC.",
+    "SBI's validator performance, stake and transaction share on Arc after mainnet launch.",
+    "Coinbase's actual XRP collateral balances, utilization, haircuts by client tier and any XRP-backed lending balances.",
+    "Coinbase/Ripple RLUSD distribution economics, actual balances and market share.",
+    "C2FO Instant Pay production launch date, named capital providers, invoice throughput, settlement asset split and any XRP bridge use.",
+    "Whether SBIC East Japan has any OpenAI partnership or XRP relationship; neither is established here.",
+    "Exact identity of the user's referenced Camilla Stephenson YouTube creator and the intended ASK Coin."
+  ],
+  "model_use": {
+    "research_context_eligible": true,
+    "direct_market_feature_ready": false,
+    "requirement": "Convert each event into a point-in-time feature record with actual first-public-availability time, source data-as-of time, ingestion time, revision history, source independence group and raw/normalized hashes before model use."
+  },
+  "safety": {
+    "lawful_public_sources_only": true,
+    "private_data_accessed": false,
+    "secrets_accessed": false,
+    "workflow_dispatched": false,
+    "main_modified": false,
+    "merge_performed": false,
+    "forecast_issued": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "next_actions": [
+    "Track Arc onchain validators, transactions, USDC supply and SBI/JpySC integrations using chain-native data and timestamped snapshots.",
+    "Measure XRP bridge usage in SBI remittance corridors rather than infer it from historical launch announcements.",
+    "Reconcile Coinbase XRP collateral eligibility with actual balances/utilization if public disclosures become available.",
+    "Measure RLUSD/USDC activity on XRPL, Base, Ethereum and Arc separately; do not aggregate chain-specific supply or volume.",
+    "Verify C2FO Instant Pay production activity and actual capital-provider deployment.",
+    "Normalize these events into the point-in-time feature store only after event-time and availability-time checks."
+  ]
+}

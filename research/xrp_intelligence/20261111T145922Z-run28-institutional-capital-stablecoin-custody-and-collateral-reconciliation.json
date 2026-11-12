@@ -1,0 +1,687 @@
+{
+  "artifact_type": "barrot_xrp_research_run",
+  "schema_version": "1.0.0",
+  "run_id": 28,
+  "captured_at_utc": "2026-11-11T14:59:22Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "forecast_status": "NOT_ISSUED",
+  "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "repository_snapshot": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run28_commit": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "integration_pr": 1661,
+    "integration_ahead_by": 2029,
+    "integration_behind_by": 0,
+    "changed_files": 1010,
+    "workflow_files_changed": 44,
+    "non_workflow_paths_changed": 966,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2275,
+    "main_tree_files": 1288,
+    "integration_tree_files": 2165,
+    "main_workflow_files": 86,
+    "integration_workflow_files": 87,
+    "hf_space_app_py_changed": true,
+    "main_primary_xrp_mission_present": false,
+    "integration_primary_xrp_mission_present": true,
+    "main_scheduled_xrp_collector_present": false,
+    "integration_scheduled_xrp_collector_present": true,
+    "local_git_clone": "FAILED_DNS_RESOLUTION; complete GitHub API tree, file, PR and CI inspection succeeded",
+    "main_pages_build_run": 42944862534,
+    "main_pages_build_conclusion": "success",
+    "main_pages_publication_authorized": false,
+    "main_ci_run": 42944864014,
+    "main_ci_conclusion": "success",
+    "main_ci_tests_passed": 718,
+    "latest_main_pillars_check": {
+      "run_id": 43025487840,
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "conclusion": "failure",
+      "read_only": true,
+      "reasons": [
+        "missing GitHub App credentials",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ]
+    },
+    "latest_full_suite_tested_head": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "latest_exact_head_ci": "EXACT_HEAD_36602C9_FULL_SUITE_FAILED_3444_PASSED_3_FAILED; core 714 passed; dependency audit and fail-closed gate passed; three failures are evidence-map timestamp, failure-classification and provenance-label contracts",
+    "last_reconciled_at_utc": "2026-11-11T14:59:22Z",
+    "run28_new_paths": [
+      "research/xrp_intelligence/20261111T145922Z-run28-institutional-capital-stablecoin-custody-and-collateral-reconciliation.json"
+    ],
+    "run28_expected_changed_files_after_commit": 1011,
+    "run28_expected_non_workflow_paths_after_commit": 967,
+    "run28_expected_integration_tree_entries_after_commit": 2276,
+    "run28_expected_ahead_by_after_commit": 2030
+  },
+  "integration_pr": {
+    "number": 1661,
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "ahead_by": 2029,
+    "behind_by": 0,
+    "changed_files": 1010,
+    "workflow_files": 44,
+    "other_changed_paths": 966,
+    "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "commits": 2029,
+    "additions": 245099,
+    "deletions": 4363,
+    "formal_approvals": 0,
+    "formal_reviews": 0,
+    "unresolved_review_threads": 0,
+    "review_comments": 0,
+    "requested_reviewers": 0,
+    "note": "Active consolidated integration draft. Exact tested head 36602c9: core 714 passed; full repository suite 3,444 passed, 3 failed, eight subtests; coverage 59.98%. The three failures are evidence-contract defects: current-map timestamp ordering, stale exact-head failure classification, and 16 source records missing the canonical source label. Six-manifest dependency audit and fail-closed gate passed. Run28 fixes these contracts and disables the secondary self-hosted-brain deployment workflow to enforce the repository's LunaRoute-only brain declaration. New exact-head CI is pending. Do not merge: zero formal approvals; branch-protection details HTTP 403; fallback ruleset disabled; connector admin=true; Pages publication unauthorized; 966 non-workflow paths still require semantic review.",
+    "issue_comments": 1,
+    "updated_at_utc": "2026-11-11T14:59:22Z"
+  },
+  "exact_head_ci": {
+    "head_sha": "36602c9bc7c9e97d8319ec84d13d8971d208f4ff",
+    "run_id": 43041561932,
+    "full_suite_job": 130594397935,
+    "core_suite_job": 130594398463,
+    "conclusion": "failure",
+    "full_repository_suite": {
+      "passed": 3444,
+      "failed": 3,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "exact_head": true,
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false
+    },
+    "core_tests": {
+      "passed": 714,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "failing_tests": [
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+    ],
+    "dependency_audit": {
+      "run_id": 43041562146,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43041562362,
+      "conclusion": "success",
+      "merge_disabled": true
+    },
+    "failure_classification": "exact-head full-suite failed on 36602c9: 3,444 passed, 3 failed; eight subtests passed. The three failures are evidence-map contract defects: verified/captured timestamp ordering, stale exact-head CI failure classification, and 16 source-provenance records lacking a canonical source label. Core suite, six-manifest dependency audit, and fail-closed gate passed. No XRP adapter or prediction-runtime failure was observed in this run. Run28 corrects the evidence contracts and quarantines the secondary brain deployment; new exact-head CI is pending."
+  },
+  "research": {
+    "market_structure": {
+      "latest_snapshot_reference": "Run27 research artifact; no new synchronized direct-venue spot/derivatives capture in Run28.",
+      "spot": "Run27 recorded a six-venue aggregated XRP mid of $1.0611 at 14:00 UTC and an independent XRPL dashboard reference of $1.0562 at 14:34 UTC. These are asynchronous aggregator/venue observations, not an executable cross-venue arbitrage or synchronized feature.",
+      "exchange_wallets": "Run27 labeled-wallet universe tracked about 22.33B XRP. Same-wallet 30-day balances declined about 155.7M XRP, while naive aggregate balances rose about 356.3M because newly tracked wallets added about 512.1M XRP. Includes cold storage and incomplete labels; not tradable float.",
+      "etf_flows": "Run27 provider disagreement: Alpha Finance about -$7.6M with 5/5 tracked funds; CryptoETF about -$6.9M with 4/5 and XRPZ missing; XRP Insights about -27K XRP (~$28.6K) provisional. Different universes and methodologies; do not average.",
+      "derivatives": "Run27 provider XRP perpetual OI estimates diverged about $1.16B versus $1.57B. Funding was positive while OI fell and long liquidations dominated. Provider coverage differs; not a directional signal.",
+      "model_eligibility": "No synchronized point-in-time multi-venue dataset; all above research-only."
+    },
+    "institutional_relationships": {
+      "sbi_holdings": {
+        "ripple_equity": "SBI Holdings' June 9 2025 release said it had invested in Ripple since 2016 and held approximately 9% as an external largest shareholder; current November 2026 percentage not independently refreshed.",
+        "ripple_asia": "SBI identifies SBI Ripple Asia as a joint venture with Ripple for payments infrastructure in Japan and Asia.",
+        "circle_equity": "SBI Holdings and SBI Shinsei Bank disclosed $50M of Circle equity, split $25M each, in June 2025.",
+        "circle_jv": "SBI and Circle Holdings established a joint venture in August 2025 to promote USDC use and new Japanese use cases.",
+        "arc": "Circle's September 2026 Arc release names SBI Group as a founding validator; SBI says it will use USDC and JPYSC. Arc gas is USDC and the network does not require a volatile native gas token.",
+        "evernorth": "SBI's $200M Evernorth commitment is included within the aggregate $214.05M advance-funding cash pool; do not double count."
+      },
+      "sbi_vc_trade_lending": {
+        "rendered_page_count": 29,
+        "assets_including": [
+          "XRP",
+          "USDC",
+          "JPYSC"
+        ],
+        "rlusd_in_lending_list": false,
+        "search_snippet_conflict_count": 32,
+        "resolution": "The direct rendered SBI VC Trade lending page states 29 and lists 29 assets; a search-result snippet says 32. Preserve the discrepancy; use the direct rendered page as primary evidence for this capture.",
+        "historical_usdc_offer": "The page describes a USDC 84-day course at 10% annualized for the April 30 2026 solicitation; not a current guaranteed rate.",
+        "distinction": "Customers lend assets to SBI VC Trade. This does not establish margin-collateral eligibility, outstanding loan balances, utilization or actual XRP collateral."
+      },
+      "circle": {
+        "usdc_xrpl": "Circle announced native USDC on XRPL mainnet on June 12 2025, accessible through Circle Mint/APIs without bridging.",
+        "arc": "Arc mainnet launched September 16 2026. Circle says SBI Group is a founding validator and Coinbase is among exchange partners; Arc fees are paid in USDC, not a volatile native token.",
+        "economics": "Circle's October 16 2026 company blog reports H1 2026 USDC onchain volume >$36T, $315B mint/redemption, $819M distribution-partner and transaction costs, and ~77% of stablecoin transaction volume. It identifies Coinbase as its largest/longest-standing partner and quotes Coinbase average USDC held in products at $20B in Q2 2026, up 44% YoY. These are company-reported metrics; Coinbase-specific revenue share is not disclosed.",
+        "relationship_to_ripple": "Circle and Ripple stablecoins coexist on XRPL; no direct Circle-Ripple commercial partnership is inferred from shared ledger presence."
+      },
+      "coinbase": {
+        "circle": "Coinbase took an equity stake in Circle under the 2023 agreement and has an ongoing commercial relationship sharing USDC economics.",
+        "ripple": "Ripple's October 28 2026 announcement made RLUSD available on Coinbase Prime, Exchange and Retail, with XRPL, Base and Ethereum support. Coinbase Global Exchange collateral availability was stated as future at announcement.",
+        "cbxrp": "Coinbase's November 11 proof page displayed 151,709,177.16 XRP reserve against 151,706,930.63 cbXRP supply: 2,246.53 XRP displayed surplus, approximately 0.00148%. Issuer display, not an independent audit or proof of new spot purchases.",
+        "strategic_position": "Coinbase is a multi-issuer distribution, custody and market-access platform with USDC economics, RLUSD distribution, cbXRP custody/wrapping and Arc exchange participation. These alignments do not imply exclusive XRP preference."
+      },
+      "ripple_prime": "Ripple's October 15 2026 release describes 24/7 RWA perpetual swaps across 100+ reference markets, including Virtu, using Trade.xyz contracts on Hyperliquid. Ripple Prime acts as principal and RLUSD may be collateral. No XRP collateral leg is disclosed.",
+      "bny": "BNY's October 27 2026 release says it is primary reserve custodian for RLUSD and now supports XRP and RLUSD custody. Planned direct RLUSD mint/redeem and C2FO tokenized trade-finance work are subject to approvals/exploration. BNY also provides Circle USDC reserve custody and mint/burn services, making it a common institutional custody node, not proof of a direct Circle-Ripple partnership.",
+      "standard_chartered": "Ripple's October 12 2026 release says Standard Chartered custody for RLUSD on XRPL is live through its DIFC branch. Planned RLUSD collateral mirroring with LMAX remains subject to final documentation, testing, laws, internal approvals and jurisdiction readiness; no XRP collateral is disclosed."
+    },
+    "capital_taxonomy": {
+      "actual_capital_definition": "'Actual capital' is not a standardized XRP metric. Keep distinct ledgers for cash received, in-kind XRP, cash used to buy XRP, equity subscriptions, debt, drawn facilities, undrawn ELOC capacity, posted collateral, registered resale and actual secondary sales.",
+      "sbi_circle_equity_usd": 50000000,
+      "sbi_circle_split_usd": {
+        "sbi_holdings": 25000000,
+        "sbi_shinsei_bank": 25000000
+      },
+      "sbi_ripple_equity_claim": "Approximately 9% as disclosed by SBI in 2025; current ownership not refreshed.",
+      "evernorth_advance_funding": {
+        "cash_usd": 214050000,
+        "xrp_in_kind": 600000
+      },
+      "evernorth_sbi_commitment_usd": 200000000,
+      "evernorth_sbi_included_in_advance_funding_pool": true,
+      "evernorth_registered_resale_shares": 73688162,
+      "evernorth_resale_proceeds_to_company_usd": 0,
+      "evernorth_resale_exception": "Amounts received on Sponsor Warrant exercise only.",
+      "interpretation": "Registered resale is not cash to Evernorth or proof of XRP sales. Cantor ELOC capacity is not actual cash unless drawn. SBI/Circle/Ripple equity relationships are not XRP token purchases."
+    },
+    "xrpl_governance": {
+      "source": "https://xrpldashboard.com/amendments",
+      "as_of_utc": "2026-11-11T14:28:00Z",
+      "validators_heard": 35,
+      "yes_threshold": 29,
+      "amendments_in_countdown": 0,
+      "votes": {
+        "SingleAssetVault": 23,
+        "LendingProtocol": 22,
+        "LendingProtocolV1_1": 22
+      },
+      "status": "Native XRPL lending is not active. SingleAssetVault supports XRP, IOU or MPT, so XRP collateral is not mandatory even after activation."
+    },
+    "identity_research": {
+      "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are distinct Japanese SME investment-consultation companies, not SBI Holdings. Tokyo SBIC's 2025 ChatGPT/Copilot/RAG training for investee companies is education, not an OpenAI partnership.",
+      "ask_coin": "No verified XRP/XRPL ASK Coin identity. Askcoin UCID 4640 and Permission Coin ASK UCID 7105 remain distinct; no XRPL contract or Ripple relationship verified.",
+      "actual_capital": "No primary-source definition of a standardized metric by this exact phrase; use the capital taxonomy above.",
+      "kamilah_stevenson": "First-party site identifies Dr Kamilah Stevenson/The Wealth Doctor. iHeart guest says YouTube name 'doctor Camilla Stevenson' and warns of fake pages. Exact channel handle not cross-linked by first-party site; candidate handles remain unverified. No personal-channel YouTube videos attributed."
+    }
+  },
+  "relationship_graph": {
+    "nodes": [
+      "SBI Holdings",
+      "SBI Shinsei Bank",
+      "SBI VC Trade",
+      "SBI Ripple Asia",
+      "Ripple",
+      "Evernorth",
+      "Circle",
+      "Coinbase",
+      "BNY",
+      "Standard Chartered",
+      "LMAX Group",
+      "Trade.xyz",
+      "Hyperliquid",
+      "Circle Arc",
+      "XRPL",
+      "USDC",
+      "RLUSD",
+      "JPYSC",
+      "cbXRP",
+      "Morpho",
+      "Aave",
+      "SBIC East",
+      "SBIC Central",
+      "SBIC West",
+      "VOST",
+      "Dr Kamilah Stevenson"
+    ],
+    "edges": [
+      {
+        "from": "SBI Holdings",
+        "to": "Ripple",
+        "type": "equity_and_joint_venture",
+        "evidence": "SBI 2025 release reports approximately 9% Ripple stake and SBI Ripple Asia JV.",
+        "status": "issuer_disclosed_dated"
+      },
+      {
+        "from": "SBI Holdings",
+        "to": "Circle",
+        "type": "equity_and_joint_venture",
+        "evidence": "$25M SBI Holdings plus $25M SBI Shinsei Bank Circle investment; SBI Circle Holdings JV.",
+        "status": "issuer_disclosed"
+      },
+      {
+        "from": "SBI Group",
+        "to": "Circle Arc",
+        "type": "founding_validator",
+        "evidence": "Circle names SBI Group in founding validator cohort.",
+        "status": "issuer_disclosed"
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "XRP/USDC/JPYSC",
+        "type": "lending_product_eligibility",
+        "evidence": "Direct lending page lists 29 assets including these; no outstanding balances disclosed.",
+        "status": "product_list_only"
+      },
+      {
+        "from": "Circle",
+        "to": "XRPL",
+        "type": "native_USDC_issuance",
+        "evidence": "Circle native USDC on XRPL since 2025-06-12.",
+        "status": "live"
+      },
+      {
+        "from": "Ripple",
+        "to": "XRPL",
+        "type": "RLUSD_and_ecosystem",
+        "evidence": "RLUSD is issued on XRPL; ledger ecosystem relationship.",
+        "status": "live"
+      },
+      {
+        "from": "Coinbase",
+        "to": "Circle",
+        "type": "equity_and_USDC_distribution_economics",
+        "evidence": "2023 equity/commercial agreement; Circle calls Coinbase largest/longest-standing partner.",
+        "status": "issuer_disclosed"
+      },
+      {
+        "from": "Ripple",
+        "to": "Coinbase",
+        "type": "RLUSD_distribution",
+        "evidence": "RLUSD on Coinbase Prime, Exchange and Retail; Global Exchange collateral future at announcement.",
+        "status": "live_distribution_future_collateral"
+      },
+      {
+        "from": "Coinbase",
+        "to": "cbXRP",
+        "type": "wrapped_XRP_reserves",
+        "evidence": "Coinbase issuer proof page displays reserve and supply.",
+        "status": "issuer_display_not_independent_audit"
+      },
+      {
+        "from": "BNY",
+        "to": "Circle",
+        "type": "USDC_reserve_custody_and_mint_burn",
+        "evidence": "BNY expanded Circle stablecoin services.",
+        "status": "issuer_and_bank_disclosed"
+      },
+      {
+        "from": "BNY",
+        "to": "Ripple",
+        "type": "XRP_RLUSD_custody",
+        "evidence": "BNY supports XRP/RLUSD custody; intended mint/redeem and trade-finance work subject to approval.",
+        "status": "custody_live_future_services_conditional"
+      },
+      {
+        "from": "Ripple Prime",
+        "to": "Trade.xyz/Hyperliquid",
+        "type": "RWA_perpetual_swaps",
+        "evidence": "100+ reference markets; RLUSD collateral; no XRP leg disclosed.",
+        "status": "announced_live"
+      },
+      {
+        "from": "Standard Chartered",
+        "to": "Ripple/LMAX",
+        "type": "RLUSD_custody_and_planned_collateral",
+        "evidence": "RLUSD custody live; LMAX collateral mirroring planned subject to approvals.",
+        "status": "custody_live_collateral_future"
+      },
+      {
+        "from": "Circle Arc",
+        "to": "Coinbase",
+        "type": "exchange_ecosystem_participant",
+        "evidence": "Coinbase listed in Circle Arc exchange cohort.",
+        "status": "issuer_listed"
+      },
+      {
+        "from": "Circle Arc",
+        "to": "Aave/Morpho",
+        "type": "credit_market_ecosystem",
+        "evidence": "Circle lists Aave/Morpho at launch; lending uses USDC/EURC.",
+        "status": "issuer_listed"
+      },
+      {
+        "from": "SBIC East/Central/West",
+        "to": "ChatGPT",
+        "type": "investee_education",
+        "evidence": "Tokyo SBIC training notice lists ChatGPT/Copilot/RAG education by VOST; not OpenAI partnership.",
+        "status": "education_only"
+      }
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H01_STABLECOIN_CONVERGENCE",
+      "hypothesis": "SBI, Circle, Ripple, Coinbase and BNY are converging on multi-chain institutional settlement, with XRPL activity potentially benefiting from native USDC/RLUSD and custody.",
+      "support": [
+        "SBI investments/JVs",
+        "USDC and RLUSD both on XRPL",
+        "Coinbase distribution",
+        "BNY custody"
+      ],
+      "disconfirming": [
+        "RLUSD/USDC volumes are not XRP bridge volume",
+        "Arc uses USDC gas",
+        "Ripple Prime RWA swaps use RLUSD collateral, not XRP"
+      ],
+      "status": "PLAUSIBLE_ECOSYSTEM_ACTIVITY_NOT_XRP_DEMAND"
+    },
+    {
+      "id": "H02_ARC_COMPETITION",
+      "hypothesis": "Circle Arc may compete with XRPL/Ripple for stablecoin-native institutional settlement and agentic finance.",
+      "support": [
+        "Arc mainnet",
+        "USDC gas",
+        "SBI founding validator",
+        "Coinbase exchange cohort",
+        "Aave/Morpho credit"
+      ],
+      "disconfirming": [
+        "Circle USDC is also native on XRPL",
+        "Multi-chain distribution can coexist"
+      ],
+      "status": "COMPETING_NETWORK_HYPOTHESIS"
+    },
+    {
+      "id": "H03_COINBASE_XRP_WRAPPER",
+      "hypothesis": "cbXRP and Base DeFi markets may create additional XRP custody and collateral utility.",
+      "support": [
+        "Coinbase cbXRP proof page",
+        "151.7M cbXRP supply"
+      ],
+      "disconfirming": [
+        "Issuer reserve/supply display is not independent audit",
+        "No current borrow utilization or net spot purchase evidence"
+      ],
+      "status": "POTENTIAL_NOT_QUANTIFIED"
+    },
+    {
+      "id": "H04_EVERNORTH_CAPITAL_TO_XRP",
+      "hypothesis": "Evernorth capital raising may translate into additional XRP treasury purchases.",
+      "support": [
+        "SBI $200M commitment",
+        "$214.05M advance funding and in-kind XRP"
+      ],
+      "disconfirming": [
+        "Cantor ELOC capacity is not proceeds unless drawn",
+        "73.688M resale shares produce no proceeds to Evernorth",
+        "No current incremental purchase settlement verified"
+      ],
+      "status": "PARTIALLY_SUPPORTED_HISTORIC_CAPITAL_FLOWS_NOT_CURRENT_PURCHASE_SIGNAL"
+    },
+    {
+      "id": "H05_SBI_VC_LENDING",
+      "hypothesis": "SBI VC Trade's XRP lending availability may support institutional XRP utilization.",
+      "support": [
+        "XRP appears in 29-asset lending list"
+      ],
+      "disconfirming": [
+        "Product is customers lending to SBI",
+        "No outstanding loan balances, utilization or collateral data disclosed"
+      ],
+      "status": "PRODUCT_AVAILABILITY_ONLY"
+    },
+    {
+      "id": "H06_XRPL_NATIVE_LENDING",
+      "hypothesis": "XRPL native lending may create new collateral and credit utility after amendments activate.",
+      "support": [
+        "SingleAssetVault and LendingProtocol proposals"
+      ],
+      "disconfirming": [
+        "23/35 and 22/35 votes versus 29 threshold; no countdown",
+        "Vault can hold XRP, IOU or MPT; XRP not mandatory"
+      ],
+      "status": "NOT_ACTIVE"
+    },
+    {
+      "id": "H07_EXCHANGE_BALANCE_SCARCITY",
+      "hypothesis": "Declining same-wallet exchange balances may indicate lower available supply.",
+      "support": [
+        "Same-wallet 30-day balance decline in Run27"
+      ],
+      "disconfirming": [
+        "Newly tracked wallets reverse naive aggregate",
+        "Cold storage and incomplete labels; not tradable float"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "id": "H08_DERIVATIVES_DELEVERAGING",
+      "hypothesis": "Falling OI, positive funding and long liquidations may indicate long deleveraging.",
+      "support": [
+        "Run27 provider observations"
+      ],
+      "disconfirming": [
+        "Provider OI universes differ materially; could precede recovery or continuation"
+      ],
+      "status": "AMBIGUOUS"
+    },
+    {
+      "id": "H09_ETF_OUTFLOWS",
+      "hypothesis": "ETF outflows may indicate marginal institutional demand weakness.",
+      "support": [
+        "Multiple providers reported negative flows"
+      ],
+      "disconfirming": [
+        "Different fund coverage and methods; XRP Insights provisional; no averaging"
+      ],
+      "status": "NOT_DIRECTIONAL"
+    },
+    {
+      "id": "H10_KAMILAH_CHANNEL",
+      "hypothesis": "A YouTube channel candidate is operated by Dr Kamilah Stevenson.",
+      "support": [
+        "First-party website and iHeart guest interview"
+      ],
+      "disconfirming": [
+        "No first-party channel link; guest warns fake pages; transcript spelling varies"
+      ],
+      "status": "UNVERIFIED_CHANNEL"
+    },
+    {
+      "id": "H11_ASK_COIN_XRP",
+      "hypothesis": "ASK Coin may be XRP-connected.",
+      "support": [],
+      "disconfirming": [
+        "Distinct Askcoin and Permission ASK records; no XRPL contract or Ripple relationship verified"
+      ],
+      "status": "UNRESOLVED_NO_VERIFIED_LINK"
+    },
+    {
+      "id": "H12_SBIC_CHATGPT_PARTNERSHIP",
+      "hypothesis": "SBIC has a formal OpenAI/ChatGPT partnership.",
+      "support": [
+        "Investee education event included ChatGPT"
+      ],
+      "disconfirming": [
+        "Training was delivered by VOST; no OpenAI partnership source"
+      ],
+      "status": "NOT_SUPPORTED"
+    }
+  ],
+  "source_provenance": [
+    {
+      "source": "SBI Holdings June 9 2025 Circle investment and Ripple ownership disclosure",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings",
+      "as_of": "2025-06-09",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "primary issuer press release",
+      "independence_group": "sbi_holdings_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Approximately 9% Ripple stake is a dated 2025 issuer disclosure, not a current refreshed percentage."
+      ]
+    },
+    {
+      "source": "SBI Holdings August 22 2025 Circle joint-venture establishment",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "publisher": "SBI Holdings",
+      "as_of": "2025-08-22",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "primary issuer press release",
+      "independence_group": "sbi_holdings_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "JV does not establish XRP purchases."
+      ]
+    },
+    {
+      "source": "Circle Arc mainnet launch and founding validator cohort",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "as_of": "2026-09-16",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer release",
+      "independence_group": "circle_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Company-reported participation; Arc uses USDC gas and is not XRPL."
+      ]
+    },
+    {
+      "source": "Circle native USDC on XRPL launch",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publisher": "Circle",
+      "as_of": "2025-06-12",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer product announcement",
+      "independence_group": "circle_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Native USDC on XRPL does not prove XRP bridge-asset volume."
+      ]
+    },
+    {
+      "source": "Circle USDC partner economics and Coinbase distribution position",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "publisher": "Circle",
+      "as_of": "2026-10-16",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer commercial blog",
+      "independence_group": "circle_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Company-reported metrics; Coinbase-specific payout amount not disclosed."
+      ]
+    },
+    {
+      "source": "Circle-Coinbase USDC equity and commercial agreement",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "as_of": "2023-08-21",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "joint issuer announcement",
+      "independence_group": "circle_coinbase_joint",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Current equity percentage and exact commercial economics not fully disclosed."
+      ]
+    },
+    {
+      "source": "BNY-Ripple custody and tokenized trade finance collaboration",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publisher": "BNY",
+      "as_of": "2026-10-27",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "primary bank press release",
+      "independence_group": "bny_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Future mint/redeem and C2FO trade-finance work subject to approvals/exploration."
+      ]
+    },
+    {
+      "source": "Standard Chartered RLUSD custody and planned LMAX collateral integration",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publisher": "Ripple",
+      "as_of": "2026-10-12",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "issuer press release",
+      "independence_group": "ripple_primary",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "RLUSD custody live; collateral plan subject to documentation, testing, law and approvals."
+      ]
+    },
+    {
+      "source": "iHeart XRP Podcast interview with Dr Kamilah Stevenson",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "publisher": "iHeart / The XRP Podcast",
+      "as_of": "2026-06-11",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "third-party podcast transcript",
+      "independence_group": "iheart_media",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "Automated transcript spells the channel name Camilla; guest warns fake pages; no first-party channel cross-link."
+      ]
+    },
+    {
+      "source": "YouTube candidate channel Kamilah Stevenson XRP and Stocks",
+      "url": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+      "publisher": "YouTube",
+      "as_of": "retrieved 2026-11-11",
+      "recorded_at_utc": "2026-11-11T14:59:22Z",
+      "source_type": "unverified user-generated channel candidate",
+      "independence_group": "youtube_user_generated",
+      "raw_source_sha256": null,
+      "raw_receipt": "NOT_CAPTURED_BY_BARROT",
+      "model_eligible": false,
+      "limitations": [
+        "No first-party cross-link; no video attribution."
+      ]
+    }
+  ],
+  "limitations": [
+    "No raw web bytes captured by Barrot in this run; no SHA-256 raw receipts or external timestamp anchor created. These records are not model-eligible.",
+    "No live Bybit endpoint execution; mocked adapter tests only. Bybit may return 403 for U.S./Mainland China IPs; no proxy/bypass.",
+    "The Run27 spot, ETF, exchange-wallet and derivatives snapshots are asynchronous and provider-dependent; no synchronized feature admission.",
+    "SBI VC Trade lending availability does not establish outstanding XRP loans, margin eligibility, collateral haircuts or utilization.",
+    "Coinbase cbXRP reserve/supply is issuer-displayed, not independent audit or proof of new spot purchases.",
+    "Ripple Prime and Standard Chartered examples disclose RLUSD collateral, not XRP collateral.",
+    "BNY custody is not proof of lending or collateral usage.",
+    "Evernorth resale registration is not company proceeds or proof of XRP sales.",
+    "Arc, RLUSD, USDC and SBI equity relationships are not equivalent to XRP token flows.",
+    "Kamilah YouTube handle/video attribution remains unverified; no personal-channel inventory is attributed.",
+    "No out-of-sample predictive lift, calibrated probabilities or shadow outcomes sufficient for a forecast."
+  ],
+  "safety": {
+    "main_write": false,
+    "integration_branch_write": true,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "kaggle_submission": false,
+    "databricks_import": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_data_transfer": false,
+    "forecast_issued": false,
+    "secondary_self_hosted_brain_deploy_workflow_quarantined": true
+  }
+}

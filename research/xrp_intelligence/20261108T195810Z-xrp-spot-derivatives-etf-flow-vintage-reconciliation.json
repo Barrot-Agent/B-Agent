@@ -1,0 +1,367 @@
+{
+  "artifact_type": "xrp_spot_derivatives_etf_flow_vintage_reconciliation",
+  "schema_version": 1,
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "captured_at_utc": "2026-11-08T19:58:10Z",
+  "reference_time_utc": "2026-11-08T19:58:10Z",
+  "source_capture": {
+    "lawful_public_sources_only": true,
+    "response_body_text_captured": true,
+    "raw_http_wire_bytes_or_headers_captured": false,
+    "hash_policy": "SHA-256 covers exact public API response body text where supplied and explicitly normalized text excerpts for rendered publisher pages. No hash is described as a raw HTTP wire-byte receipt.",
+    "independent_timestamp_anchor": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_class": "direct_exchange_public_api",
+      "provider_event_time_utc": null,
+      "retrieval_reference_time_utc": "2026-11-08T19:58:10Z",
+      "hash_scope": "Exact JSON response body text surfaced by the public API fetch; HTTP headers and wire framing unavailable.",
+      "response_body_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15464000\",\"961\",\"961.000\"],\"b\":[\"1.15463000\",\"167\",\"167.000\"],\"c\":[\"1.15463000\",\"1.88230199\"],\"v\":[\"5356831.44182998\",\"7556240.84069063\"],\"p\":[\"1.15897888\",\"1.15795217\"],\"t\":[10391,13826],\"l\":[\"1.15041000\",\"1.14888000\"],\"h\":[\"1.16816000\",\"1.16816000\"],\"o\":\"1.16234000\"}}}",
+      "sha256": "02bf7a06b108d419a394b796825ae99c153b73d7c8eab0f38a5d849ae557207d",
+      "model_eligible": false
+    },
+    {
+      "source_id": "okx_xrp_usdt_ticker",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_class": "direct_exchange_public_api",
+      "provider_event_time_utc": "2026-11-08T19:53:38.962Z",
+      "age_seconds_at_reference": 271.038,
+      "hash_scope": "Exact JSON response body text surfaced by the public API fetch; HTTP headers and wire framing unavailable.",
+      "response_body_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1525\",\"lastSz\":\"43.383947\",\"askPx\":\"1.1525\",\"askSz\":\"3665.330388\",\"bidPx\":\"1.1524\",\"bidSz\":\"12015.938443\",\"open24h\":\"1.1618\",\"high24h\":\"1.1697\",\"low24h\":\"1.1495\",\"volCcy24h\":\"21669696.381838522\",\"vol24h\":\"18702889.353179\",\"ts\":\"1794167618962\",\"sodUtc0\":\"1.1639\",\"sodUtc8\":\"1.1563\"}],\"msg\":\"\"}",
+      "sha256": "c570343a8b0c5ef41b66c1742e4990392dc9bd6f618893da8cbe70ba66ebf897",
+      "model_eligible": false
+    },
+    {
+      "source_id": "kodexius_xrp_perpetuals_20261108_1419",
+      "publisher": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "source_class": "secondary_contract_level_derivatives_aggregator",
+      "source_time_utc": "2026-11-08T14:19:00Z",
+      "age_seconds_at_reference": 20350,
+      "independence_group": "kodexius_derivatives_aggregator",
+      "independence_assessment": "Distinct publisher; exchange endpoints and aggregation/contract normalization are not fully disclosed; not an independent exchange confirmation.",
+      "hash_scope": "SHA-256 of normalized visible page excerpt, not raw HTML or HTTP bytes.",
+      "normalized_excerpt": "XRP perpetual futures; Updated Nov 8 2026 14:19 UTC; aggregate open interest $779.66M; 7 contracts; OI-weighted funding +0.0061% per 8h; 24h volume $666.19M; exchange totals: Binance $420.34M, Bybit $142.85M, Hyperliquid $97.19M, OKX $94.29M, HTX $24.98M; contract table includes Binance USDC $32.81M and Bybit USDC $2.58M within the exchange totals.",
+      "sha256": "64f0c7234a7243f902ed39e5b9951bedade1380f83b1435ddc8c17b2c4ccd01f",
+      "model_eligible": false
+    },
+    {
+      "source_id": "tradradar_xrp_perpetuals_20261108_1900",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_class": "secondary_multi_exchange_derivatives_aggregator",
+      "source_time_utc": "2026-11-08T19:00:00Z",
+      "age_seconds_at_reference": 3490,
+      "reported_delay_minutes": 15,
+      "independence_group": "tradradar_multi_exchange_aggregator",
+      "independence_assessment": "Distinct publisher; it says it collects from seven exchanges but does not expose raw exchange payloads or contract-level normalization; not an independent exchange confirmation.",
+      "hash_scope": "SHA-256 of normalized visible page excerpt, not raw HTML or HTTP bytes.",
+      "normalized_excerpt": "XRP futures; Updated Nov 8 2026 19:00 UTC; aggregate open interest $1.89B; 7 exchanges; 24h OI change -0.72%; OI-weighted funding +0.0078% per 8h; 24h liquidations >=$1.34M across 5 exchanges, longs $1.13M, shorts $207.57K; account long/short ratio 3.94 (79.7% long); venue OI: Binance $477.76M, Bybit $327.42M, Gate $284.49M, MEXC $256.45M, Bitget $244.38M, Hyperliquid $194.91M, OKX $107.06M.",
+      "sha256": "a66b75be62568f99bfdd60dbfe92605262bc597ea9d2a51b4f1f373d978954f8",
+      "model_eligible": false
+    },
+    {
+      "source_id": "xrp_insights_week45_etf",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-07",
+      "source_class": "secondary_issuer_holdings_aggregator",
+      "source_time_utc": "2026-11-07",
+      "data_as_of_utc": "2026-11-06",
+      "independence_group": "issuer_reported_holdings_scrapers",
+      "hash_scope": "SHA-256 of normalized visible page excerpt, not raw HTML or HTTP bytes.",
+      "normalized_excerpt": "XRP Insights Week 45 report published 2026-11-07; data through settled 2026-11-06 close; 6 US spot ETFs plus BITW; weekly holdings delta 2026-10-30 to 2026-11-06: -812,529 XRP; daily 2026-11-06: -663,043 XRP; combined holdings 1.20B XRP; AUM $1.43B; GXRP flow excluded because of a 2026-09-02 through 2026-09-28 scrape gap but GXRP holdings remain in totals; daily flow is change in issuer-reported XRP holdings, not verified cash creations/redemptions.",
+      "sha256": "a42ddc34d6d96d907df2b2b21ca1de2daf38f6bbc9a5cc70b36777a33913bfb2",
+      "model_eligible": false
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf",
+      "publisher": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "methodology_url": "https://alphafinance.io/methodology/",
+      "source_class": "secondary_provider_aggregated_etf_flow_series",
+      "data_as_of_utc": "2026-11-06",
+      "independence_group": "coinglass_commercial_etf_feed",
+      "hash_scope": "SHA-256 of normalized visible page excerpt, not raw HTML or HTTP bytes.",
+      "normalized_excerpt": "Alpha Finance XRP ETF dashboard through 2026-11-06; five funds; 2026-11-06 daily flow $0 across 5/5 reporting funds; 30-session flow +$45.9M; cumulative +$1.73B; methodology identifies CoinGlass commercial API as the ETF dashboard upstream; the XRP dashboard publishes flow series but no fund holdings or net assets.",
+      "sha256": "25912dd08153194e9243b7fe97968694b2fbd02c708c2022d49287cc9ae2667a",
+      "model_eligible": false
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_partial_20261108_1957",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_class": "secondary_issuer_holdings_aggregator",
+      "source_time_utc": "2026-11-08T19:57:00Z",
+      "data_as_of_utc": "2026-11-06_partial",
+      "independence_group": "issuer_reported_holdings_scrapers",
+      "hash_scope": "SHA-256 of normalized visible page excerpt, not raw HTML or HTTP bytes.",
+      "normalized_excerpt": "CryptoKeyhole XRP ETF page; updated 2026-11-08 19:57 UTC; Nov 6, 2026 partial daily flow across 3 of 4 daily-readable funds: -752,048 XRP, entirely XRPC; Franklin XRPZ missing; Bitwise 0, TOXR 0; GXRP uses 2026-06-30 SEC 10-Q value because daily page is blocked by a bot challenge; XRPR is not counted because its direct holdings do not represent full look-through holdings; header says latest issuer file 9 Nov 2026 but also says it was read at 05:12 UTC on 7 Nov 2026; per-fund table instead shows Bitwise issuer stamp 8 Nov 19:48 UTC and TOXR issuer stamp 8 Nov 19:00 UTC.",
+      "sha256": "83cc3503d555c3fd1debbe04ebf4b39300a1893cd10fe9609b9808eea8322db0",
+      "model_eligible": false
+    }
+  ],
+  "spot": {
+    "reference_time_utc": "2026-11-08T19:58:10Z",
+    "freshness_threshold_seconds": 300,
+    "kraken": {
+      "quote_currency": "USD",
+      "last": 1.15463,
+      "bid": 1.15463,
+      "bid_size_xrp": 167,
+      "ask": 1.15464,
+      "ask_size_xrp": 961,
+      "volume_24h_xrp": 7556240.84069063,
+      "vwap_24h_usd": 1.15795217,
+      "high_24h_usd": 1.16816,
+      "low_24h_usd": 1.14888,
+      "open_utc_day_usd": 1.16234,
+      "provider_event_time_utc": null,
+      "freshness_status": "UNKNOWN_PROVIDER_EVENT_TIME",
+      "top_of_book_bid_share_pct": 14.8049,
+      "spread_bps": 0.086607456,
+      "limitations": [
+        "Ticker top-of-book only; not multi-level depth.",
+        "Provider event timestamp and HTTP response headers were not surfaced."
+      ]
+    },
+    "okx": {
+      "quote_currency": "USDT",
+      "last": 1.1525,
+      "bid": 1.1524,
+      "bid_size_xrp": 12015.938443,
+      "ask": 1.1525,
+      "ask_size_xrp": 3665.330388,
+      "volume_24h_xrp": 18702889.353179,
+      "quote_volume_24h_usdt": 21669696.381838523,
+      "high_24h_usdt": 1.1697,
+      "low_24h_usdt": 1.1495,
+      "open_24h_usdt": 1.1618,
+      "provider_event_time_utc": "2026-11-08T19:53:38.962Z",
+      "age_seconds_at_reference": 271.038,
+      "freshness_status": "WITHIN_300_SECOND_LIMIT",
+      "top_of_book_bid_share_pct": 76.6261,
+      "spread_bps": 0.867716604,
+      "limitations": [
+        "Ticker top-of-book only; not multi-level depth.",
+        "USDT/USD conversion is not supplied."
+      ]
+    },
+    "cross_venue": {
+      "raw_last_price_gap_pct": 0.184815618,
+      "raw_mid_price_gap_pct": 0.189596078,
+      "normalized_usd_usdt_basis": false,
+      "executable_arbitrage_signal": false,
+      "venue_top_of_book_skew": "Kraken displayed size is ask-heavy (14.8% bid share); OKX is bid-heavy (76.6% bid share). This is a conflicting two-venue top-of-book snapshot, not a consolidated order book or durable liquidity signal.",
+      "model_eligible": false
+    },
+    "level2_depth_captured": false,
+    "synchronized_trades_captured": false
+  },
+  "derivatives": {
+    "reference_time_utc": "2026-11-08T19:58:10Z",
+    "kodexius": {
+      "updated_at_utc": "2026-11-08T14:19:00Z",
+      "age_seconds": 20350,
+      "reported_total_oi_usd": 779660000,
+      "contracts": 7,
+      "funding_oi_weighted_pct_per_8h": 0.0061,
+      "volume_24h_usd": 666190000,
+      "exchange_oi_usd": {
+        "Binance": 420340000,
+        "Bybit": 142850000,
+        "Hyperliquid": 97190000,
+        "OKX": 94290000,
+        "HTX": 24980000
+      },
+      "contract_oi_usd": {
+        "Binance_XRPUSDT": 387530000,
+        "Binance_XRPUSDC": 32810000,
+        "Bybit_XRPUSDT": 140270000,
+        "Bybit_XRPPERP_USDC": 2580000,
+        "Hyperliquid_XRP_USDC": 97190000,
+        "OKX_XRP_USDT_SWAP": 94290000,
+        "HTX_XRPUSDT": 24980000
+      },
+      "listed_contract_sum_usd": 779650000,
+      "caveat": "The page says seven contracts; the exchange-level table aggregates USDT and USDC contracts for Binance and Bybit."
+    },
+    "tradradar": {
+      "updated_at_utc": "2026-11-08T19:00:00Z",
+      "age_seconds": 3490,
+      "reported_delay_minutes": 15,
+      "displayed_total_oi_usd": 1890000000,
+      "exchange_count": 7,
+      "exchange_component_sum_usd": 1892470000,
+      "oi_change_24h_pct": -0.72,
+      "funding_oi_weighted_pct_per_8h": 0.0078,
+      "liquidations_24h_minimum_usd": 1340000,
+      "long_liquidations_usd": 1130000,
+      "short_liquidations_usd": 207570,
+      "long_short_account_ratio": 3.94,
+      "long_account_share_pct": 79.7,
+      "liquidation_exchange_count": 5,
+      "account_ratio_exchange_count": 5,
+      "exchange_oi_usd": {
+        "Binance": 477760000,
+        "Bybit": 327420000,
+        "Gate": 284490000,
+        "MEXC": 256450000,
+        "Bitget": 244380000,
+        "Hyperliquid": 194910000,
+        "OKX": 107060000
+      }
+    },
+    "comparison": {
+      "displayed_total_ratio_tradradar_to_kodexius": 2.4241335967,
+      "displayed_total_difference_usd": 1110340000,
+      "overlapping_exchange_delta_pct": {
+        "Binance": 13.6604,
+        "Bybit": 129.2055,
+        "Hyperliquid": 100.5453,
+        "OKX": 13.5433
+      },
+      "kodexius_venues_not_in_tradradar": [
+        "HTX"
+      ],
+      "tradradar_venues_not_in_kodexius": [
+        "Gate",
+        "MEXC",
+        "Bitget"
+      ],
+      "common_venue_oi_difference_usd": 352480000,
+      "added_tradradar_venue_oi_usd": 785320000,
+      "excluded_kodexius_htx_oi_usd": 24980000,
+      "status": "UNRESOLVED_VENUE_SCOPE_CONTRACT_SCOPE_AGGREGATION_AND_TIMESTAMP_DIFFERENCE",
+      "do_not_average": true,
+      "competing_hypotheses": [
+        {
+          "id": "H1_VENUE_COVERAGE",
+          "hypothesis": "Different venue universes explain a material portion of the aggregate gap.",
+          "support": [
+            "TradRadar includes Gate, MEXC and Bitget; Kodexius includes HTX instead.",
+            "Those three additional TradRadar venue totals sum to $785.32M."
+          ],
+          "counterevidence": [
+            "The common-venue totals still differ by $352.48M."
+          ],
+          "status": "PARTIALLY_SUPPORTED_NOT_SUFFICIENT"
+        },
+        {
+          "id": "H2_CONTRACT_OR_NOTIONAL_METHOD",
+          "hypothesis": "Different contract inclusion, OI unit conversion or USD-notional methodology explains remaining common-venue differences.",
+          "support": [
+            "Kodexius explicitly lists seven contracts including USDC and USDT variants.",
+            "Bybit and Hyperliquid overlapping venue totals differ materially."
+          ],
+          "counterevidence": [
+            "Neither page exposes raw exchange payloads or full contract-level normalization for all venues."
+          ],
+          "status": "PLAUSIBLE_NOT_RESOLVED"
+        },
+        {
+          "id": "H3_TIME_VARIATION",
+          "hypothesis": "Open interest changed between the 14:19 and 19:00 UTC source snapshots.",
+          "support": [
+            "The source timestamps are 4 hours 41 minutes apart.",
+            "TradRadar reports a -0.72% 24-hour OI change at its later snapshot."
+          ],
+          "counterevidence": [
+            "A time change alone does not explain the large differences on overlapping venues."
+          ],
+          "status": "CONTRIBUTORY_POSSIBLE"
+        },
+        {
+          "id": "H4_VENDOR_DATA_QUALITY",
+          "hypothesis": "One or both aggregators may have stale venue mappings, missing contracts or valuation errors.",
+          "support": [
+            "Overlapping venue totals differ materially despite broadly similar XRP market levels."
+          ],
+          "counterevidence": [
+            "No raw exchange payloads are available to assign an error to either publisher."
+          ],
+          "status": "POSSIBLE_NOT_ESTABLISHED"
+        }
+      ],
+      "disconfirming_evidence": [
+        "Kodexius contract sum is $779.65M, within $10,000 of its displayed $779.66M total.",
+        "TradRadar's seven venue components sum to $1.89247B, consistent with its rounded $1.89B total.",
+        "The providers' timestamps are not synchronized.",
+        "The long/short ratio is an account ratio, not notional exposure.",
+        "Liquidations cover five exchanges and are a disclosed lower bound."
+      ]
+    },
+    "model_eligible": false
+  },
+  "etf_flow_reconciliation": {
+    "xrp_insights": {
+      "daily_nov6_xrp": -663043,
+      "weekly_oct30_nov6_xrp": -812529,
+      "universe": "6 US spot ETFs plus BITW",
+      "combined_holdings_xrp": 1200000000,
+      "combined_aum_usd": 1430000000,
+      "gxrp_flow_excluded": true,
+      "gxrp_holdings_included": true,
+      "methodology": "Issuer-reported XRP holdings day-over-day delta; not verified cash creation/redemption."
+    },
+    "cryptokeyhole": {
+      "nov6_partial_change_xrp": -752048,
+      "coverage": "3 of 4 daily-readable funds",
+      "xrpc_change_xrp": -752048,
+      "bitwise_change_xrp": 0,
+      "toxr_change_xrp": 0,
+      "franklin_xrpz_missing": true,
+      "gxrp_daily_unavailable": true,
+      "xrpr_excluded": true,
+      "future_dated_header": "Latest issuer file 9 Nov 2026",
+      "conflicting_read_time": "Read at 05:12 UTC on 7 Nov 2026",
+      "conflicting_per_fund_stamps": [
+        "Bitwise issuer stamp 8 Nov 2026 19:48 UTC",
+        "TOXR issuer stamp 8 Nov 2026 19:00 UTC"
+      ],
+      "date_anomaly_status": "QUARANTINED_FUTURE_DATE_CONFLICT"
+    },
+    "alpha_finance": {
+      "nov6_daily_flow_usd": 0,
+      "funds_reporting": 5,
+      "fund_count": 5,
+      "thirty_session_flow_usd": 45900000,
+      "cumulative_flow_usd": 1730000000,
+      "upstream": "CoinGlass commercial API per publisher methodology",
+      "holdings_or_aum_published": false,
+      "interpretation": "A USD flow series from a five-fund universe; it is not an XRP holdings delta. The page shows zero across five of five funds on Nov 6."
+    },
+    "source_independence": "XRP Insights and CryptoKeyhole both derive holdings deltas from overlapping issuer-published files and are not independent confirmations of those issuer records. Alpha Finance is a distinct publisher using CoinGlass commercial data, but its upstream may also ingest issuer data. Different units, fund universes and reporting vintages must remain separate.",
+    "reconciliation_status": "UNRESOLVED_DIFFERENT_UNIVERSES_UNITS_AND_ISSUER_FILE_VINTAGES",
+    "do_not_average": true,
+    "actual_capital_inference": false,
+    "model_eligible": false
+  },
+  "source_quality": {
+    "raw_http_wire_bytes": false,
+    "synchronized_provider_timestamps": false,
+    "multi_level_orderbook_depth": false,
+    "complete_derivatives_contract_universe": false,
+    "complete_etf_issuer_universe": false,
+    "independent_source_anchor": false,
+    "feature_store_admission": "PROHIBITED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "feature_store_write": false,
+    "paper_trade": false,
+    "real_money": false,
+    "funds_transfer": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "external_model_transfer": false
+  }
+}

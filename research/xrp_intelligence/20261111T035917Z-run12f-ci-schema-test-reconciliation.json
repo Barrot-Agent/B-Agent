@@ -1,0 +1,97 @@
+{
+  "artifact_type": "xrp_integration_ci_schema_contract_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-11T03:59:17Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+  "integration_branch": "integration/xrp-v3-unified-main-20261111",
+  "integration_pr": 1661,
+  "integration_head_before_fix": "77d293cbcad5b67dfe9d336f1213a7e896dff82c",
+  "integration_head_ahead_by": 1975,
+  "integration_head_behind_by": 0,
+  "current_map": {
+    "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "sha": "1ded3574b8c50708527364418c48ba39b04d162a",
+    "schema_version": "1.1.0",
+    "captured_at_utc": "2026-11-11T03:49:53.250Z",
+    "design_change": "Current map schema 1.1 is a current-state snapshot; it no longer carries schema 1.0 fields latest_run_snapshot, current_run_observations, prior_run_observations or latest_verification_addendum."
+  },
+  "failed_exact_head_ci": {
+    "run_id": 42955322582,
+    "job_id": 130308925915,
+    "conclusion": "failure",
+    "passed": 3372,
+    "failed": 21,
+    "subtests_passed": 8,
+    "coverage_percent": 59.89,
+    "failure_class": "KeyError from historical tests expecting schema 1.0 snapshot keys in the schema 1.1 current-state map.",
+    "affected_files": [
+      "tests/test_xrp_mission_handoff_run58.py",
+      "tests/test_xrp_nine_platform_current_map_run73.py"
+    ],
+    "affected_missing_keys": [
+      "latest_run_snapshot",
+      "current_run_observations",
+      "prior_run_observations",
+      "latest_verification_addendum"
+    ],
+    "production_code_failure_identified": false
+  },
+  "companion_checks": {
+    "dependency_audit": {
+      "run_id": 42955322616,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 42955322567,
+      "conclusion": "success"
+    },
+    "core_test_job": {
+      "job_id": 130308926145,
+      "conclusion": "success"
+    }
+  },
+  "correction": {
+    "same_existing_branch": true,
+    "new_pr_created": false,
+    "production_code_changed": false,
+    "changes": [
+      "Replace stale run73 test expectations with 22 schema 1.1 current-map contract tests.",
+      "Update the Run58 handoff test to validate the 1.1 current map and separately retain the historical schema 1.0 archive checks.",
+      "Preserve the historical schema 1.0 map artifact and its existing Run58/Run70 checks.",
+      "Append this failure diagnosis and exact next verification requirement to the canonical handoff and BARROT_SYNC."
+    ],
+    "exact_head_ci_after_fix": "PENDING"
+  },
+  "security": {
+    "oauth_revoked_status": "REPOSITORY_REPORTED_IN_BARROT_SYNC",
+    "revocation_independently_verified": false,
+    "credential_contents_read": false,
+    "source_branch_history_rewritten": false,
+    "other_open_pr_tips_with_credential_path_reported": 17
+  },
+  "nine_platforms": {
+    "chatgpt_github_connector": "VERIFIED_CURRENT_SESSION",
+    "lunaroute": "DECLARED_NOT_AUTHENTICATED",
+    "other_external_platforms": "UNVERIFIED",
+    "external_model_data_transfer": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "next_actions": [
+    "Verify exact-head full-suite CI after the test-contract correction.",
+    "Reconcile any remaining failures without weakening assertions or production safety gates.",
+    "Continue semantic review of 932 non-workflow paths.",
+    "Resolve branch-protection visibility, independent approvals and Pages publication authorization.",
+    "Keep forecasts NOT_ISSUED until independent leakage-safe out-of-sample and shadow criteria pass."
+  ]
+}

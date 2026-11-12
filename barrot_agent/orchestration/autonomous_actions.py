@@ -149,7 +149,9 @@ Action rules:
 - Prefer inspection before modification.
 - Keep changes minimal.
 - TERMUX_DROP may write only inside the configured Termux workspace.
-- Use APPLY_PATCH for small edits.
+- WRITE_FILE may create new files only; it cannot overwrite existing files.
+- APPLY_PATCH requires one exact preimage match and uses compare-and-swap.
+- RUN_TESTS accepts only allowlisted pytest/compileall commands; no shell.
 - Run verification after modification.
 - If the previous attempt failed, inspect the failure and correct it.
 - Do not claim success without verification.
@@ -173,21 +175,49 @@ Action rules:
                 record["planning_error"] = str(exc)
                 continue
 
-            snapshots: dict[str, str] = {}
+            snapshots: dict[str, dict[str, object]] = {}
 
             for action in actions:
-                if action.type in {"WRITE_FILE", "APPLY_PATCH"}:
-                    path = action.args.get("path")
-
-                    if isinstance(path, str):
+                snapshot = None
+                path = action.args.get("path") if action.type in {"WRITE_FILE", "APPLY_PATCH"} else None
+                if isinstance(path, str):
+                    if path not in snapshots:
                         try:
-                            snapshots[path] = (
-                                self.actions.executor.read_file(path)
-                            )
+                            before = self.actions.executor.read_file(path)
                         except FileNotFoundError:
-                            snapshots[path] = ""
+                            before = None
+                        snapshots[path] = {
+                            "before": before,
+                            "expected_after": before,
+                            "applied": False,
+                        }
+                    snapshot = snapshots[path]
+                    current = snapshot["expected_after"]
+                    expected_after = None
+                    if action.type == "WRITE_FILE":
+                        proposed = action.args.get("content")
+                        if current is None and isinstance(proposed, str):
+                            expected_after = proposed
+                    elif action.type == "APPLY_PATCH":
+                        expected = action.args.get("expected")
+                        replacement = action.args.get("replacement")
+                        if (
+                            isinstance(current, str)
+                            and isinstance(expected, str)
+                            and isinstance(replacement, str)
+                            and expected in current
+                            and current.count(expected) == 1
+                        ):
+                            expected_after = current.replace(expected, replacement, 1)
+                    snapshot["pending_after"] = expected_after
 
                 result = self.actions.execute(action)
+
+                if snapshot is not None:
+                    pending_after = snapshot.pop("pending_after", None)
+                    if result.success and isinstance(pending_after, str):
+                        snapshot["expected_after"] = pending_after
+                        snapshot["applied"] = True
 
                 record["results"].append(
                     {
@@ -242,20 +272,28 @@ Action rules:
             if snapshots:
                 rollback_results = []
 
-                for path, original in snapshots.items():
+                for path, snapshot in snapshots.items():
+                    if not snapshot.get("applied"):
+                        continue
+                    original = snapshot.get("before")
+                    expected_after = snapshot.get("expected_after")
                     try:
-                        self.actions.executor.write_file(
+                        if not isinstance(expected_after, str):
+                            raise RuntimeError("Missing exact post-action content; preserving current file.")
+                        if original == expected_after:
+                            rollback_results.append({"path": path, "success": True, "unchanged": True})
+                            continue
+                        self.actions.executor.restore_file(
                             path,
-                            original,
+                            original if isinstance(original, str) or original is None else None,
+                            expected_current_content=expected_after,
                         )
-
                         rollback_results.append(
                             {
                                 "path": path,
                                 "success": True,
                             }
                         )
-
                     except Exception as exc:
                         rollback_results.append(
                             {
