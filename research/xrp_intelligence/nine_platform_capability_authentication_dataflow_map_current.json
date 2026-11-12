@@ -1,8 +1,8 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T16:00:00Z",
-  "last_verified_at_utc": "2026-11-12T16:00:00Z",
+  "captured_at_utc": "2026-11-12T16:17:00Z",
+  "last_verified_at_utc": "2026-11-12T16:17:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
   "observed_integration_head_before_map_commit": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
@@ -669,7 +669,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "9e0531fa9c70a159267b5106876c3eaf5d537a24",
+    "latest_full_suite_tested_head": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -896,7 +896,7 @@
     "latest_main_cross_analysis_run": 43157737939,
     "latest_main_cross_analysis_conclusion": "success",
     "latest_full_suite_conclusion": "failure",
-    "latest_exact_head_ci_run_id": 43252665376,
+    "latest_exact_head_ci_run_id": 43256307823,
     "current_head_before_run33_commit": "570cd11ab16be1c61cb44a6b10740e7eb726b123",
     "current_commit_tree_sha": "fb603c995e4edbfc7bb0e00dd044387617f1546f",
     "run33_expected_changed_files_after_commit": 1017,
@@ -927,7 +927,7 @@
     "post_run37_map_snapshot_correction_ci": "PENDING_EXACT_HEAD; last verified full suite is 05ad5ab, not the new map correction head",
     "current_head_before_run37_final_handoff_commit": "dbbd10657df10f84b81fb816ec742564f6197b32",
     "post_run37_final_handoff_commit_ci": "PENDING_EXACT_HEAD",
-    "latest_full_suite_tested_at_utc": "2026-11-12T15:57:20Z",
+    "latest_full_suite_tested_at_utc": "2026-11-12T16:16:52Z",
     "main_current_ci_scope": "Main .github/workflows/ci.yml executes pytest tests -v --no-cov across all 718 tests present on main. Integration adds the XRP mission, ingestion collector, event timeline and additional packages; its full-suite workflow currently discovers 3,505 cases and enforces a 53% barrot_agent coverage floor.",
     "main_full_suite_job_present": true,
     "current_head_before_run40_commit": "51f3b27884f685f9aa8ec9d44eb833a4b0bdffe5",
@@ -1072,39 +1072,67 @@
         1255,
         1254
       ]
+    },
+    "latest_live_snapshot_after_run64c_commit": {
+      "captured_at_utc": "2026-11-12T16:17:00Z",
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "integration_head_before_actual_capital_wording_fix": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
+      "integration_ahead_by": 2132,
+      "integration_behind_by": 0,
+      "pr_1661": {
+        "state": "open",
+        "draft": true,
+        "head_sha": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
+        "changed_files": 1070,
+        "additions": 297544,
+        "deletions": 4492,
+        "commits": 2132,
+        "mergeable": true,
+        "mergeable_state": "unstable",
+        "formal_approvals": 0,
+        "reviews": 0,
+        "review_comments": 0
+      },
+      "open_pr_inventory": {
+        "total": 374,
+        "drafts": 360,
+        "non_drafts": 14,
+        "base_main": 366,
+        "other_base": 8
+      }
     }
   },
   "ci_evidence": {
-    "integration_head_tested": "9e0531fa9c70a159267b5106876c3eaf5d537a24",
-    "integration_pr_run": 43252665376,
-    "integration_full_suite_job": 131302417949,
-    "dependency_audit_run": 43252665063,
-    "dependency_audit_job": 131302416926,
-    "fail_closed_gate_run": 43252664876,
-    "fail_closed_gate_job": 131302415394,
+    "integration_head_tested": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
+    "integration_pr_run": 43256307823,
+    "integration_full_suite_job": 131315359582,
+    "dependency_audit_run": 43256308212,
+    "dependency_audit_job": 131315360664,
+    "fail_closed_gate_run": 43256308151,
+    "fail_closed_gate_job": 131315359980,
     "full_repository_suite": {
       "passed": 3511,
       "failed": 1,
       "subtests": 8,
       "coverage_percent": 61.42,
       "coverage_floor_percent": 53,
-      "duration_seconds": 100.89,
+      "duration_seconds": 80.36,
       "exact_head": true,
       "exact_head_verified": true,
       "wheel_build_verified": false,
       "installed_wheel_primary_mission_verified": false
     },
     "dependency_audit": {
-      "run_id": 43252665063,
-      "job_id": 131302416926,
+      "run_id": 43256308212,
+      "job_id": 131315360664,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43252664876,
-      "job_id": 131302415394,
+      "run_id": 43256308151,
+      "job_id": 131315359980,
       "passed": true,
       "conclusion": "success",
       "automatic_merge_enabled": false
@@ -1145,19 +1173,19 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "9e0531fa9c70a159267b5106876c3eaf5d537a24",
-      "run_id": 43252665376,
+      "head_sha": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
+      "run_id": 43256307823,
       "status": "completed",
       "conclusion": "failure",
-      "completed_at_utc": "2026-11-12T15:57:20Z",
-      "full_suite_job_id": 131302417949,
+      "completed_at_utc": "2026-11-12T16:16:52Z",
+      "full_suite_job_id": 131315359582,
       "full_repository_suite": {
         "passed": 3511,
         "failed": 1,
         "subtests": 8,
         "coverage_percent": 61.42,
         "coverage_floor_percent": 53,
-        "duration_seconds": 100.89,
+        "duration_seconds": 80.36,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": false,
@@ -1166,21 +1194,20 @@
       "core_tests": {
         "passed": 721,
         "failed": 0,
-        "subtests": 8,
         "conclusion": "success",
-        "job_id": 131302418357
+        "job_id": 131315358595
       },
       "dependency_audit": {
-        "run_id": 43252665063,
-        "job_id": 131302416926,
+        "run_id": 43256308212,
+        "job_id": 131315360664,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43252664876,
-        "job_id": 131302415394,
+        "run_id": 43256308151,
+        "job_id": 131315359980,
         "passed": true,
         "conclusion": "success",
         "automatic_merge_enabled": false
@@ -1188,7 +1215,7 @@
       "failing_tests": [
         "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
       ],
-      "failure_classification": "Exact-head full-suite failed: 3,511 passed, one failed, eight subtests, 61.42% coverage. The sole failure is a research identity-map wording regression: the ASK Coin field does not yet distinguish Askcoin UCID 4640, Permission Coin UCID 7105, askcoin.net and the HugeDomains redirect. Core tests 721/721, six-manifest dependency audit and fail-closed gate passed. Wheel and installed-wheel verification were skipped because the full suite failed. No tests were removed or weakened."
+      "failure_classification": "Exact-head full-suite failed on c7829a4: 3,511 passed, one failed, eight subtests, 61.42% coverage in 80.36 seconds. The ASK identity correction passed; the same identity test then reached the actual_capital assertion and found that the field omitted the required classification 'not a standardized XRP metric'. The underlying capital figures in institutional_and_capital.evernorth satisfy the exact assertions: $214,049,995 advance-funding cash; SBI $200M included, not additive; Cantor ELOC proceeds $0; selling-holder resale proceeds $0; $30M PIK debt; 82.17% in-kind. The field wording is corrected in the next evidence commit. No tests removed or weakened. Wheel and installed-wheel verification were skipped."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -2547,6 +2574,56 @@
     "post_run64c_commit_ci": {
       "status": "PENDING",
       "note": "The corrective Run64c commit must receive its own exact-head full-suite, core-suite, dependency-audit and fail-closed verification."
+    },
+    "previous_attempt_after_run64c_map_correction": {
+      "head_sha": "9e0531fa9c70a159267b5106876c3eaf5d537a24",
+      "run_id": 43252665376,
+      "status": "completed",
+      "conclusion": "failure",
+      "completed_at_utc": "2026-11-12T15:57:20Z",
+      "full_suite_job_id": 131302417949,
+      "full_repository_suite": {
+        "passed": 3511,
+        "failed": 1,
+        "subtests": 8,
+        "coverage_percent": 61.42,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 100.89,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
+      },
+      "core_tests": {
+        "passed": 721,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "job_id": 131302418357
+      },
+      "dependency_audit": {
+        "run_id": 43252665063,
+        "job_id": 131302416926,
+        "passed": true,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43252664876,
+        "job_id": 131302415394,
+        "passed": true,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
+      ],
+      "failure_classification": "Exact-head full-suite failed: 3,511 passed, one failed, eight subtests, 61.42% coverage. The sole failure is a research identity-map wording regression: the ASK Coin field does not yet distinguish Askcoin UCID 4640, Permission Coin UCID 7105, askcoin.net and the HugeDomains redirect. Core tests 721/721, six-manifest dependency audit and fail-closed gate passed. Wheel and installed-wheel verification were skipped because the full suite failed. No tests were removed or weakened."
+    },
+    "post_run64c_followup_commit_ci": {
+      "status": "PENDING",
+      "note": "The next evidence-only correction must receive exact-head full-suite, core-suite, wheel/installed-wheel, dependency-audit and fail-closed verification."
     }
   },
   "workflow_safety_audit": {
@@ -4512,7 +4589,7 @@
       }
     },
     "ask_coin": "No XRP-linked ASK Coin identity has been verified. CoinMarketCap's Askcoin preview listing is UCID 4640 and links to askcoin.me / explorer.askcoin.me; that listing does not establish a live issuer or an XRP Ledger deployment. A separate Permission Coin ($ASK) listing is UCID 7105; Permission's official token documentation lists Base and Polygon deployments only, with no XRPL contract or Ripple integration verified. askcoin.net redirects to a HugeDomains domain-profile listing; a parked domain is not issuer identity evidence. Keep Askcoin UCID 4640 and Permission Coin ASK UCID 7105 separate.",
-    "actual_capital": "SBI announced $200M cash for Evernorth, intended primarily for open-market XRP purchases. Closing SEC prospectus shows ~388.910M XRP in-kind and 84.366M cash-purchased from a $214.05M pool. SBI subscriber allocation is undisclosed; $200M is included, not additive.",
+    "actual_capital": "Actual capital is not a standardized XRP metric. Separate cash raised, cash used to buy XRP, XRP contributed in kind, debt, borrowed facilities, contingent warrants, undrawn ELOC capacity and secondary shareholder resales. The SEC closing prospectus reports 388.910554M XRP contributed in kind and 84.365876M XRP purchased with exactly $214,049,995 from the advance-funding pool. SBI's $200M commitment is included in that $214,049,995 pool, not additive; subscriber-level SBI allocation is undisclosed. Selling-holder resales generated $0 for Evernorth; ELOC proceeds were $0 as of November 9; the $30M 4% PIK note is debt; potential warrant proceeds are contingent, not actual cash or XRP purchases.",
     "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson / The Wealth Doctor. The iHeart XRP Podcast episode 'Crypto Panics! with Dr. Kamilah Stevenson' has the guest verbally identify a YouTube name as 'doctor Camilla Stevenson' and warn that fake pages exist; the automated transcript spells the X/Instagram/YouTube names inconsistently (cam/Kamilla/Camilla). The person identity is corroborated, but the exact YouTube handle and channel ownership remain unverified. The first-party site has no YouTube link. @drkamilahstevenson and @KamilahStevensonXrpStocks remain candidates only; no personal-channel video inventory is attributed. Do not conflate other Camilla Stevenson identities.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
@@ -4680,7 +4757,7 @@
         "xrpl_contract_or_ripple_integration_verified": false
       },
       "sbic_chatgpt": "Tokyo SBIC's ChatGPT/Copilot training is an educational course for investee companies, not an OpenAI partnership. SBIC East/Tokyo, Central/Nagoya and West/Osaka remain distinct from SBI Holdings.",
-      "actual_capital": "Evernorth cash purchases, in-kind XRP contributions, debt, warrant capacity, ELOC capacity and shareholder resales remain separate; SBI's $200M commitment is included in the $214.05M advance-funding pool, not additive.",
+      "actual_capital": "Actual capital is not a standardized XRP metric. Separate cash raised, cash used to buy XRP, XRP contributed in kind, debt, borrowed facilities, contingent warrants, undrawn ELOC capacity and secondary shareholder resales. The SEC closing prospectus reports 388.910554M XRP contributed in kind and 84.365876M XRP purchased with exactly $214,049,995 from the advance-funding pool. SBI's $200M commitment is included in that $214,049,995 pool, not additive; subscriber-level SBI allocation is undisclosed. Selling-holder resales generated $0 for Evernorth; ELOC proceeds were $0 as of November 9; the $30M 4% PIK note is debt; potential warrant proceeds are contingent, not actual cash or XRP purchases.",
       "kamilah_stevenson": "First-party identity evidence for Dr Kamilah Stevenson exists, but no first-party YouTube channel cross-link was verified; no channel or videos attributed.",
       "source_urls": [
         "https://coinmarketcap.com/currencies/askcoin/",
@@ -27328,9 +27405,9 @@
     "raw_source_sha256": null
   },
   "run64c_next_actions": [
-    "Correct the ASK identity wording in the map without changing tests.",
-    "Re-run exact-head full repository suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gates.",
-    "Continue semantic review of 49 workflow changes, 1,020 non-workflow PR paths and the b_agent.sh mode-only change.",
+    "Correct identity_research.actual_capital to state that actual capital is not a standardized XRP metric and preserve the cash/in-kind/debt/warrant/ELOC/resale distinctions.",
+    "Run exact-head full repository suite, core suite, wheel/installed-wheel verification, six-manifest dependency audit and fail-closed gates.",
+    "Continue semantic review of 49 workflow changes, 1,020 non-workflow PR paths and b_agent.sh mode-only change.",
     "Resolve branch-protection visibility, connector least privilege, Pages publication authorization and provider-side credential revocation.",
     "Keep forecast issuance disabled until byte-complete independent receipts, synchronized history, independent shadow outcomes and measured out-of-sample lift pass."
   ]

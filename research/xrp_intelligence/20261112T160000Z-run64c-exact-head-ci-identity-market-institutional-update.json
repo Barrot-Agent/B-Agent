@@ -94,7 +94,9 @@
         "pull",
         "triage"
       ]
-    }
+    },
+    "integration_head_after_run64c_commit": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
+    "integration_ahead_by_after_run64c_commit": 2132
   },
   "exact_head_ci": {
     "tested_head": "9e0531fa9c70a159267b5106876c3eaf5d537a24",
@@ -289,7 +291,7 @@
       "xrpl_contract_or_ripple_integration_verified": false
     },
     "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate statutory SME investment companies, not SBI Holdings. Tokyo SBIC's ChatGPT/Copilot course was educational training, not an OpenAI partnership.",
-    "actual_capital": "Evernorth's $200M SBI commitment is included in the $214.05M advance-funding pool; approximately 388.91M XRP was contributed in kind and 84.366M XRP was cash-purchased. Subscriber-level SBI allocation remains undisclosed.",
+    "actual_capital": "Actual capital is not a standardized XRP metric. Separate cash raised, cash used to buy XRP, XRP contributed in kind, debt, borrowed facilities, contingent warrants, undrawn ELOC capacity and secondary shareholder resales. The SEC closing prospectus reports 388.910554M XRP contributed in kind and 84.365876M XRP purchased with exactly $214,049,995 from the advance-funding pool. SBI's $200M commitment is included in that $214,049,995 pool, not additive; subscriber-level SBI allocation is undisclosed. Selling-holder resales generated $0 for Evernorth; ELOC proceeds were $0 as of November 9; the $30M 4% PIK note is debt; potential warrant proceeds are contingent, not actual cash or XRP purchases.",
     "kamilah_stevenson": "First-party Dr Kamilah Stevenson identity is supported, but no first-party YouTube channel link was found; no videos attributed."
   },
   "prediction_engine": {
@@ -569,10 +571,57 @@
     "No current directional forecast is supported by the model-eligible dataset."
   ],
   "next_actions": [
-    "Commit the Run64c map correction, event registry additions, canonical handoff, BARROT_SYNC, backlog triage and structured artifact on the existing integration branch using a fast-forward-only expected-head update.",
+    "Correct the actual_capital summary phrase to state that actual capital is not a standardized XRP metric, preserving exact SEC cash/in-kind/debt/ELOC/resale reconciliation.",
     "Run exact-head full repository suite, core suite, wheel build/installed-wheel verification, six-manifest dependency audit and fail-closed gate on the resulting commit.",
     "Update PR #1661 description with exact-head evidence after the new run completes; keep draft and do not merge.",
     "Continue full semantic review, including b_agent.sh mode-only change and exact source-PR overlaps.",
     "Resolve branch protection visibility, least privilege, credential revocation and Pages publication authorization before merge."
-  ]
+  ],
+  "exact_head_ci_followup": {
+    "head_sha": "c7829a4cf1053db9422ed44f5253e2b277f8fc37",
+    "run_id": 43256307823,
+    "full_suite_job_id": 131315359582,
+    "full_suite": {
+      "passed": 3511,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_percent": 61.42,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 80.36,
+      "exact_head": true,
+      "exact_head_verified": true,
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false
+    },
+    "core_tests": {
+      "passed": 721,
+      "failed": 0,
+      "conclusion": "success",
+      "job_id": 131315358595
+    },
+    "dependency_audit": {
+      "run_id": 43256308212,
+      "job_id": 131315360664,
+      "passed": true,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43256308151,
+      "job_id": 131315359980,
+      "passed": true,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "sole_failure": "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates",
+    "root_cause": "The ASK identity correction passed. The test then failed because identity_research.actual_capital did not explicitly state that actual capital is not a standardized XRP metric. The numerical capital reconciliation in institutional_and_capital.evernorth is present and passes the remaining exact-value assertions.",
+    "next_correction": "Update the actual_capital summary sentence only; do not alter tests or numerical source fields."
+  },
+  "run64c_followup_correction": {
+    "status": "prepared_for_fast_forward_commit",
+    "captured_at_utc": "2026-11-12T16:17:00Z",
+    "tests_changed": false,
+    "forecast_status": "NOT_ISSUED"
+  }
 }

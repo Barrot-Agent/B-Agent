@@ -611,3 +611,13 @@ Canonical evidence and current mission state are recorded in `BARROT_XRP_MISSION
 - Close only exact duplicates/superseded source PRs after #1661 or a successor is merged, replacement files are verified on main, main CI passes, and a cross-reference is posted.
 - Main branch-protection detail remains HTTP 403; visible fallback ruleset #10863829 is disabled. Connector permissions remain overprivileged. Pages publication authorization and provider-side credential revocation remain unresolved.
 - No PR merged or closed. No branch was force-pushed or rewritten. No deployment, secret rotation, Space restart, external-model transfer, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run64cB — 2026-11-12T16:17Z — Exact-head evidence follow-up
+
+- Current head before wording correction: `c7829a4cf1053db9422ed44f5253e2b277f8fc37`; PR #1661 has 2,132 commits ahead of main, 1,070 changed files, 297,544 additions, 4,492 deletions; remains draft with zero approvals/reviews.
+- Exact-head full suite 43256307823: 3,511 passed/one failed/eight subtests, 61.42% coverage. The ASK identity correction passed; the same identity test failed next on missing phrase `not a standardized XRP metric` in `identity_research.actual_capital`. Core 721 passed, six-manifest dependency audit and fail-closed gate passed; wheel/install skipped.
+- Actual-capital summary corrected without modifying tests. Preserve exact SEC reconciliation: $214,049,995 advance-funding cash; 388.910554M XRP in kind; 84.365876M cash-purchased; SBI $200M included, not additive; $0 Cantor ELOC proceeds as of Nov 9; $0 proceeds to Evernorth from selling-holder resales; $30M PIK note is debt; 82.17% of closing XRP was in kind.
+- #1661 remains **BLOCKED** pending exact-head CI, security gates, approvals, branch-protection visibility and semantic review. No source PR closed.

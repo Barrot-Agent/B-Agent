@@ -958,3 +958,12 @@ See BARROT_XRP_MISSION_HANDOFF_LATEST.md and research/xrp_intelligence/20261112T
 - Forecast **NOT_ISSUED**. Run64c web/API observations are not byte-captured by RawReceiptArchive and are model-ineligible.
 - Next: exact-head full suite, core suite, wheel/installed-wheel, dependency audit and fail-closed gate on the Run64c commit; then update PR #1661 description. No merge or external action.
 - Full details: `BARROT_XRP_MISSION_HANDOFF_LATEST.md` and `research/xrp_intelligence/20261112T160000Z-run64c-exact-head-ci-identity-market-institutional-update.json`.
+
+
+## Run64cB — 2026-11-12T16:17:00Z
+
+- Exact-head CI on `c7829a4cf1053db9422ed44f5253e2b277f8fc37`: 3,511 passed, one failed, eight subtests, 61.42% coverage in 80.36s. Sole failure: `identity_research.actual_capital` omitted the required statement that actual capital is not a standardized XRP metric. The ASK identity correction passed.
+- Core 721/721 passed; six-manifest dependency audit passed with zero known vulnerabilities; fail-closed gate passed. Wheel/install skipped after full-suite failure.
+- Actual-capital wording corrected without test changes: cash, cash-purchased XRP, in-kind XRP, debt, borrowed facilities, contingent warrants, undrawn ELOC and secondary resales are separated. SEC values retained: $214,049,995 advance cash; 388.910554M in-kind; 84.365876M cash-purchased; SBI $200M included, not additive.
+- Current head before correction: `c7829a4`; 2,132 ahead/0 behind. PR #1661 remains open/draft with zero approvals. Next exact-head CI pending.
+- Forecast remains NOT_ISSUED; no merge or external action.
