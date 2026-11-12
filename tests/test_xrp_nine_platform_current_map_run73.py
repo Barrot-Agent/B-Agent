@@ -448,13 +448,14 @@ def test_latest_market_refresh_is_research_only_and_preserves_provider_disagreem
     assert load_current()["forecast_status"] == "NOT_ISSUED"
 
 
-def test_run20_snapshot_is_append_only_and_tracks_current_integration_head():
+def test_run20_snapshot_is_append_only_and_preserves_original_branch_identity():
     data = load_current()
     run20 = data["run20_snapshot"]
     repo = run20["repository_state"]
     assert repo["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
     assert data["repository_state"]["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
-    assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
+    assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
+    assert data["repository_state"]["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
     assert repo["integration_head_before_run20_map_commit"] == "0529030acf0df84e68d7626564b3d206dd95946b"
     assert repo["current_head_before_corrective_commit"] == "c39cc80591e257beb563aff1bf2a85d368edcb3b"
     assert repo["changed_files_after_run20_docs_commit"] == 995
@@ -617,7 +618,10 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     }
     assert set(no_external_actions) == expected_external_actions
     assert all(value is False for value in no_external_actions.values())
-    assert data["current_market_snapshot"]["spot"]["okx"]["event_timestamp_available"] is True
+    assert data["current_market_snapshot"]["spot"]["okx"]["event_time_utc"] == "2026-11-11T07:50:55.569Z"
+    assert data["current_market_snapshot"]["spot"]["kraken"]["event_timestamp_available"] is False
+    assert data["current_market_snapshot"]["spot"]["kraken"]["repeated_response_same_as_prior_capture"] is True
+    assert "stale" in data["current_market_snapshot"]["spot"]["kraken"]["staleness_note"].lower()
     assert isinstance(data["institutional_and_capital"]["rlusd"], dict)
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
