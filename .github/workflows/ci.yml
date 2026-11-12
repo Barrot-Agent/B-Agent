@@ -129,6 +129,14 @@ jobs:
             --cov-config="$RUNNER_TEMP/barrot-coverage.ini" \
             --cov-report=term-missing:skip-covered \
             --cov-fail-under=53
+      - name: Preserve legacy core-package coverage floor
+        run: |
+          python -m coverage report \
+            --include="barrot_agent/*" \
+            --omit="tests/*,**/__init__.py,barrot_agent/rendering/*,barrot_agent/smart_agent.py,barrot_agent/agi/*,barrot_agent/ingestion/*,barrot_agent/analysis/*,barrot_agent/monetization/*,barrot_agent/orchestration/*,barrot_agent/mem_palace.py" \
+            --show-missing \
+            --fail-under=70
+
       - name: Build wheel and verify packaged primary mission
         run: |
           python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/barrot-wheel"
