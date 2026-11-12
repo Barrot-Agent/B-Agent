@@ -2462,3 +2462,15 @@ Primary sources:
 - Coinbase RLUSD availability, October 28, 2026: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
 - Coinbase/PNC pilot, November 9, 2026: https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance
 - Reuters PNC pilot report, November 9, 2026: https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/
+
+
+## Run66C — late spot refresh, 17:51:49.470 UTC
+
+A second direct exchange refresh supersedes the earlier Run66 spot snapshot for the latest-price observation:
+
+- OKX XRP-USDT provider event timestamp 2026-11-12T17:51:49.470Z: last 1.0291, bid 1.0289, ask 1.0290; 24-hour open 1.0708, high 1.0710, low 1.0164; volume 34.698M XRP / 36.194M USDT.
+- Kraken XRP/USD retrieved in the same refresh window without a provider event timestamp: last 1.02601, bid 1.02601, ask 1.02602; 24-hour open 1.05104, high 1.07248, low 1.01516; volume 26.927M XRP; VWAP 1.039615.
+- Kraken USDT/USD bid 0.99897, ask 0.99898, midpoint 0.998975.
+- Normalized OKX midpoint approximately $1.027895 versus Kraken midpoint $1.026015; asynchronous difference approximately +0.183%.
+
+The 24-hour open fields still disagree materially despite similar highs/lows. Do not combine venue returns or infer executable arbitrage from asynchronous quotes. Fuelmaps' last L2 snapshot remains 17:00 UTC, now 52 minutes old; no newer synchronized depth was obtained. Direct web observations remain model-ineligible because they were not captured through Barrot's byte-exact RawReceiptArchive pipeline.
