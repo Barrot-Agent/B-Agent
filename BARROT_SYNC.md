@@ -376,3 +376,20 @@
 - PR #1661 remains draft with zero formal approvals. No merge. Branch-protection details HTTP 403; connector overprivileged; Pages publication unauthorized; 987 non-workflow paths require semantic review.
 - Forecast status: NOT_ISSUED. Web research was not captured as byte-exact receipts and is not model-eligible.
 - Next: exact-head CI for Run43 commit, then event-timeline integration, WORM/timestamp anchoring, replayable history, semantic review and security blockers.
+
+
+## Run44 — 2026-11-12 03:28 UTC
+- Mission priority 1: XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution/orchestration/safety/verification foundation.
+- Fresh repository inspection: main 84f28ee7755607236231545a14f3d093c1baaa85; integration head before Run44 cf9ff25783de0fabb9193b5505edb85157d45ae6; complete recursive trees main 1,388/integration 2,299; all 374 open PRs retrieved (360 draft/14 non-draft); PR #1661 open/draft, 2,077 ahead/0 behind, 1,040 files (49 workflows/991 other); zero reviews/threads.
+- Exact-head CI on cf9ff25783de0fabb9193b5505edb85157d45ae6: 3,479 passed/0 failed/8 subtests; 61.11% coverage vs 53% floor; 90.28s; core 716/0; wheel/installed mission verified; six-manifest audit passed, zero known vulnerabilities reported; fail-closed gate passed. Full CI 43147254868; dependency audit 43147254846; gate 43147254794.
+- Implemented barrot_agent/evolution/event_timeline.py, 15 tests and exports. Deterministic point-in-time timeline distinguishes event/publication/availability/capture times, excludes backfilled future knowledge, admits only scheduled future events inside horizon, preserves minority objections, source independence and receipt status. It remains research-only/NOT_ISSUED and is not yet wired to the scheduled collector; no canonical validated event registry exists. Local hashes are not WORM.
+- Fresh market capture around 03:26 UTC: OKX 1.0465/1.0466, event 03:14:49.567; Kraken 1.04543/1.04553, no event timestamp; USDT/USD 0.99869/0.99870; normalized asynchronous gap ~-0.0283%, not arbitrage.
+- Fuelmaps 03:00 spot snapshot: mid $1.05; ±1% $13.8M bids/$12.0M asks; ±5% $29.7M/$15.8M; ±10% $35.1M/$16.9M. Six venues, Binance/Bitget excluded; resting/cancellable.
+- Coinalyze 03:15: $576.66M OI across Binance/Bybit only; Binance $315.42M, Bybit $261.24M; funding +0.00446%/+0.007883%; account longs 75.23%/81.45%. TradRadar's older 19:05 Nov11 $1.57B covers seven venues; do not average.
+- OptimistFi 00:00 Nov12 options: 30d IV 57.5%, 25d skew -0.1 points, put/call 0.55, Dec25 OI $46.9M; near-expiry puts richer, longer expiries modestly call-rich.
+- Alpha ETF through Nov10, five products: Nov10 -$7.6M, Nov9 -$10.4M, 7 sessions -$18M, 30 sessions +$1.3M, cumulative +$1.71B. Nov11 incomplete.
+- XRP Insights Nov11: 22.33B XRP across 701 wallets/24 exchanges; same-wallet 7d +1.3M, 30d -155.7M. Includes cold storage and 480.5M wrapped backing; not tradable float. TrackWhale Nov12 03:26: 7d net tracked external flow -54.78M XRP; largest 168.42M transfer unlabeled.
+- XRPL own-node roll call Nov12 02:57: LendingProtocol 22/35, SingleAssetVault 23/35, V1_1 22/35; threshold 29, no activation countdown. XLS-66 remains uncollateralized fixed-term lending with off-chain underwriting.
+- Web/API research was not raw-byte receipt-ingested and is not model-eligible. Forecast NOT_ISSUED.
+- Security blockers: connector overprivileged; main protection detail HTTP403; provider-side OAuth revocation unverified; Pages publication unauthorized; 991 non-workflow paths require semantic review. Credential path absent from main/integration and 17 affected PR file inventories; contents unread.
+- No merge or external action. Exact-head CI for Run44 commit pending; next: validate event registry and connect it to scheduled collector only after source receipt/point-in-time contract is established.

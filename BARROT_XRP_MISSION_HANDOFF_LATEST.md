@@ -2573,3 +2573,102 @@ Next actions:
 6. Resolve least privilege, branch-protection visibility, provider-side OAuth revocation and Pages authorization.
 
 Forecast status remains NOT_ISSUED. No directional forecast, paper trade or real-money action occurred.
+
+
+## Run44 — 2026-11-12: exact-head verification, event-timeline integration and market refresh
+
+### Repository and CI
+
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Integration branch: integration/xrp-v3-unified-main-20261111; head before Run44: cf9ff25783de0fabb9193b5505edb85157d45ae6.
+- PR #1661: open/draft, reported mergeable; 2,077 ahead/0 behind; 1,040 changed files, 49 workflow files, 991 other paths.
+- Complete recursive trees: main 1,388 entries; integration 2,299 entries.
+- All 374 open PRs were retrieved in four pages: 360 drafts and 14 non-drafts.
+- PR #1661 has zero formal reviews and zero review threads.
+- GitHub API access is verified. Local Git clone remains blocked by DNS resolution.
+
+Exact-head CI on cf9ff25783de0fabb9193b5505edb85157d45ae6 completed successfully:
+- Full repository suite: **3,479 passed, zero failed, eight subtests**.
+- Inclusive coverage: **61.11%**, above the 53% floor.
+- Full-suite duration: 90.28 seconds.
+- Core suite: 716 passed, zero failed, eight subtests.
+- Wheel built; installed wheel loaded Barrot V3, the XRP primary mission and canonical data assets.
+- Six dependency manifests audited; zero known vulnerabilities reported.
+- Fail-closed gate passed; automatic merge remains disabled.
+
+Evidence:
+- [Full CI 43147254868](https://github.com/Barrot-Agent/B-Agent/actions/runs/43147254868), full-suite job 130947849242.
+- [Core job 130947849500](https://github.com/Barrot-Agent/B-Agent/actions/runs/43147254868/job/130947849500).
+- [Dependency audit 43147254846](https://github.com/Barrot-Agent/B-Agent/actions/runs/43147254846).
+- [Fail-closed gate 43147254794](https://github.com/Barrot-Agent/B-Agent/actions/runs/43147254794).
+
+### Run44 implementation
+
+Added barrot_agent/evolution/event_timeline.py and 15 tests; exported the API from barrot_agent.evolution.
+
+The builder converts explicit, provenance-bound event records into a deterministic point-in-time event timeline and passes eligible evidence into the existing scenario/counter-hypothesis assembler.
+
+It distinguishes event time, source publication time, first availability and actual capture time. Historical events captured after the cutoff are excluded. Future events are accepted only when explicitly scheduled, known by the cutoff and within the requested horizon. Duplicate IDs, malformed timestamps, invalid event types and invalid SHA-256 receipts are rejected. Source lineage and publisher aliases are conservatively collapsed. Contrary evidence remains visible as minority objections.
+
+Every output is NOT_ISSUED, has null probabilities, remains research-only and is not model-eligible.
+
+**Executed on integration; exact-head CI pending for the Run44 commit.** The module accepts explicit event records but does not fetch events. It is not yet connected to the scheduled collector because no validated canonical event-record registry exists. Local SHA-256 receipts are not independent WORM/timestamp anchoring.
+
+### Fresh XRP observations
+
+Research capture: approximately 2026-11-12 03:26 UTC. These web observations were not captured through Barrot's raw-byte receipt pipeline and are **not model-eligible**.
+
+**Spot**
+- OKX XRP-USDT: last 1.0465; bid 1.0465; ask 1.0466; provider event time 03:14:49.567 UTC; 24h volume 39.29M XRP.
+- Kraken XRP/USD: last 1.04543; bid 1.04543; ask 1.04553; no provider event timestamp.
+- Kraken USDT/USD: 0.99869 bid / 0.99870 ask.
+- USDT-normalized OKX midpoint: approximately $1.04518; Kraken midpoint: $1.04548; asynchronous gap approximately -0.0283%. Not executable arbitrage.
+
+**Spot L2**
+Fuelmaps' 03:00 UTC six-venue snapshot: mid $1.0500.
+- ±0.5%: $7.1M bids / $7.2M asks.
+- ±1%: $13.8M / $12.0M.
+- ±2%: $19.4M / $13.3M.
+- ±5%: $29.7M / $15.8M.
+- ±10%: $35.1M / $16.9M.
+
+This is hourly-averaged resting spot depth from Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Binance and Bitget are excluded. Orders can be cancelled; this is not futures depth or executed volume.
+
+**Derivatives**
+- Coinalyze/BitcoinLeverage at 03:15 UTC: $576.66M open interest across two contracts, Binance and Bybit XRPUSDT. Binance $315.42M; Bybit $261.24M. Funding +0.00446% and +0.007883% respectively. Account-long shares 75.23% and 81.45%.
+- TradRadar at 19:05 UTC Nov 11: $1.57B across seven exchanges, +0.0045% weighted funding per eight hours, 79.7% long accounts, at least $2.85M liquidations. Older and broader venue set.
+- Do not average. Fresh Coinalyze coverage is only two of 22 listed venues; account ratios are not notional directional exposure.
+
+**Options**
+OptimistFi/Deribit at 00:00 UTC Nov 12: 30-day ATM IV 57.5%, 25-delta skew -0.1 points, put/call 0.55, Dec 25 open interest $46.9M. Near-expiry puts are richer; December/March expiries modestly call-rich. Term structure is mixed.
+
+**ETF flows**
+Alpha Finance through the Nov 10 completed issuer session, five US spot products: Nov 10 -$7.6M; Nov 9 -$10.4M; seven sessions -$18M; 30 sessions +$1.3M; cumulative net inflows +$1.71B. Nov 11 is not yet complete on the opened page.
+
+**Exchange balances and flows**
+- XRP Insights, Nov 11 08:00 UTC: 22.33B XRP across 701 publicly attributed wallets at 24 exchanges. Same-wallet 7-day change +1.3M XRP; 30-day change -155.7M XRP. Cold storage and approximately 480.5M XRP of wrapped-asset backing are included; not tradable float.
+- TrackWhale, Nov 12 03:26 UTC: tracked seven-day inflows 166.83M XRP, outflows 221.61M XRP, net -54.78M XRP. Largest 168.42M transfer remains unattributed. This is tracked large-transfer activity, not comprehensive exchange reserves.
+
+**Native XRPL lending**
+The independent xrpldashboard own-node roll call at 02:57 UTC Nov 12 heard 35/35 validators: LendingProtocol 22/35, SingleAssetVault 23/35, LendingProtocolV1_1 22/35; 29 yes votes required, no 14-day activation countdown. XLS-66 remains uncollateralized fixed-term lending with off-chain underwriting, not an XRP-collateral/liquidation system.
+
+Sources: [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken USDT/USD](https://api.kraken.com/0/public/Ticker?pair=USDTUSD), [Fuelmaps](https://fuelmaps.io/order-book/), [Coinalyze-derived comparison](https://bitcoinleverage.com/xrp), [TradRadar](https://tradradar.io/markets/xrp), [OptimistFi](https://optimistfi.com/perps/options/xrp), [Alpha Finance](https://alphafinance.io/etf/xrp/), [XRP Insights](https://xrp-insights.com/exchange-balances), [TrackWhale](https://trackwhale.io/xrp-whale-tracker), [XRPL amendment ledger tracker](https://xrpldashboard.com/amendments).
+
+### Security and merge gates
+
+- Connector permissions: admin, maintain, push, pull and triage; least privilege is not met.
+- Main branch-protection detail endpoint returns HTTP 403. Required checks/approvals could not be independently verified.
+- PR #1661 remains draft with zero formal approvals/reviews/threads.
+- .config/gh/hosts.yml is absent from main, integration and all 17 affected current PR file inventories; contents were not read. Provider-side OAuth revocation remains unverified.
+- Automatic GitHub Pages publication on main push is not authorized.
+- Current handoff records 49 changed workflows (26 disabled/quarantined, 23 active); the XRP collector remains integration-only and no successful main ingestion run is verified.
+- 991 non-workflow paths still require semantic review.
+- No source PR was closed. Preserve unique #1642 prediction and #1653 graph work; retain #1660/#1643 superseded-source candidates until successor merge and main verification; reconcile #1640's differing blobs; retain #1645 duplicate candidate until main verification.
+
+### Forecast and next action
+
+Forecast remains **NOT_ISSUED**. No directional forecast, paper trade or real-money action.
+
+Next: run exact-head CI on the Run44 commit; then create a validated, source-receipt-bound event registry and connect it to the new timeline builder. Continue independent WORM/timestamp anchoring, replayable history, semantic review, least-privilege and branch-protection remediation. Do not merge while draft, approval, security, semantic-review and Pages authorization gates remain unresolved.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
