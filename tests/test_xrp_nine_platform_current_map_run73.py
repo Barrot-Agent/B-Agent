@@ -104,7 +104,7 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["integration_ahead_by"] == data["integration_pr"]["ahead_by"]
     assert state["integration_behind_by"] == data["integration_pr"]["behind_by"]
     assert state["changed_files"] == data["integration_pr"]["changed_files"]
-    assert state["workflow_files_changed"] == 44
+    assert state["workflow_files_changed"] == 49
     assert state["non_workflow_paths_changed"] == data["integration_pr"]["other_changed_paths"]
     assert state["main_tree_entries"] == 1388
     assert state["integration_tree_entries"] > state["main_tree_entries"]
@@ -171,9 +171,11 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
 
 def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
     audit = load_current()["workflow_safety_audit"]
-    assert audit["changed_workflow_files"] == 44
+    assert audit["changed_workflow_files"] == 49
     assert audit["quarantined_or_disabled"] == 26
-    assert audit["active_changed_workflows"] == 18
+    assert audit["active_changed_workflows"] == 23
+    assert audit["patch_scan_workflows_reviewed"] == 49
+    assert audit["manual_dispatch_additions"] == 29
     assert audit["secondary_brain_deployment_quarantined"] is True
     assert audit["xrp_public_ingestion_workflow_on_main"] is False
     assert audit["xrp_public_ingestion_workflow_on_integration"] is True
