@@ -235,3 +235,34 @@ No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle s
 - Kamilah Stevenson first-party course site: https://learn.kamilahstevenson.com/
 - Reuters Japan wholesale inflation: https://www.reuters.com/world/asia-pacific/japan-wholesale-inflation-accelerates-keeps-alive-boj-rate-hike-view-2026-11-12/
 - Reuters yen intervention warning: https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/
+
+
+## Run66 institutional addendum — Doppler / SBI entity separation
+
+Primary-source reconciliation completed after the initial Run66 artifact:
+
+- SBI Holdings' official group profile identifies SBI Digital Finance Inc. as a crypto-asset lending company operating HashHub Lending. SBI Group held 51% of voting rights as of March 31, 2026. SBI Digital Finance is a distinct company, not SBI Ripple Asia, SBI Digital Markets, SBI VC Trade or SBI Shinsei Trust Bank.
+- Doppler Finance's July 13, 2026 official announcement confirms a strategic development partnership with SBI Digital Finance to develop institutional XRP/digital-asset infrastructure in Japan. Its stated work areas include XRP and tokenized-asset infrastructure, compliance, liquidity, financing, collateral management and capital efficiency. The announcement gives no named institutional clients, lending rates, collateral terms, launch date or live product availability.
+- A separate December 17, 2025 MOU is between SBI Ripple Asia and Doppler to explore XRP-yield infrastructure and RWA tokenization on XRPL. Doppler identifies SBI Digital Markets as institutional custodian for that initiative. Do not conflate this with the July 2026 SBI Digital Finance partnership.
+- SBI Ripple Asia is the SBI Holdings/Ripple joint venture; SBI Digital Markets is a subsidiary of SBI Digital Asset Holdings; SBI Digital Finance is the HashHub Lending company; SBI VC Trade distributes/trades assets; SBI Shinsei Trust Bank issues JPYSC. These are distinct legal and operational roles.
+- Doppler's September 28, 2026 company post claims more than 14,000 depositors and more than $150M cumulative deposits into XRP/RLUSD vaults since February 2025. Its analytics page displays approximately $29.48M TVL, 2.46% XRP vault APY and 5.66% RLUSD vault APY. These are company-reported figures; cumulative deposits are not current TVL and APY is not guaranteed.
+- Doppler describes its current vault strategy as CeDeFi, using asset-neutral arbitrage and spot-perpetual basis strategies, institutional custody and off-exchange settlement. The company says vault shares are currently recorded on Doppler's side and cannot yet be transferred to another wallet, pledged as collateral or used in another protocol. Tokenized receipt positions are still being built.
+- Doppler says dedicated institutional vaults underpin relationships with SBI Ripple Asia, SBI Digital Finance and Evernorth. This does not disclose actual funded balances, client allocations or independent evidence of deployment for those partners.
+- Doppler Lending is described as planned for Q4 2026 subject to XLS-66 mainnet activation. The company says XLS-66 is designed for pooled, uncollateralized, fixed-term lending with off-chain underwriting and risk management. It is not a conventional overcollateralized XRP lending market. The amendment remains below its validator threshold; no activation countdown exists.
+- The phrase "productive financial capital" appears in Doppler's announcement as strategy/marketing language. It is not a standardized, independently measured "actual capital" metric.
+- A third-party article attributes claims of Japanese bank remittance pilots (approximately 60% lower costs and under four seconds) to a Kamilah Stevenson YouTube video, but names no banks and provides no primary performance records. This remains an unverified lead and is excluded from institutional-adoption evidence and model features.
+
+Primary sources:
+- SBI Digital Finance group profile: https://www.sbigroup.co.jp/english/company/group/sbidigitalfinance.html
+- Doppler/SBI Digital Finance announcement, July 13, 2026: https://blog.doppler.finance/blog/doppler-finance-and-sbi-digital-finance-announce-strategic-partnership-to-expand-institutional-xrp-finance-in-japan
+- SBI Ripple Asia/Doppler MOU, December 17, 2025: https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization
+- Doppler operating-layer and vault disclosure, September 28, 2026: https://blog.doppler.finance/blog/building-the-financial-operating-layer-for-tokenized-assets
+- Doppler XLS-66 lending design, July 2, 2026: https://blog.doppler.finance/blog/building-institutional-lending-on-xrp-ledger-the-role-of-xls-66
+- Doppler analytics dashboard: https://doppler.finance/analytics
+- EdgeX/DailyCoin article carrying the unverified Japanese pilot claim: https://pro.edgex.exchange/nl-NL/news/article/japanese-banks-xrp-remittance-pilots
+
+Identity clarification:
+- Tokyo SBIC's official seminar archive lists a February 26, 2025 event specifically titled "Generative AI (ChatGPT): Present and Future" and a June 12, 2025 two-day manufacturing course including ChatGPT usage. A March 5, 2026 Tokyo SBIC/Hamamatsu seminar also covered ChatGPT. These are training/education events, not evidence of an OpenAI partnership.
+- Official Tokyo, Nagoya and Osaka SBIC profiles identify three regional sister companies under the Small and Medium Business Investment & Consultation Company Act. They are not SBI Holdings subsidiaries.
+- SB OAI Japan GK is a separate SoftBank Group/OpenAI joint venture; SoftBank Group is not SBI Holdings.
+- The current YouTube search identifies multiple candidate Kamilah Stevenson channels and lookalikes, but the first-party course site does not link a YouTube channel. No videos are attributed.
