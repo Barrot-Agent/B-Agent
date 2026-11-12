@@ -14,9 +14,9 @@
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_branch": "integration/xrp-v3-unified-main-20261111",
     "integration_head_before_run44": "cf9ff25783de0fabb9193b5505edb85157d45ae6",
-    "integration_tree_entries": 2299,
+    "integration_tree_entries": 2302,
     "main_tree_entries": 1388,
-    "ahead_by": 2077,
+    "ahead_by": 2078,
     "behind_by": 0,
     "pr": 1661,
     "pr_state": "open",
@@ -24,44 +24,45 @@
     "pr_mergeable": true,
     "formal_reviews": 0,
     "review_threads": 0,
-    "changed_files": 1040,
+    "changed_files": 1043,
     "workflow_files": 49,
-    "non_workflow_paths": 991,
+    "non_workflow_paths": 994,
     "open_prs": 374,
     "drafts": 360,
-    "non_drafts": 14
+    "non_drafts": 14,
+    "integration_head_after_run44": "6510a8e0272c22b6c480d6fa14b4118748d4cb4a"
   },
   "ci": {
-    "exact_head": "cf9ff25783de0fabb9193b5505edb85157d45ae6",
-    "workflow_run_id": 43147254868,
-    "full_suite_job_id": 130947849242,
+    "exact_head": "6510a8e0272c22b6c480d6fa14b4118748d4cb4a",
+    "workflow_run_id": 43149136286,
+    "full_suite_job_id": 130953903772,
     "full_suite": {
-      "passed": 3479,
+      "passed": 3495,
       "failed": 0,
       "subtests": 8,
-      "coverage_percent": 61.11,
+      "coverage_percent": 61.27,
       "coverage_floor_percent": 53,
-      "duration_seconds": 90.28,
+      "duration_seconds": 96.42,
       "exact_head": true,
       "wheel_build_verified": true,
       "installed_wheel_mission_verified": true
     },
     "core_suite": {
-      "job_id": 130947849500,
+      "job_id": 130953903447,
       "passed": 716,
       "failed": 0,
       "subtests": 8
     },
     "dependency_audit": {
-      "run_id": 43147254846,
-      "job_id": 130947849427,
+      "run_id": 43149136348,
+      "job_id": 130953903667,
       "passed": true,
       "manifests": 6,
       "known_vulnerabilities_reported": 0
     },
     "fail_closed_gate": {
-      "run_id": 43147254794,
-      "job_id": 130947848961,
+      "run_id": 43149136353,
+      "job_id": 130953903267,
       "passed": true,
       "automatic_merge_enabled": false
     }
@@ -73,7 +74,7 @@
       "barrot_agent/evolution/__init__.py"
     ],
     "purpose": "Deterministic point-in-time event timeline builder feeding the existing scenario/counter-hypothesis assembler.",
-    "tests_added": 15,
+    "tests_added": 16,
     "guarantees": [
       "Separates event time, publisher publication time, first availability and actual capture time.",
       "Excludes historical events captured after the data cutoff.",
@@ -88,7 +89,7 @@
       "It is not yet wired to the scheduled XRP collector because no validated, canonical event-record registry exists.",
       "Local SHA-256 receipts are not independent WORM storage or trusted timestamp anchoring."
     ],
-    "status": "EXECUTED_ON_INTEGRATION; EXACT_HEAD_CI_PENDING"
+    "status": "VERIFIED_ON_HEAD_6510A8E; PROVENANCE_HARDENING_FOLLOWUP"
   },
   "research": {
     "market_capture_utc": "2026-11-12T03:26:00Z",
@@ -117,7 +118,8 @@
       "normalized_okx_mid_usd": 1.04518425225,
       "kraken_mid_usd": 1.04548,
       "normalized_gap_percent": -0.0283,
-      "interpretation": "Near-aligned asynchronous quotes; OKX provider event time is about 12 minutes old at capture and Kraken exposes no event timestamp. Not executable arbitrage."
+      "interpretation": "Near-aligned asynchronous quotes; OKX provider event time is about 12 minutes old at capture and Kraken exposes no event timestamp. Not executable arbitrage.",
+      "freshness_warning": "The second retrieval repeated identical OKX and Kraken quote payloads; OKX event timestamp remained 03:14:49.567 UTC and Kraken exposes no trade-event timestamp. Treat as cached/stale, not live executable quotes."
     },
     "spot_orderbook": {
       "source": "Fuelmaps",
@@ -242,7 +244,97 @@
       "lending_protocol_v1_1_yes": 22,
       "active_14_day_countdown": false,
       "interpretation": "Native XLS-66 lending stack remains inactive; XLS-66 is fixed-term and uncollateralized with off-chain underwriting. No native XRP collateral/liquidation system."
-    }
+    },
+    "sources": [
+      {
+        "publisher": "OKX",
+        "source_group": "exchange:okx",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "as_of_utc": "2026-11-12T03:14:49.567Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Kraken",
+        "source_group": "exchange:kraken",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "as_of_utc": null,
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Kraken",
+        "source_group": "exchange:kraken",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "as_of_utc": null,
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Fuelmaps",
+        "source_group": "aggregator:fuelmaps",
+        "url": "https://fuelmaps.io/order-book/",
+        "as_of_utc": "2026-11-12T03:00:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "BitcoinLeverage/Coinalyze",
+        "source_group": "aggregator:coinalyze",
+        "url": "https://bitcoinleverage.com/xrp",
+        "as_of_utc": "2026-11-12T03:15:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "TradRadar",
+        "source_group": "aggregator:tradradar",
+        "url": "https://tradradar.io/markets/xrp",
+        "as_of_utc": "2026-11-11T19:05:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "OptimistFi/Deribit",
+        "source_group": "aggregator:optimistfi",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "as_of_utc": "2026-11-12T00:00:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Alpha Finance",
+        "source_group": "aggregator:alpha-finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "as_of_utc": "2026-11-10",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "XRP Insights",
+        "source_group": "aggregator:xrp-insights",
+        "url": "https://xrp-insights.com/exchange-balances",
+        "as_of_utc": "2026-11-11T08:00:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "TrackWhale",
+        "source_group": "aggregator:trackwhale",
+        "url": "https://trackwhale.io/xrp-whale-tracker",
+        "as_of_utc": "2026-11-12T03:26:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "xrpldashboard",
+        "source_group": "independent_node:xrpldashboard",
+        "url": "https://xrpldashboard.com/amendments",
+        "as_of_utc": "2026-11-12T02:57:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      }
+    ]
   },
   "security": {
     "connector_permissions": {
@@ -276,5 +368,17 @@
     "directional_forecast": false,
     "paper_trade": false,
     "real_money_action": false
+  },
+  "implemented_run45": {
+    "purpose": "Hardening point-in-time event timeline validation and excluded-event provenance.",
+    "tests_added": 5,
+    "changes": [
+      "Validates source/event status and stance before cutoff exclusion.",
+      "Validates HTTP(S) URLs and rejects embedded credentials even for excluded records.",
+      "Validates raw-source hashes before cutoff exclusion.",
+      "Preserves full event, source, timestamp, lineage, hypothesis and receipt metadata for excluded events.",
+      "Rejects non-text source names rather than coercing them."
+    ],
+    "status": "CODE_PREPARED_FOR_INTEGRATION"
   }
 }

@@ -99,9 +99,12 @@ def test_future_scheduled_event_outside_horizon_is_excluded():
     result = build([item])
 
     assert result["event_timeline"] == []
-    assert result["excluded_events"] == [
-        {"event_id": "far-future", "reason": "scheduled_event_outside_forecast_horizon"}
-    ]
+    excluded = result["excluded_events"][0]
+    assert excluded["event_id"] == "far-future"
+    assert excluded["reason"] == "scheduled_event_outside_forecast_horizon"
+    assert excluded["source_id"] == "source-far-future"
+    assert excluded["raw_source_sha256"] == "a" * 64
+    assert excluded["model_eligible"] is False
 
 
 def test_future_occurred_event_is_excluded():
@@ -229,3 +232,61 @@ def test_event_horizon_must_be_a_positive_non_boolean_integer():
         build([], horizon_seconds=True)
     with pytest.raises(EventTimelineError, match="positive integer"):
         build([], horizon_seconds=0)
+
+
+def test_excluded_events_retain_source_timestamps_lineage_and_receipt():
+    item = event(
+        "late-evidence",
+        event_time_utc="2026-11-10T10:00:00Z",
+        source_published_at_utc="2026-11-10T10:01:00Z",
+        available_at_utc="2026-11-12T03:00:01Z",
+        captured_at_utc="2026-11-12T03:00:02Z",
+    )
+    excluded = build([item])["excluded_events"][0]
+
+    assert excluded["reason"] == "not_captured_by_data_cutoff"
+    assert excluded["source_id"] == "source-late-evidence"
+    assert excluded["source_url"] == "https://publisher-late-evidence.example/research"
+    assert excluded["source_published_at_utc"] == "2026-11-10T10:01:00Z"
+    assert excluded["captured_at_utc"] == "2026-11-12T03:00:02Z"
+    assert excluded["raw_source_sha256"] == "a" * 64
+    assert excluded["receipt_status"] == "RAW_SHA256_PRESENT"
+    assert excluded["model_eligible"] is False
+
+
+def test_invalid_statuses_are_rejected_even_when_record_is_after_cutoff():
+    late = {
+        "available_at_utc": "2026-11-12T03:00:01Z",
+        "captured_at_utc": "2026-11-12T03:00:02Z",
+    }
+    with pytest.raises(EventTimelineError, match="event_status"):
+        build([event("bad-event-status", event_status="rumor", **late)])
+    with pytest.raises(EventTimelineError, match="source_status"):
+        build([event("bad-source-status", source_status="trusted-ish", **late)])
+    with pytest.raises(EventTimelineError, match="stance"):
+        build([event("bad-stance", stance="probably", **late)])
+
+
+def test_invalid_or_credential_bearing_urls_are_rejected_even_when_record_is_excluded():
+    late = {
+        "available_at_utc": "2026-11-12T03:00:01Z",
+        "captured_at_utc": "2026-11-12T03:00:02Z",
+    }
+    with pytest.raises(EventTimelineError, match="valid HTTP"):
+        build([event("bad-scheme", source_url="file:///tmp/source", **late)])
+    with pytest.raises(EventTimelineError, match="embedded credentials"):
+        build([event("credential-url", source_url="https://user:pass@example.com/a", **late)])
+
+
+def test_invalid_raw_hash_is_rejected_even_when_record_is_excluded():
+    late = {
+        "available_at_utc": "2026-11-12T03:00:01Z",
+        "captured_at_utc": "2026-11-12T03:00:02Z",
+    }
+    with pytest.raises(EventTimelineError, match="64-character SHA-256"):
+        build([event("bad-late-hash", raw_source_sha256="bad", **late)])
+
+
+def test_source_name_must_be_text():
+    with pytest.raises(EventTimelineError, match="source_name"):
+        build([event("bad-source-name", source_name=17)])

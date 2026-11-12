@@ -393,3 +393,11 @@
 - Web/API research was not raw-byte receipt-ingested and is not model-eligible. Forecast NOT_ISSUED.
 - Security blockers: connector overprivileged; main protection detail HTTP403; provider-side OAuth revocation unverified; Pages publication unauthorized; 991 non-workflow paths require semantic review. Credential path absent from main/integration and 17 affected PR file inventories; contents unread.
 - No merge or external action. Exact-head CI for Run44 commit pending; next: validate event registry and connect it to scheduled collector only after source receipt/point-in-time contract is established.
+
+
+## Run45 — 2026-11-12: event-timeline provenance hardening
+- Verified exact Run44 code head 6510a8e: 3,495 full-suite passed, 0 failed, 8 subtests; 61.27% coverage; core 716/0; wheel/installed mission verified; dependency audit and fail-closed gate passed. CI 43149136286; audit 43149136348; gate 43149136353.
+- All 16 initial event-timeline tests passed.
+- Follow-up hardens validation before cutoff exclusion and preserves full provenance for excluded events. Five tests added (21 total expected). Exact-head CI pending.
+- Repeated spot API responses are stale/cached; no directional forecast. Web data not receipt-ingested; NOT_ISSUED.
+- PR #1661 remains draft/blocked; no merge, deployment, secret action, paper trade, real-money action or source PR closure.

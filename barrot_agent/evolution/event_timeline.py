@@ -290,7 +290,7 @@ def build_event_timeline(
 
     timeline: list[dict[str, Any]] = []
     evidence: list[dict[str, Any]] = []
-    excluded: list[dict[str, str]] = []
+    excluded: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
 
     for index, record in enumerate(event_records):

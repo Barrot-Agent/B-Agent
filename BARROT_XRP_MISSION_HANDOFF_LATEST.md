@@ -2672,3 +2672,15 @@ Forecast remains **NOT_ISSUED**. No directional forecast, paper trade or real-mo
 Next: run exact-head CI on the Run44 commit; then create a validated, source-receipt-bound event registry and connect it to the new timeline builder. Continue independent WORM/timestamp anchoring, replayable history, semantic review, least-privilege and branch-protection remediation. Do not merge while draft, approval, security, semantic-review and Pages authorization gates remain unresolved.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+
+## Run45 — 2026-11-12: event-timeline provenance hardening
+
+- Verified Run44 exact head 6510a8e0272c22b6c480d6fa14b4118748d4cb4a: full repository suite 3,495 passed/0 failed/8 subtests; 61.27% coverage against 53% floor; 96.42 seconds; core 716/0; wheel build and installed Barrot V3/XRP mission verified; six-manifest dependency audit passed with zero known vulnerabilities reported; fail-closed gate passed.
+- Exact evidence: [CI 43149136286](https://github.com/Barrot-Agent/B-Agent/actions/runs/43149136286), [full-suite job 130953903772](https://github.com/Barrot-Agent/B-Agent/actions/runs/43149136286/job/130953903772), [dependency audit 43149136348](https://github.com/Barrot-Agent/B-Agent/actions/runs/43149136348), [fail-closed gate 43149136353](https://github.com/Barrot-Agent/B-Agent/actions/runs/43149136353).
+- The 16 event-timeline tests all passed on that exact head.
+- Code review identified a provenance gap: excluded records previously retained only event ID and exclusion reason. The follow-up validates source/event status, stance, URL and raw hash before cutoff exclusion, rejects credential-bearing URLs and non-text source names, and preserves source identity, publication/availability/capture times, lineage, claim, hypothesis, counter-hypothesis and receipt state for every excluded event.
+- Five additional tests are added; expected total event-timeline tests: 21. These changes are committed below and their exact-head CI is pending.
+- Fresh spot/API retrieval repeated identical Kraken and OKX payloads. OKX provider event timestamp remained 03:14:49.567 UTC; Kraken supplied no trade-event timestamp. Treat these quotes as cached/stale, not executable.
+- Run44 web research remains non-model-eligible because byte-exact raw receipts were not captured. Forecast remains NOT_ISSUED.
+- No merge or external action. PR #1661 remains draft and blocked by approvals, branch-protection visibility, least privilege, credential-owner revocation, Pages authorization and incomplete semantic review.
