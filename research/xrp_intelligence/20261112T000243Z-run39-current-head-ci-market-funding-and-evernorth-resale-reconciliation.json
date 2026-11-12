@@ -1,0 +1,307 @@
+{
+  "schema_version": "barrot.xrp.run-research.v1",
+  "run_id": "Run39",
+  "captured_at_utc": "2026-11-12T00:02:43Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3 execution/orchestration/safety/verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
+    "commits_ahead": 2065,
+    "commits_behind": 0,
+    "integration_tree_entries": 2289,
+    "main_tree_entries": 1388,
+    "pr_number": 1661,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable_reported": true,
+    "changed_files": 1029,
+    "changed_workflow_files": 49,
+    "changed_nonworkflow_files": 980,
+    "open_prs": 374,
+    "draft_prs": 360,
+    "non_draft_prs": 14
+  },
+  "verification": {
+    "exact_tested_head": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
+    "ci_run_id": 43123398300,
+    "full_suite_job_id": 130869264786,
+    "full_suite": {
+      "passed": 3452,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.99,
+      "duration_seconds": 93.09
+    },
+    "core_suite": {
+      "passed": 714,
+      "failed": 0
+    },
+    "wheel_build": "passed",
+    "installed_wheel": "verified Barrot V3, XRP mission and canonical data assets",
+    "dependency_audit_run_id": 43123398294,
+    "dependency_audit_job_id": 130869369665,
+    "dependency_manifests": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run_id": 43123398296,
+    "fail_closed_gate": "passed",
+    "latest_main_cross_analysis_run_id": 43123012231,
+    "latest_main_cross_analysis": "passed",
+    "exact_head_scope": "The 3,452/0 result is on 694786f. Any later handoff-only commit requires its own exact-head CI."
+  },
+  "latest_commit": {
+    "sha": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
+    "parent_sha": "b756416d303c7dc0f1984071e24342940b6a9a28",
+    "message": "Remove empty workflow env blocks after step-scoping Groq credentials",
+    "changed_paths": [
+      ".github/workflows/financial-data-refresh.yml",
+      ".github/workflows/frontier-digest.yml",
+      ".github/workflows/self-benchmark.yml",
+      ".github/workflows/signal-summary.yml",
+      ".github/workflows/webmcp-trend-digest.yml",
+      "tests/test_external_action_gates.py"
+    ],
+    "change": "Removed empty job-level env: keys from five workflows while retaining explicit per-step Groq secret scope, exact-main-SHA checkout validation, persist-credentials:false and read-only permissions. Added a regression assertion against an empty env block before steps."
+  },
+  "market": {
+    "spot": {
+      "observation_cutoff": "OKX provider event time 2026-11-11T23:56:13.061Z; Kraken event time not supplied",
+      "retrieved_at_utc": "2026-11-12T00:02:43Z",
+      "okx_xrp_usdt": {
+        "last": 1.0538,
+        "bid": 1.0538,
+        "ask": 1.0539,
+        "bid_size_xrp": 2917.956473,
+        "ask_size_xrp": 1225.597961,
+        "high_24h": 1.0807,
+        "low_24h": 1.0409,
+        "volume_24h_xrp": 42425245.528663,
+        "provider_timestamp_ms": 1794441373061
+      },
+      "kraken_xrp_usd": {
+        "last": 1.0482,
+        "bid": 1.04821,
+        "ask": 1.04822,
+        "high_24h": 1.07953,
+        "low_24h": 1.04004,
+        "volume_24h_xrp": 21868653.26014086,
+        "provider_event_timestamp": null
+      },
+      "kraken_usdt_usd": {
+        "last": 0.99883,
+        "bid": 0.99882,
+        "ask": 0.99883,
+        "provider_event_timestamp": null
+      },
+      "normalized_midpoints": {
+        "okx_usd": 1.05261172625,
+        "kraken_usd": 1.048215,
+        "okx_vs_kraken_percent": 0.4194488965
+      },
+      "interpretation": "Asynchronous venue observations. Kraken does not provide an event timestamp in the captured response. The normalized midpoint difference is a data-quality/dislocation flag, not executable arbitrage."
+    },
+    "orderbook": {
+      "fresh_synchronized_depth": "not retrieved in this run",
+      "last_prior_snapshot": "Fuelmaps six-venue 14:00 UTC snapshot from Run38; stale at Run39 cutoff, resting/cancellable liquidity, excludes Binance and Bitget",
+      "model_eligible": false
+    },
+    "funding": {
+      "binance_cryptoquant_30d_cumulative_percent": 0.18,
+      "binance_context": "CryptoQuant figure relayed by Coinpedia/CryptoTicker; highest since October 2025 per those reports. Underlying CryptoQuant series was not independently fetched in this run.",
+      "okx_last_100_settlements_positive": 76,
+      "okx_last_100_settlements_cumulative_percent": 0.39,
+      "okx_window": "settlements back to 2026-10-09; not exactly a calendar 30-day window",
+      "fundju_as_of_utc": "2026-11-11T20:54:00Z",
+      "fundju_30d_settlements": 90,
+      "fundju_positive_settlements": 72,
+      "fundju_negative_settlements": 18,
+      "fundju_30d_cumulative_percent": 0.406,
+      "fundju_current_8h_percent": 0.0087,
+      "independence_note": "CryptoTicker and FundJu both rely on OKX public funding data for OKX history; they are not independent exchange datasets. Binance CryptoQuant is a separate venue/dataset but was not directly retrieved."
+    },
+    "open_interest": {
+      "venue": "OKX XRP-USDT-SWAP",
+      "nov4_usd_millions": 132.1,
+      "nov10_usd_millions": 101.9,
+      "usd_change_percent": -23,
+      "coin_denominated_open_interest_change_approx_percent": -10,
+      "long_short_account_ratio_nov9": 4.27,
+      "long_short_account_ratio_nov11": 3.7,
+      "source": "CryptoTicker report using OKX public data",
+      "limitation": "USD OI decline includes mark-price decline; coin-denominated OI reportedly contracted less. Account ratios are not notional exposure."
+    },
+    "etf_flows": {
+      "nov9_net_outflow_usd_millions": 10.4,
+      "nov9_equivalent_xrp_millions": 9.37,
+      "nov3_to_nov6": "four consecutive zero-net-flow trading days reported",
+      "bitwise_nov9_outflow_usd_millions": 9.4,
+      "oct12_to_nov9_cumulative_net_outflow_usd_millions": 4.2,
+      "source_lineage": "SoSoValue data relayed by CryptoTicker/Coinpedia and 24/7 Wall St. These articles share the same underlying flow source; not independent confirmations.",
+      "scope_warning": "Other trackers report different fund cohorts, cutoffs and reconstructed holdings-change flows. Do not average with the separate Alpha/XRP Insights universes."
+    }
+  },
+  "institutional_and_capital": {
+    "evernorth_resale_filing": {
+      "issuer": "Evernorth Holdings Inc.",
+      "form": "424B3",
+      "accession": "000162828026072223",
+      "filing_date": "2026-11-09",
+      "accepted_at_utc": "2026-11-09T16:18:57Z",
+      "prospectus_date": "2026-11-09",
+      "registered_class_a_shares": 73688162,
+      "composition": {
+        "issued_and_outstanding": 19102635,
+        "issuable_on_class_c_conversion": 31392746,
+        "issuable_on_company_unit_redemption_or_exchange": 22953128,
+        "issuable_on_sponsor_warrant_exercise": 239653
+      },
+      "sponsor_warrants": 239653,
+      "warrant_exercise_price_usd": 11.5,
+      "company_resale_proceeds": "none, except cash proceeds if sponsor warrants are exercised",
+      "separate_eloc_capacity_shares": 5218935,
+      "eloc_registration": "separate registration statement; do not combine with the 73,688,162-share resale registration",
+      "xrp_effect": "This is registration of potential shareholder securities resales/conversions, not evidence of completed share sales or an Evernorth XRP sale. Share supply/dilution can affect XRPN equity and XRP-per-share calculations without directly changing the XRP wallet.",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "secondary_market_context": {
+      "xrpn_nov9_close_usd": 10.41,
+      "xrpn_nov10_close_usd": 7.96,
+      "xrpn_change_percent": -23.5,
+      "xrp_nov10_daily_change_percent": -3.9,
+      "btc_nov10_daily_change_percent": -2.1,
+      "source": "24/7 Wall St, published 2026-11-11",
+      "caveat": "Temporal association with the resale filing is not proof of causation. The article itself identifies Bitcoin weakness, ETF flows and the preceding market decline as competing explanations for XRP's move."
+    },
+    "stolen_xrp_wallet_reconciliation": {
+      "source": "CryptoTicker report citing Elliptic and XRPL ledger data",
+      "observation_utc": "2026-11-11T06:44:00Z",
+      "validated_ledger": 108255241,
+      "original_stolen_xrp_millions": 233.46,
+      "last_dormant_wallet_transfer_xrp": 33455915,
+      "transfer_time_utc": "2026-11-11T00:01:00Z",
+      "collection_wallet_balance_xrp": 29466416,
+      "collection_wallet_outflow_since_prior_measurement_xrp_millions": 32.34,
+      "collection_wallet_payments": 193,
+      "reported_share_passed_on_percent": 87,
+      "ellipitic_reported_route": "Most transferred XRP was swapped into BTC through THORChain",
+      "limitation": "Ledger transfers and swaps do not identify ultimate buyers or prove fiat cash-out. A reduction in the attacker's concentrated balance is not proof of net market buying or price support."
+    }
+  },
+  "identity_and_exact_phrase_research": {
+    "actual_capital": "No standardized XRP metric or primary-source definition established. Continue separating cash raised, cash deployed to purchase XRP, in-kind XRP, debt, facilities, collateral, registered resale capacity and secondary sales.",
+    "ask_coin": "Current search surfaces Permission Coin ASK and unrelated ASK candidates. Permission Coin is reported as an OFT-20 on Base and Polygon; no XRPL/XRP integration verified. Search results are not proof of a direct XRP relationship.",
+    "sbic_chatgpt": "Official Tokyo SBIC training material lists ChatGPT/Copilot education; SBIC West's 2024 seminar material is also educational. No OpenAI strategic partnership or formal 'SBIC, ChatGPT SBIC' entity/relationship verified.",
+    "kamilah_camilla_stevenson": "No first-party YouTube channel ownership verification in this run. No personal video inventory attributed. Camilla and Kamilah are not assumed to be the same person."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Positive cumulative funding and a 3.7 OKX long/short account ratio amid a large price decline indicate persistent leveraged long crowding and potential liquidation sensitivity.",
+      "disconfirming_evidence": "Positive funding can also arise from basis/carry trades or hedged exposure; USD OI fell partly because XRP's mark price fell; OKX account ratios are not notional positioning."
+    },
+    {
+      "id": "H2",
+      "claim": "The Nov9 ETF outflow may have been concentrated in Bitwise rather than a broad institutional exit.",
+      "disconfirming_evidence": "The five-fund cohort and rolling/cumulative windows differ across providers; later Nov10 flows and other fund universes may tell a different story."
+    },
+    {
+      "id": "H3",
+      "claim": "The Evernorth resale registration may pressure XRPN equity valuation through potential shareholder supply and conversion dilution.",
+      "disconfirming_evidence": "No completed resales are established; Evernorth receives no resale proceeds; the registration does not itself sell XRP or change the treasury wallet."
+    },
+    {
+      "id": "H4",
+      "claim": "The attacker's remaining XRP concentration was reduced after the dormant wallet transfer and subsequent THORChain routing.",
+      "disconfirming_evidence": "The ultimate buyers and cash-out path are unknown; the 29.47M XRP collection balance remained at the reported cutoff and subsequent transfers were not verified in this run."
+    },
+    {
+      "id": "H5",
+      "claim": "A cross-venue spot dislocation may have emerged between OKX XRP-USDT and Kraken XRP/USD.",
+      "disconfirming_evidence": "Quotes are asynchronous; Kraken event timestamp is absent; top-of-book sizes are limited; no synchronized L2/trade sequence was captured."
+    }
+  ],
+  "provenance": {
+    "raw_bytes_captured": false,
+    "raw_payload_sha256": null,
+    "barrot_source_receipt_id": null,
+    "retrieval_representation": "web-rendered source pages and public exchange JSON responses",
+    "model_eligible": false,
+    "reason": "The retrieved web text/API views were not ingested through Barrot's byte-exact collector and trusted receipt chain. Hashing rendered excerpts would not be a raw-source receipt."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_model_transfer": false,
+  "paper_trade": false,
+  "real_money_action": false,
+  "sources": [
+    {
+      "id": "turn258725view3",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "role": "OKX primary spot ticker"
+    },
+    {
+      "id": "turn258725view4",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "role": "Kraken primary spot ticker"
+    },
+    {
+      "id": "turn258725view5",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "role": "Kraken primary USDT/USD ticker"
+    },
+    {
+      "id": "turn679130view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary resale prospectus"
+    },
+    {
+      "id": "turn565523search4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/0001628280-26-072223-index.htm",
+      "role": "SEC filing metadata"
+    },
+    {
+      "id": "turn258725view0",
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/11/xrp-treasury-stock-evernorth-xrpn-fell-24-in-one-day-after-an-sec-filing-is-that-why-xrp-dipped-4/",
+      "role": "secondary XRPN/XRP market context"
+    },
+    {
+      "id": "turn258725view1",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-funding-rate-leverage-november-11-2026/",
+      "role": "secondary funding, OI, ETF and XRPL wallet reporting"
+    },
+    {
+      "id": "turn565523search1",
+      "url": "https://fundju.com/en/funding/xrp/okx",
+      "role": "secondary OKX funding-history aggregation"
+    },
+    {
+      "id": "turn565523search0",
+      "url": "https://en.coinotag.com/xrp-funding-rate-0-18-binance-one-year-high",
+      "role": "secondary CryptoQuant funding report"
+    },
+    {
+      "id": "turn258725view2",
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/10/xrp-etfs-lost-10-4-million-in-one-day-how-much-has-left-since-xrp-started-falling/",
+      "role": "secondary SoSoValue ETF-flow reporting"
+    },
+    {
+      "id": "turn696523search0",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "role": "Tokyo SBIC official ChatGPT training"
+    },
+    {
+      "id": "turn696523search36",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "role": "SBIC West official ChatGPT seminar"
+    },
+    {
+      "id": "turn696523search2",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "role": "ASK candidate market/chain metadata"
+    }
+  ]
+}
