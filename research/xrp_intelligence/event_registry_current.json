@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run64c-2026-11-12",
-  "captured_at_utc": "2026-11-12T16:00:00Z",
-  "source_receipt_status": "70 of 70 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All newly added Run64c observations are research-only and model-ineligible.",
+  "registry_version": "run71-2026-11-12",
+  "captured_at_utc": "2026-11-12T23:15:10.504Z",
+  "source_receipt_status": "71 of 71 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All Run71 additions are research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -2938,9 +2938,55 @@
         "supply",
         "December-2026"
       ]
+    },
+    {
+      "event_id": "circle-usdc-xrpl-native-2025-06-12",
+      "event_type": "stablecoin",
+      "event_name": "Circle announces native USDC on XRPL mainnet",
+      "hypothesis_id": "xrpl-stablecoin-rails-vs-xrp-value-capture",
+      "domain": "stablecoin",
+      "hypothesis": "Native Circle USDC availability on XRPL expands the ledger's stablecoin and payment-asset set and can support settlement in a dollar-denominated asset.",
+      "counter_hypothesis": "USDC transfers can settle in USDC without XRP as the bridge asset; the launch does not establish material XRP demand, a Ripple-Circle corporate partnership, or institutional adoption of XRP.",
+      "claim": "Circle's June 12, 2025 announcement says USDC is live natively on XRPL mainnet with no bridging required and that Circle Mint and Circle APIs support USDC on XRPL. Circle identifies the issued token by currency 5553444300000000000000000000000000000000 and issuer rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE.",
+      "source_id": "circle_usdc_xrpl_native_launch_20250612",
+      "source_name": "Circle official blog",
+      "source_url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "independence_group": "circle.com",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2025-06-12T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T23:15:10.504Z",
+      "captured_at_utc": "2026-11-12T23:15:10.504Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Circle's published launch date and network-support statement are accurate.",
+        "The issuer/currency tuple identifies Circle-issued USDC on XRPL.",
+        "UTC midnight in event_time_utc is a date-only ordering placeholder; the source does not provide an exact publication time."
+      ],
+      "falsification_conditions": [
+        "Circle's official page or the XRPL issuer record contradicts native mainnet USDC availability on June 12, 2025.",
+        "The cited issuer/currency pair does not identify Circle-issued USDC."
+      ],
+      "related_entities": [
+        "Circle Internet Group, Inc.",
+        "USDC",
+        "XRP Ledger",
+        "Ripple Labs (ecosystem context only; no corporate partnership asserted)"
+      ],
+      "tags": [
+        "Circle",
+        "USDC",
+        "XRPL",
+        "native-issuance",
+        "stablecoin-payments",
+        "not-XRP-bridge-proof"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
   "run64b_note": "Corrects spot/ETF hypothesis group consistency and adds five primary-source identity/capital events; all records remain research-only.",
-  "run64c_note": "Eight events appended with unique hypothesis_id values to avoid inconsistent scenario-group definitions: one current cross-venue spot refresh, SBI JPYSC balances, Circle Arc, Circle Q3 results, Coinbase trust charter, Ripple trust-bank approval, SBI/Ripple RLUSD Japan availability and the December 1 Ripple escrow schedule. Existing events and historical capture timestamps are preserved. No publisher bytes were archived; no event is model-eligible."
+  "run64c_note": "Eight events appended with unique hypothesis_id values to avoid inconsistent scenario-group definitions: one current cross-venue spot refresh, SBI JPYSC balances, Circle Arc, Circle Q3 results, Coinbase trust charter, Ripple trust-bank approval, SBI/Ripple RLUSD Japan availability and the December 1 Ripple escrow schedule. Existing events and historical capture timestamps are preserved. No publisher bytes were archived; no event is model-eligible.",
+  "run71_note": "Added Circle's primary-source confirmation that USDC has been native on XRPL mainnet since 2025-06-12. PNC's 2026-11-09 USDC incoming-payment pilot explicitly uses Ethereum. These are distinct rails; neither proves XRP bridge use or XRP demand. The new event has no raw receipt and remains model-ineligible."
 }

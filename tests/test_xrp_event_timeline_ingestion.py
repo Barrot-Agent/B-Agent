@@ -122,11 +122,19 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "xrp-liqwall-derivatives-2026-11-12T0502Z",
         "xrp-etf-flows-2026-11-10",
         "evernorth-sbi-lockup-ambiguity-2026-11-12",
+        "pnc-coinbase-usdc-incoming-pilot-2026-11-09",
+        "circle-usdc-xrpl-native-2025-06-12",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
     assert all(by_id[event_id]["raw_source_sha256"] is None for event_id in expected)
     assert "SBI is not named" in by_id["evernorth-sbi-lockup-ambiguity-2026-11-12"]["counter_hypothesis"]
+    assert "Ethereum blockchain" in by_id["pnc-coinbase-usdc-incoming-pilot-2026-11-09"]["claim"]
+    circle_usdc = by_id["circle-usdc-xrpl-native-2025-06-12"]
+    assert "natively on XRPL mainnet" in circle_usdc["claim"]
+    assert "without XRP as the bridge asset" in circle_usdc["counter_hypothesis"]
+    assert circle_usdc["raw_source_sha256"] is None
+    assert registry["source_receipt_status"].startswith("71 of 71")
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])

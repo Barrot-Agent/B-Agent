@@ -3348,7 +3348,7 @@ SwoleCharts' Binance XRPUSDT daily-candle series, as of 12:22Z November 12, repo
 - Exact-phrase searches did not establish a canonical XRP Ledger issuer/deployment for “ASK Coin.” “Actual capital” remains non-standard terminology: registrations, warrant capacity, committed equity facilities and in-kind XRP contributions are not equivalent to completed cash proceeds or net XRP purchases.
 - No first-party identity link established ownership of a YouTube channel by Camilla/Kamilah/Camila Stevenson. No videos were attributed or inventoried as that person's uploads.
 
-No new primary evidence in this run changes the previously documented Ripple/Coinbase/Circle/SBI relationship map. Keep RLUSD, USDC, JPYSC, XRP, cbXRP and XRP collateral as separate assets/roles. Stablecoin network expansion or institutional custody does not, by itself, prove XRP demand or collateral use.
+The Circle/USDC relationship is corrected in the Run71 primary-source addendum below: Circle-issued USDC is native on XRPL; Circle Arc remains a separate Layer 1. Keep RLUSD, USDC, JPYSC, XRP, cbXRP and XRP collateral as separate assets/roles. Stablecoin network expansion or institutional custody does not, by itself, prove XRP demand or collateral use.
 
 ### Nine-platform and security status
 
@@ -3393,3 +3393,35 @@ Security:
 8. Keep forecast issuance disabled until the data set, calibrated walk-forward results, baseline comparisons and independent shadow performance demonstrate out-of-sample lift.
 
 No merge, direct main write, deployment initiated by this run, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+---
+
+## Run71 primary-source correction — 2026-11-12T23:15:10.504Z
+
+This addendum corrects the earlier overbroad statement that Circle's USDC institutional infrastructure was not an XRPL deployment. **Circle Arc is a separate Layer 1, but Circle-issued USDC has been native on XRPL mainnet since June 12, 2025.**
+
+### Circle / USDC / XRPL
+
+- Circle's primary announcement states that USDC is live natively on XRPL mainnet, requires no bridge, and is supported by Circle Mint and Circle APIs: https://www.circle.com/blog/now-available-usdc-on-the-xrpl
+- Circle identifies the XRPL asset with currency `5553444300000000000000000000000000000000` and issuer `rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE`. This is Circle-issued USDC, not RLUSD and not XRP.
+- Circle's current USDC page reports $68.9B in circulation as of November 9, 2026, and its network list dated September 16, 2026 includes XRPL among 38 supported networks: https://www.circle.com/usdc
+- XRPL.to's Circle-USDC token page reports 4.45M USDC supply, about 4.20M XRP market capitalization, about 10.50K holders, 734.45K XRP 24-hour trading volume, 5,843 trades and 204 unique traders. This is a third-party indexer snapshot, not an issuer attestation or independently replayed ledger calculation: https://xrpl.to/token/rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE-5553444300000000000000000000000000000000
+- DeFiLlama's November 12 XRPL page reports $964.69M stablecoin market capitalization, 90.57% RLUSD dominance, $31.78M DeFi TVL, $5.76M 24-hour DEX volume and $40.59M seven-day DEX volume. This is an aggregator's chain-level estimate, not an issuer audit: https://defillama.com/chain/xrpl
+- XRPL.to's later token-market snapshot (displayed update 11/12/2026 11:16:04 PM; timezone not specified) reports 7.47M XRP 24-hour token DEX volume, 154,822 trades, 25.82M XRP AMM liquidity across 22,628 pools, 53% buys / 47% sells and 7.5% AMM share: https://xrpl.to/token-market
+
+### PNC / Coinbase / Ethereum
+
+PNC's own November 9, 2026 release explicitly states that the incoming-USDC pilot for eligible Corporate & Institutional Banking clients runs **on the Ethereum blockchain**, powered by Coinbase Payment products. Incoming USDC is automatically converted 1:1 to U.S. dollars and deposited into a designated PNC account; PNC describes the rollout as a limited pilot: https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients
+
+This corrects the earlier incomplete chain attribution: PNC's pilot is Ethereum, not XRPL. It is evidence of a Coinbase/PNC bank-payment route using Circle-issued USDC, not evidence of XRP settlement.
+
+### Interpretation and model boundary
+
+Circle's native USDC deployment is a direct technical issuance/support relationship with XRPL. It is **not by itself evidence of a Circle-Ripple corporate partnership**, and it does not prove USDC is routed through XRP as a bridge asset. The PNC pilot explicitly selects Ethereum. The small XRPL.to USDC supply snapshot and DeFiLlama's 90.57% RLUSD dominance also caution against equating global USDC scale with USDC adoption on XRPL.
+
+This is a useful counter-hypothesis for XRP value capture: stablecoin payment activity can expand on XRPL while settling in USDC or RLUSD without a demonstrated XRP bridge leg. Transaction-level routing and XRP order-book/AMM flow evidence are required before attributing XRP demand.
+
+The current event registry now contains 71 curated events, including `circle-usdc-xrpl-native-2025-06-12`; all 71 still have null raw publisher hashes, zero are model-eligible, and forecast status remains `NOT_ISSUED`. The Circle event is primary-source research, but it is not admitted to the feature store until byte-exact raw capture and trusted receipt anchoring exist.
+
+The preceding handoff-only head `f8fb5b41bd8d13484d13aa6842f8a1b21ea746e3` passed exact-head CI: 3,540 tests, zero failures, eight subtests, 61.55% coverage; core 723 passed at 76%; wheel and installed mission verification passed; five-manifest dependency audit and fail-closed gate passed. The current correction changes the event registry, its regression test and this handoff in one commit on the existing integration branch. That new head requires its own exact-head full-suite, dependency and fail-closed verification before any merge decision.
