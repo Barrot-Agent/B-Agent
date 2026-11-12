@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T22:45:02Z",
-  "last_verified_at_utc": "2026-11-12T22:45:02Z",
+  "captured_at_utc": "2026-11-12T22:48:04Z",
+  "last_verified_at_utc": "2026-11-12T22:48:04Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-  "observed_integration_head_before_map_commit": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+  "observed_integration_head_before_map_commit": "8e8d6d0632db6f557b11fe4898d3cf2080fccbeb",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
@@ -13,15 +13,15 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2164,
+    "ahead_by": 2165,
     "behind_by": 0,
     "changed_files": 1076,
     "workflow_files": 50,
     "other_changed_paths": 1026,
-    "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+    "head_sha": "8e8d6d0632db6f557b11fe4898d3cf2080fccbeb",
     "base_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "commits": 2164,
-    "additions": 301496,
+    "commits": 2165,
+    "additions": 301750,
     "deletions": 5123,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -94,7 +94,7 @@
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-12T22:45:02Z",
+      "last_verified_at_utc": "2026-11-12T22:48:04Z",
       "last_verified_run": "Run69"
     },
     "Claude": {
@@ -263,7 +263,7 @@
       "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "conclusion": "success"
     },
-    "last_verified_at_utc": "2026-11-12T22:45:02Z",
+    "last_verified_at_utc": "2026-11-12T22:48:04Z",
     "latest_run37_platform_state": {
       "ChatGPT": {
         "intended_role": [
@@ -641,9 +641,9 @@
   },
   "repository_state": {
     "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "integration_head_before_current_map_commit": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+    "integration_head_before_current_map_commit": "8e8d6d0632db6f557b11fe4898d3cf2080fccbeb",
     "integration_pr": 1662,
-    "integration_ahead_by": 2164,
+    "integration_ahead_by": 2165,
     "integration_behind_by": 0,
     "changed_files": 1076,
     "workflow_files_changed": 50,
@@ -666,7 +666,7 @@
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
     "latest_exact_head_ci": "f5c7d65: exact-head full suite failed 3,536 passed/4 failed/8 subtests/61.55%; four failures are stale canonical map snapshot fields, not runtime tests. Previous parent 124fd5e8 passed 3,540/0.",
-    "last_reconciled_at_utc": "2026-11-12T22:45:02Z",
+    "last_reconciled_at_utc": "2026-11-12T22:48:04Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2210,
@@ -8649,8 +8649,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run70-CI-correction",
-  "latest_run_captured_at_utc": "2026-11-12T22:45:02Z",
+  "latest_run_id": "Run70-map-state-sync",
+  "latest_run_captured_at_utc": "2026-11-12T22:48:04Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -20197,7 +20197,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T22:45:02Z",
+  "updated_at_utc": "2026-11-12T22:48:04Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -22700,7 +22700,7 @@
     "formal_reviews": 0,
     "approvals": 0,
     "review_threads": 0,
-    "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c"
+    "head_sha": "8e8d6d0632db6f557b11fe4898d3cf2080fccbeb"
   },
   "latest_market_refresh_run42": {
     "retrieved_at_utc_approx": "2026-11-12T02:29-02:31Z",
@@ -24577,7 +24577,7 @@
   },
   "run46_forecast_status": "NOT_ISSUED",
   "model_eligible": false,
-  "next_concrete_action": "Repair canonical repository_state and ci_evidence fields, then rerun exact-head full suite without changing tests.",
+  "next_concrete_action": "Verify exact-head full suite on the map-state-sync commit; then reconcile the remaining semantic and security blockers.",
   "run47_research_artifact_path": "research/xrp_intelligence/20261112T050251Z-run47-market-quality-evernorth-sbi-resale-and-exact-head-ci-repair.json",
   "run47_forecast_status": "NOT_ISSUED",
   "current_forecast_status": "NOT_ISSUED",
@@ -29078,8 +29078,8 @@
     "Circle-Coinbase distribution costs are USDC ecosystem economics, not XRP capital flows."
   ],
   "run70_next_actions": [
+    "Verify exact-head full repository suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gate on the map-state-sync commit.",
     "Repair canonical repository_state and ci_evidence fields to the exact tested parent head; preserve prior successful and failed CI attempts.",
-    "Rerun exact-head full repository suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gate.",
     "Finish semantic review of the 1,076-file integration and exact blob reconciliation of overlapping source PRs.",
     "Resolve GitHub connector least privilege, branch-protection visibility, credential-owner revocation and Pages publication authorization.",
     "Keep source PRs open until a verified successor is merged and its exact content is verified on main.",
@@ -29342,7 +29342,10 @@
     "fail_closed_gate_passed": true,
     "wheel_build_skipped": true,
     "installed_wheel_verification_skipped": true,
-    "next_head_full_suite_status": "PENDING_AFTER_CANONICAL_MAP_CORRECTION_COMMIT"
+    "next_head_full_suite_status": "PENDING_EXACT_HEAD_CI_AFTER_MAP_STATE_SYNC",
+    "next_head_to_test": "8e8d6d0632db6f557b11fe4898d3cf2080fccbeb",
+    "current_pr_head_before_map_state_sync": "8e8d6d0632db6f557b11fe4898d3cf2080fccbeb",
+    "mergeable_state_before_map_state_sync": "unstable"
   },
   "run70_followup_market_observation": {
     "captured_at_utc": "2026-11-12T22:44:12Z",
