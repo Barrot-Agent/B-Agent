@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T22:03:54Z",
-  "last_verified_at_utc": "2026-11-12T22:03:54Z",
+  "captured_at_utc": "2026-11-12T22:24:23Z",
+  "last_verified_at_utc": "2026-11-12T22:24:23Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-  "observed_integration_head_before_map_commit": "bf018e9affb1b968690b9aa3547e52c493eb7aa5",
+  "observed_integration_head_before_map_commit": "905085e05e3606048c40faa09edbb0b87b8fcce3",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
@@ -13,15 +13,15 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "clean",
-    "ahead_by": 2161,
+    "ahead_by": 2162,
     "behind_by": 0,
     "changed_files": 1075,
     "workflow_files": 50,
     "other_changed_paths": 1025,
-    "head_sha": "bf018e9affb1b968690b9aa3547e52c493eb7aa5",
+    "head_sha": "905085e05e3606048c40faa09edbb0b87b8fcce3",
     "base_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "commits": 2161,
-    "additions": 299393,
+    "commits": 2162,
+    "additions": 299755,
     "deletions": 5123,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -30,7 +30,7 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-12T21:24:06Z",
+    "updated_at": "2026-11-12T22:20:37Z",
     "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
     "note": "Run64 head a1d46004 failed five tests: one event hypothesis conflict and four stale map snapshot fields. Run64b aligns spot/ETF hypotheses and synchronizes map fields; exact-head CI pending.",
     "research_files": 557,
@@ -87,14 +87,14 @@
         "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
         "persistent_agent_connection": false,
         "external_model_transfer": false,
-        "last_verified_at_utc": "2026-11-12T22:03:54Z",
+        "last_verified_at_utc": "2026-11-12T22:24:23Z",
         "observed_flow": "Run69 verified main/integration trees, all four open-PR inventory pages, PR #1662 metadata/files/reviews/threads, exact-head CI/jobs/logs, main CI and automatic workflow side effects; bounded documentation/map update to existing integration branch only. No main write or external-model transfer.",
         "main_branch_write": false
       },
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-12T22:03:54Z",
+      "last_verified_at_utc": "2026-11-12T22:24:23Z",
       "last_verified_run": "Run69"
     },
     "Claude": {
@@ -263,7 +263,7 @@
       "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "conclusion": "success"
     },
-    "last_verified_at_utc": "2026-11-12T22:03:54Z",
+    "last_verified_at_utc": "2026-11-12T22:24:23Z",
     "latest_run37_platform_state": {
       "ChatGPT": {
         "intended_role": [
@@ -640,9 +640,9 @@
   },
   "repository_state": {
     "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "integration_head_before_current_map_commit": "bf018e9affb1b968690b9aa3547e52c493eb7aa5",
+    "integration_head_before_current_map_commit": "905085e05e3606048c40faa09edbb0b87b8fcce3",
     "integration_pr": 1662,
-    "integration_ahead_by": 2161,
+    "integration_ahead_by": 2162,
     "integration_behind_by": 0,
     "changed_files": 1075,
     "workflow_files_changed": 50,
@@ -665,7 +665,7 @@
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
     "latest_exact_head_ci": "bf018e9: 3540 passed, zero failed, eight subtests, 61.55% coverage in 86.24s; core 723 passed; wheel and installed V3/XRP mission verified; five-manifest dependency audit and fail-closed gate passed.",
-    "last_reconciled_at_utc": "2026-11-12T22:03:54Z",
+    "last_reconciled_at_utc": "2026-11-12T22:24:23Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2206,
@@ -7487,9 +7487,9 @@
     "1653": "UNIQUE_UNREVIEWED_GRAPH_WORK; six source-only paths; preserve.",
     "1655": "UNIQUE_UNREVIEWED; three source-only paths; preserve.",
     "1659": "UNIQUE_UNREVIEWED; four source-only paths; preserve.",
-    "1660": "OVERLAP_CANDIDATE; all 972 paths overlap #1662; content reconciliation incomplete; preserve.",
-    "1661": "OVERLAP_CANDIDATE; 1071/1072 paths overlap #1662; source-only BARROT_SYNC.md replaces operational sync file with a Run63 mission log; preserve pending semantic reconciliation.",
-    "1662": "BLOCKED_DRAFT; main base b4e36c9; snapshot head bf018e9; 2161 commits ahead; 1075 changed files; zero formal reviews/approvals; tests passed but semantic/security/publication blockers remain.",
+    "1660": "SUPERSEDED_SOURCE_CANDIDATE_PENDING_MERGE_VERIFICATION; 972 paths overlap #1662; remains open until successor content is merged and verified on main; blob-level differences and semantic review remain.",
+    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 1,071/1,072 paths overlap #1662; source-only BARROT_SYNC.md replaces the operational sync file with a Run63 mission log; preserve pending semantic review.",
+    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current main base b4e36c9; current snapshot head 905085e; 2,162 commits ahead; 1,075 changed files; zero formal reviews/approvals; exact-head suite has one map-contract failure under correction; security/publication blockers remain.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
@@ -7549,12 +7549,11 @@
     }
   },
   "next_actions": [
-    "Verify exact-head full-suite, dependency and fail-closed checks after the Run69 documentation/map commit.",
-    "Reconcile #1661 BARROT_SYNC.md mission-log replacement against the operational sync contract; preserve all source PR histories.",
-    "Complete semantic reconciliation of #1660, #1643, #1642 and #1640; close none until successor content is verified on main.",
+    "Complete semantic review of #1661 BARROT_SYNC.md and content-level overlaps in #1660, #1643, #1642 and #1640; preserve all source PR histories.",
+    "Verify exact-head full-suite, dependency and fail-closed checks after the Run69 CI-correction commit.",
     "Resolve GitHub connector least privilege, branch-protection required contexts and disabled fallback ruleset.",
     "Resolve Pages publication authorization and main Barrot Sync false-green behavior under explicit authorization.",
-    "Bring the read-only XRP collector to main only after safe integration approval; verify scheduled runs and raw receipts.",
+    "Bring the read-only XRP collector to main only after safe integration approval; verify scheduled runs and byte-exact receipts.",
     "Implement independent WORM/timestamp anchoring and replayable point-in-time history.",
     "Obtain synchronized historical spot/L2/derivatives/flow/collateral data, production Ed25519 evaluator key and independent shadow outcomes.",
     "Keep forecast issuance disabled until sample, calibration and baseline-lift gates pass."
@@ -8489,8 +8488,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run69",
-  "latest_run_captured_at_utc": "2026-11-12T22:03:54Z",
+  "latest_run_id": "Run69-CI-correction",
+  "latest_run_captured_at_utc": "2026-11-12T22:24:23Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -28059,6 +28058,33 @@
       "failed": 0,
       "subtests": 8,
       "conclusion": "success"
+    },
+    "current_head_failure": {
+      "head_sha": "905085e05e3606048c40faa09edbb0b87b8fcce3",
+      "run_id": 43318861639,
+      "full_suite_job_id": 131533963633,
+      "passed": 3539,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_percent": 61.55,
+      "duration_seconds": 95.34,
+      "failure": "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit",
+      "assertion": "backlog_classification['1661'] must start BLOCKED_ACTIVE_INTEGRATION_DRAFT; #1660 must contain SUPERSEDED_SOURCE; next_actions must include semantic review.",
+      "core_suite": {
+        "job_id": 131533953542,
+        "passed": 723,
+        "failed": 0
+      },
+      "dependency_audit": {
+        "run_id": 43318861551,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 43318862292,
+        "conclusion": "success"
+      },
+      "wheel_build": "skipped because full repository suite failed",
+      "diagnosis": "Run69 map metadata labels violated the existing current-map test contract; no runtime or prediction-engine code failure."
     }
   },
   "run69_snapshot": {
@@ -28202,5 +28228,16 @@
       "raw_source_sha256": null,
       "model_eligible": false
     }
-  ]
+  ],
+  "run69_correction": {
+    "captured_at_utc": "2026-11-12T22:24:23Z",
+    "corrected_fields": [
+      "backlog_classification.1661",
+      "backlog_classification.1660",
+      "backlog_classification.1662",
+      "next_actions"
+    ],
+    "correction": "Restored the required BLOCKED_ACTIVE_INTEGRATION_DRAFT and SUPERSEDED_SOURCE_CANDIDATE prefixes while keeping all source PRs open; added the required semantic review action.",
+    "next_head_ci": "PENDING"
+  }
 }

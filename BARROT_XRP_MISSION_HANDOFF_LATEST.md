@@ -3018,3 +3018,25 @@ Nine-platform map:
 5. Bring the read-only XRP collector to main only after safe integration approval; verify actual scheduled runs and byte-exact receipts.
 6. Add independent WORM anchoring, synchronized historical market/collateral data and independent shadow outcomes.
 7. Keep forecast issuance disabled until all sample, calibration and baseline-lift gates pass.
+
+
+---
+
+## Run69 CI correction — 2026-11-12T22:24:23Z
+
+The documentation/map successor 905085e05e3606048c40faa09edbb0b87b8fcce3 received exact-head CI:
+
+- Core suite: 723 passed, zero failures.
+- Full repository suite: 3,539 passed, one failed, eight subtests; 61.55% coverage; 95.34 seconds.
+- Dependency audit: passed.
+- Fail-closed PR gate: passed.
+- Wheel build and installed-package verification were skipped because the full repository suite failed.
+
+The sole failure was tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit at line 418. The Run69 map update changed the expected backlog schema: #1661 must start with BLOCKED_ACTIVE_INTEGRATION_DRAFT; #1660 must contain SUPERSEDED_SOURCE; and next_actions must include the phrase semantic review. The test failure is a map-contract regression introduced by the Run69 metadata update, not a runtime, V3 or prediction-engine code failure.
+
+Corrected the map in the successor commit:
+- #1661 now starts BLOCKED_ACTIVE_INTEGRATION_DRAFT while preserving its unique BARROT_SYNC.md conflict and keeping it open.
+- #1660 is marked SUPERSEDED_SOURCE_CANDIDATE_PENDING_MERGE_VERIFICATION; it remains open until a successor is merged and verified on main.
+- next_actions explicitly includes semantic review.
+
+The corrected successor requires a new exact-head full-suite run. No merge, source PR closure, deployment, secret rotation, external-model transfer, paper trade or real-money action occurred.
