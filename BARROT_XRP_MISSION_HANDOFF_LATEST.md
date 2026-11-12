@@ -1,3 +1,127 @@
+# Run58 — 2026-11-12 — exact-head safety repair and institutional-capital reconciliation
+
+**Canonical operational handoff for this integration workstream.** This file is the current handoff for PR #1661. Older handoff snapshots and the prior BARROT_SYNC copy are preserved as history; do not treat their older head/CI statements as current.
+
+## Repository and exact-head verification — VERIFIED
+
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85; main unchanged.
+- Integration branch: integration/xrp-v3-unified-main-20261111.
+- Code/test head before this documentation update: 12998214bfa992d4b8053a05908693a174362f88; PR #1661 reports 2,114 commits ahead, zero behind.
+- Main tree: 1,388 entries / 86 workflows. Integration tree: 2,320 entries / 87 workflows.
+- PR #1661: open, draft, mergeable; 1,063 changed files (49 workflow files, 1,014 other paths); zero formal review submissions, zero approvals, zero review threads.
+- Open PR inventory: 374 total, 360 drafts, 14 non-drafts. No source PR was closed.
+
+**Exact code/test-head checks on 12998214bfa992d4b8053a05908693a174362f88:**
+
+- [Full repository CI 43227472189](https://github.com/Barrot-Agent/B-Agent/actions/runs/43227472189): 3,511 passed, zero failed, eight subtests; inclusive coverage 61.42% against the 53% floor; 70.63 seconds.
+- Core suite: 720 passed, eight subtests; rounded core coverage 76% against the 70% floor.
+- Wheel build and installed-wheel verification passed, including Barrot V3 imports, primary XRP mission and canonical data assets.
+- [Six-manifest dependency audit 43227472315](https://github.com/Barrot-Agent/B-Agent/actions/runs/43227472315): all six manifest groups and 15 PEP 621 dependencies audited; no known vulnerabilities reported.
+- [Fail-closed gate 43227472275](https://github.com/Barrot-Agent/B-Agent/actions/runs/43227472275) passed; automatic merging remained disabled.
+
+This handoff update is a documentation-only descendant of 12998214bfa992d4b8053a05908693a174362f88. The test results above apply to the stated code/test head, not automatically to the later documentation commit.
+
+## Preservation defect repaired — EXECUTED / VERIFIED
+
+The integration review found that TermuxBridge.drop_text() and drop_bytes() could overwrite an existing file in an approved Termux root. This contradicted the repository's preservation contract.
+
+The existing PR #1661 branch now changes Termux delivery to:
+
+- Create-only exclusive file creation; no replacement of an existing different file.
+- Identical-content retries are idempotent and perform no write.
+- Conflicting content returns failure and preserves the existing bytes.
+- Symlink targets and symlinked path components are rejected.
+- Relative paths resolve only inside a single explicitly approved root; ambiguous multi-root relative paths are rejected.
+- New file and parent-directory metadata are synchronized where supported.
+- Seven focused tests cover creation, idempotence, relative paths, conflicting existing files, binary content, symlink rejection and outside-workspace rejection.
+
+The complete repository suite on 12998214bfa992d4b8053a05908693a174362f88 passed after these changes. The fix is on the integration branch only; main still has the previous Termux behavior until a compliant merge. No user file, phone file, branch history or main-branch file was overwritten in this run.
+
+## Evernorth — actual capital, XRP holdings and SBI ownership
+
+**Primary source:** Evernorth Form 424B3, filed November 9, 2026, accession 000162828026072223:
+https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+The filing separates funded capital from contingent capacity:
+
+- Evernorth says it raised approximately $214.1 million cash and 261,919,096 XRP through private-placement subscription agreements. The $214.1 million cash was used to purchase 84,365,876 XRP. These are cash-funded XRP purchases; the 261.919 million XRP is an in-kind component, not an additional cash purchase.
+- At the business-combination closing, gross cash proceeds were approximately $272.6 million before transaction expenses: about $224.6 million from private-placement investments and $48.0 million released from the SPAC trust after redemptions. Investors also contributed approximately 388,910,554 XRP in kind. Do not add the 261.919 million private-placement XRP again to the 388.911 million closing in-kind total.
+- Evernorth reported approximately 473 million XRP held as of October 9, 2026. The filing's detailed holdings figure is approximately 473,276,430 XRP. This is a treasury balance, not a November spot-flow observation and not 473 million XRP bought with cash.
+- A $30 million convertible note was issued October 12; Evernorth reports approximately $30 million net proceeds before transaction expenses. The stated intended uses include general corporate purposes and possible XRP/ecosystem acquisitions. The note proceeds are financing, not proof of a completed XRP purchase.
+- Ripple's Company Facility was increased to $10 million; $9.7 million was borrowed as of October 7. A separate $1 million Evernorth Facility had not been borrowed as of June 30; later draw status is not established by that dated statement.
+- The Cantor committed equity facility permits, but does not require, Evernorth to sell up to 5,218,935 new Class A shares, generally at 97% of applicable VWAP and subject to conditions and limits. The prospectus explicitly says Evernorth had received **zero proceeds** under the facility as of the prospectus date. The $521,893.50 upfront commitment fee is an issuer cost, not capital received or XRP bought.
+- The filing's beneficial-ownership table identifies four SBI-controlled stockholders: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. Together they held 9,431,914 Class A shares (36.1% of that voting class) and 2,359,038 Class C shares (7.5% of that non-voting class). The filing separately reports a 39.9% SBI Group Ownership Percentage. It says the entities are subsidiaries of or partnerships directly/indirectly managed by SBI Holdings, Inc. This establishes an SBI Holdings/Evernorth equity relationship. It does **not** establish that SBI supplied all $214.1 million of private-placement cash or bought all of Evernorth's XRP.
+- Evernorth identifies BitGo cold storage for its XRP. Coinbase is identified as a principal market used for financial-reporting valuation, not as the custodian in this filing. Do not conflate valuation reference, exchange access, custody, shareholder ownership and XRP purchases.
+
+The phrase “actual capital” remains non-standardized. Track cash received, cash deployed into XRP, in-kind XRP, debt issued/drawn, undrawn facilities, ELOC proceeds, share/warrant proceeds, resale proceeds and treasury holdings as separate ledger fields. The SEC prospectus is one issuer source family; it is not independent corroboration of itself.
+
+## Japan SBIC identity — primary-source resolution
+
+The regional SBIC entities are three separate statutory SME investment/consultation companies, not SBI Holdings:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; established November 15, 1963; capital ¥6.6734 billion; eastern service area.
+  https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established November 18, 1963; capital ¥4.3008 billion; Aichi, Gifu, Mie, Toyama and Ishikawa.
+  https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established November 20, 1963; capital ¥6.822 billion; 24 prefectures in western Japan.
+  https://www.sbic-wj.co.jp/profiles/profile/
+
+The Osaka company's official regional guide describes Tokyo, Nagoya and Osaka as sister companies covering the country:
+https://www.sbic-wj.co.jp/profiles/guide/
+
+The official SBIC seminar/training references are educational activities. They do not establish an OpenAI/ChatGPT commercial partnership or a relationship with SBI Holdings.
+
+## Circle, Coinbase and Ripple — relationship edges kept separate
+
+- Circle's September 16 Arc mainnet announcement names SBI Group as a founding validator. Circle says Arc gas is paid in USDC; SBI's own statement links the validator role to its USDC distribution and JPYSC work. This is direct SBI Group–Circle/Arc participation, not evidence of XRP settlement, collateral or purchases.
+  https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet
+- Ripple and Coinbase's October 28 announcement made RLUSD available on Coinbase Prime, Exchange and Retail, with deposits/withdrawals across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as forthcoming, not already live. Ripple said it would provide RLUSD liquidity on Base. This is a direct Ripple–Coinbase RLUSD distribution relationship, not proof that XRP itself is Coinbase collateral or that RLUSD distribution creates XRP spot demand.
+  https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+- SBI Group's Circle/Arc validator, SBI Shinsei Trust's JPYSC issuance, SBI VC Trade's stablecoin distribution, SBI Holdings' Evernorth equity, and SBI/Ripple historical payments or investment relationships remain distinct edges. Do not collapse them into a single “SBI uses XRP” claim.
+
+## Exact phrases and identity gates
+
+- **ASK Coin:** no primary XRP/XRPL deployment or issuer link verified. Permission Coin's ASK remains a separate Base/Polygon candidate; do not label it an XRP token without a contract and issuer match.
+- **“actual capital”:** not an issuer/regulator-defined XRP metric. Use the capital waterfall above.
+- **“SBIC, ChatGPT SBIC”:** no primary evidence of a formal OpenAI partnership. Regional SBIC training is not partnership evidence.
+- **Camilla/Kamilah Stevenson:** first-party YouTube channel ownership remains unverified. No videos were attributed or inventoried. Do not merge same-name candidates or third-party directory listings.
+
+## XRP prediction and ingestion status
+
+- 47 source definitions: 43 hourly, two weekly CFTC sources and two excluded non-commercial XRPL node sources; 45 scheduled sources.
+- The allowlisted collector, Bybit spot ticker/order-book adapter, SHA-256 raw-source receipt/hash-chain prototype, point-in-time SQLite feature store, event timeline, four deterministic baselines, chronological walk-forward purge/embargo, calibration and PSI drift diagnostics are implemented on the integration branch.
+- Bybit live endpoint execution remains unverified; its adapter tests use mocked responses.
+- The scheduled XRP ingestion workflow is on integration, not main. No main-branch scheduled ingestion run is verified. GitHub Actions artifacts/cache have finite retention and are not WORM.
+- The event registry contains curated events but zero raw publisher hashes for the outstanding entries. Web search/page excerpts in this run were not captured as byte-exact RawReceiptArchive payloads and are model-ineligible.
+- Production gaps: independent WORM/trusted timestamp anchoring; replayable historical data; synchronized spot/L2/derivatives/exchange-flow/collateral series; production evaluator signing key; independent shadow outcomes; candidate-model superiority and measured out-of-sample lift.
+- Nine-platform map: only ChatGPT/GitHub authentication and data flow are tested; connector permissions are overprivileged (admin/maintain/push/pull/triage). Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not verified as live collaborators in this run. No cross-platform data transfer occurred.
+- **Forecast status: NOT_ISSUED.** No directional forecast, paper trade, funds transfer or real-money action.
+
+## PR backlog, security blockers and next action
+
+- **#1661:** sole consolidated V3/XRP integration PR; active, draft, mergeable, 1,063 files, zero formal reviews/approvals. Not merge-ready.
+- **#1660:** partial superseded-source candidate; 32 differing blobs remain to reconcile.
+- **#1643:** preserve nine differing blobs before supersession.
+- **#1640:** preserve 46 differing blobs before supersession.
+- **#1642:** seven differing paths; unique prediction-gate work to preserve.
+- **#1653 and #1655:** unique graph/structural work; preserve.
+- **#1659:** unique local Llama/Termux integration work; preserve. No source PR was closed.
+
+Merge blockers:
+1. #1661 is draft and has no independent approving reviews.
+2. Main branch-protection endpoint remains inaccessible through the connector (HTTP 403); visible fallback ruleset ID 10863829 is disabled. Required protections are not verified.
+3. GitHub connector permissions exceed least privilege.
+4. GitHub Pages automatically publishes after main pushes; publication authorization is not established.
+5. Three legacy manual Groq/write workflows remain on main; integration quarantines them. No workflow was dispatched.
+6. The historical .config/gh/hosts.yml path was found on 17 affected open-PR branch tips in Run48; it is absent from current main/integration trees. No file contents were read; provider-side OAuth revocation remains unverified.
+7. The 49 changed workflow files have received targeted safety review; the 1,014 other changed paths still require semantic review as one integrated product.
+
+**Next concrete action:** continue semantic review of Barrot V3 runtime, action execution, approval gates, Termux delivery, XRP collector, raw receipt archive, feature store, walk-forward evaluator and forecast ledger. Obtain independent review and resolve branch-protection, least-privilege, credential-owner revocation and Pages-publication authority. Merge #1661 only after every stated gate passes; then fetch main, verify the merge commit and run main CI. Do not close source PRs until each exact successor blob is verified on main.
+
+**No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, force-push, reset, clean, stash or discard occurred.**
+
+---
+
 # Run57 — 2026-11-12T13:11:31Z — exact-head CI, market refresh and workflow safety
 
 ## Repository and exact-head verification — VERIFIED
