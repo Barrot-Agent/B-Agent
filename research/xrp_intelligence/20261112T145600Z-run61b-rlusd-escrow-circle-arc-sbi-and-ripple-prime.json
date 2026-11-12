@@ -1,0 +1,356 @@
+{
+  "run": "Run61B",
+  "captured_at_utc": "2026-11-12T14:56:00Z",
+  "purpose": "Supplement Run61 with primary institutional, stablecoin, escrow and payment-rail evidence.",
+  "mission": {
+    "priority": 1,
+    "foundation": "Barrot V3 execution/orchestration/safety/verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "rlUSD": {
+    "issuer": "Standard Custody & Trust Company, LLC, a Ripple subsidiary and NYDFS limited-purpose trust company",
+    "onchain_snapshot_utc": "2026-11-12T10:48:00Z",
+    "direct_onchain_supply": {
+      "total": 2707588257,
+      "xrpl": 885245927,
+      "ethereum": 1806237715,
+      "base": 16104076,
+      "optimism": 143,
+      "ink": 139,
+      "unichain": 136,
+      "xrpl_evm_sidechain": 121
+    },
+    "defillama_comparison": {
+      "total": 2727953749,
+      "xrpl": 905240927,
+      "ethereum": 1806608328,
+      "base": 16104076,
+      "optimism": 143,
+      "ink": 139,
+      "unichain": 136
+    },
+    "difference_defillama_minus_direct": 20365492,
+    "issuer_transparency": {
+      "as_of": "2026-11-05",
+      "circulating_usd": 2632900000,
+      "reserve_funds_usd": 2748000000,
+      "coverage_percent": 104.37,
+      "classification": "issuer-published balance; not the latest CPA attestation report"
+    },
+    "latest_cpa_attestation": {
+      "report_dates": [
+        "2026-09-21",
+        "2026-09-30"
+      ],
+      "signed": "2026-10-26",
+      "outstanding_sep21": 2425816183,
+      "reserve_sep21_usd": 2558148227,
+      "outstanding_sep30": 2399995528,
+      "reserve_sep30_usd": 2524008274,
+      "coverage_sep30_percent": 105.17,
+      "accountant": "Deloitte & Touche LLP per Ripple transparency page",
+      "reserve_segregation": "segregated from issuer proprietary assets",
+      "eligible_asset_types": [
+        "US Treasury bills with 3 months or less to maturity",
+        "overnight reverse repurchase agreements collateralized by US Treasuries",
+        "government money-market funds",
+        "US bank deposits at FDIC-insured institutions or custodians approved by NYDFS"
+      ]
+    },
+    "issuer_account_controls": {
+      "clawback_enabled": true,
+      "global_freeze_active": false,
+      "no_freeze_flag": false,
+      "individual_freeze_capability": true,
+      "require_auth": false,
+      "master_key_disabled": true,
+      "deposit_auth": true,
+      "destination_tag_required": true,
+      "disallow_incoming_xrp": true,
+      "default_ripple": true,
+      "transfer_fee_percent": 0
+    },
+    "xrpl_distribution": {
+      "trust_lines": 102482,
+      "holders_with_positive_balance": 68052,
+      "snapshot_utc": "2026-11-11T11:59:00Z"
+    },
+    "xrpl_dex": {
+      "xrp_rlusd_amm_pool_xrp": 2016067,
+      "xrp_rlusd_amm_pool_rlusd": 2122377,
+      "amm_fee_percent": 0.315,
+      "rlusd_usdc_mid": 1,
+      "rlusd_usdc_spread_basis_points": 1,
+      "rlusd_usdc_depth_within_2pct": {
+        "bid_usdc": 372265,
+        "ask_usdc": 656385
+      },
+      "large_issuer_payments": "No issuer payment >=100,000 RLUSD found in the latest 100 issuer account transactions; this does not establish zero payments below the threshold or outside that page."
+    },
+    "quality_notes": [
+      "Direct chain reads and DefiLlama disagree by 20.37M RLUSD, mainly on XRPL; preserve both rather than average.",
+      "Issuer transparency balances are as of Nov 5; latest CPA report listed is Sep 30 and signed Oct 26. Do not label the Nov 5 balance as independently attested.",
+      "StableRadar is a prototype with partly live and partly reference data; use the Ripple issuer transparency page and signed PDF for reserve claims.",
+      "RLUSD supply, reserve balances and RLUSD collateral are not XRP demand or XRP collateral."
+    ]
+  },
+  "ripple_institutional": {
+    "ripple_prime_rwa_perps": {
+      "announcement_date": "2026-10-15",
+      "status": "launched",
+      "markets": "100+ reference markets across equities, indices, ETFs, metals, energy and FX",
+      "institutional_client_named": "Virtu",
+      "venue": "Trade.xyz perpetual contracts on Hyperliquid",
+      "model": "Ripple Prime acts as principal; clients can cross-margin exposures against other Ripple Prime asset classes",
+      "collateral": "RLUSD explicitly accepted as collateral",
+      "license": "CIV BVI license",
+      "xrp_collateral": "not stated; do not infer XRP collateral"
+    },
+    "ripple_coinbase_rlusd": {
+      "announcement_date": "2026-10-28",
+      "status": "RLUSD live on Coinbase Prime, Coinbase Exchange and Coinbase Retail",
+      "networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "conversion": "1:1 conversion from USD and other supported USD-denominated stablecoins",
+      "future": "Coinbase Global Exchange availability including RLUSD collateral support to follow; not verified live",
+      "xrp_collateral": "not stated"
+    },
+    "ripple_robinhood": {
+      "announcement_date": "2026-10-27",
+      "status": "strategic partnership",
+      "live": "RLUSD on Robinhood Chain and Bitstamp by Robinhood",
+      "xrpl": "Robinhood intends to use RLUSD on XRPL for institutional settlement",
+      "treasury": "Ripple Treasury integration for cash/liquidity management, forecasting, payments, risk and intercompany netting",
+      "prime": "Ripple Prime provides Bitstamp by Robinhood lending and margin financing across roughly 20 digital assets and spot access; perpetual futures planned later in 2026",
+      "xrp_demand": "XRPL institutional settlement is not proof that XRP is the settlement asset in every flow"
+    },
+    "ripple_occ_trust_bank": {
+      "approval_date": "2026-10-26",
+      "status": "final OCC approval to establish Ripple National Trust Bank",
+      "approved_scope": [
+        "manage segregated RLUSD reserves",
+        "act as collateral trustee for RLUSD reserves",
+        "provide fiduciary digital-asset custody upon opening"
+      ],
+      "issuer": "RLUSD continues to be issued by Standard Custody & Trust Company, NYDFS limited-purpose trust company",
+      "reserve_custodian": "BNY is named by Ripple as primary reserve custodian",
+      "distinction": "final charter approval is not evidence that the national trust bank has opened or begun operating; not a commercial deposit bank"
+    },
+    "standard_chartered_lmax": {
+      "custody": "RLUSD custody on XRPL is live through Standard Chartered's DIFC branch regulated by DFSA",
+      "lmax_collateral_mirroring": "planned; subject to documentation, testing, regulatory requirements and internal approvals"
+    }
+  },
+  "circle_arc": {
+    "mainnet_launch": "2026-09-16",
+    "network": "Arc, Circle's independent Layer-1 public blockchain",
+    "native_fee_asset": "USDC",
+    "finality_claim": "sub-second deterministic finality, per Circle",
+    "privacy": "opt-in privacy in development for network-wide release",
+    "payments": "Circle Payments Network integrated natively; Circle StableFX offers 24/7 cross-currency settlement",
+    "validators": [
+      "Circle",
+      "BlackRock",
+      "DTCC",
+      "Galaxy",
+      "ICE",
+      "Mastercard",
+      "MoneyGram",
+      "SBI Group",
+      "Standard Chartered",
+      "Sumitomo Corporation",
+      "Visa",
+      "Worldpay"
+    ],
+    "exchanges_in_day_one_ecosystem": [
+      "Binance",
+      "Coinbase",
+      "Kraken",
+      "OKX",
+      "Upbit",
+      "Bybit",
+      "others"
+    ],
+    "local_stablecoins_active_or_onboarding_to_stablefx": [
+      "USDC",
+      "EURC",
+      "AUDD",
+      "AUDF",
+      "BRLA",
+      "CADD",
+      "CHFAU",
+      "EURAU",
+      "GBPA",
+      "JPYC",
+      "KRW1",
+      "MXNB",
+      "QCAD",
+      "SEKAU",
+      "TRYB",
+      "wARS",
+      "wBRL",
+      "wCLP",
+      "wCOP",
+      "wMXN",
+      "wPEN",
+      "ZARU"
+    ],
+    "jpySC_nuance": "SBI's CEO said SBI expects to leverage both USDC and JPYSC in its Arc collaboration, but JPYSC was not on Circle's enumerated active/onboarding StableFX list in the launch release. No live JPYSC-on-Arc integration verified.",
+    "agentic_claim": "Circle says USDC accounts for 98.8% of agent-driven x402 transaction volume; company claim, not independently audited here.",
+    "implication": "Arc is a parallel stablecoin/payment/financial-market rail. SBI Group and Standard Chartered participate in both Arc and Ripple-related initiatives; participation is not exclusive and Arc is not an XRP Ledger deployment."
+  },
+  "circle_q3_2026": {
+    "report_date": "2026-11-04",
+    "average_usdc_circulation_usd": 73300000000,
+    "average_usdc_circulation_yoy_percent": 8,
+    "q3_usdc_onchain_transaction_volume_usd": 13900000000000,
+    "q3_onchain_volume_yoy_percent": 49,
+    "total_revenue_and_reserve_income_usd": 865000000,
+    "reserve_income_usd": 658000000,
+    "reserve_income_yoy_percent": -8,
+    "other_revenue_usd": 207000000,
+    "arc_token_presale_revenue_usd": 182000000,
+    "net_income_usd": 226000000,
+    "adjusted_ebitda_usd": 317000000,
+    "cpn_annualized_tpv_usd": 41300000000,
+    "tazapay_acquisition": "definitive agreement; expected to close in 2027 subject to regulatory approval; Tazapay reports $25B+ annualized volume, 60+ partners and payout rails in 100+ markets",
+    "other_distribution": "Visa Direct stablecoin prefunding moved from pilots to commercial deployment with USDC via Inyo Global; Samsung Wallet USDC remittance support to bank accounts in 60+ countries",
+    "caveat": "Circle's other revenue includes $182M ARC token presale; adjusted EBITDA growth is not solely recurring USDC reserve economics. Reserve income declined 8% despite 8% higher average USDC circulation, with a 61bp lower reserve return rate."
+  },
+  "sbi": {
+    "JPYSC_issuer": "SBI Shinsei Trust Bank",
+    "JPYSC_distributor": "SBI VC Trade",
+    "JPYSC_co_developer": "Startale Group",
+    "JPYSC_usage_as_of_2026_11_02": {
+      "handling_balance_jpy": 30000000000,
+      "lending_balance_jpy": 10000000000,
+      "classification": "SBI VC Trade company-reported balances; not XRP flows"
+    },
+    "tokenized_mmf_mou": {
+      "date": "2026-10-27",
+      "parties": [
+        "SBI Holdings",
+        "Startale Group",
+        "BlackRock Financial Management",
+        "BlackRock Japan"
+      ],
+      "status": "basic agreement/MOU to link tokenized money-market funds and JPYSC; not production integration"
+    },
+    "arc": {
+      "role": "SBI Group named as an Arc founding validator and stated it intends to leverage USDC and JPYSC in APAC infrastructure",
+      "live_JPYSC_on_Arc": false
+    },
+    "relationship_graph": "SBI Group is simultaneously connected to Ripple (historical equity and SBI Ripple Asia/Evernorth relationships), Circle (USDC distribution and Arc founding validator), and Startale/BlackRock JPYSC-tokenized MMF work. These are parallel strategic relationships, not proof of exclusive XRP alignment."
+  },
+  "ripple_escrow": {
+    "ledger": 108270319,
+    "snapshot_utc": "2026-11-11T23:32:00Z",
+    "next_unlock_utc": "2026-12-01T00:00:00Z",
+    "next_unlock_xrp": 1000000000,
+    "november_release_xrp": 1000000000,
+    "november_relocked_xrp": 700000000,
+    "november_net_outside_escrow_xrp": 300000000,
+    "current_ripple_escrow_xrp": 31100000000,
+    "escrow_objects": 99,
+    "owner_accounts": 8,
+    "twelve_month_releases_xrp": 12000000000,
+    "twelve_month_relocked_xrp": 8400000000,
+    "twelve_month_net_outside_escrow_xrp": 3600000000,
+    "twelve_month_relock_percent": 70,
+    "source_method": "XRP Insights says it queries rippled account_objects/account_tx on a pinned validated ledger, counting Ripple-owned escrow objects once.",
+    "interpretation": "Unlock/relock data describes ledger time-lock movement, not sales, exchange inflows, free float or immediate market supply."
+  },
+  "source_independence": {
+    "direct_chain_reads": "StableRadar's live supply page reads XRPL gateway_balances and EVM totalSupply; it also displays a separate DefiLlama column. These are not identical datasets.",
+    "issuer_report": "Ripple transparency page reports Nov 5 balances; signed CPA report covers Sep 21 and Sep 30.",
+    "official_corporate_announcements": "Circle, Ripple and SBI releases establish announced product/partner status, not independent usage volumes.",
+    "company_claims": "Circle's agent volume and Q3 operating metrics are issuer disclosures.",
+    "raw_receipts": "No Barrot RawReceiptArchive receipts were created for these web observations."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "raw_source_sha256": null,
+  "immutable_receipt_created": false,
+  "model_eligible": false,
+  "sources": [
+    {
+      "name": "Ripple stablecoin transparency",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "ref": "turn605257view0",
+      "date": "2026-11-05"
+    },
+    {
+      "name": "Signed September 2026 RLUSD reserve attestation",
+      "url": "https://cdn.sanity.io/files/ior4a5y3/production/850ed07e8f0556b3b1c1d43eb2a0fc4ef6538ce1.pdf/RLUSD%20Attestation%20Report%20%28Sep%29_Final%20Signed.pdf",
+      "ref": "turn377429view0",
+      "report_dates": [
+        "2026-09-21",
+        "2026-09-30"
+      ],
+      "signed": "2026-10-26"
+    },
+    {
+      "name": "StableRadar live RLUSD supply and issuer controls",
+      "url": "https://stableradar.com/coin/rlusd",
+      "ref": "turn249210view1",
+      "updated": "2026-11-12T10:48:00Z"
+    },
+    {
+      "name": "Ripple Prime RWA perpetual swaps",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "ref": "turn448234view0",
+      "date": "2026-10-15"
+    },
+    {
+      "name": "Ripple/Coinbase RLUSD distribution",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "ref": "turn669964view0",
+      "date": "2026-10-28"
+    },
+    {
+      "name": "Ripple/Robinhood institutional and treasury partnership",
+      "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "ref": "turn882466view4",
+      "date": "2026-10-27"
+    },
+    {
+      "name": "Ripple National Trust Bank final OCC approval",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "ref": "turn669964view1",
+      "date": "2026-10-26"
+    },
+    {
+      "name": "Circle Arc public mainnet launch",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "ref": "turn882466view0",
+      "date": "2026-09-16"
+    },
+    {
+      "name": "Circle Q3 2026 results",
+      "url": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results",
+      "ref": "turn937128view0",
+      "date": "2026-11-04"
+    },
+    {
+      "name": "SBI VC Trade JPYSC handling/lending balances",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "ref": "turn923540search10",
+      "date": "2026-11-02"
+    },
+    {
+      "name": "SBI/Startale/BlackRock JPYSC-tokenized MMF MOU",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "ref": "turn923540search15",
+      "date": "2026-10-27"
+    },
+    {
+      "name": "XRP escrow schedule and ledger history",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "ref": "turn580611search0",
+      "ledger": 108270319,
+      "date": "2026-11-11T23:32:00Z"
+    }
+  ]
+}
