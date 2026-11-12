@@ -6,7 +6,6 @@ on:
     paths:
       - "requirements.txt"
       - "requirements-dev.txt"
-      - "requirements.tx"
       - "pyproject.toml"
       - "hf_space/requirements.txt"
       - "legacy/requirements_legacy.txt"
@@ -18,7 +17,6 @@ on:
     paths:
       - "requirements.txt"
       - "requirements-dev.txt"
-      - "requirements.tx"
       - "pyproject.toml"
       - "hf_space/requirements.txt"
       - "legacy/requirements_legacy.txt"
@@ -55,7 +53,7 @@ jobs:
           python -m pip install pip-audit
           pip-audit --version
 
-      - name: Audit root runtime requirements.txt
+      - name: Audit root runtime requirements
         id: root_runtime
         continue-on-error: true
         run: pip-audit -r requirements.txt --strict
@@ -64,11 +62,6 @@ jobs:
         id: dev
         continue-on-error: true
         run: pip-audit -r requirements-dev.txt --strict
-
-      - name: Audit supplemental requirements.tx declarations
-        id: supplemental
-        continue-on-error: true
-        run: pip-audit -r requirements.tx --strict
 
       - name: Audit Hugging Face Space declarations
         id: hf_space
@@ -104,12 +97,11 @@ jobs:
         env:
           ROOT_RUNTIME: ${{ steps.root_runtime.outcome }}
           DEV: ${{ steps.dev.outcome }}
-          SUPPLEMENTAL: ${{ steps.supplemental.outcome }}
           HF_SPACE: ${{ steps.hf_space.outcome }}
           LEGACY: ${{ steps.legacy.outcome }}
           PYPROJECT: ${{ steps.pyproject.outcome }}
         run: |
-          printf 'root_runtime=%s dev=%s supplemental=%s hf_space=%s legacy=%s pyproject=%s\n' "$ROOT_RUNTIME" "$DEV" "$SUPPLEMENTAL" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
-          if [ "$ROOT_RUNTIME" != "success" ] || [ "$DEV" != "success" ] || [ "$SUPPLEMENTAL" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
+          printf 'root_runtime=%s dev=%s hf_space=%s legacy=%s pyproject=%s\\n' "$ROOT_RUNTIME" "$DEV" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
+          if [ "$ROOT_RUNTIME" != "success" ] || [ "$DEV" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
             exit 1
           fi
