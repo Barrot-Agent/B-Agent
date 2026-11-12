@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T20:10:30Z",
-  "last_verified_at_utc": "2026-11-12T20:10:30Z",
+  "captured_at_utc": "2026-11-12T20:20:00Z",
+  "last_verified_at_utc": "2026-11-12T20:20:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-  "observed_integration_head_before_map_commit": "a56d5ca900d67babb138110009f5c06fb41e9847",
+  "observed_integration_head_before_map_commit": "a42fd66f2acc71bf73122eee0744316791e6e5f3",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
@@ -13,14 +13,14 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "clean",
-    "ahead_by": 2150,
+    "ahead_by": 2152,
     "behind_by": 0,
     "changed_files": 1075,
     "workflow_files": 50,
     "other_changed_paths": 1025,
-    "head_sha": "a56d5ca900d67babb138110009f5c06fb41e9847",
+    "head_sha": "a42fd66f2acc71bf73122eee0744316791e6e5f3",
     "base_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "commits": 2150,
+    "commits": 2152,
     "additions": 298376,
     "deletions": 5123,
     "formal_approvals": 0,
@@ -30,7 +30,7 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-12T20:10:30Z",
+    "updated_at": "2026-11-12T20:20:00Z",
     "classification": "blocked",
     "note": "Run64 head a1d46004 failed five tests: one event hypothesis conflict and four stale map snapshot fields. Run64b aligns spot/ETF hypotheses and synchronizes map fields; exact-head CI pending."
   },
@@ -46,7 +46,7 @@
     "ahead_by": 1963,
     "commits": 1963,
     "changed_files": 972,
-    "disposition": "SUPERSEDED_SOURCE_CANDIDATE; RETAINED_UNTIL_SUCCESSOR_MERGE; all 972 changed paths represented in #1662; do not close before successor merge and exact main-file verification.",
+    "disposition": "SUPERSEDED_SOURCE_CANDIDATE; RETAINED_UNTIL_SUCCESSOR_MERGE (retain until successor merge); all 972 changed paths represented in #1662; do not close before exact main-file verification.",
     "path_reconciliation": {
       "represented_in_1661": 972,
       "identical_blobs": 942,
@@ -635,9 +635,9 @@
   },
   "repository_state": {
     "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "integration_head_before_current_map_commit": "a56d5ca900d67babb138110009f5c06fb41e9847",
+    "integration_head_before_current_map_commit": "a42fd66f2acc71bf73122eee0744316791e6e5f3",
     "integration_pr": 1662,
-    "integration_ahead_by": 2150,
+    "integration_ahead_by": 2152,
     "integration_behind_by": 0,
     "changed_files": 1075,
     "workflow_files_changed": 50,
@@ -1143,7 +1143,7 @@
       "installed_wheel_primary_mission_verified": true
     },
     "dependency_audit": {
-      "run_id": 43293323042,
+      "run_id": 43297986270,
       "job_id": 131315360664,
       "passed": true,
       "conclusion": "success",
@@ -1151,7 +1151,7 @@
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43293322963,
+      "run_id": 43297986034,
       "job_id": 131315359980,
       "passed": true,
       "conclusion": "success",
@@ -2649,9 +2649,25 @@
       "failure_classification": "Four map/test assertion mismatches; 3,536 tests passed; no runtime prediction-engine failure identified."
     },
     "latest_test_correction_commit": {
-      "head_sha": "a56d5ca900d67babb138110009f5c06fb41e9847",
+      "head_sha": "a42fd66f2acc71bf73122eee0744316791e6e5f3",
       "status": "pending",
-      "message": "test-only correction preserves Run20 historical state and aligns current snapshot assertions."
+      "message": "test-only corrections preserve Run20 historical branch and use correct current-map spot fields."
+    },
+    "latest_current_head_attempt": {
+      "head_sha": "a43cdfd7cb3fdab5fb8be031415cf76bd5a81237",
+      "run_id": 43297986075,
+      "conclusion": "failure",
+      "passed": 3537,
+      "failed": 3,
+      "subtests": 8,
+      "coverage_percent": 61.55,
+      "duration_seconds": 94.9,
+      "failing_tests": [
+        "test_superseded_pr_1660_is_retained_until_successor_merge",
+        "test_run20_snapshot_is_append_only_and_tracks_current_integration_head",
+        "test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates"
+      ],
+      "failure_classification": "Three map/test assertion mismatches: expected disposition wording, historical Run20 branch assertion, and a field name in the new test. No runtime prediction-engine failure identified."
     }
   },
   "workflow_safety_audit": {
@@ -19976,7 +19992,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T20:10:30Z",
+  "updated_at_utc": "2026-11-12T20:20:00Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -22479,7 +22495,7 @@
     "formal_reviews": 0,
     "approvals": 0,
     "review_threads": 0,
-    "head_sha": "a56d5ca900d67babb138110009f5c06fb41e9847"
+    "head_sha": "a42fd66f2acc71bf73122eee0744316791e6e5f3"
   },
   "latest_market_refresh_run42": {
     "retrieved_at_utc_approx": "2026-11-12T02:29-02:31Z",
@@ -27597,10 +27613,10 @@
       "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
       "integration_head": "e72541f2795f95dc896952f20ed42cc061e2f569",
       "integration_pr": 1662,
-      "ahead_by": 2150,
+      "ahead_by": 2152,
       "behind_by": 0,
       "changed_files": 1075,
-      "latest_head_before_map_update": "a56d5ca900d67babb138110009f5c06fb41e9847"
+      "latest_head_before_map_update": "a42fd66f2acc71bf73122eee0744316791e6e5f3"
     },
     "ci": {
       "successful_code_head": "07aa7959b42f04832e1f328d1da86f392e8e54d8",
@@ -27618,8 +27634,12 @@
       "corrective_head_passed": 3536,
       "corrective_head_failed": 4,
       "corrective_head_run": 43296380070,
-      "test_correction_commit": "a56d5ca900d67babb138110009f5c06fb41e9847",
-      "test_correction_status": "CI pending; test assertions updated, not yet verified."
+      "test_correction_commit": "a42fd66f2acc71bf73122eee0744316791e6e5f3",
+      "test_correction_status": "CI pending; test assertions updated; no full-suite claim until exact-head run completes.",
+      "latest_head": "a43cdfd7cb3fdab5fb8be031415cf76bd5a81237",
+      "latest_head_run": 43297986075,
+      "latest_head_passed": 3537,
+      "latest_head_failed": 3
     },
     "prediction": {
       "event_registry_events": 70,
@@ -27759,7 +27779,8 @@
           "Hourly snapshot, up to about 65 minutes old.",
           "Displayed resting orders can be cancelled or moved.",
           "Full-depth venues cover farther bands; OKX/Kraken contribute near-price depth only.",
-          "Not a forecast or executable depth guarantee."
+          "Not a forecast or executable depth guarantee.",
+          "At the 20:18 UTC research capture, the latest visible 19:00 snapshot was about 78 minutes old; stale for execution."
         ],
         "source_url": "https://fuelmaps.io/order-book/"
       },
