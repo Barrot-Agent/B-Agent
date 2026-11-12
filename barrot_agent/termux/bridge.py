@@ -143,4 +143,3 @@ class TermuxBridge:
         if not isinstance(content, bytes):
             return TermuxDropResult(False, str(path), "Binary content must be bytes.")
         return self._create_only(path=path, content=content)
-}
