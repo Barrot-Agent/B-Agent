@@ -1,8 +1,8 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run71b-2026-11-12",
-  "captured_at_utc": "2026-11-12T23:26:04.178Z",
+  "registry_version": "run71c-2026-11-12",
+  "captured_at_utc": "2026-11-12T23:31:57.440Z",
   "source_receipt_status": "73 of 73 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All Run71 additions are research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
@@ -2986,13 +2986,13 @@
     },
     {
       "event_id": "evernorth-2026-11-09-capital-cash-vs-in-kind",
-      "event_type": "corporate_finance",
+      "event_type": "corporate",
       "event_name": "Evernorth prospectus separates cash proceeds, XRP in-kind contributions, debt and resale capacity",
       "hypothesis_id": "evernorth-cash-in-kind-debt-vs-lending",
       "domain": "capital_flows",
-      "hypothesis": "Evernorth's capital stack must be decomposed into cash actually received, XRP contributed in kind, debt, secondary resales and conditional equity facilities before measuring capital deployed to XRP.",
-      "counter_hypothesis": "Gross cash proceeds before expenses and XRP in-kind contributions are not interchangeable. Debt is not equity; resale shares, ELOC capacity and unexercised warrants are not current issuer cash. The prospectus does not disclose a 400 million XRP allocation to XRPL native lending.",
-      "claim": "Evernorth's November 9, 2026 Form 424B3 reports approximately $272.6 million gross cash proceeds at the business-combination closing before transaction expenses ($224.6 million of private placements plus $48.0 million of SPAC trust cash after redemptions), alongside 388,910,554 XRP contributed in kind. It separately reports $30 million net proceeds before expenses from convertible notes, which are debt. The filing registers 73,688,162 shares for resale and states that Evernorth receives no proceeds from selling-securityholder resales, apart from any cash received if 239,653 sponsor warrants are exercised. The 5,218,935-share ELOC is conditional issuance capacity, not cash already received.",
+      "hypothesis": "Evernorth's capital stack and deployment strategy must be decomposed into cash actually received, XRP contributed in kind, debt, secondary resales, conditional equity facilities and actual yield deployment.",
+      "counter_hypothesis": "Gross cash proceeds before expenses and XRP in-kind contributions are not interchangeable. Debt is not equity; resale shares, ELOC capacity and unexercised warrants are not current issuer cash. The filing does not disclose a 400 million XRP allocation to the XRPL-native LendingProtocol; the inactive XLS-66 amendment does not rule out other counterparties or DeFi protocols.",
+      "claim": "Evernorth's November 9, 2026 Form 424B3 reports approximately $272.6 million gross cash proceeds at the business-combination closing before transaction expenses ($224.6 million of private placements plus $48.0 million released from the SPAC trust after redemptions), alongside 388,910,554 XRP contributed in kind. The filing separately reports that $214.1 million of private-placement cash was used to purchase 84,365,876 XRP at an average price of approximately $2.53657; this is a use of the cash proceeds, not an additional capital raise. The in-kind contributions include 211,319,096.061435 XRP through the Arrington XRP Capital Fund Series C subscription, 50,000,000 XRP from a Ripple-affiliated trust, 600,000 XRP in advance funding, 200,000 XRP in delayed funding and 126,791,458 XRP contributed by Ripple. The filing states yield strategies commenced following the Closing and describes traditional lending to qualified institutional counterparties, covered calls, basis trades and DeFi lending/AMM strategies; it does not quantify deployed XRP or identify a specific protocol. It separately reports $30.0 million net proceeds before expenses from convertible senior PIK notes (debt), 73,688,162 shares registered for resale (no issuer proceeds from seller resales, apart from any sponsor-warrant exercise), a 5,218,935-share ELOC that the company is not obligated to draw, and 239,653 sponsor warrants at $11.50. The filing defines SBI as SBI Holdings, Inc.; four SBI-controlled stockholders are identified, and the SBI Group Ownership Percentage was approximately 39.9% as of October 9, 2026. The four entities are SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.; the filing lists 9,431,914 Pubco Class A shares held by those entities, with additional Class C shares convertible into Class A.",
       "source_id": "sec_evernorth_424b3_20261109",
       "source_name": "U.S. SEC Form 424B3 — Evernorth Holdings, Inc.",
       "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
@@ -3007,17 +3007,27 @@
       "raw_source_sha256": null,
       "assumptions": [
         "The filing date is known but the exact publication time is not; UTC midnight is a date-ordering placeholder.",
-        "The $272.6 million cash figure is gross and before transaction expenses.",
+        "The $272.6 million cash figure is gross and before transaction expenses; fees reduce available cash.",
         "The 388,910,554 XRP contribution is an in-kind asset contribution, not cash.",
-        "Convertible-note proceeds are debt; resale registration and ELOC capacity are not equivalent to completed issuer cash receipts."
+        "The 84,365,876 XRP purchase is funded from the $214.1 million cash proceeds and must not be double-counted as new capital.",
+        "The $30 million convertible PIK notes are debt; ELOC capacity, resale registration and unexercised warrants are not cash already received.",
+        "The reported 39.9% SBI Group Ownership Percentage is a voting-ownership measure under the filing's definitions and should not be treated as a simple economic ownership percentage of every security class."
       ],
       "falsification_conditions": [
-        "A later SEC amendment or closing statement revises the cash, in-kind XRP, note, resale or ELOC amounts.",
-        "A subsequent audited filing documents a specific 400 million XRP commitment to native XRPL lending."
+        "A later SEC amendment or closing statement revises the cash, in-kind XRP, note, resale, ELOC, share-ownership or yield-deployment disclosures.",
+        "A later filing identifies a specific 400 million XRP allocation to the XRPL-native LendingProtocol or provides an audited deployed amount."
       ],
       "related_entities": [
         "Evernorth Holdings, Inc.",
+        "SBI Holdings, Inc.",
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc.",
         "Ripple Labs",
+        "RippleWorks, Inc.",
+        "Arrington XRP Capital Fund, LP",
+        "Larsen Lam Children's Remainder Trust",
         "Cantor Fitzgerald",
         "CF Principal Investments LLC",
         "SEC",
@@ -3027,11 +3037,14 @@
         "actual-capital",
         "cash-proceeds",
         "in-kind-xrp",
+        "cash-purchased-xrp",
+        "yield-strategies-commenced",
         "convertible-debt",
         "resale-shares",
         "ELOC",
         "warrants",
-        "not-native-lending-proof"
+        "SBI-Holdings-ownership",
+        "not-400m-native-lending-proof"
       ]
     },
     {
@@ -3084,5 +3097,6 @@
   "run64b_note": "Corrects spot/ETF hypothesis group consistency and adds five primary-source identity/capital events; all records remain research-only.",
   "run64c_note": "Eight events appended with unique hypothesis_id values to avoid inconsistent scenario-group definitions: one current cross-venue spot refresh, SBI JPYSC balances, Circle Arc, Circle Q3 results, Coinbase trust charter, Ripple trust-bank approval, SBI/Ripple RLUSD Japan availability and the December 1 Ripple escrow schedule. Existing events and historical capture timestamps are preserved. No publisher bytes were archived; no event is model-eligible.",
   "run71_note": "Added Circle's primary-source confirmation that USDC has been native on XRPL mainnet since 2025-06-12. PNC's 2026-11-09 USDC incoming-payment pilot explicitly uses Ethereum. These are distinct rails; neither proves XRP bridge use or XRP demand. The new event has no raw receipt and remains model-ineligible.",
-  "run71b_note": "Added SEC primary-source capital decomposition for Evernorth and Flare's official FXRP deployment/backing statement. The 388.91M XRP in-kind contribution is not a 400M native-lending allocation; FXRP backing remains on XRPL. Both events lack raw receipts and remain model-ineligible."
+  "run71b_note": "Added SEC primary-source capital decomposition for Evernorth and Flare's official FXRP deployment/backing statement. The 388.91M XRP in-kind contribution is not a 400M native-lending allocation; FXRP backing remains on XRPL. Both events lack raw receipts and remain model-ineligible.",
+  "run71c_note": "Validated event types against the event-timeline allowlist. Evernorth's SEC filing confirms yield strategies commenced following Closing, but gives no deployed XRP amount or 400M allocation to XRPL-native XLS-66; it also defines SBI as SBI Holdings, Inc. with a 39.9% SBI Group Ownership Percentage. Flare's FXRP is a representation backed by XRP remaining on XRPL."
 }

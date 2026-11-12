@@ -3523,3 +3523,49 @@ DeFiLlama's current XRPL aggregate still reports approximately $964.65M stableco
 - “SBIC, ChatGPT SBIC”: Tokyo SBIC training activity, not an OpenAI partnership.
 
 The event registry now contains 73 curated events, zero raw publisher hashes and zero model-eligible events. Forecast status remains `NOT_ISSUED`. No video claim is admitted as a predictive feature or institutional fact without primary corroboration and a canonical receipt.
+
+
+---
+
+## Run71C — event-schema repair and Evernorth/SBI primary-source reconciliation — 2026-11-12T23:31:57.440Z
+
+### Exact-head CI failure and repair
+
+Exact head `1cbafe6837a8d0fa7934427fab56c61fde2de438` full-suite run https://github.com/Barrot-Agent/B-Agent/actions/runs/43328855667 completed with **3,523 passed, 17 failed, eight subtests**, 61.53% coverage. Core suite passed 723 tests. Dependency audit https://github.com/Barrot-Agent/B-Agent/actions/runs/43328855714 and fail-closed gate https://github.com/Barrot-Agent/B-Agent/actions/runs/43328855762 passed.
+
+The 17 failures reduce to two causes:
+- The new Evernorth event used `event_type=corporate_finance`, outside the event timeline's allowlist. The valid type is `corporate`; Flare's `collateral` type was already valid.
+- One assertion expected “not a 400 million XRP allocation,” while the record correctly said “does not disclose a 400 million XRP allocation.”
+
+Both are corrected in the next existing-branch commit. No runtime code was changed. The new head requires a fresh exact-head full-suite run; no prior test result is transferred.
+
+### Evernorth yield deployment — corrected nuance
+
+The November 9 SEC prospectus does more than describe a future idea: it says **yield strategies commenced following the October 9 closing**. It describes traditional XRP lending to qualified institutional counterparties, covered calls and basis trades, plus DeFi lending-protocol and AMM liquidity strategies. It also says DeFi opportunities would initially be limited, and the company did not anticipate material XRP-ecosystem deployment before Q4 2026. It does **not** quantify the amount deployed or name a specific native XRPL protocol.
+
+Therefore:
+- The video claim that Evernorth committed 400M XRP specifically to native XRPL lending is not substantiated by the filing.
+- The filing does establish that yield strategies began after closing and may include lending/DeFi activity.
+- The XRPL LendingProtocol/XLS-66 amendment remains below activation (22/35 versus 29), so that particular native protocol is not active. This does not rule out lending to external counterparties or other DeFi protocols.
+- The 388.91M XRP in-kind contribution is not itself proof that all of it was deployed into lending.
+
+### Evernorth actual-capital ledger and ownership graph
+
+The SEC filing provides a more exact decomposition:
+- $272.6M gross cash proceeds at closing before transaction expenses: $224.6M private placements plus $48.0M trust cash after redemptions.
+- 388,910,554 XRP contributed in kind.
+- $214.1M of private-placement cash was used to purchase 84,365,876 XRP at an average price of approximately $2.53657. This purchase is a use of the $214.1M cash, not a second capital raise.
+- The in-kind XRP components disclosed include 211,319,096.061435 XRP via the Arrington XRP Capital Fund Series C subscription, 50M XRP from a Ripple-affiliated trust, 600K XRP advance funding, 200K XRP delayed funding and 126,791,458 XRP contributed directly by Ripple.
+- $30M net proceeds before expenses from 4% convertible senior PIK notes issued October 12, 2026: debt, not equity.
+- 73,688,162 registered resale shares: no issuer proceeds from selling-securityholder resales, apart from potential sponsor-warrant exercise.
+- ELOC: up to 5,218,935 newly issued shares at the company's discretion; no obligation to draw.
+- Sponsor warrants: 239,653 at $11.50; cash only if exercised.
+- The prospectus states Evernorth held approximately 473M XRP as of October 9, 2026.
+
+The same SEC filing explicitly defines **“SBI” as SBI Holdings, Inc.** and defines the “SBI Stockholders” as four SBI-controlled entities: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. It reports the SBI Group Ownership Percentage at approximately **39.9% as of October 9, 2026**, and lists 9,431,914 Pubco Class A shares held by those four entities, with additional Class C shares convertible into Class A.
+
+This is a direct, material SBI Holdings–Evernorth equity relationship. It is not a relationship with SBIC East, SBIC Central or SBIC West. The filing also documents separate Ripple/RippleWorks capital contributions and ownership restrictions (Ripple Group 9.9%, RippleWorks-attributed 19.9%, SBI Group 39.9%). These percentages are governed by the filing's voting-ownership definitions and must not be summed as simple economic ownership or treated as current open-market XRP buying.
+
+Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+The event registry retains the SEC and Flare records as research-only: 73 curated events, zero raw source hashes, zero model-eligible events. Forecast status remains `NOT_ISSUED`.
