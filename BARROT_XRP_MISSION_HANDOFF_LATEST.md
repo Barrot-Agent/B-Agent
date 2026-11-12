@@ -2440,3 +2440,25 @@ No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle s
 [Run66 exact-head, market, identity and integration audit](research/xrp_intelligence/20261112T173006Z-run66-exact-head-ci-market-identity-and-integration-audit.md)
 
 Next action: complete semantic review of the 1,071-file integration diff, prioritizing Barrot V3 runtime, XRP ingestion, feature store, receipt archive, forecast ledger, public interfaces and workflow side effects; resolve branch-protection visibility and least-privilege access; then establish independent WORM anchoring and replayable history. Keep directional forecast issuance disabled until the independent-window, baseline-lift, calibration and shadow gates pass.
+
+
+## Run66B — Circle/Coinbase commercial economics and PNC rail (primary SEC filings)
+
+The September 30, 2026 SEC filings quantify the Circle–Coinbase relationship more clearly than general partnership announcements:
+
+- Circle's Q3 2026 Form 10-Q says Coinbase receives allocations based on USDC held on Coinbase after Circle's issuer retention, plus half of the remaining ecosystem-growth allocation after approved third-party participant amounts.
+- Circle reported $331.3M in distribution costs under its Coinbase agreements for Q3 2026 and $986.6M for the first nine months of 2026. Comparable prior-year amounts were $361.3M and $996.8M. The nine-month decrease was attributed to a lower Coinbase share of average USDC balances, more than offsetting higher reserve income.
+- Circle's reserve income represented 76.0% of Q3 revenue. Reserve income was $658M, down 8% year over year; average USDC circulation grew 8%, partly offsetting a 61-basis-point decline in reserve return rate. Q3 other revenue included $181.8M from the ARC token presale. Do not treat this presale revenue as recurring stablecoin economics.
+- Coinbase's Q3 2026 Form 10-Q says it renewed its Circle arrangement on the same terms and average USDC held in Coinbase products reached an all-time high. Coinbase reported $306.9M Q3 and $904.5M nine-month stablecoin revenue. Higher average USDC balances contributed $84.6M and $201.6M, while lower average interest rates reduced revenue by $52.8M and $166.2M. These Coinbase revenue figures are not assumed to equal Circle's distribution-cost figures; accounting definitions differ.
+- This is a material two-sided commercial dependency, not simply a token listing. Circle's distribution costs depend partly on Coinbase-held USDC; Coinbase's stablecoin revenue depends on USDC balances and reserve-rate economics.
+- On November 9, 2026, PNC and Coinbase announced a limited pilot for eligible corporate/institutional clients to receive USDC through Coinbase Payment APIs, automatically converted 1:1 into USD and deposited into PNC accounts. This is a USDC/Coinbase/PNC rail, not an XRP or XRPL payment pilot.
+- Coinbase's October 28 RLUSD announcement confirms RLUSD availability on Prime, Exchange and retail across XRPL, Base and Ethereum. Coinbase Global Exchange access and RLUSD collateral support were described as forthcoming, not live at launch.
+- SBI Group's Arc validator role and its USDC/JPYSC distribution relationships are parallel rails. These developments do not, by themselves, establish XRP bridge demand or native XRP collateral utilization.
+
+Primary sources:
+- Circle Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- Coinbase Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- Circle Q3 2026 results: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm
+- Coinbase RLUSD availability, October 28, 2026: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- Coinbase/PNC pilot, November 9, 2026: https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance
+- Reuters PNC pilot report, November 9, 2026: https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/
