@@ -1,0 +1,501 @@
+{
+  "schema_version": "barrot.xrp.run-evidence.v1",
+  "run_id": "run56",
+  "capture_window_start_utc": "2026-11-12T12:06:39Z",
+  "latest_publisher_snapshot_utc": "2026-11-12T11:50:00Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "verified_pre_update_head": "28fbdcfe276b825c7de83df5bba2cc017c0d26ea",
+    "commits_ahead": 2100,
+    "behind_main": 0,
+    "main_tree": {
+      "entries": 1388,
+      "blobs": 1288,
+      "workflow_files": 86,
+      "truncated": false
+    },
+    "integration_tree": {
+      "entries": 2315,
+      "blobs": 2206,
+      "workflow_files": 87,
+      "truncated": false
+    },
+    "pr_1661": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "changed_files": 1056,
+      "additions": 288608,
+      "deletions": 4392,
+      "commits_ahead": 2100,
+      "behind_main": 0,
+      "workflow_files": 49,
+      "other_paths": 1007,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    }
+  },
+  "ci_verified_on_pre_run56_head": {
+    "head_sha": "28fbdcfe276b825c7de83df5bba2cc017c0d26ea",
+    "full_ci_run": 43209033106,
+    "full_suite_job_id": 131151485326,
+    "tests_passed": 3507,
+    "tests_failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 61.35,
+    "duration_seconds": 94.53,
+    "wheel_build": "passed",
+    "installed_barrot_v3_xrp_mission_verification": "passed",
+    "dependency_audit_run": 43209033225,
+    "dependency_audit_groups": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run": 43209033094,
+    "fail_closed_gate": "passed; automatic merge disabled",
+    "exact_head_status": "verified on 28fbdcfe; not transferable to this Run56 docs-only successor"
+  },
+  "repository_review": {
+    "open_pr_count": 374,
+    "draft_count": 360,
+    "non_draft_count": 14,
+    "main_target_count": 366,
+    "other_base_count": 8,
+    "title_triage": {
+      "xrp_prediction_research": 133,
+      "security": 110,
+      "architecture_graph": 10,
+      "dependencies": 10,
+      "other": 111,
+      "classification_method": "title keywords only; not semantic classification"
+    },
+    "source_prs": [
+      {
+        "number": 1660,
+        "classification": "superseded-source candidate; keep open until successor merge",
+        "shared_paths": 972,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 940,
+          "different": 32
+        },
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1643,
+        "classification": "overlap; preserve differing evidence",
+        "shared_paths": 670,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 661,
+          "different": 9
+        },
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1640,
+        "classification": "overlap; preserve differing integration work",
+        "shared_paths": 280,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 234,
+          "different": 46
+        },
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1642,
+        "classification": "unique prediction work; do not mark duplicate",
+        "shared_paths": 7,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 0,
+          "different": 7
+        },
+        "draft": true,
+        "mergeable": true
+      },
+      {
+        "number": 1655,
+        "classification": "unique/unreviewed",
+        "files": 8,
+        "shared_paths": 5,
+        "source_only_paths": 3,
+        "draft": true,
+        "mergeable": true
+      },
+      {
+        "number": 1641,
+        "classification": "unique/unreviewed",
+        "files": 3,
+        "source_only_paths": 3,
+        "draft": true,
+        "mergeable": true
+      },
+      {
+        "number": 1615,
+        "classification": "unique/unreviewed security work",
+        "files": 14,
+        "source_only_paths": 13,
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1614,
+        "classification": "unique/unreviewed prediction and research work",
+        "files": 57,
+        "source_only_paths": 27,
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1610,
+        "classification": "unique/unreviewed security work",
+        "files": 14,
+        "source_only_paths": 7,
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1653,
+        "classification": "blocked",
+        "ahead": 18,
+        "behind": 8,
+        "files": 7,
+        "draft": false,
+        "mergeable": true,
+        "unresolved_copilot_high_findings": 6,
+        "unresolved_coderabbit_findings": 2
+      }
+    ]
+  },
+  "ingestion_workflow": {
+    "path": ".github/workflows/xrp-public-ingestion.yml",
+    "present_on_main": false,
+    "present_on_integration": true,
+    "job_main_only": true,
+    "schedules": [
+      "hourly at minute 3 UTC",
+      "daily at 00:15 UTC"
+    ],
+    "permissions": {
+      "actions": "read",
+      "contents": "read"
+    },
+    "raw_event_daily_artifact_retention_days": 90,
+    "per_run_feature_store_retention_days": 7,
+    "external_worm": false,
+    "main_scheduled_ingestion_verified": false
+  },
+  "market": {
+    "spot_observations": [
+      {
+        "source": "xrpldashboard",
+        "price_usd": 1.0384,
+        "as_of_utc": "2026-11-12T11:50:00Z",
+        "kind": "third-party dashboard"
+      },
+      {
+        "source": "liqwall",
+        "price_usd": 1.04,
+        "as_of_utc": "2026-11-12T11:42:00Z",
+        "kind": "aggregated derivatives page"
+      },
+      {
+        "source": "alpha_finance",
+        "price_usd": 1.045,
+        "as_of_utc": "2026-11-12T08:06:00Z",
+        "kind": "aggregated liquidation heatmap"
+      }
+    ],
+    "derivatives": {
+      "liqwall": {
+        "as_of_utc": "2026-11-12T11:42:00Z",
+        "open_interest_usd": 1150000000,
+        "open_interest_change_24h_percent": 1,
+        "funding_8h_percent": 0.0098,
+        "binance_accounts_long_percent": 75.1,
+        "binance_top_traders_long_percent": 67.5,
+        "rolling_24h_liquidations_usd": 4800000,
+        "rolling_24h_long_liquidations_usd": 3700000,
+        "rolling_24h_short_liquidations_usd": 1100000,
+        "nov11_utc_day_liquidations_usd": 4100000,
+        "nov11_long_liquidations_usd": 3000000,
+        "nov11_short_liquidations_usd": 1100000
+      },
+      "alpha_finance": {
+        "as_of_utc": "2026-11-12T08:06:00Z",
+        "open_interest_usd": 2280000000,
+        "volume_24h_usd": 2030000000,
+        "modelled_short_cluster_usd": 4100000,
+        "modelled_short_cluster_price": 1.0516,
+        "modelled_long_cluster_usd": 2900000,
+        "modelled_long_cluster_price": 1.0305,
+        "limitations": [
+          "different venue/contract universe from Liqwall",
+          "clusters are modelled pressure zones, not guaranteed liquidation levels"
+        ]
+      }
+    },
+    "etf_flows": {
+      "source": "Alpha Finance",
+      "cohort": "five US spot XRP funds",
+      "through_session": "2026-11-11",
+      "nov11_net_flow_usd": 0,
+      "nov10_net_flow_usd": -7600000,
+      "nov9_net_flow_usd": -10400000,
+      "seven_session_net_flow_usd": -18000000,
+      "thirty_session_net_flow_usd": 1300000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "net_flow_xrp": 972800000,
+      "supply_share_percent": 1.532,
+      "limitations": [
+        "not current AUM",
+        "not current holdings",
+        "do not combine with broader fund cohorts"
+      ]
+    },
+    "orderbook": {
+      "latest_available_prior_snapshot_utc": "2026-11-12T10:00:00Z",
+      "provider": "Fuelmaps",
+      "mid_usd": 1.0512,
+      "one_percent_bids_usd_m": 12.2,
+      "one_percent_asks_usd_m": 11.3,
+      "five_percent_bids_usd_m": 27.7,
+      "five_percent_asks_usd_m": 15.6,
+      "ten_percent_bids_usd_m": 33.5,
+      "ten_percent_asks_usd_m": 17.1,
+      "ten_percent_venue_count": 5,
+      "venues_total": 6,
+      "excluded": [
+        "Binance",
+        "Bitget"
+      ],
+      "limitations": [
+        "not refreshed in Run56",
+        "resting orders can be cancelled"
+      ]
+    },
+    "exchange_flows": {
+      "latest_prior_observation_utc": "2026-11-12T11:13:00Z",
+      "source": "TrackWhale",
+      "seven_day_net_xrp": -54780000,
+      "limitations": [
+        "large-transfer tracker, not comprehensive exchange reserves",
+        "not refreshed in Run56"
+      ]
+    }
+  },
+  "xrpl_governance": {
+    "as_of_utc": "2026-11-12T11:44:00Z",
+    "ledger": 108281343,
+    "heard_validators": 35,
+    "required_yes": 29,
+    "activation_rule": "more than 80% for 14 consecutive days",
+    "votes": {
+      "SingleAssetVault": 23,
+      "LendingProtocol": 22,
+      "LendingProtocolV1_1": 22
+    },
+    "in_activation_countdown": false,
+    "lending_design": {
+      "borrower_collateral_required": false,
+      "loan_term": "fixed term",
+      "risk_controls": [
+        "off-chain underwriting",
+        "broker risk management",
+        "broker first-loss capital"
+      ],
+      "deposit_assets": [
+        "XRP",
+        "other tokens"
+      ],
+      "activation_status": "not active"
+    }
+  },
+  "institutional": {
+    "pnc_coinbase_usdc_pilot": {
+      "announced": "2026-11-09",
+      "asset": "USDC",
+      "settlement": "automatically converted to USD",
+      "scope": "limited corporate/institutional pilot",
+      "xrp_settlement": false
+    },
+    "coinbase_rlusd_distribution": {
+      "announced": "2026-10-28",
+      "platforms": [
+        "retail",
+        "institutional"
+      ],
+      "asset": "RLUSD",
+      "xrp_purchase_evidence": false
+    },
+    "coinbase_trust_charter": {
+      "public_announcement": "2026-11-09",
+      "charter_type": "national trust company",
+      "full_service_deposit_bank": false,
+      "source": "CoinDesk report of Coinbase announcement"
+    },
+    "ripple_sbi_rlusd_japan": {
+      "announced": "2026-06-24",
+      "distributor": "SBI VC Trade",
+      "regulator": "Japan FSA",
+      "asset": "RLUSD",
+      "xrp_adoption_inference": false
+    }
+  },
+  "macro": {
+    "japan_usdjpy_reference": 159.94,
+    "as_of_date": "2026-11-12",
+    "japan_yen_import_price_yoy_percent": 24.8,
+    "interpretation": "yen/intervention and import-inflation risk; not an XRP-specific signal"
+  },
+  "identity_research": {
+    "sbic_east_central_west": "resolved as Tokyo, Nagoya and Osaka regional statutory SME investment companies, distinct from SBI Holdings",
+    "sbic_chatgpt": "training is educational activity; no OpenAI partnership verified",
+    "ask_coin": "no verified XRPL deployment",
+    "actual_capital": "not a standardized XRP metric; keep cash, in-kind XRP, debt, facilities, collateral and resale separate",
+    "stevenson_youtube": "Camilla/Camila/Kamilah identity not verified to a first-party channel; no videos attributed"
+  },
+  "prediction_engine": {
+    "implemented": [
+      "47 public source definitions, 45 scheduled",
+      "read-only public collector",
+      "SHA-256 raw receipts and per-run hash chain",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "chronological walk-forward purge/embargo",
+      "temporal calibration diagnostics",
+      "PSI drift diagnostics",
+      "event timeline/counter-hypothesis assembly",
+      "fail-closed Ed25519-attested forecast ledger"
+    ],
+    "critical_gap": "walk_forward.py evaluates only the four deterministic baselines; forecast ledger requires a distinct candidate model and barrot.xrp.model-readiness.v4 attested report; no candidate-model readiness report verified",
+    "missing": [
+      "independent WORM and trusted timestamp anchor",
+      "replayable historical feature-store reconstruction",
+      "synchronized spot/L2/derivatives/flow/collateral history",
+      "candidate model and independent chronological holdout",
+      "independent shadow outcomes and adequate effective sample size",
+      "demonstrated lift over all four baselines",
+      "successful main-branch scheduled ingestion"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "run56_web_observations_model_eligible": false,
+    "reason": "not captured through byte-exact RawReceiptArchive; no verified raw SHA-256 receipts"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authentication and data flow verified; connector permissions overprivileged",
+    "Claude": "authentication/data flow unverified",
+    "Grok": "authentication/data flow unverified",
+    "Gemini": "authentication/data flow unverified",
+    "Copilot": "review comments exist on #1653; no formal approval on #1661",
+    "Codex": "authentication/data flow unverified",
+    "HuggingFace": "last verified BUILD_ERROR",
+    "Kaggle": "untested; no submission",
+    "Databricks": "last verified HTTP 403",
+    "LunaRoute": "repository-declared canonical brain; endpoint auth/data flow unverified",
+    "external_model_data_transfer": false
+  },
+  "security": {
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "branch_protection_endpoint": "HTTP 403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enabled": false,
+    "security_alert_endpoints": "not accessible through current connector",
+    "github_pages_auto_publication": true,
+    "pages_authorization": "unresolved",
+    "credential_path_audit": "17 previously affected PR branch tips; not re-audited in Run56",
+    "provider_side_oauth_revocation": "unverified"
+  },
+  "decision": {
+    "merge": false,
+    "reason": "PR #1661 remains draft with no approvals; branch protection inaccessible, connector overprivileged, Pages side effect unauthorized, semantic review incomplete, no main ingestion"
+  },
+  "sources": [
+    {
+      "id": "liqwall_xrp",
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-12T11:42:00Z",
+      "independence_group": "liqwall_aggregator"
+    },
+    {
+      "id": "alpha_finance_xrp_etf",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "as_of_utc": "2026-11-11",
+      "independence_group": "alpha_finance_tracker"
+    },
+    {
+      "id": "alpha_finance_xrp_heatmap",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "as_of_utc": "2026-11-12T08:06:00Z",
+      "independence_group": "alpha_finance_tracker"
+    },
+    {
+      "id": "xrpl_dashboard_amendments",
+      "url": "https://xrpldashboard.com/amendments",
+      "as_of_utc": "2026-11-12T11:44:00Z",
+      "independence_group": "xrpldashboard_own_node"
+    },
+    {
+      "id": "coindesk_xrpl_lending",
+      "url": "https://www.coindesk.com/tech/2026/11/12/ripple-s-bank-lending-system-moves-closer-to-launch-on-the-xrp-ledger",
+      "published": "2026-11-12T05:18:00Z",
+      "independence_group": "coindesk_reporting"
+    },
+    {
+      "id": "reuters_pnc_coinbase_usdc",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published": "2026-11-09T14:06:00Z",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "reuters_coinbase_rlusd",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "published": "2026-10-28T12:02:00Z",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "coindesk_coinbase_trust",
+      "url": "https://www.coindesk.com/policy/2026/11/09/coinbase-gets-full-u-s-trust-charter-from-federal-banking-regulator",
+      "published": "2026-11-09T10:00:00Z",
+      "independence_group": "coindesk_reporting"
+    },
+    {
+      "id": "ripple_sbi_rlusd_japan",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published": "2026-06-24",
+      "independence_group": "ripple_primary"
+    },
+    {
+      "id": "reuters_japan_yen",
+      "url": "https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/",
+      "published": "2026-11-12",
+      "independence_group": "reuters_reporting"
+    }
+  ],
+  "next_actions": [
+    "Run exact-head CI on the Run56 documentation/evidence successor; do not transfer parent results.",
+    "Continue existing PR #1661; create no new integration branch or PR.",
+    "Resolve branch-protection visibility, least-privilege connector permissions, credential-owner revocation and Pages authorization.",
+    "Complete semantic review of 49 workflow diffs and 1,007 non-workflow paths.",
+    "After compliant main integration, verify scheduled ingestion and independent immutable anchoring.",
+    "Implement a genuine candidate model and evaluate it against the four baselines on replayable point-in-time data.",
+    "Keep forecast issuance disabled until independent shadow and out-of-sample gates pass."
+  ]
+}

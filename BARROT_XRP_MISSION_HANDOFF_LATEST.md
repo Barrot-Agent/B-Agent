@@ -1,3 +1,112 @@
+# Run56 — 2026-11-12T12:06:39Z — exact-head CI, XRPL lending, market/ETF and integration audit
+
+**Mission priority 1:** XRP intelligence and prediction-engine mastery. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.
+
+## Verified repository state
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Integration branch: integration/xrp-v3-unified-main-20261111.
+- Pre-Run56 evidence head: 28fbdcfe276b825c7de83df5bba2cc017c0d26ea.
+- Integration branch: 2,100 commits ahead and 0 behind main.
+- Main tree: 1,388 entries / 1,288 blobs / 86 workflow files.
+- Integration tree: 2,315 entries / 2,206 blobs / 87 workflow files.
+- PR #1661: open, draft, mergeable; 2,100 commits; 1,056 changed files; 288,608 additions; 4,392 deletions; 49 workflow files and 1,007 other paths; zero formal reviews, approvals or review threads.
+- Open PR inventory: 374 total; 360 drafts, 14 non-drafts; 366 target main and 8 target other branches. Title-only triage: 133 XRP/prediction/research, 110 security, 10 architecture/graph, 10 dependency, 111 other. This is not semantic classification.
+
+## Exact-head verification — pre-Run56 evidence head 28fbdcfe
+- Full repository test suite: **3,507 passed, 0 failed, 8 subtests**.
+- Coverage: **61.35%**, above the configured 53% floor.
+- Full-suite duration: **94.53 seconds**; full-suite job ID 131151485326.
+- Wheel build passed; installed wheel verified primary mission resource, Barrot V3 and XRP mission.
+- Six dependency audit groups passed; no known vulnerabilities reported.
+- Fail-closed merge gate passed with automatic merge disabled.
+- Evidence: [full CI 43209033106](https://github.com/Barrot-Agent/B-Agent/actions/runs/43209033106), [dependency audit 43209033225](https://github.com/Barrot-Agent/B-Agent/actions/runs/43209033225), [fail-closed gate 43209033094](https://github.com/Barrot-Agent/B-Agent/actions/runs/43209033094).
+- The 3,507-test result is verified on 28fbdcfe. This Run56 evidence update is documentation/artifact-only; its successor head needs its own exact-head CI. Do not transfer the parent result.
+
+## Critical operational gap: scheduled ingestion is not active on main
+- .github/workflows/xrp-public-ingestion.yml exists on integration and is absent from main.
+- The workflow is main-only (github.ref == refs/heads/main), hourly at minute 3 and daily at 00:15 UTC; it has read-only actions and contents permissions.
+- No main-branch XRP ingestion schedule is currently running. The integration workflow cannot run its capture job from this branch; it becomes operational only after compliant merge.
+- Raw-source/event/daily artifacts use 90-day GitHub retention; per-run feature-store checkpoints use 7 days. GitHub artifacts/cache are not independent WORM storage.
+- RawReceiptArchive verifies content-addressed raw bytes, canonical receipt IDs and a per-run hash chain. Its manifest says the chain is tamper-evident only relative to its final head; independent external anchoring and trusted timestamps are still absent.
+- The event registry is curated, not an automatically discovered publisher feed. The latest reviewed registry has 47 events without raw publisher SHA-256 receipts; those events remain receipt-incomplete and model-ineligible.
+
+## Run56 XRP market and ETF evidence
+Spot observations are asynchronous and from different publishers:
+- XRPL Dashboard: XRP $1.0384 as of 11:50 UTC, ledger 108,281,435.
+- Liqwall: XRP approximately $1.04 as of 11:42 UTC.
+- Alpha Finance: approximately $1.045 at 08:06 UTC.
+- These are third-party observations, not synchronized executable quotes. No new synchronized exchange L2 snapshot was obtained in Run56. The previous Fuelmaps 10:00 UTC depth snapshot is a prior observation, not a current quote.
+
+Derivatives — preserve provider disagreement:
+- Liqwall, 11:42 UTC: OI $1.15B (+1.0%/24h); funding +0.0098% per 8h; 75.1% of Binance accounts long; 67.5% of Binance top traders long.
+- Liqwall rolling 24h liquidations: $4.8M ($3.7M longs / $1.1M shorts). Its separate UTC calendar-day row for Nov 11 is $4.1M ($3.0M / $1.1M). These are different windows and must not be conflated.
+- Alpha Finance, 08:06 UTC: notional OI $2.28B, 24h volume $2.03B; modelled short-liquidation cluster $4.1M at $1.0516 and long cluster $2.9M at $1.0305. These are modelled pressure zones, not guaranteed liquidation prices.
+- Alpha and Liqwall OI differ by nearly 2x because their venue/contract universes are not reconciled. Do not average them.
+
+Spot ETF flows — Alpha Finance five-fund cohort through Nov 11:
+- Nov 11: $0; Nov 10: -$7.6M; Nov 9: -$10.4M.
+- Seven sessions (Nov 4–11): -$18.0M; thirty sessions: +$1.3M.
+- Cumulative net inflow since launch: +$1.71B; net flow in XRP: +972.8M XRP, stated as 1.532% of supply.
+- Cumulative net inflows are not current AUM or current fund holdings. Do not mix this five-fund cohort with broader product trackers.
+
+## XRPL lending governance — material collateral distinction
+- XRPL Dashboard roll call at 11:44 UTC on Nov 12: SingleAssetVault 23/35; LendingProtocol 22/35; LendingProtocolV1_1 22/35. No amendment was in a 14-day activation countdown. Threshold: 29/35 for 14 consecutive days.
+- CoinDesk's Nov 12 report describes fixed-term loans funded from asset vaults where borrowers do not post collateral. Depositors rely on off-chain underwriting, broker risk management and broker first-loss capital.
+- This is not borrower-posted on-ledger XRP collateral. Deposit of XRP or other tokens into a vault is possible, but no activation or actual lending demand is established. CoinDesk reports a further developer PR for LendingProtocolV1_2 remains open.
+
+## Institutional network and counter-hypotheses
+- PNC/Coinbase's limited corporate/institutional pilot receives Circle USDC and automatically converts it to USD. PNC already uses Coinbase's crypto-as-a-service platform for customer trading and offers banking services to Coinbase. This is a USDC rail, not XRP settlement.
+- Coinbase added Ripple RLUSD to retail and institutional platforms on Oct 28. This is direct RLUSD distribution; it does not prove Coinbase or its customers bought XRP.
+- Coinbase announced full OCC national trust-charter approval on Nov 9. This is a trust-company framework for custody/payments, not a full-service deposit-taking bank. CoinDesk reports the Independent Community Bankers of America has sued the OCC over crypto trust charters.
+- Ripple and SBI Group announced RLUSD availability in Japan on June 24 through SBI VC Trade following Japan FSA approval. This is RLUSD distribution, not automatically XRP adoption.
+- Japan's SBIC East/Central/West remain three separate statutory regional SME investment companies, distinct from SBI Holdings. The ChatGPT training course is educational activity, not an OpenAI partnership.
+- Nov 12 macro input: USD/JPY approached 159.94 and Japan's October yen-based import prices rose 24.8% y/y. Intervention risk is not an XRP-specific signal.
+
+## Prediction-engine audit
+Implemented on integration: 47 public source definitions (45 scheduled); read-only collector; SHA-256 content-addressed receipts and per-run hash chain; point-in-time SQLite feature store; four deterministic baselines; chronological walk-forward evaluator with purge/embargo; temporal calibration diagnostics; PSI drift diagnostics; event timeline/counter-hypothesis assembly; fail-closed forecast ledger with Ed25519 evaluator attestation.
+
+**Critical model gap:** the current walk-forward path produces only four deterministic baselines (naive class prior, momentum sign, mean-reversion sign and volatility-normal). The forecast ledger requires a distinct candidate model and a barrot.xrp.model-readiness.v4 attested report. No candidate-model readiness report was verified in this run. Baseline evaluation is not predictive-model mastery and cannot authorize forecasts.
+
+Still outstanding: independent WORM/timestamp anchoring; replayable historical feature-store reconstruction; synchronized historical spot/L2/derivatives/flows/collateral; a candidate model trained only on point-in-time features; independent chronological holdout and shadow outcomes; adequate effective sample sizes; measured out-of-sample improvement over all four baselines; successful main-branch ingestion.
+
+Run56 web observations were not captured through Barrot's byte-exact receipt pipeline. They have no verified raw SHA-256 receipts and are **model-ineligible**. **Forecast NOT_ISSUED.** No paper trade or real-money action occurred.
+
+## PR backlog and integration review
+- #1661 — blocked: sole current consolidated V3/XRP integration PR; draft, 2,100 ahead / 0 behind, 1,056 files, 49 workflows, 1,007 non-workflow paths; no formal approvals/reviews/threads.
+- #1660 — superseded-source candidate, keep open: 972/972 path names overlap #1661; prior exact blob comparison 940 identical / 32 different; draft and not mergeable. Do not close until #1661 is merged and verified on main.
+- #1643 — overlapping research candidate, preserve differences: 670 shared path names; prior blob comparison 661 identical / 9 different; draft and not mergeable.
+- #1640 — overlapping integration candidate, preserve differences: 280 shared path names; prior blob comparison 234 identical / 46 different; draft and not mergeable.
+- #1642 — unique prediction work despite path overlap: all 7 paths overlap, but prior blob comparison found 7 different blobs; draft. Do not label duplicate.
+- #1655 — unique/unreviewed: 8 files, 5 shared and 3 source-only structural/catalog paths; draft.
+- #1641 — unique/unreviewed: 3 source-only experimentation paths; draft.
+- #1615 — unique/unreviewed security work: 14 files, 13 source-only; draft.
+- #1614 — unique/unreviewed prediction/research work: 57 files, 27 source-only; draft.
+- #1610 — unique/unreviewed security work: 14 files, 7 source-only; draft.
+- #1653 — blocked, not merge-ready: non-draft and GitHub reports mergeable, but branch is 18 ahead / 8 behind current main. Seven files. Six unresolved Copilot high-severity findings include shared graph artifact overwrite risk, broken upstream CLI argument transport, stale repository-state reporting, recursive submodule fetch bypass, degraded-index false success and uncaught fetch timeout. Two additional CodeRabbit findings remain unresolved. Do not merge.
+- The other non-draft inventory includes Dependabot updates and older safety/structural/topology work; they require current-base, exact-head CI, dependency and approval review before any merge. No source PR was closed.
+
+## Security and external-action blockers
+- GitHub connector permission snapshot exposes admin, maintain, push, pull and triage; this is overprivileged.
+- Main branch-protection endpoint returns HTTP 403; visible fallback ruleset #10863829 is disabled. Required checks/approval rules cannot be independently inspected.
+- Repository security-alert endpoints were not accessible through the current GitHub connector; no claim about alert settings is made.
+- GitHub Pages publication is automatic on main push; publication authorization remains unresolved.
+- The previously identified .config/gh/hosts.yml path in 17 affected PR tips was not re-audited in Run56. File contents were not read; provider-side OAuth revocation remains unverified.
+- Full semantic review of 49 workflow diffs and 1,007 other paths is incomplete.
+
+## Nine-platform status
+- ChatGPT/GitHub: authentication and repository data flow verified; permissions overprivileged.
+- Claude, Grok, Gemini, Codex and LunaRoute: endpoint authentication/data flow unverified.
+- Copilot: review comments exist on #1653, but no formal approval on #1661.
+- Hugging Face: last verified BUILD_ERROR. Databricks: last verified HTTP 403. Kaggle: untested; no submission.
+- No external-model data transfer occurred.
+
+## Decision and next actions
+**No merge.** Exact-head CI, dependency audit and fail-closed gate passed on 28fbdcfe, but #1661 remains draft, no approvals exist, branch protection is not visible, least privilege is unresolved, Pages publication is unauthorized, credential path/revocation audit is stale, and semantic review is incomplete.
+
+Next: (1) complete exact-head CI for this Run56 documentation/evidence successor; (2) continue the existing #1661 branch and create no new integration branch/PR; (3) resolve branch-protection visibility, least-privilege connector permissions, credential-owner revocation and Pages side-effect authorization; (4) complete semantic review of 49 workflow changes and 1,007 non-workflow paths; (5) after compliant main integration, verify scheduled ingestion and independent immutable anchoring; (6) implement and evaluate a genuine candidate model against the four baselines using replayable point-in-time data and independent shadow outcomes; (7) keep forecast issuance disabled until all gates pass.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
 # Run55 verification addendum — 2026-11-12T11:24Z
 
 ## Exact-head CI completed
