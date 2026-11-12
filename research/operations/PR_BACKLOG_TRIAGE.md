@@ -1,3 +1,50 @@
+# Run49 — current integration, research and security reconciliation (2026-11-12T06:17:15Z)
+
+## Current successor
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration head `67b0945c1e0133a04988ec1800de33961802ae03`; 2,089 ahead / 0 behind.
+- Main tree 1,388 entries; integration tree 2,309 entries / 2,200 blobs.
+- PR #1661 open/draft/mergeable-clean, 1,050 files (49 workflows/1,001 other), 280,153 additions/4,392 deletions; zero formal reviews, approvals or review threads.
+- Complete open inventory: 374 PRs, 360 drafts, 14 non-drafts.
+- Exact-head CI on `67b0945`: 3,507 passed, zero failed, eight subtests, 61.35% coverage, 96.82s; core 716 passed/eight subtests; wheel and installed Barrot V3/XRP mission verification passed; six-manifest audit no known vulnerabilities; fail-closed gate passed. Runs: CI 43166653740, audit 43166653820, gate 43166653816.
+- Run49 fixed the new test's assertion path after the `683e556` attempt had 3,506 passed/1 failed. The final exact head is fully verified. No test was removed or weakened.
+
+## Run49 provenance correction
+- Scenario and event timeline code no longer equates a raw SHA-256 digest with a complete receipt.
+- Hash presence is separately recorded as `raw_hash_present` / `raw_hash_present_count`; status is `RAW_SHA256_PRESENT_UNVERIFIED`; `receipt_complete` remains false until canonical receipt metadata and retained raw bytes are verified.
+- Model eligibility remains false. Independent WORM storage and trusted timestamp anchoring remain outstanding.
+
+## Backlog disposition — refreshed path/blob comparisons
+- #1661: **blocked active integration draft**. Exact-head tests pass, but no approvals/reviews, branch-protection visibility, least privilege, credential-owner revocation, Pages authorization and 1,001-path semantic review remain blockers.
+- #1660: **superseded-source candidate; preserve** — 972 shared paths; 940 identical blobs / 32 different; zero source-only paths; branch mergeability dirty.
+- #1643: **overlap/superseded-source candidate; preserve** — 670 shared; 661 identical / 9 different; zero source-only paths; branch mergeability dirty.
+- #1640: **overlap candidate; preserve** — 280 shared; 234 identical / 46 different; zero source-only paths; branch mergeability dirty.
+- #1642: **unique prediction work; preserve** — seven shared paths, all seven different blobs; no source-only paths.
+- #1653: **unique graph work; preserve** — one shared workflow path with a different blob plus six source-only paths; eight unresolved review threads, two COMMENTED reviews, no approval.
+- #1645: duplicate candidate only; do not close until replacement is verified on main.
+- #1644/#1647: partial workflow overlap; semantic review required.
+- #1646/#1648/#1649/#1650/#1254/#1255: dependency reconciliation candidates; preserve pending exact review.
+- #1269/#1317/#1318/#1320/#1608/#1610/#1611/#1612/#1614: unique/unreviewed safety, MMI, topology and research work; preserve.
+- No source PR closed. No merged PR recorded for this workstream.
+
+## Security hold
+- GitHub connector permissions: admin, maintain, push, pull and triage (overprivileged).
+- Main branch-protection endpoint: HTTP 403. Visible fallback ruleset “Fall Back” ID 10863829 is disabled.
+- Main Pages publication was previously observed automatic on push; authorization remains unresolved.
+- `.config/gh/hosts.yml` absent from current main/integration trees. Run48 last found it in 17 affected open PR branch tips; Run49 did not rescan those branches. File contents were never read; provider-side OAuth revocation remains unverified.
+
+## Research and forecast status
+- OKX 05:54 UTC 1.0412 USDT; Kraken $1.04076; normalized gap about -0.084%; Kraken event timestamp absent. Freshest L2 is Basis Binance XRPUSDT perpetual at 04:22 UTC, not spot.
+- Liqwall/TradRadar/TRdesk OI values disagree due to different contract universes; no averaging. ETF Nov11 data are partial/provisional; preserve separate fund cohorts and methods.
+- 22.33B XRP across 701 attributed exchange wallets/24 exchanges as of Nov11 08:00 UTC includes cold storage; not tradable float. XRPL stablecoin supply $964.74M, RLUSD 90.56%, DEX volume $8.19M.
+- New SBI/SMFG JPYSC alliance is distinct from SBI-Circle USDC, SBI VC Trade RLUSD and SBI Ripple Asia XRPL PoC; no XRP settlement requirement verified.
+- Kamilah Stevenson person identity confirmed, but channel ID/handle remains probable; six new video references are candidate-only, verified inventory remains zero.
+- Forecast **NOT_ISSUED**. Run49 web/API data were not raw-receipt ingested and are model-ineligible.
+
+## Merge disposition
+**No merge.** PR #1661 remains draft despite exact-head CI success. Do not bypass branch protection or required approvals. Do not close source PRs until a successor is merged and its content verified on main.
+
+---
+
 # Run47 — current integration/security reconciliation (2026-11-12T05:02:51Z)
 
 ## Current successor

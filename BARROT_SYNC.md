@@ -492,3 +492,26 @@ See `BARROT_XRP_MISSION_HANDOFF_LATEST.md`, `research/xrp_intelligence/20261112T
 **Decision:** no merge. PR #1661 remains draft, no formal approvals, semantic review incomplete, security/branch-protection/Pages blockers unresolved. No deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure.
 
 **Next action:** exact-head CI for the documentation/evidence successor; continue semantic review of V3 runtime, ingestion, feature store, event timeline, forecast ledger and public interfaces; resolve least privilege, branch protection, credential-owner revocation and Pages authorization before merge.
+
+
+---
+
+# Run49 — 2026-11-12T06:17:15Z
+
+XRP intelligence remains mission priority 1; Barrot V3 remains the protected execution/orchestration/safety/verification foundation.
+
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration head `67b0945c1e0133a04988ec1800de33961802ae03`; 2,089 ahead / 0 behind; integration tree 2,309 entries.
+- PR #1661 open/draft/mergeable-clean; 1,050 changed files (49 workflows/1,001 other); 374 open PRs (360 drafts/14 non-drafts); zero formal reviews, approvals or threads.
+- Exact-head full suite: 3,507 passed, zero failed, eight subtests, 61.35% coverage, 96.82s; core 716 passed/eight subtests; installed wheel verified Barrot V3/XRP mission; six-manifest dependency audit no known vulnerabilities; fail-closed gate passed. Runs: CI 43166653740, audit 43166653820, gate 43166653816.
+- Run49 corrected provenance semantics: raw SHA presence is now explicitly unverified, separate from receipt completeness; receipt_complete remains false until canonical receipt metadata/raw bytes are verified. Tests added/strengthened; none removed or weakened.
+- Spot at 05:54 UTC: OKX 1.0412 USDT, Kraken $1.04076, normalized gap about -0.084%; Kraken event timestamp absent. Freshest retrieved L2 is Basis Binance XRPUSDT perpetual at 04:22 UTC, not spot: $15.3M bids/$14.3M asks within 1%, 52% bid share.
+- Derivatives providers disagree on OI because of different contract/venue coverage: Liqwall $1.15B, TradRadar $1.57B, TRdesk $2.21B; do not average. ETF Nov11 rows remain partial/provisional; XRP Insights Nov9–10 -9.568M XRP, Alpha five-fund Nov10 -$7.6M, CryptoKeyhole 2/4 and CryptoETF 1/5 reported.
+- Exchange wallets: 22.33B XRP across 701 wallets/24 exchanges as of Nov11 08:00 UTC; same-wallet +1.3M 7d/-155.7M 30d; cold storage included, not tradable float. XRPL stablecoin supply $964.74M, RLUSD dominance 90.56%, 24h DEX volume $8.19M. RLUSD total supply ~$2.69B as of Nov12 02:25 UTC.
+- New SBI development: SBI Holdings/SMFG Oct30 capital/business alliance studies JPYSC and grants SMBC a 5% stake in SBI Startale Marketing; distinct from SBI Circle USDC JV, SBI VC Trade RLUSD distribution and SBI Ripple Asia XRPL PoC. JPYSC use is not proof of XRP settlement/collateral.
+- Evernorth: closing treasury 473.276M XRP was ~82% in-kind and ~17.8% cash-purchased; 73.688M XRPN shares registered for potential resale, including 11.791M SBI-controlled shares. No completed resale or XRP sale verified.
+- Kamilah Stevenson person identity confirmed, but canonical YouTube handle/channel-ID link remains probable; six new video references candidate-only, zero verified inventory. Exact ASK Coin, “actual capital” and “SBIC, ChatGPT SBIC” searches remain unresolved at primary-source level.
+- Prediction engine remains research-only: 47 public sources/45 scheduled; collector, SHA-256 receipt/hash-chain, SQLite point-in-time store, four baselines, purge/embargo walk-forward, calibration/PSI and fail-closed Ed25519 ledger. Production gaps: independent WORM/timestamp anchor, replayable history, synchronized historical market/collateral data, scenario counter-hypotheses, production key, shadow outcomes and measured out-of-sample lift.
+- Platform map unchanged: ChatGPT/GitHub verified but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks HTTP 403; LunaRoute endpoint unverified. No external-model transfer.
+- Branch-protection endpoint HTTP 403; fallback ruleset disabled; Pages auto-publication authorization unresolved; provider-side OAuth revocation unverified. No PR merged/closed. Forecast NOT_ISSUED.
+
+See `BARROT_XRP_MISSION_HANDOFF_LATEST.md` and the Run49 structured artifact for full source lineage and caveats. Merge withheld despite exact-head CI success because #1661 remains draft with no approvals, security/authorization blockers and incomplete semantic review.
