@@ -196,8 +196,8 @@ def test_missing_raw_hash_is_visible_and_never_model_eligible():
     scenario = result["scenarios"][0]
 
     assert scenario["receipt_complete"] is False
-    assert scenario["raw_hash_present"] is False
     assert scenario["raw_hash_present_count"] == 0
+    assert scenario["supporting_evidence"][0]["raw_hash_present"] is False
     assert scenario["supporting_evidence"][0]["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
     assert result["raw_hash_present_count"] == 0
     assert result["receipt_complete"] is False
