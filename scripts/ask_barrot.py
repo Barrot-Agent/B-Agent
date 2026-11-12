@@ -388,6 +388,21 @@ INFRASTRUCTURE_CONSTRAINTS = (
 )
 
 
+def write_answer_artifact(answer: str, output_dir: Path | str = "results/answers") -> Path:
+    """Write a new answer artifact without overwriting an existing file."""
+    directory = Path(output_dir)
+    directory.mkdir(parents=True, exist_ok=True)
+    for attempt in range(5):
+        output_path = directory / f"barrot_answer_{time.time_ns()}_{attempt}.md"
+        try:
+            with output_path.open("x", encoding="utf-8") as handle:
+                handle.write(answer)
+            return output_path
+        except FileExistsError:
+            continue
+    raise FileExistsError("Could not allocate a unique Barrot answer artifact path")
+
+
 def main():
     key = os.getenv("GROQ_API_KEY", "")
     if not key:
@@ -450,8 +465,8 @@ def main():
     actual_model = response_data.get("model", DEFAULT_GROQ_MODEL)
     print(f"[BARROT BACKEND: Groq | MODEL: {actual_model}]")
 
-    with open("barrot_answer.md", "w", encoding="utf-8") as f:
-        f.write(answer)
+    answer_path = write_answer_artifact(answer)
+    print(f"\nSaved answer artifact: {answer_path}")
 
     append_memory(question, answer)
 

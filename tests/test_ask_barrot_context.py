@@ -38,3 +38,17 @@ def test_signal_snapshot_does_not_mislabel_legacy_signal_as_forecast(tmp_path, m
     assert "forecast_status=NOT_ISSUED" in snapshot
     assert "forecast_model_eligible=False" in snapshot
     assert "Do not treat a sentiment/signal score as a validated forecast" in snapshot
+
+
+def test_answer_artifact_writer_never_overwrites_existing_user_files(tmp_path):
+    existing = tmp_path / "barrot_answer.md"
+    existing.write_text("user-owned answer", encoding="utf-8")
+    output_dir = tmp_path / "answers"
+
+    first = ask_barrot.write_answer_artifact("new answer one", output_dir)
+    second = ask_barrot.write_answer_artifact("new answer two", output_dir)
+
+    assert first != second
+    assert first.read_text(encoding="utf-8") == "new answer one"
+    assert second.read_text(encoding="utf-8") == "new answer two"
+    assert existing.read_text(encoding="utf-8") == "user-owned answer"
