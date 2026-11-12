@@ -1,3 +1,46 @@
+# Run62B — 2026-11-12 — direct Coinbase/Circle/SBI/Ripple commercial and equity links
+
+## Exact current-head verification
+
+- Main remains `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Pre-Run62B integration head: `b6e54df0c02bc7815322999e8026bba5ece90c77`; PR #1661 was open/draft, 2,125 commits ahead, 1,066 changed files.
+- Exact-head full CI [43243967752](https://github.com/Barrot-Agent/B-Agent/actions/runs/43243967752): 721 core tests passed; 3,512 full-suite tests passed, zero failed, 8 subtests; inclusive coverage 61.42%, legacy core coverage 76%; wheel and installed mission verification passed.
+- Exact-head dependency audit [43243968127](https://github.com/Barrot-Agent/B-Agent/actions/runs/43243968127): six manifest groups passed, no known vulnerabilities. Fail-closed gate [43243967753](https://github.com/Barrot-Agent/B-Agent/actions/runs/43243967753) passed with merge disabled.
+- The Run62 handoff/sync commit changes only the two documentation files. This Run62B addendum is also documentation-only; its successor head requires exact-head CI before merge.
+
+## Direct Coinbase–Circle relationship — primary SEC evidence
+
+- Circle and Coinbase co-founded Centre Consortium for USDC governance. In August 2023 Circle acquired Coinbase's remaining 50% interest in Centre for approximately $209.9M of consideration in about 8.4M Circle common shares. Centre was dissolved in December 2023; Circle assumed sole USDC governance/issuer control. Circle's S-1 says Coinbase received a minority equity stake in Circle. The 8.4M-share transaction is historical consideration, not a verified current ownership percentage.
+- The August 2023 Collaboration Agreement replaced the old Centre revenue-sharing structure. Coinbase is compensated for USDC distribution and ecosystem growth. Circle's SEC filings describe allocations based on USDC held on Coinbase after issuer retention, plus a share of remaining ecosystem-growth payment base after approved third-party participants.
+- Circle's September 30, 2026 Form 10-Q reports distribution costs connected with Coinbase of **$331.3M for Q3 2026** and **$986.6M for the first nine months of 2026**. It says nine-month distribution/transaction costs fell $10.2M year over year because Coinbase's lower share of average USDC on-platform balances more than offset higher reserve income. These are Circle distribution costs, not XRP capital flows or Coinbase revenue from XRP.
+- Sources: [Circle S-1/A — Centre acquisition and Collaboration Agreement](https://www.sec.gov/Archives/edgar/data/1876042/000119312525084832/d737521ds1a.htm), [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), [Circle's 2023 governance/partnership announcement](https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx).
+
+## Direct SBI–Circle, SBI–Ripple and cross-network links
+
+- **SBI–Circle equity:** SBI Holdings and SBI Shinsei Bank announced a combined **$50M strategic equity investment** in Circle at its June 2025 NYSE IPO, $25M each. This is a direct ownership/investment link, separate from SBI's validator and distribution relationships. [SBI official announcement](https://www.sbigroup.co.jp/news/2025/0609_15491.html).
+- **SBI–USDC distribution:** SBI VC Trade began general USDC trading for Japanese customers on March 26, 2025 and described itself as Japan's first/only retail USDC distributor at launch. Circle's Arc launch announcement also identifies SBI VC Trade as Japan's first/only USDC distributor. [SBI official release](https://www.sbigroup.co.jp/news/2025/0325_15332.html).
+- **SBI–USDC payments:** SBI VC Trade and Aplus ran a five-day USDC QR-payment experiment at selected Osaka locations (Unagi no Toko and BicCamera) May 25–29, 2026. This was a limited experiment, not proof of broad merchant deployment. [SBI official release](https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html).
+- **SBI–Ripple RLUSD distribution:** SBI VC Trade and Ripple announced RLUSD support in VCTRADE from June 24, 2026, as a Japanese fourth-category electronic payment instrument. This is a direct Ripple distribution relationship. It does not mean RLUSD is XRP or that XRP is the settlement asset. [SBI/Ripple official release](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html).
+- **SBI–JPYSC:** SBI Shinsei Trust Bank is issuer, SBI VC Trade distributor and Startale co-developer. Initial service was limited to VCTRADE accounts with no external-wallet withdrawal; public-chain distribution is deferred pending legal/tax and regulatory readiness. The reported >¥30B handling balance includes the company's on-chain plus lending balance; >¥10B lending is a component, not a separate supply to add. [SBI launch release](https://www.sbigroup.co.jp/news/2026/0624_16425.html), [Nov 2 balance release](https://www.sbigroup.co.jp/news/2026/1102_16704.html).
+- **Open Standard:** SBI Holdings and Startale joined Open Standard and said they would consider a JPYSC/OUSD interoperability proof of concept. The SBI release lists 140+ participants including Visa, Stripe, Mastercard, BlackRock and Coinbase. This is exploratory, not production. OUSD is Bridge/Stripe's product, not Circle USDC and not XRP. [SBI official release](https://www.sbigroup.co.jp/news/2026/1016_16665.html).
+- **SBI–Startale–BlackRock:** the October 27 basic agreement explores tokenized-MMF/JPYSC connections; no production deployment is established. [SBI official release](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+
+## Network interpretation
+
+SBI is now evidenced across several distinct rails: Circle/USDC (equity investment, Japanese distribution, Arc validator), Ripple/RLUSD (VCTRADE distribution and Ripple ecosystem), and its own JPYSC (SBI Shinsei Trust issuance, SBI VC Trade distribution, Startale technology, exploratory Open Standard/MMF work). Coinbase is connected to Circle through equity and distribution economics, to Arc as a day-one exchange ecosystem participant, to Open Standard through membership, and to Ripple through RLUSD distribution.
+
+These links establish corporate, distribution, governance and product relationships. They do **not** establish that USDC, JPYSC, OUSD or RLUSD flows create XRP demand, that XRP is collateral in the cited institutional products, or that stablecoin settlement automatically transits XRP.
+
+## Access and prediction guardrails
+
+- Bybit adapter code parses matching-engine `cts` separately from system `ts`, rejects stale/crossed books, and does not normalize USDT as USD. Bybit documents U.S. IP restrictions; the collector records HTTP 403/provider documentation and does not attempt geographic circumvention. Live Bybit collection from a U.S.-hosted runner remains unverified.
+- Raw receipts for the new web/dashboard observations remain absent (`raw_source_sha256=null`); no independent WORM/trusted timestamp anchor. Keep them out of model features.
+- Forecast remains **NOT_ISSUED**. No paper trading or real-money action.
+
+
+
+---
+
 # Run62 — 2026-11-12 — exact-head CI, institutional-rail corrections and merge-gate reconciliation
 
 ## Mission and repository state

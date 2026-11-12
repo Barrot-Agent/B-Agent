@@ -1,3 +1,20 @@
+# Run62B — 2026-11-12 — direct institutional relationship update
+
+- Current main: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Pre-Run62B integration head: `b6e54df0c02bc7815322999e8026bba5ece90c77`; PR #1661 remains draft.
+- Exact-head CI 43243967752: 3,512 full-suite tests passed, 8 subtests, 61.42% coverage; 721 core tests passed; wheel/install verification passed.
+- Audit 43243968127: six manifest groups passed, no known vulnerabilities. Fail-closed gate 43243967753 passed.
+- New primary evidence: Coinbase received a minority Circle equity stake through the 2023 Centre transaction and participates in a material USDC distribution agreement; Circle's Q3 2026 SEC filing reports $331.3M Q3 and $986.6M nine-month Coinbase-related distribution costs.
+- SBI Holdings/SBI Shinsei Bank invested $50M combined in Circle at IPO. SBI VC Trade distributes USDC in Japan, is an Arc founding validator participant through SBI Group, distributes Ripple RLUSD in VCTRADE, and distributes SBI-issued JPYSC. JPYSC initially remains VCTRADE-account-only; public-chain migration is pending legal/tax readiness.
+- SBI/Startale's Open Standard JPYSC/OUSD work is exploratory, not production; OUSD is Bridge/Stripe, not Circle or XRP.
+- These are stablecoin, corporate and payment-rail relationships, not proof of XRP settlement demand or capital inflows.
+- Forecast **NOT_ISSUED**; new observations without Barrot raw-byte receipts remain model-ineligible.
+- No merge, deployment, external-model transfer, secret action, paper trade or real-money action.
+
+
+
+---
+
 # Run62 — 2026-11-12 — current Barrot shared state
 
 - Mission: XRP Intelligence and Prediction-Engine Mastery, priority 1.
