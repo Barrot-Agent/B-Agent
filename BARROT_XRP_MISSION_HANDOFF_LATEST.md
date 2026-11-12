@@ -1,3 +1,121 @@
+# Run55 — Exact-head CI, XRP market/collateral, RLUSD/SBI graph and workflow evidence correction
+
+**Capture window:** 2026-11-12T11:05:31Z–11:13:00Z.  
+**Mission:** XRP intelligence and prediction-engine mastery remain priority 1. Preserve Barrot V3 as the protected execution, orchestration, safety and verification foundation.
+
+## 1. Repository and exact-head CI
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration head before this Run55 evidence commit: `a1e9e06c2fe2633f384bbdc0f8ece1090f34d589`; 2,098 commits ahead, 0 behind main.
+- Main tree: 1,388 entries / 1,288 blobs / 86 workflow files. Integration tree: 2,314 entries / 2,205 blobs / 87 workflow files.
+- PR #1661: open/draft/mergeable; 1,055 changed files, 287,472 additions, 4,392 deletions; 49 workflow files and 1,006 other paths. Zero formal reviews, approvals or review threads.
+- Open PR inventory: 374 total; 360 drafts; 14 non-drafts; 366 target main; 8 target other bases.
+- Exact-head full CI on `a1e9e06`: **3,507 passed, 0 failed, 8 subtests, 61.35% coverage** against a 53% floor; 716 core tests passed; wheel build and installed Barrot V3/XRP mission verification passed.
+- Full CI [43204684272](https://github.com/Barrot-Agent/B-Agent/actions/runs/43204684272); dependency audit [43204684506](https://github.com/Barrot-Agent/B-Agent/actions/runs/43204684506), six manifests audited and zero known vulnerabilities reported; fail-closed gate [43204684398](https://github.com/Barrot-Agent/B-Agent/actions/runs/43204684398) passed with automatic merge disabled.
+- The new Run55 commit changes the ingestion workflow label and its matching test, plus evidence/handoff files. Its own exact-head CI is pending; do not transfer the 3,507-test result from `a1e9e06` to the new commit.
+
+## 2. XRP market and positioning
+
+**Spot, approximately 11:02 UTC**
+
+- OKX XRP-USDT event timestamp 11:02:15.769 UTC: last 1.0504, bid 1.0505, ask 1.0506; 24-hour high 1.0807, low 1.0373, volume approximately 34.334M XRP.
+- Kraken XRP/USD: last 1.04956, bid 1.04955, ask 1.04956; no provider event timestamp; 24-hour volume approximately 21.211M XRP.
+- Kraken USDT/USD midpoint approximately 0.99883. Normalized OKX midpoint approximately $1.049321 versus Kraken midpoint $1.049555, difference -0.0223%. Asynchronous observations; not an executable arbitrage signal. [OKX](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT) · [Kraken](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+
+**Spot depth — Fuelmaps, 08:00 UTC, six venues**
+
+- ±0.5%: $6.3M bids / $6.8M asks.
+- ±1%: $12.1M / $10.5M.
+- ±2%: $17.0M / $13.4M.
+- ±5%: $27.0M / $15.6M.
+- ±10%: $32.5M / $16.8M, only five of six venues.
+- Binance and Bitget are excluded. Orders are cancellable. Deeper resting depth is bid-skewed, but the near-mid 0.5% band is ask-skewed. [Fuelmaps snapshot](https://fuelmaps.io/order-book/).
+
+**Derivatives — source disagreement retained**
+
+- Alpha Finance 10:18 UTC: all-exchange notional OI $2.30B, 24-hour volume $2.01B; actual liquidations $3.0M long / $1.2M short. Its modeled short cluster is $3.3M at $1.0666 and modeled long cluster $3.3M at $1.0305; these are estimated pressure zones, not guaranteed liquidation prices.
+- Liqwall 11:02 UTC: OI $1.16B, +1.4%/24h; average funding +0.0098%/8h; Binance +0.0100%; 75.0% of Binance accounts long; $4.1M liquidations ($3.0M long / $1.1M short).
+- The OI totals differ materially because provider universes and contract coverage are not reconciled. Do not average them. Positive carry and long concentration imply squeeze/liquidation sensitivity, not a directional forecast. [Alpha](https://alphafinance.io/liquidation-heatmap/xrp/) · [Liqwall](https://liqwall.com/coins/xrp).
+
+**ETF and exchange flows**
+
+- XRP Insights as of November 11: six US spot funds plus BITW; three settled sessions November 9–11 net -9,213,260 XRP (approximately -$9.6M); holdings 1,185,967,427 XRP. Flow is computed from issuer-reported holding changes; excluded funds count as zero and latest rows can be re-settled. [XRP Insights](https://xrp-insights.com/data).
+- Alpha Finance's separate five-fund cohort through November 10: -$7.6M daily, -$18M over seven sessions, +$1.3M over 30 sessions, +$1.71B cumulative net inflows. Not the same cohort or cutoff. [Alpha ETF dashboard](https://alphafinance.io/etf/xrp/).
+- TrackWhale at 11:13 UTC: seven-day tracked exchange inflows 166.83M XRP, outflows 221.61M XRP, net -54.78M XRP; largest transfer 168.42M XRP remains unattributed. This is a large-transfer tracker, not comprehensive exchange reserves; internal and exchange-to-exchange movements are excluded. [TrackWhale](https://trackwhale.io/xrp-whale-tracker).
+
+**XRPL governance**
+
+- Ledger 108,280,811 around 11:08 UTC; 98 live amendments, 9 in-flight, zero in the 14-day activation countdown.
+- SingleAssetVault 23/35; LendingProtocol 22/35; LendingProtocolV1_1 22/35. All remain below the 29/35 threshold. Native XRPL lending is not activated.
+
+## 3. Collateral, custody and RLUSD
+
+- Coinbase cbXRP proof of reserves refreshed November 12 at 04:45 displayed time: 152,087,932.36 XRP reserves versus 152,085,685.83 cbXRP supply, 1:1 backing. This is custody-backed wrapping, not a new XRP purchase. [Coinbase proof of reserves](https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves).
+- A November 6 Morpho/Base snapshot showed 59.2M USDC debt against 119.9M cbXRP collateral across 1,070 positions. A further 5% oracle decline would put $3.23M debt within liquidation boundary; a further 10% decline would put $8.84M within boundary. The 5% set is included in the 10% set. These are conditional historical stress estimates, not completed liquidations or proof of native XRP sales. [CryptoSlate](https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/).
+- RLUSD on-chain: XRPL.to at 01:26 UTC reports $873.74M on XRPL and $1.81B on Ethereum, $2.69B across those two chains (32.5%/67.5%). StableRadar's 02:10 search snapshot reports $2.7014B because it includes approximately $16.1M on Base; its later page open returned stale cached data after a fetch error. The source freshness conflict is recorded, not averaged. [XRPL.to](https://xrpl.to/insights/rlusd-xrpl-vs-ethereum-supply) · [StableRadar](https://stableradar.com/coin/rlusd).
+- Ripple Mint's primary page lists eight networks, including Robinhood Chain, but its FAQ lists seven and omits Robinhood Chain. Treat Robinhood support as unresolved until Ripple reconciles its own page. Ripple also says Mint is an operational issuance/redemption layer, not a separate chain, wallet, exchange, custody product, payments network or general tokenization platform. [Ripple Mint](https://ripple.com/products/stablecoin/features/).
+- Implication: RLUSD supply growth is not equivalent to XRP demand; approximately two-thirds of the observed XRPL+Ethereum supply is on Ethereum.
+
+## 4. SBI, Coinbase, Ripple and Evernorth relationships
+
+**New SBI/SMBC relationship detail — primary PDF**
+
+- October 30 SBI Holdings–SMBC Group capital/business alliance explores stablecoin/RWA financial services.
+- SMBC Group agreed to take a **5% equity stake in SBI Startale Marketing**, the JV established by SBI Group and Startale to promote JPYSC and develop use cases. This is 5% of the marketing JV, not 5% of SBI Holdings or the JPYSC issuer.
+- SBI Startale Marketing's work is research, partner coordination and proof-of-concept; the announcement does not establish a production service.
+- [Primary SMBC release PDF](https://www.smbc.co.jp/news/pdf/j20261030_01.pdf).
+
+**SBI trust-bank reorganization**
+
+- SBI Shinsei Trust Bank issues JPYSC; SBI VC Trade distributes it.
+- On October 29, SBI announced an absorption merger in which SBI Shinsei Trust Bank survives and absorbs SBI Clearing Trust, planned for December 31 subject to FSA/Kanto Finance Bureau approvals.
+- Post-merger shareholders remain SBI Shinsei Bank 51% / SBI Holdings 49%; capital is expected to be ¥5.3B. This combines JPYSC issuance with digital-asset custody capability. [SBI primary release](https://www.sbigroup.co.jp/news/2026/1029_16692.html).
+- October 16 SBI/Startale Open Standard participation explores JPYSC/OUSD interoperability only; no production settlement/trading. Startale's page inconsistently says more than 200 members in the headline and more than 140 in the body. [Startale release](https://startale.com/en/news/openstandard-startale-sbi).
+- SBI's June 25 bitbank acquisition remains conditional on JFTC clearance and other conditions; no closing evidence was found in this run. [SBI release](https://www.sbigroup.co.jp/news/2026/0625_16429.html).
+
+**Coinbase collateral and Ripple Mint**
+
+- Coinbase's cbXRP is fully backed 1:1 by XRP custody, but it is a wrapped Base asset; its Morpho liquidation stress is distinct from native XRP ledger liquidations.
+- Ripple Mint's eight-vs-seven network inconsistency remains unresolved.
+- SBI's Open Standard membership creates an ecosystem connection to Coinbase as a founding Open Standard partner, not a direct SBI–Coinbase commercial contract.
+- Existing Ripple Prime/Nodal Clear access to Coinbase Derivatives XRP futures remains a derivatives-clearing relationship, not proof of spot buying.
+
+**Evernorth**
+
+- XRP Insights on-chain snapshot at 10:50 UTC, ledger 108,280,545: 103,129,905 XRP in 13 attributed wallets (21.8% of the 473,276,430 XRP company-reported closing treasury). Tracker reports 370,346,663 XRP moved outside the attributed wallet set, latest October 22. Unattributed destinations do not prove sale or loss of custody. [On-chain tracker](https://xrp-insights.com/xrp-radar/evernorth).
+- SEC's 73,688,162-share resale registration and SBI-controlled 11,790,952 registered shares remain potential shareholder supply, not proof of completed sales or new treasury capital. [SEC Form 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+## 5. Macro and identity research
+
+- Reuters November 12: Japan's October wholesale inflation 7.1% y/y; yen-based import prices +24.8%; USD/JPY reached 159.94 and Japanese officials warned about rapid moves/intervention risk. These are cross-asset liquidity inputs, not direct XRP demand. [Wholesale inflation](https://www.reuters.com/world/asia-pacific/japan-wholesale-inflation-accelerates-keeps-alive-boj-rate-hike-view-2026-11-12/) · [Yen intervention warning](https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/).
+- SBIC East/Central/West remain Tokyo/Nagoya/Osaka statutory SME investment companies, separate from SBI Holdings. ASK Coin has no verified XRPL deployment; “actual capital” remains non-standardized; Camilla/Kamilah Stevenson YouTube identity remains unverified, so no videos were attributed.
+
+## 6. Prediction engine, platforms and workflows
+
+- Implemented on integration: 47 public source definitions, 45 scheduled; read-only collector; SHA-256 content-addressed receipt/hash-chain prototype; point-in-time SQLite feature store; event timeline; deterministic scenario/counter-hypothesis assembly; four baselines; chronological walk-forward with purge/embargo; calibration and PSI drift diagnostics; fail-closed forecast ledger with Ed25519 evaluator attestation.
+- Production blockers: independent WORM anchor, replayable historical store, synchronized historical market/collateral data, production evaluator key, independent shadow outcomes and demonstrated out-of-sample lift.
+- **Forecast NOT_ISSUED.** Run55 web observations lack byte-exact RawReceiptArchive receipts and are model-ineligible.
+- Nine-platform map file is 1,188,373 bytes; GitHub connector returned empty content for this file and local retrieval failed due DNS. Preserve it; do not overwrite. Last verified status remains: ChatGPT/GitHub authenticated but overprivileged; Claude/Grok/Gemini/Codex/LunaRoute unverified; Copilot has no formal approval; Hugging Face last BUILD_ERROR; Databricks last HTTP 403; Kaggle untested. No external-model transfer.
+- All 49 changed workflow patches were inspected. The XRP collector is hourly/daily, main-only, read-only and uses finite GitHub artifact/cache retention—not WORM. Groq/external-model workflows are manual with explicit per-run confirmation and exact-main-SHA gates. Databricks overwrite/Kaggle download, paper-trader simulation, deployment and secret-rotation workflows are manually gated and were not triggered. Self-hosted brain sync is hard-disabled. No external side effect occurred.
+- Accuracy correction: workflow step `Upload immutable raw-source receipts` overstated the storage guarantee. Renamed to `Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)` and updated its ordering test. This does not create independent WORM storage.
+
+## 7. Backlog, security and merge decision
+
+- Exact overlap: #1660 940 identical / 32 different; #1643 661 / 9; #1640 234 / 46; #1642 0 / 7; #1653 4 shared differing + 3 source-only; #1655 5 shared differing + 3 source-only. Preserve all differing and unique work; no source PR closed.
+- GitHub connector permissions remain admin/maintain/push/pull/triage. Main branch-protection details return HTTP 403. Fallback ruleset #10863829 is disabled. GitHub Pages auto-publication authorization remains unresolved.
+- `.config/gh/hosts.yml` was not re-audited across the 17 previously affected PR branch tips in Run55; file contents remain unread and provider-side revocation unverified.
+- 1,006 non-workflow changed paths remain semantically unreviewed.
+
+**Decision: no merge.** PR #1661 remains draft with zero approvals/reviews. The Run55 commit requires its own exact-head CI; least privilege, branch-protection visibility, credential-owner revocation, Pages authorization and semantic review remain blockers.
+
+## 8. Next concrete action
+
+Verify exact-head full-suite, dependency, fail-closed and installed-wheel checks on the new Run55 commit. Then resolve least privilege, branch-protection visibility, credential-owner revocation and Pages side effects; retrieve the oversized nine-platform map through an authorized path; continue integrated semantic review. Keep forecast issuance disabled until independent WORM anchoring, shadow outcomes and measured out-of-sample lift pass.
+
+[Run55 structured artifact](research/xrp_intelligence/20261112T111300Z-run55-exact-head-ci-market-collateral-rlusd-sbi-and-workflow-audit.json)
+
+---
+
 # Run54 — Exact-head CI, XRP market/institutional refresh, workflow/security audit and backlog reconciliation
 
 **Capture start:** 2026-11-12T10:02:47Z.  

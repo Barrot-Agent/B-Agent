@@ -1,3 +1,30 @@
+## Run55 synchronization snapshot — 2026-11-12T11:13:00Z
+
+- Mission priority 1: XRP intelligence and prediction-engine mastery; preserve Barrot V3 execution, orchestration, safety and verification.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`. Integration pre-Run55 head: `a1e9e06c2fe2633f384bbdc0f8ece1090f34d589` (2,098 ahead / 0 behind).
+- Exact-head CI on `a1e9e06`: 3,507 passed, 0 failed, 8 subtests, 61.35% coverage; 716 core tests; wheel and installed mission verification passed. CI 43204684272; dependency audit 43204684506; fail-closed gate 43204684398. The new Run55 commit still needs its own exact-head CI.
+- PR #1661: open/draft/mergeable, 1,055 files, 49 workflows, 1,006 other paths, 287,472 additions, 4,392 deletions; zero reviews/approvals/threads. No merge.
+- Trees: main 1,388 entries/1,288 blobs/86 workflows; integration 2,314 entries/2,205 blobs/87 workflows. Open PRs: 374 (360 drafts, 14 non-drafts; 366 target main, 8 other bases).
+- XRP spot: OKX 1.0504 at 11:02:15.769 UTC; Kraken 1.04956 with no provider timestamp; normalized mid difference -0.0223%, asynchronous. Fuelmaps 08:00 six-venue depth shows near-mid ask skew but deeper bid skew; Binance/Bitget excluded.
+- Derivatives disagreement: Alpha 10:18 OI $2.30B vs Liqwall 11:02 OI $1.16B; different provider universes, not averaged. Funding positive, Binance long accounts 75%; long liquidations dominate.
+- ETF: XRP Insights Nov9–11 -9.213M XRP, 1.186B holdings; Alpha five-fund cohort through Nov10 -$7.6M daily, +$1.3M over 30 sessions. Different cohorts/cutoffs, not averaged.
+- TrackWhale 7d net tracked exchange flow -54.78M XRP; large transfers only, not comprehensive exchange reserves.
+- Coinbase cbXRP reserves 152.088M XRP vs 152.086M supply (1:1). Morpho Nov6 snapshot: 59.2M USDC debt /119.9M cbXRP collateral; 8.84M USDC conditional liquidation exposure under another 10% oracle decline, not completed liquidations.
+- RLUSD: XRPL.to 01:26 reports $873.74M XRPL / $1.81B Ethereum; StableRadar 02:10 includes Base and reports $2.701B total. Its later page open returned stale cached data; freshness conflict recorded. Ripple Mint lists eight networks but FAQ seven; Robinhood Chain discrepancy unresolved.
+- SBI: SMBC Group agreed to 5% of SBI Startale Marketing (not SBI Holdings/issuer); SBI Shinsei Trust Bank survives planned Dec31 merger with SBI Clearing Trust subject approvals, consolidating JPYSC issuance and digital custody. SBI/Startale JPYSC-OUSD is pilot exploration only. SBI/bitbank acquisition remains conditional.
+- Evernorth on-chain: 103.130M XRP in 13 attributed wallets (21.8% of 473.276M company-reported); 370.347M moved outside attributed set, not proof of sale.
+- Macro: Japan wholesale inflation 7.1% y/y, import prices +24.8%, USD/JPY 159.94; relevant liquidity inputs, not XRP-specific demand.
+- 49 changed workflow patches reviewed. External-model, Databricks/Kaggle, paper-trading, deployment and secret-rotation workflows are manual/explicitly gated; none triggered. XRP collector is main-only/read-only; GitHub artifact retention is not WORM.
+- Workflow accuracy fix: renamed “Upload immutable raw-source receipts” to “Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)” and updated matching test.
+- Nine-platform map JSON is 1,188,373 bytes and connector fetch returned empty content; local DNS retrieval failed. Preserve, do not overwrite. Last verified auth map: only ChatGPT/GitHub tested; permissions overprivileged; other providers unverified/last-known errors. No external-model transfer.
+- Overlap: #1660 940 identical/32 different; #1643 661/9; #1640 234/46; #1642 0/7; #1653 4 differing shared +3 source-only; #1655 5 differing shared +3 source-only. Preserve all unique/differing work.
+- Blockers: branch-protection detail HTTP 403; fallback ruleset disabled; GitHub connector admin/maintain/push/pull/triage; Pages authorization unresolved; prior 17-branch credential path audit not repeated; provider revocation unverified; 1,006 non-workflow paths still need semantic review.
+- Forecast status: NOT_ISSUED. Run55 web data lacks byte-exact RawReceiptArchive receipts and is model-ineligible.
+- Artifact: `research/xrp_intelligence/20261112T111300Z-run55-exact-head-ci-market-collateral-rlusd-sbi-and-workflow-audit.json`.
+
+Next action: verify exact-head CI on the new Run55 commit; resolve least privilege/branch protection/credential revocation/Pages authorization; retrieve the oversized platform map through an authorized path; continue integrated semantic review. Keep forecasts disabled.
+---
+
 ## Run54 synchronization snapshot — 2026-11-12
 
 - Mission priority 1: XRP intelligence and prediction-engine mastery. Preserve Barrot V3 execution, orchestration, safety and verification.

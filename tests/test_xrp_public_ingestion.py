@@ -975,7 +975,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     cleanup = "rm -f artifacts/xrp_ingestion/feature_store.sqlite3"
     assert cleanup in fallback
     assert fallback.index(cleanup) < fallback.index('while [[ "$page"')
-    assert workflow.index("Upload immutable raw-source receipts") < workflow.index("Upload per-run point-in-time feature-store checkpoint") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
+    assert workflow.index("Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)") < workflow.index("Upload per-run point-in-time feature-store checkpoint") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.count("actions/cache/save@v4") == 1
     cache_save_step = workflow.split(

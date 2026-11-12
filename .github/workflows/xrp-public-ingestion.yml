@@ -114,7 +114,7 @@ jobs:
           --output-dir artifacts/xrp_ingestion
           --walk-forward-horizons "$WALK_FORWARD_HORIZONS"
           --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
-      - name: Upload immutable raw-source receipts
+      - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
         uses: actions/upload-artifact@v7
         with:
           name: xrp-public-raw-${{ github.run_id }}
