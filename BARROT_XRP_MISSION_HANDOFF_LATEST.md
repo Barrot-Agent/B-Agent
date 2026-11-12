@@ -1,3 +1,139 @@
+# Run57 — 2026-11-12T13:11:31Z — exact-head CI, market refresh and workflow safety
+
+## Repository and exact-head verification — VERIFIED
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Existing integration branch head before this handoff: `5fdb6d33a249f41423f65bd18583b4c08a056801`; **2,106 ahead / 0 behind**.
+- Main tree: 1,388 entries; integration tree: 2,318 entries.
+- PR #1661: 1,059 changed files, 49 workflow files, 1,010 other paths; open, draft, reported mergeable; zero formal reviews, approvals or review threads.
+- Open PR inventory: 374 total, 360 drafts, 14 non-drafts; 366 target main and eight target other branches.
+
+**Exact current-head checks on `5fdb6d33a249f41423f65bd18583b4c08a056801`:**
+
+- [Full CI 43222339630](https://github.com/Barrot-Agent/B-Agent/actions/runs/43222339630): 3,507 passed, zero failed, eight subtests; 61.35% broad coverage against 53% floor; 76% rounded core coverage against 70% floor; 85.99 seconds.
+- Core Tests job passed; wheel build and installed-wheel verification passed for Barrot V3, XRP mission and canonical assets.
+- [Dependency audit 43222339994](https://github.com/Barrot-Agent/B-Agent/actions/runs/43222339994): six manifest groups passed; zero known vulnerabilities reported.
+- [Fail-closed PR gate 43222339754](https://github.com/Barrot-Agent/B-Agent/actions/runs/43222339754) passed; automatic merge disabled.
+- Push audit 43222330510 and fail-closed gate 43222330421 passed on the same SHA.
+- Non-failing packaging warnings remain for deprecated `project.license` TOML and package discovery of `barrot_agent.data.missions` / `data.research`.
+
+No predecessor-head result is substituted for this exact-head verification.
+
+## XRP spot, depth and derivatives — MODEL-INELIGIBLE WEB/API OBSERVATIONS
+
+**Spot capture 13:11:31 UTC**
+
+- OKX XRP-USDT: last 1.0365; bid 1.0365; ask 1.0366; 24h open 1.0560, high 1.0807, low 1.0331; volume 33.93M XRP / 35.84M USDT. Provider timestamp 13:07:57.652 UTC, 214 seconds old at capture.
+- Kraken XRP/USD: last 1.03603; bid 1.03625; ask 1.03630; 24h open 1.05104, high 1.07953, low 1.03179; volume 21.03M XRP. Kraken supplied no event timestamp.
+- Kraken USDT/USD midpoint 0.998715. Normalized OKX midpoint $1.035218 versus Kraken midpoint $1.036275: approximately -0.102%. Asynchronous comparison, not executable arbitrage.
+- Returns from each venue's own 24h open: OKX -1.85%; Kraken -1.43%.
+
+Sources: [OKX](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [Kraken USDT/USD](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+**Fuelmaps spot depth, 09:00 UTC, six-venue aggregate**
+
+| Band | Bids | Asks | Bid share | Coverage |
+|---|---:|---:|---:|---:|
+| ±0.5% | $7.2M | $6.2M | 53.7% | 6/6 |
+| ±1% | $12.8M | $10.3M | 55.4% | 6/6 |
+| ±2% | $17.9M | $12.9M | 58.1% | 6/6 |
+| ±5% | $28.1M | $15.6M | 64.3% | 6/6 |
+| ±10% | $33.4M | $16.8M | 66.5% | 5/6 |
+
+Mid $1.0436. Binance and Bitget are excluded. This snapshot is about four hours old; resting orders are cancellable. [Fuelmaps](https://fuelmaps.io/order-book/).
+
+**Derivatives disagreement**
+
+- Liqwall, 12:42 UTC: OI $1.15B (+1.5%/24h); average funding +0.0082%/8h, Binance +0.0077%; $6.2M liquidations, $5.1M long and $1.1M short; Binance accounts 75.4% long, top traders 67.3% long, Hyperliquid accounts 52.8% long.
+- Alpha Finance, 12:52 UTC: OI $2.27B, 24h volume $2.09B, $5.2M long and $1.2M short liquidations. Its model estimates $66.0M short-liquidation clusters above and $35.2M long-liquidation clusters below; these are not guaranteed forced orders.
+- Basis, Binance XRPUSDT perpetual, 10:11 UTC: OI $319M, 24h volume $570M, funding +0.0097%/8h, depth within ±0.5% $15.4M.
+
+Sources: [Liqwall](https://liqwall.com/coins/xrp), [Alpha Finance](https://alphafinance.io/liquidation-heatmap/xrp/), [Basis](https://www.basischarts.com/order-flow/xrp-usdt).
+
+Do not average the $1.15B, $2.27B and $319M OI observations; their exchange/contract universes differ. Both broad aggregators show long liquidations exceeding shorts. Counter-hypotheses: crowded longs can accelerate downside if bids withdraw; the earlier six-venue bid-heavy spot book may absorb selling if depth persists. The four-hour-old spot book cannot resolve the current outcome.
+
+## ETF flows — scope and vintage disagreement preserved
+
+- CryptoKeyhole, updated 12:37 UTC: November 11 partial flow -3,322 XRP, three of four daily-collected funds reported; Franklin XRPZ pending. November 9 incomplete because TOXR did not publish a comparable figure. The page labels November 6 (-752,048 XRP) the latest complete day while its table also shows November 10 as 4/4 with -3,322 XRP and TOXR marked “new”; preserve this internal inconsistency.
+- XRP Insights: November 9–10 net flow -9,568,334 XRP; 1,185,612,353 XRP held as of November 10; November 11 remains provisional.
+- Alpha Finance five-fund cohort: November 10 -$7.6M; +$1.3M over 30 sessions; +$1.71B cumulative.
+- ByKaranteli six-fund cohort: November 10 -$7.6M; +$1.79B cumulative; $1.19B net assets.
+
+Sources: [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/), [XRP Insights](https://xrp-insights.com/data), [Alpha Finance](https://alphafinance.io/etf/xrp/), [ByKaranteli](https://bykaranteli.com/etf/xrp). Different fund universes, settlement dates and methods are not averaged; issuer files are shared upstream inputs, not independent confirmations.
+
+## XRPL governance and macro
+
+- XRPL Dashboard at 07:11 UTC: 35 validators heard, 29 required; SingleAssetVault 23, LendingProtocol 22, LendingProtocolV1_1 22. All below threshold; no 14-day activation countdown. [Dashboard](https://xrpldashboard.com/amendments).
+- Reuters, November 12: DXY 102.80 after 102.88; USD/JPY 159.62, nearing 160 amid hawkish Fed repricing. Japan's October import-price index +24.8% y/y; prior intervention ¥15.4T over July 30–August 3.
+- Brent $92.39 (-0.4%) and WTI $86.16 (-0.43%); Hormuz shipping risk persists while OPEC+ output and diplomacy offset part of the supply premium.
+
+Sources: [Reuters dollar/yen](https://www.reuters.com/world/asia-pacific/dollar-near-one-month-high-yen-edges-toward-160-2026-11-12/), [Reuters yen intervention](https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/), [Reuters oil/geopolitics](https://www.reuters.com/business/energy/oil-prices-drop-more-than-1-hopes-iran-ukraine-peace-talks-pressure-markets-2026-11-12/). These are macro variables, not XRP-specific demand signals.
+
+## Institutional relationships
+
+- Circle's Arc founding validator cohort includes SBI Group; SBI describes its validator role alongside USDC distribution and JPYSC work. This is a Circle Arc/stablecoin-rail relationship, not XRP purchase or settlement evidence. [Circle primary release](https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx).
+- Ripple and Coinbase announced RLUSD availability across Coinbase Prime, Exchange and retail, with XRPL, Base and Ethereum support. Coinbase Global Exchange collateral support was described as forthcoming, not live. RLUSD distribution is not XRP demand. [Ripple primary release](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- Ripple's national trust-bank charter is distinct from Standard Custody & Trust Company, which remains RLUSD's issuer; a national trust bank is not an ordinary deposit-taking commercial bank. [The Block](https://www.theblock.co/news/regulation/2026-10-26-ripple-gains-final-occ-approval-rlusd).
+- SBI Holdings and SMBC Group announced a stablecoin/financial-services alliance; SBI Startale Marketing equity participation is not ownership of SBI Holdings, SBI Shinsei Trust Bank or the JPYSC issuer. [SBI primary release](https://www.sbigroup.co.jp/news/2026/1030_16698.html).
+
+## Main-branch workflow safety — no dispatch
+
+Run56D's main-versus-integration audit identified three unsafe manual-only main workflows:
+
+1. `knowledge-signal-cycle-btc.yml`: `contents:write`, Groq secret, direct commit/push to main, no per-run confirmation or exact-main-SHA gate.
+2. `capability-1-market-analysis.yml`: Groq and Databricks credentials, generated output committed/pushed to main, no per-run confirmation or exact-SHA gate.
+3. `capability-9-data-resolver.yml`: Groq-backed resolution, direct commit/push to main, no per-run confirmation or exact-SHA gate.
+
+They are `workflow_dispatch` only, not scheduled. Integration quarantines them with `permissions: {}` and `if: false`; main versions remain active until reviewed merge. No dispatch occurred. Main also has residual manual workflow gaps; integration hardens/quarantines several but entity-relations and content-pipeline still lack exact-SHA validation. Main has no XRP collector/schedule. A main push triggers public Pages publication; authorization remains unresolved.
+
+## Prediction engine
+
+Implemented on integration: 47 public source definitions (45 scheduled); allowlisted read-only collector; SHA-256 raw-source receipts/hash-chain prototype; point-in-time SQLite feature store; point-in-time feature validation; four deterministic baselines; chronological walk-forward testing with purge/embargo; calibration and PSI drift diagnostics; event timeline and scenario/counter-hypothesis assembly; fail-closed forecast ledger requiring trusted Ed25519 evaluator attestation and verified feature snapshots.
+
+Still missing: independent WORM/trusted timestamp anchoring; replayable historical raw publisher bytes; synchronized spot/L2/derivatives/flows/collateral history; candidate model that beats every baseline on independent chronological holdout; production evaluator trust root; adequate independent shadow outcomes; successful main-branch ingestion. The 47-event curated registry has zero raw-source SHA-256 receipts and is model-ineligible. GitHub artifacts/cache are not WORM.
+
+**Forecast NOT_ISSUED.** No directional forecast, paper trade or real-money action.
+
+## Nine-platform capability/authentication map
+
+New snapshot: [nine_platform_capability_authentication_dataflow_map_run57.json](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run57.json).
+
+- ChatGPT/GitHub: authentication and read/write data flow verified this run; permissions include admin, maintain, push, pull and triage and are overprivileged.
+- Claude, Grok, Gemini and Codex: authentication/data flow unverified.
+- Copilot: no formal PR approval; no independent authenticated data flow verified.
+- Hugging Face: last-known BUILD_ERROR; not retested.
+- Kaggle: untested; no submission.
+- Databricks: last-known HTTP 403; not retested.
+- LunaRoute endpoint: live authentication/data flow unverified.
+- No external-model data transfer occurred.
+
+## Backlog reconciliation
+
+| Source PR | Shared changed paths | Identical blobs | Different blobs | Classification |
+|---|---:|---:|---:|---|
+| #1660 | 972/972 | 940 | 32 | Superseded candidate; review 32 differing blobs |
+| #1643 | 670/670 | 661 | 9 | Research supersession candidate; review nine differing blobs |
+| #1640 | 280/280 | 234 | 46 | Superseded candidate; review 46 differing blobs |
+| #1642 | 7/7 | 0 | 7 | Prediction-gate semantics present in #1661; exact source diffs still require review |
+| #1653 | 1/7 | — | — | Preserve six unique repository-graph paths |
+| #1655 | 5/8 | — | — | Preserve three unique structural-analysis/source-catalog paths |
+| #1659 | 2/6 | — | — | Preserve four unique Termux/local-Llama paths |
+
+No source PR was closed. Path overlap or identical blobs do not authorize closure before a successor is merged and verified on main.
+
+## Merge decision and next action
+
+PR #1661 remains draft with zero formal approvals/reviews. Main reports protected=true, but detailed branch-protection access returns HTTP 403; fallback ruleset #10863829 is disabled and the branch object exposes an empty required-check context list. GitHub connector permissions are overprivileged. Credential-owner revocation remains unverified. Pages publication on main push lacks authorization. 1,010 non-workflow paths and remaining workflow diffs need integrated semantic review.
+
+**No merge.** Continue semantic reconciliation of the 32 #1660, nine #1643, 46 #1640 and seven #1642 differing blobs; preserve unique #1653/#1655/#1659 work. Resolve branch-protection visibility, least privilege, credential-owner revocation and Pages authorization. Keep forecast issuance disabled until independent anchoring, replayable data, candidate-versus-baseline out-of-sample lift and shadow outcomes pass.
+
+No main write, workflow dispatch, secret read/rotation/revocation, deployment, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+---
+
+
+---
+
 # Run56D — 2026-11-12T12:55:00Z — main-branch workflow safety reconciliation and market freshness audit
 
 ## Main-versus-integration workflow reconciliation — VERIFIED

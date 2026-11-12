@@ -1,3 +1,28 @@
+# Run57 exact-head and research handoff — 2026-11-12T13:11:31Z
+
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration head before this handoff `5fdb6d33a249f41423f65bd18583b4c08a056801`; 2,106 ahead / 0 behind.
+- PR #1661: draft, 1,059 files, 49 workflows, zero formal reviews/approvals.
+- Exact-head CI 43222339630: 3,507 passed, zero failed, eight subtests; 61.35% broad coverage; wheel/install verification passed.
+- Dependency audit 43222339994 and fail-closed PR gate 43222339754 passed; push audit/gate 43222330510/43222330421 passed.
+- Spot capture: OKX 1.0365 USDT (provider time 13:07:57.652Z); Kraken 1.03603 USD, no provider timestamp; normalized midpoint gap -0.102%. Web observations remain model-ineligible without RawReceiptArchive receipts.
+- Fuelmaps 09:00 six-venue spot depth: ±1% $12.8M bids / $10.3M asks. Liqwall 12:42 OI $1.15B; Alpha 12:52 OI $2.27B; do not average. Long liquidations dominate both.
+- ETF: November 11 partial -3,322 XRP (3/4 funds); November 9 incomplete; provider internal latest-complete-day inconsistency retained.
+- XRPL lending amendments remain below 29/35; no activation countdown.
+- Main still has three unsafe manual Groq/write workflows; integration quarantines them. No dispatch occurred.
+- Nine-platform map: only ChatGPT/GitHub authentication/data flow verified; permissions overprivileged. Other platform states are unverified or last-known failures.
+- Source reconciliation: #1660 32 differing blobs; #1643 nine; #1640 46; #1642 seven; preserve unique #1653/#1655/#1659 work.
+- Forecast NOT_ISSUED; 47 curated events have zero raw-source receipts; no WORM, candidate-model lift or independent shadow outcomes.
+- No merge. Blockers: formal approvals, branch-protection visibility, least privilege, credential-owner revocation, Pages authorization and semantic review.
+
+Canonical detailed handoff: [BARROT_XRP_MISSION_HANDOFF_LATEST.md](BARROT_XRP_MISSION_HANDOFF_LATEST.md)
+Run57 research artifact: [20261112T131131Z-run57-exact-head-ci-live-market-etf-and-main-workflow-risk-reconciliation.json](research/xrp_intelligence/20261112T131131Z-run57-exact-head-ci-live-market-etf-and-main-workflow-risk-reconciliation.json)
+Nine-platform map: [nine_platform_capability_authentication_dataflow_map_run57.json](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run57.json)
+
+---
+
+
+---
+
 ## Run56D — 2026-11-12T12:55:00Z — main-branch workflow safety reconciliation
 
 - Main still exposes three legacy manual workflows that can send data to Groq and write directly to main without per-run confirmation or exact-main-SHA validation: `knowledge-signal-cycle-btc.yml`, `capability-1-market-analysis.yml`, `capability-9-data-resolver.yml`. They are manual-only, not scheduled, and were not dispatched.
