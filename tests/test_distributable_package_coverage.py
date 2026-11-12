@@ -298,7 +298,7 @@ def test_data_health_topology_schema_checks_and_persistence(tmp_path, monkeypatc
     topology = data_health_check.get_topology()
     assert topology["summary"]["healthy"] is True
     assert topology["assets"]["merge_conflict"]["record_count"] == 1
-    assert data_health_check.run_health_check(verbose=False) is True
+    assert data_health_check.run_health_check(verbose=True) is True
     output = tmp_path / "topology.json"
     assert data_health_check.save_topology(str(output)) == str(output)
     assert json.loads(output.read_text(encoding="utf-8"))["summary"]["healthy"] is True
