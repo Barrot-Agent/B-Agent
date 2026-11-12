@@ -1914,3 +1914,66 @@ Main is protected=true, but detailed branch protection returns HTTP403; the only
 Next action: prioritize semantic review of V3 runtime, ingestion, feature store, forecast ledger, 49 workflow changes and public interfaces; resolve least privilege, branch-protection visibility, credential-owner revocation evidence and Pages side-effect authorization. Keep forecast issuance disabled until independent receipt anchoring, mature shadow/OOS evidence and a trusted evaluator key pass.
 
 No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run39 SEC shareholder and actual-capital reconciliation — primary-source correction
+
+The SEC's November 9, 2026 Form 424B3 and same-day EFFECT notice materially deepen the Ripple/SBI/Evernorth relationship map. The EFFECT record shows effectiveness at **16:00 UTC on November 9**; the 424B3 was accepted at 16:18:57 UTC. This is a registered resale/conversion prospectus, not a new primary capital raise.
+
+### Registered equity is not current float
+
+The prospectus registers up to **73,688,162 Class A shares**, composed of:
+
+- 19,102,635 already issued Class A shares;
+- 31,392,746 potential shares on conversion of Class C;
+- 22,953,128 potential shares on redemption/exchange of Company Units;
+- 239,653 potential shares on Sponsor Warrant exercise;
+- plus 239,653 Sponsor Warrants themselves at $11.50.
+
+As of October 22, 2026, Evernorth had 26,094,680 Class A shares outstanding. The 73.688M registration is about 2.82 times that count, but **54.586M of the registered share amount is not currently issued Class A**. Class C and Company Unit conversions are subject to ownership and transfer restrictions and may never occur. The SEC says it cannot predict whether selling holders will sell any or all of the registered securities.
+
+### Direct Ripple and SBI selling-securityholder positions
+
+The SEC table identifies:
+
+| Selling holder | Shares registered | Current/underlying structure |
+|---|---:|---|
+| Ripple Labs Inc. | 18,139,927 | 1,678,382 Class A + 16,461,545 Company Units |
+| Arrington XRP Capital Fund, LP | 33,822,498 | 4,704,137 Class A + 29,033,708 Class C + 84,653 warrant shares |
+| Larsen Lam Children's Remainder Trust | 7,153,450 | 661,867 Class A + 6,491,583 Company Units |
+| SBI Holdings USA, Inc. | 8,162,967 | 6,529,787 Class A + 1,633,180 Class C |
+| SBI Venture Fund 2023A | 247,603 | 198,065 Class A + 49,538 Class C |
+| SBI Venture Fund 2023B | 357,061 | 285,623 Class A + 71,438 Class C |
+| SBI PE Holdings Co., Ltd. | 3,023,321 | 2,418,439 Class A + 604,882 Class C |
+
+The four SBI-controlled entities therefore total **11,790,952 registered shares**, comprising **9,431,914 existing Class A** and **2,359,038 Class C**. The SEC identifies them as subsidiaries or partnerships directly/indirectly managed by SBI Holdings. This is SBI Holdings exposure, not SBIC East/Central/West.
+
+The prospectus says SBI's group voting power/ownership was approximately 39.9% immediately after closing and applies a 39.9% cap to relevant Class C conversion. Class C is non-voting and transfer-restricted. SBI Holdings USA's voting/dispositive power is exercised by its board (Shohei Yamada and Yoshihiko Tezuka); SBI Investment is general partner of the 2023A/2023B funds, with Yoshitaka Kitao holding voting/investment control; SBI PE Holdings' board includes Yoshitaka Kitao, Takeshi Goto and Kenji Uesaka.
+
+### RippleWorks, Arrington and Chris Larsen — indirect control chain
+
+RippleWorks is a separate nonprofit foundation, not Ripple Labs. It contributed **211,319,096.061435 XRP** to Arrington XRP Capital Fund, LP under a Series C subscription requiring the Sponsor to invest all contributed XRP for Evernorth shares. RippleWorks holds a majority of Sponsor limited-partner interests. Of the Sponsor's registered shares, **4,215,479 DAT Side Pocket shares** were acquired with RippleWorks' XRP contribution; Arrington must follow RippleWorks' written voting instructions and obtain prior written consent for specified dispositions. J. Michael Arrington controls the Sponsor's other registrable securities.
+
+The SEC states that Chris Larsen co-founded RippleWorks, sits on its board and is Ripple's co-founder/executive chairman. It expressly identifies potential conflicts between his Ripple duties, influence over RippleWorks' Sponsor investment and Evernorth stockholders. This is an SEC-disclosed governance relationship, not an inference that Ripple controls every Sponsor share.
+
+### Lock-up and transferability nuance
+
+The SEC's express Lock-Up Agreement description names Ripple, the Sponsor and the Contributor Related Party Entity; the six-month anniversary of the October 9 closing is **April 9, 2027**, unless an earlier qualifying transaction occurs, subject to exceptions. The securities description says Class A is generally freely transferable, while specifically identifying Ripple and Sponsor Class A as locked. SBI is not named in the explicit Lock-Up Agreement party list; however, the selling-securityholder section also refers generally to applicable lock-up provisions. Therefore treat SBI's 9.432M existing Class A shares as a **potential near-term XRPN resale overhang requiring separate agreement/transfer-agent verification**, not as confirmed freely tradable shares or completed sales. Do not assume the SBI Class C shares are immediately convertible.
+
+### Actual capital: exact XRP and cash sources
+
+The SEC filing reconciles the closing treasury to approximately **473,276,430 XRP**:
+
+- 84,365,876 XRP purchased using the $214.05M advance-funding cash pool (average purchase price approximately $2.53657058 per XRP);
+- 211,319,096 XRP contributed by RippleWorks through Arrington Sponsor;
+- 126,791,458 XRP contributed directly by Ripple Labs to Pathfinder;
+- 50,000,000 XRP contributed by the Ripple-affiliated Larsen Lam Children's Remainder Trust;
+- 600,000 XRP from advance-funding subscribers and 200,000 XRP from delayed-funding subscribers.
+
+Total in-kind XRP contributions are approximately **388,910,554 XRP**; adding the 84,365,876 cash-purchased XRP reconciles to the reported closing treasury. Gross closing cash was approximately $272.6M before transaction expenses, comprising $214.05M advance funding, $10.5M delayed funding and approximately $48M trust-account cash. SBI's announced $200M commitment is included within the $214.05M advance-funding pool, not additive; subscriber-level allocation is not disclosed.
+
+This is the operational definition of actual capital for this transaction: cash raised, cash actually deployed into XRP, in-kind XRP, debt, facilities, contingent ELOC capacity and secondary equity resales are separate categories. The 73.688M resale registration generates **no proceeds for Evernorth**; only Sponsor Warrant exercise could provide up to approximately $2.8M. The separate Cantor ELOC covers up to 5,218,935 new shares and is a different primary equity facility. The $30M 4% PIK note is separate debt, not equity or proof of XRP deployment.
+
+**Impact distinction:** this filing creates a potentially material XRPN equity-supply/dilution and NAV-per-share overhang, especially the SBI group's existing Class A block if transferable. It does not create XRP token supply and does not establish that Evernorth, Ripple or SBI sold XRP. The reported 23.5% XRPN decline on November 10 is secondary market context, not proof that the prospectus caused the move or that any registered holder completed a sale.
+
+Primary sources: [SEC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm), [SEC EFFECT notice](https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/primary_doc.xml), [SEC filing detail](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/0001628280-26-072223-index.htm).

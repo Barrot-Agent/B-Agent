@@ -12,47 +12,48 @@
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_branch": "integration/xrp-v3-unified-main-20261111",
     "parent_head": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
-    "commits_ahead": 2065,
+    "commits_ahead": 2066,
     "commits_behind": 0,
-    "integration_tree_entries": 2289,
+    "integration_tree_entries": 2290,
     "main_tree_entries": 1388,
     "pr_number": 1661,
     "pr_state": "open",
     "pr_draft": true,
     "pr_mergeable_reported": true,
-    "changed_files": 1029,
+    "changed_files": 1030,
     "changed_workflow_files": 49,
-    "changed_nonworkflow_files": 980,
+    "changed_nonworkflow_files": 981,
     "open_prs": 374,
     "draft_prs": 360,
-    "non_draft_prs": 14
+    "non_draft_prs": 14,
+    "integration_head_before_final_sec_addendum": "ca91ed66918d3c2b0429909bfa77c5fa007d5098"
   },
   "verification": {
-    "exact_tested_head": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
-    "ci_run_id": 43123398300,
-    "full_suite_job_id": 130869264786,
+    "exact_tested_head": "ca91ed66918d3c2b0429909bfa77c5fa007d5098",
+    "ci_run_id": 43125273746,
+    "full_suite_job_id": 130875649044,
     "full_suite": {
       "passed": 3452,
       "failed": 0,
       "subtests_passed": 8,
       "coverage_percent": 59.99,
-      "duration_seconds": 93.09
+      "duration_seconds": 55.68
     },
     "core_suite": {
-      "passed": 714,
-      "failed": 0
+      "status": "passed",
+      "tests": 714
     },
     "wheel_build": "passed",
     "installed_wheel": "verified Barrot V3, XRP mission and canonical data assets",
-    "dependency_audit_run_id": 43123398294,
-    "dependency_audit_job_id": 130869369665,
+    "dependency_audit_run_id": 43125273889,
+    "dependency_audit_job_id": 130875649974,
     "dependency_manifests": 6,
     "known_vulnerabilities_reported": 0,
-    "fail_closed_gate_run_id": 43123398296,
+    "fail_closed_gate_run_id": 43125273757,
     "fail_closed_gate": "passed",
     "latest_main_cross_analysis_run_id": 43123012231,
     "latest_main_cross_analysis": "passed",
-    "exact_head_scope": "The 3,452/0 result is on 694786f. Any later handoff-only commit requires its own exact-head CI."
+    "scope": "All results are exact-head verified on ca91ed. The final SEC handoff commit below is documentation/evidence-only and requires its own exact-head CI."
   },
   "latest_commit": {
     "sha": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
@@ -190,6 +191,149 @@
       "reported_share_passed_on_percent": 87,
       "ellipitic_reported_route": "Most transferred XRP was swapped into BTC through THORChain",
       "limitation": "Ledger transfers and swaps do not identify ultimate buyers or prove fiat cash-out. A reduction in the attacker's concentrated balance is not proof of net market buying or price support."
+    },
+    "evernorth_shareholder_resale_structure": {
+      "effective_registration": {
+        "form": "EFFECT",
+        "file_number": "333-299739",
+        "effective_at_utc": "2026-11-09T16:00:00Z",
+        "primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/primary_doc.xml"
+      },
+      "prospectus": {
+        "form": "424B3",
+        "accession": "000162828026072223",
+        "accepted_at_utc": "2026-11-09T16:18:57Z",
+        "registered_class_a_shares": 73688162,
+        "class_a_outstanding_as_of_2026_10_22": 26094680,
+        "registered_to_outstanding_multiple": 2.8238768
+      },
+      "aggregate_composition": {
+        "issued_class_a": 19102635,
+        "class_c_conversion_shares": 31392746,
+        "company_unit_redemption_or_exchange_shares": 22953128,
+        "sponsor_warrant_exercise_shares": 239653,
+        "separate_sponsor_warrants": 239653,
+        "warrant_exercise_price_usd": 11.5,
+        "maximum_gross_warrant_exercise_proceeds_usd": 2756009.5
+      },
+      "selling_securityholders": [
+        {
+          "name": "Ripple Labs Inc.",
+          "registered_shares": 18139927,
+          "existing_class_a": 1678382,
+          "company_units_convertible": 16461545,
+          "relationship": "Former parent of Pathfinder/Evernorth before the business combination; contributor group subject to 9.9% ownership restriction; Class A transfer lock-up described for Ripple until the earlier of six months after 2026-10-09 (2027-04-09) or a qualifying corporate transaction, subject to exceptions."
+        },
+        {
+          "name": "Arrington XRP Capital Fund, LP",
+          "registered_shares": 33822498,
+          "existing_class_a": 4704137,
+          "class_c_convertible": 29033708,
+          "warrant_exercise_shares": 84653,
+          "relationship": "Sponsor. J. Michael Arrington has sole voting/dispositive power over sponsor securities except the DAT Side Pocket shares. Sponsor voting ownership capped at 19.9%; sponsor is named in the six-month lock-up."
+        },
+        {
+          "name": "Larsen Lam Children's Remainder Trust",
+          "registered_shares": 7153450,
+          "existing_class_a": 661867,
+          "company_units_convertible": 6491583,
+          "relationship": "Ripple-affiliated Contributor Related Party Entity; contributed 50,000,000 XRP; units subject to the 9.9% Contributor Group ownership restriction; named in the lock-up framework."
+        },
+        {
+          "name": "SBI Holdings USA, Inc.",
+          "registered_shares": 8162967,
+          "existing_class_a": 6529787,
+          "class_c_convertible": 1633180,
+          "relationship": "SBI-controlled entity. Voting/dispositive power exercised by board members Shohei Yamada and Yoshihiko Tezuka."
+        },
+        {
+          "name": "SBI Venture Fund 2023A Investment LPS",
+          "registered_shares": 247603,
+          "existing_class_a": 198065,
+          "class_c_convertible": 49538,
+          "relationship": "SBI-controlled Japanese investment partnership; SBI Investment is general partner; Yoshitaka Kitao has voting/investment control."
+        },
+        {
+          "name": "SBI Venture Fund 2023B Investment LPS",
+          "registered_shares": 357061,
+          "existing_class_a": 285623,
+          "class_c_convertible": 71438,
+          "relationship": "SBI-controlled Japanese investment partnership; SBI Investment is general partner; Yoshitaka Kitao has voting/investment control."
+        },
+        {
+          "name": "SBI PE Holdings Co., Ltd.",
+          "registered_shares": 3023321,
+          "existing_class_a": 2418439,
+          "class_c_convertible": 604882,
+          "relationship": "SBI-controlled entity; board members Yoshitaka Kitao, Takeshi Goto and Kenji Uesaka share voting/dispositive power."
+        },
+        {
+          "name": "Payward, Inc.",
+          "registered_shares": 250000,
+          "relationship": "Kraken parent entity named as selling securityholder."
+        },
+        {
+          "name": "Pantera DAT Opportunities Master Fund SP",
+          "registered_shares": 604664,
+          "relationship": "Pantera-managed fund named as selling securityholder."
+        },
+        {
+          "name": "GSR Markets Switzerland GmbH",
+          "registered_shares": 500000,
+          "relationship": "GSR-affiliated entity named as selling securityholder."
+        },
+        {
+          "name": "gumi Inc.",
+          "registered_shares": 302332,
+          "relationship": "Japanese public company named as selling securityholder."
+        }
+      ],
+      "sbi_group_total": {
+        "registered_shares": 11790952,
+        "existing_class_a": 9431914,
+        "class_c_convertible": 2359038,
+        "ownership_cap_or_reported_group_voting_power": "approximately 39.9% at/after closing as described in the prospectus; Class C conversion is subject to the 39.9% SBI Group Maximum Ownership Restriction and may be blocked or never occur"
+      },
+      "rippleworks_arrington_relationship": {
+        "rippleworks_role": "Nonprofit foundation and majority limited partner of Arrington XRP Capital Fund sponsor as of the prospectus",
+        "xrp_contribution_to_sponsor": 211319096.061435,
+        "sponsor_obligation": "invest all XRP received from RippleWorks for Pubco shares",
+        "dat_side_pocket_shares": 4215479,
+        "dat_side_pocket_rights": "RippleWorks receives voting instructions and prior written consent rights for certain dispositions; it may be deemed to share voting/dispositive power over these shares",
+        "other_sponsor_control": "J. Michael Arrington exercises sole voting/dispositive power over other sponsor registrable securities",
+        "chris_larsen_link": "Chris Larsen co-founded RippleWorks, serves on its board and is Ripple co-founder/executive chairman; the SEC identifies potential conflicts involving Ripple, RippleWorks' sponsor investment and Evernorth stockholders."
+      },
+      "lockup_and_transferability": {
+        "explicit_lockup_parties": "Ripple, Sponsor and Contributor Related Party Entity",
+        "stated_lockup_end": "2027-04-09, six months after the 2026-10-09 closing, unless an earlier qualifying corporate transaction occurs; subject to exceptions",
+        "sbi_status": "SBI Stockholders are not named in the explicit Lock-Up Agreement party list. The prospectus says Class A is generally freely transferable and specifically identifies Ripple and Sponsor Class A as locked; it also contains a general table note referring to applicable lock-up provisions. Treat SBI's 9,431,914 existing Class A shares as potential near-term resale supply subject to verification of any separate SBI agreement/transfer restriction; do not assert that sales occurred or that every share is freely tradable.",
+        "class_c": "Class C shares are non-voting and transfer-restricted; conversion is subject to ownership caps."
+      },
+      "proceeds_and_capital_classification": {
+        "resale_proceeds_to_evernorth": "zero, except cash proceeds from Sponsor Warrant exercise",
+        "maximum_sponsor_warrant_exercise_gross_usd": 2756009.5,
+        "separate_cantor_eloc_new_share_capacity": 5218935,
+        "separate_eloc_status": "separate primary equity facility/registration; not part of 73,688,162 resale registration; no proceeds under the facility reported in the prospectus at the stated cutoff",
+        "thirty_million_pik_note": "separate $30M 4% PIK convertible senior note funded 2026-10-12; debt, not resale proceeds or cash already deployed into XRP."
+      },
+      "interpretation": "The 73.688M figure is registered maximum resale/conversion capacity, not 73.688M currently outstanding or guaranteed free float. Only 19.103M are issued Class A; the remaining 54.586M are potential conversion/redemption/warrant shares. Resales are for selling holders' accounts and do not fund Evernorth's treasury. This can create XRPN equity supply/dilution and NAV-per-share pressure, but is not XRP token supply and does not prove Evernorth sold XRP."
+    },
+    "actual_capital_reconciliation": {
+      "advance_funding_cash_usd": 214050000,
+      "advance_funding_xrp": 600000,
+      "delayed_funding_cash_usd": 10500000,
+      "delayed_funding_xrp": 200000,
+      "rippleworks_to_arrington_sponsor_xrp": 211319096.061435,
+      "ripple_labs_to_pathfinder_xrp": 126791458,
+      "larsen_lam_trust_ripple_affiliate_xrp": 50000000,
+      "in_kind_xrp_total": 388910554,
+      "cash_purchased_xrp": 84365876.3625,
+      "total_xrp_at_closing": 473276430.3625,
+      "gross_cash_at_closing_usd_approx": 272600000,
+      "gross_cash_components": "$214.05M advance funding + $10.5M delayed funding + approximately $48.0M trust-account cash, before transaction expenses.",
+      "advance_funding_use": "The $214.05M cash advance-funding pool was used to purchase 84,365,876 XRP at an average price of approximately $2.53657058. Subscriber-level allocation of the $200M SBI commitment within the $214.05M pool is not disclosed; do not add the $200M again.",
+      "non_cash_distinction": "RippleWorks' 211.319M XRP contribution was routed through Arrington Sponsor; Ripple Labs separately contributed 126.791M XRP; the Larsen Lam Trust contributed 50M XRP; advance/delayed funding subscribers contributed 0.8M XRP. These are in-kind XRP contributions, not cash raised.",
+      "source": "SEC Form 424B3 accession 000162828026072223, including transaction and historical XRP contribution disclosures."
     }
   },
   "identity_and_exact_phrase_research": {
@@ -302,6 +446,68 @@
       "id": "turn696523search2",
       "url": "https://coinmarketcap.com/currencies/permission-coin/",
       "role": "ASK candidate market/chain metadata"
+    },
+    {
+      "id": "turn803868search0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/primary_doc.xml",
+      "role": "SEC EFFECT primary record; registration effective 2026-11-09 16:00 UTC"
+    },
+    {
+      "id": "turn850645view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary selling-securityholder table, beneficial ownership, SBI entity control footnotes and transferability"
+    },
+    {
+      "id": "turn581541view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary DAT Side Pocket voting/disposition rights over 4,215,479 shares"
+    },
+    {
+      "id": "turn581541view1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary RippleWorks majority Sponsor LP interest and Chris Larsen conflict disclosure"
+    },
+    {
+      "id": "turn614160view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary exact cash and XRP contribution breakdown"
+    },
+    {
+      "id": "turn614160view1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary RippleWorks 211,319,096 XRP contribution to Sponsor and 19.9% cap"
+    },
+    {
+      "id": "turn225880view2",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary resale proceeds do not go to Evernorth; warrant exercise proceeds are separate"
+    },
+    {
+      "id": "turn225880view3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary registered-share composition, selling securityholder rights and limits"
+    },
+    {
+      "id": "turn473741search0",
+      "url": "https://news.bitcoin.com/finance/evernorth-xrpn-crashes-73-7-million-share-resale/",
+      "role": "secondary report of XRPN market reaction; not proof of completed sales"
     }
-  ]
+  ],
+  "relationship_graph_update": {
+    "ripple_labs": "Former parent/contributor; 126.791M XRP contributed directly to Pathfinder; 18.140M XRPN shares registered for resale (1.678M Class A +16.462M Company Units); Ripple Class A lock-up and 9.9% contributor group cap.",
+    "rippleworks": "Separate nonprofit foundation; contributed 211.319M XRP to Arrington Sponsor; majority limited partner of Sponsor; special voting/disposition rights over 4.215M DAT Side Pocket shares; Chris Larsen link creates disclosed conflict risk.",
+    "arrington_sponsor": "Received RippleWorks XRP contribution; 33.822M XRPN shares registered; J. Michael Arrington controls most sponsor securities; RippleWorks has special rights over DAT Side Pocket.",
+    "sbi_holdings": "SBI-controlled four-entity selling group registered 11.791M XRPN shares, including 9.432M issued Class A and 2.359M Class C; 39.9% group ownership/voting cap; separate from regional SBIC East/Central/West.",
+    "kraken_payward": "Payward Inc. appears as a 250,000-share Evernorth selling securityholder.",
+    "other_crypto_investors": "Pantera 604,664 shares; GSR 500,000; gumi 302,332; additional smaller holders and underwriters appear in the SEC table."
+  },
+  "research_update_sec_table": {
+    "registration_effective_at_utc": "2026-11-09T16:00:00Z",
+    "prospectus_accepted_at_utc": "2026-11-09T16:18:57Z",
+    "sec_table_lines": "SEC 424B3 selling-securityholder table and footnotes; transferability and ownership-restriction sections.",
+    "actual_capital_exact_phrase_in_sec": "No matching text for 'actual capital' in this prospectus; the filing instead itemizes cash subscriptions, in-kind XRP, resale proceeds, warrants, debt and ELOC separately.",
+    "correction": "SEC shareholder table and transaction notes added after the initial Run39 snapshot; no raw payload bytes or trusted source receipts were captured."
+  },
+  "supplemental_research_retrieved_during_run39": true,
+  "supplemental_research_sec_table_captured_without_raw_bytes": true
 }
