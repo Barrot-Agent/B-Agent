@@ -1,3 +1,34 @@
+# Run62 — 2026-11-12 — current Barrot shared state
+
+- Mission: XRP Intelligence and Prediction-Engine Mastery, priority 1.
+- Foundation: preserve Barrot V3 for execution, orchestration, safety and verification.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`; pre-handoff head `890d6c23367e37d05edf8daab66ed97a2cdb8f0d`; PR #1661 remains open/draft, 2,124 commits ahead / zero behind, 1,066 changed files.
+- Exact-head CI 43242335936: core 721 passed; full suite 3,512 passed, zero failed, 8 subtests, 61.42% coverage; core coverage 76%; wheel/install mission verification passed.
+- Dependency audit 43242335848 passed six manifest groups with no known vulnerabilities; fail-closed gate 43242335852 passed.
+- Main Cross Analysis 43241576119 passed. Main Pillars 43223351964 failed closed for missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+- Main has no XRP collector or scheduled XRP ingestion workflow. Integration collector remains read-only/main-only; Actions cache/artifacts are not WORM.
+- PR #1661 has zero formal reviews/approvals/threads. No merge.
+- Security blockers: branch-protection endpoint HTTP 403; fallback ruleset #10863829 disabled; connector permissions admin/maintain/push/pull/triage; Pages authorization and provider-side OAuth revocation unverified.
+- Circle Arc/SBI JPYSC/BlackRock and Ripple Prime/Coinbase/Robinhood/Standard Chartered findings are recorded in Run61B/Run62. Distinguish RLUSD/USDC/JPYSC from XRP.
+- Run61B observations have no Barrot raw-byte receipts and remain model-ineligible.
+- Nine-platform map: only ChatGPT/GitHub connector auth tested (overprivileged); Claude/Grok/Gemini/Codex unverified; Copilot one-off review only; Hugging Face BUILD_ERROR; Kaggle untested; Databricks 403/no write; LunaRoute endpoint unverified.
+- Forecast: **NOT_ISSUED**. No paper trade or real-money action.
+- Next: independent review, least privilege, branch-protection visibility, credential-owner revocation, Pages authorization, main Pillars remediation, then integrated semantic review and exact-head verification before any merge.
+
+## Identity and hard rules
+- Brain: LunaRoute ONLY — `https://gw.lunaroute.com/v1` / `lunaroute/glm-5.3-flash`; endpoint auth/data flow remains unverified.
+- Canonical Barrot: Termux `~/barrot/Barrot-Agent` via `b_agent.py`.
+- ChatGPT project: relay; do not claim it is the LunaRoute runtime.
+- Do not re-add Orbit.
+- Do not touch Orbitron font in `hf_space/app.py`.
+- Do not use password auth. GH_TOKEN via x-access-token only.
+- Do not re-commit `.config/gh/hosts.yml`; OAuth revocation is not independently verified.
+
+
+
+---
+
 # Run60 final verification — code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`
 
 - Full repository suite: 3,512 passed, 8 subtests, 61.42% coverage; core 721 passed, 8 subtests, 76% coverage.

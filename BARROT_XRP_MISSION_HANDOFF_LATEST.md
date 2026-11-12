@@ -1,3 +1,72 @@
+# Run62 — 2026-11-12 — exact-head CI, institutional-rail corrections and merge-gate reconciliation
+
+## Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation. Forecast issuance remains fail-closed.
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`; recursive tree: 1,388 entries, 78 active workflow files.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`; pre-Run62 head: `890d6c23367e37d05edf8daab66ed97a2cdb8f0d`; recursive tree: 2,323 entries, 79 active workflows, 578 XRP research artifacts, 440 Python test files.
+- PR #1661: open, draft, mergeable=true / mergeable_state=unstable, 2,124 commits ahead / zero behind main, 1,066 changed files, 293,725 additions, 4,492 deletions. Zero formal reviews, approvals or review threads. CodeRabbit's comment says the draft was not reviewed; it is not approval.
+- Open PR inventory: 374 total, 360 drafts, 14 non-drafts; 366 target main, 8 target other branches.
+- The two commits after `922ab86` add the Run61B handoff and structured evidence artifact only. No runtime or test code changed in that interval.
+- Main still lacks the XRP collector module, scheduled ingestion workflow and latest handoff file. The detailed mission handoff remains on this integration branch; main's older handoff is historical.
+
+## Exact-head verification — VERIFIED on `890d6c23367e37d05edf8daab66ed97a2cdb8f0d`
+
+- Full CI [43242335936](https://github.com/Barrot-Agent/B-Agent/actions/runs/43242335936): **3,512 passed, zero failed, 8 subtests**, 61.42% inclusive coverage in 90.47 seconds. Core suite: **721 passed, 8 subtests**, 76% coverage.
+- Wheel built and installed; installed package verification confirmed Barrot V3, XRP primary mission and canonical data assets.
+- Dependency audit [43242335848](https://github.com/Barrot-Agent/B-Agent/actions/runs/43242335848): all six manifest groups passed; every pip-audit invocation reported no known vulnerabilities.
+- Fail-closed gate [43242335852](https://github.com/Barrot-Agent/B-Agent/actions/runs/43242335852): passed; merge disabled.
+- Setuptools still warns that `barrot_agent.data.missions` and `data.research` are importable packages absent from explicit package configuration. Wheel and mission-resource checks passed; retain this as a packaging follow-up.
+- Main Cross Analysis [43241576119](https://github.com/Barrot-Agent/B-Agent/actions/runs/43241576119) passed. Main Pillars [43223351964](https://github.com/Barrot-Agent/B-Agent/actions/runs/43223351964) failed closed: missing GitHub App ID/private key/installation ID, Databricks HTTP 403 and Hugging Face BUILD_ERROR. Do not weaken the gate.
+
+## Run61B institutional evidence and source-quality corrections
+
+Detailed values and the original structured evidence remain in [Run61B JSON](research/xrp_intelligence/20261112T145600Z-run61b-rlusd-escrow-circle-arc-sbi-and-ripple-prime.json) and the Run61B supplement immediately below this section.
+
+- **Circle Arc:** public mainnet launched Sep 16; USDC is the native fee asset. SBI Group and Standard Chartered are founding validators; Coinbase is among day-one exchange participants. Circle's enumerated StableFX active/onboarding list includes JPYC but not JPYSC. SBI's stated intention to use USDC and JPYSC is not proof of live JPYSC-on-Arc integration. Circle's 98.8% agent-driven x402 share is a company claim.
+- **Circle Q3 2026:** average USDC circulation $73.3B (+8% YoY), on-chain volume $13.9T (+49%), total revenue/reserve income $865M (+17%), reserve income $658M (-8%), other revenue $207M including $182M ARC presale, net income $226M, adjusted EBITDA $317M, CPN annualized TPV $41.3B. Tazapay remains pending, expected to close in 2027 subject to approvals.
+- **JPYSC:** SBI's June 24 release identifies SBI Shinsei Trust Bank as issuer, SBI VC Trade as distributor and Startale as co-developer. Initial distribution was limited to VCTRADE accounts; public-chain distribution was deferred pending legal/tax requirements. SBI VC Trade's Nov 2 release reports lending balance above ¥10B and handling balance above ¥30B; handling balance is company-defined as on-chain plus lending balance. These are not public-chain supply, XRP flows or XRP collateral. SBI/Startale/BlackRock's Oct 27 basic agreement is exploratory, not production. First-party sources: [JPYSC launch and distribution limits](https://www.sbigroup.co.jp/news/2026/0624_16425.html), [Nov 2 balances](https://www.sbigroup.co.jp/news/2026/1102_16704.html), [tokenized-MMF/JPYSC basic agreement](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+- **Ripple Prime:** the launched RWA-perpetual offering names Virtu and explicitly identifies RLUSD as collateral; no XRP collateral is identified.
+- **Coinbase:** RLUSD is live on Coinbase Prime, Exchange and Retail with XRPL/Base/Ethereum deposits and withdrawals; Coinbase Global Exchange and collateral support were future plans, not verified live.
+- **Robinhood:** RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; the stated XRPL institutional-settlement and Ripple Treasury integrations are company plans/announcements, not proof XRP is the settlement asset in every flow.
+- **Ripple National Trust Bank:** final OCC approval covers RLUSD reserve management, collateral trustee and fiduciary custody upon opening. RLUSD issuer remains Standard Custody & Trust Company; final approval is not proof the bank has opened.
+- **Standard Chartered:** first-party Oct 12 release confirms RLUSD custody on XRPL is live through its DFSA-regulated DIFC branch. LMAX collateral mirroring remains future, subject to documentation, testing, law/regulation and internal approvals. [Standard Chartered official release](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/).
+- **RLUSD supply:** StableRadar's direct-chain display (2.707588B) and its separate DefiLlama column (2.727954B) differ by 20.365M, mainly on XRPL. Preserve the series; they are not independent publishers. Ripple's issuer page reports $2.6329B circulation/$2.748B reserves as of Nov 5; the latest listed CPA report covers Sep 30 and was signed Oct 26. Do not mix those vintages.
+- **Escrow:** XRP Insights' pinned-ledger read reports a 1B XRP Dec 1 unlock, 1B Nov release and 700M re-escrow (300M net outside escrow). Ledger release/relock is not proof of sales, exchange inflows or tradable float.
+
+Run61B web/dashboard observations have `raw_source_sha256=null`, no Barrot RawReceiptArchive receipt, and `model_eligible=false`; they remain research-only and excluded from prediction features.
+
+## Security, nine-platform and merge status
+
+- Classic branch-protection details remain HTTP 403. The only visible ruleset is #10863829, enforcement disabled; required checks/approval rules cannot be confirmed.
+- GitHub connector identity has admin/maintain/push/pull/triage permissions. `.github/CODEOWNERS` assigns the wildcard to `@Barrot-Agent`; no independent owner is configured.
+- Pages publication may trigger on a main push; authorization remains unresolved. `.config/gh/hosts.yml` is absent from current main/integration trees, but Run60 found it in 17 historical PR branch-tip trees. Its contents were never read; provider-side OAuth revocation remains unverified. No secret was read or rotated.
+- ChatGPT/GitHub connector authentication is tested but overprivileged. Claude, Grok, Gemini and Codex auth/data flow unverified; Copilot one-off review only; Hugging Face last known BUILD_ERROR; Kaggle untested; Databricks HTTP 403/no write; LunaRoute endpoint auth/data flow unverified. No external-model transfer occurred.
+- #1660/#1643/#1640 remain superseded-source candidates with 32/9/46 differing shared blobs respectively; #1642 remains unique prediction work; #1653 and #1655 retain unique/source-only paths; #1659 local llama.cpp/Termux remains unique. Preserve all unique work; no source PRs closed.
+
+**Forecast: NOT_ISSUED.** The integration implements public source definitions, a read-only collector, SHA-256 receipt/hash-chain prototype, point-in-time SQLite store, event/scenario/counter-hypothesis pipeline, four baselines, chronological walk-forward purge/embargo, calibration, PSI drift and an Ed25519 fail-closed ledger. Outstanding: independent WORM/trusted timestamp anchoring, replayable synchronized historical features, production evaluator key, independent shadow outcomes and proven out-of-sample lift. Scheduled ingestion has not run on main.
+
+**No merge.** PR #1661 is still draft with zero formal approvals; branch-protection requirements are inaccessible; fallback ruleset is disabled; connector permissions are overprivileged; Pages authorization and provider-side credential revocation are unverified; main Pillars fails closed; and the integrated diff still needs independent semantic review.
+
+No branch/PR creation, source PR closure, merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite or destructive worktree operation occurred.
+
+## Next actions
+
+1. Obtain independent maintainer review and formal approval for #1661.
+2. Resolve least-privilege GitHub access and obtain authoritative branch-protection/required-check visibility.
+3. Have the credential owner verify OAuth revocation without exposing the old credential.
+4. Verify Pages publication behavior and obtain authorization before any merge that can publish.
+5. Repair main Pillars prerequisites through authorized provider administration; do not weaken the gate.
+6. Complete semantic review of all 49 changed workflows and the large non-workflow diff, prioritizing V3 runtime, collector, receipt archive, feature store, event timeline, scenario engine and forecast ledger.
+7. Only after all gates pass, merge through normal protection, fetch main, verify the merge commit/tree and run main CI. Close exact superseded source PRs only after verification.
+8. Keep forecasts blocked until raw-source anchoring, synchronized historical data, leakage-safe OOS lift, calibration/drift and independent shadow outcomes pass.
+
+This Run62 handoff/sync update is documentation-only and is based on the exact pre-update head `890d6c23367e37d05edf8daab66ed97a2cdb8f0d`. The resulting handoff commit requires its own exact-head CI before any merge decision.
+
+
+---
+
 # Run61B supplement — 2026-11-12 — RLUSD on-chain supply, Circle Arc, SBI JPYSC, Ripple Prime and escrow
 
 ## Additional institutional findings — VERIFIED FROM PRIMARY OR PINNED-LEDGER SOURCES
