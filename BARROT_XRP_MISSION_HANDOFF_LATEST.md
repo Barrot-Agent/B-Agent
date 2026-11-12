@@ -1,3 +1,12 @@
+# Run67 latest exact-head verification — November 12, 20:47 UTC
+
+Verified integration head: `f467540cc4db31c5078296d75c9682e0eff3739f`, 2,158 commits ahead of main and zero behind. Full repository suite [43302771743](https://github.com/Barrot-Agent/B-Agent/actions/runs/43302771743): 3,540 passed, zero failed, eight subtests, 61.55% coverage in 90.11 seconds. Core suite: 723 passed, zero failed, eight subtests, 76% coverage. Wheel build and installed Barrot V3/XRP asset verification passed. Dependency audit [43302771781](https://github.com/Barrot-Agent/B-Agent/actions/runs/43302771781) passed five manifest groups with zero known vulnerabilities. Fail-closed gate [43302771749](https://github.com/Barrot-Agent/B-Agent/actions/runs/43302771749) passed.
+
+PR #1662 remains draft with zero formal approvals/reviews. The current exact-head CI is green, but merge remains blocked by unresolved GitHub Pages publication authorization, branch-protection visibility (HTTP 403), overprivileged GitHub connector permissions, and incomplete semantic review of the broad integration diff. The following handoff/map refresh is documentation/evidence-only and requires its own exact-head CI before any merge decision.
+
+At this capture the 20:00 UTC Fuelmaps L2 snapshot was about 47 minutes old. It remains within the provider's stated hourly cadence but is resting-order context, not live executable depth; orders can be cancelled.
+
+---
 # Run67 final exact-head verification — November 12, 20:45 UTC
 
 Verified code/test head: `145e3aa071fa28ef20d0c7961a699fcf52c813cf`, 2,157 commits ahead of main and zero behind. Full repository suite [43301886674](https://github.com/Barrot-Agent/B-Agent/actions/runs/43301886674): 3,540 passed, zero failed, eight subtests, 61.55% coverage in 98.88 seconds. Core suite: 723 passed, zero failed, eight subtests, 76% coverage. Wheel build and installed Barrot V3/XRP asset verification passed. Dependency audit [43301886655](https://github.com/Barrot-Agent/B-Agent/actions/runs/43301886655) passed five manifest groups with zero known vulnerabilities. Fail-closed gate [43301886605](https://github.com/Barrot-Agent/B-Agent/actions/runs/43301886605) passed.
