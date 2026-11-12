@@ -929,3 +929,12 @@ See BARROT_XRP_MISSION_HANDOFF_LATEST.md and research/xrp_intelligence/20261112T
 - Main Pillars provider check failed on missing GitHub App credentials, Databricks 403 and Hugging Face BUILD_ERROR; main Cross Analysis passed.
 - Protection details 403, fallback ruleset disabled, connector overprivileged, Pages publication unauthorized, credential revocation unverified. No merge/deployment/secret change/external transfer/paper trade/real-money action.
 - Forecast NOT_ISSUED. All Run64 web observations have no RawReceiptArchive hashes and are model-ineligible. Artifact: `research/xrp_intelligence/20261112T153044Z-run64-exact-head-market-stablecoin-rails-and-integration-audit.json`.
+
+
+## Run64b — 2026-11-12 15:46 UTC
+- Run64 commit `a1d46004` full suite failed: 3,507 passed, 5 failed, 8 subtests, 61.42% coverage. One event-hypothesis conflict and four current-map snapshot consistency failures. Core 721 passed; dependency audit and fail-closed gate passed; wheel verification skipped. Run64b unifies both ETF and spot hypothesis groups and synchronizes map fields; exact-head CI pending.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate statutory companies, not SBI Holdings. Tokyo SBIC's ChatGPT course was investee-only training, not an OpenAI partnership. SB OAI Japan is a separate 50/50 OpenAI/C Holdings JV. SBI Holdings separated from SoftBank Group in 2005.
+- SBI's $200M Evernorth commitment is included in the $214.05M pool; final SEC composition is ~388.910M XRP in-kind and 84.366M cash-purchased; SBI subscriber allocation is undisclosed.
+- Kamilah Stevenson: iHeart transcript says “doctor Camilla Stevenson” and warns of fake pages; first-party site identifies Dr Kamilah Stevenson but does not link a YouTube channel. No channel/videos attributed.
+- Event registry `run53-2026-11-12`: 62 events, all raw hashes null/model-ineligible. Forecast NOT_ISSUED.
+- PR #1661 remains draft and blocked. No merge or external action. Artifact: `research/xrp_intelligence/20261112T154631Z-run64b-event-registry-hypothesis-map-ci-and-identity-correction.json`.

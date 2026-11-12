@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run52-2026-11-12",
-  "captured_at_utc": "2026-11-12T15:30:44Z",
-  "source_receipt_status": "57 of 57 curated events have null raw_source_sha256 because publisher bytes were not captured by Barrot's RawReceiptArchive.",
+  "registry_version": "run53-2026-11-12",
+  "captured_at_utc": "2026-11-12T15:46:31Z",
+  "source_receipt_status": "62 of 62 curated events have null raw_source_sha256 because publisher bytes were not captured by RawReceiptArchive.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -2085,8 +2085,8 @@
       "event_name": "OKX XRP-USDT public spot ticker",
       "hypothesis_id": "xrp-spot-decline-vs-cross-venue-asynchrony",
       "domain": "spot_market_structure",
-      "hypothesis": "The latest retrieved OKX and Kraken observations place XRP near $1.02 after a negative 24-hour session.",
-      "counter_hypothesis": "OKX event timestamp is about 17m59s old at capture and Kraken supplies no matching-engine event timestamp; asynchronous quotes cannot establish executable parity or support.",
+      "hypothesis": "Cross-venue spot observations place XRP near $1.02 after a negative 24-hour session, but quote synchronization and event-time quality are insufficient to establish executable parity.",
+      "counter_hypothesis": "OKX's event timestamp is more than 300 seconds old and Kraken supplies no provider event timestamp; asynchronous or cached quotes may not represent the current executable market or a common time window.",
       "claim": "OKX XRP-USDT last 1.0216, bid 1.0216, ask 1.0217, 24h open 1.0637, high 1.0807, low 1.0196, volume 36.4208M XRP and turnover 38.2600M USDT. Provider timestamp 2026-11-12T15:12:45.167Z; age 1,078.833 seconds at the 15:30:44Z cutoff, exceeding Barrot's 300-second live-age limit.",
       "source_id": "okx_xrpusdt_ticker_20261112T151245Z",
       "source_name": "OKX public spot ticker API",
@@ -2126,8 +2126,8 @@
       "event_name": "Kraken XRP/USD and USDT/USD public tickers",
       "hypothesis_id": "xrp-spot-decline-vs-cross-venue-asynchrony",
       "domain": "spot_market_structure",
-      "hypothesis": "Kraken's retrieved XRP/USD quote is close to the USDT-normalized OKX observation while both indicate a lower 24-hour session.",
-      "counter_hypothesis": "Kraken supplies no provider event timestamp; retrieval time is not a matching-engine event time, and normalized OKX is stale.",
+      "hypothesis": "Cross-venue spot observations place XRP near $1.02 after a negative 24-hour session, but quote synchronization and event-time quality are insufficient to establish executable parity.",
+      "counter_hypothesis": "OKX's event timestamp is more than 300 seconds old and Kraken supplies no provider event timestamp; asynchronous or cached quotes may not represent the current executable market or a common time window.",
       "claim": "Kraken XRP/USD last 1.01744, bid 1.01775, ask 1.01786, 24h open 1.05104, high 1.07953, low 1.01579 and volume 26.7518M XRP. Kraken USDT/USD bid 0.99877, ask 0.99878. Normalized OKX midpoint $1.020398 versus Kraken midpoint $1.017805, descriptive difference about 0.255%. Kraken supplied no event timestamp.",
       "source_id": "kraken_xrpusd_usdtusd_ticker_20261112T153044Z",
       "source_name": "Kraken public ticker API",
@@ -2209,8 +2209,8 @@
       "event_name": "Crypto ETF Today XRP daily flow",
       "hypothesis_id": "xrp-etf-flow-short-window-vs-provider-universe-run64",
       "domain": "institutional_capital_flows",
-      "hypothesis": "The partial November 11 XRP ETF reporting set showed a modest net outflow.",
-      "counter_hypothesis": "Only three of five XRP products had reported; displayed -$0.2M was attributed to XRPC and is not a complete six-spot-fund-plus-index-product total.",
+      "hypothesis": "Recent U.S. XRP ETF reporting indicates net outflows, but the magnitude depends on fund cohort and settlement completeness.",
+      "counter_hypothesis": "Partial T+1 reporting and issuer-holdings-derived flows across different universes are not directly comparable; BITW rebalancing/fees and GXRP capture gaps can alter the observed total.",
       "claim": "Crypto ETF Today published November 11 T+1 data at 05:48 UTC on November 12 and showed XRP net flow of -$0.2M with only three of five funds reported; the page attributes the reported movement to XRPC.",
       "source_id": "cryptoetf_today_xrp_flows_20261111_partial",
       "source_name": "Crypto ETF Today",
@@ -2250,8 +2250,8 @@
       "event_name": "XRP Insights ETF holdings and flow tracker",
       "hypothesis_id": "xrp-etf-flow-short-window-vs-provider-universe-run64",
       "domain": "institutional_capital_flows",
-      "hypothesis": "The November 9-11 week-to-date issuer-holdings series shows net XRP ETF outflow across six spot products plus BITW.",
-      "counter_hypothesis": "Flows are derived from issuer-reported holdings deltas; BITW can move through index rebalancing/fees and the seven-product universe differs from Crypto ETF Today's partial five-fund observation.",
+      "hypothesis": "Recent U.S. XRP ETF reporting indicates net outflows, but the magnitude depends on fund cohort and settlement completeness.",
+      "counter_hypothesis": "Partial T+1 reporting and issuer-holdings-derived flows across different universes are not directly comparable; BITW rebalancing/fees and GXRP capture gaps can alter the observed total.",
       "claim": "XRP Insights' November 12 dashboard reports week 46 net flow -9.21M XRP (about -$9.40M), 1.18597B XRP locked and about $1.25977B AUM across six U.S. spot XRP ETFs plus BITW. Its dataset computes daily flow from issuer-reported holdings changes; GXRP flows are excluded during a known capture gap.",
       "source_id": "xrp_insights_etf_tracker_20261112",
       "source_name": "XRP Insights issuer-holdings ETF tracker",
@@ -2380,7 +2380,219 @@
         "macro",
         "not-directional-XRP-signal"
       ]
+    },
+    {
+      "event_id": "sbi-evernorth-200m-announcement-vs-final-treasury-2025-10-21",
+      "event_type": "corporate",
+      "event_name": "SBI Holdings / Evernorth investment announcement",
+      "hypothesis_id": "sbi-evernorth-cash-commitment-vs-final-treasury-composition",
+      "domain": "institutional_capital_and_xrp_treasury",
+      "hypothesis": "SBI Holdings announced a $200 million cash commitment to Evernorth and said proceeds would be used primarily for open-market XRP purchases.",
+      "counter_hypothesis": "The closing SEC prospectus reports about 388.910 million XRP in kind and 84.366 million XRP cash-purchased from a $214.05 million advance pool. SBI's subscriber-level allocation is undisclosed; the $200 million is included in that pool, not additive, and does not prove $200 million directly purchased XRP.",
+      "claim": "SBI's October 21, 2025 announcement described a $200 million cash contribution to Evernorth for primarily open-market XRP purchases. The later SEC prospectus shows a 473.276 million XRP closing treasury, approximately 388.910 million contributed in kind and 84.366 million cash-purchased from a $214.05 million advance pool; SBI's exact subscriber allocation is undisclosed.",
+      "source_id": "sbi_evernorth_200m_announcement_20251021",
+      "source_name": "SBI Holdings official announcement",
+      "source_url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "independence_group": "sbi-holdings-corporate-announcement",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2025-10-21T00:00:00Z",
+      "source_published_at_utc": "2025-10-21T00:00:00Z",
+      "available_at_utc": "2026-11-12T15:46:31Z",
+      "captured_at_utc": "2026-11-12T15:46:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "SBI announcement is intended use at commitment time; SEC prospectus is later closing evidence.",
+        "The $200M is part of the $214.05M pool, not an additional pool.",
+        "SBI subscriber-level allocation to the 84.366M XRP purchases is not disclosed.",
+        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible."
+      ],
+      "falsification_conditions": [
+        "A later primary publisher record or authenticated first-party cross-link contradicts this observation."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "Evernorth",
+        "Ripple Labs",
+        "RippleWorks",
+        "Arrington XRP Capital Fund"
+      ],
+      "tags": [
+        "actual-capital-reconciliation",
+        "200m-commitment",
+        "84.366m-cash-purchased",
+        "388.910m-in-kind"
+      ]
+    },
+    {
+      "event_id": "tokyo-sbic-chatgpt-training-2025-06-12",
+      "event_type": "corporate",
+      "event_name": "Tokyo SBIC generative AI and machine-learning training",
+      "hypothesis_id": "sbic-chatgpt-training-vs-openai-partnership",
+      "domain": "japan_entity_identity_and_ai_training",
+      "hypothesis": "Tokyo SBIC provided an educational generative-AI/ML course to investee companies that included ChatGPT and Copilot.",
+      "counter_hypothesis": "The course was a restricted educational program delivered by a VOST instructor, not an OpenAI commercial partnership or joint venture.",
+      "claim": "Tokyo SBIC listed a two-day manufacturing generative-AI/ML course for June 12-13, 2025. ChatGPT and Copilot were included; participation was investee-only at ¥35,000; the listed instructor was from VOST.",
+      "source_id": "tokyo_sbic_chatgpt_training_20250612",
+      "source_name": "Tokyo SBIC official training notice",
+      "source_url": "https://www.sbic.co.jp/training/20250612co/",
+      "independence_group": "tokyo-sbic-official",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2025-06-12T00:00:00Z",
+      "source_published_at_utc": "2025-06-12T00:00:00Z",
+      "available_at_utc": "2026-11-12T15:46:31Z",
+      "captured_at_utc": "2026-11-12T15:46:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Course dates are date-normalized; the program continued June 13.",
+        "The official notice documents training, not an OpenAI partnership.",
+        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible."
+      ],
+      "falsification_conditions": [
+        "A later primary publisher record or authenticated first-party cross-link contradicts this observation."
+      ],
+      "related_entities": [
+        "Tokyo SBIC",
+        "VOST",
+        "ChatGPT",
+        "Microsoft Copilot"
+      ],
+      "tags": [
+        "SBIC",
+        "ChatGPT-training",
+        "investee-only",
+        "not-OpenAI-partnership"
+      ]
+    },
+    {
+      "event_id": "sb-oai-japan-openai-jv-2025-11-05",
+      "event_type": "corporate",
+      "event_name": "SB OAI Japan GK joint venture launch",
+      "hypothesis_id": "sb-oai-japan-vs-sbic-and-sbi-identity-conflation",
+      "domain": "japan_entity_identity_and_openai_partnerships",
+      "hypothesis": "SoftBank Corp, SoftBank Group and OpenAI launched SB OAI Japan GK to market Crystal intelligence in Japan.",
+      "counter_hypothesis": "SB OAI Japan is a separate SoftBank/OpenAI joint venture, not SBIC East/Central/West and not SBI Holdings.",
+      "claim": "SB OAI Japan GK launched November 5, 2025. Ownership is 50% C Holdings and 50% OpenAI; C Holdings is 51% SoftBank Corp and 49% SoftBank Group.",
+      "source_id": "softbank_openai_sb_oai_japan_jv_20251105",
+      "source_name": "SoftBank / OpenAI official joint announcement",
+      "source_url": "https://www.softbank.jp/en/corp/news/press/sbkk/2025/20251105_02/",
+      "independence_group": "softbank-openai-joint-announcement",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2025-11-05T00:00:00Z",
+      "source_published_at_utc": "2025-11-05T00:00:00Z",
+      "available_at_utc": "2026-11-12T15:46:31Z",
+      "captured_at_utc": "2026-11-12T15:46:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Ownership is from the official joint announcement.",
+        "This JV is distinct from SBIC and SBI Holdings.",
+        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible."
+      ],
+      "falsification_conditions": [
+        "A later primary publisher record or authenticated first-party cross-link contradicts this observation."
+      ],
+      "related_entities": [
+        "SB OAI Japan GK",
+        "SoftBank Corp",
+        "SoftBank Group",
+        "OpenAI Group PBC",
+        "C Holdings"
+      ],
+      "tags": [
+        "OpenAI-JV",
+        "Crystal-intelligence",
+        "not-SBIC",
+        "not-SBI-Holdings"
+      ]
+    },
+    {
+      "event_id": "sbi-holdings-softbank-separation-2005",
+      "event_type": "corporate",
+      "event_name": "SBI Holdings separation from SoftBank Group",
+      "hypothesis_id": "sbi-holdings-vs-softbank-corporate-separation",
+      "domain": "japan_entity_identity_and_corporate_history",
+      "hypothesis": "SBI Holdings became separate from SoftBank Group through its March 2005 public offering and later described SBI as Strategic Business Innovator.",
+      "counter_hypothesis": "Historical SoftBank Investment naming can explain acronym confusion but does not establish current SoftBank ownership or control.",
+      "claim": "SBI's official history says the March 2005 public offering removed it from SoftBank Group's consolidated subsidiary structure; an October 2005 SBI statement described SBI as Strategic Business Innovator rather than SoftBank Investment.",
+      "source_id": "sbi_holdings_softbank_separation_history_2005",
+      "source_name": "SBI Holdings official corporate history",
+      "source_url": "https://www.sbigroup.co.jp/business/effort/0510_newfields.html",
+      "independence_group": "sbi-holdings-corporate-history",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2005-03-01T00:00:00Z",
+      "source_published_at_utc": "2005-10-01T00:00:00Z",
+      "available_at_utc": "2026-11-12T15:46:31Z",
+      "captured_at_utc": "2026-11-12T15:46:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "March and October 2005 are month-normalized from the official history page.",
+        "This concerns SBI Holdings, not the three SBIC companies.",
+        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible."
+      ],
+      "falsification_conditions": [
+        "A later primary publisher record or authenticated first-party cross-link contradicts this observation."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SoftBank Group"
+      ],
+      "tags": [
+        "SBI-vs-SoftBank",
+        "2005-separation",
+        "Strategic-Business-Innovator"
+      ]
+    },
+    {
+      "event_id": "kamilah-stevenson-youtube-identity-warning-2026-06-11",
+      "event_type": "corporate",
+      "event_name": "Dr Kamilah Stevenson public identity and impersonation warning",
+      "hypothesis_id": "kamilah-stevenson-youtube-channel-ownership-unverified",
+      "domain": "public_identity_and_source_attribution",
+      "hypothesis": "The iHeart interview identifies its guest as Dr Kamilah Stevenson; the guest refers to a YouTube identity rendered as 'doctor Camilla Stevenson' while warning viewers about fake pages.",
+      "counter_hypothesis": "The iHeart transcript is auto-generated and varies between Camila, Camilla and Kamilah; the first-party website identifies Dr Kamilah Stevenson but does not link a YouTube channel. Third-party listings surface look-alike channels, so no channel or videos can be attributed without a first-party cross-link.",
+      "claim": "The June 11, 2026 iHeart XRP Podcast episode is titled 'Crypto Panics! with Dr. Kamilah Stevenson'. At 40:07 in its automatically generated transcript, the guest says her YouTube presence is 'doctor Camilla Stevenson' and warns of fake pages. Her first-party site identifies Dr Kamilah Stevenson/The Wealth Doctor but no direct YouTube channel link was found. Channel ownership remains unverified; no videos are attributed or inventoried.",
+      "source_id": "iheart_kamilah_stevenson_identity_interview_20260611",
+      "source_name": "iHeart XRP Podcast interview and first-party site",
+      "source_url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "independence_group": "iheart-interview-auto-transcript-and-first-party-site",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-06-11T00:00:00Z",
+      "source_published_at_utc": "2026-06-11T00:00:00Z",
+      "available_at_utc": "2026-11-12T15:46:31Z",
+      "captured_at_utc": "2026-11-12T15:46:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "iHeart transcript is automatically generated, not certified verbatim.",
+        "First-party site https://learn.kamilahstevenson.com/ has no direct YouTube cross-link.",
+        "Third-party listings and YouTube search results are not identity proof; candidate videos are not attributed.",
+        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible."
+      ],
+      "falsification_conditions": [
+        "A later primary publisher record or authenticated first-party cross-link contradicts this observation."
+      ],
+      "related_entities": [
+        "Dr Kamilah Stevenson",
+        "The Wealth Doctor",
+        "Paul Barron Network",
+        "YouTube"
+      ],
+      "tags": [
+        "identity-verification",
+        "fake-page-warning",
+        "auto-transcript",
+        "no-video-attribution"
+      ]
     }
   ],
-  "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event."
+  "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
+  "run64b_note": "Corrects spot/ETF hypothesis group consistency and adds five primary-source identity/capital events; all records remain research-only."
 }

@@ -2075,5 +2075,34 @@ Security:
 ### Durable Run64 records
 - Structured artifact: `research/xrp_intelligence/20261112T153044Z-run64-exact-head-market-stablecoin-rails-and-integration-audit.json`.
 - Updated nine-platform map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json`.
-- Event registry advanced to `run52-2026-11-12`, now 56 curated events; all lack raw publisher hashes and remain model-ineligible.
+- Event registry advanced to `run52-2026-11-12`, now 57 curated events; all lack raw publisher hashes and remain model-ineligible.
 - Next: verify exact-head full suite and installed wheel on the Run64 evidence commit; resolve protection visibility, least privilege, credential revocation and Pages authorization; continue semantic review. Do not forecast before independent raw anchoring, shadow outcomes and measured out-of-sample lift.
+
+
+## Run64b — November 12, 2026, 15:46 UTC
+
+### Exact-head CI failure and repair
+- Run64 evidence commit `a1d46004a4f5dff8a1717da1fc521685a2ef400f` triggered [Full CI 43250724326](https://github.com/Barrot-Agent/B-Agent/actions/runs/43250724326): **3,507 passed, 5 failed, 8 subtests, 61.42% coverage in 89.28 seconds**. Core suite passed 721/721. Wheel/installed-wheel steps were skipped.
+- One failure: `tests/test_xrp_event_timeline_ingestion.py::test_current_registry_retains_market_and_sbi_resale_counterevidence_without_raw_receipts`. Two ETF events shared one `hypothesis_id` but had different hypothesis/counter-hypothesis definitions; the scenario assembler correctly rejected the inconsistent grouping. The spot pair had the same latent inconsistency and is also unified in Run64b.
+- Four failures in `tests/test_xrp_nine_platform_current_map_run73.py` were evidence-map consistency defects: integration-head, PR-head, latest-tested-head and latest-attempt fields were not advanced together.
+- Run64b aligns both spot and ETF hypothesis definitions and synchronizes the map to tested parent `a1d46004a4f5dff8a1717da1fc521685a2ef400f`. No tests are removed or weakened. Exact-head CI on the correction commit is pending.
+- Dependency audit [43250724473](https://github.com/Barrot-Agent/B-Agent/actions/runs/43250724473) passed six manifests with zero known vulnerabilities; fail-closed gate [43250724359](https://github.com/Barrot-Agent/B-Agent/actions/runs/43250724359) passed.
+
+### Primary-source identity and capital findings
+- **SBIC East/Central/West:** Tokyo SBIC = East Japan; Nagoya = Central Japan; Osaka = West Japan. Three separate statutory SME investment/consultation companies, not SBI Holdings. [Tokyo](https://www.sbic.co.jp/company/profile/) · [Nagoya](https://www.sbic-cj.co.jp/company/about/) · [Osaka](https://www.sbic-wj.co.jp/profiles/profile/).
+- **SBIC + ChatGPT:** Tokyo SBIC's June 12-13, 2025 AI/ML course included ChatGPT and Copilot, was restricted to investee companies at ¥35,000 and listed a VOST instructor. Educational training, not an OpenAI partnership. [Official course](https://www.sbic.co.jp/training/20250612co/).
+- **SB OAI Japan:** SoftBank Corp, SoftBank Group and OpenAI launched SB OAI Japan GK on November 5, 2025. It is 50% C Holdings and 50% OpenAI; C Holdings is 51% SoftBank Corp and 49% SoftBank Group. It is not SBIC or SBI Holdings. [Official announcement](https://www.softbank.jp/en/corp/news/press/sbkk/2025/20251105_02/).
+- **SBI Holdings vs SoftBank Group:** SBI's official history says the March 2005 public offering removed it from SoftBank Group's consolidated subsidiary structure; by October 2005 SBI described itself as Strategic Business Innovator. [SBI history](https://www.sbigroup.co.jp/business/effort/0510_newfields.html).
+- **Actual capital / Evernorth:** SBI's October 21, 2025 announcement promised $200M cash, intended primarily for open-market XRP purchases. The final SEC prospectus shows about 388.910M XRP in kind and 84.366M cash-purchased from the $214.05M advance pool. SBI's subscriber-level allocation is undisclosed; the $200M is included, not additive. [SBI announcement](https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf) · [SEC prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+- **ASK Coin:** exact-phrase search produced no new primary evidence of XRPL deployment; distinct ASK-labelled projects remain separate.
+- **Kamilah/Camilla Stevenson:** first-party site identifies Dr Kamilah Stevenson. The June 11 iHeart auto-generated transcript has the guest saying her YouTube is “doctor Camilla Stevenson” and warning about fake pages. The first-party site has no direct YouTube cross-link; third-party listings show similar channels. No channel or videos are attributed. [iHeart interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/) · [first-party site](https://learn.kamilahstevenson.com/).
+
+### Event timeline and status
+- Event registry advanced to `run53-2026-11-12`, **62 events**. Both spot and ETF event pairs now share consistent definitions. Five identity/capital events added. All 62 have null `raw_source_sha256`; none is model-eligible.
+- Forecast remains **NOT_ISSUED**. Main remains `84f28ee7755607236231545a14f3d093c1baaa85`; Run64b parent `a1d46004a4f5dff8a1717da1fc521685a2ef400f`, 2,130 ahead/0 behind; PR #1661 has 1,068 changed files (49 workflows, 1,019 other paths), remains draft with zero approvals/reviews/threads.
+- Security blockers remain: branch-protection detail 403, fallback ruleset disabled, GitHub connector overprivileged, Pages publication unauthorized, provider-side credential revocation unverified. The 17-branch credential-path audit was not rechecked in Run64/64b.
+- No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source-PR closure.
+
+### Durable Run64b artifact
+- `research/xrp_intelligence/20261112T154631Z-run64b-event-registry-hypothesis-map-ci-and-identity-correction.json`.
+- Next: exact-head full suite, wheel build and installed-wheel verification on the correction commit; keep PR #1661 blocked until all merge gates and required approvals pass.

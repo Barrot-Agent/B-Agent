@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T15:30:44Z",
-  "last_verified_at_utc": "2026-11-12T15:30:44Z",
+  "captured_at_utc": "2026-11-12T15:46:31Z",
+  "last_verified_at_utc": "2026-11-12T15:46:31Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "33edc21560ce3026c86470840b9e9f04bad5c36e",
+  "observed_integration_head_before_map_commit": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,15 +13,15 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2129,
+    "ahead_by": 2130,
     "behind_by": 0,
-    "changed_files": 1067,
+    "changed_files": 1068,
     "workflow_files": 49,
-    "other_changed_paths": 1018,
-    "head_sha": "33edc21560ce3026c86470840b9e9f04bad5c36e",
+    "other_changed_paths": 1019,
+    "head_sha": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2129,
-    "additions": 294332,
+    "commits": 2130,
+    "additions": 295697,
     "deletions": 4492,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -30,9 +30,9 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-12T15:26:00Z",
+    "updated_at": "2026-11-12T15:42:38Z",
     "classification": "blocked",
-    "note": "Run64 exact-head CI on 33edc215 passed 3,512 full-suite tests, eight subtests, 61.42% coverage, 721 core tests and installed-wheel verification. PR remains draft with zero formal approvals; protection/security and semantic-review blockers remain."
+    "note": "Run64 head a1d46004 failed five tests: one event hypothesis conflict and four stale map snapshot fields. Run64b aligns spot/ETF hypotheses and synchronizes map fields; exact-head CI pending."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -611,18 +611,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "d4caf04e076b8aecc72f8702190444988056ddfe",
+    "integration_head_before_current_map_commit": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
     "integration_pr": 1661,
-    "integration_ahead_by": 2129,
+    "integration_ahead_by": 2130,
     "integration_behind_by": 0,
-    "changed_files": 1067,
+    "changed_files": 1068,
     "workflow_files_changed": 49,
-    "non_workflow_paths_changed": 1018,
+    "non_workflow_paths_changed": 1019,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2324,
+    "integration_tree_entries": 2325,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -635,11 +635,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "33edc215 passed 3,512 full-suite tests, zero failures, eight subtests, 61.42% coverage in 98s; core 721 passed; wheel and installed mission verification passed.",
-    "last_reconciled_at_utc": "2026-11-12T15:30:44Z",
+    "latest_exact_head_ci": "a1d46004: 3,507 passed, five failed, eight subtests, 61.42% coverage; core 721 passed; dependency audit/fail-closed passed; wheel verification skipped.",
+    "last_reconciled_at_utc": "2026-11-12T15:46:31Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2205,
+    "integration_tree_files": 2206,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -666,7 +666,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "d4caf04e076b8aecc72f8702190444988056ddfe",
+    "latest_full_suite_tested_head": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -1003,37 +1003,40 @@
     "non_draft_open_prs": 14,
     "open_prs_targeting_main": 366,
     "other_base_branch_prs": 8,
-    "integration_head_before_run64_commit": "33edc21560ce3026c86470840b9e9f04bad5c36e"
+    "integration_head_before_run64_commit": "33edc21560ce3026c86470840b9e9f04bad5c36e",
+    "integration_head_before_run64b_commit": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
+    "integration_head_after_run64_commit": "a1d46004a4f5dff8a1717da1fc521685a2ef400f"
   },
   "ci_evidence": {
-    "integration_head_tested": "33edc21560ce3026c86470840b9e9f04bad5c36e",
-    "integration_pr_run": 43247054008,
-    "integration_full_suite_job": 131134313767,
+    "integration_head_tested": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
+    "integration_pr_run": 43250724326,
+    "integration_full_suite_job": 131295464128,
     "dependency_audit_run": 43203975057,
     "dependency_audit_job": 130980425886,
     "fail_closed_gate_run": 43203975063,
     "fail_closed_gate_job": 130980425284,
     "full_repository_suite": {
-      "passed": 3512,
-      "failed": 0,
+      "passed": 3507,
+      "failed": 5,
       "subtests": 8,
       "coverage_percent": 61.42,
       "coverage_floor_percent": 53,
-      "duration_seconds": 98,
+      "duration_seconds": 89.28,
       "exact_head": true,
       "exact_head_verified": true,
-      "wheel_build_verified": true,
-      "installed_wheel_primary_mission_verified": true
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false
     },
     "dependency_audit": {
-      "run_id": 43247054032,
+      "run_id": 43250724473,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
-      "known_vulnerabilities_reported": 0
+      "known_vulnerabilities_reported": 0,
+      "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43247054079,
+      "run_id": 43250724359,
       "passed": true,
       "conclusion": "success",
       "automatic_merge_enabled": false
@@ -1074,46 +1077,49 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "d4caf04e076b8aecc72f8702190444988056ddfe",
-      "run_id": 43203975056,
+      "head_sha": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
+      "run_id": 43250724326,
       "status": "completed",
       "conclusion": "failure",
-      "completed_at_utc": "2026-11-12T10:54:21Z",
-      "full_suite_job_id": 131134313767,
+      "completed_at_utc": "2026-11-12T15:46:31Z",
+      "full_suite_job_id": 131295464128,
       "full_repository_suite": {
-        "passed": 3506,
-        "failed": 1,
+        "passed": 3507,
+        "failed": 5,
         "subtests": 8,
-        "coverage_percent": 61.35,
+        "coverage_percent": 61.42,
         "coverage_floor_percent": 53,
-        "duration_seconds": 96.87,
+        "duration_seconds": 89.28,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
       "core_tests": {
+        "passed": 721,
+        "failed": 0,
         "conclusion": "success",
-        "job_id": 131134314123
+        "job_id": 131295463790
       },
       "dependency_audit": {
-        "run_id": 43203975057,
+        "run_id": 43250724473,
         "passed": true,
-        "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43203975063,
+        "run_id": 43250724359,
         "passed": true,
-        "conclusion": "success",
-        "merge_disabled": true,
         "automatic_merge_enabled": false
       },
       "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+        "tests/test_xrp_event_timeline_ingestion.py::test_current_registry_retains_market_and_sbi_resale_counterevidence_without_raw_receipts",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_tracks_current_integration_head"
       ],
-      "failure_classification": "Exact-head full-suite failed on d4caf04e076b8aecc72f8702190444988056ddfe: 3,506 passed, 1 failed, eight subtests passed, 61.35% coverage in 96.87 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head. The evidence-map dependency_audit aggregate omitted the required known_vulnerabilities key although its earlier report used known_vulnerabilities_reported; the exact-head run itself reports six manifests audited and zero known vulnerabilities. This is an evidence-map schema defect, not an observed product-runtime failure. Dependency audit and fail-closed gate passed. Wheel/installed verification were skipped after the full-suite failure."
+      "failure_classification": "Exact-head full-suite failed: 3,507 passed, five failed. One event-timeline failure from inconsistent shared ETF hypothesis definitions; four map snapshot consistency failures. Core tests, dependency audit and fail-closed gate passed; wheel verification skipped. Run64b aligns spot/ETF hypotheses and map fields; no tests removed or weakened."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1285,7 +1291,8 @@
     "core_tests": {
       "passed": 721,
       "failed": 0,
-      "coverage_percent": 76
+      "conclusion": "success",
+      "job_id": 131295463790
     },
     "push_fail_closed_gate": {
       "run_id": 43144128687,
@@ -2421,7 +2428,8 @@
       ],
       "failure_classification": "Exact-head full-suite failed on 6de85a9dc6b6f5b15a4223ee34677fa4170d1f85: 3,506 passed, 1 failed, eight subtests passed, 61.35% coverage in 96.49 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head. The map's latest_attempt.full_repository_suite omitted the required 'subtests' field although the same count was stored as 'subtests_passed'. This is an evidence-map schema defect, not an observed Barrot V3 or prediction-runtime failure. Dependency audit and fail-closed gate passed. Wheel and installed-wheel verification were skipped because the full-suite step failed."
     },
-    "post_run64_commit_ci": "PENDING_EXACT_HEAD"
+    "post_run64_commit_ci": "PENDING_EXACT_HEAD",
+    "post_run64b_commit_ci": "PENDING_EXACT_HEAD"
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 49,
@@ -4385,8 +4393,8 @@
         "west_chatgpt_event": "Educational seminar for accountants/support institutions; no OpenAI commercial partnership evidenced."
       }
     },
-    "ask_coin": "No XRP-linked ASK Coin identity or XRPL integration is verified. Three distinct ASK-labeled records must not be conflated: (1) Askcoin token, CoinMarketCap UCID 4640, is a preview listing showing total supply 0, circulating supply 0, no max supply and no social links; it lists askcoin.me and explorer.askcoin.me, both of which failed retrieval (502), so contract activity and chain identity remain unverified. (2) Ask Coin exchange, a separate CoinMarketCap exchange listing at askcoin.net, is marked Untracked Listing with inactive status and unavailable reserve data; direct domain retrieval redirects to HugeDomains parking. (3) Permission Coin ASK, CoinMarketCap UCID 7105, is a separate Base/Polygon token with no verified XRPL integration. None of these records establishes an XRP payment, custody, collateral or ledger relationship. Run34: CoinMarketCap UCID 4640 is the Askcoin preview listing (zero reported supply; explorer.askcoin.me); UCID 7105 is Permission Coin, a distinct LayerZero OFT token on Base/Polygon, not Askcoin. No XRP/XRPL deployment was verified for either. askcoin.net redirects to a HugeDomains domain profile; this does not establish an active project or verified owner.",
-    "actual_capital": "SBI Holdings disclosed $200M cash invested in Evernorth. SEC Form 424B3 reports $272.6M gross cash at closing (approximately $224.6M private placements plus $48.0M SPAC trust after redemptions) and 388.910554M XRP contributed in kind; $214.05M advance cash was used to buy 84.365876M XRP. The $200M SBI commitment is included in the aggregate advance-funding pool, not additive. Separately classify $30M 4% PIK debt, the pre-close Ripple Company Facility, Cantor ELOC (zero proceeds as of Nov9), resale registration (zero company proceeds), and potential warrant exercise proceeds. 'Actual capital' is not a standardized XRP metric; do not collapse these categories. Run28 additionally verified SBI Holdings and SBI Shinsei Bank's $50M Circle equity investment ($25M each) and SBI's 2025 statement that it held approximately 9% of Ripple; the latter is a dated issuer disclosure, not a refreshed current ownership percentage. These are equity relationships, not XRP token purchases. Run34: exact phrase appears in social commentary but is not a standardized XRP capital metric. Use SEC cash/redemption/in-kind/debt/warrant/ELOC/resale categories instead.",
+    "ask_coin": "Exact-phrase research yielded no new primary evidence of XRPL deployment; distinct ASK-labelled projects remain separate.",
+    "actual_capital": "SBI announced $200M cash for Evernorth, intended primarily for open-market XRP purchases. Closing SEC prospectus shows ~388.910M XRP in-kind and 84.366M cash-purchased from a $214.05M pool. SBI subscriber allocation is undisclosed; $200M is included, not additive.",
     "kamilah_stevenson": "First-party learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson / The Wealth Doctor. The iHeart XRP Podcast episode 'Crypto Panics! with Dr. Kamilah Stevenson' has the guest verbally identify a YouTube name as 'doctor Camilla Stevenson' and warn that fake pages exist; the automated transcript spells the X/Instagram/YouTube names inconsistently (cam/Kamilla/Camilla). The person identity is corroborated, but the exact YouTube handle and channel ownership remain unverified. The first-party site has no YouTube link. @drkamilahstevenson and @KamilahStevensonXrpStocks remain candidates only; no personal-channel video inventory is attributed. Do not conflate other Camilla Stevenson identities.",
     "sources": [
       "https://learn.kamilahstevenson.com/",
@@ -4538,7 +4546,12 @@
       "ask_coin": "Coinbase dedicated Permission Coin guide says DEX-only, not CEX; Ethereum/Base/Solana listed; no XRPL integration verified. Coinbase price page contains inconsistent CEX wording; dedicated how-to-buy page is more specific.",
       "sbic_chatgpt": "No formal SBIC/OpenAI partnership verified; SBIC training is educational.",
       "kamilah_stevenson": "Person identity confirmed; candidate channel remains probable but not first-party verified; third-party subscriber counts conflict; no own-channel inventory attributed."
-    }
+    },
+    "japan_sbic": "Tokyo SBIC=East Japan; Nagoya=Central Japan; Osaka=West Japan. Three separate statutory SME investment/consultation companies, not SBI Holdings.",
+    "sbic_chatgpt": "Tokyo SBIC's June 12-13 2025 manufacturing AI/ML course included ChatGPT/Copilot, investee-only at ¥35,000, VOST instructor; training, not OpenAI partnership.",
+    "sb_oai_japan": "SB OAI Japan GK launched Nov 5 2025 as 50/50 C Holdings/OpenAI JV; C Holdings 51% SoftBank Corp and 49% SoftBank Group. Separate from SBIC and SBI Holdings.",
+    "sbi_vs_softbank": "SBI Holdings left SoftBank Group's consolidated-subsidiary structure via March 2005 public offering; by October 2005 used Strategic Business Innovator. Historical SoftBank Investment naming does not establish current ownership.",
+    "camilla_kamilah_stevenson": "First-party site identifies Dr Kamilah Stevenson; iHeart auto-transcript says guest's YouTube is 'doctor Camilla Stevenson' and warns of fake pages. No first-party YouTube cross-link; no channel/videos attributed."
   },
   "macro_geopolitics": {
     "us_cpi_october_2026": {
@@ -8029,8 +8042,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run64",
-  "latest_run_captured_at_utc": "2026-11-12T15:30:44Z",
+  "latest_run_id": "Run64b",
+  "latest_run_captured_at_utc": "2026-11-12T15:46:31Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -11058,7 +11071,7 @@
     },
     "forecast_status": "NOT_ISSUED"
   },
-  "last_reconciled_at_utc": "2026-11-12T15:30:44Z",
+  "last_reconciled_at_utc": "2026-11-12T15:46:31Z",
   "run29_snapshot": {
     "captured_at_utc": "2026-11-11T15:36:00Z",
     "repository_state": {
@@ -19577,7 +19590,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T15:30:44Z",
+  "updated_at_utc": "2026-11-12T15:46:31Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -26929,5 +26942,208 @@
     "Continue semantic review of 1,018 non-workflow changed paths and 49 workflow changes.",
     "Capture synchronized fresh L2, OI and funding through Barrot RawReceiptArchive.",
     "Do not issue forecasts until independent raw anchoring, shadow outcomes and measured OOS lift pass."
+  ],
+  "event_timeline_registry_version": "run53-2026-11-12",
+  "event_timeline_registry_event_count": 62,
+  "event_timeline_registry_raw_hashes": 0,
+  "event_timeline_model_eligible": false,
+  "event_timeline_forecast_status": "NOT_ISSUED",
+  "run64b_snapshot": {
+    "artifact_type": "barrot.xrp.run_evidence",
+    "schema_version": "1.0.0",
+    "run_id": "Run64b",
+    "captured_at_utc": "2026-11-12T15:46:31Z",
+    "repository": {
+      "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "branch": "integration/xrp-v3-unified-main-20261111",
+      "integration_head_before_run64b_commit": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
+      "ahead_by": 2130,
+      "behind_by": 0,
+      "tree_entries": 2325,
+      "pr_number": 1661,
+      "pr_state": "open",
+      "draft": true,
+      "mergeable": true,
+      "commits": 2130,
+      "changed_files": 1068,
+      "workflow_files": 49,
+      "other_paths": 1019,
+      "open_prs": 374,
+      "drafts": 360,
+      "non_drafts": 14,
+      "formal_approvals": 0,
+      "reviews": 0,
+      "review_threads": 0
+    },
+    "ci": {
+      "previous_head": "33edc21560ce3026c86470840b9e9f04bad5c36e",
+      "previous_full_suite": {
+        "passed": 3512,
+        "failed": 0,
+        "subtests": 8,
+        "coverage": 61.42,
+        "duration_seconds": 98,
+        "wheel": true,
+        "installed_wheel": true
+      },
+      "failed_head": "a1d46004a4f5dff8a1717da1fc521685a2ef400f",
+      "failed_run": 43250724326,
+      "full_suite": {
+        "passed": 3507,
+        "failed": 5,
+        "subtests": 8,
+        "coverage_percent": 61.42,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 89.28,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
+      },
+      "core": {
+        "passed": 721,
+        "failed": 0
+      },
+      "dependency_audit": {
+        "run": 43250724473,
+        "passed": true,
+        "manifests": 6,
+        "vulnerabilities": 0
+      },
+      "fail_closed": {
+        "run": 43250724359,
+        "passed": true,
+        "automatic_merge": false
+      },
+      "failing_tests": [
+        "tests/test_xrp_event_timeline_ingestion.py::test_current_registry_retains_market_and_sbi_resale_counterevidence_without_raw_receipts",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_tracks_current_integration_head"
+      ],
+      "post_run64b_commit_ci": "PENDING_EXACT_HEAD"
+    },
+    "correction": {
+      "spot_and_etf_hypothesis_groups_unified": true,
+      "map_parent_head_and_latest_attempt_fields_synchronized": true,
+      "tests_removed_or_weakened": false
+    },
+    "identity_research": {
+      "sbic": "Tokyo SBIC=East, Nagoya=Central, Osaka=West; three statutory companies, not SBI Holdings.",
+      "sbic_chatgpt": "Tokyo SBIC June 12-13 2025 course: investee-only, ¥35,000, ChatGPT/Copilot, VOST instructor; not OpenAI partnership.",
+      "sb_oai_japan": "SB OAI Japan GK launched Nov 5 2025; 50/50 C Holdings/OpenAI; C Holdings 51% SoftBank Corp,49% SoftBank Group; not SBIC or SBI Holdings.",
+      "sbi_vs_softbank": "SBI Holdings left SoftBank Group consolidation via March 2005 public offering; by Oct 2005 used Strategic Business Innovator.",
+      "actual_capital": "SBI $200M Evernorth commitment included in $214.05M pool; final SEC composition ~388.910M in-kind and 84.366M cash-purchased; exact SBI subscriber allocation unknown.",
+      "ask_coin": "No new primary evidence of XRPL deployment.",
+      "kamilah": "iHeart auto-transcript says 'doctor Camilla Stevenson' and warns of fake pages; first-party site identifies Dr Kamilah Stevenson but no YouTube cross-link; no videos attributed."
+    },
+    "sources": [
+      {
+        "name": "SBI Evernorth announcement",
+        "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+        "raw_source_sha256": null
+      },
+      {
+        "name": "Evernorth SEC 424B3",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+        "raw_source_sha256": null
+      },
+      {
+        "name": "Tokyo SBIC training",
+        "url": "https://www.sbic.co.jp/training/20250612co/",
+        "raw_source_sha256": null
+      },
+      {
+        "name": "SB OAI Japan",
+        "url": "https://www.softbank.jp/en/corp/news/press/sbkk/2025/20251105_02/",
+        "raw_source_sha256": null
+      },
+      {
+        "name": "SBI corporate history",
+        "url": "https://www.sbigroup.co.jp/business/effort/0510_newfields.html",
+        "raw_source_sha256": null
+      },
+      {
+        "name": "iHeart interview",
+        "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "raw_source_sha256": null
+      },
+      {
+        "name": "Kamilah first-party site",
+        "url": "https://learn.kamilahstevenson.com/",
+        "raw_source_sha256": null
+      }
+    ],
+    "event_registry": {
+      "version": "run53-2026-11-12",
+      "count": 62,
+      "raw_hashes": 0,
+      "conflicting_hypothesis_groups": 0,
+      "model_eligible": false
+    },
+    "forecast_status": "NOT_ISSUED",
+    "next_actions": [
+      "Run exact-head full suite, wheel build and installed-wheel verification on correction commit.",
+      "Verify 62 event records and consistent hypothesis groups.",
+      "Verify map parent head, PR head and latest CI attempt fields agree.",
+      "Recheck 17 affected PR branch tips for .config/gh/hosts.yml without reading contents.",
+      "Resolve branch-protection visibility, least privilege, credential revocation and Pages authorization."
+    ]
+  },
+  "run64b_research_artifact_path": "research/xrp_intelligence/20261112T154631Z-run64b-event-registry-hypothesis-map-ci-and-identity-correction.json",
+  "run64b_source_provenance": [
+    {
+      "name": "SBI Evernorth announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "raw_source_sha256": null
+    },
+    {
+      "name": "Evernorth SEC 424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "raw_source_sha256": null
+    },
+    {
+      "name": "Tokyo SBIC training",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "raw_source_sha256": null
+    },
+    {
+      "name": "SB OAI Japan",
+      "url": "https://www.softbank.jp/en/corp/news/press/sbkk/2025/20251105_02/",
+      "raw_source_sha256": null
+    },
+    {
+      "name": "SBI corporate history",
+      "url": "https://www.sbigroup.co.jp/business/effort/0510_newfields.html",
+      "raw_source_sha256": null
+    },
+    {
+      "name": "iHeart interview",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "raw_source_sha256": null
+    },
+    {
+      "name": "Kamilah first-party site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "raw_source_sha256": null
+    }
+  ],
+  "run64b_identity_research": {
+    "sbic": "Tokyo SBIC=East, Nagoya=Central, Osaka=West; three statutory companies, not SBI Holdings.",
+    "sbic_chatgpt": "Tokyo SBIC June 12-13 2025 course: investee-only, ¥35,000, ChatGPT/Copilot, VOST instructor; not OpenAI partnership.",
+    "sb_oai_japan": "SB OAI Japan GK launched Nov 5 2025; 50/50 C Holdings/OpenAI; C Holdings 51% SoftBank Corp,49% SoftBank Group; not SBIC or SBI Holdings.",
+    "sbi_vs_softbank": "SBI Holdings left SoftBank Group consolidation via March 2005 public offering; by Oct 2005 used Strategic Business Innovator.",
+    "actual_capital": "SBI $200M Evernorth commitment included in $214.05M pool; final SEC composition ~388.910M in-kind and 84.366M cash-purchased; exact SBI subscriber allocation unknown.",
+    "ask_coin": "No new primary evidence of XRPL deployment.",
+    "kamilah": "iHeart auto-transcript says 'doctor Camilla Stevenson' and warns of fake pages; first-party site identifies Dr Kamilah Stevenson but no YouTube cross-link; no videos attributed."
+  },
+  "run64b_forecast_status": "NOT_ISSUED",
+  "run64b_next_actions": [
+    "Run exact-head full suite, wheel build and installed-wheel verification on correction commit.",
+    "Verify 62 event records and consistent hypothesis groups.",
+    "Verify map parent head, PR head and latest CI attempt fields agree.",
+    "Recheck 17 affected PR branch tips for .config/gh/hosts.yml without reading contents.",
+    "Resolve branch-protection visibility, least privilege, credential revocation and Pages authorization."
   ]
 }
