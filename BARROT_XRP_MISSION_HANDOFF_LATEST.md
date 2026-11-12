@@ -1,3 +1,113 @@
+# Run53 — Current Durable Handoff
+Captured: 2026-11-12T09:49:48Z
+
+## Mission and repository
+- Priority 1: XRP intelligence and prediction-engine mastery.
+- Protected foundation: Barrot V3 execution, orchestration, safety and verification.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`.
+- Pre-Run53 head: `46d9a25d45fef825beba149e29a5c72f6600363a`; 2,094 commits ahead, 0 behind main.
+- Main tree: 1,388 entries; integration tree: 2,312 entries.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts), all four pages fetched.
+- PR #1661: open/draft, mergeable, 1,053 changed files (49 workflows, 1,004 other paths), 284,475 additions, 4,392 deletions; zero formal reviews, approvals or review threads.
+- Main still does not contain the primary XRP mission, collector module or scheduled ingestion workflow. Those remain integration-only.
+
+## Exact-head verification — VERIFIED on 46d9a25
+- Full repository suite: **3,507 passed, 0 failed**, 8 subtests, 61.35% coverage, 78.75 seconds.
+- Core suite: **716 passed, 0 failed**, 8 subtests.
+- Wheel build and installed Barrot V3/primary mission verification: passed.
+- Six dependency manifests audited; 15 PEP 621 dependencies checked; zero known vulnerabilities reported.
+- Fail-closed gate passed and explicitly reported “Merge disabled pending gate verification”; automatic merge remains disabled.
+
+Evidence:
+- [Full CI 43190921854](https://github.com/Barrot-Agent/B-Agent/actions/runs/43190921854)
+- [Dependency audit 43190921803](https://github.com/Barrot-Agent/B-Agent/actions/runs/43190921803)
+- [Fail-closed gate 43190921800](https://github.com/Barrot-Agent/B-Agent/actions/runs/43190921800)
+- Main's last full-suite run on unchanged SHA 84f28ee: [CI 42944864014](https://github.com/Barrot-Agent/B-Agent/actions/runs/42944864014), 718 passed, zero failed, eight subtests.
+
+Coverage caveat: integration measures `barrot_agent`, `directive_platform` and `data` with branch coverage and no major-package exclusions, but its global floor is 53%; main's 70% floor measures a narrower scope. The percentages are not directly comparable. Add package-level floors/ratchets.
+
+## Current XRP market — cutoff 2026-11-12T09:49:48Z
+- XRPL dashboard: $1.0455 at 09:42 UTC, ledger 108279460.
+- OKX XRP-USDT: 1.0454 last, 1.0453/1.0454 bid/ask, event time 09:23:44.674 UTC; 24h high 1.0807, low 1.0373, volume 35.70M XRP. At cutoff the quote was 26 minutes old.
+- Kraken XRP/USD: $1.04333 last, $1.04320/$1.04321 bid/ask, retrieved at cutoff without an exchange event timestamp; 24h volume 21.49M XRP.
+- Kraken USDT/USD midpoint 0.998805. Mechanically normalized OKX midpoint is $1.04410 versus Kraken midpoint $1.043205, a 0.086% asynchronous gap. Not executable arbitrage or model-eligible.
+- No fresh synchronized L2. Latest Fuelmaps six-venue spot book is 04:00 UTC (5h50m old at cutoff): within 1%, $12.5M bids/$11.6M asks; within 5%, $29.0M/$15.5M. Binance and Bitget excluded; resting orders can cancel.
+- Liqwall at 09:32 UTC: $1.16B OI (+1.8% 24h), funding +0.0097%/8h, 75.1% of Binance accounts long, $4.1M liquidations ($3.0M longs/$1.1M shorts).
+- TradRadar's prior 19:05 UTC snapshot: $1.57B OI (-0.97%), +0.0045% funding, 79.7% long accounts, at least $2.85M liquidations. Different time and venue universes; do not average.
+- Alpha Finance's five-fund cohort through Nov 11: $0 latest session, -$18M over seven sessions, +$1.3M over 30 sessions, +$1.71B cumulative; it reports +972.8M XRP at daily prices and 1.532% of supply, but no AUM or holdings.
+- ByKaranteli's six-fund cohort through Nov 10: -$7.6M daily, -$18M over five sessions, $1.19B net assets and +$1.79B cumulative. Different cohort/cutoff; not averaged with Alpha.
+- CFTC's latest report still drops XRP Coinbase Derivatives contract 176LM2. Treat as a coverage break, not zero positioning.
+
+## XRPL governance and collateral
+- At 09:27 UTC the public amendment dashboard heard 35/35 validators. SingleAssetVault: 23/35; LendingProtocol and LendingProtocolV1_1: 22/35 each; 29 yes votes required; zero amendments in a 14-day activation countdown.
+- XLS-66 is designed for fixed-term uncollateralized lending with off-chain underwriting, broker risk management and first-loss capital. XRP is not mandatory borrower collateral and automatic on-ledger liquidation is not part of the design.
+- This is a protocol/governance development, not evidence of XRP collateral demand or live lending.
+
+## Macro and institutional context
+- Reuters, Nov 12 00:05 UTC: dollar index 102.80 after a 19-month high of 102.88; USD/JPY 159.62 after 159.945; hawkish Fed repricing followed strong US inflation data.
+- Reuters, Nov 12 00:14 UTC: Japan October wholesale inflation 7.1% y/y versus 6.5% consensus; yen import-price index +24.8% y/y. BOJ December policy expectations remain uncertain.
+- These are broad FX/liquidity inputs, not direct XRP causal evidence.
+- Carry-forward SBI/JYPSc/Open Standard, Circle/Coinbase/Ripple and Evernorth capital distinctions remain in Run52. No new primary evidence in this run converts JPYSC, OUSD, tokenized-MMF or USDC activity into XRP settlement demand.
+
+## Identity research
+- Japan SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate statutory regional SME investment companies, not SBI Holdings; SBIC ChatGPT events are educational training, not an OpenAI partnership.
+- No primary-source XRP-linked ASK Coin identity or XRPL deployment verified.
+- “Actual capital” is not a standardized XRP metric; keep cash purchases, in-kind XRP, commitments, debt, facilities, collateral and resales separate.
+- Dr Kamilah/Camilla Stevenson person identity is not enough to identify a YouTube channel. No channel ID verified and no videos attributed.
+
+## Prediction engine
+- 47 public source definitions: 43 hourly, two weekly CFTC, two excluded noncommercial XRPL node sources; 45 scheduled.
+- Read-only allowlisted collector, SHA-256 raw payload receipts and per-run hash-chain prototype are implemented on integration.
+- Event registry: 47 curated events, 47 null raw publisher hashes. Web research and curated events remain receipt-incomplete and model-ineligible.
+- Append-only SQLite point-in-time feature-store prototype and revision reconstruction exist; not independent WORM.
+- Four baselines, chronological horizon-purged walk-forward, temporal calibration and PSI drift diagnostics are implemented.
+- Forecast ledger remains fail-closed; requires byte-complete canonical receipts, point-in-time dataset manifest and Ed25519 evaluator attestation.
+- Production gaps: independent WORM/trusted timestamp anchor, replayable historical archive, synchronized spot/L2/derivatives/flows/collateral, vintage-aware macro/regulatory/geopolitical history, residual serial-dependence/shared-source correction, heavy-tailed empirical volatility baseline, production evaluator key, 100+ independent shadow/OOS samples and measured lift over all four baselines.
+
+<badge color="warning">Forecast NOT_ISSUED</badge>
+
+No directional forecast, paper trade or real-money action occurred. Run53 web observations have `raw_source_sha256=null` and are excluded from model features.
+
+## Nine-platform map
+- Canonical map: [nine_platform_capability_authentication_dataflow_map_current.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261111/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json), last fully verified 09:04:43 UTC.
+- ChatGPT/GitHub API access was re-tested in this run; current connector permissions remain admin, maintain, push, pull and triage — overprivileged.
+- Claude, Grok, Gemini and Codex: authentication/data flow unverified.
+- Copilot: one-off review activity only; no formal approval on #1661.
+- Hugging Face: last known BUILD_ERROR; Kaggle untested; Databricks HTTP 403; LunaRoute endpoint authentication/data flow unverified.
+- No external-model data transfer.
+
+## Security and workflow review
+- Main reports protected=true, but detailed branch-protection API returns HTTP 403. Required checks and approval rules remain invisible.
+- Visible fallback ruleset #10863829 is disabled.
+- `.config/gh/hosts.yml` is present in **17/17** affected open PR branch-tip trees and absent from 17/17 changed-file inventories; absent from main and integration. Contents were not read; provider-side OAuth revocation remains unverified. Preserve the branches; no history rewrite.
+- GitHub Pages previously built successfully on main commit 84f28ee; publication authorization remains unresolved.
+- The new XRP ingestion workflow is main-only, hourly at minute 3 and daily at 00:15 UTC, with actions/content read-only permissions. It uploads 90-day raw/event/daily artifacts and seven-day per-run feature-store artifacts. Artifacts/caches are not independent WORM storage. No main scheduled ingestion run exists because the workflow is not on main.
+- High-risk manual workflows were inspected: Groq-backed research requires explicit public/authorized-input confirmation and expected main SHA; Databricks/Kaggle operations require per-operation YES; Cloudflare deployment requires YES plus secret-rotation YES and expected SHA; Hugging Face Space sync remains `if:false`; Coinbase paper trader is manual, exact-SHA-bound and artifact-only. None was triggered.
+- Full semantic review of all 49 changed workflow files and 1,004 non-workflow paths is not complete.
+
+## Backlog and overlap
+- #1661: BLOCKED_ACTIVE_INTEGRATION_DRAFT; sole consolidated V3/XRP integration PR.
+- Current path intersections: #1660 972/972; #1643 670/670; #1640 280/280; #1642 7/7; #1653 1/7 (six source-only); #1655 5/8 (three source-only).
+- Last exact blob comparison remains Run52: #1660 940 identical/32 different; #1643 661/9; #1640 234/46; #1642 0/7. Run53 refreshed path intersections, not blob equality.
+- Preserve #1642 unique prediction work, #1653 unique graph work, #1655 unique structural documentation, and all unique safety/MMI/topology work. No source PR closed.
+- Open PR inventory remains 374 (360 draft, 14 non-draft). #1661 has zero formal reviews, approvals or review threads.
+
+**Decision: no merge.** Exact-head CI now passes, but #1661 remains draft, approvals are absent, branch-protection requirements are not visible, connector permissions are overprivileged, credential revocation is unverified, Pages authorization is unresolved, and integrated semantic review is incomplete.
+
+## Next concrete actions
+1. Continue semantic review of the 49 workflow files and 1,004 other paths, prioritizing V3 runtime, public ingestion, receipts, feature store, event timeline, scenario assembler and forecast ledger.
+2. Resolve least-privilege connector permissions and branch-protection/ruleset visibility.
+3. Credential owner must independently verify OAuth revocation; preserve all 17 affected source branch histories.
+4. Confirm Pages publication authorization before any main push.
+5. Build independent WORM/trusted timestamp anchoring and byte-exact publisher capture; do not promote the 47 curated events or Run53 web observations to model inputs.
+6. Add package-level coverage floors/ratchets.
+7. Keep forecast issuance disabled until independent shadow outcomes and measured out-of-sample lift over all four baselines pass.
+
+Run53 structured artifact: [research/xrp_intelligence/20261112T094948Z-run53-current-head-ci-market-xrpl-governance-and-integration-audit.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261111/research/xrp_intelligence/20261112T094948Z-run53-current-head-ci-market-xrpl-governance-and-integration-audit.json)
+
+---
+
 # Run52 — Current Durable Handoff
 Captured: 2026-11-12T09:04:43Z
 

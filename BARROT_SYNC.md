@@ -1,3 +1,48 @@
+# BARROT SYNC — Run53 — 2026-11-12T09:49:48Z
+
+## Mission priority
+1. XRP intelligence and prediction-engine mastery.
+2. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.
+3. No directional forecast before independent receipts, point-in-time replay, shadow outcomes and measured out-of-sample lift.
+
+## Run53 repository and CI
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Integration branch: integration/xrp-v3-unified-main-20261111; pre-Run53 head 46d9a25d45fef825beba149e29a5c72f6600363a; 2,094 ahead / 0 behind.
+- PR #1661: open/draft/mergeable, 1,053 changed files (49 workflows, 1,004 other paths), zero formal reviews/approvals/threads.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts).
+- Exact-head CI on 46d9a25d45fef825beba149e29a5c72f6600363a: 3,507 passed, 0 failed, 8 subtests, 61.35% coverage; core 716 passed; wheel and installed mission verified.
+- Six dependency manifests and 15 PEP 621 dependencies audited; zero known vulnerabilities reported.
+- Fail-closed gate passed; automatic merge disabled.
+- Evidence: CI 43190921854; dependency audit 43190921803; fail-closed 43190921800.
+- Main's last full-suite run on unchanged 84f28ee: 718 passed, 0 failed, 8 subtests (42944864014).
+
+## Run53 market snapshot — 2026-11-12T09:49:48Z
+- XRPL dashboard $1.0455 at 09:42 UTC. OKX 1.0454 at event time 09:23:44.674 UTC; Kraken $1.04333 retrieved at cutoff with no provider event timestamp. USDT-normalized quote gap ~0.086%; asynchronous, not arbitrage.
+- No fresh synchronized L2. Fuelmaps 04:00 UTC snapshot is ~5h50m old; 1% spot depth $12.5M bids/$11.6M asks.
+- Liqwall 09:32 UTC: OI $1.16B (+1.8%), funding +0.0097%/8h, 75.1% Binance accounts long, $4.1M liquidations ($3.0M longs). TradRadar prior-day OI $1.57B/-0.97%, funding +0.0045%, 79.7% long. Different coverage/time; no averaging.
+- Alpha Finance five funds through Nov11: $0 latest session, -$18M/7 sessions, +$1.3M/30 sessions, +$1.71B cumulative; no AUM/holdings. ByKaranteli six funds through Nov10: -$7.6M daily, -$18M/5 sessions, $1.19B net assets, +$1.79B cumulative. Cohorts differ.
+- XRPL: SingleAssetVault 23/35; LendingProtocol and V1_1 22/35; 29 required; zero in 14-day countdown. XLS-66 is fixed-term uncollateralized lending with off-chain underwriting; no mandatory XRP collateral.
+- Macro: Reuters Nov12 dollar index 102.80 after 19-month high; USD/JPY 159.62; Japan wholesale inflation 7.1% y/y. Broad liquidity/FX variables, no direct XRP causality.
+- Web observations are not Barrot-captured raw-byte receipts and remain model-ineligible.
+
+## Security / merge
+- Branch-protection detail HTTP 403; fallback ruleset 10863829 disabled; connector permissions admin/maintain/push/pull/triage.
+- Credential path .config/gh/hosts.yml present in 17/17 affected open PR branch-tip trees; absent from main/integration; contents not read; provider-side OAuth revocation unverified.
+- Pages publication authorization unresolved.
+- Manual Groq/Databricks/Kaggle/Cloudflare/paper-trading workflows require explicit confirmations; HF Space sync remains if:false. None triggered.
+- No merge. PR #1661 remains draft and semantic review is incomplete.
+
+## Prediction / platform status
+- 47 source definitions; 45 scheduled; event registry 47/47 raw publisher hashes null; feature store is SQLite prototype; no independent WORM or trusted timestamp.
+- Four baselines and chronological purged walk-forward, calibration and drift diagnostics implemented; production evaluator key, independent shadow outcomes and demonstrated lift remain absent.
+- Forecast NOT_ISSUED.
+- ChatGPT/GitHub access re-tested; permissions overprivileged. Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks 403; LunaRoute endpoint unverified. No external-model transfer.
+
+Full record: BARROT_XRP_MISSION_HANDOFF_LATEST.md
+Run53 artifact: research/xrp_intelligence/20261112T094948Z-run53-current-head-ci-market-xrpl-governance-and-integration-audit.json
+
+---
+
 # BARROT SYNC — Run52 — 2026-11-12 09:04:43 UTC
 
 ## Mission priority
