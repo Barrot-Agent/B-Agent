@@ -1,0 +1,377 @@
+{
+  "artifact_type": "barrot.xrp.run42",
+  "schema_version": "1.0.0",
+  "run_id": "Run42",
+  "captured_at_utc": "2026-11-12T02:29:40Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_current_map_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "integration_ahead_by": 2073,
+    "integration_behind_by": 0,
+    "changed_files": 1035,
+    "workflow_files_changed": 49,
+    "non_workflow_paths_changed": 986,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "other_base_branches": 8,
+    "main_tree_entries": 1388,
+    "main_tree_files": 1288,
+    "main_workflow_files": 78,
+    "integration_tree_entries": 2295,
+    "integration_tree_files": 2186,
+    "integration_workflow_files": 79,
+    "integration_pr": 1661,
+    "integration_pr_state": "open",
+    "integration_pr_draft": true,
+    "integration_pr_mergeable": true,
+    "integration_pr_mergeable_state": "unstable",
+    "integration_pr_head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "integration_pr_base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_pr_commits": 2073,
+    "integration_pr_additions": 272927,
+    "integration_pr_deletions": 4391,
+    "formal_approvals": 0,
+    "formal_reviews": 0,
+    "unresolved_review_threads": 0,
+    "changed_path_top_level_counts": {
+      ".github": 49,
+      "research": 528,
+      "tests": 369,
+      "barrot_agent": 47,
+      "other": 42
+    },
+    "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API reads and Git-object branch update are available."
+  },
+  "ci": {
+    "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "run_id": 43139971072,
+    "conclusion": "failure",
+    "passed": 3459,
+    "failed": 1,
+    "subtests": 8,
+    "coverage_percent": 60.92,
+    "duration_seconds": 92.56,
+    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+    "root_cause": "The map's prior successful exact-head CI record used failure_classification='none'; the test requires an explicit exact-head full-suite passed classification for a successful record.",
+    "repair": "Record the current exact-head failed attempt with a truthful exact-head full-suite failed classification; do not weaken or remove the test.",
+    "core": {
+      "passed": 716,
+      "failed": 0,
+      "subtests": 8
+    },
+    "dependency_audit": {
+      "run_id": 43139971137,
+      "job_id": 130924312287,
+      "passed": true,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43139970976,
+      "job_id": 130924311410,
+      "passed": true,
+      "conclusion": "success",
+      "merge_disabled": true,
+      "automatic_merge_enabled": false
+    },
+    "wheel_build": "SKIPPED_AFTER_TEST_FAILURE"
+  },
+  "integration_architecture": {
+    "primary_mission_present_on_integration": true,
+    "primary_mission_present_on_main": false,
+    "collector_present_on_integration": true,
+    "collector_present_on_main": false,
+    "collector": {
+      "source_definitions_total": 47,
+      "scheduled_sources": 45,
+      "max_response_bytes": 10485760,
+      "max_live_age_seconds": 300,
+      "max_orderbook_age_seconds": 60,
+      "read_only": true,
+      "redirects_rejected": true
+    },
+    "feature_store": {
+      "technology": "SQLite",
+      "point_in_time_store": true,
+      "sql_triggers_deter_ordinary_mutation": true,
+      "adversarially_immutable": false
+    },
+    "forecast_ledger": {
+      "requires_independent_Ed25519_readiness_attestation": true,
+      "records_only_after_OOS_readiness": true,
+      "issues_predictions": false,
+      "trades": false
+    },
+    "workflow": {
+      "schedule": [
+        "3 * * * *",
+        "15 0 * * *"
+      ],
+      "permissions": {
+        "actions": "read",
+        "contents": "read"
+      },
+      "checkout_persist_credentials": false,
+      "job_runs_only_when_ref_is_main": true,
+      "raw_receipt_artifact_retention_days": 90,
+      "per_run_feature_store_retention_days": 7,
+      "daily_feature_store_and_report_retention_days": 90,
+      "WORM_storage": false
+    }
+  },
+  "market": {
+    "retrieved_at_utc_approx": "2026-11-12T02:29-02:31Z",
+    "spot": {
+      "okx": {
+        "pair": "XRP-USDT",
+        "event_time_utc": "2026-11-12T02:05:53.665Z",
+        "last": 1.0491,
+        "bid": 1.0487,
+        "ask": 1.0488,
+        "high_24h": 1.0807,
+        "low_24h": 1.0409,
+        "volume_24h_xrp": 40000088.903579
+      },
+      "kraken": {
+        "pair": "XRP/USD",
+        "last": 1.05316,
+        "bid": 1.05286,
+        "ask": 1.05287,
+        "high_24h": 1.07953,
+        "low_24h": 1.04004,
+        "volume_24h_xrp": 21593865.97126299,
+        "event_timestamp_available": false
+      },
+      "kraken_usdt_usd": {
+        "last": 0.99869,
+        "bid": 0.99868,
+        "ask": 0.99869,
+        "event_timestamp_available": false
+      },
+      "normalized_midpoint_comparison": {
+        "okx_mid_usd": 1.047376,
+        "kraken_mid_usd": 1.052865,
+        "gap_percent": -0.5213,
+        "interpretation": "Asynchronous indicative venue difference; not executable arbitrage."
+      }
+    },
+    "order_book": {
+      "fresh_synchronized_l2_retrieved": false,
+      "prior_fuelmaps_snapshot_status": "stale; do not present as current"
+    },
+    "derivatives": {
+      "fresh_synchronized_multi_venue_snapshot_retrieved": false,
+      "prior_provider_disagreement_preserved": true,
+      "no_averaging": true
+    },
+    "etf_flows": {
+      "the_xrp_investor": {
+        "last_updated": "2026-11-11",
+        "products": 12,
+        "spot_products": 6,
+        "derivative_products": 4,
+        "index_products": 1,
+        "income_products": 1,
+        "total_aum_usd": 1260000000,
+        "total_xrp_in_trust_approx": 1190000000,
+        "total_daily_volume_usd": 34880000,
+        "spot_daily_volume_usd": 22620000,
+        "derivative_daily_volume_usd": 12260000,
+        "daily_net_flow_not_visible_in_capture": true
+      },
+      "alpha_finance": {
+        "fund_universe": "five US spot XRP ETFs",
+        "through_session": "2026-11-10",
+        "nov10_net_flow_usd": -7600000,
+        "nov9_net_flow_usd": -10400000,
+        "thirty_session_flow_usd": 1300000,
+        "cumulative_net_flow_usd": 1710000000,
+        "top_nov10_outflow_fund": "GXRP",
+        "top_nov10_outflow_usd": -7200000
+      },
+      "xrp_insights": {
+        "universe": "six US spot XRP ETFs plus BITW XRP sleeve",
+        "data_as_of": "2026-11-10",
+        "nov9_nov10_net_flow_xrp": -9568334,
+        "nov9_nov10_approx_usd": -10000000,
+        "total_holdings_nov10_xrp": 1185612353,
+        "nov11_row_status": "provisional",
+        "gxrp_flow_status": "excluded due known capture gap",
+        "flow_method": "issuer-reported holdings day-over-day delta; reconstructed dates and non-redemption changes can affect calculated flow"
+      },
+      "xrp_desk": {
+        "universe": "six spot ETFs plus REX-Osprey",
+        "holdings_xrp_approx": 1150000000,
+        "nov11_flow_xrp": -3300,
+        "source": "XRP Tracker Google Sheet",
+        "cache_refreshed_utc": "2026-11-11T11:17:00Z"
+      }
+    },
+    "interpretation": "ETF dashboards cover different product universes and vintages. TheXRPInvestor's 12-product trust total includes derivatives, index and income products; it is not a six-fund spot-only holdings figure. Alpha Finance, XRP Insights and XRP Desk are not directly comparable; do not average."
+  },
+  "institutional_and_regulatory": {
+    "captured_at_utc": "2026-11-12T02:29:40Z",
+    "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
+    "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
+    "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand."
+  },
+  "identity": {
+    "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three separate Japanese regional SME investment/consultation companies, not SBI Holdings. No new primary-source SBIC–ChatGPT partnership evidence found.",
+    "ask_coin": "No verified XRP Ledger deployment or primary-source XRP-linked ASK Coin identity established in this search.",
+    "actual_capital": "Not a standardized XRP metric; keep cash purchases, in-kind XRP, debt, facilities, collateral, ELOC capacity and shareholder resales distinct.",
+    "kamilah_camilla_stevenson": "No first-party YouTube channel ownership proof found in this run; no creator-video inventory attributed; Camilla and Kamilah identities remain unmerged."
+  },
+  "prediction_engine": {
+    "source_definitions_total": 47,
+    "scheduled_sources": 45,
+    "implemented": [
+      "read-only public collector",
+      "SHA-256 raw-source receipts/hash-chain logic",
+      "point-in-time SQLite feature-store prototype",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "chronological walk-forward with purge/embargo",
+      "calibration and PSI drift diagnostics",
+      "fail-closed forecast ledger with Ed25519 evaluator-attestation contract"
+    ],
+    "outstanding": [
+      "independent WORM/timestamp anchoring",
+      "replayable historical feature-store reconstruction",
+      "mature synchronized spot/L2/derivatives/flow/collateral history",
+      "vintage-aware event timeline",
+      "scenario/counter-hypothesis generation",
+      "production evaluator key",
+      "independent shadow outcomes",
+      "measured out-of-sample lift"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub API access verified; permissions overprivileged (admin/maintain/push/pull/triage).",
+    "Claude": "authentication/data flow unverified",
+    "Grok": "authentication/data flow unverified",
+    "Gemini": "authentication/data flow unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "authentication/data flow unverified",
+    "Hugging Face": "BUILD_ERROR",
+    "Kaggle": "untested; no submission",
+    "Databricks": "HTTP 403; no write"
+  },
+  "security": {
+    "branch_protection_detail": "HTTP 403; required checks/approval rules not visible",
+    "visible_ruleset": "Fall Back; enforcement disabled",
+    "credential_path_absent_from_main_integration_and_17_pr_diffs": true,
+    "provider_side_revocation_verified": false,
+    "pages_publication_authorized": false,
+    "connector_permissions_overprivileged": true
+  },
+  "source_provenance": [
+    {
+      "source_ref": "turn929049view0",
+      "source": "OKX public spot ticker API",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_group": "exchange:OKX",
+      "provider_event_time_utc": "2026-11-12T02:05:53.665Z",
+      "notes": "SPOT XRP-USDT; event time available."
+    },
+    {
+      "source_ref": "turn929049view1",
+      "source": "Kraken public spot ticker API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_group": "exchange:Kraken",
+      "provider_event_time_available": false,
+      "notes": "XRP/USD ticker; no provider event timestamp in response."
+    },
+    {
+      "source_ref": "turn929049view2",
+      "source": "Kraken public USDT/USD ticker API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "source_group": "exchange:Kraken",
+      "provider_event_time_available": false,
+      "notes": "Used only to normalize OKX USDT quote; no provider event timestamp."
+    },
+    {
+      "source_ref": "turn609627search0",
+      "source": "TheXRPInvestor ETF dashboard",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "source_group": "aggregator:TheXRPInvestor",
+      "source_date": "2026-11-11",
+      "notes": "12 products include spot, derivative, index and income products; not spot-only."
+    },
+    {
+      "source_ref": "turn609627search2",
+      "source": "Alpha Finance XRP ETF dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_group": "aggregator:AlphaFinance",
+      "source_date": "through 2026-11-10",
+      "notes": "Five-fund spot cohort."
+    },
+    {
+      "source_ref": "turn929049view4",
+      "source": "XRP Insights ETF data methodology",
+      "url": "https://xrp-insights.com/data",
+      "source_group": "aggregator:XRPInsights",
+      "source_date": "data as of 2026-11-10; Nov11 provisional",
+      "notes": "Issuer-reported holdings; computed day-over-day changes; GXRP flows excluded due capture gap."
+    },
+    {
+      "source_ref": "turn609627search7",
+      "source": "XRP Desk ETF holdings dashboard",
+      "url": "https://xrpdesk.app/",
+      "source_group": "aggregator:XRPDesk",
+      "source_date": "2026-11-11 sheet; cache 11:17 UTC",
+      "notes": "Six spot plus REX-Osprey; Google Sheet source."
+    },
+    {
+      "source_ref": "turn255558search0",
+      "source": "OCC Bulletin 2026-50",
+      "url": "https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
+      "source_group": "primary_regulator:OCC",
+      "publication_date": "2026-10-21",
+      "notes": "GENIUS Act final rule; effective 2027-01-18; AML/BSA/OFAC separate."
+    },
+    {
+      "source_ref": "turn255558search4",
+      "source": "OCC Bulletin 2026-51",
+      "url": "https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-51.html",
+      "source_group": "primary_regulator:OCC",
+      "publication_date": "2026-10-21",
+      "notes": "Application and waiver guidance."
+    },
+    {
+      "source_ref": "turn255558search3",
+      "source": "Evernorth SEC Form 424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "primary_regulator:SEC",
+      "publication_date": "2026-11-09",
+      "notes": "XRPN resale registration, beneficial ownership and XRP contribution disclosures."
+    },
+    {
+      "source_ref": "turn609627news45",
+      "source": "Reuters FSB Türkiye peer review report",
+      "url": "https://www.reuters.com/world/middle-east/global-watchdog-urges-turkey-strengthen-crypto-rules-2026-11-11/",
+      "source_group": "secondary_news:Reuters",
+      "publication_date": "2026-11-11",
+      "notes": "Stablecoin supervision/cross-border oversight; macro-regulatory context only."
+    }
+  ],
+  "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Rerun the full repository suite on the corrective commit and verify the map regression test passes without weakening tests.",
+    "Verify exact-head wheel build, installed primary mission, six-manifest dependency audit and fail-closed gates.",
+    "Continue semantic review of 986 non-workflow paths and the 49-workflow integration diff.",
+    "Resolve least-privilege connector scope, branch-protection/approval visibility, provider-side OAuth revocation evidence and Pages publication authorization.",
+    "Build independently controlled WORM/timestamp anchoring and replayable feature history; keep directional forecasts disabled."
+  ],
+  "no_merge": true,
+  "no_external_actions": true
+}

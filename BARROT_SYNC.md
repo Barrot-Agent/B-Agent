@@ -327,3 +327,17 @@
 - PR #1661 remains open/draft with zero approvals; branch-protection details HTTP403, connector overprivileged, OAuth revocation unverified, Pages publication unauthorized, 985 non-workflow paths require review. No merge or source PR closure.
 - Forecast NOT_ISSUED; research not raw-receipt ingested/model-eligible. No external-model transfer, paper trade or real-money action.
 - Final Run41 artifact: `research/xrp_intelligence/20261112T021500Z-run41-final-exact-head-pass-market-legal-and-capital-correction.json`.
+
+
+## Run42 — 2026-11-12 02:29 UTC
+- Mission priority 1: XRP intelligence and prediction-engine mastery; Barrot V3 remains the protected execution/orchestration/safety/verification foundation.
+- Main `84f28ee7755607236231545a14f3d093c1baaa85`; integration parent before Run42 correction `a98c23fd276a5d2da7a560fbe928ebd26c0eb44d`; PR #1661 open/draft, 2,073 ahead/0 behind, 1,035 files (49 workflow/986 other), 374 open PRs (360 draft/14 non-draft).
+- Exact-head CI 43139971072: 3,459 passed/1 failed, 8 subtests, 60.92% coverage, 92.56s. Sole failure: current map's CI `failure_classification="none"` violated the explicit exact-head result contract. The Run42 map correction now records the failed attempt truthfully; no test was weakened. Core 716/0. Dependency audit 43139971137 passed (6 manifests, 0 known vulnerabilities reported); fail-closed gate 43139970976 passed; push audit 43139963269 and push gate 43139963129 passed. Wheel/installed mission verification skipped on the failed head.
+- Market: OKX midpoint normalized to ~$1.047376; Kraken midpoint ~$1.052865; asynchronous gap ~-0.5213%; OKX event time 02:05:53.665 UTC, Kraken no provider event timestamp. No fresh synchronized L2 or derivatives capture.
+- ETF sources differ: TheXRPInvestor 12 products/1.19B XRP/$1.26B AUM; Alpha five spot funds, Nov10 -$7.6M; XRP Insights six spot + BITW, Nov9-10 -9.568M XRP, Nov11 provisional; XRP Desk six spot + REX-Osprey, Nov11 -3.3K XRP. Preserve universes/vintages; do not average.
+- OCC GENIUS Act final rule effective 2027-01-18; application/waiver process depends on OMB approval and substantially complete applications. No Circle/Ripple application status inferred.
+- Evernorth SEC resale remains XRPN equity, not XRP token supply; no completed resale or XRP sale established.
+- SBIC distinction retained; ASK/actual-capital/ChatGPT-SBIC and Kamilah YouTube identity gates remain unresolved.
+- Forecast NOT_ISSUED. Research is not raw-receipt ingested/model-eligible.
+- Security: credential path absent main/integration and all 17 affected PR diffs; provider-side revocation unverified. Connector overprivileged; branch-protection detail HTTP403; fallback ruleset disabled; Pages publication unauthorized.
+- No merge or external actions. Exact-head verification on the corrective commit is next.
