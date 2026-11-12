@@ -1,3 +1,67 @@
+# Run59 — 2026-11-12 — SEC resale/capital correction, SBI relationships and workflow audit
+
+## Exact-head and workflow verification — VERIFIED
+
+- Main remains 84f28ee7755607236231545a14f3d093c1baaa85.
+- PR #1661 code/test head 12998214bfa992d4b8053a05908693a174362f88 passed the 3,511-test full suite after the Termux preservation fix.
+- PR #1661 documentation head ac3130f20380cd71044852c709a19d2e03ea5b53 also passed exact-head verification:
+  - [Full repository CI 43228864203](https://github.com/Barrot-Agent/B-Agent/actions/runs/43228864203): 3,511 passed, zero failed, eight subtests; 61.42% inclusive coverage; core suite 720 passed with eight subtests and 76% coverage; wheel build and installed-package mission verification passed.
+  - [Dependency audit 43228864173](https://github.com/Barrot-Agent/B-Agent/actions/runs/43228864173): six manifest groups and 15 PEP 621 dependencies audited; no known vulnerabilities reported.
+  - [Fail-closed gate 43228864540](https://github.com/Barrot-Agent/B-Agent/actions/runs/43228864540) passed with automatic merge disabled.
+- All 49 changed workflow diffs in PR #1661 were scanned. External inference/research, Databricks/Kaggle, paper-trading, deployment and secret-rotation paths are manual and require explicit confirmation; the high-risk paths also require an expected main/source SHA. Hugging Face/self-hosted sync and legacy agent/write workflows are disabled or fail closed. XRP ingestion is read-only and scheduled on main only. No workflow was dispatched.
+- PR #1661 remains open, draft and mergeable, with 1,063 changed files and 2,115 commits ahead of main; zero formal reviews, zero approvals and zero review threads. No main changes and no source PR closures.
+
+## Evernorth prospectus — correction and capital waterfall
+
+Primary source: Evernorth Form 424B3, filed November 9, 2026, accession 000162828026072223:
+https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+**Correction to Run58:** the $30 million Convertible Senior PIK Note was issued at the October 9, 2026 business-combination closing; October 12 was the date XRPN began trading. The prospectus says the note proceeds were received at closing.
+
+Additional distinctions now recorded:
+
+- The 424B3 is a resale prospectus covering 73,688,162 existing Class A shares and 239,653 sponsor warrants. Selling securityholders receive resale proceeds; Evernorth does not receive proceeds from those secondary share resales. Cash to Evernorth from the warrants is contingent on actual cash exercise, up to approximately $2.8 million. This resale registration is not a new $1 billion capital raise.
+- The separate Cantor committed equity facility is not the same as the resale offering. It allows, but does not require, Evernorth to sell up to 5,218,935 new Class A shares subject to conditions. The prospectus states that Evernorth had received zero proceeds under the facility as of its date. The $521,893.50 commitment fee is a cost, not an inflow.
+- Evernorth reported approximately 473,276,430 XRP as of October 9. The reported 388,910,554 XRP in-kind closing contribution is an aggregate; do not add the 261,919,096 Pubco XRP subtotal to that aggregate. The separate $214.1 million cash proceeds were used to purchase 84,365,876 XRP.
+- The filing says 100% of Evernorth's XRP is in BitGo cold storage. BitGo's approximately $250 million aggregate cold-storage insurance is shared among clients, not dedicated to Evernorth, and was approximately 36.9% of the value of Evernorth's XRP holdings as of October 9. It is not full-value account-specific insurance.
+- Evernorth states it will not participate in staking and that XRPL does not use proof-of-stake validation. No staking yield should be assumed.
+- The $30 million note is funded debt, not evidence that the proceeds have already been spent on XRP. Ripple's $10 million Company Facility had $9.7 million drawn as of October 7. The separate $1 million Evernorth Facility was undrawn as of June 30; later status is not established by that dated disclosure.
+- Coinbase is named as a principal market for XRP valuation in the filing; BitGo is the custodian. Do not describe Coinbase as Evernorth's XRP custodian.
+
+## SBI Holdings — direct commitments and equity links
+
+Primary SBI Holdings release, October 21, 2025:
+https://www.sbigroup.co.jp/news/2025/1021_15831.html
+
+SBI Holdings explicitly announced a **$200 million cash investment** in Evernorth's PIPE. The same announcement says the intended strategy was to use capital primarily to acquire XRP in public markets and build an institutional XRP treasury. This is an announced cash commitment by SBI Group, not an SBIC regional-company investment.
+
+The November 9 SEC prospectus subsequently identifies four SBI-controlled shareholder entities and their combined Evernorth holdings: 9,431,914 Class A shares (36.1% of that class) and 2,359,038 Class C shares (7.5% of that non-voting class); the filing separately reports a 39.9% SBI Group Ownership Percentage. The filing says those entities are subsidiaries of or partnerships directly/indirectly managed by SBI Holdings, Inc.
+
+Reconciliation rule: SBI's announced $200 million commitment, Evernorth's aggregate $214.1 million cash advances/$224.6 million closing private-placement cash, and the SBI-controlled shareholdings are mutually consistent with a major SBI investment. The cited prospectus does not provide an investor-by-investor cash-flow allocation of the $214.1 million. Do not claim that the entire $214.1 million was SBI cash or that all $200 million was deployed into the 84,365,876 cash-purchased XRP without the closing funds-flow ledger.
+
+## SBI Holdings and Circle — direct equity plus operating relationship
+
+Primary SBI Holdings release, June 9, 2025:
+https://www.sbigroup.co.jp/news/2025/0609_15491.html
+
+SBI Holdings and SBI Shinsei Bank announced a combined $50 million strategic investment in Circle's IPO shares: $25 million from SBI Holdings and $25 million from SBI Shinsei Bank. This is a direct equity relationship, separate from the later Arc validator role.
+
+Circle's September 16, 2026 Arc mainnet announcement names SBI Group as a founding validator. SBI VC Trade's USDC distribution, SBI Shinsei Trust's JPYSC work, the SBI/Circle equity investment and Arc validation are separate evidence edges. None alone proves XRP settlement or XRP demand.
+
+## Ripple and Coinbase — product distribution versus XRP collateral
+
+Ripple's October 28, 2026 announcement with Coinbase describes RLUSD availability on Coinbase Prime, Exchange and Retail, with supported XRPL, Base and Ethereum rails. Coinbase Global Exchange collateral support was described as forthcoming, not live. Ripple's Base liquidity commitment concerns RLUSD. These facts do not establish that XRP itself is Coinbase collateral, nor that RLUSD trading necessarily creates XRP spot purchases.
+
+Evernorth's use of Coinbase as a principal-market price reference is a valuation input, not a custody relationship. BitGo remains the disclosed Evernorth custodian.
+
+## Research eligibility and prediction gate
+
+The new SEC/SBI/Circle/Ripple pages are primary-source research observations, but this web capture was not ingested as byte-exact raw payloads into RawReceiptArchive. They remain research-only and model-ineligible until captured with immutable receipts and point-in-time availability metadata. The last eligible market snapshot remains the Run57 snapshot; no new synchronized direct-exchange/L2 dataset was admitted in this run.
+
+ASK Coin, “actual capital” as a phrase, “SBIC, ChatGPT SBIC,” and Camilla/Kamilah Stevenson video identity gates remain as recorded in Run58. No first-party YouTube identity was verified, so no videos were attributed or inventoried.
+
+Forecast status remains **NOT_ISSUED**. No paper-trading, external-model transfer, deployment, secret rotation, Kaggle submission, Databricks write or real-money action occurred.
+
 # Run58 — 2026-11-12 — exact-head safety repair and institutional-capital reconciliation
 
 **Canonical operational handoff for this integration workstream.** This file is the current handoff for PR #1661. Older handoff snapshots and the prior BARROT_SYNC copy are preserved as history; do not treat their older head/CI statements as current.
