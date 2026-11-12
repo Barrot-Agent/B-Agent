@@ -456,3 +456,39 @@ See `BARROT_XRP_MISSION_HANDOFF_LATEST.md`, `research/xrp_intelligence/20261112T
 - Added 13-record curated event registry and wired scheduled event-timeline/scenario output. No raw publisher hashes; registry hash is not raw receipt. Research-only, model-ineligible, NOT_ISSUED.
 - No forecast, paper trade, real-money action, external-model transfer, merge, deployment, secret rotation/revocation, PR closure or branch-history rewrite.
 - Next: exact-head full-suite verification on the Run46 commit, then continue semantic/security review. Merge remains blocked.
+
+
+---
+
+## Run48 — 2026-11-12 05:30–05:45 UTC
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority 1; Barrot V3 remains the protected execution/orchestration/safety/verification foundation.
+
+**Repository:** main 84f28ee7755607236231545a14f3d093c1baaa85; verified code head 606ac904de145d355032a9d8499447c3d655c9a9; integration branch integration/xrp-v3-unified-main-20261111; 2,086 ahead / 0 behind. PR #1661 remains open/draft. Open PR inventory 374 (360 drafts, 14 non-drafts). PR #1661 has 1,048 changed files, including 49 workflows and 999 other paths.
+
+**Exact-head verification on 606ac904:** full suite 3,506 passed, 0 failed, 8 subtests, 59.29s, 61.34% coverage; core suite passed; wheel built and installed Barrot V3/XRP mission verification passed. Six dependency manifests passed pip-audit. Fail-closed gate passed. Runs: [CI 43163090825](https://github.com/Barrot-Agent/B-Agent/actions/runs/43163090825), [dependency audit 43163090951](https://github.com/Barrot-Agent/B-Agent/actions/runs/43163090951), [fail-closed gate 43163090879](https://github.com/Barrot-Agent/B-Agent/actions/runs/43163090879).
+
+**Run47 regression repair:** accepted event types restored; shared spot scenario hypothesis definitions made identical; SBI lock-up caveat made explicit and duplicate wording removed; map test now asserts the actual authored-hypothesis/no-probability production gap. No tests were deleted or skipped.
+
+**New research:**
+- Yahoo XRP/USD $1.0492 at 01:14:37 UTC; ChartExchange composite $1.05140 with Coinbase $1.05020, Bitstamp $1.05027, Bitfinex $1.05140, Gemini $1.05081 (no synchronized timestamp). Bitstamp Nov12 daily bar: open 1.0512, high 1.0596, low 1.0453, close 1.0503. Approximately -12.9% versus Nov5 close 1.2060.
+- Data-quality correction: Investing.com USD/XRP is inverse; 0.9553 implies about $1.0468/XRP, not $0.9553 XRP/USD.
+- Alpha Finance 5-fund US spot cohort through Nov11: $0 Nov11, -$7.6M Nov10, -$10.4M Nov9, -$18M seven sessions, +$1.3M 30 sessions, +$1.71B cumulative. CryptoETF.today says Nov11 is partial (2/5 funds reported, 0 among reported, 3 missing) but a separate section says 5/5 — internal source inconsistency. It reports $1.19B assets, $1.80B cumulative flows, 1.1249B XRP holdings. Do not average or treat dashboards as independent.
+- SEC Goldman Sachs Q2 2026 13F (accession 0000886982-26-000519, filed Aug14, period Jun30): approximately $86.506M across five XRP ETF shares. These are ETF shares across eight affiliated managers, not direct XRP-token ownership or proof of a proprietary directional bet.
+- Coinbase/EY-Parthenon Jan2026 survey N=351: 18% already held XRP, 25% planned to add in 2026. Intent is not executed capital. 73% planned overall crypto allocation increases; 49% emphasized risk/liquidity/position sizing; 65% cited regulatory clarity as a driver.
+- PNC/Coinbase pilot uses Circle USDC with automatic conversion to USD for eligible corporate/institutional clients; no XRP settlement.
+- Reuters: USD near one-month high and Fed hike expectations; Brent ~$92 from $118 in less than two weeks. MSCI will remove Strategy/Metaplanet/Yellow Cake from MSCI USA/World on Dec1; this is treasury-equity flow risk, not XRP spot selling.
+- ASK disambiguation: Permission ASK is an OFT on Base/Polygon, no XRPL deployment documented; separate Askcoin CMC preview UCID 4640 shows zero supply and askcoin.me. “Actual capital” is generic wording in a Crypto.news article reposted by MEXC, not a standardized metric. Exact “SBIC, ChatGPT SBIC” partnership remains unverified.
+- Dr Kamilah Stevenson self-identifies on learn.kamilahstevenson.com as The Wealth Doctor/investing educator. Candidate YouTube handle/video surfaced only through third parties; no first-party cross-link verifies channel ownership. No video attribution or inventory. Camilla is not assumed to be the same person.
+
+**Prediction engine:** 47 public sources, 45 scheduled; read-only collector; SHA-256 receipt/hash-chain prototype; SQLite point-in-time feature store; four baselines; purge/embargo chronological walk-forward; calibration/PSI drift; fail-closed Ed25519-attested forecast ledger. Production gaps remain: independent WORM/timestamp anchoring, replayable historical features, synchronized historical spot/L2/derivatives/flows/collateral, production signing key, shadow outcomes and measured out-of-sample lift. Scheduled collector is main-only and uses SQLite cache plus 90-day artifacts, not independent WORM. Forecast NOT_ISSUED; Run48 web observations are not raw-receipt ingested or model-eligible.
+
+**Platform map:** ChatGPT/GitHub access tested but overprivileged (admin/maintain/push/pull/triage); Claude/Grok/Gemini/Codex authentication/data flow unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested/no submission; Databricks HTTP 403/no write; LunaRoute endpoint unverified. No external-model transfer.
+
+**PR overlap, tree/blob comparison (semantic review still required):** #1660 972 shared/939 same/33 different/14 source-only; #1643 675/661/14/17; #1640 284/234/50/17; #1642 13/0/13/17; #1653 7/0/7/23. Preserve unique/different work. #1653 has six unresolved review comments and no formal approval. No source PR closed.
+
+**Security:** .config/gh/hosts.yml absent from main/integration but present in all 17 affected open PR branch tips rechecked. No contents read; OAuth revocation unverified. Main branch-protection details HTTP 403; visible fallback ruleset disabled; connector overprivileged; Pages publication automatic on main push and unauthorized.
+
+**Decision:** no merge. PR #1661 remains draft, no formal approvals, semantic review incomplete, security/branch-protection/Pages blockers unresolved. No deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure.
+
+**Next action:** exact-head CI for the documentation/evidence successor; continue semantic review of V3 runtime, ingestion, feature store, event timeline, forecast ledger and public interfaces; resolve least privilege, branch protection, credential-owner revocation and Pages authorization before merge.
