@@ -60,9 +60,9 @@ def test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run
     assert current_data["schema_version"] == "1.1.0"
     assert current_data["mission_priority"] == 1
     assert current_data["forecast_status"] == "NOT_ISSUED"
-    assert current_data["repository_state"]["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
-    assert current_data["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
-    assert current_data["integration_pr"]["number"] == 1661
+    assert current_data["repository_state"]["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert current_data["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
+    assert current_data["integration_pr"]["number"] == 1662
     assert current_data["integration_pr"]["draft"] is True
     assert current_data["integration_pr"]["behind_by"] == 0
 

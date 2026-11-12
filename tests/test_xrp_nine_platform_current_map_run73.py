@@ -100,16 +100,16 @@ def test_least_privilege_and_external_action_gates_remain_closed():
 def test_repository_snapshot_matches_current_main_and_successor_branch():
     data = load_current()
     state = data["repository_state"]
-    assert state["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
-    assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
-    assert state["integration_pr"] == 1661
+    assert state["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
+    assert state["integration_pr"] == 1662
     assert state["integration_head_before_current_map_commit"] == data["integration_pr"]["head_sha"]
     assert state["integration_ahead_by"] == data["integration_pr"]["ahead_by"]
     assert state["integration_behind_by"] == data["integration_pr"]["behind_by"]
     assert state["changed_files"] == data["integration_pr"]["changed_files"]
-    assert state["workflow_files_changed"] == 49
+    assert state["workflow_files_changed"] == 50
     assert state["non_workflow_paths_changed"] == data["integration_pr"]["other_changed_paths"]
-    assert state["main_tree_entries"] == 1388
+    assert state["main_tree_entries"] == 1381
     assert state["integration_tree_entries"] > state["main_tree_entries"]
     assert state["orbit_paths_in_integration"] is False
     assert state["hf_space_app_py_changed"] is True
@@ -122,7 +122,7 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     data = load_current()
     current = data["integration_pr"]
     old = data["superseded_integration_pr"]
-    assert current["number"] == 1661
+    assert current["number"] == 1662
     assert current["state"] == "open"
     assert current["draft"] is True
     assert current["behind_by"] == 0
@@ -165,7 +165,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
         assert latest["conclusion"] == "failure"
         assert len(latest["failing_tests"]) == suite["failed"]
         assert "exact-head full-suite failed" in latest["failure_classification"].lower()
-    assert ci["dependency_audit"]["manifests"] == 6
+    assert ci["dependency_audit"]["manifests"] == 5
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
     assert ci["fail_closed_gate"]["passed"] is True
@@ -174,10 +174,10 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
 
 def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
     audit = load_current()["workflow_safety_audit"]
-    assert audit["changed_workflow_files"] == 49
+    assert audit["changed_workflow_files"] == 50
     assert audit["quarantined_or_disabled"] == 26
-    assert audit["active_changed_workflows"] == 23
-    assert audit["patch_scan_workflows_reviewed"] == 49
+    assert audit["active_changed_workflows"] == 24
+    assert audit["patch_scan_workflows_reviewed"] == 50
     assert audit["manual_dispatch_additions"] == 29
     assert audit["secondary_brain_deployment_quarantined"] is True
     assert audit["xrp_public_ingestion_workflow_on_main"] is False
@@ -451,8 +451,8 @@ def test_run20_snapshot_is_append_only_and_tracks_current_integration_head():
     data = load_current()
     run20 = data["run20_snapshot"]
     repo = run20["repository_state"]
-    assert repo["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
-    assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
+    assert repo["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
     assert repo["integration_head_before_run20_map_commit"] == "0529030acf0df84e68d7626564b3d206dd95946b"
     assert repo["current_head_before_corrective_commit"] == "c39cc80591e257beb563aff1bf2a85d368edcb3b"
     assert repo["changed_files_after_run20_docs_commit"] == 995
@@ -582,3 +582,25 @@ def test_xrp_ingestion_artifact_retention_is_not_mislabeled_worm():
     assert retention["daily_feature_store_days"] == 90
     assert retention["independent_worm"] is False
     assert engine["main_branch_ingestion_verified"] is False
+
+
+def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
+    data = load_current()
+    snap = data["run67_snapshot"]
+    assert snap["repository"]["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert snap["repository"]["integration_pr"] == 1662
+    assert snap["repository"]["changed_files"] == 1075
+    assert snap["ci"]["successful_code_head"] == "07aa7959b42f04832e1f328d1da86f392e8e54d8"
+    assert snap["ci"]["full_suite_passed"] == 3543
+    assert snap["ci"]["full_suite_failed"] == 0
+    assert snap["ci"]["docs_head_failed"] == 15
+    assert "schema regression" in snap["ci"]["docs_head_failure"].lower()
+    assert snap["prediction"]["event_registry_events"] == 70
+    assert snap["prediction"]["raw_source_sha256_present"] == 0
+    assert snap["prediction"]["model_eligible_events"] == 0
+    assert snap["prediction"]["forecast_status"] == "NOT_ISSUED"
+    assert snap["no_external_actions"] is True
+    assert data["current_market_snapshot"]["spot"]["okx"]["event_timestamp_available"] is True
+    assert isinstance(data["institutional_and_capital"]["rlusd"], dict)
+    assert isinstance(data["identity_research"]["sbic"], dict)
+    assert isinstance(data["source_provenance"], list)

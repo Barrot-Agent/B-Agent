@@ -1,3 +1,5 @@
+# Run67 correction — schema regression, macro refresh and forecast readiness
+
 # Run67 — 2026-11-12 — exact-head CI, preservation hardening and current XRP evidence
 
 XRP intelligence and prediction-engine mastery remain Barrot's highest-priority mission. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation. Forecast issuance remains fail-closed.
