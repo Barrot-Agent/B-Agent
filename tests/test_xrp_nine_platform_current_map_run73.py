@@ -601,6 +601,13 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert snap["prediction"]["raw_source_sha256_present"] == 0
     assert snap["prediction"]["model_eligible_events"] == 0
     assert snap["prediction"]["forecast_status"] == "NOT_ISSUED"
+    assert snap["market"]["no_fresh_l2"] is False
+    assert snap["market"]["order_book"]["snapshot_time_utc"] == "2026-11-12T19:00:00Z"
+    assert snap["market"]["order_book"]["mid_usd"] == 1.0291
+    assert snap["market"]["order_book"]["bands"][0]["bids_usd"] == 8100000
+    assert snap["market"]["order_book"]["excluded_venues"] == ["Binance", "Bitget"]
+    assert snap["market"]["perpetual_order_book"]["open_interest_usd"] == 319000000
+    assert snap["market"]["xrpl_dex_book_health"]["funded_quoted_ask_share_percent"]["Bitstamp_USD"] == 18.3
     no_external_actions = snap["no_external_actions"]
     expected_external_actions = {
         "merge", "source_pr_closure", "deployment", "secret_rotation",

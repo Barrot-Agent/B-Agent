@@ -1,3 +1,40 @@
+# Run67 correction — schema regression, L2 refresh, macro and forecast readiness
+
+The first Run67 map refresh at `e72541f` replaced established nested schemas. Exact-head run [43293323076](https://github.com/Barrot-Agent/B-Agent/actions/runs/43293323076) reported 3,524 passed and 15 failed. The schema-preserving correction at `c8b2d36` reduced this to 3,536 passed and four failed in [run 43296380070](https://github.com/Barrot-Agent/B-Agent/actions/runs/43296380070). The remaining failures are four map/test assertions: superseded-PR disposition, nested exact-head metadata, historical Run20 snapshot preservation, and the structured no-external-actions object. Core tests passed; no runtime prediction-engine failure was identified. Test-only correction commit `a56d5ca` preserves the historical Run20 snapshot, corrects the superseded-PR disposition assertion, adds the nested exact-head verification flag, and checks the structured no-external-actions object. Exact-head CI for `a56d5ca` is pending; do not claim the full suite is green until it completes. No tests were removed or weakened.
+
+## L2 refresh — November 12, 19:00 UTC
+
+Fuelmaps six-venue spot snapshot: midpoint $1.0291. Within ±0.5%: $8.1M bids / $6.3M asks (56.0% bid share); ±1%: $11.5M / $9.9M (53.7%); ±2%: $19.3M / $13.1M (59.5%); ±5%: $30.5M / $14.2M (68.2%); ±10%: $34.3M / $16.9M (67.0%, five venues). Included Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; excluded Binance and Bitget.
+
+Largest displayed levels: $3.6M bid at $1.000; $1.9M bid at $1.027; $1.8M bid at $1.010; $1.8M ask at $1.031; $1.7M bid at $0.999. This is a bid-heavy resting book, not guaranteed support. Fuelmaps snapshots are hourly, may be up to about 65 minutes old, and orders can be cancelled; full-depth venue coverage differs by band. [Fuelmaps](https://fuelmaps.io/order-book/).
+
+Separate Binance XRPUSDT perpetual snapshot at 13:03 UTC: $1.0359 midpoint, 0.97bp spread, $41.4M bids versus $31.3M asks across 1,000 levels per side, 55% bid share within 1%, $19.4M depth within 0.5%, $597M 24-hour volume and $319M open interest. This is a different instrument and older than the spot snapshot. [Basis Charts](https://www.basischarts.com/liquidity-heatmap/xrp-usdt).
+
+XRPL DEX book-health snapshot for November 10: funded ask share was 18.3% for Bitstamp USD, 99.4% for GateHub USD and 100% for Ripple RLUSD. DEX offers only; AMM pools excluded. Quoted depth can overstate funded liquidity. [Noshashi](https://www.noshashi.app/book-health/).
+
+These L2 observations are research-only and were not admitted to Barrot RawReceiptArchive. They are model-ineligible until byte-exact source capture and independent anchoring are available.
+
+## Macro refresh — November 12, 2026
+
+- USD/JPY was near 159.94; Japanese officials renewed volatility warnings near 160 and intervention risk.
+- Japan wholesale inflation was 7.1% year over year; import prices were 24.8% year over year.
+- DXY was reported near 103.016, a 19-month high.
+- US October CPI was 0.4% month over month headline and 0.3% core.
+- Two-year yield snapshots were around 4.731%; ten-year observations ranged around 4.988%–5.004%.
+- Market-implied 25bp Fed hike probabilities varied by provider/time from roughly 87% to 91.3%; one provider assigned 12% to a 50bp move. These are market prices, not a Fed decision.
+
+These are cross-asset liquidity and FX variables, not direct XRP demand or directional signals. Preserve source timestamps and provider disagreement.
+
+## Forecast readiness gate — explicit thresholds
+
+The forecast ledger requires, per horizon: at least 100 point-in-time training origins, 100 raw out-of-sample origins and 100 raw shadow origins; at least 10 overlap-adjusted effective OOS origins and 10 effective shadow origins; at least two independent source groups; weighted calibration error no greater than 0.05; performance better than all four baselines on both Brier score and log loss; embargo of at least one full forecast horizon; and a trusted independent Ed25519 evaluator signature.
+
+Current event registry: 70 curated events, zero raw publisher SHA-256 receipts, zero model-eligible events. Run70 hashes cover surfaced excerpt strings, not raw HTTP wire bytes. Independent WORM anchoring and trusted evaluator keys remain absent.
+
+**Forecast status remains NOT_ISSUED.** No directional forecast or paper trade is authorized.
+
+---
+
 # Run67 correction — schema regression, macro refresh and forecast readiness
 
 # Run67 — 2026-11-12 — exact-head CI, preservation hardening and current XRP evidence
@@ -9,7 +46,7 @@ XRP intelligence and prediction-engine mastery remain Barrot's highest-priority 
 - Main: `b4e36c91c380da89e7b60d00f984bd7ac123ce74`.
 - Current integration branch: `integration/xrp-v3-unified-main-20261112`.
 - Verified code-bearing head: `07aa7959b42f04832e1f328d1da86f392e8e54d8`.
-- Integration PR: [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662), 2,147 commits ahead and zero behind main; 1,075 changed files (50 workflows, 556 research files, 373 tests, 96 other paths); 298,376 additions and 5,123 deletions.
+- Integration PR: [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662), 2,150 commits ahead and zero behind main; 1,075 changed files (50 workflows, 556 research files, 373 tests, 96 other paths); 298,376 additions and 5,123 deletions.
 - Recursive trees: main 1,381 entries / 1,277 files; integration 2,322 entries / 2,209 files.
 - Open PR inventory: 375 open, 361 drafts, 14 non-drafts; 367 target main and eight use other bases.
 
@@ -67,7 +104,11 @@ Additional blockers:
 - OKX XRP-USDT: last 1.0275; bid 1.0275 / ask 1.0276; 24-hour open 1.06, high 1.0688, low 1.0164; volume about 32.33M XRP. [OKX ticker API](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT)
 - Kraken XRP/USD: last 1.02517; bid 1.02564 / ask 1.02565; 24-hour open 1.05104, high 1.06745, low 1.01516; volume about 26.25M XRP. Kraken did not supply a provider event timestamp. [Kraken ticker API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD)
 - Kraken USDT/USD bid 0.99886 / ask 0.99887. Normalized OKX midpoint approximately 1.026383 versus Kraken midpoint 1.025645, a 0.072% asynchronous gap. Not executable arbitrage evidence.
-- No fresh synchronized L2 snapshot was obtained. The latest Fuelmaps depth snapshot remains 17:00 UTC and is stale for current execution.
+- **Fuelmaps spot L2 refresh, 19:00 UTC:** six-venue midpoint $1.0291. Within ±0.5%: $8.1M bids / $6.3M asks (56.0% bid share); ±1%: $11.5M / $9.9M (53.7%); ±2%: $19.3M / $13.1M (59.5%); ±5%: $30.5M / $14.2M (68.2%); ±10%: $34.3M / $16.9M (67.0%, five venues). Included Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance and Bitget were excluded.
+- Largest displayed levels: $3.6M bid at $1.000; $1.9M bid at $1.027; $1.8M bid at $1.010; $1.8M ask at $1.031; $1.7M bid at $0.999. This is a bid-heavy resting book, not guaranteed support. Fuelmaps snapshots are hourly, may be up to about 65 minutes old, and orders can be cancelled; full-depth venue coverage differs by band.
+- **Separate Binance XRPUSDT perpetual book, 13:03 UTC:** $1.0359 mid, 0.97bp spread, $41.4M bids versus $31.3M asks across 1,000 levels per side; 55% bid share within 1%; $19.4M depth within 0.5%; $597M 24h volume and $319M OI. This is an older derivatives snapshot, not spot depth.
+- **XRPL DEX funded-versus-quoted check, November 10:** Noshashi reported funded ask share of 18.3% for Bitstamp USD, 99.4% for GateHub USD and 100% for Ripple RLUSD. DEX offers only; AMM pools excluded. Quoted depth can overstate immediately funded liquidity.
+- These L2 observations were not admitted to Barrot RawReceiptArchive and remain research-only/model-ineligible.
 
 **Derivatives disagreement:**
 - TradRadar's November 11 19:05 UTC seven-venue snapshot: OI $1.57B, 24-hour OI change -0.97%, funding +0.0045% per eight hours, 3.92 long/short account ratio, 79.7% long accounts, at least $2.85M liquidations.
