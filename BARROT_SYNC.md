@@ -1,3 +1,24 @@
+# Run60 — 2026-11-12 — current verified status
+
+Canonical handoff: [BARROT_XRP_MISSION_HANDOFF_LATEST.md](BARROT_XRP_MISSION_HANDOFF_LATEST.md)
+
+- Mission: XRP Intelligence and Prediction-Engine Mastery, priority 1; Barrot V3 remains the execution/orchestration/safety/verification foundation.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration head inspected: `d7c8dbc9173242aefca5534b74d84e92bb148203`; 2,116 ahead, 0 behind; PR #1661 is the only active integration branch being advanced.
+- Exact-head CI on `d7c8dbc9173242aefca5534b74d84e92bb148203`: 3,511 passed, 8 subtests, 61.42% coverage; core 720 passed; wheel/install verification passed; six-manifest dependency audit and fail-closed PR gate passed.
+- PR #1661 remains draft, zero approvals/reviews, 1,063 changed files; no merge.
+- Main scheduled XRP ingestion workflow is absent. The integration workflow is main-only and has not executed on main.
+- Main Pillars Consistency Check fails closed for missing GitHub App credentials, Databricks 403 and Hugging Face BUILD_ERROR.
+- Forecast status: **NOT_ISSUED**. No candidate model or verified main-branch OOS dataset; no directional forecast.
+- Security blockers: GitHub permissions overprivileged; branch protection API 403; fallback ruleset disabled; publication settings inaccessible.
+- Run60 market/institutional/x402 evidence is research-only and model-ineligible until byte-exact raw receipts are captured.
+
+Structured artifact: [Run60 evidence JSON](research/xrp_intelligence/20261112T140946Z-run60-exact-head-ci-market-x402-institutional-and-repository-audit.json)
+
+Older synchronization history is preserved below.
+
+---
+
 # Run57 exact-head and research handoff — 2026-11-12T13:11:31Z
 
 - Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration head before this handoff `5fdb6d33a249f41423f65bd18583b4c08a056801`; 2,106 ahead / 0 behind.
