@@ -1,3 +1,20 @@
+# Run67 follow-up — 20:31 UTC
+
+Current documentation/map head before this follow-up: `ce3d92b880da44bf2e2901a91b50e491fb97c919`, 2,155 commits ahead of main and zero behind. The exact-head full suite [43300536260](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536260) reported 3,539 passed, one failed, eight subtests, 61.55% coverage in 96.91 seconds. The single failure is a wording assertion requiring the exact phrase `exact-head full-suite passed`; it is not a runtime or prediction-engine failure. Core tests passed; dependency audit [43300536296](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536296) and fail-closed gate [43300536253](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536253) passed.
+
+The immediately preceding code/test head `bf9ac0315c7172a121a97deac49449c5922ff780` passed the full suite: 3,540 passed, zero failed, eight subtests, 61.55% coverage in 78.44 seconds; core 723 passed, zero failed; wheel build and installed Barrot V3/XRP asset verification passed. That result is not substituted for the current docs/map head.
+
+## Latest visible spot L2 — November 12, 20:00 UTC
+
+Fuelmaps six-venue midpoint $1.0315. Within ±0.5%: $8.9M bids / $6.0M asks (59.9% bid share); ±1%: $13.1M / $9.2M (58.6%); ±2%: $17.5M / $12.3M (58.8%); ±5%: $29.9M / $13.5M (68.9%); ±10%: $33.8M / $16.1M (67.8%, five venues). Included Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; excluded Binance and Bitget.
+
+Largest displayed levels excluding the inside quote: $3.6M bid at $1.000; $1.9M bid at $1.026; $1.8M bid at $1.029; $1.6M ask at $1.033; $1.5M ask at $1.034. At the 20:31 capture this snapshot was about 31 minutes old. Fuelmaps uses hourly columns built from one-minute samples and publishes about five minutes after the hour; provider notes a possible age up to about 65 minutes. Orders can be cancelled or moved; this is not guaranteed support or executable depth. Full-depth venues are Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken contribute near-price depth. [Fuelmaps](https://fuelmaps.io/order-book/).
+
+The 19:00 snapshot is retained in the map as a previous-hour observation, not discarded. Separate Binance XRPUSDT perpetual depth remains the 13:03 UTC snapshot (older, different instrument). XRPL DEX funded-versus-quoted book health remains the November 10 snapshot; neither is combined with current CEX spot depth.
+
+**Next correction:** change the current-map `latest_attempt.failure_classification` wording to include the exact required phrase, preserve the test, and rerun exact-head CI. No forecast is issued; no merge or external action is authorized.
+
+---
 ## Run67 final exact-head verification — November 12, 20:26 UTC
 
 Verified test/code head: `bf9ac0315c7172a121a97deac49449c5922ff780`. Full repository suite: 3,540 passed, zero failed, eight subtests; coverage 61.55%; duration 78.44 seconds. Core suite: 723 passed, zero failed, eight subtests; coverage 76%. Wheel build and installed Barrot V3/XRP assets verified. Dependency audit: five manifest groups, zero known vulnerabilities. Fail-closed gate passed.
@@ -53,7 +70,7 @@ XRP intelligence and prediction-engine mastery remain Barrot's highest-priority 
 - Main: `b4e36c91c380da89e7b60d00f984bd7ac123ce74`.
 - Current integration branch: `integration/xrp-v3-unified-main-20261112`.
 - Verified code-bearing head: `07aa7959b42f04832e1f328d1da86f392e8e54d8`.
-- Integration PR: [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662), 2,154 commits ahead and zero behind main; 1,075 changed files (50 workflows, 556 research files, 373 tests, 96 other paths); 298,376 additions and 5,123 deletions.
+- Integration PR: [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662), 2,155 commits ahead and zero behind main; 1,075 changed files (50 workflows, 556 research files, 373 tests, 96 other paths); 298,376 additions and 5,123 deletions.
 - Recursive trees: main 1,381 entries / 1,277 files; integration 2,322 entries / 2,209 files.
 - Open PR inventory: 375 open, 361 drafts, 14 non-drafts; 367 target main and eight use other bases.
 

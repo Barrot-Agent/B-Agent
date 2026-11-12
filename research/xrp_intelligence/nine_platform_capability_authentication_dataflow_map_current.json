@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T20:26:00Z",
-  "last_verified_at_utc": "2026-11-12T20:26:00Z",
+  "captured_at_utc": "2026-11-12T20:31:00Z",
+  "last_verified_at_utc": "2026-11-12T20:31:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-  "observed_integration_head_before_map_commit": "bf9ac0315c7172a121a97deac49449c5922ff780",
+  "observed_integration_head_before_map_commit": "ce3d92b880da44bf2e2901a91b50e491fb97c919",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
@@ -13,14 +13,14 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "clean",
-    "ahead_by": 2154,
+    "ahead_by": 2155,
     "behind_by": 0,
     "changed_files": 1075,
     "workflow_files": 50,
     "other_changed_paths": 1025,
-    "head_sha": "bf9ac0315c7172a121a97deac49449c5922ff780",
+    "head_sha": "ce3d92b880da44bf2e2901a91b50e491fb97c919",
     "base_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "commits": 2154,
+    "commits": 2155,
     "additions": 298376,
     "deletions": 5123,
     "formal_approvals": 0,
@@ -30,7 +30,7 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-12T20:26:00Z",
+    "updated_at": "2026-11-12T20:31:00Z",
     "classification": "blocked",
     "note": "Run64 head a1d46004 failed five tests: one event hypothesis conflict and four stale map snapshot fields. Run64b aligns spot/ETF hypotheses and synchronizes map fields; exact-head CI pending."
   },
@@ -635,9 +635,9 @@
   },
   "repository_state": {
     "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "integration_head_before_current_map_commit": "bf9ac0315c7172a121a97deac49449c5922ff780",
+    "integration_head_before_current_map_commit": "ce3d92b880da44bf2e2901a91b50e491fb97c919",
     "integration_pr": 1662,
-    "integration_ahead_by": 2154,
+    "integration_ahead_by": 2155,
     "integration_behind_by": 0,
     "changed_files": 1075,
     "workflow_files_changed": 50,
@@ -917,7 +917,7 @@
     "latest_main_cross_analysis_run": 43157737939,
     "latest_main_cross_analysis_conclusion": "success",
     "latest_full_suite_conclusion": "failure",
-    "latest_exact_head_ci_run_id": 43299527618,
+    "latest_exact_head_ci_run_id": 43300536260,
     "current_head_before_run33_commit": "570cd11ab16be1c61cb44a6b10740e7eb726b123",
     "current_commit_tree_sha": "fb603c995e4edbfc7bb0e00dd044387617f1546f",
     "run33_expected_changed_files_after_commit": 1017,
@@ -1144,7 +1144,7 @@
       "installed_wheel_primary_mission_verified": true
     },
     "dependency_audit": {
-      "run_id": 43299527738,
+      "run_id": 43300536296,
       "job_id": 131315360664,
       "passed": true,
       "conclusion": "success",
@@ -1152,7 +1152,7 @@
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43299527607,
+      "run_id": 43300536253,
       "job_id": 131315359980,
       "passed": true,
       "conclusion": "success",
@@ -1219,7 +1219,7 @@
         "job_id": 131466644874
       },
       "failing_tests": [],
-      "failure_classification": "Exact-head full repository suite passed on bf9ac031; wheel build and installed Barrot V3/XRP assets verified."
+      "failure_classification": "Exact-head full-suite passed on bf9ac031; full repository suite 3,540 passed, zero failed; wheel build and installed Barrot V3/XRP assets verified."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -2662,14 +2662,18 @@
       "message": "All three remaining map/test assertions corrected; exact-head full repository suite passed."
     },
     "latest_current_head_attempt": {
-      "head_sha": "bf9ac0315c7172a121a97deac49449c5922ff780",
-      "run_id": 43299527618,
-      "conclusion": "success",
-      "passed": 3540,
-      "failed": 0,
+      "head_sha": "ce3d92b880da44bf2e2901a91b50e491fb97c919",
+      "run_id": 43300536260,
+      "conclusion": "failure",
+      "passed": 3539,
+      "failed": 1,
       "subtests": 8,
       "coverage_percent": 61.55,
-      "duration_seconds": 78.44
+      "duration_seconds": 96.91,
+      "failing_tests": [
+        "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+      ],
+      "failure_classification": "Single wording assertion expects the exact phrase 'exact-head full-suite passed'; no runtime prediction-engine failure."
     }
   },
   "workflow_safety_audit": {
@@ -5038,7 +5042,8 @@
     "USD strength and yen intervention risk are macro liquidity variables, not automatic XRP signals.",
     "Fuelmaps spot book is bid-heavy at 19:00 UTC, but excludes Binance and Bitget and includes cancellable resting orders; not guaranteed support.",
     "Basis Charts Binance perpetual depth is a separate derivatives book and older than the Fuelmaps spot snapshot; do not combine depth universes.",
-    "XRPL DEX quoted offers can exceed funded offers; Nov 10 Bitstamp USD ask funded share 18.3%, GateHub USD 99.4%, Ripple RLUSD 100%; DEX and AMM liquidity remain separate."
+    "XRPL DEX quoted offers can exceed funded offers; Nov 10 Bitstamp USD ask funded share 18.3%, GateHub USD 99.4%, Ripple RLUSD 100%; DEX and AMM liquidity remain separate.",
+    "Fuelmaps 20:00 spot snapshot is more bid-heavy than its 19:00 snapshot across near bands, but this is resting liquidity, excludes Binance/Bitget and is not executable depth or a directional forecast."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -7421,6 +7426,13 @@
       "url": "https://www.noshashi.app/book-health/",
       "observed_at_utc": "2026-11-10T00:00:00Z",
       "limitation": "historical ledger snapshot; DEX offers only; AMM excluded"
+    },
+    {
+      "source": "Fuelmaps XRP six-venue spot order book",
+      "url": "https://fuelmaps.io/order-book/",
+      "observed_at_utc": "2026-11-12T20:00:00Z",
+      "published_at_utc": "2026-11-12T20:05:00Z",
+      "limitation": "Binance and Bitget excluded; resting orders cancellable; about 31 minutes old at capture."
     }
   ],
   "backlog_classification": {
@@ -7451,7 +7463,7 @@
     "1659": "BLOCKED_ARCHITECTURE_CONFLICT_LUNAROUTE_ONLY; local llama.cpp phone-chat branch is retained but must not be activated as a second Barrot brain while BARROT_SYNC.md declares LunaRoute sole brain.",
     "1660": "SUPERSEDED_SOURCE_CANDIDATE; all 972 changed paths represented in #1662; retain until successor merge and exact main-file verification.",
     "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; prior integration source retained; 1,071/1,072 paths overlap #1662; BARROT_SYNC.md source-only; 40 shared blobs differ; 22 branch-only tree paths; preserve.",
-    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; exact test/code head bf9ac031 passed 3,540 full-suite tests, zero failures, eight subtests; five-manifest dependency audit and fail-closed gate passed. The following handoff/map-only commit requires fresh exact-head CI. Still blocked by Pages authorization, branch-protection visibility, least privilege and integrated semantic review.",
+    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; full suite passed on bf9ac031 (3,540/0); docs/map head ce3d92b has one wording-only assertion failure (3,539/1); dependency audit and fail-closed gate passed; exact-head correction required. Still blocked by Pages authorization, branch-protection visibility, least privilege and integrated semantic review.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
@@ -19994,7 +20006,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T20:26:00Z",
+  "updated_at_utc": "2026-11-12T20:31:00Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -22497,7 +22509,7 @@
     "formal_reviews": 0,
     "approvals": 0,
     "review_threads": 0,
-    "head_sha": "bf9ac0315c7172a121a97deac49449c5922ff780"
+    "head_sha": "ce3d92b880da44bf2e2901a91b50e491fb97c919"
   },
   "latest_market_refresh_run42": {
     "retrieved_at_utc_approx": "2026-11-12T02:29-02:31Z",
@@ -27615,10 +27627,10 @@
       "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
       "integration_head": "e72541f2795f95dc896952f20ed42cc061e2f569",
       "integration_pr": 1662,
-      "ahead_by": 2154,
+      "ahead_by": 2155,
       "behind_by": 0,
       "changed_files": 1075,
-      "latest_head_before_map_update": "bf9ac0315c7172a121a97deac49449c5922ff780"
+      "latest_head_before_map_update": "ce3d92b880da44bf2e2901a91b50e491fb97c919"
     },
     "ci": {
       "successful_code_head": "07aa7959b42f04832e1f328d1da86f392e8e54d8",
@@ -27628,9 +27640,9 @@
       "docs_head_run": 43293323076,
       "docs_head_failed": 15,
       "docs_head_failure": "map schema regression",
-      "dependency_audit_run": 43299527738,
+      "dependency_audit_run": 43300536296,
       "dependency_audit_passed": true,
-      "fail_closed_gate_run": 43299527607,
+      "fail_closed_gate_run": 43300536253,
       "fail_closed_gate_passed": true,
       "corrective_head": "c8b2d36e0e0859bcb6f646212476921e09197d46",
       "corrective_head_passed": 3536,
@@ -27638,10 +27650,10 @@
       "corrective_head_run": 43296380070,
       "test_correction_commit": "a42fd66f2acc71bf73122eee0744316791e6e5f3",
       "test_correction_status": "Verified: exact-head full repository suite passed on bf9ac031. The following map/handoff-only commit requires a fresh exact-head run.",
-      "latest_head": "a43cdfd7cb3fdab5fb8be031415cf76bd5a81237",
-      "latest_head_run": 43297986075,
-      "latest_head_passed": 3537,
-      "latest_head_failed": 3,
+      "latest_head": "ce3d92b880da44bf2e2901a91b50e491fb97c919",
+      "latest_head_run": 43300536260,
+      "latest_head_passed": 3539,
+      "latest_head_failed": 1,
       "final_verified_head": "bf9ac0315c7172a121a97deac49449c5922ff780",
       "final_full_suite_run": 43299527618,
       "final_full_suite_passed": 3540,
@@ -27651,7 +27663,11 @@
       "final_duration_seconds": 78.44,
       "final_core_tests_passed": 723,
       "final_wheel_build_verified": true,
-      "final_installed_wheel_verified": true
+      "final_installed_wheel_verified": true,
+      "latest_head_failure": "Single wording assertion expects exact phrase exact-head full-suite passed; no runtime failure.",
+      "latest_docs_map_head": "ce3d92b880da44bf2e2901a91b50e491fb97c919",
+      "latest_docs_map_head_failed": 1,
+      "latest_docs_map_failure": "Exact phrase mismatch in latest_attempt.failure_classification; no runtime failure."
     },
     "prediction": {
       "event_registry_events": 70,
@@ -27707,6 +27723,143 @@
       "etf_flows": "partial and provisional",
       "xrpl_amendments": "23/35,22/35,22/35; 29/35 for 14 days",
       "order_book": {
+        "source": "Fuelmaps six-venue spot snapshot",
+        "snapshot_time_utc": "2026-11-12T20:00:00Z",
+        "published_at_utc": "2026-11-12T20:05:00Z",
+        "mid_usd": 1.0315,
+        "venues_reporting": 6,
+        "age_at_capture_minutes": 31,
+        "execution_current": false,
+        "bands": [
+          {
+            "within_percent": 0.5,
+            "bids_usd": 8900000,
+            "asks_usd": 6000000,
+            "bid_share_percent": 59.9,
+            "venues": 6
+          },
+          {
+            "within_percent": 1,
+            "bids_usd": 13100000,
+            "asks_usd": 9200000,
+            "bid_share_percent": 58.6,
+            "venues": 6
+          },
+          {
+            "within_percent": 2,
+            "bids_usd": 17500000,
+            "asks_usd": 12300000,
+            "bid_share_percent": 58.8,
+            "venues": 6
+          },
+          {
+            "within_percent": 5,
+            "bids_usd": 29900000,
+            "asks_usd": 13500000,
+            "bid_share_percent": 68.9,
+            "venues": 6
+          },
+          {
+            "within_percent": 10,
+            "bids_usd": 33800000,
+            "asks_usd": 16100000,
+            "bid_share_percent": 67.8,
+            "venues": 5
+          }
+        ],
+        "largest_levels": [
+          {
+            "side": "bid",
+            "price": 1,
+            "resting_usd": 3600000
+          },
+          {
+            "side": "bid",
+            "price": 1.026,
+            "resting_usd": 1900000
+          },
+          {
+            "side": "bid",
+            "price": 1.029,
+            "resting_usd": 1800000
+          },
+          {
+            "side": "ask",
+            "price": 1.033,
+            "resting_usd": 1600000
+          },
+          {
+            "side": "ask",
+            "price": 1.034,
+            "resting_usd": 1500000
+          }
+        ],
+        "included_venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "excluded_venues": [
+          "Binance",
+          "Bitget"
+        ],
+        "full_depth_venues": [
+          "Coinbase",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "near_price_only_venues": [
+          "OKX",
+          "Kraken"
+        ],
+        "caveats": [
+          "Hourly snapshot based on one-minute samples and published about five minutes after the hour.",
+          "At the 20:31 UTC capture, the 20:00 snapshot was about 31 minutes old.",
+          "Provider states snapshots may be up to about 65 minutes old.",
+          "Resting orders can be cancelled or moved; this is not guaranteed support or executable depth.",
+          "Binance and Bitget are excluded; venue coverage differs by depth band."
+        ],
+        "source_url": "https://fuelmaps.io/order-book/"
+      },
+      "perpetual_order_book": {
+        "source": "Basis Charts Binance XRPUSDT perpetual",
+        "observed_at_utc": "2026-11-12T13:03:00Z",
+        "mid_usd": 1.0359,
+        "spread_bps": 0.97,
+        "bids_all_levels_usd": 41400000,
+        "asks_all_levels_usd": 31300000,
+        "levels_each_side": 1000,
+        "book_reach_percent": {
+          "down": 9.9,
+          "up": 9.7
+        },
+        "bid_share_within_1_percent": 55,
+        "depth_within_0_5_percent_usd": 19400000,
+        "volume_24h_usd": 597000000,
+        "open_interest_usd": 319000000,
+        "caveat": "Perpetual contract, older snapshot, different venue/instrument from Fuelmaps spot books.",
+        "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt"
+      },
+      "xrpl_dex_book_health": {
+        "source": "Noshashi XRPL DEX book-health snapshot",
+        "as_of_date": "2026-11-10",
+        "funded_quoted_ask_share_percent": {
+          "Bitstamp_USD": 18.3,
+          "GateHub_USD": 99.4,
+          "Ripple_RLUSD": 100
+        },
+        "caveats": [
+          "DEX offers only; AMM pools excluded.",
+          "Funded depth is what offer owners held at that ledger; quoted depth can overstate fillable liquidity.",
+          "Historical ledger snapshot, not current CEX depth."
+        ],
+        "source_url": "https://www.noshashi.app/book-health/"
+      },
+      "previous_order_book_19utc": {
         "source": "Fuelmaps six-venue spot snapshot",
         "snapshot_time_utc": "2026-11-12T19:00:00Z",
         "mid_usd": 1.0291,
@@ -27800,40 +27953,8 @@
         "age_at_capture_minutes": 86,
         "execution_current": false
       },
-      "perpetual_order_book": {
-        "source": "Basis Charts Binance XRPUSDT perpetual",
-        "observed_at_utc": "2026-11-12T13:03:00Z",
-        "mid_usd": 1.0359,
-        "spread_bps": 0.97,
-        "bids_all_levels_usd": 41400000,
-        "asks_all_levels_usd": 31300000,
-        "levels_each_side": 1000,
-        "book_reach_percent": {
-          "down": 9.9,
-          "up": 9.7
-        },
-        "bid_share_within_1_percent": 55,
-        "depth_within_0_5_percent_usd": 19400000,
-        "volume_24h_usd": 597000000,
-        "open_interest_usd": 319000000,
-        "caveat": "Perpetual contract, older snapshot, different venue/instrument from Fuelmaps spot books.",
-        "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt"
-      },
-      "xrpl_dex_book_health": {
-        "source": "Noshashi XRPL DEX book-health snapshot",
-        "as_of_date": "2026-11-10",
-        "funded_quoted_ask_share_percent": {
-          "Bitstamp_USD": 18.3,
-          "GateHub_USD": 99.4,
-          "Ripple_RLUSD": 100
-        },
-        "caveats": [
-          "DEX offers only; AMM pools excluded.",
-          "Funded depth is what offer owners held at that ledger; quoted depth can overstate fillable liquidity.",
-          "Historical ledger snapshot, not current CEX depth."
-        ],
-        "source_url": "https://www.noshashi.app/book-health/"
-      }
+      "latest_visible_l2_snapshot_time_utc": "2026-11-12T20:00:00Z",
+      "l2_snapshot_age_minutes": 31
     },
     "prediction_readiness": {
       "minimum_training_origins": 100,
