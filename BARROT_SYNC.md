@@ -1,3 +1,62 @@
+# BARROT SYNC — Run52 — 2026-11-12 09:04:43 UTC
+
+## Mission priority
+1. XRP intelligence and prediction-engine mastery.
+2. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.
+3. Do not publish a directional forecast until source receipts, point-in-time history, leakage-safe walk-forward evaluation, calibration, drift and independent shadow outcomes satisfy the gate.
+
+## Current repository state
+- Main: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`.
+- Pre-Run52 head: `b6f7577db144b105fff03cef4a37eaa738003c5f`, 2,093 ahead / 0 behind.
+- PR #1661 is the only active integration PR; open/draft, 1,052 changed files (49 workflows, 1,003 other paths), zero formal approvals/reviews/threads.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts).
+- Main lacks the XRP mission, collector and scheduled ingestion workflow; these remain integration-only.
+
+## Exact code-head verification
+Pre-Run52 head `b6f7577db144b105fff03cef4a37eaa738003c5f`: 3,507 full-suite tests passed, 0 failed; 8 subtests; 61.35% coverage; 95.42s. Core 716/0. Wheel and installed mission verification passed. Six dependency manifests audited, zero known vulnerabilities reported. Fail-closed gate passed.
+- [Full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/43180102573)
+- [Dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/43180102462)
+- [Fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/43180102357)
+
+The Run52 handoff/map commit is a successor and requires its own exact-head CI.
+
+## Security
+- Main protected flag true; detailed branch protection HTTP 403; fallback ruleset #10863829 disabled.
+- Connector permissions: admin/maintain/push/pull/triage; least privilege not met.
+- `.config/gh/hosts.yml` in 17/17 affected PR branch-tip trees, absent from main/integration and 17/17 changed-file inventories. Contents unread; provider-side revocation unverified. Preserve branch history.
+- Prior GitHub Pages build on main succeeded; publication authorization not verified.
+- No deployment, secret rotation, external publication, paper trade, Kaggle submission or Databricks write.
+
+## XRP evidence updates
+- CFTC report dated Nov 3 lists XRP Coinbase Derivatives code 176LM2 as dropped. CFTC says a contract can disappear when reportable large traders fall below 20; missing is not zero.
+- Latest complete XRP ETF session Nov 10: Alpha five-fund cohort -$7.6M; ByKaranteli six-fund cohort -$7.6M; XRP Insights six ETFs plus BITW -9.568M XRP across Nov 9–10. Nov 11 CryptoETF.today data is partial (2/5), not a complete zero.
+- SBI VC Trade reported JPYSC lending >¥10B and handling >¥30B on Nov 2. JPYSC remains account-limited; not public-chain turnover or XRP demand.
+- SMFG agreed to 5% of SBI Startale Marketing, the SBI/Startale JV, not SBI Holdings or Ripple.
+- SBI/Startale Open Standard JPYSC/OUSD interoperability remains a PoC under consideration, not a live service.
+- SBI's Solana Foundation partnership confirms multi-chain strategy.
+- Coinbase/Ripple RLUSD distribution is live on Prime/Exchange/Retail; Coinbase Global Exchange collateral support was future scope, not live.
+- XRPL LendingProtocol remains 22/35 versus 29 required; design is uncollateralized and XRP is not mandatory collateral.
+
+## Prediction engine
+- 47 public sources, 43 hourly, 2 weekly CFTC, 2 excluded; 45 scheduled.
+- Workflow hourly at minute 3 and daily at 00:15 UTC, runs only on main. Main ingestion not verified.
+- Event registry 47 events, 47 null raw publisher hashes; research-only.
+- SQLite point-in-time store is append-only at application level, not independent WORM.
+- Four baselines, chronological walk-forward, horizon embargo, calibration and PSI diagnostics implemented.
+- Production WORM, replayable synchronized history, production evaluator key, independent shadow outcomes and demonstrated OOS lift remain outstanding.
+- Forecast status: NOT_ISSUED.
+
+## Nine platforms
+ChatGPT GitHub access verified in this session but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot has no formal approval; Hugging Face last known BUILD_ERROR; Kaggle untested; Databricks last known HTTP 403; LunaRoute declared but endpoint auth/data flow unverified. No external model transfer.
+
+## Next action
+Verify exact-head CI on the Run52 handoff/map commit, then continue semantic review, credential-owner revocation, least-privilege access, branch-protection visibility and publication authorization. Keep #1661 as the only integration PR; no merge until every gate passes.
+
+Historical Run47 and earlier synchronization records follow.
+
+---
+
 # Run47 — 2026-11-12T05:02:51Z
 
 XRP intelligence remains mission priority 1; Barrot V3 remains the protected execution/orchestration/safety/verification foundation.

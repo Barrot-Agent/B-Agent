@@ -1,3 +1,117 @@
+# Run52 — Current Durable Handoff
+Captured: 2026-11-12T09:04:43Z
+
+## Mission and repository
+- Priority 1: XRP intelligence and prediction-engine mastery.
+- Protected foundation: Barrot V3 execution, orchestration, safety and verification.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`.
+- Pre-Run52 handoff head: `b6f7577db144b105fff03cef4a37eaa738003c5f` — 2,093 commits ahead, 0 behind.
+- Main tree: 1,388 entries; integration tree: 2,311 entries.
+- Open PRs: 374 (360 drafts, 14 non-drafts).
+- PR #1661: open/draft, 1,052 changed files (49 workflows, 1,003 other paths), zero formal reviews, approvals or review threads.
+- Main does not yet contain the primary XRP mission, collector module or scheduled ingestion workflow. Those remain integration-only.
+
+## Exact-head verification before this handoff commit
+The exact pre-Run52 head `b6f7577db144b105fff03cef4a37eaa738003c5f` passed:
+- Full repository suite: **3,507 passed, 0 failed**, 8 subtests, 61.35% coverage, 95.42 seconds.
+- Core suite: 716 passed, 0 failed.
+- Wheel build and installed Barrot V3/primary mission verification: passed.
+- Six dependency manifests audited; zero known vulnerabilities reported.
+- Fail-closed gate passed; automatic merge disabled.
+
+Evidence:
+- [Full CI 43180102573](https://github.com/Barrot-Agent/B-Agent/actions/runs/43180102573)
+- [Dependency audit 43180102462](https://github.com/Barrot-Agent/B-Agent/actions/runs/43180102462)
+- [Fail-closed gate 43180102357](https://github.com/Barrot-Agent/B-Agent/actions/runs/43180102357)
+
+**Important:** the Run52 handoff/map commit created after this snapshot must receive its own exact-head CI. Do not reuse the `b6f7577db144b105fff03cef4a37eaa738003c5f` test result for the successor commit.
+
+## New research findings
+### CFTC positioning coverage
+The CFTC's current report is dated November 3, 2026. Its dropped-contract list explicitly includes XRP — Coinbase Derivatives, LLC, code `176LM2`. The CFTC explains that a contract can disappear when reportable large traders fall below 20. This is a possible explanation, not proof of the actual trader count. Treat the missing series as a coverage break, never as zero positioning.
+
+### ETF flows
+- Alpha Finance, five-fund cohort, through November 10: -$7.6M daily, +$1.3M over 30 sessions, +$1.71B cumulative.
+- ByKaranteli, six-fund cohort, through November 10: -$7.6M daily, -$18M over five sessions, +$1.79B cumulative, $1.19B net assets.
+- XRP Insights, six US spot ETFs plus BITW: -9,568,334 XRP over November 9–10; 1,185,612,353 XRP held on November 10; November 11 provisional.
+- CryptoETF.today's November 11 page was only 2 of 5 funds reported at 05:48 UTC November 12; three were pending. Its zero-to-date is partial, not a complete zero. Its fund-count presentation changed from the prior Run51 snapshot, so preserve the version difference.
+- Different cohorts, cutoffs and settlement states are not averaged.
+
+### SBI and connected institutions
+- SBI VC Trade reported on November 2 that JPYSC lending balances exceeded ¥10B and total JPYSC handling balances exceeded ¥30B. This is reported SBI VC Trade platform usage, not public-chain turnover or XRP demand.
+- JPYSC launched June 24 through SBI VC Trade, but initial use was account-only and external-wallet withdrawals were unavailable. Public-chain distribution remains contingent on legal/tax treatment and regulator confirmation.
+- On October 30, SMFG agreed to a 5% stake in SBI Startale Marketing, the SBI/Startale JV. This is not 5% of SBI Holdings or Ripple.
+- SBI and Startale joined Open Standard and are considering a JPYSC/OUSD interoperability PoC. SBI's announcement expressly says this is not a new service or production payment/transaction launch.
+- SBI's July 13 strategic partnership with Solana Foundation and SBI R3 Japan is evidence of a broader multi-chain strategy, not XRP exclusivity.
+- SBI START bond materials offered XRP as a promotional reward; the amount and source were not established. Do not treat the promotion as proof of open-market XRP buying.
+- Ripple/Coinbase RLUSD distribution began October 28 across Prime, Exchange and Retail on XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as future scope, not live.
+
+### XRP market, collateral and protocol status
+- Latest verified Run51 exchange capture: OKX event time 07:52:36.767 UTC, last 1.0446, bid 1.0446, ask 1.0447. At the Run52 cutoff it was 72m06s old. Kraken was retrieved 07:57:13 UTC but supplied no exchange event timestamp. The normalized asynchronous gap was approximately 0.0252%; not executable or model-eligible.
+- Fuelmaps six-venue spot depth snapshot at 04:00 UTC was more than five hours old at cutoff. Resting orders are cancellable; Binance and Bitget were excluded.
+- Swiftedge derivatives snapshots were single-provider: 03:10 UTC funding +0.0006%/8h, OI -7.8%, long-account share 53.7%; 06:16 UTC perpetual walls are not spot liquidity.
+- XRPL LendingProtocol voting at 21:53 UTC November 11: 22/35 yes against 29 required; no activation countdown. XLS-66 is designed for fixed-term uncollateralized loans with off-chain underwriting; XRP is not mandatory collateral and automatic on-chain liquidation is not part of the design.
+
+### Counter-hypotheses and identity gates
+- Evernorth's prior SEC 424B3 reconciliation remains: approximately 82.17% of closing XRP was contributed in kind and 17.83% cash-purchased. Registered XRPN resales are not completed sales or XRP sales.
+- SBI's JPYSC, OUSD, Solana and tokenized-asset activity must not be converted into XRP demand without XRP-specific settlement/collateral evidence.
+- "Actual capital" is not a standardized XRP metric. Keep cash purchases, in-kind contributions, subscriber commitments, debt, facilities, lending balances, collateral and resales separate.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three separate Japanese regional SME investment companies, not SBI Holdings.
+- No primary-source XRP-linked ASK Coin identity or XRPL deployment verified.
+- No verified Kamilah/Camilla personal YouTube channel ownership; no videos attributed.
+
+## Prediction-engine status
+- 47 public source definitions: 43 hourly, 2 weekly CFTC, 2 excluded noncommercial XRPL node sources; 45 scheduled.
+- Collector and scheduled workflow are on integration only; workflow runs on main, so main ingestion remains unverified.
+- Event registry: 47 curated events, 47 null raw publisher hashes. Registry-file SHA is not a raw-source receipt.
+- Feature store: append-only SQLite prototype with point-in-time retrieval and revision reconstruction; no independent WORM/trusted timestamp anchor.
+- Four baselines and chronological horizon-embargoed walk-forward evaluation implemented. Temporal calibration and PSI diagnostics implemented.
+- Forecast ledger remains fail-closed and requires byte-complete canonical receipts, point-in-time dataset manifests and Ed25519 evaluator attestation.
+- Production evaluator key, independent WORM, synchronized history, independent shadow outcomes and measured lift over all four baselines remain absent.
+
+<badge color="warning">Forecast NOT_ISSUED</badge>
+
+No directional forecast, paper trade or real-money action occurred. Run52 web observations have no Barrot-captured raw-byte receipts and are research-only.
+
+## Nine-platform map
+- ChatGPT: current GitHub API access verified; repository metadata permissions are admin, maintain, push, pull and triage — overprivileged.
+- Claude, Grok, Gemini and Codex: authentication/data flow unverified.
+- Copilot: no formal PR approval.
+- Hugging Face: last known BUILD_ERROR; not re-tested.
+- Kaggle: untested; no submission.
+- Databricks: last known HTTP 403; no write.
+- LunaRoute: repository-declared canonical brain; endpoint authentication/data flow unverified.
+- No external-model data transfer.
+
+## Security and merge decision
+- Main reports protected=true, but detailed branch-protection API returns HTTP 403. Required checks/approval rules remain invisible.
+- Visible fallback ruleset #10863829 is disabled.
+- GitHub connector permissions are overprivileged.
+- `.config/gh/hosts.yml` is present in 17/17 affected open PR branch-tip trees and absent from 17/17 changed-file inventories; absent from main and integration. Contents were not read; provider-side OAuth revocation remains unverified. Preserve the branches; no history rewrite.
+- GitHub Pages previously built successfully on main commit 84f28ee; publication authorization remains unverified/unauthorized.
+- #1661 remains draft with zero formal approvals/reviews/threads. CodeRabbit reports draft not reviewed.
+- Source PR differences remain: #1660 940 identical/32 different; #1643 661/9; #1640 234/46; #1642 0/7; #1653 has 3 changed paths absent from integration; #1655 has 3 absent. Do not close any source PR.
+- Non-draft PR review inventory: no formal approvals; #1653 has two COMMENTED reviews and #1644 one COMMENTED review. The other non-drafts have no review records.
+
+**Decision: no merge.** Exact pre-handoff head passed, but the PR remains draft, approvals are absent, branch-protection requirements are not visible, connector permissions are overprivileged, credential revocation is unverified, publication authorization is unresolved and 1,003 non-workflow paths still need semantic review.
+
+## Next concrete actions
+1. Verify exact-head CI on the Run52 handoff/map commit.
+2. Keep #1661 as the only integration PR; no new branch or PR.
+3. Continue semantic review of the 1,003 non-workflow paths and reconcile workflow changes.
+4. Resolve credential-owner revocation, least-privilege connector access and branch-protection visibility.
+5. Confirm Pages authorization before any main push.
+6. Implement independent WORM/trusted timestamp anchoring and raw-publisher byte capture.
+7. Build replayable synchronized market/collateral history and independent shadow outcomes.
+8. Keep forecasts disabled until measured out-of-sample lift is demonstrated.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+Run52 structured artifact: [research/xrp_intelligence/20261112T090443Z-run52-current-head-ci-cftc-sbi-jpysc-and-xrp-market-reconciliation.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261111/research/xrp_intelligence/20261112T090443Z-run52-current-head-ci-cftc-sbi-jpysc-and-xrp-market-reconciliation.json)
+
+---
+
 # Run50 — Current Durable Handoff (2026-11-12T07:30:31Z)
 
 **Mission priority:** XRP intelligence and measured prediction-engine mastery remain priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
