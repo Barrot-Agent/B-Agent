@@ -316,3 +316,14 @@
 - Evernorth SEC 424B3: ~473.276M XRP closing; ~82.17% in-kind, ~17.83% cash-purchased. SBI's $200M included in $214.05M cash pool. SBI-controlled holders registered 9.432M Class A and 2.359M Class C XRPN shares; Class C non-transferable. SBI Class A may be resale overhang subject to other restrictions; no completed sale established. XRPN equity is not XRP token supply.
 - Forecast NOT_ISSUED; no merge or external actions.
 - Addendum artifact: `research/xrp_intelligence/20261112T020700Z-run41-addendum-ci-main-suite-occ-litigation-and-evernorth-capital.json`.
+
+
+## Run41 final verification — 2026-11-12T02:13:48.103Z
+- Exact integration head `d172167107aa5cb03495fb62ef56b57a331f3b21`: 3,460 passed, zero failures, eight subtests, 60.92% coverage, 52.74s; wheel build and installed mission verification passed. Full CI 43139364104; six-manifest audit 43139364123; fail-closed gate 43139364111; push audit 43139358049; push gate 43139357968 all passed.
+- Main CI correction: main has a full-suite job and passed 718 tests/eight subtests on SHA `84f28ee7755607236231545a14f3d093c1baaa85` in run 42944864014; command `pytest tests -v --no-cov`, no coverage. Main tree lacks primary mission and XRP collector; integration suite is larger and measures a 53% barrot_agent coverage floor.
+- Spot 02:05:53.665 UTC: OKX 1.0491, bid1.0487/ask1.0488; Kraken $1.04818, no event timestamp; ~0.0757% asynchronous midpoint gap before USDT/USD normalization. Current depth not retrieved. Liqwall OI $1.16B/+0.2%, funding +0.0053%; TradRadar $1.57B/-0.97%, +0.0045%; different universes. TrackWhale 01:53 rolling 7D net -54.78M XRP; largest 168.42M unlabeled. XRP Insights wallet total includes cold/cbXRP/Binance-Peg, not tradable float.
+- Evernorth SEC: 473.276M XRP closing; 82.17% in-kind and 17.83% cash-purchased. SBI Class C is non-voting and transfer-restricted, not stated absolutely non-transferable; SBI Class A is generally freely transferable subject to applicable restrictions. No sale established. XRPN equity resale is not XRP token supply.
+- BLS October CPI +0.4 headline/+0.3 core; no 12-month changes for affected series due missing October2025 survey data. ICBA v OCC challenges the broader charter framework; CaseMagic feed only through Oct19, not full/live docket, so later rulings unverified.
+- PR #1661 remains open/draft with zero approvals; branch-protection details HTTP403, connector overprivileged, OAuth revocation unverified, Pages publication unauthorized, 985 non-workflow paths require review. No merge or source PR closure.
+- Forecast NOT_ISSUED; research not raw-receipt ingested/model-eligible. No external-model transfer, paper trade or real-money action.
+- Final Run41 artifact: `research/xrp_intelligence/20261112T021500Z-run41-final-exact-head-pass-market-legal-and-capital-correction.json`.
