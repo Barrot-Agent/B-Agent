@@ -306,3 +306,13 @@
 - PR #1661 remains blocked: draft, zero approvals/reviews, branch protection detail HTTP403, fallback ruleset disabled, connector overprivileged, OAuth revocation unverified, Pages publication unauthorized, 983 non-workflow paths require semantic review. No merge/source PR closure.
 - Forecast NOT_ISSUED; Run41 web research not receipt-ingested/model-eligible. No external-model transfer, paper trade or real-money action.
 - Artifact: `research/xrp_intelligence/20261112T015532Z-run41-current-market-institutional-flow-and-exact-head-ci-repair.json`.
+
+
+## Run41 verification addendum — 2026-11-12T02:08:36.225Z
+- Exact integration head `32ae7be263173a4def9c5e04e1695375e191fd63`: 3,459 passed/1 failed, 8 subtests, 60.92%, 99.34s. Sole failure: Run41 converted the append-only disagreement array into an object. Restore the prior array and append; do not weaken tests. Core 716/0; dependency audit and fail-closed gate passed; wheel skipped.
+- Main CI correction: main has a full-suite job and passed 718 tests/8 subtests on SHA `84f28ee7755607236231545a14f3d093c1baaa85` in run 42944864014; command `pytest tests -v --no-cov`, no coverage. Main tree lacks primary mission and XRP collector; integration suite is larger and measures 53% barrot_agent coverage floor.
+- ICBA v. OCC, 1:26-cv-03441, filed Oct2, challenges March2026 charter rule/Interpretive Letter1176 and Protego conditional charter; not direct vacatur of Ripple/Circle/Coinbase charters. No ruling found; filing alone does not suspend charters.
+- BLS Oct CPI: headline +0.4%, core +0.3%, energy +0.7%, gasoline +1.0%, shelter +0.3%.
+- Evernorth SEC 424B3: ~473.276M XRP closing; ~82.17% in-kind, ~17.83% cash-purchased. SBI's $200M included in $214.05M cash pool. SBI-controlled holders registered 9.432M Class A and 2.359M Class C XRPN shares; Class C non-transferable. SBI Class A may be resale overhang subject to other restrictions; no completed sale established. XRPN equity is not XRP token supply.
+- Forecast NOT_ISSUED; no merge or external actions.
+- Addendum artifact: `research/xrp_intelligence/20261112T020700Z-run41-addendum-ci-main-suite-occ-litigation-and-evernorth-capital.json`.
