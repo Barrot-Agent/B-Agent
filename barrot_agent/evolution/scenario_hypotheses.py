@@ -1,9 +1,10 @@
 """Deterministic, point-in-time scenario and counter-hypothesis assembly.
 
 This module organizes explicitly authored, provenance-bound research hypotheses.
-It does not infer causal relationships, generate forecast probabilities, or issue
-directional forecasts. It is research-only until wired to the scheduled event
-timeline and independently anchored raw-source receipts.
+It is wired to scheduled XRP event-timeline capture, but does not infer causal
+relationships, generate forecast probabilities, or issue directional forecasts.
+It remains research-only until independent raw-source anchoring and the separate
+out-of-sample readiness gates are satisfied.
 """
 from __future__ import annotations
 

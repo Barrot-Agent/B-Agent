@@ -418,3 +418,21 @@
 - ASK Permission Coin UCID 7105 and Askcoin UCID 4640 remain distinct candidates; no XRPL integration verified. Kamilah/Camilla YouTube identity unverified; zero videos attributed.
 - Fresh web/API data are not raw-byte receipt-ingested; model_eligible=false. Spot quotes repeated and are stale/cached. Funding/OI provider universes disagree; do not average. XRPL lending amendments remain below 29/35 threshold. Forecast NOT_ISSUED.
 - Security blockers unchanged: connector overprivileged; branch-protection details HTTP403; fallback ruleset disabled; provider-side OAuth revocation unverified; Pages publication unauthorized. No merge or external action.
+
+
+## Run46 XRP mission update — 2026-11-12T04:36:06Z
+
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration parent `4b6e61e31b27322e6c71dfb3b412ec5f0ad3eb50`; PR #1661 remains open/draft.
+- Exact parent CI 43151000823: 3,495 passed, 5 failed (all stale-map assertions), 8 subtests, 61.31% coverage. Core 716/0; dependency audit and fail-closed gate passed.
+- All 49 changed workflow patches reviewed: 26 quarantined/disabled, 23 active/manual-gated; no new write permission, pull_request_target or workflow_run trigger; no external workflow dispatched.
+- Full recursive trees show `.config/gh/hosts.yml` in all 17 affected PR branch tips, although absent from changed-file inventories. It is absent from main/integration. No contents read, no history rewrite; provider-side OAuth revocation unverified. Preserve and security-block those branches.
+- Spot quote quality: OKX event 1,160 seconds old; Kraken has no event timestamp; normalized midpoint gap about -0.0401%. Research-only.
+- Alpha Finance through Nov 11: $0 latest session, -$18M seven sessions, +$1.3M 30 sessions, +$1.71B cumulative and +972.8M XRP; AUM/holdings unavailable.
+- TradRadar/Swiftedge OI/funding positive but long-account share differs 79.7% vs 55.8%; do not average.
+- SEC Evernorth: 73.688M XRPN shares registered for resale; no proceeds to Evernorth except warrant exercises; 473.276M closing XRP comprised ~388.911M in-kind and 84.366M cash-purchased. SBI-controlled holders 11.791M shares. RippleWorks/Arrington/Chris Larsen relationships and disclosed conflict risk preserved. Registration is not completed sale or XRP sale.
+- XRP Insights: 103.13M XRP in 13 attributed wallets; 370.35M moved outside the attributed set through Oct 22, destinations unknown; not proof of sale.
+- Ripple transparency: $2.6329B RLUSD circulation / $2.748B reserves as of Nov 5. StableRadar values disagree; excluded.
+- XRPL LendingProtocol 21/35 as of Nov 6, eight short, not activated.
+- Added 13-record curated event registry and wired scheduled event-timeline/scenario output. No raw publisher hashes; registry hash is not raw receipt. Research-only, model-ineligible, NOT_ISSUED.
+- No forecast, paper trade, real-money action, external-model transfer, merge, deployment, secret rotation/revocation, PR closure or branch-history rewrite.
+- Next: exact-head full-suite verification on the Run46 commit, then continue semantic/security review. Merge remains blocked.

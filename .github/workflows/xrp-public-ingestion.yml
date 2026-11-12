@@ -127,6 +127,14 @@ jobs:
             artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
           retention-days: 90
+      - name: Upload point-in-time event timeline and counter-hypotheses
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-events-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/event_timeline.json
+          if-no-files-found: error
+          retention-days: 90
       - name: Upload per-run point-in-time feature-store checkpoint
         if: success()
         uses: actions/upload-artifact@v7

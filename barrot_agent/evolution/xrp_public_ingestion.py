@@ -27,6 +27,7 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
+from .event_timeline import EventTimelineError, build_event_timeline
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp"}
@@ -4328,6 +4329,98 @@ def _run_coinbase_candle_backfill(
     return state
 
 
+
+def _capture_event_timeline_registry(
+    registry_path: str | Path | None,
+    data_cutoff_utc: str,
+) -> dict[str, Any]:
+    """Build a cutoff-safe research-only timeline from a curated event registry."""
+    default_path = Path(__file__).resolve().parents[2] / "research" / "xrp_intelligence" / "event_registry_current.json"
+    path = Path(registry_path) if registry_path is not None else default_path
+    display_path = path.as_posix()
+    try:
+        display_path = path.resolve().relative_to(Path(__file__).resolve().parents[2]).as_posix()
+    except (OSError, ValueError):
+        pass
+
+    if not path.exists():
+        timeline = build_event_timeline(
+            asset="XRP",
+            data_cutoff_utc=data_cutoff_utc,
+            horizon_seconds=30 * 24 * 60 * 60,
+            event_records=[],
+        )
+        payload = {
+            "schema_version": "1.0.0",
+            "artifact_type": "barrot.xrp.scheduled_event_timeline_capture",
+            "registry_status": "MISSING",
+            "registry_path": display_path,
+            "registry_sha256": None,
+            "data_cutoff_utc": data_cutoff_utc,
+            "event_count": 0,
+            "scenario_count": 0,
+            "receipt_complete": False,
+            "forecast_status": "NOT_ISSUED",
+            "directional_forecast": False,
+            "probabilities": None,
+            "model_eligible": False,
+            "timeline": timeline,
+            "warnings": ["Curated event registry missing; emitted an explicit empty timeline. No forecast is authorized."],
+        }
+    else:
+        try:
+            raw_registry = path.read_bytes()
+            registry = json.loads(raw_registry.decode("utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise XRPIngestionError(f"Unable to read XRP event registry: {exc}") from exc
+        if not isinstance(registry, dict):
+            raise XRPIngestionError("XRP event registry must be a JSON object")
+        if registry.get("artifact_type") != "barrot.xrp.event_registry":
+            raise XRPIngestionError("XRP event registry artifact_type is invalid")
+        if registry.get("schema_version") != "1.0.0":
+            raise XRPIngestionError("XRP event registry schema_version is unsupported")
+        records = registry.get("events")
+        if not isinstance(records, list):
+            raise XRPIngestionError("XRP event registry events must be a list")
+        try:
+            timeline = build_event_timeline(
+                asset="XRP",
+                data_cutoff_utc=data_cutoff_utc,
+                horizon_seconds=30 * 24 * 60 * 60,
+                event_records=records,
+            )
+        except EventTimelineError as exc:
+            raise XRPIngestionError(f"XRP event registry failed validation: {exc}") from exc
+        payload = {
+            "schema_version": "1.0.0",
+            "artifact_type": "barrot.xrp.scheduled_event_timeline_capture",
+            "registry_status": "LOADED",
+            "registry_path": display_path,
+            "registry_version": registry.get("registry_version"),
+            "registry_captured_at_utc": registry.get("captured_at_utc"),
+            "registry_sha256": hashlib.sha256(raw_registry).hexdigest(),
+            "data_cutoff_utc": data_cutoff_utc,
+            "event_count": timeline["event_count"],
+            "excluded_event_count": len(timeline["excluded_events"]),
+            "scenario_count": timeline["scenario_set"]["scenario_count"],
+            "receipt_complete": timeline["receipt_complete"],
+            "forecast_status": "NOT_ISSUED",
+            "directional_forecast": False,
+            "probabilities": None,
+            "model_eligible": False,
+            "timeline": timeline,
+            "warnings": [
+                "registry_sha256 authenticates only the curated registry file, not publisher payloads.",
+                "Events without raw_source_sha256 remain receipt-incomplete and model-ineligible.",
+                "Hypotheses and counter-hypotheses are authored inputs; no causal inference or forecast probabilities are produced.",
+                "The registry is curated, not an automatically discovered event feed.",
+            ],
+        }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+    payload["artifact_sha256"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    return payload
+
+
 def run_ingestion(
     output_dir: str | Path,
     *,
@@ -4336,6 +4429,7 @@ def run_ingestion(
     include_noncommercial_xrpl_nodes: bool = False,
     coinbase_backfill_days: int = 0,
     walk_forward_horizons: tuple[str, ...] | list[str] | str = DEFAULT_WALK_FORWARD_HORIZONS,
+    event_registry_path: str | Path | None = None,
 ) -> dict[str, Any]:
     """Capture public XRP data; scheduled hourly runs use 1h and daily runs may evaluate the full horizon matrix."""
     if not isinstance(include_noncommercial_xrpl_nodes, bool):
@@ -4829,12 +4923,27 @@ def run_ingestion(
             "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",
         ],
     }
+    event_timeline_capture = _capture_event_timeline_registry(event_registry_path, captured_s)
+    _write_json(output / "event_timeline.json", event_timeline_capture)
+    summary.update({
+        "event_timeline_path": "event_timeline.json",
+        "event_timeline_status": event_timeline_capture["registry_status"],
+        "event_timeline_sha256": event_timeline_capture["artifact_sha256"],
+        "event_registry_sha256": event_timeline_capture.get("registry_sha256"),
+        "event_count": event_timeline_capture["event_count"],
+        "event_excluded_count": event_timeline_capture.get("excluded_event_count", 0),
+        "scenario_count": event_timeline_capture["scenario_count"],
+        "event_timeline_receipt_complete": event_timeline_capture["receipt_complete"],
+        "event_timeline_model_eligible": False,
+        "event_timeline_forecast_status": "NOT_ISSUED",
+    })
     _write_json(output / "summary.json", summary)
     return summary
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Capture public XRP spot, order-book, funding, open-interest and positioning data.")
     parser.add_argument("--output-dir", default="artifacts/xrp_ingestion")
+    parser.add_argument("--event-registry", default=None, help="Curated XRP event registry JSON; defaults to research/xrp_intelligence/event_registry_current.json.")
     parser.add_argument(
         "--coinbase-backfill-days",
         type=int,
@@ -4852,6 +4961,7 @@ def main() -> None:
         args.output_dir,
         coinbase_backfill_days=args.coinbase_backfill_days,
         walk_forward_horizons=horizons,
+        event_registry_path=args.event_registry,
     )
     print(json.dumps(summary, indent=2, sort_keys=True))
 

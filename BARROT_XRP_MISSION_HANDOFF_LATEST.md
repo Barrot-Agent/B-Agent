@@ -2796,3 +2796,46 @@ PR #1661 remains the sole consolidated integration PR, open/draft and reported m
 - No source PR was closed.
 
 Next: build a validated, primary-source event registry with raw receipts and point-in-time availability/capture timestamps, then wire it into scheduled ingestion. Continue independent WORM/timestamp anchoring, replayable feature-store reconstruction, integrated semantic review, least-privilege and branch-protection remediation. No merge until all required gates are satisfied.
+
+
+## Run46 — 2026-11-12T04:36:06Z
+
+### Repository snapshot before this commit
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`; parent before this commit: `4b6e61e31b27322e6c71dfb3b412ec5f0ad3eb50`.
+- PR #1661 open/draft, 2,081 ahead / 0 behind; 1,044 changed files (49 workflows, 995 other paths).
+- Main tree: 1,388 entries / 1,288 blobs. Integration tree: 2,303 entries / 2,194 blobs.
+- Open PR inventory: 374 (360 drafts, 14 non-drafts).
+
+### Exact-head CI diagnosis
+Run 43151000823 on `4b6e61e31b27322e6c71dfb3b412ec5f0ad3eb50`: 3,495 passed, 5 failed, 8 subtests, 61.31% coverage. Core suite 716/0, six-manifest dependency audit passed with zero known vulnerabilities reported, and fail-closed gate passed. All five failures are stale-map metadata assertions in `tests/test_xrp_nine_platform_current_map_run73.py`: one timestamp ordering failure and four stale integration-head consistency failures. No runtime/ingestion failure was reported.
+
+### Security correction — complete branch-tree audit
+The prior changed-file-inventory-only check was insufficient. Run46 fetched complete, non-truncated recursive trees for all 17 current open PR heads:
+`#1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255, #1254`.
+The path `.config/gh/hosts.yml` is present in all 17 full branch-tip trees, despite not appearing in their changed-file lists. It is absent from main and the active integration branch. No contents were read; no history was rewritten; provider-side OAuth revocation is unverified. Preserve the 17 PRs but treat their branch tips as security-blocked.
+
+### Workflow review
+All 49 changed workflow patches were retrieved. 26 are quarantined/disabled and 23 active/manual-gated. No new write permission, pull_request_target trigger or workflow_run trigger was added. No external workflow was dispatched. XRP collector remains main-only and read-only.
+
+### Run46 XRP research
+- OKX XRP-USDT last 1.0453, bid 1.0453, ask 1.0454; provider event time 04:16:46.570Z, 1,160 seconds old at 04:36:06Z capture.
+- Kraken XRP/USD last 1.04471, bid 1.04437, ask 1.04444; no provider event timestamp. USDT/USD last 0.99870. Normalized midpoint gap about -0.0401%, but not a synchronized executable spread. No fresh synchronized multi-venue spot L2 was retrieved.
+- TradRadar 19:05Z: OI $1.57B, -0.97% 24h; funding +0.0045%/8h; 79.7% long accounts. Swiftedge 21:02Z: OI -7.6% 24h; funding +0.0052%/8h; 55.8% long accounts. Different universes and vintages; do not average.
+- Alpha Finance through Nov 11: latest session $0, seven-session -$18M, 30-session +$1.3M, cumulative +$1.71B and +972.8M XRP. AUM/holdings not published.
+- SEC Evernorth 424B3: up to 73.688M XRPN shares registered for potential resale; company says resale proceeds do not accrue except Sponsor Warrant exercises. Closing treasury approximately 473.276M XRP, about 388.911M in-kind and 84.366M cash-purchased. SBI-controlled entities: 11.791M registered shares (9.432M Class A, 2.359M Class C). RippleWorks held a majority of Arrington Sponsor LP interests; Chris Larsen co-founded RippleWorks, serves on its board and is Ripple co-founder/executive chairman; SEC identifies potential conflicts. Registration is not a completed sale or XRP sale.
+- XRP Insights ledger 108273772: 103.13M XRP in 13 attributed Evernorth wallets; 370.35M moved outside attributed set through Oct 22, destinations unknown. Not proof of sale or a reconciled company-wide custody balance.
+- Ripple transparency: $2.6329B RLUSD circulation and $2.748B reserves as of Nov 5. StableRadar search-index and direct cached values disagree; excluded.
+- XRPL LendingProtocol 21/35 votes as of Nov 6, eight short; not activated.
+
+### Event timeline/scenario wiring
+Run46 adds `research/xrp_intelligence/event_registry_current.json` and wires the existing event-timeline/scenario assembler into scheduled XRP ingestion. The collector writes `event_timeline.json`; the workflow uploads a separate 90-day event artifact. Thirteen curated records preserve source lineage and disagreement. The registry hash is not a raw-source receipt; no individual publisher payload hashes were captured. Output remains research-only, receipt-incomplete, model-ineligible and NOT_ISSUED. Exact-head CI after this commit is pending; main-only scheduled execution is not verified.
+
+### Prediction status
+The existing 47 source definitions (45 scheduled), SHA-256 receipt-chain prototype, point-in-time SQLite feature store, four baselines, chronological walk-forward evaluation, calibration, PSI drift diagnostics and Ed25519 fail-closed forecast ledger remain on integration. Independent WORM anchoring, replayable history, synchronized historical market/collateral data, production signing key, independent shadow outcomes and demonstrated out-of-sample lift remain blockers. No forecast, paper trade, real-money action or external-model transfer occurred.
+
+### Merge decision
+No merge. PR #1661 remains draft with zero formal approvals/reviews. Branch-protection detail returns HTTP 403; fallback ruleset is disabled; connector permissions remain overprivileged; provider-side OAuth revocation is unverified; GitHub Pages publication is automatic on main push and unauthorized; 979 non-workflow paths still require semantic review. The 17 credential-path branches remain security-blocked. Preserve unique work; do not bulk-close or rewrite branches.
+
+### Next action
+Complete exact-head full-suite, dependency, fail-closed and installed-wheel verification on the Run46 commit. Then continue semantic and security review. Do not merge while draft/approval, branch-protection, credential, least-privilege, Pages and semantic-review blockers remain.

@@ -1,0 +1,552 @@
+{
+  "artifact_type": "barrot.xrp.event_registry",
+  "schema_version": "1.0.0",
+  "registry_version": "run46-2026-11-12",
+  "captured_at_utc": "2026-11-12T04:36:06Z",
+  "source_receipt_status": "CURATED_WEB_RESEARCH_ONLY; publisher payload bytes were not captured by Barrot's raw receipt collector in this run.",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "events": [
+    {
+      "event_id": "evernorth-424b3-resale-2026-11-09",
+      "event_type": "corporate",
+      "event_name": "U.S. Securities and Exchange Commission",
+      "hypothesis_id": "evernorth-equity-resale-vs-xrp-treasury-sale",
+      "domain": "institutional_capital",
+      "hypothesis": "The registered XRPN resale capacity and concentrated related-party ownership create potential equity supply, governance and liquidity overhang around the public XRP treasury vehicle.",
+      "counter_hypothesis": "Registered securities are not completed sales or XRP sales; most registered shares are conditional conversions or exchanges, and resale proceeds do not accrue to Evernorth except Sponsor Warrant exercises.",
+      "claim": "SEC Form 424B3 registers up to 73,688,162 XRPN Class A shares for potential resale: 19,102,635 issued Class A, up to 31,392,746 Class C conversions, up to 22,953,128 Company Unit exchanges/redemptions and 239,653 Sponsor Warrant shares. Evernorth says it receives no resale proceeds except warrant exercise proceeds.",
+      "source_id": "sec_evernorth_424b3",
+      "source_name": "sec_evernorth_424b3",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "independence_group": "sec-edgar-evernorth",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-09T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Evernorth Holdings Inc.",
+        "Ripple Labs",
+        "SBI Holdings",
+        "Arrington XRP Capital Fund"
+      ],
+      "tags": [
+        "XRPN",
+        "resale-registration",
+        "equity-overhang"
+      ]
+    },
+    {
+      "event_id": "evernorth-424b3-in-kind-composition-2026-11-09",
+      "event_type": "corporate",
+      "event_name": "U.S. Securities and Exchange Commission",
+      "hypothesis_id": "evernorth-equity-resale-vs-xrp-treasury-sale",
+      "domain": "institutional_capital",
+      "hypothesis": "The registered XRPN resale capacity and concentrated related-party ownership create potential equity supply, governance and liquidity overhang around the public XRP treasury vehicle.",
+      "counter_hypothesis": "Registered securities are not completed sales or XRP sales; most registered shares are conditional conversions or exchanges, and resale proceeds do not accrue to Evernorth except Sponsor Warrant exercises.",
+      "claim": "The SEC filing reports approximately 473,276,430 XRP at closing: 84,365,876.3625 XRP cash-purchased using $214,049,995 at an average $2.53657058, and approximately 388.911M XRP contributed in kind (211.319M RippleWorks/Arrington, 126.791M Ripple-to-Pathfinder, 50M Larsen Lam trust and 0.8M subscribers).",
+      "source_id": "sec_evernorth_424b3",
+      "source_name": "sec_evernorth_424b3",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "independence_group": "sec-edgar-evernorth",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-09T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Evernorth Holdings Inc.",
+        "RippleWorks Inc.",
+        "Ripple Labs",
+        "SBI Holdings",
+        "Larsen Lam Trust"
+      ],
+      "tags": [
+        "XRP-treasury",
+        "in-kind-contribution",
+        "cash-purchase"
+      ]
+    },
+    {
+      "event_id": "evernorth-wallet-attribution-2026-11-12T0321Z",
+      "event_type": "corporate",
+      "event_name": "XRP Insights",
+      "hypothesis_id": "evernorth-equity-resale-vs-xrp-treasury-sale",
+      "domain": "institutional_capital",
+      "hypothesis": "The registered XRPN resale capacity and concentrated related-party ownership create potential equity supply, governance and liquidity overhang around the public XRP treasury vehicle.",
+      "counter_hypothesis": "Registered securities are not completed sales or XRP sales; most registered shares are conditional conversions or exchanges, and resale proceeds do not accrue to Evernorth except Sponsor Warrant exercises.",
+      "claim": "XRP Insights reports 103,129,905 XRP in 13 attributed Evernorth wallets at ledger 108273772 (Nov 12 03:21 UTC), and 370,346,663 XRP moved outside the attributed set through Oct 22; destinations remain unattributed.",
+      "source_id": "xrp_insights_evernorth",
+      "source_name": "xrp_insights_evernorth",
+      "source_url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "independence_group": "xrp-insights-onchain-labels",
+      "source_status": "provisional",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T03:21:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Evernorth Holdings Inc.",
+        "BitGo"
+      ],
+      "tags": [
+        "XRPL-ledger",
+        "wallet-attribution",
+        "not-proof-of-sale"
+      ]
+    },
+    {
+      "event_id": "xrp-okx-spot-2026-11-12T041646Z",
+      "event_type": "market",
+      "event_name": "OKX public spot ticker API",
+      "hypothesis_id": "xrp-spot-cross-venue-parity-and-freshness",
+      "domain": "spot_market_structure",
+      "hypothesis": "The OKX and Kraken top-of-book observations are close after normalizing the OKX USDT quote into USD.",
+      "counter_hypothesis": "The OKX event timestamp is approximately 19 minutes old at capture, beyond the five-minute live-age limit, and Kraken supplies no event timestamp; this is not a synchronized executable observation.",
+      "claim": "OKX XRP-USDT last 1.0453, bid 1.0453, ask 1.0454, 24h high 1.0807, low 1.0409, volume 38.95M XRP; provider event timestamp 04:16:46.570Z, 1,160 seconds old at 04:36:06Z capture.",
+      "source_id": "okx_xrp_usdt_ticker",
+      "source_name": "okx_xrp_usdt_ticker",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "independence_group": "okx-exchange-public-api",
+      "source_status": "provisional",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T04:16:46.570Z",
+      "source_published_at_utc": "2026-11-12T04:16:46.570Z",
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "OKX"
+      ],
+      "tags": [
+        "XRP-USDT",
+        "spot",
+        "stale-at-capture"
+      ]
+    },
+    {
+      "event_id": "xrp-kraken-spot-2026-11-12T043606Z",
+      "event_type": "market",
+      "event_name": "Kraken public ticker API",
+      "hypothesis_id": "xrp-spot-cross-venue-parity-and-freshness",
+      "domain": "spot_market_structure",
+      "hypothesis": "The OKX and Kraken top-of-book observations are close after normalizing the OKX USDT quote into USD.",
+      "counter_hypothesis": "The OKX event timestamp is approximately 19 minutes old at capture, beyond the five-minute live-age limit, and Kraken supplies no event timestamp; this is not a synchronized executable observation.",
+      "claim": "Kraken XRP/USD last 1.04471, bid 1.04437, ask 1.04444; USDT/USD last 0.99870. Kraken supplied no provider event timestamp. Normalized OKX midpoint $1.0439858 versus Kraken midpoint $1.044405, about -0.0401%.",
+      "source_id": "kraken_xrp_usd_ticker",
+      "source_name": "kraken_xrp_usd_ticker",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken-exchange-public-api",
+      "source_status": "provisional",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T04:36:06Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Kraken"
+      ],
+      "tags": [
+        "XRP-USD",
+        "USDT-USD",
+        "missing-event-time"
+      ]
+    },
+    {
+      "event_id": "xrp-tradradar-derivatives-2026-11-11T1905Z",
+      "event_type": "derivatives",
+      "event_name": "TradRadar",
+      "hypothesis_id": "xrp-perpetual-positioning-contraction",
+      "domain": "derivatives",
+      "hypothesis": "XRP perpetual positioning is contracting while funding remains positive and at least one aggregator reports a high long-account share.",
+      "counter_hypothesis": "USD open interest can decline with mark price and provider coverage differs; account ratios are not net positions or directional forecasts.",
+      "claim": "TradRadar at 19:05Z: OI $1.57B, -0.97% 24h; funding +0.0045%/8h; at least $2.85M liquidations; 79.7% long accounts.",
+      "source_id": "tradradar_xrp",
+      "source_name": "tradradar_xrp",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "independence_group": "tradradar-aggregated-perpetuals",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-11T19:05:00Z",
+      "source_published_at_utc": "2026-11-11T19:05:00Z",
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Binance",
+        "Bybit",
+        "OKX",
+        "Hyperliquid"
+      ],
+      "tags": [
+        "perpetuals",
+        "open-interest",
+        "funding"
+      ]
+    },
+    {
+      "event_id": "xrp-swiftedge-derivatives-2026-11-11T2102Z",
+      "event_type": "derivatives",
+      "event_name": "Swiftedge",
+      "hypothesis_id": "xrp-perpetual-positioning-contraction",
+      "domain": "derivatives",
+      "hypothesis": "XRP perpetual positioning is contracting while funding remains positive and at least one aggregator reports a high long-account share.",
+      "counter_hypothesis": "USD open interest can decline with mark price and provider coverage differs; account ratios are not net positions or directional forecasts.",
+      "claim": "Swiftedge at 21:02Z: OI -7.6% 24h, funding +0.0052%/8h, 55.8% long accounts, displayed 3.81M XRP bid wall and 5.37M ask wall; proprietary estimates and different contract universe.",
+      "source_id": "swiftedge_xrp",
+      "source_name": "swiftedge_xrp",
+      "source_url": "https://swiftedge.uk/xrp",
+      "independence_group": "swiftedge-orderflow-estimates",
+      "source_status": "provisional",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-11T21:02:00Z",
+      "source_published_at_utc": "2026-11-11T21:02:00Z",
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Swiftedge"
+      ],
+      "tags": [
+        "perpetuals",
+        "funding",
+        "open-interest",
+        "estimated-walls"
+      ]
+    },
+    {
+      "event_id": "xrp-etf-nov11-latest-session",
+      "event_type": "institutional",
+      "event_name": "Alpha Finance",
+      "hypothesis_id": "xrp-etf-short-window-vs-cumulative-flows",
+      "domain": "institutional_capital_flows",
+      "hypothesis": "Recent ETF flow windows show short-term redemptions even though cumulative net inflows remain positive.",
+      "counter_hypothesis": "Zero-flow sessions and cumulative net flows do not establish current AUM, holdings, exchange purchases or future demand.",
+      "claim": "Alpha Finance five-fund series through Nov 11: latest session $0, seven sessions -$18M, 30 sessions +$1.3M, cumulative net inflow +$1.71B and +972.8M XRP. Dashboard does not publish AUM or holdings.",
+      "source_id": "alpha_finance_xrp_etf",
+      "source_name": "alpha_finance_xrp_etf",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "independence_group": "alpha-finance-issuer-flow-series",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-11T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Bitwise",
+        "Franklin Templeton",
+        "Canary",
+        "Grayscale",
+        "21Shares"
+      ],
+      "tags": [
+        "spot-etf",
+        "flows",
+        "date-only-precision"
+      ]
+    },
+    {
+      "event_id": "xrp-etf-cumulative-counterevidence",
+      "event_type": "institutional",
+      "event_name": "Alpha Finance",
+      "hypothesis_id": "xrp-etf-short-window-vs-cumulative-flows",
+      "domain": "institutional_capital_flows",
+      "hypothesis": "Recent ETF flow windows show short-term redemptions even though cumulative net inflows remain positive.",
+      "counter_hypothesis": "Zero-flow sessions and cumulative net flows do not establish current AUM, holdings, exchange purchases or future demand.",
+      "claim": "The same five-fund Alpha Finance series reports +$1.71B cumulative net inflow despite the recent seven-session -$18M window; cumulative flow is not current AUM.",
+      "source_id": "alpha_finance_xrp_etf_cumulative",
+      "source_name": "alpha_finance_xrp_etf_cumulative",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "independence_group": "alpha-finance-issuer-flow-series",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-11T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Bitwise",
+        "Franklin Templeton",
+        "Canary",
+        "Grayscale",
+        "21Shares"
+      ],
+      "tags": [
+        "spot-etf",
+        "cumulative-inflow",
+        "counterevidence"
+      ]
+    },
+    {
+      "event_id": "rlusd-transparency-2026-11-05",
+      "event_type": "stablecoin",
+      "event_name": "Ripple",
+      "hypothesis_id": "rlusd-institutional-distribution-vs-xrp-demand",
+      "domain": "stablecoins_and_payments",
+      "hypothesis": "RLUSD distribution and institutional custody partnerships expand regulated stablecoin infrastructure around Ripple and XRPL.",
+      "counter_hypothesis": "Stablecoin supply, custody and exchange listings do not establish incremental XRP purchases, XRP settlement volume or XRPL-specific collateral use.",
+      "claim": "Ripple's official transparency page reports $2,632.9M circulating RLUSD and $2,748.0M reserve funds as of Nov 5; Standard Custody & Trust Company is the issuer.",
+      "source_id": "ripple_rlusd_transparency",
+      "source_name": "ripple_rlusd_transparency",
+      "source_url": "https://ripple.com/products/stablecoin/transparency/",
+      "independence_group": "ripple-issuer-transparency",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-05T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Ripple",
+        "Standard Custody & Trust Company",
+        "BNY"
+      ],
+      "tags": [
+        "RLUSD",
+        "stablecoin",
+        "reserves"
+      ]
+    },
+    {
+      "event_id": "rlusd-stableradar-cache-disagreement",
+      "event_type": "stablecoin",
+      "event_name": "StableRadar",
+      "hypothesis_id": "rlusd-institutional-distribution-vs-xrp-demand",
+      "domain": "stablecoins_and_payments",
+      "hypothesis": "RLUSD distribution and institutional custody partnerships expand regulated stablecoin infrastructure around Ripple and XRPL.",
+      "counter_hypothesis": "Stablecoin supply, custody and exchange listings do not establish incremental XRP purchases, XRP settlement volume or XRPL-specific collateral use.",
+      "claim": "StableRadar search indexing reported $2.701B total RLUSD supply at Nov 11 19:43Z, while direct page retrieval returned a cached $2.567B value dated Oct 26; unreconciled and excluded.",
+      "source_id": "stableradar_rlusd_cache",
+      "source_name": "stableradar_rlusd_cache",
+      "source_url": "https://stableradar.com/coin/rlusd",
+      "independence_group": "stableradar-onchain-aggregator",
+      "source_status": "disputed",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-11T19:43:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "StableRadar",
+        "Ripple",
+        "XRPL",
+        "Ethereum"
+      ],
+      "tags": [
+        "RLUSD",
+        "supply",
+        "cache-disagreement"
+      ]
+    },
+    {
+      "event_id": "xrpl-lending-votes-2026-11-06",
+      "event_type": "protocol",
+      "event_name": "UNUM",
+      "hypothesis_id": "xrpl-native-lending-readiness",
+      "domain": "protocol_governance_and_collateral",
+      "hypothesis": "Native XRPL lending amendments are progressing and could eventually expand on-ledger credit and collateral utility.",
+      "counter_hypothesis": "LendingProtocol remains eight votes short of the 29-of-35 threshold and has not entered the required 14-day activation period; no production lending market is established.",
+      "claim": "UNUM reported LendingProtocol at 21/35 trusted validators on Nov 6, eight short of 29; SingleAssetVault 23/35 and LendingProtocolV1_1 21/35. None activated; >80% support for 14 consecutive days required.",
+      "source_id": "unum_xrpl_lending",
+      "source_name": "unum_xrpl_lending",
+      "source_url": "https://theunum.io/en/news/read/xrp-ledger-credit-update-receives-support-from-21-validators",
+      "independence_group": "unum-xrpl-validator-report",
+      "source_status": "provisional",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-06T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "XRPL validators",
+        "LendingProtocol",
+        "SingleAssetVault",
+        "LendingProtocolV1_1"
+      ],
+      "tags": [
+        "XLS-66",
+        "lending",
+        "validator-votes",
+        "not-activated"
+      ]
+    },
+    {
+      "event_id": "bny-xrp-rlusd-custody-2026-10-27",
+      "event_type": "custody",
+      "event_name": "Ripple via Nasdaq/Business Wire",
+      "hypothesis_id": "institutional-custody-access-vs-incremental-xrp-demand",
+      "domain": "institutional_custody",
+      "hypothesis": "Institutional custody availability for XRP and RLUSD is expanding among regulated intermediaries.",
+      "counter_hypothesis": "Custody support and tokenized trade-finance exploration do not disclose balances, purchases or live XRP collateral usage.",
+      "claim": "Ripple's Oct 27 announcement says BNY supports XRP and RLUSD custody and that the parties will explore tokenized trade-finance use cases; BNY remains primary RLUSD reserve custodian.",
+      "source_id": "ripple_bny_custody",
+      "source_name": "ripple_bny_custody",
+      "source_url": "https://www.nasdaq.com/press-release/ripple-expands-strategic-digital-assets-collaboration-bny-across-custody-and",
+      "independence_group": "ripple-bny-joint-press-release",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-27T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "BNY",
+        "Ripple",
+        "RLUSD",
+        "XRP Ledger"
+      ],
+      "tags": [
+        "BNY",
+        "custody",
+        "RLUSD",
+        "XRP"
+      ]
+    },
+    {
+      "event_id": "coinbase-rlusd-listing-2026-10-28",
+      "event_type": "stablecoin",
+      "event_name": "Reuters",
+      "hypothesis_id": "rlusd-institutional-distribution-vs-xrp-demand",
+      "domain": "stablecoins_and_payments",
+      "hypothesis": "RLUSD distribution and institutional custody partnerships expand regulated stablecoin infrastructure around Ripple and XRPL.",
+      "counter_hypothesis": "Stablecoin supply, custody and exchange listings do not establish incremental XRP purchases, XRP settlement volume or XRPL-specific collateral use.",
+      "claim": "Reuters reported Oct 28 that Coinbase was adding RLUSD to retail and institutional platforms; distribution expansion does not establish XRP settlement or XRP purchases.",
+      "source_id": "reuters_coinbase_rlusd",
+      "source_name": "reuters_coinbase_rlusd",
+      "source_url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "independence_group": "reuters",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-28T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T04:36:06Z",
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Publisher timestamp and stated measurement scope are accurate."
+      ],
+      "falsification_conditions": [
+        "A subsequent primary record or synchronized source capture materially contradicts the claim."
+      ],
+      "related_entities": [
+        "Coinbase",
+        "Ripple",
+        "RLUSD",
+        "Circle",
+        "USDC"
+      ],
+      "tags": [
+        "Coinbase",
+        "RLUSD",
+        "distribution"
+      ]
+    }
+  ]
+}
