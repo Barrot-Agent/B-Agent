@@ -1,3 +1,27 @@
+# Run63 — 2026-11-12 — exact-head CI and current XRP market state
+
+- Mission: XRP intelligence and prediction-engine mastery, priority 1; preserve Barrot V3 execution/orchestration/safety/verification.
+- Main SHA: 84f28ee7755607236231545a14f3d093c1baaa85.
+- Pre-Run63 integration head: 5bb95ccb14026f0561b3d136f85f9a90dc11e2bf; 2,126 ahead / zero behind; 2,323 tree entries. PR #1661 remains open/draft with 1,066 changed files and zero formal approvals/reviews.
+- Exact-head CI 43245195036: 3,512 full-suite tests passed, zero failed, eight subtests; 61.42% inclusive coverage in 61.57s. Core 721 passed, eight subtests, 76% coverage. Wheel/install mission verification passed.
+- Dependency audit 43245195334: six manifest groups, 15 PEP 621 dependencies, no known vulnerabilities. Fail-closed gate 43245194887 passed.
+- Run63 direct spot: OKX 1.0317 (provider timestamp 14:41:15.796 UTC; stale by about 30m at 15:11:42 capture), Kraken last 1.02593 with no event timestamp. Normalized asynchronous midpoint gap about 0.49%; not executable arbitrage.
+- Fuelmaps 08:00 UTC XRP book: mid 1.0428; ±1% bids/asks $12.1M/$10.5M; ±5% $27.0M/$15.6M; stale 7h11m and excludes Binance/Bitget.
+- XRP Insights 08:00 UTC: 22.34B XRP across 706 attributed wallets/24 exchanges; same-wallet +45.8M 7d, -180.9M 30d. Cold storage included; not tradable float.
+- Nov 11 ETF flows remain partial: CryptoETF.today 3/5 funds -$0.2M; CryptoKeyhole 3/4 -3,322 XRP; XRP Insights Nov 11 row provisional, latest settled data Nov 10.
+- Derivatives snapshots disagree and are stale: Liqwall $1.16B OI at 02:52 UTC; CoinGlass localized cached pages $2.35–$2.42B with older FAQ vintages; TradRadar $1.57B at Nov 11 19:05 UTC. Do not average or issue direction.
+- Coinbase cbXRP localized pages show a newer 152.9098M reserve / 152.9076M supply snapshot and an older 152.0879M snapshot; issuer page, not independent audit. Ripple Nov 5 RLUSD balance is not the latest independent attestation vintage.
+- Circle/Coinbase: 2023 Centre transfer for about $209.9M / 8.4M Circle shares; Circle Q3 2026 Form 10-Q reports $331.3M Q3 and $986.6M nine-month Coinbase distribution costs. SBI and SBI Shinsei Bank invested $50M combined in Circle; SBI VC Trade distributes USDC and RLUSD; JPYSC is a separate SBI/Startale rail. None proves XRP settlement demand.
+- SBIC East/Central/West resolve to Tokyo/Nagoya/Osaka regional SME investment companies. ASK Coin has no verified XRPL deployment; actual capital is not standardized; no SBIC/OpenAI partnership; Kamilah's person identity is distinct from unverified YouTube channel ownership.
+- Architecture: 47 sources/45 scheduled; read-only collector, SHA-256 local receipts/hash chain, SQLite point-in-time store, four baselines, walk-forward/calibration/drift and Ed25519 fail-closed forecast ledger. No independent WORM, no candidate model with OOS lift, no independent shadow outcomes. Scheduled workflow exists only on integration.
+- Forecast NOT_ISSUED. Run63 web/API observations lack byte-exact RawReceiptArchive receipts and remain model-ineligible.
+- Nine-platform latest accessible map: ChatGPT/GitHub only verified, overprivileged; eight other platforms unverified/untested; no external transfer.
+- Merge WITHHELD: draft PR, zero approvals, branch-protection HTTP 403, disabled fallback ruleset, overprivileged connector, unresolved Pages/credential-owner authorization, and 1,017 non-workflow paths plus 49 workflows still need integrated semantic review.
+- Run63 JSON: research/xrp_intelligence/20261112T151142Z-run63-exact-head-market-spot-depth-derivatives-etf-flow-collateral-and-repository-verification.json.
+- No merge, deployment, secret rotation, external transfer, paper trade, funds transfer, force-push, history rewrite or source PR closure.
+
+---
+
 # Run62B — 2026-11-12 — direct institutional relationship update
 
 - Current main: `84f28ee7755607236231545a14f3d093c1baaa85`.
