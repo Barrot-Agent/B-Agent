@@ -1,3 +1,102 @@
+# Run61B supplement — 2026-11-12 — RLUSD on-chain supply, Circle Arc, SBI JPYSC, Ripple Prime and escrow
+
+## Additional institutional findings — VERIFIED FROM PRIMARY OR PINNED-LEDGER SOURCES
+
+### 1. Circle Arc creates a parallel institutional rail with SBI and Standard Chartered participation
+
+Circle's public Arc mainnet launched September 16, 2026. Circle describes it as a separate Layer-1 for payments, FX, trading, lending and tokenized assets:
+- USDC is the native gas/fee asset; Circle states sub-second deterministic finality.
+- Circle Payments Network is integrated natively; StableFX is designed for 24/7 cross-currency settlement.
+- Circle's founding validator cohort includes SBI Group, Standard Chartered, Sumitomo, BlackRock, DTCC, ICE, Mastercard, Visa, MoneyGram and others.
+- Coinbase is named among Arc's day-one exchange ecosystem.
+- The launch release's StableFX list includes JPYC but does not list JPYSC. SBI's CEO says SBI intends to leverage both USDC and JPYSC in its broader Arc/APAC collaboration. That is strategic intent, not evidence of a live JPYSC-on-Arc integration.
+- Circle says USDC accounts for 98.8% of agent-driven x402 volume; treat this as a Circle company claim, not independent measurement.
+
+This changes the relationship map: SBI Group and Standard Chartered participate in both Circle/Arc and Ripple-related ecosystems. Their participation is not exclusive alignment with XRP or XRPL. Arc is a parallel stablecoin/payment rail, not an XRP Ledger deployment.
+
+### 2. Circle Q3 2026 economics and distribution
+
+Circle's November 4 Q3 release reports:
+- Average USDC circulation: $73.3B, +8% year over year.
+- Q3 USDC on-chain transaction volume: $13.9T, +49%.
+- Total revenue and reserve income: $865M, +17%.
+- Reserve income: $658M, down 8%; Circle attributes the decline primarily to a 61bp lower reserve return rate, partly offset by higher average circulation.
+- Other revenue: $207M, including $182M from the ARC token presale.
+- Net income: $226M; adjusted EBITDA: $317M.
+- Circle Payments Network annualized TPV: $41.3B.
+- Tazapay acquisition is under definitive agreement and expected to close in 2027, subject to regulatory approvals; it is not yet a completed acquisition.
+- Visa Direct USDC prefunding moved from pilots to commercial deployment through Inyo Global; Samsung Wallet added USDC remittances to qualifying bank accounts in 60+ countries.
+
+Do not treat the $182M ARC presale as recurring USDC reserve economics. The Q3 reserve-income decline despite circulation growth highlights interest-rate sensitivity. Circle's CPN/Arc activity is not XRP settlement volume.
+
+### 3. JPYSC and SBI's parallel stablecoin ecosystem
+
+SBI VC Trade's November 2 company release reports:
+- JPYSC handling balance exceeded ¥30B.
+- JPYSC lending balance exceeded ¥10B.
+- JPYSC is issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale.
+- SBI Holdings and Startale signed an October 27 basic agreement with BlackRock entities concerning a tokenized money-market-fund/JPYSC ecosystem. This is an MOU/basic agreement, not proof of a production connection.
+- SBI Group is an Arc founding validator and has publicly described a strategy leveraging USDC and JPYSC.
+
+These are SBI stablecoin balances and initiatives, not XRP flows. Preserve the distinction between SBI Holdings, SBI Shinsei Trust, SBI VC Trade, SBI Startale Marketing, Startale and the regional SBIC entities.
+
+### 4. Ripple Prime, Coinbase, Robinhood and institutional collateral
+
+- **Ripple Prime RWA swaps:** Ripple's October 15 release says institutional clients including Virtu are trading perpetual swaps referencing 100+ markets through Trade.xyz on Hyperliquid. Ripple Prime acts as principal; clients can cross-margin and use **RLUSD** as collateral. The offering is stated to be available under Ripple Prime's CIV BVI license. No XRP collateral is identified.
+- **Coinbase:** Ripple's October 28 partnership made RLUSD available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with XRPL, Base and Ethereum deposits/withdrawals and 1:1 USD/other-stablecoin conversion. Coinbase Global Exchange availability and RLUSD collateral support were described as following later; do not count that collateral feature as live without a later confirmation.
+- **Robinhood:** Ripple's October 27 partnership says RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; Robinhood intends to use RLUSD on XRPL for institutional settlement, integrate Ripple Treasury into its cash/liquidity operations and use Ripple Prime financing/market access. Perpetual futures support on Bitstamp was described as a later-2026 plan, not a completed launch.
+- **Ripple National Trust Bank:** Ripple announced final OCC approval on October 26. The approved scope includes management of segregated RLUSD reserves, collateral-trustee functions and fiduciary digital-asset custody upon opening. RLUSD continues to be issued by Standard Custody & Trust Company, the NYDFS limited-purpose trust company. BNY remains the primary reserve custodian per Ripple. Final charter approval is not proof the new bank has opened; it is not a commercial deposit bank.
+- **Standard Chartered:** RLUSD custody on XRPL is live through its DFSA-regulated DIFC branch. The LMAX collateral-mirroring extension remains planned and subject to documentation, testing, regulatory and internal approvals.
+
+The institutional pattern is now clearer: RLUSD is the identified stablecoin/collateral instrument in these announcements. Do not translate RLUSD custody, collateral or settlement into XRP collateral demand without transaction-level evidence.
+
+### 5. RLUSD supply, reserves, controls and XRPL liquidity
+
+A live-chain dashboard snapshot at November 12, 10:48 UTC reports direct on-chain supply of 2,707,588,257 RLUSD:
+- XRPL: 885,245,927.
+- Ethereum: 1,806,237,715.
+- Base: 16,104,076.
+- Remaining supported networks: only dust balances.
+
+The same page's separate DefiLlama column totals 2,727,953,749 and reports 905,240,927 on XRPL. That is a 20.37M RLUSD discrepancy, predominantly on XRPL. Preserve the direct chain reads and aggregator series separately; do not average.
+
+Ripple's official transparency page reports circulating RLUSD of $2.6329B and reserve funds of $2.748B as of November 5 (issuer-published balance, approximately 104.37% coverage). The latest signed CPA report listed on the page covers September 21 and September 30, 2026; the September 30 report states 2,399,995,528 outstanding against $2,524,008,274 reserves (105.17%), signed October 26. Do not call the November 5 balance the latest independently attested report.
+
+The XRPL issuer account snapshot shows:
+- Clawback enabled.
+- Global freeze not active, but NoFreeze is not set; individual/global freeze capability remains.
+- RequireAuth off; master key disabled.
+- Deposit authorization on; destination tag required; incoming XRP disallowed; default ripple on; transfer fee 0%.
+
+This is relevant to institutional controls and counterparty risk. It also means RLUSD is not permissionless bearer money in the same sense as native XRP.
+
+The same live dashboard reports 102,482 trust lines and 68,052 positive-balance holders (snapshot Nov 11, 11:59 UTC); XRP/RLUSD AMM pool of about 2.016M XRP and 2.122M RLUSD with 0.315% fee; RLUSD/USDC DEX spread around 1bp and ±2% depth of approximately $372K bids / $656K asks. It found no issuer payment of at least 100K RLUSD in the latest 100 issuer transactions; that does not mean no smaller payments or other-wallet flows occurred.
+
+### 6. Ripple escrow supply
+
+XRP Insights reports a pinned validated-ledger read at ledger 108,270,319 (November 11, 23:32 UTC):
+- Next scheduled unlock: December 1, 2026, 00:00 UTC, 1B XRP.
+- November 1: 1B XRP released, 700M XRP re-escrowed, net 300M XRP outside escrow.
+- Ripple-owned escrow after the November cycle: 31.1B XRP across 99 objects and 8 owner accounts.
+- Last 12 releases: 12B XRP released, 8.4B re-escrowed (70%), net 3.6B outside escrow.
+
+The dashboard says it derives these from rippled account_objects/account_tx on a pinned validated ledger. Unlock/relock movement does not establish sales, exchange inflows, circulating tradable float or immediate supply.
+
+## Run61B evidence artifact
+
+[Run61B structured institutional/escrow JSON](research/xrp_intelligence/20261112T145600Z-run61b-rlusd-escrow-circle-arc-sbi-and-ripple-prime.json)
+
+All Run61B web observations remain `raw_source_sha256=null`, no Barrot RawReceiptArchive receipt, and `model_eligible=false`.
+
+## Prediction and merge status unchanged
+
+<badge color="warning">Forecast NOT_ISSUED</badge>
+
+No directional forecast is supported. No paper trade or real-money action occurred. PR #1661 remains draft; no merge or source PR closure. The next integration gate remains exact-head full-suite CI, main Pillars repair, least-privilege access, branch-protection visibility, credential-owner revocation verification, Pages side-effect authorization and semantic review.
+
+---
+
+
 # Run61 — 2026-11-12 — exact-head CI, live spot/depth, exchange balances, Evernorth warrants and identity audit
 
 ## Mission — VERIFIED
