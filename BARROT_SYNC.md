@@ -360,3 +360,19 @@
 - RLUSD: Ripple issuer Nov5 report $2.6329B circulating / $2.748B reserves; StableRadar Nov11 on-chain aggregate 2.7014B, XRPL873.741M, Ethereum1.8116B. Different vintages; no inferred reserve shortfall.
 - Forecast NOT_ISSUED. Next engineering action: deterministic scenario/counter-hypothesis generator; WORM anchoring and replayable feature history remain production blockers.
 - PR #1661 remains draft/unmerged. No source PR closed.
+
+
+## Run43 — 2026-11-12
+
+- Mission priority remains XRP intelligence and measured prediction-engine mastery; Barrot V3 remains the execution/safety foundation.
+- Inspected main `84f28ee`, integration `6161438c94865b158aeb21f26957ac2167792c09`, full recursive trees, all 374 open PRs, PR #1661, its 1,036-file diff inventory, CI, dependencies, changed workflows, security settings and latest handoff.
+- Exact integration head `6161438c94865b158aeb21f26957ac2167792c09`: 3,460 passed, 0 failed, 8 subtests, 60.92% coverage; core 716/0; wheel/installed mission verified; six dependency manifests, zero known vulnerabilities; fail-closed PR/push gates passed.
+- Added deterministic research-only scenario/counter-hypothesis assembler and 19 tests. It preserves minority objections, source lineage, availability cutoffs and scheduled future events; emits no probabilities and cannot issue forecasts. It is not yet wired to the scheduled event timeline. Exact CI for the resulting Run43 commit is pending.
+- New market research: OKX/Kraken normalized quote gap ~0.263%, but quotes are asynchronous/stale; no fresh spot L2. Derivatives OI ranges across non-comparable vendor scopes; ETF completed flows end Nov10 and Nov11 remains provisional.
+- Collateral correction: native XRPL XLS-66 is uncollateralized and uses off-chain underwriting; FXRP collateral is live on Ethereum/Morpho but last public debt snapshot was small and concentrated.
+- RLUSD: issuer reserve report Nov5; on-chain chain split Nov11; Ethereum holds most two-chain supply. DeFiStar's last opened lending page Nov9 showed ~$937.2M across six Ethereum pools. No native XRPL lending activation.
+- Evernorth closing XRP was ~82% in-kind and ~17.8% cash-purchased; public warrants, ELOC, resale registration, debt and cash purchases remain separate.
+- Credential path `.config/gh/hosts.yml` absent from main, integration and all 17 current affected PR inventories; provider-side OAuth revocation remains unverified.
+- PR #1661 remains draft with zero formal approvals. No merge. Branch-protection details HTTP 403; connector overprivileged; Pages publication unauthorized; 987 non-workflow paths require semantic review.
+- Forecast status: NOT_ISSUED. Web research was not captured as byte-exact receipts and is not model-eligible.
+- Next: exact-head CI for Run43 commit, then event-timeline integration, WORM/timestamp anchoring, replayable history, semantic review and security blockers.

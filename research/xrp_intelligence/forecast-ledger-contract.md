@@ -97,3 +97,22 @@ Every prior forecast supplied to temporal calibration must include its `outcome_
 
 
 The scheduled inventory now contains five additional collateral/issuer sources: Morpho Base cbXRP/USDC immutable market parameters, current market state, market liquidity/reallocatable liquidity, market-state history (including aggregate collateral assets), oracle state, and Coinbase's cbXRP proof-of-reserves page. These six sources are digest-only and model-ineligible until token decimals, provider event-time semantics, block alignment, locale/cache behavior and raw-retention permissions are verified. The public REST market-state-history endpoint documents aggregate collateral assets; the current market-state endpoint does not. The public REST reference does not currently provide a verified market-wide borrower-health endpoint; the indexed positions-health reference is unresolved, so borrower-health collection remains outside the scheduled registry.
+
+
+## Deterministic scenario and counter-hypothesis assembly
+
+The integration branch now contains a deterministic, research-only scenario assembler at `barrot_agent/evolution/scenario_hypotheses.py`.
+
+It requires explicitly authored hypotheses and counter-hypotheses, source identity and declared lineage, source status, event time, availability time, stance, assumptions and falsification conditions. It uses the existing canonical source-independence grouping utility.
+
+Point-in-time rules:
+- Evidence unavailable at the supplied cutoff is excluded.
+- A future event is included only when it is explicitly marked scheduled and the schedule was available by the cutoff.
+- Future outcomes marked as occurred, elapsed schedules and unverified future events are excluded.
+- Provisional and unverified sources remain visible as context and cannot support or contradict a hypothesis.
+- All contrary evidence is retained in minority_objections; no majority vote suppresses it.
+- Missing raw-source hashes remain visible and mark receipt completeness false.
+
+The assembler never assigns probabilities, expected returns or a direction. Every output is research-only, model_eligible=false and forecast_status=NOT_ISSUED.
+
+Status: EXECUTED on the integration branch; 19 tests added. Exact-head CI for the commit containing this module is pending. The assembler is not yet connected to the scheduled collector or a mature structured event timeline, and its outputs are not model features.
