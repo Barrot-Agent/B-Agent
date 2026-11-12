@@ -595,7 +595,7 @@
       "hypothesis_id": "xrp-spot-cross-venue-alignment-vs-staleness-run47",
       "domain": "spot_structure",
       "hypothesis": "Normalized OKX and Kraken spot quotes are near-parity, but too stale/asynchronous for an executable spread conclusion.",
-      "counter_hypothesis": "Kraken provides no exchange event timestamp; retrieval time is not proof of quote freshness.",
+      "counter_hypothesis": "OKX is 946.7 seconds old at capture, beyond the 900-second freshness threshold, and Kraken provides no exchange event timestamp; neither quote pair is a synchronized executable observation.",
       "claim": "At retrieval Kraken returned XRP/USD last 1.04357, bid 1.04374, ask 1.04375; USDT/USD midpoint 0.998685. Normalized OKX midpoint $1.0437756 versus Kraken midpoint $1.043745, a 0.00293% asynchronous gap.",
       "source_id": "kraken_xrpusd_usdtusd_run47",
       "source_name": "Kraken public ticker API",
