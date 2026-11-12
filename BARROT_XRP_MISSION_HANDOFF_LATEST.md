@@ -3198,3 +3198,24 @@ Forecast remains `NOT_ISSUED`; all post-capture web observations remain model-in
 ### Run70 map-state synchronization — 2026-11-12T22:48:04Z
 
 The canonical map now records the current pre-commit integration head `8e8d6d0632db6f557b11fe4898d3cf2080fccbeb` and current PR snapshot (2,165 commits ahead, zero behind; 1,076 changed files; 50 workflows; 1,026 non-workflow paths). The exact-head CI evidence remains correctly scoped to the tested parent `f5c7d65`, which failed only the four documented map assertions. The last verified full-suite pass remains `124fd5e8`. This synchronization commit changes only the map and handoff; the full-suite run on the new head is pending.
+
+
+### Run70 exact-head verification completed — 2026-11-12T22:52:23Z
+
+The canonical snapshot and CI evidence were reconciled after the f5c7d65 map-metadata regression. Exact-head verification on `0460ec6a` now passes:
+
+- Full repository suite: **3,540 passed, zero failed, eight subtests**, 61.55% coverage, 95.18 seconds.
+- Core suite: 723 passed, zero failed, eight subtests, 76% coverage.
+- Wheel build passed.
+- Installed wheel verified Barrot V3, the XRP mission and canonical data assets.
+- Dependency audit: five manifests, zero known vulnerabilities.
+- Fail-closed gate passed.
+
+The four map assertion failures on `f5c7d65` were caused by stale canonical snapshot fields. The canonical map and handoff now preserve that failed attempt, the earlier `124fd5e8` pass, and the resolved `0460ec6a` pass separately. No tests were removed or weakened.
+
+Evidence:
+- [Exact-head full CI 43323339556](https://github.com/Barrot-Agent/B-Agent/actions/runs/43323339556)
+- [Dependency audit 43323340066](https://github.com/Barrot-Agent/B-Agent/actions/runs/43323340066)
+- [Fail-closed gate 43323339946](https://github.com/Barrot-Agent/B-Agent/actions/runs/43323339946)
+
+This handoff/map update is evidence-only. Its new head must receive its own exact-head CI. PR #1662 remains draft, zero approvals/reviews, and blocked by semantic/security/publication authorization work. No merge or external action occurred.
