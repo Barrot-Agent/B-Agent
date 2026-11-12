@@ -266,3 +266,25 @@ Identity clarification:
 - Official Tokyo, Nagoya and Osaka SBIC profiles identify three regional sister companies under the Small and Medium Business Investment & Consultation Company Act. They are not SBI Holdings subsidiaries.
 - SB OAI Japan GK is a separate SoftBank Group/OpenAI joint venture; SoftBank Group is not SBI Holdings.
 - The current YouTube search identifies multiple candidate Kamilah Stevenson channels and lookalikes, but the first-party course site does not link a YouTube channel. No videos are attributed.
+
+
+## Run66 institutional addendum — Circle / Coinbase / PNC
+
+The September 30, 2026 SEC filings provide a quantified view of the Circle–Coinbase relationship:
+
+- Circle's Q3 2026 Form 10-Q says Coinbase receives distribution allocations based on USDC held on Coinbase after Circle's issuer retention, plus half of the remaining ecosystem-growth allocation after approved third-party participant amounts.
+- Circle reports $331.3M of distribution costs under its Coinbase agreements for Q3 2026 and $986.6M for the first nine months of 2026. The comparable prior-year amounts were $361.3M and $996.8M. Circle says the nine-month decrease reflected a lower Coinbase share of average USDC balances, more than offsetting higher reserve income.
+- Circle says reserve income represented 76.0% of Q3 revenue and reserve income plus other revenue mix changed materially as the ARC token presale contributed $181.8M of Q3 revenue. Reserve income was $658M, down 8% year over year, primarily from a 61-basis-point decline in reserve return rate, partly offset by 8% growth in average USDC circulation.
+- Coinbase's Q3 2026 Form 10-Q says it renewed its Circle arrangement on the same terms and average USDC held in Coinbase products reached an all-time high. Coinbase reported $306.9M Q3 and $904.5M nine-month stablecoin revenue; higher average USDC balances contributed $84.6M and $201.6M, while lower average interest rates reduced revenue by $52.8M and $166.2M. These Coinbase revenue figures are not assumed to equal Circle's distribution-cost figures; accounting definitions differ.
+- The commercial relationship is economically material and reciprocal, not simply a listing agreement. Circle's distribution cost depends partly on Coinbase-held USDC; Coinbase's stablecoin revenue depends on USDC balances and reserve-rate economics.
+- On November 9, 2026, PNC and Coinbase announced a limited pilot for eligible corporate/institutional PNC clients to receive USDC through Coinbase Payment APIs, automatically converted 1:1 into USD and deposited into PNC accounts. This is a USDC/Coinbase/PNC rail, not an XRP or XRPL payment pilot.
+- Coinbase's October 28 RLUSD announcement says RLUSD is available on Coinbase Prime, Coinbase Exchange and retail app across XRPL, Base and Ethereum. Coinbase Global Exchange access and RLUSD collateral support were described as forthcoming, not live at launch.
+- SBI Group's role as a founding Arc validator and its USDC/JPYSC distribution relationships are parallel rails. None of these USDC/RLUSD arrangements by itself demonstrates XRP bridge demand or native XRP collateral use.
+
+Primary filings and announcements:
+- Circle Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- Coinbase Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- Circle Q3 2026 results: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm
+- Coinbase RLUSD availability, October 28, 2026: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- Coinbase/PNC pilot, November 9, 2026: https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance
+- Reuters PNC pilot report, November 9, 2026: https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/
