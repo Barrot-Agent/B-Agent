@@ -2297,3 +2297,146 @@ Cutoff 2026-11-12 17:02:17 UTC.
 ### Next concrete action
 
 Verify CI on the Run65 handoff commit. Then complete semantic review of the V3 runtime, all 49 workflow changes and high-risk public interfaces. Resolve branch-protection visibility, least-privilege GitHub access, credential-owner revocation and GitHub Pages publication authorization. Keep forecast issuance fail-closed until independent WORM anchoring, production signing, independent shadow outcomes and measured out-of-sample lift over all four baselines are demonstrated.
+
+## Run66 — 2026-11-12 17:30 UTC
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+Main remains at \`84f28ee7755607236231545a14f3d093c1baaa85\`. At the start of Run66, the integration branch \`integration/xrp-v3-unified-main-20261111\` was at \`1d23263f5a649d404a4db7dfe88910f30003a21c\`, 2,134 commits ahead and zero behind. Main's complete tree contained 1,388 entries; integration contained 2,328. The tree comparison found 931 added paths, 139 modified paths, zero deleted paths and one mode-only difference.
+
+PR #1661 remains the only consolidated integration PR: open, draft, 1,071 files changed at the start of the run, +298,691/-4,492, including 49 workflow files and 1,022 other paths. There are 374 open PRs across the repository: 360 drafts and 14 non-drafts. PR #1661 has zero formal reviews and zero review threads.
+
+### Exact-head test evidence
+
+The code-bearing head \`1d23263f5a649d404a4db7dfe88910f30003a21c\` passed:
+
+- Full repository suite: 3,512 passed, eight subtests passed, zero failures; 95.57 seconds.
+- Full-suite coverage: 61.42% against the new 53% repository-wide floor.
+- Core suite: 721 passed, eight subtests passed, zero failures; 13.67 seconds; 76% coverage against the retained 70% core floor.
+- Wheel built and installed. Installed wheel verified Barrot V3, the primary XRP mission and canonical data assets.
+- Non-blocking packaging warning: setuptools reports \`barrot_agent.data.missions\` absent from explicit package configuration; the required mission resource was nevertheless verified in the built wheel and after installation.
+- Six dependency manifests audited; zero known vulnerabilities.
+- Fail-closed gate passed by explicitly keeping automatic merge disabled. This is not merge approval.
+
+Evidence: [Full CI 43269618715](https://github.com/Barrot-Agent/B-Agent/actions/runs/43269618715), [Dependency audit 43269618792](https://github.com/Barrot-Agent/B-Agent/actions/runs/43269618792), [Fail-closed gate 43269618990](https://github.com/Barrot-Agent/B-Agent/actions/runs/43269618990).
+
+The unchanged main SHA's previous baseline was 718 full-suite tests and 485 core tests. Run66's 3,512-test suite materially expands test coverage across the repository.
+
+The Run66 research artifact was committed at [af57a5a0](https://github.com/Barrot-Agent/B-Agent/commit/af57a5a0e852ccfa58dd8bba0089472be2cb1933), then updated with primary-source Doppler/SBI reconciliation at [8c25f32d](https://github.com/Barrot-Agent/B-Agent/commit/8c25f32d3c10f041aba0f579bcba1e863e1a2489). These commits changed research documentation only, not runtime, tests or workflows. The handoff update itself is a further documentation-only commit; its resulting head requires its own CI observation before any merge decision.
+
+### Open PR reconciliation
+
+Blob-level comparisons against integration:
+
+| PR | Shared paths | Identical blobs | Different blobs | Source-only | Classification |
+|---|---:|---:|---:|---:|---|
+| #1660 | 972 | 939 | 33 | 0 | Superseded-source candidate; inspect all 33 differences |
+| #1643 | 670 | 661 | 9 | 0 | Superseded-source candidate; inspect all 9 differences |
+| #1640 | 280 | 234 | 46 | 0 | Superseded-source candidate; inspect all 46 differences |
+| #1642 | 7 | 0 | 7 | 0 | Unique/unreviewed prediction work; preserve |
+| #1653 | 1 | 0 | 1 | 6 | Unique/unreviewed graph work; preserve |
+| #1655 | 5 | 0 | 5 | 3 | Unique/unreviewed structural work; preserve |
+
+No source PR was closed. No new branch or PR was created. The 33, 9 and 46 differing blobs are not assumed superseded until semantic review is complete.
+
+### Workflow and security findings
+
+All 49 changed workflow patches were reviewed; key current files were also read in full.
+
+- The new \`xrp-public-ingestion.yml\` exists on integration but not main. It is main-only, read-only, uses \`persist-credentials: false\`, requires no external API secrets and stores GitHub Actions artifacts for 90 days. It is DESIGNED, not EXECUTED on main.
+- GitHub Actions artifacts are not independent WORM storage and do not provide trusted timestamp anchoring.
+- Automatic merge is explicitly disabled. The fail-closed gate does not approve, label or merge.
+- Hugging Face synchronization is disabled/quarantined; self-hosted brain synchronization has a hard-false job guard.
+- Deployment, Space restart, Databricks, Kaggle, Groq-backed research, model upload and paper-trading workflows require manual/per-run gates. None was triggered.
+- Main Cross Analysis is hourly, read-only and artifact-only; latest reviewed run 43263247610 succeeded.
+- Main Pillars Consistency Check run 43223351964 failed because GitHub App ID/private key/installation ID were missing, Databricks returned HTTP 403 and Hugging Face returned BUILD_ERROR.
+- The release workflow is tag-triggered (\`v*.*.*\`), not a normal main-push publication.
+- The GitHub connector reports admin, maintain, push, pull and triage permissions. This is overprivileged.
+- Branch-protection API returns HTTP 403. Fallback ruleset #10863829 is disabled. Repository setting \`allow_auto_merge\` is true, but Barrot's fail-closed gate explicitly disables automatic merge.
+- GitHub Pages publication behavior/authorization remains unresolved; no publication was triggered.
+
+### Current XRP market evidence
+
+Direct exchange observations during Run66:
+
+- OKX XRP-USDT provider timestamp 17:19:50.169 UTC: last 1.0226, bid 1.0228, ask 1.0229; reported 24-hour open 1.0784, high 1.0807, low 1.0164.
+- Kraken XRP/USD retrieved after 17:30 UTC without a provider event timestamp: last 1.02601, bid 1.02601, ask 1.02602; reported 24-hour open 1.05104, high 1.07248, low 1.01516; volume 26.927M XRP and VWAP 1.0396.
+- Kraken USDT/USD bid 0.99896, ask 0.99897. Normalized cross-venue midpoint difference is approximately 0.413%.
+- These quotes are asynchronous and not executable arbitrage. The 24-hour open fields materially disagree and are not combined into a single return.
+
+Fuelmaps' 17:00 UTC six-venue snapshot reported a $1.0245 midpoint and the following resting depth (USD millions):
+
+| Band | Bids | Asks | Bid share |
+|---|---:|---:|---:|
+| 0.5% | 7.7 | 6.1 | 55.8% |
+| 1% | 12.5 | 9.5 | 56.8% |
+| 2% | 18.2 | 11.2 | 61.9% |
+| 5% | 29.7 | 12.1 | 71.0% |
+| 10% | 33.1 | 14.8 | 69.1% |
+
+Binance and Bitget were excluded. Fuelmaps snapshots are hourly and may be up to 65 minutes old; resting orders can be cancelled.
+
+Derivatives providers disagree materially on open interest: Sharpe.ai reported $1.23B across 22 venues at 14:00 UTC; Liqwall $1.16B at 02:52 UTC; Kodexius $633.16M across seven contracts at 12:34 UTC; Alpha Finance $2.24B at 13:40 UTC. Funding was positive in the cited sources, while long-account concentration and long liquidations were also elevated. These datasets use different venue and contract universes and must not be averaged. Alpha's liquidation clusters are modeled levels, not exchange-published guaranteed liquidation points.
+
+ETF observations remain cohort-specific:
+
+- XRP Insights (six US spot funds plus BITW): +355,000 XRP on Nov. 11; -9.213M XRP across Nov. 9–11.
+- Alpha Finance (five funds): -$7.6M Nov. 10; +$1.3M over 30 sessions; $1.71B cumulative net inflow.
+- ByKaranteli (six funds): -$7.6M Nov. 10; -$18M over five sessions; $1.79B cumulative net inflow.
+- TheXRPInvestor tracks 12 products, including derivatives, index and income products; its total product count is not a spot ETF cohort.
+
+XRP Insights reports 22.34B XRP across 706 attributed wallets at 24 exchanges; same-wallet changes are +45.8M over seven days and -180.9M over 30 days. TrackWhale's tracked large-transfer set reports 166.83M XRP inflows and 221.61M outflows over seven days, net -54.78M; the largest 168.42M XRP transfer remains unattributed. These measures are not complete exchange reserves or tradable float.
+
+XRPL lending amendments remain inactive: SingleAssetVault 23 votes, LendingProtocol 22 and LendingProtocolV1_1 22, against 29 required. No activation countdown exists.
+
+### New institutional discovery: SBI Digital Finance and Doppler
+
+Primary-source reconciliation distinguishes four SBI entities that had been easy to conflate:
+
+1. **SBI Digital Finance Inc.** — 51% SBI Group voting-rights ownership as of March 31, 2026; operates HashHub Lending and is a crypto-asset lending company.
+2. **SBI Ripple Asia** — a separate SBI Holdings/Ripple joint venture. Its December 17, 2025 MOU with Doppler explores XRP-yield infrastructure and RWA tokenization on XRPL.
+3. **SBI Digital Markets** — subsidiary of SBI Digital Asset Holdings; named as institutional custodian for the SBI Ripple Asia/Doppler initiative.
+4. **SBI VC Trade / SBI Shinsei Trust Bank** — separate distribution/exchange and JPYSC issuer roles.
+
+Doppler's official July 13, 2026 announcement confirms a separate strategic development partnership with SBI Digital Finance for institutional XRP/digital-asset infrastructure in Japan. The announcement describes intended work on compliance, liquidity, financing, collateral management and capital efficiency, but gives no named clients, launch date, lending rates, collateral terms or live product availability.
+
+Doppler's September 28 company post claims over 14,000 depositors and over $150M cumulative deposits into XRP/RLUSD vaults since February 2025. Its analytics dashboard displays approximately $29.48M TVL, 2.46% XRP vault APY and 5.66% RLUSD vault APY. These are company-reported figures, not independent attestations; cumulative deposits are not current TVL and APY is not guaranteed.
+
+Doppler describes current vaults as CeDeFi, using asset-neutral arbitrage and spot-perpetual basis strategies with institutional custody and off-exchange settlement. The company says vault positions are currently recorded on its own platform and cannot yet be transferred to another wallet, pledged as collateral or used in another protocol. Transferable receipt tokens are still being built.
+
+Doppler says institutional vault relationships include SBI Ripple Asia, SBI Digital Finance and Evernorth, but does not publish funded balances or client allocations. Doppler Lending is planned for Q4 2026 subject to XLS-66 mainnet activation. Doppler describes XLS-66 as pooled, uncollateralized, fixed-term loans with off-chain underwriting and risk management—not conventional overcollateralized XRP lending. The amendment remains below validator threshold.
+
+The phrase "productive financial capital" appears in Doppler's announcement as strategy language. It is not a standardized or independently quantified "actual capital" metric.
+
+### SBIC, ASK Coin, actual capital and Stevenson identity
+
+- Official Tokyo, Nagoya and Osaka company profiles identify SBIC East Japan, SBIC Central Japan and SBIC West Japan as separate regional sister companies under the Small and Medium Business Investment & Consultation Company Act. They are not SBI Holdings subsidiaries.
+- Tokyo SBIC's official archive lists a February 26, 2025 seminar titled "Generative AI (ChatGPT): Present and Future", a June 12, 2025 manufacturing course including ChatGPT usage, and a March 5, 2026 ChatGPT seminar. These are education events, not evidence of an OpenAI partnership.
+- SB OAI Japan GK is a separate SoftBank Group/OpenAI joint venture, not SBI Holdings and not a regional SBIC.
+- "ASK Coin" is ambiguous: CMC's Askcoin token UCID 4640 is a zero-supply preview; the Ask Coin exchange listing for askcoin.net is separately inactive/untracked with reserves unavailable; Permission Coin UCID 7105 is a separate Base/Polygon token; GoAsk is another ASK identity on Ethereum. No common issuer or XRPL deployment was verified.
+- "Actual capital" remains non-standardized. Keep cash purchases, in-kind XRP, debt, facilities, shareholder resales, reserves, vault deposits and realized deployment separate.
+- A first-party course site identifies Dr. Kamilah Stevenson / The Wealth Doctor. Third-party indexes list multiple YouTube candidates and lookalikes, including @drkamilahstevenson, but the first-party site does not cross-link a YouTube channel. No videos were attributed or inventoried. Third-party claims of Japanese bank pilots (60% lower cost and under four seconds) name no banks and provide no primary performance records; they remain unverified leads.
+
+### Prediction engine and nine-platform status
+
+Implemented on integration: 47 public source definitions (45 scheduled), read-only collector, SHA-256 raw-source receipts and hash-chain prototype, point-in-time SQLite feature store, event timeline, scenario/counter-hypothesis assembly, four baselines, chronological walk-forward with purge/embargo, probability calibration, PSI drift diagnostics and Ed25519-attested fail-closed forecast ledger.
+
+Outstanding: independent WORM storage, trusted timestamp anchoring, replayable historical feature reconstruction, production evaluator signing key, independent shadow outcomes and measured out-of-sample lift over all four baselines.
+
+The XRP ingestion workflow exists only on integration and has not executed on main. Run66 web/API observations were not captured through Barrot's byte-exact RawReceiptArchive pipeline and are model-ineligible. Forecast remains NOT_ISSUED.
+
+Nine-platform map: ChatGPT/GitHub authentication and data flow tested but permissions overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot has no formal PR approval; Hugging Face last returned BUILD_ERROR; Kaggle untested; Databricks last returned HTTP 403. No external-model evidence transfer occurred.
+
+### Merge decision
+
+**No merge.** PR #1661 remains draft with zero approvals/reviews. Branch-protection detail is inaccessible (HTTP 403), fallback ruleset is disabled, connector permissions are overprivileged, 1,022 non-workflow changed paths remain for semantic review, main XRP ingestion has not executed, and Pages publication authorization remains unresolved. The exact code-bearing head passed full-suite CI, but the subsequent research/handoff-only commits require their own CI observation before any merge decision.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+### Run66 artifact
+
+[Run66 exact-head, market, identity and integration audit](research/xrp_intelligence/20261112T173006Z-run66-exact-head-ci-market-identity-and-integration-audit.md)
+
+Next action: complete semantic review of the 1,071-file integration diff, prioritizing Barrot V3 runtime, XRP ingestion, feature store, receipt archive, forecast ledger, public interfaces and workflow side effects; resolve branch-protection visibility and least-privilege access; then establish independent WORM anchoring and replayable history. Keep directional forecast issuance disabled until the independent-window, baseline-lift, calibration and shadow gates pass.
