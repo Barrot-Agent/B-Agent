@@ -805,5 +805,120 @@
     "Continue semantic review of the 1,006 non-workflow paths and preserve all unique source PR work.",
     "Retrieve and inspect the 1.188MB nine-platform map through an authorized reliable path; do not overwrite it.",
     "Build independent WORM anchoring and replayable point-in-time history; keep forecasts disabled until shadow outcomes and out-of-sample lift pass."
-  ]
+  ],
+  "post_capture_addendum": {
+    "recorded_at_utc": "2026-11-12T11:24:00Z",
+    "verified_head": "1b44c66b45b25bd8e8e977227452e7ba64c7d75f",
+    "exact_head_ci": {
+      "full_suite_run": 43208270662,
+      "job_id": 131148903001,
+      "passed": 3507,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 61.35,
+      "core_tests_passed": 716,
+      "full_suite_duration_seconds": 78.45,
+      "wheel_build": "passed",
+      "installed_barrot_v3_xrp_mission_verification": "passed",
+      "dependency_audit_run": 43208270566,
+      "manifests_audited": 6,
+      "known_vulnerabilities_reported": 0,
+      "push_dependency_audit_run": 43208261480,
+      "fail_closed_pr_run": 43208270513,
+      "fail_closed_push_run": 43208261345,
+      "conclusion": "all listed checks passed on exact head 1b44c66"
+    },
+    "current_pr": {
+      "head_sha": "1b44c66b45b25bd8e8e977227452e7ba64c7d75f",
+      "commits_ahead": 2099,
+      "behind_main": 0,
+      "changed_files": 1056,
+      "additions": 288426,
+      "deletions": 4392,
+      "workflow_files": 49,
+      "other_paths": 1007,
+      "draft": true,
+      "formal_approvals": 0
+    },
+    "latest_spot_depth": {
+      "provider": "Fuelmaps",
+      "as_of_utc": "2026-11-12T10:00:00Z",
+      "mid_usd": 1.0512,
+      "venues": 6,
+      "bands": [
+        {
+          "distance_percent": 0.5,
+          "bids_usd_m": 8,
+          "asks_usd_m": 6.2,
+          "bid_share_percent": 56.4,
+          "venues": 6
+        },
+        {
+          "distance_percent": 1,
+          "bids_usd_m": 12.2,
+          "asks_usd_m": 11.3,
+          "bid_share_percent": 51.9,
+          "venues": 6
+        },
+        {
+          "distance_percent": 2,
+          "bids_usd_m": 18,
+          "asks_usd_m": 13.1,
+          "bid_share_percent": 57.9,
+          "venues": 6
+        },
+        {
+          "distance_percent": 5,
+          "bids_usd_m": 27.7,
+          "asks_usd_m": 15.6,
+          "bid_share_percent": 63.9,
+          "venues": 6
+        },
+        {
+          "distance_percent": 10,
+          "bids_usd_m": 33.5,
+          "asks_usd_m": 17.1,
+          "bid_share_percent": 66.2,
+          "venues": 5
+        }
+      ],
+      "largest_levels_usd_m": {
+        "bid_1_000": 3.5,
+        "bid_1_048": 1.9,
+        "bid_1_046": 1.7,
+        "bid_1_049": 1.6,
+        "ask_1_053": 1.5
+      },
+      "exclusions": [
+        "Binance",
+        "Bitget"
+      ],
+      "limitations": [
+        "resting orders can be cancelled",
+        "10% band covers five of six venues"
+      ]
+    },
+    "spot_quote_freshness": {
+      "okx_provider_timestamp_repeated": "2026-11-12T11:02:15.769Z",
+      "kraken_quote_fields_repeated": true,
+      "kraken_provider_timestamp": null,
+      "classification": "potentially cached/stale; do not describe as fresh live quote"
+    },
+    "identity_research_addendum": {
+      "sbic_chatgpt": "Exact search surfaced a 2025 Tokyo SBIC training course that included ChatGPT usage for investee companies; no OpenAI partnership evidence.",
+      "actual_capital": "Secondary Evernorth coverage uses the phrase in connection with warrant-dependent capital raised; not a standardized XRP metric.",
+      "ask_coin": "No verified XRPL deployment found.",
+      "stevenson_youtube": "Multiple similarly named channels and third-party directory entries; no first-party identity link; no videos attributed or inventoried."
+    },
+    "packaging_warnings": {
+      "project_license": "TOML table form is deprecated; migrate to current SPDX-compatible metadata before a future setuptools removal.",
+      "packages": [
+        "barrot_agent.data.missions",
+        "data.research"
+      ],
+      "observation": "setuptools warns these importable package directories are absent from packages configuration; wheel nevertheless contains primary_mission.json and installed-wheel mission verification passed",
+      "status": "non-blocking follow-up; do not claim warning-free packaging"
+    },
+    "model_eligibility": "Run55 public web observations remain ineligible: no byte-exact RawReceiptArchive capture or raw SHA-256 receipts."
+  }
 }

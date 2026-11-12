@@ -1,3 +1,17 @@
+## Run55 exact-head verification completion — 2026-11-12T11:24Z
+
+- Run55 code/evidence head `1b44c66b45b25bd8e8e977227452e7ba64c7d75f` exact full suite passed: 3,507 passed, 0 failed, 8 subtests; 61.35% coverage; 716 core tests; 78.45s.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Six dependency manifests audited; no known vulnerabilities. PR and push fail-closed gates passed.
+- Evidence: full CI 43208270662; PR audit 43208270566; push audit 43208261480; fail-closed PR 43208270513; fail-closed push 43208261345.
+- Later Fuelmaps 10:00 UTC snapshot: mid $1.0512; ±0.5% $8.0M/$6.2M; ±1% $12.2M/$11.3M; ±2% $18.0M/$13.1M; ±5% $27.7M/$15.6M; ±10% $33.5M/$17.1M (5/6 venues). Binance/Bitget excluded; orders cancellable.
+- OKX quote timestamp repeated at 11:02:15.769 UTC and Kraken XRP fields repeated; classify direct ticker quotes as potentially stale/cached.
+- Setuptools emitted non-blocking packaging warnings: deprecated `project.license` table and package-discovery warnings for `barrot_agent.data.missions` and `data.research`; installed wheel still verified primary mission assets.
+- Exact phrase research: Tokyo SBIC ChatGPT training is education, not partnership; “actual capital” is not standardized; ASK Coin has no verified XRPL deployment; Kamilah/Camilla channel identity remains unverified and no videos were attributed.
+- PR #1661 remains draft, 1,056 files, 49 workflows, 1,007 other paths, 2,099 ahead / 0 behind; no approvals. No merge.
+- The current documentation/evidence refresh is based on tested code head `1b44c66`; the new handoff-only commit requires its own exact-head CI.
+---
+
 ## Run55 synchronization snapshot — 2026-11-12T11:13:00Z
 
 - Mission priority 1: XRP intelligence and prediction-engine mastery; preserve Barrot V3 execution, orchestration, safety and verification.

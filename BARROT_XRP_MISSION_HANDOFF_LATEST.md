@@ -1,3 +1,56 @@
+# Run55 verification addendum — 2026-11-12T11:24Z
+
+## Exact-head CI completed
+
+The Run55 code/evidence head `1b44c66b45b25bd8e8e977227452e7ba64c7d75f` passed its own exact-head verification:
+
+- Full repository suite: **3,507 passed, 0 failed, 8 subtests**.
+- Coverage: **61.35%** against a 53% floor.
+- Core tests: 716 passed.
+- Full-suite duration: 78.45 seconds.
+- Wheel build passed; installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Dependency audit: six manifests, no known vulnerabilities reported.
+- Fail-closed PR and push gates passed; automatic merge remained disabled.
+
+Evidence:
+- [Full CI 43208270662](https://github.com/Barrot-Agent/B-Agent/actions/runs/43208270662)
+- [Dependency audit 43208270566](https://github.com/Barrot-Agent/B-Agent/actions/runs/43208270566)
+- [Push dependency audit 43208261480](https://github.com/Barrot-Agent/B-Agent/actions/runs/43208261480)
+- [Fail-closed PR gate 43208270513](https://github.com/Barrot-Agent/B-Agent/actions/runs/43208270513)
+- [Fail-closed push gate 43208261345](https://github.com/Barrot-Agent/B-Agent/actions/runs/43208261345)
+
+The exact-head test result belongs to `1b44c66`. This follow-up changes only handoff/evidence records; its own resulting head still requires exact-head CI before any merge.
+
+## Newer market-data correction
+
+Fuelmaps' 10:00 UTC snapshot is newer than the 08:00 snapshot in the Run55 artifact:
+
+- Mid $1.0512 across six venues.
+- ±0.5%: $8.0M bids / $6.2M asks.
+- ±1%: $12.2M / $11.3M.
+- ±2%: $18.0M / $13.1M.
+- ±5%: $27.7M / $15.6M.
+- ±10%: $33.5M / $17.1M, five of six venues.
+- Binance and Bitget are excluded; resting orders can be cancelled. [Fuelmaps](https://fuelmaps.io/order-book/).
+
+The OKX provider timestamp remained 11:02:15.769 UTC across later retrievals, and Kraken's XRP ticker fields repeated. Treat direct ticker quotes as potentially cached/stale; the Fuelmaps 10:00 book is the newer independently timestamped depth observation.
+
+## Identity and packaging corrections
+
+- Exact-phrase search surfaced a 2025 Tokyo SBIC ChatGPT training course for investee companies, not an OpenAI partnership.
+- “Actual capital” appears in secondary Evernorth coverage in connection with warrant-dependent capital raising; it is not a standardized XRP metric.
+- Multiple similarly named Kamilah Stevenson YouTube channels surfaced, but no first-party identity link was found. Camilla/Camila/Kamilah are not conflated; no videos were attributed or inventoried.
+- The wheel build and installed mission verification passed, but setuptools emitted non-blocking warnings: `project.license` table form is deprecated; `barrot_agent.data.missions` and `data.research` are absent from package configuration. Preserve the successful wheel result while tracking these packaging warnings.
+
+## Current PR state
+
+At head `1b44c66`, PR #1661 contained 1,056 changed files (49 workflows, 1,007 other paths), 2,099 commits ahead and zero behind main. It remains open/draft with zero approvals/reviews. No source PR was closed.
+
+**Merge decision remains NO.** Branch-protection detail is HTTP 403, fallback ruleset is disabled, GitHub connector permissions remain overprivileged, Pages publication authorization remains unresolved, provider-side credential revocation is unverified, and 1,007 non-workflow paths still need semantic review.
+
+[Run55 structured artifact](research/xrp_intelligence/20261112T111300Z-run55-exact-head-ci-market-collateral-rlusd-sbi-and-workflow-audit.json)
+---
+
 # Run55 — Exact-head CI, XRP market/collateral, RLUSD/SBI graph and workflow evidence correction
 
 **Capture window:** 2026-11-12T11:05:31Z–11:13:00Z.  
