@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run71-2026-11-12",
-  "captured_at_utc": "2026-11-12T23:15:10.504Z",
-  "source_receipt_status": "71 of 71 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All Run71 additions are research-only and model-ineligible.",
+  "registry_version": "run71b-2026-11-12",
+  "captured_at_utc": "2026-11-12T23:26:04.178Z",
+  "source_receipt_status": "73 of 73 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All Run71 additions are research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -2983,10 +2983,106 @@
         "stablecoin-payments",
         "not-XRP-bridge-proof"
       ]
+    },
+    {
+      "event_id": "evernorth-2026-11-09-capital-cash-vs-in-kind",
+      "event_type": "corporate_finance",
+      "event_name": "Evernorth prospectus separates cash proceeds, XRP in-kind contributions, debt and resale capacity",
+      "hypothesis_id": "evernorth-cash-in-kind-debt-vs-lending",
+      "domain": "capital_flows",
+      "hypothesis": "Evernorth's capital stack must be decomposed into cash actually received, XRP contributed in kind, debt, secondary resales and conditional equity facilities before measuring capital deployed to XRP.",
+      "counter_hypothesis": "Gross cash proceeds before expenses and XRP in-kind contributions are not interchangeable. Debt is not equity; resale shares, ELOC capacity and unexercised warrants are not current issuer cash. The prospectus does not disclose a 400 million XRP allocation to XRPL native lending.",
+      "claim": "Evernorth's November 9, 2026 Form 424B3 reports approximately $272.6 million gross cash proceeds at the business-combination closing before transaction expenses ($224.6 million of private placements plus $48.0 million of SPAC trust cash after redemptions), alongside 388,910,554 XRP contributed in kind. It separately reports $30 million net proceeds before expenses from convertible notes, which are debt. The filing registers 73,688,162 shares for resale and states that Evernorth receives no proceeds from selling-securityholder resales, apart from any cash received if 239,653 sponsor warrants are exercised. The 5,218,935-share ELOC is conditional issuance capacity, not cash already received.",
+      "source_id": "sec_evernorth_424b3_20261109",
+      "source_name": "U.S. SEC Form 424B3 — Evernorth Holdings, Inc.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "independence_group": "sec.gov",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "filed",
+      "event_time_utc": "2026-11-09T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T23:26:04.178Z",
+      "captured_at_utc": "2026-11-12T23:26:04.178Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The filing date is known but the exact publication time is not; UTC midnight is a date-ordering placeholder.",
+        "The $272.6 million cash figure is gross and before transaction expenses.",
+        "The 388,910,554 XRP contribution is an in-kind asset contribution, not cash.",
+        "Convertible-note proceeds are debt; resale registration and ELOC capacity are not equivalent to completed issuer cash receipts."
+      ],
+      "falsification_conditions": [
+        "A later SEC amendment or closing statement revises the cash, in-kind XRP, note, resale or ELOC amounts.",
+        "A subsequent audited filing documents a specific 400 million XRP commitment to native XRPL lending."
+      ],
+      "related_entities": [
+        "Evernorth Holdings, Inc.",
+        "Ripple Labs",
+        "Cantor Fitzgerald",
+        "CF Principal Investments LLC",
+        "SEC",
+        "XRP"
+      ],
+      "tags": [
+        "actual-capital",
+        "cash-proceeds",
+        "in-kind-xrp",
+        "convertible-debt",
+        "resale-shares",
+        "ELOC",
+        "warrants",
+        "not-native-lending-proof"
+      ]
+    },
+    {
+      "event_id": "flare-fxrp-one-year-2026-09-24",
+      "event_type": "collateral",
+      "event_name": "Flare reports 145.2 million FXRP minted and 130 million deployed in DeFi",
+      "hypothesis_id": "fxrp-cross-chain-collateral-vs-xrp-float",
+      "domain": "cross_chain_collateral",
+      "hypothesis": "FXRP extends XRP utility into Flare DeFi and collateral markets while the underlying XRP remains held in the XRPL Core Vault and escrow structure.",
+      "counter_hypothesis": "FXRP is a wrapped representation; its backing XRP remains on XRPL and is not burned or removed from total supply. Minting or DeFi deployment does not prove new XRP purchases, payment demand or permanent removal from tradable float, and FXRP is not native XRPL lending.",
+      "claim": "Flare's September 24, 2026 one-year FXRP update reports 145.2 million FXRP minted and approximately 130 million deployed across DeFi. The update describes FXRP as a representation backed by XRP whose underlying collateral remains on the XRP Ledger in the Core Vault and escrow structure.",
+      "source_id": "flare_one_year_fxrp_20260924",
+      "source_name": "Flare official one-year FXRP update",
+      "source_url": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "independence_group": "flare.network",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-09-24T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-12T23:26:04.178Z",
+      "captured_at_utc": "2026-11-12T23:26:04.178Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Flare's minted and deployed figures are issuer-reported and are not an independent audit.",
+        "The source provides a publication date but no exact publication time."
+      ],
+      "falsification_conditions": [
+        "Flare's primary documentation or verifiable mint/redemption records contradict the reported FXRP supply, deployment or backing structure."
+      ],
+      "related_entities": [
+        "Flare Network",
+        "FXRP",
+        "FAssets",
+        "XRP Ledger",
+        "Core Vault",
+        "XRP"
+      ],
+      "tags": [
+        "FXRP",
+        "FAssets",
+        "cross-chain-collateral",
+        "XRP-backing",
+        "not-XRP-burn",
+        "not-native-XRPL-lending"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
   "run64b_note": "Corrects spot/ETF hypothesis group consistency and adds five primary-source identity/capital events; all records remain research-only.",
   "run64c_note": "Eight events appended with unique hypothesis_id values to avoid inconsistent scenario-group definitions: one current cross-venue spot refresh, SBI JPYSC balances, Circle Arc, Circle Q3 results, Coinbase trust charter, Ripple trust-bank approval, SBI/Ripple RLUSD Japan availability and the December 1 Ripple escrow schedule. Existing events and historical capture timestamps are preserved. No publisher bytes were archived; no event is model-eligible.",
-  "run71_note": "Added Circle's primary-source confirmation that USDC has been native on XRPL mainnet since 2025-06-12. PNC's 2026-11-09 USDC incoming-payment pilot explicitly uses Ethereum. These are distinct rails; neither proves XRP bridge use or XRP demand. The new event has no raw receipt and remains model-ineligible."
+  "run71_note": "Added Circle's primary-source confirmation that USDC has been native on XRPL mainnet since 2025-06-12. PNC's 2026-11-09 USDC incoming-payment pilot explicitly uses Ethereum. These are distinct rails; neither proves XRP bridge use or XRP demand. The new event has no raw receipt and remains model-ineligible.",
+  "run71b_note": "Added SEC primary-source capital decomposition for Evernorth and Flare's official FXRP deployment/backing statement. The 388.91M XRP in-kind contribution is not a 400M native-lending allocation; FXRP backing remains on XRPL. Both events lack raw receipts and remain model-ineligible."
 }

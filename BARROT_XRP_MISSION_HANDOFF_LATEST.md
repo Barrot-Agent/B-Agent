@@ -3425,3 +3425,101 @@ This is a useful counter-hypothesis for XRP value capture: stablecoin payment ac
 The current event registry now contains 71 curated events, including `circle-usdc-xrpl-native-2025-06-12`; all 71 still have null raw publisher hashes, zero are model-eligible, and forecast status remains `NOT_ISSUED`. The Circle event is primary-source research, but it is not admitted to the feature store until byte-exact raw capture and trusted receipt anchoring exist.
 
 The preceding handoff-only head `f8fb5b41bd8d13484d13aa6842f8a1b21ea746e3` passed exact-head CI: 3,540 tests, zero failures, eight subtests, 61.55% coverage; core 723 passed at 76%; wheel and installed mission verification passed; five-manifest dependency audit and fail-closed gate passed. The current correction changes the event registry, its regression test and this handoff in one commit on the existing integration branch. That new head requires its own exact-head full-suite, dependency and fail-closed verification before any merge decision.
+
+
+---
+
+## Run71B — capital-flow, collateral and Kamilah Stevenson claim audit — 2026-11-12T23:26:04.178Z
+
+### Exact-head CI diagnosis
+
+- Exact head `7fa7cf6e9eb99b92c70b4010c4bab45a1d395637` full CI failed with **3,539 passed, one failed, eight subtests** and 61.54% coverage.
+- Core tests passed: 723; 76% coverage.
+- Dependency audit passed across five manifests: https://github.com/Barrot-Agent/B-Agent/actions/runs/43327292831
+- Fail-closed gate passed: https://github.com/Barrot-Agent/B-Agent/actions/runs/43327293180
+- The sole failure was a test assertion expecting the exact phrase “Ethereum blockchain”; the primary-source PNC event correctly says “on Ethereum.” The assertion has been corrected to match the source wording. This was a test assertion defect, not a runtime or event-data failure.
+- The earlier handoff-only head `f8fb5b41bd8d13484d13aa6842f8a1b21ea746e3` passed 3,540 tests, zero failures, eight subtests and 61.55% coverage. The current research/test correction commit requires a fresh exact-head full-suite, dependency and fail-closed run. No test result is transferred to a different head.
+
+### Evernorth — actual cash versus XRP, debt and potential capacity
+
+Primary source: SEC Form 424B3 dated November 9, 2026:
+https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+
+The filing distinguishes:
+- **$272.6M gross cash proceeds at business-combination closing, before transaction expenses:** $224.6M private placements plus $48.0M SPAC trust cash after redemptions.
+- **388,910,554 XRP contributed in kind:** an asset contribution, not cash raised.
+- **$30M net proceeds before expenses from convertible notes:** debt, not equity.
+- **73,688,162 registered resale shares:** secondary selling-securityholder supply; Evernorth says it receives no proceeds from their resale, except cash from any sponsor-warrant exercise.
+- **5,218,935-share ELOC:** conditional future issuance capacity, not cash already received.
+- **239,653 sponsor warrants at $11.50:** potential cash only if exercised.
+
+“Actual capital” is not a standardized XRP metric. Use a ledger that separates gross cash received (then transaction expenses/net cash), in-kind XRP, debt, resale supply, ELOC capacity and warrant exercise proceeds. Do not sum these categories into one capital number.
+
+The channel claim that Evernorth committed “400 million XRP to native lending” is not established by this prospectus. The filing documents 388.91M XRP in-kind contributions and discusses yield strategies, but does not disclose a 400M allocation to native XRPL lending. The XRPL LendingProtocol amendment remains below its activation threshold (22/35 versus 29 required); the protocol is not active. The 388.91M in-kind contribution must not be relabeled as deployed lending collateral.
+
+### Flare FXRP — representation versus underlying XRP
+
+Primary source: Flare's September 24, 2026 one-year update:
+https://flare.network/news/one-year-of-fxrp-on-flare
+
+Flare reports 145.2M FXRP minted and approximately 130M deployed across DeFi. FXRP is a representation backed by XRP that remains on XRPL in the Core Vault/escrow structure. The video headline “moved into Flare” is therefore imprecise: the representation is minted on Flare; the underlying XRP remains on XRPL and is not burned.
+
+FlareMetrics' November 11–12 third-party snapshot reports approximately 144.63M FXRP supply, $150.69M value, 85.1% of a 170M capacity, 13,881 holders, 68.5K minted and 57.8K redeemed over 24 hours (net +10.7K). These are aggregator metrics, not an independent audit. Source: https://flaremetrics.io/fxrp
+
+This is a meaningful cross-chain collateral/utility signal. It is not evidence of 400M XRP in native XRPL lending, permanent supply destruction, new spot purchases or guaranteed reduction in available float.
+
+### Kamilah Stevenson — identity and public video inventory
+
+Identity resolution: **high-confidence attribution to the exact YouTube handle `@drkamilahstevenson` / channel “Kamilah Stevenson,” not a platform verification badge.** The public Paul Barron Podcast guest video uses that exact handle in its title; the guest identifies her YouTube channel as “Doctor Camilla Stevenson” in the interview transcript and warns viewers that fake pages exist. Search results attribute the channel's videos to Kamilah Stevenson (about 139K followers at the May 2026 capture). The channel About page could not be independently inspected, so no similarly named channels or accounts are included.
+
+Relevant public videos attributed to that exact handle:
+1. **The Company That Settles Every Stock Trade In America Just Chose XRP** — May 3, 2026; 69,187 views; 4,300 likes. https://www.youtube.com/watch?v=HV38NSp1J5o
+2. **Japan's Top Financial CEO Just Publicly DEMANDED The US Senate Act On XRP** — May 31, 2026; 82,858 views; 4,600 likes. https://www.youtube.com/watch?v=Vvp6832R49A
+3. **Japan Is Moving Without Us... And They Just Put XRP In Front Of MILLIONS** — June 13, 2026; 38,661 views in the indexed result. https://www.youtube.com/watch?v=tC0KsLAqwS8
+4. **More Than 100 Million XRP Moved Into Flare's FXRP** — August 25, 2026; 89,042 views; 2,700 likes in the indexed result. https://www.youtube.com/watch?v=qtT2hLeFkM0
+
+Verified guest appearance (not an upload to her own channel):
+- **Crypto Panics! W/ @drkamilahstevenson** — Paul Barron Podcast, June 11, 2026; 6,724 views; 752 likes. https://www.youtube.com/watch?v=Sulo54IlQ60
+
+These videos are one publisher/source group, not independent corroboration. Their descriptions contain affiliate/promotional links; treat the content as commentary and claim leads, not primary evidence.
+
+### Video-claim fact checks
+
+**DTCC / “chose XRP”**
+- DTCC's May 4, 2026 announcement lists Ripple Prime among 50+ participants in its Industry Working Group for a tokenization service. It does not say DTCC selected XRP as a settlement asset. Primary source: https://www.dtcc.com/news/2026/may/04/dtcc-announces-industry-working-group-for-tokenization-service
+- The March 2, 2026 NSCC notice adds Hidden Road Partners CIV US LLC with MPID PERS, Pershing as clearing broker, HRFI as executing broker and OTC-check-only activity. This is a clearing-participant record, not XRP settlement. Primary notice: https://www.dtcc.com/-/media/Files/pdf/2026/3/2/NSCC2026-002.pdf
+- Ripple's own Q1 2025 report described Hidden Road's XRPL post-trade migration as a future plan, not a completed migration: https://ripple.com/insights/q1-2025-xrp-markets-report/
+
+**Japan / “XRP in front of millions”**
+- SBI Hyper Yokin is a JPY deposit product; its XRP component is a promotional voucher campaign, not an XRP-denominated savings balance. SBI Shinsei Bank and other SBI-group shareholder-benefit programs also distribute XRP vouchers to eligible participants. Primary sources: https://www.sbishinseibank.co.jp/english/ and https://www.sbigroup.co.jp/news/2026/
+- SBI Ripple Asia is a separate software/JV entity and Ripple's own page says it does not handle XRP. SBI Remit, Coins.ph and SBI VC Trade are the entities associated with the XRP-based ODL corridor. Do not attribute XRP handling to every SBI-branded entity. Source: https://ripple.com/customers/sbi-remit/
+- The video framing converts voucher promotions and a yen deposit product into an “XRP savings” narrative; that is not what the bank product is.
+
+**Kitao / CLARITY Act**
+- Secondary reports quote SBI Holdings CEO Yoshitaka Kitao saying that *if* the CLARITY Act is enacted, it would positively affect the cryptocurrency market, including Ripple. They do not substantiate a direct demand to the Senate to pass it “immediately,” and no primary original post was retrieved in this run. Sources: https://coinpaper.com/17485/sbi-ceo-says-clarity-act-could-spark-a-crypto-boost-with-ripple-in-the-spotlight and https://finance.yahoo.com/markets/crypto/articles/ripple-ally-sbi-holdings-chair-100427778.html
+- The YouTube title's “DEMANDED” wording is stronger than the reported conditional statement. The claim that Kitao supplied a specific XRP price target remains unverified.
+
+**“60% cheaper than SWIFT”**
+- No primary SBI/Ripple source found substantiating a universal 60% saving. Ripple's ODL materials describe reduced pre-funding and operational efficiencies, but do not validate that percentage for every corridor. Treat the number as unverified until a corridor-specific baseline, fees, FX spreads, settlement time and independent comparison are published.
+
+**FXRP**
+- The >100M milestone is directionally consistent with later Flare-reported FXRP issuance, but the underlying XRP remains on XRPL. FXRP minting/deployment is not the same as XRP being burned, removed from total supply or permanently unavailable to return.
+
+### Circle USDC data-quality correction
+
+The earlier Run71 addendum recorded a prior XRPL.to token-page snapshot of approximately 4.45M USDC. A later UI retrieval returned a materially different XRP-denominated quote and market capitalization inconsistent with the contemporaneous XRP/USD price and the USDC $1 peg. Do not interpret that as a USDC depeg or use either UI snapshot as a verified current supply. The page itself directs automated consumers to its documented API; use the API, preserve exact responses and independently reconcile issuer/trust-line totals before feature admission.
+
+DeFiLlama's current XRPL aggregate still reports approximately $964.65M stablecoin market capitalization and 90.57% RLUSD dominance. This is a chain-level aggregator estimate, not a per-issuer audit. Circle USDC's native XRPL deployment is real; its per-token current supply in this run remains unverified.
+
+### Research disposition
+
+- Circle USDC native XRPL deployment: verified from Circle primary source; no inference of Ripple-Circle corporate partnership or XRP bridge usage.
+- PNC/Coinbase USDC pilot: PNC primary release specifies Ethereum, not XRPL.
+- Evernorth cash/in-kind/debt/resale categories: SEC primary source; model-ineligible until byte-exact receipt capture.
+- Flare FXRP backing and deployment: Flare primary source; model-ineligible until receipt capture.
+- Kamilah Stevenson channel: high-confidence exact-handle attribution; lookalikes excluded; claims are not primary evidence.
+- ASK Coin: no canonical issuer or verified XRPL deployment located.
+- “Actual capital”: non-standard term; use the defined cash/in-kind/debt/capacity ledger.
+- “SBIC, ChatGPT SBIC”: Tokyo SBIC training activity, not an OpenAI partnership.
+
+The event registry now contains 73 curated events, zero raw publisher hashes and zero model-eligible events. Forecast status remains `NOT_ISSUED`. No video claim is admitted as a predictive feature or institutional fact without primary corroboration and a canonical receipt.

@@ -124,17 +124,26 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "evernorth-sbi-lockup-ambiguity-2026-11-12",
         "pnc-coinbase-usdc-incoming-pilot-2026-11-09",
         "circle-usdc-xrpl-native-2025-06-12",
+        "evernorth-2026-11-09-capital-cash-vs-in-kind",
+        "flare-fxrp-one-year-2026-09-24",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
     assert all(by_id[event_id]["raw_source_sha256"] is None for event_id in expected)
     assert "SBI is not named" in by_id["evernorth-sbi-lockup-ambiguity-2026-11-12"]["counter_hypothesis"]
-    assert "Ethereum blockchain" in by_id["pnc-coinbase-usdc-incoming-pilot-2026-11-09"]["claim"]
+    assert "on Ethereum" in by_id["pnc-coinbase-usdc-incoming-pilot-2026-11-09"]["claim"]
     circle_usdc = by_id["circle-usdc-xrpl-native-2025-06-12"]
     assert "natively on XRPL mainnet" in circle_usdc["claim"]
     assert "without XRP as the bridge asset" in circle_usdc["counter_hypothesis"]
     assert circle_usdc["raw_source_sha256"] is None
-    assert registry["source_receipt_status"].startswith("71 of 71")
+    evernorth = by_id["evernorth-2026-11-09-capital-cash-vs-in-kind"]
+    assert "$272.6 million" in evernorth["claim"]
+    assert "388,910,554 XRP" in evernorth["claim"]
+    assert "not a 400 million XRP allocation" in evernorth["counter_hypothesis"]
+    flare = by_id["flare-fxrp-one-year-2026-09-24"]
+    assert "145.2 million FXRP" in flare["claim"]
+    assert "remains on XRPL" in flare["counter_hypothesis"]
+    assert registry["source_receipt_status"].startswith("73 of 73")
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
