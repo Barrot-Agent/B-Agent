@@ -1,3 +1,50 @@
+# Run56B — exact-phrase reconciliation and Coinbase/Permission wallet relationship
+
+## Exact-head verification on 1cbdb12d
+- Full CI run 43217621166 passed on exact SHA 1cbdb12d0d9f93ae335b907049f6bee6fd609e75.
+- Full repository suite: **3,507 passed, 0 failed, 8 subtests**, coverage **61.35%**, test duration **60.04 seconds**.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Dependency audit 43217621119 passed all six groups with no known vulnerabilities; fail-closed gate 43217621138 passed with merge disabled.
+- This Run56B documentation-only successor requires its own exact-head CI. Do not transfer the 1cbdb12 result.
+
+## ASK Coin — strongest exact-phrase candidate resolved to Permission's ASK
+- The strongest verified candidate for ASK Coin is Permission's ASK token, not an XRP asset. Permission's official token documentation states a fixed supply of 100,000,000,000, LayerZero OFT design, Stargate availability, and active Base and Polygon deployments. Base contract: 0xBB146326778227A8498b105a18f84E0987A684b4; Polygon contract: 0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff.
+- Permission documents rewards/incentives and agent-to-agent value exchange; governance and staking are explicitly future capabilities, not verified live features.
+- No direct XRP or XRPL deployment was established. The official active-network list is Base and Polygon; no XRPL-native ASK contract was found. Permission is the strongest candidate, not an exhaustive universe of all assets named ASK.
+
+## New Coinbase relationship: Permission ASK wallet infrastructure
+- Permission's Sep 22, 2026 issuer announcement says its ASK wallet moved to Coinbase Embedded Wallet.
+- Permission says Coinbase secures private keys on users' behalf, the user's Permission login authorizes transactions, Permission no longer holds wallet keys, and Coinbase supports key export.
+- Permission says email address, account identifier and wallet information are shared with Coinbase to operate the wallet.
+- Classification: direct wallet-infrastructure and data-flow relationship between Permission and Coinbase. It is not evidence that Coinbase issued ASK, market-made ASK, or is an XRP/XRPL counterparty.
+- The evidence is Permission's own announcement; no separate Coinbase confirmation was obtained in this run.
+
+## 'Actual capital' — exact phrase and primary capital records separated
+- The exact phrase 'actual capital' appears in CBC Globe commentary dated Oct 12, 2026. That is secondary commentary, not a primary capital record.
+- The primary Evernorth/Cantor record is a committed equity line of credit with CF Principal Investments LLC (Cantor affiliate), agreement dated Oct 23, 2026. It is not a funded loan or cash balance.
+- Maximum new shares: 5,218,935. The purchase price is generally 97% of applicable VWAP, subject to volume and threshold-price constraints; Cantor beneficial ownership is capped at 4.99% absent further conditions.
+- At the Oct 22 reference price of $15.46, 5,218,935 shares imply approximately $80.685M gross before the VWAP discount, volume limits and other conditions. This is an illustrative maximum, not cash received or committed XRP purchase capital.
+- Registration effectiveness: Oct 30, 2026. Upfront commitment fee: $521,893.50 payable by Evernorth to Cantor within five business days after the Upfront Determination Date. The fee is an issuer cost, not capital inflow.
+- The reviewed filings do not verify an ELOC drawdown, shares sold under the facility, cash proceeds received, or XRP purchases funded by the facility. Do not state these events did not occur; state they are not verified in the reviewed records.
+- Keep cash purchases, in-kind XRP, investor subscriptions, debt, undrawn facilities, ELOC capacity, fees, collateral and secondary resales in separate accounting categories.
+
+## 'SBIC, ChatGPT SBIC' — preserve three distinct meanings
+- Exact indexed phrase search returned no match in the recorded research run. Search non-return is not proof of nonexistence in private, deleted, unindexed or differently punctuated sources.
+- Preserve: (1) Japanese SBIC East/Central/West regional statutory SME investment companies; (2) SBI Holdings, a separate corporate group; (3) SBIC as Social Bias Inference Corpus in ChatGPT academic-benchmark literature.
+- No inference of an OpenAI/SBI partnership is permitted from the phrase alone.
+
+## Camilla/Kamilah Stevenson — public attribution, not legal identity
+- iHeart lists the episode 'Crypto Panics! with Dr. Kamilah Stevenson', dated June 11, 2026, duration 42 minutes. The episode page says its transcript is automatically generated and may not be completely accurate.
+- The transcript has the host call the guest Camila/Camilla and say viewers have seen her on YouTube discussing XRP. This is public-media attribution, not legal identity proof.
+- Prior research retains a high-confidence public channel match to @drkamilahstevenson, but legal identity and external social-account ownership remain unverified.
+- Prior YouTube inventory count is three; no new YouTube videos were added, and the inventory is not exhaustive. The iHeart episode is a podcast, not a YouTube video. No new videos are attributed until identity verification is adequate.
+
+## Research test coverage
+- The full suite includes tests/test_ask_actual_capital_sbic_kamilah_reconciliation_20261106.py. These tests preserve the Permission-vs-XRP distinction, exact contracts/supply, ELOC maximum vs actual proceeds, the secondary status of the phrase 'actual capital', SBIC disambiguation, and the non-issuance/no-forecast rule.
+- The passing test validates that the research distinctions remain encoded; it does not independently validate every issuer claim. Permission and iHeart remain issuer/media sources, and SEC filings remain the primary capital evidence.
+
+## Current decision unchanged
+- PR #1661 remains draft; no approvals. Branch protection is inaccessible, connector permissions are overprivileged, Pages authorization unresolved, and semantic review incomplete. No merge or external action.
 # Run56A — exact-head CI completion and Circle/SBI/Arc institutional network
 
 ## Exact-head verification on Run56 evidence commit e8627caf
