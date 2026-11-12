@@ -3,7 +3,7 @@
 ## Status
 The schema contract is DESIGNED. The pure deterministic in-memory validator is EXECUTED in `barrot_agent/evolution/point_in_time_features.py`. A separate local SQLite persistence prototype is EXECUTED in `barrot_agent/evolution/feature_store.py`; tests cover idempotent append, source-lineage retention, receipt-time as-of filtering, manifest verification and ordinary SQL mutation guards. The store is not yet populated with historical XRP data. Production market-data adapters, scheduled ingestion, raw-payload object storage, backup/retention operations and independently anchored signed manifests are not implemented.
 
-The fixed-horizon forecast ledger is a separate recording/scoring component. Its feature snapshot IDs are not yet resolved against this store at forecast issuance; this is an explicit integration blocker.
+The fixed-horizon forecast ledger now requires an injected `HistoricalFeatureStore` and resolves every referenced SHA-256 snapshot at issuance. It verifies the exact manifest/rows/source lineage, asset scope, data cutoff, capture time and actual store receipt against the forecast cutoff. Forecast source IDs must exactly match the referenced asset-specific feature lineage, and the declared feature maximum must equal the maximum information-availability timestamp across those records. This is local integrity verification, not independent external timestamp authentication.
 
 ## Feature record
 Each observation must include: stable feature ID/version; canonical asset; controlled feature name; typed value and explicit unit; event time; first public availability time (known_at); provider data-as-of time; ingestion time; immutable source IDs; source-independence groups; venue/instrument/currency pair/market type/aggregation window where relevant; quality status; revision status; model-eligibility flag/reason; raw and normalized content hashes; parser/adapter version; limitations and disconfirming-evidence IDs.
@@ -42,7 +42,7 @@ Paper/shadow evaluation begins only after reproducible data and baseline compari
 
 ## Validator and persistence implementation boundary
 - Validator: pure deterministic validation only; no network access or filesystem I/O.
-- Persistence: separate local SQLite prototype; not populated with historical XRP records and not scheduled.
+- Persistence: separate local SQLite prototype; exact snapshot lookup is verified by the forecast ledger, but the store is not populated with historical XRP records and is not scheduled.
 - Historical reconstruction, signed source attestations, external source-registry authentication and production ingestion are not implemented.
 - Source independence is counted by declared lineage group, not cryptographically authenticated.
 - Snapshot IDs are content-derived; capture time is part of the manifest, so separately captured snapshots have different IDs.

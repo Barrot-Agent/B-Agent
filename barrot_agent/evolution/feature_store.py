@@ -17,7 +17,7 @@ import re
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from .point_in_time_features import FeatureSnapshotError, validate_feature_record
 
@@ -171,9 +171,15 @@ def _validate_manifest(snapshot: Mapping[str, Any]) -> dict[str, Any]:
 class HistoricalFeatureStore:
     """Append-only local store with point-in-time retrieval semantics."""
 
-    def __init__(self, database_path: str | Path):
+    def __init__(
+        self,
+        database_path: str | Path,
+        *,
+        clock: Callable[[], datetime] | None = None,
+    ):
         self.database_path = Path(database_path)
         self.database_path.parent.mkdir(parents=True, exist_ok=True)
+        self._clock = clock or (lambda: datetime.now(timezone.utc))
         self._initialize()
 
     def _connect(self) -> sqlite3.Connection:
@@ -267,7 +273,10 @@ class HistoricalFeatureStore:
     def append_snapshot(self, snapshot: Mapping[str, Any]) -> dict[str, Any]:
         """Validate and append a complete manifest; receipt time cannot precede capture."""
         validated = _validate_manifest(snapshot)
-        stored_at = datetime.now(timezone.utc)
+        stored_at = self._clock()
+        if not isinstance(stored_at, datetime) or stored_at.tzinfo is None or stored_at.utcoffset() is None:
+            raise FeatureStoreError("feature-store clock must return a timezone-aware datetime")
+        stored_at = stored_at.astimezone(timezone.utc)
         captured = datetime.fromisoformat(
             validated["captured_at_utc"].replace("Z", "+00:00")
         )
@@ -364,6 +373,33 @@ class HistoricalFeatureStore:
             "stored_at_utc": stored_at_s,
             "record_count": len(validated["records"]),
             "source_count": validated["source_count"],
+        }
+
+    def verified_snapshot(self, snapshot_id: str) -> dict[str, Any]:
+        """Return one exact snapshot only after full manifest, row and lineage verification."""
+        if not isinstance(snapshot_id, str) or not _SHA256.fullmatch(snapshot_id):
+            raise FeatureStoreError("snapshot_id must be a SHA-256 hex digest")
+        verification = self.verify_snapshot(snapshot_id)
+        if not verification["valid"]:
+            raise FeatureStoreError(
+                f"snapshot integrity verification failed for {snapshot_id}"
+            )
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT snapshot_id, data_cutoff_utc, captured_at_utc, stored_at_utc, "
+                "asset_scope_json, manifest_json FROM snapshots WHERE snapshot_id = ?",
+                (snapshot_id,),
+            ).fetchone()
+        if row is None:
+            raise FeatureStoreError(f"unknown snapshot_id {snapshot_id}")
+        return {
+            "snapshot_id": row["snapshot_id"],
+            "data_cutoff_utc": row["data_cutoff_utc"],
+            "captured_at_utc": row["captured_at_utc"],
+            "stored_at_utc": row["stored_at_utc"],
+            "asset_scope": json.loads(row["asset_scope_json"]),
+            "manifest": json.loads(row["manifest_json"]),
+            "verification": verification,
         }
 
     def snapshot_as_of(self, asset: str, as_of_utc: str) -> dict[str, Any] | None:
