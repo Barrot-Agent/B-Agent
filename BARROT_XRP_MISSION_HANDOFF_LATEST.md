@@ -1,6 +1,15 @@
+# Run67 final exact-head verification — November 12, 20:45 UTC
+
+Verified code/test head: `145e3aa071fa28ef20d0c7961a699fcf52c813cf`, 2,157 commits ahead of main and zero behind. Full repository suite [43301886674](https://github.com/Barrot-Agent/B-Agent/actions/runs/43301886674): 3,540 passed, zero failed, eight subtests, 61.55% coverage in 98.88 seconds. Core suite: 723 passed, zero failed, eight subtests, 76% coverage. Wheel build and installed Barrot V3/XRP asset verification passed. Dependency audit [43301886655](https://github.com/Barrot-Agent/B-Agent/actions/runs/43301886655) passed five manifest groups with zero known vulnerabilities. Fail-closed gate [43301886605](https://github.com/Barrot-Agent/B-Agent/actions/runs/43301886605) passed.
+
+The prior `ce3d92b` full-suite run had one wording-only assertion failure; the exact phrase and the 20:00 L2 test assertions were corrected. No runtime prediction-engine failure was identified. The following map/handoff-only commit records this result and requires its own exact-head CI; do not transfer the `145e3aa` pass to a later head.
+
+Current PR #1662 remains draft with zero formal approvals/reviews. No merge is authorized while Pages publication authorization, branch-protection visibility, least-privilege permissions and integrated semantic review remain unresolved.
+
+---
 # Run67 follow-up — 20:31 UTC
 
-Current documentation/map head before this follow-up: `ce3d92b880da44bf2e2901a91b50e491fb97c919`, 2,155 commits ahead of main and zero behind. The exact-head full suite [43300536260](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536260) reported 3,539 passed, one failed, eight subtests, 61.55% coverage in 96.91 seconds. The single failure is a wording assertion requiring the exact phrase `exact-head full-suite passed`; it is not a runtime or prediction-engine failure. Core tests passed; dependency audit [43300536296](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536296) and fail-closed gate [43300536253](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536253) passed.
+Current documentation/map head before this follow-up: `ce3d92b880da44bf2e2901a91b50e491fb97c919`, 2,157 commits ahead of main and zero behind. The exact-head full suite [43300536260](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536260) reported 3,539 passed, one failed, eight subtests, 61.55% coverage in 96.91 seconds. The single failure is a wording assertion requiring the exact phrase `exact-head full-suite passed`; it is not a runtime or prediction-engine failure. Core tests passed; dependency audit [43300536296](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536296) and fail-closed gate [43300536253](https://github.com/Barrot-Agent/B-Agent/actions/runs/43300536253) passed.
 
 The immediately preceding code/test head `bf9ac0315c7172a121a97deac49449c5922ff780` passed the full suite: 3,540 passed, zero failed, eight subtests, 61.55% coverage in 78.44 seconds; core 723 passed, zero failed; wheel build and installed Barrot V3/XRP asset verification passed. That result is not substituted for the current docs/map head.
 
@@ -8,11 +17,11 @@ The immediately preceding code/test head `bf9ac0315c7172a121a97deac49449c5922ff7
 
 Fuelmaps six-venue midpoint $1.0315. Within ±0.5%: $8.9M bids / $6.0M asks (59.9% bid share); ±1%: $13.1M / $9.2M (58.6%); ±2%: $17.5M / $12.3M (58.8%); ±5%: $29.9M / $13.5M (68.9%); ±10%: $33.8M / $16.1M (67.8%, five venues). Included Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; excluded Binance and Bitget.
 
-Largest displayed levels excluding the inside quote: $3.6M bid at $1.000; $1.9M bid at $1.026; $1.8M bid at $1.029; $1.6M ask at $1.033; $1.5M ask at $1.034. At the 20:31 capture this snapshot was about 31 minutes old. Fuelmaps uses hourly columns built from one-minute samples and publishes about five minutes after the hour; provider notes a possible age up to about 65 minutes. Orders can be cancelled or moved; this is not guaranteed support or executable depth. Full-depth venues are Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken contribute near-price depth. [Fuelmaps](https://fuelmaps.io/order-book/).
+Largest displayed levels excluding the inside quote: $3.6M bid at $1.000; $1.9M bid at $1.026; $1.8M bid at $1.029; $1.6M ask at $1.033; $1.5M ask at $1.034. At the 20:45 capture this snapshot was about 45 minutes old. Fuelmaps uses hourly columns built from one-minute samples and publishes about five minutes after the hour; provider notes a possible age up to about 65 minutes. Orders can be cancelled or moved; this is not guaranteed support or executable depth. Full-depth venues are Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken contribute near-price depth. [Fuelmaps](https://fuelmaps.io/order-book/).
 
 The 19:00 snapshot is retained in the map as a previous-hour observation, not discarded. Separate Binance XRPUSDT perpetual depth remains the 13:03 UTC snapshot (older, different instrument). XRPL DEX funded-versus-quoted book health remains the November 10 snapshot; neither is combined with current CEX spot depth.
 
-**Next correction:** change the current-map `latest_attempt.failure_classification` wording to include the exact required phrase, preserve the test, and rerun exact-head CI. No forecast is issued; no merge or external action is authorized.
+**Correction verified:** the exact required phrase is now present and the 20:00 L2 assertions match the durable map. Full suite passed on `145e3aa`; the following handoff/map-only commit still requires a fresh exact-head CI. No forecast is issued; no merge or external action is authorized.
 
 ---
 ## Run67 final exact-head verification — November 12, 20:26 UTC
