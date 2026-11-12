@@ -917,3 +917,15 @@ XRP intelligence and prediction-engine mastery remain priority 1; Barrot V3 rema
 - Forecast NOT_ISSUED. Merge withheld. New Run50 commit needs exact-head CI; #1661 remains draft/no approvals and security, coverage-policy and semantic-review blockers remain.
 
 See BARROT_XRP_MISSION_HANDOFF_LATEST.md and research/xrp_intelligence/20261112T073031Z-run50-market-cbxrp-sbi-etf-and-exact-head-ci.json for full evidence and source lineage.
+
+
+## Run64 — 2026-11-12 15:30 UTC
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; integration head before Run64 evidence commit `33edc21560ce3026c86470840b9e9f04bad5c36e`, 2,129 ahead/0 behind.
+- PR #1661 remains sole consolidated PR, open/draft/mergeable; 1,067 changed files (49 workflows, 1,018 other paths), zero approvals/reviews/threads. Open PR inventory 374 (360 drafts, 14 non-drafts).
+- Exact-head CI on `33edc21560ce3026c86470840b9e9f04bad5c36e`: 3,512 passed, 0 failed, 8 subtests; 61.42% coverage; 721 core tests passed; wheel and installed Barrot V3/XRP verification passed. Six-manifest dependency audit passed with zero known vulnerabilities reported; fail-closed gate passed.
+- Spot: OKX event time 15:12:45Z was 17m59s old; Kraken had no event timestamp; Binance funding snapshot 15:16:54Z was 13m50s old. No fresh synchronized L2/OI. All fail live-age eligibility.
+- Exchange balances: 22.34B XRP in 706 attributed wallets; same-wallet +45.8M/7d and -180.9M/30d; includes cold/wrapped reserves, not tradable float. ETF providers disagree by universe and cutoff; no average.
+- Institutional update: PNC/Coinbase USDC pilot on Ethereum; Circle/Binance $100M equity placement and five-year USDC promotion deal; Circle Q3 Coinbase-related distribution costs $331.3M. These are USDC rails, not XRP settlement evidence.
+- Main Pillars provider check failed on missing GitHub App credentials, Databricks 403 and Hugging Face BUILD_ERROR; main Cross Analysis passed.
+- Protection details 403, fallback ruleset disabled, connector overprivileged, Pages publication unauthorized, credential revocation unverified. No merge/deployment/secret change/external transfer/paper trade/real-money action.
+- Forecast NOT_ISSUED. All Run64 web observations have no RawReceiptArchive hashes and are model-ineligible. Artifact: `research/xrp_intelligence/20261112T153044Z-run64-exact-head-market-stablecoin-rails-and-integration-audit.json`.

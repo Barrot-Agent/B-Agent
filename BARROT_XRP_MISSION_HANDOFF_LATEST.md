@@ -2040,3 +2040,40 @@ Security:
 4. Resolve branch-protection visibility, least-privilege connector permissions, provider-side OAuth revocation and Pages publication authorization.
 5. Preserve unique source PR work; reconcile/close only exact duplicates after a verified successor merge.
 6. Keep forecasts disabled until independent WORM/timestamp anchoring, replayable historical data, shadow evaluation and measured out-of-sample lift pass.
+
+
+## Run64 — November 12, 2026, 15:30 UTC
+
+### Repository and exact-head verification
+- Main remains `84f28ee7755607236231545a14f3d093c1baaa85`; integration branch `integration/xrp-v3-unified-main-20261111` was at `33edc21560ce3026c86470840b9e9f04bad5c36e` before this evidence commit, 2,129 ahead and zero behind.
+- Integration tree: 2,324 entries; main tree: 1,388. PR #1661: open/draft/mergeable, 1,067 changed files (49 workflows, 1,018 other paths), 374 open PRs (360 drafts, 14 non-drafts), zero formal approvals/reviews/review threads.
+- Exact-head CI on `33edc21560ce3026c86470840b9e9f04bad5c36e`: **3,512 passed, zero failed, eight subtests passed**, 61.42% coverage against a 53% floor, 98 seconds. Core suite: 721 passed, 76% coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
+- [Full CI 43247054008](https://github.com/Barrot-Agent/B-Agent/actions/runs/43247054008), [dependency audit 43247054032](https://github.com/Barrot-Agent/B-Agent/actions/runs/43247054032): six manifests, zero known vulnerabilities reported, and [fail-closed gate 43247054079](https://github.com/Barrot-Agent/B-Agent/actions/runs/43247054079) passed with automatic merge disabled. These results belong to `33edc21560ce3026c86470840b9e9f04bad5c36e`, not the new Run64 evidence commit.
+
+### XRP market and flows — research-only
+- OKX XRP-USDT: 1.0216 last, 1.0216/1.0217 bid/ask, 24h open 1.0637, high 1.0807, low 1.0196, 36.42M XRP volume; event timestamp 15:12:45.167 UTC was 1,078.8 seconds old at cutoff.
+- Kraken XRP/USD: 1.01744 last, 1.01775/1.01786 bid/ask, 24h open 1.05104, high 1.07953, low 1.01579; no provider event timestamp. Kraken USDT/USD midpoint 0.998775. Normalized OKX midpoint about $1.020398 vs Kraken $1.017805, descriptive difference 0.255%, not executable arbitrage.
+- Binance XRPUSDT premium index at 15:16:54.002 UTC: mark 1.02172604, index 1.02214290, funding 0.004652% per eight hours, next funding 16:00 UTC. Snapshot was 830 seconds old and fails the 300-second live-data gate. Kodexius OI $636.24M across seven contracts was from 07:39 UTC, almost eight hours old. No fresh synchronized multi-venue OI or L2 snapshot was verified.
+- XRP Insights' Nov 12 08:00 UTC attributed-wallet snapshot: 22.34B XRP across 706 wallets at 24 exchanges; same-wallet +45.8M XRP/7d and -180.9M/30d. Naive changes +61.4M/+346.7M include newly tracked wallets. About 481.6M XRP backs wrapped assets/insurance/charity; not tradable float.
+- ETF disagreement: Crypto ETF Today showed -$0.2M for Nov 11 with only three of five funds reported; XRP Insights showed week-46 -9.21M XRP (about -$9.40M) across six spot funds plus BITW. Different universes/cutoffs; no averaging.
+
+### Institutional rail update
+- PNC's Nov 9 release: eligible corporate/institutional clients can receive USDC on Ethereum through Coinbase Payment products; USDC automatically converts 1:1 to USD and deposits to PNC. Limited pilot; no XRP/XRPL settlement reported.
+- Circle SEC 8-K: $100M Binance placement (1,237,011 shares at $80.84, closing Sep 17) plus a five-year USDC promotion agreement with monthly incentives tied to USDC held through Circle's Modular Smart Contract Wallet infrastructure. Transfer restrictions up to two years with exceptions.
+- Circle Q3 2026 10-Q: Coinbase-related distribution costs $331.3M in Q3 and $986.6M in the first nine months; average Q3 USDC circulation $73.264B. These are issuer-reported distribution costs, not Coinbase profit or XRP purchases.
+- Counter-hypothesis: institutional stablecoin rails can expand through USDC, Coinbase, PNC and Binance without XRP. Stablecoin growth is not automatically XRP settlement demand.
+
+### Architecture, security and backlog
+- Collector uses a public HTTPS host allowlist, redirect rejection, 10 MiB response cap, 300-second live-data and 60-second order-book age limits, and source-specific cache controls. Raw payloads are SHA-256 content-addressed; receipt and chain JSONL logs append/fsync. GitHub artifact retention is 90 days, not independent WORM or trusted timestamp anchoring.
+- Point-in-time SQLite feature store has append-only SQL triggers and manifest/row verification, but is not adversarially tamper-proof without external anchoring. Forecast readiness requires >=100 OOS and >=100 shadow samples, >=10 non-overlap target intervals in each, >=2 source groups, weighted calibration error <=0.05, stable drift, external Ed25519 attestation and lower Brier/log loss than all four baselines. Residual serial dependence/shared-source correlation remain uncorrected.
+- Main still lacks the XRP collector, ingestion workflow and mission handoff. Integration ingestion is main-only, read-only, hourly at minute 3 and daily at 00:15 UTC; no successful main-branch XRP ingestion run is verified. Main Pillars check [43223351964](https://github.com/Barrot-Agent/B-Agent/actions/runs/43223351964) failed read-only provider checks (missing GitHub App credentials, Databricks 403, Hugging Face BUILD_ERROR); main Cross Analysis [43241576119](https://github.com/Barrot-Agent/B-Agent/actions/runs/43241576119) passed.
+- Main protection details return 403, fallback ruleset #10863829 is disabled, GitHub connector permissions remain overprivileged, Pages publication is unauthorized, and provider-side credential revocation is unverified. The prior 17/17 branch-tip credential-path finding was last checked at 05:02:51 UTC and was not rechecked in Run64.
+- #1660: 972/972 paths shared, 30 differing blobs; #1643: 670/670 shared, nine differing; #1640: 280/280 shared, 46 differing; #1642: seven shared paths with seven differing blobs, preserve prediction work. #1653/#1655/#1659/#1641/#1614/#1611/#1610/#1608/#1269 retain source-only work. #1320/#1318/#1317 are path-overlap duplicate candidates only; exact blob comparison remains required. No source PR was closed.
+- Nine-platform map: ChatGPT/GitHub verified in this session but overprivileged; Claude/Grok/Gemini/Codex unverified; Copilot no formal approval; Hugging Face BUILD_ERROR; Kaggle untested; Databricks HTTP 403; LunaRoute endpoint auth unverified. No external-model transfer.
+- Forecast remains **NOT_ISSUED**. All Run64 web observations have null raw-source hashes, incomplete receipts and are model-ineligible.
+
+### Durable Run64 records
+- Structured artifact: `research/xrp_intelligence/20261112T153044Z-run64-exact-head-market-stablecoin-rails-and-integration-audit.json`.
+- Updated nine-platform map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json`.
+- Event registry advanced to `run52-2026-11-12`, now 56 curated events; all lack raw publisher hashes and remain model-ineligible.
+- Next: verify exact-head full suite and installed wheel on the Run64 evidence commit; resolve protection visibility, least privilege, credential revocation and Pages authorization; continue semantic review. Do not forecast before independent raw anchoring, shadow outcomes and measured out-of-sample lift.
