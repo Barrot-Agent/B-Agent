@@ -308,7 +308,6 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     for manifest in (
         "requirements.txt",
         "requirements-dev.txt",
-        "requirements.tx",
         "pyproject.toml",
         "hf_space/requirements.txt",
         "legacy/requirements_legacy.txt",
@@ -321,7 +320,6 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     assert "root_runtime=%s dev=%s" in workflow
     assert '"$ROOT_RUNTIME" != "success"' in workflow
     assert '"$DEV" != "success"' in workflow
-    assert "pip-audit -r requirements.tx --strict" in workflow
     assert "tomllib.loads" in workflow
     assert 'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict' in workflow
     assert 'target.write_text("\\n".join(dependencies) + "\\n", encoding="utf-8")' in workflow
@@ -459,7 +457,7 @@ def test_barrot_sync_is_quarantined_until_external_transfer_is_authorized() -> N
 
 def test_dependency_audit_only_checks_present_dependency_manifests() -> None:
     content = _read("dependency-audit.yml")
-    assert "requirements.tx" not in content
+    assert '"requirements.tx"' not in content
     for manifest in (
         "requirements.txt",
         "requirements-dev.txt",
