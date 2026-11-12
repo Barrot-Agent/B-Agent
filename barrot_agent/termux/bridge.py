@@ -78,7 +78,7 @@ class TermuxBridge:
             os.close(directory_fd)
 
     def _create_only(self, *, path: str, content: bytes) -> TermuxDropResult:
-        target = Path(path)
+        target: Path | None = None
         try:
             target = self._resolve_target(path)
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -118,7 +118,7 @@ class TermuxBridge:
         except Exception as exc:
             return TermuxDropResult(
                 success=False,
-                path=str(target),
+                path=str(target) if target is not None else str(path),
                 reason=str(exc),
             )
 
