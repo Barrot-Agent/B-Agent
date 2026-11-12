@@ -1,11 +1,11 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T02:29:40Z",
-  "last_verified_at_utc": "2026-11-12T02:29:40Z",
+  "captured_at_utc": "2026-11-12T02:42:00Z",
+  "last_verified_at_utc": "2026-11-12T02:42:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+  "observed_integration_head_before_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
@@ -13,22 +13,22 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "ahead_by": 2073,
+    "ahead_by": 2074,
     "behind_by": 0,
-    "changed_files": 1035,
+    "changed_files": 1036,
     "workflow_files": 49,
-    "other_changed_paths": 986,
-    "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "other_changed_paths": 987,
+    "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2073,
-    "additions": 272927,
+    "commits": 2074,
+    "additions": 274007,
     "deletions": 4391,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Current exact-head CI 43139971072 failed one evidence-map assertion after 3,459 tests passed; core 716/0, dependency audit and fail-closed gates passed. PR remains draft with zero formal approvals/reviews. Do not merge."
+    "note": "Exact-head CI 43142812387 failed one type-contract assertion after 3,459 tests passed; core 716/0, dependency audit and fail-closed gates passed. Run42 replaces the structured dict mistakenly appended to the string-only disagreement list. PR remains draft; do not merge."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -565,8 +565,8 @@
       "credential_contents_read": false,
       "history_rewritten": false,
       "note": "All 17 current open PR changed-file inventories were checked; none lists .config/gh/hosts.yml. All 17 PRs are open and target main, and the main tree does not contain the path. Therefore the path is absent from those current branch diffs. This does not establish provider-side OAuth/token revocation; any formerly exposed credential remains potentially compromised until the provider confirms revocation.",
-      "checked_at_utc": "2026-11-12T02:29:40Z",
-      "last_checked_at_utc": "2026-11-12T02:29:40Z",
+      "checked_at_utc": "2026-11-12T02:42:00Z",
+      "last_checked_at_utc": "2026-11-12T02:42:00Z",
       "contents_read": false,
       "path_absent_from_all_current_pr_file_inventories": true,
       "all_17_target_prs_open_and_base_main": true,
@@ -598,18 +598,18 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "integration_head_before_current_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
     "integration_pr": 1661,
-    "integration_ahead_by": 2073,
+    "integration_ahead_by": 2074,
     "integration_behind_by": 0,
-    "changed_files": 1035,
+    "changed_files": 1036,
     "workflow_files_changed": 49,
-    "non_workflow_paths_changed": 986,
+    "non_workflow_paths_changed": 987,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2295,
+    "integration_tree_entries": 2296,
     "main_workflow_files": 78,
     "integration_workflow_files": 79,
     "orbit_paths_in_integration": false,
@@ -622,11 +622,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "Exact-head run 43139971072 on a98c23fd276a5d2da7a560fbe928ebd26c0eb44d: 3,459 passed, 1 failed, 8 subtests, 60.92% coverage; sole failure is a stale machine-readable CI classification assertion in the current evidence map. Core 716/0; dependency audit and fail-closed gates passed. Wheel build skipped.",
-    "last_reconciled_at_utc": "2026-11-12T02:29:40Z",
+    "latest_exact_head_ci": "Exact-head run 43142812387 on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests, 60.92% coverage; sole failure was a TypeError because a dict was appended to a string-only disagreement list. Core 716/0; dependency audit and fail-closed gates passed. Wheel build skipped.",
+    "last_reconciled_at_utc": "2026-11-12T02:42:00Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2186,
+    "integration_tree_files": 2187,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -653,7 +653,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "latest_full_suite_tested_head": "7e345743207020503c532b1d62cb732e02aeb0af",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -868,7 +868,7 @@
     "latest_main_cross_analysis_run": 43130695870,
     "latest_main_cross_analysis_conclusion": "success",
     "latest_full_suite_conclusion": "failure",
-    "latest_exact_head_ci_run_id": 43139971072,
+    "latest_exact_head_ci_run_id": 43142812387,
     "current_head_before_run33_commit": "570cd11ab16be1c61cb44a6b10740e7eb726b123",
     "current_commit_tree_sha": "fb603c995e4edbfc7bb0e00dd044387617f1546f",
     "run33_expected_changed_files_after_commit": 1017,
@@ -937,17 +937,18 @@
     "run42_expected_non_workflow_paths_after_commit": 987,
     "run42_expected_integration_tree_entries_after_commit": 2296,
     "run42_expected_integration_tree_files_after_commit": 2187,
-    "run42_expected_ahead_by_after_commit": 2074,
+    "run42_expected_ahead_by_after_commit": 2075,
     "main_xrp_public_ingestion_workflow_present": false,
-    "integration_xrp_public_ingestion_workflow_present": true
+    "integration_xrp_public_ingestion_workflow_present": true,
+    "current_head_before_run42_correction_commit": "7e345743207020503c532b1d62cb732e02aeb0af"
   },
   "ci_evidence": {
-    "integration_head_tested": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-    "integration_pr_run": 43139971072,
-    "integration_full_suite_job": 130924312341,
-    "dependency_audit_run": 43139971137,
+    "integration_head_tested": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "integration_pr_run": 43142812387,
+    "integration_full_suite_job": 130933571732,
+    "dependency_audit_run": 43142812404,
     "dependency_audit_job": 130924312287,
-    "fail_closed_gate_run": 43139970976,
+    "fail_closed_gate_run": 43142812465,
     "fail_closed_gate_job": 130924311410,
     "full_repository_suite": {
       "passed": 3459,
@@ -955,7 +956,7 @@
       "subtests": 8,
       "coverage_percent": 60.92,
       "coverage_floor_percent": 53,
-      "duration_seconds": 92.56,
+      "duration_seconds": 80.86,
       "exact_head": true,
       "exact_head_verified": true,
       "wheel_build_verified": false,
@@ -966,16 +967,14 @@
       "partial_branches": 1443
     },
     "dependency_audit": {
-      "run_id": 43139971137,
-      "job_id": 130924312287,
+      "run_id": 43142812404,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43139970976,
-      "job_id": 130924311410,
+      "run_id": 43142812465,
       "passed": true,
       "conclusion": "success",
       "merge_disabled": true,
@@ -1012,18 +1011,18 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-      "run_id": 43139971072,
+      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+      "run_id": 43142812387,
       "status": "completed",
       "conclusion": "failure",
-      "full_suite_job_id": 130924312341,
+      "full_suite_job_id": 130933571732,
       "full_repository_suite": {
         "passed": 3459,
         "failed": 1,
         "subtests": 8,
         "coverage_percent": 60.92,
         "coverage_floor_percent": 53,
-        "duration_seconds": 92.56,
+        "duration_seconds": 80.86,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": false,
@@ -1034,45 +1033,43 @@
         "partial_branches": 1443
       },
       "core_tests": {
+        "job_id": 130933571549,
         "passed": 716,
         "failed": 0,
         "subtests": 8,
-        "conclusion": "success",
-        "job_id": 130924312610
+        "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43139971137,
-        "job_id": 130924312287,
+        "run_id": 43142812404,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43139970976,
-        "job_id": 130924311410,
+        "run_id": 43142812465,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
       "push_dependency_audit": {
-        "run_id": 43139963269,
+        "run_id": 43142806828,
         "passed": true,
         "conclusion": "success"
       },
       "push_fail_closed_gate": {
-        "run_id": 43139963129,
+        "run_id": 43142806887,
         "passed": true,
         "conclusion": "success"
       },
       "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved"
       ],
-      "failure_classification": "Exact-head full-suite failed on a98c23fd276a5d2da7a560fbe928ebd26c0eb44d: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 92.56 seconds. The sole failure was tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head. Root cause: the map's prior successful exact-head record used failure_classification='none'; the regression contract requires an explicit 'exact-head full-suite passed' classification for a successful record. The current failed run is now recorded explicitly as a failure. This is an evidence-map assertion, not an XRP ingestion, Barrot V3 runtime or forecast-ledger failure.",
+      "failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
       "wheel_build_verified": false,
       "installed_wheel_primary_mission_verified": false,
-      "wheel_log": "Skipped because the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
+      "wheel_log": "Skipped after the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1110,8 +1107,8 @@
       },
       "failing_tests": []
     },
-    "push_dependency_audit_run": 43139963269,
-    "push_fail_closed_gate_run": 43139963129,
+    "push_dependency_audit_run": 43142806828,
+    "push_fail_closed_gate_run": 43142806887,
     "current_run23_documentation_test_commit_ci": "PENDING; this new commit will require its own exact-head CI before merge.",
     "previous_attempt_before_run23": {
       "head_sha": "5a5ec55bc346e992c06da2a444774d37d901fb11",
@@ -1122,7 +1119,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 130924312610,
+    "core_suite_job": 130933571549,
     "latest_main_workflows": {
       "cross_analysis": {
         "run_id": 43023990234,
@@ -1160,18 +1157,18 @@
       "installed_wheel_primary_mission_verified": true
     },
     "current_attempt": {
-      "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-      "run_id": 43139971072,
+      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+      "run_id": 43142812387,
       "status": "completed",
       "conclusion": "failure",
-      "full_suite_job_id": 130924312341,
+      "full_suite_job_id": 130933571732,
       "full_repository_suite": {
         "passed": 3459,
         "failed": 1,
         "subtests": 8,
         "coverage_percent": 60.92,
         "coverage_floor_percent": 53,
-        "duration_seconds": 92.56,
+        "duration_seconds": 80.86,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": false,
@@ -1182,45 +1179,43 @@
         "partial_branches": 1443
       },
       "core_tests": {
+        "job_id": 130933571549,
         "passed": 716,
         "failed": 0,
         "subtests": 8,
-        "conclusion": "success",
-        "job_id": 130924312610
+        "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43139971137,
-        "job_id": 130924312287,
+        "run_id": 43142812404,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43139970976,
-        "job_id": 130924311410,
+        "run_id": 43142812465,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
       "push_dependency_audit": {
-        "run_id": 43139963269,
+        "run_id": 43142806828,
         "passed": true,
         "conclusion": "success"
       },
       "push_fail_closed_gate": {
-        "run_id": 43139963129,
+        "run_id": 43142806887,
         "passed": true,
         "conclusion": "success"
       },
       "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved"
       ],
-      "failure_classification": "Exact-head full-suite failed on a98c23fd276a5d2da7a560fbe928ebd26c0eb44d: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 92.56 seconds. The sole failure was tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head. Root cause: the map's prior successful exact-head record used failure_classification='none'; the regression contract requires an explicit 'exact-head full-suite passed' classification for a successful record. The current failed run is now recorded explicitly as a failure. This is an evidence-map assertion, not an XRP ingestion, Barrot V3 runtime or forecast-ledger failure.",
+      "failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
       "wheel_build_verified": false,
       "installed_wheel_primary_mission_verified": false,
-      "wheel_log": "Skipped because the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
+      "wheel_log": "Skipped after the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
     },
     "previous_passing_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1260,18 +1255,18 @@
     },
     "previous_passing_head": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
     "core_tests": {
+      "job_id": 130933571549,
       "passed": 716,
       "failed": 0,
       "subtests": 8,
-      "conclusion": "success",
-      "job_id": 130924312610
+      "conclusion": "success"
     },
     "push_fail_closed_gate": {
-      "run_id": 43139963129,
+      "run_id": 43142806887,
       "passed": true,
       "conclusion": "success"
     },
-    "latest_run_head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "latest_run_head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
     "latest_run_conclusion": "failure",
     "run30_documentation_commit_exact_head_ci": "PENDING",
     "historical_attempts": [
@@ -1692,7 +1687,7 @@
       "conclusion": "success"
     },
     "post_run37_map_repair_commit_ci": "PENDING_EXACT_HEAD",
-    "full_suite_failure_classification": "Exact-head full-suite failed on a98c23fd276a5d2da7a560fbe928ebd26c0eb44d: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 92.56 seconds. The sole failure was tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head. Root cause: the map's prior successful exact-head record used failure_classification='none'; the regression contract requires an explicit 'exact-head full-suite passed' classification for a successful record. The current failed run is now recorded explicitly as a failure. This is an evidence-map assertion, not an XRP ingestion, Barrot V3 runtime or forecast-ledger failure.",
+    "full_suite_failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
     "previous_attempts": [
       {
         "head_sha": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
@@ -2113,7 +2108,7 @@
       }
     ],
     "push_dependency_audit": {
-      "run_id": 43139963269,
+      "run_id": 43142806828,
       "passed": true,
       "conclusion": "success"
     },
@@ -2194,7 +2189,70 @@
       "installed_wheel_primary_mission_verified": true,
       "wheel_log": "Build and installed-wheel verification passed; installed package loaded Barrot V3, the XRP mission and canonical data assets."
     },
-    "latest_full_suite_conclusion": "failure"
+    "latest_full_suite_conclusion": "failure",
+    "previous_latest_attempt_before_run42_correction2": {
+      "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+      "run_id": 43139971072,
+      "status": "completed",
+      "conclusion": "failure",
+      "full_suite_job_id": 130924312341,
+      "full_repository_suite": {
+        "passed": 3459,
+        "failed": 1,
+        "subtests": 8,
+        "coverage_percent": 60.92,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 92.56,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false,
+        "statements": 24160,
+        "missed_statements": 8967,
+        "branches": 7250,
+        "partial_branches": 1443
+      },
+      "core_tests": {
+        "passed": 716,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "job_id": 130924312610
+      },
+      "dependency_audit": {
+        "run_id": 43139971137,
+        "job_id": 130924312287,
+        "passed": true,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43139970976,
+        "job_id": 130924311410,
+        "passed": true,
+        "conclusion": "success",
+        "merge_disabled": true,
+        "automatic_merge_enabled": false
+      },
+      "push_dependency_audit": {
+        "run_id": 43139963269,
+        "passed": true,
+        "conclusion": "success"
+      },
+      "push_fail_closed_gate": {
+        "run_id": 43139963129,
+        "passed": true,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+      ],
+      "failure_classification": "Exact-head full-suite failed on a98c23fd276a5d2da7a560fbe928ebd26c0eb44d: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 92.56 seconds. The sole failure was tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head. Root cause: the map's prior successful exact-head record used failure_classification='none'; the regression contract requires an explicit 'exact-head full-suite passed' classification for a successful record. The current failed run is now recorded explicitly as a failure. This is an evidence-map assertion, not an XRP ingestion, Barrot V3 runtime or forecast-ledger failure.",
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false,
+      "wheel_log": "Skipped because the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
+    }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 49,
@@ -2431,12 +2489,12 @@
       "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
       "model_eligible": false
     },
-    "latest_exact_head_tested": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "latest_exact_head_tested": "7e345743207020503c532b1d62cb732e02aeb0af",
     "latest_exact_head_suite_passed": 3459,
     "latest_exact_head_suite_failed": 1,
     "latest_exact_head_coverage_percent": 60.92,
-    "latest_exact_head_run_id": 43139971072,
-    "latest_exact_head_tested_at_utc": "2026-11-12T02:14:09Z"
+    "latest_exact_head_run_id": 43142812387,
+    "latest_exact_head_tested_at_utc": "2026-11-12T02:41:54Z"
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -4319,22 +4377,7 @@
     "CaseMagic's ICBA docket page contains 11 entries only through October 19 and explicitly says it is not the full docket; later rulings cannot be ruled out.",
     "Evernorth Class C shares are non-voting and transfer-restricted; the SEC does not describe them as absolutely non-transferable.",
     "BLS did not publish October 2026 year-over-year CPI changes for affected series because October 2025 data were unavailable.",
-    {
-      "run_id": "Run42",
-      "topic": "XRP ETF flow and holdings universes",
-      "evidence": [
-        "TheXRPInvestor reports 12 products (6 spot, 4 derivative, 1 index, 1 income), about $1.26B AUM and 1.19B XRP in trust.",
-        "Alpha Finance reports five spot funds and -$7.6M on Nov10.",
-        "XRP Insights reports six spot funds plus BITW, -9.568M XRP across Nov9-Nov10, and Nov11 provisional.",
-        "XRP Desk reports six spot plus REX-Osprey and -3.3K XRP on Nov11 from a Google Sheet."
-      ],
-      "counter_hypotheses": [
-        "Differences may reflect product universe, issuer reporting vintage, settlement time, holdings-based flow calculation and data gaps rather than contradictory economic facts.",
-        "ETF holdings/volume are not equivalent to unique capital inflows or executable spot demand."
-      ],
-      "resolution": "Preserve provider universes and vintages; do not average or merge.",
-      "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE"
-    }
+    "Run42 ETF flow coverage disagreement: no average is computed across TheXRPInvestor, Alpha Finance, XRP Insights and XRP Desk because their product universes, holdings scope and vintages differ; this is a counter-hypothesis to treating reported holdings as one spot-flow measure. Asynchronous OKX/Kraken quote differences are research-only and neither is a directional forecast."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -7229,8 +7272,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run42",
-  "latest_run_captured_at_utc": "2026-11-12T02:29:40Z",
+  "latest_run_id": "Run42-correction-2",
+  "latest_run_captured_at_utc": "2026-11-12T02:42:00Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -10037,7 +10080,7 @@
       "no_main_write": true
     }
   },
-  "latest_run_summary": "Run42 recorded and diagnosed one exact-head evidence-map CI assertion failure (3,459 passed, 1 failed), repaired the machine-readable failure classification, refreshed cross-venue spot and ETF-vintage evidence, and added the OCC GENIUS Act final-rule transition. Forecast remains NOT_ISSUED; PR #1661 remains draft and unmerged.",
+  "latest_run_summary": "Run42 follow-up corrected the string-only disagreement-list contract after the exact-head suite exposed a TypeError (3,459 passed, 1 failed); refreshed RLUSD issuer/chain vintages and corrected the ETF holdings-scope caveat. Forecast remains NOT_ISSUED; no merge.",
   "run28_snapshot": {
     "run_id": 28,
     "captured_at_utc": "2026-11-11T14:59:22Z",
@@ -18768,7 +18811,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T02:29:40Z",
+  "updated_at_utc": "2026-11-12T02:42:00Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -21332,7 +21375,8 @@
         "total_daily_volume_usd": 34880000,
         "spot_daily_volume_usd": 22620000,
         "derivative_daily_volume_usd": 12260000,
-        "daily_net_flow_not_visible_in_capture": true
+        "daily_net_flow_not_visible_in_capture": true,
+        "trust_total_scope": "The dashboard lists 12 products across categories and separately reports 1.19B XRP in trust; the captured page does not clearly specify whether this holdings figure is spot-only or spans all product categories."
       },
       "alpha_finance": {
         "fund_universe": "five US spot XRP ETFs",
@@ -21362,21 +21406,63 @@
         "cache_refreshed_utc": "2026-11-11T11:17:00Z"
       }
     },
-    "interpretation": "ETF dashboards cover different product universes and vintages. TheXRPInvestor's 12-product trust total includes derivatives, index and income products; it is not a six-fund spot-only holdings figure. Alpha Finance, XRP Insights and XRP Desk are not directly comparable; do not average."
+    "interpretation": "TheXRPInvestor lists 12 products (6 spot, 4 derivative, 1 index, 1 income) and separately reports $1.26B AUM, 1.19B XRP in trust and $34.88M total daily volume. The precise product scope of the 1.19B trust figure is not explicit in the captured page; do not treat it as spot-only or as a 12-product total until methodology is verified. Alpha Finance, XRP Insights and XRP Desk use different universes and vintages; do not average."
   },
   "latest_web_research_run42": {
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
     "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
     "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
-    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand."
+    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
+    "rlusd": {
+      "issuer_report": {
+        "as_of": "2026-11-05",
+        "circulating_usd": 2632900000,
+        "reserve_funds_usd": 2748000000,
+        "excess_reserves_usd": 115100000,
+        "coverage_percent": 104.37,
+        "issuer": "Standard Custody & Trust Company, LLC",
+        "attestation": "monthly independent CPA attestation as described by Ripple",
+        "source": "https://ripple.com/products/stablecoin/transparency/"
+      },
+      "on_chain_aggregator": {
+        "as_of_utc": "2026-11-11T19:43:00Z",
+        "total_official_chain_supply": 2701443934,
+        "xrpl_issued": 873740991,
+        "ethereum_supply": 1811598328,
+        "source": "https://stableradar.com/coin/rlusd",
+        "source_class": "third-party live on-chain aggregator"
+      },
+      "reconciliation": "The Nov5 issuer attestation and Nov11 on-chain aggregate are different vintages and measurement methods. Their approximately $68.5M difference is not classified as a reserve shortfall or issuance flow without contract-level reconciliation."
+    }
   },
   "run42_institutional_update": {
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
     "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
     "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
-    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand."
+    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
+    "rlusd": {
+      "issuer_report": {
+        "as_of": "2026-11-05",
+        "circulating_usd": 2632900000,
+        "reserve_funds_usd": 2748000000,
+        "excess_reserves_usd": 115100000,
+        "coverage_percent": 104.37,
+        "issuer": "Standard Custody & Trust Company, LLC",
+        "attestation": "monthly independent CPA attestation as described by Ripple",
+        "source": "https://ripple.com/products/stablecoin/transparency/"
+      },
+      "on_chain_aggregator": {
+        "as_of_utc": "2026-11-11T19:43:00Z",
+        "total_official_chain_supply": 2701443934,
+        "xrpl_issued": 873740991,
+        "ethereum_supply": 1811598328,
+        "source": "https://stableradar.com/coin/rlusd",
+        "source_class": "third-party live on-chain aggregator"
+      },
+      "reconciliation": "The Nov5 issuer attestation and Nov11 on-chain aggregate are different vintages and measurement methods. Their approximately $68.5M difference is not classified as a reserve shortfall or issuance flow without contract-level reconciliation."
+    }
   },
   "run42_identity_research_update": {
     "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three separate Japanese regional SME investment/consultation companies, not SBI Holdings. No new primary-source SBIC–ChatGPT partnership evidence found.",
@@ -21472,6 +21558,22 @@
       "source_group": "secondary_news:Reuters",
       "publication_date": "2026-11-11",
       "notes": "Stablecoin supervision/cross-border oversight; macro-regulatory context only."
+    },
+    {
+      "source_ref": "turn850248search0",
+      "source": "Ripple RLUSD transparency page",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "source_group": "primary_issuer:Ripple",
+      "publication_or_snapshot_date": "2026-11-05",
+      "notes": "Issuer reports $2.6329B circulating and $2.748B reserve funds; monthly independent CPA attestations."
+    },
+    {
+      "source_ref": "turn850248search1",
+      "source": "StableRadar RLUSD live supply dashboard",
+      "url": "https://stableradar.com/coin/rlusd",
+      "source_group": "aggregator:StableRadar",
+      "snapshot_utc": "2026-11-11T19:43:00Z",
+      "notes": "Third-party live chain reads: 2.7014B total official-chain supply; XRPL and Ethereum quantities. Not an issuer reserve attestation."
     }
   ],
   "run42_overlap_reconciliation": {
@@ -21522,33 +21624,33 @@
     "disposition": "Keep source PRs open. #1661 is the sole consolidated integration PR; close only exact duplicates/superseded sources after successor merge and main verification."
   },
   "run42_ci_failure": {
-    "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-    "run_id": 43139971072,
+    "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "run_id": 43142812387,
     "conclusion": "failure",
     "passed": 3459,
     "failed": 1,
     "subtests": 8,
     "coverage_percent": 60.92,
-    "duration_seconds": 92.56,
-    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-    "root_cause": "The map's prior successful exact-head CI record used failure_classification='none'; the test requires an explicit exact-head full-suite passed classification for a successful record.",
-    "repair": "Record the current exact-head failed attempt with a truthful exact-head full-suite failed classification; do not weaken or remove the test.",
+    "duration_seconds": 80.86,
+    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
+    "root_cause": "A structured dict was appended to a list whose established schema is strings; test join raised TypeError.",
+    "repair": "Replace the appended dict with a string in disagreement_and_counter_hypotheses; retain structured Run42 details in run42_snapshot and the artifact.",
     "core": {
+      "job_id": 130933571549,
       "passed": 716,
       "failed": 0,
-      "subtests": 8
+      "subtests": 8,
+      "conclusion": "success"
     },
     "dependency_audit": {
-      "run_id": 43139971137,
-      "job_id": 130924312287,
+      "run_id": 43142812404,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43139970976,
-      "job_id": 130924311410,
+      "run_id": 43142812465,
       "passed": true,
       "conclusion": "success",
       "merge_disabled": true,
@@ -21561,12 +21663,12 @@
     "repository": {
       "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "integration_branch": "integration/xrp-v3-unified-main-20261111",
-      "integration_head_before_current_map_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-      "integration_ahead_by": 2073,
+      "integration_head_before_current_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
+      "integration_ahead_by": 2074,
       "integration_behind_by": 0,
-      "changed_files": 1035,
+      "changed_files": 1036,
       "workflow_files_changed": 49,
-      "non_workflow_paths_changed": 986,
+      "non_workflow_paths_changed": 987,
       "open_prs": 374,
       "drafts": 360,
       "non_drafts": 14,
@@ -21574,18 +21676,18 @@
       "main_tree_entries": 1388,
       "main_tree_files": 1288,
       "main_workflow_files": 78,
-      "integration_tree_entries": 2295,
-      "integration_tree_files": 2186,
+      "integration_tree_entries": 2296,
+      "integration_tree_files": 2187,
       "integration_workflow_files": 79,
       "integration_pr": 1661,
       "integration_pr_state": "open",
       "integration_pr_draft": true,
       "integration_pr_mergeable": true,
       "integration_pr_mergeable_state": "unstable",
-      "integration_pr_head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+      "integration_pr_head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
       "integration_pr_base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-      "integration_pr_commits": 2073,
-      "integration_pr_additions": 272927,
+      "integration_pr_commits": 2074,
+      "integration_pr_additions": 274007,
       "integration_pr_deletions": 4391,
       "formal_approvals": 0,
       "formal_reviews": 0,
@@ -21595,38 +21697,38 @@
         "research": 528,
         "tests": 369,
         "barrot_agent": 47,
-        "other": 42
+        "other": 43
       },
       "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API reads and Git-object branch update are available."
     },
     "ci": {
-      "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-      "run_id": 43139971072,
+      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+      "run_id": 43142812387,
       "conclusion": "failure",
       "passed": 3459,
       "failed": 1,
       "subtests": 8,
       "coverage_percent": 60.92,
-      "duration_seconds": 92.56,
-      "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-      "root_cause": "The map's prior successful exact-head CI record used failure_classification='none'; the test requires an explicit exact-head full-suite passed classification for a successful record.",
-      "repair": "Record the current exact-head failed attempt with a truthful exact-head full-suite failed classification; do not weaken or remove the test.",
+      "duration_seconds": 80.86,
+      "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
+      "root_cause": "A structured dict was appended to a list whose established schema is strings; test join raised TypeError.",
+      "repair": "Replace the appended dict with a string in disagreement_and_counter_hypotheses; retain structured Run42 details in run42_snapshot and the artifact.",
       "core": {
+        "job_id": 130933571549,
         "passed": 716,
         "failed": 0,
-        "subtests": 8
+        "subtests": 8,
+        "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43139971137,
-        "job_id": 130924312287,
+        "run_id": 43142812404,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43139970976,
-        "job_id": 130924311410,
+        "run_id": 43142812465,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
@@ -21692,7 +21794,8 @@
           "total_daily_volume_usd": 34880000,
           "spot_daily_volume_usd": 22620000,
           "derivative_daily_volume_usd": 12260000,
-          "daily_net_flow_not_visible_in_capture": true
+          "daily_net_flow_not_visible_in_capture": true,
+          "trust_total_scope": "The dashboard lists 12 products across categories and separately reports 1.19B XRP in trust; the captured page does not clearly specify whether this holdings figure is spot-only or spans all product categories."
         },
         "alpha_finance": {
           "fund_universe": "five US spot XRP ETFs",
@@ -21722,14 +21825,35 @@
           "cache_refreshed_utc": "2026-11-11T11:17:00Z"
         }
       },
-      "interpretation": "ETF dashboards cover different product universes and vintages. TheXRPInvestor's 12-product trust total includes derivatives, index and income products; it is not a six-fund spot-only holdings figure. Alpha Finance, XRP Insights and XRP Desk are not directly comparable; do not average."
+      "interpretation": "TheXRPInvestor lists 12 products (6 spot, 4 derivative, 1 index, 1 income) and separately reports $1.26B AUM, 1.19B XRP in trust and $34.88M total daily volume. The precise product scope of the 1.19B trust figure is not explicit in the captured page; do not treat it as spot-only or as a 12-product total until methodology is verified. Alpha Finance, XRP Insights and XRP Desk use different universes and vintages; do not average."
     },
     "regulatory": {
       "captured_at_utc": "2026-11-12T02:29:40Z",
       "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
       "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
       "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
-      "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand."
+      "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
+      "rlusd": {
+        "issuer_report": {
+          "as_of": "2026-11-05",
+          "circulating_usd": 2632900000,
+          "reserve_funds_usd": 2748000000,
+          "excess_reserves_usd": 115100000,
+          "coverage_percent": 104.37,
+          "issuer": "Standard Custody & Trust Company, LLC",
+          "attestation": "monthly independent CPA attestation as described by Ripple",
+          "source": "https://ripple.com/products/stablecoin/transparency/"
+        },
+        "on_chain_aggregator": {
+          "as_of_utc": "2026-11-11T19:43:00Z",
+          "total_official_chain_supply": 2701443934,
+          "xrpl_issued": 873740991,
+          "ethereum_supply": 1811598328,
+          "source": "https://stableradar.com/coin/rlusd",
+          "source_class": "third-party live on-chain aggregator"
+        },
+        "reconciliation": "The Nov5 issuer attestation and Nov11 on-chain aggregate are different vintages and measurement methods. Their approximately $68.5M difference is not classified as a reserve shortfall or issuance flow without contract-level reconciliation."
+      }
     },
     "identity": {
       "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three separate Japanese regional SME investment/consultation companies, not SBI Holdings. No new primary-source SBIC–ChatGPT partnership evidence found.",
@@ -21780,7 +21904,35 @@
       "pages_publication_authorized": false,
       "connector_permissions_overprivileged": true
     },
-    "merge_decision": "NO_MERGE"
+    "merge_decision": "NO_MERGE",
+    "institutional": {
+      "captured_at_utc": "2026-11-12T02:29:40Z",
+      "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
+      "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
+      "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+      "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
+      "rlusd": {
+        "issuer_report": {
+          "as_of": "2026-11-05",
+          "circulating_usd": 2632900000,
+          "reserve_funds_usd": 2748000000,
+          "excess_reserves_usd": 115100000,
+          "coverage_percent": 104.37,
+          "issuer": "Standard Custody & Trust Company, LLC",
+          "attestation": "monthly independent CPA attestation as described by Ripple",
+          "source": "https://ripple.com/products/stablecoin/transparency/"
+        },
+        "on_chain_aggregator": {
+          "as_of_utc": "2026-11-11T19:43:00Z",
+          "total_official_chain_supply": 2701443934,
+          "xrpl_issued": 873740991,
+          "ethereum_supply": 1811598328,
+          "source": "https://stableradar.com/coin/rlusd",
+          "source_class": "third-party live on-chain aggregator"
+        },
+        "reconciliation": "The Nov5 issuer attestation and Nov11 on-chain aggregate are different vintages and measurement methods. Their approximately $68.5M difference is not classified as a reserve shortfall or issuance flow without contract-level reconciliation."
+      }
+    }
   },
   "run42_research_artifact_path": "research/xrp_intelligence/20261112T022940Z-run42-current-head-ci-repair-market-etf-and-occ-rule.json",
   "run42_forecast_status": "NOT_ISSUED"

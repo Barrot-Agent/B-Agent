@@ -11,12 +11,12 @@
   "repository": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_branch": "integration/xrp-v3-unified-main-20261111",
-    "integration_head_before_current_map_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-    "integration_ahead_by": 2073,
+    "integration_head_before_current_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "integration_ahead_by": 2074,
     "integration_behind_by": 0,
-    "changed_files": 1035,
+    "changed_files": 1036,
     "workflow_files_changed": 49,
-    "non_workflow_paths_changed": 986,
+    "non_workflow_paths_changed": 987,
     "open_prs": 374,
     "drafts": 360,
     "non_drafts": 14,
@@ -24,18 +24,18 @@
     "main_tree_entries": 1388,
     "main_tree_files": 1288,
     "main_workflow_files": 78,
-    "integration_tree_entries": 2295,
-    "integration_tree_files": 2186,
+    "integration_tree_entries": 2296,
+    "integration_tree_files": 2187,
     "integration_workflow_files": 79,
     "integration_pr": 1661,
     "integration_pr_state": "open",
     "integration_pr_draft": true,
     "integration_pr_mergeable": true,
     "integration_pr_mergeable_state": "unstable",
-    "integration_pr_head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
+    "integration_pr_head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
     "integration_pr_base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_pr_commits": 2073,
-    "integration_pr_additions": 272927,
+    "integration_pr_commits": 2074,
+    "integration_pr_additions": 274007,
     "integration_pr_deletions": 4391,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -45,38 +45,38 @@
       "research": 528,
       "tests": 369,
       "barrot_agent": 47,
-      "other": 42
+      "other": 43
     },
     "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API reads and Git-object branch update are available."
   },
   "ci": {
-    "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
-    "run_id": 43139971072,
+    "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "run_id": 43142812387,
     "conclusion": "failure",
     "passed": 3459,
     "failed": 1,
     "subtests": 8,
     "coverage_percent": 60.92,
-    "duration_seconds": 92.56,
-    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-    "root_cause": "The map's prior successful exact-head CI record used failure_classification='none'; the test requires an explicit exact-head full-suite passed classification for a successful record.",
-    "repair": "Record the current exact-head failed attempt with a truthful exact-head full-suite failed classification; do not weaken or remove the test.",
+    "duration_seconds": 80.86,
+    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
+    "root_cause": "A structured dict was appended to a list whose established schema is strings; test join raised TypeError.",
+    "repair": "Replace the appended dict with a string in disagreement_and_counter_hypotheses; retain structured Run42 details in run42_snapshot and the artifact.",
     "core": {
+      "job_id": 130933571549,
       "passed": 716,
       "failed": 0,
-      "subtests": 8
+      "subtests": 8,
+      "conclusion": "success"
     },
     "dependency_audit": {
-      "run_id": 43139971137,
-      "job_id": 130924312287,
+      "run_id": 43142812404,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43139970976,
-      "job_id": 130924311410,
+      "run_id": 43142812465,
       "passed": true,
       "conclusion": "success",
       "merge_disabled": true,
@@ -185,7 +185,8 @@
         "total_daily_volume_usd": 34880000,
         "spot_daily_volume_usd": 22620000,
         "derivative_daily_volume_usd": 12260000,
-        "daily_net_flow_not_visible_in_capture": true
+        "daily_net_flow_not_visible_in_capture": true,
+        "trust_total_scope": "The dashboard lists 12 products across categories and separately reports 1.19B XRP in trust; the captured page does not clearly specify whether this holdings figure is spot-only or spans all product categories."
       },
       "alpha_finance": {
         "fund_universe": "five US spot XRP ETFs",
@@ -215,14 +216,35 @@
         "cache_refreshed_utc": "2026-11-11T11:17:00Z"
       }
     },
-    "interpretation": "ETF dashboards cover different product universes and vintages. TheXRPInvestor's 12-product trust total includes derivatives, index and income products; it is not a six-fund spot-only holdings figure. Alpha Finance, XRP Insights and XRP Desk are not directly comparable; do not average."
+    "interpretation": "TheXRPInvestor lists 12 products (6 spot, 4 derivative, 1 index, 1 income) and separately reports $1.26B AUM, 1.19B XRP in trust and $34.88M total daily volume. The precise product scope of the 1.19B trust figure is not explicit in the captured page; do not treat it as spot-only or as a 12-product total until methodology is verified. Alpha Finance, XRP Insights and XRP Desk use different universes and vintages; do not average."
   },
   "institutional_and_regulatory": {
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
     "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
     "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
-    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand."
+    "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
+    "rlusd": {
+      "issuer_report": {
+        "as_of": "2026-11-05",
+        "circulating_usd": 2632900000,
+        "reserve_funds_usd": 2748000000,
+        "excess_reserves_usd": 115100000,
+        "coverage_percent": 104.37,
+        "issuer": "Standard Custody & Trust Company, LLC",
+        "attestation": "monthly independent CPA attestation as described by Ripple",
+        "source": "https://ripple.com/products/stablecoin/transparency/"
+      },
+      "on_chain_aggregator": {
+        "as_of_utc": "2026-11-11T19:43:00Z",
+        "total_official_chain_supply": 2701443934,
+        "xrpl_issued": 873740991,
+        "ethereum_supply": 1811598328,
+        "source": "https://stableradar.com/coin/rlusd",
+        "source_class": "third-party live on-chain aggregator"
+      },
+      "reconciliation": "The Nov5 issuer attestation and Nov11 on-chain aggregate are different vintages and measurement methods. Their approximately $68.5M difference is not classified as a reserve shortfall or issuance flow without contract-level reconciliation."
+    }
   },
   "identity": {
     "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three separate Japanese regional SME investment/consultation companies, not SBI Holdings. No new primary-source SBIC–ChatGPT partnership evidence found.",
@@ -361,17 +383,35 @@
       "source_group": "secondary_news:Reuters",
       "publication_date": "2026-11-11",
       "notes": "Stablecoin supervision/cross-border oversight; macro-regulatory context only."
+    },
+    {
+      "source_ref": "turn850248search0",
+      "source": "Ripple RLUSD transparency page",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "source_group": "primary_issuer:Ripple",
+      "publication_or_snapshot_date": "2026-11-05",
+      "notes": "Issuer reports $2.6329B circulating and $2.748B reserve funds; monthly independent CPA attestations."
+    },
+    {
+      "source_ref": "turn850248search1",
+      "source": "StableRadar RLUSD live supply dashboard",
+      "url": "https://stableradar.com/coin/rlusd",
+      "source_group": "aggregator:StableRadar",
+      "snapshot_utc": "2026-11-11T19:43:00Z",
+      "notes": "Third-party live chain reads: 2.7014B total official-chain supply; XRPL and Ethereum quantities. Not an issuer reserve attestation."
     }
   ],
   "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
   "forecast_status": "NOT_ISSUED",
   "next_actions": [
-    "Rerun the full repository suite on the corrective commit and verify the map regression test passes without weakening tests.",
+    "Rerun the full repository suite on the corrected string-list commit; verify the disagreement-list test passes.",
     "Verify exact-head wheel build, installed primary mission, six-manifest dependency audit and fail-closed gates.",
-    "Continue semantic review of 986 non-workflow paths and the 49-workflow integration diff.",
+    "Continue semantic review of 987 non-workflow paths and the 49-workflow integration diff.",
     "Resolve least-privilege connector scope, branch-protection/approval visibility, provider-side OAuth revocation evidence and Pages publication authorization.",
     "Build independently controlled WORM/timestamp anchoring and replayable feature history; keep directional forecasts disabled."
   ],
   "no_merge": true,
-  "no_external_actions": true
+  "updated_at_utc": "2026-11-12T02:42:00Z",
+  "no_unapproved_external_actions": true,
+  "authorized_repository_write_performed": true
 }

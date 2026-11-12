@@ -341,3 +341,11 @@
 - Forecast NOT_ISSUED. Research is not raw-receipt ingested/model-eligible.
 - Security: credential path absent main/integration and all 17 affected PR diffs; provider-side revocation unverified. Connector overprivileged; branch-protection detail HTTP403; fallback ruleset disabled; Pages publication unauthorized.
 - No merge or external actions. Exact-head verification on the corrective commit is next.
+
+
+## Run42 exact-head correction 2 — 2026-11-12 02:42 UTC
+- Head tested: `7e345743207020503c532b1d62cb732e02aeb0af`; full CI 43142812387: 3,459 passed, 1 failed, 8 subtests, 60.92%, 80.86s. Sole failure: dict appended to string-only `disagreement_and_counter_hypotheses`; replace with string, retain structured detail elsewhere. No tests weakened.
+- Core 716/0; dependency audit six manifests/zero known vulnerabilities reported; fail-closed PR/push gates passed. Wheel skipped.
+- Corrected TheXRPInvestor scope: 12 product categories are listed, but the 1.19B XRP trust figure's cohort is not explicit. Do not assign it to spot-only or all 12 without methodology.
+- RLUSD issuer Nov5 report: $2.6329B circulating / $2.748B reserves; third-party Nov11 on-chain aggregate 2.7014B total, XRPL873.741M, Ethereum1.8116B. Different vintages/methods; no inferred reserve shortfall.
+- Forecast NOT_ISSUED. PR #1661 remains draft and unmerged.
