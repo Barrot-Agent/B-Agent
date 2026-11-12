@@ -1,3 +1,16 @@
+## Run56A — Circle/SBI/Arc network and exact-head CI completion
+
+- Exact evidence head e8627cafaf4c68008a5067901272c025dfed3ebf: full CI 43216618308 passed; 3,507 tests, 0 failures, 8 subtests, 61.35% coverage, 54.80s. Wheel build and installed Barrot V3/XRP mission verification passed.
+- Dependency audit 43216618668 passed six groups with no known vulnerabilities. Fail-closed gate 43216618752 passed.
+- SBI Holdings disclosed that a consolidated subsidiary participated in Circle's ARC presale; the consortium total was $222M, but SBI's amount/legal subsidiary was not disclosed. Circle separately named SBI Group a founding Arc validator and said SBI would participate in operation/governance.
+- Arc mainnet launched Sep 16. It uses USDC for network fees, has a permissioned validator set, and is not a regulator-approved bank or a substitute for XRP by default. Circle says the 10B ARC genesis mint is not a commitment to public token launch.
+- Circle Q3 2026 SEC 10-Q: average USDC circulation $73.3B (+8% YoY), on-chain volume $13.9T (+49%), total revenue/reserve income $865M (+17%); distribution costs under Coinbase agreements $331.3M Q3 and $986.6M nine months. The agreement pays Coinbase based partly on USDC platform balances and ecosystem growth.
+- Circle recognized $181.8M ARC presale revenue in Q3/9M; this is not the $222M consortium total or SBI's undisclosed allocation.
+- SBI VC Trade handles USDC (since March 2025) and RLUSD (since June 24, 2026); SBI is involved with both Circle and Ripple rails plus JPYSC. This supports a multi-rail diversification hypothesis, not proof of XRP divestment or XRP demand.
+- Coinbase lists RLUSD, distributes USDC, and is an Arc exchange access provider. PNC's limited Coinbase pilot receives USDC and converts to USD; no XRP settlement evidence.
+- Full Run56A addendum is at the top of BARROT_XRP_MISSION_HANDOFF_LATEST.md; source details are in the Run56 structured artifact.
+- PR #1661 remains draft and blocked. No merge or external action.
+---
 ## Run56 — 2026-11-12T12:06:39Z
 
 - Current main 84f28ee7755607236231545a14f3d093c1baaa85; integration pre-update head 28fbdcfe276b825c7de83df5bba2cc017c0d26ea, 2,100 ahead / 0 behind.

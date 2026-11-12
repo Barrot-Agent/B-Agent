@@ -487,6 +487,49 @@
       "url": "https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/",
       "published": "2026-11-12",
       "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "sbi_arc_presale_notice",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "published": "2026-05-12",
+      "independence_group": "sbi_primary",
+      "notes": "SBI participation through unnamed consolidated subsidiary; $222M consortium total; SBI amount undisclosed"
+    },
+    {
+      "id": "circle_arc_founder_validators",
+      "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+      "published": "2026-08-05",
+      "independence_group": "circle_primary"
+    },
+    {
+      "id": "circle_arc_mainnet_launch",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "published": "2026-09-16",
+      "independence_group": "circle_primary"
+    },
+    {
+      "id": "circle_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "published": "2026-11",
+      "independence_group": "sec_filing_primary"
+    },
+    {
+      "id": "ripple_sbi_rlusd_japan_primary",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published": "2026-06-24",
+      "independence_group": "ripple_primary"
+    },
+    {
+      "id": "coinbase_rlusd_reuters",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "published": "2026-10-28",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "pnc_coinbase_usdc_reuters",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published": "2026-11-09",
+      "independence_group": "reuters_reporting"
     }
   ],
   "next_actions": [
@@ -497,5 +540,96 @@
     "After compliant main integration, verify scheduled ingestion and independent immutable anchoring.",
     "Implement a genuine candidate model and evaluate it against the four baselines on replayable point-in-time data.",
     "Keep forecast issuance disabled until independent shadow and out-of-sample gates pass."
+  ],
+  "ci_verified_on_run56_evidence_head": {
+    "head_sha": "e8627cafaf4c68008a5067901272c025dfed3ebf",
+    "full_ci_run": 43216618308,
+    "full_suite_job_id": 131177365201,
+    "tests_passed": 3507,
+    "tests_failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 61.35,
+    "test_duration_seconds": 54.8,
+    "wheel_build": "passed",
+    "installed_barrot_v3_xrp_mission_verification": "passed",
+    "dependency_audit_run": 43216618668,
+    "dependency_audit_groups": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run": 43216618752,
+    "fail_closed_gate": "passed; automatic merge disabled",
+    "exact_head_status": "verified"
+  },
+  "institutional_network_addendum": {
+    "source_date": "2026-11-12",
+    "sbi_circle_arc": {
+      "sbi_presale_notice_date": "2026-05-12",
+      "participation": "SBI Holdings says a consolidated subsidiary participated in Circle's ARC token presale",
+      "sbi_specific_amount_usd": null,
+      "subsidiary_legal_name": null,
+      "consortium_total_usd": 222000000,
+      "circle_founder_validator_announcement_date": "2026-08-05",
+      "sbi_group_founding_validator": true,
+      "arc_public_mainnet_date": "2026-09-16",
+      "validator_role": "SBI Group said it would participate in Arc operation and governance",
+      "arc_network": {
+        "type": "open L1 blockchain",
+        "validator_model": "permissioned validator set",
+        "network_fee_asset": "USDC",
+        "regulatory_approval": "Circle says Arc has not been reviewed or approved by NYDFS or another regulator",
+        "genesis_arc_supply": 10000000000,
+        "public_arc_token_launch_committed": false
+      },
+      "sbi_apac_digital_economic_zone": true,
+      "interpretation": "SBI has exposure to Circle/USDC/Arc in addition to Ripple/RLUSD/XRP-related infrastructure; multi-rail diversification is a hypothesis, not proof of divestment or XRP demand"
+    },
+    "circle_q3_2026": {
+      "average_usdc_circulation_usd": 73300000000,
+      "average_usdc_circulation_yoy_percent": 8,
+      "usdc_onchain_transaction_volume_usd": 13900000000000,
+      "usdc_onchain_transaction_volume_yoy_percent": 49,
+      "total_revenue_and_reserve_income_usd": 865000000,
+      "total_revenue_and_reserve_income_yoy_percent": 17,
+      "coinbase_distribution_costs_q3_2026_usd": 331300000,
+      "coinbase_distribution_costs_nine_months_2026_usd": 986600000,
+      "coinbase_distribution_costs_q3_yoy_change_usd": -30000000,
+      "coinbase_distribution_costs_nine_months_yoy_change_usd": -10200000,
+      "agreement_economics": "Coinbase receives allocations tied to USDC held on its platform after issuer retention plus half of the remaining broader ecosystem-growth amount after approved third-party participants",
+      "arc_token_presale_revenue_recognized_q3_and_nine_months_usd": 181800000,
+      "limitations": [
+        "Circle issuer-reported metrics",
+        "on-chain transaction volume is not unique payments",
+        "distribution costs are not separately disclosed Coinbase segment profit",
+        "ARC presale revenue is not SBI's investment or the total consortium capital"
+      ]
+    },
+    "sbi_multi_rail": {
+      "usdc_distribution_since": "2025-03",
+      "rlusd_distribution_since": "2026-06-24",
+      "rlusd_japan_regulator": "JFSA",
+      "jpy_sc_issuer": "SBI Shinsei Trust",
+      "assets": "USDC, RLUSD and JPYSC",
+      "interpretation": "SBI is involved with Circle and Ripple rails; no exclusive XRP commitment inferred"
+    },
+    "coinbase_circle_ripple_pnc": {
+      "coinbase_usdc_distribution": "Circle collaboration agreement with balance- and ecosystem-growth-linked distribution economics",
+      "coinbase_arc_access": "Circle lists Coinbase among Arc exchange access providers",
+      "coinbase_rlusd_listing_date": "2026-10-28",
+      "pnc_pilot_asset": "USDC",
+      "pnc_pilot_settlement": "automatically converted to USD",
+      "pnc_pilot_scope": "limited corporate/institutional pilot",
+      "xrp_settlement_evidence": false
+    },
+    "capital_taxonomy": {
+      "arc_presale_consortium_total_usd": 222000000,
+      "circle_arc_presale_revenue_recognized_usd": 181800000,
+      "sbi_arc_presale_allocation_usd": null,
+      "warning": "These figures are not additive and none is an XRP purchase or SBI-specific capital amount"
+    }
+  },
+  "source_independence_notes": [
+    "CoinDesk's Nov 12 XRPL lending article cites XRPL Dashboard for validator votes; those vote counts are one underlying publisher lineage, not two independent confirmations.",
+    "Liqwall and Alpha Finance have different reported OI universes; underlying venue coverage may overlap and their totals are not averaged.",
+    "Circle, SBI and Ripple press releases are primary for their own announcements but are interested-party sources; SEC filings provide the stronger financial accounting record.",
+    "Reuters reports the PNC pilot and Coinbase RLUSD listing; the PNC pilot is a limited test and USDC is converted to USD, not XRP."
   ]
 }

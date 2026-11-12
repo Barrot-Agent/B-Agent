@@ -1,3 +1,48 @@
+# Run56A — exact-head CI completion and Circle/SBI/Arc institutional network
+
+## Exact-head verification on Run56 evidence commit e8627caf
+- Full repository CI run 43216618308 completed successfully on exact SHA e8627cafaf4c68008a5067901272c025dfed3ebf.
+- Full repository test suite: **3,507 passed, 0 failed, 8 subtests**; coverage **61.35%**; test execution **54.80 seconds**; collected all 3,507 tests.
+- Both core Tests and Full repository test suite jobs passed. Wheel build passed; installed wheel verified the primary mission JSON, Barrot V3, XRP mission and canonical data assets.
+- Dependency audit 43216618668 passed all six groups; no known vulnerabilities reported.
+- Fail-closed gate 43216618752 passed; merge remains disabled.
+- Exact evidence: [full CI 43216618308](https://github.com/Barrot-Agent/B-Agent/actions/runs/43216618308), [dependency audit 43216618668](https://github.com/Barrot-Agent/B-Agent/actions/runs/43216618668), [fail-closed gate 43216618752](https://github.com/Barrot-Agent/B-Agent/actions/runs/43216618752).
+- The next Run56A documentation-only commit will require its own exact-head CI; do not transfer the e8627 result.
+
+## New institutional relationship finding: SBI is exposed to both Ripple and Circle's Arc
+
+**SBI → Circle/Arc (primary evidence):**
+- SBI Holdings' May 12, 2026 notice says a consolidated subsidiary participated in Circle's ARC token presale. The notice says the overall investor consortium raised $222M; SBI's own contribution and the participating subsidiary's legal name are not disclosed. This is an ARC-token presale participation, not evidence of Circle equity ownership or an XRP purchase.
+- Circle's August 5, 2026 announcement names SBI Group as one of Arc's founding validators, alongside BlackRock, DTCC, Galaxy, Global Payments, ICE, Mastercard, MoneyGram, Standard Chartered, Sumitomo Corporation and Visa.
+- Circle's September 16, 2026 mainnet announcement says SBI will contribute to Arc's operation and governance. SBI Chairman Yoshitaka Kitao said SBI VC Trade had been Japan's first and only USDC distributor since March 2025; he also described SBI's APAC Digital Economic Zone initiative using USDC and JPYSC.
+- Arc is a Circle-built open L1 with a permissioned validator set. Network fees are payable in USDC, not XRP. Circle says the network has not been reviewed or approved by NYDFS or another regulator. Circle minted an initial 10B ARC supply but expressly said that mint was not a commitment to publicly launch ARC.
+- Circle lists Coinbase among Arc's exchange access providers and names institutional integrations involving BNY, DTCC, BlackRock and Standard Chartered. Arc is therefore a direct institutional alternative rail for stablecoin settlement and tokenized-asset activity, although the announced integrations do not prove production transaction volumes.
+
+**Circle ↔ Coinbase economics (SEC primary evidence):**
+- Circle's Q3 2026 Form 10-Q reports average USDC circulation of $73.3B, up 8% year over year; USDC on-chain transaction volume of $13.9T, up 49%; and total revenue plus reserve income of $865M, up 17%. These are issuer-reported platform metrics, not independently reconciled unique payments or XRP flows.
+- Under the Circle-Coinbase Collaboration Agreement, Coinbase receives allocations tied to USDC held on Coinbase after Circle's issuer retention and also half of the remaining broader-ecosystem-growth amount after approved third-party participants.
+- Circle reported distribution costs under its Coinbase agreements of $331.3M in Q3 2026 and $986.6M for the first nine months of 2026. Q3 costs were $30M lower year over year, primarily because reserve income was lower; nine-month costs were $10.2M lower because Coinbase's share of average USDC on-platform balances fell enough to offset higher reserve income. These are Circle-reported distribution costs, not a separately disclosed Coinbase segment profit.
+- Circle's Q3 10-Q separately reports $181.8M of revenue related to the ARC token presale recognized in Q3 and the first nine months. That accounting revenue is not the same as the $222M total consortium amount and is not SBI's allocation.
+
+**SBI's multi-rail distribution footprint:**
+- SBI VC Trade began handling USDC in March 2025 and added RLUSD on June 24, 2026, after JFSA approval; the Ripple/SBI release says RLUSD is available to institutional and retail users through VCTRADE.
+- SBI Group is therefore simultaneously involved in Ripple's RLUSD/XRP ecosystem and Circle's USDC/Arc ecosystem, while also developing JPYSC through SBI Shinsei Trust.
+- The most defensible interpretation is multi-rail strategic exposure and infrastructure diversification. It does not prove SBI is divesting Ripple, buying more XRP, or preferring one network over another.
+
+**Coinbase/Ripple/PNC counter-hypothesis:**
+- Coinbase added RLUSD to retail and institutional platforms on Oct 28, 2026. This is a distribution relationship for Ripple's stablecoin, not proof of XRP buying.
+- PNC's limited pilot with Coinbase receives Circle USDC and automatically converts it to USD. PNC already uses Coinbase's crypto-as-a-service platform and provides banking services to Coinbase. This is a bank-facing USDC rail, not XRP settlement.
+- Together, the evidence shows Coinbase distributes USDC, lists RLUSD, and provides access to Circle's Arc; stablecoin distribution and institutional settlement competition must not be translated into XRP demand without measured XRP-specific flows.
+
+**Capital taxonomy / exact-phrase research:**
+- The $222M figure is the total ARC presale consortium amount stated by SBI, not SBI's individual investment.
+- The $181.8M figure is Circle's recognized ARC presale revenue, not SBI's contribution, not Circle equity proceeds attributable to SBI, and not XRP capital.
+- SBI's individual ARC allocation remains undisclosed. Keep ARC token presale, Circle revenue recognition, Ripple equity, RLUSD/USDC distribution, XRP inventory, debt, collateral and secondary resales as separate categories.
+- 'Actual capital' remains non-standardized as an XRP metric; this ARC example demonstrates why capital categories must remain distinct.
+
+## Current integration decision unchanged
+- PR #1661 remains draft, with no formal approvals. Branch protection remains inaccessible (HTTP 403), connector permissions remain overprivileged, GitHub Pages publication authorization is unresolved, and semantic review of the workflow and non-workflow changes remains incomplete.
+- No merge, deployment, external-model transfer, secret change, paper trade or real-money action occurred.
 # Run56 — 2026-11-12T12:06:39Z — exact-head CI, XRPL lending, market/ETF and integration audit
 
 **Mission priority 1:** XRP intelligence and prediction-engine mastery. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.
