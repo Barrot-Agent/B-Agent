@@ -1,27 +1,27 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T22:34:37Z",
-  "last_verified_at_utc": "2026-11-12T22:34:37Z",
+  "captured_at_utc": "2026-11-12T22:45:02Z",
+  "last_verified_at_utc": "2026-11-12T22:45:02Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-  "observed_integration_head_before_map_commit": "124fd5e8ef631c31f67840468a64f6bcad924147",
+  "observed_integration_head_before_map_commit": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "mergeable_state": "clean",
-    "ahead_by": 2163,
+    "mergeable_state": "unstable",
+    "ahead_by": 2164,
     "behind_by": 0,
-    "changed_files": 1075,
+    "changed_files": 1076,
     "workflow_files": 50,
-    "other_changed_paths": 1025,
-    "head_sha": "124fd5e8ef631c31f67840468a64f6bcad924147",
+    "other_changed_paths": 1026,
+    "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
     "base_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "commits": 2163,
-    "additions": 299814,
+    "commits": 2164,
+    "additions": 301496,
     "deletions": 5123,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -87,14 +87,14 @@
         "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
         "persistent_agent_connection": false,
         "external_model_transfer": false,
-        "last_verified_at_utc": "2026-11-12T22:34:37Z",
+        "last_verified_at_utc": "2026-11-12T22:45:02Z",
         "observed_flow": "Run70 verified main/integration refs and recursive trees, complete open PR inventory, PR #1662, exact-head CI, main workflow side effects, security path presence across 17 source PR tips, and bounded evidence/handoff update on the existing integration branch only. No main write or external-model transfer.",
         "main_branch_write": false
       },
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-12T22:34:37Z",
+      "last_verified_at_utc": "2026-11-12T22:45:02Z",
       "last_verified_run": "Run69"
     },
     "Claude": {
@@ -263,7 +263,7 @@
       "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "conclusion": "success"
     },
-    "last_verified_at_utc": "2026-11-12T22:34:37Z",
+    "last_verified_at_utc": "2026-11-12T22:45:02Z",
     "latest_run37_platform_state": {
       "ChatGPT": {
         "intended_role": [
@@ -641,18 +641,18 @@
   },
   "repository_state": {
     "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "integration_head_before_current_map_commit": "905085e05e3606048c40faa09edbb0b87b8fcce3",
+    "integration_head_before_current_map_commit": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
     "integration_pr": 1662,
-    "integration_ahead_by": 2162,
+    "integration_ahead_by": 2164,
     "integration_behind_by": 0,
-    "changed_files": 1075,
+    "changed_files": 1076,
     "workflow_files_changed": 50,
-    "non_workflow_paths_changed": 1025,
+    "non_workflow_paths_changed": 1026,
     "open_prs": 375,
     "drafts": 361,
     "non_drafts": 14,
     "main_tree_entries": 1381,
-    "integration_tree_entries": 2322,
+    "integration_tree_entries": 2323,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -665,11 +665,11 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "bf018e9: 3540 passed, zero failed, eight subtests, 61.55% coverage in 86.24s; core 723 passed; wheel and installed V3/XRP mission verified; five-manifest dependency audit and fail-closed gate passed.",
-    "last_reconciled_at_utc": "2026-11-12T22:24:23Z",
+    "latest_exact_head_ci": "f5c7d65: exact-head full suite failed 3,536 passed/4 failed/8 subtests/61.55%; four failures are stale canonical map snapshot fields, not runtime tests. Previous parent 124fd5e8 passed 3,540/0.",
+    "last_reconciled_at_utc": "2026-11-12T22:45:02Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
-    "integration_tree_files": 2206,
+    "integration_tree_files": 2210,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -696,7 +696,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "191553bd74e1998a49ac1cd4c1f018099986575e",
+    "latest_full_suite_tested_head": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -965,7 +965,7 @@
     "run40_expected_non_workflow_paths_after_commit": 983,
     "run40_expected_integration_tree_entries_after_commit": 2292,
     "run40_expected_ahead_by_after_commit": 2070,
-    "latest_verified_full_suite_passed_head": "191553bd74e1998a49ac1cd4c1f018099986575e",
+    "latest_verified_full_suite_passed_head": "124fd5e8ef631c31f67840468a64f6bcad924147",
     "main_full_suite_run": {
       "run_id": 42944864014,
       "job_id": 130275108548,
@@ -983,7 +983,7 @@
     "integration_primary_mission_present": true,
     "integration_xrp_ingestion_module_present": true,
     "integration_xrp_ingestion_workflow_present": true,
-    "latest_verified_code_head": "191553bd74e1998a49ac1cd4c1f018099986575e",
+    "latest_verified_code_head": "124fd5e8ef631c31f67840468a64f6bcad924147",
     "current_head_before_run42_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
     "run42_new_paths": [
       "research/xrp_intelligence/20261112T022940Z-run42-current-head-ci-repair-market-etf-and-occ-rule.json"
@@ -1140,36 +1140,36 @@
     "main_scheduled_xrp_ingestion_run_verified": false
   },
   "ci_evidence": {
-    "integration_head_tested": "191553bd74e1998a49ac1cd4c1f018099986575e",
-    "integration_pr_run": 43256307823,
-    "integration_full_suite_job": 131315359582,
-    "dependency_audit_run": 43256308212,
-    "dependency_audit_job": 131315360664,
-    "fail_closed_gate_run": 43256308151,
-    "fail_closed_gate_job": 131315359980,
+    "integration_head_tested": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+    "integration_pr_run": 43322324880,
+    "integration_full_suite_job": 131545890322,
+    "dependency_audit_run": 43322324955,
+    "dependency_audit_job": 131545890651,
+    "fail_closed_gate_run": 43322325022,
+    "fail_closed_gate_job": 131545890439,
     "full_repository_suite": {
-      "passed": 3540,
-      "failed": 0,
+      "passed": 3536,
+      "failed": 4,
       "subtests": 8,
       "coverage_percent": 61.55,
       "coverage_floor_percent": 53,
-      "duration_seconds": 89.44,
+      "duration_seconds": 57.61,
       "exact_head": true,
       "exact_head_verified": true,
-      "wheel_build_verified": true,
-      "installed_wheel_primary_mission_verified": true
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false
     },
     "dependency_audit": {
-      "run_id": 43303663352,
-      "job_id": 131315360664,
+      "run_id": 43322324955,
+      "job_id": 131545890651,
       "passed": true,
       "conclusion": "success",
       "manifests": 5,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43303663248,
-      "job_id": 131315359980,
+      "run_id": 43322325022,
+      "job_id": 131545890439,
       "passed": true,
       "conclusion": "success",
       "automatic_merge_enabled": false
@@ -1210,32 +1210,57 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "191553bd74e1998a49ac1cd4c1f018099986575e",
-      "run_id": 43303663364,
+      "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+      "run_id": 43322324880,
       "status": "completed",
-      "conclusion": "success",
-      "full_suite_job_id": 131481131214,
+      "conclusion": "failure",
+      "completed_at_utc": "2026-11-12T22:45:02Z",
+      "full_suite_job_id": 131545890322,
       "full_repository_suite": {
-        "passed": 3540,
-        "failed": 0,
+        "passed": 3536,
+        "failed": 4,
         "subtests": 8,
         "coverage_percent": 61.55,
         "coverage_floor_percent": 53,
-        "duration_seconds": 89.44,
+        "duration_seconds": 57.61,
         "exact_head": true,
         "exact_head_verified": true,
-        "wheel_build_verified": true,
-        "installed_wheel_primary_mission_verified": true
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
       },
       "core_tests": {
         "passed": 723,
         "failed": 0,
         "subtests": 8,
         "coverage_percent": 76,
-        "job_id": 131481131759
+        "job_id": 131545889965,
+        "conclusion": "success"
       },
-      "failing_tests": [],
-      "failure_classification": "Exact-head full-suite passed on 191553; 3,540 repository tests passed, zero failed; wheel build and installed Barrot V3/XRP assets verified."
+      "dependency_audit": {
+        "run_id": 43322324955,
+        "job_id": 131545890651,
+        "passed": true,
+        "conclusion": "success",
+        "manifests": 5,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43322325022,
+        "job_id": 131545890439,
+        "passed": true,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity"
+      ],
+      "failure_classification": "Exact-head full-suite failed on f5c7d65: 3,536 passed, four failed, eight subtests, 61.55% coverage. All four failures are canonical map snapshot assertions: repository_state and ci_evidence still pointed to older integration heads after Run70 appended its new fields. The latest successful full-suite head remains 124fd5e8. No Barrot V3 runtime, XRP collector, feature-store, walk-forward or forecast-ledger test failure was observed. Core tests, dependency audit and fail-closed gate passed. Wheel/installed-wheel verification were skipped because the full-suite step failed.",
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false,
+      "wheel_log": "Skipped after full-suite failure; no wheel result is claimed on this head."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1285,7 +1310,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 130959853334,
+    "core_suite_job": 131545889965,
     "latest_main_workflows": {
       "cross_analysis": {
         "run_id": 43023990234,
@@ -1405,10 +1430,12 @@
     },
     "previous_passing_head": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
     "core_tests": {
-      "passed": 721,
+      "passed": 723,
       "failed": 0,
-      "conclusion": "success",
-      "job_id": 131295463790
+      "subtests": 8,
+      "coverage_percent": 76,
+      "job_id": 131545889965,
+      "conclusion": "success"
     },
     "push_fail_closed_gate": {
       "run_id": 43144128687,
@@ -1416,7 +1443,7 @@
       "passed": true,
       "conclusion": "success"
     },
-    "latest_run_head_sha": "d4caf04e076b8aecc72f8702190444988056ddfe",
+    "latest_run_head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
     "latest_run_conclusion": "failure",
     "run30_documentation_commit_exact_head_ci": "PENDING",
     "historical_attempts": [
@@ -1780,51 +1807,59 @@
       "failure_classification": "Exact-head full-suite passed on verified head dd0152881ab6572b8a649a8bb4b87a9366335b92: 3,449 repository tests, zero failures, eight subtests, 59.99% inclusive barrot_agent package coverage in 84.72 seconds. Core 714/0. Wheel build and installed-wheel verification passed; installed wheel loaded Barrot V3, XRP mission and canonical data assets. Six dependency manifests audited with zero known vulnerabilities reported. PR and push fail-closed gates passed. This pass is scoped to dd015288; the corrective backlog/handoff commit now being created requires its own exact-head CI."
     },
     "current_head_attempt": {
-      "head_sha": "4b6e61e31b27322e6c71dfb3b412ec5f0ad3eb50",
-      "run_id": 43151000823,
+      "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+      "run_id": 43322324880,
       "status": "completed",
       "conclusion": "failure",
-      "full_suite_job_id": 130959853107,
+      "completed_at_utc": "2026-11-12T22:45:02Z",
+      "full_suite_job_id": 131545890322,
       "full_repository_suite": {
-        "passed": 3495,
-        "failed": 5,
+        "passed": 3536,
+        "failed": 4,
         "subtests": 8,
-        "coverage_percent": 61.31,
+        "coverage_percent": 61.55,
         "coverage_floor_percent": 53,
-        "duration_seconds": 59.26,
+        "duration_seconds": 57.61,
         "exact_head": true,
         "exact_head_verified": true,
         "wheel_build_verified": false,
         "installed_wheel_primary_mission_verified": false
       },
       "core_tests": {
-        "job_id": 130959853334,
-        "passed": 716,
+        "passed": 723,
         "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "job_id": 131545889965,
         "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43151000842,
-        "job_id": 130959853244,
+        "run_id": 43322324955,
+        "job_id": 131545890651,
+        "passed": true,
         "conclusion": "success",
-        "manifests": 6,
+        "manifests": 5,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43151000788,
-        "job_id": 130959852960,
-        "conclusion": "success"
+        "run_id": 43322325022,
+        "job_id": 131545890439,
+        "passed": true,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
       },
       "failing_tests": [
-        "test_current_map_schema_and_capture_timestamps_are_consistent",
-        "test_repository_snapshot_matches_current_main_and_successor_branch",
-        "test_superseded_pr_1660_is_retained_until_successor_merge",
-        "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "test_run20_snapshot_is_append_only_and_tracks_current_integration_head"
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity"
       ],
-      "failure_classification": "All five failures are stale-map metadata assertions: timestamp order and integration-head consistency. No runtime/ingestion failure was reported."
+      "failure_classification": "Exact-head full-suite failed on f5c7d65: 3,536 passed, four failed, eight subtests, 61.55% coverage. All four failures are canonical map snapshot assertions: repository_state and ci_evidence still pointed to older integration heads after Run70 appended its new fields. The latest successful full-suite head remains 124fd5e8. No Barrot V3 runtime, XRP collector, feature-store, walk-forward or forecast-ledger test failure was observed. Core tests, dependency audit and fail-closed gate passed. Wheel/installed-wheel verification were skipped because the full-suite step failed.",
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false,
+      "wheel_log": "Skipped after full-suite failure; no wheel result is claimed on this head."
     },
-    "latest_verified_code_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "latest_verified_code_head": "124fd5e8ef631c31f67840468a64f6bcad924147",
     "core_suite": {
       "passed": 714,
       "failed": 0,
@@ -1832,7 +1867,7 @@
       "conclusion": "success"
     },
     "post_run37_map_repair_commit_ci": "PENDING_EXACT_HEAD",
-    "full_suite_failure_classification": "Exact-head full-suite failed on 28eafc87d7a7c4709789c51bc19839264b12eff4: 3,500 passed, 5 failed, eight subtests passed, 61.34% coverage in 68.93 seconds. The five failures were test-contract/snapshot defects: literal backslash in the event artifact expectation; security test expected zero branch-tip paths while 17/17 recursive trees contain inherited .config/gh/hosts.yml; stale non-workflow path counts (995 versus 987; verified current count 998); CI failure narrative omitted the required exact-head classification; retention test expected three 90-day artifacts while workflow defines four. The 3,500 other tests passed. Core suite, six-manifest dependency audit and fail-closed gate passed. Wheel/installed verification was skipped after full-suite failure. Run47 corrects these assertions and the new head requires exact-head CI.",
+    "full_suite_failure_classification": "Exact-head full-suite failed on f5c7d65: 3,536 passed, four failed, eight subtests, 61.55% coverage. All four failures are canonical map snapshot assertions: repository_state and ci_evidence still pointed to older integration heads after Run70 appended its new fields. The latest successful full-suite head remains 124fd5e8. No Barrot V3 runtime, XRP collector, feature-store, walk-forward or forecast-ledger test failure was observed. Core tests, dependency audit and fail-closed gate passed. Wheel/installed-wheel verification were skipped because the full-suite step failed.",
     "previous_attempts": [
       {
         "head_sha": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
@@ -2013,17 +2048,12 @@
       "failure_classification": "Exact-head full-suite failed: 23 current-map schema compatibility failures after commit 043909f replaced the richer append-only map with a reduced Run36-shaped map. 3,426 tests passed; core suite 714/0. The failures are map fixture/schema mismatches, not observed Barrot V3 runtime or prediction-engine regressions. Wheel build and installed-wheel mission verification were skipped because the test step failed first."
     },
     "wheel_build": {
-      "passed": true,
-      "conclusion": "success"
+      "verified": false,
+      "skipped_after_full_suite_failure": true
     },
     "installed_wheel_primary_mission": {
-      "passed": true,
-      "conclusion": "success",
-      "verified_components": [
-        "Barrot V3",
-        "XRP mission",
-        "canonical data assets"
-      ]
+      "verified": false,
+      "skipped_after_full_suite_failure": true
     },
     "post_run37_map_snapshot_correction_ci": "PENDING_EXACT_HEAD",
     "post_run37_final_handoff_commit_ci": "PENDING_EXACT_HEAD",
@@ -2266,7 +2296,7 @@
       "note": "Push audit completed on an earlier Run38 commit, not final head dd015288; exact final head has a successful PR dependency audit."
     },
     "main_current_ci_scope": "Core-only 718-test main CI; no full repository suite job on main. Integration has the full-suite job.",
-    "latest_verified_full_suite_passed_head": "67f2bf2b7f2401b1391c9fe17c46e6db3e2da456",
+    "latest_verified_full_suite_passed_head": "124fd5e8ef631c31f67840468a64f6bcad924147",
     "main_full_suite": {
       "run_id": 42944864014,
       "job_id": 130275108548,
@@ -2460,7 +2490,7 @@
       "installed_wheel_primary_mission_verified": false,
       "wheel_log": "Skipped after the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
     },
-    "latest_exact_head_ci_run_id": 43203975056,
+    "latest_exact_head_ci_run_id": 43322324880,
     "latest_main_cross_analysis_run": 43157737939,
     "latest_main_cross_analysis_conclusion": "success",
     "previous_attempt_before_run55": {
@@ -2646,15 +2676,57 @@
       "note": "The next evidence-only correction must receive exact-head full-suite, core-suite, wheel/installed-wheel, dependency-audit and fail-closed verification."
     },
     "latest_docs_head_attempt": {
-      "head_sha": "e72541f2795f95dc896952f20ed42cc061e2f569",
-      "run_id": 43293323076,
+      "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+      "run_id": 43322324880,
+      "status": "completed",
       "conclusion": "failure",
-      "passed": 3524,
-      "failed": 15,
-      "subtests": 8,
-      "coverage_percent": 61.55,
-      "duration_seconds": 97.16,
-      "failure_classification": "Map schema regression, not runtime prediction-engine failure."
+      "completed_at_utc": "2026-11-12T22:45:02Z",
+      "full_suite_job_id": 131545890322,
+      "full_repository_suite": {
+        "passed": 3536,
+        "failed": 4,
+        "subtests": 8,
+        "coverage_percent": 61.55,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 57.61,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
+      },
+      "core_tests": {
+        "passed": 723,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "job_id": 131545889965,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 43322324955,
+        "job_id": 131545890651,
+        "passed": true,
+        "conclusion": "success",
+        "manifests": 5,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43322325022,
+        "job_id": 131545890439,
+        "passed": true,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity"
+      ],
+      "failure_classification": "Exact-head full-suite failed on f5c7d65: 3,536 passed, four failed, eight subtests, 61.55% coverage. All four failures are canonical map snapshot assertions: repository_state and ci_evidence still pointed to older integration heads after Run70 appended its new fields. The latest successful full-suite head remains 124fd5e8. No Barrot V3 runtime, XRP collector, feature-store, walk-forward or forecast-ledger test failure was observed. Core tests, dependency audit and fail-closed gate passed. Wheel/installed-wheel verification were skipped because the full-suite step failed.",
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false,
+      "wheel_log": "Skipped after full-suite failure; no wheel result is claimed on this head."
     },
     "latest_corrective_head_attempt": {
       "head_sha": "c8b2d36e0e0859bcb6f646212476921e09197d46",
@@ -2678,14 +2750,102 @@
       "message": "Exact-head full repository suite passed on current handoff/map branch head."
     },
     "latest_current_head_attempt": {
+      "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+      "run_id": 43322324880,
+      "status": "completed",
+      "conclusion": "failure",
+      "completed_at_utc": "2026-11-12T22:45:02Z",
+      "full_suite_job_id": 131545890322,
+      "full_repository_suite": {
+        "passed": 3536,
+        "failed": 4,
+        "subtests": 8,
+        "coverage_percent": 61.55,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 57.61,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false
+      },
+      "core_tests": {
+        "passed": 723,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "job_id": 131545889965,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 43322324955,
+        "job_id": 131545890651,
+        "passed": true,
+        "conclusion": "success",
+        "manifests": 5,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43322325022,
+        "job_id": 131545890439,
+        "passed": true,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity"
+      ],
+      "failure_classification": "Exact-head full-suite failed on f5c7d65: 3,536 passed, four failed, eight subtests, 61.55% coverage. All four failures are canonical map snapshot assertions: repository_state and ci_evidence still pointed to older integration heads after Run70 appended its new fields. The latest successful full-suite head remains 124fd5e8. No Barrot V3 runtime, XRP collector, feature-store, walk-forward or forecast-ledger test failure was observed. Core tests, dependency audit and fail-closed gate passed. Wheel/installed-wheel verification were skipped because the full-suite step failed.",
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false,
+      "wheel_log": "Skipped after full-suite failure; no wheel result is claimed on this head."
+    },
+    "previous_attempt_before_run70": {
       "head_sha": "191553bd74e1998a49ac1cd4c1f018099986575e",
       "run_id": 43303663364,
+      "status": "completed",
+      "conclusion": "success",
+      "full_suite_job_id": 131481131214,
+      "full_repository_suite": {
+        "passed": 3540,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 61.55,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 89.44,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": true,
+        "installed_wheel_primary_mission_verified": true
+      },
+      "core_tests": {
+        "passed": 723,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "job_id": 131481131759
+      },
+      "failing_tests": [],
+      "failure_classification": "Exact-head full-suite passed on 191553; 3,540 repository tests passed, zero failed; wheel build and installed Barrot V3/XRP assets verified."
+    },
+    "run70_parent_success": {
+      "head_sha": "124fd5e8ef631c31f67840468a64f6bcad924147",
+      "run_id": 43319691761,
       "conclusion": "success",
       "passed": 3540,
       "failed": 0,
       "subtests": 8,
       "coverage_percent": 61.55,
-      "duration_seconds": 89.44
+      "duration_seconds": 83.05,
+      "core_tests": {
+        "passed": 723,
+        "failed": 0,
+        "coverage_percent": 76
+      },
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true
     }
   },
   "workflow_safety_audit": {
@@ -8489,8 +8649,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run70",
-  "latest_run_captured_at_utc": "2026-11-12T22:34:37Z",
+  "latest_run_id": "Run70-CI-correction",
+  "latest_run_captured_at_utc": "2026-11-12T22:45:02Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -20037,7 +20197,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T22:34:37Z",
+  "updated_at_utc": "2026-11-12T22:45:02Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -22536,11 +22696,11 @@
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "unstable",
     "formal_reviews": 0,
     "approvals": 0,
     "review_threads": 0,
-    "head_sha": "191553bd74e1998a49ac1cd4c1f018099986575e"
+    "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c"
   },
   "latest_market_refresh_run42": {
     "retrieved_at_utc_approx": "2026-11-12T02:29-02:31Z",
@@ -24417,7 +24577,7 @@
   },
   "run46_forecast_status": "NOT_ISSUED",
   "model_eligible": false,
-  "next_concrete_action": "Finish semantic review of the 1,075-file integration and exact blob reconciliation of overlapping source PRs.",
+  "next_concrete_action": "Repair canonical repository_state and ci_evidence fields, then rerun exact-head full suite without changing tests.",
   "run47_research_artifact_path": "research/xrp_intelligence/20261112T050251Z-run47-market-quality-evernorth-sbi-resale-and-exact-head-ci-repair.json",
   "run47_forecast_status": "NOT_ISSUED",
   "current_forecast_status": "NOT_ISSUED",
@@ -24707,7 +24867,7 @@
     }
   },
   "current_market_snapshot_note": "Earlier raw-capture snapshot preserved. Run54 web/API market observations are stored separately with raw_source_sha256=null and model_eligible=false; they are not substituted into the point-in-time feature store.",
-  "last_verification_scope": "Run70: main/integration refs and recursive trees; complete open-PR inventory; #1662 metadata/files/reviews/checks; exact-head full-suite, dependency and fail-closed CI; main CI and automatic workflow side effects; 17 affected PR branch-tip credential-path checks without reading file contents; 50 workflow patch review; current XRP spot, order-book, derivatives, ETF, exchange-flow, macro and institutional sources.",
+  "last_verification_scope": "Run70 CI failure diagnosis: full-suite log and four failing assertions inspected; root cause is stale canonical repository_state and ci_evidence fields in the nine-platform map. Core tests, dependency audit and fail-closed gate passed. No runtime failures.",
   "run52_snapshot": {
     "captured_at_utc": "2026-11-12T09:04:43Z",
     "pre_handoff_commit_sha": "b6f7577db144b105fff03cef4a37eaa738003c5f",
@@ -28918,13 +29078,14 @@
     "Circle-Coinbase distribution costs are USDC ecosystem economics, not XRP capital flows."
   ],
   "run70_next_actions": [
-    "Finish semantic review of the 1,075-file integration and exact blob reconciliation of overlapping source PRs.",
+    "Repair canonical repository_state and ci_evidence fields to the exact tested parent head; preserve prior successful and failed CI attempts.",
+    "Rerun exact-head full repository suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gate.",
+    "Finish semantic review of the 1,076-file integration and exact blob reconciliation of overlapping source PRs.",
     "Resolve GitHub connector least privilege, branch-protection visibility, credential-owner revocation and Pages publication authorization.",
-    "Keep source PRs open until the successor is merged and its exact content is verified on main.",
-    "Bring the read-only XRP ingestion workflow to main only after safe integration approval; then verify scheduled runs and raw receipts.",
-    "Add independent WORM anchoring, trusted timestamps and synchronized historical market/collateral data.",
-    "Collect independent shadow outcomes and demonstrate calibrated out-of-sample lift over all four baselines.",
-    "Keep forecast issuance disabled until every readiness gate passes."
+    "Keep source PRs open until a verified successor is merged and its exact content is verified on main.",
+    "Bring the read-only XRP ingestion workflow to main only after safe integration approval; verify actual scheduled runs and raw receipts.",
+    "Add independent WORM anchoring, trusted timestamps, synchronized historical market/collateral data and independent shadow outcomes.",
+    "Keep forecast issuance disabled until calibration and out-of-sample lift over all four baselines are independently verified."
   ],
   "latest_market_refresh_run70": {
     "kraken_xrp_usd": {
@@ -29155,6 +29316,70 @@
       "job_id": 131381649202,
       "workflow_conclusion": "success",
       "observed_failure": "ModuleNotFoundError: No module named 'httpx'; b_agent.py --sync fell back to 'sync skipped - manual sync'; successful LunaRoute transfer not verified"
+    }
+  },
+  "run70_ci_correction": {
+    "captured_at_utc": "2026-11-12T22:45:02Z",
+    "head_sha": "f5c7d65e2b3a16d7567fb863d74a87dc81704e5c",
+    "run_id": 43322324880,
+    "conclusion": "failure",
+    "passed": 3536,
+    "failed": 4,
+    "subtests": 8,
+    "coverage_percent": 61.55,
+    "duration_seconds": 57.61,
+    "failing_tests": [
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity"
+    ],
+    "root_cause": "Run70 added additive run70_* fields but did not advance the canonical top-level repository_state and ci_evidence records. Four assertions still compared the previous 905085/191553 snapshots with the 124fd parent head.",
+    "correction": "Advance canonical repository_state and integration_pr to f5c7 parent snapshot; advance ci_evidence.latest_attempt to the exact f5c7 failure; preserve the 124fd successful parent as run70_parent_success. No tests removed or weakened.",
+    "runtime_failure_observed": false,
+    "core_suite_passed": true,
+    "dependency_audit_passed": true,
+    "fail_closed_gate_passed": true,
+    "wheel_build_skipped": true,
+    "installed_wheel_verification_skipped": true,
+    "next_head_full_suite_status": "PENDING_AFTER_CANONICAL_MAP_CORRECTION_COMMIT"
+  },
+  "run70_followup_market_observation": {
+    "captured_at_utc": "2026-11-12T22:44:12Z",
+    "model_eligible": false,
+    "raw_receipt_id": null,
+    "raw_source_sha256": null,
+    "tradradar": {
+      "updated_at_utc": "2026-11-12T19:45:00Z",
+      "open_interest_usd": 1530000000,
+      "oi_change_24h_percent": -2.45,
+      "funding_8h_percent": 0.0087,
+      "long_short_ratio": 3.98,
+      "long_account_share_percent": 79.9,
+      "liquidations_24h_min_usd": 10480000,
+      "long_liquidations_usd": 10030000,
+      "short_liquidations_usd": 448350,
+      "source": "https://tradradar.io/markets/xrp"
+    },
+    "coinbase_cbxrp": {
+      "display_refresh": "2026-11-12 2:15 PM (timezone not specified)",
+      "reserves_xrp": 152615440.35,
+      "supply_cbxrp": 152613193.822,
+      "surplus_xrp": 2246.528,
+      "coverage_percent": 100.001472,
+      "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "limitation": "Coinbase-published proof-of-reserves display; not an independent custody audit."
+    },
+    "spot_followup": {
+      "captured_at_utc": "2026-11-12T22:44:12Z",
+      "kraken_xrp_usd_last": 1.03321,
+      "kraken_event_timestamp_available": false,
+      "okx_xrp_usdt_last": 1.0362,
+      "okx_event_time_utc": "2026-11-12T22:43:30.273Z",
+      "kraken_usdt_usd_mid": 0.998795,
+      "normalized_okx_mid_usd": 1.035001,
+      "normalized_gap_percent": 0.1782,
+      "interpretation": "Asynchronous quote comparison; not an executable arbitrage signal."
     }
   }
 }

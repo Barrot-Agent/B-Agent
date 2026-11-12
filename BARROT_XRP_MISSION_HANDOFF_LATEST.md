@@ -3164,3 +3164,32 @@ The event registry still contains 70 curated events, zero raw publisher SHA-256 
 6. Keep forecast issuance disabled until calibration and out-of-sample lift over all four baselines are independently verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source PR closure occurred.
+
+
+---
+
+## Run70 exact-head CI correction — 2026-11-12T22:45:02Z
+
+The evidence-only Run70 commit `f5c7d65` triggered exact-head CI. The full repository suite completed with **3,536 passed, 4 failed, eight subtests**, 61.55% coverage, 57.61 seconds. Core tests passed 723/723. Dependency audit passed (five manifests, zero known vulnerabilities). Fail-closed gate passed. Wheel build and installed-wheel verification were skipped because the full-suite step failed.
+
+The four failures were:
+1. `test_repository_snapshot_matches_current_main_and_successor_branch`
+2. `test_superseded_pr_1660_is_retained_until_successor_merge`
+3. `test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head`
+4. `test_run20_snapshot_is_append_only_and_preserves_original_branch_identity`
+
+**Root cause:** Run70 appended the new `run70_*` records but did not advance the canonical top-level `repository_state` and `ci_evidence` objects. The former still referenced integration head `905085e` and the latter still referenced successful head `191553b`, while the new Run70 integration snapshot and PR metadata referenced parent head `124fd5e8`. The tests correctly rejected this inconsistency. No Barrot V3 runtime, XRP collector, feature-store, walk-forward or forecast-ledger test failure was observed.
+
+**Correction executed:** the next evidence-only commit advances canonical repository and PR state to parent `f5c7d65`, records the failed exact-head CI attempt against that head, and preserves the successful `124fd5e8` run as a separate prior-success record. No tests were removed, weakened or bypassed. Exact-head CI on the corrective commit remains pending.
+
+CI evidence:
+- [Full CI 43322324880](https://github.com/Barrot-Agent/B-Agent/actions/runs/43322324880)
+- [Dependency audit 43322324955](https://github.com/Barrot-Agent/B-Agent/actions/runs/43322324955)
+- [Fail-closed gate 43322325022](https://github.com/Barrot-Agent/B-Agent/actions/runs/43322325022)
+
+### Additional post-capture observations
+
+- TradRadar's later November 12, 19:45 UTC snapshot reports $1.53B XRP perpetual OI across seven exchanges, -2.45% over 24 hours, +0.0087% eight-hour funding, a 3.98 long/short ratio (79.9% long), and at least $10.48M liquidations ($10.03M long, $448.35K short). Kodexius' seven-contract/five-exchange snapshot remains $631.55M OI at 18:34 UTC. Preserve both universes; do not average. [TradRadar](https://tradradar.io/markets/xrp) · [Kodexius](https://kodexius.com/data/crypto-derivatives/XRP).
+- Coinbase's public cbXRP proof-of-reserves page, refreshed November 12 at 2:15 PM (timezone not specified), displays 152,615,440.35 XRP reserves and 152,613,193.822 cbXRP supply: a 2,246.528 XRP surplus, approximately 100.00147% displayed coverage. This is Coinbase-published reserve data, not an independent custody audit and not proof of all Coinbase XRP holdings. [Coinbase cbXRP proof of reserves](https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves).
+
+Forecast remains `NOT_ISSUED`; all post-capture web observations remain model-ineligible because byte-exact raw receipts and independent timestamp anchors were not created.
