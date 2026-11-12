@@ -142,6 +142,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "yield strategies commenced following the Closing" in evernorth["claim"]
     assert "SBI Holdings, Inc." in evernorth["claim"]
     assert "39.9%" in evernorth["claim"]
+    assert evernorth["event_status"] == "occurred"
     assert "does not disclose a 400 million XRP allocation" in evernorth["counter_hypothesis"]
     flare = by_id["flare-fxrp-one-year-2026-09-24"]
     assert "145.2 million FXRP" in flare["claim"]

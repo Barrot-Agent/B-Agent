@@ -3569,3 +3569,12 @@ This is a direct, material SBI Holdings–Evernorth equity relationship. It is n
 Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
 
 The event registry retains the SEC and Flare records as research-only: 73 curated events, zero raw source hashes, zero model-eligible events. Forecast status remains `NOT_ISSUED`.
+
+
+---
+
+## Run71D — final event-status schema correction — 2026-11-12T23:37:04.142Z
+
+The exact-head full suite on `ad2c5a0c8fbd6454aaa8329b4aedd5c1811b231f` completed with **3,523 passed, 17 failed, eight subtests**, 61.53% coverage. Core tests passed 723. The 17 failures all traced to one new event record: Evernorth's `event_status="filed"` is not in the event-timeline schema's allowed set (`occurred`, `ongoing`, `scheduled`, `unknown`). The event is a completed SEC filing, so its event status is corrected to `occurred`; the regression test now asserts this. The prior `corporate_finance` type and PNC wording issues are already corrected.
+
+No runtime code changed. The event registry, one regression test and this handoff are updated on the same existing integration branch. The new head requires a fresh exact-head full-suite run plus dependency and fail-closed verification. No merge is authorized until those pass and the separate approval/security blockers are resolved.
