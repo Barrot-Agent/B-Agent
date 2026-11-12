@@ -227,7 +227,7 @@ def test_prediction_engine_production_gaps_keep_forecasts_disabled():
     ):
         assert engine[key] is False
     gaps = " ".join(engine["not_production_verified"]).lower()
-    assert "scenario and counter-hypothesis generation" in gaps
+    assert "scenario outputs remain authored research hypotheses without forecast probabilities" in gaps
     assert "effective-sample-size correction" in gaps
     assert "synchronized multi-venue historical" in gaps
     assert engine["forecast_status"] == "NOT_ISSUED"

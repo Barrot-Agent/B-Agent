@@ -550,7 +550,7 @@
     },
     {
       "event_id": "xrp-okx-spot-2026-11-12T0447Z",
-      "event_type": "market_microstructure",
+      "event_type": "market",
       "event_name": "OKX XRP-USDT ticker",
       "hypothesis_id": "xrp-spot-cross-venue-alignment-vs-staleness-run47",
       "domain": "spot_structure",
@@ -590,7 +590,7 @@
     },
     {
       "event_id": "xrp-kraken-spot-2026-11-12T0502Z",
-      "event_type": "market_microstructure",
+      "event_type": "market",
       "event_name": "Kraken XRP/USD and USDT/USD tickers",
       "hypothesis_id": "xrp-spot-cross-venue-alignment-vs-staleness-run47",
       "domain": "spot_structure",
@@ -629,7 +629,7 @@
     },
     {
       "event_id": "xrp-fuelmaps-depth-2026-11-12T0400Z",
-      "event_type": "market_microstructure",
+      "event_type": "market",
       "event_name": "Fuelmaps six-venue XRP spot book",
       "hypothesis_id": "xrp-resting-spot-depth-asymmetry-run47",
       "domain": "order_book_liquidity",
@@ -716,7 +716,7 @@
     },
     {
       "event_id": "xrp-etf-flows-2026-11-10",
-      "event_type": "etf_flows",
+      "event_type": "institutional",
       "event_name": "Alpha Finance and Pre-Tick SoSoValue-derived flows",
       "hypothesis_id": "xrp-etf-outflow-pulse-vs-cumulative-demand-run47",
       "domain": "capital_flows",
@@ -762,7 +762,7 @@
       "hypothesis_id": "evernorth-sbi-equity-resale-supply-vs-locked-holdings-run47",
       "domain": "institutional_capital",
       "hypothesis": "The SEC prospectus registers substantial potential XRPN resale capacity and identifies a large SBI-controlled Class A position.",
-      "counter_hypothesis": "The registered 73.688M is not all outstanding; it includes potential conversions/exchanges/warrants. General resale language references lock-up provisions, while the specific signatory list names Ripple, Sponsor and Contributor Related Party Entity, not SBI. SBI's contractual restriction is unresolved. Registration is not proof of sale; holder resales yield no issuer proceeds.",
+      "counter_hypothesis": "The registered 73.688M is not all outstanding; it includes potential conversions/exchanges/warrants. General resale language references lock-up provisions, while SBI is not named in the specific Lock-Up Agreement signatory list. SBI's separate contractual restrictions remain unresolved. SBI's contractual restriction is unresolved. Registration is not proof of sale; holder resales yield no issuer proceeds.",
       "claim": "The Nov 9 filing registers up to 73,688,162 Class A shares: 19,102,635 issued, 31,392,746 potential Class C conversions, 22,953,128 potential Company Unit redemptions/exchanges and 239,653 warrant exercise shares. SBI-controlled entities hold 9,431,914 Class A and 2,359,038 non-voting, unlisted, non-transferable Class C shares; 39.9% group ownership cap. Specific lock-up signatories cover 7,044,386 Class A shares (29.8% of Oct 9 outstanding).",
       "source_id": "sec_evernorth_424b3_run47",
       "source_name": "SEC Form 424B3 — Evernorth Holdings",
