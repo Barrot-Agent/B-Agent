@@ -1,3 +1,146 @@
+# Run61 — 2026-11-12 — exact-head CI, live spot/depth, exchange balances, Evernorth warrants and identity audit
+
+## Mission — VERIFIED
+
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation. Forecast issuance remains fail-closed.
+
+## Repository and integration — VERIFIED
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`; complete recursive main tree: 1,388 entries, not truncated.
+- Integration branch: `integration/xrp-v3-unified-main-20261111`; head before this handoff update: `45ff8421be4afa22923dc4acd45b8e13fb6d53b2`; complete recursive tree: 2,321 entries, not truncated; 2,120 commits ahead / zero behind main.
+- PR #1661 remains the sole consolidated V3/XRP integration PR. It is open and draft, mergeable=true, 1,064 changed files, 2,120 commits ahead, zero formal reviews, approvals or review threads.
+- Open PR inventory: 374 total, 360 drafts and 14 non-drafts. No branch or PR was created; no source PR was closed.
+- PR #1661 changed-file inventory: 49 workflows, 548 XRP research artifacts, 373 tests, 51 runtime files, 6 data files, 3 docs and 34 other paths.
+- Current source overlap reconciliation carried forward from Run60: #1660 940 identical/32 different of 972 shared; #1643 661/9 of 670; #1640 234/46 of 280; #1642 all 7 paths differ and remain unique; #1653 and #1655 each retain 3 source-only paths. Preserve all differing and unique work.
+
+## Exact-head CI — VERIFIED, with count limitation
+
+**Code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`:**
+- Full repository suite: **3,512 passed, zero failed, 8 subtests passed**, 61.42% coverage.
+- Core suite: **721 passed, 8 subtests**, 76% coverage.
+- Wheel built and installed; installed package verified Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest dependency audit and fail-closed PR gate passed.
+
+**Documentation/evidence head `156a54d09b17ef41bc3ea3af9809de8c68281667`:**
+- Exact-head full CI [43238924765](https://github.com/Barrot-Agent/B-Agent/actions/runs/43238924765) completed **success**. Both the core test job and full repository test job passed; the full-suite job also completed the legacy core coverage floor and wheel/installed-mission verification.
+- Exact-head dependency audit [43238924653](https://github.com/Barrot-Agent/B-Agent/actions/runs/43238924653) passed.
+- Exact-head fail-closed PR gate [43238924687](https://github.com/Barrot-Agent/B-Agent/actions/runs/43238924687) passed.
+- Push dependency audit [43238914362](https://github.com/Barrot-Agent/B-Agent/actions/runs/43238914362) and push fail-closed gate [43238914412](https://github.com/Barrot-Agent/B-Agent/actions/runs/43238914412) passed.
+- The GitHub job-log endpoint returned BlobNotFound for the exact documentation-head run, so its test count could not be independently recovered. **Do not attribute the predecessor's 3,512 count to `156a54d`.**
+- Run61 adds a JSON evidence artifact and this handoff only; no runtime or test code was changed. The new JSON was serialized with `JSON.stringify`; its SHA-256 is still null because it was not captured by RawReceiptArchive.
+
+## Main-branch health and security — BLOCKED
+
+- Latest main Cross Analysis [43231350756](https://github.com/Barrot-Agent/B-Agent/actions/runs/43231350756) passed on unchanged main.
+- Main Pillars Consistency Check [43223351964](https://github.com/Barrot-Agent/B-Agent/actions/runs/43223351964) failed. Its log confirms missing `GITHUB_APP_ID`/`GITHUB_APP_PRIVATE_KEY`/`GITHUB_INSTALLATION_ID`, Databricks HTTP 403 and Hugging Face `BUILD_ERROR`. The deploy-sync and system-prompt checks passed.
+- Main branch reports protected=true, but detailed branch-protection requirements remain inaccessible (HTTP 403). Visible fallback ruleset #10863829 remains disabled.
+- GitHub connector identity remains overprivileged: admin, maintain, push, pull and triage.
+- GitHub Pages can publish on main push; publication authorization remains unresolved.
+- `.config/gh/hosts.yml` was last audited in Run60: present in 17/17 affected open PR branch-tip trees and absent from main/integration. Contents were not read. Provider-side OAuth revocation remains unverified.
+- Patch-level review of all 49 changed workflows was completed. Databricks bundle and Hugging Face sync are quarantined; self-hosted-brain sync has a false execution guard; Cloudflare deployment requires main-only confirmation and separate secret-rotation confirmation; paper trading is manual, explicit-YES and artifact-only; Databricks/Kaggle operations require separate confirmations; signal summary requires Groq-transfer confirmation, exact-main-SHA verification and read-only permissions. No workflow with an external side effect was dispatched.
+- The XRP collector remains main-only/read-only. GitHub Actions artifacts/caches are not WORM, and no successful scheduled ingestion on main is verified.
+- Approximately 1,003 remaining non-workflow paths still require semantic review.
+
+## XRP market and liquidity — RESEARCH CAPTURED, MODEL-INELIGIBLE
+
+Research cutoff: **2026-11-12 14:42:05 UTC**. These web/API observations have no Barrot RawReceiptArchive byte receipts; `raw_source_sha256=null`, `model_eligible=false`.
+
+### Spot
+- OKX XRP-USDT: last 1.0317, bid 1.0316, ask 1.0318; provider timestamp 14:41:15.796 UTC; 24h open 1.0563, high 1.0807, low 1.0196; 24h volume 36.27M XRP.
+- OKX USDT-USD: 0.99886 at 14:29:04.072 UTC. Approximate normalized OKX XRP price: $1.03052.
+- Bybit XRPUSDT: 1.0283 at 14:14:48.765 UTC, 24h change -2.90%; this quote is over 27 minutes old at the cutoff.
+- Kraken XRP/USD: last 1.02409, but no provider event timestamp. Its freshness is unverified.
+- The approximate normalized OKX/Kraken gap is 0.63%, but the venues and quote timestamps are asynchronous; do not average or interpret it as an executable arbitrage.
+
+### Spot order-book depth
+Fuelmaps' hourly six-venue snapshot at 14:00 UTC (42 minutes old at cutoff), mid $1.0333:
+- ±0.5%: $7.9M bids / $4.8M asks.
+- ±1%: $12.6M / $10.6M.
+- ±2%: $17.3M / $11.9M.
+- ±5%: $28.6M / $14.3M.
+- ±10%: $32.6M / $15.5M, five venues covering.
+- Largest displayed bid: $4.7M at $1.000; largest ask: $1.8M at $1.042.
+- Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini are included; Binance and Bitget are excluded. Hourly averages, spot only; resting orders can be cancelled.
+
+### Exchange balances
+XRP Insights' 08:00 UTC XRPL snapshot: 22.34B XRP in 706 publicly attributed wallets across 24 exchanges, including cold storage.
+- Same-wallet 7-day change: +45.8M XRP.
+- Same-wallet 30-day change: -180.9M XRP.
+- Naive 7-day change is +61.4M because five newly tracked wallets add 15.6M XRP; naive 30-day change is +346.7M because seven newly tracked wallets add 527.6M XRP.
+- Nov 12 daily same-wallet change is +5.3M XRP but excludes Binance due to a coverage change.
+- Largest tracked balances: Upbit 6.47B; Coinbase 5.81B (includes about 150.6M cbXRP Base reserve); Binance 2.69B (includes wrapped/charity balances); Bithumb 1.81B; Uphold 1.69B; Kraken 966.6M; SBI VC Trade 56.9M.
+- SBI VC Trade attributed wallets: -3.1M XRP over 7 days and -299K over 30 days.
+- This is a labeled-wallet inventory, not tradable float or a customer-reserve audit.
+
+### Derivatives disagreement
+No fresh synchronized direct exchange OI/funding capture was obtained. Liqwall's visible 02:52 UTC snapshot showed $1.16B OI, +0.2% 24h, average funding +0.0057%/8h, 75.3% Binance accounts long and $2.9M long versus $1.1M short liquidations. WhaleRadar's 08:06 UTC Hyperliquid cohort showed $31.8M tracked whale shorts versus $21M longs. Different venues, cohorts and stale cutoffs; retain disagreement, do not average.
+
+### ETF flows
+- XRP Insights: six US spot ETFs plus BITW, through Nov 11; three settled sessions Nov 9–11 net -9,213,260 XRP; holdings 1,185,967,427 XRP.
+- Alpha Finance five-fund cohort through Nov 10: -$7.6M daily, +$1.3M over 30 sessions, +$1.71B cumulative.
+- ByKaranteli six-fund cohort through Nov 10: -$7.6M daily, -$18M over five sessions, +$1.79B cumulative and $1.19B net assets.
+- Cohorts, cutoff dates and units differ. Do not average.
+
+### XRPL lending governance
+At 14:19 UTC, ledger 108,283,647; 35/35 trusted validators heard; 29 yes votes required. SingleAssetVault 23/35, LendingProtocol 22/35, LendingProtocolV1_1 22/35; zero amendments in a 14-day activation countdown. XLS-65/66 are not active lending. The proposed system pools one asset and uses fixed-term loans with off-chain broker underwriting; do not infer borrower collateralization or XRP collateral demand from the vote count.
+
+## Evernorth and "actual capital" — PRIMARY SEC DISTINCTIONS
+
+The Oct 19 SEC 424B3 and Oct 23 supplement register up to **11,499,992 shares issuable upon public-warrant exercise at $11.50**. Evernorth receives cash only upon exercise; secondary sales of resulting shares generate no proceeds for Evernorth. The theoretical gross maximum is $132,249,908 if all warrants are cash-exercised; it is not money received.
+
+XRPN closed Nov 11 at $9.27 on ChartExchange (another source reported $9.28), about 19.4% below the $11.50 strike; XRPNW closed at $1.56. Thus the public warrants were out of the money at that close. No exercise proceeds were verified.
+
+Keep separate:
+- 73,688,162 shares registered for selling-securityholder resale — secondary supply, not issuer proceeds.
+- Up to 5,218,935 shares under the separate conditional Cantor ELOC — not drawn proceeds.
+- $30M convertible PIK note — debt, not cash XRP purchases.
+- Evernorth's 473.276M XRP closing treasury: 388.911M in-kind and 84.366M cash-purchased. About 82.17% was in kind; about 17.83% was cash-purchased.
+
+This resolves a recurring "actual capital" ambiguity: warrant capacity, ELOC capacity, resale registrations, PIK debt, in-kind contributions and cash purchases are separate categories.
+
+## Identity and exact-phrase research
+
+- **SBIC / ChatGPT:** no OpenAI partnership found. Tokyo SBIC's public 2025 ChatGPT/AI training course is educational activity. SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate statutory regional SME investment companies, not SBI Holdings.
+- **ASK Coin:** no primary-source XRP-linked ASK Coin identity or XRPL deployment verified.
+- **"Actual capital":** not a standardized XRP metric; use the SEC capital-category distinctions above.
+- **Kamilah/Camilla Stevenson:** a candidate YouTube handle `@drkamilahstevenson`, a third-party channel ID and two indexed candidate videos surfaced. A Telegram channel links the handle but is unverified; Vling reports channel metrics but is not first-party. All Nations Chicago's first-party page identifies a Dr. Kamilah Stevenson but does not link the candidate channel. Two Glasp-indexed videos identify the creator as Kamilah while transcripts self-introduce “Camila.” Person-to-channel ownership is not established. **No videos are attributed or inventoried as confirmed personal-channel uploads.**
+
+## Institutional rails
+
+- Standard Chartered custody for RLUSD on XRPL is live through its DIFC branch. The LMAX collateral-mirroring integration remains planned and subject to documentation, testing, regulatory requirements and internal approvals. Do not count it as live collateral eligibility.
+- Carry forward Run60 distinctions: Circle USDC/CPN/Arc growth is not XRP demand; Coinbase cbXRP proof-of-reserves is issuer-published, not an independent audit; SBI VC Trade JPYSC/RLUSD distribution is distinct from XRP settlement.
+
+## Prediction engine — IMPLEMENTED vs outstanding
+
+Implemented on integration: 47 public source definitions (45 scheduled); read-only public-data collector; SHA-256 receipt/hash-chain prototype; point-in-time SQLite feature store; event timeline and scenario/counter-hypothesis assembly; naive, momentum, mean-reversion and volatility baselines; chronological walk-forward testing with horizon purge/embargo; probability calibration and PSI drift diagnostics; fail-closed forecast ledger requiring Ed25519 evaluator attestation.
+
+Still outstanding: independent WORM/trusted timestamp anchoring; replayable historical feature-store reconstruction; synchronized historical spot/L2/derivatives/flow/collateral history; production evaluator key; independent shadow outcomes and adequate sample size; demonstrated out-of-sample lift over all four baselines; successful scheduled ingestion on main.
+
+<badge color="warning">Forecast NOT_ISSUED</badge>
+
+Run61 observations were not captured through Barrot RawReceiptArchive. They are research-only and excluded from model features. No directional forecast, paper trade or real-money action occurred.
+
+## Durable Run61 artifact
+
+[Run61 structured evidence JSON](research/xrp_intelligence/20261112T144205Z-run61-exact-head-ci-market-exchange-balance-evernorth-and-identity-audit.json)
+
+## Merge decision — NO MERGE
+
+PR #1661 remains draft with zero approvals/reviews. Although exact-head CI on `156a54d`, dependency audit and fail-closed gates passed, main's Pillars check fails, branch-protection details remain inaccessible, connector permissions are overprivileged, provider-side credential revocation is unverified, Pages publication authorization is unresolved, and semantic review is incomplete. No source PR is closed.
+
+## Next concrete action
+
+1. Continue integrated semantic review of V3 runtime, 49 workflows, XRP ingestion, receipt chain, point-in-time feature store, scenario engine and forecast ledger.
+2. Resolve least-privilege GitHub access, branch-protection visibility, credential-owner revocation and Pages publication authorization.
+3. Repair/resolve main Pillars prerequisites without exposing secrets or weakening fail-closed checks.
+4. Obtain synchronized historical market/derivatives/flow/collateral data and independent raw-source anchoring before any forecast evaluation.
+5. Preserve #1642 and other unique work; do not close source PRs until a verified successor is merged.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
+
+
+---
+
 # Run60 final verification — latest code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`
 
 **VERIFIED on exact code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`:**
