@@ -585,3 +585,29 @@ Canonical evidence and current mission state are recorded in `BARROT_XRP_MISSION
 - Main reports protected=true; detailed branch-protection endpoint returns HTTP 403; visible fallback ruleset is disabled. A previous main push triggered Pages deployment; authorization for another merge-triggered deployment remains unresolved.
 - Backlog: active integration #1640/#1643; preserve #1642 and unique research/security work; #1605 and #1645 are exact-duplicate candidates but remain open until replacements are verified on main; reconcile #1644–#1650 as dependency/action overlap; preserve #1254/#1255 until exact comparison after integration.
 - No merge, close, deployment, secret rotation, Space restart, paper trade, Kaggle submission or funds transfer occurred.
+
+
+---
+
+## Run64c — 2026-11-12T16:00Z — Current integration/backlog snapshot
+
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Sole consolidated integration PR: **#1661**, open/draft/mergeable, pre-correction head `9e0531fa9c70a159267b5106876c3eaf5d537a24`, 2,131 ahead/0 behind, 1,069 changed files (49 workflow files; 1,020 other paths including one mode-only change), zero approvals/reviews/comments.
+- Complete open inventory: **374 PRs**; **360 drafts**; **14 non-drafts**; 366 target main and eight target other branches. Non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1320, #1318, #1317, #1269, #1255, #1254.
+- Exact-head CI on pre-correction head: 3,511 passed, one failed, eight subtests; 61.42% coverage. The sole failure is the ASK identity-map assertion. Core 721 passed; six-manifest dependency audit and fail-closed gate passed; wheel/install verification skipped. The map correction is committed with the Run64c evidence update; current-head CI must be rerun.
+- One mode-only tree difference: `b_agent.sh` 100755 on main versus 100644 on integration, identical blob. Do not silently normalize it; retain for semantic review.
+- Credential path `.config/gh/hosts.yml`: recursively present in 17/17 affected open PR branch tips, absent from main and active integration. No contents read. Provider-side revocation unverified. Changed-file inventory absence was last checked at 05:02:51Z.
+
+### Current backlog classifications
+
+- **Blocked:** #1661 — sole consolidated integration PR; draft, zero approvals, exact-head full suite had one identity-map assertion failure; branch-protection/security/semantic gates remain unresolved.
+- **Superseded/overlap candidates — retain until successor merge and main verification:** #1660 (972 shared paths/30 differing blobs), #1643 (670 shared/nine differing), #1640 (280 shared/46 differing). Carry all unique/differing content before any closure.
+- **Unique/unreviewed — preserve:** #1642 (seven differing prediction paths); #1653 (knowledge graph/safe sync, source-only paths); #1655 (differing/source-only work); #1320 (paper-trader identity/safety); #1318 (schema safety); #1317 (structural analysis/MMI); #1269 (topology/triangulation); all unique research, security, prediction, MMI and topology drafts.
+- **Dependency/action overlap — review exact blobs and side effects:** #1644–#1650. #1645 is an exact-duplicate candidate only after successor merge; #1644/#1647 require workflow side-effect review; #1646/#1648/#1649/#1650 require manifest/lockfile and provider compatibility review. Preserve #1254/#1255 until exact dependency comparison.
+- **Other-base unique/unreviewed:** #1541, #1460, #1450, #1440, #1437, #1436, #1353 and #1265. Do not bulk-close.
+
+### Closure and merge boundary
+
+- Close only exact duplicates/superseded source PRs after #1661 or a successor is merged, replacement files are verified on main, main CI passes, and a cross-reference is posted.
+- Main branch-protection detail remains HTTP 403; visible fallback ruleset #10863829 is disabled. Connector permissions remain overprivileged. Pages publication authorization and provider-side credential revocation remain unresolved.
+- No PR merged or closed. No branch was force-pushed or rewritten. No deployment, secret rotation, Space restart, external-model transfer, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.

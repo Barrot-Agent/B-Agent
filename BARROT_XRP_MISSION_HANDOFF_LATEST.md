@@ -2106,3 +2106,81 @@ Security:
 ### Durable Run64b artifact
 - `research/xrp_intelligence/20261112T154631Z-run64b-event-registry-hypothesis-map-ci-and-identity-correction.json`.
 - Next: exact-head full suite, wheel build and installed-wheel verification on the correction commit; keep PR #1661 blocked until all merge gates and required approvals pass.
+
+
+## Run64c — November 12, 2026, 16:00 UTC
+
+### Repository and integration state
+
+- Main SHA remains `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Integration branch `integration/xrp-v3-unified-main-20261111` was at `9e0531fa9c70a159267b5106876c3eaf5d537a24` before this Run64c evidence correction: 2,131 commits ahead, zero behind.
+- Complete recursive trees: main 1,388 entries / 1,288 blobs; integration 2,326 entries / 2,217 blobs; neither tree response was truncated.
+- Full tree SHA comparison: 929 added paths, 139 content-modified paths, zero deleted paths, and one mode-only change. GitHub PR #1661 reports 1,069 changed files, 296,306 additions and 4,492 deletions. The 1,068 content-path changes plus one mode-only change reconcile to 1,069.
+- The mode-only change is `b_agent.sh`: main mode 100755, integration mode 100644, identical blob SHA/content. It is a Termux wrapper. No mode change was made; preserve it for semantic review.
+- PR #1661 is still the sole consolidated integration PR: open, draft, mergeable=true, mergeable_state=unstable, zero formal approvals, zero reviews and zero review comments. No new branch or PR was created.
+- Complete open-PR inventory: 374 total, 360 drafts, 14 non-drafts; 366 target main and eight target other branches. Non-drafts: #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1320, #1318, #1317, #1269, #1255 and #1254.
+
+### Exact-head CI failure and correction
+
+- Exact current-head run [43252665376](https://github.com/Barrot-Agent/B-Agent/actions/runs/43252665376), head `9e0531fa9c70a159267b5106876c3eaf5d537a24`, completed with **3,511 passed, one failed, eight subtests, 61.42% coverage in 100.89 seconds**. Full-suite job 131302417949 failed at the single research-map assertion. Core job 131302418357 passed 721/721.
+- Sole failure: `tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates`. The map's ASK Coin field was too generic and omitted the explicit separation of Askcoin UCID 4640, Permission Coin UCID 7105, `askcoin.net` and its HugeDomains redirect. No runtime failure was reported.
+- Six-manifest dependency audit [43252665063](https://github.com/Barrot-Agent/B-Agent/actions/runs/43252665063) passed with zero known vulnerabilities reported. Fail-closed gate [43252664876](https://github.com/Barrot-Agent/B-Agent/actions/runs/43252664876) passed with automatic merge disabled. Wheel and installed-wheel verification were skipped because the full suite failed.
+- **Executed correction:** the current nine-platform map now explicitly distinguishes Askcoin UCID 4640 from Permission Coin UCID 7105, records the askcoin.net → HugeDomains redirect as domain-listing evidence only, and states that no XRP-linked ASK Coin identity or XRPL deployment is verified. Existing tests were not removed or weakened.
+- The event registry advances to `run64c-2026-11-12`, 70 events. Eight new institutional/market observations were appended with unique hypothesis IDs; existing event history is preserved. All 70 have null `raw_source_sha256`; all remain research-only, receipt-incomplete and model-ineligible.
+- The map, event registry, structured artifact, canonical handoff, BARROT_SYNC and backlog triage are being committed together on the existing integration branch. The resulting commit must receive its own exact-head CI; the parent-head result is not transferable.
+
+### Market and supply observations
+
+- Direct OKX XRP-USDT quote at 15:44:22.864 UTC: last 1.0210, bid 1.0210, ask 1.0211; 24-hour open 1.0715, high 1.0807, low 1.0164, volume 36.75M XRP.
+- Kraken XRP/USD retrieval at 16:00 UTC: last 1.02442, bid 1.02448, ask 1.02449, UTC-day open 1.05104, high 1.07953, low 1.01516, volume 26.29M XRP. Kraken did not return a provider event timestamp.
+- Kraken USDT/USD midpoint 0.998675 and OKX USDT-USD midpoint 0.998885 (OKX event timestamp 15:36:56.072 UTC) normalize OKX midpoint to 1.0199115 versus Kraken midpoint 1.024485, a -0.4464% asynchronous difference. This is not executable arbitrage or a directional signal.
+- No fresh synchronized L2 snapshot was captured. The prior Fuelmaps 08:00 UTC five-venue depth snapshot is eight hours old at this cutoff and excludes Binance/Bitget.
+- Derivatives remain non-comparable: Coinalyze/BitcoinLeverage's 02:10 UTC partial Binance/Bybit snapshot showed positive funding and long-account shares of 74.71%/81.84%; TradRadar's 19:05 UTC seven-venue snapshot reported $1.57B OI and 79.7% long accounts. Do not average provider universes.
+- ETF reporting remains partial: CryptoETF.today Nov 11 reported -$0.2M for 3/5 funds; CryptoKeyhole reported -3,322 XRP for 3/4; Alpha Finance's five-fund Nov 10 daily flow was -$7.6M while its 30-session flow remained +$1.3M. Cohorts, units and settlement cutoffs differ; no averaging.
+- XRP Insights' 08:00 UTC exchange-wallet snapshot: 22.34B XRP across 706 attributed wallets/24 exchanges; same-wallet +45.8M over seven days and -180.9M over 30 days. About 481.6M XRP is associated with wrapped/insurance/charity reserves. This is not tradable float.
+- The next tracked gross Ripple escrow unlock is 1B XRP on December 1. The tracker showed about 31.1B XRP still in Ripple-owned escrow at ledger 108270319 (Nov 11 23:32 UTC); its trailing 12-month series showed 12B released, 8.4B re-escrowed and 3.6B net left escrow. Gross unlocks are not sales or exchange inflows.
+
+### Institutional rails and counter-hypotheses
+
+- Circle's SEC-filed Q3 2026 results: average USDC circulation $73.3B, Q3 on-chain transaction volume $13.9T, revenue/reserve income $865M, reserve income $658M, ARC presale revenue $182M, and CPN annualized TPV $41.3B with 205 financial institutions. ARC presale revenue is not recurring reserve income; USDC on-chain volume is not XRP settlement volume.
+- Circle Arc public mainnet launched September 16 with USDC as native gas and a phased founding validator cohort including SBI Group, Standard Chartered, BlackRock, DTCC, Mastercard and Visa. Arc is a separate network; validator participation does not prove XRP demand or JPYSC-on-Arc integration.
+- SBI's November 2 release reports JPYSC handling balances above ¥30B and JPYSC lending above ¥10B. SBI Shinsei Trust Bank is issuer; SBI VC Trade is distributor. These balances are not XRP collateral or XRP settlement.
+- SBI VC Trade and Ripple began RLUSD handling in Japan on June 24. Standard Custody & Trust Company is the RLUSD issuer. RLUSD, USDC and JPYSC are distinct assets and rails.
+- Coinbase's national trust charter was announced November 9 and reported effective November 6; scope is fiduciary digital-asset custody/trust services, not ordinary deposits or traditional lending. Ripple announced final national trust-bank approval October 26; reserve management and fiduciary custody are prospective upon opening, not proof of operating migration.
+- Ripple/Coinbase RLUSD availability began October 28 on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as forthcoming, not verified live.
+- PNC/Coinbase's November 9 USDC corporate/institutional pilot is a material counter-hypothesis: regulated dollar settlement can expand through USDC, Coinbase and a bank without XRP. It is a limited pilot, not proof of volume or XRP displacement.
+
+### Identity and exact-phrase research
+
+- Japan SBIC East/Tokyo, Central/Nagoya and West/Osaka remain three separate regional statutory SME investment companies, distinct from SBI Holdings. Tokyo SBIC's ChatGPT/Copilot course was education for investee companies, not an OpenAI partnership. SB OAI Japan is a separate SoftBank/OpenAI joint venture.
+- ASK Coin: no XRP-linked identity verified. Askcoin UCID 4640 and Permission Coin ASK UCID 7105 are separate records. Permission's official token documentation lists Base and Polygon, not XRPL. `askcoin.net` redirects to a HugeDomains domain-profile listing; that is not issuer evidence.
+- “Actual capital” is not a standardized XRP metric. Evernorth's approximately 473.276M XRP closing treasury included about 388.911M XRP in kind and 84.366M cash-purchased from a $214.05M advance pool. SBI's announced $200M is included in that pool, not additive; subscriber-level allocation is undisclosed. Debt, warrants, ELOC capacity and shareholder resales remain separate.
+- First-party evidence identifies Dr Kamilah Stevenson, but no first-party YouTube channel cross-link was found. The iHeart auto-generated transcript varies among Kamilah/Camilla/Camila and warns about fake pages. No channel or videos are attributed.
+
+### Prediction engine, nine platforms and security
+
+- Implemented on integration: 47 public source definitions/45 scheduled; read-only allowlisted collector; SHA-256 raw receipt and local hash-chain prototype; point-in-time SQLite store; event/scenario pipeline; naive, momentum, mean-reversion and volatility baselines; chronological walk-forward with purge/embargo; calibration and PSI drift diagnostics; fail-closed forecast ledger requiring Ed25519 evaluator attestation.
+- Still missing: independent WORM/trusted timestamp anchor, replayable synchronized history, production evaluator key, independent shadow outcomes, and demonstrated out-of-sample lift over all four baselines. Main-branch scheduled ingestion is not verified.
+- ChatGPT/GitHub authentication and data flow are verified in this session, but the connector permission set remains overprivileged. Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal approval; Hugging Face last returned BUILD_ERROR; Databricks HTTP 403; Kaggle untested; LunaRoute endpoint unverified. No external-model transfer.
+- Recursive branch-tip audit rechecked all 17 affected open PRs: `.config/gh/hosts.yml` is present in 17/17 branch-tip trees, absent from main and active integration. No credential contents were read. The changed-file inventory absence finding was last checked at 05:02:51 UTC and was not re-run in this pass. Provider-side OAuth revocation remains unverified.
+- Main branch-protection detail returns HTTP 403; visible fallback ruleset #10863829 is disabled. GitHub connector exposes admin/maintain/push/pull/triage. GitHub Pages publication authorization remains unresolved. No secret rotation, deployment or publication was triggered.
+
+### Backlog and merge decision
+
+- **#1661 — blocked:** sole consolidated integration PR; draft, zero approvals, current parent-head full suite failed one map assertion; security and semantic review incomplete.
+- **#1660 — superseded candidate, retain:** 972 shared paths, 30 differing blobs; close only after successor merge and main verification.
+- **#1643 — superseded/overlap candidate, retain:** 670 shared paths, nine differing blobs.
+- **#1640 — superseded/overlap candidate, retain:** 280 shared paths, 46 differing blobs.
+- **#1642 — unique/unreviewed:** seven differing prediction paths; preserve.
+- **#1653/#1655 — unique/unreviewed:** graph/sync and source-only work remains.
+- **#1644–#1650 — dependency/action overlap:** exact blob and workflow side-effect review required; #1645 is an exact-duplicate candidate only after successor merge.
+- **#1320, #1318, #1317, #1269, #1254, #1255 and unique research/safety/MMI/topology drafts — preserve and review individually.** No bulk closure.
+- **Decision: no merge.** Exact-head full suite failed one evidence assertion, PR remains draft with zero approvals, branch-protection requirements are not visible, security permissions are overprivileged, credential revocation and Pages authorization remain unresolved, and 1,020 non-workflow paths plus 49 workflow patches require integrated semantic review.
+
+### Durable Run64c artifact and next action
+
+- Structured artifact: `research/xrp_intelligence/20261112T160000Z-run64c-exact-head-ci-identity-market-institutional-update.json`.
+- Current nine-platform map and event registry are updated with the identity correction and eight new event records.
+- Next: complete exact-head full suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gate on the Run64c commit; then update PR #1661's description with exact evidence. Continue semantic review and resolve least privilege, branch-protection visibility, provider-side revocation and Pages authorization. Forecast remains **NOT_ISSUED**.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.

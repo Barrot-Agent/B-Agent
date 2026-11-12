@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run53-2026-11-12",
-  "captured_at_utc": "2026-11-12T15:46:31Z",
-  "source_receipt_status": "62 of 62 curated events have null raw_source_sha256 because publisher bytes were not captured by RawReceiptArchive.",
+  "registry_version": "run64c-2026-11-12",
+  "captured_at_utc": "2026-11-12T16:00:00Z",
+  "source_receipt_status": "70 of 70 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All newly added Run64c observations are research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -2591,8 +2591,356 @@
         "auto-transcript",
         "no-video-attribution"
       ]
+    },
+    {
+      "event_id": "xrp-cross-venue-spot-refresh-run64c",
+      "event_type": "market",
+      "event_name": "OKX and Kraken public spot APIs",
+      "hypothesis_id": "xrp-spot-crossvenue-quote-vintage-run64c",
+      "domain": "market_microstructure",
+      "hypothesis": "The latest asynchronous OKX and Kraken spot observations show a normalized midpoint difference of approximately -0.45%, but quote-vintage and stablecoin-basis uncertainty prevent treating it as executable liquidity or a directional signal.",
+      "counter_hypothesis": "A genuine venue dislocation could exist, but synchronized timestamped order books, trades and executable depth are required to distinguish it from stale quotes, caching and USDT/USD basis.",
+      "claim": "OKX XRP-USDT at 2026-11-12T15:44:22.864Z reported last 1.0210, bid 1.0210, ask 1.0211. Kraken XRP/USD retrieved at 16:00Z reported last 1.02442, bid 1.02448, ask 1.02449, but supplied no provider event timestamp. Kraken USDT/USD midpoint was 0.998675; OKX USDT-USD midpoint was 0.998885 at 15:36:56.072Z. Normalized OKX midpoint was 1.0199115 versus Kraken midpoint 1.024485, a -0.4464% asynchronous difference.",
+      "source_id": "okx_kraken_spot_crosscheck_run64c",
+      "source_name": "OKX public ticker and Kraken public ticker",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "independence_group": "okx-kraken-public-exchange-apis",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-12T15:44:22.864Z",
+      "source_published_at_utc": "2026-11-12T15:44:22.864Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Kraken did not provide an event timestamp; its 16:00Z timestamp is retrieval time only.",
+        "USDT/USD normalization is asynchronous and does not establish an executable conversion.",
+        "The browser/API observations were not captured into RawReceiptArchive."
+      ],
+      "falsification_conditions": [
+        "A synchronized byte-complete multi-venue L2 and trade capture shows the same spread is executable after fees and latency.",
+        "A provider event timestamp or uncached capture materially changes either quote."
+      ],
+      "related_entities": [
+        "OKX",
+        "Kraken",
+        "Tether"
+      ],
+      "tags": [
+        "XRP",
+        "spot",
+        "cross-venue",
+        "quote-vintage",
+        "USDT-basis"
+      ]
+    },
+    {
+      "event_id": "sbi-jpysc-handling-and-lending-balance-2026-11-02",
+      "event_type": "stablecoin",
+      "event_name": "SBI VC Trade official release",
+      "hypothesis_id": "sbi-jpysc-balance-vs-xrp-settlement-run64c",
+      "domain": "japan_stablecoin_rails",
+      "hypothesis": "JPYSC is gaining measurable distribution and lending balances through SBI VC Trade, expanding a yen-denominated institutional and retail rail within the SBI ecosystem.",
+      "counter_hypothesis": "JPYSC handling and lending balances are not XRP settlement, XRP collateral or proof of transaction velocity; issuer, distributor and lending balances must remain distinct.",
+      "claim": "SBI VC Trade reported on 2026-11-02 that JPYSC handling balance exceeded ¥30 billion and JPYSC lending balance exceeded ¥10 billion. SBI Shinsei Trust Bank is the issuer and SBI VC Trade is the distributor/operator.",
+      "source_id": "sbi_vc_trade_jpysc_nov02_2026",
+      "source_name": "SBI VC Trade / SBI Holdings",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "independence_group": "sbi-vc-trade-official-jpysc",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-02T00:00:00Z",
+      "source_published_at_utc": "2026-11-02T00:00:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The release provides a date and rounded balance thresholds, not intraday transaction volume.",
+        "JPYSC is a separate yen-denominated trust stablecoin, not XRP."
+      ],
+      "falsification_conditions": [
+        "A subsequent SBI issuer/distributor filing materially revises the balances or entity roles."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SBI Shinsei Trust Bank",
+        "SBI VC Trade",
+        "JPYSC"
+      ],
+      "tags": [
+        "SBI",
+        "JPYSC",
+        "Japan",
+        "stablecoin",
+        "lending"
+      ]
+    },
+    {
+      "event_id": "circle-arc-mainnet-and-sbi-validator-cohort-2026-09-16",
+      "event_type": "stablecoin",
+      "event_name": "Circle Arc public mainnet launch",
+      "hypothesis_id": "circle-arc-institutional-rail-vs-xrp-utility-run64c",
+      "domain": "institutional_payment_rails",
+      "hypothesis": "Circle's Arc creates a competing institutional settlement environment centered on USDC, with SBI Group and major financial institutions in its founding validator cohort.",
+      "counter_hypothesis": "A validator announcement and mainnet launch do not establish durable transaction volume, independent validator decentralization or displacement of XRP; Arc is a separate network and no JPYSC-on-Arc integration is verified.",
+      "claim": "Circle's 2026-09-16 public mainnet announcement describes Arc as a financial-market Layer 1 with USDC as native gas and a phased founding validator cohort including SBI Group, Standard Chartered, BlackRock, DTCC, Mastercard, Visa, ICE, MoneyGram, Sumitomo Corporation and Worldpay/Global Payments.",
+      "source_id": "circle_arc_mainnet_2026_09_16",
+      "source_name": "Circle press release via Nasdaq",
+      "source_url": "https://www.nasdaq.com/press-release/circle-launches-arc-mainnet-economic-operating-system-internet-2026-09-16",
+      "independence_group": "circle-arc-launch-primary-release",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-09-16T00:00:00Z",
+      "source_published_at_utc": "2026-09-16T00:00:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The source describes a phased founding validator cohort; it does not independently prove every validator is currently producing blocks.",
+        "Date is the publication/launch date anchor, not a precise block timestamp."
+      ],
+      "falsification_conditions": [
+        "Independent chain data shows no public mainnet operation or materially different validator participation.",
+        "Circle revises the announced validator or gas-token architecture."
+      ],
+      "related_entities": [
+        "Circle",
+        "SBI Group",
+        "Standard Chartered",
+        "BlackRock",
+        "DTCC",
+        "Visa",
+        "Mastercard",
+        "Arc",
+        "USDC"
+      ],
+      "tags": [
+        "Circle",
+        "Arc",
+        "USDC",
+        "SBI",
+        "institutional-validators",
+        "competing-rails"
+      ]
+    },
+    {
+      "event_id": "circle-q3-2026-usdc-and-cpn-results-2026-11-04",
+      "event_type": "corporate",
+      "event_name": "Circle Q3 2026 results",
+      "hypothesis_id": "circle-q3-usdc-usage-vs-recurring-economics-run64c",
+      "domain": "stablecoin_capital_flows",
+      "hypothesis": "Circle's Q3 2026 results show substantial USDC circulation and transaction activity alongside expanding payment-network volume, but reserve income and recurring economics differ from headline revenue.",
+      "counter_hypothesis": "The $182 million ARC presale is non-recurring token revenue, transaction volume is not payment settlement volume, and USDC activity does not establish XRP demand or displacement.",
+      "claim": "Circle's SEC-filed Q3 2026 release reports average USDC circulation of $73.3B, Q3 on-chain transaction volume of $13.9T, total revenue and reserve income of $865M, reserve income of $658M, ARC presale revenue of $182M, and Circle Payments Network annualized TPV of $41.3B with 205 financial institutions enrolled.",
+      "source_id": "circle_sec_q3_2026_results",
+      "source_name": "Circle Internet Group SEC Exhibit 99.1",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+      "independence_group": "circle-sec-q3-2026-exhibit",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-04T00:00:00Z",
+      "source_published_at_utc": "2026-11-04T00:00:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Figures are issuer-reported and quarter-specific.",
+        "ARC presale revenue is separately identified and should not be treated as recurring reserve income."
+      ],
+      "falsification_conditions": [
+        "A subsequent SEC filing restates the reported figures or changes the classification of ARC presale revenue."
+      ],
+      "related_entities": [
+        "Circle",
+        "USDC",
+        "Circle Payments Network",
+        "Arc",
+        "Binance"
+      ],
+      "tags": [
+        "Circle",
+        "USDC",
+        "Q3-2026",
+        "CPN",
+        "reserve-income",
+        "ARC"
+      ]
+    },
+    {
+      "event_id": "coinbase-national-trust-charter-effective-2026-11-06",
+      "event_type": "custody",
+      "event_name": "Coinbase National Trust Company final charter",
+      "hypothesis_id": "coinbase-trust-charter-vs-commercial-bank-scope-run64c",
+      "domain": "institutional_custody_regulation",
+      "hypothesis": "Coinbase's national trust charter moves its institutional custody business toward a federal fiduciary framework.",
+      "counter_hypothesis": "A national trust charter is not a full-service commercial bank; it does not authorize ordinary deposits or lending, and it does not prove XRP-specific collateral eligibility or completed custody migration.",
+      "claim": "Coinbase announced final OCC approval on 2026-11-09; licensing records cited by CoinDesk identify 2026-11-06 as the effective date. The trust entity's scope includes fiduciary digital-asset custody and related services, not ordinary retail deposits or traditional lending.",
+      "source_id": "coindesk_coinbase_national_trust_charter_2026_11_09",
+      "source_name": "CoinDesk",
+      "source_url": "https://www.coindesk.com/policy/2026/11/09/coinbase-gets-full-u-s-trust-charter-from-federal-banking-regulator",
+      "independence_group": "coindesk-coinbase-occ-charter-report",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-06T00:00:00Z",
+      "source_published_at_utc": "2026-11-09T10:00:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Effective date is reported from OCC licensing records cited by CoinDesk; final OCC letter was not independently captured in this run.",
+        "Charter scope is limited to trust-company activities."
+      ],
+      "falsification_conditions": [
+        "The final OCC approval letter or licensing record shows a different effective date or broader/narrower authority."
+      ],
+      "related_entities": [
+        "Coinbase Global",
+        "Coinbase National Trust Company",
+        "OCC"
+      ],
+      "tags": [
+        "Coinbase",
+        "custody",
+        "OCC",
+        "trust-charter",
+        "regulation"
+      ]
+    },
+    {
+      "event_id": "ripple-national-trust-bank-final-approval-2026-10-26",
+      "event_type": "custody",
+      "event_name": "Ripple National Trust Bank final approval",
+      "hypothesis_id": "ripple-trust-bank-approval-vs-operational-opening-run64c",
+      "domain": "institutional_custody_regulation",
+      "hypothesis": "Ripple's final national trust bank approval creates a federal pathway for RLUSD reserve management and fiduciary digital-asset custody once the entity opens.",
+      "counter_hypothesis": "Final approval is not proof that the trust bank has opened, that reserves or customer custody have migrated, or that XRP is used as collateral in the trust bank.",
+      "claim": "Ripple announced final OCC approval on 2026-10-26. Bloomberg reported that the proposed trust bank may manage RLUSD reserves and provide fiduciary custody once open; Standard Custody & Trust Company remains the RLUSD issuer in the existing structure.",
+      "source_id": "bloomberg_ripple_national_trust_final_approval_2026_10_27",
+      "source_name": "Bloomberg",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-10-27/ripple-gets-final-us-approval-for-national-trust-bank",
+      "independence_group": "bloomberg-ripple-occ-charter-report",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-26T00:00:00Z",
+      "source_published_at_utc": "2026-10-27T07:17:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The source reports Ripple's announcement; final OCC letter and operational opening were not independently captured in this run.",
+        "Issuer identity and reserve custody are distinct legal functions."
+      ],
+      "falsification_conditions": [
+        "An OCC filing or Ripple/issuer filing shows a different approval scope, opening status or reserve-management arrangement."
+      ],
+      "related_entities": [
+        "Ripple",
+        "Ripple National Trust Bank",
+        "Standard Custody & Trust Company",
+        "RLUSD",
+        "OCC"
+      ],
+      "tags": [
+        "Ripple",
+        "RLUSD",
+        "custody",
+        "OCC",
+        "trust-charter"
+      ]
+    },
+    {
+      "event_id": "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+      "event_type": "stablecoin",
+      "event_name": "SBI VC Trade begins RLUSD handling",
+      "hypothesis_id": "sbi-ripple-rlusd-japan-availability-vs-xrp-demand-run64c",
+      "domain": "japan_stablecoin_distribution",
+      "hypothesis": "SBI VC Trade's regulated Japanese distribution of RLUSD expands the SBI-Ripple stablecoin relationship beyond equity and payment-rail announcements.",
+      "counter_hypothesis": "RLUSD availability is a stablecoin distribution event, not evidence of XRP purchases, XRP settlement volume or XRP collateral use; custody, issuer and distributor roles remain distinct.",
+      "claim": "SBI VC Trade and Ripple announced RLUSD handling on 2026-06-24. SBI VC Trade described RLUSD as a Japanese Type 4 electronic payment instrument; Standard Custody & Trust Company is the U.S. issuer. SBI VC Trade already handled USDC separately.",
+      "source_id": "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24",
+      "source_name": "SBI VC Trade / Ripple official release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "independence_group": "sbi-ripple-rlusd-japan-official-release",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-06-24T00:00:00Z",
+      "source_published_at_utc": "2026-06-24T00:00:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The announcement establishes handling availability, not subsequent transaction volumes or customer balances.",
+        "SBI VC Trade is a distributor/operator, not the RLUSD issuer."
+      ],
+      "falsification_conditions": [
+        "SBI VC Trade or Ripple revises the product classification, availability or issuer relationship."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "Ripple",
+        "Standard Custody & Trust Company",
+        "RLUSD",
+        "USDC"
+      ],
+      "tags": [
+        "SBI",
+        "Ripple",
+        "RLUSD",
+        "Japan",
+        "stablecoin"
+      ]
+    },
+    {
+      "event_id": "ripple-escrow-next-gross-unlock-2026-12-01",
+      "event_type": "exchange_flow",
+      "event_name": "XRPL escrow schedule tracker",
+      "hypothesis_id": "ripple-escrow-gross-unlock-vs-net-circulating-supply-run64c",
+      "domain": "xrp_supply_and_escrow",
+      "hypothesis": "The scheduled 2026-12-01 gross release of 1B XRP from Ripple escrow is a recurring supply event that warrants monitoring.",
+      "counter_hypothesis": "Gross escrow unlocks are not equivalent to exchange inflows or sales; the prior 12-month tracker shows substantial re-escrow, and net supply availability must be measured from subsequent ledger movements.",
+      "claim": "XRP Insights' XRPL ledger tracker reports a 1B XRP gross unlock scheduled for 2026-12-01 and approximately 31.1B XRP remaining in Ripple-owned escrow at ledger 108270319 on 2026-11-11 23:32Z. Its prior 12-month series reports 12B released, 8.4B re-escrowed and 3.6B net left escrow.",
+      "source_id": "xrp_insights_ripple_escrow_schedule_2026_12",
+      "source_name": "XRP Insights XRPL ledger tracker",
+      "source_url": "https://xrp-insights.com/data",
+      "independence_group": "xrp-insights-ledger-escrow-tracker",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "scheduled",
+      "event_time_utc": "2026-12-01T00:00:00Z",
+      "source_published_at_utc": "2026-11-11T23:32:00Z",
+      "available_at_utc": "2026-11-12T16:00:00Z",
+      "captured_at_utc": "2026-11-12T16:00:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The event time is the scheduled monthly unlock date, not proof of a transfer or market sale.",
+        "The 12-month release/re-escrow series is tracker-derived and not independently anchored by captured ledger receipts in this run."
+      ],
+      "falsification_conditions": [
+        "XRPL ledger data shows a different escrow amount/date or subsequent re-escrow materially changes the net release."
+      ],
+      "related_entities": [
+        "Ripple",
+        "XRP Ledger",
+        "XRP"
+      ],
+      "tags": [
+        "XRP",
+        "Ripple",
+        "escrow",
+        "supply",
+        "December-2026"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
-  "run64b_note": "Corrects spot/ETF hypothesis group consistency and adds five primary-source identity/capital events; all records remain research-only."
+  "run64b_note": "Corrects spot/ETF hypothesis group consistency and adds five primary-source identity/capital events; all records remain research-only.",
+  "run64c_note": "Eight events appended with unique hypothesis_id values to avoid inconsistent scenario-group definitions: one current cross-venue spot refresh, SBI JPYSC balances, Circle Arc, Circle Q3 results, Coinbase trust charter, Ripple trust-bank approval, SBI/Ripple RLUSD Japan availability and the December 1 Ripple escrow schedule. Existing events and historical capture timestamps are preserved. No publisher bytes were archived; no event is model-eligible."
 }

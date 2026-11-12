@@ -938,3 +938,23 @@ See BARROT_XRP_MISSION_HANDOFF_LATEST.md and research/xrp_intelligence/20261112T
 - Kamilah Stevenson: iHeart transcript says “doctor Camilla Stevenson” and warns of fake pages; first-party site identifies Dr Kamilah Stevenson but does not link a YouTube channel. No channel/videos attributed.
 - Event registry `run53-2026-11-12`: 62 events, all raw hashes null/model-ineligible. Forecast NOT_ISSUED.
 - PR #1661 remains draft and blocked. No merge or external action. Artifact: `research/xrp_intelligence/20261112T154631Z-run64b-event-registry-hypothesis-map-ci-and-identity-correction.json`.
+
+
+---
+
+# Run64c — 2026-11-12T16:00:00Z
+
+- Main `84f28ee7755607236231545a14f3d093c1baaa85`; integration branch `integration/xrp-v3-unified-main-20261111`; pre-correction head `9e0531fa9c70a159267b5106876c3eaf5d537a24`, 2,131 ahead/0 behind.
+- PR #1661: open/draft/mergeable, 1,069 changed files, 296,306 additions/4,492 deletions, 49 workflows, zero formal approvals/reviews/comments. Open inventory: 374 (360 drafts/14 non-drafts; 366 target main/8 other base branches).
+- Exact-head CI 43252665376: 3,511 passed/1 failed/eight subtests, 61.42% coverage, 100.89s. Sole failure is ASK identity-map wording; core 721/721 passed. Six-manifest audit 43252665063 passed with zero known vulnerabilities; fail-closed 43252664876 passed. Wheel/install steps skipped.
+- Corrected map now distinguishes Askcoin UCID 4640, Permission Coin UCID 7105 and askcoin.net → HugeDomains; no XRP-linked ASK Coin identity or XRPL deployment verified. No tests weakened.
+- Event registry advanced to run64c with 70 events; eight new events have unique hypothesis groups. All raw source hashes remain null; model eligibility false.
+- Spot direct API snapshot: OKX 1.0210 at 15:44:22.864Z; Kraken last 1.02442 without provider event timestamp; normalized asynchronous midpoint difference -0.4464%, not executable. No fresh synchronized L2.
+- Derivatives and ETF providers remain non-comparable/partial. Exchange-wallet attribution is not tradable float. December 1 gross 1B XRP escrow unlock is not a sale; tracker shows significant historical re-escrow.
+- Institutional update: Circle Q3 USDC/CPN metrics, Arc validator cohort including SBI Group, SBI JPYSC balances (>¥30B handling/>¥10B lending), SBI VC Trade RLUSD availability, Coinbase/Ripple national trust developments and Coinbase/PNC USDC pilot. Counter-hypothesis: USDC/Arc rails can expand without XRP; no XRP settlement demand inferred.
+- Rechecked .config/gh/hosts.yml: present in 17/17 affected open PR branch-tip trees, absent main/integration; no contents read; provider revocation unverified. Changed-file inventory last checked 05:02:51Z.
+- Tree diff: 929 added content paths, 139 modified, zero deleted, one mode-only change b_agent.sh 100755→100644 with identical blob; preserve for semantic review.
+- Backlog: #1661 blocked; #1660/#1643/#1640 superseded/overlap candidates retained until successor merge; #1642, #1653, #1655 and unique safety/MMI/topology/research work preserved; dependency/action PRs #1644–#1650 require exact reconciliation. No PR closed.
+- Forecast **NOT_ISSUED**. Run64c web/API observations are not byte-captured by RawReceiptArchive and are model-ineligible.
+- Next: exact-head full suite, core suite, wheel/installed-wheel, dependency audit and fail-closed gate on the Run64c commit; then update PR #1661 description. No merge or external action.
+- Full details: `BARROT_XRP_MISSION_HANDOFF_LATEST.md` and `research/xrp_intelligence/20261112T160000Z-run64c-exact-head-ci-identity-market-institutional-update.json`.
