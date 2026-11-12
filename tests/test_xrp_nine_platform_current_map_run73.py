@@ -130,7 +130,8 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["state"] == "open"
     assert old["draft"] is True
     assert old["behind_by"] == 3
-    assert "RETAINED_UNTIL_SUCCESSOR_MERGE" in old["disposition"]
+    assert "retain until successor merge" in old["disposition"].lower()
+    assert "exact main-file verification" in old["disposition"].lower()
     assert current["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
     assert current["formal_approvals"] == 0
 
@@ -155,7 +156,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["passed"] > 0
     assert suite["failed"] == len(latest["failing_tests"])
     assert suite["subtests"] == 8
-    assert suite["exact_head_verified"] is True
+    assert suite["exact_head"] is True
     assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
     if suite["failed"] == 0:
         assert latest["conclusion"] == "success"
@@ -451,7 +452,8 @@ def test_run20_snapshot_is_append_only_and_tracks_current_integration_head():
     data = load_current()
     run20 = data["run20_snapshot"]
     repo = run20["repository_state"]
-    assert repo["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert repo["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
+    assert data["repository_state"]["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
     assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
     assert repo["integration_head_before_run20_map_commit"] == "0529030acf0df84e68d7626564b3d206dd95946b"
     assert repo["current_head_before_corrective_commit"] == "c39cc80591e257beb563aff1bf2a85d368edcb3b"
@@ -599,7 +601,15 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert snap["prediction"]["raw_source_sha256_present"] == 0
     assert snap["prediction"]["model_eligible_events"] == 0
     assert snap["prediction"]["forecast_status"] == "NOT_ISSUED"
-    assert snap["no_external_actions"] is True
+    no_external_actions = snap["no_external_actions"]
+    expected_external_actions = {
+        "merge", "source_pr_closure", "deployment", "secret_rotation",
+        "space_restart", "databricks_write", "kaggle_submission", "paper_trade",
+        "funds_transfer", "real_money", "force_push", "history_rewrite",
+        "external_model_transfer",
+    }
+    assert set(no_external_actions) == expected_external_actions
+    assert all(value is False for value in no_external_actions.values())
     assert data["current_market_snapshot"]["spot"]["okx"]["event_timestamp_available"] is True
     assert isinstance(data["institutional_and_capital"]["rlusd"], dict)
     assert isinstance(data["identity_research"]["sbic"], dict)
