@@ -1,3 +1,22 @@
+## Run54 synchronization snapshot — 2026-11-12
+
+- Mission priority 1: XRP intelligence and prediction-engine mastery. Preserve Barrot V3 execution, orchestration, safety and verification.
+- Main SHA: `84f28ee7755607236231545a14f3d093c1baaa85`. Integration pre-handoff SHA: `67f2bf2b7f2401b1391c9fe17c46e6db3e2da456` (2,095 ahead / 0 behind).
+- Exact-head CI on `67f2bf2b7f2401b1391c9fe17c46e6db3e2da456`: 3,507 passed, 0 failed, 8 subtests, 61.35% coverage; wheel and installed mission verification passed. CI [43196149481](https://github.com/Barrot-Agent/B-Agent/actions/runs/43196149481); dependency audit [43196149583](https://github.com/Barrot-Agent/B-Agent/actions/runs/43196149583); fail-closed [43196149453](https://github.com/Barrot-Agent/B-Agent/actions/runs/43196149453).
+- PR #1661 remains draft/blocked, 1,054 files, 49 workflow files, 1,005 other paths, zero reviews/approvals/threads. No merge.
+- Main tree 1,388 entries/1,288 files/86 workflows; integration 2,313 entries/2,204 files/87 workflows. Main lacks the primary XRP mission and scheduled collector; integration contains them.
+- 374 open PRs (360 drafts, 14 non-drafts). Current overlap comparisons: #1660 940 identical/32 different; #1643 661/9; #1640 234/46; #1642 0/7; #1653 one shared different plus six source-only; #1655 five shared different plus three source-only. No source PR closed.
+- Fresh market observations: OKX $1.0518 (09:54:43.966 UTC); Kraken $1.05054 (no provider timestamp); normalized cross-venue difference about 0.0267%, asynchronous. Fuelmaps 10:00 UTC six-venue book showed bid skew at deeper levels; Liqwall 10:02 UTC OI $1.16B, +1.5%, funding +0.0098%/8h, 75.1% Binance accounts long, $4.1M liquidations. ETF cohorts disagree and are not averaged. XRPL lending amendments remain below 29/35 activation threshold.
+- New institutional findings: Ripple Prime has access to Coinbase Derivatives XRP contracts via Nodal Clear; Ripple Mint's official page has a 7-vs-8 network inconsistency; PNC/Coinbase pilot is USDC on Ethereum, not XRP; Deutsche Bank custody launch did not disclose XRP coverage. Clearpool/Cicada/Ripple credit plan is Devnet/conditional and RLUSD-denominated, not a live XRP-collateral market.
+- Evernorth SEC waterfall: 473.276M XRP at Oct 9; 388.911M in-kind (82.174%); 84.366M cash-purchased using $214.1M (17.826%); $272.6M gross closing cash before expenses is not current cash; $30M PIK note is debt; $5.219M ELOC is conditional and had zero proceeds; 73.688M resale registration is not new capital. BitGo's $250M insurance is shared, about 36.9% of Evernorth XRP value at Oct 9.
+- Forecast status: NOT_ISSUED. Run54 web data has no Barrot raw-source hashes and is model-ineligible. 47 event records still have zero raw publisher receipts.
+- Nine platforms: only ChatGPT/GitHub connector auth/data flow verified; permissions overprivileged. Others remain unverified/last-known error states. No external-model transfer.
+- Blockers: branch-protection details HTTP 403; fallback ruleset disabled; Pages auto-publication authorization unresolved; credential-owner revocation unverified; full semantic review incomplete. 49 workflow files statically scanned; no external workflow triggered.
+- New Run54 artifact: `research/xrp_intelligence/20261112T100247Z-run54-exact-head-ci-xrp-market-institutional-and-integration-audit.json`. The new documentation commit requires its own exact-head CI before any merge consideration.
+
+Next action: verify CI on the new handoff commit, then resolve least privilege/branch protection/credential revocation/Pages authorization and complete integrated semantic review. Keep forecasts disabled.
+---
+
 # BARROT SYNC — Run53 — 2026-11-12T09:49:48Z
 
 ## Mission priority

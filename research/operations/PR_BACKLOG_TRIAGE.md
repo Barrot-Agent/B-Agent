@@ -1,3 +1,23 @@
+## Run54 backlog reconciliation — 2026-11-12
+
+**Integration PR #1661:** blocked (open/draft; zero formal reviews, approvals or review threads; exact-head CI passed on pre-handoff head `67f2bf2b7f2401b1391c9fe17c46e6db3e2da456`, but new handoff commit must be tested separately; security and semantic-review blockers remain).
+
+| Source PR | Source changed paths | Shared with #1661 | Identical blobs | Different blobs | Source-only | Classification |
+|---|---:|---:|---:|---:|---:|---|
+| #1660 | 972 | 972 | 940 | 32 | 0 | overlap candidate; preserve 32 differing blobs |
+| #1643 | 670 | 670 | 661 | 9 | 0 | overlap candidate; preserve 9 differing blobs |
+| #1640 | 280 | 280 | 234 | 46 | 0 | overlap candidate; preserve 46 differing blobs |
+| #1642 | 7 | 7 | 0 | 7 | 0 | unique prediction work |
+| #1653 | 7 | 1 | 0 | 1 | 6 | unique graph work |
+| #1655 | 8 | 5 | 0 | 5 | 3 | unique structural work |
+
+Carry-forward candidates not re-compared in Run54: #1644, #1645, #1646, #1647, #1648, #1649, #1650, #1254 and #1255. Preserve unique safety/MMI/topology/research work in #1320, #1318, #1317, #1269, #1614, #1612, #1611, #1610 and #1608. No source PR was closed. No branch was rewritten. The complete open inventory is 374 PRs: 360 drafts, 14 non-drafts; 366 target main and 8 target other bases.
+
+**Current integration snapshot:** main `84f28ee7755607236231545a14f3d093c1baaa85`; integration pre-handoff `67f2bf2b7f2401b1391c9fe17c46e6db3e2da456`, 2,095 ahead / 0 behind; PR #1661 has 1,054 changed files (49 workflow files, 1,005 other paths), 285,351 additions and 4,392 deletions.
+
+**Merge remains prohibited:** PR is draft, no approvals, branch-protection details return HTTP 403, fallback ruleset disabled, connector permissions overprivileged, Pages publication authorization unresolved, credential-owner revocation unverified, and integrated semantic review incomplete.
+---
+
 # Run49 — current integration, research and security reconciliation (2026-11-12T06:17:15Z)
 
 ## Current successor
