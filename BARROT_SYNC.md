@@ -967,3 +967,14 @@ See BARROT_XRP_MISSION_HANDOFF_LATEST.md and research/xrp_intelligence/20261112T
 - Actual-capital wording corrected without test changes: cash, cash-purchased XRP, in-kind XRP, debt, borrowed facilities, contingent warrants, undrawn ELOC and secondary resales are separated. SEC values retained: $214,049,995 advance cash; 388.910554M in-kind; 84.365876M cash-purchased; SBI $200M included, not additive.
 - Current head before correction: `c7829a4`; 2,132 ahead/0 behind. PR #1661 remains open/draft with zero approvals. Next exact-head CI pending.
 - Forecast remains NOT_ISSUED; no merge or external action.
+
+## Run65 sync — 2026-11-12 17:02 UTC
+
+- Main 84f28ee7755607236231545a14f3d093c1baaa85; integration head before this handoff update be19ed8112f04851c400bdd4d3b868ad099060bc (2,133 ahead / 0 behind).
+- PR #1661: draft, mergeable=true, zero reviews/approvals/threads; 1,070 files, 49 workflow changes and 1,021 other paths.
+- Exact-head CI on be19ed: 3,512 full-suite tests passed, eight subtests, 61.42% coverage; 721 core tests passed; wheel installed and verified V3/XRP mission/assets; six-manifest dependency audit passed with zero known vulnerabilities; fail-closed gate kept merge disabled.
+- Main Cross Analysis succeeded at 16:51 UTC; main Pillars check failed because Databricks returned 403 and Hugging Face returned BUILD_ERROR.
+- Current Fuelmaps 17:00 UTC spot-book midpoint about $1.0245; bids exceed asks across reported bands, but resting orders are cancellable and Binance/Bitget are excluded. OI, ETF and exchange-wallet sources disagree by coverage and cutoff.
+- Circle/Coinbase/Ripple/SBI relationships and SBIC identity are reconciled in Run65 handoff. Forecast NOT_ISSUED; Run65 web data lacks byte-exact receipts.
+- No merge, deployment, external-model transfer, paper trade, funds transfer, secret rotation, Space restart, PR closure or destructive action.
+- Next: verify CI on this documentation/evidence commit; resolve least privilege, branch protection, credential-owner revocation, Pages authorization and semantic review.

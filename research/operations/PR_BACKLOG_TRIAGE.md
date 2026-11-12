@@ -621,3 +621,23 @@ Canonical evidence and current mission state are recorded in `BARROT_XRP_MISSION
 - Exact-head full suite 43256307823: 3,511 passed/one failed/eight subtests, 61.42% coverage. The ASK identity correction passed; the same identity test failed next on missing phrase `not a standardized XRP metric` in `identity_research.actual_capital`. Core 721 passed, six-manifest dependency audit and fail-closed gate passed; wheel/install skipped.
 - Actual-capital summary corrected without modifying tests. Preserve exact SEC reconciliation: $214,049,995 advance-funding cash; 388.910554M XRP in kind; 84.365876M cash-purchased; SBI $200M included, not additive; $0 Cantor ELOC proceeds as of Nov 9; $0 proceeds to Evernorth from selling-holder resales; $30M PIK note is debt; 82.17% of closing XRP was in kind.
 - #1661 remains **BLOCKED** pending exact-head CI, security gates, approvals, branch-protection visibility and semantic review. No source PR closed.
+
+## Run65 backlog refresh — 2026-11-12 17:02 UTC
+
+Open PR inventory: 374 total; 360 drafts, 14 non-drafts; 366 target main, eight target other bases.
+
+- #1661 — BLOCKED. Sole consolidated integration PR; draft, zero approvals/reviews/threads; branch-protection detail unavailable; security and semantic review gates unresolved.
+- #1660 — SUPERSEDED-CANDIDATE / RECONCILE. 972 changed paths; 900 match integration blobs, 72 differ. No .config/gh/hosts.yml in source tip; 18 Orbit paths must not be reintroduced.
+- #1643 — OVERLAP / RECONCILE. 670 changed paths; 496 match, 174 differ. Source tip contains .config/gh/hosts.yml and 18 Orbit paths.
+- #1640 — OVERLAP / RECONCILE. 280 changed paths; 198 match, 82 differ. Source tip contains .config/gh/hosts.yml and 18 Orbit paths.
+- #1642 — UNIQUE/UNREVIEWED prediction work. Seven changed paths; zero match, seven differ. Source tip contains .config/gh/hosts.yml and 18 Orbit paths; preserve unique prediction work while excluding sensitive/Orbit paths.
+- #1653 — UNIQUE/UNREVIEWED knowledge-graph work: seven changed paths, six source-only. Source tip contains .config/gh/hosts.yml and 18 Orbit paths.
+- #1655 — UNIQUE/UNREVIEWED structural work: eight changed paths, three source-only. Source tip contains .config/gh/hosts.yml and 18 Orbit paths.
+- #1659 — UNIQUE/UNREVIEWED local inference/Termux work: six changed paths, four source-only. Source tip contains .config/gh/hosts.yml and 18 Orbit paths.
+- #1650, #1649, #1648, #1647, #1646, #1645 and #1644 — dependency/workflow candidates; compare against consolidated dependency baseline and review workflow side effects. #1644/#1647 require special workflow review.
+- #1320, #1318, #1317 and #1269 — preserve as unique safety, fail-closed, MMI/structural and topology work.
+- #1255 and #1254 — older dependency candidates; reconcile against newer dependency PRs before any closure.
+
+Security: the previously identified .config/gh/hosts.yml exposure set covers 17 open branch tips. Run65 rechecked the named overlap candidates; six of seven checked branches contained the path, while #1660 did not. No contents were read. Provider-side OAuth revocation remains unverified. All seven checked source branches contain 18 Orbit paths; integration excludes them.
+
+No source PR was closed. Close only exact duplicates/superseded PRs after successor merge and merged-file verification on main; do not bulk-close unique work.
