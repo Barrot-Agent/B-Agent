@@ -349,3 +349,14 @@
 - Corrected TheXRPInvestor scope: 12 product categories are listed, but the 1.19B XRP trust figure's cohort is not explicit. Do not assign it to spot-only or all 12 without methodology.
 - RLUSD issuer Nov5 report: $2.6329B circulating / $2.748B reserves; third-party Nov11 on-chain aggregate 2.7014B total, XRPL873.741M, Ethereum1.8116B. Different vintages/methods; no inferred reserve shortfall.
 - Forecast NOT_ISSUED. PR #1661 remains draft and unmerged.
+
+
+## Run42 final exact-head verification — 2026-11-12 02:50 UTC
+- Exact parent `e52a37cf4a970782f9a3853e2c13765db9e3a1d7`: CI 43143552410 **3,460 passed / 0 failed / 8 subtests / 60.92% coverage**; wheel built and installed wheel loaded Barrot V3, XRP mission and canonical assets.
+- Dependency audit 43143552397 passed six manifests, zero known vulnerabilities reported. Fail-closed PR gate 43143552393, push audit 43143544568 and push gate 43143544585 passed.
+- Evernorth SEC reconciliation: 473.276430M XRP closing treasury; 388.910554M (82.1741%) in kind and 84.365876M cash-purchased. RippleWorks 211.319096M; Ripple Labs 126.791458M; Larsen Lam Trust 50M; advance/delayed in-kind 0.8M. $214.05M cash pool includes SBI's $200M commitment.
+- SBI controlled holdings: 9.431914M Class A and 2.359038M Class C. SBI Class A appears not covered by the specified Ripple/Sponsor/Contributor Related Party lock-up; Class C remains non-voting/transfer-restricted and conversion subject to 39.9% cap. Potential XRPN equity supply, not XRP supply; no completed sale established.
+- RippleWorks is a separate nonprofit and majority LP of Sponsor; Chris Larsen relationship/conflicts are disclosed; DAT Side Pocket rights do not cover all Sponsor securities.
+- RLUSD: Ripple issuer Nov5 report $2.6329B circulating / $2.748B reserves; StableRadar Nov11 on-chain aggregate 2.7014B, XRPL873.741M, Ethereum1.8116B. Different vintages; no inferred reserve shortfall.
+- Forecast NOT_ISSUED. Next engineering action: deterministic scenario/counter-hypothesis generator; WORM anchoring and replayable feature history remain production blockers.
+- PR #1661 remains draft/unmerged. No source PR closed.

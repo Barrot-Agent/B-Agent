@@ -11,8 +11,8 @@
   "repository": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
     "integration_branch": "integration/xrp-v3-unified-main-20261111",
-    "integration_head_before_current_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
-    "integration_ahead_by": 2074,
+    "integration_head_before_current_map_commit": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "integration_ahead_by": 2075,
     "integration_behind_by": 0,
     "changed_files": 1036,
     "workflow_files_changed": 49,
@@ -31,11 +31,11 @@
     "integration_pr_state": "open",
     "integration_pr_draft": true,
     "integration_pr_mergeable": true,
-    "integration_pr_mergeable_state": "unstable",
-    "integration_pr_head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "integration_pr_mergeable_state": "clean",
+    "integration_pr_head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "integration_pr_base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_pr_commits": 2074,
-    "integration_pr_additions": 274007,
+    "integration_pr_commits": 2075,
+    "integration_pr_additions": 274218,
     "integration_pr_deletions": 4391,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -50,39 +50,61 @@
     "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API reads and Git-object branch update are available."
   },
   "ci": {
-    "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
-    "run_id": 43142812387,
-    "conclusion": "failure",
-    "passed": 3459,
-    "failed": 1,
-    "subtests": 8,
-    "coverage_percent": 60.92,
-    "duration_seconds": 80.86,
-    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
-    "root_cause": "A structured dict was appended to a list whose established schema is strings; test join raised TypeError.",
-    "repair": "Replace the appended dict with a string in disagreement_and_counter_hypotheses; retain structured Run42 details in run42_snapshot and the artifact.",
+    "head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "run_id": 43143552410,
+    "full_suite": {
+      "passed": 3460,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 60.92,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 82.42,
+      "exact_head": true,
+      "exact_head_verified": true,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "statements": 24160,
+      "missed_statements": 8967,
+      "branches": 7250,
+      "partial_branches": 1443
+    },
     "core": {
-      "job_id": 130933571549,
+      "job_id": 130936000991,
       "passed": 716,
       "failed": 0,
       "subtests": 8,
       "conclusion": "success"
     },
     "dependency_audit": {
-      "run_id": 43142812404,
+      "run_id": 43143552397,
+      "job_id": 130936000571,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43142812465,
+      "run_id": 43143552393,
+      "job_id": 130936000680,
       "passed": true,
       "conclusion": "success",
       "merge_disabled": true,
       "automatic_merge_enabled": false
     },
-    "wheel_build": "SKIPPED_AFTER_TEST_FAILURE"
+    "push_dependency_audit": {
+      "run_id": 43143544568,
+      "job_id": 130935978278,
+      "passed": true,
+      "conclusion": "success"
+    },
+    "push_fail_closed_gate": {
+      "run_id": 43143544585,
+      "job_id": 130935977659,
+      "passed": true,
+      "conclusion": "success"
+    },
+    "exact_head_verified": true,
+    "merge_authorized": false
   },
   "integration_architecture": {
     "primary_mission_present_on_integration": true,
@@ -222,7 +244,70 @@
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
     "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
-    "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+    "evernorth": {
+      "closing_treasury_total_xrp": 473276430,
+      "cash_purchased_xrp": 84365876,
+      "in_kind_xrp": 388910554,
+      "in_kind_share_percent": 82.1741,
+      "cash_purchased_share_percent": 17.8259,
+      "in_kind_components": [
+        {
+          "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+          "xrp": 211319096
+        },
+        {
+          "source": "Ripple Labs directly to Pathfinder",
+          "xrp": 126791458
+        },
+        {
+          "source": "Larsen Lam Children's Remainder Trust",
+          "xrp": 50000000
+        },
+        {
+          "source": "Advance-funding subscribers in kind",
+          "xrp": 600000
+        },
+        {
+          "source": "Delayed-funding subscribers in kind",
+          "xrp": 200000
+        }
+      ],
+      "cash_pool": {
+        "amount_usd": 214050000,
+        "includes_sbi_announced_commitment_usd": 200000000,
+        "additive": false,
+        "used_to_purchase_xrp": 84365876
+      },
+      "sbi_controlled_stockholders": {
+        "class_a_shares": 9431914,
+        "class_a_share_of_class_outstanding_percent": 36.145,
+        "class_c_shares": 2359038,
+        "class_c_share_of_class_outstanding_percent": 7.515,
+        "combined_registered_shares": 11790952,
+        "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+        "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+        "completed_sale_established": false
+      },
+      "resale_registration": {
+        "maximum_shares": 73688162,
+        "existing_class_a": 19102635,
+        "potential_class_c_conversion": 31392746,
+        "potential_company_unit_redemption_or_exchange": 22953128,
+        "sponsor_warrant_exercise_shares": 239653,
+        "not_all_currently_outstanding_or_freely_tradable": true,
+        "company_resale_proceeds": false,
+        "exception": "cash proceeds from Sponsor Warrant exercise",
+        "completed_resale_established": false
+      },
+      "rippleworks_relationship": {
+        "separate_nonprofit_from_ripple_labs": true,
+        "majority_limited_partner_interests_in_sponsor": true,
+        "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+        "prospectus_discloses_potential_conflicts": true,
+        "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+      },
+      "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
+    },
     "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
     "rlusd": {
       "issuer_report": {
@@ -399,19 +484,98 @@
       "source_group": "aggregator:StableRadar",
       "snapshot_utc": "2026-11-11T19:43:00Z",
       "notes": "Third-party live chain reads: 2.7014B total official-chain supply; XRPL and Ethereum quantities. Not an issuer reserve attestation."
+    },
+    {
+      "source_ref": "turn612831view0",
+      "source": "Evernorth SEC Form 424B3 — selling securityholders, transferability, lock-up and digital-asset contribution disclosures",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "primary_regulator:SEC",
+      "publication_date": "2026-11-09",
+      "notes": "SBI Class A/Class C classes, resale registration, in-kind XRP sources and restrictions."
+    },
+    {
+      "source_ref": "turn995982view0",
+      "source": "Evernorth SEC Form 424B3 — RippleWorks/Sponsor ownership and conflict disclosure",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "primary_regulator:SEC",
+      "publication_date": "2026-11-09",
+      "notes": "RippleWorks majority limited-partner interest in Sponsor; Chris Larsen relationship and potential conflicts."
     }
   ],
   "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
   "forecast_status": "NOT_ISSUED",
   "next_actions": [
-    "Rerun the full repository suite on the corrected string-list commit; verify the disagreement-list test passes.",
-    "Verify exact-head wheel build, installed primary mission, six-manifest dependency audit and fail-closed gates.",
-    "Continue semantic review of 987 non-workflow paths and the 49-workflow integration diff.",
+    "Implement a deterministic scenario/counter-hypothesis engine that preserves source independence, minority objections, falsification conditions and point-in-time cutoffs without emitting uncalibrated probabilities.",
+    "Continue semantic review of 987 non-workflow paths and 49 workflow changes; preserve V3 runtime and safety gates.",
     "Resolve least-privilege connector scope, branch-protection/approval visibility, provider-side OAuth revocation evidence and Pages publication authorization.",
-    "Build independently controlled WORM/timestamp anchoring and replayable feature history; keep directional forecasts disabled."
+    "Build independently controlled WORM/timestamp anchoring and replayable feature history; keep directional forecasts disabled until measured OOS lift."
   ],
   "no_merge": true,
-  "updated_at_utc": "2026-11-12T02:42:00Z",
+  "updated_at_utc": "2026-11-12T02:50:00Z",
   "no_unapproved_external_actions": true,
-  "authorized_repository_write_performed": true
+  "authorized_repository_write_performed": true,
+  "evernorth_sec": {
+    "closing_treasury_total_xrp": 473276430,
+    "cash_purchased_xrp": 84365876,
+    "in_kind_xrp": 388910554,
+    "in_kind_share_percent": 82.1741,
+    "cash_purchased_share_percent": 17.8259,
+    "in_kind_components": [
+      {
+        "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+        "xrp": 211319096
+      },
+      {
+        "source": "Ripple Labs directly to Pathfinder",
+        "xrp": 126791458
+      },
+      {
+        "source": "Larsen Lam Children's Remainder Trust",
+        "xrp": 50000000
+      },
+      {
+        "source": "Advance-funding subscribers in kind",
+        "xrp": 600000
+      },
+      {
+        "source": "Delayed-funding subscribers in kind",
+        "xrp": 200000
+      }
+    ],
+    "cash_pool": {
+      "amount_usd": 214050000,
+      "includes_sbi_announced_commitment_usd": 200000000,
+      "additive": false,
+      "used_to_purchase_xrp": 84365876
+    },
+    "sbi_controlled_stockholders": {
+      "class_a_shares": 9431914,
+      "class_a_share_of_class_outstanding_percent": 36.145,
+      "class_c_shares": 2359038,
+      "class_c_share_of_class_outstanding_percent": 7.515,
+      "combined_registered_shares": 11790952,
+      "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+      "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+      "completed_sale_established": false
+    },
+    "resale_registration": {
+      "maximum_shares": 73688162,
+      "existing_class_a": 19102635,
+      "potential_class_c_conversion": 31392746,
+      "potential_company_unit_redemption_or_exchange": 22953128,
+      "sponsor_warrant_exercise_shares": 239653,
+      "not_all_currently_outstanding_or_freely_tradable": true,
+      "company_resale_proceeds": false,
+      "exception": "cash proceeds from Sponsor Warrant exercise",
+      "completed_resale_established": false
+    },
+    "rippleworks_relationship": {
+      "separate_nonprofit_from_ripple_labs": true,
+      "majority_limited_partner_interests_in_sponsor": true,
+      "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+      "prospectus_discloses_potential_conflicts": true,
+      "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+    },
+    "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
+  }
 }

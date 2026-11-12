@@ -1,34 +1,34 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T02:42:00Z",
-  "last_verified_at_utc": "2026-11-12T02:42:00Z",
+  "captured_at_utc": "2026-11-12T02:50:00Z",
+  "last_verified_at_utc": "2026-11-12T02:50:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-  "observed_integration_head_before_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
+  "observed_integration_head_before_map_commit": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
   "integration_branch": "integration/xrp-v3-unified-main-20261111",
   "integration_pr": {
     "number": 1661,
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "mergeable_state": "unstable",
-    "ahead_by": 2074,
+    "mergeable_state": "clean",
+    "ahead_by": 2075,
     "behind_by": 0,
     "changed_files": 1036,
     "workflow_files": 49,
     "other_changed_paths": 987,
-    "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "commits": 2074,
-    "additions": 274007,
+    "commits": 2075,
+    "additions": 274218,
     "deletions": 4391,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
     "review_comments": 0,
     "requested_reviewers": 0,
-    "note": "Exact-head CI 43142812387 failed one type-contract assertion after 3,459 tests passed; core 716/0, dependency audit and fail-closed gates passed. Run42 replaces the structured dict mistakenly appended to the string-only disagreement list. PR remains draft; do not merge."
+    "note": "Exact-head full suite passed 3,460/0 with eight subtests and 60.92% coverage; wheel/installed mission passed; six-manifest dependency audit and fail-closed PR/push gates passed. PR remains draft with zero formal approvals/reviews. Other security, approval, publication and semantic-review blockers remain; do not merge."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -598,9 +598,9 @@
   },
   "repository_state": {
     "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-    "integration_head_before_current_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "integration_head_before_current_map_commit": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "integration_pr": 1661,
-    "integration_ahead_by": 2074,
+    "integration_ahead_by": 2075,
     "integration_behind_by": 0,
     "changed_files": 1036,
     "workflow_files_changed": 49,
@@ -622,8 +622,8 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "Exact-head run 43142812387 on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests, 60.92% coverage; sole failure was a TypeError because a dict was appended to a string-only disagreement list. Core 716/0; dependency audit and fail-closed gates passed. Wheel build skipped.",
-    "last_reconciled_at_utc": "2026-11-12T02:42:00Z",
+    "latest_exact_head_ci": "Exact-head full-suite passed on e52a37cf4a970782f9a3853e2c13765db9e3a1d7: 3,460 passed, zero failed, 8 subtests, 60.92% inclusive coverage in 82.42 seconds. Core suite passed 716/0. Wheel built successfully and the installed wheel loaded Barrot V3, the XRP mission and canonical data assets. Six dependency manifests audited successfully with zero known vulnerabilities reported; fail-closed PR and push gates passed.",
+    "last_reconciled_at_utc": "2026-11-12T02:50:00Z",
     "other_base_branches": 8,
     "main_tree_files": 1288,
     "integration_tree_files": 2187,
@@ -653,7 +653,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "latest_full_suite_tested_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -867,8 +867,8 @@
     },
     "latest_main_cross_analysis_run": 43130695870,
     "latest_main_cross_analysis_conclusion": "success",
-    "latest_full_suite_conclusion": "failure",
-    "latest_exact_head_ci_run_id": 43142812387,
+    "latest_full_suite_conclusion": "success",
+    "latest_exact_head_ci_run_id": 43143552410,
     "current_head_before_run33_commit": "570cd11ab16be1c61cb44a6b10740e7eb726b123",
     "current_commit_tree_sha": "fb603c995e4edbfc7bb0e00dd044387617f1546f",
     "run33_expected_changed_files_after_commit": 1017,
@@ -910,7 +910,7 @@
     "run40_expected_non_workflow_paths_after_commit": 983,
     "run40_expected_integration_tree_entries_after_commit": 2292,
     "run40_expected_ahead_by_after_commit": 2070,
-    "latest_verified_full_suite_passed_head": "d172167107aa5cb03495fb62ef56b57a331f3b21",
+    "latest_verified_full_suite_passed_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "main_full_suite_run": {
       "run_id": 42944864014,
       "job_id": 130275108548,
@@ -928,7 +928,7 @@
     "integration_primary_mission_present": true,
     "integration_xrp_ingestion_module_present": true,
     "integration_xrp_ingestion_workflow_present": true,
-    "latest_verified_code_head": "d172167107aa5cb03495fb62ef56b57a331f3b21",
+    "latest_verified_code_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "current_head_before_run42_commit": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
     "run42_new_paths": [
       "research/xrp_intelligence/20261112T022940Z-run42-current-head-ci-repair-market-etf-and-occ-rule.json"
@@ -937,44 +937,48 @@
     "run42_expected_non_workflow_paths_after_commit": 987,
     "run42_expected_integration_tree_entries_after_commit": 2296,
     "run42_expected_integration_tree_files_after_commit": 2187,
-    "run42_expected_ahead_by_after_commit": 2075,
+    "run42_expected_ahead_by_after_commit": 2076,
     "main_xrp_public_ingestion_workflow_present": false,
     "integration_xrp_public_ingestion_workflow_present": true,
-    "current_head_before_run42_correction_commit": "7e345743207020503c532b1d62cb732e02aeb0af"
+    "current_head_before_run42_correction_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
+    "latest_verified_wheel_build_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "current_head_before_run42_final_handoff_commit": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7"
   },
   "ci_evidence": {
-    "integration_head_tested": "7e345743207020503c532b1d62cb732e02aeb0af",
-    "integration_pr_run": 43142812387,
-    "integration_full_suite_job": 130933571732,
-    "dependency_audit_run": 43142812404,
-    "dependency_audit_job": 130924312287,
-    "fail_closed_gate_run": 43142812465,
-    "fail_closed_gate_job": 130924311410,
+    "integration_head_tested": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "integration_pr_run": 43143552410,
+    "integration_full_suite_job": 130936000664,
+    "dependency_audit_run": 43143552397,
+    "dependency_audit_job": 130936000571,
+    "fail_closed_gate_run": 43143552393,
+    "fail_closed_gate_job": 130936000680,
     "full_repository_suite": {
-      "passed": 3459,
-      "failed": 1,
+      "passed": 3460,
+      "failed": 0,
       "subtests": 8,
       "coverage_percent": 60.92,
       "coverage_floor_percent": 53,
-      "duration_seconds": 80.86,
+      "duration_seconds": 82.42,
       "exact_head": true,
       "exact_head_verified": true,
-      "wheel_build_verified": false,
-      "installed_wheel_primary_mission_verified": false,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
       "statements": 24160,
       "missed_statements": 8967,
       "branches": 7250,
       "partial_branches": 1443
     },
     "dependency_audit": {
-      "run_id": 43142812404,
+      "run_id": 43143552397,
+      "job_id": 130936000571,
       "passed": true,
       "conclusion": "success",
       "manifests": 6,
       "known_vulnerabilities": 0
     },
     "fail_closed_gate": {
-      "run_id": 43142812465,
+      "run_id": 43143552393,
+      "job_id": 130936000680,
       "passed": true,
       "conclusion": "success",
       "merge_disabled": true,
@@ -1011,65 +1015,67 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
-      "run_id": 43142812387,
+      "head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+      "run_id": 43143552410,
       "status": "completed",
-      "conclusion": "failure",
-      "full_suite_job_id": 130933571732,
+      "conclusion": "success",
+      "full_suite_job_id": 130936000664,
       "full_repository_suite": {
-        "passed": 3459,
-        "failed": 1,
+        "passed": 3460,
+        "failed": 0,
         "subtests": 8,
         "coverage_percent": 60.92,
         "coverage_floor_percent": 53,
-        "duration_seconds": 80.86,
+        "duration_seconds": 82.42,
         "exact_head": true,
         "exact_head_verified": true,
-        "wheel_build_verified": false,
-        "installed_wheel_primary_mission_verified": false,
+        "wheel_build_verified": true,
+        "installed_wheel_primary_mission_verified": true,
         "statements": 24160,
         "missed_statements": 8967,
         "branches": 7250,
         "partial_branches": 1443
       },
       "core_tests": {
-        "job_id": 130933571549,
+        "job_id": 130936000991,
         "passed": 716,
         "failed": 0,
         "subtests": 8,
         "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43142812404,
+        "run_id": 43143552397,
+        "job_id": 130936000571,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43142812465,
+        "run_id": 43143552393,
+        "job_id": 130936000680,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
       "push_dependency_audit": {
-        "run_id": 43142806828,
+        "run_id": 43143544568,
+        "job_id": 130935978278,
         "passed": true,
         "conclusion": "success"
       },
       "push_fail_closed_gate": {
-        "run_id": 43142806887,
+        "run_id": 43143544585,
+        "job_id": 130935977659,
         "passed": true,
         "conclusion": "success"
       },
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved"
-      ],
-      "failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
-      "wheel_build_verified": false,
-      "installed_wheel_primary_mission_verified": false,
-      "wheel_log": "Skipped after the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
+      "failing_tests": [],
+      "failure_classification": "Exact-head full-suite passed on e52a37cf4a970782f9a3853e2c13765db9e3a1d7: 3,460 passed, zero failed, 8 subtests, 60.92% inclusive coverage in 82.42 seconds. Core suite passed 716/0. Wheel built successfully and the installed wheel loaded Barrot V3, the XRP mission and canonical data assets. Six dependency manifests audited successfully with zero known vulnerabilities reported; fail-closed PR and push gates passed.",
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "wheel_log": "Successfully built b_agent-0.1.0-py3-none-any.whl; installed wheel loaded Barrot V3, XRP mission and canonical data assets."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1107,8 +1113,8 @@
       },
       "failing_tests": []
     },
-    "push_dependency_audit_run": 43142806828,
-    "push_fail_closed_gate_run": 43142806887,
+    "push_dependency_audit_run": 43143544568,
+    "push_fail_closed_gate_run": 43143544585,
     "current_run23_documentation_test_commit_ci": "PENDING; this new commit will require its own exact-head CI before merge.",
     "previous_attempt_before_run23": {
       "head_sha": "5a5ec55bc346e992c06da2a444774d37d901fb11",
@@ -1119,7 +1125,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 130933571549,
+    "core_suite_job": 130936000991,
     "latest_main_workflows": {
       "cross_analysis": {
         "run_id": 43023990234,
@@ -1157,65 +1163,67 @@
       "installed_wheel_primary_mission_verified": true
     },
     "current_attempt": {
-      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
-      "run_id": 43142812387,
+      "head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+      "run_id": 43143552410,
       "status": "completed",
-      "conclusion": "failure",
-      "full_suite_job_id": 130933571732,
+      "conclusion": "success",
+      "full_suite_job_id": 130936000664,
       "full_repository_suite": {
-        "passed": 3459,
-        "failed": 1,
+        "passed": 3460,
+        "failed": 0,
         "subtests": 8,
         "coverage_percent": 60.92,
         "coverage_floor_percent": 53,
-        "duration_seconds": 80.86,
+        "duration_seconds": 82.42,
         "exact_head": true,
         "exact_head_verified": true,
-        "wheel_build_verified": false,
-        "installed_wheel_primary_mission_verified": false,
+        "wheel_build_verified": true,
+        "installed_wheel_primary_mission_verified": true,
         "statements": 24160,
         "missed_statements": 8967,
         "branches": 7250,
         "partial_branches": 1443
       },
       "core_tests": {
-        "job_id": 130933571549,
+        "job_id": 130936000991,
         "passed": 716,
         "failed": 0,
         "subtests": 8,
         "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43142812404,
+        "run_id": 43143552397,
+        "job_id": 130936000571,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43142812465,
+        "run_id": 43143552393,
+        "job_id": 130936000680,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
       "push_dependency_audit": {
-        "run_id": 43142806828,
+        "run_id": 43143544568,
+        "job_id": 130935978278,
         "passed": true,
         "conclusion": "success"
       },
       "push_fail_closed_gate": {
-        "run_id": 43142806887,
+        "run_id": 43143544585,
+        "job_id": 130935977659,
         "passed": true,
         "conclusion": "success"
       },
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved"
-      ],
-      "failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
-      "wheel_build_verified": false,
-      "installed_wheel_primary_mission_verified": false,
-      "wheel_log": "Skipped after the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
+      "failing_tests": [],
+      "failure_classification": "Exact-head full-suite passed on e52a37cf4a970782f9a3853e2c13765db9e3a1d7: 3,460 passed, zero failed, 8 subtests, 60.92% inclusive coverage in 82.42 seconds. Core suite passed 716/0. Wheel built successfully and the installed wheel loaded Barrot V3, the XRP mission and canonical data assets. Six dependency manifests audited successfully with zero known vulnerabilities reported; fail-closed PR and push gates passed.",
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "wheel_log": "Successfully built b_agent-0.1.0-py3-none-any.whl; installed wheel loaded Barrot V3, XRP mission and canonical data assets."
     },
     "previous_passing_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1255,19 +1263,20 @@
     },
     "previous_passing_head": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
     "core_tests": {
-      "job_id": 130933571549,
+      "job_id": 130936000991,
       "passed": 716,
       "failed": 0,
       "subtests": 8,
       "conclusion": "success"
     },
     "push_fail_closed_gate": {
-      "run_id": 43142806887,
+      "run_id": 43143544585,
+      "job_id": 130935977659,
       "passed": true,
       "conclusion": "success"
     },
-    "latest_run_head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
-    "latest_run_conclusion": "failure",
+    "latest_run_head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "latest_run_conclusion": "success",
     "run30_documentation_commit_exact_head_ci": "PENDING",
     "historical_attempts": [
       {
@@ -1568,8 +1577,8 @@
       "permissions": "contents:read",
       "outputs": "workflow artifacts only; no repository commit or push"
     },
-    "push_dependency_audit_job": 130717940573,
-    "push_fail_closed_gate_job": 130717941118,
+    "push_dependency_audit_job": 130935978278,
+    "push_fail_closed_gate_job": 130935977659,
     "main_pillars_consistency_check": {
       "run_id": 43025487840,
       "conclusion": "failure",
@@ -1679,7 +1688,7 @@
       "failing_tests": [],
       "failure_classification": "Exact-head full-suite passed on verified head dd0152881ab6572b8a649a8bb4b87a9366335b92: 3,449 repository tests, zero failures, eight subtests, 59.99% inclusive barrot_agent package coverage in 84.72 seconds. Core 714/0. Wheel build and installed-wheel verification passed; installed wheel loaded Barrot V3, XRP mission and canonical data assets. Six dependency manifests audited with zero known vulnerabilities reported. PR and push fail-closed gates passed. This pass is scoped to dd015288; the corrective backlog/handoff commit now being created requires its own exact-head CI."
     },
-    "latest_verified_code_head": "d172167107aa5cb03495fb62ef56b57a331f3b21",
+    "latest_verified_code_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "core_suite": {
       "passed": 714,
       "failed": 0,
@@ -1687,7 +1696,7 @@
       "conclusion": "success"
     },
     "post_run37_map_repair_commit_ci": "PENDING_EXACT_HEAD",
-    "full_suite_failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
+    "full_suite_failure_classification": "Exact-head full-suite passed on e52a37cf4a970782f9a3853e2c13765db9e3a1d7: 3,460 passed, zero failed, 8 subtests, 60.92% inclusive coverage in 82.42 seconds. Core suite passed 716/0. Wheel built successfully and the installed wheel loaded Barrot V3, the XRP mission and canonical data assets. Six dependency manifests audited successfully with zero known vulnerabilities reported; fail-closed PR and push gates passed.",
     "previous_attempts": [
       {
         "head_sha": "043909f3a059b0ab0e2a48e110345a3e4244cd41",
@@ -2108,7 +2117,8 @@
       }
     ],
     "push_dependency_audit": {
-      "run_id": 43142806828,
+      "run_id": 43143544568,
+      "job_id": 130935978278,
       "passed": true,
       "conclusion": "success"
     },
@@ -2120,7 +2130,7 @@
       "note": "Push audit completed on an earlier Run38 commit, not final head dd015288; exact final head has a successful PR dependency audit."
     },
     "main_current_ci_scope": "Core-only 718-test main CI; no full repository suite job on main. Integration has the full-suite job.",
-    "latest_verified_full_suite_passed_head": "d172167107aa5cb03495fb62ef56b57a331f3b21",
+    "latest_verified_full_suite_passed_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
     "main_full_suite": {
       "run_id": 42944864014,
       "job_id": 130275108548,
@@ -2189,7 +2199,7 @@
       "installed_wheel_primary_mission_verified": true,
       "wheel_log": "Build and installed-wheel verification passed; installed package loaded Barrot V3, the XRP mission and canonical data assets."
     },
-    "latest_full_suite_conclusion": "failure",
+    "latest_full_suite_conclusion": "success",
     "previous_latest_attempt_before_run42_correction2": {
       "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
       "run_id": 43139971072,
@@ -2252,6 +2262,67 @@
       "wheel_build_verified": false,
       "installed_wheel_primary_mission_verified": false,
       "wheel_log": "Skipped because the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
+    },
+    "previous_latest_attempt_before_run42_final": {
+      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+      "run_id": 43142812387,
+      "status": "completed",
+      "conclusion": "failure",
+      "full_suite_job_id": 130933571732,
+      "full_repository_suite": {
+        "passed": 3459,
+        "failed": 1,
+        "subtests": 8,
+        "coverage_percent": 60.92,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 80.86,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": false,
+        "installed_wheel_primary_mission_verified": false,
+        "statements": 24160,
+        "missed_statements": 8967,
+        "branches": 7250,
+        "partial_branches": 1443
+      },
+      "core_tests": {
+        "job_id": 130933571549,
+        "passed": 716,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 43142812404,
+        "passed": true,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43142812465,
+        "passed": true,
+        "conclusion": "success",
+        "merge_disabled": true,
+        "automatic_merge_enabled": false
+      },
+      "push_dependency_audit": {
+        "run_id": 43142806828,
+        "passed": true,
+        "conclusion": "success"
+      },
+      "push_fail_closed_gate": {
+        "run_id": 43142806887,
+        "passed": true,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved"
+      ],
+      "failure_classification": "Exact-head full-suite failed on 7e345743207020503c532b1d62cb732e02aeb0af: 3,459 passed, 1 failed, 8 subtests passed, 60.92% coverage in 80.86 seconds. Sole failure: tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved. Root cause: Run42 appended a structured object to disagreement_and_counter_hypotheses, whose established contract is a list of strings; the test's join operation raised TypeError. Correction: replace only the appended object with a concise evidence-preserving string; structured Run42 details remain in run42_snapshot and the Run42 JSON artifact. No tests weakened.",
+      "wheel_build_verified": false,
+      "installed_wheel_primary_mission_verified": false,
+      "wheel_log": "Skipped after the full repository test job failed; wheel and installed-wheel verification were not executed on this head."
     }
   },
   "workflow_safety_audit": {
@@ -2489,12 +2560,12 @@
       "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
       "model_eligible": false
     },
-    "latest_exact_head_tested": "7e345743207020503c532b1d62cb732e02aeb0af",
-    "latest_exact_head_suite_passed": 3459,
-    "latest_exact_head_suite_failed": 1,
+    "latest_exact_head_tested": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "latest_exact_head_suite_passed": 3460,
+    "latest_exact_head_suite_failed": 0,
     "latest_exact_head_coverage_percent": 60.92,
-    "latest_exact_head_run_id": 43142812387,
-    "latest_exact_head_tested_at_utc": "2026-11-12T02:41:54Z"
+    "latest_exact_head_run_id": 43143552410,
+    "latest_exact_head_tested_at_utc": "2026-11-12T02:48:26Z"
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -4377,7 +4448,8 @@
     "CaseMagic's ICBA docket page contains 11 entries only through October 19 and explicitly says it is not the full docket; later rulings cannot be ruled out.",
     "Evernorth Class C shares are non-voting and transfer-restricted; the SEC does not describe them as absolutely non-transferable.",
     "BLS did not publish October 2026 year-over-year CPI changes for affected series because October 2025 data were unavailable.",
-    "Run42 ETF flow coverage disagreement: no average is computed across TheXRPInvestor, Alpha Finance, XRP Insights and XRP Desk because their product universes, holdings scope and vintages differ; this is a counter-hypothesis to treating reported holdings as one spot-flow measure. Asynchronous OKX/Kraken quote differences are research-only and neither is a directional forecast."
+    "Run42 ETF flow coverage disagreement: no average is computed across TheXRPInvestor, Alpha Finance, XRP Insights and XRP Desk because their product universes, holdings scope and vintages differ; this is a counter-hypothesis to treating reported holdings as one spot-flow measure. Asynchronous OKX/Kraken quote differences are research-only and neither is a directional forecast.",
+    "Run42 Evernorth counter-hypothesis: XRPN equity resale registration and SBI Class A potential resale supply are not XRP token supply or proof of XRP selling; in-kind treasury contributions are not open-market purchases, and no completed SBI/Sponsor resale or Evernorth XRP sale is established."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -7272,8 +7344,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run42-correction-2",
-  "latest_run_captured_at_utc": "2026-11-12T02:42:00Z",
+  "latest_run_id": "Run42-final-verification",
+  "latest_run_captured_at_utc": "2026-11-12T02:50:00Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -10080,7 +10152,7 @@
       "no_main_write": true
     }
   },
-  "latest_run_summary": "Run42 follow-up corrected the string-only disagreement-list contract after the exact-head suite exposed a TypeError (3,459 passed, 1 failed); refreshed RLUSD issuer/chain vintages and corrected the ETF holdings-scope caveat. Forecast remains NOT_ISSUED; no merge.",
+  "latest_run_summary": "Run42 corrective integration head e52a37 passed the complete repository suite (3,460/0, eight subtests, 60.92% coverage), wheel/installed Barrot V3 and XRP mission verification, six-manifest dependency audit and fail-closed PR/push gates. Evernorth/SBI resale and RippleWorks ownership were reconciled from SEC primary evidence. Forecast remains NOT_ISSUED; PR #1661 remains draft and unmerged.",
   "run28_snapshot": {
     "run_id": 28,
     "captured_at_utc": "2026-11-11T14:59:22Z",
@@ -18811,7 +18883,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T02:42:00Z",
+  "updated_at_utc": "2026-11-12T02:50:00Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -21412,7 +21484,70 @@
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
     "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
-    "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+    "evernorth": {
+      "closing_treasury_total_xrp": 473276430,
+      "cash_purchased_xrp": 84365876,
+      "in_kind_xrp": 388910554,
+      "in_kind_share_percent": 82.1741,
+      "cash_purchased_share_percent": 17.8259,
+      "in_kind_components": [
+        {
+          "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+          "xrp": 211319096
+        },
+        {
+          "source": "Ripple Labs directly to Pathfinder",
+          "xrp": 126791458
+        },
+        {
+          "source": "Larsen Lam Children's Remainder Trust",
+          "xrp": 50000000
+        },
+        {
+          "source": "Advance-funding subscribers in kind",
+          "xrp": 600000
+        },
+        {
+          "source": "Delayed-funding subscribers in kind",
+          "xrp": 200000
+        }
+      ],
+      "cash_pool": {
+        "amount_usd": 214050000,
+        "includes_sbi_announced_commitment_usd": 200000000,
+        "additive": false,
+        "used_to_purchase_xrp": 84365876
+      },
+      "sbi_controlled_stockholders": {
+        "class_a_shares": 9431914,
+        "class_a_share_of_class_outstanding_percent": 36.145,
+        "class_c_shares": 2359038,
+        "class_c_share_of_class_outstanding_percent": 7.515,
+        "combined_registered_shares": 11790952,
+        "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+        "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+        "completed_sale_established": false
+      },
+      "resale_registration": {
+        "maximum_shares": 73688162,
+        "existing_class_a": 19102635,
+        "potential_class_c_conversion": 31392746,
+        "potential_company_unit_redemption_or_exchange": 22953128,
+        "sponsor_warrant_exercise_shares": 239653,
+        "not_all_currently_outstanding_or_freely_tradable": true,
+        "company_resale_proceeds": false,
+        "exception": "cash proceeds from Sponsor Warrant exercise",
+        "completed_resale_established": false
+      },
+      "rippleworks_relationship": {
+        "separate_nonprofit_from_ripple_labs": true,
+        "majority_limited_partner_interests_in_sponsor": true,
+        "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+        "prospectus_discloses_potential_conflicts": true,
+        "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+      },
+      "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
+    },
     "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
     "rlusd": {
       "issuer_report": {
@@ -21440,7 +21575,70 @@
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
     "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
-    "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+    "evernorth": {
+      "closing_treasury_total_xrp": 473276430,
+      "cash_purchased_xrp": 84365876,
+      "in_kind_xrp": 388910554,
+      "in_kind_share_percent": 82.1741,
+      "cash_purchased_share_percent": 17.8259,
+      "in_kind_components": [
+        {
+          "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+          "xrp": 211319096
+        },
+        {
+          "source": "Ripple Labs directly to Pathfinder",
+          "xrp": 126791458
+        },
+        {
+          "source": "Larsen Lam Children's Remainder Trust",
+          "xrp": 50000000
+        },
+        {
+          "source": "Advance-funding subscribers in kind",
+          "xrp": 600000
+        },
+        {
+          "source": "Delayed-funding subscribers in kind",
+          "xrp": 200000
+        }
+      ],
+      "cash_pool": {
+        "amount_usd": 214050000,
+        "includes_sbi_announced_commitment_usd": 200000000,
+        "additive": false,
+        "used_to_purchase_xrp": 84365876
+      },
+      "sbi_controlled_stockholders": {
+        "class_a_shares": 9431914,
+        "class_a_share_of_class_outstanding_percent": 36.145,
+        "class_c_shares": 2359038,
+        "class_c_share_of_class_outstanding_percent": 7.515,
+        "combined_registered_shares": 11790952,
+        "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+        "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+        "completed_sale_established": false
+      },
+      "resale_registration": {
+        "maximum_shares": 73688162,
+        "existing_class_a": 19102635,
+        "potential_class_c_conversion": 31392746,
+        "potential_company_unit_redemption_or_exchange": 22953128,
+        "sponsor_warrant_exercise_shares": 239653,
+        "not_all_currently_outstanding_or_freely_tradable": true,
+        "company_resale_proceeds": false,
+        "exception": "cash proceeds from Sponsor Warrant exercise",
+        "completed_resale_established": false
+      },
+      "rippleworks_relationship": {
+        "separate_nonprofit_from_ripple_labs": true,
+        "majority_limited_partner_interests_in_sponsor": true,
+        "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+        "prospectus_discloses_potential_conflicts": true,
+        "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+      },
+      "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
+    },
     "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
     "rlusd": {
       "issuer_report": {
@@ -21574,6 +21772,22 @@
       "source_group": "aggregator:StableRadar",
       "snapshot_utc": "2026-11-11T19:43:00Z",
       "notes": "Third-party live chain reads: 2.7014B total official-chain supply; XRPL and Ethereum quantities. Not an issuer reserve attestation."
+    },
+    {
+      "source_ref": "turn612831view0",
+      "source": "Evernorth SEC Form 424B3 — selling securityholders, transferability, lock-up and digital-asset contribution disclosures",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "primary_regulator:SEC",
+      "publication_date": "2026-11-09",
+      "notes": "SBI Class A/Class C classes, resale registration, in-kind XRP sources and restrictions."
+    },
+    {
+      "source_ref": "turn995982view0",
+      "source": "Evernorth SEC Form 424B3 — RippleWorks/Sponsor ownership and conflict disclosure",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "primary_regulator:SEC",
+      "publication_date": "2026-11-09",
+      "notes": "RippleWorks majority limited-partner interest in Sponsor; Chris Larsen relationship and potential conflicts."
     }
   ],
   "run42_overlap_reconciliation": {
@@ -21624,47 +21838,19 @@
     "disposition": "Keep source PRs open. #1661 is the sole consolidated integration PR; close only exact duplicates/superseded sources after successor merge and main verification."
   },
   "run42_ci_failure": {
-    "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
-    "run_id": 43142812387,
-    "conclusion": "failure",
-    "passed": 3459,
-    "failed": 1,
-    "subtests": 8,
-    "coverage_percent": 60.92,
-    "duration_seconds": 80.86,
-    "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
-    "root_cause": "A structured dict was appended to a list whose established schema is strings; test join raised TypeError.",
-    "repair": "Replace the appended dict with a string in disagreement_and_counter_hypotheses; retain structured Run42 details in run42_snapshot and the artifact.",
-    "core": {
-      "job_id": 130933571549,
-      "passed": 716,
-      "failed": 0,
-      "subtests": 8,
-      "conclusion": "success"
-    },
-    "dependency_audit": {
-      "run_id": 43142812404,
-      "passed": true,
-      "conclusion": "success",
-      "manifests": 6,
-      "known_vulnerabilities": 0
-    },
-    "fail_closed_gate": {
-      "run_id": 43142812465,
-      "passed": true,
-      "conclusion": "success",
-      "merge_disabled": true,
-      "automatic_merge_enabled": false
-    },
-    "wheel_build": "SKIPPED_AFTER_TEST_FAILURE"
+    "historical_parent_a98c": "one evidence-classification assertion",
+    "historical_parent_7e345": "one disagreement-list type assertion",
+    "current_verified_head": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "current_conclusion": "success",
+    "no_tests_weakened": true
   },
   "run42_snapshot": {
     "captured_at_utc": "2026-11-12T02:29:40Z",
     "repository": {
       "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "integration_branch": "integration/xrp-v3-unified-main-20261111",
-      "integration_head_before_current_map_commit": "7e345743207020503c532b1d62cb732e02aeb0af",
-      "integration_ahead_by": 2074,
+      "integration_head_before_current_map_commit": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+      "integration_ahead_by": 2075,
       "integration_behind_by": 0,
       "changed_files": 1036,
       "workflow_files_changed": 49,
@@ -21683,11 +21869,11 @@
       "integration_pr_state": "open",
       "integration_pr_draft": true,
       "integration_pr_mergeable": true,
-      "integration_pr_mergeable_state": "unstable",
-      "integration_pr_head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
+      "integration_pr_mergeable_state": "clean",
+      "integration_pr_head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
       "integration_pr_base_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-      "integration_pr_commits": 2074,
-      "integration_pr_additions": 274007,
+      "integration_pr_commits": 2075,
+      "integration_pr_additions": 274218,
       "integration_pr_deletions": 4391,
       "formal_approvals": 0,
       "formal_reviews": 0,
@@ -21702,39 +21888,61 @@
       "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API reads and Git-object branch update are available."
     },
     "ci": {
-      "head_sha": "7e345743207020503c532b1d62cb732e02aeb0af",
-      "run_id": 43142812387,
-      "conclusion": "failure",
-      "passed": 3459,
-      "failed": 1,
-      "subtests": 8,
-      "coverage_percent": 60.92,
-      "duration_seconds": 80.86,
-      "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
-      "root_cause": "A structured dict was appended to a list whose established schema is strings; test join raised TypeError.",
-      "repair": "Replace the appended dict with a string in disagreement_and_counter_hypotheses; retain structured Run42 details in run42_snapshot and the artifact.",
+      "head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+      "run_id": 43143552410,
+      "full_suite": {
+        "passed": 3460,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 60.92,
+        "coverage_floor_percent": 53,
+        "duration_seconds": 82.42,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "wheel_build_verified": true,
+        "installed_wheel_primary_mission_verified": true,
+        "statements": 24160,
+        "missed_statements": 8967,
+        "branches": 7250,
+        "partial_branches": 1443
+      },
       "core": {
-        "job_id": 130933571549,
+        "job_id": 130936000991,
         "passed": 716,
         "failed": 0,
         "subtests": 8,
         "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 43142812404,
+        "run_id": 43143552397,
+        "job_id": 130936000571,
         "passed": true,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities": 0
       },
       "fail_closed_gate": {
-        "run_id": 43142812465,
+        "run_id": 43143552393,
+        "job_id": 130936000680,
         "passed": true,
         "conclusion": "success",
         "merge_disabled": true,
         "automatic_merge_enabled": false
       },
-      "wheel_build": "SKIPPED_AFTER_TEST_FAILURE"
+      "push_dependency_audit": {
+        "run_id": 43143544568,
+        "job_id": 130935978278,
+        "passed": true,
+        "conclusion": "success"
+      },
+      "push_fail_closed_gate": {
+        "run_id": 43143544585,
+        "job_id": 130935977659,
+        "passed": true,
+        "conclusion": "success"
+      },
+      "exact_head_verified": true,
+      "merge_authorized": false
     },
     "market": {
       "retrieved_at_utc_approx": "2026-11-12T02:29-02:31Z",
@@ -21831,7 +22039,70 @@
       "captured_at_utc": "2026-11-12T02:29:40Z",
       "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
       "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
-      "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+      "evernorth": {
+        "closing_treasury_total_xrp": 473276430,
+        "cash_purchased_xrp": 84365876,
+        "in_kind_xrp": 388910554,
+        "in_kind_share_percent": 82.1741,
+        "cash_purchased_share_percent": 17.8259,
+        "in_kind_components": [
+          {
+            "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+            "xrp": 211319096
+          },
+          {
+            "source": "Ripple Labs directly to Pathfinder",
+            "xrp": 126791458
+          },
+          {
+            "source": "Larsen Lam Children's Remainder Trust",
+            "xrp": 50000000
+          },
+          {
+            "source": "Advance-funding subscribers in kind",
+            "xrp": 600000
+          },
+          {
+            "source": "Delayed-funding subscribers in kind",
+            "xrp": 200000
+          }
+        ],
+        "cash_pool": {
+          "amount_usd": 214050000,
+          "includes_sbi_announced_commitment_usd": 200000000,
+          "additive": false,
+          "used_to_purchase_xrp": 84365876
+        },
+        "sbi_controlled_stockholders": {
+          "class_a_shares": 9431914,
+          "class_a_share_of_class_outstanding_percent": 36.145,
+          "class_c_shares": 2359038,
+          "class_c_share_of_class_outstanding_percent": 7.515,
+          "combined_registered_shares": 11790952,
+          "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+          "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+          "completed_sale_established": false
+        },
+        "resale_registration": {
+          "maximum_shares": 73688162,
+          "existing_class_a": 19102635,
+          "potential_class_c_conversion": 31392746,
+          "potential_company_unit_redemption_or_exchange": 22953128,
+          "sponsor_warrant_exercise_shares": 239653,
+          "not_all_currently_outstanding_or_freely_tradable": true,
+          "company_resale_proceeds": false,
+          "exception": "cash proceeds from Sponsor Warrant exercise",
+          "completed_resale_established": false
+        },
+        "rippleworks_relationship": {
+          "separate_nonprofit_from_ripple_labs": true,
+          "majority_limited_partner_interests_in_sponsor": true,
+          "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+          "prospectus_discloses_potential_conflicts": true,
+          "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+        },
+        "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
+      },
       "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
       "rlusd": {
         "issuer_report": {
@@ -21909,7 +22180,70 @@
       "captured_at_utc": "2026-11-12T02:29:40Z",
       "regulatory": "OCC Bulletin 2026-50 (2026-10-21) finalizes the GENIUS Act payment-stablecoin framework; effective 2027-01-18. BSA/AML/OFAC sanctions requirements remain a separate rulemaking.",
       "application_transition": "OCC Bulletin 2026-51 says applications begin after OMB approval of the information collection; OCC generally expects to grant waiver requests for existing issuers with substantially complete applications pending on 2027-01-18 unless stronger reasons to deny.",
-      "evernorth": "SEC 424B3 remains the primary source: 73,688,162 XRPN shares registered for possible resale/conversion; resale proceeds go to selling holders, not Evernorth, except possible Sponsor Warrant exercise proceeds. SBI-controlled holders have 11,790,952 registered shares. XRPN equity is not XRP token supply; no completed resale or Evernorth XRP sale established.",
+      "evernorth": {
+        "closing_treasury_total_xrp": 473276430,
+        "cash_purchased_xrp": 84365876,
+        "in_kind_xrp": 388910554,
+        "in_kind_share_percent": 82.1741,
+        "cash_purchased_share_percent": 17.8259,
+        "in_kind_components": [
+          {
+            "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+            "xrp": 211319096
+          },
+          {
+            "source": "Ripple Labs directly to Pathfinder",
+            "xrp": 126791458
+          },
+          {
+            "source": "Larsen Lam Children's Remainder Trust",
+            "xrp": 50000000
+          },
+          {
+            "source": "Advance-funding subscribers in kind",
+            "xrp": 600000
+          },
+          {
+            "source": "Delayed-funding subscribers in kind",
+            "xrp": 200000
+          }
+        ],
+        "cash_pool": {
+          "amount_usd": 214050000,
+          "includes_sbi_announced_commitment_usd": 200000000,
+          "additive": false,
+          "used_to_purchase_xrp": 84365876
+        },
+        "sbi_controlled_stockholders": {
+          "class_a_shares": 9431914,
+          "class_a_share_of_class_outstanding_percent": 36.145,
+          "class_c_shares": 2359038,
+          "class_c_share_of_class_outstanding_percent": 7.515,
+          "combined_registered_shares": 11790952,
+          "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+          "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+          "completed_sale_established": false
+        },
+        "resale_registration": {
+          "maximum_shares": 73688162,
+          "existing_class_a": 19102635,
+          "potential_class_c_conversion": 31392746,
+          "potential_company_unit_redemption_or_exchange": 22953128,
+          "sponsor_warrant_exercise_shares": 239653,
+          "not_all_currently_outstanding_or_freely_tradable": true,
+          "company_resale_proceeds": false,
+          "exception": "cash proceeds from Sponsor Warrant exercise",
+          "completed_resale_established": false
+        },
+        "rippleworks_relationship": {
+          "separate_nonprofit_from_ripple_labs": true,
+          "majority_limited_partner_interests_in_sponsor": true,
+          "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+          "prospectus_discloses_potential_conflicts": true,
+          "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+        },
+        "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
+      },
       "macro": "FSB's 2026-11-11 Türkiye peer review recommends a dedicated stablecoin framework and stronger cross-border oversight; broad regulatory context, not XRP-specific demand.",
       "rlusd": {
         "issuer_report": {
@@ -21932,8 +22266,129 @@
         },
         "reconciliation": "The Nov5 issuer attestation and Nov11 on-chain aggregate are different vintages and measurement methods. Their approximately $68.5M difference is not classified as a reserve shortfall or issuance flow without contract-level reconciliation."
       }
+    },
+    "evernorth_sec": {
+      "closing_treasury_total_xrp": 473276430,
+      "cash_purchased_xrp": 84365876,
+      "in_kind_xrp": 388910554,
+      "in_kind_share_percent": 82.1741,
+      "cash_purchased_share_percent": 17.8259,
+      "in_kind_components": [
+        {
+          "source": "RippleWorks, Inc. via Arrington XRP Capital Fund Sponsor",
+          "xrp": 211319096
+        },
+        {
+          "source": "Ripple Labs directly to Pathfinder",
+          "xrp": 126791458
+        },
+        {
+          "source": "Larsen Lam Children's Remainder Trust",
+          "xrp": 50000000
+        },
+        {
+          "source": "Advance-funding subscribers in kind",
+          "xrp": 600000
+        },
+        {
+          "source": "Delayed-funding subscribers in kind",
+          "xrp": 200000
+        }
+      ],
+      "cash_pool": {
+        "amount_usd": 214050000,
+        "includes_sbi_announced_commitment_usd": 200000000,
+        "additive": false,
+        "used_to_purchase_xrp": 84365876
+      },
+      "sbi_controlled_stockholders": {
+        "class_a_shares": 9431914,
+        "class_a_share_of_class_outstanding_percent": 36.145,
+        "class_c_shares": 2359038,
+        "class_c_share_of_class_outstanding_percent": 7.515,
+        "combined_registered_shares": 11790952,
+        "class_a_transferability": "Generally freely transferable subject to applicable securities law; SEC identifies Ripple and Sponsor Class A holdings as locked, and SBI is not named among the specified Lock-Up Agreement parties. Treat as potential resale supply subject to any other applicable restrictions.",
+        "class_c_status": "Non-voting, not listed for trading and transfer-restricted; potential conversion shares are registered, subject to the SBI group's 39.9% maximum ownership restriction.",
+        "completed_sale_established": false
+      },
+      "resale_registration": {
+        "maximum_shares": 73688162,
+        "existing_class_a": 19102635,
+        "potential_class_c_conversion": 31392746,
+        "potential_company_unit_redemption_or_exchange": 22953128,
+        "sponsor_warrant_exercise_shares": 239653,
+        "not_all_currently_outstanding_or_freely_tradable": true,
+        "company_resale_proceeds": false,
+        "exception": "cash proceeds from Sponsor Warrant exercise",
+        "completed_resale_established": false
+      },
+      "rippleworks_relationship": {
+        "separate_nonprofit_from_ripple_labs": true,
+        "majority_limited_partner_interests_in_sponsor": true,
+        "co_founder_chris_larsen_is_also_ripple_cofounder_and_executive_chairman": true,
+        "prospectus_discloses_potential_conflicts": true,
+        "written_voting_instruction_and_consent_rights_scope": "4,215,479-share DAT Side Pocket; not all Sponsor securities"
+      },
+      "interpretation": "Approximately 82.17% of the initial Evernorth XRP treasury was contributed in kind, not purchased in the open market. SBI's existing Class A stock block is a potential XRPN equity resale overhang, not XRP token supply. No completed sale by SBI, Sponsor, Ripple or Evernorth is established."
     }
   },
   "run42_research_artifact_path": "research/xrp_intelligence/20261112T022940Z-run42-current-head-ci-repair-market-etf-and-occ-rule.json",
-  "run42_forecast_status": "NOT_ISSUED"
+  "run42_forecast_status": "NOT_ISSUED",
+  "run42_current_ci_verification": {
+    "head_sha": "e52a37cf4a970782f9a3853e2c13765db9e3a1d7",
+    "run_id": 43143552410,
+    "full_suite": {
+      "passed": 3460,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 60.92,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 82.42,
+      "exact_head": true,
+      "exact_head_verified": true,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "statements": 24160,
+      "missed_statements": 8967,
+      "branches": 7250,
+      "partial_branches": 1443
+    },
+    "core": {
+      "job_id": 130936000991,
+      "passed": 716,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 43143552397,
+      "job_id": 130936000571,
+      "passed": true,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43143552393,
+      "job_id": 130936000680,
+      "passed": true,
+      "conclusion": "success",
+      "merge_disabled": true,
+      "automatic_merge_enabled": false
+    },
+    "push_dependency_audit": {
+      "run_id": 43143544568,
+      "job_id": 130935978278,
+      "passed": true,
+      "conclusion": "success"
+    },
+    "push_fail_closed_gate": {
+      "run_id": 43143544585,
+      "job_id": 130935977659,
+      "passed": true,
+      "conclusion": "success"
+    },
+    "exact_head_verified": true,
+    "merge_authorized": false
+  }
 }

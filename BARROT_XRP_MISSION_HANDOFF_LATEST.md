@@ -2354,3 +2354,44 @@ No merge, deployment, secret rotation/revocation, Space restart, Kaggle submissi
 - **RLUSD:** Ripple's issuer transparency page reports $2.6329B circulating against $2.748B reserves as of Nov5, 2026 (about 104.37% coverage; $115.1M excess). A third-party live on-chain aggregator reports 2.7014B official-chain supply on Nov11 19:43 UTC, including 873.741M XRPL and 1.8116B Ethereum. These are different vintages/methods; the ~$68.5M difference is not classified as a reserve shortfall or net issuance without contract-level reconciliation. <https://ripple.com/products/stablecoin/transparency/> <https://stableradar.com/coin/rlusd>
 - Forecast remains `NOT_ISSUED`; web/API observations are not model-eligible without Barrot raw-byte receipts. No merge or external action.
 - Next: verify the next exact-head full suite, wheel/installed mission, dependency audit and fail-closed gates. Continue semantic/security/approval/publication blockers.
+
+
+## Run42 final exact-head verification — 2026-11-12 02:50 UTC
+
+### Verified integration head and tests
+- Exact tested parent: `e52a37cf4a970782f9a3853e2c13765db9e3a1d7`; [full CI 43143552410](https://github.com/Barrot-Agent/B-Agent/actions/runs/43143552410) completed successfully.
+- **3,460 passed, zero failed, eight subtests passed, 60.92% inclusive coverage** against the 53% floor; full-suite test execution 82.42 seconds.
+- Wheel built successfully: `b_agent-0.1.0-py3-none-any.whl`. Installed-wheel verification explicitly loaded Barrot V3, the XRP mission and canonical data assets.
+- [Dependency audit 43143552397](https://github.com/Barrot-Agent/B-Agent/actions/runs/43143552397) passed all six manifests (requirements.txt, requirements-dev.txt, supplemental requirements, Hugging Face Space, legacy requirements and pyproject PEP 621 dependencies); zero known vulnerabilities reported.
+- [Fail-closed PR gate 43143552393](https://github.com/Barrot-Agent/B-Agent/actions/runs/43143552393), [push dependency audit 43143544568](https://github.com/Barrot-Agent/B-Agent/actions/runs/43143544568) and [push fail-closed gate 43143544585](https://github.com/Barrot-Agent/B-Agent/actions/runs/43143544585) passed.
+- The preceding exact-head failures were both repaired without weakening tests: first stale `failure_classification` metadata, then a Run42 dict appended to a string-only disagreement list. The current verified parent includes the corrected string schema.
+
+### SEC primary-source reconciliation: Evernorth / RippleWorks / SBI
+- Closing treasury: approximately 473.276430M XRP. Cash-purchased XRP: 84.365876M. In-kind XRP: 388.910554M, approximately 82.1741%; cash-purchased share approximately 17.8259%.
+- In-kind sources: RippleWorks via Arrington Sponsor 211.319096M; Ripple Labs directly to Pathfinder 126.791458M; Larsen Lam Children's Remainder Trust 50M; advance-funding subscribers 0.6M; delayed-funding subscribers 0.2M. The $214.05M advance-funding cash pool includes SBI's $200M announced commitment and is not additive.
+- RippleWorks is a separate nonprofit, not Ripple Labs. The SEC says it holds a majority of Arrington Sponsor limited-partner interests. Chris Larsen co-founded RippleWorks and Ripple and serves on RippleWorks' board; the prospectus expressly identifies potential conflicts. The specific written voting instructions/consent rights described apply to the 4,215,479-share DAT Side Pocket, not all Sponsor securities.
+- SBI-controlled holders: 9,431,914 Class A (about 36.145% of the 26.094680M Class A shares outstanding at the stated cutoff) and 2,359,038 Class C (about 7.515% of Class C), 11,790,952 combined.
+- The filing says Class A is generally freely transferable subject to securities law; the specified lock-up parties are Ripple, Sponsor and Contributor Related Party Entity, and the filing specifically describes Ripple/Sponsor Class A holdings as locked. SBI is not named among those parties. Therefore SBI's existing 9.432M Class A block appears not covered by that specific contractual lock-up, subject to any other applicable restrictions. Class C is non-voting, not listed for trading and transfer-restricted; potential conversion is subject to the SBI group's 39.9% ownership limit.
+- The 73,688,162-share registration includes existing Class A, potential Class C conversions, Company Unit redemptions/exchanges and Sponsor Warrant exercise shares. It is not 73.688M currently outstanding or freely tradable shares. Evernorth receives no proceeds from selling-securityholder resales except Sponsor Warrant exercise proceeds.
+- This is potential **XRPN equity** resale/dilution supply, not XRP token supply. No completed SBI resale, Sponsor resale or Evernorth XRP sale is established.
+- Primary source: [SEC Form 424B3, November 9, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+### RLUSD and regulatory timeline
+- Ripple's issuer transparency page reports $2.6329B circulating and $2.748B reserve funds as of November 5, 2026 (approximately 104.37% reserve coverage; $115.1M excess).
+- StableRadar's third-party on-chain aggregate reports 2.7014B official-chain supply on November 11 19:43 UTC, including 873.741M XRPL and 1.8116B Ethereum. The two figures have different vintages and methodologies; the ~$68.5M difference is not called a reserve shortfall or net issuance without contract-level reconciliation.
+- OCC GENIUS Act payment-stablecoin final rule effective January 18, 2027; applications begin after OMB approval of the information collection; existing-issuer waivers depend on substantially complete applications and OCC review. No Circle/Ripple application status inferred. Trust-bank charters do not by themselves prove GENIUS Act issuer approval or XRP collateral eligibility.
+
+### Current integration and blockers
+- Main SHA remains `84f28ee7755607236231545a14f3d093c1baaa85`.
+- Tested integration parent `e52a37cf4a970782f9a3853e2c13765db9e3a1d7`; 2,075 ahead / 0 behind; 1,036 changed files (49 workflow / 987 other); 2,296 tree entries / 2,187 files.
+- The Run42 final handoff/map update is a documentation/evidence commit on the same integration branch. It adds no new PR and no workflow changes. The exact parent above is fully verified; the new handoff commit will require its own exact-head CI.
+- PR #1661 remains open/draft with zero formal approvals/reviews. Although GitHub reports mergeable_state=clean on the verified parent, draft status, absent approvals, inaccessible branch-protection details, overprivileged connector, unverified provider-side OAuth revocation, unauthorized Pages publication side effect and incomplete semantic review remain blockers.
+- `.config/gh/hosts.yml` remains absent from main, integration and all 17 rechecked affected open-PR file inventories; this does not prove provider-side token revocation.
+- No source PR was closed. #1660/#1643/#1640/#1642 remain overlap/supersession candidates; unique graph, safety, MMI, topology and prediction work remains preserved.
+
+### Prediction and next concrete work
+- Forecast remains `NOT_ISSUED`; Run42 web/API observations are not raw-receipt ingested and are excluded from model features.
+- Implement the missing deterministic scenario/counter-hypothesis generator next. It must preserve source independence, minority objections, falsification criteria and point-in-time cutoffs, and must not issue probabilities or directional forecasts without calibration/readiness gates.
+- Then build independently controlled WORM/timestamp anchoring and replayable feature history; demonstrate OOS lift against naive, momentum, mean-reversion and volatility baselines before forecast issuance.
+
+No merge, deployment, secret rotation/revocation, Space restart, Kaggle submission, Databricks write, external-model transfer, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or PR closure occurred.
