@@ -20,6 +20,7 @@ import re
 from collections.abc import Mapping, Sequence
 from datetime import datetime, timedelta, timezone
 from typing import Any
+from urllib.parse import urlsplit
 
 from .scenario_hypotheses import (
     ScenarioHypothesisError,
@@ -37,6 +38,10 @@ _ALLOWED_EVENT_TYPES = {
     "institutional", "custody", "stablecoin", "payments", "regulatory",
     "macro", "geopolitical", "corporate", "protocol", "identity", "other",
 }
+
+_ALLOWED_SOURCE_STATUSES = {"verified", "disputed", "provisional", "unverified"}
+_ALLOWED_STANCES = {"supports", "contradicts", "context"}
+_ALLOWED_EVENT_STATUSES = {"occurred", "scheduled", "ongoing", "unknown"}
 
 
 class EventTimelineError(ValueError):
@@ -90,12 +95,13 @@ def _canonical_hash(value: Any) -> str:
     return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
 
 
+
 def _normalize_event(
     record: Any,
     index: int,
     cutoff: datetime,
     horizon_end: datetime,
-) -> tuple[dict[str, Any] | None, dict[str, str] | None, dict[str, Any] | None]:
+) -> tuple[dict[str, Any] | None, dict[str, Any] | None, dict[str, Any] | None]:
     prefix = f"event_records[{index}]"
     if not isinstance(record, Mapping):
         raise EventTimelineError(f"{prefix} must be a mapping")
@@ -116,8 +122,30 @@ def _normalize_event(
     )
     claim = _text(record.get("claim"), f"{prefix}.claim")
     source_id = _text(record.get("source_id"), f"{prefix}.source_id")
-    source_name = str(record.get("source_name") or source_id).strip()
+    source_name_value = record.get("source_name")
+    source_name = _text(
+        source_id if source_name_value is None else source_name_value,
+        f"{prefix}.source_name",
+    )
     source_url = _text(record.get("source_url"), f"{prefix}.source_url")
+    try:
+        parsed_url = urlsplit(source_url)
+        hostname = parsed_url.hostname
+        username = parsed_url.username
+        password = parsed_url.password
+    except ValueError as exc:
+        raise EventTimelineError(
+            f"{prefix}.source_url must be a valid HTTP(S) URL"
+        ) from exc
+    if parsed_url.scheme.lower() not in {"http", "https"} or not hostname:
+        raise EventTimelineError(
+            f"{prefix}.source_url must be a valid HTTP(S) URL"
+        )
+    if username or password:
+        raise EventTimelineError(
+            f"{prefix}.source_url must not contain embedded credentials"
+        )
+
     independence_group = _text(
         record.get("independence_group"),
         f"{prefix}.independence_group",
@@ -126,11 +154,23 @@ def _normalize_event(
         record.get("source_status"),
         f"{prefix}.source_status",
     ).lower()
+    if source_status not in _ALLOWED_SOURCE_STATUSES:
+        raise EventTimelineError(
+            f"{prefix}.source_status must be one of {sorted(_ALLOWED_SOURCE_STATUSES)}"
+        )
     stance = _text(record.get("stance"), f"{prefix}.stance").lower()
+    if stance not in _ALLOWED_STANCES:
+        raise EventTimelineError(
+            f"{prefix}.stance must be one of {sorted(_ALLOWED_STANCES)}"
+        )
     event_status = _text(
         record.get("event_status"),
         f"{prefix}.event_status",
     ).lower()
+    if event_status not in _ALLOWED_EVENT_STATUSES:
+        raise EventTimelineError(
+            f"{prefix}.event_status must be one of {sorted(_ALLOWED_EVENT_STATUSES)}"
+        )
 
     event_time, event_time_text = _utc(
         record.get("event_time_utc"),
@@ -161,22 +201,6 @@ def _normalize_event(
                 f"{prefix}.source_published_at_utc cannot follow captured_at_utc"
             )
 
-    known_at = max(available_at, captured_at)
-    exclusion_reason = None
-    if known_at > cutoff:
-        exclusion_reason = "not_captured_by_data_cutoff"
-    elif event_status == "occurred" and event_time > cutoff:
-        exclusion_reason = "occurred_event_is_after_data_cutoff"
-    elif event_status == "scheduled" and event_time <= cutoff:
-        exclusion_reason = "scheduled_event_time_has_elapsed"
-    elif event_status in {"ongoing", "unknown"} and event_time > cutoff:
-        exclusion_reason = "future_event_not_verified_as_scheduled"
-    elif event_status == "scheduled" and event_time > horizon_end:
-        exclusion_reason = "scheduled_event_outside_forecast_horizon"
-
-    if exclusion_reason is not None:
-        return None, {"event_id": event_id, "reason": exclusion_reason}, None
-
     raw_hash = record.get("raw_source_sha256")
     if raw_hash is not None:
         raw_hash = _text(raw_hash, f"{prefix}.raw_source_sha256").lower()
@@ -197,8 +221,59 @@ def _normalize_event(
     )
     tags = _strings(record.get("tags"), f"{prefix}.tags")
 
-    publisher_group = canonical_publisher_group(source_url)
+    known_at = max(available_at, captured_at)
     known_at_text = known_at.isoformat(timespec="microseconds").replace("+00:00", "Z")
+    exclusion_reason = None
+    if known_at > cutoff:
+        exclusion_reason = "not_captured_by_data_cutoff"
+    elif event_status == "occurred" and event_time > cutoff:
+        exclusion_reason = "occurred_event_is_after_data_cutoff"
+    elif event_status == "scheduled" and event_time <= cutoff:
+        exclusion_reason = "scheduled_event_time_has_elapsed"
+    elif event_status in {"ongoing", "unknown"} and event_time > cutoff:
+        exclusion_reason = "future_event_not_verified_as_scheduled"
+    elif event_status == "scheduled" and event_time > horizon_end:
+        exclusion_reason = "scheduled_event_outside_forecast_horizon"
+
+    publisher_group = canonical_publisher_group(source_url)
+    receipt_status = (
+        "RAW_SHA256_PRESENT" if raw_hash is not None else "MISSING_RAW_RECEIPT_HASH"
+    )
+    if exclusion_reason is not None:
+        excluded_record = {
+            "event_id": event_id,
+            "reason": exclusion_reason,
+            "event_type": event_type,
+            "event_name": event_name,
+            "domain": domain,
+            "hypothesis_id": hypothesis_id,
+            "hypothesis": hypothesis,
+            "counter_hypothesis": counter_hypothesis,
+            "claim": claim,
+            "event_status": event_status,
+            "event_time_utc": event_time_text,
+            "source_published_at_utc": published_at_text,
+            "available_at_utc": available_at_text,
+            "captured_at_utc": captured_at_text,
+            "known_at_utc": known_at_text,
+            "source_id": source_id,
+            "source_name": source_name,
+            "source_url": source_url,
+            "independence_group": independence_group,
+            "canonical_publisher_group": publisher_group,
+            "source_status": source_status,
+            "declared_stance": stance,
+            "raw_source_sha256": raw_hash,
+            "receipt_status": receipt_status,
+            "assumptions": assumptions,
+            "falsification_conditions": falsification,
+            "related_entities": related_entities,
+            "tags": tags,
+            "model_eligible": False,
+            "research_only": True,
+        }
+        return None, excluded_record, None
+
     timeline_record = {
         "event_id": event_id,
         "event_type": event_type,
@@ -225,9 +300,7 @@ def _normalize_event(
         "assumptions": assumptions,
         "falsification_conditions": falsification,
         "raw_source_sha256": raw_hash,
-        "receipt_status": (
-            "RAW_SHA256_PRESENT" if raw_hash is not None else "MISSING_RAW_RECEIPT_HASH"
-        ),
+        "receipt_status": receipt_status,
         "model_eligible": False,
         "research_only": True,
     }
@@ -252,7 +325,6 @@ def _normalize_event(
         "falsification_conditions": falsification,
     }
     return timeline_record, None, scenario_evidence
-
 
 def build_event_timeline(
     *,
