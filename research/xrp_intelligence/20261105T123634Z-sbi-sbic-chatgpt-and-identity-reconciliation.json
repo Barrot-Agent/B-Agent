@@ -1,0 +1,131 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "sbi_sbic_chatgpt_identity_reconciliation_20261105",
+  "title": "SBI Holdings versus regional SBIC identity, ChatGPT Enterprise evidence, exact-phrase and YouTube attribution controls",
+  "retrieved_at_utc": "2026-11-05T12:36:34Z",
+  "raw_capture": {
+    "raw_source_bytes_preserved": false,
+    "sha256": null,
+    "independent_timestamp_anchor": false,
+    "model_eligible": false,
+    "reason": "Rendered search/page evidence only; no byte-complete raw source captures or independent timestamp anchors were collected."
+  },
+  "identity_resolution": {
+    "sbi_holdings": {
+      "official_announcement": "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+      "publication_date": "2025-05-01",
+      "entities": [
+        "SBI Holdings, Inc.",
+        "SBI Securities Co., Ltd.",
+        "OpenAI, Inc."
+      ],
+      "statement": "SBI Holdings announced ChatGPT Enterprise adoption. SBI Holdings began partial employee rollout in March 2025; SBI Securities had adopted it in January 2025.",
+      "classification": "Direct corporate AI service adoption disclosed by SBI Holdings and SBI Securities.",
+      "not_equivalent_to": [
+        "SBIC East Japan",
+        "SBIC Central Japan",
+        "SBIC West Japan"
+      ],
+      "xrp_relationship": "No XRP, Ripple, or SBIC regional-company relationship is established by this AI adoption announcement."
+    },
+    "regional_sbic": {
+      "meaning": "Small and Medium Business Investment & Consultation companies under Japan's investment-development framework.",
+      "companies": [
+        {
+          "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "East",
+          "official_url": "https://www.sbic.co.jp/company/profile/"
+        },
+        {
+          "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Central",
+          "official_url": "https://www.sbic-cj.co.jp/company/about/"
+        },
+        {
+          "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "West",
+          "official_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+        }
+      ],
+      "distinction": "Three separate regional companies; none is SBI Holdings or SBI Securities."
+    },
+    "sbic_east_chatgpt_training": {
+      "official_url": "https://www.sbic.co.jp/training/20250612co/",
+      "dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "audience": "Investee companies only; the page says general companies were not eligible.",
+      "curriculum_includes": [
+        "ChatGPT",
+        "Microsoft Copilot",
+        "generative AI",
+        "machine learning"
+      ],
+      "classification": "Regional SBIC East training course for investee companies.",
+      "not_established": [
+        "OpenAI partnership with SBIC East",
+        "SBI Holdings sponsorship of the course",
+        "ChatGPT Enterprise deployment by SBIC East/Central/West"
+      ]
+    }
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "result": "No new primary-source match connecting an entity named ASK Coin to XRP, Ripple, Coinbase, Circle or SBI.",
+      "preserved_candidates": [
+        "Permission Coin token ticker ASK",
+        "separate inactive/untracked Ask Coin exchange listing"
+      ],
+      "status": "unresolved entity candidates; no XRP relationship established"
+    },
+    "actual_capital": {
+      "result": "No new exact-phrase primary-source match establishing a distinct XRP capital instrument or transaction.",
+      "accounting_rule": "Continue to distinguish settled cash, in-kind XRP contributions, debt drawdowns, undrawn facilities, warrant capacity and secondary-market trading.",
+      "status": "phrase remains context-dependent; no new relationship asserted"
+    },
+    "sbic_chatgpt_sbi": {
+      "result": "The official SBI Holdings ChatGPT Enterprise announcement is a likely source of name conflation, but no exact regional-SBIC/OpenAI partnership was found.",
+      "status": "SBI Holdings/SBI Securities adoption verified; regional SBIC adoption/partnership not established"
+    }
+  },
+  "youtube_identity_gate": {
+    "subject_variants": [
+      "Camilla Stevenson",
+      "Kamilah Stevenson"
+    ],
+    "candidate_channels": [
+      {
+        "handle": "@drkamilahstevenson",
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "status": "candidate; first-party ownership link not established in this run"
+      },
+      {
+        "handle": "@CoachKamilahStevensonxrp",
+        "status": "unverified lookalike/candidate; no first-party ownership link"
+      },
+      {
+        "handle": "@KamilahStevensonDigitalNetwork",
+        "status": "unverified lookalike/candidate; no first-party ownership link"
+      }
+    ],
+    "third_party_observation": "A third-party channel index lists multiple similarly named channels and accounts, including the candidates above; this is not identity proof.",
+    "identity_verified": false,
+    "video_inventory_performed": false,
+    "reason": "No first-party website/social cross-link or direct channel ownership statement was verified. Attributing videos now risks conflating the subject with impersonators, fan channels or unrelated people."
+  },
+  "prediction_market_freshness_check": {
+    "source_url": "https://www.coinbase.com/predictions/crypto/XRP/Ripple",
+    "source_type": "Coinbase-hosted prediction-market page",
+    "search_index_observation_date": "2026-11-05",
+    "direct_page_observation": "The opened page displayed older October 17 and October 23, 2026 XRP markets rather than the November 5/6 markets shown in a contemporaneous search snippet.",
+    "status": "stale_or_inconsistent_page_vintage",
+    "use": "Excluded from crowd-probability benchmarking until a direct market-detail page, contract rules, timestamp and liquidity are captured.",
+    "model_eligible": false
+  },
+  "model_eligibility": {
+    "eligible_sources": 0,
+    "directional_forecast_issued": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

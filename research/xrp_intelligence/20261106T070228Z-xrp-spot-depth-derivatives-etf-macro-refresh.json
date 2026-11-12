@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_spot_depth_derivatives_etf_macro_reconciliation",
+  "artifact_id": "xrp-spot-depth-derivatives-etf-macro-20261106T070228Z",
+  "subject": "November 6 XRP spot, multi-venue resting depth, perpetual positioning, issuer-derived ETF vintage and macro risk context",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "capture": {
+    "retrieval_interval_start_utc": "2026-11-06T07:02:28Z",
+    "retrieval_interval_end_utc": null,
+    "exact_per_source_retrieval_timestamp_utc": null,
+    "provider_event_timestamp_utc": null,
+    "conservative_data_cutoff_utc": null,
+    "raw_http_wire_bytes_captured": false,
+    "rendered_kraken_response_text_sha256": "947ed34fa4392132e8dd9acdafb8cb4518873b8aa3397f2680f9ff5b94767472",
+    "hash_scope": "SHA-256 of the exact compact JSON text exposed by the public web retrieval result; not a byte-exact original HTTP body, headers or signed exchange receipt.",
+    "note": "The automation run start is only a lower bound for retrieval. The exact per-source retrieval times and a common cutoff are unavailable. Publisher snapshot times are retained separately. Rendered aggregator pages and search excerpts are not raw-source receipts."
+  },
+  "source_registry": [
+    {
+      "id": "KRAKEN_XRPUSD_TICKER_20261106T070228Z_RENDERED",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_ticker_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_timestamp_utc": null,
+      "retrieval_interval_start_utc": "2026-11-06T07:02:28Z",
+      "retrieval_interval_end_utc": null,
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "exchange_kraken",
+      "raw_http_wire_bytes_captured": false,
+      "rendered_response_text_sha256": "947ed34fa4392132e8dd9acdafb8cb4518873b8aa3397f2680f9ff5b94767472",
+      "model_eligible": false,
+      "limitations": [
+        "The API response does not expose a provider event timestamp.",
+        "The retrieval interval has no verified end time, so no conservative point-in-time cutoff is asserted.",
+        "Last trade, bid, ask and rolling aggregates are not guaranteed to share one event time.",
+        "Top-of-book is not consolidated multi-level depth or guaranteed executable liquidity.",
+        "The hash covers tool-rendered JSON text, not original HTTP wire bytes or response headers."
+      ]
+    },
+    {
+      "id": "FUELMAPS_XRP_SPOT_BOOK_20261106T0600Z",
+      "publisher": "Fuelmaps",
+      "source_type": "multi_venue_spot_order_book_aggregator",
+      "url": "https://fuelmaps.io/order-book/",
+      "snapshot_timestamp_utc": "2026-11-06T06:00:00Z",
+      "venue_scope": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "independence_group": "aggregator_fuelmaps",
+      "raw_http_wire_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "Six spot venues are included; Binance and Bitget are explicitly excluded.",
+        "Coverage is 6/6 through plus or minus 5 percent and 5/6 at plus or minus 10 percent.",
+        "The hourly snapshot averages one-minute book snapshots; a displayed wall is not a persistent commitment.",
+        "Resting orders can be cancelled, and hidden/iceberg liquidity is not visible.",
+        "This provider overlaps underlying exchanges with Kraken and other aggregators; it is not an independent economic market."
+      ]
+    },
+    {
+      "id": "EDGEORNOT_XRP_BOOK_20261106T0545Z",
+      "publisher": "Edge or Not",
+      "source_type": "mixed_spot_and_perpetual_order_book_aggregator",
+      "url": "https://edgeornot.com/order-book-heatmap/xrp",
+      "snapshot_timestamp_utc": "2026-11-06T05:45:00Z",
+      "venue_scope": [
+        "Binance spot",
+        "OKX XRP-USDT perpetual"
+      ],
+      "sampling": "One-minute samples averaged per 15 minutes within plus or minus 1.5 percent.",
+      "independence_group": "aggregator_edgeornot",
+      "raw_http_wire_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "The aggregate mixes Binance spot with OKX perpetual order books; it is not a pure spot depth series.",
+        "The page states that orders can be placed or pulled in seconds.",
+        "Snapshot timing differs from Fuelmaps, Kraken and TradRadar.",
+        "A resting-wall observation does not prove fill, cancellation, spoofing or future price support."
+      ]
+    },
+    {
+      "id": "TRADRADAR_XRP_PERPETUALS_20261106T0645Z",
+      "publisher": "TradRadar",
+      "source_type": "multi_exchange_perpetual_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "provider_updated_at_utc": "2026-11-06T06:45:00Z",
+      "displayed_delay_minutes": 15,
+      "venue_scope": {
+        "open_interest": 7,
+        "liquidations": 5,
+        "long_short_accounts": 5,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ]
+      },
+      "independence_group": "aggregator_tradradar",
+      "raw_http_wire_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "The aggregate is derived from underlying exchange feeds and is not independent of those feeds.",
+        "Liquidations are lower bounds because exchanges publish only part of real-time liquidations.",
+        "Long/short ratio is account count, not notional exposure.",
+        "USD-notional open interest can decline partly because mark price falls.",
+        "Displayed data is delayed by 15 minutes."
+      ]
+    },
+    {
+      "id": "XRP_INSIGHTS_ETF_JSON_20261106T062736Z",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_reported_fund_holdings_aggregator",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "generated_at_utc": "2026-11-06T06:27:36.267Z",
+      "data_as_of": "2026-11-04",
+      "latest_row_date": "2026-11-05",
+      "latest_row_status": "provisional",
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "independence_group": "issuer_reported_fund_holdings_aggregator",
+      "raw_http_wire_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "Flows are changes in issuer-reported holdings, not direct AP cash creations or redemptions.",
+        "The latest November 5 row is provisional and may be rewritten at the next-morning re-settlement.",
+        "GXRP flow is excluded due to a historical issuer-page capture gap while its holdings remain in totals.",
+        "XRPR includes indirect XRP exposure through another ETP.",
+        "BITW is a multi-asset index sleeve and can change through index rebalancing.",
+        "The publisher and CryptoKeyhole share underlying issuer files and are not independent primary cash-flow sources."
+      ]
+    },
+    {
+      "id": "REUTERS_GLOBAL_RISK_CONTEXT_20261106T0124Z",
+      "publisher": "Reuters",
+      "source_type": "independent_macro_reporting",
+      "url": "https://www.reuters.com/world/asia-pacific/dollar-holds-yen-gains-equity-rout-saps-risk-appetite-ahead-payrolls-2026-11-06/",
+      "published_at_utc": "2026-11-06T01:24:00Z",
+      "independence_group": "reuters_macro_reporting",
+      "raw_http_wire_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "The report supplies macro context, not an XRP-specific causal estimate.",
+        "Reported market levels are observations at the article's own publication/update vintage."
+      ]
+    },
+    {
+      "id": "BLS_EMPLOYMENT_SITUATION_SCHEDULE_20261106",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "source_type": "primary_official_release_calendar",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "scheduled_release_utc": "2026-11-06T13:30:00Z",
+      "independence_group": "us_bls_primary_calendar",
+      "raw_http_wire_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "This is a scheduled release time, not the October 2026 employment result.",
+        "Initial release and subsequent revisions must be stored as separate data vintages."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "kraken_spot": {
+      "venue": "Kraken",
+      "instrument": "XRP/USD",
+      "provider_event_timestamp_utc": null,
+      "last_trade_usd": 1.19129,
+      "last_trade_size_xrp": 74.39466702,
+      "best_bid_usd": 1.19108,
+      "best_bid_size_xrp": 3742,
+      "best_ask_usd": 1.19113,
+      "best_ask_size_xrp": 4298,
+      "displayed_spread_bps": 0.419778273117026,
+      "utc_day_volume_xrp": 7208365.62307578,
+      "rolling_24h_volume_xrp": 45896148.69658889,
+      "utc_day_vwap_usd": 1.20784091,
+      "rolling_24h_vwap_usd": 1.24985258,
+      "utc_day_trade_count": 8922,
+      "rolling_24h_trade_count": 43553,
+      "utc_day_low_usd": 1.18801,
+      "rolling_24h_low_usd": 1.18801,
+      "utc_day_high_usd": 1.2219,
+      "rolling_24h_high_usd": 1.32583,
+      "utc_day_open_usd": 1.20567,
+      "derived_comparisons": {
+        "last_vs_utc_day_open_percent": -1.1926978360579654,
+        "last_vs_rolling_24h_vwap_percent": -4.685558996085771,
+        "last_above_rolling_24h_low_percent": 0.27609195208793125
+      },
+      "quote_component_quality": {
+        "bid_below_ask": true,
+        "last_trade_above_best_ask": true,
+        "components_synchronized": false,
+        "interpretation": "The last-trade component is above the displayed best ask. The API does not expose event timestamps or sequence IDs, so quote/trade asynchrony is retained rather than repaired."
+      },
+      "limitations": [
+        "The ticker's o field is the UTC-day open, not a rolling 24-hour open.",
+        "The 24-hour VWAP and volume are Kraken-specific aggregates.",
+        "A narrow top-of-book spread does not establish depth or resilience.",
+        "No return is calculated against earlier snapshots because provider event timestamps are absent."
+      ]
+    },
+    "order_book": {
+      "fuelmaps_spot_six_venue": {
+        "snapshot_timestamp_utc": "2026-11-06T06:00:00Z",
+        "mid_price_usd": 1.1964,
+        "venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "depth_bands_usd_millions": [
+          {
+            "within_percent": 0.5,
+            "bids": 11.3,
+            "asks": 5.6,
+            "bid_share_percent": 66.8639053254438,
+            "venues_covering": "6/6"
+          },
+          {
+            "within_percent": 1,
+            "bids": 14.4,
+            "asks": 8.7,
+            "bid_share_percent": 62.33766233766234,
+            "venues_covering": "6/6"
+          },
+          {
+            "within_percent": 2,
+            "bids": 18.9,
+            "asks": 10.4,
+            "bid_share_percent": 64.50511945392492,
+            "venues_covering": "6/6"
+          },
+          {
+            "within_percent": 5,
+            "bids": 27.6,
+            "asks": 11.5,
+            "bid_share_percent": 70.58823529411765,
+            "venues_covering": "6/6"
+          },
+          {
+            "within_percent": 10,
+            "bids": 33.7,
+            "asks": 13.8,
+            "bid_share_percent": 70.94736842105263,
+            "venues_covering": "5/6"
+          }
+        ],
+        "largest_resting_levels_within_10_percent": [
+          {
+            "side": "bid",
+            "price_usd": 1.16,
+            "size_usd_millions": 3.7
+          },
+          {
+            "side": "bid",
+            "price_usd": 1.19,
+            "size_usd_millions": 2.6
+          },
+          {
+            "side": "bid",
+            "price_usd": 1.155,
+            "size_usd_millions": 2.1
+          },
+          {
+            "side": "bid",
+            "price_usd": 1.194,
+            "size_usd_millions": 2.1
+          },
+          {
+            "side": "bid",
+            "price_usd": 1.1,
+            "size_usd_millions": 2
+          }
+        ],
+        "limitations": [
+          "Binance and Bitget are not included.",
+          "Hourly columns average one-minute book snapshots.",
+          "Displayed orders can be cancelled; hidden liquidity is not shown.",
+          "Coverage falls from 6/6 to 5/6 at plus or minus 10 percent."
+        ]
+      },
+      "edgeornot_mixed_spot_perpetual": {
+        "snapshot_timestamp_utc": "2026-11-06T05:45:00Z",
+        "mid_price_usd": 1.1992,
+        "venues": [
+          "Binance spot",
+          "OKX XRP-USDT perpetual"
+        ],
+        "sampling": "One-minute snapshots averaged per 15 minutes.",
+        "depth_within_1_percent_usd_millions": {
+          "bids": 10.9,
+          "asks": 10.3,
+          "bid_share_percent": 51.415094339622634
+        },
+        "largest_ask_walls": [
+          {
+            "price_usd": 1.2028,
+            "size_usd_millions": 1.4
+          },
+          {
+            "price_usd": 1.2016,
+            "size_usd_millions": 2.2
+          },
+          {
+            "price_usd": 1.2004,
+            "size_usd_millions": 2.3
+          }
+        ],
+        "largest_bid_walls": [
+          {
+            "price_usd": 1.198,
+            "size_usd_millions": 1.6
+          },
+          {
+            "price_usd": 1.1968,
+            "size_usd_millions": 2.7
+          },
+          {
+            "price_usd": 1.1956,
+            "size_usd_millions": 1.5
+          }
+        ],
+        "limitations": [
+          "This is a mixed spot/perpetual book and must not be labeled pure spot depth.",
+          "Resting orders can be placed or pulled in seconds.",
+          "No trade-through or wall-persistence event sequence was captured."
+        ]
+      },
+      "asynchronous_level_comparison": {
+        "later_kraken_last_usd": 1.19129,
+        "fuelmaps_mid_usd": 1.1964,
+        "edgeornot_mid_usd": 1.1992,
+        "status": "DESCRIPTIVE_CROSS_SOURCE_LEVEL_COMPARISON_NOT_A_RETURN",
+        "interpretation": "The later Kraken last is below both earlier displayed mids and below Edgeornot's listed bid-wall prices. Different venues, products and timestamps prevent treating this as a synchronized return, a confirmed wall fill/cancellation or proof that market-wide support failed."
+      }
+    },
+    "tradradar_perpetuals": {
+      "provider_updated_at_utc": "2026-11-06T06:45:00Z",
+      "displayed_delay_minutes": 15,
+      "mark_price_usd": 1.1932,
+      "change_24h_percent": -8.82,
+      "open_interest_usd": 1880000000,
+      "open_interest_change_24h_percent": -8.45,
+      "exchange_open_interest_usd": {
+        "Binance": 490790000,
+        "Bybit": 327230000,
+        "Gate": 278720000,
+        "Bitget": 249050000,
+        "MEXC": 227570000,
+        "Hyperliquid": 205240000,
+        "OKX": 104910000
+      },
+      "exchange_open_interest_row_sum_usd": 1883510000,
+      "funding_oi_weighted_percent_per_8h": 0.0071,
+      "liquidations_24h_lower_bound_usd": 17140000,
+      "long_liquidations_usd": 16710000,
+      "short_liquidations_usd": 433040,
+      "long_short_account_ratio": 3.97,
+      "long_account_share_percent": 79.9,
+      "limitations": [
+        "Displayed OI headline is rounded; the seven venue rows sum to $1.88351B.",
+        "USD-notional OI can fall partly with mark price.",
+        "Liquidations are a lower bound over five exchanges.",
+        "Account ratios are not notional positioning.",
+        "Positive weighted funding coexists with the long-liquidation imbalance."
+      ]
+    }
+  },
+  "etf_flow_vintage": {
+    "xrp_insights": {
+      "generated_at_utc": "2026-11-06T06:27:36.267Z",
+      "data_as_of": "2026-11-04",
+      "latest_row_date": "2026-11-05",
+      "latest_row_status": "provisional",
+      "tracked_rows": 1590,
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "nov2_to_nov4_holdings_change_xrp": -259701,
+      "total_holdings_as_of_nov4_xrp": 1196340485,
+      "methodology": "Day-over-day changes in issuer-reported XRP holdings; not direct AP cash creation/redemption.",
+      "limitations": [
+        "The Nov 5 row may be rewritten at next-morning re-settlement.",
+        "GXRP flow is excluded due to a historical capture gap while holdings remain in totals.",
+        "XRPR includes indirect exposure through another ETP.",
+        "BITW's XRP sleeve can change through index rebalancing."
+      ]
+    },
+    "cryptokeyhole_vintage_reference": {
+      "latest_direct_page_capture_in_prior_artifact": "2026-11-06T04:43:00Z",
+      "prior_artifact": "research/xrp_intelligence/20261106T051458Z-xrp-etf-and-derivatives-refresh.json",
+      "latest_complete_day": "2026-11-04",
+      "nov5_partial_funds_reporting": 2,
+      "nov5_partial_funds_total": 4,
+      "note": "The currently rendered page body exposed an older 2026-11-05T22:07Z update, while the search-index excerpt exposed a 03:07Z Nov 6 read. Both are older than the prior 04:43Z direct capture in the referenced artifact. They are preserved as stale/cached views and do not supersede the 04:43Z capture."
+    },
+    "comparison_boundary": "XRP Insights and CryptoKeyhole use overlapping issuer holdings but different fund universes, capture vintages and exclusions. Neither is a direct AP cash ledger. Do not average or label their holdings deltas as actual institutional cash."
+  },
+  "macro_context": {
+    "reuters_nov6": {
+      "published_at_utc": "2026-11-06T01:24:00Z",
+      "observations": {
+        "dollar_index_change_percent": 0.25,
+        "dollar_index_level": 101.76,
+        "us_2y_yield_change_basis_points_approx": -10,
+        "us_10y_yield_change_basis_points_approx": -6,
+        "yen_intraday_high_per_usd": 157.27,
+        "japan_10y_yield_change_basis_points": -16,
+        "japan_10y_yield_percent": 2.61
+      },
+      "reported_context": "Global AI-equity selloff, safe-haven demand for the dollar and yen, lower Treasury yields and positioning/liquidation concerns ahead of US payrolls.",
+      "xrp_causality": "Not established."
+    },
+    "upcoming_bls_release": {
+      "reference_month": "October 2026",
+      "scheduled_release_utc": "2026-11-06T13:30:00Z",
+      "status": "SCHEDULED_NOT_YET_RELEASED",
+      "primary_source": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "rule": "Preserve the first release and each later revision as separate vintages."
+    }
+  },
+  "source_independence": {
+    "rule": "Do not count aggregators sharing the same underlying exchange or issuer feeds as independent economic sources. Keep spot, perpetual, ETF holdings and macro observations in separate measurement domains until timestamp and lineage reconciliation is complete.",
+    "overlapping_exchange_data": [
+      "Kraken ticker",
+      "Fuelmaps",
+      "Edgeornot",
+      "TradRadar"
+    ],
+    "overlapping_issuer_file_data": [
+      "XRP Insights",
+      "CryptoKeyhole"
+    ],
+    "independent_macro_reporting": [
+      "Reuters"
+    ],
+    "primary_calendar": [
+      "BLS"
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_LEVERAGED_LONG_UNWIND",
+      "proposition": "The short-horizon XRP repricing is materially associated with a leveraged-long unwind.",
+      "supporting_evidence": [
+        "TradRadar reports a 24-hour mark-price change of -8.82%.",
+        "Seven-exchange USD open interest is down 8.45%.",
+        "At least $16.71M long liquidations versus $433.04K short liquidations are reported.",
+        "Long accounts are 79.9% of the five-exchange account sample."
+      ],
+      "disconfirming_evidence": [
+        "USD-notional OI can decline partly because mark price falls.",
+        "Liquidation totals are lower bounds.",
+        "Positive OI-weighted funding remains +0.0071% per eight hours.",
+        "Account counts do not measure notional exposure."
+      ],
+      "tests": [
+        "Reconcile exchange-native contract counts and OI at synchronized event timestamps.",
+        "Compare signed taker flow, liquidation events and position changes by venue."
+      ]
+    },
+    {
+      "id": "H2_BROAD_MACRO_RISK_OFF",
+      "proposition": "A broad risk-off repricing is an important competing explanation for XRP weakness.",
+      "supporting_evidence": [
+        "Reuters reports a global AI-equity selloff, safe-haven demand and a firmer dollar on November 6.",
+        "Reuters reports falling Treasury yields and Asian equity stress ahead of US payrolls."
+      ],
+      "disconfirming_evidence": [
+        "Reuters does not establish an XRP-specific causal link.",
+        "No synchronized cross-asset beta or event-study estimate is included.",
+        "XRP-specific supply, venue and positioning factors may also contribute."
+      ],
+      "tests": [
+        "Build a point-in-time event window around equity, dollar, yield and payroll observations.",
+        "Estimate XRP conditional returns against BTC, broad crypto, DXY and rates using leakage-safe historical windows."
+      ]
+    },
+    {
+      "id": "H3_BID_DEPTH_ABSORPTION_VERSUS_TRANSIENT_ORDERS",
+      "proposition": "Displayed bid-side depth may indicate absorption, but may also be transient or incomplete.",
+      "supporting_evidence": [
+        "Fuelmaps reports a 66.9% bid share within plus or minus 0.5% and 62.4% within plus or minus 1% at 06:00 UTC.",
+        "Fuelmaps reports $2.6M at $1.190 and $2.1M at $1.194.",
+        "Edgeornot reports $10.9M bids versus $10.3M asks within 1% at 05:45 UTC."
+      ],
+      "disconfirming_evidence": [
+        "The later Kraken last is below the earlier displayed mids and Edgeornot bid-wall prices, but venues and timestamps are not synchronized.",
+        "Resting orders can be cancelled; no wall persistence or executed-volume sequence is captured.",
+        "Fuelmaps excludes Binance and Bitget; Edgeornot mixes spot and perpetual books."
+      ],
+      "tests": [
+        "Capture exchange-native L2 snapshots and incremental updates with sequence IDs.",
+        "Measure wall survival, cancellations, executed volume, slippage and replenishment at common cutoffs."
+      ]
+    },
+    {
+      "id": "H4_ETF_HOLDINGS_DELTA_IS_NOT_AP_CASH",
+      "proposition": "ETF holdings changes are insufficient to establish direct institutional cash creations or redemptions.",
+      "supporting_evidence": [
+        "XRP Insights reports -259,701 XRP over November 2–4 and labels the November 5 row provisional.",
+        "The publisher derives flows from issuer holdings changes and excludes GXRP flow while retaining its holdings."
+      ],
+      "disconfirming_evidence": [
+        "Matched issuer files and AP records could reconcile the holdings changes more precisely.",
+        "The current capture does not provide a complete settled November 5 fund universe."
+      ],
+      "tests": [
+        "Build a matched issuer-file, fund, share-count and holdings vintage matrix.",
+        "Use publicly disclosed AP cash creations/redemptions where available; keep in-kind transfers separate."
+      ]
+    },
+    {
+      "id": "H5_NO_SINGLE_CAUSE_OR_SYNCHRONIZED_CUTOFF",
+      "proposition": "The current evidence is insufficient to assign the move to one cause or construct a synchronized feature vector.",
+      "supporting_evidence": [
+        "Kraken has no provider event timestamp and the current retrieval interval has no verified end.",
+        "Spot depth snapshots are at 05:45 and 06:00, derivatives are delayed from 06:45, and ETF data is settled only through Nov 4 with a provisional Nov 5 row.",
+        "The BLS release remains scheduled for 13:30 UTC and has not occurred at this capture."
+      ],
+      "disconfirming_evidence": [
+        "A future raw, timestamped, sequence-validated capture could resolve the timing gaps.",
+        "The existing historical feature store may support evaluation once its source coverage and evaluator gates are satisfied."
+      ],
+      "tests": [
+        "Collect byte-complete raw payloads and response headers with local receipt timestamps.",
+        "Require a common point-in-time cutoff and independent source groups before feature admission."
+      ]
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "RESEARCH_ONLY",
+    "forecast_issued": false,
+    "reasons": [
+      "No common synchronized point-in-time cutoff exists.",
+      "Kraken provider event time is absent and the exact retrieval end is unknown.",
+      "Order-book sources have different venue/product scopes and snapshot times.",
+      "TradRadar is delayed and aggregator-derived; OI is USD-notional and liquidations are lower bounds.",
+      "ETF data is issuer-holdings-derived, latest row is provisional, and no direct AP cash ledger is captured.",
+      "Rendered source pages do not provide byte-exact raw HTTP bodies or headers.",
+      "No evaluator-attested out-of-sample predictive lift, probability calibration, drift stability or sufficient shadow outcomes is established."
+    ]
+  },
+  "forecast": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "These observations are useful for market-structure research and hypothesis testing but do not satisfy point-in-time, raw-receipt, source-independence or out-of-sample prediction requirements."
+  },
+  "next_actions": [
+    "Capture Kraken, Coinbase, Bitstamp, OKX and Binance spot trades and multi-level books with exchange timestamps, sequence IDs, response headers and raw SHA-256 receipts.",
+    "Measure Fuelmaps and Edgeornot wall persistence and executed-volume outcomes without combining their different venue/product scopes.",
+    "Acquire exchange-native contract-level OI, funding and liquidation histories and reconcile USD-notional changes against contract counts.",
+    "Reconcile the November 5 ETF issuer files fund by fund after the next settled vintage; obtain direct AP cash records where publicly disclosed.",
+    "Capture the November 6 BLS initial release at 13:30 UTC and every subsequent revision as a separate vintage.",
+    "Keep this artifact research-only and do not issue a directional XRP forecast."
+  ]
+}

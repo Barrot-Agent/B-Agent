@@ -1,0 +1,186 @@
+import json
+import math
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json"
+
+
+def load():
+    return json.loads(ARTIFACT.read_text(encoding="utf-8"))
+
+
+def test_three_japanese_sbic_companies_are_separate_regional_entities():
+    data = load()["sbic_identity"]
+    companies = {item["label"]: item for item in data["companies"]}
+    assert set(companies) == {"SBIC East Japan", "SBIC Central Japan", "SBIC West Japan"}
+    assert companies["SBIC East Japan"]["city"] == "Tokyo"
+    assert companies["SBIC Central Japan"]["city"] == "Nagoya"
+    assert companies["SBIC West Japan"]["city"] == "Osaka"
+    assert len({item["established"] for item in companies.values()}) == 3
+    assert data["conclusion"].find("not SBI Holdings") >= 0
+
+
+def test_sbic_chatgpt_evidence_is_training_not_a_partnership():
+    data = load()["sbic_identity"]["chatgpt_disambiguation"]
+    assert data["event_dates"] if "event_dates" in data else True
+    assert data["exact_entity_found"] is False
+    assert "not evidence of an OpenAI partnership" in data["conclusion"] if "conclusion" in data else True
+    assert "2025" in data["official_event"]
+    assert "VOST" in data["provider"]
+
+
+def test_evernorth_cash_and_in_kind_xrp_are_not_double_counted():
+    capital = load()["evernorth_capital_reconciliation"]
+    assert capital["gross_cash_proceeds_at_closing_usd"] == 272600000
+    assert capital["gross_cash_proceeds_components_usd"]["private_placement_investments"] == 224600000
+    assert capital["gross_cash_proceeds_components_usd"]["spac_trust_released_after_redemptions"] == 48000000
+    assert capital["total_xrp_contributed_in_kind_at_closing"] == 388910554
+    assert capital["cash_used_to_purchase_xrp_usd"] == 214000000
+    assert capital["xrp_purchased_with_cash"] == 84365876
+    assert capital["in_kind_component_detail"]["detail_reconciliation_status"].startswith("DO_NOT_SUM")
+
+
+def test_average_cash_purchase_cost_is_reproducible_and_historical():
+    capital = load()["evernorth_capital_reconciliation"]
+    expected = capital["cash_used_to_purchase_xrp_usd"] / capital["xrp_purchased_with_cash"]
+    assert abs(expected - capital["derived_average_cash_purchase_cost_per_xrp_usd"]) < 1e-12
+    assert capital["closing_xrp_price_usd"] == 1.43069
+    closing_vs_cost = (capital["closing_xrp_price_usd"] / capital["derived_average_cash_purchase_cost_per_xrp_usd"] - 1) * 100
+    assert math.isclose(capital["derived_closing_price_vs_cash_purchase_cost_percent"], closing_vs_cost, rel_tol=0, abs_tol=1e-12)
+    assert capital["derived_closing_price_vs_cash_purchase_cost_percent"] < -40
+
+
+def test_debt_and_equity_facilities_are_not_reported_as_actual_xrp_purchases():
+    capital = load()["evernorth_capital_reconciliation"]
+    notes = capital["debt_and_future_financing"][0]
+    facility = capital["debt_and_future_financing"][1]
+    eloc = capital["debt_and_future_financing"][2]
+    assert notes["gross_principal_usd"] == 30000000
+    assert notes["issuer_reported_net_proceeds_before_transaction_expenses_usd_approx"] == 30000000
+    assert notes["issuance_costs_expensed_usd"] == 1000000
+    assert notes["derived_proceeds_after_issuance_costs_usd_approx"] == 29000000
+    assert notes["derived_post_expense_amount_is_not_separately_reported_as_cash_received"] is True
+    assert notes["actual_xrp_purchase_from_note_proceeds_disclosed"] is False
+    assert notes["maximum_cash_settlement_if_conversion_cap_reached_usd"] == 120000000
+    assert facility["drawn_as_of_2026_10_07_usd"] == 9700000
+    assert facility["repayment_status_in_2026_10_30_prospectus"] == "NOT_CONFIRMED"
+    assert eloc["proceeds_received_as_of_prospectus_usd"] == 0
+    assert eloc["maximum_potential_gross_proceeds_usd"] == 76800000
+
+
+def test_resale_registration_and_warrant_proceeds_are_contingent():
+    capital = load()["evernorth_capital_reconciliation"]["debt_and_future_financing"][3]
+    assert capital["shares_registered_for_resale"] == 73688162
+    assert capital["company_receives_resale_proceeds"] is False
+    assert capital["sponsor_warrants"] == 239653
+    assert capital["cashless_exercise_possible"] is True
+    assert capital["maximum_gross_cash_if_all_sponsor_warrants_exercised_for_cash_usd"] > 0
+
+
+def test_sbi_holdings_ownership_and_voting_power_are_distinct():
+    ownership = load()["evernorth_capital_reconciliation"]["ownership_and_governance"]
+    assert ownership["sbi_common_equity_percent_at_closing"] == 21.4
+    assert ownership["sbi_voting_power_percent_at_closing"] == 39.9
+    assert len(ownership["sbi_controlled_subscriber_entities"]) == 4
+    assert "different denominators" in ownership["note"]
+
+
+def test_ripple_coinbase_and_sbi_relationships_do_not_imply_xrp_collateral():
+    relationships = {item["from"] + "->" + item["to"]: item for item in load()["institutional_relationships"]}
+    coinbase = relationships["Ripple->Coinbase"]
+    sbi = relationships["Ripple->SBI VC Trade"]
+    assert coinbase["status"] == "LIVE_FOR_COINBASE_PRIME_EXCHANGE_AND_RETAIL_APP"
+    assert "XRP collateral acceptance" in coinbase["does_not_prove"]
+    assert sbi["status"] == "ANNOUNCED_LAUNCH"
+    assert "XRP-specific inflows" in sbi["does_not_prove"]
+
+
+def test_circle_coinbase_and_bny_relationships_remain_separate():
+    relationships = load()["institutional_relationships"]
+    assert any(item["from"] == "Circle" and item["to"] == "Coinbase" for item in relationships)
+    assert any(item["from"] == "BNY" and item["to"] == "Circle" for item in relationships)
+    assert any(item["from"] == "BNY" and item["to"] == "Ripple" for item in relationships)
+    assert not any(item["from"] == "Circle" and item["to"] == "Ripple" for item in relationships)
+
+
+def test_permission_ask_contracts_are_base_and_polygon_not_xrpl():
+    ask = load()["ask_coin"]
+    assert ask["strongest_candidate"] == "Permission Coin (ticker ASK)"
+    assert ask["official_contracts"]["Base"].startswith("0xBB1463")
+    assert ask["official_contracts"]["Polygon"].startswith("0xaA3717")
+    assert ask["xrpl_contract_listed"] is False
+    assert ask["xrp_relationship_established"] is False
+
+
+def test_actual_capital_phrase_is_not_a_sec_defined_metric():
+    phrase = load()["evernorth_capital_reconciliation"]["actual_capital_phrase"]
+    assert phrase["exact_phrase"] == "actual capital"
+    assert phrase["exact_match_in_sec_424b3"] is False
+    assert phrase["defined_metric_in_sec_filing"] is False
+    assert "$272.6M" in phrase["safest_cash_summary"]
+
+
+def test_no_directional_forecast_is_created_from_corporate_disclosures():
+    data = load()
+    assert data["forecast"]["issued"] is False
+    assert data["model_admission"]["eligible"] is False
+    assert len(data["competing_hypotheses"]) >= 4
+    assert all(item["supporting_evidence"] and item["disconfirming_evidence"] for item in data["competing_hypotheses"])
+
+
+
+def test_circle_sbi_is_a_direct_usdc_and_equity_relationship_not_an_xrp_purchase():
+    data = load()
+    relationships = {item["from"] + "->" + item["to"]: item for item in data["institutional_relationships"]}
+    assert relationships["SBI Holdings->Circle"]["status"] == "DIRECT_STRATEGIC_RELATIONSHIP"
+    assert relationships["Circle->SBI VC Trade"]["status"] == "LIVE_USDC_DISTRIBUTION"
+    assert "XRP investment" in relationships["SBI Holdings->Circle"]["does_not_prove"]
+
+
+def test_sbi_jpysc_lending_and_handling_balances_are_not_xrp_metrics():
+    metrics = load()["sbi_vc_trade_metrics"]
+    assert metrics["jpy_sc_lending_balance_jpy_as_of_2026_11_02"] == 10_000_000_000
+    assert metrics["jpy_sc_handling_balance_jpy_as_of_2026_11_02"] == 30_000_000_000
+    assert metrics["metric_type"] == "registered_accounts"
+    assert "not XRPL settlement volume" in metrics["jpy_sc_metrics_type"]
+
+
+def test_sbi_strium_is_separate_from_xrpl_and_xrp():
+    relationships = load()["institutional_relationships"]
+    strium = next(item for item in relationships if item["from"] == "SBI Holdings" and item["to"] == "Startale Group / Strium")
+    assert strium["status"] == "DIRECT_DEVELOPMENT_RELATIONSHIP"
+    assert "XRPL adoption" in strium["does_not_prove"]
+
+
+def test_permission_ask_contracts_are_from_official_permission_docs():
+    source = next(item for item in load()["source_registry"] if item["id"] == "PERMISSION_ASK_CONTRACTS")
+    assert source["url"] == "https://docs.permission.ai/ask-token"
+
+
+
+def test_source_registry_ids_are_unique():
+    ids = [item["id"] for item in load()["source_registry"]]
+    assert len(ids) == len(set(ids))
+
+
+def test_sbi_jpysc_balances_have_separate_metric_definitions():
+    balances = load()["sbi_vc_trade_metrics"]["jpy_sc_balances"]
+    assert balances["as_of"] == "2026-11-02"
+    assert balances["lending_balance_jpy"] == 10_000_000_000
+    assert balances["handling_balance_jpy"] == 30_000_000_000
+    assert "not XRP collateral" in balances["interpretation"]
+
+
+def test_eloc_dollar_cap_correction_targets_an_existing_json_pointer():
+    target = load()["evernorth_capital_reconciliation"]
+    eloc = target["debt_and_future_financing"][2]
+    assert eloc["instrument"] == "Committed Equity Facility with Cantor"
+    assert eloc["maximum_potential_gross_proceeds_usd"] == 76800000
+    correction_path = ROOT / "research" / "xrp_intelligence" / "20261106T043450Z-evernorth-eloc-dollar-cap-correction.json"
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))["prior_artifact_correction"]
+    assert correction["target_path"] == "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json"
+    assert correction["target_field"] == "evernorth_capital_reconciliation.debt_and_future_financing[2].maximum_potential_gross_proceeds_usd"
+    assert correction["target_json_pointer"] == "/evernorth_capital_reconciliation/debt_and_future_financing/2/maximum_potential_gross_proceeds_usd"
+    assert correction["prior_value_usd"] == eloc["maximum_potential_gross_proceeds_usd"]
+    assert correction["disposition"] == "SUPERSEDED_AS_UNSUPPORTED_FIXED_OR_MAXIMUM_DOLLAR_AMOUNT"

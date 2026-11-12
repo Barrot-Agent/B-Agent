@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_primary_exchange_spot_timestamp_quality_snapshot",
+  "artifact_id": "20261108T135008Z-bybit-kraken-spot-timestamp-quality-snapshot",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "reference_time_utc": "2026-11-08T14:05:10Z",
+  "data_cutoff_utc": null,
+  "capture_method": "Public exchange JSON endpoints opened through the web retrieval interface. The interface exposed response text but not raw HTTP bytes, headers, or exact retrieval-start timestamps.",
+  "source_receipts": [
+    {
+      "source_id": "bybit_spot_xrpusdt_ticker_20261108_135008",
+      "publisher": "Bybit",
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "source_class": "primary_exchange_public_rest",
+      "source_independence_group": "bybit_spot",
+      "source_time_utc": "2026-11-08T13:50:08.596Z",
+      "retrieved_at_utc": null,
+      "retrieval_time_status": "not_exposed_by_retrieval_interface",
+      "quote_currency": "USDT",
+      "response_text": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"spot\",\"list\":[{\"symbol\":\"XRPUSDT\",\"bid1Price\":\"1.1602\",\"bid1Size\":\"5165.24\",\"ask1Price\":\"1.1603\",\"ask1Size\":\"130.93\",\"lastPrice\":\"1.1603\",\"prevPrice24h\":\"1.1649\",\"price24hPcnt\":\"-0.0039\",\"highPrice24h\":\"1.1697\",\"lowPrice24h\":\"1.15\",\"turnover24h\":\"12543781.48148\",\"volume24h\":\"10806428.69\",\"usdIndexPrice\":\"1.158787\"}]},\"retExtInfo\":{},\"time\":1794145808596}",
+      "sha256": "b07eb501e50f468df6a9ba3221e203e19bef051d91875bf5810bba6035e8df02",
+      "hash_scope": "SHA-256 of exact JSON response text rendered by the retrieval interface; not raw HTTP wire bytes or headers.",
+      "model_eligible": false
+    },
+    {
+      "source_id": "kraken_xrp_usd_ticker_20261108_retrieval",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_class": "primary_exchange_public_rest",
+      "source_independence_group": "kraken_spot",
+      "source_time_utc": null,
+      "retrieved_at_utc": null,
+      "retrieval_time_status": "not_exposed_by_retrieval_interface",
+      "quote_currency": "USD",
+      "response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15893000\",\"8618\",\"8618.000\"],\"b\":[\"1.15892000\",\"667\",\"667.000\"],\"c\":[\"1.15893000\",\"8.54307778\"],\"v\":[\"3054571.18908031\",\"7738672.98309025\"],\"p\":[\"1.16152287\",\"1.15908518\"],\"t\":[6037,14545],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16816000\",\"1.16816000\"],\"o\":\"1.16234000\"}}}",
+      "sha256": "75747dfe764ada2e456a0cc4b175129ff639c08fe589b6912ccec641dfbe75f6",
+      "hash_scope": "SHA-256 of exact JSON response text rendered by the retrieval interface; not raw HTTP wire bytes or headers.",
+      "model_eligible": false
+    }
+  ],
+  "observations": {
+    "bybit": {
+      "symbol": "XRPUSDT",
+      "bid": 1.1602,
+      "ask": 1.1603,
+      "last": 1.1603,
+      "top_bid_size_xrp": 5165.24,
+      "top_ask_size_xrp": 130.93,
+      "bid_ask_spread_bps": 0.8618832148,
+      "previous_24h_price": 1.1649,
+      "reported_24h_change_pct": -0.39,
+      "high_24h": 1.1697,
+      "low_24h": 1.15,
+      "volume_24h_xrp": 10806428.69,
+      "turnover_24h_usdt": 12543781.48148,
+      "usd_index_price": 1.158787,
+      "api_server_time_ms": 1794145808596,
+      "api_server_time_utc": "2026-11-08T13:50:08.596Z",
+      "age_seconds_at_reference": 901.404,
+      "age_is_lower_bound_at_actual_retrieval": true,
+      "note": "Top-of-book only. Turnover is USDT-denominated. USD index price is retained separately and is not used to relabel turnover as USD."
+    },
+    "kraken": {
+      "pair_key": "XXRPZUSD",
+      "bid": 1.15892,
+      "ask": 1.15893,
+      "last": 1.15893,
+      "top_bid_size_xrp": 667,
+      "top_ask_size_xrp": 8618,
+      "bid_ask_spread_bps": 0.0862868607,
+      "volume_24h_xrp": 7738672.98309025,
+      "vwap_24h_usd": 1.15908518,
+      "trades_24h": 14545,
+      "high_24h": 1.16816,
+      "low_24h": 1.14888,
+      "open_24h": 1.16234,
+      "source_time_status": "unknown"
+    }
+  },
+  "comparison": {
+    "status": "not_comparable",
+    "reason": "The Bybit response exposes an exchange server timestamp, while the Kraken ticker payload exposes no event timestamp. Exact retrieval-start times are unavailable for both. Quote currencies also differ (USDT versus USD). No cross-venue basis, arbitrage, or synchronized-price feature is calculated.",
+    "naive_midpoint_difference_bps": null,
+    "normalized_quote_currency_difference": null
+  },
+  "quality_controls": {
+    "exact_response_text_hashes_verified_by_local_calculation": true,
+    "raw_http_bytes_captured": false,
+    "http_headers_captured": false,
+    "exact_retrieval_start_times_captured": false,
+    "synchronized_cross_venue_cutoff": false,
+    "full_orderbook_depth_captured": false,
+    "top_of_book_is_not_executable_depth": true,
+    "market_feature_store_write": false,
+    "model_admission": false,
+    "forecast_issued": false
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The two venues' displayed price levels are broadly similar at their respective observation times.",
+      "status": "descriptive_only",
+      "limitation": "The observations are not time-aligned and use different quote currencies."
+    },
+    {
+      "id": "H2",
+      "statement": "The apparent midpoint difference could reflect market movement, USDT/USD basis, or retrieval-vintage differences rather than executable arbitrage.",
+      "status": "plausible_counter_hypothesis",
+      "limitation": "No synchronized depth or conversion quote is available to test it."
+    }
+  ],
+  "disconfirming_evidence": "No synchronized observations, order-book depth, trade-level flow, or independent quote-currency conversion were captured. These observations do not support a directional XRP claim.",
+  "forecast_status": "NOT_ISSUED",
+  "next_action": "Use the integrated Bybit adapter and a direct Kraken adapter to capture exchange server time, retrieval start/end, HTTP status, raw response bytes and top-of-book/depth at a common cutoff; admit only after freshness and quote-currency normalization checks."
+}

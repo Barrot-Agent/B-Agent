@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_evernorth_notes_and_facility_scope_correction",
+  "record_id": "xrp-intel-2026-11-06-evernorth-notes-facility-scope-correction",
+  "hypothesis_id_namespace": "20261106T043450Z-evernorth-notes-facilities",
+  "captured_at_utc": "2026-11-06T04:34:50Z",
+  "data_cutoff_utc": "2026-11-06T04:34:50Z",
+  "subject": "Reconcile Evernorth convertible-note cash after advisor fee and distinguish the $9.7M Company Facility from Evernorth's separate $1M facility",
+  "repository_context": {
+    "source_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "inspected_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "append_only": true,
+    "exact_source_retrieval_time_utc": null,
+    "raw_source_sha256": null,
+    "note": "SEC filing inspected as rendered HTML; no byte-complete source capture or independently anchored retrieval timestamp is claimed."
+  },
+  "source_registry": [
+    {
+      "id": "sec_evernorth_20261030_s1_preliminary_prospectus",
+      "publisher": "Evernorth Holdings Inc.",
+      "source_type": "SEC Form S-1 registration statement; preliminary prospectus subject to completion",
+      "filing_date": "2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "retrieved_at_utc": null,
+      "supporting_line_numbers": [
+        3027,
+        3028,
+        3029,
+        3030,
+        3035,
+        3036,
+        3037,
+        3038,
+        3042,
+        3045,
+        3046,
+        3047,
+        6822
+      ],
+      "raw_source_sha256": null,
+      "raw_capture_status": "WEB_RENDERED_HTML_EXTRACT_ONLY",
+      "source_independence_group": "evernorth_issuer_sec_disclosure",
+      "model_eligible": false
+    },
+    {
+      "id": "prior_20261106_0425_actual_capital_artifact",
+      "publisher": "Barrot research archive",
+      "source_type": "prior append-only internal research artifact",
+      "path": "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+      "model_eligible": false
+    },
+    {
+      "id": "prior_20261106_043450_eloc_correction",
+      "publisher": "Barrot research archive",
+      "source_type": "prior append-only correction artifact",
+      "path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+      "model_eligible": false
+    }
+  ],
+  "convertible_note_reconciliation": {
+    "signing_date": "2026-09-11",
+    "issuance_and_effectiveness_date": "2026-10-12",
+    "principal_usd": 30000000,
+    "narrative_disclosure": {
+      "amount_usd": 30000000,
+      "basis": "Net proceeds before transaction expenses payable by Pubco.",
+      "intended_use": "General corporate purposes, including acquisition of XRP and other XRP ecosystem activities.",
+      "source_line_numbers": [
+        3045,
+        3046
+      ]
+    },
+    "financial_statement_note": {
+      "cash_proceeds_after_advisor_fee_usd": 29000000,
+      "advisor_fee_deducted_usd": 1000000,
+      "basis": "Net cash proceeds after deducting the $1.0M capital-markets-advisor fee.",
+      "source_line_number": 6822
+    },
+    "reconciliation_status": "DISTINCT_MEASUREMENT_BASES_RECONCILED",
+    "interpretation": "The $30.0M narrative amount is before transaction expenses; the financial-statement note reports $29.0M cash after the $1.0M advisor fee. Do not describe $30.0M as cash available after the advisor fee.",
+    "classification": "PUBCO_SENIOR_UNSECURED_DEBT_NOT_EQUITY",
+    "xrp_purchases_funded_by_note_proceeds_disclosed": false
+  },
+  "facility_scope_reconciliation": {
+    "company_facility_with_ripple": {
+      "borrower": "The Company",
+      "lender": "Ripple",
+      "borrowing_limit_as_of_2026_10_07_usd": 10000000,
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "scope": "Includes amounts Ripple paid to third parties on behalf of the Company and Evernorth that were treated as borrowings under the Company Facility Agreement.",
+      "repayment_due": "Within five business days after the Closing Date or earlier after five business days' notice of demand by Ripple.",
+      "repayment_status_in_prospectus": "NOT_CONFIRMED",
+      "source_line_numbers": [
+        3027,
+        3036,
+        3037
+      ],
+      "classification": "COMPANY_RELATED_PARTY_DEBT_NOT_EVERNORTH_EQUITY"
+    },
+    "evernorth_facility": {
+      "borrower": "Evernorth",
+      "lender": "Ripple",
+      "agreement_date": "2025-11-06",
+      "revolving_limit_usd": 1000000,
+      "amount_borrowed_as_of_2026_06_30_usd": 0,
+      "later_drawdown_status": "NOT_VERIFIED_IN_THIS_FILING",
+      "source_line_numbers": [
+        3028,
+        3029,
+        3030
+      ],
+      "classification": "SEPARATE_EVERNORTH_INTERCOMPANY_CREDIT_FACILITY"
+    }
+  },
+  "cash_and_xrp_reconciliation": {
+    "historical_cash_xrp_purchase": {
+      "cash_proceeds_usd": 214100000,
+      "xrp_purchased_units": 84365876,
+      "average_price_usd": 2.53657058,
+      "date": "2025-11-04",
+      "source_line_numbers": [
+        3038,
+        4943
+      ],
+      "classification": "HISTORICAL_CASH_FUNDED_XRP_PURCHASE_NOT_A_2026_CURRENT_FLOW"
+    },
+    "closing_gross_cash_proceeds_usd": 272600000,
+    "closing_gross_cash_components": {
+      "private_placement_investments_usd": 224600000,
+      "released_spac_trust_usd": 48000000,
+      "before_transaction_expenses": true
+    },
+    "in_kind_xrp_contributions_units": 388910554,
+    "in_kind_classification": "NON_CASH_XRP_CONTRIBUTIONS_NOT_CASH_PROCEEDS",
+    "note_funded_xrp_purchase_disclosed": false
+  },
+  "competing_interpretations": [
+    {
+      "id": "notes_30m_vs_29m",
+      "hypothesis": "The S-1 contains two note-proceeds figures.",
+      "status": "RECONCILED_BY_MEASUREMENT_BASIS",
+      "evidence": "The narrative reports $30.0M net before transaction expenses; the financial-statement note reports $29.0M cash after a $1.0M advisor fee.",
+      "counterevidence": "Subsequent filings are still required to establish final cash available after all transaction expenses and any actual XRP purchases funded by the notes."
+    },
+    {
+      "id": "company_facility_vs_evernorth_facility",
+      "hypothesis": "The $9.7M and $1.0M facilities are the same borrowing.",
+      "status": "NOT_SUPPORTED",
+      "evidence": "The $9.7M draw is under the $10M Company Facility; Evernorth has a separate $1M revolving Evernorth Facility and had borrowed zero as of June 30, 2026.",
+      "counterevidence": "The Company Facility includes payments made on behalf of both the Company and Evernorth, so its full $9.7M is not necessarily Evernorth-specific funding."
+    }
+  ],
+  "red_team_objections": [
+    "Do not describe the $30M note amount as cash after the $1M advisor fee; the filing separately reports $29M after that fee.",
+    "Do not treat the $30M note proceeds as equity capital or as an actual XRP purchase.",
+    "Do not attribute the $9.7M Company Facility draw entirely to Evernorth.",
+    "Do not conflate the $9.7M Company Facility with the separate $1M Evernorth Facility.",
+    "Do not assume the $9.7M Company Facility has been repaid; the prospectus does not verify repayment.",
+    "Do not treat the $214.1M historical cash-funded XRP purchase from November 2025 as a November 2026 spot-market flow."
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "RESEARCH_ONLY",
+    "reasons": [
+      "SEC disclosure is a corporate financing and balance-sheet record, not an XRP market-flow feature.",
+      "The filing was inspected as rendered HTML without byte-complete raw-source receipt.",
+      "Actual XRP purchases funded by convertible-note proceeds are not disclosed.",
+      "Repayment of the $9.7M Company Facility is not verified."
+    ]
+  },
+  "forecast": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "Debt proceeds, financing capacity and historical XRP purchases do not establish a validated directional XRP signal."
+  },
+  "next_actions": [
+    "Monitor subsequent SEC filings for actual XRP acquisitions funded by the convertible notes.",
+    "Verify the $9.7M Company Facility repayment and distinguish it from Evernorth's separate $1M facility.",
+    "Keep note principal, cash after fees, in-kind XRP, historical cash purchases, contingent ELOC capacity and debt balances in separate ledgers."
+  ]
+}

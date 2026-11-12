@@ -1,0 +1,693 @@
+{
+  "schema_version": "barrot.xrp.run-evidence.v1",
+  "run_id": "run60",
+  "captured_at_utc": "2026-11-12T14:09:46Z",
+  "mission": {
+    "id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3 execution/orchestration/safety/verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run": "d7c8dbc9173242aefca5534b74d84e92bb148203",
+    "ahead_by": 2116,
+    "behind_by": 0,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2321,
+    "tree_truncated": false,
+    "pr_1661": {
+      "state": "open",
+      "draft": true,
+      "mergeable_reported": true,
+      "changed_files": 1064,
+      "commits_ahead": 2119,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0,
+      "changed_file_breakdown": {
+        "workflows": 49,
+        "xrp_research_artifacts": 548,
+        "tests": 373,
+        "barrot_agent": 51,
+        "data": 6,
+        "docs": 3,
+        "other": 34
+      }
+    },
+    "open_pr_inventory": {
+      "total": 374,
+      "draft": 360,
+      "non_draft": 14,
+      "title_buckets": {
+        "security_safety": 210,
+        "research": 44,
+        "prediction": 27,
+        "feature_fix": 17,
+        "dependencies": 7,
+        "other": 69
+      }
+    },
+    "exact_head_ci": {
+      "head": "d7c8dbc9173242aefca5534b74d84e92bb148203",
+      "run_id": 43229690626,
+      "status": "success",
+      "full_suite_passed": 3511,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 61.42,
+      "duration_seconds": 80.87,
+      "core_passed": 720,
+      "core_subtests": 8,
+      "core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "installed_package_mission_verification": "passed"
+    },
+    "dependency_audit": {
+      "run_id": 43229690528,
+      "status": "success",
+      "manifest_groups": 6,
+      "pep621_dependencies": 15,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_pr_gate": {
+      "run_id": 43229690520,
+      "status": "success"
+    },
+    "main_workflows": {
+      "cross_analysis": {
+        "run_id": 43231350756,
+        "status": "success"
+      },
+      "pillars_consistency": {
+        "run_id": 43223351964,
+        "status": "failure",
+        "reasons": [
+          "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+          "Databricks HTTP 403",
+          "Hugging Face Space BUILD_ERROR"
+        ]
+      }
+    },
+    "main_has_xrp_ingestion_workflow": false,
+    "merge_decision": "blocked",
+    "latest_code_test_head": "299208cf3ca9239205470bd58f6047f5fd8ee13c",
+    "latest_code_test_ci": {
+      "run_id": 43237641561,
+      "status": "success",
+      "full_suite_passed": 3512,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 61.42,
+      "duration_seconds": 89.54,
+      "core_passed": 721,
+      "core_subtests": 8,
+      "core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "installed_package_mission_verification": "passed"
+    },
+    "latest_dependency_audit": {
+      "run_id": 43237641663,
+      "status": "success",
+      "manifest_groups": 6,
+      "pep621_dependencies": 15,
+      "known_vulnerabilities": 0
+    },
+    "latest_fail_closed_pr_gate": {
+      "run_id": 43237641744,
+      "status": "success"
+    },
+    "latest_counts": {
+      "integration_tree_entries": 2321,
+      "ahead_by": 2119,
+      "behind_by": 0,
+      "pr_1661_changed_files": 1064,
+      "pr_1661_commits": 2119,
+      "changed_file_breakdown": {
+        "workflows": 49,
+        "xrp_research_artifacts": 548,
+        "tests": 373,
+        "barrot_agent": 51,
+        "data": 6,
+        "docs": 3,
+        "other": 34
+      }
+    },
+    "latest_handoff_update_parent": "299208cf3ca9239205470bd58f6047f5fd8ee13c",
+    "latest_handoff_update_is_documentation_only": true,
+    "latest_handoff_update_full_suite_status": "exact full suite verified on parent code/test head 299208cf3ca9239205470bd58f6047f5fd8ee13c; any subsequent documentation-only head must be reported separately"
+  },
+  "security": {
+    "github_identity_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege_status": "not_satisfied",
+    "main_branch_protection_api": "403 resource not accessible by integration",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "actions_permissions": "not accessible through connector",
+    "pages_settings": "not accessible through connector",
+    "gh_hosts_path": {
+      "main": false,
+      "integration": false,
+      "source_branch_tips": {
+        "1640": true,
+        "1642": true,
+        "1643": true,
+        "1653": true,
+        "1655": true,
+        "1660": false
+      },
+      "contents_read": false,
+      "provider_revocation": "unverified"
+    }
+  },
+  "source_pr_reconciliation": [
+    {
+      "pr": 1660,
+      "changed": 972,
+      "same_blob": 938,
+      "different_blob": 34,
+      "source_only": 0,
+      "classification": "superseded_source_candidate_preserve_33_differences"
+    },
+    {
+      "pr": 1643,
+      "changed": 670,
+      "same_blob": 661,
+      "different_blob": 9,
+      "source_only": 0,
+      "classification": "overlap_supersession_candidate_preserve_9_differences"
+    },
+    {
+      "pr": 1640,
+      "changed": 280,
+      "same_blob": 234,
+      "different_blob": 46,
+      "source_only": 0,
+      "classification": "overlap_supersession_candidate_preserve_46_differences"
+    },
+    {
+      "pr": 1642,
+      "changed": 7,
+      "same_blob": 0,
+      "different_blob": 7,
+      "source_only": 0,
+      "classification": "unique_prediction_changes_preserve"
+    },
+    {
+      "pr": 1653,
+      "changed": 7,
+      "same_blob": 0,
+      "different_blob": 4,
+      "source_only": 3,
+      "classification": "unique_repository_graph_preserve"
+    },
+    {
+      "pr": 1655,
+      "changed": 8,
+      "same_blob": 0,
+      "different_blob": 5,
+      "source_only": 3,
+      "classification": "unique_structural_catalog_preserve"
+    }
+  ],
+  "prediction_engine": {
+    "implemented": [
+      "read-only allowlisted public ingestion definitions",
+      "content-addressed raw receipt archive prototype",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "purged chronological walk-forward evaluation",
+      "temporal temperature calibration",
+      "PSI drift diagnostics",
+      "manual provenance-bound scenario/counter-hypothesis assembly",
+      "Ed25519-attested fail-closed forecast ledger"
+    ],
+    "production_gaps": [
+      "no trained candidate model",
+      "no successful main-branch ingestion run",
+      "no independent WORM anchor or trusted timestamp authority",
+      "no mature synchronized historical OOS dataset",
+      "no independent shadow cohort",
+      "no verified OOS predictive lift"
+    ],
+    "readiness_policy": {
+      "min_oos_samples": 100,
+      "min_shadow_samples": 100,
+      "min_horizon_multiple": 10,
+      "min_independent_source_groups": 2,
+      "max_weighted_calibration_error": 0.05,
+      "required_baselines": [
+        "naive_class_prior",
+        "momentum_sign",
+        "mean_reversion_sign",
+        "volatility_normal"
+      ],
+      "candidate_must_beat_each_baseline_on": [
+        "Brier score",
+        "log loss"
+      ],
+      "requires_independent_ed25519_attestation": true
+    },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "observations": [
+    {
+      "id": "fuelmaps_xrp_spot_depth",
+      "source": "Fuelmaps",
+      "url": "https://fuelmaps.io/order-book/",
+      "observed_at_utc": "2026-11-12T14:00:00Z",
+      "retrieved_at_utc": "2026-11-12T14:09:46Z",
+      "data": {
+        "mid_usd": 1.0333,
+        "depth_usd": {
+          "within_0_5pct": {
+            "bids": 7900000,
+            "asks": 4800000,
+            "bid_share_pct": 62.1,
+            "venues": 6
+          },
+          "within_1pct": {
+            "bids": 12600000,
+            "asks": 10600000,
+            "bid_share_pct": 54.2,
+            "venues": 6
+          },
+          "within_2pct": {
+            "bids": 17300000,
+            "asks": 11900000,
+            "bid_share_pct": 59.3,
+            "venues": 6
+          },
+          "within_5pct": {
+            "bids": 28600000,
+            "asks": 14300000,
+            "bid_share_pct": 66.7,
+            "venues": 6
+          },
+          "within_10pct": {
+            "bids": 32600000,
+            "asks": 15500000,
+            "bid_share_pct": 67.7,
+            "venues": 5
+          }
+        },
+        "largest_bid": {
+          "price": 1,
+          "usd": 4700000
+        },
+        "largest_ask": {
+          "price": 1.042,
+          "usd": 1800000
+        }
+      },
+      "coverage": "Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini; excludes Binance and Bitget",
+      "caveats": [
+        "resting orders cancellable",
+        "hourly averaged one-minute snapshots",
+        "not executable depth"
+      ],
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "okx_spot_ticker_quarantined",
+      "source": "OKX public API",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-12T14:10:55.269Z",
+      "run_cutoff_utc": "2026-11-12T14:09:46Z",
+      "status": "rejected_future_timestamp",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "kraken_spot_ticker_raw_only",
+      "source": "Kraken public API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time": null,
+      "status": "raw_only_missing_provider_timestamp",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_2026_historical_structure",
+      "source": "SwoleCharts Binance spot daily candles",
+      "url": "https://swolecharts.com/price-history/xrp/2026",
+      "observed_at_utc": "2026-11-12T12:55:00Z",
+      "data": {
+        "year_open": 1.842,
+        "ytd_high": {
+          "price": 2.417,
+          "date": "2026-01-06"
+        },
+        "ytd_low": {
+          "price": 0.9862,
+          "date": "2026-08-14"
+        },
+        "nov11_close": 1.058,
+        "ytd_return_pct": -42.57,
+        "november_to_date_pct": -15.48
+      },
+      "caveat": "single Binance spot candle lineage",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_etf_flows",
+      "source": "XRP Insights issuer holdings aggregation",
+      "url": "https://xrp-insights.com/data",
+      "observed_at": "2026-11-11",
+      "data": {
+        "net_flow_xrp_nov9_nov11": -9213260,
+        "total_holdings_xrp": 1185967427,
+        "average_cost_basis_usd": 1.71,
+        "nov11_price_usd": 1.04,
+        "below_cost_basis_pct": 39.4
+      },
+      "caveat": "holdings-difference method; flow-excluded funds counted as zero",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_exchange_balances",
+      "source": "XRP Insights XRPL account_info plus XRPSCAN labels",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "observed_at_utc": "2026-11-11T08:00:00Z",
+      "data": {
+        "attributed_xrp": 22330000000,
+        "wallets": 701,
+        "exchanges": 24,
+        "same_wallet_7d_change_xrp": 1300000,
+        "same_wallet_30d_change_xrp": -155700000,
+        "cold_storage_share_pct": 48,
+        "hot_storage_share_pct": 12,
+        "wrapped_backing_reserves_xrp": 480500000
+      },
+      "caveat": "includes cold storage and wrapped-token backing; not tradable float; wallet-label coverage incomplete",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "hyperliquid_perpetual_snapshot",
+      "source": "HyperAcademy citing Hyperliquid",
+      "url": "https://hyperacademy.io/en/markets/xrp-perp",
+      "observed_at_utc": "2026-11-12T12:00:00Z",
+      "data": {
+        "mark_usd": 1.038,
+        "change_24h_pct": -1.83,
+        "open_interest_usd": 92800000,
+        "volume_24h_usd": 44200000,
+        "funding_per_hour_pct": -0.0006
+      },
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "liqwall_aggregate_derivatives",
+      "source": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "provider_event_time": null,
+      "data": {
+        "open_interest_usd": 1160000000,
+        "change_24h_pct": 0.2,
+        "average_funding_8h_pct": 0.0057,
+        "binance_long_account_share_pct": 75.3,
+        "liquidations_24h_usd": 4100000,
+        "long_liquidations_usd": 2900000,
+        "short_liquidations_usd": 1100000
+      },
+      "caveat": "retrieved page did not provide exact observation timestamp",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "kodexius_derivatives",
+      "source": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "observed_at_utc": "2026-11-12T06:24:00Z",
+      "data": {
+        "open_interest_usd": 635070000,
+        "contracts": 7,
+        "weighted_funding_8h_pct": 0.007,
+        "volume_24h_usd": 1190000000
+      },
+      "caveat": "different contract/venue coverage from Liqwall and Hyperliquid",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "coinbase_cbxrp_reserves",
+      "source": "Coinbase issuer proof-of-reserves",
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "observed_at_utc": "2026-11-12T12:20:00Z",
+      "data": {
+        "reserve_xrp": 152909832.68,
+        "supply_cbxrp": 152907586.15,
+        "excess_xrp": 2246.53
+      },
+      "caveat": "issuer-published proof of reserves, not independent custody audit",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "circle_q3_2026",
+      "source": "Circle official Q3 release",
+      "url": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results",
+      "published_date": "2026-11-04",
+      "data": {
+        "average_usdc_circulation_usd": 73300000000,
+        "quarterly_onchain_volume_usd": 13900000000000,
+        "revenue_and_reserve_income_usd": 865000000,
+        "net_income_usd": 226000000,
+        "adjusted_ebitda_usd": 317000000,
+        "reserve_income_usd": 658000000,
+        "other_revenue_usd": 207000000,
+        "arc_presale_revenue_usd": 182000000,
+        "cpn_annualized_tpv_usd": 41300000000,
+        "binance_equity_investment_usd": 100000000
+      },
+      "caveat": "issuer-reported; CPN figure is annualized run-rate, ARC presale is non-recurring token revenue",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "rlusd_custody_lmax",
+      "source": "Ripple and LMAX official releases",
+      "urls": [
+        "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+        "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/"
+      ],
+      "published_dates": [
+        "2026-10-12",
+        "2026-01-15"
+      ],
+      "data": {
+        "standard_chartered_rlusd_xrpl_custody": "live via DIFC branch",
+        "lmax_rlusd_collateral": "planned, not confirmed live",
+        "ripple_lmax_financing_usd": 150000000
+      },
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "xrpl_x402_agent_payments",
+      "sources": [
+        "https://xrpl-ai.org/",
+        "https://xrp-insights.com/xrp-radar",
+        "https://xrpl.org/docs/agents/agentic-transactions"
+      ],
+      "data": {
+        "t54_all_time_transactions": 15628777,
+        "t54_settled_value_usd": 76847.9,
+        "t54_merchants": 193,
+        "t54_live_services": 5410,
+        "xrp_insights_transactions": 15613265,
+        "xrp_settled": 7030,
+        "rlusd_settled": 67545,
+        "average_usd_per_tx_t54": 0.004916,
+        "average_usd_per_tx_xrp_insights": 0.004791
+      },
+      "caveats": [
+        "t54 recent feed entries labeled Unverified",
+        "XRP Insights appears to share t54 lineage",
+        "XRPL supports XRP, RLUSD and other issued tokens; transaction count is not XRP volume",
+        "dynamic counters have no reliable common as-of timestamp; recent t54 rows were labelled Unverified; exclude from cutoff-aligned feature set"
+      ],
+      "raw_receipt_sha256": null,
+      "model_eligible": false,
+      "observation_time_status": "UNSPECIFIED_DYNAMIC_PAGE_NOT_CUTOFF_ALIGNED"
+    },
+    {
+      "id": "macro_japan_yen_energy_rates",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/",
+        "https://www.reuters.com/business/energy/oil-prices-drop-more-than-1-hopes-iran-ukraine-peace-talks-pressure-markets-2026-11-12/",
+        "https://www.barrons.com/livecoverage/stock-market-news-today-111226/card/treasury-yields-rise-as-trade-resumes-with-fed-rates-in-focus-kRObHCbV9AkGvaqBiHDt"
+      ],
+      "published_date": "2026-11-12",
+      "data": {
+        "usdjpy": 159.94,
+        "japan_import_price_yoy_pct": 24.8,
+        "brent_usd": 93.9,
+        "wti_usd": 87.23,
+        "us_2y_yield_pct": 4.765,
+        "us_10y_yield_pct": 4.991,
+        "dec9_fed_hike_25bp_probability_pct": 88,
+        "dec9_fed_hike_50bp_probability_pct": 12
+      },
+      "caveats": [
+        "Reuters reports oil fell early then rebounded on geopolitical risk",
+        "Fed probabilities are secondary market reporting, not official Fed guidance"
+      ],
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "sbic_chatgpt_identity",
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf"
+      ],
+      "data": {
+        "tokyo_sbic_chatgpt_course": "documented",
+        "osaka_sbic_west_generative_ai_chatgpt_seminar": "documented",
+        "openai_partnership": "not evidenced"
+      },
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "kamilah_stevenson_youtube_identity",
+      "sources": [
+        "https://learn.kamilahstevenson.com/",
+        "https://www.idcrawl.com/kamilah-stevenson"
+      ],
+      "data": {
+        "person_identity_status": "CONFIRMED",
+        "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+        "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "candidate_handle": "@drkamilahstevenson",
+        "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+        "candidate_references": 21,
+        "verified_personal_channel_uploads": 0,
+        "verified_external_references": {
+          "guest_appearance": "Sulo54IlQ60",
+          "third_party_clip": "5DzBk8DfoLs"
+        }
+      },
+      "caveat": "Older Nov 8 artifact's first-party search result resolves the channel ID/handle pair, not the person's ownership of that channel; the same artifact says person-to-channel match is not conclusive and direct upload metadata count is zero. Canonical profile/gate remains authoritative.",
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "sbic_regional_company_identity",
+      "sources": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/",
+        "https://www.sbic-wj.co.jp/profiles/profile/"
+      ],
+      "data": {
+        "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo profile labels SBIC East Japan)",
+        "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (official Nagoya company site)",
+        "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (Osaka profile labels SBIC West Japan)",
+        "relation_to_sbi_holdings": "distinct statutory regional companies; no subsidiary relationship evidenced"
+      },
+      "raw_receipt_sha256": null,
+      "model_eligible": false
+    }
+  ],
+  "identity_research": {
+    "ask_coin": "no primary XRPL token/issuer deployment verified; AskSurf is a separate x402 merchant",
+    "actual_capital": "not a standardized XRP metric; maintain separate cash/in-kind/debt/facility/resale categories",
+    "sbic": "East/Central/West are Tokyo/Nagoya/Osaka regional SME investment companies, distinct from SBI Holdings",
+    "kamilah": {
+      "person_identity_status": "CONFIRMED",
+      "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "candidate_handle": "@drkamilahstevenson",
+      "candidate_reference_count": 21,
+      "verified_personal_channel_upload_count": 0,
+      "external_references": [
+        "Sulo54IlQ60: verified guest appearance, not own-channel upload",
+        "5DzBk8DfoLs: third-party upload, not own-channel upload"
+      ],
+      "older_artifact_resolution": "channel ID/handle pair resolved by first-party YouTube search, but person-to-channel match remains strongly corroborated, not conclusive; direct watch-page upload metadata count zero; inventory incomplete",
+      "attribution_gate": "DO_NOT_ATTRIBUTE_CANDIDATE_UPLOADS_OR_ADMIT_VIDEO_CLAIMS_AS_FEATURES"
+    }
+  },
+  "nine_platforms": {
+    "chatgpt_github": "authenticated; GitHub identity overprivileged",
+    "claude": "authentication unverified",
+    "grok": "authentication unverified",
+    "gemini": "authentication unverified",
+    "copilot": "no formal PR approval",
+    "codex": "authentication unverified",
+    "hugging_face": "BUILD_ERROR",
+    "kaggle": "untested; no submission",
+    "databricks": "HTTP 403",
+    "lunaroute": "endpoint authentication/data flow unverified",
+    "external_model_transfer": "none"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "actions": {
+    "merge": false,
+    "deploy": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "source_pr_closure": false
+  },
+  "kamilah_identity_reconciliation": {
+    "person_identity_status": "CONFIRMED",
+    "person": "Dr. Kamilah Stevenson / The Wealth Doctor",
+    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_handle": "@drkamilahstevenson",
+    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "candidate_reference_count": 21,
+    "verified_personal_channel_upload_count": 0,
+    "inventory_complete": false,
+    "external_video_references": {
+      "paul_barron_podcast": {
+        "video_id": "Sulo54IlQ60",
+        "type": "verified_guest_appearance_not_own_channel_upload"
+      },
+      "alina_x_clip": {
+        "video_id": "5DzBk8DfoLs",
+        "type": "third_party_upload_not_own_channel_upload"
+      }
+    },
+    "conflicting_historical_artifact": {
+      "path": "research/xrp_intelligence/20261108T041850Z-kamilah-channel-identity-and-public-video-inventory.json",
+      "claim": "first-party YouTube search result resolved channel ID and handle",
+      "limitation": "the same artifact says person-to-channel match is strongly corroborated, not conclusive; direct watch-page upload metadata verified count is zero; inventory_complete is false",
+      "resolution": "treat channel identifier resolution separately from person/account ownership; canonical profile and identity gate are authoritative"
+    },
+    "attribution_gate": "DO_NOT_ATTRIBUTE_CANDIDATE_UPLOADS_OR_ADMIT_VIDEO_CLAIMS_AS_FEATURES"
+  },
+  "sbic_company_identity_sources": [
+    "https://www.sbic.co.jp/company/profile/",
+    "https://www.sbic-cj.co.jp/",
+    "https://www.sbic-wj.co.jp/profiles/profile/"
+  ],
+  "sbic_chatgpt_training_sources": [
+    "https://www.sbic.co.jp/training/20250612co/",
+    "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf"
+  ]
+}

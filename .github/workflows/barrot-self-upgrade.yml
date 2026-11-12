@@ -1,56 +1,16 @@
-name: Barrot Self-Upgrade (approved candidate generation)
+name: Barrot Self-Upgrade (quarantined pending integration-first authorization)
 
 on:
-  workflow_dispatch:
-    inputs:
-      confirm_external_change:
-        description: "Set to YES only after explicit approval to create a candidate branch and pull request"
-        required: true
-        type: choice
-        options:
-          - NO
-          - YES
-        default: NO
+  workflow_dispatch: {}
 
-permissions:
-  contents: write
-  pull-requests: write
-
-concurrency:
-  group: barrot-self-upgrade-main
-  cancel-in-progress: false
+permissions: {}
 
 jobs:
-  audit_and_upgrade:
-    if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' }}
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout main only
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 0
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Configure Git identity
+      - name: Explain quarantine
         run: |
-          git config user.name "Barrot Self-Upgrade"
-          git config user.email "barrot-self-upgrade@users.noreply.github.com"
-      - name: Capability audit
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python3 scripts/barrot_capability_audit.py
-      - name: Generate and open review-only candidate PR
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python3 scripts/barrot_self_upgrade.py
-      - name: Verify final checkout state
-        run: |
-          test "$(git branch --show-current)" = "main"
-          git status --short
-          echo "No merge or main-branch write is performed by this workflow."
+          echo "Autonomous branch/PR generation is disabled until it searches the complete open-PR inventory, reuses the existing integration branch, and enforces one active PR per coherent workstream."
+          echo "No credentials are read, no branch or pull request is created, and no repository or external mutation occurs."

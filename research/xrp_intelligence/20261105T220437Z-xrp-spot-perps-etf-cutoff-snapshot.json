@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp_market_cutoff_20261105T220437Z",
+  "artifact_type": "xrp_spot_perpetuals_etf_cutoff_snapshot",
+  "captured_at_utc": "2026-11-05T22:04:37Z",
+  "data_cutoff_utc": "2026-11-05T22:04:37Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "market_snapshot": {
+    "kraken_spot": {
+      "source_id": "KRAKEN_XRPUSD_TICKER_20261105T220437Z",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-05T22:04:37Z",
+      "provider_event_timestamp_utc": null,
+      "capture_method": "web_open_json_response_body_text",
+      "raw_response_body_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.22169000\",\"961\",\"961.000\"],\"b\":[\"1.22148000\",\"1487\",\"1487.000\"],\"c\":[\"1.22180000\",\"200.00000000\"],\"v\":[\"35969265.33726791\",\"39037780.86695034\"],\"p\":[\"1.26677272\",\"1.27021358\"],\"t\":[35021,37294],\"l\":[\"1.21554000\",\"1.21554000\"],\"h\":[\"1.32583000\",\"1.32583000\"],\"o\":\"1.30410000\"}}}",
+      "raw_response_body_text_sha256": "e0a4c06d55d79d9d370a19269da4d1456f9d2f64f50b24c31094f8e66fa77d76",
+      "raw_http_headers_captured": false,
+      "exact_wire_bytes_independently_verified": false,
+      "market": {
+        "pair": "XRP/USD",
+        "last_trade_usd": 1.2218,
+        "best_bid_usd": 1.22148,
+        "best_ask_usd": 1.22169,
+        "spread_bps": 1.719078082982711,
+        "volume_since_utc_midnight_xrp": 35969265.33726791,
+        "rolling_24h_volume_xrp": 39037780.86695034,
+        "utc_day_vwap_usd": 1.26677272,
+        "rolling_24h_vwap_usd": 1.27021358,
+        "utc_day_trade_count": 35021,
+        "rolling_24h_trade_count": 37294,
+        "utc_day_low_usd": 1.21554,
+        "rolling_24h_low_usd": 1.21554,
+        "utc_day_high_usd": 1.32583,
+        "rolling_24h_high_usd": 1.32583,
+        "utc_day_open_usd": 1.3041,
+        "last_vs_utc_day_open_pct": -6.310865731155591,
+        "last_vs_rolling_24h_vwap_pct": -3.811451929210208,
+        "last_above_rolling_24h_low_pct": 0.5149974496931442
+      },
+      "scope_limits": [
+        "Single venue and top-of-book only; not consolidated executable liquidity or full depth.",
+        "Kraken response has no provider event timestamp; retrieval time is the observation cutoff.",
+        "Response body text was hashed, but HTTP headers and independent wire-byte capture were unavailable."
+      ],
+      "model_eligible": false
+    },
+    "kraken_perpetuals": {
+      "source_id": "KRAKEN_XRP_PERP_PAGE_20261105T214900Z",
+      "url": "https://www.kraken.com/features/futures/xrp",
+      "observed_at_utc": "2026-11-05T21:49:00Z",
+      "published_page_update": "November 5, 2026 at 9:49 PM",
+      "mark_price_usd": 1.22,
+      "index_price_usd": 1.22,
+      "change_24h_pct": -6.17,
+      "volume_24h_xrp": 11400000,
+      "volume_24h_usd": 14500000,
+      "open_interest_xrp": 16400000,
+      "open_interest_usd": 20100000,
+      "funding_rate_pct_per_hour": 0.0000035196,
+      "next_funding_rate_pct_per_hour": 0.000022006,
+      "source_type": "exchange-published futures page",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    },
+    "tradradar_aggregate": {
+      "source_id": "TRADRADAR_XRP_PERPS_20261105T211000Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-05T21:10:00Z",
+      "published_page_update": "November 5, 2026 at 9:10 PM UTC",
+      "venue_count": 7,
+      "mark_price_usd": 1.2232,
+      "change_24h_pct": -6.09,
+      "open_interest_usd": 1940000000,
+      "open_interest_change_24h_pct": -4.87,
+      "oi_weighted_funding_pct_per_8h": 0.0068,
+      "liquidations_24h_usd_at_least": 11750000,
+      "long_liquidations_24h_usd": 11260000,
+      "short_liquidations_24h_usd": 491020,
+      "long_short_account_ratio": 4.06,
+      "long_account_share_pct": 80.3,
+      "display_delay_minutes": 15,
+      "source_type": "secondary seven-exchange aggregation",
+      "methodology_note": "The long/short ratio is account-count based, not notional exposure. Liquidation totals are lower bounds because exchanges disclose incomplete real-time liquidation data.",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    }
+  },
+  "etf_flow_reconciliation": {
+    "observations": [
+      {
+        "source_id": "XRP_INSIGHTS_ETF_20261105",
+        "url": "https://xrp-insights.com/data",
+        "data_as_of": "2026-11-04",
+        "retrieved_during_run": true,
+        "reported_scope": "2026-11-02 through 2026-11-04; 3 settled trading days",
+        "net_flow_xrp": -259701,
+        "total_xrp_held": 1196340485,
+        "fund_universe": "6 US spot XRP ETFs plus BITW",
+        "methodology": "Sum of daily changes in issuer-reported XRP holdings; flow-excluded funds count as zero.",
+        "caveats": [
+          "Holdings-derived estimate, not a direct AP cash creation/redemption ledger.",
+          "Flow-excluded funds counted as zero can understate or distort a complete universe.",
+          "Dollar equivalent is derived using each day's XRP price, not cash proceeds verified from AP records."
+        ],
+        "raw_bytes_captured": false,
+        "model_eligible": false
+      },
+      {
+        "source_id": "ALPHA_FINANCE_XRP_ETF_20261105",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "data_through": "2026-11-04",
+        "retrieved_during_run": true,
+        "reported_scope": "5-fund universe; 2026-10-24 through 2026-11-04 seven sessions",
+        "seven_session_net_flow_usd": 4800000,
+        "nov4_reported_net_flow_usd": 0,
+        "thirty_session_net_flow_usd": 78900000,
+        "cumulative_net_inflow_usd": 1730000000,
+        "methodology": "Issuer-holdings-derived dashboard aggregation.",
+        "caveats": [
+          "A displayed zero is not independently verified AP cash creation/redemption.",
+          "Underlying inputs are issuer-published holdings; separate dashboards do not create independent primary-data corroboration.",
+          "Fund coverage differs from XRP Insights."
+        ],
+        "raw_bytes_captured": false,
+        "model_eligible": false
+      }
+    ],
+    "values_comparable_as_one_daily_total": false,
+    "cash_creation_redemption_verified": false,
+    "direct_xrp_spot_purchase_verified": false,
+    "disagreement_reason": "Different fund universes, date windows, exclusions and holdings-derived methods. XRP Insights' three-day -259,701 XRP aggregate and Alpha Finance's seven-session +$4.8M aggregate are not the same measurement."
+  },
+  "interpretation": {
+    "descriptive_only": [
+      "Kraken last trade was 6.31% below its UTC-day open and 3.81% below its rolling 24-hour VWAP.",
+      "TradRadar showed seven-exchange USD open interest down 4.87% while long liquidations materially exceeded short liquidations.",
+      "TradRadar's account-based long share remained 80.3% and weighted funding remained positive.",
+      "Kraken's own perpetual page showed much smaller venue-specific open interest and near-zero funding; this is not contradictory because the venue universe differs."
+    ],
+    "competing_hypotheses": [
+      {
+        "id": "H1_LEVERAGED_LONG_UNWIND",
+        "hypothesis": "Price weakness, falling aggregate OI and long-heavy liquidations are consistent with leveraged-long deleveraging.",
+        "disconfirming_or_missing": [
+          "TradRadar's account ratio remains heavily long and funding is still positive.",
+          "No synchronized trade-level liquidation tape or notional long/short exposure was captured."
+        ]
+      },
+      {
+        "id": "H2_BROAD_RISK_OFF",
+        "hypothesis": "The move may be part of broader crypto or macro risk reduction rather than XRP-specific supply.",
+        "disconfirming_or_missing": [
+          "No synchronized BTC/ETH, dollar, rates and equity factor panel is included in this artifact."
+        ]
+      },
+      {
+        "id": "H3_ETF_HOLDINGS_SUPPLY",
+        "hypothesis": "Some issuer-reported ETF holdings declines could contribute marginal XRP supply.",
+        "disconfirming_or_missing": [
+          "ETF aggregators disagree in scope and horizon.",
+          "No AP cash creation/redemption or custodian transfer records were captured."
+        ]
+      },
+      {
+        "id": "H4_MEASUREMENT_UNIVERSE",
+        "hypothesis": "Differences in OI, ETF flows and venue prices partly reflect coverage, timing and unit differences.",
+        "disconfirming_or_missing": [
+          "The same-time underlying venue snapshots are incomplete, so the size of the measurement effect is unknown."
+        ]
+      }
+    ]
+  },
+  "model_admission": {
+    "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+    "eligible": false,
+    "reasons": [
+      "Kraken response body text is hashed but original HTTP headers and independently verified wire bytes are unavailable.",
+      "Kraken spot provider event timestamp is absent; retrieval time is retained separately.",
+      "Kraken and TradRadar derivatives observations have different event times and venue universes.",
+      "ETF figures are holdings-derived, fund-universe dependent and not direct cash flow.",
+      "No synchronized multi-venue spot depth, exchange wallet flow, collateral or macro factor panel was captured."
+    ],
+    "directional_forecast_issued": false,
+    "target": null,
+    "horizon": null,
+    "probabilities": null,
+    "assumptions": null
+  },
+  "sources": [
+    {
+      "id": "KRAKEN_XRPUSD_TICKER_20261105T220437Z",
+      "publisher": "Kraken",
+      "source_type": "public exchange ticker API",
+      "independence_group": "Kraken spot market data",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieval_time_utc": "2026-11-05T22:04:37Z",
+      "provider_event_timestamp_utc": null
+    },
+    {
+      "id": "KRAKEN_XRP_PERP_PAGE_20261105T214900Z",
+      "publisher": "Kraken",
+      "source_type": "exchange-published futures market page",
+      "independence_group": "Kraken derivatives market data",
+      "url": "https://www.kraken.com/features/futures/xrp",
+      "retrieval_time_utc": "2026-11-05T22:04:37Z",
+      "provider_update_time_utc": "2026-11-05T21:49:00Z"
+    },
+    {
+      "id": "TRADRADAR_XRP_PERPS_20261105T211000Z",
+      "publisher": "TradRadar",
+      "source_type": "secondary multi-exchange aggregation",
+      "independence_group": "TradRadar exchange aggregation",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieval_time_utc": "2026-11-05T22:04:37Z",
+      "provider_update_time_utc": "2026-11-05T21:10:00Z"
+    },
+    {
+      "id": "XRP_INSIGHTS_ETF_20261105",
+      "publisher": "XRP Insights",
+      "source_type": "issuer-holdings-derived ETF dataset",
+      "independence_group": "issuer-published ETF holdings",
+      "url": "https://xrp-insights.com/data",
+      "retrieval_time_utc": "2026-11-05T22:04:37Z",
+      "data_as_of": "2026-11-04"
+    },
+    {
+      "id": "ALPHA_FINANCE_XRP_ETF_20261105",
+      "publisher": "Alpha Finance",
+      "source_type": "issuer-holdings-derived ETF dashboard",
+      "independence_group": "issuer-published ETF holdings",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "retrieval_time_utc": "2026-11-05T22:04:37Z",
+      "data_through": "2026-11-04"
+    }
+  ],
+  "acquisition_gaps": [
+    "Coinbase and Binance public API endpoints could not be retrieved through the available browser fetch surface during this run.",
+    "No full order-book depth or sweep-cost panel was captured.",
+    "No exchange-wallet flow or custodian transfer panel was captured.",
+    "No current XRP collateral utilization balance was found.",
+    "No direct AP cash creation/redemption record was captured."
+  ],
+  "preservation": {
+    "original_artifacts_modified": false,
+    "directional_forecast_issued": false,
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "external_mutation": false
+  }
+}

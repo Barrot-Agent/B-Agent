@@ -1,0 +1,339 @@
+{
+  "schema_version": "barrot.xrp.market-and-institutional-update.v1",
+  "artifact_id": "xrp_market_circle_q3_update_20261104T180409Z",
+  "artifact_type": "timestamped_public_market_and_institutional_evidence",
+  "captured_at_utc": "2026-11-04T18:04:09Z",
+  "data_cutoff_utc": "2026-11-04T18:04:09Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "reviewed_head_sha": "675e9cf7901fa4d85b3a9dd9ad84e11cdd928269",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261104T180409Z",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-04T18:04:09Z",
+      "source_event_timestamp_utc": null,
+      "raw_capture_status": "web_rendered_json_result_only",
+      "raw_content_sha256": null,
+      "independence_group": "kraken",
+      "model_eligible": false,
+      "limitations": [
+        "Raw response bytes were not captured in this run.",
+        "Ticker response has no exchange event timestamp.",
+        "Single venue; ticker top-of-book is not a depth curve."
+      ]
+    },
+    {
+      "id": "bykaranteli_xrp_etf_flows_20261104T0909Z",
+      "publisher": "ByKaranteli",
+      "source_type": "secondary_issuer_holdings_derived_etf_flow_aggregator",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "retrieved_at_utc": "2026-11-04T18:04:09Z",
+      "provider_data_updated_at_utc": "2026-11-04T09:09:00Z",
+      "independence_group": "bykaranteli_issuer_holdings_aggregation",
+      "model_eligible": false,
+      "limitations": [
+        "Nov 3 daily flow is explicitly provisional until issuer settlement.",
+        "The visible per-fund table lists five funds; full-universe coverage is not reconciled against all other trackers.",
+        "Underlying issuer holdings inputs overlap other aggregators; not independent issuer flow evidence."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_8k_ex99_1_20261104",
+      "publisher": "Circle Internet Group, Inc.",
+      "source_type": "primary_sec_8k_exhibit_99_1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+      "filed_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T18:04:09Z",
+      "independence_group": "circle_sec_primary",
+      "raw_capture_status": "web_rendered_sec_filing_extract",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Issuer-reported quarterly figures; raw SEC response bytes were not archived in this run.",
+        "Forward-looking acquisition and growth statements remain conditional and are not realized outcomes."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_presentation_mirror_20261104",
+      "publisher": "MarketScreener / Publicnow republication of Circle Investor Relations presentation",
+      "original_publisher": "Circle Investor Relations",
+      "source_type": "secondary_hosted_issuer_presentation_mirror",
+      "url": "https://www.marketscreener.com/news/circle-internet-third-quarter-2026-earnings-presentation-ce785fdfdb8cf626",
+      "canonical_origin_url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf",
+      "retrieved_at_utc": "2026-11-04T18:04:09Z",
+      "independence_group": "circle_issuer_presentation",
+      "raw_capture_status": "web_rendered_mirror_excerpt",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The readable text was obtained from a third-party republication of Circle's issuer presentation; the canonical PDF URL is recorded but direct retrieval failed in this run.",
+        "Issuer presentation is not independent of the SEC filing.",
+        "Distribution/location percentages are issuer-defined platform mix, not proof of beneficial ownership, custody, or collateral."
+      ]
+    }
+  ],
+  "market_observation": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD spot",
+    "last_usd": 1.31413,
+    "best_bid_usd": 1.31408,
+    "best_bid_size_xrp": 4903,
+    "best_ask_usd": 1.31409,
+    "best_ask_size_xrp": 191,
+    "mid_usd": 1.314085,
+    "spread_usd": 0.00001,
+    "spread_basis_points": 0.0760986,
+    "displayed_top_of_book_size_imbalance": 0.9250098154691794,
+    "volume_today_xrp": 34816484.29640721,
+    "volume_24h_xrp": 43860861.18465555,
+    "vwap_today_usd": 1.29101204,
+    "vwap_24h_usd": 1.28876512,
+    "high_24h_usd": 1.34,
+    "low_24h_usd": 1.24016,
+    "utc_day_open_usd": 1.27513,
+    "last_vs_utc_day_open_pct": 3.058511681161913,
+    "last_vs_24h_vwap_pct": 1.9681538246472563,
+    "source_id": "kraken_xrpusd_ticker_20261104T180409Z",
+    "source_event_timestamp_utc": null,
+    "retrieved_at_utc": "2026-11-04T18:04:09Z",
+    "model_eligible": false,
+    "limitations": [
+      "One exchange only; not a synchronized cross-venue snapshot.",
+      "Best bid and ask sizes are displayed top-of-book quantities, not total depth or executable liquidity at size.",
+      "Top-of-book imbalance is a single snapshot and may be transient or spoofed.",
+      "Kraken ticker o is the UTC-day open, not a rolling 24-hour open.",
+      "Raw response bytes and an immutable SHA-256 receipt were not captured in this run."
+    ]
+  },
+  "etf_flow_observation": {
+    "provider": "ByKaranteli",
+    "trading_day": "2026-11-03",
+    "provider_data_updated_at_utc": "2026-11-04T09:09:00Z",
+    "daily_net_flow_usd": 0,
+    "five_day_net_flow_usd": 7400000,
+    "total_net_assets_usd": 1460000000,
+    "cumulative_net_inflow_usd": 1810000000,
+    "settlement_status": "provisional_until_issuer_settlement",
+    "visible_fund_rows": [
+      {
+        "ticker": "XRP",
+        "issuer": "Bitwise",
+        "daily_flow_usd": 0,
+        "net_assets_usd": 529800000,
+        "cumulative_flow_usd": 681700000
+      },
+      {
+        "ticker": "XRPZ",
+        "issuer": "Franklin Templeton",
+        "daily_flow_usd": 0,
+        "net_assets_usd": 395900000,
+        "cumulative_flow_usd": 524200000
+      },
+      {
+        "ticker": "XRPC",
+        "issuer": "Canary",
+        "daily_flow_usd": 0,
+        "net_assets_usd": 310900000,
+        "cumulative_flow_usd": 484700000
+      },
+      {
+        "ticker": "TOXR",
+        "issuer": "21Shares",
+        "daily_flow_usd": 0,
+        "net_assets_usd": 136800000,
+        "cumulative_flow_usd": -21200000
+      },
+      {
+        "ticker": "GXRP",
+        "issuer": "Grayscale",
+        "daily_flow_usd": 0,
+        "net_assets_usd": 82900000,
+        "cumulative_flow_usd": 144700000
+      }
+    ],
+    "provider_methodology": "Holdings-derived US spot XRP ETF aggregation; aggregate series begins 2026-09-08 and is recorded daily since 2026-10-06. Canary XRPC series is sourced from Canary's issuer table.",
+    "source_id": "bykaranteli_xrp_etf_flows_20261104T0909Z",
+    "model_eligible": false,
+    "limitations": [
+      "Provisional Nov 3 value is not final issuer-settled flow.",
+      "Visible table contains five funds; broader product-universe coverage requires reconciliation.",
+      "Holdings changes are not necessarily cash creations/redemptions; fees, transfers, and fund mechanics can affect holdings."
+    ]
+  },
+  "etf_provider_disagreement": {
+    "source_artifact": "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+    "observations": [
+      {
+        "provider": "CryptoKeyhole",
+        "trading_day": "2026-11-03",
+        "reported_net_flow_xrp": -3339,
+        "coverage": "3 of 4 daily-reporting funds",
+        "as_of_utc": "2026-11-04T11:17:00Z"
+      },
+      {
+        "provider": "CryptoETF.today",
+        "trading_day": "2026-11-03",
+        "reported_net_flow_usd": 0,
+        "coverage": "2 of 5 funds",
+        "as_of_utc": "2026-11-04T05:47:00Z"
+      },
+      {
+        "provider": "XRP Insights",
+        "trading_day": "2026-11-03",
+        "status": "not reconciled",
+        "coverage": "six spot funds plus BITW index sleeve; metadata and landing-page provisional state conflict"
+      },
+      {
+        "provider": "ByKaranteli",
+        "trading_day": "2026-11-03",
+        "reported_net_flow_usd": 0,
+        "coverage": "five visible fund rows; provider states all listed funds",
+        "as_of_utc": "2026-11-04T09:09:00Z",
+        "settlement": "provisional"
+      }
+    ],
+    "reconciliation": "Do not average these observations. Units, fund universe, issuer publication timing, provisional status, and treatment of index products differ. No final full-universe Nov 3 flow is asserted.",
+    "model_eligible": false
+  },
+  "circle_q3_2026": {
+    "reporting_period": "2026-Q3",
+    "filing_date": "2026-11-04",
+    "financials": {
+      "average_usdc_circulation_usd_b": 73.3,
+      "average_usdc_circulation_yoy_pct": 8,
+      "end_period_usdc_circulation_usd_b": 73.9,
+      "end_period_usdc_circulation_yoy_pct": 0,
+      "usdc_onchain_transaction_volume_usd_t": 13.9,
+      "usdc_onchain_transaction_volume_yoy_pct": 49,
+      "total_revenue_and_reserve_income_usd_m": 864.888,
+      "total_revenue_and_reserve_income_yoy_pct": 17,
+      "reserve_income_usd_m": 657.624,
+      "reserve_income_yoy_pct": -8,
+      "other_revenue_usd_m": 207.264,
+      "other_revenue_yoy_pct": 627,
+      "arc_token_presale_revenue_usd_m": 182,
+      "operating_expenses_usd_m": 244.92,
+      "operating_expenses_yoy_pct": 16,
+      "distribution_transaction_other_costs_usd_m": 411.634,
+      "net_income_continuing_operations_usd_m": 226.012,
+      "net_income_continuing_operations_yoy_pct": 5,
+      "adjusted_ebitda_new_definition_usd_m": 316.662,
+      "adjusted_ebitda_yoy_pct": 85,
+      "reserve_return_rate_pct": 3.5,
+      "reserve_return_rate_yoy_change_bps": -61,
+      "usdc_end_period_market_share_pct": 27,
+      "usdc_market_share_yoy_change_bps": -183,
+      "usdc_minted_usd_b": 104,
+      "usdc_redeemed_usd_b": 104,
+      "meaningful_usdc_wallets_m": 7.3
+    },
+    "business_metrics": {
+      "circle_payments_network_annualized_tpv_usd_b": 41.3,
+      "circle_payments_network_financial_institutions_enrolled": 205,
+      "tazapay_acquisition_status": "definitive_agreement_signed; expected 2027 close subject to regulatory approvals",
+      "tazapay_annualized_payment_volume_usd_b": 25,
+      "tazapay_banking_fintech_partners": 60,
+      "tazapay_payout_markets": 100,
+      "tazapay_transaction_volume_stablecoin_share_pct": 60,
+      "arc_mainnet_launch_date": "2026-09-16",
+      "arc_builders_on_day_one": 100,
+      "arc_genesis_supply_tokens_b": 10,
+      "binance_equity_investment_usd_m": 100,
+      "binance_usdc_partnership_term_years": 5,
+      "visa_direct_usdc_prefunding_status": "commercial_deployment",
+      "samsung_wallet_usdc_local_payout_countries": 60
+    },
+    "workforce_and_cost_restructuring": {
+      "workforce_reduction_approx_pct": 5,
+      "restructuring_expenses_usd_m": 9.145,
+      "rationale_in_filing": "align organizational structure with operating model and strategic priorities",
+      "ai_causation_claim": "not stated in the filing"
+    },
+    "analytical_interpretation": {
+      "nonrecurring_revenue_warning": "The $182M ARC token presale is included in $207.264M other revenue and materially affects reported revenue and adjusted EBITDA growth; do not extrapolate it as recurring reserve income.",
+      "rate_sensitivity": "Reserve return fell 61 basis points year over year to approximately 3.5%, while reserve income fell 8% despite average USDC circulation rising 8%.",
+      "circulation_signal": "Average circulation grew, but end-period circulation was flat year over year and USDC market share fell 183 basis points to 27%.",
+      "volume_warning": "$13.9T is gross on-chain transaction volume per Visa Onchain Analytics (unadjusted); it is not net new capital, unique payments, or XRP demand.",
+      "restructuring_warning": "A 5% workforce reduction and $9.145M restructuring expense are disclosed; the filing attributes the action to organizational alignment, not AI or distress."
+    },
+    "source_id": "circle_q3_2026_8k_ex99_1_20261104",
+    "model_eligible": false,
+    "presentation_metrics": {
+      "usdc_share_of_stablecoin_transaction_volume_pct": 79,
+      "usdc_end_period_location_mix_pct": {
+        "circle": 19,
+        "coinbase": 31,
+        "off_platform": 50
+      },
+      "location_mix_interpretation": "Issuer-reported USDC end-of-period location/distribution mix for Q3 2026. This is not a statement that Coinbase or Circle beneficially owns the USDC, nor a direct collateral or XRP-utilization measure.",
+      "source_id": "circle_q3_2026_presentation_mirror_20261104",
+      "model_eligible": false
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "CIRCLE_USDC_RAIL_SUBSTITUTION",
+      "hypothesis": "Circle's USDC, CPN, Arc, Visa Direct and wallet distribution may substitute for XRP in some stablecoin-denominated cross-border payment and settlement corridors.",
+      "supporting_evidence": [
+        "CPN $41.3B annualized TPV and 205 enrolled financial institutions",
+        "Arc mainnet with native USDC integration",
+        "Visa Direct USDC prefunding moved to commercial deployment",
+        "Tazapay acquisition agreement expands local payout rails"
+      ],
+      "disconfirming_evidence": [
+        "No corridor-level data demonstrates an XRP route was displaced",
+        "USDC settlement and XRP bridge liquidity can serve different legs or corridors",
+        "Corporate platform growth does not prove XRP demand fell"
+      ],
+      "status": "plausible_competitive_hypothesis_not_proven"
+    },
+    {
+      "id": "XRP_BRIDGE_COMPLEMENTARITY",
+      "hypothesis": "XRP may remain complementary as a bridge asset for non-USDC currency pairs or corridors where stablecoin liquidity, banking access, or local payout rails are insufficient.",
+      "supporting_evidence": [
+        "XRP's bridge-asset function is distinct from a dollar-pegged settlement asset",
+        "Existing Ripple/SBI corridor relationships are product- and corridor-specific"
+      ],
+      "disconfirming_evidence": [
+        "No current corridor-level XRP utilization or volume was captured in this run",
+        "Stablecoin rails can reduce the need for a volatile bridge asset in some corridors"
+      ],
+      "status": "plausible_but_unmeasured"
+    },
+    {
+      "id": "ETF_FLOW_PUBLICATION_LAG",
+      "hypothesis": "Nov 3 ETF-flow disagreement reflects publication timing and fund-universe differences rather than a final contradiction.",
+      "supporting_evidence": [
+        "CryptoKeyhole is partial 3/4 funds",
+        "CryptoETF.today is earlier 2/5 funds",
+        "ByKaranteli is provisional",
+        "XRP Insights metadata and landing-page settlement status conflict"
+      ],
+      "disconfirming_evidence": [
+        "No final issuer-by-issuer creation/redemption file reconciliation has been completed"
+      ],
+      "status": "unresolved"
+    }
+  ],
+  "data_quality": {
+    "raw_source_sha256_receipts_for_this_artifact": 0,
+    "web_rendered_evidence_model_eligible": false,
+    "exchange_depth_available": false,
+    "synchronized_multi_venue_snapshot": false,
+    "final_full_universe_etf_flow_available": false,
+    "forecast_issued": false,
+    "prediction_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Capture exact Kraken and Binance raw response bytes with SHA-256 receipts and source timestamps.",
+    "Collect synchronized exchange-native depth, trades, and derivatives data across multiple venues.",
+    "Reconcile Nov 3 ETF holdings and creations/redemptions from every issuer file with publication timestamps.",
+    "Reconcile Circle Q3 USDC distribution, Coinbase platform mix, and CPN/Arc usage against issuer filings and independent chain data.",
+    "Keep Circle payment-rail growth as a competing hypothesis, not as evidence of XRP displacement or demand."
+  ]
+}

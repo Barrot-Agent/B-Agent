@@ -1,0 +1,236 @@
+{
+  "artifact_type": "xrp_sbi_vc_trade_lending_rate_and_asset_universe_correction",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-11T14:24:14.339Z",
+  "data_cutoff_utc": "2026-11-11T14:24:14.339Z",
+  "status": "PRIMARY_SOURCE_RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "ownership_and_scope": {
+    "parent": "SBI Holdings, Inc.",
+    "subsidiary": "SBI VC Trade Co., Ltd.",
+    "distinction": "SBI VC Trade is an SBI Group exchange and electronic-payment-instrument operator. It is not SBIC East Japan, SBIC Central Japan or SBIC West Japan."
+  },
+  "offer_observations": [
+    {
+      "source_id": "sbivc_usdc_product",
+      "source_url": "https://home.sbivc.co.jp/usdc",
+      "source_group": "sbi-group",
+      "observation": "The USDC-specific product page describes a 12-week maturity and an annual rate of approximately 5% planned, subject to market conditions and possible suspension of new recruitment.",
+      "rate_percent": 5,
+      "rate_status": "planned_or_indicative_not_guaranteed",
+      "term_days": 84,
+      "captured_method": "public search-index result; direct page open returned 502",
+      "raw_bytes_captured": false
+    },
+    {
+      "source_id": "sbivc_lending_general",
+      "source_url": "https://www.sbivc.co.jp/services/lending",
+      "source_group": "sbi-group",
+      "observation": "The general lending page states that a USDC course with an 84-day term, 100 USDC minimum and 5,000 USDC maximum was offered at a 10% annual rate for the recruitment dated 2026-04-30.",
+      "rate_percent": 10,
+      "rate_status": "historical_campaign_offer_not_current_availability",
+      "term_days": 84,
+      "minimum_usdc": 100,
+      "maximum_usdc": 5000,
+      "campaign_date": "2026-04-30",
+      "page_headline_maximum_rate_percent": 10,
+      "raw_bytes_captured": false
+    }
+  ],
+  "reconciliation": {
+    "finding": "The 5% planned rate on the USDC-specific page and the 10% course shown on the general lending page are different offer contexts and dates. They must not be collapsed into one current rate or treated as a contradiction without the actual dated offer records.",
+    "current_offer_status": "not_verified",
+    "actual_subscriptions": "not_disclosed",
+    "actual_usdc_outstanding": "not_disclosed",
+    "participant_count": "not_disclosed",
+    "interest_paid": "not_disclosed"
+  },
+  "lending_asset_universe": {
+    "page_claimed_asset_count": 29,
+    "listed_assets_relevant_to_xrp_ecosystem": [
+      "XRP",
+      "USDC",
+      "JPYSC"
+    ],
+    "rlusd_listed_for_lending": false,
+    "caveat": "The service overview separately lists RLUSD as a tradable electronic payment instrument, but RLUSD is absent from the current 29-asset lending list. This does not prove that no future or separate RLUSD lending product can exist.",
+    "xrp_lending_status": "listed_as_an_eligible_lending_asset_on_the_general_lending_page; actual XRP loans and balances are undisclosed",
+    "legal_form": "consumption-loan transaction (shoyaku)",
+    "early_termination": "none",
+    "customer_risk": "The page warns of price movement, return risk because the lent asset is managed as SBI VC Trade's own asset, and inability to sell during the loan term."
+  },
+  "collateral": {
+    "generic_crypto_asset_valuation_factor_percent": 50,
+    "generic_electronic_payment_instrument_valuation_factor_percent": 100,
+    "token_specific_eligibility": "not enumerated for every token/account",
+    "actual_xrp_collateral_balance": "not disclosed",
+    "actual_stablecoin_collateral_balance": "not disclosed",
+    "interpretation": "The generic valuation factors imply a possible collateral-efficiency difference, but they do not establish account-level token eligibility, balances, utilization or resulting XRP demand."
+  },
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings",
+      "to": "SBI VC Trade",
+      "relation": "consolidated subsidiary",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_profile",
+        "sbivc_subsidiary_announcement"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relation": "spot, leverage and lending asset listing",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_service_overview",
+        "sbivc_lending_general"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "electronic-payment-instrument listing and lending course",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_usdc_product",
+        "sbivc_lending_general"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relation": "electronic-payment-instrument and lending-asset listing",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_service_overview",
+        "sbivc_lending_general"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "trading/listing support, not included in current 29-asset lending list",
+      "status": "confirmed_with_scope_limit",
+      "evidence": [
+        "sbivc_service_overview",
+        "sbivc_lending_general"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-rate-difference-is-offer-vintage-not-a-single-live-rate",
+      "claim": "The 5% planned USDC-specific rate and 10% April 30 course reflect different offer contexts or vintages; neither establishes the current available rate.",
+      "supporting_evidence": [
+        "sbivc_usdc_product",
+        "sbivc_lending_general"
+      ],
+      "disconfirming_or_missing": [
+        "Current authenticated offer list and acceptance records are not public in the reviewed pages.",
+        "The exact offer-level terms and close dates are not captured as raw bytes."
+      ],
+      "tests": [
+        "Capture dated offer pages and public notices on every scheduled run.",
+        "Keep each course keyed by asset, minimum, maximum, term, rate, campaign date and observed availability."
+      ]
+    },
+    {
+      "id": "H2-xrp-lending-can-lock-customer-supply-but-volume-is-unknown",
+      "claim": "SBI VC Trade's lending program lists XRP; accepted loans would restrict customer sale/transfer during the loan term and could temporarily reduce customer-controlled float.",
+      "supporting_evidence": [
+        "sbivc_lending_general"
+      ],
+      "disconfirming_or_missing": [
+        "No XRP lending offer amount, accepted volume, outstanding balance or borrower use is disclosed.",
+        "An asset's presence on the general lending list does not prove an active XRP course at capture time."
+      ],
+      "tests": [
+        "Monitor XRP-specific course availability and terms.",
+        "Look for aggregate XRP loan balances or public custody/financial disclosures."
+      ]
+    },
+    {
+      "id": "H3-rlusd-distribution-does-not-establish-rlusd-lending",
+      "claim": "SBI VC Trade's RLUSD trading support must not be conflated with lending availability because RLUSD is absent from the 29-asset lending list.",
+      "supporting_evidence": [
+        "sbivc_service_overview",
+        "sbivc_lending_general"
+      ],
+      "disconfirming_or_missing": [
+        "The asset list can change; no current offer-level list is public outside the login flow."
+      ],
+      "tests": [
+        "Monitor the official lending asset list and dated course pages."
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "sbivc_usdc_product",
+      "url": "https://home.sbivc.co.jp/usdc",
+      "publisher": "SBI VC Trade",
+      "source_group": "sbi-group",
+      "retrieved_at_utc": "2026-11-11T14:24:14.339Z",
+      "method": "search-index result",
+      "raw_response_bytes": false
+    },
+    {
+      "id": "sbivc_lending_general",
+      "url": "https://www.sbivc.co.jp/services/lending",
+      "publisher": "SBI VC Trade",
+      "source_group": "sbi-group",
+      "retrieved_at_utc": "2026-11-11T14:24:14.339Z",
+      "method": "official page",
+      "raw_response_bytes": false
+    },
+    {
+      "id": "sbivc_service_overview",
+      "url": "https://www.sbivc.co.jp/services/service-overview",
+      "publisher": "SBI VC Trade",
+      "source_group": "sbi-group",
+      "retrieved_at_utc": "2026-11-11T14:24:14.339Z",
+      "method": "official page",
+      "raw_response_bytes": false
+    },
+    {
+      "id": "sbivc_transfer_page",
+      "url": "https://www.sbivc.co.jp/services/transfer",
+      "publisher": "SBI VC Trade",
+      "source_group": "sbi-group",
+      "retrieved_at_utc": "2026-11-11T14:24:14.339Z",
+      "method": "official page",
+      "raw_response_bytes": false
+    }
+  ],
+  "source_independence": [
+    "All four sources are published by SBI VC Trade or its product pages and therefore count as one SBI Group publisher family, not four independent confirmations.",
+    "SBI VC Trade is primary for its own product list, course terms and collateral rules.",
+    "No independent source in this capture measures actual XRP or USDC lending balances."
+  ],
+  "actual_capital_interpretation": "A published lending course, maximum rate, asset list or collateral factor establishes product terms and potential capacity. It does not establish actual subscriptions, loaned quantity, settled cash, XRP purchases, XRP sales, XRPL transfer volume or collateral utilization.",
+  "exact_phrase_status": {
+    "ASK Coin": "unresolved; no uniquely attributable XRP-related entity or instrument verified",
+    "actual capital": "separate announced capacity, accepted subscriptions, loan balances, settled cash, in-kind XRP and actual purchases",
+    "SBIC ChatGPT": "official SBIC East/West sources show education and seminars, not a verified OpenAI commercial partnership"
+  },
+  "raw_receipts_created": false,
+  "feature_store_admission": false,
+  "model_eligibility": {
+    "status": "EXCLUDED",
+    "reason": "Public web page observations were not captured by the collector's canonical raw-response receipt and trusted timestamp chain."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "Lending terms and eligible-asset lists are not synchronized market observations or validated price-prediction features."
+  },
+  "safety": {
+    "no_trade": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "no_external_model_transfer": true,
+    "no_deployment": true
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_snapshot",
+  "captured_at_utc": "2026-11-09T22:04:28.000Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+  "integration_head_at_capture": "72f4eb4ce9a32cf9e146491f31e7ecf084ad8200",
+  "active_integration_pr": 1640,
+  "mission": {
+    "priority_1": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3 execution, orchestration, safety, verification",
+    "forecast_status": "NOT_ISSUED",
+    "no_real_money": true,
+    "no_external_model_data_transfer_this_run": true
+  },
+  "repository_permissions": {
+    "connector_reported": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "actual_use_this_run": [
+      "read current main and integration trees",
+      "inspect PR #1640 and all 16 non-draft PRs",
+      "verify exact-head CI, dependency audit, fail-closed gate, and main CI",
+      "inspect branch ancestry, overlapping file blobs, reviews, and threads",
+      "read public CFTC, exchange, derivatives, and BLS sources",
+      "write one durable handoff update, one research artifact, and one platform snapshot on the existing integration branch"
+    ],
+    "least_privilege_assessment": "The current connector reports admin/maintain/push/pull/triage capabilities, broader than required for research. Actual operations were constrained to read-only inspection plus one documentation/evidence commit on the existing integration branch. No secret, deployment, external-provider, or financial action was dispatched."
+  },
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "capability_status": "available_in_current_session",
+      "authentication_status": "VERIFIED",
+      "permissions": [
+        "GitHub repository read",
+        "GitHub branch file write",
+        "repository metadata access"
+      ],
+      "data_flow_status": "VERIFIED",
+      "data_flow": "User mission instructions -> current ChatGPT session -> authenticated GitHub connector -> Barrot-Agent/B-Agent. Public web research was read-only. No data was sent to another AI platform.",
+      "tasks_executed": [
+        "main and integration repository inspection",
+        "PR inventory, ancestry, overlap, reviews, and CI verification",
+        "CFTC XRP contract-universe and contract-size reconciliation",
+        "point-in-time market quote quality checks",
+        "durable handoff and platform snapshot update"
+      ],
+      "restrictions": [
+        "No merge",
+        "No deployment",
+        "No secret rotation",
+        "No paper trade or real-money action"
+      ]
+    },
+    {
+      "name": "Claude",
+      "capability_status": "product_capability_known_account_access_unverified",
+      "authentication_status": "NOT_VERIFIED",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "proposed_independent_task": "Red-team leakage controls, counter-hypotheses, and forecast calibration methodology",
+      "restrictions": [
+        "No repository or market data sent"
+      ]
+    },
+    {
+      "name": "Grok",
+      "capability_status": "product_capability_known_account_access_unverified",
+      "authentication_status": "NOT_VERIFIED",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "proposed_independent_task": "Independent public-source event and entity search with source-by-source evidence",
+      "restrictions": [
+        "No repository or market data sent"
+      ]
+    },
+    {
+      "name": "Gemini",
+      "capability_status": "product_capability_known_account_access_unverified",
+      "authentication_status": "NOT_VERIFIED",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "proposed_independent_task": "Independent regulatory, custody, and payment-rail primary-source cross-check",
+      "restrictions": [
+        "No repository or market data sent"
+      ]
+    },
+    {
+      "name": "Copilot",
+      "capability_status": "GitHub_visible_review_activity_only",
+      "authentication_status": "NO_SEPARATE_LIVE_DATA_FLOW_VERIFIED",
+      "permissions": [
+        "Visible PR review/comment surface only"
+      ],
+      "data_flow_status": "COMMENT_ACTIVITY_NOT_AUTHENTICATION",
+      "observed_activity": {
+        "pull_request": 1640,
+        "review_submissions": 62,
+        "commented": 62,
+        "approved": 0,
+        "resolved_inline_threads": 22,
+        "total_inline_threads": 22
+      },
+      "restrictions": [
+        "COMMENTED is not APPROVED",
+        "Do not attribute a reviewer identity to Copilot without verified actor metadata",
+        "No external repository transfer"
+      ]
+    },
+    {
+      "name": "Codex",
+      "capability_status": "product_capability_known_account_access_unverified",
+      "authentication_status": "NOT_VERIFIED",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "proposed_independent_task": "Independent code review, test coverage audit, and implementation review",
+      "restrictions": [
+        "No repository data sent"
+      ]
+    },
+    {
+      "name": "Hugging Face",
+      "capability_status": "public_platform_known",
+      "authentication_status": "NOT_VERIFIED_THIS_RUN",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "historical_observation": "Prior Space health/build check reported BUILD_ERROR; not revalidated in this run",
+      "proposed_task": "Optional private model evaluation/hosting only after explicit authorization",
+      "restrictions": [
+        "No Space restart",
+        "No deployment",
+        "No secret rotation",
+        "No model/data upload"
+      ]
+    },
+    {
+      "name": "Kaggle",
+      "capability_status": "public_platform_known",
+      "authentication_status": "NOT_TESTED",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "proposed_task": "Reproducible public-data benchmark and offline evaluation only",
+      "restrictions": [
+        "No competition submission",
+        "No credential use",
+        "No external dataset write"
+      ]
+    },
+    {
+      "name": "Databricks",
+      "capability_status": "public_platform_known",
+      "authentication_status": "NOT_VERIFIED_THIS_RUN",
+      "permissions": [],
+      "data_flow_status": "NONE_VERIFIED",
+      "historical_observation": "Prior workspace access attempt returned HTTP 403; not revalidated in this run",
+      "proposed_task": "Optional scalable historical feature-store analysis after authorization",
+      "restrictions": [
+        "No workspace overwrite",
+        "No job restart",
+        "No secret rotation",
+        "No write"
+      ]
+    }
+  ],
+  "coordination_protocol": {
+    "independent_assignments_are_planned_not_live": true,
+    "exchange_format": "Structured evidence records containing claim, source URL, publisher, publication time, event time, retrieval time, source independence, confidence, disagreement, and disconfirming evidence.",
+    "consensus_rule": "Resolve disagreements using primary-source evidence and reproducible measurements; retain minority objections.",
+    "red_team_rule": "Challenge leakage, survivorship bias, stale data, venue coverage overlap, hidden financing assumptions, and causal overclaim.",
+    "least_privilege": "Grant only task-scoped access when a provider is explicitly connected; prefer public read-only sources and local deterministic fallbacks.",
+    "current_external_data_transfers": 0
+  },
+  "evidence": {
+    "github_repository": "https://github.com/Barrot-Agent/B-Agent",
+    "integration_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1640",
+    "current_handoff": "https://github.com/Barrot-Agent/B-Agent/blob/integration/core-capabilities-mmi-structural-paper-20261104/BARROT_XRP_MISSION_HANDOFF_CURRENT.md",
+    "review_state_source": "GitHub PR #1640 reviews and review threads queried in this run",
+    "connector_scope": "Current authenticated ChatGPT GitHub connector; no other platform connector invoked",
+    "latest_snapshot": "research/xrp_intelligence/nine_platform_coordination_snapshot_20261109T220428Z.json",
+    "latest_research_artifact": "research/xrp_intelligence/20261109T220428Z-run102-cftc-contract-universe-and-market-cutoff.json",
+    "cftc_primary_sources": [
+      "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf102726.htm",
+      "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf",
+      "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm"
+    ]
+  },
+  "caveats": [
+    "Product-level capabilities do not prove account access, authentication, permissions, or an actual data flow.",
+    "Historical provider failures are not asserted as current failures unless re-tested.",
+    "No directional XRP forecast is admitted until synchronized historical data and leakage-safe out-of-sample evaluation establish predictive lift.",
+    "Run 102 discovered CFTC code 176LM2 (standard 10,000-XRP Coinbase XRL futures) in the prior-week TFF report and in the current dropped-from-reporting list. It must be represented as missing/dropped, never zero.",
+    "The 176LM2 historical report has dot placeholders for all weekly change fields; the parser must preserve nulls rather than coerce them to zero.",
+    "The large nine_platform_capability_authentication_dataflow_map_current.json remains a historical archive; this timestamped snapshot is the current operational record for Run 102."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-market-receipt-hash-correction-20261108T031500Z",
+  "artifact_type": "append_only_source_hash_correction",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-08T03:15:00Z",
+  "source_artifact_path": "research/xrp_intelligence/20261108T025908Z-binance-hack-xrp-ledger-and-market-reconciliation.json",
+  "source_artifact_blob_sha": "d16863ad4d16ec33cb364622679470e795f216fb",
+  "correction_policy": "Append-only correction. The original artifact and raw response strings remain unchanged. Only the digest values are superseded.",
+  "reason": "The first artifact commit transcribed digest values from prior captures instead of hashing the exact response strings embedded in this capture. Recomputed SHA-256 values below match the exact UTF-8 response bodies.",
+  "corrections": [
+    {
+      "field_path": "market_snapshot.venue_observations[kraken_xrp_usd_ticker].raw_response_sha256",
+      "original_value": "bbcf1f9f8c3e1f9b3d9b8a0a3b2a7a7c0f9f5e7e6a7b7f5f7e0b6c5a4d3e2f1a",
+      "corrected_value": "2c3eddf82fa86ff7a9c5291958c28a1a5c3582ddfe22ab4013ef448fd916c3e5",
+      "verified_scope": "SHA-256 of the exact Kraken raw_response UTF-8 string in the referenced artifact."
+    },
+    {
+      "field_path": "source_registry[kraken_xrp_usd_ticker].raw_body_hash",
+      "original_value": "sha256:bbcf1f9f8c3e1f9b3d9b8a0a3b2a7a7c0f9f5e7e6a7b7f5f7e0b6c5a4d3e2f1a",
+      "corrected_value": "sha256:2c3eddf82fa86ff7a9c5291958c28a1a5c3582ddfe22ab4013ef448fd916c3e5",
+      "verified_scope": "Same exact Kraken raw_response string; registry alias corrected to match the venue receipt."
+    },
+    {
+      "field_path": "market_snapshot.venue_observations[okx_xrp_usdt_ticker].raw_response_sha256",
+      "original_value": "8ab1c2caba750b59700b524549e2c8184b5808ab58176d4592ca8d2c065dddde",
+      "corrected_value": "3c7cd7995609788cc15462a1a4f699dafeb677c70f68cb94c1d89f51a020a51c",
+      "verified_scope": "SHA-256 of the exact OKX raw_response UTF-8 string in the referenced artifact."
+    }
+  ],
+  "verification": {
+    "kraken_raw_response_utf8_bytes": 317,
+    "okx_raw_response_utf8_bytes": 354,
+    "raw_response_text_changed": false,
+    "market_observations_remain_model_ineligible": true,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

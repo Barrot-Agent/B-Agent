@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run16_repository_ci_market_binance_theft_macro_reconciliation",
+  "run_id": "run16",
+  "captured_at_utc": "2026-11-11T07:58:26.504Z",
+  "data_cutoff_utc": "2026-11-11T07:58:26.504Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_before_run16_commit": "26d9cb967996cc48a0c0930d4d5acfb8c379f34a",
+    "pr": 1661,
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "ahead_by": 1996,
+    "behind_by": 0,
+    "changed_files": 986,
+    "workflow_files": 44,
+    "non_workflow_paths": 942,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2252,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "compare_api_limit_note": "GitHub compare response exposed only the first 300 file records for this large comparison; PR API reports the authoritative total of 986 changed files."
+  },
+  "ci": {
+    "previous_green_code_head": {
+      "sha": "3b11e39f253ac8d07d02eb5da0c770155614f814",
+      "run_id": 42964502259,
+      "passed": 3407,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true
+    },
+    "current_head": {
+      "sha": "26d9cb967996cc48a0c0930d4d5acfb8c379f34a",
+      "run_id": 42980807226,
+      "job_id": 130390518665,
+      "passed": 3405,
+      "failed": 2,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "duration_seconds": 92.98,
+      "wheel_build_verified": false,
+      "conclusion": "failure"
+    },
+    "failing_tests": [
+      "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
+    ],
+    "failure_classification": "Two stale snapshot expectations remain in the current-map contract tests: the CI classification text does not include the required phrase 'stale snapshot expectations', and the Kamilah note expresses the attribution limitation with lowercase wording rather than the exact sentence 'No personal-channel inventory is attributed.' No application-runtime exception was reported.",
+    "dependency_audit": {
+      "run_id": 42980807234,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42980807254,
+      "passed": true,
+      "automatic_merge_enabled": false
+    },
+    "main_ci": {
+      "run_id": 42944864014,
+      "conclusion": "success",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85"
+    },
+    "main_cross_analysis": {
+      "run_id": 42982558265,
+      "conclusion": "success",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "permissions": "contents:read",
+      "outputs": "workflow artifacts only"
+    }
+  },
+  "security": {
+    "credential_path": ".config/gh/hosts.yml",
+    "present_main": false,
+    "present_integration": false,
+    "other_open_pr_tips_checked": 17,
+    "other_open_pr_tips_containing_path": 17,
+    "affected_pr_numbers": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1643,
+      1642,
+      1640,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ],
+    "credential_contents_read": false,
+    "oauth_revocation": "REPOSITORY_REPORTED; PROVIDER_SIDE_UNVERIFIED",
+    "branch_protection": "API HTTP 403; branch endpoint reports protected=true; detailed required checks/approvals not visible",
+    "visible_ruleset": {
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    }
+  },
+  "market": {
+    "spot": {
+      "okx": {
+        "event_time_utc": "2026-11-11T07:50:55.569Z",
+        "last": 1.0559,
+        "bid": 1.056,
+        "ask": 1.0561,
+        "open24h": 1.0997,
+        "high24h": 1.0998,
+        "low24h": 1.0311,
+        "volume24hXrp": 72516132.923361
+      },
+      "kraken": {
+        "last": 1.05632,
+        "bid": 1.05626,
+        "ask": 1.05636,
+        "utcDayOpen": 1.05511,
+        "volume24hXrp": 35865732.04073157,
+        "eventTimeAvailable": false,
+        "repeatedBody": true
+      },
+      "normalizedOkxUsdMid": 1.05469297575,
+      "normalizedDifferenceVsKrakenLastPercent": -0.154,
+      "note": "Kraken response repeated unchanged and has no provider timestamp; potentially cached. Do not treat as fresh cross-venue consensus."
+    },
+    "spot_depth": {
+      "provider": "Fuelmaps",
+      "snapshot_time_utc": "2026-11-11T07:00:00Z",
+      "mid": 1.0548,
+      "depth_usd": {
+        "half_percent": {
+          "bids": 6700000,
+          "asks": 6900000
+        },
+        "one_percent": {
+          "bids": 13500000,
+          "asks": 10100000
+        },
+        "two_percent": {
+          "bids": 18100000,
+          "asks": 12800000
+        },
+        "five_percent": {
+          "bids": 23200000,
+          "asks": 13800000
+        },
+        "ten_percent": {
+          "bids": 33000000,
+          "asks": 16300000
+        }
+      },
+      "coverage": "six venues, Binance/Bitget excluded",
+      "limitations": [
+        "hourly averaged resting book",
+        "orders can cancel",
+        "not executed volume or guaranteed support"
+      ]
+    },
+    "derivatives": {
+      "binance_30d_cumulative_funding_percent": 0.18,
+      "highest_since": "2025-10",
+      "okx_positive_settlements": 76,
+      "okx_settlements": 100,
+      "okx_cumulative_funding_percent": 0.39,
+      "okx_oi_usd_nov4": 132100000,
+      "okx_oi_usd_nov10": 101900000,
+      "okx_oi_usd_change_percent": -23,
+      "okx_oi_xrp_terms_change_percent_approx": -10,
+      "long_short_account_ratio": 3.7,
+      "source_type": "secondary reports of CryptoQuant/Darkfost and OKX public interface"
+    },
+    "etf": {
+      "nov9_sosovalue_net_flow_usd": -10420000,
+      "bitwise_usd": -9400000,
+      "nov10_alpha_finance_net_flow_usd": -7600000,
+      "nov10_alpha_coverage": "5 of 5 tracked funds",
+      "source_independence": "Nov 9 Finbold/24-7WallSt both cite SoSoValue; Nov 10 Alpha Finance is a separate issuer-file aggregator."
+    },
+    "binance_theft_linked_xrp": {
+      "initial_xrp": 233460920,
+      "elliptic_swapped_usd": 190000000,
+      "elliptic_remaining_xrp": 60000000,
+      "elliptic_remaining_usd": 64000000,
+      "elliptic_as_of": "2026-11-10T11:00:00Z",
+      "secondary_ledger_remaining_xrp": 61804627,
+      "secondary_outflow_since_nov5_xrp": 171660000,
+      "route": "mostly through THORChain into BTC",
+      "caveat": "Ledger transfers do not prove centralized-exchange sales or exact market impact."
+    },
+    "macro": {
+      "brent_usd": 92.01,
+      "wti_usd": 86.2,
+      "as_of": "2026-11-11T01:19:00Z",
+      "hormuz_attacks_october": 37,
+      "hormuz_attacks_november": 10,
+      "competing_hypotheses": [
+        "de-escalation reduces risk premium",
+        "shipping attacks and mine/insurance risk sustain premium"
+      ]
+    }
+  },
+  "identity_and_capital": {
+    "sbic": "East/Tokyo, Central/Nagoya, West/Osaka remain distinct regional SME Investment & Consultation companies, not SBI Holdings.",
+    "ask_coin": "No verified XRP/XRPL identity or integration.",
+    "actual_capital": "Not a standardized XRP metric; keep cash, in-kind XRP, cash-purchased XRP, debt, drawn facilities, contingent capacity, resale registration and secondary sales separate.",
+    "kamilah_stevenson": "Person identity first-party confirmed; candidate YouTube channel ownership/video attribution remain unverified; no personal-channel inventory is attributed."
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "public_web_data_model_eligible": false,
+    "raw_source_receipts_created": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "platform_status": {
+    "ChatGPT": "CURRENT_SESSION_GITHUB_API_VERIFIED",
+    "LunaRoute": "DECLARED_NOT_AUTHENTICATED",
+    "Claude": "UNVERIFIED",
+    "Grok": "UNVERIFIED",
+    "Gemini": "UNVERIFIED",
+    "Copilot": "NO_FORMAL_APPROVAL",
+    "Codex": "UNVERIFIED",
+    "HuggingFace": "NO_DEPLOYMENT",
+    "Kaggle": "NO_SUBMISSION",
+    "Databricks": "NO_WORKSPACE_WRITE"
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "force_push": false,
+    "destructive_worktree_operation": false,
+    "source_pr_closure": false
+  },
+  "next_actions": [
+    "Correct the two current-map assertion wording mismatches on the existing integration branch without skipping tests or lowering thresholds, then rerun the complete exact-head suite.",
+    "Refresh the current-map repository snapshot and canonical handoff after verifying the new branch head and CI run IDs.",
+    "Complete semantic review of the 942 non-workflow paths, prioritizing V3 execution/safety, XRP ingestion/feature store/forecast ledger, package configuration and public signal assets.",
+    "Verify provider-side OAuth revocation and continue additive remediation of the 17 affected open-PR branch tips without reading credential contents or rewriting history.",
+    "Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.",
+    "Raise the 53% inclusive coverage floor toward the prior 70% through additional tests; do not hide the tradeoff or exclude major packages.",
+    "Preserve unique research, graph, prediction, safety and topology PRs; close exact duplicates only after verified successor merge and main verification.",
+    "Keep XRP collector off main until authorized merge; then verify first successful read-only main ingestion and immutable receipts.",
+    "Continue synchronized spot/L2, derivatives, exchange-flow, collateral, macro-event, scenario, replay, calibration and shadow-evaluation work; keep forecasts disabled until evidence gates pass."
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "artifact_type": "xrp_identity_etf_and_exact_head_ci_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-11T04:18:03Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+  "integration_branch": "integration/xrp-v3-unified-main-20261111",
+  "integration_pr": 1661,
+  "integration_head_before_this_update": "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb",
+  "comparison": {
+    "ahead_by": 1979,
+    "behind_by": 0,
+    "changed_files": 977,
+    "workflow_files": 44,
+    "other_changed_paths": 933
+  },
+  "exact_head_ci": {
+    "head": "92f074e8bd7941bfe40c40a13e5c9ce5444cb5eb",
+    "full_suite_pr_run": {
+      "run_id": 42957736027,
+      "job_id": 130316743950,
+      "conclusion": "success",
+      "passed": 3397,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.89,
+      "duration_seconds": 78.59
+    },
+    "full_suite_push_run": {
+      "run_id": 42957728782,
+      "job_id": 130316716184,
+      "conclusion": "success",
+      "passed": 3397,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.89,
+      "duration_seconds": 55.17
+    },
+    "wheel_build_and_installed_mission_verification": "passed",
+    "dependency_audit": {
+      "run_id": 42957736104,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42957736119,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "main_ci": {
+      "run_id": 42944864014,
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "conclusion": "success"
+    }
+  },
+  "ci_trigger_change": {
+    "previous_push_branches": [
+      "main",
+      "integration/**"
+    ],
+    "new_push_branches": [
+      "main"
+    ],
+    "pull_request_branches": [
+      "main"
+    ],
+    "full_suite_job_preserved": true,
+    "exact_head_pr_verification_preserved": true,
+    "purpose": "Avoid duplicate full-suite runs for one integration PR head."
+  },
+  "etf_flow_reconciliation": {
+    "model_eligible": false,
+    "alpha_finance": {
+      "session": "2026-11-10",
+      "coverage": "5/5 complete",
+      "daily_flow_usd": -7600000,
+      "seven_session_flow_usd": -18000000,
+      "thirty_session_flow_usd": 1300000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    "cryptokeyhole": {
+      "session": "2026-11-10",
+      "xrp_status": "pending Franklin and Canary",
+      "latest_complete_session": "2026-11-06",
+      "latest_complete_funds": "4 of 6",
+      "latest_complete_flow_xrp": -752048,
+      "url": "https://cryptokeyhole.com/etf-flows/all/"
+    },
+    "reconciliation": "Different provider universes and issuer-file completeness; do not average; missing is not zero; neither proves exchange sales."
+  },
+  "identity_research": {
+    "askcoin_token": {
+      "cmc_ucid": 4640,
+      "status": "preview",
+      "total_supply": 0,
+      "circulating_supply": 0,
+      "max_supply": null,
+      "website": "https://www.askcoin.me",
+      "explorer": "https://explorer.askcoin.me",
+      "xrpl_integration_verified": false
+    },
+    "ask_coin_exchange": {
+      "cmc_status": "Untracked Listing",
+      "inactive": true,
+      "reserve_data": "unavailable",
+      "domain": "https://askcoin.net",
+      "domain_result": "redirects to HugeDomains parking"
+    },
+    "permission_coin_ask": {
+      "cmc_ucid": 7105,
+      "network": "Base/Polygon",
+      "xrpl_integration_verified": false
+    },
+    "sbic_chatgpt_training": {
+      "dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "audience": "SBIC investee companies only",
+      "topics": [
+        "ChatGPT",
+        "Copilot",
+        "APIs",
+        "RAG"
+      ],
+      "instructor": "Takashi Otsuka, VOST",
+      "openai_partnership_verified": false
+    },
+    "kamilah_stevenson": {
+      "first_party_site": "https://learn.kamilahstevenson.com/",
+      "youtube_channel_cross_link_verified": false,
+      "video_inventory_attributed": false
+    }
+  },
+  "source_provenance": [
+    {
+      "source": "CoinMarketCap Askcoin preview listing UCID 4640",
+      "url": "https://coinmarketcap.com/currencies/askcoin/",
+      "citation_ref": "turn780486view0"
+    },
+    {
+      "source": "CoinMarketCap Ask Coin exchange listing",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "citation_ref": "turn780486view1"
+    },
+    {
+      "source": "CoinMarketCap Permission Coin listing UCID 7105",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "citation_ref": "turn780486view2"
+    },
+    {
+      "source": "Tokyo SBIC official training notice",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "citation_ref": "turn780486view3"
+    },
+    {
+      "source": "Kamilah Stevenson first-party page",
+      "url": "https://learn.kamilahstevenson.com/",
+      "citation_ref": "turn780486view4"
+    },
+    {
+      "source": "IDCrawl third-party same-name directory",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "citation_ref": "turn780486view5"
+    },
+    {
+      "source": "CryptoKeyhole ETF flows dashboard",
+      "url": "https://cryptokeyhole.com/etf-flows/all/",
+      "citation_ref": "turn165298view0"
+    },
+    {
+      "source": "Alpha Finance XRP ETF dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "citation_ref": "turn155334search1"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "external_model_data_transfer": false
+  }
+}

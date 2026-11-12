@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "run": "Run35b",
+  "captured_at_utc": "2026-11-11T21:17:55Z",
+  "parent_code_head": "bd5a7e3a9ec4e3b1e3bae2c1a6b6cccdf16b5868",
+  "mission_priority": 1,
+  "forecast_status": "NOT_ISSUED",
+  "repo": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "bd5a7e3a9ec4e3b1e3bae2c1a6b6cccdf16b5868",
+    "commits_ahead": 2042,
+    "commits_behind": 0,
+    "pr": 1661,
+    "pr_state": "open",
+    "draft": true,
+    "changed_files_before_addendum": 1019,
+    "open_prs": 374
+  },
+  "exact_head_ci": {
+    "head": "bd5a7e3a9ec4e3b1e3bae2c1a6b6cccdf16b5868",
+    "full_ci": {
+      "run_id": 43101310410,
+      "job_id": 130793214274,
+      "conclusion": "success",
+      "tests_passed": 3449,
+      "failures": 0,
+      "subtests": 8,
+      "coverage_percent": 59.99,
+      "duration_seconds": 95.58,
+      "coverage_floor_percent": 53
+    },
+    "dependency_audit": {
+      "run_id": 43101310461,
+      "job_id": 130793205182,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_pr_gate": {
+      "run_id": 43101310416,
+      "conclusion": "success"
+    },
+    "push_dependency_audit": {
+      "run_id": 43101297331,
+      "conclusion": "success"
+    },
+    "push_fail_closed_gate": {
+      "run_id": 43101297353,
+      "conclusion": "success"
+    },
+    "core_tests": "passed",
+    "wheel_build": "passed",
+    "installed_primary_mission_verification": "passed",
+    "scope_warning": "coverage is measured for barrot_agent; it does not establish coverage across every repository package"
+  },
+  "supplemental_spot_snapshot": {
+    "timestamp_utc": "2026-11-11T21:11:32.174Z",
+    "okx_xrp_usdt": {
+      "last": 1.067,
+      "bid": 1.0668,
+      "ask": 1.0669,
+      "open_24h": 1.0623,
+      "high_24h": 1.0807,
+      "low_24h": 1.0472,
+      "volume_24h_xrp": 43477000
+    },
+    "kraken_xrp_usd": {
+      "last": 1.06682,
+      "bid": 1.06689,
+      "ask": 1.0669,
+      "volume_24h_xrp": 19825000,
+      "event_timestamp": "not supplied"
+    },
+    "kraken_usdt_usd": {
+      "bid": 0.99891,
+      "ask": 0.99892,
+      "mid": 0.998915
+    },
+    "normalized_okx_mid_usd": 1.065692,
+    "kraken_mid_usd": 1.066895,
+    "normalized_midpoint_difference_percent": -0.1128,
+    "caveat": "asynchronous quotes, no executable-arbitrage inference"
+  },
+  "cftc_tff": {
+    "report_positions_as_of": "2026-11-03",
+    "report_release_date": "2026-11-06",
+    "source": "https://www.cftc.gov/dea/newcot/FinFutWk.txt",
+    "rows": [
+      {
+        "market": "XRP - Chicago Mercantile Exchange",
+        "code": "176740",
+        "open_interest_contracts": 7216,
+        "weekly_change_contracts": -845,
+        "contract_size_xrp": 50000,
+        "current_xrp_equivalent": 360800000,
+        "previous_xrp_equivalent": 403050000
+      },
+      {
+        "market": "NANO XRP - Coinbase Derivatives, LLC",
+        "code": "176LM1",
+        "open_interest_contracts": 32505,
+        "weekly_change_contracts": -32864,
+        "contract_size_xrp": 500,
+        "current_xrp_equivalent": 16252500,
+        "previous_xrp_equivalent": 32684500
+      },
+      {
+        "market": "NANO XRP PERP STYLE - Coinbase Derivatives, LLC",
+        "code": "176LM3",
+        "open_interest_contracts": 38392,
+        "weekly_change_contracts": -465,
+        "contract_size_xrp": 500,
+        "current_xrp_equivalent": 19196000,
+        "previous_xrp_equivalent": 19428500
+      }
+    ],
+    "reported_xrp_equivalent_current": 396248500,
+    "reported_xrp_equivalent_previous": 455163000,
+    "reported_xrp_equivalent_change": -58914500,
+    "reported_xrp_equivalent_change_percent": -12.94,
+    "omitted_market": {
+      "code": "176LM2",
+      "name": "standard XRP - Coinbase Derivatives",
+      "status": "listed by CFTC as dropped from reporting this week",
+      "interpretation": "not zero open interest"
+    },
+    "reporting_threshold": "CFTC's COT market summary describes markets with 20 or more traders holding positions at/above reporting levels; a dropped row is an observability gap, not a zero position",
+    "scope": "futures-only TFF report; contract-equivalent exposure, not spot holdings, cash capital or total derivatives OI",
+    "positioning_notes": {
+      "cme_leveraged_funds_long_contracts": 1976,
+      "cme_leveraged_funds_short_contracts": 1696,
+      "cme_asset_managers_long_contracts": 868,
+      "cme_asset_managers_short_contracts": 802,
+      "cme_dealers_long_contracts": 4228,
+      "cme_dealers_short_contracts": 4431
+    }
+  },
+  "collateral_refresh": {
+    "coinbase_cbxrp_display_refresh": "2026-11-11 21:05; timezone unspecified",
+    "reserves_xrp": 152087932.36,
+    "supply_cbxrp": 152085685.83,
+    "excess_xrp": 2246.53,
+    "interpretation": "issuer-published reserve/supply disclosure; not independent audit and not spot buying",
+    "morpho_current_state": "not retrieved; no current borrower/liquidation estimate"
+  },
+  "source_receipt_status": {
+    "raw_web_bytes_ingested": false,
+    "barrot_sha256_receipt_created": false,
+    "trusted_timestamp_anchor": false,
+    "model_eligible": false
+  },
+  "decision": {
+    "merge": "BLOCKED",
+    "reason": "PR remains draft with no formal approvals; full suite now passes on parent code head, but branch-protection visibility, least-privilege, credential-path/provider revocation, Pages authorization and semantic review remain unresolved",
+    "no_real_money": true,
+    "no_paper_trade": true,
+    "no_external_model_transfer": true
+  },
+  "sources": [
+    {
+      "url": "https://www.cftc.gov/dea/newcot/FinFutWk.txt",
+      "type": "regulator_primary",
+      "independence_group": "CFTC TFF weekly report",
+      "retrieved_at_utc": "2026-11-11"
+    },
+    {
+      "url": "https://www.cftc.gov/MarketReports/index.htm",
+      "type": "regulator_primary",
+      "independence_group": "CFTC reporting methodology",
+      "retrieved_at_utc": "2026-11-11"
+    },
+    {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "type": "direct_exchange_api",
+      "independence_group": "OKX",
+      "event_time_utc": "2026-11-11T21:11:32.174Z"
+    },
+    {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "type": "direct_exchange_api",
+      "independence_group": "Kraken",
+      "event_time": "not supplied"
+    },
+    {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "type": "direct_exchange_api",
+      "independence_group": "Kraken",
+      "event_time": "not supplied"
+    },
+    {
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "type": "issuer_primary",
+      "independence_group": "Coinbase",
+      "displayed_refresh": "2026-11-11 21:05; timezone unspecified"
+    },
+    {
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "type": "aggregator",
+      "independence_group": "Binance XRPUSDT perpetual book",
+      "snapshot_utc": "2026-11-11T20:31:00Z"
+    },
+    {
+      "url": "https://tradradar.io/markets/xrp",
+      "type": "derivatives_aggregator",
+      "independence_group": "seven exchange perpetual futures",
+      "snapshot_utc": "2026-11-11T19:05:00Z"
+    },
+    {
+      "url": "https://liqwall.com/coins/xrp",
+      "type": "derivatives_aggregator",
+      "independence_group": "14 exchange market-data sources",
+      "snapshot_utc": "2026-11-11T20:52:00Z"
+    }
+  ]
+}
