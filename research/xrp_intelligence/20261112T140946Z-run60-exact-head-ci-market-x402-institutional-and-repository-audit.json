@@ -16,20 +16,20 @@
     "ahead_by": 2116,
     "behind_by": 0,
     "main_tree_entries": 1388,
-    "integration_tree_entries": 2320,
+    "integration_tree_entries": 2321,
     "tree_truncated": false,
     "pr_1661": {
       "state": "open",
       "draft": true,
       "mergeable_reported": true,
-      "changed_files": 1063,
-      "commits_ahead": 2116,
+      "changed_files": 1064,
+      "commits_ahead": 2119,
       "formal_reviews": 0,
       "approvals": 0,
       "review_threads": 0,
       "changed_file_breakdown": {
         "workflows": 49,
-        "xrp_research_artifacts": 547,
+        "xrp_research_artifacts": 548,
         "tests": 373,
         "barrot_agent": 51,
         "data": 6,
@@ -92,7 +92,52 @@
       }
     },
     "main_has_xrp_ingestion_workflow": false,
-    "merge_decision": "blocked"
+    "merge_decision": "blocked",
+    "latest_code_test_head": "299208cf3ca9239205470bd58f6047f5fd8ee13c",
+    "latest_code_test_ci": {
+      "run_id": 43237641561,
+      "status": "success",
+      "full_suite_passed": 3512,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 61.42,
+      "duration_seconds": 89.54,
+      "core_passed": 721,
+      "core_subtests": 8,
+      "core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "installed_package_mission_verification": "passed"
+    },
+    "latest_dependency_audit": {
+      "run_id": 43237641663,
+      "status": "success",
+      "manifest_groups": 6,
+      "pep621_dependencies": 15,
+      "known_vulnerabilities": 0
+    },
+    "latest_fail_closed_pr_gate": {
+      "run_id": 43237641744,
+      "status": "success"
+    },
+    "latest_counts": {
+      "integration_tree_entries": 2321,
+      "ahead_by": 2119,
+      "behind_by": 0,
+      "pr_1661_changed_files": 1064,
+      "pr_1661_commits": 2119,
+      "changed_file_breakdown": {
+        "workflows": 49,
+        "xrp_research_artifacts": 548,
+        "tests": 373,
+        "barrot_agent": 51,
+        "data": 6,
+        "docs": 3,
+        "other": 34
+      }
+    },
+    "latest_handoff_update_parent": "299208cf3ca9239205470bd58f6047f5fd8ee13c",
+    "latest_handoff_update_is_documentation_only": true,
+    "latest_handoff_update_full_suite_status": "exact full suite verified on parent code/test head 299208cf3ca9239205470bd58f6047f5fd8ee13c; any subsequent documentation-only head must be reported separately"
   },
   "security": {
     "github_identity_permissions": [
@@ -130,8 +175,8 @@
     {
       "pr": 1660,
       "changed": 972,
-      "same_blob": 939,
-      "different_blob": 33,
+      "same_blob": 938,
+      "different_blob": 34,
       "source_only": 0,
       "classification": "superseded_source_candidate_preserve_33_differences"
     },
@@ -475,10 +520,12 @@
       "caveats": [
         "t54 recent feed entries labeled Unverified",
         "XRP Insights appears to share t54 lineage",
-        "XRPL supports XRP, RLUSD and other issued tokens; transaction count is not XRP volume"
+        "XRPL supports XRP, RLUSD and other issued tokens; transaction count is not XRP volume",
+        "dynamic counters have no reliable common as-of timestamp; recent t54 rows were labelled Unverified; exclude from cutoff-aligned feature set"
       ],
       "raw_receipt_sha256": null,
-      "model_eligible": false
+      "model_eligible": false,
+      "observation_time_status": "UNSPECIFIED_DYNAMIC_PAGE_NOT_CUTOFF_ALIGNED"
     },
     {
       "id": "macro_japan_yen_energy_rates",
@@ -541,12 +588,42 @@
       "caveat": "Older Nov 8 artifact's first-party search result resolves the channel ID/handle pair, not the person's ownership of that channel; the same artifact says person-to-channel match is not conclusive and direct upload metadata count is zero. Canonical profile/gate remains authoritative.",
       "raw_receipt_sha256": null,
       "model_eligible": false
+    },
+    {
+      "id": "sbic_regional_company_identity",
+      "sources": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/",
+        "https://www.sbic-wj.co.jp/profiles/profile/"
+      ],
+      "data": {
+        "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo profile labels SBIC East Japan)",
+        "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (official Nagoya company site)",
+        "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (Osaka profile labels SBIC West Japan)",
+        "relation_to_sbi_holdings": "distinct statutory regional companies; no subsidiary relationship evidenced"
+      },
+      "raw_receipt_sha256": null,
+      "model_eligible": false
     }
   ],
   "identity_research": {
     "ask_coin": "no primary XRPL token/issuer deployment verified; AskSurf is a separate x402 merchant",
     "actual_capital": "not a standardized XRP metric; maintain separate cash/in-kind/debt/facility/resale categories",
-    "sbic": "East/Central/West are Tokyo/Nagoya/Osaka regional SME investment companies, distinct from SBI Holdings"
+    "sbic": "East/Central/West are Tokyo/Nagoya/Osaka regional SME investment companies, distinct from SBI Holdings",
+    "kamilah": {
+      "person_identity_status": "CONFIRMED",
+      "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "candidate_handle": "@drkamilahstevenson",
+      "candidate_reference_count": 21,
+      "verified_personal_channel_upload_count": 0,
+      "external_references": [
+        "Sulo54IlQ60: verified guest appearance, not own-channel upload",
+        "5DzBk8DfoLs: third-party upload, not own-channel upload"
+      ],
+      "older_artifact_resolution": "channel ID/handle pair resolved by first-party YouTube search, but person-to-channel match remains strongly corroborated, not conclusive; direct watch-page upload metadata count zero; inventory incomplete",
+      "attribution_gate": "DO_NOT_ATTRIBUTE_CANDIDATE_UPLOADS_OR_ADMIT_VIDEO_CLAIMS_AS_FEATURES"
+    }
   },
   "nine_platforms": {
     "chatgpt_github": "authenticated; GitHub identity overprivileged",
@@ -603,5 +680,14 @@
       "resolution": "treat channel identifier resolution separately from person/account ownership; canonical profile and identity gate are authoritative"
     },
     "attribution_gate": "DO_NOT_ATTRIBUTE_CANDIDATE_UPLOADS_OR_ADMIT_VIDEO_CLAIMS_AS_FEATURES"
-  }
+  },
+  "sbic_company_identity_sources": [
+    "https://www.sbic.co.jp/company/profile/",
+    "https://www.sbic-cj.co.jp/",
+    "https://www.sbic-wj.co.jp/profiles/profile/"
+  ],
+  "sbic_chatgpt_training_sources": [
+    "https://www.sbic.co.jp/training/20250612co/",
+    "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf"
+  ]
 }

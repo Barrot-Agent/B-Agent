@@ -1,3 +1,21 @@
+# Run60 final verification — code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`
+
+- Full repository suite: 3,512 passed, 8 subtests, 61.42% coverage; core 721 passed, 8 subtests, 76% coverage.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Dependency audit (6 manifest groups, 15 PEP 621 dependencies) passed with no known vulnerabilities.
+- Fail-closed PR gate passed.
+- PR #1661 remains draft, 1,064 changed files, zero formal reviews/approvals; no merge.
+- Current source-PR reconciliation: #1660 34 differing blobs; #1643 9; #1640 46; #1642 7; #1653 and #1655 each retain 3 source-only paths.
+- Kamilah: 21 candidate references, 0 verified own-channel uploads; channel ownership not verified.
+- SBIC East/Central/West: Tokyo, Nagoya, Osaka regional statutory companies, distinct from SBI Holdings.
+- Dynamic x402 counts are untimestamped/unverified and excluded from cutoff-aligned features.
+- Forecast: **NOT_ISSUED**. Main scheduled ingestion is not active; no successful main run.
+- Merge: **BLOCKED** by draft/no approvals, branch-protection 403, disabled fallback ruleset, overprivileged GitHub identity, main Pillars provider failures and incomplete semantic review.
+
+Canonical handoff: [BARROT_XRP_MISSION_HANDOFF_LATEST.md](BARROT_XRP_MISSION_HANDOFF_LATEST.md)
+
+---
+
 # Run60 — 2026-11-12 — current verified status
 
 Canonical handoff: [BARROT_XRP_MISSION_HANDOFF_LATEST.md](BARROT_XRP_MISSION_HANDOFF_LATEST.md)

@@ -1,3 +1,49 @@
+# Run60 final verification — latest code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`
+
+**VERIFIED on exact code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`:**
+
+- Full repository CI [43237641561](https://github.com/Barrot-Agent/B-Agent/actions/runs/43237641561): **3,512 passed, zero failed, 8 subtests passed**, 61.42% total coverage, 89.54 seconds.
+- Core suite: **721 passed, 8 subtests**, 76% coverage.
+- Wheel built and installed; installed package verified Barrot V3, the XRP mission and canonical data assets.
+- Dependency audit [43237641663](https://github.com/Barrot-Agent/B-Agent/actions/runs/43237641663): success; six manifest groups, 15 PEP 621 dependencies, no known vulnerabilities.
+- Fail-closed PR gate [43237641744](https://github.com/Barrot-Agent/B-Agent/actions/runs/43237641744): success.
+- The new regression test `test_run60_evidence_keeps_unreceipted_observations_and_identity_candidates_quarantined` passed in both core and full suite. It asserts every Run60 observation is unreceipted/model-ineligible, the Kamilah channel is not promoted to verified ownership, and the forecast remains NOT_ISSUED.
+
+### Current repository counts at code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`
+
+- Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; 2,119 commits ahead, zero behind.
+- Complete recursive trees: main 1,388 entries; integration 2,321 entries; not truncated.
+- PR #1661: 1,064 changed files — 49 workflows, 548 XRP research artifacts, 373 tests, 51 `barrot_agent` files, 6 data files, 3 docs and 34 other paths.
+- Open PR inventory: 374 total; 360 drafts and 14 non-drafts.
+- PR #1661 is still draft, reported mergeable/clean, but has zero formal reviews, zero approvals and zero review threads. One CodeRabbit comment is not an approval.
+
+### Reconciled source-PR overlap against the current code/test tree
+
+| PR | Changed files | Same blobs | Different shared blobs | Source-only |
+|---|---:|---:|---:|---:|
+| #1660 | 972 | 938 | 34 | 0 |
+| #1643 | 670 | 661 | 9 | 0 |
+| #1640 | 280 | 234 | 46 | 0 |
+| #1642 | 7 | 0 | 7 | 0 |
+| #1653 | 7 | 0 | 4 | 3 |
+| #1655 | 8 | 0 | 5 | 3 |
+
+#1660 remains a superseded-source candidate, not closed; its 34 different blobs must be reconciled. #1642 remains unique prediction work. #1653 and #1655 retain three source-only paths each. No source PR was closed.
+
+### Identity and timestamp corrections
+
+- The canonical Kamilah profile records 21 candidate references and zero verified personal-channel uploads. Person identity is confirmed; person-to-channel ownership is only probable. The older Nov 8 artifact's first-party YouTube search result resolves a channel ID/handle pair, but its own match status is “strongly corroborated, not conclusive” and direct watch-page upload metadata count is zero. One Paul Barron guest appearance and one Alina X third-party clip are not own-channel uploads. No personal-channel inventory is admitted.
+- Japan's three SBIC entities are supported by their official company profiles: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo site explicitly labels SBIC East Japan); Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (official Nagoya site); and Osaka Small and Medium Business Investment & Consultation Co., Ltd. (Osaka site explicitly labels SBIC West Japan). They are separate statutory regional companies, not SBI Holdings. [Tokyo profile](https://www.sbic.co.jp/company/profile/) · [Nagoya official site](https://www.sbic-cj.co.jp/) · [Osaka profile](https://www.sbic-wj.co.jp/profiles/profile/).
+- The t54/x402 and XRP Insights agent-payment counters have no reliable common as-of timestamp; recent t54 rows were labelled “Unverified”. They remain retrospective context only, not cutoff-aligned features. Their reported totals imply roughly half-cent average payments and most reported settlement value is RLUSD, not XRP. Do not translate transaction count into XRP demand.
+
+### Merge decision — NO MERGE
+
+PR #1661 remains draft with no formal approvals. Main branch-protection details are still inaccessible (HTTP 403), visible fallback ruleset #10863829 remains disabled, connected GitHub identity has admin/maintain/push/pull/triage permissions, and main's Pillars Consistency Check remains fail-closed for missing GitHub App credentials, Databricks 403 and Hugging Face BUILD_ERROR. The main-only XRP ingestion workflow is absent from main, so no scheduled main ingestion has executed. The 49 workflow diffs and full 1,064-file integrated change still require semantic review.
+
+This final handoff refresh is documentation/evidence-only. The exact 3,512-test result belongs to code/test head `299208cf3ca9239205470bd58f6047f5fd8ee13c`; it must not be attributed to any later documentation-only head unless that head's own CI confirms it.
+
+
+
 # Run60 — 2026-11-12 — exact-head CI, market depth, x402 payments and institutional rails
 
 ## Mission — VERIFIED
@@ -113,7 +159,7 @@ Run cutoff: **2026-11-12 14:09:46 UTC**. These web/API observations were not cap
 
 ### XRPL agentic payments (x402)
 
-- t54's XRPL AI Hub reports **15,628,777** all-time settlements, **$76,847.90** settled value, 193 registered merchants and 5,410 live services. The implied average is about **$0.00492 per settlement**. The live feed displayed recent items as “Unverified”; the operator's index is not an independent audit. [t54 XRPL AI Hub](https://xrpl-ai.org/).
+- t54's XRPL AI Hub reports **15,628,777** all-time settlements, **$76,847.90** settled value, 193 registered merchants and 5,410 live services. The implied average is about **$0.00492 per settlement**. The dynamic pages have no reliable common as-of timestamp, and recent t54 feed items were displayed as “Unverified”; these totals are retrospective research context only, not cutoff-aligned or model-eligible observations. The operator's index is not an independent audit. [t54 XRPL AI Hub](https://xrpl-ai.org/).
 - XRP Insights separately reports 15,613,265 agent transactions and all-time settlement value of 7,030 XRP plus 67,545 RLUSD. At $1.0333/XRP this is about $74,809, or $0.00479 per transaction. The pages appear to share t54 lineage; do not treat them as independent corroboration or average the totals. [XRP Radar](https://xrp-insights.com/xrp-radar).
 - XRPL's own documentation states agentic payments can send XRP, RLUSD or any issued token. Therefore transaction count is not XRP volume. These figures indicate a growing micropayment use case, but the reported dollar value is still small and most reported settlement value is RLUSD, not XRP. [XRPL agentic transaction docs](https://xrpl.org/docs/agents/agentic-transactions).
 
@@ -126,7 +172,7 @@ Run cutoff: **2026-11-12 14:09:46 UTC**. These web/API observations were not cap
 
 ### Exact-phrase and identity gates
 
-- **SBIC / ChatGPT:** official Tokyo SBIC material documents a June 2025 generative-AI course covering ChatGPT; official SBIC West material documents a 2024 ChatGPT/generative-AI seminar. These are educational events, not an OpenAI partnership. SBIC East/Central/West remain Tokyo/Nagoya/Osaka regional SME investment companies, separate from SBI Holdings. [Tokyo SBIC course](https://www.sbic.co.jp/training/20250612co/) · [SBIC West seminar PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
+- **SBIC / ChatGPT:** official Tokyo SBIC material documents a June 2025 generative-AI course covering ChatGPT; official SBIC West material documents a 2024 ChatGPT/generative-AI seminar. These are educational events, not an OpenAI partnership. The three legal entities are Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (official profile labels SBIC East Japan), Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (official Nagoya site; central-region counterpart), and Osaka Small and Medium Business Investment & Consultation Co., Ltd. (official profile labels SBIC West Japan). They are separate regional companies under Japan's Small and Medium Business Investment & Consultation Companies Act, not SBI Holdings. [Tokyo profile](https://www.sbic.co.jp/company/profile/) · [Nagoya official site](https://www.sbic-cj.co.jp/) · [Osaka profile](https://www.sbic-wj.co.jp/profiles/profile/) · [Tokyo ChatGPT course](https://www.sbic.co.jp/training/20250612co/) · [Osaka generative-AI seminar PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
 - **ASK Coin:** no primary-source XRP Ledger token/issuer deployment was verified. AskSurf appears as an x402 merchant name; it is not evidence of an “ASK Coin” token.
 - **“Actual capital”:** no standardized XRP metric. Continue separating cash received, cash used to buy XRP, in-kind XRP, debt, drawn/undrawn facilities, contingent ELOC capacity and shareholder resale supply.
 - **Camilla/Kamilah Stevenson:** person identity is confirmed as Dr. Kamilah Stevenson / The Wealth Doctor, but personal YouTube channel ownership remains unverified. The canonical profile records **21 candidate references and zero verified personal-channel uploads**. It identifies candidate handle `@drkamilahstevenson` and channel ID `UCqUPJMQdkCN6lsLVDnichPA`, but the handle-to-ID relation and person-to-channel ownership remain unresolved/probable. An older Nov 8 artifact says a first-party YouTube search result resolved the channel ID/handle pair; that same artifact rates the person-to-channel match only **strongly corroborated, not conclusive**, reports zero direct watch-page upload metadata, and says the inventory is incomplete. The newer canonical profile and identity gate remain authoritative. A Paul Barron podcast appearance is a verified guest appearance, not an own-channel upload; an Alina X clip is a third-party upload. Neither belongs in an own-channel inventory. Do not attribute the 21 candidates or admit them as forecast features until the exact channel/person link is first-party verified. Transcript spellings Camila/Camilla/Kamilah are preserved as variants, not treated as separate people without evidence. [First-party site](https://learn.kamilahstevenson.com/) · [iHeart interview](https://www.iheart.com/podcast/256-the-xrp-podcast-43072503/episode/crypto-panics-w-kamilah-stevenson-281253761/) · [candidate Linktree](https://linktr.ee/DrKamilahStevenson) · [canonical profile](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261111/data/xrp_intelligence/sources/kamilah_stevenson_channel.json) · [older Nov 8 identity artifact](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261111/research/xrp_intelligence/20261108T041850Z-kamilah-channel-identity-and-public-video-inventory.json).
