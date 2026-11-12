@@ -25,28 +25,20 @@ def test_termux_drop_writes_bundle_file(tmp_path):
 
 
 def test_termux_drop_round_trip_is_deterministic_and_idempotent(tmp_path):
-    executor = BarrotActionExecutor(workspace=tmp_path)
+    bridge = TermuxBridge(allowed_roots=(str(tmp_path),))
 
     target = tmp_path / "barrot_drop_round_trip.txt"
     content = "BARROT_ROUND_TRIP_OK\n"
 
-    action = Action(
-        type="TERMUX_DROP",
-        args={
-            "path": str(target),
-            "content": content,
-        },
-    )
-
-    first = executor.execute(action)
+    first = bridge.drop_text(path=str(target), content=content)
     first_content = target.read_text(encoding="utf-8")
 
-    second = executor.execute(action)
+    second = bridge.drop_text(path=str(target), content=content)
     second_content = target.read_text(encoding="utf-8")
 
     assert first.success is True
     assert second.success is True
-    assert "no write or overwrite" in second.error.lower() or "no write or overwrite" in second.output.lower()
+    assert "no write or overwrite" in second.reason.lower()
     assert first_content == content
     assert second_content == content
     assert first_content == second_content
