@@ -456,3 +456,15 @@ def test_barrot_sync_is_quarantined_until_external_transfer_is_authorized() -> N
     assert "push:" not in content
     assert "secrets." not in content
     assert "git push" not in content
+
+def test_dependency_audit_only_checks_present_dependency_manifests() -> None:
+    content = _read("dependency-audit.yml")
+    assert "requirements.tx" not in content
+    for manifest in (
+        "requirements.txt",
+        "requirements-dev.txt",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt",
+        "pyproject.toml",
+    ):
+        assert manifest in content
