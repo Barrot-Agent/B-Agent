@@ -1411,3 +1411,56 @@ def test_run131b_circle_network_expansion_is_not_misclassified_as_xrp_capital() 
         item["limitations"]
         for item in data["additional_observations"]
     )
+
+
+def test_run60_evidence_keeps_unreceipted_observations_and_identity_candidates_quarantined() -> None:
+    run60_path = (
+        REPO_ROOT
+        / "research"
+        / "xrp_intelligence"
+        / "20261112T140946Z-run60-exact-head-ci-market-x402-institutional-and-repository-audit.json"
+    )
+    run60 = json.loads(run60_path.read_text(encoding="utf-8"))
+
+    assert run60["forecast_status"] == "NOT_ISSUED"
+    assert all(
+        observation.get("raw_receipt_sha256") is None
+        and observation.get("model_eligible") is False
+        for observation in run60["observations"]
+    )
+
+    identity = run60["kamilah_identity_reconciliation"]
+    assert identity["person_identity_status"] == "CONFIRMED"
+    assert identity["channel_identity_status"] == "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
+    assert identity["candidate_reference_count"] == 21
+    assert identity["verified_personal_channel_upload_count"] == 0
+    assert identity["inventory_complete"] is False
+
+    older = json.loads(
+        (
+            REPO_ROOT
+            / "research"
+            / "xrp_intelligence"
+            / "20261108T041850Z-kamilah-channel-identity-and-public-video-inventory.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert older["identity_resolution"]["person_to_channel_match_status"] == (
+        "STRONGLY_CORROBORATED_NOT_CONCLUSIVE"
+    )
+    assert older["inventory_summary"]["direct_watch_page_upload_metadata_verified_count"] == 0
+    assert older["inventory_summary"]["inventory_complete"] is False
+
+    profile = json.loads(
+        (
+            REPO_ROOT
+            / "data"
+            / "xrp_intelligence"
+            / "sources"
+            / "kamilah_stevenson_channel.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert profile["video_inventory_status"]["verified_inventory_count"] == 0
+    assert all(
+        video["eligible_for_forecast_feature"] is False
+        for video in profile["seed_videos"]
+    )
