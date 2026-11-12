@@ -1,3 +1,17 @@
+## Run56D — 2026-11-12T12:55:00Z — main-branch workflow safety reconciliation
+
+- Main still exposes three legacy manual workflows that can send data to Groq and write directly to main without per-run confirmation or exact-main-SHA validation: `knowledge-signal-cycle-btc.yml`, `capability-1-market-analysis.yml`, `capability-9-data-resolver.yml`. They are manual-only, not scheduled, and were not dispatched.
+- The current integration branch quarantines all three with `permissions: {}` and `if: false`. They remain active on main until the existing PR #1661 is safely merged.
+- Main `signal-summary.yml` and `signal_ledger.yml` also lack explicit per-run confirmation; integration requires confirmation plus exact main SHA for signal-summary and quarantines signal_ledger. Main `knowledge-signal-cycle.yml` is manual/confirmed/artifact-only but lacks exact SHA; integration quarantines the legacy blended-signal path.
+- Integration's other Groq research workflows use explicit confirmation and exact main SHA; `entity-relations.yml` and `content-pipeline.yml` are manual/confirmed/artifact-only but still lack exact SHA.
+- Main `cross-analysis` and `riemann-harvest` are read-only artifact workflows; `pillars-check` is scheduled read-only GitHub App/Databricks access. Release workflow is tag-triggered only.
+- Main has no XRP collector module or scheduled ingestion workflow. Integration-only until merge.
+- Repeat OKX/Kraken API reads returned unchanged ticker values; OKX event timestamp remained 12:36:29.686Z and Kraken had no event timestamp. Treat as stale/uncertain; not model-eligible.
+- Exact docs head a17cc3a passed full CI 43221336112: 3,507 passed, 8 subtests, 61.35% broad coverage, 76% rounded core coverage against 70%, wheel verified; dependency audit 43221336087 and fail-closed gates passed.
+- No external workflow was dispatched; no merge or source PR closure.
+
+---
+
 ## Run56C — 2026-11-12T12:44:01Z — exact-head CI, dual coverage gate and market/security audit
 
 - Main SHA `84f28ee7755607236231545a14f3d093c1baaa85`; exact code head `b92f17dae28b945a8eb2ad1ca9b6057d9cea2858`; PR #1661 sole consolidated integration PR, draft, 2,104 ahead / 0 behind, 1,057 files (49 workflows / 1,008 other paths).

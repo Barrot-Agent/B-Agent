@@ -1,3 +1,49 @@
+# Run56D — 2026-11-12T12:55:00Z — main-branch workflow safety reconciliation and market freshness audit
+
+## Main-versus-integration workflow reconciliation — VERIFIED
+
+A targeted read of main's current workflows found three legacy manual workflows that remain unsafe until the existing integration PR is merged:
+
+1. `.github/workflows/knowledge-signal-cycle-btc.yml` on main: manual dispatch, `contents: write`, `GROQ_API_KEY`, and direct `git add/commit/push` to main. It has no separate per-run confirmation input or exact-main-SHA check. It is not scheduled. No dispatch was initiated in this run.
+2. `.github/workflows/capability-1-market-analysis.yml` on main: manual dispatch, Groq and Databricks credentials, writes generated market-analysis output directly to main, with no per-run confirmation or exact-SHA gate. Not dispatched.
+3. `.github/workflows/capability-9-data-resolver.yml` on main: manual dispatch, Groq-backed contradiction resolution, direct commit/push to main, with no per-run confirmation or exact-SHA gate. Not dispatched.
+
+The current integration branch replaces these three workflows with quarantine stubs using `permissions: {}` and `if: false`. The main versions remain active until a reviewed merge. These are manual-dispatch risks, not scheduled transfers; no external-model call or repository mutation was performed by this run.
+
+Additional main/integration differences:
+- Main `knowledge-signal-cycle.yml` is manual, requires `confirm_external_research=YES`, is read-only and artifact-only, but has no exact-main-SHA input. The integration branch quarantines the legacy sentiment/blended-signal path because it is not a validated fixed-horizon XRP forecast.
+- Main `signal-summary.yml` is manual and Groq-backed without a separate confirmation input; it is artifact-only. The integration version requires `confirm=YES`, an exact 40-character main SHA and a successful revision check.
+- Main `signal_ledger.yml` is manual and Groq-backed without a separate confirmation input; it is artifact-only. The integration version is quarantined with `permissions: {}` and `if: false`.
+- Main `capability-10-design.yml` is a legacy Groq-backed main-writing workflow. The integration version requires explicit `confirm=YES`, exact-main-SHA verification, read-only permissions and artifact-only output.
+- Integration `capability-discovery.yml`, `self-benchmark.yml`, `research-topics.yml`, `frontier-digest.yml`, `data-value-triage.yml` and `webmcp-trend-digest.yml` require explicit external-research confirmation and exact-main-SHA verification before Groq use; outputs are artifacts, not main-branch commits.
+- Integration `entity-relations.yml` and `content-pipeline.yml` remain manual, explicit-confirmation, artifact-only Groq workflows, but do not yet enforce an exact-main-SHA input. This is residual hardening, not an action performed.
+- `barrot-approve-pr.yml` is manual and requires YES plus the exact PR head; it only applies an `approved` label and posts an audit comment. It does not create a formal GitHub review approval or merge. It was not triggered.
+- `release.yml` runs only on version tags matching `v*.*.*`, not on ordinary main pushes.
+- Main `cross-analysis.yml` and `riemann-harvest.yml` are read-only artifact workflows. Main `pillars-check.yml` is scheduled and uses read-only GitHub App/Databricks access; no repository write is configured.
+- Main lacks `.github/workflows/xrp-public-ingestion.yml` and `barrot_agent/evolution/xrp_public_ingestion.py` (404). The XRP collector and schedule remain integration-only; no main-branch XRP ingestion is active.
+
+## Market freshness correction
+
+A repeat API retrieval around 12:54 UTC returned the same OKX XRP-USDT quote and the same provider timestamp `1794486989686` (2026-11-12T12:36:29.686Z). The Kraken XRP/USD and USDT/USD ticker fields also repeated unchanged, and Kraken supplied no event timestamp. The OKX observation was therefore more than 17 minutes old at repeat retrieval; Kraken freshness cannot be established. Quarantine both as stale/uncertain and exclude them from live features. No new synchronized L2 book was obtained.
+
+## Exact-head CI for the preceding Run56C handoff commit — VERIFIED
+
+The documentation/evidence head `a17cc3a55599ab8bfa1820511e9cd913d18fbf95` passed:
+- [Full CI 43221336112](https://github.com/Barrot-Agent/B-Agent/actions/runs/43221336112): 3,507 passed, 0 failed, 8 subtests; broad coverage 61.35%; full suite 90.27 seconds.
+- Core tests: 716 passed, 8 subtests, 16.22 seconds.
+- Restored legacy core coverage report: 76% rounded, above the 70% floor.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- [Dependency audit 43221336087](https://github.com/Barrot-Agent/B-Agent/actions/runs/43221336087) and push audit 43221324030 passed all six manifest groups; no known vulnerabilities reported.
+- Fail-closed PR and push gates passed; automatic merge remains disabled.
+
+## Decision
+
+PR #1661 remains draft and blocked. The integration changes quarantine the main-branch Groq/write workflows above, but they have not been merged. Do not dispatch the legacy main workflows. Do not merge the 1,058-file PR until exact-head checks, required approvals, branch-protection requirements, security controls, Pages side effects and semantic review are resolved. Forecast remains NOT_ISSUED.
+
+No workflow dispatch, Groq transfer, Databricks/Kaggle write, deployment, secret rotation, Space restart, paper trade, funds transfer, real-money action, merge, force-push, history rewrite, worktree destruction or source PR closure occurred.
+
+---
+
 # Run56C — 2026-11-12T12:44:01Z — exact-head CI, dual coverage gate, market/ETF vintage and workflow security audit
 
 **Mission priority 1:** XRP intelligence and prediction-engine mastery. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.
