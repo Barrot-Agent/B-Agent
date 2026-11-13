@@ -31,7 +31,9 @@
       "formal_reviews": 0,
       "review_threads": 0,
       "merge_decision": "NO_MERGE"
-    }
+    },
+    "preexisting_large_map_restored": true,
+    "run101_platform_map_snapshot": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run101.json"
   },
   "ci": {
     "integration_head": "694b9e7da2e617f60bf381cddf295d908035525d",
@@ -282,8 +284,8 @@
       "xrp_insights": {
         "url": "https://xrp-insights.com/",
         "nov12_daily_flow_xrp": -268644,
-        "nov9_to_nov12_weekly_flow_xrp": -9480000,
-        "holdings_xrp_including_bitw": 1190000000,
+        "nov9_to_nov12_weekly_flow_xrp": -9481905,
+        "holdings_xrp_including_bitw": 1185698783,
         "conflict": "separate downloads page crawl still says data as of Nov11 and Nov12 provisional"
       },
       "cryptokeyhole": {
@@ -304,8 +306,9 @@
       "corpstacking": {
         "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
         "as_of": "2026-11-13",
-        "holdings_xrp": 1399186615,
-        "universe": "10 funds/ETPs/trusts"
+        "holdings_xrp": 1398686615,
+        "universe": "10 XRP funds/ETPs/trusts; page's public methodology has an internal conflict: it says basket funds are excluded but also lists NCIQ in the largest-holder table",
+        "evernorth_status": "Closed October 9, 2026, awaiting first post-close holdings report; the cited pre-close 346,284,972 XRP balance is as of June 30 and the 473,276,430 XRP closing amount was a pre-close expectation, not a verified post-close balance."
       },
       "methodology": "overlapping issuer files, different cohorts and missing-file treatment; do not average"
     },
@@ -335,6 +338,32 @@
         "model_eligible": false
       },
       "reconciliation": "different provider snapshots and chain allocations; preserve disagreement, do not average or infer XRP demand"
+    },
+    "xrpdesk": {
+      "url": "https://xrpdesk.app/",
+      "exchange_wallets": {
+        "as_of_utc": "2026-11-13T04:50:00Z",
+        "tracked_xrp": 20610000000,
+        "venues": 62,
+        "source_type": "assistant-snapshot",
+        "model_eligible": false,
+        "caveat": "Different labeled-wallet universe and snapshot from XRP Insights; not directly comparable."
+      },
+      "etf_vaults": {
+        "as_of": "2026-11-12",
+        "holdings_xrp": 1140000000,
+        "funds": [
+          "XRP",
+          "XRPZ",
+          "XRPC",
+          "TOXR",
+          "GXRP",
+          "XRPR"
+        ],
+        "model_eligible": false,
+        "caveat": "Six-fund sheet universe; differs from the ten-fund/ETP/trust universe on Corpstacking."
+      },
+      "payment_corridor_note": "Its Bitso/Coins.ph/Independent Reserve corridor rows are labeled-wallet-change proxies, not confirmed Ripple Payments volume."
     }
   },
   "macro": {
