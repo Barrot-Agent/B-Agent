@@ -1,26 +1,26 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-13T06:32:54Z",
-  "last_verified_at_utc": "2026-11-13T06:32:54Z",
+  "captured_at_utc": "2026-11-13T06:49:31.720Z",
+  "last_verified_at_utc": "2026-11-13T06:49:31.720Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-  "observed_integration_head_before_map_commit": "03dc5c26c9dca5304a7866ac099cc953697cda3e",
+  "observed_integration_head_before_map_commit": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "ahead_by": 2217,
+    "ahead_by": 2218,
     "behind_by": 0,
     "changed_files": 1091,
     "workflow_files": 50,
     "other_changed_paths": 1041,
-    "head_sha": "03dc5c26c9dca5304a7866ac099cc953697cda3e",
+    "head_sha": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
     "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "commits": 2217,
-    "additions": 311218,
+    "commits": 2218,
+    "additions": 311902,
     "deletions": 5136,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -29,15 +29,15 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-13T06:20:35Z",
+    "updated_at": "2026-11-13T06:40:45Z",
     "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
-    "note": "Run80 exact-head CI on 03dc5c2 executed the full suite: 3,552 passed, one failed, eight subtests, 61.68% coverage. The sole failure is a current-map wording assertion in test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head; no runtime, XRP collector, CFTC parser, feature-store, walk-forward or forecast-ledger failure was reported. Core 725/0, five-manifest dependency audit and fail-closed gate passed. Wheel/installed-wheel verification were skipped after the suite failure. The evidence-map wording correction is included in the Run80 handoff commit; the new head requires exact-head CI. PR remains draft with zero formal approvals/reviews; security, publication and semantic-review blockers remain.",
+    "note": "Run80 exact-head verification on bfc0c1f passed: 3,553 full-suite tests, zero failures, eight subtests, 61.68% inclusive coverage; core 725/0 and 76%; wheel/installed mission verification passed; five-manifest dependency audit zero known vulnerabilities; fail-closed gate passed. This Run80B institutional research/handoff commit is documentation/data-map only and requires its own exact-head CI. PR remains draft with zero formal approvals/reviews; main security, publication and semantic-review blockers remain.",
     "research_files": 557,
     "test_files": 374,
     "other_files": 94,
     "base": "main",
     "head": "integration/xrp-v3-unified-main-20261112",
-    "updated_at_utc": "2026-11-13T06:32:54Z",
+    "updated_at_utc": "2026-11-13T06:49:31.720Z",
     "merge_decision": "NO_MERGE"
   },
   "superseded_integration_pr": {
@@ -90,15 +90,15 @@
         "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
         "persistent_agent_connection": false,
         "external_model_transfer": false,
-        "last_verified_at_utc": "2026-11-13T06:32:54Z",
-        "observed_flow": "Run80 verified current main SHA and recursive tree, complete 375-open-PR inventory, #1662 head/base/diff, exact-head CI failure and job logs, dependency audit, fail-closed gate, current-main workflow side effects, main/integration opencode configuration difference, current XRP market/derivatives/ETF observations, CFTC Legacy parser and source-PR blob reconciliation. Only existing integration branch handoff/map files were updated; no main write or external-model transfer.",
+        "last_verified_at_utc": "2026-11-13T06:49:31.720Z",
+        "observed_flow": "Run80B verified current main/integration heads, complete recursive trees, 375 open PRs, exact-head full/core CI, wheel installation, dependency audit and fail-closed gate; reviewed CFTC Legacy parser, SEC Bitwise/21Shares/Coinbase Q3 filings, Coinbase cbXRP proof-of-reserves and Morpho collateral analysis; updated only the existing integration branch handoff and capability map. No main write or external-model transfer.",
         "main_branch_write": false
       },
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-13T06:32:54Z",
-      "last_verified_run": "Run80"
+      "last_verified_at_utc": "2026-11-13T06:49:31.720Z",
+      "last_verified_run": "Run80B"
     },
     "Claude": {
       "intended_role": [
@@ -644,9 +644,9 @@
   },
   "repository_state": {
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_before_current_map_commit": "03dc5c26c9dca5304a7866ac099cc953697cda3e",
+    "integration_head_before_current_map_commit": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
     "integration_pr": 1662,
-    "integration_ahead_by": 2217,
+    "integration_ahead_by": 2218,
     "integration_behind_by": 0,
     "changed_files": 1091,
     "workflow_files_changed": 50,
@@ -668,7 +668,7 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "Run80 exact-head full suite failed on 03dc5c2: 3,552 passed, one failed, eight subtests, 61.68%; sole failure is a current evidence-map wording assertion. Core 725/0, five-manifest audit zero known vulnerabilities, fail-closed gate passed; wheel verification skipped.",
+    "latest_exact_head_ci": "PASS on bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1: full repository 3,553/0, eight subtests, 61.68%; core 725/0, 76%; wheel and installed Barrot V3/XRP mission verified; five-manifest audit zero known vulnerabilities; fail-closed gate passed.",
     "last_reconciled_at_utc": "2026-11-13T06:20:23.358Z",
     "other_base_branches": 8,
     "main_tree_files": 1277,
@@ -699,7 +699,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "03dc5c26c9dca5304a7866ac099cc953697cda3e",
+    "latest_full_suite_tested_head": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -1205,32 +1205,36 @@
     "main_cross_analysis_conclusion": "success"
   },
   "ci_evidence": {
-    "integration_head_tested": "03dc5c26c9dca5304a7866ac099cc953697cda3e",
-    "integration_pr_run": 43378038135,
-    "integration_full_suite_job": 131729039484,
-    "dependency_audit_run": 43378037987,
-    "dependency_audit_job": 131729039042,
-    "fail_closed_gate_run": 43378038159,
-    "fail_closed_gate_job": 131729039467,
+    "integration_head_tested": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+    "integration_pr_run": 43380377372,
+    "integration_full_suite_job": 131736504735,
+    "dependency_audit_run": 43380377447,
+    "dependency_audit_job": 131736504226,
+    "fail_closed_gate_run": 43380377332,
+    "fail_closed_gate_job": 131736503970,
     "full_repository_suite": {
-      "passed": 3552,
-      "failed": 1,
+      "passed": 3553,
+      "failed": 0,
       "subtests": 8,
       "coverage_percent": 61.68,
-      "duration_seconds": 81.29,
+      "duration_seconds": 90.71,
       "exact_head": true,
       "exact_head_verified": true,
-      "conclusion": "failure",
-      "run_id": 43378038135,
-      "job_id": 131729039484
+      "conclusion": "success",
+      "run_id": 43380377372,
+      "job_id": 131736504735,
+      "total_statements": 24828,
+      "missing_statements": 9032,
+      "branches": 7532,
+      "partial_branches": 1501
     },
     "dependency_audit": {
       "passed": true,
       "manifests": 5,
       "known_vulnerabilities": 0,
       "conclusion": "success",
-      "run_id": 43378037987,
-      "job_id": 131729039042,
+      "run_id": 43380377447,
+      "job_id": 131736504226,
       "manifest_groups": [
         "root runtime",
         "development",
@@ -1243,8 +1247,8 @@
       "passed": true,
       "automatic_merge_enabled": false,
       "conclusion": "success",
-      "run_id": 43378038159,
-      "job_id": 131729039467
+      "run_id": 43380377332,
+      "job_id": 131736503970
     },
     "main_ci_run": 43343513172,
     "main_full_repository_suite": {
@@ -1282,37 +1286,43 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "03dc5c26c9dca5304a7866ac099cc953697cda3e",
-      "conclusion": "failure",
+      "head_sha": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+      "conclusion": "success",
       "status": "completed",
-      "completed_at_utc": "2026-11-13T06:23:51Z",
-      "run_id": 43378038135,
+      "completed_at_utc": "2026-11-13T06:44:22Z",
+      "run_id": 43380377372,
       "full_repository_suite": {
-        "passed": 3552,
-        "failed": 1,
+        "passed": 3553,
+        "failed": 0,
         "subtests": 8,
         "coverage_percent": 61.68,
-        "duration_seconds": 81.29,
+        "duration_seconds": 90.71,
         "exact_head": true,
         "exact_head_verified": true,
-        "conclusion": "failure",
-        "run_id": 43378038135,
-        "job_id": 131729039484
+        "conclusion": "success",
+        "run_id": 43380377372,
+        "job_id": 131736504735,
+        "total_statements": 24828,
+        "missing_statements": 9032,
+        "branches": 7532,
+        "partial_branches": 1501
       },
       "core_tests": {
         "passed": 725,
         "failed": 0,
         "subtests": 8,
+        "coverage_percent": 76,
+        "duration_seconds": 11.66,
         "conclusion": "success",
-        "job_id": 131729039896
+        "job_id": 131736504182
       },
       "dependency_audit": {
         "passed": true,
         "manifests": 5,
         "known_vulnerabilities": 0,
         "conclusion": "success",
-        "run_id": 43378037987,
-        "job_id": 131729039042,
+        "run_id": 43380377447,
+        "job_id": 131736504226,
         "manifest_groups": [
           "root runtime",
           "development",
@@ -1325,15 +1335,13 @@
         "passed": true,
         "automatic_merge_enabled": false,
         "conclusion": "success",
-        "run_id": 43378038159,
-        "job_id": 131729039467
+        "run_id": 43380377332,
+        "job_id": 131736503970
       },
-      "wheel_build_verified": false,
-      "installed_wheel_primary_mission_verified": false,
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
-      ],
-      "failure_classification": "Exact-head full-suite failed on 03dc5c2: 3,552 passed, one failed, eight subtests, 61.68% coverage. The sole failure is a current evidence-map wording assertion: the passing-parent classification did not include the required exact-head full-suite phrase. No runtime, collector, feature-store, CFTC, walk-forward or forecast-ledger failure was reported. Core tests 725/725, the five-manifest dependency audit and fail-closed gate passed. Wheel build and installed-wheel verification were skipped because the full-suite test job failed. No tests were removed or weakened."
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "failing_tests": [],
+      "failure_classification": "Exact-head full-suite passed on bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1: 3,553 passed, zero failures, eight subtests, 61.68% inclusive coverage in 90.71 seconds. Core suite 725 passed, zero failures, eight subtests, 76% coverage. Wheel built and installed; installed package verified Barrot V3, the primary XRP mission and canonical data assets. Five dependency manifest groups passed with zero known vulnerabilities. Fail-closed gate passed and automatic merge remained disabled."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1383,7 +1391,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 131729039896,
+    "core_suite_job": 131736504182,
     "latest_main_workflows": {
       "cross_analysis": {
         "run_id": 43023990234,
@@ -9018,8 +9026,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run80",
-  "latest_run_captured_at_utc": "2026-11-13T06:32:54Z",
+  "latest_run_id": "Run80B",
+  "latest_run_captured_at_utc": "2026-11-13T06:49:31.720Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -12047,7 +12055,7 @@
     },
     "forecast_status": "NOT_ISSUED"
   },
-  "last_reconciled_at_utc": "2026-11-13T06:32:54Z",
+  "last_reconciled_at_utc": "2026-11-13T06:49:31.720Z",
   "run29_snapshot": {
     "captured_at_utc": "2026-11-11T15:36:00Z",
     "repository_state": {
@@ -20566,7 +20574,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-13T06:32:54Z",
+  "updated_at_utc": "2026-11-13T06:49:31.720Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -24949,7 +24957,7 @@
   },
   "run46_forecast_status": "NOT_ISSUED",
   "model_eligible": false,
-  "next_concrete_action": "Correct the exact-head CI evidence-map wording on the existing integration branch and rerun full repository suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gate on the new exact head.",
+  "next_concrete_action": "Verify exact-head full-suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80B documentation/map commit.",
   "run47_research_artifact_path": "research/xrp_intelligence/20261112T050251Z-run47-market-quality-evernorth-sbi-resale-and-exact-head-ci-repair.json",
   "run47_forecast_status": "NOT_ISSUED",
   "current_forecast_status": "NOT_ISSUED",
@@ -29772,7 +29780,7 @@
       "interpretation": "Asynchronous quote comparison; not an executable arbitrage signal."
     }
   },
-  "observed_integration_head_before_current_map_commit": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+  "observed_integration_head_before_current_map_commit": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
   "run77_snapshot": {
     "captured_at_utc": "2026-11-13T05:41:39.615Z",
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
@@ -31585,13 +31593,14 @@
     "real_money_actions": 0
   },
   "run80_next_actions": [
-    "Correct the exact-head CI evidence-map wording on the existing integration branch and rerun full repository suite, core suite, wheel/installed-wheel verification, dependency audit and fail-closed gate on the new exact head.",
-    "Continue semantic review of all 50 workflow patches and the 1,041 non-workflow changed paths; preserve user work and branch history.",
-    "Resolve the current-main opencode remote-MCP/edit/bash/webfetch permission regression, connector least privilege, branch-protection visibility, fallback ruleset enforcement and Pages publication authorization before merge.",
-    "Keep CFTC Legacy Futures-Only parser and schedule model-ineligible until first main-only scheduled collection is verified with raw receipts and publication-time-safe history.",
-    "Build independent WORM/timestamp anchoring and replayable synchronized spot/L2/derivatives/exchange-flow/collateral history; keep forecast issuance disabled."
+    "Verify exact-head full-suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80B documentation/map commit.",
+    "Add SEC issuer 10-Q ingestion for XRP ETFs with per-product holdings, cash creations, in-kind creations, cash redemptions, in-kind redemptions, sponsor-fee XRP, custodian set, benchmark and filing/publication timestamps.",
+    "Add Coinbase cbXRP proof-of-reserves and Morpho Base market history as separate wrapped-collateral series, including Chainlink oracle, LLTV, debt, collateral, borrower health and liquidation events; never merge these into native XRPL spot flows.",
+    "Reconcile all ETF issuers and distinguish Ripple seed-share ownership from underlying XRP trust holdings; verify the 21Shares lock-up and post-listing extension before any share-float conclusion.",
+    "Continue semantic review of 50 workflow patches and 1,041 non-workflow paths; resolve main remote-MCP/write permissions, connector least privilege, branch-protection visibility and Pages publication authorization.",
+    "Keep forecast issuance disabled until raw sources are independently anchored, point-in-time history is replayable, shadow outcomes exist and out-of-sample lift over all four baselines is demonstrated."
   ],
-  "run80_handoff_status": "CURRENT_PARENT_HEAD_CI_FAILED_ONE_EVIDENCE_MAP_ASSERTION; RUN80_CORRECTION_COMMITTED_TO_EXISTING_INTEGRATION_BRANCH; NEW_HEAD_CI_PENDING",
+  "run80_handoff_status": "PARENT_HEAD_BFC0_EXACT_HEAD_FULL_SUITE_PASSED; RUN80B_INSTITUTIONAL_AND_COLLATERAL_RESEARCH_COMMITTED; NEW_HEAD_CI_PENDING",
   "latest_web_research_run80": {
     "captured_at_utc": "2026-11-13T06:32:54Z",
     "model_eligible": false,
@@ -31706,5 +31715,191 @@
       "https://bykaranteli.com/etf/xrp",
       "https://www.reuters.com/markets/us/japans-finance-minister-vows-action-yen-breaches-160-threshold-2026-11-13/"
     ]
-  }
+  },
+  "run80_institutional_research": {
+    "captured_at_utc": "2026-11-13T06:49:31.720Z",
+    "period_end": "2026-09-30",
+    "model_eligible": false,
+    "bitwise_xrp_etf": {
+      "sec_filing": "https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm",
+      "holdings_xrp": 413140980.4731,
+      "fair_value_principal_market_usd": 615001664,
+      "principal_market": "Coinbase",
+      "principal_market_price_usd": 1.4886,
+      "nav_benchmark": "CME CF XRP-Dollar Reference Rate - New York Variant",
+      "nav_benchmark_price_usd": 1.4912,
+      "xrp_custodian": "Coinbase Custody Trust Company, LLC",
+      "custody_structure": "segregated Trust XRP accounts",
+      "prime_execution_agent": "Coinbase Inc., an affiliate of the XRP custodian",
+      "cash_custodian": "BNY Mellon",
+      "derivatives_used": false,
+      "nine_month_cash_purchases_xrp": 216972276.8219,
+      "nine_month_cash_purchase_value_usd": 314451000,
+      "nine_month_in_kind_creations_xrp": 114786488.5212,
+      "nine_month_in_kind_creation_value_usd": 161462000,
+      "nine_month_cash_sales_for_redemptions_xrp": 46609745.855,
+      "nine_month_cash_redemption_proceeds_usd": 58290000,
+      "nine_month_in_kind_redemptions_xrp": 2685061.9016,
+      "nine_month_in_kind_redemption_value_usd": 3648000,
+      "nine_month_sponsor_fee_xrp": 546177.1883,
+      "nine_month_sponsor_fee_value_usd": 716000,
+      "net_nine_month_xrp_increase": 281917780.3982,
+      "q3_xrp_added_for_share_creations": 150228577.2385,
+      "q3_xrp_sold_for_redemptions": 23684659.5255,
+      "q3_sponsor_fee_xrp": 241383.1525,
+      "q3_net_xrp_increase": 126302534.5605,
+      "interpretation": "Cash purchases, in-kind creations, cash redemption sales, in-kind redemptions and sponsor-fee transfers are separate. ETF share creation is not automatically equivalent to a cash spot-market purchase."
+    },
+    "twentyone_shares_xrp_etf": {
+      "sec_filing": "https://www.sec.gov/Archives/edgar/data/2028835/000121390026118028/ea0310084-10q_21shares.htm",
+      "holdings_xrp": 107295620.64,
+      "fair_value_usd": 159730990,
+      "cost_usd": 223010283,
+      "december_31_2025_holdings_xrp": 135559073.5077,
+      "change_in_holdings_xrp": -28263452.8677,
+      "shares_outstanding": 11020000,
+      "shares_issued_nine_months": 1680000,
+      "shares_redeemed_nine_months": 4550000,
+      "net_share_change": -2870000,
+      "contributions_nine_months_usd": 28290310,
+      "distributions_nine_months_usd": 78778883,
+      "net_capital_transactions_usd": -50488573,
+      "q3_shares_issued": 210000,
+      "q3_shares_redeemed": 300000,
+      "q3_net_share_change": -90000,
+      "q3_contributions_usd": 2792560,
+      "q3_distributions_usd": 3780602,
+      "q3_net_capital_transactions_usd": -988042,
+      "custodians": [
+        "Coinbase Custody Trust Company, LLC",
+        "BitGo Bank & Trust, N.A.",
+        "Anchorage Digital Bank N.A."
+      ],
+      "transfer_agent_administrator_cash_custodian": "BNY Mellon",
+      "sponsor": "21Shares US LLC",
+      "ultimate_parent": "FalconX Holdings Limited",
+      "benchmark": "FTSE XRP Index effective 2026-08-27; prior benchmark CME CF XRP Reference Rate - New York Variant",
+      "ripple_seed_investor": {
+        "entity": "Ripple Markets Inc.",
+        "initial_seed_shares": 10000000,
+        "price_per_share_usd": 22.07,
+        "proceeds_to_trust_usd": 220676000,
+        "purchase_date": "2024-12-20",
+        "lockup": "Two years from purchase plus a further six months after the Trust first lists; during the lock-up Ripple may not sell, transfer, assign, pledge, hypothecate, dispose of or request redemption of the Initial Seed Shares without Sponsor written consent.",
+        "lockup_expiry_two_year_date": "2026-12-20",
+        "share_of_september_30_outstanding_percent": 90.7441,
+        "caveat": "The filing states the Initial Seed Shares are held subject to this covenant and reports no release/transfer. The 10,000,000 shares are 90.74% of 11,020,000 total shares outstanding if all remain outstanding; the public residual is approximately 1,020,000 shares. This is ETF-share ownership, not Ripple ownership of the Trust's underlying XRP.",
+        "separate_sponsor_seed_creation_baskets": "The Sponsor's separate 20,000 seed-creation shares purchased on 2025-12-10 were redeemed on 2026-04-17; these are not Ripple's 10,000,000 Initial Seed Shares."
+      },
+      "interpretation": "The Trust's XRP holdings declined 28.263M XRP and net capital transactions were -$50.489M over nine months. The Ripple seed relationship is direct, but it is a locked ETF-share investment, not a new 2026 XRP purchase."
+    },
+    "coinbase_global_q3_2026_10q": {
+      "sec_filing": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "cash_and_marketable_investments_usd": 8800000000,
+      "short_term_borrowings_usd": 748800000,
+      "crypto_assets_held_for_operations_usd": 53100000,
+      "crypto_assets_held_as_collateral_usd": 1299500000,
+      "crypto_assets_borrowed_usd": 389700000,
+      "crypto_assets_held_for_investment_usd": 2200000000,
+      "recognized_lending_crypto_collateral_usd": 997557000,
+      "recognized_lending_stablecoin_collateral_usd": 11740000,
+      "recognized_derivatives_collateral_usd": 301943000,
+      "recognized_derivatives_collateral_assets": [
+        "Bitcoin",
+        "Ethereum"
+      ],
+      "recognized_lending_crypto_composition_usd": {
+        "bitcoin": 920649000,
+        "ethereum": 67005000,
+        "other_crypto_assets": 9903000
+      },
+      "customer_collateral_not_recognized_usd": 3284600000,
+      "customer_collateral_not_recognized_crypto_usd": 2804100000,
+      "customer_collateral_not_recognized_stablecoin_usd": 480450000,
+      "customer_assets_rehypothecation_without_consent": false,
+      "coinbase_custody_trust_company": {
+        "qualified_custodian": true,
+        "ny_fiduciary": true,
+        "net_capital_usd": 618000000,
+        "required_net_capital_usd": 222000000,
+        "capital_surplus_usd": 396000000
+      },
+      "xrp_specific_collateral_disclosed": false,
+      "disclosure_limit": "Other lending crypto assets are aggregated and none individually exceeds 5% of total crypto collateral; no XRP-specific balance is disclosed. Do not infer zero or a positive XRP position."
+    },
+    "cbxrp_morpho": {
+      "coinbase_proof_of_reserves_url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "proof_of_reserves_as_of_utc": "2026-11-12T22:55:00Z",
+      "native_xrp_reserves": 153647135.85,
+      "cbxrp_supply": 153644889.32,
+      "reserve_surplus_xrp": 2246.53,
+      "coverage_percent": 100.001462,
+      "reserve_scope": "Coinbase-published cbXRP backing snapshot; not an independent attestation and not additive to segregated ETF trust holdings without address-level proof.",
+      "coinbase_help_url": "https://help.coinbase.com/en/coinbase/trading-and-funding/borrow/borrow-usdc-with-crypto",
+      "collateral_token": "cbXRP on Base, not native XRPL XRP",
+      "cbxrp_contract": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "lending_protocol": "Morpho Blue on Base; Coinbase provides the user interface, collateral is locked in Morpho and lending liquidity comes from Morpho suppliers rather than Coinbase balance-sheet lending.",
+      "regional_limit": "Coinbase's consumer loan product is not available in Japan or New York; do not infer that this limits permissionless Morpho protocol access in general.",
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "chain_id": 8453,
+      "lltv_percent": 62.5,
+      "oracle": "Chainlink XRP/USD with a fixed 1:1 USDC leg",
+      "market_snapshot_as_of_utc": "2026-11-06T13:24:54Z",
+      "market_debt_usdc": 59240000,
+      "collateral_cbxrp": 119870000,
+      "stress_10_percent_drop": {
+        "debt_within_liquidation_threshold_usdc": 8844820.21,
+        "positions": 1070,
+        "collateral_cbxrp": 12730000
+      },
+      "stress_5_percent_drop": {
+        "debt_within_liquidation_threshold_usdc": 3229610.99,
+        "positions": 462,
+        "collateral_cbxrp": 4504596.67
+      },
+      "stress_caveat": "Fixed-position conditional eligibility, not actual liquidations. Borrower repayments, collateral additions, interest, oracle updates and market changes can alter exposure.",
+      "native_xrp_flow_caveat": "Morpho liquidation repays USDC and seizes cbXRP. Native XRP sales require separate evidence of redemption/unwrapping or exchange sale; collateral liquidation alone does not establish native XRP selling.",
+      "secondary_analysis_url": "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/"
+    },
+    "cross_institutional_relationships": {
+      "coinbase": [
+        "Bitwise XRP ETF XRP custodian",
+        "Bitwise XRP ETF prime execution agent",
+        "Bitwise Q3 principal market for XRP valuation",
+        "one of three 21Shares XRP ETF custodians",
+        "cbXRP wrapper issuer/reserve custodian",
+        "consumer interface to Morpho USDC loans on Base"
+      ],
+      "ripple": [
+        "21Shares XRP ETF seed capital investor via Ripple Markets Inc.; $220.676M initial seed share purchase in Dec2024, locked through at least 2026-12-20 subject to terms"
+      ],
+      "falconx": [
+        "Ultimate parent of 21Shares US LLC, sponsor of 21Shares XRP ETF"
+      ],
+      "sbi": [
+        "SBI Holdings has separately verified Ripple and Circle/USDC relationships; no direct SBI ownership/investment in 21Shares or FalconX verified in this run"
+      ],
+      "caveat": "These are service, custody, investment and protocol relationships, not evidence of common ownership or coordinated trading."
+    },
+    "two_etf_holdings_combined_xrp": 520436601.1131,
+    "combined_scope": "Only Bitwise and 21Shares XRP ETF Q3 2026 filings; not total US or global ETF holdings.",
+    "source_urls": [
+      "https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm",
+      "https://www.sec.gov/Archives/edgar/data/2028835/000121390026118028/ea0310084-10q_21shares.htm",
+      "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "https://help.coinbase.com/en/coinbase/trading-and-funding/borrow/borrow-usdc-with-crypto",
+      "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/",
+      "https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109"
+    ],
+    "provenance": "SEC 10-Qs are primary issuer filings; Coinbase proof-of-reserves and help pages are first-party; Morpho stress analysis is secondary and explicitly conditional. These web observations have not been captured as byte-exact Barrot raw receipts and are not model-eligible."
+  },
+  "run80_counter_hypotheses": [
+    "Bitwise's Q3 additions and 21Shares' nine-month outflows show issuer-level divergence; aggregate ETF flow trackers can conceal opposing product flows.",
+    "Cash creations/redemptions can induce XRP counterparties to buy/sell; in-kind creations/redemptions transfer XRP without necessarily causing a contemporaneous exchange trade.",
+    "Ripple's 10M 21Shares seed shares are ETF-share capital and a locked share-supply concentration, not a 10M XRP purchase or Ripple treasury holding.",
+    "Coinbase's 1:1 cbXRP backing and segregated ETF custody accounts are distinct asset populations; do not sum them without address-level reconciliation.",
+    "Morpho cbXRP liquidation stress is a wrapped-collateral risk channel; it does not establish native XRP sales absent redemption or exchange-sale evidence.",
+    "Coinbase's 10-Q aggregates other crypto collateral below 5% per asset; XRP-specific exposure remains undisclosed rather than proven zero."
+  ]
 }

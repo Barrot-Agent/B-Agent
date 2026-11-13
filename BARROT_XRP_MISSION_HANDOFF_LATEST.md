@@ -5669,3 +5669,148 @@ Next:
 5. Keep forecast issuance disabled until independent raw-source anchoring, mature synchronized history, trusted evaluator attestation, shadow outcomes and measured out-of-sample lift are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+---
+
+# Run80B — 2026-11-13 — exact-head CI pass and SEC/custody/cbXRP collateral reconciliation
+
+## Exact-head verification
+
+The Run80 correction commit bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1 passed its own exact-head CI:
+
+- Full repository suite: 3,553 passed, zero failures, eight subtests.
+- Inclusive package coverage: 61.68% (24,828 statements, 9,032 missing, 7,532 branches, 1,501 partial).
+- Full-suite duration: 90.71 seconds.
+- Core suite: 725 passed, zero failures, eight subtests, 76% coverage, 11.66 seconds.
+- Wheel build succeeded.
+- Installed wheel verified Barrot V3, the primary XRP mission and canonical data assets.
+- Five dependency manifest groups passed with zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remained disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/43380377372
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43380377447
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43380377332
+
+The previous 03dc5c2 run's one failure was the evidence-map wording assertion only. The correction is now verified on bfc0c1f. This Run80B handoff/map commit is documentation/data-map only; its own exact-head CI remains pending.
+
+## New primary-source discovery: Bitwise XRP ETF and Coinbase
+
+The Bitwise XRP ETF Q3 2026 Form 10-Q (period ended September 30) reports 413,140,980.4731 XRP held, fair value $615.002M using Coinbase's principal-market price of $1.4886. The CME CF XRP-Dollar New York Variant used for NAV was $1.4912. The filing identifies Coinbase Custody Trust Company, LLC as XRP custodian, holding the Trust's XRP in segregated accounts, and Coinbase Inc. as prime execution agent. BNY Mellon is the cash custodian.
+
+The filing's nine-month XRP movement table separates:
+- Cash purchases: 216,972,276.8219 XRP, $314.451M.
+- In-kind creations: 114,786,488.5212 XRP, $161.462M.
+- XRP sold for cash redemptions: 46,609,745.8550 XRP, $58.290M.
+- In-kind redemptions: 2,685,061.9016 XRP, $3.648M.
+- Sponsor fee: 546,177.1883 XRP, $0.716M.
+- Net XRP increase: 281,917,780.3982.
+
+For Q3 alone, the Trust reported 150,228,577.2385 XRP added through share creations, 23,684,659.5255 XRP sold for redemptions and 241,383.1525 XRP transferred for sponsor fee: net +126,302,534.5605 XRP.
+
+Cash creations trigger XRP purchases through the Trust's counterparties; in-kind creations deliver XRP directly. Cash redemptions cause XRP sales; in-kind redemptions transfer XRP directly. ETF creations are therefore not all equivalent to new cash spot demand. The Trust does not use derivatives and does not borrow to meet liquidity needs.
+
+## New primary-source discovery: 21Shares XRP ETF, Ripple seed capital and locked share float
+
+The 21Shares XRP ETF Q3 2026 Form 10-Q reports 107,295,620.64 XRP at September 30, fair value $159.731M. It held 135,559,073.5077 XRP at December 31, 2025, a decrease of 28,263,452.8677 XRP.
+
+Nine-month capital-share activity:
+- Shares issued: 1.68M.
+- Shares redeemed: 4.55M.
+- Net share change: -2.87M.
+- Contributions: $28.290M.
+- Distributions: $78.779M.
+- Net capital transactions: -$50.489M.
+
+Q3 alone: 210,000 shares issued, 300,000 redeemed, net -90,000 shares; contributions $2.793M and distributions $3.781M, net -$0.988M.
+
+The Trust's custodians are Coinbase Custody Trust Company, BitGo Bank & Trust and Anchorage Digital Bank. BNY Mellon is transfer agent, administrator and cash custodian. The sponsor is 21Shares US LLC, whose ultimate parent is FalconX Holdings Limited. The Trust changed its NAV benchmark from CME CF to the FTSE XRP Index effective August 27, 2026; this is a historical-series structural break.
+
+Ripple Markets Inc. is the direct seed capital investor. On December 20, 2024 it purchased 10,000,000 Initial Seed Shares at $22.07, producing $220.676M for the Trust. Those shares remain subject to a two-year lock-up through December 20, 2026 plus a further six months after the Trust first lists. During the lock-up Ripple may not sell, transfer, assign, pledge, hypothecate, dispose of or request redemption of those shares without Sponsor written consent.
+
+At September 30, 2026, 11,020,000 total shares were outstanding. The 10,000,000 Ripple Initial Seed Shares represent approximately 90.74% of that total if still outstanding under the filing's lock-up; the residual is approximately 1,020,000 shares. This is ETF-share concentration, not Ripple ownership of the Trust's underlying XRP. The separate 20,000 Sponsor seed-creation baskets purchased in December 2025 were redeemed April 17, 2026; those were not Ripple's 10,000,000 Initial Seed Shares.
+
+This is a direct Ripple/21Shares capital relationship. It does not establish that SBI owns or controls 21Shares or FalconX. SBI's verified Ripple relationship is an indirect network connection only.
+
+## Coinbase Q3 balance-sheet collateral disclosure
+
+Coinbase Global's September 30, 2026 Form 10-Q reports:
+- Cash and marketable investments: $8.8B.
+- Short-term borrowings in crypto assets and payment stablecoins used for institutional financing: $748.8M.
+- Crypto assets held for operations: $53.1M.
+- Crypto assets held as collateral: approximately $1.2995B.
+- Crypto assets borrowed: $389.7M.
+- Crypto assets held for investment: $2.2B.
+- Recognized lending crypto collateral: $997.557M (Bitcoin $920.649M, Ethereum $67.005M, other crypto $9.903M).
+- Recognized lending stablecoin collateral: $11.74M.
+- Recognized derivatives collateral: $301.943M, disclosed as Bitcoin and Ethereum.
+- Customer collateral not recognized on the balance sheet: $3.2846B, including $2.8041B crypto and $480.45M stablecoins.
+- Coinbase says customer assets are not used as collateral, margin or rehypothecated without customer consent.
+- Coinbase Custody Trust Company is a qualified custodian and New York fiduciary; net capital $618M against $222M required, a $396M surplus.
+
+The 10-Q does not disclose an XRP-specific collateral amount. Other lending crypto assets are aggregated and each is below 5% of total crypto collateral. Do not infer either zero XRP exposure or a positive XRP balance.
+
+## cbXRP and Morpho: wrapped collateral, not native XRP
+
+Coinbase's first-party proof-of-reserves page at November 12, 2026 22:55 UTC displayed:
+- Native XRP reserves: 153,647,135.85 XRP.
+- cbXRP supply: 153,644,889.32.
+- Surplus: 2,246.53 XRP.
+- Coverage: approximately 100.00146%.
+
+This is a Coinbase-published snapshot, not an independent attestation. It is the backing series for cbXRP and must not be added to Bitwise/21Shares segregated Trust holdings without address-level proof that the underlying addresses are disjoint.
+
+Coinbase's help material confirms that its consumer USDC loan interface uses Morpho on Base. XRP collateral is cbXRP on Base, contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af, locked in Morpho. The loan liquidity is supplied through Morpho, not Coinbase balance-sheet lending. The consumer product is unavailable in Japan and New York; that does not establish that the permissionless Morpho protocol itself is unavailable in those jurisdictions.
+
+The relevant Base Morpho market is 0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109, LLTV 62.5%, with Chainlink XRP/USD and a fixed 1:1 USDC leg.
+
+A CryptoSlate analysis of Morpho API state at November 6, 13:24 UTC reported approximately $59.24M USDC debt against 119.87M cbXRP collateral. Under fixed-position assumptions:
+- A further 10% oracle decline put $8.8448M debt across 1,070 positions within liquidation eligibility.
+- A further 5% decline put $3.2296M debt across 462 positions within the larger 10% group.
+
+These are conditional stress estimates, not executed liquidations. Repayments, collateral top-ups, interest, oracle updates and market changes alter exposure. Morpho liquidations repay USDC and seize cbXRP. Native XRP sales require separate evidence of redemption/unwrapping or exchange sale. Collateral stress alone does not establish native XRP selling.
+
+## Integrated institutional graph and counter-hypotheses
+
+Verified service/capital edges:
+- Coinbase Custody → Bitwise XRP ETF (segregated XRP custody).
+- Coinbase Inc. → Bitwise XRP ETF (prime execution agent); Coinbase was the Trust's principal market for September 30 GAAP XRP valuation.
+- Coinbase Custody, BitGo and Anchorage → 21Shares XRP ETF (joint custodians).
+- Ripple Markets Inc. → 21Shares XRP ETF (initial seed capital investor; locked ETF-share position).
+- FalconX Holdings → 21Shares US sponsor parent.
+- Coinbase → cbXRP wrapper/reserve custody and consumer interface to Morpho on Base.
+- SBI Holdings → Ripple and Circle relationships remain separately verified; no direct SBI stake in 21Shares or FalconX was verified.
+
+Counter-hypotheses:
+1. Bitwise Q3 XRP additions and 21Shares nine-month redemptions show issuer-level divergence; one aggregate ETF flow number can conceal opposing product flows.
+2. Cash creations/redemptions can trigger counterparty purchases/sales; in-kind creations/redemptions transfer XRP without a contemporaneous exchange trade.
+3. Ripple's seed investment is ETF-share capital and a locked share-float concentration, not a new 2026 XRP purchase or Ripple treasury holding.
+4. Coinbase's cbXRP reserve snapshot and ETF Trust accounts are separate reported populations; do not sum them without address-level reconciliation.
+5. Morpho cbXRP liquidation stress is a wrapped-collateral risk channel; native XRP sales require separate redemption or exchange-sale evidence.
+6. Coinbase's 10-Q does not quantify XRP-specific collateral; aggregated “other crypto” does not prove either presence or absence.
+
+Combined Bitwise plus 21Shares Q3 holdings equal 520,436,601.1131 XRP as of September 30, 2026. This is only these two products, not the total US or global ETF holdings.
+
+Sources:
+- Bitwise XRP ETF SEC 10-Q: https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm
+- 21Shares XRP ETF SEC 10-Q: https://www.sec.gov/Archives/edgar/data/2028835/000121390026118028/ea0310084-10q_21shares.htm
+- Coinbase Global SEC 10-Q: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- Coinbase cbXRP proof of reserves: https://www.coinbase.com/cbxrp/proof-of-reserves
+- Coinbase USDC loan help: https://help.coinbase.com/en/coinbase/trading-and-funding/borrow/borrow-usdc-with-crypto
+- Morpho market: https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109
+- Secondary stress analysis: https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/
+
+All SEC figures are historical Q3/September 30 snapshots, not current holdings. Coinbase proof-of-reserves is a first-party snapshot; Morpho stress analysis is secondary and conditional. None of these web observations have been captured as byte-exact Barrot raw-source receipts and none is model-eligible.
+
+## Merge and next-action status
+
+No merge. PR #1662 remains draft with zero formal approvals/reviews. Exact-head CI passed on bfc0c1f, but this Run80B documentation/map commit requires its own exact-head CI. Main's remote-MCP/edit/bash/webfetch permissions, overprivileged connector, branch-protection visibility, disabled fallback ruleset, automatic Pages publication authorization and 1,041 non-workflow semantic review remain blockers.
+
+Next:
+1. Verify exact-head full suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80B commit.
+2. Build issuer-level SEC ETF 10-Q ingestion separating cash creations, in-kind creations, cash redemptions, in-kind redemptions, sponsor-fee XRP, custody and benchmark metadata.
+3. Build separate cbXRP/Morpho collateral-risk history on Base; preserve native XRP and wrapped cbXRP as distinct assets.
+4. Continue full semantic review, least-privilege remediation, branch-protection review visibility and Pages publication authorization.
+5. Keep forecast issuance disabled until raw-source anchoring, synchronized point-in-time history, trusted evaluator attestation, shadow outcomes and measured out-of-sample lift are verified.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
