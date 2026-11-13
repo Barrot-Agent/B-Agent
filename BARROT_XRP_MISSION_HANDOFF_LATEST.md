@@ -1,3 +1,108 @@
+# Run79B — 2026-11-13T06:20:23.358Z — exact-head verification and Coinbase/cbXRP/Morpho collateral
+
+This addendum supersedes the pending-CI statement in Run79 below. The corrective code/test head `bc0556ad5a356d9420af13046c68328d1e8aef6a` passed its exact-head checks. This new documentation/collateral addendum commit will trigger another exact-head CI run; that result is pending at authoring.
+
+## Exact-head verification on `bc0556ad5a356d9420af13046c68328d1e8aef6a`
+
+- [Full CI 43377311246](https://github.com/Barrot-Agent/B-Agent/actions/runs/43377311246): 3,553 passed, zero failed, eight subtests, 61.68% inclusive coverage; full-suite execution 60.05 seconds.
+- Core suite: 725 passed, zero failed, eight subtests, 76% coverage; 13.45 seconds.
+- Wheel build: passed.
+- Installed Barrot V3/XRP mission verification: passed.
+- [Dependency audit 43377311287](https://github.com/Barrot-Agent/B-Agent/actions/runs/43377311287): five manifest groups, zero known vulnerabilities reported.
+- [Fail-closed gate 43377311227](https://github.com/Barrot-Agent/B-Agent/actions/runs/43377311227): passed; automatic merge remains disabled.
+- The eight failures on parent `6cb4484` were corrected by making current-main SHA assertions relational, deriving source counts from the actual endpoint constants and aligning the weekly CFTC order test to contract-status index, Legacy Futures-Only, then TFF. No tests were removed, skipped or weakened.
+
+The exact tested code head is `bc0556ad5a356d9420af13046c68328d1e8aef6a`. PR #1662 remains draft; passing CI does not resolve approvals, branch-protection, least-privilege, publication or semantic-review blockers.
+
+## New primary collateral finding: Coinbase cbXRP and Morpho
+
+**Coinbase official proof of reserves**
+
+The Coinbase proof-of-reserves page displayed an update time of November 13, 2026, 02:41 AM (timezone not stated):
+- XRP reserves: 153,868,755.59 XRP.
+- Outstanding Base cbXRP supply: 153,866,509.06 cbXRP.
+- Reserve surplus: 2,246.53 XRP.
+- Reserve/supply ratio: 100.001460%.
+
+This verifies the displayed 1:1 reserve coverage at that snapshot. It does not show how much cbXRP is deployed in Morpho or available as native XRPL float.
+
+Source: https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves
+
+**Coinbase's direct Morpho integration**
+
+Coinbase's official borrow page and May 12, 2026 blog update confirm:
+- USDC loans are powered by Morpho on Base.
+- Coinbase supplies the user interface; the selected collateral is moved onchain to Morpho.
+- XRP is an eligible collateral asset for U.S. customers outside New York.
+- The stated XRP borrowing limit is up to $100,000 USDC.
+- This is a collateralized loan, not an XRP sale or evidence of a fresh XRP purchase.
+
+Sources:
+- https://www.coinbase.com/borrow
+- https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto
+- https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro
+
+**Specific Morpho Base market observed**
+
+Market ID: `0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109`
+
+- Pair: USDC / cbXRP.
+- Market created: January 15, 2026.
+- LLTV: 62.5%.
+- Outstanding USDC loans: approximately $53.69M.
+- Total liquidity: approximately $24.87M.
+- Total market size: approximately $78.57M.
+- Utilization: 85.41%, target 90%.
+- Borrow rate: 6.66%; lend rate: 5.66%.
+- Liquidation penalty: 12.67%.
+- Public page lists 1,151 borrower rows and 213 supplier rows.
+- Displayed oracle price: 1 cbXRP = 1.01 USDC; Chainlink XRP/USD reference displayed at 1.00241.
+- The UI also shows $209.51M under oracle attributes. Its market-vs-oracle scope is not confirmed; do not treat it as this market's collateral total or reconcile it against Coinbase supply.
+
+Source: https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp
+
+The Morpho page displays a November 13, 03:52:02 UTC liquidation batch with six small positions. Summing the displayed rows gives approximately $87.242 USDC repaid and 98.13 cbXRP seized, with zero realized bad debt. The linked BaseScan transactions returned HTTP 403, so these figures remain protocol-indexer observations rather than independently re-parsed raw Base receipts.
+
+**Do not conflate three different quantities**
+
+1. Coinbase's 153.87M cbXRP supply and XRP reserves are issuer-level backing.
+2. Morpho's $53.69M outstanding loans and $24.87M liquidity are one market's USDC credit state.
+3. The $209.51M figure appears under oracle attributes and its scope is unresolved; it is not accepted as this market's collateral amount.
+
+A November 6 secondary stress article reported 119.9M cbXRP collateral, $59.2M USDC debt and conditional debt-at-risk estimates of $8.84M after a further 10% price decline or $3.23M after 5%. These are stress scenarios, not realized losses. The November 13 Morpho page's small liquidation batch is the observed liquidation evidence; the two datasets have different dates and scopes and must not be merged.
+
+**Attribution and product-term disagreement**
+
+Coinbase's Morpho integration is verified by Coinbase itself. The specific 62.5% LLTV cbXRP/USDC market is a strong candidate match, but Morpho Blue is permissionless and Coinbase does not publish this market ID or identify every borrower as a Coinbase customer. Exact routing remains unverified.
+
+Coinbase's general borrow page says LTV must remain below 86% to avoid liquidation; the specific Morpho market shows 62.5% LLTV; older secondary reporting described 49% initial LTV and 62.5% liquidation. The asset-specific threshold and market routing remain unresolved. Do not select one figure as universal.
+
+This is wrapped XRP collateral on Base, not native XRP lending on XRPL. It can allow holders to borrow USDC without selling XRP, but liquidation can create collateral-sale pressure. Neither effect is a direct measure of net new spot demand.
+
+## Prediction-engine implications
+
+The integration already has exact Morpho market/oracle endpoints and Coinbase cbXRP proof-of-reserves ingestion. They remain raw-only/model-ineligible until token decimals, indexed block timestamps, oracle quote scale, market lineage, reserve/supply reconciliation and the oracle-value-secured field's scope are normalized.
+
+Required features after validation:
+- cbXRP supply, XRP reserve coverage and reserve/supply delta;
+- per-market USDC debt, liquidity, utilization, borrow/lend rates and LLTV;
+- oracle price, distance to liquidation and liquidation penalty;
+- actual liquidation size, collateral seized and bad debt;
+- borrower/supplier concentration and market discovery across all cbXRP markets;
+- separate flags for Coinbase-routed customer loans versus permissionless Morpho positions.
+
+Do not hard-code this one market as the entire Coinbase XRP loan product. Discover all cbXRP markets and loan assets on Base, then reconcile each against Coinbase's official supply/reserve series. Keep conditional liquidation stress scenarios separate from realized events.
+
+Forecast status remains NOT_ISSUED. The public Coinbase/Morpho observations have no Barrot raw-source receipts and are not model-eligible.
+
+## Current decision
+
+No merge. PR #1662 remains draft with zero formal approvals. Exact-head code verification now passes, but branch-protection visibility, least-privilege connector permissions, automatic Pages publication authorization, main's remote MCP/write-permission regression and semantic review of 1,041 non-workflow paths remain unresolved.
+
+Next action: run exact-head CI on this documentation/collateral addendum commit; then complete Morpho market discovery and timestamp/unit normalization, resolve security and permission blockers, and finish semantic/source-PR reconciliation. No source PR closure.
+
+---
+
 # Run79 — 2026-11-13T06:14:01.846Z — exact-head CI failure repair, current-main security review, XRP market and ETF reconciliation
 
 ## Mission priority

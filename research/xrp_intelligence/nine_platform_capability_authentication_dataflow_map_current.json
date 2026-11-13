@@ -1,27 +1,26 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-13T06:14:01.846Z",
-  "last_verified_at_utc": "2026-11-13T06:14:01.846Z",
+  "captured_at_utc": "2026-11-13T06:20:23.358Z",
+  "last_verified_at_utc": "2026-11-13T06:20:23.358Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-  "observed_integration_head_before_map_commit": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+  "observed_integration_head_before_map_commit": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "mergeable_state": "clean",
-    "ahead_by": 2215,
+    "ahead_by": 2216,
     "behind_by": 0,
     "changed_files": 1091,
     "workflow_files": 50,
     "other_changed_paths": 1041,
-    "head_sha": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+    "head_sha": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
     "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "commits": 2215,
-    "additions": 309620,
+    "commits": 2216,
+    "additions": 310608,
     "deletions": 5136,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -38,7 +37,7 @@
     "other_files": 94,
     "base": "main",
     "head": "integration/xrp-v3-unified-main-20261112",
-    "updated_at_utc": "2026-11-13T06:14:01.846Z",
+    "updated_at_utc": "2026-11-13T06:20:23.358Z",
     "merge_decision": "NO_MERGE"
   },
   "superseded_integration_pr": {
@@ -645,9 +644,9 @@
   },
   "repository_state": {
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_before_current_map_commit": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+    "integration_head_before_current_map_commit": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
     "integration_pr": 1662,
-    "integration_ahead_by": 2215,
+    "integration_ahead_by": 2216,
     "integration_behind_by": 0,
     "changed_files": 1091,
     "workflow_files_changed": 50,
@@ -670,7 +669,7 @@
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
     "latest_exact_head_ci": "0460ec6: exact-head full suite passed 3540/0, eight subtests, 61.55%, 95.18s; core 723/0, 76%; wheel and installed V3/XRP mission passed; five-manifest audit zero known vulnerabilities; fail-closed gate passed.",
-    "last_reconciled_at_utc": "2026-11-13T06:14:01.846Z",
+    "last_reconciled_at_utc": "2026-11-13T06:20:23.358Z",
     "other_base_branches": 8,
     "main_tree_files": 1277,
     "integration_tree_files": 2223,
@@ -700,7 +699,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+    "latest_full_suite_tested_head": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -958,7 +957,7 @@
     "post_run37_map_snapshot_correction_ci": "PENDING_EXACT_HEAD; last verified full suite is 05ad5ab, not the new map correction head",
     "current_head_before_run37_final_handoff_commit": "dbbd10657df10f84b81fb816ec742564f6197b32",
     "post_run37_final_handoff_commit_ci": "PENDING_EXACT_HEAD",
-    "latest_full_suite_tested_at_utc": "2026-11-13T05:45:22.278Z",
+    "latest_full_suite_tested_at_utc": "2026-11-13T06:17:20Z",
     "main_current_ci_scope": "Main .github/workflows/ci.yml executes pytest tests -v --no-cov across all 718 tests present on main. Integration adds the XRP mission, ingestion collector, event timeline and additional packages; its full-suite workflow currently discovers 3,505 cases and enforces a 53% barrot_agent coverage floor.",
     "main_full_suite_job_present": true,
     "current_head_before_run40_commit": "51f3b27884f685f9aa8ec9d44eb833a4b0bdffe5",
@@ -1190,7 +1189,7 @@
     "other_base": 8
   },
   "ci_evidence": {
-    "integration_head_tested": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+    "integration_head_tested": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
     "integration_pr_run": 43323339556,
     "integration_full_suite_job": 131549410098,
     "dependency_audit_run": 43323340066,
@@ -1198,21 +1197,24 @@
     "fail_closed_gate_run": 43323339946,
     "fail_closed_gate_job": 131549411390,
     "full_repository_suite": {
-      "passed": 3545,
-      "failed": 8,
+      "passed": 3553,
+      "failed": 0,
       "subtests": 8,
-      "coverage_percent": 61.66,
-      "duration_seconds": 61.22,
+      "coverage_percent": 61.68,
+      "duration_seconds": 60.05,
       "exact_head": true,
-      "exact_head_verified": true
+      "exact_head_verified": true,
+      "conclusion": "success",
+      "run_id": 43377311246,
+      "job_id": 131726713885
     },
     "dependency_audit": {
-      "run_id": 43373787141,
-      "job_id": 131715432967,
       "passed": true,
       "manifests": 5,
       "known_vulnerabilities": 0,
       "conclusion": "success",
+      "run_id": 43377311287,
+      "job_id": 131726713629,
       "manifest_groups": [
         "root runtime",
         "development",
@@ -1222,11 +1224,11 @@
       ]
     },
     "fail_closed_gate": {
-      "run_id": 43373787089,
-      "job_id": 131715432938,
       "passed": true,
       "automatic_merge_enabled": false,
-      "conclusion": "success"
+      "conclusion": "success",
+      "run_id": 43377311227,
+      "job_id": 131726713347
     },
     "main_ci_run": 42944864014,
     "main_full_repository_suite": {
@@ -1264,57 +1266,58 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "run_id": 43373787100,
-      "job_id": 131715433357,
-      "head_sha": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+      "head_sha": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
+      "conclusion": "success",
       "status": "completed",
-      "conclusion": "failure",
-      "completed_at_utc": "2026-11-13T05:45:22.278Z",
+      "completed_at_utc": "2026-11-13T06:17:20Z",
+      "run_id": 43377311246,
       "full_repository_suite": {
-        "passed": 3545,
-        "failed": 8,
-        "subtests": 8,
-        "coverage_percent": 61.66,
-        "duration_seconds": 61.22,
-        "exact_head": true,
-        "exact_head_verified": true
-      },
-      "core_tests": {
-        "job_id": 131715432965,
-        "passed": 723,
+        "passed": 3553,
         "failed": 0,
         "subtests": 8,
-        "conclusion": "success"
+        "coverage_percent": 61.68,
+        "duration_seconds": 60.05,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "conclusion": "success",
+        "run_id": 43377311246,
+        "job_id": 131726713885
+      },
+      "core_tests": {
+        "passed": 725,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "duration_seconds": 13.45,
+        "conclusion": "success",
+        "job_id": 131726713618
       },
       "dependency_audit": {
-        "run_id": 43373787141,
-        "job_id": 131715432967,
         "passed": true,
         "manifests": 5,
         "known_vulnerabilities": 0,
-        "conclusion": "success"
+        "conclusion": "success",
+        "run_id": 43377311287,
+        "job_id": 131726713629,
+        "manifest_groups": [
+          "root runtime",
+          "development",
+          "Hugging Face Space",
+          "legacy",
+          "PEP 621"
+        ]
       },
       "fail_closed_gate": {
-        "run_id": 43373787089,
-        "job_id": 131715432938,
         "passed": true,
         "automatic_merge_enabled": false,
-        "conclusion": "success"
+        "conclusion": "success",
+        "run_id": 43377311227,
+        "job_id": 131726713347
       },
-      "wheel_build_verified": false,
-      "installed_wheel_primary_mission_verified": false,
-      "failing_tests": [
-        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_is_nonempty_and_contains_the_nine_requested_platforms",
-        "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity",
-        "tests/test_xrp_public_ingestion.py::test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication"
-      ],
-      "failure_classification": "Exact-head full-suite failed on 6cb4484: 3,545 passed, 8 failed, eight subtests, 61.66% coverage. All eight failures are stale snapshot assertions after main advanced from b4e36c9 to fb272b4, a stale integration-head/CI-evidence pairing in the current map, a hard-coded 47-source registry count after the CFTC Legacy source raised the registry to 48, and one weekly-source ordering assertion that still expected TFF before Legacy. The implementation's deterministic contract is contract-status index, Legacy Futures-Only, then TFF. Core 723 passed; five-manifest dependency audit passed with zero known vulnerabilities reported; fail-closed gate passed. Wheel and installed-wheel verification were skipped because the full-suite step failed. No runtime collector, CFTC parser, feature-store, walk-forward, calibration or forecast-ledger test failure was reported.",
-      "notes": "Correct test expectations and snapshot metadata; do not weaken or remove tests."
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "failing_tests": [],
+      "failure_classification": "No failures. The eight parent-head failures were corrected through snapshot-consistency assertions, registry counts derived from implementation constants, and the deterministic weekly order contract-status index, Legacy Futures-Only, then TFF. No test was removed, skipped or weakened."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -2420,7 +2423,7 @@
       "installed_wheel_primary_mission_verified": true,
       "wheel_log": "Build and installed-wheel verification passed; installed package loaded Barrot V3, the XRP mission and canonical data assets."
     },
-    "latest_full_suite_conclusion": "failure",
+    "latest_full_suite_conclusion": "success",
     "previous_latest_attempt_before_run42_correction2": {
       "head_sha": "a98c23fd276a5d2da7a560fbe928ebd26c0eb44d",
       "run_id": 43139971072,
@@ -2996,9 +2999,62 @@
       "failure_classification": "Exact-head full-suite failed on 6cb4484: 3,545 passed, 8 failed, eight subtests, 61.66% coverage. All eight failures are stale snapshot assertions after main advanced from b4e36c9 to fb272b4, a stale integration-head/CI-evidence pairing in the current map, a hard-coded 47-source registry count after the CFTC Legacy source raised the registry to 48, and one weekly-source ordering assertion that still expected TFF before Legacy. The implementation's deterministic contract is contract-status index, Legacy Futures-Only, then TFF. Core 723 passed; five-manifest dependency audit passed with zero known vulnerabilities reported; fail-closed gate passed. Wheel and installed-wheel verification were skipped because the full-suite step failed. No runtime collector, CFTC parser, feature-store, walk-forward, calibration or forecast-ledger test failure was reported.",
       "notes": "Correct test expectations and snapshot metadata; do not weaken or remove tests."
     },
-    "latest_full_suite_run_id": 43373787100,
-    "latest_full_suite_job_id": 131715433357,
-    "run79_corrective_commit_ci": "PENDING_AT_HANDOFF_AUTHORING"
+    "latest_full_suite_run_id": 43377311246,
+    "latest_full_suite_job_id": 131726713885,
+    "run79_corrective_commit_ci": {
+      "head_sha": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
+      "conclusion": "success",
+      "status": "completed",
+      "completed_at_utc": "2026-11-13T06:17:20Z",
+      "run_id": 43377311246,
+      "full_repository_suite": {
+        "passed": 3553,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 61.68,
+        "duration_seconds": 60.05,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "conclusion": "success",
+        "run_id": 43377311246,
+        "job_id": 131726713885
+      },
+      "core_tests": {
+        "passed": 725,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "duration_seconds": 13.45,
+        "conclusion": "success",
+        "job_id": 131726713618
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 5,
+        "known_vulnerabilities": 0,
+        "conclusion": "success",
+        "run_id": 43377311287,
+        "job_id": 131726713629,
+        "manifest_groups": [
+          "root runtime",
+          "development",
+          "Hugging Face Space",
+          "legacy",
+          "PEP 621"
+        ]
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "conclusion": "success",
+        "run_id": 43377311227,
+        "job_id": 131726713347
+      },
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "failing_tests": [],
+      "failure_classification": "No failures. The eight parent-head failures were corrected through snapshot-consistency assertions, registry counts derived from implementation constants, and the deterministic weekly order contract-status index, Legacy Futures-Only, then TFF. No test was removed, skipped or weakened."
+    }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 50,
@@ -3361,12 +3417,12 @@
       "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
       "model_eligible": false
     },
-    "latest_exact_head_tested": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+    "latest_exact_head_tested": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
     "latest_exact_head_suite_passed": 3500,
     "latest_exact_head_suite_failed": 5,
-    "latest_exact_head_coverage_percent": 61.66,
-    "latest_exact_head_run_id": 43373787100,
-    "latest_exact_head_tested_at_utc": "2026-11-13T05:45:22.278Z",
+    "latest_exact_head_coverage_percent": 61.68,
+    "latest_exact_head_run_id": 43377311246,
+    "latest_exact_head_tested_at_utc": "2026-11-13T06:17:20Z",
     "scenario_assembler": {
       "module": "barrot_agent/evolution/scenario_hypotheses.py",
       "tests": 19,
@@ -3432,9 +3488,9 @@
     "event_registry_model_eligible": 0,
     "raw_source_sha256_receipts_from_run69_web_research": 0,
     "forecast_reason": "No raw publisher receipts, independent WORM anchor, replayable synchronized history, production evaluator key, independent shadow outcomes or demonstrated OOS lift.",
-    "latest_exact_head_full_suite_passed": 3545,
-    "latest_exact_head_full_suite_failed": 8,
-    "latest_exact_head_conclusion": "failure"
+    "latest_exact_head_full_suite_passed": 3553,
+    "latest_exact_head_full_suite_failed": 0,
+    "latest_exact_head_conclusion": "success"
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -7933,9 +7989,9 @@
     },
     "pr1662": {
       "status": "BLOCKED_DRAFT_NOT_MERGE_READY",
-      "head_sha": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+      "head_sha": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
       "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-      "ahead_by": 2215,
+      "ahead_by": 2216,
       "behind_by": 0,
       "changed_files": 1091,
       "workflow_files": 50,
@@ -7943,9 +7999,16 @@
       "formal_approvals": 0,
       "formal_reviews": 0,
       "review_threads": 0,
-      "exact_head_parent_full_suite": "FAILURE_3545_PASSED_8_FAILED",
+      "exact_head_full_suite": "PASS_3553_ZERO_FAILURES_EIGHT_SUBTESTS_61_68_PERCENT",
       "dependency_audit": "PASS_5_MANIFESTS_ZERO_KNOWN_VULNERABILITIES",
-      "fail_closed_gate": "PASS_AUTOMATIC_MERGE_DISABLED"
+      "fail_closed_gate": "PASS_AUTOMATIC_MERGE_DISABLED",
+      "remaining_blockers": [
+        "draft/no formal approvals",
+        "branch-protection visibility",
+        "overprivileged connector",
+        "Pages publication authorization",
+        "semantic review of 1,041 non-workflow paths"
+      ]
     },
     "run79_path_overlap": {
       "pr1661": {
@@ -7997,13 +8060,13 @@
     }
   },
   "next_actions": [
-    "Correct stale current-map SHA assertions and derive source-registry counts from implementation constants; keep CFTC weekly order contract-status, Legacy Futures-Only, TFF.",
-    "Run exact-head full repository suite, inclusive coverage, wheel build, installed V3/XRP mission verification, dependency audit and fail-closed gate on the correction commit.",
-    "Resolve main's remote MCP/write-capability regression through the existing consolidated integration branch; keep Barrot Sync quarantined until its write path is authorized and observable.",
-    "Obtain least-privilege GitHub connector permissions and independently visible branch-protection/required-check enforcement.",
-    "Resolve GitHub Pages publication authorization before any merge that could trigger automatic deployment.",
-    "Complete semantic review of 50 workflow files and 1,041 non-workflow paths; refresh exact blob comparisons before closing any superseded source PR.",
-    "Continue synchronized historical spot/L2/derivatives/flow/collateral ingestion and independent WORM anchoring; keep forecast issuance disabled."
+    "Continue exact-head full-suite, wheel, installed V3/XRP, dependency and fail-closed verification on the Run79B documentation/collateral addendum commit.",
+    "Discover all Morpho Base markets using cbXRP, not only the hard-coded 62.5% USDC market; verify Coinbase routing and market IDs without assuming permissionless market borrowers are Coinbase customers.",
+    "Normalize Morpho market debt/liquidity/utilization, token decimals, indexed block timestamps, oracle quote scale and oracle-level value-secured scope before feature eligibility.",
+    "Reconcile Coinbase cbXRP supply/reserves with per-market collateral quantities and issuer/redemption flows; distinguish wrapped collateral from native XRPL float.",
+    "Track actual liquidations separately from conditional 5%/10% price-stress scenarios and verify Base transactions from raw receipts.",
+    "Resolve main's remote MCP/write-capability regression, least-privilege connector permissions, branch-protection visibility, Pages publication authorization and semantic review of 1,041 non-workflow paths.",
+    "Keep forecast issuance disabled until independently anchored raw data, synchronized historical features, trusted evaluator attestation, shadow outcomes and measured out-of-sample superiority are verified."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-12T01:26:20Z",
@@ -8935,8 +8998,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "run79",
-  "latest_run_captured_at_utc": "2026-11-13T06:14:01.846Z",
+  "latest_run_id": "run79b",
+  "latest_run_captured_at_utc": "2026-11-13T06:20:23.358Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -11743,7 +11806,7 @@
       "no_main_write": true
     }
   },
-  "latest_run_summary": "Run79: main fb272b4; consolidated integration parent 6cb4484 is 2,215 commits ahead and zero behind. Exact-head full suite on 6cb4484: 3,545 passed, 8 failed, eight subtests, 61.66% coverage. All failures are stale snapshot assertions, source-registry count pinning and one CFTC weekly-order assertion. Core 723 passed; dependency audit passed across five manifests with zero known vulnerabilities reported; fail-closed gate passed. Current OKX spot is $1.0130 with a 06:08:55.673Z provider timestamp; Kraken/USDT quotes lack event timestamps. No synchronized L2/current derivatives snapshot was admitted. Nov12 ETF reports remain incomplete/conflicting; Nov9–11 settled XRP Insights cohort netted -9.213M XRP. CFTC Legacy Futures-Only Nov3 data remains primary weekly context. Main has a remote-MCP/write-permission regression and automatic Barrot Sync writer; integration contains mitigations. Forecast NOT_ISSUED. No merge or external action.",
+  "latest_run_summary": "Run79B: corrective code/test head bc0556a passed exact-head full CI: 3,553 passed, zero failed, eight subtests, 61.68% coverage; core 725 passed, 76% coverage; wheel build and installed V3/XRP mission verification passed; five-manifest dependency audit passed with zero known vulnerabilities reported; fail-closed gate passed with automatic merge disabled. New primary collateral finding: Coinbase official proof of reserves shows 153,868,755.59 XRP reserves against 153,866,509.06 cbXRP supply (2,246.53 XRP surplus; 100.00146% backing). Morpho Base cbXRP/USDC 62.5% LLTV market displays $53.69M debt, $24.87M liquidity, 85.41% utilization and small actual liquidation events; a secondary $8.84M stress-risk figure is conditional, not realized. Market attribution to Coinbase's user-facing integration is plausible but exact market ID is not published by Coinbase. Forecast remains NOT_ISSUED. PR #1662 remains draft and blocked by security, permissions, publication and semantic-review issues. Coinbase/Morpho collateral addendum: official Coinbase pages confirm USDC loans up to $100K against XRP through Morpho on Base (US excluding NY); Coinbase's proof page shows 153.8688M XRP reserves vs 153.8665M cbXRP supply. Morpho's specific cbXRP/USDC market shows $53.69M debt, $24.87M liquidity, 85.41% utilization, 62.5% LLTV and small actual liquidations. Exact routing/asset-specific LTV remains unresolved; no market data admitted to model.",
   "run28_snapshot": {
     "run_id": 28,
     "captured_at_utc": "2026-11-11T14:59:22Z",
@@ -11964,7 +12027,7 @@
     },
     "forecast_status": "NOT_ISSUED"
   },
-  "last_reconciled_at_utc": "2026-11-13T06:14:01.846Z",
+  "last_reconciled_at_utc": "2026-11-13T06:20:23.358Z",
   "run29_snapshot": {
     "captured_at_utc": "2026-11-11T15:36:00Z",
     "repository_state": {
@@ -22982,14 +23045,13 @@
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "mergeable_state": "clean",
     "formal_reviews": 0,
     "approvals": 0,
     "review_threads": 0,
-    "head_sha": "6cb4484f7e55e8635469481f3d4c1df838e1b62b",
+    "head_sha": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
     "number": 1662,
     "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "checked_at_utc": "2026-11-13T06:14:01.846Z",
+    "checked_at_utc": "2026-11-13T06:20:23.358Z",
     "disposition": "BLOCKED_DRAFT_NOT_MERGE_READY"
   },
   "latest_market_refresh_run42": {
@@ -30369,7 +30431,22 @@
         "source": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
         "status": "limited USDC pilot; not XRP settlement"
       },
-      "network_note": "Previously verified SBI/Circle/Ripple relationships remain multi-rail, not exclusive; Arc/USDC, RLUSD distribution and XRP settlement/collateral are separate claims."
+      "network_note": "Previously verified SBI/Circle/Ripple relationships remain multi-rail, not exclusive; Arc/USDC, RLUSD distribution and XRP settlement/collateral are separate claims.",
+      "coinbase_cbxrp_morpho": {
+        "official_integration": "Coinbase official borrow page/blog confirms Morpho on Base and XRP eligible in US excluding NY; up to $100K USDC against XRP.",
+        "market_match": "The 62.5% LLTV cbXRP/USDC market is a candidate match; exact Coinbase routing is not published.",
+        "reserve_backing": {
+          "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+          "displayed_update": "2026-11-13 02:41 AM; page timezone not stated",
+          "reserves_xrp": 153868755.59,
+          "supply_cbxrp": 153866509.06,
+          "surplus_xrp": 2246.53,
+          "backing_ratio": 1.0000146005132222,
+          "backing_percent": 100.00146005132223,
+          "reserve_surplus_percent": 0.0014600513222218,
+          "interpretation": "Coinbase's displayed Base cbXRP supply is covered by slightly more XRP reserves than outstanding tokens. This verifies reserve backing at the displayed snapshot, not how much is deployed in Morpho or available as native XRPL float."
+        }
+      }
     },
     "identity": {
       "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies, distinct from SBI Holdings.",
@@ -30419,6 +30496,82 @@
       "model_eligible_events": 0,
       "raw_publisher_sha256_receipts_for_run79_web_observations": 0,
       "reason": "No Barrot raw receipts for current web observations; no synchronized L2/derivatives history; no independent WORM anchoring, trusted evaluator key, independent shadow outcomes or demonstrated out-of-sample superiority."
+    },
+    "cbxrp_morpho": {
+      "market": {
+        "network": "Base",
+        "chain_id": 8453,
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "market_url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+        "collateral_symbol": "cbXRP",
+        "collateral_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+        "loan_symbol": "USDC",
+        "oracle_address": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+        "market_created_date": "2026-01-15",
+        "lltv_percent": 62.5,
+        "outstanding_loans_usd": 53690000,
+        "total_liquidity_usd": 24870000,
+        "total_market_size_usd": 78570000,
+        "utilization_percent": 85.41,
+        "target_utilization_percent": 90,
+        "borrow_rate_percent": 6.66,
+        "lend_rate_percent": 5.66,
+        "liquidation_penalty_percent": 12.67,
+        "borrower_rows": 1151,
+        "supplier_rows": 213,
+        "oracle_price_usdc_per_cbxrp_displayed": 1.01,
+        "chainlink_xrp_usd_latest_displayed": 1.00241,
+        "value_secured_usd_displayed": 209510000,
+        "value_secured_scope": "Shown under oracle attributes; market-vs-oracle scope not confirmed. Do not reconcile against Coinbase supply as if it were market-specific collateral.",
+        "latest_liquidations_at_utc": "2026-11-13T03:52:02Z",
+        "liquidation_rows": 6,
+        "repaid_usdc_sum": 87.242,
+        "seized_cbxrp_sum": 98.13,
+        "realized_bad_debt_usdc": 0,
+        "underlying_basescan_transactions": "HTTP 403; Morpho public market page/indexer data only, not independently re-parsed from raw Base transactions.",
+        "attribution": {
+          "coinbase_morpho_integration": "VERIFIED by Coinbase official pages: Coinbase provides a USDC-borrow interface to Morpho on Base; assets move onchain to Morpho; US customers excluding NY can borrow up to $100,000 against XRP.",
+          "exact_market_id_link": "NOT_VERIFIED. This specific permissionless market matches cbXRP/USDC/Base/62.5% LLTV, but Coinbase does not publish this market ID or identify every borrower as a Coinbase customer.",
+          "terms_disagreement": "Coinbase generic borrow page says LTV must remain under 86%; Morpho market LLTV is 62.5%; older secondary reporting described 49% initial LTV/62.5% liquidation. Asset-specific threshold and market routing remain unresolved."
+        },
+        "model_eligible": false,
+        "model_eligibility_reason": "No Barrot raw receipts; need indexed block timestamp, token-unit normalization, oracle quote-scale validation, market/borrower lineage and scope of oracle value-secured field."
+      },
+      "coinbase_reserves": {
+        "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "displayed_update": "2026-11-13 02:41 AM; page timezone not stated",
+        "reserves_xrp": 153868755.59,
+        "supply_cbxrp": 153866509.06,
+        "surplus_xrp": 2246.53,
+        "backing_ratio": 1.0000146005132222,
+        "backing_percent": 100.00146005132223,
+        "reserve_surplus_percent": 0.0014600513222218,
+        "interpretation": "Coinbase's displayed Base cbXRP supply is covered by slightly more XRP reserves than outstanding tokens. This verifies reserve backing at the displayed snapshot, not how much is deployed in Morpho or available as native XRPL float."
+      },
+      "coinbase_loan_product": {
+        "official_page": "https://www.coinbase.com/borrow",
+        "official_blog": "https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+        "official_help": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "loan_asset": "USDC",
+        "protocol": "Morpho on Base",
+        "collateral_assets_include_xrp": true,
+        "xrp_borrow_limit_usd": 100000,
+        "availability": "United States excluding New York",
+        "custody_flow": "Coinbase interface; selected crypto is moved onchain to Morpho as collateral; USDC loan is credited to Coinbase account.",
+        "generic_page_liquidation_ltv_percent": 86,
+        "caveat": "The generic 86% product explanation is not proven to be the threshold for the specific 62.5% cbXRP/USDC Morpho market."
+      },
+      "secondary_stress": {
+        "source": "https://cryptoslate.com/coinbases-xrp-backed-loans-accumulate-8-84-million-in-liquidation-risk-as-market-sells-off/",
+        "snapshot_date": "2026-11-06",
+        "reported_cbxrp_collateral": 119900000,
+        "reported_usdc_debt": 59200000,
+        "reported_positions": 1070,
+        "conditional_debt_at_risk_if_additional_10pct_price_decline_usd": 8840000,
+        "conditional_debt_at_risk_if_additional_5pct_price_decline_usd": 3230000,
+        "status": "CONDITIONAL_STRESS_SCENARIO_NOT_REALIZED_LOSS",
+        "reconciliation_note": "Do not compare directly with the Nov13 Morpho page totals; timestamps and measurement scopes differ. Nov13 page shows six small liquidation rows totaling about $87.24 USDC repaid and zero realized bad debt."
+      }
     }
   },
   "run79_market_research": {
@@ -30469,6 +30622,82 @@
     "derivatives": {
       "status": "NO_CURRENT_DIRECT_SNAPSHOT",
       "reason": "Binance depth/open-interest endpoints inaccessible; premium-index returned HTTP 451; Bybit endpoint inaccessible."
+    },
+    "cbxrp_morpho": {
+      "market": {
+        "network": "Base",
+        "chain_id": 8453,
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "market_url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+        "collateral_symbol": "cbXRP",
+        "collateral_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+        "loan_symbol": "USDC",
+        "oracle_address": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+        "market_created_date": "2026-01-15",
+        "lltv_percent": 62.5,
+        "outstanding_loans_usd": 53690000,
+        "total_liquidity_usd": 24870000,
+        "total_market_size_usd": 78570000,
+        "utilization_percent": 85.41,
+        "target_utilization_percent": 90,
+        "borrow_rate_percent": 6.66,
+        "lend_rate_percent": 5.66,
+        "liquidation_penalty_percent": 12.67,
+        "borrower_rows": 1151,
+        "supplier_rows": 213,
+        "oracle_price_usdc_per_cbxrp_displayed": 1.01,
+        "chainlink_xrp_usd_latest_displayed": 1.00241,
+        "value_secured_usd_displayed": 209510000,
+        "value_secured_scope": "Shown under oracle attributes; market-vs-oracle scope not confirmed. Do not reconcile against Coinbase supply as if it were market-specific collateral.",
+        "latest_liquidations_at_utc": "2026-11-13T03:52:02Z",
+        "liquidation_rows": 6,
+        "repaid_usdc_sum": 87.242,
+        "seized_cbxrp_sum": 98.13,
+        "realized_bad_debt_usdc": 0,
+        "underlying_basescan_transactions": "HTTP 403; Morpho public market page/indexer data only, not independently re-parsed from raw Base transactions.",
+        "attribution": {
+          "coinbase_morpho_integration": "VERIFIED by Coinbase official pages: Coinbase provides a USDC-borrow interface to Morpho on Base; assets move onchain to Morpho; US customers excluding NY can borrow up to $100,000 against XRP.",
+          "exact_market_id_link": "NOT_VERIFIED. This specific permissionless market matches cbXRP/USDC/Base/62.5% LLTV, but Coinbase does not publish this market ID or identify every borrower as a Coinbase customer.",
+          "terms_disagreement": "Coinbase generic borrow page says LTV must remain under 86%; Morpho market LLTV is 62.5%; older secondary reporting described 49% initial LTV/62.5% liquidation. Asset-specific threshold and market routing remain unresolved."
+        },
+        "model_eligible": false,
+        "model_eligibility_reason": "No Barrot raw receipts; need indexed block timestamp, token-unit normalization, oracle quote-scale validation, market/borrower lineage and scope of oracle value-secured field."
+      },
+      "coinbase_reserves": {
+        "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "displayed_update": "2026-11-13 02:41 AM; page timezone not stated",
+        "reserves_xrp": 153868755.59,
+        "supply_cbxrp": 153866509.06,
+        "surplus_xrp": 2246.53,
+        "backing_ratio": 1.0000146005132222,
+        "backing_percent": 100.00146005132223,
+        "reserve_surplus_percent": 0.0014600513222218,
+        "interpretation": "Coinbase's displayed Base cbXRP supply is covered by slightly more XRP reserves than outstanding tokens. This verifies reserve backing at the displayed snapshot, not how much is deployed in Morpho or available as native XRPL float."
+      },
+      "coinbase_loan_product": {
+        "official_page": "https://www.coinbase.com/borrow",
+        "official_blog": "https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+        "official_help": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "loan_asset": "USDC",
+        "protocol": "Morpho on Base",
+        "collateral_assets_include_xrp": true,
+        "xrp_borrow_limit_usd": 100000,
+        "availability": "United States excluding New York",
+        "custody_flow": "Coinbase interface; selected crypto is moved onchain to Morpho as collateral; USDC loan is credited to Coinbase account.",
+        "generic_page_liquidation_ltv_percent": 86,
+        "caveat": "The generic 86% product explanation is not proven to be the threshold for the specific 62.5% cbXRP/USDC Morpho market."
+      },
+      "secondary_stress": {
+        "source": "https://cryptoslate.com/coinbases-xrp-backed-loans-accumulate-8-84-million-in-liquidation-risk-as-market-sells-off/",
+        "snapshot_date": "2026-11-06",
+        "reported_cbxrp_collateral": 119900000,
+        "reported_usdc_debt": 59200000,
+        "reported_positions": 1070,
+        "conditional_debt_at_risk_if_additional_10pct_price_decline_usd": 8840000,
+        "conditional_debt_at_risk_if_additional_5pct_price_decline_usd": 3230000,
+        "status": "CONDITIONAL_STRESS_SCENARIO_NOT_REALIZED_LOSS",
+        "reconciliation_note": "Do not compare directly with the Nov13 Morpho page totals; timestamps and measurement scopes differ. Nov13 page shows six small liquidation rows totaling about $87.24 USDC repaid and zero realized bad debt."
+      }
     }
   },
   "run79_etf_flows": {
@@ -30621,13 +30850,13 @@
     "source_pr_closures_this_run": 0
   },
   "run79_next_actions": [
-    "Correct stale current-map SHA assertions and derive source-registry counts from implementation constants; keep CFTC weekly order contract-status, Legacy Futures-Only, TFF.",
-    "Run exact-head full repository suite, inclusive coverage, wheel build, installed V3/XRP mission verification, dependency audit and fail-closed gate on the correction commit.",
-    "Resolve main's remote MCP/write-capability regression through the existing consolidated integration branch; keep Barrot Sync quarantined until its write path is authorized and observable.",
-    "Obtain least-privilege GitHub connector permissions and independently visible branch-protection/required-check enforcement.",
-    "Resolve GitHub Pages publication authorization before any merge that could trigger automatic deployment.",
-    "Complete semantic review of 50 workflow files and 1,041 non-workflow paths; refresh exact blob comparisons before closing any superseded source PR.",
-    "Continue synchronized historical spot/L2/derivatives/flow/collateral ingestion and independent WORM anchoring; keep forecast issuance disabled."
+    "Continue exact-head full-suite, wheel, installed V3/XRP, dependency and fail-closed verification on the Run79B documentation/collateral addendum commit.",
+    "Discover all Morpho Base markets using cbXRP, not only the hard-coded 62.5% USDC market; verify Coinbase routing and market IDs without assuming permissionless market borrowers are Coinbase customers.",
+    "Normalize Morpho market debt/liquidity/utilization, token decimals, indexed block timestamps, oracle quote scale and oracle-level value-secured scope before feature eligibility.",
+    "Reconcile Coinbase cbXRP supply/reserves with per-market collateral quantities and issuer/redemption flows; distinguish wrapped collateral from native XRPL float.",
+    "Track actual liquidations separately from conditional 5%/10% price-stress scenarios and verify Base transactions from raw receipts.",
+    "Resolve main's remote MCP/write-capability regression, least-privilege connector permissions, branch-protection visibility, Pages publication authorization and semantic review of 1,041 non-workflow paths.",
+    "Keep forecast issuance disabled until independently anchored raw data, synchronized historical features, trusted evaluator attestation, shadow outcomes and measured out-of-sample superiority are verified."
   ],
   "run79_ci_failure_reconciliation": {
     "run_id": 43373787100,
@@ -30730,7 +30959,283 @@
     "derivatives": {
       "status": "NO_CURRENT_DIRECT_SNAPSHOT",
       "reason": "Binance depth/open-interest endpoints inaccessible; premium-index returned HTTP 451; Bybit endpoint inaccessible."
+    },
+    "cbxrp_morpho": {
+      "market": {
+        "network": "Base",
+        "chain_id": 8453,
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "market_url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+        "collateral_symbol": "cbXRP",
+        "collateral_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+        "loan_symbol": "USDC",
+        "oracle_address": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+        "market_created_date": "2026-01-15",
+        "lltv_percent": 62.5,
+        "outstanding_loans_usd": 53690000,
+        "total_liquidity_usd": 24870000,
+        "total_market_size_usd": 78570000,
+        "utilization_percent": 85.41,
+        "target_utilization_percent": 90,
+        "borrow_rate_percent": 6.66,
+        "lend_rate_percent": 5.66,
+        "liquidation_penalty_percent": 12.67,
+        "borrower_rows": 1151,
+        "supplier_rows": 213,
+        "oracle_price_usdc_per_cbxrp_displayed": 1.01,
+        "chainlink_xrp_usd_latest_displayed": 1.00241,
+        "value_secured_usd_displayed": 209510000,
+        "value_secured_scope": "Shown under oracle attributes; market-vs-oracle scope not confirmed. Do not reconcile against Coinbase supply as if it were market-specific collateral.",
+        "latest_liquidations_at_utc": "2026-11-13T03:52:02Z",
+        "liquidation_rows": 6,
+        "repaid_usdc_sum": 87.242,
+        "seized_cbxrp_sum": 98.13,
+        "realized_bad_debt_usdc": 0,
+        "underlying_basescan_transactions": "HTTP 403; Morpho public market page/indexer data only, not independently re-parsed from raw Base transactions.",
+        "attribution": {
+          "coinbase_morpho_integration": "VERIFIED by Coinbase official pages: Coinbase provides a USDC-borrow interface to Morpho on Base; assets move onchain to Morpho; US customers excluding NY can borrow up to $100,000 against XRP.",
+          "exact_market_id_link": "NOT_VERIFIED. This specific permissionless market matches cbXRP/USDC/Base/62.5% LLTV, but Coinbase does not publish this market ID or identify every borrower as a Coinbase customer.",
+          "terms_disagreement": "Coinbase generic borrow page says LTV must remain under 86%; Morpho market LLTV is 62.5%; older secondary reporting described 49% initial LTV/62.5% liquidation. Asset-specific threshold and market routing remain unresolved."
+        },
+        "model_eligible": false,
+        "model_eligibility_reason": "No Barrot raw receipts; need indexed block timestamp, token-unit normalization, oracle quote-scale validation, market/borrower lineage and scope of oracle value-secured field."
+      },
+      "coinbase_reserves": {
+        "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "displayed_update": "2026-11-13 02:41 AM; page timezone not stated",
+        "reserves_xrp": 153868755.59,
+        "supply_cbxrp": 153866509.06,
+        "surplus_xrp": 2246.53,
+        "backing_ratio": 1.0000146005132222,
+        "backing_percent": 100.00146005132223,
+        "reserve_surplus_percent": 0.0014600513222218,
+        "interpretation": "Coinbase's displayed Base cbXRP supply is covered by slightly more XRP reserves than outstanding tokens. This verifies reserve backing at the displayed snapshot, not how much is deployed in Morpho or available as native XRPL float."
+      },
+      "coinbase_loan_product": {
+        "official_page": "https://www.coinbase.com/borrow",
+        "official_blog": "https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+        "official_help": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "loan_asset": "USDC",
+        "protocol": "Morpho on Base",
+        "collateral_assets_include_xrp": true,
+        "xrp_borrow_limit_usd": 100000,
+        "availability": "United States excluding New York",
+        "custody_flow": "Coinbase interface; selected crypto is moved onchain to Morpho as collateral; USDC loan is credited to Coinbase account.",
+        "generic_page_liquidation_ltv_percent": 86,
+        "caveat": "The generic 86% product explanation is not proven to be the threshold for the specific 62.5% cbXRP/USDC Morpho market."
+      },
+      "secondary_stress": {
+        "source": "https://cryptoslate.com/coinbases-xrp-backed-loans-accumulate-8-84-million-in-liquidation-risk-as-market-sells-off/",
+        "snapshot_date": "2026-11-06",
+        "reported_cbxrp_collateral": 119900000,
+        "reported_usdc_debt": 59200000,
+        "reported_positions": 1070,
+        "conditional_debt_at_risk_if_additional_10pct_price_decline_usd": 8840000,
+        "conditional_debt_at_risk_if_additional_5pct_price_decline_usd": 3230000,
+        "status": "CONDITIONAL_STRESS_SCENARIO_NOT_REALIZED_LOSS",
+        "reconciliation_note": "Do not compare directly with the Nov13 Morpho page totals; timestamps and measurement scopes differ. Nov13 page shows six small liquidation rows totaling about $87.24 USDC repaid and zero realized bad debt."
+      }
     }
   },
-  "run79_handoff_status": "COMMITTED_ON_EXISTING_INTEGRATION_BRANCH; PARENT_HEAD_CI_FAILURE_RECONCILED; NEW_EXACT_HEAD_CI_PENDING"
+  "run79_handoff_status": "CORRECTIVE_CODE_HEAD_VERIFIED; COLLATERAL_ADDENDUM_COMMITTED; NEW_DOCS_HEAD_CI_PENDING",
+  "run79_morpho_cbxrp": {
+    "network": "Base",
+    "chain_id": 8453,
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "market_url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+    "collateral_symbol": "cbXRP",
+    "collateral_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+    "loan_symbol": "USDC",
+    "oracle_address": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+    "market_created_date": "2026-01-15",
+    "lltv_percent": 62.5,
+    "outstanding_loans_usd": 53690000,
+    "total_liquidity_usd": 24870000,
+    "total_market_size_usd": 78570000,
+    "utilization_percent": 85.41,
+    "target_utilization_percent": 90,
+    "borrow_rate_percent": 6.66,
+    "lend_rate_percent": 5.66,
+    "liquidation_penalty_percent": 12.67,
+    "borrower_rows": 1151,
+    "supplier_rows": 213,
+    "oracle_price_usdc_per_cbxrp_displayed": 1.01,
+    "chainlink_xrp_usd_latest_displayed": 1.00241,
+    "value_secured_usd_displayed": 209510000,
+    "value_secured_scope": "Shown under oracle attributes; market-vs-oracle scope not confirmed. Do not reconcile against Coinbase supply as if it were market-specific collateral.",
+    "latest_liquidations_at_utc": "2026-11-13T03:52:02Z",
+    "liquidation_rows": 6,
+    "repaid_usdc_sum": 87.242,
+    "seized_cbxrp_sum": 98.13,
+    "realized_bad_debt_usdc": 0,
+    "underlying_basescan_transactions": "HTTP 403; Morpho public market page/indexer data only, not independently re-parsed from raw Base transactions.",
+    "attribution": {
+      "coinbase_morpho_integration": "VERIFIED by Coinbase official pages: Coinbase provides a USDC-borrow interface to Morpho on Base; assets move onchain to Morpho; US customers excluding NY can borrow up to $100,000 against XRP.",
+      "exact_market_id_link": "NOT_VERIFIED. This specific permissionless market matches cbXRP/USDC/Base/62.5% LLTV, but Coinbase does not publish this market ID or identify every borrower as a Coinbase customer.",
+      "terms_disagreement": "Coinbase generic borrow page says LTV must remain under 86%; Morpho market LLTV is 62.5%; older secondary reporting described 49% initial LTV/62.5% liquidation. Asset-specific threshold and market routing remain unresolved."
+    },
+    "model_eligible": false,
+    "model_eligibility_reason": "No Barrot raw receipts; need indexed block timestamp, token-unit normalization, oracle quote-scale validation, market/borrower lineage and scope of oracle value-secured field."
+  },
+  "run79_coinbase_cbxrp_reserves": {
+    "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+    "displayed_update": "2026-11-13 02:41 AM; page timezone not stated",
+    "reserves_xrp": 153868755.59,
+    "supply_cbxrp": 153866509.06,
+    "surplus_xrp": 2246.53,
+    "backing_ratio": 1.0000146005132222,
+    "backing_percent": 100.00146005132223,
+    "reserve_surplus_percent": 0.0014600513222218,
+    "interpretation": "Coinbase's displayed Base cbXRP supply is covered by slightly more XRP reserves than outstanding tokens. This verifies reserve backing at the displayed snapshot, not how much is deployed in Morpho or available as native XRPL float."
+  },
+  "run79_coinbase_morpho_loans": {
+    "official_page": "https://www.coinbase.com/borrow",
+    "official_blog": "https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+    "official_help": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+    "loan_asset": "USDC",
+    "protocol": "Morpho on Base",
+    "collateral_assets_include_xrp": true,
+    "xrp_borrow_limit_usd": 100000,
+    "availability": "United States excluding New York",
+    "custody_flow": "Coinbase interface; selected crypto is moved onchain to Morpho as collateral; USDC loan is credited to Coinbase account.",
+    "generic_page_liquidation_ltv_percent": 86,
+    "caveat": "The generic 86% product explanation is not proven to be the threshold for the specific 62.5% cbXRP/USDC Morpho market."
+  },
+  "run79_secondary_liquidation_stress": {
+    "source": "https://cryptoslate.com/coinbases-xrp-backed-loans-accumulate-8-84-million-in-liquidation-risk-as-market-sells-off/",
+    "snapshot_date": "2026-11-06",
+    "reported_cbxrp_collateral": 119900000,
+    "reported_usdc_debt": 59200000,
+    "reported_positions": 1070,
+    "conditional_debt_at_risk_if_additional_10pct_price_decline_usd": 8840000,
+    "conditional_debt_at_risk_if_additional_5pct_price_decline_usd": 3230000,
+    "status": "CONDITIONAL_STRESS_SCENARIO_NOT_REALIZED_LOSS",
+    "reconciliation_note": "Do not compare directly with the Nov13 Morpho page totals; timestamps and measurement scopes differ. Nov13 page shows six small liquidation rows totaling about $87.24 USDC repaid and zero realized bad debt."
+  },
+  "run79b_snapshot": {
+    "captured_at_utc": "2026-11-13T06:20:23.358Z",
+    "verified_code_head": "bc0556ad5a356d9420af13046c68328d1e8aef6a",
+    "ci": {
+      "full_suite": {
+        "passed": 3553,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 61.68,
+        "duration_seconds": 60.05,
+        "exact_head": true,
+        "exact_head_verified": true,
+        "conclusion": "success",
+        "run_id": 43377311246,
+        "job_id": 131726713885
+      },
+      "core_tests": {
+        "passed": 725,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 76,
+        "duration_seconds": 13.45,
+        "conclusion": "success",
+        "job_id": 131726713618
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 5,
+        "known_vulnerabilities": 0,
+        "conclusion": "success",
+        "run_id": 43377311287,
+        "job_id": 131726713629,
+        "manifest_groups": [
+          "root runtime",
+          "development",
+          "Hugging Face Space",
+          "legacy",
+          "PEP 621"
+        ]
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "conclusion": "success",
+        "run_id": 43377311227,
+        "job_id": 131726713347
+      }
+    },
+    "morpho_cbxrp": {
+      "market": {
+        "network": "Base",
+        "chain_id": 8453,
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "market_url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+        "collateral_symbol": "cbXRP",
+        "collateral_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+        "loan_symbol": "USDC",
+        "oracle_address": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+        "market_created_date": "2026-01-15",
+        "lltv_percent": 62.5,
+        "outstanding_loans_usd": 53690000,
+        "total_liquidity_usd": 24870000,
+        "total_market_size_usd": 78570000,
+        "utilization_percent": 85.41,
+        "target_utilization_percent": 90,
+        "borrow_rate_percent": 6.66,
+        "lend_rate_percent": 5.66,
+        "liquidation_penalty_percent": 12.67,
+        "borrower_rows": 1151,
+        "supplier_rows": 213,
+        "oracle_price_usdc_per_cbxrp_displayed": 1.01,
+        "chainlink_xrp_usd_latest_displayed": 1.00241,
+        "value_secured_usd_displayed": 209510000,
+        "value_secured_scope": "Shown under oracle attributes; market-vs-oracle scope not confirmed. Do not reconcile against Coinbase supply as if it were market-specific collateral.",
+        "latest_liquidations_at_utc": "2026-11-13T03:52:02Z",
+        "liquidation_rows": 6,
+        "repaid_usdc_sum": 87.242,
+        "seized_cbxrp_sum": 98.13,
+        "realized_bad_debt_usdc": 0,
+        "underlying_basescan_transactions": "HTTP 403; Morpho public market page/indexer data only, not independently re-parsed from raw Base transactions.",
+        "attribution": {
+          "coinbase_morpho_integration": "VERIFIED by Coinbase official pages: Coinbase provides a USDC-borrow interface to Morpho on Base; assets move onchain to Morpho; US customers excluding NY can borrow up to $100,000 against XRP.",
+          "exact_market_id_link": "NOT_VERIFIED. This specific permissionless market matches cbXRP/USDC/Base/62.5% LLTV, but Coinbase does not publish this market ID or identify every borrower as a Coinbase customer.",
+          "terms_disagreement": "Coinbase generic borrow page says LTV must remain under 86%; Morpho market LLTV is 62.5%; older secondary reporting described 49% initial LTV/62.5% liquidation. Asset-specific threshold and market routing remain unresolved."
+        },
+        "model_eligible": false,
+        "model_eligibility_reason": "No Barrot raw receipts; need indexed block timestamp, token-unit normalization, oracle quote-scale validation, market/borrower lineage and scope of oracle value-secured field."
+      },
+      "coinbase_reserves": {
+        "source": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+        "displayed_update": "2026-11-13 02:41 AM; page timezone not stated",
+        "reserves_xrp": 153868755.59,
+        "supply_cbxrp": 153866509.06,
+        "surplus_xrp": 2246.53,
+        "backing_ratio": 1.0000146005132222,
+        "backing_percent": 100.00146005132223,
+        "reserve_surplus_percent": 0.0014600513222218,
+        "interpretation": "Coinbase's displayed Base cbXRP supply is covered by slightly more XRP reserves than outstanding tokens. This verifies reserve backing at the displayed snapshot, not how much is deployed in Morpho or available as native XRPL float."
+      },
+      "coinbase_loan_product": {
+        "official_page": "https://www.coinbase.com/borrow",
+        "official_blog": "https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+        "official_help": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "loan_asset": "USDC",
+        "protocol": "Morpho on Base",
+        "collateral_assets_include_xrp": true,
+        "xrp_borrow_limit_usd": 100000,
+        "availability": "United States excluding New York",
+        "custody_flow": "Coinbase interface; selected crypto is moved onchain to Morpho as collateral; USDC loan is credited to Coinbase account.",
+        "generic_page_liquidation_ltv_percent": 86,
+        "caveat": "The generic 86% product explanation is not proven to be the threshold for the specific 62.5% cbXRP/USDC Morpho market."
+      },
+      "secondary_stress": {
+        "source": "https://cryptoslate.com/coinbases-xrp-backed-loans-accumulate-8-84-million-in-liquidation-risk-as-market-sells-off/",
+        "snapshot_date": "2026-11-06",
+        "reported_cbxrp_collateral": 119900000,
+        "reported_usdc_debt": 59200000,
+        "reported_positions": 1070,
+        "conditional_debt_at_risk_if_additional_10pct_price_decline_usd": 8840000,
+        "conditional_debt_at_risk_if_additional_5pct_price_decline_usd": 3230000,
+        "status": "CONDITIONAL_STRESS_SCENARIO_NOT_REALIZED_LOSS",
+        "reconciliation_note": "Do not compare directly with the Nov13 Morpho page totals; timestamps and measurement scopes differ. Nov13 page shows six small liquidation rows totaling about $87.24 USDC repaid and zero realized bad debt."
+      }
+    },
+    "status": "CODE_HEAD_VERIFIED; CURRENT_DOCS_ADDENDUM_COMMIT_CI_PENDING"
+  }
 }
