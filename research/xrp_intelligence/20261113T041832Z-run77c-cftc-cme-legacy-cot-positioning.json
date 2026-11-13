@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_cftc_cme_legacy_futures_only_cot_addendum",
+  "artifact_id": "xrp-run77c-20261113T041832Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "captured_at_utc": "2026-11-13T04:18:32Z",
+  "data_cutoff_utc": "2026-11-13T04:18:32Z",
+  "source_capture": {
+    "raw_wire_bytes_available": false,
+    "raw_content_sha256": null,
+    "raw_receipt_id": null,
+    "raw_capture_status": "web_rendered_extract_only",
+    "model_eligible": false,
+    "reason": "Official CFTC report page was retrieved for research but was not captured through Barrot's RawReceiptArchive."
+  },
+  "source_registry": [
+    {
+      "id": "cftc_legacy_cme_futures_only",
+      "publisher": "Commodity Futures Trading Commission",
+      "source_type": "official_legacy_futures_only_cot_report",
+      "url": "https://www.cftc.gov/dea/futures/deacmelf.htm",
+      "report_date": "2026-11-03",
+      "published_date": "2026-11-06",
+      "retrieved_at_utc": "2026-11-13T04:18:32Z",
+      "independence_group": "cftc.gov",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "limitations": [
+        "Futures-only legacy report, not futures-and-options combined.",
+        "Positions are as of Tuesday November 3, not the retrieval date.",
+        "CFTC categories do not identify individual traders or position intent."
+      ]
+    },
+    {
+      "id": "cftc_cot_release_schedule",
+      "publisher": "Commodity Futures Trading Commission",
+      "source_type": "official_release_schedule",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
+      "report_date": null,
+      "published_date": null,
+      "retrieved_at_utc": "2026-11-13T04:18:32Z",
+      "independence_group": "cftc.gov",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "limitations": [
+        "Tentative schedule; federal holidays can delay releases."
+      ]
+    },
+    {
+      "id": "cftc_cot_methodology",
+      "publisher": "Commodity Futures Trading Commission",
+      "source_type": "official_cot_methodology",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/AbouttheCOTReports/index.htm",
+      "report_date": null,
+      "published_date": null,
+      "retrieved_at_utc": "2026-11-13T04:18:32Z",
+      "independence_group": "cftc.gov",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "limitations": [
+        "Trader categories reflect CFTC classifications; no trader identity or position intent is disclosed."
+      ]
+    },
+    {
+      "id": "cftc_semiweekly_plan",
+      "publisher": "Commodity Futures Trading Commission",
+      "source_type": "official_press_release",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9316-26",
+      "report_date": null,
+      "published_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-13T04:18:32Z",
+      "independence_group": "cftc.gov",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "limitations": [
+        "Announcement describes a plan for twice-weekly publication by the end of 2026; effective date remains unconfirmed."
+      ]
+    }
+  ],
+  "cftc_positioning": {
+    "report_type": "Legacy Commitments of Traders, Futures Only, Long Format",
+    "market": "XRP - CHICAGO MERCANTILE EXCHANGE",
+    "cftc_contract_code": "176740",
+    "positions_as_of": "2026-11-03",
+    "report_published": "2026-11-06",
+    "contract_size_xrp": 50000,
+    "total_open_interest_contracts": 7216,
+    "total_open_interest_xrp_equivalent": 360800000,
+    "trader_count": 29,
+    "positions_contracts": {
+      "non_commercial": {
+        "long": 7011,
+        "short": 5546,
+        "spreading": 60,
+        "net_long": 1465,
+        "net_long_xrp_equivalent": 73250000
+      },
+      "commercial": {
+        "long": 61,
+        "short": 1383,
+        "net_short": 1322,
+        "net_short_xrp_equivalent": 66100000
+      },
+      "nonreportable": {
+        "long": 84,
+        "short": 227,
+        "net_short": 143,
+        "net_short_xrp_equivalent": 7150000
+      }
+    },
+    "changes_from_2026_10_27_contracts": {
+      "total_open_interest": -845,
+      "non_commercial_long": -281,
+      "non_commercial_short": -466,
+      "non_commercial_spreading": -481,
+      "commercial_long": -19,
+      "commercial_short": 34,
+      "nonreportable_long": -64,
+      "nonreportable_short": 68,
+      "non_commercial_net_change": 185
+    },
+    "derived": {
+      "open_interest_change_percent": -10.47,
+      "non_commercial_net_long_xrp_equivalent": 73250000,
+      "commercial_net_short_xrp_equivalent": 66100000,
+      "nonreportable_net_short_xrp_equivalent": 7150000,
+      "interpretation": "Non-commercial net long increased by 185 contracts even though both long and short positions fell; short positions fell by 466 while longs fell by 281. This is consistent with greater short covering than long liquidation, not necessarily new long accumulation."
+    },
+    "concentration_percent_of_open_interest": {
+      "four_or_fewer_traders_gross_long": 81,
+      "four_or_fewer_traders_gross_short": 67.4,
+      "eight_or_fewer_traders_gross_long": 95.1,
+      "eight_or_fewer_traders_gross_short": 87.7
+    },
+    "model_eligible": false,
+    "caveats": [
+      "COT is a weekly, lagged snapshot of regulated CME futures, not spot holdings, exchange flows, or all offshore perpetual contracts.",
+      "XRP-equivalent contract notionals are contract-count conversions, not actual XRP custody or cash capital.",
+      "Non-commercial does not identify a particular fund, beneficial owner, or directional intent.",
+      "The report's concentration ratios indicate a small, concentrated market; the total open interest is much smaller than aggregate offshore perpetual OI."
+    ]
+  },
+  "release_schedule": {
+    "normal_release_time": "Friday 15:30 America/New_York",
+    "normal_data_cutoff": "previous Tuesday",
+    "next_scheduled_release_date": "2026-11-16",
+    "reason": "CFTC's 2026 release schedule marks November 16 as a delayed release due to a federal holiday; November 13 is not listed.",
+    "semiweekly_plan": "CFTC announced October 27 that it plans to publish Monday positions on Wednesday and Wednesday positions on Friday by the end of 2026, both at 15:30 ET.",
+    "semiweekly_effective_date": "not confirmed"
+  },
+  "observations": [
+    {
+      "id": "RUN77C-CFTC-CME-XRP-COT",
+      "class": "regulated_derivatives_positioning",
+      "claim": "As of November 3, CME XRP futures open interest was 7,216 contracts (360.8M XRP contract-equivalent). Non-commercial traders were net long 1,465 contracts (73.25M XRP equivalent), up 185 contracts from October 27 while total OI fell 845 contracts. Four or fewer traders held 81.0% of gross long and 67.4% of gross short positions; eight or fewer held 95.1% and 87.7%, respectively.",
+      "evidence": [
+        "cftc_legacy_cme_futures_only_cot"
+      ],
+      "model_eligible": false,
+      "quality_status": "primary_CFTC_weekly_report; lagged; web-rendered; no raw receipt"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "run77c::H1-net-long-rise-by-short-covering",
+      "claim": "The increase in non-commercial net long came more from short covering than from fresh long accumulation.",
+      "support": [
+        "Non-commercial longs fell 281 contracts while shorts fell 466.",
+        "Non-commercial net long increased 185 contracts.",
+        "Total OI fell 845 contracts (-10.47%)."
+      ],
+      "disconfirming_or_missing": [
+        "COT does not identify traders or intent.",
+        "Spreading positions changed materially.",
+        "No synchronized spot/perpetual data was captured in the same raw archive."
+      ],
+      "tests": [
+        "Compare weekly COT changes with spot returns, CME volume, offshore OI and funding using publication-time-safe lags.",
+        "Test whether net-position changes add out-of-sample lift beyond momentum and volatility baselines."
+      ]
+    },
+    {
+      "id": "run77c::H2-small-concentrated-regulated-market",
+      "claim": "CME XRP futures positioning is concentrated and may not represent the broader XRP derivatives market.",
+      "support": [
+        "29 traders reported in the contract.",
+        "Four or fewer traders held 81.0% of gross long positions.",
+        "CME OI is 360.8M XRP-equivalent, distinct from multi-venue offshore perpetual OI."
+      ],
+      "disconfirming_or_missing": [
+        "The report covers regulated CME futures and may still reflect institutional hedging not visible in offshore venues.",
+        "Trader concentration does not reveal common beneficial ownership or position intent."
+      ],
+      "tests": [
+        "Compare CFTC COT with CME contract volume/OI and offshore venue OI by timestamp.",
+        "Keep futures-only and futures-and-options combined series separate."
+      ]
+    }
+  ],
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "CFTC positions are lagged, not captured by Barrot RawReceiptArchive, and not synchronized with current spot/perpetual data.",
+    "paper_trading": false,
+    "real_money": false
+  },
+  "integration_gap": {
+    "current_collector_sources": [
+      "cftc_contract_status_index",
+      "cftc_tff_financial_futures"
+    ],
+    "legacy_futures_only_cot_adapter": "not present in xrp_public_ingestion.py source registry at capture time",
+    "distinction": "Legacy COT uses commercial/non-commercial categories; TFF uses dealer/intermediary, asset manager/institutional, leveraged funds and other reportables. Do not merge the taxonomies.",
+    "recommended_next_action": "Add a dedicated weekly cftc_legacy_cme_futures_only source/adapter, preserve report date and publication timestamp separately, capture raw bytes and receipt, and test holiday delays including 2026-11-16. Keep the announced semiweekly schedule disabled until CFTC confirms its effective date."
+  }
+}
