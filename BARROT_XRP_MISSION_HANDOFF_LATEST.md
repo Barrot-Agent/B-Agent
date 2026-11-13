@@ -4297,3 +4297,69 @@ This correction is on integration only. Main was not changed.
 The current branch before this correction was `0e7535a08fb06b162fe63d2af3ffd57319b65cd2`. The correction commit is its direct child and will be the new PR head. The exact-head CI on `0e7535a` was still running at capture; the new correction commit requires its own full-suite, dependency and fail-closed checks.
 
 No secret was read, tested, rotated or revoked. No LunaRoute connection was attempted. No external sync, deployment, paper trade, funds transfer, Kaggle submission or Databricks write occurred.
+
+
+---
+
+## Run74D — exact-head integrated verification completed
+
+Captured: 2026-11-13T02:27:51Z. This section supersedes the Run74C pending-check note for head `5d2bdbf`. It does not claim the new handoff-only descendant created by this section has completed its own checks.
+
+### VERIFIED on integration head 5d2bdbf
+
+- Full repository suite: **3,542 passed, 8 subtests passed, zero failures**, 82.14 seconds.
+- Inclusive package coverage: **61.55%**; required floor 53% passed.
+- Core suite: **723 passed, 8 subtests passed**, 14.67 seconds; core coverage **76%**.
+- Both added regression tests passed:
+  - `test_opencode_lunaroute_safety.py::test_lunaroute_mcp_stays_disabled_until_verified`
+  - `test_barrot_sync_truthfulness.py::test_barrot_sync_does_not_claim_unverified_credentials_or_oauth_revocation`
+- Wheel built and installed successfully. Installed package verified Barrot V3, the primary XRP mission and canonical data assets.
+- Dependency audit passed all five groups: root runtime, development, Hugging Face Space, legacy and PEP 621; no known vulnerabilities.
+- Pull-request and push fail-closed gates passed; automatic merge remained disabled.
+
+Exact current-head evidence:
+- Full CI [43351849573](https://github.com/Barrot-Agent/B-Agent/actions/runs/43351849573)
+- Dependency audit [43351849609](https://github.com/Barrot-Agent/B-Agent/actions/runs/43351849609)
+- Pull-request fail-closed [43351849671](https://github.com/Barrot-Agent/B-Agent/actions/runs/43351849671)
+- Push fail-closed [43351842465](https://github.com/Barrot-Agent/B-Agent/actions/runs/43351842465)
+
+These results are exact for `5d2bdbf`. This handoff-only descendant must receive its own exact-head checks before any merge decision.
+
+### Current integration snapshot
+
+- Main remains `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration before this handoff update: `5d2bdbf513f0591e10f39add63f74a28a3544f67`, 2,181 commits ahead and zero behind.
+- PR #1662 remains draft, open and mergeable, 1,080 changed files, +303,158/-5,136; no formal approvals or reviews.
+- Current tree: 2,324 entries; main tree: 1,381.
+- Open PR inventory: 375 (361 drafts, 14 non-drafts). No new branch/PR created and no source PR closed.
+
+### Current evidence corrections and safety posture
+
+- `opencode.json` preserves the main LunaRoute provider declaration but disables remote MCP until approved authentication/permission/data-flow verification; API-key bearer auth has `oauth:false`; wildcard tool permission is ask, with only local read-only tools explicitly allowed. The model provider still points to LunaRoute; no model call or data transfer occurred.
+- `BARROT_SYNC.md` now distinguishes intended provider from verified live connection; GitHub/Termux secret presence and equality are NOT VERIFIED; provider-side OAuth revocation is NOT VERIFIED; main's missing-`httpx` sync attempt is recorded as skipped/false-green. No secret value was read.
+- Main's automatic GitHub Pages deployment of `fb272b4` occurred via existing repository workflow; this run did not deploy. Pages publication authorization remains unresolved.
+- #1661's `BARROT_SYNC.md` is a 144,891-byte Run63 mission log, not an operational sync contract; preserve it as source-branch history and do not replace the corrected 2,117-byte integration contract with it.
+
+### Latest market/flow observations retained
+
+- Direct spot observations remain OKX XRP-USDT 1.0322 (provider timestamp 01:57:45 UTC, repeated/cached on later retrieval) and Kraken XRP/USD 1.02836 (no event timestamp). USDT/USD 0.99895 gives an indicative normalized OKX midpoint near $1.03112. The asynchronous cross-venue difference is not executable arbitrage. No fresh synchronized L2 snapshot was obtained.
+- Alpha Finance at 01:08 UTC: XRP spot $1.0311, OI $2.26B, 24h volume $2.27B, longs liquidated $10.1M and shorts $510.5K; modelled clusters $5.1M shorts at $1.0486 and $4.3M longs at $1.0219.
+- TradRadar at 23:55 UTC: OI $1.55B across seven exchanges, +0.57% over 24h, funding +0.0098%/8h, at least $9.01M liquidations ($8.47M longs). Different venue universe/time; do not average.
+- XRP Insights' settled Nov 9–11 ETF cohort: -9.213M XRP; Nov 11 alone +355K and Nov 12 provisional. Alpha's five-fund cohort through Nov 12: reported $0 on Nov 12, -$18M over seven sessions and -$2.8M over 30 sessions. The Block's Nov 12 update also reports $0 and $1.1B AUM. Preserve cohort and cutoff differences.
+
+### Institutional and entity relationship update
+
+- Ripple/SBI Group's June 24, 2026 RLUSD launch through SBI VC Trade in Japan after JFSA approval is live distribution for retail and institutional users. It is a Ripple/SBI Holdings/SBI VC Trade relationship, not an SBIC East/Central/West relationship and not proof of XRP purchases.
+- Ripple/Coinbase's October 28, 2026 RLUSD distribution is live on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was still described as forthcoming.
+- BNY's October 27, 2026 custody announcement confirms support for XRP and RLUSD on its Digital Asset Custody platform. Direct RLUSD mint/redeem through BNY and tokenized trade-finance initiatives remain intended/exploratory and subject to approvals; this is not proof of XRP collateral use or completed receivable issuance.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate regional SME investment companies. SBI Holdings/SBI Securities' ChatGPT Enterprise adoption is a distinct OpenAI relationship; SBIC educational seminars are not an OpenAI partnership.
+
+### Prediction and merge decision
+
+Forecast remains **NOT_ISSUED**. The event registry has 73 curated events, zero byte-exact raw publisher hashes, zero model-eligible events. Source-preimage files with `raw_content_sha256=null` are not immutable raw receipts. Public web observations remain research-only until collected into the raw archive and point-in-time store. No directional forecast or paper trade occurred.
+
+No merge. PR #1662 remains draft with zero formal reviews/approvals. Branch-protection detail returns HTTP 403; visible fallback ruleset #10863829 is disabled; connector permissions remain admin/maintain/push/pull/triage; Pages publication authorization and provider-side credential revocation remain unresolved; semantic review of the 1,080-file integration remains incomplete.
+
+Next action: verify exact-head checks on this handoff-only descendant; complete semantic reconciliation of the 1,080 paths and the 12/36/9/48/7 differing source blobs; preserve unique research/safety work; resolve least privilege, branch-protection/review visibility, credential-owner revocation and Pages publication authorization. Keep LunaRoute MCP disabled, forecasts disabled and all external/financial actions gated.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure was performed.
