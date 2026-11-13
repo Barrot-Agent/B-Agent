@@ -4554,3 +4554,24 @@ Run75B's Evernorth capital reconciliation is retained in `research/xrp_intellige
 
 No merge or external action is authorized by this workflow change. PR #1662 remains draft and all branch-protection, approval, least-privilege, credential-revocation, Pages-publication and semantic-review blockers remain.
 
+
+
+## Run75D — Evernorth on-chain tranche reconciliation
+
+XRP Insights' ledger-backed Evernorth tracker checked ledger 108,293,784 at 01:42 UTC on November 13:
+
+- Evernorth's company-reported closing amount is 473,276,430 XRP.
+- The tracker attributes 103,129,905 XRP to 13 custody wallets, 21.8% of the closing figure.
+- 103,129,900 XRP is payment-linked to the two XRPSCAN-labeled Evernorth wallets; another 5 XRP remains in wallets matched to the purchased tranche.
+- The purchased tranche is exactly 84,365,876.3625 XRP, matched to within 0.0001 XRP from a BitGo-activated trading wallet through a staging wallet into custody wallets H/I/J. The SEC filing says approximately $214M cash was used to acquire this tranche at an average $2.5366 per XRP.
+- The tracker reports 370,346,663 XRP moved from attributed wallets to addresses outside the attributed set, latest October 22. Those destinations remain unattributed and are not assumed sold.
+- The transfer-out figure is not reconciled as a net missing balance: 103,129,905 current attributed plus 370,346,663 transfer-out equals 473,476,568, about 200,138 XRP above the reported closing amount. The source does not establish that the transfer metric is a unique-token or net quantity. Treat it as a separate gross/attribution metric, not a sale or missing-balance proof.
+- The 200,000 XRP delayed-funding tranche has a 199,999.999 XRP Uphold transfer on October 3, 2026 that is consistent by amount/timing, but the tracker says no filing confirms that exact deposit. The 600,000 XRP advance tranche appears as 600,006 XRP across three senders; the small difference is not additional subscribed capital.
+- The SEC prospectus says 100% of Evernorth's XRP was in BitGo cold storage as of November 9, with approximately $250M shared client insurance representing 36.9% of holdings value as of October 9.
+
+**Critical unresolved reconciliation:** the SEC says all XRP was in cold storage at BitGo, while the public tracker shows 370.347M XRP moved to addresses outside its attributed wallet set. Those destinations may be additional BitGo cold wallets or other custodial addresses; sales, OTC transfers or DeFi deployment are not proven. The SEC also says DeFi/yield participation commenced after closing but names no protocol, wallet, amount or counterparty. Verified deployed XRP remains null.
+
+The exact capital composition is therefore: approximately 388.911M XRP in-kind plus 84.365876M XRP bought with approximately $214M cash. The full 473.276M closing treasury is not equivalent to 473M of open-market cash purchases.
+
+Run75D artifact: `research/xrp_intelligence/20261113T030437Z-run75d-evernorth-onchain-capital-tranche-reconciliation.json`. No directional forecast issued; no model eligibility; no paper trade.
+
