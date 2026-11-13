@@ -4575,3 +4575,29 @@ The exact capital composition is therefore: approximately 388.911M XRP in-kind p
 
 Run75D artifact: `research/xrp_intelligence/20261113T030437Z-run75d-evernorth-onchain-capital-tranche-reconciliation.json`. No directional forecast issued; no model eligibility; no paper trade.
 
+
+
+## Run75E — capital reconciliation corrections and CI regression fix
+
+### Corrections to Run75B
+
+1. **Company Facility duplication:** The $5.4M drawn as of June 30 and $9.7M drawn as of October 7 are the same Pathfinder Company Facility from Ripple. It began at $7M and was amended to $10M. The $9.7M is the later cumulative draw, not a separate facility. Amounts became repayable within five business days after the October 9 closing; repayment is not established in the prospectus. A separate Evernorth Facility had a $1M limit and no borrowings as of June 30.
+
+2. **Public warrant count:** The October 19 prospectus registered up to 11,499,992 shares upon exercise of Public Warrants. The November 9 prospectus reports only 9,283,847 Pubco Warrants outstanding as of October 22, each with an $11.50 strike. Current-count potential cash is therefore about **$106.764M**, not $132.250M. The 239,653 Sponsor Warrants are separate, with about $2.756M potential cash if all are exercised. Combined theoretical cash from both disclosed outstanding classes is about $109.520M, only if all are cash-exercised. No exercise is established.
+
+3. **Current share-price context:** XRPN closed at $8.97 on November 12, with $9.00 after-hours, approximately 22% below the $11.50 warrant strike. The $30M PIK note's initial $10.20 conversion price is also above that close. These are conditional financing instruments, not current proceeds.
+
+4. **Gross cash at closing:** The SEC filing reports approximately $272.6M gross cash at closing before transaction expenses: $224.6M from private-placement investments plus $48.0M released from the SPAC trust after redemptions. The SPAC public-share redemption rate was approximately 80.3%. Of the private-placement cash, approximately $214.0M was used to buy 84,365,876 XRP at an average $2.5366. The 388.910554M XRP in-kind contribution is separate from cash.
+
+5. **Resale and ELOC:** The 73,688,162 resale shares are for selling securityholders and generate zero proceeds for Evernorth. The 5,218,935-share Cantor ELOC had generated zero proceeds as of the November 9 prospectus; it is conditional, priced at 97% of VWAP, and has a non-refundable commitment fee once earned. Neither is cash capital already received.
+
+6. **Operating/accounting counter-evidence:** The SEC filing reports no revenue through June 30, 2026, a $188.1M first-half net loss and $264.1M digital-asset impairment. XRP is accounted for as an indefinite-lived intangible asset at cost less impairment, not recurring fair value; Coinbase was selected as the principal market for financial reporting, and impairment uses the lowest observable intraday price since acquisition.
+
+### CI trigger correction
+
+The Run75C change adding `integration/**` to the push trigger caused a real regression: the repository's explicit test `test_integration_full_suite_runs_once_on_pull_request_not_duplicate_push` failed because the full suite was duplicated on push. The core job result was 722 passed, eight subtests passed and one failed.
+
+The integration push trigger has been reverted. The full repository suite remains triggered by pull requests targeting main, pushes to main and manual workflow dispatch. The GitHub connector does not expose a dispatch action; PR synchronize events do trigger CI. The corrected head must pass exact-head full CI before any merge decision.
+
+Run75E artifact: `research/xrp_intelligence/20261113T030728Z-run75e-capital-correction-and-ci-trigger-revert.json`. This correction supersedes the Run75B facility and warrant fields; retain the earlier raw disclosures but use these corrected classifications.
+
