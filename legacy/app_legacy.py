@@ -440,10 +440,11 @@ def page_mcp_workflow() -> None:
 
         st.divider()
         st.markdown("**Pipeline Options**")
-        download_models = st.toggle("Download HF Models", value=True, key="mcp_dl_models")
-        use_databricks = st.toggle("Use Databricks Compute", value=True, key="mcp_use_db")
-        commit_to_github = st.toggle("Commit to GitHub", value=True, key="mcp_commit_gh")
-        trigger_cicd = st.toggle("Trigger CI/CD", value=True, key="mcp_trigger_cicd")
+        download_models = st.toggle("Download HF Models", value=False, key="mcp_dl_models", help="Off by default. Remote model downloads require a separate approval.")
+        use_databricks = st.toggle("Use Databricks Compute", value=False, key="mcp_use_db", help="Off by default. Databricks job submission requires a separate approval.")
+        commit_to_github = st.toggle("Commit to GitHub", value=False, key="mcp_commit_gh", help="Off by default. Repository writes require a separate approval.")
+        trigger_cicd = st.toggle("Trigger CI/CD", value=False, key="mcp_trigger_cicd", help="Off by default. Workflow dispatch requires a separate approval.")
+        st.warning("Remote model downloads, Databricks jobs, GitHub writes, and CI/CD dispatch remain blocked unless a per-action approval is granted. This legacy UI does not provide that approval interface; leave these options off.")
 
         st.divider()
         mcp_ep = st.selectbox(
@@ -472,10 +473,10 @@ def page_mcp_workflow() -> None:
                 db_token=st.session_state.get("mcp_db_token", ""),
                 db_cluster=st.session_state.get("mcp_db_cluster", ""),
                 gh_token=st.session_state.get("mcp_gh_token", ""),
-                download_models=st.session_state.get("mcp_dl_models", True),
-                use_databricks=st.session_state.get("mcp_use_db", True),
-                commit_to_github=st.session_state.get("mcp_commit_gh", True),
-                trigger_cicd=st.session_state.get("mcp_trigger_cicd", True),
+                download_models=st.session_state.get("mcp_dl_models", False),
+                use_databricks=st.session_state.get("mcp_use_db", False),
+                commit_to_github=st.session_state.get("mcp_commit_gh", False),
+                trigger_cicd=st.session_state.get("mcp_trigger_cicd", False),
             )
             orch = MCPOrchestrator(cfg)
 
