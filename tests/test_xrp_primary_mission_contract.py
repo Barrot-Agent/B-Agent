@@ -80,8 +80,12 @@ def test_primary_mission_requires_specific_approval_for_paper_simulation() -> No
     assert not any(item == "No guaranteed returns, real-money actions or paper trades." for item in guardrails)
 
 
-def test_forecast_admission_policy_matches_fail_closed_ledger():
-    mission = _load_primary_mission()
+def test_forecast_admission_policy_matches_fail_closed_ledger() -> None:
+    mission = json.loads(
+        (ROOT / "barrot_agent" / "data" / "missions" / "primary_mission.json").read_text(
+            encoding="utf-8"
+        )
+    )
     policy = mission["forecast_admission_policy"]
 
     assert policy["policy_id"] == READINESS_POLICY_ID
