@@ -1,0 +1,173 @@
+{
+  "artifact_type": "barrot.nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.1.0",
+  "run_id": "Run90",
+  "captured_at_utc": "2026-11-13T13:07:32Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_at_audit": "b4c15161ac41e8343820b3540d879e34df548d40",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "active_integration_pr": 1662
+  },
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 is the protected execution/orchestration/safety/verification foundation.",
+  "coordination_status": "DESIGNED_NOT_DISPATCHED",
+  "least_privilege_required": true,
+  "least_privilege_met": false,
+  "no_external_model_data_transfer": true,
+  "platforms": {
+    "ChatGPT": {
+      "intended_role": "primary evidence synthesis, GitHub repository inspection, bounded integration and local red-team review",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "data_flow_verified": true,
+      "permissions_reported": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "pull": true,
+        "triage": true
+      },
+      "least_privilege": false,
+      "external_model_transfer": false,
+      "last_verified_at_utc": "2026-11-13T13:07:32Z",
+      "verified_scope": [
+        "main/integration refs and complete recursive trees",
+        "375 open PRs across four pages",
+        "PR #1662 reviews, comments, changed files and exact-head CI logs",
+        "ten source PR ancestry/path-overlap comparisons",
+        "main versus integration critical workflow/security review",
+        "current public XRP market and institutional research",
+        "Run90 documentation/research write to existing integration branch only"
+      ],
+      "main_branch_write": false
+    },
+    "Claude": {
+      "intended_role": "independent regulatory and primary-source review; counter-hypotheses",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Grok": {
+      "intended_role": "public social-signal discovery and independent market-narrative comparison",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Gemini": {
+      "intended_role": "independent macro, institutional, custody and document review",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Copilot": {
+      "intended_role": "independent repository security and workflow red-team review",
+      "authentication_status": "REVIEW_ARTIFACTS_ONLY_NO_FORMAL_APPROVAL_ON_PR_1662",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Codex": {
+      "intended_role": "bounded code implementation, test generation and repository-wide verification",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "HuggingFace": {
+      "intended_role": "offline model evaluation only; no deployment",
+      "authentication_status": "PRIOR_BUILD_ERROR_NO_DEPLOYMENT",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Kaggle": {
+      "intended_role": "public benchmark discovery and reproducibility review; no submission",
+      "authentication_status": "NOT_TESTED_NO_SUBMISSION",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Databricks": {
+      "intended_role": "historical feature-store analytics after authorized read access",
+      "authentication_status": "PRIOR_HTTP_403_NO_WRITE",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    }
+  },
+  "separate_internal_provider": {
+    "name": "LunaRoute",
+    "authentication_status": "UNVERIFIED",
+    "data_flow_verified": false
+  },
+  "evidence_exchange": {
+    "structured_external_exchange": false,
+    "minority_objections_retained_in_local_evidence": true,
+    "red_team_dispatch": false
+  },
+  "prediction_engine_status": {
+    "candidate_model_trained": false,
+    "source_definitions": 48,
+    "scheduled_sources": 46,
+    "curated_events": 73,
+    "raw_byte_exact_hashes": 0,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "missing": [
+      "synchronized historical data",
+      "WORM/trusted timestamps",
+      "paired block bootstrap/source-clustered uncertainty",
+      "independent shadow cohort",
+      "measured candidate lift"
+    ]
+  },
+  "repository_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_run90": "b4c15161ac41e8343820b3540d879e34df548d40",
+    "pr_1662_draft": true,
+    "pr_1662_changed_files": 1102,
+    "pr_1662_formal_approvals": 0,
+    "open_prs": 375,
+    "drafts": 361
+  },
+  "security_state": {
+    "main_opencode_remote_mcp_enabled": true,
+    "main_opencode_edit_bash_webfetch_allow": true,
+    "integration_remote_mcp_disabled": true,
+    "integration_mutations_ask": true,
+    "main_branch_protected_flag": true,
+    "branch_protection_detail": "HTTP 403",
+    "visible_ruleset": "Fall Back; disabled",
+    "least_privilege_met": false
+  },
+  "run90_snapshot": {
+    "ci": {
+      "full_suite_run": 43424614346,
+      "tests_passed": 3557,
+      "tests_failed": 0,
+      "coverage_pct": 61.72,
+      "core_tests": 729,
+      "core_coverage_pct": 76,
+      "dependency_audit": 43424613885,
+      "fail_closed_gate": 43424615956
+    },
+    "market": {
+      "okx_last": 1.0194,
+      "okx_event_time_utc": "2026-11-13T13:06:40.668Z",
+      "fuelmaps_mid": 1.0237,
+      "fuelmaps_bid_share_1pct": 59.2,
+      "liqwall_oi_usd": 1120000000,
+      "liqwall_long_liquidations_usd": 16400000,
+      "xrp_insights_nov9_12_flow_xrp": -9481905
+    },
+    "backlog": {
+      "1614": "preserve; 27 source-only paths",
+      "1615": "preserve; 13 source-only paths",
+      "1640": "preserve; one unique commit ahead",
+      "1642": "supersession candidate; 0 ahead/2257 behind",
+      "1643": "supersession candidate; 0 ahead/1352 behind",
+      "1653": "preserve; six source-only paths",
+      "1655": "preserve; three source-only paths",
+      "1659": "preserve; four source-only paths",
+      "1660": "supersession candidate; 0 ahead/290 behind",
+      "1661": "supersession candidate; 0 ahead/109 behind"
+    },
+    "merge_decision": "NO MERGE; PR remains draft and unreviewed; semantic/security/publication blockers remain."
+  },
+  "next_verification": "Verify exact-head CI for Run90 documentation descendant; continue semantic review and security remediation on existing PR #1662; do not merge while draft, unreviewed or publication/branch-protection controls remain unresolved."
+}
