@@ -736,6 +736,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["source_id"] == "ripple_rlusd_transparency_dashboard" for item in raw_only)
     assert any(item["source_id"] == "xrpldashboard_rlusd_cross_chain_supply" for item in raw_only)
     assert any(item["source_id"] == "circle_usdc_transparency_dashboard" for item in raw_only)
+    assert any(item["source_id"] == "deribit_xrp_usdc_perpetual_ticker" for item in raw_only)
+    assert any(item["source_id"] == "deribit_xrp_usdc_perpetual_order_book" for item in raw_only)
     receipts = json.loads((tmp_path / "run" / "receipt_manifest.json").read_text(encoding="utf-8"))
     manifest = {item["source_id"]: item for item in receipts}
     # The default/scheduled collector must not request non-commercial public-node endpoints.
@@ -1363,8 +1365,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 48
-    assert len(SCHEDULED_ENDPOINTS) == 43
+    assert len(ENDPOINTS) == 50
+    assert len(SCHEDULED_ENDPOINTS) == 45
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2893,8 +2895,8 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 48
-    assert len(SCHEDULED_ENDPOINTS) == 43
+    assert len(ENDPOINTS) == 50
+    assert len(SCHEDULED_ENDPOINTS) == 45
 
 
 def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
@@ -2986,8 +2988,8 @@ def test_sbi_vc_trade_lending_page_is_scheduled_digest_only_and_not_a_feature_so
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
     assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
-    assert len(ENDPOINTS) == 48
-    assert len(SCHEDULED_ENDPOINTS) == 43
+    assert len(ENDPOINTS) == 50
+    assert len(SCHEDULED_ENDPOINTS) == 45
 
 
 def test_sbi_vc_trade_lending_page_parser_is_raw_only_and_rejects_wrong_publisher():
