@@ -4483,3 +4483,58 @@ Next action: verify exact-head CI on the Run75 documentation/research-only desce
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
 
+
+
+## Run75B — Evernorth actual-capital, ownership, custody and deployment reconciliation
+
+The November 9, 2026 SEC Form 424B3 materially clarifies the exact “actual capital” question. The literal phrase does not appear in the filing; the underlying economic categories must be kept separate.
+
+**Cash subscriptions**
+- Advance funding: $214.05M cash plus 600,000 XRP. The filing's cash-flow disclosure says approximately $214.0M was used to acquire XRP.
+- Delayed funding: $10.5M cash plus 200,000 XRP.
+- Total private-placement cash: $224.55M. The $214.05M used to acquire XRP is not cash still held on the balance sheet.
+
+**In-kind XRP**
+- 211,319,096.061435 XRP from RippleWorks, Inc. (a nonprofit foundation) to Arrington XRP Capital Fund, LP, the sponsor, which was obligated to invest the XRP for Evernorth equity.
+- 50,000,000 XRP from Larsen Lam Children's Remainder Trust, identified as an investor affiliated with Ripple.
+- 126,791,458 XRP contributed directly by Ripple in exchange for Company Units.
+- 600,000 XRP from advance subscribers and 200,000 XRP from delayed subscribers.
+- Total: **388,910,554.061435 XRP in-kind**. This reconciles to the previously tracked approximately 388.911M XRP contributed in kind. It is not cash capital and is not all open-market buying.
+
+**Ownership at October 9, 2026 closing**
+- SBI Group: 39.9% of voting power but 21.4% of total Pubco common shares. The difference exists because 2,359,038 excess subscription shares were issued as non-voting Class C stock under the 39.9% voting cap.
+- SBI stockholders include SBI Venture Fund 2023A, SBI Venture Fund 2023B, SBI PE Holdings and SBI Holdings USA, all controlled by SBI Holdings.
+- Sponsor: 19.9% voting power; Contributor Group: 9.9%; public shareholders: 20.5%; other advance/delayed subscribers: 9.8%.
+- The 39.9% is SBI Group voting power in Evernorth. It is not SBI's separate approximately 9% Ripple equity stake disclosed in 2025.
+
+**Debt and conditional dilution**
+- $30M convertible senior PIK note, 4% interest paid in kind, initial conversion price $10.20; up to 3,585,278 Class A shares under the stated initial conversion/max-PIK assumptions. Debt, not cash equity.
+- Separate related-party credit facility: $10M limit, $9.7M drawn as of October 7. Amounts became repayable within five business days after the October 9 closing; repayment status is not established in the filing excerpt.
+- Separate Company Facility Agreement: $8M aggregate capacity and $5.4M drawn as of June 30; current balance is not reconciled here.
+- 11,499,992 public warrants at $11.50 could produce up to $132.25M only if exercised for cash. The Nov9 prospectus reports XRPN at $10.58 on Nov6, below strike; no exercise proceeds are established.
+- 239,653 sponsor warrants at $11.50 could produce about $2.76M only if cash-exercised; no exercise is established.
+- 73,688,162 registered resale shares produce **zero proceeds to Evernorth**; they are for selling securityholders' accounts.
+- The 5,218,935-share committed equity facility is conditional, priced at 97% of VWAP, and is not cash received unless drawn.
+
+**Custody and DeFi deployment gap**
+- The prospectus says 100% of XRP was in cold storage at BitGo as of November 9. The approximately $250M insurance is shared among BitGo clients, not dedicated to Evernorth, and represented about 36.9% of Evernorth's XRP value as of October 9. XRP custody is not FDIC/SIPC-insured.
+- The same prospectus says yield strategies and DeFi participation commenced following the October 9 closing, but also says no material ecosystem deployment was expected before Q4 2026. It names no protocol, wallet, amount or counterparty.
+- Evernorth says it does not currently plan to invest cash capital directly into XRP ecosystem projects; it intends to deploy existing XRP holdings into lending protocols and AMM pools and to use RLUSD as a stable-value asset in XRP/RLUSD liquidity pools.
+- The all-cold-storage statement and “DeFi participation commenced” statement require reconciliation. Actual deployed XRP remains **UNVERIFIED** until BitGo movements and named protocol positions are independently matched.
+
+**Disconfirming evidence**
+- The prospectus itself says retail/commercial XRP payments use remains limited and speculative users are significant.
+- It identifies permissioned payment networks that do not require a native digital asset as competitors.
+- It warns XRP can be less liquid than cash and may not be usable as collateral during market stress.
+- Evernorth is not required to publish daily holdings/NAV.
+
+### Exact-head CI on the preceding Run75 handoff commit
+
+The documentation/research-only head `7f4954f7b03aad5edbb9ee12e39ed8794ef522df` subsequently passed the exact-head full suite: 3,542 tests, eight subtests, zero failures, 61.55% inclusive coverage, 723 core tests, 76% core coverage, wheel build and installed-package verification. Dependency audit and fail-closed gate also passed.
+
+- [Full CI 43355718596](https://github.com/Barrot-Agent/B-Agent/actions/runs/43355718596)
+- [Dependency audit 43355712792](https://github.com/Barrot-Agent/B-Agent/actions/runs/43355712792)
+- [Fail-closed gate 43355718569](https://github.com/Barrot-Agent/B-Agent/actions/runs/43355718569)
+
+Run75B artifact: `research/xrp_intelligence/20261113T030151Z-run75b-evernorth-capital-custody-and-deployment-reconciliation.json`. This follow-up is documentation/research-only; exact-head CI must be checked before any merge decision.
+
