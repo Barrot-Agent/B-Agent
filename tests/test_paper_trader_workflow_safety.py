@@ -21,6 +21,7 @@ def test_paper_trader_workflow_is_manual_and_requires_explicit_sha_confirmation(
     assert 'CONFIRM: ${{ inputs.confirm }}' in content
     assert 'EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}' in content
     assert '[[ "$CONFIRM" == "YES" ]]' in content
+    assert 'BARROT_PAPER_TRADER_APPROVED: ${{ inputs.confirm }}' in content
     assert "A full 40-character main SHA is required" in content
     assert "github.ref == 'refs/heads/main'" in content
 

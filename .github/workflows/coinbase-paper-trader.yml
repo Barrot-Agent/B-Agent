@@ -73,6 +73,7 @@ jobs:
           PY
       - name: Run guarded paper trader
         env:
+          BARROT_PAPER_TRADER_APPROVED: ${{ inputs.confirm }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python3 scripts/coinbase_paper_trader.py
       - name: Upload simulated state

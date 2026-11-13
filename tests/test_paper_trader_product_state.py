@@ -218,3 +218,26 @@ def test_corrupt_state_is_not_silently_reset(tmp_path, monkeypatch):
         assert "refusing to reset" in str(exc)
     else:
         raise AssertionError("corrupt paper state must not be replaced with a new account")
+
+
+
+def test_run_requires_explicit_per_run_approval_before_state_or_provider_calls(monkeypatch):
+    trader = load_trader()
+
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError("paper state, providers, model and persistence must not be touched before approval")
+
+    for name in ("load_state", "fetch_ticker", "fetch_recent_trades", "decide", "save_state", "log_decision"):
+        monkeypatch.setattr(trader, name, forbidden)
+
+    for approval in (None, "", "yes", "true"):
+        if approval is None:
+            monkeypatch.delenv("BARROT_PAPER_TRADER_APPROVED", raising=False)
+        else:
+            monkeypatch.setenv("BARROT_PAPER_TRADER_APPROVED", approval)
+        try:
+            trader.run()
+        except SystemExit as exc:
+            assert exc.code == 2
+        else:
+            raise AssertionError("paper trading must fail closed without exact per-run YES approval")

@@ -238,6 +238,11 @@ def portfolio_value(state, current_price):
 
 
 def run():
+    # A specific, explicit approval is required before even reading mutable paper state.
+    if os.environ.get("BARROT_PAPER_TRADER_APPROVED") != "YES":
+        print("Paper trading blocked: BARROT_PAPER_TRADER_APPROVED=YES is required for this specific run.")
+        raise SystemExit(2)
+
     # Validate persisted state before any provider/network call or model invocation.
     try:
         state = load_state()
