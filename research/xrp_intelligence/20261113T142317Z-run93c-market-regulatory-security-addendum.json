@@ -1,0 +1,279 @@
+{
+  "artifact_type": "barrot.xrp.run93c.market_regulatory_security_addendum",
+  "schema_version": "1.0",
+  "run_id": "Run93C",
+  "captured_at_utc": "2026-11-13T14:23:17Z",
+  "audited_code_head": "b4b5fc3d8c6f8a9dc182b5a5d207c2515565b0cd",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "repository": {
+    "branch": "integration/xrp-v3-unified-main-20261112",
+    "ahead_by": 2258,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2355,
+    "pr": 1662,
+    "pr_state": "open",
+    "draft": true,
+    "mergeable": true,
+    "changed_files": 1113,
+    "additions": 318984,
+    "deletions": 5230,
+    "commits": 2258,
+    "reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "open_prs": 375,
+    "drafts": 361,
+    "non_drafts": 14
+  },
+  "exact_head_ci": {
+    "run": 43441582146,
+    "status": "success",
+    "tests_passed": 3564,
+    "tests_failed": 0,
+    "subtests": 8,
+    "coverage_pct": 62.08,
+    "duration_seconds": 96.8,
+    "core_tests": 730,
+    "core_coverage_pct": 76,
+    "wheel_build": true,
+    "dependency_audit_run": 43441582247,
+    "dependency_audit": "success; five manifest groups; zero known vulnerabilities reported",
+    "fail_closed_gate_run": 43441582122,
+    "fail_closed_gate": "success; automatic merge disabled"
+  },
+  "safety_commits": [
+    {
+      "sha": "52388bdb79848a47c986da9ce3eee8378ed84e8c",
+      "scope": "MCPApprovalGate wired into legacy MCPOrchestrator; external action toggles default false; approval mode always_deny; interactive approval false; separate approvals for HF downloads, Databricks submission, GitHub commits and CI/CD triggers; UI warns approval interface unavailable.",
+      "verified_by_run": 43440785381
+    },
+    {
+      "sha": "8b0069fd68cc74ad9a7f58196a2f415d80983662",
+      "scope": "Paper trader blocks before state reads or provider calls unless BARROT_PAPER_TRADER_APPROVED=YES; workflow requires exact YES and expected main SHA.",
+      "verified_by_run": 43441204324
+    },
+    {
+      "sha": "b4b5fc3d8c6f8a9dc182b5a5d207c2515565b0cd",
+      "scope": "Full CI runs on integration/** pushes; duplicate PR suite skipped; dependency-audit path coverage expanded.",
+      "verified_by_run": 43441582146
+    }
+  ],
+  "market": {
+    "capture_time_utc": "2026-11-13T14:18:23Z",
+    "okx": {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "event_time_utc": "2026-11-13T14:13:42.872Z",
+      "age_seconds": 281,
+      "last": 1.0304,
+      "bid": 1.0302,
+      "ask": 1.0303,
+      "bid_size_xrp": 1447.8,
+      "ask_size_xrp": 7783.162708,
+      "spread_bps": 0.9706,
+      "top_ask_to_bid_size_ratio": 5.375,
+      "open24h": 1.0278,
+      "high24h": 1.044,
+      "low24h": 0.9974,
+      "volume24h_xrp": 47977168.752782,
+      "volume24h_usdt": 49060738.12246642,
+      "fresh_at_capture": true,
+      "stale_at_run93c_cutoff": true,
+      "feature_admitted": false,
+      "reason": "no raw byte receipt or point-in-time feature-store admission; one price level is not full depth"
+    },
+    "binance_perpetual": {
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "event_time_utc": "2026-11-13T14:15:00Z",
+      "age_seconds": 203,
+      "mark": 1.03020818,
+      "index": 1.03069049,
+      "funding_decimal": 0.0001,
+      "funding_percent_per_8h": 0.01,
+      "next_funding_utc": "2026-11-13T16:00:00Z",
+      "fresh_at_capture": true,
+      "stale_at_run93c_cutoff": true,
+      "feature_admitted": false
+    },
+    "kraken": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "last": 1.02868,
+      "bid": 1.02891,
+      "ask": 1.02892,
+      "event_time": null,
+      "feature_admitted": false,
+      "reason": "provider event timestamp absent"
+    },
+    "depth": "OKX and Binance L2 retrieval inaccessible; no synchronized depth or executable arbitrage claim"
+  },
+  "etf_flow_disagreement": {
+    "cryptoetf_today": {
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "published_utc": "2026-11-13T05:49:00Z",
+      "nov12": "+$0.1M partial, 3/5 funds, XRPC only",
+      "thirty_day": "+$106.8M",
+      "cumulative": "+$1.80B",
+      "holdings_xrp": 1124786413,
+      "page_inconsistency": "top says 3/5 partial; lower panel says 5/5"
+    },
+    "alpha_xrp": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "nov12": "$0",
+      "thirty_sessions": "-$2.8M",
+      "cumulative": "+$1.71B",
+      "funds": 5
+    },
+    "alpha_all_assets": {
+      "url": "https://alphafinance.io/etf/",
+      "xrp_30_day": "-$10.8M",
+      "funds_total": 39,
+      "assets_total": 5,
+      "provider_internal_disagreement": true
+    },
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "updated_utc": "2026-11-13T00:42:00Z",
+      "complete_through": "2026-11-11",
+      "last_five_complete_sessions_xrp": -10005584,
+      "nov12": "none of its four daily-read XRP files received by its 00:42 update"
+    },
+    "rule": "Do not average. Standardize eligible funds, issuer-file publication times, partial-day rules, fee/staking treatment and USD conversion before feature admission."
+  },
+  "institutional_13f": {
+    "cryptokeyhole_q2_2026": {
+      "managers": 117,
+      "value_usd": 154300000,
+      "funds": 4,
+      "quarter_end": "2026-06-30"
+    },
+    "goldman_sec_primary": {
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000006/0000886982-26-000006-index.htm",
+      "period": "2026-06-30",
+      "filed": "2026-08-14",
+      "holdings_usd": {
+        "21Shares_XRP_ETF": 8206000,
+        "Bitwise_XRP_ETF": 25756000,
+        "Canary_XRP_ETF": 19491000,
+        "Franklin_XRP_Trust": 25406000
+      },
+      "sum_usd": 78859000
+    },
+    "secondary_goldman_value_usd": 87400000,
+    "unreconciled_difference_usd": 8541000,
+    "interpretation": "13F reports ETF securities at quarter-end, not direct XRP balances, current spot purchases or current holdings."
+  },
+  "xrpl_lending": {
+    "protocol_status": "NOT_ACTIVATED",
+    "tracker": "https://xrpldashboard.com/amendments",
+    "snapshot_date": "2026-11-13",
+    "roll_call_utc": "2026-11-13T11:21:00Z",
+    "validators_heard": 35,
+    "votes_required": 29,
+    "votes": {
+      "LendingProtocol": 22,
+      "LendingProtocolV1_1": 22,
+      "SingleAssetVault": 23
+    },
+    "countdown_entries": 0,
+    "independent_tracker": "https://xrpl.to/amendments",
+    "independent_tracker_validators": 36,
+    "independent_tracker_votes": {
+      "LendingProtocol": 22,
+      "LendingProtocolV1_1": 22,
+      "SingleAssetVault": 23
+    },
+    "denominator_disagreement": "35 versus 36; preserve snapshots, do not average",
+    "official_lending_docs": "https://xrpl.org/es-es/docs/concepts/tokens/lending-protocol",
+    "official_credit_docs": "https://xrpl.org/docs/use-cases/defi/institutional-credit-facilities",
+    "mechanics": "Fixed-term uncollateralized loans by default; off-chain underwriting; SingleAssetVault holds lender assets such as XRP, RLUSD trust-line tokens or MPTs; optional first-loss capital does not eliminate credit risk; collateralized loans need additional logic such as on-chain custodians.",
+    "conclusion": "Do not describe this as activated native XRP-collateralized lending."
+  },
+  "regulation": {
+    "sec_cftc": {
+      "release": "SEC 33-11412 / 34-105020",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "issued": "2026-03-17",
+      "effective": "2026-03-23",
+      "finding": "XRP is expressly listed as an example of a digital commodity in the joint SEC-CFTC interpretation.",
+      "caveat": "Commission interpretation, not a court judgment; it does not supersede Howey. A digital commodity can still be involved in an offer or sale constituting an investment contract."
+    },
+    "occ_genius": {
+      "final_rule_date": "2026-10-21",
+      "effective": "2027-01-18",
+      "applications": "not yet accepted until OMB approves information collection",
+      "waiver": "existing issuers may request a waiver if a substantially complete application is pending by the effective date; no named issuer presumed eligible",
+      "bsa_aml_ofac": "separate future rulemaking",
+      "distinction": "national trust-bank charter, GENIUS Act permitted-payment-stablecoin-issuer status and MiCA significant-EMT supervision are separate statuses",
+      "sources": [
+        "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-120.html",
+        "https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-51.html"
+      ]
+    }
+  },
+  "prediction_engine": {
+    "source_definitions": 48,
+    "scheduled_sources": 46,
+    "main_only_workflow": true,
+    "main_ingestion_executed": false,
+    "curated_events": 73,
+    "byte_exact_raw_hashes": 0,
+    "model_eligible_events": 0,
+    "candidate_model_implemented": false,
+    "candidate_model_trained": false,
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean_reversion",
+      "volatility"
+    ],
+    "paired_block_bootstrap": false,
+    "source_clustered_uncertainty": false,
+    "multivariate_concept_drift": false,
+    "independent_shadow_cohort": false,
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "nine_platforms": {
+    "status": "DESIGNED_NOT_DISPATCHED",
+    "chatgpt": "GitHub read verified; admin/maintain/push/pull/triage permissions overbroad",
+    "claude": "unverified",
+    "grok": "unverified",
+    "gemini": "unverified",
+    "copilot": "no formal PR approval",
+    "codex": "unverified",
+    "hugging_face": "prior BUILD_ERROR; no deployment",
+    "kaggle": "untested; no submission",
+    "databricks": "read-only HTTP 403; no write",
+    "external_dispatch": false,
+    "external_data_transfer": false,
+    "groq_is_not_grok": true
+  },
+  "merge": {
+    "decision": "NO_MERGE",
+    "reasons": [
+      "PR remains draft",
+      "zero formal reviews or approvals",
+      "main required status contexts/checks empty",
+      "main branch-protection detail HTTP 403",
+      "fallback ruleset 10863829 disabled",
+      "integration branch unprotected",
+      "GitHub connector overprivileged",
+      "Pages publication authorization unresolved",
+      "semantic review incomplete"
+    ]
+  },
+  "actions_not_taken": [
+    "No merge",
+    "No deployment",
+    "No secret rotation",
+    "No Space restart",
+    "No external-model dispatch or data transfer",
+    "No Databricks write",
+    "No Kaggle submission",
+    "No paper trade",
+    "No funds transfer or real-money action",
+    "No force-push or history rewrite",
+    "No destructive worktree operation",
+    "No source PR closure"
+  ]
+}
