@@ -1014,7 +1014,7 @@ def test_rejects_feature_snapshot_for_another_asset(tmp_path):
 def test_rejects_forecast_source_manifest_that_differs_from_snapshot_lineage(tmp_path):
     ledger = make_ledger(tmp_path / "forecasts.sqlite3")
     with pytest.raises(ForecastLedgerError, match="do not exactly match referenced feature lineage"):
-        ledger.record_forecast(forecast(source_ids=["kraken-001", "macro-001", "unregistered"]))
+        ledger.record_forecast(forecast(source_ids=["kraken-001", "macro-001", "coinbase-001", "binance-001", "okx-001", "unregistered"]))
 
 
 def test_rejects_underreported_feature_information_timestamp(tmp_path):
