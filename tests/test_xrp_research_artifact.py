@@ -1526,3 +1526,45 @@ def test_run77_public_web_observations_remain_research_only_and_graph_resolvable
     assert data["identity_reconciliation"]["camilla_kamilah_stevenson"][
         "verified_creator_upload_count"
     ] == 0
+
+
+RUN77C_CFTC_AUDIT = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261113T041832Z-run77c-cftc-cme-legacy-cot-positioning.json"
+)
+
+
+def test_run77c_cftc_cme_legacy_cot_is_lagged_and_model_ineligible() -> None:
+    data = json.loads(RUN77C_CFTC_AUDIT.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_cftc_cme_legacy_futures_only_cot_addendum"
+    assert data["repository"] == "Barrot-Agent/B-Agent"
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"]) == 4
+    for source in sources.values():
+        assert source["raw_content_sha256"] is None
+        assert source["raw_receipt_id"] is None
+        assert source["model_eligible"] is False
+    observation = data["observations"][0]
+    assert observation["evidence"] == ["cftc_legacy_cme_futures_only"]
+    assert observation["evidence"][0] in sources
+    assert observation["model_eligible"] is False
+
+    cot = data["cftc_positioning"]
+    assert cot["market"] == "XRP - CHICAGO MERCANTILE EXCHANGE"
+    assert cot["cftc_contract_code"] == "176740"
+    assert cot["positions_as_of"] == "2026-11-03"
+    assert cot["published_date"] == "2026-11-06"
+    assert cot["total_open_interest_contracts"] == 7216
+    assert cot["total_open_interest_xrp_equivalent"] == 360_800_000
+    assert cot["positions_contracts"]["non_commercial"]["net_long"] == 1465
+    assert cot["positions_contracts"]["non_commercial"]["net_long_xrp_equivalent"] == 73_250_000
+    assert cot["changes_from_2026_10_27_contracts"]["total_open_interest"] == -845
+    assert cot["concentration_percent_of_open_interest"]["eight_or_fewer_traders_gross_long"] == 95.1
+
+    assert data["release_schedule"]["next_scheduled_release_date"] == "2026-11-16"
+    assert data["release_schedule"]["semiweekly_effective_date"] == "not confirmed"
+    assert data["predictions"]["issued"] is False
+    assert data["predictions"]["status"] == "NOT_ISSUED"
+    assert data["integration_gap"]["legacy_futures_only_cot_adapter"] == "not present in xrp_public_ingestion.py source registry at capture time"
