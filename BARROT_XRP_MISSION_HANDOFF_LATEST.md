@@ -655,3 +655,54 @@ PR #1662 remains draft, with zero formal reviews and approvals. Main branch-prot
 Keep #1662 draft. Do not merge until independent formal approval, exact-head checks, security gates, branch-protection requirements and public Pages authorization are all resolved. After a valid merge, fetch main, verify the merge commit and merged files, run main CI, and only then close exact superseded source PRs.
 
 No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run 95 — 2026-11-13: canonical receipt gate repair, exact-head verification and live market reconciliation
+
+**Captured:** 2026-11-13T14:53:43.720Z UTC. **Main SHA:** `fb272b40966834754ec686f9ed3ab94123f09306`. **Integration head before this handoff commit:** `501832afe8c5a4c5fc5f5c80d28d14733dc7838f`. **PR:** [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662), still draft.
+
+### Prediction-evidence gate correction — executed and verified
+
+A schema mismatch was found between `RawReceiptArchive.store()` and `research_eligibility._source_registry()`. The archive emits canonical v1/v2 receipt fields including retained-byte status, retention reason and optional HTTP provenance headers, while the eligibility validator expected an incomplete field set. Synthetic tests had not exercised an actual archive receipt.
+
+- Commit `ceafda5de59301ca3e6b574d306f8e810944f274`: validator now accepts only the exact canonical v1/v2 archive schemas, validates the allowlisted HTTP provenance headers, and rejects digest-only receipts or retention exceptions for model admission.
+- Commit `501832afe8c5a4c5fc5f5c80d28d14733dc7838f`: added regression tests that construct real `RawReceiptArchive` receipts, verify retained-byte admission, and reject digest-only receipts.
+- Both new regression tests passed on the exact head.
+
+### Exact-head CI — verified on push event
+
+- [Full CI run 43446636533](https://github.com/Barrot-Agent/B-Agent/actions/runs/43446636533): exact head `501832a`; **3,566 passed**, 8 subtests passed, 62.08% inclusive coverage, 76% core coverage. Wheel build and installed-wheel verification of Barrot V3, the XRP mission and canonical data assets passed.
+- [Core suite](https://github.com/Barrot-Agent/B-Agent/actions/runs/43446636533): 732 passed, 8 subtests passed.
+- [Dependency audit 43446646672](https://github.com/Barrot-Agent/B-Agent/actions/runs/43446646672): five manifest groups passed; no known vulnerabilities reported.
+- [Fail-closed push gate 43446636763](https://github.com/Barrot-Agent/B-Agent/actions/runs/43446636763) and [PR gate 43446646872](https://github.com/Barrot-Agent/B-Agent/actions/runs/43446646872): passed with merging disabled.
+- [PR CI event 43446646668](https://github.com/Barrot-Agent/B-Agent/actions/runs/43446646668) was skipped by the integration-branch PR condition; the push-triggered full-suite run above completed successfully. The earlier handoff's “full suite pending” state was stale because the commit-workflow helper returned only PR-triggered runs.
+
+### Live repository and integration state
+
+- Main remains `fb272b40966834754ec686f9ed3ab94123f09306`; no main changes.
+- Integration head before this documentation commit: `501832afe8c5a4c5fc5f5c80d28d14733dc7838f`; 2,262 commits ahead, zero behind; 1,117 changed files.
+- Open PR inventory: 375 total, 361 drafts and 14 non-drafts. #1662 is the only open PR currently based on the current main SHA. No PRs were closed.
+- #1662 remains draft, mergeable, with zero formal reviews, zero approvals and zero inline review threads. Test success does not replace independent review.
+- Main CI run 43343513172 passed, including its full repository suite (747 tests and 8 subtests). Main Pages build/deploy run 43343511839 succeeded, confirming that a main push can publish the Pages site automatically.
+- Main scheduled Cross Analysis run 43446769807 completed its read-only analysis and artifact upload successfully. Pillars Check 43430139937 failed because GitHub App ID/private key/installation ID were absent, Databricks returned HTTP 403, and the Hugging Face Space reported BUILD_ERROR.
+- Main branch-protection detail remains inaccessible (HTTP 403); visible fallback ruleset 10863829 is disabled. Pages configuration API was not accessible; the successful Pages deployment run is direct evidence of the side effect.
+
+### Workflow and external-action safety screen
+
+All 50 workflow files changed by #1662 were screened for triggers, permissions, secrets and external writes. High-risk deployment, Databricks, Hugging Face, Kaggle and paper-trading paths are manual/confirmation-gated or disabled; none were dispatched. The cross-analysis workflow is read-only and artifact-only. The XRP public-ingestion workflow is hourly plus daily but its job is explicitly restricted to `refs/heads/main`; it has not run on main because #1662 is unmerged. Direct deployment/MCP call-path semantic review is still incomplete. The MCP orchestrator requests approval before Hugging Face model downloads and Databricks job submission; the approval-gate implementation defaults to `always_deny`.
+
+### November 13 market reconciliation — research only
+
+- Kraken XRP/USD ticker returned bid $1.03271, ask $1.03279, last $1.03262, 24-hour volume 36.11M XRP, high $1.04269, low $0.99672 and open $1.04003. The API response did not expose a server timestamp; this is a single-venue web-rendered observation, not a model feature.
+- The best-timestamped order-book snapshot retrieved was Binance XRPUSDT **perpetual**, not spot: Basis at 07:23 UTC showed a $1.0321 mid, 0.97 bp spread, 52% bid share within 1%, and $13.6M depth within 0.5%. FreeOrderBook's displayed spot cross-exchange prices materially conflicted with Kraken and its own top-20 ask summary was inconsistent. Direct synchronized spot depth remains unverified.
+- Perpetual OI providers ranged from $613M (Kodexius) to $1.55B (TradRadar) to $2.26B (CoinGlass). Funding signs and magnitudes also disagreed. No cross-provider average was computed; venue/contract universes and capture times differ.
+- ETF trackers disagree on Nov 12 zero versus missing and on product universes. XRP Insights and CryptoKeyhole report net XRP reductions over overlapping Nov 5-11 windows; TheXRPInvestor includes spot, derivative, index and income products. Holdings changes are not equivalent to end-user cash flows.
+- All web captures are marked research-only: no byte-complete publisher payloads, no raw receipt IDs and zero eligible model observations. No forecast was issued.
+
+Artifact: [Run95 market structure reconciliation](research/xrp_intelligence/20261113T145343Z-run95-market-structure-reconciliation.json).
+
+### Backlog and next action
+
+#1662 remains the single active integration candidate but is **blocked**, not ready. Obtain independent formal review; finish semantic review of direct deployment scripts and all changed paths; resolve least-privilege GitHub access, branch-protection visibility and Pages publication authorization. After any approved merge, refetch main, verify the merge commit and merged files, run main CI, account for Pages deployment and only then close exact superseded source PRs. Activate the main-only XRP ingestion workflow only after that merge; establish durable externally anchored raw receipts, synchronized spot/derivatives/ETF history and measured out-of-sample lift before forecast admission.
+
+No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
