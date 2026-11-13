@@ -1,3 +1,85 @@
+## Run73B — exchange-flow, leverage, SBI/OpenAI identity and model-orchestration correction
+
+Captured: 2026-11-13T01:06:31Z. This addendum preserves the Run73 observations above and adds later public-source evidence. All web observations remain research-only and are not Barrot raw-receipt inputs.
+
+### Repository state after the Run73 handoff commit
+
+- Branch tip at addendum start: \`823800f9a9285bb15a597edf4c13a798ac6eab01\`; 2,174 commits ahead of main, zero behind.
+- PR #1662 remains open, draft and mergeable. It has 1,076 changed files and +302,658/-5,123 at this head.
+- Exact-head CI run [43342248341](https://github.com/Barrot-Agent/B-Agent/actions/runs/43342248341) is still in progress. Core job passed; full-suite dependency installation completed and the complete repository test step was running. Do not claim a full-suite result for this head until that job finishes.
+- Exact-head dependency audit [43342248210](https://github.com/Barrot-Agent/B-Agent/actions/runs/43342248210) passed. Fail-closed gate [43342248401](https://github.com/Barrot-Agent/B-Agent/actions/runs/43342248401) passed with merge disabled.
+- The main tree contains \`feature_store.py\`, \`forecast_ledger.py\` and \`source_independence.py\`; integration modifies all three materially. Main does not contain the new \`xrp_public_ingestion.py\`, mission registry, primary-mission manifests or scheduled XRP workflow. These remain integration-only until a safe merge.
+- The source-code diffs add stronger captured/known-at time checks, snapshot-chain verification, canonical publisher independence grouping and the v4 fail-closed evaluator-attestation/readiness policy. The forecast ledger is a recorder/gate, not a prediction model or execution engine.
+
+### Exchange balances and exchange-flow disagreement
+
+XRP Insights' XRPL account-balance read at 2026-11-12 08:00 UTC attributes 22.34B XRP to 706 wallets across 24 exchanges. It estimates this as 32.4% of circulating supply, but explicitly includes cold storage and exchange-controlled wrapped-token reserves; it is not tradable float.
+
+- Same-wallet change: +45.8M XRP over seven days (Nov 5–12) and -180.9M XRP over 30 days (Oct 13–Nov 12).
+- Naive total change: +61.4M over seven days and +346.7M over 30 days. The difference is wallet-label coverage: five newly tracked wallets add 15.6M XRP in the seven-day window; seven newly tracked wallets add 527.6M in the 30-day window.
+- Largest attributed balances: Upbit 6.47B; Coinbase 5.81B; Binance 2.69B; Bithumb 1.81B; Uphold 1.69B; Kraken 966.6M; bitbank 577.5M; Coincheck 553.6M.
+- Coinbase's tracked total includes 150.6M XRP backing cbXRP on Base; Binance's includes 327.4M XRP backing Binance-Peg XRP on BNB Chain. The page separately identifies 481.6M XRP in exchange-controlled reserve/insurance/charity wallets, including 325.8M Binance-Peg reserve, 150.6M cbXRP reserve and 5.2M insurance/charity funds.
+- South Korean exchange wallets account for 8.60B XRP (38.5% of the tracked exchange-wallet total), led by Upbit 6.47B and Bithumb 1.81B; Korbit is not yet fully represented.
+
+TrackWhale's separate seven-day large-transfer sample, snapshot 2026-11-12 20:30 UTC, reports 149.33M XRP / $177.04M tracked inflows to exchanges and 215.00M XRP / $247.72M tracked outflows, for net -65.67M XRP / -$70.68M. It counts six inflow and nine outflow transfers. It excludes internal and exchange-to-exchange transfers and only tracks large transfers between its labeled exchange set and external wallets.
+
+The +45.8M same-wallet exchange-balance change and -65.67M TrackWhale large-transfer netflow are not measurements of the same population. They can coexist if smaller/customer deposits and large-wallet withdrawals move differently, or if wallet labels and sampling differ. Neither proves net tradable supply or a price direction. Preserve both series and their different definitions.
+
+Sources: [XRP Insights exchange balances](https://xrp-insights.com/exchange-balances) · [TrackWhale XRP tracker](https://trackwhale.io/xrp-whale-tracker).
+
+### Liquidations and open-interest universe disagreement
+
+- CoinGlass' Nov 12 24-hour snapshot reports $10.58M XRP liquidations: $9.955M longs (94.09%) and $625K shorts (5.91%). It reports 12-hour liquidations of $9.80M, 4-hour $157.63K and 1-hour $1.23K; 2,026 traders liquidated; largest single liquidation $588K; peak hour 13:00–14:00 UTC. It labels the 24-hour amount 0.77x the seven-day average and 0.34x the recent 30-day peak.
+- Alpha Finance's Nov 12 20:14 UTC all-venue display reported $2.26B OI, $2.34B 24-hour volume, $11.5M long liquidations and $524.9K short liquidations. Its liquidation heatmap levels are modeled from OI and leverage tiers; they are not guaranteed liquidation prices.
+- Kodexius' Nov 12 18:34 UTC seven-contract sample reported $631.55M OI and +0.0067% weighted funding per eight hours. Bybit's contract funding was slightly negative while Binance, OKX and other covered venues were positive.
+- Liqwall's earlier Nov 12 02:52 UTC page reported $1.16B OI, +0.0057% average funding and 75.3% Binance accounts long.
+
+The $631.55M, $1.16B and $2.26B OI figures have materially different coverage, contract sets and timestamps. They are not averaged. The long-skewed liquidation snapshots indicate a leveraged-long flush during volatility, but the data is not synchronized enough to infer a durable trend.
+
+Sources: [CoinGlass liquidations](https://www.coinglass.com/liquidations/XRP) · [Alpha Finance](https://alphafinance.io/liquidation-heatmap/xrp/) · [Kodexius](https://kodexius.com/data/crypto-derivatives/XRP) · [Liqwall](https://liqwall.com/coins/xrp).
+
+### SBIC / SBI / SoftBank / ChatGPT — entity and relationship correction
+
+The phrase investigation now distinguishes four separate things:
+
+1. **SBIC East / Tokyo:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. Its official page describes a 1963-established regional SME investment and consultation company, with local-government, chamber-of-commerce, financial-institution and corporate shareholders, and names Nagoya and Osaka as sister companies. It co-hosted a February 26, 2025 seminar titled “Generative AI (ChatGPT): Present and Future” with the Tokyo Chamber of Commerce Taito branch; a Microsoft executive evangelist was the speaker. It also ran a June 12–13, 2025 introductory generative-AI/machine-learning course for investee companies, including ChatGPT and Microsoft Copilot topics. These are educational/seminar activities, not an OpenAI commercial partnership or proof of ChatGPT Enterprise deployment at SBIC East.
+2. **SBI Holdings and SBI Securities:** Their May 1, 2025 first-party release states that SBI Securities began using ChatGPT Enterprise in January 2025 and SBI Holdings introduced it to some officers/employees in March 2025. This is a verified direct corporate product-adoption relationship with OpenAI. It is SBI Holdings/SBI Securities, not the three regional SBIC companies.
+3. **SoftBank Group / SoftBank Corp / OpenAI:** A separate February 3, 2025 announcement describes the Cristal Intelligence partnership and the planned SB OpenAI Japan joint venture. OpenAI's current partner page identifies SB OAI Japan as a joint venture established by SoftBank Group and OpenAI. SoftBank Group is not SBI Holdings; SB OAI Japan is not SBIC East/Central/West.
+4. **SBI Group / AlpacaTech / MixSeek:** SBI Group's December 23, 2025 release says AlpacaTech, a subsidiary of FOLIO Holdings in the SBI Group, launched MixSeek. Its public description says ChatGPT, Gemini, Claude and Grok can analyze the same task in parallel and an evaluator selects the strongest output. The published \`mixseek-core\` package describes Leader/Member hierarchy, round-based evaluation, parallel teams and leaderboard ranking; the current PyPI version is an alpha/pre-release and requires Python >=3.13.7. Barrot's inspected manifests use Python 3.11. Treat MixSeek as a real SBI Group multi-model-orchestration precedent, not a live Barrot connection or a drop-in dependency without compatibility and security review.
+
+Primary sources:
+- [SBIC East official company profile](https://www.sbic.co.jp/company/profile/)
+- [SBIC East February 2025 ChatGPT seminar](https://www.sbic.co.jp/seminar/20250226ym/)
+- [SBIC East June 2025 generative-AI course](https://www.sbic.co.jp/training/20250612co/)
+- [SBI Holdings/SBI Securities ChatGPT Enterprise adoption, May 1, 2025](https://www.sbigroup.co.jp/news/2025/0501_15410.html)
+- [SoftBank Group / OpenAI / SB OpenAI Japan announcement, Feb 3, 2025](https://www.softbank.jp/corp/news/press/sbkk/2025/20250203_01/)
+- [OpenAI's SB OAI Japan partner page](https://openai.com/business/partners/sb-oai-japan-gk/)
+- [SBI Group / AlpacaTech MixSeek announcement](https://www.sbigroup.co.jp/news/pr/2025/1223_15987.html)
+- [MixSeek Core on PyPI](https://pypi.org/project/mixseek-core/)
+
+The correct conclusion is not “SBIC has an OpenAI partnership.” It is: SBIC East hosted ChatGPT education; SBI Holdings/SBI Securities adopted ChatGPT Enterprise; SoftBank Group separately partnered with OpenAI through SB OAI Japan; and a separate SBI Group subsidiary launched a four-provider competitive multi-agent platform.
+
+### Exact phrase: ASK Coin and actual capital
+
+- “ASK Coin” remains ambiguous. Search surfaced an inactive/untracked “Ask Coin” exchange listing at askcoin.net and the unrelated Permission Coin (ASK) token. Neither establishes an XRP Ledger issuer, contract or relationship. No verified XRP connection was found.
+- “Actual capital” is not a standardized XRP metric. Preserve the Evernorth SEC reconciliation: cash proceeds, in-kind XRP, debt/PIK notes, conditional ELOC capacity/draws, warrants and registered secondary resales are different categories. A resale registration is not new issuer capital; in-kind XRP is not cash; debt is not equity proceeds.
+- “SBIC, ChatGPT SBIC” is best treated as an entity-disambiguation query, not a confirmed entity or partnership name. No OpenAI contract with SBIC East/Central/West was identified.
+
+Sources: [CoinMarketCap Ask Coin exchange listing](https://coinmarketcap.com/exchanges/ask-coin/) · [Permission Coin / ASK](https://holder.io/coins/ask/) · [Evernorth SEC prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+### Kamilah/Camilla Stevenson identity gate
+
+The canonical repository registry says person identity is confirmed but channel ownership and the exact \`@drkamilahstevenson\` / channel-ID relation are not first-party/platform-verified. Its gate remains false, verified own-channel inventory count remains zero, and candidate references remain candidate-only. Preserve the 21 candidate references in the canonical registry and the 13/14 XRP-focused candidate records as separate dated scopes; do not call them an attributed or exhaustive creator inventory. No candidate video was admitted as an XRP fact or forecast feature.
+
+### Prediction and platform status
+
+No new data from these public pages has a Barrot RawReceiptArchive receipt. All remain model-ineligible. Forecast status remains **NOT_ISSUED**.
+
+MixSeek's existence is evidence that an SBI Group company has built a competitive multi-model orchestration product, not evidence that Barrot is authenticated to MixSeek or to any of its provider accounts. It supports using independent model outputs plus a separately governed evaluator as an architectural reference. Barrot's nine-platform authentication map remains unchanged: only the current-session ChatGPT/GitHub connector is verified; the other provider connections remain unverified or blocked as recorded above.
+
+
+---
+
 # Run73 — exact-head repository audit, live XRP market and XRPL governance update
 
 Captured: 2026-11-13T00:59:39Z. This entry supersedes the Run72 point-in-time status below while preserving every prior run and source record.
@@ -16,7 +98,7 @@ XRP intelligence and measured prediction-engine mastery remain Barrot's highest-
 - Main recursive tree: 1,381 entries. Integration recursive tree: 2,323 entries. Neither tree response was truncated.
 - PR #1662: open, draft, mergeable; 1,076 changed files, +302,444/-5,123; 50 changed workflows. It remains the only consolidated current-main integration PR.
 - Open PR inventory, paginated across all four pages: 375 unique PRs; 361 drafts and 14 non-drafts; 367 target main and 8 target other base branches.
-- PR #1662 has zero formal reviews, zero approvals, zero requested reviewers and zero inline review threads. The PR is still draft; CodeRabbit does not automatically review drafts.
+- PR #1662 has zero formal reviews, zero approvals, zero requested reviewers and zero inline review threads. The PR is still draft; CodeRabbit does not automatically review drafts. At head `823800f9`, PR totals were 1,076 changed files, +302,658/-5,123.
 - The latest integration commit \`bf19a852\` changes only this durable handoff file. The PR description identifies \`777892325355e1c415f21533fe915bdc16925798\` as its code-bearing parent. The full suite was nevertheless rerun on the exact current head, not inherited from its parent.
 - Main was not changed.
 
