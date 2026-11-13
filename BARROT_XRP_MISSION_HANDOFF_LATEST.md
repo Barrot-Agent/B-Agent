@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Mission Handoff (Run90)
 
-**Captured:** 2026-11-13T13:15:50Z  
+**Captured:** 2026-11-13T13:20:58Z  
 **Mission priority:** 1 — XRP intelligence and prediction-engine mastery  
 **Protected foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
 
@@ -15,25 +15,26 @@ Repository: [Barrot-Agent/B-Agent](https://github.com/Barrot-Agent/B-Agent)
 | Main SHA | fb272b40966834754ec686f9ed3ab94123f09306 |
 | Integration branch | integration/xrp-v3-unified-main-20261112 |
 | Integration head at Run90 start | b4c15161ac41e8343820b3540d879e34df548d40 |
+| Current integration head before Run90C handoff refresh | 2e0d0e95e4ada13a896ec683216a436142608eb5 |
 | Main recursive tree | 1,381 entries; complete |
-| Integration recursive tree | 2,348 entries; complete |
-| Main → integration ancestry | 2,241 commits ahead; zero behind |
+| Integration recursive tree | 2,351 entries; complete |
+| Main → integration ancestry | 2,243 commits ahead; zero behind |
 | Consolidated PR | [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662) |
-| PR size | 1,102 files; 315,105 additions; 5,136 deletions |
+| PR size | 1,105 files; 316,080 additions; 5,136 deletions |
 | Changed-file composition | 50 workflows; 378 tests; 576 XRP research paths; 443 Python files including tests; seven public web files; 26 Markdown files |
 | Open PR inventory | 375 total; 361 drafts; 14 non-drafts; 367 target main; eight target other branches |
 
-PR #1662 is open, draft, mergeable and based on current main. It has zero formal reviews, zero approvals and zero review threads. Main was not changed. Run90 adds only documentation/research artifacts to the existing integration branch; it does not create a branch or PR and does not modify runtime code.
+PR #1662 is open, draft and mergeable, based on current main. It has zero formal reviews, zero approvals and zero review threads. Main was not changed. Run90, Run90B and Run90C updates add only documentation/research/security-audit artifacts to the existing integration branch; no new branch or PR and no runtime code change.
 
-## 2. Exact-head CI — VERIFIED on predecessor head b4c1516
+## 2. Exact-head CI — VERIFIED on Run90B head 2e0d0e9
 
-- [Full CI 43424614346](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424614346), job 131882856177: **3,557 passed, zero failed, eight subtests passed**, 61.72% inclusive coverage, 82.54 seconds.
-- Core suite: **729 passed**, 76% coverage.
+- [Full CI 43432262745](https://github.com/Barrot-Agent/B-Agent/actions/runs/43432262745), job 131908414017: **3,557 passed, zero failed, eight subtests passed**, 61.72% inclusive coverage, 100.98 seconds.
+- Core Tests job 131908413867: **729 passed, eight subtests passed**, 76% coverage, 11.88 seconds.
 - Wheel build and installed Barrot V3/XRP mission verification: passed.
-- [Dependency audit 43424613885](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424613885): five manifest groups passed; zero known vulnerabilities reported.
-- [Fail-closed gate 43424615956](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424615956): passed by keeping automatic merge disabled.
+- [Dependency audit 43432262687](https://github.com/Barrot-Agent/B-Agent/actions/runs/43432262687), job 131908414050: all five manifest groups passed; zero known vulnerabilities reported.
+- [Fail-closed gate 43432262681](https://github.com/Barrot-Agent/B-Agent/actions/runs/43432262681), job 131908413325: passed; automatic merge remains intentionally disabled.
 
-These results are exact for b4c15161ac41e8343820b3540d879e34df548d40. The new Run90 documentation/research descendant must pass its own exact-head full suite, wheel/mission check, dependency audit and fail-closed gate before it is called verified.
+These results are exact for 2e0d0e95e4ada13a896ec683216a436142608eb5. The final Run90C handoff/map-only descendant requires its own exact-head full suite, wheel/mission check, dependency audit and fail-closed gate. No result from a different SHA is substituted.
 
 ## 3. Current XRP market observations — DESCRIPTIVE ONLY
 
@@ -160,9 +161,38 @@ All 50 workflow files changed by #1662 were inspected on both main and integrati
 
 The Run90 workflow audit is linked below. These findings reinforce the NO MERGE decision; they do not authorize deployments, secret rotation, paper trades or external writes.
 
+
+## 7B. Barrot V3 safety and public-web review — VERIFIED
+
+**V3 preservation controls observed in code:**
+- BarrotExecutor disables shell execution, confines paths, allows only a small command set, restricts Python execution to pytest/compileall and keeps Git operations read-only.
+- BarrotActionLoop uses create-only file writes, exact unique-preimage compare-and-swap patches, bounded tests and rollback only when the current file exactly matches the action's post-write content.
+- TermuxBridge restricts output to approved roots, rejects symlinks, uses create-only writes, fsync and refuses to overwrite differing existing files.
+- b_agent.py requires an explicit external-transfer flag, an interactive terminal and the exact confirmation phrase before sending repository context to LunaRoute. Local repair requires a separate execution flag/phrase and a clean non-default worktree.
+- MCPApprovalGate defaults to always-deny.
+
+**Remaining code-level safety gaps:**
+- Legacy MCPOrchestrator and direct deploy_databricks.py/deploy_huggingface.py code paths can invoke Databricks/Hugging Face/GitHub external writes without visible MCPApprovalGate wiring. The associated workflows are gated or quarantined, but direct-call enforcement and call-site reconciliation remain required before merge.
+- repository_repair_loop rejects dirty/default worktrees, protected paths and symlinks, and writes tracked files only; however, it does not require a unique old-text match and does not automatically roll back partial edits after failed validation. Do not automate this repair loop until those controls are added.
+- The safe autonomous action loop does not expose arbitrary shell execution. No direct deploy, MCP operation, local repair or Termux drop was executed in this run.
+
+**Public web review:**
+- web/latest_signal.json says NOT_ISSUED, but its status timestamp is 2026-11-10 and is stale.
+- web/signal_accuracy.json says NOT_EVALUATED; the 45.5% historical variable-horizon value is isolated as unvalidated legacy data.
+- web/landing.html and web/signals.html state that no directional XRP forecast is published.
+- webmcp_monetization.js has a Gumroad license-verification POST path; purchase_url is null and checkout_available is false. No checkout or payment path was executed. If the verification tool is invoked, the submitted license key is transmitted to Gumroad; per-tool consent/allowlisting is required. webmcp-live-sandbox remains quarantined.
+- Pages auto-deploys on main push. The seven public web files therefore remain a publication-authorization blocker even though the current signal/accuracy status is fail-closed.
+
+**XRP public ingestion workflow:**
+- 48 public source definitions; 43 hourly and three weekly CFTC endpoints, with two noncommercial XRPL node endpoints excluded; 46 scheduled endpoints.
+- Read-only GitHub Actions workflow, hourly at minute 3 and daily at 00:15 UTC, main-only, with read-only contents/actions permissions.
+- Raw receipt and receipt-chain artifacts: 90-day retention; per-run feature-store artifact: seven days; daily feature-store archive: 90 days.
+- Coinbase historical backfill is bounded to 0–365 days and remains a read-only public-data task.
+- No successful main-branch scheduled ingestion has been verified. GitHub artifact retention is not independent WORM storage or trusted timestamp anchoring.
+
 ## 7. Security, branch protection and merge decision
 
-**NO MERGE.** PR #1662 is still draft, with zero formal reviews/approvals/threads. Its 1,102-file semantic review is incomplete.
+**NO MERGE.** PR #1662 is still draft, with zero formal reviews/approvals/threads. Its 1,105-file semantic review is incomplete.
 
 - Main reports protected=true, but the detailed branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back” ID 10863829, is disabled. Required-check and approval enforcement cannot be independently verified.
 - The GitHub connector reports admin/maintain/push/pull/triage; least privilege is not satisfied.
@@ -195,7 +225,7 @@ Complete open-PR inventory: 375. No source PR was closed.
 | #1644–#1650, #1254/#1255 | Dependency/workflow candidates; reconcile versions and differing workflow blobs before closure |
 | #1320, #1318, #1317, #1269 | Unique/unreviewed safety or structural work; preserve |
 
-The first four supersession candidates must remain open until #1662 is merged, its content is verified on main, and exact duplicate status is confirmed. Do not close unique/diverged PRs or bulk-close drafts.
+Updated branch ancestry against the current integration head 2e0d0e9: #1661 is 0 ahead/111 behind; #1660 0/292; #1643 0/1,354; #1642 0/2,259; #1640 1/1,287; #1653 18/2,262; #1655 17/2,262; #1659 8/2,262; #1615 3/2,303; #1614 36/2,303. Path-overlap evidence remains as listed above. The first four supersession candidates must remain open until #1662 is merged, its content is verified on main, and exact duplicate status is confirmed. Do not close unique/diverged PRs or bulk-close drafts.
 
 ## 9. Durable artifacts and next action
 
@@ -203,10 +233,10 @@ The first four supersession candidates must remain open until #1662 is merged, i
 - [Run90 nine-platform map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run90.json)
 - [Run90 workflow security and main-health audit](research/xrp_intelligence/20261113T131550Z-run90-workflow-security-main-health-audit.json)
 - [Consolidated integration PR #1662](https://github.com/Barrot-Agent/B-Agent/pull/1662)
-- [Predecessor exact-head full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424614346)
-- [Predecessor dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424613885)
-- [Predecessor fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424615956)
+- [Run90B exact-head full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/43432262745)
+- [Run90B dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/43432262687)
+- [Run90B fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/43432262681)
 
 **Next concrete action:** complete semantic reconciliation of all 1,102 PR paths and the 50 workflow changes; resolve least-privilege permissions, branch-protection visibility and Pages publication authorization; obtain a formal independent review; then verify exact-head checks before any merge. After a genuinely safe merge, verify the merge commit, fetch main again, inspect automatic workflow side effects and run main CI. Only then verify main-side read-only ingestion and independent raw-source anchoring. Build the actual XRP candidate model after synchronized historical data is available; add paired block-bootstrap/source-clustered uncertainty and independent shadow evaluation. Keep forecast issuance disabled until the complete admission gate passes.
 
-No merge, main write, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+No merge, main write, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred. The final Run90C documentation-only descendant must pass its own exact-head CI before it is treated as verified.

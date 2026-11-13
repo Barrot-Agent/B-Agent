@@ -2,13 +2,30 @@
   "artifact_type": "barrot.nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "run_id": "Run90",
-  "captured_at_utc": "2026-11-13T13:15:50Z",
+  "captured_at_utc": "2026-11-13T13:20:58Z",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_at_audit": "51980732b58924cf10f65015d924e4ad72d646cc",
+    "integration_head_at_audit": "2e0d0e95e4ada13a896ec683216a436142608eb5",
     "integration_branch": "integration/xrp-v3-unified-main-20261112",
-    "active_integration_pr": 1662
+    "active_integration_pr": 1662,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2351,
+    "integration_ahead_by": 2243,
+    "integration_behind_by": 0,
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "2e0d0e95e4ada13a896ec683216a436142608eb5",
+      "changed_files": 1105,
+      "additions": 316080,
+      "deletions": 5136,
+      "commits": 2243,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    }
   },
   "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 is the protected execution/orchestration/safety/verification foundation.",
   "coordination_status": "DESIGNED_NOT_DISPATCHED",
@@ -169,7 +186,7 @@
     },
     "merge_decision": "NO MERGE; PR remains draft and unreviewed; semantic/security/publication blockers remain."
   },
-  "next_verification": "Verify exact-head CI for the latest Run90 workflow-security documentation commit. Keep the PR draft and do not merge until semantic review, least privilege, branch-protection visibility, Pages authorization and formal review are resolved.",
+  "next_verification": "Run90C is a documentation/map-only descendant of 2e0d0e95e4ada13a896ec683216a436142608eb5. Verify its exact-head full suite, wheel/mission check, five-manifest dependency audit and fail-closed gate. Keep #1662 draft; do not merge until semantic/security review, least privilege, branch protection, direct deployment approval wiring and Pages authorization are resolved.",
   "internal_barrot_credentials": {
     "github_app": {
       "status": "MISSING_CONFIGURATION",
@@ -193,7 +210,7 @@
     "pillars_consistency": {
       "run_id": 43430139937,
       "status": "FAILURE",
-      "read_only": true,
+      "classification": "read-only external health check, not repository CI",
       "failures": [
         "Barrot GitHub App credentials missing",
         "Databricks read-only SELECT 1 HTTP 403",
@@ -277,5 +294,96 @@
     ],
     "no_external_dispatch": true,
     "groq_is_not_grok": true
+  },
+  "run90c_snapshot": {
+    "captured_at_utc": "2026-11-13T13:20:58Z",
+    "repository": {
+      "current_head_before_handoff_refresh": "2e0d0e95e4ada13a896ec683216a436142608eb5",
+      "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "main_tree_entries": 1381,
+      "integration_tree_entries": 2351,
+      "ahead_by": 2243,
+      "behind_by": 0,
+      "pr_changed_files": 1105,
+      "pr_additions": 316080,
+      "pr_deletions": 5136,
+      "open_prs": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "ci": {
+      "full_suite_run": 43432262745,
+      "full_suite_job": 131908414017,
+      "tests_passed": 3557,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "inclusive_coverage_pct": 61.72,
+      "full_suite_seconds": 100.98,
+      "core_tests_passed": 729,
+      "core_coverage_pct": 76,
+      "core_seconds": 11.88,
+      "dependency_audit_run": 43432262687,
+      "dependency_manifest_groups_passed": 5,
+      "known_vulnerabilities_reported": 0,
+      "fail_closed_gate_run": 43432262681
+    },
+    "prediction": {
+      "candidate_model": false,
+      "curated_events": 73,
+      "raw_byte_exact_hashes": 0,
+      "model_eligible_events": 0,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "main_health": {
+      "main_ci_run": 43343513172,
+      "pillars_failure": 43430139937,
+      "barrot_sync_run": 43343513347,
+      "pages_deploy": 43343511839,
+      "cross_analysis": 43428748553
+    }
+  },
+  "core_v3_safety": {
+    "executor": "No shell; path confinement; allowlisted commands; Python limited to pytest/compileall; Git read-only.",
+    "action_loop": "Create-only writes; unique-preimage compare-and-swap patch; bounded tests; rollback only if current content exactly matches action output.",
+    "termux_bridge": "Approved roots; symlink-resistant; create-only; fsync; no overwrite.",
+    "b_agent_cli": "LunaRoute context transfer requires explicit flag, interactive terminal and exact phrase; local repair requires separate flag/phrase and clean non-default worktree.",
+    "mcp_approval_gate": "Default always-deny.",
+    "gaps": [
+      "legacy MCPOrchestrator and direct Databricks/Hugging Face deploy scripts lack visible MCPApprovalGate wiring",
+      "repository_repair_loop lacks unique-preimage enforcement and automatic rollback after failed validation"
+    ],
+    "execution": "No deploy, MCP operation, local repair or Termux drop executed."
+  },
+  "public_web": {
+    "latest_signal_status": "NOT_ISSUED",
+    "latest_signal_status_as_of": "2026-11-10; stale metadata",
+    "accuracy_status": "NOT_EVALUATED",
+    "legacy_accuracy": "45.5% isolated as unvalidated legacy data",
+    "gumroad_license_verification": "POST path exists; purchase_url null; checkout_available false; no call made; license key would be transmitted if invoked",
+    "pages_publication": "Automatic on main push; authorization unresolved for seven changed public files."
+  },
+  "xrp_public_ingestion": {
+    "source_definitions": 48,
+    "hourly_endpoints": 43,
+    "weekly_cftc_endpoints": 3,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "scheduled_endpoints": 46,
+    "schedule": [
+      "hourly at minute 3 UTC",
+      "daily at 00:15 UTC"
+    ],
+    "permissions": "read-only contents/actions",
+    "branch_guard": "main-only",
+    "retention_days": {
+      "raw_receipts": 90,
+      "per_run_feature_store": 7,
+      "daily_feature_store_archive": 90
+    },
+    "coinbase_backfill_days": {
+      "min": 0,
+      "max": 365
+    },
+    "main_execution_verified": false,
+    "independent_worm": false
   }
 }
