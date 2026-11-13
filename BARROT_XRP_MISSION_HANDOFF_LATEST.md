@@ -6626,3 +6626,9 @@ The exact PR-associated run on head `4b7fc419ba1a31b72dacef800d8a560b15eb5961` c
 No tests were removed or weakened, and no runtime or prediction code was changed by this map update. The correction restores the original v1.1.0 map from the parent Git blob, preserves its historical snapshots, and adds Run84 data without changing the test contract. The correction is a single fast-forward commit on the existing integration branch; no new branch or PR is created. Its own full-suite run must pass before the branch can be considered verified.
 
 The current map now records the failed attempt transparently and retains forecast status `NOT_ISSUED`. No merge was performed.
+
+
+## Run84 follow-up — canonical backlog labels
+After restoring the required current-map schema 1.1.0, the full suite on head `3c2bbeae` completed with **3,552 passed, one failed, eight subtests, 61.68% coverage, 61.58 seconds**. The sole failure was `test_source_provenance_and_backlog_classification_are_explicit`: Run84 had replaced the canonical backlog prefixes for #1661, #1660 and #1653 instead of preserving the historical contract. The same test also requires #1614 to remain classified as unique/unreviewed.
+
+The canonical labels are restored from the parent map. Run84's newer source-PR findings are moved into the additive `run84_backlog_classification` field, preserving both the test contract and the current reconciliation. The core suite passed 725 tests/eight subtests; the five-manifest dependency audit passed with zero known vulnerabilities; the fail-closed gate passed. No tests were weakened or removed, no runtime code changed, no PR was closed, and no merge occurred. The next corrective commit will trigger another exact PR-head full-suite run.
