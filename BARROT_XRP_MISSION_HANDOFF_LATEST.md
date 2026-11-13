@@ -138,14 +138,16 @@ Unique source-only work remains in #1653 (3 paths), #1655 (3), #1659 (3) and #16
 
 Main-side security findings remain blockers: `opencode.json` enables remote LunaRoute MCP and edit/bash/webfetch; `barrot-sync.yml` runs on main pushes with secrets and broad default token permissions; `barrot-agent.yml` has write permissions and issue-label branch/PR automation. The latest Barrot Sync job was green only because `b_agent.py --sync` failed with `ModuleNotFoundError: httpx`, printed 'sync skipped - manual sync', and later push commands were permissive. The Pages deployment completed automatically after the main push. Integration quarantines Barrot Sync and Barrot Agent, disables remote MCP, and keeps external deployment/model/Databricks/Kaggle/paper-trading workflows gated or disabled.
 
-**No merge.** PR #1662 is still draft, has no formal approval, branch-protection details are not independently visible, the fallback ruleset is disabled, connector permissions are overprivileged, Pages publication authorization is unresolved, and the 1,085-file integration is not fully semantically reconciled. No source PR was closed.
+**No merge.** PR #1662 is still draft, has no formal approval, branch-protection details are not independently visible, the fallback ruleset is disabled, connector permissions are overprivileged, Pages publication authorization is unresolved, and the 1,086-file integration is not fully semantically reconciled. No source PR was closed.
 
 ## Run77 durable artifact and next action
 
-- Structured research artifact: `research/xrp_intelligence/20261113T040529Z-run77-exact-head-market-collateral-and-repository-audit.json` (schema-normalized; 25 source records, 19 observations, 12 relationship edges and 4 hypotheses; all web sources and observations are explicitly model-ineligible).
+- Structured research artifact: `research/xrp_intelligence/20261113T040529Z-run77-exact-head-market-collateral-and-repository-audit.json` (schema-normalized; 26 source records, 19 observations, 12 relationship edges and 4 hypotheses; all web sources and observations are explicitly model-ineligible).
 - Artifact schema-normalization commit: `56344dcf96aed6bca18cf94a118634b3db321dfb`.
 - Evidence-edge correction commit: `bb2bdad8202fe7b1eca3ae71f5de1cb99b5f3c2c`.
-- Regression-test commit: `7ace83a3689e1788e890113f95ccc42f59c0e9bf`; test validates source IDs, evidence graph, raw-receipt absence, nine-platform map and forecast quarantine.
+- SEC source-registry completion commit: `49fa362e0d1345774aad70971d3b72fc21285b07`.
+- Regression-test commit: `0ef893849bcbfc1ea51af3e662356fd1187036ab`; test validates 26 source IDs, 19 observation/evidence links, relationship/hypothesis evidence closure, raw-receipt absence, nine-platform map and forecast quarantine.
+- This handoff update is commit `0b501036130b437415a4859f0938d834a671cd82`; it records the pre-update head `0ef8938` and triggers another exact-head CI run.
 - Web observations are explicitly marked as not captured by the Barrot raw-receipt archive; no SHA-256 receipt is claimed for them.
 - Next action: complete semantic reconciliation and least-privilege/branch-protection/Pages/credential-owner blockers; then prioritize independent WORM/timestamp anchoring and replayable synchronized point-in-time market/collateral data. Run the collector only after an authorized main revision contains it. Keep forecast issuance disabled until independent shadow outcomes and out-of-sample lift are verified.
 
