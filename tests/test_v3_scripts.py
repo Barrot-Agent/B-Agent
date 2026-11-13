@@ -702,7 +702,10 @@ def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
     assert upload_ref and int(upload_ref.group(1)) >= 7
     assert "retention-days: 30" in lowered
     assert "if-no-files-found: error" in lowered
-    assert "conclusion == 'success'" in lowered
+    assert "schedule:" in lowered
+    assert "workflow_dispatch:" in lowered
+    assert "workflow_run:" not in lowered
+    assert "actions/download-artifact" not in lowered
 
     for token in (
         "contents: write",

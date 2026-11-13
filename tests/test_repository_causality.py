@@ -76,7 +76,10 @@ def test_cross_analysis_workflow_is_read_only_and_artifact_based() -> None:
     assert "actions/upload-artifact@v7" in workflow
     assert "retention-days: 30" in workflow
     assert "if-no-files-found: error" in workflow
-    assert "conclusion == 'success'" in workflow
+    assert "schedule:" in workflow
+    assert "workflow_dispatch:" in workflow
+    assert "workflow_run:" not in workflow
+    assert "actions/download-artifact" not in workflow
 
     for output in (
         "ping-pongings/knowledge-base/entity_cooccurrence.json",
