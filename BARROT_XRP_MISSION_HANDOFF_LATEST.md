@@ -10,15 +10,15 @@ XRP intelligence and measured prediction-engine mastery remain priority 1. Prese
 - Current main: `fb272b40966834754ec686f9ed3ab94123f09306`.
 - Existing integration branch: `integration/xrp-v3-unified-main-20261112`.
 - Audited code-bearing integration head: `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc`, parent `832c0213e101388da5d9bb7bff9261cfecbf2fcd`.
-- Main/integration ancestry: 2,192 commits ahead, zero behind.
+- Main/integration ancestry: 2,195 commits ahead, zero behind.
 - Main tree: 1,381 entries / 1,277 blobs. Integration tree: 2,331 entries / 2,218 blobs; 941 integration-only blob paths.
-- PR #1662: open, draft; current head `7ace83a3689e1788e890113f95ccc42f59c0e9bf`; 1,086 changed files, +307,431/-5,136; 50 changed workflow files; 0 formal reviews, 0 approvals, 0 requested reviewers. Mergeability is currently unstable while exact-head checks run.
+- PR #1662: open, draft; current head `f5663dc5137b2cc29b45e481cf906cf66d8f6c93`; 1,086 changed files, +307,443/-5,136; 50 changed workflow files; 0 formal reviews, 0 approvals, 0 requested reviewers. Mergeability is currently unstable while exact-head checks run.
 - Open PR inventory: 375 total, 361 drafts, 14 non-drafts. All four 100-item REST pages were checked.
 - Exact-head full suite on `eebd1bb`: 3,542 passed, 8 subtests passed, 0 failures, 61.55% inclusive coverage, 73.88 seconds. Core suite: 723 passed, 8 subtests, 76% coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
 - Exact-head dependency audit: all five manifest groups passed, zero known vulnerabilities reported. Fail-closed gate passed; it kept automatic merging disabled.
 - Evidence: [full CI 43360465345](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360465345), [dependency audit 43360465325](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360465325), [push audit 43360459369](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360459369), [fail-closed gate 43360465289](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360465289).
 - Main's exact current SHA also passed its full suite: 747 tests and 8 subtests on run [43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172); main workflow does not measure coverage.
-- The code-bearing head `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc` passed the 3,542-test full suite. Run77 then added a research artifact normalized to the established evidence-graph schema (artifact commit `56344dcf96aed6bca18cf94a118634b3db321dfb`), a regression test (test commit `7ace83a3689e1788e890113f95ccc42f59c0e9bf`), and this handoff update; no runtime code changed. Exact-head CI on `7ace83a` is in progress: full CI 43364103101, dependency audit 43364103102, fail-closed gate 43364103111 passed. This handoff update triggers a further exact-head run; merge remains blocked until that final head passes.
+- The code-bearing head `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc` passed the 3,542-test full suite. Run77 then added a research artifact normalized to the established evidence-graph schema (artifact correction commit `bb2bdad8202fe7b1eca3ae71f5de1cb99b5f3c2c`), a regression test (latest test commit `f5663dc5137b2cc29b45e481cf906cf66d8f6c93`), and this handoff update; no runtime code changed. Exact-head CI on `f5663dc` currently has push dependency audit 43364279967 and push fail-closed gate 43364279995 in progress; a pull-request full-suite run has not yet appeared in the first-page query. This handoff update triggers a further exact-head run; merge remains blocked until the final head's full suite, dependency audit and fail-closed gate pass.
 
 ## New XRP market observations — research-only
 
@@ -142,8 +142,9 @@ Main-side security findings remain blockers: `opencode.json` enables remote Luna
 
 ## Run77 durable artifact and next action
 
-- Structured research artifact: `research/xrp_intelligence/20261113T040529Z-run77-exact-head-market-collateral-and-repository-audit.json` (schema-normalized; all 25 source records and 18 observations are explicitly model-ineligible).
+- Structured research artifact: `research/xrp_intelligence/20261113T040529Z-run77-exact-head-market-collateral-and-repository-audit.json` (schema-normalized; 25 source records, 19 observations, 12 relationship edges and 4 hypotheses; all web sources and observations are explicitly model-ineligible).
 - Artifact schema-normalization commit: `56344dcf96aed6bca18cf94a118634b3db321dfb`.
+- Evidence-edge correction commit: `bb2bdad8202fe7b1eca3ae71f5de1cb99b5f3c2c`.
 - Regression-test commit: `7ace83a3689e1788e890113f95ccc42f59c0e9bf`; test validates source IDs, evidence graph, raw-receipt absence, nine-platform map and forecast quarantine.
 - Web observations are explicitly marked as not captured by the Barrot raw-receipt archive; no SHA-256 receipt is claimed for them.
 - Next action: complete semantic reconciliation and least-privilege/branch-protection/Pages/credential-owner blockers; then prioritize independent WORM/timestamp anchoring and replayable synchronized point-in-time market/collateral data. Run the collector only after an authorized main revision contains it. Keep forecast issuance disabled until independent shadow outcomes and out-of-sample lift are verified.
