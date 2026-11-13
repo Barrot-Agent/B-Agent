@@ -101,28 +101,29 @@ def test_sentiment_shift_comparison_ready_is_still_not_a_forecast():
     assert result["significant_shift"] is True
     assert result["forecast_eligible"] is False
 
-def test_cross_analysis_downloads_exact_upstream_artifact_with_read_only_permissions():
+def test_cross_analysis_fallback_is_read_only_and_does_not_claim_freshness():
     from pathlib import Path
 
     workflow = Path(".github/workflows/cross-analysis.yml").read_text(encoding="utf-8")
-    assert "actions: read" in workflow
-    assert "contents: read" in workflow
-    assert "actions/download-artifact@v8" in workflow
-    assert "github.event.workflow_run.run_number" in workflow
-    assert "github.event.workflow_run.id" in workflow
-    assert "if: github.event_name == 'workflow_run'" in workflow
-    assert "contents: write" not in workflow
-    assert "git push" not in workflow
     assert "schedule:" in workflow
+    assert "workflow_dispatch:" in workflow
+    assert "contents: read" in workflow
+    assert "contents: write" not in workflow
+    assert "workflow_run:" not in workflow
+    assert "actions/download-artifact" not in workflow
+    assert "freshness metadata" in workflow.lower()
+    assert "git push" not in workflow
 
 
-def test_legacy_knowledge_cycle_keeps_explicit_external_research_gate():
+def test_legacy_knowledge_cycle_remains_quarantined_in_integration():
     from pathlib import Path
 
     workflow = Path(".github/workflows/knowledge-signal-cycle.yml").read_text(encoding="utf-8")
     assert "workflow_dispatch:" in workflow
-    assert "confirm_external_research" in workflow
-    assert "default: NO" in workflow
-    assert "inputs.confirm_external_research == 'YES'" in workflow
+    assert "disabled:" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "GROQ_API_KEY" not in workflow
+    assert "actions/upload-artifact" not in workflow
     assert "schedule:" not in workflow
+    assert "No provider credentials are read" in workflow
 

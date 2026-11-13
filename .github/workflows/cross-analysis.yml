@@ -1,23 +1,16 @@
 name: Cross Analysis
 
 on:
-  # Consume the exact authorized artifact after the manual Knowledge Signal Cycle.
-  workflow_run:
-    workflows: ["Knowledge Signal Cycle"]
-    types: [completed]
-    branches: [main]
-  # Fallback cron analyzes the checked-in snapshot; freshness metadata marks stale inputs.
+  # Hourly fallback analyzes the checked-in snapshot; scripts label stale inputs explicitly.
   schedule:
     - cron: '50 * * * *'
   workflow_dispatch:
 
 permissions:
-  actions: read
   contents: read
 
 jobs:
   analyze:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -27,15 +20,6 @@ jobs:
           ref: main
           fetch-depth: 1
           persist-credentials: false
-
-      - name: Download the exact authorized knowledge-cycle artifact
-        if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@v8
-        with:
-          name: barrot-knowledge-signal-${{ github.event.workflow_run.run_number }}
-          path: .
-          github-token: ${{ github.token }}
-          run-id: ${{ github.event.workflow_run.id }}
 
       - uses: actions/setup-python@v7
         with:
@@ -69,10 +53,7 @@ jobs:
           {
             echo "## Cross Analysis"
             echo
-            if [[ "${{ github.event_name }}" == "workflow_run" ]]; then
-              echo "Inputs were downloaded from the exact successful authorized Knowledge Signal Cycle run."
-            else
-              echo "This scheduled/manual fallback analyzes the checked-in snapshot; source freshness metadata must be inspected."
-            fi
+            echo "This scheduled/manual fallback analyzes the checked-in snapshot; source freshness metadata must be inspected."
             echo "Outputs are attached as a read-only workflow artifact. No repository files are committed or pushed."
+            echo "No external provider is called by this workflow."
           } >> "$GITHUB_STEP_SUMMARY"
