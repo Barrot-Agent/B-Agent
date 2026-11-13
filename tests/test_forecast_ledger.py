@@ -77,6 +77,7 @@ def _paired_comparisons_fixture(sample_count=200):
                 "status": "ESTIMATED",
                 "confidence_level": 0.99375,
                 "source_cluster_count": 5,
+                "source_group_ids": sorted(FEATURE_SOURCE_GROUPS),
                 "minimum_origins_per_source_cluster": 2,
                 "observed_minimum_origins_per_source_cluster": 40,
                 "equal_cluster_weighted_mean_brier_difference": -0.05,
@@ -143,6 +144,24 @@ FEATURE_RECORD = {
             "source_uri": "https://api.stlouisfed.org/fred/series/observations",
             "raw_content_sha256": "b" * 64,
         },
+        {
+            "source_id": "coinbase-001",
+            "independence_group": "coinbase.com",
+            "source_uri": "https://api.exchange.coinbase.com/products/XRP-USD/ticker",
+            "raw_content_sha256": "c" * 64,
+        },
+        {
+            "source_id": "binance-001",
+            "independence_group": "binance.com",
+            "source_uri": "https://api.binance.com/api/v3/ticker/price?symbol=XRPUSDT",
+            "raw_content_sha256": "d" * 64,
+        },
+        {
+            "source_id": "okx-001",
+            "independence_group": "okx.com",
+            "source_uri": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+            "raw_content_sha256": "e" * 64,
+        },
     ],
     "quality_status": "verified",
     "model_eligible": True,
@@ -154,6 +173,7 @@ FEATURE_RECORD = {
     "limitations": [],
     "disconfirming_evidence_ids": [],
 }
+FEATURE_SOURCE_GROUPS = canonical_independence_groups(FEATURE_RECORD["sources"])
 FEATURE_SNAPSHOT = build_feature_snapshot(
     [FEATURE_RECORD],
     cutoff_utc=FEATURE_CUTOFF,
@@ -163,7 +183,7 @@ FEATURE_SNAPSHOT = build_feature_snapshot(
 
 def _readiness_fixture(asset, horizon_seconds, source_ids=None):
     """Synthetic test-only evidence; never represents real XRP model readiness."""
-    source_ids = source_ids or ["kraken-001", "macro-001"]
+    source_ids = source_ids or ["kraken-001", "macro-001", "coinbase-001", "binance-001", "okx-001"]
     source_details = {
         "kraken-001": (
             "kraken.com",
@@ -174,6 +194,21 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
             "fred.stlouisfed.org",
             "https://api.stlouisfed.org/fred/series/observations",
             b'{"series":"DFF","value":"4.00"}',
+        ),
+        "coinbase-001": (
+            "coinbase.com",
+            "https://api.exchange.coinbase.com/products/XRP-USD/ticker",
+            b'{"product_id":"XRP-USD","price":"1.27"}',
+        ),
+        "binance-001": (
+            "binance.com",
+            "https://api.binance.com/api/v3/ticker/price?symbol=XRPUSDT",
+            b'{"symbol":"XRPUSDT","price":"1.27"}',
+        ),
+        "okx-001": (
+            "okx.com",
+            "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+            b'{"instId":"XRP-USDT","last":"1.27"}',
         ),
         "unregistered": (
             "unregistered.example",
@@ -326,7 +361,9 @@ READINESS_FIXTURES = {
     ("XRP", 14400): _readiness_fixture("XRP", 14400),
     ("BTC", 3600): _readiness_fixture("BTC", 3600),
     ("XRP", 3600, "source_mismatch"): _readiness_fixture(
-        "XRP", 3600, ["kraken-001", "macro-001", "unregistered"]
+        "XRP", 3600, [
+            "kraken-001", "macro-001", "coinbase-001", "binance-001", "okx-001", "unregistered"
+        ]
     ),
 }
 def _register_readiness_fixtures(ledger):
@@ -396,7 +433,7 @@ def forecast(**overrides):
         "outcome_tolerance_seconds": 60,
         "feature_max_timestamp_utc": FEATURE_CUTOFF,
         "feature_snapshot_ids": [FEATURE_SNAPSHOT["snapshot_id"]],
-        "source_ids": ["kraken-001", "macro-001"],
+        "source_ids": ["kraken-001", "macro-001", "coinbase-001", "binance-001", "okx-001"],
         "assumptions": ["No venue outage during horizon"],
         "alternatives": ["Derivatives deleveraging overwhelms spot demand"],
         "fee_bps": 10.0,
@@ -423,7 +460,24 @@ def test_readiness_rejects_insufficient_source_clusters_in_shadow_window():
     report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
     source = report["paired_uncertainty"]["shadow_evaluation"]["comparisons"]["momentum_sign"]["source_clustered_moving_block_bootstrap"]
     source["source_cluster_count"] = 4
+    source["source_group_ids"] = source["source_group_ids"][:4]
     with pytest.raises(ForecastLedgerError, match="source_cluster_count must be at least 5"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_source_cluster_ids_not_backed_by_raw_receipts():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    source = report["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"]
+    source["source_group_ids"][0] = "fabricated-publisher.example"
+    with pytest.raises(ForecastLedgerError, match="not backed by dataset source receipts"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_source_cluster_count_group_id_mismatch():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    source = report["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"]
+    source["source_cluster_count"] = 6
+    with pytest.raises(ForecastLedgerError, match="source_cluster_count must match source_group_ids"):
         _validate_readiness_report(report)
 
 

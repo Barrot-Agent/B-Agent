@@ -33,7 +33,7 @@ _REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sig
 _MIN_OOS_SAMPLES = 100
 _MIN_SHADOW_SAMPLES = 100
 _MIN_HORIZON_MULTIPLE = 10
-_MIN_SOURCE_GROUPS = 2
+_MIN_SOURCE_GROUPS = 5
 _MAX_WEIGHTED_CALIBRATION_ERROR = 0.05
 DEFAULT_DB = Path(__file__).resolve().parents[2] / "data" / "xrp_intelligence" / "forecast_ledger.sqlite3"
 
@@ -674,7 +674,27 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             source_level = _finite_level(source.get("confidence_level"), f"{window_name}.{baseline}.source.confidence_level")
             if source_level + 1e-12 < required_individual_level:
                 raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} source-clustered interval is not familywise-adjusted")
-            _integer_at_least(source.get("source_cluster_count"), minimum_source_clusters, f"{window_name}.{baseline}.source_cluster_count")
+            source_count = _integer_at_least(
+                source.get("source_cluster_count"), minimum_source_clusters,
+                f"{window_name}.{baseline}.source_cluster_count"
+            )
+            group_ids = source.get("source_group_ids")
+            if (
+                not isinstance(group_ids, list)
+                or any(not isinstance(group_id, str) or not group_id.strip() for group_id in group_ids)
+                or len(set(group_ids)) != len(group_ids)
+            ):
+                raise ForecastLedgerError(
+                    f"paired_uncertainty {window_name} {baseline} source_group_ids must be unique non-empty strings"
+                )
+            if len(group_ids) != source_count:
+                raise ForecastLedgerError(
+                    f"paired_uncertainty {window_name} {baseline} source_cluster_count must match source_group_ids"
+                )
+            if not set(group_ids).issubset(receipt_groups) or not set(group_ids).issubset(set(declared_groups)):
+                raise ForecastLedgerError(
+                    f"paired_uncertainty {window_name} {baseline} source_group_ids are not backed by dataset source receipts"
+                )
             _integer_at_least(source.get("observed_minimum_origins_per_source_cluster"), minimum_per_cluster, f"{window_name}.{baseline}.source.observed_minimum_origins_per_source_cluster")
             _integer_at_least(source.get("minimum_origins_per_source_cluster"), minimum_per_cluster, f"{window_name}.{baseline}.source.minimum_origins_per_source_cluster")
             for metric in ("brier", "log_loss"):

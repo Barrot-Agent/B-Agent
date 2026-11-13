@@ -256,6 +256,7 @@ def evaluate_paired_block_bootstrap(
                 "status": "ESTIMATED",
                 "confidence_level": confidence_level,
                 "source_cluster_count": cluster_count,
+                "source_group_ids": sorted(brier_clusters),
                 "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
                 "observed_minimum_origins_per_source_cluster": min(cluster_sizes),
                 "equal_cluster_weighted_mean_brier_difference": brier_cluster_mean,
@@ -267,6 +268,7 @@ def evaluate_paired_block_bootstrap(
             source_clustered = {
                 "status": "INSUFFICIENT_SOURCE_CLUSTERS",
                 "source_cluster_count": cluster_count,
+                "source_group_ids": sorted(brier_clusters),
                 "required_source_clusters": minimum_source_clusters,
                 "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
                 "observed_minimum_origins_per_source_cluster": min(cluster_sizes) if cluster_sizes else 0,

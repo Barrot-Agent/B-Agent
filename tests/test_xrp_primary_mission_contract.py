@@ -97,6 +97,17 @@ def test_forecast_admission_policy_matches_fail_closed_ledger() -> None:
     assert policy["minimum_oos_span_horizons"] == _MIN_HORIZON_MULTIPLE
     assert policy["minimum_shadow_span_horizons"] == _MIN_HORIZON_MULTIPLE
     assert policy["minimum_independent_source_groups"] == _MIN_SOURCE_GROUPS
+    assert policy["minimum_source_clusters"] == _MIN_SOURCE_GROUPS
+    assert policy["minimum_origins_per_source_cluster"] >= 2
+    assert policy["paired_uncertainty_method"] == "paired_temporal_and_source_clustered_moving_block_bootstrap_v1"
+    assert policy["familywise_confidence_level"] == 0.95
+    assert policy["familywise_comparison_count"] == 8
+    assert policy["multiplicity_method"] == "bonferroni"
+    assert policy["minimum_individual_confidence_level"] >= 0.99375
+    assert policy["minimum_bootstrap_replicates"] >= 10000
+    assert policy["required_evaluation_windows"] == ["out_of_sample", "shadow_evaluation"]
+    assert policy["require_temporal_and_source_clustered_intervals"] is True
+    assert policy["require_upper_confidence_bounds_below_zero"] is True
     assert policy["maximum_weighted_calibration_error"] == _MAX_WEIGHTED_CALIBRATION_ERROR
     assert policy["required_baselines"] == list(_REQUIRED_BASELINES)
     assert policy["candidate_must_beat_each_baseline_on"] == [
@@ -107,6 +118,7 @@ def test_forecast_admission_policy_matches_fail_closed_ledger() -> None:
         "leakage_checks": "PASS",
         "drift": "STABLE",
         "shadow_evaluation": "PASS",
+        "paired_uncertainty": "PASS",
         "independent_evaluator_attestation": "VALID_ED25519",
     }
     assert policy["forecast_issuance_enabled"] is False

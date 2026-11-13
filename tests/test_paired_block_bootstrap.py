@@ -53,6 +53,10 @@ def test_paired_temporal_and_source_bootstrap_is_deterministic_and_paired():
     assert comparison["temporal_moving_block_bootstrap"]["status"] == "ESTIMATED"
     assert comparison["source_clustered_moving_block_bootstrap"]["status"] == "ESTIMATED"
     assert comparison["source_clustered_moving_block_bootstrap"]["source_cluster_count"] == 5
+    assert comparison["source_clustered_moving_block_bootstrap"]["source_group_ids"] == [
+        "independent-source-0", "independent-source-1", "independent-source-2",
+        "independent-source-3", "independent-source-4",
+    ]
     assert comparison["temporal_moving_block_bootstrap"]["brier_difference_ci_95"] == pytest.approx([-0.05, -0.05])
     assert comparison["source_clustered_moving_block_bootstrap"]["log_loss_difference_ci_95"] == pytest.approx([-0.10, -0.10])
     assert first == second

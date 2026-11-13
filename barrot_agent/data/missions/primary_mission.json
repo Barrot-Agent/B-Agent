@@ -86,13 +86,13 @@
     "Original source bytes have immutable or independently verifiable receipts and SHA-256 hashes.",
     "A durable cross-run point-in-time feature store preserves provider event time, retrieval time, corrections and source independence.",
     "Historical XRP datasets support leakage-safe chronological walk-forward evaluation against all four baselines, with overlap-adjusted effective sample sizes for every horizon.",
-    "Forecast issuance remains disabled until an XRP-specific candidate is trained on point-in-time data and independently attested; the candidate beats every required baseline (naive class prior, momentum sign, mean-reversion sign, volatility normal) on both mean Brier score and mean log loss in leakage-safe chronological walk-forward evaluation; training, out-of-sample, and shadow cohorts each contain at least 100 raw samples; out-of-sample and shadow cohorts each have effective non-overlapping sample size of at least 10 and span at least 10 forecast horizons; at least two independent source groups are represented; leakage checks pass, drift is STABLE, shadow evaluation is PASS, weighted calibration error is at most 0.05, and an independent Ed25519 evaluator attestation verifies. Every forecast must retain its data cutoff, horizon, target, assumptions, probabilities, alternatives, and eventual outcome.",
+    "Forecast issuance remains disabled until an XRP-specific candidate is trained on point-in-time data and independently attested; the candidate beats every required baseline (naive class prior, momentum sign, mean-reversion sign, volatility normal) on mean Brier score and mean log loss in leakage-safe chronological walk-forward evaluation; training, out-of-sample and shadow cohorts each contain at least 100 raw samples; out-of-sample and shadow cohorts each have effective non-overlapping sample size of at least 10 and span at least 10 forecast horizons; in both out-of-sample and shadow cohorts, paired temporal and source-clustered moving-block bootstrap intervals cover all four baseline comparisons and both loss metrics, use at least 10,000 replicates, apply 99.375% individual confidence for 95% Bonferroni familywise coverage, and have upper bounds below zero; at least five receipt-backed outcome source clusters with at least two origins per cluster are present in each cohort, and every cluster ID is contained in the raw-source receipt manifest; leakage checks pass, drift is STABLE, shadow evaluation is PASS, weighted calibration error is at most 0.05, and an independent Ed25519 evaluator attestation verifies. Every forecast must retain its data cutoff, horizon, target, assumptions, probabilities, alternatives and eventual outcome.",
     "Every issued forecast has a complete immutable forecast record and later outcome.",
     "No directional forecast is issued before all readiness gates pass.",
     "Barrot V3 execution, orchestration, safety and verification tests remain green."
   ],
   "forecast_admission_policy": {
-    "policy_id": "xrp_forecast_readiness_v4",
+    "policy_id": "xrp_forecast_readiness_v5",
     "minimum_training_samples": 100,
     "minimum_out_of_sample_samples": 100,
     "minimum_shadow_evaluation_samples": 100,
@@ -100,7 +100,7 @@
     "minimum_shadow_effective_sample_size": 10,
     "minimum_oos_span_horizons": 10,
     "minimum_shadow_span_horizons": 10,
-    "minimum_independent_source_groups": 2,
+    "minimum_independent_source_groups": 5,
     "maximum_weighted_calibration_error": 0.05,
     "required_baselines": [
       "naive_class_prior",
@@ -116,10 +116,26 @@
       "leakage_checks": "PASS",
       "drift": "STABLE",
       "shadow_evaluation": "PASS",
-      "independent_evaluator_attestation": "VALID_ED25519"
+      "independent_evaluator_attestation": "VALID_ED25519",
+      "paired_uncertainty": "PASS"
     },
     "forecast_issuance_enabled": false,
     "status": "NOT_SATISFIED",
-    "reason": "No trained XRP-specific candidate has passed the out-of-sample and independent shadow admission gate."
+    "reason": "No trained XRP-specific candidate has passed the out-of-sample and independent shadow admission gate.",
+    "paired_uncertainty_method": "paired_temporal_and_source_clustered_moving_block_bootstrap_v1",
+    "familywise_confidence_level": 0.95,
+    "familywise_comparison_count": 8,
+    "multiplicity_method": "bonferroni",
+    "minimum_individual_confidence_level": 0.99375,
+    "minimum_bootstrap_replicates": 10000,
+    "minimum_paired_origins": 100,
+    "minimum_source_clusters": 5,
+    "minimum_origins_per_source_cluster": 2,
+    "required_evaluation_windows": [
+      "out_of_sample",
+      "shadow_evaluation"
+    ],
+    "require_temporal_and_source_clustered_intervals": true,
+    "require_upper_confidence_bounds_below_zero": true
   }
 }
