@@ -275,3 +275,23 @@ The documentation-only Run89 commit `cf66598b7f433314fa5e12dda338d688955bc6d7` c
 - [Fail-closed gate 43423314028](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423314028): success.
 
 The current handoff update below is a new documentation-only commit; its own exact-head checks must complete before that new SHA is described as verified.
+
+
+---
+
+## Run89C — EU significant-USDC supervision and final Run89B verification
+
+**Primary regulatory finding, EBA release dated October 14, 2026:** USDC issued in the European Economic Area by Circle Internet Financial Europe SAS was classified as the EU's first significant e-money token under MiCA. Dual supervision by the EBA and ACPR began **November 12, 2026**. EBA direct responsibilities cover own funds, reserve assets, liquidity and recovery/redemption plans; ACPR retains governance, qualifying holdings, fit-and-proper assessments, outsourcing and conflicts oversight. Circle Internet Financial, LLC is the separate US issuer. Sources: [EBA classification](https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union), [Circle licenses](https://www.circle.com/legal/licenses).
+
+The EBA and NYDFS signed a June 2, 2026 supervisory-cooperation MoU for cross-border stablecoin activities. [EBA–NYDFS MoU](https://www.eba.europa.eu/publications-and-media/press-releases/eba-and-new-york-state-department-financial-services-sign-memorandum-understanding-foster). This strengthens the regulatory oversight network around Circle's EU/US issuances; it is not evidence of XRP settlement volume, XRP collateral use or XRP demand.
+
+Circle's August 5 Q2 release names SBI Group as a founding validator of Arc, alongside BlackRock, DTCC, Galaxy, Global Payments, ICE, Mastercard, MoneyGram, Standard Chartered, Sumitomo and Visa. It also describes JCB/USDC Japan cross-border treasury and merchant-payment work, Kakao exploration, Nium/USDC payouts in 190+ countries, BNY USDC mint/redeem expansion and a Marex USDC initial-margin transaction in regulated derivatives clearing. Arc is a separate Layer 1, not XRPL; these USDC activities must not be counted as XRP settlement or collateral. [Circle Q2 2026 release](https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results).
+
+### Exact-head verification of Run89B handoff commit
+
+The preceding handoff commit `86ef6b366810160ba5813ed5e1afe9934e21f140` completed exact-head verification:
+- [Full CI 43423918022](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423918022): 3,557 passed, zero failed, eight subtests passed; 61.72% inclusive coverage; core 729 passed/76%; wheel and installed Barrot V3/XRP mission verification passed.
+- [Dependency audit 43423918088](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423918088): five manifest groups passed; zero known vulnerabilities reported.
+- [Fail-closed gate 43423918076](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423918076): passed.
+
+This Run89C update is documentation-only and requires its own exact-head CI before that new commit is described as verified. No runtime model or public signal was changed.
