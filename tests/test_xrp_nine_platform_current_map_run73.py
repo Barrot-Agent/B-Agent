@@ -213,9 +213,10 @@ def test_prediction_engine_source_registry_counts_are_consistent():
     assert engine["hourly_sources"] == len(SCHEDULED_ENDPOINTS)
     assert engine["weekly_cftc_sources"] == len(WEEKLY_ENDPOINTS)
     assert engine["scheduled_sources"] == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS)
-    assert len(ENDPOINTS) == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS) + 4
+    assert len(ENDPOINTS) == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS) + 2
     assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
-    assert engine["excluded_raw_only_derivatives_sources"] == 2
+    assert engine["raw_only_derivatives_sources"] == 2
+    assert engine["scheduled_sources"] == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS)
     assert len(engine["implemented"]) >= 8
 
 

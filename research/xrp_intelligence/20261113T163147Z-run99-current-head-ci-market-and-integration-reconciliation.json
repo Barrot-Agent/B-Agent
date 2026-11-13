@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_xrp_run99_research_and_integration_reconciliation",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-13T16:41:10.392Z",
+  "captured_at_utc": "2026-11-13T16:47:57.954Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
@@ -13,59 +13,61 @@
     "foundation": "Barrot V3 execution, orchestration, safety and verification"
   },
   "ci": {
-    "run_id": 43462977125,
-    "head_sha": "dedae589cc634baa85e6726f0b4ff5fa0237227b",
+    "run_id": 43465422938,
+    "head_sha": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
     "full_suite": {
-      "passed": 3592,
-      "failed": 6,
+      "passed": 3595,
+      "failed": 3,
       "subtests": 8,
       "coverage_percent": 62.14,
-      "duration_seconds": 98.33,
+      "duration_seconds": 93.33,
       "exact_head": true,
       "exact_head_verified": true,
       "conclusion": "failure",
-      "run_id": 43462977125,
-      "job_id": 132014492721,
-      "head_sha": "dedae589cc634baa85e6726f0b4ff5fa0237227b"
+      "run_id": 43465422938,
+      "job_id": 132023138459,
+      "head_sha": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1"
     },
     "core": {
       "passed": 732,
       "failed": 0,
       "subtests": 8,
       "conclusion": "success",
-      "job_id": 132014493245,
-      "head_sha": "dedae589cc634baa85e6726f0b4ff5fa0237227b"
+      "job_id": 132023139009,
+      "head_sha": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1"
     },
     "dependency_audit": {
       "passed": true,
       "manifests": 5,
       "known_vulnerabilities": 0,
       "conclusion": "success",
-      "run_id": 43462977141
+      "run_id": 43465422926
     },
     "fail_closed_gate": {
       "passed": true,
       "automatic_merge_enabled": false,
       "conclusion": "success",
-      "run_id": 43462977318
+      "run_id": 43465422930
     },
     "failing_tests": [
-      "tests/test_deribit_xrp_public_ingestion.py::test_deribit_ticker_is_timestamped_but_remains_raw_only",
-      "tests/test_deribit_xrp_public_ingestion.py::test_deribit_ticker_staleness_is_preserved_in_raw_only_reason",
-      "tests/test_deribit_xrp_public_ingestion.py::test_deribit_order_book_is_timestamped_but_remains_raw_only",
       "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
       "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
       "tests/test_xrp_primary_mission_contract.py::test_feature_store_contract_endpoint_counts_match_registry"
     ],
-    "classification": "Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened."
+    "classification": "Exact-head full-suite failed: three stale hourly-source-count assertions expected 43, but the current registry correctly contains 45 hourly scheduled sources. The 50 endpoint definitions comprise 45 hourly + 3 weekly + 2 noncommercial XRPL node endpoints; 48 are scheduled. The two Deribit XRP-USDC endpoints are included in the hourly scheduled set but their observations remain raw-only/model-ineligible. Core, dependency audit and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened."
   },
   "endpoint_registry": {
     "total": 50,
-    "hourly_scheduled": 43,
+    "hourly_scheduled": 45,
     "weekly_scheduled": 3,
-    "scheduled_total": 46,
+    "scheduled_total": 48,
+    "excluded_noncommercial_xrpl_nodes": 2,
     "raw_only_deribit": 2,
-    "excluded_noncommercial_xrpl_nodes": 2
+    "raw_only_deribit_included_in_hourly_schedule": true,
+    "raw_only_ids": [
+      "deribit_xrp_usdc_perpetual_ticker",
+      "deribit_xrp_usdc_perpetual_order_book"
+    ]
   },
   "market_research": {
     "captured_at_utc": "2026-11-13T16:41:10.392Z",
@@ -189,9 +191,16 @@
       "coinbase_pnc": "PNC/Coinbase limited corporate stablecoin pilot uses Circle USDC, not XRP.",
       "coinbase_rlusd": "Coinbase RLUSD distribution is separate; distribution does not prove native XRP demand.",
       "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies distinct from SBI Holdings.",
-      "identity": "ASK Coin has no verified canonical XRPL issuer/deployment. Actual capital categories remain separated. Kamilah/Camilla YouTube ownership unverified; no videos attributed."
+      "identity": "ASK Coin has no verified canonical XRPL issuer/deployment. Actual capital categories remain separated. Kamilah/Camilla YouTube ownership unverified; no videos attributed.",
+      "standard_chartered": "Standard Chartered's DIFC branch announced live institutional custody for RLUSD on XRPL on Oct 12, 2026. Planned RLUSD collateral integration with Ripple and LMAX remains subject to final documentation, testing, law, approvals and jurisdictional readiness; no live utilization or amount is disclosed.",
+      "circle_arc": "Circle announced Arc mainnet on Sep 16, 2026 with SBI Group in its founding validator cohort. Arc is a separate Layer 1, not XRPL.",
+      "sbi_open_standard": "SBI Holdings and Startale joined Open Standard on Oct 16, 2026, with JPYSC/OUSD interoperability exploration; a separate stablecoin rail, not XRP settlement.",
+      "sbi_erebor": "SBI Holdings disclosed on Nov 2, 2026 a $100M investment in Erebor Bank through SBI Holdings USA; bank equity, not XRP purchase or stablecoin reserve."
     },
-    "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE; timestamps stale/missing or not independently receipted."
+    "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE; timestamps stale/missing or not independently receipted.",
+    "source_independence": {
+      "standard_chartered": "Ripple issuer release is primary for announced custody/collateral plans; planned collateral remains conditional and no deployed amount is disclosed."
+    }
   },
   "prediction_engine": {
     "trained_xrp_candidate_model": false,
@@ -222,5 +231,14 @@
     "connector_overprivileged": true,
     "pages_publication_authorized": false
   },
-  "merge_decision": "NO_MERGE"
+  "merge_decision": "NO_MERGE",
+  "next_actions": [
+    "Correct three hourly-source-count expectations from 43 to 45; preserve the 50=45 hourly+3 weekly+2 public-node inventory and the two Deribit raw-only feature restrictions.",
+    "Rerun full repository suite, dependency audit, fail-closed gate, wheel build and installed V3/XRP verification on the new exact head.",
+    "Update canonical handoff and current map to the tested head after CI completes.",
+    "Complete semantic review of integration and open source-PR overlaps.",
+    "Resolve least-privilege connector scope, branch-protection visibility, remote MCP permissions and Pages publication authorization.",
+    "Build an XRP-specific candidate model only after synchronized historical point-in-time data and independently anchored raw receipts are available.",
+    "Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified."
+  ]
 }
