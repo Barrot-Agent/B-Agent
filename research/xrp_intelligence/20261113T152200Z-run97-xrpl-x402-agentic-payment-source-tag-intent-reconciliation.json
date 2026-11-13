@@ -78,14 +78,14 @@
       "semantics": "merchant_endpoint_attribution",
       "agent_attribution": false,
       "direct_excerpt": "The x402 SourceTag is not agent attribution. It answers which endpoint was paid, not which agent paid.",
-      "excerpt_sha256": "e7c5b1540ff6d6ba74da0208b74f34a9f32754f0292bd87faf221a7b1b9f786e",
+      "excerpt_sha256": "c724863437e59b5bbf706d3866b87fe69e5a37666bf8b623b2fa66ffd6e10e4d",
       "source_url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/agents/agentic-payments-x402.md"
     },
     "intent_status": {
       "field_label": "Intent status",
       "sample_value": "Unverified",
       "direct_excerpt": "Verifiable Intent (VI) is optional and additive. A plain x402 payment still works exactly as before.",
-      "excerpt_sha256": "43f7fde08b392dbb7f29f9b885cfaf280f94ca7ca0bda7651043737a52ac6839",
+      "excerpt_sha256": "076da3a3f9acea5c45ae2d6e879f9878562369bc110d2ad1919be66b36557766",
       "interpretation": "Intent/Verifiable Intent attestation state, not the XRPL transaction result. No ledger failure or confirmation status is inferred from this field.",
       "source_url": "https://xrpl-x402.t54.ai/docs/verifiable-intent"
     },
@@ -128,7 +128,7 @@
       "program_scope": "Agent Pay for Machines; credentialing, permissioning, transacting and multi-rail settlement across cards, accounts and stablecoins.",
       "interpretation": "Program-level co-participation. Mastercard's release does not establish a bilateral T54-Ripple contract, exclusive XRPL rail, XRP-denominated Mastercard settlement or measured XRP demand.",
       "direct_excerpt": "Mastercard lists T54 Labs and RippleX among the initial Agent Pay for Machines participants; this is program-level co-participation, not proof of bilateral XRP settlement.",
-      "excerpt_sha256": "b09a9e8591df1619b36299059dbfb176e4405046f81cd63ddc1b1cab7c7e353d",
+      "excerpt_sha256": "c50b843ed0a3be973d434920895e904199a5d994af44cc641fbb5a59278b90d7",
       "source_url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html"
     },
     "xrplf": {
