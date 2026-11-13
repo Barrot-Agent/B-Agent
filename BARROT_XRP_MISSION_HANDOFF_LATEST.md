@@ -583,3 +583,75 @@ Sources: [XRPL institutional credit facilities](https://xrpl.org/docs/use-cases/
 Complete semantic reconciliation of the 1,113-file integration and direct deployment scripts. Resolve GitHub connector least privilege, branch-protection/required-check visibility and Pages publication authorization. Keep #1662 draft until formal review and approvals are satisfied. Then verify the exact merged commit, refetch main, inspect automatic workflow side effects and rerun main CI. Establish externally anchored raw receipts and synchronized historical data before implementing an XRP-specific candidate model. Add paired block-bootstrap/source-clustered uncertainty and independent shadow outcomes before forecast admission.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run 94 — 2026-11-13: Evernorth capital, institutional relationships and SBIC identity
+
+**Captured:** 2026-11-13T14:31:30.954Z UTC. **Main SHA:** `fb272b40966834754ec686f9ed3ab94123f09306`. **Verified integration head before this handoff commit:** `404a34152adc8535dd3bd803d8eb1ba89e9a2269`. This head is a documentation-only descendant of code head `b4b5fc3d8c6f8a9dc182b5a5d207c2515565b0cd`; exact-head CI was rerun successfully on `404a34152adc8535dd3bd803d8eb1ba89e9a2269`.
+
+### Exact-head verification
+
+- [Full CI run 43442755318](https://github.com/Barrot-Agent/B-Agent/actions/runs/43442755318): **3,564 passed**, 8 subtests passed, 62.08% inclusive coverage, 76% core coverage; wheel built and installed-wheel mission verification passed.
+- [Dependency audit 43442754785](https://github.com/Barrot-Agent/B-Agent/actions/runs/43442754785): five manifest groups passed; zero known vulnerabilities reported.
+- [Fail-closed gate 43442755262](https://github.com/Barrot-Agent/B-Agent/actions/runs/43442755262): passed with merging disabled.
+- The verified code changes include the legacy MCP approval gates, paper-trader exact per-run approval, and integration-push full-suite/dependency-audit triggers. No paper trade or external MCP action was executed.
+
+### Evernorth actual capital reconciliation
+
+The November 9, 2026 SEC prospectus distinguishes capital actually received from in-kind XRP and contingent financing:
+
+- At the October 9 closing: $214.05M advance private-placement cash, $10.5M delayed private-placement cash and approximately $48M SPAC trust cash; approximately $272.6M gross cash proceeds before transaction expenses.
+- The issuer reports approximately $214.1M of advance cash used to purchase 84,365,876 XRP. The implied cash-per-token amount is about $2.54, **not a verified execution price**; the filing does not identify venue, counterparty or execution timestamps.
+- Approximately 388,910,554 XRP were contributed in kind: 211,319,096 by Arrington's sponsor vehicle, 50M by a Ripple-affiliated trust, 126,791,458 directly by Ripple, 600,000 by advance subscribers and 200,000 by delayed subscribers. Combined with the cash-purchased XRP, this reconciles to approximately 473.28M XRP. About 82.2% of these components were in-kind contributions, not open-market buying.
+- $30M of 4% PIK convertible senior notes were issued and paid October 12, 2026. This is actual debt financing, not equity. No subsequent XRP purchase using the note proceeds was verified.
+- Cantor's equity line permits up to 5,218,935 shares and approximately $76.8M potential gross proceeds, but the prospectus reports zero proceeds received as of November 9 and a $521,893.50 commitment fee. It is not capital already received.
+- The issuer says it does not actively trade XRP on digital asset markets. The cash-purchase venue remains unknown.
+- Four SBI Holdings-controlled entities hold 9,431,914 Class A and 2,359,038 Class C shares, representing 21.4% of common stock and 39.9% of voting power. These are SBI Holdings entities, not regional SBIC companies.
+- BitGo is Evernorth's disclosed custodian, with 100% cold storage and $250M aggregate shared insurance, not dedicated coverage. Coinbase is the accounting principal market, not the custodian.
+
+### Circle reserves and flow-measurement caveat
+
+Circle's SEC S-1/A reports that as of March 31, 2025 approximately 90% of USDC reserves were held in the Circle Reserve Fund, managed by BlackRock and custodied by BNY; the remainder was cash distributed across banks. The fund is a Rule 2a-7 government money market fund holding short-dated U.S. Treasuries, overnight Treasury repos and cash. It is not FDIC-insured or government-guaranteed.
+
+The same filing explicitly states that USDC minted and redeemed do **not** equal the amount acquired or redeemed by end users. This is a mandatory feature-store caveat: issuer mint/burn events cannot be treated as end-user net capital flows.
+
+### Coinbase, Circle, Ripple and SBI relationship map
+
+- **SBI–Ripple:** SBI stated approximately 9% Ripple ownership in 2025 materials. SBI Group held 60% of SBI Ripple Asia voting rights as of March 31, 2026. SBI Ripple Asia says it does not handle XRP; the historic ODL route uses XRP through SBI Remit, Coins.ph and SBI VC Trade. Current corridor volumes are not disclosed.
+- **SBI–RLUSD:** RLUSD launched in Japan through SBI VC Trade on June 24, 2026 after JFSA approval under the Payment Services Act. This is stablecoin distribution, not proof that every RLUSD payment uses XRP as a bridge.
+- **SBI–Circle:** SBI Holdings and SBI Shinsei Bank announced a combined $50M Circle IPO investment. SBI also announced ARC presale participation; its individual amount is undisclosed. Circle named SBI Group a founding validator at Arc mainnet launch. Arc uses USDC as gas and a permissioned validator set, not XRP. The exact ownership ratio of SBI Circle Holdings was not confirmed in the primary material retrieved for this run.
+- **Circle–XRPL:** Circle launched native USDC on XRPL on June 12, 2025; Circle Mint and APIs support it without bridging. This adds a stablecoin rail to XRPL but does not establish material XRP buy demand.
+- **Circle–Coinbase:** Circle's SEC S-1/A describes Coinbase as a minority equity investor and USDC distribution/revenue-sharing partner. Coinbase-held USDC was 21% of circulation as of June 30, 2025; this is historical, not current. Their flow measures are economically linked, not independent confirmations.
+- **Coinbase–Evernorth:** Coinbase is selected as principal market for accounting valuation. BitGo is custodian. Coinbase's own help page lists New York among regions where XRP is not supported.
+- **Circle–Ripple:** USDC and RLUSD coexist on XRPL. No direct commercial partnership was established in this research.
+
+### Japan SBIC identity
+
+- SBIC East: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.
+- SBIC Central: Nagoya Small and Medium Business Investment & Consultation Co., Ltd.
+- SBIC West: Osaka Small and Medium Business Investment & Consultation Co., Ltd.
+
+These are separate regional Japanese legal entities, not SBI Holdings. Tokyo SBIC's March 5, 2026 ChatGPT seminar was a genuine SBIC-hosted training event with Hamamatsu Iwata Shinkin and a Microsoft speaker; it does not establish an OpenAI partnership.
+
+### Exact-phrase and identity status
+
+- `ASK Coin`: unresolved; no primary XRPL issuer or XRP relationship verified. Permission Coin (ASK) and an unrelated Ask Coin exchange listing remain separate candidates.
+- `actual capital`: reconciled to cash-funded XRP purchase, delayed cash, SPAC trust, in-kind XRP, debt proceeds and unused ELOC capacity.
+- `SBIC, ChatGPT SBIC`: no exact authoritative partnership match. An SBIC-hosted ChatGPT seminar exists, but no OpenAI commercial/data relationship is established.
+- `Camilla/Kamilah Stevenson`: one TEDxWillowCreek speaker appearance is verified for Kamilah; personal-channel ownership and broader video inventory remain unverified. Camilla remains a separate unresolved spelling.
+
+### Research artifacts and prediction status
+
+- [Run94 Evernorth capital and institutional-network evidence](research/xrp_intelligence/20261113T143130Z-run94-evernorth-capital-institutional-network-reconciliation.json)
+- [Run94 nine-platform capability/authentication/permission/data-flow map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run94.json)
+- Run93C remains the source for the November 13 spot/derivatives snapshot, ETF-flow and Goldman 13F disagreements, SEC-CFTC XRP digital-commodity interpretation, OCC GENIUS Act rule, and XRPL Lending amendment/collateral status.
+
+Prediction remains **NOT_ISSUED**. The mission has 48 source definitions, 46 scheduled public endpoints, 73 curated events, zero byte-exact raw publisher hashes, zero model-eligible events, no trained XRP candidate model and no measured out-of-sample lift. The current market and corporate web captures are research-only, not point-in-time model features.
+
+### Merge decision and next action
+
+PR #1662 remains draft, with zero formal reviews and approvals. Main branch-protection detail remains HTTP 403; the visible fallback ruleset is disabled; Pages publication authorization is unresolved; the GitHub connector reports admin/maintain/push/pull/triage permissions, so least privilege is not met. Semantic review of the 1,115-file integration and direct deployment scripts remains incomplete.
+
+Keep #1662 draft. Do not merge until independent formal approval, exact-head checks, security gates, branch-protection requirements and public Pages authorization are all resolved. After a valid merge, fetch main, verify the merge commit and merged files, run main CI, and only then close exact superseded source PRs.
+
+No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
