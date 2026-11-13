@@ -3578,3 +3578,81 @@ The event registry retains the SEC and Flare records as research-only: 73 curate
 The exact-head full suite on `ad2c5a0c8fbd6454aaa8329b4aedd5c1811b231f` completed with **3,523 passed, 17 failed, eight subtests**, 61.53% coverage. Core tests passed 723. The 17 failures all traced to one new event record: Evernorth's `event_status="filed"` is not in the event-timeline schema's allowed set (`occurred`, `ongoing`, `scheduled`, `unknown`). The event is a completed SEC filing, so its event status is corrected to `occurred`; the regression test now asserts this. The prior `corporate_finance` type and PNC wording issues are already corrected.
 
 No runtime code changed. The event registry, one regression test and this handoff are updated on the same existing integration branch. The new head requires a fresh exact-head full-suite run plus dependency and fail-closed verification. No merge is authorized until those pass and the separate approval/security blockers are resolved.
+
+
+---
+
+## Run72 — exact-head integration verification and PR reconciliation — 2026-11-12T23:59:44Z
+
+### Repository state inspected
+
+- Repository: `Barrot-Agent/B-Agent`; default branch: `main`.
+- Main SHA: `b4e36c91c380da89e7b60d00f984bd7ac123ce74` (main tree `6121936e66e9bafc5105bfafb67154b96308089a`).
+- Integration branch: `integration/xrp-v3-unified-main-20261112`; verified pre-handoff-update head: `777892325355e1c415f21533fe915bdc16925798` (tree `7a37f666e063061f0af96e859b667727ee818d5c`).
+- Compare main...integration: 2,172 commits ahead, zero behind; merge base is current main.
+- Complete recursive trees fetched without truncation: main 1,381 entries; integration 2,323 entries. Main has 87 workflow files and 30 XRP research files; integration has 88 workflow files and 585 XRP research files, 443 test files and 240 `barrot_agent/` entries.
+- Current consolidated PR #1662 is open, draft, mergeable=true, based on main SHA above, head `777892325355e1c415f21533fe915bdc16925798`, 1,076 changed files (+302,366/-5,123). It has zero formal reviews, zero approvals and zero inline review threads. One CodeRabbit comment confirms that the draft was not automatically reviewed.
+- Open PR inventory fetched across all four pages: 375 unique open PRs, 361 drafts and 14 non-drafts.
+
+### Exact-head CI — VERIFIED on `777892325355e1c415f21533fe915bdc16925798`
+
+- Full repository suite: **3,540 passed, zero failed, eight subtests passed**, 61.55% inclusive coverage; 97.59 seconds.
+- Full suite executed all repository tests and measured all distributable packages; it did not use only the core subset.
+- Core suite: **723 passed, zero failed, eight subtests passed**, 76% core coverage.
+- Wheel build and installed-wheel verification passed; the installed package loaded Barrot V3, the XRP primary mission and canonical data assets.
+- Dependency Audit run [43330400024](https://github.com/Barrot-Agent/B-Agent/actions/runs/43330400024) passed all five groups: root runtime requirements, development requirements, Hugging Face Space declarations, legacy declarations and PEP 621 project dependencies.
+- Full CI run [43330399939](https://github.com/Barrot-Agent/B-Agent/actions/runs/43330399939) passed both the core and full-repository jobs.
+- Fail-closed gate [43330399935](https://github.com/Barrot-Agent/B-Agent/actions/runs/43330399935) completed successfully by keeping merge disabled pending gate verification. This is a successful fail-closed result, not merge authorization.
+- Non-blocking packaging warnings remain: deprecated TOML table form for `project.license`, and setuptools package-discovery warnings for `barrot_agent.data.missions` and `data.research`. Installed-wheel mission verification passed despite these warnings; resolve package-discovery warnings in a bounded packaging change after semantic review.
+
+### Integration scope and overlap — EXECUTED
+
+PR #1662 changes 1,076 paths: 50 workflow files, 557 XRP research artifacts, 374 tests, 51 `barrot_agent/` files and 44 other paths. The full tree and PR changed-file list were inspected. All 50 changed workflow filenames were enumerated; the XRP public-ingestion workflow is read-only, main-only, hourly/daily scheduled, and writes GitHub artifacts/cache rather than external WORM storage.
+
+Current source-branch tip blob comparison against the integration tree, restricted to each source PR's changed paths:
+
+| Source PR | Changed paths | Paths present in #1662 tree | Identical blobs | Different blobs |
+|---|---:|---:|---:|---:|
+| #1661 | 1,072 | 1,072 | 1,060 | 12 |
+| #1660 | 972 | 972 | 936 | 36 |
+| #1643 | 670 | 670 | 661 | 9 |
+| #1640 | 280 | 280 | 232 | 48 |
+| #1642 | 7 | 7 | 0 | 7 |
+
+These are branch-tip blob comparisons, not proof that source PRs are safe to close. Differing content remains preserved and must be reconciled against each source PR's base/diff before any closure. Unique source-only work remains preserved: #1653 has six unique paths; #1655 three; #1659 four; #1615 thirteen. No source PR was closed.
+
+### XRP prediction readiness — VERIFIED state
+
+- The integration includes the primary mission contract, scheduled public ingestion adapter, event timeline, point-in-time feature store, source-independence grouping, scenario/counter-hypothesis assembly, chronological walk-forward evaluation, four baselines (naive, momentum, mean reversion, volatility), temporal probability calibration and fail-closed forecast ledger.
+- The latest event registry contains 73 curated events, **zero raw publisher SHA-256 receipts and zero model-eligible events**. Web/search excerpts and derived hashes are not byte-exact publisher receipts.
+- Forecast status remains **NOT_ISSUED**. The temporal temperature-scaling implementation calibrates deterministic baseline probabilities; it is not a trained predictive model and has not been validated on a mature independent XRP history.
+- The current ingestion workflow retains 90-day raw artifacts and a 7-day per-run feature-store checkpoint, with 90-day daily/manual archive fallback and an evictable cache. No independent WORM archive or trusted external timestamp anchor exists. Historical Binance/Coinbase candles are known only at capture time; depth sources without trustworthy exchange timestamps/sequence continuity remain raw-only. Multi-day walk-forward origins overlap and lack dependence-aware confidence intervals/block bootstrap.
+- The forecast ledger requires fixed-horizon target definitions, point-in-time features, overlap-adjusted effective samples, independent source groups, calibrated probabilities, baseline superiority, drift/shadow gates and independent Ed25519 evaluator attestation. No production signing service or independent shadow cohort is verified.
+
+### Institutional and identity correction retained
+
+The Run71C SEC Form 424B3 reconciliation distinguishes Evernorth's $272.6M gross cash proceeds before expenses, 388,910,554 XRP in-kind contribution, $30M net PIK-note proceeds, secondary resale shares, conditional ELOC capacity and potential warrant proceeds. It identifies SBI Holdings-controlled entities and reports approximately 39.9% SBI Group Ownership Percentage as of October 9, 2026. The filing says yield strategies commenced after closing, but does not quantify deployment or prove a 400M XRP allocation to native XRPL lending. Do not conflate SBI Holdings with SBIC East/Tokyo, Central/Nagoya or West/Osaka.
+
+The exact YouTube handle `@drkamilahstevenson` is high-confidence attribution to the Kamilah Stevenson channel based on the public guest self-identification and matching handle; it is not a YouTube verification badge. The four channel videos listed in Run71B remain commentary from one publisher group, not independent corroboration. ASK Coin has no verified canonical XRPL deployment; “actual capital” remains a non-standard phrase requiring cash/in-kind/debt/resale/capacity separation; the Tokyo SBIC ChatGPT training is educational activity, not an OpenAI partnership.
+
+### Security and merge blockers — OPEN
+
+- Main branch metadata reports `protected=true`, protection enabled, enforcement for non-admins, but zero required status-check contexts in the visible branch object. Direct branch-protection detail remains HTTP 403; required approvals/reviews and full rules are not independently inspectable.
+- Repository ruleset #10863829 (“Fall Back”) is **disabled** and contains only deletion/non-fast-forward restrictions.
+- The current GitHub connection has repository `admin`, `maintain`, `push`, `pull` and `triage` permissions. Apply least privilege through an authorized permissions change; none was attempted.
+- The latest handoff and prior security audit report `.config/gh/hosts.yml` in 17 affected open PR branch-tip trees and absent from main/integration. File contents were not read; provider-side revocation remains unverified. No secret rotation or credential operation was performed in this run.
+- The 1,076-file integration has passing tests but still requires semantic review of all changed paths, especially the 50 workflow changes, external side effects, generated/research artifacts and V3 preservation. GitHub Pages publication authorization remains unresolved; no merge or deployment occurred.
+
+### Backlog classification
+
+- **Blocked:** #1662 (draft, no formal review; security/branch-protection/publication blockers remain).
+- **Supersession candidates, not yet closable:** #1661, #1660, #1643, #1640 and #1642. Their differing blobs must be reconciled first; do not close before a verified successor merge.
+- **Unique/unreviewed; preserve:** #1653, #1655, #1659 and #1615, including their source-only paths.
+- **Other open work:** 375-PR inventory includes 14 non-drafts (including dependency candidates #1644–#1650 and distinct safety/structural work); review individually, do not bulk-close.
+- No PR was merged or closed in this run.
+
+### Next concrete action
+
+Complete semantic review of the 50 changed workflows and highest-risk V3/XRP runtime paths; reconcile the differing source-PR blobs; obtain independently inspectable branch-protection/review requirements; resolve credential-owner revocation and least-privilege permissions; establish publication authorization; then convert #1662 from draft only after all gates are satisfied. Preserve forecast issuance as disabled until byte-exact independent source anchoring, a mature synchronized point-in-time dataset, independent shadow outcomes, measured out-of-sample lift over all four baselines, calibration/drift acceptance and independent evaluator attestation are verified.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
