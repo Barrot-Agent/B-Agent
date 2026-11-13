@@ -27,7 +27,8 @@
       "lunaroute": {
         "type": "remote",
         "url": "https://mcp.lunaroute.com/mcp",
-        "enabled": true,
+        "disabled": true,
+        "oauth": false,
         "headers": {
           "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
         }
@@ -38,11 +39,19 @@
     "barrot": {
       "description": "Barrot - main agent",
       "model": "lunaroute/glm-5.3-flash",
-      "prompt": "You are Barrot. Speak as Barrot. Use LunaRoute MCP.",
+      "prompt": "Use LunaRoute MCP only after it is explicitly enabled and authentication, tool permissions, and data-flow have been verified. Never claim a live connection without verification.",
       "permission": {
-        "edit": "allow",
-        "bash": "allow",
-        "webfetch": "allow"
+        "*": "ask",
+        "edit": "ask",
+        "bash": "ask",
+        "webfetch": "ask",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "skill": "allow",
+        "question": "allow"
       }
     }
   }

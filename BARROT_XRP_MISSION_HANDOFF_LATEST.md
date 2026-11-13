@@ -4027,3 +4027,114 @@ The exact YouTube handle `@drkamilahstevenson` is high-confidence attribution to
 Complete semantic review of the 50 changed workflows and highest-risk V3/XRP runtime paths; reconcile the differing source-PR blobs; obtain independently inspectable branch-protection/review requirements; resolve credential-owner revocation and least-privilege permissions; establish publication authorization; then convert #1662 from draft only after all gates are satisfied. Preserve forecast issuance as disabled until byte-exact independent source anchoring, a mature synchronized point-in-time dataset, independent shadow outcomes, measured out-of-sample lift over all four baselines, calibration/drift acceptance and independent evaluator attestation are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
+## Run74 — current-main reconciliation, LunaRoute least-privilege gate and fresh XRP market update
+
+Captured: 2026-11-13T02:11:08Z. This section supersedes earlier repository-head and market snapshots where they conflict; prior evidence remains preserved.
+
+### Repository state and ancestry
+
+- Current main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Main's new commit is `Fix LunaRoute MCP: real host + provider wiring (mcp.lunaroute.com)`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- The integration branch was behind main by one commit. A non-force merge commit, `69a290dd989776cc64fe75bcb8c211b0b706e06a`'s successor, `69a290dd989776cc64fe75bcb8c211b0b706e06a`, now has parents `be9b743bf53c6ffcd5e77a59d74ccd71f14bc393` and current main `fb272b40966834754ec686f9ed3ab94123f09306`.
+- The merge tree preserves the integration tree and includes main's exact `opencode.json` blob. No force-push or history rewrite occurred.
+- PR #1662 now targets current main `fb272b4`, head `69a290d`, mergeable=true, draft=true, 1,076 changed files, +302,815/-5,123. Compare reports 2,177 commits ahead and zero behind. Main itself was not changed.
+- Complete open-PR inventory was re-read: 375 open PRs, 361 drafts and 14 non-drafts. No new PR or branch was created.
+
+### Current-main LunaRoute configuration and security correction
+
+Main's new `opencode.json` configured the remote LunaRoute MCP server as enabled and granted the Barrot agent `edit`, `bash` and `webfetch` as unconditional `allow`. The bearer token is referenced through `{env:LUNAROUTE_API_KEY}`; no literal credential was found in this file. This configuration is not proof that authentication succeeded or that a data flow was tested.
+
+The current integration branch now preserves the provider declaration but applies a safer default:
+
+- Remote LunaRoute MCP is `disabled: true` until explicitly enabled after authentication, tool-permission and data-flow verification.
+- `oauth: false` is explicit because the configured authentication mechanism is an API-key bearer header.
+- The agent's wildcard permission is `ask`; file edits, shell commands, web fetches and all MCP tools therefore require approval.
+- Only local read-only tools (`read`, `glob`, `grep`, `list`, `lsp`, `skill`, `question`) are explicitly allowed.
+- A regression test, `tests/test_opencode_lunaroute_safety.py`, verifies these settings and the environment-variable-only credential reference.
+
+This is an integration-branch hardening change only; main's existing configuration was not edited. No LunaRoute authentication attempt or external-model data transfer occurred. Official configuration references: https://opencode.ai/docs/agents/ and https://opencode.ai/docs/mcp-servers/.
+
+### Automatic workflow side effects observed on main
+
+The push of main commit `fb272b4` automatically triggered existing workflows:
+
+- Barrot Sync run [43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347) completed with a successful job conclusion, but its log shows `b_agent.py --sync` failed with `ModuleNotFoundError: No module named 'httpx'`; the workflow swallowed the error and printed `sync skipped - manual sync`. The subsequent commit/push step did not create a sync commit. This is a false-green workflow result, not a successful LunaRoute sync.
+- GitHub Pages run [43343511839](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343511839) successfully built and deployed the Pages artifact for main SHA `fb272b4`. This was an automatic repository workflow side effect, not an action initiated in this run. Publication authorization remains unresolved and blocks merging public-web changes until explicitly cleared.
+- Auto PR validation [43343513283](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513283) completed successfully.
+
+### Exact test evidence
+
+The previous integration head `be9b743` now has completed exact-head results; the earlier handoff's pending note was superseded by the finished run:
+
+- Full repository suite: 3,540 passed, 8 subtests passed, zero failures, 61.55% inclusive coverage, 61.10 seconds.
+- Core suite: 723 passed, 8 subtests passed, 13.67 seconds.
+- Wheel built; installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Five dependency manifest audits passed with no known vulnerabilities.
+- Fail-closed gate passed with automatic merge disabled.
+
+Evidence: [full CI 43342907546](https://github.com/Barrot-Agent/B-Agent/actions/runs/43342907546), [dependency audit 43342907365](https://github.com/Barrot-Agent/B-Agent/actions/runs/43342907365), [fail-closed gate 43342907373](https://github.com/Barrot-Agent/B-Agent/actions/runs/43342907373).
+
+Main SHA `fb272b4` also passed its push CI: 747 full-repository tests and 8 subtests; core job 485 passed and 8 subtests. [Main CI 43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172).
+
+The merge commit `69a290d` triggered CI run [43350081625](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350081625), dependency audit [43350081703](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350081703), and fail-closed gate [43350081698](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350081698). At this addendum capture, the full CI and dependency audit were still in progress; the fail-closed gate passed. Do not transfer the `be9b743` test result to `69a290d`. The subsequent configuration/test/handoff commit will also require its own exact-head CI.
+
+### Fresh XRP spot and microstructure observations
+
+Public observation cutoff: 2026-11-13 01:57 UTC for OKX; Kraken was retrieved shortly afterward. These web observations are research-only and have no Barrot RawReceiptArchive receipt.
+
+- OKX XRP-USDT: last 1.0322, bid 1.0322, ask 1.0323; provider event timestamp 2026-11-13T01:57:45.870Z; 24h open 1.0481, high 1.0577, low 1.0164, volume 31.50M XRP.
+- OKX USDT-USD: last 0.99895. Indicative USD-normalized OKX XRP midpoint is approximately $1.03112.
+- Kraken XRP/USD: last 1.02836, bid 1.02843, ask 1.02854; no provider event timestamp; 24h open 1.04003, high 1.05612, low 1.01516, volume 24.21M XRP.
+- The asynchronous normalized OKX/Kraken midpoint difference is approximately 0.268%. It is not executable arbitrage evidence.
+- CoinGecko's current header showed approximately $1.03, -2.1% over 24 hours and a $1.02–$1.06 range. Its Nov 13 daily row is still partial. Yahoo Finance showed $1.0291, -1.78%, at 01:14:24 UTC. These agree broadly with direct exchange quotes.
+- CoinGlass' page showed $1.053 and a $1.037–$1.081 24h range, materially above direct exchange/CoinGecko/Yahoo observations. Treat that page's spot snapshot as stale or mismatched; exclude it from the spot consensus.
+- No fresh executable depth snapshot was available from the direct OKX/Kraken L2 endpoints. Prior Fuelmaps depth remains historical, not current.
+
+Sources: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT ; https://www.okx.com/api/v5/market/ticker?instId=USDT-USD ; https://api.kraken.com/0/public/Ticker?pair=XRPUSD ; https://www.coingecko.com/en/coins/xrp ; https://finance.yahoo.com/quote/XRP-USD/history/ ; https://www.coinglass.com/currencies/XRP/historical-data/2026.
+
+### Derivatives and ETF flow disagreement
+
+- TradRadar snapshot at 2026-11-12 19:45 UTC: XRP mark $1.0301, -2.50% over 24h; open interest $1.53B across seven exchanges, down 2.45%; OI-weighted funding +0.0087% per 8h; at least $10.48M liquidations, of which $10.03M longs and $448K shorts; account long/short ratio 3.98 (79.9% long).
+- Alpha Finance snapshot at 20:14 UTC: spot $1.0307; OI $2.26B; 24h futures volume $2.34B; longs liquidated $11.5M and shorts $524.9K. Its modelled largest short-liquidation cluster was $5.1M at $1.0386; largest long-liquidation cluster $3.6M at $1.0215.
+- These OI totals cover different venue universes and timestamps; do not average them. Positive funding, falling OI, long-heavy liquidations and price weakness indicate leverage reduction and crowded-long vulnerability, not a directional forecast.
+
+Sources: https://tradradar.io/markets/xrp ; https://alphafinance.io/liquidation-heatmap/xrp/.
+
+ETF observations:
+
+- XRP Insights reports Nov 9–11 net outflows of 9.213M XRP across six US spot funds plus BITW; Nov 11 itself was +355,074 XRP, Nov 10 -27,000 XRP and Nov 9 -9.54M XRP. Total Nov 11 holdings were 1.19B XRP.
+- Alpha Finance's five-fund cohort through Nov 10 reports Nov 10 -$7.6M, Nov 9 -$10.4M and +$1.3M over 30 sessions.
+- The Block reports Nov 11 XRP ETF net flows of -$7.6M and AUM around $1.1B.
+- Preserve the different cohorts, settlement cutoffs and missing-fund rules. Do not average them.
+
+Sources: https://xrp-insights.com/data ; https://alphafinance.io/etf/xrp/ ; https://www.theblock.co/data/etfs.
+
+### Prediction and platform status
+
+- Prediction status remains **NOT_ISSUED**. The event registry remains at 73 curated events, zero byte-exact raw publisher receipts and zero model-eligible events. The fresh public observations above cannot enter model evaluation until collected into the raw receipt archive and point-in-time feature store.
+- No directional forecast, paper trade, real-money action or external-model transfer occurred.
+- Nine-platform authentication/permission/data-flow map is unchanged. ChatGPT/GitHub connector is verified; Claude, Grok, Gemini, Copilot formal review, Codex, Hugging Face, Kaggle and Databricks remain unverified or limited as previously recorded. LunaRoute MCP is now explicitly disabled in the integration config until verified.
+
+### Backlog and merge decision
+
+- PR #1662: **blocked** — consolidated integration; now current-main-based, but draft and still undergoing exact-head checks/security review.
+- #1661 and #1660: **overlap candidates** — do not close until successor merge and exact path/blob reconciliation.
+- #1643: **unique research content to reconcile**; do not bulk-close.
+- #1640: **overlap candidate** with unique MMI/prediction/safety paths requiring semantic review.
+- #1642, #1614 and #1611: **unique prediction-contract candidates** pending exact content comparison.
+- #1653, #1655, #1659 and #1615: **unique/unreviewed or blocked**; preserve their distinct work and review threads.
+- #1644–#1650 and older dependency PRs: **unique dependency updates**, not duplicates of the XRP integration.
+- #1320, #1318, #1317 and #1269: **unique safety/structural work**, preserve until reviewed.
+
+No source PR was closed.
+
+**No merge.** PR #1662 remains draft with no formal approvals. Branch-protection detail remains inaccessible (HTTP 403); the visible fallback ruleset remains disabled; connector permissions remain overprivileged. The new main Pages deployment proves an automatic external publication side effect. The latest exact-head CI for `69a290d` and the new configuration/test commit must complete before any readiness decision. The 1,076-file integration still needs semantic reconciliation.
+
+Next actions: verify the new OpenCode safety regression test and exact-head full suite/dependency audit; inspect current workflow and credential-path exposure; resolve least privilege, provider credential-owner revocation, branch-protection/review visibility and Pages publication authorization; continue semantic reconciliation of overlapping and unique PRs. Do not enable LunaRoute MCP, transfer data to external models, deploy, rotate secrets, restart Spaces, submit Kaggle entries, write to Databricks, paper-trade or use real money without the specific required approval.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure was performed by this run.
