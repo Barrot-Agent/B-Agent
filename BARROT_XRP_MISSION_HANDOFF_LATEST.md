@@ -6632,3 +6632,73 @@ The current map now records the failed attempt transparently and retains forecas
 After restoring the required current-map schema 1.1.0, the full suite on head `3c2bbeae` completed with **3,552 passed, one failed, eight subtests, 61.68% coverage, 61.58 seconds**. The sole failure was `test_source_provenance_and_backlog_classification_are_explicit`: Run84 had replaced the canonical backlog prefixes for #1661, #1660 and #1653 instead of preserving the historical contract. The same test also requires #1614 to remain classified as unique/unreviewed.
 
 The canonical labels are restored from the parent map. Run84's newer source-PR findings are moved into the additive `run84_backlog_classification` field, preserving both the test contract and the current reconciliation. The core suite passed 725 tests/eight subtests; the five-manifest dependency audit passed with zero known vulnerabilities; the fail-closed gate passed. No tests were weakened or removed, no runtime code changed, no PR was closed, and no merge occurred. The next corrective commit will trigger another exact PR-head full-suite run.
+
+
+## Run85 — cross-run receipt continuity and collateral reconciliation
+Research cutoff: **2026-11-13 09:48:13 UTC**.
+
+### Repository and exact-head verification
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration head: `7a04d89b47625b4ba853b25a13db70b119c2db95`; 2,232 commits ahead, zero behind. Tree: 2,341 entries versus 1,381 on main.
+- PR #1662 remains draft: 1,095 changed files, 315,334 additions, 5,136 deletions; zero formal reviews, approvals or review threads.
+- Open PR inventory: 375 total, 361 drafts, 14 non-drafts; 367 target main and eight target other branches. No new branch or PR. Main unchanged.
+
+**VERIFIED on exact head `7a04d89`:**
+- Full repository suite: **3,557 passed, zero failed, eight subtests passed**, 61.72% inclusive coverage, 78.31 seconds.
+- Core suite: **729 passed, zero failed, eight subtests passed**, 76% core coverage, 14.35 seconds.
+- Wheel build and installed primary-mission verification: passed.
+- Five dependency-manifest groups: passed; zero known vulnerabilities reported.
+- Fail-closed gate: passed; automatic merge remains disabled.
+- Evidence: [Full CI 43404307777](https://github.com/Barrot-Agent/B-Agent/actions/runs/43404307777), [PR dependency audit 43404307908](https://github.com/Barrot-Agent/B-Agent/actions/runs/43404307908), [push dependency audit 43404301856](https://github.com/Barrot-Agent/B-Agent/actions/runs/43404301856), [fail-closed gate 43404307791](https://github.com/Barrot-Agent/B-Agent/actions/runs/43404307791).
+
+A predecessor attempt on `32c2047` had one test failure: the exact 90-day artifact count still expected four after the new index artifact made the correct count five. The assertion was updated to five in `aee0ef`; no test was removed or weakened. The corrected predecessor and the subsequent `7a04d89` head both passed their own full suites.
+
+### EXECUTED: cross-run receipt-chain continuity
+Three fast-forward commits were added to the existing integration branch:
+- `32c2047`: per-run manifest now emits a cross-run receipt-chain index; added bootstrap, continuation, missing-predecessor and tampered-predecessor tests; workflow restores/uploads a small index artifact.
+- `aee0ef`: corrected the exact artifact-retention assertion from four to five.
+- `7a04d89`: before extending continuity, the workflow checks that the predecessor index's run ID and raw-artifact locator match and that the referenced raw artifact still exists and is unexpired. Missing/expired artifact, index mismatch or artifact-inventory API failure records `MISSING_PREDECESSOR_ARTIFACT` and keeps continuity unverified while public-data ingestion may continue.
+
+The index links the prior index hash, prior chain hash, current run identity, current per-run receipt-manifest hash, chain head and raw-artifact locator. It does **not** download the entire historical raw archive on each hourly run.
+
+**Limitations:** GitHub artifacts have 90-day retention; they are not independent WORM storage and do not provide trusted per-observation timestamps. The workflow is main-only and has not executed on main. Runtime restoration is therefore designed and unit-tested, not operationally verified. Forecast eligibility remains false.
+
+### XRP market observations — research-only
+- OKX XRP-USDT: $1.0281 last, $1.0281/$1.0282 bid/ask, 24-hour open $1.0477, high $1.0569, low $0.9974, volume 46.90M XRP. Provider event time 09:25:46.970 UTC, approximately 22.4 minutes old at cutoff; not eligible for a five-minute feature.
+- Kraken XRP/USD: $1.02749 last, $1.02769/$1.02770 bid/ask, no provider event timestamp. Asynchronous comparison is not arbitrage evidence.
+- Direct OKX, Kraken, Binance and Bybit L2 endpoints were inaccessible in this retrieval path. No synchronized order-book depth was admitted.
+- Liqwall 09:12 UTC: approximately $1.13B OI, down 1.1%; average funding -0.0013% per eight hours, Binance +0.0002%; $19.5M liquidations, $18.4M long-side; Binance long-account share 74.8%.
+- Kodexius 08:44 UTC: approximately $614.05M OI across seven contracts, weighted funding +0.0003%, $1.76B 24-hour volume. Stale TradRadar showed $1.55B OI and +0.0098% funding. Vendor totals are not averaged; venue/contract universes and timestamps differ.
+- XRP Insights settled holdings data through November 11: -9,213,260 XRP computed holdings change over November 9–11; 1,185,967,427 XRP tracked holdings on November 11. November 12 remains provisional. GXRP flow is excluded while holdings remain included; holdings changes are not direct cash subscriptions.
+
+### New institutional collateral evidence
+**Coinbase cbXRP proof of reserves:** Coinbase's first-party dashboard displayed a November 13, 8:16 AM refresh: 153,736,732.8 XRP reserves against 153,734,486.27 cbXRP supply, an excess of 2,246.53 XRP and calculated coverage of 100.00146%. Coinbase describes cbXRP as wrapped XRP backed 1:1 by XRP it holds. This is a first-party dashboard, not an independent CPA attestation. [Coinbase proof of reserves](https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves).
+
+**Morpho Base USDC/cbXRP market:** the page showed $53.63M outstanding USDC loans, $24.97M liquidity, $78.61M total market size, 62.5% LLTV, 6.66% borrow and 5.64% lend rates. It displayed 85.21% utilization, while loans divided by loans plus displayed liquidity yields 68.23%; this discrepancy is unresolved and requires direct API/contract reconciliation. It reports zero realized and unrealized bad debt. This is wrapped-XRP collateral use on Base, not native XRPL collateral, an XRP spot purchase or issuer capital raised. [Morpho market](https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp).
+
+**BNY/Ripple:** BNY's October 27 announcement says it is RLUSD's primary reserve custodian, has a custody relationship with Ripple Prime, and now supports XRP and RLUSD on its Digital Asset Custody platform. Direct RLUSD mint/redeem through BNY and tokenized trade finance on XRPL remain future or exploratory initiatives. [BNY announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+
+**RLUSD reserve vintage:** Ripple reports $2.6329B circulation and $2.748B reserves as of November 5 (104.37% calculated coverage). The latest attestation listed is September 2026. A third-party November 12 tracker reports approximately $2.710B supply; dates and methods differ, so do not average. [Ripple transparency](https://ripple.com/products/stablecoin/transparency/).
+
+### PR reconciliation and backlog
+Current changed-path blob comparison against #1662:
+- #1661: 1,072 changed paths; 1,050 identical blobs, 22 differing; source head is an ancestor, 100 commits behind integration.
+- #1660: 972 paths; 935 identical, 37 differing; ancestor, 281 commits behind integration.
+- #1643: 670 paths; 661 identical, nine differing; ancestor, 1,343 commits behind integration.
+- #1640: 280 paths; 231 identical, 49 differing; diverged, with one source commit ahead of integration. Preserve; not a duplicate.
+- #1642: seven paths; zero identical, seven differing; ancestor, 2,248 commits behind integration.
+
+Unique source-only work remains preserved: #1653 (six paths), #1655 (three), #1659 (four), #1615 (13), #1614 (27). #1653 remains blocked: 18 commits ahead, 17 behind, eight unresolved review threads across two paths and two comment-only reviews. #1644–#1650 and #1254/#1255 remain blocked pending current-main validation; #1320, #1318, #1317 and #1269 remain unique/unreviewed. No source PR was closed.
+
+### Security, platform coordination and forecast
+- Main branch-protection detail remains unavailable (HTTP 403); fallback ruleset 10863829 remains disabled. GitHub connector permissions remain overbroad (admin/maintain/push/pull/triage).
+- Main retains remote LunaRoute MCP/write-capable configuration and external Barrot Sync/agent workflows that integration quarantines. GitHub Pages previously deployed automatically; seven public web files in #1662 make publication authorization unresolved.
+- Last credential-path audit found `.config/gh/hosts.yml` inherited and unchanged in 17 open PR branch tips, absent from main/integration; contents were not read and provider-side revocation remains unverified.
+- Nine-platform status is unchanged: ChatGPT/GitHub verified but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot activity is not formal approval; Hugging Face prior build error; Kaggle untested; Databricks prior HTTP 403. No external-model dispatch or data transfer occurred.
+- SBIC East/Central/West remain distinct from SBI Holdings. SBIC East's ChatGPT activity is educational; SBI Holdings/SBI Securities Enterprise adoption and SoftBank Group/OpenAI are separate relationships. ASK Coin still has no verified canonical XRPL issuer/deployment. "Actual capital" remains non-standard. Kamilah Stevenson's YouTube channel ownership remains unverified; no video attribution/inventory.
+- **Forecast NOT_ISSUED.** Web observations in this run have no byte-exact Barrot publisher receipts; the event registry remains 73 curated events, zero raw publisher hashes and zero model-eligible events.
+
+### Decision
+**No merge.** Exact-head tests, dependency audit and fail-closed gate now pass, but #1662 remains draft with zero approvals/reviews. Branch-protection enforcement, least privilege, Pages authorization, complete semantic review of 1,095 changed files and trusted external receipt anchoring remain unresolved. No deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+Next action: complete semantic reconciliation and security remediation, obtain independently verifiable branch protection and explicit Pages publication authorization, then validate the main-only ingestion and cross-run index at runtime. Add WORM/trusted timestamp anchoring and synchronized historical L2/derivatives data before forecast admission.
