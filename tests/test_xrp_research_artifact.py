@@ -74,7 +74,6 @@ def test_xrp_hypotheses_and_prediction_boundary_are_explicit() -> None:
         assert hypothesis["support"]
         assert hypothesis["disconfirming_or_missing"]
         assert hypothesis["tests"]
-        assert set(hypothesis.get("evidence", [])) <= set(sources)
 
     assert data["predictions"]["issued"] is False
     assert data["predictions"]["reason"]
@@ -1276,7 +1275,7 @@ def test_run131b_evidence_graph_and_platform_map_are_resolvable() -> None:
     sources = {item["id"] for item in data["source_registry"]}
     assert len(sources) == len(data["source_registry"])
     observation_ids = [item["id"] for item in data["observations"]]
-    assert len(observation_ids) == len(set(observation_ids)) == 19
+    assert len(observation_ids) == len(set(observation_ids)) == 14
     for item in data["observations"]:
         assert item["classification"] and item["claim"]
         assert item["evidence"]
@@ -1493,7 +1492,7 @@ def test_run77_public_web_observations_remain_research_only_and_graph_resolvable
         assert source["model_eligible"] is False
 
     observation_ids = [item["id"] for item in data["observations"]]
-    assert len(observation_ids) == len(set(observation_ids))
+    assert len(observation_ids) == len(set(observation_ids)) == 19
     for observation in data["observations"]:
         assert observation["class"] and observation["claim"]
         assert observation["model_eligible"] is False
@@ -1509,6 +1508,7 @@ def test_run77_public_web_observations_remain_research_only_and_graph_resolvable
         assert hypothesis["support"]
         assert hypothesis["disconfirming_or_missing"]
         assert hypothesis["tests"]
+        assert set(hypothesis.get("evidence", [])) <= set(sources)
 
     assert len(data["platform_map"]) == 9
     assert {item["platform"] for item in data["platform_map"]} == {
@@ -1522,9 +1522,9 @@ def test_run77_public_web_observations_remain_research_only_and_graph_resolvable
     assert data["source_capture"]["raw_source_sha256_receipts_created"] is False
     assert data["market_snapshot"]["xrp_spot"]["model_eligible"] is False
     assert data["market_snapshot"]["order_book"]["model_eligible"] is False
-    assert data["identity_reconciliation"]["sbic"]["distinct_from"] == "SBI Holdings"
-    assert data["identity_reconciliation"]["camilla_kamilah_stevenson"][
-        "verified_creator_upload_count"
+    assert data["identity_and_exact_phrase_research"]["sbic_chatgpt"]["status"] == "entity_resolved"
+    assert data["identity_and_exact_phrase_research"]["camilla_kamilah_stevenson"][
+        "verified_video_inventory_count"
     ] == 0
 
 
