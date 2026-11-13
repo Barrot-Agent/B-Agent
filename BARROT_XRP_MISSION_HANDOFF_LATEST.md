@@ -6520,3 +6520,99 @@ Next actions:
 6. Keep forecast issuance disabled until the complete out-of-sample, calibration, shadow, baseline and evaluator-attestation gate passes.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run84 — current repository, market and integration audit
+**Captured:** 2026-11-13T09:05:38Z. Mission priority 1 remains XRP intelligence and measured prediction-engine mastery; Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+### Repository and PR inventory
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Pre-Run84 integration head: `0af048d2697bdd11957a3f0063d206480f91d5ec`; 2,225 commits ahead of main, zero behind.
+- Complete recursive trees: 1,381 entries on main and 2,341 on integration.
+- Consolidated PR #1662: open, draft, mergeable=true, 1,095 changed files, 2,225 commits; zero formal reviews, approvals or review threads.
+- Open PR inventory: 375 total; 361 drafts, 14 non-drafts; 367 target main and eight target other branches.
+- No new branch or PR was created. Main was not modified.
+
+### Exact-head CI and dependency evidence
+The PR-associated run for head `0af048d2697bdd11957a3f0063d206480f91d5ec` completed successfully:
+- Full repository suite: 3,553 passed, zero failed, eight subtests passed in 96.85 seconds.
+- Inclusive coverage: 61.68%; legacy core coverage: 76%.
+- Core test job passed; wheel build and installed Barrot V3/XRP mission verification passed.
+- Five dependency manifest groups passed with zero known vulnerabilities reported.
+- Fail-closed gate passed; automatic merge remains disabled.
+
+Evidence:
+- [Full CI 43393512239](https://github.com/Barrot-Agent/B-Agent/actions/runs/43393512239)
+- [Dependency audit 43393512160](https://github.com/Barrot-Agent/B-Agent/actions/runs/43393512160)
+- [Fail-closed gate 43393512242](https://github.com/Barrot-Agent/B-Agent/actions/runs/43393512242)
+
+The run's PR head SHA is exact, but the runner checked out synthetic merge commit `6f3753d3e9e5ed29e368e421cf67424e1a6398b1` (`refs/remotes/pull/1662/merge`), not the branch SHA directly. The integration content was tested together with current main; direct branch-only checkout is not claimed.
+
+### Source-PR ancestry and backlog
+- #1661, #1660, #1643 and #1642 are ancestors of the consolidated integration head; each has zero commits ahead of integration. Their changed-path sets are fully contained in #1662. Keep them open until #1662 is merged and its content is verified on main; then close only those proven superseded.
+- #1640 has one commit ahead of integration and 1,267 behind. Its unique three-file Databricks/Kaggle action-specific approval change is already semantically present in integration: separate default-NO inputs, exact-main-SHA check, and step-level approval gates are present in `.github/workflows/barrot-ops.yml` and regression tests. Do not close #1640 until main verification.
+- #1653 remains unique and blocked: 17 commits behind main, 18 ahead, eight unresolved review threads (six Copilot, two CodeRabbit). Findings include potential overwrite of a shared codebase-memory graph, incorrect MCP argument transport, unvalidated submodule fetches, stale dirty-state reporting, degraded-index success misreporting and uncaught fetch timeouts. Preserve this work; do not bulk-close.
+- #1655, #1659 and #1615 retain unique source-only work and remain preserved.
+- Dependency candidates #1644–#1650 and #1254/#1255 remain blocked pending current-main validation. Safety/structural PRs #1320, #1318, #1317 and #1269 remain unique/unreviewed.
+
+### Workflow and security review
+- Integration `barrot-agent.yml` and `barrot-sync.yml` are quarantined; the self-hosted-brain workflow is disabled. The main branch still has remote LunaRoute MCP and write-capable configuration, unlike integration's disabled remote MCP and approval-gated writes.
+- Integration `barrot-ops.yml` includes separate Databricks-import and Kaggle-download approvals, both default NO, and exact-main-SHA validation. This also reconciles the unique safety commit on #1640.
+- The XRP ingestion workflow exists on integration and is main-only. It has not executed on main because the branch is unmerged.
+- The ingestion workflow restores the cumulative feature store, but it does not restore the prior raw-receipt archive. `RawReceiptArchive` therefore creates a per-run chain in a fresh runner workspace; the chain resets between runs. Raw artifacts have 90-day retention, and independent WORM/trusted timestamp anchoring remains absent.
+- Main branch-protection details remain unverified (the prior API attempt returned HTTP 403); fallback ruleset 10863829 was last recorded disabled and was not reverified here. GitHub connector permissions remain admin/maintain/push/pull/triage. Pages publication authorization remains unresolved because main-side Pages deployment is automatic and #1662 changes public web files.
+- No credential contents were read. No secret rotation or provider-side revocation was attempted.
+
+### XRP market and source-quality snapshot
+Research cutoff: 2026-11-13T09:05:38Z. These web/API observations are research-only; their raw response bytes were not captured into Barrot's receipt archive and they are not model-eligible.
+
+**Direct spot APIs**
+- OKX XRP-USDT event time 08:53:29.472 UTC: last 1.0311, bid 1.0311, ask 1.0312; 24h open 1.0451, high 1.0569, low 0.9974; volume 46.763M XRP and 47.908M USDT. At the cutoff this quote was about 12 minutes old, so it fails the five-minute live-feature gate.
+- Kraken XRP/USD retrieval: last 1.03005, bid 1.02990, ask 1.02991; 24h open 1.04003, high 1.05548, low 0.99672; volume 36.478M XRP. Kraken supplied no provider event timestamp, so it is not point-in-time eligible.
+- Kraken USDT/USD midpoint: 0.998985. Mechanical normalization gives OKX midpoint about $1.030103 versus Kraken midpoint $1.029905, a +0.0193% asynchronous difference. This is not executable arbitrage.
+- Direct OKX and Binance L2 endpoints were inaccessible in this retrieval. No synchronized depth or executable-liquidity conclusion is made.
+
+Sources: [OKX ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [Kraken USDT/USD](https://api.kraken.com/0/public/Ticker?pair=USDTUSD).
+
+**Derivatives disagreement**
+- Liqwall at 07:02 UTC: OI $1.12B, -0.8% 24h; average funding -0.0025%/8h; Binance +0.0026%; $19.3M liquidations, $18.4M long-side; 75.2% of Binance accounts long.
+- Kodexius at 07:04 UTC: OI $613.07M across its seven-contract universe, funding -0.0005%/8h and 24h volume $1.72B.
+- TradRadar at 23:55 UTC on November 12: OI $1.55B across seven exchanges, +0.57% 24h, funding +0.0098%/8h, liquidations at least $9.01M.
+- Coinalyze's partial Binance/Bybit snapshot at 02:46 UTC reported OI $308.71M/$264.28M and account long shares 75.34%/81.33%.
+These are different venue universes, timestamps and liquidation coverage. Do not average them. Long-heavy liquidations support a deleveraging hypothesis, not a directional forecast.
+
+Sources: [Liqwall](https://liqwall.com/coins/xrp), [Kodexius](https://kodexius.com/data/crypto-derivatives/XRP), [TradRadar](https://tradradar.io/markets/xrp), [BitcoinLeverage/Coinalyze coverage](https://bitcoinleverage.com/xrp).
+
+**ETF flow disagreement**
+- XRP Insights: settled data through November 11; November 9–11 net -9,213,260 XRP; total holdings 1,185,967,427 XRP; November 12 remains provisional.
+- Alpha Finance: through November 12, five-fund cohort reports $0 for that day and -$2.8M over 30 sessions.
+- CryptoKeyhole: its four-of-six daily cohort's latest complete day is November 11 (-3,322 XRP); November 12 issuer files were still pending in its latest check.
+- Maketo: November 12 $0, with -$18M over the prior week across its tracked cohort.
+These are not the same fund universe or settlement vintage. Holdings-derived flow is not independently verified cash subscription/redemption. Do not average or treat a partial zero as a confirmed full-cohort zero.
+
+Sources: [XRP Insights](https://xrp-insights.com/data), [Alpha Finance](https://alphafinance.io/etf/xrp/), [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/), [Maketo](https://maketo.com/etf/xrp/flows).
+
+**Regulatory and institutional context**
+- Reuters reported on November 12 that the White House sent CFTC and SEC nominations to the Senate; confirmation timing may be complicated by the incoming Senate balance. This is regulatory-process context, not an XRP-specific rule change. [Reuters](https://www.reuters.com/legal/government/white-house-sends-cftc-sec-role-picks-senate-approval-2026-11-12/).
+- PNC/Coinbase's November 9 limited corporate-payment pilot uses Circle USDC with automatic conversion to dollars, not XRP. [Reuters](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
+
+**Identity and exact-phrase controls**
+- ASK Coin: no new primary-source evidence of a canonical XRPL issuer or deployment.
+- "Actual capital": still not a standardized XRP metric; cash, in-kind XRP, debt, ELOC draws, warrants and secondary resales remain separate.
+- SBIC East/Central/West remain distinct from SBI Holdings. SBIC East ChatGPT activity is educational; no SBIC/OpenAI commercial partnership verified.
+- Kamilah Stevenson: a candidate YouTube handle `@drkamilahstevenson` appears in third-party channel indexes and a third-party Telegram directory links to it. Multiple lookalike channels exist, and no first-party official-site cross-link or YouTube ownership verification was established. Correct prior overstatement: channel ownership remains UNVERIFIED; do not attribute or inventory videos until verified.
+
+### Prediction readiness
+- Integration defines 48 public-source endpoints: 43 hourly, three weekly CFTC and two noncommercial XRPL node endpoints excluded from scheduled collection.
+- The CFTC Legacy Futures-Only parser and eight regression tests are present; its separate Legacy taxonomy is not conflated with TFF.
+- The scheduled ingestion workflow has not run on main. The event registry has 73 curated events with null publisher raw hashes, zero model-eligible events and forecast status NOT_ISSUED.
+- Raw receipt chains are per-run, not cross-run. The current workflow restores the feature store but not the receipt archive. 90-day GitHub artifacts are not WORM or independent timestamp anchoring.
+- Forecast issuance remains disabled until synchronized historical data, durable receipts, independent shadow outcomes, calibration, drift, effective sample-size and four-baseline superiority gates pass. No forecast, paper trade or real-money action occurred.
+
+### Decision
+**No merge.** PR #1662 remains draft with zero formal approvals/reviews. Exact PR-associated full-suite and dependency checks passed, but the branch has not completed direct branch-only CI, security/branch-protection enforcement is not independently verifiable, connector permissions are overbroad, Pages publication is unresolved, and full semantic reconciliation of 1,095 files remains incomplete.
+
+Next concrete action: design and implement cross-run receipt continuity without re-uploading the entire historical raw archive on every hourly run. Keep each per-run raw payload artifact content-addressed, persist an append-only receipt index/chain with explicit external-artifact references, validate continuity and missing-artifact behavior, and keep the system model-ineligible until trusted external anchoring is available. Then continue full semantic reconciliation and resolve least privilege, branch-protection visibility and Pages authorization.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
