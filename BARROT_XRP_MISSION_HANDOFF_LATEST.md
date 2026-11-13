@@ -1,3 +1,38 @@
+# Run107B — Corrective CI reconciliation, Evernorth capital and Kamilah video inventory
+Retrieved: 2026-11-13 23:20:03 UTC
+
+## Corrective CI finding
+- Documentation head `8b30c6b931d5f86fcaca303a0537e3c9bf93a935` failed [full CI 43525757356](https://github.com/Barrot-Agent/B-Agent/actions/runs/43525757356): 42 failed, 3,571 passed, eight subtests passed, 62.26% coverage.
+- Root cause: Run107 incorrectly replaced the established 1,660,889-byte canonical current platform-map blob (schema 1.1.0) with the separate Run107 snapshot schema 1.2. Tests in `test_nine_platform_capability_authentication_dataflow_map.py`, `test_xrp_mission_handoff_run58.py` and `test_xrp_nine_platform_current_map_run73.py` correctly rejected the changed current-map contract.
+- **Correction:** restore `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json` byte-for-byte from the audited parent `fe90fd5`, original blob SHA `aaa327be7b6b23437f129c6f08abcffe78ce6e41`, size 1,660,889 bytes. The Run107 map remains a separate additive snapshot at `nine_platform_capability_authentication_dataflow_map_run107.json`. No runtime code was changed, no history rewritten and no force-push used.
+- The corrective commit is a fast-forward child of `8b30c6b`. Its exact-head full-suite CI must complete before any verification claim; the parent `fe90fd5` had passed 3,613 tests and eight subtests.
+
+## Evernorth — expanded actual-capital reconciliation
+Primary sources:
+- [Oct 19 public-warrant 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm)
+- [Nov 9 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm)
+- [Oct 30 ELOC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm)
+- [Oct 23 ELOC 8-K](https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm)
+
+The capital picture has two additional conditional instruments:
+1. **Public warrants:** the Oct 19 prospectus registers up to 11,499,992 shares at $11.50 per share, a theoretical maximum $132,249,908 gross only if every warrant is exercised for cash. The filing says the issuer receives proceeds only on exercise, gives broad discretion for general corporate purposes and gives no assurance of exercise. It is not a committed XRP purchase.
+2. **Outstanding-warrant discrepancy:** the Nov 9 filing reports 9,283,847 Pubco Warrants outstanding as of Oct 22. That is 2,216,145 fewer than the Oct 19 prospectus's 11,499,992 registered shares. The retrieved filings do not explain whether the difference represents cash exercise, cashless exercise, cancellation or another adjustment. The theoretical $25.486M from cash exercise of the difference is **not verified actual capital**. The remaining 9,283,847 warrants would represent at most $106.764M if all were later exercised for cash, also conditional.
+3. **ELOC:** up to 5,218,935 shares, purchase price 97% of applicable VWAP, at Evernorth's discretion and subject to 4.99% ownership and 20% volume limits. The Oct 30 prospectus cover reference of $14.71 implies about $76.8M gross capacity, but this is price-dependent. The Nov 9 filing states zero proceeds as of Nov 9. It is not cash received.
+4. **Commitment fee:** $521,893.50, non-refundable and fully earned on signing; payable within five business days after registration effectiveness. Payment is not independently verified. It is a fee/outflow, not capital raised.
+5. **Sponsor warrants:** 239,653 at $11.50, at most $2.756M if all exercised for cash; actual exercise not verified. Resales of the 73,688,162 registered shares produce zero issuer proceeds.
+
+Previously verified closing figures remain distinct: $272.6M gross cash proceeds, 388.91M XRP in-kind, 84.3659M XRP purchased using $214.05M of that cash, $30M PIK debt with approximately $29M net cash after fees, and $9.7M related-company facility draw as of Oct 7. The $214.05M XRP purchase is use of cash, not another raise. SBI voting power is not its capital contribution share. Coinbase's principal-market designation is an accounting valuation choice, not exclusivity or custody.
+
+**Unresolved:** reconcile the 2,216,145 public-warrant reduction to issuer cash receipts, transfer-agent records and any cashless/cancelled warrant treatment before recording any exercise proceeds.
+
+## Kamilah Stevenson — verified public YouTube inventory
+- **One verified speaker appearance:** [Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek](https://www.youtube.com/watch?v=VSgeDgOCexs), published May 18, 2018, on the TEDx Talks channel. The video description links to `kamilahstevenson.com`, supporting attribution to the verified speaker. This is not an own-channel upload.
+- `prescribewealth.com` identifies Dr. Kamilah Stevenson as founder of MKS Health LLC and a financial-education company.
+- Third-party Vling analytics list a candidate `@drkamilahstevenson` channel (ID `UCqUPJMQdkCN6lsLVDnichPA`) with approximately 143K subscribers and 1.3K videos, describing stocks, crypto and macro. The official site does not link to this channel. Ownership remains **UNVERIFIED**; none of its videos are attributed.
+- Verified own-channel video inventory: zero. Verified speaker appearances: one. Similar Camilla/Kamilah handles remain quarantined unless first-party identity linkage is established.
+
+## Forecast and authorization
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade, real-money action, deployment, secret rotation, Space restart, Databricks write, Kaggle submission or source-PR closure occurred. PR #1662 remains draft and unmerged.
 # Run107 — Current XRP Mission Snapshot
 Research cutoff: 2026-11-13 23:03:17 UTC
 
