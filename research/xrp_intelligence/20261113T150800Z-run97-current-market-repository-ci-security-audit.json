@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot-xrp-run-evidence-v1",
   "run": "Run97",
-  "captured_at_utc": "2026-11-13T15:22:00Z",
+  "captured_at_utc": "2026-11-13T15:35:00Z",
   "market_data_cutoff_utc": "2026-11-13T15:04:06Z",
   "mission": {
     "priority": 1,
@@ -19,7 +19,7 @@
     "integration_ahead_of_main": 2264,
     "integration_behind_main": 0,
     "main_tree_entries": 1381,
-    "integration_tree_entries": 2362,
+    "integration_tree_entries": 2364,
     "main_workflow_files": 79,
     "integration_workflow_files": 80,
     "pr_number": 1662,
@@ -28,8 +28,8 @@
     "pr_mergeable": true,
     "pr_head_sha": "bfce2babac9abc990a07e7ae70e0df5853e2491b",
     "pr_base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "pr_changed_files": 1119,
-    "pr_additions": 321839,
+    "pr_changed_files": 1123,
+    "pr_additions": 323295,
     "pr_deletions": 5230,
     "pr_changed_workflow_files": 50,
     "open_pr_total": 375,
@@ -43,7 +43,8 @@
       "The integration branch is not protected."
     ],
     "integration_head_before_run97_research_test_commit": "f04b6adf4eb0e9a4800a0bbfe0a18e37a29b10a9",
-    "note_about_current_head": "This Run97 research/test commit is a documentation and regression-test descendant of the fully tested code-bearing head; its own exact-head CI is required before any merge consideration."
+    "note_about_current_head": "This Run97 research/test commit is a documentation and regression-test descendant of the fully tested code-bearing head; its own exact-head CI is required before any merge consideration.",
+    "integration_head_before_collateral_regression_commit": "99cddbb52580c9f5793aca2fa1e0da8530c46107"
   },
   "ci": {
     "exact_head": "bfce2babac9abc990a07e7ae70e0df5853e2491b",
@@ -94,20 +95,23 @@
       "latest_main_full_suite_subtests": 8
     },
     "latest_verified_code_bearing_head": {
-      "sha": "f04b6adf4eb0e9a4800a0bbfe0a18e37a29b10a9",
-      "full_ci_run_id": 43450175610,
-      "full_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175610",
-      "full_suite_tests": 3566,
+      "sha": "99cddbb52580c9f5793aca2fa1e0da8530c46107",
+      "full_ci_run_id": 43451689336,
+      "full_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43451689336",
+      "full_suite_tests": 3577,
       "subtests": 8,
       "failures": 0,
       "inclusive_coverage_percent": 62.08,
-      "full_suite_duration_seconds": 93.55,
+      "full_suite_duration_seconds": 72.89,
       "core_tests": 732,
+      "core_subtests": 8,
       "core_coverage_percent": 76,
-      "dependency_audit_run_id": 43450175954,
-      "dependency_audit_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175954",
-      "fail_closed_gate_run_id": 43450175627,
-      "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175627",
+      "dependency_audit_run_id": 43451688955,
+      "dependency_audit_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43451688955",
+      "fail_closed_gate_run_id": 43451689494,
+      "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43451689494",
+      "dependency_manifest_groups": 5,
+      "known_vulnerabilities_reported": 0,
       "exact_head_status": "success"
     }
   },
@@ -435,6 +439,35 @@
           "US_issuer": "Circle Internet Financial LLC",
           "note": "Separate legal entities; do not merge EU and US issuer obligations."
         }
+      },
+      "sec_cftc_xrp_classification": {
+        "release": "SEC Release 33-11412 / CFTC guidance",
+        "issue_date": "2026-03-17",
+        "effective_date": "2026-03-23",
+        "source_url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+        "finding": "XRP is explicitly listed as a digital commodity in the SEC interpretive release; CFTC joined with guidance to administer the CEA consistently.",
+        "legal_limit": "The release states it does not supersede or replace Howey. A non-security crypto asset can still be offered or sold subject to an investment contract. It is interpretive guidance, not comprehensive market-structure legislation."
+      },
+      "clarity_genius_status": {
+        "clarity_act": {
+          "status_as_of": "2026-11-09 SEC prospectus disclosure",
+          "house_passed": "2025-07-17",
+          "senate_banking_reported_with_amendment": "2026-06-01",
+          "senate_cloture_failed": "2026-08",
+          "enacted": false,
+          "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+        },
+        "genius_act": {
+          "signed": "2025-07-18",
+          "implementing_rules_status_as_of": "2026-11-09",
+          "treasury_and_federal_reserve_rules": "proposed, not final",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+        },
+        "issuer_entity_separation": {
+          "ripple_national_trust_bank": "separate from Standard Custody & Trust Company, RLUSD issuer",
+          "circle_national_trust_bank": "separate from Circle Internet Financial LLC, USDC issuer",
+          "note": "National trust-bank charters do not automatically change the legal issuer of RLUSD or USDC."
+        }
       }
     },
     "coinbase_collateral": {
@@ -476,6 +509,84 @@
       "caution": "Coinbase revenue, Circle distribution costs and average USDC balances are different accounting measures; do not net them or treat them as XRP capital flows.",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
       "model_eligible": false
+    },
+    "ripple_prime_collateral": {
+      "source": "Ripple Prime official institutional product page",
+      "product_url": "https://ripple.com/products/prime-brokerage/",
+      "business_model": "Non-bank institutional prime broker; not a trading venue; no retail clients.",
+      "collateral_page_claim": "XRP is listed alongside RLUSD, tokenized real-world assets and traditional collateral in the assets institutions can post into Ripple Prime's collateral framework; the page explicitly confirms RLUSD accepted as collateral.",
+      "cross_margining": "Single collateral pool across supported digital and traditional positions; page lists regulated U.S. futures through CME and Nodal Clear.",
+      "us_spot_launch": {
+        "date": "2025-11-03",
+        "source_url": "https://ripple.com/ripple-press/ripple-launches-digital-asset-spot-prime-brokerage-for-the-united-states-market/",
+        "claim": "U.S.-based institutional clients can execute OTC spot XRP/RLUSD and cross-margin OTC spot holdings with OTC swaps and CME futures/options."
+      },
+      "actual_xrp_collateral_balances_disclosed": false,
+      "xrp_specific_haircuts_disclosed": false,
+      "xrp_specific_clearing_treatment_disclosed": false,
+      "actual_client_posting_verified": false,
+      "distinction": "Prime-broker collateral eligibility and internal cross-margining do not establish that CME Clearing directly accepts XRP."
+    },
+    "cftc_collateral_framework": {
+      "letter": "CFTC Staff Letter 26-05",
+      "issued": "2026-02-06",
+      "requester": "Coinbase Financial Markets, Inc.",
+      "request_date": "2025-12-08",
+      "source_url": "https://www.cftc.gov/csl/26-05/download",
+      "related_faq_url": "https://www.cftc.gov/PressRoom/PressReleases/9200-26",
+      "legal_character": "Staff no-action position subject to conditions; not a Commission rule or automatic asset approval.",
+      "initial_ramp_up": {
+        "duration_months": 3,
+        "eligible_assets": [
+          "payment stablecoins",
+          "Bitcoin",
+          "Ether"
+        ],
+        "note": "The three-month period is tied to each FCM's notice/reliance conditions, not a universal start date."
+      },
+      "after_initial_phase": {
+        "futures_and_cleared_swaps_customer_accounts": "Digital asset must be accepted by the relevant registered DCO/foreign clearing organization; DCO haircuts and other conditions apply.",
+        "cftc_30_7_customer_accounts": "May include a payment stablecoin, an asset accepted by a DCO/foreign clearing organization, or the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to the letter's conditions, notice, risk controls and applicable haircuts/capital charges.",
+        "fcm_notice_required": true
+      },
+      "xrp_path": {
+        "cme_xrp_futures_listed": true,
+        "cme_contract_unit_xrp": 50000,
+        "cme_contract_cash_settled_usd": true,
+        "cme_product_source": "https://www.cmegroup.com/markets/cryptocurrencies/xrp/xrp/specs",
+        "potential_30_7_route": "Because XRP is the underlying commodity of CME-listed XRP futures, it may fit the post-ramp 30.7 underlying-commodity category if an FCM meets all conditions and files the required notice.",
+        "actual_fcm_notice_or_xrp_customer_collateral_use_verified": false,
+        "dco_acceptance_verified": false
+      },
+      "cme_clearing_current_public_collateral": {
+        "source_url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+        "retrieved_date": "2026-11-13",
+        "published_categories": [
+          "cash",
+          "foreign currency",
+          "U.S. Treasuries",
+          "government agency securities",
+          "MBS",
+          "corporate bonds",
+          "foreign sovereign debt",
+          "gold",
+          "stocks",
+          "ETFs",
+          "letters of credit",
+          "money market funds",
+          "supranational debt"
+        ],
+        "xrp_or_crypto_asset_listed": false,
+        "interpretation": "The current public acceptable-collateral list does not list XRP or crypto assets. CME allows collateral acceptance requests, but acceptance is discretionary and requires review.",
+        "request_policy_url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/collateral-acceptance-requests.html"
+      },
+      "model_eligible": false
+    },
+    "ripple_prime_debt": {
+      "source_url": "https://ripple.com/ripple-press/ripple-prime-secures-usd200-million-debt-facility-from-neuberger-specialty-finance-to-expand-capacity/",
+      "date": "2026-05-11",
+      "facility_usd": 200000000,
+      "classification": "Corporate debt facility to extend financing to Ripple Prime clients; not an XRP purchase, token investment or disclosed XRP collateral balance."
     }
   },
   "identity_and_exact_phrase": {
@@ -705,7 +816,8 @@
     "force_push_or_history_rewrite": false,
     "destructive_worktree_operation": false,
     "agentic_payment_source_tag_and_intent_regression_test_added": true,
-    "runtime_prediction_code_changed": false
+    "runtime_prediction_code_changed": false,
+    "collateral_regulatory_regression_tests_added": true
   },
   "next_actions": [
     "Complete semantic review of the 1,119-file integration and reconcile all source-PR blob differences.",
@@ -940,6 +1052,68 @@
       "url": "https://xrpl-ai.org/transactions",
       "publisher": "T54 Labs",
       "independence_group": "facilitator_operator_primary",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_prime_product",
+      "url": "https://ripple.com/products/prime-brokerage/",
+      "publisher": "Ripple",
+      "independence_group": "issuer_product_primary",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_prime_us_spot",
+      "url": "https://ripple.com/ripple-press/ripple-launches-digital-asset-spot-prime-brokerage-for-the-united-states-market/",
+      "publisher": "Ripple",
+      "independence_group": "issuer_press_primary",
+      "published_date": "2025-11-03",
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_prime_debt",
+      "url": "https://ripple.com/ripple-press/ripple-prime-secures-usd200-million-debt-facility-from-neuberger-specialty-finance-to-expand-capacity/",
+      "publisher": "Ripple",
+      "independence_group": "issuer_press_primary",
+      "published_date": "2026-05-11",
+      "model_eligible": false
+    },
+    {
+      "id": "cftc_letter_26_05",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "CFTC",
+      "independence_group": "regulator_primary",
+      "published_date": "2026-02-06",
+      "model_eligible": false
+    },
+    {
+      "id": "cftc_26_05_faq",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9200-26",
+      "publisher": "CFTC",
+      "independence_group": "regulator_primary",
+      "published_date": "2026-03-20",
+      "model_eligible": false
+    },
+    {
+      "id": "cme_xrp_specs",
+      "url": "https://www.cmegroup.com/markets/cryptocurrencies/xrp/xrp/specs",
+      "publisher": "CME Group",
+      "independence_group": "exchange_primary",
+      "model_eligible": false
+    },
+    {
+      "id": "cme_acceptable_collateral",
+      "url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+      "publisher": "CME Group",
+      "independence_group": "clearinghouse_primary",
+      "retrieved_date": "2026-11-13",
+      "model_eligible": false
+    },
+    {
+      "id": "sec_cftc_interpretation",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "publisher": "SEC/CFTC",
+      "independence_group": "regulator_primary",
+      "effective_date": "2026-03-23",
       "model_eligible": false
     }
   ]

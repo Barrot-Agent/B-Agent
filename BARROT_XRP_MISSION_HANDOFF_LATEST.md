@@ -1,24 +1,24 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
 **Run:** 97  
-**Captured:** 2026-11-13T15:22:00Z  
+**Captured:** 2026-11-13T15:35:00Z  
 **Mission priority:** XRP intelligence and measured prediction-engine mastery.  
 **Protected foundation:** Barrot V3 execution, orchestration, safety and verification.  
 **Main SHA:** `fb272b40966834754ec686f9ed3ab94123f09306`  
-**Code-bearing integration head verified before Run97 evidence/test additions:** `f04b6adf4eb0e9a4800a0bbfe0a18e37a29b10a9`  
+**Last fully verified code-bearing integration head:** `99cddbb52580c9f5793aca2fa1e0da8530c46107`  
 **Merged PRs in this run:** none.
 
 ## Current operational snapshot — Run97
 
 ### Repository and exact-head verification
-- Main tree: 1,381 entries; integration tree: 2,362 entries; complete, not truncated.
+- Main tree: 1,381 entries; integration tree before this collateral addendum: 2,364 entries.
 - Integration ancestry: 2,264 commits ahead of main, zero behind.
-- PR #1662: open, draft, mergeable; 1,119 changed files, 321,839 additions, 5,230 deletions and 50 changed workflow files.
+- PR #1662: open, draft, mergeable; 1,123 changed files, 323,295 additions, 5,230 deletions and 50 changed workflow files.
 - Open PR inventory: 375.
-- Exact code-bearing head `f04b6adf4eb0e9a4800a0bbfe0a18e37a29b10a9`: full repository suite **3,566 passed**, 8 subtests, zero failures, 62.08% inclusive coverage, 93.55 seconds; core suite **732 passed**, 76% coverage; wheel build and installed V3/XRP mission verification passed.
-- Five dependency groups passed with zero known vulnerabilities. Fail-closed gate passed but only keeps automatic merge disabled.
-- [Full CI 43450175610](https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175610) · [Dependency audit 43450175954](https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175954) · [Fail-closed gate 43450175627](https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175627).
-- Run97 adds a research artifact and regression tests for x402 SourceTag/Verifiable Intent semantics. This commit's exact-head CI must pass before merge consideration.
+- Exact code-bearing head `99cddbb52580c9f5793aca2fa1e0da8530c46107`: full repository suite **3,577 passed**, 8 subtests, zero failures, 62.08% inclusive coverage, 72.89 seconds; core suite **732 passed**, 76% coverage; wheel build and installed V3/XRP mission verification passed.
+- Five dependency manifest groups passed with zero known vulnerabilities. Fail-closed gate passed but only keeps automatic merge disabled.
+- [Full CI 43451689336](https://github.com/Barrot-Agent/B-Agent/actions/runs/43451689336) · [Dependency audit 43451688955](https://github.com/Barrot-Agent/B-Agent/actions/runs/43451688955) · [Fail-closed gate 43451689494](https://github.com/Barrot-Agent/B-Agent/actions/runs/43451689494).
+- This commit adds 13 collateral-regulatory regression tests and evidence; its own exact-head CI must pass before merge consideration.
 
 ### Prediction-engine reality
 **Implemented:** 48 XRP source definitions, 46 scheduled definitions, read-only main-only ingestion, SHA-256 receipts/local chain, cross-run receipt-index continuity, point-in-time SQLite feature store, CFTC Legacy parser separate from TFF, event/source lineage, counter-hypotheses, four deterministic baselines, chronological walk-forward purge/embargo, calibration/PSI and Ed25519-gated forecast ledger.
@@ -36,25 +36,24 @@ The generic `barrot_agent/models.py` is IBM Granite vision-model management, not
 - XRP Insights attributed 22.26B XRP to 707 wallets across 24 exchanges; same-wallet change -77.3M XRP/7d and -279.7M/30d. Wallet attribution is not tradable float; Coinbase cbXRP and Binance-Peg reserves are separate.
 - ETF correction: XRP Insights metadata generated 2026-11-13 14:18:56 UTC shows data_as_of Nov12, four settled trading days, `provisional_row_date=null`, and -9,481,905 XRP for Nov9–12. This is holdings-derived, not issuer flow reports; GXRP flow is withheld and BITW rebalancing/fees can affect the metric. CryptoKeyhole's latest complete daily result remains Nov11 at -3,322 XRP with Nov12 issuer files missing; Alpha Finance reports $0 Nov12 and -$2.8M over 30 sessions. Different cohorts and source lineage; do not average.
 - Latest CFTC Legacy Futures-Only XRP report remains Nov3: 7,216 contracts/360.8M XRP-equivalent; non-commercial net long 1,465, with shorts falling faster than longs. Next listed release Nov16.
-- Ripple-owned escrow at ledger 108,304,969: 31.1B XRP in 99 objects across eight accounts; next 1B release becomes unlockable Dec1 2026 00:00 UTC in four objects. Ripple re-escrowed 70% over the last 12 releases; net 300M XRP/month left escrow. Unlock is not guaranteed sale or exchange inflow.
-- RLUSD XRPL/Ethereum supply and AMM observations remain separate from issuer reserve attestations and XRP spot liquidity.
+- Ripple-owned escrow at ledger 108,304,969: 31.1B XRP in 99 objects across eight accounts; next 1B release becomes unlockable Dec1 2026 00:00 UTC in four objects. Ripple re-escrowed 70% over the last 12 releases; net 300M XRP/month left escrow. Unlock is not a sale or exchange inflow.
 
-### Agentic payments and Mastercard — new Run97 finding
-- T54's public XRPL AI Hub reports 15,694,282 all-time x402 transactions and $78,306.59 settled value, or about **$0.00499 per transaction**, with 193 merchants and 5,410 live services.
-- XRP Insights reports 15,679,858 transactions, 7,031 XRP and 69,061 RLUSD settled, 191 attributed active agents, 193 merchants and 5,882 endpoints. It is a downstream T54-related aggregator, not independent confirmation. Preserve the 14,424 transaction-count difference and the different service/endpoint definitions; do not average.
-- Critical attribution correction: XRPLF documentation says x402 SourceTag is merchant-chosen endpoint attribution, **not agent identity**. T54's default 804681468 therefore cannot identify the paying agent. Agent attribution requires payer-account and/or Verifiable Intent evidence.
-- T54's transaction list labels the **Intent** field `Unverified`. T54 documentation makes Verifiable Intent optional; an ordinary x402 payment can still work without the L1–L3 chain. Do not interpret this label as an XRPL ledger failure or confirmation result. A sampled transaction hash/ledger index was not independently checked against XRPL in this run.
-- Mastercard's June 10 Agent Pay for Machines partner list includes T54 Labs and RippleX, alongside Coinbase and others. This is program-level co-participation, not proof of a bilateral XRP settlement agreement or XRP-denominated Mastercard flows.
-- x402 supports XRP and RLUSD on XRPL. RLUSD microtransactions are not native XRP demand. Keep these counters event-timeline-only, not price features, capital flows or verified agent counts.
-- Regression tests were added to preserve SourceTag semantics, intent-status semantics, source dependence, micro-ticket scale and fail-closed model admission.
+### Collateral and regulation — new Run97 finding
+- Ripple Prime's official product page lists XRP among assets institutions can post into its multi-asset collateral framework and advertises a single pool across digital and traditional positions, with CME and Nodal Clear rails. It explicitly confirms RLUSD as collateral. No XRP balances, haircuts, client postings or asset-specific clearing treatment are disclosed.
+- Ripple's Nov3 2025 U.S. spot prime-brokerage launch says institutional clients can execute OTC XRP/RLUSD and cross-margin OTC spot holdings with OTC swaps and CME futures/options. This is Ripple Prime's prime-broker layer, not proof that CME Clearing accepts XRP directly.
+- CME Clearing's current public acceptable-collateral list (retrieved Nov13) lists cash, currencies, Treasuries, agencies, MBS, bonds, gold, stocks, ETFs, letters of credit and other traditional collateral; it does **not** list XRP or crypto assets. CME allows requests for new collateral but acceptance is discretionary.
+- CFTC Staff Letter 26-05, requested by Coinbase Financial Markets, is a conditional staff no-action position, not a rule. Each FCM's initial three-month ramp-up is limited to payment stablecoins, BTC and ETH. After the ramp-up, a 30.7 account may have a path for the underlying commodity of a CFTC-registered DCM futures contract, subject to notice, risk controls and haircuts. Futures/cleared-swaps customer accounts require DCO acceptance. XRP underlies CME-listed 50,000-XRP futures, so a conditional 30.7 route may exist; no FCM notice or actual XRP customer-margin use is verified.
+- Coinbase's Q3 2026 10-Q discloses aggregate collateral but no XRP-specific amount; other crypto assets are aggregated. Coinbase's RLUSD Global Exchange collateral support was described as forthcoming, not live.
+- SEC/CFTC's March 2026 interpretive release explicitly lists XRP as a digital commodity, effective Mar23. It says it does not supersede Howey; transactions can still be subject to an investment contract. This is interpretive guidance, not a comprehensive market-structure statute.
+- Evernorth's Nov9 SEC filing says the CLARITY Act had not been enacted and Senate cloture failed in Aug2026. GENIUS Act implementing rules remained proposed, not final, as of that filing. National trust-bank charters do not automatically change the legal issuer of RLUSD or USDC.
+- Ripple Prime's $200M Neuberger debt facility is corporate financing capacity for client financing, not an XRP purchase or disclosed XRP collateral balance.
 
-### Institutional, capital and regulation
-- Coinbase distributes USDC and RLUSD. Coinbase's Q3 2026 filing reports large aggregate crypto/stablecoin collateral balances, but no XRP-specific collateral amount; other crypto assets are aggregated. Do not infer XRP collateral from the aggregate.
-- Coinbase's RLUSD launch described Global Exchange collateral support as forthcoming, not live. PNC/Coinbase corporate-payment pilot uses USDC on Ethereum and converts to USD, not XRP.
-- Circle USDC on XRPL and Circle Arc are distinct; Arc is a separate Layer 1. SBI's Circle investment/JV coexists with its Ripple stake/SBI Ripple Asia relationship: multi-rail strategy, not exclusivity.
-- BNY is RLUSD's primary reserve custodian and supports XRP/RLUSD custody; direct mint/redeem and tokenized trade-finance uses remain planned/exploratory.
-- Evernorth SEC filing: $272.6M gross cash, 388.91M XRP in kind, $214.05M cash used to buy 84.3659M XRP, $30M PIK debt, 5,218,935-share ELOC capacity with zero proceeds as of Nov9. The approximately $80.7M ELOC headline is conditional capacity, not received cash.
-- EBA began dual supervision of USDC as the EU's first significant e-money token under MiCA on Nov12; EU issuer Circle Internet Financial Europe SAS is distinct from US issuer Circle Internet Financial LLC.
+### Agentic payments and Mastercard
+- T54's public XRPL AI Hub reports 15,694,282 all-time x402 transactions and $78,306.59 settled value, or about $0.00499 per transaction, with 193 merchants and 5,410 live services.
+- XRP Insights reports 15,679,858 transactions, 7,031 XRP and 69,061 RLUSD settled, 191 attributed active agents, 193 merchants and 5,882 endpoints. It is a downstream T54-related aggregator, not independent confirmation. Preserve the 14,424 transaction-count difference; do not average.
+- XRPLF documentation says x402 SourceTag is merchant-chosen endpoint attribution, not agent identity. T54's `Intent=Unverified` field is Verifiable Intent status, not the XRPL payment result; Verifiable Intent is optional.
+- Mastercard lists T54 Labs and RippleX among Agent Pay for Machines participants. This is program-level co-participation, not proof of bilateral XRP settlement or XRP-denominated Mastercard flows.
+- x402 supports XRP and RLUSD on XRPL. RLUSD micropayments are not native XRP demand. Keep these counters event-timeline-only, not price features, capital flows or verified agent counts.
 
 ### Identity and exact phrases
 - SBIC East/Central/West are Tokyo/Nagoya/Osaka regional SME investment/development companies, distinct from SBI Holdings. SBIC East's ChatGPT training is educational, not a commercial OpenAI partnership.
@@ -86,9 +85,9 @@ ChatGPT GitHub authentication works but connector permissions are admin/maintain
 - No source PR was closed.
 
 ### Merge decision and next action
-**NO MERGE.** PR #1662 remains draft; approvals are absent; semantic review of 1,119 files is incomplete; branch-protection enforcement is not verifiable; connector permissions are overprivileged; Pages publication authorization is unresolved.
+**NO MERGE.** PR #1662 remains draft; approvals are absent; semantic review of 1,123 files is incomplete; branch-protection enforcement is not verifiable; connector permissions are overprivileged; Pages publication authorization is unresolved.
 
-Next: verify exact-head CI for the Run97 evidence/test commit; complete semantic reconciliation and least-privilege/publication controls on the existing PR; preserve unique source PR work; establish external WORM/timestamp anchoring and synchronized historical XRP data; then build the XRP-specific candidate model and evaluate it against all four baselines with source-clustered block-bootstrap uncertainty and independent shadow outcomes. Keep forecasts disabled until the complete admission gate passes.
+Next: verify exact-head CI for the collateral regression commit; complete semantic reconciliation and least-privilege/publication controls on the existing PR; preserve unique source PR work; establish external WORM/timestamp anchoring and synchronized historical XRP data; then build the XRP-specific candidate model and evaluate it against all four baselines with source-clustered block-bootstrap uncertainty and independent shadow outcomes. Keep forecasts disabled until the complete admission gate passes.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
 

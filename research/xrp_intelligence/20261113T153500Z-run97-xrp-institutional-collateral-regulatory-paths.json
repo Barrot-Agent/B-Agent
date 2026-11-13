@@ -1,0 +1,182 @@
+{
+  "schema_version": "barrot-xrp-collateral-regulatory-paths-v1",
+  "run": "Run97",
+  "captured_at_utc": "2026-11-13T15:35:00Z",
+  "ripple_prime": {
+    "source_url": "https://ripple.com/products/prime-brokerage/",
+    "business_model": "Non-bank institutional prime broker; not a trading venue; no retail clients.",
+    "collateral_claim": "XRP is listed alongside RLUSD, tokenized real-world assets and traditional collateral in the assets institutions can post into Ripple Prime's collateral framework; the page explicitly confirms RLUSD accepted as collateral.",
+    "single_pool_cross_margining": true,
+    "clearing_rails_listed": [
+      "CME",
+      "Nodal Clear"
+    ],
+    "us_spot_launch": {
+      "date": "2025-11-03",
+      "source_url": "https://ripple.com/ripple-press/ripple-launches-digital-asset-spot-prime-brokerage-for-the-united-states-market/",
+      "claim": "U.S.-based institutional clients can execute OTC spot XRP/RLUSD and cross-margin OTC spot holdings with OTC swaps and CME futures/options."
+    },
+    "actual_xrp_collateral_balances_disclosed": false,
+    "xrp_specific_haircuts_disclosed": false,
+    "xrp_specific_clearing_treatment_disclosed": false,
+    "actual_client_posting_verified": false,
+    "distinction": "Prime-broker collateral eligibility and internal cross-margining do not establish that CME Clearing directly accepts XRP.",
+    "debt_facility": {
+      "date": "2026-05-11",
+      "amount_usd": 200000000,
+      "lender": "Neuberger Specialty Finance",
+      "source_url": "https://ripple.com/ripple-press/ripple-prime-secures-usd200-million-debt-facility-from-neuberger-specialty-finance-to-expand-capacity/",
+      "classification": "Corporate debt facility to finance clients; not an XRP purchase or disclosed XRP collateral balance."
+    }
+  },
+  "cftc_letter_26_05": {
+    "issue_date": "2026-02-06",
+    "requester": "Coinbase Financial Markets, Inc.",
+    "request_date": "2025-12-08",
+    "source_url": "https://www.cftc.gov/csl/26-05/download",
+    "faq_url": "https://www.cftc.gov/PressRoom/PressReleases/9200-26",
+    "legal_character": "Staff no-action position subject to conditions; not a Commission rule or automatic asset approval.",
+    "initial_ramp_up": {
+      "duration_months": 3,
+      "eligible_assets": [
+        "payment stablecoins",
+        "Bitcoin",
+        "Ether"
+      ],
+      "timing": "Tied to each FCM's notice/reliance conditions, not a universal calendar start."
+    },
+    "after_initial_phase": {
+      "futures_and_cleared_swaps_customer_accounts": "The digital asset must be accepted by the relevant registered DCO/foreign clearing organization; DCO haircuts and other conditions apply.",
+      "cftc_30_7_customer_accounts": "May include a payment stablecoin, an asset accepted by a DCO/foreign clearing organization, or the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to conditions, notice, risk controls and applicable haircuts/capital charges.",
+      "fcm_notice_required": true
+    },
+    "xrp_path": {
+      "cme_xrp_futures_listed": true,
+      "cme_contract_unit_xrp": 50000,
+      "cme_cash_settled_usd": true,
+      "cme_source_url": "https://www.cmegroup.com/markets/cryptocurrencies/xrp/xrp/specs",
+      "potential_30_7_route": "XRP is the underlying commodity of CME-listed XRP futures, so it may fit the post-ramp 30.7 underlying-commodity category if an FCM meets all conditions and files the required notice.",
+      "actual_fcm_notice_or_xrp_customer_collateral_use_verified": false,
+      "dco_acceptance_verified": false
+    }
+  },
+  "cme_clearing": {
+    "acceptable_collateral_url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+    "request_policy_url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/collateral-acceptance-requests.html",
+    "retrieved_date": "2026-11-13",
+    "published_categories": [
+      "cash",
+      "foreign currency",
+      "U.S. Treasuries",
+      "government agency securities",
+      "MBS",
+      "corporate bonds",
+      "foreign sovereign debt",
+      "gold",
+      "stocks",
+      "ETFs",
+      "letters of credit",
+      "money market funds",
+      "supranational debt"
+    ],
+    "xrp_or_crypto_asset_listed": false,
+    "interpretation": "CME Clearing's current public acceptable-collateral list does not list XRP or crypto assets. CME may review requests, but acceptance is discretionary and requires credit-risk review.",
+    "dco_acceptance_for_xrp_verified": false
+  },
+  "coinbase": {
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+    "collateral_disclosure": "Q3 2026 filing reports aggregate lending and customer collateral, but no XRP-specific amount; other crypto assets are aggregated.",
+    "xrp_specific_amount_disclosed": false,
+    "cftc_letter_requester": "Coinbase Financial Markets requested CFTC Staff Letter 26-05.",
+    "rlusd_global_exchange_collateral": "Forthcoming in Ripple's launch announcement; not verified live."
+  },
+  "sec_cftc_classification": {
+    "release": "SEC 33-11412 / CFTC guidance",
+    "issue_date": "2026-03-17",
+    "effective_date": "2026-03-23",
+    "source_url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+    "xrp_listed_as_digital_commodity": true,
+    "legal_limit": "The release says it does not supersede Howey. A non-security crypto asset can still be offered or sold subject to an investment contract. Interpretive guidance is not a comprehensive market-structure statute."
+  },
+  "clarity_genius": {
+    "clarity_act": {
+      "status_as_of": "2026-11-09 SEC prospectus disclosure",
+      "house_passed": "2025-07-17",
+      "senate_banking_reported_with_amendment": "2026-06-01",
+      "senate_cloture_failed": "2026-08",
+      "enacted": false,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "genius_act": {
+      "signed": "2025-07-18",
+      "implementing_rules_as_of": "2026-11-09",
+      "treasury_and_federal_reserve_rules": "proposed, not final",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "issuer_entity_separation": {
+      "ripple_national_trust_bank": "separate from Standard Custody & Trust Company, RLUSD issuer",
+      "circle_national_trust_bank": "separate from Circle Internet Financial LLC, USDC issuer",
+      "note": "A national trust-bank charter does not automatically change the legal issuer of RLUSD or USDC."
+    }
+  },
+  "source_summaries": {
+    "ripple_prime_collateral": {
+      "text": "Ripple Prime advertises XRP, RLUSD, tokenized real-world assets and traditional collateral as postable assets.",
+      "sha256": "f18ed5bb65a255cd9f4120e4a0ab330df3242a0ff2833b441152eacc11c1645a",
+      "source": "https://ripple.com/products/prime-brokerage/"
+    },
+    "ripple_prime_cross_margin": {
+      "text": "U.S. clients can cross-margin OTC spot holdings with CME futures and options through Ripple Prime.",
+      "sha256": "fe104f09eb1dae4dedac3d36b1c1cfab52d52e712466fdc31e839612357f8233",
+      "source": "https://ripple.com/ripple-press/ripple-launches-digital-asset-spot-prime-brokerage-for-the-united-states-market/"
+    },
+    "cftc_initial_phase": {
+      "text": "During the first three months, participating FCMs may accept only payment stablecoins, Bitcoin and Ether as customer margin collateral.",
+      "sha256": "39417c91513ef47567046d31c49d2d2d6e9441f69c9ac1ec199a7eb91cf4a934",
+      "source": "https://www.cftc.gov/csl/26-05/download"
+    },
+    "cftc_30_7": {
+      "text": "For 30.7 accounts, an underlying commodity of a futures contract listed on a CFTC-registered DCM can qualify after the initial phase, subject to the letter's conditions.",
+      "sha256": "e900c2bf0dd8b1379cece13d6a118654ff7cbfe5b631dbd9c237236f361a947b",
+      "source": "https://www.cftc.gov/csl/26-05/download"
+    },
+    "cftc_dco": {
+      "text": "Futures and cleared-swaps customer collateral must be accepted by a registered DCO and valued using that DCO's haircuts.",
+      "sha256": "7110516b9a41d6992921667ab3899dcd50e880b89a01c2159a6d47c1faf8d8e6",
+      "source": "https://www.cftc.gov/csl/26-05/download"
+    },
+    "coinbase_collateral": {
+      "text": "Coinbase's Q3 filing aggregates other crypto collateral and does not disclose an XRP-specific amount.",
+      "sha256": "b09e3dfa5c5f4f0761367e6ae06a92ab65e39141ead0c5760323561842d8f0a4",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    "sec_xrp": {
+      "text": "The March 2026 SEC-CFTC interpretation lists XRP among digital commodities; it is interpretive guidance, not a statute.",
+      "sha256": "0f82cfdb5c5a4b3fb48942b5c0fc416dda7dd06a80b96a3bba69240f85cfbbb1",
+      "source": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf"
+    },
+    "clarity": {
+      "text": "Evernorth's November 9 filing says the CLARITY Act had not been enacted and Senate cloture failed in August 2026.",
+      "sha256": "5d8b5e7438728f53404f7757b443a6d713266c0245d14bf0a7da8759109544aa",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "genius": {
+      "text": "As of the November 9 filing, GENIUS Act implementing rules were still proposed, not final.",
+      "sha256": "48639ac15c40e0e55ae9313473e6da64118baf39f52fb3f1f918454b43c59a1d",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    }
+  },
+  "model_admission": {
+    "eligible_for_event_timeline": true,
+    "eligible_as_xrp_collateral_adoption_feature": false,
+    "eligible_as_xrp_price_feature": false,
+    "forecast_status": "NOT_ISSUED",
+    "rationale": [
+      "Ripple Prime advertises a capability but no XRP posted balances, haircuts or utilization are disclosed.",
+      "CFTC 26-05 is a conditional staff no-action position; no FCM notice or XRP collateral use is verified.",
+      "CME Clearing's public acceptable-collateral list does not include XRP.",
+      "Coinbase's Q3 filing does not disclose an XRP-specific collateral amount.",
+      "Prime-broker collateral, FCM customer margin and DCO collateral are distinct layers."
+    ]
+  }
+}
