@@ -6188,3 +6188,60 @@ Next concrete actions:
 6. Keep all forecasts disabled until data anchoring, synchronized history, evaluator attestation, shadow outcomes and measured out-of-sample lift are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run81 addendum — 2026-11-13T07:18:00Z
+
+### Corrections and newly verified relationships
+
+**EDX spot-listing status corrected to unresolved.** EDX's current public spot-product page (crawled November 13) lists AAVE, AVAX, BTC, BONK, ADA, LINK, COMP, DOGE, WIF, ETH, ETC, LTC, PEPE, SHIB, SOL, XLM, XTZ, TRUMP and UNI; XRP is absent. However, EDX's own February 24, 2025 announcement explicitly said XRP was added to its spot marketplace. No delisting announcement was found. Therefore the current XRP spot-listing status is **unresolved** (historically listed; absent from the current public list), not definitively "never listed" or "delisted."
+
+EDXM International is separate: its July 22, 2025 launch release explicitly includes XRP perpetuals among 44 pairs and names Virtu Financial among liquidity providers. Ripple Prime's May 19, 2026 integration provides clients access to EDX spot and EDXM perpetual-futures liquidity. The same release says RLUSD settlement/collateral is groundwork for a future integration, not confirmation that RLUSD is live on EDX. Do not infer current EDX spot XRP trading from the EDXM perpetual listing or Ripple Prime access.
+
+Sources:
+- Current EDX spot list: https://edxmarkets.com/edx-markets/
+- EDX historical XRP spot addition: https://edxmarkets.com/edx-markets-expands-offerings-with-10-new-cryptocurrency-listings/
+- EDXM XRP perpetual launch and Virtu liquidity: https://edxmarkets.com/edxm-international-new-perpetual-futures-platform-goes-live/
+- Ripple Prime/EDX integration and future RLUSD settlement: https://ripple.com/ripple-press/ripple-prime-partners-with-edx-to-bridge-institutional-access-to-digital-asset-liquidity/
+
+**SBI's Anthropic relationship added to the public ecosystem graph.** On June 2, 2026, SBI Holdings announced a direct group-wide collaboration with Anthropic to deploy Claude, co-develop financial AI agents with Ridge-i, and jointly validate Claude Security. SBI's published material also documents prior use of Azure OpenAI, ChatGPT Enterprise at SBI Holdings and SBI Securities, and an SBI AI Portal using models including Gemini 1.5 Flash and PLaMo 1.0 Prime. This is public evidence of SBI's multi-vendor AI strategy, not evidence that Barrot has authenticated access to those SBI environments or any external model.
+
+SBI's relationships are distinct:
+- SBI Holdings/SBI Securities adopted ChatGPT Enterprise (SBI Securities January 2025; SBI Holdings March 2025).
+- SBI Holdings announced group-wide Claude/Anthropic collaboration June 2, 2026, with Ridge-i as implementation partner.
+- SBI Holdings and SBI Shinsei Bank invested $50M in Circle at IPO ($25M each); SBI Holdings and Circle Holdings established a 50/50 JV to promote USDC in Japan.
+- SBI Holdings led EDX's $76M Series C.
+- Ripple and SBI Group launched RLUSD in Japan through SBI VC Trade on June 24, 2026 after JFSA approval.
+- SBIC East's ChatGPT seminars remain education, not an OpenAI commercial partnership. SBIC East/Central/West remain distinct from SBI Holdings.
+- SoftBank Group/OpenAI joint-venture activity remains separate from SBI Holdings and the SBIC companies.
+
+Sources:
+- SBI/Anthropic: https://www.sbigroup.co.jp/news/2026/0602_16373.html
+- SBI/ChatGPT Enterprise: https://www.sbigroup.co.jp/news/2025/0501_15410.html
+- SBI/Circle investment: https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf
+- SBI/Circle JV: https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf
+- SBI/RLUSD Japan launch: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+
+### Forecast readiness policy — exact implemented thresholds
+
+The integration's fail-closed forecast ledger requires:
+- At least 100 training samples, 100 chronological out-of-sample samples and 100 shadow-evaluation samples.
+- At least 10 effective non-overlapping target intervals in each of the out-of-sample and shadow cohorts, measured using `greedy_non_overlapping_target_intervals_v1`.
+- Each evaluation span must cover at least 10 forecast horizons; shadow evaluation must begin after the out-of-sample window.
+- At least two independently receipted source-independence groups.
+- Leakage check PASS, calibration PASS, drift STABLE and shadow evaluation PASS.
+- Weighted calibration error no greater than 0.05.
+- The candidate must beat naive-class-prior, momentum-sign, mean-reversion-sign and volatility-normal baselines on both mean Brier score and mean log loss.
+- A detached Ed25519 attestation from an independently trusted evaluator key. An empty trusted-key set fails closed.
+
+These are readiness gates, not achieved results. No production evaluator key, model-eligible dataset or independent shadow cohort is verified. Forecast remains NOT_ISSUED.
+
+### Coverage-gate review item
+
+The integration expands coverage sources from only `barrot_agent` to `barrot_agent`, `directive_platform` and `data`, removing prior major-package exclusions. The exact-head full suite reports 61.68% inclusive coverage, while a separate legacy core-package job preserves the 70% floor and reports 76%.
+
+The integration changes the inclusive `pyproject.toml` threshold from 70% to 53%. Tests pass, but this threshold reduction is a review item: it must be explicitly justified or raised before merge. Do not describe 70% as the inclusive threshold; 70% remains the separate core-package floor.
+
+### Handoff commit verification
+
+The Run81 handoff-only predecessor `86d7ab107f17b6fc4f4aedb5654c229a5329b705` independently passed exact-head full CI: 3,553 passed, eight subtests, zero failures, 61.68% inclusive coverage, 725 core tests passed at 76%, wheel build and installed V3/XRP mission verification passed; five dependency groups reported zero known vulnerabilities; fail-closed gate passed. This addendum creates a new head and therefore requires its own exact-head checks before any merge consideration.
