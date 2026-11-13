@@ -1013,7 +1013,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "${{ runner.temp }}/xrp-research-correction-audit.json" in workflow
     assert "if-no-files-found: error" in workflow
     assert "actions: write" not in workflow
-    assert workflow.count("retention-days: 90") == 4
+    assert workflow.count("retention-days: 90") == 5
     assert workflow.count("retention-days: 7") == 1
     assert "retention-days: 1" not in workflow
     assert "if: github.ref == 'refs/heads/main'" in workflow
