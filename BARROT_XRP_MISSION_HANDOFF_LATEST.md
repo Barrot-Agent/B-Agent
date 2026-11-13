@@ -1,3 +1,78 @@
+## Run73C — RLUSD supply, issuer controls and XRPL stablecoin-liquidity reconciliation
+
+Captured: 2026-11-13T01:10:27Z. This section adds a separate stablecoin/custody evidence vintage. It does not change forecast eligibility.
+
+### RLUSD chain distribution — third-party direct-read snapshot
+
+Stableradar's page identifies itself as a prototype with mixed live and reference data. Its on-chain section cites Ripple's official token-address documentation and reports a direct snapshot at ledger #108,286,222, timestamped 2026-11-12 17:16 UTC:
+
+| Network | On-chain supply |
+|---|---:|
+| XRPL | 863,843,328 RLUSD |
+| Ethereum | 1,830,228,715 RLUSD |
+| Base | 16,106,576 RLUSD |
+| Ink | 139 RLUSD |
+| Unichain | 136 RLUSD |
+| XRPL EVM Sidechain | 121 RLUSD |
+| Optimism | 143 RLUSD |
+| Total | 2,710,179,158 RLUSD |
+
+Approximate shares from that snapshot: XRPL 31.9%, Ethereum 67.5%, Base 0.6%; the remaining EVM networks are immaterial at this precision. The snapshot is about 7 hours 54 minutes old at this addendum capture, not a live 01:10 UTC read.
+
+Ripple's own token-address documentation confirms the XRPL issuer address \`rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De\`, Ethereum proxy \`0x8292bb45bf1ee4d140127049757c2e0ff06317ed\`, and a shared EVM proxy \`0x8d58c0c60b8d6b88fa98b291a646db34d0f98258\` for Base, INK, Optimism, Robinhood Chain, Unichain and the XRPL EVM Sidechain. Use official addresses and per-chain supply methods to avoid double counting bridged or mirrored balances.
+
+Sources: [Stableradar RLUSD page](https://stableradar.com/coin/rlusd) · [Ripple official RLUSD token addresses](https://docs.ripple.com/products/stablecoin/overview/token-addresses).
+
+### RLUSD issuer controls, XRPL DEX and custody
+
+The same third-party page reads issuer flags from XRPL ledger #108,286,222:
+
+- Clawback enabled.
+- Global freeze inactive; \`NoFreeze\` not set, so individual trust-line or global freeze authority has not been renounced.
+- Require authorization: no.
+- Master key disabled.
+- Deposit authorization: yes.
+- Destination tag required.
+- Disallow incoming XRP: yes.
+- Default ripple: yes.
+- Transfer fee: 0%.
+
+The page's XRPL account-lines snapshot at ledger #108,259,985 (2026-11-11 11:59 UTC) shows 102,482 trust lines and 68,052 positive-balance holders. These are ledger accounts, not a count of verified unique people or institutions.
+
+Its XRPL AMM/DEX snapshot at ledger #108,286,222 reports:
+- XRP/RLUSD AMM reserves: 2,045,480 XRP and 2,092,225 RLUSD; trading fee 0.315%.
+- RLUSD/USDC DEX midpoint: $1.0000; spread 0.5 bps.
+- RLUSD/USDC depth within ±2%: approximately $412,909 bid and $784,962 ask.
+- Native RLUSD/XRP book is labelled thin; do not infer deep XRP liquidity from the much larger RLUSD/USDC book.
+
+This is a useful custody/control and stablecoin-market snapshot, but Stableradar labels the product a prototype and some figures are reference rather than live. The XRPL explorer's rendered account page requires JavaScript, so this run did not independently parse the raw account_info response. Ripple's official token-address page confirms the issuer/proxy addresses; the precise supply/flags above remain third-party-reported on-chain observations.
+
+### Reserve attestation and supply-source disagreement
+
+- The latest monthly reserve attestation shown by Stableradar is September 30, 2026: 2,399,995,528 RLUSD outstanding, $2,524,008,274 reserve market value, 105.17% coverage; Deloitte & Touche LLP is named for the 2026 reports.
+- A separate issuer-reported reference balance dated October 29, 2026 is $2.627B circulating and $2.7586B reserve funds. Do not call this a new monthly attestation.
+- Stableradar derives $614.9M minted and $340.0M burned over the latest 30 days from DefiLlama daily circulating-supply changes. The net +$274.9M is a third-party derivation, not an issuer-reported mint total.
+- Stables.cool's USD-only XRPL snapshot at November 12 06:10 UTC reports $909.2M USD stablecoins, including $905.2M RLUSD and $3.9M USDC. This is older and uses a different universe than the 17:16 RLUSD-only chain snapshot.
+- XRPL.to's search-index result showed a November 13 00:11 UTC split of $818.57M XRPL / $1.86B Ethereum / $2.67B total, but opening the same page returned a November 12 01:26 UTC snapshot of $873.74M XRPL / $1.81B Ethereum / $2.69B total. The search snippet and opened page therefore disagree; the 00:11 result is unverified cached data and is excluded from the quantitative series.
+- XRPL.fi search results showed $1.19B stablecoin TVL and $1.38B RWA TVL, but direct page access returned HTTP 402. Retain as an unverified search-index observation only; do not use it as a verified current total.
+
+Do not average these sources. They differ in chain coverage, token scope, snapshot time, cached/indexed content and whether the number is direct on-chain supply, issuer reference data or a derived aggregate. A large RLUSD supply on XRPL is stablecoin liquidity, not a proportional XRP purchase or XRP collateral demand. XRPL transaction fees and account reserves use XRP, but stablecoin transfers can occur without a corresponding market purchase of XRP.
+
+Sources: [Stableradar](https://stableradar.com/coin/rlusd) · [XRPL.to](https://xrpl.to/insights/rlusd-xrpl-vs-ethereum-supply) · [Stables.cool](https://stables.cool/USD/chains/xrp-ledger) · [XRPL.fi](https://xrpl.fi/).
+
+### Current integration head and exact-head verification status at capture
+
+- Head at capture: \`0591d6f21f8ce1d92eae535371d740292de372a8\`; 2,175 commits ahead of main and zero behind.
+- PR #1662 remained draft/open/mergeable, 1,076 changed files, +302,740/-5,123.
+- Core test job passed.
+- Full-suite job was still installing complete development dependencies; repository tests had not started.
+- Dependency audit was in progress.
+- Fail-closed gate passed with merge disabled.
+- This addendum creates a new documentation-only descendant and triggers fresh exact-head CI. Do not transfer the pending/previous-head results to that new SHA.
+
+
+---
+
 ## Run73B — exchange-flow, leverage, SBI/OpenAI identity and model-orchestration correction
 
 Captured: 2026-11-13T01:06:31Z. This addendum preserves the Run73 observations above and adds later public-source evidence. All web observations remain research-only and are not Barrot raw-receipt inputs.
