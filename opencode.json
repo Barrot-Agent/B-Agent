@@ -21,5 +21,29 @@
         }
       }
     }
+  },
+  "mcp": {
+    "servers": {
+      "lunaroute": {
+        "type": "remote",
+        "url": "https://mcp.lunaroute.com/mcp",
+        "enabled": true,
+        "headers": {
+          "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
+        }
+      }
+    }
+  },
+  "agent": {
+    "barrot": {
+      "description": "Barrot - main agent",
+      "model": "lunaroute/glm-5.3-flash",
+      "prompt": "You are Barrot. Speak as Barrot. Use LunaRoute MCP.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    }
   }
 }
