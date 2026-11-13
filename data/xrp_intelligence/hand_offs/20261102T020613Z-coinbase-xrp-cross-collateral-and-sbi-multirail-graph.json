@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T02:06:13Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 remains the execution, security, preservation and verification foundation.",
+  "status": "RESEARCH_HANDOFF_EVIDENCE_LED_NO_FORECAST",
+  "data_cutoff_utc": "2026-11-02T02:06:13Z",
+  "headline": "Coinbase's non-U.S. Global Derivatives product explicitly lists XRP as cross-collateral with a 15% Standard Margin haircut, while its U.S. CFM Global Derivatives product lists only USDC, BTC and ETH. This resolves a prior regulatory-capability-versus-live-product ambiguity.",
+  "coinbase": {
+    "platform_structure": [
+      {
+        "entity": "Coinbase Bermuda Limited",
+        "product": "Global Derivatives / Coinbase Advanced outside the U.S.",
+        "status": "DOCUMENTED_LIVE_CAPABILITY_FOR_ELIGIBLE_SUPPORTED_REGIONS",
+        "effective_terms_date": "2026-10-01",
+        "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral",
+        "eligible_regions": "Supported regions outside the United States; customer eligibility and local terms apply.",
+        "collateral_matrix": {
+          "xrp": {
+            "cross_collateral_currency": true,
+            "offset_currency": false,
+            "haircut_standard_margin_pct": 15,
+            "haircut_portfolio_margin": "No haircut listed (dash); Coinbase documentation states a haircut can be zero.",
+            "scope": "Can support any cross-margined derivative position in the account, including positions whose settlement currency differs from XRP."
+          }
+        },
+        "operating_rules": {
+          "valuation": "Cross-collateral currencies are valued in USD for account-level margin.",
+          "rebalancing": "If one settlement currency becomes negative while account equity remains positive, the system can use another positive-equity currency to purchase the negative-equity currency.",
+          "default_max_negative_equity_per_currency_usd": 1000000,
+          "default_relative_limit_pct_of_cross_equity": 100,
+          "default_minimum_rebalancing_amount_usd": 1000,
+          "default_collateral_fee_pct_per_day_on_negative_currency_equity": 0.05,
+          "withdrawal_effect": "Negative equity reduces other collateral available to transfer; initial margin is not withdrawable."
+        },
+        "interpretation": "This is an actual published XRP collateral capability, not merely a theoretical CFTC pathway. It can increase XRP's usefulness as margin collateral and may reduce the need to sell XRP to establish derivative positions. Rebalancing and margin stress can also create conversion or forced-sale pressure.",
+        "actual_usage": "No aggregate XRP collateral balance, customer-level position, collateral flow or resulting spot purchase was disclosed in the public product documentation."
+      },
+      {
+        "entity": "Coinbase Financial Markets, Inc. (CFM)",
+        "product": "U.S. institutional Global Derivatives through Coinbase Prime and Deribit",
+        "status": "DOCUMENTED_LIVE_PRODUCT_XRP_NOT_IN_CURRENT_COLLATERAL_LIST",
+        "source": "https://help.coinbase.com/en/prime/derivatives/what-is-global-derivatives",
+        "legal_structure": "CFM is the U.S. CFTC-registered FCM and broker of record; customer collateral remains in a CFM secured Rule 30.7 account and is delegated to Deribit for trading.",
+        "products": [
+          "Options",
+          "Dated futures",
+          "Perpetual futures"
+        ],
+        "current_eligible_collateral": [
+          "USDC",
+          "BTC",
+          "ETH"
+        ],
+        "xrp_eligible_collateral": false,
+        "interpretation": "The current U.S. Prime product page does not list XRP as eligible collateral. Do not infer U.S. XRP collateral availability from the CFTC staff letter alone."
+      },
+      {
+        "entity": "Coinbase International Exchange / Deribit by Coinbase",
+        "product": "International derivatives venue integration",
+        "status": "MIGRATION_COMPLETED_2026_10_01",
+        "source": "https://help.coinbase.com/en/international-exchange/deribit/what-you-need-to-know",
+        "details": "Coinbase states that International Exchange perpetuals migrated to Deribit by Coinbase on October 1, 2026. This is a venue/infrastructure consolidation, distinct from the CFM U.S. institutional legal account structure."
+      }
+    ],
+    "regulatory_pathway": {
+      "cftc_letter_26_17": {
+        "date": "2026-05-29",
+        "requester": "Coinbase Financial Markets, Inc.",
+        "source": "https://www.cftc.gov/csl/26-17/download",
+        "confirmed_points": [
+          "XRP is named as an example of a digital commodity in the SEC/CFTC interpretation cited by the letter.",
+          "CFM requested and received a conditional staff no-action position for a described structure in which 30.7 customer-owned digital commodities and payment stablecoins may be transferred through Coinbase Bermuda Limited to Deribit for foreign futures and foreign option margin under a right of re-use.",
+          "Re-use is limited to margining or securing the relevant 30.7 customer obligations; it is not a general permission to use customer assets for unrelated purposes.",
+          "CFM, CBBM and Deribit must remain wholly owned subsidiaries of Coinbase Global, and the letter imposes account agreement, risk-management, disclosure, local-law and Staff Letter 26-05 conditions.",
+          "The staff position is conditional and non-binding on the Commission."
+        ],
+        "limitation": "The letter is not evidence that CFM currently accepts XRP. Current U.S. Prime collateral documentation lists USDC, BTC and ETH only."
+      },
+      "cftc_letter_26_05": {
+        "date": "2026-02-06",
+        "source": "https://www.cftc.gov/csl/26-05/download",
+        "relevant_conditions": [
+          "For 30.7 customer accounts, an asset can qualify through acceptance by a registered DCO or qualifying foreign clearing organization, or by being a payment stablecoin or the underlying commodity of a futures contract listed on a CFTC-registered DCM.",
+          "If a non-stablecoin digital asset is not accepted by a qualifying DCO/foreign clearing organization, the specified fallback haircut is at least 20%, subject to the letter's conditions.",
+          "Before accepting a non-BTC/non-ETH/non-payment-stablecoin asset under the relevant fallback, the FCM must submit revised risk-management policies to the Market Participants Division.",
+          "The initial three-month period from the FCM's own notice of reliance is restricted to payment stablecoins, BTC and ETH.",
+          "The letter requires a notice of intent and commencement date before reliance."
+        ],
+        "limitation": "No public CFM XRP-specific revised-policy filing, notice of reliance, or XRP customer-collateral balance was verified."
+      }
+    },
+    "competing_hypotheses": [
+      {
+        "id": "CB-XRP-COLLATERAL-H1",
+        "statement": "Non-U.S. XRP cross-collateral eligibility increases the utility and potential retention of XRP among eligible derivatives users.",
+        "status": "PLAUSIBLE_INFERENCE",
+        "supporting_evidence": [
+          "Coinbase Bermuda product documentation lists XRP as a cross-collateral currency.",
+          "The feature allows XRP to support cross-margined positions settled in other currencies."
+        ],
+        "disconfirming_evidence": [
+          "No aggregate XRP collateral balance or customer adoption data is public.",
+          "The feature is region- and account-eligibility constrained."
+        ]
+      },
+      {
+        "id": "CB-XRP-COLLATERAL-H2",
+        "statement": "Cross-collateral rebalancing and margin stress can produce forced XRP conversion or sale flows, increasing volatility during adverse moves.",
+        "status": "PLAUSIBLE_INFERENCE",
+        "supporting_evidence": [
+          "Coinbase documents automatic currency rebalancing when one settlement currency becomes negative.",
+          "XRP has a 15% Standard Margin haircut and is exposed to account-level margin requirements."
+        ],
+        "disconfirming_evidence": [
+          "No public data shows actual XRP rebalancing transactions, collateral balances or liquidation volumes."
+        ]
+      },
+      {
+        "id": "CB-XRP-COLLATERAL-H3",
+        "statement": "The published feature may have limited measurable spot-market impact if actual usage is small or collateral is mostly internal/accounting allocation.",
+        "status": "COUNTER_HYPOTHESIS",
+        "supporting_evidence": [
+          "No public aggregate XRP collateral balance or actual spot purchase is disclosed.",
+          "The U.S. CFM collateral list excludes XRP."
+        ],
+        "disconfirming_evidence": [
+          "The non-U.S. product explicitly permits XRP as cross-collateral for eligible users."
+        ]
+      }
+    ],
+    "required_model_features": [
+      "Coinbase Bermuda XRP cross-collateral eligibility and haircut regime by account type",
+      "Coinbase International/Deribit migration dates and asset-level contract coverage",
+      "XRP collateral deposits and withdrawals where publicly observable",
+      "Deribit funding, open interest, liquidations and margin utilization",
+      "Cross-currency rebalancing events and exchange wallet flows",
+      "Jurisdiction/account segmentation; never mix U.S. CFM and non-U.S. CBL populations"
+    ]
+  },
+  "sbi_group_graph": {
+    "identity_separation": {
+      "japanese_sbi_holdings": "SBI Holdings, Inc.",
+      "japanese_sbi_corporate_sibc": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC); a separate company, not SBI Holdings.",
+      "chatgpt_sbic_academic": "Social Bias Inference Corpus (SBIC), an academic dataset; unrelated to the Japanese company.",
+      "warning": "Do not attribute SBI Group investments, validators, remittances or stablecoin activity to SBIC."
+    },
+    "confirmed_relationships": [
+      {
+        "from": "SBI Holdings",
+        "to": "Ripple",
+        "relation": "Equity investment / strategic shareholder",
+        "status": "COMPANY_REPORTED",
+        "reported_ownership_pct": 9,
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+        "caveat": "Approximate stake based on actual holdings in SBI's FY2026 presentation; not a current share-register extract."
+      },
+      {
+        "from": "SBI Holdings",
+        "to": "SBI Ripple Asia",
+        "relation": "Joint venture ownership",
+        "status": "COMPANY_REPORTED",
+        "sbi_group_voting_share_pct": 60,
+        "ripple_share_pct": 40,
+        "source": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+        "caveat": "SBI Group's stated voting-rights share as of 2026-03-31."
+      },
+      {
+        "from": "SBI Remit / SBI VC Trade / Ripple",
+        "to": "XRP",
+        "relation": "Operational remittance bridge asset",
+        "status": "OFFICIAL_OPERATIONAL_CORRIDOR",
+        "source": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+        "details": "SBI Remit announced XRP-based remittances to the Philippines, Vietnam and Indonesia, using SBI VC Trade and local payout partners. Current throughput and net XRP inventory are not disclosed."
+      },
+      {
+        "from": "SBI Holdings",
+        "to": "Evernorth",
+        "relation": "PIPE investment in XRP treasury company",
+        "status": "OFFICIAL_INVESTMENT_ANNOUNCEMENT",
+        "source": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+        "caveat": "Equity investment exposure to an XRP treasury business is not equivalent to a direct spot XRP purchase by SBI."
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "USDC / Circle",
+        "relation": "Japanese USDC distribution",
+        "status": "COMPANY_REPORTED_LIVE_DISTRIBUTION",
+        "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+        "details": "Circle's September 16 Arc release quotes SBI CEO Yoshitaka Kitao stating SBI VC Trade became Japan's first and only USDC distributor in March 2025."
+      },
+      {
+        "from": "SBI Holdings subsidiary",
+        "to": "Circle ARC Token",
+        "relation": "Pre-sale participation",
+        "status": "OFFICIAL_INVESTMENT_ANNOUNCEMENT_AMOUNT_UNDISCLOSED",
+        "source": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+        "caveat": "SBI did not disclose its investment amount. Circle's September 16 release says the 10-billion ARC genesis mint was a technical milestone and not a commitment to publicly launch the token. Do not infer a liquid public token or mark-to-market value."
+      },
+      {
+        "from": "SBI Group",
+        "to": "Circle Arc",
+        "relation": "Founding-validator cohort / planned operation and governance participation",
+        "status": "OFFICIAL_COHORT_WITH_PHASED_ROLLOUT",
+        "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+        "caveat": "The announcement specifies phased validator rollout; independent evidence that SBI's validator was already actively validating at the snapshot cutoff was not located."
+      },
+      {
+        "from": "SBI Shinsei Trust Bank",
+        "to": "JPYSC",
+        "relation": "Trust-type JPY stablecoin issuer",
+        "status": "OFFICIAL_LIVE_ISSUANCE",
+        "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "details": "JPYSC is a Japanese type-3 electronic payment instrument issued by SBI Shinsei Trust; SBI VC Trade distributes it. The June 24 launch initially limited availability to SBI VC Trade accounts, with public-chain distribution dependent on legal and tax arrangements."
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "RLUSD / Standard Custody & Trust",
+        "relation": "Japanese RLUSD distribution",
+        "status": "OFFICIAL_LIVE_DISTRIBUTION",
+        "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "details": "SBI VC Trade began RLUSD handling on June 24, 2026, describing it as Japan's first type-4 electronic payment instrument. This Japanese classification does not make SBI VC Trade the issuer."
+      },
+      {
+        "from": "SBI Holdings / Startale",
+        "to": "Open Standard / Coinbase",
+        "relation": "Consortium membership and exploratory JPYSC–OUSD interoperability",
+        "status": "OFFICIAL_EXPLORATORY",
+        "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+        "caveat": "Coinbase is a founding partner of Open Standard; SBI and Startale joined and are exploring interoperability. This is a shared consortium connection, not proof of a separate bilateral Coinbase–SBI commercial agreement or live JPYSC/OUSD routing."
+      },
+      {
+        "from": "SBI Holdings / Startale",
+        "to": "BlackRock",
+        "relation": "MOU on tokenized MMF and JPYSC ecosystem",
+        "status": "OFFICIAL_MOU_NOT_LIVE_INTEGRATION",
+        "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+        "caveat": "The October 27 announcement is a basic agreement, not proof that the tokenized MMF/JPYSC integration is in production."
+      },
+      {
+        "from": "SBI Group",
+        "to": "Circle / USDC / JPYSC",
+        "relation": "Multi-issuer stablecoin collaboration on Arc and APAC digital infrastructure",
+        "status": "OFFICIAL_STATED_STRATEGIC_INTENT",
+        "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+        "caveat": "Circle's Arc launch list names JPYC among local stablecoins active or onboarding to StableFX, not JPYSC. SBI's stated intention to leverage JPYSC and USDC does not establish JPYSC deployment on Arc or StableFX."
+      }
+    ],
+    "quantitative_sbi_observations": {
+      "jpy_sc_outstanding_jpy_as_of_2026_09_07": 20100000000,
+      "jpy_sc_lending_applications_jpy_as_of_2026_09_07": 6900000000,
+      "short_term_japanese_government_bonds_allocated_from_trust_assets_jpy": 1000000000,
+      "source": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "caveat": "Lending applications are not additional token issuance or new external capital. The JGB allocation is 1 billion yen, not 10 billion."
+    },
+    "strategic_inference": {
+      "hypothesis": "SBI Group appears to be pursuing a diversified multi-rail institutional strategy across XRP/Ripple, USDC/Circle/Arc, RLUSD, JPYSC, Open Standard and tokenized MMF infrastructure.",
+      "status": "INFERENCE_FROM_SEPARATE_COMPANY_ANNOUNCEMENTS",
+      "counterpoints": [
+        "These initiatives involve separate SBI subsidiaries and external counterparties.",
+        "Shared participation does not prove a single coordinated settlement design.",
+        "Some initiatives are exploratory or subject to phased rollout.",
+        "No evidence establishes that JPYSC is live on XRPL or Arc.",
+        "No evidence establishes that Circle's USDC replaces XRP in SBI's existing XRP-based remittance corridors."
+      ]
+    }
+  },
+  "relationship_graph_summary": [
+    "Coinbase Bermuda -> XRP: live documented non-U.S. cross-collateral eligibility, 15% Standard Margin haircut.",
+    "Coinbase Financial Markets -> XRP: conditional CFTC pathway exists, but current U.S. Prime collateral list excludes XRP.",
+    "Coinbase -> Deribit: international derivatives integration completed 2026-10-01.",
+    "Coinbase -> Circle: USDC distribution economics and renewed commercial agreement.",
+    "Coinbase -> Ripple Prime: Coinbase derivatives broker-distribution listing; product-specific client flow remains unverified.",
+    "Circle -> XRPL: native USDC issuance on XRPL; Arc is a separate Circle-controlled network with USDC gas.",
+    "SBI Group -> Ripple: approx. 9% reported equity stake, SBI Ripple Asia JV, XRP remittance operations and Evernorth investment.",
+    "SBI Group -> Circle: USDC distribution, ARC pre-sale participation, Arc founding-validator cohort and stated USDC/JPYSC collaboration.",
+    "SBI Group -> Coinbase: shared Open Standard membership and exploratory JPYSC/OUSD interoperability, not confirmed direct bilateral integration.",
+    "SBIC -> XRP / ChatGPT: no verified direct relationship."
+  ],
+  "unknowns": [
+    "Aggregate XRP collateral posted by non-U.S. Coinbase Global Derivatives users.",
+    "Actual XRP balances and customer adoption by Standard Margin versus Portfolio Margin.",
+    "XRP-related rebalancing volumes, forced conversions, liquidations and exchange-wallet effects.",
+    "Whether CFM files XRP-specific revised risk policies and adds XRP to the U.S. Prime collateral matrix.",
+    "SBI's exact ARC pre-sale investment amount and whether ARC becomes publicly transferable or liquid.",
+    "Whether SBI's Arc validator is actively validating after the phased rollout.",
+    "Whether JPYSC becomes available on Arc, XRPL, StableFX or another public chain.",
+    "Current live throughput and net XRP balances attributable to SBI Remit's remittance corridors."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "prediction_policy": "Product eligibility is a categorical feature, not a capital-flow observation. Do not convert collateral capability, consortium membership, stablecoin issuance, or equity investment into an XRP price forecast without verified balances, transactions, timing and a counterfactual.",
+  "next_actions": [
+    "Monitor Coinbase Bermuda cross-collateral terms and XRP haircut changes by account mode.",
+    "Seek public or authorized aggregate collateral disclosures; do not infer private account balances.",
+    "Track XRPL and exchange flows around product changes without attributing unrelated transfers.",
+    "Monitor CFM U.S. collateral documentation and any XRP-specific CFTC policy filings.",
+    "Verify SBI Arc validator activation and JPYSC deployment chain independently.",
+    "Keep JPYC, JPYSC, USDC and RLUSD as distinct assets and issuers.",
+    "Continue the prediction engine's point-in-time feature store, leakage controls, walk-forward evaluation and calibration."
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T01:13:04.567Z",
+  "title": "XRP market structure snapshot with provider scope and supply-definition controls",
+  "status": "OBSERVATIONS_CAPTURED_NOT_A_FORECAST",
+  "data_cutoff": {
+    "tradradar": "2026-11-02T00:45:00Z (15-minute delayed)",
+    "kodexius": "2026-11-02T00:44:00Z",
+    "xrp_insights_supply": "2026-11-01 on-chain reads; ETF dashboard refreshed today",
+    "coinmarketcap": "Dynamic page crawled 2026-11-02; exact observation timestamp not exposed",
+    "coinbase_derivatives": "Dynamic product page crawled 2026-11-02; exact market-data timestamp not exposed"
+  },
+  "spot": {
+    "observations": [
+      {
+        "provider": "CoinMarketCap",
+        "price_usd": 1.24,
+        "change_24h_percent": 0.7,
+        "market_cap_usd": 78820000000,
+        "volume_24h_usd": 920090000,
+        "circulating_supply_xrp": 63350000000,
+        "source_url": "https://coinmarketcap.com/currencies/xrp/"
+      },
+      {
+        "provider": "TradRadar",
+        "price_usd": 1.2459,
+        "change_24h_percent": -0.63,
+        "source_url": "https://tradradar.io/markets/xrp"
+      }
+    ],
+    "rule": "Do not force the 24h changes to reconcile; providers use different observation times and market/index methodologies."
+  },
+  "derivatives": {
+    "observations": [
+      {
+        "provider": "TradRadar",
+        "updated_at_utc": "2026-11-02T00:45:00Z",
+        "open_interest_usd": 1900000000,
+        "venues": 7,
+        "oi_change_24h_percent": 1.34,
+        "funding_oi_weighted_8h": 0.000051,
+        "liquidations_24h_min_usd": 1040000,
+        "long_liquidations_usd": 927150,
+        "short_liquidations_usd": 108090,
+        "long_short_account_ratio": 3.59,
+        "long_account_share_percent": 78.2,
+        "source_url": "https://tradradar.io/markets/xrp",
+        "venues_included": [
+          "Binance",
+          "Bybit",
+          "MEXC",
+          "Gate",
+          "Bitget",
+          "Hyperliquid",
+          "OKX"
+        ]
+      },
+      {
+        "provider": "Kodexius",
+        "updated_at_utc": "2026-11-02T00:44:00Z",
+        "open_interest_usd": 753320000,
+        "contracts": 7,
+        "funding_oi_weighted_8h": 0.000053,
+        "volume_24h_usd": 581290000,
+        "oi_to_volume": 1.3,
+        "source_url": "https://kodexius.com/data/crypto-derivatives/XRP",
+        "venues_included": [
+          "Binance",
+          "Bybit",
+          "OKX",
+          "Hyperliquid",
+          "HTX"
+        ]
+      }
+    ],
+    "reconciliation": "TradRadar's 7-exchange aggregate is about 2.52 times Kodexius's 7-contract figure. The provider sets are not identical; do not average or interpret the difference as a sudden market move.",
+    "positioning_note": "Positive funding and a 78.2% long-account share indicate a long-skewed account count in TradRadar's covered venues, not 78.2% of notional exposure. Liquidations were predominantly long in that 24h window; this is a risk/positioning observation, not a price forecast."
+  },
+  "coinbase_derivatives": {
+    "provider": "Coinbase Derivatives official product page",
+    "source_url": "https://www.coinbase.com/DERIVATIVES",
+    "observation": {
+      "product": "nano XRP Perp",
+      "contract_size_xrp": 500,
+      "open_interest_contracts": 37924,
+      "daily_volume_contracts": 86175
+    },
+    "derived_underlying_open_interest_xrp": 18962000,
+    "derived_notional_usd_at_coinmarketcap_price_1_24": 23512880,
+    "classification": "SINGLE_VENUE_CONTRACT_UNITS_NOT_AGGREGATED_USD_OI",
+    "limitation": "Dynamic page; exact timestamp not exposed. Do not combine with third-party USD OI totals without contract-level normalization."
+  },
+  "etfs": {
+    "provider": "XRP Insights",
+    "source_url": "https://xrp-insights.com/",
+    "observation": {
+      "total_aum_usd": 1503360000,
+      "xrp_locked": 1196600000,
+      "week_44_net_flow_xrp": 3390000,
+      "week_44_net_flow_usd": 4230000,
+      "daily_volume_usd": 30710000,
+      "market_status": "CLOSED"
+    },
+    "methodology": "Six U.S. spot XRP ETFs plus BITW index fund. Holdings are sourced from issuer websites; flow and volume data have their own timestamps and coverage.",
+    "limitation": "Do not infer that ETF-held XRP is immediately available for sale or that flows equal net market purchases without issuer creation/redemption mechanics."
+  },
+  "supply": {
+    "total_supply_xrp": 100000000000,
+    "escrow_and_burn_cutoff": "2026-11-01",
+    "observations": [
+      {
+        "provider": "CoinMarketCap",
+        "definition": "circulating supply outside Ripple's non-escrow holdings",
+        "value_xrp": 63350000000,
+        "source_url": "https://coinmarketcap.com/currencies/xrp/"
+      },
+      {
+        "provider": "XRP Insights",
+        "definition": "ledger total_coins minus escrow; XRP not locked or burned, including Ripple operational holdings",
+        "value_xrp": 69590000000,
+        "source_url": "https://xrp-insights.com/xrp-radar/supply"
+      }
+    ],
+    "explanation": "The figures answer different questions. XRP Insights explicitly says market-data providers subtract Ripple non-escrow holdings, while its own ledger-based measure does not. Neither should be labelled tradable float.",
+    "overlap_warning": "XRP Insights warns its category rows are not strictly mutually exclusive: exchange-custodied XRP backing wrapped tokens can also appear in DeFi/wrapped categories. Do not sum exchange, DeFi, ETF, corporate and custody categories as if they were disjoint."
+  },
+  "hypotheses": {
+    "H1": "Long-skewed derivatives positioning and positive funding could amplify a downside move if price weakens and liquidations accelerate.",
+    "H2": "Institutional product access and ETF holdings may deepen market access without proving net new spot demand or reducing liquid float in a predictable way.",
+    "H3": "A large provider OI discrepancy may be methodology/coverage rather than market movement; contract-level normalization is required before using OI as a feature."
+  },
+  "feature_admission": {
+    "approved_as_raw_observations": [
+      "provider-scoped spot price and volume",
+      "venue/contract-scoped open interest",
+      "funding interval and methodology",
+      "liquidation side and coverage",
+      "ETF issuer holdings and flow windows",
+      "supply definition and source cutoff"
+    ],
+    "blocked_until_reconciled": [
+      "cross-provider average open interest",
+      "exchange balances treated as tradable float",
+      "ETF holdings treated as permanently locked",
+      "DeFi/wrapped and exchange balances summed as disjoint categories",
+      "account long/short ratio treated as notional exposure"
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Provider coverage differs, timestamps are not fully synchronized, and no validated out-of-sample model output exists."
+  },
+  "sources": [
+    {
+      "id": "M1",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "supports": "spot price, market cap, 24h volume and CMC circulating-supply methodology"
+    },
+    {
+      "id": "M2",
+      "url": "https://tradradar.io/markets/xrp",
+      "supports": "seven-exchange OI, funding, liquidations and account long/short ratio; 15-minute delay and source venues disclosed"
+    },
+    {
+      "id": "M3",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "supports": "seven-contract OI, funding, 24h volume and exchange-level breakdown"
+    },
+    {
+      "id": "M4",
+      "url": "https://xrp-insights.com/",
+      "supports": "ETF holdings, AUM and week-44 flow"
+    },
+    {
+      "id": "M5",
+      "url": "https://xrp-insights.com/xrp-radar/supply",
+      "supports": "69.59B ledger-based circulating proxy, escrow/exchange categories, source dates and overlap warning"
+    },
+    {
+      "id": "M6",
+      "url": "https://www.coinbase.com/DERIVATIVES",
+      "supports": "Coinbase nano XRP Perp contract size, OI and daily volume snapshot"
+    }
+  ]
+}

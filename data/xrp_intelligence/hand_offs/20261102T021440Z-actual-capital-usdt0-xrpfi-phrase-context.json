@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-02T02:14:40Z",
+  "topic": "Exact phrase investigation — actual capital / Flare XRPFi",
+  "status": "SOURCE_CONTEXT_VERIFIED_HISTORICAL_PROJECT_CLAIM",
+  "exact_phrase": "actual capital deployment and liquidity provision",
+  "source": {
+    "publisher": "Flare",
+    "title": "An Introduction to XRP DeFi",
+    "publication_date": "2025-05-02",
+    "url": "https://flare.network/de/news/introduction-to-xrp-defi",
+    "lines": "95-110",
+    "source_class": "FIRST_PARTY_PROJECT_MARKETING_AND_METRICS"
+  },
+  "context": {
+    "paraphrase": "Flare uses the phrase to describe stablecoin liquidity entering its DeFi ecosystem. It identifies stablecoins as cash-equivalent capital and presents USD₮0 as a capital base that can be paired with XRP represented as FXRP for liquidity pools, loan collateral, perpetuals, borrowing and lending.",
+    "asset": "USD₮0",
+    "issuer_and_backing": "Omnichain stablecoin backed 1:1 by Ethereum-based USDT, using LayerZero OFT in the Flare implementation.",
+    "explicit_distinctions": [
+      "USD₮0 is not Circle USDC.",
+      "USD₮0 is not Ripple RLUSD.",
+      "USD₮0 is not SBI JPYSC or JPYC.",
+      "FXRP is a representation of XRP on Flare; FXRP minting is not automatically a new XRP spot purchase."
+    ]
+  },
+  "historical_project_metrics_at_publication": {
+    "stablecoin_market_cap_growth_pct_over_reported_week": 1600,
+    "usd_t0_minted_in_few_days_usd": 60000000,
+    "flare_tvl_usd": 85000000,
+    "referenced_global_usdt_liquidity_usd": 140000000000,
+    "classification": "PROJECT_REPORTED_HISTORICAL_CLAIMS_AS_OF_2025-05-02",
+    "warning": "These figures are not current November 2026 balances and should not enter a current feature set without fresh source-specific observations."
+  },
+  "interpretation": {
+    "confirmed": "The exact phrase occurs in the May 2, 2025 Flare article and refers to stablecoin liquidity deployment, particularly USD₮0.",
+    "not_established": [
+      "No exact dollar amount of new XRP spot purchases is disclosed by this phrase.",
+      "The article does not prove that stablecoin deposits created net external XRP demand.",
+      "TVL growth is not equivalent to new XRP capital; it can consist largely of stablecoins and wrapped/collateralized assets."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "ACTUAL-CAPITAL-H1",
+      "statement": "Stablecoin capital bases such as USD₮0 can make FXRP/XRP more useful by enabling deeper pools, lending and derivatives.",
+      "status": "PLAUSIBLE_ECOSYSTEM_MECHANISM",
+      "supporting_evidence": [
+        "Flare explicitly describes USD₮0/FXRP pools, lending collateral and derivatives use cases."
+      ],
+      "disconfirming_evidence": [
+        "Current pool depth, borrowing balances, active derivative volume and net XRP flows are not supplied by the 2025 article."
+      ]
+    },
+    {
+      "id": "ACTUAL-CAPITAL-H2",
+      "statement": "Stablecoin liquidity can substitute for XRP as a bridge or cash-equivalent settlement asset in some routes, so DeFi growth need not increase XRP spot demand proportionally.",
+      "status": "PLAUSIBLE_COUNTER_HYPOTHESIS",
+      "supporting_evidence": [
+        "USD₮0 is described as the cash-equivalent capital base while FXRP supplies composability."
+      ],
+      "disconfirming_evidence": [
+        "Actual route-level stablecoin/XRP turnover and net FXRP demand are not disclosed."
+      ]
+    },
+    {
+      "id": "ACTUAL-CAPITAL-H3",
+      "statement": "Headline TVL and stablecoin minting may overstate new economic capital if balances are bridged, re-used as collateral or counted across protocols.",
+      "status": "DATA_QUALITY_COUNTER_HYPOTHESIS",
+      "supporting_evidence": [
+        "The article's metrics are ecosystem TVL/minting claims, not reconciled net capital inflows or unique beneficial-owner balances."
+      ],
+      "disconfirming_evidence": [
+        "No full wallet-level or protocol-level reconciliation was provided in the article."
+      ]
+    }
+  ],
+  "required_follow_up_features": [
+    "USD₮0 supply on Flare by validated ledger and issuer/bridge route",
+    "FXRP/USD₮0 pool reserves and actual swap volume",
+    "Unique borrower balances and debt outstanding by lending protocol",
+    "Collateral reuse and liquidation flows",
+    "Net XRP redemption and exchange-deposit flows after FXRP burns",
+    "Cross-protocol TVL deduplication and bridge accounting"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "prediction_rule": "Treat 'actual capital' as a qualitative description until unique net external flows are reconciled. Do not substitute TVL, stablecoin minting, market capitalization changes or collateral reuse for net new XRP spot purchases."
+}

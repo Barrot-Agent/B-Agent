@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T01:11:00.857Z",
+  "title": "Coinbase, Circle and XRP: derivatives distribution, collateral and revenue economics",
+  "status": "SOURCE_VERIFIED_WITH_LIVE_PRODUCT_OBSERVATIONS_AND_EXPLICIT_LIMITATIONS",
+  "coinbase_position": {
+    "regulated_stack": [
+      {
+        "entity": "Coinbase Derivatives, LLC",
+        "role": "CFTC-registered Designated Contract Market",
+        "evidence": "Coinbase's official derivatives page identifies CDE as a CFTC-registered DCM."
+      },
+      {
+        "entity": "Coinbase Financial Markets, Inc.",
+        "role": "CFTC-registered Futures Commission Merchant for U.S. derivatives customers",
+        "evidence": "Coinbase's US Derivatives help page distinguishes CFM derivatives balances from Coinbase Inc. spot balances."
+      },
+      {
+        "entity": "Coinbase Bermuda Limited",
+        "role": "Bermuda foreign broker affiliate and provider for some International Exchange services",
+        "evidence": "CFTC Letter 26-17 and Coinbase International Exchange legal disclosures."
+      },
+      {
+        "entity": "Deribit FZE",
+        "role": "Coinbase-owned foreign derivatives venue / FBOT",
+        "evidence": "CFTC Letter 26-17 and Coinbase's 2025 Deribit acquisition disclosures."
+      },
+      {
+        "entity": "Coinbase Custody Trust Company, LLC",
+        "role": "New York limited-purpose trust company and custodian in the described CFM/Deribit collateral architecture",
+        "evidence": "CFTC Letter 26-17."
+      },
+      {
+        "entity": "Coinbase Clearing LLC / Nodal Clear",
+        "role": "Clearing and USDC-collateral integration layer; separate from the CFM-to-Deribit route",
+        "evidence": "Coinbase Derivatives page describes an announced USDC collateral integration with Nodal Clear."
+      }
+    ],
+    "current_products": {
+      "coinbase_derivatives_dcm": {
+        "source_url": "https://www.coinbase.com/DERIVATIVES",
+        "observation": {
+          "product": "nano XRP Perp",
+          "contract_size_xrp": 500,
+          "open_interest_contracts": 37924,
+          "daily_volume_contracts": 86175
+        },
+        "timestamp_quality": "Dynamic page crawled 2026-11-02; exact market-data timestamp not exposed.",
+        "classification": "LIVE_PRODUCT_LISTING_OBSERVED",
+        "significance": "XRP is present in Coinbase's own CFTC-regulated derivatives product suite, not only on third-party venues."
+      },
+      "coinbase_international_exchange": {
+        "source_url": "https://www.coinbase.com/international-exchange",
+        "published_product_claims": {
+          "markets": ">180",
+          "max_crypto_perpetual_leverage": "up to 50x",
+          "cross_collateral_assets": "40+",
+          "primary_collateral_and_settlement_asset": "USDC",
+          "xrp_perpetuals": "listed; USDC-settled"
+        },
+        "eligibility": "Only non-U.S. institutions in permitted jurisdictions; U.S. institutions are expressly prohibited.",
+        "legal_provider_note": "Some services are provided through Coinbase Bermuda Limited.",
+        "significance": "Coinbase combines XRP market access with a USDC-centric cross-collateral and settlement platform. The public page does not enumerate every one of the 40+ collateral assets, so it does not independently prove XRP is among the collateral currencies on this specific venue."
+      },
+      "cfm_us_derivatives": {
+        "source_url": "https://help.coinbase.com/en/coinbase/derivatives/us-derivatives-intro",
+        "facts": [
+          "U.S. derivatives balances are held with Coinbase Financial Markets, a CFTC-registered FCM.",
+          "Spot balances are managed by Coinbase Inc.; the two legal/customer-protection regimes differ.",
+          "U.S. futures and perpetual-style futures are cash-margined; customers deposit USD or USDC and funds are transferred to the derivatives account for anticipated margin."
+        ],
+        "distinction": "This ordinary U.S. cash-margined product is distinct from the CFTC 30.7 customer digital-asset transfer/right-of-reuse route to Deribit."
+      },
+      "usdc_clearing_integration": {
+        "source_url": "https://www.coinbase.com/DERIVATIVES",
+        "status": "ANNOUNCED_NOT_VERIFIED_LIVE",
+        "facts": "Coinbase Derivatives says it is partnering with Nodal Clear to integrate USDC as collateral for U.S. futures, working with the CFTC, with Coinbase Custody Trust as custodian.",
+        "caveat": "The same page describes this as an expected first regulated USDC-collateral use case; do not mark it operational until launch and actual collateral use are verified."
+      }
+    },
+    "strategic_assessment": {
+      "confirmed": "Coinbase has an integrated but legally segmented stack spanning a U.S. DCM, U.S. FCM, Bermuda broker, acquired foreign venue, custody, clearing partners, spot exchange, Prime and onchain lending.",
+      "inference": "This makes Coinbase a multi-issuer, multi-venue collateral and distribution platform rather than an exclusive Circle or Ripple channel.",
+      "counter_evidence": "Different entities, jurisdictions, account types, products and customer eligibility rules prevent assuming that collateral accepted on one Coinbase/Deribit product is accepted everywhere."
+    }
+  },
+  "circle_economics": {
+    "coinbase_q3_2026_10q": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "period_ended": "2026-09-30",
+      "stablecoin_revenue_usd": {
+        "q3_2026": 306905000,
+        "q3_2025": 324534000,
+        "nine_months_2026": 904487000,
+        "nine_months_2025": 907485000
+      },
+      "observations": [
+        "Coinbase reported that average USDC held in Coinbase products reached an all-time high and that its arrangement with Circle Internet Financial, LLC was renewed on the same terms.",
+        "Higher average USDC balances contributed approximately $84.6M to Q3 and $201.6M to nine-month stablecoin revenue changes, while lower average interest rates reduced those amounts by approximately $52.8M and $166.2M respectively.",
+        "Coinbase revised presentation in Q1 2026 so revenue earned on corporate payment-stablecoin balances is presented in corporate interest and other income rather than stablecoin revenue; prior periods were reclassified."
+      ],
+      "interpretation": "Stablecoin revenue is materially linked to USDC balances and reserve rates. A larger average balance does not guarantee higher revenue when reserve rates fall."
+    },
+    "circle_q2_2026_10q": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "period_ended": "2026-06-30",
+      "metrics": {
+        "average_usdc_circulation_usd": 76524000000,
+        "usdc_on_coinbase_end_period_usd": 12442000000,
+        "coinbase_daily_weighted_average_share_percent": 19.5,
+        "coinbase_distribution_cost_q2_usd": 324600000,
+        "coinbase_distribution_cost_first_half_usd": 655300000
+      },
+      "contract_economics": "Circle's filing says Coinbase allocations depend on USDC held on its platform after issuer retention; Coinbase also receives half of the remaining amount tied to broader ecosystem growth after payments to approved third-party ecosystem participants.",
+      "caveats": [
+        "USDC on Coinbase includes corporate-held and non-custodial balances and is not identical to Coinbase customer custody.",
+        "Distribution costs are Circle expenses and Coinbase revenue/allocations are not equivalent to new XRP capital.",
+        "Q2 Circle figures and Q3 Coinbase figures are different reporting periods and must not be directly netted."
+      ]
+    },
+    "influence_assessment": {
+      "confirmed": "Coinbase's Q3 2026 filing reports the arrangement renewed on the same terms.",
+      "inference": "Coinbase's USDC-centred derivatives and collateral products reinforce Circle's distribution network, while Coinbase's new RLUSD listing diversifies stablecoin inventory and creates a second issuer relationship.",
+      "unknown": "The share of Coinbase's USDC balances attributable to external institutional collateral versus retail, corporate and non-custodial holdings is not disclosed in the cited figures."
+    }
+  },
+  "xrp_relationships": {
+    "direct_and_indirect": [
+      {
+        "from": "Coinbase Derivatives",
+        "to": "XRP",
+        "relation": "CFTC-regulated XRP futures and nano XRP perpetual product listing",
+        "status": "CONFIRMED_LIVE_PRODUCT_LISTING"
+      },
+      {
+        "from": "Coinbase International Exchange",
+        "to": "XRP",
+        "relation": "USDC-settled XRP perpetual market access",
+        "status": "CONFIRMED_PRODUCT_LISTING"
+      },
+      {
+        "from": "CFM",
+        "to": "XRP",
+        "relation": "conditional customer-owned digital-commodity collateral route through CBBM/Deribit",
+        "status": "REGULATORY_PATH_CONFIRMED_ACTUAL_XRP_USE_UNKNOWN"
+      },
+      {
+        "from": "Circle",
+        "to": "XRPL",
+        "relation": "native USDC issuance on XRPL",
+        "status": "CONFIRMED_NETWORK_SUPPORT"
+      },
+      {
+        "from": "Ripple",
+        "to": "Coinbase",
+        "relation": "RLUSD listing on Prime/Exchange/Retail and deposits/withdrawals across XRPL, Base and Ethereum",
+        "status": "CONFIRMED_COMPANY_ANNOUNCEMENT"
+      },
+      {
+        "from": "Circle",
+        "to": "Coinbase",
+        "relation": "USDC distribution and reserve-income allocation agreement",
+        "status": "CONFIRMED_SEC_DISCLOSURE"
+      }
+    ],
+    "competing_effects": [
+      "USDC and RLUSD can complement XRPL by deepening stable-value liquidity and on-ledger settlement options.",
+      "USDC/RLUSD can substitute for XRP as the bridge asset on some payment corridors, reducing XRP inventory needs on those routes.",
+      "XRP remains necessary for XRPL transaction fees and can be used for bridge liquidity or collateral, but these uses do not imply net new spot purchases.",
+      "Coinbase's USDC-primary collateral design may privilege USDC over XRP in some institutional workflows even while XRP derivatives are actively listed."
+    ]
+  },
+  "actual_capital_rules": [
+    "USDC on Coinbase, reserve income allocations and distribution expenses are not new XRP purchases.",
+    "XRP futures open interest is not the same as spot XRP held or newly acquired.",
+    "Customer-owned XRP posted as margin is collateral reuse/encumbrance, not a purchase.",
+    "A listing, product launch, DCM self-certification or venue collateral schedule proves product capability, not actual customer balances."
+  ],
+  "source_registry": [
+    {
+      "id": "CDE",
+      "url": "https://www.coinbase.com/DERIVATIVES",
+      "supports": "Coinbase nano XRP Perp product, contract size, OI/volume snapshot, CFTC DCM status, announced Nodal Clear USDC collateral integration"
+    },
+    {
+      "id": "INTX",
+      "url": "https://www.coinbase.com/international-exchange",
+      "supports": "180+ markets, 40+ cross-collateral assets, USDC primary collateral/settlement, non-U.S. institutional eligibility and XRP perps"
+    },
+    {
+      "id": "CFM_HELP",
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/us-derivatives-intro",
+      "supports": "CFM FCM, segregation between spot and derivatives balances, cash-margined US products"
+    },
+    {
+      "id": "COIN_Q3",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "supports": "Q3 2026 stablecoin revenue, average USDC balance record, Circle agreement renewal and rate/balance drivers"
+    },
+    {
+      "id": "CIRCLE_Q2",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "supports": "USDC on Coinbase, daily weighted share, distribution-cost and reserve-income allocation economics"
+    },
+    {
+      "id": "XRL_FILING",
+      "url": "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf",
+      "supports": "Coinbase Derivatives' XRP Futures self-certification"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Capture Coinbase Derivatives XRP perpetual OI and volume from the official API with exact timestamps; reconcile against third-party OI providers.",
+    "Obtain the 26-05 notice-of-intent date and any CFM XRP-specific risk-policy filing before classifying the Deribit collateral path as enabled.",
+    "Verify whether Coinbase International Exchange's 40+ collateral asset list includes XRP; the marketing page does not enumerate the assets.",
+    "Verify the launch status and actual balances for the Coinbase Derivatives/Nodal Clear USDC collateral integration.",
+    "Track Coinbase's USDC and RLUSD balances separately by product and chain; distinguish spot, custody, collateral and non-custodial holdings.",
+    "Measure whether Circle USDC on XRPL complements or substitutes for XRP bridge liquidity using route-level payment and DEX data."
+  ]
+}

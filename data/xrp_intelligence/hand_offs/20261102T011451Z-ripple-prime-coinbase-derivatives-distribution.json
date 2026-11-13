@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T01:14:51.679Z",
+  "title": "Ripple Prime listed as a Coinbase Derivatives broker distribution partner",
+  "status": "GENERAL_DISTRIBUTION_RELATIONSHIP_CONFIRMED_PRODUCT_SPECIFIC_XRP_ACCESS_UNVERIFIED",
+  "confirmed_facts": [
+    {
+      "fact": "Coinbase's official Derivatives page lists Ripple Prime among its broker distribution partners.",
+      "source_url": "https://www.coinbase.com/DERIVATIVES",
+      "source_context": "The page states broker distribution partners provide expanded market access to trade Coinbase Derivatives products, then lists Ripple Prime alongside ABN AMRO, Interactive Brokers, Marex, StoneX and others.",
+      "classification": "CONFIRMED_GENERAL_DISTRIBUTION_LISTING"
+    },
+    {
+      "fact": "The same Coinbase Derivatives page currently lists nano XRP Perp-Style with 500 XRP contract size, 37,924 open-interest contracts and 86,175 daily volume units at capture.",
+      "source_url": "https://www.coinbase.com/DERIVATIVES",
+      "classification": "CONFIRMED_CURRENT_PRODUCT_PAGE_OBSERVATION",
+      "limitation": "Dynamic page; exact market-data timestamp not exposed. These are contract units, not USD aggregate OI."
+    },
+    {
+      "fact": "Ripple's October 28, 2026 institutional announcement describes Ripple Prime as a prime-brokerage platform providing capital efficiencies across liquidity pools, financing, settlement and clearing for event contracts and RWA perpetual futures across trading partners.",
+      "source_url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "classification": "COMPANY_REPORTED_BUSINESS_ROLE"
+    }
+  ],
+  "relationship_graph": {
+    "nodes": [
+      {
+        "id": "RIPPLE",
+        "name": "Ripple",
+        "type": "company"
+      },
+      {
+        "id": "RIPPLE_PRIME",
+        "name": "Ripple Prime",
+        "type": "prime_brokerage_business"
+      },
+      {
+        "id": "COINBASE_DERIVATIVES",
+        "name": "Coinbase Derivatives, LLC",
+        "type": "CFTC_registered_DCM"
+      },
+      {
+        "id": "XRP",
+        "name": "XRP",
+        "type": "digital_asset"
+      },
+      {
+        "id": "RLUSD",
+        "name": "Ripple USD",
+        "type": "stablecoin"
+      },
+      {
+        "id": "USDC",
+        "name": "USD Coin",
+        "type": "stablecoin"
+      }
+    ],
+    "edges": [
+      {
+        "from": "RIPPLE",
+        "to": "RIPPLE_PRIME",
+        "relation": "prime_brokerage_business",
+        "status": "CONFIRMED_COMPANY_DESCRIPTION"
+      },
+      {
+        "from": "RIPPLE_PRIME",
+        "to": "COINBASE_DERIVATIVES",
+        "relation": "broker_distribution_partner",
+        "status": "CONFIRMED_OFFICIAL_COINBASE_LISTING"
+      },
+      {
+        "from": "COINBASE_DERIVATIVES",
+        "to": "XRP",
+        "relation": "nano_XRP_perpetual_product",
+        "status": "CONFIRMED_CURRENT_PRODUCT_LISTING"
+      },
+      {
+        "from": "RIPPLE_PRIME",
+        "to": "XRP",
+        "relation": "potential_client_access_to_Coinbase_XRP_perpetuals",
+        "status": "INFERENCE_PRODUCT_SPECIFIC_MATRIX_NOT_PUBLISHED"
+      },
+      {
+        "from": "RIPPLE_PRIME",
+        "to": "RLUSD",
+        "relation": "Ripple_prime_brokerage_ecosystem_uses_RLUSD_for_institutional_collateral_and_financing",
+        "status": "COMPANY_REPORTED_BUT_PRODUCT_SPECIFIC_BALANCES_UNKNOWN"
+      },
+      {
+        "from": "COINBASE_DERIVATIVES",
+        "to": "USDC",
+        "relation": "planned_Nodal_Clear_USDC_collateral_integration",
+        "status": "ANNOUNCED_NOT_VERIFIED_LIVE"
+      }
+    ]
+  },
+  "interpretation": {
+    "confirmed": "A direct commercial distribution relationship exists between Ripple Prime and Coinbase Derivatives at the general product-suite level.",
+    "inference": "Because Coinbase's same product page lists nano XRP Perp among its contracts, Ripple Prime may provide clients with access to Coinbase's XRP derivatives, subject to its own client/product permissions and jurisdictional eligibility.",
+    "not_established": [
+      "That Ripple Prime currently distributes the nano XRP Perp specifically.",
+      "That Ripple Prime or its clients hold, buy or sell XRP as a result of the distribution relationship.",
+      "That XRP is accepted as collateral in Ripple Prime's access route.",
+      "Any order flow, open interest, revenue share, client count or trading volume attributable to Ripple Prime.",
+      "That Ripple Prime uses Coinbase Financial Markets or Deribit for all of its client activity."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_INSTITUTIONAL_DISTRIBUTION_EXPANDS_XRP_DERIVATIVES_ACCESS",
+      "thesis": "Ripple Prime distribution could expand institutional access to Coinbase-listed XRP derivatives and improve hedging and market-making reach.",
+      "disconfirming_evidence": "No contract-specific access matrix, order flow or client activity has been disclosed."
+    },
+    {
+      "id": "H2_DERIVATIVES_ACCESS_INCREASES_HEDGING_NOT_SPOT_DEMAND",
+      "thesis": "Additional derivatives distribution may increase hedging, basis trades and short exposure without generating net XRP spot purchases.",
+      "disconfirming_evidence": "If prime-broker clients acquire XRP for collateral or hedging inventory, some incremental spot/custody demand may occur; no balances are disclosed."
+    },
+    {
+      "id": "H3_COMPETITIVE_COMPLEMENTARITY",
+      "thesis": "Ripple Prime can distribute Coinbase derivatives while Ripple promotes RLUSD and XRP-based infrastructure; the relationship is complementary at distribution level but competing across stablecoin/collateral choices.",
+      "disconfirming_evidence": "Actual collateral and settlement preferences by client are unknown."
+    }
+  ],
+  "actual_capital_rule": "Broker distribution, derivatives product listings and open interest do not establish net spot XRP purchases. Track product access, collateral inventory, order flow, net exposure and spot execution separately.",
+  "next_actions": [
+    "Seek a Ripple Prime product/venue matrix or official client-facing product notice identifying Coinbase nano XRP Perp access.",
+    "Check whether Ripple Prime routes orders through Coinbase Financial Markets, another FCM or a separate broker arrangement.",
+    "Determine whether the distribution agreement includes XRP-specific collateral, USD/USDC settlement or cross-margining.",
+    "Monitor Coinbase Derivatives product data and Ripple Prime disclosures for product-level volume or client adoption.",
+    "Keep any Ripple Prime-related XRP flow feature blocked until product-specific execution or collateral evidence is obtained."
+  ],
+  "sources": [
+    {
+      "id": "C1",
+      "url": "https://www.coinbase.com/DERIVATIVES",
+      "type": "primary_exchange_product_and_distribution_page",
+      "supports": "Ripple Prime broker-distribution listing and current nano XRP Perp product"
+    },
+    {
+      "id": "R1",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "type": "primary_company_announcement",
+      "supports": "Ripple Prime's institutional prime-brokerage, financing, settlement and clearing role"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED"
+}
