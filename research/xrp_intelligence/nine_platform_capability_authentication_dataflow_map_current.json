@@ -1,26 +1,26 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-13T06:49:31.720Z",
-  "last_verified_at_utc": "2026-11-13T06:49:31.720Z",
+  "captured_at_utc": "2026-11-13T06:56:56.751Z",
+  "last_verified_at_utc": "2026-11-13T06:56:56.751Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-  "observed_integration_head_before_map_commit": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+  "observed_integration_head_before_map_commit": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "ahead_by": 2218,
+    "ahead_by": 2219,
     "behind_by": 0,
     "changed_files": 1091,
     "workflow_files": 50,
     "other_changed_paths": 1041,
-    "head_sha": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+    "head_sha": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
     "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "commits": 2218,
-    "additions": 311902,
+    "commits": 2219,
+    "additions": 312242,
     "deletions": 5136,
     "formal_approvals": 0,
     "formal_reviews": 0,
@@ -29,15 +29,15 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-13T06:40:45Z",
+    "updated_at": "2026-11-13T06:50:18Z",
     "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
-    "note": "Run80 exact-head verification on bfc0c1f passed: 3,553 full-suite tests, zero failures, eight subtests, 61.68% inclusive coverage; core 725/0 and 76%; wheel/installed mission verification passed; five-manifest dependency audit zero known vulnerabilities; fail-closed gate passed. This Run80B institutional research/handoff commit is documentation/data-map only and requires its own exact-head CI. PR remains draft with zero formal approvals/reviews; main security, publication and semantic-review blockers remain.",
+    "note": "Run80B exact-head verification on 853f28d passed: 3,553 full-suite tests, zero failures, eight subtests, 61.68% inclusive coverage; core 725/0 and 76%; wheel/installed mission verification passed; five-manifest dependency audit zero known vulnerabilities; fail-closed gate passed. Run80C adds institutional/ETF/EDX/Virtu research and is documentation/data-map only; its own exact-head CI is pending. PR remains draft with zero formal approvals/reviews; main security, publication and semantic-review blockers remain.",
     "research_files": 557,
     "test_files": 374,
     "other_files": 94,
     "base": "main",
     "head": "integration/xrp-v3-unified-main-20261112",
-    "updated_at_utc": "2026-11-13T06:49:31.720Z",
+    "updated_at_utc": "2026-11-13T06:56:56.751Z",
     "merge_decision": "NO_MERGE"
   },
   "superseded_integration_pr": {
@@ -90,15 +90,15 @@
         "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
         "persistent_agent_connection": false,
         "external_model_transfer": false,
-        "last_verified_at_utc": "2026-11-13T06:49:31.720Z",
-        "observed_flow": "Run80B verified current main/integration heads, complete recursive trees, 375 open PRs, exact-head full/core CI, wheel installation, dependency audit and fail-closed gate; reviewed CFTC Legacy parser, SEC Bitwise/21Shares/Coinbase Q3 filings, Coinbase cbXRP proof-of-reserves and Morpho collateral analysis; updated only the existing integration branch handoff and capability map. No main write or external-model transfer.",
+        "last_verified_at_utc": "2026-11-13T06:56:56.751Z",
+        "observed_flow": "Run80C verified current main/integration heads, recursive trees, full open-PR inventory, exact-head CI on 853f, SEC Bitwise/21Shares/Bitwise-10/Coinbase/Virtu Q3 filings, SBI/Virtu/EDX/Ripple institutional links, EDX spot/perpetual asset distinction and Coinbase cbXRP/Morpho collateral. Only existing integration handoff/map files were updated; no main write or external-model transfer.",
         "main_branch_write": false
       },
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-13T06:49:31.720Z",
-      "last_verified_run": "Run80B"
+      "last_verified_at_utc": "2026-11-13T06:56:56.751Z",
+      "last_verified_run": "Run80C"
     },
     "Claude": {
       "intended_role": [
@@ -644,9 +644,9 @@
   },
   "repository_state": {
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_before_current_map_commit": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+    "integration_head_before_current_map_commit": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
     "integration_pr": 1662,
-    "integration_ahead_by": 2218,
+    "integration_ahead_by": 2219,
     "integration_behind_by": 0,
     "changed_files": 1091,
     "workflow_files_changed": 50,
@@ -668,7 +668,7 @@
     "main_scheduled_xrp_collector_present": false,
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
-    "latest_exact_head_ci": "PASS on bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1: full repository 3,553/0, eight subtests, 61.68%; core 725/0, 76%; wheel and installed Barrot V3/XRP mission verified; five-manifest audit zero known vulnerabilities; fail-closed gate passed.",
+    "latest_exact_head_ci": "PASS on 853f28dcfd9c6b88a81c78cef3c99e88b3172b21: full repository 3,553/0, eight subtests, 61.68%; core 725/0, 76%; wheel and installed Barrot V3/XRP mission verified; five-manifest audit zero known vulnerabilities; fail-closed gate passed.",
     "last_reconciled_at_utc": "2026-11-13T06:20:23.358Z",
     "other_base_branches": 8,
     "main_tree_files": 1277,
@@ -699,7 +699,7 @@
     "run24b_expected_non_workflow_paths_after_artifact": 956,
     "run24b_expected_integration_tree_entries": 2265,
     "current_head_before_run24c_corrective_commit": "7b027617057e951bd4851c998e0f0bb11ed979e3",
-    "latest_full_suite_tested_head": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+    "latest_full_suite_tested_head": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
     "current_head_before_run24d_test_trigger_commit": "3e8b0216e35fbd881abe054699246ed79693ab85",
     "ci_trigger_note": "Main and integration CI workflows both have no path filters. The current exact-head run was triggered by the PR synchronize event after test/map updates; earlier API listing was sampled before the run appeared.",
     "current_head_before_run24e_corrective_commit": "a41fa6497c8ad199026582518b5a5d522d267552",
@@ -1205,13 +1205,13 @@
     "main_cross_analysis_conclusion": "success"
   },
   "ci_evidence": {
-    "integration_head_tested": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
-    "integration_pr_run": 43380377372,
-    "integration_full_suite_job": 131736504735,
-    "dependency_audit_run": 43380377447,
-    "dependency_audit_job": 131736504226,
-    "fail_closed_gate_run": 43380377332,
-    "fail_closed_gate_job": 131736503970,
+    "integration_head_tested": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
+    "integration_pr_run": 43381409763,
+    "integration_full_suite_job": 131739779689,
+    "dependency_audit_run": 43381409869,
+    "dependency_audit_job": 131739780519,
+    "fail_closed_gate_run": 43381409780,
+    "fail_closed_gate_job": 131739780021,
     "full_repository_suite": {
       "passed": 3553,
       "failed": 0,
@@ -1221,20 +1221,17 @@
       "exact_head": true,
       "exact_head_verified": true,
       "conclusion": "success",
-      "run_id": 43380377372,
-      "job_id": 131736504735,
-      "total_statements": 24828,
-      "missing_statements": 9032,
-      "branches": 7532,
-      "partial_branches": 1501
+      "run_id": 43381409763,
+      "job_id": 131739779689,
+      "head_sha": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21"
     },
     "dependency_audit": {
       "passed": true,
       "manifests": 5,
       "known_vulnerabilities": 0,
       "conclusion": "success",
-      "run_id": 43380377447,
-      "job_id": 131736504226,
+      "run_id": 43381409869,
+      "job_id": 131739780519,
       "manifest_groups": [
         "root runtime",
         "development",
@@ -1247,8 +1244,8 @@
       "passed": true,
       "automatic_merge_enabled": false,
       "conclusion": "success",
-      "run_id": 43380377332,
-      "job_id": 131736503970
+      "run_id": 43381409780,
+      "job_id": 131739780021
     },
     "main_ci_run": 43343513172,
     "main_full_repository_suite": {
@@ -1286,11 +1283,11 @@
       "assessment": "Broader barrot_agent/directive_platform/data repository suite is executed and coverage measured at 60.92% against a 53% configured floor. This remains below the previous 70% target and is quality debt."
     },
     "latest_attempt": {
-      "head_sha": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+      "head_sha": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
       "conclusion": "success",
       "status": "completed",
-      "completed_at_utc": "2026-11-13T06:44:22Z",
-      "run_id": 43380377372,
+      "completed_at_utc": "2026-11-13T06:53:14Z",
+      "run_id": 43381409763,
       "full_repository_suite": {
         "passed": 3553,
         "failed": 0,
@@ -1300,12 +1297,9 @@
         "exact_head": true,
         "exact_head_verified": true,
         "conclusion": "success",
-        "run_id": 43380377372,
-        "job_id": 131736504735,
-        "total_statements": 24828,
-        "missing_statements": 9032,
-        "branches": 7532,
-        "partial_branches": 1501
+        "run_id": 43381409763,
+        "job_id": 131739779689,
+        "head_sha": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21"
       },
       "core_tests": {
         "passed": 725,
@@ -1314,15 +1308,15 @@
         "coverage_percent": 76,
         "duration_seconds": 11.66,
         "conclusion": "success",
-        "job_id": 131736504182
+        "job_id": 131739780104
       },
       "dependency_audit": {
         "passed": true,
         "manifests": 5,
         "known_vulnerabilities": 0,
         "conclusion": "success",
-        "run_id": 43380377447,
-        "job_id": 131736504226,
+        "run_id": 43381409869,
+        "job_id": 131739780519,
         "manifest_groups": [
           "root runtime",
           "development",
@@ -1335,13 +1329,13 @@
         "passed": true,
         "automatic_merge_enabled": false,
         "conclusion": "success",
-        "run_id": 43380377332,
-        "job_id": 131736503970
+        "run_id": 43381409780,
+        "job_id": 131739780021
       },
       "wheel_build_verified": true,
       "installed_wheel_primary_mission_verified": true,
       "failing_tests": [],
-      "failure_classification": "Exact-head full-suite passed on bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1: 3,553 passed, zero failures, eight subtests, 61.68% inclusive coverage in 90.71 seconds. Core suite 725 passed, zero failures, eight subtests, 76% coverage. Wheel built and installed; installed package verified Barrot V3, the primary XRP mission and canonical data assets. Five dependency manifest groups passed with zero known vulnerabilities. Fail-closed gate passed and automatic merge remained disabled."
+      "failure_classification": "Exact-head full-suite passed on 853f28dcfd9c6b88a81c78cef3c99e88b3172b21: 3,553 passed, zero failures, eight subtests, 61.68% inclusive coverage in 90.71 seconds. Core suite 725 passed, zero failures, eight subtests, 76% coverage. Wheel built and installed; installed package verified Barrot V3, the primary XRP mission and canonical data assets. Five dependency manifest groups passed with zero known vulnerabilities. Fail-closed gate passed and automatic merge remained disabled."
     },
     "previous_attempt": {
       "head_sha": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1391,7 +1385,7 @@
       "coverage_percent": 59.98,
       "failure_classification": "Two stale snapshot expectations hard-coded previous OKX/Fuelmaps event times; fixed by time-dynamic test assertions."
     },
-    "core_suite_job": 131736504182,
+    "core_suite_job": 131739780104,
     "latest_main_workflows": {
       "cross_analysis": {
         "run_id": 43023990234,
@@ -9026,8 +9020,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run80B",
-  "latest_run_captured_at_utc": "2026-11-13T06:49:31.720Z",
+  "latest_run_id": "Run80C",
+  "latest_run_captured_at_utc": "2026-11-13T06:56:56.751Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -12055,7 +12049,7 @@
     },
     "forecast_status": "NOT_ISSUED"
   },
-  "last_reconciled_at_utc": "2026-11-13T06:49:31.720Z",
+  "last_reconciled_at_utc": "2026-11-13T06:56:56.751Z",
   "run29_snapshot": {
     "captured_at_utc": "2026-11-11T15:36:00Z",
     "repository_state": {
@@ -20574,7 +20568,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-13T06:49:31.720Z",
+  "updated_at_utc": "2026-11-13T06:56:56.751Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -24957,7 +24951,7 @@
   },
   "run46_forecast_status": "NOT_ISSUED",
   "model_eligible": false,
-  "next_concrete_action": "Verify exact-head full-suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80B documentation/map commit.",
+  "next_concrete_action": "Verify exact-head full suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80C handoff/map commit.",
   "run47_research_artifact_path": "research/xrp_intelligence/20261112T050251Z-run47-market-quality-evernorth-sbi-resale-and-exact-head-ci-repair.json",
   "run47_forecast_status": "NOT_ISSUED",
   "current_forecast_status": "NOT_ISSUED",
@@ -29780,7 +29774,7 @@
       "interpretation": "Asynchronous quote comparison; not an executable arbitrage signal."
     }
   },
-  "observed_integration_head_before_current_map_commit": "bfc0c1f79af15f6f8ae5cfcf58520ba1b7ae07e1",
+  "observed_integration_head_before_current_map_commit": "853f28dcfd9c6b88a81c78cef3c99e88b3172b21",
   "run77_snapshot": {
     "captured_at_utc": "2026-11-13T05:41:39.615Z",
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
@@ -31593,14 +31587,14 @@
     "real_money_actions": 0
   },
   "run80_next_actions": [
-    "Verify exact-head full-suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80B documentation/map commit.",
-    "Add SEC issuer 10-Q ingestion for XRP ETFs with per-product holdings, cash creations, in-kind creations, cash redemptions, in-kind redemptions, sponsor-fee XRP, custodian set, benchmark and filing/publication timestamps.",
-    "Add Coinbase cbXRP proof-of-reserves and Morpho Base market history as separate wrapped-collateral series, including Chainlink oracle, LLTV, debt, collateral, borrower health and liquidation events; never merge these into native XRPL spot flows.",
-    "Reconcile all ETF issuers and distinguish Ripple seed-share ownership from underlying XRP trust holdings; verify the 21Shares lock-up and post-listing extension before any share-float conclusion.",
-    "Continue semantic review of 50 workflow patches and 1,041 non-workflow paths; resolve main remote-MCP/write permissions, connector least privilege, branch-protection visibility and Pages publication authorization.",
-    "Keep forecast issuance disabled until raw sources are independently anchored, point-in-time history is replayable, shadow outcomes exist and out-of-sample lift over all four baselines is demonstrated."
+    "Verify exact-head full suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80C handoff/map commit.",
+    "Add issuer-specific SEC 10-Q ingestion for dedicated XRP ETFs and diversified crypto index funds, separating cash/in-kind creations, redemptions, rebalancing, sponsor-fee transfers, custodians and benchmark changes.",
+    "Add Virtu/EDX institutional context features with SEC period-end and filing-publication timestamps; keep corporate holdings, equity stakes, credit lines, spot listings and derivatives liquidity as separate relationship types.",
+    "Add separate cbXRP/Morpho Base collateral history, including reserve/supply, oracle, LLTV, debt, collateral, health and liquidation events; do not merge with native XRPL spot flows.",
+    "Continue semantic review, least-privilege remediation, branch-protection visibility and Pages publication authorization; keep PR #1662 draft until all merge conditions are satisfied.",
+    "Keep forecasts disabled until raw-source anchoring, synchronized point-in-time history, trusted evaluator attestation, shadow outcomes and measured out-of-sample lift are verified."
   ],
-  "run80_handoff_status": "PARENT_HEAD_BFC0_EXACT_HEAD_FULL_SUITE_PASSED; RUN80B_INSTITUTIONAL_AND_COLLATERAL_RESEARCH_COMMITTED; NEW_HEAD_CI_PENDING",
+  "run80_handoff_status": "PARENT_HEAD_853F_EXACT_HEAD_FULL_SUITE_PASSED; RUN80C_VIRTU_EDX_SBI_NETWORK_RESEARCH_COMMITTED; NEW_HEAD_CI_PENDING",
   "latest_web_research_run80": {
     "captured_at_utc": "2026-11-13T06:32:54Z",
     "model_eligible": false,
@@ -31900,6 +31894,131 @@
     "Ripple's 10M 21Shares seed shares are ETF-share capital and a locked share-supply concentration, not a 10M XRP purchase or Ripple treasury holding.",
     "Coinbase's 1:1 cbXRP backing and segregated ETF custody accounts are distinct asset populations; do not sum them without address-level reconciliation.",
     "Morpho cbXRP liquidation stress is a wrapped-collateral risk channel; it does not establish native XRP sales absent redemption or exchange-sale evidence.",
-    "Coinbase's 10-Q aggregates other crypto collateral below 5% per asset; XRP-specific exposure remains undisclosed rather than proven zero."
-  ]
+    "Coinbase's 10-Q aggregates other crypto collateral below 5% per asset; XRP-specific exposure remains undisclosed rather than proven zero.",
+    "SBI's EDX investment and Virtu's XRP perpetual liquidity create an indirect derivatives-market network, but EDX spot does not currently list XRP; this is not direct XRP spot demand.",
+    "Virtu's XRP position may be corporate inventory or investment, but the 10-Q does not state purpose; the Dec2025 comparative aggregates other assets and does not establish a new 2026 acquisition.",
+    "The 6.4% crypto-platform JV in Virtu's Q3 10-Q is not explicitly named; the separate proxy's EDX parent stake/revolver is related evidence but not proof they are the same JV.",
+    "The Bitwise 10 Crypto Index ETF's XRP dispositions reflect rebalancing, share redemptions and fees; do not treat the entire reduction as ETF outflow or spot selling."
+  ],
+  "run80_bitwise_10_crypto_index_etf": {
+    "sec_filing": "https://www.sec.gov/Archives/edgar/data/1723788/000119312526451764/bitw-20260930.htm",
+    "period_end": "2026-09-30",
+    "holdings_xrp": 21168425.5105,
+    "fair_value_usd": 31511000,
+    "share_of_net_assets_percent": 4.21,
+    "net_assets_usd": 748716000,
+    "q3_additions_xrp": 108848.9997,
+    "q3_dispositions_xrp": 837627.1268,
+    "q3_net_change_xrp": -728778.1271,
+    "nine_month_additions_xrp": 433479.1326,
+    "nine_month_dispositions_xrp": 6073202.0021,
+    "nine_month_net_change_xrp": -5639722.8695,
+    "interpretation": "Diversified Bitwise 10 Crypto Index ETF, not a dedicated XRP ETF. The Trust sells assets for management fees, share redemptions and monthly index rebalancing. The reported XRP reduction is a real portfolio disposition, but not all of it can be assigned to investor redemptions or open-market spot selling.",
+    "custodians": [
+      "Coinbase Custody Trust Company, LLC",
+      "Anchorage Digital Bank N.A."
+    ],
+    "prime_execution_agent": "Coinbase Inc.",
+    "trade_credit_lender": "Coinbase Credit Inc.",
+    "outstanding_trade_credit_at_period_end": "No outstanding borrowing identified in the September 30 balance sheet; the filing defines the trade-credit relationship but does not establish a drawn loan.",
+    "share_transactions": "Cash subscriptions/redemptions; Trust buys/sells portfolio crypto assets to implement subscriptions, redemptions, rebalancing and fees.",
+    "derivatives_used": false
+  },
+  "run80_virtufinancial_sbi_edx_network": {
+    "virtu_10q": "https://www.sec.gov/Archives/edgar/data/1592386/000159238626000034/virt-20260930.htm",
+    "period_end": "2026-09-30",
+    "xrp_reported_units": 26936141,
+    "xrp_cost_basis_usd": 41203000,
+    "xrp_fair_value_usd": 40092000,
+    "xrp_location": "Digital assets held within Other Assets",
+    "purpose": "Not specified by filing; do not assume treasury strategy, market-making inventory, collateral or directional position.",
+    "prior_period_caveat": "December 31, 2025 comparative table shows Bitcoin and Other without a separate XRP line; no prior XRP quantity can be inferred.",
+    "jnx_investment": {
+      "entity": "JNX / Japannext Co., Ltd., formerly SBI Japannext Co., Ltd.",
+      "nature": "Virtu minority investment",
+      "fair_value_usd": 91254000,
+      "measurement": "Level 3, significant unobservable valuation inputs",
+      "current_cap_table": "Not established by this filing"
+    },
+    "sbi_bonds": {
+      "issuers": [
+        "Virtu Financial Holdings LLC"
+      ],
+      "holders": [
+        "SBI Life Insurance Co., Ltd.",
+        "SBI Insurance Co., Ltd."
+      ],
+      "principal_jpy": 3500000000,
+      "interest_percent": 5,
+      "issued_date": "2016-07-25",
+      "extended_maturity": "2029-01",
+      "outstanding_usd_at_2026_09_30": 22200000,
+      "use": "Proceeds partially financed Virtu's JNX investment",
+      "ownership_context": "SBI Life and SBI Insurance are SBI Group-controlled subsidiaries; this is debt financing from subsidiaries, not a direct loan from SBI Holdings and not XRP capital."
+    },
+    "crypto_platform_jv": {
+      "q3_10q_noncontrolling_interest_percent": 6.4,
+      "named_in_10q": false,
+      "separate_proxy_disclosure": "Virtu's 2026 proxy states an affiliate has a minority equity interest in EDX Markets' ultimate parent and a $5M commitment under a $17M revolving credit agreement.",
+      "identity_reconciliation": "The 10-Q does not explicitly identify its 6.4% crypto-platform JV as EDX; do not equate them without additional primary evidence."
+    },
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/1592386/000159238626000034/virt-20260930.htm",
+      "https://www.virtu.com/investor-relations/",
+      "https://www.sbigroup.co.jp/english/company/group/",
+      "https://www.cboe.com/us/equities/market_statistics/press_releases/"
+    ]
+  },
+  "run80_edx_sbi_ripple_virtu_network": {
+    "edx_series_c": {
+      "amount_usd": 76000000,
+      "lead_investor": "SBI Holdings",
+      "announcement_date": "2026-07-07",
+      "nature": "Direct equity investment into EDX Markets infrastructure; not XRP purchase or XRP treasury allocation."
+    },
+    "edx_spot": {
+      "asset_list_url": "https://www.edxmarkets.com/",
+      "xrp_listed": false,
+      "scope": "Institutional spot venue; current asset list includes other major crypto assets but not XRP."
+    },
+    "edxm_international": {
+      "xrp_perpetuals": true,
+      "pair_count_at_launch": 44,
+      "launch_date": "2025-07-22",
+      "virtu_role": "Liquidity provider",
+      "jurisdiction_scope": "International/professional-investor venue; do not treat as US spot-market depth."
+    },
+    "virtu_edx_relationship": {
+      "proxy_url": "https://www.virtu.com/investor-relations/",
+      "minority_equity_in_edx_parent": true,
+      "committed_revolver_usd": 5000000,
+      "total_revolver_usd": 17000000,
+      "caveat": "The 2026 proxy describes an affiliate's minority interest in EDX Markets' ultimate parent and a $5M commitment under a $17M revolver; it does not establish that Virtu's separate 6.4% crypto-platform JV in the Q3 10-Q is the same entity."
+    },
+    "ripple_prime_integration": {
+      "announcement_date": "2026-05-19",
+      "access": "EDX spot and EDXM International derivatives through Ripple Prime",
+      "rlusd_settlement": "Planned, not verified live",
+      "xrp_spot_caveat": "EDX spot's current public asset list does not include XRP; XRP is listed on EDXM International perpetuals."
+    },
+    "network_interpretation": "SBI Holdings invested in EDX; Virtu has an EDX-parent equity/credit relationship and provides liquidity for EDXM International XRP perpetuals; Virtu separately reports 26.936M XRP and an investment in Japannext formerly SBI Japannext; SBI Life and SBI Insurance are bondholders of Virtu debt. This is a verified institutional network, not evidence of common control, coordinated trading, SBI XRP ownership or direct EDX XRP spot demand.",
+    "sources": [
+      "https://www.edxmarkets.com/",
+      "https://www.virtu.com/investor-relations/",
+      "https://www.sbigroup.co.jp/news/2026/0707_000000.html",
+      "https://www.ripple.com/press/",
+      "https://www.edxm.com/"
+    ]
+  },
+  "run80_institutional_holdings_sample": {
+    "as_of": "2026-09-30",
+    "bitwise_dedicated_xrp_etf": 413140980.4731,
+    "twentyone_shares_xrp_etf": 107295620.64,
+    "bitwise_10_crypto_index_etf": 21168425.5105,
+    "three_etf_products_combined": 541605026.6236,
+    "virtu_financial_reported_xrp": 26936141,
+    "four_entity_sample_combined": 568541167.6236,
+    "scope": "Partial SEC-reported sample only; not total institutional XRP holdings, not a current November 13 balance and not a measure of exchange float. Separate trust/company beneficial holdings are reported, but custody-address overlap has not been reconciled.",
+    "excluded_from_sum": "Coinbase cbXRP reserve snapshot, because it is a separate wrapped-token backing series and could overlap custody infrastructure; do not add without address-level proof."
+  }
 }

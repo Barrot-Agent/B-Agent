@@ -5814,3 +5814,153 @@ Next:
 5. Keep forecast issuance disabled until raw-source anchoring, synchronized point-in-time history, trusted evaluator attestation, shadow outcomes and measured out-of-sample lift are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+---
+
+# Run80C — 2026-11-13 — Virtu/SBI/EDX network and diversified ETF XRP flows
+
+## Exact-head CI before this addendum
+
+The Run80B documentation/map head 853f28dcfd9c6b88a81c78cef3c99e88b3172b21 passed exact-head verification:
+- Full repository suite: 3,553 passed, zero failed, eight subtests, 61.68% inclusive coverage, 90.71 seconds.
+- Core suite: 725 passed, zero failed, eight subtests, 76% coverage.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Five dependency manifest groups passed with zero known vulnerabilities.
+- Fail-closed gate passed; automatic merge remained disabled.
+
+Evidence:
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/43381409763
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43381409869
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43381409780
+
+This Run80C institutional-network addendum is documentation/data-map only. Its new head requires its own exact-head CI.
+
+## New primary-source discovery: Bitwise 10 Crypto Index ETF
+
+The Bitwise 10 Crypto Index ETF Form 10-Q (period ended September 30, 2026) reports 21,168,425.5105 XRP with fair value $31.511M, 4.21% of $748.716M net assets. This is a diversified multi-asset index ETF, not a dedicated XRP ETF.
+
+Reported XRP movements:
+- Q3 additions: 108,848.9997 XRP.
+- Q3 dispositions: 837,627.1268 XRP.
+- Q3 net reduction: 728,778.1271 XRP.
+- Nine-month additions: 433,479.1326 XRP.
+- Nine-month dispositions: 6,073,202.0021 XRP.
+- Nine-month net reduction: 5,639,722.8695 XRP.
+
+The Trust says dispositions were used for management fees, share redemptions and index rebalancing. Do not assign the entire amount to investor outflows or open-market selling. The Trust's portfolio is cash-settled at the share level and buys/sells underlying crypto for rebalancing, fees and redemptions.
+
+Service-provider links:
+- Coinbase Custody Trust Company and Anchorage Digital Bank are custodians.
+- Coinbase Inc. is prime execution agent.
+- Coinbase Credit Inc. is named as Trade Credit Lender.
+- No outstanding borrowing is identified at September 30; a defined credit relationship is not proof of a drawn loan.
+- The Trust does not use derivatives.
+
+SEC source: https://www.sec.gov/Archives/edgar/data/1723788/000119312526451764/bitw-20260930.htm
+
+## New primary-source discovery: Virtu Financial reports XRP and SBI-linked relationships
+
+Virtu Financial's September 30, 2026 Form 10-Q reports:
+- XRP: 26,936,141 units.
+- Cost basis: $41.203M.
+- Fair value: $40.092M.
+- Classification: Digital assets held within Other Assets.
+
+The filing does not specify whether the XRP is treasury, investment or market-making inventory. The December 31, 2025 comparative table reports Bitcoin and aggregated “Other” but no separate XRP quantity; it does not establish when the XRP position was acquired.
+
+The same filing reports:
+- A minority investment in JNX/Japannext Co., Ltd., formerly SBI Japannext Co., Ltd., fair value $91.254M at September 30.
+- Virtu issued ¥3.5B of five-percent Japanese-yen bonds to SBI Life Insurance and SBI Insurance on July 25, 2016. Maturity was extended in December 2025 to January 2029; $22.2M equivalent principal remained outstanding at September 30, 2026.
+- Proceeds partially financed Virtu's JNX investment.
+- A separate 6.4% noncontrolling interest in an unnamed cryptocurrency-trading-platform JV.
+
+The 2026 Virtu proxy statement separately discloses an affiliate's minority equity interest in EDX Markets' ultimate parent and a $5M commitment under a $17M revolving credit agreement. The Q3 10-Q does not explicitly identify its 6.4% crypto-platform JV as EDX. Keep these as separate disclosures until a primary source links them.
+
+SBI Life and SBI Insurance are SBI Group-controlled subsidiaries. This is debt financing from those insurance entities to Virtu, not a direct SBI Holdings loan and not XRP capital. The JNX investment is a minority stake in a company formerly named SBI Japannext; it is distinct from SBIC East/Central/West.
+
+SEC source: https://www.sec.gov/Archives/edgar/data/1592386/000159238626000034/virt-20260930.htm
+
+## SBI, EDX, Virtu, Ripple Prime and XRP derivatives
+
+EDX Markets announced a $76M Series C led by SBI Holdings on July 7, 2026. This is a direct SBI Holdings investment in institutional digital-asset market infrastructure, not an XRP purchase or XRP treasury allocation.
+
+EDX's current public spot asset list does not include XRP. EDXM International, a separate international derivatives venue in the EDX ecosystem, lists XRP perpetual futures among its 44 pairs. Virtu was named as a liquidity provider for EDXM International at launch.
+
+Virtu's 2026 proxy statement describes:
+- Minority equity in EDX Markets' ultimate parent through an affiliate.
+- A $5M commitment under a $17M revolving credit agreement.
+
+Ripple Prime announced integration with EDX Markets and EDXM International, giving institutional clients access to EDX spot and international perpetual markets through its prime-brokerage platform. RLUSD settlement/collateral was described as planned, not verified live.
+
+Important distinctions:
+- EDX spot does not currently list XRP.
+- XRP is available on EDXM International perpetuals, not the EDX spot asset list.
+- Virtu liquidity provision on XRP perpetuals is derivatives liquidity, not XRP spot depth.
+- SBI's EDX equity investment is market-infrastructure capital, not direct XRP demand.
+- Ripple Prime's planned RLUSD settlement is not proof of XRP settlement or native XRP collateral.
+- The EDXM international/professional venue is not US spot-market liquidity.
+
+The verified institutional network is:
+1. SBI Holdings → EDX Markets (lead investor in $76M Series C).
+2. Virtu affiliate → EDX Markets' ultimate parent (minority equity) and EDX revolver ($5M commitment).
+3. Virtu → EDXM International (XRP perpetual liquidity provider).
+4. Virtu → reported 26.936M XRP holding.
+5. Virtu → Japannext (minority investment; formerly SBI Japannext).
+6. SBI Life and SBI Insurance → Virtu (¥3.5B bonds).
+7. Ripple Prime → EDX spot and EDXM International access; RLUSD settlement planned.
+8. Ripple Markets → 21Shares XRP ETF seed investment, as recorded in Run80B.
+
+This is a corporate/service/credit network, not evidence of common control, coordinated trading or SBI ownership of XRP.
+
+Sources:
+- EDX: https://www.edxmarkets.com/
+- Virtu investor relations/proxy: https://www.virtu.com/investor-relations/
+- SBI Holdings: https://www.sbigroup.co.jp/
+- Ripple Prime: https://ripple.com/
+- EDXM International: https://www.edxm.com/
+
+## Partial institutional XRP holdings sample
+
+As of September 30, 2026:
+- Bitwise dedicated XRP ETF: 413,140,980.4731 XRP.
+- 21Shares XRP ETF: 107,295,620.64 XRP.
+- Bitwise 10 Crypto Index ETF: 21,168,425.5105 XRP.
+- Virtu Financial: 26,936,141 XRP.
+
+Combined reported sample: 568,541,167.6236 XRP.
+
+This is a partial sample of four separately reporting entities, not total institutional holdings, total ETF assets, exchange float or a current November 13 balance. Custody-address overlap has not been reconciled. Do not add Coinbase's cbXRP backing reserve snapshot to this figure; it is a separate wrapped-token backing series and may share custody infrastructure.
+
+## Updated actual-capital distinctions
+
+- Bitwise dedicated XRP ETF: nine-month cash purchases $314.451M and in-kind creations $161.462M; cash redemption sales $58.290M and in-kind redemptions $3.648M; sponsor-fee transfer 546,177 XRP. These are distinct capital/asset flows.
+- 21Shares XRP ETF: nine-month net capital transactions -$50.489M and XRP holdings down 28.263M; Ripple's $220.676M seed-share purchase occurred in December 2024 and remains subject to lock-up terms.
+- Bitwise 10 Crypto Index ETF: nine-month net XRP dispositions 5.640M XRP, driven by fees, share redemptions and index rebalancing; not all investor outflow.
+- Virtu: reported 26.936M XRP digital assets held; purpose and acquisition timing not disclosed.
+- SBI's ¥3.5B bonds are debt financing to Virtu, not XRP capital.
+- SBI's $76M EDX Series C investment is market-infrastructure capital, not XRP purchases.
+
+## Prediction-engine implications
+
+Add separate, publication-time-safe feature families:
+1. Per-fund SEC ETF holdings, cash creations, in-kind creations, cash redemptions, in-kind redemptions, rebalancing, sponsor-fee XRP, custody and benchmark changes.
+2. Corporate reported XRP holdings and disclosure timestamps, without inferring direction or purpose.
+3. Institutional market-structure graph edges with typed relationships: equity, debt, custody, execution, liquidity provision, protocol collateral, planned integration and live integration.
+4. EDX spot listings separately from EDXM International derivatives pairs and liquidity-provider coverage.
+5. Coinbase cbXRP/Morpho wrapped collateral separate from native XRPL spot.
+6. SBI Group insurance subsidiaries and former SBI Japannext entity relationships separate from SBIC East/Central/West and SBI Holdings.
+
+All SEC filings are Q3/September 30 historical observations. Web data have not been captured as byte-exact Barrot raw receipts and remain model-ineligible.
+
+## Merge and next action
+
+No merge. PR #1662 remains draft with zero formal approvals/reviews. The 853f28d parent head passed exact-head CI; this Run80C handoff/map commit needs its own exact-head CI. Main's remote-MCP/write-permission regression, overprivileged connector, branch-protection visibility, disabled fallback ruleset, automatic Pages publication authorization and semantic review remain blockers.
+
+Next:
+1. Verify exact-head full suite, core suite, wheel/installed mission, dependency audit and fail-closed gate on the Run80C commit.
+2. Implement SEC issuer filing ingestion and per-fund flow reconciliation within the existing integration workstream.
+3. Implement typed institutional relationship and cbXRP/Morpho risk features with separate spot, wrapped collateral and derivatives series.
+4. Continue semantic review, least-privilege remediation, branch-protection visibility and Pages publication authorization.
+5. Keep forecast issuance disabled until independent raw-source anchoring, replayable point-in-time history, trusted evaluator attestation, independent shadow outcomes and measured out-of-sample superiority are verified.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
