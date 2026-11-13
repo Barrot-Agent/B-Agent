@@ -136,3 +136,30 @@ The filing gives a fully reconcilable capital stack:
 **CFTC Letter 26-05 precision:** the 30.7 customer-account path includes the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to the letter's conditions. Futures and cleared-swaps customer accounts require registered-DCO acceptance. If a non-security digital asset is not accepted by a registered DCO or qualifying foreign clearing organization, the letter's default path imposes at least a 20% haircut, with a narrow exception only for a contract both based on and denominated in the same digital asset and only to offset a deficit in that same cleared contract. Non-BTC/ETH/payment-stablecoin acceptance requires revised FCM risk policies filed with MPD and notice before reliance. No XRP-specific FCM notice, actual XRP customer-margin posting or CME DCO acceptance was verified. [CFTC Letter 26-05](https://www.cftc.gov/csl/26-05/download).
 
 All of these findings remain research-only until captured in Barrot's canonical raw-receipt archive. Forecast status remains NOT_ISSUED.
+
+
+## Run100B — Exact-head CI, PR overlap reconciliation and primary-source relationship update
+
+### Exact-head verification
+The Run100A documentation/research head passed its own push-event verification: [full suite 43470301411](https://github.com/Barrot-Agent/B-Agent/actions/runs/43470301411): **3,598 passed, 8 subtests, zero failures, 62.14% inclusive coverage** (57.17 seconds); core **732 passed** (76% coverage); wheel build and installed primary-mission verification passed. [Dependency audit 43470301448](https://github.com/Barrot-Agent/B-Agent/actions/runs/43470301448) passed all five manifest groups with zero known vulnerabilities reported. [Fail-closed gate 43470301595](https://github.com/Barrot-Agent/B-Agent/actions/runs/43470301595) passed and kept automatic merge disabled. The PR-event CI is skipped for integration/* branches; the push run is the actual full-suite check.
+
+### Source PR path reconciliation
+Path comparisons against PR #1662 now show: #1661 1,072/1,072 paths overlap, zero source-only; #1660 972/972 overlap, zero source-only; #1643 670/670 overlap, zero source-only; #1642 7/7 overlap, zero source-only. Their branches are respectively 147, 328, 1,390 and 2,295 commits behind integration, with zero commits ahead. They are supersession candidates, not yet closed.
+
+PR #1640 has 280/280 paths overlapping and zero source-only paths. It has one commit not in integration, touching barrot-ops.yml and two tests. Semantic comparison shows the source version skips when credentials are missing and suppresses Databricks import failures; integration replaces this with separate Databricks/Kaggle YES approvals, exact-main-SHA pinning, immutable Databricks CLI, no persisted checkout credentials and fail-closed missing-credential errors. Its test suite adds assertions for these stricter rules. Preserve until #1662 is merged and verified on main.
+
+Unique/unreviewed #1653, #1655, #1659, #1615, #1614, #1320, #1318, #1317 and #1269 remain preserved.
+
+### Main-side workflow status
+Main CI run [43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172) passed on main SHA fb272b4. Main Pages deployment [43343511839](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343511839) also succeeded, confirming public publication is an actual side effect. The scheduled Pillars check [43430139937](https://github.com/Barrot-Agent/B-Agent/actions/runs/43430139937) failed on the same main SHA: GitHub App ID/private-key/installation ID missing, Databricks HTTP 403, and Hugging Face Space BUILD_ERROR; deploy-sync only checked the main app path and the system-prompt check was clean. This is a live main integration blocker, not a failure of the integration test suite.
+
+### SBIC and corporate-network clarification
+SBIC East's primary listing shows a June 12–13, 2025 generative-AI/ML course restricted to investee companies, taught by a VOST instructor and covering ChatGPT/Copilot. A separate February 26, 2025 ChatGPT seminar was co-hosted with the Tokyo Chamber of Commerce Taito branch and featured a Microsoft speaker. These are educational events, not evidence of an OpenAI partnership. [SBIC East course](https://www.sbic.co.jp/training/20250612co/) · [SBIC East ChatGPT seminar](https://www.sbic.co.jp/seminar/20250226ym/).
+
+SBI's June 27, 2025 official presentation shows SBI Circle Holdings / Circle SBI Japan KK as a **50/50** joint venture. SBI Holdings and SBI Shinsei Bank each invested $25M in Circle's 2025 IPO. SBI later disclosed that a consolidated subsidiary participated in the Circle Arc token presale; its individual amount was not disclosed. Arc is a separate L1, not XRPL. [SBI presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250627presentations.pdf) · [SBI/Circle investment](https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html) · [SBI Arc disclosure](https://www.sbigroup.co.jp/news/2026/0512_16310.html).
+
+The Evernorth SEC filing links these entities indirectly: four SBI-controlled subscriber entities and 39.9% SBI-group voting power after closing; Ripple contributed 126,791,458 XRP, with a Ripple-affiliated trust contributing 50M XRP; Coinbase is Evernorth's principal XRP market for financial reporting. SBI's exact cash/XRP allocation is not disclosed. This is not a direct SBI-Coinbase partnership and does not imply 39.9% of capital supplied by SBI. [SEC prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+Kamilah Stevenson YouTube discovery remains quarantined: third-party IDCrawl lists 20 similarly named profiles, including a 138K-subscriber candidate, but no first-party ownership link. Verified own-channel inventory remains zero.
+
+**Decision remains NO MERGE.** The Run100A head passed; this Run100B handoff commit requires its own new exact-head push CI before it can be called verified. Forecast remains NOT_ISSUED.
