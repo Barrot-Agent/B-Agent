@@ -1641,6 +1641,22 @@
       "limitations": [
         "Carry-forward identity/relationship evidence; not a Barrot raw receipt in this run."
       ]
+    },
+    {
+      "id": "sec_evernorth_424b3",
+      "publisher": "US Securities and Exchange Commission",
+      "source_type": "primary_regulatory_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_timestamp_utc": "2026-11-09",
+      "retrieved_at_utc": "2026-11-13T04:05:29Z",
+      "independence_group": "sec.gov",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "limitations": [
+        "SEC filing URL and reported categories are recorded; filing bytes were not captured by Barrot's raw receipt archive in this run."
+      ]
     }
   ],
   "observations": [
