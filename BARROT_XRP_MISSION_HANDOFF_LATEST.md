@@ -7061,3 +7061,36 @@ The current-map JSON blob is 1,647,165 bytes and the file reader returned no con
 Next actions: verify the new documentation commit's own exact-head full suite and dependency/fail-closed checks; complete semantic reconciliation of the 1,099-file PR and source-only work; resolve least-privilege GitHub permissions, branch-protection visibility and Pages publication authorization; then, only after authorized merge, verify main-side scheduled ingestion and independently anchored raw-source receipts. Keep forecast issuance disabled until synchronized historical data, independent shadow outcomes, calibrated probabilities and measured out-of-sample superiority over all four baselines are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run88 addendum — 2026-11-13 11:45 UTC — corporate capital and prediction-engine gap audit
+
+### Circle–Binance capital relationship
+
+Circle's September 30, 2026 Form 10-Q discloses that Binance purchased 1.2M Circle Class A shares at $80.84 for $100M on September 17, 2026. The filing says transfer restrictions apply through the earlier of the second anniversary or termination of specified commercial arrangements. This is a direct Binance equity investment in Circle, not an XRP purchase, USDC reserve deposit or XRPL deployment.
+
+Circle's Q3 filing also reports $181.8M of Q3 revenue recognized from the Arc token presale and $242.2M of cash proceeds from the presale over the first nine months of 2026. Arc is a separate Layer 1. Do not classify these figures as USDC reserve income or XRP capital; revenue recognition and cash proceeds are separate measures.
+
+Sources: [Circle Q3 2026 Form 10-Q, Binance private placement](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm) and [Circle Q3 2026 Form 10-Q, Arc presale and cash flows](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+### Coinbase aggregate collateral — not XRP-specific
+
+Coinbase's Q3 2026 Form 10-Q reports, for the nine months ended September 30, 2026, aggregate customer crypto assets received as collateral of $3.038805B and collateral returned of $2.731034B. It also reports $2.846349B in crypto assets borrowed, $2.861799B repaid, $3.562896B in crypto-asset loan receivables originated and $3.562928B repaid.
+
+These are aggregate multi-asset period flows from a supplemental non-cash activities table. The filing does not identify an XRP-specific portion. They cannot establish XRP collateral acceptance, utilization or demand.
+
+Source: [Coinbase Q3 2026 Form 10-Q, supplemental non-cash investing and financing activities](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+
+### Critical prediction-engine gap identified by direct code inspection
+
+The current XRP-specific `walk_forward.py` evaluates four deterministic baselines: naive class prior, momentum sign, mean-reversion sign and volatility-normal. `forecast_ledger.py` validates an externally supplied model-readiness report; it does not train a model. The generic `barrot_agent/models.py` and `inference.py` manage IBM Granite 4.0-3B Vision image/text inference, not XRP time-series prediction.
+
+Therefore the present implementation is a point-in-time data-integrity, baseline-evaluation, calibration, drift and fail-closed admission foundation. **There is not yet a trained or measured XRP-specific candidate prediction model.**
+
+A second gap is statistical uncertainty. The ledger currently requires the candidate model's point-estimate Brier score and log loss to beat all four baselines. It does not require paired block-bootstrap confidence intervals or source-clustered uncertainty. The overlap-adjusted effective sample-size function explicitly states that counting non-overlapping target intervals does not remove residual serial dependence or shared-source correlation. The feature-drift monitor is univariate PSI and does not measure concept drift. Scenario assembly is evidence-backed but authored; it does not infer causality or probabilities.
+
+The next implementation sequence is now explicit: capture synchronized replayable historical market and ecosystem data with exact raw bytes and trusted external anchors; build a separate XRP time-series candidate model from verified point-in-time features; evaluate it chronologically against all four baselines; add paired block-bootstrap/source-clustered confidence intervals for Brier and log-loss differences in both OOS and shadow windows; and require robust superiority, calibration, stable feature/concept drift and independent evaluator attestation.
+
+Public signal remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. The historical 45.5% variable-horizon score remains invalid. No model was trained and no forecast was issued.
+
+This addendum is research and code-audit evidence. The SEC filing excerpts were web-read but were not ingested as byte-exact Barrot raw-source receipts in this run.
