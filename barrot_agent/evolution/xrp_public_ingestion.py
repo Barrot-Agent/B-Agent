@@ -31,9 +31,9 @@ from .cftc_legacy import parse_cftc_legacy_futures_only_report
 from .event_timeline import EventTimelineError, build_event_timeline
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp"}
-ADAPTER_VERSION = "xrp-public-market-v3.25"
-PARSER_VERSION = "xrp-public-market-v3.24"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.26"
+PARSER_VERSION = "xrp-public-market-v3.25"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
@@ -51,11 +51,13 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "binance_perp_open_interest": MAX_LIVE_AGE_SECONDS,
     "bybit_linear_ticker": MAX_LIVE_AGE_SECONDS,
     "bybit_linear_open_interest": MAX_LIVE_AGE_SECONDS,
+    "deribit_xrp_usdc_perpetual_ticker": MAX_LIVE_AGE_SECONDS,
     "coinbase_spot_book": MAX_ORDERBOOK_AGE_SECONDS,
     "kraken_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "bitbank_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "okx_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "bybit_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+    "deribit_xrp_usdc_perpetual_order_book": MAX_ORDERBOOK_AGE_SECONDS,
     "morpho_cbxrp_market_parameters": 3_600,
     "morpho_cbxrp_market_state": 300,
     "morpho_cbxrp_market_liquidity": 300,
@@ -108,6 +110,8 @@ ENDPOINTS = (
     ("bybit_linear_ticker", "https://api.bybit.com/v5/market/tickers?category=linear&symbol=XRPUSDT"),
     ("bybit_linear_open_interest", "https://api.bybit.com/v5/market/open-interest?category=linear&symbol=XRPUSDT&intervalTime=1h&limit=200"),
     ("bybit_linear_funding_history", "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=XRPUSDT&limit=200"),
+    ("deribit_xrp_usdc_perpetual_ticker", "https://www.deribit.com/api/v2/public/ticker?instrument_name=XRP_USDC-PERPETUAL"),
+    ("deribit_xrp_usdc_perpetual_order_book", "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=XRP_USDC-PERPETUAL&depth=50"),
     ("coinbase_spot_candles", "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600"),
     ("coinbase_spot_book", "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"),
     ("kraken_spot_depth", "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"),
@@ -4168,6 +4172,109 @@ def _raw_only_coinbase_cbxrp_proof_of_reserves(
     return [], None, False, "coinbase_cbxrp_proof_of_reserves_raw_only_until_locale_refresh_timezone_and_cache_semantics_are_verified"
 
 
+
+def _deribit_xrp_usdc_result(payload: Any, context: str) -> Mapping[str, Any]:
+    if not isinstance(payload, Mapping) or payload.get("jsonrpc") != "2.0":
+        raise XRPIngestionError(f"Deribit {context} response must be a JSON-RPC 2.0 object")
+    if payload.get("error") is not None:
+        raise XRPIngestionError(f"Deribit {context} response contains a provider error")
+    result = payload.get("result")
+    if not isinstance(result, Mapping):
+        raise XRPIngestionError(f"Deribit {context} result must be an object")
+    if result.get("instrument_name") != "XRP_USDC-PERPETUAL":
+        raise XRPIngestionError(f"Deribit {context} instrument identity mismatch")
+    return result
+
+
+def _parse_deribit_xrp_usdc_perpetual_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Retain a timestamped Deribit XRP-USDC perpetual ticker as raw-only evidence.
+
+    Open-interest, funding and volume units are deliberately not promoted to
+    features until their instrument-specific semantics are independently
+    reconciled with Deribit's contract specifications.
+    """
+    row = _deribit_xrp_usdc_result(payload, "ticker")
+    source_time = _from_ms(row.get("timestamp"), "Deribit ticker timestamp")
+    if source_time > captured:
+        raise XRPIngestionError("Deribit ticker timestamp is later than capture time")
+    bid = _number(row.get("best_bid_price"), "Deribit best bid", allow_zero=False)
+    ask = _number(row.get("best_ask_price"), "Deribit best ask", allow_zero=False)
+    _number(row.get("last_price"), "Deribit last price", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("Deribit XRP-USDC ticker bid/ask is crossed or locked")
+    for field in ("mark_price", "index_price", "open_interest", "volume", "volume_usd"):
+        if row.get(field) is not None:
+            _number(row[field], f"Deribit ticker {field}")
+    _fresh, freshness_reason, _quality = _live_eligibility(
+        source_time, captured, MAX_LIVE_AGE_SECONDS
+    )
+    reason = (
+        "deribit_xrp_usdc_perpetual_ticker_raw_only_until_open_interest_funding_"
+        "and_contract_quantity_semantics_are_independently_validated"
+    )
+    if freshness_reason:
+        reason = f"{reason};{freshness_reason}"
+    return [], _iso(source_time), False, reason
+
+
+def _parse_deribit_xrp_usdc_perpetual_order_book(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Retain a timestamped Deribit XRP-USDC L2 snapshot as raw-only evidence."""
+    row = _deribit_xrp_usdc_result(payload, "order book")
+    source_time = _from_ms(row.get("timestamp"), "Deribit order-book timestamp")
+    if source_time > captured:
+        raise XRPIngestionError("Deribit order-book timestamp is later than capture time")
+    bids_raw, asks_raw = row.get("bids"), row.get("asks")
+    if not isinstance(bids_raw, list) or not bids_raw or not isinstance(asks_raw, list) or not asks_raw:
+        raise XRPIngestionError("Deribit order book must contain non-empty bids and asks")
+
+    def parse_levels(level_rows: list[Any], side: str) -> list[tuple[float, float]]:
+        levels = []
+        for level in level_rows:
+            if not isinstance(level, list) or len(level) < 2:
+                raise XRPIngestionError(f"Deribit {side} level schema mismatch")
+            price = _number(level[0], f"Deribit {side} price", allow_zero=False)
+            amount = _number(level[1], f"Deribit {side} amount", allow_zero=False)
+            levels.append((price, amount))
+        return levels
+
+    bids = parse_levels(bids_raw, "bid")
+    asks = parse_levels(asks_raw, "ask")
+    best_bid = max(price for price, _amount in bids)
+    best_ask = min(price for price, _amount in asks)
+    if best_ask <= best_bid:
+        raise XRPIngestionError("Deribit XRP-USDC order book is crossed or locked")
+    for field in ("change_id", "prev_change_id"):
+        value = row.get(field)
+        if value is not None and (
+            isinstance(value, bool) or not isinstance(value, int) or value <= 0
+        ):
+            raise XRPIngestionError(f"Deribit order-book {field} is invalid")
+    _fresh, freshness_reason, _quality = _live_eligibility(
+        source_time, captured, MAX_ORDERBOOK_AGE_SECONDS
+    )
+    reason = (
+        "deribit_xrp_usdc_perpetual_order_book_raw_only_until_contract_amount_"
+        "units_depth_and_sequence_semantics_are_independently_validated"
+    )
+    if freshness_reason:
+        reason = f"{reason};{freshness_reason}"
+    return [], _iso(source_time), False, reason
+
+
 PARSERS = {
     "xrpl_inftf_server_info": _parse_xrpl_server_info,
     "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
@@ -4194,6 +4301,8 @@ PARSERS = {
     "bybit_linear_ticker": _parse_bybit_linear_ticker,
     "bybit_linear_open_interest": _parse_bybit_linear_open_interest_history,
     "bybit_linear_funding_history": _parse_bybit_linear_funding_history,
+    "deribit_xrp_usdc_perpetual_ticker": _parse_deribit_xrp_usdc_perpetual_ticker,
+    "deribit_xrp_usdc_perpetual_order_book": _parse_deribit_xrp_usdc_perpetual_order_book,
     "binance_spot_depth": _raw_only_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
     "xrp_exchange_balances_json": _raw_only_xrp_exchange_balances,

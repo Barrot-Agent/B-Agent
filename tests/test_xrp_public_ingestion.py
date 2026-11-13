@@ -431,6 +431,39 @@ def _fake_fetcher(captured: datetime):
                 "status": "success",
                 "type": "response",
             }
+
+        elif source_id == "deribit_xrp_usdc_perpetual_ticker":
+            payload = {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "result": {
+                    "instrument_name": "XRP_USDC-PERPETUAL",
+                    "timestamp": captured_ms - 1000,
+                    "best_bid_price": 1.012,
+                    "best_ask_price": 1.013,
+                    "last_price": 1.0125,
+                    "mark_price": 1.0124,
+                    "index_price": 1.0123,
+                    "current_funding": -0.0001,
+                    "funding_8h": 0.0002,
+                    "open_interest": 1000000,
+                    "volume": 250000,
+                    "volume_usd": 253000,
+                },
+            }
+        elif source_id == "deribit_xrp_usdc_perpetual_order_book":
+            payload = {
+                "jsonrpc": "2.0",
+                "id": 2,
+                "result": {
+                    "instrument_name": "XRP_USDC-PERPETUAL",
+                    "timestamp": captured_ms - 2000,
+                    "change_id": 12345,
+                    "prev_change_id": 12344,
+                    "bids": [[1.012, 1000], [1.011, 2000]],
+                    "asks": [[1.013, 1500], [1.014, 3000]],
+                },
+            }
         elif source_id == "xrp_etf_flows_aggregator":
             payload = {
                 "metadata": {

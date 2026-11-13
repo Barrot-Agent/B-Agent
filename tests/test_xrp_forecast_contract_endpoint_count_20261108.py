@@ -12,9 +12,9 @@ def test_forecast_ledger_contract_endpoint_counts_match_collector():
     )
     contract = contract_path.read_text(encoding="utf-8")
 
-    assert len(ENDPOINTS) == 48
-    assert len(SCHEDULED_ENDPOINTS) == 43
+    assert len(ENDPOINTS) == 50
+    assert len(SCHEDULED_ENDPOINTS) == 45
     assert len(WEEKLY_ENDPOINTS) == 3
-    assert contract.count("48 public endpoint records") == 2
+    assert contract.count("50 public endpoint records") == 2
     assert "38 public endpoint records" not in contract
     assert "23 public endpoint records" not in contract
