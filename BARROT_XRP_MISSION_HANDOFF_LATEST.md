@@ -1,7 +1,7 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
 **Run:** 91D  
-**Captured:** 2026-11-13 13:45 UTC  
+**Captured:** 2026-11-13 13:50 UTC  
 **Priority:** XRP intelligence and measured prediction-engine mastery  
 **Protected foundation:** Barrot V3 execution, orchestration, safety and verification
 
@@ -107,7 +107,32 @@ Sources: [Glassnode Week 45](https://research.glassnode.com/the-week-onchain-wee
 - **Standard Chartered / RLUSD:** Standard Chartered says institutional custody for RLUSD issued on XRPL is live through its DFSA-regulated DIFC branch. The LMAX collateral-mirroring arrangement is planned and remains subject to final documentation, testing, law/regulation, internal approvals and jurisdictional readiness. RLUSD custody or RLUSD collateral is not native XRP collateral or evidence of XRP purchases. [Standard Chartered primary release](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/).
 - **Coinbase / RLUSD:** Coinbase added RLUSD to retail and institutional platforms on 28 October, broadening its multi-issuer stablecoin distribution. Listing RLUSD does not prove XRP spot demand, XRP collateral utilization or XRPL payment volume. [Reuters](https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/).
 - **PNC / Coinbase / USDC:** the 9 November limited pilot allows eligible PNC clients to receive Circle USDC through Coinbase, automatically converted to USD. This is a competing USDC-to-bank-USD payment path that does not require XRP or XRPL. [Reuters](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
-- Existing corporate-capital conclusions remain: Evernorth cash, in-kind XRP, debt, conditional ELOC capacity and secondary resales are distinct. The $214.05M cash-funded XRP purchase is not a second capital raise; the $30M PIK notes are debt; the ELOC had zero proceeds as of the prospectus; registered resales do not generate issuer proceeds. SBI Holdings ownership is separate from Japan's regional SBIC East/Central/West entities.
+- Existing corporate-capital conclusions remain: Evernorth cash, in-kind XRP, debt, conditional ELOC capacity and secondary resales are distinct. The $214.05M cash-funded XRP purchase is not a second capital raise; the $30M PIK notes are debt; the ELOC had zero proceeds as of the November 9 prospectus; registered resales do not generate issuer proceeds. Secondary $80.7M ELOC headlines describe conditional capacity, not actual cash received.
+
+## 4A. XRPL credit, lending and collateral — critical distinction
+
+The official XRPL institutional-credit documentation describes the base Lending Protocol as **uncollateralized fixed-term loans**. Single Asset Vaults pool lender assets and can hold XRP, trust-line tokens such as RLUSD, or MPTs. Vault deposits are lender-pool funding, not borrower collateral. The documentation says collateralized loans can be built with additional logic such as on-chain custodians; that is not the base XLS-66 primitive. The use case requires both `LendingProtocol` and `LendingProtocolV1_1`.
+
+The official Known Amendments page labels Credit/Lending as open for voting, but its dynamic mainnet status widget did not render during this retrieval. The repository's last vote snapshot is dated November 8 and is not a current November 13 RPC observation. **Current supermajority and activation status remain unverified.** Do not describe native XRPL LendingProtocol as a live XRP-collateralized market, and do not infer XRP collateral demand from Single Asset Vault deposits.
+
+Sources: [XRPL institutional credit facilities](https://xrpl.org/docs/use-cases/defi/institutional-credit-facilities), [XRPL known amendments](https://xrpl.org/resources/known-amendments).
+
+## 4B. Japan SBIC identity and ChatGPT exact-phrase research
+
+The three regional SME investment-development companies are separate from SBI Holdings:
+- **East / Tokyo:** the official February 26, 2025 PDF advertises a ChatGPT/generative-AI seminar. The speaker is a Microsoft Japan executive; Tokyo Chamber of Commerce Taito branch is co-host. The November 16, 2026 Tokyo SBIC event is another generative-AI seminar led by a Microsoft Japan evangelist, including AI-agent applications. Neither page establishes an OpenAI commercial partnership.
+- **Central / Nagoya:** the official June 2, 2026 notice describes a July 31 investee-only salon where executives share practical generative-AI adoption experiences. It is not ChatGPT-specific.
+- **West / Osaka:** the official October 23, 2024 Investment Forum PDF advertises a ChatGPT introductory seminar taught by STORIA law-firm partner Taichi Kakinuma, with in-person and Zoom participation. It does not identify OpenAI as a partner.
+
+These are educational and investee-support activities, not an OpenAI ownership, licensing, commercial or data-sharing relationship. They do not connect the three SBIC companies to SBI Holdings.
+
+Primary sources: [Tokyo SBIC 2025 ChatGPT seminar](https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf), [Tokyo SBIC November 16, 2026 event](https://www.sbic.co.jp/seminar/20261116/), [Nagoya SBIC generative-AI salon](https://www.sbic-cj.co.jp/news/5077/), [Osaka SBIC 2024 ChatGPT seminar](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
+
+Exact-phrase dispositions:
+- **ASK Coin:** no canonical XRPL issuer or deployment verified; unrelated ASK tokens/listings remain separate.
+- **“actual capital”:** SEC filing controls over secondary headlines. The ELOC's approximately $80.7M headline value is conditional capacity; the filing reports zero ELOC proceeds as of November 9.
+- **“SBIC, ChatGPT SBIC”:** primary materials show seminars and business education, not an OpenAI partnership.
+- **Camilla/Kamilah Stevenson YouTube:** first-party identity material supports Dr. Kamilah Stevenson, but no first-party cross-reference proves ownership of candidate YouTube channels. Verified own-channel video inventory remains zero; guest appearances and similar names are not attributed.
 
 ## 5. Prediction-engine status
 
@@ -184,7 +209,7 @@ Passing exact-head CI does not resolve draft status, missing independent review,
 | #1660 | **Supersession candidate** — 0 ahead/294 behind; all 972 paths overlap |
 | #1643 | **Supersession candidate** — 0 ahead/1,356 behind; all 670 paths overlap |
 | #1642 | **Supersession candidate** — 0 ahead/2,261 behind; all seven paths overlap |
-| #1640 | **Preserve** — one unique commit ahead; unique commit changes `barrot-ops.yml` and two safety tests; reconcile before any closure |
+| #1640 | **Supersession candidate** — its one unique commit's three-file action-specific approval objective is already present in #1662; integration has the same safety tests and stricter fail-closed credential/import behavior. Keep open until #1662 is merged and verified on main |
 | #1653 | **Unique/unreviewed** — 18 commits ahead; six source-only paths |
 | #1655 | **Unique/unreviewed** — 17 commits ahead; three source-only paths |
 | #1659 | **Unique/unreviewed** — eight commits ahead; four source-only paths |
