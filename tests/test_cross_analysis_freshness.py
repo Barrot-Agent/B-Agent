@@ -100,3 +100,29 @@ def test_sentiment_shift_comparison_ready_is_still_not_a_forecast():
     assert result["shift"] is not None
     assert result["significant_shift"] is True
     assert result["forecast_eligible"] is False
+
+def test_cross_analysis_downloads_exact_upstream_artifact_with_read_only_permissions():
+    from pathlib import Path
+
+    workflow = Path(".github/workflows/cross-analysis.yml").read_text(encoding="utf-8")
+    assert "actions: read" in workflow
+    assert "contents: read" in workflow
+    assert "actions/download-artifact@v8" in workflow
+    assert "github.event.workflow_run.run_number" in workflow
+    assert "github.event.workflow_run.id" in workflow
+    assert "if: github.event_name == 'workflow_run'" in workflow
+    assert "contents: write" not in workflow
+    assert "git push" not in workflow
+    assert "schedule:" in workflow
+
+
+def test_legacy_knowledge_cycle_keeps_explicit_external_research_gate():
+    from pathlib import Path
+
+    workflow = Path(".github/workflows/knowledge-signal-cycle.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in workflow
+    assert "confirm_external_research" in workflow
+    assert "default: NO" in workflow
+    assert "inputs.confirm_external_research == 'YES'" in workflow
+    assert "schedule:" not in workflow
+
