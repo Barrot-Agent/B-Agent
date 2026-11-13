@@ -1464,3 +1464,64 @@ def test_run60_evidence_keeps_unreceipted_observations_and_identity_candidates_q
         video["eligible_for_forecast_feature"] is False
         for video in profile["seed_videos"]
     )
+
+
+RUN77_AUDIT = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261113T040529Z-run77-exact-head-market-collateral-and-repository-audit.json"
+)
+
+
+def test_run77_public_web_observations_remain_research_only_and_graph_resolvable() -> None:
+    data = json.loads(RUN77_AUDIT.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_run77_point_in_time_market_collateral_and_repository_audit"
+    assert data["repository"] == "Barrot-Agent/B-Agent"
+    assert data["mission"]["priority"] == "XRP intelligence and prediction-engine mastery"
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    assert _parse_utc(data["captured_at_utc"]) == cutoff
+    assert _parse_utc(data["market_snapshot"]["observed_at_utc"]) <= cutoff
+
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"]) == 25
+    for source in sources.values():
+        assert source["raw_content_sha256"] is None
+        assert source["raw_receipt_id"] is None
+        assert source["raw_capture_status"] == "web_rendered_extract_only"
+        assert source["model_eligible"] is False
+
+    observation_ids = [item["id"] for item in data["observations"]]
+    assert len(observation_ids) == len(set(observation_ids))
+    for observation in data["observations"]:
+        assert observation["class"] and observation["claim"]
+        assert observation["model_eligible"] is False
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= set(sources)
+
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= set(sources)
+
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"]
+        assert hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"]
+        assert hypothesis["tests"]
+
+    assert len(data["platform_map"]) == 9
+    assert {item["platform"] for item in data["platform_map"]} == {
+        "ChatGPT", "Claude", "Grok", "Gemini", "Copilot",
+        "Codex", "Hugging Face", "Kaggle", "Databricks",
+    }
+    assert data["predictions"]["issued"] is False
+    assert data["predictions"]["status"] == "NOT_ISSUED"
+    assert data["data_quality"]["model_eligible"] is False
+    assert data["source_capture"]["raw_wire_bytes_available"] is False
+    assert data["source_capture"]["raw_source_sha256_receipts_created"] is False
+    assert data["market_snapshot"]["xrp_spot"]["model_eligible"] is False
+    assert data["market_snapshot"]["order_book"]["model_eligible"] is False
+    assert data["identity_reconciliation"]["sbic"]["distinct_from"] == "SBI Holdings"
+    assert data["identity_reconciliation"]["camilla_kamilah_stevenson"][
+        "verified_creator_upload_count"
+    ] == 0
