@@ -10,15 +10,15 @@ XRP intelligence and measured prediction-engine mastery remain priority 1. Prese
 - Current main: `fb272b40966834754ec686f9ed3ab94123f09306`.
 - Existing integration branch: `integration/xrp-v3-unified-main-20261112`.
 - Audited code-bearing integration head: `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc`, parent `832c0213e101388da5d9bb7bff9261cfecbf2fcd`.
-- Main/integration ancestry: 2,198 commits ahead, zero behind.
+- Main/integration ancestry: 2,202 commits ahead, zero behind.
 - Main tree: 1,381 entries / 1,277 blobs. Integration tree: 2,331 entries / 2,218 blobs; 941 integration-only blob paths.
-- PR #1662: open, draft; current head `0ef893849bcbfc1ea51af3e662356fd1187036ab`; 1,086 changed files, +307,460/-5,136; 50 changed workflow files; 0 formal reviews, 0 approvals, 0 requested reviewers. Mergeability is currently unstable while exact-head checks run.
+- PR #1662: open, draft; current head `f363d90b3466ec28e4f71be1363c1bc48b2eb44e`; 1,087 changed files, +307,732/-5,136; 50 changed workflow files; 0 formal reviews, 0 approvals, 0 requested reviewers. Mergeability is currently unstable while exact-head checks run.
 - Open PR inventory: 375 total, 361 drafts, 14 non-drafts. All four 100-item REST pages were checked.
 - Exact-head full suite on `eebd1bb`: 3,542 passed, 8 subtests passed, 0 failures, 61.55% inclusive coverage, 73.88 seconds. Core suite: 723 passed, 8 subtests, 76% coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
 - Exact-head dependency audit: all five manifest groups passed, zero known vulnerabilities reported. Fail-closed gate passed; it kept automatic merging disabled.
 - Evidence: [full CI 43360465345](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360465345), [dependency audit 43360465325](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360465325), [push audit 43360459369](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360459369), [fail-closed gate 43360465289](https://github.com/Barrot-Agent/B-Agent/actions/runs/43360465289).
 - Main's exact current SHA also passed its full suite: 747 tests and 8 subtests on run [43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172); main workflow does not measure coverage.
-- The code-bearing head `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc` passed the 3,542-test full suite. Run77 then added a research artifact normalized to the established evidence-graph schema (artifact correction commit `bb2bdad8202fe7b1eca3ae71f5de1cb99b5f3c2c`), a regression test (latest test commit `f5663dc5137b2cc29b45e481cf906cf66d8f6c93`), and this handoff update; no runtime code changed. Exact-head CI on `0ef8938` has pull-request full CI 43364415435, dependency audit 43364415410 and fail-closed gate 43364415488 in progress; push dependency audit 43364409314 is also in progress and push fail-closed gate 43364409374 passed. This handoff update triggers a further exact-head run; merge remains blocked until the final head's full suite, dependency audit and fail-closed gate pass.
+- The code-bearing head `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc` passed the 3,542-test full suite. Run77 added schema-normalized market/collateral evidence, a 26-source/19-observation evidence graph, regression tests, and a CFTC Legacy COT addendum. The latest pre-handoff head `f363d90b3466ec28e4f71be1363c1bc48b2eb44e` has push fail-closed gate 43364739805 in progress and push dependency audit 43364739799 pending; the pull-request full-suite run has not yet appeared. This handoff update triggers a further exact-head run; merge remains blocked until the final head's full suite, dependency audit and fail-closed gate pass.
 
 ## New XRP market observations — research-only
 
@@ -37,6 +37,17 @@ XRP intelligence and measured prediction-engine mastery remain priority 1. Prese
 - Six-venue funding at 03:57 UTC averaged +0.0074% per eight hours: Binance +0.0100%, OKX +0.0100%, Bybit +0.0100%, Bitget +0.0046%, Gate +0.0077%, Hyperliquid +0.0023%. Positive but below the publisher's 0.03%/8h elevated threshold; the feed is second-hand and may lag venue screens.
 - A prior Liqwall OI observation was about $1.13B at a different timestamp and contract universe. Do not average it with Alpha Finance's $2.22B.
 - Sources: [Alpha liquidation heatmap](https://alphafinance.io/liquidation-heatmap/xrp/) and [six-venue funding table](https://alphafinance.io/crypto-funding-rates/).
+
+**Regulated CME futures positioning (CFTC Legacy COT)**
+
+- The official CFTC Legacy Futures-Only report dated November 3, published November 6, lists XRP - Chicago Mercantile Exchange, contract code 176740, contract size 50,000 XRP. Open interest was 7,216 contracts (360.8M XRP contract-equivalent).
+- Non-commercial positions: 7,011 long, 5,546 short, 60 spreading; net long 1,465 contracts (73.25M XRP-equivalent). Commercials were net short 1,322 contracts (66.1M XRP-equivalent); nonreportables net short 143 contracts (7.15M XRP-equivalent).
+- From October 27, total OI fell 845 contracts (-10.47%). Non-commercial longs fell 281 while shorts fell 466, so net long increased 185 contracts. This is consistent with greater short covering than long liquidation, not proof of fresh long accumulation.
+- Concentration: four or fewer traders held 81.0% of gross long and 67.4% of gross short; eight or fewer held 95.1% and 87.7%. Only 29 traders were reported. This is a small, concentrated regulated futures market, not a proxy for all offshore perpetuals or spot holdings.
+- The CFTC release schedule marks November 16 as the next delayed report date due to a federal holiday; November 13 is not listed. CFTC announced an intention to move to twice-weekly COT releases by the end of 2026, but no effective date is confirmed. The collector correctly retains `CFTC_SEMIWEEKLY_EFFECTIVE_DATE=None` and includes November 16 in delayed release dates.
+- The current collector captures CFTC contract-status and Traders in Financial Futures (TFF) reports, but does not yet capture the Legacy Futures-Only XRP report. Legacy commercial/non-commercial categories and TFF dealer/asset-manager/leveraged-fund categories must remain separate.
+- Sources: [CFTC Legacy Futures-Only report](https://www.cftc.gov/dea/futures/deacmelf.htm), [CFTC release schedule](https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm), [COT methodology](https://www.cftc.gov/MarketReports/CommitmentsofTraders/AbouttheCOTReports/index.htm), [CFTC twice-weekly plan](https://www.cftc.gov/PressRoom/PressReleases/9316-26).
+- This is lagged Tuesday positioning, not spot flow or actual capital. It was not captured through Barrot RawReceiptArchive and is not model-eligible.
 
 **Order-book depth is not model-eligible**
 
@@ -138,7 +149,7 @@ Unique source-only work remains in #1653 (3 paths), #1655 (3), #1659 (3) and #16
 
 Main-side security findings remain blockers: `opencode.json` enables remote LunaRoute MCP and edit/bash/webfetch; `barrot-sync.yml` runs on main pushes with secrets and broad default token permissions; `barrot-agent.yml` has write permissions and issue-label branch/PR automation. The latest Barrot Sync job was green only because `b_agent.py --sync` failed with `ModuleNotFoundError: httpx`, printed 'sync skipped - manual sync', and later push commands were permissive. The Pages deployment completed automatically after the main push. Integration quarantines Barrot Sync and Barrot Agent, disables remote MCP, and keeps external deployment/model/Databricks/Kaggle/paper-trading workflows gated or disabled.
 
-**No merge.** PR #1662 is still draft, has no formal approval, branch-protection details are not independently visible, the fallback ruleset is disabled, connector permissions are overprivileged, Pages publication authorization is unresolved, and the 1,086-file integration is not fully semantically reconciled. No source PR was closed.
+**No merge.** PR #1662 is still draft, has no formal approval, branch-protection details are not independently visible, the fallback ruleset is disabled, connector permissions are overprivileged, Pages publication authorization is unresolved, and the 1,087-file integration is not fully semantically reconciled. No source PR was closed.
 
 ## Run77 durable artifact and next action
 
@@ -147,7 +158,9 @@ Main-side security findings remain blockers: `opencode.json` enables remote Luna
 - Evidence-edge correction commit: `bb2bdad8202fe7b1eca3ae71f5de1cb99b5f3c2c`.
 - SEC source-registry completion commit: `49fa362e0d1345774aad70971d3b72fc21285b07`.
 - Regression-test commit: `0ef893849bcbfc1ea51af3e662356fd1187036ab`; test validates 26 source IDs, 19 observation/evidence links, relationship/hypothesis evidence closure, raw-receipt absence, nine-platform map and forecast quarantine.
-- This handoff update is commit `0b501036130b437415a4859f0938d834a671cd82`; it records the pre-update head `0ef8938` and triggers another exact-head CI run.
+- CFTC Legacy COT addendum: `research/xrp_intelligence/20261113T041832Z-run77c-cftc-cme-legacy-cot-positioning.json`; artifact commit `a40bb91771bc39d3f13a8ecce3cf1839a78b96f8`.
+- CFTC addendum regression test commit: `f363d90b3466ec28e4f71be1363c1bc48b2eb44e`; validates report date, contract size, positions, concentration, delayed release date and raw-receipt quarantine.
+- This Run77 handoff update records the pre-update head `f363d90`; it triggers another exact-head CI run. The new commit SHA is recorded by the GitHub branch ref and PR checks.
 - Web observations are explicitly marked as not captured by the Barrot raw-receipt archive; no SHA-256 receipt is claimed for them.
 - Next action: complete semantic reconciliation and least-privilege/branch-protection/Pages/credential-owner blockers; then prioritize independent WORM/timestamp anchoring and replayable synchronized point-in-time market/collateral data. Run the collector only after an authorized main revision contains it. Keep forecast issuance disabled until independent shadow outcomes and out-of-sample lift are verified.
 
