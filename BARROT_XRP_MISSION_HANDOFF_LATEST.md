@@ -4198,3 +4198,76 @@ No source PR was closed. #1661's unique `BARROT_SYNC.md`, #1653/#1655/#1659/#161
 No merge. PR #1662 remains draft with no formal approvals. The latest head's full suite was still running at capture. Branch-protection detail remains HTTP 403, the visible fallback ruleset remains disabled, connector permissions remain overprivileged, and GitHub Pages automatically deployed main `fb272b4` without publication authorization. The integration's OpenCode hardening remains on the PR branch only; main is unchanged.
 
 Next action: verify the full suite on the handoff-correction head, then continue source-only evidence review, exact blob reconciliation, credential-owner revocation verification, least-privilege remediation, branch-protection/review visibility and Pages authorization. No external transfer, deployment, secret rotation, paper trade, Kaggle submission, Databricks write or real-money action is authorized by this handoff.
+
+
+---
+
+## Run74B — exact-head verification, source-branch tree audit and institutional primary-source update
+
+Captured: 2026-11-13T02:19:38Z. This section supersedes the Run74A pending-CI note for head `9c5376a`. It does not claim CI completion on the new handoff-only descendant created by this section.
+
+### Exact-head verification — VERIFIED on 9c5376a
+
+- Full repository test suite: **3,541 passed, 8 subtests passed, zero failures**, 95.70 seconds.
+- Inclusive coverage: **61.55%** (24,657 statements; 9,003 missed; 7,452 branches; 1,476 partial).
+- Legacy core suite: **723 passed, 8 subtests passed**, 10.76 seconds; core coverage **76%**.
+- The new `tests/test_opencode_lunaroute_safety.py::test_lunaroute_mcp_stays_disabled_until_verified` ran and passed in the full suite.
+- Wheel build passed. Installed wheel verified Barrot V3, the XRP mission and canonical data assets.
+- Dependency audit passed across five groups: root runtime, development, Hugging Face Space, legacy and PEP 621. Each reported no known vulnerabilities.
+- Pull-request fail-closed gate passed with merge disabled; push fail-closed gate passed.
+
+Exact evidence:
+- Full CI [43350840789](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350840789)
+- Dependency audit [43350840954](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350840954)
+- Pull-request fail-closed gate [43350840838](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350840838)
+- Push fail-closed gate [43350833239](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350833239)
+
+These results are exact for `9c5376a`, not for the new handoff-only descendant created by this section. The descendant must receive its own exact-head checks before merge readiness.
+
+### Exact source-PR blob and branch-tree reconciliation
+
+The following blob counts compare every source PR changed path with the corresponding blob on integration head `9c5376a`:
+
+| Source PR | Same blobs | Different blobs | Changed paths |
+|---|---:|---:|---:|
+| #1661 | 1,060 | 12 | 1,072 |
+| #1660 | 936 | 36 | 972 |
+| #1643 | 661 | 9 | 670 |
+| #1640 | 232 | 48 | 280 |
+| #1642 | 0 | 7 | 7 |
+
+#1661 has one source-only changed path, `BARROT_SYNC.md`. It is not an exact duplicate. Preserve its unique file and all 12 differing shared blobs until semantic reconciliation is complete.
+
+Separate full-tree comparisons found 22 paths present only in #1661's branch tree, 40 in #1660, and 41 each in #1643, #1640 and #1642. These tree-only paths include old `b_agent.py` backup files, `barrot_voice.wav`, `git-xet.zip`, `requirements.tx` and the `.agents/orbit` skill tree. Base-tree comparisons confirm these were already present in the respective source PR base commits; they were not introduced by those PR diffs. They are inherited historical tree content, not changed-file additions in those PRs.
+
+The credential-looking path `.config/gh/hosts.yml` is inherited in the bases of #1643, #1640 and #1642; it is absent from the bases of #1661 and #1660, and absent from current main and integration trees. No file contents were read. This path audit does not establish provider-side credential revocation; the previously reported 17-branch exposure set still requires owner-side confirmation. Preserve source branches and do not rewrite history.
+
+### #1614 historical research archive — preserve and quarantine
+
+#1614 has 57 changed paths, 30 shared with #1662 and 27 source-only. Its source head is based on stale main `8007440`.
+
+- `point_in_time_features.py` and `research_artifact_clock.py` are byte-identical to current main.
+- Its `forecast_ledger.py` is older than main (25,190 versus 27,919 bytes); current main's implementation is retained.
+- Its two corresponding tests are older than current main's tests.
+- Twenty-six unique historical research/handoff files are absent from main. They were not copied in this run.
+- The source's provenance audit says seven of nine examined artifacts have capture timestamps later than their introducing commit. Preserve original files, but quarantine affected records from feature generation, training, event ordering and forecast justification until original public sources are re-fetched and new contemporaneous receipts are created.
+
+#1611 contains one source-only forecast-ledger handoff. #1653, #1655, #1659 and #1615 retain their previously identified unique repository-memory, structural-analysis, local-inference and automation-containment work. None was closed.
+
+### Additional institutional primary-source confirmation
+
+- On June 24, 2026, Ripple and SBI Group announced RLUSD's Japanese launch through SBI VC Trade following JFSA approval. Ripple states that RLUSD is offered to retail and institutional users through VCTRADE and is categorized under Japan's Payment Services Act as a foreign-issued electronic payment instrument. This is a verified Ripple/SBI Group distribution relationship, not an SBIC East/Central/West relationship and not proof of incremental XRP purchases or XRP payment volume. Primary source: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/ and SBI Group: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html.
+- Ripple's October 28, 2026 announcement confirms RLUSD trading and management on Coinbase Prime, Coinbase Exchange and Coinbase Retail, with XRPL, Base and Ethereum deposits/withdrawals. Coinbase Global Exchange collateral support was described as forthcoming, not live. Primary source: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/.
+- BNY's October 27, 2026 announcement confirms its Digital Asset Custody platform supports XRP and RLUSD. BNY and Ripple intend to explore tokenized assets and direct RLUSD mint/redeem, subject to approvals, and are exploring supply-chain finance with C2FO. This is custody and exploratory trade-finance work, not proof of XRP collateral use, XRP purchases or completed tokenized-receivable issuance. Primary source: https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html.
+
+### Current status and merge decision
+
+At this capture, main remains `fb272b40966834754ec686f9ed3ab94123f09306`; integration head is `9c5376adf13b9eed818c3991143d63818f7cc6ba`; PR #1662 is draft, open and mergeable, targeting current main, 2,178 commits ahead and zero behind, with 1,078 changed files. This handoff update is a documentation-only child of that head; its commit SHA and exact-head CI must be taken from the resulting GitHub branch/PR state.
+
+Forecast remains **NOT_ISSUED**. `event_registry_current.json` has 73 curated events, zero raw publisher hashes, zero model-eligible events and `forecast_status=NOT_ISSUED`. Source-preimage files are structured research records with `raw_content_sha256=null`, not immutable raw publisher receipts. No directional forecast or paper trade is justified.
+
+No merge. PR #1662 remains draft with zero formal approvals/reviews. Branch-protection detail returns HTTP 403; visible fallback ruleset #10863829 is disabled; GitHub connector permissions remain admin/maintain/push/pull/triage; Pages publication authorization remains unresolved. The main Pages workflow automatically deployed `fb272b4`; the main Barrot Sync workflow reported success while its sync was skipped after missing `httpx`. The integration branch quarantines Barrot Sync and requires approval for unverified MCP tools.
+
+Next action: verify exact-head full suite and dependency checks on this handoff-only descendant; then complete semantic review of the 1,078-file integration, reconcile the 12/36/9/48/7 differing source blobs, review unique source-only work, resolve branch-protection visibility, least privilege, provider credential-owner revocation and Pages publication authority. Keep external MCP disabled, forecasts disabled, and all external/financial actions gated.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure was performed.
