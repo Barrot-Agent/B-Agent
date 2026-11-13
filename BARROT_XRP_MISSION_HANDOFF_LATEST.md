@@ -10,9 +10,9 @@ XRP intelligence and measured prediction-engine mastery remain priority 1. Prese
 - Current main: `fb272b40966834754ec686f9ed3ab94123f09306`.
 - Existing integration branch: `integration/xrp-v3-unified-main-20261112`.
 - Audited code-bearing integration head: `eebd1bb72177ee176f8bf1ed296bbfa51ffa8adc`, parent `832c0213e101388da5d9bb7bff9261cfecbf2fcd`.
-- Main/integration ancestry: 2,202 commits ahead, zero behind.
+- Main/integration ancestry: 2,206 commits ahead, zero behind.
 - Main tree: 1,381 entries / 1,277 blobs. Integration tree: 2,331 entries / 2,218 blobs; 941 integration-only blob paths.
-- PR #1662: open, draft; current head `f363d90b3466ec28e4f71be1363c1bc48b2eb44e`; 1,087 changed files, +307,732/-5,136; 50 changed workflow files; 0 formal reviews, 0 approvals, 0 requested reviewers. Mergeability is currently unstable while exact-head checks run.
+- PR #1662: open, draft; current head `87f7d4ae0611f56cd5733696e0dd28d83878578f`; 1,087 changed files, +307,746/-5,136; 50 changed workflow files; 0 formal reviews, 0 approvals, 0 requested reviewers. Mergeability is currently unstable while exact-head checks run.
 - Open PR inventory: 375 total, 361 drafts, 14 non-drafts. All four 100-item REST pages were checked.
 - Exact-head full suite on `eebd1bb`: 3,542 passed, 8 subtests passed, 0 failures, 61.55% inclusive coverage, 73.88 seconds. Core suite: 723 passed, 8 subtests, 76% coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
 - Exact-head dependency audit: all five manifest groups passed, zero known vulnerabilities reported. Fail-closed gate passed; it kept automatic merging disabled.
@@ -82,7 +82,7 @@ XRP intelligence and measured prediction-engine mastery remain priority 1. Prese
 
 **SBI VC Trade lending and XRP rewards**
 
-- SBI VC Trade's lending page lists 29 supported assets, including XRP, USDC and JPYSC. It does not publish XRP-specific outstanding loans, utilization or rate in the retrieved page; RLUSD is not in the published 29-asset lending list.
+- SBI VC Trade's customer asset-lending (貸コイン) product lets customers lend supported crypto to SBI VC Trade for usage fees; its published 29-asset list includes XRP, USDC and JPYSC. This is not a collateralized borrowing facility. No XRP-specific outstanding customer balance, utilization or rate was published in the retrieved page; RLUSD is not in the 29-asset list.
 - SBI Holdings' May 1, 2026 release describes an SBI VC Trade/Aplus/Visa crypto-reward card with BTC, ETH and XRP rewards. This is a rewards product, not evidence of XRP merchant settlement or payment-rail throughput.
 - Sources: [SBI VC Trade lending](https://www.sbivc.co.jp/services/lending), [SBI Holdings crypto card announcement](https://www.sbigroup.co.jp/news/2026/0501_16304).
 
@@ -158,11 +158,13 @@ Main-side security findings remain blockers: `opencode.json` enables remote Luna
 - Evidence-edge correction commit: `bb2bdad8202fe7b1eca3ae71f5de1cb99b5f3c2c`.
 - SEC source-registry completion commit: `49fa362e0d1345774aad70971d3b72fc21285b07`.
 - Regression-test commit: `0ef893849bcbfc1ea51af3e662356fd1187036ab`; test validates 26 source IDs, 19 observation/evidence links, relationship/hypothesis evidence closure, raw-receipt absence, nine-platform map and forecast quarantine.
-- CFTC Legacy COT addendum: `research/xrp_intelligence/20261113T041832Z-run77c-cftc-cme-legacy-cot-positioning.json`; artifact commit `a40bb91771bc39d3f13a8ecce3cf1839a78b96f8`.
-- CFTC addendum regression test commit: `f363d90b3466ec28e4f71be1363c1bc48b2eb44e`; validates report date, contract size, positions, concentration, delayed release date and raw-receipt quarantine.
+- CFTC Legacy COT addendum: `research/xrp_intelligence/20261113T041832Z-run77c-cftc-cme-legacy-cot-positioning.json`; artifact creation commit `a40bb91771bc39d3f13a8ecce3cf1839a78b96f8`.
+- CFTC source-ID correction commit: `8ae71bd43a3a00c01672eba3eb640471cda10167`.
+- CFTC publication-date correction commit: `87f7d4ae0611f56cd5733696e0dd28d83878578f`.
+- CFTC addendum regression-test commit: `f363d90b3466ec28e4f71be1363c1bc48b2eb44e`; subsequent test assertion correction commit `5c1e8d1f5fcf46bc926cee49947a182a99874df3`. Final exact-head suite on `87f7d4` passed.
 - This Run77 handoff update records the pre-update head `f363d90`; it triggers another exact-head CI run. The new commit SHA is recorded by the GitHub branch ref and PR checks.
 - Web observations are explicitly marked as not captured by the Barrot raw-receipt archive; no SHA-256 receipt is claimed for them.
-- Next action: complete semantic reconciliation and least-privilege/branch-protection/Pages/credential-owner blockers; then prioritize independent WORM/timestamp anchoring and replayable synchronized point-in-time market/collateral data. Run the collector only after an authorized main revision contains it. Keep forecast issuance disabled until independent shadow outcomes and out-of-sample lift are verified.
+- Next action: implement a dedicated weekly CFTC Legacy Futures-Only XRP COT adapter alongside the existing TFF collector, preserving separate trader taxonomies, report date versus publication time, raw bytes/receipts, and holiday delays (next scheduled release November 16, 2026). Keep the announced twice-weekly COT plan disabled until CFTC confirms its effective date. In parallel, complete semantic reconciliation and least-privilege/branch-protection/Pages/credential-owner blockers; then prioritize independent WORM/timestamp anchoring and replayable synchronized point-in-time market/collateral data. Run the collector only after an authorized main revision contains it. Keep forecast issuance disabled until independent shadow outcomes and out-of-sample lift are verified.
 
 **No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.**
 
