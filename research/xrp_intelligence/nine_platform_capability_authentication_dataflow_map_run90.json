@@ -2,11 +2,11 @@
   "artifact_type": "barrot.nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "run_id": "Run90",
-  "captured_at_utc": "2026-11-13T13:07:32Z",
+  "captured_at_utc": "2026-11-13T13:15:50Z",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_at_audit": "b4c15161ac41e8343820b3540d879e34df548d40",
+    "integration_head_at_audit": "51980732b58924cf10f65015d924e4ad72d646cc",
     "integration_branch": "integration/xrp-v3-unified-main-20261112",
     "active_integration_pr": 1662
   },
@@ -169,5 +169,113 @@
     },
     "merge_decision": "NO MERGE; PR remains draft and unreviewed; semantic/security/publication blockers remain."
   },
-  "next_verification": "Verify exact-head CI for Run90 documentation descendant; continue semantic review and security remediation on existing PR #1662; do not merge while draft, unreviewed or publication/branch-protection controls remain unresolved."
+  "next_verification": "Verify exact-head CI for the latest Run90 workflow-security documentation commit. Keep the PR draft and do not merge until semantic review, least privilege, branch-protection visibility, Pages authorization and formal review are resolved.",
+  "internal_barrot_credentials": {
+    "github_app": {
+      "status": "MISSING_CONFIGURATION",
+      "missing": [
+        "GITHUB_APP_ID",
+        "GITHUB_APP_PRIVATE_KEY",
+        "GITHUB_APP_INSTALLATION_ID"
+      ],
+      "evidence_run": 43430139937,
+      "distinction": "Separate from the verified ChatGPT GitHub connector."
+    },
+    "lunaRoute": {
+      "status": "UNVERIFIED_AUTHENTICATION_AND_DATA_FLOW"
+    }
+  },
+  "main_health": {
+    "main_ci": {
+      "run_id": 43343513172,
+      "status": "SUCCESS"
+    },
+    "pillars_consistency": {
+      "run_id": 43430139937,
+      "status": "FAILURE",
+      "read_only": true,
+      "failures": [
+        "Barrot GitHub App credentials missing",
+        "Databricks read-only SELECT 1 HTTP 403",
+        "Hugging Face Space BUILD_ERROR"
+      ],
+      "passes": [
+        "deployment-sync source check",
+        "system-prompt fiction scan"
+      ]
+    },
+    "barrot_sync": {
+      "run_id": 43343513347,
+      "workflow_status": "SUCCESS",
+      "actual_sync": "SKIPPED_HTTPX_MISSING",
+      "push": "NO_OP",
+      "secret_log": "Only fixed label printed; no API-key characters."
+    },
+    "auto_pr_check": {
+      "run_id": 43343513283,
+      "status": "SUCCESS",
+      "meaning": "No-op validation; no PR created."
+    },
+    "pages_deploy": {
+      "run_id": 43343511839,
+      "status": "SUCCESS",
+      "meaning": "Main push automatically published Pages."
+    },
+    "cross_analysis": {
+      "run_id": 43428748553,
+      "status": "SUCCESS",
+      "read_only": true
+    }
+  },
+  "workflow_security_run90": {
+    "changed_workflows_reviewed_on_main_and_integration": 50,
+    "additional_control_workflows_reviewed": 5,
+    "quarantined_on_integration": [
+      "ask-barrot.yml",
+      "audio-ingest.yml",
+      "barrot-agent.yml",
+      "barrot-self-upgrade.yml",
+      "barrot-speak.yml",
+      "barrot-sync.yml",
+      "capability-1-market-analysis.yml",
+      "capability-9-data-resolver.yml",
+      "databricks-bundle.yml",
+      "diag-cf.yml",
+      "diag-cf2.yml",
+      "free-image-gen.yml",
+      "ibm-bob-barrot-audit.yml",
+      "knowledge-signal-cycle.yml",
+      "knowledge-signal-cycle-btc.yml",
+      "make-track.yml",
+      "pingpong.yml",
+      "signal_ledger.yml",
+      "subagent-matrix.yml",
+      "subagent-spawn.yml",
+      "sync-huggingface.yml",
+      "task-allocator.yml",
+      "test-groq-chain.yml",
+      "test-semantic-memory.yml",
+      "webmcp-live-sandbox.yml",
+      "write-lyrics.yml"
+    ],
+    "manual_or_exact_sha_gated": [
+      "sync-self-hosted-brain.yml",
+      "deploy-a2a-worker.yml",
+      "barrot-ops.yml",
+      "coinbase-paper-trader.yml",
+      "capability-10-design.yml",
+      "capability-discovery.yml",
+      "data-value-triage.yml",
+      "financial-data-refresh.yml",
+      "frontier-digest.yml",
+      "research-topics.yml",
+      "self-benchmark.yml",
+      "signal-summary.yml",
+      "webmcp-trend-digest.yml",
+      "barrot-controlled-feature-validation.yml",
+      "formal-verification-benchmarks.yml"
+    ],
+    "no_external_dispatch": true,
+    "groq_is_not_grok": true
+  }
 }

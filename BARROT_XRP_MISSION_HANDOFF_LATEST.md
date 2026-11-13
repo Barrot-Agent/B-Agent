@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Mission Handoff (Run90)
 
-**Captured:** 2026-11-13T13:07:32Z  
+**Captured:** 2026-11-13T13:15:50Z  
 **Mission priority:** 1 — XRP intelligence and prediction-engine mastery  
 **Protected foundation:** Barrot V3 remains the execution, orchestration, safety and verification foundation.
 
@@ -138,6 +138,28 @@ LunaRoute remains a separate internal provider with unverified endpoint authenti
 
 Compact current map: [Run90 nine-platform capability/authentication/data-flow map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run90.json).
 
+
+## 7A. Complete workflow security audit and current main health — VERIFIED
+
+All 50 workflow files changed by #1662 were inspected on both main and integration. Five additional main control workflows and opencode.json were also inspected.
+
+**Main scheduled health results:**
+- [Main CI 43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172): Tests and full repository suite passed.
+- [Pillars Consistency Check 43430139937](https://github.com/Barrot-Agent/B-Agent/actions/runs/43430139937): failed as a read-only external health check, not as repository CI. Three blockers: Barrot's separate GitHub App credentials are missing (GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY, GITHUB_APP_INSTALLATION_ID); Databricks read-only SELECT 1 returned HTTP 403; Hugging Face Space reported BUILD_ERROR. Deployment-sync source validation and system-prompt fiction scan passed. The ChatGPT GitHub connector being authenticated does not mean Barrot's separate GitHub App is configured.
+- [Barrot Sync 43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347): workflow reports success, but actual sync failed because httpx is missing; it printed “sync skipped,” then git push was a no-op. The workflow suppresses both sync and push failures. Correction: its cut -c1-30 pipeline printed only the fixed 30-character label “Barrot running on LunaRoute - ”; zero API-key characters were printed, and the environment secret was masked. No key disclosure is evidenced.
+- [Barrot Auto PR 43343513283](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513283): no-op validation, not a PR creator.
+- [Pages deployment 43343511839](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343511839): automatic public build/deploy succeeded after a main push. Authorization for the next publication of seven changed PR web files remains unresolved.
+- [Cross Analysis 43428748553](https://github.com/Barrot-Agent/B-Agent/actions/runs/43428748553): scheduled read-only analysis succeeded.
+
+**Integration containment across the 50 changed workflows:**
+- Quarantined: ask-barrot, audio-ingest, barrot-agent, barrot-self-upgrade, barrot-speak, barrot-sync, capability-1-market-analysis, capability-9-data-resolver, databricks-bundle, diag-cf, diag-cf2, free-image-gen, ibm-bob-barrot-audit, knowledge-signal-cycle, knowledge-signal-cycle-btc, make-track, pingpong, signal_ledger, subagent-matrix, subagent-spawn, sync-huggingface, task-allocator, test-groq-chain, test-semantic-memory, webmcp-live-sandbox and write-lyrics.
+- Gated instead of executed: A2A deployment requires separate deploy and secret-rotation confirmations plus exact main SHA; Barrot Ops requires per-action confirmation and exact source SHA; Coinbase paper-trader requires explicit per-run YES and exact main SHA and is artifact-only; Groq-based research/data workflows require explicit public/authorized-data confirmation and exact main SHA; sync-self-hosted-brain retains a hard false execution guard.
+- Read-only/scheduled workflows include CI, dependency audit, cross-analysis, hover-bike updates, Riemann harvest, WebMCP monetization enrichment and the bundle smoke check. XRP public ingestion is read-only and main-only; it has not yet executed on main.
+- Main-only control workflows: barrot-approve-pr is an exact-head approval-label gate and does not merge; barrot-auto-pr is a no-op validation; barrot-pr-automerge, barrot-autonomous-resolver and autonomous_self_deployment are disabled.
+- Groq is distinct from Grok. No Groq or other external-model task was dispatched and no data was transferred in this run.
+
+The Run90 workflow audit is linked below. These findings reinforce the NO MERGE decision; they do not authorize deployments, secret rotation, paper trades or external writes.
+
 ## 7. Security, branch protection and merge decision
 
 **NO MERGE.** PR #1662 is still draft, with zero formal reviews/approvals/threads. Its 1,102-file semantic review is incomplete.
@@ -179,6 +201,7 @@ The first four supersession candidates must remain open until #1662 is merged, i
 
 - [Run90 current market/repository/prediction-readiness audit](research/xrp_intelligence/20261113T130732Z-run90-current-market-prediction-readiness-repository-audit.json)
 - [Run90 nine-platform map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run90.json)
+- [Run90 workflow security and main-health audit](research/xrp_intelligence/20261113T131550Z-run90-workflow-security-main-health-audit.json)
 - [Consolidated integration PR #1662](https://github.com/Barrot-Agent/B-Agent/pull/1662)
 - [Predecessor exact-head full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424614346)
 - [Predecessor dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/43424613885)
