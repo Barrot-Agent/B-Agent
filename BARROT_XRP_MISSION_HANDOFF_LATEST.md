@@ -1,7 +1,7 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
 **Run:** 91D  
-**Captured:** 2026-11-13 13:32 UTC  
+**Captured:** 2026-11-13 13:45 UTC  
 **Priority:** XRP intelligence and measured prediction-engine mastery  
 **Protected foundation:** Barrot V3 execution, orchestration, safety and verification
 
@@ -60,23 +60,46 @@ Sources: [OKX ticker API](https://www.okx.com/api/v5/market/ticker?instId=XRP-US
 ### Derivatives and liquidity
 
 - Swiftedge's 13:11 UTC XRP perpetual snapshot: $1.0183, daily change -2.2%, range $0.9970–$1.0438; funding +0.0100% per eight hours; 91.118M XRP open interest (about $92.8M), up 2% over 24 hours. Its largest displayed bid wall was 1.0055 (3.433M XRP) and ask wall 1.0240 (2.167M XRP); it reported no clean wall event. This is vendor-derived perpetual-market positioning, not consolidated spot depth.
-- Kodexius's 08:44 UTC snapshot reported $614.05M across seven perpetual contracts, $1.76B 24-hour volume and +0.0003% open-interest-weighted funding. The displayed contract rows sum to about $614.03M, a $20,000 rounding difference. Funding signs differ by venue: Binance/Bybit positive, OKX/Hyperliquid negative, with HTX more positive. At the audit cutoff this snapshot was about 4 hours 48 minutes old and is not live model input.
+- Liqwall's 13:22 UTC all-exchange snapshot: approximately $1.12B XRP futures OI, down 0.9% over 24 hours; average funding +0.0084% per eight hours (Binance +0.0100%); $13.7M liquidations, $12.7M long and $1.0M short; 74.7% of Binance accounts long. This is a vendor aggregate across 14 exchanges, about 23 minutes old at the 13:45 cutoff, so it fails the 300-second live gate.
+- Swiftedge's 13:11 UTC XRP perpetual snapshot: $1.0183, daily change -2.2%, range $0.9970–$1.0438; funding +0.0100% per eight hours; 91.118M XRP OI (about $92.8M), up 2% over 24 hours. Its largest displayed bid wall was 1.0055 (3.433M XRP) and ask wall 1.0240 (2.167M XRP); it reported no clean wall event. This is vendor-derived perpetual-market positioning, not consolidated spot depth.
+- Kodexius's 08:44 UTC snapshot reported $614.05M across seven perpetual contracts, $1.76B 24-hour volume and +0.0003% open-interest-weighted funding. The displayed contract rows sum to about $614.03M, a $20,000 rounding difference. Funding signs differ by venue. At the audit cutoff this snapshot was about five hours old and is not live model input.
+- TrackWhale's 13:20 UTC selected public transfer sample showed 52 large-transfer records: 79.73M XRP exchange inflows across four transfers, 161.61M XRP outflows across eight, net -81.88M XRP (USD estimates: -$87.36M). Internal and exchange-to-exchange transfers are excluded; unknown-wallet movements do not prove selling. The sample is about 25 minutes old and is not complete exchange-wallet accounting.
 - These vendor aggregates overlap upstream exchange data. They are not independent exchange confirmations and must not be averaged with other vendor totals.
 
 Sources: [Swiftedge XRP market](https://swiftedge.uk/xrp/today), [Kodexius XRP derivatives](https://kodexius.com/data/crypto-derivatives/XRP).
 
 ### ETF flows
 
-Alpha Finance's five-fund tracker, through the 12 November session, reported:
+XRP Insights' issuer-holdings-derived series, as of 12 November, tracks six US spot XRP ETFs plus the XRP sleeve of BITW and reports:
+- 9–12 November: -9,481,905 XRP (approximately -$9.9M), across four settled trading days.
+- Total reported holdings: 1,185,698,783 XRP.
+- Estimated aggregate average cost basis: $1.7096 per XRP; the page values the holdings at about $1.02 on 12 November, roughly 40.3% below that estimated cost basis.
+
+Its methodology is important: daily flows are computed from changes in issuer-reported holdings, not issuer flow reports. Flow-excluded funds count zero in the headline, BITW rebalancing or XRP-denominated fees can appear as flows, and some historical rows are reconstructed from third-party estimates. The $1.71 average cost basis is not a market support level or price target.
+
+Alpha Finance's separate five-fund tracker, through the 12 November session, reported:
 - Seven sessions (5–12 November): -$18.0M.
 - Thirty sessions: -$2.8M.
 - Cumulative net inflow since launch: +$1.71B.
 - 12 November: $0 net flow across its five tracked funds.
 - Its page says fund list, AUM, holdings and fees are not published.
 
-This is one aggregator's series, not issuer-file proof or independent confirmation of XRP Insights/CryptoKeyhole. Do not interpret its zero as universal evidence of no creations/redemptions. Preserve each tracker cohort and missing-file policy separately.
+These series use different universes, units and methods. Do not average them or interpret a zero as universal evidence of no creations/redemptions. Preserve each tracker cohort and missing-file policy separately.
 
 Source: [Alpha Finance XRP ETF dashboard](https://alphafinance.io/etf/xrp/).
+
+## 3A. Macro and cross-asset liquidity context
+
+- Glassnode's 11 November Week 45 report says major stablecoin supply contracted by $14.2B over 30 days through 9 November, the largest contraction since June 2022. It also reports approximately $1.6B in US spot Bitcoin ETF net outflows over 20 sessions and a Coinbase spot discount. Counter-evidence in the same report: leverage had been flushed, bids outweighed asks in the Bitcoin order book, and two large BTC wallet cohorts began accumulating. These are broad crypto/BTC measures, not XRP-specific observations.
+- The US BLS October PPI release on 13 November at 08:30 ET reported final demand +0.3% month over month and +6.5% year over year; final demand excluding food, energy and trade services +0.5% month over month and +4.9% year over year. Higher producer-price inflation can reinforce restrictive-rate expectations, but is not an XRP-specific causal signal.
+- Reuters reported the dollar was on track for its strongest week in about two months, the US two-year yield near 4.86%, a roughly 12% market-implied chance of a 50-basis-point December Fed hike, and USD/JPY near 159.99. China also conducted large unannounced Pacific drills, with around 70 vessels still active Friday. These are macro/geopolitical risk context, not evidence of an XRP-specific catalyst.
+
+Competing hypotheses:
+1. **Risk-off:** XRP ETF holdings-derived outflows, shrinking broad stablecoin supply, hawkish-rate repricing, dollar strength and long-skewed XRP liquidations can jointly pressure risk appetite.
+2. **Stabilization:** leverage flushing, BTC large-wallet accumulation and bid-side BTC depth can support a broader-market stabilization hypothesis. Those are BTC observations, not proof of XRP buying. XRP funding remains positive in the latest Liqwall aggregate and OI is down less than 1% over 24 hours, so a full XRP deleveraging conclusion is premature.
+3. **Institutional adoption:** RLUSD custody and payment rails can expand XRPL stablecoin use without requiring incremental XRP demand. PNC/Coinbase uses USDC converted to USD; Standard Chartered/LMAX's planned collateral is RLUSD, not native XRP.
+
+Sources: [Glassnode Week 45](https://research.glassnode.com/the-week-onchain-week-45-2026/), [BLS October 2026 PPI](https://www.bls.gov/news.release/ppi.nr0.htm), [Reuters dollar/yields/yen](https://www.reuters.com/world/africa/dollar-near-19-month-high-fed-hike-bets-yen-tests-160-2026-11-13/), [Reuters China drills](https://www.reuters.com/world/china/china-stages-unannounced-pacific-drills-silent-intimidation-taiwan-officials-say-2026-11-13/).
 
 ## 4. Institutional, stablecoin and regulatory evidence
 
