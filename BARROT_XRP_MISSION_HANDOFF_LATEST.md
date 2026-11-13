@@ -6702,3 +6702,63 @@ Unique source-only work remains preserved: #1653 (six paths), #1655 (three), #16
 **No merge.** Exact-head tests, dependency audit and fail-closed gate now pass, but #1662 remains draft with zero approvals/reviews. Branch-protection enforcement, least privilege, Pages authorization, complete semantic review of 1,095 changed files and trusted external receipt anchoring remain unresolved. No deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
 
 Next action: complete semantic reconciliation and security remediation, obtain independently verifiable branch protection and explicit Pages publication authorization, then validate the main-only ingestion and cross-run index at runtime. Add WORM/trusted timestamp anchoring and synchronized historical L2/derivatives data before forecast admission.
+
+
+### Run86 update — current market, source-quality and exact-head verification (2026-11-13 10:03 UTC)
+
+**Mission remains priority 1:** XRP intelligence and prediction-engine mastery. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+#### Repository and CI
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration head: `c095bb131fbcb3831aa6e84d2755ef2551e9c6ce`; 2,233 commits ahead, zero behind.
+- Recursive trees: main 1,381 entries; integration 2,342 entries.
+- PR #1662: 1,096 files, 315,563 additions, 5,136 deletions; still draft, mergeable, zero formal reviews, approvals or review threads.
+- Open PR inventory: 375 total, 361 drafts, 14 non-drafts; 367 target main, eight target other bases.
+- Exact PR-head workflow run [43405130204](https://github.com/Barrot-Agent/B-Agent/actions/runs/43405130204): 3,557 passed, zero failed, eight subtests passed, 82.90 seconds, 61.72% inclusive coverage, 76% legacy core coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
+- [Dependency audit 43405129739](https://github.com/Barrot-Agent/B-Agent/actions/runs/43405129739) passed all five manifest groups. [Fail-closed gate 43405129693](https://github.com/Barrot-Agent/B-Agent/actions/runs/43405129693) passed with automatic merge disabled.
+
+#### Fresh spot observations
+- OKX XRP-USDT: $1.0279 last, $1.0278 bid, $1.0279 ask; 24-hour open $1.0519, high $1.0569, low $0.9974, volume 46.921M XRP. Provider timestamp 09:56:19.569 UTC; 410 seconds old at the 10:03:10 cutoff, exceeding Barrot's 300-second live-age limit.
+- Kraken XRP/USD: $1.02698 last, $1.02697/$1.02698 bid/ask; no provider event timestamp. Kraken USDT/USD midpoint $0.999015, also without provider event timestamp.
+- Mechanically normalized OKX/Kraken midpoint difference: approximately +0.1834%. Quotes are asynchronous; this is not executable arbitrage evidence. Neither spot observation is model-eligible.
+- Direct OKX and Kraken depth endpoints were not accessible in this research session. No synchronized L2 snapshot was admitted.
+
+#### Derivatives and order-flow source-quality findings
+- Liqwall, 09:42 UTC, all-exchange vendor cohort: $1.13B OI (-0.8% 24h), average funding -0.0010%/8h, Binance funding +0.0003%, $19.5M liquidations ($18.4M longs, $1.1M shorts), 74.8% Binance accounts long. [Source](https://liqwall.com/coins/xrp).
+- Seandra, 09:50 UTC, Binance XRPUSDT only: $302.8M OI (-3.0% 24h), funding +0.0004%, 75% accounts long, top traders 67% long by size, at least $7.3M forced closes. Its seven-day coin-denominated OI is reported down 14% while price is down 15%. [Source](https://seandra.ai/perp/xrp).
+- Kodexius, 08:44 UTC, header says $614.05M across seven contracts. Its first five contract rows sum to $614.04M and their displayed shares sum to 100%; two additional displayed USDC contract rows add another $31.00M. Seven displayed rows therefore sum to $645.04M. **Internal aggregate reconciliation fails.** Exclude the aggregate until the vendor clarifies its denominator and contract inclusion. [Source](https://kodexius.com/data/crypto-derivatives/XRP).
+- Swiftedge's order-flow snapshot is timestamped 04:02 UTC, about six hours old at cutoff. It shows a $0.9770 bid wall (4.66M XRP), $1.0090 ask wall (4.71M XRP), flip $1.0025 and +$1.5M reported whale net flow, but its displayed current/daily range fields conflict. Exclude from model admission. [Source](https://swiftedge.uk/xrp).
+- OI aggregates are not interchangeable: all-exchange, Binance-only and vendor-specific contract universes must remain separate. Long-heavy liquidation data supports a leverage-flush hypothesis, not a directional forecast.
+
+#### Macro/geopolitical context
+Reuters on November 13 reported more than 100 Chinese naval/coast-guard vessels at the peak of early-November Pacific drills and around 70 still active Friday, ahead of the APEC summit in Shenzhen and an expected Trump-Xi meeting. This is broad geopolitical risk context, not demonstrated XRP-specific causality. [Reuters](https://www.reuters.com/world/china/china-stages-unannounced-pacific-drills-silent-intimidation-taiwan-officials-say-2026-11-13/).
+
+#### Implementation and admission status
+- The integration contains the CFTC Legacy Futures-Only parser, separate TFF/Legacy taxonomy, 48 public endpoint definitions, read-only scheduled ingestion, point-in-time feature store, cross-run receipt-index chain, four baseline families, purged/embargoed walk-forward evaluation, calibration/drift diagnostics and fail-closed Ed25519 readiness ledger.
+- The cross-run index verifies its predecessor index hash and predecessor raw-artifact presence, but GitHub artifacts remain retention-limited (90 days for raw/index; seven days for per-run feature checkpoint). The code explicitly records `external_anchor_status=NOT_ANCHORED`; no WORM or trusted timestamp authority exists. Scheduled runtime is main-only and has not executed because the workflow is not on main.
+- The forecast gate includes raw OOS/shadow sample minima, overlap-adjusted non-overlapping target-window effective sample size, two independent receipt groups, calibration error no greater than 0.05, superiority to all four baselines on Brier and log loss, and independent Ed25519 evaluator attestation.
+- Event registry remains 73 curated events, zero byte-exact raw publisher hashes, zero model-eligible events. The web observations in this run were not captured into Barrot's raw archive.
+
+**Forecast: NOT_ISSUED.**
+
+#### Backlog ancestry reconciliation
+Compared against integration head `c095bb1`:
+- #1661: zero commits ahead, 101 behind — supersession candidate.
+- #1660: zero ahead, 282 behind — supersession candidate.
+- #1643: zero ahead, 1,344 behind — supersession candidate.
+- #1642: zero ahead, 2,249 behind — supersession candidate.
+- #1640: one unique commit ahead, three differing files — preserve; not a duplicate.
+- #1653: 18 commits ahead, seven differing files; #1655: 17 ahead, eight files; #1659: eight ahead, six files; #1615: three ahead, 14 files; #1614: 36 ahead, 57 files. Preserve unique work.
+- Dependency PRs #1644–#1650 and #1254/#1255 remain blocked pending current-main validation. Safety/structural PRs #1320, #1318, #1317 and #1269 remain unique/unreviewed.
+- No source PR was closed.
+
+#### Security and merge decision
+- Main `opencode.json` still enables remote LunaRoute MCP and allows edit/bash/webfetch; integration disables remote MCP and requires approval for non-read-only actions.
+- Main Barrot Sync is push-triggered, suppresses sync errors and ignores Git push failures; integration quarantines it.
+- Main A2A Worker workflow deploys on `a2a/**` pushes and uploads secrets; integration changes it to explicit manual approval, separate secret-rotation confirmation and exact-main-SHA verification.
+- Databricks/Kaggle operations are manual and require explicit per-action confirmation plus exact approved main SHA. Self-hosted brain deployment remains disabled in integration.
+- Main branch-protection endpoint returns HTTP 403; fallback ruleset 10863829 is disabled. Connector permissions remain admin/maintain/push/pull/triage. Automatic Pages publication remains an unresolved side effect for the public web files in #1662.
+
+**No merge.** PR #1662 remains draft with zero approvals/reviews. Passing CI does not clear branch-protection, least-privilege, publication-authorization or semantic-review blockers. No deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+Next action: continue semantic reconciliation and security review on the existing integration PR; resolve branch-protection visibility, least privilege and Pages publication authorization; then validate main-only scheduled ingestion and independent receipt anchoring before forecast admission.
