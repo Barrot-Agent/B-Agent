@@ -1,0 +1,485 @@
+{
+  "artifact_type": "barrot.nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.1.0",
+  "run_id": "Run93",
+  "captured_at_utc": "2026-11-13T14:03:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_at_audit": "dd4d0ed3cec0428ebb15a6c81150d048dd112693",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2353,
+    "integration_ahead_by": 2254,
+    "integration_behind_by": 0,
+    "active_integration_pr": 1662,
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "dd4d0ed3cec0428ebb15a6c81150d048dd112693",
+      "changed_files": 1108,
+      "additions": 317429,
+      "deletions": 5136,
+      "commits": 2254,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "open_prs": 375,
+    "drafts": 361,
+    "non_drafts": 14,
+    "main_target_prs": 367,
+    "other_base_prs": 8
+  },
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 is the protected execution/orchestration/safety/verification foundation.",
+  "coordination_status": "DESIGNED_NOT_DISPATCHED",
+  "least_privilege_required": true,
+  "least_privilege_met": false,
+  "no_external_model_data_transfer": true,
+  "platforms": {
+    "ChatGPT": {
+      "intended_role": "primary evidence synthesis, GitHub repository inspection, bounded integration and local red-team review",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "data_flow_verified": true,
+      "permissions_reported": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "pull": true,
+        "triage": true
+      },
+      "least_privilege": false,
+      "external_model_transfer": false,
+      "last_verified_at_utc": "2026-11-13T14:03:00Z",
+      "verified_scope": [
+        "current main/integration refs and complete recursive trees",
+        "375 open PR inventory across four pages",
+        "PR #1662 metadata, changed files, reviews and threads",
+        "exact-head full suite, dependency audit and fail-closed gate",
+        "branch protection metadata and disabled fallback ruleset",
+        "critical workflow, OpenCode MCP and prediction-engine code inspection",
+        "fresh XRP spot, derivatives and ETF research with freshness exclusions"
+      ],
+      "main_branch_write": false
+    },
+    "Claude": {
+      "intended_role": "independent regulatory and primary-source review; counter-hypotheses",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Grok": {
+      "intended_role": "public social-signal discovery and independent market-narrative comparison",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Gemini": {
+      "intended_role": "independent macro, institutional, custody and document review",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Copilot": {
+      "intended_role": "independent repository security and workflow red-team review",
+      "authentication_status": "REVIEW_ARTIFACTS_ONLY_NO_FORMAL_APPROVAL_ON_PR_1662",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Codex": {
+      "intended_role": "bounded code implementation, test generation and repository-wide verification",
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "HuggingFace": {
+      "intended_role": "offline model evaluation only; no deployment",
+      "authentication_status": "PRIOR_BUILD_ERROR_NO_DEPLOYMENT",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Kaggle": {
+      "intended_role": "public benchmark discovery and reproducibility review; no submission",
+      "authentication_status": "NOT_TESTED_NO_SUBMISSION",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    },
+    "Databricks": {
+      "intended_role": "historical feature-store analytics after authorized read access",
+      "authentication_status": "PRIOR_HTTP_403_NO_WRITE",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_EXECUTED"
+    }
+  },
+  "separate_internal_provider": {
+    "name": "LunaRoute",
+    "authentication_status": "UNVERIFIED",
+    "data_flow_verified": false
+  },
+  "evidence_exchange": {
+    "structured_external_exchange": false,
+    "minority_objections_retained_in_local_evidence": true,
+    "red_team_dispatch": false,
+    "data_transferred_to_external_models": false
+  },
+  "prediction_engine_status": {
+    "candidate_model_implemented": false,
+    "candidate_model_trained": false,
+    "source_definitions": 48,
+    "scheduled_sources": 46,
+    "curated_events": 73,
+    "raw_byte_exact_hashes": 0,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "missing": [
+      "XRP-specific candidate model",
+      "mature synchronized multi-source historical dataset",
+      "byte-exact raw publisher receipts",
+      "independent WORM and trusted timestamp anchoring",
+      "paired block-bootstrap/source-clustered uncertainty",
+      "multivariate/concept drift monitoring",
+      "independent shadow cohort and trusted evaluator key",
+      "measured candidate superiority over all four baselines"
+    ]
+  },
+  "repository_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_run90": "b4c15161ac41e8343820b3540d879e34df548d40",
+    "pr_1662_draft": true,
+    "pr_1662_changed_files": 1102,
+    "pr_1662_formal_approvals": 0,
+    "open_prs": 375,
+    "drafts": 361
+  },
+  "security_state": {
+    "main_opencode_remote_mcp_enabled": true,
+    "main_opencode_edit_bash_webfetch_allow": true,
+    "integration_remote_mcp_disabled": true,
+    "integration_mutations": "ask",
+    "main_branch_protected_flag": true,
+    "main_required_status_checks": [],
+    "main_required_status_contexts": [],
+    "main_branch_protection_detail": "HTTP 403",
+    "visible_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "integration_branch_protected": false,
+    "github_connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "least_privilege_met": false,
+    "pages_publication_authorization": "UNRESOLVED"
+  },
+  "run90_snapshot": {
+    "ci": {
+      "full_suite_run": 43424614346,
+      "tests_passed": 3557,
+      "tests_failed": 0,
+      "coverage_pct": 61.72,
+      "core_tests": 729,
+      "core_coverage_pct": 76,
+      "dependency_audit": 43424613885,
+      "fail_closed_gate": 43424615956
+    },
+    "market": {
+      "okx_last": 1.0194,
+      "okx_event_time_utc": "2026-11-13T13:06:40.668Z",
+      "fuelmaps_mid": 1.0237,
+      "fuelmaps_bid_share_1pct": 59.2,
+      "liqwall_oi_usd": 1120000000,
+      "liqwall_long_liquidations_usd": 16400000,
+      "xrp_insights_nov9_12_flow_xrp": -9481905
+    },
+    "backlog": {
+      "1614": "preserve; 27 source-only paths",
+      "1615": "preserve; 13 source-only paths",
+      "1640": "preserve; one unique commit ahead",
+      "1642": "supersession candidate; 0 ahead/2257 behind",
+      "1643": "supersession candidate; 0 ahead/1352 behind",
+      "1653": "preserve; six source-only paths",
+      "1655": "preserve; three source-only paths",
+      "1659": "preserve; four source-only paths",
+      "1660": "supersession candidate; 0 ahead/290 behind",
+      "1661": "supersession candidate; 0 ahead/109 behind"
+    },
+    "merge_decision": "NO MERGE; PR remains draft and unreviewed; semantic/security/publication blockers remain."
+  },
+  "next_verification": "Run90C is a documentation/map-only descendant of 2e0d0e95e4ada13a896ec683216a436142608eb5. Verify its exact-head full suite, wheel/mission check, five-manifest dependency audit and fail-closed gate. Keep #1662 draft; do not merge until semantic/security review, least privilege, branch protection, direct deployment approval wiring and Pages authorization are resolved.",
+  "internal_barrot_credentials": {
+    "github_app": {
+      "status": "MISSING_CONFIGURATION",
+      "missing": [
+        "GITHUB_APP_ID",
+        "GITHUB_APP_PRIVATE_KEY",
+        "GITHUB_APP_INSTALLATION_ID"
+      ],
+      "evidence_run": 43430139937,
+      "distinction": "Separate from the verified ChatGPT GitHub connector."
+    },
+    "lunaRoute": {
+      "status": "UNVERIFIED_AUTHENTICATION_AND_DATA_FLOW"
+    }
+  },
+  "main_health": {
+    "main_ci": {
+      "run_id": 43343513172,
+      "status": "SUCCESS",
+      "tests_passed": 747,
+      "subtests_passed": 8
+    },
+    "pillars_consistency": {
+      "run_id": 43430139937,
+      "status": "FAILURE",
+      "classification": "read-only external health check",
+      "failures": [
+        "GitHub App credentials missing",
+        "Databricks HTTP 403",
+        "Hugging Face Space BUILD_ERROR"
+      ],
+      "passes": [
+        "deployment-sync source check",
+        "system-prompt fiction scan"
+      ]
+    },
+    "barrot_sync": {
+      "run_id": 43343513347,
+      "workflow_status": "SUCCESS",
+      "actual_sync": "SKIPPED_HTTPX_MISSING",
+      "push": "NO_OP"
+    },
+    "pages_deploy": {
+      "run_id": 43343511839,
+      "status": "SUCCESS",
+      "meaning": "prior main push automatically published Pages; authorization unresolved"
+    },
+    "cross_analysis": {
+      "run_id": 43437377285,
+      "status": "SUCCESS",
+      "read_only": true
+    }
+  },
+  "workflow_security_run90": {
+    "changed_workflows_reviewed_on_main_and_integration": 50,
+    "additional_control_workflows_reviewed": 5,
+    "quarantined_on_integration": [
+      "ask-barrot.yml",
+      "audio-ingest.yml",
+      "barrot-agent.yml",
+      "barrot-self-upgrade.yml",
+      "barrot-speak.yml",
+      "barrot-sync.yml",
+      "capability-1-market-analysis.yml",
+      "capability-9-data-resolver.yml",
+      "databricks-bundle.yml",
+      "diag-cf.yml",
+      "diag-cf2.yml",
+      "free-image-gen.yml",
+      "ibm-bob-barrot-audit.yml",
+      "knowledge-signal-cycle.yml",
+      "knowledge-signal-cycle-btc.yml",
+      "make-track.yml",
+      "pingpong.yml",
+      "signal_ledger.yml",
+      "subagent-matrix.yml",
+      "subagent-spawn.yml",
+      "sync-huggingface.yml",
+      "task-allocator.yml",
+      "test-groq-chain.yml",
+      "test-semantic-memory.yml",
+      "webmcp-live-sandbox.yml",
+      "write-lyrics.yml"
+    ],
+    "manual_or_exact_sha_gated": [
+      "sync-self-hosted-brain.yml",
+      "deploy-a2a-worker.yml",
+      "barrot-ops.yml",
+      "coinbase-paper-trader.yml",
+      "capability-10-design.yml",
+      "capability-discovery.yml",
+      "data-value-triage.yml",
+      "financial-data-refresh.yml",
+      "frontier-digest.yml",
+      "research-topics.yml",
+      "self-benchmark.yml",
+      "signal-summary.yml",
+      "webmcp-trend-digest.yml",
+      "barrot-controlled-feature-validation.yml",
+      "formal-verification-benchmarks.yml"
+    ],
+    "no_external_dispatch": true,
+    "groq_is_not_grok": true
+  },
+  "run90c_snapshot": {
+    "captured_at_utc": "2026-11-13T13:20:58Z",
+    "repository": {
+      "current_head_before_handoff_refresh": "2e0d0e95e4ada13a896ec683216a436142608eb5",
+      "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "main_tree_entries": 1381,
+      "integration_tree_entries": 2351,
+      "ahead_by": 2243,
+      "behind_by": 0,
+      "pr_changed_files": 1105,
+      "pr_additions": 316080,
+      "pr_deletions": 5136,
+      "open_prs": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "ci": {
+      "full_suite_run": 43432262745,
+      "full_suite_job": 131908414017,
+      "tests_passed": 3557,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "inclusive_coverage_pct": 61.72,
+      "full_suite_seconds": 100.98,
+      "core_tests_passed": 729,
+      "core_coverage_pct": 76,
+      "core_seconds": 11.88,
+      "dependency_audit_run": 43432262687,
+      "dependency_manifest_groups_passed": 5,
+      "known_vulnerabilities_reported": 0,
+      "fail_closed_gate_run": 43432262681
+    },
+    "prediction": {
+      "candidate_model": false,
+      "curated_events": 73,
+      "raw_byte_exact_hashes": 0,
+      "model_eligible_events": 0,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "main_health": {
+      "main_ci_run": 43343513172,
+      "pillars_failure": 43430139937,
+      "barrot_sync_run": 43343513347,
+      "pages_deploy": 43343511839,
+      "cross_analysis": 43428748553
+    }
+  },
+  "core_v3_safety": {
+    "executor": "No shell; path confinement; allowlisted commands; Python limited to pytest/compileall; Git read-only.",
+    "action_loop": "Create-only writes; unique-preimage compare-and-swap patch; bounded tests; rollback only if current content exactly matches action output.",
+    "termux_bridge": "Approved roots; symlink-resistant; create-only; fsync; no overwrite.",
+    "b_agent_cli": "LunaRoute context transfer requires explicit flag, interactive terminal and exact phrase; local repair requires separate flag/phrase and clean non-default worktree.",
+    "mcp_approval_gate": "Default always-deny.",
+    "gaps": [
+      "legacy MCPOrchestrator and direct Databricks/Hugging Face deploy scripts lack visible MCPApprovalGate wiring",
+      "repository_repair_loop lacks unique-preimage enforcement and automatic rollback after failed validation"
+    ],
+    "execution": "No deploy, MCP operation, local repair or Termux drop executed."
+  },
+  "public_web": {
+    "latest_signal_status": "NOT_ISSUED",
+    "latest_signal_status_as_of": "2026-11-10; stale metadata",
+    "accuracy_status": "NOT_EVALUATED",
+    "legacy_accuracy": "45.5% isolated as unvalidated legacy data",
+    "gumroad_license_verification": "POST path exists; purchase_url null; checkout_available false; no call made; license key would be transmitted if invoked",
+    "pages_publication": "Automatic on main push; authorization unresolved for seven changed public files."
+  },
+  "xrp_public_ingestion": {
+    "source_definitions": 48,
+    "hourly_endpoints": 43,
+    "weekly_cftc_endpoints": 3,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "scheduled_endpoints": 46,
+    "schedule": [
+      "hourly at minute 3 UTC",
+      "daily at 00:15 UTC"
+    ],
+    "permissions": "read-only contents/actions",
+    "branch_guard": "main-only",
+    "retention_days": {
+      "raw_receipts": 90,
+      "per_run_feature_store": 7,
+      "daily_feature_store_archive": 90
+    },
+    "coinbase_backfill_days": {
+      "min": 0,
+      "max": 365
+    },
+    "main_execution_verified": false,
+    "independent_worm": false
+  },
+  "current_run": {
+    "run_id": "Run93",
+    "captured_at_utc": "2026-11-13T14:03:00Z",
+    "integration_head": "dd4d0ed3cec0428ebb15a6c81150d048dd112693",
+    "full_ci_run": 43438388063,
+    "full_suite_tests_passed": 3558,
+    "full_suite_tests_failed": 0,
+    "subtests_passed": 8,
+    "inclusive_coverage_pct": 61.72,
+    "core_tests_passed": 730,
+    "core_coverage_pct": 76,
+    "dependency_audit_run": 43438387916,
+    "fail_closed_gate_run": 43438387812,
+    "merge_decision": "NO_MERGE"
+  },
+  "workflow_security_run93": {
+    "total_integration_workflow_files": 88,
+    "changed_workflow_files_in_pr": 50,
+    "critical_controls_reinspected": [
+      "ci.yml",
+      "xrp-public-ingestion.yml",
+      "barrot-sync.yml",
+      "coinbase-paper-trader.yml",
+      "deploy-a2a-worker.yml",
+      "databricks-bundle.yml",
+      "opencode.json",
+      "auto-resolve-issues.yml",
+      "autonomous_self_deployment.yml",
+      "barrot-approve-pr.yml",
+      "barrot-auto-pr.yml",
+      "barrot-autonomous-resolver.yml",
+      "barrot-hf-admin.yml",
+      "barrot-merge-manual.yml",
+      "barrot-merge.yml",
+      "barrot-pr-automerge.yml",
+      "barrot-restart-space.yml",
+      "check-signal-accuracy.yml",
+      "deploy-databricks.yml",
+      "dump-brain-corpus.yml",
+      "kaggle-competitions.yml",
+      "merge-queue.yml",
+      "rotate-databricks-token.yml",
+      "scheduler-tick.yml",
+      "self-schedule.yml",
+      "subscriber_sync.yml",
+      "sync-self-hosted-brain.yml",
+      "task-allocator.yml",
+      "webmcp-live-sandbox.yml",
+      "webmcp-monetization-enrich.yml",
+      "webmcp-trend-digest.yml"
+    ],
+    "changed_workflow_semantic_review_complete": false,
+    "findings": [
+      "Main OpenCode remote LunaRoute MCP enabled with edit/bash/webfetch; integration disables remote MCP and asks before mutations.",
+      "Main Barrot Sync is push-triggered and can write to main; integration quarantines it.",
+      "Main paper trader writes state/logs to main; integration changes it to manual exact-SHA artifact-only simulation.",
+      "Main A2A workflow can deploy on a2a/** pushes and upload secrets; integration requires separate deployment and secret-rotation confirmation.",
+      "Main Databricks bundle can deploy/run after manual YES; integration quarantines it.",
+      "Issue, merge-queue, scheduler, brain-export, WebMCP sandbox and task-allocation writers inspected are disabled/quarantined.",
+      "Hugging Face upload, Space restart, Kaggle submission and external research remain manual/SHA-gated; none was invoked."
+    ],
+    "no_external_workflow_dispatched": true
+  },
+  "task_assignments": {
+    "ChatGPT": "repository integration, evidence synthesis and local red-team; GitHub read verified, connector overprivileged",
+    "Claude": "independent regulatory/primary-source review; auth unverified, not dispatched",
+    "Grok": "public social-signal discovery and narrative comparison; auth unverified, not dispatched",
+    "Gemini": "macro, institutional, custody and document cross-check; auth unverified, not dispatched",
+    "Copilot": "workflow/security red-team; review artifacts but no formal approval",
+    "Codex": "bounded implementation and test review; auth unverified, not dispatched",
+    "HuggingFace": "offline model evaluation only; prior build error, no deployment",
+    "Kaggle": "public benchmark/reproducibility review only; untested, no submission",
+    "Databricks": "historical analytics after authorized read access; HTTP 403, no write"
+  }
+}
