@@ -65,7 +65,7 @@ def test_xrp_cme_futures_listing_does_not_prove_xrp_is_cme_collateral():
     cme = data["cme_clearing"]
     assert xrp["cme_xrp_futures_listed"] is True
     assert xrp["cme_contract_unit_xrp"] == 50000
-    assert xrp["cme_contract_cash_settled_usd"] is True
+    assert xrp["cme_cash_settled_usd"] is True
     assert cme["xrp_or_crypto_asset_listed"] is False
 
 
