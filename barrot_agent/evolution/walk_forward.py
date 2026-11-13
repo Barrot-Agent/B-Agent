@@ -12,6 +12,7 @@ from typing import Any
 
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .probability_calibration import apply_temporal_temperature_calibration
+from .paired_block_bootstrap import evaluate_paired_block_bootstrap
 
 _CLASSES = ("down", "flat", "up")
 _BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
@@ -570,6 +571,14 @@ def evaluate_chronological_walk_forward(
         actual_class = _classify(actual_return, flat_band)
         target_event = _utc(target["event_time_utc"], "event_time_utc")
         target_available = _available_at(target)
+        source_groups = sorted({
+            source.get("independence_group")
+            for record in [*series, target]
+            for source in record.get("sources", [])
+            if isinstance(source, Mapping)
+            and isinstance(source.get("independence_group"), str)
+            and source.get("independence_group").strip()
+        })
         if target_event <= cutoff or target_available > evaluation_cutoff:
             skipped.append({"data_cutoff_utc": cutoff_s, "reason": "target_outcome_violates_point_in_time_boundary"})
             continue
@@ -653,6 +662,7 @@ def evaluate_chronological_walk_forward(
                         "trailing_return": trailing_return,
                         "flat_band_bps": float(flat_band_bps),
                         "target_tolerance_seconds": target_tolerance_seconds,
+                        "source_independence_groups": source_groups,
                         "prior_smoothing_alpha": float(prior_alpha),
                         "directional_confidence": float(directional_confidence),
                         "flat_probability": float(flat_probability),
@@ -677,6 +687,21 @@ def evaluate_chronological_walk_forward(
             )
 
     forecasts.sort(key=lambda item: (item["data_cutoff_utc"], item["model_id"]))
+    paired_uncertainty = evaluate_paired_block_bootstrap([
+        {
+            "origin_id": item["data_cutoff_utc"],
+            "origin_time_utc": item["data_cutoff_utc"],
+            "source_group_id": (
+                item["assumptions"]["source_independence_groups"][0]
+                if len(item["assumptions"]["source_independence_groups"]) == 1
+                else None
+            ),
+            "model_id": item["model_id"],
+            "brier_loss": item["scoring"]["brier_score"],
+            "log_loss": item["scoring"]["log_loss"],
+        }
+        for item in forecasts
+    ])
     out_of_sample_origin_count = len({item["data_cutoff_utc"] for item in forecasts})
     reference_forecasts = [item for item in forecasts if item["model_id"] == "naive_class_prior"]
     overlap_metrics = _overlap_adjusted_effective_sample_size(reference_forecasts)
@@ -725,6 +750,7 @@ def evaluate_chronological_walk_forward(
         "dataset_record_count": len(selected),
         "forecast_count": len(forecasts),
         "metrics": metrics,
+        "paired_uncertainty": paired_uncertainty,
         "forecasts": forecasts,
         "skipped_origins": skipped,
         "calibration_is_diagnostic_only": False,
