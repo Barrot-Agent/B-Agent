@@ -71,6 +71,22 @@ def test_single_source_does_not_produce_a_source_clustered_confidence_interval()
     assert source["brier_difference_ci_95"] is None
 
 
+def test_adjusted_confidence_level_is_reported():
+    rows = _rows()
+    result = evaluate_paired_block_bootstrap(
+        rows, bootstrap_replicates=10000, confidence_level=0.99375
+    )
+    temporal = result["comparisons"]["momentum_sign"]["temporal_moving_block_bootstrap"]
+    assert result["confidence_level"] == pytest.approx(0.99375)
+    assert temporal["confidence_level"] == pytest.approx(0.99375)
+    assert len(temporal["brier_difference_ci"]) == 2
+
+
+def test_invalid_confidence_level_is_rejected():
+    with pytest.raises(PairedBootstrapError, match="confidence_level"):
+        evaluate_paired_block_bootstrap(_rows(), confidence_level=1.0)
+
+
 def test_duplicate_origin_model_pair_is_rejected():
     rows = _rows(origins=30, source_clusters=5)
     rows.append(dict(rows[0]))

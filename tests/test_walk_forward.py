@@ -18,7 +18,7 @@ def _stamp(value):
     return value.isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
-def _bar(index, price, *, capture_at=None, venue="kraken"):
+def _bar(index, price, *, capture_at=None, venue="kraken", source_group="kraken"):
     event = BASE + timedelta(hours=index)
     capture = capture_at or event + timedelta(seconds=3)
     return {
@@ -36,9 +36,13 @@ def _bar(index, price, *, capture_at=None, venue="kraken"):
         "revision_available_at_utc": _stamp(capture - timedelta(seconds=1)),
         "sources": [
             {
-                "source_id": "kraken-public-api",
-                "independence_group": "kraken",
-                "source_uri": "https://api.kraken.com/0/public/OHLC?pair=XRPUSD&interval=60",
+                "source_id": f"{source_group}-public-api",
+                "independence_group": source_group,
+                "source_uri": (
+                    "https://api.kraken.com/0/public/OHLC?pair=XRPUSD&interval=60"
+                    if source_group == "kraken"
+                    else f"https://api.{source_group}.example/public/OHLC?pair=XRPUSD&interval=60"
+                ),
                 "raw_content_sha256": f"{index + 1:064x}",
             }
         ],
@@ -59,12 +63,15 @@ def _bar(index, price, *, capture_at=None, venue="kraken"):
     }
 
 
-def _series(count=30):
+def _series(count=30, *, source_groups=None):
     prices = [1.0]
     changes = [0.001, 0.002, -0.001, 0.0002, -0.002, 0.0015, 0.0001]
     for index in range(1, count):
         prices.append(prices[-1] * (1.0 + changes[(index - 1) % len(changes)]))
-    return [_bar(index, price) for index, price in enumerate(prices)]
+    return [
+        _bar(index, price, source_group=(source_groups[index % len(source_groups)] if source_groups else "kraken"))
+        for index, price in enumerate(prices)
+    ]
 
 
 def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics():
@@ -394,6 +401,64 @@ def test_walk_forward_rejects_non_positive_effective_sample_minimum():
             venue="kraken",
             currency_pair="XRP/USD",
         )
+
+
+def test_walk_forward_clusters_each_origin_by_its_observed_target_publisher():
+    records = _series(60, source_groups=[f"venue-{index}" for index in range(5)])
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=59, seconds=3)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        min_effective_out_of_sample_samples=1,
+        target_tolerance_seconds=5,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+    comparison = result["paired_uncertainty"]["comparisons"]["momentum_sign"]
+    source = comparison["source_clustered_moving_block_bootstrap"]
+    assert source["status"] == "ESTIMATED"
+    assert source["source_cluster_count"] == 5
+    assert source["observed_minimum_origins_per_source_cluster"] >= 2
+    assert all(
+        item["assumptions"]["outcome_source_group_resolution_status"] == "RESOLVED"
+        and len(item["assumptions"]["outcome_source_independence_groups"]) == 1
+        for item in result["forecasts"]
+    )
+
+
+def test_walk_forward_does_not_force_multi_publisher_target_into_one_cluster():
+    records = _series(60)
+    for index, record in enumerate(records):
+        record["sources"].append({
+            "source_id": f"secondary-{index}",
+            "independence_group": "secondary-publisher",
+            "source_uri": f"https://api.secondary-publisher.example/xrp/{index}",
+            "raw_content_sha256": f"{index + 1000:064x}",
+        })
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=59, seconds=3)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        min_effective_out_of_sample_samples=1,
+        target_tolerance_seconds=5,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+    comparison = result["paired_uncertainty"]["comparisons"]["momentum_sign"]
+    source = comparison["source_clustered_moving_block_bootstrap"]
+    assert source["status"] == "INSUFFICIENT_SOURCE_CLUSTERS"
+    assert source["source_cluster_count"] == 0
+    assert all(
+        item["assumptions"]["outcome_source_group_resolution_status"] == "MULTIPLE_OUTCOME_SOURCE_GROUPS"
+        and item["assumptions"]["outcome_source_cluster_id"] is None
+        for item in result["forecasts"]
+    )
 
 
 def test_walk_forward_reports_paired_bootstrap_and_fails_closed_on_one_source_group():

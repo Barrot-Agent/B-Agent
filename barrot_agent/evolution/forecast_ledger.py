@@ -26,9 +26,9 @@ _HTTP_PROVENANCE_HEADER_NAMES = frozenset({
     "age", "cache-control", "content-type", "content-encoding",
     "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
 })
-READINESS_POLICY_ID = "xrp_forecast_readiness_v4"
+READINESS_POLICY_ID = "xrp_forecast_readiness_v5"
 _EVALUATOR_KEYS_ENV = "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON"
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V4\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V5\0"
 _REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
 _MIN_OOS_SAMPLES = 100
 _MIN_SHADOW_SAMPLES = 100
@@ -364,7 +364,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     """Validate an independently attested model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
         raise ForecastLedgerError("readiness report must be a JSON object")
-    if report.get("schema_version") != "barrot.xrp.model-readiness.v4":
+    if report.get("schema_version") != "barrot.xrp.model-readiness.v5":
         raise ForecastLedgerError("readiness report schema is unsupported")
     if report.get("evaluation_type") != "chronological_walk_forward_model_evaluation":
         raise ForecastLedgerError("baseline-only or non-chronological evaluation cannot authorize a forecast")
@@ -569,6 +569,123 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             raise ForecastLedgerError(
                 f"model must outperform the {baseline} baseline on both Brier score and log loss"
             )
+
+    paired_uncertainty = report.get("paired_uncertainty")
+    if not isinstance(paired_uncertainty, Mapping):
+        raise ForecastLedgerError("readiness report needs paired_uncertainty for all baselines and both evaluation windows")
+    if paired_uncertainty.get("method") != "paired_temporal_and_source_clustered_moving_block_bootstrap_v1":
+        raise ForecastLedgerError("paired_uncertainty method is unsupported")
+    if paired_uncertainty.get("candidate_model_id") != report["model_version"]:
+        raise ForecastLedgerError("paired_uncertainty candidate_model_id must match model_version")
+    if paired_uncertainty.get("multiplicity_method") != "bonferroni":
+        raise ForecastLedgerError("paired_uncertainty must use Bonferroni familywise adjustment")
+
+    familywise_level = paired_uncertainty.get("familywise_confidence_level")
+    if (
+        isinstance(familywise_level, bool)
+        or not isinstance(familywise_level, (int, float))
+        or not math.isfinite(float(familywise_level))
+        or not 0.95 <= float(familywise_level) < 1.0
+    ):
+        raise ForecastLedgerError("paired_uncertainty familywise_confidence_level must be in [0.95, 1)")
+    comparison_count = paired_uncertainty.get("familywise_comparison_count")
+    if isinstance(comparison_count, bool) or not isinstance(comparison_count, int) or comparison_count != len(_REQUIRED_BASELINES) * 2:
+        raise ForecastLedgerError("paired_uncertainty familywise_comparison_count must cover four baselines and two loss metrics")
+    required_individual_level = 1.0 - (1.0 - float(familywise_level)) / comparison_count
+    individual_level = paired_uncertainty.get("individual_confidence_level")
+    if (
+        isinstance(individual_level, bool)
+        or not isinstance(individual_level, (int, float))
+        or not math.isfinite(float(individual_level))
+        or float(individual_level) + 1e-12 < required_individual_level
+    ):
+        raise ForecastLedgerError("paired_uncertainty confidence intervals do not meet the Bonferroni-adjusted familywise level")
+
+    def _integer_at_least(value: Any, minimum: int, field: str) -> int:
+        if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
+            raise ForecastLedgerError(f"paired_uncertainty {field} must be at least {minimum}")
+        return value
+
+    _integer_at_least(paired_uncertainty.get("bootstrap_replicates"), 10_000, "bootstrap_replicates")
+    _integer_at_least(paired_uncertainty.get("block_length_origins"), 2, "block_length_origins")
+    minimum_paired_origins = _integer_at_least(
+        paired_uncertainty.get("minimum_paired_origins"), _MIN_OOS_SAMPLES, "minimum_paired_origins"
+    )
+    minimum_source_clusters = _integer_at_least(
+        paired_uncertainty.get("minimum_source_clusters"), 5, "minimum_source_clusters"
+    )
+    minimum_per_cluster = _integer_at_least(
+        paired_uncertainty.get("minimum_origins_per_source_cluster"), 2, "minimum_origins_per_source_cluster"
+    )
+
+    def _finite_level(value: Any, field: str) -> float:
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(float(value)):
+            raise ForecastLedgerError(f"{field} must be a finite number")
+        return float(value)
+
+    def _validate_loss_interval(value: Any, field: str) -> None:
+        if not isinstance(value, list) or len(value) != 2:
+            raise ForecastLedgerError(f"{field} must be a two-element confidence interval")
+        lower = _finite_level(value[0], f"{field}[0]")
+        upper = _finite_level(value[1], f"{field}[1]")
+        if lower > upper:
+            raise ForecastLedgerError(f"{field} lower bound exceeds upper bound")
+        if upper >= 0.0:
+            raise ForecastLedgerError(f"{field} upper bound must be below zero to establish model superiority")
+
+    for window_name, expected_origins in (
+        ("out_of_sample", out_of_sample_count),
+        ("shadow_evaluation", shadow_sample_count),
+    ):
+        window = paired_uncertainty.get(window_name)
+        if not isinstance(window, Mapping) or window.get("status") != "PASS":
+            raise ForecastLedgerError(f"paired_uncertainty {window_name} window did not pass")
+        comparisons = window.get("comparisons")
+        if not isinstance(comparisons, Mapping) or not set(_REQUIRED_BASELINES).issubset(comparisons):
+            raise ForecastLedgerError(f"paired_uncertainty {window_name} is missing a required baseline comparison")
+        for baseline in _REQUIRED_BASELINES:
+            comparison = comparisons[baseline]
+            if not isinstance(comparison, Mapping):
+                raise ForecastLedgerError(f"paired_uncertainty {window_name} comparison for {baseline} must be an object")
+            _integer_at_least(
+                comparison.get("paired_origin_count"), max(expected_origins, minimum_paired_origins),
+                f"{window_name}.{baseline}.paired_origin_count"
+            )
+            for metric in ("brier", "log_loss"):
+                mean_difference = _finite_level(
+                    comparison.get(f"mean_{metric}_difference_vs_benchmark"),
+                    f"{window_name}.{baseline}.mean_{metric}_difference_vs_benchmark"
+                )
+                if mean_difference >= 0.0:
+                    raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} mean {metric} difference must favor the candidate")
+
+            temporal = comparison.get("temporal_moving_block_bootstrap")
+            if not isinstance(temporal, Mapping) or temporal.get("status") != "ESTIMATED":
+                raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} temporal interval is not estimated")
+            temporal_level = _finite_level(temporal.get("confidence_level"), f"{window_name}.{baseline}.temporal.confidence_level")
+            if temporal_level + 1e-12 < required_individual_level:
+                raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} temporal interval is not familywise-adjusted")
+            _validate_loss_interval(temporal.get("brier_difference_ci"), f"{window_name}.{baseline}.temporal.brier_difference_ci")
+            _validate_loss_interval(temporal.get("log_loss_difference_ci"), f"{window_name}.{baseline}.temporal.log_loss_difference_ci")
+
+            source = comparison.get("source_clustered_moving_block_bootstrap")
+            if not isinstance(source, Mapping) or source.get("status") != "ESTIMATED":
+                raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} source-clustered interval is not estimated")
+            source_level = _finite_level(source.get("confidence_level"), f"{window_name}.{baseline}.source.confidence_level")
+            if source_level + 1e-12 < required_individual_level:
+                raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} source-clustered interval is not familywise-adjusted")
+            _integer_at_least(source.get("source_cluster_count"), minimum_source_clusters, f"{window_name}.{baseline}.source_cluster_count")
+            _integer_at_least(source.get("observed_minimum_origins_per_source_cluster"), minimum_per_cluster, f"{window_name}.{baseline}.source.observed_minimum_origins_per_source_cluster")
+            _integer_at_least(source.get("minimum_origins_per_source_cluster"), minimum_per_cluster, f"{window_name}.{baseline}.source.minimum_origins_per_source_cluster")
+            for metric in ("brier", "log_loss"):
+                cluster_mean = _finite_level(
+                    source.get(f"equal_cluster_weighted_mean_{metric}_difference"),
+                    f"{window_name}.{baseline}.source.equal_cluster_weighted_mean_{metric}_difference"
+                )
+                if cluster_mean >= 0.0:
+                    raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} source-clustered mean {metric} difference must favor the candidate")
+            _validate_loss_interval(source.get("brier_difference_ci"), f"{window_name}.{baseline}.source.brier_difference_ci")
+            _validate_loss_interval(source.get("log_loss_difference_ci"), f"{window_name}.{baseline}.source.log_loss_difference_ci")
 
     data_cutoff = evaluation_data_cutoff
     completed = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]

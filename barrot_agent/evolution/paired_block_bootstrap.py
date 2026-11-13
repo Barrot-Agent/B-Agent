@@ -64,14 +64,16 @@ def _moving_block_sample(values: list[float], block_length: int, rng: random.Ran
 
 
 def _temporal_interval(
-    values: list[float], *, block_length: int, replicates: int, seed: int
+    values: list[float], *, block_length: int, replicates: int, seed: int,
+    confidence_level: float,
 ) -> list[float]:
     rng = random.Random(seed)
     means = [
         statistics.fmean(_moving_block_sample(values, block_length, rng))
         for _ in range(replicates)
     ]
-    return [_percentile(means, 0.025), _percentile(means, 0.975)]
+    tail = (1.0 - confidence_level) / 2.0
+    return [_percentile(means, tail), _percentile(means, 1.0 - tail)]
 
 
 def _source_cluster_interval(
@@ -80,6 +82,7 @@ def _source_cluster_interval(
     block_length: int,
     replicates: int,
     seed: int,
+    confidence_level: float,
 ) -> tuple[list[float], float]:
     """Resample source groups, then contiguous time blocks within each group."""
     cluster_ids = sorted(clusters)
@@ -100,7 +103,8 @@ def _source_cluster_interval(
             sampled = _moving_block_sample(values, min(block_length, len(values)), rng)
             selected_cluster_means.append(statistics.fmean(sampled))
         means.append(statistics.fmean(selected_cluster_means))
-    return [_percentile(means, 0.025), _percentile(means, 0.975)], point_estimate
+    tail = (1.0 - confidence_level) / 2.0
+    return [_percentile(means, tail), _percentile(means, 1.0 - tail)], point_estimate
 
 
 def evaluate_paired_block_bootstrap(
@@ -113,6 +117,7 @@ def evaluate_paired_block_bootstrap(
     minimum_source_clusters: int = 5,
     minimum_origins_per_source_cluster: int = 2,
     random_seed: int = 20261113,
+    confidence_level: float = 0.95,
 ) -> dict[str, Any]:
     """Compare each model with a benchmark using paired temporal/source resampling.
 
@@ -134,6 +139,14 @@ def evaluate_paired_block_bootstrap(
             raise PairedBootstrapError(f"{field} must be an integer of at least {minimum}")
     if isinstance(random_seed, bool) or not isinstance(random_seed, int):
         raise PairedBootstrapError("random_seed must be an integer")
+    if (
+        isinstance(confidence_level, bool)
+        or not isinstance(confidence_level, (int, float))
+        or not math.isfinite(float(confidence_level))
+        or not 0.0 < float(confidence_level) < 1.0
+    ):
+        raise PairedBootstrapError("confidence_level must be finite and strictly between zero and one")
+    confidence_level = float(confidence_level)
 
     by_origin: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     origin_times: dict[str, datetime] = {}
@@ -192,14 +205,16 @@ def evaluate_paired_block_bootstrap(
         if count >= minimum_origins:
             temporal = {
                 "status": "ESTIMATED",
-                "confidence_level": 0.95,
-                "brier_difference_ci_95": _temporal_interval(
+                "confidence_level": confidence_level,
+                "brier_difference_ci": _temporal_interval(
                     brier, block_length=block_length_origins,
                     replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 1,
+                    confidence_level=confidence_level,
                 ),
-                "log_loss_difference_ci_95": _temporal_interval(
+                "log_loss_difference_ci": _temporal_interval(
                     log_loss, block_length=block_length_origins,
                     replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 2,
+                    confidence_level=confidence_level,
                 ),
             }
         else:
@@ -207,8 +222,8 @@ def evaluate_paired_block_bootstrap(
                 "status": "INSUFFICIENT_ORIGINS",
                 "required_origins": minimum_origins,
                 "observed_origins": count,
-                "brier_difference_ci_95": None,
-                "log_loss_difference_ci_95": None,
+                "brier_difference_ci": None,
+                "log_loss_difference_ci": None,
             }
 
         brier_clusters: dict[str, list[tuple[datetime, float]]] = defaultdict(list)
@@ -230,20 +245,23 @@ def evaluate_paired_block_bootstrap(
             brier_ci, brier_cluster_mean = _source_cluster_interval(
                 brier_clusters, block_length=block_length_origins,
                 replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 3,
+                confidence_level=confidence_level,
             )
             log_ci, log_cluster_mean = _source_cluster_interval(
                 log_clusters, block_length=block_length_origins,
                 replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 4,
+                confidence_level=confidence_level,
             )
             source_clustered = {
                 "status": "ESTIMATED",
-                "confidence_level": 0.95,
+                "confidence_level": confidence_level,
                 "source_cluster_count": cluster_count,
                 "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
+                "observed_minimum_origins_per_source_cluster": min(cluster_sizes),
                 "equal_cluster_weighted_mean_brier_difference": brier_cluster_mean,
                 "equal_cluster_weighted_mean_log_loss_difference": log_cluster_mean,
-                "brier_difference_ci_95": brier_ci,
-                "log_loss_difference_ci_95": log_ci,
+                "brier_difference_ci": brier_ci,
+                "log_loss_difference_ci": log_ci,
             }
         else:
             source_clustered = {
@@ -252,9 +270,15 @@ def evaluate_paired_block_bootstrap(
                 "required_source_clusters": minimum_source_clusters,
                 "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
                 "observed_minimum_origins_per_source_cluster": min(cluster_sizes) if cluster_sizes else 0,
-                "brier_difference_ci_95": None,
-                "log_loss_difference_ci_95": None,
+                "brier_difference_ci": None,
+                "log_loss_difference_ci": None,
             }
+
+        if math.isclose(confidence_level, 0.95, rel_tol=0.0, abs_tol=1e-12):
+            temporal["brier_difference_ci_95"] = temporal.get("brier_difference_ci")
+            temporal["log_loss_difference_ci_95"] = temporal.get("log_loss_difference_ci")
+            source_clustered["brier_difference_ci_95"] = source_clustered.get("brier_difference_ci")
+            source_clustered["log_loss_difference_ci_95"] = source_clustered.get("log_loss_difference_ci")
 
         comparisons[model_id] = {
             "paired_origin_count": count,
@@ -273,6 +297,7 @@ def evaluate_paired_block_bootstrap(
         "minimum_source_clusters": minimum_source_clusters,
         "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
         "random_seed": random_seed,
+        "confidence_level": confidence_level,
         "interpretation": (
             "Loss differences are model minus benchmark; negative values favor the model. "
             "Temporal intervals resample contiguous origin blocks. Source-clustered intervals "

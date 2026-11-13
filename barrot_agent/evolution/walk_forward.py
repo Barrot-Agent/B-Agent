@@ -586,6 +586,29 @@ def evaluate_chronological_walk_forward(
             source_group_resolution_status = "UNRESOLVED"
         if not source_groups:
             source_group_resolution_status = "UNRESOLVED"
+
+        # Cluster evaluation errors by the canonical publisher lineage of the
+        # observed target record, not by the union of every source in the entire
+        # training series. Multi-publisher target aggregates remain unclustered.
+        outcome_source_records = [
+            source for source in target.get("sources", [])
+            if isinstance(source, Mapping)
+        ]
+        outcome_source_group_resolution_status = "RESOLVED"
+        try:
+            outcome_source_groups = canonical_independence_groups(outcome_source_records)
+        except ValueError:
+            outcome_source_groups = []
+            outcome_source_group_resolution_status = "UNRESOLVED"
+        if len(outcome_source_groups) == 1:
+            outcome_source_cluster_id = outcome_source_groups[0]
+        elif len(outcome_source_groups) > 1:
+            outcome_source_cluster_id = None
+            outcome_source_group_resolution_status = "MULTIPLE_OUTCOME_SOURCE_GROUPS"
+        else:
+            outcome_source_cluster_id = None
+            outcome_source_group_resolution_status = "UNRESOLVED"
+
         if target_event <= cutoff or target_available > evaluation_cutoff:
             skipped.append({"data_cutoff_utc": cutoff_s, "reason": "target_outcome_violates_point_in_time_boundary"})
             continue
@@ -671,6 +694,9 @@ def evaluate_chronological_walk_forward(
                         "target_tolerance_seconds": target_tolerance_seconds,
                         "source_independence_groups": source_groups,
                         "source_group_resolution_status": source_group_resolution_status,
+                        "outcome_source_independence_groups": outcome_source_groups,
+                        "outcome_source_group_resolution_status": outcome_source_group_resolution_status,
+                        "outcome_source_cluster_id": outcome_source_cluster_id,
                         "prior_smoothing_alpha": float(prior_alpha),
                         "directional_confidence": float(directional_confidence),
                         "flat_probability": float(flat_probability),
@@ -699,11 +725,7 @@ def evaluate_chronological_walk_forward(
         {
             "origin_id": item["data_cutoff_utc"],
             "origin_time_utc": item["data_cutoff_utc"],
-            "source_group_id": (
-                item["assumptions"]["source_independence_groups"][0]
-                if len(item["assumptions"]["source_independence_groups"]) == 1
-                else None
-            ),
+            "source_group_id": item["assumptions"]["outcome_source_cluster_id"],
             "model_id": item["model_id"],
             "brier_loss": item["scoring"]["brier_score"],
             "log_loss": item["scoring"]["log_loss"],
@@ -759,6 +781,11 @@ def evaluate_chronological_walk_forward(
         "forecast_count": len(forecasts),
         "metrics": metrics,
         "paired_uncertainty": paired_uncertainty,
+        "paired_uncertainty_source_cluster_semantics": (
+            "Clusters use the canonical publisher lineage of each observed target record. "
+            "They do not assert independence of model-training feature sources. Multi-publisher "
+            "target aggregates remain unclustered and cannot produce a source-clustered interval."
+        ),
         "forecasts": forecasts,
         "skipped_origins": skipped,
         "calibration_is_diagnostic_only": False,
