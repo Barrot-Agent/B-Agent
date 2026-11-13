@@ -4538,3 +4538,19 @@ The documentation/research-only head `7f4954f7b03aad5edbb9ee12e39ed8794ef522df` 
 
 Run75B artifact: `research/xrp_intelligence/20261113T030151Z-run75b-evernorth-capital-custody-and-deployment-reconciliation.json`. This follow-up is documentation/research-only; exact-head CI must be checked before any merge decision.
 
+
+
+## Run75C — exact-head CI trigger hardening
+
+The current GitHub connector can read workflow runs but does not expose a workflow-dispatch action. The CI workflow had `workflow_dispatch`, but its push trigger covered only `main`; GitHub did not create the full-suite run for the previous handoff-only integration push. The integration branch now adds `integration/**` to the CI push trigger while preserving the existing `main` and pull-request triggers.
+
+This is a verification-only workflow change: it does not change Barrot V3 runtime behavior, permissions, deployment, secrets, or external actions. The commit is expected to trigger the full repository suite on the integration branch. The exact new head must pass that run before any merge decision.
+
+Previous exact-head evidence:
+- `7f4954f7b03aad5edbb9ee12e39ed8794ef522df`: 3,542 tests, eight subtests, zero failures, 61.55% inclusive coverage, 723 core tests, 76% core coverage, wheel and installed package passed.
+- `82790c154402da33864312a5b7d0f60b5b358673`: dependency audit and fail-closed push gate passed; full suite was not triggered by the connector's branch update path.
+
+Run75B's Evernorth capital reconciliation is retained in `research/xrp_intelligence/20261113T030151Z-run75b-evernorth-capital-custody-and-deployment-reconciliation.json`.
+
+No merge or external action is authorized by this workflow change. PR #1662 remains draft and all branch-protection, approval, least-privilege, credential-revocation, Pages-publication and semantic-review blockers remain.
+
