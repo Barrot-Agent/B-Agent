@@ -6421,3 +6421,102 @@ Next actions:
 6. Keep forecast issuance disabled until synchronized point-in-time data, trusted evaluator attestation, independent shadow outcomes and measured out-of-sample superiority over all four baselines are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+---
+
+## Run83 — 2026-11-13T08:12:37Z — repository, workflow-security, XRP-market and institutional update
+
+### Mission and repository state
+XRP intelligence and measured prediction-engine mastery remain priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration code head inspected: `84b5552ec266d1c020d37d2084e477804ba0c20e`; integration is 2,224 commits ahead of main and zero behind.
+- Main tree: 1,381 entries; integration tree: 2,339 entries.
+- PR #1662: open, draft, mergeable, 1,093 changed files, 313,585 additions and 5,136 deletions.
+- Open PR inventory: 375 total; 361 drafts, 14 non-drafts; 367 target main and eight target other branches.
+- PR #1662 has zero formal reviews, zero approvals and zero review threads.
+- No new branch or PR was created. No source PR was closed. Main was not changed.
+
+### Exact-head verification
+GitHub Actions recorded the following successful pull-request checks against integration head `84b5552ec266d1c020d37d2084e477804ba0c20e`:
+
+- Full CI: [43387639925](https://github.com/Barrot-Agent/B-Agent/actions/runs/43387639925).
+- Dependency audit: [43387639975](https://github.com/Barrot-Agent/B-Agent/actions/runs/43387639975).
+- Fail-closed gate: [43387639922](https://github.com/Barrot-Agent/B-Agent/actions/runs/43387639922).
+
+The full suite passed 3,553 tests, zero failures and eight subtests; inclusive coverage was 61.68%. The core suite passed 725 tests at 76% coverage. Wheel build and installed Barrot V3/XRP mission verification passed. Five dependency groups passed with zero known vulnerabilities reported.
+
+The coverage configuration is not a simple reduction from 70% to 53%. The expanded inclusive coverage scope is `barrot_agent`, `directive_platform` and `data`, with branch coverage and a 53% floor. A separate legacy core-package gate retains the 70% floor; measured core coverage was 76%. The main branch's previous configuration measured a narrower package scope at 70%.
+
+Main CI [43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172) also passed on current main SHA `fb272b40966834754ec686f9ed3ab94123f09306` (747 tests and eight subtests).
+
+### Main workflow and security audit
+All 79 workflow files on main were inventoried for triggers, permissions and write/deployment paths; the integration changes 50 workflow files. Key findings:
+
+- Main Barrot Sync [43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347) is triggered on every main push and manual dispatch. Its workflow suppresses synchronization and Git-push failures, so a green run is not proof of a successful LunaRoute transfer. Integration quarantines the job.
+- Main self-hosted-brain sync is triggered by changes under `self_hosted_brain/`; this PR changes `self_hosted_brain/start.sh`. The integration version disables the deployment job.
+- Main A2A deployment is push-triggered for `a2a/` changes; this PR changes no `a2a/` paths. Integration also adds manual confirmation and separate secret-rotation confirmation.
+- Main Barrot Agent has issue-event/manual triggers and write permissions for contents, issues and pull requests. Integration disables it.
+- Main Pages deployment succeeded on the latest main push [43343511839](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343511839). This PR changes seven `web/` files, so merging would publish them. Publication authorization remains unresolved.
+- Scheduled Cross Analysis [43388779297](https://github.com/Barrot-Agent/B-Agent/actions/runs/43388779297) succeeded on main with read-only repository permissions.
+- Hugging Face, Databricks, Kaggle, Space restart and paper-trading workflows remain manual or quarantined; no external deployment, restart, Kaggle submission, paper trade or real-money action occurred.
+
+The GitHub connector still has admin, maintain, push, pull and triage permissions. Main branch-protection inspection returns HTTP 403; visible fallback ruleset 10863829 is disabled. Required-check enforcement cannot be independently verified.
+
+### Integration and PR reconciliation
+Current changed-path sets show that every path changed by #1661 (1,072), #1660 (972), #1643 (670), #1640 (280) and #1642 (seven) also appears in #1662. This is path overlap only, not semantic equivalence; differing blobs remain review candidates.
+
+Unique source-only paths remain:
+- #1653: six.
+- #1655: three.
+- #1659: four.
+- #1615: thirteen.
+
+Preserve these PRs. Do not close any source PR before successor content is merged and verified on main.
+
+### XRP market structure and data quality
+Run cutoff: 2026-11-13T08:12:37Z.
+
+- Liqwall's 08:02 UTC snapshot showed approximately $1.03 XRP, $1.13B open interest (down 1.1% over 24 hours), average funding of -0.0026% per eight hours, Binance funding of +0.0006%, $19.5M liquidations ($18.4M longs, $1.1M shorts), and 75.0% of Binance XRP accounts long. This is vendor-aggregated derivatives context, not exchange-native raw evidence or a directional signal.
+- An OKX ticker payload carried an event timestamp of 08:17:08 UTC, 271 seconds after this run's cutoff; it was excluded as future-dated. Kraken's ticker did not supply a provider event timestamp and was excluded from point-in-time admission.
+- Direct OKX, Kraken, Binance, Bybit and Coinbase L2 retrieval did not produce a synchronized admissible book. No current depth imbalance or executable liquidity conclusion is made.
+- XRP Insights' latest settled ETF data is November 11: -9,213,260 XRP net over November 9–11, with 1,185,967,427 XRP held. November 12 is provisional.
+- CryptoKeyhole reports -10,005,584 XRP over November 5–11 across four of six daily-tracked funds and says November 12 issuer files were still pending. These trackers use different fund cohorts and holdings-derived methods; do not average them or equate holdings changes with verified cash subscriptions.
+- XRP Insights' November 12 08:00 UTC exchange-wallet snapshot reports 22.34B XRP in 706 attributed wallets across 24 exchanges. Same-wallet change is +45.8M over seven days and -180.9M over 30 days. The total includes 481.6M XRP in wrapped-token, insurance and charity reserves, including Binance-Peg XRP and Coinbase cbXRP backing; it is not tradable float.
+- Reuters reported USD/JPY moved above 160 on November 13. Japan had spent ¥15.4T on intervention in July/August; the New York Fed's disclosed US operation was about $497M in euro sales to buy yen. This is broad dollar/yield/intervention risk context, not XRP-specific causality.
+
+### Institutional and entity graph updates
+- OCC Corporate Applications Search records Circle's First National Digital Currency Bank effective July 24, 2026; Ripple National Trust Bank effective October 26; and Coinbase National Trust Company effective November 6. These are national trust/custody charters, not ordinary deposit-taking commercial-bank charters.
+- Circle's Q3 2026 10-Q reports $331.3M Q3 and $986.6M nine-month distribution costs under its Coinbase collaboration. Coinbase's Q3 2026 10-Q says it renewed the Circle arrangement on the same terms. Coinbase also distributes RLUSD, so it is a multi-issuer platform, not exclusive to Circle.
+- PNC/Coinbase's November 9 corporate-payment pilot uses Circle USDC; it is not evidence of XRP settlement or XRP demand.
+- SBI Holdings disclosed approximately 9% Ripple ownership in June 2025. SBI Group held 60% of SBI Ripple Asia voting rights as of March 31, 2026. SBI Remit announced XRP-enabled remittances to the Philippines, Vietnam and Indonesia in 2023; the cited announcement does not disclose current volumes.
+- SBI also has a $50M Circle investment, a 50/50 SBI Circle Holdings joint venture, a subsidiary's participation in the Circle Arc token presale, and SBI VC Trade distribution/lending products for USDC, RLUSD and JPYSC. These are distinct rails and do not prove exclusive Ripple alignment or native XRP demand.
+- Japan's SBIC East (Tokyo), SBIC Central (Nagoya) and SBIC West (Osaka) are regional SME investment-development companies, separate from SBI Holdings. SBIC East's ChatGPT seminars/training are educational activity. SBI Holdings and SBI Securities separately adopted ChatGPT Enterprise; no SBIC/OpenAI commercial partnership is established.
+- ASK Coin remains ambiguous between an inactive exchange listing and the separate Permission Coin ASK token; no canonical XRPL issuer or direct XRP link is verified. "Actual capital" is not a standardized metric; cash, in-kind XRP, debt, ELOC draws, warrants and secondary resales remain separate.
+- Dr. Kamilah Stevenson person identity is confirmed; the candidate YouTube channel ID/handle relation remains probable, not first-party platform-verified. The repository holds 21 candidate video references, zero verified own-channel inventory, one verified guest appearance and a third-party clip excluded from own-channel attribution.
+
+### Prediction engine status
+The integration contains 48 public-source endpoint definitions: 43 hourly, three weekly CFTC and two noncommercial XRPL node endpoints excluded from scheduled collection. The scheduled public-data workflow exists only on integration and has not run on main. It is read-only, but raw receipt artifacts are retained for 90 days; the local hash chain resets each run because prior raw-receipt archives are not restored. Feature-store checkpoints are seven days and daily backups 90 days. Independent WORM and trusted-time anchoring remain absent.
+
+The CFTC Legacy Futures-Only parser is implemented with eight regression tests and a separate Legacy taxonomy; date-only positioning remains model-ineligible. The current event registry contains 73 curated events, all 73 with null `raw_source_sha256`, zero model-eligible events and forecast status `NOT_ISSUED`.
+
+Forecast admission still requires at least 100 training, 100 out-of-sample and 100 shadow samples; effective sample sizes covering at least ten forecast horizons; at least two independently receipted source groups; calibration status PASS and weighted calibration error no greater than 0.05; a model that beats naive-class-prior, momentum-sign, mean-reversion-sign and volatility-normal baselines on both Brier score and log loss; and an independent Ed25519 evaluator attestation.
+
+The public signal remains `NOT_ISSUED`; fixed-horizon accuracy remains `NOT_EVALUATED`. The legacy 45.5% variable-horizon score is invalid as predictive accuracy. No forecast, paper trade or real-money action occurred.
+
+### Nine-platform status
+ChatGPT/GitHub authentication is verified but overprivileged. Claude, Grok, Gemini and Codex remain unverified; Copilot review artifacts are not formal approval or a structured data connection; Hugging Face has a prior build error; Kaggle is untested; Databricks previously returned HTTP 403. LunaRoute remains a separate unverified internal provider. No external-model dispatch or nine-platform evidence exchange occurred.
+
+### Decision and next actions
+**No merge.** PR #1662 remains draft with zero reviews/approvals. Branch-protection visibility, least privilege, Pages-publication authorization and complete semantic reconciliation remain blockers.
+
+Next actions:
+1. Resolve Pages automatic publication before any merge.
+2. Obtain independently verifiable branch-protection and required-check evidence; reduce connector permissions.
+3. Complete semantic review of all 1,093 changed files and preserve unique source-PR work.
+4. Restore raw-receipt continuity across ingestion runs and add independent WORM/trusted timestamp anchoring.
+5. Execute the scheduled ingestion only after merge authorization; verify raw receipts, feature-store persistence and historical replay.
+6. Keep forecast issuance disabled until the complete out-of-sample, calibration, shadow, baseline and evaluator-attestation gate passes.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
