@@ -242,3 +242,95 @@ No source PR was closed. Do not close supersession candidates until a successor 
 7. Add paired block-bootstrap/source-clustered uncertainty, multivariate/concept drift diagnostics and independent shadow outcomes before forecast admission.
 
 No merge, main write, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run92 — 2026-11-13T13:58:22.802Z — actual capital, stablecoin rails, x402, ASK and institutional network reconciliation
+
+### Repository and exact-head verification — VERIFIED
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`; main remains unchanged.
+- Integration branch at capture: `integration/xrp-v3-unified-main-20261112`; head `fbb7c1fd8dd18b2763fa19dc810e3d752d7d60b8`; 2,253 commits ahead, zero behind; 1,108 changed files, 317,337 additions and 5,136 deletions.
+- PR #1662 remains open, draft and mergeable. No formal approvals or review threads. It is not merge-ready.
+- Open PR inventory last fully paged: 375 total; 361 drafts, 14 non-drafts; 367 target main and eight target other branches.
+- Current integration tree is complete (2,353 entries); main tree is complete (1,381 entries).
+- Latest commit `fbb7c1f` adds a read-only regression test for cross-analysis workflow outputs; it does not add a new runtime capability.
+- [Full CI 43437656753](https://github.com/Barrot-Agent/B-Agent/actions/runs/43437656753), job 131926809011: **3,558 passed, zero failed, eight subtests**, 61.72% inclusive coverage in 61.27 seconds. Core job 131926808592: **730 passed, eight subtests**, 76% coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
+- [Dependency audit 43437656668](https://github.com/Barrot-Agent/B-Agent/actions/runs/43437656668): all five manifest groups passed; no known vulnerabilities reported.
+- [Fail-closed gate 43437656718](https://github.com/Barrot-Agent/B-Agent/actions/runs/43437656718) and push gate 43437647463 passed. Automatic merge remains disabled.
+- The Run92 handoff update itself is documentation-only and will require its own exact-head CI/audit/gate. No main change or merge occurred.
+
+### Actual capital and XRP treasury — PRIMARY SEC EVIDENCE
+
+Source: [Evernorth 424B3 prospectus, filed Oct 30, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm).
+
+- Evernorth reported approximately **473 million XRP held at the Oct 9, 2026 business-combination closing**.
+- Closing gross cash proceeds were approximately **$272.6 million**: $224.6 million from private-placement subscriptions plus $48.0 million remaining in the trust account after redemptions, before transaction expenses.
+- The company reported **388,910,554 XRP contributed in kind**. These are real asset contributions but are not market purchases.
+- The filing separately documents **84,365,876 XRP purchased with $214.05 million cash** from the advance funding, with receipts completed by Nov 6, 2025. The implied gross cash cost is approximately **$2.5366/XRP**. This is a historical purchase, not a Nov 2026 flow.
+- The purchased 84.366 million XRP plus 388.911 million XRP contributed in kind reconcile to approximately 473.276 million XRP, consistent with the rounded 473 million closing holding.
+- In-kind components include 211,319,096 XRP from the Arrington Sponsor Series C contribution, 126,791,458 XRP from Ripple, 50,000,000 XRP from the Larsen Lam Children's Remainder Trust, plus 600,000 XRP from advance subscribers and 200,000 XRP from delayed subscribers. Do not count these as market buys.
+- The $30 million 4% PIK notes produced net proceeds received Oct 12, 2026. They are debt, with general corporate purposes including possible XRP acquisitions; the filing does not prove those proceeds were subsequently used to buy XRP.
+- The Ripple-related revolving facility is debt, not equity capital. The prospectus describes a $7 million facility increased to $10 million, with $9.7 million drawn as of Oct 7, 2026.
+- The Cantor equity line permits up to 5,218,935 new shares, generally at 97% of VWAP. The prospectus reference-price scenario estimates up to approximately $76.8 million gross. It is conditional financing, not cash already raised; no draw was verified in the filings reviewed through this capture.
+- Up to 11,499,992 public warrants at $11.50 could produce approximately $132.25 million only if exercised for cash. No exercise of the full amount was established.
+- The filing identifies four SBI-controlled Evernorth investors and reports 9,431,914 Class A shares held by SBI affiliates, plus Class C shares issued under the 39.9% ownership arrangement. It does **not** allocate the aggregate $214.05 million advance cash or XRP subscriptions to each SBI entity. Do not attribute all advance funding to SBI.
+- Capital categories remain separate: cash proceeds, in-kind XRP, market XRP purchases, debt, related-party credit, conditional equity facilities, warrants and secondary resales.
+
+### Coinbase, Circle, Ripple, SBI and the multi-rail network
+
+**SBI ↔ Circle**
+- SBI Holdings and SBI Shinsei Bank invested **$25 million each** in Circle's IPO, a $50 million combined equity investment. [SBI disclosure](https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf).
+- SBI and Circle established the SBI Circle Holdings joint venture and SBI VC Trade distributed USDC in Japan. [SBI joint-venture disclosure](https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf).
+- Circle identifies SBI Group as a founding validator of Arc. Arc uses USDC for gas and is a competing stablecoin-native payment/agentic rail; this is not an XRP deployment. [Circle Arc launch](https://www.circle.com/pressroom/circle-launches-arc-public-testnet).
+- SBI therefore has a direct Circle/USDC relationship as well as its separate Ripple relationship.
+
+**SBI ↔ Ripple**
+- SBI's 2025 disclosure described SBI Group as holding approximately 9% of Ripple and as its largest external shareholder at that time; the percentage is dated, not a verified Nov 2026 cap-table figure. [SBI disclosure](https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf).
+- SBI Ripple Asia is a separate joint venture.
+- SBI VC Trade launched RLUSD in Japan on June 24, 2026. [Ripple announcement](https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/).
+- SBI is multi-rail, not exclusively aligned to Ripple: it distributes USDC, participates in Circle's Arc and distributes RLUSD.
+
+**Coinbase ↔ Circle**
+- Circle's H1 2026 SEC 10-Q reports $655.3 million in distribution costs to Coinbase. Coinbase held $12.442 billion USDC on platform at June 30, 2026; its daily weighted-average share of USDC on platforms was 18.3% for H1 2026. This is direct distribution/revenue-sharing economics, not XRP activity. [Circle Q2 2026 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm).
+- Circle's USDC has been natively available on XRPL since June 12, 2025. [Circle announcement](https://www.circle.com/blog/usdc-is-coming-to-the-xrp-ledger).
+
+**Coinbase x402 ↔ t54 ↔ XRPL**
+- Coinbase introduced x402 as an open HTTP 402 payment protocol. [Coinbase x402](https://www.coinbase.com/en-in/developer-platform/discover/launches/x402).
+- XRPL's official documentation describes the XRPL x402 implementation as contributed by t54, with t54 hosting the facilitator. It can settle in XRP or supported stablecoins; this is a t54 implementation of an open Coinbase-originated protocol, not proof of a direct Coinbase-Ripple commercial agreement. [XRPL x402 documentation](https://xrpl.org/es-es/docs/agents/agentic-payments-x402).
+- Ripple participated strategically in t54's $5 million seed round; the amount of Ripple's participation was not disclosed. [t54 funding announcement](https://www.t54.ai/blog/t54-labs-raises-5m-seed-round).
+- Mastercard's Agent Pay for Machines initial participants include Coinbase, RippleX and t54. The program is multi-rail; the partner list does not establish XRP-specific settlement. [Mastercard announcement](https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Agent-Pay-for-Machines-to-Unlock-Super-Fast-Always-On-Payments/default.aspx).
+- t54's announced Evernorth collaboration is an intended integration, not proof of a production autonomous treasury deployment. [t54/Evernorth announcement](https://www.t54.ai/blog/t54-announces-strategic-collaboration-with-evernorth).
+
+### Stablecoin and agentic-payment disconfirming evidence
+
+- Ripple's transparency dashboard displays $2.6329 billion total circulating RLUSD and $2.748 billion reserve funds as of Nov 5, 2026. The latest linked independent CPA report is for Sep 21/Sep 30, not Nov 5, and covers multiple approved networks. [Ripple transparency](https://ripple.com/products/stablecoin/transparency/) · [September CPA report](https://cdn.sanity.io/files/ior4a5y3/production/850ed07e8f0556b3b1c1d43eb2a0fc4ef6538ce1.pdf/RLUSD%20Attestation%20Report%20(Sep)_Final%20Signed.pdf).
+- Secondary XRPL dashboards disagree on XRPL-only RLUSD: XRP Insights' prior snapshot was approximately 818.6–829.3 million, while xrpl.fi's current index shows approximately $1.1 billion; Ripple's Nov 5 figure is all-chain. These have different capture times and methodologies. No common-ledger direct issuer-account reconciliation was performed; do not average them.
+- xrpl.fi's current ledger index lists approximately $4.6 million USDC on XRPL. This supports native Circle USDC presence on XRPL but does not establish meaningful XRP demand.
+- Circle says USDC represented 98.8% of agent-driven transaction volume since its Agent Stack launch, with most x402 activity settling in USDC. This is issuer-reported and should be tested independently, but it is material disconfirming evidence against assuming agentic-payment growth automatically accrues to XRP.
+- XRP Radar reports 15.68 million x402 transactions and all-time settlement of 7,031 XRP plus 69,061 RLUSD. xrpl.fi's narrower t54 facilitator fingerprint and operator-reported cumulative count do not reconcile to that figure. The XRPL documentation states SourceTag is merchant-selected and identifies the endpoint, not the paying agent. Counts based on SourceTag are not verified agent identities or capital flows.
+- XRP Radar's 22.26 billion XRP across 24 labeled exchange-wallet groups includes pooled customer deposits, cold storage and some wrapped-token backing. It is not tradable float or executable sell inventory.
+
+### ASK Coin and exact-phrase disambiguation
+
+- The strongest exact-phrase candidate is **Permission Coin (ASK)**. Permission's own documentation lists a LayerZero OFT token with 100 billion fixed supply and official contracts on Base and Polygon: Base `0xBB146326778227A8498b105a18f84E0987A684b4`; Polygon `0xaA3717090CDDc9B227e49d0D84a28aC0a996e6Ff`. No XRPL deployment appears in its official contract list. [Official ASK contracts](https://docs.permission.ai/ask-token/contract-addresses) · [ASK token description](https://docs.permission.ai/ask-token).
+- The older 2025 Base contract is superseded by the current official Base OFT address. Do not use the old address for any integration.
+- AskSurf is an x402 merchant label, not Permission Coin. Prmission is a separate USDC/x402 service, not the ASK token.
+- SBIC East/Central/West identities and the distinction from SBI Holdings remain as recorded in the preceding handoff section. Official SBIC generative-AI/ChatGPT seminars do not establish an OpenAI commercial partnership.
+- One TEDx Talks video is verified for Kamilah Stevenson: [Thinking Your Way Into Health — TEDxWillowCreek](https://www.youtube.com/watch?v=VSgeDgOCexs). Personal-channel ownership and other candidate videos remain unverified.
+
+### Provenance, independence and model admission
+
+- Primary sources: SEC prospectus/10-Q, official SBI/Ripple/Circle/Coinbase/Mastercard/t54/XRPL/Permission/SBIC documents.
+- Secondary sources: XRP Insights, CryptoKeyhole, Alpha Finance, XRP Radar and xrpl.fi. ETF trackers share issuer-file inputs; on-chain dashboards share XRPL ledger and wallet-label dependencies. They are not independent confirmations merely because they are separate websites.
+- This run used public web-rendered pages and SEC documents. Publisher response bytes were not persisted into Barrot RawReceiptArchive; no SHA-256 receipts were created in this run. These findings are **RESEARCH_ONLY**, not point-in-time feature-store admissions.
+- The Bybit public API retrieval attempt through the web layer returned 403/inaccessible responses. This is not evidence of a Bybit outage. The Bybit adapter remains mock-tested only; live exchange execution was not verified.
+- Forecast: **NOT_ISSUED**. Candidate model: not trained. Accuracy: not evaluated. No directional claim is supported by this research alone.
+
+### V3 safety and next actions
+
+- Keep #1662 draft. Current exact-head CI/audit/gate pass does not resolve zero approvals, incomplete semantic review, branch-protection visibility, Pages publication authorization or direct MCP approval gaps.
+- Main `opencode.json` still allows remote LunaRoute MCP and edit/bash/webfetch; the integration version disables remote MCP and asks before mutations. No LunaRoute authentication/data flow has been tested.
+- `MCPOrchestrator` still lacks visible MCPApprovalGate wiring for Hugging Face, Databricks and GitHub actions. The repository repair loop still lacks enforced clean-worktree preflight, unique-preimage checking and rollback. Direct deployment scripts still need internal approval gates even though the Databricks workflow has a separate manual exact-SHA/YES gate and Hugging Face sync is quarantined.
+- No new external platform authentication was established. The Run91D nine-platform map remains the latest capability/authentication/permission/data-flow record.
+- Next: obtain direct publisher bytes and immutable hashes; reconcile RLUSD supply at one XRPL ledger index; reconcile x402 counts using full transaction fields and merchant semantics; separate cash, debt, in-kind XRP, market purchases and contingent facilities in the capital ledger; validate Bybit live ingestion in the authorized read-only collector; complete independent review of all 1,108 changed files and 50 workflow changes; resolve approval and deployment controls before merge.
+- No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external-model dispatch, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
