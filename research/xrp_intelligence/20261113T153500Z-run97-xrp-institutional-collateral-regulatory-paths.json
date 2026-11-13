@@ -47,7 +47,7 @@
     },
     "after_initial_phase": {
       "futures_and_cleared_swaps_customer_accounts": "The digital asset must be accepted by the relevant registered DCO/foreign clearing organization; DCO haircuts and other conditions apply.",
-      "cftc_30_7_customer_accounts": "May include a payment stablecoin, an asset accepted by a DCO/foreign clearing organization, or the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to conditions, notice, risk controls and applicable haircuts/capital charges.",
+      "cftc_30_7_customer_accounts": "May include a payment stablecoin, a digital asset accepted by a DCO/qualifying foreign clearing organization, or the underlying commodity of a futures contract listed on a CFTC-registered DCM. For a non-security digital asset other than Bitcoin, Ether or a payment stablecoin that is not accepted by a DCO/qualifying foreign clearing organization, the FCM must apply at least a 20% haircut and submit revised Regulation 1.11 risk-management policies to CFTC MPD before accepting the asset. Each FCM must file its notice of intent before relying on the no-action position.",
       "fcm_notice_required": true
     },
     "xrp_path": {
@@ -57,7 +57,20 @@
       "cme_source_url": "https://www.cmegroup.com/markets/cryptocurrencies/xrp/xrp/specs",
       "potential_30_7_route": "XRP is the underlying commodity of CME-listed XRP futures, so it may fit the post-ramp 30.7 underlying-commodity category if an FCM meets all conditions and files the required notice.",
       "actual_fcm_notice_or_xrp_customer_collateral_use_verified": false,
-      "dco_acceptance_verified": false
+      "dco_acceptance_verified": false,
+      "minimum_haircut_percent_if_not_accepted_by_dco_or_qualifying_foreign_clearing_org": 20,
+      "revised_risk_management_policies_required_before_acceptance": true,
+      "revised_risk_management_policies_submitted_to": "CFTC Market Participants Division via WinJammer",
+      "fcm_notice_of_intent_required_before_reliance": true,
+      "three_month_asset_restriction_is_per_fcm_notice": true,
+      "regulatory_caveat": "The 20% minimum applies to the non-DCO-accepted non-security digital-asset route; if a DCO or qualifying foreign clearer accepts the asset, its applicable valuation and haircut conditions govern."
+    },
+    "additional_primary_source_evidence": {
+      "source_url": "https://www.cftc.gov/csl/26-05/download",
+      "pages": "14-15",
+      "lines": "524-535 and 560-577",
+      "retrieved_at_utc": "2026-11-13T15:30:00Z",
+      "summary": "For non-Bitcoin, non-Ether, non-payment-stablecoin assets not accepted by a DCO or qualifying foreign clearing organization, the FCM must apply at least a 20% haircut and submit revised risk-management policies to MPD before acceptance. FCM notice of intent is required before relying on the letter; the initial three-month asset restriction is measured from that FCM's notice."
     }
   },
   "cme_clearing": {
@@ -176,7 +189,8 @@
       "CFTC 26-05 is a conditional staff no-action position; no FCM notice or XRP collateral use is verified.",
       "CME Clearing's public acceptable-collateral list does not include XRP.",
       "Coinbase's Q3 filing does not disclose an XRP-specific collateral amount.",
-      "Prime-broker collateral, FCM customer margin and DCO collateral are distinct layers."
+      "Prime-broker collateral, FCM customer margin and DCO collateral are distinct layers.",
+      "The potential 30.7 XRP route is conditional: at least a 20% haircut may apply absent DCO/qualifying foreign clearer acceptance, and an FCM must submit revised risk-management policies to MPD before accepting XRP."
     ]
   }
 }

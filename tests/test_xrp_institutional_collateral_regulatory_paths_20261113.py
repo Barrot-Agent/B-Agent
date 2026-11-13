@@ -110,3 +110,13 @@ def test_collateral_capability_is_event_timeline_only_not_forecast_feature():
     assert admission["eligible_as_xrp_collateral_adoption_feature"] is False
     assert admission["eligible_as_xrp_price_feature"] is False
     assert admission["forecast_status"] == "NOT_ISSUED"
+
+
+def test_cftc_30_7_xrp_route_requires_notice_haircut_and_revised_fcm_policies():
+    xrp = load_artifact()["cftc_letter_26_05"]["xrp_path"]
+    assert xrp["fcm_notice_of_intent_required_before_reliance"] is True
+    assert xrp["three_month_asset_restriction_is_per_fcm_notice"] is True
+    assert xrp["minimum_haircut_percent_if_not_accepted_by_dco_or_qualifying_foreign_clearing_org"] == 20
+    assert xrp["revised_risk_management_policies_required_before_acceptance"] is True
+    assert xrp["revised_risk_management_policies_submitted_to"] == "CFTC Market Participants Division via WinJammer"
+    assert xrp["actual_fcm_notice_or_xrp_customer_collateral_use_verified"] is False
