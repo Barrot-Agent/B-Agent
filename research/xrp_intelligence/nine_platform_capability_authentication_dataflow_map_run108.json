@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run108",
+  "verified_at_utc": "2026-11-13T23:51:53.574Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "integration_head": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+  "least_privilege_status": "FAIL — GitHub connector overprivileged; no other provider authentication verified",
+  "platforms": {
+    "ChatGPT": {
+      "authentication": "VERIFIED",
+      "provider": "GitHub connector",
+      "tested_operations": [
+        "fetch repository tree",
+        "fetch main and integration branches",
+        "inspect PR #1662",
+        "inspect open PR inventory",
+        "inspect workflow runs and jobs",
+        "create commits on the existing integration branch"
+      ],
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false,
+      "data_flow": "ChatGPT session ↔ Barrot-Agent/B-Agent through GitHub connector",
+      "external_model_transfer": false,
+      "restriction": "No merge, deployment, secrets or external writes"
+    },
+    "Claude": {
+      "authentication": "UNVERIFIED",
+      "capabilities": "not tested",
+      "permissions": "unknown",
+      "data_flow": "none verified",
+      "fallback": "local deterministic processing"
+    },
+    "Grok": {
+      "authentication": "UNVERIFIED",
+      "capabilities": "not tested",
+      "permissions": "unknown",
+      "data_flow": "none verified",
+      "fallback": "local deterministic processing"
+    },
+    "Gemini": {
+      "authentication": "UNVERIFIED",
+      "capabilities": "not tested",
+      "permissions": "unknown",
+      "data_flow": "none verified",
+      "fallback": "local deterministic processing"
+    },
+    "Copilot": {
+      "authentication": "NOT_INDEPENDENTLY_TESTED",
+      "evidence": "review artifacts exist; zero formal approvals on PR #1662",
+      "permissions": "unknown",
+      "data_flow": "no dispatch verified",
+      "fallback": "manual repository evidence review"
+    },
+    "Codex": {
+      "authentication": "UNVERIFIED",
+      "capabilities": "not tested",
+      "permissions": "unknown",
+      "data_flow": "none verified",
+      "fallback": "local deterministic processing"
+    },
+    "HuggingFace": {
+      "authentication": "UNVERIFIED",
+      "deployment": "not deployed; prior BUILD_ERROR",
+      "permissions": "unknown",
+      "data_flow": "no current data flow verified",
+      "fallback": "local model evaluation"
+    },
+    "Kaggle": {
+      "authentication": "UNTESTED",
+      "submission": false,
+      "permissions": "unknown",
+      "data_flow": "none",
+      "fallback": "local walk-forward evaluation"
+    },
+    "Databricks": {
+      "authentication": "WRITE_UNAVAILABLE",
+      "last_result": "HTTP 403",
+      "permissions": "unknown",
+      "data_flow": "no write verified",
+      "fallback": "local SQLite feature store"
+    }
+  },
+  "separate_internal_provider": {
+    "name": "LunaRoute",
+    "classification": "not one of the nine platforms",
+    "main_remote_mcp": "enabled",
+    "integration_remote_mcp": "disabled",
+    "endpoint_authentication": "unverified",
+    "external_dispatch": "none"
+  },
+  "coordination": {
+    "independent_tasks_dispatched": 0,
+    "structured_evidence_exchanges": 0,
+    "external_data_transfers": 0,
+    "minority_objections": "retained in research artifacts",
+    "red_team": "local source/provenance review only"
+  },
+  "fallback": "lawful public data ingestion and deterministic local processing; no external platform dependency",
+  "controls": [
+    "least privilege required",
+    "no live connection claim without tested auth and data-flow",
+    "no secrets in evidence artifacts",
+    "no external writes without action-specific approval"
+  ]
+}
