@@ -75,7 +75,7 @@ def test_deribit_ticker_is_timestamped_but_remains_raw_only():
         _ticker(timestamp=datetime(2026, 11, 13, 16, 23, 0, tzinfo=timezone.utc)),
     )
     assert records == []
-    assert source_time == "2026-11-13T16:23:00Z"
+    assert source_time == "2026-11-13T16:23:00.000000Z"
     assert eligible is False
     assert "raw_only" in reason
     assert "open_interest_funding" in reason
@@ -87,7 +87,7 @@ def test_deribit_ticker_staleness_is_preserved_in_raw_only_reason():
         _ticker(timestamp=datetime(2026, 11, 13, 16, 10, 0, tzinfo=timezone.utc)),
     )
     assert records == []
-    assert source_time == "2026-11-13T16:10:00Z"
+    assert source_time == "2026-11-13T16:10:00.000000Z"
     assert eligible is False
     assert f"source_timestamp_older_than_{MAX_LIVE_AGE_SECONDS}_seconds" in reason
 
@@ -114,7 +114,7 @@ def test_deribit_order_book_is_timestamped_but_remains_raw_only():
         _book(timestamp=datetime(2026, 11, 13, 16, 23, 0, tzinfo=timezone.utc)),
     )
     assert records == []
-    assert source_time == "2026-11-13T16:23:00Z"
+    assert source_time == "2026-11-13T16:23:00.000000Z"
     assert eligible is False
     assert "raw_only" in reason
     assert "sequence_semantics" in reason

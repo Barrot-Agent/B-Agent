@@ -18,11 +18,12 @@ def test_feature_store_contract_endpoint_counts_match_registry() -> None:
     contract = (ROOT / "research" / "xrp_intelligence" / "feature-store-contract.md").read_text(
         encoding="utf-8"
     )
-    assert len(ENDPOINTS) == 48
+    assert len(ENDPOINTS) == 50
     assert len(SCHEDULED_ENDPOINTS) == 43
     assert len(WEEKLY_ENDPOINTS) == 3
-    assert "48 public endpoint records: 43 hourly scheduled sources, three weekly scheduled CFTC sources" in contract
-    assert "Thus 46 sources are scheduled (43 hourly plus three weekly) and two are excluded." in contract
+    assert len(ENDPOINTS) == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS) + 4
+    assert "50 public endpoint records: 43 hourly scheduled sources, three weekly scheduled CFTC sources" in contract
+    assert "Thus 46 sources are scheduled (43 hourly plus three weekly) and four endpoint definitions are excluded from scheduling: two Deribit raw-only endpoints and two XRPL public-node endpoints." in contract
     assert "40 endpoint records: 36 hourly scheduled sources" not in contract
     assert "two free non-commercial XRPL public-node endpoints excluded by default" in contract
 

@@ -1,0 +1,226 @@
+{
+  "artifact_type": "barrot_xrp_run99_research_and_integration_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-13T16:41:10.392Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "integration_branch": "integration/xrp-v3-unified-main-20261112",
+  "integration_head_before_run99_commit": "dedae589cc634baa85e6726f0b4ff5fa0237227b",
+  "integration_pr": 1662,
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "ci": {
+    "run_id": 43462977125,
+    "head_sha": "dedae589cc634baa85e6726f0b4ff5fa0237227b",
+    "full_suite": {
+      "passed": 3592,
+      "failed": 6,
+      "subtests": 8,
+      "coverage_percent": 62.14,
+      "duration_seconds": 98.33,
+      "exact_head": true,
+      "exact_head_verified": true,
+      "conclusion": "failure",
+      "run_id": 43462977125,
+      "job_id": 132014492721,
+      "head_sha": "dedae589cc634baa85e6726f0b4ff5fa0237227b"
+    },
+    "core": {
+      "passed": 732,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success",
+      "job_id": 132014493245,
+      "head_sha": "dedae589cc634baa85e6726f0b4ff5fa0237227b"
+    },
+    "dependency_audit": {
+      "passed": true,
+      "manifests": 5,
+      "known_vulnerabilities": 0,
+      "conclusion": "success",
+      "run_id": 43462977141
+    },
+    "fail_closed_gate": {
+      "passed": true,
+      "automatic_merge_enabled": false,
+      "conclusion": "success",
+      "run_id": 43462977318
+    },
+    "failing_tests": [
+      "tests/test_deribit_xrp_public_ingestion.py::test_deribit_ticker_is_timestamped_but_remains_raw_only",
+      "tests/test_deribit_xrp_public_ingestion.py::test_deribit_ticker_staleness_is_preserved_in_raw_only_reason",
+      "tests/test_deribit_xrp_public_ingestion.py::test_deribit_order_book_is_timestamped_but_remains_raw_only",
+      "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
+      "tests/test_xrp_primary_mission_contract.py::test_feature_store_contract_endpoint_counts_match_registry"
+    ],
+    "classification": "Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened."
+  },
+  "endpoint_registry": {
+    "total": 50,
+    "hourly_scheduled": 43,
+    "weekly_scheduled": 3,
+    "scheduled_total": 46,
+    "raw_only_deribit": 2,
+    "excluded_noncommercial_xrpl_nodes": 2
+  },
+  "market_research": {
+    "captured_at_utc": "2026-11-13T16:41:10.392Z",
+    "data_cutoff_utc": "2026-11-13T16:41:10.392Z",
+    "spot": {
+      "coinmarketcap": {
+        "price_usd": 1.01,
+        "market_cap_usd": 64620000000,
+        "volume_24h_usd": 2393309217,
+        "circulating_supply_xrp": 63516606953,
+        "source_as_of": "page crawled 2026-11-13; no exchange event timestamp",
+        "model_eligible": false,
+        "url": "https://coinmarketcap.com/currencies/xrp/"
+      },
+      "binance_us": {
+        "price_usd": 1.028,
+        "change_24h_percent": -2.27,
+        "low_24h_usd": 1,
+        "high_24h_usd": 1.06,
+        "volume_24h_usd": 2510000000,
+        "source_as_of": "page current 2026-11-13; no provider event timestamp",
+        "model_eligible": false,
+        "url": "https://www.binance.us/price/xrp"
+      },
+      "okx": {
+        "price_usd": 1.024,
+        "change_24h_percent": -2.15,
+        "source_as_of_utc": "2026-11-13T10:29:45Z",
+        "model_eligible": false,
+        "url": "https://www.okx.com/price/xrp-xrp"
+      }
+    },
+    "spot_order_book": {
+      "fuelmaps": {
+        "snapshot_at_utc": "2026-11-13T09:00:00Z",
+        "venues_coverage": "6 of 6",
+        "within_1_percent": {
+          "bids_usd": 11900000,
+          "asks_usd": 10100000,
+          "bid_share_percent": 53.9
+        },
+        "within_2_percent": {
+          "bids_usd": 16600000,
+          "asks_usd": 11100000,
+          "bid_share_percent": 60
+        },
+        "limitations": [
+          "resting orders can be cancelled",
+          "not executed volume",
+          "stale snapshot"
+        ],
+        "url": "https://fuelmaps.io/order-book/"
+      },
+      "basis": {
+        "snapshot_at_utc": "2026-11-13T13:26:00Z",
+        "venue": "Binance XRPUSDT perpetual",
+        "mid_usd": 1.0189,
+        "spread_bps": 0.98,
+        "total_bids_usd": 34000000,
+        "total_asks_usd": 28300000,
+        "within_half_percent": {
+          "bids_usd": 6300000,
+          "asks_usd": 7200000
+        },
+        "limitations": [
+          "perpetual, not spot",
+          "single venue",
+          "resting orders can be cancelled"
+        ],
+        "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt"
+      }
+    },
+    "derivatives": {
+      "liqwall": {
+        "snapshot_at_utc": "2026-11-13T07:02:00Z",
+        "open_interest_usd": 1120000000,
+        "funding_average_8h_percent": -0.0025,
+        "funding_binance_8h_percent": 0.0026,
+        "liquidations_24h_usd": 19300000,
+        "long_liquidations_usd": 18400000,
+        "short_liquidations_usd": 906000,
+        "binance_long_accounts_percent": 75.2,
+        "url": "https://liqwall.com/coins/xrp"
+      },
+      "kodexius": {
+        "snapshot_at_utc": "2026-11-13T07:04:00Z",
+        "open_interest_usd": 613070000,
+        "contracts_displayed": 7,
+        "funding_weighted_8h_percent": -0.0005,
+        "url": "https://kodexius.com/data/crypto-derivatives/XRP"
+      },
+      "disagreement": "Liqwall and Kodexius use different venue/contract universes; values are not averaged."
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "window": "2026-11-09 through 2026-11-12",
+        "net_flow_xrp": -9480000,
+        "holdings_xrp": 1190000000,
+        "as_of": "2026-11-12",
+        "url": "https://xrp-insights.com/"
+      },
+      "alpha_finance": {
+        "through": "2026-11-12",
+        "daily_flow_nov12_usd": 0,
+        "flow_30_sessions_usd": -2800000,
+        "cumulative_flow_usd": 1710000000,
+        "funds": 5,
+        "url": "https://alphafinance.io/etf/xrp/"
+      },
+      "cryptokeyhole": {
+        "latest_complete_day": "2026-11-11",
+        "latest_complete_flow_xrp": -3322,
+        "five_complete_sessions_nov5_nov11_xrp": -10005584,
+        "nov12_status": "issuer files unavailable at retrieval",
+        "funds_collected_daily": 4,
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      "disagreement": "Different fund coverage, missing-file rules and overlapping issuer holdings; not independent cash-flow confirmations."
+    },
+    "institutional_update": {
+      "coinbase_pnc": "PNC/Coinbase limited corporate stablecoin pilot uses Circle USDC, not XRP.",
+      "coinbase_rlusd": "Coinbase RLUSD distribution is separate; distribution does not prove native XRP demand.",
+      "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies distinct from SBI Holdings.",
+      "identity": "ASK Coin has no verified canonical XRPL issuer/deployment. Actual capital categories remain separated. Kamilah/Camilla YouTube ownership unverified; no videos attributed."
+    },
+    "model_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE; timestamps stale/missing or not independently receipted."
+  },
+  "prediction_engine": {
+    "trained_xrp_candidate_model": false,
+    "independent_worm": false,
+    "mature_synchronized_history": false,
+    "independent_shadow_outcomes": false,
+    "demonstrated_out_of_sample_lift": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "nine_platform_status": {
+    "ChatGPT": "GitHub connection verified; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "review artifacts only; no formal PR approval",
+    "Codex": "unverified",
+    "HuggingFace": "prior build error; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no write"
+  },
+  "security": {
+    "main_branch_protected": true,
+    "enforcement": "non_admins",
+    "required_status_contexts": [],
+    "detail_api": "HTTP 403",
+    "fallback_ruleset": 10863829,
+    "integration_branch_protected": false,
+    "connector_overprivileged": true,
+    "pages_publication_authorized": false
+  },
+  "merge_decision": "NO_MERGE"
+}
