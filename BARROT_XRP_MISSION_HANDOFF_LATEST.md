@@ -4363,3 +4363,123 @@ No merge. PR #1662 remains draft with zero formal reviews/approvals. Branch-prot
 Next action: verify exact-head checks on this handoff-only descendant; complete semantic reconciliation of the 1,080 paths and the 12/36/9/48/7 differing source blobs; preserve unique research/safety work; resolve least privilege, branch-protection/review visibility, credential-owner revocation and Pages publication authorization. Keep LunaRoute MCP disabled, forecasts disabled and all external/financial actions gated.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure was performed.
+
+
+## Run75 — 2026-11-13T02:48:54Z
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain mission priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Pre-Run75 integration head: `7f0bae68412f1badc52839383e24701ef503321a`.
+- Integration tree: 2,325 entries; main tree: 1,381 entries.
+- Integration ancestry: 2,182 commits ahead, zero behind.
+- PR #1662: 1,080 changed files, 303,224 additions, 5,136 deletions; draft, open, zero formal reviews and zero review threads.
+- Open PR inventory: 375 total, 361 drafts, 14 non-drafts.
+- Title-keyword inventory only: 132 XRP/prediction, 188 safety/security/workflow, three integration, four dependency and 48 other.
+
+### Exact-head verification
+
+Pre-Run75 head `7f0bae68412f1badc52839383e24701ef503321a` passed:
+
+- 3,542 full-suite tests; eight subtests; zero failures.
+- 61.55% inclusive coverage.
+- 723 core tests; 76% core coverage.
+- Wheel build and installed-package verification passed.
+- Five dependency manifest groups passed; zero known vulnerabilities reported.
+- Fail-closed gate passed with automatic merge disabled.
+
+Evidence: [full CI 43352404848](https://github.com/Barrot-Agent/B-Agent/actions/runs/43352404848), [dependency audit 43352404841](https://github.com/Barrot-Agent/B-Agent/actions/runs/43352404841), [fail-closed gate 43352404764](https://github.com/Barrot-Agent/B-Agent/actions/runs/43352404764).
+
+The Run75 handoff and research artifact are documentation/data-only changes. The 3,542-test result remains attributed to the pre-Run75 head until exact-head CI completes on the new commit.
+
+### XRP market snapshot
+
+- XRPL Dashboard reference: $1.0210 at 02:48 UTC, ledger 108,294,762.
+- OKX XRP-USDT: $1.0273 last, $1.0272 bid, $1.0273 ask; provider event time 02:28:51.661 UTC. OKX USDT/USD was 0.99895 at 02:44:09 UTC.
+- Kraken XRP/USD: $1.02369 last; no provider event timestamp. Indicative USDT-normalized OKX/Kraken difference is about 0.247%, but quotes are asynchronous and not executable arbitrage evidence.
+- No fresh synchronized multi-venue L2 snapshot was available. The last Basis Binance perpetual snapshot was 7h17m old at capture and is retained as historical context, not current spot liquidity.
+- Derivatives providers reported materially different universes: Binance OI $318.42M, Kodexius seven-contract OI $635.89M at 00:59 UTC, and TradRadar seven-exchange OI $1.53B at 19:45 UTC Nov12. Funding was positive across these reports; TradRadar showed at least $10.48M liquidations, $10.03M long-side, and a 3.98 long/short account ratio. Do not average OI or treat positioning as a directional forecast.
+- XRP Insights: 22.34B XRP across 706 attributed wallets/24 exchanges as of Nov12 08:00 UTC; same-wallet changes +45.8M over seven days and -180.9M over 30 days. Cold storage and wrapped reserves are included; this is not tradable float.
+- TrackWhale: seven-day tracked large-transfer net exchange outflow 65.67M XRP, a different sample and methodology.
+- XRP Insights ETF tracker: Nov9–11 net outflow 9.213M XRP; 1.186B XRP held Nov11; Nov12 row provisional. Aggregate break-even estimate $1.71 versus $1.04 XRP on Nov11. GXRP flow is withheld because of a known issuer capture gap; BITW index rebalancing can appear as flow.
+- RLUSD dashboard snapshot: $2.67B total, $1.86B Ethereum (69.4%), $818.57M XRPL (30.6%); rolling 24-hour net supply change -$9.17M, including -$52.77M net on XRPL and +$43.61M net on Ethereum. The live event feed was unavailable, the dashboard warns totals may be a few minutes stale, and Ethereum is not anchored in its daily signed snapshot chain. A prior Nov12 snapshot reported about $2.710B total and $863.84M XRPL. Preserve this disagreement; possible chain migration, redemption and cutoff differences remain hypotheses.
+- XRPL validator roll call at 02:41 UTC: 34/35 validators heard; threshold 28/34; SingleAssetVault 23 yes, LendingProtocol 22, LendingProtocolV1_1 22. No amendment was in the 14-day activation countdown. Native XRPL lending remains inactive on this observation.
+
+### Institutional and corporate relationship findings
+
+**Circle and Coinbase**
+
+Circle's Q3 2026 Form 10-Q reports average USDC circulation of $73.3B (+8% YoY), $13.9T Q3 on-chain transaction volume (+49%), $864.9M total revenue and reserve income, $657.6M reserve income (-7.5%), $207.3M other revenue and $181.8M ARC presale revenue. Q3 net income was $226.0M and adjusted EBITDA $317M. The ARC presale is a large non-recurring contributor and must not be treated as recurring stablecoin economics.
+
+Circle reported $331.3M Q3 and $986.6M nine-month distribution costs paid to Coinbase. Coinbase's Q3 10-Q says the Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached an all-time high. Coinbase reported $1.2B Q3 net revenue, $590.2M transaction revenue and $570.2M subscription/services revenue.
+
+Circle's S-1 describes Coinbase's minority equity stake and the reserve-income distribution arrangement. Circle's Q3 10-Q details the actual Q3 payment and balance-dependent economics. This is a direct equity and commercial relationship, not merely a listing relationship.
+
+Effective Nov12, Circle's 10-Q says USDC became a significant e-money token under MiCA, bringing EBA supervision for own funds, reserve assets, liquidity and recovery/redemption plans; ACPR retains other governance and conduct oversight.
+
+**SBI, Circle, Ripple and Arc**
+
+- SBI Holdings and SBI Shinsei Bank invested $50M in Circle at IPO in June 2025, $25M each.
+- SBI Circle Holdings was established as a 50/50 SBI/Circle joint venture in August 2025 to promote USDC in Japan.
+- SBI Group disclosed participation through a consolidated subsidiary in Circle's ARC token presale in May 2026; its individual contribution was not disclosed.
+- SBI Group is a founding validator of Circle Arc, which launched public mainnet on Sep16, 2026. Arc is a separate L1 with USDC-native economics, not XRPL.
+- SBI Holdings' June2025 announcement described it as Ripple's largest external shareholder with approximately 9% ownership at that time. No newer public filing verifying the current percentage was found. SBI Ripple Asia is a separate Ripple/SBI joint venture.
+- SBI VC Trade began distributing RLUSD on June24, 2026 as a Japanese Type IV electronic payment instrument. The primary announcement does not specify supported chain deposits/withdrawals; do not infer that its listing equals XRPL throughput. SBI VC Trade also distributes USDC.
+- SBI Holdings and SBI Securities adopted ChatGPT Enterprise (SBI Securities Jan2025; SBI Holdings Mar2025). SBIC East's Feb2025 ChatGPT seminar was educational activity, not an OpenAI partnership. SoftBank Group's SB OAI Japan joint venture with OpenAI is a separate corporate entity from SBI Holdings and the SBIC companies.
+
+**Ripple, Coinbase, custody and collateral**
+
+- Ripple received final OCC approval for Ripple National Trust Bank on Oct26. Approved activities include RLUSD reserve management, collateral trustee and fiduciary digital-asset custody upon opening. RLUSD continues to be issued by Standard Custody & Trust Company under NYDFS; BNY remains primary reserve custodian. Final approval does not establish that the trust bank is already open.
+- Coinbase RLUSD trading and distribution on Prime, Exchange and Retail is live; Coinbase Global Exchange collateral support was described as forthcoming.
+- Standard Chartered's institutional RLUSD custody on XRPL is live through its DIFC branch; the LMAX collateral-mirroring extension remains planned.
+- Ripple Prime's RWA perpetual swaps reference Trade.xyz contracts on Hyperliquid. RLUSD collateral support is not evidence of XRP collateral.
+- PNC/Coinbase's limited USDC payment pilot is a parallel USDC rail, not an XRP integration.
+
+### Identity and exact-phrase research
+
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies, separate from SBI Holdings.
+- No verified canonical XRP Ledger issuer, contract or deployment for the exact phrase ASK Coin was found.
+- “Actual capital” is not a standardized metric. Keep cash proceeds, in-kind XRP, debt, warrants, ELOC availability and secondary resale supply separate.
+- Kamilah Stevenson person identity is confirmed, but the candidate YouTube channel ID/handle relation remains unverified at platform level. The registry has 21 candidate references, zero verified uploads and an unpassed identity gate. No public-video inventory is attributed to her until exact channel metadata or a first-party reciprocal link is verified.
+
+### Prediction engine and data eligibility
+
+Implemented on integration: 47 public source definitions (45 scheduled), read-only collector design, SHA-256 receipt/hash-chain prototype, point-in-time SQLite feature store, event/source-independence registry, scenario/counter-hypothesis generation, four baselines, chronological walk-forward purge/embargo, calibration/PSI drift diagnostics, and fail-closed Ed25519 evaluator attestation.
+
+The current event registry has 73 curated events, zero byte-exact raw publisher receipts and zero model-eligible events. The scheduled XRP workflow exists only on integration, is main-branch-only and read-only, and stores 90-day artifacts; no scheduled run on main is verified and GitHub artifact retention is not WORM. Production requirements remain independent WORM/timestamp anchoring, replayable synchronized market history, production evaluator signing, independent shadow outcomes, and measured out-of-sample lift over all four baselines.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action occurred.
+
+### Platform, workflow and security status
+
+- ChatGPT/GitHub connector verified for this session, but permissions remain overprivileged.
+- Claude, Grok, Gemini and Codex authentication/data flows unverified.
+- Copilot review activity on PR #1653 is not formal approval of PR #1662.
+- Hugging Face previous BUILD_ERROR; Kaggle untested; Databricks previous HTTP 403; no writes or submissions.
+- LunaRoute is configured as the model provider, but authentication and model data flow are unverified. Integration disables remote MCP, sets OAuth false and requires approval for tools except read-only operations. Main's current `opencode.json` still enables remote LunaRoute MCP and allows edit/bash/webfetch. No model call or data transfer occurred.
+- All 50 changed workflow patches were scanned for triggers, permissions, external deployment, secret references, network commands and trading patterns; 16 high-risk workflow files were opened in detail. Remaining semantic review is incomplete. The XRP ingestion workflow is read-only and main-only; paper-trader, Databricks, Kaggle and deployment workflows require manual confirmations; Hugging Face sync, self-hosted brain sync and legacy writers remain disabled/quarantined. No workflow was triggered.
+- Main branch-protection details return HTTP 403; fallback ruleset #10863829 is disabled; connector permissions include admin, maintain, push, pull and triage. GitHub Pages can automatically publish on a main push, and this PR changes public web files; publication authorization remains unresolved.
+- Prior audit found `.config/gh/hosts.yml` in 17 open PR branch-tip trees; contents were not read and provider-side revocation remains unverified. This was not re-audited in Run75.
+
+### Open PR classifications and decision
+
+- PR #1662: the sole consolidated integration successor; draft, no formal approvals or review threads; blocked.
+- #1661 and #1660: predecessor integration drafts; common content largely superseded, with 12 and 36 differing blobs respectively. Preserve until successor merge and exact overlap reconciliation.
+- #1643, #1640 and #1642: overlapping research/feature branches with 9, 48 and 7 differing blobs respectively. Preserve source-only work; no bulk closure.
+- #1653: unique Codebase Memory integration; eight unresolved review threads, six high-severity and two minor, including artifact overwrite, invalid CLI argument transport, snapshot integrity, recursive submodule fetch and false synchronization success. Blocked.
+- #1655, #1659, #1615, #1614 and #1611: unique or source-only structural, local-inference, safety and forecast-ledger work; unique/unreviewed or blocked pending semantic reconciliation.
+- Other 13 non-draft PRs report mergeable=false against stale base SHAs; dependency and older safety/structural candidates remain blocked or unique/unreviewed.
+
+**No merge.** PR #1662 remains draft; formal approvals are absent; branch-protection/review visibility, least privilege, credential-owner revocation, Pages authorization and full semantic review remain blockers.
+
+### Durable artifact and next action
+
+Run75 research artifact: `research/xrp_intelligence/20261113T024854Z-run75-market-institutional-regulatory-and-integration-audit.json`.
+
+Next action: verify exact-head CI on the Run75 documentation/research-only descendant; resolve branch-protection and review visibility, least-privilege permissions, Pages authorization and credential-owner revocation; complete the remaining workflow semantic review and source-PR reconciliation. Keep forecast issuance disabled until raw-source anchoring, mature synchronized history, independent shadow outcomes and measured out-of-sample lift are verified.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
