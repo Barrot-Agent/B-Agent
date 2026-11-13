@@ -1,0 +1,208 @@
+{
+  "schema_version": "barrot.xrp.run-addendum.v1",
+  "run_id": "Run107C",
+  "captured_at_utc": "2026-11-13T23:24:57Z",
+  "market_cutoff_utc": "2026-11-13T23:21:58Z",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_parent_sha": "0960d6f455d0e829998e618f9c088368056fb292",
+    "branch": "integration/xrp-v3-unified-main-20261112",
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true
+  },
+  "exact_head_ci": {
+    "full_suite": {
+      "run_id": 43526437830,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43526437830",
+      "conclusion": "success",
+      "head_sha": "0960d6f455d0e829998e618f9c088368056fb292",
+      "tests_passed": 3613,
+      "subtests_passed": 8,
+      "failures": 0,
+      "coverage_percent": 62.26,
+      "duration_seconds": 99.15,
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission": "passed"
+    },
+    "core": {
+      "job_id": 132233247798,
+      "tests_passed": 732,
+      "subtests_passed": 8,
+      "duration_seconds": 9.19,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 43526437778,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43526437778",
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed": {
+      "run_id": 43526437801,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43526437801",
+      "conclusion": "success",
+      "meaning": "Merge disabled pending gate verification; audit result only."
+    },
+    "pull_request_event": {
+      "ci_run": 43526445245,
+      "conclusion": "skipped",
+      "reason": "Integration-branch PR-event condition; push-event suite is the actual exact-head result.",
+      "dependency_audit_run": 43526445295,
+      "dependency_audit_conclusion": "success",
+      "fail_closed_run": 43526445260,
+      "fail_closed_conclusion": "success"
+    }
+  },
+  "map_preservation": {
+    "current_map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "restored_original_blob_sha": "aaa327be7b6b23437f129c6f08abcffe78ce6e41",
+    "original_size_bytes": 1660889,
+    "verified_on_head": "0960d6f455d0e829998e618f9c088368056fb292",
+    "separate_run107_snapshot": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run107.json",
+    "note": "The 8b30c6 documentation-only failure was caused by replacing the current-map contract with snapshot schema 1.2. The original 1.1.0 current-map blob was restored byte-for-byte; exact-head suite now passes."
+  },
+  "market_snapshot": {
+    "okx": {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "event_time_utc": "2026-11-13T23:13:42.468Z",
+      "age_seconds_at_cutoff": 495.532,
+      "last": 1.0027,
+      "bid": 1.0028,
+      "bid_size_xrp": 1947.69,
+      "ask": 1.0029,
+      "ask_size_xrp": 2810.819545,
+      "open_24h": 1.0398,
+      "high_24h": 1.0439,
+      "low_24h": 0.9974,
+      "volume_24h_xrp": 47010916.854138,
+      "admission": "EXCLUDED_GT_300_SECONDS"
+    },
+    "kraken": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "event_time_utc": null,
+      "last": 1.00328,
+      "bid": 1.00337,
+      "bid_size_xrp": 797,
+      "ask": 1.00338,
+      "ask_size_xrp": 28,
+      "open_24h": 1.04003,
+      "high_24h": 1.04269,
+      "low_24h": 0.99672,
+      "volume_24h_xrp": 40091940.97149815,
+      "admission": "EXCLUDED_NO_PROVIDER_EVENT_TIMESTAMP"
+    },
+    "binance_perpetual": {
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "event_time_utc": "2026-11-13T23:15:12Z",
+      "age_seconds_at_cutoff": 406,
+      "mark_price": 1.0017,
+      "index_price": 1.00219808,
+      "funding_rate_decimal": 0.00005335,
+      "funding_rate_percent_per_8h": 0.005335,
+      "next_funding_utc": "2026-11-14T00:00:00Z",
+      "admission": "EXCLUDED_GT_300_SECONDS"
+    },
+    "order_book": {
+      "synchronized_spot_l2": "NOT_OBTAINED",
+      "okx_depth_endpoint": "not accessible through retrieval layer",
+      "kraken_depth_endpoint": "not accessible through retrieval layer",
+      "interpretation": "Ticker best bid/ask sizes are not full depth; no executable spread or consolidated liquidity claim."
+    },
+    "raw_receipts": {
+      "byte_exact_capture": false,
+      "sha256": null,
+      "note": "Web retrieval rendered provider JSON; direct raw HTTP byte capture was not available. No immutable raw-source receipt is claimed."
+    }
+  },
+  "evernorth_capital_reconciliation": {
+    "public_warrants": {
+      "oct19_shares_issuable": 11499992,
+      "exercise_price_usd": 11.5,
+      "max_gross_if_all_cash_exercised_usd": 132249908,
+      "nov9_filing_warrants_outstanding_as_of_oct22": 9283847,
+      "difference": 2216145,
+      "theoretical_gross_if_difference_cash_exercised_usd": 25485667.5,
+      "remaining_theoretical_gross_if_all_cash_exercised_usd": 106764240.5,
+      "actual_exercise_proceeds": "NOT_VERIFIED",
+      "interpretation": "The Oct19 and Nov9 filings show different counts but do not explain the 2,216,145 reduction. Do not infer cash exercise or book proceeds."
+    },
+    "share_count": {
+      "oct19_prospectus_shares_outstanding_as_of_oct09": 23638882,
+      "nov9_prospectus_shares_outstanding_as_of_oct22": 26094680,
+      "increase": 2455798,
+      "public_warrant_count_reduction": 2216145,
+      "residual_difference": 239653,
+      "note": "The 239,653 residual equals the Sponsor Warrant count reported in the Nov9 prospectus. This is an arithmetic match only; the filings retrieved do not reconcile the share increase, warrant reduction and sponsor-warrant status. Do not infer exercise proceeds."
+    },
+    "eloc": {
+      "share_capacity": 5218935,
+      "price_formula": "97% of applicable VWAP",
+      "company_option": "At company discretion, subject to contractual limits",
+      "oct30_cover_reference_gross_capacity_usd": 76800000,
+      "nov9_proceeds_as_of_nov09_usd": 0,
+      "commitment_fee_usd": 521893.5,
+      "fee_payment": "NOT_VERIFIED"
+    },
+    "other_confirmed_categories": {
+      "gross_closing_cash_usd": 272600000,
+      "in_kind_xrp": 388910554,
+      "cash_funded_xrp_purchase": {
+        "xrp": 84365876,
+        "cash_usd": 214050000
+      },
+      "pik_note_principal_usd": 30000000,
+      "pik_note_net_cash_usd": 29000000,
+      "related_company_facility_draw_as_of_oct07_usd": 9700000,
+      "sponsor_warrants": 239653,
+      "registered_resale_shares": 73688162,
+      "issuer_proceeds_from_holder_resales_usd": 0
+    },
+    "source_urls": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm"
+    ]
+  },
+  "kamilah_youtube": {
+    "verified_person": "Dr. Kamilah Stevenson",
+    "verified_speaker_video": {
+      "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+      "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "channel": "TEDx Talks",
+      "published_at": "2018-05-18",
+      "attribution": "Verified speaker appearance; not own-channel."
+    },
+    "official_financial_education_site": "https://prescribewealth.com",
+    "candidate_channel": {
+      "handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "third_party_reported_subscribers": 143000,
+      "third_party_reported_videos": 1300,
+      "first_party_link": false,
+      "ownership": "UNVERIFIED",
+      "attributed_videos": 0
+    },
+    "inventory": {
+      "verified_speaker_appearances": 1,
+      "verified_own_channel_videos": 0,
+      "other_candidate_videos": "QUARANTINED"
+    },
+    "sources": [
+      "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "https://kamilahstevenson.com",
+      "https://prescribewealth.com",
+      "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info"
+    ]
+  },
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "trained_xrp_candidate_model": false,
+    "real_money": false,
+    "paper_trade": false
+  },
+  "merge_decision": "NO_MERGE"
+}

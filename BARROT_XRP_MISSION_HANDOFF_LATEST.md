@@ -1,3 +1,40 @@
+# Run107C — Corrective exact-head verification and late-session research update
+Verification completed: 2026-11-13 23:24:57 UTC
+Market snapshot cutoff: 2026-11-13 23:21:58 UTC
+
+## Exact-head verification after correction
+The corrective integration head `0960d6f455d0e829998e618f9c088368056fb292` passed:
+- [Full repository CI 43526437830](https://github.com/Barrot-Agent/B-Agent/actions/runs/43526437830): **3,613 passed, 8 subtests passed, zero failures**, 62.26% inclusive coverage, 99.15 seconds.
+- Core tests: **732 passed, 8 subtests passed**, 9.19 seconds.
+- [Dependency audit 43526437778](https://github.com/Barrot-Agent/B-Agent/actions/runs/43526437778): five manifest groups passed, zero known vulnerabilities reported.
+- [Fail-closed audit 43526437801](https://github.com/Barrot-Agent/B-Agent/actions/runs/43526437801): passed with merge disabled.
+- The PR-event CI job was skipped by the integration-branch condition; the push-event full suite is the exact-head result.
+
+The earlier documentation head `8b30c6b` failed 42 tests because the canonical 1,660,889-byte current platform-map file was incorrectly replaced by the separate Run107 snapshot schema. The original current-map blob was restored byte-for-byte from parent `fe90fd5`, SHA `aaa327be7b6b23437f129c6f08abcffe78ce6e41`. The Run107 map remains a separate snapshot. The corrected head now passes the full suite. No runtime code changed.
+
+## Late-session market refresh
+At 23:21:58 UTC:
+- OKX XRP-USDT event time 23:13:42.468 UTC: last $1.0027, bid $1.0028, ask $1.0029, top-level sizes 1,947.69 XRP bid / 2,810.82 XRP ask, 24-hour range $0.9974–$1.0439 and volume 47.011M XRP. The observation was 495.5 seconds old, so excluded by the 300-second feature gate.
+- Kraken XRP/USD: last $1.00328, bid $1.00337, ask $1.00338, top-level sizes 797 XRP bid / 28 XRP ask, 24-hour range $0.99672–$1.04269 and volume 40.092M XRP. No provider event timestamp; excluded.
+- Binance XRPUSDT perpetual: mark $1.0017, index $1.00219808, funding +0.005335% per eight hours, next funding 00:00 UTC. Provider timestamp 23:15:12 UTC; 406 seconds old at cutoff, excluded.
+- OKX and Kraken raw depth endpoints were inaccessible through the retrieval layer. No synchronized spot L2 was obtained. Ticker top-level sizes are not full depth.
+- These asynchronous observations do not establish an executable cross-venue spread. Web-rendered JSON was not captured byte-exact; no SHA-256 raw receipt is claimed.
+
+## Evernorth actual-capital follow-up
+The public-warrant reconciliation remains unresolved:
+- Oct 19 prospectus: 11,499,992 shares issuable at $11.50, up to $132.25M gross only if all warrants are exercised for cash.
+- Nov 9 prospectus: 9,283,847 Pubco Warrants outstanding as of Oct 22.
+- Difference: 2,216,145 warrants; theoretical cash proceeds would be $25.486M only if all were cash-exercised. No exercise proceeds are verified.
+- The same filings show 23,638,882 shares outstanding as of Oct 9 and 26,094,680 as of Oct 22, an increase of 2,455,798. Subtracting the public-warrant count reduction leaves 239,653, equal to the Sponsor Warrant count in the Nov 9 prospectus. This is an arithmetic match, not an accounting explanation. Do not infer public or sponsor warrant exercises or proceeds.
+- ELOC: 5,218,935 share capacity at 97% of applicable VWAP; Oct 30 cover reference implies $76.8M gross capacity, but Nov 9 filing reports zero proceeds as of Nov 9. The $521,893.50 commitment fee is a non-refundable fee/outflow; payment not verified.
+- Confirmed cash, in-kind XRP, cash-funded XRP purchase, PIK debt, related-company facility debt, warrants, ELOC capacity and secondary resales remain separate.
+
+## Kamilah Stevenson video inventory
+One verified public speaker appearance: [Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek](https://www.youtube.com/watch?v=VSgeDgOCexs), TEDx Talks, May 18, 2018. This is not an own-channel upload. `prescribewealth.com` identifies Dr. Kamilah Stevenson as founder of MKS Health LLC and a financial-education company. The third-party-listed `@drkamilahstevenson` channel has no first-party link from the official site; ownership and its videos remain unverified and unattributed. Inventory: one verified speaker appearance, zero verified own-channel uploads.
+
+## Current decision
+PR #1662 remains draft/open with zero formal approvals and reviews. Main is unchanged. Security, semantic reconciliation, branch-protection visibility and Pages publication authorization remain blockers. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action.
+
 # Run107B — Corrective CI reconciliation, Evernorth capital and Kamilah video inventory
 Retrieved: 2026-11-13 23:20:03 UTC
 
