@@ -2,7 +2,7 @@
   "artifact_type": "barrot.xrp.repository_market_run_audit",
   "schema_version": "1.0.0",
   "run_id": "Run91D",
-  "captured_at_utc": "2026-11-13T13:32:00Z",
+  "captured_at_utc": "2026-11-13T13:45:00Z",
   "mission": {
     "priority": 1,
     "primary": "XRP intelligence and measured prediction-engine mastery",
@@ -100,7 +100,7 @@
     "scope_note": "These results are for the exact current integration head c6d6dab969df061ed09fd337a869af55b69e1863, not a predecessor."
   },
   "market_snapshot": {
-    "cutoff_utc": "2026-11-13T13:32:00Z",
+    "cutoff_utc": "2026-11-13T13:45:00Z",
     "model_admission": "RESEARCH_ONLY; none of these web observations was ingested into Barrot's point-in-time feature store or backed by a byte-exact raw publisher receipt.",
     "spot": [
       {
@@ -131,6 +131,27 @@
       }
     ],
     "derivatives_and_depth": [
+      {
+        "source": "Liqwall all-exchange XRP futures snapshot",
+        "url": "https://liqwall.com/coins/xrp",
+        "provider_update_time_utc": "2026-11-13T13:22:00Z",
+        "age_at_cutoff_seconds": 1380,
+        "market_type": "vendor aggregate across 14 exchanges",
+        "reference_price_usd": 1.02,
+        "liquidations_24h_usd": 13700000,
+        "long_liquidations_usd": 12700000,
+        "short_liquidations_usd": 1000000,
+        "average_funding_percent_per_8h": 0.0084,
+        "binance_funding_percent_per_8h": 0.01,
+        "open_interest_usd": 1120000000,
+        "open_interest_change_1h_percent": 0.23,
+        "open_interest_change_24h_percent": -0.9,
+        "binance_long_account_share_percent": 74.7,
+        "binance_top_trader_long_share_percent": 67.8,
+        "hyperliquid_long_account_share_percent": 52.1,
+        "admission": "EXCLUDED_STALE_VENDOR_AGGREGATE",
+        "limitation": "The source reports aggregated public data across 14 exchanges. Coverage differs from Kodexius and Swiftedge. Do not average totals or treat the vendor aggregate as an independent exchange feed."
+      },
       {
         "source": "Swiftedge XRP perpetual market snapshot",
         "url": "https://swiftedge.uk/xrp/today",
@@ -173,6 +194,29 @@
     ],
     "etf_flows": [
       {
+        "source": "XRP Insights issuer-holdings-derived ETF tracker",
+        "url": "https://xrp-insights.com/data",
+        "as_of": "2026-11-12",
+        "tracked_universe": "Six US spot XRP ETFs plus the XRP sleeve of BITW",
+        "trading_days_in_dataset": 235,
+        "net_flow_nov_9_to_nov_12_xrp": -9481905,
+        "estimated_usd_flow": -9900000,
+        "total_holdings_nov_12_xrp": 1185698783,
+        "average_cost_break_even_usd_per_xrp": 1.7096,
+        "estimated_acquisition_cost_usd": 2030000000,
+        "nov_12_spot_reference_usd": 1.02,
+        "price_below_average_cost_percent": 40.3,
+        "admission": "RESEARCH_ONLY_NOT_RAW_RECEIPTED",
+        "methodology": [
+          "Daily flow is computed from day-over-day issuer-reported XRP holdings; it is not taken from issuer flow reports.",
+          "Flow-excluded funds contribute zero to the headline flow calculation.",
+          "BITW index rebalancing or fee accruals paid in XRP can be counted as flows.",
+          "Some historical rows are reconstructed from third-party daily estimates between issuer-reported anchor days.",
+          "Issuer publication timing can move a creation/redemption into a later session."
+        ],
+        "interpretation": "The average fund cost basis is an estimated aggregate acquisition-cost measure, not a market support level, investor cost basis or price target."
+      },
+      {
         "source": "Alpha Finance five-fund XRP ETF tracker",
         "url": "https://alphafinance.io/etf/xrp/",
         "as_of": "2026-11-12 session",
@@ -182,16 +226,127 @@
         "cumulative_net_inflow_usd": 1710000000,
         "nov_12_reported_flow_usd": 0,
         "limitation": "Aggregator reports no fund list, AUM, holdings or fees on this page; issuer-file lineage and zero-flow policy require separate reconciliation. Not independent confirmation of other trackers."
+      },
+      {
+        "source": "Alpha Finance five-fund XRP ETF tracker",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "as_of": "2026-11-12 session",
+        "fund_count": 5,
+        "last_7_sessions_net_usd": -18000000,
+        "last_30_sessions_net_usd": -2800000,
+        "cumulative_net_inflow_usd": 1710000000,
+        "nov_12_reported_flow_usd": 0,
+        "limitation": "Different fund cohort and USD calculation from XRP Insights. Its page says fund list, AUM, holdings and fees are not published. Do not average with XRP Insights or treat zero as universal issuer confirmation."
       }
     ],
     "source_independence": {
       "okx_and_kraken": "Separate exchange publishers, but timestamps/currency pairs are not synchronized.",
       "swiftedge": "Third-party perpetual-market aggregation; do not treat as an independent exchange source.",
       "kodexius": "Third-party aggregation of public exchange contract data; overlapping upstream exchange feeds.",
-      "alpha_finance": "Single ETF flow aggregator; do not average with trackers sharing issuer-file inputs."
+      "alpha_finance": "Single ETF flow aggregator; do not average with trackers sharing issuer-file inputs.",
+      "trackwhale": "Single vendor's selected public transfer sample; not independent confirmation of full exchange flows.",
+      "xrp_insights": "Issuer holdings are primary inputs, but flow calculations are a derived tracker series with excluded/reconstructed rows.",
+      "glassnode": "Independent analytics provider, but BTC measures must not be misapplied as XRP observations.",
+      "macro_news": "Reuters reports market consensus and geopolitics; official BLS PPI is the primary macro data source."
     },
     "raw_source_sha256": null,
-    "raw_receipt_status": "No byte-exact publisher response bytes were archived for these web observations."
+    "raw_receipt_status": "No byte-exact publisher response bytes were archived for these web observations; the artifact records URLs, provider vintages, extracted fields and explicit admission exclusions only.",
+    "exchange_flows": [
+      {
+        "source": "TrackWhale XRP public preview",
+        "url": "https://trackwhale.io/xrp-whale-tracker",
+        "provider_update_time_utc": "2026-11-13T13:20:00Z",
+        "age_at_cutoff_seconds": 1500,
+        "large_transfer_records": 52,
+        "inflows_xrp": 79730000,
+        "inflow_transfers": 4,
+        "outflows_xrp": 161610000,
+        "outflow_transfers": 8,
+        "net_exchange_flow_xrp": -81880000,
+        "inflows_usd_estimate": 93080000,
+        "outflows_usd_estimate": 180440000,
+        "net_usd_estimate": -87360000,
+        "admission": "EXCLUDED_STALE_VENDOR_SAMPLE",
+        "limitations": [
+          "Selected large-transfer sample, not complete exchange-wallet accounting.",
+          "Internal and exchange-to-exchange transfers are excluded from exchange flow totals.",
+          "USD values are recorded estimates.",
+          "Unknown-wallet transfers are not owner-attributed and do not prove selling."
+        ],
+        "notable_rows": [
+          "A 16M XRP unknown-wallet-to-Bitso inflow at 09:37 UTC.",
+          "Three 10.3M XRP Binance-to-Binance rows are classified as internal rotations, not external exchange flows.",
+          "A 168.42M XRP transfer is the largest recorded transfer but is not identified as exchange flow."
+        ]
+      }
+    ],
+    "macro_context": [
+      {
+        "source": "Glassnode The Week Onchain, Week 45",
+        "url": "https://research.glassnode.com/the-week-onchain-week-45-2026/",
+        "published_date": "2026-11-11",
+        "data_cutoff": "2026-11-11 11:00 UTC for price/derivatives; 09:00 UTC for order book; ETF and stablecoin measures through 2026-11-09",
+        "observations": [
+          "Major stablecoin supply contracted by $14.2B over 30 days, the largest contraction since June 2022.",
+          "US spot Bitcoin ETFs recorded approximately $1.6B net outflows over 20 sessions.",
+          "Glassnode reported a Coinbase spot discount and declining US demand.",
+          "Counter-evidence: long leverage was flushed, bids outweighed asks in the Bitcoin order book, and two large wallet cohorts began accumulating."
+        ],
+        "xrp_relevance": "Broad crypto-liquidity context only; BTC order-book and wallet observations are not XRP evidence."
+      },
+      {
+        "source": "US Bureau of Labor Statistics October 2026 PPI release",
+        "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+        "published_at": "2026-11-13 08:30 ET",
+        "observations": {
+          "final_demand_monthly_percent": 0.3,
+          "final_demand_12_month_percent": 6.5,
+          "final_demand_less_food_energy_trade_monthly_percent": 0.5,
+          "final_demand_less_food_energy_trade_12_month_percent": 4.9,
+          "goods_monthly_percent": 0.5,
+          "services_monthly_percent": 0.2,
+          "energy_monthly_percent": -0.1
+        },
+        "xrp_relevance": "Higher producer-price inflation may reinforce restrictive-rate expectations; it is a macro covariate, not an XRP-specific causal signal."
+      },
+      {
+        "source": "Reuters dollar, Treasury yields and yen",
+        "url": "https://www.reuters.com/world/africa/dollar-near-19-month-high-fed-hike-bets-yen-tests-160-2026-11-13/",
+        "published_date": "2026-11-13",
+        "observations": [
+          "Dollar on track for its strongest weekly gain in about two months.",
+          "US two-year Treasury yield around 4.86%.",
+          "Markets priced roughly 12% probability of a 50-basis-point December Fed hike.",
+          "USD/JPY around 159.99, with Japanese intervention risk elevated."
+        ],
+        "xrp_relevance": "Broad risk/liquidity context; no direct causal link to XRP established."
+      },
+      {
+        "source": "Reuters China Pacific drills",
+        "url": "https://www.reuters.com/world/china/china-stages-unannounced-pacific-drills-silent-intimidation-taiwan-officials-say-2026-11-13/",
+        "published_date": "2026-11-13",
+        "observations": [
+          "More than 100 Chinese naval and coast guard vessels were involved at peak; around 70 remained active Friday.",
+          "Drills occurred ahead of the APEC summit in Shenzhen and an expected Trump-Xi meeting."
+        ],
+        "xrp_relevance": "Geopolitical risk context only; no direct XRP causal relationship established."
+      }
+    ],
+    "scenario_evidence": {
+      "risk_off_hypothesis": [
+        "XRP ETF holdings-derived outflows over four sessions.",
+        "Broad stablecoin supply contraction and weak US crypto demand.",
+        "Higher PPI and hawkish-rate repricing, stronger dollar and higher Treasury yields.",
+        "XRP futures long-liquidation skew and long-heavy Binance accounts."
+      ],
+      "stabilization_counter_hypothesis": [
+        "Glassnode reports leverage flushed and large BTC wallet cohorts accumulating.",
+        "Glassnode reports BTC bids outweigh asks, but this is not XRP order-book evidence.",
+        "Liqwall reports XRP funding still positive and OI down less than 1% over 24h, not a complete deleveraging signal.",
+        "RLUSD institutional custody and stablecoin distribution may support XRPL use, but do not establish incremental XRP demand."
+      ],
+      "adoption_caveat": "RLUSD custody, USDC payment rails, stablecoin supply and XRP collateral are separate variables. PNC/Coinbase pilot uses USDC converted to USD; Standard Chartered's planned LMAX collateral integration is RLUSD, not XRP."
+    }
   },
   "institutional_and_regulatory_updates": [
     {
