@@ -6245,3 +6245,77 @@ The integration changes the inclusive `pyproject.toml` threshold from 70% to 53%
 ### Handoff commit verification
 
 The Run81 handoff-only predecessor `86d7ab107f17b6fc4f4aedb5654c229a5329b705` independently passed exact-head full CI: 3,553 passed, eight subtests, zero failures, 61.68% inclusive coverage, 725 core tests passed at 76%, wheel build and installed V3/XRP mission verification passed; five dependency groups reported zero known vulnerabilities; fail-closed gate passed. This addendum creates a new head and therefore requires its own exact-head checks before any merge consideration.
+
+
+## Run81B — 2026-11-13T07:22:00Z: agentic payments, RLUSD and CFTC cross-market reconciliation
+
+### XRPL x402 / agentic payments
+
+A new public payment-rail activity source was identified: T54 Labs' XRPL AI Hub and hosted XRPL x402 facilitator.
+
+- T54's own hub reports 15,678,385 total x402 transactions, $77,972.79 all-time value, 193 registered merchants and 5,410 live services at this snapshot.
+- Its transaction ledger lists individual hashes, XRPL ledger indexes, timestamps, merchant/resource, buyer, asset amount, SourceTag and InvoiceID. One sample shown at 07:14:31 UTC was 0.001 RLUSD at ledger 108,298,655, with a public XRPL Explorer link. Independent raw-node verification of the sample was not completed in this run.
+- T54's facilitator documentation describes payer-signed XRPL Payment blobs, invoice binding/replay protection, pre-submit policy checks, validated-ledger settlement, no custody, and support for XRP plus IOUs including RLUSD and USDC.
+- The transaction table's "Intent: Unverified" label is the optional Verifiable Intent credential state, not proof that the underlying payment failed settlement. The hub separately describes the base settlement as verified before resource release.
+- T54's XRPL x402 docs define SourceTag 804681468 as the default required sourceTag. It is not a unique agent ID. SourceTag alone cannot establish unique agent counts or agent identity; InvoiceID, merchant, destination and transaction-level evidence are required.
+- The hub's 15.678M transaction count and $77.973K value imply about $0.005 per counted event if the count is one-to-one with settlements. This is a micro-payment rail, not evidence of large institutional capital flows.
+- XRP Insights' separate snapshot reports 15,613,265 transactions, 191 agents, 193 merchants, 5,882 endpoints, and all-time amounts of 7,030 XRP plus 67,545 RLUSD. This is not independent validation of T54's own metrics and has a different count/scope. At the contemporaneous XRP price, the reported XRP leg is roughly $7.2K versus $67.5K RLUSD; the activity appears RLUSD-dominant by value, subject to the aggregator's methodology.
+- Mastercard's official Agent Pay for Machines announcement names T54 Labs and Ripple among initial participants. This verifies a partner relationship, not Mastercard settlement volume on XRPL. T54's claim of Ripple strategic investment is company-reported; no direct investment amount was found.
+- Ripple's AI Starter Kit and the XRPL x402 implementation support agent payments in XRP and RLUSD. The payment rail is real as a technical integration; its reported economic value is still small.
+
+Sources:
+- T54 hub: https://xrpl-ai.org/
+- T54 ledger history: https://xrpl-ai.org/transactions
+- T54 facilitator architecture: https://xrpl-x402.t54.ai/
+- T54 x402 specification: https://xrpl-x402.t54.ai/docs/xrpl-scheme
+- XRPL AI Starter Kit: https://ripple.com/insights/building-the-future-of-agentic-payments/
+- Mastercard Agent Pay for Machines: https://www.mastercard.com/news/press/2026/november/mastercard-agent-pay-for-machines-expands-ai-commerce-partnerships/
+- XRP Insights agentic-payments tracker: https://xrp-insights.com/xrp-radar/
+
+Barrot source-registry check: no T54/x402 endpoint or parser is currently present in `xrp_public_ingestion.py`. Do not scrape the dashboard blindly. Before adding a scheduled source, verify a stable public stats/API contract, terms, field definitions and raw transaction reproducibility; keep vendor-reported aggregate counters research-only until independently reconciled.
+
+### RLUSD supply and chain distribution disagreement
+
+Three public on-chain trackers show materially different vintages and balances:
+
+- Stables.cool at 06:10 UTC November 13: total approximately $2.68B; XRPL $829.3M (-8.38% 24h); Ethereum $1.86B (+2.70% 24h); total -1.0% 24h.
+- xrpl.to at 02:21 UTC November 13: total approximately $2.67B; XRPL $818.57M; Ethereum $1.85B; chain shares 30.6%/69.4%.
+- Stableradar at 17:16 UTC November 12: total approximately $2.710B; XRPL $863.84M; Ethereum $1.830B; Base $16.11M.
+- XRPL Dashboard at 03:45 UTC November 13 reports XRPL RLUSD supply down $55.2M (-6.31%) over 24 hours.
+
+These are not reconciled to a common ledger cutoff and provider methodology. Do not average them or interpret the XRPL decline as XRP selling. The evidence suggests a material recent contraction in reported XRPL RLUSD supply and a larger Ethereum share, but exact magnitude requires direct issuer-account obligations and Ethereum totalSupply receipts at synchronized ledger/block cutoffs. The latest monthly reserve attestation remains September 30; it cannot be used to assert current reserve coverage against November circulating supply.
+
+Sources:
+- https://stables.cool/
+- https://xrpl.to/tokens/RLUSD
+- https://stableradar.com/stablecoin/ripple-usd
+- https://xrpldashboard.com/
+
+### CFTC Coinbase XRP derivatives — current TFF coverage
+
+The official November 3, 2026 CFTC Traders in Financial Futures Futures-Only report includes two Coinbase Derivatives XRP products:
+
+- NANO XRP, code 176LM1, 500 XRP per contract: open interest 32,505 contracts (16.2525M XRP contract-equivalent); weekly OI change -32,864 contracts (-16.432M XRP equivalent). Leveraged funds represent 90.2% of long and 97.3% of short OI. This roughly halving of OI may reflect expiry/roll or contract migration; it is not automatically liquidation or directional conviction.
+- NANO XRP PERP STYLE, code 176LM3, 500 XRP per contract: open interest 38,392 contracts (19.196M XRP equivalent); weekly OI change -465 contracts (-232,500 XRP equivalent). Leveraged funds are 4.6% of long and 77.0% of short OI; other reportables are 75.2% of long and 7.4% of short OI.
+- The standard Coinbase XRP contract code 176LM2 is absent from this current report. The existing TFF contract map keeps it optional; absence remains unreported/unknown, never zero-filled.
+- The integration TFF parser already maps CME XRP 176740, Coinbase Nano XRP 176LM1, Coinbase Nano XRP Perp Style 176LM3 and optional standard XRP 176LM2. The new Legacy Futures-Only parser adds the CME non-commercial/commercial category view. The Coinbase Legacy Futures-Only page also contains the Nano contracts, but TFF already captures them; its separate Legacy category view is supplemental, not a reason to duplicate the current TFF series.
+- These CFTC reports are regulated futures-only positioning, not offshore perpetuals, spot holdings or the whole derivatives market.
+
+Primary source:
+- https://www.cftc.gov/dea/futures/financial_lf.htm
+
+### Current derivatives and market context
+
+At the latest retrieved CryptoKeyhole snapshots (07:00 UTC November 13), XRP perpetual open interest was down 2.7% over 24 hours and funding was -0.0001% per eight hours. Its 24-hour liquidation dashboard showed $18.1M XRP liquidations, approximately $17.0M long and $1.05M short. This aligns with short-term long-side deleveraging, while the older positive 30-day funding and dated-futures contango remain separate horizon/venue observations. Do not turn this into a directional forecast.
+
+Current Kraken XRP/USD retrieval was $1.02518 with a $1.04003 24-hour open, $0.99672 low and $1.05548 high; Kraken does not supply an event timestamp in this ticker. OKX XRP-USDT was $1.0273 at 07:12:44 UTC, about five minutes old at the 07:18 snapshot. The last complete Fuelmaps book remains 06:00 UTC and is older than its freshness window. No synchronized executable depth is model-eligible.
+
+### CFTC schedule
+
+CFTC announced on October 27 that it plans to move COT releases from weekly to semiweekly by the end of 2026, with Monday data published Wednesday and Wednesday data published Friday at 3:30 p.m. Eastern. No effective date was confirmed. The current holiday-adjusted schedule still places the next weekly release on November 16. The integration's semiweekly effective-date field remains unset, correctly avoiding premature schedule assumptions.
+
+Source: https://www.cftc.gov/PressRoom/PressReleases/9201-26
+
+### Prediction and source eligibility
+
+The x402, RLUSD-supply and public web snapshots above are research observations, not Barrot raw-source receipts. The event registry's model-eligible count remains zero. Do not promote them into point-in-time features until byte-exact receipts, synchronized cutoffs, source-independence groups and independent ledger verification are present. Forecast remains NOT_ISSUED.
