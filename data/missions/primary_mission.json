@@ -27,7 +27,7 @@
     "Preserve raw-source bytes where available, SHA-256 receipts, retrieval time, provider event time, source identity, source independence, corrections and disagreements.",
     "Keep data cutoff, event time and ingestion time distinct; detect stale, cached, delayed and revised observations.",
     "Never issue a directional forecast until data quality, leakage-safe out-of-sample evaluation, calibration, drift and shadow-evaluation gates pass.",
-    "No guaranteed returns, real-money actions or paper trades.",
+    "No guaranteed returns or real-money actions. Paper-trade or simulation execution is prohibited unless the exact action, product, source SHA, scope and run are explicitly approved; shadow evaluation does not itself authorize a paper trade.",
     "No deployment, secret operation, Space restart, Kaggle submission, external publication or funds movement without the specific required approval.",
     "At the start of repository work, inspect current main, complete tree, open PRs, ancestry, overlapping diffs, CI, dependencies, security settings and durable handoff.",
     "Before creating a branch or PR, search all open PRs for the same objective, paths and commits; maintain at most one active integration PR per coherent workstream.",
