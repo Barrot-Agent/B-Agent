@@ -74,6 +74,7 @@ def test_xrp_hypotheses_and_prediction_boundary_are_explicit() -> None:
         assert hypothesis["support"]
         assert hypothesis["disconfirming_or_missing"]
         assert hypothesis["tests"]
+        assert set(hypothesis.get("evidence", [])) <= set(sources)
 
     assert data["predictions"]["issued"] is False
     assert data["predictions"]["reason"]
@@ -1275,7 +1276,7 @@ def test_run131b_evidence_graph_and_platform_map_are_resolvable() -> None:
     sources = {item["id"] for item in data["source_registry"]}
     assert len(sources) == len(data["source_registry"])
     observation_ids = [item["id"] for item in data["observations"]]
-    assert len(observation_ids) == len(set(observation_ids))
+    assert len(observation_ids) == len(set(observation_ids)) == 19
     for item in data["observations"]:
         assert item["classification"] and item["claim"]
         assert item["evidence"]
