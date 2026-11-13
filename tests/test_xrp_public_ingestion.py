@@ -486,6 +486,7 @@ def _fake_fetcher(captured: datetime):
             "coinbase_cbxrp_proof_of_reserves",
             "cftc_contract_status_index",
             "cftc_tff_financial_futures",
+            "cftc_legacy_futures_only",
         }:
             html_by_source = {
                 "xrp_etf_xrpr_issuer_page": "<html><title>REX-Osprey XRP ETF XRPR</title><p>As of 11/03/2026</p><table><tr><td>CoinShares XRP ETP</td></tr></table></html>",
@@ -533,6 +534,7 @@ Changes from: October 27, 2026 Total Change is: -465
 0 0 0 0 0 0 82 -1,313 0 -1,217 753 0 670 95
 Number of Traders in Each Category Total Traders: 284
 </pre></html>""",
+                "cftc_legacy_futures_only": (Path(__file__).resolve().parent / "fixtures" / "cftc_legacy_xrp_20261103.html").read_text(encoding="utf-8"),
             }
             html_text = html_by_source[source_id]
             return {
@@ -646,7 +648,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
     assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
     assert summary["weekly_source_policy"]["captured_source_ids"] == []
-    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures"]
+    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"]
     assert set(summary["collection_policy"]["excluded_noncommercial_xrpl_node_source_ids"]) == set(XRPL_NODE_SOURCES)
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))
@@ -658,8 +660,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.24"
-    assert summary["parser_version"] == "xrp-public-market-v3.23"
+    assert summary["adapter_version"] == "xrp-public-market-v3.25"
+    assert summary["parser_version"] == "xrp-public-market-v3.24"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -1328,7 +1330,7 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 47
+    assert len(ENDPOINTS) == 48
     assert len(SCHEDULED_ENDPOINTS) == 43
     assert records == []
     assert source_as_of is None
@@ -1393,6 +1395,23 @@ def test_default_public_fetcher_routes_primary_issuer_pages_to_html(monkeypatch,
         "barrot_agent.evolution.xrp_public_ingestion.fetch_public_json",
         lambda sid, url: calls.append(("json", sid, url)) or {"kind": "json"},
     )
+    url = dict(ENDPOINTS)[source_id]
+    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    assert calls == [("html", source_id, url)]
+
+
+
+def test_default_public_fetcher_routes_cftc_legacy_report_to_html(monkeypatch):
+    calls = []
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.fetch_public_html",
+        lambda sid, url: calls.append(("html", sid, url)) or {"kind": "html"},
+    )
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion.fetch_public_json",
+        lambda sid, url: calls.append(("json", sid, url)) or {"kind": "json"},
+    )
+    source_id = "cftc_legacy_futures_only"
     url = dict(ENDPOINTS)[source_id]
     assert _default_public_fetcher(source_id, url) == {"kind": "html"}
     assert calls == [("html", source_id, url)]
@@ -2675,10 +2694,11 @@ def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monke
     delayed_monday_run = datetime(2026, 11, 16, 21, 3, tzinfo=timezone.utc)
     unlisted_monday_run = datetime(2026, 11, 9, 21, 3, tzinfo=timezone.utc)
 
-    assert len(WEEKLY_ENDPOINTS) == 2
+    assert len(WEEKLY_ENDPOINTS) == 3
     assert [item[0] for item in WEEKLY_ENDPOINTS] == [
         "cftc_contract_status_index",
         "cftc_tff_financial_futures",
+        "cftc_legacy_futures_only",
     ]
     assert _weekly_endpoints_for_capture(saturday_daily_run) == WEEKLY_ENDPOINTS
     assert _weekly_endpoints_for_capture(saturday_hourly_run) == ()
@@ -2699,14 +2719,16 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
     summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
 
-    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 2
+    assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 3
     assert summary["source_failure_count"] == 0
     assert summary["weekly_source_policy"]["captured_source_ids"] == [
         "cftc_contract_status_index",
         "cftc_tff_financial_futures",
+        "cftc_legacy_futures_only",
     ]
     assert summary["weekly_source_policy"]["parsed_source_ids"] == [
-        "cftc_tff_financial_futures"
+        "cftc_tff_financial_futures",
+        "cftc_legacy_futures_only",
     ]
     assert summary["weekly_source_policy"]["raw_only_source_ids"] == [
         "cftc_contract_status_index"
@@ -2717,6 +2739,7 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     )
     assert any(item["source_id"] == "cftc_contract_status_index" for item in raw_only)
     assert not any(item["source_id"] == "cftc_tff_financial_futures" for item in raw_only)
+    assert not any(item["source_id"] == "cftc_legacy_futures_only" for item in raw_only)
 
     research_only_payload = json.loads(
         (tmp_path / "weekly" / "research_only_observations.json").read_text(encoding="utf-8")
@@ -2738,6 +2761,35 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     assert status_observation["futures_only_dropped"] == ["176LM2"]
     assert status_observation["futures_and_options_combined_dropped"] == ["176LM2"]
     assert status_observation["model_eligible"] is False
+
+    legacy_observation = next(
+        item for item in research_only_payload["observations"]
+        if item["source_id"] == "cftc_legacy_futures_only"
+    )
+    assert legacy_observation["observation_type"] == "cftc_legacy_xrp_futures_only_position_features"
+    assert legacy_observation["source_data_as_of_utc"] == "2026-11-03T00:00:00.000000Z"
+    assert legacy_observation["timestamp_precision"] == "date_only"
+    assert legacy_observation["reporting_status"] == "reported"
+    assert legacy_observation["contract_code"] == "176740"
+    assert legacy_observation["contract_multiplier_xrp"] == 50000
+    assert legacy_observation["open_interest_contracts"] == 7216
+    assert legacy_observation["open_interest_xrp_equivalent"] == 360800000
+    assert legacy_observation["open_interest_change_contracts"] == -845
+    assert legacy_observation["total_traders"] == 29
+    assert legacy_observation["position_reconciliation_status"] == "passed"
+    assert legacy_observation["change_reconciliation_status"] == "passed"
+    assert legacy_observation["positions"]["non_commercial"]["net_long_short_contracts"] == 1465
+    assert legacy_observation["positions"]["non_commercial"]["net_long_short_change_contracts"] == 185
+    assert legacy_observation["positions"]["commercial"]["net_long_short_contracts"] == -1322
+    assert legacy_observation["positions"]["nonreportable"]["net_long_short_contracts"] == -143
+    assert legacy_observation["concentration"]["gross_4_or_less_long_pct"] == 81.0
+    assert legacy_observation["model_eligible"] is False
+    assert legacy_observation["feature_count"] == 36
+    legacy_features = {item["feature_id"]: item for item in legacy_observation["features"]}
+    assert legacy_features["xrp.derivatives.cftc.legacy_futures_only.cme_xrp.open_interest_contracts"]["value"] == 7216
+    assert legacy_features["xrp.derivatives.cftc.legacy_futures_only.cme_xrp.noncommercial_net_contracts"]["value"] == 1465
+    assert legacy_features["xrp.derivatives.cftc.legacy_futures_only.cme_xrp.commercial_net_contracts"]["value"] == -1322
+    assert legacy_features["xrp.derivatives.cftc.legacy_futures_only.cme_xrp.top4_gross_long_pct"]["value"] == 81.0
 
     assert cftc_observation["feature_count"] == 30
     features = {item["feature_id"]: item for item in cftc_observation["features"]}
@@ -2808,7 +2860,7 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 47
+    assert len(ENDPOINTS) == 48
     assert len(SCHEDULED_ENDPOINTS) == 43
 
 
@@ -2901,7 +2953,7 @@ def test_sbi_vc_trade_lending_page_is_scheduled_digest_only_and_not_a_feature_so
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
     assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
-    assert len(ENDPOINTS) == 47
+    assert len(ENDPOINTS) == 48
     assert len(SCHEDULED_ENDPOINTS) == 43
 
 

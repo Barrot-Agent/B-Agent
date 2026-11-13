@@ -27,12 +27,13 @@ from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .walk_forward import WalkForwardEvaluationError, evaluate_chronological_walk_forward
 from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT_MONITOR_VERSION, monitor_feature_drift
 from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
+from .cftc_legacy import parse_cftc_legacy_futures_only_report
 from .event_timeline import EventTimelineError, build_event_timeline
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp"}
-ADAPTER_VERSION = "xrp-public-market-v3.24"
-PARSER_VERSION = "xrp-public-market-v3.23"
+ADAPTER_VERSION = "xrp-public-market-v3.25"
+PARSER_VERSION = "xrp-public-market-v3.24"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
@@ -132,6 +133,7 @@ ENDPOINTS = (
     ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"),
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
+    ("cftc_legacy_futures_only", "https://www.cftc.gov/dea/futures/deacmelf.htm"),
     ("xrpl_inftf_server_info", "https://xrplcluster.com/"),
     ("xrpl_honeycluster_server_info", "https://honeycluster.io/"),
 )
@@ -216,6 +218,7 @@ NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS = frozenset(XRPL_NODE_SOURCES)
 WEEKLY_ENDPOINTS = (
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
+    ("cftc_legacy_futures_only", "https://www.cftc.gov/dea/futures/deacmelf.htm"),
 )
 WEEKLY_SOURCE_IDS = frozenset(source_id for source_id, _url in WEEKLY_ENDPOINTS)
 # CFTC currently lists these delayed 2026 release dates. Its announced semiweekly plan has no confirmed effective date yet.
@@ -230,7 +233,7 @@ SCHEDULED_ENDPOINTS = tuple(
 
 
 def _weekly_endpoints_for_capture(captured: datetime) -> tuple[tuple[str, str], ...]:
-    """Select CFTC TFF after scheduled publication, including listed holiday delays."""
+    """Select CFTC weekly reports after scheduled publication, including listed holiday delays."""
     if captured.tzinfo is None:
         return ()
     utc = captured.astimezone(timezone.utc)
@@ -3728,6 +3731,131 @@ def _parse_cftc_tff(
     return records, event_s, False, reason
 
 
+
+def _parse_cftc_legacy_futures_only(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    contract_status_html: str | None = None,
+):
+    html_text = payload.get("html_text") if isinstance(payload, Mapping) else None
+    parsed = parse_cftc_legacy_futures_only_report(
+        html_text, contract_status_html=contract_status_html
+    )
+    report_date = datetime.strptime(
+        parsed["positions_as_of_date"], "%Y-%m-%d"
+    ).replace(tzinfo=timezone.utc)
+    if report_date.date() > captured.astimezone(timezone.utc).date():
+        raise XRPIngestionError(
+            "CFTC Legacy Futures-Only positions-as-of date is later than capture time"
+        )
+    event_s = _iso(report_date)
+    captured_s = _iso(captured)
+    contract = parsed["contract"]
+    if contract["reporting_status"] != "reported":
+        return (
+            [],
+            event_s,
+            False,
+            "official_cftc_legacy_futures_only_xrp_contract_"
+            f"{contract['reporting_status']}_no_zero_fill",
+        )
+
+    positions = contract["positions"]
+    traders = contract["trader_counts"]
+    concentration = contract["concentration"]
+    metrics = [
+        ("open_interest_contracts", contract["open_interest_contracts"], "contracts"),
+        ("open_interest_change_contracts", contract["open_interest_change_contracts"], "contracts"),
+        ("open_interest_xrp_equivalent", contract["open_interest_xrp_equivalent"], "xrp_equivalent_contracts"),
+        ("open_interest_change_xrp_equivalent", contract["open_interest_change_xrp_equivalent"], "xrp_equivalent_contracts"),
+        ("total_traders", contract["total_traders"], "traders"),
+        ("noncommercial_long_contracts", positions["non_commercial"]["long_contracts"], "contracts"),
+        ("noncommercial_short_contracts", positions["non_commercial"]["short_contracts"], "contracts"),
+        ("noncommercial_spreading_contracts", positions["non_commercial"]["spreading_contracts"], "contracts"),
+        ("noncommercial_net_contracts", positions["non_commercial"]["net_long_short_contracts"], "contracts"),
+        ("noncommercial_net_change_contracts", positions["non_commercial"]["net_long_short_change_contracts"], "contracts"),
+        ("noncommercial_spreading_change_contracts", positions["non_commercial"]["spreading_change_contracts"], "contracts"),
+        ("commercial_long_contracts", positions["commercial"]["long_contracts"], "contracts"),
+        ("commercial_short_contracts", positions["commercial"]["short_contracts"], "contracts"),
+        ("commercial_net_contracts", positions["commercial"]["net_long_short_contracts"], "contracts"),
+        ("commercial_net_change_contracts", positions["commercial"]["net_long_short_change_contracts"], "contracts"),
+        ("nonreportable_long_contracts", positions["nonreportable"]["long_contracts"], "contracts"),
+        ("nonreportable_short_contracts", positions["nonreportable"]["short_contracts"], "contracts"),
+        ("nonreportable_net_contracts", positions["nonreportable"]["net_long_short_contracts"], "contracts"),
+        ("nonreportable_net_change_contracts", positions["nonreportable"]["net_long_short_change_contracts"], "contracts"),
+        ("reportable_long_contracts", positions["reportable_total"]["long_contracts"], "contracts"),
+        ("reportable_short_contracts", positions["reportable_total"]["short_contracts"], "contracts"),
+        ("noncommercial_long_traders", traders["non_commercial_long_traders"], "traders"),
+        ("noncommercial_short_traders", traders["non_commercial_short_traders"], "traders"),
+        ("noncommercial_spreading_traders", traders["non_commercial_spreading_traders"], "traders"),
+        ("commercial_long_traders", traders["commercial_long_traders"], "traders"),
+        ("commercial_short_traders", traders["commercial_short_traders"], "traders"),
+        ("reportable_long_traders", traders["reportable_long_traders"], "traders"),
+        ("reportable_short_traders", traders["reportable_short_traders"], "traders"),
+        ("top4_gross_long_pct", concentration["gross_4_or_less_long_pct"], "percent"),
+        ("top4_gross_short_pct", concentration["gross_4_or_less_short_pct"], "percent"),
+        ("top8_gross_long_pct", concentration["gross_8_or_less_long_pct"], "percent"),
+        ("top8_gross_short_pct", concentration["gross_8_or_less_short_pct"], "percent"),
+        ("top4_net_long_pct", concentration["net_4_or_less_long_pct"], "percent"),
+        ("top4_net_short_pct", concentration["net_4_or_less_short_pct"], "percent"),
+        ("top8_net_long_pct", concentration["net_8_or_less_long_pct"], "percent"),
+        ("top8_net_short_pct", concentration["net_8_or_less_short_pct"], "percent"),
+    ]
+    limitations = [
+        "Legacy Futures-Only categories are non-commercial, commercial and nonreportable; they are not TFF categories and must not be mapped to TFF dealer, asset-manager or leveraged-fund labels.",
+        "The report is a weekly Tuesday positions snapshot with a date-only event time; captured_at_utc is the first verified time Barrot observed the report.",
+        "Contract-equivalent XRP is not spot holdings, cash capital, exchange flow, collateral utilization or proof of XRP purchased.",
+        "Spreading positions contribute to both long and short open-interest totals but are excluded from long-minus-short net positions.",
+        "The report does not identify individual traders or disclose the reason for a position.",
+        "A missing contract may be dropped from reporting; absent positions are never zero-filled.",
+        "Concentration percentages are aggregate, rounded and may be suppressed; they are not trader identities.",
+    ]
+    instrument = (
+        f"{contract['name']} ({contract['code']}; "
+        f"{contract['contract_multiplier_xrp']} XRP per contract)"
+    )
+    records = []
+    for metric_name, value, unit in metrics:
+        if value is None:
+            continue
+        records.append(
+            _feature_record(
+                feature_id=f"xrp.derivatives.cftc.legacy_futures_only.{contract['slug']}.{metric_name}",
+                value=value,
+                unit=unit,
+                event_time_utc=event_s,
+                source_data_as_of_utc=event_s,
+                captured_at_utc=captured_s,
+                source_id=source_id,
+                source_uri=url,
+                raw_sha256=digest,
+                independence_group="cftc",
+                venue=contract["venue"],
+                instrument=instrument,
+                currency_pair="XRP/USD",
+                market_type="futures",
+                aggregation_window="weekly_legacy_futures_only",
+                model_eligible=False,
+                eligibility_reason=(
+                    "CFTC Legacy Futures-Only positioning is date-only weekly data; "
+                    "retained for research, not admitted to directional XRP forecasts."
+                ),
+                quality_status="unverified",
+                limitations=limitations,
+            )
+        )
+    reason = (
+        "official_cftc_legacy_futures_only_xrp_positions_as_of_"
+        f"{parsed['positions_as_of_date']}_parsed_research_only_date_only_not_model_admitted"
+    )
+    return records, event_s, False, reason
+
+
+
 def _morpho_data(payload: Any, source_id: str) -> Mapping[str, Any]:
     if not isinstance(payload, Mapping) or not isinstance(payload.get("data"), Mapping):
         raise XRPIngestionError(f"Morpho {source_id} response must contain a data object")
@@ -3962,6 +4090,7 @@ PARSERS = {
     "coinbase_cbxrp_proof_of_reserves": _raw_only_coinbase_cbxrp_proof_of_reserves,
     "cftc_contract_status_index": _parse_cftc_contract_status_index,
     "cftc_tff_financial_futures": _parse_cftc_tff,
+    "cftc_legacy_futures_only": _parse_cftc_legacy_futures_only,
 }
 
 
@@ -4193,7 +4322,7 @@ def _walk_forward_report(
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
         return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures"}:
+    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"}:
         return fetch_public_html(source_id, url)
     if source_id == "xrp_etf_flows_csv":
         return fetch_public_csv(source_id, url)
@@ -4485,7 +4614,7 @@ def run_ingestion(
                 parser_kwargs["circuit_break_info"] = bitbank_circuit_break_payload
             if source_id == "xrp_etf_flows_csv":
                 parser_kwargs["metadata_payload"] = xrp_insights_metadata_payload
-            if source_id == "cftc_tff_financial_futures":
+            if source_id in {"cftc_tff_financial_futures", "cftc_legacy_futures_only"}:
                 parser_kwargs["contract_status_html"] = (
                     cftc_contract_status_payload.get("html_text")
                     if isinstance(cftc_contract_status_payload, Mapping)
@@ -4648,9 +4777,72 @@ def run_ingestion(
                 }
             )
             records.extend(parsed_records)
+        elif source_id == "cftc_legacy_futures_only":
+            legacy = parse_cftc_legacy_futures_only_report(
+                payload.get("html_text", ""),
+                contract_status_html=(
+                    cftc_contract_status_payload.get("html_text")
+                    if isinstance(cftc_contract_status_payload, Mapping)
+                    else None
+                ),
+            )
+            contract = legacy["contract"]
+            research_only_observations.append(
+                {
+                    "observation_type": "cftc_legacy_xrp_futures_only_position_features",
+                    "source_id": source_id,
+                    "source_uri": url,
+                    "raw_content_sha256": receipt["raw_content_sha256"],
+                    "receipt_id": receipt["receipt_id"],
+                    "raw_bytes_retained": receipt["raw_bytes_retained"],
+                    "captured_at_utc": captured_s,
+                    "source_data_as_of_utc": source_as_of,
+                    "timestamp_precision": "date_only",
+                    "reporting_status": contract["reporting_status"],
+                    "contract_code": contract["code"],
+                    "contract_multiplier_xrp": contract["contract_multiplier_xrp"],
+                    "positions_as_of_date": contract["positions_as_of_date"],
+                    "change_from_date": contract["change_from_date"],
+                    "open_interest_contracts": contract["open_interest_contracts"],
+                    "open_interest_xrp_equivalent": contract["open_interest_xrp_equivalent"],
+                    "open_interest_change_contracts": contract["open_interest_change_contracts"],
+                    "total_traders": contract["total_traders"],
+                    "positions": contract["positions"],
+                    "percent_of_open_interest": contract["percent_of_open_interest"],
+                    "trader_counts": contract["trader_counts"],
+                    "concentration": contract["concentration"],
+                    "position_reconciliation_status": contract["position_reconciliation_status"],
+                    "change_reconciliation_status": contract["change_reconciliation_status"],
+                    "contract_status": legacy["contract_status"],
+                    "model_eligible": False,
+                    "feature_count": len(parsed_records),
+                    "features": [
+                        {
+                            "feature_id": record["feature_id"],
+                            "value": record["value"],
+                            "unit": record["unit"],
+                            "instrument": record["instrument"],
+                        }
+                        for record in parsed_records
+                    ],
+                    "interpretation_limits": [
+                        "Legacy Futures-Only categories are non-commercial, commercial and nonreportable; they are not TFF categories and must not be mapped to TFF dealer, asset-manager or leveraged-fund labels.",
+                        "The report is a weekly Tuesday positions snapshot with a date-only event time; captured_at_utc is the first verified time Barrot observed the report.",
+                        "Contract-equivalent XRP is not spot holdings, cash capital, exchange flow, collateral utilization or proof of XRP purchased.",
+                        "Spreading positions contribute to both long and short open-interest totals but are excluded from long-minus-short net positions.",
+                        "The report does not identify individual traders or disclose the reason for a position.",
+                        "A missing contract may be dropped from reporting; absent positions are never zero-filled.",
+                        "Concentration percentages are aggregate, rounded and may be suppressed; they are not trader identities.",
+                    ],
+                }
+            )
+            records.extend(parsed_records)
         else:
             records.extend(parsed_records)
-        if reason and not source_eligible and source_id != "cftc_tff_financial_futures":
+        if reason and not source_eligible and source_id not in {
+            "cftc_tff_financial_futures",
+            "cftc_legacy_futures_only",
+        }:
             raw_only.append({"source_id": source_id, "reason": reason})
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
