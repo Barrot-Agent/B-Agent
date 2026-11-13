@@ -13,6 +13,7 @@ from typing import Any
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
 from .probability_calibration import apply_temporal_temperature_calibration
 from .paired_block_bootstrap import evaluate_paired_block_bootstrap
+from .source_independence import canonical_independence_groups
 
 _CLASSES = ("down", "flat", "up")
 _BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
@@ -571,14 +572,20 @@ def evaluate_chronological_walk_forward(
         actual_class = _classify(actual_return, flat_band)
         target_event = _utc(target["event_time_utc"], "event_time_utc")
         target_available = _available_at(target)
-        source_groups = sorted({
-            source.get("independence_group")
+        source_records = [
+            source
             for record in [*series, target]
             for source in record.get("sources", [])
             if isinstance(source, Mapping)
-            and isinstance(source.get("independence_group"), str)
-            and source.get("independence_group").strip()
-        })
+        ]
+        source_group_resolution_status = "RESOLVED"
+        try:
+            source_groups = canonical_independence_groups(source_records)
+        except ValueError:
+            source_groups = []
+            source_group_resolution_status = "UNRESOLVED"
+        if not source_groups:
+            source_group_resolution_status = "UNRESOLVED"
         if target_event <= cutoff or target_available > evaluation_cutoff:
             skipped.append({"data_cutoff_utc": cutoff_s, "reason": "target_outcome_violates_point_in_time_boundary"})
             continue
@@ -663,6 +670,7 @@ def evaluate_chronological_walk_forward(
                         "flat_band_bps": float(flat_band_bps),
                         "target_tolerance_seconds": target_tolerance_seconds,
                         "source_independence_groups": source_groups,
+                        "source_group_resolution_status": source_group_resolution_status,
                         "prior_smoothing_alpha": float(prior_alpha),
                         "directional_confidence": float(directional_confidence),
                         "flat_probability": float(flat_probability),
