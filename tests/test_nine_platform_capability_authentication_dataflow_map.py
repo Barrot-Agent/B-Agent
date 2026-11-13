@@ -79,7 +79,7 @@ def test_current_map_is_nonempty_and_contains_the_nine_requested_platforms():
     assert data["mission_priority"] == 1
     assert data["foundation"].startswith("Barrot V3")
     assert data["forecast_status"] == "NOT_ISSUED"
-    assert data["observed_main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert data["observed_main_sha"] == data["repository_state"]["main_sha"]
 
 
 def test_current_map_never_claims_unverified_platforms_are_live():

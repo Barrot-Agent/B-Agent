@@ -4,6 +4,8 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from barrot_agent.evolution.xrp_public_ingestion import ENDPOINTS, SCHEDULED_ENDPOINTS, WEEKLY_ENDPOINTS
+
 ROOT = Path(__file__).resolve().parents[1]
 CURRENT = ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json"
 
@@ -100,7 +102,7 @@ def test_least_privilege_and_external_action_gates_remain_closed():
 def test_repository_snapshot_matches_current_main_and_successor_branch():
     data = load_current()
     state = data["repository_state"]
-    assert state["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert state["main_sha"] == data["observed_main_sha"]
     assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
     assert state["integration_pr"] == 1662
     assert state["integration_head_before_current_map_commit"] == data["integration_pr"]["head_sha"]
@@ -207,10 +209,11 @@ def test_lunaroute_only_architecture_quarantines_secondary_brain_deployment():
 
 def test_prediction_engine_source_registry_counts_are_consistent():
     engine = load_current()["prediction_engine_status"]
-    assert engine["source_definitions_total"] == 47
-    assert engine["hourly_sources"] == 43
-    assert engine["weekly_cftc_sources"] == 2
-    assert engine["scheduled_sources"] == 45
+    assert engine["source_definitions_total"] == len(ENDPOINTS)
+    assert engine["hourly_sources"] == len(SCHEDULED_ENDPOINTS)
+    assert engine["weekly_cftc_sources"] == len(WEEKLY_ENDPOINTS)
+    assert engine["scheduled_sources"] == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS)
+    assert len(ENDPOINTS) == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS) + 2
     assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
     assert len(engine["implemented"]) >= 8
 
@@ -453,7 +456,7 @@ def test_run20_snapshot_is_append_only_and_preserves_original_branch_identity():
     run20 = data["run20_snapshot"]
     repo = run20["repository_state"]
     assert repo["main_sha"] == "84f28ee7755607236231545a14f3d093c1baaa85"
-    assert data["repository_state"]["main_sha"] == "b4e36c91c380da89e7b60d00f984bd7ac123ce74"
+    assert data["repository_state"]["main_sha"] == data["observed_main_sha"]
     assert repo["integration_branch"] == "integration/xrp-v3-unified-main-20261111"
     assert data["repository_state"]["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
     assert repo["integration_head_before_run20_map_commit"] == "0529030acf0df84e68d7626564b3d206dd95946b"

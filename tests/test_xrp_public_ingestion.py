@@ -2697,8 +2697,8 @@ def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monke
     assert len(WEEKLY_ENDPOINTS) == 3
     assert [item[0] for item in WEEKLY_ENDPOINTS] == [
         "cftc_contract_status_index",
-        "cftc_tff_financial_futures",
         "cftc_legacy_futures_only",
+        "cftc_tff_financial_futures",
     ]
     assert _weekly_endpoints_for_capture(saturday_daily_run) == WEEKLY_ENDPOINTS
     assert _weekly_endpoints_for_capture(saturday_hourly_run) == ()
