@@ -6319,3 +6319,105 @@ Source: https://www.cftc.gov/PressRoom/PressReleases/9201-26
 ### Prediction and source eligibility
 
 The x402, RLUSD-supply and public web snapshots above are research observations, not Barrot raw-source receipts. The event registry's model-eligible count remains zero. Do not promote them into point-in-time features until byte-exact receipts, synchronized cutoffs, source-independence groups and independent ledger verification are present. Forecast remains NOT_ISSUED.
+
+
+## Run82 — 2026-11-13T07:30:19Z — market, CFTC, macro, platform and integration audit
+
+### Mission and repository state
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Existing integration head before this handoff: `6bd5e7fd064010846b29da259ccab701df843856`; 2,223 commits ahead of main, zero behind.
+- Main tree: 1,381 entries; integration tree: 2,337 entries.
+- PR #1662 remains open, draft, mergeable, zero formal reviews/approvals, 1,091 changed files, 312,866 additions and 5,136 deletions.
+- Open PR inventory: 375 total; 361 drafts, 14 non-drafts; 367 target main and eight target other branches.
+- This run adds two compact append-only research snapshots and updates this handoff on the existing integration branch only.
+
+### CI evidence — distinguish PR merge ref from branch commit
+PR-associated run for head `6bd5e7fd064010846b29da259ccab701df843856`:
+- CI run 43385397180: 3,553 full-suite tests passed, zero failures, eight subtests, 61.68% inclusive coverage in 95.25 seconds; core suite 725 passed, eight subtests, 76%; wheel build and installed primary-mission verification passed.
+- Dependency audit 43385397162: five manifest groups passed, zero known vulnerabilities reported.
+- Fail-closed gate 43385397171: passed by explicitly keeping automatic merge disabled.
+- Precision: the PR workflow checked out synthetic merge commit `b98c6165c07a2ecd614945ac9d1423978a3402cc`, combining current head `6bd5e7` with main `fb272b`. The checks are associated with the exact PR head and test its code against main, but direct checkout/execution of the branch commit SHA itself was not separately verified.
+- Latest main CI run 43343513172 on `fb272b`: 747 full-suite tests and 485 core tests passed, eight subtests in each.
+- Latest main push also ran Barrot Sync (43343513347) and GitHub Pages build/deploy (43343511839). Both jobs report success; the Barrot Sync result does not prove successful synchronization because the workflow suppresses command failures. Pages build and deploy completed successfully.
+
+### XRP spot, liquidity and derivatives
+Point-in-time cutoff: 07:30:19 UTC.
+- OKX XRP-USDT last $1.0273; bid $1.0272; ask $1.0273; 24-hour open $1.0424, high $1.0569, low $0.9974; volume 45.495M XRP. Provider event time 07:12:44.073 UTC, already 17m35s old at cutoff.
+- Kraken XRP/USD last $1.02912; bid $1.02913; ask $1.02921; no provider event timestamp. Kraken USDT/USD midpoint $0.998945, also without provider event timestamp.
+- Mechanically normalized OKX midpoint $1.026166 versus Kraken midpoint $1.029170, approximately -0.292%. These are asynchronous, not executable arbitrage evidence, and not model-eligible.
+- No synchronized current L2 depth was admitted. Direct OKX/Kraken depth retrieval failed; older depth snapshots remain outside freshness gates.
+- The pre-cutoff 07:02 UTC Liqwall snapshot reported approximately $1.12B OI (-0.8% 24h), average funding -0.0025% per eight hours, Binance funding +0.0026%, 75.2% of Binance XRP accounts long, and $19.3M liquidations with $18.4M long-side. A later 07:32 refresh was excluded because it fell after this run's cutoff. These are vendor aggregates, not exchange-native receipts.
+
+### ETF flows and exchange-wallet balances
+- XRP Insights: settled Nov 9–11 flow -9,213,260 XRP; total tracked holdings 1,185,967,427 XRP on Nov 11. Nov 12 remains provisional pending re-settlement. Coverage is six US spot XRP ETFs plus BITW; flow-excluded funds contribute zero.
+- CryptoKeyhole: Nov 12 partial -3,322 XRP from three of four daily-tracked funds, waiting for Franklin XRPZ; Nov 11 complete -3,322 XRP; Nov 5–11 five complete days -10,005,584 XRP.
+- CryptoKeyhole's computed Nov 9–11 total is -9,250,197 XRP, 36,937 XRP more negative than XRP Insights. The aggregators use different issuer coverage and exclusion rules and share underlying issuer files; they are not independent corroboration and must not be averaged.
+- XRP Insights exchange-label snapshot at Nov 12 08:00 UTC: 22.34B XRP across 706 wallets and 24 exchanges, about 32.4% of circulating supply. Same-wallet change +45.8M over seven days and -180.9M over 30 days.
+- Naive changes are +61.4M over seven days and +346.7M over 30 days because five new wallets with 15.6M XRP and seven new wallets with 527.6M XRP entered tracking. Nov 12 daily +5.3M same-wallet change excludes Binance because its wallet set changed.
+- Coinbase's 5.81B tracked balance includes 150.6M non-customer cbXRP on Base reserve; Binance's 2.69B includes 327.4M Binance-Peg XRP on BNB Chain reserve and other non-customer/charity balances. Cold storage is included. These balances are not tradable float or direct customer exchange flows.
+
+### CFTC Legacy Futures-Only and release calendar
+The official CME Futures-Only report is still dated November 3, 2026:
+- XRP contract 176740; multiplier 50,000 XRP; open interest 7,216 contracts (360.8M XRP-equivalent), down 845 contracts (-42.25M XRP-equivalent) from October 27.
+- Non-commercial net long 1,465 contracts, up 185; longs fell 281 while shorts fell 466. The net increase is more consistent with short covering than fresh long accumulation.
+- 29 traders; four or fewer hold 81.0% of gross longs and 67.4% of gross shorts; eight or fewer hold 95.1% and 87.7%, respectively.
+- Futures-only positioning is not spot holdings, offshore perpetual positioning, cash capital or collateral.
+- The official CFTC release schedule lists November 16 as the next delayed release due to a federal holiday; the page states COT reports are released at 3:30 p.m. Eastern.
+- Citation correction: Run81B linked the semiweekly announcement to CFTC release 9201-26, an unrelated March 2026 innovation-task-force release. The correct October 27, 2026 announcement is release 9316-26. It plans twice-weekly publication by end-2026: Monday data on Wednesday and Wednesday data on Friday, both at 3:30 p.m. Eastern. No effective date has been announced.
+- The integration has a Legacy parser, raw-receipt integration path and eight parser regression tests. The endpoint registry has 48 definitions: 43 hourly, three weekly CFTC sources and two noncommercial XRPL node endpoints excluded from scheduled ingestion. The workflow is hourly plus daily/weekly capture, but its job is explicitly gated to `refs/heads/main`; it has not run on main because it is not merged. GitHub artifact retention is 90 days, not independent WORM storage.
+
+### Institutional and macro evidence
+- BNY's October 27 primary release confirms BNY is RLUSD's primary reserve custodian, has a custody relationship with Ripple Prime, and now supports XRP and RLUSD on its Digital Asset Custody platform.
+- BNY's broader support for XRPL tokenized assets, direct RLUSD mint/redeem and tokenized trade-finance work with C2FO are plans or exploratory initiatives, not proof of completed transactions, BNY proprietary XRP holdings, collateral utilization or incremental XRP demand.
+- Reuters, November 13 01:58 UTC: DXY 103.18; US 2-year yield 4.8602%, up 34 basis points over two sessions; 14.5% market-implied probability of a 50bp Fed hike next month; USD/JPY 159.89; Brent $95.79; WTI $88.38; BTC $68,587, down 4%. Reuters linked oil/inflation repricing to Middle East supply concerns after Trump's Iran comments. This is macro risk context, not XRP-specific causality.
+
+### Nine-platform capability/authentication map
+A compact Run82 snapshot is stored at `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run82.json`.
+- ChatGPT: current-session GitHub access verified; permissions are admin, maintain, push, pull and triage, therefore overprivileged.
+- Claude: no Barrot authentication/data flow verified. SBI's corporate Claude collaboration is not a Barrot connection.
+- Grok: unverified.
+- Gemini: unverified.
+- Copilot: prior review artifacts are not a live data connection or formal approval; PR #1662 has zero reviews.
+- Codex: unverified.
+- Hugging Face: prior BUILD_ERROR; no deployment.
+- Kaggle: untested; no submission.
+- Databricks: previous HTTP 403; no write.
+- LunaRoute is an additional internal provider, not one of the nine. Main enables remote MCP and write-capable permissions; integration disables remote MCP and requires approval for write-capable actions. No authenticated LunaRoute data flow was verified.
+- No independent model dispatch, structured nine-platform evidence exchange or external-model data transfer occurred. Task allocation is designed only; local evidence review is the fallback.
+
+### Security, publication and integration blockers
+- Main `opencode.json` enables remote LunaRoute MCP and allows edit/bash/webfetch. Integration disables remote MCP and requires approval for non-read-only actions.
+- Main Barrot Sync runs on push to main and can invoke `b_agent.py --sync` with LunaRoute/GitHub credentials and attempt a Git push. The workflow suppresses sync and push failures, so a green job is not proof of successful synchronization. Integration quarantines it. No secret was read or rotated.
+- The latest main push triggered a successful GitHub Pages build and deployment. PR #1662 changes seven public `web/` files. Content review found `latest_signal.json` and its summary both say NOT_ISSUED, `signal_accuracy.json` says NOT_EVALUATED, and the legacy 45.5% record is explicitly marked unvalidated. No directional forecast is being published. Publication authorization is nevertheless unresolved.
+- Branch-protection endpoint access returns HTTP 403. Visible fallback ruleset 10863829 is disabled and only contains deletion/non-fast-forward rules. Required branch-protection checks cannot be independently verified.
+- GitHub connector permissions remain admin/maintain/push/pull/triage; least privilege is not satisfied.
+- Inclusive coverage threshold in integration is 53%; measured inclusive coverage is 61.68%, while the separate legacy core floor is 70% and measured core coverage is 76%. The reduction from the former inclusive 70% threshold remains a review item.
+- The 1,091-file integration still needs complete semantic reconciliation. No merge.
+
+### PR backlog
+Current tree-entry/ancestry comparisons show the major source branches are diverged and stale relative to current main; they are not safe duplicates to close:
+- #1661: 9 commits behind main; 2,141 ahead; 22 source-only tree entries.
+- #1660: 12 behind; 1,963 ahead; 40 source-only entries.
+- #1643: 17 behind; 906 ahead; 41 source-only entries.
+- #1640: 16 behind; 975 ahead; 41 source-only entries.
+- #1642: 17 behind; one ahead; 41 source-only entries.
+- #1653: 17 behind; 18 ahead; 44 source-only entries.
+- #1655: 17 behind; 17 ahead; 46 source-only entries.
+- #1659: 17 behind; eight ahead; 44 source-only entries.
+- #1615: 58 behind; three ahead; 45 source-only entries.
+These are path/tree-entry comparisons, not semantic approval. Preserve all unique work. Classify #1662 blocked; #1661/#1660/#1643/#1640/#1642 as overlapping/supersession candidates requiring semantic review; #1653/#1655/#1659/#1615 as unique/unreviewed; dependency PRs #1644–#1650 and older #1254/#1255 as blocked pending current-base validation; #1320/#1318/#1317/#1269 as unique/unreviewed. Do not bulk-close the 361 drafts or close any source PR before verified successor content is on main.
+
+### Forecast and next actions
+The current event registry remains version run71c (2026-11-12 23:31:57 UTC): 73 curated events, zero byte-exact raw-source SHA-256 receipts and zero model-eligible events. The web observations above are research-only, not RawReceiptArchive captures. Forecast remains `NOT_ISSUED`; no paper trade or real-money action occurred.
+
+Next actions:
+1. Complete semantic reconciliation of the 1,091-file integration and differing source-PR work.
+2. Resolve least-privilege connector permissions, branch-protection visibility, Pages-publication authorization and Barrot Sync/LunaRoute data-flow authorization.
+3. Raise or justify the inclusive coverage threshold; do not merge with the 53% reduction unexplained.
+4. Promote scheduled XRP ingestion only after merge authorization; verify actual raw receipts, independent anchoring and historical replay.
+5. Keep the CFTC semiweekly effective date unset until CFTC publishes an implementation date.
+6. Keep forecast issuance disabled until synchronized point-in-time data, trusted evaluator attestation, independent shadow outcomes and measured out-of-sample superiority over all four baselines are verified.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
