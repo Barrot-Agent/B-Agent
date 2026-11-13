@@ -136,6 +136,9 @@ def test_raw_ingestion_workflow_uploads_the_receipt_chain_manifest():
     assert "artifacts/xrp_ingestion/receipt_chain_manifest.json" in workflow
     assert "xrp-public-receipt-index-" in workflow
     assert "BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST" in workflow
+    assert "/actions/runs/" in workflow and "/artifacts?per_page=100" in workflow
+    assert "raw_artifact_present" in workflow
+    assert "index_matches_run" in workflow
 
 
 def test_cross_run_receipt_chain_bootstraps_and_records_artifact_locator(tmp_path, monkeypatch):

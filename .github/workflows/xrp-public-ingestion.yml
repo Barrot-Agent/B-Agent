@@ -54,9 +54,21 @@ jobs:
             echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
             echo "No prior successful main ingestion run; starting the cross-run receipt chain."
           elif gh run download "$previous_run_id" --name "xrp-public-receipt-index-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/cross_run_receipt_chain.json" ]]; then
-            echo "BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST=$restore_dir/cross_run_receipt_chain.json" >> "$GITHUB_ENV"
-            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=CONTINUED" >> "$GITHUB_ENV"
-            echo "Restored receipt-chain index from successful ingestion run $previous_run_id."
+            if ! artifacts_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${previous_run_id}/artifacts?per_page=100" 2>/dev/null)"; then
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+              echo "::warning::Could not verify the predecessor raw-artifact inventory; continuity remains unverified."
+              exit 0
+            fi
+            raw_artifact_present="$(jq -r --arg name "xrp-public-raw-${previous_run_id}" 'any(.artifacts[]; .name == $name and .expired == false)' <<< "$artifacts_json")"
+            index_matches_run="$(jq -r --arg run "$previous_run_id" '.current_run.run_id == $run and .raw_artifact.run_id == $run and .raw_artifact.artifact_name == ("xrp-public-raw-" + $run)' "$restore_dir/cross_run_receipt_chain.json")"
+            if [[ "$raw_artifact_present" == "true" && "$index_matches_run" == "true" ]]; then
+              echo "BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST=$restore_dir/cross_run_receipt_chain.json" >> "$GITHUB_ENV"
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=CONTINUED" >> "$GITHUB_ENV"
+              echo "Restored receipt-chain index and confirmed its raw artifact still exists for run $previous_run_id."
+            else
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+              echo "::warning::The predecessor raw artifact is missing/expired or its index run identity does not match; continuity remains unverified."
+            fi
           else
             echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
             echo "::warning::Latest successful ingestion run $previous_run_id has no receipt-index artifact; continuity remains unverified."
