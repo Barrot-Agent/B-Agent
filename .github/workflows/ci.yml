@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "integration/**"]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   tests:
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'integration/')
     name: Tests
     runs-on: ubuntu-latest
     steps:
@@ -93,6 +94,7 @@ jobs:
             -v --no-cov
 
   full-suite:
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'integration/')
     name: Full repository test suite
     runs-on: ubuntu-latest
     timeout-minutes: 60

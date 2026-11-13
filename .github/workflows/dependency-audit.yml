@@ -12,6 +12,14 @@ on:
       - ".github/workflows/dependency-audit.yml"
       - "research/xrp_intelligence/**"
       - "tests/test_xrp_*.py"
+      - ".github/workflows/ci.yml"
+      - ".github/workflows/coinbase-paper-trader.yml"
+      - "barrot_agent/orchestration/mcp_orchestrator.py"
+      - "legacy/app_legacy.py"
+      - "scripts/coinbase_paper_trader.py"
+      - "tests/test_mcp_orchestrator_safety.py"
+      - "tests/test_paper_trader_*.py"
+      - "tests/test_ci_coverage_scope.py"
   pull_request:
     branches: [main]
     paths:
@@ -23,6 +31,14 @@ on:
       - ".github/workflows/dependency-audit.yml"
       - "research/xrp_intelligence/**"
       - "tests/test_xrp_*.py"
+      - ".github/workflows/ci.yml"
+      - ".github/workflows/coinbase-paper-trader.yml"
+      - "barrot_agent/orchestration/mcp_orchestrator.py"
+      - "legacy/app_legacy.py"
+      - "scripts/coinbase_paper_trader.py"
+      - "tests/test_mcp_orchestrator_safety.py"
+      - "tests/test_paper_trader_*.py"
+      - "tests/test_ci_coverage_scope.py"
   schedule:
     - cron: "17 7 * * 1"
   workflow_dispatch:
