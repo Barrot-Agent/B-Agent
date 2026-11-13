@@ -31,7 +31,7 @@
     "review_threads": 0,
     "updated_at": "2026-11-13T16:41:10.392Z",
     "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
-    "note": "Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened.",
+    "note": "Exact-head full-suite failed: Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened.",
     "research_files": 594,
     "test_files": 378,
     "other_files": 55,
@@ -1361,7 +1361,7 @@
         "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
         "tests/test_xrp_primary_mission_contract.py::test_feature_store_contract_endpoint_counts_match_registry"
       ],
-      "failure_classification": "Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened."
+      "failure_classification": "Exact-head full-suite failed: Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened."
     },
     "previous_attempt": {
       "head_sha": "4b7fc419ba1a31b72dacef800d8a560b15eb5961",
@@ -36465,7 +36465,7 @@
       "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
       "tests/test_xrp_primary_mission_contract.py::test_feature_store_contract_endpoint_counts_match_registry"
     ],
-    "root_cause": "Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened.",
+    "root_cause": "Exact-head full-suite failed: Six stale assertions: three Deribit tests expect whole-second timestamps while the collector uses fixed six-digit microsecond precision; three source-count contracts expect 48 after two Deribit raw-only endpoints raised the total to 50. Correct count: 50 = 46 scheduled + four excluded (two Deribit raw-only, two XRPL nodes). Core, dependency and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened.",
     "corrective_commit_status": "PREPARED_ON_EXISTING_INTEGRATION_BRANCH; exact-head CI pending"
   },
   "latest_web_research_run99": {
