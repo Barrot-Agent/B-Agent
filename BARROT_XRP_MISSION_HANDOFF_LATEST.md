@@ -6869,3 +6869,16 @@ PR #1662 remains draft with zero formal reviews, approvals and review threads. M
 Next actions: resolve least privilege, branch-protection visibility and Pages publication authorization; complete semantic reconciliation; verify the documentation commit's exact-head CI; then, only after authorized merge, verify main-side scheduled ingestion and implement independent WORM/raw-receipt anchoring. Keep forecasts disabled until synchronized historical data, independent shadow outcomes, calibrated probabilities and measured out-of-sample superiority over all four baselines are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run87 map-schema correction — 2026-11-13 11:21 UTC
+
+The first Run87 documentation commit `6f4394100ab24cdb90aec037860897420b652d2e` triggered its own CI. The full repository job completed with **3,543 passed, 14 failed, eight subtests and 61.72% inclusive coverage**. Core tests passed (725); dependency audit passed across five manifest groups with zero known vulnerabilities; the fail-closed gate passed. Wheel-build and installed-package verification were skipped because the full-suite job failed.
+
+All 14 failures were in `tests/test_xrp_nine_platform_current_map_run73.py`. The cause was a Run87 documentation update that replaced canonical `current_market_snapshot`, `latest_market_refresh`, `next_actions` and `backlog_classification` structures rather than appending Run87 evidence. It also left `repository_state`, `integration_pr` and `ci_evidence` on different observed heads. This is a **documentation/map-schema regression**, not a runtime prediction-engine failure.
+
+The corrective update restores the parent map's canonical structures and backlog labels, keeps Run87 market evidence under additive `run87` fields, updates `repository_state` and `integration_pr` to the same pre-correction head, and records the latest failed attempt plus the prior passing head separately. The parent head `1b1ae145` remains the latest fully passing head: 3,557 passed, zero failed, eight subtests, 61.72% coverage, wheel build and installed V3/XRP mission verification passed. The corrective commit will receive its own full-suite run; no pass is assumed in advance.
+
+Current pre-correction branch head: `6f4394100ab24cdb90aec037860897420b652d2e`; 2,235 commits ahead, zero behind; PR #1662 has 1,099 changed files. PR remains draft with zero approvals/reviews/threads. No merge.
+
+Failure evidence: [CI 43415782216](https://github.com/Barrot-Agent/B-Agent/actions/runs/43415782216). Passing dependency audit: [43415782117](https://github.com/Barrot-Agent/B-Agent/actions/runs/43415782117). Passing fail-closed gate: [43415782163](https://github.com/Barrot-Agent/B-Agent/actions/runs/43415782163).

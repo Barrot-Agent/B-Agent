@@ -820,5 +820,68 @@
     "Verify the Run87 documentation commit's exact-head full-suite, dependency audit and fail-closed checks.",
     "After authorized merge only, verify main-side scheduled ingestion and independent WORM/raw-receipt anchoring.",
     "Build synchronized historical L2, derivatives, exchange-flow and collateral replay; then run shadow evaluation and baseline comparisons."
-  ]
+  ],
+  "post_handoff_commit_ci": {
+    "observed_at_utc": "2026-11-13T11:21:14Z",
+    "head_sha": "6f4394100ab24cdb90aec037860897420b652d2e",
+    "run_id": 43415782216,
+    "conclusion": "failure",
+    "passed": 3543,
+    "failed": 14,
+    "subtests": 8,
+    "coverage_percent": 61.72,
+    "duration_seconds": 84.28,
+    "core_tests": {
+      "passed": 725,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 43415782117,
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43415782163,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "wheel_build_verified": false,
+    "installed_wheel_primary_mission_verified": false,
+    "failing_tests": [
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_orderbook_is_resting_liquidity_not_guaranteed_support",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exchange_flow_snapshot_keeps_unattributed_transfer_separate",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_derivatives_provider_disagreement_is_preserved_without_averaging",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_options_snapshot_keeps_near_and_deferred_expiry_skew_distinct",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_etf_flow_windows_and_holdings_limitations_are_separate",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_cftc_contract_reconciliation_treats_dropped_contract_as_unknown",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_latest_market_refresh_is_research_only_and_preserves_provider_disagreement",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates"
+    ],
+    "classification": "Documentation/current-map schema regression in tests/test_xrp_nine_platform_current_map_run73.py; not runtime prediction-engine failure."
+  },
+  "map_schema_correction": {
+    "status": "CORRECTED_IN_THIS_COMMIT",
+    "canonical_fields_restored": [
+      "current_market_snapshot",
+      "latest_market_refresh",
+      "next_actions",
+      "backlog_classification"
+    ],
+    "additive_run87_fields": [
+      "current_market_snapshot.run87",
+      "latest_market_refresh.run87",
+      "run87_snapshot",
+      "run87_schema_correction"
+    ],
+    "canonical_repository_state_and_ci_evidence_synchronized": true
+  }
 }
