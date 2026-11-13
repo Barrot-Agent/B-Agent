@@ -134,3 +134,98 @@ def test_raw_ingestion_workflow_uploads_the_receipt_chain_manifest():
     assert "artifacts/xrp_ingestion/raw/**" in workflow
     assert "artifacts/xrp_ingestion/receipt_manifest.json" in workflow
     assert "artifacts/xrp_ingestion/receipt_chain_manifest.json" in workflow
+    assert "xrp-public-receipt-index-" in workflow
+    assert "BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST" in workflow
+
+
+def test_cross_run_receipt_chain_bootstraps_and_records_artifact_locator(tmp_path, monkeypatch):
+    archive = RawReceiptArchive(tmp_path / "run-one" / "raw")
+    store_receipt(archive, b"first run bytes")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GITHUB_RUN_ID", "42000000001")
+    monkeypatch.setenv("GITHUB_RUN_ATTEMPT", "1")
+    monkeypatch.setenv("GITHUB_SHA", "a" * 40)
+    monkeypatch.setenv("GITHUB_WORKFLOW_REF", "Barrot-Agent/B-Agent/.github/workflows/xrp-public-ingestion.yml@refs/heads/main")
+    monkeypatch.setenv("GITHUB_EVENT_NAME", "schedule")
+
+    archive.write_manifest(archive.root.parent / "receipt_chain_manifest.json", continuity_status="BOOTSTRAP")
+    cross_run = json.loads((archive.root.parent / "cross_run_receipt_chain.json").read_text(encoding="utf-8"))
+
+    assert cross_run["sequence"] == 1
+    assert cross_run["continuity_status"] == "BOOTSTRAP"
+    assert cross_run["continuity_verified"] is True
+    assert cross_run["previous"] is None
+    assert cross_run["current_run"]["run_id"] == "42000000001"
+    assert cross_run["raw_artifact"]["artifact_name"] == "xrp-public-raw-42000000001"
+    assert cross_run["external_anchor_status"] == "NOT_ANCHORED"
+
+
+def test_cross_run_receipt_chain_continues_from_small_prior_index_without_raw_rehydration(tmp_path, monkeypatch):
+    first = RawReceiptArchive(tmp_path / "first" / "raw")
+    store_receipt(first, b"first run bytes")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GITHUB_RUN_ID", "42000000001")
+    monkeypatch.setenv("GITHUB_RUN_ATTEMPT", "1")
+    monkeypatch.setenv("GITHUB_SHA", "a" * 40)
+    monkeypatch.setenv("GITHUB_WORKFLOW_REF", "Barrot-Agent/B-Agent/.github/workflows/xrp-public-ingestion.yml@refs/heads/main")
+    monkeypatch.setenv("GITHUB_EVENT_NAME", "schedule")
+    first.write_manifest(tmp_path / "first" / "receipt_chain_manifest.json", continuity_status="BOOTSTRAP")
+    previous_index = tmp_path / "first" / "cross_run_receipt_chain.json"
+    previous_bytes = previous_index.read_bytes()
+    previous_payload = json.loads(previous_bytes.decode("utf-8"))
+
+    second = RawReceiptArchive(tmp_path / "second" / "raw")
+    store_receipt(second, b"second run bytes")
+    monkeypatch.setenv("GITHUB_RUN_ID", "42000000002")
+    monkeypatch.setenv("GITHUB_SHA", "b" * 40)
+    second.write_manifest(
+        tmp_path / "second" / "receipt_chain_manifest.json",
+        previous_manifest_path=previous_index,
+        continuity_status="CONTINUED",
+    )
+    current = json.loads((tmp_path / "second" / "cross_run_receipt_chain.json").read_text(encoding="utf-8"))
+
+    assert current["sequence"] == 2
+    assert current["continuity_status"] == "CONTINUED"
+    assert current["continuity_verified"] is True
+    assert current["previous_manifest_sha256"] == __import__("hashlib").sha256(previous_bytes).hexdigest()
+    assert current["previous_cross_run_chain_sha256"] == previous_payload["cross_run_chain_sha256"]
+    assert current["current_run"]["run_id"] == "42000000002"
+    assert current["raw_artifact"]["artifact_name"] == "xrp-public-raw-42000000002"
+    assert len(second.receipts) == 1
+
+
+def test_cross_run_receipt_chain_marks_missing_predecessor_as_unverified(tmp_path, monkeypatch):
+    archive = RawReceiptArchive(tmp_path / "raw")
+    store_receipt(archive, b"run with missing predecessor")
+    monkeypatch.setenv("GITHUB_RUN_ID", "42000000003")
+
+    archive.write_manifest(
+        tmp_path / "receipt_chain_manifest.json",
+        continuity_status="MISSING_PREDECESSOR_ARTIFACT",
+    )
+    current = json.loads((tmp_path / "cross_run_receipt_chain.json").read_text(encoding="utf-8"))
+
+    assert current["continuity_status"] == "MISSING_PREDECESSOR_ARTIFACT"
+    assert current["continuity_verified"] is False
+    assert current["sequence"] is None
+    assert current["previous"] is None
+
+
+def test_cross_run_receipt_chain_rejects_tampered_predecessor(tmp_path, monkeypatch):
+    first = RawReceiptArchive(tmp_path / "first" / "raw")
+    store_receipt(first, b"first run bytes")
+    first.write_manifest(tmp_path / "first" / "receipt_chain_manifest.json", continuity_status="BOOTSTRAP")
+    previous_index = tmp_path / "first" / "cross_run_receipt_chain.json"
+    tampered = json.loads(previous_index.read_text(encoding="utf-8"))
+    tampered["continuity_status"] = "CONTINUED"
+    previous_index.write_text(json.dumps(tampered), encoding="utf-8")
+
+    second = RawReceiptArchive(tmp_path / "second" / "raw")
+    store_receipt(second, b"second run bytes")
+    with pytest.raises(XRPIngestionError, match="hash verification failed"):
+        second.write_manifest(
+            tmp_path / "second" / "receipt_chain_manifest.json",
+            previous_manifest_path=previous_index,
+            continuity_status="CONTINUED",
+        )

@@ -40,6 +40,27 @@ jobs:
           python-version: '3.11'
       - name: Prepare feature-store workspace
         run: mkdir -p artifacts/xrp_ingestion
+      - name: Restore latest successful cross-run receipt-chain index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          restore_dir="$RUNNER_TEMP/xrp-receipt-chain-restore"
+          mkdir -p "$restore_dir"
+          runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100&page=1")"
+          previous_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" '.workflow_runs | map(select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
+          if [[ -z "$previous_run_id" ]]; then
+            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
+            echo "No prior successful main ingestion run; starting the cross-run receipt chain."
+          elif gh run download "$previous_run_id" --name "xrp-public-receipt-index-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/cross_run_receipt_chain.json" ]]; then
+            echo "BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST=$restore_dir/cross_run_receipt_chain.json" >> "$GITHUB_ENV"
+            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=CONTINUED" >> "$GITHUB_ENV"
+            echo "Restored receipt-chain index from successful ingestion run $previous_run_id."
+          else
+            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+            echo "::warning::Latest successful ingestion run $previous_run_id has no receipt-index artifact; continuity remains unverified."
+          fi
       - name: Apply XRP research timestamp corrections in memory
         run: >-
           python -m barrot_agent.evolution.research_timestamp_audit
@@ -109,11 +130,19 @@ jobs:
       - name: Capture public XRP market sources and evaluate historical baselines
         env:
           WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
-        run: >-
-          python -m barrot_agent.evolution.xrp_public_ingestion
-          --output-dir artifacts/xrp_ingestion
-          --walk-forward-horizons "$WALK_FORWARD_HORIZONS"
-          --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(
+            --output-dir artifacts/xrp_ingestion
+            --walk-forward-horizons "$WALK_FORWARD_HORIZONS"
+            --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
+            --receipt-chain-continuity-status "${BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS:-BOOTSTRAP}"
+          )
+          if [[ -n "${BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST:-}" ]]; then
+            args+=(--previous-receipt-chain-manifest "$BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST")
+          fi
+          python -m barrot_agent.evolution.xrp_public_ingestion "${args[@]}"
       - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
         uses: actions/upload-artifact@v7
         with:
@@ -122,9 +151,17 @@ jobs:
             artifacts/xrp_ingestion/raw/**
             artifacts/xrp_ingestion/receipt_manifest.json
             artifacts/xrp_ingestion/receipt_chain_manifest.json
+            artifacts/xrp_ingestion/cross_run_receipt_chain.json
             artifacts/xrp_ingestion/source_failures.json
             artifacts/xrp_ingestion/raw_only_sources.json
             artifacts/xrp_ingestion/drift_report.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload append-only cross-run receipt-chain index (90-day GitHub artifact; not WORM)
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-receipt-index-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/cross_run_receipt_chain.json
           if-no-files-found: error
           retention-days: 90
       - name: Upload point-in-time event timeline and counter-hypotheses

@@ -660,6 +660,7 @@ class RawReceiptArchive:
         self._chain_head = self._CHAIN_ZERO
         self._chain_count = 0
         self._legacy_chain_bootstrap = False
+        self.cross_run_manifest: dict[str, Any] | None = None
 
         if self.chain_path.exists() and not self.receipts_path.exists():
             raise XRPIngestionError("receipt chain exists without its canonical receipt log")
@@ -848,8 +849,15 @@ class RawReceiptArchive:
             "chain_log_sha256": hashlib.sha256(chain_bytes).hexdigest(),
         }
 
-    def write_manifest(self, path: str | Path) -> dict[str, Any]:
-        """Write a run-level verification manifest with GitHub workflow identity when available."""
+    def write_manifest(
+        self,
+        path: str | Path,
+        *,
+        previous_manifest_path: str | Path | None = None,
+        continuity_status: str | None = None,
+        cross_run_path: str | Path | None = None,
+    ) -> dict[str, Any]:
+        """Write the per-run receipt manifest and an append-only cross-run chain index."""
         verification = self.verify()
         github_context = {
             "repository": os.getenv("GITHUB_REPOSITORY") or None,
@@ -873,8 +881,126 @@ class RawReceiptArchive:
                 "Per-run raw artifacts remain subject to the configured GitHub Actions retention period.",
             ],
         }
-        _write_json(path, manifest)
+        manifest_path = Path(path)
+        _write_json(manifest_path, manifest)
+        cross_path = Path(cross_run_path) if cross_run_path is not None else manifest_path.with_name("cross_run_receipt_chain.json")
+        self.cross_run_manifest = self._write_cross_run_manifest(
+            receipt_manifest_path=manifest_path,
+            output_path=cross_path,
+            verification=verification,
+            github_context=github_context,
+            previous_manifest_path=previous_manifest_path,
+            continuity_status=continuity_status,
+        )
         return manifest
+
+    def _write_cross_run_manifest(
+        self,
+        *,
+        receipt_manifest_path: Path,
+        output_path: Path,
+        verification: Mapping[str, Any],
+        github_context: Mapping[str, Any],
+        previous_manifest_path: str | Path | None,
+        continuity_status: str | None,
+    ) -> dict[str, Any]:
+        """Link run-level receipt manifests without re-downloading prior raw payload artifacts."""
+        previous_path = Path(previous_manifest_path) if previous_manifest_path is not None else None
+        status = continuity_status or ("CONTINUED" if previous_path is not None else "BOOTSTRAP")
+        if status not in {"BOOTSTRAP", "CONTINUED", "MISSING_PREDECESSOR_ARTIFACT"}:
+            raise XRPIngestionError("cross-run receipt continuity status is invalid")
+        if previous_path is not None and status != "CONTINUED":
+            raise XRPIngestionError("a restored predecessor manifest requires CONTINUED status")
+        if previous_path is None and status == "CONTINUED":
+            raise XRPIngestionError("CONTINUED receipt status requires a predecessor manifest")
+
+        previous = None
+        previous_manifest_sha256 = None
+        previous_chain_sha256 = None
+        previous_run_id = None
+        sequence: int | None = 1 if status == "BOOTSTRAP" else None
+        continuity_verified = status == "BOOTSTRAP"
+        if previous_path is not None:
+            try:
+                previous_bytes = previous_path.read_bytes()
+                previous_payload = json.loads(previous_bytes.decode("utf-8"))
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+                raise XRPIngestionError("previous cross-run receipt manifest is missing or invalid JSON") from exc
+            if not isinstance(previous_payload, dict) or previous_payload.get("schema_version") != "barrot.xrp.cross-run-receipt-chain.v1":
+                raise XRPIngestionError("previous cross-run receipt manifest schema is invalid")
+            stored_chain_hash = previous_payload.get("cross_run_chain_sha256")
+            if not isinstance(stored_chain_hash, str) or len(stored_chain_hash) != 64:
+                raise XRPIngestionError("previous cross-run receipt manifest has no valid chain hash")
+            previous_chain_payload = {
+                key: value for key, value in previous_payload.items() if key != "cross_run_chain_sha256"
+            }
+            expected_chain_hash = hashlib.sha256(_canonical(previous_chain_payload).encode("utf-8")).hexdigest()
+            if stored_chain_hash != expected_chain_hash:
+                raise XRPIngestionError("previous cross-run receipt manifest hash verification failed")
+            previous_sequence = previous_payload.get("sequence")
+            if previous_sequence is not None and (
+                isinstance(previous_sequence, bool) or not isinstance(previous_sequence, int) or previous_sequence < 1
+            ):
+                raise XRPIngestionError("previous cross-run receipt sequence is invalid")
+            previous_verified = previous_payload.get("continuity_verified")
+            previous_run = previous_payload.get("current_run")
+            if not isinstance(previous_verified, bool) or not isinstance(previous_run, Mapping):
+                raise XRPIngestionError("previous cross-run receipt manifest is missing continuity or run identity")
+            previous_run_id = previous_run.get("run_id")
+            if not isinstance(previous_run_id, str) or not previous_run_id:
+                raise XRPIngestionError("previous cross-run receipt manifest has no run ID")
+            sequence = previous_sequence + 1 if previous_sequence is not None else None
+            continuity_verified = previous_verified and sequence is not None
+            status = "CONTINUED" if continuity_verified else "CONTINUED_AFTER_GAP"
+            previous_manifest_sha256 = hashlib.sha256(previous_bytes).hexdigest()
+            previous_chain_sha256 = stored_chain_hash
+            previous = {
+                "manifest_sha256": previous_manifest_sha256,
+                "run_id": previous_run_id,
+                "sequence": previous_sequence,
+                "cross_run_chain_sha256": previous_chain_sha256,
+            }
+
+        run_id = github_context.get("run_id")
+        receipt_manifest_bytes = receipt_manifest_path.read_bytes()
+        payload = {
+            "schema_version": "barrot.xrp.cross-run-receipt-chain.v1",
+            "sequence": sequence,
+            "continuity_status": status,
+            "continuity_verified": continuity_verified,
+            "previous": previous,
+            "previous_manifest_sha256": previous_manifest_sha256,
+            "previous_cross_run_chain_sha256": previous_chain_sha256,
+            "current_run": {
+                "repository": github_context.get("repository"),
+                "run_id": run_id,
+                "run_attempt": github_context.get("run_attempt"),
+                "sha": github_context.get("sha"),
+                "workflow_ref": github_context.get("workflow_ref"),
+                "event_name": github_context.get("event_name"),
+            },
+            "current_receipt_chain": {
+                "manifest_sha256": hashlib.sha256(receipt_manifest_bytes).hexdigest(),
+                "chain_head_sha256": verification.get("chain_head_sha256"),
+                "receipt_log_sha256": verification.get("receipt_log_sha256"),
+                "chain_log_sha256": verification.get("chain_log_sha256"),
+                "receipt_count": verification.get("receipt_count"),
+            },
+            "raw_artifact": {
+                "run_id": run_id,
+                "artifact_name": f"xrp-public-raw-{run_id}" if run_id else None,
+                "retention_days": 90,
+            },
+            "external_anchor_status": "NOT_ANCHORED",
+            "limitations": [
+                "This index links per-run receipt manifests without rehydrating historical raw payloads; each raw payload remains in its run-specific artifact.",
+                "GitHub Actions artifacts are retention-limited and are not independent WORM storage or a trusted timestamp authority.",
+                "A structurally continuous hash chain is not a market-data quality or forecast-readiness certificate.",
+            ],
+        }
+        payload["cross_run_chain_sha256"] = hashlib.sha256(_canonical(payload).encode("utf-8")).hexdigest()
+        _write_json(output_path, payload)
+        return payload
 
     def store(
         self,
@@ -4559,6 +4685,8 @@ def run_ingestion(
     coinbase_backfill_days: int = 0,
     walk_forward_horizons: tuple[str, ...] | list[str] | str = DEFAULT_WALK_FORWARD_HORIZONS,
     event_registry_path: str | Path | None = None,
+    previous_receipt_chain_manifest_path: str | Path | None = None,
+    receipt_chain_continuity_status: str | None = None,
 ) -> dict[str, Any]:
     """Capture public XRP data; scheduled hourly runs use 1h and daily runs may evaluate the full horizon matrix."""
     if not isinstance(include_noncommercial_xrpl_nodes, bool):
@@ -4887,7 +5015,13 @@ def run_ingestion(
                 raw_only=raw_only,
             )
 
-    receipt_chain_verification = archive.write_manifest(output / "receipt_chain_manifest.json")
+    receipt_chain_verification = archive.write_manifest(
+        output / "receipt_chain_manifest.json",
+        previous_manifest_path=previous_receipt_chain_manifest_path,
+        continuity_status=receipt_chain_continuity_status,
+        cross_run_path=output / "cross_run_receipt_chain.json",
+    )
+    cross_run_receipt_chain = archive.cross_run_manifest or {}
 
     if include_noncommercial_xrpl_nodes:
         xrpl_node_reconciliation = _reconcile_xrpl_node_records(records, xrpl_node_payloads)
@@ -5006,6 +5140,12 @@ def run_ingestion(
         "coinbase_backfill": coinbase_backfill,
         "receipt_chain_manifest_path": "receipt_chain_manifest.json",
         "receipt_chain_verification": receipt_chain_verification,
+        "cross_run_receipt_chain_path": "cross_run_receipt_chain.json",
+        "cross_run_continuity_status": cross_run_receipt_chain.get("continuity_status", "UNKNOWN"),
+        "cross_run_continuity_verified": cross_run_receipt_chain.get("continuity_verified", False),
+        "cross_run_sequence": cross_run_receipt_chain.get("sequence"),
+        "cross_run_chain_sha256": cross_run_receipt_chain.get("cross_run_chain_sha256"),
+        "external_receipt_anchor_status": cross_run_receipt_chain.get("external_anchor_status", "NOT_ANCHORED"),
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
         "research_only_observation_count": len(research_only_observations),
@@ -5137,6 +5277,17 @@ def main() -> None:
     parser.add_argument("--output-dir", default="artifacts/xrp_ingestion")
     parser.add_argument("--event-registry", default=None, help="Curated XRP event registry JSON; defaults to research/xrp_intelligence/event_registry_current.json.")
     parser.add_argument(
+        "--previous-receipt-chain-manifest",
+        default=None,
+        help="Restored cross-run receipt-chain index from the latest successful main ingestion run.",
+    )
+    parser.add_argument(
+        "--receipt-chain-continuity-status",
+        choices=("BOOTSTRAP", "CONTINUED", "MISSING_PREDECESSOR_ARTIFACT"),
+        default=os.getenv("BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS", "BOOTSTRAP"),
+        help="Explicit predecessor state; a missing predecessor keeps continuity unverified.",
+    )
+    parser.add_argument(
         "--coinbase-backfill-days",
         type=int,
         default=0,
@@ -5154,6 +5305,8 @@ def main() -> None:
         coinbase_backfill_days=args.coinbase_backfill_days,
         walk_forward_horizons=horizons,
         event_registry_path=args.event_registry,
+        previous_receipt_chain_manifest_path=args.previous_receipt_chain_manifest,
+        receipt_chain_continuity_status=args.receipt_chain_continuity_status,
     )
     print(json.dumps(summary, indent=2, sort_keys=True))
 
