@@ -21,5 +21,29 @@
         }
       }
     }
+  },
+  "mcp": {
+    "servers": {
+      "opencode": {
+        "type": "remote",
+        "url": "https://mcp.opencode.com/mcp",
+        "enabled": true,
+        "headers": {
+          "Authorization": "Bearer {env:OPENCODE_API_KEY}"
+        }
+      }
+    }
+  },
+  "agent": {
+    "barrot": {
+      "description": "Barrot - main agent",
+      "model": "opencode/glm-5.3-flash",
+      "prompt": "You are Barrot. Speak as Barrot. Use OpenCode MCP.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    }
   }
 }
