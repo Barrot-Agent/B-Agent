@@ -1485,7 +1485,7 @@ def test_run77_public_web_observations_remain_research_only_and_graph_resolvable
     assert _parse_utc(data["market_snapshot"]["observed_at_utc"]) <= cutoff
 
     sources = {item["id"]: item for item in data["source_registry"]}
-    assert len(sources) == len(data["source_registry"]) == 25
+    assert len(sources) == len(data["source_registry"]) == 26
     for source in sources.values():
         assert source["raw_content_sha256"] is None
         assert source["raw_receipt_id"] is None
