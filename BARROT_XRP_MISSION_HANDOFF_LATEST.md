@@ -240,3 +240,58 @@ Updated branch ancestry against the current integration head 2e0d0e9: #1661 is 0
 **Next concrete action:** complete semantic reconciliation of all 1,102 PR paths and the 50 workflow changes; resolve least-privilege permissions, branch-protection visibility and Pages publication authorization; obtain a formal independent review; then verify exact-head checks before any merge. After a genuinely safe merge, verify the merge commit, fetch main again, inspect automatic workflow side effects and run main CI. Only then verify main-side read-only ingestion and independent raw-source anchoring. Build the actual XRP candidate model after synchronized historical data is available; add paired block-bootstrap/source-clustered uncertainty and independent shadow evaluation. Keep forecast issuance disabled until the complete admission gate passes.
 
 No merge, main write, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred. The final Run90C documentation-only descendant must pass its own exact-head CI before it is treated as verified.
+
+
+## Run91 — 2026-11-13 — SBI/Evernorth resale and exact-head reconciliation
+
+### Exact repository state
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Consolidated PR #1662: head `c0a6ce0b03f71518de8bde35ef3039f51cab4bc8`, open/draft, mergeable, 1,105 changed files, 2,244 commits ahead, zero behind, zero formal reviews and zero review threads.
+- Exact-head CI: [43433094611](https://github.com/Barrot-Agent/B-Agent/actions/runs/43433094611) — 3,557 passed, 8 subtests passed, zero failures, 61.72% inclusive coverage, 76% core coverage; wheel built and installed mission verified.
+- Exact-head dependency audit: [43433094601](https://github.com/Barrot-Agent/B-Agent/actions/runs/43433094601) — five manifest groups passed.
+- Exact-head fail-closed gate: [43433094675](https://github.com/Barrot-Agent/B-Agent/actions/runs/43433094675) — passed with merge disabled.
+- Open PR inventory: 375 total, 361 drafts, 14 non-drafts. #1660 and #1661 remain exact ancestors of #1662 (292 and 111 commits behind). Do not close them until the successor merges and its content is verified on main. Preserve #1640's unique commit and all unique/unreviewed work.
+- No merge or main write occurred. Pages publication authorization, formal review, branch-protection visibility and full semantic review remain blockers.
+
+### Evernorth actual-capital and SBI ownership reconciliation
+
+Primary source: [Evernorth November 9, 2026 Form 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+- Reported closing treasury: approximately 473 million XRP as of October 9, 2026. Run135A reconciles 388,910,554.061435 XRP of in-kind contributions plus 84,365,876.3625 XRP from the identified cash-purchased lot. A further $49,995 of restricted cash was used to purchase XRP at closing, but the additional XRP quantity is undisclosed. Therefore the exact closing total remains unknown; do not fill the residual with an estimate.
+- In-kind bridge: 600,000 advance-funding XRP; 211,319,096.061435 XRP from RippleWorks to Arrington XRP Capital Fund; 50 million XRP from the Larsen Lam Children's Remainder Trust; 126,791,458 XRP contributed directly by Ripple; and 200,000 XRP from delayed funding. The detailed components reconcile to 388,910,554.061435 XRP.
+- Cash bridge: $214,049,995 advance cash, approximately $214 million used to purchase 84,365,876.3625 XRP at an average $2.53657058; $49,995 residual restricted cash was used at closing but its XRP quantity is not disclosed. Delayed funding added $10.5 million cash. Approximately $48 million of SPAC trust cash was released after redemptions; gross closing cash before expenses was approximately $272.6 million.
+- SBI Holdings is a direct strategic investor through four controlled entities: SBI Holdings USA, SBI PE Holdings, SBI Venture Fund 2023A and SBI Venture Fund 2023B. At closing they held 9,431,914 Class A shares and 2,359,038 non-voting Class C shares, representing 21.4% of common stock and 39.9% of voting power. The Class C allocation enforces the voting cap. This is SBI Holdings, not any regional SBIC company.
+- The November 9 resale prospectus registers 73,688,162 Class A shares and states ordinary selling-holder resales produce zero proceeds for Evernorth. SBI's 9,431,914 Class A shares are included. The specific six-month lock-up agreements name Ripple, the sponsor and the contributor-related-party entity, not the SBI Stockholders. SBI's registered shares therefore appear outside that specific lock-up, subject to other restrictions and the ownership cap. No actual SBI sale has been verified.
+- The Cantor committed equity line remains contingent capacity: 5,218,935 shares at 97% of applicable VWAP, 4.99% ownership cap and 20% daily-volume cap. Run135A records zero proceeds as of the prospectus and no verified commitment-fee payment. Do not count it as cash raised.
+- The separate $30 million, 4% PIK convertible note issued October 12 produced approximately $29 million net cash after a $1 million adviser fee. It is debt, not equity; specific XRP purchases from its proceeds are not proven. Its terms include contingent cash-settlement risk.
+- Ripple-related credit is separate from equity and XRP purchases: the $10 million Company Facility had $9.7 million drawn as of October 7; the separate $1 million Evernorth Facility had no draws as of June 30; Pathfinder's separate facility and intercompany receivable remain separately accounted for. Post-close repayment status is not established.
+- On-chain tracker reconciliation (Run75D): 13 attributed wallets held approximately 103.130 million XRP as of ledger 108293784 / 2026-11-13 01:42 UTC. A reported 370.347 million XRP transfer-out figure is not a net unique-token amount and its destinations are unattributed. It must not be called sales or missing XRP. The total does not arithmetically reconcile to the closing amount by approximately 200,138 XRP. The 84.366 million cash-purchased tranche is matched to a BitGo-activated trading wallet and custody wallets H/I/J; the 200,000 XRP delayed tranche has a 199,999.999 XRP Uphold transfer match, but issuer confirmation is absent.
+- Custody/deployment conflict remains unresolved: the prospectus says 100% of XRP was in BitGo cold storage as of November 9, while management says yield strategies/DeFi participation commenced after closing. No protocol, amount, wallet or counterparty is named. Verified deployed XRP remains unknown. BitGo's $250 million insurance is shared among clients, not dedicated; no FDIC/SIPC protection is stated.
+
+### SBI, Circle, Ripple and Coinbase network
+
+- SBI Holdings/SBI Ripple Asia is a distinct joint venture with Ripple; SBI Group voting rights are reported at 60%. SBI Remit announced XRP-based remittance routes to the Philippines, Vietnam and Indonesia. The 2026 tokenized-deposit XRPL proof of concept is not production payment volume.
+- SBI Holdings and SBI Shinsei Bank invested $50 million in Circle at IPO ($25 million each). SBI Group's Arc validator and token ecosystem role is on Arc, a separate L1, not XRPL. SBI VC Trade's USDC/RLUSD distribution and JPYSC work are stablecoin distribution, not proof of XRP purchases.
+- Circle's Q3 SEC filing records Binance's $100 million equity investment in Circle (1.2 million shares at $80.84). Circle's Q3 distribution costs payable to Coinbase ($331.3 million) and Coinbase's stablecoin revenue ($306.9 million) are different accounting measures, not one-for-one.
+- Coinbase reported $3.038805 billion of customer crypto collateral received and $2.731034 billion returned for the nine months ended September 30, 2026. This is aggregate multi-asset collateral; no XRP-specific amount is disclosed.
+- Standard Chartered RLUSD custody on XRPL is live through its DFSA-regulated DIFC branch. LMAX collateral mirroring remains planned and conditional. Ripple's announced $150 million LMAX financing has no verified disbursement in the reviewed evidence.
+
+### Identity and exact-phrase research corrections
+
+- SBIC East is Tokyo Small and Medium Business Investment & Consultation Co.; SBIC Central is Nagoya Small and Medium Business Investment & Consultation Co.; SBIC West is Osaka Small and Medium Business Investment & Consultation Co. They are separate regional sister companies, not SBI Holdings subsidiaries.
+- Tokyo SBIC's February 2025 ChatGPT seminar was free and open to investee and general companies, co-hosted with the Tokyo Chamber of Commerce and supported by Japan Finance Corporation. A separate June 2025 manufacturing program was investee-company training. Neither establishes an OpenAI partnership.
+- “Ask Coin” appears as an inactive/untracked exchange listing with no reserve data; no canonical XRPL issuer or deployment was verified. Permission Coin's ASK token is a separate Base/Polygon asset.
+- One TEDx Talks video is verified for Kamilah Stevenson: [Thinking Your Way Into Health](https://www.youtube.com/watch?v=VSgeDgOCexs). The personal YouTube channel candidate remains unverified; do not attribute other channels or merge Camilla/Kamilah identities.
+
+### Prediction and data eligibility
+
+- Forecast status remains `NOT_ISSUED`. Run135A and Run75B/75D are research-only; raw publisher bytes and SHA-256 receipts were not captured. They are not model-eligible datasets.
+- The four deterministic baselines and chronological evaluation exist, but no trained XRP-specific candidate, paired block-bootstrap uncertainty, source-clustered uncertainty or independently validated shadow performance exists.
+- The scheduled public ingestion workflow remains on the integration branch, not verified as a successful main-branch service. GitHub artifact retention is finite and not external WORM anchoring.
+
+### Next action
+
+Finish independent semantic review of all 1,105 changed paths and the 50 workflow changes, obtain formal approval, resolve branch-protection visibility and Pages-publication authorization, then merge #1662 only through normal protections. After merge, fetch main, verify the merge commit and files, run main CI and inspect automatic deployment effects. Only then activate scheduled ingestion on main and improve raw-receipt/WORM durability. Do not issue a directional forecast until synchronized history and out-of-sample model evidence pass the admission gate.
+
+No merge, deployment, paper trade, real-money action, Kaggle submission, Hugging Face restart, Databricks import, secret rotation, force-push, history rewrite or source PR closure occurred.
