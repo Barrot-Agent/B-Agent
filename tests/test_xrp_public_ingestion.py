@@ -2723,12 +2723,12 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     assert summary["source_failure_count"] == 0
     assert summary["weekly_source_policy"]["captured_source_ids"] == [
         "cftc_contract_status_index",
-        "cftc_tff_financial_futures",
         "cftc_legacy_futures_only",
+        "cftc_tff_financial_futures",
     ]
     assert summary["weekly_source_policy"]["parsed_source_ids"] == [
-        "cftc_tff_financial_futures",
         "cftc_legacy_futures_only",
+        "cftc_tff_financial_futures",
     ]
     assert summary["weekly_source_policy"]["raw_only_source_ids"] == [
         "cftc_contract_status_index"

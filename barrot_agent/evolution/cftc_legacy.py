@@ -14,7 +14,7 @@ class CFTCLegacyParseError(ValueError):
 XRP_CME_LEGACY_CONTRACT = {
     "label": "XRP - CHICAGO MERCANTILE EXCHANGE",
     "code": "176740",
-    "slug": "cme_xrp_legacy",
+    "slug": "cme_xrp",
     "name": "XRP - Chicago Mercantile Exchange (Legacy Futures-Only)",
     "venue": "CME",
     "contract_multiplier_xrp": 50_000,

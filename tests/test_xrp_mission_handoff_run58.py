@@ -43,10 +43,10 @@ def test_legacy_handoff_history_and_run112_current_handoff_bind_exact_heads_and_
 
 
 def test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive():
-    assert len(ENDPOINTS) == 47
+    assert len(ENDPOINTS) == 48
     assert len(SCHEDULED_ENDPOINTS) == 43
-    assert len(WEEKLY_ENDPOINTS) == 2
-    assert len({source_id for source_id, _ in ENDPOINTS}) == 47
+    assert len(WEEKLY_ENDPOINTS) == 3
+    assert len({source_id for source_id, _ in ENDPOINTS}) == 48
 
     historical = json.loads(HISTORICAL_MAP.read_text(encoding="utf-8"))
     archived = historical["current_run_observations"]
