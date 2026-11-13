@@ -8,6 +8,7 @@ import pytest
 
 from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.point_in_time_features import FeatureSnapshotError
+from barrot_agent.evolution.xrp_public_ingestion import RawReceiptArchive
 from barrot_agent.evolution.research_eligibility import (
     ResearchEligibilityError,
     build_feature_snapshot_with_research_overlay,
@@ -34,9 +35,12 @@ RAW_RECEIPT_PAYLOAD = {
     "captured_at_utc": "2026-11-04T11:59:02Z",
     "source_data_as_of_utc": "2026-11-04T11:59:00Z",
     "source_http_date": None,
+    "source_http_headers": {},
     "raw_content_sha256": RAW_RECEIPT_SHA256,
     "payload_size_bytes": len(RAW_RECEIPT_BYTES),
     "raw_payload_path": f"raw/sha256/{RAW_RECEIPT_SHA256}.json",
+    "raw_bytes_retained": True,
+    "raw_retention_reason": "",
     "model_eligible_source": True,
     "raw_only_reason": "",
 }
@@ -431,6 +435,63 @@ def test_raw_receipt_bytes_are_required_and_must_match_sha256():
             raw_receipt_bytes={RAW_RECEIPT_ID: b'{"asset":"XRP","price_usd":0.0}'},
         )
 
+
+
+def test_research_eligibility_accepts_exact_raw_receipt_archive_schema(tmp_path):
+    archive = RawReceiptArchive(tmp_path / "raw")
+    receipt = archive.store(
+        source_id="primary-provider",
+        source_uri="https://example.com/xrp",
+        captured_at_utc="2026-11-04T11:59:02Z",
+        raw_bytes=RAW_RECEIPT_BYTES,
+        source_data_as_of_utc="2026-11-04T11:59:00Z",
+        model_eligible=True,
+    )
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["source_registry"][0]["raw_receipt"] = receipt
+    source["source_registry"][0]["raw_receipt_id"] = receipt["receipt_id"]
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    snapshot = _build(
+        [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)],
+        source_bytes,
+        overlay,
+        overlay_bytes,
+        raw_receipt_bytes={receipt["receipt_id"]: RAW_RECEIPT_BYTES},
+    )
+    assert snapshot["snapshot_id"]
+    assert snapshot["research_eligibility_overlays"][0]["artifact_id"] == "eligibility-overlay-test"
+
+
+def test_research_eligibility_rejects_digest_only_raw_archive_receipt(tmp_path):
+    archive = RawReceiptArchive(tmp_path / "raw")
+    receipt = archive.store(
+        source_id="primary-provider",
+        source_uri="https://example.com/xrp",
+        captured_at_utc="2026-11-04T11:59:02Z",
+        raw_bytes=RAW_RECEIPT_BYTES,
+        source_data_as_of_utc="2026-11-04T11:59:00Z",
+        model_eligible=True,
+        retain_raw_bytes=False,
+        raw_retention_reason="publisher redistribution restriction",
+    )
+    source_bytes, overlay, _ = _documents()
+    source = json.loads(source_bytes)
+    source["source_registry"][0]["raw_receipt"] = receipt
+    source["source_registry"][0]["raw_receipt_id"] = receipt["receipt_id"]
+    source_bytes, overlay, overlay_bytes = _rebind_source_document(source, overlay)
+    source_sha = git_blob_sha1(source_bytes)
+    records = [_feature("blocked-observation", source_sha), _feature("eligible-observation", source_sha)]
+
+    with pytest.raises(ResearchEligibilityError, match="requires retained raw bytes"):
+        _build(
+            records,
+            source_bytes,
+            overlay,
+            overlay_bytes,
+            raw_receipt_bytes={receipt["receipt_id"]: RAW_RECEIPT_BYTES},
+        )
 
 
 def test_raw_receipt_id_is_recomputed_from_complete_canonical_metadata():
