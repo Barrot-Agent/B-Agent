@@ -126,24 +126,11 @@
       "barrot-self-upgrade",
       "sync-huggingface",
       "databricks-bundle",
-      "audio-ingest",
+      "ask-barrot",
       "barrot-speak",
+      "capability-1-market-analysis",
       "diag-cf",
       "diag-cf2",
-      "free-image-gen",
-      "ibm-bob-barrot-audit",
-      "knowledge-signal-cycle",
-      "knowledge-signal-cycle-btc",
-      "make-track",
-      "pingpong",
-      "signal_ledger",
-      "subagent-matrix",
-      "subagent-spawn",
-      "task-allocator",
-      "test-groq-chain",
-      "test-semantic-memory",
-      "webmcp-live-sandbox",
-      "write-lyrics",
       "sync-self-hosted-brain"
     ],
     "manual_action_gates": [
@@ -159,7 +146,43 @@
       "hover_bike_updates",
       "formal-verification-benchmarks"
     ],
-    "no_workflow_dispatched": true
+    "no_workflow_dispatched": true,
+    "manual_groq_workflows": [
+      "capability-10-design",
+      "capability-discovery",
+      "data-value-triage",
+      "financial-data-refresh",
+      "frontier-digest",
+      "research-topics",
+      "self-benchmark",
+      "signal-summary",
+      "webmcp-trend-digest",
+      "test-groq-chain"
+    ],
+    "read_only_token_workflows": [
+      "audio-ingest",
+      "barrot-bundle-operational-smoke",
+      "barrot-controlled-feature-validation",
+      "capability-9-data-resolver",
+      "cross-analysis",
+      "formal-verification-benchmarks",
+      "hover_bike_updates",
+      "ibm-bob-barrot-audit",
+      "knowledge-signal-cycle",
+      "knowledge-signal-cycle-btc",
+      "make-track",
+      "pingpong",
+      "riemann-harvest",
+      "signal_ledger",
+      "subagent-matrix",
+      "subagent-spawn",
+      "task-allocator",
+      "test-semantic-memory",
+      "webmcp-live-sandbox",
+      "webmcp-monetization-enrich",
+      "write-lyrics"
+    ],
+    "note": "Quarantined means empty GitHub-token permissions or explicit false condition. The read_only_token_workflows list means contents:read or similarly limited GitHub permissions only; it does not prove that a workflow has no third-party side effects. Manual Groq workflows were not dispatched."
   },
   "verification_notes": {
     "main_branch_protected_flag": true,
@@ -169,5 +192,12 @@
     "external_dispatch": false,
     "external_data_transfer": false,
     "no_deployment_secret_rotation_databricks_write_kaggle_submission_paper_trade_or_funds_transfer": true
+  },
+  "market_data_quality": {
+    "xrp_insights_etf": "Nov 12 data page is settled (4 trading days); dashboard and data-download holdings snapshots differ by about 0.929M XRP and AUM differs with valuation vintage.",
+    "cryptokeyhole_etf": "Nov 12 partial, 3/4 funds, Franklin XRPZ missing; cumulative excludes partial day.",
+    "xrpdesk_exchange_wallets": "20.61B assistant-snapshot at 04:50 UTC versus 37.05B assistant-full-scan at 13:36 UTC; do not interpret as a same-day flow.",
+    "corpstacking_funds": "10-holder total conflicts with methodology exclusion of basket products while NCIQ appears in largest-holder list; Evernorth remains unreported post-close.",
+    "collateral": "Ripple Prime lists XRP collateral; CME Clearing list excludes XRP; CFTC Letter 26-05 is conditional and no XRP FCM notice/use is verified."
   }
 }

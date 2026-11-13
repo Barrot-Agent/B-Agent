@@ -267,7 +267,43 @@
         "39.7% without hot/cold label",
         "OKX and Korbit main-wallet coverage gaps",
         "not a tradable-float measure"
-      ]
+      ],
+      "venue_breakdown": [
+        {
+          "venue": "Upbit",
+          "xrp": 6470000000
+        },
+        {
+          "venue": "Coinbase including cbXRP reserve",
+          "xrp": 5800000000,
+          "non_customer_cbXRP_reserve": 151400000
+        },
+        {
+          "venue": "Binance including Binance-Peg reserve",
+          "xrp": 2660000000,
+          "non_customer_binance_peg_reserve": 327400000,
+          "binance_charity": 1900000
+        },
+        {
+          "venue": "Bithumb",
+          "xrp": 1800000000
+        },
+        {
+          "venue": "Uphold",
+          "xrp": 1700000000
+        },
+        {
+          "venue": "Kraken",
+          "xrp": 952300000
+        },
+        {
+          "venue": "SBI VC Trade",
+          "xrp": 56000000,
+          "same_wallet_change_7d_xrp": -453000,
+          "same_wallet_change_30d_xrp": -1200000
+        }
+      ],
+      "same_wallet_methodology": "Subtract wallets added after the start of the comparison window; does not distinguish customer withdrawals from transfers to untracked wallets."
     },
     "transfer_flows": {
       "source": "TrackWhale",
@@ -285,16 +321,26 @@
         "url": "https://xrp-insights.com/",
         "nov12_daily_flow_xrp": -268644,
         "nov9_to_nov12_weekly_flow_xrp": -9481905,
-        "holdings_xrp_including_bitw": 1185698783,
-        "conflict": "separate downloads page crawl still says data as of Nov11 and Nov12 provisional"
+        "data_download_holdings_xrp": 1185698783,
+        "dashboard_displayed_holdings_xrp": 1184770000,
+        "holdings_vintage_difference_xrp": 928783,
+        "dashboard_aum_usd": 1228970000,
+        "data_download_nov12_aum_usd": 1250000000,
+        "data_status": "Nov 12, 2026; four settled trading days; no provisional-day conflict on the current downloads page",
+        "methodology": "six US spot funds plus BITW; issuer holdings changes; GXRP excluded from flow totals while a data gap is corrected",
+        "note": "Dashboard holdings/AUM and data-download holdings/AUM differ slightly because page refresh and valuation vintages differ; preserve snapshots."
       },
       "cryptokeyhole": {
         "url": "https://cryptokeyhole.com/etf-flows/xrp/",
-        "cumulative_through_nov11_xrp": -6627738,
+        "updated_at_utc": "2026-11-13T18:07:00Z",
         "nov12_partial_flow_xrp": -3322,
         "funds_reported": 3,
         "funds_expected": 4,
-        "not_included_in_cumulative": true
+        "missing_fund": "Franklin Templeton XRPZ",
+        "cumulative_through_nov11_xrp": -6627738,
+        "nov5_to_nov11_complete_5_day_flow_xrp": -10005584,
+        "partial_nov12_not_in_cumulative": true,
+        "universe": "four US spot XRP ETFs read daily; excludes Grayscale from daily data and REX-Osprey from totals"
       },
       "alpha_finance": {
         "url": "https://alphafinance.io/etf/xrp/",
@@ -308,9 +354,44 @@
         "as_of": "2026-11-13",
         "holdings_xrp": 1398686615,
         "universe": "10 XRP funds/ETPs/trusts; page's public methodology has an internal conflict: it says basket funds are excluded but also lists NCIQ in the largest-holder table",
-        "evernorth_status": "Closed October 9, 2026, awaiting first post-close holdings report; the cited pre-close 346,284,972 XRP balance is as of June 30 and the 473,276,430 XRP closing amount was a pre-close expectation, not a verified post-close balance."
+        "evernorth_status": "Closed October 9, 2026, awaiting first post-close holdings report. Its 346,284,972 XRP balance is as of June 30, before closing; 473,276,430 XRP was a pre-close expected starting amount, not an actual post-close balance.",
+        "methodology_conflict": "The page says basket funds NCIQ/EZPZ/GDLC/BITW are excluded, yet the largest-holder table lists NCIQ at 17.376M XRP. It also describes ten funds and nine spot funds in different sections. Preserve this inconsistency."
       },
-      "methodology": "overlapping issuer files, different cohorts and missing-file treatment; do not average"
+      "methodology": "overlapping issuer files, different cohorts and missing-file treatment; do not average",
+      "xrpdesk": {
+        "url": "https://xrpdesk.app/",
+        "exchange_wallets": [
+          {
+            "as_of_utc": "2026-11-13T04:50:00Z",
+            "tracked_xrp": 20610000000,
+            "venues": 62,
+            "source_type": "assistant-snapshot"
+          },
+          {
+            "as_of_utc": "2026-11-13T13:36:00Z",
+            "tracked_xrp": 37050000000,
+            "venues": 62,
+            "source_type": "assistant-full-scan"
+          }
+        ],
+        "exchange_balance_model_eligible": false,
+        "exchange_balance_caveat": "The 16.44B difference is a source/methodology and wallet-universe change, not a demonstrated same-day flow. XRPDesk says unlabeled wallets are excluded.",
+        "etf_vaults": {
+          "as_of": "2026-11-12",
+          "holdings_xrp": 1140000000,
+          "funds": [
+            "XRP",
+            "XRPZ",
+            "XRPC",
+            "TOXR",
+            "GXRP",
+            "XRPR"
+          ],
+          "daily_reported_flow_xrp": -3900,
+          "flow_note": "change in reported holdings, not ETF trading volume"
+        },
+        "payment_corridor_note": "Bitso/Coins.ph/Independent Reserve corridor rows are labeled-wallet-change proxies, not confirmed Ripple Payments volume."
+      }
     },
     "rlusd": {
       "stableradar": {
@@ -364,6 +445,70 @@
         "caveat": "Six-fund sheet universe; differs from the ten-fund/ETP/trust universe on Corpstacking."
       },
       "payment_corridor_note": "Its Bitso/Coins.ph/Independent Reserve corridor rows are labeled-wallet-change proxies, not confirmed Ripple Payments volume."
+    },
+    "institutional": {
+      "coinbase_rlusd": {
+        "date": "2026-10-28",
+        "source": "Ripple official press release",
+        "finding": "RLUSD available to retail and institutional clients on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was stated as forthcoming, not live."
+      },
+      "coinbase_circle": {
+        "date": "2026-11-09",
+        "source": "Reuters",
+        "finding": "PNC limited pilot lets eligible corporate/institutional clients receive Circle USDC and automatically convert it to USD through Coinbase; this is a USDC rail, not XRP settlement."
+      },
+      "q2_2026_13f": {
+        "source": "CryptoKeyhole synthesis of SEC 13F filings",
+        "managers": 117,
+        "reported_value_usd": 154300000,
+        "funds": 4,
+        "largest_reported_positions": [
+          {
+            "manager": "Goldman Sachs",
+            "usd": 78900000
+          },
+          {
+            "manager": "Jane Street",
+            "usd": 15500000
+          },
+          {
+            "manager": "Millennium Management",
+            "usd": 15300000
+          }
+        ],
+        "as_of": "2026-06-30",
+        "caveat": "Lagged fund-share disclosures, not direct XRP ownership or current spot cash inflow."
+      },
+      "sbi": {
+        "finding": "SBI Ripple Asia is 60/40 SBI Group/Ripple and does not handle XRP directly; SBI Remit/SBI VC Trade/Tranglo is the separate operational XRP remittance path. SBI also has a 50/50 Circle JV; SBI Holdings and SBI Shinsei each invested $25M in Circle's IPO. SBI-linked Evernorth voting power is about 39.9%, but exact cash/XRP contribution allocation is undisclosed."
+      },
+      "x402": {
+        "source": "CoinDesk",
+        "url": "https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million",
+        "date": "2026-10-14",
+        "cumulative_transactions": 14300000,
+        "registered_merchants": 169,
+        "cumulative_xrp_payments": 6991,
+        "cumulative_rlusd_payments": 12752,
+        "interpretation": "Large transaction count but very small aggregate token quantities; not evidence of substantial capital throughput."
+      }
+    },
+    "collateral": {
+      "ripple_prime": {
+        "source": "https://ripple.com/products/prime-brokerage/",
+        "finding": "Ripple Prime lists XRP among assets clients may post as collateral; no XRP-specific customer balances, utilization or haircuts are disclosed."
+      },
+      "cftc_letter_26_05": {
+        "source": "https://www.cftc.gov/csl/26-05/download",
+        "finding": "Conditional CFTC staff no-action position, not a generally applicable rule. Specified FCM 30.7 paths may accept certain non-security digital assets subject to conditions; the non-DCO-accepted path carries at least a 20% haircut and revised FCM risk policy/notice requirements."
+      },
+      "cme_clearing": {
+        "source": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+        "finding": "Public acceptable-collateral list does not list XRP."
+      },
+      "verified_xrp_fcm_notice": false,
+      "verified_xrp_customer_margin_use": false,
+      "conclusion": "Prime-broker collateral capability is not equivalent to DCO/clearinghouse acceptance or actual XRP collateral utilization."
     }
   },
   "macro": {
@@ -482,7 +627,11 @@
     "https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million",
     "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
     "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
-    "https://www.comptrollerofthecurrency.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html"
+    "https://www.comptrollerofthecurrency.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+    "https://xrpdesk.app/",
+    "https://ripple.com/products/prime-brokerage/",
+    "https://www.cftc.gov/csl/26-05/download",
+    "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html"
   ],
   "limitations": {
     "raw_source_bytes_saved": false,
@@ -491,5 +640,40 @@
     "source_independence": "vendor aggregates and issuer-derived ETF dashboards overlap; source clusters retained",
     "no_directional_forecast": true,
     "no_external_actions": true
+  },
+  "workflow_review": {
+    "changed_workflow_files_screened": 50,
+    "automatic_writers_quarantined": [
+      "barrot-sync",
+      "barrot-agent",
+      "barrot-self-upgrade",
+      "sync-huggingface",
+      "databricks-bundle",
+      "ask-barrot",
+      "barrot-speak",
+      "capability-1-market-analysis",
+      "diag-cf",
+      "diag-cf2",
+      "sync-self-hosted-brain"
+    ],
+    "manual_groq_workflows": [
+      "capability-10-design",
+      "capability-discovery",
+      "data-value-triage",
+      "financial-data-refresh",
+      "frontier-digest",
+      "research-topics",
+      "self-benchmark",
+      "signal-summary",
+      "webmcp-trend-digest",
+      "test-groq-chain"
+    ],
+    "manual_action_gates": [
+      "barrot-ops: separate Databricks workspace import and Kaggle dataset download approvals plus exact main SHA",
+      "deploy-a2a-worker: deployment YES plus separate secret-rotation YES and exact main SHA",
+      "coinbase-paper-trader: manual YES and exact main SHA; artifact-only simulation"
+    ],
+    "no_workflow_dispatched": true,
+    "note": "Other scheduled/manual workflows with contents:read GitHub permissions were screened for triggers and secrets; no workflow was run. GitHub-token read-only does not prove absence of third-party side effects."
   }
 }
