@@ -15,6 +15,10 @@ from .source_independence import canonical_independence_groups
 
 _SHA1 = re.compile(r"^[0-9a-f]{40}$")
 _MAX_ARTIFACT_BYTES = 10 * 1024 * 1024
+_HTTP_PROVENANCE_HEADER_NAMES = frozenset({
+    "age", "cache-control", "content-type", "content-encoding",
+    "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
+})
 
 
 class ResearchEligibilityError(ValueError):
@@ -150,12 +154,35 @@ def _source_registry(
             "raw_content_sha256",
             "payload_size_bytes",
             "raw_payload_path",
+            "raw_bytes_retained",
+            "raw_retention_reason",
             "model_eligible_source",
             "raw_only_reason",
         }
-        if set(receipt_payload) != required_receipt_fields:
+        required_receipt_fields_v2 = required_receipt_fields | {"source_http_headers"}
+        if set(receipt_payload) not in (required_receipt_fields, required_receipt_fields_v2):
             raise ResearchEligibilityError(
                 f"source_registry[{index}].raw_receipt must contain the exact RawReceiptArchive fields"
+            )
+        source_http_headers = receipt_payload.get("source_http_headers", {})
+        if not isinstance(source_http_headers, Mapping):
+            raise ResearchEligibilityError(
+                f"source_registry[{index}].raw_receipt source_http_headers must be an object"
+            )
+        for name, value in source_http_headers.items():
+            if (
+                name not in _HTTP_PROVENANCE_HEADER_NAMES
+                or not isinstance(value, str)
+                or not value
+                or len(value) > 512
+                or any(ord(character) < 32 or ord(character) == 127 for character in value)
+            ):
+                raise ResearchEligibilityError(
+                    f"source_registry[{index}].raw_receipt contains invalid HTTP provenance headers"
+                )
+        if receipt_payload["raw_bytes_retained"] is not True or receipt_payload["raw_retention_reason"] != "":
+            raise ResearchEligibilityError(
+                f"source_registry[{index}] readiness requires retained raw bytes and no retention exception"
             )
         canonical_receipt_id = _sha256(_canonical_json(receipt_payload).encode("utf-8"))
         if declared_receipt_id != canonical_receipt_id or receipt_id.strip() != canonical_receipt_id:
