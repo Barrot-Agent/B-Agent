@@ -2,7 +2,7 @@
   "artifact_type": "barrot.xrp.repository_market_run_audit",
   "schema_version": "1.0.0",
   "run_id": "Run91D",
-  "captured_at_utc": "2026-11-13T13:45:00Z",
+  "captured_at_utc": "2026-11-13T13:50:00Z",
   "mission": {
     "priority": 1,
     "primary": "XRP intelligence and measured prediction-engine mastery",
@@ -396,6 +396,23 @@
         "The initiative is a limited pilot."
       ],
       "xrp_relevance": "A competing USDC-to-bank-USD payment path that does not require XRP or XRPL."
+    },
+    {
+      "event": "XRPL institutional credit facilities and LendingProtocol collateral semantics",
+      "publisher": "XRPL Developer Documentation",
+      "published_date": "Page last updated about one month before this audit; live amendment page checked 2026-11-13",
+      "url": "https://xrpl.org/docs/use-cases/defi/institutional-credit-facilities",
+      "related_amendment_status_url": "https://xrpl.org/resources/known-amendments",
+      "verified_facts": [
+        "The documented Lending Protocol primitive uses uncollateralized fixed-term loans.",
+        "Single Asset Vaults aggregate lender assets and can hold XRP, trust-line tokens such as RLUSD, or Multi-Purpose Tokens.",
+        "Vault deposits are lender-pool funding, not borrower collateral.",
+        "The documentation says collateralized loans can be built with additional logic such as on-chain custodians; that is not the base Lending Protocol primitive.",
+        "The use-case requires both LendingProtocol and LendingProtocolV1_1 amendments."
+      ],
+      "activation_status": "UNVERIFIED_CURRENTLY",
+      "activation_limitation": "The XRPL Known Amendments page navigation labels Credit/Lending as Open for Voting, but its dynamic mainnet status widget did not render in this retrieval. The repository's last vote snapshot is dated November 8 and is not a current November 13 RPC observation. No current supermajority or activation claim is made.",
+      "xrp_relevance": "Do not label XRPL LendingProtocol as a live XRP-collateralized lending market. XRP can be a vault asset; the base loan is uncollateralized. Actual collateralization requires separately evidenced custodian logic and activated amendments."
     }
   ],
   "prediction_engine": {
@@ -520,7 +537,7 @@
   "backlog": {
     "1614": "preserve unique prediction work; 36 ahead/2,303 behind; 27 source-only paths",
     "1615": "preserve unique security work; three ahead/2,303 behind; 13 source-only paths",
-    "1640": "preserve; 1 unique commit ahead/1,287 behind; its unique commit changes barrot-ops.yml and two safety tests; reconcile before any closure",
+    "1640": "supersession candidate; its one unique commit's three-file objective is already semantically integrated in #1662. The action-specific confirmation test names are present in integration; test_external_deploys_require_confirmation.py is byte-identical; integration barrot-ops.yml fails closed on missing credentials and import errors while the source PR silently skips/masks those failures. Do not close until #1662 is merged and verified on main.",
     "1642": "supersession candidate; 0 ahead/2,261 behind; all seven changed paths overlap #1662",
     "1643": "supersession candidate; 0 ahead/1,356 behind; all 670 changed paths overlap #1662",
     "1653": "preserve unique work; 18 ahead/2,262 behind; six source-only paths",
@@ -551,5 +568,101 @@
     "No paper trade, funds transfer or real-money action",
     "No force-push, history rewrite or destructive worktree operation",
     "No source PR closure"
-  ]
+  ],
+  "sbic_chatgpt_research": {
+    "conclusion": "Japan's three regional SME investment-development companies are separate from SBI Holdings. Primary SBIC event documents show education and business-support programming about ChatGPT/generative AI, not an OpenAI commercial partnership.",
+    "entities": {
+      "east": {
+        "official_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "location": "Tokyo",
+        "sources": [
+          {
+            "date": "2025-02-26",
+            "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+            "facts": "Official SBIC East PDF advertises a ChatGPT/generative-AI seminar; speaker is a Microsoft Japan executive; co-host is Tokyo Chamber of Commerce Taito branch; OpenAI is discussed as the creator of ChatGPT, not as event partner."
+          },
+          {
+            "date": "2026-11-16",
+            "url": "https://www.sbic.co.jp/seminar/20261116/",
+            "facts": "Upcoming Tokyo SBIC generative-AI seminar featuring a Microsoft Japan evangelist; AI agents are discussed; the event page does not establish an OpenAI partnership."
+          }
+        ]
+      },
+      "central": {
+        "official_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "location": "Nagoya",
+        "source": {
+          "date": "2026-06-02",
+          "url": "https://www.sbic-cj.co.jp/news/5077/",
+          "facts": "Official notice for a July 31, 2026 investee-only salon about real-world generative-AI adoption and peer exchange among executives; not ChatGPT-specific and not an OpenAI partnership."
+        }
+      },
+      "west": {
+        "official_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "location": "Osaka",
+        "source": {
+          "date": "2024-10-23",
+          "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+          "facts": "Official Investment Forum PDF advertises a ChatGPT introductory seminar taught by STORIA law-firm partner Taichi Kakinuma, with in-person and Zoom attendance; no OpenAI participation or partnership is stated."
+        }
+      }
+    },
+    "relationship_conclusion": "SBIC East/Central/West are not SBI Holdings. Their ChatGPT/generative-AI events are educational or investee-support activities. No OpenAI commercial, ownership, licensing or data-sharing relationship is established by the inspected primary evidence."
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "query": "\"ASK Coin\" XRP Ledger XRPL issuer",
+      "result": "No canonical XRPL issuer, token deployment or verified Ripple/SBI relationship found. Unrelated ASK tickers/tokens and exchange listings remain separate candidates.",
+      "status": "UNVERIFIED_NO_XRPL_LINK"
+    },
+    "actual_capital": {
+      "query": "\"actual capital\" XRP Evernorth financing",
+      "result": "Secondary headlines describe the Evernorth committed equity facility as roughly $80.7M potential capacity. The SEC prospectus reports zero ELOC proceeds as of November 9, 2026; capacity is not cash received. PIK notes are debt, in-kind XRP is not cash, cash-funded XRP purchases are uses of proceeds, and registered secondary resales do not generate issuer proceeds.",
+      "status": "PRIMARY_SEC_RECONCILIATION_CONTROLS"
+    },
+    "sbic_chatgpt": {
+      "query": "\"SBIC\" \"ChatGPT\" Japan; SBIC East/Central/West",
+      "result": "Official Tokyo and Osaka SBIC materials explicitly advertise ChatGPT education; Nagoya SBIC advertises an investee-only generative-AI salon. These are regional SME support activities, not an OpenAI partnership or SBI Holdings relationship.",
+      "status": "PRIMARY_EVENT_DOCUMENTS_VERIFIED"
+    },
+    "camilla_kamilah_stevenson_youtube": {
+      "identity": "Dr. Kamilah Stevenson identity is supported by first-party professional material; candidate YouTube channel ownership is not linked by a first-party cross-reference.",
+      "verified_own_channel_videos": 0,
+      "status": "CHANNEL_OWNERSHIP_UNVERIFIED",
+      "rule": "Do not attribute guest appearances or similarly named channels to her without first-party channel ownership verification."
+    }
+  },
+  "source_pr_reconciliation": {
+    "1640": {
+      "source_head": "d34067a7da6be1c378bbbe093524c9fbb1ab74d6",
+      "ahead_by": 1,
+      "behind_by": 1287,
+      "unique_commit_files": [
+        ".github/workflows/barrot-ops.yml",
+        "tests/test_external_action_gates.py",
+        "tests/test_external_deploys_require_confirmation.py"
+      ],
+      "findings": [
+        "Both action-specific confirmation test functions are present in integration.",
+        "tests/test_external_deploys_require_confirmation.py is byte-identical between source PR head and integration.",
+        "Integration has the same separate Databricks/Kaggle confirmation inputs and exact approved-main-SHA guard.",
+        "Integration fails closed when required Databricks credentials are missing and on workspace-import failure; source PR silently skips/masks those failures.",
+        "The source PR's unique commit objective is therefore semantically superseded by stronger integration behavior."
+      ],
+      "disposition": "SUPERSESSION_CANDIDATE; KEEP_OPEN_UNTIL_SUCCESSOR_MERGED_AND_VERIFIED"
+    }
+  },
+  "xrpl_credit_collateral": {
+    "base_lending_protocol": "UNCOLLATERALIZED_FIXED_TERM_LOANS",
+    "single_asset_vaults": "Aggregate lender assets; supported asset classes include XRP, trust-line tokens such as RLUSD, and MPTs.",
+    "borrower_collateral": "Vault deposits are not borrower collateral. Collateralized loans require additional logic such as on-chain custodians.",
+    "required_amendments": [
+      "LendingProtocol",
+      "LendingProtocolV1_1"
+    ],
+    "live_activation_status": "UNVERIFIED_CURRENTLY",
+    "source_url": "https://xrpl.org/docs/use-cases/defi/institutional-credit-facilities",
+    "amendment_status_url": "https://xrpl.org/resources/known-amendments",
+    "last_repo_vote_snapshot": "2026-11-08; stale for a 2026-11-13 activation claim."
+  }
 }
