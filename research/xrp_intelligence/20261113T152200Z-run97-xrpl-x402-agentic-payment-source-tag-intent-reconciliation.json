@@ -1,0 +1,222 @@
+{
+  "schema_version": "barrot-xrpl-agentic-payments-quality-v1",
+  "run": "Run97",
+  "captured_at_utc": "2026-11-13T15:22:00Z",
+  "subject": "T54 x402 facilitator, XRPL agentic micropayments and Mastercard Agent Pay for Machines",
+  "source_observations": {
+    "t54_hub": {
+      "source_url": "https://xrpl-ai.org/",
+      "publisher": "T54 Labs",
+      "source_group": "facilitator_operator_primary",
+      "operator_reported": {
+        "all_time_transactions": 15694282,
+        "all_time_value_settled_usd": 78306.59,
+        "registered_merchants": 193,
+        "live_services": 5410
+      },
+      "derived_average_usd_per_transaction": 0.004989498085990808,
+      "transaction_list": {
+        "page_url": "https://xrpl-ai.org/transactions",
+        "sampled_rows": 25,
+        "sampled_intent_status_unverified_rows": 25,
+        "field_name": "Intent",
+        "interpretation": "Intent/Intent status is not a ledger transaction result field.",
+        "sample_transaction": {
+          "hash": "631CB827129C6F0519CCEB2219B20457BF515D9CB3629D3FC8ED6F472892D799",
+          "ledger_index": 106539033,
+          "timestamp": "2026-08-25T18:23:31Z",
+          "amount": "0.0005 RLUSD",
+          "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+          "buyer_label": "Claw Credit",
+          "merchant_label": "Heurist Inference Router",
+          "source_tag": 804681468,
+          "facilitator": "t54 XRPL Facilitator",
+          "intent_status": "Unverified",
+          "ledger_transaction_independently_verified_by_this_run": false,
+          "note": "Illustrative sample from a page result crawled two months ago; not a current transaction observation."
+        }
+      },
+      "stale_page_cache": {
+        "url": "https://xrpl-ai.org/transactions?page=2",
+        "crawled_age": "approximately two months at retrieval",
+        "reported_total_transactions": 2444839,
+        "reported_page_count": 97794,
+        "status": "stale_cached_snapshot",
+        "model_eligible": false
+      },
+      "quality": "Operator-reported dashboard metrics; raw page bytes and complete transaction set not archived; not independent WORM evidence."
+    },
+    "xrp_insights": {
+      "source_url": "https://xrp-insights.com/xrp-radar/agentic-payments",
+      "publisher": "XRP Insights",
+      "source_group": "t54_downstream_aggregator",
+      "operator_attributed_metrics": {
+        "all_time_transactions": 15679858,
+        "settled_xrp": 7031,
+        "settled_rlusd": 69061,
+        "active_agents": 191,
+        "merchants": 193,
+        "endpoints": 5882
+      },
+      "latest_spot_check_claim": {
+        "ledger_index": 108299344,
+        "transaction_hash_prefix": "5985B9849D",
+        "publisher_claim": "recent settlement spot-checked against rippled",
+        "independently_retrieved_by_this_run": false,
+        "reason": "Linked explorer retrieval returned HTTP 403."
+      },
+      "limitations": [
+        "The aggregator references T54's facilitator; it is not an independent transaction-count confirmation.",
+        "The 191 active-agent count is an operator-attributed metric, not cryptographically verified agent identity for every payer.",
+        "The XRP and RLUSD totals are asset units, not USD cash capital.",
+        "The displayed asset totals do not reconcile exactly to T54's USD headline without common timestamps and a documented conversion method."
+      ],
+      "model_eligible": false
+    },
+    "source_tag": {
+      "default_value": 804681468,
+      "semantics": "merchant_endpoint_attribution",
+      "agent_attribution": false,
+      "direct_excerpt": "The x402 SourceTag is not agent attribution. It answers which endpoint was paid, not which agent paid.",
+      "excerpt_sha256": "e7c5b1540ff6d6ba74da0208b74f34a9f32754f0292bd87faf221a7b1b9f786e",
+      "source_url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/agents/agentic-payments-x402.md"
+    },
+    "intent_status": {
+      "field_label": "Intent status",
+      "sample_value": "Unverified",
+      "direct_excerpt": "Verifiable Intent (VI) is optional and additive. A plain x402 payment still works exactly as before.",
+      "excerpt_sha256": "43f7fde08b392dbb7f29f9b885cfaf280f94ca7ca0bda7651043737a52ac6839",
+      "interpretation": "Intent/Verifiable Intent attestation state, not the XRPL transaction result. No ledger failure or confirmation status is inferred from this field.",
+      "source_url": "https://xrpl-x402.t54.ai/docs/verifiable-intent"
+    },
+    "t54_verifiable_intent": {
+      "optional": true,
+      "layers": {
+        "L1": "Trustline-issued owner credential and spending limits",
+        "L2": "Owner-signed delegation authorizing an agent key",
+        "L3": "Agent-signed final action bound to the exact payment/invoice"
+      },
+      "risk_decision": [
+        "allow",
+        "deny",
+        "review"
+      ],
+      "source_url": "https://xrpl-x402.t54.ai/docs/verifiable-intent"
+    },
+    "t54_x402_scheme": {
+      "settlement_flow": "Payer signs a standard XRPL Payment; facilitator submits it; successful PAYMENT-RESPONSE contains success=true and transaction hash.",
+      "assets": [
+        "XRP",
+        "RLUSD"
+      ],
+      "default_source_tag": 804681468,
+      "direct_excerpt": "The XRPL Exact scheme uses presigned Payment transactions to enable trustless, atomic payments between clients and resource servers.",
+      "source_url": "https://xrpl-x402.t54.ai/docs/xrpl-scheme"
+    },
+    "mastercard": {
+      "published_date": "2026-06-10",
+      "initial_participants": [
+        "T54 Labs",
+        "RippleX",
+        "Coinbase",
+        "OKX",
+        "Cloudflare",
+        "Stripe",
+        "Polygon",
+        "Aave Labs"
+      ],
+      "program_scope": "Agent Pay for Machines; credentialing, permissioning, transacting and multi-rail settlement across cards, accounts and stablecoins.",
+      "interpretation": "Program-level co-participation. Mastercard's release does not establish a bilateral T54-Ripple contract, exclusive XRPL rail, XRP-denominated Mastercard settlement or measured XRP demand.",
+      "direct_excerpt": "Mastercard lists T54 Labs and RippleX among the initial Agent Pay for Machines participants; this is program-level co-participation, not proof of bilateral XRP settlement.",
+      "excerpt_sha256": "b09a9e8591df1619b36299059dbfb176e4405046f81cd63ddc1b1cab7c7e353d",
+      "source_url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html"
+    },
+    "xrplf": {
+      "finding": "XRPLF identifies x402-xrpl as T54-maintained reference implementation for XRPL; supports XRP or RLUSD payments on XRPL.",
+      "source_url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/agents/agentic-payments-x402.md"
+    }
+  },
+  "reconciliation": {
+    "t54_hub_transactions": 15694282,
+    "xrp_insights_transactions": 15679858,
+    "difference": 14424,
+    "treatment": "Different capture times and downstream source lineage; preserve separately, do not average.",
+    "t54_hub_live_services": 5410,
+    "xrp_insights_endpoints": 5882,
+    "treatment_services_vs_endpoints": "Different labels/definitions; not a like-for-like contradiction.",
+    "t54_reported_usd_per_transaction": 0.004989498085990808,
+    "interpretation": "Micropayment-scale reported activity; high transaction count does not equal material capital flow or native XRP demand.",
+    "xrp_insights_asset_totals": {
+      "xrp": 7031,
+      "rlusd": 69061
+    },
+    "asset_interpretation": "XRP and RLUSD must remain separate. RLUSD settlement is not native XRP demand.",
+    "independence": "T54 hub and XRP Insights are not independent confirmations; XRP Insights cites/aggregates T54."
+  },
+  "evidence_integrity": {
+    "raw_source_bytes_archived": false,
+    "raw_source_hash_receipts": false,
+    "authored_excerpt_hashes": true,
+    "external_ledger_transaction_independently_verified": false,
+    "source_tag_semantics_verified_against_xrplf_docs": true,
+    "intent_status_semantics_verified_against_t54_docs": true,
+    "stale_page2_excluded": true
+  },
+  "model_admission": {
+    "eligible_for_event_timeline": true,
+    "eligible_as_xrp_price_feature": false,
+    "eligible_as_xrp_capital_flow": false,
+    "eligible_as_verified_agent_identity": false,
+    "forecast_status": "NOT_ISSUED",
+    "rationale": [
+      "Operator-reported transaction counters are not independent or raw-byte-anchored.",
+      "SourceTag identifies a merchant endpoint, not the paying agent.",
+      "Intent status is not the ledger transaction result; Verifiable Intent is optional.",
+      "The displayed average ticket is approximately half a cent.",
+      "RLUSD and XRP amounts are separate and cannot be netted into XRP demand."
+    ]
+  },
+  "competing_hypotheses": [
+    "Agentic x402 micropayments are an emerging XRPL use case supported by T54's facilitator and XRP/RLUSD payment scheme.",
+    "High transaction counts may overstate economic significance because the operator reports an average ticket around $0.005.",
+    "The 191 active-agent metric may represent attributed payer accounts or operator classifications rather than cryptographically verified autonomous agents.",
+    "Mastercard program participation signals ecosystem alignment but does not prove XRP-denominated settlement through Mastercard."
+  ],
+  "sources": [
+    {
+      "name": "T54 XRPL AI Hub",
+      "url": "https://xrpl-ai.org/",
+      "group": "facilitator_operator_primary"
+    },
+    {
+      "name": "T54 transaction history",
+      "url": "https://xrpl-ai.org/transactions",
+      "group": "facilitator_operator_primary"
+    },
+    {
+      "name": "T54 XRPL Exact scheme",
+      "url": "https://xrpl-x402.t54.ai/docs/xrpl-scheme",
+      "group": "facilitator_operator_documentation"
+    },
+    {
+      "name": "T54 Verifiable Intent",
+      "url": "https://xrpl-x402.t54.ai/docs/verifiable-intent",
+      "group": "facilitator_operator_documentation"
+    },
+    {
+      "name": "XRPLF agentic x402 documentation",
+      "url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/agents/agentic-payments-x402.md",
+      "group": "protocol_documentation_primary"
+    },
+    {
+      "name": "Mastercard Agent Pay for Machines",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html",
+      "group": "program_operator_primary"
+    },
+    {
+      "name": "XRP Insights agentic payments",
+      "url": "https://xrp-insights.com/xrp-radar/agentic-payments",
+      "group": "t54_downstream_aggregator"
+    }
+  ]
+}

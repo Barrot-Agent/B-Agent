@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot-xrp-run-evidence-v1",
   "run": "Run97",
-  "captured_at_utc": "2026-11-13T15:08:00Z",
+  "captured_at_utc": "2026-11-13T15:22:00Z",
   "market_data_cutoff_utc": "2026-11-13T15:04:06Z",
   "mission": {
     "priority": 1,
@@ -41,7 +41,9 @@
       "The branch tree is complete and not truncated.",
       "The PR description previously displayed stale head f7936d3 and stale ancestry/counts; the PR body is being refreshed in this run.",
       "The integration branch is not protected."
-    ]
+    ],
+    "integration_head_before_run97_research_test_commit": "f04b6adf4eb0e9a4800a0bbfe0a18e37a29b10a9",
+    "note_about_current_head": "This Run97 research/test commit is a documentation and regression-test descendant of the fully tested code-bearing head; its own exact-head CI is required before any merge consideration."
   },
   "ci": {
     "exact_head": "bfce2babac9abc990a07e7ae70e0df5853e2491b",
@@ -90,6 +92,23 @@
       "latest_main_push_ci_conclusion": "success",
       "latest_main_full_suite_recorded_tests": 747,
       "latest_main_full_suite_subtests": 8
+    },
+    "latest_verified_code_bearing_head": {
+      "sha": "f04b6adf4eb0e9a4800a0bbfe0a18e37a29b10a9",
+      "full_ci_run_id": 43450175610,
+      "full_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175610",
+      "full_suite_tests": 3566,
+      "subtests": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.08,
+      "full_suite_duration_seconds": 93.55,
+      "core_tests": 732,
+      "core_coverage_percent": 76,
+      "dependency_audit_run_id": 43450175954,
+      "dependency_audit_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175954",
+      "fail_closed_gate_run_id": 43450175627,
+      "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43450175627",
+      "exact_head_status": "success"
     }
   },
   "integrated_architecture": {
@@ -278,16 +297,31 @@
       "same_wallet_change_7d_xrp": -77300000,
       "same_wallet_change_30d_xrp": -279700000,
       "model_eligible": false,
-      "caveat": "Attributed-wallet subset includes cold storage and other reserve categories; not complete exchange balances or tradable float."
+      "caveat": "Attributed-wallet subset includes cold storage and other reserve categories; not complete exchange balances or tradable float.",
+      "top_wallet_attributions": {
+        "coinbase_attributed_xrp": 5800000000,
+        "coinbase_non_customer_cb_xrp_reserve_xrp": 151400000,
+        "binance_attributed_xrp": 2660000000,
+        "binance_non_customer_binance_peg_reserve_xrp": 327400000,
+        "upbit_attributed_xrp": 6470000000,
+        "sbi_vc_trade_attributed_xrp": 56000000,
+        "sbi_vc_trade_cold_storage_share_percent": ">99",
+        "caveat": "Wallet attribution is not disclosed customer ownership, corporate ownership or tradable float."
+      }
     },
     "etf_flows": {
       "observations": [
         {
           "publisher": "XRP Insights",
           "window": "2026-11-09 through 2026-11-12",
-          "net_flow_xrp": -9480000,
-          "holdings_xrp_approx": 1190000000,
-          "nov12_status": "provisional",
+          "net_flow_xrp": -9481905,
+          "holdings_xrp": 1185698783,
+          "data_as_of": "2026-11-12",
+          "settled_trading_days": 4,
+          "generated_at_utc": "2026-11-13T14:18:56.020Z",
+          "provisional_row_date": null,
+          "status": "settled_as_of_source_metadata",
+          "methodology": "Derived from issuer-reported holdings deltas, not issuer flow reports. GXRP flow is withheld; BITW index rebalancing and fee accruals can affect the computed flow.",
           "model_eligible": false
         },
         {
@@ -341,6 +375,25 @@
       },
       "source_url": "https://stableradar.com/coin/rlusd",
       "caveat": "Third-party ledger snapshot, not a reserve attestation; AMM and RLUSD/USDC book depth are not XRP spot depth."
+    },
+    "xrp_escrow": {
+      "publisher": "XRP Insights XRP Radar",
+      "ledger_index": 108304969,
+      "snapshot_time_utc": "2026-11-13T14:18:00Z",
+      "ripple_owned_escrow_xrp": 31100000000,
+      "escrow_objects": 99,
+      "owner_accounts": 8,
+      "next_unlock_utc": "2026-12-01T00:00:00Z",
+      "next_unlock_xrp": 1000000000,
+      "next_unlock_objects": 4,
+      "reescrowed_share_last_12_releases_percent": 70,
+      "net_out_of_escrow_last_12_releases_xrp": 3600000000,
+      "average_net_release_xrp_per_month": 300000000,
+      "last_current_schedule_unlock_utc": "2029-07-01T00:00:00Z",
+      "methodology": "Pinned validated ledger; account_objects for Ripple-owned Escrow objects and account_tx for EscrowFinish/EscrowCreate metadata. Tracker states rippled JSON-RPC primary and xrplcluster.com fallback.",
+      "source_url": "https://xrp-insights.com/xrp-radar/escrow",
+      "model_eligible": false,
+      "interpretation": "Scheduled unlock is not guaranteed sale or exchange inflow. Net release is not automatically circulating sell pressure."
     }
   },
   "institutional_and_capital": {
@@ -349,7 +402,11 @@
       "PNC/Coinbase corporate-payment pilot uses USDC on Ethereum and converts to USD for PNC customers; it is not an XRP settlement flow.",
       "Circle USDC on XRPL and Circle Arc are distinct: Arc is a separate Layer 1.",
       "SBI Group's Circle investment and 50/50 SBI Circle Holdings JV coexist with SBI's Ripple stake and SBI Ripple Asia relationship; multi-rail strategy, not exclusivity.",
-      "BNY is RLUSD's primary reserve custodian and supports XRP and RLUSD custody; future direct mint/redeem and tokenized trade-finance uses remain plans/exploratory absent deployment evidence."
+      "BNY is RLUSD's primary reserve custodian and supports XRP and RLUSD custody; future direct mint/redeem and tokenized trade-finance uses remain plans/exploratory absent deployment evidence.",
+      "Coinbase Q3 2026 collateral tables disclose aggregate crypto and stablecoin collateral but no XRP-specific amount; other crypto assets are aggregated.",
+      "Coinbase's RLUSD launch described Global Exchange collateral support as forthcoming, not live.",
+      "PNC/Coinbase corporate-payment pilot uses USDC on Ethereum and converts to USD; it is not XRP settlement.",
+      "BNY supports XRP and RLUSD custody and is RLUSD's primary reserve custodian; future mint/redeem and trade-finance uses remain planned/exploratory."
     ],
     "evernorth_actual_capital": {
       "filing_date": "2026-11-09",
@@ -372,8 +429,53 @@
           "ACPR": "Governance, qualifying holdings, fit-and-proper, outsourcing and conflicts oversight."
         },
         "issuer_distinction": "Circle Internet Financial Europe SAS is the EU issuer; Circle Internet Financial LLC is the separate US issuer.",
-        "source_url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union"
+        "source_url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union",
+        "supervisory_split": {
+          "EU_issuer": "Circle Internet Financial Europe SAS",
+          "US_issuer": "Circle Internet Financial LLC",
+          "note": "Separate legal entities; do not merge EU and US issuer obligations."
+        }
       }
+    },
+    "coinbase_collateral": {
+      "source": "Coinbase Q3 2026 Form 10-Q",
+      "period_end": "2026-09-30",
+      "lending_receivables_usd": 1976000000,
+      "lending_receivables_composition_usd": {
+        "fiat_and_payment_stablecoins": 1958539000,
+        "crypto_assets": 17598000
+      },
+      "recognized_lending_collateral_usd": 1009297000,
+      "recognized_lending_collateral_composition_usd": {
+        "crypto_assets": 997557000,
+        "fiat_and_payment_stablecoins": 11740000
+      },
+      "unrecognized_customer_collateral_usd": 3284562000,
+      "unrecognized_customer_collateral_composition_usd": {
+        "crypto_assets": 2804112000,
+        "fiat_and_payment_stablecoins": 480450000
+      },
+      "collateral_requirement_range_percent": "100-250",
+      "derivatives_collateral_recognized_usd": 325766000,
+      "derivatives_collateral_named_assets": [
+        "Bitcoin",
+        "Ethereum"
+      ],
+      "xrp_specific_collateral_disclosed": false,
+      "interpretation": "Other crypto assets are aggregated; the filing does not disclose an XRP-specific amount. Do not infer that XRP is absent or quantify XRP collateral from the aggregate.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "model_eligible": false
+    },
+    "coinbase_circle_economics": {
+      "source": "Coinbase Q3 2026 Form 10-Q",
+      "observations": [
+        "Average USDC held in Coinbase products reached an all-time high.",
+        "Higher average USDC balances added approximately $84.6M to Q3 stablecoin revenue and $201.6M over nine months.",
+        "Coinbase states its Circle agreement was renewed on the same terms."
+      ],
+      "caution": "Coinbase revenue, Circle distribution costs and average USDC balances are different accounting measures; do not net them or treat them as XRP capital flows.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "model_eligible": false
     }
   },
   "identity_and_exact_phrase": {
@@ -403,7 +505,7 @@
         "published_date": "2018-05-18",
         "views_at_search": 414061,
         "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
-        "identity_evidence": "TEDx Talks video description names Dr. Kamilah Stevenson and links to kamilahstevenson.com.",
+        "identity_evidence": "TEDx Talks' video description names Dr. Kamilah Stevenson and links to kamilahstevenson.com; verified as a public presenter appearance, not own-channel ownership.",
         "classification": "verified guest/presenter appearance; not her own-channel upload"
       },
       "own_channel_inventory_count": 0,
@@ -601,7 +703,9 @@
     "paper_trade": false,
     "funds_transfer": false,
     "force_push_or_history_rewrite": false,
-    "destructive_worktree_operation": false
+    "destructive_worktree_operation": false,
+    "agentic_payment_source_tag_and_intent_regression_test_added": true,
+    "runtime_prediction_code_changed": false
   },
   "next_actions": [
     "Complete semantic review of the 1,119-file integration and reconcile all source-PR blob differences.",
@@ -766,6 +870,76 @@
       "publisher": "TEDx Talks",
       "independence_group": "video_publisher_primary",
       "event_time_utc": "2018-05-18",
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_insights_etf_totals_json",
+      "url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "publisher": "XRP Insights",
+      "independence_group": "issuer_holdings_aggregator",
+      "generated_at_utc": "2026-11-13T14:18:56.020Z",
+      "data_as_of": "2026-11-12",
+      "provisional_row_date": null,
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_escrow",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "publisher": "XRP Insights",
+      "independence_group": "onchain_ledger_derived",
+      "ledger_index": 108304969,
+      "event_time_utc": "2026-11-13T14:18:00Z",
+      "model_eligible": false
+    },
+    {
+      "id": "coinbase_10q_collateral",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase SEC filing",
+      "independence_group": "issuer_regulatory_filing",
+      "period_end": "2026-09-30",
+      "model_eligible": false
+    },
+    {
+      "id": "mastercard_agent_pay",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html",
+      "publisher": "Mastercard",
+      "independence_group": "program_operator_primary",
+      "published_date": "2026-06-10",
+      "model_eligible": false
+    },
+    {
+      "id": "xrplf_x402_source_tag",
+      "url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/agents/agentic-payments-x402.md",
+      "publisher": "XRPL Foundation developer portal",
+      "independence_group": "protocol_documentation_primary",
+      "model_eligible": false
+    },
+    {
+      "id": "t54_x402_scheme",
+      "url": "https://xrpl-x402.t54.ai/docs/xrpl-scheme",
+      "publisher": "T54 Labs",
+      "independence_group": "facilitator_operator_documentation",
+      "model_eligible": false
+    },
+    {
+      "id": "t54_verifiable_intent",
+      "url": "https://xrpl-x402.t54.ai/docs/verifiable-intent",
+      "publisher": "T54 Labs",
+      "independence_group": "facilitator_operator_documentation",
+      "model_eligible": false
+    },
+    {
+      "id": "t54_hub",
+      "url": "https://xrpl-ai.org/",
+      "publisher": "T54 Labs",
+      "independence_group": "facilitator_operator_primary",
+      "model_eligible": false
+    },
+    {
+      "id": "t54_transactions",
+      "url": "https://xrpl-ai.org/transactions",
+      "publisher": "T54 Labs",
+      "independence_group": "facilitator_operator_primary",
       "model_eligible": false
     }
   ]
