@@ -9,15 +9,15 @@ XRP intelligence and measured prediction-engine mastery remain Barrot's priority
 - Repository: `Barrot-Agent/B-Agent`.
 - Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
 - Integration branch: `integration/xrp-v3-unified-main-20261112`.
-- Exact integration head tested: `7acad4269ed739bd60e0be05f91af6fbf1458144`.
-- Parent: `bcbbc7696892097c8e64f29b3419c97e9e0d5840`.
-- Main/integration ancestry: 2,208 commits ahead, zero behind.
+- Current integration head: `5b5250744d39d1631f1bf65bf37e7fc61ee882a5` (handoff-only commit; code-bearing parent `7acad4269ed739bd60e0be05f91af6fbf1458144`).
+- Direct parent of current handoff commit: `7acad4269ed739bd60e0be05f91af6fbf1458144`.
+- Main/integration ancestry: 2,209 commits ahead, zero behind.
 - Main tree: 1,381 entries. Integration tree: 2,332 entries; neither recursive tree was truncated.
-- PR #1662: open, draft, GitHub reports mergeable=true; 1,087 changed files, +307,749/-5,136. It has zero formal reviews, zero approvals and zero review threads.
+- PR #1662: open, draft, GitHub reports mergeable=true; 1,087 changed files, +307,933/-5,136. It has zero formal reviews, zero approvals and zero review threads.
 - Open PR inventory: 375 total, 361 drafts and 14 non-drafts. All four 100-item REST pages were read.
 - GitHub's compare-commits response caps its changed-file list at 300; the PR changed-filename endpoint was used for the full 1,087-path inventory.
 
-### Exact-head CI on 7acad426
+### Exact-head CI on 5b525074
 
 All required integration checks completed successfully on this exact SHA:
 
@@ -38,11 +38,11 @@ All required integration checks completed successfully on this exact SHA:
 | Fail-closed gate | Passed; automatic merge remains disabled |
 
 Evidence:
-- [Full CI 43365589115](https://github.com/Barrot-Agent/B-Agent/actions/runs/43365589115)
-- [Dependency audit 43365589105](https://github.com/Barrot-Agent/B-Agent/actions/runs/43365589105)
-- [Fail-closed gate 43365589093](https://github.com/Barrot-Agent/B-Agent/actions/runs/43365589093)
-- [Core test job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43365589115/job/131689107597)
-- [Full-suite job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43365589115/job/131689107938)
+- [Full CI 43366931151](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931151)
+- [Dependency audit 43366930965](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366930965)
+- [Fail-closed gate 43366931152](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931152)
+- [Core test job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931151/job/131693428497)
+- [Full-suite job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931151/job/131693428233)
 
 Non-blocking packaging warnings remain: deprecated `project.license` TOML-table syntax and package-discovery warnings for `barrot_agent.data.missions` and `data.research`. The wheel build and installed-package verification nevertheless passed.
 
@@ -108,7 +108,7 @@ Sources: [CFTC Legacy Futures-Only report](https://www.cftc.gov/dea/futures/deac
 
 ### Implemented on integration
 
-- 47 public source definitions, 45 scheduled.
+- 47 public source definitions, 43 scheduled, 2 weekly CFTC endpoints and 2 noncommercial XRPL node endpoints.
 - Read-only public collector with response limits, HTTPS host allowlist, redirects disabled, cache/staleness gates, raw receipt hashes and explicit source-failure records.
 - Local hash-chain prototype and point-in-time SQLite feature store. SQLite triggers and unkeyed hashes are not adversarially tamper-proof; independent WORM/checkpoint anchoring is still required.
 - Event timeline, source-independence grouping, scenario/counter-hypothesis assembly.
