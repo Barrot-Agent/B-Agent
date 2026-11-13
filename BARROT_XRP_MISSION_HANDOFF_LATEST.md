@@ -163,3 +163,27 @@ The Evernorth SEC filing links these entities indirectly: four SBI-controlled su
 Kamilah Stevenson YouTube discovery remains quarantined: third-party IDCrawl lists 20 similarly named profiles, including a 138K-subscriber candidate, but no first-party ownership link. Verified own-channel inventory remains zero.
 
 **Decision remains NO MERGE.** The Run100A head passed; this Run100B handoff commit requires its own new exact-head push CI before it can be called verified. Forecast remains NOT_ISSUED.
+
+
+## Run100C — Market/ETF correction and SBI Ripple Asia operating-model distinction
+
+### Market refresh
+The latest provider-timestamped OKX XRP-USDT snapshot was 2026-11-13 16:53:17.070 UTC: last $1.0174, bid $1.0172, ask $1.0173, 24h open $1.0253, high $1.0440, low $0.9974 and 48.315M XRP volume. It was already outside the 300-second feature-admission window at the run cutoff. Kraken later returned $1.01790 last, $1.01791 bid and $1.01792 ask without a provider event timestamp. Binance.US displayed $1.0188 and -0.38% 24h without an event timestamp. These asynchronous quotes are research context, not executable arbitrage or model features. [OKX API](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT) · [Kraken API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD) · [Binance.US](https://www.binance.us/price/xrp).
+
+TrackWhale's Nov13 09:20 UTC snapshot now shows 53 large transfers and a selected-sample seven-day net exchange outflow of 107.31M XRP (79.73M inflows, 187.04M outflows). The latest 14.5M XRP transfer was unknown-wallet to unknown-wallet and classified as rotation. This is not full exchange-wallet accounting. [TrackWhale](https://trackwhale.io/xrp-whale-tracker).
+
+### ETF data correction
+The earlier Run100 statement that XRP Insights' dashboard reported a Nov12 daily -268,644 XRP while its data page still called Nov12 provisional came from a stale search snippet. The current live data page is updated through Nov12 and reports four settled sessions, Nov9–12 net flow of **-9,481,905 XRP**, and holdings of **1,185,698,783 XRP**. The dashboard's week-46 total agrees at approximately -9.48M. [XRP Insights data](https://xrp-insights.com/data).
+
+CryptoKeyhole's separate four-fund daily cohort still has only three Nov12 issuer files, showing partial -3,322 XRP; Franklin's file is missing. Its latest complete day is Nov11 at -3,322 XRP, and its five complete sessions Nov5–11 total -10,005,584 XRP. Alpha Finance's five-fund cohort reports $0 for Nov12, -$18M across seven sessions Nov5–12 and -$2.8M over 30 sessions. Corpstacking's 1.399B XRP across ten funds/ETPs/trusts is a broader universe. Different cohorts and file vintages remain separate; do not average or infer cash subscriptions directly from holdings changes. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/) · [Alpha Finance](https://alphafinance.io/etf/xrp/) · [Corpstacking](https://www.corpstacking.com/treasuries/by-token/ripple).
+
+### SBI Ripple Asia is not the XRP remittance operator
+SBI Holdings' official profile reports **60% SBI Group voting rights and 40% Ripple** in SBI Ripple Asia as of March 31, 2026. Ripple's official SBI Ripple Asia page explicitly says the JV does **not** handle XRP directly; it supplies RippleNet software services to financial institutions and remittance providers. [SBI group profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html) · [Ripple SBI Ripple Asia page](https://ripple.com/company/sbi-ripple-asia/).
+
+The actual XRP bridge flow is operationally different: SBI Remit sends customer payment requests, SBI VC Trade sends XRP in real time, and Tranglo pays beneficiaries in local fiat. SBI's September 6, 2023 primary release says the XRP bridge corridor was expanded to bank-account remittances in the Philippines, Vietnam and Indonesia. Transaction volumes were not disclosed. SBI Remit is 82.96% owned by SBI Group by voting rights as of August 28, 2026. [SBI Remit/VC Trade primary release](https://www.sbigroup.co.jp/news/2023/0906_14052.html) · [SBI Remit profile](https://www.sbigroup.co.jp/english/company/group/sbiremit.html).
+
+SBI Ripple Asia's February 2026 Japan–Korea XRPL remittance research and tokenized-deposit/digital-money concept are research/PoC, not verified production XRP volume. [DSRV research](https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html) · [Tokenized-deposit PoC](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html).
+
+These distinctions matter: SBI has a 60/40 Ripple JV, a separate SBI Remit/SBI VC Trade operating XRP corridor, a 50/50 SBI-Circle JV, a 39.9% voting stake in Evernorth, and separate SBI Holdings/Ripple equity exposure. They are not one relationship and should not be collapsed into a single XRP-demand metric.
+
+All new observations remain research-only until byte-exact source receipts are admitted. Forecast remains NOT_ISSUED.
