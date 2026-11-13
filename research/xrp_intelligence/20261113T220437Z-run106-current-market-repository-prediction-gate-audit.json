@@ -1,0 +1,492 @@
+{
+  "schema_version": "barrot.xrp.run-audit.v1",
+  "run_id": "Run106",
+  "captured_at_utc": "2026-11-13T22:04:37Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_policy": "No directional forecast until point-in-time data, leakage-safe OOS evaluation, calibration, drift and independent shadow admission pass",
+    "real_money_actions": "PROHIBITED"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run106_docs": "bef8a61924a37d96c9fbf8f23d09bcb8dd8755c8",
+    "ancestry_vs_main": {
+      "ahead_by": 2306,
+      "behind_by": 0
+    },
+    "tracked_blobs": {
+      "main": 1277,
+      "integration": 2273,
+      "added": 996,
+      "removed": 0,
+      "modified": 149
+    },
+    "pr_1662": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "head_sha": "bef8a61924a37d96c9fbf8f23d09bcb8dd8755c8",
+      "changed_files": 1146,
+      "additions": 330833,
+      "deletions": 5353,
+      "changed_workflow_files": 50,
+      "changed_public_web_files": 7,
+      "formal_reviews": 0,
+      "review_comments": 0,
+      "requested_reviewers": [],
+      "merge_decision": "DO_NOT_MERGE"
+    },
+    "open_pr_inventory": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "based_on_current_main_sha": [
+        1662
+      ],
+      "stale_base_count": 374
+    },
+    "local_worktree": "Not exposed through the GitHub connector; no local worktree operation was performed."
+  },
+  "ci": {
+    "exact_head": "bef8a61924a37d96c9fbf8f23d09bcb8dd8755c8",
+    "full_suite": {
+      "run_id": 43515228185,
+      "job_id": 132195393002,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43515228185",
+      "conclusion": "success",
+      "tests_passed": 3613,
+      "subtests_passed": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.26,
+      "test_duration_seconds": 59.15,
+      "complete_development_dependencies": true,
+      "full_repository_test_command": true,
+      "wheel_build": "passed",
+      "installed_barrot_v3_xrp_mission_verification": "passed"
+    },
+    "dependency_audit": {
+      "run_id": 43515236021,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43515236021",
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_audit": {
+      "run_id": 43515227988,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43515227988",
+      "conclusion": "success",
+      "job_name": "Merge disabled pending gate verification",
+      "interpretation": "Audit-only fail-closed result; not proof that GitHub branch protection enforces required checks."
+    },
+    "main_ci": {
+      "run_id": 43343513172,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172",
+      "conclusion": "success"
+    },
+    "main_scheduled_workflows": {
+      "latest_cross_analysis_run": 43514386135,
+      "cross_analysis_conclusion": "success",
+      "pillars_consistency_run": 43430139937,
+      "pillars_consistency_conclusion": "failure",
+      "pillars_failure_reasons": [
+        "Missing GITHUB_APP_ID / GITHUB_APP_PRIVATE_KEY / GITHUB_INSTALLATION_ID",
+        "Databricks HTTP 403",
+        "Hugging Face Space BUILD_ERROR"
+      ],
+      "barrot_sync_run": 43343513347,
+      "barrot_sync_job_conclusion": "success",
+      "barrot_sync_actual_behavior": [
+        "ModuleNotFoundError: httpx",
+        "sync skipped by shell fallback",
+        "Everything up-to-date no-op push"
+      ]
+    },
+    "ci_workflow_note": "Integration pull_request event is skipped by the workflow's integration-branch condition; the successful push-event full-suite run above is the exact-head evidence."
+  },
+  "security": {
+    "main_branch_metadata": {
+      "protected": true,
+      "status_check_enforcement": "non_admins",
+      "required_status_check_contexts": []
+    },
+    "main_branch_protection_details": "HTTP 403; required review rules and full enforcement configuration not independently inspectable.",
+    "fallback_ruleset_10863829": "disabled",
+    "integration_branch_protected": false,
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "main_opencode": "Remote LunaRoute MCP enabled; edit/bash/webfetch permissions allow.",
+    "integration_opencode": "Remote LunaRoute MCP disabled; mutation permissions require ask/approval.",
+    "workflow_review": {
+      "changed_workflow_files": 50,
+      "disabled_or_quarantined_examples": [
+        "barrot-agent.yml",
+        "barrot-self-upgrade.yml",
+        "barrot-sync.yml",
+        "sync-huggingface.yml",
+        "databricks-bundle.yml",
+        "ask-barrot.yml",
+        "audio-ingest.yml",
+        "task-allocator.yml",
+        "webmcp-live-sandbox.yml"
+      ],
+      "manual_external_action_workflows_not_executed": [
+        "deploy-a2a-worker.yml",
+        "sync-self-hosted-brain.yml",
+        "barrot-ops.yml"
+      ],
+      "manual_gates": "Explicit per-run confirmation and exact-main-SHA controls were inspected; no deployment, secret rotation, Space restart, Databricks write or Kaggle submission was run.",
+      "public_pages": "Seven web files changed; automatic Pages publication on main remains an unresolved authorization side effect."
+    }
+  },
+  "pr_backlog": [
+    {
+      "number": 1661,
+      "classification": "supersession candidate",
+      "relation": "0 commits ahead of integration; 174 behind"
+    },
+    {
+      "number": 1660,
+      "classification": "supersession candidate",
+      "relation": "0 commits ahead of integration; 355 behind"
+    },
+    {
+      "number": 1643,
+      "classification": "supersession candidate",
+      "relation": "0 commits ahead of integration; 1417 behind"
+    },
+    {
+      "number": 1642,
+      "classification": "supersession candidate",
+      "relation": "0 commits ahead of integration; 2322 behind"
+    },
+    {
+      "number": 1640,
+      "classification": "supersession candidate pending semantic reconciliation",
+      "relation": "1 commit ahead; 1348 behind. Its Databricks/Kaggle action-specific approvals and tests are present in integration with stricter fail-closed handling."
+    },
+    {
+      "number": 1653,
+      "classification": "unique/unreviewed",
+      "relation": "repository knowledge graph and safe GitHub sync; preserve"
+    },
+    {
+      "number": 1655,
+      "classification": "unique/unreviewed",
+      "relation": "structural analysis and provenance catalog; preserve"
+    },
+    {
+      "number": 1659,
+      "classification": "unique/unreviewed",
+      "relation": "local llama.cpp / Termux connection; preserve"
+    },
+    {
+      "number": 1615,
+      "classification": "blocked/unique",
+      "relation": "security automation containment; preserve for individual review"
+    },
+    {
+      "number": 1614,
+      "classification": "unique/unreviewed",
+      "relation": "point-in-time feature validator and forecast ledger; preserve"
+    },
+    {
+      "number": 1644,
+      "classification": "blocked",
+      "relation": "dependency candidates #1644-#1650 need individual current-main validation"
+    },
+    {
+      "number": 1254,
+      "classification": "blocked",
+      "relation": "dependency candidate; current-main validation required"
+    },
+    {
+      "number": 1255,
+      "classification": "blocked",
+      "relation": "dependency candidate; current-main validation required"
+    },
+    {
+      "number": 1320,
+      "classification": "unique/unreviewed",
+      "relation": "preserve"
+    },
+    {
+      "number": 1318,
+      "classification": "unique/unreviewed",
+      "relation": "preserve"
+    },
+    {
+      "number": 1317,
+      "classification": "unique/unreviewed",
+      "relation": "preserve"
+    },
+    {
+      "number": 1269,
+      "classification": "unique/unreviewed",
+      "relation": "preserve"
+    }
+  ],
+  "market": {
+    "cutoff_utc": "2026-11-13T22:04:37Z",
+    "spot": {
+      "okx": {
+        "retrieved_utc": "2026-11-13T22:04:37Z",
+        "provider_event_time_utc": "2026-11-13T21:36:08.664Z",
+        "age_seconds_at_cutoff": 1708,
+        "instrument": "XRP-USDT",
+        "last": 1.0089,
+        "bid": 1.009,
+        "bid_size_xrp": 4808.566654,
+        "ask": 1.0091,
+        "ask_size_xrp": 1358.6,
+        "open_24h": 1.0413,
+        "high_24h": 1.0439,
+        "low_24h": 0.9974,
+        "volume_24h_xrp": 47001899.735847,
+        "admission": "EXCLUDED_STALE_GT_300_SECONDS"
+      },
+      "kraken": {
+        "retrieved_utc": "2026-11-13T22:04:37Z",
+        "provider_event_time": null,
+        "instrument": "XRP/USD",
+        "last": 1.00978,
+        "bid": 1.00992,
+        "ask": 1.00993,
+        "volume_24h_xrp": 39148547.70525828,
+        "high_24h": 1.04269,
+        "low_24h": 0.99672,
+        "admission": "EXCLUDED_NO_PROVIDER_EVENT_TIMESTAMP"
+      },
+      "conclusion": "No synchronized fresh multi-venue quote or executable arbitrage evidence. Cross-venue price differences are not admitted as a feature."
+    },
+    "order_book": {
+      "current_synchronized_spot_l2": "NOT_OBTAINED",
+      "okx_depth_endpoint": "Not accessible through the web retrieval layer during this run.",
+      "kraken_depth_endpoint": "Not accessible through the web retrieval layer during this run.",
+      "swiftedge_context": "Perpetual-market wall snapshot at 2026-11-13T15:04Z is stale and not spot L2."
+    },
+    "derivatives": [
+      {
+        "provider": "Liqwall",
+        "timestamp_utc": "2026-11-13T07:02:00Z",
+        "open_interest_usd": 1120000000,
+        "funding_8h_percent": -0.0025,
+        "liquidations_24h_usd": 19300000,
+        "long_liquidations_usd": 18400000,
+        "short_liquidations_usd": 906000,
+        "binance_long_account_share_percent": 75.2
+      },
+      {
+        "provider": "TradRadar",
+        "timestamp_utc": "2026-11-13T10:05:00Z",
+        "open_interest_usd": 1550000000,
+        "funding_8h_percent": -0.0005,
+        "liquidations_24h_minimum_usd": 17380000,
+        "long_liquidations_usd": 16180000,
+        "short_liquidations_usd": 1200000,
+        "long_account_share_percent": 79.4
+      },
+      {
+        "provider": "Kodexius",
+        "timestamp_utc": "2026-11-13T13:24:00Z",
+        "open_interest_usd": 608330000,
+        "funding_8h_percent": 0.0089,
+        "contracts": 7
+      },
+      {
+        "provider": "PerpFinder",
+        "timestamp_utc": "2026-11-13T15:46:00Z",
+        "open_interest_usd": 1190000000,
+        "venues": 25
+      }
+    ],
+    "derivatives_interpretation": "Vendor totals disagree because venue/contract coverage and observation times differ. Do not average. Long-liquidation skew is a competing crowded-long/deleveraging hypothesis, not a directional signal.",
+    "etf_flows": {
+      "nov_12_status": "DISPUTED_AND_NOT_FINAL",
+      "sources": [
+        {
+          "provider": "XRP Insights homepage",
+          "reported": "-268,644 XRP settled Nov 12; Nov 9-12 -9.48M XRP; 6 spot ETFs plus BITW; GXRP excluded from flows during correction."
+        },
+        {
+          "provider": "XRP Insights data page",
+          "reported": "Data as of Nov 11; Nov 12 row provisional; Nov 9-11 -9,213,260 XRP."
+        },
+        {
+          "provider": "CryptoETF.today",
+          "reported": "+$0.1M partial Nov 12; 3 of 5 funds reported at 05:49 UTC Nov 13."
+        },
+        {
+          "provider": "Alpha Finance",
+          "reported": "$0 Nov 12 across its five-fund cohort."
+        },
+        {
+          "provider": "CryptoKeyhole",
+          "reported": "No Nov 12 issuer files yet from its four daily-read funds at its latest Nov 12 23:52 UTC read."
+        },
+        {
+          "provider": "The Block",
+          "reported": "$0 24-hour net flow; AUM approximately $1.1B at 01:16 EST Nov 13."
+        }
+      ],
+      "interpretation": "Fund universes, issuer-file timing and missing-file policies differ. XRP Insights' own homepage and data page disagree. Do not average or treat as cash subscriptions."
+    },
+    "cftc": {
+      "source": "https://www.cftc.gov/dea/futures/deacmelf.htm",
+      "report_date": "2026-11-03",
+      "contract_code": "176740",
+      "multiplier_xrp": 50000,
+      "open_interest_contracts": 7216,
+      "open_interest_xrp_equivalent": 360800000,
+      "noncommercial_long": 7011,
+      "noncommercial_short": 5546,
+      "noncommercial_net_long": 1465,
+      "weekly_change_open_interest": -845,
+      "weekly_change_noncommercial_long": -281,
+      "weekly_change_noncommercial_short": -466,
+      "four_or_fewer_traders_gross_long_share_percent": 81,
+      "four_or_fewer_traders_gross_short_share_percent": 67.4,
+      "interpretation": "Net-long positioning remains positive, but weekly long and short positions both fell; the net change is more consistent with short covering than fresh long accumulation. Latest retrievable official report remains Nov 3."
+    },
+    "sources": [
+      "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "https://liqwall.com/coins/xrp",
+      "https://tradradar.io/markets/xrp",
+      "https://kodexius.com/data/crypto-derivatives/XRP",
+      "https://perpfinder.com/asset/XRP",
+      "https://xrp-insights.com/",
+      "https://xrp-insights.com/data",
+      "https://cryptoetf.today/en/xrp-etf-flows",
+      "https://alphafinance.io/etf/xrp/",
+      "https://cryptokeyhole.com/etf-flows/xrp/",
+      "https://www.theblock.co/data/etfs",
+      "https://www.cftc.gov/dea/futures/deacmelf.htm"
+    ]
+  },
+  "prediction_engine": {
+    "implemented": [
+      "48 scheduled public endpoint definitions plus two noncommercial XRPL node endpoints excluded from scheduled ingestion",
+      "main-only read-only XRP public ingestion workflow",
+      "SHA-256 per-source receipts and cross-run receipt-index chain prototype",
+      "SQLite point-in-time feature store",
+      "event timeline and source-independence grouping",
+      "scenario and counter-hypothesis generation",
+      "naive, momentum, mean-reversion and volatility baselines",
+      "chronological walk-forward evaluation with purge/embargo",
+      "rolling temporal calibration and PSI diagnostics",
+      "paired temporal moving-block bootstrap utility with 1,000 default replicates"
+    ],
+    "critical_gaps": [
+      "No trained XRP-specific candidate prediction model exists.",
+      "No synchronized historical spot/L2/derivatives/flows/collateral dataset has been admitted.",
+      "No independent WORM archive or trusted timestamp anchor is implemented.",
+      "The xrp-public-ingestion workflow exists only on integration; main does not contain it and no main ingestion run exists.",
+      "The walk-forward integration assigns a source_group_id only when the forecast's source_independence_groups list has exactly one member; with multiple groups it passes null. With one group, the bootstrap still has only one cluster, below its five-cluster minimum. Therefore the source-clustered CI is never estimable through the current walk-forward path.",
+      "The forecast ledger does not require paired bootstrap intervals or multiplicity-adjusted uncertainty. It currently checks mean Brier/log-loss superiority against four baselines, calibration, drift, OOS/shadow counts, effective sample size, provenance and independent Ed25519 attestation.",
+      "The paired bootstrap currently compares each model against one configured benchmark; the walk-forward call uses naive_class_prior. It does not yet provide candidate-vs-each-of-four-baselines uncertainty as a readiness gate.",
+      "No independent shadow outcome cohort or demonstrated candidate-model superiority exists."
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "real_money_actions": "NONE"
+  },
+  "nine_platform_coordination": {
+    "platforms": [
+      {
+        "name": "ChatGPT",
+        "authentication": "GitHub repository/PR/workflow reads and integration-branch writes tested",
+        "permissions": [
+          "admin",
+          "maintain",
+          "push",
+          "pull",
+          "triage"
+        ],
+        "least_privilege": "FAIL"
+      },
+      {
+        "name": "Claude",
+        "authentication": "UNVERIFIED",
+        "data_flow": "NONE"
+      },
+      {
+        "name": "Grok",
+        "authentication": "UNVERIFIED",
+        "data_flow": "NONE"
+      },
+      {
+        "name": "Gemini",
+        "authentication": "UNVERIFIED",
+        "data_flow": "NONE"
+      },
+      {
+        "name": "Copilot",
+        "authentication": "Review artifacts exist; zero formal approvals on PR #1662",
+        "data_flow": "No verified evidence dispatch"
+      },
+      {
+        "name": "Codex",
+        "authentication": "UNVERIFIED",
+        "data_flow": "NONE"
+      },
+      {
+        "name": "Hugging Face",
+        "authentication": "Prior main workflow BUILD_ERROR; no deployment in this run",
+        "data_flow": "No verified Barrot dispatch"
+      },
+      {
+        "name": "Kaggle",
+        "authentication": "UNTESTED; no submission",
+        "data_flow": "NONE"
+      },
+      {
+        "name": "Databricks",
+        "authentication": "Main Pillars check returned HTTP 403; no write",
+        "data_flow": "NONE"
+      }
+    ],
+    "separate_internal_provider": {
+      "name": "LunaRoute",
+      "main_configuration": "Remote MCP enabled",
+      "integration_configuration": "Remote MCP disabled",
+      "endpoint_authentication": "UNVERIFIED"
+    },
+    "independent_dispatch": "NOT_EXECUTED",
+    "structured_evidence_exchange": "NOT_EXECUTED",
+    "red_team_review": "NOT_EXECUTED",
+    "minority_objections": "PRESERVED_IN_PRIOR_MAPS_AND_HANDOFF"
+  },
+  "identity_research": {
+    "sbic": "SBIC East/Tokyo, SBIC Central/Nagoya and SBIC West/Osaka are regional Japanese SME investment companies, separate from SBI Holdings.",
+    "sbic_chatgpt": "Educational seminars/training found; no commercial OpenAI partnership verified.",
+    "ask_coin": "Permission ASK is a Base/Polygon omnichain token candidate; no canonical XRPL issuer/deployment verified.",
+    "actual_capital": "Use cash, in-kind XRP, debt, conditional financing, warrants and secondary-resale categories separately.",
+    "camilla_kamilah_stevenson": "Person identity remains established for Dr. Kamilah Stevenson; no first-party YouTube channel ownership link verified. Verified own-channel inventory remains zero."
+  },
+  "source_provenance": {
+    "web_retrieval_cutoff_utc": "2026-11-13T22:04:37Z",
+    "publisher_raw_bytes": "Not retained by the web retrieval layer; these observations are research-only and are not admitted as immutable model receipts.",
+    "source_independence": "Vendor dashboards and ETF aggregators may share upstream exchange/issuer data; no independence is inferred from separate domains.",
+    "disagreement_policy": "Preserve conflicting values and vintages; do not average."
+  },
+  "next_actions": [
+    "Resolve the walk-forward/source-cluster bootstrap interface so source-clustered uncertainty is either validly estimated or explicitly marked not estimable; add tests.",
+    "Extend paired uncertainty to candidate-versus-each-required-baseline comparisons and a declared multiple-comparison correction.",
+    "Require the uncertainty evidence in the forecast readiness ledger before issuance.",
+    "Build the XRP-specific candidate model only after synchronized, model-eligible historical data is available.",
+    "Resolve main branch protection visibility, required checks, GitHub connector least privilege, remote MCP and Pages publication authorization.",
+    "Complete semantic reconciliation of the 1,146-file PR and verify exact-head CI after each subsequent commit."
+  ]
+}
