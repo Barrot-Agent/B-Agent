@@ -394,3 +394,31 @@ def test_walk_forward_rejects_non_positive_effective_sample_minimum():
             venue="kraken",
             currency_pair="XRP/USD",
         )
+
+
+def test_walk_forward_reports_paired_bootstrap_and_fails_closed_on_one_source_group():
+    records = _series(50)
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=49, seconds=3)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        min_effective_out_of_sample_samples=1,
+        target_tolerance_seconds=5,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["paired_uncertainty"]["method"] == "paired_temporal_and_source_clustered_moving_block_bootstrap_v1"
+    comparison = result["paired_uncertainty"]["comparisons"]["momentum_sign"]
+    assert comparison["paired_origin_count"] == result["out_of_sample_origin_count"]
+    assert comparison["temporal_moving_block_bootstrap"]["status"] == "ESTIMATED"
+    source = comparison["source_clustered_moving_block_bootstrap"]
+    assert source["status"] == "INSUFFICIENT_SOURCE_CLUSTERS"
+    assert source["source_cluster_count"] == 1
+    assert all(
+        item["assumptions"]["source_independence_groups"] == ["kraken"]
+        for item in result["forecasts"]
+    )
