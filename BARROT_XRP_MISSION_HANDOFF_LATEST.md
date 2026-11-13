@@ -6616,3 +6616,13 @@ Sources: [XRP Insights](https://xrp-insights.com/data), [Alpha Finance](https://
 Next concrete action: design and implement cross-run receipt continuity without re-uploading the entire historical raw archive on every hourly run. Keep each per-run raw payload artifact content-addressed, persist an append-only receipt index/chain with explicit external-artifact references, validate continuity and missing-artifact behavior, and keep the system model-ineligible until trusted external anchoring is available. Then continue full semantic reconciliation and resolve least privilege, branch-protection visibility and Pages authorization.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run84 corrective addendum — current-map schema regression
+The first Run84 map update copied the Run83 snapshot's schema 1.0.0 into `nine_platform_capability_authentication_dataflow_map_current.json`. The current-map contract is schema 1.1.0 with 292 historical keys and required Run20/Run23/Run67 snapshots. This was my documentation/data-map regression.
+
+The exact PR-associated run on head `4b7fc419ba1a31b72dacef800d8a560b15eb5961` completed with **3,511 passed, 42 failed, eight subtests, 61.68% coverage, 89.99 seconds**. All 42 failures were current-map schema or required-field assertions. The separate core suite passed 725 tests and eight subtests. The five-manifest dependency audit passed with zero known vulnerabilities. The fail-closed gate passed. Wheel build and installed-package verification were skipped because the full suite failed.
+
+No tests were removed or weakened, and no runtime or prediction code was changed by this map update. The correction restores the original v1.1.0 map from the parent Git blob, preserves its historical snapshots, and adds Run84 data without changing the test contract. The correction is a single fast-forward commit on the existing integration branch; no new branch or PR is created. Its own full-suite run must pass before the branch can be considered verified.
+
+The current map now records the failed attempt transparently and retains forecast status `NOT_ISSUED`. No merge was performed.
