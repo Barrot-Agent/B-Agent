@@ -1,8 +1,8 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run71c-2026-11-12",
-  "captured_at_utc": "2026-11-12T23:31:57.440Z",
+  "registry_version": "run103-2026-11-13",
+  "captured_at_utc": "2026-11-13T20:14:15Z",
   "source_receipt_status": "73 of 73 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All Run71 additions are research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
@@ -2555,9 +2555,9 @@
       "event_name": "Dr Kamilah Stevenson public identity and impersonation warning",
       "hypothesis_id": "kamilah-stevenson-youtube-channel-ownership-unverified",
       "domain": "public_identity_and_source_attribution",
-      "hypothesis": "The iHeart interview identifies its guest as Dr Kamilah Stevenson; the guest refers to a YouTube identity rendered as 'doctor Camilla Stevenson' while warning viewers about fake pages.",
-      "counter_hypothesis": "The iHeart transcript is auto-generated and varies between Camila, Camilla and Kamilah; the first-party website identifies Dr Kamilah Stevenson but does not link a YouTube channel. Third-party listings surface look-alike channels, so no channel or videos can be attributed without a first-party cross-link.",
-      "claim": "The June 11, 2026 iHeart XRP Podcast episode is titled 'Crypto Panics! with Dr. Kamilah Stevenson'. At 40:07 in its automatically generated transcript, the guest says her YouTube presence is 'doctor Camilla Stevenson' and warns of fake pages. Her first-party site identifies Dr Kamilah Stevenson/The Wealth Doctor but no direct YouTube channel link was found. Channel ownership remains unverified; no videos are attributed or inventoried.",
+      "hypothesis": "Dr. Kamilah Stevenson is the identified speaker in the public interview and three metadata-verified public video appearances. Those appearances are hosted by third-party/organization channels; personal YouTube channel ownership remains unverified.",
+      "counter_hypothesis": "The six candidate personal-channel videos and similarly named channel profiles may be reuploads, impersonators or unrelated namesakes. No first-party website-to-channel-ID cross-link or platform ownership verification was established. The verified guest, organization-channel and TEDx appearances do not establish ownership of a personal channel.",
+      "claim": "The identity-reviewed inventory contains three metadata-verified public attributions: Paul Barron Podcast guest appearance (Sulo54IlQ60), All Nations Chicago organization-channel appearance (E-jdY7gy7mQ), and TEDx Talks speaker appearance (VSgeDgOCexs). Verified personal-channel uploads remain zero. Six additional candidate personal-channel videos and multiple similarly named channels remain unverified. Full video-content review is 0/9.",
       "source_id": "iheart_kamilah_stevenson_identity_interview_20260611",
       "source_name": "iHeart XRP Podcast interview and first-party site",
       "source_url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
@@ -2567,14 +2567,17 @@
       "event_status": "occurred",
       "event_time_utc": "2026-06-11T00:00:00Z",
       "source_published_at_utc": "2026-06-11T00:00:00Z",
-      "available_at_utc": "2026-11-12T15:46:31Z",
-      "captured_at_utc": "2026-11-12T15:46:31Z",
+      "available_at_utc": "2026-11-07T21:17:12Z",
+      "captured_at_utc": "2026-11-13T20:14:15Z",
       "raw_source_sha256": null,
       "assumptions": [
         "iHeart transcript is automatically generated, not certified verbatim.",
         "First-party site https://learn.kamilahstevenson.com/ has no direct YouTube cross-link.",
         "Third-party listings and YouTube search results are not identity proof; candidate videos are not attributed.",
-        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible."
+        "Publisher bytes were not captured by RawReceiptArchive; research-only and model-ineligible.",
+        "Run103 correction references the metadata-only inventory captured 2026-11-07T21:17:12Z; it verifies three public host/speaker attributions, not personal-channel ownership.",
+        "Six candidate personal-channel videos and multiple similarly named channels remain unverified because no first-party channel-ID cross-link was established.",
+        "No full video content was reviewed and no byte-complete publisher receipts were captured; this remains context-only and model-ineligible."
       ],
       "falsification_conditions": [
         "A later primary publisher record or authenticated first-party cross-link contradicts this observation."
