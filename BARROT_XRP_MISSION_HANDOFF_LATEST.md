@@ -9,15 +9,15 @@ XRP intelligence and measured prediction-engine mastery remain Barrot's priority
 - Repository: `Barrot-Agent/B-Agent`.
 - Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
 - Integration branch: `integration/xrp-v3-unified-main-20261112`.
-- Current integration head: `5b5250744d39d1631f1bf65bf37e7fc61ee882a5` (handoff-only commit; code-bearing parent `7acad4269ed739bd60e0be05f91af6fbf1458144`).
-- Direct parent of current handoff commit: `7acad4269ed739bd60e0be05f91af6fbf1458144`.
-- Main/integration ancestry: 2,209 commits ahead, zero behind.
+- Current integration head: this handoff revision; its exact SHA is the current PR #1662 head. The immediately preceding documentation-only head `afec4eb8938060622c1bef1f8e208807093bbe7a` passed exact-head CI; the last code-bearing commit is `7acad4269ed739bd60e0be05f91af6fbf1458144`.
+- Direct parent of this handoff revision: `afec4eb8938060622c1bef1f8e208807093bbe7a`.
+- Main/integration ancestry: 2,211 commits ahead after this documentation-only handoff update, zero behind.
 - Main tree: 1,381 entries. Integration tree: 2,332 entries; neither recursive tree was truncated.
 - PR #1662: open, draft, GitHub reports mergeable=true; 1,087 changed files, +307,933/-5,136. It has zero formal reviews, zero approvals and zero review threads.
 - Open PR inventory: 375 total, 361 drafts and 14 non-drafts. All four 100-item REST pages were read.
 - GitHub's compare-commits response caps its changed-file list at 300; the PR changed-filename endpoint was used for the full 1,087-path inventory.
 
-### Exact-head CI on 5b525074
+### Exact-head CI on afec4eb
 
 All required integration checks completed successfully on this exact SHA:
 
@@ -38,11 +38,11 @@ All required integration checks completed successfully on this exact SHA:
 | Fail-closed gate | Passed; automatic merge remains disabled |
 
 Evidence:
-- [Full CI 43366931151](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931151)
-- [Dependency audit 43366930965](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366930965)
-- [Fail-closed gate 43366931152](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931152)
-- [Core test job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931151/job/131693428497)
-- [Full-suite job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43366931151/job/131693428233)
+- [Full CI 43367843031](https://github.com/Barrot-Agent/B-Agent/actions/runs/43367843031)
+- [Dependency audit 43367842997](https://github.com/Barrot-Agent/B-Agent/actions/runs/43367842997)
+- [Fail-closed gate 43367843193](https://github.com/Barrot-Agent/B-Agent/actions/runs/43367843193)
+- [Core test job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43367843031/job/131696365613)
+- [Full-suite job](https://github.com/Barrot-Agent/B-Agent/actions/runs/43367843031/job/131696365350)
 
 Non-blocking packaging warnings remain: deprecated `project.license` TOML-table syntax and package-discovery warnings for `barrot_agent.data.missions` and `data.research`. The wheel build and installed-package verification nevertheless passed.
 
@@ -149,7 +149,7 @@ Classification:
 - #1643: overlapping research, nine differing blobs; preserve pending semantic review.
 - #1640: broad V3/MMI integration with 48 differing blobs; not a duplicate.
 - #1642: unique/unreviewed; all seven changed paths differ from the successor.
-- #1653: unique/unreviewed, non-draft; three source-only paths and four differing blobs. Do not merge without its own current-base, exact-head CI, review and security checks.
+- #1653: unique and blocked, non-draft; three source-only paths and four differing blobs. It is 17 commits behind current main, has six open high-severity Copilot findings, two CodeRabbit nitpicks and eight unresolved review threads. Its last CI is on its November 6 head and does not validate current main. Preserve it; do not merge or close.
 - #1655, #1659 and #1615: unique/unreviewed source-only work; preserve.
 - #1644–#1650: dependency PRs; blocked pending current-main compatibility, dependency/security and CI revalidation.
 - #1320, #1318, #1317, #1269, #1254 and #1255: unique safety/structural/dependency candidates; preserve pending independent review and current-base validation.
