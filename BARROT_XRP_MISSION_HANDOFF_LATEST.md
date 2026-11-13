@@ -196,3 +196,82 @@ Main and integration security differences were rechecked:
 7. Keep forecast issuance disabled until the full admission gate passes.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
+## Run89B — market microstructure, OCC trust-bank status and creator-source follow-up
+
+**Research retrieval window:** 2026-11-13 12:04–12:16 UTC. This addendum supplements Run89; it does not change the forecast gate.
+
+### Spot, order book and derivatives disagreement
+
+**OKX spot** remains the freshest event-timestamped cross-check in Run89: $1.0258 last, $1.0257/$1.0258 bid/ask at 12:03:49.768 UTC. Kraken XRP/USD and USDT/USD did not provide provider event timestamps. Do not promote their mechanically normalized 0.310% midpoint difference to executable arbitrage.
+
+**Binance XRPUSDT perpetual order book — Basis vendor snapshot, 07:23 UTC:**
+- Mid $1.0321; spread 0.97 bps.
+- 1,000 levels per side; full displayed book $34.1M bids and $27.7M offers over approximately ±9.8%.
+- Within ±0.5%: $6.4M bids / $7.2M offers ($13.6M combined).
+- Within ±1%: $11.3M bids / $10.4M offers ($21.7M combined).
+- Within ±2%: $16.8M bids / $17.1M offers ($33.9M combined).
+- Bid share within ±1%: 52%.
+- Largest displayed near-price walls were approximately $431K at 1.0348 ask and $329K at 1.0289 bid.
+
+This is one vendor's Binance perpetual book, not spot depth or consolidated multi-venue liquidity. It is sampled once per second and refreshed every 15 minutes. Resting orders can be cancelled or moved. Source: [Basis XRP liquidity heatmap](https://www.basischarts.com/liquidity-heatmap/xrp-usdt).
+
+**Derivatives sources disagree materially; preserve each universe and timestamp:**
+
+| Source / cutoff | OI | Funding | Position/liquidation detail |
+|---|---:|---:|---|
+| Liqwall, 07:02 UTC | $1.12B all-exchange | -0.0025% average / +0.0026% Binance per 8h | 75.2% Binance accounts long; $19.3M 24h liquidations, $18.4M long |
+| Coinalyze via BitcoinLeverage, checked 06:16 UTC | $300.23M Binance + $250.13M Bybit | +0.01% on each displayed contract | 75.08% Binance and 82.28% Bybit accounts long; liquidation coverage partial on Bybit |
+| Coinalyze via BitcoinLeverage, checked 08:18 UTC; 07:00 data | $303.26M Binance + $250.40M Bybit | +0.000653% Binance / -0.007873% Bybit | 75.20% Binance and 82.14% Bybit accounts long |
+| Alpha Finance liquidation heatmap, 07:52 UTC | $2.25B all-exchange vendor aggregate | Not directly comparable | $19.8M long / $1.2M short liquidations; liquidation clusters are explicitly modelled from OI and leverage tiers |
+
+Sources: [Liqwall](https://liqwall.com/coins/xrp), [BitcoinLeverage/Coinalyze](https://bitcoinleverage.com/xrp/funding-rate), [Alpha Finance liquidation heatmap](https://alphafinance.io/liquidation-heatmap/xrp/).
+
+Do not average $1.12B, $550M and $2.25B. They represent different contract coverage, timestamps and aggregation methods. Likewise, positive venue-specific funding can coexist with negative all-exchange average funding. The repeated long-liquidation skew supports a deleveraging/crowded-long hypothesis, but it is not a directional forecast.
+
+### ETF flow vintage correction
+
+[XRP Insights](https://xrp-insights.com/data) currently reports:
+- November 9: approximately -9.54M XRP.
+- November 10: approximately -27.0K XRP.
+- November 11: approximately +355.1K XRP.
+- November 9–11 sum: approximately -9.213M XRP.
+- November 12 remains provisional.
+
+Its methodology covers six spot ETFs plus BITW; GXRP is excluded from flow totals while a data gap is corrected, while holdings may still be included in broader totals. This explains why the three-day aggregate can reconcile while the individual day values differ from earlier snapshots.
+
+[Alpha Finance](https://alphafinance.io/etf/xrp/) reports a five-fund cohort, with $0 on November 11 and 12, -$7.6M on November 10 and -$10.4M on November 9. CryptoKeyhole reports four daily-read funds and said no November 12 issuer files had arrived at its 23:52 UTC read. These are different cohorts and missing-file rules; Alpha's zero must not be treated as a universal confirmation that every issuer reported no flow.
+
+### OCC trust-bank status — primary-source update
+
+The OCC Corporate Applications Search now records:
+- **Coinbase National Trust Company:** approved April 2, 2026; consummated/effective November 6, 2026. [OCC CAS](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2).
+- **Ripple National Trust Bank:** approved December 12, 2025; consummated/effective October 26, 2026. [OCC CAS](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2).
+- **Circle National Trust:** Circle announced final OCC approval July 10, 2026 to establish First National Digital Currency Bank, N.A., operating as Circle National Trust. Upon opening, the stated initial service is fiduciary digital-asset custody for Circle and affiliates; management of the USDC Reserve is described as a future capability. Do not infer the bank has opened or taken over reserve management from the approval announcement alone. [Circle primary announcement](https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank).
+
+Circle's official Q2 2026 release lists SBI Group among the founding third-party validators for **Arc**, alongside BlackRock, DTCC, Galaxy, ICE, Mastercard, MoneyGram, Standard Chartered, Sumitomo and Visa. It also reports JCB/USDC Japan use-case work, Kakao exploration, Nium/USDC payout integration and BNY's USDC mint/redeem expansion. Arc is a separate Layer 1, not XRPL. These are direct Circle ecosystem relationships, not evidence of XRP settlement demand. [Circle Q2 release](https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results).
+
+All three are national trust-bank structures, not ordinary retail deposit-taking banks. Charter approval/effectiveness does not itself prove that any particular custody product, stablecoin reserve transfer, XRP collateral program or customer balance is live.
+
+### Kamilah/Camilla Stevenson public-video identity gate
+
+New search results surface the candidate handle `@drkamilahstevenson`, channel ID candidate `UCqUPJMQdkCN6lsLVDnichPA`, and candidate video references:
+- [Crypto Headlines Are Designed to Make You Lose Money (Here's How)](https://www.youtube.com/watch?v=F5X2E_acc8c), indexed as December 12, 2025.
+- [The Shift Just Began… Crypto Is Next](https://www.youtube.com/watch?v=gAXXsmNrG44), indexed as November 29, 2025.
+- [The Oil Price On Your Screen Is A LIE — Here Is The REAL Number](https://www.youtube.com/watch?v=GpxyIMlazzI), publication date not resolved in this retrieval.
+
+Previously indexed candidates include [Ripple Just Became a BANK](https://www.youtube.com/watch?v=QslbjGQD0MU), [XRP ETFs Are Here](https://www.youtube.com/watch?v=ci0FH73lbCs) and [Why Most People Will Lose Their Crypto Wealth](https://www.youtube.com/watch?v=cxeX_eu_2H0).
+
+The candidate channel description and video descriptions align with the public wealth/crypto brand, but third-party analytics disagree on subscriber/video counts (roughly 103K–143K and 633–1.2K videos). Search-indexed transcripts repeatedly render the speaker's self-introduction as “Camila Stevenson” while channel metadata says “Kamilah Stevenson.” The exact handle-to-channel-ID relation still lacks platform-side or reciprocal first-party verification. **Keep all these as candidate references only; verified own-channel inventory remains zero.** Do not count guest appearances or third-party clips as own-channel uploads.
+
+### Exact-head CI after Run89 handoff refresh — VERIFIED
+
+The documentation-only Run89 commit `cf66598b7f433314fa5e12dda338d688955bc6d7` completed its own exact-head checks:
+- [Full CI 43423314020](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423314020): 3,557 passed, zero failed, eight subtests passed, 61.72% inclusive coverage, 78.38 seconds; core 729 passed, 76%; wheel build and installed mission verification passed.
+- [Dependency audit 43423314021](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423314021): success, five manifest groups.
+- [Fail-closed gate 43423314028](https://github.com/Barrot-Agent/B-Agent/actions/runs/43423314028): success.
+
+The current handoff update below is a new documentation-only commit; its own exact-head checks must complete before that new SHA is described as verified.
