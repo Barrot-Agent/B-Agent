@@ -4271,3 +4271,29 @@ No merge. PR #1662 remains draft with zero formal approvals/reviews. Branch-prot
 Next action: verify exact-head full suite and dependency checks on this handoff-only descendant; then complete semantic review of the 1,078-file integration, reconcile the 12/36/9/48/7 differing source blobs, review unique source-only work, resolve branch-protection visibility, least privilege, provider credential-owner revocation and Pages publication authority. Keep external MCP disabled, forecasts disabled, and all external/financial actions gated.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure was performed.
+
+
+---
+
+## Run74C — BARROT_SYNC evidence correction and #1661 source-file distinction
+
+Captured: 2026-11-13T02:22:30Z. This section supersedes the older operational-sync wording in earlier handoffs.
+
+The main and integration `BARROT_SYNC.md` blobs were identical before this change (1,138 bytes). The file asserted that LunaRoute was the exclusive live brain, that `LUNAROUTE_API_KEY` existed in GitHub Secrets and Termux with matching values, and that OAuth revocation for `.config/gh/hosts.yml` was complete. None of those secret/authentication/revocation claims had current authorized verification. The main Barrot Sync workflow also produced a false-green result: `httpx` was missing, sync was skipped, and no sync commit was produced.
+
+The integration branch now makes a minimal, evidence-preserving correction to `BARROT_SYNC.md`:
+
+- LunaRoute is labelled the intended model provider; authentication and data flow are explicitly NOT VERIFIED.
+- Presence/validity of `LUNAROUTE_API_KEY` and `GH_TOKEN` in GitHub Secrets/Termux is explicitly NOT VERIFIED; no secret value was read.
+- `.config/gh/hosts.yml` remains prohibited from recommit; provider-side OAuth revocation is explicitly NOT VERIFIED.
+- LunaRoute MCP remains disabled pending approved authentication, permission and data-flow verification.
+- The Nov 10 sync note is retained as historical but not independently verified; the Nov 13 failed/skipped run is recorded accurately.
+- A regression test verifies the sync document cannot reintroduce unsupported credential, revocation or successful-sync claims.
+
+This correction is on integration only. Main was not changed.
+
+#1661's `BARROT_SYNC.md` is not an operational sync contract: its blob is 144,891 bytes and begins with a Run63 market/CI mission log. Main's original operational note was 1,138 bytes. Do not replace the canonical sync contract with that Run63 log. Preserve #1661's branch and its other differing blobs for separate archival/reconciliation; no source PR was closed.
+
+The current branch before this correction was `0e7535a08fb06b162fe63d2af3ffd57319b65cd2`. The correction commit is its direct child and will be the new PR head. The exact-head CI on `0e7535a` was still running at capture; the new correction commit requires its own full-suite, dependency and fail-closed checks.
+
+No secret was read, tested, rotated or revoked. No LunaRoute connection was attempted. No external sync, deployment, paper trade, funds transfer, Kaggle submission or Databricks write occurred.
