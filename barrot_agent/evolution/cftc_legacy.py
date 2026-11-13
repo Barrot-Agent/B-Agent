@@ -64,6 +64,31 @@ def _row(
     raise CFTCLegacyParseError(f"CFTC Legacy report is missing the {field} All row")
 
 
+
+
+def _unlabelled_row(
+    lines: list[str], start: int, end: int, field: str, count: int
+) -> list[int | float | None]:
+    """Read the CFTC Legacy weekly-change row, which has no All label."""
+    for line in lines[start:end]:
+        if not line.startswith(":"):
+            continue
+        tokens = re.findall(r"-?\d[\d,]*(?:\.\d+)?|\.", line)
+        if len(tokens) != count:
+            continue
+        values: list[int | float | None] = []
+        for token in tokens:
+            if token == ".":
+                values.append(None)
+            else:
+                number = token.replace(",", "")
+                values.append(float(number) if "." in number else int(number))
+        return values
+    raise CFTCLegacyParseError(
+        f"CFTC Legacy report is missing the {field} row"
+    )
+
+
 def _date(value: str, field: str):
     try:
         return datetime.strptime(value.title(), "%B %d, %Y").date()
@@ -186,7 +211,7 @@ def parse_cftc_legacy_futures_only_report(
     traders_i = indexes["traders"]
     concentration_i = indexes["concentration"]
     position_row = _row(section, 1, changes_i, "positions", 10)
-    change_row = _row(section, changes_i + 1, percent_i, "position changes", 10)
+    change_row = _unlabelled_row(section, changes_i + 1, percent_i, "position changes", 10)
     percent_row = _row(section, percent_i + 1, traders_i, "open-interest percentages", 10)
     trader_row = _row(section, traders_i + 1, concentration_i, "trader counts", 8)
     concentration_row = _row(

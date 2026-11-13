@@ -72,7 +72,7 @@ def test_legacy_futures_only_parser_rejects_open_interest_reconciliation_mismatc
 
 
 def test_legacy_futures_only_parser_rejects_weekly_change_reconciliation_mismatch():
-    corrupted = REPORT.replace("All  :     -845:", "All  :     -844:", 1)
+    corrupted = REPORT.replace("-845", "-844", 1)
     with pytest.raises(CFTCLegacyParseError, match="do not reconcile to open-interest change"):
         parse_cftc_legacy_futures_only_report(corrupted)
 
