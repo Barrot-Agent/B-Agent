@@ -1,10 +1,10 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-12T22:52:23Z",
-  "last_verified_at_utc": "2026-11-12T22:52:23Z",
+  "captured_at_utc": "2026-11-13T05:41:39.615Z",
+  "last_verified_at_utc": "2026-11-13T05:41:39.615Z",
   "repository": "Barrot-Agent/B-Agent",
-  "observed_main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
+  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
   "observed_integration_head_before_map_commit": "0460ec6a2c165fa6a8d08758bc2b0945b3113744",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
@@ -13,16 +13,16 @@
     "draft": true,
     "mergeable": true,
     "mergeable_state": "clean",
-    "ahead_by": 2166,
+    "ahead_by": 2214,
     "behind_by": 0,
-    "changed_files": 1076,
+    "changed_files": 1090,
     "workflow_files": 50,
-    "other_changed_paths": 1026,
-    "head_sha": "0460ec6a2c165fa6a8d08758bc2b0945b3113744",
-    "base_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
-    "commits": 2166,
-    "additions": 301758,
-    "deletions": 5123,
+    "other_changed_paths": 1040,
+    "head_sha": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+    "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "commits": 2214,
+    "additions": 308697,
+    "deletions": 5136,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
@@ -30,9 +30,9 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-12T22:20:37Z",
+    "updated_at": "2026-11-13T05:25:54Z",
     "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
-    "note": "Exact-head full suite on 0460ec6 passed 3,540/0, eight subtests, 61.55%; core 723/0; wheel and installed V3/XRP mission passed; five-manifest dependency audit and fail-closed gate passed. PR remains draft with zero approvals.",
+    "note": "Run77 exact-head CI on 7a06099 failed three integration assertions: stale 47-source map versus 48-source registry and two CFTC weekly ordering expectations. Core 725/0 passed; full suite 3,550 passed, 3 failed, eight subtests; 62% coverage. Five-manifest dependency audit found no known vulnerabilities; fail-closed gate passed. Corrections are included in the Run77 commit; exact-head CI must pass before merge.",
     "research_files": 557,
     "test_files": 374,
     "other_files": 94
@@ -640,19 +640,19 @@
     }
   },
   "repository_state": {
-    "main_sha": "b4e36c91c380da89e7b60d00f984bd7ac123ce74",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
     "integration_head_before_current_map_commit": "0460ec6a2c165fa6a8d08758bc2b0945b3113744",
     "integration_pr": 1662,
-    "integration_ahead_by": 2166,
+    "integration_ahead_by": 2214,
     "integration_behind_by": 0,
-    "changed_files": 1076,
+    "changed_files": 1090,
     "workflow_files_changed": 50,
-    "non_workflow_paths_changed": 1026,
+    "non_workflow_paths_changed": 1040,
     "open_prs": 375,
     "drafts": 361,
     "non_drafts": 14,
     "main_tree_entries": 1381,
-    "integration_tree_entries": 2323,
+    "integration_tree_entries": 2336,
     "main_workflow_files": 86,
     "integration_workflow_files": 87,
     "orbit_paths_in_integration": false,
@@ -668,8 +668,8 @@
     "latest_exact_head_ci": "0460ec6: exact-head full suite passed 3540/0, eight subtests, 61.55%, 95.18s; core 723/0, 76%; wheel and installed V3/XRP mission passed; five-manifest audit zero known vulnerabilities; fail-closed gate passed.",
     "last_reconciled_at_utc": "2026-11-12T22:52:23Z",
     "other_base_branches": 8,
-    "main_tree_files": 1288,
-    "integration_tree_files": 2210,
+    "main_tree_files": 1277,
+    "integration_tree_files": 2222,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -880,15 +880,15 @@
     "actions_permissions_api_access": "Not exposed by current fetch wrapper; no inference about repository Actions settings",
     "security_alerts_api_access": "Not exposed by current fetch wrapper; no claim that alerts are absent",
     "current_pr_review_state": {
-      "pr": 1661,
+      "pr": 1662,
       "state": "open",
       "draft": true,
-      "mergeable": true,
-      "mergeable_state": "clean",
+      "head_sha": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
       "formal_reviews": 0,
       "approvals": 0,
       "review_threads": 0,
-      "head_sha": "c321c98cfe0a4ff95aa5b29f7fba13d9448030bc"
+      "issue_comments": 1,
+      "code_review_status": "DRAFT_NOT_REVIEWED_BY_CODERABBIT"
     },
     "run32_source_overlap_reconciliation": {
       "1640": {
@@ -931,7 +931,7 @@
     "run33_expected_integration_tree_entries_after_commit": 2282,
     "run33_expected_integration_tree_files_after_commit": 2173,
     "run33_expected_ahead_by_after_commit": 2041,
-    "base_main_prs": 366,
+    "base_main_prs": 367,
     "base_other_prs": 8,
     "current_head_before_run34_commit": "c857f637939be32f196d1a8268a8001443fe4d9d",
     "latest_fully_passing_full_suite_head": "ed345e0efc5d6794cef58220891fc03e3ac96ab7",
@@ -1137,7 +1137,51 @@
     "main_required_status_check_contexts": [],
     "main_protection_detail_http": 403,
     "fallback_ruleset_id": 10863829,
-    "main_scheduled_xrp_ingestion_run_verified": false
+    "main_scheduled_xrp_ingestion_run_verified": false,
+    "integration_head_before_run77_commit": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+    "other_base_prs": 8,
+    "credential_path_present_in_17_other_open_pr_tips_previous_audit": true,
+    "branch_protection": {
+      "main_protected": true,
+      "enforcement_level": "non_admins",
+      "required_status_contexts": [],
+      "detail_endpoint": "HTTP 403",
+      "integration_branch_protected": false,
+      "fallback_ruleset_id": 10863829,
+      "fallback_ruleset_enabled": false
+    },
+    "github_connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true,
+      "least_privilege": false
+    },
+    "current_main_ci": {
+      "run_id": 43343513172,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success",
+      "passed": 747,
+      "failed": 0,
+      "subtests": 8
+    },
+    "current_main_pages": {
+      "run_id": 43343511839,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success",
+      "automatic_publication": true,
+      "publication_authorized": false
+    },
+    "current_main_barrot_sync": {
+      "run_id": 43343513347,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "workflow_conclusion": "success",
+      "actual_sync": "skipped",
+      "error": "ModuleNotFoundError: httpx",
+      "external_api_call": false,
+      "commit_or_push": false
+    }
   },
   "ci_evidence": {
     "integration_head_tested": "0460ec6a2c165fa6a8d08758bc2b0945b3113744",
@@ -2992,14 +3036,22 @@
       "production_worm": false,
       "status": "DESIGNED_AND_COMMITTED_ON_INTEGRATION; NOT_EXECUTED_ON_MAIN",
       "price_data_quality_note": "Do not treat XRPL dashboard's global header price as a verified exchange quote; the page's own PriceOracle DIA value is delayed and only one production provider is publishing.",
-      "source_definitions": 47,
+      "source_definitions": 48,
       "hourly_sources": 43,
-      "weekly_cftc_sources": 2,
+      "weekly_cftc_sources": 3,
       "excluded_noncommercial_xrpl_node_sources": 2,
-      "scheduled_sources": 45,
+      "scheduled_sources": 46,
       "raw_receipts_days": 90,
       "per_run_feature_store_days": 7,
-      "daily_feature_store_days": 90
+      "daily_feature_store_days": 90,
+      "cftc_legacy_futures_only": {
+        "source_id": "cftc_legacy_futures_only",
+        "contract_code": "176740",
+        "contract_multiplier_xrp": 50000,
+        "report_type": "Legacy Futures-Only",
+        "status": "IMPLEMENTED_ON_INTEGRATION; EXACT_HEAD_CI_CORRECTION_PENDING",
+        "model_eligible": false
+      }
     },
     "merge_automation": "Disabled/fail-closed; audit-only gate; no automatic merge.",
     "workflow_classification_discrepancy": "RESOLVED_RUN31: full patch audit confirms26/18; Run30 narrative25/19 was incorrect.",
@@ -3100,11 +3152,11 @@
     }
   },
   "prediction_engine_status": {
-    "source_definitions_total": 47,
+    "source_definitions_total": 48,
     "hourly_sources": 43,
-    "weekly_cftc_sources": 2,
+    "weekly_cftc_sources": 3,
     "excluded_noncommercial_xrpl_node_sources": 2,
-    "scheduled_sources": 45,
+    "scheduled_sources": 46,
     "implemented": [
       "read-only public-data collector on integration; scheduled hourly/daily workflow guarded to run only on main",
       "host allowlist, redirect rejection, response-size and source-specific cache-age controls",
@@ -3118,7 +3170,8 @@
       "fail-closed forecast ledger requiring point-in-time feature snapshots and Ed25519 evaluator attestation",
       "readiness gate requires >=100 out-of-sample and >=100 shadow raw samples, >=10 non-overlapping target windows in each, two source groups, stable drift, weighted calibration error <=0.05, and lower Brier plus log loss than all four baselines",
       "SBI VC Trade lending terms digest-only source; raw HTML is not retained or model-admitted",
-      "Deterministic research-only scenario/counter-hypothesis assembler wired to the scheduled event-timeline capture on integration; Run47 curated registry has 20 events, six newly added, with no raw publisher hashes and no forecast probabilities."
+      "Deterministic research-only scenario/counter-hypothesis assembler wired to the scheduled event-timeline capture on integration; Run47 curated registry has 20 events, six newly added, with no raw publisher hashes and no forecast probabilities.",
+      "CFTC Legacy Futures-Only parser for CME XRP contract 176740, with separate Legacy taxonomy, 50,000-XRP multiplier normalization, date-only research features, and fixture-based parser tests; exact-head integration CI correction pending."
     ],
     "not_production_verified": [
       "independent WORM storage and trusted timestamp anchoring",
@@ -3133,7 +3186,8 @@
       "demonstrated out-of-sample lift over all four baselines on Brier score and log loss",
       "effective-sample-size correction and residual serial-dependence/shared-source correlation adjustment beyond non-overlapping interval counts",
       "synchronized multi-venue historical spot/L2/derivatives/exchange-flow/collateral reconstruction across source vintages",
-      "Run47's curated 20-event registry is wired to the scheduled event-timeline collector on integration, but it is not an automated event feed. The six new records have no raw publisher payload hashes; the registry SHA authenticates only the curated file. Scenario outputs remain authored research hypotheses without forecast probabilities, and no Run47 scheduled capture has executed on main."
+      "Run47's curated 20-event registry is wired to the scheduled event-timeline collector on integration, but it is not an automated event feed. The six new records have no raw publisher payload hashes; the registry SHA authenticates only the curated file. Scenario outputs remain authored research hypotheses without forecast probabilities, and no Run47 scheduled capture has executed on main.",
+      "CFTC Legacy Futures-Only historical replay and publication-vintage validation; parser and weekly adapter are on integration only and are not yet verified by a passing exact-head full suite or a successful scheduled main-branch run."
     ],
     "scheduled_workflow": "Hourly at minute 3; daily feature-store backup at 00:15 UTC; workflow runs only on main.",
     "main_branch_ingestion_verified": false,
@@ -8685,8 +8739,8 @@
     ],
     "forecast_status": "NOT_ISSUED"
   },
-  "latest_run_id": "Run70-exact-head-pass",
-  "latest_run_captured_at_utc": "2026-11-12T22:52:23Z",
+  "latest_run_id": "run77",
+  "latest_run_captured_at_utc": "2026-11-13T05:41:39.615Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -20233,7 +20287,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-12T22:52:23Z",
+  "updated_at_utc": "2026-11-13T05:41:39.615Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -24613,7 +24667,7 @@
   },
   "run46_forecast_status": "NOT_ISSUED",
   "model_eligible": false,
-  "next_concrete_action": "Finish semantic review of the 1,076-file integration and exact blob reconciliation of overlapping source PRs.",
+  "next_concrete_action": "Run exact-head CI on the Run77 corrective commit; do not mark PR #1662 ready or merge until the full suite, dependency/security gates, approvals, branch protection, least privilege, and publication side effects are resolved.",
   "run47_research_artifact_path": "research/xrp_intelligence/20261112T050251Z-run47-market-quality-evernorth-sbi-resale-and-exact-head-ci-repair.json",
   "run47_forecast_status": "NOT_ISSUED",
   "current_forecast_status": "NOT_ISSUED",
@@ -29435,5 +29489,402 @@
       "normalized_gap_percent": 0.1782,
       "interpretation": "Asynchronous quote comparison; not an executable arbitrage signal."
     }
-  }
+  },
+  "observed_integration_head_before_current_map_commit": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+  "run77_snapshot": {
+    "captured_at_utc": "2026-11-13T05:41:39.615Z",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_at_audit_start": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+    "integration_ahead_by": 2214,
+    "integration_behind_by": 0,
+    "integration_tree_entries": 2336,
+    "integration_tree_files": 2222,
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "changed_files": 1090,
+      "commits": 2214,
+      "additions": 308697,
+      "deletions": 5136,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "open_pr_inventory": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "base_main": 367,
+      "other_base": 8
+    },
+    "current_head_ci": {
+      "full_run_id": 43371990278,
+      "full_job_id": 131709630358,
+      "full_conclusion": "failure",
+      "full_passed": 3550,
+      "full_failed": 3,
+      "full_subtests": 8,
+      "coverage_percent": 62,
+      "duration_seconds": 95.51,
+      "core_job_id": 131709629938,
+      "core_conclusion": "success",
+      "core_passed": 725,
+      "core_failed": 0,
+      "core_subtests": 8,
+      "dependency_run_id": 43371990217,
+      "dependency_job_id": 131709629649,
+      "dependency_conclusion": "success",
+      "dependency_manifests": 5,
+      "known_vulnerabilities_reported": 0,
+      "fail_closed_run_id": 43371990201,
+      "fail_closed_job_id": 131709629479,
+      "fail_closed_conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "corrections_in_run77_commit": [
+      "Reorder CFTC weekly source execution to contract-status index, Legacy Futures-Only report, then TFF report.",
+      "Align skipped-source assertion with canonical sorted source IDs.",
+      "Update current capability map to 48 definitions: 43 hourly, three weekly CFTC, two excluded non-commercial XRPL node endpoints, 46 scheduled.",
+      "Clarify separate Legacy and TFF trader taxonomies."
+    ],
+    "exact_head_ci_after_run77_commit": "PENDING",
+    "merge_decision": "NO_MERGE"
+  },
+  "run77_ci_failure_reconciliation": {
+    "parent_head": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+    "full_suite": {
+      "run_id": 43371990278,
+      "job_id": 131709630358,
+      "passed": 3550,
+      "failed": 3,
+      "subtests": 8,
+      "coverage_percent": 62,
+      "duration_seconds": 95.51
+    },
+    "failures": [
+      {
+        "test": "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
+        "cause": "Current map recorded 47 source definitions while registry and feature-store contract contain 48.",
+        "correction": "Update current map totals to 48/43 hourly/3 weekly/46 scheduled."
+      },
+      {
+        "test": "tests/test_xrp_public_ingestion.py::test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt",
+        "cause": "Skipped-source list assertion used a noncanonical order.",
+        "correction": "Align expected order to contract-status, Legacy Futures-Only, TFF."
+      },
+      {
+        "test": "tests/test_xrp_public_ingestion.py::test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run",
+        "cause": "WEEKLY_ENDPOINTS executed TFF before Legacy while the capture contract expects Legacy before TFF.",
+        "correction": "Order weekly execution as contract-status, Legacy Futures-Only, TFF."
+      }
+    ],
+    "core_suite": {
+      "job_id": 131709629938,
+      "passed": 725,
+      "failed": 0,
+      "subtests": 8
+    },
+    "dependency_audit": {
+      "run_id": 43371990217,
+      "job_id": 131709629649,
+      "conclusion": "success",
+      "manifests": [
+        "root runtime",
+        "development",
+        "Hugging Face Space",
+        "legacy",
+        "PEP 621"
+      ],
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43371990201,
+      "job_id": 131709629479,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "correction_commit_status": "COMMITTED_ON_EXISTING_INTEGRATION_BRANCH; EXACT_HEAD_CI_PENDING"
+  },
+  "run77_market_research": {
+    "captured_at_utc": "2026-11-13T05:41:39.615Z",
+    "eligibility": "RESEARCH_ONLY_NO_BARROT_RAW_RECEIPTS",
+    "spot": {
+      "okx": {
+        "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_timestamp_utc": "2026-11-13T05:35:07.568Z",
+        "last": 1.0115,
+        "bid": 1.0114,
+        "ask": 1.0115,
+        "open24h": 1.0415,
+        "high24h": 1.0569,
+        "low24h": 0.9974,
+        "volume_xrp": 40561625.788803,
+        "quote_volume_usdt": 41627378.77392804,
+        "age_seconds_at_capture": 104,
+        "provider_freshness_gate_seconds": 300,
+        "raw_receipt": false,
+        "model_eligible": false
+      },
+      "kraken": {
+        "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "observed_at_utc": "2026-11-13T05:41:39.615Z",
+        "last": 1.01214,
+        "bid": 1.01193,
+        "ask": 1.01196,
+        "open24h": 1.04003,
+        "high24h": 1.05548,
+        "low24h": 0.99672,
+        "volume_xrp_24h": 32310923.48075173,
+        "provider_event_timestamp": null,
+        "model_eligible": false
+      },
+      "kraken_usdtusd": {
+        "source": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "observed_at_utc": "2026-11-13T05:41:39.615Z",
+        "last": 0.99895,
+        "bid": 0.99895,
+        "ask": 0.99896,
+        "provider_event_timestamp": null,
+        "model_eligible": false
+      },
+      "normalized_asynchronous_midpoint_gap_percent": -0.153364585,
+      "okx_24h_change_percent": -2.880460874,
+      "kraken_24h_change_percent": -2.681653414,
+      "interpretation": "Spot quotes near $1.01 after roughly 2.7%-2.9% 24-hour decline. OKX passes provider-age gate but lacks Barrot raw receipt. Kraken and USDT/USD lack provider event timestamps. Cross-venue gap is indicative only."
+    },
+    "order_book": {
+      "status": "NO_NEW_SYNCHRONIZED_L2_SNAPSHOT",
+      "reason": "OKX books and Kraken depth endpoints inaccessible through current public research path."
+    },
+    "derivatives": {
+      "source": "https://tradradar.io/markets/xrp",
+      "publisher_update_utc": "2026-11-12T23:55:00Z",
+      "open_interest_usd": 1550000000,
+      "open_interest_24h_change_percent": 0.57,
+      "weighted_funding_percent_per_8h": 0.0098,
+      "long_short_account_ratio": 3.91,
+      "long_account_share_percent": 79.6,
+      "liquidations_24h_usd": 9010000,
+      "long_liquidations_usd": 8470000,
+      "short_liquidations_usd": 544650,
+      "venue_count": 7,
+      "age_hours_at_capture": 5.7,
+      "source_class": "SECONDARY_AGGREGATOR",
+      "model_eligible": false
+    },
+    "etf_flows": [
+      {
+        "source": "https://maketo.com/etf/xrp/flows",
+        "updated_at_utc": "2026-11-13T02:28:00Z",
+        "latest_session": "2026-11-12",
+        "reported_daily_flow_usd": 0,
+        "seven_day_net_flow_usd": -18000000,
+        "thirty_day_net_flow_usd": -12000000,
+        "cumulative_net_flow_usd": 1790000000
+      },
+      {
+        "source": "https://alphafinance.io/etf/xrp/",
+        "latest_session": "2026-11-12",
+        "reported_daily_flow_usd": 0,
+        "thirty_session_net_flow_usd": -2800000,
+        "cumulative_net_flow_usd": 1710000000,
+        "fund_count": 5
+      },
+      {
+        "source": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "latest_complete_session": "2026-11-11",
+        "funds_reporting": 4,
+        "funds_listed": 6,
+        "net_flow_xrp": -3322,
+        "nov12_reporting_funds": 0,
+        "five_complete_sessions_net_flow_xrp": -10005584
+      },
+      {
+        "source": "https://cryptoetf.today/en/xrp-etf-flows",
+        "latest_session": "2026-11-12",
+        "funds_reporting": 0,
+        "funds_covered": 5,
+        "displayed_net_flow_usd": 0,
+        "report_status": "PARTIAL_NO_FUNDS_REPORTED"
+      }
+    ],
+    "etf_disagreement": "A displayed zero with zero issuer files is missing data, not confirmed zero. Cohorts/time windows differ; no averaging.",
+    "cftc_legacy": {
+      "source": "https://www.cftc.gov/dea/futures/deacmelf.htm",
+      "report_type": "Legacy Futures-Only",
+      "report_as_of": "2026-11-03",
+      "contract_code": "176740",
+      "contract_multiplier_xrp": 50000,
+      "open_interest_contracts": 7216,
+      "open_interest_contract_equivalent_xrp": 360800000,
+      "total_traders": 29,
+      "noncommercial": {
+        "long": 7011,
+        "short": 5546,
+        "spreading": 60,
+        "net": 1465,
+        "weekly_change": {
+          "long": -281,
+          "short": -466,
+          "spreading": -481,
+          "net": 185
+        }
+      },
+      "commercial": {
+        "long": 61,
+        "short": 1383,
+        "net": -1322,
+        "weekly_change": {
+          "long": -19,
+          "short": 34,
+          "net": -53
+        }
+      },
+      "nonreportable": {
+        "long": 84,
+        "short": 227,
+        "net": -143,
+        "weekly_change": {
+          "long": -64,
+          "short": 68,
+          "net": -132
+        }
+      },
+      "open_interest_weekly_change_contracts": -845,
+      "concentration": {
+        "top4_gross_long_percent": 81,
+        "top4_gross_short_percent": 67.4,
+        "top8_gross_long_percent": 95.1,
+        "top8_gross_short_percent": 87.7
+      },
+      "source_class": "PRIMARY_CFTC",
+      "model_eligible": false,
+      "interpretation": "Non-commercial net-long rose by 185 contracts while gross longs and shorts both declined; short covering is plausible, not proof of fresh capital. Contract-equivalent XRP is not custody, spot holdings or delivered tokens."
+    },
+    "cftc_release_schedule": {
+      "source": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
+      "next_scheduled_release": "2026-11-16",
+      "note": "CFTC lists November 16 as delayed; regular release is 3:30 p.m. Eastern, usually Friday, with federal holidays able to delay one or two days."
+    }
+  },
+  "run77_institutional_update": {
+    "captured_at_utc": "2026-11-13T05:41:39.615Z",
+    "sbi_jpysc": {
+      "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "published_date": "2026-11-02",
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "co_developer": "Startale Group",
+      "handling_balance_jpy": "over 30 billion",
+      "lending_balance_jpy": "over 10 billion",
+      "interpretation": "Yen-stablecoin activity; not XRP purchases or collateral."
+    },
+    "coinbase_occ": {
+      "source": "https://www.coindesk.com/policy/2026/11/09/coinbase-gets-full-u-s-trust-charter-from-federal-banking-regulator",
+      "published_date": "2026-11-09",
+      "status": "full OCC national trust charter reported"
+    },
+    "ripple_occ": {
+      "source": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank",
+      "published_date": "2026-10-27",
+      "status": "final OCC approval reported"
+    },
+    "coinbase_pnc_usdc": {
+      "source": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published_date": "2026-11-09",
+      "status": "limited USDC pilot with automatic USD conversion; not XRP"
+    },
+    "evernorth_treasury": {
+      "source": "https://www.theblock.co/news/deals/2026-10-14-evernorth-taps-ripple-kraken-coinbase-bitgo-xrp-treasury-work-418503",
+      "published_date": "2026-10-14",
+      "reported_treasury_xrp": 473000000,
+      "partners": [
+        "Ripple",
+        "Kraken",
+        "Coinbase",
+        "BitGo"
+      ],
+      "deployment_amount_disclosed": false
+    }
+  },
+  "run77_identity_research": {
+    "captured_at_utc": "2026-11-13T05:41:39.615Z",
+    "sbic": "SBIC East/Tokyo, Central/Nagoya, West/Osaka are distinct regional SME investment companies; not SBI Holdings.",
+    "sbic_chatgpt": "SBIC East training is educational; SBI Holdings/SBI Securities ChatGPT Enterprise adoption and SoftBank Group/OpenAI JV are separate.",
+    "ask_coin": "No canonical XRPL issuer or deployment verified.",
+    "actual_capital": "Cash proceeds, in-kind XRP, debt, conditional ELOC capacity, warrants and secondary resales remain separate.",
+    "camilla_kamilah_stevenson": "No new first-party YouTube channel-ownership proof; no videos attributed as verified own-channel uploads."
+  },
+  "run77_platform_status": {
+    "ChatGPT": "Current GitHub connector authenticated; repository permissions admin/maintain/push/pull/triage are overprivileged.",
+    "Claude": "No authentication/data flow verified.",
+    "Grok": "No authentication/data flow verified.",
+    "Gemini": "No authentication/data flow verified.",
+    "Copilot": "One-off review activity only; no formal approval.",
+    "Codex": "No authentication/data flow verified.",
+    "Hugging Face": "Previous BUILD_ERROR; no deployment verified.",
+    "Kaggle": "Not tested; no submission.",
+    "Databricks": "Previous HTTP 403; no read/write verified.",
+    "external_model_transfer": false,
+    "nine_platform_exchange": "DESIGNED_NOT_EXECUTED"
+  },
+  "run77_forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "reason": "No mature synchronized point-in-time history, no Barrot raw receipts for this research, no independent WORM/timestamp anchor, no production evaluator key, no independent shadow outcomes, and no demonstrated OOS superiority over all four baselines."
+  },
+  "run77_backlog_classification": {
+    "pr1662": "BLOCKED_DRAFT_NOT_MERGE_READY",
+    "pr1661": "SUPERSESSION_CANDIDATE_RETAIN_UNTIL_SUCCESSOR_MERGE_AND_EXACT_CONTENT_VERIFICATION",
+    "pr1660": "SUPERSESSION_CANDIDATE_RETAIN_UNTIL_SUCCESSOR_MERGE_AND_EXACT_CONTENT_VERIFICATION",
+    "pr1643": "OVERLAPPING_RESEARCH_WORK_DIFFERING_BLOBS_RETAIN",
+    "pr1640": "OVERLAPPING_INTEGRATION_WORK_DIFFERING_BLOBS_RETAIN",
+    "pr1642": "UNIQUE_UNREVIEWED",
+    "pr1653": "UNIQUE_BLOCKED_PRIOR_REVIEW_FINDINGS_NOT_REMEDIATED",
+    "pr1655": "UNIQUE_UNREVIEWED",
+    "pr1659": "UNIQUE_UNREVIEWED",
+    "pr1615": "UNIQUE_SECURITY_WORK_UNREVIEWED",
+    "source_pr_closures_this_run": 0
+  },
+  "run77_security": {
+    "main_branch_protected": true,
+    "main_enforcement_level": "non_admins",
+    "visible_required_status_contexts": [],
+    "detailed_protection_endpoint": "HTTP 403",
+    "integration_branch_protected": false,
+    "fallback_ruleset_10863829_enabled": false,
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "pages_last_run": {
+      "id": 43343511839,
+      "conclusion": "success",
+      "automatic_publication": true,
+      "publication_authorized": false
+    },
+    "barrot_sync_last_run": {
+      "id": 43343513347,
+      "workflow_conclusion": "success",
+      "actual_sync": "skipped",
+      "reason": "ModuleNotFoundError: httpx",
+      "external_api_call": false
+    },
+    "credential_path_absent_from_main_and_integration": true,
+    "credential_file_contents_read": false,
+    "provider_side_revocation_verified": false,
+    "destructive_or_external_actions_executed": false
+  },
+  "run77_next_actions": [
+    "Verify the atomic Run77 correction commit and wait for exact-head full-suite CI, dependency audit, and fail-closed gate.",
+    "If any exact-head failure remains, diagnose and fix it on the existing integration branch without creating another PR.",
+    "Continue semantic reconciliation of the 1,090-file consolidated PR and source-PR differing blobs.",
+    "Resolve least-privilege connector permissions, branch-protection visibility, GitHub Pages publication authorization, and credential-owner revocation evidence.",
+    "Build synchronized historical L2/derivatives/flows/collateral history and independent raw-source anchoring before forecast issuance."
+  ],
+  "run77_research_artifact_path": "research/xrp_intelligence/20261113T053651Z-run77-current-head-ci-cftc-legacy-and-market-audit.json",
+  "run77_handoff_status": "APPENDED_IN_SAME_ATOMIC_INTEGRATION_COMMIT; EXACT_HEAD_CI_PENDING"
 }

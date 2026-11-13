@@ -648,7 +648,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["xrpl_node_reconciliation"]["model_admission_allowed"] is False
     assert summary["collection_policy"]["noncommercial_xrpl_nodes_included"] is False
     assert summary["weekly_source_policy"]["captured_source_ids"] == []
-    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"]
+    assert summary["weekly_source_policy"]["skipped_source_ids"] == ["cftc_contract_status_index", "cftc_legacy_futures_only", "cftc_tff_financial_futures"]
     assert set(summary["collection_policy"]["excluded_noncommercial_xrpl_node_source_ids"]) == set(XRPL_NODE_SOURCES)
 
     snapshot = json.loads((tmp_path / "run" / "snapshot.json").read_text(encoding="utf-8"))

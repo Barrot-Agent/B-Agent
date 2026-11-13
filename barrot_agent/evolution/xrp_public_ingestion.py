@@ -217,8 +217,8 @@ XRPL_NODE_SOURCES = {
 NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS = frozenset(XRPL_NODE_SOURCES)
 WEEKLY_ENDPOINTS = (
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
-    ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("cftc_legacy_futures_only", "https://www.cftc.gov/dea/futures/deacmelf.htm"),
+    ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
 )
 WEEKLY_SOURCE_IDS = frozenset(source_id for source_id, _url in WEEKLY_ENDPOINTS)
 # CFTC currently lists these delayed 2026 release dates. Its announced semiweekly plan has no confirmed effective date yet.
@@ -5041,8 +5041,8 @@ def run_ingestion(
                 WEEKLY_SOURCE_IDS - {source_id for source_id, _url in weekly_endpoints}
             ),
             "reason": (
-                "The weekly CFTC COT index and Traders in Financial Futures report are captured together after the official release. "
-                "The TFF report is parsed into date-only futures-position research features for reported XRP contract families; "
+                "The CFTC COT added/dropped-contract index, Legacy Futures-Only report, and Traders in Financial Futures report are captured together after the official release. "
+                "The Legacy Futures-Only and TFF reports are parsed into separate date-only research features with their distinct trader taxonomies and contract units; "
                 "the added/dropped index is stored as a separate research-only reporting-universe observation. "
                 "All CFTC features remain model-ineligible, and missing or dropped contracts are never zero-filled. "
                 "The official release schedule lists delayed 2026 dates on November 16, November 30, and December 28; "

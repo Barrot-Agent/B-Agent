@@ -5067,3 +5067,146 @@ ChatGPT/GitHub connector authentication and data flow were tested; connector per
 Next action: finish semantic review of the integration and all differing source-PR blobs; resolve least privilege, branch-protection visibility, Pages publication authorization and credential-owner revocation evidence. Then re-run exact-head full suite, dependency audit and fail-closed checks before any readiness decision. Keep forecast issuance disabled until independent raw-source anchoring, synchronized historical data, trusted evaluator attestation, independent shadow outcomes and measured out-of-sample lift pass.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+---
+
+## Run 77 — CFTC Legacy integration, exact-head CI repair, and XRP market update
+
+Captured at 2026-11-13T05:41:39.615Z. This update preserves the existing integration branch and PR #1662. It does not create a branch, create a PR, close a source PR, or change main.
+
+### Repository snapshot
+
+- Main SHA: fb272b40966834754ec686f9ed3ab94123f09306.
+- Integration branch: integration/xrp-v3-unified-main-20261112.
+- Integration head at audit start: 7a06099b185aa69d7b96d61cbba2df2310c9635f, 2,214 commits ahead of main and zero behind.
+- Main tree: 1,381 entries / 1,277 files. Integration tree: 2,336 entries / 2,222 files.
+- PR #1662: open, draft, mergeable; 1,090 changed files, 308,697 additions, 5,136 deletions, 2,214 commits.
+- Open PR inventory: 375 total; 361 drafts, 14 non-drafts; 367 target main and eight target other base branches.
+- PR #1662 has zero formal reviews, approvals, or review threads. One CodeRabbit bot comment states draft PRs are not automatically reviewed.
+- Main SHA is unchanged. No PR was merged or closed.
+
+### Exact-head CI before correction
+
+On parent head 7a06099b185aa69d7b96d61cbba2df2310c9635f:
+
+| Check | Result |
+|---|---|
+| Full repository suite | 3,550 passed, 3 failed, 8 subtests passed |
+| Coverage | 62% |
+| Full-suite duration | 95.51 seconds |
+| Core suite | 725 passed, zero failed, 8 subtests passed |
+| Dependency audit | Five manifest groups passed; zero known vulnerabilities reported |
+| Fail-closed gate | Passed; automatic merge remains disabled |
+
+Exact evidence:
+
+- Full CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/43371990278
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43371990217
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43371990201
+
+The three failures were integration metadata/order assertions, not parser-value failures:
+
+1. test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive: current capability map recorded 47 source definitions while the integration registry and feature-store contract contain 48.
+2. test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt: skipped-source expectation used a noncanonical order; the implementation sorts source IDs.
+3. test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run: weekly execution order placed TFF before Legacy, while the intended deterministic order is contract-status index, Legacy Futures-Only, then TFF.
+
+### Run77 corrective integration update
+
+The single Run77 commit on the existing integration branch:
+
+- Reorders CFTC weekly source execution as contract-status index, Legacy Futures-Only, then TFF.
+- Aligns the skipped-source test expectation with canonical sorted IDs.
+- Updates the current capability map from 47 to 48 source definitions: 43 hourly, three weekly CFTC, two excluded non-commercial XRPL node endpoints, and 46 scheduled sources.
+- Clarifies the feature-store contract's separate Legacy Futures-Only and TFF trader taxonomies.
+
+The CFTC Legacy Futures-Only parser is present on integration for CME XRP contract 176740, 50,000 XRP per contract. It preserves non-commercial, commercial, and nonreportable long/short/spreading fields separately from the TFF taxonomy. These date-only features remain research-only and model-ineligible. The corrected commit's exact-head CI is pending at handoff authoring; PR #1662 must not be marked ready or merged until its own full suite, dependency audit, and fail-closed gate pass.
+
+### XRP spot and market structure
+
+Fresh public API observations captured around 05:36 UTC:
+
+- OKX XRP-USDT: $1.0115 last, $1.0114 bid, $1.0115 ask. Provider timestamp 05:35:07.568 UTC. 24-hour open $1.0415, high $1.0569, low $0.9974, volume 40.56M XRP.
+- Kraken XRP/USD: $1.01214 last, $1.01193 bid, $1.01196 ask. Kraken supplied no provider event timestamp. 24-hour open $1.04003, high $1.05548, low $0.99672, volume 32.31M XRP.
+- Kraken USDT/USD midpoint: approximately $0.998955, with no provider event timestamp.
+- Mechanically normalized asynchronous OKX/Kraken midpoint gap: approximately -0.1534%.
+
+The OKX timestamp was about 104 seconds old at capture and therefore inside the five-minute provider-age gate. It still lacks a Barrot raw-source receipt and is not admitted as a model feature. Kraken's missing event timestamp and the asynchronous cross-venue comparison also remain research-only. The observations show a roughly 2.7%-2.9% 24-hour decline and a retest of the $1 area; the round number is not established support.
+
+No new synchronized L2 depth snapshot was admitted. The current OKX books and Kraken depth endpoints were inaccessible through the public research path. Older depth snapshots remain historical, not current.
+
+### Derivatives and ETF-flow disagreement
+
+A secondary seven-venue TradRadar snapshot updated November 12 at 23:55 UTC reported approximately $1.55B XRP perpetual open interest, +0.57% over 24 hours, +0.0098% weighted funding per eight hours, a 3.91 long/short account ratio (79.6% long), and at least $9.01M liquidations, including $8.47M long liquidations. It was about 5.7 hours old at this run's capture and is not a synchronized current feature.
+
+ETF trackers disagree in coverage and reporting status:
+
+- Maketo displayed $0 for November 12, -$18M over seven days, -$12M over 30 days, and +$1.79B cumulative.
+- Alpha Finance displayed $0 for November 12, -$2.8M over 30 sessions, and +$1.71B cumulative across five funds.
+- CryptoKeyhole's latest complete session was November 11: four of six funds reported a net -3,322 XRP. It had no November 12 issuer files from its four tracked funds.
+- Crypto ETF Today showed zero of five funds reporting for November 12.
+
+A displayed zero when no issuer files have been received is missing data, not confirmed zero creations/redemptions. These cohorts and time windows are preserved separately and not averaged.
+
+### CFTC Legacy Futures-Only positioning
+
+The official CFTC Futures-Only report for November 3, 2026, contract 176740, lists 7,216 open contracts, 29 traders, and a 50,000-XRP contract multiplier. That is 360.8M XRP contract-equivalent units, not XRP held, delivered, or purchased.
+
+- Non-commercial: 7,011 long, 5,546 short, 60 spreading; net +1,465.
+- Weekly non-commercial changes: long -281, short -466, spreading -481; net change +185.
+- Commercial: 61 long and 1,383 short.
+- Nonreportable: 84 long and 227 short.
+- Open interest declined 845 contracts.
+- Four or fewer traders held 81.0% of gross longs and 67.4% of gross shorts; eight or fewer held 95.1% and 87.7%.
+
+The increase in non-commercial net-long is consistent with short covering because gross shorts declined more than gross longs. It does not prove fresh capital or spot purchases. Legacy Futures-Only and Traders in Financial Futures are separate reports with different trader taxonomies.
+
+The CFTC release schedule lists November 16 as a delayed 2026 release. Reports usually publish at 3:30 p.m. Eastern, normally Friday, with federal holidays able to delay release one or two days.
+
+Sources:
+
+- https://www.cftc.gov/dea/futures/deacmelf.htm
+- https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm
+- https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+- https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+- https://api.kraken.com/0/public/Ticker?pair=USDTUSD
+- https://tradradar.io/markets/xrp
+- https://maketo.com/etf/xrp/flows
+- https://alphafinance.io/etf/xrp/
+- https://cryptokeyhole.com/etf-flows/xrp/
+- https://cryptoetf.today/en/xrp-etf-flows
+
+### Institutional and capital-flow update
+
+- SBI VC Trade's November 2 release reports JPYSC handling balances above ¥30B and JPYSC lending balances above ¥10B. SBI Shinsei Trust Bank is issuer, SBI VC Trade distributor, and Startale Group co-developer. This is verified yen-stablecoin activity, not XRP demand.
+- Coinbase's full OCC national trust charter was reported November 9. Ripple's separate final national trust-bank approval was reported October 27. These are institutional custody/regulatory developments, not proof of XRP purchases.
+- PNC/Coinbase's limited stablecoin payment pilot uses Circle USDC and automatic USD conversion; it is not XRP settlement.
+- Evernorth previously named Ripple, Kraken, Coinbase and BitGo as counterparties for institutional XRP treasury strategies. The announcement disclosed no amount deployed. Do not convert partner names or a stated treasury balance into verified purchases or deployed capital.
+
+### Identity and nine-platform status
+
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain distinct regional SME investment companies, not SBI Holdings.
+- SBIC East ChatGPT seminars are educational activity. SBI Holdings/SBI Securities ChatGPT Enterprise adoption and the SoftBank Group/OpenAI joint venture are separate relationships.
+- ASK Coin: no canonical XRPL issuer or deployment verified.
+- Actual capital remains non-standard; cash proceeds, in-kind XRP, debt, conditional ELOC capacity, warrants and secondary resales remain distinct.
+- Camilla/Kamilah Stevenson: no new first-party YouTube channel-ownership evidence. No videos were attributed as verified own-channel uploads.
+- ChatGPT/GitHub authentication is verified but overprivileged. Claude, Grok, Gemini and Codex remain unverified; Copilot has one-off review activity only; Hugging Face previously returned BUILD_ERROR; Kaggle remains untested; Databricks previously returned HTTP 403. No external-model data transfer occurred.
+
+### Prediction gate
+
+The integration contains 48 public source definitions: 43 hourly sources, three weekly CFTC sources, and two excluded non-commercial XRPL public-node endpoints; 46 sources are scheduled. Read-only collection, raw SHA-256 receipts, a local hash chain, point-in-time SQLite feature storage, event/scenario assembly, four baselines, chronological walk-forward tests, calibration/drift diagnostics, and an attested fail-closed forecast ledger are implemented on integration.
+
+Production gaps remain: independent WORM/timestamp anchoring, replayable synchronized historical spot/L2/derivatives/flow/collateral history, a production evaluator key, independent shadow outcomes, and measured out-of-sample superiority over all four baselines.
+
+Forecast status: NOT_ISSUED. This run's public observations have no Barrot raw-source receipts and are model-ineligible. No directional forecast, paper trade, or real-money action occurred.
+
+### Security and merge decision
+
+Main is marked protected with non-admin enforcement, but visible required-check contexts are empty and detailed branch-protection access returns HTTP 403. The integration branch is unprotected; fallback ruleset 10863829 is disabled. The GitHub connector has admin, maintain, push, pull and triage permissions, which is overprivileged.
+
+Main's GitHub Pages deployment succeeded on run 43343511839 after a prior main push; publication authorization remains absent. Main Barrot Sync run 43343513347 reported success but skipped synchronization after ModuleNotFoundError: httpx; no LunaRoute API call or commit/push occurred. .config/gh/hosts.yml is absent from current main and integration; a previous audit found it inherited in 17 other open PR branch tips. Contents were not read and provider-side revocation remains unverified.
+
+No merge. PR #1662 remains draft with zero formal approvals. Exact-head CI on the corrective commit must pass, semantic reconciliation remains incomplete, and security/publication blockers remain. Source PRs #1661, #1660, #1643, #1640, #1642, #1653, #1655, #1659 and #1615 remain open; no source PR was closed.
+
+### Next concrete action
+
+Verify exact-head CI on the Run77 corrective commit. If any failure remains, diagnose it on the existing integration branch. Then continue semantic review of the consolidated PR and differing source-PR blobs, resolve least privilege, branch-protection visibility, Pages publication authorization and credential-owner revocation evidence. Keep forecasts disabled until independently anchored data, a mature synchronized dataset, trusted evaluator attestation, shadow outcomes and measured out-of-sample lift are established.
