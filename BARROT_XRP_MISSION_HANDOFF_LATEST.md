@@ -4040,9 +4040,9 @@ Captured: 2026-11-13T02:11:08Z. This section supersedes earlier repository-head 
 - Current main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
 - Main's new commit is `Fix LunaRoute MCP: real host + provider wiring (mcp.lunaroute.com)`.
 - Integration branch: `integration/xrp-v3-unified-main-20261112`.
-- The integration branch was behind main by one commit. A non-force merge commit, `69a290dd989776cc64fe75bcb8c211b0b706e06a`'s successor, `69a290dd989776cc64fe75bcb8c211b0b706e06a`, now has parents `be9b743bf53c6ffcd5e77a59d74ccd71f14bc393` and current main `fb272b40966834754ec686f9ed3ab94123f09306`.
+- The integration branch was behind main by one commit. A non-force merge commit `69a290dd989776cc64fe75bcb8c211b0b706e06a` has parents `be9b743bf53c6ffcd5e77a59d74ccd71f14bc393` and current main `fb272b40966834754ec686f9ed3ab94123f09306`.
 - The merge tree preserves the integration tree and includes main's exact `opencode.json` blob. No force-push or history rewrite occurred.
-- PR #1662 now targets current main `fb272b4`, head `69a290d`, mergeable=true, draft=true, 1,076 changed files, +302,815/-5,123. Compare reports 2,177 commits ahead and zero behind. Main itself was not changed.
+- PR #1662 now targets current main `fb272b4`, current head `b8fd83a`, mergeable=true, draft=true, 1,078 changed files, +302,973/-5,128. Compare reports 2,178 commits ahead and zero behind. Main itself was not changed.
 - Complete open-PR inventory was re-read: 375 open PRs, 361 drafts and 14 non-drafts. No new PR or branch was created.
 
 ### Current-main LunaRoute configuration and security correction
@@ -4138,3 +4138,63 @@ No source PR was closed.
 Next actions: verify the new OpenCode safety regression test and exact-head full suite/dependency audit; inspect current workflow and credential-path exposure; resolve least privilege, provider credential-owner revocation, branch-protection/review visibility and Pages publication authorization; continue semantic reconciliation of overlapping and unique PRs. Do not enable LunaRoute MCP, transfer data to external models, deploy, rotate secrets, restart Spaces, submit Kaggle entries, write to Databricks, paper-trade or use real money without the specific required approval.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure was performed by this run.
+
+
+---
+
+## Run74A — exact-head and source-PR reconciliation correction
+
+Captured: 2026-11-13T02:14:46Z. This correction supersedes only the inaccurate current-head figures above; all prior research observations remain timestamped.
+
+### Current branch/PR identity
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- The merge commit is `69a290dd989776cc64fe75bcb8c211b0b706e06a`; its two parents are `be9b743bf53c6ffcd5e77a59d74ccd71f14bc393` and main `fb272b40966834754ec686f9ed3ab94123f09306`.
+- The security/configuration/test/handoff commit is `b8fd83a1c2a66e46031e732ffd9e30bd7fa2223a`.
+- PR #1662 head is `b8fd83a`, base is current main `fb272b4`, draft=true, mergeable=true, 1,078 changed files, +302,973/-5,128. Compare: 2,178 ahead, zero behind.
+- Current integration tree contains 2,323 entries; main contains 1,381. PR changed paths include 50 workflows, 557 XRP research artifacts and 375 test files.
+- This correction is a handoff-only descendant of `b8fd83a`; its own exact-head checks must be observed before merge readiness is assessed.
+
+### Exact-head CI status on b8fd83a
+
+- Full CI run [43350474855](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350474855): core test job passed; full repository test job was still running at capture.
+- Dependency audit [43350474762](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350474762): passed.
+- Pull-request fail-closed gate [43350474671](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350474671): passed with merge disabled.
+- Push fail-closed gate [43350467071](https://github.com/Barrot-Agent/B-Agent/actions/runs/43350467071): passed.
+- Do not substitute the predecessor `be9b743` result (3,540 full-suite tests) for the current head.
+
+### Source-PR path reconciliation
+
+The following counts are current path-set comparisons against PR #1662. Path overlap is not proof of blob equality; previously observed differing blobs remain unresolved unless explicitly stated.
+
+| PR | Changed paths | Paths also in #1662 | Source-only paths | Classification |
+|---|---:|---:|---:|---|
+| #1661 | 1,072 | 1,071 | 1 | Overlap candidate; preserve unique `BARROT_SYNC.md` |
+| #1660 | 972 | 972 | 0 | Overlap candidate; prior audit found 36 differing blobs |
+| #1643 | 670 | 670 | 0 | Overlap candidate; prior audit found 9 differing blobs |
+| #1640 | 280 | 280 | 0 | Overlap candidate; prior audit found 48 differing blobs |
+| #1642 | 7 | 7 | 0 | Prediction-gate overlap; prior audit found all 7 blobs differ |
+| #1653 | 7 | 1 | 6 | Unique repository-memory/MCP work; non-draft, still unreviewed here |
+| #1655 | 8 | 5 | 3 | Unique structural/source-catalog documentation |
+| #1659 | 6 | 2 | 4 | Unique shared-inference/local-llama work |
+| #1615 | 14 | 1 | 13 | Unique automation-containment and security work |
+| #1614 | 57 | 30 | 27 | Unique historical research archive plus superseded code |
+| #1611 | 8 | 7 | 1 | Unique forecast-ledger handoff |
+
+Additional #1614 reconciliation:
+
+- Source head `f086c8f` is based on stale main `8007440`.
+- Its `point_in_time_features.py` and `research_artifact_clock.py` blobs exactly match current main.
+- Its `forecast_ledger.py` differs; current main's implementation is newer/larger (27,919 bytes versus 25,190 bytes on #1614).
+- Its two source test files are older/shorter than current main's corresponding tests.
+- Of the 27 source-only paths, 26 are historical XRP research artifacts/handoffs absent from current main; the remaining path, `research_artifact_clock.py`, is already identical on main.
+- The source provenance handoff reports 7 of 9 examined artifacts with capture timestamps later than the commit that first introduced them. Preserve the originals, but quarantine affected records from model features, training, event ordering and forecast justification until their sources are re-fetched and contemporaneous replacement receipts are created.
+- Do not merge #1614 wholesale: its code is superseded, while its 26 unique research/handoff files remain unique historical evidence requiring provenance review. Do not close #1614.
+
+No source PR was closed. #1661's unique `BARROT_SYNC.md`, #1653/#1655/#1659/#1615 unique work and #1614's historical evidence remain preserved. Exact blob-level reconciliation and review of source-only content remain open.
+
+### Current merge decision
+
+No merge. PR #1662 remains draft with no formal approvals. The latest head's full suite was still running at capture. Branch-protection detail remains HTTP 403, the visible fallback ruleset remains disabled, connector permissions remain overprivileged, and GitHub Pages automatically deployed main `fb272b4` without publication authorization. The integration's OpenCode hardening remains on the PR branch only; main is unchanged.
+
+Next action: verify the full suite on the handoff-correction head, then continue source-only evidence review, exact blob reconciliation, credential-owner revocation verification, least-privilege remediation, branch-protection/review visibility and Pages authorization. No external transfer, deployment, secret rotation, paper trade, Kaggle submission, Databricks write or real-money action is authorized by this handoff.
