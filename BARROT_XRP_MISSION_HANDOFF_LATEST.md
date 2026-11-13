@@ -112,3 +112,27 @@ No external-model dispatch or data transfer occurred.
 7. Keep forecast issuance disabled until the full admission gate passes.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run100A — SEC Evernorth/SBI capital correction and CFTC collateral precision
+
+Primary source: [Evernorth Form 424B3, November 9, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+The filing gives a fully reconcilable capital stack:
+
+- Advance funding: **$214.05M cash plus 600,000 XRP**. The cash was used to purchase **84,365,876 XRP**; do not count the XRP purchase as a second capital raise.
+- Delayed funding: **$10.5M cash plus 200,000 XRP**.
+- Arrington XRP Capital Fund Series C: **211,319,096.061435 XRP** in kind.
+- Larsen Lam Children's Remainder Trust, a Ripple-affiliated contributor: **50,000,000 XRP** in kind.
+- Ripple's separate Contribution Agreement: **126,791,458 XRP** in kind.
+- Total disclosed in-kind XRP: **388,910,554 XRP**. Together with 84,365,876 cash-purchased XRP, this reconciles to approximately **473.276M XRP** held at the October 9 closing, consistent with the filing's rounded approximately 473M.
+- Private-placement cash totals approximately **$224.55M** ($214.05M advance plus $10.5M delayed). The filing's **$272.6M gross closing cash** also includes approximately **$48.0M** released from the SPAC trust account, before transaction expenses.
+- The $30M 4% PIK convertible note is debt, not equity. The filing's financial-statement note reports approximately **$29M net cash after a $1M advisor fee**.
+- The Cantor ELOC permits up to 5,218,935 new shares, with pricing at 97% of applicable VWAP and volume/ownership conditions. Evernorth controls whether to sell; **zero proceeds had been received as of the November 9 prospectus**. It also paid an upfront $521,893.50 commitment fee. Capacity is not capital received.
+- The 73,688,162 registered resale shares are securityholder resales; Evernorth receives no proceeds from those resales. Sponsor warrant exercise proceeds are separate and conditional.
+
+**SBI relationship correction:** The prospectus identifies four SBI-controlled subscriber entities (SBI Venture Fund 2023A, SBI Venture Fund 2023B, SBI PE Holdings and SBI Holdings USA) and reports approximately **39.9% of Evernorth voting power for the SBI group immediately after closing**. This is not evidence that SBI supplied 39.9% of the cash or XRP. Its exact contribution allocation is not disclosed in the cited filing. The prospectus separately identifies Ripple's 9.9% contributor-group cap and Arrington's 19.9% sponsor cap. It also designates Coinbase as Evernorth's principal XRP market for financial-reporting purposes, not as an exclusive execution or custody venue. [SEC ownership and voting-power details](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+**CFTC Letter 26-05 precision:** the 30.7 customer-account path includes the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to the letter's conditions. Futures and cleared-swaps customer accounts require registered-DCO acceptance. If a non-security digital asset is not accepted by a registered DCO or qualifying foreign clearing organization, the letter's default path imposes at least a 20% haircut, with a narrow exception only for a contract both based on and denominated in the same digital asset and only to offset a deficit in that same cleared contract. Non-BTC/ETH/payment-stablecoin acceptance requires revised FCM risk policies filed with MPD and notice before reliance. No XRP-specific FCM notice, actual XRP customer-margin posting or CME DCO acceptance was verified. [CFTC Letter 26-05](https://www.cftc.gov/csl/26-05/download).
+
+All of these findings remain research-only until captured in Barrot's canonical raw-receipt archive. Forecast status remains NOT_ISSUED.
