@@ -54,3 +54,17 @@ def test_primary_mission_is_xrp_priority_one_on_barrot_v3() -> None:
         "safety",
         "verification",
     ]
+
+def test_primary_mission_requires_specific_approval_for_paper_simulation() -> None:
+    mission = json.loads(
+        (ROOT / "barrot_agent" / "data" / "missions" / "primary_mission.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    guardrails = mission["guardrails"]
+    assert any(
+        "Paper-trade or simulation execution is prohibited unless the exact action, product, source SHA, scope and run are explicitly approved" in item
+        for item in guardrails
+    )
+    assert any("No guaranteed returns or real-money actions" in item for item in guardrails)
+    assert not any(item == "No guaranteed returns, real-money actions or paper trades." for item in guardrails)
