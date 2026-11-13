@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "Run104",
+  "captured_at_utc": "2026-11-13T21:07:00Z",
+  "canonical_map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+  "canonical_map_blob_sha": "aaa327be7b6b23437f129c6f08abcffe78ce6e41",
+  "change_status": "NO_NEW_AUTHENTICATION_OR_DATA_FLOW_VERIFIED",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "GitHub connector verified by repository/PR/CI reads and integration-branch writes",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": "FAIL"
+    },
+    {
+      "name": "Claude",
+      "authentication": "No Barrot connection tested",
+      "documented_capability": "Ripple XRPL Docs MCP server and XRPL wallet/payment skills are documented for Claude Code/Desktop; no live Barrot connection."
+    },
+    {
+      "name": "Grok",
+      "authentication": "UNVERIFIED"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "UNVERIFIED"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "Review artifacts present; no formal approval on PR #1662"
+    },
+    {
+      "name": "Codex",
+      "authentication": "UNVERIFIED"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "Prior/current main workflow BUILD_ERROR; no deployment"
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "UNTESTED; no submission"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "Previous HTTP 403; no write"
+    }
+  ],
+  "separate_internal_provider": {
+    "name": "LunaRoute",
+    "authentication": "UNVERIFIED",
+    "integration_remote_mcp": "DISABLED"
+  },
+  "orchestration": {
+    "independent_task_dispatch": "NOT_EXECUTED",
+    "structured_evidence_exchange": "NOT_EXECUTED",
+    "minority_objections": "RETAINED_IN_CANONICAL_MAP",
+    "red_team_review": "NOT_EXECUTED",
+    "external_data_transfer": "NONE"
+  },
+  "policy": [
+    "Least privilege",
+    "No live connection claim without tested authentication and data-flow evidence",
+    "Public/authorized sources only",
+    "No external model dispatch without explicit action authorization"
+  ]
+}

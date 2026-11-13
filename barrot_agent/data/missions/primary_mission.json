@@ -86,9 +86,40 @@
     "Original source bytes have immutable or independently verifiable receipts and SHA-256 hashes.",
     "A durable cross-run point-in-time feature store preserves provider event time, retrieval time, corrections and source independence.",
     "Historical XRP datasets support leakage-safe chronological walk-forward evaluation against all four baselines, with overlap-adjusted effective sample sizes for every horizon.",
-    "Probability calibration, drift monitoring and shadow evaluation pass documented thresholds on independent out-of-sample outcomes, including at least ten independently attested non-overlapping target windows in both out-of-sample and shadow cohorts.",
+    "Forecast issuance remains disabled until an XRP-specific candidate is trained on point-in-time data and independently attested; the candidate beats every required baseline (naive class prior, momentum sign, mean-reversion sign, volatility normal) on both mean Brier score and mean log loss in leakage-safe chronological walk-forward evaluation; training, out-of-sample, and shadow cohorts each contain at least 100 raw samples; out-of-sample and shadow cohorts each have effective non-overlapping sample size of at least 10 and span at least 10 forecast horizons; at least two independent source groups are represented; leakage checks pass, drift is STABLE, shadow evaluation is PASS, weighted calibration error is at most 0.05, and an independent Ed25519 evaluator attestation verifies. Every forecast must retain its data cutoff, horizon, target, assumptions, probabilities, alternatives, and eventual outcome.",
     "Every issued forecast has a complete immutable forecast record and later outcome.",
     "No directional forecast is issued before all readiness gates pass.",
     "Barrot V3 execution, orchestration, safety and verification tests remain green."
-  ]
+  ],
+  "forecast_admission_policy": {
+    "policy_id": "xrp-forecast-readiness-v4",
+    "minimum_training_samples": 100,
+    "minimum_out_of_sample_samples": 100,
+    "minimum_shadow_evaluation_samples": 100,
+    "minimum_oos_effective_sample_size": 10,
+    "minimum_shadow_effective_sample_size": 10,
+    "minimum_oos_span_horizons": 10,
+    "minimum_shadow_span_horizons": 10,
+    "minimum_independent_source_groups": 2,
+    "maximum_weighted_calibration_error": 0.05,
+    "required_baselines": [
+      "naive_class_prior",
+      "momentum_sign",
+      "mean_reversion_sign",
+      "volatility_normal"
+    ],
+    "candidate_must_beat_each_baseline_on": [
+      "mean_brier_score",
+      "mean_log_loss"
+    ],
+    "required_statuses": {
+      "leakage_checks": "PASS",
+      "drift": "STABLE",
+      "shadow_evaluation": "PASS",
+      "independent_evaluator_attestation": "VALID_ED25519"
+    },
+    "forecast_issuance_enabled": false,
+    "status": "NOT_SATISFIED",
+    "reason": "No trained XRP-specific candidate has passed the out-of-sample and independent shadow admission gate."
+  }
 }

@@ -3,6 +3,16 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from barrot_agent.evolution.forecast_ledger import (
+    READINESS_POLICY_ID,
+    _MAX_WEIGHTED_CALIBRATION_ERROR,
+    _MIN_HORIZON_MULTIPLE,
+    _MIN_OOS_SAMPLES,
+    _MIN_SHADOW_SAMPLES,
+    _MIN_SOURCE_GROUPS,
+    _REQUIRED_BASELINES,
+)
+
 from barrot_agent.evolution.xrp_public_ingestion import (
     DIGEST_ONLY_RAW_SOURCE_REASONS,
     ENDPOINTS,
@@ -68,3 +78,32 @@ def test_primary_mission_requires_specific_approval_for_paper_simulation() -> No
     )
     assert any("No guaranteed returns or real-money actions" in item for item in guardrails)
     assert not any(item == "No guaranteed returns, real-money actions or paper trades." for item in guardrails)
+
+
+def test_forecast_admission_policy_matches_fail_closed_ledger():
+    mission = _load_primary_mission()
+    policy = mission["forecast_admission_policy"]
+
+    assert policy["policy_id"] == READINESS_POLICY_ID
+    assert policy["minimum_training_samples"] == _MIN_OOS_SAMPLES
+    assert policy["minimum_out_of_sample_samples"] == _MIN_OOS_SAMPLES
+    assert policy["minimum_shadow_evaluation_samples"] == _MIN_SHADOW_SAMPLES
+    assert policy["minimum_oos_effective_sample_size"] == _MIN_HORIZON_MULTIPLE
+    assert policy["minimum_shadow_effective_sample_size"] == _MIN_HORIZON_MULTIPLE
+    assert policy["minimum_oos_span_horizons"] == _MIN_HORIZON_MULTIPLE
+    assert policy["minimum_shadow_span_horizons"] == _MIN_HORIZON_MULTIPLE
+    assert policy["minimum_independent_source_groups"] == _MIN_SOURCE_GROUPS
+    assert policy["maximum_weighted_calibration_error"] == _MAX_WEIGHTED_CALIBRATION_ERROR
+    assert policy["required_baselines"] == list(_REQUIRED_BASELINES)
+    assert policy["candidate_must_beat_each_baseline_on"] == [
+        "mean_brier_score",
+        "mean_log_loss",
+    ]
+    assert policy["required_statuses"] == {
+        "leakage_checks": "PASS",
+        "drift": "STABLE",
+        "shadow_evaluation": "PASS",
+        "independent_evaluator_attestation": "VALID_ED25519",
+    }
+    assert policy["forecast_issuance_enabled"] is False
+    assert policy["status"] == "NOT_SATISFIED"
