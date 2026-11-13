@@ -1825,6 +1825,16 @@
       ],
       "model_eligible": false,
       "quality_status": "research_only"
+    },
+    {
+      "id": "RUN77-EVERNORTH-CAPITAL",
+      "class": "capital_flow",
+      "claim": "The Evernorth SEC filing separates gross cash proceeds, in-kind XRP, historical XRP purchases funded by previously raised cash, PIK debt, registered secondary resales and conditional ELOC shares.",
+      "evidence": [
+        "sec_evernorth_424b3"
+      ],
+      "model_eligible": false,
+      "quality_status": "primary_regulatory_filing; no raw byte receipt in this run"
     }
   ],
   "relationship_graph": [
@@ -1935,7 +1945,7 @@
       "relation": "capital reconciliation",
       "status": "SEC filing separates cash, in-kind, debt, resales and conditional facilities",
       "evidence": [
-        "SEC_EVERNORTH_424B3"
+        "sec_evernorth_424b3"
       ]
     }
   ],
