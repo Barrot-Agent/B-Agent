@@ -174,6 +174,14 @@
       "evernorth_nine_month_net_loss_usd": 32870000,
       "evernorth_revenue_reported": false,
       "accounting_note": "The $214.05M XRP purchase is a use of gross cash proceeds, not another capital raise; debt, warrants, ELOC capacity and secondary resales are separate."
+    },
+    "sbi_xrp_leverage": {
+      "prime_program_cashback_eligibility_removed_for_xrp_leverage_effective": "2026-07-01",
+      "all_xrp_leverage_discontinued": false,
+      "later_xrp_jpy_leverage_campaign": "2026-09-16 to 2026-10-02",
+      "corporate_xrp_leverage_multiple_as_of_2026_09_30": 5.55,
+      "source_note_id": "sbi_prime_xrp_leverage_20260630",
+      "model_eligible": false
     }
   },
   "source_note_ids": [
@@ -300,6 +308,10 @@
     {
       "id": "evernorth_sec_q3_2026",
       "sha256": "30c0e8bd2524adb231a798b3fea17919bd601c7bd2c1970444d67a5e98e28e04"
+    },
+    {
+      "id": "sbi_prime_xrp_leverage_20260630",
+      "sha256": "ea8e1f38de1fb260356d602452244a322ccc1f69cd11c7556b98c7a535771be7"
     }
   ],
   "warnings": [

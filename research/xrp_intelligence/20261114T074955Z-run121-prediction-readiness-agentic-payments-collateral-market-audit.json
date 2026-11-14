@@ -30,7 +30,7 @@
       "state": "OPEN",
       "draft": true,
       "mergeable_conflict_indicator": true,
-      "changed_files": 1176,
+      "changed_files": 1179,
       "additions": 347579,
       "deletions": 5354,
       "formal_reviews": 0,
@@ -69,7 +69,9 @@
       "main_barrot_sync": "Missing httpx causes sync failure masked by shell fallback; no successful data flow verified. The banner echo was not evidence of secret-prefix leakage.",
       "main_coinbase_paper_trader": "Persisted simulated position has position_product=null; manual workflow is not safe to dispatch on main. Integration adds explicit YES, exact SHA and identity preflight with artifact-only output.",
       "no_deployments_or_secret_actions": true
-    }
+    },
+    "integration_code_head_verified_sha": "e3cb41e90afa466d2285a0fa68c82443bd757f67",
+    "integration_head_at_record_parent": "27fe689f4d5ba7d65445ee75b35e8536d024302f"
   },
   "ci": {
     "exact_code_head": "e3cb41e90afa466d2285a0fa68c82443bd757f67",
@@ -326,7 +328,7 @@
     },
     {
       "id": "mastercard_agent_pay_20260610",
-      "url": "https://www.mastercard.com/news/press/2026/june/mastercard-agent-pay-for-machines/",
+      "url": "https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Agent-Pay-for-Machines-to-Unlock-Super-Fast-Always-On-Payments/default.aspx",
       "publisher": "Mastercard",
       "date": "2026-06-10",
       "lineage": "mastercard_official",
@@ -342,7 +344,7 @@
     },
     {
       "id": "linux_foundation_x402_20260714",
-      "url": "https://www.linuxfoundation.org/press/page/1",
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications",
       "publisher": "Linux Foundation",
       "date": "Operational launch 2026-07-14; membership update 2026-10-01",
       "lineage": "linux_foundation_official",
@@ -691,6 +693,22 @@
       "verbatim": false,
       "model_eligible": false,
       "raw_hash_warning": "Hash covers this authored normalized note, not publisher raw bytes."
+    },
+    {
+      "id": "sbi_prime_xrp_leverage_20260630",
+      "url": "https://www.sbivc.co.jp/newsview/nmo4pco4t6f",
+      "publisher": "SBI VC Trade",
+      "date": "2026-06-30 notice; effective 2026-07-01",
+      "lineage": "sbi_vc_official",
+      "hash": "ea8e1f38de1fb260356d602452244a322ccc1f69cd11c7556b98c7a535771be7",
+      "note": "SBI VC Trade Prime program notice: from July 1, BTC, ETH and XRP leverage trades were removed from the Prime program cashback benefit calculation. The notice does not say all XRP leverage trading was discontinued. SBI VC Trade later advertised XRP/JPY leverage campaigns from Sep 16 through Oct 2, 2026, and its September corporate leverage table showed XRP up to 5.55x.",
+      "capture_type": "authored_normalized_summary",
+      "normalized_note_sha256": "ea8e1f38de1fb260356d602452244a322ccc1f69cd11c7556b98c7a535771be7",
+      "raw_source_bytes_captured": false,
+      "raw_source_sha256": null,
+      "verbatim": false,
+      "model_eligible": false,
+      "raw_hash_warning": "Hash covers this authored normalized note, not publisher raw bytes."
     }
   ],
   "source_capture_limitation": "The retrieval interface exposed rendered text and search snippets, not raw publisher response bytes. SHA-256 values in this artifact cover authored normalized research notes, not raw source bytes. Do not treat these hashes as raw-source receipts.",
@@ -709,5 +727,17 @@
     "history rewrite",
     "destructive worktree operation",
     "source PR closure"
-  ]
+  ],
+  "retrieval_window_utc": {
+    "start": "2026-11-14T07:42:39Z",
+    "end": "2026-11-14T07:49:55Z"
+  },
+  "source_note_hash_scope": "SHA-256 covers authored normalized note text in this artifact, not raw publisher bytes.",
+  "institutional_sbi_leverage_correction": {
+    "prime_program_cashback_eligibility_removed_for_xrp_leverage_effective": "2026-07-01",
+    "all_xrp_leverage_discontinued": false,
+    "later_xrp_jpy_leverage_campaign": "2026-09-16 to 2026-10-02",
+    "corporate_xrp_leverage_max_multiple_as_of_2026_09_30": 5.55,
+    "interpretation": "The Prime-program benefit change is not a full product shutdown."
+  }
 }

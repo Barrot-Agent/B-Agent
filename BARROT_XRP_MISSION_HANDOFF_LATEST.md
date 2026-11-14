@@ -1,6 +1,5 @@
 # BARROT XRP MISSION HANDOFF — Run121
 Updated: 2026-11-14T07:49:55Z | Main SHA: fb272b40966834754ec686f9ed3ab94123f09306 | Verified code head: e3cb41e90afa466d2285a0fa68c82443bd757f67
-Updated 2026-11-14T03:41:31Z; market capture cutoff 2026-11-14T03:36:16Z.
 
 **Priority 1: XRP intelligence and measured prediction-engine mastery. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.**
 
@@ -1525,17 +1524,17 @@ XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 rema
 
 ### Repository and exact-head verification
 
-- Main: \`fb272b40966834754ec686f9ed3ab94123f09306\`, unchanged.
-- Integration code head verified: \`e3cb41e90afa466d2285a0fa68c82443bd757f67\`.
-- Integration branch: \`integration/xrp-v3-unified-main-20261112\`; 2,371 commits ahead, zero behind.
+- Main: `fb272b40966834754ec686f9ed3ab94123f09306`, unchanged.
+- Integration code head verified: `e3cb41e90afa466d2285a0fa68c82443bd757f67`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`; 2,371 commits ahead, zero behind.
 - Main tree: 1,381 entries / 87 workflows. Integration tree: 2,417 entries / 88 workflows.
 - Open PR inventory: 375 (361 drafts, 14 non-drafts). #1662 is the only open PR based on current main.
-- PR #1662: draft/open, 1,176 changed files, 347,579 additions, 5,354 deletions; 50 workflow files and seven public web files. Zero formal reviews, approvals and inline review comments. GitHub's mergeable flag is only a conflict indicator, not approval.
-- The 666-file research directory contrasts with only nine entries under \`data/xrp_intelligence\`. No tracked SQLite feature-store database was found. The latest persisted market snapshot is October 28. Both existing source-preimage records still have null raw-content hashes and null retrieval timestamps.
+- PR #1662: draft/open, 1,179 changed files after Run121 audit/map/snapshot additions; 50 workflow files and seven public web files. Zero formal reviews, approvals and inline review comments. GitHub's mergeable flag is only a conflict indicator, not approval.
+- The 666-file research directory contrasts with only nine entries under `data/xrp_intelligence`. No tracked SQLite feature-store database was found. The latest persisted market snapshot is October 28. Both existing source-preimage records still have null raw-content hashes and null retrieval timestamps.
 
 ### Engineering change actually implemented
 
-Commit \`e3cb41e\` adds and exports \`evaluate_candidate_readiness_uncertainty\` in \`barrot_agent/evolution/paired_block_bootstrap.py\`, with four tests.
+Commit `e3cb41e` adds and exports `evaluate_candidate_readiness_uncertainty` in `barrot_agent/evolution/paired_block_bootstrap.py`, with four tests.
 
 The evaluator compares a candidate against each of the four required baselines (naive class prior, momentum, mean reversion and volatility) in both the out-of-sample and independent shadow windows. It applies Bonferroni correction across eight comparisons, requiring 99.375% individual confidence for 95% familywise confidence. It enforces 10,000 bootstrap resamples, 100 paired origins, five independent source clusters, at least five origins per cluster and declared cadence. Candidate-minus-baseline Brier and log-loss means and both temporal/source-clustered interval upper bounds must be negative.
 
@@ -1574,7 +1573,7 @@ Research cutoff: 2026-11-14 07:42:39 UTC.
 - SBI/Startale/BlackRock signed an MOU to explore tokenized money-market fund and JPYSC interoperability. SMBC took a 5% stake in SBI Startale Marketing. Both are JPYSC/RWA initiatives, not XRP-specific.
 - SBI completed its 100% Bitbank acquisition October 1. September JVCEA statistics predate the closing and cannot establish a post-acquisition effect.
 - SBI Ripple Asia's February 2026 DSRV Japan-Korea payment research and AWAJ XRPL startup-support initiative are feasibility/technical-support activities, not verified production volumes. Its September 2025 Tobu Top Tours XRPL token/NFT payment platform targeted first-half 2026; no production launch confirmation was found by November 14.
-- SBI VC Trade ended XRP leverage trading in its Prime program on July 1, 2026; this is a counter-signal to broadening leverage access, while spot/remittance support remains separate.
+- SBI VC Trade removed BTC/ETH/XRP leverage trades from the Prime program's cashback benefit calculation effective July 1, 2026; this did not end all XRP leverage trading. The exchange later advertised XRP/JPY leverage campaigns for September 16–October 2 and showed 5.55x corporate XRP leverage on its September 2026 schedule. Treat the Prime-benefit removal as a narrower counter-signal, not a product shutdown.
 
 ### Agentic payments and source interpretation
 
@@ -1592,7 +1591,7 @@ Research cutoff: 2026-11-14 07:42:39 UTC.
 
 ### Nine-platform coordination
 
-Run121 map: \`research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run121.json\`.
+Run121 map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run121.json`.
 
 - ChatGPT GitHub access is verified and was used for repository reads and code/test writes on the existing integration branch; permissions remain overprivileged (admin, maintain, push, pull, triage).
 - Claude, Grok, Gemini and Codex: authentication/data flow unverified.
