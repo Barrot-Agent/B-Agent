@@ -39,12 +39,12 @@
       "number": 1662,
       "state": "open",
       "draft": true,
-      "mergeable_before_correction": true,
+      "mergeable": true,
       "base_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
-      "head_before_correction": "09f256483e2723cf0b79fb3903e5fb51e52fb103",
-      "changed_files_before_correction": 1201,
-      "additions_before_correction": 360091,
-      "deletions_before_correction": 5533,
+      "head_sha": "09db62da14929d673730c0e45b5132239dcc626c",
+      "changed_files": 1204,
+      "additions": 360746,
+      "deletions": 5547,
       "formal_reviews": 0,
       "review_threads": 0
     },
@@ -61,7 +61,149 @@
       "blob_sha": "710d5cbe1991b68939a6a9ef50a4d3483f78b1b8",
       "fetch_file_returned_empty_content": true,
       "interpretation": "Large canonical blob; empty content response is not evidence of an empty file. No modification made."
-    }
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "base_main": 365,
+      "other_base": 8
+    },
+    "source_pr_reconciliation": [
+      {
+        "number": 1661,
+        "changed_files": 1072,
+        "overlap_with_1662": 1070,
+        "source_only": 2,
+        "source_only_paths": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "supersession_candidate_not_exact_duplicate",
+        "draft": true
+      },
+      {
+        "number": 1660,
+        "changed_files": 972,
+        "overlap_with_1662": 970,
+        "source_only": 2,
+        "source_only_paths": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "supersession_candidate_not_exact_duplicate",
+        "draft": true
+      },
+      {
+        "number": 1653,
+        "changed_files": 7,
+        "overlap_with_1662": 1,
+        "source_only": 6,
+        "unresolved_review_threads": 8,
+        "classification": "unique_blocked",
+        "blockers": [
+          "upstream codebase-memory indexer can overwrite existing graph.db.zst despite persistence=false",
+          "--format may take precedence over stdin and discard supplied JSON args",
+          "repository branch/HEAD/dirty snapshot can change during long indexing",
+          "recursive submodule fetch can bypass validated remote allowlist",
+          "degraded index status can be reported as synchronized",
+          "Git fetch timeout can escape structured failure handling",
+          "two additional review findings"
+        ]
+      },
+      {
+        "number": 1643,
+        "changed_files": 670,
+        "overlap_with_1662": 670,
+        "source_only": 0,
+        "review_threads_total": 19,
+        "review_threads_resolved": 19,
+        "review_threads_unresolved": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1642,
+        "changed_files": 7,
+        "overlap_with_1662": 7,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1640,
+        "changed_files": 280,
+        "overlap_with_1662": 278,
+        "source_only": 2,
+        "source_only_paths": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "supersession_candidate_not_exact_duplicate",
+        "draft": true
+      },
+      {
+        "number": 1320,
+        "changed_files": 5,
+        "overlap_with_1662": 5,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1318,
+        "changed_files": 2,
+        "overlap_with_1662": 2,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1317,
+        "changed_files": 6,
+        "overlap_with_1662": 6,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1614,
+        "changed_files": 57,
+        "overlap_with_1662": 30,
+        "source_only": 27,
+        "classification": "unique_unreviewed_feature_validator_and_research"
+      },
+      {
+        "number": 1615,
+        "changed_files": 14,
+        "overlap_with_1662": 1,
+        "source_only": 13,
+        "classification": "unique_unreviewed_automation_containment"
+      },
+      {
+        "number": 1269,
+        "changed_files": 9,
+        "overlap_with_1662": 1,
+        "source_only": 8,
+        "classification": "unique_unreviewed_mesh_topology"
+      },
+      {
+        "number": 1655,
+        "changed_files": 8,
+        "overlap_with_1662": 5,
+        "source_only": 3,
+        "classification": "unique_unreviewed_source_catalog"
+      },
+      {
+        "number": 1659,
+        "changed_files": 6,
+        "overlap_with_1662": 2,
+        "source_only": 4,
+        "classification": "unique_unreviewed_local_inference"
+      },
+      {
+        "number": 1641,
+        "changed_files": 3,
+        "overlap_with_1662": 0,
+        "source_only": 3,
+        "classification": "unique_unreviewed_autonomous_experimentation"
+      }
+    ]
   },
   "ci": {
     "failed_exact_head": "09f256483e2723cf0b79fb3903e5fb51e52fb103",
@@ -104,6 +246,51 @@
       "tests_weakened": false,
       "required_phrases_verified": true,
       "new_exact_head_ci_pending": true
+    },
+    "final_verified_head": {
+      "sha": "09db62da14929d673730c0e45b5132239dcc626c",
+      "full_suite": {
+        "run_id": 43625301133,
+        "conclusion": "success",
+        "passed": 3681,
+        "failed": 0,
+        "subtests_passed": 8,
+        "duration_seconds": 110.28,
+        "inclusive_coverage_percent": 62.84,
+        "legacy_core_coverage_percent": 76
+      },
+      "wheel": {
+        "built": "b_agent-0.1.0-py3-none-any.whl",
+        "installed": true,
+        "packaged_primary_mission_verified": true,
+        "installed_barrot_v3_xrp_mission_and_canonical_assets_verified": true
+      },
+      "dependency_audit_push": {
+        "run_id": 43625301163,
+        "conclusion": "success",
+        "manifest_groups": 6,
+        "known_vulnerabilities": 0
+      },
+      "dependency_audit_pr": {
+        "run_id": 43625307163,
+        "conclusion": "success",
+        "manifest_groups": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_push": {
+        "run_id": 43625301137,
+        "conclusion": "success"
+      },
+      "fail_closed_pr": {
+        "run_id": 43625307198,
+        "conclusion": "success"
+      },
+      "core_tests": "success",
+      "pr_event_core_ci": "skipped by integration-branch workflow condition; push-event full suite is authoritative",
+      "non_blocking_warnings": [
+        "GitHub Actions cache budget reached; cache became read-only, job still passed.",
+        "Setuptools emitted a package-discovery warning; wheel built and installed successfully."
+      ]
     }
   },
   "security": {
@@ -135,18 +322,23 @@
       "pages_liquid_failure": "Main Pages workflow previously failed parsing GLOBAL_STATE_MANIFEST.md line 6456; do not merge changes that trigger publication without authorization and verified build.",
       "sync_failure_masking": "Main Barrot Sync previously reported success while b_agent.py --sync failed due missing rich and the workflow masked errors. Integration remains quarantined.",
       "token_argv": {
-        "status": "confirmed_in_validation_paths; prior git-helper attribution corrected",
-        "finding": "The single-quoted git -c credential.helper contains literal ${GH_TOKEN}; the parent shell does not interpolate the secret into git argv. The actual exposure was in the preceding curl -H Authorization argument and the Python fallback positional argument.",
-        "correction": "curl validation passes its config via stdin; Python fallback reads token and repository slug from stdin; GH_TOKEN is unexported during both validation child processes and re-exported only immediately before the Git credential-helper push, where it is required. Regression tests capture child argv, stdin, environment and output for both validation paths.",
-        "files": [
-          "scripts/push_with_token.sh",
-          "tests/test_push_with_token_security.py"
-        ],
-        "secrets_rotated": false,
+        "status": "main_only_risk; integration_fix_verified",
+        "finding": "The single-quoted git credential-helper contains literal ${GH_TOKEN}; it does not interpolate the secret into git argv. Actual validation argv exposure was in main's curl Authorization header argument and Python fallback positional argument.",
+        "correction": "Integration now sends curl config and Python fallback inputs over stdin, unexports GH_TOKEN during validation child processes, and re-exports it immediately before the Git credential-helper push.",
+        "regression_tests": {
+          "file": "tests/test_push_with_token_security.py",
+          "count": 3,
+          "exact_head_full_suite_passed": true,
+          "assertions": [
+            "token absent from curl argv",
+            "token absent from Python argv",
+            "token absent from validation child environments",
+            "token absent from stdout/stderr",
+            "token supplied through stdin"
+          ]
+        },
         "main_unchanged": true,
-        "validation_child_environment_contains_token": false,
-        "git_push_helper_environment_requires_token": true,
-        "test_count": 3
+        "secret_rotated": false
       }
     }
   },
@@ -206,7 +398,48 @@
       "No aligned derivatives snapshot",
       "Git commit receipt is not independent WORM storage or trusted timestamp anchoring"
     ],
-    "note": "OKX top-level imbalance is one price level only, not full order-book depth or durable liquidity."
+    "note": "OKX top-level imbalance is one price level only, not full order-book depth or durable liquidity.",
+    "secondary_followup": {
+      "source_time_note": "Follow-up retrieval occurred after the 18:03Z raw receipt; these sources are not synchronized and remain research-only.",
+      "kraken_latest": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "last_usd": 0.95748,
+        "bid_usd": 0.95771,
+        "ask_usd": 0.9579,
+        "provider_event_timestamp": null
+      },
+      "bybit": {
+        "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "last_usdt": 0.958,
+        "bid_usdt": 0.958,
+        "ask_usdt": 0.9581,
+        "provider_event_time_utc": "2026-11-14T16:56:37.687Z",
+        "stale_at_followup": true
+      },
+      "coinglass": {
+        "url": "https://www.coinglass.com/es/currencies/XRP/historical-data/2026",
+        "price_usd": 0.9755,
+        "change_24h_percent": -4.3,
+        "spot_volume_24h_usd": 636770000,
+        "futures_volume_24h_usd": 2870000000,
+        "open_interest_usd": 2140000000,
+        "liquidations_24h_usd": 17070000,
+        "long_liquidations_share_percent": 97,
+        "funding_display": "-0.0001%; page also labels -0.1% annualized",
+        "daily_close_2026_11_14_usd": 0.9679,
+        "low_2026_11_14_usd": 0.9663,
+        "ytd_change_percent": -47.4,
+        "thirty_day_change_percent": -28.76,
+        "admission": "research-only; page does not expose a synchronized exchange event timestamp"
+      },
+      "coinmarketcap_disagreement": {
+        "english_page_price_usd": 0.9766,
+        "japanese_page_current_converter_usd": 0.9515,
+        "japanese_daily_history_2026_11_14_usd": 0.9486,
+        "admission": "research-only; incompatible page snapshots/vintages"
+      },
+      "conclusion": "The direct OKX 18:03:35Z observation is stale at the later follow-up; Kraken lacks event time; Bybit's 16:56:37Z ticker is stale; aggregate trackers and CoinMarketCap pages disagree. No synchronized spot/L2/derivatives set is admitted and no forecast is issued."
+    }
   },
   "etf_flow_reconciliation": {
     "xrp_insights": {
@@ -359,6 +592,10 @@
       "tests/test_push_with_token_security.py",
       "research/xrp_intelligence/20261114T180335Z-run134-xrp-spot-raw-receipt-ci-and-integration-audit.json",
       "BARROT_XRP_MISSION_HANDOFF_LATEST.md"
-    ]
+    ],
+    "final_verified_head": "09db62da14929d673730c0e45b5132239dcc626c",
+    "final_verified_at_utc": "2026-11-14T18:16:37Z",
+    "final_handoff_update_parent": "09db62da14929d673730c0e45b5132239dcc626c",
+    "final_handoff_update_ci": "This handoff/audit-only child commit will trigger a fresh exact-head CI cycle; no result is claimed for that child until it completes."
   }
 }

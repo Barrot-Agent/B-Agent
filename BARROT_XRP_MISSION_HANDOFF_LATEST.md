@@ -3547,3 +3547,88 @@ The new exact-head full suite, wheel verification, six-manifest dependency audit
 
 ### Run134 token-validation environment isolation follow-up
 The token-hardening regression tests now also verify that `GH_TOKEN` is absent from both validation child-process environments, not only their argv. The script uses `export -n GH_TOKEN` during curl/Python validation, passes the token only through stdin, and re-exports it immediately before the Git credential-helper push, where the helper needs it. The test captures argv, stdin, environment and output for both validation paths. This does not rotate or expose any real credential. Main remains unchanged.
+
+
+---
+
+## Run134 final exact-head verification and PR backlog reconciliation
+
+### Exact-head results on `09db62da14929d673730c0e45b5132239dcc626c`
+<badge>VERIFIED</badge>
+
+- Full repository suite: **3,681 passed, 0 failed, 8 subtests passed**, 110.28 seconds.
+- Inclusive package coverage: **62.84%**, above the 62% expanded-scope floor.
+- Legacy core-package coverage: **76%**, above the separate 70% floor.
+- Wheel: `b_agent-0.1.0-py3-none-any.whl` built successfully.
+- Packaged primary mission resource verified.
+- Installed wheel successfully loaded Barrot V3, the XRP mission and canonical data assets.
+- Six-manifest push dependency audit: passed; zero known vulnerabilities.
+- Six-manifest PR dependency audit: passed; zero known vulnerabilities.
+- Push and PR fail-closed gates: passed.
+- Core test job: passed.
+- PR-event core CI: skipped by the branch condition; push-event full-suite run is authoritative.
+
+Evidence:
+- [Full suite 43625301133](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625301133)
+- [Push dependency audit 43625301163](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625301163)
+- [PR dependency audit 43625307163](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625307163)
+- [Push fail-closed gate 43625301137](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625301137)
+- [PR fail-closed gate 43625307198](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625307198)
+
+Non-blocking warnings: GitHub Actions cache budget was reached and cache became read-only; the job still passed. Setuptools emitted a package-discovery warning; wheel build, install and packaged-resource checks passed.
+
+This result belongs to `09db62`. The audit/handoff-only child commit that records this result will trigger another exact-head CI cycle; its result must be checked separately.
+
+### Corrected token argv assessment
+The earlier claim that the single-quoted `git -c credential.helper` interpolated GH_TOKEN into git argv was incorrect. The single-quoted value contains literal `${GH_TOKEN}` and is expanded by the helper shell from its environment. The actual exposure was in main's earlier `curl -H "Authorization: Bearer ..."` argument and Python fallback positional argument.
+
+Integration-only fix:
+- curl config is passed over stdin;
+- Python fallback reads token and repository slug from stdin;
+- `GH_TOKEN` is unexported during validation child processes;
+- it is re-exported only immediately before the credential-helper push;
+- three regression tests capture argv, stdin, environment and output for both validation paths.
+
+The 3 regression tests passed within the 3,681-test full suite. Main remains unchanged; no real token was used and no secret was rotated. The issue remains a main-only risk until the integration is merged.
+
+### Open PR backlog — exact path-overlap audit
+Open PR inventory: 373 total (361 drafts, 12 non-drafts; 365 target main, eight target other bases). Only the listed candidates were individually compared; the rest remain unique/unreviewed or blocked.
+
+| PR | Source paths | Overlap with #1662 | Source-only | Classification |
+|---|---:|---:|---:|---|
+| #1661 | 1,072 | 1,070 | 2 | Supersession candidate; preserve two source-only workflows |
+| #1660 | 972 | 970 | 2 | Supersession candidate; preserve two source-only workflows |
+| #1643 | 670 | 670 | 0 | Full path overlap; 19 historical review threads all resolved; semantic patch comparison still required |
+| #1642 | 7 | 7 | 0 | Full path overlap; semantic comparison required |
+| #1640 | 280 | 278 | 2 | Supersession candidate; preserve two source-only workflows |
+| #1320 | 5 | 5 | 0 | Full path overlap; semantic comparison required |
+| #1318 | 2 | 2 | 0 | Full path overlap; semantic comparison required |
+| #1317 | 6 | 6 | 0 | Full path overlap; semantic comparison required |
+| #1653 | 7 | 1 | 6 | Unique/blocked; eight unresolved review threads |
+| #1614 | 57 | 30 | 27 | Unique/unreviewed feature-validator and XRP research work |
+| #1615 | 14 | 1 | 13 | Unique/unreviewed automation-containment work |
+| #1269 | 9 | 1 | 8 | Unique/unreviewed mesh-topology work |
+| #1655 | 8 | 5 | 3 | Unique/unreviewed source-catalog work |
+| #1659 | 6 | 2 | 4 | Unique/unreviewed local inference/Termux work |
+| #1641 | 3 | 0 | 3 | Unique/unreviewed autonomous experimentation |
+
+PR #1653's unresolved review findings include potential overwrite of an existing codebase-memory graph despite `persistence=false`, unsupported `--format` argument transport, repository state changes during indexing, recursive submodule fetch bypass, false synchronized status on degraded graph state, and unnormalized fetch timeouts. It remains blocked; do not absorb or close it as a duplicate.
+
+PR #1643's 19 review threads are **resolved**, not unresolved. Preserve the historical research/review record; full path overlap does not prove identical patch content. PR #1661/#1660/#1640 each retain two source-only workflow paths and are not exact duplicates. No source PR was closed.
+
+### Main/integration and authorization
+- Main remains `ef41ea7d8f1d236774c3e593bc6205bf42555351`.
+- Integration parent tested above: `09db62d`; the final handoff update is a documentation/audit-only child.
+- PR #1662 remains open/draft, mergeable, with zero formal approvals, reviews or review threads.
+- No PR has been merged into main. Commit `96d578d` merged current main into the integration branch only; it is not a PR merge into main.
+- Main branch-protection inspection returns HTTP 403; integration is unprotected; fallback ruleset 10863829 is disabled; CODEOWNERS assigns all paths to `@Barrot-Agent`; GitHub connector permissions include admin/maintain/push/pull/triage.
+- Pages Liquid failure at `GLOBAL_STATE_MANIFEST.md:6456`, main Barrot Sync missing-`rich` error masking, and public Pages authorization remain blockers.
+- No source PR closure, deployment, external model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, secret rotation, force-push or destructive worktree operation occurred.
+
+### XRP follow-up market quality
+The 18:03:35Z OKX raw receipt remains the only recent timestamped direct spot observation. A later Kraken response showed $0.95748 but no provider event timestamp; Bybit's $0.9580 observation was timestamped 16:56:37Z and stale at follow-up. CoinGlass displayed $0.9755 and $2.14B OI without an aligned event timestamp; CoinMarketCap pages displayed incompatible values. These observations remain research-only. No synchronized multi-venue L2 or derivatives feature was admitted.
+
+### Forecast status and next action
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. There is no trained XRP-specific candidate or demonstrated superiority over all four baselines, and no independent shadow cohort or WORM/time anchor.
+
+**Next action:** verify the fresh exact-head CI cycle triggered by this handoff update; continue semantic review of #1662's 1,204 changed files; resolve least privilege, branch protection and independent approvals; preserve unique source PR work; and keep forecast issuance disabled until candidate performance is measured out of sample.
