@@ -1,0 +1,505 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-collateral-exchange-supply-structure-20261103",
+  "created_at_utc": "2026-11-03T12:11:15Z",
+  "data_cutoff_utc": "2026-11-03T12:11:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation",
+  "status": {
+    "research": "EXECUTED",
+    "repository_write": "EXECUTED",
+    "source_retrieval": "VERIFIED",
+    "predictive_validation": "NOT_ESTABLISHED",
+    "forecast": "NOT_ISSUED"
+  },
+  "summary": [
+    "Coinbase Global Exchange explicitly lists XRP as accepted collateral for perpetual futures, subject to organization-level ADQ limits and asset-specific haircuts.",
+    "Deribit’s September 28, 2026 cross-collateral table lists XRP as a cross-collateral currency, with a 15% X:SM haircut and no stated X:PM haircut. This supersedes older Deribit material that described XRP as offset-only.",
+    "Coinbase Prime Global Derivatives through CFM separately lists eligible collateral as USDC, BTC and ETH only. Do not conflate this CFM route with Coinbase Global Exchange or legacy Coinbase International Exchange institutional accounts migrated to Deribit through CBBM.",
+    "CFTC Letter 26-17 includes XRP among digital-commodity examples, but does not itself prove XRP collateral was accepted or posted by CFM customers. The letter’s factual collateral description names BTC and ETH as examples; current Coinbase Prime route documentation narrows the published eligible list to USDC/BTC/ETH.",
+    "XRP Insights reports 22.34B XRP in 701 publicly attributed wallets across 24 exchanges as of November 3, 2026. This is a labeled-wallet floor, mostly customer deposits in omnibus wallets, not available sell-side float or exchange proprietary inventory.",
+    "The same provider reports 5.83B XRP in Coinbase-attributed wallets, 6.43B at Upbit and 2.70B at Binance. It warns that some exchange wallet balances include reserves backing wrapped tokens such as cbXRP, creating potential overlap with DeFi/wrapped-XRP categories.",
+    "XRP Insights separates $4.33B in XRPL RWA notional into $276M transferable distributed assets and $4.06B platform-locked registry/represented values. The latter is not tradable investor float."
+  ],
+  "claims": [
+    {
+      "id": "COLL-001",
+      "class": "CONFIRMED_FACT",
+      "claim": "Coinbase Global Exchange lists XRP among collateral assets for perpetual futures.",
+      "scope": "Coinbase Global Exchange product only",
+      "source_ids": [
+        "S2"
+      ],
+      "limitations": [
+        "Organization-level average-daily-quantity caps apply.",
+        "Collateral haircuts apply; collateral may be liquidated automatically.",
+        "Do not generalize to Coinbase Prime CFM Global Derivatives."
+      ]
+    },
+    {
+      "id": "COLL-002",
+      "class": "CONFIRMED_FACT",
+      "claim": "Deribit cross-collateral specifications updated September 28, 2026 list XRP as a cross-collateral currency; the table shows a 15% X:SM haircut and no stated X:PM haircut.",
+      "scope": "Deribit margin models",
+      "source_ids": [
+        "S3"
+      ],
+      "limitations": [
+        "Account eligibility and product rollout can vary.",
+        "A dash in the X:PM haircut column is recorded as no stated haircut, not a guarantee of zero risk or universal account availability."
+      ]
+    },
+    {
+      "id": "COLL-003",
+      "class": "CONFIRMED_FACT",
+      "claim": "Coinbase Prime Global Derivatives via CFM publicly lists eligible collateral as USDC, BTC and ETH, excluding XRP in that published route description.",
+      "scope": "Coinbase Prime Global Derivatives / CFM route",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "limitations": [
+        "This route is distinct from Coinbase Global Exchange and the legacy Coinbase International Exchange migration route."
+      ]
+    },
+    {
+      "id": "COLL-004",
+      "class": "CONFIRMED_FACT",
+      "claim": "Coinbase International Exchange institutional accounts migrated to Deribit effective October 1, 2026; Coinbase Bermuda Limited acts as broker and custodian, and migrated accounts default to Cross Standard Margin.",
+      "scope": "Eligible legacy Coinbase International Exchange institutional accounts",
+      "source_ids": [
+        "S5"
+      ],
+      "limitations": [
+        "The FAQ does not enumerate every eligible collateral asset for each account; account-specific terms govern."
+      ]
+    },
+    {
+      "id": "COLL-005",
+      "class": "CONFIRMED_FACT",
+      "claim": "CFTC Letter 26-17 identifies XRP as an example of a digital commodity under the March 2026 SEC/CFTC interpretation and grants a conditional no-action position for the described CFM/CBBM/Deribit collateral transfer structure.",
+      "scope": "Conditional regulatory staff position",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Not a blanket rule, not proof of XRP being posted as collateral, and not product-specific XRP eligibility. Conditions and route-specific agreements apply."
+      ]
+    },
+    {
+      "id": "COLL-006",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports 22.34B XRP in publicly attributed wallets of 24 exchanges, based on 701 labeled wallets read from XRPL via rippled account_info at approximately 08:00 UTC November 3.",
+      "scope": "Provider-labeled wallet universe",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Floor only; unlabeled wallets omitted.",
+        "Balances are mostly customer deposits pooled in omnibus wallets, not exchange-owned proprietary inventory.",
+        "Wallet labels and exchange attribution can be revised."
+      ]
+    },
+    {
+      "id": "COLL-007",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports Coinbase 5.83B XRP (26.1% of tracked exchange balances), Upbit 6.43B (28.8%), and Binance 2.70B (12.1%).",
+      "scope": "Provider-labeled wallets",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Not a complete view of customer beneficial ownership or venue liabilities.",
+        "Not directly comparable to exchange proof-of-reserves without matching liabilities and wallet scope."
+      ]
+    },
+    {
+      "id": "COLL-008",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports South Korea 8.58B, United States 8.48B and Japan 1.38B XRP across its regionally attributed exchange-wallet set.",
+      "scope": "Provider regional aggregation",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Region assigned by exchange headquarters; not the geographic location of customers or beneficial owners."
+      ]
+    },
+    {
+      "id": "COLL-009",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports 151.5M cbXRP and 19.4M wXRP, with 418.4M total XRP attributed to tracked DeFi/AMM/bridge/wrapped-XRP categories.",
+      "scope": "Protocol and on-chain token-supply aggregation",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Potential overlap with exchange wallet totals where backing reserves remain in exchange-attributed wallets; do not sum partitions without reconciliation."
+      ]
+    },
+    {
+      "id": "COLL-010",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports global RLUSD supply of approximately $2.55B, with $859M on XRPL and $1.69B on Ethereum as of November 3.",
+      "scope": "XRPL and Ethereum supply only",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Other deployments are excluded or described as small; this is not a full cross-chain total for every RLUSD deployment."
+      ]
+    },
+    {
+      "id": "COLL-011",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports $4.33B across 18 XRPL tokenized RWA records, split into $276M distributed/transferable and $4.06B represented/platform-locked registry records.",
+      "scope": "Provider-tracked XRPL RWA catalog",
+      "source_ids": [
+        "S7"
+      ],
+      "limitations": [
+        "Some valuations are issuer-reported or contracted notionals; represented registry tokens are not transferable investor float or readily tradable collateral."
+      ]
+    },
+    {
+      "id": "COLL-012",
+      "class": "SOURCED_CLAIM",
+      "claim": "XRP Insights reports 1.20B XRP across seven ETF/index products, with holdings dates varying by issuer from September 28 to November 2.",
+      "scope": "Seven listed products in provider tracker",
+      "source_ids": [
+        "S6"
+      ],
+      "limitations": [
+        "Mixed observation dates; issuer holdings are not the same as creations/redemptions or net spot-market purchases."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Coinbase Global Exchange",
+      "to": "XRP",
+      "relationship": "accepted perpetual-futures collateral",
+      "evidence": "official Coinbase help documentation",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "from": "Deribit",
+      "to": "XRP",
+      "relationship": "cross-collateral currency",
+      "evidence": "official Deribit cross-collateral table; X:SM haircut 15%",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "from": "Coinbase International Exchange institutional accounts",
+      "to": "Deribit",
+      "relationship": "account/position migration effective 2026-10-01",
+      "evidence": "official Coinbase institutional FAQ",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "from": "Coinbase Bermuda Limited",
+      "to": "Deribit",
+      "relationship": "broker/custodian and order-routing intermediary for migrated Coinbase International Exchange accounts",
+      "evidence": "official Coinbase institutional FAQ",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "from": "Coinbase Financial Markets",
+      "to": "Deribit",
+      "relationship": "CFTC-described FCM route through Coinbase Bermuda Limited",
+      "evidence": "CFTC Letter 26-17",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "from": "CFTC Letter 26-17",
+      "to": "XRP",
+      "relationship": "XRP appears in referenced digital-commodity example list",
+      "evidence": "footnote to March 2026 interpretation",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "from": "XRP Insights labeled exchange wallets",
+      "to": "Coinbase",
+      "relationship": "5.83B XRP attributed to 358 Coinbase-labeled wallets",
+      "evidence": "third-party rippled/XRPSCAN-labeled snapshot",
+      "status": "SOURCED_CLAIM",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "from": "XRP Insights DeFi/wrapped supply",
+      "to": "Coinbase cbXRP",
+      "relationship": "151.5M XRP reported as cbXRP supply",
+      "evidence": "on-chain token supply attribution",
+      "status": "SOURCED_CLAIM",
+      "source_ids": [
+        "S6"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Collateral eligibility can create incremental inventory demand for XRP among derivatives users because holders may retain XRP to support leveraged positions.",
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "support": [
+        "Coinbase Global Exchange lists XRP collateral.",
+        "Deribit lists XRP as cross collateral."
+      ],
+      "disconfirming_or_limits": [
+        "No public collateral balances, utilization, client counts or net additions are disclosed.",
+        "ADQ caps and haircuts limit usable collateral.",
+        "Collateral can be posted from pre-existing holdings rather than purchased in spot markets."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "XRP collateral acceptance can create a procyclical channel in which price declines, haircut changes or margin calls cause collateral liquidation and/or position reduction.",
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "support": [
+        "Coinbase documents automatic collateral liquidation.",
+        "Deribit documents collateral haircuts and cross-account rebalancing."
+      ],
+      "disconfirming_or_limits": [
+        "No XRP-specific liquidation/collateral-use series was obtained.",
+        "Account netting, other collateral and risk buffers can reduce forced selling."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "Large Coinbase-labeled XRPL balances primarily reflect customer custody/omnibus deposits and wrapped-token backing rather than Coinbase proprietary bullish inventory.",
+      "status": "SUPPORTED_INTERPRETATION",
+      "support": [
+        "XRP Insights says exchange balances are mostly customer deposits in omnibus wallets and include some exchange-controlled reserves such as cbXRP backing."
+      ],
+      "disconfirming_or_limits": [
+        "Wallet attribution is third-party and incomplete; no Coinbase liability reconciliation or proof-of-reserves mapping was obtained."
+      ]
+    },
+    {
+      "id": "H4",
+      "statement": "XRPL stablecoin and RWA growth can increase network activity without creating proportionate incremental demand for native XRP.",
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "support": [
+        "RLUSD is a separate issued stablecoin; most reported supply is on Ethereum.",
+        "Most reported RWA value is represented/platform-locked rather than transferable.",
+        "XRP fee demand per transaction is small."
+      ],
+      "disconfirming_or_limits": [
+        "Stablecoin/asset activity may still require XRP for fees, reserves, bridges or market-making; these quantities were not measured."
+      ]
+    },
+    {
+      "id": "H5",
+      "statement": "The 22.34B labeled exchange-wallet figure is a liquidity-concentration indicator but not a tradable-float estimate.",
+      "status": "SUPPORTED_INTERPRETATION",
+      "support": [
+        "Provider methodology counts labeled wallets and says most balances are customer deposits; unlabeled wallets are omitted."
+      ],
+      "disconfirming_or_limits": [
+        "Some cold-storage and exchange-controlled wallets may be included; customer withdrawal rights and internal venue accounting are not observed."
+      ]
+    },
+    {
+      "id": "H6",
+      "statement": "Coinbase's multi-route derivatives consolidation could increase institutional XRP collateral utility, but eligibility differs by legal entity and product.",
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "support": [
+        "Coinbase International Exchange accounts migrated to Deribit and default to X:SM; Deribit lists XRP as cross collateral.",
+        "Coinbase Global Exchange separately lists XRP collateral."
+      ],
+      "disconfirming_or_limits": [
+        "Coinbase Prime Global Derivatives via CFM lists only USDC, BTC and ETH as eligible collateral.",
+        "The International Exchange FAQ does not expressly confirm XRP eligibility for every migrated CBBM account."
+      ]
+    }
+  ],
+  "feature_store_decisions": [
+    {
+      "feature": "collateral_eligibility",
+      "dimensions": [
+        "platform",
+        "legal_entity",
+        "product",
+        "jurisdiction",
+        "account_type",
+        "asset",
+        "effective_from",
+        "effective_to"
+      ],
+      "rule": "Never promote an asset-level eligibility claim without route/entity/product scope."
+    },
+    {
+      "feature": "collateral_haircut",
+      "dimensions": [
+        "venue",
+        "margin_model",
+        "asset",
+        "observation_time"
+      ],
+      "rule": "Store X:SM and X:PM separately; preserve source table and effective date."
+    },
+    {
+      "feature": "collateral_utilization",
+      "rule": "Unknown until public/authorized balances or reliable product utilization data exist; never infer from eligibility."
+    },
+    {
+      "feature": "exchange_wallet_balance",
+      "dimensions": [
+        "venue",
+        "wallet_label",
+        "ledger_index",
+        "observed_at",
+        "attribution_version"
+      ],
+      "rule": "Treat as labeled-wallet floor; distinguish customer omnibus, proprietary, custody and wrapped-token backing."
+    },
+    {
+      "feature": "wrapped_xrp_supply",
+      "dimensions": [
+        "token",
+        "chain",
+        "issuer_or_custodian",
+        "underlying_backing",
+        "observed_at"
+      ],
+      "rule": "Reconcile backing-wallet overlap before summing with exchange balances."
+    },
+    {
+      "feature": "xrpl_rwa_value",
+      "dimensions": [
+        "asset",
+        "transferability",
+        "issuer",
+        "valuation_basis",
+        "last_verified_at"
+      ],
+      "rule": "Separate distributed transferable supply from represented/registry notional."
+    },
+    {
+      "feature": "stablecoin_supply",
+      "dimensions": [
+        "issuer",
+        "chain",
+        "contract",
+        "supply",
+        "observed_at"
+      ],
+      "rule": "Keep XRPL, Ethereum and other deployments distinct; do not call two-chain total global if other chains are omitted."
+    }
+  ],
+  "prediction_policy": {
+    "forecast_status": "NOT_ISSUED",
+    "reason": "These findings establish product eligibility and provider-reported supply structure, not a calibrated directional relationship with XRP price.",
+    "required_before_forecast": [
+      "synchronized product/entity-specific collateral utilization data",
+      "point-in-time exchange-wallet snapshots with stable attribution versions",
+      "contract-level derivatives OI and liquidation data",
+      "fixed-horizon walk-forward tests",
+      "leakage controls",
+      "baseline comparisons",
+      "calibration and drift checks",
+      "independent outcome attestation"
+    ]
+  },
+  "source_records": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_REGULATORY",
+      "publisher": "CFTC",
+      "title": "CFTC Letter 26-17, May 29 2026",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "relevant_pages": "pp. 1-4, 8-13",
+      "notes": "XRP listed in digital commodity examples at p.2; collateral request and conditional no-action scope at pp.8-13; do not infer actual XRP collateral use."
+    },
+    {
+      "id": "S2",
+      "type": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "publisher": "Coinbase",
+      "title": "How does cross collateral work? Coinbase Global Exchange",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "notes": "XRP explicitly listed; organization-level ADQ limits, haircuts and collateral liquidation apply."
+    },
+    {
+      "id": "S3",
+      "type": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "publisher": "Deribit",
+      "title": "Cross collateral specifications, updated September 28 2026",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944777203869-Cross-collateral-specifications",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "notes": "XRP listed as cross-collateral currency; 15% X:SM haircut; distinguish cross collateral from offset-only."
+    },
+    {
+      "id": "S4",
+      "type": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "publisher": "Coinbase",
+      "title": "Derivatives Trading on Coinbase Prime",
+      "url": "https://help.coinbase.com/en/prime/derivatives-on-prime",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "notes": "Prime U.S. and Global Derivatives venue matrix; Global Derivatives collateral shown as USDC, BTC, ETH."
+    },
+    {
+      "id": "S5",
+      "type": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "publisher": "Coinbase",
+      "title": "International Exchange Institutional Client FAQs",
+      "url": "https://help.coinbase.com/en/international-exchange/deribit/institutional-faqs",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "notes": "Migration effective October 1 2026; CBBM broker/custodian; default X:SM; eligibility varies by entity and terms."
+    },
+    {
+      "id": "S6",
+      "type": "SECONDARY_ONCHAIN_AGGREGATION",
+      "publisher": "XRP Insights",
+      "title": "XRP Radar: exchange wallets, ETF/index holdings, DeFi and RLUSD supply",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "notes": "Exchange wallet snapshot is approximately 08:00 UTC Nov 3 via rippled account_info and XRPSCAN labels; provider says floor and mostly customer omnibus balances; possible cbXRP backing overlap."
+    },
+    {
+      "id": "S7",
+      "type": "SECONDARY_RWA_CATALOG",
+      "publisher": "XRP Insights",
+      "title": "XRP Radar: tokenized RWA breakdown",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "retrieved_at_utc": "2026-11-03T12:11:15Z",
+      "notes": "$276M distributed transferable vs $4.06B represented/registry notional; per-asset last-verified dates vary."
+    }
+  ],
+  "minority_objections": [
+    "Collateral eligibility is not collateral utilization, and utilization is not net spot buying.",
+    "Coinbase wallet attribution is not a Coinbase proprietary position; omnibus customer deposits dominate the provider's stated methodology.",
+    "Deribit’s cross-collateral support and Coinbase Prime CFM’s eligible collateral list are different product/legal routes and must not be collapsed.",
+    "The XRP Insights supply categories may overlap through wrapped-token backing; no aggregate supply partition should be summed until double-counting is resolved.",
+    "XRPL RWA headline notional overstates freely transferable investor float if represented registry values are included."
+  ],
+  "next_actions": [
+    "Capture the November 4 Circle Q3 release and reconcile USDC distribution economics with Coinbase.",
+    "Verify fixCleanup3_4_0 actual EnableAmendment transaction and following validated ledger.",
+    "Obtain product/entity-specific confirmation of XRP collateral eligibility for Coinbase International Exchange migrated institutional accounts; do not infer from Deribit-wide support alone.",
+    "Track Coinbase Global Exchange ADQ limits and haircuts over time; public documentation does not expose customer-level utilization.",
+    "Reconcile Coinbase-labeled XRPL wallets with cbXRP backing addresses to remove potential double counting.",
+    "Build same-wallet exchange-balance deltas and distinguish customer deposits from proprietary reserves where evidence allows.",
+    "Continue fixed-horizon forecast validation; no directional forecast until the evidence and calibration gates pass."
+  ]
+}
