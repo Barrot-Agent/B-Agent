@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "camilla_stephenson_youtube_candidate_inventory",
+  "snapshot_id": "camilla-stephenson-youtube-inventory-20261103-run11",
+  "captured_at_utc": "2026-11-03T01:25:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "research_scope": "Exact-name identity resolution and publicly indexed YouTube uploads",
+  "identity_candidate": {
+    "name": "Camilla (Millie) Stephenson",
+    "associated_creator_brand": "Wholesome Mils",
+    "confidence": "STRONG_CANDIDATE_NOT_FULLY_IDENTITY_PROVEN",
+    "evidence": [
+      {
+        "source": "Tourism New Zealand Official Information Act response",
+        "url": "https://fyi.org.nz/request/28272/response/109134/attach/2/fyi.org%20OIA%20response%20Stargrazing%20campaign.pdf",
+        "lines": "223-226",
+        "finding": "The official attendee list identifies Camilla (Millie) Stephenson, UK, as a confirmed content creator under Wholesome Mils."
+      },
+      {
+        "source": "Wholesome.mils Linktree",
+        "url": "https://linktr.ee/wholesome.mils",
+        "lines": "1-2, 26-32, 47-57",
+        "finding": "The creator-branded Linktree lists a 15-minute Vinyasa YouTube video and a separate YouTube Channel link."
+      },
+      {
+        "source": "YouTube channel",
+        "url": "https://www.youtube.com/channel/UCT9sgvs8a8v72klcSY1znBQ",
+        "channel_id": "UCT9sgvs8a8v72klcSY1znBQ",
+        "finding": "Linktree resolves to a channel titled WholesomeMils."
+      }
+    ],
+    "limitation": "The public records connect the named creator brand to the channel, but do not independently prove that this is the exact Camilla Stephenson intended by the original XRP research request."
+  },
+  "indexed_public_video_candidates": [
+    {
+      "title": "Come on a chatty 10km run with me",
+      "relative_age_as_indexed": "1 year ago",
+      "direct_video_url": "NOT_RESOLVED",
+      "verification": "TITLE_SURFACED_IN_YOUTUBE_CHANNEL_SEARCH_RESULT"
+    },
+    {
+      "title": "HOW to get a 1:1 in your diss, let me know if you want more vids on this",
+      "relative_age_as_indexed": "1 year ago",
+      "direct_video_url": "NOT_RESOLVED",
+      "verification": "TITLE_SURFACED_IN_YOUTUBE_CHANNEL_SEARCH_RESULT"
+    },
+    {
+      "title": "Total Body 15 Min Vinyasa Flow for Stress Relief | Beginner Friendly",
+      "relative_age_as_indexed": "4 years ago",
+      "direct_video_url": "https://www.youtube.com/watch?v=FQTOensuU-Y",
+      "verification": "DIRECT_LINK_CONFIRMED_FROM_CREATOR_LINKTREE"
+    },
+    {
+      "title": "I Quit Alcohol For A Year and Heres How My Life Changed - Sober at 21",
+      "relative_age_as_indexed": "4 years ago",
+      "direct_video_url": "NOT_RESOLVED",
+      "verification": "TITLE_SURFACED_IN_YOUTUBE_CHANNEL_SEARCH_RESULT"
+    },
+    {
+      "title": "How I Stay Happy & Productive at Uni | Day In The Life Final Year Durham (Yoga, Recipes & Workout)",
+      "relative_age_as_indexed": "4 years ago",
+      "direct_video_url": "NOT_RESOLVED",
+      "verification": "TITLE_SURFACED_IN_YOUTUBE_CHANNEL_SEARCH_RESULT"
+    }
+  ],
+  "inventory_status": {
+    "indexed_candidates": 5,
+    "direct_video_urls_verified": 1,
+    "exhaustive_public_upload_inventory": "NOT_VERIFIED",
+    "reason": "YouTube channel page and RSS feed were inaccessible to the current retrieval path. Search index exposed five titles but cannot prove no additional public uploads exist.",
+    "next_action": "Resolve the four direct video IDs through another public channel index or a later accessible channel listing; preserve exact title/date/source for every addition."
+  },
+  "xrp_relevance": {
+    "direct_xrp_content_found": false,
+    "classification": "NO_EVIDENCE_FOUND",
+    "note": "No XRP, Ripple, Coinbase, Circle or SBIC relationship was established from this creator identity or the indexed videos."
+  },
+  "safety": {
+    "private_data_used": false,
+    "identity_conflation": false,
+    "nonpublic_content_accessed": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

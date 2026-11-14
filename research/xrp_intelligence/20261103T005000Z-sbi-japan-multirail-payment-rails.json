@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "sbi_japan_multirail_payment_rail_map",
+  "snapshot_id": "sbi-japan-multirail-rails-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:48:34.864Z",
+  "research_date": "2026-11-03",
+  "question": "How does SBI's current Japan and Asia payment strategy connect XRP, USDC, RLUSD, Arc, JPYSC/OUSD, XDC, Visa and Coinbase?",
+  "executive_assessment": {
+    "classification": "MULTI_RAIL_STRATEGY_SUPPORTED_BY_PARALLEL_DEPLOYMENTS",
+    "conclusion": "Recent SBI disclosures show activity across several distinct payment and settlement paths: XRP-linked Ripple remittances and SBI Ripple Asia; Circle USDC distribution and merchant-payment testing; RLUSD distribution; Circle Arc presale/validator participation; JPYSC–OUSD interoperability planning with Startale/Open Standard; XDC-based Japan–Korea payment ecosystem work; and a Visa card that can convert rewards into XRP. These are parallel initiatives, not proof of one integrated routing system.",
+    "confidence": "HIGH for the individual announcements and product structures; MODERATE for the overall multi-rail interpretation; LOW for any claim that one rail is replacing another."
+  },
+  "findings": [
+    {
+      "id": "SBI-MR-01",
+      "classification": "CONFIRMED_EXECUTED_POC",
+      "claim": "SBI VC Trade and APLUS conducted a five-day USDC merchant-payment proof of concept in Osaka from May 25 to May 29, 2026, at Namidato Unatoto and Bic Camera Namba.",
+      "flow": [
+        "Customer sends USDC from a self-custody wallet using a QR code.",
+        "SBI VC Trade converts the received USDC into Japanese yen.",
+        "SBI VC Trade transfers yen to APLUS.",
+        "APLUS pays the merchant in yen."
+      ],
+      "implications": "This is an executed USDC-to-JPY merchant settlement test. It is not evidence of XRP use, and the announcement does not specify the blockchain/network used for the USDC transfer or publish transaction volume.",
+      "sources": [
+        "SBI-USDC-MERCHANT-POC-20260430"
+      ]
+    },
+    {
+      "id": "SBI-MR-02",
+      "classification": "CONFIRMED_LIVE_PRODUCT_ANNOUNCEMENT",
+      "claim": "SBI VC Trade, APLUS and Visa announced the SBI VISA Crypto Card on May 1, 2026. Cardholders can select BTC, ETH or XRP as the asset into which card reward points are automatically converted.",
+      "implications": "This creates a retail XRP accumulation/distribution channel associated with card spending. It does not prove that the card itself settles purchases in XRP or disclose net XRP acquisition volume.",
+      "sources": [
+        "SBI-VISA-CRYPTO-CARD-20260501"
+      ]
+    },
+    {
+      "id": "SBI-MR-03",
+      "classification": "CONFIRMED_CONSORTIUM_MEMBERSHIP_AND_PLANNED_POC",
+      "claim": "SBI Holdings and Startale joined Open Standard on October 16, 2026. The announcement says the initiative has more than 140 participating companies, including Visa, Stripe, Mastercard, BlackRock and Coinbase. SBI and Startale are considering a proof of concept for interoperability between JPYSC, issued by SBI Shinsei Trust Bank, and Open USD (OUSD).",
+      "implications": "SBI and Coinbase share participation in a stablecoin interoperability consortium. This is not evidence of a bilateral Coinbase-SBI commercial agreement. The JPYSC-OUSD proof of concept is under consideration, not confirmed as launched.",
+      "unknowns": [
+        "OUSD issuer and reserve/custody structure are not fully resolved by the cited SBI announcement.",
+        "No production bridge, transfer volume, settlement bank or launch date was disclosed."
+      ],
+      "sources": [
+        "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "id": "SBI-MR-04",
+      "classification": "CONFIRMED_MOU_NOT_PRODUCTION",
+      "claim": "SBI XDC Network APAC and SBI VC Trade signed an MOU with Shinhan Card on October 21, 2026 to strengthen a blockchain-based global payment ecosystem.",
+      "implications": "This is a separate Japan–Korea payment-rail initiative involving XDC Network APAC, a joint venture between SBI Holdings and TradeFinex Tech. The MOU does not establish production settlement, volumes or an XRP integration.",
+      "sources": [
+        "SBI-XDC-SHINHAN-MOU-20261021"
+      ]
+    },
+    {
+      "id": "SBI-MR-05",
+      "classification": "CONFIRMED_REGULATED_DISTRIBUTION",
+      "claim": "SBI VC Trade began general USDC trading for Japanese retail customers on March 26, 2025 and began RLUSD handling on June 24, 2026 under Japan's electronic-payment-instrument framework.",
+      "implications": "SBI's regulated distribution business supports both Circle-issued USDC and Ripple-issued RLUSD. RLUSD handling is a product launch, not proof that RLUSD is approved as collateral on every SBI or Coinbase venue.",
+      "sources": [
+        "SBI-USDC-RETAIL-LAUNCH-20250325",
+        "SBI-RLUSD-LAUNCH-20260624"
+      ]
+    },
+    {
+      "id": "SBI-MR-06",
+      "classification": "CONFIRMED_OFFICIAL_DISCLOSURE",
+      "claim": "SBI Holdings and SBI Shinsei Bank disclosed a combined $50 million Circle equity purchase ($25 million each), while the same release states SBI held approximately 9% of Ripple equity.",
+      "implications": "SBI has corporate equity exposure to both Circle and Ripple. The Ripple percentage is corporate equity, not an XRP token inventory.",
+      "sources": [
+        "SBI-CIRCLE-EQUITY-20250609"
+      ]
+    },
+    {
+      "id": "SBI-MR-07",
+      "classification": "CONFIRMED_ANNOUNCED_CIRCLE_ARC_ROLE",
+      "claim": "SBI participated through a consolidated subsidiary in Circle's ARC token presale and was named in the Arc founding-validator cohort. Circle launched Arc public mainnet on September 16, 2026, with USDC gas and a phased permissioned-validator rollout.",
+      "implications": "SBI's Circle relationship extends beyond stablecoin distribution to Arc network economics and announced validator participation. SBI's presale amount and actual validator signing activity remain unknown.",
+      "sources": [
+        "SBI-ARC-PRESALE-20260512",
+        "CIRCLE-ARC-VALIDATORS-20260805",
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "id": "SBI-MR-08",
+      "classification": "CONFIRMED_DIRECT_XRPL_INTEGRATION",
+      "claim": "Circle's USDC is issued natively on the XRP Ledger and Circle Mint supports conversion between USDC on XRPL and USDC on other supported chains.",
+      "implications": "Circle and XRP are not exclusively competing systems. USDC can be a native XRPL asset and a settlement medium on Circle's own Arc network.",
+      "sources": [
+        "CIRCLE-USDC-XRPL-202506"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relationship": "regulated Japan distribution and merchant-payment POC",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-USDC-RETAIL-LAUNCH-20250325",
+        "SBI-USDC-MERCHANT-POC-20260430"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relationship": "regulated Japan distribution beginning 2026-06-24",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-RLUSD-LAUNCH-20260624"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relationship": "Visa card reward conversion option",
+      "classification": "CONFIRMED_PRODUCT",
+      "source_ids": [
+        "SBI-VISA-CRYPTO-CARD-20260501"
+      ]
+    },
+    {
+      "from": "APLUS",
+      "to": "USDC",
+      "relationship": "merchant-payment POC converts USDC to JPY before merchant payout",
+      "classification": "CONFIRMED_EXECUTED_POC",
+      "source_ids": [
+        "SBI-USDC-MERCHANT-POC-20260430"
+      ]
+    },
+    {
+      "from": "Visa",
+      "to": "SBI VISA Crypto Card",
+      "relationship": "card network and product partnership",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-VISA-CRYPTO-CARD-20260501"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Startale",
+      "relationship": "Open Standard participation and planned JPYSC-OUSD interoperability POC",
+      "classification": "CONFIRMED_PLANNED",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard",
+      "relationship": "named participant among 140+ companies",
+      "classification": "CONFIRMED_MEMBERSHIP_ONLY",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relationship": "issuer of yen-denominated trust-type stablecoin",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "Open Standard",
+      "to": "OUSD",
+      "relationship": "USD stablecoin promoted by the initiative; issuer details unresolved in this source",
+      "classification": "CONFIRMED_INITIATIVE_REFERENCE",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "SBI XDC Network APAC",
+      "to": "Shinhan Card",
+      "relationship": "MOU for global payment ecosystem",
+      "classification": "CONFIRMED_MOU",
+      "source_ids": [
+        "SBI-XDC-SHINHAN-MOU-20261021"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "XDC Network APAC",
+      "relationship": "joint venture with TradeFinex Tech",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-XDC-SHINHAN-MOU-20261021"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Ripple/XRPL",
+      "relationship": "equity, SBI Ripple Asia, remittance and tokenization activity",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609",
+        "SBI-RIPPLE-ASIA-PROFILE-20260331"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle/Arc",
+      "relationship": "equity, JV, USDC distribution, ARC presale and announced validator role",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "SBI-CIRCLE-EQUITY-20250609",
+        "SBI-ARC-PRESALE-20260512",
+        "CIRCLE-ARC-MAINNET-20260916"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "SBI Holdings",
+      "relationship": "shared Open Standard participation; no bilateral agreement established",
+      "classification": "CONFIRMED_MEMBERSHIP_ONLY",
+      "source_ids": [
+        "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "from": "Circle USDC",
+      "to": "XRP Ledger",
+      "relationship": "native issuance and Circle Mint cross-chain conversion",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "CIRCLE-USDC-XRPL-202506"
+      ]
+    },
+    {
+      "from": "XDC Network APAC",
+      "to": "XRP Ledger",
+      "relationship": "direct integration or asset bridge",
+      "classification": "UNKNOWN_NOT_ESTABLISHED",
+      "source_ids": []
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "MR-H1",
+      "claim": "SBI is deliberately diversifying across multiple payment and settlement rails rather than choosing one blockchain.",
+      "classification": "BEST_SUPPORTED_INFERENCE",
+      "supporting": [
+        "Ripple/XRPL equity and operations",
+        "Circle equity, USDC/RLUSD distribution and Arc involvement",
+        "JPYSC-OUSD interoperability planning",
+        "XDC/Shinhan Japan-Korea MOU",
+        "Visa card with XRP reward conversion"
+      ],
+      "disconfirming": [
+        "No single official SBI document describes these separate business lines as one unified routing architecture."
+      ]
+    },
+    {
+      "id": "MR-H2",
+      "claim": "XRP, USDC/Arc, JPYSC/OUSD and XDC are competing for overlapping institutional settlement use cases.",
+      "classification": "PLAUSIBLE_INFERENCE",
+      "supporting": [
+        "All initiatives touch payments, liquidity, cross-border settlement or tokenized finance."
+      ],
+      "disconfirming": [
+        "Their assets, governance, compliance models and target customer segments differ. No measurable market-share displacement has been established."
+      ]
+    },
+    {
+      "id": "MR-H3",
+      "claim": "The initiatives are complementary and could form an interoperable multi-asset network.",
+      "classification": "SPECULATION",
+      "supporting": [
+        "SBI is involved in each ecosystem and explicitly exploring JPYSC-OUSD interoperability."
+      ],
+      "disconfirming": [
+        "No direct production bridge among XRPL, Arc, XDC and JPYSC/OUSD has been documented."
+      ]
+    },
+    {
+      "id": "MR-H4",
+      "claim": "SBI's XRP reward card creates a measurable source of net XRP buying pressure.",
+      "classification": "UNTESTED",
+      "supporting": [
+        "The card converts reward points into XRP when selected."
+      ],
+      "disconfirming": [
+        "No issuance volume, redemption volume, exchange purchase records or net XRP inventory change is disclosed."
+      ]
+    },
+    {
+      "id": "MR-H5",
+      "claim": "The USDC merchant POC demonstrates production-scale USDC settlement adoption in Japan.",
+      "classification": "DISCONFIRMED_AS_STATED",
+      "supporting": [
+        "The five-day Osaka proof of concept was executed."
+      ],
+      "disconfirming": [
+        "The announcement gives no transaction volume, user count or production launch; it is a limited POC."
+      ]
+    }
+  ],
+  "actual_capital_and_flow_ledger": [
+    {
+      "item": "Circle equity purchase",
+      "amount_usd": 50000000,
+      "status": "CONFIRMED",
+      "note": "$25M SBI Holdings plus $25M SBI Shinsei Bank."
+    },
+    {
+      "item": "Ripple equity stake",
+      "amount_usd": null,
+      "status": "CONFIRMED_APPROXIMATE_OWNERSHIP",
+      "note": "Approximately 9% corporate equity; not XRP tokens."
+    },
+    {
+      "item": "ARC presale participation",
+      "amount_usd": null,
+      "status": "CONFIRMED_AMOUNT_UNKNOWN",
+      "note": "SBI contribution and allocation undisclosed."
+    },
+    {
+      "item": "USDC merchant POC",
+      "amount_usd": null,
+      "status": "EXECUTED_FLOW_AMOUNT_UNKNOWN",
+      "note": "USDC converted to JPY by SBI VC Trade; APLUS paid merchants in JPY."
+    },
+    {
+      "item": "SBI VISA Crypto Card XRP rewards",
+      "amount_xrp": null,
+      "status": "LIVE_PRODUCT_AMOUNT_UNKNOWN",
+      "note": "No net XRP acquisition or redemption volume disclosed."
+    },
+    {
+      "item": "JPYSC-OUSD interoperability POC",
+      "amount_usd": null,
+      "status": "UNDER_CONSIDERATION_NOT_EXECUTED",
+      "note": "No capital amount or production flow."
+    },
+    {
+      "item": "SBI XDC Network APAC-Shinhan MOU",
+      "amount_usd": null,
+      "status": "MOU_NO_DEPLOYMENT_AMOUNT",
+      "note": "No production transaction volume or committed capital disclosed."
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "SBI-USDC-MERCHANT-POC-20260430",
+      "publisher": "SBI Holdings / SBI VC Trade / APLUS",
+      "date": "2026-04-30",
+      "type": "official_company_release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-VISA-CRYPTO-CARD-20260501",
+      "publisher": "SBI Holdings / SBI VC Trade / APLUS / Visa Japan",
+      "date": "2026-05-01",
+      "type": "official_company_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-OPEN-STANDARD-JPYSC-OUSD-20261016",
+      "publisher": "SBI Holdings / Startale",
+      "date": "2026-10-16",
+      "type": "official_joint_company_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "independence_group": "sbi-startale-joint"
+    },
+    {
+      "id": "SBI-XDC-SHINHAN-MOU-20261021",
+      "publisher": "SBI XDC Network APAC / SBI VC Trade / Shinhan Card",
+      "date": "2026-10-21",
+      "type": "official_joint_company_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/1021_16674.html",
+      "independence_group": "sbi-xdc-shinhan-joint"
+    },
+    {
+      "id": "SBI-USDC-RETAIL-LAUNCH-20250325",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "date": "2025-03-25",
+      "type": "official_company_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-RLUSD-LAUNCH-20260624",
+      "publisher": "SBI Holdings / SBI VC Trade / Ripple",
+      "date": "2026-06-24",
+      "type": "official_joint_company_release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "independence_group": "sbi-ripple-joint"
+    },
+    {
+      "id": "SBI-CIRCLE-EQUITY-20250609",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "date": "2025-06-09",
+      "type": "official_company_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "SBI-ARC-PRESALE-20260512",
+      "publisher": "SBI Holdings",
+      "date": "2026-05-12",
+      "type": "official_company_release",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "independence_group": "sbi-group"
+    },
+    {
+      "id": "CIRCLE-ARC-MAINNET-20260916",
+      "publisher": "Circle",
+      "date": "2026-09-16",
+      "type": "official_company_release",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "independence_group": "circle"
+    },
+    {
+      "id": "CIRCLE-USDC-XRPL-202506",
+      "publisher": "Circle",
+      "date": "2025-06-12",
+      "type": "official_company_release",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "independence_group": "circle"
+    }
+  ],
+  "unresolved": [
+    "Open USD (OUSD) issuer, reserves, custody, mint/redeem access and chain deployment.",
+    "Whether the JPYSC-OUSD interoperability POC moved from consideration to execution after the October 16 announcement.",
+    "Whether the SBI XDC Network APAC-Shinhan MOU has advanced to a technical pilot or production deployment.",
+    "Net XRP purchases or inventory attributable to SBI VISA Crypto Card reward conversion.",
+    "USDC merchant POC transaction count, volume, chain, fees and repeat usage.",
+    "Any direct production interoperability among XRPL, Arc, XDC and JPYSC/OUSD."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "note": "These announcements establish structural relationships and product activity, not a measured directional XRP price signal. No forecast or paper-trading position was created."
+  },
+  "safety": {
+    "public_sources_only": true,
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "external_transaction": false
+  }
+}
