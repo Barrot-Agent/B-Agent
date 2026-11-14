@@ -115,7 +115,7 @@ def evaluate_paired_block_bootstrap(
     bootstrap_replicates: int = 1000,
     minimum_origins: int = 30,
     minimum_source_clusters: int = 5,
-    minimum_origins_per_source_cluster: int = 2,
+    minimum_origins_per_source_cluster: int = 5,
     random_seed: int = 20261113,
     confidence_level: float = 0.95,
 ) -> dict[str, Any]:
@@ -147,6 +147,10 @@ def evaluate_paired_block_bootstrap(
     ):
         raise PairedBootstrapError("confidence_level must be finite and strictly between zero and one")
     confidence_level = float(confidence_level)
+    if minimum_origins_per_source_cluster < block_length_origins:
+        raise PairedBootstrapError(
+            "minimum_origins_per_source_cluster must be at least block_length_origins"
+        )
 
     by_origin: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     origin_times: dict[str, datetime] = {}

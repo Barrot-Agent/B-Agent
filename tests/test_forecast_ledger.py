@@ -26,7 +26,7 @@ _TEST_EVALUATOR_PRIVATE_KEY = Ed25519PrivateKey.from_private_bytes(bytes(range(3
 _TEST_EVALUATOR_PUBLIC_KEY = _TEST_EVALUATOR_PRIVATE_KEY.public_key().public_bytes(
     Encoding.Raw, PublicFormat.Raw
 )
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V5\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V6\0"
 
 
 def _trusted_test_evaluator_keys():
@@ -78,7 +78,7 @@ def _paired_comparisons_fixture(sample_count=200):
                 "confidence_level": 0.99375,
                 "source_cluster_count": 5,
                 "source_group_ids": sorted(FEATURE_SOURCE_GROUPS),
-                "minimum_origins_per_source_cluster": 2,
+                "minimum_origins_per_source_cluster": 5,
                 "observed_minimum_origins_per_source_cluster": 40,
                 "equal_cluster_weighted_mean_brier_difference": -0.05,
                 "equal_cluster_weighted_mean_log_loss_difference": -0.10,
@@ -101,7 +101,7 @@ def _paired_uncertainty_fixture():
         "block_length_origins": 5,
         "minimum_paired_origins": 100,
         "minimum_source_clusters": 5,
-        "minimum_origins_per_source_cluster": 2,
+        "minimum_origins_per_source_cluster": 5,
         "out_of_sample": {"status": "PASS", "comparisons": _paired_comparisons_fixture(200)},
         "shadow_evaluation": {"status": "PASS", "comparisons": _paired_comparisons_fixture(200)},
     }
@@ -281,10 +281,10 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         allow_nan=False,
     ).encode("utf-8")
     report = {
-        "schema_version": "barrot.xrp.model-readiness.v5",
+        "schema_version": "barrot.xrp.model-readiness.v6",
         "evaluation_type": "chronological_walk_forward_model_evaluation",
         "status": "PASS",
-        "policy_id": "xrp_forecast_readiness_v5",
+        "policy_id": "xrp_forecast_readiness_v6",
         "evaluation_id": f"test-evaluation-{asset.lower()}-{horizon_seconds}-{'-'.join(source_ids)}",
         "model_version": "xrp-test-v1",
         "baseline_model_version": "naive-frequency-v1",
@@ -350,7 +350,7 @@ def _readiness_fixture(asset, horizon_seconds, source_ids=None):
         "certificate": {
             "report_sha256": report_sha256,
             "receipt_id": receipt_id,
-            "policy_id": "xrp_forecast_readiness_v5",
+            "policy_id": "xrp_forecast_readiness_v6",
             "status": "PASS",
         },
     }
@@ -462,6 +462,16 @@ def test_readiness_rejects_insufficient_source_clusters_in_shadow_window():
     source["source_cluster_count"] = 4
     source["source_group_ids"] = source["source_group_ids"][:4]
     with pytest.raises(ForecastLedgerError, match="source_cluster_count must be at least 5"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_source_cluster_minimum_shorter_than_bootstrap_block():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["paired_uncertainty"]["minimum_origins_per_source_cluster"] = 4
+    with pytest.raises(
+        ForecastLedgerError,
+        match="minimum_origins_per_source_cluster must be at least 5",
+    ):
         _validate_readiness_report(report)
 
 
@@ -1264,14 +1274,14 @@ def test_readiness_report_rejects_missing_or_invalid_embargo_policy():
 
 def test_readiness_policy_v4_requires_overlap_adjusted_effective_sample_size_and_horizon_sized_embargo():
     report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
-    assert report["schema_version"] == "barrot.xrp.model-readiness.v5"
-    assert report["policy_id"] == "xrp_forecast_readiness_v5"
+    assert report["schema_version"] == "barrot.xrp.model-readiness.v6"
+    assert report["policy_id"] == "xrp_forecast_readiness_v6"
     assert report["effective_sample_size_method"] == "greedy_non_overlapping_target_intervals_v1"
     assert report["out_of_sample_effective_sample_size"] >= 10
     assert report["shadow_evaluation_effective_sample_size"] >= 10
     assert report["embargo_seconds"] >= report["horizon_seconds"]
     assert report["purge_policy"] == "training_start_and_outcome_available_by_cutoff_minus_embargo"
-    assert _EVALUATOR_ATTESTATION_DOMAIN == b"BARROT_XRP_MODEL_READINESS_V5\0"
+    assert _EVALUATOR_ATTESTATION_DOMAIN == b"BARROT_XRP_MODEL_READINESS_V6\0"
 
 
 def test_readiness_rejects_missing_or_unsupported_effective_sample_size_method():

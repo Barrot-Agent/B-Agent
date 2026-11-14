@@ -91,6 +91,19 @@ def test_invalid_confidence_level_is_rejected():
         evaluate_paired_block_bootstrap(_rows(), confidence_level=1.0)
 
 
+def test_source_cluster_minimum_must_cover_block_length():
+    with pytest.raises(
+        PairedBootstrapError,
+        match="minimum_origins_per_source_cluster must be at least block_length_origins",
+    ):
+        evaluate_paired_block_bootstrap(
+            _rows(),
+            bootstrap_replicates=200,
+            block_length_origins=5,
+            minimum_origins_per_source_cluster=4,
+        )
+
+
 def test_duplicate_origin_model_pair_is_rejected():
     rows = _rows(origins=30, source_clusters=5)
     rows.append(dict(rows[0]))

@@ -26,9 +26,9 @@ _HTTP_PROVENANCE_HEADER_NAMES = frozenset({
     "age", "cache-control", "content-type", "content-encoding",
     "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
 })
-READINESS_POLICY_ID = "xrp_forecast_readiness_v5"
+READINESS_POLICY_ID = "xrp_forecast_readiness_v6"
 _EVALUATOR_KEYS_ENV = "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON"
-_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V5\0"
+_EVALUATOR_ATTESTATION_DOMAIN = b"BARROT_XRP_MODEL_READINESS_V6\0"
 _REQUIRED_BASELINES = ("naive_class_prior", "momentum_sign", "mean_reversion_sign", "volatility_normal")
 _MIN_OOS_SAMPLES = 100
 _MIN_SHADOW_SAMPLES = 100
@@ -364,7 +364,7 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
     """Validate an independently attested model evaluation and its point-in-time dataset manifest."""
     if not isinstance(report, Mapping):
         raise ForecastLedgerError("readiness report must be a JSON object")
-    if report.get("schema_version") != "barrot.xrp.model-readiness.v5":
+    if report.get("schema_version") != "barrot.xrp.model-readiness.v6":
         raise ForecastLedgerError("readiness report schema is unsupported")
     if report.get("evaluation_type") != "chronological_walk_forward_model_evaluation":
         raise ForecastLedgerError("baseline-only or non-chronological evaluation cannot authorize a forecast")
@@ -607,7 +607,9 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         return value
 
     _integer_at_least(paired_uncertainty.get("bootstrap_replicates"), 10_000, "bootstrap_replicates")
-    _integer_at_least(paired_uncertainty.get("block_length_origins"), 2, "block_length_origins")
+    block_length_origins = _integer_at_least(
+        paired_uncertainty.get("block_length_origins"), 2, "block_length_origins"
+    )
     minimum_paired_origins = _integer_at_least(
         paired_uncertainty.get("minimum_paired_origins"), _MIN_OOS_SAMPLES, "minimum_paired_origins"
     )
@@ -615,7 +617,9 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         paired_uncertainty.get("minimum_source_clusters"), 5, "minimum_source_clusters"
     )
     minimum_per_cluster = _integer_at_least(
-        paired_uncertainty.get("minimum_origins_per_source_cluster"), 2, "minimum_origins_per_source_cluster"
+        paired_uncertainty.get("minimum_origins_per_source_cluster"),
+        block_length_origins,
+        "minimum_origins_per_source_cluster",
     )
 
     def _finite_level(value: Any, field: str) -> float:
