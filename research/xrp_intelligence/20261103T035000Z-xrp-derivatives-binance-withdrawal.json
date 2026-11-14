@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-derivatives-provider-reconciliation-binance-withdrawal-20261103-run13",
+  "captured_at_utc": "2026-11-03T03:50:00Z",
+  "observations": [
+    {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-11-03T01:05:00Z",
+      "metric": "XRP perpetual open interest",
+      "value_usd": 1950000000,
+      "coverage": "7 exchanges",
+      "reported_24h_change_pct": 1.77,
+      "mark_price_usd": 1.2516,
+      "funding_oi_weighted_pct_per_8h": 0.0068,
+      "liquidations_24h_usd_minimum": 2680000,
+      "long_liquidations_usd": 2250000,
+      "short_liquidations_usd": 426150,
+      "long_account_share_pct": 77.6,
+      "long_short_account_ratio": 3.47,
+      "source": "https://tradradar.io/markets/xrp"
+    },
+    {
+      "provider": "Kodexius",
+      "observed_at_utc": "2026-11-02T23:44:00Z",
+      "metric": "XRP perpetual open interest",
+      "value_usd": 810650000,
+      "coverage": "7 contracts across 5 exchanges",
+      "funding_oi_weighted_pct_per_8h": 0.0062,
+      "volume_24h_usd": 1170000000,
+      "exchange_breakdown_usd": {
+        "Binance": 424810000,
+        "Bybit": 156310000,
+        "OKX": 103180000,
+        "Hyperliquid": 98300000,
+        "HTX": 28050000
+      },
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP"
+    },
+    {
+      "provider": "JustScreener",
+      "observed_at_utc": "2026-11-03T00:46:00Z",
+      "metric": "XRP open interest",
+      "value_usd": 1600000000,
+      "coverage": "9 exchanges",
+      "reported_24h_change_pct": 1.62,
+      "exchange_breakdown_usd_approx": {
+        "Binance": 396400000,
+        "MEXC": 271200000,
+        "Bitget": 231800000,
+        "Hyperliquid": 210400000,
+        "Bybit": 152900000,
+        "Gate": 134200000,
+        "KuCoin": 107700000,
+        "OKX": 103400000,
+        "HTX": 28100000
+      },
+      "source": "https://justscreener.com/en/market/XRP/open-interest"
+    }
+  ],
+  "derived_checks": {
+    "highest_to_lowest_oi_ratio": 2.406,
+    "mid_to_lowest_oi_ratio": 1.974,
+    "highest_to_mid_oi_ratio": 1.219,
+    "note": "These ratios compare non-synchronized providers with different contract/exchange coverage. They are data-quality diagnostics, not estimates of one canonical OI value."
+  },
+  "event_timeline": [
+    {
+      "date": "2026-10-29",
+      "event": "Binance XRP Ledger hot-wallet incident; approximately 233.46M XRP reported stolen from five Binance-attributed wallets.",
+      "classification": "previously documented forensic claim",
+      "source": "https://www.trmlabs.com/post/inside-binances-6-3-billion-security-incident"
+    },
+    {
+      "date": "2026-11-01",
+      "event": "Binance Recovery Update #4 lists XRP withdrawals on the XRP network in phase one; the announcement says assets are reopened progressively after security checks.",
+      "classification": "confirmed official statement",
+      "source": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda"
+    },
+    {
+      "date": "2026-11-03",
+      "event": "Reuters reports additional withdrawal services across BSC, Ethereum, Solana, XRP and Sui networks effective 04:00 GMT, but does not specify which individual assets are available on each network.",
+      "classification": "secondary report",
+      "source": "https://www.reuters.com/technology/binance-reopen-withdrawals-more-assets-several-networks-2026-11-03/"
+    }
+  ],
+  "corrections": [
+    "Do not say native XRP withdrawals were first restored on November 3: Binance's official November 1 phase-one update already listed XRP on the XRP network.",
+    "The November 3 Reuters report may concern additional assets on the XRP network; asset-by-network mapping is not specified.",
+    "Do not infer stolen XRP sales from exchange withdrawals or from OI changes without transaction-level linkage."
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The 2.4x open-interest spread is mainly coverage/contract-definition and aggregation methodology, not a real economic discrepancy.",
+      "status": "testable",
+      "next_test": "Reconcile raw contract IDs, contract multipliers, USD conversion timestamps, venue coverage and inclusion of USDT/USDC contracts at one pinned cutoff."
+    },
+    {
+      "id": "H2",
+      "statement": "Positive aggregate funding and 77.6% long-account share indicate crowded long positioning, but do not establish net notional leverage or direction.",
+      "status": "testable",
+      "next_test": "Collect notional long/short exposure, top-trader positions, liquidation depth, spot/perp basis and order-book depth."
+    },
+    {
+      "id": "H3",
+      "statement": "Binance withdrawal restoration could redistribute venue activity, but there is no evidence in these snapshots that XRP volume or OI migrated to competitors.",
+      "status": "unknown",
+      "next_test": "Compare synchronized Binance, Bybit, OKX, Coinbase, Kraken and on-chain exchange-tagged flows before/after each withdrawal phase."
+    }
+  ],
+  "data_quality": [
+    "Provider timestamps differ by up to 81 minutes; no synchronized snapshot exists.",
+    "TradRadar's OI coverage is seven exchanges; Kodexius covers seven contracts across five exchanges; JustScreener covers nine exchanges. These scopes are not equivalent.",
+    "Funding rates are exchange- and contract-specific; settlement intervals must be retained.",
+    "Long/short ratios count accounts, not notional exposure.",
+    "Liquidation data is partial: TradRadar says at least $2.68M across five exchanges.",
+    "Mark price is not spot price.",
+    "No canonical OI total is selected and no averaging is performed."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "evaluation_status": "DESIGNED_NOT_EXECUTED",
+  "sources": [
+    "https://tradradar.io/markets/xrp",
+    "https://kodexius.com/data/crypto-derivatives/XRP",
+    "https://justscreener.com/en/market/XRP/open-interest",
+    "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda",
+    "https://www.reuters.com/technology/binance-reopen-withdrawals-more-assets-several-networks-2026-11-03/"
+  ]
+}
