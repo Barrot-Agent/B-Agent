@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Mission Handoff (Run112)
 
-Updated: 2026-11-14 02:06 UTC
+Updated: 2026-11-14 02:13 UTC
 
 **Mission priority 1:** XRP intelligence and measured prediction-engine mastery. **Protected foundation:** Barrot V3 execution, orchestration, safety, verification and external-action controls.
 
@@ -9,19 +9,20 @@ Updated: 2026-11-14 02:06 UTC
 - Repository: `Barrot-Agent/B-Agent`.
 - Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306` (unchanged).
 - Integration branch: `integration/xrp-v3-unified-main-20261112`.
-- Code-bearing integration head verified in Run112: `6b9c8dadc1810e3a0b296a4b713f307ab106bef4`; 2,325 commits ahead of main, zero behind.
-- Recursive tree inspection was complete and not truncated: main 1,381 entries; integration 2,400 entries. Main has 87 workflow files; integration has 88.
-- Consolidated PR #1662: draft/open, mergeable, 1,159 changed files, 336,448 additions, 5,354 deletions; 50 workflow files and seven public web files.
+- Current documentation head before this handoff refresh: `97d35ab5f14b2b41e1a9f75ffa7c38917d8b6be2`; 2,329 commits ahead of main, zero behind.
+- Code-bearing integration head verified in Run112: `6b9c8dadc1810e3a0b296a4b713f307ab106bef4`; 2,325 commits ahead, zero behind.
+- Recursive trees are complete and not truncated: main 1,381 entries; current integration 2,402 entries.
+- Consolidated PR #1662: draft/open, mergeable, 1,161 changed files, 301,520 additions, 5,354 deletions; 50 workflow files and seven public web files.
 - Open PR inventory: 375 (361 drafts, 14 non-drafts). PR #1662 has zero formal reviews, approvals and review threads.
-- Run112 research artifact: `research/xrp_intelligence/20261114T020619Z-run112-market-sec-capital-bootstrap-and-integration-audit.json`.
-- Run112 research artifact commit: `5b31c825270003f9f993d286505d595c831173a1`.
-- No runtime code changed in Run112. Main remains unchanged. No new branch or PR was created.
+- Run112 commits on the existing integration branch: research artifact `5b31c825270003f9f993d286505d595c831173a1`; handoff refresh `d2a1943464e03fc8082ed9d26f464bf02ac42e70`; nine-platform map snapshot `25a23f28371a829bcc71b25834576f0c93dda7e7`; current-map restoration `97d35ab5f14b2b41e1a9f75ffa7c38917d8b6be2`. All are documentation/research updates; no runtime code changed.
+- The previous `nine_platform_capability_authentication_dataflow_map_current.json` was a zero-byte file. Run112 restored it to a 31,096-byte structured map and created the immutable Run112 snapshot `nine_platform_capability_authentication_dataflow_map_run112.json`.
+- Main remains unchanged. No new branch or PR was created.
 
-## 2. Integrated architecture and execution status
+## 2. Integrated architecture and exact-head verification
 
 **DESIGNED:** 48 scheduled public XRP endpoints; read-only main-only ingestion; SHA-256 raw receipts and local cross-run receipt chain; SQLite point-in-time feature store; event timeline and source-independence registry; scenario/counter-hypothesis generation; four deterministic baselines; chronological walk-forward with purge/embargo; temporal calibration and PSI drift diagnostics; paired temporal/source-clustered moving-block bootstrap; v6 fail-closed forecast ledger with Ed25519 evaluator attestation.
 
-**EXECUTED in prior integration work:** paired bootstrap, Bonferroni familywise checks, policy v6, source-cluster minimum safeguards, and regression tests are present on integration. Run112 did not change runtime code.
+**EXECUTED in prior integration work:** paired bootstrap, Bonferroni familywise checks, policy v6, source-cluster minimum safeguards and regression tests. Run112 made documentation/research updates only.
 
 **VERIFIED on code-bearing head `6b9c8dad`:**
 - Full repository suite: 3,626 passed, eight subtests, zero failures; 62.34% inclusive coverage; 108.87 seconds.
@@ -29,50 +30,53 @@ Updated: 2026-11-14 02:06 UTC
 - Wheel build and installed primary mission verification: passed.
 - Dependency audit: five manifest groups passed; zero known vulnerabilities reported.
 - Fail-closed gate: passed with merge disabled.
-- Evidence: full CI 43541249872; dependency audit 43541249830; fail-closed gate 43541249816.
-- Full-suite job 132282075619 and core job 132282075305 both completed successfully. The PR-event core job is explicitly skipped by the integration-branch condition; the push-event full-suite run is the exact-head verification.
-- The Run112 JSON and handoff are documentation-only descendants. Their new head must receive its own exact-head full-suite, dependency and fail-closed verification; do not reuse the parent code-head result as proof for the documentation descendant.
+- Evidence: full CI 43541249872; dependency audit 43541249830; fail-closed gate 43541249816. Full-suite job 132282075619 and core job 132282075305 completed successfully.
 - Main's latest visible Cross Analysis workflow 43543067246 succeeded on unchanged main. The last recorded main full suite passed 747 tests and eight subtests; no newer main full-suite run was verified in Run112.
+
+**Current documentation head `97d35ab5`:**
+- Push CI run 43545147401: in progress at the last poll.
+- Push dependency audit 43545147369: in progress.
+- Push fail-closed gate 43545147377: in progress.
+- PR-event CI 43545153256, dependency audit 43545151117 and fail-closed gate 43545150993: in progress at the last poll.
+- Do not reuse the code-bearing parent's green full-suite result as proof for the documentation descendant. Exact-head verification is pending.
 
 ## 3. Prediction-engine readiness and verified integration gaps
 
-Implemented on integration: read-only scheduled ingestion; SHA-256 receipts/local chain; point-in-time SQLite store; event/source independence; four deterministic baselines; leakage-safe chronological walk-forward; calibration and PSI; paired moving-block bootstrap; fail-closed v6 ledger.
+Implemented on integration: read-only scheduled ingestion; SHA-256 receipts/local chain; point-in-time SQLite store; event/source independence; naive/class-prior, momentum, mean-reversion and volatility baselines; chronological walk-forward; calibration and PSI; paired moving-block bootstrap; fail-closed v6 ledger.
 
-Policy v6 requires candidate-versus-each-of-four-baselines Brier/log-loss comparisons in both independent OOS and shadow cohorts; at least 10,000 bootstrap replicates; at least 100 paired origins per cohort; at least five receipt-backed source clusters; at least five observations per source cluster and no less than the block length; Bonferroni familywise confidence of at least 95% across eight comparisons, requiring at least 99.375% per interval. Every required interval must favor the candidate with its upper bound below zero.
+Policy v6 requires candidate-versus-each-of-four-baselines Brier/log-loss comparisons in independent OOS and shadow cohorts; at least 10,000 bootstrap replicates; at least 100 paired origins per cohort; at least five receipt-backed source clusters; at least five observations per source cluster and no less than the block length; Bonferroni familywise confidence of at least 95% across eight comparisons, requiring at least 99.375% per interval. Every required interval must have an upper bound below zero.
 
-**Run112 code inspection found two concrete integration mismatches:**
+**Run112 code inspection found concrete integration mismatches:**
 
-1. `walk_forward.py` invokes `evaluate_paired_block_bootstrap` with defaults of 1,000 replicates, 30 minimum origins and 95% confidence. The v6 ledger requires 10,000, 100 and 99.375% individual confidence. The default walk-forward output is therefore not policy-v6 admission evidence.
+1. `walk_forward.py` invokes `evaluate_paired_block_bootstrap` with defaults of 1,000 replicates, 30 minimum origins and 95% confidence. The v6 ledger requires 10,000, 100 and 99.375% individual confidence. The default walk-forward output is not policy-v6 admission evidence.
 2. The current walk-forward bootstrap uses `naive_class_prior` as its single benchmark. It does not itself produce a trained candidate's paired comparisons against all four required baselines in both OOS and shadow windows.
+3. The moving-block bootstrap sorts by timestamp but resamples circular row-index blocks without enforcing expected cadence or a maximum elapsed-time gap. Missing-origin gaps can be bridged.
+4. A target record receives a source cluster only when its outcome resolves to exactly one canonical independence group. Multi-publisher composites remain unclustered rather than being arbitrarily assigned. Five groups are feasible only if single-lineage target observations across independent publishers provide sufficient origins per group; this is not demonstrated by current data.
 
-Additional statistical limitation: moving-block bootstrap sorts observations by timestamp but uses circular row-index blocks without enforcing expected cadence or a maximum elapsed-time gap. Missing-origin gaps can be bridged. Add time-gap-aware segmentation and empirical coverage/block-length sensitivity simulations before relying on source-cluster intervals.
-
-Source-cluster semantics remain conservative: a target record receives a cluster only when its outcome resolves to exactly one canonical independence group. Multi-publisher composites remain unclustered rather than being arbitrarily assigned. Five groups are feasible only when single-lineage target observations across independent publishers provide enough origins per group; this has not been demonstrated by the current synchronized dataset.
-
-**No trained XRP-specific candidate model exists.** Current walk-forward results are deterministic-baseline diagnostics. Synchronized historical spot/L2/derivatives/exchange-flow/collateral data, independent WORM storage and trusted timestamp anchoring, and independent shadow outcomes remain insufficient. The ingestion workflow has not executed on main because it remains unmerged.
+No trained XRP-specific candidate model exists. Current walk-forward results are deterministic-baseline diagnostics. Synchronized historical spot/L2/derivatives/exchange-flow/collateral data, independent WORM storage and trusted timestamp anchoring, and independent shadow outcomes remain insufficient. The ingestion workflow has not executed on main because it remains unmerged.
 
 Forecast status: **NOT_ISSUED**. Accuracy: **NOT_EVALUATED**. No directional forecast, paper trade or real-money action.
 
 ## 4. Run112 XRP market, flow and macro observations
 
-Research cutoff: 2026-11-14 02:06:19 UTC. These web/API observations do not have byte-exact Barrot raw-source receipts and are not model-eligible.
+Research cutoff: 2026-11-14 02:06:19 UTC. Web/API observations below do not have byte-exact Barrot raw-source receipts and are not model-eligible.
 
-- OKX XRP-USDT: last 1.0056, bid 1.0056, ask 1.0057, 24h open 1.0324, high 1.0438, low 0.9974, volume 46.95M XRP. Provider event time 01:58:43.467 UTC; age 456.5 seconds at cutoff, outside the 300-second freshness gate.
+- OKX XRP-USDT: last 1.0056, bid 1.0056, ask 1.0057, 24h open 1.0324, high 1.0438, low 0.9974, volume 46.95M XRP. Provider event time 01:58:43.467 UTC; age 456.5 seconds at cutoff, outside the 300-second freshness gate. A later retrieval returned the same timestamp, suggesting response caching; it was not promoted to a raw receipt.
 - Kraken XRP/USD: last 1.00461, bid 1.00479, ask 1.00491; no provider event timestamp. Not eligible for point-in-time admission. No synchronized executable spread is inferred.
 - No synchronized raw spot L2 snapshot was admitted; OKX books and Binance depth endpoints were inaccessible through the retrieval layer.
-- Derivatives: TradRadar at 22:35 UTC reported OI $1.53B, OI-weighted funding +0.0009%/8h, at least $13.47M liquidations (at least $11.73M long), long/short ratio 3.85 and 79.4% long accounts. Kodexius at 19:14 UTC reported $606.72M OI and +0.0069%/8h funding. These are stale and use different venue/contract universes; do not average.
-- ETF source-vintage conflict: XRP Insights' data-download page says Nov 12 is provisional and shows Nov 9–11 at -9.213M XRP; its homepage says Nov 12 settled at -268,644 XRP and Nov 9–12 at about -9.48M XRP. CryptoETF.today initially says Nov 12 is partial +$0.1M from 3/5 funds, then later on the same page says 5/5 reported. Alpha Finance reports zero Nov 12 flow for its five-fund cohort and -$2.8M over 30 sessions. CryptoKeyhole's latest daily-read data ends Nov 11 with -6.628M XRP over its stated window. Different fund universes, issuer-file vintages and missing-file rules; no averaging and no ETF flow feature admitted.
-- XRP Insights' Nov 13 08:01 UTC exchange-wallet scan: 22.26B XRP across 707 wallets/24 exchanges; same-wallet changes -77.3M over seven days and -279.7M over 30 days. Including 517.7M XRP in newly tracked wallets changes the naive 30-day total change to +238.0M XRP. Cold/omnibus storage is included; this is not tradable float or complete exchange accounting.
+- Derivatives: TradRadar at 22:35 UTC reported OI $1.53B, OI-weighted funding +0.0009%/8h, at least $13.47M liquidations (at least $11.73M long), long/short ratio 3.85 and 79.4% long accounts. Kodexius at 19:14 UTC reported $606.72M OI and +0.0069%/8h funding. Stale and different venue/contract universes; do not average.
+- ETF source-vintage conflict: XRP Insights' data page says Nov 12 is provisional and shows Nov 9–11 at -9.213M XRP; its homepage says Nov 12 settled at -268,644 XRP and Nov 9–12 at about -9.48M XRP. CryptoETF.today initially says Nov 12 is partial +$0.1M from 3/5 funds, then later on the same page says 5/5 reported. Alpha Finance reports zero Nov 12 flow for its five-fund cohort and -$2.8M over 30 sessions. CryptoKeyhole's latest daily-read data ends Nov 11 with -6.628M XRP over its stated window. Different fund universes, issuer-file vintages and missing-file rules; no averaging and no ETF flow feature admitted.
+- XRP Insights' Nov 13 08:01 UTC exchange-wallet scan: 22.26B XRP across 707 wallets/24 exchanges; same-wallet changes -77.3M over seven days and -279.7M over 30 days. Including 517.7M XRP in newly tracked wallets changes the naive 30-day total change to +238.0M XRP. Cold/omnibus storage is included; not tradable float or complete exchange accounting.
 - Reuters' Nov 13 report: yen crossed 160 per USD; Japan had spent 15.4T yen intervening in July/August; reported New York Fed operations were about $497M, far below prior approximately $10B indications. Macro/FX context only; no XRP-specific causation established.
 
 ## 5. Run112 institutional, capital and identity findings
 
-**Evernorth Form 10-Q:** SEC accession 000162828026073871, filed Nov 13 at 21:29 UTC, for the quarter ended Sep 30. Its historical financial statements are pre-combination; the Oct 9 closing occurred afterward, and a Pathfinder/combined-company Form 8-K/A remained pending.
+**Evernorth Form 10-Q:** SEC accession 000162828026073871, filed Nov 13 at 21:29 UTC, for the quarter ended Sep 30. Historical financial statements are pre-combination; the Oct 9 closing occurred afterward, and a Pathfinder/combined-company Form 8-K/A remained pending.
 
 - Nine-month net loss: $32.870M; Q3 net income: $155.265M, primarily reflecting a $162.834M fair-value gain on refundable investor advances. Nine-month XRP impairment: $271.037M.
 - Sep 30 pre-close XRP carrying value: $341.887M; unrestricted cash: $91,397.
 - $524.260M refundable investor advances were settled through equity at closing; no cash was repaid.
-- Closing gross Pathfinder XRP stack: 473,276,430 XRP. Pubco reports 71.5% ownership of Pathfinder common units. A pro-rata look-through is approximately 338.393M XRP, a derived economic estimate, not direct legal custody or a verified post-close balance.
+- Closing gross Pathfinder XRP stack: 473,276,430 XRP. Pubco reports 71.5% ownership of Pathfinder common units. Pro-rata look-through is approximately 338.393M XRP, a derived economic estimate, not direct legal custody or a verified post-close balance.
 - Oct 12–Nov 9 warrant exercises: 3,073,366 shares and $35.3M gross cash proceeds. 8,666,279 warrants remain at $11.50; theoretical gross cash if all were exercised is about $99.66M, conditional rather than received.
 - $30M convertible senior PIK note, about $29M net after a $1M advisor fee, at 4% PIK.
 - ELOC: up to 5,218,935 shares at 97% of applicable VWAP, discretionary/conditional; zero proceeds disclosed as of Nov 9.
@@ -104,7 +108,7 @@ Research cutoff: 2026-11-14 02:06:19 UTC. These web/API observations do not have
 | Kaggle | Untested; no submission |
 | Databricks | HTTP 403 previously; no write verified |
 
-LunaRoute is separate from the nine platforms. Remote MCP is disabled on integration but enabled on main; endpoint authentication is unverified. No external-model dispatch, nine-platform evidence exchange or data transfer occurred.
+LunaRoute is separate from the nine platforms. Remote MCP is disabled on integration but enabled on main; endpoint authentication is unverified. No external-model dispatch, nine-platform evidence exchange or data transfer occurred. The current nine-platform map has been restored from a zero-byte placeholder and now records Run112 observations.
 
 ## 7. Security, merge decision and backlog
 
@@ -113,7 +117,7 @@ LunaRoute is separate from the nine platforms. Remote MCP is disabled on integra
 - Main OpenCode retains remote LunaRoute MCP and write-capable edit/bash/webfetch; integration has safer controls.
 - Main Barrot Sync previously masked missing `httpx`, skipped synchronization and performed a no-op push. Main Pillars Consistency remains failed on GitHub App configuration, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
 - GitHub Pages deployment is automatic; seven changed public web files require publication authorization.
-- Semantic reconciliation of all 1,159 changed paths, particularly 50 workflows and seven public web files, remains incomplete.
+- Semantic reconciliation of all 1,161 changed paths, particularly 50 workflows and seven public web files, remains incomplete.
 
 Backlog:
 - #1662: blocked integration; draft, zero approvals.
@@ -123,17 +127,18 @@ Backlog:
 - #1650–#1644 and #1255/#1254: dependency candidates blocked pending individual current-main validation.
 - No source PR was closed.
 
-**Decision: NO MERGE.** Draft status, zero approvals, incomplete semantic review, least-privilege failure, branch-protection visibility, integration branch protection and public Pages publication authorization remain blockers despite exact code-head tests passing.
+**Decision: NO MERGE.** Draft status, zero approvals, incomplete semantic review, least-privilege failure, branch-protection visibility, integration branch protection and public Pages publication authorization remain blockers despite successful exact code-head tests.
 
 ## 8. Next concrete actions
 
-1. Correct the walk-forward/bootstrap parameter mismatch and add v6 policy-level regression tests for 10,000 resamples, 100 origins, 99.375% individual confidence and candidate-versus-each-baseline OOS/shadow comparisons.
-2. Implement time-gap-aware block segmentation and empirical coverage, cluster-count and block-length sensitivity tests.
-3. Define an auditable multi-source outcome-panel estimand without assigning composite outcomes to an arbitrary publisher.
-4. Acquire synchronized historical spot/L2/derivatives/flows/collateral data with byte-exact receipts and independent retention/timestamp anchoring.
-5. Complete semantic review of 1,159 changed paths, prioritizing 50 workflows and seven public web files.
-6. Resolve least privilege, branch-protection visibility, remote MCP containment and Pages publication authorization.
-7. Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
+1. Complete exact-head full-suite, dependency and fail-closed verification on the latest documentation head after map restoration.
+2. Correct the walk-forward/bootstrap parameter mismatch and add v6 policy-level regression tests for 10,000 resamples, 100 origins, 99.375% individual confidence and candidate-versus-each-baseline OOS/shadow comparisons.
+3. Implement time-gap-aware block segmentation and empirical coverage, cluster-count and block-length sensitivity tests.
+4. Define an auditable multi-source outcome-panel estimand without assigning composite outcomes to an arbitrary publisher.
+5. Acquire synchronized historical spot/L2/derivatives/flows/collateral data with byte-exact receipts and independent retention/timestamp anchoring.
+6. Complete semantic review of 1,161 changed paths, prioritizing 50 workflows and seven public web files.
+7. Resolve least privilege, branch-protection visibility, remote MCP containment and Pages publication authorization.
+8. Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
 
