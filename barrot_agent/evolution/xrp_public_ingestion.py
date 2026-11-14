@@ -32,8 +32,8 @@ from .event_timeline import EventTimelineError, build_event_timeline
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.26"
-PARSER_VERSION = "xrp-public-market-v3.25"
+ADAPTER_VERSION = "xrp-public-market-v3.27"
+PARSER_VERSION = "xrp-public-market-v3.26"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
@@ -1976,22 +1976,138 @@ def _coinbase_candle_page_url(start: datetime, end: datetime) -> str:
     )
     return f"{parts.scheme}://{parts.netloc}{parts.path}?{query}"
 
-def _raw_only_coinbase_book(payload: Any, *, source_id: str, url: str, digest: str, captured: datetime):
+def _parse_rest_depth_snapshot(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None,
+    venue: str,
+    instrument: str,
+    currency_pair: str,
+    quote_unit: str,
+    feature_prefix: str,
+    sequence_field: str,
+    sequence_minimum: int,
+):
+    """Parse a timestamped REST L2 snapshot without claiming WebSocket continuity."""
     if not isinstance(payload, Mapping):
-        raise XRPIngestionError("Coinbase order-book response must be an object")
-    sequence = payload.get("sequence")
-    if isinstance(sequence, bool) or not isinstance(sequence, int) or sequence <= 0:
-        raise XRPIngestionError("Coinbase order-book sequence is invalid")
-    bids, asks = payload.get("bids"), payload.get("asks")
-    if not isinstance(bids, list) or not bids or not isinstance(asks, list) or not asks:
-        raise XRPIngestionError("Coinbase order book must contain bids and asks")
-    for side, rows in (("bid", bids), ("ask", asks)):
+        raise XRPIngestionError(f"{venue} order-book response must be an object")
+    sequence = payload.get(sequence_field)
+    if isinstance(sequence, bool) or not isinstance(sequence, int) or sequence < sequence_minimum:
+        raise XRPIngestionError(f"{venue} order-book sequence is invalid")
+    bids_raw, asks_raw = payload.get("bids"), payload.get("asks")
+    if not isinstance(bids_raw, list) or not bids_raw or not isinstance(asks_raw, list) or not asks_raw:
+        raise XRPIngestionError(f"{venue} order book must contain non-empty bids and asks")
+
+    def parse_levels(rows: list[Any], side: str) -> list[tuple[float, float]]:
+        levels = []
         for row in rows:
             if not isinstance(row, list) or len(row) < 2:
-                raise XRPIngestionError(f"Coinbase {side} level schema mismatch")
-            _number(row[0], f"Coinbase {side} price", allow_zero=False)
-            _number(row[1], f"Coinbase {side} quantity", allow_zero=False)
-    return [], None, False, "coinbase_book_snapshot_has_no_timestamp_or_websocket_sequence_bridge"
+                raise XRPIngestionError(f"{venue} {side} level schema mismatch")
+            price = _number(row[0], f"{venue} {side} price", allow_zero=False)
+            quantity = _number(row[1], f"{venue} {side} quantity", allow_zero=False)
+            levels.append((price, quantity))
+        return levels
+
+    bids, asks = parse_levels(bids_raw, "bid"), parse_levels(asks_raw, "ask")
+    if any(bids[i][0] < bids[i + 1][0] for i in range(len(bids) - 1)):
+        raise XRPIngestionError(f"{venue} bid levels are not sorted in descending price order")
+    if any(asks[i][0] > asks[i + 1][0] for i in range(len(asks) - 1)):
+        raise XRPIngestionError(f"{venue} ask levels are not sorted in ascending price order")
+    best_bid, best_ask = bids[0][0], asks[0][0]
+    if best_ask <= best_bid:
+        raise XRPIngestionError(f"{venue} order book is crossed or locked")
+
+    source_time = _from_http_date(http_date)
+    if source_time is None:
+        source_time = captured
+        eligible, reason, quality = False, "missing_or_invalid_http_date_snapshot_time", "unverified"
+    else:
+        if source_time > captured:
+            raise XRPIngestionError(f"{venue} HTTP Date is later than capture time")
+        eligible, reason, quality = _live_eligibility(source_time, captured, MAX_ORDERBOOK_AGE_SECONDS)
+
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    mid = (best_bid + best_ask) / 2.0
+    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    features = [
+        ("best_bid", best_bid, f"{quote_unit}/XRP"),
+        ("best_ask", best_ask, f"{quote_unit}/XRP"),
+        ("mid_price", mid, f"{quote_unit}/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+    ]
+    for band in (10, 50, 100):
+        bid_depth = sum(price * quantity for price, quantity in bids if price >= mid * (1 - band / 10000.0))
+        ask_depth = sum(price * quantity for price, quantity in asks if price <= mid * (1 + band / 10000.0))
+        total = bid_depth + ask_depth
+        imbalance = (bid_depth - ask_depth) / total if total > 0 else 0.0
+        features.extend([
+            (f"bid_depth_{band}bps", bid_depth, quote_unit),
+            (f"ask_depth_{band}bps", ask_depth, quote_unit),
+            (f"depth_imbalance_{band}bps", imbalance, "ratio"),
+        ])
+
+    limitations = [
+        f"Single {venue} {instrument} REST order-book snapshot; not global or consolidated liquidity.",
+        f"{venue} {sequence_field} is retained in the raw receipt, but no WebSocket sequence bridge is maintained; this is a point-in-time snapshot, not continuous book reconstruction.",
+        f"HTTP Date is a server response timestamp, not an exchange matching-engine timestamp; {quote_unit} depth is not converted to USD where applicable.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.{feature_prefix}.orderbook.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group=feature_prefix,
+            venue=venue,
+            instrument=instrument,
+            currency_pair=currency_pair,
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in features
+    ]
+    return records, event_s, eligible, reason
+
+
+def _parse_coinbase_book(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    return _parse_rest_depth_snapshot(
+        payload,
+        source_id=source_id,
+        url=url,
+        digest=digest,
+        captured=captured,
+        http_date=http_date,
+        venue="Coinbase",
+        instrument="XRP-USD spot",
+        currency_pair="XRP/USD",
+        quote_unit="USD",
+        feature_prefix="coinbase",
+        sequence_field="sequence",
+        sequence_minimum=1,
+    )
+
+
+
 
 
 
@@ -2983,10 +3099,30 @@ def _parse_bybit_depth(
     return records, event_s, eligible, reason
 
 
-def _raw_only_binance_depth(payload: Any, **_kwargs):
-    if not isinstance(payload, Mapping) or "lastUpdateId" not in payload:
-        raise XRPIngestionError("Binance depth response shape mismatch")
-    return [], None, False, "sequence_id_present_but_server_timestamp_absent_raw_only"
+def _parse_binance_depth(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    return _parse_rest_depth_snapshot(
+        payload,
+        source_id=source_id,
+        url=url,
+        digest=digest,
+        captured=captured,
+        http_date=http_date,
+        venue="Binance",
+        instrument="XRPUSDT spot",
+        currency_pair="XRP/USDT",
+        quote_unit="USDT",
+        feature_prefix="binance",
+        sequence_field="lastUpdateId",
+        sequence_minimum=0,
+    )
 
 
 def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwargs):
@@ -4288,7 +4424,7 @@ PARSERS = {
     "binance_perp_global_long_short_ratio": _parse_binance_global_long_short_ratio,
     "coinbase_spot_ticker": _parse_coinbase_ticker,
     "coinbase_spot_candles": _parse_coinbase_candles,
-    "coinbase_spot_book": _raw_only_coinbase_book,
+    "coinbase_spot_book": _parse_coinbase_book,
     "bitbank_spot_circuit_break": _parse_bitbank_circuit_break,
     "bitbank_spot_transactions": _parse_bitbank_transactions,
     "bitbank_spot_ticker": _parse_bitbank_ticker,
@@ -4304,7 +4440,7 @@ PARSERS = {
     "bybit_linear_funding_history": _parse_bybit_linear_funding_history,
     "deribit_xrp_usdc_perpetual_ticker": _parse_deribit_xrp_usdc_perpetual_ticker,
     "deribit_xrp_usdc_perpetual_order_book": _parse_deribit_xrp_usdc_perpetual_order_book,
-    "binance_spot_depth": _raw_only_binance_depth,
+    "binance_spot_depth": _parse_binance_depth,
     "xrp_etf_flows_aggregator": _raw_only_xrp_insights_etf_flows,
     "xrp_exchange_balances_json": _raw_only_xrp_exchange_balances,
     "xrp_etf_flows_csv": _raw_only_xrp_insights_etf_csv,
@@ -4855,7 +4991,7 @@ def run_ingestion(
                 "digest": digest,
                 "captured": captured,
             }
-            if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
+            if source_id in {"coinbase_spot_ticker", "coinbase_spot_book", "binance_spot_depth", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
                 parser_kwargs["http_date"] = response.get("http_date")
             if source_id in {"bitbank_spot_ticker", "bitbank_spot_depth"}:
                 parser_kwargs["circuit_break_info"] = bitbank_circuit_break_payload

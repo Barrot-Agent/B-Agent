@@ -693,8 +693,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.26"
-    assert summary["parser_version"] == "xrp-public-market-v3.25"
+    assert summary["adapter_version"] == "xrp-public-market-v3.27"
+    assert summary["parser_version"] == "xrp-public-market-v3.26"
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -705,6 +705,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.last_price" and item["unit"] == "USDT/XRP" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.coinbase.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.binance.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.bybit.last_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.bybit.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert not any(item["feature_id"].startswith("xrp.network.xrpl.") for item in snapshot["records"])
@@ -721,8 +723,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert any(item["feature_id"] == "xrp.perpetual.binance.funding_rate" and item["value"] < 0 for item in historical_derivatives)
 
     raw_only = json.loads((tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8"))
-    assert any(item["source_id"] == "binance_spot_depth" for item in raw_only)
-    assert any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
+    assert not any(item["source_id"] == "binance_spot_depth" for item in raw_only)
+    assert not any(item["source_id"] == "coinbase_spot_book" for item in raw_only)
     assert not any(item["source_id"] == "okx_spot_depth" for item in raw_only)
     assert any(item["source_id"] == "xrp_etf_flows_aggregator" for item in raw_only)
     assert any(item["source_id"] == "xrp_exchange_balances_json" for item in raw_only)
@@ -863,6 +865,65 @@ def test_kraken_depth_without_server_date_is_raw_only(tmp_path):
     assert summary["snapshot_status"] == "verified"
     assert any(item["source_id"] == "kraken_spot_depth" for item in raw_only)
     assert not any(item["feature_id"].startswith("xrp.spot.kraken.orderbook.") for item in snapshot["records"])
+
+
+@pytest.mark.parametrize(
+    ("source_id", "feature_prefix"),
+    [("coinbase_spot_book", "coinbase"), ("binance_spot_depth", "binance")],
+)
+def test_rest_depth_uses_http_date_for_point_in_time_features(tmp_path, source_id, feature_prefix):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    summary = run_ingestion(tmp_path / feature_prefix, fetcher=_fake_fetcher(captured), now=captured)
+    snapshot = json.loads((tmp_path / feature_prefix / "snapshot.json").read_text(encoding="utf-8"))
+    mid = next(item for item in snapshot["records"] if item["feature_id"] == f"xrp.spot.{feature_prefix}.orderbook.mid_price")
+    bid = next(item for item in snapshot["records"] if item["feature_id"] == f"xrp.spot.{feature_prefix}.orderbook.bid_depth_10bps")
+    ask = next(item for item in snapshot["records"] if item["feature_id"] == f"xrp.spot.{feature_prefix}.orderbook.ask_depth_10bps")
+    assert summary["snapshot_status"] == "verified"
+    assert mid["value"] == pytest.approx(1.290)
+    assert mid["event_time_utc"] == "2026-11-04T12:29:55.000000Z"
+    assert mid["source_data_as_of_utc"] == mid["event_time_utc"]
+    assert mid["model_eligible"] is True
+    assert bid["value"] == pytest.approx(1289.0)
+    assert ask["value"] == pytest.approx(1549.2)
+    assert any("no WebSocket sequence bridge" in item for item in mid["limitations"])
+
+
+@pytest.mark.parametrize("source_id", ["coinbase_spot_book", "binance_spot_depth"])
+def test_rest_depth_without_http_date_remains_raw_only(tmp_path, source_id):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+
+    def no_date(candidate_id: str, url: str):
+        response = fetcher(candidate_id, url)
+        if candidate_id == source_id:
+            response.pop("http_date", None)
+        return response
+
+    summary = run_ingestion(tmp_path / f"{source_id}-no-date", fetcher=no_date, now=captured)
+    snapshot = json.loads((tmp_path / f"{source_id}-no-date" / "snapshot.json").read_text(encoding="utf-8"))
+    raw_only = json.loads((tmp_path / f"{source_id}-no-date" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    assert summary["snapshot_status"] == "verified"
+    assert any(item["source_id"] == source_id for item in raw_only)
+    feature_prefix = "coinbase" if source_id == "coinbase_spot_book" else "binance"
+    assert not any(item["feature_id"].startswith(f"xrp.spot.{feature_prefix}.orderbook.") for item in snapshot["records"])
+
+
+@pytest.mark.parametrize("source_id", ["coinbase_spot_book", "binance_spot_depth"])
+def test_rest_depth_crossed_snapshot_remains_raw_only(tmp_path, source_id):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    fetcher = _fake_fetcher(captured)
+
+    def crossed(candidate_id: str, url: str):
+        response = fetcher(candidate_id, url)
+        if candidate_id == source_id:
+            response["payload"]["asks"][0][0] = "1.289"
+            response["raw_bytes"] = json.dumps(response["payload"], separators=(",", ":")).encode("utf-8")
+        return response
+
+    summary = run_ingestion(tmp_path / f"{source_id}-crossed", fetcher=crossed, now=captured)
+    raw_only = json.loads((tmp_path / f"{source_id}-crossed" / "raw_only_sources.json").read_text(encoding="utf-8"))
+    assert summary["snapshot_status"] == "verified"
+    assert any(item["source_id"] == source_id and item["reason"] == "source_processing_failure:XRPIngestionError" for item in raw_only)
 
 
 def test_kraken_ticker_snapshot_uses_http_date_not_last_trade_event(tmp_path):
