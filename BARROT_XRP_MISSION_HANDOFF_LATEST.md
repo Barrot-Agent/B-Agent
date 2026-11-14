@@ -1,3 +1,70 @@
+# Run 131 — 2026-11-14 — Exact-head CI, current market snapshot, Evernorth/SBI ownership, Circle/Coinbase and platform-map repair
+
+**Repository:** `Barrot-Agent/B-Agent`  
+**Main SHA:** `fb272b40966834754ec686f9ed3ab94123f09306`  
+**Integration PR:** [#1662 — Barrot V3 + XRP Intelligence](https://github.com/Barrot-Agent/B-Agent/pull/1662)  
+**Integration head before this evidence-only commit:** `847a20732032ed6fc62e3689a41eb1f129f64904`  
+**Run timestamp:** 2026-11-14T15:07:00.423Z
+
+## Verified repository and CI state
+
+- Main tree: 1,381 entries, 87 workflows, 44 XRP-named paths.
+- Integration tree: 2,441 entries, 88 workflows, 977 XRP-named paths.
+- PR #1662: 1,200 changed files, 50 workflow files, 455 Python files, 385 test files, 662 research files and 7 public web files; 2,397 commits ahead and zero behind current main.
+- Open PR inventory: 375 total; 361 drafts and 14 non-drafts. All four GitHub search pages were retrieved.
+- Exact-head full suite on `847a20732032ed6fc62e3689a41eb1f129f64904`: **3,641 passed, 8 subtests passed, 62.47% inclusive coverage**. Core suite: 742 passed, 8 subtests passed. Wheel built and installed successfully. Five dependency manifest groups audited; zero known vulnerabilities. Fail-closed gate passed with merging disabled.
+- PR-triggered CI was skipped by the integration-branch condition; the authoritative full-suite run was the exact-head push event. The new Run131 evidence commit contains only research/map/handoff files and requires a fresh exact-head run.
+
+## Security and merge decision
+
+PR #1662 remains draft with zero formal reviews, zero approvals and no requested reviewers. It is mergeable at the Git level but not ready for merge. Branch-protection read returned HTTP 403; the only visible repository ruleset, “Fall Back,” is disabled, so effective classic branch protection is unknown. `.github/CODEOWNERS` assigns `* @Barrot-Agent`, not an independent human reviewer.
+
+A previous main push triggered public Pages publication. Publication authorization remains unresolved. Do not merge or deploy until that side effect is explicitly authorized and protection/review requirements are independently verified.
+
+Main's Pillars Consistency Check failed because GitHub App workflow credentials were missing, Databricks returned HTTP 403 and the Hugging Face Space reported BUILD_ERROR. Main Cross Analysis succeeded. No credentials were read or changed.
+
+Main still contains the false-green Barrot Sync workflow and a paper-trader state with an open BTC position whose product identity is null. The integration branch quarantines Barrot Sync and replaces the paper-trader workflow with explicit confirmation, exact-main-SHA pinning, product-identity preflight and artifact-only output. No paper trade was run.
+
+## XRP spot snapshot — not feature-admissible
+
+At 2026-11-14 15:00:15.260 UTC, direct public ticker responses showed Bybit XRPUSDT at 0.9827 (response timestamp 14:25:30.285 UTC; 34m45s old), OKX XRP-USDT at 0.9811 (timestamp 14:55:34.067 UTC; 4m41s old), and Kraken XRPUSD at 0.98019 with no exchange event timestamp. The max/min last-price gap was approximately 0.256%, but the observations are asynchronous and mix USD and USDT. No synchronized L2 depth, open interest or funding data was captured. These observations are not arbitrage evidence and were not admitted to the feature store. The Bybit adapter remains mock-tested; these one-off API reads did not execute the adapter.
+
+## Primary-source capital and institutional corrections
+
+- Evernorth's October 9 closing table reports SBI at 21.4% of common stock and 39.9% of voting power. The October 22 share snapshot reports 36.1% of Class A voting shares, 7.5% of Class C non-voting shares and 20.51% combined common ownership. The 39.9% figure was actual voting power at closing and also the threshold that caused excess shares to be issued as Class C; it is not the later voting percentage.
+- Circle's Q3 filing identifies Circle SBI Japan K.K. / SBI Circle Holdings K.K. as the same 50/50 Japanese JV. Circle and SBI each contributed about $1.5m equivalent. Circle consolidates the VIE; no significant operating results were reported through September 30, 2026.
+- Circle's ARC presale generated $242.2m gross proceeds, of which $181.8m was recognized as revenue and $61.4m remained deferred. IDG's $25m is included, not additional. SBI's specific allocation is undisclosed.
+- Circle reported USDC circulation of $73.879bn at September 30, a Q3 average of $73.264bn and a 3.5% reserve return rate. Coinbase distribution costs were $331.3m in Q3 and $986.6m over nine months.
+- Coinbase renewed the Circle arrangement on the same terms. Coinbase's Q3 filing has a material internal mismatch: the USDC rewards table shows increases of $17.675m for Q3 and $47.655m for nine months, while the narrative says $71.6m and $175.7m. Preserve the discrepancy; do not net or reconcile it without issuer clarification.
+- SBIC East, Central and West are Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies. Their own profiles identify them as sister companies, separate statutory corporations—not SBI Holdings. No primary evidence establishes an OpenAI commercial partnership.
+- Exact-phrase searches produced no new primary-source identification for “ASK Coin,” “actual capital,” or “SBIC, ChatGPT SBIC.” Treat “actual capital” as an accounting taxonomy, not a market signal.
+- Dr. Kamilah Stevenson's first-party site does not link a YouTube channel. Candidate channels remain unverified; no personal-channel video inventory was created.
+
+## Nine-platform map
+
+The prior current-map JSON was empty (0 bytes). Run131 repairs it from the populated Run130 map and records all nine platforms. Only the current ChatGPT-to-GitHub connector is authenticated; its admin/push permissions are overprivileged for read-only research. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not verified as live integrations. No external task dispatch or evidence exchange occurred.
+
+## Backlog and forecast status
+
+- #1662: active integration, blocked by draft/review/publication requirements.
+- #1660, #1640, #1642 and #1643: supersession candidates; path overlap does not prove blob equivalence.
+- #1661: its `BARROT_SYNC.md` path exists in #1662 but its content differs. The source branch retains roughly 144KB of historical run history absent from the 2KB compact integration version. Keep it open until the unique history is archived or reconciled.
+- #1653: unique but blocked; 17 commits behind main, eight unresolved review threads and six high-severity issues summarized by Copilot review, plus CodeRabbit nitpicks.
+- Preserve unique work in #1611, #1614, #1615, #1655, #1659 and #1269. Dependency candidates #1644–#1650 require exact content reconciliation; older #1254/#1255 are superseded candidates, not closed.
+- No PRs were created or closed. No merge, deployment, secret rotation, paper trade, real-money action, branch rewrite or external model dispatch occurred.
+- **Forecast: NOT_ISSUED.** The dataset lacks synchronized spot/L2/derivatives coverage, verified real-data out-of-sample lift and sufficient shadow outcomes.
+
+## Next concrete action
+
+Re-run exact-head CI after this evidence-only commit; obtain independent human review; resolve Pages publication authorization and branch-protection visibility; reconcile #1661's unique history; then merge #1662 only when every gate is satisfied. After merge, fetch main, verify the merge SHA and files, run main CI, and verify automatic workflow effects. Keep all directional XRP forecasts blocked until synchronized historical data and walk-forward superiority are demonstrated.
+
+**DESIGNED:** ingestion, receipts, point-in-time feature store, baselines, calibration, drift and forecast ledger.  
+**EXECUTED:** exact-head test suite, dependency/security audit, fail-closed gate and one-off public ticker reads.  
+**VERIFIED:** 3,641 full-suite tests, wheel installation, five-manifest audit, zero known vulnerabilities and current source reconciliations.  
+**NOT VERIFIED:** continuous ingestion on main, WORM retention, predictive lift, shadow outcomes and live multi-venue depth.
+
+---
+
 ## Run126 main-automation safety and filing follow-up — 2026-11-14T12:21:03Z
 
 ### Main Barrot Sync: false-green execution; key characters not printed
