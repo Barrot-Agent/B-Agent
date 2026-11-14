@@ -38,20 +38,27 @@ def test_related_sbi_domains_share_one_publisher_group():
     assert canonical_publisher_group("https://www.sbivc.co.jp/") == "sbi-group"
 
 
-def test_regional_sbic_east_central_west_are_not_misclassified_as_sbi_holdings():
-    regional_domains = {
-        "https://www.sbic.co.jp/company/": "sbic.co.jp",
-        "https://www.sbic-cj.co.jp/company/": "sbic-cj.co.jp",
-        "https://www.sbic-wj.co.jp/profiles/profile/": "sbic-wj.co.jp",
-    }
-    publisher_groups = {
-        canonical_publisher_group(url) for url in regional_domains
-    }
+def test_regional_sbic_east_central_west_share_one_group_separate_from_sbi():
+    regional_urls = [
+        "https://www.sbic.co.jp/company/",
+        "https://www.sbic-cj.co.jp/company/",
+        "https://www.sbic-wj.co.jp/profiles/profile/",
+    ]
 
-    assert publisher_groups == set(regional_domains.values())
-    assert "sbi-group" not in publisher_groups
-    for url, expected_group in regional_domains.items():
-        assert canonical_publisher_group(url) == expected_group
+    assert {
+        canonical_publisher_group(url) for url in regional_urls
+    } == {"sbic-regional"}
+
+    sources = [
+        {
+            "source_id": f"sbic-region-{index}",
+            "independence_group": f"sbic-region-{index}",
+            "source_uri": url,
+        }
+        for index, url in enumerate(regional_urls)
+    ]
+    assert canonical_independence_groups(sources) == ["publisher:sbic-regional"]
+    assert canonical_publisher_group("https://www.sbigroup.co.jp/news") == "sbi-group"
 
 
 def test_same_publisher_cannot_be_split_into_multiple_declared_groups():
