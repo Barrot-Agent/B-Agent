@@ -1,0 +1,343 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T161000Z-circle-binance-derivatives-scope-macro-update",
+  "artifact_type": "xrp_institutional_relationship_and_derivatives_scope_snapshot",
+  "captured_at_utc": "2026-11-02T16:10:00Z",
+  "evidence_cutoff_utc": "2026-11-02T16:10:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": {
+    "research": "EXECUTED",
+    "source_readback": "PENDING",
+    "market_snapshot": "EXECUTED_FROM_PUBLIC_PROVIDER_PAGES",
+    "raw_exchange_reconciliation": "NOT_EXECUTED",
+    "raw_xrpl_reconciliation": "NOT_EXECUTED",
+    "forecast": "NOT_ISSUED",
+    "real_money_use": "PROHIBITED_PENDING_OUT_OF_SAMPLE_AND_SHADOW_VALIDATION"
+  },
+  "sources": [
+    {
+      "id": "CIRCLE_USDC_ECONOMICS",
+      "publisher": "Circle",
+      "class": "official_company_blog_claim",
+      "published_at": "2026-10-16",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "independence_group": "CIRCLE_ISSUER_DISCLOSURE"
+    },
+    {
+      "id": "CIRCLE_BINANCE_100M",
+      "publisher": "Circle Investor Relations",
+      "class": "official_joint_company_announcement",
+      "published_at": "2026-09-22",
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "independence_group": "CIRCLE_BINANCE_ANNOUNCEMENT"
+    },
+    {
+      "id": "CIRCLE_Q2",
+      "publisher": "Circle",
+      "class": "official_company_results",
+      "published_at": "2026-08-05",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "independence_group": "CIRCLE_Q2_ISSUER_DISCLOSURE"
+    },
+    {
+      "id": "CIRCLE_Q3_EVENT",
+      "publisher": "Circle Investor Relations",
+      "class": "official_event_notice",
+      "published_at": "2026-10-07",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "independence_group": "CIRCLE_IR"
+    },
+    {
+      "id": "CIRCLE_Q2_10Q",
+      "publisher": "Circle / SEC EDGAR",
+      "class": "official_sec_filing",
+      "filed_at": "2026-08-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "independence_group": "CIRCLE_Q2_ISSUER_DISCLOSURE"
+    },
+    {
+      "id": "TRADRADAR_XRP",
+      "publisher": "TradRadar",
+      "class": "third_party_exchange_aggregation",
+      "observation_at_utc": "2026-11-02T15:45:00Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "independence_group": "TRADRADAR_DERIVATIVES"
+    },
+    {
+      "id": "BENTLEY_XRP",
+      "publisher": "Bentley Markets",
+      "class": "third_party_exchange_aggregation",
+      "observation_at_utc": "2026-11-02T15:57:00Z",
+      "url": "https://www.bentleymarkets.com/tools/open-interest",
+      "independence_group": "BENTLEY_DERIVATIVES"
+    },
+    {
+      "id": "TRDESK_XRP",
+      "publisher": "TRdesk",
+      "class": "third_party_exchange_aggregation",
+      "observation_at_utc": null,
+      "url": "https://trdesk.com/open-interest/xrp",
+      "independence_group": "TRDESK_DERIVATIVES",
+      "timestamp_note": "Current values retrieved during this run; page did not expose an exact refresh timestamp."
+    },
+    {
+      "id": "REUTERS_MACRO",
+      "publisher": "Reuters",
+      "class": "dated_macro_geopolitical_reporting",
+      "published_at": "2026-11-02",
+      "url": "https://www.reuters.com/world/india/gold-rises-softer-oil-markets-parse-fed-signals-2026-11-02/",
+      "independence_group": "REUTERS_MACRO_REPORTING"
+    }
+  ],
+  "circle_h1_2026": {
+    "issuer_reported": [
+      {
+        "metric": "USDC gross onchain transaction volume",
+        "value": 36000000000000,
+        "unit": "USD",
+        "period": "H1 2026",
+        "qualifier": "more than",
+        "classification": "gross_repeated_activity"
+      },
+      {
+        "metric": "Combined gross USDC minting and redemption",
+        "value": 315000000000,
+        "unit": "USD",
+        "period": "H1 2026",
+        "qualifier": "more than",
+        "classification": "gross_two_way_issuer_flow"
+      },
+      {
+        "metric": "USDC share of global stablecoin transaction volume",
+        "value": 77,
+        "unit": "percent",
+        "date": "2026-06",
+        "classification": "issuer_reported_market_share"
+      },
+      {
+        "metric": "Prior-year comparison",
+        "value": 60,
+        "unit": "percent",
+        "date": "2025-06",
+        "classification": "issuer_reported_market_share"
+      },
+      {
+        "metric": "Distribution partners and transaction costs",
+        "value": 819000000,
+        "unit": "USD",
+        "period": "H1 2026",
+        "classification": "combined_cost_claim"
+      },
+      {
+        "metric": "Reinvestment",
+        "value": 473000000,
+        "unit": "USD",
+        "period": "H1 2026",
+        "classification": "issuer_blog_reinvestment_claim"
+      },
+      {
+        "metric": "Net profit per revenue dollar",
+        "value": 0.07,
+        "unit": "USD_per_USD",
+        "period": "H1 2026",
+        "classification": "issuer_blog_summary_claim"
+      }
+    ],
+    "accounting_crosswalk": {
+      "sec_distribution_and_transaction_costs_h1_usd": 815800000,
+      "sec_distribution_transaction_and_other_costs_h1_usd": 819300000,
+      "sec_coinbase_related_distribution_costs_h1_usd": 655300000,
+      "sec_coinbase_related_distribution_costs_q2_usd": 324600000,
+      "caveat": "Circle's blog rounds a combined $819M partner-and-transaction figure. The 10-Q distinguishes $815.8M distribution and transaction costs, $819.3M including other costs, and $655.3M Coinbase-related distribution costs. The $819M is not all paid to Coinbase or necessarily all paid to partners."
+    },
+    "capital_boundary": "Gross onchain volume and gross two-way mint/redemption are not net issuance, new external capital or unique settlement. No route-level external-settlement breakdown is supplied."
+  },
+  "circle_binance": {
+    "equity_investor": "Binance",
+    "equity_issuer": "Circle",
+    "strategic_equity_investment_usd": 100000000,
+    "announced_at": "2026-09-22",
+    "commercial_agreement_years": 5,
+    "agreement_focus": "Expand USDC access and promotion, especially across emerging markets.",
+    "circle_role": "Provide infrastructure services supporting holding and use of USDC.",
+    "binance_role": "Promote, increase awareness and integrate USDC on its platform.",
+    "share_transfer_restriction": "Circle's announcement says Binance agreed not to transfer the shares for up to two years from closing, subject to customary exceptions.",
+    "xrp_relationship": "Indirect market-structure connection only. Binance is an XRP venue; the disclosed investment and commercial agreement focus on USDC. No XRP-specific investment, purchase commitment or XRP settlement agreement is disclosed."
+  },
+  "xrp_derivatives": {
+    "observations": [
+      {
+        "provider": "TradRadar",
+        "observation_at_utc": "2026-11-02T15:45:00Z",
+        "scope": "Perpetual futures on Binance, Bybit, OKX, Bitget, Gate, MEXC and Hyperliquid",
+        "open_interest_usd": 1920000000,
+        "oi_change_24h_percent": 1.08,
+        "mark_price_usd": 1.2556,
+        "price_change_24h_percent": 0.33,
+        "funding_percent_per_8h": 0.0076,
+        "liquidations_24h_min_usd": 1320000,
+        "long_liquidations_usd": 925410,
+        "short_liquidations_usd": 391170,
+        "long_short_account_ratio": 3.56,
+        "long_account_share_percent": 78.1,
+        "delay_minutes": 15,
+        "caveat": "Liquidation feed is partial; account ratio is not notional exposure."
+      },
+      {
+        "provider": "Bentley Markets",
+        "observation_at_utc": "2026-11-02T15:57:00Z",
+        "scope": "Perpetual contracts only; excludes quarterly futures and options; 17 exchanges with unverifiable reports excluded",
+        "open_interest_usd": 1630000000,
+        "oi_change_24h_percent": 1.2,
+        "binance_share_percent": 21.7,
+        "seven_day_high_usd": 1770000000,
+        "seven_day_low_usd": 1540000000
+      },
+      {
+        "provider": "TRdesk",
+        "observation_at_utc": null,
+        "scope": "Perpetual swaps and quarterly futures; 26 exchanges",
+        "open_interest_usd": 2690000000,
+        "oi_change_24h_percent": 0.68,
+        "open_interest_xrp": 2157328783.38,
+        "largest_venue": "CME",
+        "largest_venue_share_percent": 20.3,
+        "venue_rows": [
+          {
+            "venue": "CME",
+            "open_interest_usd": 546400000,
+            "share_percent": 20.3
+          },
+          {
+            "venue": "Binance USD-M",
+            "open_interest_usd": 384800000,
+            "share_percent": 14.3
+          },
+          {
+            "venue": "Coinbase",
+            "open_interest_usd": 44200000,
+            "share_percent": 1.6
+          }
+        ],
+        "caveat": "Page did not expose exact refresh time. Coinbase is a provider venue label, not Coinbase corporate proprietary holdings or customer net exposure."
+      }
+    ],
+    "derived": {
+      "trdesk_to_bentley_ratio": 1.6503,
+      "trdesk_minus_bentley_usd": 1060000000,
+      "tradradar_minus_bentley_usd": 290000000,
+      "interpretation": "A material portion of the $2.69B versus $1.63B gap is explained by product scope: TRdesk includes quarterly futures while Bentley explicitly excludes them. Venue coverage also differs (26 vs 17 vs 7). Residual provider/API inclusion differences remain unreconciled.",
+      "admission_rule": "Retain provider-specific timestamps, venues and contract scope. Do not average or treat open interest as net capital inflow."
+    },
+    "positioning_interpretation": "Positive funding and a long-heavy account distribution are crowding-risk features, not a directional forecast. Open interest counts outstanding matched contracts once and always has both a long and short side."
+  },
+  "macro_geopolitical_context": {
+    "reported_event": "Reuters reported on November 2 that oil fell more than 6% amid reports of Iran-Qatar talks aimed at ending the US-Israeli war involving Iran; it also reported a 76.6% market-implied probability of a December Fed rate hike, down from 80% one week earlier.",
+    "classification": "dated_secondary_source_macro_report",
+    "xrp_causal_status": "No direct XRP causal effect established. Use as event context for energy, inflation, rates and risk appetite, not a standalone XRP signal."
+  },
+  "relationship_graph": [
+    {
+      "from": "Binance",
+      "to": "Circle",
+      "relation": "$100M strategic equity investment and five-year USDC commercial agreement",
+      "status": "confirmed_official_announcement"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "USDC distribution and ecosystem economics agreement; Coinbase described by Circle as its largest and longest-standing partner",
+      "status": "confirmed_official_statement_and_sec_filing"
+    },
+    {
+      "from": "Circle",
+      "to": "XRP Ledger",
+      "relation": "Native USDC availability on XRPL",
+      "status": "confirmed_official_announcement"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "Exchange and derivatives venue",
+      "status": "confirmed_market_listing_and_provider_coverage"
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "Spot, derivatives and collateral-related product exposure",
+      "status": "confirmed_product_documentation"
+    },
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "Network operator and USDC-native gas ecosystem",
+      "status": "confirmed_official_announcement"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Arc",
+      "relation": "Founding validator",
+      "status": "confirmed_official_announcement"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "CIRCLE_BINANCE_USDC_COMPETITION",
+      "claim": "The five-year Binance-USDC agreement could increase USDC use on corridors where XRP bridge liquidity competes.",
+      "support": "Official $100M equity investment and USDC commercial agreement; Binance is also a major XRP venue.",
+      "counter": "No corridor-level executed settlement comparison.",
+      "status": "plausible_unmeasured"
+    },
+    {
+      "id": "CIRCLE_BINANCE_MULTI_ASSET_COMPLEMENT",
+      "claim": "USDC distribution may complement XRP by expanding a multi-asset exchange ecosystem.",
+      "support": "Binance supports both USDC and XRP; no exclusivity disclosed.",
+      "counter": "No route-level customer or settlement data.",
+      "status": "plausible_unmeasured"
+    },
+    {
+      "id": "DERIVATIVES_SCOPE_EXPLAINS_OI_GAP",
+      "claim": "A material part of OI disagreement reflects different contract scope and venue inclusion rather than a sudden capital movement.",
+      "support": "Bentley excludes quarterlies; TRdesk includes quarterlies and perps.",
+      "counter": "Residual provider/API differences remain.",
+      "status": "partially_supported"
+    },
+    {
+      "id": "LONG_CROWDING_RISK",
+      "claim": "Positive funding and long-heavy accounts may increase liquidation sensitivity if price moves against longs.",
+      "support": "TradRadar funding +0.0076%/8h and 78.1% long accounts; reported liquidations predominantly long.",
+      "counter": "No complete liquidation feed, position-size distribution, depth or calibrated conditional model.",
+      "status": "risk_hypothesis_not_directional_forecast"
+    }
+  ],
+  "source_independence": {
+    "circle_blog_and_q2_release": "Same issuer disclosure family.",
+    "circle_10q": "SEC-filed issuer disclosure with accounting detail, not independent economic verification.",
+    "circle_binance_announcement": "Joint company announcement; terms are company-reported.",
+    "derivatives_aggregators": "Separate providers may use overlapping exchange APIs; not independent exchange audits.",
+    "reuters_macro": "Independent secondary reporting; geopolitical/rate-probability statements remain reported market context."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Open-interest scope is better documented but not fully reconciled; no synchronized spot depth, net exchange flows, ETF holdings/flows and calibrated walk-forward evidence."
+  },
+  "next_actions": [
+    "Compare TradRadar, Bentley and TRdesk against exchange-level endpoints using identical contract type and timestamps.",
+    "Separate CME quarterly futures from perpetual swaps and identify contract multipliers and settlement currency.",
+    "Track Coinbase-labeled OI by product; do not equate exchange OI with Coinbase proprietary exposure.",
+    "Capture Circle Q3 results on November 4 and reconcile circulation, reserve return, Coinbase distribution costs, Binance agreement and CPN activity.",
+    "Compare USDC and XRP corridor costs, finality, slippage and liquidity only when executed route data is available.",
+    "Continue pinned-ledger Binance recipient reconciliation and Coinbase cbXRP/Morpho dual-chain accounting.",
+    "Maintain no-forecast status until point-in-time historical features, baselines, calibration and shadow evaluation pass."
+  ],
+  "safety": {
+    "no_secrets_accessed": true,
+    "no_privileged_workflow_dispatched": true,
+    "no_main_branch_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_transaction": true
+  }
+}

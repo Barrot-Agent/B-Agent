@@ -1,0 +1,103 @@
+{
+  "schema": "barrot.xrp-intelligence.handoff.v1",
+  "artifact_id": "20261102T132100Z-camilla-stephenson-creator-identity-video-catalog.json",
+  "captured_at_utc": "2026-11-02T13:21:00Z",
+  "subject_requested": "Camilla Stephenson",
+  "identity_resolution": {
+    "exact_requested_identity": "UNRESOLVED",
+    "candidate": "Dr Kamilah / Camila / Camilla Stevenson",
+    "confidence": "probable spelling/brand-variant candidate, not confirmed as the exact requested Camilla Stephenson",
+    "direct_evidence": [
+      {
+        "claim": "In the June 11, 2026 XRP Podcast episode, host Paul Barron introduces the guest as Camilla/Camila; the guest says she uses 'cam i am cam stevenson' on X, 'Kamilla Stevenson' on Instagram, and YouTube as 'doctor Camilla Stevenson', and warns that fake pages exist.",
+        "class": "speaker_self_identification_in_auto_transcript",
+        "source": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/"
+      },
+      {
+        "claim": "YouTube search results identify the author of the listed XRP videos as Kamilah Stevenson.",
+        "class": "platform_search_result",
+        "source": "https://www.youtube.com/@drkamilahstevenson/videos"
+      }
+    ],
+    "distinction": "Stevenson and Stephenson are different spellings. No evidence found in this run that the exact-name Camilla Stephenson is the same person. Do not merge identities or attribute videos to her without confirmation."
+  },
+  "candidate_public_youtube_videos": [
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published_date": "2026-03-06",
+      "author_label": "Kamilah Stevenson",
+      "channel_followers_at_search": "137000",
+      "source_type": "YouTube search result",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "identity_status": "candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson"
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "published_date": "2026-07-30",
+      "author_label": "Kamilah Stevenson",
+      "channel_followers_at_search": "140000",
+      "source_type": "YouTube search result",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "identity_status": "candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson"
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "published_date": "2025-12-24",
+      "author_label": "Kamilah Stevenson",
+      "channel_followers_at_search": "138000",
+      "source_type": "YouTube search result",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "identity_status": "candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson"
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published_date": "2025-12-14",
+      "author_label": "Kamilah Stevenson",
+      "source_type": "third-party transcript/index corroborated by earlier catalog",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "identity_status": "candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+      "published_date": "2026-01-13",
+      "author_label": "Kamilah Stevenson",
+      "source_type": "third-party transcript/index corroborated by earlier catalog",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "identity_status": "candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "published_date": "2026-01-15",
+      "author_label": "Kamilah Stevenson",
+      "source_type": "third-party transcript/index corroborated by earlier catalog",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "identity_status": "candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson"
+    },
+    {
+      "video_id": "ywQEoYPzhlQ",
+      "title": "XRP Was Built for What's Coming",
+      "published_date": "2026-03-03",
+      "author_label": "Kamilah Stevenson",
+      "source_type": "previously captured candidate; primary channel attribution not independently refreshed this run",
+      "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "identity_status": "candidate only"
+    }
+  ],
+  "completeness": {
+    "exhaustive_inventory": false,
+    "reason": "The YouTube /videos page rendered without upload rows in the available retrieval path; the public channel RSS feed could not be fetched; search indexing returns a subset. The seven IDs above are a candidate catalog, not a claim that all public uploads have been found.",
+    "next_steps": [
+      "Verify the exact requested spelling/identity before attribution.",
+      "If Kamilah/Camila/Camilla Stevenson is confirmed as the intended creator, enumerate the channel's full public uploads from the channel's own video feed or authorized YouTube Data API.",
+      "Deduplicate shorts, livestream archives, reuploads and cross-posts; preserve publication timestamps and original video IDs.",
+      "Transcribe only publicly accessible videos and separate the creator's claims from verified facts."
+    ]
+  },
+  "safety": "Public information only; no account access, private data or impersonation."
+}

@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T143508Z-circle-native-usdc-xrpl-supply-controls",
+  "captured_at_utc": "2026-11-02T14:35:08.821Z",
+  "evidence_cutoff_utc": "2026-11-02T14:35:08.821Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "topic": "Circle native USDC on XRPL, chain-specific supply and XRP value-capture boundaries",
+  "verified_facts": [
+    {
+      "id": "CIRCLE-USDC-XRPL-NATIVE",
+      "classification": "official_circle_statement",
+      "fact": "Circle announced USDC live natively on XRPL mainnet on June 12, 2025. Circle Mint and Circle APIs support USDC on XRPL; Circle said no third-party bridge is required.",
+      "source": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+    },
+    {
+      "id": "CIRCLE-USDC-XRPL-ISSUER-IDENTITY",
+      "classification": "official_circle_statement",
+      "fact": "Circle's published XRPL mainnet asset identity is currency code 5553444300000000000000000000000000000000 and issuer rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE.",
+      "source": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+    },
+    {
+      "id": "CIRCLE-MINT-XRPL-FIAT-AND-CROSSCHAIN",
+      "classification": "official_circle_product_documentation",
+      "fact": "Circle's XRPL USDC page says qualified Circle Mint businesses can convert fiat directly to USDC on XRPL and redeem it back to fiat, and Circle Mint/APIs can move USDC between supported blockchains without a third-party bridge.",
+      "source": "https://www.circle.com/multi-chain-usdc/xrpl"
+    },
+    {
+      "id": "CIRCLE-GLOBAL-USDC-SUPPLY",
+      "classification": "official_circle_transparency_page",
+      "fact": "Circle's transparency page reports global USDC circulation of $70.0B and total reserves of $71.4B as of October 29, 2026.",
+      "source": "https://www.circle.com/transparency"
+    }
+  ],
+  "chain_scope_and_capital_boundaries": [
+    "The $70.0B global circulation figure is issuer-level across all supported chains, not XRPL-specific supply.",
+    "Native USDC issuance on XRPL is a direct Circle–XRPL relationship, but it does not mean USDC transfers require XRP as an intermediary.",
+    "Circle's documented Circle Mint cross-chain route is described as moving USDC between supported chains without a third-party bridge; do not model it as an XRP bridge route.",
+    "USDC/XRP DEX or AMM activity can create direct XRP pair turnover and liquidity, but pool TVL, gross volume and swap count are not net new XRP capital.",
+    "No synchronized, pinned-ledger XRPL USDC supply series is admitted in this artifact."
+  ],
+  "data_quality_and_access_controls": {
+    "provider_discrepancy": "Secondary XRPL token/index pages displayed materially different supply, market-cap, holder and turnover snapshots during the same research window. The raw values are not copied into this repository; they are not averaged or admitted as a feature.",
+    "xrpl_to_terms": "XRPL.to's published API guidance requires visible attribution when its data is displayed and written permission before storing/re-serving its indexed data in another dataset or API. Do not ingest or persist XRPL.to indexed data in Barrot without that permission.",
+    "preferred_reconciliation": "Use a documented read-only XRPL public-node RPC at a pinned validated ledger. Cross-check issuer account_info, account_lines and gateway_balances; preserve ledger index, ledger hash, capture timestamp, issuer/currency identity and any frozen/authorized settings. For AMM pools, use amm_info and transaction/ledger history; for order books, use book_offers with explicit pair and depth.",
+    "limitations": "A current issuer-level or explorer balance without a pinned ledger index and complete issuer/holder accounting is not sufficient to establish chain supply, net issuance or market depth."
+  },
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "to": "USDC on XRPL",
+      "relation": "native mainnet issuer; Circle Mint and APIs support access",
+      "classification": "official_circle_statement"
+    },
+    {
+      "from": "USDC on XRPL",
+      "to": "XRPL DEX / AMM",
+      "relation": "issued asset can be paired and traded against XRP and other XRPL assets",
+      "classification": "public_ledger_capability; live pool quantities not admitted"
+    },
+    {
+      "from": "Circle Mint",
+      "to": "USDC on other supported chains",
+      "relation": "Circle-documented crosschain movement without third-party bridge",
+      "classification": "official_circle_product_documentation"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "USDC-XRPL-H1",
+      "claim": "Native USDC on XRPL can increase dollar-denominated settlement utility and attract payment/application liquidity.",
+      "support": "Circle native issuance, Circle Mint access and Circle API support are confirmed.",
+      "counterevidence_or_limit": "No admitted XRPL-specific supply/time series, payment-value series or net external capital series in this artifact.",
+      "status": "INFRASTRUCTURE_CONFIRMED; ADOPTION_MAGNITUDE_UNQUANTIFIED"
+    },
+    {
+      "id": "USDC-XRPL-H2",
+      "claim": "USDC can substitute for XRP as the dollar-value transfer asset in some XRPL settlement paths.",
+      "support": "USDC is directly issued on XRPL and is redeemable through qualified Circle Mint access.",
+      "counterevidence_or_limit": "Some cross-asset trades may still route through XRP for liquidity; no transaction-path attribution has been measured.",
+      "status": "PLAUSIBLE; UNTESTED"
+    },
+    {
+      "id": "USDC-XRPL-H3",
+      "claim": "USDC/XRP DEX/AMM activity can create indirect XRP trading demand and fee activity.",
+      "support": "The pair is technically supported by the XRPL DEX/AMM and public market indexes show a live pair.",
+      "counterevidence_or_limit": "Pool and turnover values are not reconciled to pinned-ledger reads; no causal price effect or net external capital is established.",
+      "status": "MEASURABLE_HYPOTHESIS; DATA_RECONCILIATION_REQUIRED"
+    },
+    {
+      "id": "USDC-XRPL-H4",
+      "claim": "Circle's crosschain API movement creates XRP bridge demand.",
+      "support": "Circle offers crosschain USDC movement and XRPL is one supported chain.",
+      "counterevidence_or_limit": "Circle describes movement across supported chains without a third-party bridge; no evidence shows XRP is the intermediary.",
+      "status": "NOT_SUPPORTED_BY_CURRENT_EVIDENCE"
+    }
+  ],
+  "feature_admission": {
+    "circle_global_usdc_circulation": "Issuer-level macro feature only; never label as XRPL supply.",
+    "xrpl_usdc_supply": "Hold until direct pinned-ledger reconciliation and complete issuer accounting.",
+    "xrpl_usdc_xrp_amm": "Admit only from pinned amm_info/ledger trades with timestamp and pair identity; separate pool reserves, swap volume, fees and LP concentration.",
+    "circle_crosschain_api": "Categorical product capability only until chain-specific executed transfer data is available.",
+    "forecast": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Implement a read-only pinned-ledger RPC adapter for Circle's XRPL USDC issuer and validate account_lines/gateway_balances reconciliation.",
+    "Capture the validated ledger index/hash and all issuer settings relevant to transfer authorization, freeze and clawback semantics.",
+    "Enumerate XRP/USDC AMM pools and order-book depth from ledger-native reads; do not rely on unlicensed indexed snapshots.",
+    "Track USDC minted, redeemed, transferred, frozen and held on XRPL separately from global Circle circulation.",
+    "Measure whether USDC/XRP swaps use XRP as a route or merely trade against the pair; avoid inferring XRP demand from USDC issuance alone."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized, pinned-ledger XRPL USDC feature series or calibrated out-of-sample XRP prediction evidence."
+  },
+  "sources": [
+    {
+      "publisher": "Circle",
+      "date": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "class": "official_issuer_announcement"
+    },
+    {
+      "publisher": "Circle",
+      "date": "current product documentation",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "class": "official_product_documentation"
+    },
+    {
+      "publisher": "Circle",
+      "date": "2026-10-29",
+      "url": "https://www.circle.com/transparency",
+      "class": "official_reserve_transparency"
+    },
+    {
+      "publisher": "XRPL.to",
+      "date": "2026-10-31 documentation",
+      "url": "https://xrpl.to/insights/xrpl-api-guide",
+      "class": "third_party_api_documentation_and_data_use_terms"
+    },
+    {
+      "publisher": "XRPL",
+      "date": "current protocol documentation",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines",
+      "class": "protocol_documentation"
+    }
+  ],
+  "safety": {
+    "append_only": true,
+    "no_unlicensed_indexed_data_storage": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_secret_access": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}

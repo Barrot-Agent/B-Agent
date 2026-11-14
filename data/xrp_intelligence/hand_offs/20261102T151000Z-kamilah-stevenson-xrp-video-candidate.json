@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T151000Z-kamilah-stevenson-xrp-video-candidate",
+  "captured_at_utc": "2026-11-02T15:10:00Z",
+  "evidence_cutoff_utc": "2026-11-02T15:10:00Z",
+  "subject_requested": "Camilla Stephenson",
+  "candidate_identity": "Dr Kamilah / Camila / Camilla Stevenson",
+  "identity_resolution": {
+    "status": "UNRESOLVED_EXACT_SURNAME",
+    "direct_evidence": "The June 11, 2026 XRP Podcast auto-transcript has the host introduce the guest as Camila/Camilla. The guest describes her X handle as 'cam i am cam stevenson', Instagram as 'Kamilla Stevenson', and YouTube as 'doctor Camilla Stevenson'. The surname in the transcript is Stevenson, not Stephenson.",
+    "source": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "boundary": "The exact requested spelling 'Camilla Stephenson' is not verified as the same person. Do not merge identities or attribute content to a Stephenson without further evidence."
+  },
+  "candidate_video": {
+    "video_id": "rv0BAV0vLgo",
+    "title": "How Much XRP Do You ACTUALLY Need?",
+    "published_date": "2026-03-19",
+    "author_label": "Kamilah Stevenson",
+    "third_party_index_views_at_capture": "74.9K",
+    "youtube_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+    "third_party_index_url": "https://glasp.co/youtube/rv0BAV0vLgo",
+    "identity_status": "Candidate Kamilah Stevenson channel; not attributed to exact Camilla Stephenson.",
+    "transcript_status": "The accessible Glasp page identifies the author, title and date but does not render the transcript. No content claims are attributed or summarized from the video in this artifact."
+  },
+  "phrase_boundary": {
+    "title_contains": "ACTUALLY Need",
+    "exact_phrase_requested": "actual capital",
+    "equivalence": "Not established. A video title about the amount of XRP a holder may need is not evidence of a discussion about actual capital flows or the exact phrase 'actual capital'."
+  },
+  "feature_admission": {
+    "creator_identity": "Candidate identity only; keep surname Stevenson distinct from Stephenson.",
+    "video_metadata": "Catalog metadata only until the public video or transcript is independently inspected.",
+    "xrp_claims": "No video claims are admitted as market facts without primary-source corroboration."
+  },
+  "next_actions": [
+    "Retrieve the publicly accessible video or transcript through an authorized source and preserve the video ID and publication date.",
+    "Compare any price, adoption, supply or capital claims in the video against primary sources and timestamped market data.",
+    "Enumerate the candidate channel's public uploads without assuming the channel owner is the exact requested Camilla Stephenson.",
+    "Keep the creator's opinions, sourced claims, and independently verified facts in separate evidence classes."
+  ],
+  "sources": [
+    {
+      "publisher": "Glasp YouTube index",
+      "date": "2026-03-19",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "class": "third_party_video_metadata_and_author_label"
+    },
+    {
+      "publisher": "YouTube",
+      "date": "2026-03-19",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "class": "public_video_url"
+    },
+    {
+      "publisher": "The XRP Podcast with Paul Barron / iHeart",
+      "date": "2026-06-11",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "class": "public_interview_auto_transcript"
+    }
+  ],
+  "safety": {
+    "public_information_only": true,
+    "no_private_account_access": true,
+    "no_identity_conflation": true,
+    "no_unverified_claim_admission": true,
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}

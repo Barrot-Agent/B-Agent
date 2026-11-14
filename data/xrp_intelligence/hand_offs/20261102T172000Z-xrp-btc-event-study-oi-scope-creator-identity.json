@@ -1,0 +1,378 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T172000Z-xrp-btc-event-study-oi-scope-creator-identity",
+  "captured_at_utc": "2026-11-02T17:20:00Z",
+  "evidence_cutoff_utc": "2026-11-02T17:20:00Z",
+  "status": {
+    "research": "EXECUTED",
+    "source_readback": "PENDING",
+    "market_data": "PUBLIC_PROVIDER_SNAPSHOTS",
+    "event_study": "DESCRIPTIVE_ONLY",
+    "creator_identity": "PROBABLE_CANDIDATE_NOT_LEGAL_IDENTITY_VERIFIED",
+    "video_inventory": "PARTIAL_NOT_EXHAUSTIVE",
+    "forecast": "NOT_ISSUED"
+  },
+  "sources": [
+    {
+      "id": "CMC_XRP",
+      "publisher": "CoinMarketCap",
+      "class": "third_party_market_aggregator",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "retrieved_at_utc": "2026-11-02T17:20:00Z"
+    },
+    {
+      "id": "COINGECKO_XRP",
+      "publisher": "CoinGecko",
+      "class": "third_party_market_aggregator",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "retrieved_at_utc": "2026-11-02T17:20:00Z"
+    },
+    {
+      "id": "COINDESK_XRP",
+      "publisher": "CoinDesk",
+      "class": "third_party_market_aggregator",
+      "url": "https://www.coindesk.com/price/xrp",
+      "retrieved_at_utc": "2026-11-02T17:20:00Z"
+    },
+    {
+      "id": "YAHOO_XRP_HISTORY",
+      "publisher": "Yahoo Finance",
+      "class": "third_party_historical_price_aggregator",
+      "url": "https://nz.finance.yahoo.com/quote/XRP-USD/history/",
+      "retrieved_at_utc": "2026-11-02T17:20:00Z"
+    },
+    {
+      "id": "YAHOO_BTC_HISTORY",
+      "publisher": "Yahoo Finance",
+      "class": "third_party_historical_price_aggregator",
+      "url": "https://finance.yahoo.com/quote/BTC-USD/history/",
+      "retrieved_at_utc": "2026-11-02T17:20:00Z"
+    },
+    {
+      "id": "IHEART_XRP_PODCAST",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "class": "interview_with_auto_transcript",
+      "published_at": null,
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "independence_group": "PAUL_BARRON_INTERVIEW",
+      "published_approx": "approximately four months before November 2, 2026; exact date not verified"
+    },
+    {
+      "id": "YOUTUBE_VIDEO_MARCH_2026",
+      "publisher": "YouTube",
+      "class": "youtube_search_result",
+      "published_at": "2026-03-06",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "video_id": "iwhpNT73zpk",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "CANDIDATE_CHANNEL"
+    },
+    {
+      "id": "YOUTUBE_VIDEO_DEC_2025",
+      "publisher": "YouTube",
+      "class": "youtube_search_result",
+      "published_at": "2025-12-24",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "video_id": "pmJTrXJQ8Vw",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "CANDIDATE_CHANNEL"
+    },
+    {
+      "id": "YOUTUBE_VIDEO_JULY_2026",
+      "publisher": "YouTube",
+      "class": "youtube_search_result",
+      "published_at": "2026-07-30",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "video_id": "8xiy8w2YlfY",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "CANDIDATE_CHANNEL"
+    },
+    {
+      "id": "GLASP_VIDEO_MAR_2026",
+      "publisher": "Glasp",
+      "class": "third_party_video_transcript_index",
+      "published_at": "2026-03-19",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "video_id": "rv0BAV0vLgo",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "GLASP_TRANSCRIPT_INDEX"
+    },
+    {
+      "id": "GLASP_VIDEO_JAN_2026",
+      "publisher": "Glasp",
+      "class": "third_party_video_transcript_index",
+      "published_at": "2026-01-13",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "video_id": "ci0FH73lbCs",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "GLASP_TRANSCRIPT_INDEX"
+    },
+    {
+      "id": "GLASP_VIDEO_JAN_2026_2",
+      "publisher": "Glasp",
+      "class": "third_party_video_transcript_index",
+      "published_at": "2026-01-15",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "video_id": "cxeX_eu_2H0",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "GLASP_TRANSCRIPT_INDEX"
+    },
+    {
+      "id": "GLASP_VIDEO_DEC_2025",
+      "publisher": "Glasp",
+      "class": "third_party_video_transcript_index",
+      "published_at": "2025-12-14",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "video_id": "QslbjGQD0MU",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "GLASP_TRANSCRIPT_INDEX"
+    },
+    {
+      "id": "GLASP_VIDEO_DEC_2025_2",
+      "publisher": "YouTube",
+      "class": "youtube_search_result",
+      "published_at": "2025-12-03",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "video_id": "Gy4BuGhAWE8",
+      "channel_name": "Kamilah Stevenson",
+      "independence_group": "CANDIDATE_CHANNEL"
+    }
+  ],
+  "xrp_market_snapshot": {
+    "observations": [
+      {
+        "provider": "CoinMarketCap",
+        "price_usd": 1.24,
+        "market_cap_usd": 79030000000,
+        "volume_24h_usd": 1270000000,
+        "circulating_supply_xrp": 63350000000,
+        "total_supply_xrp": 99980000000,
+        "observation_time": "dynamic page snapshot; exact minute not exposed"
+      },
+      {
+        "provider": "CoinGecko",
+        "price_usd": 1.25,
+        "market_cap_usd": 79230000000,
+        "volume_24h_usd": 1181000000,
+        "perpetual_oi_usd": 3685000000,
+        "oi_to_market_cap_percent": 4.65,
+        "funding_percent_per_8h": 0.0083,
+        "perpetual_to_spot_volume_ratio": 9.4,
+        "observation_time": "dynamic page snapshot; exact minute not exposed"
+      },
+      {
+        "provider": "CoinDesk",
+        "price_usd": 1.2549,
+        "market_cap_usd": 79500000000,
+        "volume_24h_usd": 459070000,
+        "observation_time": "dynamic page snapshot; exact minute not exposed"
+      }
+    ],
+    "interpretation": "Spot prices cluster around $1.24-$1.255, but 24h volume differs materially ($459M-$1.27B). Provider coverage and calculation methodology are not identical. Do not average or treat any one provider as consolidated volume."
+  },
+  "xrp_derivatives_scope_update": {
+    "coingecko_perpetual_open_interest_usd": 3685000000,
+    "earlier_same_day_provider_snapshots_usd": {
+      "tradRadar_7_exchange_perpetuals": 1920000000,
+      "bentley_17_exchange_perpetuals": 1630000000,
+      "trdesk_26_exchange_perpetuals_and_quarterlies": 2690000000
+    },
+    "coingecko_vs_trdesk_ratio": 1.3708,
+    "coingecko_vs_bentley_ratio": 2.2607,
+    "classification": "provider_scope_disagreement",
+    "caveat": "CoinGecko's retrieved page labels its measure perpetual futures OI but does not expose the exact venue inclusion list in the captured page. Its $3.685B figure is not directly comparable to TRdesk's mixed perpetual/quarterly total without contract-level reconciliation.",
+    "admission_rule": "Store provider, retrieval time, venue list, product type, contract currency and contract multiplier. Never average OI totals or infer net cash inflow from OI."
+  },
+  "event_study": {
+    "data_source": "Yahoo Finance daily historical tables for XRP-USD and BTC-USD",
+    "observations": [
+      {
+        "date": "2026-10-28",
+        "xrp_close_usd": 1.3243,
+        "xrp_volume": 2060182341,
+        "btc_close_usd": 81267.59,
+        "btc_volume": 24473925085
+      },
+      {
+        "date": "2026-10-29",
+        "xrp_close_usd": 1.2349,
+        "xrp_volume": 3434227329,
+        "btc_close_usd": 77775.11,
+        "btc_volume": 40885931929
+      },
+      {
+        "date": "2026-10-30",
+        "xrp_close_usd": 1.2544,
+        "xrp_volume": 3896970079,
+        "btc_close_usd": 77198.21,
+        "btc_volume": 45889366191
+      },
+      {
+        "date": "2026-10-31",
+        "xrp_close_usd": 1.2501,
+        "xrp_volume": 842045554,
+        "btc_close_usd": 77434.75,
+        "btc_volume": 12266900815
+      },
+      {
+        "date": "2026-11-01",
+        "xrp_close_usd": 1.2518,
+        "xrp_volume": 774731392,
+        "btc_close_usd": 78248.45,
+        "btc_volume": 12716066018
+      }
+    ],
+    "derived_daily_returns": [
+      {
+        "date": "2026-10-29",
+        "xrp_return_percent": -6.75,
+        "btc_return_percent": -4.3,
+        "xrp_minus_btc_percentage_points": -2.45
+      },
+      {
+        "date": "2026-10-30",
+        "xrp_return_percent": 1.58,
+        "btc_return_percent": -0.74,
+        "xrp_minus_btc_percentage_points": 2.32
+      },
+      {
+        "date": "2026-10-31",
+        "xrp_return_percent": -0.34,
+        "btc_return_percent": 0.31,
+        "xrp_minus_btc_percentage_points": -0.65
+      },
+      {
+        "date": "2026-11-01",
+        "xrp_return_percent": 0.14,
+        "btc_return_percent": 1.05,
+        "xrp_minus_btc_percentage_points": -0.91
+      }
+    ],
+    "interpretation": "XRP underperformed BTC by approximately 2.45 percentage points on October 29, then rebounded relative to BTC on October 30. Both assets experienced large volume increases on October 29-30. This is consistent with broad market de-risking plus possible XRP-specific pressure, but daily bars cannot isolate the Binance incident's causal contribution.",
+    "competing_hypotheses": [
+      {
+        "id": "BROAD_RISK_OFF",
+        "claim": "The October 29 decline was substantially driven by broad crypto risk-off.",
+        "support": "BTC fell approximately 4.30%; BTC and XRP volumes both rose sharply.",
+        "counterevidence": "XRP underperformed BTC by approximately 2.45 percentage points.",
+        "status": "partially_supported"
+      },
+      {
+        "id": "XRP_SPECIFIC_EVENT_PRESSURE",
+        "claim": "XRP-specific supply, venue or theft-related concerns added pressure.",
+        "support": "XRP underperformed BTC on October 29 and the Binance incident occurred in the same event window.",
+        "counterevidence": "No transaction-level causal attribution; XRP rebounded relative to BTC the next day.",
+        "status": "plausible_unproven"
+      },
+      {
+        "id": "DERIVATIVES_LIQUIDITY_AMPLIFICATION",
+        "claim": "Long positioning, funding and thinner spot depth may have amplified the move.",
+        "support": "Provider snapshots show positive funding and long-skewed accounts; derivatives/spot volume ratios are elevated.",
+        "counterevidence": "No full liquidation tape, position-size distribution, depth or calibrated conditional model.",
+        "status": "unmeasured"
+      }
+    ],
+    "leakage_rule": "The event-study window is descriptive. Do not train a model using the October 29 close as though the entire day's information was known before the hack or before the close."
+  },
+  "creator_identity": {
+    "candidate_name_variants": [
+      "Dr. Camilla Stevenson",
+      "Camila Stevenson",
+      "Kamilah Stevenson",
+      "Kamilla Stevenson"
+    ],
+    "candidate_youtube_handle": "@drkamilahstevenson",
+    "evidence": [
+      "The XRP Podcast with Paul Barron interview is titled Crypto Panics! with Dr. Kamilah Stevenson. Its auto-generated transcript has the host address her as Camilla; the guest says she is on X as a Camila/Cam handle, Instagram as Kamilla Stevenson, and YouTube as Doctor Camilla Stevenson, and warns that fake pages exist.",
+      "YouTube search results identify the candidate channel as Kamilah Stevenson and return videos with the creator speaking as Camila Stevenson.",
+      "Third-party profile indexes associate @drkamilahstevenson with a large public channel; these are not a substitute for YouTube's own authenticated channel metadata."
+    ],
+    "identity_assessment": "PROBABLE_MATCH_TO_THE_CAMILLA_REQUEST_BUT_NOT_LEGAL_IDENTITY_VERIFIED. The spelling variants and the creator's own interview statements make this the strongest candidate. Impersonation warnings require avoiding similarly named clone channels.",
+    "candidate_public_videos": [
+      {
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "video_id": "QslbjGQD0MU",
+        "published_at": "2025-12-14",
+        "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+        "views_snapshot": 76000,
+        "source": "Glasp transcript index"
+      },
+      {
+        "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+        "video_id": "ci0FH73lbCs",
+        "published_at": "2026-01-13",
+        "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+        "views_snapshot": 20400,
+        "source": "Glasp transcript index"
+      },
+      {
+        "title": "Why Most People Will Lose Their Crypto Wealth (Even If They’re Right)",
+        "video_id": "cxeX_eu_2H0",
+        "published_at": "2026-01-15",
+        "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+        "views_snapshot": 23100,
+        "source": "Glasp transcript index"
+      },
+      {
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "video_id": "rv0BAV0vLgo",
+        "published_at": "2026-03-19",
+        "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+        "views_snapshot": 74900,
+        "source": "Glasp transcript index"
+      },
+      {
+        "title": "Something Just Broke in Global Finance — And It’s Connected to XRP",
+        "video_id": "iwhpNT73zpk",
+        "published_at": "2026-03-06",
+        "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+        "views_snapshot": 32040,
+        "source": "YouTube search result"
+      },
+      {
+        "title": "XRP’s Biggest Upgrade Yet? Banks Have Been Waiting for This",
+        "video_id": "8xiy8w2YlfY",
+        "published_at": "2026-07-30",
+        "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+        "views_snapshot": 10090,
+        "source": "YouTube search result"
+      },
+      {
+        "title": "XRP Is Not Bitcoin. And That’s Exactly Why It Matters",
+        "video_id": "pmJTrXJQ8Vw",
+        "published_at": "2025-12-24",
+        "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+        "views_snapshot": 44991,
+        "source": "YouTube search result"
+      },
+      {
+        "title": "XRP & The 2026 Setup: Something BIG Is Coming",
+        "video_id": "Gy4BuGhAWE8",
+        "published_at": "2025-12-03",
+        "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+        "views_snapshot": 21568,
+        "source": "YouTube search result"
+      }
+    ],
+    "inventory_limitations": "This is an eight-video candidate inventory, not an exhaustive channel archive. vidIQ channel/video calls failed because the connected account has insufficient credits (no credits charged; refresh stated Nov 27). Direct YouTube channel feed retrieval was disabled/throttled. Search engines and transcript indexes return only a subset; no claim that all uploads have been enumerated.",
+    "impersonation_control": "Do not attribute videos from similarly named or clone channels without channel-ID/handle cross-verification."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Spot and derivatives provider discrepancies remain material; event study is descriptive and cannot isolate the Binance incident. No calibrated walk-forward model or synchronized depth/flows dataset is verified."
+  },
+  "next_actions": [
+    "Reconcile CoinGecko, TRdesk, Bentley and TradRadar OI against identical exchange contracts and contract multipliers.",
+    "Capture synchronized XRP/BTC daily and intraday event windows around October 29, including spot depth and liquidation data.",
+    "Add the eight candidate videos to the identity ledger while keeping the inventory explicitly partial.",
+    "Obtain a no-cost public channel archive or an authorized data source for exhaustive upload enumeration; do not spend unavailable vidIQ credits.",
+    "Capture Circle Q3 results November 4 and reconcile issuer disclosures with SEC filings.",
+    "Continue Binance six-wallet validated-ledger reconciliation and Coinbase cbXRP/Morpho dual-chain accounting."
+  ],
+  "safety": {
+    "no_secrets_accessed": true,
+    "no_vidiq_credits_charged": true,
+    "no_account_or_wallet_interaction": true,
+    "no_real_money_transaction": true
+  }
+}

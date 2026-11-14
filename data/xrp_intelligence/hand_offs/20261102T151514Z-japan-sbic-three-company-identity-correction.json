@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T151514Z-japan-sbic-three-company-identity-correction",
+  "captured_at_utc": "2026-11-02T15:15:14Z",
+  "evidence_cutoff_utc": "2026-11-02T15:15:14Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "Resolve whether Japan's SBIC refers to one company or a regional group, identify the legal entities and determine whether any direct XRP/Circle/Coinbase relationship is established.",
+  "conclusion": "The SBIC identity should be represented as a three-company regional network of separate sister corporations established under the same Japanese statute in November 1963, not as one nationwide legal entity and not as SBI Holdings.",
+  "legal_framework": {
+    "statute": "Small and Medium Business Investment & Consultation Company Act",
+    "japanese_name": "中小企業投資育成株式会社法",
+    "promulgation_date": "1963-06-10",
+    "law_number": "Law No. 101 of 1963",
+    "purpose": "Support the capitalization and sound development of small and medium-sized enterprises through investment and growth support.",
+    "source": "https://www.sbic.co.jp/company/history/"
+  },
+  "companies": [
+    {
+      "legal_name_english": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "legal_name_japanese": "東京中小企業投資育成株式会社",
+      "regional_name": "SBIC East Japan",
+      "established": "1963-11-15",
+      "corporate_number": "9011001030621",
+      "headquarters": "Shibuya, Tokyo",
+      "operating_area": "18 prefectures east of and including the Niigata/Nagano/Shizuoka boundary, per the official profile",
+      "source": "https://www.sbic.co.jp/company/profile/",
+      "relationship_to_siblings": "Official profile names Nagoya and Osaka as sister companies."
+    },
+    {
+      "legal_name_english": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "legal_name_japanese": "名古屋中小企業投資育成株式会社",
+      "regional_name": "SBIC Central Japan",
+      "established": "1963-11-18",
+      "headquarters": "Nagoya, Aichi",
+      "operating_area": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+      "source": "https://www.sbic-cj.co.jp/company/about/",
+      "relationship_to_siblings": "Official profile names Tokyo and Osaka as sister companies."
+    },
+    {
+      "legal_name_english": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "legal_name_japanese": "大阪中小企業投資育成株式会社",
+      "regional_name": "SBIC West Japan",
+      "established": "1963-11-20",
+      "headquarters": "Osaka, Osaka",
+      "operating_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama, per official profile",
+      "source": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "relationship_to_siblings": "Official profile names Tokyo as a sister company; official programme page says the three companies cover Japan regionally."
+    }
+  ],
+  "historical_and_operating_context": {
+    "initial_structure": "Tokyo, Nagoya and Osaka companies were established separately within five days of one another in November 1963 under the same law.",
+    "privatization": "Tokyo SBIC's official history says the three companies were initially special corporations and became special private corporations after the July 1986 legal reform; their policy-implementation role continued.",
+    "business_model": "Regional investment and growth-support institutions: equity subscriptions, subscription rights/convertible bonds, capitalization support, business succession, management advice, human-resource development and business matching.",
+    "source": "https://www.sbic.co.jp/company/history/"
+  },
+  "sbic_chatgpt_phrase_research": {
+    "Tokyo": [
+      {
+        "date": "2025-02-26",
+        "topic": "ChatGPT seminar",
+        "source": "https://www.sbic.co.jp/seminar/20250226ym/"
+      },
+      {
+        "date": "2025-06-12_to_2025-06-13",
+        "topic": "Manufacturing-focused generative AI, ChatGPT, Copilot, RAG, APIs and information-leakage training for investee companies",
+        "source": "https://www.sbic.co.jp/training/20250612co/"
+      }
+    ],
+    "Nagoya": [
+      {
+        "date": "2026-06-02",
+        "topic": "General generative-AI programme for investee companies; not evidence of an OpenAI commercial partnership",
+        "source": "https://www.sbic-cj.co.jp/"
+      }
+    ],
+    "Osaka": [
+      {
+        "date": "2025-12-04",
+        "topic": "ChatGPT-oriented business acceleration seminar",
+        "source": "https://www.sbic-wj.co.jp/seminar/16652/"
+      },
+      {
+        "date": "2026-05-21",
+        "topic": "Recruitment seminar using Gemini and NotebookLM",
+        "source": "https://www.sbic-wj.co.jp/seminar/20585/"
+      }
+    ],
+    "classification": "Official educational/training events by regional investment-support companies. They do not establish an OpenAI partnership, XRP relationship or crypto investment mandate."
+  },
+  "identity_separation": [
+    {
+      "entity": "SBI Holdings",
+      "classification": "Separate financial-services group; the acronym overlap does not make it the same legal entity as the SBIC companies."
+    },
+    {
+      "entity": "SBI VC Trade",
+      "classification": "SBI Holdings group crypto exchange/distributor; not an SBIC regional company."
+    },
+    {
+      "entity": "Circle SBI Japan K.K.",
+      "classification": "Separate Circle/SBI Holdings joint venture for USDC distribution support; not an SBIC regional company."
+    },
+    {
+      "entity": "Social Bias Inference Corpus (SBIC)",
+      "classification": "Separate academic dataset acronym appearing in ChatGPT bias/toxicity research; not the Japanese investment companies."
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Small and Medium Business Investment & Consultation Company Act",
+      "to": "Tokyo SBIC",
+      "relation": "statutory basis",
+      "classification": "official_company_history"
+    },
+    {
+      "from": "Small and Medium Business Investment & Consultation Company Act",
+      "to": "Nagoya SBIC",
+      "relation": "statutory basis",
+      "classification": "official_company_profile"
+    },
+    {
+      "from": "Small and Medium Business Investment & Consultation Company Act",
+      "to": "Osaka SBIC",
+      "relation": "statutory basis",
+      "classification": "official_company_profile"
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "Nagoya SBIC",
+      "relation": "sister company",
+      "classification": "official_company_profile"
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "Osaka SBIC",
+      "relation": "sister company",
+      "classification": "official_company_profile"
+    },
+    {
+      "from": "Nagoya SBIC",
+      "to": "Osaka SBIC",
+      "relation": "sister company",
+      "classification": "official_company_profile"
+    },
+    {
+      "from": "SBIC regional companies",
+      "to": "OpenAI/ChatGPT",
+      "relation": "public training/seminar use only; no commercial partnership established",
+      "classification": "official_event_records"
+    },
+    {
+      "from": "SBIC regional companies",
+      "to": "XRP/XRPL",
+      "relation": "no direct relationship established by the reviewed official profiles and training announcements",
+      "classification": "explicit_non_inference"
+    },
+    {
+      "from": "SBIC regional companies",
+      "to": "SBI Holdings/SBI VC Trade",
+      "relation": "name/acronym similarity does not establish common ownership or group membership",
+      "classification": "explicit_non_inference"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "SBIC-H1-ONE-ENTITY",
+      "claim": "Japan's SBIC is one nationwide legal company.",
+      "evidence_against": "Three distinct official company profiles, separate corporate names, separate establishment dates and separate regional headquarters; each identifies sister companies.",
+      "status": "REJECTED"
+    },
+    {
+      "id": "SBIC-H2-REGIONAL_NETWORK",
+      "claim": "SBIC is a three-company regional network created under one national statute.",
+      "supporting_evidence": "Official company profiles and history identify Tokyo, Nagoya and Osaka as separately incorporated sister companies established November 15, 18 and 20, 1963.",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "SBIC-H3-SBI_HOLDINGS_AFFILIATE",
+      "claim": "The SBIC companies are SBI Holdings group companies.",
+      "evidence_against": "Their legal names, statutory basis, corporate profiles and sister-company descriptions are distinct; no ownership or group relationship to SBI Holdings is established.",
+      "status": "NOT_SUPPORTED"
+    },
+    {
+      "id": "SBIC-H4-XRP_OR_OPENAI_PARTNERSHIP",
+      "claim": "SBIC training events establish a commercial OpenAI partnership or XRP relationship.",
+      "evidence_against": "The events are educational programmes for investee companies, sometimes delivered by third-party speakers; no commercial partnership, token investment, XRP integration or XRPL project is stated.",
+      "status": "NOT_SUPPORTED"
+    }
+  ],
+  "feature_admission": {
+    "sbic_identity": "Represent as three separate regional legal entities with a shared statutory origin and sibling relationships.",
+    "sbic_chatgpt": "Training/seminar event records only; not partnership or platform integration.",
+    "sbic_xrp_relationship": "NOT_ADMITTED absent direct contract, investment, product, custody, payment or official partnership evidence.",
+    "sbi_group_relationship": "Do not merge SBIC with SBI Holdings, SBI VC Trade or Circle SBI Japan K.K."
+  },
+  "sources": [
+    {
+      "publisher": "Tokyo SBIC",
+      "date": "accessed 2026-11-02",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "classification": "official_company_profile"
+    },
+    {
+      "publisher": "Tokyo SBIC",
+      "date": "accessed 2026-11-02",
+      "url": "https://www.sbic.co.jp/company/history/",
+      "classification": "official_company_history"
+    },
+    {
+      "publisher": "Nagoya SBIC",
+      "date": "accessed 2026-11-02",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "classification": "official_company_profile"
+    },
+    {
+      "publisher": "Osaka SBIC",
+      "date": "accessed 2026-11-02",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "classification": "official_company_profile"
+    },
+    {
+      "publisher": "Osaka SBIC",
+      "date": "accessed 2026-11-02",
+      "url": "https://www.sbic-wj.co.jp/profiles/guide/",
+      "classification": "official_programme_and_territory_description"
+    },
+    {
+      "publisher": "Tokyo SBIC",
+      "date": "2025-02-26",
+      "url": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "classification": "official_event_record"
+    },
+    {
+      "publisher": "Tokyo SBIC",
+      "date": "2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "classification": "official_event_record"
+    },
+    {
+      "publisher": "Osaka SBIC",
+      "date": "2025-12-04",
+      "url": "https://www.sbic-wj.co.jp/seminar/16652/",
+      "classification": "official_event_record"
+    },
+    {
+      "publisher": "Osaka SBIC",
+      "date": "2026-05-21",
+      "url": "https://www.sbic-wj.co.jp/seminar/20585/",
+      "classification": "official_event_record"
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "SBIC identity and training activity have no validated causal connection to XRP market outcomes."
+  },
+  "next_actions": [
+    "Keep Tokyo, Nagoya and Osaka SBIC as separate entities in the relationship graph.",
+    "Search each regional company's public investee and seminar records for explicit digital-asset, Ripple, XRP, stablecoin or custody activity; do not infer from generic AI training.",
+    "Keep Social Bias Inference Corpus as a separate acronym sense in academic research."
+  ],
+  "safety": {
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_external_mutation": true,
+    "no_forecast": true,
+    "no_real_money_trade": true
+  }
+}

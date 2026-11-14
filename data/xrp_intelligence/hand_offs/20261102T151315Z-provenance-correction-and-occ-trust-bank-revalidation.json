@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T151315Z-provenance-correction-and-occ-trust-bank-revalidation",
+  "captured_at_utc": "2026-11-02T15:13:15Z",
+  "evidence_cutoff_utc": "2026-11-02T15:13:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "provenance_corrections": [
+    {
+      "artifact_id": "20261102T151100Z-coinbase-rlusd-circle-aci-crossrail-update",
+      "path": "data/xrp_intelligence/hand_offs/20261102T151100Z-coinbase-rlusd-circle-aci-crossrail-update.json",
+      "git_commit": "9b160fea647b2d04b4c029b14776b78a043d216a",
+      "git_commit_created_at_utc": "2026-11-02T15:10:18Z",
+      "embedded_capture_time_utc": "2026-11-02T15:11:00Z",
+      "discrepancy_seconds": 42,
+      "disposition": "QUARANTINED_FROM_POINT_IN_TIME_FEATURE_ADMISSION",
+      "reason": "The artifact's embedded capture timestamp is later than its Git commit creation time. The artifact is preserved unchanged. Its cited October 27-28 publication dates can be used as event dates, but its claimed snapshot capture time cannot be used as point-in-time provenance."
+    },
+    {
+      "artifact_id": "20261102T152000Z-occ-trust-bank-coinbase-circle-ripple-status",
+      "path": "data/xrp_intelligence/hand_offs/20261102T152000Z-occ-trust-bank-coinbase-circle-ripple-status.json",
+      "git_commit": "2096ccf7c4ac76da69a18833efd831b045996f92",
+      "git_commit_created_at_utc": "2026-11-02T15:12:29Z",
+      "embedded_capture_time_utc": "2026-11-02T15:20:00Z",
+      "discrepancy_seconds": 451,
+      "disposition": "QUARANTINED_FROM_POINT_IN_TIME_FEATURE_ADMISSION",
+      "reason": "The artifact's embedded capture timestamp is later than its Git commit creation time. The artifact is preserved unchanged. Its official OCC source records and publication dates remain citable event evidence, but the claimed snapshot capture time is invalid."
+    }
+  ],
+  "revalidated_evidence": [
+    {
+      "id": "OCC-RIPPLE-TRUST-BANK-EFFECTIVE-2026-10-26",
+      "classification": "official_primary_regulatory_record",
+      "publisher": "Office of the Comptroller of the Currency",
+      "control_number": "2025-Charter-342347",
+      "legal_entity": "Ripple National Trust Bank",
+      "charter_number": "25364",
+      "actions": [
+        {
+          "action": "Receipt",
+          "date": "2025-07-02"
+        },
+        {
+          "action": "Approved",
+          "date": "2025-12-12"
+        },
+        {
+          "action": "Consummated/Effective",
+          "date": "2026-10-26"
+        }
+      ],
+      "source": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "correction": "The OCC CAS primary record independently confirms the October 26 Consummated/Effective date. Earlier descriptions that the final approval rested only on Ripple's statement are superseded. A separate operating launch date and actual custody/reserve balances remain unknown."
+    },
+    {
+      "id": "OCC-CIRCLE-TRUST-BANK-EFFECTIVE-2026-07-24",
+      "classification": "official_primary_regulatory_record",
+      "publisher": "Office of the Comptroller of the Currency",
+      "control_number": "2025-Charter-342299",
+      "legal_entity": "First National Digital Currency Bank, N.A.",
+      "operating_name": "Circle National Trust",
+      "charter_number": "25361",
+      "actions": [
+        {
+          "action": "Receipt",
+          "date": "2025-06-30"
+        },
+        {
+          "action": "Approved",
+          "date": "2025-12-12"
+        },
+        {
+          "action": "Consummated/Effective",
+          "date": "2026-07-24"
+        }
+      ],
+      "source": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "operating_scope_source": "https://www.circle.com/circle-national-trust",
+      "correction": "The OCC CAS record establishes the effective date. Circle's official page describes Circle National Trust as an OCC-supervised qualified custodian; USDC issuance remains with regulated Circle affiliates, and USDC reserve-management transfer is described as a future capability."
+    },
+    {
+      "id": "OCC-COINBASE-TRUST-BANK-CONDITIONAL-2026-04-02",
+      "classification": "official_primary_regulatory_record",
+      "publisher": "Office of the Comptroller of the Currency",
+      "control_number": "2025-Charter-343449",
+      "legal_entity": "Coinbase National Trust Company",
+      "charter_number": "25390",
+      "actions": [
+        {
+          "action": "Receipt",
+          "date": "2025-10-03"
+        },
+        {
+          "action": "Approved",
+          "date": "2026-04-02"
+        }
+      ],
+      "source": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "decision": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "scope": [
+        "Proposed fiduciary digital-asset custody primarily for institutional customers.",
+        "Related transactional services are limited to custody customers and their custodied assets.",
+        "Coinbase planned a three-year migration of its existing NYDFS trust-company custody business after final approval/opening.",
+        "The bank may act as a finder for affiliate staking, Prime Trading and Prime Financing access; it would not itself provide those underlying services.",
+        "The OCC decision says the proposed trust bank does not issue stablecoins."
+      ],
+      "limits": [
+        "Only preliminary conditional approval is recorded in CAS at this capture.",
+        "No Consummated/Effective date is shown.",
+        "The conditional approval does not authorize commencement of business until pre-opening requirements and final OCC approval are satisfied."
+      ]
+    },
+    {
+      "id": "OCC-ACTIVE-TRUST-BANK-LIST-CUTOFF",
+      "classification": "official_primary_snapshot",
+      "publisher": "Office of the Comptroller of the Currency",
+      "as_of": "2026-09-30",
+      "source": "https://occ.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "interpretation": "Circle's bank appears on the September 30 active list. Ripple's October 26 effective date occurred after the list cutoff, so Ripple's absence is not contradictory. Coinbase's CAS has no effective date at this capture."
+    },
+    {
+      "id": "BNY-SHARED-CUSTODY-ROLE",
+      "classification": "official_company_statements",
+      "claims": [
+        "Circle's Q2 2026 company release identifies BNY as primary custodian of USDC reserves and says BNY expanded USDC minting/redemption within its Digital Asset Custody platform.",
+        "Ripple's October 26 trust-bank announcement identifies BNY as primary reserve custodian for RLUSD.",
+        "BNY and Ripple's October 27 announcement says BNY Digital Asset Custody supports native XRP and RLUSD for eligible institutional clients."
+      ],
+      "sources": [
+        "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+        "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+        "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html"
+      ],
+      "limit": "Shared use of BNY does not establish exclusivity, common reserves, common settlement, coordinated strategy or XRP collateral acceptance."
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Circle",
+      "to": "Circle National Trust",
+      "relation": "OCC trust-bank transaction effective 2026-07-24",
+      "status": "officially_verified"
+    },
+    {
+      "from": "Ripple",
+      "to": "Ripple National Trust Bank",
+      "relation": "OCC trust-bank transaction effective 2026-10-26",
+      "status": "officially_verified"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Coinbase National Trust Company",
+      "relation": "preliminary conditional approval 2026-04-02; no effective date shown",
+      "status": "officially_verified"
+    },
+    {
+      "from": "BNY",
+      "to": "USDC reserves",
+      "relation": "primary reserve custodian per Circle",
+      "status": "company_statement"
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD reserves",
+      "relation": "primary reserve custodian per Ripple",
+      "status": "company_statement"
+    },
+    {
+      "from": "BNY",
+      "to": "native XRP and RLUSD custody",
+      "relation": "eligible institutional custody support announced",
+      "status": "joint_company_statement"
+    },
+    {
+      "from": "Ripple National Trust Bank",
+      "to": "RLUSD reserves",
+      "relation": "approved reserve management and collateral-trustee scope; operating commencement not separately measured",
+      "status": "regulatory_and_company_evidence"
+    },
+    {
+      "from": "Standard Custody & Trust Company",
+      "to": "RLUSD",
+      "relation": "NYDFS-regulated issuer remains unchanged",
+      "status": "company_statement"
+    },
+    {
+      "from": "Circle National Trust",
+      "to": "USDC reserve management",
+      "relation": "future capability; do not treat as transferred/live without new evidence",
+      "status": "company_statement"
+    },
+    {
+      "from": "Coinbase National Trust Company",
+      "to": "Coinbase custody business",
+      "relation": "proposed migration over three-year de novo period after final approval and opening",
+      "status": "OCC_conditional_decision"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_REGULATORY_CUSTODY_CONVERGENCE",
+      "claim": "Circle and Ripple have completed effective OCC trust-bank transactions while Coinbase is pursuing a conditional path, indicating convergence toward federally supervised fiduciary digital-asset custody.",
+      "support": "Three OCC CAS records show Circle effective 2026-07-24, Ripple effective 2026-10-26 and Coinbase preliminary conditional approval 2026-04-02.",
+      "counterevidence": "Charter status alone does not quantify live assets, custody flows, reserve-management transfers or customer adoption.",
+      "status": "REGULATORY_STATUS_CONFIRMED; COMMERCIAL_EFFECT_UNQUANTIFIED"
+    },
+    {
+      "id": "H2_BNY_SHARED_INSTITUTIONAL_INFRASTRUCTURE",
+      "claim": "BNY is a common institutional service provider in both Circle/USDC and Ripple/RLUSD/XRP ecosystems.",
+      "support": "Circle and Ripple identify BNY in their reserve-custody roles; BNY separately announced custody support for native XRP and RLUSD.",
+      "counterevidence": "No evidence of exclusivity, common pools, coordinated liquidity, shared customer books or XRP collateral acceptance.",
+      "status": "SHARED_SERVICE_PROVIDER_CONFIRMED; COORDINATION_NOT_ESTABLISHED"
+    },
+    {
+      "id": "H3_XRP_INSTITUTIONAL_DEMAND",
+      "claim": "The regulatory and custody developments could reduce institutional barriers to holding XRP.",
+      "support": "Ripple trust-bank fiduciary digital-asset custody scope and BNY native XRP custody support.",
+      "counterevidence": "No XRP-specific AUC/A, net client deposits, collateral schedules or incremental spot/ETF purchases disclosed.",
+      "status": "CAPABILITY_SUPPORTED; DEMAND_NOT_MEASURED"
+    }
+  ],
+  "feature_admission": {
+    "occ_charter_status": "Event feature with distinct preliminary conditional, final approval, consummated/effective, operating launch and product commencement states.",
+    "xrp_custody_balance": "NOT_ADMITTED without XRP-specific balance disclosure or reconciled public wallet attribution.",
+    "reserve_management": "Do not infer Circle or Ripple trust-bank reserve management has transferred from BNY or the issuing trust company without operational evidence.",
+    "xrp_price_signal": "NOT_ADMITTED from charter milestones alone."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No calibrated out-of-sample causal relationship between trust-bank status events and XRP returns has been demonstrated."
+  },
+  "next_actions": [
+    "Track OCC CAS and post-effective operational disclosures for all three banks.",
+    "Verify when Circle National Trust begins USDC reserve management, if it does.",
+    "Verify Ripple National Trust Bank operating launch and division of duties with BNY and Standard Custody & Trust Company.",
+    "Track Coinbase final approval, effective date and actual custody migration.",
+    "Measure disclosed or publicly attributable XRP custody balances before inferring institutional demand."
+  ],
+  "safety": {
+    "append_only": true,
+    "prior_artifacts_preserved": true,
+    "invalid_capture_timestamps_quarantined": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_manual_workflow_dispatch": true,
+    "no_secret_access": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}

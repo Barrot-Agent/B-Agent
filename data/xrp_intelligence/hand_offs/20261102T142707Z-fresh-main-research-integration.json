@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T142707Z-fresh-main-research-integration",
+  "captured_at_utc": "2026-11-02T14:27:07.351Z",
+  "evidence_cutoff_utc": "2026-11-02T13:25:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "repository_observation": {
+    "repository": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "main_sha": "b4a23f283cad93dc926b6b3cf8d55b55f2fb1053",
+    "source_pr": 1503,
+    "source_pr_status": "OPEN_DRAFT_UNMERGED",
+    "source_branch": "research/binance-tron-xrp-jpysc-market-57a7-20261102T1105Z",
+    "source_branch_head": "421b0653bc78a438617eee667330f7edf14d12c1",
+    "source_branch_base": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+    "source_branch_comparison": {
+      "ahead_by": 20,
+      "behind_by": 4,
+      "changed_paths": 9
+    },
+    "main_only_changes_since_source_base": [
+      "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "overlap_with_source_artifacts": 0,
+    "preservation": "The four intervening main commits and both main-only paths are preserved; only nine append-only research artifacts are transplanted."
+  },
+  "source_artifacts": [
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T110530Z-binance-tron-xrp-jpysc-market-update.json",
+      "blob_sha": "fc80fe20897ee2a51ec63233316021f5eb89d46c"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T110955Z-xrpl-actual-capital-rlusd-x402-supply.json",
+      "blob_sha": "863061b4faa63d75065652b7a9b3d156cf20a783"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T112018Z-research-architecture-platform-map.json",
+      "blob_sha": "995213bfc7e60346dd19d86f6e740bea1b865455"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T120626Z-binance-crosswalk-main-audit.json",
+      "blob_sha": "9c176ddc4980e919c9c285ab1a8233a57adf37bc"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T121000Z-jpysc-semantics-cbxrp-morpho-state.json",
+      "blob_sha": "0e9ddde5121b5b52c0f26ba0876a36697cb64760"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T131240Z-binance-outflows-tron-circle-freeze-market-pillar-audit.json",
+      "blob_sha": "025678500633efb5a14deaee577556697598e6c7"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T131830Z-binance-xrp-proof-of-reserves-snapshot-window.json",
+      "blob_sha": "aa05a52b6eb5acebd9d3b09930caf6cd20c94a54"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T132100Z-camilla-stephenson-creator-identity-video-catalog.json",
+      "blob_sha": "788c7bb87e4fa016586cbdb9912fe4970fede387"
+    },
+    {
+      "path": "data/xrp_intelligence/hand_offs/20261102T132500Z-binance-crosschain-freeze-timeline-and-xrpl-scope.json",
+      "blob_sha": "2ef293a1f15876eb1a59dd08457bafdc8cd53c09"
+    }
+  ],
+  "verification": {
+    "source_artifact_fetch_and_parse": {
+      "status": "VERIFIED",
+      "count": 9,
+      "source_ref": "421b0653bc78a438617eee667330f7edf14d12c1"
+    },
+    "source_branch_ci": {
+      "status": "VERIFIED_SUCCESS",
+      "run_id": 41452583525,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41452583525",
+      "tests_passed": 342,
+      "subtests_passed": 8,
+      "duration_seconds": 8.11,
+      "log_evidence": "342 passed, 8 subtests passed in 8.11s"
+    },
+    "source_branch_fail_closed_gate": {
+      "status": "VERIFIED_SUCCESS",
+      "run_id": 41452583500,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41452583500",
+      "job": "Merge disabled pending gate verification",
+      "merge_disabled": true
+    }
+  },
+  "key_reconciliations": [
+    {
+      "id": "JPYSC-ISSUER-AND-HANDLED-BALANCE",
+      "classification": "official_company_statement",
+      "finding": "SBI Shinsei Trust Bank is the JPYSC issuer; SBI VC Trade is distributor and lending counterparty; Startale Group is development partner. SBI's >JPY30B handled balance is on-chain balance plus lending balance, while >JPY10B is lending balance.",
+      "non_inference": "Not public-chain supply, external settlement, XRP collateral, XRP purchases or net XRP capital inflow. Customers lend JPYSC to SBI VC Trade; they are not borrowing against collateral."
+    },
+    {
+      "id": "SBI-MULTIRAIL-BOUNDARY",
+      "classification": "official_company_statements_plus_inference",
+      "finding": "SBI's Ripple relationship, Circle SBI Japan 50/50 JV, JPYSC program, October 27 tokenized-MMF/JPYSC MOU with BlackRock entities and October 30 stablecoin alliance with SMFG are separate graph edges.",
+      "non_inference": "No verified JPYSC deployment on XRPL, Circle Arc or StableFX in the captured evidence; Tokyo SBIC is a different legal entity."
+    },
+    {
+      "id": "BINANCE-XRP-TRON-SEPARATION",
+      "classification": "cross_source_reconciliation",
+      "finding": "The 233.45492M XRP redistribution is an XRPL event with six recipients; the reported Tron laundering stream is a separate chain and flow. The two 40M XRP payments are components of the 233.45492M total, not an additional 80M.",
+      "non_inference": "No sale, exchange deposit or conversion of the six recipients' XRP is established; recipient balances still require pinned-ledger refresh."
+    },
+    {
+      "id": "STABLECOIN-FREEZE-SCOPE",
+      "classification": "provider_research_with_chain_scope_limits",
+      "finding": "Issuer freeze events are chain- and address-specific. The OnChain Benchmark timeline explicitly did not read XRPL; its Ethereum/Tron/other-chain totals cannot verify the XRPL XRP tranche or XRPL RLUSD balances.",
+      "non_inference": "Frozen is not recovered or returned; cross-provider totals must not be added without address-level de-duplication."
+    },
+    {
+      "id": "ACTUAL-CAPITAL-DENOMINATORS",
+      "classification": "measurement_rule",
+      "finding": "Separate transaction count, gross payment value, net external settlement, issuer mint/redemption, pooled exchange custody, collateral, wrapped supply, ETF holdings, lending balances and tokenized registry notional.",
+      "non_inference": "Do not use x402 transaction count, RWA registry notional, handled balances or exchange wallet totals as direct XRP demand."
+    },
+    {
+      "id": "CAMILLA-IDENTITY",
+      "classification": "identity_control",
+      "finding": "The exact requested identity Camilla Stephenson remains unresolved. Dr Kamilah/Camila/Camilla Stevenson is a separate candidate; the seven video IDs are a candidate catalog, not an exhaustive inventory attributed to Camilla Stephenson.",
+      "non_inference": "Do not merge identities or attribute videos to the exact requested person without confirmation."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relationship": "issuer",
+      "evidence_class": "official_company_statement"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relationship": "distributor_and_centralized_lending_counterparty",
+      "evidence_class": "official_company_statement"
+    },
+    {
+      "from": "Startale Group",
+      "to": "JPYSC",
+      "relationship": "development_partner",
+      "evidence_class": "official_company_statement"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relationship": "strategic_joint_venture_and_business_relationship",
+      "evidence_class": "official_company_statement"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relationship": "50_50_Circle_SBI_Japan_joint_venture",
+      "evidence_class": "SEC_filing"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "BlackRock entities",
+      "relationship": "MOU_to_explore_tokenized_money_market_fund_and_JPYSC_ecosystem",
+      "evidence_class": "official_MOU"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SMFG",
+      "relationship": "capital_and_business_alliance_to_study_stablecoin_services",
+      "evidence_class": "official_company_statement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relationship": "wrapped_XRP_custody_and_distribution",
+      "evidence_class": "Coinbase_proof_of_reserves"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho Base USDC market",
+      "relationship": "collateral_asset",
+      "evidence_class": "onchain_provider_observation"
+    }
+  ],
+  "source_quality_and_unknowns": [
+    "Company/SEC disclosures remain separate from secondary analytics and explorer labels.",
+    "Binance customer outflows are not interchangeable with tagged wallet reserve movements.",
+    "Provider price, OI, volume and depth observations have non-synchronized timestamps and venue coverage; do not average.",
+    "Circle/Tether freeze amounts require address-level and time-window reconciliation; no sum is admitted.",
+    "XRPL recipient account balances and transaction histories require a fresh pinned-ledger RPC/Clio read.",
+    "The exact Camilla Stephenson identity and exhaustive YouTube inventory remain unresolved."
+  ],
+  "platform_coordination": {
+    "live_verified": [
+      "ChatGPT current session",
+      "GitHub repository integration"
+    ],
+    "not_verified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "rule": "No platform is represented as collaborating live without an independently tested authenticated handoff."
+  },
+  "feature_admission": {
+    "jpysc_handled_balance": "Product-level stock only after timestamped history; never label as XRP flow.",
+    "jpysc_lending_balance": "Centralized customer-to-exchange lending stock; not DeFi borrowing or XRP collateral.",
+    "cbxrp_supply": "Wrapped custody claim; do not add to native XRP supply.",
+    "exchange_wallet_balances": "Custody/attribution series only; not tradable float.",
+    "payment_counts_and_gross_values": "Keep separate from net external settlement and actual capital.",
+    "freeze_events": "Address/chain/time-scoped event features only after de-duplication.",
+    "market_quotes": "Require synchronized venue timestamps and coverage metadata."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized, validated post-event feature set and no populated out-of-sample forecast/outcome ledger establishing predictive skill.",
+    "directional_probability": null
+  },
+  "next_actions": [
+    "Fetch pinned-ledger XRPL account histories and current balances for all six Binance redistribution recipients; preserve transaction hashes and ledger indices.",
+    "Reconcile Binance official proof-of-reserves snapshot taken October 31 with the promised user-verifiable proof publication expected November 3.",
+    "Obtain synchronized XRP spot depth, ETF creations/redemptions, futures/perpetual open interest, funding, basis and liquidation observations with venue/contract coverage.",
+    "Reconcile Circle and Tether freeze events by chain, address, transaction, freeze ledger/block and whether funds were recovered or returned.",
+    "Build the historical feature store and fixed-horizon walk-forward evaluation; current artifacts do not establish predictive skill.",
+    "Continue independent SBI/JpySC, Coinbase, Circle, Ripple and actual-capital source reconciliation."
+  ],
+  "safety": {
+    "append_only": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_external_mutation": true,
+    "no_secret_access": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}
