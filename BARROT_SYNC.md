@@ -63,9 +63,13 @@
   Rust-free pins recorded in requirements-integrations.txt (hf<0.31, kaggle<1.6).
   kaggle module is now import-safe without kaggle.json (credential error deferred
   to _build_api call time).
-- Blocked: gh CLI not installed; SSH push denied (no key) - to push, provide a
-  fine-grained GitHub PAT (repo content read/write) as GH_TOKEN env or secret;
-  do NOT paste tokens into chat files
+- Blocked: gh CLI not installed; SSH push denied (no key). UNBLOCK: the plug is
+  ready - scripts/push_with_token.sh. In YOUR terminal (not chat) run:
+    GH_TOKEN=github_pat_... bash scripts/push_with_token.sh
+  PAT spec: fine-grained, repo B-Agent only, Contents: Read and write.
+  Script validates the token via API first, shows the pending commits, then
+  pushes over HTTPS via credential helper (token never stored or logged).
+  Pass --verify-only to check the token without pushing.
 - Known flake: tests/test_transmute.py CLI test occasionally fails in full runs
   (timing tie-band), passes in isolation - not a regression
 - Next task: verify optional-deps imports after pip finishes; push commits once
