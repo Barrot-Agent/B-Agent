@@ -3026,3 +3026,44 @@ Next: obtain independent formal review; verify required checks and least-privile
 No merge, main write, deployment, Space restart, secret rotation, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, reset, clean, stash or destructive restore occurred.
 
 Structured evidence: [Run129 audit](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261114T142857Z-run129-current-market-and-integration-audit.json).
+
+
+## Run129 final reconciliation — 2026-11-14T14:37:17.083Z
+
+### Exact-head result on the Run129 evidence parent
+
+- Main remains `fb272b40966834754ec686f9ed3ab94123f09306`.
+- The consolidated PR #1662 parent for this map update is `96e925249ee053d2a3c8fffb4b81b449244f8a9f`, 2,394 commits ahead and zero behind main, with 1,196 changed files (+356,525 / -5,354), 50 workflow files and 1,146 non-workflow paths.
+- Exact-head CI on `96e925249ee053d2a3c8fffb4b81b449244f8a9f` completed successfully: **3,641 passed, 8 subtests passed, zero failures, 62.47% inclusive coverage in 163.18 seconds**. Core suite: 742 passed, eight subtests, zero failures. Wheel build/install and canonical Barrot V3/XRP mission verification passed. Five dependency manifest groups passed with zero known vulnerabilities reported. Push and PR fail-closed gates passed; automatic merge remains disabled.
+- Evidence: [Full suite 43605089586](https://github.com/Barrot-Agent/B-Agent/actions/runs/43605089586), [dependency audit 43605089588](https://github.com/Barrot-Agent/B-Agent/actions/runs/43605089588), [push fail-closed gate 43605089523](https://github.com/Barrot-Agent/B-Agent/actions/runs/43605089523), [PR fail-closed gate 43605094211](https://github.com/Barrot-Agent/B-Agent/actions/runs/43605094211).
+- The new canonical platform-map update and SEC capital addendum are documentation/research changes on the existing #1662 branch. Their commit will trigger another CI run; this parent-head result is not being represented as a test of that later commit.
+
+### New SEC primary-source capital reconciliation
+
+Two Evernorth 424B3 filings were reviewed: [October 30 ELOC prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm) and [October 19 public-warrant prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm).
+
+- The October 30 filing says approximately **$214.0M cash was used to acquire XRP** using Advance Funding Subscription Agreement proceeds; this is historical actual cash deployment, not current spot flow.
+- Ripple's related-party facility to Pathfinder began at $7M, accrued 3.81%, was increased to $10M on October 7, and had **$9.7M borrowed as of October 7**. The filing says outstanding amounts became repayable within five business days after the October 9 closing or earlier on demand. Some draws paid vendor costs for Evernorth and were recorded as intercompany receivables/payables. Post-closing repayment status is not established; do not count the entire $9.7M as XRP purchases or external new capital.
+- Ripple contributed **126,791,458 XRP in kind** to Pathfinder, which the filing says could be liquidated to fund operating costs. This is not cash and does not prove the full amount was sold.
+- The prospectus identifies **SBI Holdings as a strategic investor**. Certain SBI-affiliated investors received 2,359,038 Class C shares due to a 39.9% Class A ownership threshold. The pro forma table separately labels an “SBI” line with 11,790,952 shares; the excerpt does not supply the full legal entity name for that row, so do not infer more than the filing states.
+- The Cantor ELOC registers up to **5,218,935 Class A shares**, with a 97%-of-VWAP purchase price, 4.99% beneficial-ownership cap and approximately 14-month term. The cover and illustrative table state **$76.8M gross / $74.4M estimated net** at the stated $14.71 reference price, but one Use of Proceeds paragraph says **$80.7M gross** for the same share count. Preserve this internal filing inconsistency. The issuer may elect to sell shares to Cantor; no actual ELOC issuance/proceeds are established by the prospectus.
+- The October 19 prospectus registers up to **11,499,992 public-warrant shares at $11.50**, a theoretical maximum of $132.25M if every warrant were cash-exercised. The filing does not establish that those exercises occurred. It also lists 11,739,645 Pubco warrants and 2,941,176 convertible notes as unexercised/unconverted at the June 30 measurement date.
+- Evernorth defines **XRP per share** as XRP attributable to Pubco divided by Class A plus Class C shares outstanding. This is the correct treasury KPI to monitor alongside XRP holdings and dilution.
+- Evernorth says BitGo Trust is its primary custodian, intends to use RLUSD in XRP/XRPL DeFi activities, and did not anticipate material ecosystem deployment before Q4 2026. These are custody disclosures and forward-looking intentions, not evidence of completed RLUSD/XRP AMM deployment or current market demand.
+- The secondary “73.7M shares registered for resale” claim was not reconciled to one primary registration block in these two filings. Keep it unverified; do not convert potential equity classes into actual capital or XRP flows.
+
+Structured filing reconciliation: [`research/xrp_intelligence/20261114T143717Z-run129-evernorth-sec-capital-prospectus-reconciliation.json`](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261114T143717Z-run129-evernorth-sec-capital-prospectus-reconciliation.json). The SEC pages were inspected as rendered text; no raw-byte SHA-256 receipt is claimed.
+
+### Public signal and market-data safety
+
+- Main `web/latest_signal.json` remains dated **2026-10-29**, with score 44, confidence 0.0 and a source string recording missing GitHub/GH Models credentials plus Groq HTTP 429. Main `web/signal_accuracy.json` reports 45.5% over 1,697 checks. These are stale legacy artifacts, not current validated out-of-sample XRP predictions. Whether the Pages site currently displays them was not independently verified.
+- The integration branch replaces the public signal with `NOT_ISSUED` and accuracy `NOT_EVALUATED`; it has not been published because Pages deployment is unauthorized.
+- Bybit and OKX spot snapshots remain 2,086 seconds apart, both USDT-quoted, without raw-byte receipts or independent USDT/USD normalization. ETF and derivatives numbers are secondary and disagree on coverage. None is model-eligible.
+
+### Current decision
+
+PR #1662 remains draft with zero formal approvals/reviews. Main branch metadata says protected, but the detailed protection endpoint returns HTTP 403 and required-check contexts are empty. The GitHub connector remains admin/maintain/push/pull/triage. Pages automatically publishes on main push and is not authorized. Semantic review of 1,144 non-workflow paths remains incomplete. **No merge, deployment, PR closure, workflow dispatch, paper trade, secret rotation or main write.**
+
+The canonical current nine-platform map has been refreshed to the 96e9252 parent and now records the exact passing CI evidence, current main/PR inventory, current market limitations, SEC capital distinctions and platform authentication status. The Run129 platform snapshot remains at [`research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run129.json`](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run129.json).
+
+The next gate remains independent review, verified branch protection, least-privilege GitHub access, Pages authorization, semantic review, synchronized historical data and policy-v6 candidate evaluation. Forecast remains `NOT_ISSUED`.
