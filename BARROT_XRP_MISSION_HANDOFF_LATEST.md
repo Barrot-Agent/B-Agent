@@ -3554,7 +3554,7 @@ The token-hardening regression tests now also verify that `GH_TOKEN` is absent f
 ## Run134 final exact-head verification and PR backlog reconciliation
 
 ### Exact-head results on `09db62da14929d673730c0e45b5132239dcc626c`
-<badge>VERIFIED</badge>
+**VERIFIED**
 
 - Full repository suite: **3,681 passed, 0 failed, 8 subtests passed**, 110.28 seconds.
 - Inclusive package coverage: **62.84%**, above the 62% expanded-scope floor.
@@ -4485,7 +4485,7 @@ The exchange-wallet page reports 327.4M Binance-Peg XRP in the exchange table bu
 
 **Current main:** `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`. **Tested integration code head:** `a466c11879926009cfcaf88a3d3814268f323e13`. Main remains an ancestor of integration; integration is 2,430 commits ahead and zero behind. The two-parent main reconciliation commit is `1ed9d62b679d1a6a6dbd4d0c97d3179eb196a20e`.
 
-<badge>Exact-head full suite passed</badge>
+**Exact-head full suite passed.**
 
 - [Push full suite 43651708769](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651708769): **3,762 passed, 0 failed, 1 skipped, 19 subtests passed**, 63.96% inclusive coverage, 112.38 seconds; 62% total coverage floor and legacy core 70% floor passed.
 - Wheel build passed; installed primary Barrot V3/XRP mission verification passed.
