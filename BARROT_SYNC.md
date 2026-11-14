@@ -97,3 +97,20 @@
 - Next step (music): pick a favorite, humanize further, add ghost notes +
   fills, try stems/render per-section, or ship pack to Gumroad pipeline.
 
+
+
+## Current integration record — Run135 (2026-11-14)
+- Main SHA: `ef41ea7d8f1d236774c3e593bc6205bf42555351`.
+- Integration parent before this run's documentation and Pages repair: `9990254412b74e37030ebd077512f3c6c48529d4`; PR #1662 remains the sole consolidated integration workstream.
+- Parent exact-head verification: 3,681 passed, zero failed, eight subtests; 62.84% inclusive coverage, 76% legacy core coverage; wheel build and installed mission verification passed; six-manifest dependency audit and fail-closed gate passed (runs 43625793304, 43625793294, 43625793314). New Run135 head requires its own exact-head cycle.
+- Main tree 1,341 entries; integration tree 2,406 entries. Branch ancestry 2,414 ahead, zero behind. Open PR inventory 373 (361 drafts, 12 non-drafts; 365 target main, eight other bases).
+- Main Pages build failure is confirmed from job logs: Liquid syntax error at GLOBAL_STATE_MANIFEST.md:6456 due JSON braces inside fenced code. Integration wraps the two affected code blocks in Liquid raw tags and adds a regression test. Main is unchanged; no Pages deployment was triggered.
+- Main Barrot Sync run 43610729676 reports workflow success but the step fails on missing `rich`; the workflow masks the error and push failure. Integration keeps automatic sync quarantined.
+- Main push_with_token.sh still passes GH_TOKEN through validation argv; integration uses stdin and unexports GH_TOKEN during validation. No real token was used or rotated.
+- Latest XRP snapshot: OKX $0.9587 (18:39:41.569Z), Bybit $0.9558 (19:02:06.653Z, -6.44% 24h), Kraken $0.95802 (no event timestamp). OKX/Bybit top levels were ask-heavy; Kraken was nearly balanced. No full synchronized L2 was admitted.
+- Liqwall 18:42Z: $24.3M XRP liquidations, 97% long; OI $1.05B (+0.9% 24h), average funding -0.0008%/8h, Binance funding +0.0011%; Binance accounts 74.2% long, Hyperliquid accounts near balanced/slightly short. Other OI vendors differ materially in universe and timestamp; no averaging.
+- XRPL own-node roll call 18:50Z: 34/35 validators heard; SingleAssetVault 23/28 including carry, LendingProtocol 22/28, V1_1 22/28; zero Majority entries and zero activation countdowns. Native lending remains inactive.
+- Alpha Finance five-fund ETF series through Nov 13: -$1.1M daily, -$19.1M seven sessions, -$581.7K 30 sessions; cumulative net flow $1.71B since Nov 14 2025. It does not publish holdings/AUM; do not infer XRP balances. XRP Insights' Nov 13 row is provisional and has a different universe.
+- Ripple official RLUSD page as of Nov 12: $2.6899B circulating, $2.8265B reserves; latest linked CPA attestation is September.
+- Forecast remains NOT_ISSUED; accuracy NOT_EVALUATED. No trained XRP candidate or independent shadow cohort is verified. No paper trade or real-money action.
+- PR #1662 remains draft, zero approvals/reviews/threads. Main branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is self-owned; connector permissions remain admin/maintain/push/pull/triage. NO MERGE.

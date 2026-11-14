@@ -6391,6 +6391,7 @@ def triangulate_polygon(
 ```
 
 ## Module: ./barrot_agent/repair/executor.py
+{% raw %}
 ```
 import json
 
@@ -6430,8 +6431,10 @@ Rules:
 - Preserve unrelated code.
 - Return compl
 ```
+{% endraw %}
 
 ## Module: ./barrot_agent/repair/planner.py
+{% raw %}
 ```
 import json
 
@@ -6464,6 +6467,7 @@ Schema:
       "reason": "...",
       "validatio
 ```
+{% endraw %}
 
 ## Module: ./barrot_agent/repair/rollback.py
 ```

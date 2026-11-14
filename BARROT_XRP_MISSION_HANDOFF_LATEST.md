@@ -3632,3 +3632,62 @@ The 18:03:35Z OKX raw receipt remains the only recent timestamped direct spot ob
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. There is no trained XRP-specific candidate or demonstrated superiority over all four baselines, and no independent shadow cohort or WORM/time anchor.
 
 **Next action:** verify the fresh exact-head CI cycle triggered by this handoff update; continue semantic review of #1662's 1,204 changed files; resolve least privilege, branch protection and independent approvals; preserve unique source PR work; and keep forecast issuance disabled until candidate performance is measured out of sample.
+
+
+---
+
+## Run135 — fresh XRP market, derivatives, XRPL governance and Pages repair
+
+### Repository and exact-head status
+- Main remains `ef41ea7d8f1d236774c3e593bc6205bf42555351`; integration parent inspected: `9990254412b74e37030ebd077512f3c6c48529d4`.
+- Integration branch is 2,414 commits ahead of main and zero behind. Main tree: 1,341 entries; integration tree: 2,406 entries. The complete recursive trees were retrieved without truncation.
+- Open PR inventory: 373 (361 drafts, 12 non-drafts; 365 target main, eight target other bases). PR #1662 remains the single consolidated integration PR, open/draft/mergeable, 1,204 changed files, zero formal reviews and zero inline review threads.
+- Exact-head parent verification on `9990254`: full suite 3,681 passed, zero failed, eight subtests; inclusive coverage 62.84%, legacy core coverage 76%; wheel build and installed mission verification passed. Six-manifest dependency audit passed with zero known vulnerabilities reported; fail-closed gate passed. Evidence: [CI 43625793304](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625793304), [dependency audit 43625793294](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625793294), [fail-closed gate 43625793314](https://github.com/Barrot-Agent/B-Agent/actions/runs/43625793314). These results apply to parent `9990254`, not the new Run135 documentation/Pages-fix commit.
+
+### Fresh spot observations — research only
+- OKX XRP-USDT provider timestamp 18:39:41.569Z: last $0.9587; bid/ask $0.9588/$0.9589; 24h open $1.0241; high/low $1.0297/$0.9457; volume 54.225M XRP. Top ask size was 17.57 times top bid size at that instant.
+- Bybit XRPUSDT provider timestamp 19:02:06.653Z: last $0.9558; bid/ask $0.9557/$0.9559; 24h change -6.44%; high/low $1.0298/$0.9458; volume 46.075M XRP. Top ask size was 7.78 times top bid size.
+- Kraken XRP/USD last $0.95802, bid/ask $0.95790/$0.95818; no provider event timestamp. Its top-level sizes were nearly balanced (ask/bid 1.03x).
+- The asynchronous exchange prices cluster around $0.9558–$0.9587. OKX/Bybit show ask-heavy top levels, while Kraken is nearly balanced. These are one-level quantities, not full depth; no synchronized multi-venue L2 feature was admitted. Exact raw payloads and SHA-256 receipts are in the Run135 JSON audit.
+
+### Derivatives and leverage disagreement
+- Liqwall snapshot as of 18:42Z: XRP $0.9558; 24h liquidations $24.3M, of which $23.7M (97%) long and $639K short; aggregate OI $1.05B, +0.9% over 24h; average funding -0.0008% per eight hours, while Binance funding is +0.0011%; 74.2% of Binance accounts are long, but Hyperliquid accounts are 48.5% long/51.4% short.
+- Kodexius at 13:34Z reports $593.89M OI across seven contracts and -0.0004% funding. TradRadar's 01:10Z snapshot reports $1.52B OI and +0.0017% funding. These totals use different contract universes and vintages; do not average.
+- Competing interpretation: long-liquidation pressure is clear in Liqwall's sample, but OI is modestly higher and funding is near zero/slightly negative. This can reflect position rebuilding, new shorts, or cross-venue hedging. It does not establish a directional XRP forecast.
+
+### ETF flow scope correction
+- Alpha Finance's five-fund series through Nov 13 reports -$1.1M on the day, -$19.1M over seven sessions, and -$581.7K over 30 sessions. Cumulative net flow since Nov 14, 2025 is +$1.71B.
+- Alpha Finance explicitly says it does not publish the funds' AUM or holdings; its cumulative net flow is not current AUM, current XRP holdings, or a verified XRP balance.
+- XRP Insights' dataset is broader (six US spot funds plus BITW), as of Nov 12 with the Nov 13 row provisional until re-settled. The universes and vintages differ. Do not average these series or infer locked XRP from Alpha's cumulative flows.
+
+### XRPL lending governance — latest node roll call
+- Independent xrpldashboard own-node roll call fetched 18:49Z, voting ledger 108,330,239 at 18:50Z: 34 of 35 validators heard, so the strict >80% threshold is 28 yes votes for that roll call.
+- SingleAssetVault: 22 yes this round, 23 including 24-hour carry, five short. LendingProtocol: 21 this round, 22 including carry, six short. LendingProtocolV1_1: 21/22, six short.
+- The dashboard reports zero current Majority entries and zero amendments in the 14-day activation countdown. It is an independent node operator, not Ripple or XRPL Foundation. Official XRPL documentation confirms amendments need more than 80% support for 14 consecutive days and the window resets if support falls to 80% or less.
+- Native lending remains inactive on mainnet. SingleAssetVault and LendingProtocol are the core pair; V1_1 is an extension.
+
+### RLUSD and macro context
+- Ripple's official transparency page reports $2.6899B RLUSD circulating and $2.8265B reserve funds as of Nov 12 (derived coverage 105.08%, excess $136.6M). The latest linked CPA attestation is September 2026; Nov 12 dashboard balances are not a November attestation.
+- CoinDesk's Nov 13 report records DXY above 103, BTC below $70,000, approximately $1.64B crypto futures liquidations with 88.6% long, and market pricing for a December Fed rate increase. Reuters records disagreement between Bessent (energy shock may be temporary) and Goolsbee (inflation has broadened beyond energy). WSJ reports rising yields/dollar and weakness in technology shares. This is broad risk context, not proof of an XRP-specific causal relationship.
+
+### Executed Pages repair on integration only
+- Main Pages build run [43610728772](https://github.com/Barrot-Agent/B-Agent/actions/runs/43610728772) failed with a verified Jekyll/Liquid syntax error at `GLOBAL_STATE_MANIFEST.md:6456`. The raw log identifies JSON braces inside fenced Python snippets in the generated manifest.
+- Integration now wraps the two affected documentation code blocks in Liquid `{% raw %}` / `{% endraw %}` pairs and adds `tests/test_global_state_manifest_jekyll.py`, which rejects unprotected Liquid delimiters and unbalanced raw blocks.
+- Main was not changed. No Pages deployment was triggered. The GitHub Pages build has not yet been verified on the new integration head; the full suite and all gates must run on the new head.
+
+### Main synchronization failure and safety
+- Main Barrot Sync run [43610729676](https://github.com/Barrot-Agent/B-Agent/actions/runs/43610729676) reported workflow success while `b_agent.py --sync` failed with `ModuleNotFoundError: rich`; the workflow masks the error with `|| echo` and masks push failure with `git push || true`.
+- Integration keeps the automatic LunaRoute synchronization workflow quarantined. No provider authentication or data flow was claimed.
+- Main's token validation still places the bearer token in curl argv and the Python fallback positional argv; integration uses stdin and unexports `GH_TOKEN` during validation. Main remains at risk until a reviewed merge.
+
+### Prediction and platform status
+- Scheduled public ingestion, raw SHA-256 receipts, local receipt-chain prototype, SQLite point-in-time feature store, event timeline, source independence, four baselines, leakage-safe walk-forward, calibration/drift checks, policy-v6 readiness and Ed25519 evaluator attestation are implemented on integration.
+- No trained XRP-specific candidate, candidate superiority against all four baselines, independent shadow cohort, synchronized historical L2/derivatives/exchange-flow dataset, independent WORM archive or trusted timestamp anchor is verified. Ingestion is configured for main only and has not executed on main.
+- Forecast remains `NOT_ISSUED`; accuracy `NOT_EVALUATED`.
+- ChatGPT/GitHub authentication is verified but overprivileged. Claude, Grok, Gemini, Codex are unverified; Copilot has no formal approval; Hugging Face had a previous BUILD_ERROR and no deployment; Kaggle is untested; Databricks previously returned HTTP 403. No external model dispatch or data transfer occurred.
+
+### Merge decision and next action
+- **NO MERGE.** PR #1662 remains draft with zero independent approvals. Main branch-protection inspection returns HTTP 403; fallback ruleset 10863829 is disabled; integration is unprotected; CODEOWNERS assigns all paths to `@Barrot-Agent`; GitHub connector permissions include admin/maintain/push/pull/triage.
+- Pages publication is a deployment side effect and remains unauthorized. The integration fix is not permission to deploy.
+- Next: verify exact-head full suite, wheel/package verification, six-manifest dependency audit and fail-closed gates on the Run135 commit; verify the Jekyll raw-block fix with a real Pages-compatible build before considering merge; complete semantic review of all changed files; resolve least privilege and independent review; keep forecast issuance disabled.
+- No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
