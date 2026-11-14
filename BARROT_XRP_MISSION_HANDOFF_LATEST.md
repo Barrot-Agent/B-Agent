@@ -4040,3 +4040,65 @@ The workflow's diagnostic line uses `cut -c1-30`; the fixed text `Barrot running
 ### Merge and forecast boundary
 
 PR #1662 remains draft and open, with zero independent formal approvals. Main remains unchanged. No source PR was closed. **NO MERGE.** Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action occurred.
+
+---
+## Run137 final-head verification and latest collateral correction
+
+### Exact-head CI on the current integration head
+
+Current integration head before this final handoff update: `895748bdc4a3c36982085b9d7c8b2fb0272dc7bb`.
+
+- [Full repository suite 43639351139](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639351139): **3,717 passed, zero failed, 19 subtests**, 63.28% inclusive coverage, 77% legacy core coverage, 170.81 seconds.
+- Wheel build passed; installed wheel loaded Barrot V3, XRP mission and canonical data assets.
+- [Push dependency audit 43639351150](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639351150) and [PR dependency audit 43639355962](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639355962) passed all six manifest groups: root runtime, development, integrations, Hugging Face Space, legacy and PEP 621. No known vulnerabilities.
+- [Push fail-closed gate 43639351202](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639351202) and [PR fail-closed gate 43639356012](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639356012) passed; automatic merge disabled.
+- [PR CI 43639356042](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639356042) passed Pages validation; its duplicate core/full-suite jobs were skipped by design.
+- The handoff/map/artifact update below is documentation and research data only and will trigger a new exact-head CI cycle.
+
+### Latest Coinbase cbXRP snapshot
+
+Coinbase's proof-of-reserves page displayed a November 14, 8:42 PM refresh (timezone unspecified):
+
+- Native XRP reserves: 153,793,963.19.
+- cbXRP supply: 153,716,753.33.
+- Excess reserves: 77,209.86 XRP.
+- Coverage: approximately 1.0005023x.
+
+Compared with the earlier 6:22 PM page snapshot, reserves increased 289,132.89 XRP and supply increased 214,169.57; excess increased 74,963.32. Compared with the earlier morning snapshot, reserves remain down about 1.382M XRP and supply down about 1.457M XRP. This is a changing wrapper/reserve state; it does not prove native XRP spot buying or selling.
+
+### Latest Morpho cbXRP/USDC snapshot
+
+The later Morpho page state showed:
+
+- Outstanding loans: approximately $49.92M.
+- Displayed liquidity: $20.32M.
+- Displayed market size: $70.25M.
+- Displayed utilization: 90.31%, versus a 90% target.
+- Borrow amount to target: $1.53M.
+- Borrow/lend rates: 7.58% / 7.03%.
+- Liquidation LTV/penalty: 62.5% / 12.67%.
+- Displayed realized/unrealized bad debt: zero.
+- Borrowers/suppliers: 1,118 / 216.
+- Three largest supplier vault shares: 25.52%, 24.41%, 18.57%, totaling 68.5%.
+
+The current oracle was $0.937 USDC/cbXRP and DefiLlama $0.939, now close to Kraken's later $0.9402. The earlier $0.961 oracle observation was stale. **Utilization remains unresolved:** loans/(loans + displayed liquidity) is about 71.07%, not the displayed 90.31%. Do not infer a rate or risk signal from the displayed utilization until its denominator is reconciled. Small liquidations at 20:33 UTC showed no realized bad debt; collateral supply/repayment activity was visible around 20:44 UTC.
+
+### Latest RLUSD and XRPL liquidity
+
+A secondary XRPL dashboard showed $2.78B global RLUSD, $762.82M on XRPL and $2.02B on Ethereum. Its 24-hour net supply change was +$17.69M globally and -$1.27M on XRPL. The page reported a live-feed outage and incomplete Ethereum snapshot anchoring. Chain-supply changes do not prove cross-chain transfers or XRP demand.
+
+The XRPL token dashboard showed approximately $5.802M AMM TVL, with XRP/RLUSD around 81.3% and XRP/USDC 11%. Order-book DEX activity is excluded. Thirty-eight RWA tokens were reported held on-chain but not actively traded. A token using the USDT symbol on XRPL is not issued by Tether.
+
+### Video attribution
+
+A 12th candidate, [ci0FH73lbCs](https://www.youtube.com/watch?v=ci0FH73lbCs), dated January 13, 2026, is indexed with approximately 20.4K views. A third-party byline attributes it to Kamilah Stevenson, while the transcript self-identifies the speaker as Camila Stevenson. Channel ownership remains unverified; it is not certified as an official upload.
+
+### Operational and safety status
+
+Main's Barrot Sync workflow omits installation of `requirements.txt`; `rich` is present in the manifest but missing in the runner. Its later `git push || true` masks the failed synchronization. Integration keeps automatic sync quarantined. The `cut -c1-30` diagnostic emits only its fixed 30-character prefix; the captured log contains no secret bytes. No exposure from that line was established and no credential rotation occurred.
+
+Main's Pages build fails Liquid parsing at `GLOBAL_STATE_MANIFEST.md:6456`; integration's PR-only Pages validation passes. Main remains unchanged.
+
+### Forecast and merge boundary
+
+**Forecast NOT_ISSUED. Accuracy NOT_EVALUATED. NO MERGE.** PR #1662 remains draft with zero independent approvals. No source PR was closed, and no deployment, external-model transfer, Kaggle submission, Databricks write, paper trade, funds transfer, force-push or history rewrite occurred.

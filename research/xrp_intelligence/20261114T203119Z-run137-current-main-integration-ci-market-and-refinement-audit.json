@@ -618,11 +618,220 @@
       "id": "S17",
       "url": "https://www.coindesk.com/markets/2026/11/13/crypto-markets-slide-as-dollar-surges-and-traders-price-in-fed-hike",
       "type": "secondary macro reporting"
+    },
+    {
+      "id": "S18",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "type": "primary Coinbase proof-of-reserves page",
+      "displayed_refresh": "2026-11-14 8:42 PM; timezone unspecified"
+    },
+    {
+      "id": "S19",
+      "url": "https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/cbxrp-usdc",
+      "type": "Morpho Base cbXRP/USDC market; later snapshot"
+    },
+    {
+      "id": "S20",
+      "url": "https://xrpldashboard.com/rlusd",
+      "type": "secondary RLUSD cross-chain supply dashboard"
+    },
+    {
+      "id": "S21",
+      "url": "https://xrpldashboard.com/tokens",
+      "type": "secondary XRPL AMM/token dashboard"
+    },
+    {
+      "id": "S22",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "type": "third-party YouTube transcript attribution; channel ownership unverified"
     }
   ],
   "operational_findings": {
     "main_sync_root_cause": "Workflow invokes b_agent.py --sync without installing requirements.txt; rich is in requirements.txt but absent in runner environment. The command fails; subsequent git push is masked by || true.",
     "secret_log_check": "cut -c1-30 outputs only the fixed 30-character text 'Barrot running on LunaRoute - '; captured log contains no secret bytes. No exposure from this line established.",
     "integration_action": "automatic sync remains quarantined; no credential rotation or workflow dispatch."
+  },
+  "final_head_verification": {
+    "head_sha": "895748bdc4a3c36982085b9d7c8b2fb0272dc7bb",
+    "full_suite": {
+      "run_id": 43639351139,
+      "job_id": 132583158191,
+      "conclusion": "success",
+      "passed": 3717,
+      "failed": 0,
+      "subtests": 19,
+      "inclusive_coverage_percent": 63.28,
+      "legacy_core_coverage_percent": 77,
+      "duration_seconds": 170.81
+    },
+    "wheel_build": "passed",
+    "installed_mission": "passed; Barrot V3, XRP mission and canonical data assets verified",
+    "dependency_audits": {
+      "push_run_id": 43639351150,
+      "pr_run_id": 43639355962,
+      "conclusion": "success",
+      "manifest_groups": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gates": {
+      "push_run_id": 43639351202,
+      "pr_run_id": 43639356012,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "pr_ci": {
+      "run_id": 43639356042,
+      "conclusion": "success",
+      "pages_validation": "success",
+      "core_tests": "skipped",
+      "full_suite": "skipped; authoritative push suite passed"
+    },
+    "status": "VERIFIED on exact current integration head"
+  },
+  "latest_market_followup": {
+    "captured_at_utc": "2026-11-14T20:54:20.427Z",
+    "spot": {
+      "kraken_xrp_usd": {
+        "last": 0.9402,
+        "bid": 0.94002,
+        "ask": 0.94032,
+        "open24h": 1.00999,
+        "high24h": 1.01248,
+        "low24h": 0.93183,
+        "volume24hXRP": 58390882.92970996,
+        "provider_timestamp": null,
+        "model_eligible": false
+      },
+      "okx_xrp_usdt": {
+        "last": 0.9428,
+        "provider_timestamp": "2026-11-14T20:25:24.175Z",
+        "model_eligible": false,
+        "reason": "stale at latest follow-up"
+      },
+      "kraken_usdt_usd": {
+        "last": 0.99916,
+        "bid": 0.99915,
+        "ask": 0.99916,
+        "provider_timestamp": null,
+        "model_eligible": false
+      }
+    },
+    "cbxrp_coinbase": {
+      "displayed_refresh": "2026-11-14 8:42 PM; timezone unspecified",
+      "reserve_xrp": 153793963.19,
+      "supply_cbxrp": 153716753.33,
+      "excess_reserve_xrp": 77209.86,
+      "coverage_ratio": 1.00050227,
+      "previous_622pm": {
+        "reserve_xrp": 153504830.3,
+        "supply_cbxrp": 153502583.76
+      },
+      "change_since_622pm": {
+        "reserve_xrp": 289132.89,
+        "supply_cbxrp": 214169.57,
+        "excess_reserve_xrp": 74963.32
+      },
+      "previous_morning": {
+        "reserve_xrp": 155176313.79,
+        "supply_cbxrp": 155174067.26
+      },
+      "change_since_morning": {
+        "reserve_xrp": -1382350.6,
+        "supply_cbxrp": -1457313.93
+      },
+      "interpretation": "Overcollateralized wrapper backing; reserve and supply changed between page snapshots. No inference of spot buying/selling."
+    },
+    "morpho": {
+      "loans_usd": 49920000,
+      "displayed_liquidity_usd": 20320000,
+      "market_size_usd": 70250000,
+      "displayed_utilization_percent": 90.31,
+      "target_percent": 90,
+      "borrow_amount_to_target_usd": 1530000,
+      "borrow_rate_percent": 7.58,
+      "lend_rate_percent": 7.03,
+      "average_24h_rate_percent": 7.59,
+      "average_7d_rate_percent": 6.95,
+      "liquidation_ltv_percent": 62.5,
+      "liquidation_penalty_percent": 12.67,
+      "realized_bad_debt_usd": 0,
+      "unrealized_bad_debt_usd": 0,
+      "borrowers": 1118,
+      "suppliers": 216,
+      "top_three_supplier_shares_percent": [
+        25.52,
+        24.41,
+        18.57
+      ],
+      "top_three_supplier_values_usd": [
+        14109069.47,
+        13496081.37,
+        10267062.62
+      ],
+      "top_three_share_percent": 68.5,
+      "chainlink_oracle_usdc": 0.937,
+      "defillama_price_usdc": 0.939,
+      "kraken_spot_reference_usd": 0.9402,
+      "oracle_difference_percent": -0.34,
+      "derived_loans_over_loans_plus_liquidity_percent": 71.07,
+      "utilization_reconciliation": "Displayed 90.31% does not reconcile with 71.07% derived from displayed loans and liquidity; denominator definitions unresolved.",
+      "liquidations": "Small 20:33:56 UTC liquidations; no realized bad debt in displayed records. Collateral supply/repayment activity around 20:44 UTC.",
+      "model_eligible": false
+    },
+    "rlusd": {
+      "global_supply_usd": 2780000000,
+      "xrpl_supply_usd": 762820000,
+      "ethereum_supply_usd": 2020000000,
+      "xrpl_share_percent": 27.4,
+      "ethereum_share_percent": 72.6,
+      "global_24h_net_usd": 17690000,
+      "xrpl_24h_net_usd": -1270000,
+      "ethereum_mints_usd": 19370000,
+      "ethereum_burns_usd": 410000,
+      "refresh_relative_seconds": 123,
+      "feed": "live feed unavailable",
+      "verification": "XRPL side cross-checked via independent RPC against Nov 13 finalized state; Ethereum not anchored to daily signed snapshot; chain-supply change is not proof of cross-chain transfer."
+    },
+    "amm": {
+      "total_amm_tvl_usd": 5802000,
+      "xrp_rlusd_usd": 4719000,
+      "xrp_rlusd_share_percent": 81.33,
+      "xrp_usdc_usd": 638000,
+      "xrp_usdc_share_percent": 11,
+      "orderbook_dex_included": false,
+      "rwa_tokens_held_not_actively_traded": 38,
+      "usdt_symbol_is_not_tether": true
+    },
+    "video_candidate": {
+      "id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published": "2026-01-13",
+      "views_indexed": 20400,
+      "third_party_byline": "Kamilah Stevenson",
+      "transcript_self_identification": "Camila Stevenson",
+      "channel_ownership": "unverified"
+    },
+    "raw_receipts": [
+      {
+        "source": "Kraken XRP/USD",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "retrieved_during_run": "Run137 follow-up",
+        "provider_timestamp": null,
+        "response_text_sha256": "57cad6dec359649043d23518a054ad11294aa5d77541a9a1d1a4a40bf28d37ef",
+        "response_text_length": 320,
+        "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.94032000\",\"4216\",\"4216.000\"],\"b\":[\"0.94002000\",\"3547\",\"3547.000\"],\"c\":[\"0.94020000\",\"75.45706479\"],\"v\":[\"53248476.45425087\",\"58390882.92970996\"],\"p\":[\"0.97266650\",\"0.97589207\"],\"t\":[51823,57217],\"l\":[\"0.93183000\",\"0.93183000\"],\"h\":[\"1.01248000\",\"1.02412000\"],\"o\":\"1.00999000\"}}}",
+        "model_eligible": false
+      },
+      {
+        "source": "Kraken USDT/USD",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "retrieved_during_run": "Run137 follow-up",
+        "provider_timestamp": null,
+        "response_text_sha256": "791341040172db12d993ad71ffd71939877f37744e7ea93b89649abf5e3266bd",
+        "response_text_length": 329,
+        "raw_response_text": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99916000\",\"157879\",\"157879.000\"],\"b\":[\"0.99915000\",\"243183\",\"243183.000\"],\"c\":[\"0.99916000\",\"200.11809920\"],\"v\":[\"68982215.64190848\",\"89164886.88572933\"],\"p\":[\"0.99907259\",\"0.99902249\"],\"t\":[17611,20469],\"l\":[\"0.99884000\",\"0.99878000\"],\"h\":[\"0.99925000\",\"0.99925000\"],\"o\":\"0.99890000\"}}}",
+        "model_eligible": false
+      }
+    ]
   }
 }
