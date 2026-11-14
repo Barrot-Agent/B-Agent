@@ -15,6 +15,9 @@ KimiClient
     Kimi 3 model integration for paradigm-shifting feedback.
 RecursiveFeedbackLoop
     Self-improving recursive feedback loop orchestrator.
+refine_data / refine_json_file
+    Ping-pong model refinement — THE baseline of all data processing.
+    Alternating models refine + critique until a measured fixed point.
 """
 
 from .smart_agent import (
@@ -34,6 +37,33 @@ from .upgrade_flywheel import (
     UpgradeFlywheel,
     VerificationResult,
 )
+from .refinement import (
+    HeuristicRefiner,
+    OpenCodeRefiner,
+    PingPongRefiner,
+    Refiner,
+    RefinementReport,
+    make_model_refiners,
+    refine_data,
+    refine_json_file,
+)
+
+__all__ = [
+    "SmartAgent",
+    "AgentEvent",
+    "AgentEventType",
+    "PlanStep",
+    "ToolCall",
+    "ToolResult",
+    "HeuristicRefiner",
+    "OpenCodeRefiner",
+    "PingPongRefiner",
+    "Refiner",
+    "RefinementReport",
+    "make_model_refiners",
+    "refine_data",
+    "refine_json_file",
+]
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
