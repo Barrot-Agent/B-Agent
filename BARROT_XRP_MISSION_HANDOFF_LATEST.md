@@ -1438,3 +1438,79 @@ No new external authentication or data exchange was verified. ChatGPT GitHub acc
 [Structured Run120 market, CI, collateral, prediction and security record](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261114T063527Z-run120-current-spot-cbxrp-morpho-ci-integration-audit.json).
 
 Next actions: finish semantic reconciliation; resolve least privilege, independent review, branch protection and Pages authorization; establish independent raw-source anchoring; align Morpho/cbXRP on-chain state; build policy-compliant candidate-versus-four-baseline uncertainty; and train an XRP candidate only after sufficient synchronized point-in-time data exists.
+
+
+---
+
+## Run120A — SEC actual-capital, macro and identity reconciliation (2026-11-14 06:44 UTC)
+
+### Exact-head CI on the current documentation head
+
+The documentation/research head `4d451b5caa0752decd2680558567470ad0512b20` completed the full verification pipeline:
+
+- Full repository suite: **3,631 passed, 8 subtests passed, zero failures**.
+- Inclusive coverage: **62.42%**; legacy core coverage: **76%**.
+- Full-suite duration: **67.23 seconds**.
+- Wheel build, packaged primary mission and installed Barrot V3/XRP mission: passed.
+- Dependency audit and fail-closed gate: passed.
+
+Evidence: [full suite 43567467176](https://github.com/Barrot-Agent/B-Agent/actions/runs/43567467176), [dependency audit 43567467151](https://github.com/Barrot-Agent/B-Agent/actions/runs/43567467151), [fail-closed gate 43567467152](https://github.com/Barrot-Agent/B-Agent/actions/runs/43567467152), [PR dependency audit 43567469957](https://github.com/Barrot-Agent/B-Agent/actions/runs/43567469957), [PR fail-closed gate 43567470017](https://github.com/Barrot-Agent/B-Agent/actions/runs/43567470017). PR CI 43567470006 is skipped by the integration-branch condition. The full-suite result is on `4d451b5caa0752decd2680558567470ad0512b20`; no later runtime-code changes were made.
+
+### New SEC actual-capital reconciliation — Evernorth 10-Q filed November 13
+
+The November 13 Form 10-Q is the controlling later filing for its subsequent-event disclosures. It explicitly says the September 30 financial statements predate the October 9 business combination.
+
+**Historical September 30 position:**
+- XRP held: 346,284,972.
+- Unrestricted cash: $91,397; restricted cash: $49,995.
+- Net working-capital deficit: approximately $10.0M.
+- Accumulated deficit: $185.587M.
+- The filing says Evernorth had not yet generated revenue.
+- Q3 net income was $155.265M, but included a $162.834M non-cash fair-value gain on refundable investor advances. Nine-month net loss was $32.870M; nine-month digital-asset impairment was $271.037M.
+
+**Subsequent events:**
+- October 9 closing: 346,484,972 XRP subsequently transferred to Pathfinder.
+- Ripple's separate contribution: 126,791,458 XRP.
+- The arithmetic sum of those two disclosed components is 473,276,430 XRP; it is a reconciliation of disclosed components, not a new current wallet proof.
+- Gross closing cash proceeds: $272.6M ($224.6M private-placement cash plus $48M SPAC trust release), before transaction expenses.
+- In-kind XRP contributions: 388,910,554 XRP.
+- The $214.05M advance cash was used to purchase 84,365,876 XRP. This is a use of the private-placement cash, not another raise.
+- October 13 convertible note: $30M principal, $29M net cash after a $1M advisor fee; 4% PIK, due 2031. It is debt, not equity.
+- October 12–November 9 warrant exercises: 3,073,366 warrants at $11.50, generating $35.3M gross cash; 8,666,279 warrants remained outstanding.
+- Cantor ELOC: up to 5,218,935 shares, 97% of applicable VWAP, subject to 20% trading-volume and 4.99% beneficial-ownership caps. Registration became effective October 30; a $0.5M non-refundable commitment fee was agreed. No ELOC purchase proceeds were disclosed in the 10-Q.
+- Separate resale registration: up to 73,688,162 shares offered by selling securityholders. The issuer receives no proceeds from those resales, except warrant exercise proceeds. This is a potential resale/float overhang, not proof of sales or fresh issuer capital.
+- November 12 XRPN close: $8.97, below the $11.50 public-warrant exercise price.
+
+The 10-Q says Coinbase is Evernorth's principal market for financial reporting, management does not actively trade XRP on digital-asset markets, and BitGo Trust was the initial custodian. Yield generation and secured XRP financing are described as strategic plans, not verified deployed balances or realized revenue.
+
+**Filing-date discrepancy preserved:** an earlier prospectus described note issuance on October 12; the later November 13 10-Q says issuance and net proceeds occurred October 13. Use the later 10-Q for subsequent-event accounting while retaining the earlier filing date as a discrepancy.
+
+Primary sources: [Evernorth 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm), [warrant prospectus supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm), [resale prospectus supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+### Macro and geopolitical context
+
+November 13 reporting showed US 10-year yields near 5.14%, two-year yields near 4.85%, and high market-implied odds of a December Fed hike (approximately 91% for 25bp, with a smaller probability assigned to 50bp). USD/JPY had moved above 160, keeping Japanese intervention risk elevated.
+
+Competing inflation interpretations remain:
+- Treasury Secretary Scott Bessent described the energy-price impulse associated with the Iran conflict as a temporary supply shock.
+- Chicago Fed President Austan Goolsbee warned that inflation pressures could be broadening beyond energy.
+
+This is a plausible cross-asset liquidity/risk-appetite headwind, not demonstrated XRP-specific causation and not a directional forecast. [Reuters market reporting](https://www.reuters.com/markets/us/) · [WSJ market reporting](https://www.wsj.com/finance).
+
+### Kamilah/Camilla Stevenson identity resolution update
+
+First-party wealth/health brand pages identify a Dr. Kamilah Stevenson/The Wealth Doctor. Third-party channel analytics associate `@drkamilahstevenson` with channel ID `UCqUPJMQdkCN6lsLVDnichPA`, but reported channel counts conflict materially: CryptoKrios reports approximately 103K subscribers/633 videos (page last updated April 21, 2026), while Vling reports approximately 143K subscribers/1.3K videos. No first-party website-to-YouTube cross-link was found in the inspected official pages. Multiple same-name profiles and separate health/wealth brand references remain.
+
+Therefore, do not merge the channel with the TEDx health speaker or attribute candidate videos to the user's intended person yet. Verified own-channel video inventory remains **zero**; candidates remain quarantined pending first-party cross-link or confirmation.
+
+### Repository data inventory
+
+The integration tree contains 666 files under `research/xrp_intelligence`, but only ten tracked files under `data/xrp_intelligence`. The large October 28 historical snapshot contains 63 market observations and 145 research findings, but is not current market data. Two inspected source-preimage files have null raw-content SHA-256 and no original payload. No tracked SQLite feature-store database or independent WORM raw-source archive was found under the tracked data tree. Runtime/ignored storage may exist but was not independently verified.
+
+This reinforces the distinction: feature-store and receipt architecture is implemented in code, but durable current raw-payload reconstruction is not yet demonstrated.
+
+### Current state
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No model-eligible synchronized L2 dataset, trained XRP candidate or independent shadow outcome cohort exists. No paper trade, deployment, external-model dispatch, real-money action, or source-PR closure occurred.
+
+PR #1662 remains draft/open with zero formal approvals. **NO MERGE.** The exact-head tests now pass, but independent review, semantic reconciliation, least-privilege permissions, branch protection, coverage-ratchet justification and Pages publication authorization remain blockers.

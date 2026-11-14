@@ -1,7 +1,7 @@
 {
   "schema": "barrot.xrp_intelligence.run_record.v1",
   "run_id": "Run120",
-  "research_cutoff_utc": "2026-11-14T06:35:27Z",
+  "research_cutoff_utc": "2026-11-14T06:44:12Z",
   "mission": {
     "priority": "XRP intelligence and prediction-engine mastery",
     "foundation": "Barrot V3 execution, orchestration, safety and verification",
@@ -28,8 +28,8 @@
       "mergeable_conflict_indicator": true,
       "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
       "head_sha": "9d2e92ae174b143628900ef23357acf400bce8f4",
-      "changed_files": 1175,
-      "additions": 346172,
+      "changed_files": 1176,
+      "additions": 346808,
       "deletions": 5354,
       "changed_workflow_files": 50,
       "changed_public_web_files": 7,
@@ -76,7 +76,9 @@
       "enabled": true,
       "automatic_main_push_deployment": true,
       "authorization_for_changed_public_files": "UNRESOLVED"
-    }
+    },
+    "latest_code_head_fully_verified": "4d451b5caa0752decd2680558567470ad0512b20",
+    "latest_documentation_followup_parent": "4d451b5caa0752decd2680558567470ad0512b20"
   },
   "ci": {
     "exact_code_head": "9d2e92ae174b143628900ef23357acf400bce8f4",
@@ -142,6 +144,50 @@
         "Hugging Face BUILD_ERROR"
       ],
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43430139937"
+    },
+    "latest_exact_head_full_suite": {
+      "run_id": 43567467176,
+      "job_id": 132364321765,
+      "head_sha": "4d451b5caa0752decd2680558567470ad0512b20",
+      "event": "push",
+      "conclusion": "success",
+      "tests_passed": 3631,
+      "subtests_passed": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.42,
+      "duration_seconds": 67.23,
+      "legacy_core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "packaged_primary_mission": "passed",
+      "installed_barrot_v3_and_xrp_mission": "passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43567467176"
+    },
+    "latest_exact_head_dependency_audit": {
+      "run_id": 43567467151,
+      "conclusion": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43567467151"
+    },
+    "latest_exact_head_fail_closed_gate": {
+      "run_id": 43567467152,
+      "conclusion": "success",
+      "merge_enabled": false,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43567467152"
+    },
+    "latest_exact_head_pr_dependency_audit": {
+      "run_id": 43567469957,
+      "conclusion": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43567469957"
+    },
+    "latest_exact_head_pr_fail_closed_gate": {
+      "run_id": 43567470017,
+      "conclusion": "success",
+      "merge_enabled": false,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43567470017"
+    },
+    "latest_exact_head_pr_ci": {
+      "run_id": 43567470006,
+      "conclusion": "skipped",
+      "reason": "integration-branch workflow condition"
     }
   },
   "market": {
@@ -314,6 +360,83 @@
       "ask_coin": "Permission ASK is a Base/Polygon token candidate; no canonical XRPL ASK issuer verified",
       "actual_capital": "not a standardized XRP metric; keep cash, in-kind XRP, cash-funded purchases, debt, conditional facilities, warrants and secondary resales separate",
       "kamilah_stevenson": "person-level identity cross-match exists; four YouTube candidates are platform-attributed, first-party channel ownership unverified"
+    },
+    "evernorth_sec_nov13": {
+      "filing_date": "2026-11-13",
+      "reporting_period_end": "2026-09-30",
+      "historical_balance_sheet_is_pre_combination": true,
+      "xrp_held_september30": 346284972,
+      "unrestricted_cash_usd": 91397,
+      "restricted_cash_usd": 49995,
+      "working_capital_deficit_usd": 10000000,
+      "accumulated_deficit_usd": 185587435,
+      "subsequent_october9_transfer_to_pathfinder_xrp": 346484972,
+      "ripple_contribution_xrp": 126791458,
+      "arithmetic_component_sum_xrp": 473276430,
+      "cash_raised_private_placement_usd": 224600000,
+      "trust_release_cash_usd": 48000000,
+      "gross_closing_cash_usd": 272600000,
+      "in_kind_xrp_contributions": 388910554,
+      "cash_funded_xrp_purchase": 84365876,
+      "cash_purchase_cost_usd": 214050000,
+      "convertible_note_principal_usd": 30000000,
+      "note_net_proceeds_usd": 29000000,
+      "note_advisor_fee_usd": 1000000,
+      "note_issue_date": "2026-10-13",
+      "note_interest": "4% PIK; due 2031; convertible after one year subject to terms",
+      "warrant_exercises": {
+        "period": "2026-10-12 through 2026-11-09",
+        "warrants_exercised": 3073366,
+        "exercise_price_usd": 11.5,
+        "gross_cash_proceeds_usd": 35300000,
+        "warrants_remaining": 8666279
+      },
+      "eloc": {
+        "counterparty": "CF Principal Investments LLC (Cantor)",
+        "max_shares": 5218935,
+        "pricing": "97% of applicable VWAP, subject to volume and ownership caps",
+        "volume_cap_percent": 20,
+        "beneficial_ownership_cap_percent": 4.99,
+        "registration_effective": "2026-10-30",
+        "nonrefundable_commitment_fee_usd": 500000,
+        "proceeds_disclosed_as_received": "none in the 2026-11-13 10-Q",
+        "classification": "conditional equity capacity, not cash received"
+      },
+      "resale_registration": {
+        "shares_registered_up_to": 73688162,
+        "issuer_proceeds_from_securityholder_resales": "none, except proceeds from warrant exercises",
+        "composition": {
+          "issued_shares": 19102635,
+          "class_c_conversion_shares": 31392746,
+          "pathfinder_unit_redemption_shares": 22953128,
+          "sponsor_warrant_shares": 239653
+        },
+        "interpretation": "potential resale/float overhang, not proof of sales or new issuer capital"
+      },
+      "nov12_xrpn_share_price_usd": 8.97,
+      "public_warrant_strike_usd": 11.5,
+      "earnings_quality": {
+        "q3_net_income_usd": 155264700,
+        "nine_month_net_loss_usd": 32870033,
+        "q3_fair_value_gain_on_refundable_advances_usd": 162834432,
+        "nine_month_digital_asset_impairment_usd": 271037170,
+        "revenue_generated": "none reported as of the 2026-11-13 filing"
+      },
+      "accounting_and_custody": {
+        "xrp_accounting": "indefinite-lived intangible at cost less impairment",
+        "principal_market_for_financial_reporting": "Coinbase",
+        "actively_trades_xrp": "No; filing says management does not actively trade XRP on digital-asset markets",
+        "initial_custodian": "BitGo Trust"
+      },
+      "strategic_plans_not_verified_deployment": [
+        "future yield-generating strategies",
+        "possible secured financing using XRP collateral",
+        "possible XRP sales for corporate purposes"
+      ],
+      "source_discrepancies": [
+        "An earlier prospectus described note issuance on 2026-10-12; the later 2026-11-13 10-Q says issuance and net proceeds occurred 2026-10-13. Preserve both dates; use the later 10-Q for the subsequent-event accounting.",
+        "The 346.284972M September 30 balance and 346.484972M subsequent Pathfinder transfer are different dated figures; do not substitute one for the other."
+      ]
     }
   },
   "prediction_engine": {
@@ -474,6 +597,42 @@
       "url": "https://jvcea.or.jp/cms2026/wp-content/uploads/2026/10/202609-KOUKAI-02-FINAL.pdf",
       "source_type": "primary_industry_statistics",
       "timestamp": "September 2026"
+    },
+    {
+      "source": "Evernorth Form 10-Q for quarter ended September 30, filed November 13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "source_type": "primary_SEC_filing",
+      "timestamp": "2026-11-13"
+    },
+    {
+      "source": "Evernorth 424B3 resale prospectus supplement filed November 13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "source_type": "primary_SEC_filing",
+      "timestamp": "2026-11-13"
+    },
+    {
+      "source": "Evernorth 424B3 warrant prospectus supplement filed November 13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm",
+      "source_type": "primary_SEC_filing",
+      "timestamp": "2026-11-13"
+    },
+    {
+      "source": "Official Dr Kamilah Stevenson wealth/health site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "source_type": "first_party_identity_source",
+      "timestamp": "retrieved 2026-11-14"
+    },
+    {
+      "source": "CryptoKrios channel analytics",
+      "url": "https://cryptokrios.com/youtube-channels/drkamilahstevenson/",
+      "source_type": "third_party_channel_analytics",
+      "timestamp": "last updated 2026-04-21"
+    },
+    {
+      "source": "Vling channel analytics",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "source_type": "third_party_channel_analytics",
+      "timestamp": "retrieved 2026-11-14"
     }
   ],
   "data_quality": {
@@ -497,7 +656,8 @@
     "external_model_dispatch": false,
     "funds_transferred": false,
     "real_money_action": false,
-    "worktree_destructive_operation": false
+    "worktree_destructive_operation": false,
+    "documentation_and_research_only": true
   },
   "next_actions": [
     "Complete semantic reconciliation of all 1,175 PR #1662 paths, prioritizing 50 workflow files and seven public web files.",
@@ -507,5 +667,69 @@
     "Build a candidate-specific source cohort that does not mislabel multi-publisher aggregates as independent clusters.",
     "Collect synchronized historical spot, L2, derivatives, ETF, exchange-flow, collateral and macro data with raw byte receipts and trusted timestamp anchoring.",
     "Do not issue forecasts until trained candidate superiority, calibration, drift and independent shadow outcomes pass."
-  ]
+  ],
+  "macro_update": {
+    "as_of": "2026-11-13 market reporting; retrieved 2026-11-14",
+    "observations": {
+      "us_10y_treasury_yield_percent": 5.14,
+      "us_2y_treasury_yield_percent": 4.85,
+      "december_fed_hike_probability_percent": 91,
+      "expected_hike_basis_points": 25,
+      "alternate_50bp_probability_percent": 9,
+      "usd_jpy": "above 160 in recent reporting; Japanese intervention risk elevated"
+    },
+    "competing_hypotheses": [
+      "US Treasury Secretary Scott Bessent characterized the energy-driven inflation impulse as a temporary supply shock linked to the Iran conflict.",
+      "Chicago Fed President Austan Goolsbee warned that inflation pressures could be broadening beyond energy."
+    ],
+    "interpretation": "higher yields, dollar strength and intervention risk are potential cross-asset liquidity/risk-appetite headwinds; no XRP-specific causal effect is established",
+    "sources": [
+      "https://www.reuters.com/markets/us/",
+      "https://www.wsj.com/finance"
+    ]
+  },
+  "identity_research_followup": {
+    "kamilah_stevenson": {
+      "person_brand_evidence": "First-party sites identify Dr. Kamilah Stevenson/The Wealth Doctor and related wealth/health brands.",
+      "candidate_youtube_handle": "@drkamilahstevenson",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "third_party_metrics_disagreement": {
+        "cryptokrios": {
+          "subscribers": 103000,
+          "videos": 633,
+          "last_updated": "2026-04-21"
+        },
+        "vling": {
+          "subscribers": 143000,
+          "videos": 1300
+        }
+      },
+      "first_party_cross_link_to_channel": "not found in retrieved official-site pages",
+      "name_collision": "multiple Kamilah/Camilla Stevenson profiles and health/wealth brand references; do not merge identities based on name alone",
+      "verified_own_channel_video_inventory": 0,
+      "disposition": "channel and candidate videos remain quarantined until an official site/social cross-link or first-party confirmation establishes ownership"
+    },
+    "ask_coin": "no canonical XRPL issuer verified; Permission ASK remains a separate Base/Polygon candidate",
+    "actual_capital": "exact-phrase searches do not identify a standardized XRP metric; SEC filing categories govern capital reconciliation",
+    "sbic": "East/Tokyo, Central/Nagoya and West/Osaka remain distinct regional SME investment companies, not SBI Holdings; no OpenAI commercial partnership verified"
+  },
+  "repository_data_inventory": {
+    "integration_tree_entries": 2416,
+    "tracked_research_xrp_intelligence_files": 666,
+    "tracked_data_xrp_intelligence_files": 10,
+    "historical_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/2026-10-28T2312Z-correction.json",
+      "approximate_size_bytes": 609000,
+      "market_observations": 63,
+      "research_findings": 145,
+      "freshness": "2026-10-28; not current market data"
+    },
+    "source_preimages": {
+      "files": 2,
+      "raw_content_sha256": "null in both inspected preimages",
+      "original_payload_present": false
+    },
+    "tracked_sqlite_feature_store": "not found under tracked data/xrp_intelligence paths",
+    "interpretation": "repository contains substantial research records and a historical structured snapshot, but the inspected tracked tree does not demonstrate a durable current raw-source archive or tracked point-in-time SQLite feature database; runtime/ignored storage may exist but was not independently verified"
+  }
 }
