@@ -88,6 +88,7 @@ WALK_FORWARD_HORIZON_SECONDS = {
 DEFAULT_WALK_FORWARD_HORIZONS = ("1h",)
 FULL_WALK_FORWARD_HORIZONS = tuple(WALK_FORWARD_HORIZON_SECONDS)
 WALK_FORWARD_REPORT_VERSION = "xrp-walk-forward-matrix-v1"
+WALK_FORWARD_FEATURE_CADENCE_SECONDS = 3600
 
 ENDPOINTS = (
     ("binance_spot_ticker", "https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT"),
@@ -4472,6 +4473,7 @@ def _walk_forward_report(
                     min_out_of_sample_samples=100,
                     target_tolerance_seconds=300,
                     max_origin_age_seconds=3600,
+                    expected_cadence_seconds=WALK_FORWARD_FEATURE_CADENCE_SECONDS,
                     venue=config["venue"],
                     currency_pair=config["currency_pair"],
                 )
