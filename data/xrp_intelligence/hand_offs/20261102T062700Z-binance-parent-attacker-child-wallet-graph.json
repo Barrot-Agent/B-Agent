@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_onchain_relationship_graph",
+  "title": "Binance-labelled parent wallet to attacker account to seven child wallets",
+  "captured_at_utc": "2026-11-02T06:26:16.531Z",
+  "root": {
+    "account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "explorer": "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "activation": {
+      "timestamp_utc": "2026-10-29T20:05:00Z",
+      "parent_account": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "parent_label": "Binance",
+      "amount_xrp": 185017485.5,
+      "evidence": "Bithomp account page identifies the attacker account as activated by Binance-labelled rDAE53... with 185,017,485.5 XRP."
+    },
+    "current_available_balance_xrp": 22.7,
+    "activated_children_count": 7,
+    "child_activation_total_xrp": 7000
+  },
+  "child_accounts": [
+    {
+      "account": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "activation_utc": "2026-11-02T03:47:11Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 40000000
+    },
+    {
+      "account": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "activation_utc": "2026-11-02T03:48:31Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 40000000
+    },
+    {
+      "account": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "activation_utc": "2026-11-02T03:49:10Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 40000000
+    },
+    {
+      "account": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+      "activation_utc": "2026-11-02T03:50:00Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 40000000
+    },
+    {
+      "account": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "activation_utc": "2026-11-02T03:50:22Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 40000000
+    },
+    {
+      "account": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+      "activation_utc": "2026-11-02T03:50:42Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 33454920
+    },
+    {
+      "account": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "activation_utc": "2026-11-02T02:12:40Z",
+      "activation_xrp": 1000,
+      "large_tranche_xrp": 0
+    }
+  ],
+  "totals": {
+    "large_tranches_xrp": 233454920,
+    "child_activations_xrp": 7000,
+    "number_of_large_payment_transactions": 9,
+    "number_of_large_recipient_accounts": 6,
+    "number_of_activation_only_accounts": 1
+  },
+  "relationship_classification": {
+    "confirmed": "Bithomp labels the original attacker account as activated by a Binance-labelled account with 185,017,485.5 XRP; the attacker account subsequently activated seven child accounts; nine successful large Payments sent 233,454,920 XRP to six of them.",
+    "inference": "The shared parent and synchronized activation/transfer pattern strongly support operational control or coordination among the accounts, but do not identify the beneficial owner or private-key controller.",
+    "unknown": "The remaining four initial source-wallet contributions, beneficial ownership, any off-ledger agreements, and any later monetization."
+  },
+  "source": "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+  "source_lines": "Bithomp page lines 25-31 identifies activation by Binance-labelled rDAE53... with 185,017,485.5 XRP; lines 55-99 lists seven child accounts with 1,000 XRP each.",
+  "related_handoff": "20261102T061500Z-binance-nine-payments-six-recipient-reconciliation.json",
+  "safety": {
+    "public_data_only": true,
+    "no_wallet_interaction": true,
+    "no_signing": true,
+    "no_private_data": true,
+    "no_trading": true
+  }
+}

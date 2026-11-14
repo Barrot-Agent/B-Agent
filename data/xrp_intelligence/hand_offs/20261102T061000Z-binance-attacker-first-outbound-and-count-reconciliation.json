@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_research_handoff",
+  "title": "Binance attacker XRPL wallet first independently corroborated outbound transfer; distribution-count reconciliation",
+  "captured_at_utc": "2026-11-02T06:10:49.338Z",
+  "data_cutoff_utc": "2026-11-02T06:10:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "event": {
+    "event_id": "binance-2026-10-29-xrpl-stolen-xrp",
+    "original_source_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "original_reported_inflow_xrp": 233461943.1,
+    "prior_snapshot": {
+      "observed_at_utc": "2026-11-01T20:00:00Z",
+      "balance_xrp": 233461943.7,
+      "outbound_transactions_reported": 0,
+      "source": "https://xrpldashboard.com/thisweek/2026-11-01",
+      "classification": "secondary_source_timestamped_snapshot"
+    },
+    "independently_corroborated_outbound": [
+      {
+        "transaction_hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+        "transaction_type": "Payment",
+        "validated_status": "Whale Alert transaction record; direct XRPLScan page returned HTTP 403 during this run",
+        "timestamp_utc": "2026-11-02T03:56:21Z",
+        "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "destination": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+        "amount_xrp": 40000000,
+        "fee_xrp": 0.00001,
+        "source": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+        "source_lines": "Opened page: timestamp, amount, hash, fee, sender and receiver are visible at lines 0-33.",
+        "valuation_note": "Whale Alert page shows $50,456,669 in the headline and $50,489,135 in transfer details while stating $1.2622 XRP price. These USD fields are internally inconsistent; only the 40,000,000 XRP quantity is admitted as the measured amount.",
+        "classification": "confirmed_by_independent_public_transaction_alert; raw-ledger cross-check still pending"
+      }
+    ],
+    "prior_run_claims_requiring_reconciliation": {
+      "source": "Previous research handoff, November 2, approximately 05:05 UTC; Bithomp transaction-history links were supplied but were inaccessible to the current web retrieval tool.",
+      "reported_large_tranche_recipients": [
+        {
+          "account": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+          "reported_xrp": 40000000
+        },
+        {
+          "account": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+          "reported_xrp": 40000000
+        },
+        {
+          "account": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+          "reported_xrp": 40000000
+        },
+        {
+          "account": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+          "reported_xrp": 40000000
+        },
+        {
+          "account": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+          "reported_xrp": 40000000
+        },
+        {
+          "account": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+          "reported_xrp": 33454920
+        }
+      ],
+      "reported_large_tranche_total_xrp": 233454920,
+      "reported_additional_activation_account": "rJheAAx... (full address not independently captured in current run)",
+      "reported_additional_activation_amount_xrp": 1000,
+      "unresolved_internal_inconsistencies": [
+        "The previous narrative says nine successful outgoing Payments, while the table contains six large-tranche rows.",
+        "The previous narrative also says six recipient accounts were activated with 1,000 XRP each and separately describes a seventh 1,000-XRP activation; these activation transfers are not reconciled to the stated nine-payment count.",
+        "The six displayed large-tranche rows sum to 233,454,920 XRP, which is 7,023.1 XRP below the original reported 233,461,943.1 XRP inflow.",
+        "The previous narrative described all six recipients as newly activated and showed no subsequent outgoing transactions, but those claims have not been independently re-fetched from raw validated-ledger history in this run."
+      ],
+      "classification": "reported_in_prior_run_not_independently_reverified; do_not_promote_to_confirmed"
+    }
+  },
+  "evidence_assessment": {
+    "confirmed_facts": [
+      "The original attacker account received approximately 233.462 million XRP from five Binance-attributed source wallets on October 29, 2026, as documented by TRM/XRPL research.",
+      "A timestamped November 1, 20:00 UTC XRPLDashboard snapshot reported the original account still held 233,461,943.7 XRP with zero outbound transactions at that snapshot.",
+      "Whale Alert independently records one successful 40,000,000 XRP payment from the original attacker account to rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD at 2026-11-02T03:56:21Z."
+    ],
+    "inference": [
+      "The confirmed 40M payment is consistent with the beginning of wallet segmentation or staged redistribution.",
+      "A transfer from the attacker account is not itself a spot sale, exchange deposit, DEX swap, bridge transfer or realized liquidation."
+    ],
+    "unknowns": [
+      "Current validated-ledger balance of the original attacker account.",
+      "Whether the other five large tranches described in the prior run are all valid and complete.",
+      "Whether the reported 1,000-XRP activations were funded by the attacker account and how many successful activation payments occurred.",
+      "Whether any recipient has since sent XRP to an exchange, DEX, bridge, escrow or other intermediary.",
+      "Beneficial ownership and control of each recipient account.",
+      "Whether any of the transferred XRP has been sold or monetized off-ledger."
+    ],
+    "disconfirming_or_quality_flags": [
+      "The November 1 snapshot is chronologically before the November 2 outbound payment and therefore does not contradict that later movement.",
+      "The prior handoff's 'nine successful payments' count conflicts with its six-row large-transfer table and activation narrative.",
+      "Whale Alert's USD valuations on the opened transaction page conflict internally; XRP quantity, not displayed USD value, is used."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "description": "Attacker is segmenting stolen XRP into multiple wallets before later movement.",
+      "support": "One 40M outbound transfer to a previously unknown destination is independently recorded; prior Bithomp report alleges multiple tranches.",
+      "counterevidence": "Only one outbound transaction was independently corroborated in this run; no exchange/DEX/bridge deposit or sale is established.",
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "H2",
+      "description": "The destination is an intermediate custody/staging wallet and funds may remain dormant.",
+      "support": "The verified payment is a direct wallet-to-wallet transfer; no sale is shown by the transaction record.",
+      "counterevidence": "Subsequent destination-account history was not obtained.",
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "H3",
+      "description": "The transfers are intended to route funds toward exchange/DEX/bridge monetization.",
+      "support": "Wallet segmentation can precede laundering or conversion.",
+      "counterevidence": "No destination service attribution, swap, bridge event or exchange deposit is verified.",
+      "status": "speculative"
+    },
+    {
+      "id": "H4",
+      "description": "The apparent multi-wallet distribution in the prior handoff contains a count or attribution error.",
+      "support": "The prior report's nine-payment count, six-row table and activation narrative do not reconcile; only one transaction was independently corroborated now.",
+      "counterevidence": "Whale Alert confirms at least one of the reported 40M transfers.",
+      "status": "active_data_quality_hypothesis"
+    }
+  ],
+  "market_interpretation": {
+    "confirmed_spot_sale": false,
+    "confirmed_exchange_deposit": false,
+    "confirmed_dex_swap": false,
+    "confirmed_bridge_transfer": false,
+    "directional_price_signal": "NOT_ISSUED",
+    "rationale": "A wallet transfer changes custody/location, not necessarily market supply available for sale. No price-direction inference is justified from one transfer."
+  },
+  "next_actions": [
+    "Query XRPL account_tx for the original account over ledgers bracketing 2026-11-02T03:45Z through the latest validated ledger; preserve marker pagination and validated=true.",
+    "Query transaction hash 3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D through an independent public rippled/Clio node and verify tesSUCCESS, delivered_amount, ledger_index and close_time.",
+    "Query account_tx and account_info for each reported recipient using the same pinned validated ledger index; do not rely on explorer UI labels alone.",
+    "Reconcile all successful Payment transactions, activation payments, fees, reserves and final AccountRoot balances; explain every XRP difference before publishing a total.",
+    "Track destination flows to labeled exchanges, DEXs and bridges; preserve unknown destinations as unknown.",
+    "Keep the theft, custody transfer, exchange deposit, swap and actual sale as separate event types in the feature store."
+  ],
+  "source_methodology": {
+    "XRPL account_tx documentation": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
+    "XRPLScan public API documentation": "https://docs.xrpscan.com/api-documentation/account/transactions",
+    "Whale Alert transaction page": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+    "XRPLDashboard prior snapshot": "https://xrpldashboard.com/thisweek/2026-11-01",
+    "Q-Eternal November 1 ledger analysis": "https://q-eternal.com/blog/2026-11-01/",
+    "TRM incident attribution": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
+  },
+  "safety": {
+    "research_only": true,
+    "lawful_public_data_only": true,
+    "no_market_manipulation": true,
+    "no_private_data": true,
+    "no_wallet_interaction_or_signing": true,
+    "no_trading": true,
+    "no_main_branch_write": true
+  }
+}

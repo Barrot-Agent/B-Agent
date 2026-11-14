@@ -1,0 +1,438 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_market_macro_and_source_quality_handoff",
+  "title": "XRP market and macro context; Binance XRPL redistribution source-quality correction",
+  "captured_at_utc": "2026-11-02T06:48:00Z",
+  "evidence_cutoff_utc": "2026-11-02T06:48:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "market_snapshots": [
+    {
+      "provider": "CoinMarketCap",
+      "retrieved_at_utc": "2026-11-02T06:40:00Z",
+      "price_usd": 1.24,
+      "change_24h_pct": 0.43,
+      "market_cap_usd": 79050000000,
+      "volume_24h_usd": 778558034,
+      "circulating_supply_xrp": 63351197653,
+      "total_supply_xrp": 99980000000,
+      "classification": "provider_live_snapshot",
+      "limitations": [
+        "No exact exchange-universe timestamp exposed in the retrieved page.",
+        "Market-cap supply definition is provider-specific."
+      ]
+    },
+    {
+      "provider": "MarketCapitalize",
+      "retrieved_at_utc": "2026-11-02T06:40:00Z",
+      "reported_updated": "about five hours before retrieval",
+      "price_usd": 1.24,
+      "market_cap_usd": 78830000000,
+      "volume_24h_usd": 559940000,
+      "daily_series_source": "Binance XRP/USDT daily closes",
+      "daily_observations": [
+        {
+          "date": "2026-10-29",
+          "open_usd": 1.33,
+          "close_usd": 1.24,
+          "change_pct": -6.66,
+          "volume_xrp": 162840000
+        },
+        {
+          "date": "2026-10-30",
+          "open_usd": 1.24,
+          "close_usd": 1.26,
+          "change_pct": 1.54,
+          "volume_xrp": 117740000
+        },
+        {
+          "date": "2026-10-31",
+          "open_usd": 1.26,
+          "close_usd": 1.25,
+          "change_pct": -0.37,
+          "volume_xrp": 22190000
+        },
+        {
+          "date": "2026-11-01",
+          "open_usd": 1.25,
+          "close_usd": 1.25,
+          "change_pct": -0.1,
+          "volume_xrp": 30040000
+        },
+        {
+          "date": "2026-11-02",
+          "open_usd": 1.25,
+          "high_usd": 1.26,
+          "low_usd": 1.24,
+          "close_usd": 1.26,
+          "change_pct": 0.92,
+          "volume_xrp": 11820000
+        }
+      ],
+      "classification": "provider_historical_market_snapshot",
+      "limitations": [
+        "Daily close series uses Binance XRP/USDT, not a consolidated global spot benchmark.",
+        "Current headline price and daily close are not synchronized."
+      ]
+    },
+    {
+      "provider": "ET Now",
+      "retrieved_at_utc": "2026-11-02T06:40:00Z",
+      "source_updated_at_utc": "2026-11-02T02:50:00Z",
+      "price_usd": 1.25,
+      "change_24h_pct": 0.37,
+      "market_cap_usd": 79350000000,
+      "volume_24h_usd": 980740000,
+      "circulating_supply_xrp": 63351197653,
+      "classification": "provider_live_snapshot",
+      "limitations": [
+        "Older update than CoinMarketCap retrieval.",
+        "Different market aggregation and quote timing."
+      ]
+    },
+    {
+      "provider": "CoinMarketCap",
+      "retrieved_at_utc": "2026-11-02T06:47:00Z",
+      "price_usd": 1.24,
+      "change_24h_pct": 0.32,
+      "market_cap_usd": 79080000000,
+      "volume_24h_usd": 1090000000,
+      "circulating_supply_xrp": 63350000000,
+      "total_supply_xrp": 99980000000,
+      "classification": "provider_live_snapshot",
+      "limitations": [
+        "Provider page does not expose a precise exchange-tick timestamp.",
+        "Volume aggregation differs from other providers."
+      ]
+    },
+    {
+      "provider": "MarketCapitalize / CoinPaprika quote",
+      "retrieved_at_utc": "2026-11-02T06:47:00Z",
+      "price_usd": 1.25,
+      "change_24h_pct": 0.11,
+      "market_cap_usd": 79120000000,
+      "volume_24h_usd": 3170000000,
+      "reported_circulating_supply_xrp": 99990000000,
+      "source_cache_status": "cached",
+      "chart_source": "Binance XRP/USDT daily closes",
+      "technical_summary": "Strong sell; 1 buy, 3 neutral, 14 sell; 261 days of daily closes; technical summary only, not a forecast.",
+      "performance_windows_pct": {
+        "7d": -4.54,
+        "30d": -16.39,
+        "90d": 14.92,
+        "1y": -50.23
+      },
+      "classification": "provider_snapshot_with_supply_field_anomaly",
+      "limitations": [
+        "The page labels 99.99B XRP as circulating, which conflicts with its own market capitalization and with CoinMarketCap's 63.35B circulating supply.",
+        "At $1.25 and 99.99B units, the implied market capitalization would be about $124.99B, not the displayed $79.12B. The 99.99B field is not admissible as circulating supply without clarification.",
+        "The page states its price, market cap and 24-hour volume are from CoinPaprika and its chart is from Binance; those are different data sources.",
+        "The page is marked cached and may lag individual exchanges."
+      ]
+    }
+  ],
+  "etf_flows": {
+    "provider": "Maketo",
+    "source_updated_at_utc": "2026-11-02T02:24:00Z",
+    "latest_trading_date": "2026-10-30",
+    "net_flow_usd": -496500,
+    "classification": "provider_reported_daily_flow",
+    "limitations": [
+      "A blank day is not a zero; source explicitly notes at least one incomplete reporting day.",
+      "This flow observation is not proof of spot-market execution at a particular venue."
+    ],
+    "past_week_net_flow_usd": 4300000,
+    "past_month_net_flow_usd": 19000000,
+    "reported_fund_status_on_latest_day": {
+      "funds_reported": 5,
+      "net_inflow_funds": 1,
+      "net_outflow_funds": 2,
+      "unchanged_funds": 2
+    }
+  },
+  "macro_context": [
+    {
+      "event": "Federal Reserve October FOMC",
+      "date": "2026-10-28",
+      "decision": "Held federal-funds target range at 3.75%-4.00%",
+      "vote": "10-2",
+      "dissents": "Lisa D. Cook and Beth M. Hammack preferred a 25 bp increase",
+      "classification": "confirmed_policy_event",
+      "xrp_relevance": "Potential discount-rate and global risk-liquidity input; not an XRP-specific catalyst.",
+      "source_urls": [
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+        "https://www.reuters.com/business/fed-needs-at-least-two-more-rate-hikes-logan-says-2026-10-30/"
+      ]
+    },
+    {
+      "event": "Bank of Japan October policy decision",
+      "date": "2026-10-30",
+      "decision": "Held the uncollateralized overnight call rate around 1.25% by an 8-1 majority vote.",
+      "vote": "8-1",
+      "dissent": "Hajime Takata proposed 1.50%.",
+      "classification": "confirmed_policy_event",
+      "xrp_relevance": "Yen funding and carry-trade repricing can affect global risk appetite and cross-border capital costs; direct XRP flow is unproven.",
+      "source_urls": [
+        "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+        "https://www.reuters.com/world/asia-pacific/bank-japan-hold-rates-signal-further-hikes-2026-10-29/"
+      ],
+      "meeting_dates": [
+        "2026-10-29",
+        "2026-10-30"
+      ],
+      "additional_policy_change": "Raised planned annual ETF sales pace from about ¥330B to about ¥860B book value, effective January 2027; BOJ said the pace is about 0.1% of Tokyo Stock Exchange Prime Market trading value."
+    },
+    {
+      "event": "Japan-US foreign-exchange coordination",
+      "date": "2026-11-02",
+      "statement": "Finance Minister Satsuki Katayama said coordination with the United States remains unchanged and Japan may act against disorderly or excessively speculative FX moves.",
+      "classification": "confirmed_official_statement_reported_by_reuters",
+      "xrp_relevance": "Potential yen-volatility and carry-trade regime feature; no direct XRP transaction or policy treatment established.",
+      "source_urls": [
+        "https://www.reuters.com/world/asia-pacific/japan-sees-no-change-in-us-fx-coordination-after-midterm-elections-katayama-says-2026-11-02/"
+      ]
+    }
+  ],
+  "binance_xrpl_redistribution": {
+    "source_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "event_window_utc": [
+      "2026-11-02T03:52:41Z",
+      "2026-11-02T04:00:31Z"
+    ],
+    "large_payment_count": 9,
+    "recipient_count": 6,
+    "large_payment_total_xrp": 233454920,
+    "activation_count": 7,
+    "activation_total_xrp": 7000,
+    "total_known_outgoing_before_fees_xrp": 233461920,
+    "source_reported_inflow_xrp": 233461943.1,
+    "reported_final_accountroot_xrp": 23.69904,
+    "fees_xrp_each": 0.00001,
+    "known_transaction_count": 16,
+    "estimated_fees_xrp": 0.00016,
+    "arithmetic_reconciliation": {
+      "residual_from_reported_inflow_after_known_transfers_and_fees_xrp": 23.09984,
+      "reported_final_accountroot_xrp": 23.69904,
+      "residual_difference_xrp": 0.5992,
+      "prior_2026_11_01_snapshot_balance_xrp": 233461943.7,
+      "prior_snapshot_minus_trm_rounded_inflow_xrp": 0.6,
+      "prior_claimed_delta_0_99904_status": "NOT_VALIDATED_AS_FLOW_DIFFERENCE",
+      "interpretation": "The 0.5992 XRP difference may reflect a source-level aggregation/rounding difference in the reported original inflow or a small unaccounted ledger event. The earlier 0.99904 figure compared a final AccountRoot balance with a later explorer available-balance display and was not a valid flow reconciliation. The 1 XRP base reserve explains the difference between AccountRoot and spendable balance, not the 0.5992 flow residual.",
+      "required_resolution": "Sum the five exact incoming Payment delivered_amount values, all 16 outgoing delivered_amount values and fees from raw validated XRPL transaction metadata at pinned ledger indices. Do not classify the 0.5992 XRP as an inbound transfer or unexplained sale until reconciled."
+    },
+    "recipient_status_snapshot_utc": "2026-11-02T06:25:04.536Z",
+    "recipient_status": "Bithomp transaction pages showed the six large recipients and seventh activation-only child with inbound-only histories at that capture. This is a time-bounded explorer observation, not a current raw-node account_tx result.",
+    "sale_status": "No exchange deposit, DEX swap, bridge transfer or sale was established in the captured Bithomp recipient histories.",
+    "source_independence": {
+      "all_nine_large_payments": "Bithomp transaction history/detail pages were inspected; this is one explorer source for the full set.",
+      "independent_public_alert": "Whale Alert independently corroborates the 40,000,000 XRP payment to rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD at 2026-11-02T03:56:21Z, hash 3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D.",
+      "theft_attribution": "TRM Labs and FBI corroborate the wider Binance theft attribution; they do not independently verify all nine later XRP redistribution payments.",
+      "raw_node_verification": "NOT_EXECUTED. Direct XRPLScan API access returned an access error in the web retrieval path; a container request failed at DNS resolution. No raw rippled/Clio account_tx call was completed in this run."
+    },
+    "whale_radar_scope_correction": {
+      "source_url": "https://whaleradar.com/events/binance-hack-2026-10/funds",
+      "page_updated_at_utc": "2026-11-02T06:27:00Z",
+      "explicit_scope": "Bitcoin and Ethereum blockchains",
+      "evidence": "The page states that the tracked wallets are read on Bitcoin and Ethereum every two minutes and its methodology says balances and moves are read from those two chains. It separately says TRON, Solana, Arbitrum and Avalanche are not followed.",
+      "xrp_coverage": false,
+      "admissible_use": "Cross-chain context for BTC/ETH portions of the Binance incident only.",
+      "prohibited_use": "Do not use this page to corroborate XRP recipient inactivity, XRP redistribution, or absence of XRP movement."
+    },
+    "hypotheses": [
+      {
+        "id": "H1",
+        "claim": "The attacker segmented stolen XRP into six large recipient accounts after activating them from the source account.",
+        "status": "strongly_supported_by_Bithomp_explorer_records",
+        "counterevidence": "Independent raw-node verification remains pending."
+      },
+      {
+        "id": "H2",
+        "claim": "The six recipients are staging/custody wallets and may remain dormant.",
+        "status": "consistent_with_Bithomp_histories_at_06_25_UTC",
+        "counterevidence": "The observation is stale and does not exclude subsequent movement."
+      },
+      {
+        "id": "H3",
+        "claim": "The recipients will route XRP to exchanges, DEXs or bridges for monetization.",
+        "status": "speculative",
+        "counterevidence": "No such route is established in the captured recipient histories."
+      },
+      {
+        "id": "H4",
+        "claim": "The 0.5992 XRP residual reflects rounding in the reported original inflow.",
+        "status": "plausible_unverified",
+        "counterevidence": "Exact incoming transaction metadata has not been independently summed."
+      },
+      {
+        "id": "H5",
+        "claim": "The wallet redistribution itself caused XRP spot selling.",
+        "status": "not_supported",
+        "counterevidence": "A wallet-to-wallet Payment is custody movement; no execution or sale is shown."
+      }
+    ]
+  },
+  "institutional_relationship_context": {
+    "binance_circle": {
+      "confirmed": "Circle and Binance announced a $100M strategic equity investment and a five-year USDC commercial agreement on 2026-09-22.",
+      "interpretation": "A direct Binance-Circle relationship that may affect USDC distribution and liquidity on Binance.",
+      "non_claim": "This does not establish Circle involvement in the Binance theft, an XRP purchase, or an XRP market impact.",
+      "source_urls": [
+        "https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+        "https://www.coindesk.com/policy/2026/09/22/binance-buys-usd100-million-circle-stake-in-five-year-usdc-promotion-deal"
+      ]
+    },
+    "issuer_controls": {
+      "confirmed": "TRM reported Circle USDC and Ripple RLUSD freezes during the Binance incident; native XRP is not issuer-freezable.",
+      "interpretation": "Stablecoin issuers have token-level intervention powers that do not exist for native XRP; this changes recovery and compliance pathways, not the XRP ledger's consensus or transfer history.",
+      "source_url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
+    },
+    "coinbase_ripple_circle": {
+      "confirmed": "Coinbase announced RLUSD availability on its platforms on 2026-10-28; Coinbase has a substantial USDC commercial relationship with Circle; Ripple Prime is listed as a Coinbase Derivatives broker distribution partner.",
+      "unknown": "No verified Coinbase-specific customer XRP collateral balance, Ripple Prime XRP contract flow or Circle-directed XRP purchase.",
+      "source_urls": [
+        "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+        "https://www.coinbase.com/derivatives"
+      ]
+    }
+  },
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_xrp_forecast": null,
+    "reason": "The Binance event is a custody redistribution feature, not a sale. Market feeds differ in time and volume coverage. Macro events are contextual features. No verified out-of-sample XRP predictive skill or calibration is available."
+  },
+  "sources": [
+    "https://coinmarketcap.com/currencies/xrp/",
+    "https://marketcapitalize.com/coins/xrp-xrp",
+    "https://www.etnownews.com/cryptocurrency/xrp-xrp-crypto-price",
+    "https://maketo.com/etf/xrp/flows",
+    "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+    "https://www.reuters.com/world/asia-pacific/bank-japan-hold-rates-signal-further-hikes-2026-10-29/",
+    "https://www.reuters.com/world/asia-pacific/japan-sees-no-change-in-us-fx-coordination-after-midterm-elections-katayama-says-2026-11-02/",
+    "https://whaleradar.com/events/binance-hack-2026-10/funds",
+    "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+    "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions",
+    "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
+    "https://docs.xrpscan.com/api-documentation/account/transactions",
+    "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+    "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack-2026",
+    "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf"
+  ],
+  "next_actions": [
+    "Obtain exact five incoming delivered_amount values and all outgoing delivered_amount/fee records from a raw validated XRPL account_tx/tx response at pinned ledger indices.",
+    "Recheck all seven child accounts at one common validated ledger through two independent public rippled/Clio endpoints.",
+    "Do not cite WhaleRadar as an XRP source; it follows Bitcoin and Ethereum for this incident.",
+    "Monitor recipient histories for exchange, DEX, bridge and custody routing; keep each event type separate.",
+    "Reconcile the 0.5992 XRP flow residual before updating the attacker's final balance accounting.",
+    "Normalize XRP spot price and volume feeds by venue, quote currency, timestamp and aggregation method.",
+    "Store Fed, BOJ and Japan FX-policy observations as contextual macro features with publication and observation timestamps.",
+    "Continue fixed-horizon point-in-time forecasting and shadow evaluation; do not issue a directional forecast from this event.",
+    "Repair sentiment ingestion and timestamp coverage; do not use the corpus-wide XRP entity score as a current sentiment feature.",
+    "Resolve MarketCapitalize's 99.99B 'circulating' field against its own $79.12B market cap and preserve the Oct 31 candle revision as separate point-in-time snapshots."
+  ],
+  "safety": {
+    "public_data_only": true,
+    "no_wallet_interaction": true,
+    "no_signing": true,
+    "no_private_data": true,
+    "no_market_manipulation": true,
+    "no_trading": true,
+    "no_main_branch_write": true
+  },
+  "internal_sentiment_quality": {
+    "main_commit": "d7c7d8072110ac3e77f7e265e897632ff334e6ef",
+    "sentiment_shift": {
+      "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+      "sha": "efcdf9a5a5514430fb665f12799b5a8c3e6c5aaf",
+      "generated_at_utc": "2026-11-02T05:51:47.546905Z",
+      "xrp": {
+        "recent_24h_entries": 0,
+        "prior_24h_entries": 0,
+        "recent_24h_score": null,
+        "prior_24h_score": null,
+        "shift": null,
+        "significant_shift": false
+      },
+      "classification": "NO_CURRENT_SENTIMENT_SIGNAL"
+    },
+    "entity_sentiment_profile": {
+      "path": "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+      "sha": "5f681eda996fbf1220c19baed03726745dccc859",
+      "generated_from": {
+        "xrp_entries": 1208,
+        "btc_entries": 1245
+      },
+      "xrp_entity": {
+        "total_mentions": 286,
+        "bullish": 186,
+        "neutral": 44,
+        "bearish": 56,
+        "net_sentiment_score": 0.455
+      },
+      "limitations": [
+        "No rolling time window or publication-time distribution is exposed in this artifact.",
+        "Example headlines include older material and mixed BTC/XRP source context.",
+        "Source deduplication and independent-source weighting are not demonstrated."
+      ],
+      "classification": "CORPUS_AGGREGATE_NOT_CURRENT_SENTIMENT"
+    },
+    "correction": "Do not describe 286 mentions and +0.455 as a current XRP sentiment reading. The timestamped 24-hour sentiment-shift artifact has zero recent and prior entries and null scores. Neither artifact is admitted as a current predictive feature until timestamp coverage, asset attribution, deduplication and source independence are verified."
+  },
+  "market_data_quality": {
+    "supply_definitions": [
+      {
+        "provider": "CoinMarketCap",
+        "reported_circulating_supply_xrp": 63350000000,
+        "classification": "provider_circulating_supply"
+      },
+      {
+        "provider": "MarketCapitalize",
+        "reported_circulating_supply_xrp": 99990000000,
+        "classification": "SUSPECT_FIELD_LABEL_OR_SOURCE_MAPPING",
+        "admissible": false
+      },
+      {
+        "provider": "XRP Insights",
+        "reported_supply_proxy_xrp": 69590000000,
+        "classification": "ledger_based_supply_proxy",
+        "not_equivalent_to_provider_circulating_supply": true
+      }
+    ],
+    "candle_revision": {
+      "date": "2026-10-31",
+      "earlier_capture": {
+        "retrieved_at_utc": "2026-11-02T06:40:00Z",
+        "close_usd": 1.25,
+        "change_pct": -0.37,
+        "volume_xrp": 22190000
+      },
+      "later_capture": {
+        "retrieved_at_utc": "2026-11-02T06:47:00Z",
+        "close_usd": 1.25,
+        "change_pct": -0.6,
+        "volume_xrp": 12510000
+      },
+      "classification": "PROVIDER_HISTORICAL_REVISION_OR_CAPTURE_DIFFERENCE",
+      "treatment": "Preserve both snapshots. Do not overwrite the earlier point-in-time record or treat the difference as real market trading without the provider's revision history."
+    },
+    "volume_divergence": {
+      "observations": [
+        {
+          "provider": "CoinMarketCap",
+          "volume_24h_usd": 1090000000,
+          "retrieved_at_utc": "2026-11-02T06:47:00Z"
+        },
+        {
+          "provider": "MarketCapitalize/CoinPaprika",
+          "volume_24h_usd": 3170000000,
+          "retrieved_at_utc": "2026-11-02T06:47:00Z"
+        },
+        {
+          "provider": "ET Now",
+          "volume_24h_usd": 980740000,
+          "retrieved_at_utc": "2026-11-02T02:50:00Z"
+        }
+      ],
+      "treatment": "Do not average. Normalize venue coverage, quote currency, timestamp, wash-trading filters and aggregation method before model admission."
+    }
+  }
+}
