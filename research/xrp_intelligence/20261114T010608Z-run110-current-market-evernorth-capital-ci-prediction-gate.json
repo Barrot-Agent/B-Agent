@@ -241,6 +241,49 @@
       "caveat": "partial wallet attribution; not a complete Pathfinder custody inventory and not proof of sale",
       "source_page_closing_status_claim": "says no closing 8-K/share-count filing at its last check",
       "correction": "contradicted by SEC closing 8-K dated Oct 9, corrective 8-K dated Oct 13 and 10-Q filed Nov 13"
+    },
+    "related_party_facilities": {
+      "pathfinder_ripple_company_facility": {
+        "original_limit_usd": 7000000,
+        "limit_after_2026_10_07_amendment_usd": 10000000,
+        "borrowed_as_of_2026_10_07_usd": 9700000,
+        "interest_rate_percent": 3.81,
+        "repayment_due": "within five business days after 2026-10-09 closing",
+        "repayment_status": "not confirmed in reviewed 2026-11-13 10-Q/424B3"
+      },
+      "separate_evernorth_ripple_facility": {
+        "limit_usd": 1000000,
+        "borrowed_as_of_2026_06_30_usd": 0,
+        "distinct_from_pathfinder_facility": true
+      }
+    },
+    "transaction_costs": {
+      "advisory_fee_usd": 4000000,
+      "placement_fee_percent_of_eligible_proceeds": 4,
+      "reimbursable_expenses_cap_usd": 500000,
+      "eloc_initial_commitment_fee_usd": 500000,
+      "eloc_potential_total_commitment_fee_usd": 1000000,
+      "eloc_expenses_cap_usd": 500000,
+      "interpretation": "$272.6M gross closing cash is before costs; fees and expenses reduce available liquidity and are not capital raised"
+    },
+    "convertible_note_date_discrepancy": {
+      "ten_q_reported_issuance_date": "2026-10-13",
+      "prospectus_effectiveness_date": "2026-10-12",
+      "principal_usd": 30000000,
+      "net_cash_after_advisor_fee_usd": 29000000,
+      "pik_rate_percent": 4,
+      "initial_conversion_price_usd": 10.2,
+      "status": "one-day date discrepancy retained pending settlement documentation"
+    },
+    "accounting_caveats": {
+      "unrestricted_cash_as_of_2026_09_30_usd": 91397,
+      "restricted_cash_as_of_2026_09_30_usd": 49995,
+      "revenue_through_2026_09_30": "none reported",
+      "q3_net_income_usd": 155264700,
+      "q3_fair_value_gain_on_refundable_advances_usd": 162834432,
+      "nine_month_net_loss_usd": -32870033,
+      "nine_month_digital_asset_impairment_usd": 271037000,
+      "interpretation": "pre-combination balances; Q3 income primarily non-cash fair-value gain, not operating profitability"
     }
   },
   "prediction_engine": {
@@ -435,5 +478,28 @@
     "raw_bytes_captured": false,
     "sha256_receipts": null,
     "note": "This research artifact records source URLs, event dates and extracted observations; it is not a byte-exact publisher receipt. Preserve as research context only, not as an admitted model feature."
+  },
+  "documentation_head_attempt": {
+    "head_sha": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "run_id": 43539079899,
+    "conclusion": "failure",
+    "passed": 3584,
+    "failed": 42,
+    "subtests": 8,
+    "coverage_percent": 62.34,
+    "duration_seconds": 95.45,
+    "failure_cause": "current capability map was overwritten with an incompatible alternate schema after large-file retrieval returned an empty content field",
+    "correction": "restore original blob aaa327be7b6b23437f129c6f08abcffe78ce6e41 and add Run110 fields without removing prior schema/history",
+    "tests_weakened": false,
+    "runtime_code_changed": false
+  },
+  "correction": {
+    "restored_original_current_map_blob_sha": "aaa327be7b6b23437f129c6f08abcffe78ce6e41",
+    "original_size_bytes": 1660793,
+    "failed_doc_head": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "failed_tests": 42,
+    "passed_tests": 3584,
+    "tests_weakened": false,
+    "runtime_code_changed": false
   }
 }

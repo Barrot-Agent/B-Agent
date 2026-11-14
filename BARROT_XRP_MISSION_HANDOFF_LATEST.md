@@ -235,3 +235,29 @@ PR #1662 remains draft with zero formal reviews, approvals or review threads. Cu
 6. Train an XRP-specific candidate only after sufficient point-in-time history exists; require calibrated out-of-sample superiority against all four baselines and independent shadow outcomes before any directional forecast.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+## Run110B — corrective map restoration and SEC facility reconciliation (2026-11-14T01:20:00Z)
+
+### Map-schema regression and correction
+
+The Run110 current-map update exposed a retrieval limitation: the pre-existing nine_platform_capability_authentication_dataflow_map_current.json was a 1,660,793-byte blob (aaa327be7b6b23437f129c6f08abcffe78ce6e41). The file-fetch helper returned an empty content field for that large blob. That response was incorrectly treated as proof that the file was empty, and a compact list-based map was written over it. This was an error in the update process.
+
+Exact-head push CI on f64197cb7d1d3e57622736515eab563c4f09b5a6 failed 42 tests (3,584 passed, eight subtests, 62.34% coverage, 95.45 seconds). All 42 failures were map-contract failures: missing schema_version, artifact_type, repository_state, integration_pr, ci_evidence, workflow_safety_audit, prediction_engine_status, market/identity/capital sections and historical Run20/23/67 snapshots; the platform list also had the wrong shape. The core job still passed 739 tests; dependency audit passed five groups with zero known vulnerabilities; fail-closed gate passed with automatic merge disabled.
+
+The original 1.66MB map is being restored from the parent commit's original blob, retaining its complete schema and historical snapshots. Run110 evidence is added under separate keys. No tests are weakened and no runtime code is changed. The map-restoration descendant requires its own exact-head full-suite run; the 3,626-test success on code head 2945c561 remains separate evidence.
+
+### Additional Evernorth capital findings
+
+The November 9 Form 424B3 reports a distinct Pathfinder/Ripple Company Facility: originally $7M, increased to $10M on October 7, with $9.7M borrowed as of that date at 3.81%. Amounts were due within five business days after the October 9 closing. The reviewed November 13 10-Q/424B3 does not confirm repayment. This is separate from Evernorth's own $1M Ripple facility, which had no borrowings as of June 30.
+
+The $272.6M closing cash figure is gross before transaction costs. The 424B3 describes a $4M advisory fee, a 4% placement fee on eligible proceeds and reimbursable expenses up to $0.5M; these reduce available liquidity. The ELOC also has an initial $0.5M commitment fee, a possible true-up up to $1M total and up to $0.5M expenses. These are costs, not capital raised.
+
+The 10-Q dates the $30M 4% PIK note issuance October 13 and reports approximately $29M net after a $1M advisor fee; the 424B3 calls October 12 the effectiveness/issuance date. Preserve the one-day date discrepancy until settlement documentation resolves it.
+
+The 10-Q's $91,397 unrestricted cash and $49,995 restricted cash are September 30 pre-combination balances, not post-close liquidity. No revenue was reported through September 30; Q3 net income was primarily a non-cash fair-value gain on refundable investor advances. The $524.26M refundable advances settled in equity at closing, not a new cash repayment or second cash raise.
+
+The 10-Q says Pubco owns 71.5% of Pathfinder. The 473.276M XRP is gross Pathfinder treasury; 338.393M XRP is a derived 71.5% attributable estimate, not a reported post-close balance. A 300,000 Class A share residual remains unreconciled. Coinbase is the principal market for accounting; BitGo Trust is the initial post-close custodian.
+
+### Current correction state
+
+The Run110B current map restores the original schema and historical snapshots, adding Run110 state under separate keys. The run-specific map and research artifact are being corrected to the same schema family. Exact-head CI on the restoration commit remains pending. No merge, deployment, external transfer, paper trade, Kaggle submission, funds movement, force-push, history rewrite or source-PR closure occurred.

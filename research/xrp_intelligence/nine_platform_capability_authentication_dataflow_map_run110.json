@@ -1,131 +1,719 @@
 {
-  "schema": "barrot.nine-platform-capability-authentication-dataflow.v1",
-  "run": "Run110",
-  "observed_at_utc": "2026-11-14T01:06:08Z",
-  "coordination_status": "DESIGNED; no external-model dispatch, structured evidence exchange or data transfer executed",
-  "repository_observation": {
-    "repository": "Barrot-Agent/B-Agent",
-    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_code_head": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
-    "integration_branch": "integration/xrp-v3-unified-main-20261112",
-    "pr_number": 1662,
-    "pr_state": "open",
-    "pr_draft": true,
-    "exact_head_full_suite": "passed on code head 2945c561; documentation descendants require their own exact-head run"
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map_run_snapshot",
+  "schema_version": "1.1.0",
+  "run": "Run110B",
+  "captured_at_utc": "2026-11-14T01:20:00Z",
+  "last_verified_at_utc": "2026-11-14T01:20:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "observed_integration_head_before_map_commit": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification foundation",
+  "forecast_status": "NOT_ISSUED",
+  "platforms": {
+    "ChatGPT": {
+      "intended_role": [
+        "primary evidence synthesis in this session",
+        "GitHub repository inspection and bounded integration updates",
+        "cross-source disagreement and red-team review"
+      ],
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "permission_scope": "GitHub API reports admin, maintain, push, pull and triage; overprivileged.",
+      "data_flow": {
+        "verified": true,
+        "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
+        "persistent_agent_connection": false,
+        "external_model_transfer": false,
+        "last_verified_at_utc": "2026-11-13T11:10:50Z",
+        "observed_flow": "Run87 verified main/integration branch heads, full open-PR inventory, PR #1662 reviews/threads, recursive tree, source branch ancestry, workflow jobs/logs, critical workflow diffs, current market/institutional sources and prepared an integration-branch documentation handoff; no main write or external-model transfer.",
+        "main_branch_write": false
+      },
+      "limitations": [
+        "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
+      ],
+      "last_verified_at_utc": "2026-11-13T11:10:50Z",
+      "last_verified_run": "Run87"
+    },
+    "Claude": {
+      "intended_role": [
+        "independent regulatory and primary-source review",
+        "counter-hypothesis generation",
+        "red-team critique"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "None verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent authentication, permission grant, or tested data flow."
+      ]
+    },
+    "Grok": {
+      "intended_role": [
+        "public social-signal discovery",
+        "independent market-narrative comparison"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "None verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent authentication or tested data flow. Grok is distinct from Groq."
+      ]
+    },
+    "Gemini": {
+      "intended_role": [
+        "independent public-document analysis",
+        "multimodal evidence comparison"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "None verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent authentication, permission grant, or tested data flow."
+      ]
+    },
+    "Copilot": {
+      "intended_role": [
+        "repository code review",
+        "test-coverage critique"
+      ],
+      "authentication_status": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY",
+      "permission_scope": "Historical one-off review only; no formal approval on PR #1662.",
+      "data_flow": {
+        "verified": false,
+        "direction": "no persistent connection verified",
+        "persistent_connection": false,
+        "write_performed": false,
+        "formal_approval_on_pr_1662": false
+      },
+      "limitations": [
+        "COMMENTED is not APPROVED. No formal independent approval on #1661."
+      ],
+      "last_verified_at_utc": "2026-11-13T09:16:45Z"
+    },
+    "Codex": {
+      "intended_role": [
+        "bounded code implementation",
+        "test generation",
+        "repository-level verification"
+      ],
+      "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+      "permission_scope": "None verified",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "external_data_sent": false
+      },
+      "limitations": [
+        "No persistent Codex connection, credentials, or data flow tested."
+      ]
+    },
+    "Hugging Face": {
+      "intended_role": [
+        "model hosting",
+        "public dataset access",
+        "Space runtime"
+      ],
+      "authentication_status": "INCONCLUSIVE_FAILED_HEALTH_CHECK",
+      "permission_scope": "No successful read/write permission verified.",
+      "data_flow": {
+        "verified": false,
+        "direction": "previous Space health check reported BUILD_ERROR; no upload or deployment verified",
+        "external_write": false,
+        "latest_observation": "BUILD_ERROR; no upload/deployment verified"
+      },
+      "limitations": [
+        "A failed health check does not establish a successful authenticated connection. No model or dataset was uploaded."
+      ]
+    },
+    "Kaggle": {
+      "intended_role": [
+        "public dataset discovery",
+        "reproducible benchmark datasets",
+        "competition evaluation"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_scope": "No authenticated Kaggle access verified.",
+      "data_flow": {
+        "verified": false,
+        "direction": "none observed",
+        "submission_performed": false
+      },
+      "limitations": [
+        "No dataset submission, competition entry, or external transfer occurred."
+      ]
+    },
+    "Databricks": {
+      "intended_role": [
+        "historical market-data lakehouse",
+        "large-scale feature engineering",
+        "walk-forward evaluation"
+      ],
+      "authentication_status": "AUTHORIZATION_FAILED_HTTP_403",
+      "permission_scope": "No successful SQL read or write permission verified.",
+      "data_flow": {
+        "verified": false,
+        "direction": "previous read-only validation returned HTTP 403",
+        "write_performed": false,
+        "latest_observation": "HTTP 403"
+      },
+      "limitations": [
+        "The 403 does not distinguish invalid credentials from insufficient workspace or warehouse permissions. No write or deployment occurred."
+      ]
+    }
   },
-  "platforms": [
+  "coordination_status": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
+    "independent_tasks_assigned_across_nine_platforms": false,
+    "structured_evidence_exchange_across_nine_platforms": false,
+    "disagreement_resolution": "Evidence reconciled locally; no external platform exchange executed.",
+    "minority_objections": "Preserved in source records, provider disagreements and counter-hypotheses.",
+    "red_team_review": "Local repository/source/workflow review only; no independent external red-team run verified.",
+    "no_unverified_platform_calls": true,
+    "no_external_model_data_transfer": true,
+    "latest_main_pillars_check": {
+      "run_id": 43223351964,
+      "job_id": 131200200818,
+      "conclusion": "failure",
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "reasons": [
+        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ],
+      "read_only": true,
+      "not_main_code_ci": true
+    },
+    "latest_main_cross_analysis": {
+      "run_id": 43241576119,
+      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "conclusion": "success"
+    },
+    "last_verified_at_utc": "2026-11-13T11:10:50Z",
+    "latest_run37_platform_state": {
+      "ChatGPT": {
+        "intended_role": [
+          "primary evidence synthesis in this session",
+          "GitHub repository inspection and bounded integration updates",
+          "cross-source disagreement and red-team review"
+        ],
+        "authentication_status": "VERIFIED_CURRENT_SESSION",
+        "permission_scope": "GitHub API read/write on existing #1661 integration branch; connector reports admin/maintain/push/pull/triage; overprivileged. No main write, secret read or external-model transfer.",
+        "data_flow": {
+          "verified": true,
+          "direction": "ChatGPT session <-> GitHub connector <-> Barrot-Agent/B-Agent integration branch",
+          "persistent_agent_connection": false,
+          "external_model_transfer": false
+        },
+        "limitations": [
+          "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
+        ],
+        "last_verified_at_utc": "2026-11-11T21:28:42Z"
+      },
+      "Claude": {
+        "intended_role": [
+          "independent regulatory and primary-source review",
+          "counter-hypothesis generation",
+          "red-team critique"
+        ],
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "permission_scope": "None verified",
+        "data_flow": {
+          "verified": false,
+          "direction": "none observed",
+          "external_data_sent": false
+        },
+        "limitations": [
+          "No persistent authentication, permission grant, or tested data flow."
+        ]
+      },
+      "Grok": {
+        "intended_role": [
+          "public social-signal discovery",
+          "independent market-narrative comparison"
+        ],
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "permission_scope": "None verified",
+        "data_flow": {
+          "verified": false,
+          "direction": "none observed",
+          "external_data_sent": false
+        },
+        "limitations": [
+          "No persistent authentication or tested data flow. Grok is distinct from Groq."
+        ]
+      },
+      "Gemini": {
+        "intended_role": [
+          "independent public-document analysis",
+          "multimodal evidence comparison"
+        ],
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "permission_scope": "None verified",
+        "data_flow": {
+          "verified": false,
+          "direction": "none observed",
+          "external_data_sent": false
+        },
+        "limitations": [
+          "No persistent authentication, permission grant, or tested data flow."
+        ]
+      },
+      "Copilot": {
+        "intended_role": [
+          "repository code review",
+          "test-coverage critique"
+        ],
+        "authentication_status": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY",
+        "permission_scope": "Historical one-off GitHub review activity only; no current formal approval on #1661.",
+        "data_flow": {
+          "verified": false,
+          "direction": "no persistent connection verified",
+          "persistent_connection": false,
+          "write_performed": false
+        },
+        "limitations": [
+          "COMMENTED is not APPROVED. No formal independent approval on #1661."
+        ]
+      },
+      "Codex": {
+        "intended_role": [
+          "bounded code implementation",
+          "test generation",
+          "repository-level verification"
+        ],
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "permission_scope": "None verified",
+        "data_flow": {
+          "verified": false,
+          "direction": "none observed",
+          "external_data_sent": false
+        },
+        "limitations": [
+          "No persistent Codex connection, credentials, or data flow tested."
+        ]
+      },
+      "Hugging Face": {
+        "intended_role": [
+          "model hosting",
+          "public dataset access",
+          "Space runtime"
+        ],
+        "authentication_status": "INCONCLUSIVE_FAILED_HEALTH_CHECK",
+        "permission_scope": "No successful read/write permission verified.",
+        "data_flow": {
+          "verified": false,
+          "direction": "previous Space health check reported BUILD_ERROR; no upload or deployment verified",
+          "external_write": false
+        },
+        "limitations": [
+          "A failed health check does not establish a successful authenticated connection. No model or dataset was uploaded."
+        ]
+      },
+      "Kaggle": {
+        "intended_role": [
+          "public dataset discovery",
+          "reproducible benchmark datasets",
+          "competition evaluation"
+        ],
+        "authentication_status": "NOT_TESTED",
+        "permission_scope": "No authenticated Kaggle access verified.",
+        "data_flow": {
+          "verified": false,
+          "direction": "none observed",
+          "submission_performed": false
+        },
+        "limitations": [
+          "No dataset submission, competition entry, or external transfer occurred."
+        ]
+      },
+      "Databricks": {
+        "intended_role": [
+          "historical market-data lakehouse",
+          "large-scale feature engineering",
+          "walk-forward evaluation"
+        ],
+        "authentication_status": "AUTHORIZATION_FAILED_HTTP_403",
+        "permission_scope": "No successful SQL read or write permission verified.",
+        "data_flow": {
+          "verified": false,
+          "direction": "previous read-only validation returned HTTP 403",
+          "write_performed": false
+        },
+        "limitations": [
+          "The 403 does not distinguish invalid credentials from insufficient workspace or warehouse permissions. No write or deployment occurred."
+        ]
+      }
+    },
+    "latest_run40_platform_state": {
+      "ChatGPT": {
+        "authentication_status": "VERIFIED_CURRENT_SESSION",
+        "data_flow": "ChatGPT session to GitHub connector to existing integration branch verified",
+        "permission_scope": "admin, maintain, push, pull, triage; overprivileged",
+        "external_model_transfer": false
+      },
+      "Claude": {
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow_verified": false
+      },
+      "Grok": {
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow_verified": false
+      },
+      "Gemini": {
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow_verified": false
+      },
+      "Copilot": {
+        "authentication_status": "ONE_OFF_REVIEW_ACTIVITY_ONLY",
+        "formal_approval_on_1661": false
+      },
+      "Codex": {
+        "authentication_status": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow_verified": false
+      },
+      "Hugging Face": {
+        "authentication_status": "BUILD_ERROR",
+        "deployment": false
+      },
+      "Kaggle": {
+        "authentication_status": "NOT_TESTED",
+        "submission": false
+      },
+      "Databricks": {
+        "authentication_status": "AUTHORIZATION_FAILED_HTTP_403",
+        "write": false
+      },
+      "LunaRoute": {
+        "authentication_status": "ENDPOINT_AUTHENTICATION_UNVERIFIED",
+        "canonical_brain_declared_by_repo": true
+      },
+      "external_model_data_transfer": false
+    },
+    "run67": {
+      "task_assignments_designed": true,
+      "external_dispatch_performed": false,
+      "structured_evidence_exchange_across_nine_platforms": false,
+      "verified_external_platforms_beyond_chatgpt_github": 0,
+      "minority_objections_retained": true,
+      "independent_platform_red_team_executed": false
+    },
+    "run69_status": "ChatGPT/GitHub connector verified; Claude, Grok, Gemini and Codex unverified; Copilot no formal PR approval; Hugging Face last known BUILD_ERROR; Kaggle untested; Databricks last known HTTP 403. No external platform task executed.",
+    "run70_status": "Current-session GitHub connector verified; no other external platform authentication or data flow was tested; no nine-platform task dispatch or evidence exchange occurred.",
+    "run87_status": "DESIGNED_NOT_DISPATCHED",
+    "external_dispatches": 0,
+    "external_data_transfers": 0,
+    "least_privilege": "NOT_SATISFIED"
+  },
+  "primary_brain_declared_by_repository": {
+    "name": "LunaRoute",
+    "endpoint": "https://gw.lunaroute.com/v1",
+    "model": "lunaroute/glm-5.3-flash",
+    "status": "DECLARED_NOT_AUTHENTICATED",
+    "verified": false,
+    "note": "Main opencode.json now enables remote LunaRoute MCP and grants edit/bash/webfetch, while integration disables remote MCP and requires approval. Neither configuration proves successful LunaRoute authentication or data flow; no credential was read and no LunaRoute call was made."
+  },
+  "least_privilege_and_safety": {
+    "secret_values_read": false,
+    "credentials_exported": false,
+    "unverified_platforms_used": false,
+    "external_model_data_transfer": false,
+    "external_publication": false,
+    "deployment": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "main_branch_write_performed": false,
+    "existing_integration_branch_write_performed": true,
+    "branch_protection_status": "Main branch summary: protected=true; required status-check contexts=[]; enforcement_level=non_admins. Detailed branch-protection endpoint HTTP 403 (Resource not accessible by integration); required checks and approval rules NOT_VISIBLE. Visible repository ruleset 'Fall Back' enforcement=disabled. GitHub connector metadata reports admin=true, so do not rely on non-admin-only checks as a merge gate.",
+    "visible_repository_rulesets": [
+      {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      }
+    ],
+    "pages_enabled": true,
+    "pages_deployment_authorized": false,
+    "credential_path_exposure": {
+      "path": ".config/gh/hosts.yml",
+      "main_branch_contains_path": false,
+      "active_integration_branch_contains_path": false,
+      "other_open_pr_tips_checked": 17,
+      "other_open_pr_tips_containing_path": 17,
+      "affected_pr_numbers": [
+        1653,
+        1650,
+        1649,
+        1648,
+        1647,
+        1646,
+        1645,
+        1644,
+        1643,
+        1642,
+        1640,
+        1320,
+        1318,
+        1317,
+        1269,
+        1255,
+        1254
+      ],
+      "current_tip_tree_scans_truncated": 0,
+      "provider_side_oauth_revocation_verified": false,
+      "provider_side_revocation_verified": false,
+      "revocation_independently_verified": false,
+      "credential_contents_read": false,
+      "history_rewritten": false,
+      "checked_at_utc": "2026-11-12T05:02:51Z",
+      "branch_tip_presence_verified_via_recursive_tree": true,
+      "path_absent_from_all_current_pr_file_inventories": true,
+      "all_17_target_prs_open_and_base_main": true,
+      "note": "Carried forward from 05:02:51Z branch-tip audit, not rechecked in Run64. Absent main/integration; present in 17/17 affected PR tips. No contents read or history rewrite; provider-side revocation unverified.",
+      "rechecked_in_run64": false,
+      "branch_tip_recheck_at_utc": "2026-11-12T16:00:00Z",
+      "branch_tip_presence_reverified_in_run64c": true,
+      "note_run64c": "Recursive tree inspection confirms .config/gh/hosts.yml is present in all 17 affected open PR branch-tip trees and absent from main and the active integration branch. This is distinct from changed-file inventory membership; the last changed-file inventory check remains the earlier 05:02:51Z audit. No file contents were read. Provider-side OAuth revocation remains unverified."
+    },
+    "main_branch_protected_flag": true,
+    "oauth_revocation_repository_reported": true,
+    "revocation_independently_verified": false,
+    "local_git_transport": "git ls-remote failed: Could not resolve host github.com; authenticated GitHub API remains available",
+    "github_connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true,
+      "least_privilege": false
+    },
+    "least_privilege_target_met": false,
+    "github_pages_side_effect": "A main push automatically triggers GitHub Pages publication. No new publication was authorized.",
+    "github_connector_admin_permission_overprivileged": true,
+    "github_connector_permission_scope": "Repository metadata reports admin=true, maintain=true, push=true, pull=true and triage=true. This exceeds least privilege. No main write, secret-value read or branch-protection bypass was performed.",
+    "secondary_brain_deployment_disabled": true,
+    "main_branch_protection_independently_verified": false,
+    "provider_side_revocation_verified": false,
+    "checked_at_utc": "2026-11-13T09:16:45Z",
+    "branch_protection_detail_http_status": 403,
+    "fallback_ruleset_enabled": false,
+    "secret_rotation_or_revocation_performed": false,
+    "deployment_performed": false,
+    "paper_trade_performed": false,
+    "real_money_action_performed": false,
+    "pages_auto_publication_authorized": false,
+    "full_semantic_review_complete": false,
+    "credential_path_last_branch_tip_audit_rechecked_in_run54": false,
+    "run54_security_notes": "Main/integration recursive trees show .config/gh/hosts.yml absent. The 17 affected PR branch-tip result is carried forward from 05:02:51Z and was not rechecked in Run54; no credential contents were read and provider-side revocation remains unverified.",
+    "run67": {
+      "connector_permissions_overprivileged": true,
+      "main_branch_write_performed": false,
+      "external_model_data_transfer": false,
+      "transmute_quarantined": true,
+      "ask_barrot_output_create_only": true,
+      "pages_deployment_authorized": false,
+      "merge_performed": false
+    }
+  },
+  "task_assignments_designed_not_executed": [
     {
-      "name": "ChatGPT",
-      "capabilities": [
-        "research",
-        "reasoning",
-        "repository inspection",
-        "orchestration"
-      ],
-      "authentication": "GitHub connector verified",
-      "permissions": [
-        "admin",
-        "maintain",
-        "push",
-        "pull",
-        "triage"
-      ],
-      "data_flow": "ChatGPT GitHub connector to Barrot-Agent/B-Agent; no external model transfer",
-      "risk": "overprivileged; least-privilege remediation required"
+      "platform": "ChatGPT",
+      "task": "Orchestrate source provenance, evidence reconciliation, integration and local red-team review.",
+      "status": "EXECUTED_IN_CURRENT_SESSION"
     },
     {
-      "name": "Claude",
-      "capabilities": [
-        "independent SEC/corporate filing audit",
-        "capital reconciliation"
-      ],
-      "authentication": "unverified",
-      "permissions": "unverified",
-      "data_flow": "unverified; no dispatch",
-      "task_status": "DESIGNED_NOT_DISPATCHED"
+      "platform": "Claude",
+      "task": "Independent legal/regulatory and primary-source counter-hypothesis review.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Grok",
-      "capabilities": [
-        "market-structure red team",
-        "counter-hypothesis review"
-      ],
-      "authentication": "unverified",
-      "permissions": "unverified",
-      "data_flow": "unverified; no dispatch",
-      "task_status": "DESIGNED_NOT_DISPATCHED"
+      "platform": "Grok",
+      "task": "Public social/news narrative discovery and disconfirmation; no private or unauthorized data.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Gemini",
-      "capabilities": [
-        "stablecoin/custody/payment-rail primary-source cross-check"
-      ],
-      "authentication": "unverified",
-      "permissions": "unverified",
-      "data_flow": "unverified; no dispatch",
-      "task_status": "DESIGNED_NOT_DISPATCHED"
+      "platform": "Gemini",
+      "task": "Independent institutional, issuer, custody and macro-document review.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Copilot",
-      "capabilities": [
-        "repository integration review",
-        "workflow security review"
-      ],
-      "authentication": "review artifacts visible; formal PR approval absent",
-      "permissions": "not independently verified",
-      "data_flow": "no structured evidence exchange verified",
-      "task_status": "DESIGNED_NOT_DISPATCHED"
+      "platform": "Copilot",
+      "task": "Independent semantic review of changed repository paths and test coverage; require formal APPROVED review.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Codex",
-      "capabilities": [
-        "prediction-engine implementation",
-        "test and CI remediation"
-      ],
-      "authentication": "unverified",
-      "permissions": "unverified",
-      "data_flow": "unverified; no dispatch",
-      "task_status": "DESIGNED_NOT_DISPATCHED"
+      "platform": "Codex",
+      "task": "Bounded code audit, reproducibility and test-harness review.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Hugging Face",
-      "capabilities": [
-        "later shadow-model hosting and inference"
-      ],
-      "authentication": "no current deployment verified; prior BUILD_ERROR",
-      "permissions": "unverified",
-      "data_flow": "no deployment or data transfer",
-      "task_status": "BLOCKED"
+      "platform": "Hugging Face",
+      "task": "Offline model-artifact and evaluation review only; no Space deployment.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Kaggle",
-      "capabilities": [
-        "later chronological backtesting and reproducibility"
-      ],
-      "authentication": "untested",
-      "permissions": "unverified",
-      "data_flow": "no submission",
-      "task_status": "NOT_AUTHORIZED"
+      "platform": "Kaggle",
+      "task": "Public benchmark dataset quality and leakage challenge; no submission.",
+      "status": "DESIGNED_NOT_EXECUTED"
     },
     {
-      "name": "Databricks",
-      "capabilities": [
-        "later historical feature-store engineering"
-      ],
-      "authentication": "HTTP 403; no write verified",
-      "permissions": "unverified",
-      "data_flow": "no write or data transfer",
-      "task_status": "BLOCKED"
+      "platform": "Databricks",
+      "task": "Large-scale historical feature-store and walk-forward evaluation after authorized read access.",
+      "status": "DESIGNED_NOT_EXECUTED"
     }
   ],
-  "additional_provider": {
-    "name": "LunaRoute",
-    "is_one_of_nine": false,
-    "main_remote_mcp": "enabled",
-    "integration_remote_mcp": "disabled",
-    "endpoint_authentication": "unverified",
-    "external_data_transfer": "none verified"
+  "repository_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_map_commit": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "ahead_by": 2323,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2399,
+    "changed_files": 1158,
+    "workflow_files_changed": 50,
+    "other_changed_paths": 1108,
+    "open_prs": 375,
+    "drafts": 361,
+    "non_drafts": 14,
+    "main_modified": false
   },
-  "least_privilege_status": "Not satisfied for current GitHub connector; no permission change attempted",
-  "fallback": "Use local deterministic analysis and GitHub CI. Do not dispatch to any external platform until authentication, permission scope and data-flow are tested and approved."
+  "integration_pr": {
+    "number": 1662,
+    "state": "open",
+    "draft": true,
+    "head_sha": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "ahead_by": 2323,
+    "behind_by": 0,
+    "changed_files": 1158,
+    "workflow_files_changed": 50,
+    "formal_approvals": 0,
+    "reviews": 0,
+    "review_threads": 0
+  },
+  "ci_evidence": {
+    "last_passing_code_head": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
+    "last_passing_full_suite": {
+      "run_id": 43538066244,
+      "passed": 3626,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 62.34,
+      "duration_seconds": 88.95
+    },
+    "latest_documentation_head_attempt": {
+      "head_sha": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+      "run_id": 43539079899,
+      "passed": 3584,
+      "failed": 42,
+      "subtests": 8,
+      "coverage_percent": 62.34,
+      "conclusion": "failure",
+      "cause": "current map schema regression"
+    },
+    "core_suite": {
+      "passed": 739,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 76
+    },
+    "dependency_audit": {
+      "run_id": 43539079938,
+      "passed": true,
+      "manifest_groups": 5,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43539079902,
+      "passed": true,
+      "automatic_merge_enabled": false
+    }
+  },
+  "workflow_safety_audit": {
+    "changed_workflow_files": 50,
+    "reviewed": 50,
+    "quarantined_or_disabled": 26,
+    "active_changed_workflows": 24,
+    "manual_dispatch_additions": 29,
+    "no_external_actions_executed": true
+  },
+  "prediction_engine_status": {
+    "source_definitions": 50,
+    "hourly": 45,
+    "weekly_cftc": 3,
+    "scheduled": 48,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "paired_temporal_bootstrap": true,
+    "source_cluster_bootstrap": true,
+    "source_cluster_target_feasibility": "BLOCKED_DESIGN",
+    "trained_xrp_candidate_model": false,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "current_source_pr_backlog": {
+    "#1661": {
+      "integration_ahead_by": 191,
+      "source_only_commits": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "#1660": {
+      "integration_ahead_by": 372,
+      "source_only_commits": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "#1643": {
+      "integration_ahead_by": 1434,
+      "source_only_commits": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "#1642": {
+      "integration_ahead_by": 2339,
+      "source_only_commits": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "#1640": {
+      "source_only_commits": 1,
+      "semantic_content_present": true,
+      "status": "PRESERVE_UNTIL_SUCCESSOR_MERGE"
+    },
+    "#1653": {
+      "unique_commits": 18,
+      "status": "UNIQUE_PRESERVE"
+    },
+    "#1655": {
+      "unique_commits": 17,
+      "status": "UNIQUE_PRESERVE"
+    }
+  },
+  "evernorth_capital_update": {
+    "pubco_pathfinder_ownership_percent": 71.5,
+    "gross_pathfinder_xrp": 473276430,
+    "derived_pubco_attributable_xrp": 338392647.45,
+    "pathfinder_ripple_facility_borrowed_usd": 9700000,
+    "repayment_status": "unconfirmed"
+  },
+  "map_schema_regression": {
+    "original_blob_sha": "aaa327be7b6b23437f129c6f08abcffe78ce6e41",
+    "original_size_bytes": 1660793,
+    "failed_head": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "failed_tests": 42,
+    "passed_tests": 3584,
+    "correction": "restore original schema/history and add Run110 under separate keys",
+    "tests_weakened": false
+  }
 }
