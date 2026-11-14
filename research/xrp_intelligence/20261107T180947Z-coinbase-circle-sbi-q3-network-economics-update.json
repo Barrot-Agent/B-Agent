@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "coinbase-circle-sbi-q3-network-economics-2026-11-07",
+  "captured_at_utc": "2026-11-07T18:09:47Z",
+  "data_cutoff_utc": "2026-11-07T18:09:47Z",
+  "append_only": true,
+  "supplements_artifacts": [
+    "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+    "research/xrp_intelligence/20261107T130152Z-japan-sbic-east-central-west-primary-identity.json"
+  ],
+  "summary": "New Q3 2026 filings and current corporate releases quantify the Coinbase-Circle USDC economics and clarify SBI's relationship map. Coinbase and Circle have a direct distribution/revenue-sharing arrangement renewed on the same terms in Q3 2026. SBI has direct equity and distribution relationships with Circle and direct long-running collaboration and RLUSD distribution with Ripple. SBI and Coinbase share Open Standard participation, but the cited source documents a consortium membership and a contemplated JPYSC-OUSD proof of concept, not a bilateral commercial agreement.",
+  "q3_2026_economics": {
+    "coinbase": {
+      "average_usdc_on_coinbase_products_usd": 22000000000,
+      "average_usdc_off_platform_usd": 51000000000,
+      "stablecoin_revenue_on_platform_usd": 202000000,
+      "stablecoin_revenue_off_platform_usd": 126000000,
+      "total_stablecoin_revenue_usd": 328000000,
+      "circle_arrangement": "renewed in Q3 2026 on the same terms",
+      "source": "Coinbase Q3 2026 10-Q and shareholder letter"
+    },
+    "circle": {
+      "coinbase_distribution_costs_q3_usd": 331300000,
+      "coinbase_distribution_costs_nine_months_usd": 986600000,
+      "average_usdc_circulation_q3_usd": 73264000000,
+      "usdc_circulation_at_2026_09_30_usd": 73879000000,
+      "usdc_on_circle_platform_at_2026_09_30_usd": 13868000000,
+      "source": "Circle Q3 2026 10-Q"
+    },
+    "comparability": {
+      "status": "different_accounting_views_not_a_reconciliation",
+      "note": "Circle's Coinbase-related distribution costs are Circle expenses. Coinbase's stablecoin revenue is Coinbase revenue. Do not subtract, net, or equate the two; timing, contract allocation, reserve income and balance definitions differ.",
+      "coinbase_revenue_usd": 328000000,
+      "circle_coinbase_distribution_cost_usd": 331300000,
+      "arithmetic_difference_usd": -3300000,
+      "arithmetic_difference_is_not_profit_or_loss": true
+    }
+  },
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relationship": "direct commercial distribution and revenue-sharing arrangement",
+      "evidence": [
+        "Q3 2026 arrangement renewed on same terms",
+        "Coinbase Q3 stablecoin revenue and average USDC balances",
+        "Circle Q3 Coinbase-related distribution costs"
+      ],
+      "status": "verified_primary"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relationship": "strategic equity investment and USDC distribution alliance",
+      "evidence": [
+        "SBI Holdings and SBI Shinsei Bank invested $50M combined in Circle equity in June 2025",
+        "SBI Holdings/Circle business-alliance memorandum and SBI VC Trade USDC distribution"
+      ],
+      "status": "verified_primary"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relationship": "long-running collaboration, SBI Ripple Asia ecosystem and RLUSD distribution",
+      "evidence": [
+        "SBI/Ripple collaboration since 2016",
+        "SBI VC Trade RLUSD handling from 24 June 2026",
+        "SBI Ripple Asia XRPL tokenized-deposit PoC"
+      ],
+      "status": "verified_primary"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relationship": "RLUSD listing and distribution",
+      "evidence": [
+        "RLUSD available on Coinbase Prime, Exchange and app",
+        "XRPL, Base and Ethereum deposits/withdrawals",
+        "Ripple provides Base liquidity"
+      ],
+      "status": "verified_primary"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Coinbase",
+      "relationship": "shared Open Standard consortium participation",
+      "evidence": [
+        "SBI and Startale joined Open Standard, which lists Coinbase as a founding partner"
+      ],
+      "status": "verified_shared_membership_not_bilateral_partnership"
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "relationship": "coexisting stablecoin issuers in the XRPL ecosystem",
+      "evidence": [
+        "USDC and RLUSD ecosystem presence"
+      ],
+      "status": "no_direct_commercial_partnership_verified"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Coinbase",
+      "relationship": "Coinbase identified as principal market used for XRP valuation",
+      "status": "market_reference_not_partnership"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Circle",
+      "relationship": "USDC described as a stablecoin used in XRP markets",
+      "status": "market_context_not_partnership"
+    }
+  ],
+  "sbi_product_rails": {
+    "circle_equity_investment_usd": 50000000,
+    "circle_equity_investment_breakdown": {
+      "sbi_holdings_usd": 25000000,
+      "sbi_shinsei_bank_usd": 25000000
+    },
+    "usdc_distribution": {
+      "registration_date": "2025-03-04",
+      "limited_beta_after": "2025-03-12",
+      "memorandum_with_circle": "2023-11"
+    },
+    "rlusd_distribution": {
+      "launch_date": "2026-06-24",
+      "sbi_ripple_collaboration_since": 2016
+    },
+    "xrpl_tokenized_deposit_poc": {
+      "date": "2026-02-26",
+      "status": "conceptual proof of concept",
+      "uses_xrpl": true,
+      "proves_xrp_bridge_usage": false
+    },
+    "visa_xrp_rewards": {
+      "launch_date": "2026-05-01",
+      "assets": [
+        "BTC",
+        "ETH",
+        "XRP"
+      ],
+      "actual_xrp_purchase_volume_disclosed": false
+    },
+    "open_standard": {
+      "participation_date": "2026-10-16",
+      "members_announced": "140+ companies",
+      "coinbase_role": "founding partner",
+      "jpy_sc_ousd_interoperability": "proof of concept under consideration",
+      "production_service_launched": false,
+      "bilateral_sbi_coinbase_agreement_established": false
+    }
+  },
+  "coinbase_ripple_product_scope": {
+    "rlusd_available_on": [
+      "Coinbase Prime",
+      "Coinbase Exchange",
+      "Coinbase app"
+    ],
+    "rlusd_rails": [
+      "XRPL",
+      "Base",
+      "Ethereum"
+    ],
+    "ripple_base_liquidity": true,
+    "coinbase_global_exchange_rlusd_collateral_at_launch": false,
+    "future_global_exchange_rlusd_collateral": "stated to follow",
+    "xrp_collateral_eligibility_is_separate": true,
+    "actual_xrp_collateral_balances_or_utilization_disclosed": false
+  },
+  "evernorth_boundary": {
+    "sec_filing_date": "2026-10-30",
+    "coinbase_reference": "principal market used for XRP valuation",
+    "circle_reference": "USDC stablecoin used in digital-asset markets including XRP markets",
+    "direct_coinbase_contract_disclosed": false,
+    "direct_circle_contract_disclosed": false,
+    "note": "These market references do not establish a direct commercial partnership."
+  },
+  "source_independence": {
+    "primary_sources": [
+      "Coinbase Q3 2026 10-Q/shareholder letter",
+      "Circle Q3 2026 10-Q",
+      "SBI Holdings corporate releases",
+      "Coinbase RLUSD listing announcement",
+      "Evernorth SEC prospectus"
+    ],
+    "cross_checks": [
+      "Coinbase's reported USDC balances/revenue and Circle's distribution costs describe opposite sides of a relationship but use different accounting measures."
+    ],
+    "non_independent_or_not_comparable": [
+      "Do not net Coinbase stablecoin revenue against Circle distribution costs.",
+      "Open Standard membership is shared consortium participation, not proof of a bilateral SBI-Coinbase agreement.",
+      "XRPL tokenized-deposit PoC does not prove XRP bridge-asset usage."
+    ]
+  },
+  "limitations": [
+    "Quarterly USDC balances and revenue do not establish daily XRP demand.",
+    "No actual XRP collateral balances or utilization were disclosed.",
+    "No resulting XRP purchase volumes were disclosed for the SBI Visa rewards card.",
+    "The JPYSC-OUSD interoperability work was only under consideration as a proof of concept.",
+    "No direct SBI-Coinbase commercial agreement was established by the cited primary sources.",
+    "No direct Circle-Ripple commercial partnership was verified.",
+    "Evernorth's Coinbase and Circle references are market context, not disclosed partnerships."
+  ],
+  "model_admission": {
+    "admitted": false,
+    "reason": "These are institutional relationship and quarterly stablecoin-economics observations, not point-in-time XRP price/liquidity features."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "paper_or_real_money_actions": "NONE",
+  "source_receipts": [
+    {
+      "source_id": "coinbase_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "0f7658d80ac728f37a9e162c838d93d95768363df19ecba73c4f84b0d0fb5faf",
+      "excerpt": "During the third quarter of 2026, Coinbase renewed its arrangement with Circle on the same terms; the average amount of USDC held on Coinbase products reached an all-time high during the quarter."
+    },
+    {
+      "source_id": "coinbase_q3_2026_earnings_deck",
+      "url": "https://s27.q4cdn.com/397450999/files/doc_financials/2026/q3/COIN-Q3-2026-Shareholder-Letter.pdf",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "16afc3045b90a99da8d01482888e442cfc9177d7aa139f88f553f61f3529878d",
+      "excerpt": "Q3 2026: average USDC on Coinbase products $22 billion; stablecoin revenue $202 million. Average USDC off-platform $51 billion; stablecoin revenue $126 million. Total stablecoin revenue $328 million."
+    },
+    {
+      "source_id": "circle_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "9001b1bda4d5915be3b49d7b911a302738fac2f18c1f17e55daea0e92dddc281",
+      "excerpt": "Q3 2026 Coinbase-related distribution costs $331.3 million; nine months ended September 30, 2026 Coinbase-related distribution costs $986.6 million; average USDC circulation $73.264 billion; September 30 USDC circulation $73.879 billion; USDC on Circle's platform $13.868 billion."
+    },
+    {
+      "source_id": "sbi_open_standard_oct16_2026",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "f4637e6e24e7e4a0ad7791ff83ce34b64a23d2f604bf4bda1c4a172310956930",
+      "excerpt": "On 16 October 2026, SBI Holdings and Startale announced participation in Open Standard, which includes Coinbase among more than 140 participating companies. They are considering a proof of concept for interoperability between JPYSC and OUSD. The release expressly says this is consideration of a proof of concept, not a new service or production settlement launch."
+    },
+    {
+      "source_id": "sbi_circle_equity_june2025",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "bfdd45c1787ce1ccaef47dcef189e5c4a14ea08fa62a1ab48eee7860941df28c",
+      "excerpt": "On 9 June 2025, SBI Holdings and SBI Shinsei Bank announced strategic investments totaling $50 million in Circle equity: $25 million from SBI Holdings and $25 million from SBI Shinsei Bank."
+    },
+    {
+      "source_id": "sbi_usdc_distribution_march2025",
+      "url": "https://www.sbigroup.co.jp/news/2025/0304_15290.html",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "8fac32130769060989a3ec722314d4a775d3e79ef35308c162dacd48083f18a1",
+      "excerpt": "SBI VC Trade completed registration as an electronic payment instrument exchange service provider on 4 March 2025 and planned a limited USDC beta after 12 March 2025. SBI Holdings had signed a comprehensive business-alliance memorandum with Circle in November 2023."
+    },
+    {
+      "source_id": "sbi_rlusd_distribution_june2026",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "790df5734f8a85d06e238a2960ca110ff658ee7f035518b954c4ab28d1534d03",
+      "excerpt": "SBI VC Trade and Ripple announced RLUSD handling beginning 24 June 2026. The release states that SBI Group and Ripple have collaborated since 2016."
+    },
+    {
+      "source_id": "coinbase_rlusd_listing_oct2026",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "bf94e62333e18a2b0cfb7b69094880070a2ca7124005c6724840a73a8c556c2d",
+      "excerpt": "On 28 October 2026, Coinbase added RLUSD to Coinbase Prime, Coinbase Exchange and the Coinbase app, with deposits and withdrawals on XRPL, Base and Ethereum. Ripple will provide liquidity on Base. Coinbase Global Exchange access and RLUSD collateral availability were stated to follow."
+    },
+    {
+      "source_id": "sbi_ripple_asia_xrpl_poc_feb2026",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "e9928c29d6a9daff704f9c3882a96779d25115cbe79d37a6db3e15d7915ee3e6",
+      "excerpt": "On 26 February 2026, SBI Ripple Asia described a conceptual proof of tokenized deposits and deposit-based digital money using existing financial infrastructure and XRPL. This is not evidence that XRP is used as the bridge asset in that proof of concept."
+    },
+    {
+      "source_id": "sbi_visa_xrp_rewards_may2026",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "7f8c78ca9c6cd7179cd9c9291ba93e20cb2597154b2759920f39ef8ac8788f2b",
+      "excerpt": "On 1 May 2026, SBI VC Trade, Aplus and Visa announced a card whose points can automatically convert to BTC, ETH or XRP. The release does not disclose resulting XRP purchase or redemption volumes."
+    },
+    {
+      "source_id": "evernorth_sec_coinbase_circle_scope_oct2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "26240981b2c1cf6057918ed6bdc1045871da4462584e6ddbdf59aaf0c7709947",
+      "excerpt": "Evernorth's 30 October 2026 SEC prospectus identifies Coinbase as the principal market used for XRP valuation and describes Circle-issued USDC as a stablecoin used in digital-asset markets including XRP markets. These references do not establish a direct Evernorth-Coinbase or Evernorth-Circle commercial agreement."
+    },
+    {
+      "source_id": "relationship_classification",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html;https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase;https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "f31af58007d2d77d3ccb8a854e51067f2651f8123dab94f8d6d126ffd55b4e6e",
+      "excerpt": "SBI and Coinbase share Open Standard consortium participation; the cited release does not establish a bilateral SBI-Coinbase commercial agreement. Coinbase-Circle is a direct distribution/revenue-sharing relationship. Coinbase-Ripple is a direct RLUSD listing/distribution relationship. SBI-Circle includes equity investment and USDC distribution. SBI-Ripple includes long-running collaboration and RLUSD distribution."
+    }
+  ]
+}

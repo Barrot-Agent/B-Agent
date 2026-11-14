@@ -9,6 +9,47 @@ from pathlib import Path
 from typing import Any
 
 
+def assert_clean_feature_worktree(workspace, *, default_branch="main") -> Path:
+    """Fail closed unless local repair targets a clean, non-default Git worktree."""
+    requested = Path(workspace).resolve()
+
+    def git_output(*args: str) -> str:
+        try:
+            result = subprocess.run(
+                ["git", "-C", str(requested), *args],
+                capture_output=True,
+                text=True,
+                timeout=10,
+                check=False,
+            )
+        except Exception as exc:
+            raise ValueError(f"unable to verify the repair worktree: {exc}") from exc
+        if result.returncode != 0:
+            detail = result.stderr.strip()[:300]
+            raise ValueError(
+                f"unable to verify Git worktree with {' '.join(args)}: {detail or 'git command failed'}"
+            )
+        return result.stdout.strip()
+
+    root = Path(git_output("rev-parse", "--show-toplevel")).resolve()
+    if requested != root and root not in requested.parents:
+        raise ValueError("repair workspace is not contained in its Git worktree")
+
+    branch = git_output("branch", "--show-current")
+    protected_branches = {"main", "master", (default_branch or "main").strip()}
+    if not branch or branch in protected_branches:
+        raise ValueError(
+            f"local repair requires a named non-default feature branch; current branch is {branch or 'detached HEAD'}"
+        )
+
+    status = git_output("status", "--porcelain=v1", "--untracked-files=all")
+    if status:
+        raise ValueError(
+            "local repair blocked because the worktree has tracked or untracked changes; preserve them and use a separate clean feature worktree"
+        )
+    return root
+
+
 @dataclass
 class RepairResult:
     success: bool
@@ -299,62 +340,90 @@ Rules:
         applied = 0
 
         for change in changes:
-            relative_path = change.get(
-                "path",
-                "",
-            )
-
-            if not relative_path:
+            relative_path = change.get("path", "")
+            if not isinstance(relative_path, str) or not relative_path.strip():
                 continue
 
-            target = (
-                workspace
-                / relative_path
-            ).resolve()
+            relative = Path(relative_path)
+            if relative.is_absolute() or ".." in relative.parts:
+                return RepairResult(
+                    success=False,
+                    attempts=attempt,
+                    checks=history,
+                    message=f"Unsafe repair path rejected: {relative_path}",
+                )
 
+            parts = tuple(part.lower() for part in relative.parts)
+            protected_components = {
+                ".git", ".barrot-backup", ".ssh", ".aws", ".azure", ".kube",
+                "secrets", "credentials",
+            }
+            protected_name = relative.name.lower()
             if (
-                target != workspace
-                and workspace not in target.parents
+                any(part in protected_components for part in parts)
+                or parts[:2] == (".config", "gh")
+                or protected_name in {"hosts.yml", "id_rsa", "id_ed25519", ".env"}
+                or protected_name.startswith(".env.")
             ):
                 return RepairResult(
                     success=False,
                     attempts=attempt,
                     checks=history,
-                    message=(
-                        "Unsafe repair path rejected: "
-                        f"{relative_path}"
-                    ),
+                    message=f"Protected repair path rejected: {relative_path}",
                 )
 
-            if not target.exists():
+            candidate = workspace / relative
+            if candidate.is_symlink():
+                return RepairResult(
+                    success=False,
+                    attempts=attempt,
+                    checks=history,
+                    message=f"Symlink repair target rejected: {relative_path}",
+                )
+            target = candidate.resolve()
+            if target != workspace and workspace not in target.parents:
+                return RepairResult(
+                    success=False,
+                    attempts=attempt,
+                    checks=history,
+                    message=f"Unsafe repair path rejected: {relative_path}",
+                )
+            if not target.is_file():
                 continue
 
-            old = change.get(
-                "old",
-                "",
-            )
+            try:
+                tracked = subprocess.run(
+                    ["git", "-C", str(workspace), "ls-files", "--error-unmatch", "--", relative.as_posix()],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                    check=False,
+                )
+            except Exception as exc:
+                return RepairResult(
+                    success=False,
+                    attempts=attempt,
+                    checks=history,
+                    message=f"Unable to verify tracked repair target {relative_path}: {exc}",
+                )
+            if tracked.returncode != 0:
+                return RepairResult(
+                    success=False,
+                    attempts=attempt,
+                    checks=history,
+                    message=f"Untracked repair target rejected: {relative_path}",
+                )
 
-            new = change.get(
-                "new",
-                "",
-            )
+            old = change.get("old", "")
+            new = change.get("new", "")
+            if not isinstance(old, str) or not old or not isinstance(new, str):
+                continue
 
-            text = target.read_text(
-                encoding="utf-8",
-            )
-
+            text = target.read_text(encoding="utf-8")
             if old not in text:
                 continue
 
-            target.write_text(
-                text.replace(
-                    old,
-                    new,
-                    1,
-                ),
-                encoding="utf-8",
-            )
-
+            target.write_text(text.replace(old, new, 1), encoding="utf-8")
             applied += 1
 
         if applied == 0:

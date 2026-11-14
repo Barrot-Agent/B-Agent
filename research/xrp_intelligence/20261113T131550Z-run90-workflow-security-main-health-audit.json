@@ -1,0 +1,281 @@
+{
+  "artifact_type": "barrot.github_actions_workflow_security_and_main_health_audit",
+  "schema_version": "1.0.0",
+  "run_id": "Run90B",
+  "captured_at_utc": "2026-11-13T13:15:50Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_audit_update": "51980732b58924cf10f65015d924e4ad72d646cc",
+    "active_pr": 1662,
+    "pr_state": "open_draft",
+    "pr_formal_reviews": 0,
+    "pr_approvals": 0
+  },
+  "workflow_inventory": {
+    "changed_workflow_files_in_pr": 50,
+    "main_versions_reviewed": 50,
+    "integration_versions_reviewed": 50,
+    "additional_unmodified_control_workflows_reviewed": 5,
+    "opencode_configuration_reviewed": true
+  },
+  "quarantined_on_integration": [
+    "ask-barrot.yml",
+    "audio-ingest.yml",
+    "barrot-agent.yml",
+    "barrot-self-upgrade.yml",
+    "barrot-speak.yml",
+    "barrot-sync.yml",
+    "capability-1-market-analysis.yml",
+    "capability-9-data-resolver.yml",
+    "databricks-bundle.yml",
+    "diag-cf.yml",
+    "diag-cf2.yml",
+    "free-image-gen.yml",
+    "ibm-bob-barrot-audit.yml",
+    "knowledge-signal-cycle.yml",
+    "knowledge-signal-cycle-btc.yml",
+    "make-track.yml",
+    "pingpong.yml",
+    "signal_ledger.yml",
+    "subagent-matrix.yml",
+    "subagent-spawn.yml",
+    "sync-huggingface.yml",
+    "task-allocator.yml",
+    "test-groq-chain.yml",
+    "test-semantic-memory.yml",
+    "webmcp-live-sandbox.yml",
+    "write-lyrics.yml"
+  ],
+  "hard_disabled_or_gated_on_integration": {
+    "sync-self-hosted-brain.yml": "Job has a hard false execution guard; manual workflow includes explicit deployment and separate secret-rotation confirmation plus exact main SHA, but no deployment ran.",
+    "deploy-a2a-worker.yml": "Manual dispatch; explicit deployment confirmation, separate secret-rotation confirmation and exact main SHA required.",
+    "barrot-ops.yml": "Per-action confirmation and exact source SHA required for external operations.",
+    "coinbase-paper-trader.yml": "Manual explicit YES and exact main SHA; artifact-only; no repository state write; not run because no per-run approval was given.",
+    "capability-10-design.yml": "Manual public/authorized-data confirmation and exact main SHA; Groq request path not dispatched.",
+    "capability-discovery.yml": "Manual confirmation and exact main SHA; Groq request path not dispatched.",
+    "data-value-triage.yml": "Manual public/authorized-data confirmation and exact main SHA; artifact-only; not dispatched.",
+    "financial-data-refresh.yml": "Manual confirmation and exact main SHA; external data/Groq path not dispatched.",
+    "frontier-digest.yml": "Manual confirmation and exact main SHA; no dispatch.",
+    "research-topics.yml": "Manual confirmation and exact main SHA; no dispatch.",
+    "self-benchmark.yml": "Manual confirmation and exact main SHA; no dispatch.",
+    "signal-summary.yml": "Manual confirmation and exact main SHA; summary-only; not a calibrated forecast.",
+    "webmcp-trend-digest.yml": "Manual confirmation and exact main SHA; no dispatch.",
+    "barrot-controlled-feature-validation.yml": "Manual PR/head-pinned read-only validation.",
+    "formal-verification-benchmarks.yml": "Manual read-only validation; integration pins the Lean installer commit instead of following mutable master."
+  },
+  "safe_read_only_or_scheduled": [
+    "ci.yml",
+    "dependency-audit.yml",
+    "cross-analysis.yml",
+    "hover_bike_updates.yml",
+    "riemann-harvest.yml",
+    "webmcp-monetization-enrich.yml",
+    "barrot-bundle-operational-smoke.yml",
+    "barrot-controlled-feature-validation.yml",
+    "xrp-public-ingestion.yml (main-only read-only schedule; not yet executed on main)"
+  ],
+  "high_risk_main_workflows_and_integration_controls": [
+    {
+      "workflow": "barrot-sync.yml",
+      "main_behavior": "Push-triggered writer of BARROT_SYNC.md; suppresses sync and git-push errors.",
+      "integration_control": "Quarantined; no main write."
+    },
+    {
+      "workflow": "barrot-agent.yml",
+      "main_behavior": "Issue-label-triggered agent with contents, pull-request and issues write permissions.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "opencode.json",
+      "main_behavior": "Remote LunaRoute MCP enabled; edit/bash/webfetch allowed.",
+      "integration_control": "Remote MCP disabled; edit/bash/webfetch require ask."
+    },
+    {
+      "workflow": "free-image-gen.yml",
+      "main_behavior": "Manual workflow with HF token and contents write; commits generated assets to main.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "ask-barrot.yml and audio-ingest.yml",
+      "main_behavior": "Manual Groq-assisted memory/audio workflows with contents write and direct main commits.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "barrot-speak.yml, make-track.yml and write-lyrics.yml",
+      "main_behavior": "Manual media/lyrics generation using external model/provider credentials and contents write.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "task-allocator.yml",
+      "main_behavior": "Loads multiple model credentials and GitHub token; contents and pull-request write; commits allocation state.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "subagent-spawn.yml and pingpong.yml",
+      "main_behavior": "External Groq calls with direct repository state writes.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "subagent-matrix.yml, test-groq-chain.yml and test-semantic-memory.yml",
+      "main_behavior": "External Groq request paths without verified nine-platform authentication/data-flow or explicit data-sharing approval.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "knowledge-signal-cycle.yml, knowledge-signal-cycle-btc.yml and signal_ledger.yml",
+      "main_behavior": "Legacy model-backed signal generation; one path writes state to main and another emits uncalibrated signal artifacts.",
+      "integration_control": "Quarantined; no directional signal publication."
+    },
+    {
+      "workflow": "capability-1-market-analysis.yml and capability-9-data-resolver.yml",
+      "main_behavior": "Legacy Groq/Databricks-assisted workflows with main-branch writes, including actionable trade-recommendation outputs.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "coinbase-paper-trader.yml",
+      "main_behavior": "Main version can paper-trade and commit resulting state without a separate per-run confirmation.",
+      "integration_control": "Manual explicit YES, exact main SHA and artifact-only; not executed."
+    },
+    {
+      "workflow": "databricks-bundle.yml",
+      "main_behavior": "Manual Databricks bundle deployment/job execution with broad confirmation but no exact main SHA.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "barrot-ops.yml",
+      "main_behavior": "Broad external-change confirmation covers Databricks workspace import with overwrite and Kaggle dataset download.",
+      "integration_control": "Per-action confirmations and exact source SHA."
+    },
+    {
+      "workflow": "deploy-a2a-worker.yml",
+      "main_behavior": "Push to a2a/** can deploy Cloudflare Worker and upload secrets.",
+      "integration_control": "Manual confirmation, separate secret-rotation confirmation and exact main SHA."
+    },
+    {
+      "workflow": "sync-huggingface.yml",
+      "main_behavior": "Can upload code and propagate HF/Databricks/Groq secrets with a broad approval.",
+      "integration_control": "Quarantined pending private-target verification and separate secret-rotation controls."
+    },
+    {
+      "workflow": "sync-self-hosted-brain.yml",
+      "main_behavior": "Main push path can deploy a Hugging Face Space and propagate BRAIN_SHARED_SECRET.",
+      "integration_control": "Hard false execution guard; separate approval controls retained for any future proposal."
+    },
+    {
+      "workflow": "webmcp-live-sandbox.yml",
+      "main_behavior": "Broad confirmation can invoke all registered WebMCP tools.",
+      "integration_control": "Quarantined until per-tool allowlist and per-action authorization exist."
+    },
+    {
+      "workflow": "diag-cf.yml and diag-cf2.yml",
+      "main_behavior": "Cloudflare diagnostics expose account names and partial account-ID metadata in logs.",
+      "integration_control": "Quarantined."
+    },
+    {
+      "workflow": "ibm-bob-barrot-audit.yml",
+      "main_behavior": "External IBM Bob provider and IBM_BOB_API_KEY path; downloads and executes a remote shell script.",
+      "integration_control": "Quarantined; IBM Bob is outside the nine-platform map and has no verified auth/data flow."
+    },
+    {
+      "workflow": "formal-verification-benchmarks.yml",
+      "main_behavior": "Main version fetches a mutable Lean installer source.",
+      "integration_control": "Integration pins the installer source commit."
+    }
+  ],
+  "external_provider_distinction": {
+    "Groq": "Separate provider from Grok; manual flows are gated or quarantined. No Groq dispatch occurred.",
+    "Grok": "Nine-platform entry remains unverified; no authentication or data flow verified."
+  },
+  "main_health": {
+    "main_ci": {
+      "run_id": 43343513172,
+      "status": "SUCCESS",
+      "tests_job": "SUCCESS",
+      "full_repository_suite_job": "SUCCESS"
+    },
+    "pillars_consistency": {
+      "run_id": 43430139937,
+      "status": "FAILURE",
+      "job_id": 131901277327,
+      "failures": [
+        "Barrot GitHub App credentials missing: GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY and GITHUB_APP_INSTALLATION_ID.",
+        "Databricks read-only SELECT 1 returned HTTP 403.",
+        "Hugging Face Space runtime reported BUILD_ERROR."
+      ],
+      "passes": [
+        "deployment-sync source check passed",
+        "system-prompt fiction scan passed"
+      ],
+      "classification": "Read-only external integration health failure, not repository CI failure; no external write performed."
+    },
+    "barrot_sync": {
+      "run_id": 43343513347,
+      "status": "workflow success but sync skipped",
+      "job_id": 131617224659,
+      "observed": "ModuleNotFoundError: httpx; b_agent.py sync skipped; git push returned Everything up-to-date; workflow masks sync and push errors.",
+      "secret_log_correction": "The cut -c1-30 expression printed only the fixed 30-character label 'Barrot running on LunaRoute - '; zero API-key characters appeared. The environment secret was masked. No key disclosure is evidenced by this log."
+    },
+    "auto_pr_check": {
+      "run_id": 43343513283,
+      "status": "SUCCESS",
+      "classification": "No-op validation; did not create a pull request."
+    },
+    "pages_deploy": {
+      "run_id": 43343511839,
+      "status": "SUCCESS",
+      "classification": "Main push automatically built and deployed Pages; next public publication authorization remains unresolved for seven PR web files."
+    },
+    "cross_analysis": {
+      "run_id": 43428748553,
+      "status": "SUCCESS",
+      "classification": "Scheduled read-only analysis."
+    }
+  },
+  "control_workflows_not_changed_by_pr": {
+    "barrot-approve-pr.yml": "Manual exact-PR-head approval-label gate; does not merge.",
+    "barrot-auto-pr.yml": "No-op workflow validation; not an automatic PR creator.",
+    "barrot-pr-automerge.yml": "Disabled.",
+    "barrot-autonomous-resolver.yml": "Disabled.",
+    "autonomous_self_deployment.yml": "Disabled."
+  },
+  "security_boundary": {
+    "main_branch_protected_flag": true,
+    "detailed_branch_protection_api": "HTTP 403; required checks and approval enforcement not independently inspectable",
+    "visible_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "integration_branch_protected": false,
+    "github_connector_permissions_reported": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege_met": false,
+    "pages_auto_publish_previously_verified": true
+  },
+  "execution_status": {
+    "external_model_dispatch": false,
+    "external_model_data_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "huggingface_deploy": false,
+    "cloudflare_deploy": false,
+    "secret_rotation": false,
+    "paper_trade": false,
+    "real_money": false,
+    "merge": false,
+    "source_pr_closure": false
+  },
+  "next_actions": [
+    "keep quarantined writers and broad tool dispatch disabled",
+    "resolve Barrot GitHub App credentials through authorized configuration rather than assuming ChatGPT connector implies app authentication",
+    "resolve Databricks read-only 403 and Hugging Face Space BUILD_ERROR without deployment/secret rotation absent approval",
+    "complete semantic review of all 1,104 PR files and 50 workflow diffs",
+    "obtain formal review and verify branch-protection requirements",
+    "keep forecast NOT_ISSUED until full OOS/shadow admission gate passes"
+  ]
+}

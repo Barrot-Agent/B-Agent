@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "captured_at_utc": "2026-11-08T17:38:09Z",
+  "topic": "Ripple, Circle and Coinbase trust-bank status; stablecoin distribution economics; SBI dual stablecoin channels",
+  "bank_charter_status": {
+    "circle": {
+      "entity": "First National Digital Currency Bank, N.A.",
+      "status": "FINAL_APPROVAL_ANNOUNCED_AND_OCC_CAS_CONSUMMATED_EFFECTIVE",
+      "conditional_approval_date": "2025-12-12",
+      "final_approval_announcement_date": "2026-07-10",
+      "occ_cas_approved_date": "2025-12-12",
+      "occ_cas_effective_date": "2026-07-24",
+      "initial_scope": "At opening on 2026-07-24, Circle National Trust offered fiduciary digital-asset custody services to Circle and its affiliates. Circle's Q2 2026 filing is explicit on opening scope; do not infer that reserve management had begun.",
+      "issuer_boundary": "Circle Internet Financial remains the USDC issuer; First National Digital Currency Bank is a separate national trust-bank entity, not an ordinary deposit-taking commercial bank.",
+      "sources": [
+        "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+        "https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank",
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+      ],
+      "final_approval_date": "2026-07-09",
+      "occ_cas_initial_approval_date": "2025-12-12",
+      "opening_date": "2026-07-24"
+    },
+    "ripple": {
+      "entity": "Ripple National Trust Bank",
+      "status": "FINAL_APPROVAL_ANNOUNCED_AND_OCC_CAS_CONSUMMATED_EFFECTIVE",
+      "conditional_approval_date": "2025-12-12",
+      "final_approval_announcement_date": "2026-10-26",
+      "occ_cas_approved_date": "2025-12-12",
+      "occ_cas_effective_date": "2026-10-26",
+      "planned_scope": "Manage segregated RLUSD reserves, act as collateral trustee for RLUSD holders and provide fiduciary digital-asset custody services upon opening.",
+      "issuer_boundary": "RLUSD remains issued by Standard Custody & Trust Company, Ripple's NYDFS-regulated limited-purpose trust company; Ripple National Trust Bank is a separate federal trust-bank entity.",
+      "limitations": "OCC CAS records consummated/effective 2026-10-26. Ripple announced final approval. Its release describes reserve management, collateral-trustee and custody authority, with custody upon opening. The first operating date and actual reserve/custody balances are not disclosed.",
+      "sources": [
+        "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/"
+      ],
+      "final_approval_date": "2026-10-26",
+      "effective_date": "2026-10-26"
+    },
+    "coinbase": {
+      "entity": "Coinbase National Trust Company",
+      "status": "OCC_CAS_CONSUMMATED_EFFECTIVE_2026_11_06",
+      "conditional_approval_date": "2026-04-02",
+      "occ_cas_approved_date": "2026-04-02",
+      "occ_cas_effective_date": "2026-11-06",
+      "separate_final_approval_document": "NOT_LOCATED_IN_SOURCES_REVIEWED; OCC CAS later shows Consummated/Effective 2026-11-06.",
+      "limitations": "The April 2, 2026 OCC CD1370 is preliminary conditional approval only. OCC CAS now records Consummated/Effective 2026-11-06. No separate final-approval letter or first customer-operating date was located in the sources reviewed.",
+      "sources": [
+        "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf"
+      ],
+      "planned_scope": "Fiduciary digital-asset custody primarily for institutional clients; related transactional services only for custody customers and custodied assets; the bank may act as a finder for affiliate staking, prime trading and prime financing, but does not itself provide those underlying affiliate services.",
+      "insured_depository_institution": false,
+      "operating_start_date": "NOT_SEPARATELY_CONFIRMED"
+    },
+    "interpretation": "As of 2026-11-08, OCC CAS records Circle's First National Digital Currency Bank effective 2026-07-24, Ripple National Trust Bank effective 2026-10-26 and Coinbase National Trust Company effective 2026-11-06. Coinbase's April 2 OCC decision was preliminary conditional approval; its later CAS consummated/effective status supersedes a conditional-only snapshot. These are distinct national trust-bank charters, not ordinary deposit-taking commercial banks. The Coinbase decision explicitly says the bank will not be an insured depository institution. Charter status does not prove actual XRP demand, customer balances or operating volume."
+  },
+  "circle_coinbase_economics": {
+    "circle_q2_2026_distribution_cost_to_coinbase_usd": 324600000,
+    "circle_h1_2026_distribution_cost_to_coinbase_usd": 655300000,
+    "description": "Circle's Q2 2026 SEC filing reports distribution costs paid to Coinbase under the USDC collaboration agreements. The arrangements allocate economics based partly on USDC balances held on Coinbase and an ecosystem growth pool.",
+    "interpretation": "Coinbase has material USDC distribution economics with Circle. This is an actual reported payment/cost, not a forecast. It does not establish the same economics for RLUSD.",
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    ]
+  },
+  "circle_scale": {
+    "usdc_circulation_usd_2026_06_30": 73300000000,
+    "q2_2026_onchain_transaction_volume_usd": 14800000000000,
+    "usdc_circulation_usd_2026_10_29": 70000000000,
+    "reserve_value_usd_2026_10_29": 71400000000,
+    "note": "June 30 company filing and October 29 transparency snapshot are different dates/measurement sources; do not average them. October 29 data is provider/issuer transparency, not audited quarter-end."
+  },
+  "ripple_product_evidence": {
+    "rlusd_market_cap_usd_company_reported_2026_10_28": 2600000000,
+    "rlusd_collateral_use": "Ripple states RLUSD is used as collateral within Ripple Prime and is a stablecoin facilitating on-chain repo markets. Actual notional, collateral balances, haircuts, counterparties and borrower breakdowns are undisclosed.",
+    "coinbase_distribution": "Live on Coinbase Prime, Coinbase Exchange and Coinbase Retail across XRPL, Base and Ethereum. Coinbase Global Exchange availability, including RLUSD collateral use, was future at the October 28 launch announcement.",
+    "bny_custody": "BNY is RLUSD's primary reserve custodian and supports eligible institutional clients' custody of XRP and RLUSD. Direct mint/redeem through BNY is intended future functionality; tokenized trade finance is exploratory. Actual balances and transaction volumes are undisclosed.",
+    "c2fo": "C2FO Instant Pay was announced as an XRPL/RLUSD financing-and-settlement initiative with a waitlist. It is not evidence of live transaction throughput; participating capital providers, committed capital and completed volume are not disclosed.",
+    "robinhood": "RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; availability in the Robinhood app was expected later in 2026. Robinhood intends to use RLUSD on XRPL for institutional settlement. Ripple Prime provides Bitstamp by Robinhood lending and margin financing across roughly 20 digital assets; XRP-specific volume and balances are not disclosed.",
+    "company_reported_scale": "On October 28, 2026 Ripple reported a $900M annualized product-revenue run-rate, 1,700+ institutions/corporates/enterprises, $16T transactions enabled across products in 2025 and 3x growth in customers/partners since 2025 acquisitions. These are company-reported, not audited XRP-specific flows.",
+    "sources": [
+      "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/"
+    ]
+  },
+  "sbi_group_network": {
+    "circle_jv": "SBI Holdings and Circle formed Circle SBI Japan K.K. (Japanese name: SBI Circle Holdings K.K.) as a 50:50 joint venture for USDC distribution in Japan. SBI and Circle signed the formation agreement in March 2025 and SBI announced establishment on 2025-08-22. Circle's Q2 2026 10-Q says each party contributed approximately ¥1.5M in November 2025 and that there had been no significant operating results through 2026-06-30. SBI Holdings and SBI Shinsei Bank separately acquired $50M of Circle IPO shares in June 2025 ($25M each).",
+    "ripple_channel": "SBI VC Trade launched RLUSD in Japan on 2026-06-24. SBI's VCTRADE product page lists Ethereum support and XRPL as planned; this is distinct from SBI Ripple Asia's separate XRPL token-issuance platform. Actual RLUSD volumes and XRP balances are undisclosed.",
+    "ai_adoption": "SBI Holdings and SBI Securities announced ChatGPT Enterprise rollout on 2025-05-01. SBI Group announced an enterprise Claude/Anthropic AI-transformation collaboration on 2026-06-02, including group-wide employee access, API use and development of financial AI agents subject to Japanese financial regulation. These are SBI Group corporate relationships, not SBIC East/Central/West and not Barrot platform connections.",
+    "interpretation": "SBI is a multi-stablecoin and multi-chain partner: Circle/USDC distribution and equity/JV ties, Ripple/RLUSD distribution, and separate SBI Ripple Asia XRPL infrastructure plus historical SBI Remit XRP bridge use. The Circle JV had no significant operating results in Circle's Q2 2026 filing; SBI VC Trade volumes remain undisclosed.",
+    "sources": [
+      "https://www.sbigroup.co.jp/news/2025/0325_15331.html",
+      "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
+      "https://www.sbigroup.co.jp/news/2025/0304_15290.html",
+      "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+      "https://www.sbigroup.co.jp/news/2026/0602_16373.html",
+      "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    ]
+  },
+  "strategic_graph": {
+    "coinbase_roles": [
+      "USDC distribution partner with material Circle revenue-share economics reported in Circle's Q2 2026 SEC filing",
+      "RLUSD distributor across Prime, Exchange and Retail on XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was future at launch",
+      "Coinbase National Trust Company OCC CAS status consummated/effective 2026-11-06; April 2 decision was preliminary conditional",
+      "Institutional custody and exchange roles are separate from actual XRP collateral balances, which remain undisclosed"
+    ],
+    "circle_roles": [
+      "USDC issuer and large reserve-backed stablecoin network",
+      "Circle SBI Japan K.K. 50:50 JV with SBI Holdings, established 2025-08-22",
+      "SBI Holdings and SBI Shinsei Bank acquired $50M of Circle IPO shares ($25M each)",
+      "Circle Q2 2026 10-Q reports no significant operating results for Circle SBI Japan through 2026-06-30",
+      "First National Digital Currency Bank OCC CAS effective 2026-07-24; initial scope fiduciary custody"
+    ],
+    "ripple_roles": [
+      "RLUSD issuer through Standard Custody & Trust Company",
+      "Ripple National Trust Bank final approval announced and OCC CAS effective 2026-10-26",
+      "Ripple Prime reports RLUSD collateral use in prime brokerage and on-chain repo markets",
+      "Ripple Prime supports OTC XRP spot and cross-margining, but XRP collateral balances/positions are undisclosed",
+      "Coinbase RLUSD distribution, BNY XRP/RLUSD custody and SBI VC Trade RLUSD distribution are separate partner capabilities"
+    ],
+    "circle_ripple_direct_relationship": "No direct Circle-Ripple commercial partnership was established in the reviewed sources. They are competing stablecoin issuers and trust-bank entrants while sharing distribution/custody counterparties such as SBI Group, Coinbase and BNY.",
+    "demand_boundary": "None of these corporate, bank-charter, stablecoin or derivatives relationships alone proves incremental XRP spot purchases. Require asset-level flows, XRP collateral balances, actual XRP bridge volume and attributable order-book/settlement evidence."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Coinbase is pursuing a multi-stablecoin distribution strategy, retaining USDC economics while adding RLUSD access.",
+      "support": "Circle SEC distribution costs plus Ripple/Coinbase RLUSD distribution announcement.",
+      "counter": "RLUSD revenue share, actual balances and collateral usage on Coinbase Global Exchange remain undisclosed."
+    },
+    {
+      "id": "H2",
+      "claim": "Ripple's trust-bank charter and RLUSD collateral use expand regulated institutional infrastructure.",
+      "support": "OCC CAS effective 2026-10-26 and Ripple's RLUSD collateral/custody announcements.",
+      "counter": "The bank's first operating date, actual reserve/collateral balances and XRP-specific use remain undisclosed."
+    },
+    {
+      "id": "H3",
+      "claim": "Circle's USDC distribution network and SBI JV give it an established Japanese distribution channel, while SBI also distributes RLUSD.",
+      "support": "50:50 Circle SBI Japan JV, SBI VC Trade public USDC offering since March 2025, and RLUSD listing in June 2026.",
+      "counter": "Circle's Q2 2026 filing reports no significant Circle SBI Japan operating results through June 30; relative USDC/RLUSD volumes are undisclosed."
+    },
+    {
+      "id": "H4",
+      "claim": "RLUSD and USDC activity on XRPL could increase ledger activity, but not necessarily XRP demand.",
+      "support": "RLUSD and USDC are available on XRPL and C2FO Instant Pay was announced for XRPL/RLUSD settlement.",
+      "counter": "Stablecoins are the settlement assets in those use cases; XRP demand requires bridge, collateral or fee evidence. C2FO remains a waitlist/initiative, not verified live throughput."
+    }
+  ],
+  "evidence_status": {
+    "confirmed": [
+      "Circle First National Digital Currency Bank OCC CAS effective 2026-07-24; Circle announced final approval 2026-07-10",
+      "Ripple National Trust Bank OCC CAS effective 2026-10-26; Ripple announced final approval",
+      "Coinbase National Trust Company OCC CAS consummated/effective 2026-11-06; April 2 decision was preliminary conditional",
+      "Circle Q2 2026 SEC 10-Q distribution costs to Coinbase, using corrected accession 000187604226000248",
+      "Circle SBI Japan 50:50 JV established 2025-08-22; Circle Q2 filing reports no significant operating results through 2026-06-30",
+      "Ripple says RLUSD is used as collateral in Ripple Prime and on-chain repo markets",
+      "Ripple/Coinbase RLUSD distribution across XRPL, Base and Ethereum; Coinbase Global Exchange collateral future at launch",
+      "BNY eligible-client XRP/RLUSD custody; direct mint/redeem future and tokenized trade finance exploratory",
+      "SBI/Ripple RLUSD distribution via SBI VC Trade; SBI Ripple Asia XRPL platform is a separate relationship"
+    ],
+    "company_reported": [
+      "Ripple $2.6B RLUSD market cap and $900M annualized product-revenue run-rate as of October 28, 2026",
+      "Ripple 1,700+ institutions/corporates/enterprises and $16T transactions enabled across products in 2025",
+      "SBI/Circle and Ripple/SBI partnership and product capability statements"
+    ],
+    "unknown": [
+      "Ripple National Trust first operating date and actual reserve/collateral volumes",
+      "Coinbase RLUSD distribution economics and actual collateral balances",
+      "SBI VC Trade USDC/RLUSD volumes and XRP bridge redemptions",
+      "Circle SBI Japan operating volumes after June 30, 2026",
+      "Actual XRP Prime brokerage positions, collateral balances and turnover",
+      "Direct Circle-Ripple commercial agreement"
+    ]
+  },
+  "safety": {
+    "public_sources_only": true,
+    "private_data_accessed": false,
+    "unauthorized_access": false,
+    "market_manipulation": false,
+    "investment_action": false,
+    "model_admission": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "correction_run": "2026-11-08T17:38:09Z",
+  "source_corrections": {
+    "corrected_sec_q2_2026_10q": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+    "rejected_sec_accession": "000187604226000045 (Form 4, not Circle Q2 2026 Form 10-Q)",
+    "occ_cas_records": {
+      "circle": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "ripple": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "coinbase": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2"
+    },
+    "note": "The prior artifact reused a single OCC CAS FilingID for Ripple and Coinbase and treated Coinbase as conditional-only. The three entities have distinct CAS records; Coinbase's later 2026-11-06 consummated/effective status supersedes the April 2 conditional-only snapshot."
+  }
+}

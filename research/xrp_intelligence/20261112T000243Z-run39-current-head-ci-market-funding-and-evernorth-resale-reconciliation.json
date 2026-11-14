@@ -1,0 +1,513 @@
+{
+  "schema_version": "barrot.xrp.run-research.v1",
+  "run_id": "Run39",
+  "captured_at_utc": "2026-11-12T00:02:43Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3 execution/orchestration/safety/verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
+    "commits_ahead": 2066,
+    "commits_behind": 0,
+    "integration_tree_entries": 2290,
+    "main_tree_entries": 1388,
+    "pr_number": 1661,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable_reported": true,
+    "changed_files": 1030,
+    "changed_workflow_files": 49,
+    "changed_nonworkflow_files": 981,
+    "open_prs": 374,
+    "draft_prs": 360,
+    "non_draft_prs": 14,
+    "integration_head_before_final_sec_addendum": "ca91ed66918d3c2b0429909bfa77c5fa007d5098"
+  },
+  "verification": {
+    "exact_tested_head": "ca91ed66918d3c2b0429909bfa77c5fa007d5098",
+    "ci_run_id": 43125273746,
+    "full_suite_job_id": 130875649044,
+    "full_suite": {
+      "passed": 3452,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.99,
+      "duration_seconds": 55.68
+    },
+    "core_suite": {
+      "status": "passed",
+      "tests": 714
+    },
+    "wheel_build": "passed",
+    "installed_wheel": "verified Barrot V3, XRP mission and canonical data assets",
+    "dependency_audit_run_id": 43125273889,
+    "dependency_audit_job_id": 130875649974,
+    "dependency_manifests": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run_id": 43125273757,
+    "fail_closed_gate": "passed",
+    "latest_main_cross_analysis_run_id": 43123012231,
+    "latest_main_cross_analysis": "passed",
+    "scope": "All results are exact-head verified on ca91ed. The final SEC handoff commit below is documentation/evidence-only and requires its own exact-head CI."
+  },
+  "latest_commit": {
+    "sha": "694786fda25c1f6ca9c4f05a20de3d6e531fe457",
+    "parent_sha": "b756416d303c7dc0f1984071e24342940b6a9a28",
+    "message": "Remove empty workflow env blocks after step-scoping Groq credentials",
+    "changed_paths": [
+      ".github/workflows/financial-data-refresh.yml",
+      ".github/workflows/frontier-digest.yml",
+      ".github/workflows/self-benchmark.yml",
+      ".github/workflows/signal-summary.yml",
+      ".github/workflows/webmcp-trend-digest.yml",
+      "tests/test_external_action_gates.py"
+    ],
+    "change": "Removed empty job-level env: keys from five workflows while retaining explicit per-step Groq secret scope, exact-main-SHA checkout validation, persist-credentials:false and read-only permissions. Added a regression assertion against an empty env block before steps."
+  },
+  "market": {
+    "spot": {
+      "observation_cutoff": "OKX provider event time 2026-11-11T23:56:13.061Z; Kraken event time not supplied",
+      "retrieved_at_utc": "2026-11-12T00:02:43Z",
+      "okx_xrp_usdt": {
+        "last": 1.0538,
+        "bid": 1.0538,
+        "ask": 1.0539,
+        "bid_size_xrp": 2917.956473,
+        "ask_size_xrp": 1225.597961,
+        "high_24h": 1.0807,
+        "low_24h": 1.0409,
+        "volume_24h_xrp": 42425245.528663,
+        "provider_timestamp_ms": 1794441373061
+      },
+      "kraken_xrp_usd": {
+        "last": 1.0482,
+        "bid": 1.04821,
+        "ask": 1.04822,
+        "high_24h": 1.07953,
+        "low_24h": 1.04004,
+        "volume_24h_xrp": 21868653.26014086,
+        "provider_event_timestamp": null
+      },
+      "kraken_usdt_usd": {
+        "last": 0.99883,
+        "bid": 0.99882,
+        "ask": 0.99883,
+        "provider_event_timestamp": null
+      },
+      "normalized_midpoints": {
+        "okx_usd": 1.05261172625,
+        "kraken_usd": 1.048215,
+        "okx_vs_kraken_percent": 0.4194488965
+      },
+      "interpretation": "Asynchronous venue observations. Kraken does not provide an event timestamp in the captured response. The normalized midpoint difference is a data-quality/dislocation flag, not executable arbitrage."
+    },
+    "orderbook": {
+      "fresh_synchronized_depth": "not retrieved in this run",
+      "last_prior_snapshot": "Fuelmaps six-venue 14:00 UTC snapshot from Run38; stale at Run39 cutoff, resting/cancellable liquidity, excludes Binance and Bitget",
+      "model_eligible": false
+    },
+    "funding": {
+      "binance_cryptoquant_30d_cumulative_percent": 0.18,
+      "binance_context": "CryptoQuant figure relayed by Coinpedia/CryptoTicker; highest since October 2025 per those reports. Underlying CryptoQuant series was not independently fetched in this run.",
+      "okx_last_100_settlements_positive": 76,
+      "okx_last_100_settlements_cumulative_percent": 0.39,
+      "okx_window": "settlements back to 2026-10-09; not exactly a calendar 30-day window",
+      "fundju_as_of_utc": "2026-11-11T20:54:00Z",
+      "fundju_30d_settlements": 90,
+      "fundju_positive_settlements": 72,
+      "fundju_negative_settlements": 18,
+      "fundju_30d_cumulative_percent": 0.406,
+      "fundju_current_8h_percent": 0.0087,
+      "independence_note": "CryptoTicker and FundJu both rely on OKX public funding data for OKX history; they are not independent exchange datasets. Binance CryptoQuant is a separate venue/dataset but was not directly retrieved."
+    },
+    "open_interest": {
+      "venue": "OKX XRP-USDT-SWAP",
+      "nov4_usd_millions": 132.1,
+      "nov10_usd_millions": 101.9,
+      "usd_change_percent": -23,
+      "coin_denominated_open_interest_change_approx_percent": -10,
+      "long_short_account_ratio_nov9": 4.27,
+      "long_short_account_ratio_nov11": 3.7,
+      "source": "CryptoTicker report using OKX public data",
+      "limitation": "USD OI decline includes mark-price decline; coin-denominated OI reportedly contracted less. Account ratios are not notional exposure."
+    },
+    "etf_flows": {
+      "nov9_net_outflow_usd_millions": 10.4,
+      "nov9_equivalent_xrp_millions": 9.37,
+      "nov3_to_nov6": "four consecutive zero-net-flow trading days reported",
+      "bitwise_nov9_outflow_usd_millions": 9.4,
+      "oct12_to_nov9_cumulative_net_outflow_usd_millions": 4.2,
+      "source_lineage": "SoSoValue data relayed by CryptoTicker/Coinpedia and 24/7 Wall St. These articles share the same underlying flow source; not independent confirmations.",
+      "scope_warning": "Other trackers report different fund cohorts, cutoffs and reconstructed holdings-change flows. Do not average with the separate Alpha/XRP Insights universes."
+    }
+  },
+  "institutional_and_capital": {
+    "evernorth_resale_filing": {
+      "issuer": "Evernorth Holdings Inc.",
+      "form": "424B3",
+      "accession": "000162828026072223",
+      "filing_date": "2026-11-09",
+      "accepted_at_utc": "2026-11-09T16:18:57Z",
+      "prospectus_date": "2026-11-09",
+      "registered_class_a_shares": 73688162,
+      "composition": {
+        "issued_and_outstanding": 19102635,
+        "issuable_on_class_c_conversion": 31392746,
+        "issuable_on_company_unit_redemption_or_exchange": 22953128,
+        "issuable_on_sponsor_warrant_exercise": 239653
+      },
+      "sponsor_warrants": 239653,
+      "warrant_exercise_price_usd": 11.5,
+      "company_resale_proceeds": "none, except cash proceeds if sponsor warrants are exercised",
+      "separate_eloc_capacity_shares": 5218935,
+      "eloc_registration": "separate registration statement; do not combine with the 73,688,162-share resale registration",
+      "xrp_effect": "This is registration of potential shareholder securities resales/conversions, not evidence of completed share sales or an Evernorth XRP sale. Share supply/dilution can affect XRPN equity and XRP-per-share calculations without directly changing the XRP wallet.",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "secondary_market_context": {
+      "xrpn_nov9_close_usd": 10.41,
+      "xrpn_nov10_close_usd": 7.96,
+      "xrpn_change_percent": -23.5,
+      "xrp_nov10_daily_change_percent": -3.9,
+      "btc_nov10_daily_change_percent": -2.1,
+      "source": "24/7 Wall St, published 2026-11-11",
+      "caveat": "Temporal association with the resale filing is not proof of causation. The article itself identifies Bitcoin weakness, ETF flows and the preceding market decline as competing explanations for XRP's move."
+    },
+    "stolen_xrp_wallet_reconciliation": {
+      "source": "CryptoTicker report citing Elliptic and XRPL ledger data",
+      "observation_utc": "2026-11-11T06:44:00Z",
+      "validated_ledger": 108255241,
+      "original_stolen_xrp_millions": 233.46,
+      "last_dormant_wallet_transfer_xrp": 33455915,
+      "transfer_time_utc": "2026-11-11T00:01:00Z",
+      "collection_wallet_balance_xrp": 29466416,
+      "collection_wallet_outflow_since_prior_measurement_xrp_millions": 32.34,
+      "collection_wallet_payments": 193,
+      "reported_share_passed_on_percent": 87,
+      "ellipitic_reported_route": "Most transferred XRP was swapped into BTC through THORChain",
+      "limitation": "Ledger transfers and swaps do not identify ultimate buyers or prove fiat cash-out. A reduction in the attacker's concentrated balance is not proof of net market buying or price support."
+    },
+    "evernorth_shareholder_resale_structure": {
+      "effective_registration": {
+        "form": "EFFECT",
+        "file_number": "333-299739",
+        "effective_at_utc": "2026-11-09T16:00:00Z",
+        "primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/primary_doc.xml"
+      },
+      "prospectus": {
+        "form": "424B3",
+        "accession": "000162828026072223",
+        "accepted_at_utc": "2026-11-09T16:18:57Z",
+        "registered_class_a_shares": 73688162,
+        "class_a_outstanding_as_of_2026_10_22": 26094680,
+        "registered_to_outstanding_multiple": 2.8238768
+      },
+      "aggregate_composition": {
+        "issued_class_a": 19102635,
+        "class_c_conversion_shares": 31392746,
+        "company_unit_redemption_or_exchange_shares": 22953128,
+        "sponsor_warrant_exercise_shares": 239653,
+        "separate_sponsor_warrants": 239653,
+        "warrant_exercise_price_usd": 11.5,
+        "maximum_gross_warrant_exercise_proceeds_usd": 2756009.5
+      },
+      "selling_securityholders": [
+        {
+          "name": "Ripple Labs Inc.",
+          "registered_shares": 18139927,
+          "existing_class_a": 1678382,
+          "company_units_convertible": 16461545,
+          "relationship": "Former parent of Pathfinder/Evernorth before the business combination; contributor group subject to 9.9% ownership restriction; Class A transfer lock-up described for Ripple until the earlier of six months after 2026-10-09 (2027-04-09) or a qualifying corporate transaction, subject to exceptions."
+        },
+        {
+          "name": "Arrington XRP Capital Fund, LP",
+          "registered_shares": 33822498,
+          "existing_class_a": 4704137,
+          "class_c_convertible": 29033708,
+          "warrant_exercise_shares": 84653,
+          "relationship": "Sponsor. J. Michael Arrington has sole voting/dispositive power over sponsor securities except the DAT Side Pocket shares. Sponsor voting ownership capped at 19.9%; sponsor is named in the six-month lock-up."
+        },
+        {
+          "name": "Larsen Lam Children's Remainder Trust",
+          "registered_shares": 7153450,
+          "existing_class_a": 661867,
+          "company_units_convertible": 6491583,
+          "relationship": "Ripple-affiliated Contributor Related Party Entity; contributed 50,000,000 XRP; units subject to the 9.9% Contributor Group ownership restriction; named in the lock-up framework."
+        },
+        {
+          "name": "SBI Holdings USA, Inc.",
+          "registered_shares": 8162967,
+          "existing_class_a": 6529787,
+          "class_c_convertible": 1633180,
+          "relationship": "SBI-controlled entity. Voting/dispositive power exercised by board members Shohei Yamada and Yoshihiko Tezuka."
+        },
+        {
+          "name": "SBI Venture Fund 2023A Investment LPS",
+          "registered_shares": 247603,
+          "existing_class_a": 198065,
+          "class_c_convertible": 49538,
+          "relationship": "SBI-controlled Japanese investment partnership; SBI Investment is general partner; Yoshitaka Kitao has voting/investment control."
+        },
+        {
+          "name": "SBI Venture Fund 2023B Investment LPS",
+          "registered_shares": 357061,
+          "existing_class_a": 285623,
+          "class_c_convertible": 71438,
+          "relationship": "SBI-controlled Japanese investment partnership; SBI Investment is general partner; Yoshitaka Kitao has voting/investment control."
+        },
+        {
+          "name": "SBI PE Holdings Co., Ltd.",
+          "registered_shares": 3023321,
+          "existing_class_a": 2418439,
+          "class_c_convertible": 604882,
+          "relationship": "SBI-controlled entity; board members Yoshitaka Kitao, Takeshi Goto and Kenji Uesaka share voting/dispositive power."
+        },
+        {
+          "name": "Payward, Inc.",
+          "registered_shares": 250000,
+          "relationship": "Kraken parent entity named as selling securityholder."
+        },
+        {
+          "name": "Pantera DAT Opportunities Master Fund SP",
+          "registered_shares": 604664,
+          "relationship": "Pantera-managed fund named as selling securityholder."
+        },
+        {
+          "name": "GSR Markets Switzerland GmbH",
+          "registered_shares": 500000,
+          "relationship": "GSR-affiliated entity named as selling securityholder."
+        },
+        {
+          "name": "gumi Inc.",
+          "registered_shares": 302332,
+          "relationship": "Japanese public company named as selling securityholder."
+        }
+      ],
+      "sbi_group_total": {
+        "registered_shares": 11790952,
+        "existing_class_a": 9431914,
+        "class_c_convertible": 2359038,
+        "ownership_cap_or_reported_group_voting_power": "approximately 39.9% at/after closing as described in the prospectus; Class C conversion is subject to the 39.9% SBI Group Maximum Ownership Restriction and may be blocked or never occur"
+      },
+      "rippleworks_arrington_relationship": {
+        "rippleworks_role": "Nonprofit foundation and majority limited partner of Arrington XRP Capital Fund sponsor as of the prospectus",
+        "xrp_contribution_to_sponsor": 211319096.061435,
+        "sponsor_obligation": "invest all XRP received from RippleWorks for Pubco shares",
+        "dat_side_pocket_shares": 4215479,
+        "dat_side_pocket_rights": "RippleWorks receives voting instructions and prior written consent rights for certain dispositions; it may be deemed to share voting/dispositive power over these shares",
+        "other_sponsor_control": "J. Michael Arrington exercises sole voting/dispositive power over other sponsor registrable securities",
+        "chris_larsen_link": "Chris Larsen co-founded RippleWorks, serves on its board and is Ripple co-founder/executive chairman; the SEC identifies potential conflicts involving Ripple, RippleWorks' sponsor investment and Evernorth stockholders."
+      },
+      "lockup_and_transferability": {
+        "explicit_lockup_parties": "Ripple, Sponsor and Contributor Related Party Entity",
+        "stated_lockup_end": "2027-04-09, six months after the 2026-10-09 closing, unless an earlier qualifying corporate transaction occurs; subject to exceptions",
+        "sbi_status": "SBI Stockholders are not named in the explicit Lock-Up Agreement party list. The prospectus says Class A is generally freely transferable and specifically identifies Ripple and Sponsor Class A as locked; it also contains a general table note referring to applicable lock-up provisions. Treat SBI's 9,431,914 existing Class A shares as potential near-term resale supply subject to verification of any separate SBI agreement/transfer restriction; do not assert that sales occurred or that every share is freely tradable.",
+        "class_c": "Class C shares are non-voting and transfer-restricted; conversion is subject to ownership caps."
+      },
+      "proceeds_and_capital_classification": {
+        "resale_proceeds_to_evernorth": "zero, except cash proceeds from Sponsor Warrant exercise",
+        "maximum_sponsor_warrant_exercise_gross_usd": 2756009.5,
+        "separate_cantor_eloc_new_share_capacity": 5218935,
+        "separate_eloc_status": "separate primary equity facility/registration; not part of 73,688,162 resale registration; no proceeds under the facility reported in the prospectus at the stated cutoff",
+        "thirty_million_pik_note": "separate $30M 4% PIK convertible senior note funded 2026-10-12; debt, not resale proceeds or cash already deployed into XRP."
+      },
+      "interpretation": "The 73.688M figure is registered maximum resale/conversion capacity, not 73.688M currently outstanding or guaranteed free float. Only 19.103M are issued Class A; the remaining 54.586M are potential conversion/redemption/warrant shares. Resales are for selling holders' accounts and do not fund Evernorth's treasury. This can create XRPN equity supply/dilution and NAV-per-share pressure, but is not XRP token supply and does not prove Evernorth sold XRP."
+    },
+    "actual_capital_reconciliation": {
+      "advance_funding_cash_usd": 214050000,
+      "advance_funding_xrp": 600000,
+      "delayed_funding_cash_usd": 10500000,
+      "delayed_funding_xrp": 200000,
+      "rippleworks_to_arrington_sponsor_xrp": 211319096.061435,
+      "ripple_labs_to_pathfinder_xrp": 126791458,
+      "larsen_lam_trust_ripple_affiliate_xrp": 50000000,
+      "in_kind_xrp_total": 388910554,
+      "cash_purchased_xrp": 84365876.3625,
+      "total_xrp_at_closing": 473276430.3625,
+      "gross_cash_at_closing_usd_approx": 272600000,
+      "gross_cash_components": "$214.05M advance funding + $10.5M delayed funding + approximately $48.0M trust-account cash, before transaction expenses.",
+      "advance_funding_use": "The $214.05M cash advance-funding pool was used to purchase 84,365,876 XRP at an average price of approximately $2.53657058. Subscriber-level allocation of the $200M SBI commitment within the $214.05M pool is not disclosed; do not add the $200M again.",
+      "non_cash_distinction": "RippleWorks' 211.319M XRP contribution was routed through Arrington Sponsor; Ripple Labs separately contributed 126.791M XRP; the Larsen Lam Trust contributed 50M XRP; advance/delayed funding subscribers contributed 0.8M XRP. These are in-kind XRP contributions, not cash raised.",
+      "source": "SEC Form 424B3 accession 000162828026072223, including transaction and historical XRP contribution disclosures."
+    }
+  },
+  "identity_and_exact_phrase_research": {
+    "actual_capital": "No standardized XRP metric or primary-source definition established. Continue separating cash raised, cash deployed to purchase XRP, in-kind XRP, debt, facilities, collateral, registered resale capacity and secondary sales.",
+    "ask_coin": "Current search surfaces Permission Coin ASK and unrelated ASK candidates. Permission Coin is reported as an OFT-20 on Base and Polygon; no XRPL/XRP integration verified. Search results are not proof of a direct XRP relationship.",
+    "sbic_chatgpt": "Official Tokyo SBIC training material lists ChatGPT/Copilot education; SBIC West's 2024 seminar material is also educational. No OpenAI strategic partnership or formal 'SBIC, ChatGPT SBIC' entity/relationship verified.",
+    "kamilah_camilla_stevenson": "No first-party YouTube channel ownership verification in this run. No personal video inventory attributed. Camilla and Kamilah are not assumed to be the same person."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Positive cumulative funding and a 3.7 OKX long/short account ratio amid a large price decline indicate persistent leveraged long crowding and potential liquidation sensitivity.",
+      "disconfirming_evidence": "Positive funding can also arise from basis/carry trades or hedged exposure; USD OI fell partly because XRP's mark price fell; OKX account ratios are not notional positioning."
+    },
+    {
+      "id": "H2",
+      "claim": "The Nov9 ETF outflow may have been concentrated in Bitwise rather than a broad institutional exit.",
+      "disconfirming_evidence": "The five-fund cohort and rolling/cumulative windows differ across providers; later Nov10 flows and other fund universes may tell a different story."
+    },
+    {
+      "id": "H3",
+      "claim": "The Evernorth resale registration may pressure XRPN equity valuation through potential shareholder supply and conversion dilution.",
+      "disconfirming_evidence": "No completed resales are established; Evernorth receives no resale proceeds; the registration does not itself sell XRP or change the treasury wallet."
+    },
+    {
+      "id": "H4",
+      "claim": "The attacker's remaining XRP concentration was reduced after the dormant wallet transfer and subsequent THORChain routing.",
+      "disconfirming_evidence": "The ultimate buyers and cash-out path are unknown; the 29.47M XRP collection balance remained at the reported cutoff and subsequent transfers were not verified in this run."
+    },
+    {
+      "id": "H5",
+      "claim": "A cross-venue spot dislocation may have emerged between OKX XRP-USDT and Kraken XRP/USD.",
+      "disconfirming_evidence": "Quotes are asynchronous; Kraken event timestamp is absent; top-of-book sizes are limited; no synchronized L2/trade sequence was captured."
+    }
+  ],
+  "provenance": {
+    "raw_bytes_captured": false,
+    "raw_payload_sha256": null,
+    "barrot_source_receipt_id": null,
+    "retrieval_representation": "web-rendered source pages and public exchange JSON responses",
+    "model_eligible": false,
+    "reason": "The retrieved web text/API views were not ingested through Barrot's byte-exact collector and trusted receipt chain. Hashing rendered excerpts would not be a raw-source receipt."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_model_transfer": false,
+  "paper_trade": false,
+  "real_money_action": false,
+  "sources": [
+    {
+      "id": "turn258725view3",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "role": "OKX primary spot ticker"
+    },
+    {
+      "id": "turn258725view4",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "role": "Kraken primary spot ticker"
+    },
+    {
+      "id": "turn258725view5",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "role": "Kraken primary USDT/USD ticker"
+    },
+    {
+      "id": "turn679130view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary resale prospectus"
+    },
+    {
+      "id": "turn565523search4",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/0001628280-26-072223-index.htm",
+      "role": "SEC filing metadata"
+    },
+    {
+      "id": "turn258725view0",
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/11/xrp-treasury-stock-evernorth-xrpn-fell-24-in-one-day-after-an-sec-filing-is-that-why-xrp-dipped-4/",
+      "role": "secondary XRPN/XRP market context"
+    },
+    {
+      "id": "turn258725view1",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-funding-rate-leverage-november-11-2026/",
+      "role": "secondary funding, OI, ETF and XRPL wallet reporting"
+    },
+    {
+      "id": "turn565523search1",
+      "url": "https://fundju.com/en/funding/xrp/okx",
+      "role": "secondary OKX funding-history aggregation"
+    },
+    {
+      "id": "turn565523search0",
+      "url": "https://en.coinotag.com/xrp-funding-rate-0-18-binance-one-year-high",
+      "role": "secondary CryptoQuant funding report"
+    },
+    {
+      "id": "turn258725view2",
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/10/xrp-etfs-lost-10-4-million-in-one-day-how-much-has-left-since-xrp-started-falling/",
+      "role": "secondary SoSoValue ETF-flow reporting"
+    },
+    {
+      "id": "turn696523search0",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "role": "Tokyo SBIC official ChatGPT training"
+    },
+    {
+      "id": "turn696523search36",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "role": "SBIC West official ChatGPT seminar"
+    },
+    {
+      "id": "turn696523search2",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "role": "ASK candidate market/chain metadata"
+    },
+    {
+      "id": "turn803868search0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003488/primary_doc.xml",
+      "role": "SEC EFFECT primary record; registration effective 2026-11-09 16:00 UTC"
+    },
+    {
+      "id": "turn850645view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary selling-securityholder table, beneficial ownership, SBI entity control footnotes and transferability"
+    },
+    {
+      "id": "turn581541view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary DAT Side Pocket voting/disposition rights over 4,215,479 shares"
+    },
+    {
+      "id": "turn581541view1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary RippleWorks majority Sponsor LP interest and Chris Larsen conflict disclosure"
+    },
+    {
+      "id": "turn614160view0",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary exact cash and XRP contribution breakdown"
+    },
+    {
+      "id": "turn614160view1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary RippleWorks 211,319,096 XRP contribution to Sponsor and 19.9% cap"
+    },
+    {
+      "id": "turn225880view2",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary resale proceeds do not go to Evernorth; warrant exercise proceeds are separate"
+    },
+    {
+      "id": "turn225880view3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "role": "SEC primary registered-share composition, selling securityholder rights and limits"
+    },
+    {
+      "id": "turn473741search0",
+      "url": "https://news.bitcoin.com/finance/evernorth-xrpn-crashes-73-7-million-share-resale/",
+      "role": "secondary report of XRPN market reaction; not proof of completed sales"
+    }
+  ],
+  "relationship_graph_update": {
+    "ripple_labs": "Former parent/contributor; 126.791M XRP contributed directly to Pathfinder; 18.140M XRPN shares registered for resale (1.678M Class A +16.462M Company Units); Ripple Class A lock-up and 9.9% contributor group cap.",
+    "rippleworks": "Separate nonprofit foundation; contributed 211.319M XRP to Arrington Sponsor; majority limited partner of Sponsor; special voting/disposition rights over 4.215M DAT Side Pocket shares; Chris Larsen link creates disclosed conflict risk.",
+    "arrington_sponsor": "Received RippleWorks XRP contribution; 33.822M XRPN shares registered; J. Michael Arrington controls most sponsor securities; RippleWorks has special rights over DAT Side Pocket.",
+    "sbi_holdings": "SBI-controlled four-entity selling group registered 11.791M XRPN shares, including 9.432M issued Class A and 2.359M Class C; 39.9% group ownership/voting cap; separate from regional SBIC East/Central/West.",
+    "kraken_payward": "Payward Inc. appears as a 250,000-share Evernorth selling securityholder.",
+    "other_crypto_investors": "Pantera 604,664 shares; GSR 500,000; gumi 302,332; additional smaller holders and underwriters appear in the SEC table."
+  },
+  "research_update_sec_table": {
+    "registration_effective_at_utc": "2026-11-09T16:00:00Z",
+    "prospectus_accepted_at_utc": "2026-11-09T16:18:57Z",
+    "sec_table_lines": "SEC 424B3 selling-securityholder table and footnotes; transferability and ownership-restriction sections.",
+    "actual_capital_exact_phrase_in_sec": "No matching text for 'actual capital' in this prospectus; the filing instead itemizes cash subscriptions, in-kind XRP, resale proceeds, warrants, debt and ELOC separately.",
+    "correction": "SEC shareholder table and transaction notes added after the initial Run39 snapshot; no raw payload bytes or trusted source receipts were captured."
+  },
+  "supplemental_research_retrieved_during_run39": true,
+  "supplemental_research_sec_table_captured_without_raw_bytes": true
+}

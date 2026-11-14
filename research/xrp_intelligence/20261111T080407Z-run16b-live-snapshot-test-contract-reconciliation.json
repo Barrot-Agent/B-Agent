@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run16b_live_snapshot_test_contract_reconciliation",
+  "run_id": "run16b",
+  "captured_at_utc": "2026-11-11T08:04:07.277Z",
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "5a5ec55bc346e992c06da2a444774d37d901fb11",
+    "pr": 1661,
+    "changed_files": 987,
+    "workflow_files": 44,
+    "non_workflow_paths": 943,
+    "ahead_by": 1996,
+    "behind_by": 0
+  },
+  "ci": {
+    "run_id": 42983423156,
+    "full_suite_job": 130398918227,
+    "passed": 3405,
+    "failed": 2,
+    "subtests": 8,
+    "coverage_percent": 59.98,
+    "duration_seconds": 94.3,
+    "failing_tests": [
+      "test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+      "test_spot_orderbook_is_resting_liquidity_not_guaranteed_support"
+    ],
+    "failure_classification": "Two stale snapshot expectations in the current-map tests hard-code the previous OKX event timestamp 2026-11-11T05:43:33.264Z and Fuelmaps snapshot time 2026-11-11T05:00:00Z. Current verified observations are later (OKX 07:50:55.569Z; Fuelmaps 07:00:00Z). Update tests to validate parseable UTC chronology, quote/order-book invariants and resting-liquidity semantics rather than fixed live timestamps or amounts. No application-runtime exception was reported.",
+    "dependency_audit": {
+      "run_id": 42983423216,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42983423193,
+      "passed": true,
+      "automatic_merge_enabled": false
+    },
+    "core_tests": "passed"
+  },
+  "diagnosis": {
+    "type": "brittle_live_snapshot_assertions",
+    "product_runtime_failure": false,
+    "observed_okx_event_time": "2026-11-11T07:50:55.569Z",
+    "old_hardcoded_okx_event_time": "2026-11-11T05:43:33.264Z",
+    "observed_fuelmaps_snapshot_time": "2026-11-11T07:00:00Z",
+    "old_hardcoded_fuelmaps_snapshot_time": "2026-11-11T05:00:00Z",
+    "correction": "Test-only: parse UTC timestamps and assert chronology, valid bid/ask and price-window relationships, positive depth and resting-book limitations; do not freeze dynamic market values."
+  },
+  "security": {
+    "credential_path_absent_main_and_integration": true,
+    "other_open_pr_tips_with_path": 17,
+    "credential_contents_read": false,
+    "oauth_provider_revocation": "unverified"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "raw_source_receipts_created": false,
+    "public_web_observations_model_eligible": false
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "deployment": false,
+    "secret_action": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "force_push": false,
+    "source_pr_closure": false
+  },
+  "next_actions": [
+    "Replace brittle fixed live-snapshot timestamps and depth amounts in the two current-map tests with UTC chronology, positive quote/depth and market-semantics invariants; rerun the full exact-head suite, dependency audit and fail-closed gate.",
+    "Refresh the current-map repository snapshot and canonical handoff after verifying the new branch head and CI run IDs.",
+    "Complete semantic review of the 943 non-workflow paths, prioritizing V3 execution/safety, XRP ingestion/feature store/forecast ledger, package configuration and public signal assets.",
+    "Verify provider-side OAuth revocation and continue additive remediation of the 17 affected open-PR branch tips without reading credential contents or rewriting history.",
+    "Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.",
+    "Raise the 53% inclusive coverage floor toward the prior 70% through additional tests; do not hide the tradeoff or exclude major packages.",
+    "Preserve unique research, graph, prediction, safety and topology PRs; close exact duplicates only after verified successor merge and main verification.",
+    "Keep XRP collector off main until authorized merge; then verify first successful read-only main ingestion and immutable receipts.",
+    "Continue synchronized spot/L2, derivatives, exchange-flow, collateral, macro-event, scenario, replay, calibration and shadow-evaluation work; keep forecasts disabled until evidence gates pass."
+  ]
+}

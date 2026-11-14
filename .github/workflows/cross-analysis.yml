@@ -60,5 +60,6 @@ jobs:
             echo "## Cross Analysis"
             echo
             echo "Read-only analysis completed. Outputs are attached as a workflow artifact."
-            echo "No repository files were committed or pushed."
+            echo "Source freshness metadata must be inspected; stale inputs are labeled by the analysis scripts."
+            echo "No repository files were committed or pushed. No external provider is called by this workflow."
           } >> "$GITHUB_STEP_SUMMARY"

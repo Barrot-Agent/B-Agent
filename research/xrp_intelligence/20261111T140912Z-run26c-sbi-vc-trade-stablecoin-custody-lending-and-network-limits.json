@@ -1,0 +1,357 @@
+{
+  "artifact_type": "xrp_sbi_vc_trade_stablecoin_custody_lending_and_network_limits",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-11T14:09:12Z",
+  "data_cutoff_utc": "2026-11-11T14:09:12Z",
+  "status": "PRIMARY_SOURCE_RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "ownership_and_scope": {
+    "parent": "SBI Holdings, Inc.",
+    "subsidiary": "SBI VC Trade Co., Ltd.",
+    "shareholder": "SBI Group",
+    "shareholder_percentage": 100,
+    "distinction": "SBI VC Trade is an SBI Group exchange and electronic-payment-instrument operator. It is not SBIC East, SBIC Central or SBIC West.",
+    "evidence": [
+      "sbivc_profile",
+      "sbivc_subsidiary_announcement"
+    ]
+  },
+  "network_support_and_operational_limits": {
+    "usdc": {
+      "issuer": "Circle",
+      "native_network_scope": "Multiple networks including XRPL",
+      "sbivc_current_deposit_withdrawal_networks": [
+        "Ethereum"
+      ],
+      "xrpl_supported_by_sbivc": false,
+      "per_transaction_limit_jpy_equivalent": 1000000,
+      "customer_balance_limit_jpy_equivalent": 1000000,
+      "six_month_over_limit_rule": "If month-end balance remains above the statutory cap for six consecutive months, SBI VC Trade states it will resolve the excess through sale or another permitted method.",
+      "evidence": [
+        "circle_usdc",
+        "sbivc_usdc_product",
+        "sbivc_usdc_lending"
+      ]
+    },
+    "rlusd": {
+      "issuer": "Standard Custody & Trust Company, LLC, a Ripple subsidiary",
+      "native_network_scope": "XRPL and Ethereum",
+      "sbivc_current_deposit_withdrawal_networks": [
+        "Ethereum"
+      ],
+      "xrpl_supported_by_sbivc": false,
+      "xrpl_status": "Future/planned; not active on the current SBI VC Trade VCTRADE service page.",
+      "per_transaction_limit_jpy_equivalent": 1000000,
+      "customer_balance_limit_jpy_equivalent": 1000000,
+      "six_month_over_limit_rule": "If month-end balance remains above the statutory cap for six consecutive months, SBI VC Trade states it will resolve the excess through sale or another permitted method.",
+      "evidence": [
+        "coinbase_rlusd",
+        "sbivc_rlusd_product",
+        "sbivc_rlusd_network_support"
+      ]
+    },
+    "interpretation": "Circle USDC and Ripple RLUSD have native XRPL support at issuer/network level, but SBI VC Trade's current VCTRADE deposit/withdrawal routes for both stablecoins are Ethereum-only. A token being issued on XRPL does not mean the SBI exchange supports XRPL deposits or withdrawals."
+  },
+  "usdc_lending_product": {
+    "announcement_date": "2026-03-18",
+    "legal_form": "Consumption-loan arrangement (shoyaku loan), not a bank deposit.",
+    "stated_term_weeks": 12,
+    "advertised_annual_rate_percent": 5,
+    "rate_status": "Indicative/planned and market-dependent; not guaranteed.",
+    "maximum_per_subscription_usdc": 5000,
+    "subscriptions_per_offering": 1,
+    "aggregate_customer_limit_jpy_equivalent": 1000000,
+    "early_termination": "Generally unavailable.",
+    "disposition_during_term": "Customer cannot sell, transfer or pledge the lent USDC during the loan term.",
+    "segregation_under_japanese_funds_settlement_act": false,
+    "reuse_or_re_lending": "SBI VC Trade states it may re-lend USDC received from customers and bears responsibility for onward lending.",
+    "counterparty_risk": "If SBI VC Trade becomes insolvent, customers may fail to recover some or all of the USDC lent to it.",
+    "actual_outstanding_usdc": null,
+    "actual_participant_count": null,
+    "actual_interest_paid": null,
+    "status": "PRODUCT_OFFERED_AGGREGATE_VOLUME_NOT_DISCLOSED",
+    "evidence": [
+      "sbivc_usdc_lending"
+    ]
+  },
+  "issuer_supply_and_reserve_snapshots": {
+    "usdc": [
+      {
+        "source_id": "sbivc_usdc_lending",
+        "circulation_usd": 71820000000,
+        "reserves_usd": 71900000000,
+        "data_as_of": "2026-07-31",
+        "note": "Older SBI VC Trade product-page snapshot; not a November value."
+      },
+      {
+        "source_id": "circle_usdc",
+        "circulation_usd": 68900000000,
+        "data_as_of": "2026-11-09",
+        "note": "More recent Circle issuer-level circulation snapshot; not XRPL-specific."
+      }
+    ],
+    "rlusd": {
+      "source_id": "sbivc_rlusd_product",
+      "circulation_usd": 1866500000,
+      "reserve_fund_usd": 1981300000,
+      "data_as_of": "2026-08-27",
+      "reserve_policy": "SBI VC Trade's page describes 100% backing by dollar deposits and U.S. Treasury/cash-equivalent assets, BNY Mellon as primary custodian, and monthly independent audit reporting.",
+      "note": "Issuer-level figures are dated and do not establish XRPL balances, SBI customer holdings or XRP purchases."
+    },
+    "reconciliation": "The USDC values are from different dates and sources. Do not compare them as simultaneous values. RLUSD values are an August 27 snapshot, not current November circulation."
+  },
+  "collateral_and_xrp_market_access": {
+    "xrp_products": "SBI VC Trade lists XRP spot and leverage products.",
+    "generic_crypto_asset_valuation_factor_pct": 50,
+    "generic_electronic_payment_instrument_valuation_factor_pct": 100,
+    "token_specific_collateral_eligibility": "Not enumerated for every token/account; do not infer RLUSD or USDC-specific margin eligibility solely from the generic category rule.",
+    "actual_collateral_balances": "Not disclosed in the reviewed sources.",
+    "interpretation": "SBI VC Trade documents different generic valuation factors for crypto assets and electronic payment instruments. This could affect relative collateral efficiency, but no customer collateral composition or resulting XRP demand is disclosed.",
+    "evidence": [
+      "sbivc_service_overview",
+      "sbivc_leverage",
+      "sbivc_usdc_lending"
+    ]
+  },
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings",
+      "to": "SBI VC Trade",
+      "relation": "consolidated subsidiary; SBI Group 100% shareholder",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_profile",
+        "sbivc_subsidiary_announcement"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer",
+      "status": "confirmed",
+      "evidence": [
+        "circle_usdc",
+        "sbivc_usdc_lending"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer through Standard Custody & Trust Company",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd",
+        "sbivc_rlusd_product"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "Japanese electronic-payment-instrument listing and customer lending product",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_usdc_lending",
+        "sbivc_usdc_product"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "Japanese electronic-payment-instrument listing",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_rlusd_product",
+        "sbivc_rlusd_listing"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relation": "spot and leverage market access",
+      "status": "confirmed",
+      "evidence": [
+        "sbivc_service_overview",
+        "sbivc_leverage"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRPL",
+      "relation": "current USDC/RLUSD deposit and withdrawal support",
+      "status": "not_supported_currently",
+      "evidence": [
+        "sbivc_usdc_product",
+        "sbivc_rlusd_product"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-sbi-stablecoin-distribution-is-ethereum-routed",
+      "claim": "SBI VC Trade's current stablecoin distribution is operationally Ethereum-routed even though USDC and RLUSD have native XRPL support at issuer/network level.",
+      "support": [
+        "SBI VC Trade product pages list Ethereum as the current supported deposit/withdrawal network for USDC and RLUSD.",
+        "Both issuers support additional networks, including XRPL."
+      ],
+      "disconfirming_or_missing": [
+        "SBI VC Trade may add XRPL support later; product pages state network expansion is planned.",
+        "No internal routing or settlement-volume data is public in this capture."
+      ],
+      "tests": [
+        "Monitor SBI VC Trade network-support pages and official release notes.",
+        "Verify actual deposit/withdrawal chain data after any announced expansion."
+      ],
+      "evidence": [
+        "sbivc_usdc_product",
+        "sbivc_rlusd_product",
+        "circle_usdc",
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "id": "H2-usdc-lending-is-counterparty-credit-not-deposit",
+      "claim": "SBI VC Trade's USDC lending product creates customer counterparty exposure to SBI VC Trade rather than a segregated bank-deposit claim.",
+      "support": [
+        "The official terms classify the service as a consumption loan, state loaned USDC is not segregated under the Funds Settlement Act, and allow onward lending.",
+        "The terms state that insolvency may prevent full recovery and generally prohibit early termination."
+      ],
+      "disconfirming_or_missing": [
+        "No aggregate amount lent, participant count, collateral backing or realized loss history is disclosed."
+      ],
+      "tests": [
+        "Monitor official lending disclosures, product caps, financial statements and any changes to segregation or reuse terms."
+      ],
+      "evidence": [
+        "sbivc_usdc_lending"
+      ]
+    },
+    {
+      "id": "H3-stablecoin-collateral-efficiency-vs-xrp",
+      "claim": "The generic 100% valuation factor for electronic payment instruments versus 50% for crypto assets may make stablecoin collateral more capital-efficient than XRP collateral on SBI VC Trade.",
+      "support": [
+        "SBI VC Trade documents the two generic valuation factors.",
+        "XRP is listed as a leverage product and USDC/RLUSD are electronic payment instruments."
+      ],
+      "disconfirming_or_missing": [
+        "Token-specific eligibility and actual margin balances are not disclosed.",
+        "Stablecoin balance caps and USDC lending restrictions limit the amount available in particular services."
+      ],
+      "tests": [
+        "Verify token-specific collateral eligibility and account-level rules.",
+        "Measure public margin composition and actual stablecoin/XRP collateral balances if disclosed."
+      ],
+      "evidence": [
+        "sbivc_service_overview",
+        "sbivc_usdc_lending",
+        "sbivc_rlusd_product"
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "sbivc_usdc_lending",
+      "source": "SBI VC Trade USDC product and lending terms",
+      "url": "https://home.sbivc.co.jp/usdc",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:09:12Z",
+      "includes": [
+        "12-week term",
+        "indicative 5% annual rate",
+        "5,000 USDC per offering",
+        "1,000,000 JPY-equivalent cap",
+        "non-segregation",
+        "on-lending",
+        "counterparty risk"
+      ]
+    },
+    {
+      "id": "sbivc_usdc_product",
+      "source": "SBI VC Trade USDC product/network and balance-limit page",
+      "url": "https://home.sbivc.co.jp/services/crypto/usdc",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:09:12Z"
+    },
+    {
+      "id": "sbivc_rlusd_product",
+      "source": "SBI VC Trade RLUSD product/network, reserves and custody page",
+      "url": "https://home.sbivc.co.jp/rlusd",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:09:12Z"
+    },
+    {
+      "id": "sbivc_service_overview",
+      "source": "SBI VC Trade service overview and collateral valuation factors",
+      "url": "https://home.sbivc.co.jp/services/service-overview",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:09:12Z"
+    },
+    {
+      "id": "sbivc_leverage",
+      "source": "SBI VC Trade leverage trading terms and margin assets",
+      "url": "https://home.sbivc.co.jp/services/leverage",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:09:12Z"
+    },
+    {
+      "id": "circle_usdc",
+      "source": "Circle USDC supply and native network support",
+      "url": "https://www.usdc.com/",
+      "source_group": "Circle",
+      "data_as_of": "2026-11-09",
+      "retrieved_at_utc": "2026-11-11T14:09:12Z"
+    },
+    {
+      "id": "coinbase_rlusd",
+      "source": "Coinbase RLUSD listing and supported-network announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_group": "Coinbase",
+      "published_date": "2026-10-28"
+    },
+    {
+      "id": "sbivc_profile",
+      "source": "SBI VC Trade official company profile",
+      "url": "https://www.sbivc.co.jp/company-profile",
+      "source_group": "SBI VC Trade"
+    },
+    {
+      "id": "sbivc_subsidiary_announcement",
+      "source": "SBI VC Trade notice describing it as a consolidated subsidiary of SBI Holdings",
+      "url": "https://www.sbivc.co.jp/newsview/fbx3bt2fbywm",
+      "source_group": "SBI VC Trade",
+      "published_date": "2026-01-30"
+    },
+    {
+      "id": "sbivc_rlusd_listing",
+      "source": "SBI VC Trade RLUSD listing announcement",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "source_group": "SBI VC Trade",
+      "published_date": "2026-06-24"
+    }
+  ],
+  "source_independence": [
+    "SBI VC Trade is primary for its own product, custody, lending, network and collateral terms; these are not independent measurements of actual customer balances.",
+    "Circle is primary for USDC issuance and current circulation; SBI VC Trade's July 31 USDC figure is a historical product-page snapshot and must not override Circle's November 9 figure.",
+    "Coinbase is primary for its RLUSD listing/network announcement; it does not establish SBI VC Trade network support.",
+    "No public aggregate USDC lending volume or SBI customer XRP collateral balance was identified."
+  ],
+  "actual_capital_interpretation": "The existence of a USDC lending product, a 5% indicative rate, balance caps and exchange listings establishes product capacity and terms, not actual subscribed USDC, loans outstanding, realized yield, XRP purchases or XRPL payment volume.",
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized direct spot/depth panel, raw-source SHA-256 receipt chain, trusted timestamp anchor or validated out-of-sample predictive lift. Product announcements and balance caps are not price predictors."
+  },
+  "model_eligibility": {
+    "status": "EXCLUDED",
+    "raw_receipts_created": false,
+    "feature_store_admission": false,
+    "reason": "Primary product pages were captured as research references, not through Barrot's raw-response collector or trusted timestamp anchor."
+  },
+  "safety": {
+    "no_trade": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "no_secret_actions": true,
+    "no_external_model_transfer": true,
+    "no_deployment": true
+  }
+}

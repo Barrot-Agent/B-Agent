@@ -1,0 +1,1245 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "xrp-market-derivatives-etf-regulatory-reconciliation-20261109T010332Z",
+  "captured_at_utc": "2026-11-09T01:03:32Z",
+  "reference_time_utc": "2026-11-09T01:03:32Z",
+  "purpose": "Point-in-time XRP market, derivatives, ETF-flow, regulatory and institutional relationship reconciliation. Research evidence only; no forecast.",
+  "capture_integrity": {
+    "raw_wire_bytes_captured": false,
+    "http_headers_captured": false,
+    "hash_scope": "Exact JSON text surfaced by the web retrieval layer for direct API payloads and exact normalized excerpts stored below for web pages/filings.",
+    "immutable_external_worm": false,
+    "warning": "SHA-256 hashes establish integrity of the stored surfaced text, not byte-exact HTTP wire provenance or adversarially immutable storage."
+  },
+  "source_receipts": [
+    {
+      "id": "kraken_xrpusd_ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "publisher": "Kraken",
+      "kind": "exchange_primary_api",
+      "group": "kraken_exchange",
+      "provider_time": null,
+      "data_as_of": "retrieval snapshot; provider event time absent",
+      "model_eligible": false,
+      "sha256": "72816736c6300209c9d2e0e4261f803d676dc508c7321a7bceb94bd558121eee",
+      "hash_scope": "exact JSON text surfaced by web retrieval; not HTTP wire bytes"
+    },
+    {
+      "id": "okx_xrpusdt_ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "publisher": "OKX",
+      "kind": "exchange_primary_api",
+      "group": "okx_exchange",
+      "provider_time": "2026-11-09T00:35:29.262Z",
+      "age_seconds_at_reference": 1682.738,
+      "model_eligible": false,
+      "sha256": "26e816e7182ceadb0fdb00a1b81ea678c7b37460f232bb9a3a5a05bde3ad12e5",
+      "hash_scope": "exact JSON text surfaced by web retrieval; not HTTP wire bytes"
+    },
+    {
+      "id": "binance_xrpusdt_premium",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "publisher": "Binance Futures",
+      "kind": "exchange_primary_api",
+      "group": "binance_futures",
+      "provider_time": "2026-11-09T00:36:37Z",
+      "age_seconds_at_reference": 1615,
+      "model_eligible": false,
+      "sha256": "b552e5ef2229846c6bba79cb1464f3a28ac47f6747de7f50491b8a413e3d352f",
+      "hash_scope": "exact JSON text surfaced by web retrieval; not HTTP wire bytes"
+    },
+    {
+      "id": "coinpaprika_xrp_ticker",
+      "url": "https://api.coinpaprika.com/v1/tickers/xrp-xrp",
+      "publisher": "CoinPaprika",
+      "kind": "market_aggregator_api",
+      "group": "coinpaprika_aggregator",
+      "provider_time": "2026-11-09T00:43:13Z",
+      "age_seconds_at_reference": 1219,
+      "model_eligible": false,
+      "sha256": "d920d0328af3f6e82c36bb71bdfb8e8dcc663bded53c5c816d7d3dce87f5cd70",
+      "hash_scope": "exact JSON text surfaced by web retrieval; not HTTP wire bytes"
+    },
+    {
+      "id": "liqwall_xrp_derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "publisher": "Liqwall",
+      "kind": "secondary_derivatives_aggregator",
+      "group": "liqwall_derivatives",
+      "provider_time": "2026-11-09T01:02:00Z",
+      "model_eligible": false,
+      "sha256": "e441d6af36bb361357f41599d531c61436616062ec8db31d085d6535b0a1593a",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "tradradar_xrp_derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "kind": "secondary_derivatives_aggregator",
+      "group": "tradradar_derivatives",
+      "provider_time": "2026-11-09T00:05:00Z",
+      "reported_delay_seconds": 900,
+      "model_eligible": false,
+      "sha256": "971a72c4326e5e10e37bed04409263634003c771b34096b5fd931d40d165b51a",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "xrp_insights_etf_metadata",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "publisher": "XRP Insights",
+      "kind": "secondary_dataset_from_issuer_pages",
+      "group": "etf_issuer_page_scrape",
+      "provider_time": "2026-11-08T23:12:36.536Z",
+      "data_as_of": "2026-11-06",
+      "model_eligible": false,
+      "sha256": "7f870165356c644d6dca2a2dbbf6a734e30182fd5d7487d588752fd55dad0bd7",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "alpha_finance_etf",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "publisher": "Alpha Finance",
+      "kind": "secondary_etf_flow_dashboard",
+      "group": "alpha_etf_dashboard",
+      "data_as_of": "2026-11-06",
+      "model_eligible": false,
+      "sha256": "5a049263b549d1517ecd08920d5a7418a17247c70fc92bdfd398d390aefadedd",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "cryptoetf_today",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publisher": "CryptoETF.today",
+      "kind": "secondary_etf_flow_dashboard",
+      "group": "cryptoetf_dashboard",
+      "provider_time": "2026-11-07T05:50:00Z",
+      "data_as_of": "2026-11-06",
+      "model_eligible": false,
+      "sha256": "6c119c5f094043b7cf4e41466f7f2071f8769b15728e80010c855e6143fe7bfa",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "cftc_tff_20261106",
+      "url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "publisher": "CFTC",
+      "kind": "primary_regulatory_futures_report",
+      "group": "cftc_primary",
+      "provider_time": "2026-11-06",
+      "data_as_of": "2026-11-03",
+      "model_eligible": false,
+      "sha256": "fa0ea2bea3e1305a21c44cca3b383491e7c5fd70ae21829ea67b81685441c09e",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sec_xrp_interpretation",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "publisher": "SEC/CFTC",
+      "kind": "primary_regulatory_interpretation",
+      "group": "sec_primary",
+      "provider_time": "2026-03-23",
+      "model_eligible": false,
+      "sha256": "96f7e0325feee638080cceb698a0dc9d0b189922ff820a5a6f8abdee448b0185",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "cftc_anprm_20261013",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-13/pdf/2026-20888.pdf",
+      "publisher": "CFTC / Federal Register",
+      "kind": "primary_regulatory_anprm",
+      "group": "cftc_primary",
+      "provider_time": "2026-10-13",
+      "comment_deadline": "2026-12-14",
+      "model_eligible": false,
+      "sha256": "22591e9e39e4902444ac2fd90d3a7dddbf86c0a0605f036e6dfd505faf77566e",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "bls_cpi_20261110",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "publisher": "BLS",
+      "kind": "primary_macro_release_schedule",
+      "group": "bls_primary",
+      "provider_time": "2026-11-10T08:30:00-05:00",
+      "model_eligible": false,
+      "sha256": "fcf55444002163fb46c6e44167e80d52e12ae25a2a7840ade9bfce33105c0fe6",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "bny_ripple_20261027",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple / BNY",
+      "kind": "issuer_corporate_announcement",
+      "group": "ripple_bny_issuer_disclosure",
+      "provider_time": "2026-10-27",
+      "model_eligible": false,
+      "sha256": "cc178c9deb22204499cb136276bbaa102b686634eb143f62b20aaf2c3eeb9492",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "coinbase_ripple_20261028",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple / Coinbase",
+      "kind": "issuer_corporate_announcement",
+      "group": "ripple_coinbase_issuer_disclosure",
+      "provider_time": "2026-10-28",
+      "model_eligible": false,
+      "sha256": "faf6cfd44d22acc0c8b72eb82faa775ec04081a7b45c4c589a157e76789929be",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "robinhood_ripple_20261027",
+      "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "publisher": "Ripple / Robinhood",
+      "kind": "issuer_corporate_announcement",
+      "group": "ripple_robinhood_issuer_disclosure",
+      "provider_time": "2026-10-27",
+      "model_eligible": false,
+      "sha256": "d2b54f2c3b8fd5b933900fb8d2f07374ded58574c9810a438770c7d67596d4ec",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "drivewealth_ripple_20261014",
+      "url": "https://ripple.com/ripple-press/drivewealth-and-ripple-partner-to-bring-institutional-digital-asset-infrastructure-to-global-investing/",
+      "publisher": "Ripple / DriveWealth",
+      "kind": "issuer_corporate_announcement",
+      "group": "ripple_drivewealth_issuer_disclosure",
+      "provider_time": "2026-10-14",
+      "model_eligible": false,
+      "sha256": "71aed3dd339fca776d11e1aaab26091f77222ad5e64f0baf918b1749d5bc58bb",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "ripple_prime_rwa_20261015",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "publisher": "Ripple",
+      "kind": "issuer_corporate_announcement",
+      "group": "ripple_prime_issuer_disclosure",
+      "provider_time": "2026-10-15",
+      "model_eligible": false,
+      "sha256": "243182024d1dbc1efb1046973263119b0b08612ce4346a20db31503f52c02380",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "ripple_revenue_20261028",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "kind": "issuer_corporate_announcement",
+      "group": "ripple_issuer_disclosure",
+      "provider_time": "2026-10-28",
+      "model_eligible": false,
+      "sha256": "b0f892abfcdfe78fb85800c138fb58f5590375a5a1a2c8976bfadfcf99e9fd18",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "ripple_prime_notes_20260818",
+      "url": "https://ripple.com/ripple-press/ripple-prime-closes-275-million-senior-notes-offering/",
+      "publisher": "Ripple",
+      "kind": "issuer_financing_announcement",
+      "group": "ripple_issuer_disclosure",
+      "provider_time": "2026-08-18",
+      "model_eligible": false,
+      "sha256": "a548f880da2f6fc1e44eba6331b27fb3b885f484eb2593a10c703a0919dee308",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sbi_bond_20260220",
+      "url": "https://www.sbigroup.co.jp/news/2026/0220_16127.html",
+      "publisher": "SBI Holdings",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2026-02-20",
+      "model_eligible": false,
+      "sha256": "c1df16ac5b7f0b9bd8c0a4b4af742565e622b9c12496cef175ae149054f1dec9",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "circle_q3_2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "circle_sec_filing",
+      "data_as_of": "2026-09-30",
+      "model_eligible": false,
+      "sha256": "4e0d63d01213ae89cbfc9e6a569691544bd4a5cbc74a420e8dafd51bbb7c37a4",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "coinbase_q3_2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "coinbase_sec_filing",
+      "data_as_of": "2026-09-30",
+      "model_eligible": false,
+      "sha256": "92cf27e70b8f9295088c2b2fb7886c5d113cc845162e1da7099f9d851a3133a0",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "circle_reserves_2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "circle_sec_filing",
+      "data_as_of": "2026-09-30",
+      "model_eligible": false,
+      "sha256": "4752091670574746c068036ecdf04b5095db29e29cd25b81c283ab50fc3bb3e3",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "circle_sbi_japan_2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "circle_sec_filing",
+      "data_as_of": "2026-09-30",
+      "model_eligible": false,
+      "sha256": "934ac4d6f9d4bad4a1ab83a6434f19a87e2a7e849a3aa97fb2b470e44968e4af",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "circle_binance_20260917",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "publisher": "Circle / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "circle_sec_filing",
+      "provider_time": "2026-09-17",
+      "model_eligible": false,
+      "sha256": "ee05b94b37a5ee0409f33c26ab34c4c5c08c0f2b61e0ac49aaec5405c4073871",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sec_crypto_assets_proposed",
+      "url": "https://www.sec.gov/rules-regulations/2026/08/s7-2026-27",
+      "publisher": "SEC",
+      "kind": "primary_proposed_rule",
+      "group": "sec_primary",
+      "provider_time": "2026-08-21",
+      "comment_deadline": "2026-10-20",
+      "model_eligible": false,
+      "sha256": "2355f92e41aed3b06432faa3ff8ed255ac7766f337c1239ed0410f7882ad5bc4",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "privy_xrpl_2026",
+      "url": "https://www.privy.io/blog/building-payments-and-agentic-commerce-with-the-xrp-ledger",
+      "publisher": "Privy",
+      "kind": "developer_partner_announcement",
+      "group": "privy_primary_announcement",
+      "model_eligible": false,
+      "sha256": "0e082724725e7df2c35989e0cd638552ff46e01c0ac9e66075c11c792de09ae7",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "goldman_13f_lead",
+      "url": "https://cryptoetf.today/en/crypto-etf-institutional-holders/goldman-sachs-group",
+      "primary_record_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/",
+      "publisher": "CryptoETF.today extracting SEC 13F",
+      "kind": "secondary_13f_extraction",
+      "group": "cryptoetf_13f_secondary",
+      "data_as_of": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "model_eligible": false,
+      "sha256": "da02a75a93fb6aacc475648593b1f12f4db0a6d24f163b18e0a47447904d7af3",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "arc_mainnet",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publisher": "Circle",
+      "kind": "issuer_network_announcement",
+      "group": "circle_issuer_disclosure",
+      "provider_time": "2026-09-16",
+      "model_eligible": false,
+      "sha256": "c88c39975055c157d6b240e92fd2ee198643b4f1f47a957a3f1b31ddc991582b",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "arc_validators",
+      "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+      "publisher": "Circle",
+      "kind": "issuer_network_announcement",
+      "group": "circle_issuer_disclosure",
+      "provider_time": "2026-08-05",
+      "model_eligible": false,
+      "sha256": "5cac0d1311716acc3f684babbf9ecefda341ce38da56c1d8fd5c62c75b5ea16e",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sbi_arc",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "publisher": "SBI Holdings",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2026-05-12",
+      "model_eligible": false,
+      "sha256": "5eae697473a2910417871e58d6eba31182936d4735c03206944e20f5ce39509a",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "circle_arc_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "circle_sec_filing",
+      "data_as_of": "2026-09-30",
+      "model_eligible": false,
+      "sha256": "8e7c34fd529330733c759a7724a995cd799d15971d86da876e18f03b08a525c3",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sbi_circle_equity",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2025-06-09",
+      "model_eligible": false,
+      "sha256": "22035374cd2548cfec62dfab5d907105ee71c15fa9d373795a9c7b5b18757f96",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sbi_startale",
+      "url": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "publisher": "SBI Holdings",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2026-03-26",
+      "model_eligible": false,
+      "sha256": "1c77eee09c136fb09776c0916ccc4a6fb1cd0efd4b6ad6c6c47377862e576027",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "jpy_sc",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "publisher": "SBI Holdings / SBI Shinsei Trust / Startale",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2026-06-24",
+      "model_eligible": false,
+      "sha256": "fe553f90cf70fce096579e208d26becfb18a7fd405afc98104164d7ce355eb39",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sbi_smbc",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "publisher": "SBI Holdings / SMBC Group",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2026-10-30",
+      "model_eligible": false,
+      "sha256": "96c06ab989c8cf5d6084645b1430eb52537f84984340ac49c04575f065583475",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "open_standard",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "publisher": "SBI Holdings / Startale",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_primary",
+      "provider_time": "2026-10-16",
+      "model_eligible": false,
+      "sha256": "71943ff08aca514cffec93c146fc61e451e157d48c95c6a16bbcdec7c85aa941",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "sbi_rlusd",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI VC Trade / Ripple",
+      "kind": "primary_issuer_announcement",
+      "group": "sbi_ripple_issuer_disclosure",
+      "provider_time": "2026-06-24",
+      "model_eligible": false,
+      "sha256": "a951f1becf610042ee572e2b2357709a030d457c1edcbc7c475e525805b37f4e",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    },
+    {
+      "id": "circle_rate_sensitivity",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle / SEC EDGAR",
+      "kind": "primary_sec_filing",
+      "group": "circle_sec_filing",
+      "data_as_of": "2026-09-30",
+      "model_eligible": false,
+      "sha256": "b709cafbf3ce40bd8bae92ee93829f72d28d75b517665cc3f1bb82430a07941b",
+      "hash_scope": "normalized excerpt text stored in this artifact; not full page or HTTP wire bytes"
+    }
+  ],
+  "hashes": {
+    "kraken_xrpusd_ticker": "72816736c6300209c9d2e0e4261f803d676dc508c7321a7bceb94bd558121eee",
+    "okx_xrpusdt_ticker": "26e816e7182ceadb0fdb00a1b81ea678c7b37460f232bb9a3a5a05bde3ad12e5",
+    "binance_xrpusdt_premium": "b552e5ef2229846c6bba79cb1464f3a28ac47f6747de7f50491b8a413e3d352f",
+    "coinpaprika_xrp_ticker": "d920d0328af3f6e82c36bb71bdfb8e8dcc663bded53c5c816d7d3dce87f5cd70",
+    "liqwall_xrp_derivatives": "e441d6af36bb361357f41599d531c61436616062ec8db31d085d6535b0a1593a",
+    "tradradar_xrp_derivatives": "971a72c4326e5e10e37bed04409263634003c771b34096b5fd931d40d165b51a",
+    "xrp_insights_etf_metadata": "7f870165356c644d6dca2a2dbbf6a734e30182fd5d7487d588752fd55dad0bd7",
+    "alpha_finance_etf": "5a049263b549d1517ecd08920d5a7418a17247c70fc92bdfd398d390aefadedd",
+    "cryptoetf_today": "6c119c5f094043b7cf4e41466f7f2071f8769b15728e80010c855e6143fe7bfa",
+    "cftc_tff_20261106": "fa0ea2bea3e1305a21c44cca3b383491e7c5fd70ae21829ea67b81685441c09e",
+    "sec_xrp_interpretation": "96f7e0325feee638080cceb698a0dc9d0b189922ff820a5a6f8abdee448b0185",
+    "cftc_anprm_20261013": "22591e9e39e4902444ac2fd90d3a7dddbf86c0a0605f036e6dfd505faf77566e",
+    "bls_cpi_20261110": "fcf55444002163fb46c6e44167e80d52e12ae25a2a7840ade9bfce33105c0fe6",
+    "bny_ripple_20261027": "cc178c9deb22204499cb136276bbaa102b686634eb143f62b20aaf2c3eeb9492",
+    "coinbase_ripple_20261028": "faf6cfd44d22acc0c8b72eb82faa775ec04081a7b45c4c589a157e76789929be",
+    "robinhood_ripple_20261027": "d2b54f2c3b8fd5b933900fb8d2f07374ded58574c9810a438770c7d67596d4ec",
+    "drivewealth_ripple_20261014": "71aed3dd339fca776d11e1aaab26091f77222ad5e64f0baf918b1749d5bc58bb",
+    "ripple_prime_rwa_20261015": "243182024d1dbc1efb1046973263119b0b08612ce4346a20db31503f52c02380",
+    "ripple_revenue_20261028": "b0f892abfcdfe78fb85800c138fb58f5590375a5a1a2c8976bfadfcf99e9fd18",
+    "ripple_prime_notes_20260818": "a548f880da2f6fc1e44eba6331b27fb3b885f484eb2593a10c703a0919dee308",
+    "sbi_bond_20260220": "c1df16ac5b7f0b9bd8c0a4b4af742565e622b9c12496cef175ae149054f1dec9",
+    "circle_q3_2026": "4e0d63d01213ae89cbfc9e6a569691544bd4a5cbc74a420e8dafd51bbb7c37a4",
+    "coinbase_q3_2026": "92cf27e70b8f9295088c2b2fb7886c5d113cc845162e1da7099f9d851a3133a0",
+    "circle_reserves_2026": "4752091670574746c068036ecdf04b5095db29e29cd25b81c283ab50fc3bb3e3",
+    "circle_sbi_japan_2026": "934ac4d6f9d4bad4a1ab83a6434f19a87e2a7e849a3aa97fb2b470e44968e4af",
+    "circle_binance_20260917": "ee05b94b37a5ee0409f33c26ab34c4c5c08c0f2b61e0ac49aaec5405c4073871",
+    "sec_crypto_assets_proposed": "2355f92e41aed3b06432faa3ff8ed255ac7766f337c1239ed0410f7882ad5bc4",
+    "privy_xrpl_2026": "0e082724725e7df2c35989e0cd638552ff46e01c0ac9e66075c11c792de09ae7",
+    "goldman_13f_lead": "da02a75a93fb6aacc475648593b1f12f4db0a6d24f163b18e0a47447904d7af3",
+    "arc_mainnet": "c88c39975055c157d6b240e92fd2ee198643b4f1f47a957a3f1b31ddc991582b",
+    "arc_validators": "5cac0d1311716acc3f684babbf9ecefda341ce38da56c1d8fd5c62c75b5ea16e",
+    "sbi_arc": "5eae697473a2910417871e58d6eba31182936d4735c03206944e20f5ce39509a",
+    "circle_arc_10q": "8e7c34fd529330733c759a7724a995cd799d15971d86da876e18f03b08a525c3",
+    "sbi_circle_equity": "22035374cd2548cfec62dfab5d907105ee71c15fa9d373795a9c7b5b18757f96",
+    "sbi_startale": "1c77eee09c136fb09776c0916ccc4a6fb1cd0efd4b6ad6c6c47377862e576027",
+    "jpy_sc": "fe553f90cf70fce096579e208d26becfb18a7fd405afc98104164d7ce355eb39",
+    "sbi_smbc": "96c06ab989c8cf5d6084645b1430eb52537f84984340ac49c04575f065583475",
+    "open_standard": "71943ff08aca514cffec93c146fc61e451e157d48c95c6a16bbcdec7c85aa941",
+    "sbi_rlusd": "a951f1becf610042ee572e2b2357709a030d457c1edcbc7c475e525805b37f4e",
+    "circle_rate_sensitivity": "b709cafbf3ce40bd8bae92ee93829f72d28d75b517665cc3f1bb82430a07941b"
+  },
+  "raw_surface_payloads": {
+    "kraken_xrpusd_ticker": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.11590000\",\"4481\",\"4481.000\"],\"b\":[\"1.11575000\",\"3485\",\"3485.000\"],\"c\":[\"1.11526000\",\"564.22240773\"],\"v\":[\"1420215.81880940\",\"28594850.17185153\"],\"p\":[\"1.11347196\",\"1.12872873\"],\"t\":[1715,26506],\"l\":[\"1.10469000\",\"1.09309000\"],\"h\":[\"1.12141000\",\"1.16816000\"],\"o\":\"1.11203000\"}}}",
+    "okx_xrpusdt_ticker": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1212\",\"lastSz\":\"108.216601\",\"askPx\":\"1.1213\",\"askSz\":\"3248.2\",\"bidPx\":\"1.1212\",\"bidSz\":\"3888.307873\",\"open24h\":\"1.1603\",\"high24h\":\"1.1697\",\"low24h\":\"1.0921\",\"volCcy24h\":\"54006500.5946413905\",\"vol24h\":\"47733206.141056\",\"ts\":\"1794184529262\",\"sodUtc0\":\"1.1132\",\"sodUtc8\":\"1.1563\"}],\"msg\":\"\"}",
+    "binance_xrpusdt_premium": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.12076005\",\"indexPrice\":\"1.12133457\",\"estimatedSettlePrice\":\"1.11631762\",\"lastFundingRate\":\"0.00005989\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794211200000,\"time\":1794184597000}",
+    "coinpaprika_xrp_ticker": "{\"id\":\"xrp-xrp\",\"name\":\"XRP\",\"symbol\":\"XRP\",\"rank\":5,\"total_supply\":99985583260,\"max_supply\":100000000000,\"beta_value\":1.39201,\"first_data_at\":\"2013-08-04T00:00:00Z\",\"last_updated\":\"2026-11-09T00:43:13Z\",\"quotes\":{\"USD\":{\"price\":1.1202039901483911,\"volume_24h\":1075346247.4766345,\"volume_24h_change_24h\":34.61000061035156,\"market_cap\":71151556549,\"market_cap_change_24h\":-3.390000104904175,\"percent_change_15m\":0.14000000059604645,\"percent_change_30m\":0.17000000059604645,\"percent_change_1h\":0.6200000047683716,\"percent_change_6h\":-3.2699999809265137,\"percent_change_12h\":-3.619999885559082,\"percent_change_24h\":-3.390000104904175,\"percent_change_7d\":-10.989999771118164,\"percent_change_30d\":-20.649999618530273,\"percent_change_1y\":-52.9900016784668,\"ath_price\":3.84194,\"ath_date\":\"2018-01-04T07:14:00Z\",\"percent_from_price_ath\":-70.9}}}"
+  },
+  "normalized_excerpts": {
+    "liqwall_xrp_derivatives": "Liqwall XRP page, as of 2026-11-09T01:02:00Z: XRP $1.12; 24h liquidations $30.1M, longs $29.3M, shorts $827K; Binance funding +0.0057% per 8h; average funding across exchanges +0.0026% per 8h; all-exchange open interest $1.27B, -3.6% in 24h; 73.7% of Binance XRP-position accounts long. Exchange breakdown: Bybit $8.5M, Hyperliquid $8.3M, Binance $6.9M, Gate $2.5M, OKX $1.6M, Kraken $1.2M, Lighter $948K, Aster $215K, Bitfinex $56K.",
+    "tradradar_xrp_derivatives": "TradRadar XRP page, updated 2026-11-09T00:05:00Z, 15-minute delay: mark price $1.1106, 24h change -4.46%; open interest $1.72B across 7 exchanges, -8.93% in 24h; OI-weighted funding -0.0039% per 8h; 24h liquidations at least $30.44M across 5 exchanges, longs $30.02M, shorts $416.65K; long/short account ratio 4.00 (80% long). By-exchange funding: Binance +0.0068%, Bybit -0.0142%, Gate -0.0212%, Bitget -0.0014%, MEXC +0.0068%, Hyperliquid -0.0066%, OKX +0.0025%.",
+    "xrp_insights_etf_metadata": "XRP Insights ETF data JSON metadata: generated_at 2026-11-08T23:12:36.536Z; data_as_of 2026-11-06; 231 trading days, 1,597 fund-day rows, seven tickers. Current data is scraped from issuer pages; no third-party flow feed. Daily flow is computed as change in issuer-reported XRP holdings, not issuer flow reports. Non-creation changes such as BITW index rebalancing and fees paid in XRP are counted as flow. GXRP flow excluded across history due issuer-page scrape gap 2026-09-02 through 2026-09-28; holdings remain in totals. Reconstructed rows 2026-03-23 to 2026-03-27, 2026-03-31 to 2026-04-29, and 2026-05-12 use third-party flow estimates between issuer-reported anchor days. Commercial redistribution requires written permission.",
+    "alpha_finance_etf": "Alpha Finance XRP ETF dashboard through 2026-11-06: five funds, Nov 6 daily flow $0, last 7 sessions +$8.4M, 30-session flow +$45.9M, cumulative net inflow $1.73B. It publishes no XRP ETF holdings or net assets and states its table is built from the tickers in its flow series. Five funds: Bitwise XRP, Franklin XRPZ, Canary XRPC, Grayscale GXRP, 21Shares TOXR.",
+    "cryptoetf_today": "CryptoETF.today XRP ETF flow page: five spot funds (XRP Bitwise, XRPZ Franklin, XRPC Canary, GXRP Grayscale, TOXR 21Shares); data for 2026-11-06 published 2026-11-07T05:50Z T+1; 5 of 5 funds reported; no creations or redemptions on Nov 6; cumulative net flow +$1.81B; 30 trading days +$139.7M; 10-day total +$14.4M. It separately estimates average entry from creations/redemptions and says that estimate is not an issuer report.",
+    "cftc_tff_20261106": "Traders in Financial Futures, futures-only positions as of 2026-11-03, updated 2026-11-06. CME XRP contract multiplier 50,000 XRP; CFTC code 176740; open interest 7,216; weekly change -845; dealers 4,228 long/4,431 short; asset managers 868/802; leveraged funds 1,976/1,696; nonreportables 84/227. Coinbase Nano XRP 500 XRP contract, code 176LM1, open interest 32,505, weekly change -32,864. Coinbase Nano XRP Perp Style 500 XRP contract, code 176LM3, open interest 38,392, weekly change -465.",
+    "sec_xrp_interpretation": "SEC/CFTC Release Nos. 33-11412 and 34-105020, File S7-2026-09, effective 2026-03-23. The interpretation lists XRP as an example of a digital commodity based on the agencies' understanding of its characteristics, terms and functions as of the release date. A digital commodity is not itself a security, but a non-security crypto asset can be offered or sold subject to an investment contract. The interpretation does not supersede Howey.",
+    "cftc_anprm_20261013": "CFTC Advanced Notice of Proposed Rulemaking, 91 FR 64811, document 2026-20888, RIN 3038-AF80, published 2026-10-13; comments due 2026-12-14. It seeks comment on rules under CEA section 2(c)(2)(D) for retail leveraged, margined or financed crypto transactions. The Commission preliminarily considers whether actual delivery may require meaningful possession or control, potentially including wallet credentials/private keys. This is preliminary rulemaking, not a final rule.",
+    "bls_cpi_20261110": "U.S. Bureau of Labor Statistics schedule: October 2026 CPI release scheduled for 2026-11-10 at 08:30 AM Eastern Time.",
+    "bny_ripple_20261027": "Ripple and BNY, 2026-10-27: BNY now supports XRP and RLUSD on its Digital Asset Custody platform; BNY is primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime; BNY intends to enable direct RLUSD mint/redeem through BNY subject to approvals and is exploring tokenized trade finance with C2FO on XRPL. No custody balances or transaction volumes disclosed.",
+    "coinbase_ripple_20261028": "Ripple and Coinbase, 2026-10-28: RLUSD is live on Coinbase Prime, Coinbase Exchange and Coinbase Retail across XRPL, Base and Ethereum; Coinbase Global Exchange availability, including collateral use, was to follow. This announcement does not establish XRP collateral or XRP purchases.",
+    "robinhood_ripple_20261027": "Ripple and Robinhood, 2026-10-27: RLUSD live on Robinhood Chain and Bitstamp by Robinhood, with later Robinhood-app availability expected; RLUSD on XRPL for institutional settlement; Ripple Treasury integration; Ripple Prime financing/margin for Bitstamp across roughly 20 digital assets; later perpetual futures planned. No XRP purchase or XRP collateral disclosed.",
+    "drivewealth_ripple_20261014": "Ripple and DriveWealth, 2026-10-14: integration work includes RLUSD on XRPL for European stablecoin settlement with plans to expand to the US, Ripple Payments for cross-border acceptance, digital-asset custody, and exploration of equity financing through Ripple Prime. Integration status and volumes not disclosed as live.",
+    "ripple_prime_rwa_20261015": "Ripple Prime, 2026-10-15: institutional RWA perpetual swaps reference more than 100 markets through Trade.xyz on Hyperliquid; RLUSD may be used as collateral; clients include Virtu; offering initially available under Ripple Prime's BVI license. This is RLUSD collateral, not XRP collateral.",
+    "ripple_revenue_20261028": "Ripple, 2026-10-28, issuer-reported: on track to exit 2026 with $900M annualized product revenue run rate; over $16T transactions enabled across products in 2025; 1,700+ institutions, corporates and enterprises; 60+ payout markets; Ripple Payments network approaching $150B lifetime volume; 3x growth in customers and partners using multiple solutions. These are not XRP-specific flows or independently audited figures in the press release.",
+    "ripple_prime_notes_20260818": "Ripple Prime, 2026-08-18: closed a $275M private placement of senior unsecured notes; proceeds for working capital and general corporate purposes. This is actual debt capital raised by Ripple Prime, not evidence of XRP purchases.",
+    "sbi_bond_20260220": "SBI Holdings, 2026-02-20: JPY 10B three-year bond with 2.150% JPY coupon and 100% face-value redemption; qualifying purchases received an initial XRP reward equivalent to 0.2% of face value via SBI VC Trade. The bond used ibet for Fin and ODX; XRP reward is not the coupon or principal and does not mean bond proceeds bought XRP.",
+    "circle_q3_2026": "Circle Q3 2026 Form 10-Q: average USDC circulation $73.264B, period-end $73.879B; USDC on-chain transaction volume $13.9T, up 49% year over year; total revenue and reserve income $865M; distribution costs to Coinbase $331.3M in Q3 and $986.6M over nine months. Coinbase allocations depend on USDC held on its platform after issuer retention plus half of remaining ecosystem-growth amounts after approved third-party participants. This is not a simple disclosed profit split.",
+    "coinbase_q3_2026": "Coinbase Q3 2026 Form 10-Q: stablecoin revenue $306.905M in Q3 2026 versus $324.534M in Q3 2025; nine-month stablecoin revenue $904.487M versus $907.485M. Higher average USDC balances contributed +$84.6M in Q3 and +$201.6M over nine months; lower average interest rates reduced revenue by $52.8M in Q3 and $166.2M over nine months. This is Coinbase's stablecoin revenue line, not XRP revenue.",
+    "circle_reserves_2026": "Circle Q3 2026 Form 10-Q, September 30 reserve composition: Circle Reserve Fund $62.467B (approximately 84% of USDC reserves), cash $9.732B, outside U.S. Treasury securities $1.758B. Cash deposits significantly exceed FDIC insurance limits; aggregate FDIC coverage was $2.3M across nine insured institutions. The Circle Reserve Fund is not FDIC-insured or government-guaranteed.",
+    "circle_sbi_japan_2026": "Circle Q3 2026 Form 10-Q: Circle owns 50% of Circle SBI Japan K.K.; Circle and SBI each contributed Japanese yen worth approximately $1.5M; Circle consolidates the VIE; no significant operating results to date; SBI's equity interest is noncontrolling.",
+    "circle_binance_20260917": "Circle Form 8-K dated 2026-09-17: five-year USDC promotion arrangement with Binance; monthly incentive fee is a percentage of USDC held through Circle's Modular Smart Contract Wallet infrastructure, rate undisclosed. Binance purchased 1,237,011 Circle Class A shares at $80.84 for $100M; transfer restrictions apply for up to two years subject to exceptions.",
+    "sec_crypto_assets_proposed": "SEC File S7-2026-27, Regulation Crypto Assets: Proposed Rule, SEC issue date 2026-08-18, Federal Register publication 2026-08-21, comments due 2026-10-20. Proposal includes exemptions up to $5M over four years and $75M over each 12-month period, principles-based disclosures, and a conditional safe harbor. SEC page remains labelled Proposed Rule as of 2026-11-09; no final rule verified.",
+    "privy_xrpl_2026": "Privy announcement: partnership with Ripple to bring programmatic XRPL wallets and transaction signing; developers can build with XRP, RLUSD and other XRPL assets and x402 payments for agentic commerce. Future developer capability and integration roadmap; no measured production usage or transaction volume disclosed.",
+    "goldman_13f_lead": "CryptoETF.today secondary extraction of Goldman Sachs Group Inc. Q2 2026 Form 13F, SEC accession 0000886982-26-000519, filed 2026-08-14, reporting positions as of 2026-06-30: 8 affiliated managers; $967M in crypto ETFs; $86.5M across five XRP spot ETF tickers: XRP Bitwise $25.8M, XRPZ Franklin $25.4M, XRPC Canary $19.5M, TOXR 21Shares $8.2M, GXRP Grayscale $7.6M. The page labels Goldman largest holder in XRP, XRPZ, XRPC and TOXR, not GXRP. SEC InfoTable XML is linked but was not parsed in this run; values remain secondary extraction pending direct row-level verification. 13F reflects reportable long securities, not shorts, futures, retail or direct XRP token custody.",
+    "arc_mainnet": "Circle, 2026-09-16: Arc public mainnet launched as an open Layer 1 for financial markets, real-time money movement and agentic activity. Circle says it launched with more than 100 applications and more than 100 institutional/ecosystem builders. Network fees are paid in USDC; Arc uses a permissioned validator set. Circle says USDC represented 98.8% of agent-driven transaction volume in its agent stack. ARC genesis minted 10B tokens on 2026-09-14; ARC is designed for future PoS security, utility and governance, while fees remain payable in USDC. Circle says the mint is not a commitment to publicly launch ARC and the PoA-to-PoS transition is planned for 2027.",
+    "arc_validators": "Circle, 2026-08-05 founding validator announcement: Arc cohort includes BlackRock, DTCC, Galaxy, Global Payments, ICE, Mastercard, MoneyGram, SBI Group, Standard Chartered, Sumitomo Corporation and Visa, alongside Circle. Circle says more than 100 builders were already on private mainnet. Validator participation is an Arc relationship, not XRPL validation or XRP ownership.",
+    "sbi_arc": "SBI Holdings, 2026-05-12: SBI Holdings says it participated in Circle's ARC Token presale through a consolidated subsidiary. The announcement cites Circle's then-stated total presale of $222M. SBI does not disclose its own allocation or the participating subsidiary's identity. This is an ARC investment, not an XRP purchase.",
+    "circle_arc_10q": "Circle Q3 2026 Form 10-Q: during Q2 2026 Circle entered token purchase agreements with institutional investors for 807.5M ARC tokens at $0.30, aggregate gross proceeds approximately $242.2M. $181.8M recognized as revenue and the balance deferred at September 30. Circle completed ARC genesis mint of 10B tokens on September 14, 2026; a portion relating to presale was distributed or held in escrow. Presale purchasers have lock-up and repayment rights in specified circumstances, including failure to transition to PoS by May 8, 2028. Circle does not commit to a public token launch.",
+    "sbi_circle_equity": "SBI Holdings and SBI Shinsei Bank, 2025-06-09: each acquired $25M of Circle Internet Group shares in its NYSE IPO, $50M combined strategic investment. This is equity in Circle, not XRP.",
+    "sbi_startale": "SBI Holdings, 2026-03-26: SBI Group agreed through subsidiaries to invest approximately $50M in Startale Group and expected Startale to become an equity-method affiliate. Work includes Strium tokenized-asset infrastructure and JPYSC stablecoin co-development.",
+    "jpy_sc": "SBI Holdings, 2026-06-24: JPYSC was issued by SBI Shinsei Trust Bank and initially distributed only within SBI VC Trade accounts; Startale co-developed it. Public-chain circulation was deferred pending legal and tax practice clarification. It is a yen stablecoin rail, not XRP.",
+    "sbi_smbc": "SBI Holdings and SMBC Group, 2026-10-30: capital/business alliance to study stablecoin use cases including JPYSC and conduct research, use-case planning and proof-of-concept work. SMBC agreed to acquire a 5% equity stake in SBI Startale Marketing. This is not a live payment volume disclosure.",
+    "open_standard": "SBI Holdings and Startale, 2026-10-16: joined Open Standard, a consortium of more than 140 companies including Visa, Stripe, Mastercard, BlackRock and Coinbase, and are exploring interoperability experiments between JPYSC and Open USD (OUSD). This is a proposed proof of concept, not a live settlement volume.",
+    "sbi_rlusd": "SBI VC Trade and Ripple, 2026-06-24: SBI VC Trade began RLUSD handling in Japan, classifying it under Japanese law as a Type 4 electronic payment instrument. SBI VC Trade is a consolidated SBI Holdings subsidiary. This is a direct RLUSD distribution relationship, not proof that all RLUSD transactions use XRP.",
+    "circle_rate_sensitivity": "Circle Q3 2026 Form 10-Q interest-rate sensitivity: at a constant USDC circulation balance of $73.9B and constant reserve mix, a 100-basis-point increase in average reserve return rate would increase annualized reserve income by approximately $739M and distribution and transaction costs by approximately $371M; a 100-basis-point decrease would reduce them by the same approximate amounts. Circle states it cannot accurately predict the actual impact on reserve income or costs because USDC circulation and customer behavior are uncertain."
+  },
+  "market": {
+    "direct_spot": {
+      "kraken": {
+        "pair": "XRP/USD",
+        "last_usd": 1.11526,
+        "bid_usd": 1.11575,
+        "ask_usd": 1.1159,
+        "top_spread_bps": 1.3444,
+        "volume_24h_xrp": 28594850.17185153,
+        "vwap_24h_usd": 1.12872873,
+        "high_24h_usd": 1.16816,
+        "low_24h_usd": 1.09309,
+        "today_open_usd": 1.11203,
+        "provider_event_time_utc": null,
+        "freshness": "UNVERIFIABLE_EVENT_TIME",
+        "model_eligible": false
+      },
+      "okx": {
+        "pair": "XRP/USDT",
+        "last_usdt": 1.1212,
+        "bid_usdt": 1.1212,
+        "ask_usdt": 1.1213,
+        "top_spread_bps": 0.8919,
+        "volume_24h_xrp": 47733206.141056,
+        "open_24h_usdt": 1.1603,
+        "high_24h_usdt": 1.1697,
+        "low_24h_usdt": 1.0921,
+        "provider_event_time_utc": "2026-11-09T00:35:29.262Z",
+        "age_seconds_at_reference": 1682.738,
+        "freshness": "STALE_GT_300S",
+        "model_eligible": false
+      },
+      "coinpaprika": {
+        "last_usd": 1.1202039901483911,
+        "volume_24h_usd": 1075346247.4766345,
+        "market_cap_usd": 71151556549,
+        "change_24h_pct": -3.39,
+        "change_7d_pct": -10.99,
+        "change_30d_pct": -20.65,
+        "change_1y_pct": -52.99,
+        "provider_event_time_utc": "2026-11-09T00:43:13Z",
+        "age_seconds_at_reference": 1219,
+        "freshness": "STALE_GT_300S",
+        "model_eligible": false
+      }
+    },
+    "perpetual": {
+      "venue": "Binance Futures",
+      "symbol": "XRPUSDT",
+      "mark_price": 1.12076005,
+      "index_price": 1.12133457,
+      "mark_index_basis_bps": -5.1236,
+      "funding_rate_decimal": 0.00005989,
+      "funding_rate_percent_per_8h": 0.005989,
+      "provider_event_time_utc": "2026-11-09T00:36:37Z",
+      "age_seconds_at_reference": 1615,
+      "freshness": "STALE_GT_300S",
+      "open_interest": "UNAVAILABLE",
+      "liquidations": "UNAVAILABLE",
+      "model_eligible": false
+    },
+    "cross_venue": {
+      "raw_last_price_gap_pct_usdt_vs_usd": 0.5327,
+      "comparison_validity": "INVALID_FOR_ARBITRAGE_OR_DIRECTIONAL_FEATURE",
+      "reasons": [
+        "USD and USDT are not normalized",
+        "venue timestamps differ materially",
+        "Kraken event timestamp absent",
+        "OKX quote is stale",
+        "CoinPaprika is an aggregator"
+      ],
+      "synchronized_depth_available": false,
+      "executable_slippage_available": false
+    },
+    "admission": {
+      "model_eligible": false,
+      "reason": "All direct snapshots are either stale beyond 300 seconds or lack provider event time. No synchronized multi-venue depth or executable slippage was captured."
+    }
+  },
+  "derivatives": {
+    "liqwall": {
+      "as_of_utc": "2026-11-09T01:02:00Z",
+      "price_usd": 1.12,
+      "open_interest_usd": 1270000000,
+      "open_interest_change_24h_pct": -3.6,
+      "liquidations_24h_usd": 30100000,
+      "long_liquidations_usd": 29300000,
+      "short_liquidations_usd": 827000,
+      "long_liquidation_share_pct": 97.3422,
+      "average_funding_percent_per_8h": 0.0026,
+      "binance_funding_percent_per_8h": 0.0057,
+      "binance_accounts_long_pct": 73.7,
+      "venue_coverage": [
+        "Bybit",
+        "Hyperliquid",
+        "Binance",
+        "Gate",
+        "OKX",
+        "Kraken",
+        "Lighter",
+        "Aster",
+        "Bitfinex"
+      ],
+      "source_type": "secondary_aggregator",
+      "model_eligible": false
+    },
+    "tradradar": {
+      "updated_at_utc": "2026-11-09T00:05:00Z",
+      "reported_delay_seconds": 900,
+      "effective_data_cutoff_utc": "2026-11-08T23:50:00Z",
+      "mark_price_usd": 1.1106,
+      "change_24h_pct": -4.46,
+      "open_interest_usd": 1720000000,
+      "open_interest_change_24h_pct": -8.93,
+      "liquidations_24h_min_usd": 30440000,
+      "long_liquidations_usd": 30020000,
+      "short_liquidations_usd": 416650,
+      "long_liquidation_share_pct": 98.6202,
+      "oi_weighted_funding_percent_per_8h": -0.0039,
+      "long_short_account_ratio": 4,
+      "accounts_long_pct": 80,
+      "venue_coverage_oi": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "Bitget",
+        "MEXC",
+        "Hyperliquid",
+        "OKX"
+      ],
+      "venue_coverage_liquidations": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "Bitget",
+        "Hyperliquid"
+      ],
+      "funding_by_venue_percent_per_8h": {
+        "Binance": 0.0068,
+        "Bybit": -0.0142,
+        "Gate": -0.0212,
+        "Bitget": -0.0014,
+        "MEXC": 0.0068,
+        "Hyperliquid": -0.0066,
+        "OKX": 0.0025
+      },
+      "source_type": "secondary_aggregator",
+      "model_eligible": false
+    },
+    "reconciliation": {
+      "open_interest_difference_usd": 450000000,
+      "open_interest_difference_pct_of_liqwall": 35.433,
+      "funding_signs_disagree": true,
+      "funding_method_difference": "Liqwall publishes an across-exchange average; TradRadar publishes OI-weighted funding.",
+      "liquidations_converge_around_usd_millions": [
+        30.1,
+        30.44
+      ],
+      "long_liquidation_shares_pct": [
+        97.3422,
+        98.631
+      ],
+      "shared_underlying_venues": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "OKX",
+        "Hyperliquid"
+      ],
+      "independence": "Publishers are distinct, but venue feeds overlap. This is not two fully independent observations.",
+      "do_not_average": true,
+      "model_eligible": false
+    }
+  },
+  "cftc_futures_only": {
+    "report_type": "Traders in Financial Futures, futures-only",
+    "data_as_of": "2026-11-03",
+    "updated_date": "2026-11-06",
+    "products": [
+      {
+        "name": "CME XRP",
+        "cftc_code": "176740",
+        "contract_multiplier_xrp": 50000,
+        "open_interest_contracts": 7216,
+        "weekly_change_contracts": -845,
+        "previous_open_interest_contracts": 8061,
+        "weekly_change_pct": -10.47,
+        "traders": 29,
+        "categories": {
+          "dealers": {
+            "long": 4228,
+            "short": 4431
+          },
+          "asset_managers": {
+            "long": 868,
+            "short": 802
+          },
+          "leveraged_funds": {
+            "long": 1976,
+            "short": 1696
+          },
+          "nonreportables": {
+            "long": 84,
+            "short": 227
+          }
+        }
+      },
+      {
+        "name": "Coinbase Nano XRP",
+        "cftc_code": "176LM1",
+        "contract_multiplier_xrp": 500,
+        "open_interest_contracts": 32505,
+        "weekly_change_contracts": -32864,
+        "previous_open_interest_contracts": 65369,
+        "weekly_change_pct": -50.27,
+        "traders": 37,
+        "categories": {
+          "leveraged_funds": {
+            "long": 29317,
+            "short": 31625,
+            "spreading": 120
+          },
+          "other_reportables": {
+            "long": 2693,
+            "short": 601
+          },
+          "nonreportables": {
+            "long": 375,
+            "short": 159
+          }
+        }
+      },
+      {
+        "name": "Coinbase Nano XRP Perp Style",
+        "cftc_code": "176LM3",
+        "contract_multiplier_xrp": 500,
+        "open_interest_contracts": 38392,
+        "weekly_change_contracts": -465,
+        "previous_open_interest_contracts": 38857,
+        "weekly_change_pct": -1.2,
+        "traders": 284,
+        "categories": {
+          "leveraged_funds": {
+            "long": 1780,
+            "short": 29554
+          },
+          "other_reportables": {
+            "long": 28858,
+            "short": 2853
+          },
+          "nonreportables": {
+            "long": 7754,
+            "short": 5985
+          }
+        }
+      }
+    ],
+    "combined_coinbase_nano_products": {
+      "previous_open_interest_contracts": 104226,
+      "current_open_interest_contracts": 70897,
+      "decline_contracts": 33329,
+      "decline_pct": 31.97,
+      "interpretation": "Different contract products; possible expiry, roll, closure or reclassification. No evidence proves migration between products."
+    },
+    "limitations": [
+      "Weekly Tuesday positions, published Friday",
+      "Futures-only report, not options or global derivatives",
+      "Contract units are not XRP custody, cash capital or spot purchases",
+      "Do not aggregate product contracts into a single capital figure"
+    ],
+    "model_eligible": false,
+    "next_ingestion_action": "Add a weekly CFTC TFF parser with a conservative publication-availability timestamp; this source is not in the current 35-endpoint/33-scheduled-source registry."
+  },
+  "etf_flow_reconciliation": {
+    "xrp_insights": {
+      "data_as_of": "2026-11-06",
+      "generated_at_utc": "2026-11-08T23:12:36.536Z",
+      "universe": "Six US spot XRP ETFs plus BITW; seven tickers",
+      "holdings_total_xrp": 1200000000,
+      "aum_usd": 1430000000,
+      "nov6_holdings_delta_xrp": -663043,
+      "method": "Change in issuer-reported XRP holdings, not issuer flow reports or direct share creations/redemptions.",
+      "known_non_creation_changes": [
+        "BITW index rebalancing",
+        "fees accrued and paid in XRP"
+      ],
+      "gaps": [
+        "GXRP flow excluded due 2026-09-02 to 2026-09-28 issuer-page scrape gap, while holdings remain in totals"
+      ],
+      "reconstructed_periods": [
+        "2026-03-23 to 2026-03-27",
+        "2026-03-31 to 2026-04-29",
+        "2026-05-12"
+      ],
+      "model_eligible": false
+    },
+    "alpha_finance": {
+      "universe": "Five funds: XRP, XRPZ, XRPC, GXRP, TOXR",
+      "nov6_net_flow_usd": 0,
+      "last_7_sessions_usd": 8400000,
+      "last_30_sessions_usd": 45900000,
+      "cumulative_net_inflow_usd": 1730000000,
+      "holdings_and_aum_published": false,
+      "source_methodology": "Flow series described as net creation/redemption; underlying source not disclosed on page.",
+      "model_eligible": false
+    },
+    "cryptoetf_today": {
+      "universe": "Five funds: XRP, XRPZ, XRPC, GXRP, TOXR",
+      "nov6_net_flow_usd": 0,
+      "funds_reporting": 5,
+      "funds_total": 5,
+      "cumulative_net_inflow_usd": 1810000000,
+      "last_30_trading_days_usd": 139700000,
+      "last_10_days_usd": 14400000,
+      "published_at_utc": "2026-11-07T05:50:00Z",
+      "source_methodology": "T+1 dashboard says no creations/redemptions on Nov6; underlying issuer data pipeline not disclosed in surfaced page.",
+      "model_eligible": false
+    },
+    "disagreement": {
+      "cumulative_flow_difference_usd": 80000000,
+      "thirty_session_difference_usd": 93800000,
+      "daily_nov6_agreement": "Alpha Finance and CryptoETF.today both show $0 net creations/redemptions across five funds.",
+      "holdings_delta_not_equivalent": "XRP Insights' -663,043 XRP is holdings change and includes non-creation causes; it is not directly comparable to $0 primary-market share flow.",
+      "do_not_average": true
+    },
+    "institutional_13f_lead": {
+      "provider": "CryptoETF.today secondary extraction of SEC 13F",
+      "filer": "Goldman Sachs Group Inc.",
+      "filing_date": "2026-08-14",
+      "quarter_end": "2026-06-30",
+      "sec_accession": "0000886982-26-000519",
+      "affiliated_managers": 8,
+      "reported_xrp_etf_value_usd": 86500000,
+      "positions_usd": {
+        "XRP": 25800000,
+        "XRPZ": 25400000,
+        "XRPC": 19500000,
+        "TOXR": 8200000,
+        "GXRP": 7600000
+      },
+      "limitation": "SEC InfoTable XML linked but not parsed in this run. Secondary extraction only; 13F is long reportable securities, not shorts, futures, retail or direct XRP token custody.",
+      "model_eligible": false
+    }
+  },
+  "regulatory": {
+    "sec_interpretation": {
+      "release_numbers": [
+        "33-11412",
+        "34-105020"
+      ],
+      "file": "S7-2026-09",
+      "effective_date": "2026-03-23",
+      "xrp_named_as_digital_commodity": true,
+      "caveat": "A digital commodity is not itself a security, but a non-security crypto asset can still be offered or sold subject to an investment contract. Howey remains; this is not a blanket ruling for every XRP-related transaction."
+    },
+    "cftc_anprm": {
+      "federal_register": "91 FR 64811",
+      "document": "2026-20888",
+      "rin": "3038-AF80",
+      "published_date": "2026-10-13",
+      "comment_deadline": "2026-12-14",
+      "status": "ADVANCED NOTICE OF PROPOSED RULEMAKING; NOT FINAL OR BINDING",
+      "issue": "Retail leveraged, margined or financed crypto transactions under CEA section 2(c)(2)(D).",
+      "preliminary_actual_delivery_view": "May require meaningful possession/control, potentially including wallet credentials/private keys; covered offers may include offers not entered into, and open fully-paid transactions may remain covered until actual delivery.",
+      "potential_impact": "Could change custodial, financed and retail leveraged crypto product design; not an XRP classification change."
+    },
+    "sec_regulation_crypto_assets": {
+      "file": "S7-2026-27",
+      "status": "PROPOSED RULE",
+      "comments_due": "2026-10-20",
+      "as_of_date": "2026-11-09",
+      "final_rule_verified": false,
+      "proposed_exemptions": [
+        "up to $5M over four years",
+        "up to $75M over a 12-month period"
+      ],
+      "caveat": "Proposal status only; do not describe as adopted."
+    }
+  },
+  "institutional_relationships": {
+    "sbi_multi_rail": {
+      "ripple": {
+        "historical_ripple_equity_snapshot": "approximately 9% as shown in SBI's June 2025 presentation; not a current verified ownership percentage",
+        "sbi_ripple_asia_voting_rights": "60% as of 2026-03-31",
+        "rlusd_distribution": "SBI VC Trade launched Japanese RLUSD handling 2026-06-24",
+        "direct_xrp_use": "SBI Remit XRP-bridged corridors previously announced; transaction volumes and XRP inventory undisclosed"
+      },
+      "circle": {
+        "ipo_equity_investment_usd": 50000000,
+        "split": {
+          "sbi_holdings": 25000000,
+          "sbi_shinsei_bank": 25000000
+        },
+        "circle_sbi_japan_ownership": "Circle 50%; SBI noncontrolling; approximately $1.5M contributed by each; no significant operating results through 2026-09-30",
+        "arc_validator": "SBI Group named as founding validator; SBI Holdings chairman publicly described SBI as contributing to Arc operation and governance",
+        "arc_presale": "SBI Holdings says a consolidated subsidiary participated; own allocation undisclosed"
+      },
+      "arc_presale_disagreement": {
+        "sbi_release_total_usd": 222000000,
+        "circle_q3_10q_gross_proceeds_usd": 242200000,
+        "difference_usd": 20200000,
+        "interpretation": "Unreconciled difference between an earlier SBI release citing Circle's presale total and Circle's later Q3 SEC filing. Do not average or infer SBI's allocation."
+      },
+      "startale": {
+        "sbi_investment_usd": 50000000,
+        "announced_date": "2026-03-26",
+        "status": "SBI expected Startale to become equity-method affiliate; Strium and JPYSC co-development"
+      },
+      "jpy_sc": {
+        "issuer": "SBI Shinsei Trust Bank",
+        "distributor": "SBI VC Trade",
+        "co_developer": "Startale",
+        "initial_distribution": "SBI VC Trade accounts only from 2026-06-24; public-chain circulation deferred pending legal/tax practice"
+      },
+      "smbc": {
+        "agreement_date": "2026-10-30",
+        "investment": "SMBC agreed to take 5% of SBI Startale Marketing",
+        "scope": "Study stablecoin/JPYSC use cases and proofs of concept; no live payment volumes disclosed"
+      },
+      "open_standard": {
+        "date": "2026-10-16",
+        "membership": "SBI and Startale joined Open Standard with 140+ companies including Visa, Stripe, Mastercard, BlackRock and Coinbase; exploring JPYSC/OUSD interoperability POC"
+      }
+    },
+    "circle_arc": {
+      "mainnet_launch": "2026-09-16",
+      "network_type": "Open L1 with permissioned validator set",
+      "validators": [
+        "Circle",
+        "BlackRock",
+        "DTCC",
+        "Galaxy",
+        "Global Payments",
+        "ICE",
+        "Mastercard",
+        "MoneyGram",
+        "SBI Group",
+        "Standard Chartered",
+        "Sumitomo Corporation",
+        "Visa"
+      ],
+      "reported_builders_and_apps": "100+ institutional/ecosystem builders and 100+ applications at launch, issuer-reported",
+      "gas_asset": "USDC",
+      "arc_token": "10B genesis mint 2026-09-14; intended future PoS security/utility/governance; no commitment to public token launch; transition to PoS planned for 2027",
+      "strategic_implication": "Institutional stablecoin-native alternative/adjacent rail to XRPL; fees payable in USDC reduce the need for a volatile native gas asset. This is a competitor hypothesis, not proof of XRP displacement."
+    },
+    "circle_coinbase": {
+      "coinbase_q3_2026_stablecoin_revenue_usd": 306905000,
+      "circle_q3_2026_distribution_cost_to_coinbase_usd": 331300000,
+      "circle_9m_distribution_cost_to_coinbase_usd": 986600000,
+      "relationship": "Circle's Q3 filing describes a formula tied to USDC held on Coinbase and broader ecosystem growth; Coinbase's stablecoin revenue and Circle's distribution cost are different accounting lines, not a simple profit split."
+    },
+    "circle_reserves": {
+      "usdc_average_circulation_usd": 73264000000,
+      "usdc_period_end_usd": 73879000000,
+      "onchain_transaction_volume_q3_usd": 13900000000000,
+      "reserve_assets_usd": {
+        "circle_reserve_fund": 62467000000,
+        "cash": 9732000000,
+        "us_treasuries_outside_fund": 1758000000
+      },
+      "reserve_fund_share_pct": 84,
+      "fdic_note": "Cash balances exceed per-bank FDIC limits; aggregate FDIC coverage was $2.3M across nine institutions. Circle Reserve Fund is not FDIC-insured or government-guaranteed.",
+      "measurement_note": "Reserve asset amounts and USDC circulation are not identical definitions; filing notes timing, access-denied tokens, EURC and corporate-held USDC differences. Do not infer an overcollateralization ratio by simple division.",
+      "rate_sensitivity": "At constant $73.9B USDC circulation and reserve mix, +/-100 bps in reserve return rate changes annualized reserve income by approximately +/-$739M and distribution/transaction costs by +/-$371M. Circle says actual impact cannot be predicted because USDC circulation/customer behavior is uncertain."
+    },
+    "ripple_partners": {
+      "bny": "Supports XRP and RLUSD custody; primary RLUSD reserve custodian; direct RLUSD mint/redeem through BNY subject to approvals; tokenized trade finance with C2FO exploratory. No custody balances disclosed.",
+      "coinbase": "RLUSD live on Coinbase Prime, Exchange and retail across XRPL/Base/Ethereum; Coinbase Global Exchange availability including collateral was to follow. This is RLUSD distribution, not XRP collateral.",
+      "robinhood": "RLUSD live on Robinhood Chain and Bitstamp; RLUSD on XRPL for institutional settlement; Ripple Treasury integration; Ripple Prime financing/margin for Bitstamp across roughly 20 digital assets. No XRP purchase disclosed.",
+      "drivewealth": "Integrating RLUSD settlement on XRPL for Europe, with US expansion planned; Ripple Payments, custody and Prime financing exploration. Integration/volumes not yet disclosed as live.",
+      "ripple_prime": "RWA perps reference 100+ markets through Trade.xyz on Hyperliquid; RLUSD can be collateral; not XRP collateral.",
+      "privy": "Privy wallet integration enables developers to create XRPL wallets and build with XRP/RLUSD/other assets and x402 agentic payments; roadmap capabilities, no measured production usage."
+    }
+  },
+  "capital_claim_controls": [
+    {
+      "claim": "SBI JPY 10B bond",
+      "classification": "debt capital raised by SBI Holdings; 2.15% JPY coupon; initial XRP incentive equivalent to 0.2% for qualifying investors; not XRP proceeds or coupon"
+    },
+    {
+      "claim": "Ripple Prime $275M senior notes",
+      "classification": "actual unsecured debt financing for working capital/general purposes; not XRP purchases"
+    },
+    {
+      "claim": "SBI $50M Circle IPO investment",
+      "classification": "equity in Circle, not XRP"
+    },
+    {
+      "claim": "SBI $50M Startale investment",
+      "classification": "equity investment in Startale, not XRP"
+    },
+    {
+      "claim": "SBI participation in ARC presale",
+      "classification": "actual ARC investment via consolidated subsidiary; amount undisclosed; not XRP"
+    },
+    {
+      "claim": "Circle ARC presale $242.2M",
+      "classification": "gross ARC token presale proceeds; $181.8M recognized as revenue and balance deferred; not XRP"
+    },
+    {
+      "claim": "Binance $100M Circle equity purchase",
+      "classification": "equity capital into Circle; not XRP"
+    },
+    {
+      "claim": "Circle USDC reserves $73.957B",
+      "classification": "stablecoin backing assets, not XRP capital deployment"
+    },
+    {
+      "claim": "Circle $13.9T Q3 on-chain volume",
+      "classification": "gross transaction throughput, not unique payment principal or capital raised"
+    },
+    {
+      "claim": "Ripple $900M annualized product revenue run rate and $16T transactions enabled",
+      "classification": "issuer-reported revenue/throughput metrics, not XRP-specific capital flows"
+    },
+    {
+      "claim": "ETF cumulative inflow dashboards",
+      "classification": "secondary estimates; definitions and fund data differ; not equivalent to XRP purchases"
+    },
+    {
+      "claim": "CFTC/crypto derivatives open interest",
+      "classification": "contract notional/positions, not spot XRP custody or capital deployed"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1_leverage_deleveraging",
+      "claim": "XRP derivatives experienced a long-heavy leverage flush.",
+      "support": [
+        "Liqwall and TradRadar both show roughly $30M liquidations with more than 97% long liquidations",
+        "Both report falling OI",
+        "Spot aggregator reports -4.46% 24h and -10.99% 7d"
+      ],
+      "counterevidence": [
+        "Funding sign differs across aggregators",
+        "OI totals differ by $450M",
+        "Underlying venue feeds overlap",
+        "Spot API snapshots are stale"
+      ],
+      "status": "plausible_research_hypothesis_not_forecast"
+    },
+    {
+      "id": "H2_post_flush_stabilization",
+      "claim": "Long liquidations and falling OI may reduce forced-seller overhang and precede stabilization.",
+      "support": [
+        "Large long liquidation share",
+        "Lower OI can reduce leverage overhang"
+      ],
+      "counterevidence": [
+        "Price trend remains weak",
+        "73.7% Binance accounts long",
+        "No synchronized spot depth or order-flow confirmation"
+      ],
+      "status": "plausible_counter_hypothesis_not_forecast"
+    },
+    {
+      "id": "H3_stablecoin_substitution",
+      "claim": "SBI/Circle/Arc/JPYSC/RLUSD rails may expand XRPL-adjacent stablecoin settlement without proportional XRP bridge-asset demand.",
+      "support": [
+        "Arc fees are USDC",
+        "RLUSD and JPYSC are distinct settlement assets",
+        "SBI is simultaneously aligned with Ripple and Circle/Startale"
+      ],
+      "counterevidence": [
+        "SBI Remit XRP-bridged corridors and XRP custody/wallet integrations provide direct XRP use cases",
+        "Actual corridor/settlement volumes undisclosed"
+      ],
+      "status": "strategic_hypothesis_not_forecast"
+    },
+    {
+      "id": "H4_regulatory_clarity_with_product_constraints",
+      "claim": "SEC digital-commodity interpretation improves asset-level clarity while CFTC actual-delivery rulemaking may constrain some retail leveraged/custodial structures.",
+      "support": [
+        "SEC names XRP as digital commodity",
+        "CFTC ANPRM asks about possession/control and retail leveraged transactions"
+      ],
+      "counterevidence": [
+        "CFTC ANPRM is not final",
+        "Investment-contract analysis remains transaction-specific"
+      ],
+      "status": "regulatory_scenario_not_forecast"
+    }
+  ],
+  "coverage_gaps": [
+    "No synchronized raw order-book depth or executable slippage across venues.",
+    "No fresh exchange-flow series with independent address/entity attribution.",
+    "No CFTC weekly TFF collector in the 35-endpoint/33-scheduled-source registry.",
+    "No primary issuer creation/redemption feed admitted to the point-in-time store.",
+    "Goldman Q2 2026 13F values remain secondary extraction until SEC InfoTable rows are parsed.",
+    "No verified first-party YouTube channel ownership for Kamilah Stevenson; no personal video inventory admitted.",
+    "No new verified geopolitical event feature in this run."
+  ],
+  "model_admission": {
+    "admitted_sources": [],
+    "all_new_observations_model_eligible": false,
+    "reason": "Stale/un-timestamped direct market snapshots, secondary aggregators with overlapping venue feeds, ETF methodology disagreements, and unintegrated regulatory/issuer sources. No directional feature admission."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability": null,
+    "target": null,
+    "horizon": null,
+    "data_cutoff_utc": null,
+    "reason": "No leakage-safe out-of-sample evidence demonstrating predictive superiority over baselines."
+  },
+  "related_existing_research": {
+    "workstream": "Evernorth / actual-capital / SBI ownership / exact-phrase research",
+    "owner_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "status": "EXTENSIVE_EXISTING_PRIMARY_SOURCE_RECONCILIATION",
+    "do_not_duplicate": true,
+    "latest_artifacts": [
+      "research/xrp_intelligence/20261108T150549Z-xrp-historical-daily-open-and-evernorth-debt-correction.json",
+      "research/xrp_intelligence/20261108T143010Z-evernorth-pathfinder-facility-repayment-hash-correction.json",
+      "research/xrp_intelligence/20261108T142607Z-evernorth-pathfinder-facility-repayment-reconciliation.json",
+      "research/xrp_intelligence/20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json",
+      "research/xrp_intelligence/20261108T050336Z-evernorth-sbi-class-a-threshold-correction.json",
+      "research/xrp_intelligence/20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation.json",
+      "research/xrp_intelligence/20261107T222415Z-evernorth-actual-capital-vs-capacity-sec-reconciliation.json",
+      "research/xrp_intelligence/20261107T231833Z-evernorth-cantor-eloc-registration-fee-and-actual-capital-status.json",
+      "research/xrp_intelligence/20261106T154537Z-evernorth-actual-capital-eloc-warrant-reconciliation.json"
+    ],
+    "primary_filing_reconciliation": {
+      "actual_cash_advance_received_usd": 214049995,
+      "cash_used_to_purchase_xrp_usd": 214000000,
+      "xrp_purchased_with_advance_cash": 84365876,
+      "residual_cash_used_for_additional_xrp_usd": 49995,
+      "additional_xrp_quantity": "not disclosed in the cited reconciliation",
+      "advance_funding_xrp_contribution": 600000,
+      "delayed_funding_cash_received_usd": 10500000,
+      "delayed_funding_xrp_contribution": 200000,
+      "in_kind_xrp_contributions_total": 388910554,
+      "in_kind_sources": {
+        "ripple_direct": 126791458,
+        "arrington_xrp_capital_fund": 211319096,
+        "larsen_lam_childrens_remainder_trust": 50000000,
+        "advance_funding": 600000,
+        "delayed_funding": 200000
+      },
+      "xrp_holdings_as_of_2026_10_09_approx": 473000000,
+      "closing_gross_cash_proceeds_usd": 272600000,
+      "closing_gross_cash_components_usd": {
+        "private_placement": 224600000,
+        "spac_trust": 48000000
+      },
+      "pik_notes_face_usd": 30000000,
+      "pik_notes_net_cash_usd": 29000000,
+      "pik_note_purchaser": "NH Investment & Securities as trustee of Kyobo AIM trust",
+      "ripple_company_facility": {
+        "limit_usd": 10000000,
+        "drawn_as_of_2026_10_07_usd": 9700000,
+        "repayment_status": "not independently verified"
+      },
+      "separate_evernorth_facility": {
+        "limit_usd": 1000000,
+        "drawn_as_of_2026_06_30_usd": 0,
+        "lender": "Ripple",
+        "later_draw_status": "not disclosed"
+      },
+      "cantor_eloc": {
+        "maximum_shares": 5218935,
+        "price_formula": "97% of applicable VWAP",
+        "status": "optional; no actual drawdown/settlement verified through 2026-11-07",
+        "commitment_fee_usd": 521893.5,
+        "fee_payment_status": "not independently verified",
+        "prospectus_arithmetic_discrepancy_usd": 2330000
+      },
+      "public_warrants": {
+        "shares": 11499992,
+        "exercise_price_usd": 11.5,
+        "maximum_gross_cash_proceeds_usd": 132249908,
+        "status": "potential only; no exercise proceeds verified"
+      },
+      "sbi_ownership": {
+        "class_a_shares": 9431914,
+        "class_c_shares": 2359038,
+        "common_stock_percentage": 21.4,
+        "voting_power_percentage": 39.9,
+        "class_c_voting_status": "non-voting",
+        "threshold_correction": "39.9% is a Class A ownership threshold, not a voting-power cap"
+      },
+      "custodian": "BitGo Trust Company; wallet addresses not publicly disclosed"
+    },
+    "exact_phrase_resolution": {
+      "actual_capital": "Exact phrase found in a user-generated KuCoin Insights post; not an issuer or SEC accounting term.",
+      "ask_coin": "CoinMarketCap Ask Coin appears as an inactive/untracked exchange listing; Permission Coin ASK is a separate token; no XRP relationship established.",
+      "sbic_chatgpt": "Tokyo SBIC East hosted/co-hosted a 2025-02-26 generative-AI/ChatGPT seminar with Microsoft Japan; no OpenAI partnership established.",
+      "kamilah_stevenson": "Identity remains unresolved at first-party YouTube channel level; no personal video inventory admitted."
+    },
+    "latest_debt_correction": "The 2026-11-08 15:05Z correction attributes the separate $1M Evernorth Facility to Ripple; NH Investment & Securities/Kyobo is the purchaser of the distinct $30M PIK note. Do not merge these instruments."
+  }
+}

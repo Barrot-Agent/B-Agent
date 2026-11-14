@@ -1,0 +1,133 @@
+{
+  "artifact_type": "xrp_corporate_strategy_and_stablecoin_economics",
+  "schema_version": "1.0.0",
+  "run": "Run114B",
+  "captured_at_utc": "2026-11-14T03:20:00Z",
+  "period": "Q3 2026; filings published November 2026",
+  "circle": {
+    "sec_form_10q": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+    "usdc_circulation_end_usd": 73879000000,
+    "usdc_circulation_average_usd": 73264000000,
+    "reserve_return_rate_percent": 3.5,
+    "prior_year_reserve_return_rate_percent": 4.2,
+    "reserve_income_usd": 657624000,
+    "other_revenue_usd": 207264000,
+    "arc_presale_revenue_recognized_usd": 181800000,
+    "total_revenue_and_reserve_income_usd": 864888000,
+    "distribution_and_transaction_costs_usd": 409169000,
+    "other_costs_usd": 2465000,
+    "total_distribution_transaction_other_costs_usd": 411634000,
+    "coinbase_distribution_costs_q3_usd": 331300000,
+    "coinbase_distribution_costs_9m_usd": 986600000,
+    "coinbase_share_of_distribution_transaction_costs_percent": 80.96,
+    "revenue_less_distribution_costs_usd": 453000000,
+    "rldc_margin_percent": 52,
+    "net_income_usd": 226012000,
+    "adjusted_ebitda_usd": 317000000,
+    "usdc_on_platform_end_usd": 13868000000,
+    "usdc_on_platform_weighted_average_percent": 18.1,
+    "usdc_minted_q3_usd": 104304000000,
+    "usdc_redeemed_q3_usd": 103694000000,
+    "net_minting_q3_usd": 610000000,
+    "stablecoin_market_share_percent": 27,
+    "meaningful_wallets_millions": 7.35,
+    "meaningful_wallet_definition": "on-chain wallets holding more than $10; not unique end users",
+    "circle_national_trust_opened": "2026-07-24",
+    "trust_initial_scope": "fiduciary digital-asset custody to Circle and affiliates",
+    "tazapay_acquisition_consideration_usd": 400000000,
+    "tazapay_expected_close": "2027 subject to regulatory approval",
+    "binance_private_placement_usd": 100000000,
+    "arc_is_xrpl": false
+  },
+  "coinbase": {
+    "sec_10q_mirror": "https://www.stocktitan.net/sec-filings/COIN/10-q-coinbase-global-inc-quarterly-earnings-report-344f1f5ae109.html",
+    "q3_stablecoin_revenue_usd": 306905000,
+    "q3_total_net_revenue_usd": 1215582000,
+    "q3_stablecoin_revenue_yoy_change_percent": -5,
+    "average_usdc_held_in_products_usd": 22000000000,
+    "average_usdc_market_share_percent": 30,
+    "company_reported_share_of_usdc_economics_percent": 50,
+    "stablecoin_revenue_balance_effect_usd": 84600000,
+    "stablecoin_revenue_rate_effect_usd": -52800000,
+    "gaap_net_income_usd": 719000000,
+    "adjusted_net_income_usd": 78000000,
+    "crypto_investment_gains_usd": 715000000,
+    "national_trust_effective": "2026-11-06",
+    "note": "Circle distribution expenses and Coinbase stablecoin revenue are different accounting measures, not direct mirror entries"
+  },
+  "ripple": {
+    "q3_report": "https://ripple.com/insights/q3-2026-xrp-markets-report/",
+    "company_reported_annualized_product_revenue_run_rate_usd": 900000000,
+    "company_reported_2025_product_transactions_enabled_usd": 16000000000000,
+    "company_reported_licenses": 85,
+    "company_reported_institutional_customers": 1700,
+    "occ_final_approval": "2026-10-26",
+    "approved_trust_activities": [
+      "manage segregated RLUSD reserves",
+      "act as collateral trustee for RLUSD reserves",
+      "fiduciary digital-asset custody"
+    ],
+    "rlusd_issuer_remains": "Standard Custody & Trust Company",
+    "primary_reserve_custodian": "BNY",
+    "note": "company-wide product volumes are not XRP-specific ODL or spot settlement"
+  },
+  "ecosystem_edges": {
+    "coinbase_circle": "Circle Q3 SEC filing documents $331.3M Coinbase distribution costs and the formula tied to USDC platform balances and broader ecosystem growth",
+    "coinbase_ripple": "Coinbase lists RLUSD across Prime/Exchange/Retail on XRPL, Base and Ethereum; Global Exchange collateral support was forthcoming",
+    "pnc_coinbase_circle": "PNC pilot uses Circle USDC, not XRP",
+    "sbi_vc_trade_rlusd": "Ethereum-only deposit/withdrawal support in the described service",
+    "sbi_crypto_card": "retail rewards can convert points to XRP/BTC/ETH; aggregate XRP volume undisclosed",
+    "sbi_ripple_asia": "60/40 software JV, no direct XRP handling; SBI Remit route is separate"
+  },
+  "interpretation": {
+    "stablecoin_growth_is_not_xrp_demand": true,
+    "arc_is_not_xrpl": true,
+    "company_reported_metrics_are_not_audited_xrp_flows": true,
+    "rate_sensitivity": "Circle states a 61bp yield decline reduced Q3 reserve income by about $106.5M, partly offset by an 8% increase in average USDC adding about $52.8M",
+    "no_directional_forecast_from_these_disclosures": true
+  },
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_type": "SEC primary filing",
+      "source_independence": "issuer filing",
+      "data_period": "Q3 2026"
+    },
+    {
+      "url": "https://www.stocktitan.net/sec-filings/COIN/10-q-coinbase-global-inc-quarterly-earnings-report-344f1f5ae109.html",
+      "source_type": "Coinbase SEC filing mirror",
+      "source_independence": "issuer filing mirror",
+      "data_period": "Q3 2026"
+    },
+    {
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Third-Quarter-2026-Results/default.aspx",
+      "source_type": "Coinbase investor release",
+      "source_independence": "issuer disclosure",
+      "data_period": "Q3 2026"
+    },
+    {
+      "url": "https://ripple.com/insights/q3-2026-xrp-markets-report/",
+      "source_type": "Ripple corporate report",
+      "source_independence": "issuer disclosure",
+      "data_period": "Q3 2026"
+    },
+    {
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "source_type": "Ripple announcement",
+      "source_independence": "issuer disclosure; OCC approval described by issuer",
+      "event_date": "2026-10-26"
+    },
+    {
+      "url": "https://www.sbivc.co.jp/newsview/2nv9j7ra4j",
+      "source_type": "SBI VC Trade announcement",
+      "source_independence": "issuer disclosure",
+      "event_date": "2026-06-24"
+    },
+    {
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16280.html",
+      "source_type": "SBI Group announcement",
+      "source_independence": "issuer disclosure",
+      "event_date": "2026-05-01"
+    }
+  ]
+}

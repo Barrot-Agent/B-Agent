@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-spot-cross-venue-timestamp-reconciliation-20261107T070318Z",
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "reference_at_utc": "2026-11-07T07:03:18Z",
+  "retrieval_time_precision": "Exact HTTP retrieval timestamps were not exposed. This is the run reference time; retrieval occurred after it.",
+  "scope": "Two direct exchange spot ticker snapshots plus secondary ETF-flow, exchange-flow and derivatives context. No full depth ladder was captured.",
+  "sources": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "source_group": "exchange_venue_kraken",
+      "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "instrument": "XRP/USD",
+      "quote_currency": "USD",
+      "event_timestamp_utc": null,
+      "raw_response_scope": "Exact JSON text returned by the public retrieval layer; not original HTTP wire bytes or headers.",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16618000\",\"867\",\"867.000\"],\"b\":[\"1.16617000\",\"1559\",\"1559.000\"],\"c\":[\"1.16618000\",\"50.00000000\"],\"v\":[\"6275710.93208785\",\"29591872.13012410\"],\"p\":[\"1.16147696\",\"1.17916231\"],\"t\":[7451,33459],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.20135000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_sha256": "3eca3f8a8f94a54b38655c8e182e8235da47484e5b2b1cb21fe5ef8a7afb27bc",
+      "fields": {
+        "ask": 1.16618,
+        "bid": 1.16617,
+        "last": 1.16618,
+        "volume_today_xrp": 6275710.93208785,
+        "volume_24h_xrp": 29591872.1301241,
+        "vwap_today_usd": 1.16147696,
+        "vwap_24h_usd": 1.17916231,
+        "trades_today": 7451,
+        "trades_24h": 33459,
+        "low_24h_usd": 1.15046,
+        "high_24h_usd": 1.20135,
+        "today_open_usd": 1.17749
+      },
+      "live_feature_eligible": false,
+      "eligibility_reason": "Provider timestamp is unavailable; the 300-second freshness rule cannot be verified."
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker",
+      "publisher": "OKX",
+      "source_group": "exchange_venue_okx",
+      "endpoint": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "instrument": "XRP-USDT",
+      "quote_currency": "USDT",
+      "event_timestamp_utc": "2026-11-07T06:57:23.768Z",
+      "timestamp_semantics": "OKX ts is the ticker snapshot timestamp, not the last-trade event time.",
+      "raw_response_scope": "Exact JSON text returned by the public retrieval layer; not original HTTP wire bytes or headers.",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.169\",\"lastSz\":\"0.221\",\"askPx\":\"1.1692\",\"askSz\":\"1388\",\"bidPx\":\"1.1691\",\"bidSz\":\"13396.900602\",\"open24h\":\"1.1923\",\"high24h\":\"1.2031\",\"low24h\":\"1.1518\",\"volCcy24h\":\"65679218.7955365871\",\"vol24h\":\"55622911.361201\",\"ts\":\"1794034643768\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "raw_response_sha256": "487fcf43a1a8ac6fc5fcf6cbc3c51c5437eb6b923844cabc7eaa14793f16d085",
+      "fields": {
+        "last": 1.169,
+        "bid": 1.1691,
+        "ask": 1.1692,
+        "bid_size_xrp": 13396.900602,
+        "ask_size_xrp": 1388,
+        "open_24h_usdt": 1.1923,
+        "high_24h_usdt": 1.2031,
+        "low_24h_usdt": 1.1518,
+        "volume_24h_usdt": 65679218.79553659,
+        "volume_24h_xrp": 55622911.361201
+      },
+      "provider_age_at_reference_seconds": 354.232,
+      "freshness_limit_seconds": 300,
+      "live_feature_eligible": false
+    }
+  ],
+  "secondary_sources": [
+    {
+      "source_id": "alpha_finance_xrp_etf_flows",
+      "publisher": "Alpha Finance / Block Media Pty Ltd",
+      "source_group": "aggregator_coinglass_feed",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "methodology_url": "https://alphafinance.io/methodology/",
+      "displayed_data_cutoff": "2026-11-06",
+      "reported": {
+        "funds_covered": 5,
+        "latest_session_net_flow_usd": 0,
+        "last_7_sessions_net_flow_usd": 8400000,
+        "last_30_sessions_net_flow_usd": 45900000,
+        "cumulative_net_inflow_usd_approx": 1730000000
+      },
+      "limits": [
+        "Alpha Finance identifies Coinglass as its ETF dashboard feed.",
+        "The page says five of five funds were included in the latest zero-flow session.",
+        "It does not publish fund AUM or holdings; cumulative flow is not current assets.",
+        "Net flow is not gross creations/redemptions or an issuer/custodian record.",
+        "Independence from other Coinglass-derived dashboards is not established."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "cryptoquant_binance_xrp_outflow_darkfost",
+      "publisher": "CryptoQuant / analyst Darkfost",
+      "source_group": "onchain_exchange_wallet_attribution",
+      "url": "https://cryptoquant.com/insights/quicktake/6aec7be34d08081b8394fc97-4185M-XRP-leave-Binance-in-one-day-the-biggest-Outflow-in-9-months",
+      "published_at_utc": "2026-11-05",
+      "event_date": "2026-11-04",
+      "reported": {
+        "xrp_outflow": 418500000,
+        "approximate_usd_value": 540000000,
+        "comparison_outflow_2026_10_29_xrp": 315000000
+      },
+      "limits": [
+        "Analyst/provider wallet attribution, not a Binance exchange statement.",
+        "CryptoQuant explicitly warns that some movement may be internal transfers.",
+        "Exchange-wallet outflow is not proof of net accumulation or new buying.",
+        "No destination-wallet classification or independent exchange confirmation was captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "alpha_finance_xrp_liquidation_heatmap",
+      "publisher": "Alpha Finance / Block Media Pty Ltd",
+      "source_group": "aggregator_multivenue_derivatives_model",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "methodology_url": "https://alphafinance.io/methodology/",
+      "displayed_snapshot_at_utc": "2026-11-07T06:20:00Z",
+      "reported": {
+        "spot_usd": 1.1644,
+        "open_interest_usd": 2760000000,
+        "volume_24h_usd": 2660000000,
+        "long_liquidations_24h_usd": 12800000,
+        "short_liquidations_24h_usd": 598900,
+        "modelled_short_liquidity_above_usd": 90600000,
+        "modelled_long_liquidity_below_usd": 29900000,
+        "largest_short_cluster_usd": 5900000,
+        "largest_short_cluster_price": 1.2039,
+        "largest_long_cluster_usd": 2800000,
+        "largest_long_cluster_price": 1.1425
+      },
+      "limits": [
+        "Clusters are modelled from open interest and leverage tiers, not actual resting liquidation orders.",
+        "All-exchange aggregation can conceal a single venue carrying most of a cluster.",
+        "Snapshot is 43 minutes older than the run reference.",
+        "Exact source-level OI contribution is not fully exposed in the excerpt.",
+        "The provider states its liquidation map is not a directional forecast."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "derived": {
+    "kraken_level1_spread_bps": 0.08575042339327728,
+    "okx_level1_spread_bps": 0.8553222426548259,
+    "raw_last_price_difference_percent_kraken_vs_okx": 0.2418151571798477,
+    "okx_snapshot_to_snapshot_last_price_change_percent": 0.7150857241319919,
+    "okx_snapshot_interval_seconds": 3759.533,
+    "okx_prior_snapshot_at_utc": "2026-11-07T05:54:44.235Z",
+    "okx_prior_snapshot_last": 1.1607,
+    "okx_prior_artifact": "research/xrp_intelligence/20261107T060301Z-xrp-spot-venue-timestamp-reconciliation.json",
+    "cross_venue_warning": "Not an arbitrage observation: USD and USDT are not normalized, Kraken has no provider timestamp, OKX is stale, and fees and executable depth are unavailable.",
+    "same_venue_change_warning": "Snapshot-to-snapshot last-price change only; not a continuous trade return, OHLC candle return or proof of sustained recovery. Not admitted as a feature."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Latest spot snapshots remain below their displayed 24-hour reference prices, consistent with a weaker trailing session.",
+      "supporting_evidence": [
+        "Kraken last 1.16618 is below its 24-hour VWAP 1.17916231 and today-open 1.17749.",
+        "OKX last 1.169 is below its 24-hour open 1.1923."
+      ],
+      "limitations": [
+        "Kraken provider timestamp is unavailable.",
+        "OKX snapshot is 354.232 seconds old and fails the 300-second freshness limit.",
+        "No synchronized OHLC history, consolidated volume or full depth was captured."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "The raw 0.2418% Kraken/OKX price gap is a quote-currency and timestamp comparison artifact unless normalized.",
+      "status": "arbitrage_claim_rejected"
+    },
+    {
+      "id": "H3",
+      "statement": "OKX last price rose 0.7151% between its 05:54:44.235Z and 06:57:23.768Z ticker snapshots, but this does not establish sustained recovery.",
+      "limitations": [
+        "Last price is not a candle close.",
+        "The later snapshot is stale under the live feature threshold.",
+        "The later price remains below the displayed 24-hour open."
+      ]
+    },
+    {
+      "id": "H4",
+      "statement": "The reported 418.5M XRP Binance outflow could reflect accumulation, internal movement or wallet reclassification; it is not proof of new buying.",
+      "status": "unresolved_wallet_attribution_hypotheses"
+    },
+    {
+      "id": "H5",
+      "statement": "Alpha Finance reports zero net XRP ETF flow on November 6 across five funds, but this is a Coinglass-fed aggregator series rather than issuer-confirmed gross creations/redemptions or holdings.",
+      "status": "secondary_provider_observation_not_issuer_primary"
+    },
+    {
+      "id": "H6",
+      "statement": "Alpha Finance's displayed short-liquidation model is larger above spot than its long-liquidation model below spot, but it does not establish that price will move upward.",
+      "status": "risk_context_only_not_directional"
+    }
+  ],
+  "model_admission": {
+    "admitted": false,
+    "reasons": [
+      "Kraken provider timestamp is unavailable.",
+      "OKX snapshot is 354.232 seconds old, exceeding the 300-second live freshness limit.",
+      "USD and USDT quote currencies are not normalized.",
+      "No synchronized multi-level depth or continuous OHLC history was captured.",
+      "ETF flow and wallet-attribution excerpts are secondary provider observations, not issuer or exchange primary records.",
+      "Liquidation clusters are modelled estimates, not actual resting orders."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "shadow_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "provenance": {
+    "retrieval_interface": "public web retrieval of direct exchange APIs and opened public research pages",
+    "sha256_scope": "Exact direct API JSON text as returned by retrieval layer; secondary page excerpts were summarized and not stored as raw captures.",
+    "independent_wire_capture": false,
+    "immutable_external_worm_storage": false,
+    "source_independence": "Kraken and OKX are separate exchange venues. Alpha Finance ETF flow is Coinglass-fed; independence from other Coinglass-derived dashboards is not established. CryptoQuant Darkfost is an attributed on-chain interpretation, not exchange-primary data."
+  }
+}

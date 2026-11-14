@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "artifact_id": "20261105T044552Z-ask-coin-entity-disambiguation",
+  "artifact_type": "xrp_exact_phrase_entity_resolution",
+  "captured_at_utc": "2026-11-05T04:45:52Z",
+  "data_cutoff_utc": "2026-11-05T04:45:52Z",
+  "mission_priority": 1,
+  "forecast_issued": false,
+  "paper_trade_executed": false,
+  "real_money_actions": false,
+  "model_eligible": false,
+  "eligibility_status": "MODEL_INELIGIBLE_WEB_RENDERED_SECONDARY_LISTINGS",
+  "source_capture_policy": {
+    "status": "web_rendered_page_only",
+    "raw_http_bytes_captured": false,
+    "raw_http_bytes_sha256": null,
+    "rendered_excerpt_hashes_are_not_raw_source_hashes": true,
+    "admission_rule": "Do not use as a model feature until byte-complete primary-source captures, verified contract/entity identifiers and SHA-256 receipts are stored with independent capture timestamps."
+  },
+  "source_registry": [
+    {
+      "id": "coinmarketcap_ask_coin_exchange_listing",
+      "publisher": "CoinMarketCap",
+      "authority": "secondary exchange-listing metadata",
+      "url": "https://coinmarketcap.com/vi/exchanges/ask-coin/",
+      "retrieved_at_utc": "2026-11-05T04:45:52Z",
+      "source_independence_group": "coinmarketcap",
+      "raw_capture_status": "web-rendered page; no byte-complete HTTP capture",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "CoinMarketCap lists a separate exchange entry named Ask Coin.",
+        "The listing is marked untracked and inactive; volume is not tracked, reserve data is unavailable, and no market data is displayed.",
+        "The listing points to askcoin.net as its website."
+      ],
+      "limitations": [
+        "CoinMarketCap is a secondary listing provider, not the exchange operator or corporate registry.",
+        "The askcoin.net site and legal operator were not independently verified in this capture.",
+        "Inactive/untracked listing status does not prove legal dissolution or current domain ownership."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "coinmarketcap_permission_coin_token_listing",
+      "publisher": "CoinMarketCap",
+      "authority": "secondary token listing and project-description provider",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "retrieved_at_utc": "2026-11-05T04:45:52Z",
+      "source_independence_group": "coinmarketcap",
+      "raw_capture_status": "web-rendered page; no byte-complete HTTP capture",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "CoinMarketCap identifies Permission Coin as the token with ticker ASK.",
+        "The page identifies permission.ai and docs.permission.ai as project resources.",
+        "The page describes Base and Polygon deployments and the LayerZero OFT standard."
+      ],
+      "limitations": [
+        "CoinMarketCap is not the token issuer or authoritative contract registry.",
+        "The page does not establish a relationship with the Ask Coin exchange listing.",
+        "No XRP Ledger, Ripple or SBI relationship is established by this page."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "candidate_entities": {
+    "ask_coin_exchange": {
+      "display_name": "Ask Coin",
+      "entity_type": "exchange_listing_candidate",
+      "website": "https://askcoin.net",
+      "listing_provider_status": "untracked_and_inactive",
+      "volume_status": "not_tracked",
+      "reserve_status": "unavailable",
+      "market_status": "no_market_data_displayed",
+      "legal_operator": "not_verified",
+      "relationship_to_permission_coin": "not_established",
+      "relationship_to_xrp_xrpl_ripple_sbi": "not_established"
+    },
+    "permission_coin": {
+      "display_name": "Permission Coin",
+      "ticker": "ASK",
+      "entity_type": "utility_token",
+      "project_website": "https://permission.ai",
+      "documentation": "https://docs.permission.ai",
+      "reported_networks": [
+        "Base",
+        "Polygon"
+      ],
+      "reported_token_standard": "LayerZero OFT",
+      "relationship_to_ask_coin_exchange": "not_established",
+      "relationship_to_xrp_xrpl_ripple_sbi": "not_established"
+    }
+  },
+  "resolution": {
+    "status": "AMBIGUOUS_EXACT_PHRASE",
+    "conclusion": "The exact phrase ASK Coin does not uniquely identify one entity in the reviewed public results. At least two distinct candidates exist: an Ask Coin exchange listing associated with askcoin.net, and Permission Coin, whose token ticker is ASK. Neither has a verified XRP/XRPL/Ripple/SBI relationship in the reviewed evidence.",
+    "disambiguation_rule": "Do not merge the exchange listing and Permission Coin token. Resolve a future reference using its URL, logo, contract, chain, issuer, speaker or surrounding context.",
+    "source_independence": "Both candidate listings are published by CoinMarketCap and therefore are not independent publishers."
+  },
+  "competing_interpretations": [
+    {
+      "id": "H1-permission-coin-token",
+      "claim": "ASK Coin refers to Permission Coin (ASK).",
+      "evidence_for": [
+        "CoinMarketCap explicitly identifies Permission Coin with ticker ASK.",
+        "The Permission project has its own website and documentation."
+      ],
+      "evidence_against": [
+        "The exact phrase may instead refer to an exchange named Ask Coin.",
+        "No XRP relationship is established."
+      ],
+      "status": "VALID_CANDIDATE_NOT_UNIQUELY_RESOLVED"
+    },
+    {
+      "id": "H2-ask-coin-exchange",
+      "claim": "ASK Coin refers to the Ask Coin exchange listing.",
+      "evidence_for": [
+        "CoinMarketCap has a distinct Ask Coin exchange entry and points to askcoin.net."
+      ],
+      "evidence_against": [
+        "The listing is marked inactive/untracked and has no displayed market or reserve data.",
+        "The legal operator and domain ownership were not independently verified."
+      ],
+      "status": "VALID_CANDIDATE_NOT_UNIQUELY_RESOLVED"
+    },
+    {
+      "id": "H3-xrp-related-entity",
+      "claim": "Either candidate is connected to XRP, XRPL, Ripple or SBI.",
+      "evidence_for": [],
+      "evidence_against": [
+        "Neither reviewed listing establishes an XRP/XRPL/Ripple/SBI relationship."
+      ],
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "disconfirming_evidence_and_limits": [
+    "A token ticker match is not proof that the token is the intended ASK Coin reference.",
+    "An inactive exchange listing is not proof that the entity has been legally dissolved.",
+    "CoinMarketCap supplies both listings; two pages from the same provider do not constitute independent corroboration.",
+    "No issuer-controlled legal identity, corporate filing, exchange reserve proof, contract ownership proof or XRP integration evidence was captured."
+  ],
+  "next_actions": [
+    "If a future reference includes a website, video, contract or wallet, resolve it against the exact identifier before assigning the ASK label.",
+    "Verify askcoin.net ownership and legal operator through primary corporate and domain evidence before treating the exchange listing as a live entity.",
+    "Verify Permission Coin contract addresses through Permission-controlled documentation and chain explorers before using token-level data.",
+    "Keep both candidates outside the XRP predictive feature store unless a verified direct relationship is established."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "UNVALIDATED_LEGACY",
+  "checked_count": 1697,
+  "correct_count": 772,
+  "reported_percentage": 45.5,
+  "valid_predictive_accuracy": false,
+  "method": "Mutable current CoinGecko quote at invocation; minimum age 24 hours; variable realized horizon; score thresholds; a separate 2% tolerance for neutral scores; no fixed target timestamp or baseline comparison.",
+  "preserve_historical_record": true,
+  "warning": "Historical provenance only. This value is not fixed-horizon out-of-sample predictive accuracy and must not be presented as model performance."
+}

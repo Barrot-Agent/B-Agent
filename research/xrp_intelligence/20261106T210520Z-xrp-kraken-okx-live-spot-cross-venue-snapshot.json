@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp-kraken-okx-live-spot-cross-venue-20261106T210520Z",
+  "captured_at_utc": "2026-11-06T21:05:20Z",
+  "asset": "XRP",
+  "market_type": "spot",
+  "scope": "two-exchange-top-of-book-and-ticker-snapshot",
+  "observations": [
+    {
+      "venue": "Kraken",
+      "instrument": "XRP/USD",
+      "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_data_as_of_utc": null,
+      "capture_time_upper_bound_utc": "2026-11-06T21:05:20Z",
+      "raw_response_sha256": "2ec2d58c79dec3e990b6fa8dfb36f494b3ff4668dc2c5beb095424f7590aae29",
+      "raw_response_bytes": 320,
+      "raw_response_hash_scope": "SHA-256 of the exact JSON response text captured below; excludes HTTP wire framing and transport headers",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.17241000\",\"961\",\"961.000\"],\"b\":[\"1.17240000\",\"3753\",\"3753.000\"],\"c\":[\"1.17255000\",\"2500.00000000\"],\"v\":[\"28293552.79301961\",\"35852127.22413252\"],\"p\":[\"1.19055946\",\"1.19585150\"],\"t\":[31601,38561],\"l\":[\"1.17164000\",\"1.17164000\"],\"h\":[\"1.22190000\",\"1.23848000\"],\"o\":\"1.20567000\"}}}",
+      "parsed": {
+        "last_usd": 1.17255,
+        "last_trade_size_xrp": 2500,
+        "best_bid_usd": 1.1724,
+        "best_bid_size_xrp": 3753,
+        "best_ask_usd": 1.17241,
+        "best_ask_size_xrp": 961,
+        "top_of_book_spread_bps": 0.0853,
+        "volume_today_xrp": 28293552.79301961,
+        "volume_rolling_24h_xrp": 35852127.22413252,
+        "vwap_today_usd": 1.19055946,
+        "vwap_rolling_24h_usd": 1.1958515,
+        "utc_day_open_usd": 1.20567,
+        "high_rolling_24h_usd": 1.23848,
+        "low_rolling_24h_usd": 1.17164,
+        "trades_today": 31601,
+        "trades_rolling_24h": 38561
+      }
+    },
+    {
+      "venue": "OKX",
+      "instrument": "XRP-USDT",
+      "source_uri": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_data_as_of_utc": "2026-11-06T21:05:06.565Z",
+      "capture_time_upper_bound_utc": "2026-11-06T21:05:20Z",
+      "raw_response_sha256": "6afc5e801d130b8481219fb5e0ca895ebe5ccbbd21f292cf074152ff6ffad12c",
+      "raw_response_bytes": 355,
+      "raw_response_hash_scope": "SHA-256 of the exact JSON response text captured below; excludes HTTP wire framing and transport headers",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1756\",\"lastSz\":\"1.1\",\"askPx\":\"1.1757\",\"askSz\":\"16240.797769\",\"bidPx\":\"1.1756\",\"bidSz\":\"4323.039627\",\"open24h\":\"1.2238\",\"high24h\":\"1.2281\",\"low24h\":\"1.1723\",\"volCcy24h\":\"77381466.259835961\",\"vol24h\":\"64668838.286536\",\"ts\":\"1793999106565\",\"sodUtc0\":\"1.2072\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "parsed": {
+        "last_usdt": 1.1756,
+        "last_trade_size_xrp": 1.1,
+        "best_bid_usdt": 1.1756,
+        "best_bid_size_xrp": 4323.039627,
+        "best_ask_usdt": 1.1757,
+        "best_ask_size_xrp": 16240.797769,
+        "top_of_book_spread_bps": 0.8506,
+        "open_rolling_24h_usdt": 1.2238,
+        "utc_day_open_usdt": 1.2072,
+        "utc_plus_8_day_open_usdt": 1.1877,
+        "high_rolling_24h_usdt": 1.2281,
+        "low_rolling_24h_usdt": 1.1723,
+        "volume_rolling_24h_xrp": 64668838.286536,
+        "volume_rolling_24h_quote_usdt": 77381466.25983596
+      }
+    }
+  ],
+  "comparison": {
+    "okx_last_premium_to_kraken_last_pct": 0.2601,
+    "kraken_last_vs_rolling_24h_vwap_pct": -1.9485,
+    "kraken_last_vs_utc_day_open_pct": -2.747,
+    "okx_last_vs_rolling_24h_open_pct": -3.9386,
+    "quote_currency_warning": "Kraken is XRP/USD; OKX is XRP/USDT. No USD/USDT conversion, latency normalization, fees, transfer costs, or executable arbitrage inference is applied."
+  },
+  "interpretation": [
+    "Both venue snapshots show XRP near the lower end of their reported 24-hour ranges at capture.",
+    "The two last prices differ by about 0.26%, but quote-currency and timestamp differences prevent treating this as a tradable cross-venue spread.",
+    "Top-of-book spread and displayed size are not full order-book depth, market impact, or consolidated liquidity.",
+    "Venue volume figures are kept separate and are not added into a consolidated market-volume estimate."
+  ],
+  "limitations": [
+    "Kraken's ticker response does not include a source timestamp; only the capture upper bound is recorded.",
+    "OKX provides an exchange timestamp of 2026-11-06T21:05:06.565Z.",
+    "This is one point-in-time snapshot, not a synchronized historical panel.",
+    "No depth ladder, trade-level tape, derivatives, ETF flows, exchange-flow, stablecoin, or collateral observation is included.",
+    "The response hashes cover captured JSON text, not original HTTP wire bytes or independently timestamped immutable storage."
+  ],
+  "model_eligibility": "raw_snapshot_only_not_yet_admitted_as_a_model_feature",
+  "forecast_issued": false,
+  "directional_forecast_eligible": false,
+  "paper_trade_or_real_money_action": false
+}

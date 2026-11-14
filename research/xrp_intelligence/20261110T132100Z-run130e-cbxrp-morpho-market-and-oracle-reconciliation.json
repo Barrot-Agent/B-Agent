@@ -1,0 +1,262 @@
+{
+  "schema_version": "barrot.xrp.collateral-market-reconciliation.v1",
+  "artifact_id": "20261110T132100Z-run130e-cbxrp-morpho-market-and-oracle-reconciliation",
+  "run_id": "130E",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-10T13:39:06Z",
+  "data_cutoff_utc": "2026-11-10T13:21:00Z",
+  "provenance": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "raw_source_sha256_captured": false,
+    "normalized_evidence_sha256_algorithm": "SHA-256",
+    "capture_method": "Public MorphoWatch market page and official Morpho app inspected; Coinbase and Morpho primary documentation inspected; normalized facts transcribed.",
+    "source_independence": "Coinbase independently confirms product, network, token mapping and collateral handling. Morpho docs confirm protocol rules. Morpho app and MorphoWatch share Morpho API/on-chain data and are not independent publisher corroboration for live balances."
+  },
+  "sources": [
+    {
+      "id": "coinbase_loan_intro",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publisher": "Coinbase",
+      "type": "primary"
+    },
+    {
+      "id": "coinbase_backup",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "publisher": "Coinbase",
+      "type": "primary"
+    },
+    {
+      "id": "coinbase_collateral",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+      "publisher": "Coinbase",
+      "type": "primary"
+    },
+    {
+      "id": "coinbase_loan_health",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-health",
+      "publisher": "Coinbase",
+      "type": "primary"
+    },
+    {
+      "id": "coinbase_xrp_loan_update",
+      "url": "https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto",
+      "publisher": "Coinbase",
+      "type": "primary",
+      "updated": "2026-09-29"
+    },
+    {
+      "id": "morpho_app",
+      "url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+      "publisher": "Morpho Association",
+      "type": "first_party_interface"
+    },
+    {
+      "id": "morphowatch",
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "MorphoWatch",
+      "type": "third_party_aggregator",
+      "updated_utc": "2026-11-10T13:21:00Z"
+    },
+    {
+      "id": "morpho_ltv",
+      "url": "https://docs.morpho.org/developers/borrow/concepts/ltv/",
+      "publisher": "Morpho",
+      "type": "primary_protocol_docs"
+    },
+    {
+      "id": "morpho_liquidation",
+      "url": "https://docs.morpho.org/developers/borrow/concepts/liquidation/",
+      "publisher": "Morpho",
+      "type": "primary_protocol_docs"
+    }
+  ],
+  "market_identity": {
+    "network": "Base",
+    "market": "USDC / cbXRP, variable rate",
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "market_created": "2026-01-15",
+    "collateral_token": "cbXRP",
+    "collateral_contract": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+    "loan_token": "USDC",
+    "lltv_pct": 62.5,
+    "lltv_immutable": true,
+    "oracle_contract": "0x031b2EFC8d70042Ac8d9f5c793c4149eC4b60fdE",
+    "chainlink_xrp_usd_feed": "0x9f0C1dD78C4CBdF5b9cf923a549A201EdC676D34",
+    "oracle_provider": "Chainlink",
+    "feed_heartbeat": "1 day",
+    "feed_deviation_pct": 0.5,
+    "feed_latest_price_usd": 1.09782,
+    "feed_latest_price_timestamp_utc": null,
+    "market_oracle_price_usdc": 1.08,
+    "asset_page_price_usdc": 1.0783,
+    "oracle_comparison": "QUARANTINED: feed updatedAt/round unavailable; do not infer stale oracle or price error."
+  },
+  "morphowatch_snapshot": {
+    "provider_updated_utc": "2026-11-10T13:21:00Z",
+    "retrieved_utc": "2026-11-10T13:39:06Z",
+    "supplied_usdc_usd": 62940000,
+    "borrowed_usdc_usd": 55520000,
+    "available_usdc_usd": 7420000,
+    "available_with_vault_liquidity_usd": 7730000,
+    "collateral_cbxrp": 120450000,
+    "collateral_value_usd": 129900000,
+    "utilization_pct": 88.2,
+    "borrowers_open_reported": 11694,
+    "borrow_apy_pct": 7,
+    "borrow_apy_30d_avg_pct": 7.26,
+    "supply_apy_pct": 6.15,
+    "supply_apy_30d_avg_pct": 6.53,
+    "liquidations_30d_reported": 1479,
+    "debt_repaid_30d_usd": 6270000,
+    "modeled_collateral_at_risk_if_cbxrp_falls_20pct_usd": 26810000,
+    "largest_listed_borrower_health_factor": 1.03,
+    "largest_listed_borrower_drop_to_liquidation_pct": 3,
+    "top_three_vault_lent_usd": 44380000,
+    "listed_vault_lent_usd": 53070000,
+    "top_three_share_of_total_supplied_pct": 70.51,
+    "listed_vault_share_of_total_supplied_pct": 84.32
+  },
+  "morpho_app_snapshot": {
+    "retrieved_utc": "2026-11-10T13:39:06Z",
+    "utilization_pct": 88.22,
+    "outstanding_loans_usd": 55570000,
+    "total_liquidity_usd": 23540000,
+    "realized_bad_debt_usdc": 0,
+    "unrealized_bad_debt_usdc": 0,
+    "liquidation_penalty_pct": 12.67,
+    "borrow_rate_pct": 7,
+    "top_three_supplier_allocations_usd": [
+      19126016.64,
+      13538241.54,
+      11745855.48
+    ],
+    "top_three_supplier_share_pct": 70.47,
+    "largest_listed_borrower_health_factor": 1.032,
+    "feed_latest_price_usd": 1.09782,
+    "feed_latest_price_timestamp_utc": null,
+    "oracle_feed_heartbeat": "1 day",
+    "oracle_feed_deviation_pct": 0.5,
+    "oracle_value_secured_label_usd": 219010000,
+    "oracle_value_secured_scope": "Unresolved; not treated as this market's collateral."
+  },
+  "cross_interface_disagreements": [
+    {
+      "metric": "borrowed_usdc",
+      "morphowatch_usd": 55520000,
+      "morpho_app_usd": 55570000,
+      "difference_usd": 50000,
+      "classification": "preserve; interface capture time/rounding may differ"
+    },
+    {
+      "metric": "liquidity",
+      "morphowatch_available_usdc_usd": 7420000,
+      "morphowatch_with_vault_liquidity_usd": 7730000,
+      "morpho_app_total_liquidity_usd": 23540000,
+      "classification": "definitions/scope differ; do not average"
+    },
+    {
+      "metric": "oracle_price",
+      "market_oracle_usdc": 1.08,
+      "chainlink_feed_latest_usd": 1.09782,
+      "feed_timestamp_available": false,
+      "classification": "quarantine until round/time and oracle decoding are reconciled"
+    },
+    {
+      "metric": "value_secured",
+      "oracle_label_usd": 219010000,
+      "market_collateral_usd": 129900000,
+      "classification": "scope unknown; do not equate"
+    }
+  ],
+  "derived_checks": {
+    "lif_formula": "LIF = min(1.15, 1 / (0.3 * LLTV + 0.7))",
+    "lif_at_62_5pct_lltv": 1.1267605634,
+    "bonus_at_62_5pct_lltv_pct": 12.67605634,
+    "bonus_at_86pct_lltv_pct": 4.38,
+    "interpretation": "XRP-market 12.67-12.68% bonus matches 62.5% LLTV; generic 4.38% corresponds to 86% LLTV."
+  },
+  "evidence_classification": {
+    "confirmed_primary_facts": [
+      "Coinbase lists XRP as eligible collateral for USDC loans powered by Morpho on Base.",
+      "Coinbase maps XRP collateral to cbXRP on Base at the contract recorded above.",
+      "Coinbase states collateral is locked on Morpho and marked not tradeable while active; locked collateral remains in displayed total balance while debt is not netted.",
+      "Morpho identifies the full market ID, 62.5% LLTV and Chainlink oracle/feed metadata in its first-party app.",
+      "Morpho docs state LLTV is immutable per market and liquidation occurs when LTV reaches or exceeds LLTV."
+    ],
+    "provider_observations": [
+      "MorphoWatch reports $62.94M supplied, $55.52M borrowed, 88.2% utilization, $7.42M available and 120.45M cbXRP collateral at 13:21 UTC.",
+      "MorphoWatch reports 1,479 liquidations and $6.27M debt repaid over 30 days.",
+      "MorphoWatch models $26.81M collateral at risk under a 20% cbXRP decline; this is not expected loss.",
+      "Morpho app reports 0.00 USDC realized/unrealized bad debt at retrieval; this is UI data, not independently decoded contract state."
+    ],
+    "inference_not_fact": [
+      "Collateralized borrowing may reduce immediate XRP sale needs for some holders.",
+      "A sharp decline can trigger liquidation and transfer collateral to liquidators who may later sell it.",
+      "High utilization and vault concentration create market/curator dependencies, but do not prove system-wide XRP liquidity stress."
+    ],
+    "non_equivalences": [
+      "Outstanding USDC debt is not proof of XRP purchases or net capital entering XRP.",
+      "Base cbXRP collateral is not native XRPL lending.",
+      "Locked cbXRP is not freely tradeable inventory.",
+      "Liquidation count/debt repaid are not XRP sold.",
+      "Modeled collateral at risk is not realized loss.",
+      "The $219.01M oracle value-secured label is not assumed to be this market's collateral."
+    ],
+    "competing_hypotheses": [
+      {
+        "id": "H130E_NONSALE_LIQUIDITY",
+        "claim": "XRP collateral loans provide liquidity without immediate sale.",
+        "disconfirming": [
+          "Borrower purpose unknown",
+          "No matched spot-sale counterfactual"
+        ]
+      },
+      {
+        "id": "H130E_LIQUIDATION_SUPPLY",
+        "claim": "Collateral liquidation can create secondary sell pressure in a drawdown.",
+        "disconfirming": [
+          "Liquidator disposition unknown",
+          "20% scenario is modeled, not observed"
+        ]
+      },
+      {
+        "id": "H130E_CREDIT_UTILITY_NOT_TOKEN_DEMAND",
+        "claim": "The product adds collateral utility without necessarily adding XRP demand.",
+        "disconfirming": [
+          "No linked spot acquisitions or payment-flow data"
+        ]
+      },
+      {
+        "id": "H130E_ORACLE_FRESHNESS",
+        "claim": "A 1-day heartbeat and 0.5% deviation make timestamped oracle freshness important during fast markets.",
+        "disconfirming": [
+          "Feed updatedAt and exact round were not captured",
+          "Market oracle may be current despite displayed feed mismatch"
+        ]
+      }
+    ]
+  },
+  "model_admission": {
+    "status": "NOT_ADMITTED",
+    "reason": "The market ID is identified, but balances are interface summaries, block-level receipts and feed round timestamps are missing, and the feed-to-market price comparison is unresolved.",
+    "required": [
+      "Base block number/hash and contract state",
+      "Chainlink round ID, answer, updatedAt and decimals",
+      "Morpho oracle decoding at same block",
+      "Reconciled supply/borrow/liquidity definitions",
+      "Block-level borrower-health and liquidation events"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  },
+  "normalized_evidence_sha256": "fa396c143ff900a732278fa44ff99efeb21f379a73b671dce028f53fa9a081b7"
+}

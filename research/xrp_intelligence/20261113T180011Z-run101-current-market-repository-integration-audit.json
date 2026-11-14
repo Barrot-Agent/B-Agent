@@ -1,0 +1,679 @@
+{
+  "schema_version": "barrot-xrp-run101-v1",
+  "run": "Run101",
+  "captured_at_utc": "2026-11-13T18:00:11Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "main_tree_entries": 1381,
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_at_capture": "694b9e7da2e617f60bf381cddf295d908035525d",
+    "integration_tree_entries": 2375,
+    "integration_ahead_by": 2281,
+    "integration_behind_by": 0,
+    "integration_branch_protected": false,
+    "main_branch_protected": true,
+    "open_prs": 375,
+    "draft_prs": 361,
+    "non_draft_prs": 14,
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "head_sha": "694b9e7da2e617f60bf381cddf295d908035525d",
+      "changed_files": 1132,
+      "workflow_files": 50,
+      "public_web_files": 7,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "merge_decision": "NO_MERGE"
+    },
+    "preexisting_large_map_restored": true,
+    "run101_platform_map_snapshot": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run101.json"
+  },
+  "ci": {
+    "integration_head": "694b9e7da2e617f60bf381cddf295d908035525d",
+    "full_suite": {
+      "run_id": 43471934764,
+      "job_id": 132045776812,
+      "conclusion": "success",
+      "passed": 3598,
+      "subtests_passed": 8,
+      "failed": 0,
+      "inclusive_coverage_percent": 62.14,
+      "duration_seconds": 61.62,
+      "core_passed": 732,
+      "core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "installed_primary_mission": "passed"
+    },
+    "dependency_audit": {
+      "run_id": 43471934615,
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43471934527,
+      "conclusion": "success",
+      "job_name": "Merge disabled pending gate verification"
+    },
+    "main_ci": {
+      "run_id": 43343513172,
+      "sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success",
+      "full_suite_passed": 747,
+      "subtests_passed": 8
+    },
+    "new_documentation_head_ci": "PENDING_AFTER_RUN101_HANDOFF_COMMIT"
+  },
+  "security": {
+    "branch_protection_detail": "HTTP 403; main metadata protected=true; required-check configuration not independently visible",
+    "fallback_ruleset_10863829": "disabled",
+    "integration_branch": "unprotected",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "main_opencode": {
+      "remote_lunaroute_mcp": "enabled",
+      "permissions": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "integration_opencode": {
+      "remote_lunaroute_mcp": "disabled",
+      "permissions": {
+        "edit": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    },
+    "workflow_review": {
+      "changed_workflow_files_screened": 50,
+      "high_risk_automatic_writers_quarantined": true,
+      "manual_external_actions_require_action_specific_confirmation": true
+    },
+    "no_external_actions_executed": true
+  },
+  "pr_reconciliation": [
+    {
+      "pr": 1661,
+      "source_paths": 1072,
+      "overlap_paths": 1072,
+      "integration_ahead_by": 149,
+      "classification": "supersession candidate; keep open until successor merged and verified"
+    },
+    {
+      "pr": 1660,
+      "source_paths": 972,
+      "overlap_paths": 972,
+      "integration_ahead_by": 330,
+      "classification": "supersession candidate; keep open until successor merged and verified"
+    },
+    {
+      "pr": 1643,
+      "source_paths": 670,
+      "overlap_paths": 670,
+      "integration_ahead_by": 1392,
+      "classification": "supersession candidate; keep open until successor merged and verified"
+    },
+    {
+      "pr": 1642,
+      "source_paths": 7,
+      "overlap_paths": 7,
+      "integration_ahead_by": 2297,
+      "classification": "supersession candidate; keep open until successor merged and verified"
+    },
+    {
+      "pr": 1640,
+      "source_paths": 280,
+      "overlap_paths": 280,
+      "source_only_commit_count": 1,
+      "source_only_commit_semantically_included": true,
+      "classification": "supersession candidate; action-specific Databricks/Kaggle approval gates and tests are present in integration"
+    }
+  ],
+  "market": {
+    "cutoff_utc": "2026-11-13T18:00:11Z",
+    "spot": [
+      {
+        "source": "OKX XRP-USDT public ticker",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_event_time_utc": "2026-11-13T17:53:29.572Z",
+        "last": 1.0217,
+        "bid": 1.0216,
+        "ask": 1.0217,
+        "bid_size_xrp": 4390.627855,
+        "ask_size_xrp": 9240.312657,
+        "open_24h": 1.0304,
+        "high_24h": 1.044,
+        "low_24h": 0.9974,
+        "volume_24h_xrp": 47938093.961509,
+        "age_seconds_at_cutoff": 401.428,
+        "model_eligible": false,
+        "reason": "older than 300-second freshness gate"
+      },
+      {
+        "source": "Kraken XRP/USD public ticker",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "retrieved_at_utc": "2026-11-13T18:00:11Z",
+        "provider_event_time_utc": null,
+        "last": 1.02362,
+        "bid": 1.02411,
+        "ask": 1.02412,
+        "model_eligible": false,
+        "reason": "provider event timestamp absent"
+      }
+    ],
+    "orderbook": {
+      "fresh_synchronized_spot_l2_admitted": false,
+      "stale_perpetual_snapshot": {
+        "source": "Swiftedge",
+        "snapshot_time_utc": "2026-11-13T09:06:00Z",
+        "largest_bids_xrp": [
+          {
+            "price": 1.013,
+            "size": 2802415
+          },
+          {
+            "price": 1.025,
+            "size": 2261169
+          },
+          {
+            "price": 1.022,
+            "size": 1861737
+          }
+        ],
+        "largest_asks_xrp": [
+          {
+            "price": 1.037,
+            "size": 2196474
+          },
+          {
+            "price": 1.034,
+            "size": 2030595
+          },
+          {
+            "price": 1.0345,
+            "size": 1943708
+          }
+        ],
+        "model_eligible": false
+      }
+    },
+    "derivatives": [
+      {
+        "source": "Liqwall",
+        "snapshot_utc": "2026-11-13T07:02:00Z",
+        "open_interest_usd": 1120000000,
+        "average_funding_8h": -0.0025,
+        "binance_funding_8h": 0.0026,
+        "liquidations_24h_usd": 19300000,
+        "long_liquidations_usd": 18400000,
+        "short_liquidations_usd": 906000,
+        "binance_long_account_share_percent": 75.2
+      },
+      {
+        "source": "KriptoTutkunlari",
+        "snapshot_utc": "2026-11-13T09:40:00Z",
+        "venues": 4,
+        "open_interest_usd": 735745000,
+        "average_funding_8h": 0.004,
+        "open_interest_change_24h_percent": -3.889
+      },
+      {
+        "source": "Blockmetric",
+        "snapshot_utc": "2026-11-13T09:10:00Z",
+        "venue": "Hyperliquid",
+        "open_interest_usd": 91400000,
+        "liquidations_24h_usd": 15100000,
+        "long_liquidations_usd": 14600000,
+        "short_liquidations_usd": 476000
+      },
+      {
+        "source": "TradRadar",
+        "snapshot_utc": "2026-11-12T23:55:00Z",
+        "venues": 7,
+        "open_interest_usd": 1550000000,
+        "oi_weighted_funding_8h": 0.0098,
+        "liquidations_min_usd": 9010000,
+        "long_share_percent": 79.6
+      }
+    ],
+    "exchange_balances": {
+      "source": "XRP Insights exchange balances",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "as_of_utc": "2026-11-13T08:01:00Z",
+      "tracked_xrp": 22260000000,
+      "wallets": 707,
+      "exchanges": 24,
+      "same_wallet_change_7d_xrp": -77300000,
+      "same_wallet_change_30d_xrp": -279700000,
+      "nov13_daily_same_wallet_change_xrp": -37000000,
+      "nov13_daily_excludes": "Binance",
+      "caveats": [
+        "includes cold storage and wrapped-asset backing reserves",
+        "482.4M XRP classified as reserves/wrapped backing",
+        "39.7% without hot/cold label",
+        "OKX and Korbit main-wallet coverage gaps",
+        "not a tradable-float measure"
+      ],
+      "venue_breakdown": [
+        {
+          "venue": "Upbit",
+          "xrp": 6470000000
+        },
+        {
+          "venue": "Coinbase including cbXRP reserve",
+          "xrp": 5800000000,
+          "non_customer_cbXRP_reserve": 151400000
+        },
+        {
+          "venue": "Binance including Binance-Peg reserve",
+          "xrp": 2660000000,
+          "non_customer_binance_peg_reserve": 327400000,
+          "binance_charity": 1900000
+        },
+        {
+          "venue": "Bithumb",
+          "xrp": 1800000000
+        },
+        {
+          "venue": "Uphold",
+          "xrp": 1700000000
+        },
+        {
+          "venue": "Kraken",
+          "xrp": 952300000
+        },
+        {
+          "venue": "SBI VC Trade",
+          "xrp": 56000000,
+          "same_wallet_change_7d_xrp": -453000,
+          "same_wallet_change_30d_xrp": -1200000
+        }
+      ],
+      "same_wallet_methodology": "Subtract wallets added after the start of the comparison window; does not distinguish customer withdrawals from transfers to untracked wallets."
+    },
+    "transfer_flows": {
+      "source": "TrackWhale",
+      "url": "https://trackwhale.io/xrp-whale-tracker",
+      "as_of_utc": "2026-11-13T09:20:00Z",
+      "large_transfer_records": 53,
+      "inflows_7d_xrp": 79730000,
+      "outflows_7d_xrp": 187040000,
+      "net_outflow_7d_xrp": 107310000,
+      "latest_14_5m_xrp_transfer": "unknown wallet to unknown wallet; rotation",
+      "not_complete_exchange_accounting": true
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "url": "https://xrp-insights.com/",
+        "nov12_daily_flow_xrp": -268644,
+        "nov9_to_nov12_weekly_flow_xrp": -9481905,
+        "data_download_holdings_xrp": 1185698783,
+        "dashboard_displayed_holdings_xrp": 1184770000,
+        "holdings_vintage_difference_xrp": 928783,
+        "dashboard_aum_usd": 1228970000,
+        "data_download_nov12_aum_usd": 1250000000,
+        "data_status": "Nov 12, 2026; four settled trading days; no provisional-day conflict on the current downloads page",
+        "methodology": "six US spot funds plus BITW; issuer holdings changes; GXRP excluded from flow totals while a data gap is corrected",
+        "note": "Dashboard holdings/AUM and data-download holdings/AUM differ slightly because page refresh and valuation vintages differ; preserve snapshots."
+      },
+      "cryptokeyhole": {
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "updated_at_utc": "2026-11-13T18:07:00Z",
+        "nov12_partial_flow_xrp": -3322,
+        "funds_reported": 3,
+        "funds_expected": 4,
+        "missing_fund": "Franklin Templeton XRPZ",
+        "cumulative_through_nov11_xrp": -6627738,
+        "nov5_to_nov11_complete_5_day_flow_xrp": -10005584,
+        "partial_nov12_not_in_cumulative": true,
+        "universe": "four US spot XRP ETFs read daily; excludes Grayscale from daily data and REX-Osprey from totals"
+      },
+      "alpha_finance": {
+        "url": "https://alphafinance.io/etf/xrp/",
+        "fund_universe": 5,
+        "nov12_flow_usd": 0,
+        "flow_30_sessions_usd": -2800000,
+        "flow_7_sessions_usd": -18000000
+      },
+      "corpstacking": {
+        "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+        "as_of": "2026-11-13",
+        "holdings_xrp": 1398686615,
+        "universe": "10 XRP funds/ETPs/trusts; page's public methodology has an internal conflict: it says basket funds are excluded but also lists NCIQ in the largest-holder table",
+        "evernorth_status": "Closed October 9, 2026, awaiting first post-close holdings report. Its 346,284,972 XRP balance is as of June 30, before closing; 473,276,430 XRP was a pre-close expected starting amount, not an actual post-close balance.",
+        "methodology_conflict": "The page says basket funds NCIQ/EZPZ/GDLC/BITW are excluded, yet the largest-holder table lists NCIQ at 17.376M XRP. It also describes ten funds and nine spot funds in different sections. Preserve this inconsistency."
+      },
+      "methodology": "overlapping issuer files, different cohorts and missing-file treatment; do not average",
+      "xrpdesk": {
+        "url": "https://xrpdesk.app/",
+        "exchange_wallets": [
+          {
+            "as_of_utc": "2026-11-13T04:50:00Z",
+            "tracked_xrp": 20610000000,
+            "venues": 62,
+            "source_type": "assistant-snapshot"
+          },
+          {
+            "as_of_utc": "2026-11-13T13:36:00Z",
+            "tracked_xrp": 37050000000,
+            "venues": 62,
+            "source_type": "assistant-full-scan"
+          }
+        ],
+        "exchange_balance_model_eligible": false,
+        "exchange_balance_caveat": "The 16.44B difference is a source/methodology and wallet-universe change, not a demonstrated same-day flow. XRPDesk says unlabeled wallets are excluded.",
+        "etf_vaults": {
+          "as_of": "2026-11-12",
+          "holdings_xrp": 1140000000,
+          "funds": [
+            "XRP",
+            "XRPZ",
+            "XRPC",
+            "TOXR",
+            "GXRP",
+            "XRPR"
+          ],
+          "daily_reported_flow_xrp": -3900,
+          "flow_note": "change in reported holdings, not ETF trading volume"
+        },
+        "payment_corridor_note": "Bitso/Coins.ph/Independent Reserve corridor rows are labeled-wallet-change proxies, not confirmed Ripple Payments volume."
+      }
+    },
+    "rlusd": {
+      "stableradar": {
+        "url": "https://stableradar.com/coin/rlusd",
+        "as_of_utc": "2026-11-13T12:43:00Z",
+        "onchain_total": 2688199683,
+        "xrpl": 754149934,
+        "ethereum": 1917942634,
+        "base": 16106576,
+        "issuer_report_circulating_as_of_2026_10_29_usd": 2627000000,
+        "reserves_as_of_2026_10_29_usd": 2758600000,
+        "defillama_chain_allocation_disagrees": true
+      },
+      "xrpldashboard": {
+        "url": "https://xrpldashboard.com/rlusd",
+        "as_of_utc": "2026-11-13T17:51:00Z",
+        "displayed_total_usd": 2730000000,
+        "xrpl_usd": 763090000,
+        "ethereum_usd": 1970000000,
+        "rolling_24h_total_net_change_usd": 35560000,
+        "xrpl_24h_net_change_usd": -100750000,
+        "ethereum_mints_usd": 151310000,
+        "ethereum_burns_usd": 15000000,
+        "live_feed_status": "unavailable; supply totals may be minutes stale",
+        "model_eligible": false
+      },
+      "reconciliation": "different provider snapshots and chain allocations; preserve disagreement, do not average or infer XRP demand"
+    },
+    "xrpdesk": {
+      "url": "https://xrpdesk.app/",
+      "exchange_wallets": {
+        "as_of_utc": "2026-11-13T04:50:00Z",
+        "tracked_xrp": 20610000000,
+        "venues": 62,
+        "source_type": "assistant-snapshot",
+        "model_eligible": false,
+        "caveat": "Different labeled-wallet universe and snapshot from XRP Insights; not directly comparable."
+      },
+      "etf_vaults": {
+        "as_of": "2026-11-12",
+        "holdings_xrp": 1140000000,
+        "funds": [
+          "XRP",
+          "XRPZ",
+          "XRPC",
+          "TOXR",
+          "GXRP",
+          "XRPR"
+        ],
+        "model_eligible": false,
+        "caveat": "Six-fund sheet universe; differs from the ten-fund/ETP/trust universe on Corpstacking."
+      },
+      "payment_corridor_note": "Its Bitso/Coins.ph/Independent Reserve corridor rows are labeled-wallet-change proxies, not confirmed Ripple Payments volume."
+    },
+    "institutional": {
+      "coinbase_rlusd": {
+        "date": "2026-10-28",
+        "source": "Ripple official press release",
+        "finding": "RLUSD available to retail and institutional clients on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was stated as forthcoming, not live."
+      },
+      "coinbase_circle": {
+        "date": "2026-11-09",
+        "source": "Reuters",
+        "finding": "PNC limited pilot lets eligible corporate/institutional clients receive Circle USDC and automatically convert it to USD through Coinbase; this is a USDC rail, not XRP settlement."
+      },
+      "q2_2026_13f": {
+        "source": "CryptoKeyhole synthesis of SEC 13F filings",
+        "managers": 117,
+        "reported_value_usd": 154300000,
+        "funds": 4,
+        "largest_reported_positions": [
+          {
+            "manager": "Goldman Sachs",
+            "usd": 78900000
+          },
+          {
+            "manager": "Jane Street",
+            "usd": 15500000
+          },
+          {
+            "manager": "Millennium Management",
+            "usd": 15300000
+          }
+        ],
+        "as_of": "2026-06-30",
+        "caveat": "Lagged fund-share disclosures, not direct XRP ownership or current spot cash inflow."
+      },
+      "sbi": {
+        "finding": "SBI Ripple Asia is 60/40 SBI Group/Ripple and does not handle XRP directly; SBI Remit/SBI VC Trade/Tranglo is the separate operational XRP remittance path. SBI also has a 50/50 Circle JV; SBI Holdings and SBI Shinsei each invested $25M in Circle's IPO. SBI-linked Evernorth voting power is about 39.9%, but exact cash/XRP contribution allocation is undisclosed."
+      },
+      "x402": {
+        "source": "CoinDesk",
+        "url": "https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million",
+        "date": "2026-10-14",
+        "cumulative_transactions": 14300000,
+        "registered_merchants": 169,
+        "cumulative_xrp_payments": 6991,
+        "cumulative_rlusd_payments": 12752,
+        "interpretation": "Large transaction count but very small aggregate token quantities; not evidence of substantial capital throughput."
+      }
+    },
+    "collateral": {
+      "ripple_prime": {
+        "source": "https://ripple.com/products/prime-brokerage/",
+        "finding": "Ripple Prime lists XRP among assets clients may post as collateral; no XRP-specific customer balances, utilization or haircuts are disclosed."
+      },
+      "cftc_letter_26_05": {
+        "source": "https://www.cftc.gov/csl/26-05/download",
+        "finding": "Conditional CFTC staff no-action position, not a generally applicable rule. Specified FCM 30.7 paths may accept certain non-security digital assets subject to conditions; the non-DCO-accepted path carries at least a 20% haircut and revised FCM risk policy/notice requirements."
+      },
+      "cme_clearing": {
+        "source": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+        "finding": "Public acceptable-collateral list does not list XRP."
+      },
+      "verified_xrp_fcm_notice": false,
+      "verified_xrp_customer_margin_use": false,
+      "conclusion": "Prime-broker collateral capability is not equivalent to DCO/clearinghouse acceptance or actual XRP collateral utilization."
+    }
+  },
+  "macro": {
+    "ppi": {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/us-producer-prices-rise-further-october-2026-11-13/",
+      "release_date": "2026-11-13",
+      "october_monthly_percent": 0.3,
+      "consensus_percent": 0.4,
+      "year_over_year_percent": 6.5,
+      "core_goods_monthly_percent": 0.5,
+      "food_monthly_percent": 1.3,
+      "interpretation": "monthly miss softer, annual/breadth inflation remains high"
+    },
+    "rates_fx": {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/africa/dollar-near-19-month-high-fed-hike-bets-yen-tests-160-2026-11-13/",
+      "dxy": 103.34,
+      "two_year_yield_percent": 4.84,
+      "two_year_weekly_change_bps": 32,
+      "implied_december_25bp_hike_probability_percent": 92,
+      "usdjpy": 159.84,
+      "btc_daily_change_percent": -4.73,
+      "eth_daily_change_percent": -5.02
+    },
+    "japan_intervention": {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/markets/us/japans-finance-minister-vows-action-yen-breaches-160-threshold-2026-11-13/",
+      "july_august_intervention_trillion_yen": 15.4,
+      "reported_us_fx_operation_usd_millions": 497,
+      "earlier_hint_usd_billions": 10,
+      "interpretation": "possible reduced deterrence, but Japan can still intervene independently"
+    }
+  },
+  "institutional": {
+    "coinbase_rlusd": {
+      "date": "2026-10-28",
+      "source": "Reuters",
+      "finding": "RLUSD added across Coinbase retail and institutional platforms; multi-chain listing does not prove XRP demand"
+    },
+    "coinbase_circle": {
+      "date": "2026-11-09",
+      "source": "Reuters",
+      "finding": "PNC/Coinbase limited pilot receives Circle USDC and automatically converts to USD; not XRP settlement"
+    },
+    "ripple_sbi": {
+      "finding": "SBI Ripple Asia 60/40 SBI/Ripple and does not handle XRP directly; SBI Remit/SBI VC Trade/Tranglo is separate operational XRP remittance corridor; volumes undisclosed"
+    },
+    "sbi_circle": {
+      "finding": "SBI Circle Holdings/Circle SBI Japan KK 50/50 JV; $25M each from SBI Holdings and SBI Shinsei in Circle IPO; Arc is separate L1"
+    },
+    "evernorth": {
+      "finding": "SEC filing separates gross cash, in-kind XRP, cash-funded XRP purchase, debt, ELOC capacity and secondary resale; exact SBI contribution allocation undisclosed"
+    }
+  },
+  "identity": {
+    "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate from SBI Holdings; no OpenAI commercial partnership verified",
+    "ask_coin": "no canonical XRPL issuer/deployment verified",
+    "camilla_kamilah_stevenson": "person identity known, but channel ownership unverified; verified own-channel YouTube inventory remains zero"
+  },
+  "prediction": {
+    "scheduled_sources": 48,
+    "endpoint_definitions": 50,
+    "trained_xrp_candidate_model": false,
+    "model_eligible_current_market_observations": 0,
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean_reversion",
+      "volatility"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "outstanding": [
+      "mature synchronized historical spot/L2/derivatives/flows/collateral dataset",
+      "independent WORM and trusted timestamp anchoring",
+      "paired block-bootstrap/source-clustered uncertainty",
+      "concept and multivariate drift",
+      "independent shadow outcome cohort",
+      "candidate superiority over all baselines"
+    ]
+  },
+  "nine_platform_status": {
+    "ChatGPT": "GitHub connector verified; overprivileged; no external model transfer",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal review on PR #1662",
+    "Codex": "unverified",
+    "HuggingFace": "prior build error; no deployment; sync workflow disabled",
+    "Kaggle": "untested; no submission; dataset download remains separately gated",
+    "Databricks": "prior HTTP 403; no write; workspace import remains separately gated",
+    "LunaRoute": "not one of nine; remote MCP enabled on main, disabled on integration; authentication unverified",
+    "Groq": "separate provider; manual read-only workflow paths exist, no dispatch/data transfer"
+  },
+  "sources": [
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "https://xrp-insights.com/exchange-balances",
+    "https://trackwhale.io/xrp-whale-tracker",
+    "https://xrp-insights.com/",
+    "https://xrp-insights.com/data",
+    "https://cryptokeyhole.com/etf-flows/xrp/",
+    "https://alphafinance.io/etf/xrp/",
+    "https://www.corpstacking.com/treasuries/by-token/ripple",
+    "https://liqwall.com/coins/xrp",
+    "https://blockmetric.io/coins/XRP",
+    "https://www.kriptotutkunlari.com/en/coins/XRP",
+    "https://tradradar.io/markets/xrp",
+    "https://swiftedge.uk/xrp/today",
+    "https://stableradar.com/coin/rlusd",
+    "https://xrpldashboard.com/rlusd",
+    "https://www.reuters.com/business/us-producer-prices-rise-further-october-2026-11-13/",
+    "https://www.reuters.com/world/africa/dollar-near-19-month-high-fed-hike-bets-yen-tests-160-2026-11-13/",
+    "https://www.reuters.com/markets/us/japans-finance-minister-vows-action-yen-breaches-160-threshold-2026-11-13/",
+    "https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million",
+    "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+    "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+    "https://www.comptrollerofthecurrency.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+    "https://xrpdesk.app/",
+    "https://ripple.com/products/prime-brokerage/",
+    "https://www.cftc.gov/csl/26-05/download",
+    "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html"
+  ],
+  "limitations": {
+    "raw_source_bytes_saved": false,
+    "sha256_receipts_created": false,
+    "model_eligible_web_observations": 0,
+    "source_independence": "vendor aggregates and issuer-derived ETF dashboards overlap; source clusters retained",
+    "no_directional_forecast": true,
+    "no_external_actions": true
+  },
+  "workflow_review": {
+    "changed_workflow_files_screened": 50,
+    "automatic_writers_quarantined": [
+      "barrot-sync",
+      "barrot-agent",
+      "barrot-self-upgrade",
+      "sync-huggingface",
+      "databricks-bundle",
+      "ask-barrot",
+      "barrot-speak",
+      "capability-1-market-analysis",
+      "diag-cf",
+      "diag-cf2",
+      "sync-self-hosted-brain"
+    ],
+    "manual_groq_workflows": [
+      "capability-10-design",
+      "capability-discovery",
+      "data-value-triage",
+      "financial-data-refresh",
+      "frontier-digest",
+      "research-topics",
+      "self-benchmark",
+      "signal-summary",
+      "webmcp-trend-digest",
+      "test-groq-chain"
+    ],
+    "manual_action_gates": [
+      "barrot-ops: separate Databricks workspace import and Kaggle dataset download approvals plus exact main SHA",
+      "deploy-a2a-worker: deployment YES plus separate secret-rotation YES and exact main SHA",
+      "coinbase-paper-trader: manual YES and exact main SHA; artifact-only simulation"
+    ],
+    "no_workflow_dispatched": true,
+    "note": "Other scheduled/manual workflows with contents:read GitHub permissions were screened for triggers and secrets; no workflow was run. GitHub-token read-only does not prove absence of third-party side effects."
+  }
+}

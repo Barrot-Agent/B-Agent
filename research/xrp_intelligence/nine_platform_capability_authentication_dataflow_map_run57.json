@@ -1,0 +1,120 @@
+{
+  "schema_version": "barrot.nine_platform_capability_authentication_dataflow.v1",
+  "snapshot_id": "run57-2026-11-12T13:11:31Z",
+  "captured_at_utc": "2026-11-12T13:11:31Z",
+  "evidence_rule": "Only tested authentication and observed data flow are marked verified; last-known failures are not current live tests.",
+  "platforms": [
+    {
+      "platform": "ChatGPT",
+      "authentication": "verified_this_run",
+      "integration": "GitHub connector",
+      "capabilities": [
+        "repository metadata",
+        "branch refs and trees",
+        "source files",
+        "open PR inventory and metadata",
+        "Actions jobs/logs",
+        "fast-forward commit to existing integration branch"
+      ],
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": "overprivileged",
+      "data_flow": "ChatGPT session ↔ GitHub API; reads main/integration and writes only existing integration branch",
+      "secrets_read": false,
+      "external_model_transfer": false,
+      "fallback": "read-only GitHub plus local deterministic analysis"
+    },
+    {
+      "platform": "Claude",
+      "authentication": "unverified",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "none verified",
+      "external_model_transfer": false,
+      "fallback": "local evidence packet"
+    },
+    {
+      "platform": "Grok",
+      "authentication": "unverified_this_run",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "no direct Grok session verified; repository Groq workflows are not proof of live Grok connection",
+      "external_model_transfer": false,
+      "fallback": "local deterministic research"
+    },
+    {
+      "platform": "Gemini",
+      "authentication": "unverified",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "none verified",
+      "external_model_transfer": false,
+      "fallback": "local evidence packet"
+    },
+    {
+      "platform": "Copilot",
+      "authentication": "no_direct_session_verified",
+      "capabilities": [
+        "PR review metadata read; no formal approval on #1661"
+      ],
+      "permissions": [],
+      "data_flow": "no independent Copilot-authenticated flow verified",
+      "external_model_transfer": false,
+      "fallback": "formal GitHub review required"
+    },
+    {
+      "platform": "Codex",
+      "authentication": "unverified",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "none verified",
+      "external_model_transfer": false,
+      "fallback": "local tests and CI"
+    },
+    {
+      "platform": "Hugging Face",
+      "authentication": "not_retested",
+      "last_known_status": "BUILD_ERROR",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "no current Space auth/deployment verified",
+      "external_model_transfer": false,
+      "fallback": "no Space restart/deploy"
+    },
+    {
+      "platform": "Kaggle",
+      "authentication": "not_tested",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "none verified",
+      "external_model_transfer": false,
+      "fallback": "local evaluation; no submission"
+    },
+    {
+      "platform": "Databricks",
+      "authentication": "not_retested",
+      "last_known_status": "HTTP 403",
+      "capabilities": [],
+      "permissions": [],
+      "data_flow": "no current workspace read/write verified",
+      "external_model_transfer": false,
+      "fallback": "local SQLite feature store"
+    }
+  ],
+  "additional_endpoint": {
+    "name": "LunaRoute",
+    "authentication": "unverified",
+    "data_flow": "repository-declared canonical brain; live endpoint auth/data flow not verified"
+  },
+  "summary": {
+    "verified_live_platforms": 1,
+    "overprivileged_live_platforms": 1,
+    "unverified_or_untested_platforms": 8,
+    "external_model_transfers": 0
+  }
+}

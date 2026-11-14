@@ -1,0 +1,181 @@
+{
+  "artifact_type": "sec_13f_xrp_etf_position_manager_attribution_correction",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-09T01:31:33Z",
+  "filing": {
+    "form": "13F-HR",
+    "accession": "0000886982-26-000519",
+    "cik": "0000886982",
+    "filer": "GOLDMAN SACHS GROUP INC",
+    "filing_date": "2026-08-14",
+    "accepted_at_utc": "2026-08-14T17:15:03Z",
+    "report_period_end": "2026-06-30",
+    "primary_urls": {
+      "filing_index": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.html",
+      "primary_document": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/primary_doc.xml",
+      "information_table": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml"
+    }
+  },
+  "included_manager_attribution": {
+    "row_manager_number": 1,
+    "included_manager_name": "GOLDMAN SACHS & CO. LLC",
+    "form_13f_file_number": "028-00687",
+    "cik": "0000769993",
+    "primary_document_location": "Other Included Managers list, row No. 1",
+    "correction": "The parent Goldman Sachs Group Inc is the filing manager, but every XRP ETF row below is assigned to included manager No. 1, Goldman Sachs & Co. LLC. Do not attribute the positions directly to the parent or describe them as parent-company proprietary capital."
+  },
+  "positions": [
+    {
+      "issuer": "21SHARES XRP ETF",
+      "cusip": "90137T103",
+      "value_usd": 8206363,
+      "shares": 806126,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 38
+    },
+    {
+      "issuer": "BITWISE XRP ETF",
+      "cusip": "09174F107",
+      "value_usd": 25756345,
+      "shares": 2208949,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 1672
+    },
+    {
+      "issuer": "CANARY XRP ETF",
+      "cusip": "13723M100",
+      "value_usd": 19490717,
+      "shares": 1759090,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 2182
+    },
+    {
+      "issuer": "FRANKLIN XRP TRUST",
+      "cusip": "355233107",
+      "value_usd": 25405919,
+      "shares": 2238407,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 4973
+    },
+    {
+      "issuer": "GRAYSCALE XRP TR ETF",
+      "cusip": "38965L106",
+      "value_usd": 7646785,
+      "shares": 377619,
+      "share_type": "SH",
+      "investment_discretion": "DFND",
+      "other_manager_number": 1,
+      "info_table_line": 5516
+    }
+  ],
+  "reconciliation": {
+    "position_count": 5,
+    "aggregate_reported_value_usd": 86506129,
+    "aggregate_reported_shares_across_distinct_funds": 7390191,
+    "arithmetic_verified": true,
+    "interpretation": "The sum is the reported value of five ETF-share positions in a delayed 13F snapshot, not XRP tokens, XRP custody, net ETF creations/redemptions, or cash deployed into XRP."
+  },
+  "provenance": {
+    "normalized_excerpt_sha256": {
+      "filing_index": "c10f271e396b81baaf4ebfd8edfd2ec7182f07f5d1a2f5b35e04c60a16c9c217",
+      "primary_document_manager_mapping": "a437982dea5d9abc0ffdf814aa6b5c0502c5ef4b7f2b8b0610515b211c7e3c75",
+      "information_table_xrp_rows": "49f4aca6495b32368614a1100537339ad4d528fbacea8758dff304c17780de31",
+      "q1_manager_mapping": "94aaebc9ab78f55e731e3a4be885f0cb797c2d888ee6c4e4ff6eb2da7e599e06",
+      "q1_xrp_absence_search_record": "a6566e739441ab70795535c4d7fcc311b75cfe08722825762d44f74fc2f5d4e9",
+      "q1_cusip_90137T103_absence_search_record": "ab436af5434186ffffb3287df468cbab356b6773fff3fca09a3d4cdc6da26df9",
+      "q1_cusip_09174F107_absence_search_record": "f181ace165042bc1dbbca69966964bf9777488438dafc5d44b0b48a60e312b81",
+      "q1_cusip_13723M100_absence_search_record": "ebc0ad67ee3fff2aeee9e41be66fa6bf61dca8580745e075b0d488d9a3c4c35d",
+      "q1_cusip_355233107_absence_search_record": "f5d98089f4418da9c28f535ab4ccfa3408704ef841ea0d343d517ee34d73c327",
+      "q1_cusip_38965L106_absence_search_record": "40754ab0733b8c62965db5fb6b54b5886a19fd30cf9e076e3bbf219290eb98ce"
+    },
+    "hash_scope": "SHA-256 hashes cover normalized SEC excerpt/search records, including the Q1 issuer-name absence result and five exact Q1 CUSIP absence results, not raw SEC HTTP response bytes.",
+    "source_independence": "Q1 and Q2 are separate SEC filings from the same reporting manager; the five Q2 ETF rows are not independent confirmations of the same exposure."
+  },
+  "correction": {
+    "secondary_claim": "Goldman Sachs Group Inc holds approximately $86.5M of XRP ETFs.",
+    "corrected_claim": "Goldman Sachs Group Inc's Q2 2026 Form 13F-HR reports five XRP ETF-share positions totaling $86,506,129; each Q2 position row assigns Other Manager No. 1, Goldman Sachs & Co. LLC. The Q1 2026 information table contains no XRP-named row, so this is the first observed reportable appearance in these sequential filings, not proof of a proprietary purchase.",
+    "unresolved": "The filing does not establish whether these positions are proprietary, client, advisory, or otherwise beneficially owned by Goldman Sachs Group Inc. The filing does not establish current holdings after 2026-06-30."
+  },
+  "limitations": [
+    "A 13F is a delayed quarter-end snapshot; this report was filed 45 days after 2026-06-30.",
+    "It reports specified long reportable securities and does not provide a complete view of shorts, futures, most non-U.S. instruments, or direct XRP-token custody.",
+    "ETF shares are not equivalent to XRP held by the reporting manager.",
+    "The included-manager attribution is not proof of beneficial ownership or proprietary investment.",
+    "This observation is not a primary-market ETF creation/redemption flow.",
+    "Q1 absence is an exact search of the Q1 13F information table for XRP-named rows; it cannot exclude unreported, non-13F, private, derivative, short, offshore, or indirect exposure."
+  ],
+  "actual_capital_classification": "Reported ETF-share securities exposure; not verified XRP-token capital deployment.",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "admission_reason": "A single delayed 13F filing is an institutional ownership/manager-attribution observation, not a synchronized spot-flow feature. Preserve as point-in-time research context only.",
+  "prior_quarter_comparison": {
+    "q1": {
+      "form": "13F-HR",
+      "accession": "0000886982-26-000274",
+      "filing_date": "2026-05-15",
+      "report_period_end": "2026-03-31",
+      "information_table_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+      "primary_document_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/primary_doc.xml",
+      "information_table_entries": 13579,
+      "information_table_value_total_usd": 870939686922,
+      "exact_search_term": "XRP",
+      "exact_search_result": "No matching text found for XRP",
+      "xrp_named_information_table_row_count": 0,
+      "included_manager_no_1": "GOLDMAN SACHS & CO. LLC",
+      "included_manager_no_1_cik": "0000769993",
+      "included_manager_count": 8,
+      "q1_cusip_search_results": [
+        {
+          "cusip": "90137T103",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "ab436af5434186ffffb3287df468cbab356b6773fff3fca09a3d4cdc6da26df9"
+        },
+        {
+          "cusip": "09174F107",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "f181ace165042bc1dbbca69966964bf9777488438dafc5d44b0b48a60e312b81"
+        },
+        {
+          "cusip": "13723M100",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "ebc0ad67ee3fff2aeee9e41be66fa6bf61dca8580745e075b0d488d9a3c4c35d"
+        },
+        {
+          "cusip": "355233107",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "f5d98089f4418da9c28f535ab4ccfa3408704ef841ea0d343d517ee34d73c327"
+        },
+        {
+          "cusip": "38965L106",
+          "result": "No matching text found",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/xslForm13F_X02/InfoTable_20260513_FinalV.xml",
+          "normalized_search_record_sha256": "40754ab0733b8c62965db5fb6b54b5886a19fd30cf9e076e3bbf219290eb98ce"
+        }
+      ],
+      "q1_no_q2_cusips_present": true
+    },
+    "q2": {
+      "accession": "0000886982-26-000519",
+      "filing_date": "2026-08-14",
+      "report_period_end": "2026-06-30",
+      "xrp_named_information_table_row_count": 5,
+      "aggregate_reported_value_usd": 86506129,
+      "included_manager_no_1": "GOLDMAN SACHS & CO. LLC",
+      "included_manager_no_1_cik": "0000769993"
+    },
+    "temporal_interpretation": "The five Q2 2026 XRP ETF-share rows were absent from the Q1 2026 information table by both issuer-name search (XRP) and exact searches for all five Q2 CUSIPs. This supports first observed reportable appearance between the Q1 and Q2 quarter-end snapshots; it does not prove purchases, beneficial ownership, parent-company proprietary exposure, or the reason for the change.",
+    "comparability_limit": "Both filings are from the same parent reporting manager and share the same included-manager No. 1 identity. They are sequential snapshots, not independent confirmations."
+  }
+}

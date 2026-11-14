@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "japan_sbic_east_central_west_primary_identity_reconciliation",
+  "artifact_id": "20261107T130152Z-japan-sbic-east-central-west-primary-identity",
+  "captured_at_utc": "2026-11-07T13:01:52Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "parent_graph_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "identity_resolution": {
+    "conclusion": "SBIC East, SBIC Central and SBIC West are the regional English identifiers of three separate Japanese Small and Medium Business Investment & Consultation companies created under the Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963). They are not SBI Holdings, Inc. The acronym overlap is not evidence of common ownership or an XRP relationship.",
+    "statutory_basis": {
+      "law_name_ja": "中小企業投資育成株式会社法",
+      "law_name_en": "Small and Medium Business Investment & Consultation Companies Act",
+      "law_id": "338AC0000000101",
+      "act_number": "Act No. 101 of 1963",
+      "promulgated": "1963-06-10",
+      "article_2": "Names exactly three companies: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with principal offices in Tokyo, Nagoya and Osaka respectively.",
+      "article_3": "Restricts use of the statutory company name to companies covered by the Act.",
+      "primary_source": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/houritsu/04319630610101.htm",
+      "current_law_reference": "https://laws.e-gov.go.jp/law/338AC0000000101",
+      "source_note": "The House of Representatives page reproduces the enacted 1963 statute. The e-Gov law page confirms the law identifier/current-law record; its browser rendering did not expose readable article text in this capture."
+    },
+    "regional_entities": [
+      {
+        "entity_id": "SBIC_EAST_JAPAN",
+        "legal_name_ja": "東京中小企業投資育成株式会社",
+        "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_identifier": "SBIC East Japan",
+        "official_profile": "https://www.sbic.co.jp/company/profile/",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "headquarters": "Shibuya, Tokyo",
+        "operating_area": "Shizuoka, Nagano, Niigata and eastward; 18 prefectures and related areas, per the company's profile.",
+        "ownership_disclosure": "The profile describes shareholders by category: local governments (18 prefectures), chambers of commerce, financial institutions and operating companies. This is not a complete shareholder register.",
+        "sister_companies": [
+          "SBIC_CENTRAL_JAPAN",
+          "SBIC_WEST_JAPAN"
+        ],
+        "evidence_class": "PRIMARY_COMPANY_PROFILE"
+      },
+      {
+        "entity_id": "SBIC_CENTRAL_JAPAN",
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_identifier": "SBIC Central Japan",
+        "official_profile": "https://www.sbic-cj.co.jp/company/about/",
+        "established": "1963-11-18",
+        "headquarters": "Nagoya, Aichi",
+        "operating_area": "Aichi, Gifu, Mie, Toyama and Ishikawa (the five Chubu prefectures identified by the company).",
+        "sister_companies": [
+          "SBIC_EAST_JAPAN",
+          "SBIC_WEST_JAPAN"
+        ],
+        "evidence_class": "PRIMARY_COMPANY_PROFILE"
+      },
+      {
+        "entity_id": "SBIC_WEST_JAPAN",
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "regional_identifier": "SBIC West Japan",
+        "official_profile": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "established": "1963-11-20",
+        "headquarters": "Osaka, Osaka",
+        "operating_area": "Fukui, Shiga, Nara, Wakayama and westward; 24 prefectures, per the company profile.",
+        "sister_companies": [
+          "SBIC_EAST_JAPAN",
+          "SBIC_CENTRAL_JAPAN"
+        ],
+        "evidence_class": "PRIMARY_COMPANY_PROFILE"
+      }
+    ],
+    "separate_sbi_holdings_entity": {
+      "legal_name_ja": "SBIホールディングス株式会社",
+      "legal_name_en": "SBI Holdings, Inc.",
+      "official_profile": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "established": "1999-07-08",
+      "headquarters": "Roppongi, Minato-ku, Tokyo",
+      "principal_business": "Control and management of the SBI Group through share ownership.",
+      "as_of_date": "2026-06-26",
+      "evidence_class": "PRIMARY_CORPORATE_PROFILE",
+      "distinction": "SBI Holdings is a separate financial-services holding company established in 1999. The three SBIC regional companies are named separately in Act No. 101 of 1963 and identify one another as sister companies. No SBI Holdings parent/subsidiary relationship is established by the official profiles reviewed."
+    },
+    "relationship_to_sbi_holdings": {
+      "status": "NO_PARENT_OR_SUBSIDIARY_LINK_ESTABLISHED_IN_REVIEWED_PRIMARY_SOURCES",
+      "interpretation": "Do not treat SBIC East/Central/West as SBI Holdings, SBI VC Trade, SBI Shinsei Bank or SBI Crypto. Do not infer common control from the letters SBIC/SBI.",
+      "caveat": "This is a scoped source conclusion, not a claim that every possible historical transaction or minority shareholding has been exhaustively ruled out."
+    }
+  },
+  "chatgpt_phrase_reconciliation": {
+    "original_phrase": "SBIC, ChatGPT SBIC",
+    "status": "ORIGINAL_REFERENT_NOT_CONFIRMED",
+    "verified_contexts": [
+      {
+        "entity": "SBIC East Japan / Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "source": "https://www.sbic.co.jp/training/20250612co/",
+        "event_date": "2025-06-12_to_2025-06-13",
+        "evidence": "An official two-day generative-AI and machine-learning training course for investee companies explicitly includes ChatGPT use, with Copilot and other generative-AI topics.",
+        "interpretation": "Training content for investee companies; not an OpenAI partnership, licensing deal or XRP relationship."
+      },
+      {
+        "entity": "SBIC West Japan / Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "source": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "event_date": "2024",
+        "evidence": "An official SBIC West seminar flyer discusses introductory generative AI and ChatGPT for accounting firms and support organizations.",
+        "interpretation": "Seminar/training context; not an OpenAI partnership, licensing deal or XRP relationship."
+      }
+    ],
+    "hypothesis": "The phrase may refer to Japanese SBIC regional companies using ChatGPT in investee-company or professional training. The original utterance/source context is unavailable, so the intended referent remains unconfirmed."
+  },
+  "sbi_holdings_chatgpt_distinction": {
+    "separate_relationship": "SoftBank Group Corp. and OpenAI announced an enterprise AI partnership and later formed SB OAI Japan GK.",
+    "primary_sources": [
+      "https://group.softbank/en/news/press/20250203_0",
+      "https://group.softbank/en/news/press/20251105"
+    ],
+    "interpretation": "SoftBank Group/SB OAI Japan is a distinct corporate relationship. It must not be conflated with the statutory SBIC East/Central/West companies or with SBI Holdings, Inc."
+  },
+  "xrp_relationship_assessment": {
+    "status": "NO_DIRECT_XRP_RIPPLE_COINBASE_CIRCLE_OR_SBI_VC_TRADE_RELATIONSHIP_ESTABLISHED_FOR_THE_THREE_SBIC_REGIONAL_COMPANIES",
+    "scope": "Official company profiles, statutory identity and the scoped public phrase search.",
+    "caveat": "Absence in this scoped review is not proof that no regional company has ever held an indirect investment in a company with digital-asset exposure. No direct SBIC-to-XRP, Ripple, custody, trading, payment or partnership edge is admitted."
+  },
+  "exact_phrase_followups": {
+    "ask_coin": {
+      "status": "AMBIGUOUS_MULTIPLE_CANDIDATES",
+      "finding": "Permission Coin's ASK token is a separate token from the previously identified inactive/untracked Ask Coin exchange listing. The current CoinMarketCap Permission Coin page identifies ASK as Permission's native utility token. No direct XRP link was established.",
+      "source": "https://coinmarketcap.com/currencies/permission-coin/"
+    },
+    "actual_capital": {
+      "status": "ORIGINAL_CONTEXT_UNRESOLVED",
+      "finding": "This run found no issuer-primary exact-phrase source that changes the prior conclusion. Keep market capitalization, announced financing capacity, cash received, cash deployed and XRP purchased as separate fields."
+    }
+  },
+  "provenance_policy": {
+    "primary_sources": [
+      "Japanese statute page from the House of Representatives",
+      "Official Tokyo SBIC company profile",
+      "Official Nagoya SBIC company profile",
+      "Official Osaka SBIC company profile",
+      "Official SBI Holdings corporate profile",
+      "Official SBIC training pages",
+      "Official SoftBank Group/OpenAI releases"
+    ],
+    "independence": "The three SBIC profiles are primary sources from the respective legal entities, but they are not statistically independent of the common statutory framework. SoftBank/OpenAI releases establish a separate corporate relationship.",
+    "raw_webpage_bytes_retained": false,
+    "limitation": "The web retrieval interface supplied normalized page text rather than original HTTP response bodies and headers; no raw-page SHA-256 is claimed."
+  },
+  "model_admission": {
+    "admitted_to_price_features": false,
+    "admitted_to_forecast_features": false,
+    "use": "Entity-resolution and event-context graph only.",
+    "reason": "Legal-entity identity and ChatGPT training mentions are not XRP price, liquidity, flow, collateral or demand observations."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  }
+}

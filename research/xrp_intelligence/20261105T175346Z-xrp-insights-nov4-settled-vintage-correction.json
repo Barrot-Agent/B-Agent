@@ -1,0 +1,102 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "xrp_insights_nov4_settled_vintage_correction_20261105T175346Z",
+  "recorded_at_utc": "2026-11-05T17:53:46Z",
+  "research_cutoff_utc": "2026-11-05T17:53:46Z",
+  "supersedes_artifact_id": "xrp_spot_derivatives_macro_etf_vintage_update_20261105T173050Z",
+  "correction_scope": "Replace only the XRP Insights ETF vintage fields in the earlier 17:30 market artifact. The earlier value was taken from a stale search/rendered snapshot; the publisher's direct JSON metadata and live dashboard exposed a later Nov 4 settled vintage.",
+  "source_registry": [
+    {
+      "source_id": "xrp_insights_direct_json_metadata",
+      "publisher": "XRP Insights",
+      "source_type": "publisher_json_metadata",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "retrieved_at_utc": "2026-11-05T17:53:46Z",
+      "publisher_generated_at_utc": "2026-11-05T17:30:10.730Z",
+      "data_as_of": "2026-11-04",
+      "latest_row_date": "2026-11-04",
+      "provisional_row_date": null,
+      "coverage": {
+        "trading_days": 229,
+        "rows": 1583
+      },
+      "primary_source_status": "publisher dataset metadata; holdings inputs are scraped from issuer websites",
+      "raw_bytes_preserved": false,
+      "raw_source_sha256": null
+    },
+    {
+      "source_id": "xrp_insights_live_dashboard_nov4_totals",
+      "publisher": "XRP Insights",
+      "source_type": "publisher_dashboard_aggregate",
+      "url": "https://xrp-insights.com/data",
+      "retrieved_at_utc": "2026-11-05T17:53:46Z",
+      "publisher_updated_at_utc": "2026-11-05T17:43:53Z",
+      "data_as_of": "2026-11-04",
+      "aggregate": {
+        "net_flow_xrp_nov2_to_nov4": -259701,
+        "settled_trading_days": 3,
+        "total_holdings_xrp_nov4": 1196340485,
+        "approx_net_flow_usd": -334000
+      },
+      "methodology": "Sum of daily holdings changes across funds with computed flows; flow-excluded funds count as zero."
+    },
+    {
+      "source_id": "cryptokeyhole_lagging_vintage_crosscheck",
+      "publisher": "CryptoKeyhole",
+      "source_type": "four_fund_etf_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "retrieved_at_utc": "2026-11-05T17:53:46Z",
+      "data_as_of": "2026-11-03",
+      "funds_covered": 4,
+      "interpretation": "A different fund universe and an older complete date; not averaged with XRP Insights Nov 4 aggregate."
+    }
+  ],
+  "corrected_current_vintage": {
+    "publisher": "XRP Insights",
+    "data_as_of": "2026-11-04",
+    "generated_at_utc": "2026-11-05T17:30:10.730Z",
+    "latest_row_date": "2026-11-04",
+    "provisional_row_date": null,
+    "net_flow_xrp_nov2_to_nov4": -259701,
+    "settled_trading_days": 3,
+    "total_holdings_xrp_nov4": 1196340485,
+    "approx_net_flow_usd": -334000
+  },
+  "earlier_stale_snapshot_preserved": {
+    "artifact_id": "xrp_spot_derivatives_macro_etf_vintage_update_20261105T173050Z",
+    "data_as_of": "2026-11-03",
+    "net_flow_xrp_nov2_to_nov3": -194875,
+    "settled_trading_days": 2,
+    "total_holdings_xrp": 1196405311,
+    "nov4_row_status": "provisional_until_re_settled",
+    "status": "HISTORICAL_RETRIEVAL_VINTAGE_NOT_CURRENT"
+  },
+  "reconciliation": {
+    "difference_in_displayed_total_holdings_xrp": -64826,
+    "assignment": "Not assigned to the Nov 4 daily flow alone. The earlier value came from a stale search/rendered snapshot; fund-level row payloads were not captured for a row-by-row comparison.",
+    "current_source_priority": "Use the direct XRP Insights JSON metadata and dashboard page over the stale search snippet.",
+    "source_disagreement": "CryptoKeyhole remains on a Nov 3 four-fund complete vintage. Its values are not directly comparable to the Nov 4 seven-fund-plus-BITW XRP Insights universe."
+  },
+  "methodology_and_limits": {
+    "flow_definition": "Daily flow is the change in issuer-reported XRP holdings versus the previous trading day; this is holdings-derived, not a direct issuer/AP cash creation-redemption ledger.",
+    "gxrp_exclusion": "GXRP flow is withheld across the history because a known issuer-page capture gap caused frozen holdings and a later catch-up; GXRP holdings and AUM remain in totals, while excluded flow contributes zero.",
+    "bitw": "BITW is a multi-asset index fund; only its XRP sleeve is counted and holdings can move with index rebalancing.",
+    "xrpr": "Part of REX-Osprey's reported XRP exposure is held indirectly through another XRP exchange-traded product.",
+    "reconstructed_rows": "Some historical periods are reconstructed from third-party daily flow estimates between issuer-reported anchor days; daily splits are estimates.",
+    "other_non_creation_changes": "Holdings changes from fee accruals paid in XRP or index rebalancing can be counted as flow.",
+    "cash_flow_status": "No direct AP cash creation/redemption records were retrieved."
+  },
+  "source_capture_policy": {
+    "byte_exact_json_or_csv_preserved": false,
+    "raw_source_sha256_receipts": null,
+    "independent_timestamp_anchor": false,
+    "model_eligible": false,
+    "forecast_issued": false,
+    "reason": "The publisher JSON metadata and dashboard were inspected through rendered web retrieval; the CSV endpoint rejected the web fetch and no byte-exact payload was archived."
+  },
+  "next_actions": [
+    "Capture the direct JSON and CSV through the approved public-data adapter with byte-exact SHA-256 receipts and generated_at/retrieved_at fields.",
+    "Compare Nov 2, Nov 3 and Nov 4 per-fund rows against issuer-reported holdings/NAV pages.",
+    "Keep XRP Insights and CryptoKeyhole as distinct source universes; do not average or equate holdings deltas with AP cash."
+  ]
+}

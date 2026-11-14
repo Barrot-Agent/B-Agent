@@ -1,0 +1,234 @@
+{
+  "schema_version": "barrot.xrp.research-evidence.v1",
+  "run_id": "run127",
+  "recorded_at_utc": "2026-11-14T13:33:22.940Z",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "integration_branch": "integration/xrp-v3-unified-main-20261112",
+  "integration_head_before_handoff_update": "894a6c99ebf3fcccce9eb6b37744b224c9103d2d",
+  "market_observations": {
+    "capture_method": "Public exchange API responses rendered through a web retrieval layer. Original HTTP response bytes and exact retrieval timestamps were not retained by that layer.",
+    "model_eligible": false,
+    "synchronization_policy_seconds": 300,
+    "synchronization_result": {
+      "status": "FAIL",
+      "bybit_event_time_utc": "2026-11-14T13:06:21.301Z",
+      "okx_event_time_utc": "2026-11-14T13:16:57.663Z",
+      "event_time_skew_seconds": 636.362,
+      "kraken_event_time_utc": null,
+      "reason": "Bybit and OKX exceed the 300-second join window; Kraken ticker response has no provider event timestamp; USDT/USD normalization is absent."
+    },
+    "observations": [
+      {
+        "source_id": "kraken_spot_ticker",
+        "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "quote_currency": "USD",
+        "provider_event_time_utc": null,
+        "retrieval_time_utc": null,
+        "last": 0.98858,
+        "best_bid": 0.98808,
+        "best_ask": 0.98818,
+        "spread_bps": 1.0120125894,
+        "best_bid_size_xrp": 338,
+        "best_ask_size_xrp": 3217,
+        "volume_24h_xrp": 38346513.88933299,
+        "vwap_24h": 1.00414774,
+        "high_24h": 1.04269,
+        "low_24h": 0.97747,
+        "response_excerpt_sha256": "c72193eb1fbb5261e6fef5325be440134b073f60595aad19f94152994a9d570f",
+        "hash_scope": "SHA-256 of the normalized response excerpt reproduced from the retrieval result; not a raw-wire-byte hash.",
+        "model_eligible": false,
+        "eligibility_reason": "No provider event timestamp and no exact retrieval timestamp. Top-of-book only; no synchronized feature admission."
+      },
+      {
+        "source_id": "okx_spot_ticker",
+        "source_uri": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "quote_currency": "USDT",
+        "provider_event_time_utc": "2026-11-14T13:16:57.663Z",
+        "provider_timestamp_ms": 1794662217663,
+        "retrieval_time_utc": null,
+        "last": 0.9896,
+        "best_bid": 0.9899,
+        "best_ask": 0.99,
+        "spread_bps": 1.0101520279,
+        "best_bid_size_xrp": 2721.436981,
+        "best_ask_size_xrp": 5403.573711,
+        "open_24h": 1.019,
+        "high_24h": 1.0438,
+        "low_24h": 0.9794,
+        "volume_24h_xrp": 45002513.440952,
+        "turnover_24h_usdt": 45274368.6341195,
+        "change_24h_pct": -2.8851815505,
+        "response_excerpt_sha256": "29385dc5b01fac62d132b9d87d4cada1a6e8fc48ce106fef1425fa9d5db4093a",
+        "hash_scope": "SHA-256 of the normalized response excerpt reproduced from the retrieval result; not a raw-wire-byte hash.",
+        "model_eligible": false,
+        "eligibility_reason": "Provider event time is 636.362 seconds after the Bybit event time; no USDT/USD normalization or exact retrieval timestamp."
+      },
+      {
+        "source_id": "bybit_spot_ticker",
+        "source_uri": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "quote_currency": "USDT",
+        "provider_event_time_utc": "2026-11-14T13:06:21.301Z",
+        "provider_timestamp_ms": 1794661581301,
+        "retrieval_time_utc": null,
+        "last": 0.9884,
+        "best_bid": 0.9883,
+        "best_ask": 0.9884,
+        "spread_bps": 1.0117873223,
+        "best_bid_size_xrp": 5056.45,
+        "best_ask_size_xrp": 1431.3,
+        "previous_price_24h": 1.0195,
+        "change_24h_pct": -3.05,
+        "high_24h": 1.0436,
+        "low_24h": 0.9797,
+        "volume_24h_xrp": 44174385.23,
+        "turnover_24h_usdt": 44373995.078891,
+        "usd_index_price": 0.987371,
+        "response_excerpt_sha256": "336dc93885473beb11267c4ac4ea4098663784282376aa095acca09eaa872fee",
+        "hash_scope": "SHA-256 of the normalized response excerpt reproduced from the retrieval result; not a raw-wire-byte hash.",
+        "model_eligible": false,
+        "eligibility_reason": "Provider event time is 636.362 seconds before the OKX event time; no USDT/USD normalization or exact retrieval timestamp."
+      }
+    ],
+    "depth_status": "NOT_OBTAINED",
+    "depth_note": "This one-off retrieval returned ticker/top-of-book observations only. It did not provide a synchronized multi-level order book, executable depth or sequence continuity. This does not validate or invalidate the repository's exchange depth adapters.",
+    "interpretation": "Venue quotes and 24-hour windows are not averaged. The small quoted spreads are top-of-book observations, not proof of executable size or market-wide liquidity. No directional inference."
+  },
+  "evernorth_sec_primary_reconciliation": {
+    "issuer": "Evernorth Holdings Inc.",
+    "filing_type": "Form 10-Q",
+    "period_end": "2026-09-30",
+    "filing_date": "2026-11-13",
+    "source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+    "quarter_end_facts": {
+      "unrestricted_cash_usd": 91397,
+      "net_working_capital_deficit_usd_approx": 10000000,
+      "accumulated_deficit_usd": 185587435,
+      "xrp_units": 346284972
+    },
+    "post_close_facts": {
+      "business_combination_close_date": "2026-10-09",
+      "gross_cash_proceeds_usd": 272600000,
+      "private_placement_cash_usd": 224600000,
+      "trust_account_release_usd": 48000000,
+      "cash_proceeds_before_transaction_expenses": true,
+      "in_kind_xrp_contributions": 388910554,
+      "xrp_transferred_to_pathfinder": 346484972,
+      "in_kind_contribution_transfer_difference_xrp": 42425582,
+      "difference_reconciled": false,
+      "convertible_note_principal_usd": 30000000,
+      "convertible_note_net_cash_proceeds_usd": 29000000,
+      "convertible_note_effective_date": "2026-10-13",
+      "convertible_note_coupon_pik_pct": 4,
+      "warrant_exercises_through": "2026-11-09",
+      "warrants_exercised": 3073366,
+      "warrant_gross_proceeds_usd": 35300000,
+      "warrants_remaining": 8666279
+    },
+    "earlier_private_placement_deployment": {
+      "cash_raised_usd": 214100000,
+      "xrp_purchased_with_that_cash": 84365876,
+      "classification": "Issuer filing explicitly states that the $214.1M cash proceeds were used to purchase 84,365,876 XRP."
+    },
+    "eloc": {
+      "agreement_date": "2026-10-23",
+      "registration_effective_date": "2026-10-30",
+      "maximum_shares": 5218935,
+      "purchase_price_pct_of_vwap": 97,
+      "prospectus_cover_gross_capacity_usd_approx": 76800000,
+      "prospectus_use_of_proceeds_gross_capacity_usd_approx": 80700000,
+      "prospectus_net_capacity_usd_approx": 74400000,
+      "actual_sales_disclosed_in_reviewed_10q": false,
+      "classification": "Potential equity-facility capacity, not verified cash received. Preserve the $76.8M cover estimate and $80.7M use-of-proceeds estimate as a prospectus inconsistency."
+    },
+    "ownership_changes": {
+      "ripple_status_as_of_2026_09_30": "Wholly owned subsidiary",
+      "ripple_status_after_2026_10_09": "No longer wholly owned or controlled by Ripple; related-party relationship remains.",
+      "ripple_class_a_shares_at_close": 1678382,
+      "ripple_pathfinder_units_at_close": 16461545,
+      "ripple_plus_affiliate_ownership_cap_pct": 9.9,
+      "sbi_affiliated_investor_class_a_shares_at_close": 11748249,
+      "sbi_affiliated_investor_class_c_shares_at_close": 2359038,
+      "sbi_affiliated_investor_class_a_threshold_pct": 39.9,
+      "sbi_39_9_pct_is_actual_ownership": false
+    },
+    "prior_473m_xrp_claim": {
+      "status": "UNRECONCILED",
+      "reason": "The reviewed 10-Q reports 346,284,972 XRP at September 30 and a 346,484,972 XRP transfer to Pathfinder after closing. It separately reports 388,910,554 XRP contributed in kind at closing. The 473M claim is not corroborated by this filing; do not use it as a verified holding until a current holdings bridge is obtained."
+    },
+    "capital_classification": {
+      "actual_reported_cash_events": [
+        "$272.6M gross cash at business-combination closing before transaction expenses",
+        "$29.0M net proceeds from the $30.0M convertible note",
+        "$35.3M gross cash proceeds from 3,073,366 warrant exercises through November 9"
+      ],
+      "actual_xrp_purchase_evidence": [
+        "$214.1M of earlier private-placement cash was used to purchase 84,365,876 XRP"
+      ],
+      "not_proven_to_be_xrp_purchases": [
+        "$272.6M closing cash proceeds",
+        "$29.0M net convertible-note proceeds",
+        "$35.3M warrant proceeds"
+      ],
+      "non_cash_or_non_spot_flow": [
+        "388,910,554 XRP in-kind contributions"
+      ],
+      "not_actual_proceeds": [
+        "$76.8M/$80.7M ELOC capacity estimates; no actual ELOC sale proceeds disclosed in the reviewed 10-Q"
+      ]
+    },
+    "source_independence_note": "The 10-Q and the issuer's 424(b)(3) prospectus are primary issuer filings but are not independent sources."
+  },
+  "sbic_identity_reconciliation": {
+    "status": "PRIMARY_SOURCE_RESOLVED",
+    "entities": [
+      {
+        "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "designation": "SBIC East Japan",
+        "source_uri": "https://www.sbic.co.jp/company/profile/"
+      },
+      {
+        "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "designation": "SBIC Central Japan",
+        "source_uri": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      {
+        "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "designation": "SBIC West Japan",
+        "source_uri": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    ],
+    "distinction": "Three separate regional statutory investment-development companies. They are not SBI Holdings. Their official profiles identify one another as sister companies.",
+    "chatgpt_reference": {
+      "source_uri": "https://www.sbic.co.jp/training/20250612co/",
+      "finding": "Tokyo SBIC's official June 12-13, 2025 generative-AI and machine-learning training curriculum explicitly includes ChatGPT use.",
+      "audience": "SBIC investee companies; general companies were not eligible.",
+      "partnership_evidence": "No OpenAI partnership or commercial relationship established by the course page."
+    }
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "candidate": "Permission Coin (ticker ASK)",
+      "source_uri": "https://coinmarketcap.com/currencies/permission-coin/",
+      "xrp_relationship": "No verified XRP, Ripple, SBI or XRPL relationship identified in this search. Treat as a homonym/candidate, not an XRP asset."
+    },
+    "actual_capital": {
+      "result": "The SEC 10-Q provides actual cash and XRP events; the Cantor ELOC remains potential capacity, not verified proceeds.",
+      "source_uri": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+    },
+    "sbic_chatgpt_sbic": {
+      "result": "Official Tokyo SBIC training page confirms ChatGPT appeared in a regional SBIC training curriculum. No OpenAI partnership evidence."
+    },
+    "camilla_kamilah_stevenson": {
+      "channel_candidate": "https://www.youtube.com/@drkamilahstevenson",
+      "identity_status": "UNVERIFIED",
+      "reason": "Third-party directories and a Telegram profile point to the channel handle, but no official cross-link or identity proof was verified. Do not inventory channel videos yet.",
+      "previously_verified_event_video": "https://www.youtube.com/watch?v=VSgeDgOCexs"
+    }
+  },
+  "prediction_status": {
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "reason": "The exchange observations are not synchronized or raw-byte archived; the historical evaluator and candidate readiness gates remain incomplete; no trained XRP candidate or independent shadow cohort."
+  }
+}

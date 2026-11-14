@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "artifact_id": "japan-sbic-east-central-west-identity-resolution-20261106T211523Z",
+  "captured_at_utc": "2026-11-06T21:15:23Z",
+  "research_question": "Resolve Japanese SBIC East/Central/West identities, distinguish them from SBI Holdings, and determine what the Tokyo SBIC ChatGPT reference establishes.",
+  "findings": [
+    {
+      "id": "statutory_three_company_definition",
+      "status": "primary_statute_confirmed",
+      "statement": "Article 2 of the Small and Medium Business Investment & Consultation Companies Act, Act No. 101 of June 10, 1963, explicitly names exactly three companies: Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with offices in Tokyo, Nagoya and Osaka."
+    },
+    {
+      "id": "sbic_east",
+      "status": "primary_company_profile_confirmed",
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "regional_label": "SBIC East Japan",
+      "corporate_number": "9011001030621",
+      "incorporated": "1963-11-15",
+      "capital_jpy": 6673400000,
+      "shareholder_description": "Local governments in 18 prefectures, chambers of commerce, financial institutions and business companies.",
+      "service_region": "Shizuoka, Nagano and Niigata eastward, covering 18 prefectures and others.",
+      "official_url": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "sbic_central",
+      "status": "primary_company_profile_confirmed",
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "regional_label": "SBIC Central Japan",
+      "incorporated": "1963-11-18",
+      "capital_jpy": 4300800000,
+      "service_region": "Aichi, Gifu, Mie, Toyama and Ishikawa.",
+      "official_url": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    {
+      "id": "sbic_west",
+      "status": "primary_company_profile_confirmed",
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "regional_label": "SBIC West Japan",
+      "incorporated": "1963-11-20",
+      "capital_jpy": 6822000000,
+      "service_region": "Fukui, Shiga, Nara, Wakayama and 20 other prefectures westward.",
+      "official_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    {
+      "id": "sbi_holdings_distinction",
+      "status": "separate_legal_and_corporate_identity",
+      "statement": "SBI Holdings, Inc. is a separate holding company established July 8, 1999, whose stated principal business is control and management of SBI Group companies through share ownership. The three SBIC companies were established in 1963 under a separate statute; their official profiles identify one another as sister companies. The reviewed primary evidence does not establish that any of the three SBIC companies is a subsidiary or affiliate of SBI Holdings.",
+      "limits": [
+        "Do not infer corporate affiliation from the similar SBI/SBIC lettering.",
+        "This finding distinguishes the entities; it does not claim that no commercial relationship of any kind could ever exist without a separate agreement search."
+      ]
+    },
+    {
+      "id": "chatgpt_sbic_reference",
+      "status": "primary_training_listing_confirmed",
+      "statement": "Tokyo SBIC East Japan listed a two-day generative-AI and machine-learning training course for June 12–13, 2025. Its curriculum explicitly included ChatGPT use, Copilot, prompt/business use, APIs and no-code/low-code implementation. The fee and eligibility text says it was for investee companies and not generally open to other companies.",
+      "limits": [
+        "This is a training event, not evidence of an OpenAI partnership, procurement contract, joint product, model deployment or commercial investment relationship."
+      ]
+    },
+    {
+      "id": "acronym_collision",
+      "status": "separate_acronym_collision",
+      "statement": "The 2026 Seongnam International Biohealthcare Convention also uses the acronym SBIC, but it is unrelated to the Japanese three-company statutory group."
+    }
+  ],
+  "sources": [
+    {
+      "id": "law_article_2",
+      "publisher": "Osaka SBIC West Japan official site reproducing the Act",
+      "source_type": "primary_statute_text",
+      "url": "https://www.sbic-wj.co.jp/disclose/law/",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "6f6b60a04aca66cf7ed8371841dcfc6a1429970c5a7933d43b00af8efc3354a2",
+      "excerpt_bytes": 782,
+      "hash_scope": "SHA-256 of the stored normalized excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "中小企業投資育成株式会社法\n制定：昭和３８年６月１０日法律第１０１号\n最終改正：平成２６年６月２７日法律第　９１号\n（会社の目的）\n第１条\n中小企業投資育成株式会社は、中小企業の自己資本の充実を促進し、その健全な成長発展を図るため、中小企業に対する投資等の事業を行なうことを目的とする株式会社とする。\n（会社の数及び事務所）\n第２条\n中小企業投資育成株式会社（以下「会社」という。）は、東京中小企業投資育成株式会社、名古屋中小企業投資育成株式会社及び大阪中小企業投資育成株式会社とし、それぞれ本店を東京都、名古屋市及び大阪市に置く。"
+    },
+    {
+      "id": "tokyo_sbic_east_profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "primary_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "7628b39f52f7c891d89a9e91d334a32a49119ac54a44263e1a601d0d83c83e13",
+      "excerpt_bytes": 515,
+      "hash_scope": "SHA-256 of the stored normalized excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "商号 | 東京中小企業投資育成株式会社\nTokyo Small and Medium Business Investment & Consultation CO., LTD. （SBIC East Japan ）\n法人番号 | 9011001030621\n設立 | 昭和38年11月15日（1963年）\n資本金 | 66億7,340万円\n株主 | 地方公共団体（18都道県）、商工会議所、金融機関、事業会社など\n営業エリア | 静岡、長野、新潟以東の18都道県他\n姉妹会社 | 名古屋中小企業投資育成株式会社；大阪中小企業投資育成株式会社"
+    },
+    {
+      "id": "nagoya_sbic_central_profile",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "primary_company_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "2e6101d01cdf91133ba7b57baa8af5d222edd5193fcd01896c199622f4ed42ea",
+      "excerpt_bytes": 385,
+      "hash_scope": "SHA-256 of the stored normalized excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "商号 | 名古屋中小企業投資育成株式会社\nNagoya Small and Medium Business Investment & Consultation Co.,Ltd. (略称「SBIC Central Japan」)\n設立日 | 1963年11月18日\n資本金 | 43億80万円\n営業区域 | 愛知・岐阜・三重・富山・石川の中部5県\n姉妹会社 | 東京中小企業投資育成株式会社；大阪中小企業投資育成株式会社"
+    },
+    {
+      "id": "osaka_sbic_west_profile",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "primary_company_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "0e8bbdaa27ab0f3471dda7d2b4b60cc51b72f727f646239f5f42589e420be814",
+      "excerpt_bytes": 599,
+      "hash_scope": "SHA-256 of the stored normalized excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "商号 | 大阪中小企業投資育成株式会社\nOsaka Small and Medium Business Investment & Consultation Co.,Ltd（SBIC West Japan）\n設立 | 1963年（昭和38年）11月20日\n資本金 | 68億2,200万円\n営業エリア | 福井・滋賀・奈良・和歌山以西の24府県\n当社は、中小企業投資育成株式会社法に基づき、中小企業の自己資本の充実を促進し、その健全な成長発展を図るため、中小企業に対する投資などの事業を行うことを目的とする政策実施機関です。\n1984年 政府出資の優先株式消却完了"
+    },
+    {
+      "id": "tokyo_chatgpt_training",
+      "publisher": "Tokyo SBIC East Japan",
+      "source_type": "primary_company_training_listing",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "published_at": "2025-06-12/2025-06-13",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "2867105f4b64dfe53c29af45276bfb4432df0318fcdc608cd099c6b34d85d863",
+      "excerpt_bytes": 596,
+      "hash_scope": "SHA-256 of the stored normalized excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "本研修は終了しました\n製造業のための生成AI・機械学習入門研修（2日間）\n開催日 | 2025年06月12日(木)\n受講料 | 投資先企業：35,000円 / 一般企業：ご受講いただけません\n生成AIツールの種類と使い方\nChatGPTの使い方\nCopilot の様々な機能\nプロンプト応用・ビジネス活用\nAPIを利用したプログラミングでの実装\nノーコード・ローコードでの実装\n対象 | これから自社で生成AIや機械学習を取り入れたい初心者の方\n日程 | 2025年6月12日（木）～6月13日（金）"
+    },
+    {
+      "id": "sbi_holdings_profile",
+      "publisher": "SBI Holdings, Inc.",
+      "source_type": "primary_company_profile_search_excerpt",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "816d496cef01fad350f8d8e327771bf4579175543a3da91cbad958ff6e271e32",
+      "excerpt_bytes": 238,
+      "hash_scope": "SHA-256 of the stored normalized search-result excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "Corporate name: SBI Holdings, Inc.\nPrincipal business: Control and management of SBI Group through share ownership.\nDate of establishment: July 8, 1999.\nHead office: 1-6-1 Roppongi, Minato-ku, Tokyo.\nCorporate profile as of June 26, 2026."
+    },
+    {
+      "id": "seongnam_sbic_acronym_collision",
+      "publisher": "The VC listing citing Seongnam Industry Promotion Agency",
+      "source_type": "secondary_event_listing",
+      "url": "https://thevc.kr/grants/72efd146dfaa00a46bc1070d",
+      "retrieved_at_utc": "2026-11-06T21:15:23Z",
+      "excerpt_sha256": "b1de0abb4d6fefb10446118e9ee8023f78b9e54a51632622c0e2b44718d33589",
+      "excerpt_bytes": 449,
+      "hash_scope": "SHA-256 of the stored normalized listing excerpt, not complete page bytes",
+      "raw_source_bytes_retained": false,
+      "excerpt_text": "2026 Seongnam International Biohealthcare Convention (SBIC) participation-company recruitment listing.\nPublisher: The VC; organizer/agency named in listing: Seongnam Industry Promotion Agency.\nListing date: 2026-09-07. Eligibility: small and venture companies in the biohealthcare field located in Seongnam.\nThis is a separate convention acronym, not one of the three Japanese statutory Small and Medium Business Investment & Consultation companies."
+    }
+  ],
+  "data_quality": {
+    "raw_full_page_bytes_retained": false,
+    "hashes_cover": "Stored normalized excerpts or search-result excerpt only, not complete source pages or HTTP wire bytes.",
+    "primary_statute_source": true,
+    "primary_company_profiles": 4,
+    "model_eligibility": "identity_research_only_not_market_prediction_feature",
+    "forecast_issued": false
+  }
+}

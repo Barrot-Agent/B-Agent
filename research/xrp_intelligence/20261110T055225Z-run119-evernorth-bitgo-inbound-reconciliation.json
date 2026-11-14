@@ -1,0 +1,161 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "run_id": "run119",
+  "captured_at_utc": "2026-11-10T05:52:25Z",
+  "supersedes_run118": "Adds the second Oct 28 inbound transfer and primary SEC BitGo custody disclosure.",
+  "mission_priority": 1,
+  "preserved_foundation": "Barrot V3 execution, orchestration, safety, permissions and fail-closed verification",
+  "repository_state_before_commit": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_head": "a1fca1dab45c1ba50a73fa5201e7a215bbc795c2",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "pr1640": {
+      "ahead": 906,
+      "behind": 0,
+      "changed_paths": 238,
+      "state": "open"
+    },
+    "open_prs": 372,
+    "drafts": 356,
+    "non_drafts": 16
+  },
+  "exact_head_verification": {
+    "head": "a1fca1dab45c1ba50a73fa5201e7a215bbc795c2",
+    "full_ci": {
+      "run_id": 42764448841,
+      "conclusion": "success",
+      "tests_passed": 1347,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.48,
+      "coverage_floor_percent": 53,
+      "installed_wheel": "PASS",
+      "barrot_v3_import": "PASS",
+      "packaged_xrp_mission": "PASS"
+    },
+    "core_suite": "PASS",
+    "dependency_audit": {
+      "run_id": 42764448862,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42764448846,
+      "conclusion": "success",
+      "automatic_merge": "DISABLED"
+    },
+    "warnings": [
+      "Actions cache budget is read-only; cache save failed after tests and wheel verification.",
+      "Non-fatal setuptools metadata/package-discovery warnings."
+    ]
+  },
+  "sec_primary_custody_disclosure": {
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "filed": "2026-11-09",
+    "statements": [
+      "All XRP that Evernorth owns is initially held in custody accounts at BitGo Bank & Trust, N.A.",
+      "Custodial services contracts generally do not restrict reallocating XRP among custodians.",
+      "Evernorth says it does not actively trade XRP on digital asset markets.",
+      "Coinbase is selected as the principal market for XRP financial-reporting purposes."
+    ],
+    "interpretation": "This supports BitGo custody as the initial custody path and makes internal BitGo-to-BitGo reallocations plausible. It does not identify individual XRPL addresses or prove the beneficial owner of rUWUJ or rBKr."
+  },
+  "inbound_transfers": {
+    "source_account": {
+      "address": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+      "explorer_url": "https://bithomp.com/account/rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+      "bithomp_observation": "BitGo-created 2-of-3 multisig, activated 2019-09-09, approximately 25.6M XRP at page capture, 93 activated accounts; many destination-tagged movements. No public Evernorth or BitGo omnibus label."
+    },
+    "destination_account": {
+      "address": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "explorer_url": "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "bithomp_observation": "BitGo-created 2-of-3 multisig, activated 2026-10-20, approximately 96.2M XRP at page capture; no public Evernorth label."
+    },
+    "payments": [
+      {
+        "date_utc": "2026-10-23T02:47:00Z",
+        "ledger_index": 107840300,
+        "amount_xrp": 5223608.29,
+        "destination_tag": 2,
+        "source": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+        "destination": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "qeternal_url": "https://q-eternal.com/blog/2026-10-23/",
+        "classification": "UNATTRIBUTED_BITGO_TO_BITGO_TRANSFER"
+      },
+      {
+        "date_utc": "2026-10-28T18:02:02Z",
+        "ledger_index": 107963318,
+        "amount_xrp": 3846153.846152,
+        "destination_tag": 2,
+        "source": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+        "destination": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "qeternal_url": "https://q-eternal.com/blog/2026-10-29/",
+        "arithmetic_observation": "Amount equals 5,000,000 / 1.3 to six decimal places; this does not prove $5M consideration.",
+        "classification": "UNATTRIBUTED_BITGO_TO_BITGO_TRANSFER"
+      }
+    ],
+    "cumulative_xrp": 9069762.136152,
+    "qeternal_account_set_observations": [
+      {
+        "ledger_index": 107956087,
+        "date_utc": "2026-10-23",
+        "ten_account_total_xrp": 477900062.52
+      },
+      {
+        "ledger_index": 107977763,
+        "date_utc": "2026-10-28",
+        "ten_account_total_xrp": 481746216.37,
+        "other_nine_accounts": "unchanged per Q-Eternal"
+      }
+    ],
+    "qeternal_oct29_source": "https://q-eternal.com/blog/2026-10-29/",
+    "company_disclosure_comparison": {
+      "disclosed_holdings_as_of_closing_xrp": 473276430.423935,
+      "derived_ten_account_base_before_two_inbound_xrp": 472676454.233848,
+      "disclosed_holdings_less_600000_advance_subscriber_xrp": 472676430.423935,
+      "base_difference_xrp": 23.809913,
+      "ten_account_total_after_oct28_xrp": 481746216.37,
+      "above_disclosed_holdings_xrp": 8469785.946065,
+      "explanation": "The ten-account base before the two inbound transfers nearly equals disclosed holdings less the separate 600,000 XRP Advance Funding Subscriber tranche. After the two inbound transfers, the ten-account total is approximately 8.470M XRP above the company-reported closing amount. This arithmetic is compelling but depends on Q-Eternal's address grouping and does not prove beneficial ownership of every account."
+    },
+    "competing_hypotheses": [
+      {
+        "hypothesis": "Internal transfer of existing Evernorth XRP from another BitGo custody account",
+        "support": "SEC says all owned XRP initially held at BitGo; source and destination are BitGo-created multisigs; same destination tag; company says it does not actively trade XRP.",
+        "counterevidence": "No first-party address attestation; source account is not publicly named Evernorth."
+      },
+      {
+        "hypothesis": "Additional Evernorth XRP purchase or contribution not yet reflected in public holdings disclosure",
+        "support": "Two inbound transfers total 9.070M XRP; the second amount is exactly 5M/1.3; Q-Eternal ten-account balance increases while nine other accounts remain unchanged.",
+        "counterevidence": "No reviewed SEC filing or company announcement confirms the acquisition; source account is unlabeled and may serve multiple customers."
+      },
+      {
+        "hypothesis": "Third-party or shared BitGo custody funds moved into an account Q-Eternal attributes to Evernorth",
+        "support": "Source account has many destination-tagged transactions and no public owner label; BitGo-created multisig status does not identify beneficial ownership.",
+        "counterevidence": "Destination tranche balance and the SEC BitGo custody disclosure make Evernorth linkage plausible."
+      }
+    ],
+    "model_classification": "UNATTRIBUTED_BITGO_CUSTODY_INBOUND_POSSIBLE_TREASURY_ALLOCATION",
+    "model_eligible": false,
+    "no_exchange_sale_evidence": "No exchange destination or public sale execution was identified in these two transfers."
+  },
+  "prior_wallet_set_reorganization": {
+    "amount_reported_xrp": 370346663.22975004,
+    "classification": "PROBABLE_INTERNAL_BITGO_CUSTODY_REORGANIZATION_HIGH_CONFIDENCE",
+    "rule": "Not exchange netflow, sell pressure or tradable-float increase. Retain tracker row-sum, 2-XRP discrepancy, 16-vs-13 transaction-count mismatch and ledger-index/time inconsistency."
+  },
+  "next_steps": [
+    "Obtain XRPL transaction hashes for both inbound transfers and replay account_tx/account_info against validated ledgers 107840300 and 107963318 using an accessible public rippled endpoint or independent explorer.",
+    "Verify source/destination signer lists and multisig quorum without inferring signer identity.",
+    "Reconcile the 600,000 XRP Advance Funding Subscriber tranche and the ten-account set against the 473,276,430.423935 XRP company disclosure.",
+    "Check subsequent SEC filings and issuer announcements for any updated holdings or capital contribution.",
+    "Keep both inbound transfers and all wallet-set outflows out of model features until beneficial ownership and economic purpose are established."
+  ],
+  "provenance": {
+    "raw_http_wire_bytes_preserved": false,
+    "raw_ledger_bytes_preserved": false,
+    "transaction_hashes_directly_replayed": false,
+    "model_admitted": false
+  }
+}

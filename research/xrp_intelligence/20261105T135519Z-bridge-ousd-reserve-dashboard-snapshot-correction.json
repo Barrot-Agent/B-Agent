@@ -1,0 +1,59 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "bridge_ousd_reserve_dashboard_snapshot_correction_20261105T135519Z",
+  "artifact_type": "append_only_correction",
+  "title": "OUSD Bridge dashboard refresh: November 5 13:50 UTC supply, reserves and allocation reconciliation",
+  "recorded_at_utc": "2026-11-05T13:55:19.946Z",
+  "supersedes_scope": {
+    "prior_artifact": "research/xrp_intelligence/20261105T134900Z-open-standard-ousd-sbi-coinbase-circle-ripple-network-reconciliation.json",
+    "fields": [
+      "reserve_data_disagreement.bridge_live_dashboard"
+    ],
+    "original_artifact_modified": false
+  },
+  "source": {
+    "publisher": "Bridge",
+    "url": "https://reserves.bridge.xyz/ousd",
+    "snapshot_at_utc": "2026-11-05T13:50:00Z",
+    "source_independence_group": "bridge_issuer_dashboard",
+    "raw_bytes_preserved": false,
+    "sha256": null,
+    "model_eligible": false
+  },
+  "corrected_snapshot": {
+    "total_supply": 908727281,
+    "reserve_assets_usd": 910697171,
+    "overcollateralization_usd": 1969890,
+    "coverage_pct": 100.22,
+    "cash_usd": 114128250,
+    "cash_pct": 12.6,
+    "treasury_usd": 794609125,
+    "treasury_pct": 87.4,
+    "page_last_updated_utc": "2026-11-05T13:50:00Z",
+    "listed_attestation_months": [
+      "2026-08"
+    ]
+  },
+  "arithmetic_checks": {
+    "cash_plus_treasury_usd": 908737375,
+    "allocation_minus_supply_usd": 10094,
+    "reserve_total_minus_allocation_usd": 1959796,
+    "reserve_total_minus_supply_usd": 1969890,
+    "interpretation": "The dashboard's cash and Treasury line items do not sum to the displayed reserve-assets total; the difference is approximately the displayed overcollateralization, with an additional $10,094 rounding/line-item discrepancy. The page does not explain the unallocated surplus."
+  },
+  "conflict_with_marketing_page": {
+    "openusd_page_displayed_circulation_usd": 468000000,
+    "openusd_page_reserve_mix_as_of": "October 2026",
+    "openusd_page_cash_pct": 54.9,
+    "openusd_page_treasuries_pct": 45.1,
+    "precise_openusd_metric_timestamp": null,
+    "conclusion": "The Open Standard marketing page remains materially different from Bridge's timestamped live dashboard. Treat the marketing figure as stale or definitionally different pending a dated reconciliation; do not average."
+  },
+  "attestation_limit": "Bridge's page lists only an August 2026 attestation. OUSD was announced live on Solana on September 30, 2026; the August report predates launch and cannot attest November balances.",
+  "admission": {
+    "model_eligible": false,
+    "feature_admission": false,
+    "directional_forecast_issued": false,
+    "reason": "Rendered live dashboard only; no raw API bytes, SHA-256 receipt, or current independent attestation."
+  }
+}

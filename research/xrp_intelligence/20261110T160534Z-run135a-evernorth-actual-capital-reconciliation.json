@@ -1,0 +1,307 @@
+{
+  "artifact_type": "barrot_xrp_evernorth_actual_capital_reconciliation",
+  "schema_version": "1.0.0",
+  "artifact_id": "run135a_20261110T160534Z",
+  "captured_at_utc": "2026-11-10T16:05:34Z",
+  "data_cutoff_utc": "2026-11-10T16:00:00Z",
+  "mission_priority": 1,
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "source_capture": {
+    "raw_bytes_captured": false,
+    "raw_sha256_receipts_available": false,
+    "trusted_timestamp_anchor": false,
+    "model_eligible": false,
+    "reason": "This artifact records web-rendered source excerpts and public API observations. They were not captured by the repository's byte-complete collector; no raw-byte hash or immutable receipt is claimed."
+  },
+  "evernorth": {
+    "issuer": "Evernorth Holdings Inc.",
+    "sec_filing_date": "2026-11-09",
+    "sec_filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "measurement_date": "2026-10-09",
+    "reported_total_holdings_approx_xrp": "473000000",
+    "cash_and_xrp_subscriptions": {
+      "advance_funding_cash_raised_usd": "214049995",
+      "advance_funding_xrp_contributed": "600000",
+      "advance_funding_cash_used_to_purchase_xrp_usd_approx": "214000000",
+      "xrp_purchased_with_cash": "84365876.3625",
+      "average_purchase_price_usd": "2.53657058",
+      "cash_purchase_arithmetic_usd": "213999999.9370349",
+      "cash_raised_less_detailed_purchase_usd": "49995",
+      "cash_flow_restricted_cash_disclosed_usd_approx": "49995",
+      "note": "The exact Advance Funding cash received was $214,049,995. The identified purchase lot used approximately $214,000,000 to acquire 84,365,876.3625 XRP at $2.53657058 average. The remaining $49,995 was recorded as restricted cash and contractually required to purchase XRP at closing; the prospectus says it was used at closing but does not disclose the additional XRP quantity. Do not treat the $49,995 as unexplained or add a guessed XRP amount.",
+      "advance_funding_cash_received_usd": "214049995",
+      "residual_cash_purchase_at_close_usd": "49995",
+      "residual_cash_purchase_xrp_quantity": null,
+      "total_cash_deployed_to_xrp_usd": "214049995"
+    },
+    "in_kind_xrp_reconciliation": {
+      "advance_funding_xrp": "600000",
+      "series_c_arrington_xrp_capital_fund_xrp": "211319096.061435",
+      "ripple_affiliated_larsen_lam_childrens_remainder_trust_xrp": "50000000",
+      "ripple_direct_contribution_agreement_xrp": "126791458",
+      "delayed_funding_xrp": "200000",
+      "pubco_xrp_subtotal_xrp": "261919096.061435",
+      "total_in_kind_xrp": "388910554.061435",
+      "component_sum_xrp": "388910554.061435",
+      "exact_component_sum_matches": true,
+      "prior_200000_xrp_gap_status": "RESOLVED",
+      "explanation": "The 200,000 XRP is explicitly part of the Delayed Funding Subscription Agreements. The earlier apparent 200,000-XRP gap arose because that delayed-funding tranche was omitted from the component bridge. The 261,919,096.061435 Pubco XRP subtotal is 600,000 advance-funding XRP + 211,319,096.061435 Series C XRP + 50,000,000 XRP from the Ripple-affiliated trust. Adding Ripple's separate 126,791,458-XRP contribution and the 200,000-XRP delayed tranche reconciles the 388,910,554.061435 total."
+    },
+    "gross_closing_cash": {
+      "total_usd_approx": "272600000",
+      "private_placement_cash_usd_approx": "224600000",
+      "trust_account_release_usd_approx": "48000000",
+      "note": "Reported figures are rounded to approximately $224.6M private-placement cash and $272.6M gross closing cash. The $214,049,995 Advance Funding cash plus $10.5M Delayed Funding cash reconstructs $224,549,995, rounded to $224.6M; the $48M trust release is separate.",
+      "reconstructed_private_placement_cash_usd": "224550000",
+      "reconstructed_gross_cash_including_trust_usd": "272550000"
+    },
+    "related_party_facility": {
+      "lender": "Ripple",
+      "facility_limit_usd": "10000000",
+      "drawn_as_of_2026_10_07_usd": "9700000",
+      "classification": "DEBT",
+      "xrp_purchase_use_proven": false,
+      "facility_name": "Company Facility (Pathfinder)",
+      "post_close_repayment_status": "not disclosed",
+      "drawn_as_of_2026_06_30_usd": "6600000",
+      "repayment_term": "Within five business days after the 2026-10-09 Closing Date, or earlier upon five business days' notice of demand by Ripple",
+      "repayment_status": "UNKNOWN"
+    },
+    "convertible_notes": {
+      "gross_principal_usd": "30000000",
+      "net_cash_after_advisor_fee_usd": "29000000",
+      "advisor_fee_usd": "1000000",
+      "issue_date": "2026-10-12",
+      "stated_use": "General corporate purposes, including acquisition of XRP and other activities within the XRP ecosystem",
+      "specific_xrp_purchase_proven": false,
+      "conversion_and_put_risk": {
+        "possible_cash_settlement_usd_approx": "120000000",
+        "holder_conversion_choice": "After the one-year anniversary, the holder may elect cash, Pubco shares or a combination, subject to the note terms.",
+        "put_yield_on_default_or_fundamental_transaction": "8.0% per annum",
+        "issuer_prepayment_option": false,
+        "supply_risk": "The prospectus warns that cash obligations could require the company to sell XRP."
+      },
+      "disclosure_variance": "The narrative describes approximately $30M net proceeds before transaction expenses; the condensed financial statement note reports $29M net cash after a $1M capital-markets-advisor fee. Preserve both presentations; use $29M as the detailed after-fee cash figure.",
+      "counterparty": "NH Investment & Securities Co., Ltd., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+      "liquidity_risk": "The filing reports Evernorth's June 30 unrestricted cash of approximately $0.1M, net working-capital deficit of approximately $696.1M and accumulated deficit of approximately $340.9M. The note's potential cash settlement and other obligations could require XRP sales if external liquidity is unavailable; this is a contingent risk, not evidence of a current sale."
+    },
+    "committed_equity_facility": {
+      "counterparty": "CF Principal Investments LLC (Cantor)",
+      "maximum_shares": "5218935",
+      "proceeds_received_as_of_prospectus_usd": "0",
+      "upfront_commitment_fee_usd": "521893.50",
+      "fee_due": "Within five business days after the ELOC registration statement is declared effective",
+      "fee_payment_verified": false,
+      "classification": "UNDRAWN CONTINGENT EQUITY CAPACITY, NOT ACTUAL CAPITAL RECEIVED"
+    },
+    "derived_holdings_bridge": {
+      "known_component_subtotal_xrp": "473276430.423935",
+      "in_kind_xrp": "388910554.061435",
+      "cash_purchased_xrp_known_lot": "84365876.3625",
+      "residual_cash_purchase_at_close_usd": "49995",
+      "residual_cash_purchase_xrp_quantity": null,
+      "complete_total_xrp": null,
+      "third_party_tracker_total_xrp": "473276430.061435",
+      "tracker_capture_time": "not established in this artifact",
+      "difference_vs_known_component_subtotal_xrp": "0.3625",
+      "sec_reported_total": "Approximately 473 million XRP as of 2026-10-09",
+      "status": "Known-component subtotal only. The exact closing total cannot be reconstructed because the $49,995 residual cash purchase at closing has no disclosed XRP quantity. The 0.3625-XRP difference is only a comparison between the known subtotal and a third-party tracker figure whose capture time is not aligned; it is not a complete holdings discrepancy."
+    },
+    "current_price_sensitivity": {
+      "reference_venue": "Kraken XRP/USD",
+      "reference_price_usd": "1.04036",
+      "cash_purchased_tranche_mark_value_usd_approx": "87770883.13",
+      "original_detailed_purchase_cash_usd_approx": "214000000",
+      "conditional_return_pct_approx": "-58.9856",
+      "caveat": "Mechanical mark-to-market only, conditional on the original cash-purchased tranche remaining held and unhedged. It is not a realized loss, accounting impairment calculation or proof of current wallet retention."
+    },
+    "actual_capital_classification": [
+      "Settled cash raised and actually deployed to purchase XRP",
+      "In-kind XRP contributions by legal counterparty",
+      "Cash retained for operations or released from the SPAC trust",
+      "Related-party debt drawn",
+      "Convertible debt proceeds after fees",
+      "Undrawn contingent equity capacity",
+      "Commitment fees and transaction costs",
+      "Secondary resale proceeds, which do not accrue to the issuer"
+    ],
+    "evernorth_facility": {
+      "facility_name": "Evernorth Facility",
+      "lender": "Ripple Labs Inc.",
+      "facility_limit_usd": "1000000",
+      "drawn_as_of_2026_06_30_usd": "0",
+      "post_close_draw_status": "UNKNOWN",
+      "classification": "DEBT FACILITY; not equity or confirmed current XRP purchase"
+    },
+    "corrections": [
+      {
+        "correction_id": "kraken_rest_ticker_open_semantics",
+        "source_artifacts": [
+          "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+          "research/xrp_intelligence/20261104T131226Z-circle-q3-coinbase-ripple-bny-sbic-market-addendum.json"
+        ],
+        "prior_field": "open_24h_usd",
+        "correction": "The Kraken REST Ticker `o` field is today's UTC-day open, not a rolling 24-hour open. Kraken's official REST documentation states that today's prices start at midnight UTC.",
+        "correct_fields": {
+          "utc_day_open": "o",
+          "volume_24h": "v[1]",
+          "vwap_24h": "p[1]",
+          "trade_count_24h": "t[1]",
+          "low_24h": "l[1]",
+          "high_24h": "h[1]",
+          "rolling_24h_open": "not supplied by this REST endpoint"
+        },
+        "disposition": "Historical artifacts are preserved; do not use their open_24h_usd field as a rolling-24-hour return. This correction is authoritative for subsequent research."
+      },
+      {
+        "correction_id": "evernorth_cash_cost_and_facility_attribution",
+        "source_artifact": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+        "prior_issue": "The artifact combined $214.05M subscription cash with the exact XRP purchase quantity and average price, producing an inconsistent unit cost; the debt ledger also requires separate Ripple facilities and the NH/Kyobo note.",
+        "correction": "$214.05M is Advance Funding cash subscribed; the detailed cash-flow purchase is approximately $214.0M for 84,365,876.3625 XRP at $2.53657058. Ripple is lender on both the distinct $1M Evernorth Facility and $10M Company Facility; NH/Kyobo is counterparty to the separate $30M PIK notes.",
+        "disposition": "Historical artifact retained; this Run135A reconciliation supersedes the inconsistent cost-basis and facility mapping fields for current analysis."
+      },
+      {
+        "correction_id": "evernorth_residual_cash_purchase_and_close_holdings_scope",
+        "source_artifact": "research/xrp_intelligence/20261108T140510Z-evernorth-closing-capital-and-xrp-flow-reconciliation.json",
+        "correction": "The exact Advance Funding cash received was $214,049,995. The identified cash-funded lot used approximately $214,000,000 to buy 84,365,876.3625 XRP at $2.53657058. The remaining $49,995 was restricted cash and was used to purchase additional XRP at closing; the quantity is not disclosed. The known-component holdings subtotal therefore excludes an unknown residual XRP quantity and is not the exact closing total.",
+        "disposition": "Use this scope for all current capital and holdings analysis; preserve earlier rounded statements as historical."
+      }
+    ],
+    "liquidity_snapshot": {
+      "as_of": "2026-06-30",
+      "evernorth": {
+        "unrestricted_cash_usd_approx": "100000",
+        "net_working_capital_deficit_usd_approx": "696100000",
+        "accumulated_deficit_usd_approx": "340900000",
+        "loss_from_operations_usd": "265593724",
+        "net_loss_usd": "188134733",
+        "net_cash_used_in_operating_activities_usd": "1329805"
+      },
+      "pathfinder_company": {
+        "unrestricted_cash_usd_approx": "800000",
+        "net_working_capital_deficit_usd_approx": "3700000",
+        "accumulated_deficit_usd_approx": "3100000",
+        "loss_from_operations_usd_approx": "2200000"
+      },
+      "interpretation": "Issuer-reported liquidity and loss position at June 30, 2026. These figures increase financing and potential XRP-sale sensitivity but do not prove a current sale or insolvency."
+    }
+  },
+  "market_context": {
+    "spot_retrieval_utc": "2026-11-10T16:05:34Z",
+    "kraken_xrp_usd": {
+      "last": "1.04036",
+      "bid": "1.04050",
+      "ask": "1.04051",
+      "volume_24h_xrp": "32719105.64769339",
+      "provider_event_timestamp": null,
+      "utc_day_open_usd": "1.09748",
+      "open_24h_usd": null,
+      "open_field_semantics": "Kraken REST Ticker field o is today's opening price; Kraken documents that today's prices start at midnight UTC.",
+      "high_24h_usd": "1.11511",
+      "low_24h_usd": "1.03011",
+      "vwap_24h_usd": "1.07906869",
+      "last_vs_daily_open_pct": "-5.20465065",
+      "last_vs_24h_vwap_pct": "-3.58723132",
+      "position_in_24h_range_pct": "12.05882353"
+    },
+    "okx_xrp_usdt": {
+      "last": "1.0395",
+      "bid": "1.0395",
+      "ask": "1.0396",
+      "volume_24h_xrp": "77467120.861659",
+      "provider_event_timestamp_utc": "2026-11-10T15:55:07.267Z",
+      "open_24h_usdt": "1.1156",
+      "high_24h_usdt": "1.1164",
+      "low_24h_usdt": "1.0311",
+      "last_vs_open_24h_pct": "-6.82144138",
+      "position_in_24h_range_pct": "9.84759672"
+    },
+    "kraken_usdt_usd": "0.99899",
+    "normalized_okx_usd": "1.038450105",
+    "normalized_basis_vs_kraken_pct": "-0.1835802",
+    "note": "Asynchronous venue observations; Kraken supplied no event timestamp. Normalization is not an executable arbitrage signal."
+  },
+  "counter_hypotheses": [
+    "A decline in XRP can reflect macro repricing and leveraged long liquidation rather than new spot distribution.",
+    "Long liquidation prints are derivatives market orders and do not prove equivalent spot selling.",
+    "Exchange-wallet balance changes can reflect internal custody reclassification or customer withdrawals; the broad attributed-wallet total includes cold storage and wrapped-asset backing.",
+    "ETF holdings reductions may be cash or in-kind redemptions and do not prove exchange execution.",
+    "Evernorth's in-kind contributions are XRP transfers into treasury, not cash spot demand at the contribution date.",
+    "The convertible note's stated general-corporate use does not prove a new XRP purchase; conversely, the potential cash-settlement terms create a contingent future supply risk if cash is unavailable."
+  ],
+  "source_index": [
+    {
+      "source_id": "sec_evernorth_424b3_20261109",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "published_at_utc": "2026-11-09",
+      "source_independence_group": "SEC_primary_filing",
+      "raw_bytes_captured": false,
+      "model_eligible": false,
+      "primary_sections": [
+        "Private Placement Subscription Agreements",
+        "Contribution Agreement",
+        "Use of Proceeds",
+        "Committed Equity Facility",
+        "Convertible Notes",
+        "Cash Flows Used in Investing Activities"
+      ]
+    },
+    {
+      "source_id": "kraken_xrp_usd_ticker",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-10T16:05:34Z",
+      "provider_event_timestamp": null,
+      "source_independence_group": "exchange_direct_kraken",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "okx_xrp_usdt_ticker",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_timestamp_utc": "2026-11-10T15:55:07.267Z",
+      "retrieved_at_utc": "2026-11-10T16:05:34Z",
+      "source_independence_group": "exchange_direct_okx",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "kraken_usdt_usd_ticker",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "retrieved_at_utc": "2026-11-10T16:05:34Z",
+      "provider_event_timestamp": null,
+      "source_independence_group": "exchange_direct_kraken",
+      "raw_bytes_captured": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "kraken_rest_ticker_field_semantics",
+      "publisher": "Kraken Developers",
+      "url": "https://docs.kraken.com/api/docs/rest-api/get-ticker-information",
+      "retrieved_at_utc": "2026-11-10T16:20:00Z",
+      "primary_specification": true,
+      "source_independence_group": "kraken_official_api_specification",
+      "raw_bytes_captured": false,
+      "model_eligible": false,
+      "relevant_statement": "Today's prices start at midnight UTC."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "limitations": [
+    "No byte-complete raw-source receipt or SHA-256 raw-byte hash is claimed for these web-rendered observations.",
+    "The SEC filing is one primary source, not multiple independent sources.",
+    "The 200,000-XRP component gap is resolved by the disclosed delayed-funding tranche; the separate 0.3625-XRP tracker precision difference remains.",
+    "The detailed cash-purchase amount is approximately $214.0M; the $214.05M subscription cash and rounded $214.1M narrative are not treated as exact deployed cash.",
+    "No evidence proves the $29M after-fee convertible-note proceeds were used to buy XRP.",
+    "No ELOC proceeds had been received as of the November 9 prospectus.",
+    "Kraken REST Ticker field o is the UTC-day opening price, not a rolling 24-hour open. Historical artifacts containing open_24h_usd from this field are preserved but superseded for rolling-24-hour analysis.",
+    "The separate $1M Ripple Evernorth Facility (undrawn as of June 30) must not be confused with the $10M Ripple Company Facility (Pathfinder, $9.7M drawn as of October 7) or the $30M NH/Kyobo PIK notes.",
+    "The exact $214,049,995 Advance Funding cash receipt is separated into the identified approximately $214,000,000 purchase lot and a $49,995 restricted-cash residual used to purchase XRP at closing; the residual XRP quantity is undisclosed.",
+    "The 473,276,430.423935 XRP figure is only the known-component subtotal before the $49,995 closing purchase. Exact closing holdings cannot be reconstructed without the residual purchase quantity.",
+    "Evernorth's June 30, 2026 liquidity and loss figures are issuer-reported and are not current November 10 balances."
+  ]
+}

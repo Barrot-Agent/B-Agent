@@ -1,0 +1,89 @@
+{
+  "run_id": "run125b",
+  "captured_at_utc": "2026-11-10T08:46:00Z",
+  "code_test_head": "59aa9026d99f5a5a2712022cff3114d33daec594",
+  "exact_head_tests": 1355,
+  "exact_head_failures": 0,
+  "exact_head_subtests": 8,
+  "exact_head_coverage_percent": 59.48,
+  "exact_head_core_tests": 677,
+  "exact_head_ci_run": 42784659000,
+  "dependency_audit_run": 42784659072,
+  "fail_closed_gate_run": 42784659233,
+  "etf": {
+    "cryptokeyhole_partial_nov9_xrp": -9216552,
+    "cryptokeyhole_approx_usd": -10100000,
+    "coverage": "3 of 4 daily issuers",
+    "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+    "rendered_nav_aum_mismatch": {
+      "bitwise_reported_assets_m": 444.7,
+      "bitwise_nav_times_shares_m": 478.67584,
+      "bitwise_difference_percent": 7.6402,
+      "canary_reported_assets_m": 265.2,
+      "canary_nav_times_shares_m": 285.6568,
+      "canary_difference_percent": 7.7137
+    },
+    "conclusion": "Holdings/share values may be retained as provisional secondary issuer-file extractions; rendered NAV/AUM fields fail the page's own stated 0.05% consistency rule. No ETF field is model-admitted until raw issuer files are independently obtained."
+  },
+  "corpstacking": {
+    "url": "https://www.corpstacking.com/treasuries/canary-xrp-etf",
+    "card_xrp": 242962753.64,
+    "card_as_of": "2026-11-09",
+    "last_tracked_event_field": "Awaiting first filing",
+    "history_latest_date": "2026-11-07",
+    "history_latest_xrp": 243714802.03,
+    "internal_difference_xrp": 752048.39,
+    "conclusion": "Internally inconsistent date/balance fields; not a verified Nov9 issuer balance."
+  },
+  "coin365": {
+    "url": "https://www.coin365.io/etf/xrp/xrpc",
+    "reported_xrp": 140376744,
+    "reported_aum_m": 153.3,
+    "nav_usd": 11.57,
+    "shares": 22990000,
+    "xrp_per_share": 6.105991,
+    "shares_times_nav_m": 265.9943,
+    "implied_xrp_per_share_at_spot_1_08787": 10.63546,
+    "conclusion": "Material internal arithmetic mismatch; quarantine."
+  },
+  "canary_official_page": {
+    "url": "https://canaryetfs.com/xrpc/",
+    "last_daily_table_date": "2026-11-06",
+    "nov6_net_assets_usd": 286858926.41,
+    "nov6_shares": 22990000,
+    "nov6_nav": 12.48,
+    "conclusion": "No direct official Nov9 holdings confirmation."
+  },
+  "exchange_wallet_reserves": {
+    "source": "https://xrp-insights.com/exchange-balances",
+    "snapshot": "2026-11-09T08:01:00Z",
+    "total_xrp": 22350000000,
+    "wallets": 701,
+    "exchanges": 24,
+    "known_non_customer_reserves_xrp": 483000000,
+    "reserve_breakdown": {
+      "binance_peg": 325800000,
+      "cbxrp": 152000000,
+      "insurance_charity": 5200000
+    },
+    "remainder_after_known_reserves_xrp": 21867000000,
+    "same_wallet_change_1d_nov9_xrp": 9700000,
+    "same_wallet_change_1d_nov8_xrp": 18000000,
+    "same_wallet_change_7d_xrp": -25800000,
+    "same_wallet_change_30d_xrp": -138100000,
+    "naive_total_change_xrp": 373900000,
+    "new_wallets": 2,
+    "new_wallet_balance_xrp": 512000000,
+    "untracked_exchange_wallet_estimate_xrp": 323000000,
+    "gaps": [
+      "OKX",
+      "Coins.ph",
+      "Korbit"
+    ],
+    "interpretation": "The total includes cold/omnibus balances and wrapped-token reserves. The remainder is not tradable float. Same-wallet changes are not proof of exchange sales or withdrawals."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "web_raw_bytes_preserved": false,
+  "web_sha256": null,
+  "model_admission": false
+}

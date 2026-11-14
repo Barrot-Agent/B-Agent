@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run126C",
+  "capture_time_utc": "2026-11-10T09:44:51.310Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "verified_code_test_head": "483489f89c7e4a74c45c23e9b229b77565254ce1",
+  "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+  "mission_priority": "xrp_intelligence_prediction_engine",
+  "foundation": "barrot_v3",
+  "research_status": "POLICY_EVIDENCE_RESEARCH_ONLY_NOT_MODEL_ADMITTED",
+  "forecast_status": "NOT_ISSUED",
+  "coinbase_morpho_retail_collateral": {
+    "official_help_url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+    "official_product_url": "https://www.coinbase.com/borrow",
+    "official_backup_collateral_map_url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+    "protocol": "Morpho on Base",
+    "eligible_asset": "XRP",
+    "wrapped_collateral": "cbXRP",
+    "maximum_usdc_loan_against_xrp": 100000,
+    "geography": "Eligible U.S. Coinbase customers excluding New York; Coinbase help page also notes limited UK/Canada access with region-dependent eligibility.",
+    "collateral_route": "XRP is represented as cbXRP on Base and locked in a Morpho market; Coinbase supplies the customer interface while Morpho handles the onchain lending market.",
+    "market_specific_morpho_lltv_pct": 62.5,
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "distinction": "Coinbase generic loan-help text references an 86% LTV threshold, but the specific XRP/USDC Morpho market's immutable LLTV is 62.5%. Do not apply the generic 86% figure to this XRP market.",
+    "liquidation": "Coinbase says collateral can be automatically liquidated at the applicable market LLTV and that Coinbase cannot prevent Morpho liquidation. Optional loan protection must be enabled per loan, requires available collateral and is not guaranteed.",
+    "model_fields_not_yet_available": [
+      "borrower-level XRP collateral quantities",
+      "aggregate cbXRP collateral by loan",
+      "loan-health distribution at a synchronized block",
+      "Coinbase XRP-loan originations and outstanding debt",
+      "native XRP redemption/sale after cbXRP liquidations"
+    ],
+    "interpretation": "Borrowing against XRP unlocks USDC liquidity without an initial XRP sale, but creates leveraged collateral positions. Loan originations do not equal new XRP purchases; liquidations do not equal native XRP sales."
+  },
+  "coinbase_global_derivatives_cross_collateral": {
+    "official_policy_url": "https://help.coinbase.com/en-gb/coinbase/derivatives/global-derivatives-cross-collateral",
+    "effective_date_for_most_customers": "2026-10-01",
+    "geography": "Eligible customers in supported regions outside the United States.",
+    "product": "Coinbase Global Derivatives cross-margined derivative portfolios.",
+    "xrp_accepted_as_cross_collateral": true,
+    "haircut_xpm_pct": 0,
+    "haircut_xsm_pct": 15,
+    "haircut_semantics": "The haircut is an initial-margin reserve; it does not reduce account margin balance. X:PM and X:SM are distinct account modes.",
+    "average_daily_quantity_limit": "Asset use is capped by a percentage of average daily quantity at the User Business Organization level; collateral above the cap does not contribute to portfolio value. Public page does not disclose XRP-specific cap or utilization.",
+    "automatic_liquidation": "Collateral can be liquidated automatically to address funding shortfalls or margin coverage issues.",
+    "interpretation": "This is a separate institutional derivatives-collateral channel, not the consumer Morpho loan product and not evidence of XRP purchases or disclosed collateral balances."
+  },
+  "coinbase_global_exchange_margin_offset": {
+    "official_policy_url": "https://help.coinbase.com/en/global-exchange/margin-requirements/margin-offset",
+    "published_table_as_of": "2025-06-06",
+    "pair": "XRP-PERP versus XRP-USDC spot",
+    "displayed_offset_weight": 0.93,
+    "status": "HISTORICAL_POLICY_REFERENCE",
+    "limitation": "The table says weights depend on market conditions and may change. This is a portfolio margin-offset parameter, not a collateral haircut, OI figure or current utilization."
+  },
+  "network_relationships": {
+    "coinbase": "Provides the customer interface, wrapped-asset custody/reserve backing and product eligibility; Coinbase National Trust charter remains a separate regulated custody entity.",
+    "morpho": "Permissionless onchain lending protocol on Base; the Coinbase interface does not make Morpho a Coinbase subsidiary.",
+    "circle": "USDC is the loan asset; USDC balances/borrowings are not XRP purchases.",
+    "ripple": "XRP is the underlying collateral asset; cbXRP is the wrapped representation used on Base.",
+    "evidence_class": "Primary Coinbase policy pages plus Morpho first-party market UI."
+  },
+  "admission": {
+    "eligible": false,
+    "reason": "Policy terms and market UI snapshots are not synchronized quantitative collateral-utilization history. No borrower-level series, block-aligned market state or native XRP redemption evidence was captured.",
+    "add_to_scheduled_feature_store": false,
+    "future_candidate": "A versioned policy registry plus block-timestamped Morpho market-state and borrower-health features, after decimals/oracle/market identity are independently verified."
+  },
+  "provenance": [
+    {
+      "source": "Coinbase Help — crypto-backed loans introduction",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "source_class": "issuer_primary",
+      "captured_at_utc": "2026-11-10T09:44:51.310Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Coinbase — crypto-backed loans",
+      "url": "https://www.coinbase.com/borrow",
+      "source_class": "issuer_primary",
+      "captured_at_utc": "2026-11-10T09:44:51.310Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Coinbase Help — loan backup collateral mapping",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "source_class": "issuer_primary",
+      "captured_at_utc": "2026-11-10T09:44:51.310Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Coinbase Help — Global Derivatives cross collateral",
+      "url": "https://help.coinbase.com/en-gb/coinbase/derivatives/global-derivatives-cross-collateral",
+      "source_class": "issuer_primary",
+      "captured_at_utc": "2026-11-10T09:44:51.310Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Coinbase Help — Global Exchange collateral",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "source_class": "issuer_primary",
+      "captured_at_utc": "2026-11-10T09:44:51.310Z",
+      "raw_transport_bytes_preserved": false
+    },
+    {
+      "source": "Coinbase Help — margin offset",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/margin-offset",
+      "source_class": "issuer_primary",
+      "captured_at_utc": "2026-11-10T09:44:51.310Z",
+      "raw_transport_bytes_preserved": false
+    }
+  ]
+}

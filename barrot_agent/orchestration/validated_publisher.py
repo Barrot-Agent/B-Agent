@@ -46,16 +46,36 @@ class ValidatedPublisher:
         *,
         paths: list[str],
         message: str,
+        allow_remote_push: bool = False,
     ) -> PublishResult:
-        """Stage explicit paths, commit them, then push configured remotes."""
+        """Commit and push explicit paths only after a separate remote-write opt-in."""
 
+        if allow_remote_push is not True:
+            return PublishResult(
+                success=False,
+                committed=False,
+                pushed=[],
+                reason="Remote publishing is disabled; no Git mutation was attempted.",
+            )
+
+        workspace = self.workspace.resolve()
         normalized_paths = []
 
-        for path in paths:
-            candidate = str(path).strip()
-
-            if candidate and candidate not in normalized_paths:
-                normalized_paths.append(candidate)
+        for raw_path in paths:
+            if not isinstance(raw_path, str) or not raw_path.strip():
+                return PublishResult(False, False, [], "Every publish path must be a non-empty relative path.")
+            candidate = Path(raw_path.strip())
+            if candidate.is_absolute() or ".." in candidate.parts or candidate == Path("."):
+                return PublishResult(False, False, [], f"Unsafe publish path rejected: {raw_path}")
+            target = workspace / candidate
+            if target.is_symlink():
+                return PublishResult(False, False, [], f"Symbolic-link publish path rejected: {raw_path}")
+            resolved = target.resolve()
+            if workspace not in resolved.parents:
+                return PublishResult(False, False, [], f"Publish path escapes the repository: {raw_path}")
+            normalized = candidate.as_posix()
+            if normalized not in normalized_paths:
+                normalized_paths.append(normalized)
 
         if not normalized_paths:
             return PublishResult(
@@ -64,6 +84,23 @@ class ValidatedPublisher:
                 pushed=[],
                 reason="No validated paths supplied.",
             )
+
+        branch = self._run("branch", "--show-current")
+        branch_name = branch.stdout.strip()
+        if branch.returncode != 0 or not branch_name or branch_name in {"main", "master"}:
+            return PublishResult(
+                success=False,
+                committed=False,
+                pushed=[],
+                reason="Remote publishing requires a named non-default feature branch.",
+            )
+
+        pre_staged = self._run("diff", "--cached", "--quiet")
+        if pre_staged.returncode != 0:
+            reason = "Pre-existing staged changes detected; they were preserved and not committed."
+            if pre_staged.returncode not in {1}:
+                reason = "Unable to verify the staged index; no commit or push was attempted."
+            return PublishResult(False, False, [], reason)
 
         add = self._run(
             "add",
@@ -100,6 +137,13 @@ class ValidatedPublisher:
                 pushed=[],
                 reason=staged.stderr.strip(),
             )
+
+        staged_names = self._run("diff", "--cached", "--name-only")
+        if staged_names.returncode != 0:
+            return PublishResult(False, False, [], "Unable to verify staged paths; no commit or push was attempted.")
+        staged_paths = {line.strip() for line in staged_names.stdout.splitlines() if line.strip()}
+        if not staged_paths.issubset(set(normalized_paths)):
+            return PublishResult(False, False, [], "Staged index contains paths outside the explicit allowlist; no commit or push was attempted.")
 
         commit = self._run(
             "commit",

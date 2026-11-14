@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-archive-integrity-and-pillars-correction-20261108T034500Z",
+  "artifact_type": "append_only_research_and_code_correction_overlay",
+  "captured_at_utc": "2026-11-08T03:45:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "preservation": {
+    "original_artifacts_modified": false,
+    "source_receipts_rewritten": false,
+    "forecast_issued": false,
+    "model_eligible": false,
+    "correction_application_status": "NOT_EXECUTED_APPEND_ONLY_RESEARCH_OVERLAY"
+  },
+  "source_artifacts": [
+    {
+      "path": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+      "git_blob_sha": "8239d085d72b0603da5a205e6fd4754ad3f944f9",
+      "role": "Evernorth capital/ownership source artifact; immutable preimage for C07 and C09."
+    },
+    {
+      "path": "research/xrp_intelligence/20261104T144241Z-archive-review-corrections-and-point-in-time-quarantine.json",
+      "git_blob_sha": "7fcde1ae40352531dfc52d58220b0c30240dadbb",
+      "role": "Archive review correction overlay containing C07; C09 supersedes only its purchase-cost arithmetic."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106T080100Z-evernorth-advance-funding-purchase-cost-correction.json",
+      "git_blob_sha": "e4445c1817b9ac4f685a0bbed4880a63ef49fd80",
+      "role": "Later SEC-based correction distinguishing exact cash received from actual XRP purchase cost."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106T130046Z-evernorth-delayed-funding-capital-category-correction.json",
+      "git_blob_sha": "b8c492736edebff7e8859ffb918b280fc3726706",
+      "role": "Delayed-funding category correction; already separates $214M purchase cost from rounded subscription cash."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106-evernorth-delayed-funding-and-sbi-group-capital-reconciliation.json",
+      "git_blob_sha": "8c53e71f4456c394897b3a069d6dddbadea4ffb1",
+      "role": "Immutable delayed-funding research artifact; use its separate correction overlay for the canonical view."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+      "git_blob_sha": "7e00bc04d0f72153007b2ec2124dd9e642ce46fd",
+      "role": "Current ELOC dollar-cap correction file."
+    },
+    {
+      "path": "research/xrp_intelligence/source_preimages/6d1a72976e13441525401ed8d1bb90e0b401f3aa.json",
+      "git_blob_sha": "6d1a72976e13441525401ed8d1bb90e0b401f3aa",
+      "role": "Archived historical preimage referenced by the earlier advance-funding correction; SHA-1 is the Git blob identifier, not a SHA-256 receipt."
+    },
+    {
+      "path": "research/xrp_intelligence/20261104T141402Z-nine-platform-capability-authentication-observation.json",
+      "git_blob_sha": "5a37117dc319eea666f9eb273f37b36ea24a9025",
+      "role": "Historical nine-platform observation whose fiction-scan result lacks an HTTP-status receipt."
+    },
+    {
+      "path": "scripts/pillars_check.py",
+      "previous_git_blob_sha": "fa18c7cfeee71fe50a85a8f37e38ebceb2f61877",
+      "corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221",
+      "role": "Code fix for non-200 response handling in the source-fiction scan.",
+      "previous_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5"
+    },
+    {
+      "path": "tests/test_pillars_check_readonly.py",
+      "previous_git_blob_sha": "0be1ab27f643e8cebae2d382501330e8c6796fc8",
+      "corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459",
+      "role": "Regression tests for 404, 500 and successful HTTP 200 source-fiction scans.",
+      "previous_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03"
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "evernorth_sec_issuer_filing",
+      "publisher": "Evernorth Holdings Inc. filed with the SEC",
+      "source_type": "primary_issuer_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "accession": "0001628280-26-068609",
+      "evidence_family": "evernorth_sec_issuer_filing",
+      "claims_supported": [
+        "$214,049,995 exact advance-funding cash received",
+        "$214,000,000 cash used to purchase digital assets",
+        "$49,995 restricted cash at 2025-12-31",
+        "84,365,876.3625 XRP and issuer-reported $2.53657058 average purchase price"
+      ],
+      "independence_note": "All cited summary, cash-flow, cost-basis and press-release figures are within the same issuer filing; they are not independent publishers."
+    },
+    {
+      "id": "pillars_check_source_status_code",
+      "publisher": "Barrot-Agent/B-Agent source code",
+      "source_type": "internal_code_evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-evidence-archive-20261104/scripts/pillars_check.py",
+      "evidence_family": "repository_code_revision",
+      "claims_supported": [
+        "The corrected function checks HTTP status before scanning response text and includes HTTP 200 in successful details."
+      ],
+      "independence_note": "Internal code evidence, not an independent external platform authentication."
+    }
+  ],
+  "corrections": [
+    {
+      "correction_id": "C09_EVERNORTH_PURCHASE_COST_SUPERSESSION",
+      "target_artifact": "research/xrp_intelligence/20261104T134706Z-evernorth-close-actual-capital-sbi-ownership-reconciliation.json",
+      "supersedes_correction_id": "C07_EVERNORTH_CAPITAL_LEDGER",
+      "supersedes_field": "$.xrp_asset_reconciliation.cash_funded_market_purchase.implied_average_cost_usd_per_xrp",
+      "superseded_value": 2.537163248325662,
+      "superseded_calculation": "214050000 / 84365876",
+      "canonical_values": {
+        "cash_received_exact_usd": 214049995,
+        "cash_received_summary_rounded_usd": 214050000,
+        "cash_used_for_xrp_purchase_usd": 214000000,
+        "restricted_cash_at_2025_12_31_usd": 49995,
+        "xrp_quantity_exact": 84365876.3625,
+        "issuer_reported_average_price_usd_per_xrp": 2.53657058,
+        "recomputed_average_price_usd_per_xrp": 2.5365705807463335
+      },
+      "corrected_fields": [
+        {
+          "json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/funding_cash_usd",
+          "original_value": 214050000,
+          "corrected_value": 214000000,
+          "meaning": "Purchase cost, not subscription cash received."
+        },
+        {
+          "json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/xrp_purchased",
+          "original_value": 84365876,
+          "corrected_value": 84365876.3625,
+          "meaning": "Exact quantity, retaining rounded summary only for display."
+        },
+        {
+          "json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/implied_average_cost_usd_per_xrp",
+          "original_value": 2.53657058,
+          "corrected_value": 2.53657058,
+          "meaning": "Issuer-reported average; arithmetic now uses the correct $214M numerator and exact XRP quantity."
+        },
+        {
+          "json_pointer": "/xrp_asset_reconciliation/cash_funded_market_purchase/implied_average_cost_status",
+          "original_value": "derived_from_214050000_usd_divided_by_84365876_xrp; not separately stated as an execution VWAP in the reviewed prospectus",
+          "corrected_value": "Issuer-reported $2.53657058 average; consistent with $214,000,000 / 84,365,876.3625 XRP. Venue and execution method are undisclosed; this is not a venue-specific exchange VWAP.",
+          "meaning": "Corrects the explanation without changing the valid issuer-reported average."
+        }
+      ],
+      "related_correction_artifacts": [
+        {
+          "path": "research/xrp_intelligence/20261106T080100Z-evernorth-advance-funding-purchase-cost-correction.json",
+          "git_blob_sha": "e4445c1817b9ac4f685a0bbed4880a63ef49fd80",
+          "role": "Primary superseding correction for exact cash receipt, purchase cost, restricted cash and average price."
+        },
+        {
+          "path": "research/xrp_intelligence/20261106T130046Z-evernorth-delayed-funding-capital-category-correction.json",
+          "git_blob_sha": "b8c492736edebff7e8859ffb918b280fc3726706",
+          "role": "Corrects the delayed-funding artifact's $214.1M purchase-cost field to $214M and prevents duplicate $10.5M cash addition."
+        }
+      ],
+      "non_superseded_C07_corrections": {
+        "additional_debt_capital_lender": "Ripple Labs Inc.",
+        "duplicate_relationship_edges_removed_from_derived_view": 2,
+        "note": "C07's lender and graph corrections remain valid. Only its average-cost arithmetic is superseded."
+      },
+      "status": "CANONICAL_COST_BASIS_SUPERSESSION",
+      "model_eligible": false
+    },
+    {
+      "correction_id": "C10_PILLARS_FICTION_SCAN_HTTP_STATUS_INCONCLUSIVE",
+      "target_artifact": "research/xrp_intelligence/20261104T141402Z-nine-platform-capability-authentication-observation.json",
+      "target_observation_id": "PILLARS-REPO-SOURCE-FICTION-01",
+      "target_array_pointer": "/workflow_observations/4",
+      "original_status": "PASS_SOURCE_ONLY",
+      "canonical_status": "INCONCLUSIVE_HTTP_STATUS_NOT_CAPTURED",
+      "original_detail": "GitHub main source fiction scan was clean; deployed runtime was not inspected.",
+      "canonical_detail": "The historical check scanned response text without validating or recording HTTP status. A 404/5xx error body could have been treated as clean. Do not accept the historical clean result until the raw response status is independently confirmed.",
+      "model_eligible": false,
+      "deployed_runtime_status": "NOT_INSPECTED",
+      "applies_to_future_runs_only": false,
+      "code_fix": {
+        "path": "scripts/pillars_check.py",
+        "previous_git_blob_sha": "fa18c7cfeee71fe50a85a8f37e38ebceb2f61877",
+        "corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5",
+        "behavior": "Return FAIL with explicit HTTP <status> for every non-200 response; report HTTP 200; clean only after a 200 response is verified and the scan finds no terms."
+      },
+      "regression_tests": {
+        "path": "tests/test_pillars_check_readonly.py",
+        "previous_git_blob_sha": "0be1ab27f643e8cebae2d382501330e8c6796fc8",
+        "corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03",
+        "cases": [
+          "HTTP 404 fails closed",
+          "HTTP 500 fails closed",
+          "HTTP 200 with clean body reports HTTP 200; clean",
+          "HTTP 200 with a fiction term reports a failed scan"
+        ]
+      },
+      "status": "HISTORICAL_OBSERVATION_QUARANTINED_AND_FUTURE_CHECK_FIXED",
+      "model_eligible_for_features": false
+    },
+    {
+      "correction_id": "C11_PILLARS_CHECK_BLOB_BINDING_SUPERSESSION",
+      "target_artifact": "scripts/pillars_check.py",
+      "supersedes_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5",
+      "corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221",
+      "reason": "The consolidated successor contains a later source revision. The current exact Git blob retains explicit non-200 response handling and read-only GitHub installation lookup; the correction overlay now binds the exact successor file.",
+      "model_eligible": false,
+      "status": "APPENDED_CORRECTION"
+    },
+    {
+      "correction_id": "C12_PILLARS_TEST_BLOB_BINDING_SUPERSESSION",
+      "target_artifact": "tests/test_pillars_check_readonly.py",
+      "supersedes_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03",
+      "corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459",
+      "reason": "The consolidated successor includes additional read-only HTTP-status regression cases; the archive binding now records the exact current test blob.",
+      "model_eligible": false,
+      "status": "APPENDED_CORRECTION"
+    }
+  ],
+  "source_preimage_resolution": {
+    "correction_artifact": "research/xrp_intelligence/20261106T080100Z-evernorth-advance-funding-purchase-cost-correction.json",
+    "historical_preimage": {
+      "path": "research/xrp_intelligence/source_preimages/6d1a72976e13441525401ed8d1bb90e0b401f3aa.json",
+      "git_blob_sha1": "6d1a72976e13441525401ed8d1bb90e0b401f3aa",
+      "role": "Exact historical preimage referenced by the prior correction."
+    },
+    "current_file": {
+      "path": "research/xrp_intelligence/20261106T043450Z-evernorth-eloc-dollar-cap-correction.json",
+      "git_blob_sha1": "7e00bc04d0f72153007b2ec2124dd9e642ce46fd",
+      "role": "Later current file version; its Git blob SHA-1 differs from the archived preimage."
+    },
+    "interpretation": "The earlier correction's preimage fallback is intentional and is verified by tests. Do not mislabel the historical Git blob SHA-1 as the current file's SHA. Keep the two versions separately addressable."
+  },
+  "review_dispositions": {
+    "resolved_by_prior_corrections": [
+      "Circle Q2 10-Q/OCC source crosswalk uses entity-specific target fields (C01).",
+      "Dangling handoff reference corrected (C02).",
+      "Kraken open_24h_usd renamed to UTC daily_open_usd in derived view (C03).",
+      "Coinbase X:PM dash preserved as null, not zero (C04).",
+      "Kamilah F2 metric evidence points to the metric source, not channel-search metadata (C05).",
+      "SBI/Circle Arc validator claim uses Circle's launch source and remains runtime-unverified (C06).",
+      "Evernorth $1M facility lender and duplicate relationship edges corrected in derived view (C07); only C07's cost arithmetic is superseded by C09.",
+      "Late source rehoming preserves original capture time and quarantines late evidence (C08).",
+      "Clarity Act/macro source vintage and -12.25% semiconductor close are already verified by regression tests.",
+      "MorphO field spelling is already corrected in the current institutional-network artifact.",
+      "Delayed-funding $214M purchase-cost category is already corrected by 20261106T130046Z and tested.",
+      "ELOC source-preimage fallback is already explicit and tested."
+    ],
+    "unresolved_after_this_overlay": [
+      "Reconcile current XRPL balances of the Binance-hack destination wallets using a validated ledger query.",
+      "Obtain a fresh authenticated nine-platform status observation; this overlay does not establish new platform connections."
+    ]
+  },
+  "next_actions": [
+    "Run exact-head full suite, dependency audit and fail-closed gate after the code/test/overlay commit.",
+    "Use the corrected PILLARS script in a future authorized read-only run; do not deploy or change secrets.",
+    "Keep the historical PILLARS fiction-scan result inconclusive until its HTTP status can be independently verified.",
+    "Keep the Evernorth purchase-cost value at $214M; never use $214.05M rounded cash received as the purchase-cost numerator."
+  ],
+  "correction_revision": 4,
+  "revision_history": [
+    {
+      "revision": 2,
+      "at_utc": "2026-11-08T03:50:00Z",
+      "changes": [
+        "Corrected C10 target array pointer to workflow_observations.",
+        "Clarified that C07 stored average is rounded to eight decimals while C09 superseded_value retains unrounded arithmetic precision."
+      ]
+    },
+    {
+      "revision": 3,
+      "at_utc": "2026-11-10T15:35:00Z",
+      "changes": [
+        "Added C11 to preserve the previous Pillars script blob binding and bind the current consolidated-successor blob.",
+        "The source correction changes only the Git blob binding; normalized source excerpts and prior correction records remain intact."
+      ]
+    },
+    {
+      "revision": 4,
+      "at_utc": "2026-11-10T15:45:00Z",
+      "changes": [
+        "Added C12 to bind the current read-only Pillars regression-test blob while retaining the prior binding."
+      ]
+    }
+  ]
+}

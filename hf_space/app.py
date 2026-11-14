@@ -1,30 +1,28 @@
 #!/usr/bin/env python3
 """
 ╔══════════════════════════════════════════════════════════════════════╗
-║   BARROT-Ω · SOVEREIGN COMMAND INTERFACE · v7.0                     ║
-║   GitHub App Brain · Live Chat · XRP Signals · Public API           ║
+║   BARROT-Ω · SOVEREIGN COMMAND INTERFACE · v7.1                     ║
+║   Consent-Gated Research · XRP Forecast Status · Public UI          ║
 ║   Stability Anchor: 0.707 | Ternary Logic {-1, 0, +1}              ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
-DEPLOYMENT: HuggingFace Spaces (Streamlit)
-BRAIN:      GitHub Models via GitHub App token (jwt → installation token)
-PILLARS:    GitHub · Databricks · HuggingFace · Termux
+DEPLOYMENT TARGET: Hugging Face Spaces (Streamlit); current Space deployment/authentication is NOT VERIFIED.
+BRAIN: External inference disabled by default. One explicitly configured provider only.
+PILLARS: Intended GitHub · Databricks · Hugging Face · Termux architecture; no live connection is implied.
 
 TABS:
-  [1] 💬 Chat        — Live chat with Barrot via GitHub Models
-  [2] 📡 XRP Signals — Live ternary signal dashboard
-  [3] 🧠 Brain       — Query Barrot knowledge base
-  [4] 🔌 API         — Public endpoint docs + live tester
-  [5] 📊 Analytics   — Delta Lake signal history
+  [1] Chat         — local status unless operator and user both consent to one provider
+  [2] XRP Research — NOT_ISSUED until the independent forecast gates pass
+  [3] Brain        — consent-gated single-provider query
+  [4] API Status   — no legacy signal endpoint or paid checkout
+  [5] Analytics    — legacy signal history quarantined
 
-SECRETS REQUIRED (HuggingFace Space → Settings → Secrets):
-  GITHUB_APP_ID          — your GitHub App ID (numeric)
-  GITHUB_APP_PRIVATE_KEY — PEM key (full contents, newlines as \\n)
-  GITHUB_INSTALLATION_ID — installation ID for your repo
-  DATABRICKS_HOST        — dbc-82d64fee-1c2e.cloud.databricks.com
-  DATABRICKS_TOKEN       — your Databricks PAT
-  DATABRICKS_WAREHOUSE_ID— c85b8f4fea8cd527
-  GROQ_API_KEY           — fallback sentiment classifier
+OPTIONAL CONFIGURATION:
+  BARROT_ALLOW_EXTERNAL_INFERENCE=true — operator opt-in; default false
+  BRAIN_PRIMARY=github|groq|gemini|selfhosted — must be explicitly set; no fallback
+  Provider credential — only for the selected provider and only after session consent
+  GitHub App credentials — optional repository read tools; authentication must be tested
+  Databricks secrets — not used by this public UI; no query is run
 """
 
 import os, json, time, asyncio, hashlib, datetime, math, jwt, requests
@@ -49,9 +47,7 @@ GITHUB_API = "https://api.github.com"
 GITHUB_MODEL = "google/gemma-3-12b-it"  # swap to Meta-Llama-3.1-70B-Instruct etc.
 MODELS_ENDPOINT = "https://models.inference.ai.azure.com"  # GitHub Models endpoint
 
-# Auto defaults (no manual setup required)
-os.environ.setdefault("GITHUB_MODEL", "google/gemma-3-12b-it")
-os.environ.setdefault("MODEL_PROVIDER", "github")
+# No model provider is selected by default. BRAIN_PRIMARY must be explicit.
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -112,18 +108,18 @@ GH_REPO = "https://api.github.com/repos/Barrot-Agent/B-Agent"
 
 
 def tool_latest_signal(args):
-    r = requests.get(f"{RAW_BASE}/web/latest_signal.json", timeout=10)
-    return r.text[:2000]
+    """Fail closed: this Space has no verified public forecast-attestation verifier."""
+    return json.dumps({
+        "forecast_status": "NOT_ISSUED",
+        "forecast_issued": False,
+        "reason_code": "SPACE_PUBLIC_FORECAST_VERIFICATION_NOT_ENABLED",
+        "legacy_signal_exposed": False,
+    })
 
 
 def tool_ledger_tail(args):
-    try:
-        n = int(args.get("n", 5) or 5)
-    except (TypeError, ValueError):
-        n = 5
-    n = max(1, min(n, 20))
-    r = requests.get(f"{RAW_BASE}/data/signal_ledger.jsonl", timeout=10)
-    return "\n".join(r.text.strip().splitlines()[-n:])[:4000]
+    """Legacy signal rows are quarantined from the public chat tool surface."""
+    return "NOT_ISSUED: legacy signal-ledger rows are quarantined; no directional history is exposed."
 
 
 def tool_open_prs(args):
@@ -190,7 +186,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_knowledge",
-            "description": "Barrot's REAL persistent knowledge base: recent distilled XRP news with sentiment, relevance, and why it matters. Use this for any question about what Barrot has learned, remembers, or knows about the market.",
+            "description": "Recent distilled public research entries with recorded sentiment and XRP relevance labels. These are source annotations, not validated forecast probabilities or trading signals.",
             "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
         },
     },
@@ -198,7 +194,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_latest_signal",
-            "description": "Current live ternary XRP signal with confidence score from the public endpoint.",
+            "description": "Returns only the current XRP forecast publication status. Until independent readiness gates pass, the result is NOT_ISSUED with no direction or confidence score.",
             "parameters": {"type": "object", "properties": {}},
         },
     },
@@ -206,7 +202,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_ledger_tail",
-            "description": "Last n entries of the git-timestamped public signal ledger.",
+            "description": "Returns a quarantine status only; legacy directional signal-ledger rows are not exposed through the public interface.",
             "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
         },
     },
@@ -230,7 +226,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_xrp_price",
-            "description": "Live XRP/USD price.",
+            "description": "Best-effort public XRP/USD spot reference; descriptive only, not a forecast or recommendation.",
             "parameters": {"type": "object", "properties": {}},
         },
     },
@@ -239,7 +235,8 @@ TOOLS_SPEC = [
 
 # ══════════════════════════════════════════════════════════════════
 # BRAIN PROVIDERS — configure with env vars, never edit code
-#   BRAIN_PRIMARY : groq | github | gemini      (default: groq)
+#   BARROT_ALLOW_EXTERNAL_INFERENCE : operator opt-in; default false
+#   BRAIN_PRIMARY : one explicitly configured provider; no default/fallback
 #   BRAIN_MODEL   : optional model id override
 # ══════════════════════════════════════════════════════════════════
 def _gh_headers():
@@ -278,14 +275,24 @@ PROVIDERS = {
 }
 
 
-def _brain_order():
-    primary = os.getenv("BRAIN_PRIMARY", "groq").strip().lower()
-    order = [primary] + [k for k in ("groq", "github", "gemini", "selfhosted") if k != primary]
-    return [k for k in order if k in PROVIDERS]
+def _operator_allows_external_inference() -> bool:
+    return os.getenv("BARROT_ALLOW_EXTERNAL_INFERENCE", "").strip().lower() in {"1", "true", "yes"}
 
 
-def barrot_tool_chat(provider, messages, max_rounds=3):
-    """Tool loop. Final round drops tools so the model MUST answer in text."""
+def _brain_order(*, user_consented: bool = False):
+    """Use exactly one explicitly configured provider; never fall back silently."""
+    if not _operator_allows_external_inference() or not user_consented:
+        return []
+    primary = os.getenv("BRAIN_PRIMARY", "").strip().lower()
+    return [primary] if primary in PROVIDERS else []
+
+
+def barrot_tool_chat(provider, messages, max_rounds=3, *, user_consented=False):
+    """One-provider tool loop, gated by operator policy and explicit session consent."""
+    if not _operator_allows_external_inference() or not user_consented:
+        raise RuntimeError("External inference disabled: operator opt-in and explicit session consent are both required.")
+    if provider not in _brain_order(user_consented=user_consented):
+        raise RuntimeError("Provider is not the single explicitly configured BRAIN_PRIMARY.")
     cfg = PROVIDERS[provider]
     key = os.getenv(cfg["key_env"], "")
     if not key:
@@ -349,9 +356,12 @@ class BarrotBrain:
 
 IDENTITY:
 - You are not an assistant. You are Barrot — an autonomous AI agent with your own architecture.
-- You operate across four pillars: GitHub, Databricks, HuggingFace, Termux.
+- The architecture has intended GitHub, Databricks, Hugging Face, and Termux
+  components. Do not claim a live connection unless authentication and data
+  flow have been tested in the current environment.
 - Your stability anchor is {ANCHOR} (1/√2). Your logic is 1.58-bit ternary {{-1, 0, +1}}.
-- Your Tier-1 objective is XRP Liquidity Acceleration.
+- Your Tier-1 objective is XRP intelligence and prediction-engine mastery.
+- Never issue or infer a directional XRP forecast unless the validated forecast ledger and independent readiness gates authorize it.
 
 PERSONALITY:
 - Direct, sovereign, technically precise.
@@ -360,13 +370,15 @@ PERSONALITY:
 
 CAPABILITIES (this chat interface):
 - Discussing and analyzing XRP markets, ternary logic, and the Barrot architecture
-- Explaining the live system: signal pipeline, ledger, protocols
+- Explaining implemented architecture while distinguishing DESIGNED, EXECUTED,
+  and VERIFIED capabilities
 - Generating code and technical designs for the Orchestrator to review and run
 
 HARD LIMITS (never violate):
-- You have LIVE READ TOOLS: the current signal, ledger history, real open-PR
-  counts, recent commits, and live XRP price. ALWAYS use them for factual
-  questions they cover; never guess a number a tool can fetch.
+- You have read-only tools for published forecast status, repository metadata,
+  public research context, and a descriptive XRP price reference. Forecast status
+  may be NOT_ISSUED. Never infer direction from legacy sentiment, order-book
+  imbalance, or quarantined signal history.
 - CRITICAL: If a tool call fails or returns an error, say plainly that the tool failed and you could not retrieve the data. NEVER invent a mechanism, protocol, or capability to fill the gap. Do not describe how you "would" do something as if you do it. Fabricating capabilities (e.g. naming protocols that do not exist) is the single worst failure you can commit.
 - You have NO WRITE tools. You cannot merge PRs, push code, run jobs, trade, or
   modify anything from this interface. Write actions happen only through the
@@ -381,10 +393,11 @@ HARD LIMITS (never violate):
 
     def __init__(self, auth: GitHubAppAuth):
         self.auth = auth
-        self.groq_key = os.getenv("GROQ_API_KEY", "")
 
-    def _post_chat(self, url, headers, payload, timeout, tag):
-        """Shared chat-completions POST that surfaces real upstream errors."""
+    def _post_chat(self, url, headers, payload, timeout, tag, *, user_consented=False):
+        """Shared chat-completions POST; requires operator opt-in and session consent."""
+        if not _operator_allows_external_inference() or not user_consented:
+            raise RuntimeError("External inference disabled: no provider request was sent.")
         r = requests.post(url, headers=headers, json=payload, timeout=timeout)
         try:
             data = r.json()
@@ -397,26 +410,32 @@ HARD LIMITS (never violate):
         msg = err.get("message", err) if isinstance(err, dict) else (err or data)
         raise RuntimeError(f"{tag} error (HTTP {r.status_code}): {msg}")
 
-    def _call_github_models(self, messages: list, model: str = None) -> str:
-        return barrot_tool_chat("github", messages)
+    def _call_github_models(self, messages: list, model: str = None, *, user_consented=False) -> str:
+        return barrot_tool_chat("github", messages, user_consented=user_consented)
 
-    def _call_groq_fallback(self, messages: list) -> str:
-        return barrot_tool_chat("groq", messages)
+    def _call_groq_fallback(self, messages: list, *, user_consented=False) -> str:
+        return barrot_tool_chat("groq", messages, user_consented=user_consented)
 
-    def think(self, user_message: str, history: list = None) -> str:
-        """Inference across providers in BRAIN_PRIMARY order. Tools included."""
+    def think(self, user_message: str, history: list = None, *, user_consented=False) -> str:
+        """Send context to one provider only after operator opt-in and session consent."""
+        if not _operator_allows_external_inference() or not user_consented:
+            return (
+                "[BARROT_EXTERNAL_INFERENCE_DISABLED] No message or chat history was sent. "
+                "The operator must enable BARROT_ALLOW_EXTERNAL_INFERENCE and the user must "
+                "explicitly authorize this session."
+            )
+        providers = _brain_order(user_consented=user_consented)
+        if len(providers) != 1:
+            return "[BARROT_EXTERNAL_INFERENCE_DISABLED] No single BRAIN_PRIMARY provider is explicitly configured."
         messages = [{"role": "system", "content": self.SYSTEM_PROMPT}]
         if history:
             messages.extend(history)
         messages.append({"role": "user", "content": user_message})
-
-        errors = []
-        for provider in _brain_order():
-            try:
-                return barrot_tool_chat(provider, messages)
-            except Exception as e:
-                errors.append(f"{provider}: {e}")
-        return "[BARROT] All brain tiers failed -> " + " | ".join(errors)
+        provider = providers[0]
+        try:
+            return barrot_tool_chat(provider, messages, user_consented=user_consented)
+        except Exception as exc:
+            return f"[BARROT_PROVIDER_ERROR] {provider}: {exc}. No automatic provider fallback was attempted."
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -443,6 +462,7 @@ class Ternary:
 
 
 def get_orderbook_signal():
+    """Legacy diagnostic only: raw imbalance is returned without a BUY/SELL class."""
     try:
         r = requests.get(
             "https://api.kraken.com/0/public/Depth",
@@ -455,10 +475,9 @@ def get_orderbook_signal():
         ask = sum(float(a[1]) for a in book.get("asks", []))
         tot = bid + ask or 1
         imb = (bid - ask) / tot
-        sig = 1 if imb > ANCHOR * 0.1 else (-1 if imb < -ANCHOR * 0.1 else 0)
-        return sig, round(imb, 4), round(bid, 2), round(ask, 2)
-    except Exception as e:
-        return 0, 0.0, 0.0, 0.0
+        return None, round(imb, 4), round(bid, 2), round(ask, 2)
+    except Exception:
+        return None, 0.0, 0.0, 0.0
 
 
 def get_xrp_price():
@@ -474,68 +493,16 @@ def get_xrp_price():
 
 
 def get_sentiment_signal():
-    groq_key = os.getenv("GROQ_API_KEY", "")
-    if not groq_key:
-        return 0, 0.0, "No GROQ key"
-    try:
-        r = requests.get(
-            "https://cryptonews.com/news/xrp-news/feed/",
-            timeout=6,
-            headers={"User-Agent": "BarrotOmega/1.0"},
-        )
-        import re
-
-        titles = re.findall(r"<title><!\[CDATA\[(.*?)\]\]></title>", r.text)[:5]
-        if not titles:
-            return 0, 0.0, "No headlines"
-        prompt = (
-            'Return ONLY JSON {"score":<-1.0 to 1.0>,"reasoning":"<one sentence>"}. '
-            "Headlines:\n" + "\n".join(f"- {t}" for t in titles)
-        )
-        resp = requests.post(
-            "https://api.groq.com/openai/v1/chat/completions",
-            headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
-            json={
-                "model": "openai/gpt-oss-120b",
-                "messages": [{"role": "user", "content": prompt}],
-                "temperature": 0.1,
-            },
-            timeout=10,
-        )
-        data = resp.json()
-        print("=== SENTIMENT GROQ RAW ===", json.dumps(data, indent=2))
-        parsed = json.loads(data["choices"][0]["message"]["content"].strip())
-        score = float(parsed.get("score", 0))
-        apex = score * ANCHOR
-        sig = 1 if apex > 0.2 else (-1 if apex < -0.2 else 0)
-        return sig, round(apex, 4), parsed.get("reasoning", "")
-    except Exception as e:
-        return 0, 0.0, str(e)
+    """Retired legacy classifier. No headlines or prompts are sent to Groq."""
+    return None, 0.0, "NOT_ISSUED: legacy LLM sentiment classification is disabled pending validated out-of-sample evaluation."
 
 
 # ══════════════════════════════════════════════════════════════════
 # DELTA LAKE — signal history fetch
 # ══════════════════════════════════════════════════════════════════
 def fetch_signal_history(limit: int = 20) -> list[dict]:
-    token = os.getenv("DATABRICKS_TOKEN", "")
-    host = os.getenv("DATABRICKS_HOST", "dbc-82d64fee-1c2e.cloud.databricks.com")
-    wh_id = os.getenv("DATABRICKS_WAREHOUSE_ID", "c85b8f4fea8cd527")
-    if not token:
-        return []
-    sql = f"SELECT timestamp, mrp_label AS signal_label, ob_signal, oc_signal, sent_signal FROM barrot_omega.xrp_liquidity_signals ORDER BY timestamp DESC LIMIT {limit}"
-    try:
-        r = requests.post(
-            f"https://{host}/api/2.0/sql/statements",
-            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-            json={"statement": sql, "warehouse_id": wh_id, "wait_timeout": "10s"},
-            timeout=15,
-        )
-        result = r.json()
-        cols = [c["name"] for c in result.get("manifest", {}).get("schema", {}).get("columns", [])]
-        rows = result.get("result", {}).get("data_array", [])
-        return [dict(zip(cols, row)) for row in rows]
-    except:
-        return []
+    """Legacy Databricks signal history is quarantined; this public app performs no query."""
+    return []
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -594,9 +561,24 @@ def main():
     auth = st.session_state.auth
     brain = st.session_state.brain
 
+    # External inference is opt-in twice: operator configuration and per-session user consent.
+    operator_external_allowed = _operator_allows_external_inference()
+    if operator_external_allowed:
+        external_inference_consent = st.sidebar.checkbox(
+            "I authorize this session's messages and chat history to be sent to the single configured external model provider.",
+            value=False,
+            key="external_inference_consent",
+        )
+        st.sidebar.caption(
+            f"Configured provider: {os.getenv('BRAIN_PRIMARY', '(not configured)')}. Automatic provider fallback is disabled."
+        )
+    else:
+        external_inference_consent = False
+        st.sidebar.info("External model inference is disabled by operator policy. No prompt or chat history is sent.")
+
     # ── Tabs ─────────────────────────────────────────────────────
     tab1, tab2, tab3, tab4, tab5 = st.tabs(
-        ["💬 Chat", "📡 XRP Signals", "🧠 Brain", "🔌 API", "📊 Analytics"]
+        ["💬 Chat", "📡 XRP Research", "🧠 Brain", "🔌 API", "📊 Analytics"]
     )
 
     # ════════════════════════════════════════════════════════════
@@ -604,16 +586,12 @@ def main():
     # ════════════════════════════════════════════════════════════
     with tab1:
         st.markdown("### 💬 Speak to Barrot")
-        backend = (
-            "GitHub Models ✅"
-            if auth.ready
-            else (
-                "Groq Fallback ⚡"
-                if (os.getenv("GROQ_API_KEY", "").strip())
-                else "Auto-waiting for credentials ⏳"
-            )
-        )
-        st.caption(f"Brain backend: {backend}")
+        if operator_external_allowed:
+            st.caption(f"External provider configured: {os.getenv('BRAIN_PRIMARY', '(not configured)')}")
+            if not external_inference_consent:
+                st.info("External inference is not authorized for this session. Messages remain local to this app.")
+        else:
+            st.info("External inference is disabled by operator policy. No provider request will be sent.")
 
         # Render history
         for msg in st.session_state.chat_history:
@@ -645,7 +623,7 @@ def main():
             with st.spinner("Barrot thinking..."):
                 # Pass history minus last user message
                 history_ctx = st.session_state.chat_history[:-1]
-                response = brain.think(user_input, history_ctx)
+                response = brain.think(user_input, history_ctx, user_consented=external_inference_consent)
             st.session_state.chat_history.append({"role": "assistant", "content": response})
             st.rerun()
 
@@ -654,71 +632,27 @@ def main():
             st.rerun()
 
     # ════════════════════════════════════════════════════════════
-    # TAB 2 — XRP SIGNALS
+    # TAB 2 — XRP RESEARCH STATUS
     # ════════════════════════════════════════════════════════════
     with tab2:
-        st.markdown("### 📡 XRP Liquidity Signal Dashboard")
-        st.caption(
-            "Blended ternary signal from order book, sentiment, and on-chain inputs"
+        st.markdown("### XRP Forecast Publication Status")
+        st.warning("NOT_ISSUED")
+        st.write(
+            "No directional XRP forecast is published. The legacy live ternary scorer "
+            "has been disabled because it does not satisfy the point-in-time, "
+            "walk-forward, calibration, drift, and independent shadow-evaluation gates."
         )
-
-        if st.button("⚡ RUN SIGNAL CHECK"):
-            with st.spinner("Computing signal..."):
-                price = get_xrp_price()
-                ob_sig, imb, bid, ask = get_orderbook_signal()
-                sent_sig, apex, reasoning = get_sentiment_signal()
-                oc_sig = 0  # onchain requires async; show as neutral
-                if HRM_AVAILABLE:
-                    hrm = hrm_resolve(
-                        {"orderbook": ob_sig, "onchain": oc_sig, "sentiment": sent_sig}
-                    )
-                    ternary_signal = hrm.state
-                    conf = hrm.confidence
-                    absolved = hrm.absolution_fired
-                else:
-                    ternary_signal = Ternary.resolve(ob_sig, oc_sig, sent_sig)
-                    conf = None
-                    absolved = False
-                    if ob_sig == oc_sig == sent_sig == Ternary.SELL:
-                        ternary_signal, absolved = Ternary.NULL, True
-
-            # Display
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>XRP PRICE</div><div style='font-size:1.8em;color:#00ffcc'>${price:.4f}</div></div>",
-                    unsafe_allow_html=True,
-                )
-            with col2:
-                lbl = Ternary.label(ob_sig)
-                ico = Ternary.color(ob_sig)
-                st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>ORDER BOOK</div><div class='signal-{'buy' if ob_sig==1 else 'sell' if ob_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>imbal={imb}</div></div>",
-                    unsafe_allow_html=True,
-                )
-            with col3:
-                lbl = Ternary.label(sent_sig)
-                ico = Ternary.color(sent_sig)
-                st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={apex}</div></div>",
-                    unsafe_allow_html=True,
-                )
-            with col4:
-                lbl = Ternary.label(ternary_signal)
-                ico = Ternary.color(ternary_signal)
-                st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>BLENDED SIGNAL</div><div class='signal-{'buy' if ternary_signal==1 else 'sell' if ternary_signal==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>",
-                    unsafe_allow_html=True,
-                )
-
-            if absolved:
-                st.warning("⚡ Override engaged — unanimous SELL downgraded to NULL")
-            if reasoning:
-                st.caption(f"Sentiment reasoning: {reasoning}")
-
-            st.caption(
-                f"Perception timestamp: {datetime.datetime.utcnow().isoformat()}Z · Anchor: {ANCHOR}"
-            )
+        st.caption(
+            "Order-book imbalance and headlines may be retained as descriptive research "
+            "features. They are not converted into BUY/SELL outputs or confidence scores."
+        )
+        if st.button("Refresh descriptive XRP spot reference"):
+            price = get_xrp_price()
+            if price > 0:
+                st.metric("XRP/USD spot reference", f"${price:.5f}")
+                st.caption("Descriptive spot reference only; not a forecast or recommendation.")
+            else:
+                st.info("Spot reference unavailable from the configured public price source.")
 
     # ════════════════════════════════════════════════════════════
     # TAB 3 — BRAIN QUERY
@@ -737,102 +671,48 @@ def main():
         if st.button("🧠 QUERY BRAIN"):
             if query.strip():
                 with st.spinner("Querying brain..."):
-                    result = brain.think(f"[BRAIN QUERY — no chat context, pure knowledge] {query}")
+                    result = brain.think(
+                        f"[BRAIN QUERY — no chat context, pure knowledge] {query}",
+                        user_consented=external_inference_consent,
+                    )
                 st.markdown(
                     f"<div class='chat-barrot'>⚡ <b>BARROT-Ω</b><br>{result}</div>",
                     unsafe_allow_html=True,
                 )
 
     # ════════════════════════════════════════════════════════════
-    # TAB 4 — API DOCS + TESTER
+    # TAB 4 — API STATUS
     # ════════════════════════════════════════════════════════════
     with tab4:
-        st.markdown("### 🔌 Barrot Public API")
-        st.markdown("""
-**Base URL:** `https://scribedpengenius-barrot-omega.hf.space`
-
----
-#### `POST /query`
-Query Barrot's brain directly.
-
-```bash
-curl -X POST https://scribedpengenius-barrot-omega.hf.space/query \\
-  -H "Content-Type: application/json" \\
-  -d '{"message": "What is your ternary signal architecture?"}'
-```
-
-**Response:**
-```json
-{
-  "response": "Barrot blends order-book, sentiment, and on-chain signals into a single ternary output...",
-  "anchor": 0.707,
-  "session_id": "a3f9b2c1"
-}
-```
-
----
-#### `GET /signal`
-Get current XRP ternary signal.
-
-```bash
-curl https://scribedpengenius-barrot-omega.hf.space/signal
-```
-
-**Response:**
-```json
-{
-  "signal_output": "BUY",
-  "ob_signal": 1,
-  "sent_signal": 1,
-  "price": 0.5231,
-  "timestamp": "2026-06-26T03:14:00Z"
-}
-```
-
----
-**Access:**
-| Product | Price | Includes |
-|---|---|---|
-| XRP Signal Service | $9.99/mo | Live ternary signals + confidence · [Subscribe](https://prostarelite.gumroad.com/l/opvxi) |
-        """)
-
-        st.markdown("#### Live API Tester")
-        test_msg = st.text_input("Test message:", value="What is Barrot-Ω?")
-        if st.button("🔌 TEST API CALL"):
-            with st.spinner("Calling brain..."):
-                resp = brain.think(test_msg)
-            st.json(
-                {
-                    "response": resp,
-                    "anchor": ANCHOR,
-                    "session_id": hashlib.md5(str(time.time()).encode()).hexdigest()[:8],
-                }
-            )
+        st.markdown("### Barrot API Status")
+        st.warning("XRP forecast endpoint: NOT_ISSUED")
+        st.write(
+            "The legacy ternary XRP signal endpoint and subscription offer are retired. "
+            "No BUY/SELL forecast, confidence score, or paid signal checkout is exposed."
+        )
+        st.caption(
+            "A future public forecast endpoint requires a signed readiness attestation, "
+            "point-in-time provenance, out-of-sample validation, and an independently verified publication path."
+        )
+        test_msg = st.text_input("Local interface test message:", value="Describe Barrot V3.")
+        if st.button("TEST CONSENT-GATED BRAIN"):
+            with st.spinner("Checking configured inference permission..."):
+                resp = brain.think(test_msg, user_consented=external_inference_consent)
+            st.json({"response": resp, "external_inference_authorized": bool(operator_external_allowed and external_inference_consent)})
 
     # ════════════════════════════════════════════════════════════
-    # TAB 5 — ANALYTICS
+    # TAB 5 — QUARANTINED LEGACY HISTORY
     # ════════════════════════════════════════════════════════════
     with tab5:
-        st.markdown("### 📊 Signal History — Delta Lake")
-        st.caption("Live from barrot_omega.xrp_liquidity_signals")
-
-        if st.button("📊 FETCH HISTORY"):
-            with st.spinner("Querying Delta Lake..."):
-                rows = fetch_signal_history(20)
-
-            if rows:
-                st.dataframe(rows, use_container_width=True)
-                buys = sum(1 for r in rows if r.get("signal_label") == "BUY")
-                sells = sum(1 for r in rows if r.get("signal_label") == "SELL")
-                nulls = sum(1 for r in rows if r.get("signal_label") == "NULL")
-                c1, c2, c3 = st.columns(3)
-                c1.metric("🟢 BUY", buys)
-                c2.metric("🔴 SELL", sells)
-                c3.metric("🟡 NULL", nulls)
-            else:
-                st.info(
-                    "No signal history yet — run a perception cycle from the XRP tab first, or check your Databricks token."
-                )
+        st.markdown("### Historical Signal Archive — Quarantined")
+        st.info(
+            "Legacy BUY/SELL/NULL records are not displayed or scored here. "
+            "They lack the complete point-in-time receipts and validated outcome "
+            "ledger required for a defensible predictive-performance report."
+        )
+        st.caption(
+            "No Databricks query, legacy signal count, or accuracy calculation is run by this public tab."
+        )
 
 
 if __name__ == "__main__":

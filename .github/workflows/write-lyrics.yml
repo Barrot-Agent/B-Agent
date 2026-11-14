@@ -1,39 +1,17 @@
-name: Write Lyrics
+name: Write Lyrics (quarantined pending branch-only integration)
 
 on:
-  workflow_dispatch:
-    inputs:
-      theme:
-        description: 'Theme for the lyrics (leave blank for Barrot to choose)'
-        required: false
-        default: ''
-      style:
-        description: 'Instrumental style to fit, if writing to an existing track (optional)'
-        required: false
-        default: ''
+  workflow_dispatch: {}
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
-  write_lyrics:
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
-      LYRICS_THEME: ${{ github.event.inputs.theme }}
-      LYRICS_STYLE: ${{ github.event.inputs.style }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - name: Write lyrics
-        run: python3 scripts/write_lyrics.py
-      - name: Commit lyrics + log
+      - name: Explain quarantine
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add music/
-          git diff --cached --quiet || git commit -m "New lyrics written [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          echo "The previous workflow called Groq and committed generated lyrics directly to main with repository write permission."
+          echo "The workflow remains disabled until a branch-only, artifact-first, explicit per-run approval flow with exact-main-SHA validation is implemented and tested."
+          echo "No credentials are loaded, no external service is called, and no repository mutation occurs."

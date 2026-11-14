@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "run": "Run35c",
+  "captured_at_utc": "2026-11-11T21:24:24Z",
+  "verified_parent_head": "831a29f98f5b34a6f80f92109172fee0fce7fe9e",
+  "mission_priority": 1,
+  "forecast_status": "NOT_ISSUED",
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "831a29f98f5b34a6f80f92109172fee0fce7fe9e",
+    "ahead_by": 2044,
+    "behind_by": 0,
+    "tree_entries": 2285,
+    "pr": 1661,
+    "pr_state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "formal_reviews": 0,
+    "review_comments": 0,
+    "changed_files": 1020,
+    "workflow_files": 44,
+    "non_workflow_files": 976,
+    "open_prs": 374,
+    "open_pr_drafts": 360,
+    "open_pr_non_drafts": 14
+  },
+  "exact_head_ci": {
+    "head": "831a29f98f5b34a6f80f92109172fee0fce7fe9e",
+    "full_ci": {
+      "run_id": 43102180175,
+      "full_suite_job_id": 130796173330,
+      "conclusion": "success",
+      "tests_passed": 3449,
+      "failures": 0,
+      "subtests": 8,
+      "coverage_percent": 59.99,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 96.83
+    },
+    "core_test_job": {
+      "job_id": 130796172630,
+      "conclusion": "success"
+    },
+    "dependency_audit_pr": {
+      "run_id": 43102180190,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "dependency_audit_push": {
+      "run_id": 43102172142,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_pr": {
+      "run_id": 43102180108,
+      "conclusion": "success"
+    },
+    "fail_closed_push": {
+      "run_id": 43102172133,
+      "conclusion": "success"
+    },
+    "wheel_build": "success",
+    "installed_primary_mission_verification": "success",
+    "packaging_warnings": [
+      "project.license TOML table deprecation",
+      "barrot_agent.data.missions and data.research absent from explicit package configuration; primary_mission.json was nevertheless present in the wheel and installed successfully"
+    ],
+    "coverage_scope": "barrot_agent only; not all repository packages"
+  },
+  "etf_flow_reconciliation": {
+    "alpha_finance": {
+      "source": "https://alphafinance.io/etf/xrp/",
+      "universe": "five US spot XRP funds",
+      "latest_session": "2026-11-10",
+      "net_flow_usd": -7600000,
+      "fund_breakdown_usd": {
+        "GXRP": -7200000,
+        "XRPC": -449800,
+        "XRP": 0,
+        "XRPZ": 0,
+        "TOXR": 0
+      },
+      "seven_session_net_flow_usd": -18000000,
+      "thirty_session_net_flow_usd": 1300000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "holdings_and_aum": "not published by this tracker"
+    },
+    "xrp_insights": {
+      "source": "https://xrp-insights.com/",
+      "holdings_universe": "six US spot XRP ETFs plus BITW",
+      "total_products": 7,
+      "xrp_holdings": 1185970000,
+      "total_aum_usd": 1259620000,
+      "six_spot_etf_holdings_xrp": 1160000000,
+      "bitw_xrp_holdings": 20900000,
+      "nov10_net_flow_xrp": -27000,
+      "nov10_flow_usd_approx": -28500,
+      "nov9_net_flow_xrp": -9540000,
+      "nov9_to_nov10_net_flow_xrp": -9570000,
+      "gxrp_flow_coverage": "GXRP explicitly excluded from flow totals while a data gap is corrected; GXRP holdings still count in total holdings"
+    },
+    "reconciliation": "Most of the Nov10 daily-flow difference is explained by Alpha including GXRP's -$7.2M outflow while XRP Insights excludes GXRP from flow totals. The remaining difference is not independently reconciled. Do not average.",
+    "the_block": {
+      "reported_24h_flow_usd": -10400000,
+      "displayed_timestamp": "2026-11-11 01:17 EST",
+      "interpretation": "matches Alpha's Nov9 -$10.4M session; do not assign to Nov10 without a verified window"
+    },
+    "withdrawn_prior_attribution": {
+      "figure_xrp": 1405000000,
+      "products": 10,
+      "prior_label": "XRP Insights",
+      "correction": "withdrawn; current XRP Insights page reports 1.18597B XRP across seven US products, and no source for the 1.405B/10-product figure was verified in this capture"
+    },
+    "independence": "Alpha and XRP Insights are separate aggregators using issuer-reported data; not fully independent source groups"
+  },
+  "public_signal_safety_reconciliation": {
+    "main": {
+      "latest_signal_json_timestamp": "2026-10-29T13:23:33Z",
+      "score": 44,
+      "confidence": 0,
+      "type": "headline sentiment, not calibrated directional forecast",
+      "provider_failures": [
+        "GitHub Models missing token",
+        "Groq HTTP 429"
+      ],
+      "ui_mapping": "web/signals.html maps exact scores 1/0/-1 to BUY/NULL/SELL; current score 44 renders NULL",
+      "subscription_price_usd_monthly": 9.99,
+      "checkout_present": true
+    },
+    "integration": {
+      "latest_signal_schema": 2,
+      "status": "NOT_ISSUED",
+      "legacy_record": "stale, descriptive-only and model-ineligible",
+      "checkout_present": false,
+      "directional_output": false
+    },
+    "interpretation": "main currently exposes a stale sentiment-only artifact and legacy paid signal interface; it is not currently issuing a directional forecast. Integration removes the paywall and uses NOT_ISSUED.",
+    "pages_side_effect": "main push automatically publishes GitHub Pages; no publication authorization"
+  },
+  "kamilah_youtube_identity": {
+    "person_identity": "confirmed from public first-party professional profile",
+    "candidate_handles": [
+      "@drkamilahstevenson",
+      "@KamilahStevensonXrpStocks"
+    ],
+    "channel_identity": "not first-party/platform verified",
+    "seed_video_references": 10,
+    "attribution_status": "quarantined candidate references only",
+    "inventory_created": false,
+    "rule": "do not attribute/inventory creator videos until handle/channel ID is verified by first-party cross-link or platform ownership evidence"
+  },
+  "source_index": [
+    {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "group": "ETF_flow_aggregator",
+      "method": "five-fund flow series; Nov10 fund-level table"
+    },
+    {
+      "url": "https://xrp-insights.com/",
+      "group": "ETF_holdings_aggregator",
+      "method": "issuer holdings; seven products; GXRP excluded from flow totals"
+    },
+    {
+      "url": "https://www.theblock.co/data/etf/spot-etf-flows/xrp",
+      "group": "ETF_aggregator",
+      "method": "24-hour snapshot; exact session window not confirmed"
+    },
+    {
+      "url": "https://www.cftc.gov/dea/newcot/FinFutWk.txt",
+      "group": "regulator_primary",
+      "method": "Nov3 2026 TFF positions"
+    },
+    {
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+      "group": "government_primary",
+      "method": "October 2026 CPI"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "group": "regulatory_filing",
+      "method": "Evernorth cash/in-kind/debt/facility reconciliation"
+    }
+  ],
+  "raw_source_receipts": {
+    "run35_public_web_bytes_ingested_into_barrot": false,
+    "sha256_receipts_created": false,
+    "trusted_timestamp_anchor": false,
+    "model_eligible": false
+  },
+  "decision": {
+    "merge": "BLOCKED",
+    "blockers": [
+      "PR remains draft despite clean mergeability",
+      "zero formal reviews/approvals",
+      "branch protection details inaccessible (HTTP 403)",
+      "connector permission metadata overprivileged",
+      "credential-path/provider revocation evidence incomplete",
+      "GitHub Pages publication authorization absent",
+      "976 non-workflow changed paths still require semantic review"
+    ],
+    "no_merge": true,
+    "no_deployment": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "no_external_model_transfer": true
+  }
+}

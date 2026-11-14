@@ -1,0 +1,319 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "open_standard_ousd_sbi_coinbase_circle_ripple_network_reconciliation_20261105T135415Z",
+  "artifact_type": "append_only_institutional_network_and_stablecoin_reconciliation",
+  "title": "Open Standard OUSD: SBI–Coinbase shared network, Bridge issuance, Circle/Ripple competition and reserve-data reconciliation",
+  "recorded_at_utc": "2026-11-05T13:54:15.021Z",
+  "research_cutoff_utc": "2026-11-05T13:54:15.021Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "append_only": {
+    "original_artifacts_modified": false,
+    "purpose": "Resolve the SBI/Coinbase relationship through Open Standard, distinguish OUSD from USDC/RLUSD, and preserve conflicting official reserve metrics."
+  },
+  "source_capture_policy": {
+    "raw_bytes_preserved": false,
+    "sha256_receipts": null,
+    "independent_timestamp_anchors": false,
+    "model_eligible": false,
+    "reason": "Official company and reserve pages were reviewed through rendered extracts; byte-complete captures and independent timestamp receipts were not preserved."
+  },
+  "source_registry": [
+    {
+      "source_id": "sbi_open_standard_join_and_jpysc_ousd_pilot",
+      "publisher": "SBI Holdings and Startale",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "publication_date": "2026-10-16",
+      "source_independence_group": "sbi_group_and_startale_joint_release",
+      "raw_capture_status": "rendered_primary_release",
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI Holdings and Startale joined Open Standard.",
+        "The announcement names Coinbase among the 140+ participating companies.",
+        "SBI and Startale said they would explore a JPYSC–OUSD interoperability proof of concept.",
+        "The announcement explicitly says the release is pilot exploration only, not a new service or production settlement/trading launch."
+      ],
+      "limitations": [
+        "The SBI release's 140+ participant count differs from later Open Standard/Startale pages reporting 200+; date and definition may differ.",
+        "No production settlement volume, actual capital transfer, or XRP use is disclosed."
+      ]
+    },
+    {
+      "source_id": "startale_open_standard_sbi_ousd_pilot",
+      "publisher": "Startale",
+      "url": "https://www.startale.com/en/blog/openstandard-startale-sbi",
+      "publication_date": "2026-10-16",
+      "source_independence_group": "startale",
+      "raw_capture_status": "rendered_primary_release",
+      "model_eligible": false,
+      "claims_supported": [
+        "Startale describes Open Standard as an alliance of 200+ companies including Visa, Stripe, Mastercard, BlackRock and Coinbase.",
+        "SBI/Startale are exploring JPYSC–OUSD interoperability, not operating a production service."
+      ],
+      "limitations": [
+        "Startale is a project participant and its ecosystem claims are not independent transaction-volume measurements."
+      ]
+    },
+    {
+      "source_id": "openusd_official_product_and_network_page",
+      "publisher": "Open Standard",
+      "url": "https://openusd.inc/",
+      "publication_date": "page_current_at_retrieval",
+      "source_independence_group": "open_standard_issuer_network",
+      "raw_capture_status": "rendered_official_product_page",
+      "model_eligible": false,
+      "claims_supported": [
+        "OUSD is issued by Bridge, a Stripe company, for Open Standard.",
+        "The page describes OUSD as fully reserved, free to issue/redeem 1:1, and live on Ethereum, Solana, Base and Tempo.",
+        "The page displays 200+ network partners and lists Coinbase and SBI Holdings.",
+        "The page says reserve income flows to Open Standard partners after a management fee.",
+        "The page displays $468M in circulation and says the reserve mix was 54.9% cash and 45.1% short-dated U.S. Treasuries as of October 2026."
+      ],
+      "limitations": [
+        "The $468M metric has no precise as-of timestamp on the page.",
+        "The page also advertises a November 12, 2026 first-live-payments/opening event, which is future relative to this research cutoff; do not treat that event as already completed.",
+        "The displayed reserve mix is not accompanied on this page by a current independent attestation."
+      ]
+    },
+    {
+      "source_id": "bridge_ousd_live_reserve_dashboard",
+      "publisher": "Bridge",
+      "url": "https://reserves.bridge.xyz/ousd",
+      "snapshot_at_utc": "2026-11-05T11:00:00Z",
+      "source_independence_group": "bridge_issuer_dashboard",
+      "raw_capture_status": "rendered_live_dashboard",
+      "model_eligible": false,
+      "claims_supported": [
+        "OUSD supply: 910,426,478.",
+        "Reserve assets: $912,426,596; displayed overcollateralization: $2,000,117 and 100.22% coverage.",
+        "Displayed cash: $115,817,356 (12.7%); Treasury: $794,609,125 (87.3%).",
+        "The dashboard lists only an August 2026 attestation report."
+      ],
+      "limitations": [
+        "Live dashboard values are issuer/administrator telemetry, not an independent current attestation.",
+        "The cash and Treasury line items sum to $910,426,481, approximately the supply, not the displayed $912,426,596 reserve total; the $2,000,115 surplus is not separately allocated in the displayed breakdown.",
+        "The dashboard's current supply differs materially from the Open Standard marketing page's $468M circulation figure; the marketing page lacks an exact timestamp, so do not average the values.",
+        "The listed August attestation predates the September 30 launch and is not evidence for November balances."
+      ]
+    },
+    {
+      "source_id": "solana_foundation_ousd_launch",
+      "publisher": "Solana Foundation",
+      "url": "https://solana.com/news/open-usd-is-live-on-solana",
+      "publication_date": "2026-09-30",
+      "source_independence_group": "solana_foundation_partner",
+      "raw_capture_status": "rendered_partner_announcement",
+      "model_eligible": false,
+      "claims_supported": [
+        "OUSD was announced live on Solana on September 30, 2026.",
+        "The announcement says Bridge issues OUSD and identifies reserves at BlackRock, Lead Bank and BNY.",
+        "The five founding partners are Coinbase, Mastercard, Shopify, Stripe and Visa; the post says they committed more than $1B to OUSD liquidity.",
+        "The post describes a broader network of more than 200 companies, including SBI Holdings."
+      ],
+      "limitations": [
+        "Partner announcement; committed liquidity is not the same as fully deployed circulating supply or actual settlement volume.",
+        "No XRPL or XRP usage is described."
+      ]
+    },
+    {
+      "source_id": "coinbase_rlusd_distribution",
+      "publisher": "Coinbase",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "publication_date": "2026-10-28",
+      "source_independence_group": "coinbase",
+      "raw_capture_status": "rendered_primary_company_post",
+      "model_eligible": false,
+      "claims_supported": [
+        "Coinbase made RLUSD available through Prime, Exchange and Retail in supported regions.",
+        "At launch, deposits and withdrawals are supported across XRPL, Base and Ethereum.",
+        "Coinbase Global Exchange collateral use was described as a future capability, not live at launch.",
+        "Ripple said it would provide liquidity on Base."
+      ],
+      "limitations": [
+        "This is a distribution announcement, not evidence of XRP bridge volume, XRP purchases or actual RLUSD settlement volume."
+      ]
+    },
+    {
+      "source_id": "sbi_circle_equity_and_commercial_alliance",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publication_date": "2025-06-09",
+      "source_independence_group": "sbi_group",
+      "raw_capture_status": "rendered_primary_company_release",
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI Holdings acquired $25M of Circle shares and SBI Shinsei Bank acquired $25M, for $50M combined strategic investment.",
+        "SBI and Circle signed a comprehensive business alliance MOU in November 2023.",
+        "SBI VC Trade began retail USDC handling in Japan in March 2025.",
+        "SBI and Circle signed an agreement to establish SBI Circle Holdings."
+      ],
+      "limitations": [
+        "Equity investment is historical capital deployed, not a current XRP investment.",
+        "No XRP use or XRP collateral is implied by USDC distribution."
+      ]
+    },
+    {
+      "source_id": "sbi_ripple_standard_custody_rlusd_mou",
+      "publisher": "SBI Holdings, SBI VC Trade, Ripple and Standard Custody",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "publication_date": "2025-08-22",
+      "source_independence_group": "sbi_ripple_joint_release",
+      "raw_capture_status": "rendered_primary_company_release",
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI VC Trade and Standard Custody & Trust Company, a Ripple subsidiary and RLUSD issuer, signed an MOU for RLUSD issuance/distribution in Japan.",
+        "The release describes RLUSD as backed by USD deposits, short-term U.S. Treasuries and cash equivalents."
+      ],
+      "limitations": [
+        "MOU is a commercial relationship, not a disclosed XRP purchase or XRP collateral arrangement."
+      ]
+    },
+    {
+      "source_id": "coinbase_circle_q3_2026_sec_10q",
+      "publisher": "Coinbase Global, Inc.",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filing_date": "2026-10-29",
+      "source_independence_group": "coinbase_issuer",
+      "raw_capture_status": "rendered_sec_extract",
+      "model_eligible": false,
+      "claims_supported": [
+        "Coinbase states that its Circle arrangement was renewed on the same terms.",
+        "Coinbase Q3 revenue concentration disclosure says one counterparty accounted for 27% of total revenue; the reviewed passage does not identify it."
+      ],
+      "limitations": [
+        "Do not attribute the unnamed counterparty to Circle.",
+        "Issuer filing is not independent proof of actual USDC payment volume."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings",
+      "to": "Open Standard",
+      "relationship": "network partner",
+      "evidence": "SBI/Startale October 16, 2026 announcement"
+    },
+    {
+      "from": "Startale",
+      "to": "Open Standard",
+      "relationship": "network partner",
+      "evidence": "SBI/Startale October 16, 2026 announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard",
+      "relationship": "founding partner",
+      "evidence": "Open Standard official page and SBI/Startale announcement"
+    },
+    {
+      "from": "Bridge (Stripe company)",
+      "to": "OUSD",
+      "relationship": "issuer",
+      "evidence": "Open Standard official page and Bridge reserve dashboard"
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relationship": "issuer",
+      "evidence": "SBI/Startale announcement"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relationship": "$25M strategic equity investment and business alliance",
+      "evidence": "SBI June 9, 2025 release"
+    },
+    {
+      "from": "SBI Shinsei Bank",
+      "to": "Circle",
+      "relationship": "$25M strategic equity investment",
+      "evidence": "SBI June 9, 2025 release"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relationship": "Japan distribution",
+      "evidence": "SBI June 9, 2025 release"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relationship": "commercial USDC distribution arrangement and equity investment",
+      "evidence": "Coinbase Q3 2026 10-Q and prior issuer disclosures"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relationship": "Japan distribution MOU with Standard Custody",
+      "evidence": "SBI August 22, 2025 release"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "distribution on XRPL, Base and Ethereum",
+      "evidence": "Coinbase October 28, 2026 release"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relationship": "issuer group via Standard Custody",
+      "evidence": "SBI/Ripple MOU and Coinbase RLUSD announcement"
+    }
+  ],
+  "direct_vs_indirect_findings": {
+    "direct_sbi_coinbase_contract": "NOT_ESTABLISHED",
+    "shared_open_standard_network": "VERIFIED",
+    "shared_circle_relationship": "VERIFIED_BUT_DIFFERENT_ROLES",
+    "shared_ripple_rlusd_ecosystem": "VERIFIED_BUT_DIFFERENT_ROLES",
+    "explanation": "SBI Holdings and Coinbase are both in Open Standard, but no direct bilateral SBI–Coinbase contract was found. SBI invested in Circle and distributes USDC; Coinbase has a Circle distribution/equity relationship. Separately, SBI VC Trade has an RLUSD relationship with Ripple/Standard Custody while Coinbase distributes RLUSD globally. These are shared counterparties and consortium links, not proof of a direct SBI–Coinbase commercial agreement."
+  },
+  "xrp_implications": {
+    "substitution_hypothesis": "OUSD offers a dollar-denominated, multi-chain payment/settlement asset with partner-shared reserve economics and Coinbase distribution. It may compete with XRP as a bridge/settlement asset in some corridors, especially where users can settle directly in USD stablecoins.",
+    "complementarity_hypothesis": "OUSD and JPYSC may create yen-dollar on-chain liquidity that increases tokenized-asset and cross-border activity; XRP could still serve separate liquidity or bridge functions if a route actually uses it.",
+    "disconfirming_evidence_needed": [
+      "XRPL/OUSD native contract or bridge deployment evidence",
+      "Transaction-level payment route showing XRP as an intermediary",
+      "Net XRP order flow attributable to OUSD/JPYSC corridors",
+      "Production JPYSC–OUSD pilot launch and measured settlement volumes"
+    ],
+    "current_status": "No XRP or XRPL deployment, XRP collateral use, or XRP transaction volume was disclosed in the reviewed OUSD/SBI materials."
+  },
+  "reserve_data_disagreement": {
+    "openusd_marketing_page": {
+      "displayed_circulation_usd_millions": 468,
+      "reserve_mix_as_of": "October 2026",
+      "cash_pct": 54.9,
+      "treasuries_pct": 45.1,
+      "precise_as_of_timestamp": null
+    },
+    "bridge_live_dashboard": {
+      "supply": 910426478,
+      "reserves_usd": 912426596,
+      "overcollateralization_usd": 2000117,
+      "coverage_pct": 100.22,
+      "cash_usd": 115817356,
+      "cash_pct": 12.7,
+      "treasury_usd": 794609125,
+      "treasury_pct": 87.3,
+      "last_updated_utc": "2026-11-05T11:00:00Z"
+    },
+    "reconciliation": "The marketing-page circulation metric and reserve mix are materially different from Bridge's November 5 live dashboard. The marketing page has no precise timestamp; the dashboard is timestamped but issuer-operated. Treat the marketing values as stale/undated or definitionally different until an exact dated reconciliation is published. Do not average.",
+    "reserve_breakdown_arithmetic": "Bridge's displayed cash plus Treasury amounts total $910,426,481, while the displayed reserve total is $912,426,596; the $2,000,115 surplus is not separately allocated in the displayed asset-type breakdown."
+  },
+  "evidence_limits": [
+    "Bridge's current dashboard is not a current independent attestation.",
+    "The only attestation link displayed by Bridge is August 2026, before the September 30 launch; it is not used to infer current balances.",
+    "OUSD marketing-page and Bridge dashboard metrics conflict and have different timestamp quality.",
+    "SBI/Startale JPYSC–OUSD work is pilot exploration, not production settlement.",
+    "Open Standard partner membership does not establish bilateral agreements among all members.",
+    "No XRP-specific adoption, collateral, purchase or settlement volume is established."
+  ],
+  "admission_decision": {
+    "model_eligible_sources": 0,
+    "feature_admission": false,
+    "directional_forecast_issued": false,
+    "reason": "Rendered sources, conflicting supply vintages, no raw receipts, and no transaction-level XRP linkage."
+  }
+}

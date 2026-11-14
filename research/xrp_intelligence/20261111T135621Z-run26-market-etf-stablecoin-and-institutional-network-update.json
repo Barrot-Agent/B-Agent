@@ -1,0 +1,691 @@
+{
+  "artifact_type": "xrp_market_etf_stablecoin_and_institutional_network_update",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "captured_at_utc": "2026-11-11T13:56:21Z",
+  "data_cutoff_utc": "2026-11-11T12:00:00Z",
+  "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "market_snapshot": {
+    "observed_at_utc": "2026-11-11T12:00:00Z",
+    "direct_spot": {
+      "status": "NOT_SYNCHRONIZED",
+      "price_usd": null,
+      "reason": "No synchronized direct exchange XRP/USD or normalized XRP/USDT ticker and depth set was verified in this capture. Derivatives mark prices below are not spot prices.",
+      "model_eligible": false
+    },
+    "derivatives": [
+      {
+        "source_id": "tradradar",
+        "venue_scope": "Seven-venue XRP perpetual aggregator",
+        "mark_price_usd": 1.0574,
+        "mark_price_change_24h_pct": -1.92,
+        "open_interest_usd": 1570000000,
+        "open_interest_change_24h_pct": -4.05,
+        "funding_rate_pct_per_8h": 0.0092,
+        "liquidations_24h_usd_min": 15160000,
+        "long_liquidations_24h_usd": 14040000,
+        "short_liquidations_24h_usd": 1120000,
+        "long_short_account_ratio": 3.91,
+        "long_account_share_pct": 79.6,
+        "snapshot_time_utc": "2026-11-11T11:30:00Z",
+        "caveat": "Aggregator-reported values; venue/contract coverage and account-ratio denominator are provider-defined. Not a raw exchange-native consolidated tape.",
+        "model_eligible": false
+      },
+      {
+        "source_id": "hyperacademy",
+        "venue_scope": "Hyperliquid XRP perpetual",
+        "mark_price_usd": 1.057,
+        "open_interest_usd": 102100000,
+        "volume_24h_usd": 85200000,
+        "funding_rate_pct_per_1h": 0.0005,
+        "snapshot_time_utc": "2026-11-11T12:00:00Z",
+        "caveat": "Separate venue and provider snapshot; do not add to or average with TradRadar aggregate.",
+        "model_eligible": false
+      }
+    ],
+    "order_book": {
+      "status": "NO_ELIGIBLE_SYNCHRONIZED_SPOT_DEPTH",
+      "caveat": "The previously captured EdgeOrNot comparison mixed Binance spot with OKX perpetual depth. It cannot be treated as a pure XRP spot order book. No new direct, synchronized venue-level depth snapshot was verified here.",
+      "model_eligible": false
+    },
+    "interpretation": "Positive funding alongside falling reported open interest and long-heavy liquidations is consistent with deleveraging, but source universes differ and no synchronized spot flow/depth panel corroborates it."
+  },
+  "etf_flows": {
+    "observations": [
+      {
+        "source_id": "alpha_etf",
+        "window": "2026-11-10 daily session",
+        "net_flow_usd": -7600000,
+        "thirty_session_net_flow_usd": 1300000,
+        "note": "GXRP was reported as the largest outflow contributor. Preserve fund-level attribution and the 30-session positive cumulative context.",
+        "model_eligible": false
+      },
+      {
+        "source_id": "theblock_etf",
+        "window": "24-hour dashboard window as displayed",
+        "net_flow_usd": -10400000,
+        "total_aum_usd": 1100000000,
+        "updated_at_utc": "2026-11-11T06:17:00Z",
+        "note": "Dashboard window and provider methodology differ from Alpha Finance's dated daily-session row.",
+        "model_eligible": false
+      },
+      {
+        "source_id": "xrp_insights",
+        "data_as_of_utc": "2026-11-09",
+        "nov10_row_status": "PROVISIONAL_PENDING_RE_SETTLEMENT",
+        "method": "Issuer-reported XRP holdings changes with documented fund-coverage and adjustment caveats.",
+        "note": "Do not treat a provisional holdings row as final investor cash creation/redemption or as a same-window match to the other dashboards.",
+        "model_eligible": false
+      }
+    ],
+    "reconciliation": "The -$7.6M daily session, -$10.4M rolling 24-hour dashboard and provisional holdings-derived row are not interchangeable. Do not average them or assign a single consensus flow."
+  },
+  "stablecoin_and_institutional_relationships": {
+    "circle_usdc": {
+      "circulation_usd": 68900000000,
+      "data_as_of_utc": "2026-11-09",
+      "native_network_support": [
+        "XRPL"
+      ],
+      "network_count_reported": 38,
+      "network_list_as_of_utc": "2026-09-16",
+      "reserve_policy": "Circle states USDC is backed 1:1 by highly liquid cash and cash-equivalent assets; most reserves are held in the Circle Reserve Fund (USDXX), with the remainder in cash at financial institutions.",
+      "disclosures": "Circle states that reserve holdings and mint/burn flows are disclosed weekly and third-party reserve assurance is provided monthly.",
+      "scope_warning": "Issuer-level USDC circulation and reserves are not XRPL-specific and do not evidence XRP inflows or bridge demand."
+    },
+    "relationships": [
+      {
+        "id": "coinbase-pnc-usdc-pilot",
+        "parties": [
+          "Coinbase",
+          "PNC",
+          "Circle"
+        ],
+        "relation": "PNC corporate and institutional clients in a limited pilot can receive USDC through Coinbase Payment APIs; incoming USDC is automatically converted 1:1 into USD and deposited at PNC.",
+        "relationship_type": "Indirect Circle exposure through USDC; direct operating relationship evidenced between PNC and Coinbase.",
+        "status": "CONFIRMED_PILOT_ANNOUNCEMENT",
+        "evidence": [
+          "coinbase_pnc",
+          "reuters_pnc"
+        ],
+        "limitations": [
+          "Pilot only; no production transaction volume disclosed.",
+          "The announcement does not identify XRP or XRPL as a settlement leg.",
+          "No direct PNC-Circle contract is established by these sources."
+        ]
+      },
+      {
+        "id": "coinbase-circle-usdc-governance-and-economics",
+        "parties": [
+          "Coinbase",
+          "Circle"
+        ],
+        "relation": "Circle and Coinbase were the founding companies behind Centre; Circle remained USDC issuer after Centre ceased as a standalone entity. Circle's 2023 release states Coinbase took an equity stake and the companies share USDC reserve-related revenue under their agreement.",
+        "status": "CONFIRMED_CORPORATE_ANNOUNCEMENT",
+        "evidence": [
+          "circle_coinbase_structure"
+        ],
+        "limitations": [
+          "The release establishes strategic/economic alignment, not a direct XRP relationship.",
+          "Current equity percentage and current revenue split are not quantified in this capture."
+        ]
+      },
+      {
+        "id": "coinbase-ripple-rlusd-distribution",
+        "parties": [
+          "Coinbase",
+          "Ripple",
+          "Standard Custody & Trust Company"
+        ],
+        "relation": "Coinbase added RLUSD to Coinbase Prime, Coinbase Exchange and its app. At launch, RLUSD deposits and withdrawals were supported on XRPL, Base and Ethereum; Coinbase stated Global Exchange collateral availability would follow. Ripple said it would provide liquidity on Base.",
+        "status": "CONFIRMED_LISTING_ANNOUNCEMENT",
+        "evidence": [
+          "coinbase_rlusd"
+        ],
+        "limitations": [
+          "RLUSD is a separate stablecoin, not XRP.",
+          "XRPL support for RLUSD does not prove XRP is used as bridge collateral or that XRP was purchased.",
+          "The stated future collateral availability is not treated as already active."
+        ]
+      },
+      {
+        "id": "sbi-vc-trade-ripple-rlusd-distribution",
+        "parties": [
+          "SBI VC Trade",
+          "Ripple",
+          "Standard Custody & Trust Company"
+        ],
+        "relation": "SBI VC Trade announced RLUSD handling in Japan beginning 2026-06-24 as a category-four electronic payment instrument; its product page identifies Standard Custody & Trust Company, a Ripple subsidiary, as issuer.",
+        "status": "CONFIRMED_DISTRIBUTION_ANNOUNCEMENT",
+        "evidence": [
+          "sbi_vctrade_rlusd",
+          "sbi_rlusd_network_support"
+        ],
+        "limitations": [
+          "SBI VC Trade's current product page lists Ethereum as supported and XRPL as future/planned, not active at the page snapshot.",
+          "Listing/distribution does not establish transaction volume, XRP bridge usage or net XRP purchases."
+        ]
+      },
+      {
+        "id": "circle-usdc-xrpl",
+        "parties": [
+          "Circle",
+          "XRPL"
+        ],
+        "relation": "Circle lists XRPL among the networks on which USDC is natively issued.",
+        "status": "CONFIRMED_NETWORK_SUPPORT_ANNOUNCEMENT",
+        "evidence": [
+          "circle_usdc"
+        ],
+        "limitations": [
+          "Native USDC availability on XRPL does not establish material XRP purchases, bridge demand or collateral use. Actual XRPL transfer volume was not measured in this capture."
+        ]
+      },
+      {
+        "id": "circle-ripple-direct-partnership",
+        "parties": [
+          "Circle",
+          "Ripple"
+        ],
+        "relation": "No direct Circle-Ripple partnership is established by the evidence in this update.",
+        "status": "NOT_ESTABLISHED",
+        "evidence": [
+          "circle_usdc",
+          "coinbase_rlusd"
+        ],
+        "limitations": [
+          "Coinbase distributing both USDC and RLUSD is not evidence of a Circle-Ripple agreement."
+        ]
+      }
+    ],
+    "strategic_interpretation": "Coinbase is positioning itself as a multi-issuer stablecoin distribution, custody and payment-infrastructure platform. Circle has an established equity/revenue relationship with Coinbase around USDC; Ripple has a separate RLUSD distribution relationship with Coinbase and SBI VC Trade. Circle USDC and Coinbase-distributed RLUSD are supported on XRPL, but SBI VC Trade's RLUSD product page currently lists Ethereum only and XRPL as future. These rails can expand without creating equivalent XRP demand."
+  },
+  "observations": [
+    {
+      "id": "spot-data-gap",
+      "class": "unknown",
+      "claim": "A synchronized direct XRP spot ticker/depth panel was not verified in this capture.",
+      "evidence": []
+    },
+    {
+      "id": "perpetual-deleveraging",
+      "class": "sourced_claim",
+      "claim": "Two non-identical derivatives aggregators report falling open interest with positive funding; TradRadar also reports long-heavy liquidations.",
+      "evidence": [
+        "tradradar",
+        "hyperacademy"
+      ]
+    },
+    {
+      "id": "etf-flow-disagreement",
+      "class": "sourced_claim",
+      "claim": "ETF flow dashboards show negative recent flows but differ in window, fund coverage and methodology; XRP Insights has a provisional row.",
+      "evidence": [
+        "alpha_etf",
+        "theblock_etf",
+        "xrp_insights"
+      ]
+    },
+    {
+      "id": "pnc-usdc-pilot",
+      "class": "confirmed",
+      "claim": "PNC and Coinbase announced a limited USDC payment-acceptance pilot with automatic USD conversion.",
+      "evidence": [
+        "coinbase_pnc",
+        "reuters_pnc"
+      ]
+    },
+    {
+      "id": "coinbase-rlusd",
+      "class": "confirmed",
+      "claim": "Coinbase announced RLUSD distribution on its Prime, Exchange and retail surfaces with XRPL, Base and Ethereum transfer support at launch.",
+      "evidence": [
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "id": "sbi-vctrade-rlusd",
+      "class": "confirmed",
+      "claim": "SBI VC Trade announced RLUSD handling in Japan on 2026-06-24; its product page lists Ethereum as current support and XRPL as future.",
+      "evidence": [
+        "sbi_vctrade_rlusd",
+        "sbi_rlusd_network_support"
+      ]
+    },
+    {
+      "id": "circle-usdc",
+      "class": "confirmed",
+      "claim": "Circle identifies itself as USDC issuer, reports $68.9B circulation as of 2026-11-09 and lists XRPL among native USDC networks.",
+      "evidence": [
+        "circle_usdc",
+        "circle_transparency"
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "PNC",
+      "to": "Coinbase",
+      "relation": "limited USDC payment-acceptance pilot",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_pnc",
+        "reuters_pnc"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer and reserve manager",
+      "status": "confirmed",
+      "evidence": [
+        "circle_usdc",
+        "circle_transparency"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "equity and USDC reserve-revenue alignment",
+      "status": "confirmed",
+      "evidence": [
+        "circle_coinbase_structure"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "exchange, Prime and retail distribution",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer through Standard Custody & Trust Company",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd",
+        "sbi_vctrade_rlusd"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "Japan distribution/listing",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_vctrade_rlusd"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRPL",
+      "relation": "RLUSD deposit/withdrawal support on XRPL",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd"
+      ],
+      "caveat": "This is RLUSD rail support, not evidence of native XRP demand."
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native USDC network support",
+      "status": "confirmed",
+      "evidence": [
+        "circle_usdc"
+      ],
+      "caveat": "USDC transfer volume and any resulting XRP fee/reserve demand were not measured."
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRPL",
+      "relation": "RLUSD support is Ethereum-only at current product-page snapshot; XRPL is future/planned",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_rlusd_network_support"
+      ]
+    },
+    {
+      "from": "PNC",
+      "to": "Circle",
+      "relation": "indirect USDC issuer exposure through Coinbase-powered pilot",
+      "status": "inference",
+      "evidence": [
+        "coinbase_pnc",
+        "circle_usdc"
+      ],
+      "caveat": "No direct PNC-Circle contract established."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-perpetual-long-deleveraging",
+      "claim": "Recent XRP perpetual positioning is consistent with long-side deleveraging rather than confirmed spot-led distribution.",
+      "support": [
+        "TradRadar reports OI down 4.05%, positive funding and long liquidations larger than short liquidations.",
+        "HyperAcademy reports a separate Hyperliquid OI snapshot."
+      ],
+      "disconfirming_or_missing": [
+        "Provider universes and timestamps differ.",
+        "No synchronized exchange-native OI, signed spot volume or basis panel was verified."
+      ],
+      "tests": [
+        "Capture exchange-native OI and liquidation streams with matching contract definitions.",
+        "Measure aggressive spot sell volume and post-liquidation basis/OI response."
+      ],
+      "evidence": [
+        "tradradar",
+        "hyperacademy"
+      ]
+    },
+    {
+      "id": "H2-etf-outflow-concentration",
+      "claim": "Recent ETF outflows may be concentrated by fund and measurement window rather than evidence of broad structural exit.",
+      "support": [
+        "Alpha Finance reports -$7.6M for the Nov10 daily session.",
+        "The Block reports -$10.4M over its displayed 24-hour window."
+      ],
+      "disconfirming_or_missing": [
+        "Alpha Finance reports a positive 30-session net flow.",
+        "XRP Insights' Nov10 holdings-derived row remains provisional and has different coverage."
+      ],
+      "tests": [
+        "Reconcile fund-level issuer holdings and share creations/redemptions for the same session.",
+        "Keep daily-session, rolling-24-hour and holdings-change measures separate."
+      ],
+      "evidence": [
+        "alpha_etf",
+        "theblock_etf",
+        "xrp_insights"
+      ]
+    },
+    {
+      "id": "H3-stablecoin-growth-without-xrp-bridge-demand",
+      "claim": "USDC and RLUSD distribution can expand through bank/exchange rails without equivalent native XRP bridge or collateral demand.",
+      "support": [
+        "PNC/Coinbase pilot accepts USDC and converts it to USD.",
+        "Circle lists native USDC support on XRPL; Coinbase lists RLUSD transfers on XRPL."
+      ],
+      "disconfirming_or_missing": [
+        "XRPL stablecoin activity may create some XRP transaction-fee/reserve use, but no volume or net XRP acquisition was measured.",
+        "SBI VC Trade's current RLUSD product page lists Ethereum only; XRPL is future."
+      ],
+      "tests": [
+        "Measure native XRP bridge legs separately from USDC/RLUSD transfers.",
+        "Verify production corridor settlement, XRPL transaction composition and net external XRP flows."
+      ],
+      "evidence": [
+        "coinbase_pnc",
+        "circle_usdc",
+        "coinbase_rlusd",
+        "sbi_rlusd_network_support"
+      ]
+    },
+    {
+      "id": "H4-coinbase-multi-issuer-distribution",
+      "claim": "Coinbase's strategy is consistent with becoming a multi-issuer stablecoin distribution and payments platform, while retaining USDC economic alignment with Circle.",
+      "support": [
+        "Circle's 2023 release documents Coinbase equity participation and USDC reserve-revenue sharing.",
+        "Coinbase announced both the PNC/USDC pilot and RLUSD distribution."
+      ],
+      "disconfirming_or_missing": [
+        "Current product-level volumes and issuer-specific economics are not disclosed in these sources.",
+        "Listing announcements do not prove sustained payment usage."
+      ],
+      "tests": [
+        "Track USDC and RLUSD balances/flows by Coinbase product where public.",
+        "Reconcile future filings and product-level payment volume disclosures."
+      ],
+      "evidence": [
+        "circle_coinbase_structure",
+        "coinbase_pnc",
+        "coinbase_rlusd"
+      ]
+    },
+    {
+      "id": "H5-spot-liquidity-unresolved",
+      "claim": "Current evidence is insufficient to characterize executable XRP spot depth or absorption.",
+      "support": [
+        "No synchronized direct spot/depth panel was verified in this capture."
+      ],
+      "disconfirming_or_missing": [
+        "Aggregator snapshots exist but include stale, mixed-instrument or provider-specific coverage."
+      ],
+      "tests": [
+        "Capture direct Bybit, Kraken, OKX and Coinbase spot books with exchange timestamps.",
+        "Normalize USD and USDT separately; calculate depth and depletion at fixed basis-point bands."
+      ],
+      "evidence": [
+        "tradradar",
+        "hyperacademy"
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "tradradar",
+      "source": "XRP perpetual market dashboard",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_group": "TradRadar",
+      "snapshot_time_utc": "2026-11-11T11:30:00Z"
+    },
+    {
+      "id": "hyperacademy",
+      "source": "Hyperliquid XRP perpetual dashboard",
+      "url": "https://hyperacademy.io/en/markets/xrp-perp",
+      "source_group": "HyperAcademy",
+      "snapshot_time_utc": "2026-11-11T12:00:00Z"
+    },
+    {
+      "id": "alpha_etf",
+      "source": "XRP ETF flow dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_group": "AlphaFinance",
+      "data_as_of_utc": "2026-11-10"
+    },
+    {
+      "id": "theblock_etf",
+      "source": "The Block crypto ETF dashboard",
+      "url": "https://www.theblock.co/data/etfs",
+      "source_group": "TheBlock",
+      "updated_at_utc": "2026-11-11T06:17:00Z"
+    },
+    {
+      "id": "xrp_insights",
+      "source": "XRP ETF issuer-holdings dataset",
+      "url": "https://xrp-insights.com/data",
+      "source_group": "XRPInsights",
+      "data_as_of_utc": "2026-11-09",
+      "nov10_status": "provisional"
+    },
+    {
+      "id": "coinbase_pnc",
+      "source": "Coinbase PNC pilot announcement",
+      "url": "https://www.coinbase.com/en-gb/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance",
+      "source_group": "Coinbase",
+      "published_date": "2026-11-09"
+    },
+    {
+      "id": "reuters_pnc",
+      "source": "Reuters report on PNC-Coinbase USDC pilot",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "source_group": "Reuters",
+      "published_date": "2026-11-09"
+    },
+    {
+      "id": "coinbase_rlusd",
+      "source": "Coinbase RLUSD listing announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_group": "Coinbase",
+      "published_date": "2026-10-28"
+    },
+    {
+      "id": "circle_usdc",
+      "source": "Circle USDC supply and native network support",
+      "url": "https://www.usdc.com/",
+      "source_group": "Circle",
+      "data_as_of_utc": "2026-11-09",
+      "network_list_as_of_utc": "2026-09-16"
+    },
+    {
+      "id": "circle_transparency",
+      "source": "Circle reserve transparency and assurance",
+      "url": "https://www.circle.com/transparency",
+      "source_group": "Circle",
+      "data_as_of_utc": "2026-11-09"
+    },
+    {
+      "id": "circle_coinbase_structure",
+      "source": "Circle investor announcement on Centre, Coinbase equity and revenue sharing",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "source_group": "Circle",
+      "published_date": "2023-08-21"
+    },
+    {
+      "id": "sbi_vctrade_rlusd",
+      "source": "SBI VC Trade RLUSD listing announcement",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "source_group": "SBI VC Trade",
+      "published_date": "2026-06-24"
+    },
+    {
+      "id": "sbi_rlusd_network_support",
+      "source": "SBI VC Trade RLUSD product network-support page",
+      "url": "https://home.sbivc.co.jp/rlusd",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T13:56:21Z"
+    }
+  ],
+  "source_independence": [
+    "TradRadar is a multi-venue derivatives aggregator; its seven-venue total is not seven independently captured raw sources.",
+    "HyperAcademy is a separate Hyperliquid view but is not a substitute for exchange-native records; do not add or average its OI with TradRadar.",
+    "Alpha Finance, The Block and XRP Insights differ in fund coverage, update windows and measurement methods; their flow numbers are not interchangeable.",
+    "Coinbase is primary for its PNC and RLUSD announcements; Reuters independently reports the limited PNC pilot.",
+    "Circle is primary for USDC issuance, reserve and network-support claims and for its Coinbase economic-relationship statement.",
+    "SBI VC Trade is primary for its RLUSD listing and current product network support; its page says Ethereum is current and XRPL is future."
+  ],
+  "identity_and_exact_phrase_research": {
+    "sbic": "Prior primary-source registry work distinguishes SBIC East Japan, SBIC Central Japan and SBIC West Japan as separate statutory entities from SBI Holdings. No new evidence in this capture changes that resolution.",
+    "ask_coin": "Exact-phrase search did not resolve a uniquely attributable XRP-related entity or instrument.",
+    "actual_capital": "Continue separating settled cash, in-kind XRP, debt proceeds, reserve assets, ELOC capacity, resale registrations and verified XRP purchases.",
+    "sbic_chatgpt": "No verified ChatGPT/SBIC commercial relationship established by this capture; do not conflate regional SBIC companies with SBI Holdings.",
+    "video_identity": "One Kamilah Stevenson TEDx talk remains verified from prior work; personal YouTube channel ownership is not verified. Camilla/Kamilah name variants are not merged without identity evidence."
+  },
+  "platform_map": [
+    {
+      "platform": "ChatGPT",
+      "status": "tested_current_runtime",
+      "authentication": "GitHub connector call succeeded",
+      "permission": "Repository metadata reports admin permission; overprivileged relative to least-privilege target.",
+      "data_flow": "ChatGPT to Barrot-Agent/B-Agent through GitHub connector."
+    },
+    {
+      "platform": "Claude",
+      "status": "not_tested",
+      "authentication": "No live authentication evidence.",
+      "permission": "None verified.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Grok",
+      "status": "not_tested",
+      "authentication": "No live authentication evidence.",
+      "permission": "None verified.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Gemini",
+      "status": "not_tested",
+      "authentication": "No live authentication evidence.",
+      "permission": "None verified.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Copilot",
+      "status": "not_tested",
+      "authentication": "No independent approval or authenticated task handoff verified.",
+      "permission": "None verified.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Codex",
+      "status": "not_tested",
+      "authentication": "No separate live connector handoff verified.",
+      "permission": "None verified.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Hugging Face",
+      "status": "workflow_reference_only",
+      "authentication": "No live Space session verified; prior Space health check reported BUILD_ERROR.",
+      "permission": "No live runtime permission verified.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Kaggle",
+      "status": "workflow_reference_only",
+      "authentication": "No authenticated API session verified.",
+      "permission": "No live submission permission used.",
+      "data_flow": "No live exchange."
+    },
+    {
+      "platform": "Databricks",
+      "status": "workflow_reference_only",
+      "authentication": "Prior Pillars check returned HTTP 403.",
+      "permission": "No workspace write used.",
+      "data_flow": "No live exchange."
+    }
+  ],
+  "brain_endpoint": {
+    "name": "LunaRoute",
+    "status": "REPOSITORY_DECLARED_ONLY",
+    "endpoint": "https://gw.lunaroute.com/v1",
+    "authentication": "Not tested in this run.",
+    "data_flow": "No live model request made."
+  },
+  "repository_state": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "main_tree_entries": 1388,
+    "active_integration_pr": 1661,
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run26_artifact": "9b6e39cae56c128122568ebd04f64455fc51c92d",
+    "integration_ahead_by": 2022,
+    "integration_behind_by": 0,
+    "changed_files": 1001,
+    "workflow_files_changed": 44,
+    "non_workflow_paths_changed": 957,
+    "research_paths_changed": 502,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "superseded_source_pr_candidate": 1660,
+    "note": "PR #1661 contains all 972 changed paths from #1660 plus 29 additional paths; #1660 is retained open until #1661 is merged and verified on main."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized direct spot/depth panel, raw-source SHA-256 receipts, trusted timestamp anchor, main-branch ingestion history or validated out-of-sample lift. Public web observations remain excluded from the point-in-time feature store."
+  },
+  "model_eligibility": {
+    "status": "EXCLUDED",
+    "reason": "This artifact is based on public web pages, not Barrot-collected raw response bytes. No raw-source SHA-256 receipt, trusted timestamp anchor or feature-store admission was created.",
+    "raw_receipts_created": false,
+    "feature_store_admission": false
+  },
+  "safety": {
+    "no_trade": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "no_secret_actions": true,
+    "no_external_model_transfer": true,
+    "no_deployment": true
+  }
+}

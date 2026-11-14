@@ -14,7 +14,7 @@ from barrot_agent.orchestration.repository_repair import (
     SyncController,
     WorkQueueController,
 )
-from barrot_agent.orchestration.shared_runtime import ControlledToolExecutor, ToolRequest
+from barrot_agent.orchestration.shared_runtime import Capability, ControlledToolExecutor, DefensiveWatchdog, ToolRequest
 from barrot_agent.research import (
     ClaimStatus,
     ConvergenceScenarioEngine,
@@ -26,6 +26,7 @@ from barrot_agent.research import (
 )
 from tests.v3_test_harness import (
     FakeBrain,
+    make_controller,
     defect_command,
     failure_command,
     git,
@@ -274,18 +275,76 @@ def _case_healthy_repository(tmp_path: Path) -> dict[str, object]:
 
 def _case_real_defect(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path, origin=True)
-    cycle = run_cycle(workspace, FakeBrain(repair_payload(path)))
+    # This fixture owns a temporary local bare origin. Explicitly grant
+    # EXTERNAL_ACTION only to this isolated test so the lifecycle can exercise
+    # push and independent remote-head verification without a real repository.
+    watchdog = DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        task="repair/test",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+    controller = RepositoryRepairController(
+        brain=FakeBrain(repair_payload(path)),
+        workspace=workspace,
+        planner_attempts=3,
+        watchdog=watchdog,
+    )
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
     assert cycle.issue_identified is True
     assert cycle.issue_reproduced is True
     assert RepairState.PATCHING.value in cycle.state_history
-    return {"status": cycle.status, "states": cycle.state_history}
+    assert cycle.commit.remote_verified is True
+    return {"status": cycle.status, "states": cycle.state_history, "remote_verified": cycle.commit.remote_verified}
 
 
 def _case_model_claims_success_without_change(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
-    cycle = run_cycle(workspace, FakeBrain(repair_payload(path, old='FLAG = "UNCHANGED"')))
+    # Explicitly authorize only this isolated test fixture to reach the
+    # no-op changeset check; no remote is configured and no push can occur.
+    watchdog = DefensiveWatchdog(
+        workspace,
+        repository="Barrot-Agent/B-Agent",
+        task="repair/test",
+        allowed_capabilities={
+            Capability.READ,
+            Capability.WRITE,
+            Capability.EXECUTE,
+            Capability.NETWORK,
+            Capability.EXTERNAL_ACTION,
+        },
+    )
+    controller = RepositoryRepairController(
+        brain=FakeBrain(repair_payload(path, old='FLAG = "UNCHANGED"')),
+        workspace=workspace,
+        planner_attempts=3,
+        watchdog=watchdog,
+    )
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
     assert cycle.status in {"failed", "rolled_back"}
     assert cycle.current_state != RepairState.COMPLETE.value
+    assert cycle.changes_applied is False
+    assert cycle.commit.created is False
     return {"status": cycle.status, "failure": cycle.failure.code if cycle.failure else ""}
 
 
@@ -344,7 +403,7 @@ def _case_resolution_failure(tmp_path: Path) -> dict[str, object]:
 
 def _case_commit_failure(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
-    controller = RepositoryRepairController(brain=FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])), workspace=workspace, planner_attempts=3)
+    controller = make_controller(workspace, FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])))
     controller.git_gateway.commit = lambda message, expected_paths: (_ for _ in ()).throw(RepairError("git commit failed"))
     cycle = controller.run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
     assert cycle.status == "failed"
@@ -354,7 +413,7 @@ def _case_commit_failure(tmp_path: Path) -> dict[str, object]:
 
 def _case_remote_verification_failure(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path, origin=True)
-    controller = RepositoryRepairController(brain=FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])), workspace=workspace, planner_attempts=3)
+    controller = make_controller(workspace, FakeBrain(repair_payload(path, validation_commands=[success_command()], resolution_commands=[success_command()])))
     controller.git_gateway.remote_head = lambda remote, branch: CommandEvidence(command={}, success=True, returncode=0, stdout="deadbeef", stderr="")
     cycle = controller.run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
     assert cycle.status == "failed"
@@ -446,8 +505,8 @@ def _case_interruption_resume(tmp_path: Path) -> dict[str, object]:
 def _case_retry_exhaustion(tmp_path: Path) -> dict[str, object]:
     workspace, path = init_repo(tmp_path)
     payload = repair_payload(path, validation_commands=[failure_command()], resolution_commands=[success_command()])
-    first = RepositoryRepairController(brain=FakeBrain(payload), workspace=workspace, planner_attempts=3, max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
-    second = RepositoryRepairController(brain=FakeBrain(payload), workspace=workspace, planner_attempts=3, max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
+    first = make_controller(workspace, FakeBrain(payload), max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
+    second = make_controller(workspace, FakeBrain(payload), max_unchanged_attempts=1).run(task_title="Repair target", task_body="Fix target", issue_number="123", repo="Barrot-Agent/B-Agent", branch="repair/test", audit_context={"inventory": path})
     assert first.status == "rolled_back"
     assert second.status == "blocked"
     return {"first": first.status, "second": second.status, "failure": second.failure.code if second.failure else ""}

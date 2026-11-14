@@ -1,5 +1,10 @@
 -r requirements.txt
 
+# Build and packaging verification
+build>=1.6.1
+setuptools>=68.0
+wheel
+
 # Testing
 pytest>=9.2.0
 pytest-cov>=7.1.0

@@ -1,0 +1,216 @@
+{
+  "schema_version": "barrot.xrp_intelligence.identity_rwa_governance_addendum.v1",
+  "run_id": "Run122-Supplement",
+  "observed_at_utc": "2026-11-14T08:01:34Z",
+  "identity_resolution": {
+    "person": "Dr. Kamilah Stevenson / The Wealth Doctor",
+    "person_identity_status": "VERIFIED",
+    "evidence": [
+      {
+        "source": "Official program site",
+        "url": "https://learn.kamilahstevenson.com/",
+        "web_reference": "turn993683view0",
+        "details": "First-party page identifies Dr. Kamilah Stevenson as The Wealth Doctor and describes her investing/crypto education business and 90-Day Investor Accelerator."
+      },
+      {
+        "source": "Sparking Wholeness episode 189",
+        "url": "https://toginet.com/recent/sparkingwholeness",
+        "web_reference": "turn376908search0",
+        "details": "Episode dated June 5, 2023 identifies Dr. Kamilah Stevenson as a published author, counselor and healthy-lifestyle advocate; links kamilahstevenson.com and Instagram @kamilahstevenson."
+      },
+      {
+        "source": "Official wealth assessment site",
+        "url": "https://prescribewealth.com/",
+        "web_reference": "turn472390view0",
+        "details": "Identifies Dr. Kamilah Stevenson / Prosper Wealth and states MKS Health LLC is a financial education company founded by Dr. Kamilah Stevenson."
+      }
+    ],
+    "channel_ownership_status": "NOT_FIRST_PARTY_VERIFIED",
+    "channel_candidate": {
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "third_party_profile_url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "web_reference": "turn976985view1",
+      "third_party_reported_subscribers": 143000,
+      "third_party_reported_videos": 1300,
+      "description_match": "Investor, stocks, crypto and macro education; similar language to the official Wealth Doctor site."
+    },
+    "corroborating_but_nonprimary": {
+      "source": "IDCrawl social profile aggregator",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "web_reference": "turn175755search1",
+      "details": "Lists @drkamilahstevenson on YouTube at approximately 138K subscribers with the same investor/crypto/macro description; not a first-party ownership link."
+    },
+    "alias": "Camilla Stevenson remains unresolved as a distinct person/alias; do not merge with Kamilah without primary evidence."
+  },
+  "youtube_inventory": [
+    {
+      "video_id": "Y5rESnxoSIA",
+      "url": "https://www.youtube.com/watch?v=Y5rESnxoSIA",
+      "web_reference": "turn459435youtube0",
+      "published_date": "2026-04-07",
+      "attribution": "YouTube search result: By Kamilah Stevenson",
+      "displayed_followers": 139000,
+      "views": 31438,
+      "likes": 2100,
+      "topic": "XRPL RWA value growth from $24M to $1.8B",
+      "channel_ownership": "UNVERIFIED",
+      "model_eligible": false
+    },
+    {
+      "video_id": "pFru4idBTMA",
+      "url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "web_reference": "turn459435youtube1",
+      "published_date": "2026-05-12",
+      "attribution": "YouTube search result: By Kamilah Stevenson",
+      "displayed_followers": 139000,
+      "views": 28264,
+      "likes": 2000,
+      "topic": "Claims $3.5B in XRPL tokenized assets over 30 days, $900M in one day, RLUSD above $1B and $1.7M daily settlement flow",
+      "channel_ownership": "UNVERIFIED",
+      "model_eligible": false
+    },
+    {
+      "video_id": "NChkamwOUEk",
+      "url": "https://www.youtube.com/watch?v=NChkamwOUEk",
+      "web_reference": "turn425005youtube10",
+      "published_date": "2026-08-01",
+      "attribution": "YouTube search result: By Kamilah Stevenson",
+      "displayed_followers": 140000,
+      "views": 13405,
+      "likes": 1600,
+      "title": "The Wealthy Never Sell... Soon XRP Holders Won't Have To Either",
+      "topic": "XLS-65/XLS-66 lending and vault proposals; explicitly says proposals are not live and require validator approval",
+      "channel_ownership": "UNVERIFIED",
+      "model_eligible": false
+    }
+  ],
+  "unlinked_video_candidates": [
+    {
+      "article": "Japanese Bank Pilots Put XRP Up Against SWIFT",
+      "date": "2026-08-28",
+      "url": "https://dailycoin.com/japanese-bank-pilots-put-xrp-up-against-swift/",
+      "web_reference": "turn425005search1",
+      "candidate_video_title": "Japan Tested XRP Against SWIFT. The Result Surprised EVERYONE",
+      "attribution": "DailyCoin attributes claims to Dr. Kamilah Stevenson and says they came from a YouTube video",
+      "direct_youtube_url": null,
+      "bank_names_disclosed": false,
+      "independent_performance_data": false,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "article": "Bank of Japan Decision Could Rattle XRP Hard",
+      "date": "2026-09-18",
+      "url": "https://dailycoin.com/bank-of-japan-decision-could-rattle-xrp-hard",
+      "web_reference": "turn425005search0",
+      "candidate_video_title": "Japan Could Move XRP Tomorrow. Almost Nobody Is Watching",
+      "direct_youtube_url": null,
+      "status": "CANDIDATE_ONLY"
+    }
+  ],
+  "rwa_claim_audit": {
+    "key_correction": "Tokenized asset value/represented value is a stock or valuation metric, not transaction settlement volume, cash inflow, XRP purchases or XRP demand.",
+    "april_24_2026_claim": {
+      "video_claim": "$3.5B of tokenized real-world assets settled over 30 days and approximately $900M moved in one day.",
+      "source_report": "CryptoBasic/Blockonomi reported RWA.xyz value rose from $2.616B (including $491M stablecoins) on Apr 22 to $3.53B, a $895.6M value increase.",
+      "source_url": "https://thecryptobasic.com/2026/04/24/xrp-adds-900m-in-tokenized-assets-within-a-day-as-total-rwa-hits-ath-of-3-5b/",
+      "web_reference": "turn226573search1",
+      "driver": "Justoken JMWH value reportedly rose from $861M to $1.763B; existing asset repricing/indexing, not a demonstrated $900M payment/settlement flow.",
+      "disconfirming_evidence": "The same report says Justoken's official platform still displayed approximately $860M and had not confirmed the higher RWA.xyz figure; a data/indexing anomaly remained possible.",
+      "model_eligible": false
+    },
+    "later_definition_reconciliation": [
+      {
+        "source": "EconoTimes Oct 17, 2026",
+        "url": "https://econotimes.com/RWA-xyz-Counts-496-6-Million-as-Distributed-on-XRP-Ledger-1756024",
+        "web_reference": "turn793653search9",
+        "snapshot_date": "2026-10-17",
+        "reported": {
+          "rwa_total_excluding_stablecoins_usd": 5046000000,
+          "represented_usd": 4549000000,
+          "distributed_usd": 496600000,
+          "stablecoin_market_cap_separate_usd": 1068000000
+        },
+        "interpretation": "Distributed was less than one-tenth of the reported RWA total; stablecoins were counted separately."
+      },
+      {
+        "source": "RWAToday Oct 26, 2026",
+        "url": "https://rwatoday.news/rwa-by-the-numbers-october-2026",
+        "web_reference": "turn793653search6",
+        "snapshot_date": "2026-10-26",
+        "reported": {
+          "global_distributed_rwa_usd": 39040000000,
+          "global_represented_rwa_usd": 389320000000,
+          "global_stablecoin_value_separate_usd": 289240000000
+        },
+        "interpretation": "Represented and distributed are distinct; stablecoins tracked separately."
+      },
+      {
+        "source": "XORA Sep 26, 2026",
+        "url": "https://xora.finance/blog/xrpl-real-world-asset-tokenization-2026",
+        "web_reference": "turn793653search5",
+        "reported": {
+          "xrpl_distributed_assets_usd": 1380000000,
+          "rlusd_component_usd": 845700000,
+          "non_stablecoin_distributed_usd": 534300000
+        },
+        "interpretation": "Multiple XRPL headline totals differ because datasets mix distributed assets, represented assets, RLUSD and sometimes ETF-related liquidity."
+      },
+      {
+        "source": "CCN Oct 9, 2026",
+        "url": "https://www.ccn.com/news/crypto/xrpl-rwa-market-growth-jmwh/",
+        "web_reference": "turn793653search4",
+        "reported": {
+          "xrpl_rwa_cap_usd": 2460000000,
+          "jmwh_usd": 2200000000,
+          "jmwh_share_percent": 89.4
+        },
+        "interpretation": "A single energy token dominates the represented market-value figure; not a broad diversified pool of liquid securities."
+      }
+    ],
+    "counter_hypothesis": "The ledger may be hosting genuine, economically backed energy contracts and institutional records even if tokens are not freely transferable or actively traded. Represented value can still have utility for issuer-side recordkeeping, but does not prove liquid collateral or demand for native XRP.",
+    "required_metrics": "Track represented vs distributed, holder concentration, issuer confirmation, transferable supply, transfer volume, active counterparties, on-chain payments by asset, XRP actually used as bridge inventory, and native XRP balance/turnover separately."
+  },
+  "xls_65_66_status": {
+    "official_xrpl_docs": {
+      "url": "https://xrpl.org/docs/use-cases/defi/institutional-credit-facilities",
+      "web_reference": "turn869316view0",
+      "status_label": "Credit (Open for Voting)",
+      "requires": [
+        "LendingProtocol",
+        "LendingProtocolV1_1"
+      ],
+      "design": "Single Asset Vaults can hold XRP, trust-line assets such as RLUSD, or MPTs; Lending Protocol design uses uncollateralized fixed-term loans and off-chain credit assessment, with first-loss capital and optional additional collateral logic."
+    },
+    "official_amendment_rule": {
+      "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+      "web_reference": "turn260173view1",
+      "rule": "More than 80% of trusted validators must support an amendment for two weeks; if support falls to 80% or below, the clock restarts."
+    },
+    "independent_live_dashboard": {
+      "url": "https://xrpldashboard.com/amendments",
+      "web_reference": "turn898784view0",
+      "reported_votes": {
+        "SingleAssetVault": 23,
+        "LendingProtocol": 22,
+        "LendingProtocolV1_1": 22
+      },
+      "validators_heard": 35,
+      "required_yes": 29,
+      "reported_countdown_amendments": 0,
+      "reported_page_fetch_utc": "2026-11-14T07:59:00Z",
+      "reported_roll_call_utc": "2026-11-14T08:05:00Z",
+      "timestamp_conflict": true,
+      "interpretation": "Dashboard's displayed roll-call timestamp is six minutes later than its displayed page-fetch timestamp. Treat vote counts as provisional; official XRPL documentation still labels institutional credit open for voting."
+    },
+    "mainnet_live": false,
+    "model_eligible": false,
+    "important_distinction": "XLS-65/66 proposals do not prove active native lending, deployed XRP collateral, live credit utilization, or XRP demand. XLS-66 is uncollateralized at its core; optional collateral requires additional design."
+  },
+  "actions": {
+    "runtime_code_changed": false,
+    "video_downloaded": false,
+    "channel_contacted": false,
+    "external_model_dispatch": false,
+    "model_forecast_issued": false
+  }
+}

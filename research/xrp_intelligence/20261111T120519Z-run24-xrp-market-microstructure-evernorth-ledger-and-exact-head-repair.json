@@ -1,0 +1,387 @@
+{
+  "artifact_type": "xrp_market_microstructure_and_institutional_custody_research_update",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-11T12:05:19Z",
+  "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_sha": "77a339f638cb0b630c1d8986aa0f504f295e05f1",
+    "pr": 1661
+  },
+  "market": {
+    "spot": {
+      "okx": {
+        "event_time_utc": "2026-11-11T12:03:29.079Z",
+        "last": 1.0572,
+        "bid": 1.0572,
+        "ask": 1.0573,
+        "open_24h": 1.0786,
+        "high_24h": 1.0854,
+        "low_24h": 1.0311,
+        "volume_24h_xrp": 67472933.293776,
+        "volume_24h_quote_usdt": 71400262.16697314,
+        "return_from_open_24h_percent": -1.9841
+      },
+      "kraken": {
+        "retrieved_at_utc": "2026-11-11T12:05:19Z",
+        "event_timestamp_available": false,
+        "last": 1.05726,
+        "bid": 1.05726,
+        "ask": 1.05727,
+        "utc_day_open": 1.05511,
+        "high_24h": 1.08263,
+        "low_24h": 1.03011,
+        "volume_24h_xrp": 32853327.26306501
+      },
+      "usdt_usd": {
+        "mid": 0.999045,
+        "bid": 0.99904,
+        "ask": 0.99905
+      },
+      "normalized_okx_usd": 1.05624033,
+      "kraken_mid": 1.057265,
+      "normalized_midpoint_gap_percent": -0.0969,
+      "interpretation": "Approximately -0.10% asynchronous gap; Kraken event timestamp unavailable; not executable arbitrage."
+    },
+    "spot_order_book": {
+      "fuelmaps": {
+        "snapshot_time_utc": "2026-11-11T08:00:00Z",
+        "venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "depth_usd": {
+          "within_0_5_percent": {
+            "bids": 9600000,
+            "asks": 7700000
+          },
+          "within_1_percent": {
+            "bids": 14000000,
+            "asks": 11100000
+          },
+          "within_2_percent": {
+            "bids": 18900000,
+            "asks": 13400000
+          },
+          "within_5_percent": {
+            "bids": 23800000,
+            "asks": 14300000
+          },
+          "within_10_percent": {
+            "bids": 34200000,
+            "asks": 17000000
+          }
+        },
+        "coverage": "6/6 through 5%; 5/6 at 10%",
+        "exclusions": [
+          "Binance",
+          "Bitget"
+        ],
+        "limitations": [
+          "Hourly averages of one-minute resting orders",
+          "Orders can be cancelled or moved",
+          "Not executed volume or guaranteed support"
+        ]
+      },
+      "basis_perpetual": {
+        "snapshot_time_utc": "2026-11-11T06:28:00Z",
+        "exchange": "Binance",
+        "instrument": "XRPUSDT perpetual",
+        "depth_within_1_percent_usd": {
+          "bids": 16700000,
+          "asks": 14700000
+        },
+        "all_1000_levels_usd": {
+          "bids": 45400000,
+          "asks": 33000000
+        },
+        "not_spot": true
+      }
+    },
+    "derivatives": {
+      "tradradar": {
+        "snapshot_time_utc": "2026-11-11T11:35:00Z",
+        "open_interest_usd": 1570000000,
+        "oi_24h_change_percent": -4.17,
+        "funding_8h_percent": 0.0092,
+        "liquidations_at_least_usd": 14990000,
+        "long_liquidations_usd": 13860000,
+        "short_liquidations_usd": 1120000,
+        "long_account_share_percent": 79.6,
+        "exchanges": 7
+      },
+      "liqwall": {
+        "snapshot_time_utc": "2026-11-11T11:42:00Z",
+        "open_interest_usd": 1160000000,
+        "oi_24h_change_percent": -2,
+        "funding_8h_percent": 0.0098,
+        "liquidations_usd": 16800000,
+        "long_liquidations_usd": 15700000,
+        "short_liquidations_usd": 1100000,
+        "binance_long_account_share_percent": 75.1,
+        "hyperliquid_all_account_long_share_percent": 53.3
+      },
+      "reconciliation": "Different exchange/contract universes; do not average. Both show positive funding, falling OI and long-heavy liquidations."
+    },
+    "options": {
+      "optimistfi": {
+        "snapshot_time_utc": "2026-11-11T05:00:00Z",
+        "atm_iv_30d_percent": 59,
+        "skew_25d_30d_points": 0.3,
+        "positive_means_calls_richer": true,
+        "put_call_ratio": 0.55,
+        "expiry_skews_points": {
+          "2026-11-11": -11,
+          "2026-11-12": -7.3,
+          "2026-11-13": -4.5,
+          "2026-11-20": -2.5,
+          "2026-11-27": -0.4,
+          "2026-12-25": 0.9
+        }
+      },
+      "pandabull": {
+        "snapshot_time_utc": "2026-11-11T09:30:00Z",
+        "instrument": "Deribit XRP_USDC",
+        "atm_iv_percent_by_expiry": {
+          "2026-11-12": 64.03,
+          "2026-11-13": 64.01,
+          "2026-11-20": 57.71,
+          "2026-11-27": 58.24,
+          "2026-12-25": 58.8,
+          "2027-03-26": 57.43
+        },
+        "skew_25d_put_minus_call_points": {
+          "2026-11-12": 4.03,
+          "2026-11-13": 3.82,
+          "2026-11-20": 0.64,
+          "2026-11-27": -0.96,
+          "2026-12-25": -1.07,
+          "2027-03-26": -1.46
+        }
+      },
+      "fuelmaps_tail_backtest": {
+        "snapshot_time_utc": "2026-11-11T00:01:00Z",
+        "beyond_3sigma": 20,
+        "observations": 928,
+        "observed_percent": 2.2,
+        "normal_reference_percent": 0.27,
+        "provider_reported_not_independently_reestimated": true
+      },
+      "reconciliation": "Near expiries are put-rich; longer expiries near neutral or call-rich. Vendor snapshots and sign conventions differ; preserve raw call/put IV."
+    },
+    "hyperliquid_whales": {
+      "provider": "WhaleRadar",
+      "snapshot_time_utc": "2026-11-11T07:24:00Z",
+      "tracked_wallets": 20,
+      "tracked_longs_usd": 24100000,
+      "tracked_shorts_usd": 34900000,
+      "tracked_whales_short_share_percent": 59,
+      "other_hyperliquid_open_money_long_share_percent": 62,
+      "largest_liquidation_within_20_percent": {
+        "price": 0.973,
+        "side": "long",
+        "notional_usd": 3000000
+      },
+      "platform_specific_not_global": true
+    },
+    "etf_flows": {
+      "alpha_finance": {
+        "through_session": "2026-11-10",
+        "daily_flow_usd": -7600000,
+        "thirty_session_flow_usd": 1300000,
+        "cumulative_net_inflow_usd": 1710000000,
+        "funds_complete": "5 of 5"
+      },
+      "cryptoetf_today": {
+        "through_session": "2026-11-10",
+        "daily_flow_usd": -6900000,
+        "funds_reported": "4 of 5",
+        "missing_fund": "XRPZ/Franklin"
+      },
+      "reconciliation": "Different issuer coverage and data cutoffs; do not average; cumulative flow is not current AUM."
+    },
+    "exchange_flows": {
+      "binance_whale_deposits_secondary": {
+        "event_window": "2026-11-08 to 2026-11-09",
+        "reported_inflow_xrp": 691000000,
+        "source_group": "CryptoQuant via secondary reporting",
+        "raw_series_captured": false
+      },
+      "counter_signal": {
+        "event_date": "2026-11-04",
+        "reported_outflow_xrp": 418500000,
+        "source_group": "CryptoQuant"
+      },
+      "limitations": [
+        "Different windows; not netted into exchange-reserve change",
+        "Deposits do not prove executed sales",
+        "Secondary reporting, not raw-source receipt"
+      ]
+    }
+  },
+  "institutional": {
+    "evernorth": {
+      "company_reported_closing_xrp": 473276430,
+      "company_reference_date": "2026-10-09",
+      "sec_filing_date": "2026-11-09",
+      "advance_funding_cash_usd": 214049995,
+      "advance_funding_in_kind_xrp": 600000,
+      "xrp_purchased_with_advance_cash": 84365876,
+      "delayed_funding_cash_usd": 10500000,
+      "delayed_funding_in_kind_xrp": 200000,
+      "in_kind_contributions_total_xrp": 388910554,
+      "ledger_index": 108259036,
+      "ledger_closed_at_utc": "2026-11-11T10:57:00Z",
+      "attributed_wallet_count": 13,
+      "attributed_onchain_xrp": 103129905,
+      "attributed_share_percent": 21.8,
+      "moved_outside_attributed_set_xrp": 370346663,
+      "latest_outside_transfer_date": "2026-10-22",
+      "destinations_attributed": false,
+      "sale_inferred": false,
+      "attribution_method": "Third-party tracker reads account_info/account_tx at validated ledger; wallet inclusion uses payment links, BitGo custody fingerprint and exact tranche amount matching.",
+      "limitations": [
+        "Not all company-reported holdings are currently attributable in the tracker's 13-wallet set.",
+        "370.35M XRP outside that set is not assumed sold or missing.",
+        "Company-reported closing total and current ledger attribution have different dates and evidentiary status."
+      ]
+    },
+    "cantor_eloc": {
+      "facility": "Cantor ELOC",
+      "max_new_shares": 5218935,
+      "proceeds_received_as_of_prospectus_date_usd": 0,
+      "purchase_price_formula": "97% of VWAP, subject to registration and purchase conditions",
+      "upfront_fee_usd": 521893.5,
+      "fee_non_refundable_regardless_of_purchases": true,
+      "interpretation": "Contingent equity capacity, not cash raised or XRP bought."
+    },
+    "resale_registration": {
+      "registered_class_a_shares": 73688162,
+      "sponsor_warrants": 239653,
+      "company_proceeds_from_selling_holder_resales_usd": 0,
+      "potential_warrant_exercise_gross_proceeds_if_all_exercised_usd": 2800000,
+      "interpretation": "Resale registration is not a capital raise for Evernorth; only cash warrant exercises could produce company proceeds."
+    },
+    "capital_interpretation": "Separate cash raised, cash used to buy XRP, XRP contributed in kind, debt, drawn facilities, contingent ELOC capacity, registered resales and possible warrant exercise proceeds. Do not aggregate into a single 'actual capital' number."
+  },
+  "identity_and_exact_phrases": {
+    "sbic": "No new primary-source match for combined phrase 'SBIC, ChatGPT SBIC'; regional SBIC East/Central/West remain distinct from SBI Holdings.",
+    "ask_coin": "Permission Coin ASK is a Base/Polygon LayerZero OFT candidate; no XRPL/XRP relation verified.",
+    "actual_capital": "No standardized primary-source XRP metric named 'actual capital'; use category-based cash/in-kind/debt/facility/contingent/resale ledger.",
+    "kamilah_camilla": "Multiple near-duplicate candidate YouTube channels surfaced; no first-party platform link verifies ownership. No personal-channel video inventory attributed."
+  },
+  "competing_hypotheses": [
+    "Crowded-long deleveraging: positive funding, falling OI and long-heavy liquidations.",
+    "Short-squeeze counter-hypothesis: selected Hyperliquid whales are net short while broader account samples remain long.",
+    "Spot absorption: bid-heavy resting depth, but snapshots are stale and cancellable.",
+    "ETF outflow pressure: two daily outflow sessions, but 30-session net flow remains positive and issuer coverage differs.",
+    "Macro risk repricing and exchange-deposit selling preparation remain possible but are not established by these observations."
+  ],
+  "source_provenance": [
+    {
+      "source": "OKX public market ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_group": "OKX",
+      "provider_event_time": "2026-11-11T12:03:29.079Z"
+    },
+    {
+      "source": "Kraken public XRP/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_group": "Kraken",
+      "provider_event_time": null
+    },
+    {
+      "source": "Kraken public USDT/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "source_group": "Kraken"
+    },
+    {
+      "source": "Fuelmaps order book",
+      "url": "https://fuelmaps.io/order-book/",
+      "source_group": "Fuelmaps",
+      "snapshot_time": "2026-11-11T08:00:00Z"
+    },
+    {
+      "source": "Basis perpetual order book",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "source_group": "Basis",
+      "snapshot_time": "2026-11-11T06:28:00Z"
+    },
+    {
+      "source": "TradRadar futures",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_group": "TradRadar",
+      "snapshot_time": "2026-11-11T11:35:00Z"
+    },
+    {
+      "source": "Liqwall derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_group": "Liqwall",
+      "snapshot_time": "2026-11-11T11:42:00Z"
+    },
+    {
+      "source": "OptimistFi options",
+      "url": "https://optimistfi.com/perps/options/xrp",
+      "source_group": "OptimistFi",
+      "snapshot_time": "2026-11-11T05:00:00Z"
+    },
+    {
+      "source": "Pandabull options",
+      "url": "https://pandabull.io/iv_surfaces/deribit/XRP_USDC",
+      "source_group": "Pandabull",
+      "snapshot_time": "2026-11-11T09:30:00Z"
+    },
+    {
+      "source": "WhaleRadar Hyperliquid positions",
+      "url": "https://whaleradar.com/xrp",
+      "source_group": "WhaleRadar",
+      "snapshot_time": "2026-11-11T07:24:00Z"
+    },
+    {
+      "source": "Alpha Finance ETF flows",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_group": "Alpha Finance"
+    },
+    {
+      "source": "CryptoQuant whale-flow secondary report",
+      "url": "https://www.altcoinbuzz.io/xrp-whales-move-900-million-to-binance-as-price-crashes-to-1-08",
+      "source_group": "CryptoQuant"
+    },
+    {
+      "source": "XRP Insights Evernorth on-chain attribution",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "source_group": "XRP Insights"
+    },
+    {
+      "source": "SEC Evernorth Form 424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "SEC"
+    }
+  ],
+  "source_independence": [
+    "OKX and Kraken are separate exchange endpoints, but Kraken XRP response lacks provider event timestamp.",
+    "Fuelmaps spot book and Basis perpetual book are different instruments and must not be combined.",
+    "TradRadar and Liqwall have different venue/contract coverage; OI is not averaged.",
+    "OptimistFi and Pandabull have different snapshot times and skew conventions; raw call/put IV should be preserved.",
+    "Alpha Finance and CryptoETF.today aggregate overlapping issuer reports; treat as correlated provider views, not independent confirmation.",
+    "CryptoQuant whale deposits/outflows are secondary-reported here; one underlying data family, not independent source confirmation.",
+    "XRP Insights ledger attribution is third-party analysis of XRPL ledger reads; company-reported total comes from SEC filing."
+  ],
+  "model_eligibility": {
+    "status": "EXCLUDED",
+    "reason": "These web observations were not captured by Barrot's public collector. No immutable raw-source SHA-256 receipt, trusted timestamp anchor or point-in-time feature-store admission was produced in this run."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "no_directional_forecast": true,
+    "no_paper_trade": true,
+    "no_real_money_action": true,
+    "no_external_model_transfer": true
+  }
+}

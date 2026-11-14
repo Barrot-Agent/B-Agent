@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_collateral_utilization_scope_and_limits",
+  "captured_at_utc": "2026-11-03T23:03:49Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "research_priority": "XRP intelligence and prediction-engine mastery",
+  "topic": "Coinbase XRP collateral eligibility across perpetual-futures margin and USDC-backed lending",
+  "claims": [
+    {
+      "claim_id": "coinbase_global_exchange_xrp_collateral",
+      "classification": "confirmed_primary_source",
+      "statement": "Coinbase Global Exchange currently lists XRP as an accepted collateral asset for perpetual-futures margin alongside BTC, ETH, SOL, EURC, ADA and other listed assets.",
+      "source_id": "coinbase_help_what_is_collateral",
+      "source_uri": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "source_published_at_utc": null,
+      "retrieved_at_utc": "2026-11-03T23:03:49Z",
+      "limitations": [
+        "The help page establishes eligibility, not the amount of XRP actually pledged.",
+        "The page does not disclose XRP-specific haircut, current collateral balance or utilization."
+      ]
+    },
+    {
+      "claim_id": "coinbase_adq_caps_and_haircuts",
+      "classification": "confirmed_primary_source",
+      "statement": "Coinbase applies organization-level collateral caps based on a percentage of average daily quantity (ADQ). Excess collateral above the applicable cap does not contribute to portfolio value. Collateral value is notional value multiplied by collateral weight; the greater of the base haircut and closeout-horizon haircut applies. Automatic collateral liquidation can occur when current margin falls below maintenance margin.",
+      "source_id": "coinbase_help_cross_collateral",
+      "source_uri": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "source_published_at_utc": null,
+      "retrieved_at_utc": "2026-11-03T23:03:49Z",
+      "limitations": [
+        "The public help page does not disclose the XRP-specific base haircut.",
+        "The public help page does not disclose the XRP closeout-horizon haircut schedule.",
+        "The public help page does not disclose each organization's ADQ cap or current pledged quantity."
+      ]
+    },
+    {
+      "claim_id": "coinbase_morpho_xrp_usdc_loan",
+      "classification": "secondary_source_report",
+      "statement": "CoinDesk reported on February 19, 2026 that Coinbase expanded a US crypto-backed lending product to XRP, ADA, DOGE and LTC holders, with loans up to $100,000 in Circle USDC routed through Morpho rather than Coinbase's own balance sheet. The article reported that XRP collateral is wrapped for use in the Ethereum-compatible lending environment and that the product was unavailable in New York.",
+      "source_id": "coindesk_coinbase_morpho_xrp_loans_2026_02_19",
+      "source_uri": "https://www.coindesk.com/markets/2026/02/19/coinbase-lets-xrp-ada-and-dogecoin-holders-borrow-up-to-usd100-000-without-selling",
+      "source_published_at_utc": "2026-02-19T05:08:00Z",
+      "retrieved_at_utc": "2026-11-03T23:03:49Z",
+      "limitations": [
+        "This is a dated secondary-source report, not a current official product-status confirmation.",
+        "The article does not disclose XRP collateral balances, borrow utilization, liquidation rates or net XRP acquired.",
+        "The article describes a Morpho-mediated onchain lending route, not Coinbase-originated balance-sheet lending.",
+        "New York was reported as excluded; no conclusion is made about current state-by-state availability without current official terms."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "XRP",
+      "to": "Coinbase Global Exchange",
+      "relation": "eligible_perpetual_futures_collateral",
+      "classification": "confirmed_primary_source",
+      "scope": "Collateral eligibility; utilization unknown."
+    },
+    {
+      "from": "XRP",
+      "to": "Morpho-mediated Coinbase retail loan flow",
+      "relation": "reported_wrapped_collateral",
+      "classification": "secondary_source_report",
+      "scope": "February 2026 report; current availability and utilization unknown."
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer",
+      "classification": "confirmed_general_fact",
+      "scope": "USDC is Circle-issued; the loan article identifies USDC as the borrowing asset."
+    },
+    {
+      "from": "USDC",
+      "to": "Morpho-mediated Coinbase retail loan flow",
+      "relation": "reported_borrow_asset",
+      "classification": "secondary_source_report",
+      "scope": "Up to $100,000 per eligible borrower was reported; not a measure of aggregate loan volume."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_xrp_collateral_capital_efficiency",
+      "statement": "Broader collateral eligibility can increase the capital utility of existing XRP holdings and may reduce the need to sell XRP to obtain liquidity or support derivatives positions.",
+      "classification": "inference",
+      "supporting_evidence": [
+        "Coinbase Global Exchange lists XRP as eligible perpetual-futures collateral.",
+        "CoinDesk reported a Morpho-mediated USDC borrowing route against wrapped XRP."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No public XRP collateral utilization or loan-balance figures were found.",
+        "ADQ caps and haircuts can materially reduce usable collateral value.",
+        "The Morpho product is a separate onchain lending route and is not Coinbase balance-sheet credit.",
+        "Collateral eligibility does not require a borrower to buy additional XRP."
+      ],
+      "observable_tests": [
+        "Obtain asset-specific Coinbase haircut and ADQ schedules.",
+        "Track XRP pledged quantity and borrow utilization if publicly disclosed.",
+        "Compare collateral growth with XRP spot net flows and exchange balances."
+      ]
+    },
+    {
+      "id": "H2_collateral_eligibility_is_not_incremental_demand",
+      "statement": "Collateral support may primarily monetize XRP already held by customers and may have little or no effect on net spot demand.",
+      "classification": "competing_inference",
+      "supporting_evidence": [
+        "The public sources establish eligibility and product design, not new XRP purchases.",
+        "Morpho lending can provide USDC liquidity against wrapped collateral without Coinbase buying XRP."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "A future increase in publicly disclosed XRP pledged balances could establish increased collateral usage.",
+        "If collateral access materially changes holding behavior, it could affect circulating supply or sell pressure even without new spot purchases."
+      ],
+      "observable_tests": [
+        "Measure disclosed XRP collateral balances, utilization and liquidation volumes.",
+        "Test whether collateral eligibility changes precede statistically significant changes in exchange netflows after controlling for market-wide conditions."
+      ]
+    },
+    {
+      "id": "H3_collateral_liquidation_is_a_procyclical_risk",
+      "statement": "XRP collateral can create forced-sell feedback during volatility if collateral values decline and maintenance-margin thresholds are breached.",
+      "classification": "inference",
+      "supporting_evidence": [
+        "Coinbase states that collateral can be liquidated automatically when current margin falls below maintenance margin.",
+        "Coinbase applies haircuts and closeout-horizon haircuts to pledged collateral."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Actual XRP-specific liquidation thresholds, collateral balances and liquidation volumes are not public in the reviewed material.",
+        "Haircuts and organization-level caps are designed to constrain exposure."
+      ],
+      "observable_tests": [
+        "Collect public liquidation and open-interest data by venue and contract.",
+        "Seek asset-specific margin/haircut disclosures and compare liquidation events with XRP order-book depth."
+      ]
+    }
+  ],
+  "unknowns": [
+    "Current XRP amount pledged as Coinbase Global Exchange collateral.",
+    "Current XRP-specific base and closeout-horizon haircuts.",
+    "Current organization-level XRP ADQ caps.",
+    "Current XRP-backed USDC loan balances and utilization through Morpho.",
+    "Current state-by-state availability of the retail lending product.",
+    "Whether collateral eligibility has caused incremental XRP purchases or measurably reduced exchange balances."
+  ],
+  "model_use_policy": {
+    "eligible_as_market_feature": false,
+    "reason": "This artifact is institutional product and eligibility evidence, not a time-series observation of actual utilization or price impact.",
+    "permitted_use": "Event and relationship context only, after source-time and artifact-clock checks.",
+    "prohibited_inference": [
+      "Do not equate eligibility with pledged collateral.",
+      "Do not equate USDC borrowing with XRP purchases.",
+      "Do not infer Coinbase balance-sheet exposure from a Morpho-mediated loan.",
+      "Do not infer net XRP demand or a directional price forecast from these announcements."
+    ]
+  },
+  "safety": {
+    "public_sources_only": true,
+    "private_data_accessed": false,
+    "secrets_accessed": false,
+    "unauthorized_access": false,
+    "market_manipulation": false,
+    "trading_or_investment_action": false,
+    "main_modified": false,
+    "merge_performed": false
+  }
+}

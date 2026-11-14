@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.run_research",
+  "run_id": "Run51",
+  "captured_at_utc": "2026-11-12T07:57:13Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery; preserve Barrot V3 as execution, orchestration, safety and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "3e2801575b83dc51791196ca13133baa32dc6bf0",
+    "pr_number": 1661,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_changed_files": 1051,
+    "pr_workflow_files": 49,
+    "pr_other_files": 1002,
+    "branch_ahead": 2092,
+    "branch_behind": 0,
+    "open_pr_count": 374,
+    "open_pr_drafts": 360,
+    "open_pr_non_drafts": 14
+  },
+  "ci": {
+    "previous_head": "9c38a97912d77d1ec3bc6ab1d66cad8fb41e1879",
+    "previous_full_suite": {
+      "run_id": 43176788386,
+      "passed": 3506,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_percent": 61.34,
+      "failure": "Stale Run47 test hard-coded mutable registry version and event count after Run50 update."
+    },
+    "test_contract_fix_commit": "3e2801575b83dc51791196ca13133baa32dc6bf0",
+    "fixed_test": "tests/test_xrp_event_timeline_ingestion.py",
+    "test_fix_result": {
+      "run_id": 43178698465,
+      "passed": 3506,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_percent": 61.35,
+      "failure": "Current registry scenario assembly rejected conflicting definitions for hypothesis_id coinbase-cbxrp-custody-and-collateral."
+    },
+    "dependency_audit": {
+      "run_ids": [
+        43178698463,
+        43178687943
+      ],
+      "status": "success"
+    },
+    "fail_closed_gate": {
+      "run_ids": [
+        43178698469,
+        43178687858
+      ],
+      "status": "success"
+    },
+    "correction": "Preserve strict scenario-definition validation; normalize related event hypotheses/counter-hypotheses and split distinct hypothesis IDs. Exact-head CI on the resulting data-correction commit is pending."
+  },
+  "market": {
+    "spot": {
+      "okx": {
+        "provider_event_time_utc": "2026-11-12T07:52:36.767Z",
+        "last": 1.0446,
+        "bid": 1.0446,
+        "ask": 1.0447,
+        "open_24h": 1.0568,
+        "high_24h": 1.0807,
+        "low_24h": 1.0373,
+        "volume_24h_xrp": 36953498.169196,
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "web_ref": "turn771128view0",
+        "raw_source_sha256": null
+      },
+      "kraken": {
+        "retrieved_at_utc": "2026-11-12T07:57:13Z",
+        "last": 1.04308,
+        "bid": 1.04305,
+        "ask": 1.04306,
+        "open_24h": 1.05104,
+        "high_24h": 1.07953,
+        "low_24h": 1.03615,
+        "volume_24h_xrp": 21563709.5489515,
+        "provider_event_timestamp": null,
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "web_ref": "turn771128view1",
+        "raw_source_sha256": null
+      },
+      "kraken_usdt_usd": {
+        "bid": 0.99872,
+        "ask": 0.99873,
+        "mid": 0.998725,
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "web_ref": "turn771128view2",
+        "raw_source_sha256": null
+      },
+      "normalized_cross_venue": {
+        "okx_mid_usd": 1.04331807125,
+        "kraken_mid_usd": 1.043055,
+        "relative_difference_percent": 0.02522122515109526,
+        "interpretation": "Near alignment at asynchronous retrievals; not executable arbitrage."
+      }
+    },
+    "historical_context": {
+      "maketo_nov11_close": 1.05,
+      "maketo_ytd_percent": -42.94,
+      "maketo_source_date": "2026-11-11",
+      "coinglass_nov10_close": 1.101,
+      "coinglass_ytd_percent": -40.17,
+      "coinglass_source_date": "2026-11-10",
+      "reconciliation": "Different vendor series and cutoffs; do not average. CoinGlass historical page is stale relative to current spot."
+    }
+  },
+  "liquidity": {
+    "spot_orderbook": {
+      "provider": "Fuelmaps",
+      "snapshot_time_utc": "2026-11-12T04:00:00Z",
+      "mid": 1.0487,
+      "venues": 6,
+      "coverage_10pct": 5,
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ],
+      "bands": [
+        {
+          "distance_pct": 0.5,
+          "bids_usd": 8100000,
+          "asks_usd": 7100000,
+          "bid_share_pct": 53.3
+        },
+        {
+          "distance_pct": 1,
+          "bids_usd": 12500000,
+          "asks_usd": 11600000,
+          "bid_share_pct": 51.8
+        },
+        {
+          "distance_pct": 2,
+          "bids_usd": 18500000,
+          "asks_usd": 13200000,
+          "bid_share_pct": 58.4
+        },
+        {
+          "distance_pct": 5,
+          "bids_usd": 29000000,
+          "asks_usd": 15500000,
+          "bid_share_pct": 65.1
+        },
+        {
+          "distance_pct": 10,
+          "bids_usd": 34300000,
+          "asks_usd": 16600000,
+          "bid_share_pct": 67.4
+        }
+      ],
+      "largest_levels": [
+        {
+          "side": "bid",
+          "price": 1,
+          "usd": 3500000
+        },
+        {
+          "side": "ask",
+          "price": 1.05,
+          "usd": 2000000
+        },
+        {
+          "side": "bid",
+          "price": 1.043,
+          "usd": 1700000
+        },
+        {
+          "side": "ask",
+          "price": 1.058,
+          "usd": 1700000
+        },
+        {
+          "side": "bid",
+          "price": 1.039,
+          "usd": 1600000
+        }
+      ],
+      "source_url": "https://fuelmaps.io/order-book/?asset=BTC&band=5&window=3d",
+      "web_ref": "turn668858search0",
+      "limitations": [
+        "Snapshot 3h57m old at research cutoff.",
+        "Resting orders can be cancelled.",
+        "Binance and Bitget are not included.",
+        "Six-venue coverage is not a consolidated global book."
+      ],
+      "raw_source_sha256": null
+    },
+    "perpetual_depth": {
+      "provider": "Basis",
+      "snapshot_time_utc": "2026-11-12T01:31:00Z",
+      "venue": "Binance XRPUSDT perpetual",
+      "all_1000_levels_each_side": {
+        "bids_usd": 40700000,
+        "asks_usd": 31600000
+      },
+      "within_1pct": {
+        "bids_usd": 14600000,
+        "asks_usd": 13500000
+      },
+      "within_2pct": {
+        "bids_usd": 21400000,
+        "asks_usd": 19800000
+      },
+      "within_0_5pct_total_usd": 17800000,
+      "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "web_ref": "turn340009search1",
+      "limitations": [
+        "Perpetual futures depth, not spot.",
+        "Snapshot 6h26m old at capture.",
+        "Resting orders can move or cancel."
+      ],
+      "raw_source_sha256": null
+    }
+  },
+  "derivatives": {
+    "swiftedge_perpetual": {
+      "snapshot_time_utc": "2026-11-12T03:10:00Z",
+      "price": 1.0474,
+      "funding_per_8h_percent": 0.0006,
+      "open_interest_change_24h_percent": -7.8,
+      "long_account_share_percent": 53.7,
+      "large_market_orders_24h": 173,
+      "buys_usd": 9800000,
+      "sells_usd": 6900000,
+      "net_large_order_flow_usd": 2900000,
+      "source_url": "https://swiftedge.uk/xrp",
+      "web_ref": "turn340009search5",
+      "limitations": [
+        "Single provider and perpetual-market estimate.",
+        "Whale-flow classification and OI universe are provider-defined.",
+        "Not independent of Swiftedge's later wall snapshot."
+      ],
+      "raw_source_sha256": null
+    },
+    "swiftedge_walls": {
+      "snapshot_time_utc": "2026-11-12T06:16:00Z",
+      "perpetual_price": 1.0416,
+      "bid_wall": {
+        "price": 1.036,
+        "amount_xrp": 4743549
+      },
+      "ask_wall": {
+        "price": 1.047,
+        "amount_xrp": 5076678
+      },
+      "upper_wall": 1.0475,
+      "lower_wall": 1.0375,
+      "flip": 1.04,
+      "source_url": "https://swiftedge.uk/xrp/levels",
+      "web_ref": "turn340009search3",
+      "limitations": [
+        "Perpetual market, not spot.",
+        "Provider-derived wall levels, not executable depth or a forecast."
+      ],
+      "raw_source_sha256": null
+    }
+  },
+  "etf_flows": {
+    "xrp_insights": {
+      "settled_window": "2026-11-09 through 2026-11-10",
+      "net_flow_xrp": -9568334,
+      "total_holdings_xrp": 1185612353,
+      "nov11_row_status": "provisional",
+      "fund_universe": "six US spot XRP ETFs plus BITW",
+      "source_url": "https://xrp-insights.com/data",
+      "web_ref": "turn131081search12",
+      "raw_source_sha256": null
+    },
+    "bykaranteli": {
+      "latest_complete_trading_day": "2026-11-10",
+      "daily_net_flow_usd": -7600000,
+      "five_day_net_usd": -18000000,
+      "cumulative_net_inflow_usd": 1790000000,
+      "total_net_assets_usd": 1190000000,
+      "fund_universe": "six US spot XRP ETFs",
+      "source_url": "https://bykaranteli.com/etf/xrp",
+      "web_ref": "turn131081search15",
+      "raw_source_sha256": null
+    },
+    "cryptokeyhole": {
+      "nov11_reported_funds": 2,
+      "tracked_funds": 4,
+      "net_flow_so_far_xrp": 0,
+      "still_pending": [
+        "Franklin Templeton XRPZ",
+        "Canary Capital XRPC"
+      ],
+      "latest_complete_day": "2026-11-06",
+      "latest_complete_day_net_flow_xrp": -752048,
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "web_ref": "turn131081search16",
+      "raw_source_sha256": null
+    },
+    "reconciliation": "Different fund cohorts, dates, and settlement states. Zero, partial and provisional are not equivalent. No averaging."
+  },
+  "xrpl_lending": {
+    "votes": {
+      "snapshot_time_utc": "2026-11-11T21:53:00Z",
+      "LendingProtocol_yes": 22,
+      "LendingProtocol_total": 35,
+      "LendingProtocolV1_1_yes": 22,
+      "SingleAssetVault_yes": 23,
+      "threshold_yes": 29,
+      "activation_requirement": "More than 80% support for 14 consecutive days",
+      "active_countdown": false,
+      "source_url": "https://www.xrplhub.io/lending",
+      "web_ref": "turn542445search10",
+      "corroborating_source_url": "https://www.coindesk.com/tech/2026/11/12/ripple-s-bank-lending-system-moves-closer-to-launch-on-the-xrp-ledger",
+      "corroborating_web_ref": "turn542445search0",
+      "raw_source_sha256": null
+    },
+    "collateral_design": {
+      "protocol": "XLS-66",
+      "loan_type": "fixed-term uncollateralized",
+      "underwriting": "off-chain",
+      "first_loss_capital": "optional; same asset as associated vault",
+      "automatic_onchain_collateral_or_liquidation": false,
+      "xrp_mandatory": false,
+      "source_url": "https://xrpl.org/docs/concepts/tokens/lending-protocol",
+      "web_ref": "turn516832search2",
+      "spec_url": "https://xls.xrpl.org/xls/XLS-0066-lending-protocol.html",
+      "spec_web_ref": "turn516832search0",
+      "key_implication": "Native XRPL lending does not automatically create XRP collateral demand. A vault may hold XRP, RLUSD or another supported asset; optional first-loss capital is not borrower collateral or a guaranteed loss buffer.",
+      "raw_source_sha256": null
+    },
+    "community_proposal": {
+      "source_url": "https://github.com/XRPLF/XRPL-Standards/discussions/617",
+      "web_ref": "turn516832search1",
+      "status": "community discussion only; not an adopted amendment or current protocol requirement",
+      "proposal": "mandatory XRP risk sleeve as first-loss cover",
+      "raw_source_sha256": null
+    }
+  },
+  "macro": {
+    "source": "Reuters",
+    "date": "2026-11-12",
+    "reported": "Dollar reached a 19-month high and traders increased expectations of near-term Fed rate hikes after stronger October inflation and hawkish Fed comments; gold fell more than one week low.",
+    "source_url": "https://www.reuters.com/world/india/gold-falls-over-one-week-low-firm-dollar-fed-rate-hike-bets-2026-11-12/",
+    "web_ref": "turn668858news13",
+    "limitations": [
+      "Exact publication time not parsed.",
+      "Market reaction is not a settled Fed decision.",
+      "No direct causal XRP effect established."
+    ],
+    "raw_source_sha256": null
+  },
+  "data_quality": {
+    "source_receipts": "All Run51 web observations have raw_source_sha256=null; excluded from model features until byte-exact public-source collector receipts and trusted timestamp anchoring exist.",
+    "future_data_quarantine": [
+      {
+        "source": "CoinGlass XRP dashboard",
+        "reported_as_of": "2026-11-12 15:22 UTC",
+        "run_cutoff": "2026-11-12T07:57:13Z",
+        "reason": "Reported page timestamp is later than this run's cutoff; excluded from all Run51 features and event records.",
+        "web_ref": "turn771128news22",
+        "source_url": "https://www.coinglass.com/currencies/XRP"
+      }
+    ],
+    "timestamp_rules": [
+      "OKX provider ts retained as exchange event time.",
+      "Kraken retrieval time is not an exchange event time.",
+      "Fuelmaps and Swiftedge snapshots retain their published snapshot times.",
+      "Date-only or missing timestamps are not promoted to exact publication times."
+    ],
+    "source_independence": [
+      "OKX and Kraken are distinct exchange API lineages.",
+      "Fuelmaps aggregates six spot venues but is one vendor lineage.",
+      "Basis and Swiftedge are separate derivatives-data providers; both are provider-defined and not comparable to spot.",
+      "XRP ETF dashboards use overlapping issuer data but different fund cohorts and settlement cutoffs.",
+      "XRPLHub vote counts are XRPScan-derived; CoinDesk reporting may share underlying vote data.",
+      "Official XLS-66 docs/spec are primary protocol sources."
+    ]
+  },
+  "prediction_status": "NOT_ISSUED",
+  "forecast_eligibility": "NONE of the Run51 web observations are model-eligible until raw bytes are collected, hashed, timestamped, source-lineage checked and admitted by the production receipt gate.",
+  "no_directional_forecast": true,
+  "no_paper_trade": true,
+  "no_real_money_actions": true
+}

@@ -1,0 +1,185 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "sbic_corporate_number_and_capital_source_correction_20261106T095354Z",
+  "artifact_type": "append_only_identity_correction_overlay",
+  "recorded_at_utc": "2026-11-06T09:53:54Z",
+  "retrieval_interval_utc": [
+    "2026-11-06T09:52:36Z",
+    "2026-11-06T09:53:54Z"
+  ],
+  "correction_of": [
+    "research/xrp_intelligence/20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+    "research/xrp_intelligence/20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json"
+  ],
+  "source_registry": [
+    {
+      "source_id": "GBIZINFO_CENTRAL_CORPORATE_NUMBER_20261106",
+      "publisher": "Ministry of Economy, Trade and Industry — gBizINFO",
+      "source_type": "government_corporate_record_sourced_from_NTA",
+      "url": "https://info.gbiz.go.jp/hojin/ichiran?hojinBango=7180001031846",
+      "primary_registry_lineage": "National Tax Agency Corporate Number Publication Site",
+      "retrieved_between_utc": [
+        "2026-11-06T09:52:36Z",
+        "2026-11-06T09:53:54Z"
+      ],
+      "nta_data_retrieval_date": "2025-12-05",
+      "content": {
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "corporate_number": "7180001031846",
+        "head_office": "愛知県名古屋市中村区名駅南１丁目１６番３０号"
+      },
+      "raw_bytes_captured": false,
+      "limitations": [
+        "gBizINFO identifies the NTA Corporate Number Publication Site as the source; the displayed NTA data retrieval/update date is 2025-12-05.",
+        "No byte-exact HTML payload or immutable raw-source digest was captured in this run."
+      ]
+    },
+    {
+      "source_id": "GBIZINFO_WEST_CORPORATE_NUMBER_20261106",
+      "publisher": "Ministry of Economy, Trade and Industry — gBizINFO",
+      "source_type": "government_corporate_record_sourced_from_NTA",
+      "url": "https://info.gbiz.go.jp/hojin/ichiran?hojinBango=2120001059625",
+      "primary_registry_lineage": "National Tax Agency Corporate Number Publication Site",
+      "retrieved_between_utc": [
+        "2026-11-06T09:52:36Z",
+        "2026-11-06T09:53:54Z"
+      ],
+      "nta_data_retrieval_date": "2025-12-05",
+      "content": {
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "corporate_number": "2120001059625",
+        "head_office": "大阪府大阪市北区中之島３丁目３番２３号"
+      },
+      "raw_bytes_captured": false,
+      "limitations": [
+        "gBizINFO identifies the NTA Corporate Number Publication Site as the source; the displayed NTA data retrieval/update date is 2025-12-05.",
+        "No byte-exact HTML payload or immutable raw-source digest was captured in this run."
+      ]
+    },
+    {
+      "source_id": "TOUSHIIKUSEI_CENTRAL_CAPITAL_SECONDARY_20261106",
+      "publisher": "投資育成ビジネスネット",
+      "source_type": "third_party_business_directory",
+      "url": "https://www.toushiikusei.net/business_match/company/print/BJeljC6bm.html",
+      "retrieved_between_utc": [
+        "2026-11-06T09:52:36Z",
+        "2026-11-06T09:53:54Z"
+      ],
+      "independence_group": "third_party_business_directory",
+      "content": {
+        "company": "名古屋中小企業投資育成株式会社",
+        "reported_capital_jpy": 4800800000
+      },
+      "raw_bytes_captured": false,
+      "limitations": [
+        "Secondary directory conflicts with the regional company's official profile; it is not used as the selected capital figure.",
+        "No byte-exact HTML payload or immutable raw-source digest was captured."
+      ]
+    },
+    {
+      "source_id": "SBIC_CENTRAL_OFFICIAL_PROFILE_CAPITAL_20261106",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "retrieved_between_utc": [
+        "2026-11-06T09:47:39Z",
+        "2026-11-06T09:48:56Z"
+      ],
+      "independence_group": "sbic_central_primary",
+      "content": {
+        "capital_jpy": 4380800000,
+        "displayed_japanese_amount": "43億80万円"
+      },
+      "raw_bytes_captured": false,
+      "limitations": [
+        "Official page does not expose a byte-exact capture or raw-source SHA-256 in this run."
+      ]
+    }
+  ],
+  "field_updates": [
+    {
+      "target": "20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json",
+      "field": "entity_resolution.entities[1].corporate_number",
+      "previous_value": null,
+      "corrected_value": "7180001031846",
+      "source_id": "GBIZINFO_CENTRAL_CORPORATE_NUMBER_20261106"
+    },
+    {
+      "target": "20261106T094856Z-sbic-regional-company-primary-profile-vs-sbi-holdings-addendum.json",
+      "field": "entity_resolution.entities[2].corporate_number",
+      "previous_value": null,
+      "corrected_value": "2120001059625",
+      "source_id": "GBIZINFO_WEST_CORPORATE_NUMBER_20261106"
+    },
+    {
+      "target": "20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+      "field": "sbic_identity.companies[1].corporate_number",
+      "previous_value": null,
+      "corrected_value": "7180001031846",
+      "source_id": "GBIZINFO_CENTRAL_CORPORATE_NUMBER_20261106"
+    },
+    {
+      "target": "20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+      "field": "sbic_identity.companies[2].corporate_number",
+      "previous_value": null,
+      "corrected_value": "2120001059625",
+      "source_id": "GBIZINFO_WEST_CORPORATE_NUMBER_20261106"
+    }
+  ],
+  "capital_disagreement": {
+    "entity": "SBIC Central Japan / Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+    "official_profile_value_jpy": 4380800000,
+    "official_profile_display": "43億80万円",
+    "secondary_directory_value_jpy": 4800800000,
+    "secondary_directory_display": "4,800.8百万円",
+    "absolute_difference_jpy": 420000000,
+    "selected_value_jpy": 4380800000,
+    "selection_reason": "The regional company's own official company profile is the primary issuer source. The third-party directory is retained as a disagreement record and quarantined; values are not averaged.",
+    "model_eligible": false
+  },
+  "ownership_claim_correction": {
+    "target": "20261106T0425Z-sbic-evernorth-actual-capital-identity-reconciliation.json",
+    "original_claim": "SBIC East, SBIC Central and SBIC West are not SBI Holdings and are not subsidiaries or aliases of SBI Holdings.",
+    "corrected_conclusion": "The three regional SBIC companies are distinct legal entities and not aliases of SBI Holdings. Their official profiles identify one another as sister companies. The official profiles reviewed do not identify SBI Holdings as their parent; however, a complete named shareholder-register and beneficial-ownership audit was not performed, so an absolute no-subsidiary/no-affiliate-ownership conclusion is not established by this evidence set.",
+    "why_corrected": "The reviewed official profiles provide legal names, establishment dates, capital and sister-company relationships, but do not provide a complete named shareholder register for all three entities."
+  },
+  "corrected_entity_index": [
+    {
+      "label": "SBIC East Japan",
+      "legal_name_ja": "東京中小企業投資育成株式会社",
+      "corporate_number": "9011001030621",
+      "capital_jpy": 6673400000
+    },
+    {
+      "label": "SBIC Central Japan",
+      "legal_name_ja": "名古屋中小企業投資育成株式会社",
+      "corporate_number": "7180001031846",
+      "capital_jpy": 4380800000
+    },
+    {
+      "label": "SBIC West Japan",
+      "legal_name_ja": "大阪中小企業投資育成株式会社",
+      "corporate_number": "2120001059625",
+      "capital_jpy": 6822000000
+    },
+    {
+      "label": "SBI Holdings",
+      "legal_name": "SBI Holdings, Inc.",
+      "corporate_number": null,
+      "capital_jpy_as_of_2026_03_31": 238019000000
+    }
+  ],
+  "model_eligibility": {
+    "eligible": false,
+    "reason": "Corporate identifiers and capital-source reconciliation are entity-resolution context, not market features or forecast inputs."
+  },
+  "forecast_status": {
+    "directional_forecast_issued": false,
+    "model_admission": false
+  },
+  "next_actions": [
+    "Retain the NTA-derived gBizINFO source dates and refresh them through the official corporate-number service if a current registry vintage is required.",
+    "Obtain complete named shareholder/beneficial-ownership disclosures before making an exhaustive SBI-affiliation statement.",
+    "Keep the official Central capital figure and conflicting secondary directory value as separate source observations."
+  ]
+}

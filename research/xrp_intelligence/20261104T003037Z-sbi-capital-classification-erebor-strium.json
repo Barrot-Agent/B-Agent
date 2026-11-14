@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "record_id": "sbi-capital-classification-erebor-strium-20261104T003037Z",
+  "captured_at_utc": "2026-11-04T00:30:37Z",
+  "scope": "SBI Group capital commitments, ownership interests, stablecoin issuance, remittance scale and adjacent US banking/institutional-chain expansion",
+  "observations": [
+    {
+      "id": "sbi-erebor-investment",
+      "source": "https://www.sbigroup.co.jp/news/2026/1102_16705.html",
+      "source_type": "SBI Holdings official release",
+      "source_publication_date": "2026-11-02",
+      "metric": "SBI Holdings USA proposed investment in Erebor Bank",
+      "value": 100000000,
+      "unit": "USD",
+      "status": "announced investment commitment; completion not verified",
+      "notes": [
+        "SBI Holdings USA, Inc. is the investment vehicle.",
+        "Erebor Bank N.A. is a US national bank headquartered in Columbus, Ohio.",
+        "SBI says Erebor received an OCC bank charter and FDIC deposit insurance, began operations in February 2026 and had deposits above $7B as of September 2026.",
+        "Erebor's core banking system uses blockchain-based settlement and supports stablecoin deposits/withdrawals; SBI did not identify specific stablecoin issuers or a specific SBI product integration.",
+        "Erebor serves defense, AI, energy, robotics and advanced manufacturing companies; SBI says it will explore broader cooperation, not a defined XRP/Circle product."
+      ]
+    },
+    {
+      "id": "erebor-regulatory-status",
+      "source": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-101.html",
+      "source_type": "OCC official release",
+      "source_publication_date": "2025-10-15",
+      "metric": "Erebor national bank charter",
+      "value": "conditional approval",
+      "quality": "official regulatory record",
+      "notes": [
+        "OCC announced conditional approval of a de novo national bank charter in October 2025; SBI's Nov 2 2026 release states the bank obtained its charter and FDIC insurance and opened in February 2026."
+      ]
+    },
+    {
+      "id": "erebor-fdic-insurance",
+      "source": "https://www.fdic.gov/news/press-releases/2025/fdic-approves-deposit-insurance-application-erebor-bank-na-columbus-ohio",
+      "source_type": "FDIC official release",
+      "source_publication_date": "2025-12-16",
+      "metric": "Erebor deposit insurance",
+      "value": "approved subject to conditions",
+      "quality": "official regulatory record",
+      "notes": [
+        "FDIC approved deposit insurance subject to conditions, including a minimum 12% Tier 1 leverage ratio during the first three years and other capital/operational conditions."
+      ]
+    },
+    {
+      "id": "sbi-strium-l1",
+      "source": "https://www.sbigroup.co.jp/news/2026/0205_16088.html",
+      "source_type": "SBI Holdings/Startale official release",
+      "source_publication_date": "2026-02-05",
+      "metric": "Strium Network",
+      "value": "institutional-focused L1 in proof-of-concept phase",
+      "quality": "official development announcement",
+      "notes": [
+        "SBI and Startale are developing a dedicated L1 for tokenized securities, RWA-linked products and 24/7 spot/derivatives markets.",
+        "SBI described the project as in PoC, with a testnet planned; it is not a production exchange or live institutional settlement network at the announcement date.",
+        "The release discusses interoperability with other blockchain networks but does not name XRPL or XRP as an integrated asset/network.",
+        "This may compete with XRPL for institutional RWA/market infrastructure, but direct competition or migration is not established."
+      ]
+    },
+    {
+      "id": "sbi-ripple-equity-stake",
+      "source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_type": "SBI Holdings official release",
+      "source_publication_date": "2025-06-09",
+      "metric": "SBI shareholding in Ripple Labs",
+      "value": 9,
+      "unit": "percent approximately",
+      "quality": "dated company statement",
+      "notes": [
+        "SBI stated it held approximately 9% of Ripple shares as of June 2025.",
+        "This is equity in Ripple Labs, not ownership of 9% of XRP supply and not proof of $10B in XRP tokens.",
+        "A February 2026 public statement by SBI Chairman Yoshitaka Kitao, reported by CryptoNews, rejected the $10B XRP-holdings rumor and reiterated the 9% Ripple equity stake; direct X post could not be independently retrieved in this run."
+      ]
+    },
+    {
+      "id": "sbi-ripple-asia-voting-rights",
+      "source": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "source_type": "SBI Holdings official group profile",
+      "source_data_as_of_date": "2026-03-31",
+      "metric": "SBI Group voting-rights ownership in SBI Ripple Asia",
+      "value": 60,
+      "unit": "percent",
+      "quality": "official profile",
+      "notes": [
+        "This is ownership of the SBI Ripple Asia joint venture, not SBI's equity stake in Ripple Labs and not XRP token holdings."
+      ]
+    },
+    {
+      "id": "sbi-circle-jv-paid-in-capital",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "source_type": "Circle Q2 2026 SEC 10-Q",
+      "source_data_as_of_date": "2026-06-30",
+      "metric": "Circle SBI Japan K.K. initial contributions",
+      "circle_contribution_usd_approx": 1500000,
+      "sbi_contribution_usd_approx": 1500000,
+      "ownership_each_percent": 50,
+      "quality": "SEC-filed related-party/JV disclosure",
+      "notes": [
+        "Circle says both Circle and SBI contributed Japanese yen worth approximately $1.5M each in November 2025.",
+        "Circle consolidates the VIE because it controls relevant activities; it reported no significant operating results to date as of June 30, 2026.",
+        "This is separate from the $50M Circle equity investment by SBI Holdings and SBI Shinsei Bank."
+      ]
+    },
+    {
+      "id": "sbi-circle-equity-investment",
+      "source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_type": "SBI Holdings official release",
+      "source_publication_date": "2025-06-09",
+      "metric": "SBI Holdings and SBI Shinsei investment in Circle shares",
+      "value": 50000000,
+      "unit": "USD",
+      "quality": "official strategic investment announcement",
+      "notes": [
+        "SBI Holdings invested $25M and SBI Shinsei Bank invested $25M in Circle shares in connection with Circle's IPO.",
+        "This is equity capital into Circle, not USDC reserves and not the SBI-Circle JV's paid-in capital."
+      ]
+    },
+    {
+      "id": "sbi-startale-investment",
+      "source": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "source_type": "SBI Holdings official release",
+      "source_publication_date": "2026-03-26",
+      "metric": "SBI investment contract in Startale",
+      "value": 50000000,
+      "unit": "USD",
+      "status": "announced investment contract; completion/payment not verified",
+      "notes": [
+        "Separate from the SBI-Circle JV, Circle equity investment, JPYSC reserve assets and SBI Startale Marketing 5% SMBC stake."
+      ]
+    },
+    {
+      "id": "circle-arc-presale-capital",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "source_type": "Circle Q2 2026 SEC 10-Q",
+      "source_data_as_of_date": "2026-06-30",
+      "metric": "ARC token presale gross proceeds and cash received",
+      "gross_proceeds_usd": 242200000,
+      "cash_received_during_q2_usd": 222000000,
+      "receivable_at_2026_06_30_usd": 20200000,
+      "quality": "SEC-filed transaction disclosure",
+      "notes": [
+        "Circle reports 807.5M ARC tokens sold at $0.30, aggregate gross proceeds $242.2M; $222M received during Q2 and $20.2M receivable at June 30.",
+        "Circle recorded deferred revenue until performance obligations are satisfied; these proceeds are not recognized operating revenue in the same period.",
+        "SBI announced that a consolidated subsidiary participated in the presale, but SBI's own allocation amount is undisclosed. Do not attribute the $222M or $242.2M total to SBI."
+      ]
+    },
+    {
+      "id": "sbi-remit-total-volume",
+      "source": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "source_type": "SBI Holdings/SBI Remit official release",
+      "source_publication_date": "2026-06-18",
+      "metric": "SBI Remit cumulative total remittance handling",
+      "value": 2500000000000,
+      "unit": "JPY",
+      "source_data_as_of_date": "2026-05-29",
+      "quality": "company-reported all-channel total",
+      "notes": [
+        "Not XRP-specific volume, not a single-period inflow and not XRP token purchases."
+      ]
+    },
+    {
+      "id": "jpysc-circulation-and-lending-applications",
+      "source": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "source_type": "SBI official release",
+      "source_publication_date": "2026-09-07",
+      "metric": "JPYSC outstanding and lending applications",
+      "outstanding_jpy": 20100000000,
+      "lending_applications_jpy": 6900000000,
+      "jgb_allocation_jpy": 1000000000,
+      "quality": "issuer-reported snapshot",
+      "notes": [
+        "Lending applications are not necessarily funded loans; the ¥6.9B must not be added to circulating supply.",
+        "¥1B trust assets allocated to short-term Japanese government bonds."
+      ]
+    }
+  ],
+  "capital_classification": [
+    {
+      "item": "SBI ~9% Ripple stake",
+      "class": "equity ownership",
+      "token_exposure": "not XRP tokens",
+      "status": "company-stated June 2025; current percentage unrefreshed"
+    },
+    {
+      "item": "SBI/SBI Shinsei $50M Circle shares",
+      "class": "equity investment",
+      "token_exposure": "not USDC reserves",
+      "status": "announced June 2025; $25M each"
+    },
+    {
+      "item": "SBI-Circle JV $1.5M each",
+      "class": "paid-in JV capital",
+      "token_exposure": "not USDC circulation",
+      "status": "SEC filing says contributed Nov 2025; 50/50 equity"
+    },
+    {
+      "item": "SBI $50M Startale investment",
+      "class": "equity investment contract",
+      "token_exposure": "not JPYSC reserves",
+      "status": "announced March 2026; completion not independently verified"
+    },
+    {
+      "item": "SBI $100M Erebor investment",
+      "class": "announced bank equity/capital investment",
+      "token_exposure": "not XRP or stablecoin purchase",
+      "status": "announced Nov 2 2026; completion not verified"
+    },
+    {
+      "item": "Circle ARC presale $242.2M gross / $222M received",
+      "class": "token presale proceeds and deferred revenue",
+      "token_exposure": "not SBI allocation",
+      "status": "SEC reported; SBI participation amount unknown"
+    },
+    {
+      "item": "SBI Remit ¥2.5T cumulative",
+      "class": "cumulative service throughput",
+      "token_exposure": "not XRP-specific",
+      "status": "company-reported all-channel total"
+    },
+    {
+      "item": "JPYSC ¥20.1B outstanding",
+      "class": "stablecoin circulation",
+      "token_exposure": "not XRP",
+      "status": "issuer-reported Sep 7 2026"
+    },
+    {
+      "item": "JPYSC ¥6.9B lending applications",
+      "class": "loan applications",
+      "token_exposure": "not funded lending or supply",
+      "status": "issuer-reported Sep 7 2026"
+    },
+    {
+      "item": "Coinbase cbXRP ~152.2M reserve",
+      "class": "custody backing for wrapped asset",
+      "token_exposure": "actual XRP reserve",
+      "status": "Coinbase first-party snapshot; not necessarily pledged collateral"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "S1",
+      "claim": "SBI is building a broad multi-rail financial ecosystem spanning Ripple/XRP, Circle/USDC, RLUSD, JPYSC, OUSD, Strium and US banking infrastructure.",
+      "supporting": [
+        "SBI has documented equity, JV, product distribution, MoU and capital relationships across these entities and networks."
+      ],
+      "disconfirming": [
+        "Several relationships remain early-stage MoUs, investment contracts or PoCs; operating volumes are not disclosed."
+      ],
+      "test": "Track product launches, paid-in capital, stablecoin circulation, remittance route volumes, chain-level settlement and audited operating results."
+    },
+    {
+      "id": "S2",
+      "claim": "Strium and JPYSC/OUSD rails may compete with XRPL for institutional RWA and cross-border settlement activity.",
+      "supporting": [
+        "Strium targets tokenized securities/RWA and 24/7 trading; JPYSC/OUSD targets stablecoin interoperability."
+      ],
+      "disconfirming": [
+        "No public evidence of production migration away from XRPL; SBI continues XRP remittance and Ripple equity/JV relationships."
+      ],
+      "test": "Compare production settlement volume, asset issuance, institutional participants and interoperability integrations by network."
+    },
+    {
+      "id": "S3",
+      "claim": "The $100M Erebor investment may strengthen SBI's access to US banking rails for digital asset, AI and defense-sector clients.",
+      "supporting": [
+        "Erebor supports stablecoin deposits/withdrawals and blockchain-based 24/7 settlement; SBI explicitly says it will explore cooperation."
+      ],
+      "disconfirming": [
+        "No specific Ripple, Circle, Coinbase, USDC, RLUSD or XRP product integration is announced."
+      ],
+      "test": "Watch for named account, custody, stablecoin settlement or correspondent banking products and regulatory disclosures."
+    }
+  ],
+  "unknowns": [
+    "Completion date, share percentage and governance rights for SBI's $100M Erebor investment.",
+    "Whether Erebor will support USDC, RLUSD, OUSD or other specific stablecoins for SBI customers.",
+    "Whether Strium will interoperate with XRPL or support XRP/RLUSD/USDC.",
+    "Current SBI percentage ownership of Ripple Labs after the June 2025 approximately 9% statement.",
+    "SBI's exact ARC token presale allocation.",
+    "Actual XRP share of SBI Remit's ¥2.5T cumulative remittance handling.",
+    "Current operating results of the SBI-Circle JV after June 30, 2026."
+  ],
+  "data_quality": [
+    "SBI's 9% Ripple stake is equity, not XRP token holdings; do not conflate shareholding with token inventory.",
+    "SBI Ripple Asia 60% voting rights and SBI's approximately 9% Ripple Labs equity stake are separate legal interests.",
+    "SBI's $100M Erebor investment is announced as a future investment; payment/closing not verified.",
+    "SBI's $50M Startale investment is an announced investment contract; payment/closing not verified.",
+    "The ARC presale's $242.2M gross/$222M cash is Circle-wide; SBI's own allocation is undisclosed.",
+    "SBI Remit's ¥2.5T cumulative handling amount is total across corridors and rails, not XRP volume.",
+    "The JPYSC lending application amount is not necessarily funded lending."
+  ],
+  "next_actions": [
+    "Monitor SBI's Erebor investment closing and any specific stablecoin/settlement product announcements.",
+    "Track Strium PoC/testnet and any XRPL interoperability or asset listing.",
+    "Verify SBI's current Ripple equity percentage and current SBI Ripple Asia operating metrics.",
+    "Keep a capital ledger that separates equity, token presale, stablecoin supply, reserve backing, loan applications, cumulative throughput and collateral custody."
+  ]
+}

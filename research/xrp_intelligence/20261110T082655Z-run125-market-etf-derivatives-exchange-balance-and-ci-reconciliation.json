@@ -1,0 +1,309 @@
+{
+  "schema_version": "barrot.xrp.research-run.v1",
+  "run_id": "run125",
+  "captured_at_utc": "2026-11-10T08:26:55Z",
+  "mission": {
+    "id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head": "a8bf9f4a717cfb5a0407bb6c0028426aa012a106",
+    "pull_request": 1640,
+    "commits_ahead": 916,
+    "commits_behind": 0,
+    "changed_paths": 248,
+    "additions": 119742,
+    "deletions": 3554,
+    "main_tree": {
+      "entries": 1404,
+      "files": 1299
+    },
+    "integration_tree": {
+      "entries": 1545,
+      "files": 1432
+    },
+    "open_pull_requests": 372,
+    "drafts": 356,
+    "non_drafts": 16,
+    "main_missing_paths": [
+      "data/missions/primary_mission.json",
+      "barrot_agent/data/missions/primary_mission.json",
+      ".github/workflows/xrp-public-ingestion.yml"
+    ]
+  },
+  "verification": {
+    "head": "a8bf9f4a717cfb5a0407bb6c0028426aa012a106",
+    "full_ci_run": 42781972378,
+    "full_repository_tests": 1355,
+    "failed_tests": 0,
+    "subtests": 8,
+    "inclusive_coverage_percent": 59.48,
+    "coverage_floor_percent": 53,
+    "core_tests": 677,
+    "wheel_build_install": "passed",
+    "packaged_barrot_v3_xrp_mission": "verified",
+    "dependency_audit_run": 42781972163,
+    "dependency_manifests": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run": 42781972266,
+    "fail_closed_gate": "passed; automatic merge disabled"
+  },
+  "governance": {
+    "pr1640_reviews": 62,
+    "commented": 62,
+    "approved": 0,
+    "review_threads": 22,
+    "resolved_threads": 22,
+    "outdated_threads": 22,
+    "branch_protection": "HTTP 403",
+    "fallback_ruleset": "10863829 disabled",
+    "pages_publication": "previous main push triggered successful deployment; current automatic publication authorization unresolved"
+  },
+  "spot": {
+    "kraken": {
+      "last": 1.09347,
+      "bid": 1.09323,
+      "ask": 1.09324,
+      "volume_24h_xrp": 23552685.17174867,
+      "vwap": 1.09532959,
+      "high": 1.11573,
+      "low": 1.07502,
+      "provider_event_time": null,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "okx": {
+      "last": 1.092,
+      "bid": 1.0918,
+      "ask": 1.0919,
+      "volume_24h_xrp": 63211566.279203,
+      "provider_event_time": "2026-11-10T08:14:39.071Z",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "usdt_usd": 0.99872,
+    "normalized_okx_usd": 1.09060224,
+    "normalized_difference_percent": -0.26226234,
+    "note": "Asynchronous observations; no executable arbitrage inference."
+  },
+  "spot_depth": {
+    "source": "Fuelmaps six-venue spot map",
+    "url": "https://fuelmaps.io/order-book/",
+    "snapshot": "2026-11-10T08:00:00Z",
+    "mid": 1.0938,
+    "venues": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "depth_usd": {
+      "half_percent": {
+        "bids": 8100000,
+        "asks": 5500000,
+        "bid_share": 59.4
+      },
+      "one_percent": {
+        "bids": 12700000,
+        "asks": 10100000,
+        "bid_share": 55.6
+      },
+      "two_percent": {
+        "bids": 18100000,
+        "asks": 11100000,
+        "bid_share": 61.9
+      },
+      "five_percent": {
+        "bids": 24300000,
+        "asks": 13500000,
+        "bid_share": 64.3
+      },
+      "ten_percent": {
+        "bids": 32800000,
+        "asks": 15000000,
+        "bid_share": 68.7
+      }
+    },
+    "limitations": [
+      "Binance and Bitget excluded",
+      "Resting orders can be cancelled",
+      "Hourly snapshot, not executable depth guarantee"
+    ]
+  },
+  "derivatives": {
+    "liqwall": {
+      "url": "https://liqwall.com/coins/xrp",
+      "snapshot": "2026-11-10T08:22:00Z",
+      "oi_usd": 1210000000,
+      "oi_change_24h_percent": -3.3,
+      "liquidations_24h_usd": 3600000,
+      "long_liquidations_usd": 3000000,
+      "short_liquidations_usd": 631000,
+      "funding_average_per_8h_percent": 0.0034,
+      "binance_funding_per_8h_percent": 0.0091,
+      "binance_long_accounts_percent": 74.9
+    },
+    "coinalyze_partial": {
+      "url": "https://bitcoinleverage.com/xrp/funding-rate",
+      "checked": "2026-11-10T06:18:00Z",
+      "coverage": "Binance and Bybit only; 2 of 22 contracts",
+      "binance_oi_usd": 344870000,
+      "bybit_oi_usd": 257120000,
+      "binance_long_accounts_percent": 74.55,
+      "bybit_long_accounts_percent": 81.32,
+      "limitations": [
+        "Partial venue sample",
+        "Funding intervals are exchange-specific"
+      ]
+    },
+    "alpha_heatmap": {
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "snapshot": "2026-11-10T01:40:00Z",
+      "oi_usd": 2480000000,
+      "long_liquidations_usd": 8000000,
+      "short_liquidations_usd": 831700,
+      "modeled_short_cluster": {
+        "price": 1.1192,
+        "usd": 6000000
+      },
+      "modeled_long_cluster": {
+        "price": 1.0833,
+        "usd": 3400000
+      },
+      "stale": true
+    }
+  },
+  "etf": {
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "session": "2026-11-09",
+      "coverage": "3/4 daily issuer files",
+      "change_xrp": -9216553,
+      "approx_usd": -10100000,
+      "bitwise_xrp": -8594551,
+      "canary_xrp": -427341,
+      "toxr_xrp": -194660,
+      "franklin_xrp": null,
+      "latest_complete_day": "2026-11-06",
+      "latest_complete_day_change_xrp": -752048,
+      "completed_11_session_net_xrp": 2622459,
+      "franklin_note": "9 Nov file observed 23:47–23:52 UTC is dated to prior-day orders; no 9 Nov daily observation."
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "session": "2026-11-09",
+      "coverage": "5/5 flow-series tickers",
+      "net_flow_usd": -10400000,
+      "bitwise_usd": -9400000,
+      "franklin_usd": 0,
+      "canary_usd": -811400,
+      "grayscale_usd": 0,
+      "toxr_usd": -212900,
+      "method": "Flow series; no fund holdings/AUM or fund list published."
+    },
+    "disagreement": "Different coverage and zero-versus-missing treatment; source independence not established. Do not average or zero-fill."
+  },
+  "exchange_balances": {
+    "url": "https://xrp-insights.com/exchange-balances",
+    "snapshot": "2026-11-09",
+    "wallets": 701,
+    "exchanges": 24,
+    "total_xrp": 22350000000,
+    "same_wallet_7d_change_xrp": -25800000,
+    "same_wallet_30d_change_xrp": -138100000,
+    "upbit_xrp": 6450000000,
+    "coinbase_xrp": 5800000000,
+    "binance_xrp": 2730000000,
+    "limitations": [
+      "Includes cold and omnibus custody",
+      "Not tradable float",
+      "Same-wallet decrease is not proof of sale"
+    ]
+  },
+  "macro": {
+    "event": "October 2026 CPI and Real Earnings",
+    "url": "https://blsmon1.bls.gov/schedule/2026/11_sched_list.htm",
+    "scheduled": "2026-11-10T13:30:00Z",
+    "status": "not released at capture cutoff"
+  },
+  "identity": {
+    "sbic": "No new exact phrase match. Tokyo SBIC official course 12–13 June 2025 includes ChatGPT/Copilot training for investee companies; not an OpenAI partnership.",
+    "ask_coin": "Permission Coin ASK is a candidate; CMC describes Base/Polygon LayerZero OFT deployments; no XRPL integration found.",
+    "actual_capital": "No standardized XRP metric; keep cash, in-kind XRP, debt, drawn facilities, contingent capacity and resales separate.",
+    "kamilah": "No additional personal-channel uploads verified."
+  },
+  "platforms": {
+    "ChatGPT": "current-session GitHub read/write verified",
+    "Copilot": "comment-only review; no approval or persistent data flow",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Codex": "unverified",
+    "Hugging_Face": "prior BUILD_ERROR; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no workspace write",
+    "cross_platform_exchange": "none executed"
+  },
+  "main_workflows": {
+    "cross_analysis_run": 42778238470,
+    "result": "failure",
+    "pillars_run": 42621970927,
+    "causes": [
+      "missing GitHub App ID/private key/installation ID",
+      "Databricks HTTP 403",
+      "Hugging Face BUILD_ERROR"
+    ],
+    "xrp_ingestion_on_main": false,
+    "mission_manifest_on_main": false
+  },
+  "backlog": {
+    "1269": "unique geometry/topology; preserve",
+    "1597": "unique Coinbase/Circle/SBI/Ripple research; preserve",
+    "1605": "unique market microstructure artifact; preserve",
+    "1610": "unique/unreviewed security containment; preserve",
+    "1611": "unique/unreviewed forecast contract; preserve",
+    "1614": "unique/unreviewed prediction validator; preserve",
+    "1615": "unique/unreviewed security containment; preserve",
+    "1640": "blocked",
+    "1641": "unique bounded experimentation; preserve",
+    "1642": "duplicate/superseded candidate; 7 paths overlap #1640",
+    "1643": "unique/unreviewed; 670 paths, previously 663 unique and 7 shared; stale/unmergeable",
+    "1653": "unique/unreviewed; 7 paths; 8 unresolved threads",
+    "1655": "unique structural analysis; preserve",
+    "1659": "unique local LLM/Termux; preserve",
+    "1644-1650": "dependency/action reconciliation candidates"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No admitted synchronized point-in-time dataset with demonstrated out-of-sample lift and sufficient independent shadow outcomes.",
+    "paper_trade": false,
+    "real_money": false
+  },
+  "provenance": {
+    "rendered_web_bytes_preserved": false,
+    "web_sha256": null,
+    "model_admission": false,
+    "reason": "Original HTTP transport bytes and headers were not exposed; no immutable receipt is claimed."
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "close_prs": false,
+    "deploy": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "force_push": false,
+    "destructive_worktree_operation": false
+  }
+}

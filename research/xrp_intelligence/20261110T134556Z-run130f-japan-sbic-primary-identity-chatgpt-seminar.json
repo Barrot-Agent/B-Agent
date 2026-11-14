@@ -1,0 +1,167 @@
+{
+  "schema_version": "barrot.xrp.entity-research.v1",
+  "artifact_id": "20261110T134556Z-run130f-japan-sbic-primary-identity-chatgpt-seminar",
+  "run_id": "130F",
+  "captured_at_utc": "2026-11-10T13:45:56Z",
+  "scope": "Japan SBIC East Japan, SBIC Central Japan, SBIC West Japan; exact phrase SBIC ChatGPT SBIC",
+  "sources": [
+    {
+      "id": "sbic_east_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary_official_company_profile"
+    },
+    {
+      "id": "sbic_central_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary_official_company_profile"
+    },
+    {
+      "id": "sbic_west_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary_official_company_profile"
+    },
+    {
+      "id": "sbic_east_chatgpt_seminar",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "primary_official_event_listing"
+    }
+  ],
+  "entities": {
+    "east": {
+      "legal_name_ja": "東京中小企業投資育成株式会社",
+      "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "official_abbreviation": "SBIC East Japan",
+      "corporate_number": "9011001030621",
+      "established": "1963-11-15",
+      "capital_jpy": 6673400000,
+      "shareholder_categories": [
+        "local governments (18 prefectures)",
+        "chambers of commerce",
+        "financial institutions",
+        "business companies"
+      ],
+      "business_area": "18 prefectures east of Shizuoka, Nagano and Niigata, plus other areas",
+      "sister_companies": [
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+      ]
+    },
+    "central": {
+      "legal_name_ja": "名古屋中小企業投資育成株式会社",
+      "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "official_abbreviation": "SBIC Central Japan",
+      "established": "1963-11-18",
+      "capital_jpy": 4380000000,
+      "business_area": [
+        "Aichi",
+        "Gifu",
+        "Mie",
+        "Toyama",
+        "Ishikawa"
+      ],
+      "sister_companies": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+      ]
+    },
+    "west": {
+      "legal_name_ja": "大阪中小企業投資育成株式会社",
+      "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "official_abbreviation": "SBIC West Japan",
+      "established": "1963-11-20",
+      "capital_jpy": 6822000000,
+      "business_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+      "statutory_status": "Policy-implementing institution under Japan's Small and Medium Business Investment & Consultation Company Act",
+      "sister_companies": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd."
+      ]
+    }
+  },
+  "chatgpt_event": {
+    "title_ja": "生成ＡＩ (チャットGPT)の現在と未来",
+    "title_en": "Generative AI (ChatGPT): Present and Future",
+    "date": "2026-03-05",
+    "time_local": "15:00-17:00",
+    "location": "Hamamatsu, Shizuoka, Japan",
+    "organizer": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+    "co_host": "Hamamatsu Iwata Shinkin",
+    "speaker": "Satoshi Nishiwaki",
+    "speaker_affiliation": "Microsoft Japan, executive officer and evangelist",
+    "content": "Overview of generative AI trends and business impact, including demonstrations of ChatGPT use in business scenarios.",
+    "commercial_openai_relationship_evidenced": false
+  },
+  "identity_conclusion": {
+    "confirmed": "SBIC East, Central and West are three distinct Japanese regional Small and Medium Business Investment & Consultation companies, with separate legal names, establishment dates, capitals and operating regions; their official sites describe one another as sister companies.",
+    "not_sbi_holdings": "These are distinct legal entities, not SBI Holdings. The shared letters 'SBI' do not establish common ownership or group affiliation.",
+    "shareholder_limitation": "SBIC East's public profile lists shareholder categories, not a complete shareholder register. The reviewed pages do not establish whether SBI Holdings or any SBI Group entity has a minority shareholding; absence of a disclosed link is not proof of no relationship.",
+    "chatgpt_interpretation": "The SBIC/ChatGPT reference is explained by an official SBIC East seminar. The event was organized by SBIC East, co-hosted by Hamamatsu Iwata Shinkin, and presented by a Microsoft Japan executive evangelist. It is evidence of a public educational event, not an OpenAI partnership, integration or XRP relationship.",
+    "xrp_relationship": "No direct XRP, Ripple, Coinbase or Circle relationship is established by these primary SBIC profiles or seminar records."
+  },
+  "relationship_edges": [
+    {
+      "from": "SBIC East Japan",
+      "to": "SBIC Central Japan",
+      "type": "sister_company",
+      "evidence": "official reciprocal company profiles"
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "SBIC West Japan",
+      "type": "sister_company",
+      "evidence": "official reciprocal company profiles"
+    },
+    {
+      "from": "SBIC Central Japan",
+      "to": "SBIC West Japan",
+      "type": "sister_company",
+      "evidence": "official reciprocal company profiles"
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "ChatGPT",
+      "type": "public_seminar_topic_and_demo",
+      "evidence": "2026-03-05 official seminar listing",
+      "relationship_strength": "educational_only"
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "Microsoft Japan",
+      "type": "seminar_speaker_affiliation",
+      "evidence": "Satoshi Nishiwaki listed as Microsoft Japan executive officer and evangelist"
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "Hamamatsu Iwata Shinkin",
+      "type": "seminar_co_host",
+      "evidence": "official event listing"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H130F_SBI_HOLDINGS_NAME_COLLISION",
+      "claim": "SBIC refers to SBI Holdings or an SBI Group subsidiary.",
+      "status": "DISCONFIRMED_FOR_THE_THREE_REGIONAL_SBIC_ENTITIES",
+      "evidence": "Official English legal names and reciprocal sister-company profiles identify three separate Small and Medium Business Investment & Consultation companies."
+    },
+    {
+      "id": "H130F_CHATGPT_COMMERCIAL_PARTNERSHIP",
+      "claim": "The SBIC/ChatGPT phrase indicates a commercial OpenAI partnership.",
+      "status": "NOT_SUPPORTED",
+      "evidence": "Official event lists a Microsoft Japan speaker, ChatGPT demonstration and local shinkin co-host; no OpenAI agreement or product integration is mentioned."
+    }
+  ],
+  "limitations": [
+    "The public SBIC East profile lists shareholder categories, not every shareholder name; exact beneficial ownership was not established.",
+    "No complete corporate registry extracts or shareholder registers were obtained.",
+    "No direct XRP, Ripple, Coinbase or Circle relationship was found in the reviewed SBIC primary sources."
+  ],
+  "forecast_status": "NOT_APPLICABLE",
+  "raw_http_wire_bytes_captured": false,
+  "raw_source_sha256_captured": false,
+  "normalized_evidence_sha256": "997029646b9f34eccc2707d4b3eb781ca3c8c8f0b715b70ad37fb5a58631b4ee"
+}

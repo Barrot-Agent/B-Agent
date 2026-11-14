@@ -1,0 +1,524 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run108",
+  "research_cutoff_utc": "2026-11-13T23:51:53.574Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+    "ahead_by": 2315,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2393,
+    "integration_tree_truncated": false,
+    "pull_request": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "changed_files": 1152,
+      "additions": 333750,
+      "deletions": 5354,
+      "workflow_files_changed": 50,
+      "public_web_files_changed": 7
+    },
+    "open_prs": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "merged_prs": [],
+    "main_modified": false
+  },
+  "changes": {
+    "commits": [
+      {
+        "sha": "8d581b369676678662eec53c64e84f10527eea34",
+        "scope": "per-origin outcome-source clustering; configurable bootstrap confidence; readiness policy v5"
+      },
+      {
+        "sha": "3d2aaaf8d4c8bad1caf3a169296fcef4ba0130d1",
+        "scope": "receipt-backed source-group IDs; minimum five independent groups; synchronized mission policy and provenance tests"
+      },
+      {
+        "sha": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+        "scope": "test fixture corrected to exercise feature-lineage mismatch branch"
+      }
+    ],
+    "implemented": [
+      "Walk-forward source clusters derive from the observed target record's canonical publisher lineage.",
+      "Multi-publisher target aggregates remain unclustered rather than being assigned arbitrarily.",
+      "Paired moving-block bootstrap accepts explicit confidence levels and reports the actual level.",
+      "Forecast readiness policy v5 requires temporal and source-clustered intervals in out-of-sample and shadow cohorts.",
+      "Four baseline comparisons and two loss metrics are covered by 95% Bonferroni familywise control; individual interval confidence is at least 99.375%.",
+      "At least 100 paired origins, 10,000 bootstrap replicates, five receipt-backed source clusters and two target origins per cluster are required.",
+      "All adjusted interval upper bounds must be below zero for both Brier and log loss against every baseline.",
+      "Source-cluster IDs must match the count and be a subset of declared and raw-receipt source groups.",
+      "Minimum dataset independent source-group count raised to five; mission JSON copies synchronized."
+    ],
+    "limitations": [
+      "Outcome-source clustering does not establish independence among model-training feature sources.",
+      "The new tests use synthetic fixtures and do not demonstrate XRP predictive performance.",
+      "No trained XRP-specific candidate model exists.",
+      "The historical XRP repository data includes one large snapshot JSON dated 2026-10-28, not a complete synchronized time series.",
+      "The main-only ingestion workflow has not executed on main.",
+      "No independent WORM archive or trusted timestamp anchor exists."
+    ]
+  },
+  "verification": {
+    "exact_head": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+    "full_ci": {
+      "run_id": 43529481507,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43529481507",
+      "status": "success",
+      "full_repository_tests": 3623,
+      "subtests": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.34,
+      "duration_seconds": 106.4,
+      "wheel_build": "passed",
+      "installed_mission_verification": "passed"
+    },
+    "dependency_audit": {
+      "run_id": 43529489079,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43529489079",
+      "head_sha": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+      "status": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_pr_gate": {
+      "run_id": 43529489073,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43529489073",
+      "head_sha": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+      "status": "success",
+      "automatic_merge": "disabled"
+    },
+    "fail_closed_push_gate": {
+      "run_id": 43529481485,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43529481485",
+      "head_sha": "1d527bb95c98a671d03f0aa35666aaa54cbec6f8",
+      "status": "success",
+      "automatic_merge": "disabled"
+    },
+    "pr_event_ci": {
+      "run_id": 43529489165,
+      "status": "skipped",
+      "reason": "integration branch workflow condition"
+    },
+    "exact_head_all_required_checks": true
+  },
+  "prediction": {
+    "readiness_policy_id": "xrp_forecast_readiness_v5",
+    "bootstrap_method": "paired_temporal_and_source_clustered_moving_block_bootstrap_v1",
+    "familywise_confidence_level": 0.95,
+    "familywise_comparison_count": 8,
+    "multiplicity_method": "bonferroni",
+    "minimum_individual_confidence_level": 0.99375,
+    "minimum_bootstrap_replicates": 10000,
+    "minimum_paired_origins": 100,
+    "minimum_source_clusters": 5,
+    "minimum_origins_per_source_cluster": 2,
+    "required_windows": [
+      "out_of_sample",
+      "shadow_evaluation"
+    ],
+    "required_baselines": [
+      "naive_class_prior",
+      "momentum_sign",
+      "mean_reversion_sign",
+      "volatility_normal"
+    ],
+    "required_metrics": [
+      "brier",
+      "log_loss"
+    ],
+    "requirement": "upper bound below zero for temporal and source-clustered intervals in both windows for all baselines and metrics",
+    "scheduled_ingestion": {
+      "source_definitions": 50,
+      "scheduled": 48,
+      "read_only": true,
+      "main_only": true,
+      "executed_on_main": false
+    },
+    "raw_receipts": {
+      "hash": "SHA-256",
+      "retention_days": 90,
+      "independent_worm": false,
+      "trusted_timestamp_anchor": false
+    },
+    "feature_store": {
+      "type": "SQLite point-in-time",
+      "per_run_checkpoint_retention_days": 7,
+      "daily_archive_retention_days": 90
+    },
+    "event_registry": {
+      "curated_events": 73,
+      "model_eligible_events": 0,
+      "byte_exact_publisher_receipts_for_current_web_observations": 0
+    },
+    "trained_xrp_candidate_model": false,
+    "shadow_cohort_verified": false,
+    "directional_forecast_issued": false
+  },
+  "market": {
+    "spot": [
+      {
+        "provider": "OKX",
+        "instrument": "XRP-USDT",
+        "last": 1.0027,
+        "bid": 1.0026,
+        "ask": 1.0027,
+        "open_24h": 1.0398,
+        "high_24h": 1.0439,
+        "low_24h": 0.9974,
+        "volume_xrp_24h": 47010000,
+        "event_time_utc": "2026-11-13T23:13:42.468Z",
+        "retrieved_at_utc": "2026-11-13T23:51:53.574Z",
+        "admission": "excluded_stale",
+        "independence_group": "okx.com"
+      },
+      {
+        "provider": "Kraken",
+        "instrument": "XRP/USD",
+        "last": 1.00328,
+        "bid": 1.00337,
+        "ask": 1.00338,
+        "event_time_utc": null,
+        "admission": "excluded_missing_provider_event_time",
+        "independence_group": "kraken.com"
+      }
+    ],
+    "derivatives": [
+      {
+        "provider": "Liqwall",
+        "open_interest_usd": 1120000000,
+        "observation_time_utc": "2026-11-13T07:02:00Z",
+        "funding_average_8h_percent": -0.0025
+      },
+      {
+        "provider": "TradRadar",
+        "open_interest_usd": 1550000000,
+        "observation_time_utc": "2026-11-13T17:45:00Z",
+        "funding_average_8h_percent": 0.0058
+      },
+      {
+        "provider": "Kodexius",
+        "open_interest_usd": 608330000,
+        "observation_time_utc": "2026-11-13T13:24:00Z",
+        "funding_average_8h_percent": 0.0089
+      },
+      {
+        "provider": "PerpFinder",
+        "open_interest_usd": 1190000000,
+        "observation_time_utc": "2026-11-13T15:46:00Z",
+        "funding": "mixed venue readings"
+      }
+    ],
+    "order_book": {
+      "fresh_synchronized_spot_l2": false,
+      "admission": "no current executable depth conclusion"
+    },
+    "etf_flows": {
+      "observations": [
+        {
+          "provider": "XRP Insights homepage",
+          "window": "2026-11-12",
+          "net_flow_xrp": -268644,
+          "status": "settled_on_homepage"
+        },
+        {
+          "provider": "XRP Insights data page",
+          "window": "2026-11-09_to_2026-11-11",
+          "net_flow_xrp": -9213000,
+          "status": "2026-11-12_provisional"
+        },
+        {
+          "provider": "CryptoKeyhole",
+          "window": "2026-11-12",
+          "net_flow_xrp": -3322,
+          "status": "partial_3_of_4_funds"
+        },
+        {
+          "provider": "Alpha Finance",
+          "window": "2026-11-12",
+          "net_flow_usd": 0,
+          "status": "five_fund_cohort"
+        },
+        {
+          "provider": "CryptoETF.today",
+          "window": "2026-11-12",
+          "net_flow_usd": 100000,
+          "status": "partial_3_of_5_funds"
+        },
+        {
+          "provider": "The Block",
+          "window": "24h_at_retrieval",
+          "net_flow_usd": 0,
+          "status": "aggregate"
+        }
+      ],
+      "decision": "do not average; universes, vintages and missing-file rules differ; same-publisher XRP Insights pages are not independent"
+    },
+    "exchange_balances": {
+      "provider": "XRP Insights",
+      "wallets": 707,
+      "venues": 24,
+      "tracked_xrp": 22260000000,
+      "seven_day_same_wallet_change_xrp": -77300000,
+      "thirty_day_same_wallet_change_xrp": -279700000,
+      "interpretation": "includes cold storage and wrapped backing; not tradable float"
+    },
+    "selected_transfers": {
+      "provider": "TrackWhale",
+      "records": 53,
+      "inflows_xrp": 79730000,
+      "outflows_xrp": 187040000,
+      "net_outflow_xrp": -107310000,
+      "interpretation": "selected sample, not complete exchange-wallet accounting"
+    },
+    "cftc": {
+      "report_date": "2026-11-03",
+      "contract": "CME XRP futures",
+      "contracts_open_interest": 7216,
+      "contract_multiplier_xrp": 50000,
+      "contract_equivalent_open_interest_xrp": 360800000,
+      "noncommercial_net_long_contracts": 1465,
+      "interpretation": "net-long increase more consistent with short covering than fresh long accumulation"
+    },
+    "rlusd": {
+      "cross_chain_trackers_disagree": true,
+      "latest_snapshots_usd_total_range": [
+        2670000000,
+        2730000000
+      ],
+      "xrpl_feed_available": false,
+      "model_admission": "excluded"
+    }
+  },
+  "institutional": {
+    "intesa_sanpaolo_13f": {
+      "q1_2026": {
+        "xrp_etf_shares": 712319,
+        "xrp_etf_value_usd": 18534540,
+        "circle_shares": 23823,
+        "circle_value_usd": 2326992,
+        "coinbase_shares": 10357,
+        "coinbase_value_usd": 1831707
+      },
+      "q2_2026": {
+        "xrp_etf_shares": 712319,
+        "xrp_etf_value_usd": 14424320,
+        "circle_shares": 21500,
+        "circle_value_usd": 1209432,
+        "coinbase_shares": 7000,
+        "coinbase_value_usd": 1020190
+      },
+      "interpretation": "same XRP ETF share count; lower marked value; reduced Circle and Coinbase share counts; lagged portfolio holdings, not direct XRP or new flows"
+    },
+    "evernorth": {
+      "gross_closing_cash_usd": 272600000,
+      "in_kind_xrp": 388910554,
+      "cash_funded_xrp_purchase": 84365876,
+      "cash_used_for_xrp_purchase_usd": 214050000,
+      "pik_note_principal_usd": 30000000,
+      "related_party_facility_drawn_usd_as_of_2026_10_07": 9700000,
+      "eloc_shares": 5218935,
+      "eloc_price_formula": "97% of VWAP",
+      "eloc_proceeds_as_of_2026_11_09_usd": 0,
+      "eloc_upfront_commitment_fee_paid_usd": 521893.5,
+      "registered_resale_shares": 73688000,
+      "sponsor_warrants": {
+        "shares": 239653,
+        "exercise_price_usd": 11.5,
+        "potential_gross_cash_exercise_usd": 2756009.5,
+        "actual_proceeds_verified": false
+      },
+      "public_warrants": {
+        "shares": 11499992,
+        "exercise_price_usd": 11.5,
+        "potential_gross_cash_exercise_usd": 132249908,
+        "actual_proceeds_verified": false
+      },
+      "coinbase_principal_market_for_reporting": true,
+      "sbi_group_class_a_voting_power_percent": 39.9,
+      "sbi_group_class_c_nonvoting_percent": 9,
+      "onchain_wallet_attribution": {
+        "attributed_xrp": 103130000,
+        "unattributed_xrp": 370350000,
+        "interpretation": "custody attribution gap, not evidence of sale or loss"
+      }
+    },
+    "relationships": {
+      "sbi_ripple_asia": "60/40 SBI Group/Ripple; RippleNet software services; does not directly handle XRP",
+      "sbi_remit_route": "SBI Remit/SBI VC Trade/Tranglo is separate XRP remittance path",
+      "sbi_circle": "50/50 Circle JV; SBI entities invested in Circle IPO",
+      "bny": "RLUSD primary reserve custodian; XRP and RLUSD custody support; no XRP-specific collateral utilization disclosed",
+      "ripple_prime": "lists XRP and RLUSD as collateral assets institutions may post; utilization undisclosed",
+      "cftc_letter_26_05": "conditional staff no-action position; specified digital-asset path has 20% minimum haircut and FCM notice/risk-policy conditions; no XRP FCM adoption verified",
+      "intesa": "portfolio overlap in XRP ETF, Circle and Coinbase securities; not a partnership"
+    }
+  },
+  "macro": {
+    "us_october_2026_ppi_released_2026_11_13": {
+      "monthly_percent": 0.3,
+      "consensus_percent": 0.4,
+      "annual_percent": 6.5
+    },
+    "context": {
+      "dxy": 103.34,
+      "us_two_year_yield_percent": 4.84,
+      "usd_jpy": 159.84
+    },
+    "interpretation": "mixed monthly surprise and persistent annual inflation; macro/geopolitical context only, no XRP causal attribution"
+  },
+  "identity": {
+    "sbic_east_central_west": "regional Japanese SME investment companies; separate from SBI Holdings; ChatGPT seminars are education, not an OpenAI commercial partnership",
+    "ask_coin": "Permission ASK token candidate on Base/Polygon; no canonical XRPL issuer verified",
+    "actual_capital": "not a standardized XRP metric; use SEC cash/in-kind/debt/conditional facility/warrant/resale distinctions",
+    "kamilah_stevenson": {
+      "person_identity": "established",
+      "candidate_channel": "@drkamilahstevenson",
+      "candidate_subscribers_approx": 143000,
+      "candidate_videos_approx": 1200,
+      "first_party_channel_ownership_verified": false,
+      "verified_own_channel_videos": 0
+    }
+  },
+  "platforms": {
+    "ChatGPT": {
+      "authentication": "verified",
+      "connector": "GitHub",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false,
+      "data_flow": "ChatGPT session to Barrot-Agent/B-Agent through GitHub connector; integration-branch commits verified",
+      "external_dispatch": false
+    },
+    "Claude": {
+      "authentication": "unverified",
+      "data_flow": "unverified",
+      "external_dispatch": false
+    },
+    "Grok": {
+      "authentication": "unverified",
+      "data_flow": "unverified",
+      "external_dispatch": false
+    },
+    "Gemini": {
+      "authentication": "unverified",
+      "data_flow": "unverified",
+      "external_dispatch": false
+    },
+    "Copilot": {
+      "authentication": "not independently tested",
+      "evidence": "review artifacts present; no formal approval on PR #1662",
+      "external_dispatch": false
+    },
+    "Codex": {
+      "authentication": "unverified",
+      "data_flow": "unverified",
+      "external_dispatch": false
+    },
+    "HuggingFace": {
+      "authentication": "unverified",
+      "deployment": "prior BUILD_ERROR; no deployment",
+      "external_dispatch": false
+    },
+    "Kaggle": {
+      "authentication": "untested",
+      "submission": false,
+      "external_dispatch": false
+    },
+    "Databricks": {
+      "authentication": "write unavailable",
+      "last_result": "HTTP 403",
+      "external_dispatch": false
+    }
+  },
+  "security": {
+    "main_branch_metadata_protected": true,
+    "main_protection_details": "HTTP 403; required checks not independently visible",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "integration_branch_protected": false,
+    "github_connector_overprivileged": true,
+    "main_remote_mcp_enabled": true,
+    "integration_remote_mcp_enabled": false,
+    "github_pages_automatic_deploy_observed": true,
+    "public_web_publication_authorized": false,
+    "semantic_reconciliation_complete": false
+  },
+  "pr_backlog": {
+    "integration_pr_1662": "blocked; draft; no formal reviews or approvals",
+    "supersession_candidates": [
+      1661,
+      1660,
+      1643,
+      1642,
+      1640
+    ],
+    "unique_or_unreviewed": [
+      1653,
+      1655,
+      1659,
+      1615,
+      1614,
+      1320,
+      1318,
+      1317,
+      1269
+    ],
+    "dependency_blocked": [
+      1644,
+      1645,
+      1646,
+      1647,
+      1648,
+      1649,
+      1650,
+      1254,
+      1255
+    ],
+    "source_prs_closed": []
+  },
+  "next_actions": [
+    "complete semantic reconciliation of 1,152 changed paths, prioritizing 50 workflow and seven public web changes",
+    "resolve least privilege, branch-protection visibility, remote MCP containment and Pages publication authorization",
+    "establish WORM/trusted timestamp anchoring and durable raw-source archives",
+    "collect synchronized historical XRP spot/L2/derivatives/exchange-flow/collateral data",
+    "train an XRP-specific candidate only after dataset maturity",
+    "verify candidate-versus-each-baseline paired intervals and receipt-backed source clusters in both OOS and shadow cohorts",
+    "keep forecast issuance disabled until calibrated, familywise-adjusted superiority and independent shadow outcomes pass"
+  ],
+  "actions_not_taken": [
+    "merge",
+    "deployment",
+    "secret rotation",
+    "Space restart",
+    "external-model data transfer",
+    "Databricks write",
+    "Kaggle submission",
+    "paper trade",
+    "funds transfer",
+    "real-money action",
+    "force-push",
+    "history rewrite",
+    "destructive worktree operation",
+    "source PR closure"
+  ]
+}

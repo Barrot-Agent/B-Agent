@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_orderbook_positioning_source_followup",
+  "artifact_id": "swiftedge-xrp-depth-followup-20261106T022802Z",
+  "subject": "Later Swiftedge XRP perpetual order-book wall and depth observation",
+  "capture": {
+    "automation_run_started_at_utc": "2026-11-06T02:28:02Z",
+    "exact_page_retrieval_timestamp_utc": null,
+    "provider_page_updated_at_utc": "2026-11-05T22:53:00Z",
+    "note": "The page was opened during the run. The provider's own last-updated time is retained; the retrieval tool did not expose an exact request time or original HTTP headers. This is a later page state than the 22:51 UTC search-result snapshot retained in the preceding artifact."
+  },
+  "source": {
+    "source_id": "SWIFTEDGE_XRP_LEVELS_PAGE_20261105T2253Z",
+    "publisher": "Swiftedge",
+    "source_type": "XRP perpetual futures order-book wall and estimated positioning dashboard",
+    "url": "https://swiftedge.uk/xrp/levels",
+    "independence_group": "swiftedge_positioning_provider",
+    "updated_at_utc": "2026-11-05T22:53:00Z",
+    "page_displayed_local_time": "5:53 PM ET",
+    "exact_retrieval_timestamp_utc": null,
+    "raw_http_wire_bytes_captured": false,
+    "methodology_disclosed": [
+      "Largest resting orders within 3% of price are grouped by $0.001.",
+      "Near-price depth is shown as a one-minute average.",
+      "The page says its order-book and positioning numbers are rebuilt every two minutes.",
+      "Positioning levels are estimates from part of the market's public positions.",
+      "The provider explicitly says resting walls are often pulled and the levels are not predictions."
+    ],
+    "limitations": [
+      "No venue-by-venue constituents or raw exchange sequence/update IDs are exposed on the rendered page.",
+      "The page is an aggregated provider view, not an independently archived native exchange snapshot.",
+      "Resting limit orders can be cancelled before execution.",
+      "Positioning walls are estimates from part of the market's positions, not actual guaranteed liquidation prices.",
+      "Exact retrieval time and original HTTP response bytes were not captured."
+    ]
+  },
+  "observation": {
+    "displayed_perpetual_price_usd": 1.2177,
+    "displayed_change_summary_percent": -6.6,
+    "live_panel_change_percent": -6.67,
+    "displayed_today_low_usd": 1.2147,
+    "displayed_today_high_usd": 1.3274,
+    "bid_wall_price_usd": 1.215,
+    "bid_wall_size_xrp": 3591526,
+    "ask_wall_price_usd": 1.221,
+    "ask_wall_size_xrp": 3128892,
+    "other_bid_walls": [
+      {
+        "price_usd": 1.216,
+        "size_xrp": 2346259
+      },
+      {
+        "price_usd": 1.215,
+        "size_xrp": 3591526
+      },
+      {
+        "price_usd": 1.213,
+        "size_xrp": 2412766
+      },
+      {
+        "price_usd": 1.212,
+        "size_xrp": 2552685
+      },
+      {
+        "price_usd": 1.21,
+        "size_xrp": 2627675
+      }
+    ],
+    "other_ask_walls": [
+      {
+        "price_usd": 1.221,
+        "size_xrp": 3128892
+      },
+      {
+        "price_usd": 1.222,
+        "size_xrp": 2642176
+      },
+      {
+        "price_usd": 1.223,
+        "size_xrp": 2348057
+      },
+      {
+        "price_usd": 1.224,
+        "size_xrp": 2949558
+      },
+      {
+        "price_usd": 1.226,
+        "size_xrp": 2865485
+      }
+    ],
+    "depth_within_1_percent": {
+      "average_window": "one_minute",
+      "bids_xrp": 20873555,
+      "bids_usd_rounded": 25000000,
+      "asks_xrp": 22679066,
+      "asks_usd_rounded": 28000000
+    },
+    "depth_within_2_percent": {
+      "average_window": "one_minute",
+      "bids_xrp": 29290237,
+      "bids_usd_rounded": 35000000,
+      "asks_xrp": 24771097,
+      "asks_usd_rounded": 30000000
+    },
+    "positioning_estimates": {
+      "upper_wall_usd": 1.225,
+      "lower_wall_usd": 1.1675,
+      "flip_usd": 1.2175,
+      "upper_fast_wall_usd": 1.225,
+      "lower_fast_wall_usd": 1.215,
+      "max_liquidation_price_usd": 1.1675
+    }
+  },
+  "comparison_to_prior_page_state": {
+    "prior_updated_at_utc": "2026-11-05T22:51:00Z",
+    "prior_displayed_price_usd": 1.2161,
+    "prior_bid_wall_price_usd": 1.21,
+    "prior_bid_wall_size_xrp": 3676765,
+    "prior_ask_wall_price_usd": 1.221,
+    "prior_ask_wall_size_xrp": 3081006,
+    "current_updated_at_utc": "2026-11-05T22:53:00Z",
+    "current_bid_wall_price_usd": 1.215,
+    "current_bid_wall_size_xrp": 3591526,
+    "current_ask_wall_price_usd": 1.221,
+    "current_ask_wall_size_xrp": 3128892,
+    "interpretation": "The two-minute-later page state shows different displayed bid-wall placement and size. This does not prove orders were executed or cancelled; venue composition and order-book sequence data are not exposed."
+  },
+  "depth_interpretation": {
+    "within_1_percent": "Displayed ask depth exceeds bid depth in this provider's one-minute aggregate.",
+    "within_2_percent": "Displayed bid depth exceeds ask depth in this provider's one-minute aggregate.",
+    "conclusion": "Near-price depth asymmetry changes with the selected band; a single wall or band does not establish directional support or resistance."
+  },
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "data_cutoff_utc": null,
+  "model_ineligibility_reasons": [
+    "Provider aggregation is not a raw venue-by-venue depth feed.",
+    "No exact retrieval timestamp or raw HTTP receipt was captured.",
+    "Resting walls can be cancelled and are not executed liquidity.",
+    "Positioning estimates cover only part of the market's public positions.",
+    "Depth asymmetry reverses between the one-percent and two-percent bands.",
+    "No synchronized multi-venue snapshot or historical replenishment/cancellation series is available."
+  ],
+  "source_url": "https://swiftedge.uk/xrp/levels"
+}

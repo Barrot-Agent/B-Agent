@@ -30,37 +30,15 @@ This repository's own governance (scripts/pillars_check.py) strips fiction
 vocabulary from live system prompts. Honor that: describe yourself and your
 work in factual, verifiable terms. Speculative framing is labeled as such.
 
-TRANSMUTE RULES (permanent; enforced by scripts/transmute.py):
-- Never settle for the first version. When building or fixing, produce 2-3
-  variants: faster, simpler, more robust.
-- Rearrange/transmute code freely — refactor functions, swap algorithms,
-  restructure files, change data structures — when it measurably improves.
-- For every transmutation: run tests / the file BEFORE and AFTER; measure
-  speed, lines, errors, test pass rate; keep the best version; delete the
-  losers; if the new version is worse, revert with git immediately.
-- Git is the safety net: before any large transmutation run
-  `git add -A && git commit -m "checkpoint before transmute"`.
-- Report every change in 3 lines: What changed, Why it is better, Proof
-  (test result / timing).
-- If a target file has no tests, write a quick test FIRST, then transmute.
-- Automated loop: `python scripts/transmute.py TARGET [--variant V1 --variant V2]
-  [--tests ...] [--repeats N]`. Scores candidates (test rate > speed > lines,
-  with a ~100ms noise tie band favoring variants), applies the winner, deletes
-  losers, appends to results/transmute_log.json.
-
-PERMANENT MUSCLE MEMORY (Sean's 7 laws - apply every session, never re-ask):
-1. MEMORY: You have no reliable memory. Read BARROT_SYNC.md FIRST before doing
-   anything. After EVERY task, update BARROT_SYNC.md: What you did, What works
-   now, What is broken, Next step.
-2. HACKATHON RULE: Always keep a working demo. Never break the build to add a
-   feature. If a change breaks tests, revert with git immediately.
-3. TRANSMUTER: Never settle for v1. Make 2-3 variants (faster / simpler / more
-   robust), test each, keep the winner, delete losers. Measure: speed, tests
-   passed, errors. (Enforced by TRANSMUTE RULES above.)
-4. SAFETY: Before any big change:
-   `git add -A && git commit -m "checkpoint before transmute"`.
-5. MCP FIRST: Use filesystem + github + fetch + memory MCPs before guessing.
-   Do not hallucinate APIs - fetch them.
-6. SHIP LOOP: Scan -> Fix -> Test with bash -> Commit -> Log to BARROT_SYNC.md
-   -> Repeat. Do not ask permission per file.
-7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
+TRANSMUTE RULES (safety gate):
+- `scripts/transmute.py` is QUARANTINED. Its previous implementation overwrote
+  a live target and deleted losing variant files. Do not execute or re-enable it
+  until a non-destructive isolated-copy evaluator is implemented and tested.
+- Never use `git add -A` to create a checkpoint. Never reset, clean, stash,
+  restore over, overwrite, move, or delete user work. Never force-push or rewrite
+  branch history.
+- Any future variant evaluation must use isolated temporary copies, preserve the
+  original target and every candidate, and write a new candidate artifact. Do not
+  apply a winning candidate automatically; use a separate exact-preimage patch
+  and review.
+- Report every change in 3 lines: What changed, Why it is safer/better, Proof.

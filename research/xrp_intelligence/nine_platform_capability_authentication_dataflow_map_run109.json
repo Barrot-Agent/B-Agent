@@ -1,0 +1,107 @@
+{
+  "schema": "barrot.nine-platform-capability-authentication-dataflow.v1",
+  "run": "Run109",
+  "observed_at_utc": "2026-11-14T00:18:00Z",
+  "coordination_status": "DESIGNED; no external-model dispatch or evidence transfer executed this run",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "capabilities": [
+        "research",
+        "reasoning",
+        "repository inspection"
+      ],
+      "authentication": "GitHub connector verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT connector to Barrot-Agent/B-Agent; no external model transfer",
+      "risk": "overprivileged; least-privilege remediation required"
+    },
+    {
+      "name": "Claude",
+      "capabilities": [
+        "independent research and review"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch"
+    },
+    {
+      "name": "Grok",
+      "capabilities": [
+        "independent research and red-team review"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch"
+    },
+    {
+      "name": "Gemini",
+      "capabilities": [
+        "independent research and evidence review"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch"
+    },
+    {
+      "name": "Copilot",
+      "capabilities": [
+        "repository code review"
+      ],
+      "authentication": "review artifacts visible; formal PR approval absent",
+      "permissions": "not independently verified",
+      "data_flow": "no structured evidence exchange verified"
+    },
+    {
+      "name": "Codex",
+      "capabilities": [
+        "coding and repository agent"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch"
+    },
+    {
+      "name": "Hugging Face",
+      "capabilities": [
+        "model hosting and inference"
+      ],
+      "authentication": "no current deployment verified; prior BUILD_ERROR",
+      "permissions": "unverified",
+      "data_flow": "no model deployment or data transfer"
+    },
+    {
+      "name": "Kaggle",
+      "capabilities": [
+        "datasets and notebook evaluation"
+      ],
+      "authentication": "untested",
+      "permissions": "unverified",
+      "data_flow": "no submission"
+    },
+    {
+      "name": "Databricks",
+      "capabilities": [
+        "data engineering and ML"
+      ],
+      "authentication": "prior HTTP 403; no write verified",
+      "permissions": "unverified",
+      "data_flow": "no write or data transfer"
+    }
+  ],
+  "additional_provider": {
+    "name": "LunaRoute",
+    "is_one_of_nine": false,
+    "main_remote_mcp": "enabled",
+    "integration_remote_mcp": "disabled",
+    "endpoint_authentication": "unverified",
+    "external_data_transfer": "none verified"
+  },
+  "fallback": "Use local deterministic research and GitHub CI; no platform is treated as connected without tested authentication and observed data flow."
+}

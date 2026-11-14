@@ -1,11 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "lunaroute/glm-5.3-flash",
-  "providers": {
+  "provider": {
     "lunaroute": {
-      "package": "aisdk:@ai-sdk/openai-compatible",
+      "npm": "@ai-sdk/openai-compatible",
       "name": "LunaRoute",
-      "settings": {
+      "options": {
         "baseURL": "https://gw.lunaroute.com/v1",
         "apiKey": "{env:LUNAROUTE_API_KEY}"
       },
@@ -27,22 +27,32 @@
       "lunaroute": {
         "type": "remote",
         "url": "https://mcp.lunaroute.com/mcp",
+        "disabled": true,
+        "oauth": false,
         "headers": {
           "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
         }
       }
     }
   },
-  "agents": {
+  "agent": {
     "barrot": {
       "description": "Barrot - main agent",
       "model": "lunaroute/glm-5.3-flash",
-      "system": "You are Barrot. Speak as Barrot. Use LunaRoute MCP.",
-      "permissions": [
-        { "action": "edit", "resource": "*", "effect": "allow" },
-        { "action": "shell", "resource": "*", "effect": "allow" },
-        { "action": "webfetch", "resource": "*", "effect": "allow" }
-      ]
+      "prompt": "Use LunaRoute MCP only after it is explicitly enabled and authentication, tool permissions, and data-flow have been verified. Never claim a live connection without verification.",
+      "permission": {
+        "*": "ask",
+        "edit": "ask",
+        "bash": "ask",
+        "webfetch": "ask",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "skill": "allow",
+        "question": "allow"
+      }
     }
   }
 }

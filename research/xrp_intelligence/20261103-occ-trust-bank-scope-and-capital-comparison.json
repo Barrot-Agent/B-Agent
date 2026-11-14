@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "artifact_type": "trust_bank_scope_and_initial_capital_comparison",
+  "captured_on_utc_date": "2026-11-03",
+  "sources": [
+    {
+      "id": "S46",
+      "publisher": "OCC",
+      "title": "Ripple National Trust Bank preliminary conditional approval letter",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "published_on": "2025-12-12",
+      "type": "regulatory_decision_letter"
+    },
+    {
+      "id": "S47",
+      "publisher": "OCC",
+      "title": "First National Digital Currency Bank (Circle) preliminary conditional approval letter",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125a.pdf",
+      "published_on": "2025-12-12",
+      "type": "regulatory_decision_letter"
+    },
+    {
+      "id": "S48",
+      "publisher": "OCC",
+      "title": "Coinbase National Trust Company preliminary conditional approval, Corporate Decision 1370",
+      "url": "https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "published_on": "2026-04-02",
+      "type": "regulatory_decision_letter"
+    },
+    {
+      "id": "S49",
+      "publisher": "Federal Reserve Board",
+      "title": "Master Accounts and Services Database — about",
+      "url": "https://www.federalreserve.gov/paymentsystems/master-account-and-services-database-about.htm",
+      "data_as_of": "2026-08-31",
+      "type": "regulatory_database_methodology"
+    },
+    {
+      "id": "S40",
+      "publisher": "OCC",
+      "title": "Corporate Applications Search — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_on": "2026-11-03",
+      "type": "regulatory_application_status"
+    },
+    {
+      "id": "S41",
+      "publisher": "OCC",
+      "title": "Corporate Applications Search — First National Digital Currency Bank, N.A.",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_on": "2026-11-03",
+      "type": "regulatory_application_status"
+    },
+    {
+      "id": "S42",
+      "publisher": "OCC",
+      "title": "Corporate Applications Search — Coinbase National Trust Company",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_on": "2026-11-03",
+      "type": "regulatory_application_status"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Ripple National Trust Bank",
+      "owner": "Ripple Labs Inc.",
+      "regulatory_status": {
+        "initial_approval": "preliminary conditional approval 2025-12-12",
+        "cas_status": "Consummated/Effective 2026-10-26",
+        "operational_status": "actual commencement of client services not independently verified"
+      },
+      "scope": [
+        "manage segregated RLUSD reserves for Standard Custody & Trust Company",
+        "collateral trustee for RLUSD holders",
+        "fiduciary digital-asset custody for affiliates and unaffiliated institutional customers"
+      ],
+      "issuer_separation": "RLUSD continues to be issued by Standard Custody & Trust Company, LLC, a New York limited purpose trust company; the national trust bank does not issue the stablecoin.",
+      "initial_conditional_minimum_capital_usd": 11700000,
+      "initial_conditional_minimum_eligible_liquid_assets_usd": 5850000,
+      "additional_liquidity_requirement": "180 days of operating expenses in eligible liquid assets; cannot double-count assets used for the Tier 1 liquid-asset condition.",
+      "source_lines": {
+        "scope": [
+          27,
+          30
+        ],
+        "noninsured_and_limits": [
+          61,
+          77,
+          103,
+          119
+        ],
+        "capital": [
+          117,
+          122
+        ]
+      },
+      "board_and_leadership": [
+        "Jack McDonald — President/Chairman",
+        "John Zavaglia — Chief Operating & Trust Officer",
+        "Stuart Alderoty — Director",
+        "Timothy Keaney — Independent Director",
+        "David Puth — Independent Director"
+      ],
+      "leadership_source_lines": [
+        173,
+        183
+      ],
+      "evidence_limit": "Initial conditional approval conditions may be amended in the final approval; the retrieved CAS status confirms transaction effective date, not actual operating balances."
+    },
+    {
+      "name": "First National Digital Currency Bank, N.A.",
+      "owner": "Circle Internet Holdings, Inc. / Circle Internet Group, Inc.",
+      "regulatory_status": {
+        "initial_approval": "preliminary conditional approval 2025-12-12",
+        "cas_status": "Consummated/Effective 2026-07-24",
+        "operational_status": "actual commencement of client services not independently verified"
+      },
+      "scope": [
+        "manage reserves backing USDC issued by Circle's New York limited purpose trust company",
+        "collateral trustee for USDC holders",
+        "fiduciary digital-asset custody for affiliates"
+      ],
+      "issuer_separation": "The national trust bank does not issue USDC; issuance is planned through Circle's New York limited purpose trust company.",
+      "initial_conditional_minimum_capital_usd": 6050000,
+      "initial_conditional_minimum_eligible_liquid_assets_usd": 3025000,
+      "additional_liquidity_requirement": "180 days of operating expenses in eligible liquid assets; cannot double-count assets used for the Tier 1 liquid-asset condition.",
+      "source_lines": {
+        "scope": [
+          27,
+          33
+        ],
+        "noninsured_and_limits": [
+          60,
+          76,
+          103,
+          117
+        ],
+        "capital": [
+          115,
+          122
+        ]
+      },
+      "evidence_limit": "Initial conditional approval conditions may be amended in the final approval; the retrieved CAS status confirms transaction effective date, not actual operating balances."
+    },
+    {
+      "name": "Coinbase National Trust Company",
+      "owner": "Coinbase Global, Inc.",
+      "regulatory_status": {
+        "initial_approval": "preliminary conditional approval 2026-04-02",
+        "cas_status": "Approved 2026-04-02; no Consummated/Effective date shown in retrieved CAS detail",
+        "operational_status": "OCC charter commencement not established from the retrieved CAS record"
+      },
+      "scope": [
+        "fiduciary digital-asset custody primarily for institutional clients",
+        "accept, hold and transfer custodied fiat and digital assets only within customer custodial accounts",
+        "fiat custody balances held in for-benefit-of accounts at third-party banks",
+        "facilitate custody clients' access to affiliate staking, Prime Trading and Prime Financing as a finder; the bank itself does not provide those underlying affiliate services",
+        "migrate the existing New York-chartered Coinbase Custody Trust Company business over a three-year de novo period"
+      ],
+      "initial_conditional_minimum_capital_usd": 60000000,
+      "initial_conditional_minimum_eligible_liquid_assets_usd": 30000000,
+      "additional_liquidity_requirement": "180 days of operating expenses in eligible liquid assets; cannot double-count assets used for the Tier 1 liquid-asset condition.",
+      "source_lines": {
+        "scope": [
+          36,
+          68
+        ],
+        "third_party_fbo": [
+          74,
+          76
+        ],
+        "noninsured_and_limits": [
+          268,
+          274,
+          302,
+          313
+        ],
+        "capital": [
+          302,
+          325
+        ]
+      },
+      "board_and_leadership": [
+        "Rick Schonberg — CEO",
+        "Alesia Haas — CFO",
+        "Gregory Tusar — Director",
+        "Paul Grewal — Director",
+        "Dana Wagner — Independent Director",
+        "Brian Dong — Independent Director",
+        "Robert Easton — Independent Director"
+      ],
+      "leadership_source_lines": [
+        424,
+        480
+      ],
+      "evidence_limit": "Initial conditional approval conditions may be amended in a final approval; the retrieved CAS record has no effective date."
+    }
+  ],
+  "comparison": {
+    "commonalities": [
+      "All three are national trust-company charters, not ordinary full-service commercial-bank charters.",
+      "All three are non-insured depository institutions under the described approval conditions.",
+      "All three require OCC pre-opening compliance and supervisory review.",
+      "All three initial approval letters say the institution will apply for stock in a Federal Reserve Bank; this is not proof of a Federal Reserve master account or direct Fedwire access."
+    ],
+    "strategic_differences": [
+      "Ripple and Circle proposed stablecoin-reserve management and collateral-trustee models, with issuance remaining in separate New York limited-purpose trust entities.",
+      "Coinbase proposed a large institutional custody and customer-transaction model, with related access to affiliate staking, Prime Trading and Prime Financing; fiat custody uses third-party-bank FBO accounts.",
+      "Coinbase's initial minimum Tier 1 capital requirement is $60m, versus $11.7m for Ripple and $6.05m for Circle. These are initial regulatory minimums, not actual paid-in capital, total corporate capital or a direct measure of company strength."
+    ],
+    "xrp_scope": "None of the three retrieved OCC decision letters identifies XRP as a required reserve asset or as a specific charter-purpose asset. Ripple's letter centers on RLUSD; Circle's on USDC; Coinbase's on institutional digital-asset custody generally. XRP custody eligibility or actual usage requires separate evidence.",
+    "federal_reserve_access": "The Fed's master-account database is a separate source, current as of 2026-08-31. The OCC letters' requirement to apply for Federal Reserve Bank stock is not equivalent to a master account. No exact row for Ripple, Circle or Coinbase was verified in this run."
+  },
+  "evidence_classification": {
+    "confirmed_fact": [
+      "OCC letters define the initial proposed scope and capital conditions.",
+      "OCC CAS records Circle and Ripple as Consummated/Effective and Coinbase as Approved without a displayed effective date in the retrieved record."
+    ],
+    "inference": [
+      "The charters reflect distinct but overlapping competition for regulated custody, stablecoin reserve administration and institutional transaction infrastructure."
+    ],
+    "speculation": [
+      "Different minimum capital requirements may reflect differences in the proposed operating scope, scale, risk or OCC assessment; the documents do not establish the reason for the differences."
+    ],
+    "unknown": [
+      "Final-condition amendments after initial conditional approvals",
+      "Actual paid-in capital and eligible liquid assets at each trust bank",
+      "First live client, reserve-management or custody transactions",
+      "Actual XRP custody balances or collateral use",
+      "Whether any entity has direct Fed master-account access after 2026-08-31"
+    ]
+  },
+  "next_actions": [
+    "Obtain and compare final approval conditions for Ripple and Circle, not just their initial conditional letters.",
+    "Check the next Fed master-account database update and verify each entity by exact legal name and subsidiary identity.",
+    "Monitor Coinbase CAS for a Consummated/Effective date.",
+    "Compare actual assets under custody, reserve assets, USDC/RLUSD issuance, and client flows; do not substitute regulatory minimum capital for operating capital.",
+    "Use the SEC Hidden Road filing as a separate actual-net-capital case; do not mix its $518.602m regulatory net capital with trust-bank minimum capital."
+  ],
+  "safety": {
+    "public_regulatory_documents_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_action": true
+  }
+}

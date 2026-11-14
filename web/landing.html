@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barrot-Ω · XRP Signal Service</title>
-<meta name="description" content="Ternary XRP trading signals from multi-source perception: order book depth, sentiment, and price structure. $9.99/mo.">
+<title>Barrot-Ω · XRP Intelligence Research</title>
+<meta name="description" content="Evidence-first XRP market intelligence. Directional forecasts remain disabled until point-in-time data and leakage-safe out-of-sample evaluation pass.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -39,6 +39,7 @@ h1{font-size:clamp(32px,6vw,54px);font-weight:800;line-height:1.08;margin-bottom
 .cta{display:inline-block;background:var(--amber);color:var(--ink);font-weight:600;font-size:14px;letter-spacing:0.08em;padding:16px 34px;text-decoration:none}
 .cta:hover{filter:brightness(1.1)}
 .cta-note{display:block;margin-top:12px;font-size:12px;color:var(--dim)}
+.status-pill{display:inline-block;border:1px solid var(--amber);color:var(--amber);padding:6px 10px;font-size:10px;letter-spacing:.12em}
 .anchor{display:flex;align-items:center;gap:14px;padding:30px 0;color:var(--dim);font-size:11px;letter-spacing:0.14em}
 .anchor::before,.anchor::after{content:"";flex:1;height:1px;background:var(--line)}
 section{padding:48px 0}
@@ -78,125 +79,79 @@ footer strong{color:var(--text)}
 <header>
   <div class="wrap">
     <div class="logo">BARROT<span>-Ω</span></div>
-    <a class="cta-sm" href="https://prostarelite.gumroad.com/l/opvxi">SUBSCRIBE</a>
+    <span class="status-pill">FORECASTS: NOT ISSUED</span>
   </div>
 </header>
 <div class="hero">
   <div class="wrap">
-    <div class="eyebrow">AUTONOMOUS XRP SIGNAL SERVICE</div>
-    <h1>Every hour, XRP resolves to one of three states.</h1>
-    <p class="sub">Barrot-Ω reads order book depth, market sentiment, and price structure through multi-source perception — then outputs a single ternary decision. No noise, no charts to interpret. One state.</p>
-    <div class="ternary">
-      <div class="state sell"><span class="val">−1</span><span class="lbl">SELL</span></div>
-      <div class="state null"><span class="val">0</span><span class="lbl">NULL</span></div>
-      <div class="state buy"><span class="val">+1</span><span class="lbl">BUY</span></div>
+    <div class="eyebrow">XRP INTELLIGENCE / RESEARCH STATUS</div>
+    <h1>Evidence first. Forecasts only after validation.</h1>
+    <p class="sub">Barrot V3 remains the execution, orchestration, safety, and verification foundation. The XRP mission prioritizes reliable market intelligence, institutional evidence, and measured predictive performance.</p>
+    <div class="sample">
+      <span class="tag">PUBLIC FORECAST STATUS</span>
+      <pre>
+<span class="d">asset:</span>              XRP/USD
+<span class="d">status:</span>             NOT_ISSUED
+<span class="d">forecast_issued:</span>    false
+<span class="d">reason:</span>             out-of-sample validation incomplete</pre>
     </div>
-    <p class="ternary-cap">THE THREE SIGNAL STATES — 1.58-BIT TERNARY LOGIC</p>
-    <a class="cta" href="https://prostarelite.gumroad.com/l/opvxi">GET SIGNALS — $9.99/MO</a>
-    <span class="cta-note">Cancel anytime via Gumroad. Access within one hour of purchase.</span>
+    <p class="ternary-cap">Directional publication remains disabled until the evidence gate passes.</p>
   </div>
 </div>
-<div class="wrap"><div class="anchor">STABILITY ANCHOR · 0.707106781186548</div></div>
+<div class="wrap"><div class="anchor">XRP RESEARCH · PROVENANCE · POINT-IN-TIME EVALUATION</div></div>
 <section>
   <div class="wrap">
-    <h2>How the signal is built</h2>
+    <h2>Research and verification controls</h2>
     <div class="grid3">
       <div class="card">
-        <h3>Multi-source perception</h3>
-        <p>Order book depth, live price structure, and sentiment feeds are ingested in parallel. No single source can drive a decision alone.</p>
+        <h3>Source provenance</h3>
+        <p>Source identity, retrieval time, publisher event time, raw bytes, content hashes, and source independence are tracked separately. Missing evidence stays missing.</p>
       </div>
       <div class="card">
-        <h3>Ternary resolution</h3>
-        <p>All inputs collapse to one of three states: −1, 0, +1. When sources conflict, the system holds at NULL rather than forcing a call.</p>
+        <h3>Point-in-time features</h3>
+        <p>Features are admitted only when their source evidence was available by the declared cutoff. Corrections are append-only and cannot promote an ineligible observation.</p>
       </div>
       <div class="card">
-        <h3>Override protection</h3>
-        <p>A pre-anchor filter screens every decision before it publishes. Panic conditions resolve to NULL, not to a cascade.</p>
+        <h3>Forecast evaluation</h3>
+        <p>Chronological walk-forward tests must beat appropriate baselines and pass calibration and drift checks before any directional forecast can be published.</p>
       </div>
     </div>
   </div>
 </section>
 <section>
   <div class="wrap">
-    <h2>What a signal looks like</h2>
+    <h2>Forecast publication record</h2>
     <div class="sample">
-      <span class="tag">SAMPLE FORMAT</span>
+      <span class="tag">CURRENT PUBLIC STATUS</span>
       <pre>
-<span class="d">timestamp:</span>  2026-07-02T14:00:00Z
-<span class="d">asset:</span>      XRP/USD
-<span class="d">state:</span>      <span class="g">+1 BUY</span>
-<span class="d">confidence:</span> <span class="a">0.81</span>
-<span class="d">basis:</span>      bid-side depth 2.3x ask · sentiment positive
-            · price holding above structure</pre>
+<span class="d">asset:</span>              XRP/USD
+<span class="d">status:</span>             NOT_ISSUED
+<span class="d">data_cutoff_utc:</span>   null
+<span class="d">target:</span>            null
+<span class="d">horizon:</span>           null
+<span class="d">probabilities:</span>     null
+<span class="d">reason:</span>            out-of-sample validation incomplete</pre>
     </div>
   </div>
 </section>
-<section>
-  <div class="wrap">
-    <h2>How access works</h2>
-    <div class="steps">
-      <div class="step"><span><b>Subscribe on Gumroad</b> with the email you'll use for access.</span></div>
-      <div class="step"><span><b>Automatic sync.</b> Your email is verified into the subscriber list within one hour — no manual step.</span></div>
-      <div class="step"><span><b>Open the signals page</b> and enter your email. That's it. Signals update continuously while you're subscribed.</span></div>
-    </div>
-  </div>
-</section>
-<section>
-  <div class="wrap">
-    <div class="price-card">
-      <div class="price">$9.99<small>/month</small></div>
-      <ul>
-        <li>Live ternary XRP signals</li>
-        <li>Confidence score + plain-language basis per signal</li>
-        <li>Order book + sentiment analysis, fused</li>
-        <li>Cancel anytime, no lock-in</li>
-      </ul>
-      <a class="cta" href="https://prostarelite.gumroad.com/l/opvxi">SUBSCRIBE NOW</a>
-    </div>
-  </div>
-</section>
+
+
 <footer>
   <div class="wrap">
-    <strong>Disclaimer:</strong> Barrot-Ω signals are algorithmic outputs provided for informational purposes only. They are not financial, investment, or trading advice. Cryptocurrency markets are volatile; you can lose money. Past signal performance does not guarantee future results. Trade only with capital you can afford to lose.<br><br>
+    <strong>Status:</strong> No directional XRP forecast is currently issued. Legacy performance metrics are unvalidated and are not predictive accuracy. Research only; not financial, investment, or trading advice.<br><br>
     © 2026 Barrot-Ω · <a href="article.html" style="color:var(--dim)">Read the XRP analysis</a>
   </div>
 </footer>
 <section id="research-basis">
-  <h2>Research Basis</h2>
-  <p>
-    This service isn't built on hunches. The two ideas behind it — that cross-border
-    settlement efficiency matters, and that news/sentiment signals carry real predictive
-    information — are both active areas of peer-reviewed academic research.
-  </p>
-
-  <h3>Settlement efficiency</h3>
-  <p>
-    Academic case studies comparing blockchain-based settlement models (including Ripple's)
-    against traditional cross-border payment rails have found measurably lower time and
-    capital costs, alongside greater transparency, versus legacy correspondent banking.
-    Network-topology research has independently studied the structure of real Ripple
-    transaction data. Separately, liquidity research places XRP in a distinct liquidity
-    cluster alongside Bitcoin and Litecoin, identifying it as a leading contributor to
-    short-run liquidity dynamics in that group.
-  </p>
-
-  <h3>Sentiment and news-driven signals</h3>
-  <p>
-    Published research on cryptocurrency sentiment has consistently found real predictive
-    power for future returns — with one key condition: it only works when sentiment is
-    measured with a domain-specific methodology, not generic scoring. Studies analyzing
-    Twitter sentiment across major cryptocurrencies (XRP included) found genuine predictive
-    power for several of them. The Crypto Fear and Greed Index has separately been shown to
-    Granger-predict returns for major coins, with a stable long-term relationship between
-    sentiment and price.
-  </p>
-
-  <p class="disclaimer">
-    This section summarizes published academic findings for informational purposes and does
-    not constitute financial advice. Cryptocurrency markets are volatile and speculative.
-    Signals derived from sentiment or research context are one input among many and carry no
-    guarantee of future performance.
-  </p>
+  <div class="wrap">
+    <h2>Research Basis and Limits</h2>
+    <p>Published work can inform research design, but academic findings do not validate Barrot forecasts or establish that a particular XRP feature predicts returns in a new period.</p>
+    <h3>Settlement and payment rails</h3>
+    <p>Settlement efficiency, liquidity usage, custody, and payment throughput are separate measurements. Greater XRPL or stablecoin activity does not by itself establish incremental XRP purchases, collateral demand, or token price impact.</p>
+    <h3>Sentiment and market prediction</h3>
+    <p>Published sentiment studies are asset-, sample-, and horizon-dependent. They are candidate explanatory evidence, not a substitute for synchronized point-in-time observations and leakage-safe out-of-sample tests against naive, momentum, mean-reversion, and volatility baselines.</p>
+    <p class="disclaimer">No directional XRP forecast is currently issued. Research context and legacy sentiment scores are not predictive-performance evidence. This page is informational and is not financial, investment, or trading advice.</p>
+  </div>
 </section>
 
 <script>
@@ -213,24 +168,25 @@ footer strong{color:var(--text)}
 
   mcp.registerTool({
     name: "getLatestXRPSignal",
-    title: "Latest XRP Signal",
-    description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
-    inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    title: "XRP Forecast Publication Status",
+    description: "Return the current XRP forecast-publication status. This tool does not provide a directional forecast while validation is incomplete.",
+    inputSchema: { type: "object", properties: {} },
     annotations: { readOnlyHint: true },
-    execute: async function(args) {
-      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
-      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getLatestXRPSignal');
-      var res = await fetch("latest_signal.json");
-      if (!res.ok) return { error: "signal_unavailable" };
-      return await res.json();
+    execute: async function() {
+      return {
+        status: "NOT_ISSUED",
+        forecast_issued: false,
+        forecast_eligible: false,
+        reason_code: "VALIDATED_FIXED_HORIZON_FORECAST_NOT_AVAILABLE",
+        message: "No directional XRP forecast is published. Sentiment features and legacy scores are not forecasts."
+      };
     }
   });
 
   mcp.registerTool({
     name: "getResearchBasis",
     title: "Research Basis",
-    description: "Get the peer-reviewed academic citations backing Barrot's XRP signal methodology, covering cross-border settlement efficiency and sentiment-prediction research.",
+    description: "Return background academic references for research design. These publications do not validate Barrot predictive performance or establish an XRP trading edge.",
     inputSchema: { type: "object", properties: {} },
     annotations: { readOnlyHint: true },
     execute: async function() {
@@ -251,27 +207,38 @@ footer strong{color:var(--text)}
 
   mcp.registerTool({
     name: "subscribeToXRPSignals",
-    title: "Subscribe to XRP Signals",
-    description: "Open the checkout page to subscribe to Barrot's XRP signal service.",
+    title: "XRP Signal Subscription Status",
+    description: "New directional XRP signal subscriptions are paused pending validated fixed-horizon out-of-sample performance.",
     inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
     execute: async function() {
-      window.open("https://prostarelite.gumroad.com/l/opvxi", "_blank");
-      return { opened: true, url: "https://prostarelite.gumroad.com/l/opvxi" };
+      return {
+        status: "PAUSED_PENDING_VALIDATION",
+        checkout_available: false,
+        reason_code: "OUT_OF_SAMPLE_VALIDATION_INCOMPLETE"
+      };
     }
   });
   mcp.registerTool({
     name: "getSignalAccuracy",
-    title: "Signal Accuracy Record",
-    description: "Get the tracked accuracy record: how often past XRP signals were directionally correct against real price movement.",
-    inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    title: "Legacy Metric Evaluation Status",
+    description: "Return the status of the historical legacy metric. Its reported percentage is unvalidated variable-horizon history, not predictive accuracy.",
+    inputSchema: { type: "object", properties: {} },
     annotations: { readOnlyHint: true },
-    execute: async function(args) {
-      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
-      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getSignalAccuracy');
+    execute: async function() {
       var res = await fetch("signal_accuracy.json");
-      if (!res.ok) return { error: "accuracy_unavailable" };
-      return await res.json();
+      if (!res.ok) return { status: "NOT_EVALUATED", forecast_eligible: false, accuracy_pct: null, reason_code: "STATUS_UNAVAILABLE" };
+      var data = await res.json();
+      return {
+        status: data.status || "NOT_EVALUATED",
+        forecast_eligible: false,
+        metric: data.metric || "fixed_horizon_out_of_sample_predictive_accuracy",
+        accuracy_pct: null,
+        checked_count: null,
+        correct_count: null,
+        reason_code: data.reason_code || "LEGACY_VARIABLE_HORIZON_SCORER_INVALID",
+        explanation: data.explanation || "No validated fixed-horizon out-of-sample accuracy is available."
+      };
     }
   });
   mcp.registerTool({
@@ -279,7 +246,7 @@ footer strong{color:var(--text)}
     title: "Latest BTC Signal",
     description: "Fetch Barrot's latest Bitcoin market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -294,7 +261,7 @@ footer strong{color:var(--text)}
     title: "Entity Co-occurrence",
     description: "Get pairs of named entities that frequently appear together in the same XRP/BTC news items, with example headlines.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -309,7 +276,7 @@ footer strong{color:var(--text)}
     title: "Sentiment Shift Detector",
     description: "Get the 24h vs prior-24h sentiment shift for XRP and BTC, flagged if the shift is significant.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -324,7 +291,7 @@ footer strong{color:var(--text)}
     title: "Entity Sentiment Profile",
     description: "Get the aggregated sentiment profile (bullish/bearish/neutral counts, net score) for named entities seen across XRP/BTC news.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -339,7 +306,7 @@ footer strong{color:var(--text)}
     title: "WebMCP Trend Digest",
     description: "Get a ranked digest of candidate future WebMCP tool ideas, surfaced from real public developer discourse (news, announcements) about WebMCP and agentic browsing - not invented predictions.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -352,9 +319,9 @@ footer strong{color:var(--text)}
   mcp.registerTool({
     name: "getBarrotBenchmark",
     title: "Barrot Self-Benchmark History",
-    description: "Get Barrot's real, machine-graded coding-task benchmark history (generated code executed against real assertions, not self-reported). Includes every run, including failures. Measures coding-benchmark performance, not trading signal accuracy - see getSignalAccuracy for that.",
+    description: "Get Barrot's real, machine-graded coding-task benchmark history (generated code executed against real assertions, not self-reported). Includes every run, including failures. Measures coding-benchmark performance only; it says nothing about XRP forecast performance.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -369,7 +336,7 @@ footer strong{color:var(--text)}
     title: "Barrot Self-Audit Summary",
     description: "Get the latest real static-analysis audit of Barrot's own codebase (apex_lattice), run weekly. Counts of real findings/recommendations only, not full detail. No PRs are opened by this process.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -384,7 +351,7 @@ footer strong{color:var(--text)}
     title: "WebMCP Monetization Signals",
     description: "Get real GitHub and npm market-validation signals for candidate future WebMCP tools - existing similar open-source projects and their real traction (stars, forks, package popularity), not just discourse volume. Helps assess whether a candidate tool idea already has real-world validation before building it.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
@@ -399,7 +366,7 @@ footer strong{color:var(--text)}
     title: "Financial Literacy Reference Data",
     description: "Get real, current IRS retirement account contribution limits (401k, IRA, SIMPLE, catch-up amounts) - automatically refreshed monthly from the IRS's own official evergreen COLA reference page, not static or training-data figures. Includes a raw source excerpt for verification and the source URL.",
     inputSchema: { type: "object", properties: {
-        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+        license_key: { type: "string", description: "existing license key for legacy research tools" },} },
     annotations: { readOnlyHint: true },
     execute: async function(args) {
       const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);

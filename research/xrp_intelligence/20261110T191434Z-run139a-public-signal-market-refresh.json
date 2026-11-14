@@ -1,0 +1,148 @@
+{
+  "artifact_type": "xrp_public_signal_safety_and_late_market_refresh",
+  "schema_version": "1.0.0",
+  "run_id": "139A",
+  "captured_at_utc": "2026-11-10T19:14:34.744Z",
+  "repository": {
+    "main_sha": "e35f3d16b842d0f75847dd4bb0b51531f38c5f38",
+    "integration_branch": "integration/xrp-v3-unified-main-20261110",
+    "integration_head_before_addendum": "7887781fae4bba90b51fff86d59be7e5a8f79457",
+    "integration_pr": 1660
+  },
+  "late_spot_refresh": {
+    "retrieved_at_utc": "2026-11-10T19:14:34.744Z",
+    "observations": [
+      {
+        "source": "OKX public REST ticker",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "market_type": "spot",
+        "provider_event_time_utc": "2026-11-10T19:12:35.472Z",
+        "age_at_retrieval_seconds": 119.272,
+        "surfaced_json_text_sha256": "5af35625a3d1bf1da731949379ead40dd3c57add5b49845b189d8adc3d3f3ccc",
+        "raw_transport_bytes_preserved": false,
+        "raw_headers_preserved": false,
+        "last_usdt": 1.0697,
+        "bid_usdt": 1.0698,
+        "ask_usdt": 1.0699,
+        "spread_bps": 0.93471,
+        "open_24h_usdt": 1.0909,
+        "high_24h_usdt": 1.1073,
+        "low_24h_usdt": 1.0311,
+        "volume_24h_xrp": 76449559.233054,
+        "return_24h_pct": -1.94335
+      },
+      {
+        "source": "Kraken public REST ticker",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "market_type": "spot",
+        "retrievals_utc": [
+          "2026-11-10T19:04:24Z",
+          "2026-11-10T19:12:35Z"
+        ],
+        "provider_event_time": null,
+        "surfaced_json_text_sha256": "c6b20b1142ab01b01e6d39b83c55efcc8e6abb08173049f3bd7feae01d058458",
+        "observation": "The surfaced JSON response was byte-for-byte identical at both retrievals, including last price, volume and trade counts.",
+        "classification": "CACHE_OR_STALE_RESPONSE_SUSPECTED",
+        "model_eligible": false,
+        "note": "Do not treat unchanged payload as an independently refreshed second observation."
+      },
+      {
+        "source": "Kraken public REST ticker",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "market_type": "spot_fx_reference",
+        "retrievals_utc": [
+          "2026-11-10T19:04:24Z",
+          "2026-11-10T19:12:35Z"
+        ],
+        "provider_event_time": null,
+        "surfaced_json_text_sha256": "f290f86a1d87a795fc48a3d4b29cd06da460397cf6f1aa8778d6784cb150d326",
+        "observation": "The surfaced JSON response was byte-for-byte identical at both retrievals.",
+        "classification": "CACHE_OR_STALE_RESPONSE_SUSPECTED",
+        "model_eligible": false
+      }
+    ],
+    "derived": {
+      "okx_24h_return_pct": -1.94335,
+      "normalized_okx_usd_basis": "NOT_COMPUTED; the Kraken USDT/USD response repeated unchanged and is suspected cached/stale.",
+      "synchronized_spot_consensus": "NOT_ESTABLISHED",
+      "spot_l2": "NO_SYNCHRONIZED_CURRENT_SPOT_L2",
+      "directional_interpretation": "NONE"
+    }
+  },
+  "public_signal_safety": {
+    "main": {
+      "latest_signal_blob_sha": "1e1d5d9867fd0fe87a140c04c3361e19884eb1cf",
+      "latest_signal_timestamp_utc": "2026-10-29T13:23:33.142057Z",
+      "sentiment_score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_status": "GitHub model credentials missing; Groq returned HTTP 429; news-only fallback.",
+      "landing_title": "Barrot-Ω · XRP Signal Service",
+      "landing_description": "Ternary XRP trading signals ... $9.99/mo.",
+      "classification": "STALE_PUBLIC_SIGNAL_AND_MARKETING_COPY; not a valid forecast."
+    },
+    "integration": {
+      "latest_signal_blob_sha": "8817cc11f237a3c675e9ddfd1280106c9565bcc2",
+      "status": "NOT_ISSUED",
+      "forecast_issued": false,
+      "reason_code": "OUT_OF_SAMPLE_VALIDATION_INCOMPLETE",
+      "data_cutoff_utc": null,
+      "probabilities": null,
+      "legacy_observation_status": "STALE_DESCRIPTIVE_ONLY",
+      "legacy_forecast_eligible": false,
+      "landing_title": "Barrot-Ω · XRP Intelligence Research",
+      "landing_description": "Evidence-first XRP market intelligence; directional forecasts disabled until point-in-time data and leakage-safe OOS evaluation pass."
+    },
+    "publication_risk": "The changed web assets are in PR #1660. A main push previously triggered GitHub Pages deployment. Do not merge/publish until specific publication authorization is established."
+  },
+  "exact_head_ci": {
+    "head": "7887781fae4bba90b51fff86d59be7e5a8f79457",
+    "full_suite": {
+      "run_id": 42882824671,
+      "job_id": 130063283710,
+      "passed": 3363,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_pct": 59.58,
+      "conclusion": "success"
+    },
+    "core_suite": {
+      "run_id": 42882824671,
+      "job_id": 130063283148,
+      "passed": 697,
+      "failed": 0,
+      "subtests_passed": 8,
+      "conclusion": "success"
+    },
+    "wheel": {
+      "built": true,
+      "installed": true,
+      "verified": [
+        "Barrot V3",
+        "primary XRP mission",
+        "canonical data assets"
+      ]
+    },
+    "dependency_audit": {
+      "run_id": 42882833867,
+      "manifests_passed": 6,
+      "known_vulnerabilities": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 42882833966,
+      "conclusion": "success",
+      "automatic_merge_disabled": true
+    }
+  },
+  "decision": {
+    "forecast_status": "NOT_ISSUED",
+    "merge": "BLOCKED",
+    "main_write": false,
+    "public_deployment": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "next_priority": "Keep stale public signal quarantined on main; obtain authorization for the safe NOT_ISSUED research landing page publication, then proceed through normal review/protection gates."
+  }
+}

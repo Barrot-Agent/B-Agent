@@ -1,0 +1,355 @@
+{
+  "schema_version": "barrot.xrp.institutional-rail-reconciliation.v1",
+  "artifact_id": "run96-coinbase-circle-ripple-sbi-payment-rail-reconciliation",
+  "captured_at_utc": "2026-11-13T15:03:22.008Z",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "integration_head_before_artifact_commit": "9dd4944c6e45e8f7cc0a60b0db159fe75edfc105",
+  "model_eligible": false,
+  "raw_capture_status": "primary_source_web_extract_no_byte_complete_receipts",
+  "forecast_status": "NOT_ISSUED",
+  "source_observations": [
+    {
+      "source_id": "coinbase_q3_2026_results",
+      "source_uri": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "source_type": "issuer_financial_results",
+      "publication_date": "2026-10-29",
+      "source_data_cutoff": "2026-09-30",
+      "independence_group": "coinbase_issuer_disclosure",
+      "extracted_values": {
+        "average_usdc_held_in_coinbase_products_q3_usd": 22000000000,
+        "year_over_year_change_pct": 49,
+        "share_of_average_usdc_market_cap_reported_pct": 30,
+        "share_of_usdc_economics_captured_by_coinbase_over_prior_year_pct": 50,
+        "crypto_trading_volume_market_share_q3_pct": 10.7,
+        "net_income_q3_usd": 719000000,
+        "adjusted_ebitda_q3_usd": 333000000
+      },
+      "interpretation": "Coinbase is a major USDC distribution and economic intermediary. The approximately 50% USDC-economics statement is Coinbase's own description of revenue economics, not an equity ownership percentage or a direct XRP flow.",
+      "limitations": [
+        "Average Coinbase product balances are a stock measure, not new Q3 capital inflows.",
+        "The USDC economics share is issuer-reported and does not identify every underlying revenue component."
+      ]
+    },
+    {
+      "source_id": "coinbase_rlusd_listing",
+      "source_uri": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_type": "issuer_product_announcement",
+      "publication_date": "2026-10-28",
+      "source_data_cutoff": "2026-10-28",
+      "independence_group": "coinbase_issuer_announcement",
+      "extracted_values": {
+        "supported_products": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase retail app"
+        ],
+        "supported_networks": [
+          "XRP Ledger",
+          "Base",
+          "Ethereum"
+        ],
+        "usd_conversion_ratio": 1,
+        "supported_regions": "supported regions",
+        "ripple_base_liquidity_support": true,
+        "coinbase_global_exchange_collateral_status": "planned_not_live_at_launch"
+      },
+      "interpretation": "This establishes a direct Coinbase-Ripple RLUSD distribution and liquidity relationship. It does not establish XRP as the bridge asset for RLUSD transfers or RLUSD as already-accepted collateral on Coinbase Global Exchange.",
+      "limitations": [
+        "Availability is region-dependent.",
+        "Coinbase said Global Exchange collateral support would follow; do not record it as live on October 28."
+      ]
+    },
+    {
+      "source_id": "pnc_coinbase_usdc_incoming_payments",
+      "source_uri": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+      "source_type": "bank_issuer_product_announcement",
+      "publication_date": "2026-11-09",
+      "source_data_cutoff": "2026-11-09",
+      "independence_group": "pnc_issuer_announcement",
+      "extracted_values": {
+        "stablecoin": "USDC",
+        "blockchain": "Ethereum",
+        "infrastructure_provider": "Coinbase Payment products",
+        "automatic_conversion_to_usd": true,
+        "conversion_ratio": 1,
+        "destination": "designated PNC USD deposit account",
+        "program_status": "limited_pilot",
+        "disclosed_payment_volume_usd": null
+      },
+      "interpretation": "A direct PNC-Coinbase payment rail using Circle-issued USDC. The disclosed route is Ethereum-to-bank-deposit; no XRP or XRPL route is identified.",
+      "limitations": [
+        "Limited pilot; no payment volume or client count disclosed.",
+        "No inference about XRP bridge demand."
+      ]
+    },
+    {
+      "source_id": "circle_usdc_current_supply_and_networks",
+      "source_uri": "https://www.circle.com/usdc",
+      "source_type": "issuer_supply_and_network_disclosure",
+      "publication_date": "current_page_retrieved_2026-11-13",
+      "source_data_cutoff": "2026-11-09",
+      "independence_group": "circle_issuer_disclosure",
+      "extracted_values": {
+        "usdc_circulation_usd": 68900000000,
+        "natively_issued_blockchains": 38,
+        "xrpl_included": true,
+        "reserve_claim": "100% backed by highly liquid cash and cash-equivalent assets",
+        "monthly_attestation_claim": true
+      },
+      "interpretation": "Circle confirms native USDC issuance on XRPL. This supports a stablecoin rail on XRPL, but not a conclusion that USDC transfers use XRP as a bridge asset or create material XRP spot purchases.",
+      "limitations": [
+        "Reserve backing statements are issuer disclosures; consult the relevant dated attestation for point-in-time verification.",
+        "Circulation is outstanding supply, not daily payment volume or XRP capital inflow."
+      ]
+    },
+    {
+      "source_id": "circle_arc_mainnet_launch",
+      "source_uri": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "source_type": "issuer_network_launch_announcement",
+      "publication_date": "2026-09-16",
+      "source_data_cutoff": "2026-09-16",
+      "independence_group": "circle_issuer_announcement",
+      "extracted_values": {
+        "launch_status": "public_mainnet",
+        "day_one_institutional_and_ecosystem_builders": 100,
+        "founding_validator_institutions": [
+          "BlackRock",
+          "DTCC",
+          "Galaxy",
+          "ICE",
+          "Mastercard",
+          "MoneyGram",
+          "SBI Group",
+          "Standard Chartered",
+          "Sumitomo Corporation",
+          "Visa",
+          "Worldpay"
+        ],
+        "gas_asset": "USDC",
+        "native_circle_payments_network_integration": true,
+        "stablefx_24_7_fx_settlement": true,
+        "validator_model": "permissioned validator cohort",
+        "usdc_circulation_claim_at_launch_usd": 74000000000
+      },
+      "interpretation": "Arc is a material alternative institutional stablecoin and payments rail. Circle's choice of USDC gas, permissioned validators, CPN integration and SBI Group validator participation creates an institutional network distinct from XRPL.",
+      "limitations": [
+        "The announcement reports more than $74B USDC circulation at launch; compare with the Circle page's $68.9B on Nov 9 only as two dated issuer snapshots, not a verified redemption-flow series.",
+        "Launch claims and validator participation do not establish transaction volume or XRP demand."
+      ]
+    },
+    {
+      "source_id": "aci_circle_colombia_usdc_pilot",
+      "source_uri": "https://investor.circle.com/news/news-details/2026/ACI-Worldwide-and-Circle-Collaborate-to-Bring-USDC-Settlement-to-Existing-Payments-Infrastructure-in-Latin-America/default.aspx",
+      "source_type": "joint_partner_announcement",
+      "publication_date": "2026-10-27",
+      "source_data_cutoff": "2026-10-27",
+      "independence_group": "circle_aci_joint_announcement",
+      "extracted_values": {
+        "geography": "Colombia",
+        "orchestration_provider": "ACI Connetic",
+        "stablecoin": "USDC",
+        "existing_rail_context": "Bre-B interoperable instant payments",
+        "program_status": "pilot and evaluation",
+        "disclosed_transaction_volume": null
+      },
+      "interpretation": "USDC settlement is being explored alongside existing Colombian payment infrastructure. The announcement does not identify XRP or XRPL as the settlement asset or network."
+    },
+    {
+      "source_id": "volante_circle_usdc_multirail",
+      "source_uri": "https://investor.circle.com/news/news-details/2026/Volante-Technologies-and-Circle-advance-stablecoin-payment-and-settlement-capabilities-for-financial-institutions/default.aspx",
+      "source_type": "joint_partner_announcement",
+      "publication_date": "2026-09-28",
+      "source_data_cutoff": "2026-09-28",
+      "independence_group": "circle_volante_joint_announcement",
+      "extracted_values": {
+        "stablecoin": "USDC",
+        "payment_architecture": "existing multi-rail payments infrastructure",
+        "workflows": [
+          "minting",
+          "redemption",
+          "beneficiary wallet registration",
+          "funding",
+          "notifications",
+          "wallet-to-wallet execution"
+        ],
+        "participating_client_reach_claim": "four of five largest global corporate banks and seven of ten largest US banks",
+        "program_status": "evaluation and integration",
+        "disclosed_transaction_volume": null
+      },
+      "interpretation": "A distribution and integration path for USDC inside established bank payment operations; not evidence of XRP use."
+    },
+    {
+      "source_id": "binance_circle_equity_and_distribution",
+      "source_uri": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "source_type": "joint_partner_and_equity_announcement",
+      "publication_date": "2026-09-22",
+      "source_data_cutoff": "2026-09-22",
+      "independence_group": "circle_binance_joint_announcement",
+      "extracted_values": {
+        "strategic_equity_investment_usd": 100000000,
+        "commercial_agreement_years": 5,
+        "objective": "promote and expand USDC access, especially in emerging markets",
+        "share_lockup_up_to_years": 2
+      },
+      "interpretation": "This is an announced equity investment into Circle plus a five-year USDC distribution agreement. It is actual capital into Circle, not XRP."
+    }
+  ],
+  "dated_supply_reconciliation": {
+    "earlier_circle_statement": {
+      "date": "2026-09-16",
+      "usdc_circulation_usd": "more than 74000000000"
+    },
+    "later_circle_page": {
+      "date": "2026-11-09",
+      "usdc_circulation_usd": 68900000000
+    },
+    "apparent_difference_usd": "at least 5100000000",
+    "status": "unresolved_dated_issuer_snapshot_difference",
+    "permitted_inference": "The two issuer snapshots show a lower later reported circulation figure.",
+    "prohibited_inference": "Do not call the difference confirmed net redemptions, end-user capital outflow, or XRP flow without a reconciled daily supply series and issuer mint/burn records."
+  },
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relationship": "USDC distribution and revenue economics",
+      "evidence": [
+        "Q3 average USDC held in Coinbase products: $22B",
+        "Coinbase reports capturing approximately 50% of USDC economics over the prior year"
+      ],
+      "status": "primary_source_supported"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relationship": "RLUSD listing, trading and custody distribution across XRPL, Base and Ethereum",
+      "evidence": [
+        "RLUSD available on Prime, Exchange and retail app in supported regions",
+        "Coinbase Global Exchange collateral support was future at launch",
+        "Ripple provides liquidity on Base"
+      ],
+      "status": "primary_source_supported"
+    },
+    {
+      "from": "PNC",
+      "to": "Coinbase",
+      "relationship": "USDC incoming payment infrastructure for corporate and institutional clients",
+      "evidence": [
+        "Coinbase Payment products power the pilot",
+        "USDC received on Ethereum and converted 1:1 to PNC USD deposits"
+      ],
+      "status": "primary_source_supported_limited_pilot"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relationship": "Native USDC issuance",
+      "evidence": [
+        "Circle lists XRPL among 38 native USDC networks"
+      ],
+      "status": "primary_source_supported"
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Group",
+      "relationship": "Arc founding validator and prior USDC distribution relationship",
+      "evidence": [
+        "Arc founding validator cohort includes SBI Group"
+      ],
+      "status": "primary_source_supported_cross_reference_run94"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Ripple",
+      "relationship": "Existing ownership, distribution and RLUSD relationships",
+      "evidence": [
+        "See Run94 institutional relationship reconciliation"
+      ],
+      "status": "primary_source_supported_cross_reference_run94"
+    },
+    {
+      "from": "Circle",
+      "to": "ACI Worldwide",
+      "relationship": "USDC settlement integration pilot in Colombia",
+      "status": "primary_source_supported_pilot"
+    },
+    {
+      "from": "Circle",
+      "to": "Volante Technologies",
+      "relationship": "USDC workflow integration into multi-rail bank payments",
+      "status": "primary_source_supported_evaluation"
+    },
+    {
+      "from": "Binance",
+      "to": "Circle",
+      "relationship": "$100M equity investment and five-year USDC commercial agreement",
+      "status": "primary_source_supported"
+    }
+  ],
+  "xrp_implications": [
+    "RLUSD and USDC native issuance on XRPL can increase stablecoin utility and XRPL transaction activity, but stablecoin transfers do not automatically use XRP as the bridge asset.",
+    "XRP remains the XRPL fee asset, but fee usage alone does not establish material XRP market-buy demand; measure actual ledger fee burn, account reserves and DEX/AMM liquidity separately.",
+    "PNC's announced USDC pilot is on Ethereum, not XRPL.",
+    "Circle Arc is a distinct institutional rail using USDC for gas and a permissioned validator cohort; it is a competitive alternative for some settlement use cases.",
+    "SBI Group's participation in both Circle/Arc and Ripple/RLUSD is strategic multi-rail exposure, not proof of a single joint venture or coordinated XRP buying.",
+    "No disclosed payment volumes, actual XRP purchases, XRP bridge volumes or direct XRP capital inflows were established by these announcements."
+  ],
+  "hypotheses": [
+    {
+      "id": "H96-1",
+      "hypothesis": "Coinbase is a central distribution and economics layer for Circle USDC while also opening distribution for Ripple RLUSD.",
+      "supporting_evidence": [
+        "Coinbase reports $22B average USDC held in products in Q3 2026 and approximately 50% of USDC economics captured over the prior year.",
+        "Coinbase announced RLUSD support across Prime, Exchange and retail app."
+      ],
+      "disconfirming_evidence": [
+        "The USDC economics share is issuer-reported; RLUSD collateral on Coinbase Global Exchange was not live at launch.",
+        "No XRP bridge volume or XRP purchase evidence is disclosed."
+      ],
+      "status": "strong_distribution_relationship_not_xrp_flow"
+    },
+    {
+      "id": "H96-2",
+      "hypothesis": "SBI Group is pursuing a multi-rail strategy across Ripple/RLUSD and Circle/USDC/Arc.",
+      "supporting_evidence": [
+        "SBI Group is named in Arc's founding validator cohort.",
+        "Run94 documents SBI's Ripple ownership/distribution and Circle investment relationships."
+      ],
+      "disconfirming_evidence": [
+        "Participation in separate networks does not establish joint strategy, exclusive routing or XRP demand."
+      ],
+      "status": "supported_multi_rail_presence_not_coordinated_xrp_flow"
+    },
+    {
+      "id": "H96-3",
+      "hypothesis": "Circle Arc may compete with XRPL for some institutional stablecoin settlement use cases.",
+      "supporting_evidence": [
+        "Arc launched with USDC gas, Circle Payments Network integration, StableFX and a permissioned validator cohort including major financial institutions."
+      ],
+      "disconfirming_evidence": [
+        "No comparative transaction volumes, institutional routing decisions or substitution rates were disclosed."
+      ],
+      "status": "strategic_competitive_hypothesis"
+    },
+    {
+      "id": "H96-4",
+      "hypothesis": "USDC circulation contracted between Circle's Sep 16 and Nov 9 issuer snapshots.",
+      "supporting_evidence": [
+        "Circle reported more than $74B at Arc launch and $68.9B on Nov 9."
+      ],
+      "disconfirming_evidence": [
+        "The two figures are dated issuer statements, not a reconciled daily supply or mint/burn ledger."
+      ],
+      "status": "unresolved_supply_reconciliation"
+    }
+  ],
+  "model_admission": {
+    "eligible_observations": 0,
+    "reasons": [
+      "Primary-source web extracts are not byte-complete raw publisher receipts.",
+      "Company announcements establish product availability and commercial relationships, not transaction volume.",
+      "No disclosed XRP bridge volume, XRP spot purchase, or XRP collateral usage was verified.",
+      "USDC supply snapshots require a daily mint/burn reconciliation before use as capital-flow features."
+    ]
+  }
+}

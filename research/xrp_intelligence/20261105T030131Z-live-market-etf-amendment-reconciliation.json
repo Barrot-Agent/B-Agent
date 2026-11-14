@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_live_market_etf_amendment_reconciliation",
+  "artifact_id": "20261105T030131Z-live-market-etf-amendment-reconciliation",
+  "captured_at_utc": "2026-11-05T03:01:31Z",
+  "data_cutoff_utc": "2026-11-05T03:01:31Z",
+  "mission_priority": 1,
+  "model_eligible": false,
+  "eligibility_status": "MODEL_INELIGIBLE_WEB_RENDERED_EXTRACTS",
+  "forecast_issued": false,
+  "paper_trade_executed": false,
+  "source_capture_policy": {
+    "status": "rendered_web_extracts_only",
+    "raw_http_bytes_captured": false,
+    "independent_timestamp_anchor": false,
+    "rendered_hashes_are_not_raw_source_hashes": true,
+    "admission_rule": "Do not use these observations as model features until original source bytes, byte-complete SHA-256 receipts, source timestamps and independent capture anchors are obtained."
+  },
+  "source_registry": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "exchange_public_api",
+      "independence_group": "kraken_exchange",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_extract_sha256": "50c89839ddeb3330a7c1fb822eea095a517c6f57bfe8aa6ab0b1b40bf0e8db70",
+      "rendered_payload_excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.30545000\",\"192\",\"192.000\"],\"b\":[\"1.30542000\",\"3417\",\"3417.000\"],\"c\":[\"1.30546000\",\"22.80177696\"],\"v\":[\"1040845.81001392\",\"33293522.99999833\"],\"p\":[\"1.30427308\",\"1.30410513\"],\"t\":[2375,32146],\"l\":[\"1.29590000\",\"1.24016000\"],\"h\":[\"1.30957000\",\"1.34000000\"],\"o\":\"1.30410000\"}}}",
+      "source_timestamp_note": "The returned ticker body contains no exchange/server timestamp. Retrieval time is not an exchange event timestamp."
+    },
+    {
+      "source_id": "binance_xrpusdt_premium_index",
+      "source_uri": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_type": "exchange_public_api",
+      "independence_group": "binance_exchange",
+      "source_data_as_of_utc": "2026-11-05T02:25:56Z",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "source_age_seconds_at_capture": 2135,
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "rendered_extract_sha256": "b63f00a25acc79e29465b745c39daf07dd78ca615856ac63c55470167aa280c1",
+      "rendered_payload_excerpt": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.30828197\",\"indexPrice\":\"1.30810694\",\"estimatedSettlePrice\":\"1.30900621\",\"lastFundingRate\":\"0.00010000\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1793865600000,\"time\":1793845556000}",
+      "source_timestamp_note": "The exchange response time is 02:25:56Z, 35m35s before this capture. Funding interval was not independently verified; do not label the rate as an 8-hour rate."
+    },
+    {
+      "source_id": "xrpldashboard_amendments",
+      "source_uri": "https://xrpldashboard.com/amendments",
+      "source_type": "independent_ledger_observer",
+      "independence_group": "xrpldashboard_own_node",
+      "source_data_as_of_utc": "2026-11-05T02:57:00Z",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "23,31,36,49-54,83-103,147-158,262-265",
+      "source_timestamp_conflicts": [
+        "Page header says XRP price as of 02:59 UTC and displays ledger 108122913.",
+        "Validator roll call is timestamped 02:57 UTC at voting ledger 108122879.",
+        "Footer says fetched 02:51 UTC and cached 488.3 seconds, which does not reconcile cleanly with the newer header and roll-call timestamps."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_etf_data",
+      "source_uri": "https://xrp-insights.com/data",
+      "source_type": "issuer_derived_aggregator",
+      "independence_group": "issuer_holdings_aggregator_xrp_insights",
+      "source_data_as_of_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "19-42,45-78,79-109,131-154",
+      "timestamp_note": "Page says data as of Nov 3, lists Nov 4 as the latest row, and explicitly marks the Nov 4 row provisional pending next-morning re-settlement."
+    },
+    {
+      "source_id": "cryptokeyhole_etf_flows",
+      "source_uri": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_type": "issuer_derived_aggregator",
+      "independence_group": "issuer_holdings_aggregator_cryptokeyhole",
+      "source_data_as_of_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "page_updated_at_utc": "2026-11-05T02:44:00Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "149-164,167-196,211-218"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_dashboard",
+      "source_uri": "https://alphafinance.io/etf/xrp/",
+      "source_type": "flow_series_aggregator",
+      "independence_group": "etf_flow_aggregator_alpha_finance",
+      "source_data_as_of_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T03:01:31Z",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "evidence_lines": "41-77,90-130,136-142"
+    },
+    {
+      "source_id": "boj_2026_mpm_schedule",
+      "source_uri": "https://www.boj.or.jp/en/mopo/mpmsche_minu/",
+      "source_type": "central_bank_official_calendar",
+      "independence_group": "bank_of_japan",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "2026 table: Sept 17-18 MPM minutes Nov 5; Oct 29-30 MPM Summary of Opinions Nov 10; next MPM Dec 17-18",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "boj_policy_rate",
+      "source_uri": "https://www.boj.or.jp/en/",
+      "source_type": "central_bank_official_policy_status",
+      "independence_group": "bank_of_japan",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "uncollateralized overnight call rate around 1.25%; complementary deposit facility rate 1.25% since 2026-09-24; next MPM Dec 17-18",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "fed_october_28_2026_statement",
+      "source_uri": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "source_type": "central_bank_official_policy_statement",
+      "independence_group": "federal_reserve",
+      "published_at_utc": "2026-10-28T18:00:00Z",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "8-21",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "fed_november_2026_calendar",
+      "source_uri": "https://www.federalreserve.gov/newsevents/2026-november.htm",
+      "source_type": "central_bank_official_calendar",
+      "independence_group": "federal_reserve",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_lines": "November 18 minutes of Oct 27-28 meeting; next FOMC meeting Dec 8-9",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null
+    },
+    {
+      "source_id": "coincodex_boj_fed_48h_claim",
+      "source_uri": "https://coincodex.com/article/91975/crypto-enters-most-significant-week-of-2026-as-traders-hold-their-breath-for-36-hours/",
+      "source_type": "secondary_market_commentary",
+      "independence_group": "coincodex_editorial",
+      "retrieved_at_utc": "2026-11-05T03:30:00Z",
+      "evidence_summary": "Article claims a BOJ hike to 1.25% is expected and that Fed and BOJ could tighten within 48 hours.",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_http_bytes_sha256": null,
+      "publication_timestamp": "not independently established in this capture"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "kraken_xrpusd_top_of_book",
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "last_price_usd": 1.30546,
+      "best_bid_usd": 1.30542,
+      "best_bid_quantity_xrp": 3417,
+      "best_ask_usd": 1.30545,
+      "best_ask_quantity_xrp": 192,
+      "displayed_top_of_book_spread_bps": 0.2298,
+      "volume_24h_xrp": 33293522.99999833,
+      "vwap_24h_usd": 1.30410513,
+      "high_24h_usd": 1.34,
+      "low_24h_usd": 1.24016,
+      "daily_open_usd": 1.3041,
+      "source_timestamp_status": "not_returned_by_ticker_body",
+      "limitations": [
+        "Single venue only.",
+        "Only best bid and ask are available in this response; this is not a depth ladder.",
+        "The daily open field is not a rolling 24-hour open.",
+        "No exchange timestamp or raw HTTP headers were captured.",
+        "Top-of-book displayed size is not evidence of executable depth beyond the quoted level."
+      ]
+    },
+    {
+      "observation_id": "binance_xrpusdt_perpetual_premium",
+      "venue": "Binance",
+      "instrument": "XRPUSDT perpetual",
+      "mark_price_usdt": 1.30828197,
+      "index_price_usdt": 1.30810694,
+      "estimated_settle_price_usdt": 1.30900621,
+      "last_funding_rate": 0.0001,
+      "next_funding_time_utc": "2026-11-05T08:00:00Z",
+      "exchange_response_time_utc": "2026-11-05T02:25:56Z",
+      "age_at_capture_seconds": 2135,
+      "limitations": [
+        "Stale by 35m35s at capture for short-horizon analysis.",
+        "USDT quote is not silently converted to USD.",
+        "Funding interval was not independently verified.",
+        "No open-interest response was obtained in this capture.",
+        "Not synchronized with the Kraken ticker."
+      ]
+    },
+    {
+      "observation_id": "xrpl_governance_and_amendments",
+      "page_header_price_usd": 1.3066,
+      "page_header_price_as_of_utc": "2026-11-05T02:59:00Z",
+      "page_header_ledger": 108122913,
+      "validator_roll_call_ledger": 108122879,
+      "validator_roll_call_as_of_utc": "2026-11-05T02:57:00Z",
+      "validators_heard": 35,
+      "validators_required": 29,
+      "fixCleanup3_4_0": {
+        "status": "enabled",
+        "enabled_at_utc": "2026-11-04T14:52:00Z",
+        "enabled_ledger": 108112129,
+        "enable_amendment_tx": "F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C"
+      },
+      "current_votes": {
+        "SingleAssetVault": 21,
+        "LendingProtocol": 19,
+        "LendingProtocolV1_1": 19,
+        "ConfidentialTransfer": 20,
+        "DynamicMPT": 16
+      },
+      "lending_activated": false,
+      "activation_countdown_entries": 0,
+      "limitations": [
+        "The cleanup amendment is active; this does not activate lending.",
+        "SingleAssetVault and both LendingProtocol amendments remain below 29 of 35.",
+        "The page has inconsistent header, roll-call and footer cache timestamps; retain the disagreement."
+      ]
+    },
+    {
+      "observation_id": "xrp_insights_etf_flow",
+      "period": "2026-11-02_to_2026-11-03",
+      "net_flow_xrp": -194875,
+      "approximate_usd_value": -249000,
+      "settled_days": 2,
+      "fund_universe": "six US spot XRP ETFs plus BITW XRP sleeve",
+      "total_xrp_holdings_on_2026_11_03": 1196405311,
+      "nov4_row_status": "provisional",
+      "method": "sum of day-over-day issuer-reported holdings changes; flow-excluded funds count as zero",
+      "limitations": [
+        "Issuer holdings changes are not same-day cash subscriptions or verified spot purchases.",
+        "The Nov 4 row is provisional and may be rewritten on re-settlement.",
+        "BITW is a multi-asset index fund; its XRP sleeve may change through index rebalancing."
+      ]
+    },
+    {
+      "observation_id": "cryptokeyhole_etf_flow",
+      "net_flow_xrp_2026_11_03": -3339,
+      "net_flow_xrp_2026_11_02": -3339,
+      "five_complete_session_net_flow_xrp_2026_10_28_to_2026_11_03": 6178705,
+      "total_xrp_holdings_on_2026_11_03": 1076812562,
+      "fund_universe": "XRP, XRPZ, XRPC and TOXR; four funds",
+      "nov4_status": "partial_one_of_four_funds",
+      "page_updated_at_utc": "2026-11-05T02:44:00Z",
+      "limitations": [
+        "The Nov 4 row contains only one of four issuer files.",
+        "This universe excludes GXRP, XRPR and BITW.",
+        "Flows include issuer-reported holdings changes and may include fees or staking rewards where applicable."
+      ]
+    },
+    {
+      "observation_id": "alpha_finance_etf_flow",
+      "nov4_net_flow_usd": 0,
+      "last_seven_sessions_net_flow_usd": 4800000,
+      "last_seven_sessions_period": "2026-10-24_to_2026-11-04",
+      "thirty_session_net_flow_usd": 78900000,
+      "cumulative_net_inflow_usd": 1730000000,
+      "fund_universe": "five funds: XRP, XRPZ, XRPC, GXRP and TOXR",
+      "holdings_and_aum_published": false,
+      "method": "flow series only",
+      "limitations": [
+        "USD flow series is not directly comparable with XRP-unit holdings deltas.",
+        "The dashboard says fund holdings and AUM are not published.",
+        "The displayed 0 on Nov 4 is not evidence of no underlying secondary-market trading."
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "XRP spot reference",
+      "observations": [
+        "Kraken last 1.30546 USD; retrieved near 03:01 UTC with no exchange timestamp.",
+        "XRPL Dashboard page header 1.3066 USD as of 02:59 UTC."
+      ],
+      "resolution": "Do not call this an arbitrage spread. The source timestamps and price methodologies are not synchronized."
+    },
+    {
+      "topic": "ETF flows",
+      "observations": [
+        "XRP Insights: -194875 XRP over Nov 2-3 across six spot funds plus BITW.",
+        "CryptoKeyhole: -3339 XRP on Nov 2 and -3339 XRP on Nov 3 across four funds; Nov 4 partial 1/4.",
+        "Alpha Finance: $0 on Nov 4 across five funds; +$4.8M over Oct 24-Nov 4 and +$78.9M over 30 sessions."
+      ],
+      "resolution": "Different fund universes, units, dates, provisional states and methodologies. Do not average or attribute the gap to one fund without primary issuer-file reconciliation."
+    },
+    {
+      "topic": "XRPL amendment timestamps",
+      "observations": [
+        "Header shows ledger 108122913 at 02:59 UTC.",
+        "Validator roll call shows ledger 108122879 at 02:57 UTC.",
+        "Footer reports a 02:51 UTC fetch and 488.3 seconds of cache age."
+      ],
+      "resolution": "Preserve all three timestamps; do not assert a single exact page freshness time."
+    },
+    {
+      "topic": "Derivatives freshness",
+      "observations": [
+        "Binance premiumIndex response time is 02:25:56 UTC.",
+        "Capture time is 03:01:31 UTC."
+      ],
+      "resolution": "The 35m35s-old funding/mark snapshot is not synchronized with Kraken and is not suitable for a short-horizon feature."
+    },
+    {
+      "topic": "near-term central-bank catalyst",
+      "observations": [
+        "CoinCodex secondary commentary says the BOJ may raise to 1.25% and the Fed and BOJ may both tighten within 48 hours.",
+        "BOJ official page shows the 1.25% policy setting has been in effect since September 24, 2026; its next MPM is December 17-18, with minutes/summary releases scheduled November 5 and November 10.",
+        "Fed's October 28 statement held the target range at 3.75%-4.00% by 10-2; the next FOMC meeting is December 8-9 and October minutes are scheduled November 18."
+      ],
+      "resolution": "Treat the secondary article's imminent-hike framing as stale/conflicting. The near-term releases are minutes and a summary of opinions, not November policy decisions. Preserve the two Fed hawkish dissents as a counter-hypothesis for December policy expectations."
+    }
+  ],
+  "competing_hypotheses": [
+    "ETF net flows may be too small relative to spot turnover to explain the observed price path over this window.",
+    "The aggregator flow disagreement may be driven by excluded funds, issuer publication timing, provisional rows, indirect ETP exposure and methodology rather than a single erroneous provider.",
+    "Positive Binance lastFundingRate could indicate a long-side carry premium, but the response is stale and no cross-venue confirmation or open-interest change was captured.",
+    "fixCleanup3_4_0 is a technical ledger-safety amendment; it is not evidence of a new XRP demand source. Native lending remains inactive because its required amendments are below threshold.",
+    "The two Fed dissents preferring a 25-basis-point hike may keep December tightening expectations elevated despite the October hold.",
+    "A 1.25% BOJ policy setting may continue to influence yen-funded carry positions and global risk liquidity, but the next scheduled BOJ policy decision is December 17-18; there is no official November decision date."
+  ],
+  "disconfirming_evidence": [
+    "No synchronized multi-venue order-book depth was captured.",
+    "No exchange-wallet flow, ETF cash creation/redemption file, collateral utilization or verified institutional XRP purchase was captured.",
+    "No evidence connects the current ETF flow readings to a causal or predictive XRP return effect.",
+    "No validated historical feature dataset or out-of-sample evaluation supports a directional forecast.",
+    "BOJ official schedule lists no November monetary-policy meeting; the 1.25% setting is already in effect from September 24.",
+    "Federal Reserve official calendar lists no November FOMC meeting; October minutes are scheduled November 18 and the next decision meeting is December 8-9."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "next_required_work": [
+    "Capture raw HTTP response bytes and headers directly from each provider; compute SHA-256 over original bytes.",
+    "Anchor capture times independently and preserve provider timestamps separately from retrieval times.",
+    "Reconcile ETF flows against each issuer's own holdings files, fund universe, direct versus indirect XRP exposure, fees and settlement semantics.",
+    "Capture synchronized venue depth, spot candles, derivatives open interest and funding with verified intervals.",
+    "Keep all observations ineligible until the raw-receipt and timestamp requirements pass.",
+    "Monitor BOJ September-meeting minutes on November 5, BOJ October-meeting Summary of Opinions on November 10, and FOMC October-meeting minutes on November 18; distinguish information releases from policy decisions."
+  ],
+  "macro_event_timeline": {
+    "captured_at_utc": "2026-11-05T03:30:00Z",
+    "bank_of_japan": {
+      "policy_guideline": "Uncollateralized overnight call rate around 1.25%",
+      "complementary_deposit_facility_rate_percent": 1.25,
+      "effective_since": "2026-09-24",
+      "september_17_18_mpm_minutes_scheduled": "2026-11-05",
+      "october_29_30_mpm_summary_of_opinions_scheduled": "2026-11-10",
+      "next_monetary_policy_meeting": [
+        "2026-12-17",
+        "2026-12-18"
+      ],
+      "no_november_monetary_policy_meeting": true
+    },
+    "federal_reserve": {
+      "last_meeting": [
+        "2026-10-27",
+        "2026-10-28"
+      ],
+      "statement_date": "2026-10-28",
+      "target_range_percent": [
+        3.75,
+        4
+      ],
+      "vote": "10-2",
+      "dissenters_preferring_25bp_hike": [
+        "Lisa D. Cook",
+        "Beth M. Hammack"
+      ],
+      "october_meeting_minutes_scheduled": "2026-11-18",
+      "next_fomc_meeting": [
+        "2026-12-08",
+        "2026-12-09"
+      ],
+      "no_november_fomc_meeting": true
+    },
+    "secondary_claim": {
+      "source": "CoinCodex",
+      "claim": "Markets expect the BOJ to raise its rate to 1.25%, with the Fed and BOJ both potentially tightening within 48 hours.",
+      "assessment": "Conflicts with official records: the BOJ's 1.25% rate is already in effect from September 24, and the official calendars list no November BOJ or FOMC policy meeting.",
+      "status": "stale_conflicting_secondary_commentary_not_a_verified_event"
+    },
+    "evidence_summary": "Bank of Japan official schedule: the September 17-18, 2026 meeting minutes are scheduled for November 5; the October 29-30 meeting's Summary of Opinions is scheduled for November 10; the next monetary policy meeting is December 17-18. The Bank of Japan's official homepage states the uncollateralized overnight call-rate guideline is around 1.25%, and the complementary deposit facility rate has been 1.25% since September 24, 2026. Federal Reserve official records: the October 27-28, 2026 FOMC meeting maintained the federal-funds target range at 3.75%-4.00% by a 10-2 vote; Lisa D. Cook and Beth M. Hammack preferred a 25-basis-point increase. The Federal Reserve November calendar schedules minutes of the October meeting for November 18 and the next FOMC meeting for December 8-9; no November FOMC meeting is listed. A CoinCodex secondary article claims markets expect the BOJ to raise to 1.25% and that both central banks could tighten within 48 hours. Official records show the BOJ rate is already 1.25% and neither bank has a November policy meeting; preserve the secondary claim as conflicting/stale rather than treating it as a scheduled catalyst.",
+    "evidence_summary_sha256": "26f65f6e5160b3a6623f7947cac621c93a46e7feb9057576a39a41368b2c961b",
+    "hash_semantics": "SHA-256 of the stored evidence-summary text, not original web response bytes."
+  }
+}

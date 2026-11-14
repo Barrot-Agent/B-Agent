@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T171515Z-xrp-institutional-stablecoin-collateral-capital-reconciliation",
+  "artifact_type": "xrp_connected_institutional_stablecoin_custody_collateral_capital_and_sbic_identity_reconciliation",
+  "captured_at_utc": "2026-11-07T17:15:15Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_v3_integration_head": "9630d6fa68b6c0660582c8d239480c757ad983ff",
+  "observed_xrp_research_head_before_artifact": "b4dab1cc64d6bd87b1679a9ab538343c1afc511e",
+  "sources": [
+    {
+      "source_id": "circle_q3_2026_10q_distribution_costs",
+      "publisher": "Circle Internet Group",
+      "source_type": "issuer_sec_form_10q",
+      "independence_group": "circle_issuer_sec_filing",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html",
+      "published_at": "2026-11-04",
+      "web_evidence_refs": [
+        "turn281453view0",
+        "turn281453view2"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "During the three months ended September 30, 2026 and 2025, we incurred $331.3 million and $361.3 million, respectively, of distribution costs in connection with our agreements with Coinbase, and during the nine months ended September 30, 2026 and 2025, we incurred $986.6 million and $996.8 million, respectively, of distribution costs in connection with our agreements with Coinbase.",
+      "normalized_excerpt_sha256": "9ff57d809dbb5c6baf11035bed272fc9cb7b8f3b9664740b924dd52068cfda6f",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": []
+    },
+    {
+      "source_id": "circle_q3_2026_10q_usdc_metrics",
+      "publisher": "Circle Internet Group",
+      "source_type": "issuer_sec_form_10q",
+      "independence_group": "circle_issuer_sec_filing",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html",
+      "published_at": "2026-11-04",
+      "web_evidence_refs": [
+        "turn281453view1",
+        "turn281453view3"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "USDC in circulation, end of period: $73,879 million; USDC in circulation, average of period: $73,264 million; USDC on platform, end of period: $13,868 million; USDC on platform, daily weighted-average percentage: 18.1%; reserve return rate: 3.5%.",
+      "normalized_excerpt_sha256": "20ae0403503885cdf1e9d47b33067dc813433f3e87318705a635c3db18fc3c85",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": []
+    },
+    {
+      "source_id": "coinbase_q3_2026_10q_circle_arrangement",
+      "publisher": "Coinbase Global",
+      "source_type": "sec_form_10q",
+      "independence_group": "coinbase_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_at": "2026-10-29",
+      "web_evidence_refs": [
+        "turn281453view4",
+        "turn281453view5"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "We saw resilience in crypto derivatives trading volume against the market backdrop, expanded tradable assets on our platform, grew volume in equities and prediction markets, increased average USDC held in Coinbase products to an all-time high, renewed our arrangement with Circle Internet Financial, LLC on the same terms, and grew decentralized exchange trading and balances borrowed and lent through Coinbase.",
+      "normalized_excerpt_sha256": "14e8079b428a103f86c7d862f08d83e767639ec134d99623282bc68f1c910dd6",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": []
+    },
+    {
+      "source_id": "coinbase_q3_2026_10q_collateral",
+      "publisher": "Coinbase Global",
+      "source_type": "sec_form_10q",
+      "independence_group": "coinbase_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_at": "2026-10-29",
+      "web_evidence_refs": [
+        "turn281453view6"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "As of September 30, 2026: crypto assets held as recognized collateral had fair value $997.557 million; total recognized lending collateral was $1,009.297 million; customer collateral not recognized by Coinbase totaled $3,284.562 million, comprising $2,804.112 million crypto assets and $480.450 million fiat/payment stablecoins; recognized derivatives collateral was $325.766 million. No XRP-specific collateral amount is separately identified.",
+      "normalized_excerpt_sha256": "7936651f2f7182fbc459cb25ea46c395770f7101cb4042bfe5b24a1673c00516",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "No XRP-specific line item; 'other crypto assets' is an aggregate bucket and cannot establish zero XRP collateral."
+      ]
+    },
+    {
+      "source_id": "coinbase_q3_2026_10q_stablecoin_revenue",
+      "publisher": "Coinbase Global",
+      "source_type": "sec_form_10q",
+      "independence_group": "coinbase_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_at": "2026-10-29",
+      "web_evidence_refs": [
+        "turn973169view0"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "Coinbase reported stablecoin revenue of $306.905 million for the three months ended September 30, 2026 and $904.487 million for the nine months ended September 30, 2026.",
+      "normalized_excerpt_sha256": "f8df44d10d0d9b07e8f22c0e0d24d86b5e9d25f9b33a0f2c52a32b0d6f0a0c39",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "Aggregate Coinbase stablecoin revenue is not Circle-only and cannot be directly netted against Circle distribution costs."
+      ]
+    },
+    {
+      "source_id": "sbi_holdings_q2_fy2027_interim_results",
+      "publisher": "SBI Holdings",
+      "source_type": "issuer_interim_report_mirror",
+      "independence_group": "sbi_holdings_q2_report",
+      "url": "https://financialfilings.com/filings/sbi-holdings-inc/interim-quarterly-report/2026/75302757/",
+      "published_at": "2026-11-02",
+      "web_evidence_refs": [
+        "turn445518view0",
+        "turn853962search9"
+      ],
+      "primary_source": false,
+      "normalized_excerpt": "Six months ended September 30, 2026: consolidated revenue ¥1,057,515 million (+17.2% year over year) and profit before income tax ¥324,306 million (+52.9%); PE Investment Business revenue ¥181,283 million (+28.5%) and profit before tax ¥153,088 million (+38.5%); Crypto-asset Business revenue ¥23,083 million (-30.1%) and loss before tax ¥1,595 million (prior-year loss ¥147 million).",
+      "normalized_excerpt_sha256": "7a148696849c2151f8d4db542c1955f96ac572e3960d206810ad0dc85367c960",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "The report is reproduced by a third-party filing host; SBI's official IR page confirms the November 2 release.",
+        "Segment figures are group-level and not XRP-specific.",
+        "The extracted report text returned no matches for Ripple or XRP; absence in extracted text is not proof of no relationship."
+      ]
+    },
+    {
+      "source_id": "sbi_vc_trade_jpysc_nov2_balance_and_lending",
+      "publisher": "SBI VC Trade",
+      "source_type": "issuer_press_release",
+      "independence_group": "sbi_vc_trade_issuer",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "published_at": "2026-11-02",
+      "web_evidence_refs": [
+        "turn545272search0"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "As of November 2, 2026, JPYSC lending balances exceeded ¥10 billion and total JPYSC handling balances exceeded ¥30 billion. The published lending courses were 168 days at 3%, 84 days at 2.5%, and 28 days at 2%. The issuer states JPYSC lending is not a bank deposit, is not covered by deposit insurance, and generally cannot be terminated early.",
+      "normalized_excerpt_sha256": "2c4e3c1dae5eb93e39560134633441de6a2d777df82a4296fa696b2d8a720c73",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "JPYSC lending is not a bank deposit and is not covered by deposit insurance.",
+        "Public-chain circulation remains a future conditional step, not a current public-chain liquidity metric."
+      ]
+    },
+    {
+      "source_id": "sbi_smfg_stablecoin_alliance",
+      "publisher": "SBI Holdings and SMFG",
+      "source_type": "issuer_press_release",
+      "independence_group": "sbi_smfg_issuer",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "published_at": "2026-10-30",
+      "web_evidence_refs": [
+        "turn960244search3"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "On October 30, 2026, SBI Holdings and Sumitomo Mitsui Financial Group signed a capital and business alliance to explore financial services using stablecoins and related technology; SMFG agreed to acquire a 5% equity interest in SBI Startale Marketing. The announcement describes research, use-case study and proof-of-concept work, not a launched production service.",
+      "normalized_excerpt_sha256": "e1347099609247bee72a940e6a8cb002daf73751bf620388ec31427a335713b2",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "Exploration and proof-of-concept work; no production service or XRP demand disclosed."
+      ]
+    },
+    {
+      "source_id": "sbi_startale_open_standard",
+      "publisher": "SBI Holdings and Startale",
+      "source_type": "issuer_press_release",
+      "independence_group": "sbi_startale_issuer",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "published_at": "2026-10-16",
+      "web_evidence_refs": [
+        "turn960244search1"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "On October 16, 2026, SBI Holdings and Startale joined Open Standard, whose announcement named more than 140 participating companies including Visa, Stripe, Mastercard, BlackRock and Coinbase. SBI and Startale said they would explore a proof of concept for interoperability between JPYSC and Open USD (OUSD); the announcement expressly says it does not mean a new service or production settlement has begun.",
+      "normalized_excerpt_sha256": "dda694f01ec4e8f8516fa89ade43941bfcd4ad84562014b8262cec775df19995",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "The release expressly states that the announcement does not mean a new service or production settlement has begun.",
+        "Coinbase is a named Open Standard participant; this is ecosystem overlap, not evidence of a direct Coinbase-SBI XRP partnership."
+      ]
+    },
+    {
+      "source_id": "sbi_vc_trade_rlusd_launch",
+      "publisher": "SBI VC Trade and Ripple Labs",
+      "source_type": "joint_issuer_press_release",
+      "independence_group": "sbi_ripple_issuer",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at": "2026-06-24",
+      "web_evidence_refs": [
+        "turn960244search4",
+        "turn960244search6"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "On June 24, 2026, SBI VC Trade, a consolidated subsidiary of SBI Holdings, and Ripple Labs announced RLUSD availability on VCTRADE. SBI VC Trade classified RLUSD as a Type 4 electronic payment instrument under Japanese law, while stating RLUSD is not a trust beneficial interest under US law. BITPOINT service was excluded.",
+      "normalized_excerpt_sha256": "344b7d0c7cde01154bcd279bcb0e94053a5cfa4b5fbab1ff6de88cc50edc25bc",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "RLUSD distribution is a stablecoin relationship, not an XRP purchase or XRP collateral balance."
+      ]
+    },
+    {
+      "source_id": "sbi_jpysc_issuance_roles",
+      "publisher": "SBI Holdings, SBI Shinsei Trust Bank, SBI VC Trade, Startale",
+      "source_type": "joint_issuer_press_release",
+      "independence_group": "sbi_jpysc_issuer",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "published_at": "2026-06-24",
+      "web_evidence_refs": [
+        "turn545272search3"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "On June 24, 2026, SBI Shinsei Trust Bank was named issuer of JPYSC; SBI VC Trade handles distribution and is the issuance委託者/electronic payment instrument service provider; Startale Group co-developed it. Initial use was restricted to VCTRADE accounts and external-wallet withdrawals were unavailable pending legal, tax and regulatory readiness for public-chain circulation.",
+      "normalized_excerpt_sha256": "39c4a9f1fdcf8e44432a30110a1e9933984aa010014b85e571bdfda0cd6d9c00",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "Initial VCTRADE account-only distribution; external-wallet withdrawal was not available at launch pending public-chain readiness."
+      ]
+    },
+    {
+      "source_id": "sbic_east_identity",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co.",
+      "source_type": "official_company_profile",
+      "independence_group": "sbic_east_company",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "published_at": "current_profile",
+      "web_evidence_refs": [
+        "turn700994search0"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan): corporate number 9011001030621; established November 15, 1963; capital ¥6,673.4 million; operating area 18 prefectures.",
+      "normalized_excerpt_sha256": "8116b9da9736108db06c4f6fa05211288e682a7ae57dfaa3b7e96d656e0659d2",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "This entity is not SBI Holdings."
+      ]
+    },
+    {
+      "source_id": "sbic_central_identity",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co.",
+      "source_type": "official_company_profile",
+      "independence_group": "sbic_central_company",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "published_at": "current_profile",
+      "web_evidence_refs": [
+        "turn700994search1"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan): established November 18, 1963; capital ¥4,300.8 million; operating area Aichi, Gifu, Mie, Toyama and Ishikawa.",
+      "normalized_excerpt_sha256": "4c88db6df1456833deea18d268aa9ae16288493b8470e15843e7ebafd512794c",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "This entity is not SBI Holdings."
+      ]
+    },
+    {
+      "source_id": "sbic_west_identity",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co.",
+      "source_type": "official_company_profile",
+      "independence_group": "sbic_west_company",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "published_at": "current_profile",
+      "web_evidence_refs": [
+        "turn700994search2"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan): established November 20, 1963; capital ¥6,822 million; operating area 24 prefectures.",
+      "normalized_excerpt_sha256": "30e35b790222324b9994ef7d4bca585dd412134dd1bd57d86868d32fef3bce58",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "This entity is not SBI Holdings."
+      ]
+    },
+    {
+      "source_id": "sbic_chatgpt_training_context",
+      "publisher": "Tokyo SBIC and Osaka SBIC West",
+      "source_type": "official_training_and_seminar_pages",
+      "independence_group": "sbic_regional_education",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "published_at": "2025-06-12",
+      "web_evidence_refs": [
+        "turn110544search0",
+        "turn110544search4",
+        "turn110544search6",
+        "turn110544search8"
+      ],
+      "primary_source": true,
+      "normalized_excerpt": "Tokyo SBIC's official June 12–13, 2025 training for portfolio companies included 'ChatGPT usage' and Microsoft Copilot. Osaka SBIC West's official 2025 seminar materials also promoted ChatGPT/Generative AI use. These are training/seminar references, not evidence of an OpenAI partnership or authenticated SBIC–ChatGPT integration.",
+      "normalized_excerpt_sha256": "6922dc694a2f7c0e0b93f85e5a32bd9c24c9bed4e7190f93d92c20b33d8e4aa0",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "Training/seminar content does not establish an OpenAI partnership, ChatGPT account integration or persistent data flow."
+      ]
+    },
+    {
+      "source_id": "evernorth_actual_capital_secondary_phrase",
+      "publisher": "Phemex, citing third-party source",
+      "source_type": "secondary_news_article",
+      "independence_group": "phemex_secondary_evernorth",
+      "url": "https://phemex.com/pt/news/article/evernorth-plans-807m-equity-financing-with-cantor-affiliate-to-boost-xrp-holdings-101069",
+      "published_at": "2026-11-07",
+      "web_evidence_refs": [
+        "turn974365view2"
+      ],
+      "primary_source": false,
+      "normalized_excerpt": "Phemex's secondary article says the actual capital raised under the Cantor equity line depends on transaction volume and final pricing, and that the agreement is not completed financing or a completed XRP purchase. This is secondary reporting, not issuer-primary evidence.",
+      "normalized_excerpt_sha256": "d575e926f3d4e5c892ded144cefe5ea3f4356113745cec99281c7b312f422e36",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "Secondary reporting, not issuer filing.",
+        "An equity-line capacity is not cash received, settled financing or XRP purchased."
+      ]
+    },
+    {
+      "source_id": "ask_coin_permission_ticker_disambiguation",
+      "publisher": "CoinMarketCap",
+      "source_type": "secondary_token_reference",
+      "independence_group": "coinmarketcap_permission",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "published_at": "current_page",
+      "web_evidence_refs": [
+        "turn974365view0"
+      ],
+      "primary_source": false,
+      "normalized_excerpt": "CoinMarketCap identifies Permission Coin as ticker ASK and describes ASK as the native utility token of the Permission ecosystem. The phrase 'ASK Coin' is ambiguous with a separate inactive Ask Coin listing; no XRP relationship is established.",
+      "normalized_excerpt_sha256": "1c57b845cc7f7942a1e5bb2f3a1921261ae5574e016e52714c2cbadca65d0efd",
+      "hash_scope": "SHA-256 of the exact normalized excerpt string stored in this artifact; not a hash of the full webpage or original HTTP response.",
+      "model_eligible": false,
+      "limitations": [
+        "CoinMarketCap is a secondary token reference.",
+        "The separate inactive Ask Coin listing remains a distinct candidate; no XRP relationship is established."
+      ]
+    }
+  ],
+  "reconciliations": {
+    "circle_coinbase": {
+      "confirmed": [
+        "Circle's Q3 2026 10-Q records $331.3M Q3 and $986.6M nine-month distribution costs in connection with Coinbase agreements.",
+        "Coinbase's Q3 2026 10-Q says average USDC held in Coinbase products reached an all-time high and its Circle arrangement was renewed on the same terms.",
+        "Circle reports $73.879B USDC end-of-period circulation, $73.264B average circulation, $13.868B USDC on platform and 18.1% daily weighted-average platform share.",
+        "Coinbase reports $306.905M Q3 and $904.487M nine-month aggregate stablecoin revenue."
+      ],
+      "not_established": [
+        "Circle's distribution-cost expense is not Coinbase net profit.",
+        "Coinbase's aggregate stablecoin revenue is not Circle-only.",
+        "The Circle expense and Coinbase revenue figures cannot be directly netted or assumed to reconcile one-for-one."
+      ]
+    },
+    "coinbase_collateral": {
+      "confirmed": [
+        "Coinbase's September 30 2026 recognized lending collateral fair value was $1.009297B total, including $997.557M crypto assets and $11.740M fiat/payment stablecoins.",
+        "Customer collateral not recognized on Coinbase's balance sheet was $3.284562B, including $2.804112B crypto and $480.450M fiat/payment stablecoins.",
+        "Recognized derivatives collateral was $325.766M, with the table showing BTC and ETH.",
+        "The filing groups small residual balances as other crypto assets; no XRP-specific collateral balance is separately disclosed."
+      ],
+      "not_established": [
+        "No public XRP collateral utilization amount or share can be inferred from the aggregate 'other crypto assets' bucket.",
+        "XRP collateral eligibility or product support does not prove actual customer deposits, borrowing, margin utilization or derivatives collateral."
+      ]
+    },
+    "sbi_multi_rail": {
+      "confirmed": [
+        "SBI VC Trade is an SBI Holdings subsidiary and distributes RLUSD in Japan; this is a stablecoin distribution relationship, not an XRP purchase.",
+        "SBI Shinsei Trust Bank issues JPYSC; SBI VC Trade distributes and supports lending; Startale co-developed the product.",
+        "As of 2026-11-02 JPYSC handled balance exceeded ¥30B and lending balance exceeded ¥10B; lending is not a bank deposit or deposit-insured.",
+        "SBI and SMFG agreed to explore stablecoin financial services and SMFG to take a 5% stake in SBI Startale Marketing.",
+        "SBI and Startale joined Open Standard with Coinbase among 140+ participants and are exploring JPYSC/OUSD interoperability."
+      ],
+      "not_established": [
+        "No JPYSC/OUSD production settlement or public-chain liquidity was established by the announcements.",
+        "Coinbase's Open Standard participation is indirect ecosystem overlap, not a direct SBI-Coinbase XRP partnership.",
+        "RLUSD and JPYSC balances are not XRP demand or XRP collateral.",
+        "SBI's Q2 2027 crypto-asset segment loss and PE segment gains are group-level results, not attributable to XRP or Ripple.",
+        "The retrieved SBI Q2 report text contains no Ripple or XRP matches; this is not proof that no relationship exists."
+      ]
+    },
+    "sbic_identity": {
+      "resolved": true,
+      "statutory_context": "Three regional Small and Medium Business Investment & Consultation companies established in Tokyo, Nagoya and Osaka in November 1963 under the Small and Medium Business Investment & Consultation Company Act (Act No. 101 of 1963).",
+      "entities": [
+        "SBIC East Japan / Tokyo Small and Medium Business Investment & Consultation Co.",
+        "SBIC Central Japan / Nagoya Small and Medium Business Investment & Consultation Co.",
+        "SBIC West Japan / Osaka Small and Medium Business Investment & Consultation Co."
+      ],
+      "not_sbi_holdings": true,
+      "chatgpt_context": "Official East and West SBIC training/seminar pages mention ChatGPT; they document educational events, not an OpenAI partnership or authenticated SBIC-ChatGPT integration."
+    },
+    "exact_phrases": {
+      "ask_coin": "ASK is the ticker of Permission Coin in the retrieved token reference; a separate inactive Ask Coin listing is not the same asset. No XRP relationship is established.",
+      "actual_capital": "The exact phrase appears in secondary reporting about the Cantor equity line; the report itself says proceeds depend on volume and price and that the agreement is not completed financing or a completed XRP purchase. It is not issuer-primary evidence.",
+      "sbic_chatgpt": "Verified references are regional SBIC training/seminar events. No OpenAI partnership or data integration is established."
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1_sbi_multirail_strategy",
+      "statement": "SBI is building a multi-issuer, multi-currency onchain financial-services strategy rather than an XRP-exclusive strategy.",
+      "support": [
+        "XRP remittance history through SBI Remit/Ripple.",
+        "RLUSD distribution through SBI VC Trade.",
+        "JPYSC issuance, lending and short-term JGB reserve management.",
+        "SMFG and Startale capital/technology alliances.",
+        "Open Standard JPYSC/OUSD interoperability exploration."
+      ],
+      "counterevidence": [
+        "SBI's Q2 crypto-asset business revenue fell 30.1% and pre-tax loss widened; this segment is exchange/trading activity and not XRP-specific.",
+        "No XRP balances, purchases or XRP-specific revenue are disclosed in the Q2 interim report."
+      ],
+      "status": "SUPPORTED_AS_STRATEGY_CONTEXT_NOT_XRP_FLOW"
+    },
+    {
+      "id": "H2_coinbase_circle_distribution",
+      "statement": "Coinbase and Circle have a material, continuing direct USDC distribution/economic relationship.",
+      "support": [
+        "Circle's Q3 and nine-month distribution costs in connection with Coinbase agreements.",
+        "Coinbase says the Circle arrangement was renewed on the same terms and average USDC on platform hit an all-time high."
+      ],
+      "counterevidence": [
+        "Coinbase aggregate stablecoin revenue is not Circle-only and is not directly comparable to Circle's distribution-cost expense."
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "id": "H3_coinbase_xrp_collateral",
+      "statement": "Coinbase's aggregate collateral disclosure establishes broad crypto collateral activity but not XRP-specific utilization.",
+      "support": [
+        "Q3 collateral tables show substantial crypto and stablecoin collateral."
+      ],
+      "counterevidence": [
+        "No XRP-specific row or balance; other crypto is aggregated."
+      ],
+      "status": "XRP_AMOUNT_NOT_DISCLOSED"
+    },
+    {
+      "id": "H4_sbic_chatgpt_partnership",
+      "statement": "The phrase SBIC/ChatGPT refers to regional SBIC education and seminar content rather than an established OpenAI partnership.",
+      "support": [
+        "Official East and West SBIC training/seminar pages explicitly mention ChatGPT."
+      ],
+      "counterevidence": [
+        "No primary evidence of a partnership, API integration or shared data flow."
+      ],
+      "status": "EDUCATION_REFERENCES_VERIFIED_PARTNERSHIP_UNVERIFIED"
+    },
+    {
+      "id": "H5_actual_capital",
+      "statement": "Secondary coverage uses 'actual capital raised' for a conditional financing facility; it is not proof of received cash or XRP purchases.",
+      "support": [
+        "Phemex article states actual proceeds depend on volume/pricing and the agreement is not completed financing."
+      ],
+      "counterevidence": [
+        "Issuer-primary cash receipts or purchase notices were not established in this evidence package."
+      ],
+      "status": "SECONDARY_PHRASE_ONLY"
+    }
+  ],
+  "model_admission": {
+    "admitted_as_xrp_price_feature": false,
+    "admitted_as_xrp_flow_feature": false,
+    "admitted_as_xrp_collateral_feature": false,
+    "eligible_as_categorical_event_context": true,
+    "reason": "Institutional relationships and stablecoin balances are context; public evidence does not establish corresponding XRP purchases, XRP collateral amounts, or XRP settlement volume."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "shadow_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false
+  }
+}

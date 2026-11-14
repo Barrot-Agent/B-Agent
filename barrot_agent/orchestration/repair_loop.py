@@ -122,7 +122,9 @@ Rules:
 - Do not restore Orbit.
 - Inspect before modifying.
 - Keep edits minimal.
-- Prefer APPLY_PATCH.
+- WRITE_FILE may create new files only; it cannot overwrite existing files.
+- APPLY_PATCH requires one exact preimage match and uses compare-and-swap.
+- RUN_TESTS and verification accept only allowlisted pytest/compileall commands; no shell.
 - Do not modify unrelated files.
 - Do not claim the repair succeeded.
 - The repair succeeds only if the required verification command passes.
@@ -146,25 +148,49 @@ Rules:
                 record["planning_error"] = str(exc)
                 continue
 
-            snapshots: dict[str, str] = {}
+            snapshots: dict[str, dict[str, object]] = {}
 
             for action in actions:
-
-                if action.type in {
-                    "WRITE_FILE",
-                    "APPLY_PATCH",
-                }:
-                    path = action.args.get("path")
-
-                    if isinstance(path, str):
+                snapshot = None
+                path = action.args.get("path") if action.type in {"WRITE_FILE", "APPLY_PATCH"} else None
+                if isinstance(path, str):
+                    if path not in snapshots:
                         try:
-                            snapshots[path] = (
-                                self.actions.executor.read_file(path)
-                            )
+                            before = self.actions.executor.read_file(path)
                         except FileNotFoundError:
-                            snapshots[path] = ""
+                            before = None
+                        snapshots[path] = {
+                            "before": before,
+                            "expected_after": before,
+                            "applied": False,
+                        }
+                    snapshot = snapshots[path]
+                    current = snapshot["expected_after"]
+                    expected_after = None
+                    if action.type == "WRITE_FILE":
+                        proposed = action.args.get("content")
+                        if current is None and isinstance(proposed, str):
+                            expected_after = proposed
+                    elif action.type == "APPLY_PATCH":
+                        expected = action.args.get("expected")
+                        replacement = action.args.get("replacement")
+                        if (
+                            isinstance(current, str)
+                            and isinstance(expected, str)
+                            and isinstance(replacement, str)
+                            and expected in current
+                            and current.count(expected) == 1
+                        ):
+                            expected_after = current.replace(expected, replacement, 1)
+                    snapshot["pending_after"] = expected_after
 
                 result = self.actions.execute(action)
+
+                if snapshot is not None:
+                    pending_after = snapshot.pop("pending_after", None)
+                    if result.success and isinstance(pending_after, str):
+                        snapshot["expected_after"] = pending_after
+                        snapshot["applied"] = True
 
                 record["results"].append(
                     {
@@ -178,20 +204,29 @@ Rules:
                 if not result.success:
                     break
 
-            verification = self.actions.executor.run(
-                verification_command
-            )
-
-            record["verification"] = {
-                "command": verification.command,
-                "success": verification.success,
-                "stdout": verification.stdout[-4000:],
-                "stderr": verification.stderr[-4000:],
-            }
+            try:
+                verification = self.actions.executor.run(
+                    verification_command
+                )
+                verification_success = verification.success
+                record["verification"] = {
+                    "command": verification.command,
+                    "success": verification.success,
+                    "stdout": verification.stdout[-4000:],
+                    "stderr": verification.stderr[-4000:],
+                }
+            except Exception as exc:
+                verification_success = False
+                record["verification"] = {
+                    "command": str(verification_command),
+                    "success": False,
+                    "stdout": "",
+                    "stderr": str(exc),
+                }
 
             outcome = self.outcome_evaluator.evaluate(
                 results=record["results"],
-                verification_success=verification.success,
+                verification_success=verification_success,
             )
             record["outcome"] = {
                 "success": outcome.success,
@@ -207,20 +242,28 @@ Rules:
 
             rollback = []
 
-            for path, original in snapshots.items():
+            for path, snapshot in snapshots.items():
+                if not snapshot.get("applied"):
+                    continue
+                original = snapshot.get("before")
+                expected_after = snapshot.get("expected_after")
                 try:
-                    self.actions.executor.write_file(
+                    if not isinstance(expected_after, str):
+                        raise RuntimeError("Missing exact post-action content; preserving current file.")
+                    if original == expected_after:
+                        rollback.append({"path": path, "success": True, "unchanged": True})
+                        continue
+                    self.actions.executor.restore_file(
                         path,
-                        original,
+                        original if isinstance(original, str) or original is None else None,
+                        expected_current_content=expected_after,
                     )
-
                     rollback.append(
                         {
                             "path": path,
                             "success": True,
                         }
                     )
-
                 except Exception as exc:
                     rollback.append(
                         {

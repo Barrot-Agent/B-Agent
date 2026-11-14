@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "artifact_type": "append_only_sec_filing_source_verification_correction",
+  "artifact_id": "circle_q3_sec_edgar_accession_verification_20261105T130700Z",
+  "captured_at_utc": "2026-11-05T13:07:00Z",
+  "data_cutoff_utc": "2026-11-05T13:07:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "reviewed_prior_head_sha": "01eb5f8508c45a4559bb73371237e1522d893b60",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "subject": "Direct SEC verification of Circle Q3 2026 Form 8-K accession 0001876042-26-000309",
+  "correction_scope": {
+    "prior_artifact": "research/xrp_intelligence/20261104T200200Z-circle-q3-source-correction.json",
+    "prior_status_at_capture": "The prior correction correctly recorded that accession 0001876042-26-000309 had not been verified by direct SEC document retrieval as of 2026-11-04T20:02:00Z.",
+    "current_status": "VERIFIED",
+    "resolution": "Direct retrieval of the SEC primary Form 8-K document and its Exhibit 99.1 now succeeds. The prior unverified-candidate caution is superseded for this accession only; the earlier artifact remains unchanged.",
+    "append_only": true,
+    "original_artifacts_modified": false
+  },
+  "sec_filing": {
+    "cik": "0001876042",
+    "registrant": "Circle Internet Group, Inc.",
+    "form": "8-K",
+    "accession": "0001876042-26-000309",
+    "report_date": "2026-11-04",
+    "primary_document_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/crcl-20261104.htm",
+    "exhibit_99_1_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+    "item_2_02": "Results of Operations and Financial Condition",
+    "item_9_01_exhibits": [
+      "99.1",
+      "104"
+    ],
+    "exhibit_99_1_description": "Press release dated November 4, 2026",
+    "filing_status": "Direct SEC primary document retrieved; accession and exhibit linkage verified.",
+    "legal_classification": {
+      "item_2_02_and_exhibit_99_1": "Furnished, not deemed filed for purposes of Exchange Act Section 18, and not incorporated by reference except by specific reference.",
+      "note": "This is the filing's stated treatment. Do not describe the earnings exhibit as deemed filed for Section 18 liability."
+    },
+    "raw_capture": {
+      "byte_complete": false,
+      "sha256": null,
+      "timestamp_anchor": "web retrieval timestamp only",
+      "model_eligible": false
+    }
+  },
+  "source_registry": [
+    {
+      "source_id": "circle_q3_2026_sec_8k_primary_document",
+      "publisher": "U.S. Securities and Exchange Commission / Circle Internet Group, Inc.",
+      "source_type": "issuer_8k_in_sec_edgar",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/crcl-20261104.htm",
+      "retrieved_at_utc": "2026-11-05T13:07:00Z",
+      "source_independence_group": "circle_issuer",
+      "claims_supported": [
+        "Form 8-K identity, report date, Item 2.02, Item 9.01, Exhibit 99.1, and furnished-not-filed-for-Section-18 treatment."
+      ],
+      "source_limit": "The SEC filing authenticates the issuer submission and filing context; the financial statements and press release remain issuer-provided disclosures, not an independent audit.",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "publisher": "Circle Internet Group, Inc.",
+      "source_type": "issuer_earnings_press_release_furnished_as_sec_exhibit_99_1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+      "published_at": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T13:07:00Z",
+      "source_independence_group": "circle_issuer",
+      "claims_supported": [
+        "Q3 2026 average USDC circulation $73.3B, up 8% YoY; period-end circulation $73.9B, flat YoY.",
+        "Q3 2026 USDC on-chain transaction volume $13.9T, up 49% YoY.",
+        "Total revenue and reserve income $864.888M; reserve income $657.624M; other revenue $207.264M, including approximately $182M ARC token presale revenue.",
+        "USDC gross minted $104B and redeemed $104B in Q3.",
+        "Circle Payments Network annualized TPV $41.3B; Tazapay acquisition expected to close in 2027 subject to regulatory approvals."
+      ],
+      "source_limit": "Issuer-reported operating and financial metrics; gross on-chain volume and gross mint/redemption are not net new capital, unique payments, or XRP demand.",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "coinbase_q3_2026_sec_10q",
+      "publisher": "Coinbase Global, Inc.",
+      "source_type": "counterparty_issuer_sec_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "retrieved_at_utc": "2026-11-05T13:07:00Z",
+      "source_independence_group": "coinbase_issuer",
+      "claims_supported": [
+        "Coinbase says its Circle arrangement was renewed on the same terms.",
+        "Coinbase says the 2026 corporate payment-stablecoin revenue presentation change did not change the Circle arrangement or revenue generated.",
+        "Coinbase refers to a fair-value remeasurement of its investment in Circle Internet Group following Circle's IPO; the reviewed passage does not disclose the investment amount or ownership percentage.",
+        "Q3 2026 stablecoin revenue was $306.905M."
+      ],
+      "source_limit": "The 10-Q says average USDC held in Coinbase products reached an all-time high but does not state the $22B figure or 49% year-over-year change in the retrieved filing text. Those exact figures are sourced to the separate October 29 issuer earnings release.",
+      "raw_capture_status": "web_rendered_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "coinbase_q3_2026_earnings_release",
+      "publisher": "Coinbase Global, Inc.",
+      "source_type": "issuer_primary_earnings_release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "published_at": "2026-10-29",
+      "retrieved_at_utc": "2026-11-05T13:07:00Z",
+      "source_independence_group": "coinbase_issuer",
+      "claims_supported": [
+        "Average USDC held in Coinbase products reached $22B in Q3 2026, up 49% year over year.",
+        "Coinbase described the $22B product-held balance as approximately 30% of average USDC market capitalization."
+      ],
+      "source_limit": "Issuer-reported operating metrics; not an independent reserve audit, net USDC issuance measure, or XRP demand/flow observation.",
+      "raw_capture_status": "web_rendered_issuer_release_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    }
+  ],
+  "financial_observations": [
+    {
+      "id": "CIRCLE-Q3-SEC-AVG-USDC-2026",
+      "metric": "average_usdc_circulation",
+      "value_usd_billions": 73.3,
+      "period": "2026-Q3",
+      "yoy_change_pct": 8,
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE-Q3-SEC-END-USDC-2026",
+      "metric": "end_period_usdc_circulation",
+      "value_usd_billions": 73.9,
+      "period": "2026-09-30",
+      "yoy_change_pct": 0,
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE-Q3-SEC-MINT-REDEEM-2026",
+      "metric": "gross_usdc_minted_and_redeemed",
+      "minted_usd_billions": 104,
+      "redeemed_usd_billions": 104,
+      "period": "2026-Q3",
+      "interpretation": "Gross flows are equal at the issuer-reported rounded level. This does not imply zero intra-quarter net flow at every date, zero cross-chain movement, or zero change in demand; quarter-end supply was separately reported as $73.9B and flat YoY.",
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE-Q3-SEC-ONCHAIN-VOLUME-2026",
+      "metric": "usdc_onchain_transaction_volume",
+      "value_usd_trillions": 13.9,
+      "period": "2026-Q3",
+      "yoy_change_pct": 49,
+      "interpretation": "Gross on-chain transaction volume; not unique payments, net settlement, new capital, XRP ledger volume, or XRP demand.",
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE-Q3-SEC-RESERVE-INCOME-2026",
+      "metric": "reserve_income",
+      "value_usd_millions": 657.624,
+      "yoy_change_pct": -8,
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE-Q3-SEC-OTHER-REVENUE-2026",
+      "metric": "other_revenue",
+      "value_usd_millions": 207.264,
+      "includes_arc_token_presale_usd_millions_rounded": 182,
+      "yoy_change_pct": 627,
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE-Q3-SEC-CPN-ANNUALIZED-TPV-2026",
+      "metric": "circle_payments_network_annualized_tpv",
+      "value_usd_billions": 41.3,
+      "period": "2026-Q3",
+      "interpretation": "Annualized TPV, not realized Q3 volume or XRP settlement volume.",
+      "source_id": "circle_q3_2026_sec_8k_exhibit_99_1",
+      "model_eligible": false
+    },
+    {
+      "id": "COINBASE-Q3-SEC-STABLECOIN-REVENUE-2026",
+      "metric": "stablecoin_revenue",
+      "value_usd_millions": 306.905,
+      "prior_year_value_usd_millions": 324.534,
+      "yoy_change_pct": -5.4,
+      "period": "2026-Q3",
+      "interpretation": "Coinbase's separate SEC line item after its 2026 presentation change. Corporate payment-stablecoin balance revenue is presented in Corporate interest and other income; do not add it twice or compare inconsistent line-item definitions.",
+      "source_id": "coinbase_q3_2026_sec_10q",
+      "model_eligible": false
+    },
+    {
+      "id": "COINBASE-Q3-SEC-AVG-USDC-PRODUCTS-2026",
+      "metric": "average_usdc_held_in_coinbase_products",
+      "value_usd_billions": 22,
+      "yoy_change_pct": 49,
+      "period": "2026-Q3",
+      "source_id": "coinbase_q3_2026_earnings_release",
+      "model_eligible": false,
+      "interpretation": "Exact $22B and +49% figures come from Coinbase's October 29, 2026 issuer earnings release; the SEC 10-Q only states that average product-held USDC reached an all-time high."
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC commercial arrangement renewed on same terms; Coinbase's Q3 10-Q also references an equity investment in Circle following its IPO.",
+      "status": "counterparty_issuer_disclosure_confirmed",
+      "ownership_percentage_or_investment_amount": "not established in the reviewed passages",
+      "evidence": [
+        "coinbase_q3_2026_sec_10q"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer and reserve-backed stablecoin ecosystem",
+      "status": "issuer_and_sec_exhibit_confirmed",
+      "evidence": [
+        "circle_q3_2026_sec_8k_primary_document",
+        "circle_q3_2026_sec_8k_exhibit_99_1"
+      ]
+    }
+  ],
+  "xrp_relevance": {
+    "competing_hypotheses": [
+      {
+        "id": "H1_USDC_distribution_competes_with_some_XRP_payment_routes",
+        "statement": "Coinbase/Circle USDC distribution and Circle Payments Network growth may substitute for some dollar-denominated settlement routes that might otherwise use XRP.",
+        "evidence_required": "Corridor-level payment routing, bridge-asset use, settlement counterparties, and actual XRP inventory/turnover."
+      },
+      {
+        "id": "H2_USDC_and_XRP_can_be_complementary",
+        "statement": "USDC liquidity and payment adoption can increase blockchain and exchange activity while XRP remains useful as a separate bridge or liquidity asset in some corridors.",
+        "evidence_required": "Transaction-level evidence of XRP bridge legs and net XRP inventory changes."
+      },
+      {
+        "id": "H3_platform_metrics_do_not_predict_XRP_spot_demand",
+        "statement": "USDC circulation, Circle Payments Network annualized TPV, Coinbase stablecoin revenue, and gross on-chain volume do not by themselves establish XRP purchases, XRP collateral usage, or XRP price direction.",
+        "evidence_required": "Direct XRP spot, order-book, exchange-flow, collateral, and settlement observations."
+      }
+    ],
+    "forecast_issued": false,
+    "model_eligible": false
+  },
+  "source_independence": {
+    "circle_8k_and_exhibit_group": "circle_issuer",
+    "circle_issuer_pdf_and_sec_exhibit_are_same_underlying_issuer_disclosure": true,
+    "coinbase_10q_group": "coinbase_issuer",
+    "sec_hosting_adds_filing_provenance_not_an_independent_financial_audit": true,
+    "do_not_count_multiple_circle_hosted_or_sec_republished_copies_as_independent_financial_sources": true
+  },
+  "next_actions": [
+    "Preserve the prior 2026-11-04 source correction unchanged and apply this later SEC accession verification only as an append-only overlay.",
+    "Capture byte-complete SEC 8-K and Exhibit 99.1 responses with SHA-256 and an independent timestamp anchor before considering any derived feature.",
+    "Keep Coinbase and Circle issuer observations in separate source-independence groups.",
+    "Track Coinbase's stablecoin revenue presentation change so corporate balance economics are not double-counted.",
+    "Do not infer XRP demand, collateral, payment volume, or price direction from USDC metrics."
+  ],
+  "source_correction_log": [
+    {
+      "correction_id": "COINBASE-Q3-22B-SOURCE-ATTRIBUTION-20261105",
+      "recorded_at_utc": "2026-11-05T13:07:00Z",
+      "prior_source_id": "coinbase_q3_2026_sec_10q",
+      "corrected_source_id": "coinbase_q3_2026_earnings_release",
+      "corrected_claim": "$22B average USDC held in Coinbase products, up 49% YoY",
+      "reason": "Direct SEC 10-Q retrieval confirmed the filing states an all-time high but contains no $22B or 49% figure; Coinbase's October 29 issuer earnings release states both exact values.",
+      "append_only_history_preserved": true
+    }
+  ]
+}

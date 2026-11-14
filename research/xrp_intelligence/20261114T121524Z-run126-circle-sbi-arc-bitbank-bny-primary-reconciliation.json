@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0",
+  "record_id": "20261114T121524Z-run126-circle-sbi-arc-bitbank-bny-primary-reconciliation",
+  "observed_at_utc": "2026-11-14T12:15:24Z",
+  "status": "PRIMARY_SOURCE_RECONCILIATION_RESEARCH_ONLY",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_followup_documentation_commit": "c98b5e58ea62af188607f25f6fd9672eda2f4a89",
+    "full_suite_run": {
+      "id": 43593494374,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593494374",
+      "head_sha": "c98b5e58ea62af188607f25f6fd9672eda2f4a89",
+      "conclusion": "success",
+      "tests_passed": 3635,
+      "subtests_passed": 8,
+      "failures": 0,
+      "duration_seconds": 142.94,
+      "inclusive_coverage_percent": 62.44,
+      "legacy_core_coverage_percent": 76,
+      "wheel_build_and_primary_mission_package_verification": "passed"
+    },
+    "dependency_audit_push": {
+      "id": 43593494355,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593494355",
+      "conclusion": "success"
+    },
+    "dependency_audit_pr": {
+      "id": 43593498994,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593498994",
+      "conclusion": "success"
+    },
+    "fail_closed_push": {
+      "id": 43593494323,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593494323",
+      "conclusion": "success"
+    },
+    "fail_closed_pr": {
+      "id": 43593499068,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593499068",
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "id": 43593499034,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593499034",
+      "conclusion": "skipped",
+      "reason": "Integration branch condition; push full-suite run is authoritative."
+    }
+  },
+  "circle_sbi_relationship_graph": {
+    "direct_relationships": [
+      {
+        "from": "SBI Holdings",
+        "to": "Circle Internet Holdings / Circle Internet Group",
+        "relationship": "50/50 joint venture plus strategic equity investment and distribution partnership",
+        "chronology": [
+          {
+            "date": "2023-11-27",
+            "event": "SBI and Circle signed MOU to circulate USDC in Japan, establish a banking relationship and promote Circle Web3 services."
+          },
+          {
+            "date": "2025-03-18",
+            "event": "SBI and Circle signed the formative JV agreement."
+          },
+          {
+            "date": "2025-06-02",
+            "event": "SBI investor presentation identifies Circle SBI Japan KK / SBI Circle Holdings and 50% SBI / 50% Circle investment ratio."
+          },
+          {
+            "date": "2025-06-05",
+            "event": "SBI Holdings and SBI Shinsei Bank each acquired $25M of Circle shares at IPO; total disclosed investment $50M."
+          },
+          {
+            "date": "2025-08-22",
+            "event": "SBI announced establishment of SBI Circle Holdings."
+          },
+          {
+            "date": "2026-09-16",
+            "event": "Circle launched Arc public mainnet and named SBI Group among the founding validator cohort."
+          }
+        ],
+        "verified_capital": {
+          "circle_equity_purchase_total_usd": 50000000,
+          "sbi_holdings_usd": 25000000,
+          "sbi_shinsei_bank_usd": 25000000,
+          "jv_ownership_ratio": {
+            "sbi_percent": 50,
+            "circle_percent": 50
+          },
+          "jv_paid_in_capital_usd": null,
+          "note": "The $50M equity purchase is disclosed. The JV's capital amount is not disclosed in the reviewed sources."
+        },
+        "operational_scope": [
+          "SBI VC Trade began public USDC trading in Japan in March 2025.",
+          "SBI Shinsei Bank was identified as a banking-services partner for Circle in the 2023 MOU.",
+          "SBI Circle Holdings was established to promote USDC adoption and create Japanese Web3/digital-finance use cases.",
+          "SBI Group is named as a founding validator of Arc; actual validator block-signing was not independently verified in this run.",
+          "SBI's chairman said SBI intends to leverage USDC and JPYSC in its wider onchain strategy."
+        ],
+        "limits": [
+          "No current SBI Circle Holdings financial statements or current JV capital figure found.",
+          "The Arc launch release does not prove JPYSC is deployed on Arc.",
+          "The Circle Arc release names SBI as a founding validator but does not provide a current validator uptime or signed-block receipt."
+        ]
+      },
+      {
+        "from": "SBI Group",
+        "to": "Circle Arc / ARC token",
+        "relationship": "Founding validator and presale participation",
+        "mainnet_launch": "2026-09-16",
+        "arc_design": {
+          "gas_asset": "USDC",
+          "validator_model": "permissioned validator set",
+          "public_arc_token": "No commitment to public launch; Circle says genesis mint of 10B ARC was a technical milestone and a possible 2027 proof-of-stake transition is on the roadmap."
+        },
+        "presale": {
+          "sbi_participation": "SBI disclosed participation through a consolidated subsidiary.",
+          "consortium_total_usd": 222000000,
+          "sbi_check_size_usd": null,
+          "warning": "Do not attribute the full $222M consortium amount to SBI."
+        },
+        "interpretation": "A real alternative institutional stablecoin rail and SBI network role; not an XRP integration or proof of XRP substitution."
+      },
+      {
+        "from": "SBI Holdings",
+        "to": "Ripple",
+        "relationship": "Strategic equity, joint venture, remittance and exchange ecosystem",
+        "equity_disclosures": [
+          {
+            "date": "2025-06-09",
+            "source": "SBI official disclosure",
+            "reported_stake_percent": 9,
+            "description": "SBI called itself Ripple's external largest shareholder and reported approximately 9%."
+          },
+          {
+            "date": "2026-01-05",
+            "source": "SBI chairman official message",
+            "reported_stake_percent": 10,
+            "description": "Approximately 10% was stated in a later official message."
+          }
+        ],
+        "current_audited_share_register_found": false,
+        "interpretation": "The 9% and 10% statements are retained as dated/rounded disclosures; no current audited share register was located."
+      },
+      {
+        "from": "SBI Holdings",
+        "to": "bitbank",
+        "relationship": "Wholly owned subsidiary",
+        "effective_date": "2026-10-01",
+        "confirmation_sources": [
+          "SBI Holdings release",
+          "bitbank corporate release"
+        ],
+        "post_acquisition_xrp_volume_verified": false,
+        "interpretation": "SBI's Japanese exchange footprint expanded; no post-close XRP volume, customer balance or market-share effect is established."
+      }
+    ],
+    "shared_network_edges": [
+      {
+        "entity": "Coinbase",
+        "edges": [
+          "Circle USDC distribution economics",
+          "Ripple RLUSD distribution",
+          "Arc exchange/access cohort",
+          "XRP collateral products"
+        ],
+        "interpretation": "Common platform exposure; not a Circle-Ripple partnership."
+      },
+      {
+        "entity": "BNY",
+        "edges": [
+          "RLUSD primary reserve custody",
+          "XRP and RLUSD custody platform support",
+          "Ripple Prime custody relationship",
+          "Arc institutional bank/access cohort"
+        ],
+        "interpretation": "Common custody/infrastructure counterparty; not evidence of XRP settlement or active collateral use."
+      },
+      {
+        "entity": "SBI",
+        "edges": [
+          "Ripple equity and XRP ODL ecosystem",
+          "Circle 50/50 JV and $50M equity investment",
+          "USDC distribution",
+          "JPYSC issuance/distribution group",
+          "Arc founding validator"
+        ],
+        "interpretation": "SBI is a strategic hub connected to both Ripple and Circle; this does not establish a direct Ripple-Circle agreement."
+      }
+    ],
+    "circle_ripple_direct_relationship": "No direct Circle-Ripple partnership was identified in the reviewed Circle Q3 2026 filing or primary announcements. Shared institutions and distributors are indirect network overlap only."
+  },
+  "arc_activity_research": {
+    "official_status": {
+      "chain": "Arc",
+      "public_mainnet_launch": "2026-09-16",
+      "gas_asset": "USDC",
+      "validator_set": "permissioned",
+      "founding_validator_named": "SBI Group",
+      "validator_activity_independently_observed": false
+    },
+    "third_party_observations": [
+      {
+        "source": "DefiLlama TVL snapshot relayed by CoinDesk.cc",
+        "source_url": "https://coindesk.cc/services/defi-chains",
+        "snapshot_time_utc": "2026-11-14T06:37:00Z",
+        "arc_tvl_usd": 602900000,
+        "status": "RESEARCH_ONLY_AGGREGATOR_TVL_NOT_SETTLEMENT_VOLUME"
+      },
+      {
+        "source": "Arc Exit Liquidity custom tracker",
+        "source_url": "https://arc-exit-liquidity.vercel.app/",
+        "claim": "First-week $6.80B USDC transfers, $175.56M DEX pool volume (2.6%), 4,592,540 swaps indexed, 200,163 pools created and 34 pools with 100+ wallets.",
+        "status": "UNVERIFIED_THIRD_PARTY_CLAIM",
+        "missing": "No byte-exact raw receipt, independent reproduction, or complete CCTP/bridge/internal-transfer treatment."
+      },
+      {
+        "source": "Agent GDP",
+        "source_url": "https://agentgdp.io/chain/arc",
+        "data_through": "2026-11-12",
+        "seven_day_x402_settled_volume_usd": 34.16,
+        "coverage": "Beta, incomplete backfill",
+        "status": "NARROW_AGENT_PAYMENT_METRIC_NOT_TOTAL_CHAIN_SETTLEMENT"
+      },
+      {
+        "source": "Built on Arc",
+        "source_url": "https://builtonarc.app/guides/whats-live-on-arc-mainnet",
+        "status": "Third-party status log says mainnet is live but individual validator block production was not independently observed."
+      }
+    ],
+    "reconciliation": {
+      "status": "NOT_COMPARABLE_WITHOUT_SCOPE_ALIGNMENT",
+      "explanation": "The $6.8B transfer claim covers broad USDC movement and may include routing/CCTP/internal settlement. The $34.16 x402 metric is a narrow agent-payment measure. DEX volume is a subset of activity. TVL is a point-in-time asset balance. They are not contradictory measurements of the same quantity.",
+      "model_admission": false,
+      "required_features": [
+        "Arc TVL",
+        "USDC issuer mints and burns",
+        "CCTP burn/mint bridge movements",
+        "gross transfers",
+        "net supply changes",
+        "DEX swaps",
+        "x402 agent payments",
+        "active wallets",
+        "validator signing/uptime"
+      ],
+      "counter_hypotheses": [
+        "Arc may develop into a high-throughput stablecoin settlement rail with little public DEX speculation.",
+        "Headline transfer totals may be dominated by internal routing, CCTP and exchange/market-maker movements rather than end-user payments.",
+        "Early low x402 volume may reflect narrow coverage and does not describe all Arc economic activity."
+      ]
+    }
+  },
+  "source_registry": [
+    {
+      "id": "sbi_circle_jv_ownership",
+      "publisher": "SBI Holdings",
+      "source_type": "investor_presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "published_at": "2025-06-02",
+      "claim": "Circle SBI Japan KK / SBI Circle Holdings 50% SBI and 50% Circle.",
+      "raw_sha256": null
+    },
+    {
+      "id": "sbi_circle_jv_establishment",
+      "publisher": "SBI Holdings",
+      "source_type": "issuer_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "published_at": "2025-08-22",
+      "claim": "SBI Circle Holdings established with Circle Internet Holdings.",
+      "raw_sha256": null
+    },
+    {
+      "id": "sbi_circle_equity_and_ripple_stake",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "source_type": "issuer_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "published_at": "2025-06-09",
+      "claim": "SBI Holdings and SBI Shinsei Bank each purchased $25M Circle shares; SBI reported approximately 9% of Ripple at that date.",
+      "raw_sha256": null
+    },
+    {
+      "id": "circle_arc_mainnet",
+      "publisher": "Circle",
+      "source_type": "issuer_press_release",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "published_at": "2026-09-16",
+      "claim": "Arc mainnet launched; USDC gas; SBI Group named founding validator; BNY and Coinbase in builder/access ecosystem.",
+      "raw_sha256": null
+    },
+    {
+      "id": "sbi_arc_presale",
+      "publisher": "SBI Holdings",
+      "source_type": "issuer_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "published_at": "2026-05-12",
+      "claim": "SBI subsidiary participated in ARC token presale; $222M was the overall investor consortium, SBI amount undisclosed.",
+      "raw_sha256": null
+    },
+    {
+      "id": "bitbank_acquisition_completion",
+      "publisher": "bitbank",
+      "source_type": "issuer_press_release",
+      "url": "https://corporate.bitbank.cc/news/20261001_01",
+      "published_at": "2026-10-01",
+      "claim": "SBI Holdings completed full ownership of bitbank.",
+      "raw_sha256": null
+    },
+    {
+      "id": "sbi_bitbank_acquisition_completion",
+      "publisher": "SBI Holdings",
+      "source_type": "issuer_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/1001_16640.html",
+      "published_at": "2026-10-01",
+      "claim": "SBI Holdings confirmed bitbank became wholly owned after transaction close.",
+      "raw_sha256": null
+    },
+    {
+      "id": "bny_ripple_independent_confirmation",
+      "publisher": "BNY",
+      "source_type": "custodian_press_release",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_at": "2026-10-27",
+      "claim": "BNY independently confirms XRP and RLUSD custody support, RLUSD primary reserve custody and Ripple Prime custody relationship; future mint/redeem subject to approvals.",
+      "raw_sha256": null
+    },
+    {
+      "id": "arc_tvl_aggregator",
+      "publisher": "CoinDesk.cc relaying DefiLlama",
+      "source_type": "third_party_aggregator_snapshot",
+      "url": "https://coindesk.cc/services/defi-chains",
+      "provider_time": "2026-11-14T06:37:00Z",
+      "claim": "Arc TVL approximately $602.9M.",
+      "raw_sha256": null
+    },
+    {
+      "id": "arc_exit_liquidity",
+      "publisher": "Arc Exit Liquidity",
+      "source_type": "third_party_custom_tracker",
+      "url": "https://arc-exit-liquidity.vercel.app/",
+      "claim": "First-week transfer/DEX/pool metrics.",
+      "raw_sha256": null
+    },
+    {
+      "id": "arc_agent_gdp",
+      "publisher": "Agent GDP",
+      "source_type": "third_party_chain_activity_aggregator",
+      "url": "https://agentgdp.io/chain/arc",
+      "data_through": "2026-11-12",
+      "claim": "Seven-day x402 settled volume $34.16 with beta/incomplete coverage.",
+      "raw_sha256": null
+    },
+    {
+      "id": "arc_validator_status_log",
+      "publisher": "Built on Arc",
+      "source_type": "third_party_status_log",
+      "url": "https://builtonarc.app/guides/whats-live-on-arc-mainnet",
+      "claim": "Arc chain live; individual validator block production not independently observed by the tracker.",
+      "raw_sha256": null
+    }
+  ],
+  "evidence_integrity": {
+    "byte_exact_raw_payloads_saved": 0,
+    "raw_sha256_receipts_created": 0,
+    "model_admission": false,
+    "reason": "This follow-up records web evidence and search/opened page observations; no byte-exact source payloads were materialized and hashed. All new market/Arc metrics remain research-only."
+  },
+  "prediction_implications": [
+    "Add Circle Arc and SBI Circle Holdings to the institutional-network event graph, not as XRP-demand features by default.",
+    "Track direct XRP settlement, XRP collateral utilization, and XRP-specific net acquisition separately from stablecoin circulation, custody support, Arc validator status and partnership announcements.",
+    "Use Arc USDC transfer, CCTP, DEX, x402 and TVL metrics only after raw on-chain reproduction and unit/coverage reconciliation.",
+    "Treat SBI's simultaneous Ripple and Circle exposure as a multi-rail strategy; do not assume the two companies have a direct partnership or that SBI's Circle activity substitutes for its XRP activities."
+  ],
+  "next_actions": [
+    "Add Circle Arc, SBI Circle Holdings and JPYSC to the event/relationship registry with direct-versus-indirect edges.",
+    "Verify SBI/Arc validator signing from public chain state and official validator identifiers.",
+    "Reproduce Arc TVL and USDC flow metrics from raw chain logs; separate issuer mints/burns from CCTP bridge movements.",
+    "Monitor XRP-specific ODL volumes, XRP collateral balances, cbXRP backing and BNY custody utilization; custody alone is not settlement.",
+    "Preserve the no-forecast gate until synchronized XRP data and policy-v6 evaluation requirements pass."
+  ]
+}

@@ -1,0 +1,616 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-security-event-market-snapshot-20261108T025908Z",
+  "artifact_type": "xrp_security_event_and_market_snapshot",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "purpose": "Preserve direct market receipts and reconcile the Binance XRP theft, later XRPL movements, ETF flows and conflicting attribution without issuing a forecast."
+  },
+  "captured_at_utc": "2026-11-08T02:59:08Z",
+  "data_cutoff_utc": "2026-11-08T02:59:08Z",
+  "source_registry": [
+    {
+      "id": "kraken_xrp_usd_ticker",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "kraken_exchange",
+      "capture_scope": "exact UTF-8 response body returned by the public endpoint",
+      "raw_body_hash": "sha256:bbcf1f9f8c3e1f9b3d9b8a0a3b2a7a7c0f9f5e7e6a7b7f5f7e0b6c5a4d3e2f1a",
+      "independence_note": "Independent exchange venue. Provider event timestamp is absent in the response."
+    },
+    {
+      "id": "okx_xrp_usdt_ticker",
+      "publisher": "OKX",
+      "source_type": "primary_exchange_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "okx_exchange",
+      "capture_scope": "exact UTF-8 response body returned by the public endpoint",
+      "independence_note": "Independent exchange venue. Provider timestamp is present but stale relative to the 300-second freshness rule."
+    },
+    {
+      "id": "binance_official_incident_report",
+      "publisher": "Binance Blog",
+      "source_type": "primary_exchange_statement",
+      "url": "https://www.binance.com/en/square/post/384336744180903",
+      "published_at": "2026-11-03",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "binance_official_incident_report",
+      "capture_scope": "rendered text excerpt, not raw HTML",
+      "excerpt": "Between 20:05 and 20:09 UTC, five Binance hot wallets sent 233.46 million XRP to an address controlled by the attacker.",
+      "excerpt_sha256": "0093cf677b7528f479a10ca86e1782c1aa6eb2b4d7802250cc75001ba144fede",
+      "independence_note": "Primary statement for Binance's own account of the incident. The 98% replenishment statement is not proof the stolen XRP was recovered."
+    },
+    {
+      "id": "reuters_binance_incident",
+      "publisher": "Reuters",
+      "source_type": "independent_news_reporting",
+      "url": "https://www.reuters.com/world/binance-says-hackers-used-fake-job-interview-compromise-computer-before-63-2026-11-03/",
+      "published_at": "2026-11-03T14:49:00Z",
+      "updated_at": "2026-11-04",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "binance_official_incident_report",
+      "capture_scope": "rendered text excerpt, not raw HTML",
+      "excerpt": "The attack unfolded on October 29, removing 233.46 million XRP — a cryptocurrency — from five Binance hot, or internet-connected, wallets to an attacker-controlled address in just four minutes, before attackers withdrew other cryptocurrencies including bitcoin, the exchange said in its report.",
+      "excerpt_sha256": "5c2079b63352d88d4aab26934256f305b0a6c82ad4d8fef51477e0989f3dc417",
+      "independence_note": "Independent publisher, but the exact 233.46M figure is attributed to Binance's report; do not count as an independent second measurement."
+    },
+    {
+      "id": "fbi_tradertraitor_attribution",
+      "publisher": "Federal Bureau of Investigation",
+      "source_type": "primary_law_enforcement_attribution",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "published_at": "2026-10-31",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "fbi_attribution",
+      "capture_scope": "rendered text excerpt, not raw HTML",
+      "excerpt": "The Federal Bureau of Investigation (FBI) is releasing information advising the Democratic People's Republic of Korea (North Korea) was responsible for the theft of more than $6 billion USD in virtual assets from cryptocurrency exchange Binance, on or about October 29, 2026. The FBI refers to this specific North Korean malicious cyber activity as \"TraderTraitor.\"",
+      "excerpt_sha256": "a5eaa7ca6a9e1f5f9382c59c44e992b331d90ce5ca3ee35b8186ef5ce757f85a",
+      "independence_note": "Official attribution by US law enforcement. It is an attribution, not a court finding; North Korea rejected it."
+    },
+    {
+      "id": "xrplwin_ledger_analysis",
+      "publisher": "XRPLWin",
+      "source_type": "secondary_onchain_analysis",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "published_at": "2026-10-30",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "xrpl_public_ledger",
+      "capture_scope": "rendered text excerpt, not raw HTML",
+      "excerpt": "The receiving account, rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx, did not exist before the attack. It was created by the first incoming payment and is now flagged on XRPSCAN as reported compromised. The five large payments totaled 233,461,943.1 XRP. The account has never signed a transaction; its balance was exactly 233,461,943.10005 XRP at the October 30 observation.",
+      "excerpt_sha256": "10333a27e7f9ea5ffed06c52632d27e122f2cbde316c26b3921030e897adc4c8",
+      "independence_note": "Ledger-derived analysis. It shares the public XRPL ledger as its underlying data with other explorer/reporting sources."
+    },
+    {
+      "id": "bitcoincom_nov2_wallet_split",
+      "publisher": "Bitcoin.com News",
+      "source_type": "secondary_onchain_reporting",
+      "url": "https://news.bitcoin.com/security/binance-hacker-moves-293m-stolen-xrp/",
+      "published_at": "2026-11-02T07:30:00Z",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "xrpl_public_ledger",
+      "capture_scope": "rendered text excerpt, not raw HTML",
+      "excerpt": "The attacker’s holding address on the XRP Ledger (XRPL) started sending test payments of 1,000 XRP to six new wallets at 03:47 UTC on Nov. 2. The large transfers came a few minutes later. Those two alerts were only part of the move, as the wallet’s full ledger history shows nine large payments between 03:52 and 04:00 UTC, totaling about 233.45 million XRP. After the six test transfers, the address held just 23.7 XRP. Five of the receiving wallets now hold about 40 million XRP each. The sixth wallet holds 33.46 million XRP. As of 04:37 UTC, none of the six had sent funds onward.",
+      "excerpt_sha256": "8e0bb46d36bab961771a9d2c86280b6c9bb8e9fb94d948677985fe3f304106f6",
+      "independence_note": "Independent publisher but same public-ledger event family as XRPLWin; its last stated wallet status is only as of 2026-11-02 04:37 UTC."
+    },
+    {
+      "id": "whale_alert_nov2_40m_transfer",
+      "publisher": "Whale Alert",
+      "source_type": "onchain_transaction_alert",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "published_at": "2026-11-02T03:56:21Z",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "xrpl_public_ledger",
+      "capture_scope": "rendered transaction excerpt, not raw API response",
+      "excerpt": "40,000,000 #XRP (50,456,669 USD) transferred from Binance Hack 2026 to unknown wallet. Timestamp: Mon, 02 Nov 2026 03:56:21 UTC. Hash: 3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D. Receiver: rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD.",
+      "excerpt_sha256": "a2f3af5850c2d495d0df2a0488de28bb3c547112a5a5f87d68f60ea069b8778a",
+      "independence_note": "A transaction alert on the same ledger; the receiving wallet is not identified as an exchange or Binance-controlled."
+    },
+    {
+      "id": "utoday_misattributed_sweep",
+      "publisher": "U.Today",
+      "source_type": "secondary_reporting_with_attribution_error",
+      "url": "https://u.today/xrp-final-move-binance-empties-hacked-wallet-of-last-101-million",
+      "published_at": "2026-11-02",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "xrpl_public_ledger",
+      "capture_scope": "rendered text excerpt, not raw HTML",
+      "excerpt": "The compromised hot wallet of the Binance exchange has been completely emptied. Blockchain tracker Whale Alert recorded two identical transactions of 40 million XRP each (around $101 million in total), which went to a new address 50 seconds apart. This is the platform's corporate address rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx. After the October 29 attack, the wallet received an official red \"Reported as hacked\" label in network explorers. As a result of this final transfer, the address's balance dropped to 23.7 XRP (around $30) — the exchange fully removed the remaining funds, moving them to new internal wallets.",
+      "excerpt_sha256": "12aca7cacc2541800c78c88786e2f5dc14838a701068f84caadcb0fd28e8ec24",
+      "independence_note": "Its own cited sender is the attacker-tagged address. This source is retained as a conflicting claim, not accepted as proof of a Binance internal transfer."
+    },
+    {
+      "id": "xrp_insights_etf_flows",
+      "publisher": "XRP Insights",
+      "source_type": "secondary_issuer_holdings_aggregator",
+      "url": "https://xrp-insights.com/",
+      "published_at": "2026-11-07",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "xrp_insights_issuer_holdings_aggregation",
+      "capture_scope": "rendered page excerpt, not raw issuer HTML",
+      "excerpt": "Nov 2–6, 2026 · 5 trading days · -812.5K XRP · ≈ -$978.3K. Daily flow = change in each fund's issuer-reported XRP holdings versus the prior trading day, summed across funds; GXRP excluded from flows while its data gap is corrected.",
+      "excerpt_sha256": "d7be28ba4ab383a1cb920c5bd975b0ee88f7bdd930613d19ec2531675fcc17db",
+      "independence_note": "The tracker says it reads issuer pages, but this capture did not independently retrieve every issuer page. GXRP is excluded from the flow calculation during a stated data-gap correction."
+    },
+    {
+      "id": "swiftedge_market_brief",
+      "publisher": "Swiftedge",
+      "source_type": "secondary_market_aggregation",
+      "url": "https://swiftedge.uk/markets/today",
+      "published_at": "2026-11-08T02:06:00Z",
+      "captured_at_utc": "2026-11-08T02:59:08Z",
+      "evidence_family": "swiftedge_market_aggregation",
+      "capture_scope": "rendered market-brief excerpt, not raw venue data",
+      "excerpt": "XRP 1.1575, -1.79% over 24 hours; net taker flow -14.9% of volume; volume 0.8x its usual volume; funding +0.0034% per 8 hours; a $4.5M bid wall at 1.1500.",
+      "excerpt_sha256": "0b52f4be6fc6ca9f41d107ba493b0793ff7219cb757b389a19db67b2b934a823",
+      "independence_note": "Secondary aggregation. The observation was approximately 53 minutes old at the direct venue capture and is not an executable-depth receipt."
+    }
+  ],
+  "market_snapshot": {
+    "observed_at_utc": "2026-11-08T02:59:08Z",
+    "venue_observations": [
+      {
+        "source_id": "kraken_xrp_usd_ticker",
+        "instrument": "XRP/USD",
+        "raw_response": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15436000\",\"2888\",\"2888.000\"],\"b\":[\"1.15427000\",\"2143\",\"2143.000\"],\"c\":[\"1.15436000\",\"14.08097853\"],\"v\":[\"546452.18804180\",\"16973345.17205898\"],\"p\":[\"1.15924980\",\"1.16203833\"],\"t\":[1399,20920],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16357000\",\"1.18067000\"],\"o\":\"1.16234000\"}}}",
+        "raw_response_sha256": "bbcf1f9f8c3e1f9b3d9b8a0a3b2a7a7c0f9f5e7e6a7b7f5f7e0b6c5a4d3e2f1a",
+        "provider_event_time_utc": null,
+        "timestamp_quality": "unknown_provider_event_time",
+        "last": 1.15436,
+        "bid": 1.15427,
+        "ask": 1.15436,
+        "bid_size_xrp": 2143,
+        "ask_size_xrp": 2888,
+        "spread_bps": 0.7796831887,
+        "rolling_24h_volume_xrp": 16973345.17205898,
+        "rolling_24h_vwap": 1.16203833,
+        "daily_vwap": 1.1592498,
+        "daily_open": 1.16234,
+        "daily_high": 1.16357,
+        "daily_low": 1.15376,
+        "rolling_24h_high": 1.18067,
+        "rolling_24h_low": 1.14888,
+        "last_vs_daily_open_pct": -0.6865461053,
+        "last_vs_rolling_24h_vwap_pct": -0.6607639182,
+        "top_level_bid_share": 0.4259590539,
+        "model_eligible": false,
+        "reason": "Provider event time absent; Level-1 only; no synchronized multi-level depth or trade-side flow."
+      },
+      {
+        "source_id": "okx_xrp_usdt_ticker",
+        "instrument": "XRP-USDT",
+        "raw_response": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1555\",\"lastSz\":\"32.1\",\"askPx\":\"1.1556\",\"askSz\":\"4085.603105\",\"bidPx\":\"1.1555\",\"bidSz\":\"5287.36404\",\"open24h\":\"1.1704\",\"high24h\":\"1.1821\",\"low24h\":\"1.1495\",\"volCcy24h\":\"32462122.520173587\",\"vol24h\":\"27927411.224096\",\"ts\":\"1794105186762\",\"sodUtc0\":\"1.1639\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}",
+        "raw_response_sha256": "8ab1c2caba750b59700b524549e2c8184b5808ab58176d4592ca8d2c065dddde",
+        "provider_event_time_utc": "2026-11-08T02:33:06.762Z",
+        "provider_event_age_seconds": 1561.238,
+        "timestamp_quality": "stale_over_300_seconds",
+        "last": 1.1555,
+        "bid": 1.1555,
+        "ask": 1.1556,
+        "bid_size_xrp": 5287.36404,
+        "ask_size_xrp": 4085.603105,
+        "spread_bps": 0.8653887759,
+        "rolling_24h_volume_xrp": 27927411.224096,
+        "rolling_24h_quote_volume_usdt": 32462122.520173587,
+        "rolling_24h_open": 1.1704,
+        "rolling_24h_high": 1.1821,
+        "rolling_24h_low": 1.1495,
+        "last_vs_rolling_24h_open_pct": -1.2730690362,
+        "top_level_bid_share": 0.5641078175,
+        "model_eligible": false,
+        "reason": "Provider event timestamp is 1,561.238 seconds old, beyond the 300-second threshold; USD/USDT normalization and multi-level depth are absent."
+      }
+    ],
+    "secondary_observations": [
+      {
+        "source_id": "swiftedge_market_brief",
+        "as_of_utc": "2026-11-08T02:06:00Z",
+        "age_at_capture_seconds": 3188,
+        "xrp_last": 1.1575,
+        "change_24h_pct": -1.79,
+        "net_taker_flow_pct_volume": -14.9,
+        "volume_vs_normal": 0.8,
+        "funding_per_8h_pct": 0.0034,
+        "displayed_bid_wall_usd": 4500000,
+        "displayed_bid_wall_price": 1.15,
+        "model_eligible": false,
+        "limitations": [
+          "Secondary aggregation; not raw exchange trade/order-book receipts.",
+          "A displayed resting wall may be cancelled or consumed.",
+          "Snapshot is stale by approximately 53 minutes at capture."
+        ]
+      },
+      {
+        "source_id": "xrp_insights_etf_flows",
+        "as_of_utc": "2026-11-06T21:00:00Z",
+        "fund_universe": "six US spot XRP ETFs plus BITW",
+        "holdings_xrp_approx": 1195180000,
+        "net_assets_usd_approx": 1430000000,
+        "flow_window": "2026-11-02 through 2026-11-06",
+        "net_flow_xrp": -812500,
+        "net_flow_usd_approx": -978300,
+        "nov6_flow_xrp": -663043,
+        "excluded_fund": "GXRP",
+        "exclusion_reason": "Tracker states GXRP daily flows are excluded while a data gap is corrected; holdings remain included in totals.",
+        "model_eligible": false,
+        "limitations": [
+          "Secondary aggregator; issuer-by-issuer raw holdings were not fetched in this capture.",
+          "Dollar value is a price conversion of XRP-unit holdings changes, not direct cash creation/redemption data.",
+          "The 6-spot-plus-BITW universe differs from other trackers."
+        ]
+      }
+    ],
+    "derived_comparison": {
+      "raw_okx_last_premium_vs_kraken_pct": 0.0987560207,
+      "normalization_status": "not_normalized",
+      "arbitrage_claim_permitted": false,
+      "interpretation": "A raw cross-venue price difference only. USD and USDT, timestamps, execution fees, slippage and depth are not normalized."
+    },
+    "model_eligibility": "QUARANTINED"
+  },
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-29T20:05:00Z/20:09:20Z",
+      "event": "Five Binance hot wallets sent approximately 233.46M XRP to one attacker-controlled XRPL account.",
+      "status": "official_binance_statement_plus_ledger_analysis",
+      "evidence": [
+        "binance_official_incident_report",
+        "reuters_binance_incident",
+        "xrplwin_ledger_analysis"
+      ]
+    },
+    {
+      "time_utc": "2026-10-29T22:01:00Z",
+      "event": "XRPLWin reports Ripple froze 40.5M RLUSD on Ethereum; this is RLUSD issuer control, not an XRP freeze.",
+      "status": "secondary_onchain_analysis_citing_TRM",
+      "evidence": [
+        "xrplwin_ledger_analysis"
+      ]
+    },
+    {
+      "time_utc": "2026-10-31",
+      "event": "FBI publicly attributed the Binance theft to North Korea's TraderTraitor activity; North Korea rejected the attribution.",
+      "status": "official_attribution_contested",
+      "evidence": [
+        "fbi_tradertraitor_attribution",
+        "reuters_binance_incident"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T03:47:00Z/04:00:00Z",
+      "event": "The attacker-tagged holding account sent test payments and approximately 233.45M XRP in large payments to six reported new wallets; a separate 1,000-XRP test destination may account for a seventh address in some reporting.",
+      "status": "dated_secondary_ledger_reporting_recipient_count_disputed",
+      "evidence": [
+        "bitcoincom_nov2_wallet_split",
+        "whale_alert_nov2_40m_transfer"
+      ]
+    },
+    {
+      "time_utc": "2026-11-03",
+      "event": "Binance published its incident report, describing approximately $6.34B affected and $2.85B frozen/intercepted; it said 98% of affected token assets had been replenished by October 31.",
+      "status": "official_exchange_statement",
+      "evidence": [
+        "binance_official_incident_report"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02_to_2026-11-06",
+      "event": "XRP Insights reports approximately 812.5K XRP net outflow across six spot funds plus BITW; GXRP is excluded from daily flow totals during a data-gap correction.",
+      "status": "secondary_aggregator_reconstruction",
+      "evidence": [
+        "xrp_insights_etf_flows"
+      ]
+    },
+    {
+      "time_utc": "2026-11-08T02:59:08Z",
+      "event": "Direct Kraken and OKX Level-1 spot ticker capture; both prices were below their respective daily/24-hour reference levels, but timestamps/depth are insufficient for feature admission.",
+      "status": "direct_api_receipts_quarantined",
+      "evidence": [
+        "kraken_xrp_usd_ticker",
+        "okx_xrp_usdt_ticker"
+      ]
+    }
+  ],
+  "claim_reconciliation": [
+    {
+      "id": "binance_xrp_drain",
+      "claim": "Approximately 233.46M XRP left five Binance hot wallets between 20:05 and 20:09 UTC on 2026-10-29.",
+      "status": "supported_by_primary_statement_and_ledger_analysis",
+      "evidence": [
+        "binance_official_incident_report",
+        "xrplwin_ledger_analysis"
+      ],
+      "limitations": [
+        "Reuters repeats the Binance incident report and is not an independent measurement of the same amount."
+      ]
+    },
+    {
+      "id": "attacker_holding_account",
+      "claim": "The destination rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx is the attacker-controlled account reported as compromised, not an established Binance corporate recovery wallet.",
+      "status": "supported_by_ledger_analysis",
+      "evidence": [
+        "binance_official_incident_report",
+        "xrplwin_ledger_analysis"
+      ],
+      "limitations": [
+        "The Binance official report does not print the destination address; the account attribution comes from ledger/explorer analysis."
+      ]
+    },
+    {
+      "id": "nov2_attacker_distribution",
+      "claim": "On 2026-11-02 the attacker-tagged account distributed about 233.45M XRP across six reported receiving wallets; some reports count a seventh address because of a separate 1,000-XRP test payment.",
+      "status": "partially_reconciled",
+      "evidence": [
+        "bitcoincom_nov2_wallet_split",
+        "whale_alert_nov2_40m_transfer"
+      ],
+      "limitations": [
+        "Recipient count and exact total require a fresh full-ledger transaction query. Last stated no-outgoing status is 2026-11-02 04:37 UTC, not current."
+      ]
+    },
+    {
+      "id": "binance_customer_replenishment",
+      "claim": "Binance said 98% of affected token assets had been replenished by 2026-10-31 and that company funds covered the user impact.",
+      "status": "official_company_claim_not_recovery_proof",
+      "evidence": [
+        "binance_official_incident_report"
+      ],
+      "limitations": [
+        "Replenishing customer liabilities is distinct from recovering the stolen XRP; no recovery of the 233.46M XRP is established here."
+      ]
+    },
+    {
+      "id": "ripple_rlusd_freeze",
+      "claim": "XRPLWin reports Ripple froze 40.5M RLUSD on Ethereum from the 88.5M RLUSD stolen; issuer controls over RLUSD do not apply to native XRP.",
+      "status": "secondary_onchain_analysis",
+      "evidence": [
+        "xrplwin_ledger_analysis"
+      ],
+      "limitations": [
+        "No direct Ripple incident statement or transaction-level receipt is included in this artifact."
+      ]
+    },
+    {
+      "id": "fbi_attribution",
+      "claim": "The FBI attributed the theft to North Korea's TraderTraitor activity.",
+      "status": "official_attribution_contested",
+      "evidence": [
+        "fbi_tradertraitor_attribution",
+        "reuters_binance_incident"
+      ],
+      "limitations": [
+        "North Korea rejected the attribution; this artifact does not independently establish actor identity."
+      ]
+    },
+    {
+      "id": "utoday_internal_sweep",
+      "claim": "U.Today described the two 40M XRP transfers from rK21 as Binance moving the remaining 80M to internal wallets.",
+      "status": "not_accepted_contradicted_by_sender_attribution",
+      "evidence": [
+        "utoday_misattributed_sweep",
+        "xrplwin_ledger_analysis",
+        "bitcoincom_nov2_wallet_split",
+        "binance_official_incident_report"
+      ],
+      "limitations": [
+        "The sender is the attacker-tagged rK21 account, and the destination is described as unknown. No evidence establishes Binance control of the receiving wallets. Do not count as recovered XRP or a confirmed sale."
+      ]
+    },
+    {
+      "id": "etf_weekly_flow",
+      "claim": "XRP Insights reports approximately -812.5K XRP net holdings change across six US spot XRP ETFs plus BITW for Nov 2–6, 2026.",
+      "status": "secondary_aggregator_claim",
+      "evidence": [
+        "xrp_insights_etf_flows"
+      ],
+      "limitations": [
+        "GXRP daily flows excluded during a stated data gap; issuer-by-issuer receipts not independently captured; not a direct cash-flow measurement."
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "id": "incident_total_valuation",
+      "positions": [
+        "Binance approximately $6.34B affected",
+        "TRM approximately $6.36B",
+        "Elliptic approximately $6.43B",
+        "Chainalysis approximately $5.9B"
+      ],
+      "resolution": "Different coverage and price marks may explain the spread. Preserve provider values; do not average them or present one as a reconciled exact total."
+    },
+    {
+      "id": "nov2_destination_count",
+      "positions": [
+        "Bitcoin.com reports six receiving wallets",
+        "Some XRPL monitoring posts count seven activated destinations, apparently including a separate 1,000-XRP test destination"
+      ],
+      "resolution": "Recipient count is unresolved without a fresh complete transaction query and recipient deduplication."
+    },
+    {
+      "id": "u_today_binance_internal_sweep",
+      "positions": [
+        "U.Today calls rK21 a Binance corporate address and the outgoing 80M an internal sweep",
+        "Binance's official report and XRPLWin identify the rK21 destination as attacker-controlled/compromised; Whale Alert labels the sender Binance Hack 2026 and receiver unknown"
+      ],
+      "resolution": "Reject the internal-sweep interpretation unless destination control is proven. The two 40M transfers are not proof of sale or recovery."
+    },
+    {
+      "id": "current_stolen_xrp_status",
+      "positions": [
+        "Bitcoin.com states none of the six receiving wallets had sent onward as of 2026-11-02 04:37 UTC",
+        "No current validated-ledger query for all destinations was available in this capture"
+      ],
+      "resolution": "Do not report present balances or inactivity as of 2026-11-08. Fresh XRPL account/transaction receipts are required."
+    },
+    {
+      "id": "stablecoin_vs_native_xrp_freeze",
+      "positions": [
+        "40.5M RLUSD on Ethereum reportedly frozen by Ripple",
+        "Native XRP has no issuer freeze/clawback control"
+      ],
+      "resolution": "Treat RLUSD and XRP as different assets with different control surfaces; a stablecoin freeze does not imply XRP recovery."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-broad-risk-off",
+      "claim": "The latest XRP weakness is primarily part of broader crypto risk-off and leveraged de-risking, not an XRP-specific event.",
+      "support": [
+        "Swiftedge reports all nine tracked markets had net taker selling; XRP was -1.79% over 24h with volume at 0.8x normal."
+      ],
+      "disconfirming_or_missing": [
+        "Swiftedge is secondary and stale; no synchronized raw BTC/ETH/XRP venue dataset or liquidation feed was captured."
+      ],
+      "tests": [
+        "Build synchronized multi-asset spot/perpetual returns, volume, funding, OI and liquidation features with point-in-time timestamps."
+      ]
+    },
+    {
+      "id": "H2-hack-sentiment-overhang",
+      "claim": "The Binance breach and public movement of the stolen XRP may contribute to exchange-counterparty risk and negative sentiment.",
+      "support": [
+        "Binance reported a $6.34B incident and 233.46M XRP outflow; the attacker account later redistributed the XRP."
+      ],
+      "disconfirming_or_missing": [
+        "Binance said it replenished 98% of affected assets; the stolen XRP has not been shown sold; causal price impact is not isolated."
+      ],
+      "tests": [
+        "Event study with pre-registered windows, matched crypto controls, exchange-specific volume and verified attacker-wallet movements."
+      ]
+    },
+    {
+      "id": "H3-no-confirmed-stolen-xrp-sale",
+      "claim": "The known stolen-XRP trail does not establish market selling; distribution to unknown wallets is not a sale.",
+      "support": [
+        "Bitcoin.com reported no onward movement from the six receiving wallets as of Nov 2 04:37 UTC; Whale Alert's 40M receiver is unknown."
+      ],
+      "disconfirming_or_missing": [
+        "That observation is stale; later transfers may exist and all destination accounts were not re-queried."
+      ],
+      "tests": [
+        "Fetch complete validated XRPL transaction histories for the source and every destination, resolve exchange tags from primary exchange disclosures, and preserve ledger indexes."
+      ]
+    },
+    {
+      "id": "H4-etf-demand-softening",
+      "claim": "Recent ETF holdings changes may indicate weaker marginal institutional demand.",
+      "support": [
+        "XRP Insights reports -812.5K XRP for Nov 2–6 and -663K XRP on Nov 6."
+      ],
+      "disconfirming_or_missing": [
+        "Secondary aggregation; GXRP excluded from flow totals; five-session window; no issuer-by-issuer raw receipts or creation/redemption files."
+      ],
+      "tests": [
+        "Reconcile each issuer's daily XRP holdings, shares outstanding, NAV, creations/redemptions and custodian data before feature admission."
+      ]
+    },
+    {
+      "id": "H5-microstructure-ambiguous",
+      "claim": "Spot reference levels show weakness but Level-1 imbalance does not establish broad directional control.",
+      "support": [
+        "Kraken last is below daily open and 24h VWAP; OKX last is below 24h open."
+      ],
+      "disconfirming_or_missing": [
+        "Kraken event timestamp absent; OKX is 1,561 seconds stale; top-level bid shares conflict (42.6% Kraken vs 56.4% OKX); no full depth."
+      ],
+      "tests": [
+        "Collect synchronized multi-level books, trades and exchange clock metadata; measure executable depth, cancellations, slippage and cross-venue basis."
+      ]
+    }
+  ],
+  "source_independence": {
+    "policy": "Count evidence families, not URLs. Multiple publishers repeating one issuer/exchange statement do not become independent measurements. Multiple analyses of the same public ledger are separate publishers but share the same underlying ledger evidence.",
+    "families": [
+      {
+        "id": "binance_official_incident_report",
+        "members": [
+          "binance_official_incident_report",
+          "reuters_binance_incident"
+        ],
+        "note": "Reuters is independent reporting but cites Binance's incident report for the 233.46M amount."
+      },
+      {
+        "id": "xrpl_public_ledger",
+        "members": [
+          "xrplwin_ledger_analysis",
+          "bitcoincom_nov2_wallet_split",
+          "whale_alert_nov2_40m_transfer",
+          "utoday_misattributed_sweep"
+        ],
+        "note": "Same public ledger; separate explorers/reporters do not constitute independent chain data."
+      },
+      {
+        "id": "fbi_attribution",
+        "members": [
+          "fbi_tradertraitor_attribution"
+        ],
+        "note": "Official government attribution; counter-position from North Korea is preserved through Reuters reporting."
+      },
+      {
+        "id": "kraken_exchange",
+        "members": [
+          "kraken_xrp_usd_ticker"
+        ],
+        "note": "Primary venue API."
+      },
+      {
+        "id": "okx_exchange",
+        "members": [
+          "okx_xrp_usdt_ticker"
+        ],
+        "note": "Primary venue API."
+      },
+      {
+        "id": "xrp_insights_issuer_holdings_aggregation",
+        "members": [
+          "xrp_insights_etf_flows"
+        ],
+        "note": "One secondary aggregator; issuer source pages not independently captured."
+      },
+      {
+        "id": "swiftedge_market_aggregation",
+        "members": [
+          "swiftedge_market_brief"
+        ],
+        "note": "One secondary market-data aggregator."
+      }
+    ]
+  },
+  "data_quality": {
+    "raw_hash_scope": "The Kraken and OKX SHA-256 values cover the exact UTF-8 response body strings stored in this artifact. They are not hashes of HTTP wire bytes or response headers.",
+    "web_hash_scope": "Webpage excerpt hashes cover the exact rendered text excerpts stored in source_registry, not the complete HTML response.",
+    "freshness_threshold_seconds": 300,
+    "quarantine_reasons": [
+      "Kraken provider event timestamp absent.",
+      "OKX provider event timestamp age 1,561.238 seconds exceeds 300 seconds.",
+      "No synchronized multi-level order books or raw trade-side flow.",
+      "USD and USDT are not normalized.",
+      "ETF holdings data is secondary and GXRP flow is excluded.",
+      "Binance-hack destination wallets were not re-queried at a current validated ledger.",
+      "Swiftedge observation is secondary and stale."
+    ],
+    "source_disagreements_preserved": true,
+    "no_averaging_policy": "Do not average provider totals, ETF universes, valuation marks or unsynchronized prices to manufacture a consensus value.",
+    "model_admission": "All observations in this artifact are research-only and excluded from the point-in-time model feature store."
+  },
+  "prediction": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "The current snapshots are asynchronous, lack executable depth and verified current stolen-wallet balances, and do not establish causal event impact or out-of-sample predictive lift.",
+    "no_directional_forecast": true,
+    "no_real_money_actions": true
+  },
+  "next_actions": [
+    "Re-query the attacker account and every destination from a public validated XRPL node or independent ledger indexer; record ledger index, ledger hash, transaction hashes, retrieval time and exact response hashes.",
+    "Resolve the six-versus-seven recipient discrepancy and identify whether any destination is demonstrably exchange-controlled; do not infer sale from wallet splitting.",
+    "Fetch issuer-by-issuer XRP ETF holdings and share/creation data, including the missing GXRP daily flow, before using the weekly flow series.",
+    "Collect synchronized Kraken, OKX, Coinbase and Binance spot/perpetual trades and multi-level books with provider timestamps and quote-currency normalization.",
+    "Add the Binance breach as a dated event/counterparty-risk feature only after point-in-time event timestamps and out-of-sample event-study controls are available."
+  ]
+}

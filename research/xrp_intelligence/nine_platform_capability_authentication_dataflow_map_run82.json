@@ -1,0 +1,145 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "snapshot_id": "run82-2026-11-13T07:30:19Z",
+  "captured_at_utc": "2026-11-13T07:30:19Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "observed_integration_head": "6bd5e7fd064010846b29da259ccab701df843856",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "platforms": {
+    "ChatGPT": {
+      "intended_role": [
+        "mission coordination",
+        "public-source research synthesis",
+        "GitHub repository inspection and controlled integration-branch artifact updates"
+      ],
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "verified_connection": "Current ChatGPT session to Barrot-Agent/B-Agent through GitHub connector",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "pull": true,
+        "triage": true
+      },
+      "least_privilege_satisfied": false,
+      "data_flow": "ChatGPT session <-> GitHub connector <-> repository. No external-model data transfer.",
+      "verification_evidence": [
+        "Fetched current main SHA and complete main tree",
+        "Fetched integration branch ref/tree and PR #1662",
+        "Fetched all four open-PR inventory pages",
+        "Fetched PR reviews, workflow runs and job logs",
+        "Created/updated research and handoff artifacts on existing integration branch"
+      ],
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Claude": {
+      "intended_role": [
+        "independent institutional/corporate relationship review",
+        "counter-hypothesis and source-quality review"
+      ],
+      "authentication_status": "UNVERIFIED_NO_BARROT_CONNECTION",
+      "corporate_context": "SBI Holdings announced a Claude/Anthropic collaboration; this is not Barrot authentication or data flow.",
+      "permissions": "none verified",
+      "data_flow": "none verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Grok": {
+      "intended_role": [
+        "independent public-source discovery",
+        "red-team alternative hypotheses"
+      ],
+      "authentication_status": "UNVERIFIED_NO_BARROT_CONNECTION",
+      "permissions": "none verified",
+      "data_flow": "none verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Gemini": {
+      "intended_role": [
+        "independent market-data/source methodology review",
+        "counter-evidence search"
+      ],
+      "authentication_status": "UNVERIFIED_NO_BARROT_CONNECTION",
+      "permissions": "none verified",
+      "data_flow": "none verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Copilot": {
+      "intended_role": [
+        "repository code review and security red-team"
+      ],
+      "authentication_status": "UNVERIFIED_AS_A_BARROT_DATA_CONNECTION",
+      "observed_activity": "Prior automated review artifacts exist on other PRs; PR #1662 currently has zero formal reviews and approvals.",
+      "permissions": "no separate authenticated connector verified",
+      "data_flow": "no direct structured Barrot-to-Copilot evidence exchange verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Codex": {
+      "intended_role": [
+        "independent implementation review",
+        "test design and reproducibility review"
+      ],
+      "authentication_status": "UNVERIFIED_NO_BARROT_CONNECTION",
+      "permissions": "none verified",
+      "data_flow": "none verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Hugging Face": {
+      "intended_role": [
+        "optional isolated model hosting and reproducible evaluation"
+      ],
+      "authentication_status": "NOT_VERIFIED_CURRENTLY",
+      "observed_state": "Prior BUILD_ERROR; no deployment or Space restart.",
+      "permissions": "none verified",
+      "data_flow": "none verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Kaggle": {
+      "intended_role": [
+        "offline benchmark datasets and reproducible evaluation"
+      ],
+      "authentication_status": "UNTESTED_NO_SUBMISSION",
+      "permissions": "none verified",
+      "data_flow": "none verified",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    },
+    "Databricks": {
+      "intended_role": [
+        "optional governed historical-data lakehouse and batch evaluation"
+      ],
+      "authentication_status": "BLOCKED_PREVIOUS_HTTP_403",
+      "permissions": "no verified write access",
+      "data_flow": "no verified data transfer or write",
+      "last_verified_at_utc": "2026-11-13T07:30:19Z"
+    }
+  },
+  "additional_provider": {
+    "name": "LunaRoute",
+    "status": "CONFIGURED_ENDPOINT_AUTHENTICATION_UNVERIFIED",
+    "main_configuration": "Remote MCP enabled; edit/bash/webfetch permissions allow.",
+    "integration_configuration": "Remote MCP disabled; write-capable actions require approval.",
+    "verified_data_flow": false
+  },
+  "coordination": {
+    "task_assignments": "DESIGNED_ONLY",
+    "independent_dispatch_executed": false,
+    "structured_evidence_exchange_executed": false,
+    "minority_objections": "retain when independent platform access is verified",
+    "red_team": "local repository/source review performed; independent platform red-team not executed",
+    "external_model_data_transfer": false
+  },
+  "fallback": {
+    "mode": "local deterministic repository inspection plus lawful public-source research",
+    "provider_rate_limit_behavior": "preserve prior receipts; no unsafe retries, credential rotation or external writes"
+  },
+  "security": {
+    "github_connector_overprivileged": true,
+    "branch_protection_api_status": "HTTP_403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "automatic_merge": "disabled",
+    "main_pages_publication": "automatic Pages deployment verified on latest main push; integration PR changes seven web files"
+  }
+}

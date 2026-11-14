@@ -1,0 +1,475 @@
+{
+  "artifact_type": "xrp_sbic_sbi_holdings_and_sbi_vc_trade_collateral_identity_addendum",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-11T14:03:01Z",
+  "data_cutoff_utc": "2026-11-11T14:03:01Z",
+  "status": "PRIMARY_SOURCE_RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "identity_resolution": {
+    "sbic_japan": {
+      "resolved_name": "Three distinct regional Small and Medium Business Investment & Consultation companies (SBIC East Japan, SBIC Central Japan, SBIC West Japan).",
+      "legal_basis": "Japan's Small and Medium Business Investment & Consultation Companies Act, Act No. 101 of 1963, Article 2, names Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with respective principal offices in Tokyo, Nagoya and Osaka.",
+      "companies": [
+        {
+          "id": "SBIC East Japan",
+          "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "corporate_number": "9011001030621",
+          "founded": "1963-11-15",
+          "head_office": "Tokyo, Japan",
+          "capital_jpy": 6673400000,
+          "operating_region": "18 prefectures east of and including Shizuoka/Nagano/Niigata per company profile",
+          "evidence": [
+            "sbic_act",
+            "sbic_east_profile"
+          ]
+        },
+        {
+          "id": "SBIC Central Japan",
+          "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "founded": "1963-11-18",
+          "head_office": "Nagoya, Japan",
+          "capital_jpy": 4300800000,
+          "operating_region": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+          "evidence": [
+            "sbic_act",
+            "sbic_central_profile"
+          ]
+        },
+        {
+          "id": "SBIC West Japan",
+          "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "founded": "1963-11-20",
+          "head_office": "Osaka, Japan",
+          "capital_jpy": 6822000000,
+          "operating_region": "24 prefectures west of Fukui, Shiga, Nara and Wakayama per company profile",
+          "evidence": [
+            "sbic_act",
+            "sbic_west_profile"
+          ]
+        }
+      ],
+      "interpretation": "In this Japanese context, SBIC is the English abbreviation used by the three regional statutory investment-development companies. It is not another name for SBI Holdings, Inc. The three company profiles cross-link one another as sister companies.",
+      "ownership_boundary": "The reviewed primary sources establish distinct legal names, founding dates and statutory identity. They do not establish a parent/subsidiary relationship between SBI Holdings and any of the three SBIC companies."
+    },
+    "sbi_holdings": {
+      "legal_name": "SBI Holdings, Inc.",
+      "established": "1999-07-08",
+      "head_office": "Tokyo, Japan",
+      "capital_jpy_as_of_2026_03_31": 238019000000,
+      "principal_business": "Management and control of the SBI Group through share ownership.",
+      "evidence": [
+        "sbi_holdings_profile"
+      ]
+    },
+    "sbi_vc_trade": {
+      "legal_name": "SBI VC Trade Co., Ltd.",
+      "established": "2017-05-26",
+      "shareholder": "SBI Group",
+      "shareholder_percentage": 100,
+      "parent_status": "SBI Holdings consolidated subsidiary, as stated in SBI VC Trade's official notices.",
+      "distinction": "SBI VC Trade is part of the SBI Group; it is not one of the three regional SBIC companies.",
+      "evidence": [
+        "sbivc_profile",
+        "sbivc_subsidiary_announcement"
+      ]
+    }
+  },
+  "sbic_chatgpt_references": {
+    "east_japan_training": {
+      "title": "Introduction to Generative AI and Machine Learning for Manufacturing",
+      "dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "organizer": "SBIC East Japan",
+      "audience": "Investee companies only",
+      "instructor": "VOST education/DX instructor",
+      "content_includes": [
+        "Generative AI basics",
+        "ChatGPT usage",
+        "Copilot functions",
+        "Prompt application",
+        "Information-leakage risk",
+        "RAG and API implementation"
+      ],
+      "status": "COMPLETED_EDUCATIONAL_TRAINING",
+      "evidence": [
+        "sbic_east_chatgpt_training"
+      ]
+    },
+    "west_japan_seminar": {
+      "title": "Accelerate Business with Generative AI — Start Easily from a Smartphone, Including ChatGPT",
+      "date": "2025-12-04",
+      "organizer": "Japan Finance Corporation and SBIC West Japan",
+      "audience": "Business seminar",
+      "status": "COMPLETED_EDUCATIONAL_SEMINAR",
+      "evidence": [
+        "sbic_west_chatgpt_seminar"
+      ]
+    },
+    "investee_company_example": {
+      "company": "Science Information Systems Co., Ltd.",
+      "relation_to_sbic": "Listed by SBIC East Japan as an investee company; not an SBIC product or internal ChatGPT service.",
+      "listed_capabilities": [
+        "Generative AI",
+        "Internal ChatGPT",
+        "IoT sensor-data analysis"
+      ],
+      "evidence": [
+        "sbic_east_investee_chatgpt"
+      ]
+    },
+    "conclusion": "Primary-source search results explain several SBIC/ChatGPT references as training, seminars and an investee-company capability. No OpenAI-SBIC commercial partnership, joint product or ChatGPT-branded SBIC platform was established."
+  },
+  "sbi_vc_trade_xrp_and_collateral": {
+    "product_status": {
+      "xrp_spot_retail": "Listed",
+      "xrp_spot_exchange": "Listed",
+      "xrp_leverage": "Listed",
+      "stablecoins_listed": [
+        "USDC",
+        "RLUSD",
+        "JPYSC"
+      ],
+      "rlusd_current_network": "Ethereum",
+      "rlusd_xrpl_network": "Future/planned on the current SBI VC Trade product page; not current support in this snapshot.",
+      "evidence": [
+        "sbivc_service_overview",
+        "sbivc_rlusd_network_support"
+      ]
+    },
+    "margin_and_collateral": {
+      "retail_max_leverage": 2,
+      "maintenance_margin_ratio_pct": 80,
+      "crypto_asset_valuation_factor_pct": 50,
+      "electronic_payment_instrument_valuation_factor_pct": 100,
+      "interpretation": "SBI VC Trade's service overview states a 50% valuation factor for crypto assets and 100% for electronic payment instruments when such assets are used as leverage margin. XRP appears in the leverage product list. The generic rule does not enumerate every token's account-level collateral eligibility; do not assume every listed token is eligible in every account.",
+      "rlusd_specific_collateral_eligibility": "NOT_INDEPENDENTLY_CONFIRMED",
+      "usdc_specific_collateral_eligibility": "NOT_INDEPENDENTLY_CONFIRMED",
+      "evidence": [
+        "sbivc_service_overview"
+      ]
+    },
+    "market_access_interpretation": "SBI Group has a direct XRP market-access connection through its wholly owned SBI VC Trade subsidiary, which lists XRP for spot and leverage trading. This is evidence of exchange distribution and collateral rules, not proof of SBI Holdings treasury ownership, net XRP accumulation or customer trading volume."
+  },
+  "identity_graph": {
+    "nodes": [
+      {
+        "id": "SBIC East Japan",
+        "type": "regional statutory investment company",
+        "evidence": [
+          "sbic_act",
+          "sbic_east_profile"
+        ]
+      },
+      {
+        "id": "SBIC Central Japan",
+        "type": "regional statutory investment company",
+        "evidence": [
+          "sbic_act",
+          "sbic_central_profile"
+        ]
+      },
+      {
+        "id": "SBIC West Japan",
+        "type": "regional statutory investment company",
+        "evidence": [
+          "sbic_act",
+          "sbic_west_profile"
+        ]
+      },
+      {
+        "id": "SBI Holdings",
+        "type": "listed financial holding company",
+        "evidence": [
+          "sbi_holdings_profile"
+        ]
+      },
+      {
+        "id": "SBI VC Trade",
+        "type": "cryptoasset and electronic-payment-instrument exchange",
+        "evidence": [
+          "sbivc_profile",
+          "sbivc_subsidiary_announcement"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "SBIC East Japan",
+        "to": "SBIC Central Japan",
+        "relation": "sister companies under Act No.101 of 1963",
+        "status": "confirmed",
+        "evidence": [
+          "sbic_act",
+          "sbic_east_profile",
+          "sbic_central_profile"
+        ]
+      },
+      {
+        "from": "SBIC East Japan",
+        "to": "SBIC West Japan",
+        "relation": "sister companies under Act No.101 of 1963",
+        "status": "confirmed",
+        "evidence": [
+          "sbic_act",
+          "sbic_east_profile",
+          "sbic_west_profile"
+        ]
+      },
+      {
+        "from": "SBI Holdings",
+        "to": "SBI VC Trade",
+        "relation": "SBI Group 100% shareholder; SBI Holdings consolidated subsidiary",
+        "status": "confirmed",
+        "evidence": [
+          "sbivc_profile",
+          "sbivc_subsidiary_announcement"
+        ]
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "XRP",
+        "relation": "spot and leverage product access",
+        "status": "confirmed",
+        "evidence": [
+          "sbivc_service_overview"
+        ]
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "RLUSD",
+        "relation": "Japanese electronic-payment-instrument listing",
+        "status": "confirmed",
+        "evidence": [
+          "sbivc_rlusd_listing",
+          "sbivc_service_overview"
+        ]
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "XRP collateral",
+        "relation": "generic crypto-asset margin valuation factor is 50%; XRP is listed in leverage products",
+        "status": "confirmed_generic_rule_token_specific_eligibility_not_individually_listed",
+        "evidence": [
+          "sbivc_service_overview"
+        ]
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "electronic payment instrument collateral",
+        "relation": "generic valuation factor is 100%",
+        "status": "confirmed_generic_rule_token_specific_eligibility_not_individually_listed",
+        "evidence": [
+          "sbivc_service_overview"
+        ]
+      }
+    ],
+    "non_links": [
+      {
+        "from": "SBI Holdings",
+        "to": "SBIC East/Central/West",
+        "relation": "parent, subsidiary or same legal entity",
+        "status": "NOT_ESTABLISHED"
+      },
+      {
+        "from": "OpenAI",
+        "to": "SBIC East/Central/West",
+        "relation": "commercial partnership or joint ChatGPT product",
+        "status": "NOT_ESTABLISHED"
+      }
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-sbi-market-access-not-treasury-ownership",
+      "claim": "SBI Group's evidenced XRP connection in these sources is through SBI VC Trade's exchange and leverage products, not demonstrated SBI Holdings treasury ownership.",
+      "support": [
+        "SBI VC Trade is 100% owned by SBI Group and is a consolidated subsidiary of SBI Holdings.",
+        "SBI VC Trade lists XRP for spot and leverage trading."
+      ],
+      "disconfirming_or_missing": [
+        "No SBI Holdings XRP treasury position is disclosed in these sources.",
+        "Customer balances, net deposits, trading volume and custody liabilities are not provided."
+      ],
+      "tests": [
+        "Review SBI Holdings and SBI VC Trade financial disclosures for XRP inventory and custody liabilities.",
+        "Seek product-level volume and net customer flow data."
+      ],
+      "evidence": [
+        "sbivc_profile",
+        "sbivc_subsidiary_announcement",
+        "sbivc_service_overview"
+      ]
+    },
+    {
+      "id": "H2-collateral-factor-may-favor-stablecoins",
+      "claim": "SBI VC Trade's generic 100% valuation factor for electronic payment instruments versus 50% for crypto assets could make stablecoin collateral more capital-efficient than volatile crypto collateral.",
+      "support": [
+        "The official service overview states 50% for crypto assets and 100% for electronic payment instruments.",
+        "XRP is listed as a leverage product; USDC, RLUSD and JPYSC are listed as electronic payment instruments."
+      ],
+      "disconfirming_or_missing": [
+        "The page does not enumerate token-by-token collateral eligibility for every account.",
+        "No collateral balances, utilization or resulting XRP demand are disclosed."
+      ],
+      "tests": [
+        "Verify token-specific margin eligibility and account rules.",
+        "Measure collateral composition and utilization if publicly disclosed."
+      ],
+      "evidence": [
+        "sbivc_service_overview"
+      ]
+    },
+    {
+      "id": "H3-sbic-chatgpt-is-education-not-partnership",
+      "claim": "Public SBIC/ChatGPT references in this capture are explained by educational training, seminars and an investee-company product reference, not an OpenAI-SBIC partnership.",
+      "support": [
+        "SBIC East hosted a 2025 generative-AI training that included ChatGPT usage.",
+        "SBIC West hosted a 2025 seminar on ChatGPT and generative AI.",
+        "SBIC East's investee-company directory lists internal ChatGPT as an investee capability."
+      ],
+      "disconfirming_or_missing": [
+        "Absence of a partnership announcement in these pages does not prove that no private agreement exists."
+      ],
+      "tests": [
+        "Look for formal OpenAI or SBIC partnership announcements, contracts or procurement disclosures."
+      ],
+      "evidence": [
+        "sbic_east_chatgpt_training",
+        "sbic_west_chatgpt_seminar",
+        "sbic_east_investee_chatgpt"
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "sbic_act",
+      "source": "Small and Medium Business Investment & Consultation Companies Act, Act No.101 of 1963, Article 2",
+      "url": "https://www.sbic-wj.co.jp/disclose/law/",
+      "source_group": "SBIC West Japan official disclosure",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbic_east_profile",
+      "source": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. official company profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "source_group": "SBIC East Japan",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbic_central_profile",
+      "source": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. official company profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "source_group": "SBIC Central Japan",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbic_west_profile",
+      "source": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. official company profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "source_group": "SBIC West Japan",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbi_holdings_profile",
+      "source": "SBI Holdings, Inc. official corporate profile",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "source_group": "SBI Holdings",
+      "data_as_of": "2026-03-31",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbivc_profile",
+      "source": "SBI VC Trade official company profile",
+      "url": "https://www.sbivc.co.jp/company-profile",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbivc_subsidiary_announcement",
+      "source": "SBI VC Trade official notice describing it as a consolidated subsidiary of SBI Holdings",
+      "url": "https://www.sbivc.co.jp/newsview/fbx3bt2fbywm",
+      "source_group": "SBI VC Trade",
+      "published_date": "2026-01-30"
+    },
+    {
+      "id": "sbivc_service_overview",
+      "source": "SBI VC Trade official service overview, product list, leverage and collateral valuation factors",
+      "url": "https://www.sbivc.co.jp/services/service-overview",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbivc_rlusd_network_support",
+      "source": "SBI VC Trade RLUSD product network-support page",
+      "url": "https://home.sbivc.co.jp/rlusd",
+      "source_group": "SBI VC Trade",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    },
+    {
+      "id": "sbivc_rlusd_listing",
+      "source": "SBI VC Trade RLUSD listing announcement",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "source_group": "SBI VC Trade",
+      "published_date": "2026-06-24"
+    },
+    {
+      "id": "sbic_east_chatgpt_training",
+      "source": "SBIC East generative-AI and machine-learning training including ChatGPT usage",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_group": "SBIC East Japan",
+      "published_dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "sbic_west_chatgpt_seminar",
+      "source": "SBIC West/Japan Finance Corporation seminar on generative AI and ChatGPT",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf",
+      "source_group": "SBIC West Japan",
+      "published_date": "2025-12-04",
+      "status": "completed"
+    },
+    {
+      "id": "sbic_east_investee_chatgpt",
+      "source": "SBIC East investee-company directory entry for Science Information Systems",
+      "url": "https://www.sbic.co.jp/investeecompany/detail/index.php?id=1918",
+      "source_group": "SBIC East Japan investee directory",
+      "retrieved_at_utc": "2026-11-11T14:03:01Z"
+    }
+  ],
+  "source_independence": [
+    "The 1963 Act text and the three regional company profiles are primary company/legal disclosures. Each profile names its legal entity and cross-links the other regional SBIC companies as sister companies.",
+    "SBI Holdings and SBI VC Trade profiles are primary sources for their own corporate identities and shareholder/parent relationship.",
+    "SBI VC Trade's service overview is primary for its product list and generic collateral valuation factors; it does not disclose token-specific customer collateral balances.",
+    "The SBIC East and West ChatGPT pages are official educational event notices; they do not establish an OpenAI commercial relationship.",
+    "The Science Information Systems ChatGPT reference is an investee-company listing, not an SBIC-owned product."
+  ],
+  "exact_phrase_status": {
+    "ASK Coin": "Unresolved; no uniquely attributable XRP-related entity or instrument verified.",
+    "actual capital": "Keep settled cash, in-kind XRP, debt proceeds, reserves, ELOC capacity, resale registrations and actual XRP purchases separate.",
+    "SBIC ChatGPT": "Official primary sources identify training, seminars and an investee-company capability; no OpenAI-SBIC partnership or joint product established."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "This identity/collateral addendum is not market data and contains no raw source response receipts, synchronized features or validated out-of-sample prediction evidence."
+  },
+  "model_eligibility": {
+    "status": "EXCLUDED",
+    "raw_receipts_created": false,
+    "feature_store_admission": false,
+    "reason": "Primary web pages were captured as research references, not through Barrot's raw-response receipt collector or trusted timestamp anchor."
+  },
+  "safety": {
+    "no_trade": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "no_secret_actions": true,
+    "no_external_model_transfer": true,
+    "no_deployment": true
+  }
+}

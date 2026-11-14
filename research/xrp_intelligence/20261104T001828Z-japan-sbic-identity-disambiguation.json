@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "record_id": "japan-sbic-identity-disambiguation-20261104T001828Z",
+  "captured_at_utc": "2026-11-04T00:18:28Z",
+  "subject": "SBIC identity and the exact phrase 'SBIC, ChatGPT SBIC'",
+  "resolution": "SBIC in Japan is not uniquely one nationwide legal entity. Official sources identify three separate regional sister companies that use SBIC East/Central/West Japan branding.",
+  "entities": [
+    {
+      "id": "sbic-east-japan",
+      "legal_name_ja": "東京中小企業投資育成株式会社",
+      "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "branding": "SBIC East Japan",
+      "established_date": "1963-11-15",
+      "corporate_number": "9011001030621",
+      "region": "18 prefectures east of and including the Shizuoka/Nagano/Niigata boundary as described by the company",
+      "official_url": "https://www.sbic.co.jp/company/profile/",
+      "source_type": "official corporate profile"
+    },
+    {
+      "id": "sbic-west-japan",
+      "legal_name_ja": "大阪中小企業投資育成株式会社",
+      "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "branding": "SBIC West Japan",
+      "established_date": "1963-11-20",
+      "region": "24 prefectures west of Fukui, Shiga, Nara and Wakayama as described by the company",
+      "official_url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "source_type": "official corporate profile"
+    },
+    {
+      "id": "sbic-central-japan",
+      "legal_name_ja": "名古屋中小企業投資育成株式会社",
+      "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "branding": "SBIC Central Japan",
+      "established_date": "1963-11-18",
+      "region": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+      "official_url": "https://www.sbic-cj.co.jp/company/about/",
+      "source_type": "official corporate profile"
+    }
+  ],
+  "legal_framework": {
+    "name_ja": "中小企業投資育成株式会社法",
+    "english_description": "Act governing SME investment and consultation companies",
+    "law_number": 101,
+    "promulgated_date": "1963-06-10",
+    "evidence_url": "https://www.sbic.co.jp/about/",
+    "notes": [
+      "Tokyo and Osaka official pages describe their role as policy investment agencies under this Act.",
+      "The three companies identify one another as sister companies. They are separate regional corporations, not one entity."
+    ]
+  },
+  "chatgpt_evidence": [
+    {
+      "date": "2025-06-12/2025-06-13",
+      "organizer": "Tokyo SBIC / SBIC East Japan",
+      "event": "Two-day introductory training on generative AI and machine learning for manufacturing companies; curriculum explicitly included ChatGPT usage and Microsoft Copilot.",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "classification": "confirmed education/training activity"
+    },
+    {
+      "date": "2026 (official article; publication page crawled in current search)",
+      "organizer": "Tokyo SBIC / SBIC East Japan",
+      "event": "Official business article discusses ChatGPT/GPT-5 and generative AI.",
+      "url": "https://www.sbic.co.jp/useful/detail343/",
+      "classification": "confirmed editorial/education content"
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBIC East Japan",
+      "relation": "sister_company_of",
+      "to": "SBIC Central Japan",
+      "evidence": "Tokyo and Nagoya official profiles cross-list each other."
+    },
+    {
+      "from": "SBIC East Japan",
+      "relation": "sister_company_of",
+      "to": "SBIC West Japan",
+      "evidence": "Tokyo and Osaka official profiles cross-list each other."
+    },
+    {
+      "from": "SBIC West Japan",
+      "relation": "sister_company_of",
+      "to": "SBIC Central Japan",
+      "evidence": "Osaka and Nagoya official profiles cross-list each other."
+    },
+    {
+      "from": "Tokyo SBIC",
+      "relation": "hosted_training_about",
+      "to": "ChatGPT",
+      "evidence": "Official 2025 training curriculum lists ChatGPT usage.",
+      "scope_note": "Training is not an OpenAI partnership, product integration or investment."
+    }
+  ],
+  "xrp_relationship_status": {
+    "direct_ripple_relationship": "not established in the official sources reviewed",
+    "direct_xrp_investment": "not established",
+    "sbi_holdings_affiliation": "not established; acronym/name similarity is insufficient",
+    "negative_search_scope": [
+      "site:sbic.co.jp Ripple OR XRP OR crypto",
+      "site:sbic-wj.co.jp Ripple OR XRP OR crypto",
+      "site:sbic-cj.co.jp Ripple OR XRP OR crypto"
+    ],
+    "caveat": "A targeted public-site search with no result is not proof that no indirect portfolio-company or personal connection exists."
+  },
+  "competing_interpretations": [
+    {
+      "id": "I1",
+      "claim": "The phrase 'Japan's SBIC' refers to the Tokyo entity because its domain uses sbic.co.jp and its English branding is SBIC East Japan.",
+      "status": "plausible only if the original source is Tokyo-specific",
+      "disconfirming_evidence": "Official West and Central entities also use SBIC branding and identify themselves as sister companies."
+    },
+    {
+      "id": "I2",
+      "claim": "The phrase refers to the broader three-company regional system.",
+      "status": "supported by cross-linked official profiles",
+      "disconfirming_evidence": "No single nationwide umbrella corporation was identified in the reviewed profiles; legal entities are separate."
+    },
+    {
+      "id": "I3",
+      "claim": "SBIC is related to SBI Holdings or a Ripple/XRP investment vehicle.",
+      "status": "unsupported",
+      "disconfirming_evidence": "Official corporate profiles describe SME investment/consultation companies under a Japanese SME law; no SBI Holdings or Ripple relationship was identified."
+    }
+  ],
+  "source_quality": "Primary official company profiles are the controlling identity evidence. The three websites cross-reference each other, so they are complementary primary records but not wholly independent corroboration.",
+  "next_actions": [
+    "Keep SBIC identity unresolved at the regional level until a source names East, Central or West Japan.",
+    "Inspect official investee lists and investment records for crypto, fintech, Ripple or XRP references; do not infer portfolio exposure from seminars.",
+    "Search official filings and corporate registry records for any separately documented relationship to SBI Holdings, OpenAI, Ripple or Circle.",
+    "Keep ChatGPT training and editorial content separate from partnership claims."
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run117",
+  "observed_at_utc": "2026-11-14T05:00:07Z",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_sha_at_observation": "2b7f56f19eec854f8bdda3696d83dbdee804049e",
+    "branch": "integration/xrp-v3-unified-main-20261112"
+  },
+  "least_privilege_status": "BLOCKED",
+  "data_transfer_status": "NO_EXTERNAL_PLATFORM_TRANSFER_VERIFIED",
+  "assignment_status": "DESIGNED_NOT_DISPATCHED",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "VERIFIED_FOR_CURRENT_GITHUB_SESSION",
+      "capabilities": [
+        "repository read",
+        "PR inventory and diff inspection",
+        "workflow and CI inspection",
+        "documentation writes on existing integration branch"
+      ],
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "permission_assessment": "OVERPRIVILEGED; least privilege not met",
+      "assigned_role": "integration orchestrator; source reconciliation; evidence ledger; forecast-gate red-team",
+      "verified_data_flow": "ChatGPT GitHub connector to Barrot-Agent/B-Agent only",
+      "transfer_in_this_run": "repository reads and documentation commits on existing integration branch",
+      "fallback": "read-only GitHub inspection; do not dispatch provider actions"
+    },
+    {
+      "name": "Claude",
+      "authentication": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "independent primary-source regulatory, custody and corporate-relationship extraction",
+      "data_flow": "NONE_VERIFIED",
+      "fallback": "public-source manual research; no account or secret sharing"
+    },
+    {
+      "name": "Grok",
+      "authentication": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "independent public social/news event discovery; all claims require primary-source confirmation",
+      "data_flow": "NONE_VERIFIED",
+      "fallback": "public web search; social chatter remains low-confidence context"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "independent macro, FX, geopolitics and long-document cross-check",
+      "data_flow": "NONE_VERIFIED",
+      "fallback": "public central-bank, regulator and issuer documents"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "NO_LIVE_AUTHENTICATION_TEST",
+      "capabilities": "review artifacts may exist; no formal approval on PR #1662",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "independent code review and workflow/security review",
+      "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED",
+      "fallback": "formal GitHub review from an independently authorized reviewer"
+    },
+    {
+      "name": "Codex",
+      "authentication": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "independent implementation and test review for candidate-model evaluation and forecast-gate code",
+      "data_flow": "NONE_VERIFIED",
+      "fallback": "existing CI and deterministic local test suites"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "NO_CURRENT_DEPLOYMENT_VERIFIED",
+      "capabilities": "previous main Pillars run reports BUILD_ERROR",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "future model artifact hosting and reproducible model-card publication, only after approval",
+      "data_flow": "NO_DEPLOYMENT_OR_SPACE_RESTART",
+      "fallback": "local versioned artifacts; no upload"
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "UNTESTED",
+      "capabilities": "no competition or submission tested",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "future independent benchmark/dataset validation, only after specific submission authorization",
+      "data_flow": "NO_SUBMISSION_OR_UPLOAD",
+      "fallback": "local chronological benchmark; no competition submission"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "PREVIOUS_HTTP_403",
+      "capabilities": "read/write capability not verified",
+      "permissions": "NOT_VERIFIED",
+      "assigned_role": "future large-scale point-in-time feature computation and backtesting, only after approved least-privilege access",
+      "data_flow": "NO_WRITE; manual import workflow not dispatched",
+      "fallback": "local SQLite/Parquet pipeline"
+    }
+  ],
+  "separate_provider": {
+    "name": "LunaRoute",
+    "is_one_of_nine": false,
+    "authentication": "UNVERIFIED",
+    "main_workflow": "Barrot Sync failed before a verified API call because httpx was missing; workflow masked the failure",
+    "secret_echo_correction": "The main workflow's echo command cuts the combined fixed banner and secret to 30 characters; the banner itself is exactly 30 characters, so no secret characters are emitted by this command.",
+    "integration_workflow": "quarantined/disabled; no push trigger; read-only permissions",
+    "verified_data_flow": "NONE"
+  },
+  "coordination_rules": {
+    "independent_tasks": "assign only after each platform's authentication and permissions are tested",
+    "evidence_exchange": "structured source URL, publisher, event time, retrieval time, excerpt hash, lineage group, claim, counterclaim and confidence",
+    "disagreement_resolution": "resolve against primary evidence; preserve minority objections and disconfirming evidence",
+    "red_team": "independent reviewer must not be the same identity that authored the change",
+    "least_privilege": "minimum read-only scope by default; writes require action-specific authorization",
+    "no_live_connection_claim_without_test": true,
+    "no_external_dispatch_without_specific_authorization": true
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "artifact_type": "barrot_xrp_run111_research_snapshot",
+  "schema_version": "1.0",
+  "run_id": 111,
+  "captured_at_utc": "2026-11-10T02:28:18Z",
+  "verified_code_test_head": "d28612a2ac04e93338b0a8774a75fdc8181c3bbd",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+  "source_admission_policy": "Public/web observations retained as research evidence only; none admitted to the point-in-time model feature store.",
+  "market": {
+    "run_id": 111,
+    "captured_at_utc": "2026-11-10T02:28:18Z",
+    "capture_time_precision": "Run-start timestamp; exact per-fetch web retrieval timestamps unavailable.",
+    "raw_response_bodies": {
+      "kraken_xrpusd": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09175000\",\"4579\",\"4579.000\"],\"b\":[\"1.09174000\",\"658\",\"658.000\"],\"c\":[\"1.09175000\",\"1.27107854\"],\"v\":[\"2021052.14922866\",\"29752437.78138496\"],\"p\":[\"1.09781917\",\"1.09622574\"],\"t\":[2397,36959],\"l\":[\"1.09081000\",\"1.07502000\"],\"h\":[\"1.10404000\",\"1.12191000\"],\"o\":\"1.09748000\"}}}",
+      "okx_xrpusdt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.0938\",\"lastSz\":\"1.5\",\"askPx\":\"1.0939\",\"askSz\":\"3394.64816\",\"bidPx\":\"1.0938\",\"bidSz\":\"1971.789048\",\"open24h\":\"1.1209\",\"high24h\":\"1.1236\",\"low24h\":\"1.0764\",\"volCcy24h\":\"78852493.0912076637\",\"vol24h\":\"71886216.999384\",\"ts\":\"1794277398267\",\"sodUtc0\":\"1.0988\",\"sodUtc8\":\"1.1144\"}],\"msg\":\"\"}",
+      "kraken_usdtusd": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99870000\",\"451582\",\"451582.000\"],\"b\":[\"0.99869000\",\"378178\",\"378178.000\"],\"c\":[\"0.99870000\",\"264.97797356\"],\"v\":[\"23909896.51016701\",\"281396779.89818403\"],\"p\":[\"0.99872798\",\"0.99879831\"],\"t\":[5881,52306],\"l\":[\"0.99868000\",\"0.99850000\"],\"h\":[\"0.99877000\",\"0.99918000\"],\"o\":\"0.99872000\"}}}"
+    },
+    "response_text_sha256": {
+      "kraken_xrpusd": "9611d8a0ff3d2c87bb168d3e4f498950679827a05bddaca06925a7f3a0293c90",
+      "okx_xrpusdt": "348cdc51e515aa545159c4fbc80692ecef7603da2bdc598bafc5d98594ba8fbf",
+      "kraken_usdtusd": "8288536f0fe51f22b1b7f73dc9e86af0b5708e385e44b9b3368b7b65d5e1fe83"
+    },
+    "sha256_scope": "SHA-256 of exact JSON text surfaced by the web renderer; not original HTTP transport bytes.",
+    "raw_http_bytes_preserved": false,
+    "raw_http_headers_preserved": false,
+    "model_admission": false,
+    "spot": {
+      "kraken_xrpusd": {
+        "source": "Kraken public Ticker API",
+        "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "provider_event_time_utc": null,
+        "last_usd": 1.09175,
+        "bid_usd": 1.09174,
+        "ask_usd": 1.09175,
+        "top_bid_size_xrp": 658,
+        "top_ask_size_xrp": 4579,
+        "spread_bps": 0.0916,
+        "volume_24h_xrp": 29752437.781384,
+        "vwap_24h_usd": 1.09622574,
+        "high_24h_usd": 1.12191,
+        "low_24h_usd": 1.07502,
+        "model_eligible": false,
+        "reason": "No provider event timestamp or preserved response headers."
+      },
+      "okx_xrpusdt": {
+        "source": "OKX public ticker API",
+        "source_uri": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_event_time_utc": "2026-11-10T02:23:18.267Z",
+        "last_usdt": 1.0938,
+        "bid_usdt": 1.0938,
+        "ask_usdt": 1.0939,
+        "top_bid_size_xrp": 1971.789048,
+        "top_ask_size_xrp": 3394.64816,
+        "spread_bps": 0.9142,
+        "volume_24h_xrp": 71886216.999384,
+        "quote_volume_24h_usdt": 78852493.09120765,
+        "high_24h_usdt": 1.1236,
+        "low_24h_usdt": 1.0764,
+        "age_seconds_at_run_start": 299.733,
+        "model_eligible": false,
+        "reason": "Provider timestamp is approximately 300 seconds old at run start; exact web retrieval time and HTTP Age unavailable."
+      },
+      "kraken_usdtusd": {
+        "source": "Kraken public Ticker API",
+        "source_uri": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "provider_event_time_utc": null,
+        "last_usd": 0.9987,
+        "bid_usd": 0.99869,
+        "ask_usd": 0.9987,
+        "vwap_24h_usd": 0.99879831,
+        "model_eligible": false,
+        "reason": "No provider event timestamp or preserved response headers."
+      }
+    },
+    "comparison": {
+      "asynchronous": true,
+      "quote_currency_mismatch": true,
+      "usdt_usd_normalization_source": "Kraken USDT/USD last 0.99870",
+      "normalized_okx_last_usd": 1.09237806,
+      "kraken_last_usd": 1.09175,
+      "normalized_last_gap_pct": 0.0575,
+      "no_arbitrage_inference": true,
+      "reason": "Cross-venue timestamps are asynchronous; order-book depth, fees, funding, withdrawal and settlement constraints are not synchronized."
+    },
+    "depth": {
+      "l2_snapshot_captured": false,
+      "reason": "Public depth endpoints did not return a usable synchronized L2 snapshot through the web renderer; ticker top-of-book sizes are not L2 depth."
+    }
+  },
+  "exchange_balance_methodology": {
+    "provider": "XRP Insights — XRP Exchange Balances",
+    "source_uri": "https://xrp-insights.com/exchange-balances",
+    "snapshot_as_of_utc": "2026-11-09T08:01:00Z",
+    "snapshot_age_hours_at_run_start": 18.455,
+    "underlying_refresh": "Daily XRPL account_info reads; page can refresh hourly from stored daily rows.",
+    "tracked_exchanges": 24,
+    "tracked_wallets": 701,
+    "attributed_balance_xrp": 22350000000,
+    "circulating_supply_share_pct": 32.5,
+    "same_wallet_change_1d_xrp": 9700000,
+    "same_wallet_change_7d_xrp": -25800000,
+    "same_wallet_change_30d_xrp": -138100000,
+    "naive_total_change_xrp": 373900000,
+    "newly_tracked_wallets": 2,
+    "newly_tracked_wallet_balance_xrp": 512000000,
+    "cold_labeled_pct": 48.4,
+    "hot_labeled_pct": 12,
+    "unclassified_pct": 40,
+    "wrapped_insurance_other_reserves_xrp": 483000000,
+    "labeled_wallets_outside_tracked_exchanges_xrp": 323000000,
+    "outside_tracked_exchange_count_approx": 36,
+    "method": "Daily rippled account_info reads at latest validated ledger; wallet labels from XRPSCAN.",
+    "limitations": [
+      "No per-wallet historical series.",
+      "Failed reads retain last good balance.",
+      "Newly labeled wallets enter at a 100,000 XRP threshold.",
+      "Same-wallet change excludes newly labeled wallets and can miss transfers to unlabeled addresses.",
+      "Cold wallets, wrapped assets and insurance/charity reserves are not customer tradable deposits.",
+      "The 22.35B figure is attributed labeled-wallet coverage, not total tradable float, exchange liabilities or proof of reserves.",
+      "The 323M outside the tracked set is a labeled-wallet floor, not total untracked exchange balance."
+    ],
+    "model_admission": false
+  },
+  "exchange_flow_observations": [
+    {
+      "provider": "CryptoQuant / Darkfost",
+      "source_uri": "https://cryptoquant.com/insights/quicktake/6af0e5decd57dd300eaa1720-XRP-Whale-inflows-hit-900M-the-highest-since-2024",
+      "published_date": "2026-11-08",
+      "event_date": "2026-11-08",
+      "direction": "gross_inflow",
+      "amount_xrp": 691000000,
+      "reported_usd_approx": 900000000,
+      "interpretation": "Largest daily Binance XRP inflow in nearly six months; 90-day average reported above $100M/day.",
+      "limitations": [
+        "Deposit does not establish sale.",
+        "Possible reserve replenishment after the October 29 Binance incident is an analyst hypothesis, not a verified attribution.",
+        "Same provider and analyst as the Nov 4 outflow observation."
+      ]
+    },
+    {
+      "provider": "CryptoQuant / Darkfost",
+      "source_uri": "https://cryptoquant.com/insights/quicktake/6aec7be34d08081b8394fc97-4185M-XRP-leave-Binance-in-one-day-the-biggest-Outflow-in-9-months",
+      "published_date": "2026-11-05",
+      "event_date": "2026-11-04",
+      "direction": "gross_outflow",
+      "amount_xrp": 418500000,
+      "reported_usd_approx": 540000000,
+      "interpretation": "Largest daily Binance XRP outflow in nine months.",
+      "limitations": [
+        "Withdrawal does not prove long-term accumulation.",
+        "Internal transfers remain possible.",
+        "Different date and measure from Nov 8 inflow; do not net them."
+      ]
+    }
+  ],
+  "upbit_turnover": {
+    "source": "CryptoTicker; public Upbit interface figures, secondary analysis",
+    "source_uri": "https://cryptoticker.io/en/xrp-price-prediction-upbit-korea-november-9-2026/",
+    "published_date": "2026-11-09",
+    "window": "24 hours to 07:45 German time, November 9",
+    "xrp_turnover_krw": 138700000000,
+    "xrp_turnover_usd_approx": 102000000,
+    "share_of_upbit_volume_pct": 17,
+    "total_upbit_volume_krw": 815600000000,
+    "daily_xrp_turnover_krw": {
+      "nov5": 178200000000,
+      "nov6": 143100000000,
+      "nov7": 87000000000,
+      "nov8": 76800000000
+    },
+    "prior_29_day_average_krw": 99900000000,
+    "kimchi_premium_reported_pct": -0.03,
+    "fx_caveat": "USD/KRW conversion uses ECB Nov 6 reference rate; not contemporaneous with Nov 9 Upbit quote.",
+    "volume_is_net_capital": false,
+    "model_admission": false
+  },
+  "etf_flow_observation": {
+    "source": "Bitcoin.com News citing SoSoValue; secondary tracker report",
+    "source_uri": "https://news.bitcoin.com/crypto-news/xrp-etfs-week-without-inflows/",
+    "published_at": "2026-11-07T05:30:00-05:00",
+    "xrpc_net_outflow_nov2_usd": -529500,
+    "reported_net_flow_nov3_to_nov6_usd": 0,
+    "reported_cumulative_net_inflows_usd": 1810000000,
+    "reported_net_assets_usd": 1340000000,
+    "october_net_inflows_usd": 18800000,
+    "september_net_inflows_usd": 121400000,
+    "caveats": [
+      "SoSoValue data was not directly accessible during this run.",
+      "Secondary report; not issuer-level primary reconciliation.",
+      "Net assets can decline from XRP price changes without ETF redemptions.",
+      "Tracker universe and methodology must be reconciled with other ETF datasets."
+    ],
+    "model_admission": false
+  },
+  "macro_event": {
+    "source": "U.S. Bureau of Labor Statistics",
+    "source_uri": "https://www.bls.gov/news.release/cpi.nr0.htm",
+    "event": "October 2026 CPI release",
+    "scheduled_at_utc": "2026-11-10T13:30:00Z",
+    "scheduled_at_et": "2026-11-10T08:30:00-05:00",
+    "released_at_capture": false,
+    "interpretation": "Upcoming macro event; no directional XRP effect assumed."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "name": "continued_distribution_pressure",
+      "support": [
+        "691M gross Binance inflow on Nov 8",
+        "zero reported ETF net flows Nov 3-6",
+        "Upbit turnover high share but price falling and daily turnover declining",
+        "long-heavy liquidation observations from prior run"
+      ],
+      "counterevidence": [
+        "418.5M Binance outflow on Nov 4",
+        "XRP Insights same-wallet 7d and 30d exchange balance declines",
+        "Nov 9 same-wallet daily change positive 9.7M",
+        "gross deposits do not prove selling"
+      ]
+    },
+    {
+      "id": "H2",
+      "name": "reserve_replenishment_or_internal_rebalancing",
+      "support": [
+        "CryptoQuant analyst explicitly raises reserve replenishment after Oct 29 incident as a possibility",
+        "gross outflow and inflow observations are on different dates",
+        "XRP Insights wallet-label and cold-storage coverage can create apparent flow changes"
+      ],
+      "counterevidence": [
+        "No verified wallet-by-wallet linkage from the 691M deposits to the incident",
+        "large deposits still increase exchange-held inventory if labels are correct"
+      ]
+    },
+    {
+      "id": "H3",
+      "name": "deleveraging_exhaustion_or_absorption",
+      "support": [
+        "long-heavy liquidation observations from prior run",
+        "declining Upbit daily turnover could indicate fading activity"
+      ],
+      "counterevidence": [
+        "no positive ETF flows Nov 3-6 in the cited tracker",
+        "no contemporaneous Korea premium",
+        "no synchronized L2 depth or validated spot CVD series"
+      ]
+    }
+  ],
+  "source_independence": {
+    "cryptoquant_691m_and_418m": {
+      "same_provider": true,
+      "same_analyst": true,
+      "independent_confirmation": false,
+      "do_not_net": true
+    },
+    "xrp_insights": {
+      "independent_provider": true,
+      "wallet_labels_from_xrpscan": true,
+      "attribution_not_independent_of_labels": true
+    },
+    "cryptoticker_upbit": {
+      "independent_secondary_analysis": true,
+      "uses_public_upbit_interface": true
+    },
+    "etf_flow_report": {
+      "secondary_report": true,
+      "underlying_tracker": "SoSoValue",
+      "direct_tracker_accessible": false
+    },
+    "bls": {
+      "primary_official_source": true
+    }
+  },
+  "forecast_status": "NOT_ISSUED",
+  "real_money_actions": false,
+  "paper_trade": false,
+  "sources": [
+    {
+      "publisher": "Kraken",
+      "title": "Public XRP/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_class": "exchange_api",
+      "event_time_available": false
+    },
+    {
+      "publisher": "OKX",
+      "title": "Public XRP-USDT ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_class": "exchange_api",
+      "provider_event_time_utc": "2026-11-10T02:23:18.267Z"
+    },
+    {
+      "publisher": "Kraken",
+      "title": "Public USDT/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "source_class": "exchange_api",
+      "event_time_available": false
+    },
+    {
+      "publisher": "XRP Insights",
+      "title": "XRP Exchange Balances",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "source_class": "on_ledger_wallet_attribution",
+      "snapshot_as_of_utc": "2026-11-09T08:01:00Z"
+    },
+    {
+      "publisher": "CryptoQuant / Darkfost",
+      "title": "691M XRP inflow to Binance",
+      "url": "https://cryptoquant.com/insights/quicktake/6af0e5decd57dd300eaa1720-XRP-Whale-inflows-hit-900M-the-highest-since-2024",
+      "published_date": "2026-11-08",
+      "source_class": "on_chain_analytics"
+    },
+    {
+      "publisher": "CryptoQuant / Darkfost",
+      "title": "418.5M XRP outflow from Binance",
+      "url": "https://cryptoquant.com/insights/quicktake/6aec7be34d08081b8394fc97-4185M-XRP-leave-Binance-in-one-day-the-biggest-Outflow-in-9-months",
+      "published_date": "2026-11-05",
+      "source_class": "on_chain_analytics"
+    },
+    {
+      "publisher": "CryptoTicker",
+      "title": "XRP price prediction: Upbit, kimchi premium and $1.08",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-upbit-korea-november-9-2026/",
+      "published_date": "2026-11-09",
+      "source_class": "secondary_market_analysis"
+    },
+    {
+      "publisher": "Bitcoin.com News",
+      "title": "XRP ETFs Go a Whole Week Without a Single Dollar of Inflows",
+      "url": "https://news.bitcoin.com/crypto-news/xrp-etfs-week-without-inflows/",
+      "published_at": "2026-11-07T05:30:00-05:00",
+      "source_class": "secondary_tracker_reporting"
+    },
+    {
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "title": "Consumer Price Index Summary / October release schedule",
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "source_class": "official_government_schedule"
+    }
+  ],
+  "limitations": [
+    "Exact web retrieval timestamps unavailable for each API response.",
+    "Original HTTP response headers and wire bytes were not preserved for web-rendered observations.",
+    "No synchronized L2 order-book snapshot captured.",
+    "No provider-independent validation of CryptoQuant wallet-flow classifications.",
+    "SoSoValue tracker was inaccessible directly; ETF data is secondary-source reporting.",
+    "XRP Insights balance snapshot is daily and approximately 18.455 hours old at run start.",
+    "No directional forecast issued."
+  ]
+}

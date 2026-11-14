@@ -1,0 +1,166 @@
+{
+  "schema_version": "barrot.platforms.capability-auth-dataflow.v1",
+  "artifact_id": "barrot_nine_platform_authentication_observation_20261104T212600Z",
+  "artifact_type": "timestamped_capability_authentication_permission_and_dataflow_observation",
+  "captured_at_utc": "2026-11-04T21:26:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "branch_parent_sha": "dc9cea0a9aad6b81cd643d4894faf86df00f5899"
+  },
+  "observation_scope": "Current verified session and repository evidence only. No credentials were requested, copied, rotated or exposed.",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "provider": "OpenAI",
+      "capabilities_observed": [
+        "Research synthesis",
+        "Structured evidence analysis",
+        "GitHub repository inspection",
+        "GitHub PR-branch updates"
+      ],
+      "authentication_status": "CURRENT_SESSION_ACTIVE; GITHUB_CONNECTOR_AUTHENTICATED",
+      "permission_status": "Verified repository read and write operations on existing PR branches; no main-branch write, merge, deployment or secret operation executed.",
+      "data_flow": "ChatGPT session -> authenticated GitHub connector -> Barrot-Agent/B-Agent main/tree/PR reads and updates to existing branches integration/core-capabilities-mmi-structural-paper-20261104 and research/xrp-evidence-archive-20261104.",
+      "evidence": [
+        "get_repo and main tree fetch succeeded",
+        "Open PR inventory and PR metadata/reviews fetched",
+        "update_file, create_blob, create_tree, create_commit and update_ref succeeded on existing PR branches"
+      ],
+      "fallback": "Public web research and read-only repository snapshots; preserve branch history."
+    },
+    {
+      "name": "Claude",
+      "provider": "Anthropic",
+      "capabilities_observed": [
+        "Public product/documentation research only"
+      ],
+      "authentication_status": "NOT_TESTED; NO_AUTHENTICATED_SESSION_OR_API_FLOW_VERIFIED",
+      "permission_status": "No repository, file, model or external write permission established.",
+      "data_flow": "No cross-platform data transfer verified.",
+      "fallback": "ChatGPT evidence analysis; do not claim Claude participation."
+    },
+    {
+      "name": "Grok",
+      "provider": "xAI",
+      "capabilities_observed": [
+        "Public web search results only"
+      ],
+      "authentication_status": "NOT_TESTED; NO_XAI_AUTHENTICATION_VERIFIED",
+      "permission_status": "No authenticated repository or API permission established.",
+      "data_flow": "No cross-platform data transfer verified.",
+      "fallback": "Public sources. Barrot's separate Groq integration is not evidence of Grok/xAI connectivity."
+    },
+    {
+      "name": "Gemini",
+      "provider": "Google",
+      "capabilities_observed": [
+        "Public product/documentation research only"
+      ],
+      "authentication_status": "NOT_TESTED; NO_AUTHENTICATED_SESSION_OR_API_FLOW_VERIFIED",
+      "permission_status": "No authenticated repository or API permission established.",
+      "data_flow": "No cross-platform data transfer verified.",
+      "fallback": "ChatGPT evidence analysis; do not claim Gemini participation."
+    },
+    {
+      "name": "Copilot",
+      "provider": "Microsoft/GitHub",
+      "capabilities_observed": [
+        "Repository review comments/events observed on open PRs"
+      ],
+      "authentication_status": "REVIEW_EVENT_OBSERVED; NO_PERSISTENT_CHAT_OR_API_SESSION_VERIFIED",
+      "permission_status": "Only review/comment evidence is visible. No direct Copilot repository write or data export was performed by this run.",
+      "data_flow": "GitHub PR review event -> repository review API -> ChatGPT evidence review. This is not a tested live agent-to-agent channel.",
+      "fallback": "Retain comments as review evidence; independently validate against code and tests."
+    },
+    {
+      "name": "Codex",
+      "provider": "OpenAI",
+      "capabilities_observed": [
+        "No separate Codex execution observed"
+      ],
+      "authentication_status": "NOT_TESTED; NO_CODEX_API_OR_CLI_AUTHENTICATION_VERIFIED",
+      "permission_status": "No separate Codex repository or execution permission established.",
+      "data_flow": "No separate Codex data flow verified; ChatGPT GitHub connector is not proof of Codex access.",
+      "fallback": "Use existing GitHub connector and CI evidence."
+    },
+    {
+      "name": "Hugging Face",
+      "provider": "Hugging Face",
+      "capabilities_observed": [
+        "Public Space/runtime status probe previously reached the public endpoint"
+      ],
+      "authentication_status": "PUBLIC_READ_ONLY; NO_HF_TOKEN_AUTHENTICATED",
+      "permission_status": "No Space restart, upload, model push or secret mutation executed.",
+      "data_flow": "Prior public Space status probe returned BUILD_ERROR; no authenticated data exchange was verified in this run.",
+      "fallback": "Keep deployment disabled; use repository CI and inspect build logs when available."
+    },
+    {
+      "name": "Kaggle",
+      "provider": "Kaggle",
+      "capabilities_observed": [
+        "No authenticated Kaggle API or notebook execution observed"
+      ],
+      "authentication_status": "NOT_TESTED; NO_KAGGLE_API_AUTHENTICATION_VERIFIED",
+      "permission_status": "No competition submission, notebook write, dataset upload or model upload.",
+      "data_flow": "No Kaggle data transfer verified.",
+      "fallback": "Local deterministic evaluation and repository artifacts; no submissions."
+    },
+    {
+      "name": "Databricks",
+      "provider": "Databricks",
+      "capabilities_observed": [
+        "Prior workspace/API probe attempted"
+      ],
+      "authentication_status": "BLOCKED; LAST_PROBE_RETURNED_HTTP_403",
+      "permission_status": "No successful SQL query, workspace read/write, job run or secret action verified.",
+      "data_flow": "Last authorized probe returned 403; no data was imported or exported.",
+      "fallback": "Local SQLite feature store and GitHub Actions artifacts; no PAT rotation or workspace mutation."
+    }
+  ],
+  "permission_matrix": {
+    "verified_authenticated_platforms": [
+      "ChatGPT session",
+      "GitHub connector"
+    ],
+    "read_only_or_review_evidence": [
+      "Copilot review events",
+      "Hugging Face public Space status"
+    ],
+    "blocked": [
+      "Databricks HTTP 403"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok/xAI",
+      "Gemini",
+      "Codex",
+      "Kaggle"
+    ],
+    "main_branch_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "kaggle_submission": false,
+    "databricks_job_or_sql_write": false,
+    "model_upload": false
+  },
+  "data_flow_summary": {
+    "verified_flow": "ChatGPT -> GitHub connector -> existing PR branches -> GitHub CI/checks/review evidence -> ChatGPT.",
+    "unverified_flows": [
+      "Claude/Grok/Gemini/Codex/Hugging Face/Kaggle/Databricks agent-to-agent exchange",
+      "Any model-to-model credentialed data exchange",
+      "Any shared feature store or artifact synchronization across the nine platforms"
+    ],
+    "no_credentials_exposed": true,
+    "least_privilege": "Use only existing tested GitHub connector access; no additional scopes or secrets requested."
+  },
+  "current_status": "PARTIAL; only the ChatGPT-to-GitHub connector path is authenticated and used for repository work. Copilot review events are observed but not an independently authenticated coordination channel.",
+  "next_actions": [
+    "Keep the nine-platform map evidence-driven and update only after a real authentication and data-flow test.",
+    "If a platform is unavailable, continue deterministic local work and preserve its blocker; do not infer connectivity from public documentation or product names.",
+    "Do not restart Hugging Face Spaces, submit Kaggle entries, run Databricks jobs, upload models, or exchange secrets without the required specific approval."
+  ]
+}

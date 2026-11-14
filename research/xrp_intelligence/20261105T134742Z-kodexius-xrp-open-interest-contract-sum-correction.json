@@ -1,0 +1,49 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "kodexius_xrp_open_interest_contract_sum_correction_20261105T134742Z",
+  "artifact_type": "append_only_correction",
+  "title": "Correction: Kodexius XRP open-interest venue/contract sum includes Bybit USDC",
+  "recorded_at_utc": "2026-11-05T13:47:42.698Z",
+  "supersedes_scope": {
+    "prior_artifact": "research/xrp_intelligence/20261105T134556Z-xrp-spot-depth-and-perpetuals-cross-provider-reconciliation.json",
+    "fields": [
+      "kodexius.derivatives.other_venues_oi_usd_millions"
+    ],
+    "original_artifact_modified": false
+  },
+  "source": {
+    "publisher": "Kodexius",
+    "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+    "snapshot_at_utc": "2026-11-05T13:18:00Z",
+    "source_independence_group": "kodexius_aggregator",
+    "raw_bytes_preserved": false,
+    "sha256": null,
+    "model_eligible": false
+  },
+  "corrected_contract_breakdown_usd_millions": {
+    "binance": {
+      "XRPUSDT": 447.25,
+      "XRPUSDC": 34.02,
+      "total": 481.27
+    },
+    "bybit": {
+      "XRPUSDT": 157.86,
+      "XRPPERP_USDC": 2.97,
+      "total": 160.83
+    },
+    "hyperliquid": 111.21,
+    "okx": 103.81,
+    "htx": 28.67
+  },
+  "reconciliation": {
+    "total_usd_millions": 885.79,
+    "dashboard_display_usd_millions": 885.8,
+    "difference_usd_millions": 0.01,
+    "conclusion": "The 0.01M difference is display rounding. The previously listed Bybit USDT value omitted the separate $2.97M Bybit USDC contract; adding it reconciles the seven-contract total."
+  },
+  "admission": {
+    "model_eligible": false,
+    "directional_forecast_issued": false,
+    "reason": "Rendered dashboard only; no raw exchange-level receipts or independently anchored timestamps."
+  }
+}

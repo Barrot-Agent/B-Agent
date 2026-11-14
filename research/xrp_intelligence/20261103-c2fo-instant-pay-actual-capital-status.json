@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "artifact_type": "c2fo_instant_pay_capital_provider_and_launch_status",
+  "captured_on_utc_date": "2026-11-03",
+  "sources": [
+    {
+      "id": "S55",
+      "publisher": "C2FO",
+      "title": "C2FO and Ripple Partner to Modernize Trade Finance Using the XRP Ledger",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "published_on": "2026-10-27",
+      "type": "joint_product_initiative_announcement"
+    },
+    {
+      "id": "S56",
+      "publisher": "C2FO",
+      "title": "C2FO Instant Pay product page",
+      "url": "https://c2fo.com/instant-pay/",
+      "retrieved_on": "2026-11-03",
+      "type": "product_status_page"
+    },
+    {
+      "id": "S57",
+      "publisher": "BNY",
+      "title": "Ripple Expands Strategic Digital Assets Collaboration with BNY Across Custody and Tokenized Trade Finance",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_on": "2026-10-27",
+      "type": "joint_custody_and_exploratory_trade_finance_announcement"
+    }
+  ],
+  "instant_pay": {
+    "product": "C2FO Instant Pay",
+    "status_as_of_2026_11_03": "announced; waitlist; limited rollout planned over coming months; no production transaction or volume independently verified",
+    "network": "XRP Ledger",
+    "settlement_asset": "RLUSD",
+    "funding_model": "C2FO says participating capital providers fund approved invoice early payments; the financing and settlement activity supporting Instant Pay is intended to be brought onto XRPL.",
+    "original_invoice_terms": "The approved invoice's original terms and due date remain unchanged.",
+    "supplier_timing_claims": {
+      "C2FO_press_release": "suppliers receive funds in seconds rather than days, describing the XRPL settlement step",
+      "C2FO_product_page": "funds arrive in the designated account within minutes; same-day funding; waitlist and limited rollout",
+      "reconciliation": "Seconds is the ledger settlement claim; minutes is the supplier-facing payout claim. The bank/off-ramp and final payout path is not fully disclosed."
+    },
+    "historical_platform_scale": {
+      "c2fo_claim": "more than $525 billion of working capital accessed through existing Early Pay programs as of 2026-10-27",
+      "scope": "cumulative historical Early Pay activity across existing products, not Instant Pay volume, not XRPL-settled financing, not capital committed to the new product, and not current AUM."
+    },
+    "capital_provider_disclosure": {
+      "named_providers": [],
+      "committed_capital_amount": null,
+      "deployed_capital_amount": null,
+      "funded_invoice_count": null,
+      "funded_invoice_volume": null,
+      "fees_or_discount_spread": null,
+      "conclusion": "The release identifies participating capital providers as the funding source but names none and discloses no committed or deployed capital amount."
+    }
+  },
+  "bny_related_initiative": {
+    "status": "exploratory; subject to client requirements and future approvals",
+    "scope": "Ripple and BNY are exploring a supply-chain-finance initiative with C2FO focused on expanding investor access to tokenized trade-finance/receivables assets.",
+    "named_capital_providers": [],
+    "committed_capital_amount": null,
+    "pilot_or_launch_date": null,
+    "named_clients_or_receivables": null,
+    "distinction": "This BNY/Ripple/C2FO exploration is separate from the C2FO Instant Pay waitlist product. It is not evidence of a funded pilot or actual investor capital deployed."
+  },
+  "relationship_graph": [
+    {
+      "from": "C2FO",
+      "to": "Ripple",
+      "relation": "announced_initiative_to_move_instant_pay_financing_and_settlement_to_XRPL",
+      "classification": "confirmed_announcement",
+      "date": "2026-10-27",
+      "evidence": [
+        "S55"
+      ]
+    },
+    {
+      "from": "C2FO Instant Pay",
+      "to": "RLUSD",
+      "relation": "settlement_asset",
+      "classification": "confirmed_product_design",
+      "evidence": [
+        "S55"
+      ]
+    },
+    {
+      "from": "C2FO Instant Pay",
+      "to": "participating capital providers",
+      "relation": "funding_source",
+      "classification": "confirmed_category_unnamed_entities",
+      "evidence": [
+        "S55"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relation": "existing_RLUSD_reserve_custody_and_Ripple_Prime_custody_relationship; expanded_XRP_RLUSD_custody",
+      "classification": "confirmed_announcement",
+      "date": "2026-10-27",
+      "evidence": [
+        "S57"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "C2FO",
+      "relation": "exploratory_tokenized_trade_finance_and_supply_chain_finance_initiative",
+      "classification": "confirmed_exploration_not_live_financing",
+      "date": "2026-10-27",
+      "evidence": [
+        "S57"
+      ]
+    }
+  ],
+  "xrp_interpretation": {
+    "direct_xrp_use": "XRPL is the settlement network for the announced Instant Pay model; RLUSD is the stated settlement asset.",
+    "xrp_demand": "No measurable XRP spot purchases, XRP collateral use, XRP bridge-liquidity requirement or XRP position attributable to Instant Pay has been disclosed.",
+    "potential_network_effect": "If launched at scale, the product could increase XRPL transactions and RLUSD usage. Any associated XRP fee demand is unquantified and should not be treated as a material price driver without measured activity."
+  },
+  "evidence_classification": {
+    "confirmed_fact": [
+      "C2FO and Ripple announced the XRPL/RLUSD Instant Pay initiative on 2026-10-27.",
+      "C2FO says participating capital providers fund the payments.",
+      "C2FO's public product page displays a waitlist and limited rollout over coming months.",
+      "BNY says it is exploring a separate tokenized trade-finance initiative with Ripple and C2FO."
+    ],
+    "inference": [
+      "The design separates invoice funding from ledger settlement: a capital provider funds the early payment, RLUSD settles on XRPL, and invoice maturity terms remain unchanged."
+    ],
+    "unknown": [
+      "Names and number of capital providers",
+      "Committed capital, deployed capital and available funding capacity",
+      "First live transaction date, invoices funded, settlement volume and repeat usage",
+      "Supplier onboarding, redemption/off-ramp mechanics and actual bank payout times",
+      "Pricing, discount rates, provider returns, fees, loss allocation and credit underwriting",
+      "Whether XRP is used as collateral or bridge liquidity anywhere in the product"
+    ],
+    "disconfirming_or_limiting_evidence": [
+      "The $525B Early Pay cumulative figure predates and is broader than Instant Pay.",
+      "The product page is waitlist/limited rollout, not a public production dashboard.",
+      "The BNY initiative is explicitly exploratory and has no named client, pilot size or committed capital in the announcement.",
+      "RLUSD, not XRP, is the stated settlement asset."
+    ]
+  },
+  "exact_phrase_context": {
+    "relevance": "This is a plausible component of the user's original 'actual capital' research thread because the announcement explicitly says participating capital providers fund the Instant Pay product.",
+    "status": "capital_provider_identity_and_amount_unresolved",
+    "do_not_conflate": [
+      "C2FO's cumulative $525B Early Pay activity",
+      "Instant Pay committed capital",
+      "Instant Pay deployed capital",
+      "BNY's exploratory receivables-finance initiative",
+      "Ripple Prime's regulatory net capital",
+      "XRP market capitalization"
+    ]
+  },
+  "next_actions": [
+    "Monitor C2FO's waitlist and limited rollout for named funding providers, first invoice, deployed amount and settlement proof.",
+    "Check C2FO's banking partners and financing agreements, but do not assume existing Dynamic Supplier Finance partners are Instant Pay funders.",
+    "Monitor BNY/Ripple/C2FO for a separate tokenized receivables pilot with named investors and committed amounts.",
+    "Track XRPL transaction volume, RLUSD supply on XRPL and issuer/redemption flows after product launch; separate product-specific activity from network-wide totals.",
+    "Do not attribute the $525B Early Pay figure to XRPL or Instant Pay."
+  ],
+  "safety": {
+    "public_company_announcements_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_action": true
+  }
+}

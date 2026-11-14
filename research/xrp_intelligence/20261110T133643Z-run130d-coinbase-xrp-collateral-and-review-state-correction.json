@@ -1,0 +1,176 @@
+{
+  "schema_version": "barrot.xrp.custody-collateral-correction.v1",
+  "run_id": "130D",
+  "captured_at_utc": "2026-11-10T13:36:43Z",
+  "repository": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_head_before_addendum": "e14c2f4dfc50259c1505efb2e69595cb294b47d6",
+    "commits_ahead": 958,
+    "commits_behind": 0,
+    "changed_files": 264,
+    "additions": 126360,
+    "deletions": 3555
+  },
+  "exact_head_verification": {
+    "prior_code_and_evidence_head": "78e6eaf4a5191798fcb3010d8fe9332e3a8c5b6c",
+    "full_ci_run": 42825344461,
+    "full_ci_conclusion": "success",
+    "tests_passed": 1371,
+    "failed": 0,
+    "subtests_passed": 8,
+    "duration_seconds": 62.12,
+    "coverage_pct": 59.58,
+    "dependency_audit_run": 42825344586,
+    "dependency_audit_conclusion": "success",
+    "manifests_passed": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42825344668,
+    "fail_closed_gate_conclusion": "success",
+    "current_head_ci_run": 42825936890,
+    "current_head_ci_status": "in_progress",
+    "current_head_dependency_run": 42825936511,
+    "current_head_dependency_status": "in_progress",
+    "current_head_fail_closed_run": 42825936530,
+    "current_head_fail_closed_conclusion": "success"
+  },
+  "pr_1640": {
+    "state": "open",
+    "draft": false,
+    "head_sha": "e14c2f4dfc50259c1505efb2e69595cb294b47d6",
+    "commits_ahead": 958,
+    "commits_behind": 0,
+    "changed_files": 264,
+    "additions": 126360,
+    "deletions": 3555,
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "reviews": {
+      "total": 62,
+      "commented": 62,
+      "approved": 0,
+      "changes_requested": 0
+    },
+    "review_threads": {
+      "total": 22,
+      "resolved": 22,
+      "unresolved": 0,
+      "outdated": 22
+    },
+    "correction": "Run130C's statement that zero review threads were resolved was incorrect; live GitHub review-thread API confirms 22/22 resolved, all outdated.",
+    "merge_blockers": [
+      "No independent APPROVED review.",
+      "Main branch-protection endpoint returns HTTP 403; effective required approval/check settings remain unverified.",
+      "Visible fallback ruleset is disabled.",
+      "A prior main push automatically triggered GitHub Pages publication; authorization for another public deployment is absent.",
+      "Full semantic review of all 264 changed files remains incomplete."
+    ],
+    "decision": "DO_NOT_MERGE"
+  },
+  "coinbase_xrp_collateral_primary_evidence": {
+    "coinbase_help_intro": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+    "coinbase_backup_asset_mapping": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+    "coinbase_collateral": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+    "coinbase_health": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-health",
+    "coinbase_blog": "https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto",
+    "primary_facts": [
+      "Coinbase explicitly lists XRP as eligible collateral for USDC crypto-backed loans powered by Morpho on Base.",
+      "Coinbase's backup page maps XRP to cbXRP on Base at contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af.",
+      "Coinbase's September 29, 2026 blog update states up to $100,000 USDC can be borrowed against XRP, subject to collateral/product/account limits.",
+      "Coinbase states collateral is locked on Morpho and marked locked/not tradeable while a loan is active; the collateral remains included in displayed total balance while debt is not netted from that total.",
+      "Coinbase says LLTV varies by asset and by Morpho market; its help page provides example LLTVs of 86%, 77% and 62.5%."
+    ],
+    "lltv_bonus_reconciliation": {
+      "xrp_market_lltv_pct": 62.5,
+      "xrp_market_morpho_liquidation_bonus_pct": 12.68,
+      "generic_86pct_market_bonus_pct": 4.38,
+      "explanation": "Coinbase's generic 4.38% text corresponds to an 86% LLTV example. The XRP-specific Morpho market reports 62.5% LLTV and 12.68% bonus. Morpho's LLTV-dependent incentive formula explains the different percentages; do not apply the generic 86%/4.38% example to XRP.",
+      "morpho_rule": "LTV >= immutable market LLTV or health factor <=1 makes a position liquidatable; liquidator repays debt and seizes collateral plus a market-specific bonus.",
+      "sources": [
+        "https://docs.morpho.org/developers/borrow/concepts/ltv/",
+        "https://docs.morpho.org/developers/borrow/concepts/liquidation/",
+        "https://morphowatch.com/learn/morpho-lltv-and-liquidations/"
+      ]
+    },
+    "morphowatch_summary": {
+      "source": "https://morphowatch.com/coinbase/",
+      "updated_utc": "2026-11-10T12:31:00Z",
+      "borrowed_usdc_usd": 55520000,
+      "collateral_value_usd": 129900000,
+      "borrow_apy_pct": 6.98,
+      "borrow_apy_30d_avg_pct": 7.25,
+      "lltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "attribution": "MorphoWatch states Coinbase does not publish the exact market ID; its market attribution is matched from public on-chain data and Morpho API."
+    },
+    "detailed_market": {
+      "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "observed_utc": "2026-11-10T11:01:00Z",
+      "collateral_cbxrp": 120410000,
+      "borrowed_usdc_usd": 55580000,
+      "supplied_usdc_usd": 62980000,
+      "utilization_pct": 88.2,
+      "available_usdc": 7410000,
+      "borrowers": 11694,
+      "liquidations_last_30d": 1466,
+      "debt_repaid_last_30d_usd": 6230000,
+      "modeled_collateral_at_risk_if_price_falls_20pct_usd": 26010000,
+      "largest_borrower_health_factor": 1.04,
+      "largest_borrower_drop_to_liquidation_pct": 3.6,
+      "oracle_price_usdc": 1.08
+    },
+    "coinbase_reserves": {
+      "source": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "reserve_xrp": 152372342.33,
+      "cbxrp_supply": 152370095.8,
+      "excess_xrp": 2246.53,
+      "timestamp_timezone": "Unspecified across locale variants; do not align to UTC without metadata."
+    },
+    "indicative_supply_share": {
+      "formula": "120.41M cbXRP in one Morpho market / 152.370M Coinbase-displayed cbXRP supply",
+      "pct": 79.0247,
+      "status": "NOT_MODEL_ADMITTED",
+      "caveat": "Source timestamps are not synchronized, Coinbase does not publish exact market allocation, and this is one market only."
+    },
+    "interpretation": {
+      "supportive_hypothesis": "USDC borrowing lets some XRP holders access liquidity without immediate XRP sale.",
+      "adverse_hypothesis": "Price declines can trigger forced cbXRP collateral liquidation; seized wrapped collateral may be sold later.",
+      "boundary": "This is Base/Morpho collateral use, not native XRPL lending, not proof of new XRP spot purchases, and not an XRP exchange-flow measure."
+    }
+  },
+  "review_and_backlog_corrections": {
+    "pr_1640_review_threads": "22/22 resolved, all outdated; previous Run130C zero-resolved statement corrected.",
+    "pr_1642": {
+      "paths": 7,
+      "overlap_with_1640": 7,
+      "unique": 0,
+      "classification": "duplicate candidate; keep open until successor merged and verified"
+    },
+    "pr_1643": {
+      "paths": 670,
+      "overlap_with_1640": 7,
+      "unique": 663,
+      "classification": "unique institutional/market/capital research; preserve; stale/dirty and unmergeable"
+    },
+    "pr_1653": {
+      "paths": 7,
+      "overlap_with_1640": 1,
+      "unique": 6,
+      "classification": "unique knowledge graph; preserve; eight unresolved review threads"
+    },
+    "closures_this_run": 0
+  },
+  "macro_reference": "Run130B records October CPI headline +0.4% m/m, core +0.3% m/m and null YoY due unavailable October 2025 base. Run130C records real earnings: all-employee real hourly and weekly earnings unchanged; production/nonsupervisory real hourly +0.1%, weekly -0.3%; YoY unavailable.",
+  "forecast_status": "NOT_ISSUED",
+  "actions": {
+    "merge": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "force_push": false
+  }
+}

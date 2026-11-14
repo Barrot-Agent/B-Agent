@@ -1,0 +1,436 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_exchange_wallet_balances_and_same_wallet_flow_reconciliation",
+  "artifact_id": "20261107T132200Z-xrp-exchange-wallet-balance-same-wallet-flow",
+  "reviewed_at_utc": "2026-11-07T13:23:59.740Z",
+  "source_snapshot_time_utc": "2026-11-07T08:01Z",
+  "source_page_retrieved_during_run_at_utc": "2026-11-07T13:23:59.740Z",
+  "publisher": "XRP Insights",
+  "source_url": "https://xrp-insights.com/exchange-balances",
+  "downloadable_json_url": "https://xrp-insights.com/exchange-balances/data.json",
+  "source_lineage": {
+    "balance_origin": "XRP Ledger latest validated ledger; publisher says its daily job calls rippled account_info for each tracked wallet.",
+    "attribution_origin": "XRPSCAN public account labels only; publisher says XRPSCAN balance figures are not used.",
+    "publisher_independence": "One publisher-derived dataset. Underlying balance reads are direct ledger reads, but exchange attribution depends on XRPSCAN labels. This is not an independent second exchange-flow provider.",
+    "raw_source_bytes_retained": false,
+    "raw_source_sha256": null,
+    "limitation": "The browser retrieval exposed normalized page text and a truncated JSON download view, not the complete downloadable JSON bytes or per-wallet source records. No raw-source hash is claimed.",
+    "normalized_evidence_record_sha256": "e8a79842302ee49c5bce7fbba189106d2a8c0a2fa0c08187128a9e147f947eaa",
+    "normalized_evidence_hash_scope": "SHA-256 over the canonical JSON serialization of the normalized_evidence_record field in this artifact; not a hash of the source webpage or raw JSON download."
+  },
+  "normalized_evidence_record": {
+    "publisher": "XRP Insights",
+    "url": "https://xrp-insights.com/exchange-balances",
+    "latest_balance_read_utc": "2026-11-07T08:01Z",
+    "total_tracked_xrp_display": "22.33B",
+    "wallets": 701,
+    "exchanges": 24,
+    "circulating_supply_xrp_display": "68.89B",
+    "share_of_circulating_supply_pct": 32.4,
+    "same_wallet_change_7d_xrp_display": "-150.7M",
+    "same_wallet_change_7d_pct": -0.67,
+    "same_wallet_window_7d": "2026-10-31/2026-11-07",
+    "same_wallet_change_30d_xrp_display": "-161.2M",
+    "same_wallet_change_30d_pct": -0.73,
+    "same_wallet_window_30d": "2026-10-08/2026-11-07",
+    "naive_total_change_xrp_display": "+350.8M",
+    "new_wallets": 2,
+    "new_wallets_xrp_display": "512.0M",
+    "reserve_components_reported": {
+      "binance_peg_xrp_bf2_xrp_display": "325.8M",
+      "coinbase_cbxrp_xrp_display": "150.8M",
+      "insurance_and_charity_xrp_display": "11.2M"
+    },
+    "source_method": "rippled account_info on validated ledger daily ~08:00 UTC; attribution XRPSCAN public labels only",
+    "limitations": [
+      "not tradable float",
+      "cold storage included",
+      "unlabeled storage 39.9%",
+      "wallet read failures retain last good balance",
+      "untracked exchange wallets and internal transfers can appear as outflows",
+      "no per-wallet history"
+    ]
+  },
+  "headline": {
+    "total_tracked_xrp_display": "22.33B",
+    "wallet_count": 701,
+    "exchange_count": 24,
+    "circulating_supply_xrp_display": "68.89B",
+    "circulating_share_pct": 32.4,
+    "total_supply_xrp": 100000000000,
+    "same_wallet_net_change_7d_display": "-150.7M XRP",
+    "same_wallet_net_change_7d_pct": -0.67,
+    "same_wallet_window_utc": "2026-10-31 through 2026-11-07",
+    "same_wallet_net_change_30d_display": "-161.2M XRP",
+    "same_wallet_net_change_30d_pct": -0.73,
+    "naive_total_change_display": "+350.8M XRP",
+    "newly_tracked_wallets": 2,
+    "newly_tracked_wallets_balance_display": "512.0M XRP",
+    "interpretation": "The same-wallet series shows a net reduction in balances in the tracked labeled-wallet set. The naive total rises because new wallets were added. Neither measure proves customer withdrawals, accumulation, selling or tradable-float change.",
+    "same_wallet_window_30d_utc": "2026-10-08 through 2026-11-07"
+  },
+  "daily_same_wallet_changes": [
+    {
+      "date": "2026-11-07",
+      "change_display": "-10.2M"
+    },
+    {
+      "date": "2026-11-06",
+      "change_display": "+59.5M"
+    },
+    {
+      "date": "2026-11-05",
+      "change_display": "-51.9M"
+    },
+    {
+      "date": "2026-11-04",
+      "change_display": "-14.1M"
+    },
+    {
+      "date": "2026-11-03",
+      "change_display": "-36.8M"
+    },
+    {
+      "date": "2026-11-02",
+      "change_display": "-68.9M"
+    },
+    {
+      "date": "2026-11-01",
+      "change_display": "-28.4M"
+    },
+    {
+      "date": "2026-10-31",
+      "change_display": "+105.9M"
+    }
+  ],
+  "exchange_breakdown": [
+    {
+      "exchange": "Upbit",
+      "xrp_held_display": "6.44B",
+      "change_7d_display": "+9.4M",
+      "change_30d_display": "+16.4M",
+      "wallets": "13",
+      "hq": "South Korea",
+      "notes": null
+    },
+    {
+      "exchange": "Coinbase",
+      "xrp_held_display": "5.79B",
+      "change_7d_display": "-65.0M",
+      "change_30d_display": "-44.1M",
+      "wallets": "358",
+      "hq": "United States",
+      "notes": "Includes 150.8M non-customer cbXRP reserve; cold-labeled >99%."
+    },
+    {
+      "exchange": "Binance",
+      "xrp_held_display": "2.73B",
+      "change_7d_display": "-49.5M",
+      "change_30d_display": "+25.7M",
+      "wallets": "153",
+      "hq": "Global/no fixed HQ",
+      "notes": "Page row includes 327.4M Binance-Peg reserve; other notes mention Binance Charity and Binance.US."
+    },
+    {
+      "exchange": "Bithumb",
+      "xrp_held_display": "1.81B",
+      "change_7d_display": "-28.7M",
+      "change_30d_display": "-34.3M",
+      "wallets": "4",
+      "hq": "South Korea",
+      "notes": null
+    },
+    {
+      "exchange": "Uphold",
+      "xrp_held_display": "1.70B",
+      "change_7d_display": "-5.3M",
+      "change_30d_display": "-58.0M",
+      "wallets": "24",
+      "hq": "United States",
+      "notes": null
+    },
+    {
+      "exchange": "Kraken",
+      "xrp_held_display": "961.8M",
+      "change_7d_display": "+1.0M",
+      "change_30d_display": "-26.9M",
+      "wallets": "14",
+      "hq": "United States",
+      "notes": null
+    },
+    {
+      "exchange": "bitbank",
+      "xrp_held_display": "575.5M",
+      "change_7d_display": "-107K",
+      "change_30d_display": "-254K",
+      "wallets": "2",
+      "hq": "Japan",
+      "notes": null
+    },
+    {
+      "exchange": "Coincheck",
+      "xrp_held_display": "553.8M",
+      "change_7d_display": "-133K",
+      "change_30d_display": "+199K",
+      "wallets": "2",
+      "hq": "Japan",
+      "notes": null
+    },
+    {
+      "exchange": "eToro",
+      "xrp_held_display": "493.2M",
+      "change_7d_display": "-187K",
+      "change_30d_display": "+481K",
+      "wallets": "2",
+      "hq": "Israel",
+      "notes": null
+    },
+    {
+      "exchange": "Crypto.com",
+      "xrp_held_display": "341.0M",
+      "change_7d_display": "+5.4M",
+      "change_30d_display": "-738K",
+      "wallets": "3",
+      "hq": "Singapore",
+      "notes": null
+    },
+    {
+      "exchange": "Coinone",
+      "xrp_held_display": "318.3M",
+      "change_7d_display": "-18K",
+      "change_30d_display": "+1.6M",
+      "wallets": "3",
+      "hq": "South Korea",
+      "notes": null
+    },
+    {
+      "exchange": "bitFlyer",
+      "xrp_held_display": "192.4M",
+      "change_7d_display": "-139K",
+      "change_30d_display": "+839K",
+      "wallets": "94",
+      "hq": "Japan",
+      "notes": null
+    },
+    {
+      "exchange": "Bybit",
+      "xrp_held_display": "153.1M",
+      "change_7d_display": "+12.6M",
+      "change_30d_display": "+3.3M",
+      "wallets": "3",
+      "hq": "United Arab Emirates",
+      "notes": null
+    },
+    {
+      "exchange": "Bitrue",
+      "xrp_held_display": "98.0M",
+      "change_7d_display": "+210K",
+      "change_30d_display": "-364K",
+      "wallets": "4",
+      "hq": "Singapore",
+      "notes": "Includes 9.5M XRP in Bitrue Insurance Fund."
+    },
+    {
+      "exchange": "SBI VC Trade",
+      "xrp_held_display": "56.6M",
+      "change_7d_display": "-2.9M",
+      "change_30d_display": "-4.2M",
+      "wallets": "2",
+      "hq": "Japan",
+      "notes": "Wallet labels show >99% cold; same-wallet balance change is not customer withdrawal evidence."
+    },
+    {
+      "exchange": "Bitfinex",
+      "xrp_held_display": "53.4M",
+      "change_7d_display": "+614K",
+      "change_30d_display": "-8.6M",
+      "wallets": "2",
+      "hq": "Hong Kong",
+      "notes": null
+    },
+    {
+      "exchange": "Gate.io",
+      "xrp_held_display": "34.0M",
+      "change_7d_display": "-25.2M",
+      "change_30d_display": "-24.2M",
+      "wallets": "4",
+      "hq": "Cayman Islands",
+      "notes": null
+    },
+    {
+      "exchange": "Bitstamp",
+      "xrp_held_display": "18.7M",
+      "change_7d_display": "+2.1M",
+      "change_30d_display": "-3.8M",
+      "wallets": "2",
+      "hq": "Luxembourg",
+      "notes": null
+    },
+    {
+      "exchange": "KuCoin",
+      "xrp_held_display": "2.2M",
+      "change_7d_display": "+32K",
+      "change_30d_display": "-98K",
+      "wallets": "6",
+      "hq": "Seychelles",
+      "notes": null
+    },
+    {
+      "exchange": "Bitget",
+      "xrp_held_display": "911K",
+      "change_7d_display": "-4.7M",
+      "change_30d_display": "-3.7M",
+      "wallets": "2",
+      "hq": "Seychelles",
+      "notes": null
+    },
+    {
+      "exchange": "HTX",
+      "xrp_held_display": "523K",
+      "change_7d_display": "-107K",
+      "change_30d_display": "-519K",
+      "wallets": "1",
+      "hq": "Seychelles",
+      "notes": null
+    },
+    {
+      "exchange": "Coins.ph",
+      "xrp_held_display": "4K",
+      "change_7d_display": "-83K",
+      "change_30d_display": "-112K",
+      "wallets": "1",
+      "hq": "Philippines",
+      "notes": "Coverage gap: main wallets not in tracked set."
+    },
+    {
+      "exchange": "OKX",
+      "xrp_held_display": "21",
+      "change_7d_display": "-892",
+      "change_30d_display": "-868",
+      "wallets": "1",
+      "hq": "Seychelles",
+      "notes": "Coverage gap: main wallets not in tracked set; 21 XRP is not an exchange reserve estimate."
+    },
+    {
+      "exchange": "Korbit",
+      "xrp_held_display": "1",
+      "change_7d_display": "0",
+      "change_30d_display": "0",
+      "wallets": "1",
+      "hq": "South Korea",
+      "notes": "Coverage gap: main wallets not in tracked set."
+    }
+  ],
+  "regional_breakdown": [
+    {
+      "region": "South Korea",
+      "xrp_display": "8.57B",
+      "share_pct": 38.4,
+      "included": "Upbit, Bithumb, Coinone and partial Korbit coverage"
+    },
+    {
+      "region": "United States",
+      "xrp_display": "8.45B",
+      "share_pct": 37.8,
+      "included": "Coinbase, Uphold and Kraken"
+    },
+    {
+      "region": "Japan",
+      "xrp_display": "1.38B",
+      "share_pct": 6.2,
+      "included": "bitbank, Coincheck, bitFlyer and SBI VC Trade"
+    },
+    {
+      "region": "Global/offshore",
+      "xrp_display": "2.77B",
+      "share_pct": 12.4,
+      "included": "Binance, Gate.io, KuCoin, Bitget, HTX and OKX"
+    },
+    {
+      "region": "Rest of world",
+      "xrp_display": "1.16B",
+      "share_pct": 5.2,
+      "included": "eToro, Crypto.com, Bybit, Bitrue, Bitfinex, Bitstamp and Coins.ph"
+    }
+  ],
+  "storage_and_wrapped_reserves": {
+    "storage_split_pct": {
+      "cold_labeled": 48,
+      "hot_labeled": 12,
+      "unclassified": 39.9
+    },
+    "total_wrapped_or_insurance_charity_reserves_display": "487.8M XRP",
+    "component_summary_reported": {
+      "binance_peg_xrp_bf2": "325.8M XRP",
+      "coinbase_cbxrp": "150.8M XRP",
+      "exchange_insurance_and_charity": "11.2M XRP"
+    },
+    "internal_source_disagreement": {
+      "exchange_table_binance_peg_reserve": "327.4M XRP",
+      "reserve_summary_binance_peg_reserve": "325.8M XRP",
+      "difference": "1.6M XRP",
+      "treatment": "Preserve both source fields; do not average or silently reconcile."
+    },
+    "interpretation": "The exchange total includes cold storage, omnibus custody and wrapped-asset backing reserves. It is not tradable float or customer-deposit inventory."
+  },
+  "methodology_and_limitations": [
+    "The publisher says it reads each tracked wallet once daily at about 08:00 UTC from rippled account_info on the latest validated ledger.",
+    "If a wallet read fails, its last good balance is retained until the next successful run; per-wallet freshness is not exposed in the page.",
+    "Exchange attribution uses XRPSCAN public labels only.",
+    "Same-wallet changes remove wallets first tracked after the start of the window; an exchange whose wallet set changes can be excluded.",
+    "The publisher stores per-exchange daily totals and wallet counts, not per-wallet history; same-wallet changes are available only for windows ending at the latest snapshot.",
+    "An exchange moving XRP to an untracked wallet can appear as an outflow until that wallet is labeled.",
+    "OKX and Korbit main wallets are not in the tracked set; Coins.ph coverage is also incomplete.",
+    "A September 29 audit identified about 323M XRP in XRPSCAN-labeled wallets at roughly 36 exchanges outside the tracked list.",
+    "Newly labeled wallets are added on the next daily run; the raw total can jump from coverage changes rather than flows.",
+    "ETF custody wallets without public exchange labels are not included."
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "XRP in the same set of tracked exchange wallets declined by 150.7M over seven days and 161.2M over 30 days.",
+      "support": "Publisher's same-wallet method and daily snapshot table.",
+      "counter_hypothesis": "Some apparent reductions may be transfers to untracked wallets, custody movements or stale wallet reads; this is not proof of net customer withdrawal or accumulation."
+    },
+    {
+      "id": "H2",
+      "hypothesis": "Venue/region composition is highly concentrated in South Korea and the United States within this attributed-wallet universe.",
+      "support": "South Korea 8.57B (38.4%) and United States 8.45B (37.8%) of the tracked total.",
+      "counter_hypothesis": "Cold storage, omnibus custody, wrapped reserves and incomplete venue coverage make these shares unsuitable as tradable-float or order-book-liquidity shares."
+    },
+    {
+      "id": "H3",
+      "hypothesis": "SBI VC Trade's publicly attributed XRP wallet set declined by 2.9M over seven days and 4.2M over 30 days.",
+      "support": "Publisher's SBI VC Trade row: 56.6M XRP across two wallets, >99% cold-labeled.",
+      "counter_hypothesis": "No customer ownership or wallet-transfer destination is disclosed; it is not evidence of SBI sales or reduced XRP demand."
+    },
+    {
+      "id": "H4",
+      "hypothesis": "Coinbase's attributed-wallet total is large but contains wrapped-token backing and cold custody, not only exchange-tradable customer inventory.",
+      "support": "The publisher identifies 150.8M XRP backing cbXRP and notes institutional custody balances can sit in omnibus wallets.",
+      "counter_hypothesis": "The remaining wallet balance is still not a verified measure of available order-book supply."
+    }
+  ],
+  "model_admission": {
+    "admitted_to_price_features": false,
+    "admitted_to_exchange_flow_features": false,
+    "candidate_status": "RESEARCH_CONTEXT_ONLY_PENDING_RAW_DAILY_EXPORT_AND_WALLET_SET_ARCHIVE",
+    "reason": [
+      "The complete downloadable JSON bytes and per-wallet raw account_info receipts were not available through the retrieval interface.",
+      "Wallet labels and label-vintage history are not archived in this capture.",
+      "The publisher's per-wallet last-good fallback can conceal individual stale reads.",
+      "Same-wallet changes are not customer flows and cannot distinguish internal transfers from withdrawals.",
+      "The total includes cold custody, wrapped reserves and insurance/charity funds; it is not tradable float."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  },
+  "correction_history": {
+    "corrected_at_utc": "2026-11-07T13:25:19.432Z",
+    "previous_blob_sha": "ec4a9569a5e31e5e97bc2c8fc5c8775fbc743e32",
+    "correction_commit_parent": "230b3456f55d1c1b8136e3f8c005b573a7eb19ee",
+    "reason": "The headline 7-day window field accidentally reused the 30-day range, and the page reported latest read time only to the minute. Corrected the 7-day/30-day window labels and removed false second-level precision. Raw source values and source limitations are unchanged."
+  },
+  "daily_same_wallet_changes_note": "The 2026-10-31 row is the daily change ending on the 7-day window's start date; the 7-day net compares the Oct 31 snapshot with Nov 7 and is not the sum of all eight displayed rows."
+}
