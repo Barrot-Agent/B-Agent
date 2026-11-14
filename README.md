@@ -13,16 +13,14 @@ Barrot-Agent now maintains **two independent systems**:
 ### 🔍 Search Engine
 Privacy-first search with quantum-enhanced algorithms and edge computing
 - **Access**: [Search Engine](https://barrot-agent.github.io/Barrot-Agent/search-engine/)
-- **Docs**: [search-engine/README.md](search-engine/README.md)
+- **Docs**: [SYSTEM_SEPARATION.md](SYSTEM_SEPARATION.md)
 
 ### 🦜 Agent Dashboard  
 Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
 - **Access**: [Agent Dashboard](https://barrot-agent.github.io/Barrot-Agent/site/)
-- **Docs**: [site/README.md](site/README.md)
+- **Docs**: [SYSTEM_SEPARATION.md](SYSTEM_SEPARATION.md)
 
 **[📖 Learn more about the separation](SYSTEM_SEPARATION.md)**
-
-> **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
 ## 🚀 Quick Start
 
@@ -224,9 +222,9 @@ for cycle in report.cycles:
 | `VerificationResult` | Verify-phase checks + coverage metric |
 
 ### 📱 Mobile Setup
-Want to access Barrot-Agent from your phone? 
-
-**[📱 See Mobile Setup Guide](MOBILE_SETUP.md)**
+Want to access Barrot-Agent from your phone? The web dashboard and Termux
+(`.termux/`) setup both work from mobile browsers; see
+[docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) to begin.
 
 The mobile guide covers:
 - 🌐 Web dashboard access
@@ -280,7 +278,7 @@ B-Agent/
 - **Search Engine** - Standalone search system (see `/search-engine/`)
 - **Dashboard** - Agent management interface (see `/site/`)
 - **Coin App Integration** - Autonomous passive income automation (see `/coin-app/`)
-- **AI Tools** - System prompts and models for autonomous operations (see `ai-tools-config.yaml`)
+- **AI Tools** - System prompts and models for autonomous operations (see [docs/monetization.md](docs/monetization.md))
 - **Manifest Rail** - Build tracking system
 - **22-Agent Entanglement Pingpong** - External cognitive processing system
 - **🔮 Quantum Entanglement** - Ping Pong quantum principles for enhanced cognitive processing
@@ -305,7 +303,7 @@ A standalone, privacy-first search engine with:
 - Zero tracking and complete privacy
 - Dynamic ingestion modes for real-time processing
 
-**[→ Visit Search Engine](search-engine/)**
+**[→ Search Engine details](SYSTEM_SEPARATION.md)**
 
 #### 🦜 Barrot Agent Dashboard (`/site/`)
 Comprehensive automation platform featuring:
@@ -320,7 +318,7 @@ Comprehensive automation platform featuring:
 - **🪙 Coin App Automation** - Passive income through geocaching, surveys, and games
 - Operations Monitoring
 
-**[→ Visit Agent Dashboard](site/)**
+**[→ Agent Dashboard details](SYSTEM_SEPARATION.md)**
 
 ### 🪙 Coin App Integration
 Autonomous passive income generation through:
@@ -329,7 +327,7 @@ Autonomous passive income generation through:
 - **Game Optimization** - Strategic gameplay for maximum rewards
 - **Income Tracking** - Real-time earnings dashboard and analytics
 
-**[→ Read Coin App Documentation](coin-app/README.md)**
+**[→ Read Coin App Documentation](docs/COIN_APP_README.md)**
 
 ### 🌉 Connext Bridge Integration
 Cross-chain bridge for seamless asset transfers across multiple blockchains:
@@ -347,7 +345,7 @@ Cross-chain bridge for seamless asset transfers across multiple blockchains:
 - **Trust-Minimized** - No external validators required
 - **Developer-Friendly** - Simple integration with comprehensive documentation
 
-**[→ View Connext Configuration](connext-config.yaml)**
+**[→ View Connext Integration](docs/CONNEXT_INTEGRATION.md)**
 
 ### 🤖 AI Tools Configuration
 System prompts and AI models for autonomous operations:
@@ -355,8 +353,6 @@ System prompts and AI models for autonomous operations:
 - **Claude-3** - Long context processing and analysis
 - **Vision AI** - UI interaction and navigation
 - **Specialized Tools** - Survey completion, game strategy, route optimization
-
-**[→ View AI Tools Configuration](ai-tools-config.yaml)**
 
 ### 📧 Email Intelligence Processing
 Barrot can analyze emails to extract useful and actionable information:
@@ -411,7 +407,7 @@ Barrot can explore and transform abilities from fictional characters into real-w
 - **Avatar Aang** - Multi-resource management, power modes, holistic integration
 - **Link (Zelda)** - Tool utilization, algorithm solving, exploration systems
 
-**[→ Explore Character Capabilities](character-capabilities/)**
+**[→ Explore Character Capabilities](docs/CHARACTER_CAPABILITIES_GUIDE.md)**
 
 **[→ View Character-Capability-Explorer Spell](spells/character-capability-explorer.md)**
 
@@ -544,7 +540,7 @@ Barrot-Agent can be deployed to multiple cloud platforms:
 - **Fly.io**: Global edge deployment with `fly.toml`
 - **Docker**: Self-hosted container deployment
 
-**[📖 See Full Deployment Guide](DEPLOYMENT.md)**
+**[📖 Deployment**: use the [Dockerfile](Dockerfile) / [docker-compose.yml](docker-compose.yml) — `docker compose up --build`**
 
 ### Quick Deploy
 
@@ -627,39 +623,23 @@ PY
 
 ### Legacy Root-Level Docs
 
-- **🔮 [Quantum AGI Integration](QUANTUM_AGI_INTEGRATION.md)** — see [docs/agi.md](docs/agi.md)
-- **✨ [Transformative Insights Guide](TRANSFORMATIVE_INSIGHTS_GUIDE.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
+- **🔮 [Quantum AGI Integration](docs/QUANTUM_AGI_INTEGRATION.md)** — see [docs/agi.md](docs/agi.md)
+- **✨ [Transformative Insights Guide](docs/TRANSFORMATIVE_INSIGHTS_GUIDE.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
 - **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** — see [docs/system.md](docs/system.md)
-- **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
-- **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
-- **🪙 [Coin App Integration](coin-app/README.md)** — see [docs/monetization.md](docs/monetization.md)
-- **🌉 [Connext Bridge Integration](CONNEXT_INTEGRATION.md)** — see [docs/monetization.md](docs/monetization.md)
-- **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
+- **🪙 [Coin App Integration](docs/COIN_APP_README.md)** — see [docs/monetization.md](docs/monetization.md)
+- **🌉 [Connext Bridge Integration](docs/CONNEXT_INTEGRATION.md)** — see [docs/monetization.md](docs/monetization.md)
 - **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** — see [docs/email.md](docs/email.md)
-- **🎭 [Character Capabilities](character-capabilities/README.md)** — see [docs/character_capabilities.md](docs/character_capabilities.md)
-- **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
-- **📱 [Mobile Setup](MOBILE_SETUP.md)** - Access Barrot from your phone
-- **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
+- **🎭 [Character Capabilities](docs/CHARACTER_CAPABILITIES_GUIDE.md)** — see [docs/character_capabilities.md](docs/character_capabilities.md)
 - **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** — see [docs/ingestion.md](docs/ingestion.md)
 - **🔀 [Merge Conflict Resolution Guide](MERGE_CONFLICT_RESOLUTION_GUIDE.md)** — see [docs/system.md](docs/system.md)
 - **🧮 [Millennium Problems Status](MILLENNIUM_PROBLEMS_STATUS.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
-- **🚀 [Advanced Propulsion Research](ADVANCED_PROPULSION_RESEARCH.md)** — see [docs/research.md](docs/research.md)
+- **🚀 [Advanced Propulsion Research](docs/ADVANCED_PROPULSION_RESEARCH.md)** — see [docs/research.md](docs/research.md)
 - **🎯 [MMI Implementation Guide](MMI_IMPLEMENTATION.md)** — see [docs/monetization.md](docs/monetization.md)
 
 ## 💰 Support Barrot-Agent
 
-Love Barrot-Agent? Consider becoming a sponsor!
-
-[![Sponsor](https://img.shields.io/badge/Sponsor-💰-pink)](SPONSORSHIP.md)
-
-Your sponsorship helps us:
-- 🔬 Accelerate AGI research
-- 🏆 Dominate AI benchmarks
-- 🤖 Develop autonomous capabilities
-- 📊 Improve transparency and logging
-- 🌍 Grow the open-source community
-
-**[View Sponsorship Tiers](SPONSORSHIP.md)**
+Love Barrot-Agent? Consider starring the repository and reporting issues —
+that is currently the best way to support development.
 
 ---
 
