@@ -21,7 +21,10 @@ Authentication is resolved from environment variables:
 Or from ~/.kaggle/kaggle.json / $KAGGLE_CONFIG_DIR/kaggle.json.
 """
 
+from __future__ import annotations
+
 import io
+
 import logging
 import os
 import sys
@@ -30,9 +33,20 @@ from pathlib import Path
 from typing import Optional
 
 import pandas as pd
-from kaggle.api.kaggle_api_extended import KaggleApiExtended
 from sklearn.dummy import DummyClassifier, DummyRegressor
 from sklearn.preprocessing import LabelEncoder
+
+# The kaggle package authenticates AT IMPORT TIME (kaggle/__init__.py calls
+# authenticate() when the module is imported), so a machine without
+# kaggle.json would make this whole module unimportable. Import defensively:
+# report the failure at call time (_build_api) instead of import time.
+try:
+    from kaggle.api.kaggle_api_extended import KaggleApiExtended
+
+    _KAGGLE_IMPORT_ERROR: Optional[Exception] = None
+except (ImportError, OSError) as _exc:  # OSError = missing credentials
+    KaggleApiExtended = None  # type: ignore[assignment,misc]
+    _KAGGLE_IMPORT_ERROR = _exc
 
 logging.basicConfig(
     level=logging.INFO,
@@ -70,6 +84,12 @@ def _build_api() -> KaggleApiExtended:
     Initialise the Kaggle API client.
     Credentials are read from environment variables or from kaggle.json.
     """
+    if KaggleApiExtended is None:
+        raise RuntimeError(
+            "Kaggle API unavailable at import time "
+            f"({_KAGGLE_IMPORT_ERROR}). Provide ~/.kaggle/kaggle.json or "
+            "KAGGLE_USERNAME/KAGGLE_KEY, then retry."
+        )
     username = os.environ.get("KAGGLE_USERNAME", "")
     key = os.environ.get("KAGGLE_KEY", "")
     if username and key:

@@ -7,10 +7,20 @@
 # barrot_agent/orchestration/deploy_huggingface.py       -> huggingface_hub
 # barrot_agent/orchestration/inference_node.py           -> flask
 # barrot_agent/tools/kaggle_competitions_automation.py   -> kaggle, pandas, scikit-learn
+#
+# PLATFORM NOTES (verified 2026-11-14 on aarch64 Termux/Debian hybrid):
+# - The versions below are pinned to the newest releases whose dependency
+#   trees need NO Rust compiler (hf-xet, rpds-py, cryptography all require
+#   Rust when built from source).
+# - On Debian-class systems prefer the distro packages for the native deps:
+#     apt-get install python3-cryptography python3-pandas python3-sklearn
+#   then pip-install the rest (verified working combination).
+# - kaggle_competitions_automation imports cleanly WITHOUT credentials now;
+#   the credential error is deferred to _build_api() call time.
 
 databricks-sdk>=0.30.0
 flask>=3.0.0
-huggingface_hub>=0.23.0
-kaggle>=1.6.0
+huggingface_hub>=0.23.0,<0.31  # >=0.31 hard-requires hf-xet (Rust)
+kaggle>=1.5.12,<1.6            # >=1.6 pulls jsonschema->rpds-py (Rust)
 pandas>=2.0.0
 scikit-learn>=1.4.0
