@@ -1,8 +1,10 @@
 ## Run126 main-automation safety and filing follow-up — 2026-11-14T12:21:03Z
 
-### Main Barrot Sync: credential-prefix disclosure and false-green execution
+### Main Barrot Sync: false-green execution; key characters not printed
 
-Main `.github/workflows/barrot-sync.yml` currently prints the first 30 characters of `LUNAROUTE_API_KEY` into the Actions log. The workflow also masks the Python sync failure with `|| echo` and masks `git push` failure with `|| true`. Main run [43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347) concluded success despite a logged `ModuleNotFoundError: No module named 'httpx'`. A green status therefore did not establish a successful sync or push. Treat the key as potentially partially exposed; **no rotation was performed**. Rotation requires separate authorization. The integration branch already quarantines this workflow with an empty permissions block and a disabled job. Do not dispatch main Barrot Sync.
+Reinspection of main `.github/workflows/barrot-sync.yml` and the exact job log for [run 43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347) corrects the earlier key-exposure interpretation. The command is `echo "Barrot running on LunaRoute - $LUNAROUTE_API_KEY" | cut -c1-30`. The first 30 characters are exactly the fixed label `Barrot running on LunaRoute - `; the API key begins after that cutoff. The log shows only that label plus a masked environment entry. **No API-key characters were printed in this run; the earlier claim of a 30-character key-prefix disclosure was incorrect.** No secret value was read and no rotation was performed.
+
+The workflow still has a false-green execution defect: `python b_agent.py --sync || echo ...` masks `ModuleNotFoundError: No module named 'httpx'`, and `git push || true` masks push failure. Run 43343513347 concluded success while synchronization was skipped. The integration branch quarantines this workflow. Keep it quarantined until failures are fail-closed and authentication/data flow are independently tested. Do not dispatch main Barrot Sync.
 
 ### Main Coinbase paper-trader state: open position with missing identity
 
@@ -1963,7 +1965,7 @@ Nine-platform map: `research/xrp_intelligence/nine_platform_capability_authentic
 - Current main `coinbase-paper-trader.yml` is manual-only (the old #1320 description's schedule claim is stale), but it has no per-run YES confirmation, no exact-main-SHA pin and no position-identity preflight. It calls the BTC-USD provider and Groq model, then commits/pushes state and log to main. Main `scripts/coinbase_paper_trader.py` has no product-identity validator or per-run approval and loads state only after provider calls.
 - Current main `web/paper_trading_state.json` contains a nonzero simulated position: 0.012445158497236623 units, average entry $80,436.84, trade_count 126, but `position_product=null`. This product is not inferred. No paper-trader run was found in the latest 100 main workflow runs, and no paper trade was executed in this run.
 - Integration's paper-trader workflow is manual-only, requires exact `YES` and a full current-main SHA, uses `contents: read`, emits artifacts only, and does not push to main. Its script validates persisted state before provider/model calls and fails closed on missing/mismatched product identity. Integration includes 17 product-state tests and four workflow-safety tests. #1320 is therefore a semantic supersession candidate after the successor is merged and verified on main; do not close it now.
-- Main `barrot-sync.yml` triggers on every push to main and workflow dispatch, passes `LUNAROUTE_API_KEY` and `GH_TOKEN`, prints the first 30 characters of the LunaRoute key, masks the sync failure with `|| echo`, and masks git-push failure with `|| true`. The latest observed run failed before a verified LunaRoute call because `httpx` was missing, then performed a no-op push while reporting success. The configured key-prefix echo is a potential secret-disclosure path if the secret is populated. Integration removes the push trigger, sets read-only permissions and disables/quarantines the job.
+- Main `barrot-sync.yml` triggers on every push to main and workflow dispatch, passes `LUNAROUTE_API_KEY` and `GH_TOKEN`, and masks sync/push failures with `|| echo` and `|| true`. The latest observed run failed before a verified LunaRoute call because `httpx` was missing, then reported success. The command `cut -c1-30` applies to the complete banner, whose static prefix is exactly 30 characters; it does not print key characters. Integration removes the push trigger, sets empty permissions and disables/quarantines the job.
 
 ### Workflow and public-site audit
 - All 50 changed workflow patches were screened. Twenty-six changed workflows are quarantined/disabled; 24 remain active or manual. Manual Databricks/Kaggle, Cloudflare/A2A deployment and separate secret rotation, Hugging Face upload, Groq research, and paper-simulation paths require explicit per-run confirmation and exact-main-SHA checks; none were dispatched. The XRP ingestion workflow is read-only and main-only, but unmerged and not running on main. GitHub artifact/cache retention is not independent WORM storage.
@@ -2749,7 +2751,7 @@ The exact pre-update integration head `894a6c99ebf3fcccce9eb6b37744b224c9103d2d`
 ### Main-branch blockers and permission boundaries
 
 - Main SHA `fb272b40966834754ec686f9ed3ab94123f09306` adds LunaRoute MCP configuration. Main `opencode.json` enables the remote MCP endpoint and grants `edit`, `bash` and `webfetch` as `allow`. The integration version disables the remote server and defaults mutation/network permissions to `ask`. No authenticated LunaRoute session or verified external data flow was demonstrated.
-- Main `.github/workflows/barrot-sync.yml` still prints the first 30 characters of `LUNAROUTE_API_KEY` and masks sync/push failures. The integration branch quarantines that workflow. Treat the credential as potentially partially exposed; no secret value was read and no rotation was performed.
+- Main `.github/workflows/barrot-sync.yml` still masks sync/push failures. The inspected `cut -c1-30` prints only the fixed 30-character banner, not API-key characters. No credential exposure was demonstrated in run 43343513347. The integration branch quarantines the workflow; no secret value was read and no rotation was performed.
 - Main `web/paper_trading_state.json` still has `position_product=null`; main's manual paper-trader workflow lacks explicit confirmation and commits state/log changes to main. The integration version requires explicit confirmation and an exact main SHA, validates product identity before network/model calls, uses read-only contents permission and uploads an artifact. No paper-trader dispatch occurred.
 - Main scheduled Pillars Check [43597665120](https://github.com/Barrot-Agent/B-Agent/actions/runs/43597665120) failed because GitHub App ID/private-key/installation ID are missing, Databricks returned HTTP 403 and the Hugging Face Space reported BUILD_ERROR. Its read-only checks for the main deployment file and system prompt passed. No Databricks write, Space restart or deployment was attempted.
 - Repository metadata reports Pages enabled. The Pages settings endpoint is not accessible through this GitHub connection; a prior main push triggered public publication. PR #1662 changes seven public web files. Publication authorization remains unresolved.
@@ -2826,7 +2828,7 @@ These are three separate regional statutory investment-development companies and
 1. Keep #1662 as the only current-main integration candidate. Finish a bounded semantic review of the 50 changed workflow files, seven public web files, XRP ingestion/evaluator and Barrot V3 execution boundaries.
 2. Obtain independent review and effective branch-protection evidence; do not self-approve or bypass required checks.
 3. Resolve Pages publication authorization before any merge that would publish the changed web files.
-4. Have the credential owner remediate the potentially exposed LunaRoute key; no automatic rotation. Keep main Barrot Sync disabled/quarantined before any further run.
+4. Keep main Barrot Sync quarantined because its `httpx` failure and push failure are masked. The inspected log shows no API-key characters; do not claim key exposure or rotate a secret without explicit owner authorization.
 5. Keep the main paper trader undispatched until product identity and explicit action approval are resolved.
 6. Activate the scheduled XRP workflow only after safe integration/merge authorization; add independent WORM or signed external anchoring and raw-artifact rebuild before treating receipts as immutable.
 7. Populate synchronized historical spot/L2/derivatives/flow/collateral data, then wire dependence-aware paired bootstrap into the evaluator and measure candidate performance against all four baselines.
@@ -2870,3 +2872,87 @@ The strongest public homonym surfaced is Permission's **ASK** token. Permission'
 The Kamilah Stevenson YouTube handle remains unverified: third-party directory/profile links are leads only. No channel-level video inventory was added. The verified TEDx event video remains separately attributed; Camilla and Kamilah identities are not merged.
 
 No forecast was issued. No additional PR was created or closed. Main remained unchanged. No deployment, secret rotation, Space restart, external model transfer, paper trade, funds transfer or real-money action occurred.
+
+
+## Run128 — 2026-11-14T13:51:48Z — current-main, integration, security and prediction-engine reconciliation
+
+### Repository state and exact integration head
+
+- Current main: `fb272b40966834754ec686f9ed3ab94123f09306`; main was not modified.
+- Current integration branch: `integration/xrp-v3-unified-main-20261112`, head before this handoff update: `8b4d4bc8321d4a53b3f253930db3b04f72a63102`.
+- PR [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662) remains open, draft, mergeable and zero commits behind main; it is 2,391 commits ahead with 1,194 changed files (+355,653 / -5,354).
+- PR #1662 has zero formal reviews, zero approvals, zero requested reviewers and zero review threads. Its 50 changed workflow files and 1,144 other changed paths are not a substitute for independent review.
+- Main tree: 1,381 entries / 1,277 files, 495 Python files, 93 test files, 87 workflows. Integration tree: 2,435 entries / 2,321 files, 875 Python files, 452 test files, 88 workflows. The PR changes 656 research paths, 385 test paths and seven public-web paths in addition to the 50 workflow files.
+- The open-PR inventory is 375: 361 drafts and 14 non-drafts; 367 target main and eight target other base branches. The backlog is not fully semantically classified.
+
+### Source-branch ancestry and preservation
+
+- #1661 is an ancestor of #1662 (259 commits ahead from #1661 to #1662); #1660 is an ancestor (440 commits); #1643 is an ancestor (1,502 commits); #1642 is an ancestor (2,407 commits).
+- #1640 is not an ancestor: its head diverges by one source-only commit. That commit, `d34067a7da6be1c378bbbe093524c9fbb1ab74d6`, adds separate explicit Databricks-import and Kaggle-download approvals and tests. Its behavior is present in #1662's `.github/workflows/barrot-ops.yml` and tests. Retain #1640 until successor content is merged and verified on main.
+- #1661, #1660, #1643, #1642 and #1640 remain open. No source PR was closed. Unique work (#1653 and other source-only branches) remains preserved.
+
+### Exact-head CI on 8b4d4bc
+
+- [Push CI 43601207621](https://github.com/Barrot-Agent/B-Agent/actions/runs/43601207621), exact head `8b4d4bc8321d4a53b3f253930db3b04f72a63102`: **3,641 passed, eight subtests passed, zero failures**, 62.47% inclusive coverage and 76% legacy-core coverage. Wheel build/install and primary-mission packaging passed.
+- [Dependency Audit 43601212424](https://github.com/Barrot-Agent/B-Agent/actions/runs/43601212424): all five manifest groups passed; no known vulnerabilities were reported.
+- [Fail-closed push gate 43601207599](https://github.com/Barrot-Agent/B-Agent/actions/runs/43601207599) and [PR gate 43601212350](https://github.com/Barrot-Agent/B-Agent/actions/runs/43601212350) passed; automatic merge remains disabled.
+- PR-event CI [43601212384](https://github.com/Barrot-Agent/B-Agent/actions/runs/43601212384) was skipped by the integration-branch guard. The successful push-triggered full-suite run is the exact-head test evidence.
+- The handoff/map update commit created after this snapshot requires its own exact-head CI; do not reuse the parent-head result as verification of the update commit.
+
+### Main automation and workflow side effects
+
+- Main CI [43343513172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172) passed 747 tests.
+- Main scheduled Cross Analysis [43601869178](https://github.com/Barrot-Agent/B-Agent/actions/runs/43601869178) succeeded.
+- Main Pillars Check [43597665120](https://github.com/Barrot-Agent/B-Agent/actions/runs/43597665120) failed read-only checks: missing GitHub App ID/private key/installation ID, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR.
+- Main Pages build/deploy [43343511839](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343511839) succeeded after the prior main push. Pages publication is automatic and remains unauthorized. PR #1662 changes seven public-web files, so merging would publish them.
+- Main Barrot Sync [43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347) reported success while `b_agent.py --sync` was skipped by `ModuleNotFoundError: No module named 'httpx'`; `|| echo` and `git push || true` mask failures. Reinspection corrects the prior key-leak claim: `cut -c1-30` prints only the fixed 30-character banner `Barrot running on LunaRoute - `; no key characters appear in the inspected log. No secret value was read or rotated. The integration version quarantines this workflow.
+- Main Barrot Auto PR [43343513283](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513283) is a configuration-validation job only; it did not create a PR.
+- All 50 changed workflow patches were re-reviewed; 26 are quarantined/disabled and 24 are active, read-only or manual/approval-gated. Ten unchanged high-risk workflows were also inspected. The XRP collector is read-only, uses public endpoints and no external credentials, but is not present on main. Manual Databricks/Kaggle, paper-trader, Hugging Face, deploy and restart paths were not dispatched. No deployment, restart, paper trade, Kaggle submission, Databricks write or external model transfer occurred.
+
+### Security and merge blockers
+
+- Main branch metadata says `protected=true`; detailed branch-protection endpoint returned HTTP 403. The visible fallback ruleset is disabled. Required checks and approval rules remain unverified.
+- `.github/CODEOWNERS` assigns `*` to `@Barrot-Agent`; it does not provide independent review. PR #1662 has no formal approvals.
+- The GitHub connector reports admin, maintain, push, pull and triage permissions. This is overprivileged relative to the read-only research requirement; least privilege is not satisfied.
+- GitHub Pages publication remains an automatic merge side effect without authorization.
+- The path `.config/gh/hosts.yml` is present in 17/17 rechecked open-PR branch-tip trees, absent from main and #1662, and absent from all 17 changed-file inventories. File contents were not read; provider-side OAuth revocation was not independently verified. Preserve those branches; do not rewrite or force-push history.
+- Main `opencode.json` enables remote LunaRoute MCP and edit/bash/webfetch permissions; integration disables remote MCP and requires approval. Neither configuration proves successful LunaRoute authentication or data flow. No LunaRoute call or external-model transfer was made.
+
+### XRP ingestion and prediction-engine status
+
+- The integration collector defines 50 source endpoints: 45 hourly, three weekly CFTC and two noncommercial XRPL node endpoints; 48 are scheduled. Bybit spot ticker/depth and linear derivatives endpoints are included. The 100-level spot book parser records matching-engine and system timestamps, validates bid/ask, rejects crossed/stale books and computes 10/50/100-basis-point depth and imbalance.
+- Bybit HTTP 403 is treated as an access restriction; the collector does not proxy or bypass regional controls.
+- The hourly collector and daily backup workflow are integration-only, guarded for main, and have not run on main. Per-run raw receipts and feature-store artifacts have 90-day retention; the per-run feature-store checkpoint is seven days. GitHub artifacts/cache are not WORM storage or an independent trusted timestamp authority.
+- The SQLite feature store and hash-chain receipt code are implemented and tested, but cross-run replayable raw retention, external immutable anchoring and complete synchronized multi-venue history are not production-verified.
+- Walk-forward evaluation is chronological and point-in-time, with horizon-length embargo, one-hour maximum origin age, naive-class-prior, momentum, mean-reversion and Gaussian-volatility baselines, temporal calibration and PSI drift diagnostics. Effective sample size counts non-overlapping target intervals; residual serial dependence and shared-source correlation still need correction.
+- The forecast ledger requires an independently trusted Ed25519 evaluator attestation. No production evaluator key, mature synchronized history, demonstrated out-of-sample lift or sufficient independent shadow outcomes exists. `web/latest_signal.json` remains `NOT_ISSUED`. **No directional forecast is authorized.**
+
+### Nine-platform coordination
+
+- ChatGPT's GitHub connector is live and tested in this session, but its permissions are admin/maintain/push/pull/triage and therefore overprivileged.
+- Copilot has historical one-off review activity but no formal approval on #1662.
+- Claude, Grok, Gemini and Codex have no authenticated data flow verified here.
+- Hugging Face has no successful current authentication; the last recorded Space health check was BUILD_ERROR. Kaggle is untested. Databricks' last read-only validation returned HTTP 403.
+- LunaRoute is a separate repository-declared provider, not one of the nine; its endpoint remains unauthenticated and its remote MCP is disabled on the integration branch.
+- No independent tasks were executed across the nine platforms, no structured evidence was exchanged with them and no external red-team review occurred. The task allocation and evidence schema remain designed, not executed.
+
+### Research status carried forward from Run127
+
+No new live market capture or external primary-source research was performed in Run128. The latest research remains Run127: SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings or Circle SBI Japan K.K.; the exact phrase “SBIC, ChatGPT SBIC” remains unresolved. Permission Coin's ASK token is a Base/Polygon asset with no verified XRPL/XRP deployment. “Actual capital” remains a taxonomy of cash proceeds, in-kind XRP, actual purchases, debt, facilities, ELOC capacity and resales—not a standardized XRP metric. Kamilah Stevenson is distinguished from Camilla references; no first-party channel ownership link has been verified, so no personal YouTube video inventory is attributed.
+
+Run127's Coinbase/Circle/Ripple/SBI evidence remains source-specific: Circle SBI Japan K.K. is a 50/50 USDC-distribution JV with limited reported operating activity; SBI and SBI Shinsei separately acquired Circle shares; SBI has a disclosed Ripple equity relationship and SBI Ripple Asia ownership; Coinbase distributes USDC and RLUSD through distinct agreements/rails. These links do not establish a direct Ripple–Circle partnership or prove XRP demand from USDC/RLUSD distribution.
+
+### Run128 decision and next actions
+
+**NO MERGE. NO FORECAST. NO DEPLOYMENT.**
+
+1. Finish semantic review of the 1,144 non-workflow paths, prioritizing Barrot V3 execution boundaries, XRP ingestion/feature-store/evaluator code, the seven public-web files and the high-risk data/identity artifacts.
+2. Obtain independent formal review and effective branch-protection/required-check evidence; do not self-approve or bypass protection.
+3. Resolve Pages publication authorization before any merge that would publish the seven changed web files.
+4. Keep the main Barrot Sync workflow quarantined until dependency errors and push failures fail closed and LunaRoute authentication/data flow are tested.
+5. Preserve the 17 historical PR branches containing `.config/gh/hosts.yml`; do not inspect the file, rewrite history or rotate credentials without owner authorization.
+6. Keep scheduled XRP ingestion disabled on main until the integration is safely merged; add independent WORM/timestamp anchoring and replayable raw retention before treating receipts as immutable.
+7. Build synchronized spot/L2/derivatives/exchange-flow/collateral history, correct residual dependence and source clustering, then evaluate all baselines and shadow outcomes. Keep forecast issuance disabled until every policy gate passes.
+8. After a verified successor merge only, close exact superseded PRs with cross-references; preserve unique work.
+
+No merge, main-branch write, deployment, Space restart, secret rotation, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, reset, clean, stash or destructive restore occurred in this run.

@@ -1,27 +1,27 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-13T16:47:57.954Z",
-  "last_verified_at_utc": "2026-11-14T01:20:00Z",
+  "captured_at_utc": "2026-11-14T13:51:48Z",
+  "last_verified_at_utc": "2026-11-14T13:51:48Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-  "observed_integration_head_before_map_commit": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
+  "observed_integration_head_before_map_commit": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
     "state": "open",
     "draft": true,
     "mergeable": true,
-    "ahead_by": 2276,
+    "ahead_by": 2391,
     "behind_by": 0,
-    "changed_files": 1128,
+    "changed_files": 1194,
     "workflow_files": 50,
-    "other_changed_paths": 1078,
-    "head_sha": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
+    "other_changed_paths": 1144,
+    "head_sha": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
     "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "commits": 2276,
-    "additions": 323975,
-    "deletions": 5230,
+    "commits": 2391,
+    "additions": 355653,
+    "deletions": 5354,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
@@ -29,9 +29,9 @@
     "requested_reviewers": 0,
     "approvals": 0,
     "review_threads": 0,
-    "updated_at": "2026-11-13T16:47:57.954Z",
+    "updated_at": "2026-11-14T13:48:28Z",
     "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
-    "note": "Exact-head full-suite failed: three stale hourly-source-count assertions expected 43, but the current registry correctly contains 45 hourly scheduled sources. The 50 endpoint definitions comprise 45 hourly + 3 weekly + 2 noncommercial XRPL node endpoints; 48 are scheduled. The two Deribit XRP-USDC endpoints are included in the hourly scheduled set but their observations remain raw-only/model-ineligible. Core, dependency audit and fail-closed checks passed. No runtime collector/parser failure identified; tests are not removed or weakened.",
+    "note": "Exact-head push CI passed 3,641 tests with zero failures, but the PR remains draft with zero independent reviews/approvals. Pages publication is automatic and unauthorized; branch-protection details are unavailable; the connector is overprivileged; semantic review of 1,144 non-workflow paths is incomplete.",
     "research_files": 594,
     "test_files": 378,
     "other_files": 55,
@@ -84,20 +84,21 @@
         "cross-source disagreement and red-team review"
       ],
       "authentication_status": "VERIFIED_CURRENT_SESSION",
-      "permission_scope": "GitHub API reports admin, maintain, push, pull and triage; overprivileged.",
+      "permission_scope": "GitHub API reports admin, maintain, push, pull and triage; overprivileged; no least-privilege isolation.",
       "data_flow": {
         "verified": true,
         "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
         "persistent_agent_connection": false,
         "external_model_transfer": false,
-        "last_verified_at_utc": "2026-11-13T11:10:50Z",
-        "observed_flow": "Run87 verified main/integration branch heads, full open-PR inventory, PR #1662 reviews/threads, recursive tree, source branch ancestry, workflow jobs/logs, critical workflow diffs, current market/institutional sources and prepared an integration-branch documentation handoff; no main write or external-model transfer.",
-        "main_branch_write": false
+        "last_verified_at_utc": "2026-11-14T13:51:48Z",
+        "observed_flow": "Current session fetched repository metadata, complete main/integration trees, open PR inventory, PR ancestry, workflow files/logs, security endpoints and exact-head CI; no external-model transfer. Connector permissions remain admin/maintain/push/pull/triage.",
+        "main_branch_write": false,
+        "integration_branch_write": "HANDOFF_AND_MAP_UPDATE_ONLY"
       },
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-13T11:10:50Z",
+      "last_verified_at_utc": "2026-11-14T13:51:48Z",
       "last_verified_run": "Run87"
     },
     "Claude": {
@@ -166,7 +167,7 @@
       "limitations": [
         "COMMENTED is not APPROVED. No formal independent approval on #1661."
       ],
-      "last_verified_at_utc": "2026-11-13T09:16:45Z"
+      "last_verified_at_utc": "2026-11-14T13:51:48Z"
     },
     "Codex": {
       "intended_role": [
@@ -240,7 +241,7 @@
     }
   },
   "coordination_status": {
-    "status": "DESIGNED_NOT_EXECUTED",
+    "status": "DESIGNED; only ChatGPT GitHub connector verified in current session; eight other requested platforms remain unverified or failed.",
     "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
     "independent_tasks_assigned_across_nine_platforms": false,
     "structured_evidence_exchange_across_nine_platforms": false,
@@ -250,24 +251,19 @@
     "no_unverified_platform_calls": true,
     "no_external_model_data_transfer": true,
     "latest_main_pillars_check": {
-      "run_id": 43223351964,
-      "job_id": 131200200818,
+      "run_id": 43597665120,
       "conclusion": "failure",
-      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "reasons": [
-        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "missing GitHub App credentials",
         "Databricks HTTP 403",
         "Hugging Face BUILD_ERROR"
-      ],
-      "read_only": true,
-      "not_main_code_ci": true
+      ]
     },
     "latest_main_cross_analysis": {
-      "run_id": 43241576119,
-      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+      "run_id": 43601869178,
       "conclusion": "success"
     },
-    "last_verified_at_utc": "2026-11-13T11:10:50Z",
+    "last_verified_at_utc": "2026-11-14T13:51:48Z",
     "latest_run37_platform_state": {
       "ChatGPT": {
         "intended_role": [
@@ -481,7 +477,8 @@
     "run87_status": "DESIGNED_NOT_DISPATCHED",
     "external_dispatches": 0,
     "external_data_transfers": 0,
-    "least_privilege": "NOT_SATISFIED"
+    "least_privilege": "NOT_SATISFIED",
+    "run128_status": "ChatGPT/GitHub access executed; no Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks authentication or cross-platform data exchange verified."
   },
   "task_assignments_designed_not_executed": [
     {
@@ -556,59 +553,18 @@
     "real_money_action": false,
     "main_branch_write_performed": false,
     "existing_integration_branch_write_performed": true,
-    "branch_protection_status": "Main branch summary: protected=true; required status-check contexts=[]; enforcement_level=non_admins. Detailed branch-protection endpoint HTTP 403 (Resource not accessible by integration); required checks and approval rules NOT_VISIBLE. Visible repository ruleset 'Fall Back' enforcement=disabled. GitHub connector metadata reports admin=true, so do not rely on non-admin-only checks as a merge gate.",
+    "branch_protection_status": "main protected=true; detailed endpoint HTTP 403; required checks/approvals not visible",
     "visible_repository_rulesets": [
       {
-        "id": 10863829,
         "name": "Fall Back",
         "enforcement": "disabled"
       }
     ],
     "pages_enabled": true,
     "pages_deployment_authorized": false,
-    "credential_path_exposure": {
-      "path": ".config/gh/hosts.yml",
-      "main_branch_contains_path": false,
-      "active_integration_branch_contains_path": false,
-      "other_open_pr_tips_checked": 17,
-      "other_open_pr_tips_containing_path": 17,
-      "affected_pr_numbers": [
-        1653,
-        1650,
-        1649,
-        1648,
-        1647,
-        1646,
-        1645,
-        1644,
-        1643,
-        1642,
-        1640,
-        1320,
-        1318,
-        1317,
-        1269,
-        1255,
-        1254
-      ],
-      "current_tip_tree_scans_truncated": 0,
-      "provider_side_oauth_revocation_verified": false,
-      "provider_side_revocation_verified": false,
-      "revocation_independently_verified": false,
-      "credential_contents_read": false,
-      "history_rewritten": false,
-      "checked_at_utc": "2026-11-12T05:02:51Z",
-      "branch_tip_presence_verified_via_recursive_tree": true,
-      "path_absent_from_all_current_pr_file_inventories": true,
-      "all_17_target_prs_open_and_base_main": true,
-      "note": "Carried forward from 05:02:51Z branch-tip audit, not rechecked in Run64. Absent main/integration; present in 17/17 affected PR tips. No contents read or history rewrite; provider-side revocation unverified.",
-      "rechecked_in_run64": false,
-      "branch_tip_recheck_at_utc": "2026-11-12T16:00:00Z",
-      "branch_tip_presence_reverified_in_run64c": true,
-      "note_run64c": "Recursive tree inspection confirms .config/gh/hosts.yml is present in all 17 affected open PR branch-tip trees and absent from main and the active integration branch. This is distinct from changed-file inventory membership; the last changed-file inventory check remains the earlier 05:02:51Z audit. No file contents were read. Provider-side OAuth revocation remains unverified."
-    },
+    "credential_path_exposure": "The path .config/gh/hosts.yml remains present in 17/17 historical open-PR branch tips and absent from main/current integration; contents unread; provider-side revocation not independently verified.",
     "main_branch_protected_flag": true,
-    "oauth_revocation_repository_reported": true,
+    "oauth_revocation_repository_reported": false,
     "revocation_independently_verified": false,
     "local_git_transport": "git ls-remote failed: Could not resolve host github.com; authenticated GitHub API remains available",
     "github_connector_permissions": {
@@ -616,8 +572,7 @@
       "maintain": true,
       "push": true,
       "pull": true,
-      "triage": true,
-      "least_privilege": false
+      "triage": true
     },
     "least_privilege_target_met": false,
     "github_pages_side_effect": "A main push automatically triggers GitHub Pages publication. No new publication was authorized.",
@@ -626,7 +581,7 @@
     "secondary_brain_deployment_disabled": true,
     "main_branch_protection_independently_verified": false,
     "provider_side_revocation_verified": false,
-    "checked_at_utc": "2026-11-13T09:16:45Z",
+    "checked_at_utc": "2026-11-14T13:51:48Z",
     "branch_protection_detail_http_status": 403,
     "fallback_ruleset_enabled": false,
     "secret_rotation_or_revocation_performed": false,
@@ -649,18 +604,18 @@
   },
   "repository_state": {
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_before_current_map_commit": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
+    "integration_head_before_current_map_commit": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
     "integration_pr": 1662,
-    "integration_ahead_by": 2276,
+    "integration_ahead_by": 2391,
     "integration_behind_by": 0,
-    "changed_files": 1128,
+    "changed_files": 1194,
     "workflow_files_changed": 50,
-    "non_workflow_paths_changed": 1078,
+    "non_workflow_paths_changed": 1144,
     "open_prs": 375,
     "drafts": 361,
     "non_drafts": 14,
     "main_tree_entries": 1381,
-    "integration_tree_entries": 2371,
+    "integration_tree_entries": 2435,
     "main_workflow_files": 87,
     "integration_workflow_files": 88,
     "orbit_paths_in_integration": false,
@@ -674,10 +629,10 @@
     "integration_primary_xrp_mission_present": true,
     "integration_scheduled_xrp_collector_present": true,
     "latest_exact_head_ci": "FAIL: 3,595 passed, 3 failed, 8 subtests, 62.14% coverage. Three stale assertions expected 43 hourly scheduled sources instead of 45.",
-    "last_reconciled_at_utc": "2026-11-13T16:47:57.954Z",
+    "last_reconciled_at_utc": "2026-11-14T13:51:48Z",
     "other_base_branches": 8,
     "main_tree_files": 1277,
-    "integration_tree_files": 2257,
+    "integration_tree_files": 2321,
     "integration_head_before_run23": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
     "main_xrp_public_ingestion_module_present": false,
     "integration_xrp_public_ingestion_module_present": true,
@@ -1240,7 +1195,14 @@
       "failing_test_file": "tests/test_xrp_nine_platform_current_map_run73.py",
       "classification": "documentation/map-schema regression; not a runtime prediction-engine failure",
       "corrective_action": "restore canonical current_market_snapshot, latest_market_refresh, next_actions and backlog_classification fields; update repository_state and ci_evidence consistently; add Run87 details under additive keys"
-    }
+    },
+    "main_python_files": 495,
+    "main_test_files": 93,
+    "integration_python_files": 875,
+    "integration_test_files": 452,
+    "main_branch_protected_flag": true,
+    "main_branch_protection_details": "HTTP 403; required checks/approvals not visible",
+    "main_branch_write_performed": false
   },
   "ci_evidence": {
     "integration_head_tested": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
@@ -3283,7 +3245,45 @@
       "classification": "documentation/map-schema regression; no runtime code changes"
     },
     "wheel_build_verified": false,
-    "installed_wheel_primary_mission_verified": false
+    "installed_wheel_primary_mission_verified": false,
+    "run128": {
+      "head_sha": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+      "full_suite": {
+        "run_id": 43601207621,
+        "conclusion": "success",
+        "passed": 3641,
+        "failed": 0,
+        "subtests": 8,
+        "inclusive_coverage_percent": 62.47,
+        "legacy_core_coverage_percent": 76,
+        "updated_at_utc": "2026-11-14T13:47:58Z",
+        "wheel_build_installation": "PASS",
+        "primary_mission_packaging": "PASS"
+      },
+      "dependency_audit": {
+        "run_id": 43601212424,
+        "conclusion": "success",
+        "manifest_groups": 5,
+        "known_vulnerabilities_reported": 0,
+        "updated_at_utc": "2026-11-14T13:45:02Z"
+      },
+      "fail_closed_push_gate": {
+        "run_id": 43601207599,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "fail_closed_pr_gate": {
+        "run_id": 43601212350,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "pr_event_full_suite": {
+        "run_id": 43601212384,
+        "conclusion": "skipped",
+        "reason": "integration-branch guard; push-triggered exact-head full suite passed"
+      },
+      "exact_head_verified": true
+    }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 50,
@@ -3342,24 +3342,21 @@
       "assessment": "GitHub Actions artifacts/cache are not WORM or long-term immutable storage."
     },
     "latest_main_pillars_check": {
-      "run_id": 43025487840,
-      "job_id": 130539023370,
+      "run_id": 43597665120,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
       "conclusion": "failure",
-      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
-      "created_at": "2026-11-11T13:02:07Z",
-      "completed_at": "2026-11-11T13:02:17Z",
+      "read_only": true,
       "reasons": [
         "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
         "Databricks HTTP 403",
         "Hugging Face BUILD_ERROR"
-      ],
-      "read_only": true,
-      "not_main_code_ci": true
+      ]
     },
     "latest_main_cross_analysis": {
-      "run_id": 43052515532,
+      "run_id": 43601869178,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
       "conclusion": "success",
-      "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85"
+      "event": "schedule"
     },
     "secondary_brain_deployment_quarantined": true,
     "self_hosted_brain_workflow_status": "DISABLED_LUNAROUTE_ONLY",
@@ -3420,7 +3417,7 @@
     "added_pull_request_target_triggers": 0,
     "added_workflow_run_triggers": 0,
     "manual_workflow_dispatches_executed": 0,
-    "last_reaudited_at_utc": "2026-11-13T09:27:43Z",
+    "last_reaudited_at_utc": "2026-11-14T13:51:48Z",
     "patch_scan_completed": true,
     "patch_scan_workflows_reviewed": 50,
     "high_risk_workflows_full_content_reviewed": true,
@@ -3527,7 +3524,11 @@
       "secret_echo_review": "cut -c1-30 prints only the fixed label 'Barrot running on LunaRoute - '; no secret characters.",
       "secret_values_read": false,
       "logs_inspected_this_run": false,
-      "integration_mitigation": "Barrot Sync workflow quarantined/disabled."
+      "integration_mitigation": "Barrot Sync workflow quarantined/disabled.",
+      "actual_sync": "skipped",
+      "sync_error": "ModuleNotFoundError: No module named 'httpx'",
+      "secret_characters_printed": false,
+      "secret_rotation_performed": false
     },
     "main_pages_publication_review": {
       "workflow_run_id": 43343511839,
@@ -3566,7 +3567,78 @@
       "least_privilege_satisfied": false
     },
     "run84_high_risk_patch_review_count": 20,
-    "run84_semantic_review_complete": false
+    "run84_semantic_review_complete": false,
+    "run128_unchanged_high_risk_workflows_reviewed": 10,
+    "run128_semantic_review_complete": false,
+    "run128": {
+      "changed_workflow_files": 50,
+      "quarantined_or_disabled": 26,
+      "active_or_manual_gated": 24,
+      "unchanged_high_risk_workflows_reviewed": 10,
+      "external_dispatches": 0,
+      "deployment_or_secret_rotation_executed": false,
+      "paper_trading_executed": false,
+      "kaggle_submission_executed": false,
+      "databricks_write_executed": false,
+      "external_model_transfer": false,
+      "xrp_ingestion": {
+        "path": ".github/workflows/xrp-public-ingestion.yml",
+        "present_on_main": false,
+        "present_on_integration": true,
+        "schedule_utc": [
+          "3 * * * *",
+          "15 0 * * *"
+        ],
+        "permissions": {
+          "contents": "read",
+          "actions": "read"
+        },
+        "external_credentials_used": false,
+        "scheduled_main_run_verified": false,
+        "raw_artifact_retention_days": 90,
+        "feature_store_checkpoint_retention_days": 7,
+        "independent_worm": false
+      },
+      "main_pages": {
+        "run_id": 43343511839,
+        "conclusion": "success",
+        "automatic_publication": true,
+        "authorization": false
+      },
+      "main_barrot_sync": {
+        "run_id": 43343513347,
+        "conclusion": "success",
+        "sync_skipped": true,
+        "error": "ModuleNotFoundError: No module named 'httpx'",
+        "sync_error_masked": true,
+        "push_error_masked": true,
+        "echo_command": "echo \"Barrot running on LunaRoute - $LUNAROUTE_API_KEY\" | cut -c1-30",
+        "echo_output": "Barrot running on LunaRoute - ",
+        "secret_characters_printed": false,
+        "secret_values_read": false,
+        "rotation_performed": false,
+        "integration_quarantined": true
+      },
+      "main_cross_analysis": {
+        "run_id": 43601869178,
+        "conclusion": "success",
+        "event": "schedule"
+      },
+      "main_pillars_check": {
+        "run_id": 43597665120,
+        "conclusion": "failure",
+        "reasons": [
+          "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+          "Databricks HTTP 403",
+          "Hugging Face BUILD_ERROR"
+        ]
+      },
+      "main_auto_pr": {
+        "run_id": 43343513283,
+        "conclusion": "success",
+        "result": "validation only; no PR created"
+      }
+    }
   },
   "prediction_engine_status": {
     "source_definitions_total": 50,
@@ -3648,12 +3720,12 @@
       "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
       "model_eligible": false
     },
-    "latest_exact_head_tested": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
-    "latest_exact_head_suite_passed": 3595,
-    "latest_exact_head_suite_failed": 3,
-    "latest_exact_head_coverage_percent": 62.14,
-    "latest_exact_head_run_id": 43465422938,
-    "latest_exact_head_tested_at_utc": "2026-11-13T16:47:57.954Z",
+    "latest_exact_head_tested": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+    "latest_exact_head_suite_passed": 3641,
+    "latest_exact_head_suite_failed": 0,
+    "latest_exact_head_coverage_percent": 62.47,
+    "latest_exact_head_run_id": 43601207621,
+    "latest_exact_head_tested_at_utc": "2026-11-14T13:47:58Z",
     "scenario_assembler": {
       "module": "barrot_agent/evolution/scenario_hypotheses.py",
       "tests": 19,
@@ -3719,16 +3791,17 @@
     "event_registry_model_eligible": 0,
     "raw_source_sha256_receipts_from_run69_web_research": 0,
     "forecast_reason": "No cross-run raw-receipt archive, independent WORM anchor, replayable synchronized history, production evaluator key, independent shadow outcomes or demonstrated OOS lift.",
-    "latest_exact_head_full_suite_passed": 3552,
-    "latest_exact_head_full_suite_failed": 1,
-    "latest_exact_head_conclusion": "failure",
+    "latest_exact_head_full_suite_passed": 3641,
+    "latest_exact_head_full_suite_failed": 0,
+    "latest_exact_head_conclusion": "success",
     "raw_receipt_archive_continuity": "PER_RUN_ONLY; workflow restores the feature store but not prior raw receipts; 90-day artifacts are not WORM.",
     "raw_only_derivatives_source_ids": [
       "deribit_xrp_usdc_perpetual_ticker",
       "deribit_xrp_usdc_perpetual_order_book"
     ],
     "raw_only_derivatives_sources": 2,
-    "raw_only_derivatives_in_scheduled_collection": true
+    "raw_only_derivatives_in_scheduled_collection": true,
+    "latest_exact_head_verified": true
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -8964,10 +9037,10 @@
     "1612": "UNIQUE_UNREVIEWED",
     "1614": "UNIQUE_UNREVIEWED",
     "1615": "UNIQUE_UNREVIEWED; thirteen source-only paths; preserve.",
-    "1640": "SEMANTICALLY_REPRESENTED_IN_INTEGRATION; one unique source commit ahead but action-specific Databricks/Kaggle gates and tests already present; retain until main verification.",
+    "1640": "SEMANTICALLY_REPRESENTED_IN_INTEGRATION; one source-only commit is not an ancestor, but its action-specific Databricks/Kaggle approval inputs and tests are present in #1662; retain until main verification.",
     "1641": "UNIQUE_UNREVIEWED_AUTONOMOUS_EXPERIMENTATION; three changed paths; preserve.",
-    "1642": "SUPERSESSION_CANDIDATE; source head is an ancestor of integration; no commits ahead; retain until successor merge and exact main-file verification.",
-    "1643": "SUPERSESSION_CANDIDATE; source head is an ancestor of integration; no commits ahead; retain until successor merge and exact main-file verification.",
+    "1642": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 2,407 commits; retain until successor merge and exact main-file verification.",
+    "1643": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 1,502 commits; retain until successor merge and exact main-file verification.",
     "1644": "PARTIAL_WORKFLOW_OVERLAP; one of eight changed files identical, seven differ; preserve pending semantic review.",
     "1645": "EXACT_DUPLICATE_CANDIDATE; sole changed file webmcp-monetization-enrich.yml has identical blob to #1661; retain until successor merge and main verification.",
     "1646": "DEPENDABOT_RECONCILIATION_CANDIDATE; types-requests update represented in integration; verify full manifest diff.",
@@ -8978,16 +9051,16 @@
     "1653": "UNIQUE_UNREVIEWED_GRAPH_WORK; six source-only paths; preserve.",
     "1655": "UNIQUE_UNREVIEWED; preserve source-only work.",
     "1659": "UNIQUE_UNREVIEWED; preserve source-only work.",
-    "1660": "SUPERSEDED_SOURCE_CANDIDATE_PENDING_MERGE_VERIFICATION; 972 paths overlap #1662; remains open until successor content is merged and verified on main; blob-level differences and semantic review remain.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 1,071/1,072 paths overlap #1662; source-only BARROT_SYNC.md replaces the operational sync file with a Run63 mission log; preserve pending semantic review.",
-    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current head 4b7fc; 1,095 changed files; 2,227 commits ahead; zero formal reviews/approvals; Run84 current-map schema regression under correction; no merge.",
+    "1660": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 440 commits; retain until successor merge and exact main-file verification.",
+    "1661": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 259 commits; retain until successor merge and exact main-file verification.",
+    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current pre-handoff head 8b4d4bc; 1,194 changed files; 2,391 commits ahead; exact-head full suite/audit/gates passed; zero independent reviews/approvals; Pages publication unauthorized; semantic review of 1,144 non-workflow paths incomplete.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
     "confirmed_duplicate_closures": "NONE",
-    "credential_path_audit": "Run47 complete-tree audit: .config/gh/hosts.yml is present in all 17 affected open PR head trees, absent from all 17 changed-file inventories, and absent from main/integration. Contents unread; provider-side OAuth revocation not independently verified; no branch history rewritten. Preserve all 17 branches and place them on security hold.",
+    "credential_path_audit": "Run128 rechecked 17 complete open-PR branch-tip trees: .config/gh/hosts.yml present in 17/17, absent in main and #1662; path absent from all 17 changed-file inventories. Contents unread; provider-side revocation not verified; preserve branch history.",
     "open_pr_inventory": {
-      "captured_at_utc": "2026-11-13T06:14:01.846Z",
+      "captured_at_utc": "2026-11-14T13:51:48Z",
       "total": 375,
       "drafts": 361,
       "non_drafts": 14,
@@ -9030,7 +9103,7 @@
       "provider_revocation_verified": false,
       "disposition": "SECURITY_HOLD; preserve branch history; no force-push, branch rewrite or bulk closure."
     },
-    "last_reconciled_at_utc": "2026-11-12T05:02:51Z",
+    "last_reconciled_at_utc": "2026-11-14T13:51:48Z",
     "open_pr_inventory_run69": {
       "captured_at_utc": "2026-11-12T22:03:54Z",
       "total": 375,
@@ -9108,20 +9181,46 @@
         "source_only_paths": 13
       },
       "blob_comparison": "Prior blob-identity counts are historical from Run76 and were not refreshed in this run. Do not close source PRs on path overlap alone."
+    },
+    "run128_source_ancestry": {
+      "1640": {
+        "status": "diverged",
+        "source_only_commits": 1,
+        "source_head": "d34067a7da6be1c378bbbe093524c9fbb1ab74d6",
+        "semantics_verified_in_successor": true
+      },
+      "1642": {
+        "status": "ancestor",
+        "ahead_by": 2407,
+        "behind_by": 0
+      },
+      "1643": {
+        "status": "ancestor",
+        "ahead_by": 1502,
+        "behind_by": 0
+      },
+      "1660": {
+        "status": "ancestor",
+        "ahead_by": 440,
+        "behind_by": 0
+      },
+      "1661": {
+        "status": "ancestor",
+        "ahead_by": 259,
+        "behind_by": 0
+      }
     }
   },
   "next_actions": [
-    "Continue exact-head full-suite, wheel, installed V3/XRP, dependency and fail-closed verification on the Run79B documentation/collateral addendum commit.",
-    "Discover all Morpho Base markets using cbXRP, not only the hard-coded 62.5% USDC market; verify Coinbase routing and market IDs without assuming permissionless market borrowers are Coinbase customers.",
-    "Normalize Morpho market debt/liquidity/utilization, token decimals, indexed block timestamps, oracle quote scale and oracle-level value-secured scope before feature eligibility.",
-    "Reconcile Coinbase cbXRP supply/reserves with per-market collateral quantities and issuer/redemption flows; distinguish wrapped collateral from native XRPL float.",
-    "Track actual liquidations separately from conditional 5%/10% price-stress scenarios and verify Base transactions from raw receipts.",
-    "Resolve main's remote MCP/write-capability regression, least-privilege connector permissions, branch-protection visibility, Pages publication authorization and semantic review of 1,041 non-workflow paths.",
-    "Keep forecast issuance disabled until independently anchored raw data, synchronized historical features, trusted evaluator attestation, shadow outcomes and measured out-of-sample superiority are verified.",
-    "Run87 correction: preserve canonical map schema and backlog labels; keep new market/CI data under additive Run87 keys.",
-    "Complete semantic review of the integrated 1,099-file PR and reconcile differing source branches.",
-    "Resolve least-privilege connector permissions, branch-protection visibility and GitHub Pages publication authorization.",
-    "Keep forecast issuance disabled until independently anchored raw data, synchronized history, trusted evaluator attestation, shadow outcomes and measured OOS superiority are verified."
+    "Complete semantic review of the 1,144 non-workflow paths, prioritizing Barrot V3 execution/safety, XRP ingestion, feature store, forecast evaluator, seven public-web files and research provenance.",
+    "Obtain independent formal review and verifiable main branch-protection/required-check evidence; do not self-approve or bypass protection.",
+    "Resolve GitHub Pages publication authorization before merging the seven changed public-web files.",
+    "Keep main Barrot Sync quarantined until dependency and push failures fail closed and LunaRoute authentication/data flow are independently tested.",
+    "Preserve all 17 historical branches containing .config/gh/hosts.yml; do not inspect the file, rewrite history or rotate credentials without owner authorization.",
+    "Activate scheduled XRP ingestion only after safe integration; add independent WORM/timestamp anchoring and replayable raw retention.",
+    "Build synchronized spot/L2/derivatives/exchange-flow/collateral history; correct residual dependence and source clustering; evaluate all baselines and shadow outcomes.",
+    "Keep forecast issuance disabled until the independent Ed25519 attestation, sample, calibration, drift, baseline-superiority and shadow gates pass.",
+    "After a verified successor merge only, close exact superseded PRs with cross-references; preserve unique work."
   ],
   "latest_web_research": {
     "captured_at_utc": "2026-11-12T01:26:20Z",
@@ -9751,7 +9850,8 @@
       "sbic_chatgpt": "No formal partnership evidence.",
       "kamilah_stevenson_youtube": "Person identity confirmed; channel ownership not first-party verified; no own-channel video inventory attributed."
     },
-    "sbic_chatgpt_exact_phrase": "No verified OpenAI partnership; Tokyo SBIC ChatGPT training is educational activity."
+    "sbic_chatgpt_exact_phrase": "No verified OpenAI partnership; Tokyo SBIC ChatGPT training is educational activity.",
+    "run128": "No new primary-source research or live market capture in Run128; Run127 remains the latest research reconciliation. SBIC/ASK/actual-capital/Kamilah identity distinctions and Coinbase/Circle/Ripple/SBI primary-filing findings are retained without upgrading unverified relationships."
   },
   "latest_market_refresh": {
     "captured_at_utc": "2026-11-13T11:21:14Z",
@@ -10392,8 +10492,8 @@
     },
     "latest_run_id": "Run87"
   },
-  "latest_run_id": "Run110B",
-  "latest_run_captured_at_utc": "2026-11-14T01:20:00Z",
+  "latest_run_id": "Run128",
+  "latest_run_captured_at_utc": "2026-11-14T13:51:48Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -18601,7 +18701,7 @@
     "method": "All 17 open PR metadata records, recursive branch-tip trees and changed-file inventories were rechecked. All target main; the path is inherited in each branch tree but absent from each PR diff. Contents were not read."
   },
   "security_and_merge": {
-    "checked_at_utc": "2026-11-12T05:02:51Z",
+    "checked_at_utc": "2026-11-14T13:51:48Z",
     "github_connector_permissions": {
       "admin": true,
       "maintain": true,
@@ -18609,13 +18709,13 @@
       "pull": true,
       "triage": true,
       "least_privilege_met": false,
-      "checked_at_utc": "2026-11-12T05:02:51Z"
+      "checked_at_utc": "2026-11-14T13:51:48Z"
     },
     "branch_protection": {
       "main_summary_protected": true,
       "detailed_endpoint": "HTTP 403",
       "required_checks_and_approval_rules_verified": false,
-      "checked_at_utc": "2026-11-12T05:02:51Z"
+      "checked_at_utc": "2026-11-14T13:51:48Z"
     },
     "visible_rulesets": [
       {
@@ -18630,7 +18730,7 @@
       "absence_of_alerts_inferred": false
     },
     "credential_branch_tip_audit": {
-      "checked_at_utc": "2026-11-12T05:02:51Z",
+      "checked_at_utc": "2026-11-14T13:51:48Z",
       "checked_prs": [
         1653,
         1650,
@@ -18651,29 +18751,26 @@
         1254
       ],
       "count": 17,
-      "current_pr_file_inventories_checked": 17,
-      "complete_recursive_trees_this_run": 17,
-      "truncated_trees": 0,
-      "credential_path": ".config/gh/hosts.yml",
-      "other_open_pr_tips_containing_path": 17,
-      "path_present_in_all_17_current_pr_trees": true,
-      "path_absent_from_all_current_pr_file_inventories": true,
-      "current_main_path_present": false,
-      "current_integration_path_present": false,
-      "all_17_target_prs_open_and_base_main": true,
-      "file_contents_read": false,
+      "complete_recursive_trees_checked": 17,
+      "trees_truncated": 0,
+      "path": ".config/gh/hosts.yml",
+      "branch_tip_trees_present": 17,
+      "changed_file_inventories_checked": 17,
+      "changed_file_inventories_present": 0,
+      "main_path_present": false,
+      "integration_path_present": false,
+      "contents_read": false,
       "provider_side_oauth_revocation_independently_verified": false,
-      "history_rewritten": false,
-      "method": "All 17 open PR metadata records, recursive branch-tip trees and changed-file inventories were rechecked. All target main; the path is inherited in each branch tree but absent from each PR diff. Contents were not read."
+      "disposition": "SECURITY_HOLD; preserve branches; no file content inspection, force-push, branch rewrite or bulk closure."
     },
     "pages_publication": {
       "automatic_on_main_push": true,
       "authorization_for_next_publication": false,
-      "last_main_pages_run": 42944862534,
+      "last_main_pages_run": 43343511839,
       "conclusion": "success",
-      "checked_at_utc": "2026-11-12T05:02:51Z"
+      "checked_at_utc": "2026-11-14T13:51:48Z"
     },
-    "merge_decision": "BLOCKED — PR #1661 remains open/draft with zero reviews/approvals. Exact-head full suite on 28eafc87d7a7c4709789c51bc19839264b12eff4 failed 3,500/5; Run47 repairs the five test-contract/snapshot failures and the new head must pass full CI. Branch-protection detail HTTP 403; fallback ruleset disabled; connector overprivileged; 17 other PR branch-tip trees contain inherited .config/gh/hosts.yml; provider-side revocation unverified; Pages publication unauthorized; 998 non-workflow paths require semantic review. No merge.",
+    "merge_decision": "BLOCKED — PR #1662 remains draft with zero independent reviews/approvals; branch-protection details are not visible; fallback ruleset disabled; Pages publication unauthorized; connector overprivileged; semantic review of 1,144 non-workflow paths incomplete. No merge.",
     "credential_path_exposure_status": "The path .config/gh/hosts.yml is absent from main and the active integration branch, but present in 17/17 complete open-PR branch-tip trees and absent from 17/17 PR changed-file inventories. This is inherited branch-tree content, not a PR-added diff. File contents were not read; provider-side OAuth revocation is not independently verified. Preserve all branches; do not force-push or rewrite history."
   },
   "latest_market_refresh_run33": {
@@ -21940,7 +22037,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-13T16:47:57.954Z",
+  "updated_at_utc": "2026-11-14T13:51:48Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -36764,5 +36861,152 @@
     "subtests": 8,
     "correction": "restore original map schema and history from parent blob; add Run110 data in separate keys",
     "tests_weakened": false
+  },
+  "run128_snapshot": {
+    "captured_at_utc": "2026-11-14T13:51:48Z",
+    "repository_state": {
+      "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "integration_head_before_handoff_commit": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+      "main_tree_entries": 1381,
+      "integration_tree_entries": 2435,
+      "open_prs": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "integration_pr": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "ahead_by": 2391,
+      "behind_by": 0,
+      "changed_files": 1194,
+      "workflow_files": 50,
+      "non_workflow_paths": 1144,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "source_pr_ancestry": {
+      "1640": {
+        "status": "diverged",
+        "source_only_commits": 1,
+        "source_head": "d34067a7da6be1c378bbbe093524c9fbb1ab74d6",
+        "semantics_verified_in_successor": true
+      },
+      "1642": {
+        "status": "ancestor",
+        "ahead_by": 2407,
+        "behind_by": 0
+      },
+      "1643": {
+        "status": "ancestor",
+        "ahead_by": 1502,
+        "behind_by": 0
+      },
+      "1660": {
+        "status": "ancestor",
+        "ahead_by": 440,
+        "behind_by": 0
+      },
+      "1661": {
+        "status": "ancestor",
+        "ahead_by": 259,
+        "behind_by": 0
+      }
+    },
+    "exact_head_ci": {
+      "head_sha": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+      "full_suite": {
+        "run_id": 43601207621,
+        "conclusion": "success",
+        "passed": 3641,
+        "failed": 0,
+        "subtests": 8,
+        "inclusive_coverage_percent": 62.47,
+        "legacy_core_coverage_percent": 76,
+        "updated_at_utc": "2026-11-14T13:47:58Z",
+        "wheel_build_installation": "PASS",
+        "primary_mission_packaging": "PASS"
+      },
+      "dependency_audit": {
+        "run_id": 43601212424,
+        "conclusion": "success",
+        "manifest_groups": 5,
+        "known_vulnerabilities_reported": 0,
+        "updated_at_utc": "2026-11-14T13:45:02Z"
+      },
+      "fail_closed_push_gate": {
+        "run_id": 43601207599,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "fail_closed_pr_gate": {
+        "run_id": 43601212350,
+        "conclusion": "success",
+        "automatic_merge_enabled": false
+      },
+      "pr_event_full_suite": {
+        "run_id": 43601212384,
+        "conclusion": "skipped",
+        "reason": "integration-branch guard; push-triggered exact-head full suite passed"
+      },
+      "exact_head_verified": true
+    },
+    "main_automation": {
+      "cross_analysis_run": 43601869178,
+      "cross_analysis": "success",
+      "pillars_check_run": 43597665120,
+      "pillars_check": "failure",
+      "pages_run": 43343511839,
+      "pages": "success/automatic/unauthorized",
+      "barrot_sync_run": 43343513347,
+      "barrot_sync": "false-green; sync skipped due missing httpx; static banner only; no key chars printed"
+    },
+    "security": {
+      "main_protected_flag": true,
+      "branch_protection_details": "HTTP 403",
+      "fallback_ruleset": "disabled",
+      "codeowners": "* @Barrot-Agent",
+      "connector_permissions": "admin/maintain/push/pull/triage",
+      "pages_publication_authorized": false,
+      "credential_path_present_in_17_open_pr_tips": true,
+      "credential_contents_read": false
+    },
+    "workflow_review": {
+      "changed_workflows": 50,
+      "quarantined_or_disabled": 26,
+      "active_or_manual_gated": 24,
+      "unchanged_high_risk_workflows_reviewed": 10,
+      "external_actions_dispatched": 0
+    },
+    "prediction_engine": {
+      "source_definitions": 50,
+      "hourly": 45,
+      "weekly": 3,
+      "noncommercial_xrpl_nodes": 2,
+      "scheduled": 48,
+      "main_ingestion_verified": false,
+      "independent_worm": false,
+      "production_evaluator_key": false,
+      "shadow_outcomes": false,
+      "out_of_sample_lift": false,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "nine_platforms": {
+      "chatgpt_github_connector": "verified current session; overprivileged",
+      "copilot": "no formal PR approval",
+      "claude": "unverified",
+      "grok": "unverified",
+      "gemini": "unverified",
+      "codex": "unverified",
+      "hugging_face": "last observed BUILD_ERROR",
+      "kaggle": "untested",
+      "databricks": "last observed HTTP 403",
+      "lunaroute": "declared but unauthenticated; MCP disabled on integration"
+    },
+    "research_status": "Run127 remains latest primary-source research; no new market capture or web research in Run128.",
+    "decision": "NO_MERGE_NO_FORECAST_NO_DEPLOYMENT",
+    "handoff_update_commit_ci": "PENDING_EXACT_HEAD_VERIFICATION"
   }
 }
