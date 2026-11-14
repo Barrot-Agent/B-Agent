@@ -315,5 +315,30 @@
     "real_money_actions": 0,
     "force_pushes": 0,
     "destructive_worktree_actions": 0
+  },
+  "run_state": {
+    "last_inspected_integration_head": "c5a6e75e38cac00229d38684e3ae352230cf15ee",
+    "last_inspected_pr": {
+      "number": 1662,
+      "head_sha": "c5a6e75e38cac00229d38684e3ae352230cf15ee",
+      "base_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
+      "draft": true,
+      "mergeable": true,
+      "changed_files": 1202,
+      "additions": 360528,
+      "deletions": 5533
+    },
+    "exact_head_push_ci": {
+      "run_id": 43624813126,
+      "status": "queued",
+      "conclusion": null
+    },
+    "exact_head_fail_closed": {
+      "run_id": 43624813149,
+      "status": "queued",
+      "conclusion": null
+    },
+    "exact_head_dependency_audit": "The handoff-only commit did not match dependency-audit path filters. This final commit also updates a file under research/xrp_intelligence and therefore triggers the path-filtered audit; no result is claimed before it runs.",
+    "final_manifest_commit": "This commit; see the resulting PR #1662 head because a commit cannot embed its own SHA."
   }
 }

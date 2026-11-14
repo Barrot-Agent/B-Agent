@@ -3525,3 +3525,13 @@ PR #1662 is the only consolidated integration workstream. #1661 and #1660 remain
 Finish exact-head full repository tests, wheel/package verification, six-manifest dependency audit and fail-closed gates on the final handoff commit. Then complete semantic review of the 1,202+ changed files, prioritizing 50 workflows and seven public-web files. Keep forecast issuance disabled until an XRP-specific candidate demonstrates calibrated out-of-sample superiority and independent shadow outcomes.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+### Run134 final verification-manifest consolidation
+- Parent inspected before this final manifest commit: `c5a6e75e38cac00229d38684e3ae352230cf15ee`; main remains `ef41ea7d8f1d236774c3e593bc6205bf42555351`.
+- The current branch contains the Run134 `BARROT_SYNC.md` truthfulness correction and the exact raw OKX/Kraken receipt artifact.
+- The exact-head full suite on `09f256` failed one documentation-contract assertion (3,677 passed, 1 failed, eight subtests, 62.84% coverage). The required phrases are now present in `BARROT_SYNC.md`; no tests were modified or weakened.
+- Push CI and fail-closed runs on parent `c5a6e75` were queued as [43624813126](https://github.com/Barrot-Agent/B-Agent/actions/runs/43624813126) and [43624813149](https://github.com/Barrot-Agent/B-Agent/actions/runs/43624813149). The final manifest commit changes the research audit path as well as this handoff, so the dependency-audit path filter is exercised on the same resulting head.
+- Previous-head six-manifest audits passed on `09f256` (push [43621109748](https://github.com/Barrot-Agent/B-Agent/actions/runs/43621109748), PR [43621114353](https://github.com/Barrot-Agent/B-Agent/actions/runs/43621114353)); those results are not substituted for the final head.
+- The final Run134 JSON contains raw response payloads, SHA-256 hashes, provider timestamps, derived market metrics, ETF scope disagreements, stale derivatives snapshots, repository inventory, security blockers, and forecast status. GitHub history is not independent WORM storage.
+- No merge, deployment, external dispatch, paper trade, Kaggle submission, Databricks write, funds transfer, secret rotation, force-push, history rewrite, or destructive worktree action occurred.
