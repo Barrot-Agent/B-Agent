@@ -713,3 +713,37 @@ No source PR was closed. Close only exact duplicates/superseded PRs after succes
 - Connector permission set includes admin/maintain/push/pull/triage; main branch-protection API returns 403; visible ruleset 10863829 is disabled; integration is unprotected; independent CODEOWNERS review is not established.
 - Main Barrot Sync can false-green on missing dependencies and failed push; integration keeps it quarantined. Main Pages validation/deployment failed. No main change or deployment was made.
 - Close only exact duplicate/superseded source PRs after successor merge, fetch of new main, blob/path verification and explicit cross-reference. Preserve unique research and feature work.
+
+
+---
+
+## Run143 — 2026-11-14 — Current main merge, PR path reconciliation and XRP evidence
+
+### Current refs and integration
+
+- Main: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration merge commit: `1ed9d62b679d1a6a6dbd4d0c97d3179eb196a20e`, parents `9119602` (integration) and `16ec152` (main).
+- Recursive trees: main 1,393; integration 2,466; zero main-only paths; 18 producer assets/script/README/feedback paths verified equal to main. `BARROT_SYNC.md` was manually reconciled to preserve both integration safety and the 19-line main producer update.
+- PR #1662: open/draft, base `16ec152`, head `1ed9d62`, 1,224 changed files, 366,505 additions, 6,309 deletions, 2,424 ahead/zero behind. Mergeable indicator true is not approval.
+- Open PR inventory: 373 total, 361 drafts, 12 non-drafts. No PR created or closed.
+
+### Test evidence
+
+- Main `16ec152`: CI 43650499432 passed 848 tests, one skipped, eight subtests.
+- Pre-merge integration `911960`: CI 43650525857 passed 3,762 tests, one skipped, 19 subtests, 63.96% inclusive coverage; core coverage floor, wheel and installed mission passed; six-manifest audit 43650525892 and fail-closed 43650525888 passed.
+- Merge head `1ed9d62`: full suite 43651104783 and PR dependency audit 43651110187 were in progress at capture; fail-closed push 43651104756 and PR 43651110191 passed. PR-event CI 43651110174 skipped core/full suite for integration branch. Run143 evidence commit will trigger new exact-head CI.
+
+### Backlog classifications by path overlap
+
+- **Active integration / blocked:** #1662.
+- **Supersession candidates / preserve unique paths:** #1661 (1,072 paths; 1,070 overlap; two unique workflows), #1660 (972; 970 overlap; two unique workflows), #1640 (280; 278 overlap; two unique workflows).
+- **Overlap, semantic reconciliation required:** #1643 (670/670), #1642 (7/7, unique prediction snapshot objective), #1320 (5/5 paper-trader safety), #1318 (2/2 schema safety), #1317 (6/6 MMI/structural).
+- **Unique/unreviewed or blocked:** #1653 (seven paths, six unique; knowledge graph/safe-sync, blocked pending review), #1269 (nine paths, eight unique; topology/triangulation), #1655 (eight paths, three unique; structural/source catalog), #1659 (six paths, four unique; local inference/Termux).
+- **Dependency/workflow candidates:** #1644–#1650 and #1254/#1255; compare exact manifests and workflow side effects individually.
+- No exact duplicate certified from path overlap alone. Preserve unique work. Close only exact duplicates/superseded sources after successor merge and main verification.
+
+### Security and prediction gates
+
+Main Pages build 43650499344 failed. Main Barrot Sync 43650499411 false-greened masked sync/push failures; integration remains quarantined. Main Auto PR 43650499406 succeeded with no inventory growth. Branch-protection API returns 403; ruleset 10863829 disabled; integration unprotected; connector permissions overprivileged.
+
+Run143 research: spot snapshots stale/no L2; derivatives aggregates disagree by scope/timestamp; ETF flows use different fund universes and holdings-change methods; XRPL XLS-66 remains Draft, uncollateralized with optional first-loss capital and no activation countdown; Circle Arc/SBI, Coinbase/Ripple RLUSD, Standard Chartered/LMAX, SBI/Dsrv/NICE and Circle/Binance relationships are recorded as separate rails. No directional forecast. **NOT_ISSUED / NOT_EVALUATED.**
