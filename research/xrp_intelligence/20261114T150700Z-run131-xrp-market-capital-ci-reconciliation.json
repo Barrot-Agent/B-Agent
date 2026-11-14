@@ -253,16 +253,20 @@
     "circle_arc_presale": {
       "gross_proceeds_usd": 242200000,
       "revenue_recognized_usd": 181800000,
-      "deferred_revenue_usd": 61400000,
+      "deferred_revenue_usd": 60400000,
       "idg_capital_usd": 25000000,
       "idg_included_in_gross_proceeds": true,
       "sbi_allocation": "NOT_DISCLOSED",
-      "interpretation": "Revenue recognized is not equal to cash proceeds; no SBI-specific capital allocation established.",
+      "interpretation": "ARC-specific gross proceeds were approximately $242.2M and recognized revenue was $181.8M, leaving $60.4M of ARC consideration unrecognized. The $61.4M in the deferred-revenue rollforward is total deferred-revenue additions net of revenue recognized across contracts, not ARC-only; total ending deferred revenue was $61.794M. IDG's $25M is included in the $242.2M gross amount. SBI's allocation is undisclosed.",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
       "web_refs": [
         "turn789364view3",
         "turn683915view0"
-      ]
+      ],
+      "total_deferred_revenue_additions_all_contracts_usd": 61400000,
+      "ending_total_deferred_revenue_balance_usd": 61794000,
+      "opening_total_deferred_revenue_balance_usd": 11512000,
+      "revenue_recognized_from_opening_deferred_balance_usd": 11118000
     },
     "circle_coinbase": {
       "circle_usdc_end_2026_09_30_usd": 73879000000,
@@ -568,5 +572,132 @@
     "Keep unique research and security PRs open; do not bulk-close.",
     "After an authorized merge, fetch main, verify merge SHA and files, run main CI and check automatic workflows.",
     "Only after scheduled ingestion is active, build synchronized spot/L2/derivatives history and validate real-data out-of-sample lift."
-  ]
+  ],
+  "run131_follow_up_correction": {
+    "captured_at_utc": "2026-11-14T15:11:56Z",
+    "exact_head_ci": {
+      "tested_head": "8f29a62e8c48c419c529f764c82f9727f924d2a0",
+      "full_suite_run_id": 43608442148,
+      "full_suite_job_id": 132488004562,
+      "conclusion": "failure",
+      "tests_passed": 3599,
+      "tests_failed": 42,
+      "subtests_passed": 8,
+      "inclusive_coverage_percent": 62.47,
+      "core_suite": "passed",
+      "failure_scope": "All 42 failures are in tests/test_nine_platform_capability_authentication_dataflow_map.py and tests/test_xrp_nine_platform_current_map_run73.py.",
+      "root_cause": "The current nine-platform map was replaced with a compact schema 1.0.0 snapshot. Historical compatibility tests require schema 1.1.0, a mapping keyed by platform name, and preserved mission, safety, coordination, market, prediction-engine and historical run snapshot sections. No runtime-code failure was observed.",
+      "dependency_audit_run_ids": [
+        43608442127,
+        43608446687
+      ],
+      "fail_closed_gate_run_ids": [
+        43608442123,
+        43608446775
+      ],
+      "gate_results": "Both push and PR dependency audits and both push and PR fail-closed gates passed. PR-event CI was skipped by the integration-branch condition."
+    },
+    "canonical_map_restoration": {
+      "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+      "last_known_good_blob_sha": "710d5cbe1991b68939a6a9ef50a4d3483f78b1b8",
+      "last_known_good_commit": "847a20732032ed6fc62e3689a41eb1f129f64904",
+      "known_good_exact_head_full_suite": "3641 passed, 8 subtests passed, 62.47% inclusive coverage",
+      "replaced_compact_blob_sha": "33416a58ee17c48af2bb9d6014fb59704c3011d9",
+      "action": "Restore the exact last-known-good blob without editing or weakening tests; keep the compact Run131 schema 1.0.0 snapshot in its separate run131 file.",
+      "fetch_read_limitation": "A zero-length content response from fetch_file for the large historical blob was incorrectly interpreted as a zero-byte file. Its Git blob SHA was present and the preceding exact-head suite had passed."
+    },
+    "circle_arc_presale_accounting": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "gross_proceeds_usd": 242200000,
+      "revenue_recognized_usd": 181800000,
+      "arc_specific_unrecognized_consideration_usd": 60400000,
+      "total_deferred_revenue_additions_all_contracts_usd": 61400000,
+      "ending_total_deferred_revenue_balance_usd": 61794000,
+      "opening_total_deferred_revenue_balance_usd": 11512000,
+      "revenue_recognized_from_opening_deferred_balance_usd": 11118000,
+      "idg_capital_usd": 25000000,
+      "idg_included_in_gross_proceeds": true,
+      "sbi_allocation": "NOT_DISCLOSED",
+      "interpretation": "The 61.4M deferred-revenue additions line is not an ARC-only balance. The ARC-specific residual from 242.2M gross less 181.8M recognized is 60.4M. The ending 61.794M is the total deferred-revenue balance."
+    },
+    "current_market_refresh": {
+      "retrieved_at_utc": "2026-11-14T15:00:15.260Z",
+      "spot_observations": [
+        {
+          "venue": "OKX",
+          "pair": "XRP-USDT",
+          "last": 0.9811,
+          "bid": 0.981,
+          "ask": 0.9811,
+          "event_timestamp_utc": "2026-11-14T14:55:34.067Z",
+          "staleness_seconds_at_retrieval": 281.193,
+          "model_eligible": false,
+          "reason": "No synchronized multi-venue L2; quote is now stale."
+        },
+        {
+          "venue": "Kraken",
+          "pair": "XRPUSD",
+          "last": 0.97969,
+          "bid": 0.97929,
+          "ask": 0.97947,
+          "event_timestamp_utc": null,
+          "model_eligible": false,
+          "reason": "No exchange event timestamp."
+        },
+        {
+          "venue": "CoinMarketCap",
+          "last": 0.9899,
+          "event_timestamp_utc": null,
+          "model_eligible": false,
+          "reason": "Aggregator snapshot lacks a comparable exchange event timestamp."
+        },
+        {
+          "venue": "CoinGlass daily",
+          "date_utc": "2026-11-14",
+          "open": 1.011,
+          "high": 1.013,
+          "low": 0.9789,
+          "last_or_intraday": 0.989,
+          "event_timestamp_utc": null,
+          "model_eligible": false,
+          "reason": "Current daily aggregate is not a synchronized executable venue quote."
+        }
+      ],
+      "derivatives_disagreement": [
+        {
+          "provider": "Kodexius",
+          "open_interest_usd": 593890000,
+          "contracts": 7,
+          "funding_8h_percent": -0.0004,
+          "updated_at_utc": "2026-11-14T13:34:00Z"
+        },
+        {
+          "provider": "Alpha Finance",
+          "open_interest_usd": 2180000000,
+          "updated_at_utc": "2026-11-14T09:04:00Z",
+          "long_liquidations_usd": 12800000,
+          "short_liquidations_usd": 1200000
+        },
+        {
+          "provider": "TradRadar",
+          "open_interest_usd": 1520000000,
+          "updated_at_utc": "2026-11-14T01:10:00Z"
+        },
+        {
+          "provider": "Coinperps",
+          "open_interest_usd": 2210000000,
+          "updated_at_utc": "2026-11-14T03:11:00Z",
+          "liquidations_24h_usd": 20500000,
+          "long_liquidation_share_percent": 91
+        },
+        {
+          "provider": "CoinGlass",
+          "open_interest_usd": 2190000000,
+          "updated_at_utc": "2026-11-14T10:08:00Z"
+        }
+      ],
+      "admission": "RESEARCH_ONLY",
+      "reason": "Provider coverage and timestamps differ materially; no averaging, no synchronized L2, no raw response hashes and no feature-store admission."
+    }
+  }
 }
