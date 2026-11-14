@@ -4459,3 +4459,14 @@ Binance's November 1 phase-one withdrawal announcement explicitly included the X
 **Prediction-engine consequence:** tag Binance exchange balances and XRP on-chain flows with the October 29 incident and phased withdrawal-state timeline. Post-November 1 outflows may include deferred user withdrawals; Binance's replenishment purchases may include XRP but are unquantified. Do not label either as sentiment-driven net flow without independent venue-level reconciliation.
 
 Reuters also reported contemporaneous Iran/Bahrain radar claims, oil around $88/barrel and a 19-month-high dollar index. The Iranian claim was not independently verified in the report. Treat these as broad risk-off context, not an XRP-specific catalyst.
+
+
+### Run143 supplement — exchange-wallet attribution and Binance flow decomposition
+
+XRP Insights' November 14 08:00 UTC snapshot reports 22.26B XRP across 707 publicly attributed wallets at 24 exchanges. It measures same-wallet balances read from XRPL via `rippled account_info`; wallet attribution comes from XRPSCAN labels. This is a broad attributed-wallet total including cold storage and omnibus custody, not an estimate of immediately tradable customer float. The source reports 48.5% cold, 12% hot and 39.7% unclassified.
+
+The same-wallet total declined 74.6M XRP over seven days and 318.2M over 30 days. Binance alone is reported at 2.64B XRP, down 100.4M over seven days and 129.3M over 30 days. Coinbase is 5.81B (+16.7M seven days; -35.4M 30 days), Upbit 6.47B (+31.5M; +36.3M), Bithumb 1.79B (-20.3M; -60.4M), Uphold 1.69B (-3.0M; -57.9M), Kraken 956.6M (-5.3M; -41.4M), and SBI VC Trade 56.3M (-337K; -1.1M).
+
+The Binance seven-day window (Nov 7–14) follows its Nov 1 XRP withdrawal reopening. It may include deferred withdrawals, internal transfers to unlabeled wallets or normal customer activity. The 30-day window includes the Oct 29 incident. This is not proof of customer withdrawals or a bearish signal. XRP Insights explicitly warns that same-wallet changes cannot distinguish customer withdrawals from exchange transfers to wallets not yet labeled. Its daily Nov 12 and Nov 13 aggregate rows exclude Binance due wallet-count changes.
+
+The same page has an internal reserve discrepancy: Binance-Peg XRP is 327.4M in the Binance exchange row but 325.8M in the reserve-methodology narrative. Coinbase cbXRP is 152.9M; insurance/charity is 5.2M. Preserve the discrepancy; do not force reconciliation. The 483.8M wrapped/insurance summary is not customer tradable float.

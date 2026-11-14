@@ -409,6 +409,19 @@
         "market-wide risk-off and provider timing differences are alternative explanations"
       ],
       "model_action": "Add dated incident/withdrawal-state event flags; do not interpret post-reopening Binance outflows as fresh bearish sentiment without separating deferred withdrawals and exchange replenishment."
+    },
+    {
+      "name": "Binance attributed-wallet outflow after withdrawal reopening",
+      "support": [
+        "XRP Insights reports Binance same-wallet balance -100.4M XRP over Nov7–14 and -129.3M over Oct15–Nov14",
+        "XRP withdrawals were included in Binance's Nov1 phase-one reopening announcement"
+      ],
+      "counter": [
+        "same-wallet method cannot distinguish customer withdrawals from transfers to unlabeled wallets",
+        "daily aggregate rows on Nov12 and Nov13 exclude Binance due wallet-count changes",
+        "no XRP-specific replenishment purchase amount or per-transaction attribution"
+      ],
+      "model_action": "Add per-venue daily same-wallet change and Binance incident/withdrawal-state event flags; do not treat the -100.4M as confirmed customer withdrawals or a bearish signal."
     }
   ],
   "prediction_engine": {
@@ -540,6 +553,83 @@
       "url": "https://www.reuters.com/markets/global-markets/global-markets-wrapup-1-2026-11-14/",
       "source_class": "independent reporting",
       "date": "2026-11-14"
+    },
+    {
+      "name": "XRP Insights exchange-wallet balances and same-wallet flow methodology",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "source_class": "secondary dashboard with XRPL rippled account_info balances and XRPSCAN public labels",
+      "date": "2026-11-14T08:00:00Z"
     }
-  ]
+  ],
+  "exchange_balances": {
+    "source": "XRP Insights exchange-wallet page; balances read from XRPL rippled account_info once daily, labels from XRPSCAN",
+    "url": "https://xrp-insights.com/exchange-balances",
+    "snapshot_utc": "2026-11-14T08:00:00Z",
+    "total_attributed_wallet_balance_xrp": 22260000000,
+    "wallet_count": 707,
+    "exchange_count": 24,
+    "circulating_supply_reference_xrp": 68890000000,
+    "seven_day_same_wallet_change_xrp": -74600000,
+    "thirty_day_same_wallet_change_xrp": -318200000,
+    "exchange_detail": {
+      "Binance": {
+        "balance_xrp": 2640000000,
+        "seven_day_change_xrp": -100400000,
+        "thirty_day_change_xrp": -129300000,
+        "notes": "includes Binance-Peg reserve and Binance Charity; 7-day window Nov7–14, after XRP withdrawals were included in phase-one reopening on Nov1"
+      },
+      "Coinbase": {
+        "balance_xrp": 5810000000,
+        "seven_day_change_xrp": 16700000,
+        "thirty_day_change_xrp": -35400000,
+        "notes": "includes cbXRP reserve and cold-labeled custody wallets"
+      },
+      "Upbit": {
+        "balance_xrp": 6470000000,
+        "seven_day_change_xrp": 31500000,
+        "thirty_day_change_xrp": 36300000
+      },
+      "Bithumb": {
+        "balance_xrp": 1790000000,
+        "seven_day_change_xrp": -20300000,
+        "thirty_day_change_xrp": -60400000
+      },
+      "Uphold": {
+        "balance_xrp": 1690000000,
+        "seven_day_change_xrp": -3000000,
+        "thirty_day_change_xrp": -57900000
+      },
+      "Kraken": {
+        "balance_xrp": 956600000,
+        "seven_day_change_xrp": -5300000,
+        "thirty_day_change_xrp": -41400000
+      },
+      "SBI_VC_Trade": {
+        "balance_xrp": 56300000,
+        "seven_day_change_xrp": -337000,
+        "thirty_day_change_xrp": -1100000
+      }
+    },
+    "storage_split": {
+      "cold_percent": 48.5,
+      "hot_percent": 12,
+      "unclassified_percent": 39.7
+    },
+    "wrapped_and_noncustomer_reserves": {
+      "page_summary_total_xrp": 483800000,
+      "detailed_breakdown_xrp": {
+        "Binance_Peg_XRP": "325.8M in narrative; 327.4M in exchange table",
+        "Coinbase_cbXRP": 152900000,
+        "insurance_and_charity": 5200000
+      },
+      "data_quality": "same page gives 327.4M Binance-Peg reserve in exchange row but 325.8M in reserve-methodology narrative; preserve disagreement until reconciled"
+    },
+    "method_and_limits": [
+      "same-wallet net change; cannot distinguish customer withdrawal from exchange transfer to an unlabeled wallet",
+      "cold storage and omnibus custody included; not tradable customer float",
+      "wallet coverage changes create discontinuities; daily Nov12 and Nov13 aggregate rows explicitly exclude Binance",
+      "some exchanges have incomplete wallet coverage; total is not an official exchange reserve measure"
+    ],
+    "incident_interpretation": "The Binance 7-day same-wallet decline is temporally after XRP withdrawals were included in phase-one reopening on Nov1; it may include deferred customer withdrawals or internal wallet movements. The 30-day window includes the Oct29 incident. No direct transaction attribution or XRP-specific replenishment purchases disclosed."
+  }
 }
