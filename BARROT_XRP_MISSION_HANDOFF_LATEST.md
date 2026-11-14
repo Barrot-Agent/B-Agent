@@ -2720,3 +2720,116 @@ The scheduled ingestion workflow is main-only and read-only, but it remains unme
 6. Reconcile RLUSD chain supply against issuer reports and publish a dated reserve/attestation lineage.
 7. Finish semantic review of the 1,176 PR paths, resolve least privilege, independent review, branch protection and Pages publication authorization.
 8. Keep forecast issuance disabled until candidate superiority is calibrated out of sample and independently confirmed in shadow evaluation.
+
+
+---
+
+## Run127 — 2026-11-14T13:33:22Z — current-main, market and primary-source reconciliation
+
+### Repository state and integration-first audit
+
+- Current main: `fb272b40966834754ec686f9ed3ab94123f09306` (verified unchanged during this audit).
+- Current integration branch: `integration/xrp-v3-unified-main-20261112`; audited head before this handoff update: `894a6c99ebf3fcccce9eb6b37744b224c9103d2d`.
+- Main tree: 1,381 entries and 79 workflow files. Integration tree: 2,434 entries and 80 workflow files. Both recursive tree responses were complete, not truncated.
+- Open PR inventory: 375 total across four API pages; 361 drafts and 14 non-drafts.
+- PR #1662 is the only open PR based on the exact current main SHA. It is still draft, mergeable, 2,388 commits ahead and zero behind, with 1,193 changed files (+355,269/-5,354), zero formal reviews, zero approvals and no requested reviewers.
+- PR #1660 and #1661 are older draft integration branches. Relative to current main, #1660 is 12 commits behind and #1661 is nine commits behind. Their changed-path sets are fully contained in #1662; #1662 also contains all changed paths from #1640, #1642 and #1643. Path containment is not proof of identical blob content. Earlier blob reconciliation recorded 45 differing paths in #1661, 54 in #1660 and nine in #1643; #1642's seven paths have later integration content. Keep these source PRs open until the successor is merged and its files are verified on main.
+- Unique/unreviewed work remains: #1653 (six paths not in #1662), #1614 (27 paths not in #1662), #1611 (one path not in #1662), #1269 and other research/topology work. Do not close these. Dependency candidates #1644–#1650 and #1254/#1255 remain blocked pending individual current-main validation.
+- No new PR was created. No source PR was closed.
+
+### Exact-head CI and dependency/security evidence
+
+The exact pre-update integration head `894a6c99ebf3fcccce9eb6b37744b224c9103d2d` passed [full repository suite 43598860872](https://github.com/Barrot-Agent/B-Agent/actions/runs/43598860872): **3,641 passed, eight subtests passed, zero failures**, 62.47% inclusive package coverage, 76% legacy core coverage, 168.07 seconds. The run executed `python -m pytest tests -v`; it did not exclude repository test directories. The separate legacy-core coverage report excludes selected large packages, but the inclusive report includes `barrot_agent`, `directive_platform` and `data`.
+
+- [Dependency audit 43598865782](https://github.com/Barrot-Agent/B-Agent/actions/runs/43598865782) passed five manifest groups: root runtime, development, Hugging Face Space, legacy and pyproject. The log reports no known vulnerabilities in each group.
+- [Fail-closed gate 43598865823](https://github.com/Barrot-Agent/B-Agent/actions/runs/43598865823) passed and explicitly states automatic merge is disabled and the workflow does not approve, label or merge PRs.
+- The PR-event full-suite job is skipped for branches under `integration/` by the workflow condition. The successful push-event full-suite run above is the exact-head result; do not count the skipped PR job as a pass.
+- The wheel built and installed successfully; the installed wheel loaded Barrot V3, the XRP primary mission and canonical data assets.
+
+### Main-branch blockers and permission boundaries
+
+- Main SHA `fb272b40966834754ec686f9ed3ab94123f09306` adds LunaRoute MCP configuration. Main `opencode.json` enables the remote MCP endpoint and grants `edit`, `bash` and `webfetch` as `allow`. The integration version disables the remote server and defaults mutation/network permissions to `ask`. No authenticated LunaRoute session or verified external data flow was demonstrated.
+- Main `.github/workflows/barrot-sync.yml` still prints the first 30 characters of `LUNAROUTE_API_KEY` and masks sync/push failures. The integration branch quarantines that workflow. Treat the credential as potentially partially exposed; no secret value was read and no rotation was performed.
+- Main `web/paper_trading_state.json` still has `position_product=null`; main's manual paper-trader workflow lacks explicit confirmation and commits state/log changes to main. The integration version requires explicit confirmation and an exact main SHA, validates product identity before network/model calls, uses read-only contents permission and uploads an artifact. No paper-trader dispatch occurred.
+- Main scheduled Pillars Check [43597665120](https://github.com/Barrot-Agent/B-Agent/actions/runs/43597665120) failed because GitHub App ID/private-key/installation ID are missing, Databricks returned HTTP 403 and the Hugging Face Space reported BUILD_ERROR. Its read-only checks for the main deployment file and system prompt passed. No Databricks write, Space restart or deployment was attempted.
+- Repository metadata reports Pages enabled. The Pages settings endpoint is not accessible through this GitHub connection; a prior main push triggered public publication. PR #1662 changes seven public web files. Publication authorization remains unresolved.
+- Main branch-protection details return HTTP 403 to this connection. The only visible repository ruleset, `Fall Back` (ID 10863829), is disabled. `.github/CODEOWNERS` is self-owned by `@Barrot-Agent`; #1662 has no independent approval. The connected GitHub identity has admin, maintain, push, pull and triage permissions, which is broader than least privilege. These facts block merge.
+
+### XRP public ingestion and prediction-engine audit
+
+- The integration collector defines **50 public endpoint records**: Binance spot/perpetual data, Coinbase spot/candles/book, Kraken spot/depth, Bitbank XRP/JPY, OKX spot/depth, Bybit spot/linear derivatives, Deribit XRP-USDC perpetual data, ETF/issuer sources, RLUSD and USDC transparency, SBI VC Trade lending, Morpho cbXRP market/oracle endpoints, Coinbase cbXRP proof-of-reserves and CFTC reports.
+- The default scheduled set has 45 endpoints; three CFTC reports are selected through a separate weekly schedule; two XRPL node endpoints are explicitly classified non-commercial and excluded from automatic collection.
+- Twelve sources are digest-only because raw redistribution terms are not established. This is correctly safer than retaining/publishing prohibited bytes, but those sources cannot supply raw-byte feature receipts.
+- The scheduled XRP workflow exists only on the integration branch, not main. Its hourly/daily schedules have not executed on main. It is read-only and main-ref gated; no production ingestion run is verified.
+- Raw artifacts have 90-day retention, per-run feature checkpoints seven-day retention and daily/manual feature-store archives 90-day retention. The SQLite feature store is append-only at the application layer, but the cache is evictable, raw-artifact rebuild is not implemented, and independent timestamp anchoring/long-term WORM storage is absent.
+- The current historical evaluator uses Binance XRP/USDT and Coinbase XRP/USD hourly closes. It evaluates 1h on hourly runs and 1h/4h/24h/7d/30d on daily/manual runs. Multi-day target windows overlap; the ingestion evaluator explicitly says no dependence-aware confidence interval or block-bootstrap adjustment is integrated. A separate candidate-readiness bootstrap module exists with 10,000 replicates, but it is not yet wired into the ingestion evaluator's historical report.
+- Derivatives features remain materially narrower than the source list: Binance USD-M XRPUSDT history is the primary admitted derivatives feature source. Bybit derivatives are captured but not admitted as historical features; Deribit XRP-USDC perpetual ticker/L2 is raw-only pending contract-unit and sequence validation. Coinbase/Binance order books remain raw-only without a timestamp/sequence bridge; Kraken depth needs fresh HTTP Date; OKX depth needs a fresh exchange timestamp and still lacks sequence continuity.
+- XRP Insights wallet balances and ETF aggregates are receipt/hash-only and not model features. Issuer holdings pages, Morpho cbXRP and SBI lending terms remain raw-only pending parser, provenance or redistribution checks.
+- Forecast issuance remains disabled by mission policy. No trained XRP-specific candidate, independently verified shadow cohort or predictive lift over all four baselines exists. **Forecast NOT_ISSUED; accuracy NOT_EVALUATED.**
+
+### Run127 market observations — deliberately not model-eligible
+
+A one-off public API observation found XRP near 0.988–0.990 across the returned USD/USDT top-of-book snapshots. Kraken returned XRP/USD at 0.98858 with a 0.98808/0.98818 quote; OKX returned XRP/USDT at 0.9896 with a 0.9899/0.9900 quote; Bybit returned XRP/USDT at 0.9884 with a 0.9883/0.9884 quote. The indicative top-of-book spreads were about 1.01 bps, but these are not executable depth measurements.
+
+- OKX provider event time: 13:16:57.663Z. Bybit provider event time: 13:06:21.301Z. The 636.362-second skew exceeds the 300-second join window.
+- Kraken's ticker response did not supply a provider event timestamp. The retrieval layer did not expose an exact retrieval timestamp or original HTTP bytes.
+- OKX's reported 24-hour return was approximately -2.885%; Bybit's was -3.05%. Their quote currencies/windows and event times differ; do not average them. Kraken's `o` field is today's open, not a verified 24-hour open.
+- Multi-level depth was not obtained in this one-off retrieval. USDT/USD normalization is absent.
+- The three SHA-256 values in the structured artifact hash normalized response excerpts, **not raw HTTP bytes**. All observations are excluded from the point-in-time feature store and prediction inputs.
+
+Structured record: [Run127 market and SEC reconciliation](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261114T133322Z-run127-market-and-sec-primary-reconciliation.json).
+
+### Evernorth, Ripple, SBI and actual-capital reconciliation — new primary evidence
+
+The November 13, 2026 Evernorth Form 10-Q materially improves the capital and ownership record:
+
+- At September 30, Evernorth reported $91,397 unrestricted cash, approximately $10.0M net working-capital deficit, $185.587M accumulated deficit and 346,284,972 XRP.
+- At the October 9 business-combination closing, it reported approximately $272.6M gross cash proceeds before transaction expenses ($224.6M private-placement proceeds plus $48.0M trust release) and approximately 388,910,554 XRP contributed in kind.
+- The filing says 346,484,972 XRP was subsequently transferred to Pathfinder. The 42,425,582 XRP difference between the in-kind contribution figure and the transfer figure is not reconciled in the reviewed disclosure. The previously cited approximately 473M XRP claim is not corroborated by this 10-Q; keep it unverified until a current holdings bridge is available.
+- Earlier private-placement cash of $214.1M was explicitly used to purchase 84,365,876 XRP. Do not treat the full $272.6M closing cash, note proceeds or warrant proceeds as market purchases.
+- The $30.0M 4% PIK convertible note was issued October 13 and produced approximately $29.0M net cash after a $1.0M fee.
+- From October 12 through November 9, holders exercised 3,073,366 warrants for cash, producing $35.3M gross proceeds; 8,666,279 warrants remained.
+- The Cantor ELOC is potential capacity, not actual proceeds: up to 5,218,935 shares, with no actual sales disclosed in the reviewed 10-Q. The prospectus cover estimates $76.8M gross, while its Use of Proceeds section estimates $80.7M gross and $74.4M net under assumptions. Preserve this prospectus estimate discrepancy.
+- Evernorth was wholly owned by Ripple at September 30, but ceased to be wholly owned/controlled after the October 9 closing. Ripple received 1,678,382 Class A shares and 16,461,545 Pathfinder units; Ripple plus its affiliate was capped at 9.9% immediately after closing.
+- SBI-affiliated investors received 11,748,249 Class A shares and 2,359,038 Class C shares at closing under a 39.9% Class A ownership threshold. This is a threshold/issuance structure, not proof of an exact 39.9% actual holding.
+
+Primary sources: [Evernorth Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm), [Evernorth 424(b)(3) prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm). These are issuer filings, not independent sources.
+
+### SBIC identity and exact-phrase follow-up
+
+Primary company profiles now resolve the regional entities:
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — [official profile](https://www.sbic.co.jp/company/profile/).
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — [official profile](https://www.sbic-cj.co.jp/company/about/).
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. — [official profile](https://www.sbic-wj.co.jp/profiles/profile/).
+
+These are three separate regional statutory investment-development companies and not SBI Holdings. Their profiles identify one another as sister companies. Tokyo SBIC's official June 2025 training page includes ChatGPT in a generative-AI curriculum for investee companies; it does not establish an OpenAI partnership. [Tokyo SBIC course](https://www.sbic.co.jp/training/20250612co/).
+
+- Exact ASK search surfaced Permission Coin (ticker ASK) as a possible homonym; no XRP/Ripple/XRPL relationship was verified. Do not merge it with XRP evidence.
+- “Actual capital” is now separated into actual cash proceeds, in-kind XRP contributions, actual XRP purchases, debt proceeds, warrant proceeds and unused financing capacity. Do not label ELOC capacity as capital received.
+- Third-party directories point to `@drkamilahstevenson`, but no official identity cross-link was verified. Do not inventory that channel's videos yet. The previously verified TEDxWillowCreek video remains separately attributed; Camilla and Kamilah references remain distinct until identity is established.
+
+### Nine-platform status
+
+- ChatGPT GitHub access is verified for this run, but the connection is overprivileged (admin/maintain/push/pull/triage).
+- Copilot has no formal approval on #1662.
+- Claude, Grok, Gemini and Codex authentication/data flows remain unverified.
+- Hugging Face remains at BUILD_ERROR; no Space restart/deployment.
+- Kaggle remains untested; no submission.
+- Databricks returned 403; no write.
+- LunaRoute is configured on main but no authenticated tool/data flow was tested; integration disables the remote MCP until explicitly authorized and verified.
+- No external model received Barrot source data in this run.
+
+### Run127 decision and next concrete actions
+
+**NO MERGE. NO FORECAST.** #1662 remains draft with zero independent approvals; main branch protection is not verifiable through the connection; the visible fallback ruleset is disabled; Pages publication is an unapproved automatic side effect; security remediation remains outstanding; semantic review of 1,193 changed files is incomplete.
+
+1. Keep #1662 as the only current-main integration candidate. Finish a bounded semantic review of the 50 changed workflow files, seven public web files, XRP ingestion/evaluator and Barrot V3 execution boundaries.
+2. Obtain independent review and effective branch-protection evidence; do not self-approve or bypass required checks.
+3. Resolve Pages publication authorization before any merge that would publish the changed web files.
+4. Have the credential owner remediate the potentially exposed LunaRoute key; no automatic rotation. Keep main Barrot Sync disabled/quarantined before any further run.
+5. Keep the main paper trader undispatched until product identity and explicit action approval are resolved.
+6. Activate the scheduled XRP workflow only after safe integration/merge authorization; add independent WORM or signed external anchoring and raw-artifact rebuild before treating receipts as immutable.
+7. Populate synchronized historical spot/L2/derivatives/flow/collateral data, then wire dependence-aware paired bootstrap into the evaluator and measure candidate performance against all four baselines.
+8. Keep forecast issuance disabled until every policy-v6 out-of-sample, calibration, drift, effective-sample-size, source-cluster, shadow and independent-attestation gate passes.
+
+No merge, deployment, secret rotation, Space restart, external model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, reset, clean, stash, destructive restore or user-worktree mutation occurred.
