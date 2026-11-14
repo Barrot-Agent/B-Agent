@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_video_identity_and_research_ci_delta",
+  "snapshot_id": "XRP-VIDEO-IDENTITY-CI-DELTA-2026-10-27T221149Z",
+  "captured_at_utc": "2026-10-27T22:11:49Z",
+  "classification": "PUBLIC_SOURCE_RESEARCH; IDENTITY_CANDIDATE_NOT_CONFIRMED; NO_PRICE_FORECAST",
+  "video_identity": {
+    "requested_exact_name": "Camilla Stephenson",
+    "status": "CANDIDATE_CHANNEL_FOUND; EXACT_IDENTITY_UNRESOLVED",
+    "candidate_channel": {
+      "title": "Kamilah Stevenson | Xrp & Stocks",
+      "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "description_summary": "Public channel description focuses on stocks, crypto, market insights and long-term investing."
+    },
+    "indexed_public_videos": [
+      {
+        "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+        "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+        "published_date": "2026-03-06",
+        "indexed_views": 32040,
+        "indexed_likes": 2300,
+        "topics": [
+          "oil shock",
+          "yen carry trade",
+          "global liquidity",
+          "XRP"
+        ],
+        "classification": "CREATOR_THESIS_NOT_INDEPENDENTLY_VERIFIED"
+      },
+      {
+        "title": "STOP Watching Candles! The MASSIVE Liquidity Shift That Will Move Crypto FIRST",
+        "url": "https://www.youtube.com/watch?v=Z-NeZwa3gsA",
+        "published_date": "2025-11-26",
+        "indexed_views": 41740,
+        "indexed_likes": 3100,
+        "topics": [
+          "liquidity",
+          "government spending",
+          "QT",
+          "crypto"
+        ],
+        "classification": "CREATOR_THESIS_NOT_INDEPENDENTLY_VERIFIED"
+      }
+    ],
+    "exclusion_example": {
+      "title": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+      "url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "published_date": "2025-12-16",
+      "uploader": "Alina X",
+      "reason": "Third-party upload referring to Kamilah Stevenson; not counted as her own upload."
+    },
+    "limitations": [
+      "The spelling differs: Camilla Stephenson vs Kamilah Stevenson.",
+      "No first-party cross-link establishes that the requested person and the candidate channel owner are the same person.",
+      "YouTube channel page fetch was throttled; search-indexed results are not an exhaustive upload inventory.",
+      "Do not treat video descriptions about XRP, yen carry trade, liquidity or collateral as verified causal facts without independent corroboration."
+    ]
+  },
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "observed_main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+    "main_unchanged_since_last_checkpoint": true,
+    "research_pr_1195": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "state": "open",
+      "draft": true,
+      "head_sha": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
+      "ahead_by": 33,
+      "behind_by": 45,
+      "ci": {
+        "run_id": 40592783577,
+        "status": "completed",
+        "conclusion": "success",
+        "tests_passed": 145,
+        "duration_seconds": 5.81,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783577"
+      },
+      "gate": {
+        "run_id": 40592783253,
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783253"
+      },
+      "note": "These checks validate head 44a9ce7, not the ledger-only commit that will follow this snapshot."
+    },
+    "signal_integrity_pr_1220": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+      "state": "open",
+      "draft": true,
+      "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+      "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "ci": {
+        "run_id": 40592404749,
+        "status": "completed",
+        "conclusion": "success",
+        "tests_passed": 164,
+        "duration_seconds": 6.11,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749"
+      },
+      "gate": {
+        "run_id": 40592404758,
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758"
+      },
+      "note": "Draft, mergeable and unmerged. These tests verify code behavior, not XRP prediction skill."
+    },
+    "safety_boundary": "No main write, merge, force-push, reset, clean, stash, deployment, secret change or real-money action was performed."
+  },
+  "exact_phrase_status": {
+    "phrases": [
+      "ASK Coin",
+      "actual capital",
+      "SBIC, ChatGPT SBIC"
+    ],
+    "status": "UNRESOLVED",
+    "note": "No reliable original context or definition was established in this pass."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Resolve whether Kamilah Stevenson is the intended person before treating her channel as the requested Camilla Stephenson inventory.",
+    "Use a first-party channel uploads listing or authenticated public-channel listing to enumerate videos, Shorts and livestreams; current indexed results are partial only.",
+    "Keep creator claims about liquidity, yen carry trade and XRP as hypotheses until independently tested against market and macro data.",
+    "Preserve research PR #1195; its current branch is 33 commits ahead and 45 behind main.",
+    "Keep PR #1220 draft and unmerged; its exact-head CI and fail-closed gate passed."
+  ],
+  "source_ids": [
+    "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+    "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+    "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+    "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16",
+    "SRC-REPO-CI-1195-2026-10-27T2211Z",
+    "SRC-REPO-GATE-1195-2026-10-27T2211Z"
+  ],
+  "validation": {
+    "video_identity": "UNRESOLVED_CANDIDATE_ONLY",
+    "public_video_inventory": "INCOMPLETE",
+    "research_pr_1195_head_ci": "PASS_145_TESTS",
+    "research_pr_1195_gate": "PASS",
+    "signal_integrity_pr_1220_ci": "PASS_164_TESTS",
+    "signal_integrity_pr_1220_gate": "PASS",
+    "main_modified": false,
+    "merge_performed": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

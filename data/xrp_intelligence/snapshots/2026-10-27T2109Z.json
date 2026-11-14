@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_research_delta",
+  "snapshot_id": "XRP-RESEARCH-DELTA-2026-10-27T210942Z",
+  "captured_at_utc": "2026-10-27T21:09:42Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+    "branch_protected": true
+  },
+  "coinbase_position": {
+    "evidence_class": "COMPANY_REPORTED_PLUS_PRIMARY_PRODUCT_DOCUMENTATION",
+    "findings": [
+      {
+        "source_id": "SRC-COINBASE-Q2-2026-IR",
+        "claim": "Coinbase reported Q2 2026 crypto trading-volume market share of 10.3%, a third consecutive quarterly gain; $20B average USDC held in Coinbase products; more than 30% of USDC in circulation at quarter-end; and about 50% of USDC economics captured over the prior year.",
+        "limit": "These are company-wide and USDC metrics; they do not establish XRP net spot buying or directional exposure."
+      },
+      {
+        "source_id": "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+        "claim": "Coinbase documents XRP options in its global derivatives offering for eligible customers in supported regions outside the United States. The options use Deribit infrastructure and settle in USDC.",
+        "limit": "Options access can support hedging, speculation or market-making in either direction. USDC settlement is not evidence that XRP collateral is used, and it does not prove XRPL-native USDC settlement."
+      },
+      {
+        "source_id": "SRC-COINBASE-XRP-PERP-FUTURES",
+        "claim": "Coinbase Derivatives Exchange also documents a USD-denominated nano XRP perpetual-style futures product with a funding mechanism.",
+        "limit": "The product page's displayed market fields are not accepted as current data without a fresh capture; availability remains subject to eligibility and product terms."
+      }
+    ],
+    "synthesis": "Coinbase is not only a spot/custody access point: it has documented XRP derivatives products and significant stablecoin distribution economics. Its derivatives products can amplify liquidity, hedging and basis interactions, but the net effect on spot XRP depends on dealer hedging, basis arbitrage, customer net positioning, collateral rules and venue flows."
+  },
+  "video_identity_disambiguation": {
+    "exact_name": "Camilla Stephenson",
+    "status": "CANONICAL_XRP_CHANNEL_UNRESOLVED",
+    "findings": [
+      "Exact-spelling public search surfaced multiple unrelated professionals, including a film location-management crew member and a film-industry mentor; neither source establishes a link to XRP commentary.",
+      "The previously identified Kamilah/Camila Stevenson YouTube candidates remain separate, unverified channel identities. Do not merge them with Camilla Stephenson without a first-party cross-link or matching channel metadata.",
+      "A complete inventory of public videos, Shorts, livestreams and archived uploads cannot be claimed until the canonical channel ID is established."
+    ],
+    "sources": [
+      "SRC-CAMILLA-STEPHENSON-BCG",
+      "SRC-CAMILLA-STEPHENSON-MFJF"
+    ]
+  },
+  "exact_phrase_searches": {
+    "searched_at_utc": "2026-10-27T21:09:42Z",
+    "phrases": [
+      "ASK Coin",
+      "actual capital",
+      "SBIC, ChatGPT SBIC"
+    ],
+    "status": "UNRESOLVED",
+    "conclusion": "Fresh exact-spelling and XRP-context searches did not establish a reliable definition or original source. No acronym expansion or relationship is inferred."
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H10-COINBASE-XRP-DERIVATIVES",
+      "hypothesis": "Coinbase's XRP spot/custody and derivatives access can improve market access and price discovery, but its net spot effect is conditional on client positioning, dealer hedging, basis, collateral and liquidity.",
+      "supporting_evidence": [
+        "SRC-COINBASE-Q2-2026-IR",
+        "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+        "SRC-COINBASE-XRP-PERP-FUTURES"
+      ],
+      "disconfirming_evidence": [
+        "Derivatives permit short exposure and hedging; broad market-share gains are not XRP-specific; contract activity may net out without net spot accumulation; USDC settlement does not imply XRP purchases."
+      ],
+      "test_plan": "Collect contract-level OI, volume, funding, basis, options delta/gamma/open interest, spot depth, market-maker inventory proxies and exchange netflows; test event windows and walk-forward out-of-sample lift versus market-beta and price/volume baselines."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Measure Coinbase XRP derivatives separately by product, jurisdiction and settlement currency; do not combine USD futures with USDC-settled offshore options.",
+    "Keep the Circle-to-Coinbase USDC distribution relationship distinct from any assumed XRP accumulation or XRPL-native USDC use.",
+    "Resolve the original source of the phrase Camilla Stephenson before enumerating the full video inventory.",
+    "Continue exact-phrase source tracing for ASK Coin, actual capital and SBIC/ChatGPT SBIC."
+  ]
+}
