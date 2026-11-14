@@ -25,15 +25,18 @@ MULTI_LABEL_PUBLIC_SUFFIXES = {
 }
 
 # Related SBI legal entities are one publisher group for corroboration.
-# SBIC East (Tokyo), Central (Nagoya), and West (Osaka) are separate regional
-# SME investment companies, not SBI Holdings. Their domains are deliberately
-# not aliased to sbi-group; each retains its publisher identity unless a
-# shared upstream lineage is explicitly declared.
+# SBIC East (Tokyo), Central (Nagoya), and West (Osaka) are separate legal
+# entities/sister companies, not SBI Holdings. They share one conservative
+# regional-SBIC publisher group so their pages cannot count as three
+# independent confirmations, and are never aliased to sbi-group.
 PUBLISHER_DOMAIN_ALIASES = {
     "sbigroup.co.jp": "sbi-group",
     "sbishinseibank.co.jp": "sbi-group",
     "sbivc.co.jp": "sbi-group",
     "sbirippleasia.co.jp": "sbi-group",
+    "sbic.co.jp": "sbic-regional",
+    "sbic-cj.co.jp": "sbic-regional",
+    "sbic-wj.co.jp": "sbic-regional",
 }
 
 
