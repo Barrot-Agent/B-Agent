@@ -1,0 +1,468 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_binance_attacker_wallet_redistribution_reconciliation",
+  "snapshot_id": "xrp-binance-redistribution-20261102-215955z",
+  "created_at_utc": "2026-11-02T21:59:55Z",
+  "data_cutoff_utc": "2026-11-02T13:26:00Z",
+  "supplemental_later_ledger_observation": {
+    "ledger_index": 108064685,
+    "source_page_published_utc": "2026-11-02T20:13:00Z",
+    "exact_ledger_close_time_utc": null,
+    "classification": "secondary_public_research_reporting_direct_XRPL_queries",
+    "note": "Q-Eternal reports account_tx/account_info checks at ledger 108064685 and says the seven newly created destination accounts had received funds only, with zero outgoing payments. The ledger index is retained; an exact close timestamp was not independently obtained."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "scope": [
+    "October 29 Binance-attributed XRP theft",
+    "November 2 redistribution of the original attacker-account balance",
+    "recipient-wallet activity and exchange-tag checks",
+    "separate Binance-labeled treasury/custody movements",
+    "reconciliation of reported XRP totals",
+    "event-study feature design and source freshness"
+  ],
+  "key_correction": {
+    "statement": "The two 40,000,000 XRP transfers reported by Whale Alert at 03:55:31 and 03:56:21 UTC on November 2 are part of the original attacker's redistribution from the original attacker account into the six recipient wallets. They are not evidence of a later 80M XRP outflow from those six recipient wallets.",
+    "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "confirmed_receiver_for_second_transfer": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+    "second_transfer_hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+    "second_transfer_time_utc": "2026-11-02T03:56:21Z",
+    "second_transfer_amount_xrp": 40000000,
+    "first_transfer_time_utc": "2026-11-02T03:55:31Z",
+    "first_transfer_amount_xrp": 40000000,
+    "first_transfer_hash": null,
+    "interpretation": "The 80M figure is a subset of the nine large payments in the 03:52–04:00 UTC redistribution. It must not be added to the 233.46M stolen amount or described as a separate subsequent sale/movement."
+  },
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-29T20:05:00Z/20:09:20Z",
+      "event": "Five Binance-attributed XRPL hot wallets transferred a reported total of 233,461,943.1 XRP to the original attacker account.",
+      "classification": "forensic_sourced_claim",
+      "source_ids": [
+        "trm-20261029",
+        "bitquery-20261102",
+        "xrplwin-20261029"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T02:12:00Z",
+      "event": "Q-Eternal reports a 1,000 XRP test payment from the original attacker account to a separate seventh test address.",
+      "classification": "secondary_public_research_reporting_direct_ledger_queries",
+      "source_ids": [
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T03:47:00Z/03:50:00Z",
+      "event": "Q-Eternal reports six 1,000 XRP test payments to the six eventual main recipient accounts.",
+      "classification": "secondary_public_research_reporting_direct_ledger_queries",
+      "source_ids": [
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T03:52:00Z/04:00:00Z",
+      "event": "The original attacker account sent nine large payments distributing the main XRP balance to six newly created accounts.",
+      "classification": "onchain_analytics_and_secondary_ledger_reconciliation",
+      "source_ids": [
+        "bitquery-20261102",
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T03:55:31Z",
+      "event": "Whale Alert reported a 40M XRP payment from the original attacker account to one of the new recipient wallets; the exact first-transfer hash was not retrieved in this run.",
+      "classification": "tracker_reported_transaction",
+      "source_ids": [
+        "whale-alert-20261102-first-40m",
+        "cryptobasic-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T03:56:21Z",
+      "event": "Whale Alert transaction page identifies a validated 40M XRP payment from the original attacker account to rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD; fee 0.00001 XRP.",
+      "classification": "transaction_page_observed",
+      "source_ids": [
+        "whale-alert-3aaa8bee"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02T13:26:00Z",
+      "event": "Bitquery's chain read reports seven new XRPL accounts held the full approximately 233.5M XRP distribution and none had sent anything onward by that cutoff.",
+      "classification": "independent_onchain_analytics_snapshot",
+      "source_ids": [
+        "bitquery-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-02",
+      "event": "Q-Eternal reports ledger 108064685 showed the seven new destination accounts had only received XRP and had zero outgoing transactions; exact ledger close time was not supplied.",
+      "classification": "secondary_public_research_reporting_direct_ledger_queries",
+      "source_ids": [
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "time_utc": "2026-11-01T15:04:01Z",
+      "event": "A separate 50M XRP transfer from a Binance-labeled wallet to an unidentified address was reported. No available transaction trail links it to the attacker account.",
+      "classification": "separate_tracker_reported_exchange_wallet_movement",
+      "source_ids": [
+        "cryptobasic-20261102",
+        "whale-alert-20261101-50m"
+      ]
+    }
+  ],
+  "original_attacker_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+  "recipient_wallets": [
+    {
+      "address": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "main_transfer_xrp": 40000000,
+      "test_payment_xrp": 1000,
+      "reported_total_xrp": 40001000
+    },
+    {
+      "address": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "main_transfer_xrp": 40000000,
+      "test_payment_xrp": 1000,
+      "reported_total_xrp": 40001000
+    },
+    {
+      "address": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "main_transfer_xrp": 40000000,
+      "test_payment_xrp": 1000,
+      "reported_total_xrp": 40001000
+    },
+    {
+      "address": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+      "main_transfer_xrp": 40000000,
+      "test_payment_xrp": 1000,
+      "reported_total_xrp": 40001000
+    },
+    {
+      "address": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "main_transfer_xrp": 40000000,
+      "test_payment_xrp": 1000,
+      "reported_total_xrp": 40001000
+    },
+    {
+      "address": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+      "main_transfer_xrp": 33454920,
+      "test_payment_xrp": 1000,
+      "reported_total_xrp": 33455920
+    }
+  ],
+  "separate_test_wallet": {
+    "address": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+    "reported_balance_xrp": 1000
+  },
+  "reconciliation": {
+    "original_forensic_theft_total_xrp": 233461943.1,
+    "six_main_recipient_wallets_total_xrp": 233460920,
+    "separate_test_wallet_xrp": 1000,
+    "original_attacker_account_residual_xrp": 23.69905,
+    "combined_reported_balance_xrp": 233461943.69905,
+    "unresolved_difference_xrp": 0.59905,
+    "arithmetic_check": "233460920 + 1000 + 23.69905 = 233461943.69905",
+    "discrepancy_note": "The combined reported balance is 0.59905 XRP above the TRM/XRPLWin initial theft total. Do not attribute the difference to fees, rounding, or a particular transaction until all validated transactions and delivered_amount fields are replayed."
+  },
+  "recipient_status": {
+    "bitquery_cutoff_utc": "2026-11-02T13:26:00Z",
+    "bitquery_reported_new_accounts": 7,
+    "bitquery_reported_total_xrp": 233500000,
+    "bitquery_reported_outgoing_after_receipt": 0,
+    "q_eternal_ledger_index": 108064685,
+    "q_eternal_reported_outgoing_after_receipt": 0,
+    "account_names_registered_reported": 0,
+    "destination_tags_reported": 0,
+    "known_exchange_deposit_tags_reported": 0,
+    "freshness_warning": "No live account_tx query was executed in this run. The 13:26 UTC Bitquery observation and later Q-Eternal ledger-index report are pinned historical snapshots, not proof of status at the artifact creation time."
+  },
+  "separate_binance_wallet_observation": {
+    "source": "Q-Eternal XRP Fundamentals",
+    "ledger_start": 108042952,
+    "ledger_end": 108064685,
+    "tagged_binance_accounts_count": 160,
+    "aggregate_xrp_start": 2747332926.92,
+    "aggregate_xrp_end": 2714176356.85,
+    "net_change_xrp": -33156570.07,
+    "largest_reported_single_account_decrease_xrp": 50000000,
+    "largest_account": "rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+    "relationship_to_attacker": "not established",
+    "interpretation": "A tagged-address balance change is not proof of customer net withdrawals, sale, or theft. It may reflect custody reorganization, customer withdrawals, rebalancing, or other transfers. The separately reported 50M Binance-labeled transfer on November 1 is a candidate match, but transaction-level identity has not been established."
+  },
+  "market_observations": {
+    "approximate_xrp_price_usd": "1.25",
+    "approximate_original_stolen_value_usd": 292000000,
+    "note": "Approximate mark from contemporaneous reporting, not a synchronized consolidated quote. Do not use as an exact transaction valuation."
+  },
+  "additional_xrpl_features_reported_by_q_eternal": {
+    "ledger_index": 108064685,
+    "rlusd_xrpl_issuer_liabilities": 711828559.43,
+    "rlusd_ethereum_supply": 1704513097.44,
+    "rlusd_ethereum_supply_change_24h": -854786,
+    "fxrp_supply": 144002828.84,
+    "fxrp_change_24h": -6518.17,
+    "domain_id_offercreate_24h": 3508,
+    "domain_id_offercreate_concentration": "all reported from one account",
+    "euop_xrp_amm_related_settlements": 1039,
+    "euop_xrp_as_intermediary_count": 0,
+    "xls65_votes": 21,
+    "xls66_votes": 19,
+    "required_amendment_votes": 28,
+    "classification": "single-source reported XRPL ledger feature set; not independently replayed"
+  },
+  "relationship_edges": [
+    {
+      "from": "Binance-attributed XRPL hot wallets",
+      "to": "original attacker account",
+      "relationship": "sent 233,461,943.1 XRP",
+      "classification": "forensic_sourced_claim",
+      "source_ids": [
+        "trm-20261029",
+        "bitquery-20261102"
+      ]
+    },
+    {
+      "from": "original attacker account",
+      "to": "six main recipient wallets",
+      "relationship": "redistributed approximately 233.46M XRP in nine large payments",
+      "classification": "onchain_analytics_and_secondary_ledger_reconciliation",
+      "source_ids": [
+        "bitquery-20261102",
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "from": "original attacker account",
+      "to": "separate test wallet",
+      "relationship": "sent 1,000 XRP test payment",
+      "classification": "secondary_public_research_reporting_direct_ledger_queries",
+      "source_ids": [
+        "q-eternal-20261102"
+      ]
+    },
+    {
+      "from": "Whale Alert",
+      "to": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "relationship": "labels 40M XRP recipient transaction",
+      "classification": "tracker_observed_transaction_page",
+      "source_ids": [
+        "whale-alert-3aaa8bee"
+      ]
+    },
+    {
+      "from": "Binance-labeled wallet",
+      "to": "unidentified wallet",
+      "relationship": "separate 50M XRP transfer on November 1",
+      "classification": "tracker_reported_unattributed_movement",
+      "source_ids": [
+        "cryptobasic-20261102"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "The six recipient accounts are staging wallets before an eventual sale or conversion.",
+      "supporting_evidence": [
+        "Large balance split across newly created accounts",
+        "The original theft attribution and recipient sequence are consistent with attacker-controlled distribution"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No outgoing recipient payments reported by Bitquery through 13:26 UTC",
+        "Q-Eternal reports zero outgoing through ledger 108064685",
+        "No exchange deposit tags or identified DEX transactions reported",
+        "No confirmed sale or realized proceeds"
+      ],
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "H2",
+      "hypothesis": "The split is intended to compartmentalize custody and reduce concentration without immediate sale.",
+      "supporting_evidence": [
+        "Six fresh accounts received most of the balance",
+        "No onward transfers in the pinned snapshots"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No proof of private-key custody rationale or beneficial ownership",
+        "Future transfer intent is unknown"
+      ],
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "H3",
+      "hypothesis": "The funds are being held dormant while the attacker prioritizes other chains and assets.",
+      "supporting_evidence": [
+        "Bitquery reports no outgoing from the seven XRPL destination accounts at 13:26 UTC",
+        "Q-Eternal reports no outgoing at ledger 108064685"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No live query at current cutoff",
+        "Dormancy over a few hours does not establish long-term intent"
+      ],
+      "status": "plausible_unconfirmed"
+    },
+    {
+      "id": "H4",
+      "hypothesis": "The separate 50M XRP transfer from a Binance-labeled wallet is related to the exploit.",
+      "supporting_evidence": [
+        "Large movement occurred during the same post-incident period",
+        "Q-Eternal reports a 50M decrease in one Binance-tagged account"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No transaction-level link to the original attacker account",
+        "Different sender label and no common recipient trail established"
+      ],
+      "status": "unsupported_link_do_not_join_graph"
+    },
+    {
+      "id": "H5",
+      "hypothesis": "The XRP redistribution itself created immediate spot selling pressure.",
+      "supporting_evidence": [
+        "A large amount changed custody in a short interval"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "A wallet-to-wallet transfer is not a sale",
+        "No exchange deposit or DEX execution has been established",
+        "No transaction-level order-book impact study has been executed"
+      ],
+      "status": "not_established"
+    }
+  ],
+  "event_study_design": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "event_times_utc": [
+      "2026-10-29T20:05:00Z",
+      "2026-11-02T03:52:00Z"
+    ],
+    "outcomes": [
+      "XRP/USD 5m and 1h returns",
+      "realized volatility",
+      "top-of-book and 1%/2% depth",
+      "bid-ask spread",
+      "venue-specific XRP net flows",
+      "perpetual open interest and funding",
+      "ETF primary-market flows"
+    ],
+    "controls": [
+      "BTC",
+      "ETH",
+      "XLM",
+      "broad altcoin basket",
+      "USD index and rates",
+      "macro risk proxies"
+    ],
+    "confounders": [
+      "Binance withdrawal pause/reopening",
+      "cross-chain exploit coverage",
+      "stablecoin freezes",
+      "macro and geopolitical headlines",
+      "ETF flow releases"
+    ],
+    "leakage_controls": [
+      "Freeze features at each event timestamp",
+      "Do not use later wallet labels as earlier features",
+      "Preserve source publication time separately from observation time",
+      "Group duplicated syndication by source family",
+      "Do not treat current revised dashboards as historical snapshots"
+    ],
+    "baselines": [
+      "buy-and-hold",
+      "zero-return",
+      "BTC-relative return",
+      "simple volatility-scaled momentum"
+    ],
+    "calibration_requirements": [
+      "fixed horizons",
+      "point-in-time feature snapshots",
+      "walk-forward splits",
+      "out-of-sample probability calibration",
+      "Brier score and log loss",
+      "drift monitoring"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "source_records": [
+    {
+      "id": "trm-20261029",
+      "publisher": "TRM Labs",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "source_type": "forensic_analytics",
+      "observation": "Reports 233.46M XRP taken from five Binance-attributed XRPL hot wallets; describes wider incident and stablecoin freezes.",
+      "independence_group": "trm"
+    },
+    {
+      "id": "bitquery-20261102",
+      "publisher": "Bitquery Research",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "source_type": "onchain_analytics",
+      "observation": "Reports seven new XRPL accounts held approximately 233.5M XRP and none had sent onward by 13:26 UTC on November 2; provides transaction/account methodology and explicitly warns address labels may be incomplete.",
+      "independence_group": "bitquery"
+    },
+    {
+      "id": "q-eternal-20261102",
+      "publisher": "Q-Eternal XRP Fundamentals",
+      "url": "https://q-eternal.com/blog/2026-11-02/",
+      "source_type": "public_research_using_reported_direct_xrpl_queries",
+      "observation": "Reports six recipient wallets, one separate test wallet, ledger 108064685, no outgoing from the seven new accounts, and balances across 160 Binance-labelled accounts. Exact ledger close time is not supplied.",
+      "independence_group": "q-eternal"
+    },
+    {
+      "id": "whale-alert-3aaa8bee",
+      "publisher": "Whale Alert",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "source_type": "transaction_tracker_page",
+      "observation": "40M XRP transfer at 03:56:21 UTC from the original attacker account to rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD; hash and fee displayed.",
+      "independence_group": "whale-alert"
+    },
+    {
+      "id": "cryptobasic-20261102",
+      "publisher": "The Crypto Basic",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/",
+      "source_type": "secondary_media_reporting_tracker_alerts",
+      "observation": "Reports two 40M XRP transfers 50 seconds apart from the attacker account and a separate 50M transfer from a Binance-labelled wallet on November 1; explicitly says the 50M transfer is not linked to the attacker.",
+      "independence_group": "whale-alert-syndication"
+    },
+    {
+      "id": "whale-alert-20261101-50m",
+      "publisher": "Whale Alert via secondary media quotation",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/",
+      "source_type": "quoted_tracker_alert_not_directly_fetched",
+      "observation": "50M XRP transfer from a Binance-labelled wallet at 2026-11-01T15:04:01Z; destination unidentified in the report.",
+      "independence_group": "whale-alert-syndication"
+    },
+    {
+      "id": "xrpl-account-tx-docs",
+      "publisher": "XRP Ledger documentation",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
+      "source_type": "protocol_documentation",
+      "observation": "Defines account_tx as retrieval of validated transactions involving an account; documents request fields and pagination.",
+      "independence_group": "xrpl-official-docs"
+    },
+    {
+      "id": "coinotag-20261102",
+      "publisher": "Coinotag",
+      "url": "https://en.coinotag.com/binance-empties-hacked-xrp-wallet-101-million",
+      "source_type": "secondary_media_interpretation",
+      "observation": "Describes the 80M transfer as Binance emptying the hacked wallet. This wording is not adopted: the transaction sender is the original attacker account, not a Binance-labeled sending account.",
+      "independence_group": "secondary-media"
+    }
+  ],
+  "unresolved_questions": [
+    "Replay all original and redistribution transactions using two independent XRPL data providers at the same pinned validated ledger.",
+    "Resolve the 0.59905 XRP discrepancy without assuming fees or rounding.",
+    "Obtain the exact first 40M transaction hash and map all nine large payments to their recipient accounts.",
+    "Recheck account_tx for all six main recipients and the separate test account at a new pinned ledger.",
+    "Determine whether any recipient later interacts with an exchange, XRPL DEX/AMM, bridge, or known service; do not infer beneficial ownership from labels alone.",
+    "Determine whether the separate 50M Binance-labelled transfer is the same movement as the 50M decline in Binance 5; require exact transaction matching.",
+    "Reconcile Q-Eternal's six-fund ETF cumulative inflow series since September 18 (~$99.75M) with other trackers reporting larger cumulative inflows; do not combine differing fund universes or start dates.",
+    "Independently replay RLUSD issuer liabilities, Ethereum supply and FXRP supply before promoting these Q-Eternal observations into the canonical feature store."
+  ],
+  "next_actions": [
+    "Obtain current validated-ledger account_tx histories for the seven recipient accounts from two independent providers.",
+    "Reconcile every redistribution transaction and the original 0.59905 XRP difference.",
+    "Track the separate Binance 50M movement as an unlinked exchange-wallet event.",
+    "Capture Binance's November 4 expanded proof-of-reserves snapshot and compare it with the XRPL-tagged address inventory.",
+    "Keep all event-study work marked DESIGNED_NOT_EXECUTED until historical point-in-time market data and controls are assembled."
+  ],
+  "provenance_precision_note": "The strongest corroboration is Bitquery's independently timestamped chain-analysis snapshot plus Q-Eternal's later reported direct XRPL ledger queries. Whale Alert directly exposes one of the two 40M transaction pages. The first 40M transaction hash and a fresh current-ledger replay were not obtained in this run. All recipient no-outgoing statements are bounded to their stated source cutoffs."
+}

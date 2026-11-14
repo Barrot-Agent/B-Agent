@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_derivatives_provider_scope_audit",
+  "snapshot_id": "xrp-derivatives-provider-scope-20261103-run11",
+  "captured_at_utc": "2026-11-03T01:28:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "research_priority": "XRP intelligence and prediction-engine mastery",
+  "forecast_status": "NOT_ISSUED",
+  "observations": [
+    {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-11-02T21:45:00Z",
+      "price_usd": 1.2542,
+      "price_change_24h_pct": 0.16,
+      "open_interest_usd": 1930000000,
+      "coverage": "7 exchanges: Binance, Bybit, OKX, Bitget, Gate, MEXC, Hyperliquid",
+      "oi_change_24h_pct": 2.15,
+      "funding_8h_oi_weighted_pct": 0.0025,
+      "liquidations_24h_min_usd": 2810000,
+      "long_liquidations_usd": 2370000,
+      "short_liquidations_usd": 439370,
+      "long_short_account_ratio": 2.97,
+      "long_account_share_pct": 74.8,
+      "source_url": "https://tradradar.io/markets/xrp",
+      "methodology_note": "Provider states it collects exchange data itself and displays a 15-minute delay. Liquidation coverage is partial and marked as a lower bound."
+    },
+    {
+      "provider": "Kodexius",
+      "observed_at_utc": "2026-11-02T17:49:00Z",
+      "open_interest_usd": 775590000,
+      "contract_count": 7,
+      "coverage": "Binance, Bybit, OKX, Hyperliquid, HTX contracts shown",
+      "funding_8h_oi_weighted_pct": 0.0072,
+      "volume_24h_usd": 1000000000,
+      "oi_to_volume_ratio": 0.77,
+      "exchange_open_interest_usd": {
+        "Binance": 390570000,
+        "Bybit": 154810000,
+        "OKX": 102280000,
+        "Hyperliquid": 100030000,
+        "HTX": 27910000
+      },
+      "source_url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "methodology_note": "Provider states it refreshes every five minutes; contract-level coverage differs from TradRadar."
+    },
+    {
+      "provider": "CoinGecko",
+      "retrieved_at_utc": "2026-11-03T01:28:00Z",
+      "page_as_of_timestamp": "NOT_EXPOSED_IN_SEARCH_RESULT",
+      "open_interest_usd": 3562000000,
+      "volume_24h_usd": 1559000000,
+      "funding_8h_pct": 0.0085,
+      "oi_to_market_cap_pct": 4.51,
+      "perps_to_spot_volume_ratio": 9.4,
+      "source_url": "https://www.coingecko.com/en/coins/xrp",
+      "methodology_note": "Search-indexed page reports aggregate derivatives statistics but does not expose an exact observation cutoff in the captured result. Retained as non-canonical and not directly comparable."
+    }
+  ],
+  "provider_spread": {
+    "highest_reported_oi_usd": 3562000000,
+    "lowest_reported_oi_usd": 775590000,
+    "ratio_high_to_low": 4.592,
+    "interpretation": "Provider coverage, contract universe, quote conversion and timestamp differences are unresolved. This is a measurement-scope discrepancy, not evidence of a 4.59x intraday market move.",
+    "action": "Do not average or select a canonical aggregate until contract-by-contract exchange data is reconciled."
+  },
+  "spot_and_etf_context": {
+    "tradradar_price_usd_at_2026_11_02T21_45Z": 1.2542,
+    "coinmarketcap_search_snapshot_usd": 1.24,
+    "coinmarketcap_market_cap_usd": 79050000000,
+    "coinmarketcap_volume_24h_usd": 778550000,
+    "coingecko_search_snapshot_usd": 1.24,
+    "coingecko_volume_24h_usd": 1559000000,
+    "price_and_volume_note": "Aggregator snapshots do not share a visible common cutoff or venue universe; no synthetic average is produced.",
+    "etf_last_trading_day": "2026-10-30",
+    "etf_last_day_net_flow_usd": -496500,
+    "etf_five_day_net_flow_usd": 4300000,
+    "etf_cumulative_net_inflow_usd": 1810000000,
+    "etf_total_net_assets_usd": 1420000000,
+    "etf_source_url": "https://bykaranteli.com/etf/xrp",
+    "etf_source_refresh_utc": "2026-11-01T22:49:00Z",
+    "etf_interpretation": "The latest day was a small net outflow, while the five-day period remained net positive. ETF share flows do not prove unhedged investor conviction or spot purchases on a specific exchange."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "XRP derivatives positioning remains net long and vulnerable to liquidation cascades.",
+      "supporting_evidence": [
+        "TradRadar reports 74.8% long accounts and $2.37M long liquidations."
+      ],
+      "disconfirming_evidence": [
+        "Funding is only +0.0025% per eight hours on TradRadar; venue-level funding differs and some exchanges are negative."
+      ],
+      "status": "PARTIALLY_SUPPORTED"
+    },
+    {
+      "id": "H2",
+      "statement": "A single aggregate funding or open-interest series is sufficient to infer market direction.",
+      "supporting_evidence": [],
+      "disconfirming_evidence": [
+        "TradRadar, Kodexius and CoinGecko report materially different open-interest totals and funding snapshots."
+      ],
+      "status": "REJECTED_FOR_CURRENT_FEATURE_STORE"
+    },
+    {
+      "id": "H3",
+      "statement": "ETF flows are providing persistent net demand despite short-term price weakness.",
+      "supporting_evidence": [
+        "Five-day net flows reported at +$4.3M; cumulative inflows reported at +$1.81B."
+      ],
+      "disconfirming_evidence": [
+        "October 30 recorded a small net outflow; ETF flows are not equivalent to net spot buying or unhedged exposure."
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSAL"
+    }
+  ],
+  "feature_store_policy": {
+    "keep_provider_series_separate": true,
+    "require_exact_cutoff": true,
+    "require_exchange_and_contract_coverage": true,
+    "require_quote_currency_and_conversion_method": true,
+    "require_open_interest_unit": "USD notional and native contract units",
+    "funding_unit": "per 8-hour period, retain raw venue rate",
+    "no_cross_provider_averaging": true,
+    "missing_data": "NULL_NOT_ZERO"
+  },
+  "verification": {
+    "source_pages_reviewed": "EXECUTED",
+    "arithmetic_ratio_recomputed": "EXECUTED",
+    "contract_level_reconciliation": "NOT_EXECUTED",
+    "event_study": "DESIGNED_NOT_EXECUTED",
+    "forecast": "NOT_ISSUED"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_trading": false,
+    "real_money": false
+  }
+}

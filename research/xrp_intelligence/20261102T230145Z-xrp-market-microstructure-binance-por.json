@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_market_microstructure_and_binance_por_reconciliation",
+  "snapshot_id": "xrp-market-microstructure-binance-por-20261102-230145z",
+  "created_at_utc": "2026-11-02T23:01:45Z",
+  "data_cutoff_utc": "2026-11-02T22:19:00Z",
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "event_study_status": "DESIGNED_NOT_EXECUTED",
+  "market_observations": {
+    "spot_and_perpetual": {
+      "tradradar": {
+        "observed_at_utc": "2026-11-02T12:45:00Z",
+        "xrp_mark_usd": 1.2512,
+        "open_interest_usd": 1930000000,
+        "open_interest_24h_change_pct": 2,
+        "oi_weighted_funding_pct_per_8h": 0.0075,
+        "liquidations_24h_usd_minimum": 1190000,
+        "long_liquidations_usd": 893270,
+        "short_liquidations_usd": 296730,
+        "long_short_account_ratio": 3.55,
+        "long_account_share_pct": 78,
+        "exchange_oi_usd": {
+          "Binance": 434800000,
+          "Bybit": 355300000,
+          "MEXC": 301090000,
+          "Gate": 269690000,
+          "Bitget": 250860000,
+          "Hyperliquid": 199560000,
+          "OKX": 115050000
+        },
+        "exchange_funding_pct_per_8h": {
+          "Binance": 0.01,
+          "Bybit": 0.0014,
+          "MEXC": 0.01,
+          "Gate": 0.0073,
+          "Bitget": 0.01,
+          "Hyperliquid": 0.01,
+          "OKX": 0.0008
+        },
+        "coverage": "Seven named exchanges; displayed 15-minute delay; liquidation reporting is partial and presented as a minimum.",
+        "source_id": "tradRadar-xrp-20261102-1245"
+      },
+      "kodexius": {
+        "observed_at_utc": "2026-11-02T22:19:00Z",
+        "open_interest_usd": 808650000,
+        "contract_count": 7,
+        "oi_weighted_funding_pct_per_8h": 0.0047,
+        "volume_24h_usd": 1190000000,
+        "oi_to_volume_ratio": 0.68,
+        "exchange_oi_usd": {
+          "Binance": 421580000,
+          "Bybit": 157170000,
+          "OKX": 103360000,
+          "Hyperliquid": 98420000,
+          "HTX": 28120000
+        },
+        "contracts": [
+          {
+            "exchange": "Binance",
+            "symbol": "XRPUSDT",
+            "settlement": "USDT",
+            "open_interest_usd": 390400000,
+            "funding_pct_per_8h": 0.01,
+            "volume_24h_usd": 593670000
+          },
+          {
+            "exchange": "Bybit",
+            "symbol": "XRPUSDT",
+            "settlement": "USDT",
+            "open_interest_usd": 154550000,
+            "funding_pct_per_8h": -0.0082,
+            "volume_24h_usd": 267310000
+          },
+          {
+            "exchange": "OKX",
+            "symbol": "XRP-USDT-SWAP",
+            "settlement": "USDT",
+            "open_interest_usd": 103360000,
+            "funding_pct_per_8h": -0.0043,
+            "volume_24h_usd": 191080000
+          },
+          {
+            "exchange": "Hyperliquid",
+            "symbol": "XRP",
+            "settlement": "USDC",
+            "open_interest_usd": 98420000,
+            "funding_pct_per_8h": 0.01,
+            "actual_period_funding_pct_per_1h": 0.0013,
+            "volume_24h_usd": 58150000
+          },
+          {
+            "exchange": "Binance",
+            "symbol": "XRPUSDC",
+            "settlement": "USDC",
+            "open_interest_usd": 31180000,
+            "funding_pct_per_8h": 0.01,
+            "volume_24h_usd": 75000000
+          },
+          {
+            "exchange": "HTX",
+            "symbol": "XRP-USDT",
+            "settlement": "USDT",
+            "open_interest_usd": 28120000,
+            "funding_pct_per_8h": 0.01,
+            "volume_24h_usd": 1360000
+          },
+          {
+            "exchange": "Bybit",
+            "symbol": "XRPPERP",
+            "settlement": "USDC",
+            "open_interest_usd": 2620000,
+            "funding_pct_per_8h": 0.0016,
+            "volume_24h_usd": 589330
+          }
+        ],
+        "source_id": "kodexius-xrp-20261102-2219"
+      },
+      "derived_comparison": {
+        "tradradar_exchange_oi_sum_usd": 1926350000.0000002,
+        "kodexius_exchange_oi_sum_usd": 808650000,
+        "tradradar_to_kodexius_total_oi_ratio": 2.3866938725035554,
+        "interpretation": "The totals are not reconciled. The observation times differ by 9h34m, the venue sets differ, contract coverage differs, and the per-venue figures also disagree materially (especially Bybit and Hyperliquid). Do not average or splice the two series. The discrepancy is a data-quality feature requiring raw contract-level capture.",
+        "data_quality_status": "CONFLICT_NON_CANONICAL"
+      }
+    },
+    "spot_etf_flows": {
+      "source_cutoff": "2026-10-30 US session",
+      "daily_net_flow_2026_10_29_usd": 8430000,
+      "weekly_net_flow_2026_10_26_to_30_usd": 4330000,
+      "reported_30_session_flow_usd": 98900000,
+      "lead_fund_2026_10_29": "Franklin XRPZ",
+      "interpretation": "Secondary timeline summarizing SoSoValue observations. ETF share flows are not treated as direct exchange XRP spot purchases or unhedged directional exposure.",
+      "source_id": "investin-xrp-etf-timeline-20261102"
+    }
+  },
+  "binance_proof_of_reserves": {
+    "official_statement": {
+      "published_at_utc": "2026-11-02T12:45:00Z",
+      "snapshot_at_utc": "2026-10-31T00:00:00Z",
+      "assets_named": [
+        "BTC",
+        "ETH",
+        "USDT",
+        "BNB",
+        "SOL",
+        "USDC",
+        "XRP",
+        "USD1",
+        "RLUSD",
+        "ZEC"
+      ],
+      "company_claim": "The ten listed assets are backed at a minimum 1:1; the complete zero-knowledge proof for the snapshot is generated and users can verify their own balances.",
+      "company_reported_replenishment_pct_of_impacted_amount": 95,
+      "remaining_pct": "Approximately 5%, mainly less-liquid assets outside the top ten.",
+      "next_snapshot_planned": "2026-11-04",
+      "verification_method": "Merkle tree plus zk-SNARK",
+      "verification_executed_by_this_run": false,
+      "source_id": "binance-recovery-update-5-20261102"
+    },
+    "secondary_reported_xrp_quantities": {
+      "source_attribution": "U.Today figures republished by Bitbase News; original U.Today page was not directly verified in this run.",
+      "snapshot_at_utc": "2026-10-31T00:00:00Z",
+      "client_liabilities_xrp": 2516373182,
+      "reported_reserves_xrp": 2541393612,
+      "derived_reserve_coverage_pct": 100.99430522384259,
+      "derived_reserve_surplus_xrp": 25020430,
+      "october_1_client_liabilities_xrp": 2495533677,
+      "derived_monthly_liability_growth_xrp": 20839505,
+      "classification": "SECONDARY_REPORTED_NOT_CANONICAL",
+      "canonical_feature_eligible": false,
+      "reason": "Official Binance announcement confirms 1:1 backing for XRP but does not state these aggregate XRP reserve and liability quantities. The numerical values require direct PoR report extraction and independent verifier review."
+    },
+    "scope_limitations": [
+      "A PoR snapshot and user-level Merkle/zk-SNARK verification do not by themselves establish complete corporate solvency.",
+      "The public announcement does not provide a full consolidated liability schedule or prove absence of encumbrances on every reserve asset.",
+      "The reported 95% replenishment is an aggregate across affected assets; it is not an XRP-specific replenishment percentage.",
+      "The October 31 snapshot predates the November 1 reopening outflows and is not a current customer-flow measure.",
+      "A 1:1 reserve snapshot does not identify whether replacement XRP was acquired on exchange, OTC, transferred from existing treasury inventory, or sourced through another route."
+    ]
+  },
+  "causal_hypotheses": [
+    {
+      "id": "M1",
+      "hypothesis": "XRP derivatives positioning is materially long-biased across the market.",
+      "support": [
+        "TradRadar reports a 3.55 account ratio and 78% long-account share.",
+        "Its seven-exchange funding aggregate is positive."
+      ],
+      "disconfirming": [
+        "Kodexius shows negative funding on Bybit USDT and OKX USDT contracts.",
+        "Long/short account counts are not notional exposure.",
+        "The two providers disagree by about 2.39x on aggregate open interest."
+      ],
+      "status": "MIXED_NOT_ESTABLISHED"
+    },
+    {
+      "id": "M2",
+      "hypothesis": "The apparent open-interest discrepancy is mostly a vendor coverage/methodology issue rather than a sudden 9-hour market move.",
+      "support": [
+        "Venue universes differ: TradRadar includes MEXC, Gate and Bitget; Kodexius includes HTX and separate USDC contracts.",
+        "Per-venue Bybit and Hyperliquid values differ materially."
+      ],
+      "disconfirming": [
+        "The snapshots are 9h34m apart, so genuine position changes may contribute.",
+        "Neither vendor's raw contract capture was independently replayed."
+      ],
+      "status": "PLAUSIBLE_UNVERIFIED"
+    },
+    {
+      "id": "M3",
+      "hypothesis": "Binance's replacement of affected XRP liabilities generated incremental XRP spot demand.",
+      "support": [
+        "Binance states it replenished affected assets using its own funds and includes XRP among the ten assets with 1:1 backing."
+      ],
+      "disconfirming": [
+        "The exact XRP-specific replenishment amount and acquisition route are not disclosed.",
+        "Treasury transfers or pre-existing inventory could satisfy the reserve requirement.",
+        "The October 31 snapshot is an aggregate reserve observation, not an execution record."
+      ],
+      "status": "POSSIBLE_NOT_MEASURED_DO_NOT_USE_AS_SPOT_FLOW"
+    },
+    {
+      "id": "M4",
+      "hypothesis": "XRP ETF inflows offset some of the confidence shock from the Binance incident.",
+      "support": [
+        "The 26-30 October week is reported at +$4.33M, including +$8.43M on October 29."
+      ],
+      "disconfirming": [
+        "The weekly net is small relative to reported derivatives open interest and Binance-wide outflows.",
+        "The flow series is secondary-reported and not a direct measure of unhedged XRP demand."
+      ],
+      "status": "WEAK_SUPPORT"
+    },
+    {
+      "id": "M5",
+      "hypothesis": "Positive aggregate funding and long-heavy account ratios imply elevated downside liquidation risk.",
+      "support": [
+        "Positive weighted funding and high long-account share appear in TradRadar's snapshot."
+      ],
+      "disconfirming": [
+        "Bybit and OKX funding are negative in Kodexius.",
+        "Liquidation data is incomplete and account ratios do not measure notional leverage.",
+        "No liquidation-distance distribution or order-book depth was captured."
+      ],
+      "status": "RISK_SCENARIO_NOT_PRICE_FORECAST"
+    }
+  ],
+  "event_study": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "target_series": [
+      "XRP spot returns and realized volatility at 1h, 4h, 1d and 7d",
+      "contract-level OI and funding by exchange and settlement asset",
+      "venue-specific XRP order-book depth, spread and taker imbalance",
+      "Binance tagged XRP reserves and liabilities at synchronized cutoffs",
+      "US XRP ETF daily creations/redemptions",
+      "BTC and ETH controls",
+      "broad risk and rates controls"
+    ],
+    "leakage_controls": [
+      "Keep provider publication time separate from market observation time.",
+      "Do not backfill later reserve proof results into the October 31 snapshot.",
+      "Do not infer spot purchases from replenishment claims.",
+      "Do not average incompatible OI universes.",
+      "Do not treat ETF net flows as unhedged investor conviction.",
+      "Preserve original vendor values and raw contract identifiers."
+    ],
+    "baselines": [
+      "BTC-relative XRP returns",
+      "rolling 30-day XRP volatility",
+      "prior four-week ETF flow baseline",
+      "per-venue OI and funding z-scores using fixed contract universes"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Capture contract-level Binance, Bybit, OKX, Hyperliquid, MEXC, Gate, Bitget and HTX OI at one common UTC cutoff and reconcile venue inclusion.",
+    "Download the Binance October 31 PoR report and execute the public verifier on a controlled, trusted environment before promoting secondary XRP quantities to canonical.",
+    "Compare the November 4 Binance snapshot with October 31 and record liability/reserve changes by asset.",
+    "Measure Binance XRP spot depth and volume around the October 29 incident and November 1 reopening.",
+    "Capture Circle Q3 results on November 4 and reconcile USDC distribution economics with Coinbase's Q3 filing.",
+    "Keep forecast issuance blocked until immutable fixed-horizon evaluation and trusted attestation are implemented."
+  ],
+  "source_records": [
+    {
+      "id": "binance-recovery-update-5-20261102",
+      "publisher": "Binance",
+      "source_type": "official_exchange_statement",
+      "url": "https://www.binance.com/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f",
+      "published_at_utc": "2026-11-02T12:45:00Z",
+      "observation": "Officially states the October 31 00:00 UTC snapshot covers ten assets including XRP, all at minimum 1:1, and the full ZK proof is generated; approximately 95% of impacted amount covered."
+    },
+    {
+      "id": "binance-por-methodology",
+      "publisher": "Binance",
+      "source_type": "official_methodology",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "observation": "Describes Merkle-tree inclusion proofs, zk-SNARK aggregate backing proof, wallet ownership verification and account snapshot methodology."
+    },
+    {
+      "id": "binance-xrp-por-secondary",
+      "publisher": "Bitbase News citing U.Today",
+      "source_type": "secondary_republisher",
+      "url": "https://www.bitbase.com/news/binances-25-billion-xrp-audit-logs-crypto-reserves-fully-backed-above-100",
+      "observation": "Reports 2,516,373,182 XRP client liabilities, 2,541,393,612 XRP reserves and 100.99% coverage at October 31; not promoted to canonical without direct report extraction."
+    },
+    {
+      "id": "kodexius-xrp-20261102-2219",
+      "publisher": "Kodexius",
+      "source_type": "market_data_aggregator",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "observed_at_utc": "2026-11-02T22:19:00Z",
+      "observation": "Seven contracts; $808.65M OI; $1.19B 24h volume; +0.0047% OI-weighted funding per 8h; venue and contract breakdown."
+    },
+    {
+      "id": "tradRadar-xrp-20261102-1245",
+      "publisher": "TradRadar",
+      "source_type": "market_data_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-02T12:45:00Z",
+      "observation": "Seven exchanges; $1.93B OI; +2.0% 24h OI; +0.0075% weighted funding per 8h; 3.55 long/short account ratio; 78% long accounts."
+    },
+    {
+      "id": "investin-xrp-etf-timeline-20261102",
+      "publisher": "InvestIn.News summarizing SoSoValue",
+      "source_type": "secondary_market_data_timeline",
+      "url": "https://investin.news/newsfeeds/story/us-spot-xrp-etf-inflows-eed6",
+      "observation": "Reports +$8.43M daily net ETF flow on October 29 and +$4.33M weekly net flow for October 26-30."
+    },
+    {
+      "id": "reuters-binance-outflows-20261102",
+      "publisher": "Reuters",
+      "source_type": "independent_media_report",
+      "url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+      "observation": "Reports $4.72B net Binance customer outflows after reopening, approximately 3% of platform assets; Binance-reported $2.7B inflows since Sunday; Circle's later >$1.1B USDC freeze statement."
+    }
+  ],
+  "arithmetic_checks": {
+    "tradradar_exchange_oi_sum_usd": 1926350000.0000002,
+    "kodexius_exchange_oi_sum_usd": 808650000,
+    "oi_ratio": 2.3866938725035554,
+    "reserve_coverage_pct": 100.99430522384259,
+    "reserve_surplus_xrp": 25020430,
+    "october_liability_growth_xrp": 20839505
+  },
+  "provenance_note": "The official Binance statement verifies the 1:1 claim for XRP but does not publish the aggregate XRP quantity in the announcement. The secondary numerical PoR figures remain non-canonical. Market-data aggregators use different observation times and contract universes; no combined OI total is asserted."
+}
