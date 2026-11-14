@@ -10,6 +10,17 @@ function clientAllowed(request) {
   const now = Date.now();
   const entry = clients.get(ip);
 
+  // Evict stale entries so the Map cannot grow without bound across a
+  // long-lived isolate (otherwise one entry per unique IP per window stays
+  // in memory forever). Sweep only when large: O(n) amortized to ~nothing.
+  if (clients.size >= 1024) {
+    for (const [key, value] of clients) {
+      if (now - value.started >= RATE_WINDOW_MS) {
+        clients.delete(key);
+      }
+    }
+  }
+
   if (!entry || now - entry.started >= RATE_WINDOW_MS) {
     clients.set(ip, { started: now, count: 1 });
     return true;
