@@ -38,9 +38,20 @@ def test_related_sbi_domains_share_one_publisher_group():
     assert canonical_publisher_group("https://www.sbivc.co.jp/") == "sbi-group"
 
 
-def test_tokyo_sbic_is_not_misclassified_as_sbi_holdings():
-    assert canonical_publisher_group("https://www.sbic.co.jp/company/") == "sbic.co.jp"
-    assert canonical_publisher_group("https://www.sbic.co.jp/company/") != "sbi-group"
+def test_regional_sbic_east_central_west_are_not_misclassified_as_sbi_holdings():
+    regional_domains = {
+        "https://www.sbic.co.jp/company/": "sbic.co.jp",
+        "https://www.sbic-cj.co.jp/company/": "sbic-cj.co.jp",
+        "https://www.sbic-wj.co.jp/profiles/profile/": "sbic-wj.co.jp",
+    }
+    publisher_groups = {
+        canonical_publisher_group(url) for url in regional_domains
+    }
+
+    assert publisher_groups == set(regional_domains.values())
+    assert "sbi-group" not in publisher_groups
+    for url, expected_group in regional_domains.items():
+        assert canonical_publisher_group(url) == expected_group
 
 
 def test_same_publisher_cannot_be_split_into_multiple_declared_groups():
