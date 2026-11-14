@@ -54,7 +54,7 @@ def test_cross_analysis_remains_available_but_is_read_only() -> None:
 
     assert "contents: read" in lowered
     assert "persist-credentials: false" in lowered
-    assert "actions/upload-artifact@v4" in lowered
+    assert "actions/upload-artifact@v7" in lowered
     assert "retention-days: 30" in lowered
     assert "if-no-files-found: error" in lowered
     assert "conclusion == 'success'" in lowered
