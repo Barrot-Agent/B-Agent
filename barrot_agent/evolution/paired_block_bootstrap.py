@@ -177,6 +177,7 @@ def _source_cluster_interval(
     seed: int,
     confidence_level: float,
     max_gap_multiple: float,
+    expected_cadence_seconds: float | None,
 ) -> tuple[list[float] | None, float, dict[str, Any]]:
     """Resample independent source groups and contiguous time blocks within each."""
     cluster_ids = sorted(clusters)
@@ -195,6 +196,7 @@ def _source_cluster_interval(
             times,
             block_length=block_length,
             max_gap_multiple=max_gap_multiple,
+            expected_cadence_seconds=expected_cadence_seconds,
         )
         cluster_windows[group_id] = windows
         cluster_diagnostics[group_id] = diagnostics
@@ -427,6 +429,7 @@ def evaluate_paired_block_bootstrap(
                 seed=random_seed + model_index * 10 + 3,
                 confidence_level=confidence_level,
                 max_gap_multiple=max_gap_multiple,
+                expected_cadence_seconds=expected_cadence_seconds,
             )
             log_ci, log_cluster_mean, log_diagnostics = _source_cluster_interval(
                 log_clusters,
@@ -435,6 +438,7 @@ def evaluate_paired_block_bootstrap(
                 seed=random_seed + model_index * 10 + 4,
                 confidence_level=confidence_level,
                 max_gap_multiple=max_gap_multiple,
+                expected_cadence_seconds=expected_cadence_seconds,
             )
             if brier_ci is None or log_ci is None:
                 source_clustered = {
