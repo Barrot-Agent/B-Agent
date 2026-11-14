@@ -37,7 +37,62 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last sync: 2026-11-14 (session 2) - full repo audit + repair COMPLETE
+- Last sync: 2026-11-14 (session 3) - PING-PONG REFINEMENT ENGINE shipped:
+  models now refine data dynamically until it can be refined NO FURTHER
+  (a measured fixed point) - this is the new BASELINE of all data processing
+- Test suite: 807 passed, 76% coverage - GREEN (26 new refinement tests)
+- What was built:
+  * barrot_agent/refinement/scoring.py - deterministic quality score
+    (completeness .35 / consistency .30 / specificity .20 / redundancy .15),
+    shape-agnostic, pure/offline. consistency counts per-container
+    case/underscore-variant key conflicts ONLY - sibling list items never
+    conflict (live runs exposed that false-positive; it was fixed)
+  * barrot_agent/refinement/refiners.py - LunaRouteRefiner (live, strict-JSON
+    protocol, reasoning_content fallback, adaptive output budget
+    chars//2+6000 capped 16000, 3-attempt backoff retry on timeouts/429/5xx,
+    one doubled-budget retry when finish_reason=length truncates the JSON)
+    + HeuristicRefiner (deterministic dedupe/normalize, true fixed point,
+    keyless offline fallback)
+  * barrot_agent/refinement/engine.py - the loop: round r = refiner[r%n]
+    REFINES + refiner[(r+1)%n] CRITIQUES, roles swap every round; a rewrite
+    is accepted only if the score does not regress (no silent data loss);
+    TWO independent stop signals -> converged=True:
+      - model_consensus: refiner CONVERGED + critic CONVERGED + no accepted
+        change for `patience` (2) half-rounds
+      - score_plateau: deterministic score flat for 2 consecutive ping
+        halves -> stop regardless of model enthusiasm (kills byte-churn)
+    failed actor hands the paddle to the next model in-pool; only a
+    whole-pool failure stops the run (pool_exhausted); hard cap
+    max_rounds=12; every half-round ledgered to
+    ping-pongings/knowledge-base/refinement_log.jsonl
+  * scripts/pingpong_refine.py - CLI (file/stdin/-o/--offline/--max-rounds/
+    --no-ledger; exit 0 converged, 1 capped, 2 input error)
+  * barrot_agent/__init__.py exports refine_data/refine_json_file/PingPongRefiner/...
+  * PINGPONG_USAGE.md extended: full engine docs + STANDING RULE that new
+    data pipelines route through refine_data instead of ad-hoc cleanups
+- Live-verified on real repo data (merge_conflict_knowledge_summary.json,
+  mmi_recommendations.json) through the LunaRoute pool (glm-5.3-flash,
+  deepseek-4.1-flash, muse-spark-open):
+  * clean data + churny models -> score_plateau stop in 2 rounds (previously
+    churned 11 rounds then died in failure_budget)
+  * model rewrites that REGRESS the measured score are rejected (no
+    corruption, no data loss), plateau then ends the loop
+  * real semantic fixes from models (e.g. Gym->Gymnasium, dropping
+    unsupported success-rate claims) are accepted as non-regressing
+    rewrites and preserved in the ledger notes
+  * TimeoutError + 429s absorbed by retry/backoff; slow model -> in-pool
+    rotation; all-pool failure -> pool_exhausted (graceful)
+- Still open:
+  * echo protocol limit: prompt truncates data at 24000 chars - docs larger
+    than that cannot be fully refined until a patch-based protocol exists
+  * scorer is mechanical: semantic-only improvements measure flat by design
+    (accepted, but they do not reset the plateau - documented tradeoff)
+- Next step: wire refine_data into data_registry write paths so every
+  dataset written to the knowledge base converges through the baseline;
+  optional: nightly GitHub Action that re-refines knowledge-base JSON files
+
+## Session 2 Archive - Full Repo Audit + Repair (2026-11-14)
+- Session 2 sync: full repo audit + repair COMPLETE
 - Test suite: 784 passed, 75.25% coverage - GREEN; wheel builds clean
 - Fixed / Upgraded this session (all committed):
   * 11 broken imports fixed: mcp_orchestrator (7 bare sibling/cross-package
