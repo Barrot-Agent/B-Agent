@@ -137,13 +137,16 @@
       "token_argv": {
         "status": "confirmed_in_validation_paths; prior git-helper attribution corrected",
         "finding": "The single-quoted git -c credential.helper contains literal ${GH_TOKEN}; the parent shell does not interpolate the secret into git argv. The actual exposure was in the preceding curl -H Authorization argument and the Python fallback positional argument.",
-        "correction": "Run134 changes curl validation to pass its config over stdin and changes the Python fallback to read token and repository slug from stdin. A regression test captures child argv for both paths and asserts the sentinel token is absent.",
+        "correction": "curl validation passes its config via stdin; Python fallback reads token and repository slug from stdin; GH_TOKEN is unexported during both validation child processes and re-exported only immediately before the Git credential-helper push, where it is required. Regression tests capture child argv, stdin, environment and output for both validation paths.",
         "files": [
           "scripts/push_with_token.sh",
           "tests/test_push_with_token_security.py"
         ],
         "secrets_rotated": false,
-        "main_unchanged": true
+        "main_unchanged": true,
+        "validation_child_environment_contains_token": false,
+        "git_push_helper_environment_requires_token": true,
+        "test_count": 3
       }
     }
   },

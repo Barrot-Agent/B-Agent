@@ -3543,3 +3543,7 @@ The earlier Run132/Run134 note incorrectly attributed token exposure to the sing
 **Executed fix on integration only:** `scripts/push_with_token.sh` now passes the curl config through stdin and the Python fallback reads token and repository slug from stdin. The single-quoted credential helper remains unchanged. New regression tests capture the child argv and stdin for both validation paths, asserting that the sentinel token is absent from argv and output. No real credential was used, no secret was rotated, and main remains unchanged. This supersedes the earlier incorrect attribution; the broader finding (token present in validation argv before this correction) was real.
 
 The new exact-head full suite, wheel verification, six-manifest dependency audit and fail-closed gate must pass before merge readiness can be reconsidered.
+
+
+### Run134 token-validation environment isolation follow-up
+The token-hardening regression tests now also verify that `GH_TOKEN` is absent from both validation child-process environments, not only their argv. The script uses `export -n GH_TOKEN` during curl/Python validation, passes the token only through stdin, and re-exports it immediately before the Git credential-helper push, where the helper needs it. The test captures argv, stdin, environment and output for both validation paths. This does not rotate or expose any real credential. Main remains unchanged.

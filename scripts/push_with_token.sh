@@ -44,6 +44,8 @@ fi
 
 # Defuse accidental whitespace/newlines from copy-paste.
 GH_TOKEN="${GH_TOKEN//[[:space:]]/}"
+# Keep the token as a shell variable during validation; do not export it to curl/Python.
+export -n GH_TOKEN
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${repo_root}"
@@ -110,6 +112,7 @@ fi
 # 3. Push over HTTPS using a credential helper so the token never appears
 #    in argv, remote URLs, or any file.
 # ---------------------------------------------------------------------------
+export GH_TOKEN
 git -c credential.helper='!f() { echo "username=x-access-token"; echo "password=${GH_TOKEN}"; }; f' \
   push "https://github.com/${REPO_SLUG}.git" "${BRANCH}"
 

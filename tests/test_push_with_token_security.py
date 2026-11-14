@@ -31,6 +31,7 @@ import sys
 Path = __import__("pathlib").Path
 Path(os.environ["CAPTURE_ARGS_PATH"]).write_text(json.dumps(sys.argv[1:]), encoding="utf-8")
 Path(os.environ["CAPTURE_STDIN_PATH"]).write_text(sys.stdin.read(), encoding="utf-8")
+Path(os.environ["CAPTURE_ENV_PATH"]).write_text(os.environ.get("GH_TOKEN", "<missing>"), encoding="utf-8")
 print("200")
 """,
     )
@@ -43,6 +44,7 @@ print("200")
             "PATH": str(bin_dir) + os.pathsep + env.get("PATH", ""),
             "CAPTURE_ARGS_PATH": str(args_path),
             "CAPTURE_STDIN_PATH": str(stdin_path),
+            "CAPTURE_ENV_PATH": str(tmp_path / "curl-env.txt"),
             "GIT_TERMINAL_PROMPT": "0",
             "GIT_PAGER": "cat",
         }
@@ -62,6 +64,7 @@ print("200")
     assert TOKEN not in " ".join(child_args)
     assert child_args[:2] == ["--config", "-"]
     assert f"Authorization: Bearer {TOKEN}" in child_stdin
+    assert (tmp_path / "curl-env.txt").read_text(encoding="utf-8") == "<missing>"
     assert TOKEN not in result.stdout
     assert TOKEN not in result.stderr
 
@@ -85,6 +88,7 @@ import sys
 from pathlib import Path
 Path(os.environ["CAPTURE_ARGS_PATH"]).write_text(json.dumps(sys.argv[1:]), encoding="utf-8")
 Path(os.environ["CAPTURE_STDIN_PATH"]).write_text(sys.stdin.read(), encoding="utf-8")
+Path(os.environ["CAPTURE_ENV_PATH"]).write_text(os.environ.get("GH_TOKEN", "<missing>"), encoding="utf-8")
 print("200")
 """,
     )
@@ -97,6 +101,7 @@ print("200")
             "PATH": str(bin_dir),
             "CAPTURE_ARGS_PATH": str(args_path),
             "CAPTURE_STDIN_PATH": str(stdin_path),
+            "CAPTURE_ENV_PATH": str(tmp_path / "python-env.txt"),
             "GIT_TERMINAL_PROMPT": "0",
             "GIT_PAGER": "cat",
         }
@@ -116,6 +121,7 @@ print("200")
     assert TOKEN not in " ".join(child_args)
     assert child_args[0] == "-c"
     assert TOKEN in child_stdin.splitlines()
+    assert (tmp_path / "python-env.txt").read_text(encoding="utf-8") == "<missing>"
     assert TOKEN not in result.stdout
     assert TOKEN not in result.stderr
 
