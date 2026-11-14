@@ -1,5 +1,5 @@
 Timbaland Futuristic — 90 BPM — C minor
-Source DNA: see producers/ cheat sheet. 24 bars (4.3s). Swing 20%.
+v2 — rendered from tracks/kits/pd (real 808 one-shots + signature samples). 24 bars (64.0s). Swing 20%.
 Section map: intro x4 | verse x8 | hook x8 | outro x4
 
 == INTRO (4 bars) ==
@@ -34,3 +34,8 @@ Section map: intro x4 | verse x8 | hook x8 | outro x4
    38: |--------x-------|
    42: |x-----x---------|
    80: |---------x------|
+
+== V2 PATCHES ==
+  v2 per-layer offsets(ms): 36:0 38:28 39:30 42:12 46:12 62:32 64:32 76:35 77:35 80:30 81:30
+  v2 strange accent: GM 77 on step 7 every 4 bars
+  v2 kick dropout: 'hook' section, every 4th bar

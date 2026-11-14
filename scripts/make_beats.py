@@ -100,6 +100,13 @@ DARKCHILD = dict(
     },
     pads="pad",      # warm pad bed, swells
     strings=True,    # dramatic string swells on hook
+    bass_kind="squelch",   # v2: glide bass via kit squelch sample (patch list #1)
+    harp={           # v2: JV-2080-style RHYTHMIC harp arpeggio (patch list #1) —
+                     # the signature v1 missed; chord-tone arpeggio in rhythm form
+        "hook":  [(0, 0, 2), (2, 1, 2), (4, 2, 2), (6, 3, 2),
+                  (8, 2, 2), (10, 1, 2), (12, 0, 2), (14, 2, 2)],
+        "verse": [(0, 0, 2), (4, 1, 2), (8, 2, 2), (12, 3, 2)],
+    },
     chops={          # staccato vocal-chop surrogate (square lead, chord tones)
         "verse": [(0, 0, 1), (4, 0, 1), (7, 2, 1), (10, 1, 1), (14, 0, 1)],
         "hook":  [(0, 0, 1), (2, 0, 1), (4, 2, 1), (7, 3, 1), (10, 2, 1), (12, 0, 1), (14, 1, 1)],
@@ -136,6 +143,11 @@ TIMBALAND = dict(
         "verse": [(7, 4, 1), (15, 5, 1)],
         "hook": [(4, 5, 1), (9, 6, 1), (15, 5, 1)],
     },
+    # v2 patches (patch list #2): per-layer timing — kick rigid, percussion late
+    offsets_ms={K: 0, SN: 28, CL: 30, CH: 12, OH: 12, WB_H: 35, WB_L: 35,
+                TR_M: 30, TR_O: 30, CG1: 32, CG2: 32},
+    strange_accent=(WB_L, 7, 112, 4),   # one strange accent every 4th bar
+    kick_dropout=("hook", 4),           # mute kick on every 4th hook bar
 )
 
 MISSY = dict(
@@ -166,6 +178,16 @@ MISSY = dict(
         "verse": [(13, 6, 1)],
         "hook": [(6, 5, 1), (13, 7, 1)],
     },
+    # v1 BUG FIX: the "pluck" layer key was absent from both render/MIDI mapping
+    # lists — the kalimba/"reverse tabla" hook never actually sounded in v1.
+    # v2 patches (patch list #3): pluck -> tumbi kit sample (bhangra DNA),
+    # go-go call-and-response answer phrase, chant test pending user ears.
+    layer_kinds={"pluck": "tumbi"},
+    resp={   # answer phrase — call (pluck, first half) / response (second half)
+        "hook": [(8, 3, 2), (11, 2, 2), (14, 4, 1)],
+        "verse": [(8, 2, 2)],
+    },
+    chant_test=True,   # hook must be shoutable back — USER must verify
 )
 
 BLACK_COFFEE = dict(
@@ -175,22 +197,22 @@ BLACK_COFFEE = dict(
     sections=[("intro", 8), ("groove", 8), ("main", 8), ("outro", 4)],
     drums={
         "groove": {K: v([0, 4, 8, 12], 112, {0: 124}), OH: v([2, 6, 10, 14], 74),
-                   SH: v(range(16), 48, {0: 66, 4: 66, 8: 66, 12: 66}),
+                   SH: v(range(16), 48, {0: 66, 4: 66, 8: 66, 12: 66, 15: 92}),
                    CG1: v([3, 6, 9, 13], 82, {9: 96}), CL: v([8], 88)},
         "main": {K: v([0, 4, 8, 12], 118, {0: 127}), OH: v([2, 6, 10, 14], 78),
-                 SH: v(range(16), 56, {2: 72, 6: 72, 10: 72, 14: 72}),
+                 SH: v(range(16), 56, {2: 72, 6: 72, 10: 72, 14: 72, 15: 96}),
                  CG1: v([3, 6, 9, 12, 13], 88, {9: 104}), CG2: v([5, 11], 76),
                  CL: v([8], 94), CB: v([14], 70)},
         "intro": {SH: v(range(16), 44, {2: 62, 10: 62}), CG1: v([3, 9], 66)},
         "outro": {SH: v(range(16), 44), K: v([0, 8], 90), CG1: v([3, 9], 70)},
     },
-    bass={   # warm off-beat roller between the kicks
-        "groove": [(2, 0, 2), (6, 0, 2), (10, 0, 2), (14, 7, 2)],
-        "main": [(2, 0, 1), (4, 7, 1), (6, 0, 2), (10, 0, 1), (12, 5, 1), (14, 7, 2)],
+    bass={   # v2 (patch list #4): STATIC root-only sub — weight, not rhythm
+        "groove": [(0, 0, 16)],
+        "main": [(0, 0, 16)],
     },
     pads="soul",     # jazzy maj9/m9 soulful pads
     strings=False,
-    log={    # low kalimba = log-drum answers
+    log={    # low kalimba = log-drum answers (v2: kit logdrum samples)
         "groove": [(0, 0, 2), (8, 0, 2)],
         "main": [(0, 0, 2), (5, 2, 1), (8, 0, 2), (11, 1, 1)],
     },
@@ -198,6 +220,16 @@ BLACK_COFFEE = dict(
         "main": [(0, 2, 1), (2, 3, 1), (4, 2, 1), (6, 1, 1), (8, 2, 1), (10, 3, 1),
                  (12, 4, 1), (14, 3, 1)],
     },
+    # v2 patches (patch list #4): dual foundation — tom loop UNDER the kick
+    # (80 Hz high-cut + sidechain duck), bar-end shaker anticipation,
+    # noise-tail shaker build into the drop, ambient texture bed.
+    bass_kind="sub",
+    tomloop={
+        "groove": [(3, 86), (6, 72), (10, 86), (13, 72)],
+        "main": [(3, 92), (6, 78), (10, 92), (13, 78), (11, 72)],
+    },
+    noise_build=True,     # last intro bar: shaker velocity ramp + rising swell
+    ambient_bed=True,     # filtered noise + root-pitched drone under everything
 )
 
 SOCA = dict(
@@ -206,12 +238,13 @@ SOCA = dict(
     prog=[("A", "maj"), ("D", "maj"), ("F#", "min"), ("E", "maj")],
     sections=[("intro", 4), ("verse", 8), ("hook", 8), ("outro", 4)],
     drums={
-        "verse": {K: v([0, 3, 8, 11], 116, {0: 127}), SN: v([4, 12], 106),
+        "verse": {K: v([0, 3, 8, 11], 116, {0: 127}), SN: v([4, 6, 12], 106, {6: 98}),
                   SH: v(range(16), 52, {2: 70, 10: 70}), TB: v([4, 12], 72),
                   CG1: v([6, 14], 78)},
-        "hook": {K: v([0, 3, 7, 8, 11, 14], 120, {0: 127}), SN: v([4, 12], 112),
+        "hook": {K: v([0, 3, 7, 8, 11, 14], 120, {0: 127}), SN: v([4, 6, 12], 112, {6: 104}),
                  CL: v([12], 86), SH: v(range(16), 58, {2: 74, 6: 74, 10: 74, 14: 74}),
-                 TB: v([4, 12], 80), CB: v([7], 84), CG1: v([5, 9, 13], 86, {9: 100})},
+                 TB: v([4, 12], 80), CB: v([7], 84), CG1: v([5, 9, 13], 86, {9: 100}),
+                 CG2: v([7, 15], 78)},
         "intro": {K: v([0, 8], 100), SH: v(range(16), 48, {2: 66}), TB: v([4, 12], 66),
                   CG1: v([6], 72)},
         "outro": {K: v([0, 3, 8, 11], 104), SN: v([12], 96), SH: v(range(16), 50)},
@@ -225,11 +258,16 @@ SOCA = dict(
     brass={  # brass stabs on the drop
         "hook": [(0, 0, 2), (8, 0, 2)],
     },
-    melody={  # steelpan surrogate (marimba) — call (bar A) / response (bar B)
+    melody={  # steelpan (v2: kit samples) — call (bar A) / response (bar B)
         "hook": [(0, 0, 1), (2, 2, 1), (3, 3, 1), (6, 2, 1), (8, 4, 1), (10, 3, 1),
                  (11, 2, 1), (14, 0, 1)],
         "verse": [(0, 0, 1), (3, 2, 1), (6, 3, 1), (11, 2, 1)],
     },
+    # v2 patches (patch list #5): explicit 3-2 son clave across a 2-bar cycle
+    # (16th steps: bar A tresillo 0/6/12, bar B 2-side at 20/24 = 8th-beats 2+4
+    # of bar B), played on the rimshot; melody -> steelpan kit samples.
+    layer_kinds={"melody": "steelpan"},
+    clave=[0, 6, 12, 20, 24],
 )
 
 TRACKS = [DARKCHILD, TIMBALAND, MISSY, BLACK_COFFEE, SOCA]
@@ -260,11 +298,16 @@ def build_midi(cfg):
     bass = pretty_midi.Instrument(program=38, name="bass")
     pad_i = pretty_midi.Instrument(program=89 if cfg.get("pads") == "soul" else 48,
                                    name="pad/strings")
-    plk = pretty_midi.Instrument(program=12, name="steelpan/marimba pluck")
+    lk = cfg.get("layer_kinds", {})
+    plk = pretty_midi.Instrument(
+        program=54 if lk.get("melody") == "steelpan"
+        else (108 if lk.get("pluck") == "tumbi" else 12),
+        name="steelpan/marimba/tumbi pluck")
     kal = pretty_midi.Instrument(program=108, name="log/kalimba")
     lead = pretty_midi.Instrument(program=80, name="lead/chops")
     zap = pretty_midi.Instrument(program=82, name="blip/zap")
     brass = pretty_midi.Instrument(program=62, name="brass stab")
+    harp_i = pretty_midi.Instrument(program=46, name="harp arpeggio (v2)")
 
     def add(inst, pitch, start, dur, vel):
         inst.notes.append(pretty_midi.Note(velocity=int(max(1, min(127, vel))),
@@ -282,8 +325,26 @@ def build_midi(cfg):
             croot = midi_of(chord[0], 2)
             dr = cfg["drums"].get(label, cfg["drums"].get("verse", {}))
             for gm, velmap in dr.items():
+                if gm == K and cfg.get("kick_dropout"):
+                    sec, every = cfg["kick_dropout"]
+                    if label == sec and b % every == every - 1:
+                        continue               # v2: kick-dropout bar
+                off = (cfg.get("offsets_ms") or {}).get(gm, 0) / 1000.0
                 for step, vel in velmap.items():
-                    add(drums, gm, t_of(bar, step), 0.12 if gm not in (K,) else 0.3, vel)
+                    add(drums, gm, t_of(bar, step) + off,
+                        0.12 if gm not in (K,) else 0.3, vel)
+            sa = cfg.get("strange_accent")
+            if sa and bar % sa[3] == sa[3] - 1:      # v2: strange accent
+                add(drums, sa[0], t_of(bar, sa[1]), 0.12, sa[2])
+            if cfg.get("clave"):                # v2: explicit 3-2 son clave
+                base_st = (bar % 2) * 16
+                for st in cfg["clave"]:
+                    if base_st <= st < base_st + 16:
+                        add(drums, KL, t_of(bar, st - base_st), 0.12, 104)
+            tl = (cfg.get("tomloop") or {}).get(label)  # v2: tom loop
+            if tl:
+                for step, vel in tl:
+                    add(drums, 45, t_of(bar, step), 0.2, vel)
             bp = cfg["bass"].get(label)
             if bp:
                 for step, d, ln in bp:
@@ -301,8 +362,9 @@ def build_midi(cfg):
                             add(pad_i, nn + 12, start, dur, 56)
             for key_name, inst, oct_shift in (("chops", lead, 1), ("lead", lead, 2),
                                               ("melody", plk, 2), ("plk", plk, 2),
-                                              ("log", kal, 1), ("blip", zap, 3),
-                                              ("brass", brass, 2)):
+                                              ("pluck", plk, 2), ("harp", harp_i, 1),
+                                              ("resp", kal, 2), ("log", kal, 1),
+                                              ("blip", zap, 3), ("brass", brass, 2)):
                 m = (cfg.get(key_name) or {}).get(label)
                 if not m:
                     continue
@@ -312,7 +374,7 @@ def build_midi(cfg):
                     add(inst, pitch, t_of(bar, step), s16 * ln * 0.95, 96 if step in (0, 8) else 84)
             bar += 1
 
-    pm.instruments.extend([drums, bass, pad_i, plk, kal, lead, zap, brass])
+    pm.instruments.extend([drums, bass, pad_i, plk, kal, lead, zap, brass, harp_i])
     return pm, total_bars
 
 
@@ -419,6 +481,17 @@ def synth_mel(pitch, vel, dur, kind):
     elif kind == "log":
         fenv = np.linspace(f * 1.3, f * 0.9, n)
         out = np.sin(2 * np.pi * np.cumsum(fenv) / SR) * _env(n, 0.002, 0.09)
+    elif kind == "sub":   # v2: static root-only sub — weight, not rhythm
+        att = min(n, int(0.025 * SR))
+        e = np.ones(n)
+        e[:att] = np.linspace(0, 1, att)
+        rel = min(n - att, int(0.06 * SR))
+        if rel > 0:
+            e[-rel:] *= np.linspace(1, 0, rel)
+        f = f / 2.0      # v1 bass register (sub octave)
+        ph = 2 * np.pi * f * t
+        out = (np.sin(ph) + 0.3 * np.sin(2 * ph)) * e
+        out = np.tanh(out * 1.3) * 0.85
     elif kind == "brass":
         out = sum(np.sin(2 * np.pi * f * (i + 1) * t) / (i + 1) for i in range(6))
         out *= _env(n, 0.01, dur * 0.5)
@@ -439,6 +512,121 @@ def synth_mel(pitch, vel, dur, kind):
 
 PAN = {CH: 0.25, OH: 0.25, SH: -0.3, TB: 0.2, TR_M: -0.2, TR_O: -0.2,
        CG1: 0.15, CG2: -0.15, WB_H: 0.2, WB_L: -0.2, KL: -0.25, RD: 0.3}
+
+
+# ------------------------------------------------------------------- v2 kit
+# tracks/kits/pd: 15 public-domain TR-808/808-mini one-shots (smpldsnds,
+# license-verified) + 9 synthesized signature sounds. See kits/pd/README.md.
+KIT_DIR = REPO / "tracks" / "kits" / "pd"
+# GM drum note -> (full-velocity sample, soft sample, velocity threshold).
+# Soft/ghost variants mirror the TR-808's own velocity ladder (bd0000..bd1000).
+KIT_DRUMS = {
+    K: ("kick_808.wav", "kick_808_soft.wav", 78),
+    SN: ("snare_808.wav", "snare_808_ghost.wav", 80),
+    CL: ("clap_808.wav", None, 0),
+    CH: ("hihat_closed_808.wav", None, 0),
+    OH: ("hihat_open_808.wav", None, 0),
+    SH: ("maraca_808.wav", None, 0),
+    CG1: ("conga_low_808.wav", None, 0),
+    CG2: ("conga_mid_808.wav", None, 0),
+    TB: ("rimshot_808.wav", None, 0),        # dembow rim
+    KL: ("rimshot_808.wav", None, 0),        # son clave voice
+    CB: ("cowbell_808.wav", None, 0),
+    45: ("tom_mid_808.wav", None, 0),        # tom-loop voice (afro house)
+}
+# melodic one-shots: kind -> (sample, fundamental Hz of the sample as built)
+KIT_MELODIC = {
+    "harp": ("harp_F4.wav", 349.23),
+    "tumbi": ("tumbi_D5.wav", 587.33),
+    "steelpan": ("steelpan_C5.wav", 523.25),
+    "squelch": ("squelch_F1.wav", 87.31),
+    "log": ("logdrum_C.wav", 130.81),
+}
+# synth fallback per sample kind, if the kit file is missing
+KIND_FALLBACK = {"harp": "lead", "tumbi": "pluck", "steelpan": "pluck",
+                 "squelch": "bass", "log": "log"}
+
+_KIT_CACHE = {}
+
+
+def kit_sample(name, hp_hz=0.0):
+    """Load a kit one-shot (cached, resampled to SR). Optional 2nd-order HP."""
+    key = name if hp_hz <= 0 else f"{name}@{hp_hz}"
+    if key in _KIT_CACHE:
+        return _KIT_CACHE[key]
+    import soundfile as sf
+
+    sig = None
+    path = KIT_DIR / name
+    if path.is_file():
+        d, sr = sf.read(str(path))
+        if d.ndim > 1:
+            d = d.mean(axis=1)
+        if sr != SR:
+            x = np.linspace(0, len(d) - 1, int(len(d) * SR / sr))
+            i0 = x.astype(int)
+            i1 = np.minimum(i0 + 1, len(d) - 1)
+            d = d[i0] * (1 - (x - i0)) + d[i1] * (x - i0)
+        if hp_hz > 0:
+            from scipy.signal import butter, sosfilt
+
+            sos = butter(2, hp_hz, "hp", fs=SR, output="sos")
+            d = sosfilt(sos, d)
+        sig = d.astype(np.float32)
+    _KIT_CACHE[key] = sig
+    return sig
+
+
+def pitch_shift(sig, ratio):
+    """ratio > 1 raises pitch (shortens). Linear-interp resample, one-shots only."""
+    if abs(ratio - 1.0) < 1e-3 or len(sig) < 8:
+        return sig
+    x = np.linspace(0, len(sig) - 1, max(8, int(len(sig) / ratio)))
+    i0 = x.astype(int)
+    i1 = np.minimum(i0 + 1, len(sig) - 1)
+    fr = x - i0
+    return (sig[i0] * (1 - fr) + sig[i1] * fr).astype(np.float32)
+
+
+def kit_drum(gm, vel):
+    """Kit one-shot for a GM drum voice at this velocity, or None -> synth."""
+    entry = KIT_DRUMS.get(gm)
+    if not entry:
+        return None
+    full, soft, soft_below = entry
+    sig = kit_sample(soft if (soft and vel < soft_below) else full)
+    if sig is None:
+        return None
+    return (sig * (vel / 127.0)).astype(np.float32)
+
+
+def fit_len(sig, dur):
+    """Truncate to dur with a short fade (bass must end on the grid)."""
+    n = int(dur * SR)
+    if n >= len(sig):
+        return sig
+    out = sig[:n].copy()
+    f = min(len(out), int(0.012 * SR))
+    if f > 0:
+        out[-f:] *= np.linspace(1.0, 0.0, f)
+    return out
+
+
+def sample_mel(kind, pitch, vel, dur):
+    """Melodic kit one-shot resampled to pitch. None -> caller falls back."""
+    entry = KIT_MELODIC.get(kind)
+    if not entry:
+        return None
+    sig = kit_sample(entry[0])
+    if sig is None:
+        return None
+    f = 440.0 * 2 ** ((pitch - 69) / 12)
+    if kind == "squelch":
+        f = f / 2.0                                # match the v1 bass register
+        sig = fit_len(pitch_shift(sig, f / entry[1]), dur)
+    else:
+        sig = pitch_shift(sig, f / entry[1])       # plucks ring free
+    return (sig * (vel / 127.0)).astype(np.float32)
 
 
 def render_wav(cfg, path):
@@ -477,15 +665,70 @@ def render_wav(cfg, path):
             croot = midi_of(chord[0], 2)
             dr = cfg["drums"].get(label, cfg["drums"].get("verse", {}))
             for gm, velmap in dr.items():
+                if gm == K and cfg.get("kick_dropout"):
+                    sec, every = cfg["kick_dropout"]
+                    if label == sec and b % every == every - 1:
+                        continue               # v2: kick-dropout bar
+                off = (cfg.get("offsets_ms") or {}).get(gm, 0) / 1000.0
                 for step, vel in velmap.items():
                     dur = 0.35 if gm == K else (0.5 if gm == RD else 0.28)
-                    sig = synth_drum(gm, vel, dur)
-                    place((L, R), sig, t_of(bar, step), PAN.get(gm, 0.0))
+                    sig = kit_drum(gm, vel)     # v2: real 808 one-shots first
+                    if sig is None:
+                        sig = synth_drum(gm, vel, dur)
+                    place((L, R), sig, t_of(bar, step) + off, PAN.get(gm, 0.0))
+            sa = cfg.get("strange_accent")
+            if sa and bar % sa[3] == sa[3] - 1:      # v2: strange accent, every 4th bar
+                gm_a, step_a, vel_a = sa[0], sa[1], sa[2]
+                off = (cfg.get("offsets_ms") or {}).get(gm_a, 0) / 1000.0
+                sig = kit_drum(gm_a, vel_a)
+                if sig is None:
+                    sig = synth_drum(gm_a, vel_a, 0.28)
+                place((L, R), sig, t_of(bar, step_a) + off, PAN.get(gm_a, 0.0))
+            clave = cfg.get("clave")            # v2: explicit 3-2 son clave, 2-bar cycle
+            if clave:
+                base_st = (bar % 2) * 16
+                for st in clave:
+                    if base_st <= st < base_st + 16:
+                        sig = kit_drum(KL, 104)
+                        if sig is None:
+                            sig = synth_drum(KL, 104, 0.28)
+                        place((L, R), sig, t_of(bar, st - base_st), PAN.get(KL, 0.0))
+            tl = (cfg.get("tomloop") or {}).get(label)  # v2: tom loop under the kick
+            if tl:
+                ktimes = [t_of(bar, s) for s in dr.get(K, {})]
+                for step, vel in tl:
+                    t0 = t_of(bar, step)
+                    dist = min((abs(t0 - kt) for kt in ktimes), default=1.0)
+                    duck = min(1.0, 0.35 + 0.65 * min(1.0, dist / 0.09))
+                    sig = kit_sample("tom_mid_808.wav", hp_hz=80)
+                    if sig is None:
+                        sig = synth_drum(45, vel, 0.28)
+                    else:
+                        sig = (sig * (vel / 127.0) * duck).astype(np.float32)
+                    place((L, R), sig, t0, 0.0)
+            if cfg.get("noise_build") and label == "intro" and b == n_bars - 1:
+                # v2: shaker velocity ramp + rising noise swell into the drop
+                for i in range(16):
+                    vel_b = 40 + int(50 * i / 15)
+                    sig = kit_drum(SH, vel_b)
+                    if sig is None:
+                        sig = synth_drum(SH, vel_b, 0.28)
+                    place((L, R), sig, t_of(bar, i), PAN.get(SH, 0.0))
+                nn = int(16 * s16 * SR)
+                sw = np.random.randn(nn).astype(np.float32)
+                sw = np.convolve(sw, np.ones(10) / 10, "same")
+                sw *= np.linspace(0.0, 1.0, nn) ** 2.5
+                place((L, R), sw * 0.5, t_of(bar, 0), 0.0)
             bp = cfg["bass"].get(label)
             if bp:
+                bkind = cfg.get("bass_kind", "bass")
                 for step, d, ln in bp:
                     pitch = croot + d
-                    sig = synth_mel(pitch, 108 if step == 0 else 92, s16 * ln, "bass")
+                    vel_b = 108 if step == 0 else 92
+                    sig = sample_mel(bkind, pitch, vel_b, s16 * ln)
+                    if sig is None:
+                        sig = synth_mel(pitch, vel_b, s16 * ln,
+                                        "sub" if bkind == "sub" else "bass")
                     place((L, R), sig, t_of(bar, step), -0.05)
             if label in ("intro", "outro") or cfg.get("pads") or cfg.get("strings"):
                 notes = [croot + 12 + iv for iv in CHORDS[chord[1]]]
@@ -497,9 +740,15 @@ def render_wav(cfg, path):
                 if label == "hook" and (cfg.get("strings") or cfg.get("pads")):
                     for nn in notes:
                         place((L, R), synth_mel(nn + 12, 46, dur, "pad"), start, -0.15)
+            kind_of = cfg.get("layer_kinds", {})
             for key_name, kind, oct_shift in (("chops", "lead", 1), ("lead", "lead", 2),
-                                              ("melody", "pluck", 2), ("plk", "pluck", 2),
-                                              ("log", "log", 1), ("blip", "zap", 3),
+                                              ("melody", kind_of.get("melody", "pluck"), 2),
+                                              ("plk", "pluck", 2),
+                                              ("pluck", kind_of.get("pluck", "pluck"), 2),
+                                              ("harp", "harp", 1),
+                                              ("resp", kind_of.get("resp", "pluck"), 2),
+                                              ("log", kind_of.get("log", "log"), 1),
+                                              ("blip", "zap", 3),
                                               ("brass", "brass", 2)):
                 m = (cfg.get(key_name) or {}).get(label)
                 if not m:
@@ -507,10 +756,30 @@ def render_wav(cfg, path):
                 pent = PENT_MAJ if is_major else PENT_MIN
                 for step, d, ln in m:
                     pitch = deg(midi_of(chord[0], 3 + oct_shift - 1), pent, d)
-                    place((L, R), synth_mel(pitch, 96 if step in (0, 8) else 84,
-                                            s16 * ln * 0.95, kind),
-                          t_of(bar, step), 0.2 if key_name in ("melody", "plk") else 0.0)
+                    vel_m = 96 if step in (0, 8) else 84
+                    sig = sample_mel(kind, pitch, vel_m, s16 * ln * 0.95)
+                    if sig is None:
+                        sig = synth_mel(pitch, vel_m, s16 * ln * 0.95,
+                                        KIND_FALLBACK.get(kind, kind))
+                    place((L, R), sig, t_of(bar, step),
+                          0.2 if key_name in ("melody", "plk", "pluck", "resp") else 0.0)
             bar += 1
+
+    if cfg.get("ambient_bed"):
+        # v2: filtered noise + root-pitched drone, far below the groove
+        rng = np.random.default_rng(4)
+        noise = rng.normal(0, 1, length).astype(np.float32)
+        noise = np.convolve(noise, np.ones(64) / 64, "same")
+        noise /= max(1e-9, np.abs(noise).max())
+        rf = 440.0 * 2 ** ((midi_of(cfg["key"][0], 1) - 69) / 12)
+        tb = np.arange(length) / SR
+        drone = (np.sin(2 * np.pi * rf * tb)
+                 + 0.4 * np.sin(2 * np.pi * 2 * rf * tb))
+        drone *= 0.5 + 0.5 * np.sin(2 * np.pi * 0.05 * tb)
+        drone /= max(1e-9, np.abs(drone).max())
+        bed = 0.012 * noise + 0.02 * drone
+        L += bed
+        R += bed
 
     mix = np.stack([L, R], axis=1)
     mix = np.tanh(mix * 1.15) * 0.92       # gentle glue/limiter
@@ -527,8 +796,9 @@ def render_wav(cfg, path):
 def write_pattern_txt(cfg, path, total_bars):
     spb = 60.0 / cfg["bpm"]
     lines = [f"{cfg['title']} — {cfg['bpm']} BPM — {cfg['key'][0]} {cfg['key'][1]}",
-             f"Source DNA: see producers/ cheat sheet. {total_bars} bars "
-             f"({total_bars * 16 * spb / 60:.1f}s). Swing {int(cfg['swing'] * 100)}%.",
+             "v2 — rendered from tracks/kits/pd (real 808 one-shots + signature "
+             f"samples). {total_bars} bars ({total_bars * 4 * spb:.1f}s). "
+             f"Swing {int(cfg['swing'] * 100)}%.",
              "Section map: " + " | ".join(f"{l} x{n}" for l, n in cfg["sections"]), ""]
     for label, n in cfg["sections"]:
         lines.append(f"== {label.upper()} ({n} bars) ==")
@@ -542,6 +812,56 @@ def write_pattern_txt(cfg, path, total_bars):
             for step, d, ln in bp:
                 grid[step] = "R" if d == 0 else ("O" if d == 12 else "5" if d == 7 else "d")
             lines.append(f"  bas: |{''.join(grid)}|")
+        tl = (cfg.get("tomloop") or {}).get(label)
+        if tl:
+            grid = ["-"] * 16
+            for step, vel in tl:
+                grid[step] = "T"
+            lines.append(f"  tml: |{''.join(grid)}|  (80Hz-cut, ducked vs kick)")
+        hp = (cfg.get("harp") or {}).get(label)
+        if hp:
+            grid = ["-"] * 16
+            for step, d, ln in hp:
+                grid[step] = "h"
+            lines.append(f"  hrp: |{''.join(grid)}|  (rhythmic harp arpeggio)")
+        lines.append("")
+    v2 = []
+    if cfg.get("offsets_ms"):
+        v2.append("v2 per-layer offsets(ms): " + " ".join(
+            f"{g}:{o}" for g, o in sorted(cfg["offsets_ms"].items(), key=lambda x: str(x[0]))))
+    if cfg.get("strange_accent"):
+        sa = cfg["strange_accent"]
+        v2.append(f"v2 strange accent: GM {sa[0]} on step {sa[1]} every {sa[3]} bars")
+    if cfg.get("kick_dropout"):
+        sec, every = cfg["kick_dropout"]
+        v2.append(f"v2 kick dropout: '{sec}' section, every {every}th bar")
+    if cfg.get("clave"):
+        pos = set()
+        for st in cfg["clave"]:
+            b, s = divmod(st, 16)
+            pos.add((b, s))
+        ga = "".join("X" if (0, s) in pos else "-" for s in range(16))
+        gb = "".join("X" if (1, s) in pos else "-" for s in range(16))
+        v2.append(f"v2 3-2 son clave (rimshot), 2-bar cycle: A |{ga}| B |{gb}|")
+        v2.append("   alignment: 3-side (0/6/12) = tresillo; 2-side on 8th-beats"
+                  " 2+4 of bar B ('and-of-2' family)")
+    if cfg.get("bass_kind") == "sub":
+        v2.append("v2 bass: static root-only sub (sustained, weight not rhythm)")
+    if cfg.get("bass_kind") == "squelch":
+        v2.append("v2 bass: squelch glide (kit sample, portamento + resonant LP)")
+    if cfg.get("layer_kinds"):
+        v2.append("v2 layer kinds: " + ", ".join(f"{k}->{v}" for k, v in cfg["layer_kinds"].items()))
+    if cfg.get("noise_build"):
+        v2.append("v2 intro: shaker velocity ramp + rising noise swell into the drop")
+    if cfg.get("ambient_bed"):
+        v2.append("v2 bed: filtered noise + root-pitched drone (subtle, full length)")
+    if cfg.get("chant_test"):
+        v2.append("CHANT TEST (user verdict pending): is the hook shoutable back?")
+    if cfg.get("harp"):
+        v2.append("v2 harp: rhythmic arpeggio over chord tones (Darkchild signature)")
+    if v2:
+        lines.append("== V2 PATCHES ==")
+        lines.extend(f"  {x}" for x in v2)
         lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
 

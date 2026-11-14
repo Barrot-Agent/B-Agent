@@ -166,3 +166,25 @@
 - Main full-suite run 43649006834 is still in progress; core tests passed. The previous main full-suite run 43648252959 passed 848 tests, one skipped, eight subtests, but it is not exact-head evidence for 0d05b59. Main Pages run 43649006105 failed Liquid parsing at GLOBAL_STATE_MANIFEST.md:6456.
 - Main Barrot Sync run 43649006881 reports success, but its job log shows ModuleNotFoundError: rich, the sync command skipped, and git push || true returned Everything up-to-date. This is a confirmed false-green. Integration keeps automatic sync quarantined.
 - Main branch-protection inspection returns HTTP 403; fallback ruleset 10863829 is disabled; integration is unprotected; CODEOWNERS is self-owned; GitHub connector permissions include admin/maintain/push/pull/triage. PR #1662 remains draft with zero approvals/reviews/threads. NO MERGE.
+
+
+## Main producer v2 rebuild update — preserved from main commit 16ec152
+- v2 rebuild EXECUTED (session 4 cont., user authorized + gave baseline
+  anchor: ALL 5 v1 tracks = 3/10; prediction gap 4 pts logged in ledger):
+  * make_beats.py patched (not rewritten): kit-sample render path
+    (KIT_DRUMS velocity ladder + KIT_MELODIC pitch-shifted one-shots),
+    per-layer offsets (Timbo: kick rigid / percussion +28-35ms), strange
+    accent every 4 bars, kick-dropout hook bars, explicit 3-2 clave,
+    and-of-2 snare accent, static root-only sub, tom-loop (80Hz HP + ducked
+    vs kick), bar-end shaker, noise-build, ambient bed, Darkchild rhythmic
+    harp + squelch bass, Missy tumbi + call-and-response
+  * FIX: v1 Missy "pluck" hook layer was missing from render/MIDI mapping
+    lists - never sounded in v1; now renders (tumbi) - likely part of the 3
+  * evidence: MIDI offsets measured +27.3ms vs 28 spec; clave steps exactly
+    [0,6,12,20,24]; dropout bars verified; sample-vs-synth correlation in
+    rendered WAVs (kick 0.408 vs 0.106, conga 0.342 vs 0.129); all 5
+    spectral centroids shifted (nothing skipped); pattern duration bug fixed
+  * commit 0186c88; ledger tracks/feedback/ledger.jsonl live (2 entries);
+    v2 predictions logged (4-5/10, NOT claiming vocal-ready)
+  * next: user re-scores v2 + kill/keep/change -> gap shrinks or patches; a
+    10-anchor still missing

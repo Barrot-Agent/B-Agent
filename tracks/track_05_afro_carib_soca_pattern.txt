@@ -1,5 +1,5 @@
 Afro-Carib Soca — 110 BPM — A major
-Source DNA: see producers/ cheat sheet. 24 bars (3.5s). Swing 10%.
+v2 — rendered from tracks/kits/pd (real 808 one-shots + signature samples). 24 bars (52.4s). Swing 10%.
 Section map: intro x4 | verse x8 | hook x8 | outro x4
 
 == INTRO (4 bars) ==
@@ -10,7 +10,7 @@ Section map: intro x4 | verse x8 | hook x8 | outro x4
 
 == VERSE (8 bars) ==
    36: |x--x----x--x----|
-   38: |----x-------x---|
+   38: |----x-x-----x---|
    54: |----x-------x---|
    64: |------x-------x-|
    70: |xxxxxxxxxxxxxxxx|
@@ -18,10 +18,11 @@ Section map: intro x4 | verse x8 | hook x8 | outro x4
 
 == HOOK (8 bars) ==
    36: |x--x---xx--x--x-|
-   38: |----x-------x---|
+   38: |----x-x-----x---|
    39: |------------x---|
    54: |----x-------x---|
    56: |-------x--------|
+   62: |-------x-------x|
    64: |-----x---x---x--|
    70: |xxxxxxxxxxxxxxxx|
   bas: |R--O--5-R--R--5-|
@@ -30,3 +31,8 @@ Section map: intro x4 | verse x8 | hook x8 | outro x4
    36: |x--x----x--x----|
    38: |------------x---|
    70: |xxxxxxxxxxxxxxxx|
+
+== V2 PATCHES ==
+  v2 3-2 son clave (rimshot), 2-bar cycle: A |X-----X-----X---| B |----X---X-------|
+     alignment: 3-side (0/6/12) = tresillo; 2-side on 8th-beats 2+4 of bar B ('and-of-2' family)
+  v2 layer kinds: melody->steelpan

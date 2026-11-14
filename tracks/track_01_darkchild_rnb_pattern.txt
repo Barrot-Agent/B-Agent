@@ -1,5 +1,5 @@
 Darkchild R&B — 95 BPM — F minor
-Source DNA: see producers/ cheat sheet. 24 bars (4.0s). Swing 8%.
+v2 — rendered from tracks/kits/pd (real 808 one-shots + signature samples). 24 bars (60.6s). Swing 8%.
 Section map: intro x4 | verse x8 | hook x8 | outro x4
 
 == INTRO (4 bars) ==
@@ -14,6 +14,7 @@ Section map: intro x4 | verse x8 | hook x8 | outro x4
    44: |---------------x|
    46: |--------------x-|
   bas: |R-----R---d---d-|
+  hrp: |h---h---h---h---|  (rhythmic harp arpeggio)
 
 == HOOK (8 bars) ==
    36: |x-----x-x-x-----|
@@ -23,8 +24,13 @@ Section map: intro x4 | verse x8 | hook x8 | outro x4
    46: |-------x-------x|
    51: |--------x-------|
   bas: |R--5--R-R-d---5-|
+  hrp: |h-h-h-h-h-h-h-h-|  (rhythmic harp arpeggio)
 
 == OUTRO (4 bars) ==
    36: |x---------x-----|
    38: |------------x---|
    42: |x---x---x---x---|
+
+== V2 PATCHES ==
+  v2 bass: squelch glide (kit sample, portamento + resonant LP)
+  v2 harp: rhythmic arpeggio over chord tones (Darkchild signature)
