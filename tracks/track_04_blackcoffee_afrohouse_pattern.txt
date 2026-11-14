@@ -1,5 +1,5 @@
 Black Coffee Afro House — 122 BPM — A minor
-Source DNA: see producers/ cheat sheet. 28 bars (3.7s). Swing 0%.
+v2 — rendered from tracks/kits/pd (real 808 one-shots + signature samples). 28 bars (55.1s). Swing 0%.
 Section map: intro x8 | groove x8 | main x8 | outro x4
 
 == INTRO (8 bars) ==
@@ -12,7 +12,8 @@ Section map: intro x8 | groove x8 | main x8 | outro x4
    46: |--x---x---x---x-|
    64: |---x--x--x---x--|
    70: |xxxxxxxxxxxxxxxx|
-  bas: |--R---R---R---5-|
+  bas: |R---------------|
+  tml: |---T--T---T--T--|  (80Hz-cut, ducked vs kick)
 
 == MAIN (8 bars) ==
    36: |x---x---x---x---|
@@ -22,9 +23,15 @@ Section map: intro x8 | groove x8 | main x8 | outro x4
    62: |-----x-----x----|
    64: |---x--x--x--xx--|
    70: |xxxxxxxxxxxxxxxx|
-  bas: |--R-5-R---R-d-5-|
+  bas: |R---------------|
+  tml: |---T--T---TT-T--|  (80Hz-cut, ducked vs kick)
 
 == OUTRO (4 bars) ==
    36: |x-------x-------|
    64: |---x-----x------|
    70: |xxxxxxxxxxxxxxxx|
+
+== V2 PATCHES ==
+  v2 bass: static root-only sub (sustained, weight not rhythm)
+  v2 intro: shaker velocity ramp + rising noise swell into the drop
+  v2 bed: filtered noise + root-pitched drone (subtle, full length)
