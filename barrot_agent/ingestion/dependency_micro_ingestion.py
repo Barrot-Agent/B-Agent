@@ -13,17 +13,15 @@ Barrot's understanding and capabilities. Includes:
 Designed to be fully automated and continuously evolving.
 """
 
-import hashlib
 import json
 import os
-import re
 import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -519,7 +517,6 @@ class DependencyMicroIngestion:
     ) -> List[ArchitectureComponent]:
         """Analyze package architecture"""
         # This is a simplified version. In production, this would use AST analysis
-        components = []
 
         arch_info = {
             "pytorch": [
@@ -862,7 +859,7 @@ class DependencyMicroIngestion:
         # Save taxonomy
         self._save_taxonomy()
 
-        print(f"\n✅ Ingestion complete!")
+        print("\n✅ Ingestion complete!")
         print(f"   Successful: {success_count}")
         print(f"   Failed: {failure_count}")
         print(f"   Duration: {duration:.2f}s")

@@ -19,11 +19,11 @@ if _REPO_ROOT not in sys.path:
 # Attempt to load legacy architecture
 try:
     try:
-        from barrot_agent.agi import agi_orchestrator  # package import
+        from barrot_agent.agi import agi_orchestrator as _agi_orchestrator  # noqa: F401
 
         LEGACY_ACTIVE = True
     except ImportError:
-        import agi_orchestrator  # bare import (repo root on sys.path)
+        import agi_orchestrator as _agi_orchestrator  # noqa: F401
 
         LEGACY_ACTIVE = True
 except ImportError:
