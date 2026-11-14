@@ -3787,3 +3787,62 @@ Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. There is no tra
 ### Forecast and next actions
 - Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action.
 - Next: verify the new exact head's full suite, dependency audit, fail-closed gate and PR-only Jekyll build; add public stablecoin-supply and XRPL-amendment sources to the scheduled ingestion catalog with source-specific parsers and provenance; reconcile RLUSD chain allocation; retain Arc/USDC and XRPL lending status as competing institutional-rail events; keep least-privilege and independent review blockers open.
+
+
+---
+
+## Run136 — 2026-11-14 19:28 UTC
+
+Main is `ef41ea7d8f1d236774c3e593bc6205bf42555351`. Existing integration PR #1662 is open, draft and mergeable according to GitHub's conflict indicator. Its inspected parent head is `194c3673ee9d3bc1ebbdf5125507dd40bdd8585d`, 2,416 commits ahead of main and zero behind.
+
+The PR diff contains 1,207 files (362,328 additions, 5,547 deletions): 667 research, 387 tests, 48 workflows, seven public-web files and 98 other files. Main tree: 1,341 entries/1,236 blobs/87 workflows; integration: 2,408 entries/2,293 blobs/88 workflows. Open PR inventory: 373 total, 361 drafts, 12 non-drafts; 365 based on main and eight on other bases. All 48 current changed workflow files were re-read. No explicit contents, pull-requests or issues write permissions were found in those changed workflows; the earlier 50-workflow audit remains historical.
+
+### Exact-head CI
+
+On parent `194c367`: 3,676 passed, seven failed, eight subtests, 62.84% inclusive coverage, 121.32 seconds. The seven failures are stale current-map assertions: main SHA mismatch; stale tree/workflow counts; PR state uppercase OPEN rather than open; exact-head tested-SHA mismatch; and dependency audit recorded five rather than six manifest groups. No runtime XRP ingestion, feature-store, walk-forward, calibration, drift or forecast-ledger failure was reported.
+
+Core tests passed 742/0 with eight subtests. Six-manifest dependency audit passed with zero known vulnerabilities. Fail-closed gate passed. PR Jekyll validation passed; PR-event core/full-suite jobs were skipped by the integration-branch condition. Previous exact head `f7d990fd3585197d223da01b6534b35a68fe0443` passed 3,682 tests, eight subtests, 62.84% coverage, wheel build and installed mission verification. The Run136 correction updates the snapshot and three test expectations without weakening tests; its own exact-head CI is pending.
+
+Main CI passed 784 tests/eight subtests ([43610729541](https://github.com/Barrot-Agent/B-Agent/actions/runs/43610729541)); main Cross Analysis passed read-only ([43628903346](https://github.com/Barrot-Agent/B-Agent/actions/runs/43628903346)). Main Pages failed Liquid parsing at `GLOBAL_STATE_MANIFEST.md` line 6456 and deploy was skipped ([43610728772](https://github.com/Barrot-Agent/B-Agent/actions/runs/43610728772)). Main Barrot Sync reported success but actual sync skipped because `rich` is missing; wrapper suppressed the error, git push said “Everything up-to-date,” and no external API call, commit or push occurred ([43610729676](https://github.com/Barrot-Agent/B-Agent/actions/runs/43610729676)). Integration quarantines automatic sync.
+
+Main is protected; integration is not. Branch-protection details return HTTP 403. Fallback ruleset 10863829 is disabled. CODEOWNERS is `* @Barrot-Agent`, without independent review. GitHub connector permissions include admin, maintain, push, pull and triage. Automatic Pages publication is not authorized.
+
+### XRP market and positioning
+
+Research cutoff: 2026-11-14 19:28:16 UTC.
+
+| Source | Price | Bid / ask | Provider timestamp |
+|---|---:|---:|---|
+| OKX XRP-USDT | $0.9515 | $0.9513 / $0.9514 | 19:16:55.091 UTC |
+| Kraken XRP-USD | $0.95566 | $0.95558 / $0.95570 | No event timestamp |
+| Bybit XRPUSDT | $0.9558 | $0.9557 / $0.9559 | 19:02:06.653 UTC |
+
+OKX was 680.9 seconds old and Bybit 1,569.3 seconds old; Kraken had no event timestamp. The asynchronous USD/USDT difference is about 0.44%, not executable arbitrage evidence. OKX's 24-hour open/high/low were $1.0253/$1.0297/$0.9457; Bybit reported -6.44% against its own 24-hour reference; Kraken's 24-hour open was $1.00999.
+
+Top-of-book disagreed: OKX showed 63.1% bid-side size; Bybit showed 11.4%. These are single-level, asynchronous observations, not full depth. No multi-level L2, replenishment, cancellation or sweep metrics were admitted. Three ticker response-text SHA-256 receipts are in the Run136 artifact; hashes are not socket-level captures or WORM records.
+
+Liqwall at 19:12 UTC reported about $1.05B OI, +0.8% 24h, -0.0013% funding per eight hours and $24.5M liquidations, $23.8M long-side. TradRadar at 16:45 UTC reported about $1.40B OI, -5.5% 24h, -0.0006% funding and at least $19.75M liquidations, $19.28M long-side. Both show roughly 97% long-side liquidations. Coverage and timestamps differ; do not average or infer direction.
+
+ETF flows disagree by universe: XRP Insights reports +3.40M XRP on November 13 but -6.08M XRP for November 9–13; the daily row is provisional and covers six US spot funds plus BITW. Alpha Finance reports -$1.1M on November 13 and -$581.7K over 30 sessions across five funds. CryptoKeyhole's latest daily holdings date is November 11. Corpstacking reports about 1.399B XRP across ten funds as of November 13, a holdings figure rather than a flow. Do not average.
+
+### XRPL lending, institutions and identities
+
+The independent XRPL dashboard's November 14 08:22 UTC roll call showed 35 validators heard, 29 yes votes required, SingleAssetVault 23, LendingProtocol 22 and LendingProtocolV1_1 22. These were below activation threshold at that snapshot. The official rippled `features.macro` file marks the amendments Supported::Yes; code support does not mean ledger activation.
+
+Ripple Prime's October 15 RWA perpetual-swap service uses Trade.xyz/Hyperliquid, more than 100 reference markets and RLUSD collateral; this is not proof of XRP settlement. Coinbase's October 28 RLUSD support spans Prime, Exchange and retail across XRPL, Base and Ethereum; Global Exchange collateral was a future follow-up. Standard Chartered's RLUSD custody on XRPL is live, with LMAX collateral mirroring planned. Circle Arc mainnet uses USDC as native fee asset and includes SBI Group among founding validators. Ripple's October 27 Robinhood partnership puts RLUSD on Robinhood Chain and Bitstamp. These are institutional stablecoin rails, not automatic XRP demand.
+
+Official profiles identify Tokyo SBIC East Japan, Nagoya SBIC Central Japan and Osaka SBIC West Japan as separate regional SME investment companies, not SBI Holdings. SB OAI Japan GK is separate again: OpenAI 50%, C Holdings 50%; C Holdings is owned 51% by SoftBank Corp. and 49% by SoftBank Group Corp. This is an OpenAI–SoftBank enterprise-AI JV, not an OpenAI–SBI or OpenAI–SBIC partnership.
+
+No new primary evidence was found for a canonical XRPL ASK issuer, a standardized XRP metric called “actual capital,” or an OpenAI–SBIC partnership. Dr. Kamilah Stevenson's person identity remains supported, but candidate YouTube channel ownership is not verified; no new videos were added to the verified inventory.
+
+### Prediction engine and merge decision
+
+Implemented on integration: 50 source definitions (45 hourly, three weekly CFTC, two excluded noncommercial XRPL node sources), 48 scheduled sources, read-only ingestion, SHA-256 receipts, local receipt-chain prototype, SQLite point-in-time store, event/source registry, four baselines, purged/embargoed walk-forward, calibration/PSI drift, policy-v6 uncertainty, fail-closed ledger and Ed25519 evaluator attestation.
+
+Still missing: trained XRP candidate, candidate superiority against all four baselines, independent shadow outcomes, synchronized historical spot/L2/derivatives/exchange-flow/collateral data, independent WORM/trusted timestamp anchoring and successful scheduled ingestion on main.
+
+Nine-platform map: ChatGPT GitHub authenticated but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot no formal approval; Hugging Face previous BUILD_ERROR/no deployment; Kaggle untested/no submission; Databricks previous HTTP 403/no write. No external model dispatch or data transfer occurred.
+
+**Forecast NOT_ISSUED. Accuracy NOT_EVALUATED. NO MERGE.** PR #1662 remains draft with zero independent approvals. Preserve unique source PRs. Do not close path-overlap candidates until successor content is merged and verified on main. Do not merge or deploy while independent review, least privilege, branch protection and Pages publication authorization remain unresolved.
+
+Run136 structured artifact: `research/xrp_intelligence/20261114T192816Z-run136-repository-ci-xrp-market-institutional-reconciliation.json`. This handoff captures parent head `194c367`; exact-head CI on the new correction commit is pending.

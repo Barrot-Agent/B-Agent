@@ -109,9 +109,9 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["integration_ahead_by"] == data["integration_pr"]["ahead_by"]
     assert state["integration_behind_by"] == data["integration_pr"]["behind_by"]
     assert state["changed_files"] == data["integration_pr"]["changed_files"]
-    assert state["workflow_files_changed"] == 50
+    assert state["workflow_files_changed"] == 48
     assert state["non_workflow_paths_changed"] == data["integration_pr"]["other_changed_paths"]
-    assert state["main_tree_entries"] == 1381
+    assert state["main_tree_entries"] == 1341
     assert state["integration_tree_entries"] > state["main_tree_entries"]
     assert state["orbit_paths_in_integration"] is False
     assert state["hf_space_app_py_changed"] is True
@@ -168,7 +168,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
         assert latest["conclusion"] == "failure"
         assert len(latest["failing_tests"]) == suite["failed"]
         assert "exact-head full-suite failed" in latest["failure_classification"].lower()
-    assert ci["dependency_audit"]["manifests"] == 5
+    assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
     assert ci["fail_closed_gate"]["passed"] is True
