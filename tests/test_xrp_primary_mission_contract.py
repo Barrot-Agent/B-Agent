@@ -98,7 +98,7 @@ def test_forecast_admission_policy_matches_fail_closed_ledger() -> None:
     assert policy["minimum_shadow_span_horizons"] == _MIN_HORIZON_MULTIPLE
     assert policy["minimum_independent_source_groups"] == _MIN_SOURCE_GROUPS
     assert policy["minimum_source_clusters"] == _MIN_SOURCE_GROUPS
-    assert policy["minimum_origins_per_source_cluster"] >= 2
+    assert policy["minimum_origins_per_source_cluster"] >= policy["block_length_origins"]
     assert policy["paired_uncertainty_method"] == "paired_temporal_and_source_clustered_moving_block_bootstrap_v1"
     assert policy["familywise_confidence_level"] == 0.95
     assert policy["familywise_comparison_count"] == 8

@@ -92,7 +92,7 @@
     "Barrot V3 execution, orchestration, safety and verification tests remain green."
   ],
   "forecast_admission_policy": {
-    "policy_id": "xrp_forecast_readiness_v5",
+    "policy_id": "xrp_forecast_readiness_v6",
     "minimum_training_samples": 100,
     "minimum_out_of_sample_samples": 100,
     "minimum_shadow_evaluation_samples": 100,
@@ -129,8 +129,9 @@
     "minimum_individual_confidence_level": 0.99375,
     "minimum_bootstrap_replicates": 10000,
     "minimum_paired_origins": 100,
+    "block_length_origins": 5,
     "minimum_source_clusters": 5,
-    "minimum_origins_per_source_cluster": 2,
+    "minimum_origins_per_source_cluster": 5,
     "required_evaluation_windows": [
       "out_of_sample",
       "shadow_evaluation"
