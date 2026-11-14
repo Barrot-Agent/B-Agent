@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "run_id": "Run116",
+  "observed_at_utc": "2026-11-14T03:57:19Z",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_sha": "a6edd3f6f4b7d28b87950e1d1cb85c5b83133f36",
+    "branch": "integration/xrp-v3-unified-main-20261112"
+  },
+  "least_privilege_status": "BLOCKED",
+  "data_transfer_status": "NO_EXTERNAL_PLATFORM_TRANSFER_VERIFIED",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "auth_status": "VERIFIED_FOR_CURRENT_GITHUB_SESSION",
+      "capabilities": [
+        "repository read",
+        "file inspection",
+        "PR and workflow inspection",
+        "documentation writes on existing integration branch"
+      ],
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "permission_assessment": "OVERPRIVILEGED; least privilege not met",
+      "data_flow": "ChatGPT GitHub connector to Barrot-Agent/B-Agent; no other external data dispatch in this run"
+    },
+    {
+      "name": "Claude",
+      "auth_status": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE_VERIFIED"
+    },
+    {
+      "name": "Grok",
+      "auth_status": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE_VERIFIED"
+    },
+    {
+      "name": "Gemini",
+      "auth_status": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE_VERIFIED"
+    },
+    {
+      "name": "Copilot",
+      "auth_status": "NO_LIVE_AUTHENTICATION_TEST",
+      "capabilities": "Repository review artifacts exist; no formal approval on PR #1662",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+    },
+    {
+      "name": "Codex",
+      "auth_status": "UNVERIFIED",
+      "capabilities": "NOT_TESTED",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE_VERIFIED"
+    },
+    {
+      "name": "Hugging Face",
+      "auth_status": "NO_CURRENT_DEPLOYMENT_VERIFIED",
+      "capabilities": "Main Pillars check reports BUILD_ERROR",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "No deployment or Space restart"
+    },
+    {
+      "name": "Kaggle",
+      "auth_status": "UNTESTED",
+      "capabilities": "No competition or submission tested",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "No submission or upload"
+    },
+    {
+      "name": "Databricks",
+      "auth_status": "PREVIOUS_HTTP_403",
+      "capabilities": "Read/write capability not verified",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "No write; manual import workflow not dispatched"
+    }
+  ],
+  "separate_provider": {
+    "name": "LunaRoute",
+    "is_one_of_nine": false,
+    "auth_status": "UNVERIFIED",
+    "main_workflow_observation": "Barrot Sync attempted on main; b_agent.py failed import httpx before any verified API call, then workflow masked failure and performed a no-op git push.",
+    "integration_workflow_status": "Quarantined/disabled",
+    "data_transfer": "NONE_VERIFIED"
+  },
+  "authorization_rules": {
+    "no_external_model_dispatch_without_specific_authorization": true,
+    "no_deploy_secret_rotation_space_restart_databricks_write_kaggle_submission_without_specific_authorization": true,
+    "no_real_money_or_paper_trade_without_specific_authorization": true
+  }
+}
