@@ -25,7 +25,10 @@ MULTI_LABEL_PUBLIC_SUFFIXES = {
 }
 
 # Related SBI legal entities are one publisher group for corroboration.
-# Tokyo SBIC is a separate corporation and is intentionally not grouped with SBI.
+# SBIC East (Tokyo), Central (Nagoya), and West (Osaka) are separate regional
+# SME investment companies, not SBI Holdings. Their domains are deliberately
+# not aliased to sbi-group; each retains its publisher identity unless a
+# shared upstream lineage is explicitly declared.
 PUBLISHER_DOMAIN_ALIASES = {
     "sbigroup.co.jp": "sbi-group",
     "sbishinseibank.co.jp": "sbi-group",
