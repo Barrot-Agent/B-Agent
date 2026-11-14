@@ -7,6 +7,7 @@
 # barrot_agent/orchestration/deploy_huggingface.py       -> huggingface_hub
 # barrot_agent/orchestration/inference_node.py           -> flask
 # barrot_agent/tools/kaggle_competitions_automation.py   -> kaggle, pandas, scikit-learn
+# barrot_agent/trading/coinbase_trader.py                -> cdp-sdk (imports as `coinbase`)
 #
 # PLATFORM NOTES (verified 2026-11-14 on aarch64 Termux/Debian hybrid):
 # - The versions below are pinned to the newest releases whose dependency
@@ -24,3 +25,4 @@ huggingface_hub>=0.23.0,<0.31  # >=0.31 hard-requires hf-xet (Rust)
 kaggle>=1.5.12,<1.6            # >=1.6 pulls jsonschema->rpds-py (Rust)
 pandas>=2.2.0
 scikit-learn>=1.5.0
+cdp-sdk>=1.0.0                 # Coinbase; imports as `coinbase`
