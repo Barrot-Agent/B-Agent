@@ -177,6 +177,31 @@ def test_self_upgrade_no_gaps_returns_no_repair_required(tmp_path: Path, monkeyp
     assert states
 
 
+def test_verify_syntax_uses_disposable_directory_and_preserves_operator_file(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_syntax_isolation_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    operator_file = tmp_path / ".selfupgrade_candidate.py"
+    operator_file.write_text("operator-owned content\n", encoding="utf-8")
+    calls: list[tuple[list[str], Path, int]] = []
+
+    def fake_bounded_subprocess(command, *, cwd, timeout):
+        calls.append((command, Path(cwd), timeout))
+        return ValidationResult(passed=True, summary="syntax ok")
+
+    monkeypatch.setattr(module, "bounded_subprocess", fake_bounded_subprocess)
+
+    result = module.verify_syntax("#!/usr/bin/env python3\nprint('ok')\n")
+
+    assert result.passed is True
+    assert len(calls) == 1
+    command, cwd, timeout = calls[0]
+    assert timeout == 60
+    assert cwd != tmp_path
+    assert Path(command[-1]).parent == cwd
+    assert not Path(command[-1]).exists()
+    assert operator_file.read_text(encoding="utf-8") == "operator-owned content\n"
+
+
 def test_self_upgrade_requires_audit_before_no_repair_required(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_missing_audit_test")
     monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
@@ -212,13 +237,16 @@ def test_self_upgrade_blocks_when_remote_verification_fails(tmp_path: Path, monk
     assert code == 1
 
 
-def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_path: Path, monkeypatch) -> None:
-    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_open_pr_test")
+def test_open_capability_pr_creates_pr_only_after_exact_remote_sha_verification(tmp_path: Path, monkeypatch) -> None:
+    import shutil
+
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_isolated_worktree_success_test")
     monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
     module.SCRIPTS_DIR.mkdir(parents=True)
-
+    worktree_path = tmp_path / "candidate-worktree"
     calls: list[tuple[str, ...]] = []
+    isolated_calls: list[tuple[Path, tuple[str, ...]]] = []
 
     class Result:
         def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
@@ -226,52 +254,180 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
             self.stdout = stdout
             self.stderr = stderr
 
+    class FakeTempDir:
+        def __init__(self, *_args, **_kwargs):
+            worktree_path.mkdir(exist_ok=True)
+
+        def __enter__(self):
+            return str(worktree_path)
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
     def fake_git(*args: str):
         calls.append(args)
-        if args == ("branch", "--show-current"):
-            return Result(stdout="feature/current\n")
-        if args == ("checkout", "-b", "selfupgrade/gap-20260914153000"):
+        if args == ("fetch", "origin", "main"):
             return Result()
-        if args == ("add", "scripts/gap.py"):
+        if len(args) == 6 and args[:3] == ("worktree", "add", "-b"):
+            Path(args[4]).mkdir(parents=True, exist_ok=True)
+            (Path(args[4]) / "scripts").mkdir(parents=True, exist_ok=True)
             return Result()
+        if args == ("worktree", "remove", "--force", str(worktree_path)):
+            return Result()
+        raise AssertionError(f"Unexpected operation against operator checkout: {args}")
+
+    def fake_git_in(cwd: Path, *args: str):
+        isolated_calls.append((cwd, args))
+        assert cwd == worktree_path
+        if args == ("add", "--", "scripts/gap.py"):
+            return Result()
+        if args == ("diff", "--cached", "--name-only"):
+            return Result(stdout="scripts/gap.py\n")
         if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
-            return Result()
-        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
             return Result()
         if args == ("rev-parse", "HEAD"):
             return Result(stdout="abc123\n")
-        if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
-            return Result(stdout="def456\trefs/heads/selfupgrade/gap-20260914153000\n")
-        if args == ("checkout", "feature/current"):
+        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
             return Result()
+        if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
+            return Result(stdout="abc123\trefs/heads/selfupgrade/gap-20260914153000\n")
         raise AssertionError(args)
 
     class DateTimeStub:
         @staticmethod
         def now(tz=None):
             del tz
-
             class Stamp:
                 def strftime(self, fmt: str) -> str:
                     assert fmt == "%Y%m%d%H%M%S"
                     return "20260914153000"
-
             return Stamp()
 
     def fake_run(command, cwd, capture_output, text, check):
-        del cwd, capture_output, text, check
+        del capture_output, text, check
+        assert cwd == worktree_path
         assert command[:3] == ["gh", "pr", "create"]
+        body_path = Path(command[command.index("--body-file") + 1])
+        assert body_path.parent == worktree_path
+        body = body_path.read_text(encoding="utf-8")
+        assert "commit: abc123" in body
+        assert "remote_branch_verification: passed" in body
         return Result(stdout="https://example.invalid/pr/1\n")
 
     monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "git_in", fake_git_in)
     monkeypatch.setattr(module, "datetime", DateTimeStub)
+    monkeypatch.setattr(module.tempfile, "TemporaryDirectory", FakeTempDir)
     monkeypatch.setattr(module.subprocess, "run", fake_run)
 
     result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
 
-    assert result["remote_verified"] is False
-    assert result["restored_branch"] == "feature/current"
-    assert ("checkout", "feature/current") in calls
+    assert result["remote_verified"] is True
+    assert result["commit"] == "abc123"
+    assert result["restored_branch"] == "unchanged (isolated worktree)"
+    assert result["pr_output"] == "https://example.invalid/pr/1"
+    assert all(cwd == worktree_path for cwd, _args in isolated_calls)
+    assert ("worktree", "remove", "--force", str(worktree_path)) in calls
+    assert not list(worktree_path.glob(".selfupgrade-pr-body-*.md"))
+    shutil.rmtree(worktree_path, ignore_errors=True)
+
+
+def test_open_capability_pr_uses_isolated_worktree_and_preserves_operator_changes(tmp_path: Path, monkeypatch) -> None:
+    import shutil
+
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_isolated_worktree_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
+    module.SCRIPTS_DIR.mkdir(parents=True)
+    operator_file = tmp_path / "unrelated.py"
+    operator_file.write_text("operator change\n", encoding="utf-8")
+    worktree_path = tmp_path / "candidate-worktree"
+    calls: list[tuple[str, ...]] = []
+    isolated_calls: list[tuple[Path, tuple[str, ...]]] = []
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    class FakeTempDir:
+        def __init__(self, *_args, **_kwargs):
+            worktree_path.mkdir(exist_ok=True)
+
+        def __enter__(self):
+            return str(worktree_path)
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("fetch", "origin", "main"):
+            return Result()
+        if len(args) == 6 and args[:3] == ("worktree", "add", "-b"):
+            Path(args[4]).mkdir(parents=True, exist_ok=True)
+            (Path(args[4]) / "scripts").mkdir(parents=True, exist_ok=True)
+            return Result()
+        if args == ("worktree", "remove", "--force", str(worktree_path)):
+            return Result()
+        raise AssertionError(f"Unexpected operation against operator checkout: {args}")
+
+    def fake_git_in(cwd: Path, *args: str):
+        isolated_calls.append((cwd, args))
+        assert cwd == worktree_path
+        if args == ("add", "--", "scripts/gap.py"):
+            (worktree_path / "scripts" / "gap.py").write_text("# candidate\n", encoding="utf-8")
+            return Result()
+        if args == ("diff", "--cached", "--name-only"):
+            return Result(stdout="scripts/gap.py\n")
+        if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
+            return Result()
+        if args == ("rev-parse", "HEAD"):
+            return Result(stdout="abc123\n")
+        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
+            return Result()
+        if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
+            return Result(stdout="def456\trefs/heads/selfupgrade/gap-20260914153000\n")
+        raise AssertionError(args)
+
+    class DateTimeStub:
+        @staticmethod
+        def now(tz=None):
+            del tz
+            class Stamp:
+                def strftime(self, fmt: str) -> str:
+                    assert fmt == "%Y%m%d%H%M%S"
+                    return "20260914153000"
+            return Stamp()
+
+    def fake_run(*_args, **_kwargs):
+        raise AssertionError("gh pr create must not run when remote SHA verification fails")
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "git_in", fake_git_in)
+    monkeypatch.setattr(module, "datetime", DateTimeStub)
+    monkeypatch.setattr(module.tempfile, "TemporaryDirectory", FakeTempDir)
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    caught = None
+    try:
+        module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+    except module.SelfUpgradeError as exc:
+        caught = str(exc)
+
+    assert caught is not None
+    assert "Remote branch SHA verification failed" in caught
+    assert ("fetch", "origin", "main") in calls
+    assert ("worktree", "remove", "--force", str(worktree_path)) in calls
+    assert all(cwd == worktree_path for cwd, _args in isolated_calls)
+    assert ("status", "--porcelain", "--untracked-files=all") not in calls
+    assert operator_file.read_text(encoding="utf-8") == "operator change\n"
+    assert not (module.SCRIPTS_DIR / "gap.py").exists()
+    assert not (tmp_path / ".selfupgrade_pr_body.md").exists()
+    shutil.rmtree(worktree_path, ignore_errors=True)
 
 
 def test_persist_audit_report_preserves_generated_audit_before_main_sync(tmp_path: Path, monkeypatch) -> None:
