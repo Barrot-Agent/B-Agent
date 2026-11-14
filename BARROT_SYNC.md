@@ -56,8 +56,13 @@
   * removed dead config: package-hardhat.json, .gitlab-ci.yml
 - SHRM 2.0 usage: from barrot_agent.reasoning import hrm2_resolve,
   resolve_with_trace; scripts/emit_signal_with_hrm.py --engine hrm2 [--refined]
-- In flight: background pip install of integrations extras (pandas/sklearn build
-  slow on device) - verify 4 optional modules import when it completes
+- Optional deps RESOLVED (2026-11-14): Debian side (apt) holds python3-cryptography
+  43, python3-pandas 2.2.3, python3-sklearn 1.4.2; pip added databricks-sdk 0.30.0,
+  flask, huggingface_hub 0.23.5, kaggle 1.5.12 -> ALL 4 optional modules import OK
+  under /usr/bin/python3. Termux python lacks pandas (fine: integrations extra).
+  Rust-free pins recorded in requirements-integrations.txt (hf<0.31, kaggle<1.6).
+  kaggle module is now import-safe without kaggle.json (credential error deferred
+  to _build_api call time).
 - Blocked: gh CLI not installed; SSH push denied (no key) - to push, provide a
   fine-grained GitHub PAT (repo content read/write) as GH_TOKEN env or secret;
   do NOT paste tokens into chat files
