@@ -37,13 +37,13 @@
 - Existing integration head before reconciliation: 1a455ef55037693129ab814c657b42deb451d025.
 - PR #1662 was 32 commits behind main, draft, and reported mergeable=false before this run's reconciliation work.
 - Main contains 32 newer commits, including MCP synchronization, SHRM 2.0, import repairs, Kaggle import-safety changes, OpenCode V2 migration, and producer-mode assets. These must be preserved.
-- The 26 overlapping paths require three-way reconciliation. Main's non-overlapping changes remain the base; integration safety gates remain the default for external effects.
-- Exact-head integration full suite on 1a455ef: 3,641 passed, 8 subtests passed, 0 failures, 62.47% inclusive coverage; wheel build and installed primary mission verification passed (run 43614686958).
+- Twenty-six overlapping paths were reconciled in merge commit 96d578d: two retain main's v7 workflow updates, eight use explicit merged files, and sixteen retain integration's stronger safety versions. Main's non-overlapping changes remain preserved.
+- Exact-head integration full suite on 1a455ef: 3,641 passed, 8 subtests passed, 0 failures, 62.47% inclusive coverage; wheel build and installed primary mission verification passed (run 43614686958). On corrected merge head 9f36a46, core tests passed; the broader full suite is still running.
 - Main CI on ef41ea7: 784 tests passed, 75.25% coverage (run 43610729541). This is not a substitute for the broader integration full suite.
 - Main Pages build run 43610728772 failed: Liquid syntax error in GLOBAL_STATE_MANIFEST.md line 6456, caused by unescaped JSON/template braces. No deployment was verified.
 - Main Barrot Sync run 43610729676 reported workflow success while b_agent.py --sync failed with ModuleNotFoundError: rich. The workflow masks the failure with || echo and masks push failure with git push || true; its log ended with Everything up-to-date. No successful LunaRoute sync or sync commit was verified. The displayed banner contained no secret characters.
 - The main sync workflow still triggers on main pushes and has repository write permission; the integration version quarantines it.
-- Main's 32 commits and their history are preserved as the first parent when the existing integration branch is reconciled.
+- Main's 32 newer commits and their history are preserved as the first parent of merge commit 96d578d; the previous integration head is its second parent. The corrected current integration head is 9f36a46.
 
 ## XRP ingestion and execution boundaries
 - The integration XRP ingestion workflow is scheduled hourly and daily, runs only on main, and requests actions:read / contents:read. It captures allowlisted public HTTPS sources, stores SHA-256 receipts, feature-store checkpoints, event timelines, and 90-day GitHub artifacts. It does not write repository files or push to main.

@@ -3355,3 +3355,52 @@ The July 14, 2026 home-page announcement says rollout expanded to 3,000 eligible
 This resolves a likely phonetic/transcription collision: “SBIC” may have been used when the source meant “SB OAI.” The exact phrase “ChatGPT SBIC” is not the JV's legal name. The verified OpenAI relationship is **SB OAI Japan**, and its corporate purpose is enterprise AI/cybersecurity in Japan—not an XRP, Ripple or SBI Holdings venture. No evidence was found linking SB OAI Japan to XRP settlement or the XRP ecosystem.
 
 Sources are first-party company and OpenAI pages; no inference from similarly spelled acronyms is required. This is a verified identity correction, not evidence of an OpenAI–SBI Holdings partnership.
+
+
+---
+
+## Run133 — 2026-11-14 integration reconciliation and current XRP evidence
+
+### Repository integration executed
+- Main: `ef41ea7d8f1d236774c3e593bc6205bf42555351`.
+- Existing integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Merge commit: `96d578d59de43608e8061314c42672e3aa55372f` (first parent current main, second parent previous integration head `1a455ef55037693129ab814c657b42deb451d025`).
+- Follow-up correction: `9f36a469cc799359d2ebb02784df0cc477f2088b`.
+- No new branch or PR created. The existing PR #1662 was retained.
+- Main's 32 newer commits are ancestors of the consolidated branch. The merge preserved main's non-overlapping work, including MCP sync, SHRM 2.0, import repairs, Kaggle import safety, OpenCode V2 and producer-mode assets.
+- Twenty-six paths modified on both sides were resolved: two retain main's v7 workflow updates; eight use explicit reconciliations for BARROT_SYNC, package/coverage configuration, dependency audit, Cross Analysis, formal verification, ignore rules and MCP import compatibility; the remaining sixteen retain integration's stronger approval/quarantine behavior.
+- PR #1662 now targets the current main SHA, is conflict-free according to GitHub, remains draft, and has 1,200 changed files. It is not merge-ready.
+
+### Exact-head CI — distinguish results
+- Previous integration head `1a455ef`: 3,641 tests passed, 8 subtests passed, 0 failures, 62.47% inclusive coverage; wheel build and installed mission verification passed (full suite run 43614686958).
+- Main `ef41ea7`: 784 tests passed, 75.25% coverage (run 43610729541). This narrower main suite is not a substitute for the broader integration suite.
+- First merge head `96d578d`: core suite exposed three Cross Analysis policy-test failures because the main-side workflow_run trigger was retained. This was corrected by restoring the integration scheduled/manual read-only trigger; no tests were weakened.
+- Corrected exact head `9f36a46`: core tests passed (run 43620412258). The full repository suite was still running at handoff time. Do not claim full-suite verification on this head yet.
+- Push dependency audit on `96d578d` passed all six groups, including root runtime, development, integrations, Hugging Face, legacy and PEP 621 dependencies (run 43620294965). PR dependency audit on `9f36a46` remained in progress.
+- Push and PR fail-closed gates passed. PR-event core CI is intentionally skipped for the integration branch; the push event is the full-suite authority.
+
+### Main-branch automatic side effects
+- Main Pages build run 43610728772 failed on Liquid parsing in `GLOBAL_STATE_MANIFEST.md` line 6456 due to unescaped template braces. A merge that changes Pages output is a deployment side effect and remains blocked pending explicit deployment authorization and a verified build.
+- Main Barrot Sync run 43610729676 reported workflow success while the script failed with `ModuleNotFoundError: rich`; `|| echo` and `git push || true` masked the failure. No successful provider sync or sync commit was verified. The consolidated integration version quarantines the automatic push-triggered sync.
+- The scheduled XRP ingestion workflow is main-only, read-only for repository contents/actions, and uploads public-source receipts, feature-store checkpoints and event artifacts. GitHub artifacts/cache have 90-day/7-day retention and are not WORM storage or trusted timestamp anchoring. It has not been verified as running on main.
+
+### Current XRP market and flow evidence
+- Direct OKX ticker: last $0.9546, bid $0.9548, ask $0.9549; provider event timestamp 2026-11-14 17:01:54.370 UTC. At retrieval 17:09:30 UTC it was 456 seconds old, outside the five-minute admission rule.
+- Bybit spot: $0.9580, bid $0.9580, ask $0.9581; provider timestamp 16:56:37.687 UTC, 773 seconds old.
+- Kraken: $0.94725 last, $0.94727/$0.94771 bid/ask, no provider event timestamp. The cross-venue divergence is not executable arbitrage evidence. No synchronized full L2 snapshot was admitted.
+- XRP Insights' settled Nov 13 report: +3.40M XRP daily and -6.08M XRP over Nov 9–13, across six US spot ETFs plus BITW. Its method is issuer-reported holdings change; GXRP flow is excluded due to a documented issuer-page capture gap, while GXRP holdings/AUM remain included.
+- Alpha Finance's Nov 13 report: -$1.1M daily, -$19.1M over seven sessions, and -$581.7K over 30 sessions across five tickers (XRP, XRPZ, XRPC, GXRP, TOXR). It includes GXRP and excludes XRPR/BITW. The difference is therefore primarily a fund-universe/methodology mismatch, not proof that either tracker is wrong. Do not average the series.
+- XRP Insights reports 1.1891B XRP held and $1.220B AUM across six spot ETFs plus BITW. Its historical data includes reconstructed periods and the latest settled row can be revised after issuer publication; preserve row_status and flow_status.
+- The ingestion adapter declares 50 source IDs covering spot tickers/candles/L2, derivatives funding/OI/long-short ratios, exchange balances, ETF issuer/flow data, RLUSD/USDC, SBI lending, cbXRP/Morpho collateral/oracles, CFTC positioning and independent XRPL node observations. Live admission thresholds are 300 seconds for market observations and 60 seconds for order books.
+
+### Prediction and coordination
+- Prediction engine still has no trained XRP-specific candidate with demonstrated superiority against all four baselines.
+- Independent shadow outcomes, independent WORM storage and trusted timestamp anchoring remain absent.
+- Forecast status remains NOT_ISSUED; accuracy NOT_EVALUATED.
+- Nine-platform authentication map remains: ChatGPT/GitHub authenticated with overprivileged access; Claude, Grok, Gemini and Codex unverified; Copilot no formal approval; Hugging Face previous BUILD_ERROR; Kaggle untested; Databricks previous HTTP 403/no write.
+
+### Merge decision
+NO MERGE. PR #1662 remains draft. Independent approval, least-privilege GitHub access, branch-protection visibility, independent CODEOWNERS review, exact-head full-suite completion, dependency/security completion and Pages publication authorization remain blockers. No source PR was closed.
+
+### Next action
+Finish the full repository suite and PR dependency audit on `9f36a46`; reconcile any failures on the existing branch; then continue independent review and governance. Keep forecasts disabled until the candidate-model and shadow-evaluation standards are met.
