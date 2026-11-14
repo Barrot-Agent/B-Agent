@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Mission Handoff (Run114)
 
-Updated: 2026-11-14T03:11:00Z
+Updated: 2026-11-14T03:20:00Z
 
 **Mission priority 1:** XRP intelligence and measured prediction-engine mastery. **Protected foundation:** Barrot V3 execution, orchestration, safety, verification and external-action controls.
 
@@ -561,3 +561,53 @@ Structured evidence: research/xrp_intelligence/20261114T021605Z-run112a-rlusd-cr
 - Structured research/engineering audit: research/xrp_intelligence/20261114T031100Z-run114-current-market-prediction-engine-and-integration-audit.json.
 - Nine-platform capability/authentication snapshot: research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run114.json.
 - Code-bearing exact-head commit: 6a629caa566c2587d64194fbbb65a982f9418250.
+
+
+## Run114B — Coinbase, Circle, Ripple and SBI corporate-economics reconciliation (2026-11-14T03:20:00Z)
+
+### Circle Q3 2026 — SEC Form 10-Q, filed November 4
+- USDC circulation at September 30: $73.879B; average circulation: $73.264B.
+- Reserve return rate: 3.5%, versus 4.2% a year earlier. Average USDC circulation rose 8%, adding about $52.8M to quarterly reserve income, while a 61-basis-point decline in average yields reduced it by about $106.5M.
+- Reserve income: $657.624M; other revenue: $207.264M; total revenue and reserve income: $864.888M.
+- The $207.264M other-revenue line includes $181.8M of ARC-token presale revenue recognized in Q3. Do not treat that as recurring USDC distribution revenue. ARC is Circle's separate Arc L1, not XRPL.
+- Distribution and transaction costs: $409.169M; other costs: $2.465M; total distribution/transaction/other costs: $411.634M.
+- Coinbase distribution costs: $331.3M for Q3 and $986.6M for the first nine months. Q3 Coinbase distribution costs were about 81.0% of Circle's $409.169M distribution-and-transaction-cost line. This is Circle's expense, not Coinbase's reported revenue.
+- Revenue less distribution costs: $453M; reported RLDC margin: 52%; net income from continuing operations: $226.012M; adjusted EBITDA: $317M.
+- USDC on Circle's platform: $13.868B at quarter-end; daily weighted-average share: 18.1%. Circle defines platform balances to include Circle Mint, corporate-held USDC and supported wallet services.
+- Q3 USDC minted: $104.304B; redeemed: $103.694B; net increase: $610M. Stablecoin market share: 27%. Meaningful wallets: 7.35M, defined as wallets with more than $10, not unique people.
+- Circle says Coinbase receives allocations based on USDC held on its platform and a share of broader ecosystem growth after third-party participant payments. This is a material direct economic dependency.
+- Circle National Trust opened July 24 under OCC supervision; at opening it offered fiduciary digital-asset custody to Circle and affiliates. This does not establish reserve migration or third-party customer custody.
+- Circle's $400M Tazapay share acquisition remains expected in 2027 subject to regulatory approval. Circle also sold $100M of Class A shares to Binance in September. Neither is XRP capital deployment.
+
+### Coinbase Q3 2026 — Form 10-Q and shareholder release
+- Q3 stablecoin revenue: $306.905M, down 5% year over year; total net revenue: $1.216B.
+- Coinbase attributes +$84.6M of quarterly stablecoin revenue to higher average USDC balances in Coinbase products and -$52.8M to lower average interest rates.
+- Average USDC held in Coinbase products: approximately $22B, about 30% of average USDC market capitalization, per Coinbase's shareholder release.
+- Coinbase states it captured approximately 50% of USDC economics over the preceding year. This is company-reported and should be kept separate from Circle's GAAP distribution-cost accounting.
+- Q3 net income was $719M, but adjusted net income was about $78M; approximately $715M of crypto-investment gains materially affected the GAAP headline.
+- Coinbase National Trust Company was recorded as consummated/effective November 6 in OCC corporate-application records. Charter effectiveness does not establish that all custody accounts have migrated.
+
+### Ripple and the XRP distinction
+- Ripple's October 28 corporate report claims a $900M annualized product-revenue run-rate, more than 85 licenses, more than 1,700 institutions and $16T in 2025 transactions enabled across Ripple products. These are company-reported, not audited XRP-specific volumes. Ripple Payments' reported lifetime network volume and product transaction totals must not be relabeled as XRP ODL/spot settlement.
+- Ripple National Trust Bank received final OCC approval October 26. Its approved activities include managing segregated RLUSD reserves, acting as collateral trustee for those reserves and fiduciary digital-asset custody. RLUSD issuance remains through Standard Custody & Trust Company; BNY remains primary reserve custodian. Approval is regulatory capacity, not evidence of customer migration or XRP collateral balances.
+- Coinbase's October 28 RLUSD listing covers Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as forthcoming, not live.
+- PNC's Coinbase payment pilot uses Circle USDC with automatic USD conversion; it is not XRP settlement.
+
+### SBI distribution distinction
+- SBI VC Trade's described RLUSD deposit/withdrawal service supports Ethereum only. It is not evidence of XRPL RLUSD distribution through that service.
+- SBI's Crypto Card allows reward points to convert into XRP, BTC or ETH, one selected asset per card, with a VCTRADE account required. Aggregate XRP reward purchases/volume are not disclosed; this is a retail acquisition channel, not institutional XRP capital.
+- SBI Ripple Asia remains a 60/40 SBI Group/Ripple software JV that does not directly handle XRP. SBI Remit/SBI VC Trade/Tranglo is the separate XRP remittance route.
+
+### Evidence interpretation
+The Coinbase–Circle relationship is economically substantial and directly documented, but the $331.3M Circle expense and $306.9M Coinbase revenue are not mirror-image accounting measures. Circle's reserve yield is rate-sensitive; its USDC supply and distribution mix also matter. Coinbase and Circle's growth is stablecoin adoption, not automatic XRP demand. Arc, USDC, RLUSD and XRP must remain separate assets and settlement rails unless a specific transaction proves otherwise.
+
+Primary sources:
+- Circle SEC Form 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- Coinbase Q3 2026 Form 10-Q: https://www.stocktitan.net/sec-filings/COIN/10-q-coinbase-global-inc-quarterly-earnings-report-344f1f5ae109.html
+- Coinbase Q3 shareholder release: https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Third-Quarter-2026-Results/default.aspx
+- Ripple Q3 2026 report: https://ripple.com/insights/q3-2026-xrp-markets-report/
+- Ripple OCC final approval: https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+- SBI VC Trade RLUSD service: https://www.sbivc.co.jp/newsview/2nv9j7ra4j
+- SBI Crypto Card: https://www.sbigroup.co.jp/news/2026/0501_16280.html
+
+No directional XRP forecast is supported by these corporate disclosures. They are institutional adoption, stablecoin-economics and macro-sensitivity evidence, not proof of incremental XRP spot demand.
