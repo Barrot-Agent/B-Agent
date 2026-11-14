@@ -34,7 +34,7 @@
       "title": "Barrot V3 + XRP Intelligence — current-main consolidated successor",
       "state": "open",
       "draft": true,
-      "head_sha": "e3e8ed021da57aebe361790711b7a3b0d99e7d21",
+      "head_sha": "084e173c95e483cc0dfbe40f27913e8a42ce28c7",
       "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
       "changed_files": 1175,
       "additions": 345570,
@@ -138,7 +138,8 @@
       "automatic_main_push_deployment": true,
       "authorization_for_7_changed_public_files": "UNRESOLVED"
     },
-    "current_head_after_run118": "e3e8ed021da57aebe361790711b7a3b0d99e7d21"
+    "current_head_after_run118": "e3e8ed021da57aebe361790711b7a3b0d99e7d21",
+    "current_head_after_run118B": "084e173c95e483cc0dfbe40f27913e8a42ce28c7"
   },
   "ci": {
     "exact_head_sha": "3c533574b73943cfe4a21b06b64af61b6e06c3a5",
@@ -240,53 +241,53 @@
       "decision": "Expanded package scope is present, but 53% inclusive floor needs a documented ratchet; legacy 70% floor excludes major packages. Coverage policy remains a merge blocker."
     },
     "current_head_verification": {
-      "head_sha": "e3e8ed021da57aebe361790711b7a3b0d99e7d21",
+      "head_sha": "084e173c95e483cc0dfbe40f27913e8a42ce28c7",
       "full_suite": {
-        "run_id": 43565866729,
+        "run_id": 43566261057,
         "event": "push",
         "conclusion": "success",
         "tests_passed": 3631,
         "subtests_passed": 8,
         "failures": 0,
         "inclusive_coverage_percent": 62.42,
-        "duration_seconds": 93.33,
+        "duration_seconds": 106.16,
         "legacy_core_coverage_percent": 76,
         "wheel_build": "passed",
         "packaged_primary_mission": "passed",
         "installed_barrot_v3_and_xrp_mission": "passed",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866729"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261057"
       },
       "dependency_audit_push": {
-        "run_id": 43565866713,
+        "run_id": 43566261015,
         "conclusion": "success",
         "manifest_groups_passed": 5,
         "known_vulnerabilities_reported": 0,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866713"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261015"
       },
       "dependency_audit_pull_request": {
-        "run_id": 43565871843,
+        "run_id": 43566266010,
         "conclusion": "success",
         "manifest_groups_passed": 5,
         "known_vulnerabilities_reported": 0,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871843"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266010"
       },
       "fail_closed_push": {
-        "run_id": 43565866699,
+        "run_id": 43566261086,
         "conclusion": "success",
         "merge_enabled": false,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866699"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261086"
       },
       "fail_closed_pull_request": {
-        "run_id": 43565871841,
+        "run_id": 43566266055,
         "conclusion": "success",
         "merge_enabled": false,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871841"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266055"
       },
       "pull_request_ci": {
-        "run_id": 43565871973,
+        "run_id": 43566266034,
         "conclusion": "skipped",
         "reason": "integration branch condition",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871973"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266034"
       }
     }
   },
@@ -357,7 +358,39 @@
         "latest 60-trade sample is research-only and model_eligible=false"
       ],
       "schedule": "included in main-only hourly/daily public ingestion workflow; workflow is not on main and has not run on main",
-      "market_coverage_gap": "Fuelmaps six-venue snapshot excludes Bitbank; the existing adapter is the intended primary source for this SBI-controlled XRP/JPY venue"
+      "market_coverage_gap": "Fuelmaps six-venue snapshot excludes Bitbank; the existing adapter is the intended primary source for this SBI-controlled XRP/JPY venue",
+      "websocket_status": {
+        "websocket_depth_streams": "not implemented in current adapter",
+        "official_channels": [
+          "depth_whole_xrp_jpy",
+          "depth_diff_xrp_jpy",
+          "ticker_xrp_jpy",
+          "transactions_xrp_jpy",
+          "circuit_break_info_xrp_jpy"
+        ],
+        "next_implementation": "buffer depth_diff messages, apply only sequence values greater than the depth_whole snapshot, refresh full snapshots because diff messages cover a limited depth, and require validated sequence continuity before model admission"
+      }
+    },
+    "morpho_cbXRP_sources": {
+      "status": "IMPLEMENTED_AND_TESTED_ON_INTEGRATION; NOT_EXECUTED_ON_MAIN",
+      "sources": [
+        "Morpho market parameters",
+        "Morpho market state",
+        "Morpho liquidity",
+        "Morpho state history",
+        "Morpho Chainlink oracle state",
+        "Coinbase cbXRP proof of reserves"
+      ],
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "requirements": [
+        "capture raw API response bytes and retrieval time",
+        "record Chainlink updatedAt and roundId",
+        "reconcile cbXRP total supply against Coinbase reserve page",
+        "reconcile Morpho borrower count, debt, liquidity, utilization and collateral value to same block",
+        "capture liquidation and repayment transactions",
+        "keep cbXRP collateral separate from native XRP spot/flow features"
+      ],
+      "model_admission": "manual web observations are not immutable receipts and are not model-eligible"
     }
   },
   "market": {
@@ -570,6 +603,71 @@
       "ripple_official_reserve_funds_usd": 2826500000,
       "attestation_caveat": "official page links independent CPA reserve reports through September 2026; Nov12 live balance is not itself a November CPA attestation",
       "interpretation": "chain supply changes do not prove cross-chain transfer, XRP demand or payment settlement"
+    },
+    "cbxrp_collateral": {
+      "coinbase_proof_of_reserves": {
+        "refreshed_at_utc": "2026-11-14T06:25:00Z",
+        "native_xrp_reserve": 154660521.83,
+        "cbxrp_supply_base": 154658275.3,
+        "excess_reserve_xrp": 2246.53,
+        "reserve_to_supply_ratio": 1.00001453,
+        "statement": "Coinbase describes cbXRP as a wrapped token backed 1:1 by XRP held by Coinbase",
+        "independence": "issuer-published proof-of-reserves page, not an independent CPA attestation",
+        "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"
+      },
+      "morpho_blue_base_market": {
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "collateral": "cbXRP",
+        "loan_asset": "USDC",
+        "retrieved_at_utc": "2026-11-14T06:30:00Z",
+        "borrowers": 1146,
+        "outstanding_loans_usdc": 53480000,
+        "total_liquidity_usdc": 24510000,
+        "utilization_percent": 85.57,
+        "target_utilization_percent": 90,
+        "liquidation_ltv_percent": 62.5,
+        "liquidation_penalty_percent": 12.67,
+        "borrow_rate_percent": 6.64,
+        "lend_rate_percent": 5.64,
+        "realized_bad_debt_usdc": 0,
+        "unrealized_bad_debt_usdc": 0,
+        "chainlink_oracle_price_usdc_per_cbxrp": 1.00941,
+        "oracle_heartbeat": "1 day",
+        "oracle_deviation_threshold_percent": 0.5,
+        "oracle_updated_at": "not exposed in the retrieved page",
+        "coinGlass_spot_reference": 0.9976,
+        "oracle_spot_difference_percent": 1.184,
+        "recent_activity": "Morpho page shows small liquidation entries at 2026-11-13 03:52 UTC and repayments/collateral supply on 2026-11-14 around 06:27-06:30 UTC; displayed bad debt remains zero",
+        "internal_reconciliation_flags": [
+          "page displays Total Liquidity $24.51M and Total Market Size $78M, while utilization is 85.57%; the displayed fields do not reconcile as a simple borrowed/(borrowed+liquidity) calculation",
+          "page displays Value Secured $209M, which does not reconcile with the issuer cbXRP supply; treat as unresolved UI/API vintage or definition",
+          "page shows oracle price 1.00941 while contemporaneous CoinGlass spot is 0.9976; no on-chain updatedAt was visible, so staleness cannot be concluded or excluded"
+        ],
+        "caveats": [
+          "Morpho collateral is cbXRP on Base, not native XRP directly",
+          "liquidation transfers cbXRP to liquidators; subsequent native-XRP sales require separate unwrap/exchange transaction evidence",
+          "page values are dynamic and may mix retrieval vintages; do not use as a single model row until raw API and on-chain timestamps are reconciled"
+        ]
+      },
+      "historical_stress_snapshot": {
+        "source": "CryptoSlate analysis of Morpho API snapshot",
+        "timestamp_utc": "2026-11-06T13:24:54Z",
+        "positions": 1070,
+        "debt_within_further_10_percent_oracle_decline_usdc": 8844820.21,
+        "positions_within_further_5_percent_decline": 462,
+        "debt_within_further_5_percent_decline_usdc": 3229610.99,
+        "lltv_percent": 62.5,
+        "interpretation": "conditional liquidation eligibility under fixed debt/collateral quantities; not actual liquidations and not current exposure after borrower actions"
+      },
+      "defillama_secondary_snapshot": {
+        "url": "https://defillama.com/yields/pool/7ad0dc44-ab47-4690-bd31-e9df6c9f6e50",
+        "total_supplied_usd": 152400000,
+        "total_borrowed_usd": 57410000,
+        "available_usd": 7130000,
+        "max_ltv_percent": 62.5,
+        "timestamp": "crawl/retrieval vintage not fully explicit",
+        "reconciliation": "different snapshot/definition from Morpho app; do not average"
+      }
     }
   },
   "macro": {
@@ -1124,6 +1222,41 @@
     },
     {
       "id": "bitbank_public_api_docs",
+      "publisher": "Bitbank",
+      "url": "https://github.com/bitbankinc/bitbank-api-docs",
+      "observed_at": "2026-11-14",
+      "independence_group": "exchange_primary"
+    },
+    {
+      "id": "coinbase_cbxrp_reserves_nov14",
+      "publisher": "Coinbase",
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "observed_at": "2026-11-14T06:25:00Z",
+      "independence_group": "issuer_primary"
+    },
+    {
+      "id": "morpho_cbxrp_usdc_market",
+      "publisher": "Morpho",
+      "url": "https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/cbxrp-usdc",
+      "observed_at": "2026-11-14T06:30:00Z",
+      "independence_group": "protocol_primary"
+    },
+    {
+      "id": "morpho_cbxrp_defillama",
+      "publisher": "DefiLlama",
+      "url": "https://defillama.com/yields/pool/7ad0dc44-ab47-4690-bd31-e9df6c9f6e50",
+      "observed_at": "2026-11-14",
+      "independence_group": "defillama_aggregator"
+    },
+    {
+      "id": "morpho_cbxrp_stress",
+      "publisher": "CryptoSlate",
+      "url": "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/",
+      "published_at": "2026-11-07T10:30:00Z",
+      "independence_group": "cryptoslate_reporting"
+    },
+    {
+      "id": "bitbank_public_stream_docs",
       "publisher": "Bitbank",
       "url": "https://github.com/bitbankinc/bitbank-api-docs",
       "observed_at": "2026-11-14",

@@ -1249,3 +1249,67 @@ The preceding documentation-only head `e3e8ed0` passed: 3,631 tests, eight subte
 
 Evidence: [full suite 43565866729](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866729), [dependency push 43565866713](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866713), [dependency PR 43565871843](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871843), [fail-closed push 43565866699](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866699), [fail-closed PR 43565871841](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871841).
 
+
+
+---
+
+## Run118C — cbXRP collateral, Coinbase reserves and Morpho risk (2026-11-14)
+
+### Coinbase cbXRP reserve reconciliation
+
+Coinbase's proof-of-reserves page refreshed at 06:25 UTC on November 14:
+- Native XRP reserve: **154,660,521.83 XRP**.
+- cbXRP supply on Base: **154,658,275.30 cbXRP**.
+- Excess reserve: **2,246.53 XRP**.
+- Reserve/supply ratio: approximately **1.0000145x**.
+
+Coinbase describes cbXRP as 1:1 backed by native XRP held by Coinbase. This is issuer-published proof-of-reserves, not an independent CPA attestation. It establishes a custody/wrapper link; it does not establish new XRP purchases or market demand.
+
+### Morpho Blue cbXRP/USDC collateral market
+
+Morpho's Base market page for `0xd4a903…4109` reports:
+- Collateral: cbXRP; loan asset: USDC.
+- Outstanding loans: approximately **$53.48M USDC**.
+- Borrowers: **1,146**.
+- Displayed total liquidity: $24.51M.
+- Displayed utilization: 85.57%, target 90%.
+- Liquidation LTV: 62.5%; liquidation penalty: 12.67%.
+- Borrow rate 6.64%; lend rate 5.64%.
+- Realized and unrealized bad debt: zero.
+- Chainlink XRP/USD oracle display: $1.00941, 1-day heartbeat and 0.5% deviation threshold.
+
+The CoinGlass spot reference at the same research window was $0.9976, about 1.18% below the displayed oracle price. The Morpho page did not expose the oracle `updatedAt`/round ID in the retrieved view. Do not label the oracle stale without on-chain timestamp evidence; the discrepancy must be reconciled before using it in a stress model.
+
+The Morpho page's fields do not reconcile as a single snapshot: $53.48M loans plus $24.51M displayed liquidity imply a $78M market size but not 85.57% utilization; it also shows $209M “value secured,” which does not reconcile with Coinbase's 154.66M cbXRP reserve/supply. Treat the page as mixed-vintage or differently defined until raw Morpho API and on-chain data are aligned. DefiLlama's separate snapshot reports $152.4M supplied, $57.41M borrowed and $7.13M available; it is a different provider/vintage and must not be averaged with Morpho's page.
+
+CryptoSlate's November 6 Morpho API analysis found $8.8448M debt across 1,070 positions within a *further* 10% oracle decline of liquidation eligibility, and $3.2296M across 462 positions within a further 5% decline, assuming unchanged debt and collateral. This was a conditional fixed-position stress snapshot, not actual liquidation or current exposure. Morpho's later page shows borrower actions and some small liquidation records; it reports zero realized bad debt. A liquidation transfers cbXRP to the liquidator. Subsequent native-XRP sales require separate unwrap/exchange transaction evidence.
+
+The existing integration already contains Morpho market parameters, state, liquidity, history, oracle-state and Coinbase proof-of-reserves sources. They are implemented/tested on integration but have not executed on main; manual web observations are not immutable receipts and are not model-eligible.
+
+### Collateral interpretation
+
+- Ripple Prime lists XRP and RLUSD as institutional collateral assets, but XRP-specific utilization remains undisclosed.
+- CME Clearing's public acceptable-collateral list does not list XRP.
+- CFTC Letter 26-05 is conditional staff no-action relief, not a general rule; the specified non-DCO-accepted digital-asset path carries a 20% minimum haircut subject to its conditions.
+- Morpho's live lending collateral is cbXRP on Base, not native XRP on XRPL.
+- Coinbase's 1:1 backing links Base cbXRP to native XRP held in Coinbase custody; it does not mean every cbXRP collateralized loan creates a new XRP purchase.
+- The historical 5%/10% stress buckets are not current. Do not project them forward without current position-level data, oracle updatedAt, repayments, top-ups and liquidation transactions.
+
+### Bitbank stream-data gap
+
+The integration's Bitbank adapter currently uses REST ticker/depth/trades/circuit-break endpoints and retains provider sequence IDs without claiming continuity. Bitbank's official stream documentation also exposes `depth_whole` and `depth_diff` channels. The next technical improvement is a sequence-aware collector: buffer diffs, apply only sequence values after the whole-book snapshot, refresh whole snapshots because diffs cover limited depth, and admit features only after continuity and timestamp checks. Do not create another PR; implement within the existing integration workstream after the current semantic review.
+
+Sources: [Coinbase cbXRP proof of reserves](https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves), [Morpho cbXRP/USDC market](https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/cbxrp-usdc), [DefiLlama market snapshot](https://defillama.com/yields/pool/7ad0dc44-ab47-4690-bd31-e9df6c9f6e50), [CryptoSlate November 6 stress analysis](https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/), [Bitbank API and stream docs](https://github.com/bitbankinc/bitbank-api-docs).
+
+### Latest exact-head verification
+
+The preceding documentation-only head `084e173c` passed the exact full suite:
+- 3,631 tests passed, eight subtests, zero failures.
+- 62.42% inclusive coverage; 76% legacy core coverage.
+- Full-suite duration 106.16 seconds.
+- Wheel build, packaged primary mission and installed Barrot V3/XRP mission passed.
+- Five dependency manifest groups passed; zero known vulnerabilities reported.
+- Push and PR fail-closed gates passed; PR CI was skipped by the integration-branch condition.
+
+Evidence: [full suite 43566261057](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261057), [dependency push 43566261015](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261015), [dependency PR 43566266010](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266010), [fail-closed push 43566261086](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261086), [fail-closed PR 43566266055](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266055).
+
