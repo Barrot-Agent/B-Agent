@@ -120,7 +120,7 @@ jobs:
               */tests/*
           [report]
           show_missing = True
-          fail_under = 53
+          fail_under = 62
           EOF
       - name: Run every repository test with inclusive package coverage
         run: |
@@ -130,7 +130,7 @@ jobs:
             --cov=data \
             --cov-config="$RUNNER_TEMP/barrot-coverage.ini" \
             --cov-report=term-missing:skip-covered \
-            --cov-fail-under=53
+            --cov-fail-under=62
       - name: Preserve legacy core-package coverage floor
         run: |
           python -m coverage report \

@@ -15,8 +15,8 @@ def test_full_repository_suite_measures_all_distributable_packages():
         assert f"--cov={package}" in full_suite
     assert "--cov-config=" in full_suite
     assert "--cov-report=term-missing:skip-covered" in full_suite
-    assert "fail_under = 53" in full_suite
-    assert "--cov-fail-under=53" in full_suite
+    assert "fail_under = 62" in full_suite
+    assert "--cov-fail-under=62" in full_suite
     assert "--no-cov" not in full_suite
     core_gate_marker = "      - name: Preserve legacy core-package coverage floor"
     assert core_gate_marker in full_suite
@@ -33,6 +33,7 @@ def test_full_repository_suite_measures_all_distributable_packages():
 
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert 'source = ["barrot_agent", "directive_platform", "data"]' in pyproject
+    assert "fail_under = 62" in pyproject
     package_discovery = pyproject.split("[tool.setuptools.packages.find]", 1)[1]
     for package in ('"barrot_agent"', '"directive_platform"', '"data"'):
         assert package in package_discovery
