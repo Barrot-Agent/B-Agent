@@ -190,6 +190,40 @@ No merge, deployment, secret rotation, Space restart, external-model transfer, D
 
 ---
 
+## Run122 supplemental research — Kamilah Stevenson, XRPL RWA quality and lending activation
+
+### Kamilah Stevenson identity and public-video inventory
+
+The person **Dr. Kamilah Stevenson / The Wealth Doctor** is verified by her first-party wealth-education site and a separate 2023 podcast profile. Her official site describes stocks, crypto and real-estate investing education and the 90-Day Investor Accelerator. The podcast profile identifies Dr. Kamilah Stevenson and links her website and Instagram.
+
+Three public YouTube search results are now inventoried as **videos attributed to Kamilah Stevenson**, not as independently verified uploads from an authenticated first-party channel:
+
+| Video | Date | Search-index views / likes | Subject |
+|---|---|---:|---|
+| [Y5rESnxoSIA](https://www.youtube.com/watch?v=Y5rESnxoSIA) | Apr 7, 2026 | 31,438 / 2,100 | XRPL RWA value growth from $24M to $1.8B |
+| [pFru4idBTMA](https://www.youtube.com/watch?v=pFru4idBTMA) | May 12, 2026 | 28,264 / 2,000 | Claims $3.5B RWA and $900M in a day |
+| [NChkamwOUEk](https://www.youtube.com/watch?v=NChkamwOUEk) | Aug 1, 2026 | 13,405 / 1,600 | XLS-65/XLS-66 lending proposals and validator activation |
+
+The official site does not expose a first-party YouTube link in the retrieved page. Third-party channel analytics associate a candidate channel ID with similar investor/crypto language, but ownership remains unverified. The spelling “Camilla” remains unresolved as a separate person or alias. Do not merge accounts or attribute additional videos without stronger provenance.
+
+Two DailyCoin articles also quote Stevenson and reference YouTube episodes about Japan–Southeast Asia remittance pilots and the Bank of Japan carry trade. The articles do not expose direct YouTube URLs, so those remain unlinked candidates, not inventory entries.
+
+### Critical correction: XRPL RWA value is not settlement volume
+
+The May 12 video description says approximately $3.5B in tokenized assets “settled” over 30 days and about $900M moved on one day. The cited April 24 reporting instead describes a **value/valuation change** in RWA.xyz's aggregate: $2.616B (including $491M stablecoins) on April 22 to $3.53B, driven almost entirely by the existing Justoken JMWH energy token rising from $861M to $1.763B. The same report says Justoken's own platform still displayed roughly $860M and had not confirmed the higher figure. This may have been an index/valuation anomaly; it is not evidence of $900M in payment volume, new cash, or XRP purchases.
+
+Later RWA snapshots show why headline totals cannot be compared without definitions: the October 17 report separates $4.549B represented from $496.6M distributed RWA and tracks $1.068B stablecoins separately. “Represented” assets may be ledger records that cannot move outside the issuer platform; “distributed” assets are transferable. A large represented-value total can be useful for recordkeeping but is not equivalent to liquid collateral or native XRP demand.
+
+The concentration counter-hypothesis must remain visible: a single energy token may represent real contractual megawatt-hours and still have legitimate issuer-side utility, while having few holders and little/no secondary trading. Track holder concentration, transferability, issuer confirmation, distributed value, actual transfers, and native XRP use separately.
+
+### XLS-65 / XLS-66: not live on mainnet
+
+The official XRPL developer page labels institutional credit **Open for Voting** and says the stack requires LendingProtocol and LendingProtocolV1_1. The official amendment rule is more than 80% of trusted validators for 14 days. An independent live dashboard displayed 23/35 for SingleAssetVault and 22/35 for LendingProtocol/V1_1, with zero amendments in the activation countdown. Its page-fetch timestamp (07:59 UTC) precedes the displayed roll-call timestamp (08:05 UTC), so treat the vote counts as provisional. The official docs' Open-for-Voting label is the controlling status.
+
+XLS-66's core design is uncollateralized fixed-term lending with off-chain underwriting, vault liquidity and first-loss capital. The protocol can be extended with additional collateral logic, but activation does not automatically create collateralized XRP borrowing or prove any XRP utilization. The August 1 Kamilah video correctly cautions that the proposals are not live; the May 12 RWA video overstates the RWA valuation change as settlement flow.
+
+Structured addendum: [Run122 identity/RWA/XLS-65/66 audit](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261114T081000Z-run122-kamilah-video-rwa-metric-and-xls65-66-status-audit.json).
+
 ## Historical handoff archive
 
 # BARROT XRP MISSION HANDOFF — Run121
