@@ -1,0 +1,102 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.1.0",
+  "captured_at_utc": "2026-11-14T14:28:57.349Z",
+  "last_verified_at_utc": "2026-11-14T14:28:57.349Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "observed_integration_head_before_map_commit": "6a2e24d0ccd94b51eb238e15b006d06cc85e3868",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication_status": "VERIFIED",
+      "verified_capability": "GitHub connector read/write operations against Barrot-Agent/B-Agent",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT session -> GitHub connector -> repository metadata, tree, files, PRs, checks and Git Data API",
+      "least_privilege_status": "FAIL_OVERPRIVILEGED",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Claude",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Grok",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No Grok platform authentication or data flow tested; separate Groq API usage does not establish Grok connectivity",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Gemini",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Copilot",
+      "authentication_status": "NO_LIVE_AUTH_VERIFIED",
+      "verified_capabilities": [
+        "Historical one-off review activity only"
+      ],
+      "data_flow": "No live task/data exchange verified; no formal approval on PR #1662",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Codex",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "Prior Space health check BUILD_ERROR; no current deployment or restart performed",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Kaggle",
+      "authentication_status": "UNTESTED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow or submission tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Databricks",
+      "authentication_status": "READ_ONLY_CHECK_FAILED_HTTP_403",
+      "verified_capabilities": [],
+      "data_flow": "Prior read-only validation returned HTTP 403; no write attempted",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    }
+  ],
+  "coordination": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "independent_tasks_dispatched": 0,
+    "structured_evidence_exchange": "NONE",
+    "disagreement_resolution": "Repository evidence and primary sources only; no external platform consensus claimed",
+    "minority_objections": "Retained in repository research records",
+    "independent_red_team": "NOT_EXECUTED",
+    "fallback_policy": "Use local deterministic tests and public read-only sources; no provider credential bypass or privilege escalation"
+  }
+}
