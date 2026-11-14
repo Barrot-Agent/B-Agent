@@ -304,18 +304,29 @@ class TransportTests(unittest.TestCase):
         self.assertEqual(results["sequential"], results["async"])
 
     def test_probe_all_async_is_concurrent(self):
+        # The assertion is wall-clock based, so under CI load scheduler jitter
+        # can violate the margin even when async is genuinely concurrent.
+        # Retry measurement rounds and pass if any round demonstrates it.
         with StubServer() as server:
             cfgs = [
                 MCPServerConfig(name=f"s{i}", transport="remote", url=server.url) for i in range(4)
             ]
-            start = time.perf_counter()
-            probe_all(cfgs, mode="sequential", retries=0)
-            sequential = time.perf_counter() - start
-            start = time.perf_counter()
-            probe_all(cfgs, mode="async", retries=0)
-            concurrent = time.perf_counter() - start
-        # Each tools/list sleeps 0.12s; 4 sequential = ~0.48s, concurrent ~0.12s.
-        self.assertLess(concurrent, sequential * 0.75, (concurrent, sequential))
+            last_err = None
+            for _ in range(3):
+                start = time.perf_counter()
+                probe_all(cfgs, mode="sequential", retries=0)
+                sequential = time.perf_counter() - start
+                start = time.perf_counter()
+                probe_all(cfgs, mode="async", retries=0)
+                concurrent = time.perf_counter() - start
+                # Each tools/list sleeps 0.12s; 4 sequential = ~0.48s,
+                # concurrent ~0.12s.
+                try:
+                    self.assertLess(concurrent, sequential * 0.75, (concurrent, sequential))
+                    return
+                except AssertionError as exc:
+                    last_err = exc
+            raise last_err
 
     def test_stdio_disabled_by_default(self):
         cfg = MCPServerConfig(name="local", transport="stdio", command=["python3", "-c", "pass"])

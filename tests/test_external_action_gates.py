@@ -263,13 +263,13 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     for manifest in (
         "requirements.txt",
         "requirements-dev.txt",
-        "requirements.tx",
+        "requirements-integrations.txt",
         "pyproject.toml",
         "hf_space/requirements.txt",
         "legacy/requirements_legacy.txt",
     ):
         assert f'"{manifest}"' in workflow
-    assert "pip-audit -r requirements.tx --strict" in workflow
+    assert "pip-audit -r requirements-integrations.txt --strict" in workflow
 
     requirements = (ROOT / "requirements.txt").read_text(encoding="utf-8")
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
