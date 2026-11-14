@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "bny_institutional_scale_provenance_supplement",
+  "captured_at_utc": "2026-11-02T14:50:00Z",
+  "evidence_cutoff_utc": "2026-11-02T14:50:00Z",
+  "supplements_artifact": "20261102T142513Z-bny-coinbase-rlusd-xrp-custody-collateral-graph.json",
+  "primary_source": {
+    "publisher": "BNY",
+    "publication_date": "2026-10-15",
+    "url": "https://prodcs.bny.com/content/dam/bnymellon/documents/pdf/investor-relations/earnings/earnings-press-release-3q-2026.pdf",
+    "document": "BNY Third Quarter 2026 Earnings Press Release",
+    "cited_sections": [
+      "Consolidated financial highlights",
+      "Securities Services business segment highlights",
+      "Market and Wealth Services business segment highlights"
+    ]
+  },
+  "metrics_as_of_2026_09_30": {
+    "total_assets_under_custody_or_administration_usd_trillion": 63.4,
+    "total_assets_under_management_usd_trillion": 2.2,
+    "securities_on_loan_in_agency_securities_lending_program_usd_billion": 630,
+    "clearance_and_collateral_management_segment": {
+      "auca_usd_trillion": 17.1,
+      "q3_revenue_usd_million": 592,
+      "q3_revenue_year_over_year_change_percent": 12
+    }
+  },
+  "definitions_and_limits": [
+    "AUC/A means assets under custody and/or administration; it is not BNY proprietary investment capital or XRP exposure.",
+    "AUM is assets under management and must not be added to AUC/A as though the categories were disjoint.",
+    "The $630B securities-on-loan figure is for BNY's agency securities lending program, not digital-asset lending or XRP collateral.",
+    "BNY's collateral-management business scale does not establish that XRP is eligible collateral in BNY's current product set.",
+    "BNY's October 27 Ripple announcement separately confirms institutional XRP and RLUSD custody support; future RLUSD mint/redeem and tokenized trade-finance plans remain subject to approvals/client requirements."
+  ],
+  "research_implication": {
+    "classification": "INSTITUTIONAL_CAPACITY_CONTEXT",
+    "valid_use": "Contextualize BNY's custody, securities-lending and collateral-management scale when evaluating the significance of its XRP/RLUSD custody announcement.",
+    "invalid_use": [
+      "Do not infer XRP holdings from BNY AUC/A.",
+      "Do not infer XRP collateral acceptance from securities-on-loan totals.",
+      "Do not infer actual tokenized receivables volume or RLUSD settlement from announced exploration."
+    ]
+  },
+  "status": {
+    "source_readback": "VERIFIED",
+    "xrp_exposure": "NOT_DISCLOSED",
+    "xrp_collateral_eligibility": "NOT_ESTABLISHED"
+  }
+}

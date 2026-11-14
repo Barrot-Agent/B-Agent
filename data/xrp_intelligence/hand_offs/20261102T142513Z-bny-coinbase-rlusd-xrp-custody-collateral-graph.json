@@ -1,0 +1,427 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_institutional_relationship_and_custody_snapshot",
+  "captured_at_utc": "2026-11-02T14:25:13Z",
+  "evidence_cutoff_utc": "2026-11-02T14:25:13Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": {
+    "research": "EXECUTED",
+    "source_readback": "VERIFIED",
+    "chain_data_reconciliation": "NOT_EXECUTED",
+    "forecast": "NOT_ISSUED",
+    "real_money_use": "PROHIBITED_PENDING_OUT_OF_SAMPLE_AND_SHADOW_VALIDATION"
+  },
+  "findings": [
+    {
+      "id": "BNY_RIPPLE_CUSTODY_2026_10_27",
+      "classification": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "published_at": "2026-10-27",
+      "source": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "claims": [
+        "BNY states it is the primary reserve custodian for Ripple USD (RLUSD).",
+        "BNY states it has a custody relationship with Ripple Prime.",
+        "BNY says its Digital Asset Custody platform now supports native XRP and RLUSD for eligible institutional clients to safekeep, hold and transfer.",
+        "BNY intends to broaden support for tokenized assets and investment products issued on XRPL.",
+        "BNY and Ripple intend to enable eligible BNY clients to mint and redeem RLUSD directly through BNY, subject to final BNY and regulatory approvals.",
+        "BNY and Ripple intend to advance tokenized trade finance on XRPL, subject to client requirements.",
+        "As an initial exploration, Ripple and BNY are working with C2FO on a supply-chain-finance initiative involving approved receivables."
+      ],
+      "limits": [
+        "Custody support does not disclose client balances, custody inflows, trading volume or XRP collateral accepted by BNY.",
+        "Direct RLUSD mint/redeem access is a future intention, not a verified live production capability in this announcement.",
+        "Tokenized trade finance and the C2FO initiative are exploratory; no production receivables volume or capital deployed is disclosed.",
+        "The announcement's broad discussion of collateral workflows does not establish that BNY currently accepts XRP as collateral."
+      ],
+      "contextual_scale": {
+        "assets_under_custody_or_administration_usd_trillion": 63.4,
+        "assets_under_management_usd_trillion": 2.2,
+        "as_of": "2026-09-30",
+        "classification": "BNY_company_reported_scale_not_XRP_exposure"
+      }
+    },
+    {
+      "id": "COINBASE_RLUSD_LISTING_2026_10_28",
+      "classification": "CONFIRMED_REPORTED_LISTING",
+      "published_at": "2026-10-28",
+      "source": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "claims": [
+        "Reuters reports Coinbase planned RLUSD availability across retail and institutional platforms beginning October 28, 2026.",
+        "Reuters describes Circle USDC as Coinbase's flagship stablecoin for years, while Coinbase had expanded its stablecoin slate to include PYUSD and Open USD before adding RLUSD.",
+        "Reuters reported RLUSD market capitalization above USD 2.5 billion at publication, citing CoinGecko."
+      ],
+      "limits": [
+        "A listing does not establish net new RLUSD issuance, net deposits, trading depth, payment settlement or incremental XRP demand.",
+        "The reported market capitalization is a publication-time observation and must not be reused as a current value.",
+        "Coinbase's addition of RLUSD does not establish termination or material reduction of its USDC distribution relationship with Circle."
+      ]
+    },
+    {
+      "id": "COINBASE_CBXRP_RESERVE_2026_11_02",
+      "classification": "ISSUER_PUBLISHED_RESERVE_SNAPSHOT",
+      "source": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "provider_displayed_refresh": "2026-11-02 1:22 PM",
+      "provider_timezone": "NOT_DISCLOSED",
+      "values": {
+        "native_xrp_reserve": 150942337.33,
+        "cbxrp_total_supply": 150940089.8,
+        "cbxrp_base_supply": 150940089.796,
+        "calculated_reserve_excess_xrp": 2247.53,
+        "calculated_coverage_ratio": 1.00001489
+      },
+      "limits": [
+        "The displayed refresh time has no timezone; it is not normalized to UTC.",
+        "The reserve page is an issuer-published attestation/display, not an independent proof of every reserve address at a common pinned XRPL ledger and Base block.",
+        "cbXRP is a wrapped claim backed by Coinbase-held XRP and must not be counted as additional native XRP supply.",
+        "Reserve coverage does not disclose customer beneficial ownership or whether reserves are immediately available for sale."
+      ]
+    },
+    {
+      "id": "COINBASE_MORPHO_CBXRP_MARKET_PRIOR_SNAPSHOT",
+      "classification": "SECONDARY_ONCHAIN_MARKET_OBSERVATION",
+      "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "collateral_token": "0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+      "observation_reference": "Earlier November 2 capture around 10:11 UTC; not refreshed in this run",
+      "values": {
+        "cbxrp_collateral_approx": 118620000,
+        "collateral_value_usd_approx": 148400000,
+        "usdc_supplied_approx": 65690000,
+        "usdc_borrowed_approx": 59190000,
+        "utilization_percent_approx": 90.1,
+        "liquidation_threshold_percent": 62.5,
+        "liquidation_bonus_percent": 12.68
+      },
+      "limits": [
+        "This is not a synchronized current observation for the present artifact cutoff.",
+        "Morpho is permissionless; not all positions in the market can be attributed to Coinbase consumer loans.",
+        "Collateral deposits are not equivalent to new XRP spot purchases.",
+        "Liquidation of cbXRP does not by itself prove native XRP was sold; redemption and downstream disposition must be traced."
+      ]
+    }
+  ],
+  "relationship_graph": {
+    "nodes": [
+      {
+        "id": "BNY",
+        "type": "financial_institution"
+      },
+      {
+        "id": "Ripple",
+        "type": "digital_asset_company"
+      },
+      {
+        "id": "XRPL",
+        "type": "public_blockchain"
+      },
+      {
+        "id": "XRP",
+        "type": "native_digital_asset"
+      },
+      {
+        "id": "RLUSD",
+        "type": "issuer_stablecoin"
+      },
+      {
+        "id": "Coinbase",
+        "type": "exchange_custody_and_financial_platform"
+      },
+      {
+        "id": "Circle",
+        "type": "stablecoin_issuer"
+      },
+      {
+        "id": "USDC",
+        "type": "issuer_stablecoin"
+      },
+      {
+        "id": "Morpho",
+        "type": "permissionless_lending_protocol"
+      },
+      {
+        "id": "cbXRP",
+        "type": "wrapped_xrp_claim"
+      },
+      {
+        "id": "C2FO",
+        "type": "working_capital_platform"
+      }
+    ],
+    "edges": [
+      {
+        "from": "BNY",
+        "to": "RLUSD",
+        "relation": "primary_reserve_custodian",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "BNY",
+        "to": "Ripple",
+        "relation": "custody_relationship_with_Ripple_Prime",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "BNY",
+        "to": "XRP",
+        "relation": "institutional_digital_asset_custody_support",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "BNY",
+        "to": "RLUSD",
+        "relation": "institutional_digital_asset_custody_support",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "Ripple",
+        "to": "XRPL",
+        "relation": "ecosystem_and_technology_provider",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "XRPL",
+        "to": "XRP",
+        "relation": "native_asset",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "Ripple",
+        "to": "RLUSD",
+        "relation": "issuer",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27",
+          "COINBASE_RLUSD_LISTING_2026_10_28"
+        ]
+      },
+      {
+        "from": "BNY",
+        "to": "RLUSD",
+        "relation": "future_direct_mint_redeem_for_eligible_clients",
+        "status": "ANNOUNCED_INTENTION_SUBJECT_TO_APPROVAL",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "BNY",
+        "to": "C2FO",
+        "relation": "exploratory_supply_chain_finance_initiative_with_Ripple",
+        "status": "EXPLORATORY",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "C2FO",
+        "to": "XRPL",
+        "relation": "potential_tokenized_approved_receivables_workflow",
+        "status": "EXPLORATORY",
+        "source_ids": [
+          "BNY_RIPPLE_CUSTODY_2026_10_27"
+        ]
+      },
+      {
+        "from": "Coinbase",
+        "to": "RLUSD",
+        "relation": "retail_and_institutional_exchange_listing",
+        "status": "CONFIRMED_REPORTED",
+        "source_ids": [
+          "COINBASE_RLUSD_LISTING_2026_10_28"
+        ]
+      },
+      {
+        "from": "Coinbase",
+        "to": "Circle",
+        "relation": "USDC_distribution_and_economic_relationship",
+        "status": "CONFIRMED_FROM_PRIOR_SEC_RESEARCH",
+        "source_ids": [
+          "COINBASE_RLUSD_LISTING_2026_10_28"
+        ]
+      },
+      {
+        "from": "Circle",
+        "to": "USDC",
+        "relation": "issuer",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "COINBASE_RLUSD_LISTING_2026_10_28"
+        ]
+      },
+      {
+        "from": "Circle",
+        "to": "XRPL",
+        "relation": "USDC_native_issuance_relationship",
+        "status": "CONFIRMED_FROM_PRIOR_RESEARCH",
+        "source_ids": [
+          "COINBASE_RLUSD_LISTING_2026_10_28"
+        ]
+      },
+      {
+        "from": "Coinbase",
+        "to": "cbXRP",
+        "relation": "wrapped_xrp_issuer_and_reserve_custodian",
+        "status": "CONFIRMED",
+        "source_ids": [
+          "COINBASE_CBXRP_RESERVE_2026_11_02"
+        ]
+      },
+      {
+        "from": "cbXRP",
+        "to": "XRP",
+        "relation": "one_to_one_backing_claim",
+        "status": "ISSUER_PUBLISHED",
+        "source_ids": [
+          "COINBASE_CBXRP_RESERVE_2026_11_02"
+        ]
+      },
+      {
+        "from": "Morpho",
+        "to": "cbXRP",
+        "relation": "collateral_market",
+        "status": "SECONDARY_OBSERVATION",
+        "source_ids": [
+          "COINBASE_MORPHO_CBXRP_MARKET_PRIOR_SNAPSHOT"
+        ]
+      },
+      {
+        "from": "Morpho",
+        "to": "USDC",
+        "relation": "borrow_asset_market",
+        "status": "SECONDARY_OBSERVATION",
+        "source_ids": [
+          "COINBASE_MORPHO_CBXRP_MARKET_PRIOR_SNAPSHOT"
+        ]
+      }
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_INSTITUTIONAL_CUSTODY_EXPANDS_XRP_ACCESS",
+      "statement": "BNY custody support could lower operational barriers for institutions to hold and transfer XRP, eventually increasing institutional participation.",
+      "supporting_evidence": [
+        "BNY explicitly added XRP to its Digital Asset Custody platform for eligible institutional clients."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No client asset balances, new account counts, custody inflows or executed XRP transactions are disclosed."
+      ],
+      "required_tests": [
+        "BNY client asset disclosures",
+        "XRPL large-holder and exchange-flow changes",
+        "institutional OTC or custody-volume disclosures"
+      ],
+      "status": "PLAUSIBLE_NOT_YET_MEASURED"
+    },
+    {
+      "id": "H2_COINBASE_RLUSD_LISTING_DIVERSIFIES_STABLECOIN_SUPPLY",
+      "statement": "Coinbase's RLUSD listing expands multi-issuer stablecoin choice and may improve RLUSD access and liquidity while reducing single-issuer dependence.",
+      "supporting_evidence": [
+        "Reuters reports retail and institutional availability on Coinbase beginning October 28; Coinbase already supported USDC, PYUSD and Open USD."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No post-listing net issuance, Coinbase order-book depth, deposit/withdrawal volume or USDC substitution is measured."
+      ],
+      "required_tests": [
+        "RLUSD exchange balances by venue",
+        "Coinbase RLUSD/USDC order books and trades",
+        "issuer mint/redemption and cross-chain supply changes"
+      ],
+      "status": "PLAUSIBLE_NOT_YET_MEASURED"
+    },
+    {
+      "id": "H3_BNY_RIPPLE_TRADE_FINANCE_CREATES_FUTURE_XRPL_COLLATERAL_UTILITY",
+      "statement": "BNY and Ripple's planned RLUSD mint/redeem and exploratory C2FO receivables work could create payment, settlement and collateral workflows on XRPL.",
+      "supporting_evidence": [
+        "BNY and Ripple explicitly announced these intended workstreams."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Direct mint/redeem is subject to final BNY and regulatory approvals; trade finance is exploratory and subject to client requirements."
+      ],
+      "required_tests": [
+        "Production launch announcement",
+        "Tokenized receivables issuance and transfer records",
+        "Actual collateral eligibility and settlement records"
+      ],
+      "status": "ANNOUNCED_INTENTION_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "id": "H4_COINBASE_MULTI_RAIL_STRATEGY_IS_NETWORK_NEUTRAL",
+      "statement": "Coinbase may monetize custody, stablecoin distribution, derivatives and lending across competing networks rather than depending on XRP or XRPL specifically.",
+      "supporting_evidence": [
+        "Coinbase supports USDC, PYUSD, Open USD and RLUSD; cbXRP lending is on Base, while RLUSD is listed as an exchange asset."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The existence of multi-network products does not reveal internal capital allocation or customer route preferences."
+      ],
+      "required_tests": [
+        "Revenue and volume by asset/network",
+        "Cross-chain transfer and redemption flows",
+        "Product-level customer balances"
+      ],
+      "status": "PLAUSIBLE_STRATEGIC_INTERPRETATION"
+    }
+  ],
+  "data_quality_controls": [
+    "Do not equate institutional custody with collateral acceptance.",
+    "Do not equate announced future functionality with live production capability.",
+    "Do not equate exchange listing with net new token issuance or net external settlement.",
+    "Do not count cbXRP supply as additional native XRP supply.",
+    "Do not attribute all permissionless Morpho market positions to Coinbase.",
+    "Keep provider display timestamps with unknown timezone separate from UTC collector timestamps.",
+    "Preserve the earlier Morpho snapshot as historical; do not relabel it current.",
+    "Keep Circle USDC distribution relationship distinct from Ripple RLUSD issuance and Coinbase RLUSD listing."
+  ],
+  "forecast_policy": {
+    "status": "NOT_ISSUED",
+    "reason": "This institutional evidence establishes product availability and announced intentions, not measurable incremental XRP demand or calibrated price direction.",
+    "required_before_forecast": [
+      "Synchronized raw XRPL and Base snapshots",
+      "Historical exchange and order-book depth",
+      "ETF flow and holdings series",
+      "XRP and RLUSD venue-level flow series",
+      "Point-in-time feature snapshots",
+      "Fixed-horizon walk-forward evaluation",
+      "Baseline comparisons and calibration",
+      "Shadow/paper evaluation with immutable outcomes"
+    ]
+  },
+  "next_actions": [
+    "Monitor BNY custody product usage disclosures and any first XRP/RLUSD client activity.",
+    "Verify whether BNY direct RLUSD mint/redeem becomes operational and record the exact approval/launch date.",
+    "Track Coinbase RLUSD balances, order-book depth, deposits, withdrawals and venue share after the October 28 listing.",
+    "Reconcile cbXRP Base total supply with the Coinbase reserve-address set at a pinned XRPL ledger and Base block.",
+    "Track Morpho collateral, debt, utilization, liquidation events and subsequent redemption/market-sale routes.",
+    "Determine whether BNY's future collateral language ever becomes explicit XRP collateral eligibility; do not infer it from custody.",
+    "Reconcile Circle-USDC/Coinbase economics using separate SEC-defined metrics and the latest Circle filing.",
+    "Preserve competing network hypotheses: XRPL complementarity, Arc/Base competition and Coinbase multi-rail neutrality."
+  ],
+  "safety": {
+    "branch_from_main": "b4a23f283cad93dc926b6b3cf8d55b55f2fb1053",
+    "append_only": true,
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "real_money_transaction": false
+  }
+}

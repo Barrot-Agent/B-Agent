@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_derivatives_etf_latest_observation",
+  "captured_at_utc": "2026-11-02T14:42:00Z",
+  "evidence_cutoff_utc": "2026-11-02T14:42:00Z",
+  "observations": [
+    {
+      "id": "TRADRADAR_XRP_2026_11_02_1410Z",
+      "provider": "TradRadar",
+      "source": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-02T14:10:00Z",
+      "values": {
+        "mark_price_usd": 1.2531,
+        "price_change_24h_percent": 0.07,
+        "open_interest_usd": 1910000000,
+        "open_interest_venue_count": 7,
+        "open_interest_change_24h_percent": 0.65,
+        "funding_percent_per_8h": 0.0071,
+        "liquidations_24h_usd_at_least": 1310000,
+        "long_liquidations_usd": 917600,
+        "short_liquidations_usd": 390260,
+        "long_short_account_ratio": 3.54,
+        "long_account_share_percent": 78
+      },
+      "methodology_notes": [
+        "TradRadar says its figures are delayed by 15 minutes.",
+        "Its long/short ratio is based on accounts, not notional position size.",
+        "Liquidation data is a lower bound because exchanges disclose only part of real-time liquidations."
+      ]
+    },
+    {
+      "id": "KODEXIUS_XRP_2026_11_02_1319Z",
+      "provider": "Kodexius",
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "observed_at_utc": "2026-11-02T13:19:00Z",
+      "values": {
+        "open_interest_usd": 770130000,
+        "contract_count": 7,
+        "funding_percent_per_8h": 0.0068,
+        "volume_24h_usd": 684080000,
+        "open_interest_to_volume_ratio": 1.13,
+        "exchange_open_interest_usd": {
+          "Binance": 381560000,
+          "Bybit": 156820000,
+          "OKX": 103920000,
+          "Hyperliquid": 99640000,
+          "HTX": 28190000
+        }
+      },
+      "methodology_notes": [
+        "Kodexius documents seven contracts across Binance, Bybit, OKX, Hyperliquid and HTX.",
+        "This scope is not identical to TradRadar's seven-exchange aggregation."
+      ]
+    },
+    {
+      "id": "BYKARANTEL_XRP_ETF_2026_11_02_0909Z",
+      "provider": "ByKaranteli",
+      "source": "https://bykaranteli.com/etf/xrp",
+      "observed_at_utc": "2026-11-02T09:09:00Z",
+      "event_date": "2026-10-30",
+      "values": {
+        "daily_net_flow_usd": -496000,
+        "five_day_net_flow_usd": 4300000,
+        "cumulative_net_inflows_usd": 1810000000,
+        "net_assets_usd": 1420000000,
+        "by_fund_usd": {
+          "Bitwise": -694000,
+          "Franklin": 0,
+          "Canary": 922000,
+          "21Shares": 0,
+          "Grayscale": -725000
+        },
+        "displayed_fund_sum_usd": -497000
+      },
+      "methodology_notes": [
+        "The provider reports aggregate daily net flow of -496K USD while displayed rounded fund rows sum to -497K USD; retain the 1K rounding/reconciliation difference.",
+        "October 30 is the latest U.S. trading day in the capture.",
+        "Net assets, cumulative net inflows and daily creations/redemptions are different measures."
+      ]
+    }
+  ],
+  "cross_provider_reconciliation": {
+    "open_interest": {
+      "status": "MATERIAL_SCOPE_DISAGREEMENT",
+      "tradradar_usd": 1910000000,
+      "kodexius_usd": 770130000,
+      "ratio_approx": 2.48,
+      "rule": "Do not average. Reconcile contract identifiers, venue inclusion, coin-margined versus stablecoin-margined contracts, and open-interest conversion units."
+    },
+    "positioning": {
+      "status": "CROWDING_RISK_FEATURE_ONLY",
+      "observations": [
+        "TradRadar reports 78% long accounts and +0.0071% eight-hour funding."
+      ],
+      "limits": [
+        "Account share is not notional exposure; funding is positive but not extreme by itself; no synchronized spot depth or liquidation map is included."
+      ]
+    },
+    "etf_flows": {
+      "status": "CROSS_PROVIDER_ROUNDED_CORROBORATION",
+      "daily_net_flow_usd": -496000,
+      "fund_row_sum_usd": -497000,
+      "cumulative_net_inflows_usd": 1810000000,
+      "net_assets_usd": 1420000000
+    }
+  },
+  "upcoming_event": {
+    "id": "CIRCLE_Q3_2026_RESULTS",
+    "scheduled_for": "2026-11-04T13:00:00Z",
+    "local_display": "November 4, 2026, 8:00 AM ET",
+    "source": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+    "status": "OFFICIALLY_SCHEDULED",
+    "monitoring_targets": [
+      "USDC circulation and growth by chain",
+      "Reserve income and reserve yield sensitivity",
+      "Coinbase distribution costs and revenue-sharing disclosures",
+      "Circle Payments Network transaction value versus count",
+      "Arc production usage versus announced capacity",
+      "USDC and RLUSD interoperability or competition evidence",
+      "Circle SBI Japan activity and JPYSC/USDC distribution evidence"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1_LONG_POSITIONING_CAN_AMPLIFY_A_DOWNSIDE_SHOCK",
+      "status": "PLAUSIBLE_NOT_FORECAST",
+      "support": [
+        "78% long accounts and positive funding in TradRadar snapshot"
+      ],
+      "counter": [
+        "Notional long/short exposure is not available; spot depth is not synchronized."
+      ],
+      "tests": [
+        "Venue-level notional long/short",
+        "Synchronized order-book depth",
+        "Liquidation clusters and realized liquidation events"
+      ]
+    },
+    {
+      "id": "H2_ETF_CUMULATIVE_DEMAND_CAN_COEXIST_WITH_DAILY_REDEMPTION",
+      "status": "CONFIRMED_SERIES_PATTERN",
+      "support": [
+        "+1.81B cumulative net inflows alongside -496K October 30 daily flow"
+      ],
+      "counter": [
+        "Short series and fund-reporting completeness limit inference about durable demand."
+      ],
+      "tests": [
+        "Daily issuer creations/redemptions",
+        "Trust holdings changes",
+        "Flow persistence over multiple sessions"
+      ]
+    },
+    {
+      "id": "H3_CUSTODY_AND_RLUSD_LISTING_NEED_FLOW_CONFIRMATION",
+      "status": "PLAUSIBLE_NOT_MEASURED",
+      "support": [
+        "BNY supports institutional XRP/RLUSD custody; Coinbase listed RLUSD"
+      ],
+      "counter": [
+        "No disclosed client custody inflows, RLUSD venue balances or incremental XRP buying."
+      ],
+      "tests": [
+        "Custody asset disclosures",
+        "Exchange deposits/withdrawals",
+        "RLUSD mint/redeem and XRP/USDC/RLUSD route flows"
+      ]
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Provider open-interest totals materially disagree, positioning is account-based, and the latest ETF event date is October 30. No calibrated fixed-horizon edge is established."
+  },
+  "safety": {
+    "public_data_only": true,
+    "no_trading": true,
+    "no_private_data": true
+  }
+}
