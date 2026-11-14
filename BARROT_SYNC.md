@@ -2,7 +2,7 @@
 # This file records repository state. It is not proof of provider authentication or data flow.
 
 ## Identity
-- Intended model gateway: LunaRoute / GLM. Authentication, permissions, and data flow remain UNVERIFIED.
+- Intended model gateway: LunaRoute / GLM. Authentication/data flow NOT VERIFIED; permissions and endpoint scopes also remain UNVERIFIED.
 - Canonical repository: github.com/Barrot-Agent/B-Agent.
 - Barrot V3 is the protected execution, orchestration, authorization, and verification foundation.
 - XRP intelligence and prediction-engine mastery is the highest-priority mission.

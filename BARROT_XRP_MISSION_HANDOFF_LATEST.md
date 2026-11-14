@@ -3404,3 +3404,12 @@ NO MERGE. PR #1662 remains draft. Independent approval, least-privilege GitHub a
 
 ### Next action
 Finish the full repository suite and PR dependency audit on `9f36a46`; reconcile any failures on the existing branch; then continue independent review and governance. Keep forecasts disabled until the candidate-model and shadow-evaluation standards are met.
+
+
+### Run133 full-suite diagnosis and correction
+- Exact head `c09cca5` full repository suite completed with 3,676 passed, 8 subtests passed, 2 failed, in 164.01 seconds; inclusive coverage 62.4%.
+- Failure 1: `test_barrot_sync_does_not_claim_unverified_credentials_or_oauth_revocation` required the literal status phrase `Authentication/data flow NOT VERIFIED`. The safety meaning was present but the exact canonical status phrase was absent.
+- Failure 2: `test_primary_mission_resource_is_declared_as_package_data` required the package discovery include list to use the canonical order `barrot_agent, barrot_agent.*, data, directive_platform, directive_platform.*`. The package set was correct but ordered differently.
+- Both are assertion/contract mismatches, not runtime defects. No tests were modified or weakened.
+- Corrective changes: restore the exact canonical authentication-status phrase in BARROT_SYNC.md and reorder the package include list in pyproject.toml.
+- The next exact-head full suite, wheel build, core tests, and dependency/security gates must verify these corrections. The failed c09cca5 result is not represented as a pass.

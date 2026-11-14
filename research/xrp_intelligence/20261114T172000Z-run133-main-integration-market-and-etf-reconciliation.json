@@ -81,6 +81,29 @@
         "git push || true"
       ],
       "sync_verified": false
+    },
+    "corrected_head_full_suite": {
+      "head": "c09cca5405441a1cbbd5d1aa357185e3aa48bac4",
+      "run_id": 43620600501,
+      "tests_passed": 3676,
+      "subtests_passed": 8,
+      "failures": 2,
+      "duration_seconds": 164.01,
+      "inclusive_coverage_pct": 62.4,
+      "failures_detail": [
+        {
+          "test": "test_barrot_sync_does_not_claim_unverified_credentials_or_oauth_revocation",
+          "cause": "required literal status phrase Authentication/data flow NOT VERIFIED",
+          "resolution": "restored exact phrase in BARROT_SYNC.md"
+        },
+        {
+          "test": "test_primary_mission_resource_is_declared_as_package_data",
+          "cause": "canonical setuptools include-list order mismatch",
+          "resolution": "reordered include list in pyproject.toml"
+        }
+      ],
+      "wheel_build": "not reached after test failure",
+      "status": "failed; correction committed in next head"
     }
   },
   "xrp_market": {
@@ -228,5 +251,6 @@
     "https://alphafinance.io/etf/xrp/",
     "https://github.com/Barrot-Agent/B-Agent/actions/runs/43620412258",
     "https://github.com/Barrot-Agent/B-Agent/actions/runs/43620294965"
-  ]
+  ],
+  "next_head_verification": "pending"
 }
