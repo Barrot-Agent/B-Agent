@@ -1,12 +1,7 @@
 name: Cross Analysis
 
 on:
-  # Fire immediately after the Knowledge Signal Cycle produces fresh log.jsonl data
-  workflow_run:
-    workflows: ["Knowledge Signal Cycle"]
-    types: [completed]
-    branches: [main]
-  # Fallback cron kept as safety net
+  # Hourly fallback analyzes the checked-in snapshot; scripts label stale inputs explicitly.
   schedule:
     - cron: '50 * * * *'
   workflow_dispatch:
@@ -16,7 +11,6 @@ permissions:
 
 jobs:
   analyze:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -41,7 +35,7 @@ jobs:
         run: python3 scripts/entity_sentiment_profile.py
 
       - name: Upload read-only analysis outputs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cross-analysis-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
@@ -59,6 +53,7 @@ jobs:
           {
             echo "## Cross Analysis"
             echo
-            echo "Read-only analysis completed. Outputs are attached as a workflow artifact."
-            echo "No repository files were committed or pushed."
+            echo "This scheduled/manual fallback analyzes the checked-in snapshot; source freshness metadata must be inspected."
+            echo "Outputs are attached as a read-only workflow artifact. No repository files are committed or pushed."
+            echo "No external provider is called by this workflow."
           } >> "$GITHUB_STEP_SUMMARY"

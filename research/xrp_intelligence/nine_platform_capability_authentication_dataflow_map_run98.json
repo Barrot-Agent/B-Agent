@@ -1,0 +1,102 @@
+{
+  "schema_version": "barrot-nine-platform-map-v1",
+  "run": "Run98",
+  "captured_at_utc": "2026-11-13T15:41:00Z",
+  "coordination_status": "DESIGNED, not executed",
+  "data_transfer_occurred": false,
+  "least_privilege_status": "not satisfied for GitHub connector",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "current GitHub connector session verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "GitHub repository operations only",
+      "independent_task": "repository inspection, evidence normalization and test/CI reconciliation",
+      "status": "connected but overprivileged"
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "reserved for independent red-team review after authenticated data path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "reserved for independent macro/market counter-hypothesis review after authenticated data path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "reserved for independent source reconciliation after authenticated data path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "review artifacts visible on PR #1653",
+      "permissions": "review artifacts only evidenced",
+      "data_flow": "PR review comments; no formal approval on #1662",
+      "independent_task": "code review and red-team findings",
+      "status": "partial review artifact, not coordinated dispatch"
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "reserved for implementation review after authenticated data path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "no current test",
+      "permissions": "unverified",
+      "data_flow": "previous BUILD_ERROR; no deployment",
+      "independent_task": "future shadow inference only after explicit deployment approval",
+      "status": "unverified"
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "untested",
+      "permissions": "unverified",
+      "data_flow": "none; no submission",
+      "independent_task": "future public-data dataset validation only after explicit per-action approval",
+      "status": "unverified"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "previous HTTP 403",
+      "permissions": "unverified",
+      "data_flow": "no write",
+      "independent_task": "future historical feature analytics only after verified read access and explicit write approval",
+      "status": "unverified"
+    }
+  ],
+  "additional_internal_provider": {
+    "name": "LunaRoute",
+    "counted_among_nine": false,
+    "authentication": "unverified",
+    "data_flow": "unverified",
+    "status": "no live connection claim"
+  },
+  "verification_notes": {
+    "current_pr": "#1662 remains draft with zero formal reviews, approvals and review threads.",
+    "github_authentication": "Read/write repository operations were successfully exercised in this run; least-privilege remains unsatisfied and branch-protection API reads return HTTP 403.",
+    "external_dispatch": false,
+    "data_transfer_occurred": false,
+    "coordination": "No Claude, Grok, Gemini, Copilot dispatch, Codex dispatch, Hugging Face deployment, Kaggle submission or Databricks write was performed."
+  }
+}

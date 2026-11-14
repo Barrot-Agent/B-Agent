@@ -1,0 +1,132 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "evernorth-sbi-39-9-class-a-threshold-and-filing-attribution-20261108T050336Z",
+  "captured_at_utc": "2026-11-08T05:03:36Z",
+  "data_cutoff_utc": "2026-11-08T05:03:36Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "status": {
+    "primary_source_review": "VERIFIED",
+    "interpretation": "CORRECTED",
+    "filing_to_filing_share_count_reconciliation": "UNRESOLVED",
+    "prior_artifacts": "PRESERVED_UNCHANGED",
+    "forecast": "NOT_ISSUED"
+  },
+  "correction_scope": "Correct the latest Evernorth capital reconciliation's description of the 39.9% SBI-affiliated threshold and correct the source attribution of the 2,359,038 Class C share figure. Preserve prior artifacts and the separate earlier 8-K disclosure.",
+  "applies_to_prior_artifacts": [
+    {
+      "artifact_id": "20261108T044733Z-evernorth-capital-structure-final-reconciliation",
+      "correction": "Its phrase '39.9% Class A voting cap' is inaccurate. The October 30 424B3 describes a 39.9% ownership threshold of outstanding Pubco Class A Common Stock, with excess shares issued as Class C. It does not call this a voting-power cap."
+    },
+    {
+      "artifact_id": "evernorth-equity-instrument-inventory-and-sbi-affiliate-class-c-20261103",
+      "correction": "The 2,359,038 SBI-affiliated Class C shares are stated in the October 30 424B3, not in the October 9 8-K. The 8-K reports different aggregate class counts for Advance and Delayed Funding Subscribers and does not identify the 2,359,038 as SBI-specific."
+    },
+    {
+      "artifact_id": "evernorth-sbi-class-c-a-plus-c-ratio-arithmetic-20261103T133112Z",
+      "correction": "Its arithmetic ratio remains a simple class-count ratio only; it must not be interpreted as voting power or total beneficial ownership."
+    }
+  ],
+  "corrected_facts": {
+    "sbi_affiliated_class_a_threshold": {
+      "issuer_named_party": "Certain investors affiliated with SBI Holdings, Inc.",
+      "agreement": "Advance Funding Subscription Agreements",
+      "percentage": 39.9,
+      "denominator": "Outstanding Pubco Class A Common Stock",
+      "excess_share_treatment": "Pubco Class C Common Stock",
+      "class_c_convertible_to_class_a_under_governing_documents": true,
+      "classification": "CLASS_A_ISSUANCE_OWNERSHIP_THRESHOLD_NOT_VOTING_POWER_CAP",
+      "not_a_voting_power_cap": true,
+      "not_proof_of_sbi_holdings_direct_registered_ownership": true,
+      "not_proof_of_total_39_9_percent_beneficial_ownership": true,
+      "primary_source_locations": [
+        "SEC 424B3, lines 6669-6682",
+        "SEC 424B3, lines 6692-6699",
+        "SEC 424B3, lines 7449-7459"
+      ]
+    },
+    "closing_share_disclosures": {
+      "sec_424b3_advance_and_delayed_class_a_shares": 11748249,
+      "sec_424b3_advance_and_delayed_class_c_shares": 2359038,
+      "sec_424b3_class_c_attribution": "The filing states these Class C shares were issued to certain investors affiliated with SBI Holdings, Inc. as a result of the 39.9% ownership threshold.",
+      "sec_8k_advance_funding_class_a_shares": 10123015,
+      "sec_8k_advance_funding_class_c_shares": 2905659,
+      "sec_8k_delayed_funding_class_a_shares": 663510,
+      "sec_8k_sbi_specific_class_c_count": null,
+      "reconciliation_status": "UNRESOLVED_DIFFERENT_ISSUER_DISCLOSURES",
+      "reconciliation_note": "The October 9 8-K reports 10,123,015 Class A and 2,905,659 Class C shares for Advance Funding Subscribers, plus 663,510 Class A shares for Delayed Funding Subscribers. The October 30 424B3 later reports 11,748,249 Class A and 2,359,038 Class C shares for the combined Advance and Delayed Subscription Agreements, and identifies the latter Class C shares as issued to certain SBI affiliates. The reviewed excerpts do not provide a bridge between these aggregate counts. The two filings are from the same issuer and are not independent confirmations.",
+      "source_locations": [
+        "SEC 8-K, lines 94-105",
+        "SEC 424B3, lines 6692-6699",
+        "SEC 424B3, lines 7449-7459"
+      ]
+    },
+    "distinct_thresholds": {
+      "sbi_affiliated_investors": {
+        "percentage": 39.9,
+        "denominator": "Outstanding Pubco Class A Common Stock",
+        "meaning": "Class A share issuance/ownership threshold; excess shares issued as Class C."
+      },
+      "arrington_sponsor": {
+        "percentage": 19.9,
+        "denominator": "Pubco total voting power",
+        "meaning": "The prospectus expressly describes this as a voting ownership threshold."
+      },
+      "ripple_and_contributor_related_party_entity": {
+        "percentage": 9.9,
+        "denominator": "Pubco total outstanding voting power",
+        "meaning": "Combined voting-power restriction; excess interests are issued as Pathfinder Company Units."
+      }
+    },
+    "attribution_limit": "The issuer identifies certain investors affiliated with SBI Holdings. It does not identify all Advance Funding or Delayed Funding subscribers as SBI affiliates. Do not attribute the aggregate $214.05 million cash, 600,000 XRP, $10.5 million delayed cash or 200,000 delayed XRP to SBI."
+  },
+  "source_records": [
+    {
+      "source_id": "S1",
+      "type": "PRIMARY_SEC_424B3",
+      "publisher": "Evernorth Holdings Inc.",
+      "filing_date": "2026-10-30",
+      "title": "Prospectus for up to 5,218,935 Pubco Class A shares under the Cantor committed equity facility",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "relevant_lines": [
+        "6669-6682",
+        "6692-6699",
+        "7449-7459"
+      ],
+      "accessed_at_utc": "2026-11-08T05:03:36Z",
+      "raw_http_wire_bytes_retained": false,
+      "raw_source_sha256": null
+    },
+    {
+      "source_id": "S2",
+      "type": "PRIMARY_SEC_8K",
+      "publisher": "Evernorth Holdings Inc.",
+      "filing_date": "2026-10-09",
+      "accession": "0001193125-26-419146",
+      "title": "Current Report on Form 8-K — closing and private placements",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "relevant_lines": [
+        "94-105",
+        "117-120",
+        "133-135"
+      ],
+      "accessed_at_utc": "2026-11-08T05:03:36Z",
+      "raw_http_wire_bytes_retained": false,
+      "raw_source_sha256": null
+    }
+  ],
+  "source_independence": {
+    "issuer_filings_same_issuer": true,
+    "independent_confirmation_count": 0,
+    "note": "The 424B3 and 8-K are different issuer filings but not independent source families. No transfer-agent register, subscriber-level cap table or independently authenticated beneficial-ownership schedule was available in this review."
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Corporate equity issuance classifications and unresolved share-count differences are not synchronized XRP market features.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Preserve both filing-specific share-count disclosures with their dates and scope.",
+    "Seek a later issuer filing, transfer-agent statement or subscriber-level cap table that reconciles the Class A/Class C count difference and identifies the relevant SBI-affiliated subscribers.",
+    "Do not describe 39.9% as voting power, direct SBI Holdings ownership or total beneficial ownership."
+  ]
+}

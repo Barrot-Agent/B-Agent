@@ -3,6 +3,8 @@ from __future__ import annotations
 import builtins
 import importlib.util
 import json
+import pytest
+import re
 import sys
 from pathlib import Path
 
@@ -417,18 +419,18 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_requires_approval_and_restores_main() -> None:
+def test_self_upgrade_workflow_has_no_active_execution_path_until_dedup_is_verified() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
-    assert 'ref: ${{ github.ref_name }}' in workflow
-    assert "confirm_external_change" in workflow
-    assert "inputs.confirm_external_change == 'YES'" in workflow
-    assert "github.ref == 'refs/heads/main'" in workflow
-    assert "python3 scripts/barrot_self_upgrade.py" in workflow
-    assert "--persist-audit-report" not in workflow
-    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' not in workflow
-    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' not in workflow
-    assert "git checkout main" not in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "issues:" not in workflow
+    assert "schedule:" not in workflow
+    assert "push:" not in workflow
+    assert "contents: write" not in workflow
+    assert "pull-requests: write" not in workflow
+    assert "scripts/barrot_self_upgrade.py" not in workflow
 
 
 def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
@@ -447,6 +449,11 @@ def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
 def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("ISSUE_NUMBER", "1197")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-issue-comment-approval")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "barrot/comment-test")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "issue_comment")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
         "barrot_agent_comment_tempfile_lifetime_test",
@@ -454,6 +461,7 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
     observed: dict[str, str] = {}
     monkeypatch.setattr(module, "ISSUE", "1197")
     monkeypatch.setattr(module, "REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setattr(module, "BRANCH", "barrot/comment-test")
 
     class Result:
         returncode = 0
@@ -470,98 +478,69 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
 
     assert observed["body"] == "test failure report"
 
-def test_barrot_groq_daily_token_limit_falls_back_without_waiting(monkeypatch) -> None:
+def test_barrot_groq_daily_token_limit_fails_without_retry_or_fallback(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
-    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
-        "barrot_agent_groq_daily_limit_fallback_test",
+        "barrot_agent_groq_daily_limit_no_retry_test",
     )
     monkeypatch.setattr(module, "GROQ_KEY", "test-key")
     calls: list[str] = []
-
-    class Response:
-        def __enter__(self):
-            return self
-
-        def __exit__(self, exc_type, exc, tb):
-            del exc_type, exc, tb
-            return False
-
-        def read(self, *args, **kwargs):
-            del args, kwargs
-            return b'{"ok": true}'
 
     def fake_urlopen(request, timeout=0):
         del timeout
         payload = json.loads(request.data.decode("utf-8"))
         calls.append(payload["model"])
-        if len(calls) == 1:
-            body = b'{"error":{"message":"tokens per day limit reached. Please try again in 22m0s."}}'
-            raise urllib.error.HTTPError(
-                "https://api.groq.com/openai/v1/chat/completions",
-                429,
-                "Too Many Requests",
-                hdrs=None,
-                fp=io.BytesIO(body),
-            )
-        return Response()
+        body = b'{"error":{"message":"tokens per day limit reached. Please try again in 22m0s."}}'
+        raise urllib.error.HTTPError(
+            "https://api.groq.com/openai/v1/chat/completions",
+            429,
+            "Too Many Requests",
+            hdrs=None,
+            fp=io.BytesIO(body),
+        )
 
     monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
-    result = module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_DAILY"):
+        module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
 
-    assert result == {"ok": True}
-    assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+    assert calls == ["openai/gpt-oss-120b"]
 
-def test_barrot_groq_tpm_limit_retries_same_model_once(monkeypatch) -> None:
+def test_barrot_groq_tpm_limit_fails_without_retry_or_waiting(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
-        "barrot_agent_groq_tpm_retry_test",
+        "barrot_agent_groq_tpm_no_retry_test",
     )
     monkeypatch.setattr(module, "GROQ_KEY", "test-key")
     sleeps: list[float] = []
     calls = {"count": 0}
-    monkeypatch.setattr(module.time, "sleep", lambda seconds: sleeps.append(seconds))
-
-    class Response:
-        def __enter__(self):
-            return self
-
-        def __exit__(self, exc_type, exc, tb):
-            del exc_type, exc, tb
-            return False
-
-        def read(self, *args, **kwargs):
-            del args, kwargs
-            return b'{"ok": true}'
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: pytest.fail("TPM failure must not wait/retry"))
 
     def fake_urlopen(request, timeout=0):
         del request, timeout
         calls["count"] += 1
-        if calls["count"] == 1:
-            body = b'{"error":{"message":"tokens per minute limit reached. Please try again in 5.1s."}}'
-            raise urllib.error.HTTPError(
-                "https://api.groq.com/openai/v1/chat/completions",
-                429,
-                "Too Many Requests",
-                hdrs=None,
-                fp=io.BytesIO(body),
-            )
-        return Response()
+        body = b'{"error":{"message":"tokens per minute limit reached. Please try again in 5.1s."}}'
+        raise urllib.error.HTTPError(
+            "https://api.groq.com/openai/v1/chat/completions",
+            429,
+            "Too Many Requests",
+            hdrs=None,
+            fp=io.BytesIO(body),
+        )
 
     monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
-    result = module._send_groq_request({"model": "openai/gpt-oss-20b", "messages": []})
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request({"model": "openai/gpt-oss-20b", "messages": []})
 
-    assert result == {"ok": True}
-    assert calls["count"] == 2
-    assert sleeps == [5.1]
+    assert calls["count"] == 1
+    assert sleeps == []
 
 def test_repo_browser_search_treats_empty_path_as_repository_root(monkeypatch, tmp_path: Path) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
@@ -719,10 +698,14 @@ def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
 
     assert "contents: read" in lowered
     assert "persist-credentials: false" in lowered
-    assert "actions/upload-artifact@v4" in lowered
+    upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", lowered)
+    assert upload_ref and int(upload_ref.group(1)) >= 7
     assert "retention-days: 30" in lowered
     assert "if-no-files-found: error" in lowered
-    assert "conclusion == 'success'" in lowered
+    assert "schedule:" in lowered
+    assert "workflow_dispatch:" in lowered
+    assert "workflow_run:" not in lowered
+    assert "actions/download-artifact" not in lowered
 
     for token in (
         "contents: write",
@@ -733,3 +716,117 @@ def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
         "secrets.",
     ):
         assert token not in lowered, token
+
+def _assert_unattended_writer_is_quarantined(relative_path: str) -> str:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / relative_path
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "workflow_dispatch" in lowered, relative_path
+    assert "schedule:" not in lowered, relative_path
+    assert "permissions: {}" in lowered, relative_path
+    assert re.search(
+        r"^\s+if:\s*(?:false|\$\{\{\s*false\s*\}\})\s*$",
+        lowered,
+        re.MULTILINE,
+    ), relative_path
+
+    for forbidden in (
+        "secrets.",
+        "git push",
+        "gh issue create",
+        "gh issue close",
+        "gh issue comment",
+        "gh pr merge",
+        "actions: write",
+        "contents: write",
+        "issues: write",
+        "pull-requests: write",
+        "DATABRICKS_TOKEN",
+        "GUMROAD_ACCESS_TOKEN",
+    ):
+        assert forbidden.lower() not in lowered, f"{relative_path} still contains {forbidden!r}"
+    return workflow
+
+
+def test_scheduler_tick_is_disabled_until_safe_state_and_allowlist_exist() -> None:
+    workflow = _assert_unattended_writer_is_quarantined("scheduler-tick.yml")
+    for forbidden in ("scripts/scheduler.py", "max_prs", "pull --no-rebase"):
+        assert forbidden not in workflow
+
+
+def test_scheduled_subscriber_and_issue_writers_remain_quarantined() -> None:
+    paths = (
+        "subscriber_sync.yml",
+        "daily-digest.yml",
+        "auto-resolve-issues.yml",
+        "barrot-autonomous-resolver.yml",
+        "self-schedule.yml",
+    )
+    for path in paths:
+        _assert_unattended_writer_is_quarantined(path)
+
+
+def test_merge_queue_is_disabled_until_per_pr_authorization_is_verified() -> None:
+    workflow = _assert_unattended_writer_is_quarantined("merge-queue.yml")
+    for forbidden in ("gh pr merge", "update-branch", "--delete-branch", "mode: all", "max_prs"):
+        assert forbidden not in workflow
+
+
+def test_public_brain_corpus_export_is_inert_and_preserves_existing_dumps() -> None:
+    workflow = _assert_unattended_writer_is_quarantined("dump-brain-corpus.yml")
+    assert "scripts/dump_brain_corpus.py" not in workflow
+
+    script_path = REPO_ROOT / "scripts" / "dump_brain_corpus.py"
+    source = script_path.read_text(encoding="utf-8")
+    assert "DISABLED: public brain-corpus export is not authorized." in source
+    assert "import requests" not in source
+    assert "DATABRICKS_TOKEN" not in source
+    assert "https://" not in source
+
+    module = load_script(script_path, "dump_brain_corpus_inert_regression_test")
+    assert module.main() == 2
+
+
+def test_barrot_groq_tpm_413_fails_once_without_retry_or_fallback(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BRAIN_MODEL", "openai/gpt-oss-120b")
+    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_groq_tpm_413_budget_test",
+    )
+    monkeypatch.setattr(module, "GROQ_KEY", "test-key")
+    calls = []
+
+    def fake_urlopen(request, timeout=0):
+        del timeout
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
+        body = (
+            b'{"error":{"message":"Request too large for model on tokens per minute '
+            b'(TPM): Limit 8000, Requested 8099.","code":"rate_limit_exceeded"}}'
+        )
+        raise urllib.error.HTTPError(
+            "https://api.groq.com/openai/v1/chat/completions",
+            413,
+            "Request Entity Too Large",
+            hdrs=None,
+            fp=io.BytesIO(body),
+        )
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    with pytest.raises(RuntimeError, match="LLM_RATE_LIMITED_TPM"):
+        module._send_groq_request(
+            {
+                "model": "openai/gpt-oss-120b",
+                "messages": [{"role": "user", "content": "small"}],
+                "max_tokens": 128,
+            }
+        )
+
+    assert calls == ["openai/gpt-oss-120b"]

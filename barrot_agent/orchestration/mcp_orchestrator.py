@@ -38,6 +38,8 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, Generator, List, Optional
 
+from barrot_agent.mcp_approval import ActionType, ApprovalDecision, ApprovalRequest, MCPApprovalGate
+
 logger = logging.getLogger(__name__)
 
 
@@ -64,11 +66,14 @@ class OrchestratorConfig:
     github_repo: str = "B-Agent"
     github_branch: str = "Main"
 
-    # Pipeline behaviour
-    download_models: bool = True
-    use_databricks: bool = True
-    commit_to_github: bool = True
-    trigger_cicd: bool = True
+    # External operations are opt-in and remain blocked unless the per-action
+    # approval gate grants permission. Headless/default operation fails closed.
+    download_models: bool = False
+    use_databricks: bool = False
+    commit_to_github: bool = False
+    trigger_cicd: bool = False
+    approval_mode: str = "always_deny"
+    interactive_approval: bool = False
     databricks_poll_interval: int = 15  # seconds
     databricks_timeout: int = 3600  # seconds
 
@@ -158,6 +163,10 @@ class MCPOrchestrator:
         self._hf: Optional[Any] = None
         self._db: Optional[Any] = None
         self._gh: Optional[Any] = None
+        self._approval_gate = MCPApprovalGate(
+            mode=self.config.approval_mode,
+            interactive=self.config.interactive_approval,
+        )
 
     # ------------------------------------------------------------------
     # Lazy client initialisation
@@ -192,6 +201,20 @@ class MCPOrchestrator:
                 branch=self.config.github_branch,
             )
         return self._gh
+
+    def _request_approval(
+        self,
+        action_type: ActionType,
+        server_id: str,
+        description: str,
+    ) -> ApprovalDecision:
+        """Require a fresh decision for each external side effect."""
+        request = ApprovalRequest(
+            action_type=action_type,
+            server_id=server_id,
+            description=description,
+        )
+        return self._approval_gate.request_approval(request)
 
     # ------------------------------------------------------------------
     # Config validation
@@ -239,31 +262,44 @@ class MCPOrchestrator:
         # Step 1 – HF model downloads
         # ------------------------------------------------------------------
         if self.config.download_models:
-            yield OrchestratorEvent(
-                step=OrchestratorStep.HF_MODELS,
-                message="Checking / downloading AI models via Hugging Face MCP…",
-                progress=0.05,
+            approval = self._request_approval(
+                ActionType.INSTALL,
+                "huggingface",
+                f"Download the Stupid Sindy model set for episode {episode_number}.",
             )
-            try:
-                hf = self._get_hf()
-                results = hf.ensure_sindy_models()
-                failed = [m for m, p in results.items() if p is None]
-                if failed:
-                    logger.warning("Some models could not be downloaded: %s", failed)
+            if not approval.approved:
                 yield OrchestratorEvent(
                     step=OrchestratorStep.HF_MODELS,
-                    message=f"Models ready ({len(results) - len(failed)}/{len(results)} cached)",
+                    message="HF model download blocked; explicit approval required.",
                     progress=0.15,
-                    details={"cached": [m for m, p in results.items() if p], "failed": failed},
+                    details={"approval": "denied", "request_id": approval.request_id, "reason": approval.reason},
                 )
-            except Exception as exc:
-                logger.error("HF model step failed: %s", exc)
+            else:
                 yield OrchestratorEvent(
                     step=OrchestratorStep.HF_MODELS,
-                    message="HF model download skipped (non-fatal)",
-                    progress=0.15,
-                    details={"error": str(exc)},
+                    message="Checking / downloading AI models via Hugging Face MCP…",
+                    progress=0.05,
                 )
+                try:
+                    hf = self._get_hf()
+                    results = hf.ensure_sindy_models()
+                    failed = [m for m, p in results.items() if p is None]
+                    if failed:
+                        logger.warning("Some models could not be downloaded: %s", failed)
+                    yield OrchestratorEvent(
+                        step=OrchestratorStep.HF_MODELS,
+                        message=f"Models ready ({len(results) - len(failed)}/{len(results)} cached)",
+                        progress=0.15,
+                        details={"cached": [m for m, p in results.items() if p], "failed": failed},
+                    )
+                except Exception as exc:
+                    logger.error("HF model step failed: %s", exc)
+                    yield OrchestratorEvent(
+                        step=OrchestratorStep.HF_MODELS,
+                        message="HF model download skipped (non-fatal)",
+                        progress=0.15,
+                        details={"error": str(exc)},
+                    )
         else:
             yield OrchestratorEvent(
                 step=OrchestratorStep.HF_MODELS,
@@ -309,7 +345,16 @@ class MCPOrchestrator:
         # ------------------------------------------------------------------
         video_path: Optional[str] = None
 
-        if self.config.use_databricks and self._get_db().is_configured():
+        db_configured = bool(self.config.databricks_host and self.config.databricks_token)
+        db_approval = None
+        if self.config.use_databricks and db_configured:
+            db_approval = self._request_approval(
+                ActionType.WORKFLOW_EXECUTION,
+                "databricks",
+                f"Submit a Databricks rendering job for episode {episode_number}.",
+            )
+
+        if db_approval is not None and db_approval.approved and self._get_db().is_configured():
             # --- Databricks path ---
             from mcp_databricks import JobRunState  # noqa: F811
 
@@ -358,9 +403,16 @@ class MCPOrchestrator:
                     video_path = self._local_render(episode_number)
         else:
             # --- Local render path ---
+            if db_approval is not None and not db_approval.approved:
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.DATABRICKS_SUBMIT,
+                    message="Databricks job blocked by the approval gate; falling back to local rendering.",
+                    progress=0.30,
+                    details={"approval": "denied", "request_id": db_approval.request_id, "reason": db_approval.reason},
+                )
             yield OrchestratorEvent(
                 step=OrchestratorStep.LOCAL_RENDER,
-                message="Rendering episode locally (Databricks not configured)…",
+                message="Rendering episode locally (Databricks disabled, unconfigured, or not approved)…",
                 progress=0.30,
             )
             video_path = self._local_render(episode_number)
@@ -377,53 +429,54 @@ class MCPOrchestrator:
         # Step 4 – GitHub commit
         # ------------------------------------------------------------------
         if self.config.commit_to_github and video_path and Path(video_path).exists():
-            yield OrchestratorEvent(
-                step=OrchestratorStep.GITHUB_COMMIT,
-                message="Committing video and metadata to GitHub…",
-                progress=0.75,
+            approval = self._request_approval(
+                ActionType.REPO_WRITE,
+                "github",
+                f"Commit episode {episode_number} video and metadata to {self.config.github_owner}/{self.config.github_repo}:{self.config.github_branch}.",
             )
-            gh = self._get_gh()
+            if not approval.approved:
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.GITHUB_COMMIT,
+                    message="GitHub commit blocked; explicit repository-write approval required.",
+                    progress=0.88,
+                    details={"approval": "denied", "request_id": approval.request_id, "reason": approval.reason},
+                )
+            else:
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.GITHUB_COMMIT,
+                    message="Committing video and metadata to GitHub…",
+                    progress=0.75,
+                )
+                gh = self._get_gh()
+                try:
+                    from stupid_sindy_series_generator import get_episode as _get_ep
 
-            # Build metadata payload
-            try:
-                from stupid_sindy_series_generator import get_episode as _get_ep
-
-                ep_meta = _get_ep(episode_number)
-                metadata: Dict[str, Any] = {
-                    "episode_number": episode_number,
-                    "title": ep_meta.title,
-                    "description": ep_meta.description,
-                    "runtime_minutes": ep_meta.runtime_minutes,
-                    "characters": ep_meta.characters,
-                    "scene_count": len(ep_meta.scenes),
-                    "video_path": f"sindy_videos/ep{episode_number:02d}.mp4",
-                    "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                    "orchestrator": "mcp",
-                }
-            except Exception:
-                metadata = {
-                    "episode_number": episode_number,
-                    "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                }
-
-            meta_result = gh.commit_episode_metadata(episode_number, metadata)
-            vid_result = gh.commit_episode_video(episode_number, video_path)
-
-            record.github_commit_sha = vid_result.sha or meta_result.sha
-
-            yield OrchestratorEvent(
-                step=OrchestratorStep.GITHUB_COMMIT,
-                message=(
-                    "Committed to GitHub successfully"
-                    if vid_result.success
-                    else f"GitHub commit failed: {vid_result.error_message}"
-                ),
-                progress=0.88,
-                details={
-                    "video_commit": vid_result.sha,
-                    "metadata_commit": meta_result.sha,
-                },
-            )
+                    ep_meta = _get_ep(episode_number)
+                    metadata: Dict[str, Any] = {
+                        "episode_number": episode_number,
+                        "title": ep_meta.title,
+                        "description": ep_meta.description,
+                        "runtime_minutes": ep_meta.runtime_minutes,
+                        "characters": ep_meta.characters,
+                        "scene_count": len(ep_meta.scenes),
+                        "video_path": f"sindy_videos/ep{episode_number:02d}.mp4",
+                        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                        "orchestrator": "mcp",
+                    }
+                except Exception:
+                    metadata = {
+                        "episode_number": episode_number,
+                        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                    }
+                meta_result = gh.commit_episode_metadata(episode_number, metadata)
+                vid_result = gh.commit_episode_video(episode_number, video_path)
+                record.github_commit_sha = vid_result.sha or meta_result.sha
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.GITHUB_COMMIT,
+                    message=("Committed to GitHub successfully" if vid_result.success else f"GitHub commit failed: {vid_result.error_message}"),
+                    progress=0.88,
+                    details={"video_commit": vid_result.sha, "metadata_commit": meta_result.sha},
+                )
         elif self.config.commit_to_github:
             yield OrchestratorEvent(
                 step=OrchestratorStep.GITHUB_COMMIT,
@@ -434,24 +487,36 @@ class MCPOrchestrator:
         # ------------------------------------------------------------------
         # Step 5 – CI/CD trigger
         # ------------------------------------------------------------------
-        if self.config.trigger_cicd and self._get_gh().is_configured():
+        if self.config.trigger_cicd and self.config.github_token:
+            approval = self._request_approval(
+                ActionType.WORKFLOW_EXECUTION,
+                "github-actions",
+                f"Dispatch sindy-mcp-cicd.yml for episode {episode_number}.",
+            )
+            if not approval.approved:
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.CICD_TRIGGER,
+                    message="CI/CD dispatch blocked; explicit workflow-execution approval required.",
+                    progress=0.96,
+                    details={"approval": "denied", "request_id": approval.request_id, "reason": approval.reason},
+                )
+            elif self._get_gh().is_configured():
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.CICD_TRIGGER,
+                    message="Triggering CI/CD workflow…",
+                    progress=0.92,
+                )
+                gh = self._get_gh()
+                dispatch = gh.trigger_cicd(workflow_id="sindy-mcp-cicd.yml", episode_number=episode_number)
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.CICD_TRIGGER,
+                    message=("CI/CD workflow triggered" if dispatch.success else f"CI/CD trigger failed: {dispatch.error_message}"),
+                    progress=0.96,
+                )
+        elif self.config.trigger_cicd:
             yield OrchestratorEvent(
                 step=OrchestratorStep.CICD_TRIGGER,
-                message="Triggering CI/CD workflow…",
-                progress=0.92,
-            )
-            gh = self._get_gh()
-            dispatch = gh.trigger_cicd(
-                workflow_id="sindy-mcp-cicd.yml",
-                episode_number=episode_number,
-            )
-            yield OrchestratorEvent(
-                step=OrchestratorStep.CICD_TRIGGER,
-                message=(
-                    "CI/CD workflow triggered"
-                    if dispatch.success
-                    else f"CI/CD trigger failed: {dispatch.error_message}"
-                ),
+                message="CI/CD dispatch skipped; GitHub token is not configured.",
                 progress=0.96,
             )
 

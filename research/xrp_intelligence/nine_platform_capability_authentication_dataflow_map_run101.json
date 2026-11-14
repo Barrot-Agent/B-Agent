@@ -1,0 +1,203 @@
+{
+  "schema_version": "barrot-nine-platform-map-v1",
+  "run": "Run101",
+  "captured_at_utc": "2026-11-13T18:00:11Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_at_capture": "694b9e7da2e617f60bf381cddf295d908035525d",
+    "active_pr": 1662,
+    "pr_state": "open/draft",
+    "open_prs": 375,
+    "drafts": 361,
+    "non_drafts": 14,
+    "preexisting_large_map_preserved": true
+  },
+  "coordination_status": "DESIGNED_NOT_EXECUTED",
+  "data_transfer_occurred": false,
+  "least_privilege_status": "NOT_SATISFIED_GITHUB_CONNECTOR_OVERPRIVILEGED",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "current GitHub connector session verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "current session to Barrot-Agent/B-Agent repository and public web research; no external model transfer",
+      "independent_task": "repository inspection, public evidence normalization, exact-head CI and durable handoff",
+      "status": "connected but overprivileged"
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "independent SEC/OCC/legal red-team review after authenticated path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "independent spot/depth/derivatives and macro counter-hypothesis review after authenticated path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "independent XRPL ledger/amendment/oracle and source reconciliation after authenticated path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "no formal review on PR #1662; other review artifacts are not equivalent to approval",
+      "permissions": "formal approval absent",
+      "data_flow": "no verified coordinated dispatch",
+      "independent_task": "independent code review and red-team findings",
+      "status": "not approved on active integration"
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "none verified",
+      "independent_task": "independent code/test/dependency review after authenticated path exists",
+      "status": "unverified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "no current successful authentication/deployment test",
+      "permissions": "unverified",
+      "data_flow": "no deployment; sync-huggingface workflow disabled",
+      "independent_task": "future shadow inference only after exact-main build verification and deployment authorization",
+      "status": "blocked/unverified"
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "untested",
+      "permissions": "unverified",
+      "data_flow": "no submission; manual dataset download requires separate action-specific YES",
+      "independent_task": "public-data benchmark validation only after explicit per-action approval",
+      "status": "unverified"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "previous HTTP 403; no successful current test",
+      "permissions": "unverified",
+      "data_flow": "no write; manual workspace import requires separate action-specific YES and exact main SHA",
+      "independent_task": "historical feature analytics only after verified read access and separate write approval",
+      "status": "blocked/unverified"
+    }
+  ],
+  "additional_internal_providers": [
+    {
+      "name": "LunaRoute",
+      "counted_among_nine": false,
+      "main_configuration": "remote MCP enabled; edit/bash/webfetch allowed",
+      "integration_configuration": "remote MCP disabled; edit/bash/webfetch ask",
+      "authentication": "unverified",
+      "data_flow": "unverified",
+      "status": "no live connection claim"
+    },
+    {
+      "name": "Groq",
+      "counted_among_nine": false,
+      "repository_workflows": "manual read-only research workflows reference GROQ_API_KEY",
+      "authentication": "not tested in this run",
+      "data_flow": "no dispatch and no data transfer occurred",
+      "status": "separate provider; not Grok"
+    }
+  ],
+  "workflow_security_observations": {
+    "changed_workflow_files_screened": 50,
+    "automatic_writers_quarantined": [
+      "barrot-sync",
+      "barrot-agent",
+      "barrot-self-upgrade",
+      "sync-huggingface",
+      "databricks-bundle",
+      "ask-barrot",
+      "barrot-speak",
+      "capability-1-market-analysis",
+      "diag-cf",
+      "diag-cf2",
+      "sync-self-hosted-brain"
+    ],
+    "manual_action_gates": [
+      "barrot-ops: separate Databricks import and Kaggle download approvals plus exact main SHA",
+      "deploy-a2a-worker: deployment YES plus separate secret-rotation YES and exact main SHA",
+      "coinbase-paper-trader: manual YES and exact main SHA; artifact-only simulation"
+    ],
+    "read_only_automations": [
+      "xrp-public-ingestion",
+      "cross-analysis",
+      "webmcp-monetization-enrich",
+      "riemann-harvest",
+      "hover_bike_updates",
+      "formal-verification-benchmarks"
+    ],
+    "no_workflow_dispatched": true,
+    "manual_groq_workflows": [
+      "capability-10-design",
+      "capability-discovery",
+      "data-value-triage",
+      "financial-data-refresh",
+      "frontier-digest",
+      "research-topics",
+      "self-benchmark",
+      "signal-summary",
+      "webmcp-trend-digest",
+      "test-groq-chain"
+    ],
+    "read_only_token_workflows": [
+      "audio-ingest",
+      "barrot-bundle-operational-smoke",
+      "barrot-controlled-feature-validation",
+      "capability-9-data-resolver",
+      "cross-analysis",
+      "formal-verification-benchmarks",
+      "hover_bike_updates",
+      "ibm-bob-barrot-audit",
+      "knowledge-signal-cycle",
+      "knowledge-signal-cycle-btc",
+      "make-track",
+      "pingpong",
+      "riemann-harvest",
+      "signal_ledger",
+      "subagent-matrix",
+      "subagent-spawn",
+      "task-allocator",
+      "test-semantic-memory",
+      "webmcp-live-sandbox",
+      "webmcp-monetization-enrich",
+      "write-lyrics"
+    ],
+    "note": "Quarantined means empty GitHub-token permissions or explicit false condition. The read_only_token_workflows list means contents:read or similarly limited GitHub permissions only; it does not prove that a workflow has no third-party side effects. Manual Groq workflows were not dispatched."
+  },
+  "verification_notes": {
+    "main_branch_protected_flag": true,
+    "integration_branch_protected_flag": false,
+    "branch_protection_details": "HTTP 403; required-check contexts not independently visible; fallback ruleset 10863829 disabled",
+    "current_pr": "#1662 remains draft with zero formal reviews, approvals and review threads",
+    "external_dispatch": false,
+    "external_data_transfer": false,
+    "no_deployment_secret_rotation_databricks_write_kaggle_submission_paper_trade_or_funds_transfer": true
+  },
+  "market_data_quality": {
+    "xrp_insights_etf": "Nov 12 data page is settled (4 trading days); dashboard and data-download holdings snapshots differ by about 0.929M XRP and AUM differs with valuation vintage.",
+    "cryptokeyhole_etf": "Nov 12 partial, 3/4 funds, Franklin XRPZ missing; cumulative excludes partial day.",
+    "xrpdesk_exchange_wallets": "20.61B assistant-snapshot at 04:50 UTC versus 37.05B assistant-full-scan at 13:36 UTC; do not interpret as a same-day flow.",
+    "corpstacking_funds": "10-holder total conflicts with methodology exclusion of basket products while NCIQ appears in largest-holder list; Evernorth remains unreported post-close.",
+    "collateral": "Ripple Prime lists XRP collateral; CME Clearing list excludes XRP; CFTC Letter 26-05 is conditional and no XRP FCM notice/use is verified."
+  }
+}

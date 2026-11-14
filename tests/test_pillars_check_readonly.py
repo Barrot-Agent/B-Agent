@@ -1,3 +1,4 @@
+import base64
 from pathlib import Path
 from unittest.mock import Mock
 
@@ -43,3 +44,77 @@ def test_pillars_check_workflow_is_read_only_and_does_not_persist_checkout_crede
     assert "git push" not in WORKFLOW
     assert "workflow_dispatch:" in WORKFLOW
     assert "schedule:" in WORKFLOW
+
+
+def test_pillars_source_checks_do_not_claim_deployed_runtime_verification(monkeypatch):
+    response = Mock(status_code=200)
+    response.json.return_value = {
+        "content": base64.b64encode("Barrot-Ω".encode("utf-8")).decode("ascii")
+    }
+    response.text = "clean source"
+    monkeypatch.setattr(pillars_check.requests, "get", lambda url, **kwargs: response)
+
+    ok, detail = pillars_check.check_repo_source_marker()
+    assert ok is True
+    assert "GitHub main source marker present" in detail
+    assert "deployed Space revision not checked" in detail
+
+    ok, detail = pillars_check.check_repo_source_fiction()
+    assert ok is True
+    assert "GitHub main source clean" in detail
+    assert "deployed runtime not inspected" in detail
+
+
+def test_pillars_check_labels_source_checks_without_runtime_claims():
+    names = [name for name, _ in pillars_check.CHECKS]
+    assert "repo_source_marker" in names
+    assert "repo_source_fiction" in names
+    assert "deploy_sync" not in names
+    assert "system_prompt_fiction" not in names
+
+
+def test_hf_runtime_probe_rejects_non_200_even_if_payload_claims_running(monkeypatch):
+    response = Mock(status_code=503)
+    response.json.return_value = {"stage": "RUNNING"}
+    monkeypatch.setattr(pillars_check.requests, "get", lambda url, **kwargs: response)
+
+    ok, detail = pillars_check.check_hf_space()
+
+    assert ok is False
+    assert detail == "HTTP 503"
+
+
+def test_hf_runtime_probe_rejects_non_object_json(monkeypatch):
+    response = Mock(status_code=200)
+    response.json.return_value = ["RUNNING"]
+    monkeypatch.setattr(pillars_check.requests, "get", lambda url, **kwargs: response)
+
+    ok, detail = pillars_check.check_hf_space()
+
+    assert ok is False
+    assert detail == "invalid runtime response: expected object"
+
+
+
+def test_repo_source_fiction_rejects_non_200(monkeypatch):
+    for status in (404, 500):
+        response = Mock(status_code=status, text="clean-looking error body")
+        monkeypatch.setattr(pillars_check.requests, "get", lambda *args, **kwargs: response)
+        ok, detail = pillars_check.check_repo_source_fiction()
+        assert ok is False
+        assert detail == f"HTTP {status}"
+
+
+def test_repo_source_fiction_reports_http_200_and_scans_body(monkeypatch):
+    response = Mock(status_code=200, text="")
+    monkeypatch.setattr(pillars_check.requests, "get", lambda *args, **kwargs: response)
+    ok, detail = pillars_check.check_repo_source_fiction()
+    assert ok is True
+    assert detail == "GitHub main source clean; deployed runtime not inspected"
+
+    fiction_term = next(iter(pillars_check.FICTION_TERMS))
+    response = Mock(status_code=200, text=fiction_term)
+    monkeypatch.setattr(pillars_check.requests, "get", lambda *args, **kwargs: response)
+    ok, detail = pillars_check.check_repo_source_fiction()
+    assert ok is False
+    assert detail.startswith("fiction terms present in GitHub main hf_space/app.py")

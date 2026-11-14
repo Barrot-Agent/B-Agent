@@ -1,0 +1,55 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "sbic_west_chatgpt_event_status_correction_20261105T174430Z",
+  "recorded_at_utc": "2026-11-05T17:44:30Z",
+  "research_cutoff_utc": "2026-11-05T17:44:30Z",
+  "supersedes_artifact_id": "sbic_japan_chatgpt_primary_source_reconciliation_20261105T173711Z",
+  "correction_scope": "Narrow the event-status wording for the SBIC West 2024 ChatGPT-referencing seminar. The official PDF is an event notice with a scheduled date; no post-event attendance or completion report was found.",
+  "source_registry": [
+    {
+      "source_id": "sbic_west_official_event_notice",
+      "publisher": "SBIC West Japan / Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "source_type": "official_company_event_notice_pdf",
+      "event_date_scheduled": "2024-10-23",
+      "primary_source": true,
+      "what_it_establishes": [
+        "SBIC West published an official notice advertising a generative-AI introductory seminar for accounting firms and support institutions.",
+        "The notice explicitly mentions ChatGPT and gives a scheduled date, time, lecturer, venue, fee and registration deadline."
+      ],
+      "what_it_does_not_establish": [
+        "That the seminar actually took place as scheduled.",
+        "Actual attendance, participant count, completion, delivered content or outcomes.",
+        "Any OpenAI partnership, API contract or SBI Holdings sponsorship."
+      ]
+    },
+    {
+      "source_id": "sbic_east_official_training_page",
+      "publisher": "SBIC East / Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_type": "official_company_training_page",
+      "event_dates": "2025-06-12/13",
+      "primary_source": true,
+      "what_it_establishes": [
+        "The official page explicitly marks the course as ended.",
+        "The published curriculum lists ChatGPT on day one and Copilot on day two.",
+        "The course was restricted to investee companies; general companies were not eligible."
+      ],
+      "what_it_does_not_establish": [
+        "Individual attendance or completion records.",
+        "An OpenAI partnership, API contract or enterprise deployment."
+      ]
+    }
+  ],
+  "corrected_event_status": {
+    "sbic_west": "ANNOUNCED_SCHEDULED_EVENT; ACTUAL_OCCURRENCE_NOT_INDEPENDENTLY_VERIFIED",
+    "sbic_east": "OFFICIAL_PAGE_MARKS_COURSE_ENDED; INDIVIDUAL_ATTENDANCE_NOT_VERIFIED"
+  },
+  "interpretation": "The strongest supported conclusion is that SBIC West advertised a ChatGPT-referencing seminar scheduled for October 23, 2024, while SBIC East's official page marks its June 2025 ChatGPT/Copilot course as ended. Neither source establishes a commercial relationship with OpenAI or SBI Holdings.",
+  "source_capture_policy": {
+    "raw_pdf_and_html_bytes_preserved": false,
+    "sha256_receipts": null,
+    "model_eligible": false
+  },
+  "next_action": "Look for an SBIC West post-event report or archived follow-up before describing the 2024 seminar as completed."
+}

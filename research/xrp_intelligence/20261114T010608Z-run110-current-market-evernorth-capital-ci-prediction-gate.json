@@ -1,0 +1,505 @@
+{
+  "schema": "barrot.xrp-intelligence.run-audit.v1",
+  "run": "Run110",
+  "observed_at_utc": "2026-11-14T01:06:08Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "verified_code_head": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
+    "branch": "integration/xrp-v3-unified-main-20261112",
+    "ahead_by": 2322,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "main_workflow_files": 87,
+    "integration_tree_entries": 2397,
+    "integration_workflow_files": 88,
+    "pr": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "head_sha": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
+      "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "changed_files": 1156,
+      "additions": 334325,
+      "deletions": 5354,
+      "changed_workflow_files": 50,
+      "changed_public_web_files": 7,
+      "formal_reviews": 0,
+      "review_threads": 0
+    },
+    "open_pr_inventory": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "no_new_branch_or_pr": true,
+    "main_modified": false
+  },
+  "verification": {
+    "full_suite": {
+      "run_id": 43538066244,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43538066244",
+      "head_sha": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
+      "passed": 3626,
+      "subtests_passed": 8,
+      "failed": 0,
+      "inclusive_coverage_percent": 62.34,
+      "duration_seconds": 88.95,
+      "wheel_build": "passed",
+      "installed_v3_and_primary_mission": "passed"
+    },
+    "core_suite": {
+      "job_id": 132271789450,
+      "passed": 739,
+      "subtests_passed": 8,
+      "duration_seconds": 13.95,
+      "legacy_core_coverage_percent": 76
+    },
+    "dependency_audit": {
+      "run_id": 43538066242,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43538066242",
+      "manifest_groups": [
+        "requirements.txt",
+        "requirements-dev.txt",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt",
+        "pyproject.toml"
+      ],
+      "result": "passed; no known vulnerabilities reported"
+    },
+    "fail_closed_push": {
+      "run_id": 43538066174,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43538066174",
+      "result": "passed; automatic merge disabled"
+    },
+    "fail_closed_pr": {
+      "run_id": 43538072699,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43538072699",
+      "result": "passed; automatic merge disabled"
+    },
+    "pr_ci_run": {
+      "run_id": 43538072864,
+      "result": "skipped by explicit integration-branch condition"
+    },
+    "predecessor_failure": {
+      "head_sha": "e915307e0f25f5b1d349676b0edc8804bb7c4286",
+      "run_id": 43534076268,
+      "reason": "contract document lacked required literal block-bootstrap adjustment phrase",
+      "fix_commit": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
+      "fix": "documentation-only contract clarification"
+    },
+    "warnings": [
+      "TOML table-form project.license is deprecated",
+      "setuptools warns that barrot_agent.data.missions and data.research are absent from explicit package configuration; packaged primary mission nevertheless verified"
+    ]
+  },
+  "market": {
+    "cutoff_utc": "2026-11-14T01:06:08Z",
+    "spot": {
+      "venue": "OKX",
+      "pair": "XRP-USDT",
+      "event_timestamp_utc": "2026-11-14T00:56:03.669Z",
+      "last_usd": 1.01,
+      "bid_usd": 1.0097,
+      "ask_usd": 1.0098,
+      "bid_size_xrp": 4152.489418,
+      "ask_size_xrp": 316.3,
+      "open_24h_usd": 1.0364,
+      "high_24h_usd": 1.0438,
+      "low_24h_usd": 0.9974,
+      "volume_24h_xrp": 47066861.176877,
+      "age_seconds_at_run_start": 291.331,
+      "age_seconds_at_research_cutoff": 604.331,
+      "status": "stale by final cutoff; no raw byte receipt/hash; not model-eligible",
+      "limitations": [
+        "one best bid/ask level is not full depth",
+        "no synchronized cross-venue L2"
+      ]
+    },
+    "kraken": {
+      "pair": "XRP/USD",
+      "last_usd": 1.01123,
+      "bid_usd": 1.0105,
+      "ask_usd": 1.01054,
+      "event_timestamp": "not supplied",
+      "model_eligible": false
+    },
+    "xrpn_equity": {
+      "date": "2026-11-13",
+      "close_usd": 7.85,
+      "change_percent": -12.49,
+      "volume_shares": 388810,
+      "source_class": "secondary market-data provider",
+      "model_eligible": false
+    },
+    "etf_flows": {
+      "provider": "XRP Insights",
+      "settled_window": "2026-11-09 through 2026-11-12",
+      "settled_net_flow_xrp": -9481905,
+      "nov12_flow_xrp": -268644,
+      "holdings_xrp": 1185698783,
+      "nov13_status": "provisional",
+      "methodology": "day-over-day change in issuer-reported holdings; GXRP flow withheld during capture gap; BITW rebalancing and fees can be counted as flow",
+      "disagreement": {
+        "CryptoKeyhole": "Nov 12 partial, three of four funds, -3,322 XRP",
+        "AlphaFinance": "zero flow for its five-fund cohort"
+      },
+      "aggregation": "do not average; fund universes and settlement vintages differ"
+    }
+  },
+  "evernorth": {
+    "primary_filing_cutoff": "2026-11-13",
+    "business_combination_close_date": "2026-10-09",
+    "ownership": {
+      "pubco_pathfinder_common_units_percent": 71.5,
+      "gross_pathfinder_xrp_at_close": 473276430,
+      "evernorth_transfer_to_pathfinder_xrp": 346484972,
+      "ripple_contribution_to_pathfinder_xrp": 126791458,
+      "derived_pubco_attributable_xrp": 338392647.45,
+      "derived_attributable_status": "calculated as 71.5% of gross Pathfinder XRP; not a company-reported post-close balance",
+      "company_xrp_per_share_formula": "XRP attributable to Pubco / outstanding Class A plus Class C shares",
+      "derived_xrp_per_share": 5.7939,
+      "derived_xrp_per_share_assumptions": "338,392,647.45 XRP divided by 27,012,248 Class A plus 31,392,746 Class C shares; not an official company KPI"
+    },
+    "capital": {
+      "gross_closing_cash_proceeds_usd": 272600000,
+      "advance_cash_used_for_xrp_purchase_usd": 214050000,
+      "cash_purchased_xrp": 84365876,
+      "average_cash_purchase_price_usd_per_xrp": 2.5366,
+      "in_kind_xrp_contributions": 388910554,
+      "refundable_investor_advances_settled_in_equity_usd": 524259563,
+      "refundable_advances_cash_repaid": "no; settled in equity at closing",
+      "convertible_pik_note": {
+        "principal_usd": 30000000,
+        "net_cash_after_advisor_fee_usd": 29000000,
+        "pik_rate_percent": 4,
+        "issued_date": "2026-10-13"
+      },
+      "warrant_exercises": {
+        "shares_exercised": 3073366,
+        "gross_cash_usd": 35300000,
+        "remaining_warrants": 8666279,
+        "exercise_price_usd": 11.5,
+        "potential_remaining_gross_usd": 99662208.5,
+        "remaining_proceeds_status": "conditional; not guaranteed"
+      },
+      "eloc": {
+        "share_capacity": 5218935,
+        "price_formula": "97% of VWAP",
+        "status": "no proceeds disclosed in reviewed 10-Q",
+        "classification": "conditional financing capacity, not cash received"
+      },
+      "registered_resale_shares": 73688000,
+      "resale_proceeds_to_issuer": "zero; secondary resales do not generate issuer proceeds"
+    },
+    "financials_pre_combination_as_of_2026_09_30": {
+      "unrestricted_cash_usd": 91397,
+      "restricted_cash_usd": 49995,
+      "q3_net_income_usd": 155264700,
+      "q3_fair_value_gain_on_refundable_advances_usd": 162834432,
+      "nine_month_net_loss_usd": -32870033,
+      "nine_month_digital_asset_impairment_usd": 271037000,
+      "nine_month_fair_value_gain_on_refundable_advances_usd": 240311432,
+      "revenue": "none reported through Sep 30",
+      "interpretation": "pre-close financials; Q3 net income is primarily a non-cash fair-value gain, not operating profitability; Sep 30 cash is not post-close liquidity"
+    },
+    "shares": {
+      "closing_class_a": 23638882,
+      "closing_class_c": 31392746,
+      "nov9_class_a": 27012248,
+      "nov9_class_c": 31392746,
+      "warrant_exercises_oct12_to_nov9": 3073366,
+      "unexplained_class_a_residual": 300000,
+      "residual_status": "not reconciled in reviewed filings; do not attribute without evidence",
+      "sbi_at_close_class_a": 9431914,
+      "sbi_at_close_class_c": 2359038,
+      "sbi_at_close_class_c_percent": 7.5,
+      "sbi_conditional_nov9_class_a_percent_if_unchanged": 34.917,
+      "sbi_conditional_nov9_class_c_percent_if_unchanged": 7.515,
+      "sbi_conditional_nov9_combined_a_c_percent_if_unchanged": 20.188,
+      "ownership_status": "conditional calculations; no updated beneficial-ownership filing verified"
+    },
+    "market_and_custody": {
+      "principal_market_for_financial_reporting": "Coinbase",
+      "initial_post_combination_custodian": "BitGo Trust",
+      "caveat": "Coinbase principal-market designation is not evidence of exclusive execution or custody"
+    },
+    "third_party_onchain_attribution": {
+      "source": "XRP Insights Evernorth tracker",
+      "ledger_index": 108313323,
+      "ledger_closed_utc": "2026-11-13T23:41:00Z",
+      "attributed_wallets": 13,
+      "attributed_xrp": 103129905,
+      "xrp_moved_outside_attributed_set": 370346663,
+      "latest_outbound_activity_date": "2026-10-22",
+      "destinations": "not attributed",
+      "caveat": "partial wallet attribution; not a complete Pathfinder custody inventory and not proof of sale",
+      "source_page_closing_status_claim": "says no closing 8-K/share-count filing at its last check",
+      "correction": "contradicted by SEC closing 8-K dated Oct 9, corrective 8-K dated Oct 13 and 10-Q filed Nov 13"
+    },
+    "related_party_facilities": {
+      "pathfinder_ripple_company_facility": {
+        "original_limit_usd": 7000000,
+        "limit_after_2026_10_07_amendment_usd": 10000000,
+        "borrowed_as_of_2026_10_07_usd": 9700000,
+        "interest_rate_percent": 3.81,
+        "repayment_due": "within five business days after 2026-10-09 closing",
+        "repayment_status": "not confirmed in reviewed 2026-11-13 10-Q/424B3"
+      },
+      "separate_evernorth_ripple_facility": {
+        "limit_usd": 1000000,
+        "borrowed_as_of_2026_06_30_usd": 0,
+        "distinct_from_pathfinder_facility": true
+      }
+    },
+    "transaction_costs": {
+      "advisory_fee_usd": 4000000,
+      "placement_fee_percent_of_eligible_proceeds": 4,
+      "reimbursable_expenses_cap_usd": 500000,
+      "eloc_initial_commitment_fee_usd": 500000,
+      "eloc_potential_total_commitment_fee_usd": 1000000,
+      "eloc_expenses_cap_usd": 500000,
+      "interpretation": "$272.6M gross closing cash is before costs; fees and expenses reduce available liquidity and are not capital raised"
+    },
+    "convertible_note_date_discrepancy": {
+      "ten_q_reported_issuance_date": "2026-10-13",
+      "prospectus_effectiveness_date": "2026-10-12",
+      "principal_usd": 30000000,
+      "net_cash_after_advisor_fee_usd": 29000000,
+      "pik_rate_percent": 4,
+      "initial_conversion_price_usd": 10.2,
+      "status": "one-day date discrepancy retained pending settlement documentation"
+    },
+    "accounting_caveats": {
+      "unrestricted_cash_as_of_2026_09_30_usd": 91397,
+      "restricted_cash_as_of_2026_09_30_usd": 49995,
+      "revenue_through_2026_09_30": "none reported",
+      "q3_net_income_usd": 155264700,
+      "q3_fair_value_gain_on_refundable_advances_usd": 162834432,
+      "nine_month_net_loss_usd": -32870033,
+      "nine_month_digital_asset_impairment_usd": 271037000,
+      "interpretation": "pre-combination balances; Q3 income primarily non-cash fair-value gain, not operating profitability"
+    }
+  },
+  "prediction_engine": {
+    "trained_xrp_candidate_model": false,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "implemented": [
+      "scheduled public-data ingestion workflow on integration, main-only and read-only",
+      "SHA-256 receipt and local chain prototype",
+      "point-in-time SQLite feature store",
+      "event timeline and source-independence grouping",
+      "four deterministic baselines",
+      "purged chronological walk-forward",
+      "paired moving-block bootstrap",
+      "calibration and PSI drift diagnostics",
+      "fail-closed forecast ledger with independent Ed25519 attestation"
+    ],
+    "critical_blocker": "source-cluster target feasibility: one publisher per venue yields one cluster; multi-publisher composite target is currently marked unclustered; five-cluster gate may be structurally unattainable",
+    "next_statistical_work": [
+      "define target estimand and cluster unit",
+      "do not count API wrappers sharing upstream data as independent",
+      "test small-cluster coverage",
+      "test block-length sensitivity",
+      "integrate paired intervals against all four baselines and require them in readiness"
+    ],
+    "raw_receipts_for_web_research": "not captured; no byte-exact source hash; observations are not model-eligible",
+    "scheduled_ingestion_main": "not executed on main; workflow exists only on integration"
+  },
+  "nine_platforms": {
+    "coordination_status": "DESIGNED; no external-model dispatch or structured evidence transfer executed",
+    "ChatGPT": {
+      "authentication": "GitHub connector verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "risk": "overprivileged"
+    },
+    "Claude": {
+      "authentication": "unverified",
+      "data_flow": "none verified"
+    },
+    "Grok": {
+      "authentication": "unverified",
+      "data_flow": "none verified"
+    },
+    "Gemini": {
+      "authentication": "unverified",
+      "data_flow": "none verified"
+    },
+    "Copilot": {
+      "authentication": "review artifacts visible; no formal approval on PR 1662"
+    },
+    "Codex": {
+      "authentication": "unverified",
+      "data_flow": "none verified"
+    },
+    "HuggingFace": {
+      "authentication": "no current deployment; prior BUILD_ERROR"
+    },
+    "Kaggle": {
+      "authentication": "untested; no submission"
+    },
+    "Databricks": {
+      "authentication": "HTTP 403; no write verified"
+    },
+    "LunaRoute": {
+      "is_one_of_nine": false,
+      "main_remote_mcp": "enabled",
+      "integration_remote_mcp": "disabled",
+      "endpoint_authentication": "unverified"
+    }
+  },
+  "repository_security": {
+    "main_protected": true,
+    "main_enforcement": "non_admins",
+    "required_status_check_contexts": [],
+    "detailed_branch_protection_endpoint": "HTTP 403",
+    "fallback_ruleset_10863829": "disabled",
+    "integration_protected": false,
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "workflow_review": "all 50 changed workflow patches screened; no external action executed",
+    "main_pillars_consistency": {
+      "run_id": 43430139937,
+      "conclusion": "failure",
+      "causes": [
+        "missing GitHub App identifiers",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ]
+    },
+    "main_barrot_sync": {
+      "run_id": 43343513347,
+      "conclusion": "green but invalid",
+      "log_findings": [
+        "ModuleNotFoundError: httpx",
+        "sync skipped",
+        "no-op Everything up-to-date push"
+      ]
+    },
+    "pages": "automatic deployment observed on main; publication authorization unresolved"
+  },
+  "backlog": {
+    "#1662": "blocked integration; draft, no approvals",
+    "#1661": "supersession candidate; full path overlap, zero source-only commits",
+    "#1660": "supersession candidate; full path overlap, zero source-only commits",
+    "#1643": "supersession candidate; full path overlap, zero source-only commits",
+    "#1642": "supersession candidate; full path overlap, zero source-only commits",
+    "#1640": "one source-only commit; action-specific gate content semantically present in integration; preserve until verified successor merge",
+    "#1653": "unique; 18 source-only commits; preserve",
+    "#1655": "unique; 17 source-only commits; preserve",
+    "#1659/#1615/#1614/#1320/#1318/#1317/#1269": "unique/unreviewed or individually blocked; preserve",
+    "#1644-#1650/#1254/#1255": "dependency candidates; blocked pending current-main validation",
+    "source_pr_closures": "none"
+  },
+  "merge_decision": "NO_MERGE",
+  "prohibitions_respected": [
+    "no deployment",
+    "no secret rotation",
+    "no Space restart",
+    "no external-model transfer",
+    "no Databricks write",
+    "no Kaggle submission",
+    "no paper trade",
+    "no funds transfer",
+    "no real-money action",
+    "no force-push",
+    "no history rewrite",
+    "no destructive worktree operation",
+    "no source PR closure"
+  ],
+  "sources": [
+    {
+      "id": "SEC Evernorth Form 10-Q",
+      "date": "2026-11-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "source_group": "evernorth_sec_primary"
+    },
+    {
+      "id": "SEC Evernorth closing Form 8-K",
+      "date": "2026-10-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "source_group": "evernorth_sec_primary"
+    },
+    {
+      "id": "SEC Evernorth corrective Form 8-K",
+      "date": "2026-10-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm",
+      "source_group": "evernorth_sec_primary"
+    },
+    {
+      "id": "SEC Evernorth Form 424B3",
+      "date": "2026-11-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_group": "evernorth_sec_primary"
+    },
+    {
+      "id": "XRP Insights ETF dataset",
+      "date": "accessed 2026-11-14",
+      "url": "https://xrp-insights.com/data",
+      "source_group": "xrp_insights_third_party"
+    },
+    {
+      "id": "XRP Insights Evernorth wallet attribution",
+      "date": "ledger 108313323, 2026-11-13T23:41Z",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "source_group": "xrp_insights_third_party"
+    },
+    {
+      "id": "OKX XRP-USDT ticker",
+      "date": "event 2026-11-14T00:56:03.669Z",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_group": "okx_exchange"
+    },
+    {
+      "id": "XRPN historical price",
+      "date": "2026-11-13 close",
+      "url": "https://stockanalysis.com/stocks/xrpn/history/",
+      "source_group": "stockanalysis_secondary"
+    }
+  ],
+  "provenance": {
+    "raw_bytes_captured": false,
+    "sha256_receipts": null,
+    "note": "This research artifact records source URLs, event dates and extracted observations; it is not a byte-exact publisher receipt. Preserve as research context only, not as an admitted model feature."
+  },
+  "documentation_head_attempt": {
+    "head_sha": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "run_id": 43539079899,
+    "conclusion": "failure",
+    "passed": 3584,
+    "failed": 42,
+    "subtests": 8,
+    "coverage_percent": 62.34,
+    "duration_seconds": 95.45,
+    "failure_cause": "current capability map was overwritten with an incompatible alternate schema after large-file retrieval returned an empty content field",
+    "correction": "restore original blob aaa327be7b6b23437f129c6f08abcffe78ce6e41 and add Run110 fields without removing prior schema/history",
+    "tests_weakened": false,
+    "runtime_code_changed": false
+  },
+  "correction": {
+    "restored_original_current_map_blob_sha": "aaa327be7b6b23437f129c6f08abcffe78ce6e41",
+    "original_size_bytes": 1660793,
+    "failed_doc_head": "f64197cb7d1d3e57622736515eab563c4f09b5a6",
+    "failed_tests": 42,
+    "passed_tests": 3584,
+    "tests_weakened": false,
+    "runtime_code_changed": false
+  }
+}

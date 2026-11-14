@@ -1,0 +1,398 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-market-etf-flow-coverage-disagreement-2026-11-07",
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "captured_during_run": true,
+  "retrieval_window_start_utc": "2026-11-07T17:31:19Z",
+  "retrieval_clock_upper_bound_utc": "2026-11-07T17:38:33Z",
+  "data_cutoff_utc": "2026-11-07T17:38:33Z",
+  "append_only": true,
+  "summary": "Direct exchange responses were already stale or lacked provider timestamps; multi-level depth could not be retrieved. November 6 XRP ETF flow sources disagree because their fund universes, source feeds, flow definitions and publication timing differ. Preserve each observation separately; do not average or admit into model features.",
+  "market_snapshot": {
+    "quote_currency_warning": "USD and USDT are not normalized. Cross-venue differences are descriptive only.",
+    "kraken_xrp_usd": {
+      "last_usd": 1.15957,
+      "bid_usd": 1.15936,
+      "ask_usd": 1.15949,
+      "bid_size_xrp": 1056,
+      "ask_size_xrp": 3795,
+      "spread_bps": 1.121245,
+      "rolling_24h_volume_xrp": 21893685.4915109,
+      "rolling_24h_vwap_usd": 1.16938737,
+      "daily_open_usd": 1.17749,
+      "rolling_24h_low_usd": 1.15046,
+      "rolling_24h_high_usd": 1.19077,
+      "last_vs_daily_open_pct": -1.521881,
+      "last_vs_24h_vwap_pct": -0.839531,
+      "provider_event_timestamp": null,
+      "freshness_eligible": false,
+      "exclusion_reason": "Ticker response supplied no provider event timestamp."
+    },
+    "okx_xrp_usdt": {
+      "last_usdt": 1.1602,
+      "bid_usdt": 1.1604,
+      "ask_usdt": 1.1605,
+      "bid_size_xrp": 2121.2,
+      "ask_size_xrp": 5950.873871,
+      "spread_bps": 0.861735,
+      "rolling_24h_volume_xrp": 37700152.575717,
+      "rolling_24h_quote_volume_usdt": 44111853.63592153,
+      "rolling_24h_open_usdt": 1.1955,
+      "rolling_24h_low_usdt": 1.1518,
+      "rolling_24h_high_usdt": 1.1963,
+      "provider_event_timestamp_utc": "2026-11-07T17:12:54.069Z",
+      "age_at_cutoff_seconds": 1538.931,
+      "freshness_limit_seconds": 300,
+      "freshness_eligible": false,
+      "exclusion_reason": "Provider timestamp exceeded the 300-second freshness limit."
+    },
+    "binance_xrpusdt_perpetual": {
+      "mark_price_usdt": 1.1588,
+      "index_price_usdt": 1.15909856,
+      "mark_premium_to_index_pct": -0.025758,
+      "last_funding_rate": 0.0001,
+      "funding_rate_percent_per_8h": 0.01,
+      "provider_event_timestamp_utc": "2026-11-07T16:52:44.002Z",
+      "age_at_cutoff_seconds": 2748.998,
+      "freshness_limit_seconds": 300,
+      "freshness_eligible": false,
+      "exclusion_reason": "Premium-index timestamp exceeded the 300-second freshness limit."
+    },
+    "cross_venue_last_price_gap_pct": 0.05433,
+    "cross_venue_gap_interpretation": "Not an arbitrage signal: quote currencies differ, provider timestamps are unsynchronized, both snapshots fail freshness, and fees, slippage and executable depth are unavailable.",
+    "order_book_depth": {
+      "level_1_only": true,
+      "multi_level_depth_captured": false,
+      "endpoints_attempted": [
+        "https://api.kraken.com/0/public/Depth?pair=XRPUSD",
+        "https://www.okx.com/api/v5/market/books?instId=XRP-USDT&sz=5",
+        "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100",
+        "https://api.bybit.com/v5/market/orderbook?category=spot&symbol=XRPUSDT&limit=50"
+      ],
+      "retrieval_result": "Endpoints were inaccessible through the web retrieval interface; no L2 values were returned.",
+      "model_admission": false
+    },
+    "model_admission": false
+  },
+  "etf_flow_reconciliation": {
+    "observation_date": "2026-11-06",
+    "do_not_average": true,
+    "aggregate_consensus_flow": null,
+    "sources": [
+      {
+        "source_id": "xrp_insights_issuer_holdings_delta",
+        "publisher": "XRP Insights",
+        "url": "https://xrp-insights.com/data",
+        "data_as_of": "2026-11-06",
+        "generated_at_utc": "2026-11-07T16:16:09.547Z",
+        "fund_universe": "Six US spot XRP ETFs plus the XRP sleeve of BITW",
+        "nov6_net_flow_xrp": -663043,
+        "nov6_net_flow_usd_approx": -775800,
+        "nov2_to_nov6_net_flow_xrp": -812529,
+        "total_xrp_holdings": 1195787657,
+        "total_aum_usd_approx": 1428790000,
+        "methodology": "Daily change in issuer-reported holdings. GXRP flows are excluded because of a known capture gap; BITW is included. BITW index rebalancing and fee sales can be counted as flow. Reconstructed historical rows are estimates.",
+        "primary_source_status": "Secondary aggregator using issuer pages as inputs.",
+        "limitations": [
+          "Not a pure creations/redemptions measure.",
+          "GXRP flows are excluded while its holdings and AUM remain in totals.",
+          "BITW is a multi-asset index fund; its XRP sleeve may change through index rebalancing.",
+          "A change in holdings caused by fees or other non-creation/redemption activity may be counted as flow."
+        ],
+        "raw_or_excerpt_receipt": "normalized_text_excerpt",
+        "excerpt_sha256": "2a0ee1143bfe2c41905fd40f0294399a357a5ca651ff5849c0f662dcd1ccb6fd"
+      },
+      {
+        "source_id": "cryptoetf_today_five_fund_creation_redemption_series",
+        "publisher": "CryptoETF.today",
+        "url": "https://cryptoetf.today/en/xrp-etf-flows",
+        "data_date": "2026-11-06",
+        "published_at_utc": "2026-11-07T05:50:00Z",
+        "fund_universe": [
+          "XRP",
+          "XRPZ",
+          "XRPC",
+          "GXRP",
+          "TOXR"
+        ],
+        "funds_reported": 5,
+        "funds_expected": 5,
+        "nov6_net_flow_usd": 0,
+        "last_reported_outflow_usd": -500000,
+        "last_reported_outflow_date": "2026-11-02",
+        "cumulative_net_flow_usd": 1810000000,
+        "thirty_session_net_flow_usd": 139700000,
+        "methodology_note": "The page says zero means all reporting funds reported and no creations or redemptions; it distinguishes zero from a dash for incomplete coverage. Full upstream source lineage was not established in this capture.",
+        "limitations": [
+          "Excludes XRPR and BITW from the stated five-fund universe.",
+          "Its five-fund result is not directly comparable with six spot funds plus BITW.",
+          "Its exact upstream holdings/flow feed was not independently established in this run."
+        ],
+        "raw_or_excerpt_receipt": "normalized_text_excerpt",
+        "excerpt_sha256": "276085e81ed77d2b8a88c37744ae2dd9c7120863cdf4b1588252bc56981b17db"
+      },
+      {
+        "source_id": "alpha_finance_coinglass_etf_dashboard",
+        "publisher": "Alpha Finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "data_through": "2026-11-06",
+        "fund_universe": [
+          "XRP (Bitwise)",
+          "XRPZ (Franklin Templeton)",
+          "XRPC (Canary Capital)",
+          "GXRP (Grayscale)",
+          "TOXR (21Shares)"
+        ],
+        "funds": 5,
+        "nov6_net_flow_usd": 0,
+        "seven_session_net_flow_usd": 8400000,
+        "thirty_session_net_flow_usd": 45900000,
+        "cumulative_net_inflow_usd": 1730000000,
+        "aum_or_holdings_published": false,
+        "methodology_source": "Alpha Finance methodology identifies Coinglass as the ETF dashboard feed and says Coinglass data is read through a licensed commercial API.",
+        "limitations": [
+          "Different five-fund universe from XRP Insights and CryptoKeyhole.",
+          "No current fund AUM or holdings are published on the XRP dashboard.",
+          "Secondary provider feed, not issuer-confirmed creations/redemptions."
+        ],
+        "raw_or_excerpt_receipt": "normalized_text_excerpt",
+        "excerpt_sha256": "4af510ba7c70ed8f52c3bf1f3510d06aa73c8ecb0e81a4a363c2ca34388d213c",
+        "methodology_excerpt_sha256": "015b2906502d15731798f523a800a77fcac0eb4625a54ee40fb1ddbea26cdd99"
+      },
+      {
+        "source_id": "cryptokeyhole_issuer_file_partial",
+        "publisher": "CryptoKeyhole",
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "updated_at_utc": "2026-11-07T17:13:00Z",
+        "fund_universe": [
+          "XRP (Bitwise)",
+          "XRPZ (Franklin Templeton)",
+          "XRPC (Canary Capital)",
+          "TOXR (21Shares)"
+        ],
+        "listed_spot_funds": 6,
+        "daily_funds_collected": 4,
+        "nov6_funds_reported": 3,
+        "nov6_funds_expected": 4,
+        "nov6_partial_net_flow_xrp": -752048,
+        "nov6_partial_breakdown_xrp": {
+          "XRP": 0,
+          "XRPZ": null,
+          "XRPC": -752048,
+          "TOXR": 0
+        },
+        "nov5_complete_net_flow_xrp": -3339,
+        "nov5_complete_funds": 4,
+        "nov5_five_complete_trading_day_flow_xrp": -1137098,
+        "excluded_funds": {
+          "GXRP": "Issuer site blocks automated reads; CryptoKeyhole uses quarterly SEC filing data, not daily flows.",
+          "XRPR": "Daily file reports only directly held coins and does not represent the fund's full exposure through other ETPs."
+        },
+        "timestamp_anomaly": "The page's summary says latest issuer file 9 Nov 2026 while the same page says it was updated 7 Nov 2026 17:13 UTC and reports 6 Nov partial data. The 9 Nov label is future-dated relative to this run and is not used.",
+        "limitations": [
+          "November 6 total is partial, not a completed four-fund result.",
+          "Source uses issuer holdings deltas, not necessarily net share creations/redemptions.",
+          "Its fund coverage excludes GXRP and XRPR."
+        ],
+        "raw_or_excerpt_receipt": "normalized_text_excerpt",
+        "excerpt_sha256": "cd650c650dc6d10a16b410bfb2c7689a394e2d762e8be518f0918c20e782559c",
+        "scope_excerpt_sha256": "761c252b3e37c340e6815694e0c00181419747579992613f44aab1576f267047"
+      }
+    ],
+    "primary_issuer_disconfirmation": {
+      "issuer": "Canary Capital",
+      "fund": "Canary XRP ETF (XRPC)",
+      "url": "https://canaryetfs.com/xrpc/",
+      "nov4_shares_outstanding": 22990000,
+      "nov5_shares_outstanding": 22990000,
+      "nov6_shares_outstanding": 22990000,
+      "nov6_net_assets_usd": 286858926.41,
+      "nov6_nav_usd": 12.48,
+      "interpretation": "The issuer's published share-count series is unchanged across Nov 4–6. This does not independently confirm a net share creation/redemption corresponding to CryptoKeyhole's -752,048 XRP holdings delta. It does not prove XRP holdings were unchanged; the issuer's public table in this capture does not provide the Nov 6 XRP quantity.",
+      "separate_future_holdings_section": {
+        "as_of": "2026-11-09",
+        "xrpc_xrp_quantity": 242962753.64,
+        "shares_outstanding": 22920000,
+        "excluded_as_future_dated": true
+      },
+      "excerpt_sha256": "ac5b5cf0fa70c785104c62a60d4710c322c115747a17b3f34b1d875c0970e1be",
+      "future_section_excerpt_sha256": "9017706745947c26b0f247a7ff7d450d35cc319a154b663e8ceb040288b56e36"
+    },
+    "competing_hypotheses": [
+      {
+        "hypothesis": "Broad November 6 XRP ETF net outflow.",
+        "supporting_evidence": [
+          "XRP Insights reports -663,043 XRP across its six-spot-plus-BITW holdings-delta universe.",
+          "CryptoKeyhole reports a -752,048 XRP partial total, entirely attributed to XRPC, with only 3 of 4 daily funds reported."
+        ],
+        "disconfirming_evidence": [
+          "CryptoETF.today reports zero flow with 5 of 5 funds reported.",
+          "Alpha Finance reports zero flow across its five-fund Coinglass dashboard.",
+          "Canary's published Nov 4–6 share count is unchanged at 22,990,000."
+        ],
+        "status": "unresolved"
+      },
+      {
+        "hypothesis": "November 6 creation/redemption flow was flat across the five-fund universes.",
+        "supporting_evidence": [
+          "CryptoETF.today reports zero with 5/5 funds reported.",
+          "Alpha Finance reports zero across five funds."
+        ],
+        "disconfirming_evidence": [
+          "XRP Insights reports a negative holdings delta across a broader universe.",
+          "CryptoKeyhole reports a large partial XRPC holdings delta."
+        ],
+        "status": "unresolved"
+      },
+      {
+        "hypothesis": "The discrepancy is mainly a coverage/methodology/timing artifact.",
+        "supporting_evidence": [
+          "Fund universes differ: 6 spot plus BITW, 5 spot, and 4 daily-readable spot funds.",
+          "XRP Insights includes BITW and counts holdings changes that can reflect index rebalancing or fee sales; it excludes GXRP flow.",
+          "CryptoKeyhole excludes GXRP and XRPR and labels Nov 6 partial at 3/4.",
+          "CryptoKeyhole's 9 Nov latest-file label is future-dated relative to its 7 Nov update.",
+          "Canary's issuer page has a separate 11/09 holdings section, which is excluded."
+        ],
+        "disconfirming_evidence": [
+          "The partial CryptoKeyhole XRPC holdings delta is large enough that the discrepancy cannot be dismissed as a simple rounding difference."
+        ],
+        "status": "plausible_but_unproven"
+      }
+    ],
+    "model_admission": {
+      "admitted": false,
+      "excluded_sources": [
+        "kraken_ticker",
+        "okx_ticker",
+        "binance_premium",
+        "xrp_insights_issuer_holdings_delta",
+        "cryptoetf_today_five_fund_creation_redemption_series",
+        "alpha_finance_coinglass_etf_dashboard",
+        "cryptokeyhole_issuer_file_partial",
+        "canary_primary_share_count"
+      ],
+      "reasons": [
+        "Direct market snapshots are stale or lack provider timestamps.",
+        "No synchronized multi-level order-book depth was retrieved.",
+        "ETF sources disagree and cover different fund universes.",
+        "Some flow series are holdings deltas rather than clean creation/redemption measures.",
+        "A future-dated issuer holdings section is present and explicitly excluded."
+      ]
+    }
+  },
+  "macro_event_context": {
+    "source": "Reuters",
+    "url": "https://www.reuters.com/business/caution-over-midterms-ai-cash-burn-drives-surge-us-money-market-fund-inflows-2026-11-06/",
+    "published_at_utc": "2026-11-06T11:23:00Z",
+    "observation": "US money-market funds received $117.97B in the week to Nov 4, the largest weekly inflow in six months, while technology, industrials and communication-services funds saw outflows.",
+    "interpretation": "Broad risk/liquidity context only. It is not an XRP-specific catalyst and is not admitted as a directional feature from this single observation."
+  },
+  "source_receipts": [
+    {
+      "source_id": "kraken_ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "receipt_kind": "exact_response_text",
+      "sha256": "416b255391bccee7250c3c922e5bc4d77cc3ce55378d0081541c554985cf25ad",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15949000\",\"3795\",\"3795.000\"],\"b\":[\"1.15936000\",\"1056\",\"1056.000\"],\"c\":[\"1.15957000\",\"5.15665000\"],\"v\":[\"14552460.90097491\",\"21893685.49151090\"],\"p\":[\"1.16415498\",\"1.16938737\"],\"t\":[16726,24726],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.19077000\"],\"o\":\"1.17749000\"}}}"
+    },
+    {
+      "source_id": "okx_ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "receipt_kind": "exact_response_text",
+      "sha256": "227bee004bd54ab53c0bd1cb520435c4eb2c5dc2c363ce1f32e8d606d8e74e0d",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1602\",\"lastSz\":\"2\",\"askPx\":\"1.1605\",\"askSz\":\"5950.873871\",\"bidPx\":\"1.1604\",\"bidSz\":\"2121.2\",\"open24h\":\"1.1955\",\"high24h\":\"1.1963\",\"low24h\":\"1.1518\",\"volCcy24h\":\"44111853.6359215278\",\"vol24h\":\"37700152.575717\",\"ts\":\"1794071574069\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1587\"}],\"msg\":\"\"}"
+    },
+    {
+      "source_id": "binance_perpetual_premium_index",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "receipt_kind": "exact_response_text",
+      "sha256": "b16ae535783f61395784d2fc6300d3b3ebb0efcb66f70e045ca2cf1585b2b812",
+      "raw_response_text": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.15880000\",\"indexPrice\":\"1.15909856\",\"estimatedSettlePrice\":\"1.16011813\",\"lastFundingRate\":\"0.00010000\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794096000000,\"time\":1794070364002}"
+    },
+    {
+      "source_id": "xrp_insights_flow_excerpt",
+      "url": "https://xrp-insights.com/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "2a0ee1143bfe2c41905fd40f0294399a357a5ca651ff5849c0f662dcd1ccb6fd",
+      "excerpt": "On Fri, Nov 6, 2026, US XRP ETFs (the 6 spot funds plus BITW) recorded net outflows of 663,043 XRP (≈ $775.8K at that day's XRP price). Combined holdings ended the day at 1.20 billion XRP, with $1.43 billion in net assets."
+    },
+    {
+      "source_id": "xrp_insights_method_excerpt",
+      "url": "https://xrp-insights.com/data",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "125227808f282330f755b9455f3af8c914b81baa8d01741da43714bd6ba0cd05",
+      "excerpt": "Flows are derived from holdings, not from issuer flow reports: a change in fund holdings caused by anything other than creations/redemptions (e.g. BITW index rebalancing, fee accruals paid in XRP) is counted as flow."
+    },
+    {
+      "source_id": "cryptoetf_today_excerpt",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "276085e81ed77d2b8a88c37744ae2dd9c7120863cdf4b1588252bc56981b17db",
+      "excerpt": "No net flow on Fri 6 Nov: none of the XRP ETFs that reported created or redeemed shares. Funds reported 5 of 5."
+    },
+    {
+      "source_id": "alpha_finance_excerpt",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "4af510ba7c70ed8f52c3bf1f3510d06aa73c8ecb0e81a4a363c2ca34388d213c",
+      "excerpt": "XRP ETF net flow, 6 Nov 2026: $0 inflow. XRP ETF 30-session flow: $45.9M inflow. Last 7 sessions: +$8.4M. Covering 5 funds."
+    },
+    {
+      "source_id": "alpha_finance_method_excerpt",
+      "url": "https://alphafinance.io/methodology/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "015b2906502d15731798f523a800a77fcac0eb4625a54ee40fb1ddbea26cdd99",
+      "excerpt": "ETF Dashboards: BTC, ETH, SOL, XRP and HYPE flows Coinglass. Coinglass data is read through a commercial API under licence; the panel shows the time the figure was read."
+    },
+    {
+      "source_id": "cryptokeyhole_partial_excerpt",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "cd650c650dc6d10a16b410bfb2c7689a394e2d762e8be518f0918c20e782559c",
+      "excerpt": "6 Nov 2026: partial, 3 of 4 funds published. Daily net flow by fund: Bitwise 0 XRP; Franklin pending; Canary XRPC -752,048 XRP; 21Shares TOXR 0 XRP; partial total -752,048 XRP."
+    },
+    {
+      "source_id": "cryptokeyhole_scope_excerpt",
+      "url": "https://cryptokeyhole.com/methodology/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "761c252b3e37c340e6815694e0c00181419747579992613f44aab1576f267047",
+      "excerpt": "CryptoKeyhole reads four of six listed spot XRP ETFs daily: Bitwise XRP, Franklin XRPZ, Canary XRPC and 21Shares TOXR. It does not collect GXRP daily because the issuer site blocks automated reads, and does not count XRPR because its daily file only reports directly held coins and not the fund's complete exposure."
+    },
+    {
+      "source_id": "canary_primary_history_excerpt",
+      "url": "https://canaryetfs.com/xrpc/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "ac5b5cf0fa70c785104c62a60d4710c322c115747a17b3f34b1d875c0970e1be",
+      "excerpt": "11/04/2026: Net Assets $317,162,340.48; Shares Outstanding 22,990,000; NAV $13.80. 11/05/2026: Net Assets $301,805,946.40; Shares Outstanding 22,990,000; NAV $13.13. 11/06/2026: Net Assets $286,858,926.41; Shares Outstanding 22,990,000; NAV $12.48."
+    },
+    {
+      "source_id": "canary_future_holdings_excerpt",
+      "url": "https://canaryetfs.com/xrpc/",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "9017706745947c26b0f247a7ff7d450d35cc319a154b663e8ceb040288b56e36",
+      "excerpt": "Separate Canary Holdings section says As of 11/09/2026 and includes XRPC quantity 242,962,753.64 XRP with 22,920,000 shares outstanding; future-dated relative to 2026-11-07 and excluded."
+    },
+    {
+      "source_id": "depth_retrieval_limitation",
+      "url": "multiple_public_exchange_orderbook_endpoints",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "07f8118f40b6c04cdcb013cdee4ab9f4b119e9be342285974cf92affe483be6d",
+      "excerpt": "Kraken Depth, OKX Books, Binance spot Depth and Bybit orderbook endpoints could not be retrieved through the web retrieval interface in this run; no multi-level depth values were captured."
+    }
+  ],
+  "source_independence": {
+    "exchange_venues": [
+      "Kraken",
+      "OKX",
+      "Binance"
+    ],
+    "etf_aggregator_relationships": [
+      "XRP Insights and CryptoKeyhole both rely on issuer holdings files as underlying evidence; they are not independent at the primary-input level, although their coverage and calculations differ.",
+      "Alpha Finance identifies Coinglass as its ETF dashboard feed.",
+      "CryptoETF.today's upstream lineage was not established in this run; treat it as a separate published series, not proven independent issuer confirmation.",
+      "Canary Capital is the primary issuer for XRPC share-count and net-asset observations."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "paper_or_real_money_actions": "NONE"
+}

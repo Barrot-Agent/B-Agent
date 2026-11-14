@@ -1,0 +1,274 @@
+{
+  "artifact_type": "barrot_xrp_mission_run_audit",
+  "schema_version": "1.0.0",
+  "run": "Run114",
+  "captured_at_utc": "2026-11-14T03:11:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "code_bearing_head": "6a629caa566c2587d64194fbbb65a982f9418250",
+    "integration_ahead_of_main": 2335,
+    "integration_behind_main": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2405,
+    "open_pull_requests": 375,
+    "open_drafts": 361,
+    "open_non_drafts": 14,
+    "consolidated_pr": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable": true,
+    "pr_reviews": 0,
+    "pr_approvals": 0,
+    "pr_review_threads": 0,
+    "pr_changed_files": 1164,
+    "pr_additions": 339499,
+    "pr_deletions": 5354,
+    "changed_workflow_files": 50,
+    "changed_public_web_files": 7
+  },
+  "engineering": {
+    "change_commit": "6a629caa566c2587d64194fbbb65a982f9418250",
+    "message": "fix(xrp): make paired bootstrap cadence-aware and non-circular",
+    "changed_files": [
+      "barrot_agent/evolution/paired_block_bootstrap.py",
+      "barrot_agent/evolution/forecast_ledger.py",
+      "tests/test_paired_block_bootstrap.py",
+      "tests/test_forecast_ledger.py"
+    ],
+    "implemented": [
+      "non-circular contiguous timestamp blocks",
+      "gap-based segment breaks at 1.5x cadence",
+      "no CI when no full valid block exists",
+      "per-source cadence diagnostics",
+      "forecast ledger requires non-circular sampling policy",
+      "gap and policy regression tests"
+    ],
+    "verification": {
+      "full_suite_run_id": 43549699788,
+      "full_suite_head": "6a629caa566c2587d64194fbbb65a982f9418250",
+      "full_suite_passed": 3628,
+      "subtests_passed": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.4,
+      "duration_seconds": 95.23,
+      "core_tests_passed": 740,
+      "core_subtests_passed": 8,
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission": "passed",
+      "dependency_audit_run_id": 43549704900,
+      "dependency_audit_head": "6a629caa566c2587d64194fbbb65a982f9418250",
+      "dependency_audit_manifest_groups": 5,
+      "known_vulnerabilities_reported": 0,
+      "fail_closed_run_id": 43549699901,
+      "fail_closed_head": "6a629caa566c2587d64194fbbb65a982f9418250",
+      "fail_closed": "passed; merge disabled",
+      "pr_event_ci": "skipped by integration-branch condition"
+    },
+    "remaining_limitations": [
+      "no trained XRP-specific candidate",
+      "walk-forward diagnostic defaults remain 1000 resamples/30 origins/95% versus policy 10000/100/99.375%",
+      "candidate versus four baselines OOS plus shadow readiness not integrated",
+      "production needs declared source cadence, not median inference",
+      "no independent WORM archive or trusted timestamp anchor",
+      "no independent shadow-outcome cohort",
+      "ingestion has not executed on main"
+    ]
+  },
+  "market": {
+    "spot": {
+      "provider": "OKX",
+      "instrument": "XRP-USDT",
+      "provider_timestamp_utc": "2026-11-14T02:59:19.671Z",
+      "last_usd": 1.0035,
+      "bid_usd": 1.0035,
+      "bid_size_xrp": 1558.666025,
+      "ask_usd": 1.0036,
+      "ask_size_xrp": 176.969218,
+      "spread_usd": 0.0001,
+      "spread_bps_approx": 0.996,
+      "open_24h_usd": 1.0204,
+      "high_24h_usd": 1.0438,
+      "low_24h_usd": 0.9843,
+      "volume_24h_xrp": 51200243.513476,
+      "volume_24h_quote_usd": 51984580.58328713,
+      "model_eligible": false,
+      "reason": "no immutable raw receipt or synchronized full L2"
+    },
+    "kraken": {
+      "last_usd": 1.00435,
+      "bid_usd": 1.00436,
+      "ask_usd": 1.0044,
+      "provider_event_timestamp": null,
+      "model_eligible": false
+    },
+    "derivatives": {
+      "liqwall": {
+        "observed_at_utc": "2026-11-13T10:02:00Z",
+        "open_interest_usd": 1130000000,
+        "funding_8h_percent": -0.0014,
+        "liquidations_usd": 19400000,
+        "long_liquidations_usd": 18400000
+      },
+      "tradRadar": {
+        "observed_at_utc": "2026-11-13T22:35:00Z",
+        "open_interest_usd": 1530000000,
+        "funding_8h_percent": 0.0009,
+        "liquidations_usd": 13470000,
+        "long_liquidations_usd": 11730000
+      },
+      "kodexius": {
+        "observed_at_utc": "2026-11-13T19:14:00Z",
+        "open_interest_usd": 606720000,
+        "funding_8h_percent": 0.0069,
+        "venue_count": 7
+      },
+      "treatment": "stale, different venue/contract universes; no averaging or model admission"
+    },
+    "etf": {
+      "source": "XRP Insights",
+      "data_as_of": "2026-11-12",
+      "settled_sessions": 4,
+      "settled_holdings_xrp": 1185698783,
+      "holdings_change_xrp": -9481905,
+      "nov13_status": "provisional",
+      "aggregate_break_even_usd": 1.7095,
+      "estimated_cost_basis_usd": 2030000000,
+      "estimated_mark_to_market_change_usd": -817000000,
+      "method": "issuer holdings deltas, not direct cash flow; BITW rebalancing/fees may count; GXRP excluded during capture gap; reconstructed rows estimated"
+    },
+    "rlusd": {
+      "issuer_transparency_as_of": "2026-11-12",
+      "circulating_usd_millions": 2689.9,
+      "reserve_usd_millions": 2826.5,
+      "reserve_excess_usd_millions": 136.6,
+      "reserve_coverage_percent": 105.08,
+      "latest_retrieved_monthly_independent_attestation": "2026-09-30",
+      "chain_split_onchain_read_utc": "2026-11-13T12:43:00Z",
+      "xrpl_onchain_units": 754149934,
+      "ethereum_onchain_units": 1917942634,
+      "defillama_xrpl_units": 829348347,
+      "defillama_ethereum_units": 1856525007,
+      "treatment": "chain splits disagree; preserve separately"
+    },
+    "exchange_wallets": {
+      "snapshot_date": "2026-11-13",
+      "attributed_xrp": 22260000000,
+      "tracked_wallets": 707,
+      "tracked_exchanges": 24,
+      "upbit_xrp": 6470000000,
+      "coinbase_xrp": 5800000000,
+      "binance_xrp": 2660000000,
+      "sbi_vc_trade_xrp": 56000000,
+      "south_korea_xrp": 8590000000,
+      "united_states_xrp": 8450000000,
+      "japan_xrp": 1380000000,
+      "treatment": "cold storage, omnibus and wrapped backing included; not tradable float"
+    },
+    "x402": {
+      "reported_agent_transactions": 15679858,
+      "active_agents": 191,
+      "merchants": 193,
+      "paid_endpoints": 5882,
+      "all_time_settled_xrp": 7031,
+      "all_time_settled_rlusd": 69061,
+      "average_settlement_usd_approx": 0.0049,
+      "source_type": "single facilitator operator index plus periodic on-chain spot-check",
+      "model_eligible": false
+    },
+    "rwa": {
+      "headline_usd": 4330000000,
+      "distributed_transferable_usd": 276000000,
+      "represented_platform_locked_usd": 4060000000,
+      "model_eligible": false
+    }
+  },
+  "institutional": {
+    "evernorth": {
+      "filing_date": "2026-11-13",
+      "close_date": "2026-10-09",
+      "xrp_transferred_to_pathfinder": 346484972,
+      "wallet_tracker_attributed_xrp": 103130000,
+      "wallet_tracker_moved_outside_attributed_set_xrp": 370347000,
+      "tracker_deal_metadata": "closing8k:null; stale against 10-Q",
+      "treatment": "no sale inferred; transaction/recipient mapping unresolved"
+    },
+    "sbi_vc_trade_rlusd_chain": "Ethereum only",
+    "sbi_crypto_card": "points may convert to XRP/BTC/ETH; one asset per card; VCTRADE account required; aggregate XRP reward volume undisclosed",
+    "sbi_ripple_asia": "60/40 SBI Group/Ripple software JV; does not directly handle XRP",
+    "sbi_remit_route": "separate SBI Remit/SBI VC Trade/Tranglo route",
+    "coinbase_ripple_rlusd": "Oct28 Coinbase Prime/Exchange/Retail listing; Global Exchange collateral support forthcoming",
+    "pnc_coinbase_circle": "USDC pilot, not XRP settlement"
+  },
+  "identity": {
+    "sbic": "regional SME investment companies distinct from SBI Holdings",
+    "ask_coin": "no canonical XRPL issuer; AskSurf is a merchant name",
+    "actual_capital": "cash/in-kind/debt/ELOC/warrants/resales remain separate",
+    "youtube": "person identity established; first-party channel ownership unverified; own-channel inventory zero"
+  },
+  "platforms": {
+    "ChatGPT": "verified current-session GitHub; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal approval",
+    "Codex": "unverified",
+    "HuggingFace": "prior BUILD_ERROR",
+    "Kaggle": "untested",
+    "Databricks": "previous HTTP 403",
+    "LunaRoute": "separate provider; endpoint unverified"
+  },
+  "backlog": {
+    "integration_pr_1662": "blocked; draft and zero approvals",
+    "supersession_candidates": [
+      1661,
+      1660,
+      1643,
+      1642
+    ],
+    "pr_1640": "one source-only commit; content verified in integration; preserve until merge/main verification",
+    "unique_unreviewed": [
+      1653,
+      1655,
+      1659,
+      1615,
+      1614,
+      1320,
+      1318,
+      1317,
+      1269
+    ],
+    "dependency_blocked": [
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1255,
+      1254
+    ],
+    "source_prs_closed": 0
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "directional_forecast": false,
+    "paper_trade": false,
+    "real_money": false
+  },
+  "source_urls": [
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "https://xrp-insights.com/data",
+    "https://xrp-insights.com/xrp-radar",
+    "https://xrp-insights.com/xrp-radar/evernorth",
+    "https://ripple.com/products/stablecoin/transparency/",
+    "https://stableradar.com/coin/rlusd",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm",
+    "https://www.sbivc.co.jp/newsview/2nv9j7ra4j",
+    "https://www.sbigroup.co.jp/news/2026/0501_16280.html",
+    "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+  ]
+}

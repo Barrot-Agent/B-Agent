@@ -1,0 +1,216 @@
+name: XRP Public Market Ingestion
+
+on:
+  schedule:
+    - cron: '3 * * * *'
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+    inputs:
+      coinbase_backfill_days:
+        description: "Additional Coinbase XRP-USD hourly history before the latest candle page (0 disables; maximum 365 days). Manual dispatch only."
+        required: false
+        default: 0
+        type: number
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: xrp-public-market-ingestion
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Prepare feature-store workspace
+        run: mkdir -p artifacts/xrp_ingestion
+      - name: Restore latest successful cross-run receipt-chain index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          restore_dir="$RUNNER_TEMP/xrp-receipt-chain-restore"
+          mkdir -p "$restore_dir"
+          runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100&page=1")"
+          previous_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" '.workflow_runs | map(select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
+          if [[ -z "$previous_run_id" ]]; then
+            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
+            echo "No prior successful main ingestion run; starting the cross-run receipt chain."
+          elif gh run download "$previous_run_id" --name "xrp-public-receipt-index-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/cross_run_receipt_chain.json" ]]; then
+            if ! artifacts_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${previous_run_id}/artifacts?per_page=100" 2>/dev/null)"; then
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+              echo "::warning::Could not verify the predecessor raw-artifact inventory; continuity remains unverified."
+              exit 0
+            fi
+            raw_artifact_present="$(jq -r --arg name "xrp-public-raw-${previous_run_id}" 'any(.artifacts[]; .name == $name and .expired == false)' <<< "$artifacts_json")"
+            index_matches_run="$(jq -r --arg run "$previous_run_id" '.current_run.run_id == $run and .raw_artifact.run_id == $run and .raw_artifact.artifact_name == ("xrp-public-raw-" + $run)' "$restore_dir/cross_run_receipt_chain.json")"
+            if [[ "$raw_artifact_present" == "true" && "$index_matches_run" == "true" ]]; then
+              echo "BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST=$restore_dir/cross_run_receipt_chain.json" >> "$GITHUB_ENV"
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=CONTINUED" >> "$GITHUB_ENV"
+              echo "Restored receipt-chain index and confirmed its raw artifact still exists for run $previous_run_id."
+            else
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+              echo "::warning::The predecessor raw artifact is missing/expired or its index run identity does not match; continuity remains unverified."
+            fi
+          else
+            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+            echo "::warning::Latest successful ingestion run $previous_run_id has no receipt-index artifact; continuity remains unverified."
+          fi
+      - name: Apply XRP research timestamp corrections in memory
+        run: >-
+          python -m barrot_agent.evolution.research_timestamp_audit
+          --repository-root .
+          --output "$RUNNER_TEMP/xrp-research-correction-audit.json"
+      - name: Upload XRP research correction audit
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-research-correction-audit-${{ github.run_id }}
+          path: ${{ runner.temp }}/xrp-research-correction-audit.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Restore cumulative feature-store cache
+        id: feature_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: artifacts/xrp_ingestion/feature_store.sqlite3
+          key: xrp-feature-store-v1-${{ github.run_id }}
+          restore-keys: |
+            xrp-feature-store-v1-
+      - name: Record exact cache restoration source
+        if: steps.feature_cache.outputs.cache-hit == 'true'
+        run: echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=actions_cache_exact_key" >> "$GITHUB_ENV"
+      - name: Restore latest trusted feature-store artifact when exact cache key is unavailable
+        if: steps.feature_cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # A restore-key match is not an exact cache hit. Discard its possibly stale database before artifact recovery.
+          rm -f artifacts/xrp_ingestion/feature_store.sqlite3
+          page=1
+          restored=0
+          while [[ "$page" -le 30 && "$restored" != "1" ]]; do
+            run_page="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100&page=${page}")"
+            page_run_count="$(jq '.workflow_runs | length' <<< "$run_page")"
+            [[ "$page_run_count" -gt 0 ]] || break
+            run_ids="$(jq -r '.workflow_runs[] | select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == env.GITHUB_REPOSITORY and (.event == "schedule" or .event == "workflow_dispatch")) | [.created_at, (.id | tostring)] | @tsv' <<< "$run_page" | sort -r | cut -f2)"
+            if [[ -n "$run_ids" ]]; then
+              while IFS= read -r previous_run_id; do
+                [[ -n "$previous_run_id" ]] || continue
+                restore_dir="$RUNNER_TEMP/xrp-feature-restore-${previous_run_id}"
+                checkpoint_dir="$restore_dir/per-run"
+                daily_dir="$restore_dir/daily"
+                mkdir -p "$checkpoint_dir" "$daily_dir"
+                if gh run download "$previous_run_id" --name "xrp-public-feature-store-${previous_run_id}" --dir "$checkpoint_dir" >/dev/null 2>&1 && [[ -s "$checkpoint_dir/feature_store.sqlite3" ]]; then
+                  cp "$checkpoint_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+                  echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:per_run_checkpoint" >> "$GITHUB_ENV"
+                  restored=1
+                  break
+                fi
+                if gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}" --dir "$daily_dir" >/dev/null 2>&1 && [[ -s "$daily_dir/feature_store.sqlite3" ]]; then
+                  cp "$daily_dir/feature_store.sqlite3" artifacts/xrp_ingestion/feature_store.sqlite3
+                  echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=trusted_ingestion_workflow_run:${previous_run_id}:daily_archive" >> "$GITHUB_ENV"
+                  restored=1
+                  break
+                fi
+              done <<< "$run_ids"
+            fi
+            page=$((page+1))
+          done
+          if [[ "$restored" != "1" ]]; then
+            echo "BARROT_FEATURE_STORE_RESTORE_SOURCE=bootstrap" >> "$GITHUB_ENV"
+            echo "No trusted unexpired feature-store checkpoint or daily archive; bootstrapping."
+          fi
+      - name: Capture public XRP market sources and evaluate historical baselines
+        env:
+          WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(
+            --output-dir artifacts/xrp_ingestion
+            --walk-forward-horizons "$WALK_FORWARD_HORIZONS"
+            --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
+            --receipt-chain-continuity-status "${BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS:-BOOTSTRAP}"
+          )
+          if [[ -n "${BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST:-}" ]]; then
+            args+=(--previous-receipt-chain-manifest "$BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST")
+          fi
+          python -m barrot_agent.evolution.xrp_public_ingestion "${args[@]}"
+      - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-raw-${{ github.run_id }}
+          path: |
+            artifacts/xrp_ingestion/raw/**
+            artifacts/xrp_ingestion/receipt_manifest.json
+            artifacts/xrp_ingestion/receipt_chain_manifest.json
+            artifacts/xrp_ingestion/cross_run_receipt_chain.json
+            artifacts/xrp_ingestion/source_failures.json
+            artifacts/xrp_ingestion/raw_only_sources.json
+            artifacts/xrp_ingestion/drift_report.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload append-only cross-run receipt-chain index (90-day GitHub artifact; not WORM)
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-receipt-index-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/cross_run_receipt_chain.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload point-in-time event timeline and counter-hypotheses
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-events-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/event_timeline.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload per-run point-in-time feature-store checkpoint
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-feature-store-${{ github.run_id }}
+          path: artifacts/xrp_ingestion/feature_store.sqlite3
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload daily point-in-time feature-store backup and walk-forward report
+        if: success() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *')
+        uses: actions/upload-artifact@v7
+        with:
+          name: xrp-public-feature-${{ github.run_id }}
+          path: |
+            artifacts/xrp_ingestion/feature_store.sqlite3
+            artifacts/xrp_ingestion/snapshot.json
+            artifacts/xrp_ingestion/walk_forward.json
+            artifacts/xrp_ingestion/summary.json
+            artifacts/xrp_ingestion/snapshot_blocked.json
+            artifacts/xrp_ingestion/drift_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Save cumulative feature-store cache after successful artifact publication
+        if: success() && steps.feature_cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: artifacts/xrp_ingestion/feature_store.sqlite3
+          key: xrp-feature-store-v1-${{ github.run_id }}

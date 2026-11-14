@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "record_id": "20261114T122103Z-run126-main-automation-safety-and-filing-reconciliation",
+  "observed_at_utc": "2026-11-14T12:21:03Z",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_followup": "b34d2f89e33cea37bc736d8978fb1ad27a143c87",
+    "branch": "integration/xrp-v3-unified-main-20261112",
+    "pr": 1662
+  },
+  "exact_head_ci": {
+    "run_id": 43593974632,
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43593974632",
+    "head_sha": "b34d2f89e33cea37bc736d8978fb1ad27a143c87",
+    "conclusion": "success",
+    "tests_passed": 3635,
+    "subtests_passed": 8,
+    "failures": 0,
+    "duration_seconds": 159.32,
+    "inclusive_coverage_percent": 62.44,
+    "legacy_core_coverage_percent": 76,
+    "wheel_and_packaged_primary_mission": "passed",
+    "dependency_audit_push": {
+      "id": 43593974662,
+      "conclusion": "success"
+    },
+    "dependency_audit_pr": {
+      "id": 43593978682,
+      "conclusion": "success"
+    },
+    "fail_closed_push": {
+      "id": 43593974634,
+      "conclusion": "success"
+    },
+    "fail_closed_pr": {
+      "id": 43593978666,
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "id": 43593978706,
+      "conclusion": "skipped",
+      "reason": "integration branch condition; push full-suite run is authoritative"
+    }
+  },
+  "main_ci": {
+    "run_id": 43343513172,
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172",
+    "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "conclusion": "success",
+    "full_suite_tests_passed": 747,
+    "subtests_passed": 8,
+    "duration_seconds": 12.46,
+    "note": "Main full-suite coverage scope is materially smaller than integration's 3,635-test inclusive suite."
+  },
+  "main_barrot_sync_security": {
+    "workflow": ".github/workflows/barrot-sync.yml",
+    "latest_run_id": 43343513347,
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347",
+    "run_conclusion": "success",
+    "actual_step_evidence": {
+      "logged_error": "ModuleNotFoundError: No module named 'httpx'",
+      "python_sync_failure_masked_by": "python b_agent.py --sync || echo ...",
+      "git_push_failure_masked_by": "git push || true"
+    },
+    "credential_exposure": {
+      "variable": "LUNAROUTE_API_KEY",
+      "code": "echoes the variable and truncates the output to the first 30 characters",
+      "risk": "The first 30 characters of the secret are written to the GitHub Actions log; treat the credential as potentially partially exposed.",
+      "rotation_performed": false,
+      "authorization_required_for_rotation": true
+    },
+    "interpretation": "A green workflow status did not establish successful sync or push. Do not dispatch this workflow. The integration branch quarantines it with an empty permissions block and a disabled job."
+  },
+  "main_coinbase_paper_trader": {
+    "workflow": ".github/workflows/coinbase-paper-trader.yml",
+    "trigger": "workflow_dispatch without an explicit confirmation input",
+    "actions": "Calls Groq to choose buy/sell/hold on Coinbase public market data; persists and commits paper state/log to main.",
+    "persisted_state": {
+      "path": "web/paper_trading_state.json",
+      "cash_usd": 9009.936613782476,
+      "position_size": 0.012445158497236623,
+      "position_product": null,
+      "avg_entry_price": 80436.84,
+      "trade_count": 126,
+      "started_at": "2026-08-25T01:42:34.501971+00:00"
+    },
+    "risk": "A nonzero simulated open position has no product identity. The main workflow hardcodes BTC-USD and has no explicit per-run approval; do not infer that the persisted position is BTC.",
+    "integration_guard": "Explicit YES required; exact 40-character current main SHA required; persisted state and product identity validated before any provider/network/model call; contents:read; artifact-only output; no commit/push.",
+    "dispatch_performed": false,
+    "paper_trade_performed": false
+  },
+  "financial_filing_reconciliation": {
+    "circle_q3_2026": {
+      "filing_date": "2026-11-04",
+      "coinbase_distribution_costs_q3_usd": 331300000,
+      "coinbase_distribution_costs_nine_months_usd": 986600000,
+      "arc_presale_revenue_recognized_q3_usd": 181800000,
+      "arc_presale_revenue_recognized_nine_months_usd": 181800000,
+      "sbi_arc_presale_check_size_usd": null,
+      "consortium_total_raised_usd": 222000000,
+      "interpretation": "The $181.8M is Circle-recognized ARC presale revenue, not an SBI allocation or proof of SBI's cash contribution. The $222M is the total investor consortium, not SBI's check."
+    },
+    "coinbase_q3_2026": {
+      "filing_date": "2026-10-29",
+      "table_usdc_rewards_q3_2026_usd": 129245000,
+      "table_usdc_rewards_q3_2025_usd": 111570000,
+      "table_arithmetic_q3_increase_usd": 17675000,
+      "table_usdc_rewards_nine_months_2026_usd": 361780000,
+      "table_usdc_rewards_nine_months_2025_usd": 314125000,
+      "table_arithmetic_nine_month_increase_usd": 47655000,
+      "narrative_q3_increase_usd": 71600000,
+      "narrative_nine_month_increase_usd": 175700000,
+      "status": "INTERNAL_FILING_DISCREPANCY_UNRESOLVED",
+      "interpretation": "The narrative immediately below the table reports increases that do not match the table's arithmetic. Preserve both; do not silently choose one or net these expenses against Circle's distribution costs."
+    }
+  },
+  "sources": [
+    {
+      "id": "main_barrot_sync_workflow",
+      "publisher": "Barrot-Agent/B-Agent",
+      "type": "workflow_source",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-sync.yml",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "main_barrot_sync_run",
+      "publisher": "GitHub Actions",
+      "type": "workflow_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "main_coinbase_paper_workflow",
+      "publisher": "Barrot-Agent/B-Agent",
+      "type": "workflow_source",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "main_coinbase_paper_state",
+      "publisher": "Barrot-Agent/B-Agent",
+      "type": "persisted_simulated_state",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "integration_barrot_sync_quarantine",
+      "publisher": "Barrot-Agent/B-Agent",
+      "type": "workflow_source",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/.github/workflows/barrot-sync.yml",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "integration_paper_trader_guard",
+      "publisher": "Barrot-Agent/B-Agent",
+      "type": "workflow_and_script_source",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/.github/workflows/coinbase-paper-trader.yml",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "circle_q3_2026_10q",
+      "publisher": "Circle",
+      "type": "issuer_10q",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html",
+      "published_at": "2026-11-04",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    },
+    {
+      "id": "coinbase_q3_2026_10q",
+      "publisher": "Coinbase",
+      "type": "SEC_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_at": "2026-10-29",
+      "retrieved_at_utc": "2026-11-14T12:21:03Z",
+      "raw_sha256": null
+    }
+  ],
+  "evidence_integrity": {
+    "raw_sha256_receipts_created": 0,
+    "model_admission": false,
+    "note": "Repository workflow/state files were inspected through GitHub. Web filing excerpts were not materialized as byte-exact payloads or hashed; the filing observations remain research evidence, not feature-store inputs."
+  },
+  "actions_taken": [
+    "Recorded the main Barrot Sync credential-prefix disclosure and false-green execution in the existing PR discussion.",
+    "Recorded the nonzero paper position with null product identity and the integration guard in the existing PR discussion.",
+    "No workflow was dispatched.",
+    "No secret was rotated.",
+    "No paper trade was run.",
+    "No Databricks write, Kaggle submission, deployment, merge or source-PR closure occurred."
+  ],
+  "next_actions": [
+    "Keep main Barrot Sync quarantined in the consolidated integration branch; require explicit authorization before any secret rotation and treat the current key as potentially partially exposed.",
+    "Keep main Coinbase paper-trader workflow disabled/replaced by the guarded artifact-only version; do not infer product identity from BTC-USD default.",
+    "Require independent review of the workflow replacements and exact-head full-suite/security checks before merge.",
+    "Preserve Circle's $181.8M ARC presale revenue and the $222M consortium total as separate quantities; do not assign the consortium total to SBI.",
+    "Resolve the Coinbase 10-Q USDC rewards table-versus-narrative discrepancy before using either change figure in financial modeling."
+  ]
+}

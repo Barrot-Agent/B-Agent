@@ -1,49 +1,18 @@
-name: Knowledge Signal Cycle
+name: Knowledge Signal Cycle (quarantined pending evidence-first forecast integration)
 
 on:
-  workflow_dispatch:
-    inputs:
-      confirm_external_research:
-        description: "Explicitly authorize public-news ingestion and Groq-backed signal distillation"
-        required: true
-        type: choice
-        options:
-          - NO
-          - YES
-        default: NO
+  workflow_dispatch: {}
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
-  cycle:
-    if: ${{ inputs.confirm_external_research == 'YES' }}
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
     steps:
-      - uses: actions/checkout@v7
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - run: pip install requests vaderSentiment
-      - name: Ingest fresh news
-        run: python3 scripts/knowledge_ingest.py
-      - name: Distill new entries
-        run: python3 scripts/knowledge_distill.py
-      - name: Emit blended signal
-        run: python3 scripts/emit_signal.py
-      - name: Preserve knowledge and signal outputs as an artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: barrot-knowledge-signal-${{ github.run_number }}
-          path: |
-            ping-pongings/knowledge-base/log.jsonl
-            ping-pongings/knowledge-base/config.json
-            web/latest_signal.json
-            web/signal_history.jsonl
-          if-no-files-found: warn
-          retention-days: 90
+      - name: Explain quarantine
+        run: |
+          echo "The legacy cycle combines RSS ingestion, Groq sentiment distillation and a blended signal emitter."
+          echo "Its sentiment score is not a fixed-horizon, leakage-safe XRP forecast and has no demonstrated out-of-sample lift or calibration."
+          echo "It remains disabled until source receipts, point-in-time features and the verified forecast ledger replace the legacy signal path."
+          echo "No provider credentials are read, no external service is called, and no repository or external mutation occurs."
