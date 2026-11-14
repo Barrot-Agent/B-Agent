@@ -107,6 +107,7 @@ class LunaRouteRefiner(Refiner):
             bool(self.api_key)
             and self.allow_external
             and os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") == "1"
+            and os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") == "1"
             and self.data_classification in EXTERNAL_REFINEMENT_ALLOWED_CLASSES
         )
 

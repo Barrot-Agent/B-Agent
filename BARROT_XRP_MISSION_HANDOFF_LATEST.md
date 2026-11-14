@@ -4173,3 +4173,91 @@ Prediction code on integration includes public-source ingestion, SHA-256 receipt
 Next: finish semantic review; preserve the integration PingPong opt-in gates; fix main Barrot Sync false-green behavior; keep the ambiguous paper-trader state quarantined; resolve governance; only then merge the read-only XRP ingestion workflow and verify real scheduled main runs. Build a trained XRP candidate only after synchronized historical data supports leakage-safe evaluation and independent shadow outcomes.
 
 No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+## Run141 — current-main reconciliation, XRP market update, and producer-asset provenance
+**Research cutoff:** 2026-11-14 22:36:31 UTC  
+**Mission:** XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution, orchestration, safety, authorization, and verification foundation.
+
+### Repository state and main-branch drift
+
+- Current main: 0d05b59a037f4ad4b0c345ee6e8c1c442d25fa2e (tree 323e38f0fcf179a9609bd6c26afdf25628eade05; 1,391 entries).
+- Existing integration head before reconciliation: 2a2dade5c3ffb869daf349ea3dd653332b387500 (tree 2,419 entries).
+- PR #1662 remains open/draft, 1,217 changed files, zero formal reviews/approvals and zero review threads. Its base is f1708870; it is 2,422 commits ahead and five commits behind current main. GitHub reports mergeability unknown/dirty.
+- Main advanced five commits from PR base f1708870: Ping-Pong large-document refinement, test-count correction, producer reference acquisition, 24 one-shot assets, and a producer-session sync addendum. The current main delta is 48 paths: six overlaps and 42 main-only.
+- Six overlaps: BARROT_SYNC.md, PINGPONG_USAGE.md, barrot_agent/__init__.py, barrot_agent/refinement/__init__.py, barrot_agent/refinement/refiners.py, scripts/pingpong_refine.py.
+- Forty-two main-only paths include the Ping-Pong modules, tests, docs and historical artifacts; producers/reference_acquisition.md; and tracks/kits/pd/README.md plus 24 WAV files. The integration retains stronger default-deny external-provider gates and carries forward the main-only functionality.
+- Main's producer reference-acquisition log claims LunaRoute MCP connection and web_search use. The same record says OpenCode exposed zero MCP servers/resources. Authentication, permission scope and end-to-end data flow were not independently verified in this run. Treat the connection as unverified; no external task or XRP data was dispatched.
+
+### Ping-Pong refinement safety reconciliation
+
+- Main adds canonical paths, coverage-exact segmentation, hash-preconditioned patches, conflict detection, rollback, semantic evaluation, independent-judge calibration, resumable section state, scoring, CLI, tests and historical artifacts.
+- Integration now requires explicit refinable-data classification. Immutable raw sources, source receipts, feature snapshots, feature stores, event timelines, market data, credentials, secrets, user-private data and forecast ledgers are rejected.
+- External refiners and judges require caller opt-in, BARROT_ALLOW_EXTERNAL_REFINEMENT=1, BARROT_LIVE_REFINEMENT_APPROVED=1, eligible public classification, matching adapter classification and valid key. Live verification and optional live tests also require BARROT_LIVE_REFINEMENT=1.
+- Run IDs are filename-safe, cannot traverse paths or overwrite existing runs; resume requires the saved classification. CLI defaults offline, prints to stdout unless an output destination is explicit, and never overwrites its source file.
+- Historical main Ping-Pong verification recorded a real LunaRoute call on the public repository capability audit. The judge failed calibration, the final result was unchanged and mechanical verification passed. This is not evidence of semantic improvement or XRP prediction. No external call occurred in this run.
+
+### Producer asset preservation and rights correction
+
+- Main added 24 one-shot WAVs: 15 converted from the smpldsnds/drum-machines collection and nine described as original synthesized sounds.
+- The upstream repository README calls the collection public domain, but its GitHub license metadata is null and no separate LICENSE file or per-file provenance was found. This is an upstream maintainer assertion, not a verified blanket license. The 15 converted files are retained for internal evaluation; do not redistribute or commercialize until rights and attribution are documented.
+- The nine synthesized files are described as original, but the import commit contains no generator source or reproducible build receipt. Their originality remains a project assertion pending source code and parameter manifest.
+- The corrected tracks/kits/pd/README.md records the provisional rights status. The folder name pd is not a rights determination.
+- Main's auto-commit 0d05b59 added a 12-line producer session addendum to BARROT_SYNC.md. The associated Barrot Sync workflow still failed on missing rich; shell fallback and git push suppression produced a false-green. The auto-commit logs the producer addendum; it does not prove sync success.
+
+### Exact-head CI and security
+
+- Main CI run 43649006834 remains in progress; core tests passed. The previous main full suite 43648252959 passed 848 tests, one skipped, eight subtests, but it is not exact-head evidence for 0d05b59.
+- Main Pages run 43649006105 failed Liquid parsing at GLOBAL_STATE_MANIFEST.md:6456; deployment was skipped.
+- Main Barrot Sync run 43649006881 reports success but logs ModuleNotFoundError: rich, sync skipped, and git push || true. This is a false-green.
+- Previous integration exact head 2a2dade5 full-suite job 43641458770 passed; exact count was not extracted. The new reconciliation head requires its own full suite, wheel, dependency/security and fail-closed checks.
+- Main branch-protection inspection returns HTTP 403; fallback ruleset 10863829 is disabled; integration is unprotected; CODEOWNERS is self-owned; connector permissions include admin/maintain/push/pull/triage.
+- Open PR inventory: 373 total, 361 drafts and 12 non-drafts. #1661 and #1660 remain overlap/supersession candidates; preserve unique workflow paths until successor merge and main verification. #1653 remains blocked with unresolved review threads. Unique research and feature work remains open.
+
+### Fresh XRP spot observations
+
+| Venue | Price | Bid | Ask | 24h open | 24h high | 24h low | 24h volume |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| OKX XRP-USDT | $0.9040 | $0.9040 | $0.9041 | $1.0117 | $1.01248 | $0.8932 | 81.74M XRP |
+| Kraken XRP/USD | $0.90421 | $0.90444 | $0.90454 | $1.00999 | $1.0160 | $0.89112 | 69.30M XRP |
+
+OKX event timestamp 2026-11-14T22:29:57.463Z; it was more than five minutes old at the 22:36:31Z audit cutoff, exceeding the 300-second admission rule. Kraken supplied no exchange event timestamp. OKX spread was approximately 1.10 bps; top bid size 3,829.01 XRP versus 395.3 XRP ask size, a one-level bid-heavy snapshot. The preceding OKX snapshot at 21:58:05Z was ask-heavy (16,000 XRP ask versus 2,842.24 XRP bid). The top-level imbalance reversed in about 32 minutes; this demonstrates snapshot instability, not a durable directional signal. No synchronized multi-level L2 was admitted.
+
+Both venues were approximately 10.6% below their 24-hour opens and near their reported lows. No executable arbitrage inference is justified.
+
+### ETF flows and derivatives
+
+- XRP Insights reports November 13 +3.40M XRP and November 9–13 weekly -6.08M XRP across six US spot funds plus BITW; its data page labels Nov 13 provisional while the homepage presentation differs. GXRP is excluded from its flow calculation during an issuer-page gap.
+- Alpha Finance reports Nov 13 -$1.1M and -$19.1M over seven sessions across five funds; XRPZ +$4.4M and GXRP -$5.5M explain the daily net. ByKaranteli reports -$1.1M with latest row provisional. CoinGlass reports approximately -$1.1M for three of five funds.
+- Fund universes and settlement states differ. Holdings changes are not direct cash subscriptions or proof of XRP spot purchases; do not average.
+- Liqwall 16:02 UTC: OI $1.06B (+0.6%), average funding +0.0004%/8h, $17.2M liquidations, $16.7M longs.
+- TradRadar 16:45 UTC: OI $1.40B (-5.5%), funding -0.0006%/8h, at least $19.75M liquidations, $19.28M longs.
+- Alpha Finance 14:50 UTC: OI $2.17B, $15.1M long and $586.2K short liquidations; its heatmap is modelled from OI.
+- OI and funding disagree because providers use different venues and timestamps. Long liquidations dominate the stale samples, but no synchronized direct-exchange derivatives feature was admitted.
+
+### Macro, geopolitics and exchange risk
+
+- Reuters, Nov 13: USD/JPY above 160; Japan's July–August intervention ¥15.4T; New York Fed records approximately $497M of US currency operations.
+- WSJ, Nov 12: US two-year yield 4.862%, 10-year 5.102%; higher-rate expectations and Iran-related uncertainty were cited.
+- CoinDesk, Nov 13: DXY above 103; $1.64B crypto liquidations in 24 hours, 88.7% long-side. Broad risk context only, not XRP-specific causal proof.
+- Reuters, Nov 14: Binance reported 87 withdrawal networks reopened after its Oct 29 security breach, reported at $6.3B with 95% of stolen tokens covered. No XRP-specific network status or flow effect was verified; Binance reserve/flow series around phased reopening remain potentially contaminated.
+
+### Institutional identity and prediction status
+
+- Coinbase RLUSD distribution announced Oct 28 across Prime, Exchange and retail, with XRPL, Base and Ethereum deposits/withdrawals; Coinbase Global Exchange collateral support was a future follow-up.
+- Standard Chartered RLUSD custody on XRPL went live Oct 12; planned collateral mirroring with Ripple/LMAX is not proof of XRP buying.
+- PNC's Nov 9 Coinbase payment pilot uses Circle USDC, not XRP settlement.
+- SBIC East/Central/West are separate regional SME investment companies; SBI Holdings is separate. SB OAI Japan GK is the OpenAI/SoftBank joint venture, not SBI. SBIC East's official AI training curriculum included ChatGPT and Copilot; this is not evidence of an OpenAI commercial partnership.
+- Permission ASK is identified on Base/Polygon; no canonical XRPL ASK issuer verified. “Actual capital” remains non-standard. Kamilah Stevenson's identity is supported, but the candidate XRP YouTube channel is not linked from her first-party site; no new video promoted to verified status.
+- Forecast remains NOT_ISSUED; accuracy NOT_EVALUATED. No trained XRP-specific candidate, calibrated superiority over four baselines, synchronized historical L2/derivatives/exchange-flow data or independent shadow cohort is verified.
+
+### Next actions and authorization
+
+1. Reconcile current main 0d05b59 into the existing integration branch, preserving all 42 main-only paths and the six overlap decisions.
+2. Run the full repository suite, wheel build, dependency/security audits and fail-closed gate on the exact new integration head.
+3. Correct main's Barrot Sync false-green, keep automatic sync and legacy Groq push workflows quarantined, and fix the Pages Liquid error without deploying.
+4. Complete semantic review of all PR paths, including workflows, public web files, producer MCP claims and audio rights.
+5. Resolve least-privilege GitHub access, branch protection, independent CODEOWNERS and approvals.
+6. Continue synchronized historical XRP data reconstruction and leakage-safe candidate evaluation.
+7. No directional forecast until calibrated out-of-sample superiority and independent shadow outcomes are demonstrated.
+
+No merge to main, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred during Run141.

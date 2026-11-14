@@ -140,8 +140,16 @@ try:
     from .refinement import (
         EXTERNAL_REFINEMENT_ALLOWED_CLASSES, IMMUTABLE_DATA_CLASSES,
         REFINABLE_DATA_CLASSES, HeuristicRefiner, LunaRouteRefiner,
-        PingPongRefiner, Refiner, RefinementReport, make_model_refiners,
-        refine_data, refine_json_file,
+        PingPongRefiner, Refiner, RefinementOutput, RefinementReport,
+        RoundRecord, make_model_refiners, refine_data, refine_json_file,
+        scoring, ref_paths, DocumentAudit, Slot, audit_document,
+        segment_document, BatchResult, Patch, VerificationReport,
+        apply_patches, detect_conflicts, make_delete, make_replace,
+        make_set, make_splice, rollback, verify_against_original,
+        CALIBRATION_CASES, LLMSemanticJudge, SemanticVerdict, calibrate,
+        evaluate, heuristic_semantic_eval, IMPLEMENTATION_VERSION,
+        RefinementPipeline, RunState, SectionState, find_completed,
+        load_run, refine_document,
     )
     _refinement_available = True
 except Exception:
@@ -151,6 +159,15 @@ if _refinement_available:
     __all__ += [
         "EXTERNAL_REFINEMENT_ALLOWED_CLASSES", "IMMUTABLE_DATA_CLASSES",
         "REFINABLE_DATA_CLASSES", "HeuristicRefiner", "LunaRouteRefiner",
-        "PingPongRefiner", "Refiner", "RefinementReport",
-        "make_model_refiners", "refine_data", "refine_json_file",
+        "PingPongRefiner", "Refiner", "RefinementOutput",
+        "RefinementReport", "RoundRecord", "make_model_refiners",
+        "refine_data", "refine_json_file", "scoring", "ref_paths",
+        "DocumentAudit", "Slot", "audit_document", "segment_document",
+        "BatchResult", "Patch", "VerificationReport", "apply_patches",
+        "detect_conflicts", "make_delete", "make_replace", "make_set",
+        "make_splice", "rollback", "verify_against_original",
+        "CALIBRATION_CASES", "LLMSemanticJudge", "SemanticVerdict",
+        "calibrate", "evaluate", "heuristic_semantic_eval",
+        "IMPLEMENTATION_VERSION", "RefinementPipeline", "RunState",
+        "SectionState", "find_completed", "load_run", "refine_document",
     ]
