@@ -113,6 +113,18 @@
     path; the pipeline is the large-doc path
 - Next step: wire refine_document into data_registry write paths; optional
   nightly GitHub Action re-refining knowledge-base JSON via the pipeline
+- Producer track (session 4, same day): user judged the 5 tracks
+  grid-correct but NOT vocal-ready; v2 data acquired and banked:
+  * producers/reference_acquisition.md - 5 sources via LunaRoute MCP
+    (Roland/Darkchild harp signature, Timbaland per-layer timing, Missy
+    tumbi+go-go chant, Black Coffee kick+tom-loop split foundation,
+    dembow 3-2 clave) cross-referenced vs v1 cheat sheets -> v2 patch list
+  * tracks/kits/pd/ - 24 one-shots: 15 public-domain TR-808/808-mini
+    (smpldsnds, license-verified; unlicensed candidates REJECTED) + 9
+    synthesized signatures (log drum modal, steelpan bowl partials, tumbi
+    Karplus-Strong, squelch glide bass, rhythmic harp) + README manifest
+  * commits adc8843 + d00f158; next: rebuild v2 tracks against the patch
+    list, then user feedback loop (kill/keep/change + rating anchors)
 
 ## Session 3 Archive - PING-PONG REFINEMENT ENGINE (2026-11-14)
 - Last sync: 2026-11-14 (session 3) - PING-PONG REFINEMENT ENGINE shipped:
