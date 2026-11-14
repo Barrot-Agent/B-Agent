@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "circle-arc-sbi-bny-jcb-usdc-xrpl-20261103-run14",
+  "captured_at_utc": "2026-11-03T04:15:00Z",
+  "data_cutoff_utc": "2026-11-03T04:15:00Z",
+  "claims": [
+    {
+      "id": "A01",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle's Q2 2026 results reported USDC circulation of $73.3B at quarter end and $14.8T Q2 onchain transaction volume, up 151% year over year.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A02",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle's Q2 2026 results named SBI Group among the founding third-party validator cohort for Arc, alongside BlackRock, DTCC, Galaxy, Global Payments, ICE, Mastercard, MoneyGram, Standard Chartered, Sumitomo and Visa. Circle reported more than 100 ecosystem/institutional builders at the time.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A03",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle said BNY expanded its partnership to support USDC minting and redemption within BNY's Digital Asset Custody platform; BNY already served as primary custodian of USDC reserves.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A04",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle reported JCB combining Circle stablecoin infrastructure with JCB's global merchant network, initially exploring cross-border treasury transfers using USDC and in-store stablecoin payment experiences in Japan.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A05",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle reported Circle Payments Network trailing-30-day annualized transaction volume of $14.7B and 175 enrolled financial institutions at Q2 end.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A06",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle reported final OCC approval for Circle National Trust and approval from NYDFS to open Circle New York Trust, expanding its regulated custody and stablecoin reserve-management framework.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A07",
+      "class": "confirmed_issuer_report",
+      "claim": "Circle said its Agent Stack had more than 900 paid services and that 99.3% of x402 agent-payment volume was settling in USDC at the Q2 reporting date.",
+      "as_of": "2026-Q2",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results"
+    },
+    {
+      "id": "A08",
+      "class": "reported_third_party_chain_snapshot",
+      "claim": "A September 29, 2026 third-party XRPL stablecoin table reported approximately $1.121B RLUSD, $72.77M USDV, $11.33M EURCV and $4.54M USDC on XRPL; its reported total stablecoin value was approximately $1.213B. The listed top six do not sum exactly to the reported total, and the observation is not current.",
+      "as_of": "2026-09-29",
+      "source": "https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/"
+    },
+    {
+      "id": "A09",
+      "class": "derived_comparison_with_date_mismatch",
+      "claim": "The reported $4.54M XRPL USDC supply on September 29 is about 0.37% of the reported $1.213B XRPL stablecoin total. Compared with Circle's $70.0B global USDC circulation on October 29, it is about 0.0065% of global USDC. Dates and providers differ; this is indicative scale only, not a synchronized share.",
+      "as_of": "mixed_2026-09-29_to_2026-10-29",
+      "source": "https://xrpbreadcrumbs.com/stablecoins-rlusd/stablecoin-supply-on-xrp-ledger/ ; https://www.circle.com/transparency"
+    },
+    {
+      "id": "A10",
+      "class": "confirmed_circle_product_documentation",
+      "claim": "Circle states USDC is native on XRPL and available through exchanges, ecosystem apps and qualified Circle Mint customers; Circle Mint and APIs can convert between supported chains without a third-party bridge. This is USDC on XRPL, not XRP issuance or XRP collateral.",
+      "as_of": "2026-11-03",
+      "source": "https://www.circle.com/multi-chain-usdc/xrpl"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relation": "founding third-party validator cohort",
+      "class": "confirmed_issuer_report",
+      "source": "A02"
+    },
+    {
+      "from": "BNY",
+      "to": "Circle",
+      "relation": "primary custodian of USDC reserves; expanded USDC mint/redeem integration in custody platform",
+      "class": "confirmed_issuer_report",
+      "source": "A03"
+    },
+    {
+      "from": "JCB",
+      "to": "Circle",
+      "relation": "USDC-based cross-border treasury and merchant-payment exploration in Japan",
+      "class": "confirmed_issuer_report",
+      "source": "A04"
+    },
+    {
+      "from": "Circle Payments Network",
+      "to": "financial institutions",
+      "relation": "175 enrolled institutions and $14.7B annualized trailing-30-day volume at Q2 end",
+      "class": "confirmed_issuer_report",
+      "source": "A05"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native USDC issuance and Circle Mint/API support",
+      "class": "confirmed",
+      "source": "A10"
+    },
+    {
+      "from": "XRPL stablecoin ecosystem",
+      "to": "RLUSD",
+      "relation": "RLUSD was the largest reported stablecoin balance in September 29 third-party snapshot",
+      "class": "reported",
+      "source": "A08"
+    },
+    {
+      "from": "XRPL stablecoin ecosystem",
+      "to": "USDC",
+      "relation": "USDC was a small reported share of XRPL stablecoin balances in September 29 snapshot",
+      "class": "reported",
+      "source": "A08"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "AH01",
+      "class": "inference",
+      "hypothesis": "SBI's Circle Arc validator role, USDC collaboration, RLUSD Japan distribution and JPYSC work indicate a multi-issuer/multi-rail strategy rather than an exclusive commitment to XRP or one stablecoin.",
+      "counter": "Validator membership and MOUs do not establish production transaction flows, governance control or commercial volume."
+    },
+    {
+      "id": "AH02",
+      "class": "inference",
+      "hypothesis": "Native USDC on XRPL can coexist with RLUSD and other issued assets, potentially increasing dollar liquidity options on the ledger.",
+      "counter": "The September 29 snapshot reports USDC at only about 0.37% of XRPL stablecoin value while RLUSD dominates; the snapshot is third-party and stale."
+    },
+    {
+      "id": "AH03",
+      "class": "speculation",
+      "hypothesis": "Circle's distribution agreements with Binance and Coinbase, plus native USDC on XRPL, could create cross-venue stablecoin liquidity pathways that influence XRP market-making and settlement choices.",
+      "counter": "No order-level or wallet-level data establishes that USDC displaces XRP, changes XRP inventory or causes directional price moves."
+    },
+    {
+      "id": "AH04",
+      "class": "inference",
+      "hypothesis": "Circle's global USDC circulation contraction from Q2's $73.3B to October 29's $70.0B should be tracked as a dollar-liquidity condition alongside rates, reserves, issuance/redemption and exchange balances.",
+      "counter": "The two figures are at different reporting cutoffs; contraction alone does not establish reduced XRP liquidity or a causal XRP price effect."
+    }
+  ],
+  "quality_notes": [
+    "Circle Q2 figures are issuer-reported; they establish what Circle disclosed, not independent verification of all transaction volumes.",
+    "Arc validator membership does not imply SBI owns, controls or operates Circle Arc.",
+    "JCB's Circle integration is an announced exploration; no production payment volume is asserted.",
+    "XRPL stablecoin balances are third-party and dated September 29. No current direct XRPL RPC replay was executed.",
+    "Global USDC supply, XRPL USDC supply, XRPL RLUSD supply and XRP market capitalization are separate denominators."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Institutional relationships and stablecoin supply do not establish a calibrated XRP price edge."
+  }
+}
