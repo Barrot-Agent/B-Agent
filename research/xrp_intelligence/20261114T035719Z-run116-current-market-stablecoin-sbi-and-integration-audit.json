@@ -102,6 +102,39 @@
           "Hugging Face stage BUILD_ERROR"
         ]
       }
+    },
+    "integration_sha_at_snapshot": "b4f8c8b9ffe740c066fb44b3f43a4417f6aea0b4",
+    "post_handoff_state": {
+      "tree_entries": 2413,
+      "workflow_files": 80,
+      "commits_ahead_of_main": 2352,
+      "commits_behind_main": 0,
+      "pull_request": {
+        "number": 1662,
+        "changed_files": 1172,
+        "additions": 343648,
+        "deletions": 5354,
+        "draft": true,
+        "formal_reviews": 0,
+        "approvals": 0,
+        "review_threads": 0
+      },
+      "exact_head_ci": {
+        "run_id": 43554984126,
+        "job_id": 132325697392,
+        "head_sha": "b4f8c8b9ffe740c066fb44b3f43a4417f6aea0b4",
+        "conclusion": "success",
+        "tests_collected": 3631,
+        "tests_passed": 3631,
+        "subtests_passed": 8,
+        "failures": 0,
+        "coverage_percent": 62.42,
+        "duration_seconds": 115.17,
+        "dependency_audit_push": 43554984215,
+        "dependency_audit_pr": 43554988948,
+        "fail_closed_push": 43554984184,
+        "fail_closed_pr": 43554988968
+      }
     }
   },
   "market_snapshot": {
@@ -342,6 +375,7 @@
     ],
     "unique_or_blocked_non_drafts": [
       1653,
+      1269,
       1650,
       1649,
       1648,
@@ -349,14 +383,53 @@
       1646,
       1645,
       1644,
-      1320,
-      1318,
-      1317,
-      1269,
       1255,
       1254
     ],
-    "closures_performed": 0
+    "closures_performed": 0,
+    "semantic_supersession_candidates": [
+      {
+        "pr": 1320,
+        "title": "Pause scheduled paper trading until position identity is verified",
+        "source_commits_ahead_of_integration": 5,
+        "behind_integration": 2663,
+        "source_diff_files": 5,
+        "content_in_integration": "YES; current main workflow is manual-only but lacks per-run approval and product guard; integration has exact-SHA/YES, read-only artifact-only workflow, script-level identity guard and 17 product-state plus 4 workflow-safety tests.",
+        "classification": "SEMANTIC_SUPERSESSION_CANDIDATE_AFTER_MAIN_VERIFICATION"
+      },
+      {
+        "pr": 1318,
+        "title": "Fail closed on malformed scientific track response schemas",
+        "source_commits_ahead_of_integration": 2,
+        "behind_integration": 2664,
+        "source_diff_files": 2,
+        "content_in_integration": "YES; scripts/barrot_agent.py enforces exact four-key JSON shape, arrays of at most three strings, 300-character limit, one compact retry and fail-closed rejection; regression tests exist.",
+        "classification": "SEMANTIC_SUPERSESSION_CANDIDATE_AFTER_MAIN_VERIFICATION"
+      },
+      {
+        "pr": 1317,
+        "title": "Integrate evidence-aware structural analysis core and MMI foundations",
+        "source_commits_ahead_of_integration": 6,
+        "behind_integration": 2664,
+        "source_diff_files": 6,
+        "content_in_integration": "YES; barrot_agent/structural_analysis/core.py and expanded tests/test_structural_analysis.py are present in integration.",
+        "classification": "SEMANTIC_SUPERSESSION_CANDIDATE_AFTER_MAIN_VERIFICATION"
+      }
+    ],
+    "unique_unreviewed": [
+      {
+        "pr": 1653,
+        "source_commits_ahead_of_integration": 18,
+        "source_only_paths": 6,
+        "classification": "UNIQUE_UNREVIEWED"
+      },
+      {
+        "pr": 1269,
+        "source_commits_ahead_of_integration": 9,
+        "source_only_paths": 8,
+        "classification": "UNIQUE_UNREVIEWED"
+      }
+    ]
   },
   "governance": {
     "repo_permissions": {
@@ -396,7 +469,82 @@
     "force_push": false,
     "history_rewrite": false,
     "destructive_worktree_operation": false,
-    "source_pr_closures": 0
+    "source_pr_closures": 0,
+    "no_paper_trade": true
   },
-  "next_action": "Complete semantic reconciliation of the 1,170-file integration, resolve least privilege and branch-protection visibility, establish independent raw-source anchoring, then integrate a candidate-model evaluation path that satisfies readiness-v6 bootstrap, cadence, source-cluster, calibration and independent shadow requirements."
+  "next_action": "Complete semantic reconciliation of the 1,170-file integration, resolve least privilege and branch-protection visibility, establish independent raw-source anchoring, then integrate a candidate-model evaluation path that satisfies readiness-v6 bootstrap, cadence, source-cluster, calibration and independent shadow requirements.",
+  "updated_at_utc": "2026-11-14T04:12:06.357Z",
+  "workflow_audit": {
+    "changed_workflow_files": 50,
+    "quarantined_or_disabled": 26,
+    "active_or_manual": 24,
+    "findings": [
+      "barrot-sync on integration removes the main push trigger, sets contents:read and disables the job; main currently pushes on every main update, echoes the first 30 characters of LUNAROUTE_API_KEY, masks sync failure and masks git-push failure.",
+      "Main Barrot Sync run 43343513347 was a false green: b_agent.py failed import httpx, no successful LunaRoute call was verified, and git push was a no-op. Its log showed an empty key prefix in this run; configured echo remains a potential secret-prefix leak.",
+      "xrp-public-ingestion is read-only and main-only, with hourly and daily schedules; it has not run on main because it is unmerged. Artifact retention is 90 days and feature-store cache is short-lived, not WORM.",
+      "sync-self-hosted-brain, sync-huggingface, databricks-bundle, Groq test chains, WebMCP live sandbox, and several write-capable agent workflows are disabled or quarantined.",
+      "Manual Databricks/Kaggle, Cloudflare/A2A deployment, Hugging Face upload, external Groq research, and paper-simulation workflows require explicit per-run confirmation and exact-main-SHA checks; none were dispatched.",
+      "The 26 quarantined workflows include disabled job conditions; remaining active/manual workflows were inspected for trigger, permission, secret and mutation changes."
+    ]
+  },
+  "main_paper_trader_safety": {
+    "workflow_trigger": "workflow_dispatch only; no schedule on current main",
+    "main_workflow_has_explicit_yes": false,
+    "main_workflow_has_exact_sha_pin": false,
+    "main_workflow_has_position_identity_preflight": false,
+    "main_workflow_has_git_commit_push": true,
+    "main_script_has_validate_position_product": false,
+    "main_script_requires_per_run_approval": false,
+    "current_main_state": {
+      "cash_usd": 9009.936613782476,
+      "position_size": 0.012445158497236623,
+      "position_product": null,
+      "avg_entry_price": 80436.84,
+      "trade_count": 126,
+      "started_at": "2026-08-25T01:42:34.501971+00:00"
+    },
+    "recent_paper_trader_runs_found_in_latest_100_main_runs": 0,
+    "integration_remediation": {
+      "manual_only": true,
+      "exact_main_sha_required": true,
+      "explicit_yes_required": true,
+      "contents_permission": "read",
+      "main_write_or_push": false,
+      "artifact_only": true,
+      "script_validates_state_before_provider_or_model_calls": true,
+      "rejects_missing_or_mismatched_product_identity": true,
+      "product_state_tests": 17,
+      "workflow_safety_tests": 4
+    },
+    "interpretation": "Main contains a nonzero simulated position with unknown product identity. No paper-trading workflow was run. Integration contains a stronger fail-closed guard and artifact-only manual workflow."
+  },
+  "public_web_review": {
+    "changed_public_web_files": 7,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "findings": [
+      "landing.html and signals.html explicitly state that no directional forecast is published.",
+      "latest_signal.json has forecast_issued=false, null data cutoff/target/horizon/probabilities; status_as_of_utc is 2026-11-10T21:04:35Z and is stale for publication.",
+      "latest_signal_summary.json remains NOT_ISSUED.",
+      "signal_accuracy.json returns null accuracy and NOT_EVALUATED.",
+      "legacy/signal_accuracy_unvalidated.json preserves 45.5% across 1,697 historical variable-horizon observations but explicitly labels it invalid predictive accuracy.",
+      "webmcp_monetization.js pauses subscriptions and sets purchase_url=null."
+    ],
+    "pages_publication_authorization": "UNRESOLVED; no publication/deployment performed"
+  },
+  "sbi_distribution_update": {
+    "official_sources": [
+      "https://www.sbigroup.co.jp/news/2026/0707_16468.html",
+      "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html"
+    ],
+    "findings": [
+      "SBI VC Trade reported 2 million registered crypto-service accounts as of 2026-07-06; this is all-service registration count, not XRP holders or active XRP users.",
+      "SBI VISA Crypto Card launched 2026-05-01; customers can select BTC, ETH or XRP and card points are automatically converted monthly. No XRP reward volume disclosed.",
+      "SBI VC Trade began offering RLUSD on 2026-06-24 with free deposits/withdrawals; SBI's announcement described RLUSD as a Japanese Type 4 electronic payment instrument. This is RLUSD distribution, not XRP demand.",
+      "SBI Ripple Asia announced conceptual proof-of-concept work for tokenized deposits and deposit-like digital money using XRPL, and a separate Japan-Korea remittance/payment research program that intended to study XRPL. These are research/PoC activities, not verified production settlement volumes."
+    ]
+  }
 }
