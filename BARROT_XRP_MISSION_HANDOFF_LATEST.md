@@ -1021,3 +1021,28 @@ Next actions:
 7. Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes pass.
 
 No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+
+## Run117B — coverage-gate and SBIC primary-source correction (2026-11-14)
+
+### Coverage scope changed between main and integration
+A direct `pyproject.toml` comparison identified a material CI-policy difference:
+- Main measures `barrot_agent`, but omits tests, rendering, `smart_agent.py`, and entire `agi`, `ingestion`, `analysis`, `monetization`, `orchestration` and `mem_palace` paths. Its `fail_under` is 70%.
+- Integration measures `barrot_agent`, `directive_platform` and `data`, enables branch coverage, and removes those broad exclusions. Its `fail_under` is 53%.
+- Run117 exact parent-head full-suite coverage was 62.42%. The expanded scope is materially broader, but the 17-percentage-point threshold reduction needs explicit justification and a documented ratchet. A 53% floor is not equivalent to main's 70% floor. Keep this as a merge blocker until coverage scope, floor and improvement policy are independently reviewed.
+
+### SBIC identity resolved from official corporate profiles
+Primary records explicitly identify three separate sister companies:
+- [Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — SBIC East Japan](https://www.sbic.co.jp/company/profile/): founded 1963; 18-prefecture operating area; lists Nagoya and Osaka as sister companies.
+- [Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — SBIC Central Japan](https://www.sbic-cj.co.jp/company/about/): founded 1963; Aichi, Gifu, Mie, Toyama and Ishikawa operating area; lists Tokyo and Osaka as sister companies.
+- [Osaka Small and Medium Business Investment & Consultation Co., Ltd. — SBIC West Japan](https://www.sbic-wj.co.jp/profiles/profile/): founded 1963; 24-prefecture operating area; lists Tokyo and Nagoya as sister companies.
+
+These official corporate names and sister-company disclosures establish that East/Central/West are three regional SME investment companies, not SBI Holdings and not one regional office network of SBI Holdings. SBIC East's [official ChatGPT/Copilot training page](https://www.sbic.co.jp/training/20250612co/) describes a June 12–13, 2025 course for investee companies, with general companies excluded. It is training activity, not evidence of an OpenAI commercial partnership.
+
+### Kamilah/Camila Stevenson attribution status
+Glasp's channel index links channel ID `UCqUPJMQdkCN6lsLVDnichPA` and lists four candidate video summaries. Two accessible transcript snippets self-identify as “Camila Stevenson,” while the index attributes the videos to “Kamilah Stevenson.” The direct YouTube channel/about/RSS endpoints were throttled or unavailable. Keep the four titles in the candidate inventory only; first-party channel ownership and spelling/identity linkage remain unverified. Verified own-channel inventory remains zero.
+
+### Current head and CI distinction
+At this addendum's start, the latest integration head was `ad34cf8eb8372a1ec7ad70a20652bc04ed969474`. Its exact-head push full-suite run [43559733074](https://github.com/Barrot-Agent/B-Agent/actions/runs/43559733074) was still in progress; its dependency audit [43559742193](https://github.com/Barrot-Agent/B-Agent/actions/runs/43559742193) and push/PR fail-closed gates [43559733089](https://github.com/Barrot-Agent/B-Agent/actions/runs/43559733089) / [43559742264](https://github.com/Barrot-Agent/B-Agent/actions/runs/43559742264) passed. The prior `2b7f56f` head's 3,631-test result must not be substituted for the current or subsequent documentation head.
+
+No runtime code changed. PR #1662 remains draft. No merge or source-PR closure occurred.
