@@ -1,0 +1,16 @@
+# Optional heavy integrations for B-Agent.
+# The core package (requirements.txt) deliberately stays dep-light; these are
+# required only by the modules listed below and can be installed on demand:
+#   pip install -r requirements-integrations.txt
+#
+# barrot_agent/orchestration/deploy_databricks.py        -> databricks-sdk
+# barrot_agent/orchestration/deploy_huggingface.py       -> huggingface_hub
+# barrot_agent/orchestration/inference_node.py           -> flask
+# barrot_agent/tools/kaggle_competitions_automation.py   -> kaggle, pandas, scikit-learn
+
+databricks-sdk>=0.30.0
+flask>=3.0.0
+huggingface_hub>=0.23.0
+kaggle>=1.6.0
+pandas>=2.0.0
+scikit-learn>=1.4.0

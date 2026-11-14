@@ -30,7 +30,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Generator, List, Optional
 
-from stupid_sindy_series_generator import Episode, get_episode
+from barrot_agent.tools.stupid_sindy_series_generator import Episode, get_episode
 
 # ---------------------------------------------------------------------------
 # Configuration

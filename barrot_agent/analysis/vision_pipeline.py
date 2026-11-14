@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from typing import List, Optional, Union
 
-from granite_model_config import (
+from barrot_agent.tools.granite_model_config import (
     INFERENCE_CONFIG,
     LOAD_CONFIG,
     MODEL_ID,

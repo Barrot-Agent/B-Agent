@@ -8,7 +8,7 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
-from quantum_entanglement import create_entangled_decision_space, quantum_coordinator
+from .quantum_entanglement import create_entangled_decision_space, quantum_coordinator
 
 
 class ReasoningChain:
@@ -252,6 +252,10 @@ class AGIReasoningEngine:
 
 # Global AGI reasoning engine instance
 agi_engine = AGIReasoningEngine()
+
+# Backwards-compatible alias: barrot_agent.agi re-exports ``AGIEngine`` and
+# external callers may reference either name for the same engine class.
+AGIEngine = AGIReasoningEngine
 
 
 def solve_with_agi(problem: str, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
