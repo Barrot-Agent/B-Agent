@@ -1,4 +1,249 @@
-# Run123 — XRP Intelligence and Prediction-Engine Audit
+# Run124 — XRP Intelligence, Agentic Payments, SBIC Identity and Coverage-Gate Audit
+
+**Observed:** 2026-11-14 10:16:00 UTC  
+**Mission priority:** XRP intelligence and measured prediction-engine mastery.  
+**Protected foundation:** Barrot V3 execution, orchestration, safety and verification.
+
+## Execution classification
+
+- **EXECUTED:** Re-fetched current main, complete recursive main/integration trees, PR inventory, integration ancestry, current PR file inventory, source-PR path overlaps, Actions runs/logs, dependency audits, branch/ruleset metadata, CODEOWNERS, public signal files, prediction-engine code, ingestion endpoints and latest durable handoff.
+- **VERIFIED:** Exact code head `0d50f0fd3163ac3c0873180f2976223c2504a186` passed the full repository suite, wheel build, installed Barrot V3/XRP mission checks, five-manifest dependency audit and fail-closed gates.
+- **EXECUTED:** Raised the inclusive full-suite coverage floor from 53% to 62%, aligned CI and its coverage-policy test, and committed the change on the existing integration branch.
+- **EXECUTED:** Researched current spot/ETF data, t54 XRPL AI Hub activity, Mastercard Agent Pay for Machines, XRPL testnet/devnet reset and SBIC West Japan's primary ChatGPT seminar record.
+- **NOT EXECUTED:** No runtime predictor/ingestion code, model training, forecast issuance, external-model dispatch, data transfer, paper trade, deployment, secret rotation, funds movement, branch rewrite, source-PR closure or merge.
+- **NEXT VERIFICATION:** This handoff/map/evidence commit is documentation-only. Its own exact-head CI is pending after commit; the passing test result below belongs to the immediately preceding code head `0d50f0f`, not to a future documentation head.
+
+## Current repository snapshot
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306` — unchanged.
+- Code head verified: `0d50f0fd3163ac3c0873180f2976223c2504a186`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Ahead/behind: 2,379 ahead, zero behind.
+- Main tree: 1,381 entries (495 Python files, 93 test files, 79 workflows).
+- Integration tree: 2,425 entries (875 Python files, 452 test files, 80 workflows).
+- PR #1662: open, draft, mergeable/clean indicator; 1,184 changed files, 351,142 additions, 5,354 deletions. Its changed paths include 50 workflows, seven public web files, 646 research files, 385 test files, seven data files, three documentation files and `pyproject.toml`.
+- PR #1662 has zero formal reviews, zero approvals, zero review threads and no requested reviewers.
+- Open PR inventory: 375 unique PRs; 361 drafts, 14 non-drafts; 367 target main and eight target other branches.
+- GitHub compare: 2,379 commits ahead, zero behind. The compare-files endpoint is capped at 300 entries; the PR file inventory is the source for the 1,184 changed-path count.
+
+## Exact-head verification and coverage improvement
+
+All code-head runs below have `head_sha=0d50f0fd3163ac3c0873180f2976223c2504a186`.
+
+| Check | Run | Result |
+|---|---:|---|
+| Full repository CI, push | [43584108140](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584108140) | **success** |
+| Dependency audit, push (successful retry) | [43584108158](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584108158) | **success** |
+| Fail-closed gate, push | [43584108182](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584108182) | **success** |
+| Dependency audit, PR event | [43584112874](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584112874) | **success** |
+| Fail-closed gate, PR event | [43584112912](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584112912) | **success** |
+| PR-event CI | [43584112846](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584112846) | skipped by explicit branch condition |
+
+Full-suite log:
+- 3,635 tests passed.
+- Eight subtests passed.
+- Zero failures.
+- Inclusive coverage: **62.44%**; configured floor now **62%**.
+- Legacy core-package coverage: **76%**; preserved core floor **70%**.
+- Pytest execution: 126.10 seconds.
+- Wheel built successfully and installed wheel verified Barrot V3, the XRP mission and canonical data assets.
+
+The previous 53% inclusive floor was below the measured 62.44% baseline. This run changed:
+- `pyproject.toml`: `fail_under = 62`.
+- `.github/workflows/ci.yml`: both the generated coverage config and pytest CLI threshold now use 62.
+- `tests/test_ci_coverage_scope.py`: asserts the project and CI floors remain aligned at 62.
+
+The first push dependency-audit attempt failed because PyPI connections reset during three manifest lookups; no vulnerability finding caused that attempt to fail. Only the failed audit job was rerun. The successful retry audited root runtime, development, Hugging Face Space, legacy and PEP 621 dependencies; all five groups passed and reported no known vulnerabilities. This is a transient-provider failure followed by a verified retry, not a clean first attempt.
+
+## Main-branch workflow and security state
+
+- Main branch SHA remains `fb272b40966834754ec686f9ed3ab94123f09306`; recursive tree has 1,381 entries.
+- Main branch metadata: protected=true. Integration branch metadata: protected=false.
+- Detailed main branch-protection endpoint returns HTTP 403, so required status-check contexts and enforcement details remain unverified.
+- Repository ruleset 10863829, “Fall Back”, is disabled; its only visible rules are deletion and non-fast-forward.
+- `.github/CODEOWNERS` assigns `* @Barrot-Agent`; independent review ownership is not established.
+- GitHub connector permissions include admin, maintain, push, pull and triage. This remains overprivileged.
+- Repository metadata reports Pages enabled, but Pages configuration is not exposed through the available GitHub connection. Seven public web files are changed in #1662; no merge until publication side effects are understood and explicitly authorized.
+- Repository metadata did not return a `security_and_analysis` object; do not infer secret-scanning or code-scanning settings from that absence.
+- Main's latest hourly Cross Analysis run [43582534614](https://github.com/Barrot-Agent/B-Agent/actions/runs/43582534614) passed; the preceding hourly Cross Analysis runs also passed.
+- Main's Pillars Consistency run [43430139937](https://github.com/Barrot-Agent/B-Agent/actions/runs/43430139937) failed: missing GitHub App ID/private key/installation ID, Databricks HTTP 403, and Hugging Face `BUILD_ERROR`. The run made no verified external write. No fresh main full-suite run was found in the latest returned main run window.
+
+### Public signal and safety artifacts
+
+- `web/latest_signal.json` remains `NOT_ISSUED`, `forecast_issued=false`, with reason `OUT_OF_SAMPLE_VALIDATION_INCOMPLETE`; its status timestamp is stale at 2026-11-10 21:04:35 UTC.
+- `web/latest_signal_summary.json` remains `NOT_ISSUED`.
+- `web/signal_accuracy.json` remains `NOT_EVALUATED`.
+- The preserved legacy 45.5% record is explicitly `UNVALIDATED_LEGACY` and must not be presented as predictive accuracy.
+- Main Barrot Sync's earlier missing-`httpx`/masked-push failure remains quarantined on integration. No sync or deployment was dispatched.
+- Main paper-trader persisted state previously had a nonzero position with null product identity. The integration guard remains fail-closed; no paper-trader job was dispatched.
+
+## Fresh XRP spot and ETF evidence
+
+Research cutoff: 2026-11-14 10:16:00 UTC.
+
+### Spot
+
+OKX XRP-USDT response:
+- Last: $0.9895.
+- Bid/ask: $0.9894 / $0.9895.
+- Top bid/ask size: 4,778.002245 / 3,766.27246 XRP.
+- 24-hour open/high/low: $1.0302 / $1.0438 / $0.9794.
+- 24-hour volume: 45,641,081.97 XRP.
+- Provider event timestamp: 2026-11-14 09:42:01.473 UTC; age at cutoff: 2,038.527 seconds.
+
+The event timestamp is over 33 minutes old, far outside the five-minute live admission limit. It is excluded from model features. The displayed top-of-book sizes are one level, not full depth.
+
+Kraken XRP/USD returned last $0.98930, bid $0.98947, ask $0.98948, without a provider event timestamp. The two venue observations are asynchronous and do not establish executable arbitrage.
+
+Sources: [OKX ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+
+### ETF flow disagreement
+
+Through the November 13 session:
+- Alpha Finance reports five funds, -$1.1M daily, -$19.1M over seven sessions, and -$581.7K over 30 sessions. It reports cumulative net inflow of $1.71B.
+- CryptoETF.today reports -$1.0M for November 13 but explicitly says only four of five funds have reported and XRPC is missing. Its page later contradicts itself by showing “5 of 5” in a separate summary block. Its 30-trading-day figure is +$93.5M and cumulative net flow +$1.80B.
+- The two trackers' reported November 13 fund components are close for the funds they both show: Franklin XRPZ about +$4.3M and Grayscale GXRP about -$5.3M to -$5.5M. Their cumulative and 30-day series disagree materially.
+
+These are separate aggregators but rely on overlapping issuer/fund inputs; they are not independent primary confirmations. Do not average the cumulative or 30-day figures. Keep each provider series separately versioned and resolve against issuer share/holdings disclosures before model use.
+
+Sources: [Alpha Finance XRP ETF dashboard](https://alphafinance.io/etf/xrp/), [CryptoETF.today XRP ETF page](https://cryptoetf.today/en/xrp-etf-flows).
+
+## XRPL agentic-payment evidence and legal boundary
+
+The t54-operated XRPL AI Hub displayed:
+- 15,745,956 cumulative payments on its home dashboard.
+- $81,173.72 cumulative USD value.
+- 193 registered merchants.
+- 5,410 live services.
+- A four-week average of $12,048 per week.
+
+Derived mean displayed value is approximately **$0.00516 per reported payment**. A separate transactions page showed 15,746,478 records, so the pages are not a single synchronized snapshot. Its ledger-history view contains transaction hashes and ledger indexes; one inspected record displayed 0.001 RLUSD, ledger index 108,322,549, facilitator “t54 XRPL Facilitator”, and intent status “Unverified”. The transaction detail's timezone was not explicit. No independent XRPL ledger replay of that transaction was completed.
+
+Important counter-hypotheses:
+- The hub supports XRP and IOU assets including RLUSD and USDC. The aggregate dashboard does not publish a current asset split; recent visible examples were RLUSD. Payment count is not XRP demand.
+- The hub's October 14 update describes batching many x402 payments into one XRPL Check. Therefore the payment/request count must not be equated to one native ledger transaction per payment.
+- The small mean ticket value and stablecoin-heavy visible examples point to agentic XRPL utility, but do not establish material native-XRP buying, collateral demand or fee burn.
+- “Intent status Unverified” on the inspected record is a separate limitation; do not describe all displayed intents as verified.
+
+**Critical source-use restriction:** t54's [Terms](https://xrpl-ai.org/terms) say the hub is an informational directory/reference layer, warn that figures may be incomplete/delayed, prohibit scraping/harvesting/data-mining/systematic extraction except as expressly permitted, and restrict copying/distribution without permission. No automated scraper, scheduled endpoint or raw-page capture was added. Future monitoring must use an expressly authorized API/written permission or independently query public XRPL mainnet data under its own permitted terms.
+
+### Mastercard, RippleX and t54 relationship
+
+Mastercard's June 10, 2026 primary announcement lists t54 Labs, RippleX and Coinbase among initial Agent Pay for Machines participants. The program supports credentialing, permissioning and settlement across cards, accounts and stablecoins; it is explicitly multi-rail. The t54 hub identifies t54 as a launch partner, and Ripple's XRPL AI starter-kit materials reference x402 integration.
+
+This is a verified ecosystem intersection, not proof of a production Mastercard-XRP settlement product or an exclusive Ripple-Coinbase-t54 integration. Circle was not named in the retrieved initial participant list; that does not prove absence of other Circle relationships.
+
+Sources: [Mastercard official announcement](https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Agent-Pay-for-Machines-to-Unlock-Super-Fast-Always-On-Payments/default.aspx), [XRPL AI Hub](https://xrpl-ai.org/), [t54 terms](https://xrpl-ai.org/terms).
+
+The x402 Foundation's public network-support documentation describes its default XRPL facilitator as testnet-only; t54's own hub advertises a separate live mainnet facilitator. Do not conflate testnet support in the default x402 stack with t54's production-mainnet offering.
+
+## SBIC, ChatGPT and identity research
+
+A new primary source resolves the SBIC/ChatGPT phrase:
+- SBIC West Japan's official October 2024 PDF advertises a “Generative AI introductory seminar for accounting firms and support organizations”.
+- It explicitly mentions ChatGPT, describes a basic introductory session, and lists Taichi Kakinuma of STORIA law firm as the speaker.
+- It was scheduled for October 23, 2024, in Osaka with in-person and Zoom participation.
+- This is an SBIC West Japan educational event, not evidence of an OpenAI partnership or SBI Holdings relationship.
+
+The regional identities remain distinct: SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate SME investment companies; they are not SBI Holdings.
+
+Source: [SBIC West Japan official seminar PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
+
+Exact-phrase research:
+- “ASK Coin”: no canonical XRPL issuer or token was established in this run; retain the prior Permission ASK Base/Polygon candidate separately.
+- “actual capital”: no standardized XRP metric by that name; keep cash proceeds, in-kind XRP, cash-funded purchases, debt, warrant exercises, ELOC capacity, ETF flows, wallet transfers and mark-to-market capitalization separate.
+- “SBIC, ChatGPT SBIC”: the SBIC West Japan PDF above is a primary explanation for a ChatGPT-related SBIC result; no commercial OpenAI partnership was established.
+- Kamilah/Camilla Stevenson: no new first-party channel-ownership evidence. Candidate video attributions remain quarantined; verified own-channel inventory remains zero.
+
+## XRPL network event
+
+XRPL.org's November 9 notice schedules Testnet and Devnet resets for November 25, 2026. Testnet's single full-history server crashed and could not be recovered without reset; both test networks will lose ledger data, while Mainnet and other networks continue normally. This is a developer-data continuity event, not a mainnet supply, custody or price event. Testnet/Devnet-derived histories need a reset boundary in any feature store.
+
+Source: [XRPL.org official reset notice](https://xrpl.org/blog/2026/testnet-devnet-reset).
+
+## Prediction-engine readiness
+
+Implemented on integration:
+- 48 scheduled public-source definitions and main-only read-only ingestion workflow.
+- SHA-256 receipt manifests and local cross-run receipt-chain prototype.
+- SQLite point-in-time feature-store implementation.
+- Event timeline and source-independence registry.
+- Naive, momentum, mean-reversion and volatility baselines.
+- Purged/embargoed chronological walk-forward evaluation.
+- Calibration and PSI drift diagnostics.
+- Non-circular timestamp-block bootstrap.
+- Candidate-readiness uncertainty helper and forecast ledger policy v6 with independent Ed25519 evaluator attestation.
+
+Remaining blockers:
+1. No trained XRP-specific candidate model.
+2. Candidate-versus-four-baseline policy-compliant evaluation has not been executed.
+3. No independent shadow-outcome cohort.
+4. Historical spot, synchronized full L2, derivatives, exchange flows and collateral remain incomplete.
+5. Independent WORM raw-source archive and trusted timestamp anchoring are absent.
+6. Scheduled ingestion has not executed on main because it remains unmerged.
+7. t54's public dashboard cannot be placed in automated scraping/ingestion under its current Terms; use authorized access or direct public-ledger analysis.
+8. The public signal remains NOT_ISSUED and its status timestamp is stale; do not publish or deploy without the required authorization.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast, paper trade or real-money action occurred.
+
+## Nine-platform coordination
+
+No authentication or data-flow status changed:
+- ChatGPT: GitHub authentication verified and used; connector permissions remain overprivileged.
+- Claude, Grok, Gemini and Codex: unverified.
+- Copilot: no formal PR review/approval.
+- Hugging Face: prior BUILD_ERROR; no deployment.
+- Kaggle: untested; no submission.
+- Databricks: prior HTTP 403; no write.
+- LunaRoute: separate provider, unverified.
+
+No external-model dispatch, structured evidence exchange, data transfer or red-team quorum occurred. Planned independent roles remain **DESIGNED, NOT DISPATCHED** until each platform has tested authentication and least-privilege data-flow evidence.
+
+## PR reconciliation and merge decision
+
+Current #1662 remains draft, open and mergeable by GitHub's conflict indicator. It has zero reviews, approvals and review threads. No merge.
+
+Current source-path overlap audit:
+- #1661: 1,072/1,072 paths overlap.
+- #1660: 972/972.
+- #1643: 670/670.
+- #1642: 7/7 paths overlap, but all seven source-branch blob hashes differ from the current integration blobs. It is **not** an exact duplicate; semantic reconciliation remains required.
+- #1640: 280/280.
+- #1320: 5/5.
+- #1318: 2/2.
+- #1317: 6/6.
+- #1653: six source-only paths.
+- #1655: three source-only paths.
+- #1659: four source-only paths.
+- #1641: three source-only paths.
+- #1615: thirteen source-only paths.
+- #1614: twenty-seven source-only paths.
+- #1269: eight source-only paths.
+
+The overlap figures are path-level, not proof that content or intent has been incorporated. Do not close source PRs until the successor is merged and the relevant content is verified on main.
+
+Backlog classification:
+- **Supersession candidates:** #1661, #1660, #1643, #1642, #1640, #1320, #1318, #1317 — preserve until semantic/blob-level reconciliation and verified successor merge.
+- **Unique/unreviewed:** #1653, #1655, #1659, #1641, #1615, #1614, #1269 — preserve unique paths.
+- **Blocked dependency candidates:** #1644–#1650 and #1254/#1255 — individually validate against current main before action.
+- No source PR was closed.
+
+**NO MERGE.** Draft status, zero independent approvals, incomplete semantic reconciliation of 1,184 changed paths, unprotected integration branch, inaccessible main branch-protection detail, disabled fallback ruleset, self-owned CODEOWNERS, overprivileged connector permissions, unresolved Pages configuration/publication effects and incomplete predictor readiness remain blockers.
+
+## Next concrete actions
+
+1. Verify exact-head full-suite, dependency and fail-closed CI on the Run124 documentation-only successor.
+2. Finish semantic/blob-level reconciliation of all 1,184 changed paths, prioritizing 50 workflows and seven public web files.
+3. Resolve least-privilege access, independent review ownership, branch protection and Pages publication authorization.
+4. Refresh the NOT_ISSUED public status artifact with a current timestamp, but do not deploy/publish without authorization.
+5. Establish independently anchored raw-source receipts and synchronized historical XRP spot/L2/derivatives/flow/collateral datasets.
+6. Design agentic-payment measurement from authorized APIs or direct public-ledger transactions; do not scrape t54's hub.
+7. Reconcile ETF provider disagreements against issuer disclosures and preserve provider-specific histories.
+8. Train an XRP-specific candidate only when the point-in-time dataset supports it; keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
+
+---
+
+## Run123 — XRP Intelligence and Prediction-Engine Audit
 
 **Observed:** 2026-11-14 08:58:52 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine mastery.  
