@@ -395,6 +395,20 @@
       "counter": [
         "future vaults could choose XRP as the single asset or first-loss asset, but this is not mandatory"
       ]
+    },
+    {
+      "name": "Binance incident and phased withdrawal reopening confound exchange-flow signals",
+      "support": [
+        "Reuters reports $6.3B theft and phased withdrawal restoration",
+        "Binance included XRP in phase-one withdrawals on Nov 1 and says XRP balances were 100% backed",
+        "Binance says it used market and OTC channels to replenish affected assets"
+      ],
+      "counter": [
+        "Binance does not disclose XRP-specific replenishment purchases",
+        "current per-asset withdrawal status was not visible in static network-status retrieval",
+        "market-wide risk-off and provider timing differences are alternative explanations"
+      ],
+      "model_action": "Add dated incident/withdrawal-state event flags; do not interpret post-reopening Binance outflows as fresh bearish sentiment without separating deferred withdrawals and exchange replenishment."
     }
   ],
   "prediction_engine": {
@@ -445,5 +459,87 @@
     "history_rewrite": false,
     "destructive_worktree_operation": false,
     "source_pr_closure": false
-  }
+  },
+  "exchange_security_events": {
+    "binance_october_29_2026": {
+      "independent_reporting": {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/technology/cybersecurity/binance-says-it-will-fully-restore-withdrawals-next-week-after-63-billion-hack-2026-11-14/",
+        "reported_stolen_value_usd": 6300000000,
+        "attribution": "FBI and Binance attribute the operation to North Korea's TraderTraitor; Pyongyang denies involvement"
+      },
+      "company_response": {
+        "official_initial_update": "https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+        "official_coverage_update": "https://www.binance.com/en/support/announcement/detail/0729ad59cde74700b4eaa96c33441e71",
+        "committed_coverage_usd": 6340000000,
+        "funding_sources": [
+          "partial SAFU deployment",
+          "portion of Futures insurance fund above required level",
+          "corporate treasury"
+        ],
+        "latest_company_claim": "coverage of affected assets completed; 198-token PoR snapshot taken 2026-11-12 00:00 UTC; zero-knowledge proof estimated 40–50 hours"
+      },
+      "xrp_specific": {
+        "binance_phase_one_announcement_date": "2026-11-01",
+        "xrp_network_in_phase_one": true,
+        "official_claim": "XRP balances included among ten assets stated 100% backed",
+        "asset_specific_purchase_amount": "not disclosed",
+        "current_network_status": "static network-status page returned no records; current per-asset status not independently verified"
+      },
+      "withdrawal_reopening": {
+        "latest_official_update_date": "2026-11-14",
+        "url": "https://www.binance.com/en/support/announcement/detail/432646a7f7c34c2a85b69db99af32c16",
+        "networks_reopened_this_week": 87,
+        "remaining_target": "end of next week",
+        "note": "XRP was included in the November 1 phase-one withdrawal list; the November 14 87-network list is additional networks, not evidence XRP remained suspended"
+      },
+      "market_structure_implication": "Treat Binance exchange-balance and on-chain-flow observations around the October 29 pause and phased reopening as event-confounded. Deferred withdrawals may create catch-up outflows after reopening. Binance's market/OTC replenishment could include XRP, but no XRP-specific purchase amount or timing was disclosed.",
+      "reserve_verification": "Binance's PoR page is dynamic; the static retrieval did not expose the November 12 audit time, Merkle root or completed proof status in this retrieval. The company's coverage claim is not independently asset-by-asset verified in this run."
+    },
+    "source_independence": "Reuters is independent reporting; recovery and reserve statements are Binance self-reports; FBI attribution is reported by Reuters and remains disputed by North Korea."
+  },
+  "macro_geopolitics": {
+    "observed_at_utc": "2026-11-14",
+    "source": "Reuters",
+    "url": "https://www.reuters.com/markets/global-markets/global-markets-wrapup-1-2026-11-14/",
+    "reported_context": [
+      "Iran claimed destruction of a US early-warning radar in Bahrain; claim not independently verified in the report",
+      "oil around $88/barrel",
+      "dollar index at a 19-month high",
+      "risk-off pressure across global risk assets"
+    ],
+    "interpretation": "Potential cross-asset risk-off context only; no direct XRP causal link established."
+  },
+  "sources": [
+    {
+      "name": "Binance Recovery Update #4",
+      "url": "https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+      "source_class": "primary company announcement",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "Binance completed coverage and 198-token PoR snapshot",
+      "url": "https://www.binance.com/en/support/announcement/detail/0729ad59cde74700b4eaa96c33441e71",
+      "source_class": "primary company announcement",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Binance Recovery Update — 87 networks",
+      "url": "https://www.binance.com/en/support/announcement/detail/432646a7f7c34c2a85b69db99af32c16",
+      "source_class": "primary company announcement",
+      "date": "2026-11-14"
+    },
+    {
+      "name": "Reuters Binance cyber incident and withdrawal restoration",
+      "url": "https://www.reuters.com/technology/cybersecurity/binance-says-it-will-fully-restore-withdrawals-next-week-after-63-billion-hack-2026-11-14/",
+      "source_class": "independent reporting",
+      "date": "2026-11-14"
+    },
+    {
+      "name": "Reuters macro/geopolitical wrap",
+      "url": "https://www.reuters.com/markets/global-markets/global-markets-wrapup-1-2026-11-14/",
+      "source_class": "independent reporting",
+      "date": "2026-11-14"
+    }
+  ]
 }

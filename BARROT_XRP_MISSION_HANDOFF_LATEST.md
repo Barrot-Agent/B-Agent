@@ -4448,3 +4448,14 @@ Open PR inventory: 373 total, 361 drafts and 12 non-drafts. PR #1662 is the sole
 **DESIGNED:** ingestion, receipts, point-in-time features, baselines, walk-forward evaluation, calibration, drift and forecast ledger. **EXECUTED:** current main/integration merge, 18 producer asset reconciliations, 19-line producer addendum preservation, market/ETF/derivatives/XRPL/institutional research, backlog path-overlap audit. **VERIFIED:** merge parents/tree, zero main-only paths, 18 producer blobs, pre-merge exact-head suite/wheel/audits, main suite, current PR base/head. **PENDING:** final evidence-head CI, semantic review, governance and measured predictive lift.
 
 No merge to main, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+### Run143 supplement — Binance security event and geopolitical confounders
+
+Reuters' November 14 reporting describes the October 29 Binance hot-wallet incident as approximately $6.3B in stolen assets. Reuters reports that the FBI and Binance attribute the operation to North Korea's TraderTraitor; Pyongyang denies involvement. Binance says it committed more than $6.34B from a partial SAFU deployment, excess Futures insurance funds and corporate treasury, and announced on November 12 that coverage of affected assets was complete with a 198-token PoR snapshot. The static PoR page did not expose the November 12 Merkle root or completed proof status in this retrieval.
+
+Binance's November 1 phase-one withdrawal announcement explicitly included the XRP network and stated that XRP balances were among ten assets fully backed at 100%. Its November 14 update says 87 additional networks reopened and targets all remaining networks/assets by the end of the following week. The current dynamic network-status page returned no records in static retrieval, so per-asset status was not independently rechecked. Binance has not disclosed the XRP-specific amount of any market/OTC replenishment purchases.
+
+**Prediction-engine consequence:** tag Binance exchange balances and XRP on-chain flows with the October 29 incident and phased withdrawal-state timeline. Post-November 1 outflows may include deferred user withdrawals; Binance's replenishment purchases may include XRP but are unquantified. Do not label either as sentiment-driven net flow without independent venue-level reconciliation.
+
+Reuters also reported contemporaneous Iran/Bahrain radar claims, oil around $88/barrel and a 19-month-high dollar index. The Iranian claim was not independently verified in the report. Treat these as broad risk-off context, not an XRP-specific catalyst.
