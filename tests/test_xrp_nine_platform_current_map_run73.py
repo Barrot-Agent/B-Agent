@@ -409,7 +409,7 @@ def test_disagreements_and_counterhypotheses_are_preserved():
     assert "etf flow coverage disagreement" in combined
 
 
-def test_source_provenance_and_backlog_classification_are_explicit():
+def test_source_provenance_and_current_backlog_classification_are_explicit():
     data = load_current()
     sources = data["source_provenance"]
     assert len(sources) >= 15
@@ -420,7 +420,8 @@ def test_source_provenance_and_backlog_classification_are_explicit():
     assert any(item["source"] == "CryptoKeyhole ETF flows dashboard" for item in sources)
     assert any(item["source"] == "Tokyo SBIC official generative-AI training notice" for item in sources)
     backlog = data["backlog_classification"]
-    assert backlog["1661"].startswith("BLOCKED_ACTIVE_INTEGRATION_DRAFT")
+    assert backlog["1662"].startswith("BLOCKED_ACTIVE_INTEGRATION_DRAFT")
+    assert "SUPERSEDED_SOURCE" in backlog["1661"]
     assert "SUPERSEDED_SOURCE" in backlog["1660"]
     assert "UNIQUE_UNREVIEWED" in backlog["1653"]
     assert "UNIQUE_UNREVIEWED" in backlog["1614"]

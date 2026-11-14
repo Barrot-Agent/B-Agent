@@ -2956,3 +2956,16 @@ Run127's Coinbase/Circle/Ripple/SBI evidence remains source-specific: Circle SBI
 8. After a verified successor merge only, close exact superseded PRs with cross-references; preserve unique work.
 
 No merge, main-branch write, deployment, Space restart, secret rotation, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, reset, clean, stash or destructive restore occurred in this run.
+
+
+## Run128 CI follow-up — 2026-11-14T14:09:43Z
+
+The first Run128 handoff/map commit `cb64df8246e98eae8c1f002407382ef214b7ae5c` was tested on its exact head. Full-suite CI [43603005162](https://github.com/Barrot-Agent/B-Agent/actions/runs/43603005162) failed with **4 assertions, 3,637 passed and eight subtests passed**; coverage remained 62.47%. Dependency Audit [43603005192](https://github.com/Barrot-Agent/B-Agent/actions/runs/43603005192) and fail-closed gate [43603005159](https://github.com/Barrot-Agent/B-Agent/actions/runs/43603005159) passed.
+
+All four failures were metadata-contract regressions introduced by the Run128 map update, not XRP ingestion or prediction-engine code failures:
+- Two tests required the exact stable branch-protection status phrase `required checks and approval rules NOT_VISIBLE`.
+- One required `coordination_status.status == DESIGNED_NOT_EXECUTED`.
+- The least-privilege regression required `credential_path_exposure` to remain a structured object, not a summary string.
+- The current-backlog regression still treated #1661 as the active integration candidate. The current repository state makes #1662 the active candidate; #1661/#1660 are superseded source branches. The test is being updated to assert that current state.
+
+The repair restores the stable status enum and object schema, moves explanatory detail into additive fields, and updates the stale backlog assertion. No tests were bypassed, no merge was attempted, and no main-branch change occurred. Exact-head CI for the repair commit remains required.

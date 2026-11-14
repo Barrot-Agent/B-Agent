@@ -2,7 +2,7 @@
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "captured_at_utc": "2026-11-14T13:51:48Z",
-  "last_verified_at_utc": "2026-11-14T13:51:48Z",
+  "last_verified_at_utc": "2026-11-14T14:09:43Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
   "observed_integration_head_before_map_commit": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
@@ -17,9 +17,9 @@
     "changed_files": 1194,
     "workflow_files": 50,
     "other_changed_paths": 1144,
-    "head_sha": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+    "head_sha": "cb64df8246e98eae8c1f002407382ef214b7ae5c",
     "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "commits": 2391,
+    "commits": 2392,
     "additions": 355653,
     "deletions": 5354,
     "formal_approvals": 0,
@@ -30,7 +30,7 @@
     "approvals": 0,
     "review_threads": 0,
     "updated_at": "2026-11-14T13:48:28Z",
-    "classification": "BLOCKED_DRAFT_NOT_MERGE_READY",
+    "classification": "BLOCKED_ACTIVE_INTEGRATION_DRAFT",
     "note": "Exact-head push CI passed 3,641 tests with zero failures, but the PR remains draft with zero independent reviews/approvals. Pages publication is automatic and unauthorized; branch-protection details are unavailable; the connector is overprivileged; semantic review of 1,144 non-workflow paths is incomplete.",
     "research_files": 594,
     "test_files": 378,
@@ -38,7 +38,7 @@
     "base": "main",
     "head": "integration/xrp-v3-unified-main-20261112",
     "updated_at_utc": "2026-11-13T16:47:57.954Z",
-    "merge_decision": "NO_MERGE"
+    "merge_decision": "NO_MERGE; latest handoff/map commit failed four map-contract assertions; repair in progress."
   },
   "superseded_integration_pr": {
     "number": 1660,
@@ -241,7 +241,7 @@
     }
   },
   "coordination_status": {
-    "status": "DESIGNED; only ChatGPT GitHub connector verified in current session; eight other requested platforms remain unverified or failed.",
+    "status": "DESIGNED_NOT_EXECUTED",
     "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
     "independent_tasks_assigned_across_nine_platforms": false,
     "structured_evidence_exchange_across_nine_platforms": false,
@@ -553,7 +553,7 @@
     "real_money_action": false,
     "main_branch_write_performed": false,
     "existing_integration_branch_write_performed": true,
-    "branch_protection_status": "main protected=true; detailed endpoint HTTP 403; required checks/approvals not visible",
+    "branch_protection_status": "main protected=true; detailed endpoint HTTP 403; required checks and approval rules NOT_VISIBLE",
     "visible_repository_rulesets": [
       {
         "name": "Fall Back",
@@ -562,7 +562,40 @@
     ],
     "pages_enabled": true,
     "pages_deployment_authorized": false,
-    "credential_path_exposure": "The path .config/gh/hosts.yml remains present in 17/17 historical open-PR branch tips and absent from main/current integration; contents unread; provider-side revocation not independently verified.",
+    "credential_path_exposure": {
+      "path": ".config/gh/hosts.yml",
+      "main_branch_contains_path": false,
+      "active_integration_branch_contains_path": false,
+      "other_open_pr_tips_checked": 17,
+      "other_open_pr_tips_containing_path": 17,
+      "path_absent_from_all_current_pr_file_inventories": true,
+      "all_17_target_prs_open_and_base_main": true,
+      "provider_side_revocation_verified": false,
+      "revocation_independently_verified": false,
+      "branch_tip_presence_verified_via_recursive_tree": true,
+      "credential_contents_read": false,
+      "affected_pr_numbers": [
+        1653,
+        1650,
+        1649,
+        1648,
+        1647,
+        1646,
+        1645,
+        1644,
+        1643,
+        1642,
+        1640,
+        1320,
+        1318,
+        1317,
+        1269,
+        1255,
+        1254
+      ],
+      "checked_at_utc": "2026-11-14T14:09:43Z",
+      "disposition": "SECURITY_HOLD; preserve branch history; contents unread; no provider-side revocation claim."
+    },
     "main_branch_protected_flag": true,
     "oauth_revocation_repository_reported": false,
     "revocation_independently_verified": false,
@@ -604,7 +637,7 @@
   },
   "repository_state": {
     "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-    "integration_head_before_current_map_commit": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+    "integration_head_before_current_map_commit": "cb64df8246e98eae8c1f002407382ef214b7ae5c",
     "integration_pr": 1662,
     "integration_ahead_by": 2391,
     "integration_behind_by": 0,
@@ -1202,7 +1235,8 @@
     "integration_test_files": 452,
     "main_branch_protected_flag": true,
     "main_branch_protection_details": "HTTP 403; required checks/approvals not visible",
-    "main_branch_write_performed": false
+    "main_branch_write_performed": false,
+    "integration_commits": 2392
   },
   "ci_evidence": {
     "integration_head_tested": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
@@ -3282,7 +3316,31 @@
         "conclusion": "skipped",
         "reason": "integration-branch guard; push-triggered exact-head full suite passed"
       },
-      "exact_head_verified": true
+      "exact_head_verified": true,
+      "handoff_update_commit": {
+        "head_sha": "cb64df8246e98eae8c1f002407382ef214b7ae5c",
+        "full_suite_run_id": 43603005162,
+        "full_suite_conclusion": "failure",
+        "passed": 3637,
+        "failed": 4,
+        "subtests": 8,
+        "inclusive_coverage_percent": 62.47,
+        "failing_tests": [
+          "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_preserves_fail_closed_permissions_and_no_money_actions",
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_nine_platform_coordination_is_design_only_without_external_exchange",
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_least_privilege_and_external_action_gates_remain_closed",
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_backlog_classification_are_explicit"
+        ],
+        "dependency_audit": {
+          "run_id": 43603005192,
+          "conclusion": "success"
+        },
+        "fail_closed_gate": {
+          "run_id": 43603005159,
+          "conclusion": "success"
+        },
+        "root_cause": "Run128 changed stable enum/string/object contracts and the current-backlog test still treated #1661 as active. No prediction-engine source-code failure was reported."
+      }
     }
   },
   "workflow_safety_audit": {
@@ -3720,12 +3778,12 @@
       "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
       "model_eligible": false
     },
-    "latest_exact_head_tested": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
-    "latest_exact_head_suite_passed": 3641,
-    "latest_exact_head_suite_failed": 0,
+    "latest_exact_head_tested": "cb64df8246e98eae8c1f002407382ef214b7ae5c",
+    "latest_exact_head_suite_passed": 3637,
+    "latest_exact_head_suite_failed": 4,
     "latest_exact_head_coverage_percent": 62.47,
-    "latest_exact_head_run_id": 43601207621,
-    "latest_exact_head_tested_at_utc": "2026-11-14T13:47:58Z",
+    "latest_exact_head_run_id": 43603005162,
+    "latest_exact_head_tested_at_utc": "2026-11-14T14:09:43Z",
     "scenario_assembler": {
       "module": "barrot_agent/evolution/scenario_hypotheses.py",
       "tests": 19,
@@ -3791,9 +3849,9 @@
     "event_registry_model_eligible": 0,
     "raw_source_sha256_receipts_from_run69_web_research": 0,
     "forecast_reason": "No cross-run raw-receipt archive, independent WORM anchor, replayable synchronized history, production evaluator key, independent shadow outcomes or demonstrated OOS lift.",
-    "latest_exact_head_full_suite_passed": 3641,
-    "latest_exact_head_full_suite_failed": 0,
-    "latest_exact_head_conclusion": "success",
+    "latest_exact_head_full_suite_passed": 3637,
+    "latest_exact_head_full_suite_failed": 4,
+    "latest_exact_head_conclusion": "failure",
     "raw_receipt_archive_continuity": "PER_RUN_ONLY; workflow restores the feature store but not prior raw receipts; 90-day artifacts are not WORM.",
     "raw_only_derivatives_source_ids": [
       "deribit_xrp_usdc_perpetual_ticker",
@@ -3801,7 +3859,13 @@
     ],
     "raw_only_derivatives_sources": 2,
     "raw_only_derivatives_in_scheduled_collection": true,
-    "latest_exact_head_verified": true
+    "latest_exact_head_verified": true,
+    "last_passing_code_head": {
+      "sha": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
+      "passed": 3641,
+      "failed": 0,
+      "run_id": 43601207621
+    }
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -9037,10 +9101,10 @@
     "1612": "UNIQUE_UNREVIEWED",
     "1614": "UNIQUE_UNREVIEWED",
     "1615": "UNIQUE_UNREVIEWED; thirteen source-only paths; preserve.",
-    "1640": "SEMANTICALLY_REPRESENTED_IN_INTEGRATION; one source-only commit is not an ancestor, but its action-specific Databricks/Kaggle approval inputs and tests are present in #1662; retain until main verification.",
+    "1640": "SEMANTICALLY_REPRESENTED_SOURCE; one source-only commit is not an ancestor, but its Databricks/Kaggle action-specific approvals and tests are present in #1662; retain until main verification.",
     "1641": "UNIQUE_UNREVIEWED_AUTONOMOUS_EXPERIMENTATION; three changed paths; preserve.",
-    "1642": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 2,407 commits; retain until successor merge and exact main-file verification.",
-    "1643": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 1,502 commits; retain until successor merge and exact main-file verification.",
+    "1642": "SUPERSEDED_SOURCE; ancestor of #1662 by 2,407 commits; retain until successor merge and exact main verification.",
+    "1643": "SUPERSEDED_SOURCE; ancestor of #1662 by 1,502 commits; retain until successor merge and exact main verification.",
     "1644": "PARTIAL_WORKFLOW_OVERLAP; one of eight changed files identical, seven differ; preserve pending semantic review.",
     "1645": "EXACT_DUPLICATE_CANDIDATE; sole changed file webmcp-monetization-enrich.yml has identical blob to #1661; retain until successor merge and main verification.",
     "1646": "DEPENDABOT_RECONCILIATION_CANDIDATE; types-requests update represented in integration; verify full manifest diff.",
@@ -9051,9 +9115,9 @@
     "1653": "UNIQUE_UNREVIEWED_GRAPH_WORK; six source-only paths; preserve.",
     "1655": "UNIQUE_UNREVIEWED; preserve source-only work.",
     "1659": "UNIQUE_UNREVIEWED; preserve source-only work.",
-    "1660": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 440 commits; retain until successor merge and exact main-file verification.",
-    "1661": "SUPERSESSION_CANDIDATE; source head is an ancestor of #1662 by 259 commits; retain until successor merge and exact main-file verification.",
-    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current pre-handoff head 8b4d4bc; 1,194 changed files; 2,391 commits ahead; exact-head full suite/audit/gates passed; zero independent reviews/approvals; Pages publication unauthorized; semantic review of 1,144 non-workflow paths incomplete.",
+    "1660": "SUPERSEDED_SOURCE; ancestor of #1662 by 440 commits; retain until successor merge and exact main verification.",
+    "1661": "SUPERSEDED_SOURCE; ancestor of #1662 by 259 commits; retain until successor merge and exact main verification.",
+    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; PR #1662 is the sole leading consolidated V3/XRP integration candidate; current head cb64df8 has four map-contract test failures pending repair; zero independent reviews/approvals; Pages publication unauthorized; semantic review incomplete.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
     "1254_1255": "OLDER_DEPENDABOT_DEPENDENCY_CANDIDATES; preserve until compatibility reconciliation.",
@@ -22037,7 +22101,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-14T13:51:48Z",
+  "updated_at_utc": "2026-11-14T14:09:43Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -36916,42 +36980,13 @@
       }
     },
     "exact_head_ci": {
-      "head_sha": "8b4d4bc8321d4a53b3f253930db3b04f72a63102",
-      "full_suite": {
-        "run_id": 43601207621,
-        "conclusion": "success",
-        "passed": 3641,
-        "failed": 0,
-        "subtests": 8,
-        "inclusive_coverage_percent": 62.47,
-        "legacy_core_coverage_percent": 76,
-        "updated_at_utc": "2026-11-14T13:47:58Z",
-        "wheel_build_installation": "PASS",
-        "primary_mission_packaging": "PASS"
-      },
-      "dependency_audit": {
-        "run_id": 43601212424,
-        "conclusion": "success",
-        "manifest_groups": 5,
-        "known_vulnerabilities_reported": 0,
-        "updated_at_utc": "2026-11-14T13:45:02Z"
-      },
-      "fail_closed_push_gate": {
-        "run_id": 43601207599,
-        "conclusion": "success",
-        "automatic_merge_enabled": false
-      },
-      "fail_closed_pr_gate": {
-        "run_id": 43601212350,
-        "conclusion": "success",
-        "automatic_merge_enabled": false
-      },
-      "pr_event_full_suite": {
-        "run_id": 43601212384,
-        "conclusion": "skipped",
-        "reason": "integration-branch guard; push-triggered exact-head full suite passed"
-      },
-      "exact_head_verified": true
+      "run_id": 43603005162,
+      "head_sha": "cb64df8246e98eae8c1f002407382ef214b7ae5c",
+      "conclusion": "failure",
+      "passed": 3637,
+      "failed": 4,
+      "subtests": 8,
+      "coverage_percent": 62.47
     },
     "main_automation": {
       "cross_analysis_run": 43601869178,
@@ -37007,6 +37042,7 @@
     },
     "research_status": "Run127 remains latest primary-source research; no new market capture or web research in Run128.",
     "decision": "NO_MERGE_NO_FORECAST_NO_DEPLOYMENT",
-    "handoff_update_commit_ci": "PENDING_EXACT_HEAD_VERIFICATION"
+    "handoff_update_commit_ci": "FAILED: 4 map-contract/backlog regression assertions; 3,637 passed, 8 subtests passed; repair in progress.",
+    "latest_head_before_schema_repair": "cb64df8246e98eae8c1f002407382ef214b7ae5c"
   }
 }
