@@ -19,6 +19,21 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _parse_utc(value: str, field_name: str) -> datetime:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{field_name} must be a non-empty ISO-8601 timestamp")
+    normalized = value.strip()
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise ValueError(f"{field_name} must be a valid ISO-8601 timestamp") from exc
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError(f"{field_name} must include a timezone")
+    return parsed.astimezone(timezone.utc)
+
+
 @dataclass
 class SourceIdentity:
     source_id: str
@@ -96,6 +111,7 @@ class SourceRecord:
     evidence: SourceEvidence = field(default_factory=SourceEvidence)
     knowledge: SourceKnowledge = field(default_factory=SourceKnowledge)
     lifecycle: SourceLifecycle = field(default_factory=SourceLifecycle)
+    registered_at_utc: Optional[str] = None
     created_at: str = field(default_factory=utc_now)
     updated_at: str = field(default_factory=utc_now)
 
@@ -113,6 +129,7 @@ class SourceRecord:
             evidence=SourceEvidence(**data.get("evidence", {})),
             knowledge=SourceKnowledge(**data.get("knowledge", {})),
             lifecycle=SourceLifecycle(**data.get("lifecycle", {})),
+            registered_at_utc=data.get("registered_at_utc"),
             created_at=data.get("created_at", utc_now()),
             updated_at=data.get("updated_at", utc_now()),
         )
@@ -162,17 +179,21 @@ class SourceRegistry:
         temporary.replace(self.path)
 
     def register(self, record: SourceRecord) -> SourceRecord:
-        existing = self._records.get(record.identity.source_id)
+        source_id = record.identity.source_id
+        existing = self._records.get(source_id)
 
         if existing is not None:
             if existing.version.content_hash == record.version.content_hash:
                 return existing
+            raise ValueError(
+                "source_id is immutable; register each changed snapshot under a new source_id"
+            )
 
-            record.version.supersedes = existing.identity.source_id
-            record.lifecycle.revalidation_required = True
-
-        record.updated_at = utc_now()
-        self._records[record.identity.source_id] = record
+        registered_at = utc_now()
+        record.registered_at_utc = registered_at
+        record.created_at = registered_at
+        record.updated_at = registered_at
+        self._records[source_id] = record
         self._save()
         return record
 
@@ -183,6 +204,17 @@ class SourceRegistry:
         record = self.get(source_id)
         if record is None:
             raise KeyError(f"Unknown source_id: {source_id}")
+        return record
+
+    def require_registered_by(self, source_id: str, cutoff_utc: str) -> SourceRecord:
+        """Return a source only when its system-recorded registry time is at/before cutoff."""
+        record = self.require(source_id)
+        if not isinstance(record.registered_at_utc, str) or not record.registered_at_utc.strip():
+            raise ValueError(f"source registration timestamp is unavailable: {source_id}")
+        registered_at = _parse_utc(record.registered_at_utc, "registered_at_utc")
+        cutoff = _parse_utc(cutoff_utc, "cutoff_utc")
+        if registered_at > cutoff:
+            raise ValueError(f"source was registered after the permitted cutoff: {source_id}")
         return record
 
     def remove(self, source_id: str) -> None:
