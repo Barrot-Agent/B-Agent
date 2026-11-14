@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-derivatives-provider-disagreement-20261103T051744Z",
+  "captured_at_utc": "2026-11-03T05:17:44Z",
+  "observations": [
+    {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-11-03T04:35:00Z",
+      "delay": "15 minutes",
+      "xrp_mark_usd": 1.2549,
+      "price_change_24h_percent": -0.18,
+      "open_interest_usd": 1960000000,
+      "open_interest_change_24h_percent": 2.38,
+      "exchange_count": 7,
+      "funding_oi_weighted_8h_percent": 0.0062,
+      "liquidations_24h_min_usd": 2580000,
+      "long_liquidations_usd": 2300000,
+      "short_liquidations_usd": 284130,
+      "long_short_account_ratio": 3.45,
+      "long_account_share_percent": 77.5,
+      "exchange_oi_usd": {
+        "Binance": 495650000,
+        "Bybit": 354940000,
+        "MEXC": 270190000,
+        "Gate": 267740000,
+        "Bitget": 250400000,
+        "Hyperliquid": 209720000,
+        "OKX": 115240000
+      },
+      "source_id": "S1"
+    },
+    {
+      "provider": "Kodexius",
+      "observed_at_utc": "2026-11-03T03:39:00Z",
+      "refresh_interval": "5 minutes",
+      "open_interest_usd": 827140000,
+      "contract_count": 7,
+      "venue_count": 5,
+      "funding_oi_weighted_8h_percent": 0.0073,
+      "volume_24h_usd": 1110000000,
+      "oi_to_volume_ratio": 0.75,
+      "exchange_contract_oi_usd": {
+        "Binance_USDT": 404650000,
+        "Binance_USDC": 30700000,
+        "Bybit_USDT": 152620000,
+        "Bybit_USDC": 2620000,
+        "Hyperliquid_USDC": 104500000,
+        "OKX_USDT": 104020000,
+        "HTX_USDT": 28020000
+      },
+      "source_id": "S2"
+    }
+  ],
+  "derived_comparisons": {
+    "total_oi_ratio_tradradar_to_kodexius": 2.3696109485697705,
+    "total_oi_difference_usd": 1132860000,
+    "common_venue_comparisons": {
+      "Binance": {
+        "tradradar_usd": 495650000,
+        "kodexius_combined_usd": 435350000,
+        "difference_usd": 60300000
+      },
+      "Bybit": {
+        "tradradar_usd": 354940000,
+        "kodexius_combined_usd": 155240000,
+        "difference_usd": 199700000
+      },
+      "Hyperliquid": {
+        "tradradar_usd": 209720000,
+        "kodexius_usd": 104500000,
+        "difference_usd": 105220000
+      },
+      "OKX": {
+        "tradradar_usd": 115240000,
+        "kodexius_usd": 104020000,
+        "difference_usd": 11220000
+      }
+    },
+    "funding_comparisons": {
+      "TradRadar_aggregate_8h_percent": 0.0062,
+      "Kodexius_aggregate_8h_percent": 0.0073,
+      "Binance_both_sources_8h_percent": 0.01,
+      "Bybit_TradRadar_8h_percent": -0.0057,
+      "Bybit_Kodexius_USDT_8h_percent": -0.0038,
+      "Bybit_Kodexius_USDC_8h_percent": 0.0019,
+      "OKX_TradRadar_8h_percent": 0.0093,
+      "OKX_Kodexius_8h_percent": 0.0091
+    }
+  },
+  "claims": [
+    {
+      "id": "D01",
+      "classification": "reported",
+      "claim": "TradRadar's Nov 3 04:35 UTC snapshot reports XRP at $1.2549, 24h price change -0.18%, seven-exchange open interest $1.96B and 24h OI change +2.38%.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "D02",
+      "classification": "reported",
+      "claim": "TradRadar reports OI-weighted funding +0.0062% per eight hours, long/short account ratio 3.45 with 77.5% long accounts, and at least $2.58M 24h liquidations, including $2.30M long and $284.13K short liquidations.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Account ratio is not notional positioning; liquidation data is a lower bound because exchange publication is partial."
+      ]
+    },
+    {
+      "id": "D03",
+      "classification": "reported",
+      "claim": "Kodexius's Nov 3 03:39 UTC snapshot reports $827.14M open interest across seven contracts on five venues, +0.0073% OI-weighted funding, $1.11B 24h volume and OI/volume ratio 0.75.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "D04",
+      "classification": "inference",
+      "claim": "The two reported aggregate OI totals differ by approximately 2.37x, or about $1.133B, but are not synchronized and do not cover identical venues/contracts.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "limitations": [
+        "Do not treat either provider as canonical without raw contract reconciliation."
+      ]
+    },
+    {
+      "id": "D05",
+      "classification": "reported",
+      "claim": "TradRadar lists Binance, Bybit, MEXC, Gate, Bitget, Hyperliquid and OKX; Kodexius lists Binance, Bybit, Hyperliquid, OKX and HTX, with seven individual contracts.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D06",
+      "classification": "inference",
+      "claim": "Venue coverage differences explain some aggregate OI divergence, but not all: overlapping-venue totals also differ materially, especially Bybit and Hyperliquid.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D07",
+      "classification": "reported",
+      "claim": "Binance OI is $495.65M in TradRadar versus $435.35M when Kodexius's Binance USDT and USDC contracts are summed.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D08",
+      "classification": "reported",
+      "claim": "Bybit OI is $354.94M in TradRadar versus $155.24M when Kodexius's Bybit USDT and USDC contracts are summed.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D09",
+      "classification": "reported",
+      "claim": "Hyperliquid OI is $209.72M in TradRadar versus $104.50M in Kodexius.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D10",
+      "classification": "reported",
+      "claim": "OKX OI is $115.24M in TradRadar versus $104.02M in Kodexius.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D11",
+      "classification": "reported",
+      "claim": "TradRadar reports positive funding on Binance, MEXC, Gate, Bitget, Hyperliquid and OKX but negative Bybit funding; Kodexius likewise reports negative Bybit USDT funding but positive Bybit USDC funding.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D12",
+      "classification": "inference",
+      "claim": "Positive aggregate funding and high long-account share coexist with greater long liquidations in TradRadar's snapshot; this indicates crowded long exposure and liquidation activity, not a reliable directional forecast by itself.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D13",
+      "classification": "unknown",
+      "claim": "The exact cause of the $1.133B aggregate OI discrepancy, including contract inclusion, notional conversion, update timing and aggregation methodology.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "D14",
+      "classification": "unknown",
+      "claim": "The actual notional delta-hedged versus directional exposure represented by the account ratio and aggregate open interest.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "TradRadar's higher total partly reflects broader exchange coverage (MEXC, Gate and Bitget) than Kodexius.",
+      "support": [
+        "D01",
+        "D03",
+        "D05"
+      ],
+      "counter": [
+        "D06"
+      ],
+      "status": "partial_explanation"
+    },
+    {
+      "id": "H02",
+      "hypothesis": "Contract inclusion, instrument definitions or open-interest unit conversion explain much of the remaining overlap-venue difference.",
+      "support": [
+        "D06",
+        "D07",
+        "D08",
+        "D09"
+      ],
+      "counter": [],
+      "status": "high_priority_to_test"
+    },
+    {
+      "id": "H03",
+      "hypothesis": "The 56-minute observation-time difference and TradRadar's stated 15-minute delay explain some but not all of the discrepancy.",
+      "support": [
+        "D01",
+        "D03",
+        "D04"
+      ],
+      "counter": [
+        "D07",
+        "D08",
+        "D09"
+      ],
+      "status": "partial_explanation"
+    },
+    {
+      "id": "H04",
+      "hypothesis": "The combination of positive aggregate funding, 77.5% long accounts and larger long liquidations indicates crowded long exposure and potential squeeze/liquidation sensitivity.",
+      "support": [
+        "D02",
+        "D11",
+        "D12"
+      ],
+      "counter": [],
+      "status": "risk_scenario_not_forecast"
+    },
+    {
+      "id": "H05",
+      "hypothesis": "High open interest reflects substantial hedged or basis exposure rather than purely directional bullish positioning.",
+      "support": [
+        "D03",
+        "D14"
+      ],
+      "counter": [],
+      "status": "plausible_unmeasured"
+    },
+    {
+      "id": "H06",
+      "hypothesis": "A provider total can be used directly as a reliable directional feature without contract-level reconciliation.",
+      "support": [],
+      "counter": [
+        "D04",
+        "D06",
+        "D13"
+      ],
+      "status": "rejected_by_data_quality_gate"
+    }
+  ],
+  "model_requirements": [
+    "Store each provider observation independently with exact as-of time, publication delay, refresh cadence and contract coverage.",
+    "Reconcile contract-by-contract OI using base-asset units and mark prices, not provider headline USD totals alone.",
+    "Separate USDT and USDC contracts; do not collapse exchange products without documenting contract identifiers and unit conventions.",
+    "Record funding intervals separately; normalize to eight-hour rates only with explicit conversion metadata.",
+    "Keep long/short account ratios separate from notional long/short exposure.",
+    "Treat reported liquidation totals as lower bounds where venues disclose partial data.",
+    "Do not issue directional forecasts from this snapshot."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "TradRadar",
+      "title": "XRP futures market data",
+      "url": "https://tradradar.io/markets/xrp",
+      "observed_at": "2026-11-03T04:35:00Z",
+      "source_type": "market_data_aggregator",
+      "limitations": [
+        "15-minute delay",
+        "Liquidations are a lower bound",
+        "Account ratio not notional exposure"
+      ]
+    },
+    {
+      "id": "S2",
+      "publisher": "Kodexius",
+      "title": "XRP perpetual futures open interest and funding",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "observed_at": "2026-11-03T03:39:00Z",
+      "source_type": "market_data_aggregator",
+      "limitations": [
+        "Seven contracts across five venues",
+        "56-minute observation-time difference versus TradRadar",
+        "Provider-specific aggregation methodology"
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Collect synchronized raw OI for every listed contract on Binance, Bybit, OKX, Hyperliquid, MEXC, Gate, Bitget and HTX.",
+    "Resolve the overlap-venue differences before choosing a canonical contract-level feature.",
+    "Backtest OI/funding/liquidation features against fixed 1h, 4h, 24h and 7d horizons with walk-forward splits and baseline models.",
+    "Record all provider failures and stale timestamps rather than imputing missing observations."
+  ]
+}

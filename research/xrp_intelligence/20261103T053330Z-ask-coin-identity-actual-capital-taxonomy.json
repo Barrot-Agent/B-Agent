@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "ask-coin-identity-actual-capital-taxonomy-20261103T053330Z",
+  "captured_at_utc": "2026-11-03T05:33:30Z",
+  "forecast_status": "NOT_ISSUED",
+  "exact_phrase_targets": [
+    "ASK Coin",
+    "actual capital",
+    "SBIC, ChatGPT SBIC"
+  ],
+  "identity_resolution": {
+    "candidates": [
+      {
+        "id": "ASK01",
+        "name": "Permission Coin",
+        "symbol": "ASK",
+        "class": "official_project_identity",
+        "confirmed_facts": [
+          "Permission's official documentation identifies ASK as its native ecosystem token.",
+          "Official contract documentation lists Base OFT-20 contract 0xBB146326778227A8498b105a18f84E0987A684b4 and Polygon OFT-20 contract 0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff.",
+          "The project documents LayerZero OFT deployment and Stargate integration."
+        ],
+        "source_urls": [
+          "https://docs.permission.ai/ask-token",
+          "https://docs.permission.ai/ask-token/contract-addresses",
+          "https://docs.permission.ai/ask-token/ask-tokenomics",
+          "https://www.permission.ai/blog/permission-migrates-to-polygon"
+        ],
+        "xrp_relationship": "No direct XRP, Ripple or XRPL integration was identified in the targeted official Permission documentation and site search performed for this snapshot. This is not proof that no indirect relationship exists.",
+        "confidence": "high_for_identity_and_contracts; low_for_any_claim_of_no_indirect_relationship"
+      },
+      {
+        "id": "ASK02",
+        "name": "Ask Coin",
+        "symbol": null,
+        "class": "exchange_listing_candidate",
+        "confirmed_facts": [
+          "CoinMarketCap has a separate Ask Coin exchange listing at askcoin.net.",
+          "The listing labels the exchange inactive/untracked and reports no tracked volume or reserve data."
+        ],
+        "source_urls": [
+          "https://coinmarketcap.com/vi/exchanges/ask-coin/",
+          "https://www.bitdegree.org/top-crypto-exchanges/ask-coin"
+        ],
+        "xrp_relationship": "No XRP/Ripple relationship established.",
+        "confidence": "moderate; secondary listing evidence, no first-party operator confirmation"
+      }
+    ],
+    "conclusion": "The phrase 'ASK Coin' is ambiguous. Permission Coin (ticker ASK) and Ask Coin (an inactive/untracked exchange listing) are separate entities. Neither is currently linked to XRP by verified evidence."
+  },
+  "actual_capital_taxonomy": {
+    "purpose": "Prevent Barrot from conflating announced financing capacity, token contributions, customer balances, reserves, exchange collateral and completed cash purchases.",
+    "categories": [
+      {
+        "id": "CASH_XRP_PURCHASE",
+        "definition": "Cash paid and used to acquire XRP, with execution/settlement supported by dated evidence.",
+        "example": "Evernorth disclosed $214.1M used to acquire 84,365,876 XRP. This is the clearest disclosed cash-funded XRP acquisition in the reviewed filing.",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+          "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+        ]
+      },
+      {
+        "id": "IN_KIND_XRP_CONTRIBUTION",
+        "definition": "XRP transferred/contributed to a treasury or financing transaction without the recipient buying those units with cash at the time of contribution.",
+        "example": "Evernorth's 261,919,096 XRP private-placement in-kind contribution and 126,791,458 XRP Ripple contribution; these are not equivalent to cash-funded spot purchases.",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+          "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+        ]
+      },
+      {
+        "id": "DEBT_CAPACITY",
+        "definition": "Borrowed/committed financing that creates a repayment obligation; separate drawn principal, PIK accrual, cash received, and any later XRP purchase.",
+        "example": "Evernorth's $30M 4% convertible senior PIK note is financing, not proof that $30M of XRP has been bought. The Ripple credit facility's drawn amount is a separate liability and must not be counted as XRP purchases without traced use of proceeds.",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+        ]
+      },
+      {
+        "id": "EQUITY_FACILITY_CAPACITY",
+        "definition": "Maximum shares or dollars available under a financing agreement; count actual cash proceeds only when issuance, sale price, settlement and cash receipt are evidenced.",
+        "example": "The Cantor/CF Principal equity facility's maximum registered shares are capacity, not completed capital raised or XRP acquired.",
+        "source_urls": [
+          "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+        ]
+      },
+      {
+        "id": "CUSTOMER_LENDING_BALANCE",
+        "definition": "Customer assets lent to a platform or issuer; classify as a liability/borrowed asset, not equity, reserve backing or XRP purchases.",
+        "example": "SBI VC Trade's JPYSC lending balance above ¥10B is included within its above-¥30B handled balance; the product is customers lending JPYSC to SBI VC Trade, not XRP-collateralized borrowing.",
+        "source_urls": [
+          "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+        ]
+      },
+      {
+        "id": "STABLECOIN_RESERVES",
+        "definition": "Assets backing issuer stablecoin liabilities; not automatically deployable XRP liquidity or capital invested in XRP.",
+        "example": "Circle USDC reserves and RLUSD reserve custody must be recorded separately from XRP treasury holdings and XRPL stablecoin supply.",
+        "source_urls": [
+          "https://www.circle.com/transparency",
+          "https://www.ripple.com/solutions/stablecoin/"
+        ]
+      },
+      {
+        "id": "ETF_HOLDINGS_DELTA",
+        "definition": "Change in fund-reported XRP holdings; a proxy for net exposure change, not necessarily pure creations/redemptions or cash spot buying.",
+        "example": "XRP Insights computes flows from issuer-reported holdings deltas and explicitly notes index rebalancing and XRP-paid fee accruals can be counted as flow; provisional and reconstructed rows require separate treatment.",
+        "source_urls": [
+          "https://xrp-insights.com/data/xrp-etf-flows.json"
+        ]
+      },
+      {
+        "id": "PROOF_OF_RESERVES",
+        "definition": "A point-in-time comparison of eligible customer liabilities and reserves; evidence about coverage, not a new capital inflow or XRP acquisition.",
+        "example": "Binance's 1:1 proof-of-reserves statement is not evidence that the exchange bought an equal amount of XRP after the security incident.",
+        "source_urls": [
+          "https://www.binance.com/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f"
+        ]
+      }
+    ],
+    "accounting_rule": "Only classify an amount as actual cash-funded XRP demand when cash payment, execution/settlement, asset receipt, and timing are evidenced. Otherwise label it in-kind contribution, financing capacity, drawn debt, customer liability, reserve backing, ETF holdings delta, or proof-of-reserves."
+  },
+  "relationship_edges": [
+    {
+      "from": "Permission Coin",
+      "to": "Base",
+      "relation": "official ASK OFT-20 contract",
+      "class": "confirmed_official_documentation"
+    },
+    {
+      "from": "Permission Coin",
+      "to": "Polygon",
+      "relation": "official ASK OFT-20 contract",
+      "class": "confirmed_official_documentation"
+    },
+    {
+      "from": "Permission Coin",
+      "to": "LayerZero",
+      "relation": "OFT omnichain token standard",
+      "class": "confirmed_official_documentation"
+    },
+    {
+      "from": "Permission Coin",
+      "to": "XRP/XRPL",
+      "relation": "no direct integration identified in targeted official-source search",
+      "class": "unknown_not_disproven"
+    },
+    {
+      "from": "Ask Coin exchange",
+      "to": "askcoin.net",
+      "relation": "exchange listing domain",
+      "class": "secondary_listing_evidence"
+    },
+    {
+      "from": "Evernorth",
+      "to": "XRP",
+      "relation": "cash-funded acquisition plus in-kind contributions; quantities and accounting categories separated",
+      "class": "SEC_filing"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relation": "customer lending and handled balances; not XRP capital",
+      "class": "official_company_statement"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "class": "inference",
+      "text": "The user's 'ASK Coin' reference may mean Permission Coin (ASK), given the exact token-name/symbol match.",
+      "counter": "A separate Ask Coin exchange listing exists, and the original reference context has not been resolved."
+    },
+    {
+      "id": "H02",
+      "class": "inference",
+      "text": "Permission Coin is not currently demonstrated to be part of the XRP ecosystem.",
+      "counter": "Targeted official-source searches are incomplete and cannot disprove an indirect relationship."
+    },
+    {
+      "id": "H03",
+      "class": "inference",
+      "text": "Institutional XRP headlines overstate immediate spot demand when in-kind contributions and undrawn financing capacity are counted as equivalent to cash purchases.",
+      "counter": "In-kind contributions can still create real treasury ownership and later deployment capacity, even without a contemporaneous market buy."
+    },
+    {
+      "id": "H04",
+      "class": "speculation",
+      "text": "An institution's debt or equity financing may later fund incremental XRP purchases.",
+      "counter": "No purchase is counted until proceeds are received and a dated XRP acquisition is evidenced."
+    }
+  ],
+  "data_quality": [
+    "No live token price, liquidity or holder-count feature is added from the secondary ASK market pages; displayed volume is very low and provider snapshots may be stale.",
+    "No XRPL wallet or exchange deposit relationship is inferred from token name similarity.",
+    "The official Permission documentation is authoritative for its own contracts and intended utility, not proof of exchange liquidity or adoption.",
+    "The absence of XRP/Ripple terms in a targeted search is classified as not-found-in-scope, not a disproof."
+  ],
+  "next_actions": [
+    "Compare the original ASK phrase against any additional exact source context in the existing research thread before selecting one candidate as intended.",
+    "If Permission Coin remains a candidate, verify current Base and Polygon contract state, holders, transfer activity and liquidity from chain data without conflating it with XRP.",
+    "Apply the capital taxonomy to every institutional XRP announcement and backfill prior ledger records where cash/in-kind/debt/undrawn capacity were mixed.",
+    "Preserve the XRP ETF provisionality audit as a separate source-quality artifact."
+  ],
+  "preservation": {
+    "main_modified": false,
+    "branch_append_only": true,
+    "forecast_issued": false,
+    "paper_trade_created": false,
+    "real_money_action": false
+  }
+}

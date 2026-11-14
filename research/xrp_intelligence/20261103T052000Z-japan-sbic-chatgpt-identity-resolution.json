@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "japan-sbic-chatgpt-identity-resolution-20261103T052000Z",
+  "captured_at_utc": "2026-11-03T05:20:00Z",
+  "claims": [
+    {
+      "id": "SBI01",
+      "classification": "confirmed",
+      "claim": "The Japanese company branding itself SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社). Its official site uses the SBIC acronym.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "SBI02",
+      "classification": "confirmed",
+      "claim": "Japan's Ministry of Economy, Trade and Industry describes Tokyo SBIC as a special-law private corporation whose purpose is to invest in SMEs to strengthen their equity capital and support sound growth.",
+      "source_ids": [
+        "S2"
+      ],
+      "limitations": [
+        "METI page returned HTTP 403 on direct open in this run; indexed official search result supplied the relevant text."
+      ]
+    },
+    {
+      "id": "SBI03",
+      "classification": "confirmed",
+      "claim": "The Small and Medium Enterprise Agency identifies Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies as separate regional organizations.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "SBI04",
+      "classification": "confirmed",
+      "claim": "Tokyo SBIC co-hosted a free generative-AI/ChatGPT seminar on February 26, 2025 with the Tokyo Chamber of Commerce and Industry's Taito Branch. The event took place at the National Museum of Nature and Science in Ueno.",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "id": "SBI05",
+      "classification": "confirmed",
+      "claim": "The February 26, 2025 seminar's speaker was a Microsoft Japan executive evangelist; the official program described ChatGPT, OpenAI and business use of ChatGPT.",
+      "source_ids": [
+        "S4"
+      ],
+      "limitations": [
+        "The event was about ChatGPT; the cited document does not identify OpenAI as a co-host, sponsor or partner."
+      ]
+    },
+    {
+      "id": "SBI06",
+      "classification": "confirmed",
+      "claim": "Tokyo SBIC ran a two-day generative-AI and machine-learning training course on June 12-13, 2025 for investee companies; its published curriculum included ChatGPT and Microsoft Copilot.",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "id": "SBI07",
+      "classification": "confirmed",
+      "claim": "Tokyo SBIC hosted a March 5, 2026 ChatGPT seminar co-hosted by Hamamatsu Iwata Shinkin; the speaker was a Microsoft Japan executive evangelist.",
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "id": "SBI08",
+      "classification": "inference",
+      "claim": "The phrase 'ChatGPT SBIC' plausibly refers to Tokyo SBIC's documented ChatGPT/generative-AI education program, especially its February 26, 2025 seminar.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "limitations": [
+        "The user's intended reference cannot be conclusively resolved from the phrase alone."
+      ]
+    },
+    {
+      "id": "SBI09",
+      "classification": "confirmed",
+      "claim": "The official event documents establish ChatGPT as the subject of SBIC training/seminars, but do not establish an OpenAI partnership, investment, product integration or joint development agreement.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "limitations": [
+        "Absence from these event documents is not proof no separate relationship exists."
+      ]
+    },
+    {
+      "id": "SBI10",
+      "classification": "unknown",
+      "claim": "Whether Tokyo, Nagoya or Osaka SBIC has any direct or indirect XRP, XRPL, Ripple, Coinbase, Circle, SBI Holdings or crypto-payment relationship.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "limitations": [
+        "No direct relationship was identified in the official SBIC materials searched; this is not proof of absence."
+      ]
+    },
+    {
+      "id": "SBI11",
+      "classification": "confirmed",
+      "claim": "Tokyo SBIC's role is SME equity investment and management support, not the same institutional role as SBI Holdings, SBI VC Trade, a crypto exchange, stablecoin issuer or payment rail.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "limitations": [
+        "The shared letters 'SBI' in names are not evidence of common ownership or operational integration."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Tokyo_Small_and_Medium_Business_Investment_Consultation",
+      "to": "SME_portfolio_companies",
+      "relation": "equity_investment_and_management_support",
+      "claim_ids": [
+        "SBI01",
+        "SBI02"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "ChatGPT",
+      "relation": "training_and_seminar_subject",
+      "claim_ids": [
+        "SBI04",
+        "SBI05",
+        "SBI06",
+        "SBI07"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Microsoft_Japan",
+      "relation": "event_speaker_and_Copilot_training_context",
+      "claim_ids": [
+        "SBI05",
+        "SBI06",
+        "SBI07"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Tokyo_Chamber_Taito_Branch",
+      "relation": "co_hosted_2025_02_26_ChatGPT_seminar",
+      "claim_ids": [
+        "SBI04"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Hamamatsu_Iwata_Shinkin",
+      "relation": "co_hosted_2026_03_05_ChatGPT_seminar",
+      "claim_ids": [
+        "SBI07"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "OpenAI",
+      "relation": "no_partnership_established_by_event_evidence",
+      "claim_ids": [
+        "SBI05",
+        "SBI09"
+      ],
+      "confidence": "unknown_not_negative_proof"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Ripple_XRP_XRPL",
+      "relation": "no_verified_edge_identified",
+      "claim_ids": [
+        "SBI10"
+      ],
+      "confidence": "unknown_not_negative_proof"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "SBI_Holdings",
+      "relation": "distinct_entity_identity_not_equivalence",
+      "claim_ids": [
+        "SBI01",
+        "SBI02",
+        "SBI11"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HSBI1",
+      "hypothesis": "The phrase 'ChatGPT SBIC' refers to Tokyo SBIC's February 2025 ChatGPT seminar.",
+      "support": [
+        "SBI04",
+        "SBI05"
+      ],
+      "counter": [],
+      "status": "strong_candidate_not_user_confirmed"
+    },
+    {
+      "id": "HSBI2",
+      "hypothesis": "The phrase refers more broadly to Tokyo SBIC's recurring AI education, including ChatGPT and Copilot courses in 2025 and a 2026 ChatGPT seminar.",
+      "support": [
+        "SBI05",
+        "SBI06",
+        "SBI07"
+      ],
+      "counter": [],
+      "status": "strong_candidate"
+    },
+    {
+      "id": "HSBI3",
+      "hypothesis": "SBIC is shorthand for SBI Holdings or SBI VC Trade.",
+      "support": [],
+      "counter": [
+        "SBI01",
+        "SBI02",
+        "SBI03",
+        "SBI11"
+      ],
+      "status": "not_supported_for_this_company_identity"
+    },
+    {
+      "id": "HSBI4",
+      "hypothesis": "Tokyo SBIC has an XRP/Ripple or stablecoin integration.",
+      "support": [],
+      "counter": [
+        "SBI10"
+      ],
+      "status": "not_established"
+    },
+    {
+      "id": "HSBI5",
+      "hypothesis": "Tokyo SBIC has an OpenAI commercial partnership because it ran ChatGPT events.",
+      "support": [
+        "SBI04",
+        "SBI05"
+      ],
+      "counter": [
+        "SBI05",
+        "SBI09"
+      ],
+      "status": "not_established"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Official company website / SBIC branding",
+      "url": "https://www.sbic.co.jp/",
+      "source_type": "primary_company_source"
+    },
+    {
+      "id": "S2",
+      "publisher": "Ministry of Economy, Trade and Industry, Japan",
+      "title": "Special-law private corporations under METI supervision — Tokyo and Nagoya SBIC",
+      "url": "https://www.meti.go.jp/intro/koueki_houjin/a_index_05.html",
+      "source_type": "primary_government_source",
+      "limitations": [
+        "Direct open returned 403; official indexed search result was retrieved."
+      ]
+    },
+    {
+      "id": "S3",
+      "publisher": "Small and Medium Enterprise Agency, Japan",
+      "title": "60th Good Company Awards recommendations — Tokyo, Nagoya and Osaka SBIC",
+      "url": "https://www.chusho.meti.go.jp/keiei/network/2026/260417goodcompany.html",
+      "published_at": "2026-04-17",
+      "source_type": "primary_government_source"
+    },
+    {
+      "id": "S4",
+      "publisher": "Tokyo SBIC",
+      "title": "2025-02-26 Generative AI (ChatGPT) seminar PDF",
+      "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+      "published_at": "2025-02-26",
+      "source_type": "primary_event_document",
+      "supporting_locations": [
+        "PDF lines 0-6 event and ChatGPT subject",
+        "Lines 8-11 date and Ueno venue",
+        "Lines 27-36 Microsoft speaker and Tokyo Chamber Taito Branch co-host",
+        "Lines 31-35 SBIC mission and co-hosts"
+      ]
+    },
+    {
+      "id": "S5",
+      "publisher": "Tokyo SBIC",
+      "title": "Introductory Generative AI and Machine Learning Training for Manufacturing",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "published_at": "2025-06-12",
+      "source_type": "primary_event_page",
+      "supporting_locations": [
+        "Lines 82-86 course/date",
+        "Lines 104-105 ChatGPT",
+        "Lines 111-120 Copilot and AI implementation"
+      ]
+    },
+    {
+      "id": "S6",
+      "publisher": "Tokyo SBIC",
+      "title": "Generative AI (ChatGPT): Present and Future — Hamamatsu",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "published_at": "2026-03-05",
+      "source_type": "primary_event_page",
+      "supporting_locations": [
+        "Lines 79-85 event title, organizer, co-host and date",
+        "Lines 87-100 Microsoft Japan speaker and ChatGPT demonstration"
+      ]
+    }
+  ],
+  "conclusion": {
+    "identity": "For the ChatGPT-related Japanese SBIC evidence, the best-supported entity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC), not SBI Holdings or SBI VC Trade.",
+    "chatgpt_relationship": "Documented AI education/seminar subject; Microsoft Japan personnel presented. No OpenAI partnership is established by the cited evidence.",
+    "xrp_relationship": "No direct XRP/Ripple/XRPL relationship identified in official SBIC materials searched; status remains unknown rather than disproven."
+  },
+  "forecast_status": "NOT_APPLICABLE"
+}

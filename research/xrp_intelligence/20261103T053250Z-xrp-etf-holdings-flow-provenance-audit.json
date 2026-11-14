@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "xrp-etf-holdings-flow-provenance-20261103T053250Z",
+  "captured_at_utc": "2026-11-03T05:32:50Z",
+  "source_generated_at_utc": "2026-11-03T04:58:57.196Z",
+  "latest_settled_data_as_of": "2026-10-30",
+  "latest_row_date": "2026-11-02",
+  "latest_row_status": "provisional",
+  "forecast_status": "NOT_ISSUED",
+  "source": {
+    "publisher": "XRP Insights",
+    "metadata_url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+    "dataset_url": "https://xrp-insights.com/data",
+    "terms_url": "https://xrp-insights.com/terms",
+    "declared_methodology": "Daily flow is computed as the change in each fund's issuer-reported XRP holdings versus the prior trading day. USD flow multiplies XRP flow by that day's XRP reference price. This is a holdings-delta estimate, not a direct issuer-reported creations/redemptions feed.",
+    "license_note": "Free to use and cite with attribution; commercial redistribution requires written permission."
+  },
+  "coverage": {
+    "first_date": "2025-12-01",
+    "last_date": "2026-11-02",
+    "trading_days": 227,
+    "rows": 1569,
+    "row_unit": "one row per fund per trading day",
+    "update_cadence": "At most hourly",
+    "provisional_resettlement": "Latest trading-day row is rebuilt after issuer NAV/holdings publication; source metadata states next-morning re-settlement at 10:00 and 13:00 UTC, with Friday rows at Saturday 12:30 UTC."
+  },
+  "funds": [
+    {
+      "ticker": "XRPC",
+      "issuer": "Canary Capital",
+      "note": "Spot XRP ETP."
+    },
+    {
+      "ticker": "XRP",
+      "issuer": "Bitwise",
+      "note": "Spot XRP ETP."
+    },
+    {
+      "ticker": "XRPR",
+      "issuer": "REX-Osprey",
+      "note": "Source says part of reported XRP exposure is held through another XRP exchange-traded product; avoid double-counting fund-of-fund exposure as incremental underlying XRP."
+    },
+    {
+      "ticker": "XRPZ",
+      "issuer": "Franklin Templeton",
+      "note": "Spot XRP ETP."
+    },
+    {
+      "ticker": "GXRP",
+      "issuer": "Grayscale",
+      "note": "Flow series withheld for 2026-09-02 through 2026-09-28 because issuer page blocked automated reads; holdings remain in AUM totals and catch-up was recorded on 2026-09-28."
+    },
+    {
+      "ticker": "TOXR",
+      "issuer": "21Shares",
+      "note": "Spot XRP ETP."
+    },
+    {
+      "ticker": "BITW",
+      "issuer": "Bitwise 10 Crypto Index Fund",
+      "note": "Only XRP sleeve is counted; XRP holdings can change due to index rebalancing, so holdings deltas are not necessarily creations/redemptions."
+    }
+  ],
+  "quality_findings": [
+    {
+      "id": "Q01",
+      "class": "confirmed_source_metadata",
+      "finding": "The source metadata says data_as_of is 2026-10-30 while latest_row_date is 2026-11-02 and the November 2 row is provisional.",
+      "implication": "Do not use November 2 as a settled ETF-flow observation. At capture time the latest settled row was October 30."
+    },
+    {
+      "id": "Q02",
+      "class": "methodology_limitation",
+      "finding": "Flows are calculated from holdings deltas rather than obtained from issuer flow reports.",
+      "implication": "Changes caused by factors other than creations/redemptions, including index rebalancing and fee accruals paid in XRP, can be counted as flow."
+    },
+    {
+      "id": "Q03",
+      "class": "known_reconstruction_gap",
+      "finding": "The source identifies reconstructed rows for 2026-03-23 through 2026-03-27, 2026-03-31 through 2026-04-29, and 2026-05-12, where holdings were rebuilt from third-party daily flow estimates between issuer-reported anchor days.",
+      "implication": "These rows must carry reconstructed status and must not be treated as direct issuer snapshots."
+    },
+    {
+      "id": "Q04",
+      "class": "known_missing_flow_series",
+      "finding": "GXRP flows are withheld across the full history; holdings and AUM remain included.",
+      "implication": "Aggregate flow totals that include all holdings/AUM do not necessarily have complete fund-level flow coverage."
+    },
+    {
+      "id": "Q05",
+      "class": "double_counting_risk",
+      "finding": "XRPR may hold part of its XRP exposure through another XRP ETP.",
+      "implication": "Do not add the full reported XRPR exposure to underlying issuer-held XRP without decomposing look-through holdings."
+    },
+    {
+      "id": "Q06",
+      "class": "provisionality",
+      "finding": "The latest row may be rewritten during next-morning settlement as issuers publish NAV and holdings.",
+      "implication": "Store the provisional version immutably, then append a separately timestamped settled revision; never overwrite the earlier observation."
+    }
+  ],
+  "source_independence": {
+    "holdings_origin": "Issuer websites are declared as the primary origin for holdings values.",
+    "flow_origin": "XRP Insights computes the flow series from those holdings; the computed flow is not an independent second source.",
+    "corroboration_requirement": "For critical fund-level flows, reconcile the issuer's dated holdings/NAV snapshot with at least one independent provider or the fund's official basket/creation-redemption disclosure. Preserve disagreements."
+  },
+  "model_controls": [
+    "Use only settled rows for primary ETF-flow features; expose provisional rows in a separate feature namespace.",
+    "Keep XRP-denominated holdings delta, USD-valued delta, fund AUM, share volume and share price as separate fields.",
+    "Mark reconstructed and excluded observations explicitly; do not forward-fill missing flow as zero.",
+    "Do not interpret BITW rebalancing or fee accrual as pure investor demand.",
+    "Do not count XRPR's look-through ETP exposure twice.",
+    "Align each ETF flow with the exact XRP reference-price timestamp used by the source before estimating any flow/price relationship.",
+    "Run event studies with lagged flow features and strict point-in-time availability; the latest provisional row is unavailable until its actual publication/settlement timestamp.",
+    "No correlation, causal impact, predictive edge or price forecast is asserted in this artifact."
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "class": "inference",
+      "hypothesis": "A holdings-based ETF flow series can be more transparent than an opaque third-party flow feed when each issuer snapshot and revision is retained.",
+      "counter": "The holdings delta can still reflect non-flow changes, capture gaps and reconstruction."
+    },
+    {
+      "id": "H02",
+      "class": "inference",
+      "hypothesis": "Using only settled, direct issuer observations may reduce look-ahead and revision bias in XRP institutional-demand features.",
+      "counter": "Issuer publication times vary, so a settled daily row can become available after the market event window it is intended to explain."
+    },
+    {
+      "id": "H03",
+      "class": "speculation",
+      "hypothesis": "ETF flow/price divergence may contain information about absorption, hedging or secondary-market inventory.",
+      "counter": "No causal mechanism or out-of-sample predictive edge is established; futures basis, AP hedging, OTC inventory and fund-of-fund structure may confound the relationship."
+    }
+  ],
+  "unresolved": [
+    "Actual November 2 per-fund provisional holdings and flows were not extracted in this run; the metadata only establishes that the row exists and is provisional.",
+    "The source's raw CSV endpoint returned an unsupported content-type error through the retrieval path; the JSON metadata was accessible, but the full data rows were not retrieved.",
+    "The exact issuer publication timestamp for each November 2 fund row remains unknown.",
+    "No direct creation/redemption basket reconciliation was performed."
+  ],
+  "next_actions": [
+    "Retrieve the full JSON/CSV dataset through an approved file-capable route and preserve the original bytes plus SHA-256.",
+    "Reconcile November 2 provisional rows against the 10:00 and 13:00 UTC re-settlement after those windows occur.",
+    "Build a per-fund availability timestamp and revision table before any ETF flow feature enters a model.",
+    "Exclude or separately model reconstructed, withheld and fund-of-fund observations.",
+    "Run fixed-horizon walk-forward tests only after the point-in-time ETF dataset is complete."
+  ],
+  "preservation": {
+    "main_modified": false,
+    "forecast_issued": false,
+    "paper_trade_created": false,
+    "real_money_action": false
+  }
+}

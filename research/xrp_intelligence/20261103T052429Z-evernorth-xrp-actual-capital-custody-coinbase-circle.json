@@ -1,0 +1,967 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "evernorth-xrp-actual-capital-custody-coinbase-circle-20261103T052429Z",
+  "captured_at_utc": "2026-11-03T05:24:29Z",
+  "claims": [
+    {
+      "id": "A01",
+      "classification": "confirmed",
+      "claim": "Evernorth reported approximately 473 million XRP held as of October 9, 2026.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "A02",
+      "classification": "confirmed",
+      "claim": "Evernorth raised $214.1M cash and 261,919,096 XRP through private-placement subscription agreements; it used the $214.1M cash proceeds to purchase 84,365,876 XRP.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "A03",
+      "classification": "confirmed",
+      "claim": "Ripple contributed 126,791,458 XRP to Evernorth in October 2025 in exchange for 30 million units; the contribution was accounted for as a common-control transaction at Ripple's historical carrying value of zero.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "limitations": [
+        "Zero is the accounting carrying value, not a statement that the XRP had no economic or market value."
+      ]
+    },
+    {
+      "id": "A04",
+      "classification": "derived",
+      "claim": "The disclosed components sum to approximately 473,076,430 XRP: 84,365,876 cash-funded purchases + 261,919,096 private-placement XRP + 126,791,458 Ripple-contributed XRP.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "A05",
+      "classification": "derived",
+      "claim": "On the disclosed 473,076,430 XRP total, cash-funded purchases represent approximately 17.83% and in-kind contributions approximately 82.17%.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "limitations": [
+        "The filing does not establish that all contributed private-placement XRP was purchased in the open market immediately before contribution."
+      ]
+    },
+    {
+      "id": "A06",
+      "classification": "confirmed",
+      "claim": "Evernorth received approximately $30M net proceeds from 4.00% Convertible Senior PIK Notes due 2031, issued October 12, 2026; proceeds are intended for general corporate purposes including XRP acquisition and other XRP ecosystem activity.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Stated use of proceeds is an intention; it does not establish how much has already been used to buy XRP."
+      ]
+    },
+    {
+      "id": "A07",
+      "classification": "confirmed",
+      "claim": "A Ripple revolving credit facility was increased to $10M on October 7, 2026; Evernorth reported $9.7M borrowed as of October 7 at 3.81% annual interest.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Borrowed funds and XRP purchases are separate; the filing does not establish that the entire draw was used to acquire XRP."
+      ]
+    },
+    {
+      "id": "A08",
+      "classification": "confirmed",
+      "claim": "Evernorth entered a committed equity facility with Cantor for up to 5,218,935 newly issued Class A shares; the company controls timing and amount and has no obligation to sell shares.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "This is potential equity issuance, not XRP token supply."
+      ]
+    },
+    {
+      "id": "A09",
+      "classification": "confirmed",
+      "claim": "Evernorth reported no proceeds received under the Cantor committed equity facility as of the prospectus date.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "A10",
+      "classification": "confirmed",
+      "claim": "BitGo Bank & Trust is Evernorth's primary custodian; 100% of its XRP was in offline/cold storage as of the prospectus date.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "A11",
+      "classification": "confirmed",
+      "claim": "BitGo's approximately $250M aggregate cold-storage insurance policy is shared among clients whose keys are held entirely by BitGo and is not dedicated to Evernorth; the filing says the limit represented approximately 36.9% of Evernorth's October 9 XRP holding value.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Coverage is shared and subject to policy terms, deductibles, limits and competing claims."
+      ]
+    },
+    {
+      "id": "A12",
+      "classification": "confirmed",
+      "claim": "Evernorth selected Coinbase as the principal market for XRP financial-reporting impairment measurement after assessing trading volume/activity, quote consistency/stability and regulatory/AML/KYC compliance.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "A13",
+      "classification": "confirmed",
+      "claim": "Evernorth states it does not actively trade XRP on digital-asset markets; Coinbase principal-market selection is for nonrecurring cost-less-impairment accounting and is reassessed at least annually.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "This does not establish Coinbase executed Evernorth's disclosed cash-funded purchases, holds its XRP, or controls global XRP pricing."
+      ]
+    },
+    {
+      "id": "A14",
+      "classification": "confirmed",
+      "claim": "Coinbase's Q3 2026 filing reports stablecoin revenue of $306.905M versus $324.534M in Q3 2025, says average USDC balances held in Coinbase products reached an all-time high, and says its Circle arrangement was renewed on the same terms.",
+      "source_ids": [
+        "S3"
+      ],
+      "limitations": [
+        "Stablecoin revenue is not exclusively Circle revenue; no complete standalone Circle revenue split is disclosed."
+      ]
+    },
+    {
+      "id": "A15",
+      "classification": "confirmed",
+      "claim": "Circle's Q2 2026 results identify SBI Group as a founding third-party validator for Arc and report $73.3B USDC circulation at quarter-end and $14.8T Q2 onchain transaction volume.",
+      "source_ids": [
+        "S4"
+      ],
+      "limitations": [
+        "Arc validator participation is not evidence of XRP integration or a Circle-Evernorth partnership."
+      ]
+    },
+    {
+      "id": "A16",
+      "classification": "confirmed",
+      "claim": "SBI and Circle announced a Japan-focused USDC joint venture arrangement; SBI and Ripple also have separate XRP/RLUSD-related relationships in Japan.",
+      "source_ids": [
+        "S5",
+        "S6"
+      ],
+      "limitations": [
+        "These are distinct SBI relationships and do not establish a three-party Coinbase-Circle-Ripple agreement."
+      ]
+    },
+    {
+      "id": "A17",
+      "classification": "unknown",
+      "claim": "Whether Coinbase executed any portion of Evernorth's 84,365,876 cash-funded XRP purchases or provides custody to Evernorth.",
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Principal-market designation is not evidence of execution or custody."
+      ]
+    },
+    {
+      "id": "A18",
+      "classification": "unknown",
+      "claim": "Whether Circle has a direct commercial, treasury, custody or investment relationship with Evernorth.",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "limitations": [
+        "No direct relationship was identified in the cited filings and announcements; this is not proof of absence."
+      ]
+    },
+    {
+      "id": "A19",
+      "classification": "inference",
+      "claim": "Evernorth's 473M XRP balance should not be treated as equivalent to 473M XRP of fresh spot-market buying; most disclosed holdings arrived in kind, and Ripple's contribution had zero historical carrying value for accounting.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "A20",
+      "classification": "inference",
+      "claim": "Coinbase's selection as Evernorth's principal market demonstrates institutional reference-market importance for accounting, but not market control, exclusive execution or custody.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "A21",
+      "classification": "confirmed",
+      "claim": "Coinbase's Q3 2026 filing states its three top product priorities are to grow the everything exchange, scale stablecoins and payments, and expand onchain adoption.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A22",
+      "classification": "confirmed",
+      "claim": "Coinbase reports Q3 resilience in crypto derivatives volume, expanded tradable assets, growth in equities and prediction markets, increased DEX trading, and growth in balances borrowed and lent through Coinbase.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A23",
+      "classification": "confirmed",
+      "claim": "Coinbase says average USDC held in Coinbase products reached an all-time high and that its arrangement with Circle was renewed on the same terms.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A24",
+      "classification": "confirmed",
+      "claim": "Coinbase reported Q3 2026 stablecoin revenue of $306.905M versus $324.534M in Q3 2025, a 5% decline; it also reclassified corporate payment-stablecoin-balance revenue to corporate interest and other income in Q1 2026 and reclassified prior periods for comparison.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A25",
+      "classification": "confirmed",
+      "claim": "Coinbase states 84% of total revenue for the three and nine months ended September 30, 2026 was generated in the U.S., and stablecoin revenue was substantially all attributed to the U.S.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "A26",
+      "classification": "derived",
+      "claim": "The disclosed $214.1M cash-funded purchase divided by 84,365,876 XRP implies an aggregate average of approximately $2.53776 per XRP; compared with the XRPL Dashboard's $1.2533 mark at 2026-11-03 05:05 UTC, that mark is approximately 50.61% lower.",
+      "source_ids": [
+        "S1",
+        "S7"
+      ],
+      "limitations": [
+        "This is a ratio of aggregate disclosed cash and units, not a verified lot-level cost basis or realized/unrealized loss. Evernorth's impairment policy uses the lowest observable intraday price on its selected principal market since acquisition, not this simple average. The dashboard price is a third-party mark, not an executable quote."
+      ]
+    },
+    {
+      "id": "A27",
+      "classification": "confirmed",
+      "claim": "SBI VC Trade and Ripple announced RLUSD trading/handling on VCTRADE beginning June 24, 2026; SBI described it as Japan's first Category 4 electronic payment instrument and stated deposits and withdrawals were free.",
+      "source_ids": [
+        "S8"
+      ],
+      "limitations": [
+        "This is an exchange listing/handling announcement, not proof of large realized trading volume or XRP purchases."
+      ]
+    },
+    {
+      "id": "A28",
+      "classification": "confirmed",
+      "claim": "SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple announced an XRP-based international remittance service expansion to the Philippines, Vietnam and Indonesia in September 2023.",
+      "source_ids": [
+        "S9"
+      ],
+      "limitations": [
+        "The announcement establishes the service launch/expansion, not current corridor volumes or the amount of XRP held by liquidity providers."
+      ]
+    },
+    {
+      "id": "A29",
+      "classification": "confirmed",
+      "claim": "SBI Ripple Asia announced a conceptual proof of concept for tokenized deposits and deposit-based digital money using the existing MoneyTap infrastructure and XRPL on February 26, 2026.",
+      "source_ids": [
+        "S10"
+      ],
+      "limitations": [
+        "A conceptual proof of concept is not evidence of production deployment, live deposits or material XRP liquidity demand."
+      ]
+    },
+    {
+      "id": "A30",
+      "classification": "confirmed",
+      "claim": "SBI Group, Aplus and Visa announced a crypto-rewards credit card on May 1, 2026; card points are automatically exchanged into BTC, ETH or XRP.",
+      "source_ids": [
+        "S11"
+      ],
+      "limitations": [
+        "This is a rewards/conversion rail, not proof merchants accept XRP or that the card settles purchases directly in XRP. Actual XRP conversion volumes are unknown."
+      ]
+    },
+    {
+      "id": "A31",
+      "classification": "reported",
+      "claim": "SBI VC Trade reported more than two million registered crypto accounts as of July 6, 2026 and described its offering as including USDC, JPYSC, RLUSD and stablecoin lending.",
+      "source_ids": [
+        "S12"
+      ],
+      "limitations": [
+        "Registered accounts are not equivalent to active traders, funded accounts or XRP holders."
+      ]
+    },
+    {
+      "id": "A32",
+      "classification": "confirmed",
+      "claim": "SBI VC Trade announced a temporary XRP/JPY leveraged-trading campaign from June 22 through July 3, 2026 with a stated standard spread of 0.5 yen.",
+      "source_ids": [
+        "S13"
+      ],
+      "limitations": [
+        "A time-limited promotional spread is not evidence of persistent market depth or normal-period liquidity."
+      ]
+    },
+    {
+      "id": "A33",
+      "classification": "unknown",
+      "claim": "Current XRP-based remittance volumes and the current operational status/market share of the Philippines, Vietnam and Indonesia corridors announced in 2023.",
+      "source_ids": [
+        "S9"
+      ],
+      "limitations": [
+        "The retrieved announcement does not provide current transaction counts, XRP inventory, spreads or corridor-level volume."
+      ]
+    },
+    {
+      "id": "A34",
+      "classification": "unknown",
+      "claim": "Actual XRP reward-conversion volume, execution venue and hedging/treasury process for the SBI/Visa crypto-rewards card.",
+      "source_ids": [
+        "S11"
+      ],
+      "limitations": [
+        "The card announcement confirms conversion eligibility, not realized volume or whether conversion creates net spot demand."
+      ]
+    },
+    {
+      "id": "A35",
+      "classification": "unknown",
+      "claim": "Whether the tokenized-deposit proof of concept has progressed into production or created measurable XRPL transaction and XRP liquidity demand.",
+      "source_ids": [
+        "S10"
+      ],
+      "limitations": [
+        "No production launch or usage metrics were identified in the retrieved announcement."
+      ]
+    }
+  ],
+  "capital_ledger": {
+    "holdings_as_of": "2026-10-09",
+    "total_xrp": 473076430,
+    "cash_funded_purchase_xrp": 84365876,
+    "cash_raised_usd": 214100000,
+    "private_placement_in_kind_xrp": 261919096,
+    "ripple_contributed_xrp": 126791458,
+    "ripple_contribution_historical_carrying_value_usd": 0,
+    "cash_funded_share_percent": 17.83,
+    "in_kind_share_percent": 82.17,
+    "ripple_credit_facility_limit_usd": 10000000,
+    "ripple_credit_facility_drawn_usd_as_of_2026_10_07": 9700000,
+    "convertible_notes_principal_usd": 30000000,
+    "convertible_notes_coupon_pik_percent": 4,
+    "convertible_notes_maturity_year": 2031,
+    "cantor_eloc_max_new_class_a_shares": 5218935,
+    "eloc_proceeds_received_as_of_prospectus": 0,
+    "custody": "BitGo Bank & Trust; 100% cold storage as of prospectus date",
+    "shared_cold_storage_insurance_usd": 250000000,
+    "insurance_percent_of_evernorth_xrp_value_as_of_2026_10_09": 36.9,
+    "accounting_rules": [
+      "The $214.1M cash proceeds were used to purchase 84,365,876 XRP; this is the disclosed cash-funded acquisition amount.",
+      "261,919,096 XRP came through private-placement subscription agreements in kind.",
+      "126,791,458 XRP was contributed by Ripple; zero historical carrying value is an accounting basis, not zero economic value.",
+      "The $30M notes and $9.7M Ripple facility draw are financing sources, not proof of completed XRP purchases.",
+      "The 5,218,935-share Cantor facility is potential equity issuance and is not XRP token supply.",
+      "Coinbase principal-market designation is for impairment measurement; it is not evidence of trade execution or custody.",
+      "The $2.53776 implied cash-tranche average is aggregate cash divided by aggregate XRP units, not a lot-level tax or accounting basis; do not treat the 50.61% mark difference as a realized loss or final impairment."
+    ],
+    "implied_cash_tranche_average_price_usd": 2.53775591,
+    "dashboard_mark_usd": 1.2533,
+    "dashboard_mark_at_utc": "2026-11-03T05:05:00Z",
+    "mark_discount_to_implied_cash_average_percent": -50.61
+  },
+  "relationship_edges": [
+    {
+      "from": "Evernorth",
+      "to": "XRP",
+      "relation": "holds_approximately_473M_as_of_2026_10_09",
+      "claim_ids": [
+        "A01",
+        "A04"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Private_placement_investors",
+      "to": "Evernorth",
+      "relation": "contributed_261_919_096_XRP_in_kind",
+      "claim_ids": [
+        "A02"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Private_placement_cash",
+      "to": "Evernorth_XRP_purchases",
+      "relation": "214_1M_cash_used_to_buy_84_365_876_XRP",
+      "claim_ids": [
+        "A02"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relation": "contributed_126_791_458_XRP_at_zero_historical_carrying_value",
+      "claim_ids": [
+        "A03"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relation": "10M_revolving_credit_facility_9_7M_drawn",
+      "claim_ids": [
+        "A07"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "NH_Investment_Securities_trust",
+      "to": "Evernorth",
+      "relation": "30M_4_percent_convertible_senior_PIK_notes_due_2031",
+      "claim_ids": [
+        "A06"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Cantor",
+      "to": "Evernorth",
+      "relation": "committed_equity_facility_up_to_5_218_935_Class_A_shares",
+      "claim_ids": [
+        "A08",
+        "A09"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "BitGo",
+      "to": "Evernorth",
+      "relation": "primary_XRP_custody_100_percent_cold_storage",
+      "claim_ids": [
+        "A10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "BitGo",
+      "to": "Evernorth",
+      "relation": "shared_250M_cold_storage_insurance_not_dedicated",
+      "claim_ids": [
+        "A11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Evernorth",
+      "relation": "principal_market_for_XRP_impairment_measurement",
+      "claim_ids": [
+        "A12",
+        "A13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_and_revenue_sharing_arrangement_renewed_same_terms",
+      "claim_ids": [
+        "A14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple_RLUSD",
+      "relation": "RLUSD_distribution_listing_relationship",
+      "claim_ids": [
+        "A16"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Circle_Arc",
+      "relation": "founding_third_party_validator",
+      "claim_ids": [
+        "A15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Circle_USDC",
+      "relation": "Japan_joint_venture_arrangement",
+      "claim_ids": [
+        "A16"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Ripple_XRP_RLUSD",
+      "relation": "separate_Japan_XRP_and_RLUSD_relationships",
+      "claim_ids": [
+        "A16"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "Circle",
+      "to": "Evernorth",
+      "relation": "no_direct_relationship_verified",
+      "claim_ids": [
+        "A18"
+      ],
+      "confidence": "unknown_not_negative_proof"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Crypto_derivatives",
+      "relation": "Q3_strategy_and_volume_resilience",
+      "claim_ids": [
+        "A21",
+        "A22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Onchain_Dex_and_lending",
+      "relation": "Q3_product_expansion",
+      "claim_ids": [
+        "A21",
+        "A22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Coinbase",
+      "to": "U.S._stablecoin_market",
+      "relation": "revenue_and_distribution_exposure",
+      "claim_ids": [
+        "A14",
+        "A23",
+        "A24",
+        "A25"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Evernorth_cash_funded_XRP_tranche",
+      "to": "XRP_market_price",
+      "relation": "aggregate_implied_average_2_53776_vs_dashboard_mark_1_2533",
+      "claim_ids": [
+        "A26"
+      ],
+      "confidence": "derived_mark_comparison"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "RLUSD",
+      "relation": "Japan_exchange_listing_and_handling_from_2026_06_24",
+      "claim_ids": [
+        "A27"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "Ripple",
+      "to": "SBI_VC_Trade",
+      "relation": "RLUSD_distribution_and_handling_partnership",
+      "claim_ids": [
+        "A27"
+      ],
+      "confidence": "high"
+    },
+    {
+      "from": "SBI_Remit",
+      "to": "XRP_based_cross_border_remittance",
+      "relation": "corridor_service_expansion_Philippines_Vietnam_Indonesia",
+      "claim_ids": [
+        "A28",
+        "A33"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP_based_cross_border_remittance",
+      "relation": "exchange_liquidity_partner",
+      "claim_ids": [
+        "A28",
+        "A33"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "XRPL",
+      "relation": "tokenized_deposit_and_deposit_money_conceptual_PoC",
+      "claim_ids": [
+        "A29",
+        "A35"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_Group_Aplus_Visa",
+      "to": "XRP",
+      "relation": "crypto_rewards_card_auto_conversion_option",
+      "claim_ids": [
+        "A30",
+        "A34"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP_JPY_leverage_market",
+      "relation": "temporary_0_5_yen_spread_campaign",
+      "claim_ids": [
+        "A32"
+      ],
+      "confidence": "high_as_announced"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "stablecoin_and_crypto_accounts",
+      "relation": "2M_registered_accounts_and_multi_stablecoin_offering",
+      "claim_ids": [
+        "A31"
+      ],
+      "confidence": "high_as_reported"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HEV1",
+      "hypothesis": "Evernorth's 473M treasury creates a meaningful institutional holding but materially overstates fresh spot demand if interpreted as market purchases.",
+      "support": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05"
+      ],
+      "counter": [],
+      "status": "strongly_supported_accounting_distinction"
+    },
+    {
+      "id": "HEV2",
+      "hypothesis": "Ripple's in-kind contribution and credit facility align Ripple with Evernorth's long-term strategy but do not imply equivalent market buying or a price-support commitment.",
+      "support": [
+        "A03",
+        "A07"
+      ],
+      "counter": [],
+      "status": "plausible_strategic_alignment_not_price_commitment"
+    },
+    {
+      "id": "HEV3",
+      "hypothesis": "Coinbase's principal-market designation demonstrates reference-market importance for accounting but not exclusive trading dominance or custody.",
+      "support": [
+        "A12",
+        "A13",
+        "A20"
+      ],
+      "counter": [],
+      "status": "confirmed_scope_limited"
+    },
+    {
+      "id": "HEV4",
+      "hypothesis": "BitGo cold storage lowers some operational exposure, but shared insurance coverage leaves substantial uninsured exposure relative to the treasury.",
+      "support": [
+        "A10",
+        "A11"
+      ],
+      "counter": [],
+      "status": "supported"
+    },
+    {
+      "id": "HEV5",
+      "hypothesis": "The $30M convertible notes and Ripple credit facility could fund future XRP purchases, but financing capacity must not be counted as completed spot demand.",
+      "support": [
+        "A06",
+        "A07"
+      ],
+      "counter": [],
+      "status": "future_capacity_not_executed_purchase"
+    },
+    {
+      "id": "HEV6",
+      "hypothesis": "The Cantor ELOC may dilute Evernorth equity if used, but it does not directly dilute XRP supply.",
+      "support": [
+        "A08",
+        "A09"
+      ],
+      "counter": [],
+      "status": "potential_equity_dilution_not_token_dilution"
+    },
+    {
+      "id": "HEV7",
+      "hypothesis": "SBI's simultaneous relationships with Ripple and Circle create institutional cross-rail exposure, but do not prove coordinated capital flows or XRP price strategy.",
+      "support": [
+        "A15",
+        "A16"
+      ],
+      "counter": [
+        "A18"
+      ],
+      "status": "network_relationships_confirmed_coordination_unproven"
+    },
+    {
+      "id": "HEV8",
+      "hypothesis": "Coinbase's strategic posture is broadening from a spot exchange into an integrated exchange, stablecoin/payment, derivatives, onchain, lending and prediction-market platform.",
+      "support": [
+        "A21",
+        "A22",
+        "A23"
+      ],
+      "counter": [],
+      "status": "confirmed_company_strategy"
+    },
+    {
+      "id": "HEV9",
+      "hypothesis": "Record average USDC balances can coexist with lower stablecoin revenue when rates, revenue presentation and product mix change; balance growth alone is not a revenue forecast.",
+      "support": [
+        "A14",
+        "A23",
+        "A24"
+      ],
+      "counter": [],
+      "status": "supported_accounting_and_rate_sensitivity"
+    },
+    {
+      "id": "HEV10",
+      "hypothesis": "SBI Group has a multi-rail digital-asset strategy spanning XRP remittances, RLUSD/USDC/JPYSC, XRPL tokenized-deposit exploration and Visa crypto rewards.",
+      "support": [
+        "A15",
+        "A16",
+        "A27",
+        "A28",
+        "A29",
+        "A30",
+        "A31"
+      ],
+      "counter": [],
+      "status": "network_of_announced_relationships_confirmed_coordination_unproven"
+    },
+    {
+      "id": "HEV11",
+      "hypothesis": "The announced XRP remittance corridors create real utility but may have limited current impact on global XRP liquidity absent current corridor volumes and inventory data.",
+      "support": [
+        "A28"
+      ],
+      "counter": [
+        "A33"
+      ],
+      "status": "production_service_announced_current_scale_unknown"
+    },
+    {
+      "id": "HEV12",
+      "hypothesis": "The Visa rewards card may create incremental retail XRP conversion demand.",
+      "support": [
+        "A30"
+      ],
+      "counter": [
+        "A34"
+      ],
+      "status": "plausible_mechanism_volume_unknown"
+    },
+    {
+      "id": "HEV13",
+      "hypothesis": "SBI's RLUSD listing and JPYSC/USDC activities may expand stablecoin usage without necessarily increasing native XRP demand.",
+      "support": [
+        "A16",
+        "A27",
+        "A31"
+      ],
+      "counter": [],
+      "status": "plausible_separate_asset_rails"
+    },
+    {
+      "id": "HEV14",
+      "hypothesis": "The XRPL tokenized-deposit PoC will become a production use case with measurable XRP demand.",
+      "support": [
+        "A29"
+      ],
+      "counter": [
+        "A35"
+      ],
+      "status": "speculative_until_production_metrics"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Evernorth Holdings Inc. Form 10-Q / prospectus filed October 30, 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "published_at": "2026-10-30",
+      "source_type": "primary_sec_filing",
+      "supporting_locations": [
+        "Lines 3025-3038: Ripple facilities, cash, XRP contributions and 473M holdings",
+        "Lines 3044-3050: $30M 4% PIK notes",
+        "Lines 3058-3068: Cantor ELOC and no proceeds",
+        "Lines 2673-2703: BitGo custody, cold storage and shared insurance",
+        "Lines 3136-3145: Coinbase principal-market selection and accounting purpose"
+      ]
+    },
+    {
+      "id": "S2",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Evernorth 10-Q notes — Ripple contribution accounting",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "source_type": "primary_sec_filing",
+      "supporting_locations": [
+        "Lines 7134-7135 and 7465-7480: 126,791,458 XRP contribution and zero historical carrying value"
+      ]
+    },
+    {
+      "id": "S3",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Coinbase Global Inc. Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_at": "2026-10-30",
+      "source_type": "primary_sec_filing",
+      "supporting_locations": [
+        "Q3 stablecoin revenue",
+        "Circle arrangement renewed on same terms",
+        "Average USDC balances held in Coinbase products at all-time high",
+        "Lines 1520-1522: Coinbase's top three product priorities, derivatives, equities, prediction markets, USDC balances, Circle renewal and DEX/lending growth",
+        "Lines 1545: 84% U.S. revenue and stablecoin revenue substantially all U.S.",
+        "Lines 1578-1580: Q3 stablecoin revenue $306.905M vs $324.534M, down 5%",
+        "Lines 1595 onward: Q1 2026 reclassification of corporate payment-stablecoin-balance revenue"
+      ]
+    },
+    {
+      "id": "S4",
+      "publisher": "Circle",
+      "title": "Circle reports second quarter 2026 results",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "published_at": "2026-08-11",
+      "source_type": "primary_company_results",
+      "supporting_locations": [
+        "SBI named founding Arc validator",
+        "USDC circulation and onchain transaction volume"
+      ]
+    },
+    {
+      "id": "S5",
+      "publisher": "SBI Holdings",
+      "title": "SBI and Circle Japan USDC joint venture announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0325_c_en.pdf",
+      "published_at": "2025-03-25",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S6",
+      "publisher": "SBI Holdings",
+      "title": "SBI Group/Ripple RLUSD Japan distribution MOU and relationship",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "published_at": "2025-08-22",
+      "source_type": "primary_company_announcement",
+      "supporting_locations": [
+        "SBI Group, SBI VC Trade, Ripple Labs and Standard Custody MOU for RLUSD distribution in Japan"
+      ]
+    },
+    {
+      "id": "S7",
+      "publisher": "XRPL Dashboard",
+      "title": "XRP Ledger and amendment status dashboard",
+      "url": "https://xrpldashboard.com/amendments",
+      "captured_at": "2026-11-03T05:05:00Z",
+      "source_type": "third_party_dashboard",
+      "supporting_locations": [
+        "XRP mark displayed as $1.2533 at 05:05 UTC"
+      ],
+      "limitations": [
+        "Third-party mark, not an executable exchange quote or direct node query."
+      ]
+    },
+    {
+      "id": "S8",
+      "publisher": "SBI Holdings / SBI VC Trade / Ripple",
+      "title": "RLUSD handling begins on SBI VC Trade",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at": "2026-06-24",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S9",
+      "publisher": "SBI Remit / SBI VC Trade / SBI Ripple Asia / Ripple",
+      "title": "Expansion of XRP-powered remittance service to the Philippines, Vietnam and Indonesia",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "published_at": "2023-09-06",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S10",
+      "publisher": "SBI Ripple Asia",
+      "title": "Conceptual proof of concept for tokenized deposits and deposit-based digital money using XRPL",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "published_at": "2026-02-26",
+      "source_type": "primary_company_poc_announcement"
+    },
+    {
+      "id": "S11",
+      "publisher": "SBI VC Trade / Aplus / Visa",
+      "title": "SBI VISA crypto rewards card",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "published_at": "2026-05-01",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S12",
+      "publisher": "SBI VC Trade",
+      "title": "Crypto account registrations exceed two million",
+      "url": "https://www.sbigroup.co.jp/news/2026/0707_16468.html",
+      "published_at": "2026-07-07",
+      "source_type": "primary_company_announcement"
+    },
+    {
+      "id": "S13",
+      "publisher": "SBI VC Trade",
+      "title": "XRP/JPY leverage trading campaign and 0.5-yen standard spread",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
+      "published_at": "2026-06-22",
+      "source_type": "primary_company_announcement"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Reconcile Evernorth's subsequent XRP balance against on-chain custody addresses and later SEC filings; do not infer market purchases from treasury growth without transaction evidence.",
+    "Track actual use of the $30M note proceeds and $9.7M Ripple facility draw separately from financing capacity.",
+    "Monitor whether Cantor ELOC shares are actually issued; do not count maximum registered shares as completed dilution.",
+    "Track changes to BitGo custody, insurance limits, additional custodians or yield strategies.",
+    "Compare Coinbase's principal-market status with independent exchange-level XRP volume and depth; it is an accounting designation, not a market-share metric.",
+    "Reconcile Coinbase/Circle stablecoin revenue-sharing economics with Circle Q3 results on November 4.",
+    "Keep SBI's Circle/Arc/USDC and Ripple/XRP/RLUSD edges separate; no coordinated capital-flow hypothesis is established."
+  ]
+}
