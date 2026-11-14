@@ -58,6 +58,18 @@ def _sign_readiness_report(report, *, key_id="test-independent-evaluator", attes
 
 
 
+def _declared_cadence_diagnostics():
+    return {
+        "cadence_seconds": 3600.0,
+        "cadence_source": "declared",
+        "max_gap_multiple": 1.5,
+        "contiguous_segment_count": 1,
+        "contiguous_segment_lengths": [200],
+        "largest_contiguous_segment": 200,
+        "valid_block_window_count": 196,
+    }
+
+
 def _paired_comparisons_fixture(sample_count=200):
     comparisons = {}
     for baseline in (
@@ -72,6 +84,8 @@ def _paired_comparisons_fixture(sample_count=200):
                 "confidence_level": 0.99375,
                 "brier_difference_ci": [-0.08, -0.02],
                 "log_loss_difference_ci": [-0.15, -0.04],
+                "sampling_diagnostics": _declared_cadence_diagnostics(),
+                "log_loss_sampling_diagnostics": _declared_cadence_diagnostics(),
             },
             "source_clustered_moving_block_bootstrap": {
                 "status": "ESTIMATED",
@@ -84,6 +98,18 @@ def _paired_comparisons_fixture(sample_count=200):
                 "equal_cluster_weighted_mean_log_loss_difference": -0.10,
                 "brier_difference_ci": [-0.08, -0.02],
                 "log_loss_difference_ci": [-0.15, -0.04],
+                "brier_sampling_diagnostics": {
+                    "status": "ESTIMATED",
+                    "source_cluster_count": 5,
+                    "source_group_ids": sorted(FEATURE_SOURCE_GROUPS),
+                    "per_cluster": {group_id: _declared_cadence_diagnostics() for group_id in FEATURE_SOURCE_GROUPS},
+                },
+                "log_loss_sampling_diagnostics": {
+                    "status": "ESTIMATED",
+                    "source_cluster_count": 5,
+                    "source_group_ids": sorted(FEATURE_SOURCE_GROUPS),
+                    "per_cluster": {group_id: _declared_cadence_diagnostics() for group_id in FEATURE_SOURCE_GROUPS},
+                },
             },
         }
     return comparisons
