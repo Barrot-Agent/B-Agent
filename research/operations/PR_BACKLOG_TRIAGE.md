@@ -1,3 +1,49 @@
+## Run115 — current integration and backlog snapshot (2026-11-14T03:41:31Z)
+
+- Main `fb272b40966834754ec686f9ed3ab94123f09306`; integration code head `64c80d23836dfba8458c91ce1b4a341b319aa937`; 2,350 ahead / 0 behind.
+- Trees: main 1,381 entries/1,277 blobs/87 workflows; integration 2,409 entries/2,295 blobs/88 workflows.
+- PR #1662: open/draft/mergeable; 1,168 files, 341,292 additions, 5,354 deletions; zero reviews/approvals/threads; 50 workflow and seven public web files.
+- Open PR inventory: 375 (361 drafts, 14 non-drafts); 367 target main, eight target six other bases.
+- Exact-head suite: 3,631 passed, eight subtests, zero failures, 62.42% coverage, 70.31s; core 742 passed/eight subtests, 76%; wheel/mission passed. Five manifest groups audited, zero known vulnerabilities. Fail-closed gate passed. [CI 43552659728](https://github.com/Barrot-Agent/B-Agent/actions/runs/43552659728), [audit 43552663853](https://github.com/Barrot-Agent/B-Agent/actions/runs/43552663853), [gate 43552659739](https://github.com/Barrot-Agent/B-Agent/actions/runs/43552659739).
+- Global-cadence bootstrap attempt on `b939daa7` failed two tests; per-source-group cadence mapping corrected it. No tests removed or weakened. Exact code head `64c80d2` passed.
+
+### Run115 changed-path/blob reconciliation
+
+| PR | Changed paths | Identical | Different | Source-only | Classification |
+|---|---:|---:|---:|---:|---|
+| #1661 | 1,072 | 1,033 | 39 | 0 | Supersession candidate; reconcile 39 |
+| #1660 | 972 | 921 | 51 | 0 | Supersession candidate; reconcile 51 |
+| #1643 | 670 | 661 | 9 | 0 | Supersession candidate; reconcile nine |
+| #1640 | 280 | 223 | 57 | 0 | Overlap candidate; reconcile 57 |
+| #1642 | 7 | 0 | 7 | 0 | Unique prediction work; preserve |
+| #1653 | 7 | 0 | 4 | 3 | Unique knowledge graph; preserve |
+| #1655 | 8 | 0 | 5 | 3 | Unique structural analysis; preserve |
+| #1659 | 6 | 0 | 3 | 3 | Unique local llama.cpp/Termux; preserve |
+| #1615 | 14 | 8 | 2 | 4 | Unique automation containment; preserve |
+| #1614 | 57 | 22 | 9 | 26 | Unique point-in-time validator; preserve |
+| #1320 | 5 | 0 | 5 | 0 | Paper-trading pause safety; preserve |
+| #1318 | 2 | 0 | 2 | 0 | Fail-closed schema safety; preserve |
+| #1317 | 6 | 3 | 3 | 0 | MMI/structural analysis; preserve |
+| #1269 | 9 | 3 | 6 | 0 | Topology/triangulation; preserve |
+
+All differing/source-only work remains open. No source PR closed.
+
+### Dependency/action candidates
+
+- #1650/#1649: legacy requirement updates.
+- #1648/#1646: development requirement updates.
+- #1647: six upload-artifact workflow blobs differ.
+- #1645: one download-artifact workflow blob identical; duplicate candidate only after successor merge.
+- #1644: eight checkout workflow paths, seven blobs differ.
+- #1255/#1254: older legacy dependency candidates.
+- Preserve all until exact dependency/workflow side-effect review and a verified main successor.
+
+### Security/merge boundary
+
+Main metadata protected=true; integration unprotected. Protection details HTTP 403; fallback ruleset 10863829 disabled. Connector permissions admin/maintain/push/pull/triage remain overprivileged. Pages auto-publication unresolved; main remote MCP remains enabled, integration disables it. **No merge:** #1662 is draft with zero formal approvals.
+
+---
+
 ## Run54 backlog reconciliation — 2026-11-12
 
 **Integration PR #1661:** blocked (open/draft; zero formal reviews, approvals or review threads; exact-head CI passed on pre-handoff head `67f2bf2b7f2401b1391c9fe17c46e6db3e2da456`, but new handoff commit must be tested separately; security and semantic-review blockers remain).
