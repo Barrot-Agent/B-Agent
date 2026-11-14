@@ -37,23 +37,31 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last commit: 459adec Add live concurrent MCP sync engine (mcp_sync) + agent instructions
-- Last sync: 2026-11-14 - repo-repair session, full audit in progress
-- Test suite: 764 passed, 74.9% coverage (Termux python3 -m pytest, ~5 min) - GREEN
+- Last commit: 59599cb SHRM 2.0 hierarchical reasoning refinement
+- Last sync: 2026-11-14 - full repo-repair session COMPLETE
+- Test suite: 784 passed, 75.33% coverage (Termux python3 -m pytest) - GREEN
 - Python: use /data/data/com.termux/files/usr/bin/python3 (has pytest); /usr/bin/python3 has NO pip
-- Works now: compileall clean; mcp_sync engine committed; import fixes applied
-  to 6 files (agi_reasoning, transformative_insights, sindy_video_pipeline,
-  vision_pipeline, barrot_integration, inference_provider) - NOT yet committed
-- Broken: barrot_agent/agi/quantum_entanglement.py:10 imports emit_pingpong -
-  module does not exist anywhere in repo (deleted, call site line 98 remains)
-- Broken deps (not in requirements.txt): databricks-sdk, huggingface_hub, flask,
-  kaggle, pandas, scikit-learn (kaggle_competitions_automation)
-- Blocked: gh CLI not installed; SSH push denied (no key) - push needs GH_TOKEN
-- README: 12 dead links; site/ search-engine/ coin-app/ character-capabilities/
-  dirs referenced by README do not exist in repo
-- a2a/worker.js: rate-limiter `clients` Map never evicts stale entries (memory
-  growth per isolate); otherwise hardened (constant-time auth, rate limit,
-  body caps) - fix queued
-- Workflows: mixed action versions (13 files still on checkout@v4/setup-python@v5/v6)
-- Next task: fix/remove emit_pingpong import -> run suite -> commit import fixes
-  -> add optional deps to requirements -> fix a2a Map leak -> README links
+- Works now (all fixed + committed this session):
+  * mcp_sync engine (barrot_agent/mcp_sync.py + CLI + 17 tests)
+  * 13 broken imports fixed (9 bare paths + emit_pingpong restored + AGIEngine alias)
+  * emit_pingpong.py recreated (stdlib, never-raises, JSONL to ping-pongings/)
+  * pyproject [integrations] extra + requirements-integrations.txt (databricks-sdk,
+    flask, huggingface_hub, kaggle, pandas, scikit-learn)
+  * a2a/worker.js rate-limiter Map leak fixed (sweep at 1024; verified 429/recovery)
+  * README: all 15 dead links repaired; missing-dir refs removed
+  * 13 workflows bumped to action majors v7 (checkout/setup-python/artifacts)
+  * SHRM 2.0: barrot_agent/reasoning/hrm.py - weighted sources, opt-in 2-level
+    H-hierarchy, slope convergence (opt-in), decision traces, v1 label parity
+    proven (0 mismatches on 3000 randomized cases), 20 new tests
+  * removed dead config: package-hardhat.json, .gitlab-ci.yml
+- SHRM 2.0 usage: from barrot_agent.reasoning import hrm2_resolve,
+  resolve_with_trace; scripts/emit_signal_with_hrm.py --engine hrm2 [--refined]
+- In flight: background pip install of integrations extras (pandas/sklearn build
+  slow on device) - verify 4 optional modules import when it completes
+- Blocked: gh CLI not installed; SSH push denied (no key) - to push, provide a
+  fine-grained GitHub PAT (repo content read/write) as GH_TOKEN env or secret;
+  do NOT paste tokens into chat files
+- Known flake: tests/test_transmute.py CLI test occasionally fails in full runs
+  (timing tie-band), passes in isolation - not a regression
+- Next task: verify optional-deps imports after pip finishes; push commits once
+  GH_TOKEN available; consider trimming .barrot-backup/ from git history
