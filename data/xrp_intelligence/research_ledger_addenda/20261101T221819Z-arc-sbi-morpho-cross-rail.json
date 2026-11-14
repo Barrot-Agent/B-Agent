@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-01T22:18:19Z",
+  "findings": [
+    {
+      "id": "F14",
+      "label": "SOURCED_CURRENT_CHAIN_METRICS",
+      "claim": "DefiLlama's Nov 1 Arc page reports $591.42M TVL, $1.097B stablecoin cap (99% USDC), $12.8M DEX volume/24h and $90.96M perps volume/24h.",
+      "sources": [
+        "SRC_DEFILLAMA_ARC"
+      ]
+    },
+    {
+      "id": "F15",
+      "label": "INDEPENDENT_ONCHAIN_ANALYSIS",
+      "claim": "Bitquery's first-month Arc study reports 94% active-wallet decline, 38% of DEX volume from one self-trading wallet, 22% from a 117-wallet bot cluster, and $189.8M USDC borrowed against cirBTC at 97% utilization.",
+      "sources": [
+        "SRC_BITQUERY_ARC"
+      ],
+      "caveat": "Window ends Oct14; bot/farm filters are methodological proxies."
+    },
+    {
+      "id": "F16",
+      "label": "CORRECTION",
+      "claim": "Circle's 98.8% USDC agent-driven transaction-volume figure is global Agent Stack/x402 activity, not Arc-chain-specific volume.",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "id": "F17",
+      "label": "CONFIRMED_CORPORATE_CAPITAL_LINKS",
+      "claim": "SBI Group reports approximately 9% Ripple equity; SBI Holdings and SBI Shinsei Bank invested $50M in Circle; SBI participated in Circle's ARC presale through a subsidiary, amount undisclosed.",
+      "sources": [
+        "SRC_SBI_RIPPLE_EQUITY",
+        "SRC_SBI_CIRCLE_EQUITY",
+        "SRC_SBI_ARC_PRESALE"
+      ],
+      "caveat": "Equity investments are not direct XRP/USDC token holdings."
+    },
+    {
+      "id": "F18",
+      "label": "CONFIRMED_MULTI_RAIL_OPERATIONS",
+      "claim": "SBI VC Trade distributes USDC in Japan and signed an MOU to issue/distribute RLUSD; SBI Remit has XRP remittance corridors; SBI Group is an Arc founding validator.",
+      "sources": [
+        "SRC_SBI_USDC",
+        "SRC_SBI_RLUSD_MOU",
+        "SRC_SBI_RIPPLE_ASIA",
+        "SRC_CIRCLE_ARC"
+      ],
+      "caveat": "RLUSD MOU is not proof of live distribution; current XRP corridor throughput unknown."
+    },
+    {
+      "id": "F19",
+      "label": "CROSS_CHAIN_CREDIT_STRUCTURE",
+      "claim": "Morpho hosts USDC borrowing against cirBTC on Arc and cbXRP on Base; Circle-issued USDC is the shared debt asset, while collateral and markets are distinct.",
+      "sources": [
+        "SRC_BITQUERY_ARC",
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ]
+    }
+  ],
+  "unresolved": [
+    "Arc stablecoin cap $1.097B on Nov1 versus Bitquery's $604M USDC mid-October observation requires same-methodology reconciliation.",
+    "SBI's specific ARC presale contribution, token allocation, lockup and delivery are undisclosed.",
+    "SBI RLUSD MOU status and live volumes are unknown.",
+    "AgentGDP's Arc x402 coverage is partial; it does not measure all Arc activity.",
+    "SBIC remains distinct from SBI Group; no direct XRP/Circle relationship established."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

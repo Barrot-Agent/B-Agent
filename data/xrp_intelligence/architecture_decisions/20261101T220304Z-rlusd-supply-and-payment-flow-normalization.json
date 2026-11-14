@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_prediction_engine_architecture_decision",
+  "decision_id": "ADR-XRP-20261101-RLUSD-PAYMENT-FLOW-NORMALIZATION",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "status": "ACCEPTED_FOR_IMPLEMENTATION",
+  "decisions": [
+    {
+      "id": "D1",
+      "topic": "RLUSD supply",
+      "decision": "Store gross XRPL issuer obligations, operational/hot-wallet balances, externally circulating supply, Ethereum totalSupply and other-chain supply separately, each with pinned ledger/block and explicit wallet exclusions.",
+      "reason": "$707.4M and $910.3M observations are not reconciled.",
+      "reject": [
+        "Treat either provider value as universal supply",
+        "Infer burn, bridge or sale from the difference"
+      ]
+    },
+    {
+      "id": "D2",
+      "topic": "XRPL payment activity",
+      "decision": "Keep raw payments and separate adjusted measures for dust, clusters, issuer mint/redeem, exchange loops, self-payments, round trips and unique counterparties.",
+      "reason": "Bitquery reports 99.6% of 30-day RLUSD payment count concentrated in a 110-wallet dust cluster."
+    },
+    {
+      "id": "D3",
+      "topic": "x402",
+      "decision": "Do not admit x402 transaction count, merchant count or active-agent count until SourceTag 804681468 is joined to raw payment hashes and t54 event IDs.",
+      "reason": "Three exact destination addresses overlap with Bitquery collectors."
+    },
+    {
+      "id": "D4",
+      "topic": "Stablecoin-to-XRP value linkage",
+      "decision": "Do not infer XRP demand from stablecoin supply/count alone; require net external XRP acquisition, bridge inventory, collateral encumbrance, market-maker inventory and fee-burn evidence.",
+      "reason": "Stablecoin transfers can settle without sustained net XRP purchases."
+    },
+    {
+      "id": "D5",
+      "topic": "ETF flows",
+      "decision": "Store issuer-level holdings, creations/redemptions, AUM, price effect, fund universe and timestamp separately; do not merge Maketo and XRP Insights until reconciled.",
+      "reason": "October 30 daily observations differ materially."
+    },
+    {
+      "id": "D6",
+      "topic": "Exchange balances",
+      "decision": "Treat attributed wallet totals as custody/omnibus inventory, not tradable float; preserve cold-storage and cbXRP overlap labels.",
+      "reason": "Exchange totals include cold storage and exchange-controlled reserves."
+    },
+    {
+      "id": "D7",
+      "topic": "Derivatives",
+      "decision": "Normalize by venue, contract, quote currency, margin mode, timestamp and provider coverage; never average incompatible series.",
+      "reason": "Seven-exchange OI and Binance USDT-perpetual OI are different universes."
+    },
+    {
+      "id": "D8",
+      "topic": "Forecast admission",
+      "decision": "No forecast until point-in-time features, source hashes, leakage checks, baseline, walk-forward evaluation, calibration and shadow outcome capture exist.",
+      "reason": "No verified out-of-sample XRP skill estimate is available."
+    }
+  ],
+  "required_feature_dimensions": [
+    "asset",
+    "chain",
+    "issuer",
+    "wallet_role",
+    "venue",
+    "contract",
+    "quote_currency",
+    "timestamp_utc",
+    "validated_ledger_or_block",
+    "source_id",
+    "source_revision_hash",
+    "methodology_version",
+    "gross_or_net",
+    "external_or_internal",
+    "confidence_class"
+  ],
+  "prediction_policy": "Every prediction records cutoff, target, horizon, assumptions, probability, confidence, alternatives, source hashes and later outcome. No guarantee claims."
+}

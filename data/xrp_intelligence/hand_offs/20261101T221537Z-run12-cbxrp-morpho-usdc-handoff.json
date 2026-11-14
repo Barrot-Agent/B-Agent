@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_xrp_collateral_handoff",
+  "captured_at_utc": "2026-11-01T22:15:37Z",
+  "pr": 1477,
+  "branch": "research/xrp-coinbase-circle-arc-rlusd-20261101T220304Z",
+  "previous_head_verified": "06c4c1cd97333ec88cf1fb71403206e4c8f19235",
+  "previous_head_ci": {
+    "run": 41356121635,
+    "result": "342 tests and 8 subtests passed"
+  },
+  "previous_head_gate": {
+    "run": 41356121649,
+    "result": "passed; merge disabled"
+  },
+  "new_work": [
+    "Added Coinbase cbXRP proof-of-reserves observation",
+    "Added Morpho cbXRP/USDC market snapshot and vault concentration",
+    "Added explicit Circle-USDC-to-XRP-collateral relationship",
+    "Added tests for collateral, LTV and capital distinctions"
+  ],
+  "new_head_verification": "PENDING_AFTER_APPEND_ONLY_COLLATERAL_ADDENDUM",
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "main_unchanged": true,
+    "merge_performed": false,
+    "force_push": false,
+    "secrets_accessed": false,
+    "manual_workflow_dispatch": false,
+    "real_money": false
+  },
+  "next_action": "Verify exact-head CI and fail-closed gate after the collateral addendum; then obtain pinned onchain transaction-level joins for x402 and RLUSD supply."
+}

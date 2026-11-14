@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "artifact_type": "circle_sbi_ripple_arc_relationship_graph_addendum",
+  "captured_at_utc": "2026-11-01T22:18:19Z",
+  "nodes": [
+    {
+      "id": "SBI_GROUP",
+      "name": "SBI Group / SBI Holdings",
+      "type": "financial_group"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_and_network_company"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "payments_and_digital_asset_company"
+    },
+    {
+      "id": "ARC",
+      "name": "Arc",
+      "type": "Circle_L1"
+    },
+    {
+      "id": "ARC_TOKEN",
+      "name": "ARC token",
+      "type": "network_token"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "RLUSD",
+      "name": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "digital_asset"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "name": "SBI VC Trade",
+      "type": "Japanese_exchange"
+    },
+    {
+      "id": "SBI_REMIT",
+      "name": "SBI Remit",
+      "type": "remittance_provider"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "name": "SBI Ripple Asia",
+      "type": "joint_venture"
+    },
+    {
+      "id": "CIRCLE_SBI_JAPAN",
+      "name": "Circle SBI Japan KK",
+      "type": "joint_venture"
+    },
+    {
+      "id": "SBIC",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "SME_investment_consultation"
+    },
+    {
+      "id": "MORPHO",
+      "name": "Morpho",
+      "type": "permissionless_lending_protocol"
+    },
+    {
+      "id": "CBXRP",
+      "name": "cbXRP",
+      "type": "wrapped_XRP_collateral"
+    },
+    {
+      "id": "CIRBTC",
+      "name": "cirBTC",
+      "type": "Circle_tokenized_Bitcoin"
+    }
+  ],
+  "edges": [
+    {
+      "from": "SBI_GROUP",
+      "to": "RIPPLE",
+      "type": "equity_ownership",
+      "status": "CONFIRMED_BY_SBI_OFFICIAL_PRESENTATION",
+      "value": "approximately 9% equity; not XRP tokens",
+      "sources": [
+        "SRC_SBI_RIPPLE_EQUITY"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "CIRCLE",
+      "type": "equity_investment",
+      "status": "CONFIRMED_BY_SBI_OFFICIAL_ANNOUNCEMENT",
+      "value": "$50M Circle shares; $25M SBI Holdings and $25M SBI Shinsei Bank",
+      "sources": [
+        "SRC_SBI_CIRCLE_EQUITY"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "ARC_TOKEN",
+      "type": "presale_participation_through_consolidated_subsidiary",
+      "status": "CONFIRMED_AMOUNT_UNDISCLOSED",
+      "value": "total presale expected $222M; SBI amount unknown",
+      "sources": [
+        "SRC_SBI_ARC_PRESALE"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "ARC",
+      "type": "founding_validator",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "CIRCLE_SBI_JAPAN",
+      "type": "joint_venture_relationship",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_SBI_ARC_PRESALE"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "USDC",
+      "type": "Japan_distribution",
+      "status": "REGISTERED_AND_BETA_ANNOUNCED",
+      "sources": [
+        "SRC_SBI_USDC"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "type": "Japan_issuance_distribution_MOU",
+      "status": "MOU_NOT_LIVE_PROOF",
+      "sources": [
+        "SRC_SBI_RLUSD_MOU"
+      ]
+    },
+    {
+      "from": "SBI_REMIT",
+      "to": "XRP",
+      "type": "XRP_remittance_bridge",
+      "status": "HISTORICAL_LAUNCH_CONFIRMED_CURRENT_VOLUME_UNKNOWN",
+      "sources": [
+        "SRC_SBI_RIPPLE_ASIA"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "SBI_RIPPLE_ASIA",
+      "type": "voting_rights_ownership",
+      "status": "CONFIRMED",
+      "value": "60%",
+      "sources": [
+        "SRC_SBI_RIPPLE_ASIA"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "SBIC",
+      "type": "entity_identity_distinction",
+      "status": "SEPARATE_ENTITIES_NO_CONTROL_EDGE_ESTABLISHED",
+      "sources": [
+        "SRC_SBIC"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "ARC_TOKEN",
+      "type": "genesis_mint_and_network_token",
+      "status": "GENESIS_MINT_CONFIRMED_PUBLIC_LAUNCH_NOT_COMMITTED",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "ARC",
+      "to": "USDC",
+      "type": "network_gas_asset",
+      "status": "CONFIRMED_DESIGN",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CIRBTC",
+      "type": "tokenized_Bitcoin_issuer",
+      "status": "CONFIRMED_BY_CIRCLE_ECOSYSTEM_AND_ONCHAIN_ANALYSIS",
+      "sources": [
+        "SRC_BITQUERY_ARC",
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "CIRBTC",
+      "to": "MORPHO",
+      "type": "collateral_for_USDC_borrow_on_Arc",
+      "status": "ONCHAIN_ANALYSIS",
+      "sources": [
+        "SRC_BITQUERY_ARC"
+      ]
+    },
+    {
+      "from": "CBXRP",
+      "to": "MORPHO",
+      "type": "collateral_for_USDC_borrow_on_Base",
+      "status": "ONCHAIN_MARKET_OBSERVATION",
+      "sources": [
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ]
+    },
+    {
+      "from": "USDC",
+      "to": "MORPHO",
+      "type": "debt_asset_on_Arc_and_Base_markets",
+      "status": "ONCHAIN_MARKET_OBSERVATION",
+      "sources": [
+        "SRC_BITQUERY_ARC",
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ]
+    }
+  ],
+  "interpretation": "SBI Group is invested in Ripple equity, Circle equity and Circle's ARC presale while operating XRP remittance rails, distributing USDC and participating in Arc. Morpho uses Circle-issued USDC as debt against both cirBTC on Arc and cbXRP on Base. This is multi-rail infrastructure, not an exclusive XRP commitment."
+}

@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_ripple_flare_sentora_firelight_coinbase_circle_sbi_relationship_graph_addendum",
+  "captured_at_utc": "2026-11-02T00:13:48Z",
+  "nodes": [
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "FXRP",
+      "name": "FXRP",
+      "type": "Flare_FAsset_representation_backed_by_XRP"
+    },
+    {
+      "id": "STXRP",
+      "name": "stXRP",
+      "type": "Firelight_receipt_and_cover_position"
+    },
+    {
+      "id": "RLUSD",
+      "name": "RLUSD",
+      "type": "Ripple_stablecoin"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "Circle_stablecoin"
+    },
+    {
+      "id": "USDT0",
+      "name": "USDt0",
+      "type": "Tether_omnichain_stablecoin"
+    },
+    {
+      "id": "FLARE",
+      "name": "Flare",
+      "type": "blockchain_network"
+    },
+    {
+      "id": "SENTORA",
+      "name": "Sentora",
+      "type": "institutional_DeFi_curator"
+    },
+    {
+      "id": "MORPHO",
+      "name": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "FIRELIGHT",
+      "name": "Firelight",
+      "type": "shared_cover_pool"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "exchange_custody_and_derivatives_group"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "SBI",
+      "name": "SBI Group",
+      "type": "Japanese_financial_group"
+    },
+    {
+      "id": "SBIC_TOKYO",
+      "name": "Tokyo SBIC",
+      "type": "Japanese_investment_consultation_company"
+    },
+    {
+      "id": "LAYERZERO",
+      "name": "LayerZero",
+      "type": "cross_chain_messaging_and_OFT"
+    },
+    {
+      "id": "ANTHONY_DEMARTINO",
+      "name": "Anthony DeMartino",
+      "type": "executive_personnel_link"
+    },
+    {
+      "id": "ASKCOIN_EXCHANGE",
+      "name": "Ask Coin exchange listing",
+      "type": "inactive_CoinMarketCap_exchange_listing"
+    },
+    {
+      "id": "PERMISSION_ASK",
+      "name": "Permission Coin ASK",
+      "type": "separate_token"
+    },
+    {
+      "id": "ASKSURF",
+      "name": "AskSurf",
+      "type": "x402_merchant"
+    },
+    {
+      "id": "ARC_CHAIN",
+      "name": "Circle Arc",
+      "type": "Circle_operated_public_L1_with_permissioned_validators"
+    },
+    {
+      "id": "ARC_TOKEN",
+      "name": "ARC token",
+      "type": "genesis_minted_not_publicly_launched"
+    },
+    {
+      "id": "BINANCE",
+      "name": "Binance",
+      "type": "exchange_and_wallet_ecosystem"
+    },
+    {
+      "id": "AAVE",
+      "name": "Aave",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "XRPL",
+      "name": "XRP Ledger",
+      "type": "native_XRP_ledger"
+    },
+    {
+      "id": "CIRCLE_SBI_JV",
+      "name": "Circle SBI Japan KK / SBI Circle Holdings",
+      "type": "50_50_USDC_distribution_joint_venture"
+    },
+    {
+      "id": "SBI_REMIT",
+      "name": "SBI Remit",
+      "type": "cross_border_remittance_operator"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "name": "SBI VC Trade",
+      "type": "Japanese_crypto_and_electronic_payment_instrument_provider"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "name": "SBI Ripple Asia",
+      "type": "Ripple_SBI_joint_venture"
+    }
+  ],
+  "edges": [
+    {
+      "from": "XRP",
+      "to": "FXRP",
+      "type": "underlying_asset_representation",
+      "status": "CONFIRMED_1_TO_1_BACKING_SNAPSHOT"
+    },
+    {
+      "from": "FXRP",
+      "to": "STXRP",
+      "type": "deposited_into_Firelight_cover_pool",
+      "status": "CONFIRMED_CONTRACT_BALANCE"
+    },
+    {
+      "from": "FXRP",
+      "to": "MORPHO",
+      "type": "collateral_in_RLUSD_market",
+      "status": "LIVE_PERMISSIONLESS_MARKET"
+    },
+    {
+      "from": "RLUSD",
+      "to": "MORPHO",
+      "type": "borrowed_debt_asset",
+      "status": "LIVE_PERMISSIONLESS_MARKET"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "type": "issuer_ownership",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SENTORA",
+      "to": "MORPHO",
+      "type": "curator_and_supplier_vault",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "SENTORA",
+      "type": "strategic_series_A_investor",
+      "status": "SENTORA_ANNOUNCEMENT"
+    },
+    {
+      "from": "FLARE",
+      "to": "SENTORA",
+      "type": "strategic_series_A_investor",
+      "status": "SENTORA_ANNOUNCEMENT"
+    },
+    {
+      "from": "SENTORA",
+      "to": "FIRELIGHT",
+      "type": "incubator_and_cover_vault_integration",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "STXRP",
+      "type": "issues_receipt_for_slashable_cover_capital",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDC",
+      "type": "shared_cover_of_Kraken_USDC_strategy",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDT0",
+      "type": "reported_first_loss_buffer_asset",
+      "status": "SECONDARY_ONCHAIN_OBSERVATION_ONLY"
+    },
+    {
+      "from": "USDT0",
+      "to": "FLARE",
+      "type": "OFT_stablecoin_liquidity_asset",
+      "status": "FLARE_FIRST_PARTY_ARTICLE"
+    },
+    {
+      "from": "LAYERZERO",
+      "to": "USDT0",
+      "type": "OFT_cross_chain_standard",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "ANTHONY_DEMARTINO",
+      "type": "former_employment_as_head_of_risk",
+      "status": "PERSONNEL_LINK"
+    },
+    {
+      "from": "ANTHONY_DEMARTINO",
+      "to": "SENTORA",
+      "type": "CEO",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "RIPPLE",
+      "type": "RLUSD_distribution_and_listing",
+      "status": "COMMERCIAL_ANNOUNCEMENT"
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRP",
+      "type": "Evernorth_principal_market_and_nonUS_cross_collateral_eligibility",
+      "status": "SEC_FILING_AND_PRODUCT_DOCUMENTATION"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "type": "issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "XRP",
+      "type": "native_USDC_issued_on_XRPL",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "type": "USDC_distribution_and_revenue_share",
+      "status": "SEC_FILINGS"
+    },
+    {
+      "from": "SBI",
+      "to": "CIRCLE",
+      "type": "strategic_investment_and_Circle_SBI_Japan",
+      "status": "COMPANY_REPORTED"
+    },
+    {
+      "from": "SBIC_TOKYO",
+      "to": "COINBASE",
+      "type": "no_corporate_relationship_established",
+      "status": "NO_EDGE"
+    },
+    {
+      "from": "ASKCOIN_EXCHANGE",
+      "to": "PERMISSION_ASK",
+      "type": "no_identity_or_ownership_relationship_established",
+      "status": "NO_EDGE"
+    },
+    {
+      "from": "ASKSURF",
+      "to": "ASKCOIN_EXCHANGE",
+      "type": "no_relationship_established",
+      "status": "NO_EDGE"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "ARC_CHAIN",
+      "type": "network_operator_and_builder",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "USDC",
+      "to": "ARC_CHAIN",
+      "type": "native_gas_and_settlement_asset",
+      "status": "LIVE_MAINNET"
+    },
+    {
+      "from": "SBI",
+      "to": "ARC_CHAIN",
+      "type": "founding_validator",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "COINBASE",
+      "to": "ARC_CHAIN",
+      "type": "exchange_ecosystem_participant",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "ARC_CHAIN",
+      "type": "exchange_wallet_ecosystem_participant",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "MORPHO",
+      "to": "ARC_CHAIN",
+      "type": "credit_protocol_integrated_at_launch",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "AAVE",
+      "to": "ARC_CHAIN",
+      "type": "credit_protocol_integrated_at_launch",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "ARC_CHAIN",
+      "to": "ARC_TOKEN",
+      "type": "genesis_mint_10B_no_public_launch_commitment",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "XRP",
+      "to": "XRPL",
+      "type": "native_asset",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "type": "native_issuance",
+      "status": "CIRCLE_SUPPORTED_NETWORK"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "type": "native_issuance",
+      "status": "RIPPLE_SUPPORTED_NETWORK"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "type": "parent_of_issuer_entity",
+      "status": "STANDARD_CUSTODY_AND_TRUST_IS_RIPPLE_OWNED_ISSUER"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "RIPPLE",
+      "type": "competing_stablecoin_issuers_with_overlapping_XRPL_and_Coinbase_distribution",
+      "status": "MARKET_OVERLAP_NO_FORMAL_PARTNERSHIP_ESTABLISHED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "SENTORA",
+      "type": "shared_cover_of_Sentora_USD_Protected_and_RWA_vaults",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT_ASSET_COMPOSITION_UNSPECIFIED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDC",
+      "type": "shared_cover_of_Kraken_USDC_strategy",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI",
+      "to": "CIRCLE",
+      "type": "$50M strategic equity investment by SBI Holdings and SBI Shinsei Bank",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "SBI",
+      "to": "CIRCLE_SBI_JV",
+      "type": "50_percent_joint_venture_ownership",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CIRCLE_SBI_JV",
+      "type": "50_percent_joint_venture_ownership",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "SBI",
+      "to": "ARC_TOKEN",
+      "type": "presale_participation_via_consolidated_subsidiary_amount_undisclosed",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "SBI",
+      "to": "RIPPLE",
+      "type": "reported_around_9_percent_equity_stake_not_XRP_treasury",
+      "status": "CEO_PUBLIC_X_STATEMENT_NOT_AUDITED_FILING"
+    },
+    {
+      "from": "SBI_REMIT",
+      "to": "XRP",
+      "type": "operational_cross_border_remittance_bridge_asset",
+      "status": "SBI_REMIT_OFFICIAL_2023_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_REMIT",
+      "to": "SBI_VC_TRADE",
+      "type": "documented_XRP_source_venue_in_remittance_flow",
+      "status": "SBI_REMIT_OFFICIAL_2023_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "type": "Japanese_Type_4_electronic_payment_instrument_listing",
+      "status": "OFFICIAL_SBI_VC_TRADE_2026_06_24_NETWORK_NOT_SPECIFIED"
+    },
+    {
+      "from": "SBI_RIPPLE_ASIA",
+      "to": "XRPL",
+      "type": "tokenized_deposit_proof_of_concept_uses_XRPL",
+      "status": "OFFICIAL_SBI_RIPPLE_ASIA_2026_02_26"
+    }
+  ],
+  "unresolved_edges": [
+    {
+      "from": "STXRP",
+      "to": "XRP",
+      "type": "exact_unstaking_reward_cutoff_and_claim_exposure",
+      "status": "UNRESOLVED"
+    },
+    {
+      "from": "MORPHO",
+      "to": "FXRP",
+      "type": "full_market_collateral_vs_Ethereum_remote_FXRP_reconciliation",
+      "status": "PARTIAL"
+    },
+    {
+      "from": "ASKCOIN_EXCHANGE",
+      "to": "XRP",
+      "type": "trading_pair_or_corporate_link",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDT0",
+      "type": "current_first_loss_buffer_balance_and_asset_composition",
+      "status": "OFFICIAL_BALANCE_UNKNOWN; SECONDARY_USDT0_OBSERVATION"
+    },
+    {
+      "from": "ARC_CHAIN",
+      "to": "XRP",
+      "type": "native_XRP_integration_or_XRP_settlement",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "RLUSD",
+      "type": "whether_Sentora_USD_Protected_vault_uses_RLUSD",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "MORPHO",
+      "type": "corporate_or_financing_relationship",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "type": "specific_supported_blockchain_for_Japan_listing",
+      "status": "NOT_SPECIFIED_IN_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI",
+      "to": "RIPPLE",
+      "type": "exact_current_equity_percentage_and_share_class",
+      "status": "CEO_PUBLIC_STATEMENT_ONLY; NO_PUBLIC_OWNERSHIP_FILING_VERIFIED"
+    },
+    {
+      "from": "SBI",
+      "to": "ARC_TOKEN",
+      "type": "presale_amount_allocation_and_lockup",
+      "status": "NOT_DISCLOSED"
+    }
+  ]
+}

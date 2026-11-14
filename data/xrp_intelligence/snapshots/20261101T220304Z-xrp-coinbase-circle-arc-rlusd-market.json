@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "20261101T220304Z-xrp-coinbase-circle-arc-rlusd-market",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "data_cutoff_utc": "2026-11-01T21:54:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": "RESEARCH_SNAPSHOT_NOT_A_FORECAST",
+  "market": {
+    "spot": {
+      "xrp_usd": 1.2521,
+      "provider": "TradRadar",
+      "provider_updated_at_utc": "2026-11-01T21:45:00Z",
+      "change_24h_pct": -0.05,
+      "admission": "OBSERVATION_ONLY"
+    },
+    "derivatives": {
+      "tradradar": {
+        "scope": "seven-exchange aggregate",
+        "venues": [
+          "Binance",
+          "Bybit",
+          "MEXC",
+          "Gate",
+          "Bitget",
+          "Hyperliquid",
+          "OKX"
+        ],
+        "open_interest_usd": 1890000000,
+        "change_24h_pct": 1.43,
+        "funding_pct_per_8h": 0.0087,
+        "liquidations_24h_usd_lower_bound": 902530,
+        "long_liquidations_usd": 797170,
+        "short_liquidations_usd": 105360,
+        "long_short_account_ratio": 3.52,
+        "long_accounts_pct": 77.9,
+        "updated_at_utc": "2026-11-01T21:45:00Z",
+        "source_id": "SRC_TRADRADAR"
+      },
+      "seandra_binance_usdt_perpetual": {
+        "scope": "Binance USDT perpetual only",
+        "open_interest_usd": 341600000,
+        "change_24h_pct": 2.6,
+        "funding_pct_per_period": 0.01,
+        "accounts_long_pct": 71,
+        "top_traders_long_by_size_pct": 72,
+        "liquidations_24h_usd_lower_bound": 443000,
+        "open_interest_7d_coin_change_pct": -11,
+        "price_7d_change_pct": -3.7,
+        "updated_at_utc": "2026-11-01T21:30:00Z",
+        "source_id": "SRC_SEANDRA"
+      },
+      "comparability": "DO_NOT_AVERAGE_DIFFERENT_VENUE_UNIVERSES_OR_CONTRACT_DEFINITIONS",
+      "interpretation": "Positive funding and long-skewed account ratios indicate crowded-long risk, not a directional forecast."
+    },
+    "exchange_balances": {
+      "total_xrp": 22450000000,
+      "tracked_wallets": 701,
+      "exchanges": 24,
+      "top_exchanges_xrp": {
+        "Upbit": 6430000000,
+        "Coinbase": 5850000000,
+        "Binance": 2780000000
+      },
+      "regional_xrp": {
+        "South_Korea": 8580000000,
+        "United_States": 8510000000,
+        "Japan": 1380000000
+      },
+      "sbi_vc_trade_xrp": 60000000,
+      "sbi_vc_trade_daily_change_xrp": 129000,
+      "source_data_time_utc": "2026-11-01T08:00:00Z",
+      "limitations": [
+        "Attributed wallets only; floor not ceiling",
+        "Omnibus and cold storage included",
+        "Coinbase aggregate includes some exchange-controlled reserves such as cbXRP backing",
+        "Not tradable float or proof of purchases"
+      ],
+      "source_id": "SRC_XRP_INSIGHTS"
+    },
+    "etf_flows": {
+      "funds": "six US spot XRP ETFs plus BITW",
+      "xrp_locked": 1196600000,
+      "total_aum_usd": 1503360000,
+      "week_44_net_flow_xrp": 3390000,
+      "week_44_net_flow_usd": 4230000,
+      "october_30_daily_flow_xrp": -49932,
+      "october_30_daily_flow_usd_approx": -62400,
+      "gxrp_flow_treatment": "EXCLUDED_FROM_FLOW_TOTAL_WHILE_SCRAPE_GAP_IS_CORRECTED; HOLDINGS_STILL_INCLUDED",
+      "alternate_provider_october_30_flow_usd": -496500,
+      "alternate_provider": "Maketo",
+      "reconciliation_status": "UNRESOLVED_COVERAGE_OR_METHODOLOGY_DIFFERENCE",
+      "admission": "KEEP_PROVIDER_SERIES_SEPARATE"
+    },
+    "xrpl_chain": {
+      "defillama_tvl_usd": 318560000,
+      "stablecoin_market_cap_usd": 799080000,
+      "stablecoin_market_cap_change_7d_pct": -24.56,
+      "rlusd_dominance_pct": 88.53,
+      "dex_volume_24h_usd": 1300000,
+      "dex_volume_7d_usd": 38420000,
+      "dex_volume_change_7d_pct": -5.39,
+      "active_addresses_24h": 53409,
+      "new_addresses_24h": 5817,
+      "transactions_24h": 3500000,
+      "source_id": "SRC_DEFILLAMA",
+      "admission": "OBSERVATION_ONLY_PENDING_METHOD_AND_ENTITY_QUALITY_CHECKS"
+    }
+  },
+  "stablecoins": {
+    "rlusd_chain_split": {
+      "xrp_insights": {
+        "xrpl_usd": 707400000,
+        "ethereum_usd": 1710000000,
+        "combined_xrpl_ethereum_usd": 2420000000,
+        "xrpl_share_pct": 29,
+        "ethereum_share_pct": 71,
+        "data_date": "2026-11-01",
+        "methodology_claim": "XRPL issuer gateway_balances and Ethereum totalSupply; dashboard says cross-checked against rl-tracker.com to less than $1M",
+        "source_id": "SRC_XRP_INSIGHTS"
+      },
+      "xrpl_utilities": {
+        "xrpl_outstanding_usd": 910300000,
+        "observed_at_utc": "2026-11-01T13:52:53Z",
+        "methodology": "Dynamic page describes live outstanding supply; hot-wallet exclusion and exact ledger index not exposed in captured static content",
+        "source_id": "SRC_XR_LINEAGE"
+      },
+      "arithmetic_difference_usd": 202900000,
+      "relative_difference_pct_of_xrpl_utilities_observation": 22.29,
+      "reconciliation": {
+        "status": "UNRESOLVED_DEFINITION_OR_TIME_CUTOFF",
+        "plausible_explanations": [
+          "gross issuer obligations versus circulating supply after operational/hot-wallet exclusions",
+          "different validated-ledger cutoffs",
+          "provider adapter or cache defect"
+        ],
+        "not_established": [
+          "200M burn",
+          "200M bridge to Ethereum",
+          "200M market sale",
+          "issuer intent"
+        ],
+        "required_evidence": [
+          "raw gateway_balances response at a pinned validated ledger",
+          "explicit hotwallet list and exclusion policy",
+          "issuer account and operational wallet balances",
+          "matching Ethereum totalSupply block height"
+        ]
+      },
+      "feature_admission": "BLOCKED_UNTIL_RECONCILED"
+    },
+    "arc_usdc": {
+      "gas_asset": "USDC",
+      "validator_model": "permissioned validator cohort",
+      "founding_validator_sbi_group": true,
+      "coinbase_role": "listed among exchange participants, not a founding validator",
+      "source_id": "SRC_CIRCLE_ARC",
+      "live_volume_reconciliation": "NOT_AVAILABLE_IN_THIS_RUN"
+    },
+    "circle_agent_stack": {
+      "agent_driven_transaction_volume_usdc_pct": 98.8,
+      "scope": "GLOBAL_AGENT_STACK_X402_NOT_ARC_SPECIFIC",
+      "description": "Circle says USDC accounts for 98.8% of agent-driven transaction volume across its Agent Stack/x402 activity. This is not a measure of Arc-chain-only transactions.",
+      "evidence": "COMPANY_REPORTED",
+      "source_id": "SRC_CIRCLE_ARC"
+    }
+  },
+  "agentic_payments": {
+    "xrpl_x402_dashboard": {
+      "transactions_all_time": 14803915,
+      "active_agents_reported": 189,
+      "merchants_reported": 183,
+      "paid_services_reported": 5790,
+      "latest_day_settlements_reported": 22012,
+      "settled_value_all_time": {
+        "xrp": 7021,
+        "rlusd": 38031
+      },
+      "operator": "t54 Labs",
+      "facilitator_source_tag": 804681468,
+      "source_id": "SRC_XRP_INSIGHTS",
+      "admission": "COUNTS_NOT_ADMITTED_AS_ORGANIC_AGENT_DEMAND"
+    },
+    "bitquery_rlusd_investigation": {
+      "window_start": "2026-09-19",
+      "window_end": "2026-10-18",
+      "rlusd_payments": 7821066,
+      "payments_to_three_collectors": 7789341,
+      "share_to_three_collectors_pct": 99.6,
+      "cluster_wallets": 110,
+      "mean_cluster_payment_rlusd": 0.00099,
+      "cluster_xrp_fees": 495,
+      "cluster_total_transactions": 8602917,
+      "payments_at_least_1_rlusd": 14600,
+      "value_of_payments_at_least_1_rlusd": 7330000000,
+      "top_ten_sender_share_of_value_pct": 82,
+      "issuer_mint_rlusd": 728000000,
+      "issuer_redemption_rlusd": 744000000,
+      "round_trip_pair_value_rlusd": 424000000,
+      "round_trip_gross_volume_contribution_rlusd": 848000000,
+      "source_id": "SRC_BITQUERY"
+    },
+    "address_overlap": {
+      "status": "CONFIRMED_DESTINATION_ADDRESS_OVERLAP",
+      "addresses": [
+        {
+          "address": "rBi1QrVjwaNofisZAQnovoXdHkS73FG1tJ",
+          "x402_label": "Heurist Inference Router",
+          "x402_reported_transactions": 10416103,
+          "bitquery_role": "collector_1",
+          "bitquery_cluster_payments": 7050565
+        },
+        {
+          "address": "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+          "x402_label": "AskSurf",
+          "x402_reported_transactions": 1126310,
+          "bitquery_role": "collector_2",
+          "bitquery_cluster_payments": 470120
+        },
+        {
+          "address": "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+          "x402_label": "Heurist Mesh",
+          "x402_reported_transactions": 584628,
+          "bitquery_role": "collector_3",
+          "bitquery_cluster_payments": 16083
+        }
+      ],
+      "transaction_identity_status": "UNVERIFIED",
+      "competing_explanations": [
+        "Bitquery dust cluster may be included in x402 facilitator merchant counts",
+        "Same addresses may separately receive legitimate x402 payments; dust cluster may not carry SourceTag 804681468"
+      ],
+      "required_join": [
+        "transaction hash",
+        "ledger index",
+        "SourceTag",
+        "DestinationTag",
+        "Memo",
+        "issuer",
+        "delivered amount",
+        "sender cluster",
+        "facilitator event ID"
+      ],
+      "model_policy": "Do not use raw x402 count, merchant count or active-agent count as organic demand until raw source-tag and economic-value reconciliation."
+    },
+    "interpretation": "Payment count and gross volume can be dominated by dust, issuer operations, concentrated wallets and round trips. This does not establish Binance operated the cluster."
+  },
+  "institutional_relationships": {
+    "coinbase": {
+      "ripple_rlusd_partnership": {
+        "announced": "2026-10-28",
+        "live_products": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase Retail"
+        ],
+        "conversion": "1:1 from USD and other supported USD-denominated stablecoins into RLUSD",
+        "global_exchange_collateral": "FUTURE_ANNOUNCED_NOT_LIVE",
+        "source_id": "SRC_RIPPLE_COINBASE"
+      },
+      "circle_usdc_relationship": {
+        "q3_2026_stablecoin_revenue_usd": 306905000,
+        "nine_month_2026_stablecoin_revenue_usd": 904487000,
+        "q3_yoy_effect_higher_average_usdc_balances_usd": 84600000,
+        "q3_yoy_effect_lower_interest_rates_usd": -52800000,
+        "renewed_circle_arrangement": "SAME_TERMS_REPORTED_IN_Q3_10Q",
+        "source_id": "SRC_COINBASE_10Q"
+      },
+      "strategic_position": "Multi-issuer distribution, exchange, prime brokerage, custody and collateral intermediary; not evidence of exclusive alignment."
+    },
+    "circle_coinbase_economics": {
+      "circle_distribution_costs_to_coinbase_q2_2026_usd": 324600000,
+      "circle_distribution_costs_to_coinbase_h1_2026_usd": 655300000,
+      "source_id": "SRC_CIRCLE_10Q",
+      "q3_circle_filing_status": "NOT_YET_AVAILABLE_AT_CUTOFF"
+    },
+    "circle_sbi": {
+      "sbi_group_arc_role": "FOUNDING_VALIDATOR_COHORT",
+      "sbi_vc_trade_usdc_distribution": "Circle says first and only Japanese company distributing USDC since March 2025",
+      "jpy_stablecoin": "JPYSC issued by SBI Shinsei Trust",
+      "source_id": "SRC_CIRCLE_ARC"
+    },
+    "sbi_ripple": {
+      "sbi_remit_xrp_corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "route": "SBI Remit customer flow; SBI VC Trade XRP leg; Tranglo local-currency payout",
+      "source_id": "SRC_SBI_REMIT",
+      "current_throughput": "UNKNOWN"
+    },
+    "sbic": {
+      "resolved_identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "distinction": "Separate entity from SBI Holdings/SBI Group",
+      "direct_xrp_or_circle_relationship": "NOT_ESTABLISHED",
+      "source_id": "SRC_SBIC"
+    },
+    "prior_evidence": {
+      "evernorth_coinbase_role": "Coinbase principal XRP market for Evernorth financial-reporting purposes; separate execution relationship; BitGo identified as primary custodian",
+      "evidence_location": "Prior SEC prospectus review recorded in PR #1464",
+      "status": "PREVIOUSLY_VERIFIED; RECHECK_IF_USED_AS_CURRENT_FEATURE"
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Institutional stablecoin growth increases XRP utility when value settles on XRPL or uses XRP as bridge/collateral.",
+      "support": [
+        "RLUSD $707.4M reported on XRPL",
+        "SBI Remit XRP route",
+        "t54 facilitator reports XRP/RLUSD settlement"
+      ],
+      "disconfirming": [
+        "RLUSD 71% on Ethereum",
+        "XRPL stablecoin cap down 24.56% in provider data",
+        "x402 counts overlap with dust cluster",
+        "stablecoin settlement can occur without sustained net XRP purchases"
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSALLY_ESTABLISHED"
+    },
+    {
+      "id": "H2",
+      "claim": "Circle Arc and USDC capture institutional and agentic activity that could otherwise settle on XRPL.",
+      "support": [
+        "Arc uses USDC gas",
+        "SBI Group is founding validator",
+        "Coinbase is an Arc exchange participant",
+        "Circle reports 98.8% agent-driven volume is USDC"
+      ],
+      "disconfirming": [
+        "Arc live volumes not independently verified",
+        "USDC/RLUSD remain deployed on XRPL",
+        "SBI Group also participates in Ripple-linked rails"
+      ],
+      "status": "COMPETITIVE_PRESSURE_HYPOTHESIS"
+    },
+    {
+      "id": "H3",
+      "claim": "Coinbase is a multi-issuer intermediary rather than an exclusive Circle or Ripple ally.",
+      "support": [
+        "Circle arrangement renewed",
+        "Coinbase announced RLUSD partnership",
+        "Coinbase participates in Arc",
+        "Coinbase is principal XRP market for Evernorth reporting"
+      ],
+      "disconfirming": [
+        "USDC economics remain materially important",
+        "RLUSD Global Exchange collateral is not yet live"
+      ],
+      "status": "BEST_SUPPORTED_STRATEGIC_INTERPRETATION"
+    },
+    {
+      "id": "H4",
+      "claim": "Reported XRPL x402 transaction counts materially overstate organic agent adoption due to a dust cluster.",
+      "support": [
+        "Three exact destination-address matches",
+        "Bitquery reports 7.789M dust payments to those collectors"
+      ],
+      "disconfirming": [
+        "Raw SourceTag join not done",
+        "Same addresses may receive legitimate x402 payments",
+        "Bitquery does not identify operator"
+      ],
+      "status": "HIGH_PRIORITY_TESTABLE_HYPOTHESIS"
+    },
+    {
+      "id": "H5",
+      "claim": "RLUSD supply on XRPL is contracting or moving to Ethereum.",
+      "support": [
+        "XRP Insights reports $707.4M XRPL and $1.71B Ethereum",
+        "DefiLlama reports XRPL stablecoin cap down 24.56% in seven days"
+      ],
+      "disconfirming": [
+        "XR-Lineage earlier observation $910.3M",
+        "Hot-wallet/circulating definitions may differ",
+        "No raw burn/bridge trace"
+      ],
+      "status": "UNRESOLVED_DO_NOT_ASSERT_MIGRATION"
+    }
+  ],
+  "data_quality_flags": [
+    {
+      "id": "DQ1",
+      "severity": "HIGH",
+      "issue": "RLUSD XRPL supply observations differ by $202.9M.",
+      "action": "Pin validated ledger and hot-wallet exclusions; reconcile gross obligations versus external circulation.",
+      "feature_admission": "BLOCKED"
+    },
+    {
+      "id": "DQ2",
+      "severity": "HIGH",
+      "issue": "x402 top merchant addresses overlap Bitquery dust collectors.",
+      "action": "Join SourceTag 804681468 to raw payment hashes and t54 event IDs.",
+      "feature_admission": "BLOCKED"
+    },
+    {
+      "id": "DQ3",
+      "severity": "HIGH",
+      "issue": "XRP Insights shows 30.40B top-line escrow and 31.10B in a separate undated section.",
+      "action": "Use pinned ledger Escrow objects; reject stale static block until reconciled.",
+      "feature_admission": "BLOCKED"
+    },
+    {
+      "id": "DQ4",
+      "severity": "MEDIUM",
+      "issue": "Coinbase exchange wallet total and cbXRP DeFi category overlap.",
+      "action": "Preserve category lineage; do not sum displayed categories naively.",
+      "feature_admission": "BLOCKED_FOR_SUPPLY_AGGREGATE"
+    },
+    {
+      "id": "DQ5",
+      "severity": "MEDIUM",
+      "issue": "XRP Insights and Maketo October 30 ETF daily flows differ materially.",
+      "action": "Preserve separate fund universes and issuer-level data.",
+      "feature_admission": "BLOCKED_FOR_COMBINED_FLOW"
+    },
+    {
+      "id": "DQ6",
+      "severity": "MEDIUM",
+      "issue": "TradRadar seven-exchange OI and Seandra Binance USDT OI are different universes.",
+      "action": "Normalize venue, contract, quote currency and timestamp.",
+      "feature_admission": "NO_CROSS_PROVIDER_AVERAGE"
+    },
+    {
+      "id": "DQ7",
+      "severity": "MEDIUM",
+      "issue": "Prior PR #1464 handoff filename embeds 2026-11-01T22:12:00Z while its containing Git commit author/committer timestamp is 21:54:18Z; this is a content-versus-commit timestamp mismatch. GitHub server time at PR #1477 creation was 22:13:33Z, so the 22:12 label is not future relative to server time.",
+      "action": "Preserve the original artifact. Treat embedded capture time as unverified until generation clock and commit chronology are reconciled; use per-source as-of times and Git commit timestamps separately.",
+      "feature_admission": "BLOCKED_FOR_TIME_ORDERED_REPLAY"
+    },
+    {
+      "id": "DQ8",
+      "severity": "HIGH",
+      "issue": "Main sentiment_shift timestamp advances despite zero observations and null scores.",
+      "action": "Require source-data cutoff and freshness status; do not use generated_at as freshness.",
+      "feature_admission": "BLOCKED"
+    },
+    {
+      "id": "DQ9",
+      "severity": "HIGH",
+      "issue": "Circle's 98.8% USDC agent-driven transaction-volume metric refers to global Agent Stack/x402 activity, not Arc-specific on-chain activity.",
+      "action": "Keep global Agent Stack share separate from Arc chain metrics; use independent Arc transaction/volume snapshots for Arc adoption.",
+      "feature_admission": "BLOCKED_FOR_ARC_SPECIFIC_AGENT_ACTIVITY"
+    }
+  ],
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized reconciled point-in-time feature set or validated out-of-sample XRP skill estimate.",
+    "target": null,
+    "horizon": null,
+    "probability": null,
+    "confidence": null,
+    "data_cutoff_utc": "2026-11-01T21:54:00Z",
+    "paper_trading": "NOT_STARTED",
+    "real_money": "PROHIBITED_PENDING_SHADOW_EVALUATION_AND_EXPLICIT_APPROVAL"
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT conversation",
+      "GitHub repository API"
+    ],
+    "not_verified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "external_handoffs_claimed": 0
+  }
+}

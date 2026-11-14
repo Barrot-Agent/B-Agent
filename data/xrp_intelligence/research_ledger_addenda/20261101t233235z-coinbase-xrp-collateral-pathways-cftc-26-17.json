@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "artifact_type": "coinbase_xrp_collateral_pathways_and_cftc_26_17_reconciliation",
+  "captured_at_utc": "2026-11-01T23:32:35.058Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "classification_policy": [
+    "CONFIRMED_FACT",
+    "COMPANY_PRODUCT_SPECIFICATION",
+    "REGULATORY_STAFF_POSITION",
+    "INFERENCE",
+    "UNKNOWN",
+    "DISCONFIRMING_EVIDENCE"
+  ],
+  "executive_finding": "Coinbase has a live, publicly documented non-US XRP cross-collateral product with a 15% standard-margin haircut and a separate conditional U.S. 30.7 customer-assets pathway under CFTC Staff Letter 26-17/26-05. Neither establishes current U.S. Prime XRP collateral usage or disclosed XRP collateral balances.",
+  "confirmed_facts": [
+    {
+      "id": "CB_NONUS_XRP_COLLATERAL",
+      "classification": "COMPANY_PRODUCT_SPECIFICATION",
+      "finding": "Coinbase Advanced Global Derivatives is described as available only to eligible customers in supported regions outside the United States. XRP is listed as a cross-collateral currency. The X:SM haircut is 15%; the X:PM cell is a dash and is preserved as UNSPECIFIED, not interpreted as zero or as ineligible.",
+      "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral",
+      "effective_date": "2026-10-01 for most customers",
+      "limits": [
+        "No XRP collateral balances, customer counts, or rebalancing volumes are disclosed."
+      ]
+    },
+    {
+      "id": "CB_REBALANCE_MECHANISM",
+      "classification": "COMPANY_PRODUCT_SPECIFICATION",
+      "finding": "When one settlement-currency equity becomes negative while the portfolio remains solvent, the platform may use a positive-equity currency to purchase the negative-equity currency. Rebalancing is separate from liquidation and does not itself liquidate derivative positions. A negative equity balance may incur a default 0.05% daily collateral fee.",
+      "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral",
+      "limits": [
+        "If XRP is the positive-equity currency and USDC is negative, a rebalance could require selling XRP to acquire USDC; this is a conditional mechanism, not an observed XRP sale."
+      ]
+    },
+    {
+      "id": "CB_US_PRIME_SCOPE",
+      "classification": "COMPANY_PRODUCT_SPECIFICATION",
+      "finding": "Coinbase Prime Global Derivatives' current public eligible-collateral list is USDC, BTC and ETH. It says Global Derivatives is available to eligible U.S. institutional clients, collateral is held in a CFM secured Rule 30.7 account and delegated to Deribit, and cross-collateral with spot or U.S. Derivatives is not enabled. XRP is not on the public U.S. Prime collateral list.",
+      "source": "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio",
+      "corroborating_source": "https://help.coinbase.com/en/prime/derivatives/what-is-global-derivatives",
+      "limits": [
+        "Account-specific exceptions have not been established."
+      ]
+    },
+    {
+      "id": "CB_US_DERIVATIVES_SCOPE",
+      "classification": "COMPANY_PRODUCT_SPECIFICATION",
+      "finding": "Coinbase U.S. Derivatives uses USD cash; USDC is indirect collateral through optional auto-conversion. XRP is not listed.",
+      "source": "https://help.coinbase.com/en/prime/derivatives/funding-and-eligible-collateral-for-us-derivatives"
+    },
+    {
+      "id": "CB_XRP_USDC_OPTIONS",
+      "classification": "COMPANY_PRODUCT_SPECIFICATION",
+      "finding": "Coinbase's non-U.S. Global Derivatives linear-options specification lists XRP_USDC, 1,000 XRP per contract, USDC quote/margin/settlement and 24/7 trading. This is derivatives exposure and hedging access, not proof of XRP collateral acceptance in the U.S. Prime product.",
+      "source": "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-linear-usdc-options"
+    },
+    {
+      "id": "CFTC_26_17",
+      "classification": "REGULATORY_STAFF_POSITION",
+      "finding": "CFTC Market Participants Division Letter 26-17 (May 29, 2026) grants conditional staff no-action relief for specified transfers of 30.7 customer-owned digital commodities/payment stablecoins from Coinbase Financial Markets through Coinbase Bermuda Limited to affiliated Deribit, under a right of re-use solely to margin/secure specified foreign futures and foreign option obligations. It is a staff position, not a Commission rule or blanket approval.",
+      "source": "https://www.cftc.gov/csl/26-17/download",
+      "limits": [
+        "Requires compliance with Letter 26-05 conditions and local-law/exchange-rule authorization of re-use.",
+        "No actual XRP collateral use is established."
+      ]
+    },
+    {
+      "id": "CFTC_26_05_FIRST_THREE_MONTHS",
+      "classification": "REGULATORY_STAFF_POSITION",
+      "finding": "Under Letter 26-05, each FCM must file its own notice of intent and commencement date. For the first three months of that FCM's reliance, customer collateral is restricted to payment stablecoins, BTC and ETH. After that period, other digital assets may qualify under the specified DCO/foreign-clearing-organization acceptance or underlying-commodity-of-a-futures-contract-listed-on-a-CFTC-registered-DCM tests, with applicable valuation, haircut and risk-policy conditions.",
+      "source": "https://www.cftc.gov/csl/26-05/download"
+    },
+    {
+      "id": "XRP_CFTC_DCM_FUTURES",
+      "classification": "CONFIRMED_FACT",
+      "finding": "Coinbase Derivatives, LLC is a CFTC-designated DCM. It self-certified XRP futures for listing on or after April 21, 2025. XRP is therefore the underlying commodity of a futures contract listed on a CFTC-registered DCM, which is a possible 30.7-account eligibility limb under Letter 26-05 after the FCM-specific initial three-month restriction, subject to all other conditions.",
+      "sources": [
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizations/43304",
+        "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf"
+      ],
+      "limits": [
+        "This does not establish that CFM filed a notice of reliance, that XRP is currently accepted in its U.S. Prime product, or that any customer posted XRP."
+      ]
+    },
+    {
+      "id": "CFTC_26_17_CUSTODY_REPRESENTATION",
+      "classification": "REGULATORY_STAFF_POSITION",
+      "finding": "Letter 26-17 records CFM's factual-background representation that Deribit would maintain assets equal to 100% of net liquidating equity for 30.7 customers in one or more accounts at Coinbase Custody Trust Company. This is not an independent custody audit and is not one of the numbered no-action conditions. The 120% cap is Regulation 30.7(c), not a separate letter-specific condition.",
+      "source": "https://www.cftc.gov/csl/26-17/download"
+    }
+  ],
+  "inferences": [
+    {
+      "id": "POTENTIAL_STRESS_SELL_FLOW",
+      "classification": "INFERENCE",
+      "hypothesis": "If non-U.S. customers post XRP as positive-equity collateral and incur a deficit in a USDC-settled product, automatic rebalancing may sell XRP to acquire USDC. In stress, this could be a procyclical spot-flow channel.",
+      "disconfirming_or_limiting_evidence": [
+        "No posted XRP balances or rebalancing volumes are disclosed.",
+        "Customers may deposit settlement currency or reduce positions instead.",
+        "The mechanism is account-level and is not evidence of a market-wide flow."
+      ]
+    },
+    {
+      "id": "COLLATERAL_UTILITY_VS_FREE_FLOAT",
+      "classification": "INFERENCE",
+      "hypothesis": "Collateral eligibility can increase XRP's utility and create demand to hold XRP for margin, potentially reducing immediately tradable inventory while posted.",
+      "disconfirming_or_limiting_evidence": [
+        "Collateral balances and customer adoption are undisclosed.",
+        "A collateral listing alone does not create demand or net acquisition.",
+        "Haircuts, position limits, volatility and funding economics may constrain use."
+      ]
+    },
+    {
+      "id": "US_CFTC_PATHWAY",
+      "classification": "INFERENCE",
+      "hypothesis": "After an FCM's own three-month initial period, XRP may qualify for the specified 30.7 collateral pathway because Coinbase Derivatives lists XRP futures on a CFTC-designated DCM, subject to Letter 26-05/26-17 conditions.",
+      "disconfirming_or_limiting_evidence": [
+        "CFM's notice of intent and commencement date were not located in public sources during this run.",
+        "Coinbase Prime's current public U.S. eligible-collateral list excludes XRP.",
+        "No actual XRP balances or usage were disclosed."
+      ]
+    }
+  ],
+  "unknowns": [
+    "Whether Coinbase Financial Markets filed a Letter 26-05 notice of intent and its effective commencement date.",
+    "Whether CFM currently accepts XRP for any U.S. 30.7 customer account under Letters 26-05/26-17.",
+    "XRP collateral balances, account counts, utilization, haircuts actually applied, rebalancing sales and liquidation flows.",
+    "Whether X:PM dash in Coinbase's non-U.S. collateral table means zero haircut, not applicable, or another treatment; no interpretation is asserted."
+  ],
+  "relationship_edges": [
+    {
+      "from": "Coinbase Advanced Global Derivatives (eligible non-US regions)",
+      "to": "XRP",
+      "relationship": "listed cross-collateral asset",
+      "status": "CONFIRMED_PRODUCT_SPECIFICATION"
+    },
+    {
+      "from": "Coinbase Financial Markets",
+      "to": "Coinbase Bermuda Limited",
+      "relationship": "affiliated FCM-to-foreign-broker route in CFTC 26-17",
+      "status": "REGULATORY_STAFF_POSITION"
+    },
+    {
+      "from": "Coinbase Bermuda Limited",
+      "to": "Deribit",
+      "relationship": "affiliated foreign broker routes to affiliated FBOT",
+      "status": "REGULATORY_STAFF_POSITION"
+    },
+    {
+      "from": "Coinbase Derivatives LLC",
+      "to": "XRP",
+      "relationship": "CFTC-designated DCM lists XRP futures",
+      "status": "CONFIRMED_FACT"
+    },
+    {
+      "from": "CFTC Letter 26-05",
+      "to": "XRP collateral pathway",
+      "relationship": "conditional 30.7 eligibility limb after FCM-specific initial period",
+      "status": "CONDITIONAL_NOT_ACTUAL_USE"
+    },
+    {
+      "from": "Coinbase Prime U.S. Global Derivatives",
+      "to": "XRP collateral",
+      "relationship": "not on current public eligible collateral list",
+      "status": "DISCONFIRMING_EVIDENCE"
+    }
+  ],
+  "source_independence": "Coinbase help pages are primary evidence of Coinbase product specifications, not independent evidence of balances or actual usage. CFTC letters and CFTC DCM registration/filing records are regulator-published sources. Actual collateral and flow metrics require independently verifiable onchain/account-level or regulatory reporting data.",
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Search public CFTC records and authorized filings for CFM's Letter 26-05 notice of intent and commencement date.",
+    "Monitor Coinbase Prime eligible-collateral page for XRP additions and capture dated snapshots.",
+    "Seek public Rule 30.7/FCM financial reports that could quantify digital-asset customer funds, while respecting reporting aggregation and privacy limits.",
+    "If collateral usage becomes observable, model account-level rebalancing triggers and XRP/USDC flow effects without assuming a sale from a collateral listing."
+  ]
+}

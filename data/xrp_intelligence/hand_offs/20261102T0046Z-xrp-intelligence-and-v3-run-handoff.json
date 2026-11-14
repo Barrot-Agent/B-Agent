@@ -1,0 +1,702 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_intelligence_and_barrot_v3_run_handoff",
+  "captured_at_utc": "2026-11-02T00:46:18.003Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "repo_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "verified_main_sha": "c6e9f79d000ff086b40af3355546cb55f0fe3db8",
+    "main_status": "Read-only inspection only; main was not modified.",
+    "main_advance_since_research_pr_base": {
+      "pr_1477_base_sha": "a26feebb31c98923e4161b61339cfb575df6fc34",
+      "current_main_sha": "c6e9f79d000ff086b40af3355546cb55f0fe3db8",
+      "compare_status": "ahead",
+      "ahead_by": 3,
+      "behind_by": 0,
+      "changed_paths": [
+        "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "action": "No rebase, merge or force-push performed."
+    },
+    "branch_name_warning": "A separate capitalized Main branch exists and is stale. Use the default branch main.",
+    "branch_protection": {
+      "branch_api_reports_protected": true,
+      "required_status_check_contexts": [],
+      "repository_rulesets": [
+        {
+          "name": "Fall Back",
+          "target": "branch",
+          "enforcement": "disabled"
+        }
+      ],
+      "full_branch_protection_endpoint": "HTTP 403; required reviews and detailed settings remain unavailable.",
+      "interpretation": "Do not treat the protected flag as proof that required CI or human review is enforced."
+    },
+    "no_merge_force_push_or_manual_dispatch": true
+  },
+  "research_findings": [
+    {
+      "topic": "FXRP supply, backing and reserve liquidity",
+      "classification": "INDEPENDENT_PUBLIC_ONCHAIN_AND_XRPL_API_SNAPSHOT",
+      "source": "https://flareforge.io/api/fxrp.json",
+      "source_generated_at_utc": "2026-11-02T00:27:21Z",
+      "values": {
+        "fxrp_supply": 143977216.689871,
+        "native_xrp_backing": 144061207.5824,
+        "backing_ratio": 1.000583362385105,
+        "core_vault_xrp": 142528708.226796,
+        "core_vault_liquid_xrp": 2528708.226796,
+        "core_vault_escrowed_xrp": 140000000,
+        "core_vault_escrow_count": 14,
+        "core_vault_escrowed_share_pct": 98.2258253384,
+        "core_vault_liquid_share_pct": 1.7741746616,
+        "core_vault_share_of_total_backing_pct": 98.9362165004,
+        "agent_xrp": 1532499.355604,
+        "remote_fxrp_total": 20098496.191908,
+        "core_vault_paused": false,
+        "pending_requests_xrp": 0,
+        "agent_status": "All six listed agents normal; reserved_fxrp and redeeming_fxrp zero in captured rows."
+      },
+      "interpretation": "The latest public API shows slightly more than 1:1 backing, but 98.94% of backing is in the Core Vault and 140M XRP is in a 14-rung escrow ladder. Only 2.529M XRP is shown liquid in the Core Vault. Six agent reserves total 1.532M XRP. This is strong backing coverage but concentrated operational control and time-dependent redemption liquidity.",
+      "limits": [
+        "Third-party independent API; labels are third-party classifications.",
+        "Backing ratio does not prove custody, bridge, smart-contract or redemption-liquidity safety.",
+        "Flare's 145.2M minted/130M DeFi/21M cross-chain figures are rounded first-party metrics and not directly interchangeable with later current supply.",
+        "XRPL.to's fixed-ledger analysis is dated 2026-08-30; its escrow ladder/permissions observations require current-ledger revalidation. Use its documented API and do not scrape/copy its UI."
+      ],
+      "time_series_delta_vs_prior_snapshot": {
+        "prior_snapshot_at_utc": "2026-11-01T23:57:22Z",
+        "current_snapshot_at_utc": "2026-11-02T00:27:21Z",
+        "fxrp_supply_delta": -17856.778131,
+        "backing_xrp_delta": -17834.266816,
+        "core_vault_liquid_xrp_delta": -147740.00039,
+        "agent_xrp_delta": 129905.733574,
+        "escrowed_xrp_delta": 0,
+        "interpretation": "The balance changes are consistent with roughly 129.9k XRP moving from Core Vault liquid reserves to agent reserves while total backing/supply fell by roughly 17.8k, but the two snapshots do not identify the transaction path. Treat as a balance-change signal only; verify at fixed XRPL ledger indices."
+      },
+      "escrow_ladder": {
+        "reported_count": 14,
+        "reported_amount_each_xrp": 10000000,
+        "total_escrowed_xrp": 140000000,
+        "cadence": "One escrow batch matures each day, according to Flare's first-party description and XRPL.to's August 30 fixed-ledger analysis.",
+        "condition": "The XRPL.to analysis reports each escrow has a crypto-condition; it must be finished with the matching secret or, after its cancellation window, cancelled back to the Core Vault.",
+        "current_expiry_schedule": "NOT_REVALIDATED_AT_CURRENT_LEDGER",
+        "implication": "140M escrowed is not permanently inaccessible. It is a rolling ladder with up to 10M scheduled to mature daily, but release is conditional and not the same as immediate free liquidity."
+      }
+    },
+    {
+      "topic": "FXRP collateral and RLUSD borrowing",
+      "classification": "OFFICIAL_PRODUCT_LAUNCH_PLUS_SINGLE_PUBLIC_MARKET_UI_SNAPSHOT",
+      "sources": [
+        "https://flare.network/news/fxrp-collateral-expands-sentoras-rlusd-vault-on-morpho",
+        "https://app.morpho.org/ethereum/market/0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96"
+      ],
+      "official_facts": "Flare says the isolated FXRP/RLUSD Morpho Blue market is permissionless on Ethereum; Sentora curates the vault without taking custody. Direct XRPL-wallet-to-RLUSD borrowing remains in development.",
+      "market_snapshot": {
+        "captured_at_utc": "2026-11-02T00:13:48Z",
+        "market_size_usd": 9350000,
+        "borrowed_rlusd": 8440000,
+        "available_liquidity_usd": 909850,
+        "utilization_pct": 90.27,
+        "borrow_rate_pct": 7.83,
+        "supply_rate_pct": 7.03,
+        "liquidation_ltv_pct": 77,
+        "liquidation_penalty_pct": 7.41,
+        "supplier_top_share_pct": 99.04,
+        "borrower_count": 60,
+        "top_three_borrower_share_pct": 90.96,
+        "lowest_displayed_health_factor": 1.199,
+        "realized_bad_debt_usd": 0
+      },
+      "limits": [
+        "Single public UI capture; raw API/subgraph and chain reconciliation pending.",
+        "$280M refers to the wider Sentora RLUSD Main vault, not the isolated FXRP/RLUSD market.",
+        "Permissionless market; no borrower beneficial ownership attribution.",
+        "No native-XRP collateral on XRPL is established by this Ethereum FXRP market."
+      ]
+    },
+    {
+      "topic": "Firelight shared cover and FXRP slashing exposure",
+      "classification": "OFFICIAL_PROTOCOL_DESIGN_PLUS_INDEPENDENT_PUBLIC_HOLDER_SNAPSHOT",
+      "sources": [
+        "https://firelight.finance/articles/firelight-brings-onchain-cover-to-kraken-defi-earn",
+        "https://firelight.finance/articles/how-protected-vaults-reach-users-the-kraken-defi-earn-example",
+        "https://firelight.finance/articles/everything-stakers-need-to-know-about-phase-2",
+        "https://firelight.finance/articles/firelight-is-live-institutional-grade-cover-for-defi",
+        "https://xrpfi.flare.network/stxrp",
+        "https://flareforge.io/api/fxrp.json"
+      ],
+      "values": {
+        "firelight_fxrp_holder_balance": 51901496.139796,
+        "share_of_fxrp_supply_pct": 36.0439,
+        "official_aggregate_staked_position_cap_usd": 115000000,
+        "official_coverage_period_days": 30
+      },
+      "confirmed_design": "Firelight's shared pool of staked FXRP backs its elected cover portfolio. Official Firelight publications confirm live cover for Sentora USD Protected, Sentora Protected RWA and Kraken Protected Strategies USDC (formerly Boosted USDC), with the Kraken strategy curated by Sentora. Operator fees paid in USDC are converted to FXRP and added to staker positions according to Firelight's public description. Cover is not insurance; staker principal and rewards are slashable. For Kraken USDC, the per-address cap is $100,000, cover terms reset each 30-day epoch, and a covered payout draws first on a first-loss buffer then on staked capital pro rata. Firelight's official Phase 2 article further confirms that the first-loss buffer is a protocol-owned stablecoin reserve, USDC cover fees convert to FXRP and auto-compound, and stakers are slashed only after the buffer is exhausted.",
+      "risk": "XRP-derived staked capital backs multiple non-XRP strategies, including Kraken Protected Strategies USDC. USDC cover fees are stated by Firelight to convert into FXRP rewards; this is a real mechanism but actual fee and conversion volume remains unmeasured.",
+      "unresolved": [
+        "Specific stablecoin and current balance of the protocol-owned first-loss reserve.",
+        "Actual USDC fee totals and transaction-level USDC-to-FXRP conversion path.",
+        "Current cover-token positions, covered-market composition, claims and staker outflows.",
+        "Exact unstaking duration and stressed redemption latency."
+      ]
+    },
+    {
+      "topic": "Flare FXRP activity and actual-capital phrase",
+      "classification": "FLARE_FIRST_PARTY_ECOSYSTEM_REPORT",
+      "source": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "values": {
+        "reported_fxrp_minted_approx": 145200000,
+        "reported_fxrp_deployed_in_defi_approx": 130000000,
+        "reported_fxrp_transactions_approx": 7800000,
+        "reported_fxrp_on_other_chains_approx": 21000000
+      },
+      "finding": "The exact phrase 'actual capital deployment and liquidity provision' appears in Flare's earlier XRPFi article in the context of USDt0, an omnichain USDT-backed stablecoin.",
+      "limits": [
+        "FXRP represents existing XRP; minting/deployment is not proof of equivalent net new spot purchases.",
+        "Flare metrics are rounded company-reported values and may include repeated lending, collateral, bridge and vault operations.",
+        "The phrase is not a disclosed dollar amount or proof of a named investor transfer.",
+        "USDt0 is not Circle USDC or Ripple RLUSD."
+      ]
+    },
+    {
+      "topic": "XRPL x402 agent-payment economics",
+      "classification": "OPERATOR_PUBLIC_DASHBOARD_SNAPSHOT",
+      "source": "https://xrpl-ai.org/",
+      "values": {
+        "reported_all_time_settled_value_usd": 48848,
+        "reported_all_time_transactions": 14850938,
+        "reported_registered_merchants": 183,
+        "reported_live_services": 5318,
+        "calculated_average_value_per_reported_transaction_usd": 0.00328922
+      },
+      "finding": "t54 says its XRPL facilitator is live and supports XRP, RLUSD and USDC. Recent displayed rows are labelled Unverified.",
+      "limits": [
+        "Operator-controlled dashboard; no independent event-level reconciliation.",
+        "Average is about $0.00329 per reported transaction; compatible with micropayments but not proof of large economic value.",
+        "Transaction count is not unique agents, external capital or XRP spot demand."
+      ]
+    },
+    {
+      "topic": "Circle-Ripple direct relationship",
+      "classification": "JOINT_OFFICIAL_PARTNERSHIP_ANNOUNCEMENT",
+      "source": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "finding": "Ripple and Circle announced native USDC issuance on XRPL on June 12, 2025. Ripple says its payments solution intends to use USDC alongside RLUSD.",
+      "interpretation": "Circle is both an RLUSD competitor and a direct XRPL ecosystem partner. USDC may complement XRP DEX/bridge utility or substitute for XRP in some payment legs; net effect requires route-level data."
+    },
+    {
+      "topic": "SBIC / ChatGPT exact phrase",
+      "classification": "OFFICIAL_TOKYO_SBIC_TRAINING_ANNOUNCEMENT",
+      "source": "https://www.sbic.co.jp/training/20250612co/",
+      "finding": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; June 12–13, 2025 training for investee companies included ChatGPT on day one and Copilot/RAG/API on day two.",
+      "limits": [
+        "Distinct from SBI Holdings and SBI Group.",
+        "Education is not an OpenAI partnership or XRP relationship."
+      ]
+    },
+    {
+      "topic": "ASK Coin exact phrase",
+      "classification": "AMBIGUOUS_LITERAL_MATCHES",
+      "candidates": [
+        {
+          "name": "Permission Coin",
+          "ticker": "ASK",
+          "source": "https://coinmarketcap.com/currencies/permission-coin/",
+          "finding": "Base and Polygon deployments; no direct XRP/XRPL integration established."
+        },
+        {
+          "name": "Ask Coin exchange listing",
+          "source": "https://coinmarketcap.com/exchanges/ask-coin/",
+          "finding": "Separate listing shown inactive/untracked."
+        },
+        {
+          "name": "AskSurf",
+          "source": "https://xrpl-ai.org/",
+          "finding": "Separate t54 merchant name, not established as Permission Coin or Ask Coin exchange."
+        }
+      ],
+      "status": "INTENDED_USER_REFERENT_UNCONFIRMED"
+    }
+  ],
+  "event_timeline": [
+    {
+      "date": "2025-05-02",
+      "event": "Flare uses exact actual-capital phrase in USDt0/XRPFi context."
+    },
+    {
+      "date": "2025-06-12",
+      "event": "Ripple and Circle announce USDC issuance on XRPL."
+    },
+    {
+      "date": "2025-09-24",
+      "event": "FXRP goes live on Flare mainnet, according to Flare's one-year report."
+    },
+    {
+      "date": "2026-08-03",
+      "event": "FXRP/RLUSD isolated Morpho market announced live on Ethereum."
+    },
+    {
+      "date": "2026-09-24",
+      "event": "Flare publishes one-year FXRP activity report."
+    },
+    {
+      "date": "2026-10-06",
+      "event": "Firelight shared FXRP-backed cover phase announced live."
+    },
+    {
+      "date": "2026-11-01T23:57:22Z",
+      "event": "FlareForge API records 143.995M FXRP and 144.079M XRP backing."
+    },
+    {
+      "date": "2026-11-02T00:13:48Z",
+      "event": "Barrot captures Morpho FXRP/RLUSD market UI snapshot; raw API reconciliation pending."
+    }
+  ],
+  "competing_causal_hypotheses": [
+    {
+      "id": "H1_PRODUCTIVE_XRP_UTILITY",
+      "hypothesis": "FXRP lending/collateral/vault/cross-chain use may increase productive XRP exposure and reduce immediately liquid XRP while deployed.",
+      "supporting_evidence": [
+        "Flare reports about 130M FXRP deployed in DeFi and about 21M on other chains.",
+        "Morpho FXRP/RLUSD market is live; Firelight uses staked FXRP as cover capital."
+      ],
+      "disconfirming_evidence": [
+        "FXRP represents existing XRP; minting is not a net spot purchase.",
+        "Flare metrics are rounded first-party claims."
+      ],
+      "unknowns": [
+        "Net mint/burn/redeem flows.",
+        "Incremental spot buying versus reuse of existing XRP.",
+        "Stressed redemption latency."
+      ],
+      "status": "HYPOTHESIS_NOT_ADMITTED_AS_PRICE_SIGNAL"
+    },
+    {
+      "id": "H2_LEVERAGE_AND_LIQUIDATION_AMPLIFICATION",
+      "hypothesis": "High utilization/concentration and shared-cover slashing can amplify FXRP/XRP volatility under collateral or oracle shocks.",
+      "supporting_evidence": [
+        "Single Morpho capture: 90.27% utilization, 99.04% top-supplier share, 90.96% top-three borrower share, lowest displayed health factor 1.199.",
+        "Firelight principal/rewards are slashable and one vault backs multiple covered strategies."
+      ],
+      "disconfirming_evidence": [
+        "Zero realized bad debt in the captured market UI.",
+        "Morpho market is isolated; no contagion is established."
+      ],
+      "unknowns": [
+        "Raw oracle state, borrower identities, current claims, buffer and liquidation depth."
+      ],
+      "status": "RISK_HYPOTHESIS_NOT_A_DIRECTIONAL_FORECAST"
+    },
+    {
+      "id": "H3_STABLECOIN_COMPLEMENT_AND_SUBSTITUTION",
+      "hypothesis": "USDC/RLUSD can deepen XRPL liquidity while replacing XRP in some direct payment legs.",
+      "supporting_evidence": [
+        "Direct Ripple-Circle USDC/XRPL partnership.",
+        "Ripple says USDC alongside RLUSD in payments; t54 facilitator says XRP/RLUSD/USDC."
+      ],
+      "disconfirming_evidence": [
+        "XRPL DEX/auto-bridging can use XRP as bridge asset."
+      ],
+      "unknowns": [
+        "Route-level token mix, DEX pathfinding and institutional inventory."
+      ],
+      "status": "DUAL_EFFECT_HYPOTHESIS"
+    },
+    {
+      "id": "H4_AGENT_PAYMENT_ACTIVITY_OVERSTATED_AS_MACRO_CAPITAL",
+      "hypothesis": "High x402 counts may overstate economic scale when average value is micro-sized or rows are unverified.",
+      "supporting_evidence": [
+        "$48,848 / 14,850,938 = about $0.00329 per reported transaction; recent rows show Unverified."
+      ],
+      "disconfirming_evidence": [
+        "Micropayments can be legitimate; dashboard reports nonzero settled value and a live facilitator."
+      ],
+      "unknowns": [
+        "Independent transaction-level settlement, unique payers/payees and XRP/RLUSD/USDC split."
+      ],
+      "status": "DATA_QUALITY_HYPOTHESIS"
+    },
+    {
+      "id": "H5_INSTITUTIONAL_RAILS_WITHOUT_TOKEN_DEMAND",
+      "hypothesis": "XRPL/Ripple/stablecoin institutional adoption can grow without proportional XRP demand.",
+      "supporting_evidence": [
+        "Stablecoins can settle directly; FXRP wrapper may reuse existing XRP."
+      ],
+      "disconfirming_evidence": [
+        "XRP is used in XRPL DEX bridging, fees and documented remittance routes."
+      ],
+      "unknowns": [
+        "Actual route asset selection, inventory holding duration and payment conversions."
+      ],
+      "status": "COUNTER_HYPOTHESIS_RETAINED"
+    },
+    {
+      "id": "H6_USDC_COVER_FEES_TO_FXRP_REWARDS",
+      "hypothesis": "USDC fees from covered vault operators can be converted into FXRP rewards for stakers, linking stablecoin earn products to XRP-derived cover capital.",
+      "supporting_evidence": [
+        "Firelight officially confirms cover for Kraken Protected Strategies USDC curated by Sentora.",
+        "Firelight states operator fees paid in USDC are converted to FXRP and added to staker positions.",
+        "A public FlareForge snapshot labels approximately 51.9M FXRP at the Firelight staking contract."
+      ],
+      "disconfirming_evidence": [
+        "No actual USDC fee total or conversion transaction has been traced.",
+        "FXRP can be minted against existing XRP; fee conversion is not automatically a new spot XRP purchase.",
+        "No direct Circle-Firelight partnership or Kraken XRP acquisition is established."
+      ],
+      "unknowns": [
+        "USDC fee amount by covered programme and period.",
+        "Actual DEX route, price impact and whether conversion uses newly purchased FXRP or existing inventory.",
+        "Net staker inflows, FXRP redemption and realized fee-funded rewards."
+      ],
+      "status": "MECHANISM_CONFIRMED; REALIZED_FLOW_NOT_VERIFIED"
+    },
+    {
+      "id": "H7_FXRP_SUPPLY_CONTRACTION_AND_ADOPTION_COOLING",
+      "hypothesis": "The FXRP adoption/minting expansion may have peaked in June 2026; falling supply and sharply lower minting could indicate cooling net demand despite continuing DeFi deployment.",
+      "supporting_evidence": [
+        "XRPL.to's August 30 fixed-ledger analysis reports 157.425M FXRP peak on June 1 and 9.281M decline by August 30.",
+        "The same analysis reports monthly minting falling from 37.188M XRP in March to 2.066M in August, about 94% lower.",
+        "The November 2 FlareForge API snapshot shows 143.977M FXRP, below the reported June peak."
+      ],
+      "disconfirming_evidence": [
+        "Flare's September 24 first-party report says approximately 130M FXRP was deployed in DeFi and 21M was on other chains.",
+        "Flare reports more than 20M XRP entered vaults and DeFi in under a week after its wallet flow opened.",
+        "Current API still shows substantial FXRP in Firelight, Morpho, Kinetic and bridge destinations."
+      ],
+      "unknowns": [
+        "Current daily contract totalSupply series and exact burn/redeem flows.",
+        "Whether supply contraction reflects redemptions, migration, contract changes or other supply mechanics.",
+        "Net spot XRP purchases attributable to FXRP demand."
+      ],
+      "status": "COUNTER_HYPOTHESIS_NOT_A_PRICE_FORECAST"
+    }
+  ],
+  "prediction_engine": {
+    "status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "no_skill_claim": "No verified XRP forecasts and resolved outcomes exist; out-of-sample skill and probability calibration are not measured.",
+    "candidate_features": [
+      "FXRP supply/backing/liquid-versus-escrowed XRP/agent reserves/redemptions",
+      "Morpho utilization/rates/LTV/health/oracle/liquidations/concentration",
+      "Firelight cover/claims/buffer/unstaking/slashing",
+      "XRPL x402 independently verified value/token mix/unique payer-payee",
+      "USDC/RLUSD/XRP route-level settlement and DEX bridging"
+    ],
+    "feature_admission_rules": [
+      "Do not treat FXRP minting/deployment as new XRP spot demand.",
+      "Do not treat the actual-capital phrase as a disclosed dollar amount.",
+      "Keep company reports, independent onchain APIs and public UI snapshots in separate source classes.",
+      "Require immutable snapshots, point-in-time joins, source independence and leakage checks.",
+      "Do not admit x402 or Morpho features until transaction-level/raw API reconciliation is complete."
+    ]
+  },
+  "repository_audit": {
+    "current_main_privileged_workflows": [
+      {
+        "workflow": "scheduler-tick.yml",
+        "finding": "contents:write/actions:write; commits and pushes queue updates to main. scripts/scheduler.py only checks that a target is an existing workflow file; it has no narrow safe-workflow allowlist."
+      },
+      {
+        "workflow": "merge-queue.yml",
+        "finding": "manual dispatch; contents:write/pull-requests:write; dry_run defaults false, max_prs 0 means unlimited, mode=all exists. Code checks mergeable=CLEAN but no explicit approved-label/designated-human approval check before gh pr merge."
+      },
+      {
+        "workflow": "cross-analysis.yml",
+        "finding": "contents:write; scheduled/workflow_run job writes and pushes entity/sentiment artifacts."
+      },
+      {
+        "workflow": "barrot-autonomous-resolver.yml",
+        "finding": "hourly workflow with issues:write/pull-requests:write; can create/assign work."
+      },
+      {
+        "workflow": "task-allocator.yml",
+        "finding": "manual workflow with contents/pull-requests write and Groq/OpenAI/ChatGPT-related secrets."
+      },
+      {
+        "workflow": "force-deploy-space.yml",
+        "finding": "manual workflow uses HF_TOKEN and git push -f to Hugging Face Space main."
+      },
+      {
+        "workflow": "subscriber_sync.yml",
+        "finding": "scheduled/manual workflow reads Gumroad sales email fields, hashes them and writes subscriber hashes to web/subscribers.json."
+      },
+      {
+        "workflow": "barrot-agent.yml",
+        "finding": "core worker has contents/issues/pull-requests write and GROQ_API_KEY; separately review least privilege; no merge permission is claimed."
+      }
+    ],
+    "current_main_security_summary": "Privileged scheduled/manual mutation paths remain active until approved remediation merges. Main reports protected, but no required status contexts were exposed and the only returned repository ruleset is disabled.",
+    "proposals": [
+      {
+        "number": 1474,
+        "state": "open_draft_unmerged",
+        "purpose": "Quarantine privileged workflows; exact-head CI and fail-closed gate passed."
+      },
+      {
+        "number": 1476,
+        "state": "open_draft_unmerged",
+        "purpose": "Disable public client-side subscriber gate pending server authentication; exact-head CI and fail-closed gate passed."
+      }
+    ],
+    "limitations": [
+      "Full branch protection endpoint returned 403; required review settings remain unknown.",
+      "No required status-check contexts were exposed.",
+      "Older zero-job workflow failures remain unresolved; no root cause is invented."
+    ]
+  },
+  "pull_requests": [
+    {
+      "number": 1474,
+      "title": "Security: quarantine privileged workflows on current main (fresh successor)",
+      "head": "c71e7e80304e7aa810e6a4da2eb4737834553243",
+      "base": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "open_draft_unmerged",
+      "verification": {
+        "ci_run_id": 41366009307,
+        "ci_conclusion": "success",
+        "gate_run_id": 41366009310,
+        "gate_conclusion": "success",
+        "merge_enabled": false
+      }
+    },
+    {
+      "number": 1475,
+      "title": "Prediction integrity: bind append time and separate live from replay (fresh main)",
+      "head": "60a8845fb289073b09adbe0e5cebe18f9418f2c4",
+      "base": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "open_draft_unmerged",
+      "verification": {
+        "ci_run_id": 41363221044,
+        "ci_conclusion": "success",
+        "gate_run_id": 41363220986,
+        "gate_conclusion": "success",
+        "merge_enabled": false
+      }
+    },
+    {
+      "number": 1476,
+      "title": "Security: disable public client-side subscriber gate until server auth exists",
+      "head": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+      "base": "465ff4b40c43721db25e313df08b44a659f4a360",
+      "state": "open_draft_unmerged",
+      "verification": {
+        "ci_run_id": 41353058271,
+        "ci_conclusion": "success",
+        "gate_run_id": 41353058127,
+        "gate_conclusion": "success",
+        "merge_enabled": false
+      }
+    },
+    {
+      "number": 1477,
+      "title": "XRP research: Coinbase–Circle–Arc links and XRPL payment-quality controls",
+      "head": "b392d1320e20357b97168bd1b222aeac8056fffb",
+      "base": "a26feebb31c98923e4161b61339cfb575df6fc34",
+      "state": "open_draft_unmerged",
+      "verification": {
+        "ci_run_id": 41368739123,
+        "ci_conclusion": "success",
+        "test_summary": "426 tests and 8 subtests passed",
+        "gate_run_id": 41368739060,
+        "gate_conclusion": "success",
+        "merge_enabled": false
+      }
+    }
+  ],
+  "superseded_proposals": [
+    {
+      "number": 1478,
+      "state": "closed_unmerged",
+      "reason": "Duplicate stacked test-only proposal; equivalent assertion fix was appended directly to PR #1477. No code was discarded and no merge occurred."
+    }
+  ],
+  "platform_status": {
+    "verified_live": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "note": "Nine-platform capability/authentication/permission/data-flow map is designed; no live collaboration is claimed for unverified platforms."
+  },
+  "identity_threads": {
+    "SBIC": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; ChatGPT/Copilot training was for investee companies, not an OpenAI or XRP partnership.",
+    "ASK_Coin": "Permission Coin ASK, Ask Coin exchange listing and AskSurf merchant are separate candidates; intended referent unconfirmed and no direct XRP link established.",
+    "actual_capital": "Exact phrase located in Flare's USDt0/XRPFi article; context is not a disclosed amount. Separate existing XRP represented as FXRP from new spot capital.",
+    "Kamilah_Stevenson": "Canonical research subject is Dr. Kamilah Stevenson / @drkamilahstevenson. Candidate channel ID UCqUPJMQdkCN6lsLVDnichPA remains unverified. Inventory scope includes videos, Shorts and livestreams; 11 candidate uploads is partial, not exhaustive."
+  },
+  "next_actions": [
+    "Read the Firelight First-Loss Buffer contract and current stablecoin balance; trace USDC fee receipts and FXRP conversion transactions to quantify realized fee-funded FXRP demand.",
+    "Reconcile the 00:27:21Z FlareForge snapshot against a second fixed XRPL ledger and trace the 147,740 XRP Core Vault reserve change plus 129,906 XRP agent increase.",
+    "Revalidate the 14x10M escrow ladder's current finish/cancel times and crypto-conditions using the documented XRPL API; do not infer 10M is automatically available.",
+    "Build a daily FXRP totalSupply and mint/burn/redeem series; compare the June 1 peak and March-to-August mint slowdown with current flows.",
+    "Trace Firelight Cover Registry and fee-settlement contracts; reconcile Kraken USDC cover fees, first-loss buffer and USDC-to-FXRP conversions at transaction level.",
+    "Reconcile Morpho market snapshot to raw API/subgraph and chain state.",
+    "Inspect Firelight coverage registry, current covered vaults, claims, buffer and unstaking queue; verify Kraken USDC strategy status.",
+    "Capture Core Vault escrow schedule, agent reserves, redemption requests and realized redemption throughput.",
+    "Measure net FXRP mint/burn/redeem and cross-chain flows against exchange-level XRP purchases.",
+    "Reconcile t54 x402 transaction IDs to validated-ledger events and classify unique payer/payee, token mix and microtransaction distribution.",
+    "Measure Circle USDC and Ripple RLUSD issuance/redemption and XRPL DEX/bridge routing.",
+    "Build point-in-time historical features and walk-forward baselines before any forecast.",
+    "Complete Kamilah Stevenson channel inventory across videos, Shorts and livestreams with channel-owner verification.",
+    "Continue exact ASK Coin and actual-capital phrase investigations.",
+    "Prepare fresh-main security remediation review; no merge or workflow dispatch without explicit approval."
+  ],
+  "safety": "No main-branch writes, merges, force-pushes, manual workflow dispatches, secret access, deployments, paper-position mutations or real-money trades occurred. Research changes are confined to the existing PR #1477 branch.",
+  "supersedes": "20261102T0043Z-xrp-intelligence-and-v3-run-handoff.json",
+  "corrections": [
+    {
+      "topic": "Firelight–Kraken–Sentora USDC cover relationship",
+      "prior_status": "Kraken coverage appeared in an onchain holder/coverage snapshot but had not been confirmed in the retrieved launch announcement.",
+      "corrected_status": "CONFIRMED_BY_FIRELIGHT_OFFICIAL_OCTOBER_15_AND_OCTOBER_22_PUBLICATIONS",
+      "sources": [
+        "https://firelight.finance/articles/firelight-brings-onchain-cover-to-kraken-defi-earn",
+        "https://firelight.finance/articles/how-protected-vaults-reach-users-the-kraken-defi-earn-example"
+      ],
+      "facts": [
+        "Firelight states cover is enabled on Kraken Protected Strategies USDC, formerly Boosted USDC, curated by Sentora.",
+        "Firelight's shared pool of staked FXRP backs the full portfolio of cover programmes, including Kraken USDC, Sentora USD Protected and Sentora Protected RWA.",
+        "Program-operator fees paid in USDC are converted to FXRP and added to staker positions, according to Firelight's public launch description.",
+        "Kraken product access, Sentora strategy curation and Firelight coverage are separate roles; Firelight says it has no direct end-user relationship.",
+        "For Kraken Protected Strategies USDC, the per-address cover cap is $100,000 and cover terms reset each 30-day epoch.",
+        "A covered payout draws first on a first-loss buffer, then on staked capital pro rata; payout is made in stablecoins to the covered vault.",
+        "At least three of five Risk Consortium members must approve a claim through an onchain multisig."
+      ],
+      "limits": [
+        "First-loss buffer existence is confirmed, but its asset composition and balance were not disclosed in the retrieved article.",
+        "Actual USDC fee totals and the actual onchain USDC-to-FXRP conversion transactions have not been traced.",
+        "The fee conversion mechanism is not proof of new XRP spot purchases or net external capital entering XRP.",
+        "No direct Circle-Firelight partnership is established; USDC issuer identity is Circle, but the origin of USDC deposited in the Kraken strategy is unknown.",
+        "Firelight cover is explicitly not insurance."
+      ]
+    },
+    {
+      "topic": "Firelight Phase 2 first-loss buffer and fee conversion",
+      "prior_status": "First-loss buffer existence was known, but its asset class and the USDC-to-FXRP fee-conversion mechanism were not confirmed from the official pages retrieved in the preceding capture.",
+      "corrected_status": "OFFICIAL_FIRELIGHT_PHASE2_ARTICLE_CONFIRMS_STABLECOIN_BUFFER_AND_USDC_TO_FXRP_AUTO_COMPOUNDING",
+      "sources": [
+        "https://firelight.finance/articles/everything-stakers-need-to-know-about-phase-2",
+        "https://firelight.finance/articles/firelight-is-live-institutional-grade-cover-for-defi"
+      ],
+      "facts": [
+        "Firelight says the First-Loss Buffer is a dedicated protocol-owned stablecoin reserve that absorbs the first tranche of a validated claim.",
+        "Only after that reserve is exhausted do stakers face pro-rata slashing of their staked FXRP positions.",
+        "Firelight says fees paid in USDC convert back to FXRP and flow into each staker position automatically.",
+        "The FXRP rewards auto-compound into the position, increasing redemption value and the amount exposed to slashing.",
+        "The unstaking window is extended to match enabled 30-day coverage periods; the exact total unstaking duration is not disclosed."
+      ],
+      "limits": [
+        "The specific stablecoin and current first-loss buffer balance are not disclosed in the retrieved official article.",
+        "Actual USDC fee amounts and the onchain conversion transactions have not been independently traced.",
+        "The fee conversion mechanism does not by itself prove new spot XRP purchases or net external capital entering XRP."
+      ]
+    }
+  ],
+  "firelight_kraken_relationship": {
+    "status": "CONFIRMED_OFFICIAL_FIRELIGHT_ANNOUNCEMENTS",
+    "announcement_dates": [
+      "2026-10-15",
+      "2026-10-22"
+    ],
+    "roles": {
+      "kraken": "Provides access to Kraken Protected Strategies USDC within Kraken DeFi Earn; Firelight describes platform distribution as separate from coverage.",
+      "sentora": "Curates the USDC vault and selects strategy markets, allocations and risk parameters.",
+      "firelight": "Provides onchain cover, publishes terms and coordinates independent claim validation.",
+      "fxrp_stakers": "Supply the shared cover capital through staked FXRP; principal and rewards remain slashable.",
+      "circle": "USDC issuer; no direct Circle-Firelight commercial agreement established by these sources."
+    },
+    "mechanism": {
+      "fee_asset": "USDC",
+      "fee_conversion": "Firelight says fees paid in USDC convert back to FXRP and auto-compound into staker positions.",
+      "payout_asset": "Stablecoins to the covered vault",
+      "per_address_cap_usd": 100000,
+      "coverage_epoch_days": 30,
+      "first_loss_buffer": "Protocol-owned stablecoin reserve; exact stablecoin and current balance not disclosed.",
+      "risk_consortium_approval": "At least 3 of 5 members via onchain multisig",
+      "first_loss_buffer_type": "PROTOCOL_OWNED_STABLECOIN_RESERVE",
+      "first_loss_order": "First-loss buffer absorbs the first tranche; after exhaustion, staked FXRP is slashed pro rata.",
+      "fee_conversion_status": "OFFICIAL_FIRELIGHT_PHASE2_DESCRIPTION",
+      "unstaking_window": "Extended to align with 30-day cover periods; exact duration not disclosed."
+    },
+    "economic_interpretation": "A verified institutional distribution/collateral-cover link connects Kraken's USDC earn product to FXRP stakers. It may create a USDC-fee-to-FXRP reward conversion channel, but actual conversion volume and net XRP spot demand remain unverified.",
+    "sources": [
+      "https://firelight.finance/articles/firelight-brings-onchain-cover-to-kraken-defi-earn",
+      "https://firelight.finance/articles/how-protected-vaults-reach-users-the-kraken-defi-earn-example",
+      "https://firelight.finance/articles/everything-stakers-need-to-know-about-phase-2",
+      "https://firelight.finance/articles/firelight-is-live-institutional-grade-cover-for-defi"
+    ]
+  },
+  "fxrp_reserve_concentration": {
+    "source": "https://flareforge.io/api/fxrp.json",
+    "generated_at_utc": "2026-11-02T00:27:21Z",
+    "holder_balances": [
+      {
+        "label": "Firelight (stXRP)",
+        "fxrp": 51901496.580832,
+        "share_pct": 36.0484094457
+      },
+      {
+        "label": "Morpho lending markets",
+        "fxrp": 28849463.21767,
+        "share_pct": 20.0375197416
+      },
+      {
+        "label": "Bridged to other chains",
+        "fxrp": 20098496.191908,
+        "share_pct": 13.959497658
+      },
+      {
+        "label": "Kinetic lending",
+        "fxrp": 18087773.393349,
+        "share_pct": 12.5629414217
+      },
+      {
+        "label": "Enosys Loans",
+        "fxrp": 4320169.021392,
+        "share_pct": 3.0005921219
+      },
+      {
+        "label": "SparkDEX stXRP/FXRP pool",
+        "fxrp": 1900464.452783,
+        "share_pct": 1.3199758243
+      }
+    ],
+    "top_three_share_pct": 70.0454268453,
+    "top_four_share_pct": 82.608368267,
+    "top_six_share_pct": 86.9289362132,
+    "interpretation": "A large share of FXRP is concentrated in protocol destinations. The Morpho category aggregates markets and must not be confused with the single FXRP/RLUSD market snapshot. Holder labels are third-party classifications."
+  },
+  "historical_fxrp_context": {
+    "source": "https://xrpl.to/insights/fxrp-backing-nine-xrpl-addresses",
+    "measurement_date": "2026-08-30",
+    "reported_peak_fxrp_supply": 157425535,
+    "peak_date": "2026-06-01",
+    "reported_supply_change_by_2026_08_30": -9281110,
+    "reported_peak_to_aug30_decline_pct": 5.9,
+    "reported_march_mints_xrp": 37188200,
+    "reported_august_mints_xrp": 2066170,
+    "reported_mint_decline_pct": 94,
+    "reported_mints": 54100,
+    "reported_redemptions": 19102,
+    "reported_distinct_xrpl_addresses": 15801,
+    "reported_nonexchange_wallet_median_xrp": 10,
+    "reported_vault_share_pct": 64,
+    "caveats": [
+      "Independent third-party fixed-ledger analysis; not an official Flare report.",
+      "Historical figures are not a current flow series.",
+      "The current API supply of 143.977M is about 8.54% below the reported June 1 peak, but current net flows must be reconstructed from contract totalSupply snapshots, not explorer event counts.",
+      "A 10 XRP median among non-exchange wallets in that sample is evidence of retail-sized participation, not proof that all FXRP users are retail."
+    ]
+  }
+}

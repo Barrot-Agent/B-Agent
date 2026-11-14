@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_xrp_intelligence_run13_handoff",
+  "captured_at_utc": "2026-11-01T23:01:22Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_state": {
+    "main_sha": "ce1139c7c032e0bdca93efcf2ea963a5ace56b6e",
+    "main_latest_commit": "Cross-analysis refresh [skip ci]",
+    "main_commit_changed_only": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "sentiment_artifact": {
+      "generated_at": "2026-11-01T22:51:43.257567+00:00",
+      "xrp_recent_entries": 0,
+      "xrp_prior_entries": 0,
+      "xrp_scores": null,
+      "btc_recent_entries": 0,
+      "btc_prior_entries": 0,
+      "btc_scores": null
+    },
+    "pr_1477": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "base_sha": "a26feebb31c98923e4161b61339cfb575df6fc34",
+      "head_sha_before_append": "02c5ddfefa18236a42b65c1e52a5a74ae4cf6167",
+      "exact_head_ci_run": 41357233428,
+      "exact_head_ci": "342 tests and 8 subtests passed",
+      "fail_closed_gate_run": 41357233484,
+      "gate": "PASS; merging disabled",
+      "base_relation": "One main commit behind; main's only intervening commit changes sentiment_shift.json, which is not in PR #1477 changed paths."
+    },
+    "other_open_prs": [
+      {
+        "number": 1474,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+        "scope": "privileged workflow quarantine; stale base; zero-job push-event anomalies unresolved"
+      },
+      {
+        "number": 1475,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+        "scope": "prediction ledger integrity; stale base"
+      },
+      {
+        "number": 1476,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "base_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+        "scope": "subscriber client-side privacy gate; stale base"
+      }
+    ],
+    "current_main_workflow_risks": [
+      "Scheduler Tick retains actions:write and contents:write with queue-supplied workflow filenames and no strict allowlist verified in inspected source.",
+      "Merge Queue remains manually dispatchable with dry_run=false by default and max_prs=0 meaning unlimited processing; explicit designated-human per-PR approval was not found in inspected source.",
+      "Cross Analysis and Autonomous Resolver retain mutation permissions on main.",
+      "sentiment_shift generated_at advances with zero observations and null scores; do not treat generated_at as data freshness."
+    ],
+    "latest_autonomous_resolver_run": {
+      "run_id": 41360007539,
+      "conclusion": "success",
+      "job_log": "Existing duplicate issue already open; no new issue/PR mutation recorded in this run."
+    },
+    "branch_protection": {
+      "protected": true,
+      "required_status_contexts": [],
+      "full_rules": "NOT_AVAILABLE_FROM_EXPOSED_RESPONSE"
+    }
+  },
+  "changes_in_this_append": [
+    "Added append-only Ripple-Circle direct partnership correction.",
+    "Separated Coinbase Advanced non-US collateral terms from Coinbase Prime US institutional and US Derivatives collateral lists.",
+    "Corrected CFTC Letter 26-17 legal-pathway interpretation and classification of 100% NLE/120% details.",
+    "Added Circle agent-metric denominator/window separation.",
+    "Added official SBIC and Permission ASK identity source records.",
+    "Added regression tests."
+  ],
+  "verification_plan": "GitHub CI must run on the resulting exact PR head. No local repository checkout was available in this run; no claim of local test execution.",
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "paper_positions_changed": false,
+    "real_money_trades": false
+  },
+  "prediction_status": "NOT_ISSUED",
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "not_verified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "next_action": "Review exact-head CI for this append, then reconcile RLUSD supply and x402 raw transaction identity before admitting new features or issuing any forecast."
+}

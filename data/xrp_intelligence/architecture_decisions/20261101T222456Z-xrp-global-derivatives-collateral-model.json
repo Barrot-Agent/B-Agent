@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_collateral_derivatives_architecture_decision",
+  "decision_id": "ADR-XRP-20261101-COINBASE-GLOBAL-XCOLLATERAL",
+  "captured_at_utc": "2026-11-01T22:24:56Z",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Separate non-US Global Derivatives XRP collateral from US Prime CFM collateral eligibility.",
+      "reason": "Non-US cross-collateral page lists XRP with 15% X:SM haircut; US Prime public page lists only USDC, BTC and ETH."
+    },
+    {
+      "id": "D2",
+      "decision": "Track XRP collateral amount, haircut, margin model, settlement currency, region, account type and auto-rebalancing separately.",
+      "reason": "XRP can collateralize USDC-settled positions and can be sold/rebalanced to cover negative settlement-currency equity."
+    },
+    {
+      "id": "D3",
+      "decision": "Treat CFTC Letter 26-17 as a conditional regulatory pathway, not proof of XRP product use.",
+      "reason": "The letter includes digital commodities such as XRP, but current public US collateral documentation does not list XRP."
+    },
+    {
+      "id": "D4",
+      "decision": "Track XRP options as USDC-settled derivative exposure, separate from spot XRP holdings and XRP collateral.",
+      "reason": "Options use XRP_USDC index and 1,000 XRP multiplier; settlement is in USDC."
+    },
+    {
+      "id": "D5",
+      "decision": "Do not infer Circle direct lending from USDC settlement or margin use.",
+      "reason": "Circle issues USDC; Coinbase/Deribit operate the product; actual USDC lender or reserve allocation is not disclosed."
+    }
+  ],
+  "required_dimensions": [
+    "region",
+    "account_type",
+    "margin_model",
+    "collateral_asset",
+    "haircut",
+    "settlement_currency",
+    "underlying_index",
+    "contract_multiplier",
+    "auto_rebalance_events",
+    "liquidation_events",
+    "custody_location",
+    "source_asof"
+  ],
+  "no_inference_rules": [
+    "Do not state XRP is accepted as US collateral when current public US Prime list omits it.",
+    "Do not treat the 26-17 no-action letter as a general rule.",
+    "Do not classify collateral posting as a spot purchase.",
+    "Do not treat a dash in X:PM haircut table as a verified zero unless product documentation clarifies."
+  ]
+}

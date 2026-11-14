@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_intelligence_source_registry_addendum",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "sources": [
+    {
+      "id": "SRC_RIPPLE_COINBASE",
+      "publisher": "Ripple",
+      "date": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "type": "official_announcement",
+      "status": "PRIMARY_SOURCE",
+      "limits": [
+        "Global Exchange collateral future-announced, not actual use"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_ARC",
+      "publisher": "Circle Investor Relations",
+      "date": "2026-09-16",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "type": "official_announcement",
+      "status": "PRIMARY_SOURCE",
+      "limits": [
+        "98.8% agent share is company-reported; live volumes not independently verified"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_10Q",
+      "publisher": "Coinbase Global",
+      "date": "2026-10-29",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "type": "SEC_10Q",
+      "status": "PRIMARY_FILING",
+      "limits": [
+        "Stablecoin revenue not XRP-specific"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_10Q",
+      "publisher": "Circle Internet Group",
+      "date": "2026-08-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "type": "SEC_10Q",
+      "status": "PRIMARY_FILING",
+      "limits": [
+        "Q2 distribution costs only; Q3 filing not available"
+      ]
+    },
+    {
+      "id": "SRC_DEFILLAMA",
+      "publisher": "DefiLlama",
+      "date": "2026-11-01",
+      "url": "https://defillama.com/chain/xrpl",
+      "type": "independent_aggregator",
+      "status": "OBSERVED",
+      "limits": [
+        "Methodology and exact ledger cutoffs not fully exposed"
+      ]
+    },
+    {
+      "id": "SRC_XRP_INSIGHTS",
+      "publisher": "XRP Insights",
+      "date": "2026-11-01",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "type": "onchain_dashboard_and_issuer_data",
+      "status": "OBSERVED",
+      "limits": [
+        "Internal escrow inconsistency; x402 and category-overlap checks required"
+      ]
+    },
+    {
+      "id": "SRC_XR_LINEAGE",
+      "publisher": "XRPL-Utilities",
+      "date": "2026-11-01",
+      "url": "https://xrpl-utilities.com/lineage/",
+      "type": "independent_dashboard",
+      "status": "SEARCH_INDEXED_OBSERVATION",
+      "limits": [
+        "910.3M dynamic value not visible in static page; definition/hotwallet treatment unknown"
+      ]
+    },
+    {
+      "id": "SRC_BITQUERY",
+      "publisher": "Bitquery Research",
+      "date": "2026-10-19",
+      "url": "https://bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "type": "onchain_investigation",
+      "status": "PUBLISHED_ANALYSIS",
+      "limits": [
+        "Cluster attribution inferred; operator unknown; no facilitator SourceTag join"
+      ]
+    },
+    {
+      "id": "SRC_TRADRADAR",
+      "publisher": "TradRadar",
+      "date": "2026-11-01",
+      "url": "https://tradradar.io/markets/xrp",
+      "type": "derivatives_market_data",
+      "status": "OBSERVED",
+      "limits": [
+        "Seven exchanges; liquidations lower bound"
+      ]
+    },
+    {
+      "id": "SRC_SEANDRA",
+      "publisher": "Seandra AI",
+      "date": "2026-11-01",
+      "url": "https://seandra.ai/perp/xrp",
+      "type": "single_venue_derivatives_data",
+      "status": "OBSERVED",
+      "limits": [
+        "Binance USDT perpetual only"
+      ]
+    },
+    {
+      "id": "SRC_MAKETO",
+      "publisher": "Maketo",
+      "date": "2026-11-01",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "type": "ETF_flow_aggregator",
+      "status": "OBSERVED",
+      "limits": [
+        "Different fund universe/methodology from XRP Insights"
+      ]
+    },
+    {
+      "id": "SRC_SBI_REMIT",
+      "publisher": "SBI Remit",
+      "date": "2023-09-06",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "type": "official_announcement",
+      "status": "PRIMARY_SOURCE",
+      "limits": [
+        "Historical launch, not current throughput"
+      ]
+    },
+    {
+      "id": "SRC_SBIC",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "date": "not_stated",
+      "url": "https://www.sbic.co.jp/investment/faq/",
+      "type": "official_entity_identity",
+      "status": "PRIMARY_SOURCE",
+      "limits": [
+        "No XRP/Circle relationship established"
+      ]
+    },
+    {
+      "id": "SRC_CFTC",
+      "publisher": "CFTC staff",
+      "date": "2026-02-06",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "type": "regulatory_staff_letter",
+      "status": "PRIMARY_REGULATORY_SOURCE",
+      "limits": [
+        "Conditional stablecoin treatment, not blanket XRP approval or evidence of actual FCM use"
+      ]
+    },
+    {
+      "id": "SRC_RL_TRACKER",
+      "publisher": "RLUSD Tracker",
+      "date": "not_stated",
+      "url": "https://api.rl-tracker.com/",
+      "type": "public_API_documentation",
+      "status": "DESIGNED_API_NOT_QUERIED",
+      "limits": [
+        "Live JSON not retrieved in this run"
+      ]
+    },
+    {
+      "id": "SRC_GITHUB",
+      "publisher": "GitHub Barrot-Agent/B-Agent",
+      "date": "2026-11-01",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "type": "authorized_repository_observation",
+      "status": "VERIFIED_ACCESS",
+      "limits": [
+        "Branch protection review settings not fully available; no secrets accessed"
+      ]
+    }
+  ],
+  "independence_notes": [
+    "Coinbase and Circle SEC filings are separate issuer filings but both self-reported.",
+    "Circle Arc and Ripple/Coinbase announcements are issuer statements.",
+    "Bitquery, XRP Insights, DefiLlama, XRPL-Utilities, TradRadar, Seandra and Maketo are distinct providers; definitions are not interchangeable.",
+    "Two dashboards reading the same ledger fields are not necessarily statistically independent."
+  ]
+}

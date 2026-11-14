@@ -1,0 +1,601 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_flare_fxrp_firelight_morpho_actual_capital_reconciliation",
+  "captured_at_utc": "2026-11-02T00:13:48Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "actual_capital_phrase": {
+    "exact_phrase": "actual capital deployment and liquidity provision",
+    "source": "https://flare.network/de/news/introduction-to-xrp-defi",
+    "publication_date": "2025-05-02",
+    "context": "Flare's discussion of USDt0, an omnichain stablecoin backed 1:1 by Ethereum USDT and brought to Flare through LayerZero's OFT standard, as a liquidity base for XRPFi.",
+    "classification": "EXACT_OFFICIAL_PHRASE_MATCH",
+    "intended_original_user_reference": "UNCONFIRMED",
+    "limits": [
+      "The phrase is marketing/context language, not a disclosed dollar amount or proof of a particular investor's capital transfer.",
+      "USDt0 is a Tether-related asset, not Circle USDC or Ripple RLUSD."
+    ]
+  },
+  "flare_official_ecosystem_update": {
+    "source": "https://flare.network/news/one-year-of-fxrp-on-flare",
+    "publication_date": "2026-09-24",
+    "reported_fxrp_minted": 145200000,
+    "reported_fxrp_deployed_in_defi": 130000000,
+    "reported_fxrp_transactions": 7800000,
+    "reported_fxrp_on_other_chains": 21000000,
+    "classification": "FLARE_FIRST_PARTY_ECOSYSTEM_REPORT",
+    "limits": [
+      "Rounded company-reported metrics; not a full independent event-level audit.",
+      "Deployed FXRP is a representation of existing XRP, not proof of equivalent net new spot purchases.",
+      "Transaction count may include repeated lending, collateral, bridge and vault operations; it is not unique users or net economic value."
+    ],
+    "token_value_capture": {
+      "fip_16": "Flare reports annual FLR inflation reduced from 5% to 3%.",
+      "fee_destination": "Specific recurring fees route to FIRE for supply-reduction buybacks/burns.",
+      "reported_cumulative_fire_value_usd": 44632,
+      "fee_events_that_contribute": [
+        "FAssets minting",
+        "FXRP destination-tag fees",
+        "FDC attestations",
+        "redemptions"
+      ],
+      "explicit_exclusion": "Flare states that not every FXRP trade or loan generates a Flare fee.",
+      "classification": "FLARE_FIRST_PARTY_REPORT",
+      "limits": [
+        "FIRE and FLR value capture are not XRP value capture.",
+        "The reported $44,632 is cumulative and not a per-XRP-holder return."
+      ]
+    },
+    "xrpl_native_rlusd_borrow_path": {
+      "status": "ROADMAP_NOT_LIVE",
+      "description": "Flare describes a future flow in which a user signs from an XRPL wallet, borrows RLUSD against native XRP and receives RLUSD back to an XRPL, exchange or bank address.",
+      "current_live_market": "The live Morpho market in this snapshot uses FXRP collateral on Ethereum, not native XRP on XRPL."
+    }
+  },
+  "flareforge_independent_snapshot": {
+    "source": "https://flareforge.io/api/fxrp.json",
+    "source_class": "INDEPENDENT_PUBLIC_CHAIN_AND_XRPL_RECONCILIATION",
+    "generated_at_utc": "2026-11-01T23:57:22.771Z",
+    "captured_at_utc": "2026-11-02T00:13:48Z",
+    "flare_block": 73484093,
+    "xrpl_ledger_index": 108044036,
+    "fxrp_supply": 143995073.5804,
+    "native_xrp_backing": 144079041.11,
+    "native_xrp_backing_ratio": 1.0005831,
+    "backing_surplus_xrp": 83967.53,
+    "core_vault_xrp": 142613581.15,
+    "agent_xrp": 1465459.97,
+    "agent_minted_fxrp": 1381719.52,
+    "core_vault_liquid_xrp": 2613581.15,
+    "core_vault_escrowed_xrp": 140000000,
+    "core_vault_escrow_count": 14,
+    "core_vault_escrowed_share_pct": 98.17,
+    "remote_fxrp_total": 20097501.29,
+    "remote_fxrp_by_chain": {
+      "Ethereum": 13566178.67,
+      "Monad": 5192465.75,
+      "HyperEVM": 787929.98,
+      "Katana": 470147.1,
+      "Base": 71698.43,
+      "BNB": 9081.35
+    },
+    "bridge_reconciliation_passed": true,
+    "core_vault_paused": false,
+    "agent_status": "All six listed agents reported normal.",
+    "agent_pool_collateral_ratio_range": [
+      2.17,
+      8.41
+    ],
+    "top_fxrp_holders": [
+      {
+        "protocol": "Firelight stXRP vault",
+        "fxrp": 51899854.32,
+        "share_pct": 36.04
+      },
+      {
+        "protocol": "Morpho lending markets on Flare",
+        "fxrp": 28851381.9,
+        "share_pct": 20.04
+      },
+      {
+        "protocol": "FXRP bridged to other chains",
+        "fxrp": 20097501.29,
+        "share_pct": 13.96
+      },
+      {
+        "protocol": "Kinetic lending",
+        "fxrp": 18168918.22,
+        "share_pct": 12.62
+      },
+      {
+        "protocol": "Enosys Loans",
+        "fxrp": 4331084.74,
+        "share_pct": 3.01
+      },
+      {
+        "protocol": "SparkDEX stXRP/FXRP pool",
+        "fxrp": 1904333.03,
+        "share_pct": 1.32
+      }
+    ],
+    "top_six_holder_share_pct": 86.98,
+    "limits": [
+      "Independent explorer/API, not affiliated with Flare Foundation; labels are third-party address classifications.",
+      "The 100.05831% figure is native XRP backing divided by FXRP supply; it is not the separate agent collateral ratio.",
+      "Agent pool collateral ratios are additional protection and are not the same as 1:1 underlying XRP backing.",
+      "The 140M escrowed XRP remains backing but is not immediately liquid; only about 2.614M XRP was liquid in the core vault at this snapshot.",
+      "Remote FXRP is bridged representation, not native XRP supply on those chains.",
+      "Protocol holder labels do not establish beneficial ownership or prove all balances are economically deployed."
+    ]
+  },
+  "firelight_cover": {
+    "source_official": "https://flare.network/news/firelight-is-live",
+    "source_docs": "https://firelight.finance/",
+    "source_secondary_buffer": "https://cryptoslate.com/firelight-launches-its-xrp-based-coverage-market-on-flare/",
+    "phase_two_live_date": "2026-10-06",
+    "phase_one_positions_auto_converted_to_active_coverage": true,
+    "current_fxrp_held_in_firelight_contract": 51899854.32,
+    "current_share_of_fxrp_supply_pct": 36.04,
+    "coverage_period_days": 30,
+    "exit_rule": "Official material says exits take longer and the unstaking window follows the coverage period; secondary reporting describes a 30-60 day exit depending on timing.",
+    "slashing_risk": "Confirmed: staked FXRP is loss-bearing cover capital and can be slashed after claims exceed the first-loss buffer.",
+    "not_insurance": true,
+    "shared_cover_targets": [
+      "Sentora USD Protected Vault",
+      "Sentora Protected RWA Vault",
+      "Kraken USDC DeFi Earn Protected Strategy"
+    ],
+    "first_loss_buffer": {
+      "official_description": "Stablecoin reserve / first-loss buffer.",
+      "secondary_reported_asset": "USDT0",
+      "secondary_reported_balance_usd": 1000002.59,
+      "secondary_observation_date": "2026-10-14",
+      "status": "SECONDARY_ONCHAIN_OBSERVATION_NOT_CURRENTLY_REVERIFIED",
+      "official_asset_composition_and_current_balance": "UNKNOWN"
+    },
+    "reward_accrual_during_unstaking": "UNRESOLVED",
+    "reward_source_conflict": [
+      "Official launch material describes emissions flowing to stakers while the position remains in the process.",
+      "Secondary review of the withdrawal mechanics says rewards stop when unstaking is requested.",
+      "Contract-level state transition and current deployed code must resolve the discrepancy."
+    ],
+    "limits": [
+      "51.9M FXRP in the Firelight contract is a public balance, not necessarily fully available cover capacity.",
+      "The previously published 65M FXRP deposit cap and the later $115M aggregate cover-cap language are different metrics; current cap and exact unit reconciliation are pending.",
+      "The first-loss buffer amount is not confirmed by the official page retrieved.",
+      "One shared pool backs multiple covered vaults, so losses in non-XRP strategies can affect FXRP stakers."
+    ],
+    "sentora_usd_vault_asset_identity": "Not specified in the official Firelight announcement retrieved; do not assume this USD Protected Vault is RLUSD.",
+    "secondary_observations": {
+      "source": "https://cryptoslate.com/firelight-launches-its-xrp-based-coverage-market-on-flare/",
+      "reported_first_three_cover_orders_usd": 38000000,
+      "reported_premiums_usd": 56913.7,
+      "reported_first_loss_buffer_usdt0_usd": 1000002.59,
+      "observed_date": "2026-10-14",
+      "status": "SECONDARY_REPORT_NOT_CURRENTLY_REVERIFIED"
+    }
+  },
+  "morpho_ethereum_rlusd_fxrp_market": {
+    "source": "https://app.morpho.org/ethereum/market/rlusd-fxrp",
+    "market_id": "0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96",
+    "captured_at_utc": "2026-11-02T00:13:48Z",
+    "chain": "Ethereum",
+    "collateral_asset": "FXRP",
+    "debt_asset": "RLUSD",
+    "curator": "Sentora",
+    "market_permissionless": true,
+    "total_market_size_usd": 9350000,
+    "borrowed_rlusd": 8440000,
+    "available_liquidity_usd": 909850,
+    "utilization_pct": 90.27,
+    "borrow_rate_pct": 7.83,
+    "supply_rate_pct": 7.03,
+    "borrow_rate_24h_average_pct": 7.78,
+    "borrow_rate_7d_average_pct": 10.58,
+    "liquidation_ltv_pct": 77,
+    "liquidation_penalty_pct": 7.41,
+    "realized_bad_debt_usd": 0,
+    "unrealized_bad_debt_usd": 0,
+    "supplier_concentration": {
+      "top_supplier_vault": "Sentora RLUSD Main",
+      "share_pct": 99.04
+    },
+    "borrower_concentration": {
+      "borrower_count": 60,
+      "top_three_shares_pct": [
+        37.34,
+        34.51,
+        19.11
+      ],
+      "top_three_total_share_pct": 90.96,
+      "top_two_total_share_pct": 71.85,
+      "lowest_health_factor_displayed": 1.199,
+      "top_three_health_factors": [
+        1.684,
+        1.503,
+        1.274
+      ]
+    },
+    "oracle_configuration": {
+      "fxrp_usd": {
+        "provider": "RedStone",
+        "heartbeat_hours": 6,
+        "deviation_pct": 0.25
+      },
+      "rlusd_usd": {
+        "provider": "Chainlink",
+        "heartbeat_hours": 24,
+        "deviation_pct": 0.3
+      }
+    },
+    "historical_liquidations": [
+      {
+        "date": "2026-10-15",
+        "rlusd_repaid": 1717.97,
+        "fxrp_seized": 1432.43,
+        "bad_debt": 0
+      },
+      {
+        "date": "2026-09-23",
+        "rlusd_repaid": 1296.36,
+        "fxrp_seized": 920.18,
+        "bad_debt": 0
+      }
+    ],
+    "static_price_shock_to_liquidation_pct": {
+      "health_factor_1_199": 16.6,
+      "health_factor_1_274": 21.51,
+      "health_factor_1_503": 33.47,
+      "health_factor_1_684": 40.62
+    },
+    "stress_test_assumptions": [
+      "Debt and interest unchanged",
+      "Oracle prices move one-for-one with FXRP market value",
+      "No borrower repayment, top-up, oracle delay, liquidation bonus or slippage feedback"
+    ],
+    "limits": [
+      "The Morpho market is permissionless; Sentora curates the relevant RLUSD supply vault but does not make this a direct Ripple loan.",
+      "RLUSD is issued by Standard Custody & Trust Company, a Ripple-owned entity; the vault supplier is Sentora RLUSD Main, not proven to be Ripple itself.",
+      "High utilization and borrower/supplier concentration are liquidity and concentration risks, not evidence of bad debt.",
+      "The liquidation stress thresholds are static sensitivities, not price forecasts.",
+      "No borrower beneficial ownership is attributed."
+    ]
+  },
+  "sentora_relationships": {
+    "funding_source": "https://www.prnewswire.com/news-releases/intotheblock-and-trident-merge-to-launch-sentora-securing-25m-to-create-first-compliant-institutional-defi-platform-for-yield-liquidity-and-risk-management-302447198.html",
+    "funding_date": "2025-05-06",
+    "series_a_usd": 25000000,
+    "strategic_ecosystem_investors": [
+      "Ripple",
+      "Flare",
+      "Curved Ventures",
+      "Bankai Ventures"
+    ],
+    "CEO": "Anthony DeMartino",
+    "former_coinbase_role": "Former Head of Risk at Coinbase, as reported by The Block.",
+    "incubated_protocol": "Firelight",
+    "classification": "CORPORATE_INVESTOR_AND_PERSONNEL_LINKS; NOT EVIDENCE OF COMMON CONTROL",
+    "implications": [
+      "Ripple and Flare are both strategic ecosystem investors in Sentora.",
+      "Sentora curates the Morpho RLUSD/FXRP market and incubated Firelight.",
+      "Coinbase is connected through CEO Anthony DeMartino's former role, a personnel link only; no Coinbase equity stake or corporate partnership with Sentora was established."
+    ]
+  },
+  "identity_resolution": {
+    "ask_coin": {
+      "best_literal_match": "Ask Coin exchange listing on CoinMarketCap",
+      "status": "Inactive / untracked",
+      "volume_data": "Untracked",
+      "reserve_data": "Unavailable",
+      "trading_pairs": "No usable active market data found",
+      "xrp_relationship": "No direct XRP relationship established",
+      "intended_referent": "UNCONFIRMED",
+      "distinctions": [
+        "Permission Coin is a different token with ticker ASK and Base/Polygon contracts; it is not the Ask Coin exchange.",
+        "AskSurf is a separate x402 directory merchant; no relationship to Ask Coin or Permission Coin established."
+      ]
+    },
+    "sbic": {
+      "entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "official_company_source": "https://www.sbic.co.jp/",
+      "training_source": "https://www.sbic.co.jp/training/20250612co/",
+      "training_dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "audience": "SBIC investee companies",
+      "content": [
+        "Day 1: ChatGPT and generative AI",
+        "Day 2: Copilot, RAG and API integration"
+      ],
+      "relationship_to_openai": "No OpenAI partnership established; the course was training for SBIC investee companies.",
+      "relationship_to_xrp": "No XRP or Ripple relationship established",
+      "distinctions": [
+        "Tokyo SBIC is separate from SBI Holdings.",
+        "Other Japanese entities use SBIC-like abbreviations; the exact ChatGPT course identifies Tokyo SBIC as the strongest referent for the phrase.",
+        "Tokyo SBIC is not SBI Holdings, SBI Circle Holdings/Circle SBI Japan KK, SBI VC Trade or SBI Ripple Asia."
+      ]
+    },
+    "actual_capital": {
+      "strongest_exact_phrase_match": "Flare official article: 'actual capital deployment and liquidity provision'.",
+      "context": "USDt0 and XRPFi on Flare.",
+      "dollar_amount": "None stated by that phrase.",
+      "intended_original_reference": "UNCONFIRMED"
+    },
+    "camilla_kamilah_stephenson": {
+      "identity": "Dr. Kamilah Stevenson",
+      "channel_handle": "@drkamilahstevenson",
+      "user_confirmation": "User previously confirmed Kamilah Stevenson as the intended creator.",
+      "name_variant": "An iHeart podcast transcript uses 'Camilla' when introducing the guest; the YouTube handle spells Kamilah.",
+      "inventory_status": "INCOMPLETE",
+      "vidIQ_attempt": "Blocked this run by insufficient vidIQ credits; no exhaustive upload inventory retrieved."
+    }
+  },
+  "xrp_market_snapshot": {
+    "price_usd_range": [
+      1.24,
+      1.25
+    ],
+    "price_sources": [
+      "CoinMarketCap",
+      "XRP Insights",
+      "TotalMarketCap"
+    ],
+    "market_cap_usd": 79050000000,
+    "circulating_supply_xrp": 63350000000,
+    "total_supply_xrp": 99980000000,
+    "market_volume_24h_usd": 778550000,
+    "observed_date": "2026-11-01",
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "open_interest_usd": 1890000000,
+        "universe": "7 exchanges",
+        "funding_pct_per_8h": 0.0076,
+        "long_account_ratio_pct": 77.9,
+        "liquidations_24h_usd": 1010000,
+        "long_liquidations_usd": 898000,
+        "short_liquidations_usd": 107000
+      },
+      {
+        "provider": "Kodexius",
+        "open_interest_usd": 754570000,
+        "universe": "7 contract series; different venue/contract coverage"
+      },
+      {
+        "provider": "Seandra",
+        "open_interest_usd": 340600000,
+        "universe": "Binance USDT perpetual only"
+      }
+    ],
+    "derivatives_policy": "Do not average these open-interest values; they measure different venue and contract universes.",
+    "etf_flows": {
+      "period": "Week 44 / 2026-10-26 through 2026-10-30",
+      "net_flow_xrp": 3390000,
+      "net_flow_usd": 4240000,
+      "reported_holdings_xrp": 1196600000,
+      "reported_aum_usd": 1503000000,
+      "calculated_flow_pct_of_holdings": 0.283,
+      "calculated_flow_pct_of_market_cap": 0.0054,
+      "scope": "XRP Insights tracker; six spot funds plus BITW; GXRP history remains incomplete"
+    },
+    "exchange_wallets": {
+      "reported_xrp": 22480000000,
+      "wallet_count": 701,
+      "exchange_count": 24,
+      "classification": "Attributed exchange/custody wallets, including cold storage; not tradable float."
+    },
+    "interpretation": "Positive ETF flow and high derivatives positioning coexist with a weak one-month price trend. Positive funding and a high long-account ratio raise squeeze/liquidation sensitivity but do not determine direction."
+  },
+  "repository_sentiment_audit": {
+    "main_branch_profile_generated_at": "2026-11-01T23:51:37Z",
+    "entity_sentiment_profile": {
+      "source_entries_xrp_log": 1208,
+      "source_entries_btc_log": 1245,
+      "xrp_mentions": 286,
+      "bullish": 186,
+      "neutral": 44,
+      "bearish": 56,
+      "net_sentiment_score": 0.455,
+      "time_window": "All-time cumulative history",
+      "deduplicated_by_independent_source": false,
+      "recency_weighted": false,
+      "model_admission": "REJECTED_AS_CURRENT_SENTIMENT_FEATURE"
+    },
+    "sentiment_shift": {
+      "window_hours": 24,
+      "recent_entries": 0,
+      "prior_entries": 0,
+      "score": null,
+      "model_admission": "NO_CURRENT_SIGNAL"
+    },
+    "reason": "The positive cumulative profile is historical mention sentiment, not a current market measure; the recency artifact currently has no observations. Neither should be used as a live XRP prediction feature."
+  },
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "reason": "New FXRP, Firelight and Morpho features have not been assembled into a point-in-time historical feature store or validated with walk-forward out-of-sample testing.",
+    "feature_candidates": [
+      "FXRP supply and XRP backing ratio",
+      "core-vault liquid versus escrowed XRP",
+      "agent pool collateral ratios",
+      "Firelight staked FXRP, cover exposure, first-loss buffer, claims and withdrawal queue",
+      "Morpho RLUSD/FXRP utilization, liquidity, supplier/borrower concentration, health factors, liquidations and oracle heartbeat",
+      "remote FXRP by chain",
+      "XRP ETF flows, exchange balances and venue-normalized open interest"
+    ],
+    "admission_rules": [
+      "Keep XRP, FXRP and stXRP as distinct assets.",
+      "Do not treat FXRP minting or DeFi deployment as net new XRP purchases.",
+      "Do not treat gross lending volume or repeated transactions as net capital.",
+      "Require timestamped raw-event provenance and unique wallet/market identifiers.",
+      "No directional forecast until historical features, baselines, calibration and shadow evaluation exist."
+    ]
+  },
+  "coinbase_circle_sbi": {
+    "coinbase": {
+      "q3_2026": {
+        "filing_date": "2026-10-29",
+        "stablecoin_revenue_usd": 306905000,
+        "average_usdc_held_on_platform": "All-time high, as reported by Coinbase",
+        "consumer_spot_volume_yoy_pct": -59,
+        "institutional_spot_volume_yoy_pct": -53,
+        "assets_on_platform_usd": 376600000000,
+        "monthly_transacting_users_m": 7.4,
+        "net_income_usd": 718700000,
+        "crypto_investment_fair_value_gain_usd": 715022000,
+        "operating_income_usd": 61669000
+      },
+      "rlusd_listing": {
+        "announcement_date": "2026-10-28",
+        "platforms": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase Retail"
+        ],
+        "supported_networks": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "global_exchange_collateral": "FUTURE_ANNOUNCED_NOT_LIVE_AT_CAPTURE",
+        "classification": "DIRECT_COMMERCIAL_PARTNERSHIP_WITH_RIPPLE"
+      },
+      "global_derivatives_xrp": {
+        "scope": "Eligible non-US Coinbase Global Derivatives customers",
+        "x_sm_haircut_pct": 15,
+        "x_pm_haircut": "Not listed in the current table",
+        "cftc_26_17": "Conditional no-action route for CFM customer-owned digital commodities/payment stablecoins through Coinbase Bermuda and Deribit for foreign derivatives, subject to conditions.",
+        "actual_xrp_collateral_balances": "NOT_DISCLOSED"
+      },
+      "evernorth": {
+        "role": "Coinbase identified as principal XRP market for financial reporting and execution partner.",
+        "custody": "BitGo is primary custodian; Coinbase is not the primary custodian."
+      }
+    },
+    "circle": {
+      "q2_2026": {
+        "usdc_circulation_usd": 73300000000,
+        "onchain_transaction_volume_usd": 14800000000000,
+        "reserve_income_share_of_revenue_pct": 95.2,
+        "coinbase_usdc_balance_usd": 12442000000,
+        "coinbase_daily_weighted_share_pct": 19.5,
+        "coinbase_distribution_cost_q2_usd": 324600000,
+        "coinbase_distribution_cost_h1_usd": 655300000
+      },
+      "arc": {
+        "mainnet_launch_date": "2026-09-16",
+        "network_type": "Public EVM-compatible Layer 1 operated by a permissioned validator set",
+        "gas_asset": "USDC",
+        "founding_validator": "SBI Group",
+        "exchange_participants": [
+          "Coinbase",
+          "Binance"
+        ],
+        "credit_protocols": [
+          "Morpho",
+          "Aave"
+        ],
+        "circle_claim_agent_transaction_volume_usdc_pct": 98.8,
+        "circle_claim_x402": "Overwhelming majority of agent-to-agent x402 payments since Agent Stack launched in May 2026 settled in USDC.",
+        "arc_token": {
+          "genesis_supply": 10000000000,
+          "public_launch": "Not committed; genesis mint is a technical milestone only.",
+          "network_fees": "Remain payable in USDC."
+        },
+        "limits": [
+          "98.8% is a Circle company claim, not independently verified global market share.",
+          "No absolute agent-payment volume was supplied in the announcement.",
+          "Arc's permissioned validator set is distinct from a permissionless validator network."
+        ],
+        "sbi_participation_in_arc_presale": {
+          "date": "2026-05-12",
+          "source": "Official SBI Holdings notice",
+          "sbi_amount_usd": "NOT_DISCLOSED",
+          "expected_total_presale_raise_usd": 222000000,
+          "token_allocation": "NOT_DISCLOSED",
+          "lockup": "NOT_DISCLOSED"
+        }
+      }
+    },
+    "sbi_group": {
+      "circle_equity_investment": {
+        "total_usd": 50000000,
+        "contributors": [
+          {
+            "entity": "SBI Holdings",
+            "amount_usd": 25000000
+          },
+          {
+            "entity": "SBI Shinsei Bank",
+            "amount_usd": 25000000
+          }
+        ],
+        "date": "2025-06-09",
+        "source": "Official SBI disclosure"
+      },
+      "circle_jv": {
+        "english_name": "Circle SBI Japan KK",
+        "japanese_name": "SBI Circle Holdings Co., Ltd.",
+        "ownership": [
+          {
+            "entity": "SBI Holdings",
+            "pct": 50
+          },
+          {
+            "entity": "Circle",
+            "pct": 50
+          }
+        ],
+        "agreement_date": "2025-03-18",
+        "completed": "2025",
+        "purpose": "Promote USDC circulation and new use cases in Japan."
+      },
+      "arc_presale": {
+        "participation_date": "2026-05-12",
+        "participant": "SBI Holdings through one of its consolidated subsidiaries",
+        "expected_total_presale_raise_usd": 222000000,
+        "sbi_investment_amount": "NOT_DISCLOSED",
+        "token_allocation": "NOT_DISCLOSED",
+        "lockup": "NOT_DISCLOSED",
+        "status": "OFFICIAL_SBI_DISCLOSURE"
+      },
+      "ripple_equity": {
+        "reported_percentage": "Around 9% / more than 9%, according to SBI Chairman Yoshitaka Kitao's public X statement on 2026-02-15.",
+        "source": "https://x.com/yoshitaka_kitao/status/2022851705772138784",
+        "secondary_reporting": "https://crypto.news/sbi-holdings-says-10b-xrp-talk-is-false/",
+        "classification": "PUBLIC_EXECUTIVE_STATEMENT_NOT_AUDITED_OWNERSHIP_FILING",
+        "clarification": "The statement corrected a claim that SBI held $10B in XRP; it referred to Ripple Labs equity, not a $10B XRP token treasury.",
+        "exact_current_percentage": "NOT_INDEPENDENTLY_VERIFIED"
+      },
+      "operating_xrp_rails": {
+        "sbi_remit": "Operational XRP-based remittance routes to the Philippines, Vietnam and Indonesia; SBI VC Trade supplies XRP and Tranglo handles local payout in the documented 2023 model.",
+        "volumes_and_xrp_inventory": "NOT_DISCLOSED"
+      },
+      "xrpl_tokenized_deposits": {
+        "entity": "SBI Ripple Asia",
+        "date": "2026-02-26",
+        "status": "PROOF_OF_CONCEPT",
+        "description": "Tokenized deposits/deposit-like digital money conceptually using XRPL; not proof of XRP collateralization or XRP-denominated settlement."
+      },
+      "rlusd_japan": {
+        "entity": "SBI VC Trade",
+        "date": "2026-06-24",
+        "treatment": "Japan Type 4 Electronic Payment Instrument classification as stated by SBI VC Trade.",
+        "network_scope": "Not specified in the primary announcement; do not assume XRPL or Ethereum."
+      }
+    },
+    "sbic_tokyo": "Separate from SBI Group; the ChatGPT/Copilot course was for Tokyo SBIC investee companies, not an OpenAI or XRP partnership."
+  },
+  "agentic_payments_comparison": {
+    "xrpl_t54": {
+      "reported_all_time_transactions": 14850000,
+      "reported_all_time_settled_value_usd": 48848,
+      "source": "t54 dashboard snapshot in prior evidence bundle"
+    },
+    "circle_arc": {
+      "reported_usdc_share_of_agent_driven_transaction_volume_pct": 98.8,
+      "absolute_volume_usd": "NOT_DISCLOSED",
+      "source": "Circle Arc mainnet announcement"
+    },
+    "comparability": "NOT_COMPARABLE: different networks, event definitions, windows and denominators. Transaction counts are not settled value or net capital."
+  }
+}

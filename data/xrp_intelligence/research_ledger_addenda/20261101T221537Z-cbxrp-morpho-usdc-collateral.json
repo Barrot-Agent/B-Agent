@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_collateral_research_ledger_addendum",
+  "captured_at_utc": "2026-11-01T22:15:37Z",
+  "findings": [
+    {
+      "id": "F9",
+      "label": "CONFIRMED_PRODUCT_PLUS_ONCHAIN_MARKET",
+      "claim": "Coinbase offers USDC loans against XRP through a Morpho/Base product; the cbXRP/USDC 62.5% LLTV market has $148.1M collateral, 118.59M cbXRP, $59.21M borrowed and 89.8% utilization in the 16:01 UTC snapshot.",
+      "sources": [
+        "SRC_THEBLOCK_COINBASE_XRP_LOANS_20260218",
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ],
+      "caveat": "Specific market attribution is MorphoWatch's public-data inference; market is permissionless."
+    },
+    {
+      "id": "F10",
+      "label": "CONFIRMED_COINBASE_ISSUER_DISCLOSURE",
+      "claim": "Coinbase reported 150.942M XRP reserves backing 150.940M cbXRP, approximately 1:1.",
+      "sources": [
+        "SRC_COINBASE_CBXRP_POR_20261101"
+      ]
+    },
+    {
+      "id": "F11",
+      "label": "DERIVED",
+      "claim": "Approximately 78.57% of cbXRP supply was posted in the primary cbXRP/USDC Morpho market in the same-day observations.",
+      "sources": [
+        "SRC_COINBASE_CBXRP_POR_20261101",
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ],
+      "caveat": "Derived ratio; same-day provider snapshots, not a Coinbase customer-level position map."
+    },
+    {
+      "id": "F12",
+      "label": "CONFIRMED_MARKET_COMPOSITION",
+      "claim": "Nine vaults supplied $58.19M of $65.92M USDC in the market; top three supplied about $52M. The market reported 1,122 liquidations and $3.94M debt repaid in the prior 30 days.",
+      "sources": [
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ]
+    },
+    {
+      "id": "F13",
+      "label": "INFERENCE",
+      "claim": "Circle-issued USDC is a debt asset used against XRP-backed collateral through Coinbase/Morpho, creating an indirect Circle-XRP credit connection.",
+      "sources": [
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101",
+        "SRC_COINBASE_CBXRP_POR_20261101",
+        "SRC_THEBLOCK_COINBASE_XRP_LOANS_20260218"
+      ],
+      "caveat": "No evidence Circle directly supplies the market or that all USDC lender capital comes from Circle."
+    }
+  ],
+  "capital_distinctions": {
+    "cbxrp_mint": "Existing XRP wrapped against Coinbase custody; not proof of new spot purchase.",
+    "morpho_collateral": "Existing XRP-backed cbXRP encumbered while debt is outstanding.",
+    "usdc_borrow": "Credit liability; not net new capital and not necessarily spent on XRP.",
+    "usdc_lenders": "Multiple vaults/curators; not attributed to Circle as direct lender."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Track cbXRP reserve/supply and Morpho collateral daily with same timestamps.",
+    "Track vault allocations and withdrawals; identify concentration shifts.",
+    "Measure liquidation distance by borrower cohort without exposing identities.",
+    "Test whether released collateral is redeemed to native XRP or redeployed.",
+    "Keep Circle as USDC issuer distinct from actual vault suppliers."
+  ]
+}

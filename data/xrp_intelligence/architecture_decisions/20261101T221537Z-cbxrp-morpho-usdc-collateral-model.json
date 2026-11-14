@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_collateral_architecture_decision",
+  "decision_id": "ADR-XRP-20261101-CBXRP-USDC-MORPHO-COLLATERAL",
+  "captured_at_utc": "2026-11-01T22:15:37Z",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Separate underlying XRP custody, cbXRP issuance, cbXRP collateral posted, USDC supplied, USDC borrowed and USDC lender/vault source.",
+      "reason": "A wrapped XRP collateral position is not a new XRP spot purchase; a USDC loan is credit, not new net capital."
+    },
+    {
+      "id": "D2",
+      "decision": "Store Morpho utilization separately from collateral LTV and liquidation threshold.",
+      "reason": "89.8% utilization is borrowed/supplied USDC; 62.5% LLTV is collateral/debt liquidation boundary; 49% is Coinbase UI maximum initial LTV."
+    },
+    {
+      "id": "D3",
+      "decision": "Keep market attribution to Coinbase as a strong inference unless Coinbase publishes a market ID or borrower-origin mapping.",
+      "reason": "Morpho is permissionless and the same market can be used by borrowers outside Coinbase's interface."
+    },
+    {
+      "id": "D4",
+      "decision": "Model collateral lock and liquidation risk separately from spot-demand features.",
+      "reason": "118.59M cbXRP is posted as collateral; liquidations can release or sell collateral during stress, but minting cbXRP wraps existing XRP."
+    },
+    {
+      "id": "D5",
+      "decision": "Record vault concentration and utilization as liquidity-risk features, not as Circle capital deployment.",
+      "reason": "Nine vaults supply $58.19M; Circle is the USDC issuer but no direct Circle lending allocation is established."
+    }
+  ],
+  "metrics_required": [
+    "cbXRP total supply",
+    "Coinbase XRP reserve",
+    "cbXRP posted collateral",
+    "USDC market supply",
+    "USDC borrowed",
+    "available liquidity",
+    "utilization",
+    "LLTV",
+    "Coinbase product max LTV",
+    "liquidation bonus",
+    "borrower count",
+    "liquidation count",
+    "vault lender concentration",
+    "timestamp",
+    "market ID",
+    "oracle price"
+  ],
+  "no_inference_rules": [
+    "Do not call collateral posted a spot purchase.",
+    "Do not call USDC borrowed new capital or Circle direct lending.",
+    "Do not equate utilization with borrower LTV.",
+    "Do not attribute all permissionless market borrowers to Coinbase retail customers."
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "artifact_type": "nine_platform_coordination_capability_authentication_permission_dataflow_map",
+  "evidence_cutoff_utc": "2026-11-01T23:08:51Z",
+  "status": "DESIGNED_NOT_CONNECTED",
+  "mission": "XRP intelligence and prediction-engine mastery with Barrot V3 as execution and verification foundation",
+  "platforms": {
+    "ChatGPT": {
+      "status": "VERIFIED_ACTIVE_CURRENT_SESSION",
+      "designed_role": "Primary orchestrator, public-source research synthesis, evidence ledger, disagreement adjudication, task routing.",
+      "tested_capabilities": [
+        "Current ChatGPT session can perform public web research",
+        "Current GitHub connector can inspect repository state and create commits on an existing PR branch"
+      ],
+      "authentication": "Current product session; no external API key is exposed or stored in the repository.",
+      "permissions": "Current tested GitHub work was limited to an existing draft PR branch; no main-branch write, merge, secret access, workflow dispatch or deployment.",
+      "fallback": "Deterministic local evidence validation and cached source snapshots."
+    },
+    "Claude": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Independent red-team review, counter-hypothesis generation, alternative causal explanations, and blind re-evaluation of evidence packets.",
+      "authentication": "Separate user-authorized account/API credential required; none tested.",
+      "permissions": "Read-only task packets and public evidence; no repository or trading permissions.",
+      "fallback": "Local deterministic red-team checklist and second-pass source review."
+    },
+    "Grok": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Public social-discourse and public X/YouTube claim discovery, with bot/coordination and source-quality caveats.",
+      "authentication": "Separate authorized access required; none tested.",
+      "permissions": "Public content only; no private messages, private accounts, deceptive access or posting authority.",
+      "fallback": "Public search results and archived public discussion snapshots."
+    },
+    "Gemini": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Independent multimodal review of public filings, diagrams, screenshots, and public YouTube videos/transcripts.",
+      "authentication": "Separate authorized account/API credential required; none tested.",
+      "permissions": "Public or explicitly authorized files only; no account or private-data access.",
+      "fallback": "Text extraction, OCR/transcript tools where lawfully available, and manual evidence review."
+    },
+    "Copilot": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Independent repository/code review, test suggestions, and GitHub workflow/dependency review.",
+      "authentication": "GitHub/Copilot authorization required; no Copilot session or token tested.",
+      "permissions": "Read-only repository review by default; no merge, branch protection changes, secret access or workflow dispatch.",
+      "fallback": "Current GitHub connector plus deterministic static analysis and CI."
+    },
+    "Codex": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Isolated implementation agent for bounded code changes, regression tests, and reproducible build/test artifacts.",
+      "authentication": "Separate authorized Codex environment required; none tested.",
+      "permissions": "Branch-scoped writes only after a task packet is approved; no main write, force-push, merge, secrets or deployment.",
+      "fallback": "Current GitHub connector and local deterministic test scripts."
+    },
+    "HuggingFace": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Public model/dataset discovery, model-card provenance, license review, benchmark retrieval, and optional inference evaluation.",
+      "authentication": "Public read access may be possible without a token; private or write operations require a separately scoped token; neither was tested.",
+      "permissions": "Public read-only discovery by default; no model upload, Space restart, private dataset access or token use.",
+      "fallback": "Public model cards, dataset metadata and cached artifact manifests."
+    },
+    "Kaggle": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Public dataset discovery, reproducible historical market notebooks, and independent benchmark replication.",
+      "authentication": "Public pages may be readable without credentials; Kaggle API/account access not tested.",
+      "permissions": "Public datasets/notebooks only by default; no private competition data, account changes or submissions.",
+      "fallback": "Direct public data sources and local reproducible notebooks."
+    },
+    "Databricks": {
+      "status": "NOT_CONNECTED_OR_NOT_TESTED",
+      "designed_role": "Potential governed historical feature store, Delta snapshots, MLflow experiment tracking, model registry, drift monitoring and scalable walk-forward evaluation.",
+      "authentication": "Workspace URL, authorized identity and separately scoped token/service principal required; none tested.",
+      "permissions": "Read-only workspace/data access initially; isolated experiment schema only after authorization; no production deployment or secret-scope read.",
+      "fallback": "Local append-only JSON/Parquet snapshots, SQLite/DuckDB, Python and versioned Git artifacts."
+    }
+  },
+  "infrastructure_connectors": {
+    "GitHub": {
+      "status": "VERIFIED_ACTIVE",
+      "scope": "Barrot-Agent/B-Agent repository and PR branch operations through current connected GitHub capability.",
+      "constraints": [
+        "Read current main and PR state before every write",
+        "Use compare-and-swap expected head for branch updates",
+        "Write only to an explicitly selected draft PR branch",
+        "Never merge, force-push, change branch protection, dispatch workflows, access secrets or deploy without approval"
+      ]
+    }
+  },
+  "task_assignments": {
+    "market_structure": "ChatGPT orchestrates; Claude independently red-teams causal hypotheses; Grok discovers public discussion signals; all claims require primary-source or reproducible market-data evidence.",
+    "filings_and_regulation": "ChatGPT and Gemini independently extract filings and official rules; Claude checks legal scope and counterexamples; source text and exact section references required.",
+    "video_and_public_discussion": "Gemini analyzes publicly available video/transcript content; Grok discovers public discussion; ChatGPT verifies channel identity and deduplicates video IDs. No exhaustive claim until channel identity and upload pagination are verified.",
+    "code_and_security": "Copilot provides independent review if connected; Codex proposes isolated fixes if connected; ChatGPT checks exact-head GitHub metadata and CI evidence.",
+    "datasets_and_models": "Hugging Face inventories model/data licenses and model cards; Kaggle discovers public historical datasets and baseline notebooks; Databricks is the designed feature-store/MLflow destination if authorized.",
+    "prediction_engine": "Databricks/Kaggle/Codex roles are designed only; current implementation and verification remain in Barrot V3 repository and deterministic local scripts."
+  },
+  "evidence_packet_schema": {
+    "required_fields": [
+      "schema_version",
+      "task_id",
+      "platform",
+      "platform_connection_status",
+      "model_or_tool_version",
+      "prompt_or_task_hash",
+      "data_cutoff_utc",
+      "captured_at_utc",
+      "claims",
+      "source_ids",
+      "source_urls",
+      "publication_dates",
+      "quoted_excerpt_or_exact_location",
+      "evidence_class",
+      "independence_group",
+      "confidence",
+      "counter_evidence",
+      "minority_objection",
+      "unknowns",
+      "reproduction_steps",
+      "artifact_sha256"
+    ],
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY",
+      "INDEPENDENTLY_CORROBORATED",
+      "SOURCED_CLAIM",
+      "INFERENCE",
+      "SPECULATION",
+      "UNKNOWN",
+      "DISCONFIRMED"
+    ],
+    "prohibition": "Model output without a source, reproducible calculation or explicit inference label is not evidence."
+  },
+  "data_flow": [
+    "Lawful public/authorized ingestion -> immutable timestamped source snapshots and SHA-256 provenance",
+    "Canonical entity/source registry -> normalized event timeline and historical feature store",
+    "Independent platform task packets with identical data cutoff and explicit permissions",
+    "Structured evidence packets -> source-independence checks and counter-evidence collection",
+    "Adjudication by source authority, temporal validity, independence and reproducibility; never majority vote",
+    "Minority objections retained -> independent red-team -> human review for consequential decisions",
+    "Leakage-safe feature admission -> walk-forward/backtesting -> calibration/drift evaluation -> paper/shadow only",
+    "Verified handoff with artifact hashes, branch/commit SHA, exact CI run IDs and outcome follow-up"
+  ],
+  "disagreement_resolution": {
+    "method": "Resolve each claim independently using primary-source authority, source independence, chronology, definitions, reproducibility and disconfirming evidence.",
+    "no_forced_unanimity": true,
+    "preserve_minority_objections": true,
+    "red_team": "A reviewer who did not author the claim attempts to falsify it and records the strongest counter-evidence.",
+    "conflict_policy": "If evidence remains incomparable or definitions differ, retain separate claims and block combined feature admission."
+  },
+  "authentication_and_safety": {
+    "default": "Least privilege; public read-only; no shared credentials.",
+    "secret_handling": "Provider credentials only in provider-managed secret stores or authorized vaults; never in prompts, Git, public artifacts or logs.",
+    "write_controls": "No main-branch writes, force-pushes, merges, workflow dispatches, model uploads, workspace deployment, or real-money trading without explicit approval.",
+    "rate_limits": "Cache and timestamp public data; use local deterministic processing when providers are unavailable; never fabricate missing observations.",
+    "audit": "Record identity, scope, timestamp, request purpose, data returned, writes, CI results and revocation path."
+  },
+  "connection_claim_policy": "Only ChatGPT current session and GitHub repository connector are verified active. The other eight platforms are not claimed to be connected or collaborating live.",
+  "design_limitations": [
+    "This is a capability and control design, not an operational integration.",
+    "No API keys, external accounts, platform agents, model endpoints or Databricks workspace were tested.",
+    "No cross-platform deliberation or handoff has occurred."
+  ]
+}

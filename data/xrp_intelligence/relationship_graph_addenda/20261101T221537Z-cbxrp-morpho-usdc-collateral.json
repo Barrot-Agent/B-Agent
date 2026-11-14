@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_cbXrp_usdc_collateral_relationship_graph_addendum",
+  "captured_at_utc": "2026-11-01T22:15:37Z",
+  "nodes": [
+    {
+      "id": "MORPHO",
+      "name": "Morpho",
+      "type": "permissionless_lending_protocol"
+    },
+    {
+      "id": "CBXRP",
+      "name": "Coinbase Wrapped XRP",
+      "type": "wrapped_collateral_asset"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "payment_stablecoin"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "custody_wrapper_and_user_interface"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "underlying_asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "COINBASE",
+      "to": "CBXRP",
+      "relationship": "wraps_existing_XRP_held_in_custody_1_to_1",
+      "status": "CONFIRMED_BY_COINBASE_PROOF_OF_RESERVES_AND_PRODUCT_DOCS",
+      "sources": [
+        "SRC_COINBASE_CBXRP_POR_20261101",
+        "SRC_COINBASE_HELP_WRAPPED_ASSETS"
+      ]
+    },
+    {
+      "from": "CBXRP",
+      "to": "MORPHO",
+      "relationship": "posted_as_collateral_in_Base_cbXRP_USDC_market",
+      "status": "ONCHAIN_MARKET_OBSERVATION",
+      "sources": [
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ]
+    },
+    {
+      "from": "USDC",
+      "to": "MORPHO",
+      "relationship": "borrow_asset_and_lender_liquidity",
+      "status": "ONCHAIN_MARKET_OBSERVATION",
+      "sources": [
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "relationship": "issuer",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "MORPHO",
+      "relationship": "consumer_loan_interface_and_market_attribution",
+      "status": "PRODUCT_CONFIRMED;SPECIFIC_MARKET_ATTRIBUTION_STRONG_INFERENCE",
+      "sources": [
+        "SRC_THEBLOCK_COINBASE_XRP_LOANS_20260218",
+        "SRC_MORPHOWATCH_CBXRP_MARKET_20261101"
+      ],
+      "limits": [
+        "Morpho market is permissionless; not all positions proven to originate from Coinbase UI"
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "CBXRP",
+      "relationship": "underlying_1_to_1_reserve",
+      "status": "CONFIRMED_BY_COINBASE_DISCLOSURE",
+      "sources": [
+        "SRC_COINBASE_CBXRP_POR_20261101"
+      ]
+    }
+  ],
+  "interpretation": "Circle-issued USDC is used as the debt asset against Coinbase-wrapped XRP in a Morpho market. This is an indirect economic connection between Circle and XRP through Coinbase/Morpho, not evidence Circle directly funds or lends into the market."
+}

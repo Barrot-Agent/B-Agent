@@ -70,6 +70,21 @@ jobs:
             tests/test_mmi_v1.py \
             tests/test_source_acquisition.py \
             tests/test_source_registry.py \
+            tests/test_nine_platform_coordination_map.py \
+            tests/test_xrp_ripple_circle_coinbase_scope_reconciliation.py \
+                        tests/test_kamilah_stevenson_identity_evidence.py \
+                        tests/test_xrp_arc_and_sbi_relationships.py \
+                        tests/test_xrp_cbXRP_morpho_collateral.py \
+                        tests/test_xrp_coinbase_circle_rlusd_evidence.py \
+                        tests/test_xrp_coinbase_global_derivatives_collateral.py \
+            tests/test_xrp_coinbase_cftc_collateral_pathways.py \
+            tests/test_xrp_ripple_prime_coinbase_derivatives_access.py \
+            tests/test_coinbase_circle_q3_2026_metric_reconciliation.py \
+            tests/test_xrp_market_structure_provider_reconciliation.py \
+            tests/test_xrp_run_handoff_integrity.py \
+            tests/test_xrpl_rlusd_supply_and_payment_quality.py \
+            tests/test_xrpl_x402_economic_value_reconciliation.py \
+            tests/test_flare_fxrp_firelight_morpho_and_identity_reconciliation.py \
             tests/test_data_registry.py \
             tests/test_repository_causality.py \
             tests/test_bundle_delivery.py \

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-01T23:01:22Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "status": "RESEARCH_AND_SCOPE_CORRECTION_NOT_A_FORECAST",
+  "material_corrections": [
+    {
+      "id": "CORR_RIPPLE_CIRCLE_DIRECT_EDGE",
+      "prior_error": "A prior graph addendum recorded CIRCLE-to-RIPPLE as NO_DIRECT_PARTNERSHIP_ESTABLISHED.",
+      "corrected_fact": "Ripple and Circle directly announced a product integration partnership on 2025-06-12 to bring native USDC to XRPL. Circle Mint and APIs support USDC on XRPL. Ripple said it intended to use USDC alongside RLUSD in Ripple Payments.",
+      "classification": "CONFIRMED_DIRECT_PRODUCT_PARTNERSHIP",
+      "limits": [
+        "No equity, merger, joint ownership or exclusive alliance established.",
+        "Native USDC on XRPL does not imply every payment uses XRP as a bridge."
+      ]
+    },
+    {
+      "id": "CORR_COINBASE_PRODUCT_SCOPE",
+      "prior_risk": "Coinbase Global Derivatives product names can cause non-US Coinbase Advanced cross-collateral terms to be incorrectly applied to US institutional Coinbase Prime accounts.",
+      "corrected_fact": "Separate three product regimes: (1) Coinbase Advanced Global Derivatives in supported non-US regions lists XRP cross-collateral at 15% X:SM haircut and a dash in X:PM; (2) Coinbase Prime Global Derivatives for eligible US institutions publicly lists USDC/BTC/ETH, not XRP, and cross-collateral is not enabled in the Prime portfolio; (3) US Derivatives use USD cash, with USDC only indirectly through optional auto-conversion.",
+      "classification": "CONFIRMED_PRODUCT_SCOPE_SEPARATION",
+      "limits": [
+        "No XRP collateral balances or customer counts are disclosed.",
+        "A dash in the X:PM haircut column is not silently converted to zero."
+      ]
+    },
+    {
+      "id": "CORR_CFTC_26_17",
+      "corrected_fact": "The March 2026 SEC/CFTC digital-commodity interpretation referenced by CFTC Letter 26-17 lists XRP as an example. Letter 26-17 provides conditional staff no-action relief for customer-owned digital commodities and payment stablecoins transferred by CFM to its affiliated foreign broker for specified 30.7 customer foreign futures/options positions at Deribit, under right-of-reuse and enumerated safeguards.",
+      "classification": "LEGAL_PATHWAY_CONFIRMED_ACTUAL_XRP_USE_UNVERIFIED",
+      "clarifications": [
+        "The 120% cap is the Regulation 30.7(c) limit on 30.7 Customer Funds deposited with CBBM, not a standalone numbered condition created by Letter 26-17.",
+        "The letter records CFM's factual-background representation that Deribit would maintain assets equal to 100% of relevant net liquidating equity at Coinbase Custody Trust; this is not one of the numbered no-action conditions and not an independent custody audit.",
+        "The letter's staff positions are not binding on the Commission.",
+        "Coinbase Prime's current public US collateral list still excludes XRP."
+      ]
+    },
+    {
+      "id": "CORR_CIRCLE_AGENT_METRIC_SCOPE",
+      "corrected_fact": "Circle's Arc launch release reported 98.8% of global agent-driven transaction volume in USDC; the Agent Stack page separately reports 99.8% of x402 transaction value; agents.circle.com separately displayed 99.6% of agent transaction volume on x402 for October 2026.",
+      "classification": "THREE_DISTINCT_COMPANY_REPORTED_METRICS",
+      "limits": [
+        "Different metric definitions and observation windows; not Arc-specific; do not average or treat as a single time series without denominator and window reconciliation."
+      ]
+    }
+  ],
+  "identity_research": {
+    "sbic": {
+      "resolved_identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "evidence": [
+        "Official company profile",
+        "Official June 12-13 2025 two-day AI/ML training course for investee companies; ChatGPT on day one, Copilot on day two"
+      ],
+      "interpretation": "The 'ChatGPT SBIC' reference is best explained by this educational course, not an OpenAI partnership or an XRP project.",
+      "xrp_or_circle_relationship": "NOT_ESTABLISHED",
+      "do_not_conflate_with": "SBI Holdings / SBI Group"
+    },
+    "ask_coin": {
+      "candidate_identity": "Permission Coin (ASK)",
+      "evidence": "Permission's official contract directory lists LayerZero OFT-20 contracts on Base and Polygon and Stargate support.",
+      "xrp_relationship": "NO_XRPL_CONTRACT_LISTED_IN_OFFICIAL_DIRECTORY; no direct XRP integration established.",
+      "uncertainty": "The phrase 'ASK Coin' is not unique; Permission ASK is the best-supported candidate, not a definitive resolution of every possible ASK token."
+    }
+  },
+  "circle_arc_metric_quality": {
+    "arc_launch_release_agent_volume_usdc_pct": 98.8,
+    "agent_stack_page_x402_transaction_value_usdc_pct": 99.8,
+    "agents_circle_october_2026_agent_transaction_volume_x402_usdc_pct": 99.6,
+    "feature_admission": "BLOCKED_FROM_SINGLE_COMBINED_SERIES",
+    "reason": "Different denominators and windows; all are company-reported; the 98.8% figure is not Arc-chain-specific."
+  },
+  "capital_and_collateral_policy": {
+    "distinction": "Collateral eligibility or use is not equivalent to a spot purchase or net new capital inflow.",
+    "required_separate_fields": [
+      "asset_inventory_encumbered",
+      "collateral_market_value",
+      "haircut_adjusted_value",
+      "credit_advanced",
+      "settlement_currency",
+      "automatic_rebalancing_sales",
+      "liquidations",
+      "new_spot_purchases",
+      "net_external_capital"
+    ],
+    "xrp_rebalancing_hypothesis": "If XRP is positive equity in a non-US cross-collateral account and another settlement currency becomes negative, the documented rebalancing mechanism could sell/use XRP to buy the deficit currency. This is a conditional mechanism inference; no XRP-specific rebalancing volume is disclosed."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H_MULTI_RAIL_COMPLEMENTARITY",
+      "claim": "Circle and Ripple are both partners and competitors: USDC is natively supported on XRPL and Ripple says it uses USDC alongside RLUSD, while both issuers compete for stablecoin distribution.",
+      "support": [
+        "Direct Ripple-Circle USDC-on-XRPL partnership",
+        "Ripple's stated use of USDC alongside RLUSD",
+        "Coinbase distributes both USDC and RLUSD"
+      ],
+      "disconfirming": [
+        "Arc and Agent Stack may route new activity away from XRPL",
+        "No synchronized chain-level settlement volumes establish net XRP demand"
+      ],
+      "status": "BEST_SUPPORTED_NETWORK_STRUCTURE_NOT_A_PRICE_FORECAST"
+    },
+    {
+      "id": "H_ARC_COMPETITION",
+      "claim": "Circle Arc may capture institutional and agentic settlement that might otherwise occur on XRPL.",
+      "support": [
+        "Arc uses USDC gas",
+        "SBI Group is a founding validator",
+        "Coinbase is an Arc exchange participant",
+        "Circle's company-reported agent-payment metrics"
+      ],
+      "disconfirming": [
+        "USDC is natively issued on XRPL",
+        "Ripple-Circle product partnership",
+        "SBI Group also has Ripple/XRP relationships"
+      ],
+      "status": "PLAUSIBLE_COMPETITIVE_PRESSURE"
+    },
+    {
+      "id": "H_XRP_NON_US_COLLATERAL",
+      "claim": "Coinbase's non-US Global Derivatives cross-collateral product creates a real XRP collateral use case.",
+      "support": [
+        "Official product page lists XRP and 15% X:SM haircut"
+      ],
+      "disconfirming": [
+        "No collateral balances or customer counts disclosed",
+        "US Prime public collateral list excludes XRP"
+      ],
+      "status": "PRODUCT_ELIGIBILITY_CONFIRMED_USAGE_VOLUME_UNKNOWN"
+    },
+    {
+      "id": "H_US_CFTC_XRP_PATHWAY",
+      "claim": "CFTC Letter 26-17 may provide a future pathway for customer-owned XRP collateral in specified US FCM/foreign-broker structures.",
+      "support": [
+        "XRP appears in referenced digital-commodity interpretation",
+        "No-action letter covers customer-owned digital commodities under conditions"
+      ],
+      "disconfirming": [
+        "Current Coinbase Prime public list excludes XRP",
+        "No XRP acceptance or balances demonstrated"
+      ],
+      "status": "LEGAL_PATHWAY_NOT_CURRENT_PRODUCT_USE"
+    },
+    {
+      "id": "H_REBALANCING_SELL_PRESSURE",
+      "claim": "Cross-collateral rebalancing could create XRP sell pressure when XRP is the positive-equity asset used to buy a negative settlement currency.",
+      "support": [
+        "Coinbase documents automatic positive-to-negative currency rebalancing"
+      ],
+      "disconfirming": [
+        "No XRP-specific rebalancing or sale volume disclosed",
+        "Rebalancing is separate from liquidation"
+      ],
+      "status": "MECHANICAL_INFERENCE_NOT_OBSERVED_FLOW"
+    }
+  ],
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "verified_xrp_forecasts": 0,
+    "resolved_outcomes": 0,
+    "calibration": "NOT_ESTIMABLE",
+    "paper_trading": "NOT_STARTED",
+    "real_money": "NOT_AUTHORIZED",
+    "reason": "No synchronized point-in-time feature set or verified out-of-sample XRP skill estimate."
+  },
+  "next_actions": [
+    "Monitor Coinbase Advanced non-US XRP collateral terms and any public evidence of actual collateral balances/rebalancing.",
+    "Monitor Coinbase Prime collateral list for any XRP addition; keep it separate from non-US Coinbase Advanced terms.",
+    "Reconcile Circle Arc, Agent Stack and XRPL usage using chain-specific denominators and raw transaction evidence.",
+    "Reconcile RLUSD XRPL supply at a pinned validated ledger and join x402 SourceTag/event IDs to raw transaction hashes.",
+    "Preserve SBI Group as a multi-rail participant and SBIC as a separate entity.",
+    "Continue identity resolution for ASK Coin and the full public Camilla/Kamilah Stevenson video inventory."
+  ]
+}

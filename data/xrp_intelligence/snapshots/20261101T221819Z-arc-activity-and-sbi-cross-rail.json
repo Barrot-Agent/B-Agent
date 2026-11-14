@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "artifact_type": "circle_arc_chain_and_sbi_cross_rail_snapshot",
+  "snapshot_id": "20261101T221819Z-arc-activity-and-sbi-cross-rail",
+  "captured_at_utc": "2026-11-01T22:18:19Z",
+  "arc": {
+    "defiLlama": {
+      "as_of_date": "2026-11-01",
+      "tvl_usd": 591420000,
+      "stablecoin_market_cap_usd": 1097000000,
+      "stablecoin_change_7d_pct": 19.94,
+      "usdc_dominance_pct": 99,
+      "dex_volume_24h_usd": 12800000,
+      "dex_volume_7d_usd": 165670000,
+      "dex_volume_change_7d_pct": -14.01,
+      "perps_volume_24h_usd": 90960000,
+      "perps_volume_7d_usd": 1879000000,
+      "perps_volume_change_7d_pct": 196,
+      "inflows_24h_usd": -21720000,
+      "active_addresses_24h": 13290,
+      "new_addresses_24h": 5115,
+      "transactions_24h": 367866,
+      "source_id": "SRC_DEFILLAMA_ARC"
+    },
+    "bitquery_first_month": {
+      "window_start": "2026-09-16T04:20:00Z",
+      "window_end": "2026-10-14",
+      "publication_date": "2026-10-15",
+      "launch_day_active_wallets": 406006,
+      "fourth_week_daily_active_wallets": 24678,
+      "decline_from_launch_pct": 94,
+      "real_senders_daily_approx": 20000,
+      "real_traders_daily_approx": 11000,
+      "dex_volume_headline_usd": 2840000000,
+      "dex_volume_adjusted_real_traders_usd": 729000000,
+      "headline_dex_volume_last_week_daily_usd": 64000000,
+      "adjusted_real_dex_volume_last_week_daily_usd": 3600000,
+      "self_trading_wallet_share_pct": 38,
+      "bot_cluster_share_pct": 22,
+      "wallet_farms_created_wallets": 340931,
+      "wallet_farms_share_of_new_wallets_pct": 32,
+      "usdc_supply_mid_october_usd": 604000000,
+      "usdc_supply_concentration_top_24_addresses_pct": 92,
+      "largest_single_address_usdc_usd": 250000000,
+      "binance_hot_wallet_usdc_usd": 166000000,
+      "usdc_minted_usd": 2147600000,
+      "usdc_burned_usd": 1925000000,
+      "relay_bridge_round_trip_usdc_usd": 520000000,
+      "morpho_cirbtc_market": {
+        "usdc_supplied_usd": 194900000,
+        "usdc_borrowed_usd": 189800000,
+        "utilization_pct": 97,
+        "borrowers_ever": 264,
+        "borrowers_still_owing": 218,
+        "top_six_debt_usd": 138000000,
+        "top_six_debt_share_pct": 73,
+        "borrowed_usdc_bridged_out_by_five_borrowers_usd": 142000000,
+        "bridged_to_ethereum_usd": 132000000,
+        "bridged_to_base_arbitrum_and_other_usd": 10000000,
+        "cirbtc_collateral_units": 3661,
+        "cirbtc_collateral_value_usd": 305000000,
+        "liquidation_ltv_pct": 86
+      },
+      "source_id": "SRC_BITQUERY_ARC",
+      "limitations": [
+        "Data ends Oct 14",
+        "Wallet-farm and bot filters are proxies, not verified person counts",
+        "Address labels do not establish legal identity",
+        "DEX routed volume can double-count multi-hop swaps"
+      ]
+    },
+    "arcscan_early_mainnet": {
+      "total_transactions": 26394980,
+      "average_daily_transactions": 1885356,
+      "window": "14 complete days in September 2026",
+      "launch_day_transactions": 7763670,
+      "source_id": "SRC_ARCSCAN",
+      "limitations": [
+        "Historical early-mainnet window; unfiltered transaction count"
+      ]
+    },
+    "agentgdp_x402": {
+      "settled_volume_7d_usd": 0.02,
+      "organic_volume_7d_usd": 0,
+      "data_through": "2026-10-31",
+      "coverage": "PARTIAL_AND_BACKFILLING",
+      "source_id": "SRC_AGENTGDP_ARC",
+      "limitations": [
+        "x402-specific only, not all Arc payments or trading",
+        "Near-zero result cannot establish total Arc agent activity"
+      ]
+    },
+    "reconciliation": {
+      "status": "MULTIPLE_MARKET_SEGMENTS; NO_SINGLE_ADOPTION_METRIC",
+      "notes": [
+        "Bitquery's first-month window shows sharp decline in filtered public wallet activity and concentration in bots/outlier trading.",
+        "DefiLlama's Nov 1 page shows material stablecoin, TVL and perps activity; these later provider metrics are not directly comparable with Bitquery's Oct 14 filtered study.",
+        "Circle's 98.8% metric is global Agent Stack/x402 activity, not Arc-specific.",
+        "Arc may be functioning as institutional USDC, lending and derivatives infrastructure even while organic public activity is lower; hypothesis, not settled conclusion."
+      ]
+    }
+  },
+  "sbi_group": {
+    "ripple_equity": {
+      "reported_share_pct": 9,
+      "investment_origin": "SBI says it invested in Ripple in 2016 and is its largest external shareholder",
+      "not_xrp_tokens": true,
+      "source_id": "SRC_SBI_RIPPLE_EQUITY"
+    },
+    "circle_equity": {
+      "total_usd": 50000000,
+      "breakdown_usd": {
+        "SBI_Holdings": 25000000,
+        "SBI_Shinsei_Bank": 25000000
+      },
+      "acquired_date": "2025-06-05",
+      "source_id": "SRC_SBI_CIRCLE_EQUITY"
+    },
+    "arc_token_presale": {
+      "participation": true,
+      "subsidiary_participant": true,
+      "total_presale_expected_raise_usd": 222000000,
+      "sbi_specific_amount_usd": null,
+      "token_description": "native Arc digital asset intended for governance, security and network operations",
+      "public_launch_commitment": "NONE_STATED",
+      "source_id": "SRC_SBI_ARC_PRESALE"
+    },
+    "arc_validator": {
+      "status": "FOUNDING_VALIDATOR_COHORT",
+      "source_id": "SRC_CIRCLE_ARC"
+    },
+    "circle_sbi_japan_jv": {
+      "entity": "Circle SBI Japan KK",
+      "formation": "2025",
+      "source_id": "SRC_SBI_ARC_PRESALE"
+    },
+    "usdc_distribution": {
+      "entity": "SBI VC Trade",
+      "first_and_only_registered_japanese_distributor_at_announcement": true,
+      "beta_start": "2025-03-12",
+      "source_id": "SRC_SBI_USDC"
+    },
+    "rlusd_japan": {
+      "agreement": "MOU between SBI VC Trade and Standard Custody & Trust Company (Ripple subsidiary) to issue/distribute RLUSD in Japan",
+      "date": "2025-08-22",
+      "status": "MOU_NOT_PROOF_OF_LIVE_DISTRIBUTION",
+      "source_id": "SRC_SBI_RLUSD_MOU"
+    },
+    "ripple_payment_rail": {
+      "SBI_Ripple_Asia_group_voting_rights_pct": 60,
+      "SBI_Remit_XRP_corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "current_throughput": "UNKNOWN",
+      "source_id": "SRC_SBI_RIPPLE_ASIA"
+    },
+    "sbic_distinction": {
+      "entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "same_as_SBI_Holdings": false,
+      "direct_xrp_or_circle_relationship": "NOT_ESTABLISHED",
+      "source_id": "SRC_SBIC"
+    }
+  },
+  "strategic_interpretation": "SBI Group has simultaneous corporate and operational exposure to Ripple/XRP and Circle/USDC/Arc. This supports a multi-rail strategic interpretation, not an exclusive commitment and not proof of direct XRP token accumulation."
+}
