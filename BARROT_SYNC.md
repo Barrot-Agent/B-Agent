@@ -13,6 +13,12 @@
 - No external model may receive repository context or user data without explicit, action-specific authorization.
 - Do not claim a live connection based on a configured URL or environment-variable name.
 
+## Verification status and synchronization preflight
+- The presence/validity in GitHub Secrets is NOT VERIFIED. A configured secret name does not prove that a value exists, is current, or authenticates successfully.
+- provider-side OAuth revocation is NOT VERIFIED. No provider-side revocation request or response was observed.
+- The synchronization path depends on both `httpx` and `rich`. The last observed main-branch sync attempt failed because `rich` was missing; the safe outcome is `sync skipped`, and no sync commit was produced.
+- No automatic external sync or push without explicit approval. Keep the integration sync workflow quarantined until dependency preflight, authentication, scope, and write authorization are independently verified.
+
 ## Hard rules
 - Keep unverified remote MCP servers disabled and tool permissions ask/deny by default.
 - No automatic external sync, repository push, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, or real-money action without the specific approval required for that exact operation.
