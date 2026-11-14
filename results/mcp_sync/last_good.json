@@ -1,0 +1,266 @@
+{
+  "generated_at": "2026-11-13T01:45:28.773291+00:00",
+  "servers": {
+    "lunaroute": {
+      "attempts": 1,
+      "error": "",
+      "latency_ms": 6029.6,
+      "missing_env": [],
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "lunaroute-mcp",
+        "version": "0.1.0"
+      },
+      "source": "live",
+      "status": "connected",
+      "tools": [
+        {
+          "categories": [
+            "document_conversion",
+            "vision"
+          ],
+          "description": "Convert a document (Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, PDF) or a raster image (JPEG, PNG, WebP, GIF) into Markdown. Give a url the server fetches, or the file's bytes base64-encoded in data. A filename hint (e.g. report.csv) is required for CSV. An HTML page converts to its title and body text, not to structured Markdown (no links or tables). Returns the Markdown inline; pass embed: false to store it and receive an artifact URL instead. Pass ocr: true to OCR scanned PDF pages via the configured backend; raster images are always OCR'd.",
+          "input_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "description": "document bytes, standard base64",
+                "type": "string"
+              },
+              "embed": {
+                "default": true,
+                "description": "true: Markdown returned inline (default); false: stored artifact, URL returned",
+                "type": "boolean"
+              },
+              "filename": {
+                "description": "format hint like report.docx; required for CSV",
+                "type": "string"
+              },
+              "ocr": {
+                "default": false,
+                "description": "true: OCR scanned PDF pages via the configured backend; false (default): scanned pages answer needs_ocr. Retry busy and transport errors with backoff (max 3 attempts); never retry document errors",
+                "type": "boolean"
+              },
+              "url": {
+                "description": "http(s) URL of the document to fetch and convert",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "name": "convert_document",
+          "schema_hash": "4f3a0567487fb028",
+          "server": "lunaroute",
+          "source": "live"
+        },
+        {
+          "categories": [
+            "generative_media",
+            "image_generation"
+          ],
+          "description": "Edit prior images by their LunaRoute image id. Pass the id returned by generate_image (or a prior edit_image) in image_ids \u2014 not image bytes or URLs.",
+          "input_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "embed": {
+                "default": false,
+                "description": "Also return the edited image bytes inline. Large images are returned by URL only.",
+                "type": "boolean"
+              },
+              "guidance": {
+                "description": "Prompt adherence. Defaults to the model's default; must be in the model's range.",
+                "type": "number"
+              },
+              "image_ids": {
+                "description": "Prior LunaRoute image ids (img_\u2026) to edit, in order. 1..model max_reference_images.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "model": {
+                "description": "Which image model to edit with. flux2-klein: accepts up to 4 reference images, default size 1024x1024, up to 2048x2048, steps 1-50 (default 4), guidance 0-10 (default 1), formats png/jpeg/webp, prompt up to 4000 chars, no negative_prompt support; qwen-image-2.1: accepts up to 4 reference images, default size 1024x1024, up to 1280x1280, steps 1-50 (default 40), guidance 0-10 (default 4), formats png/jpeg/webp, prompt up to 4000 chars, supports negative_prompt; qwen-image-edit-2511: accepts up to 4 reference images, default size 1024x1024, up to 2048x2048, steps 1-50 (default 40), guidance 0-10 (default 1), formats png/jpeg/webp, prompt up to 4000 chars, supports negative_prompt",
+                "enum": [
+                  "flux2-klein",
+                  "qwen-image-2.1",
+                  "qwen-image-edit-2511"
+                ],
+                "type": "string"
+              },
+              "negative_prompt": {
+                "description": "What to avoid. Only for models listed above as supporting it.",
+                "type": "string"
+              },
+              "output_format": {
+                "description": "One of the model's formats listed above.",
+                "type": "string"
+              },
+              "prompt": {
+                "description": "How to edit. For multi-image models the image 1 / image 2 referencing convention is stated under `model`.",
+                "type": "string"
+              },
+              "seed": {
+                "description": "Seed for a reproducible edit. Omit for a random one.",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "size": {
+                "description": "WIDTHxHEIGHT, e.g. 1024x1024. Defaults to the model's default size.",
+                "pattern": "^[0-9]+x[0-9]+$",
+                "type": "string"
+              },
+              "steps": {
+                "description": "Denoising steps. Defaults to the model's default; must be in the model's range.",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "image_ids",
+              "prompt",
+              "model"
+            ],
+            "type": "object"
+          },
+          "name": "edit_image",
+          "schema_hash": "7f0dc8a41c61f923",
+          "server": "lunaroute",
+          "source": "live"
+        },
+        {
+          "categories": [
+            "generative_media",
+            "image_generation"
+          ],
+          "description": "Generate an image from a text prompt. Returns the image's id and a time-limited URL; pass embed: true to also receive the bytes inline (dropped, with a note, when they exceed the server's embed limit).",
+          "input_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "embed": {
+                "default": false,
+                "description": "Also return the image bytes inline. Large images are returned by URL only.",
+                "type": "boolean"
+              },
+              "guidance": {
+                "description": "Prompt adherence. Defaults to the model's default; must be in the model's range.",
+                "type": "number"
+              },
+              "model": {
+                "description": "Which image model to generate with. flux2-klein: default size 1024x1024, up to 2048x2048, steps 1-50 (default 4), guidance 0-10 (default 1), formats png/jpeg/webp, prompt up to 4000 chars, no negative_prompt support; qwen-image-2.1: default size 1024x1024, up to 1280x1280, steps 1-50 (default 40), guidance 0-10 (default 4), formats png/jpeg/webp, prompt up to 4000 chars, supports negative_prompt; qwen-image-2512: default size 1024x1024, up to 2048x2048, steps 1-50 (default 20), guidance 1-10 (default 4), formats png/jpeg/webp, prompt up to 4000 chars, supports negative_prompt",
+                "enum": [
+                  "flux2-klein",
+                  "qwen-image-2.1",
+                  "qwen-image-2512"
+                ],
+                "type": "string"
+              },
+              "negative_prompt": {
+                "description": "What to avoid. Only for models listed above as supporting it.",
+                "type": "string"
+              },
+              "output_format": {
+                "description": "One of the model's formats listed above.",
+                "type": "string"
+              },
+              "prompt": {
+                "description": "What to generate. Per-model length limits are listed under `model`.",
+                "type": "string"
+              },
+              "seed": {
+                "description": "Seed for a reproducible generation. Omit for a random one.",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "size": {
+                "description": "WIDTHxHEIGHT, e.g. 1024x1024. Defaults to the model's default size.",
+                "pattern": "^[0-9]+x[0-9]+$",
+                "type": "string"
+              },
+              "steps": {
+                "description": "Denoising steps. Defaults to the model's default; must be in the model's range.",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "prompt",
+              "model"
+            ],
+            "type": "object"
+          },
+          "name": "generate_image",
+          "schema_hash": "18d524186c134922",
+          "server": "lunaroute",
+          "source": "live"
+        },
+        {
+          "categories": [
+            "file_management",
+            "generative_media",
+            "image_generation"
+          ],
+          "description": "Upload an image you already have (a local file's bytes, or an http(s) URL) to get a LunaRoute image id. Returns the id, a time-limited URL, and dimensions. Pass that id to edit_image's image_ids.",
+          "input_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "description": "Base64-encoded image bytes (png, jpeg, or webp). Exactly one of data or url.",
+                "type": "string"
+              },
+              "mime_type": {
+                "description": "Declared codec of data. Optional; when omitted the codec is sniffed from the bytes.",
+                "enum": [
+                  "image/png",
+                  "image/jpeg",
+                  "image/webp"
+                ],
+                "type": "string"
+              },
+              "url": {
+                "description": "http(s) URL of the image to fetch server-side. Exactly one of data or url.",
+                "type": "string"
+              }
+            },
+            "required": [],
+            "type": "object"
+          },
+          "name": "upload_image",
+          "schema_hash": "a8b48c574945db52",
+          "server": "lunaroute",
+          "source": "live"
+        },
+        {
+          "categories": [
+            "web_search"
+          ],
+          "description": "Search the web through the configured provider set. Returns a normalized schema \u2014 {query, provider, results: [{title, url, snippet, published_date, score}]} \u2014 identical across providers; an empty successful search returns results: [].",
+          "input_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "count": {
+                "description": "Optional result count; clamped to the provider's supported range.",
+                "type": "integer"
+              },
+              "provider": {
+                "description": "Optional provider key (e.g. 'brave', 'exa', 'kagi', 'youcom' \u2014 aliases 'you', 'you.com' also accepted). Omit for the server's default provider.",
+                "type": "string"
+              },
+              "query": {
+                "description": "The search query (1-400 characters).",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "type": "object"
+          },
+          "name": "web_search",
+          "schema_hash": "b07b947b7f06bf93",
+          "server": "lunaroute",
+          "source": "live"
+        }
+      ],
+      "transport": "remote",
+      "url": "https://mcp.lunaroute.com/mcp"
+    }
+  }
+}

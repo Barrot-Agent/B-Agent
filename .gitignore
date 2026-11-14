@@ -84,5 +84,8 @@ data/xrp_intelligence/feature_store.sqlite3
 data/xrp_intelligence/feature_store.sqlite3-wal
 data/xrp_intelligence/feature_store.sqlite3-shm
 data/xrp_intelligence/feature_store.sqlite3-journal
+
+# MCP sync append-only runtime log (snapshots and last-good cache ARE committed)
+results/mcp_sync/sync_log.jsonl
 .config/gh/hosts.yml
 .config/gh/

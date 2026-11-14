@@ -177,5 +177,48 @@
     "losers_deleted": [
       "variant_dual.py"
     ]
+  },
+  {
+    "timestamp": "20261112_204512",
+    "target": "/data/data/com.termux/files/home/barrot/Barrot-Agent/barrot_agent/mcp_sync.py",
+    "cwd": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+    "runner": "unittest",
+    "tests": [
+      "tests/test_mcp_sync.py"
+    ],
+    "candidates": [
+      {
+        "name": "sequential",
+        "compile_ok": true,
+        "lines": 811,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 17,
+        "test_total": 17,
+        "probe_ms": 5986.1
+      },
+      {
+        "name": "threads",
+        "compile_ok": true,
+        "lines": 811,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 17,
+        "test_total": 17,
+        "probe_ms": 5795.0
+      },
+      {
+        "name": "async",
+        "compile_ok": true,
+        "lines": 811,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 17,
+        "test_total": 17,
+        "probe_ms": 5989.6
+      }
+    ],
+    "winner": "threads",
+    "note": "Live 8-server benchmark; only 1 remote reachable, so deltas are within the ~100ms noise band. tests/test_mcp_sync.py proves 4-server concurrency (async < 0.75x sequential). CLI lines: 113."
   }
 ]
