@@ -26,6 +26,19 @@ dependencies = [
     "pydantic-settings>=2.3.0",
 ]
 
+[project.optional-dependencies]
+# Heavy/optional integrations used by barrot_agent.orchestration (deploy,
+# inference_node), barrot_agent.analysis and barrot_agent.tools.kaggle_*.
+# Install with:  pip install -e ".[integrations]"
+integrations = [
+    "databricks-sdk>=0.30.0",
+    "flask>=3.0.0",
+    "huggingface_hub>=0.23.0",
+    "kaggle>=1.6.0",
+    "pandas>=2.0.0",
+    "scikit-learn>=1.4.0",
+]
+
 [tool.black]
 line-length = 100
 target-version = ["py310", "py311", "py312"]

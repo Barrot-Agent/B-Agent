@@ -8,8 +8,13 @@ from __future__ import annotations
 
 from typing import List, Optional, Union
 
-from granite_model_config import ARXIV_REFERENCES, CAPABILITIES, MODEL_ID, MODEL_METADATA
-from vision_pipeline import GraniteVisionPipeline
+from barrot_agent.analysis.vision_pipeline import GraniteVisionPipeline
+from barrot_agent.tools.granite_model_config import (
+    ARXIV_REFERENCES,
+    CAPABILITIES,
+    MODEL_ID,
+    MODEL_METADATA,
+)
 
 # Module-level singleton – shared across calls within a process
 _pipeline: Optional[GraniteVisionPipeline] = None

@@ -19,11 +19,11 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
-from agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
+from .advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
+from .agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
 
 # Import existing Barrot modules
-from quantum_entanglement import (
+from .quantum_entanglement import (
     create_entangled_decision_space,
     quantum_coordinator,
     quantum_optimize,
