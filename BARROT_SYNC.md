@@ -83,3 +83,26 @@
 - Next step: push remaining commits (gh authenticated as Barrot-Agent);
   after push, verify CI green on GitHub; then optional: history-trim of
   removed .barrot-backup/ blobs, Docker build test when docker available
+
+## Producer Session - Barrot Beat DNA Vol. 1 (2026-11-14)
+- Mission: become producer. Studied 5 producers' TECHNIQUE (not songs), built
+  5 starter beats. All verified playable.
+- Study phase: 1-page cheat sheets saved to producers/ (web_search MCP):
+  * rodney_jerkins_darkchild.md - jerky MPC loops, glide bass, staccato chops
+  * timbaland.md - beatbox-first off-grid swing, weird sounds as drums
+  * missy_elliott.md - the air IS the instrument; ad-lib pockets reserved
+  * black_coffee.md - warm 4-on-floor, velocity-varied shaker, long builds
+  * catalyst_afro_carib.md - tresillo/dembow engine, steelpan call-response
+- Build phase (scripts/make_beats.py, pretty_midi + numpy synth):
+  * tracks/track_01_darkchild_rnb(.mid/.wav/_pattern.txt) 95 BPM F min
+  * tracks/track_02_timbaland_futuristic 90 BPM C min
+  * tracks/track_03_missy_minimal 100 BPM D min
+  * tracks/track_04_blackcoffee_afrohouse 122 BPM A min (DJ-shaped 8/8/8/4)
+  * tracks/track_05_afro_carib_soca 110 BPM A maj
+  * Each: drums + bass + pads/chords + melody/pluck + 4-section arrangement
+  * tracks/cover.png (OpenCode image gen + PIL type), tracks/README.md
+- Verification: MIDI reload 268-1045 notes, exact tempo events; WAV stereo
+  RMS 0.11-0.18; librosa beat-track lock 95.7/123.0/112.3 vs 95/122/110 spec.
+- Deps added: pretty_midi, mido, music21, librosa (user site).
+- Next step (music): pick a favorite, humanize further, add ghost notes +
+  fills, try stems/render per-section, or ship pack to Gumroad pipeline.
