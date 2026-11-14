@@ -629,6 +629,26 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
             raise ForecastLedgerError(f"{field} must be a finite number")
         return float(value)
 
+    def _require_declared_cadence(value: Any, field: str) -> None:
+        if not isinstance(value, Mapping):
+            raise ForecastLedgerError(f"{field} is missing cadence diagnostics")
+        if value.get("cadence_source") != "declared":
+            raise ForecastLedgerError(f"{field} must use a declared expected cadence")
+        cadence = _finite_level(value.get("cadence_seconds"), f"{field}.cadence_seconds")
+        if cadence <= 0:
+            raise ForecastLedgerError(f"{field}.cadence_seconds must be positive")
+        _integer_at_least(value.get("valid_block_window_count"), 1, f"{field}.valid_block_window_count")
+        _integer_at_least(value.get("contiguous_segment_count"), 1, f"{field}.contiguous_segment_count")
+
+    def _require_source_cluster_cadence(value: Any, field: str, group_ids: list[str]) -> None:
+        if not isinstance(value, Mapping):
+            raise ForecastLedgerError(f"{field} is missing source-cluster cadence diagnostics")
+        per_cluster = value.get("per_cluster")
+        if not isinstance(per_cluster, Mapping) or set(per_cluster) != set(group_ids):
+            raise ForecastLedgerError(f"{field}.per_cluster must cover exactly the admitted source groups")
+        for group_id in group_ids:
+            _require_declared_cadence(per_cluster[group_id], f"{field}.per_cluster.{group_id}")
+
     def _validate_loss_interval(value: Any, field: str) -> None:
         if not isinstance(value, list) or len(value) != 2:
             raise ForecastLedgerError(f"{field} must be a two-element confidence interval")
@@ -673,6 +693,8 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
                 raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} temporal interval is not familywise-adjusted")
             _validate_loss_interval(temporal.get("brier_difference_ci"), f"{window_name}.{baseline}.temporal.brier_difference_ci")
             _validate_loss_interval(temporal.get("log_loss_difference_ci"), f"{window_name}.{baseline}.temporal.log_loss_difference_ci")
+            _require_declared_cadence(temporal.get("sampling_diagnostics"), f"{window_name}.{baseline}.temporal.sampling_diagnostics")
+            _require_declared_cadence(temporal.get("log_loss_sampling_diagnostics"), f"{window_name}.{baseline}.temporal.log_loss_sampling_diagnostics")
 
             source = comparison.get("source_clustered_moving_block_bootstrap")
             if not isinstance(source, Mapping) or source.get("status") != "ESTIMATED":
@@ -712,6 +734,8 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
                     raise ForecastLedgerError(f"paired_uncertainty {window_name} {baseline} source-clustered mean {metric} difference must favor the candidate")
             _validate_loss_interval(source.get("brier_difference_ci"), f"{window_name}.{baseline}.source.brier_difference_ci")
             _validate_loss_interval(source.get("log_loss_difference_ci"), f"{window_name}.{baseline}.source.log_loss_difference_ci")
+            _require_source_cluster_cadence(source.get("brier_sampling_diagnostics"), f"{window_name}.{baseline}.source.brier_sampling_diagnostics", group_ids)
+            _require_source_cluster_cadence(source.get("log_loss_sampling_diagnostics"), f"{window_name}.{baseline}.source.log_loss_sampling_diagnostics", group_ids)
 
     data_cutoff = evaluation_data_cutoff
     completed = _utc(report.get("evaluation_completed_at_utc"), "evaluation_completed_at_utc")[0]
