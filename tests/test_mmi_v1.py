@@ -631,3 +631,24 @@ def test_execution_ledger_reopens_after_valid_cycle(tmp_path):
     reopened = MMIExecutionLedger(path)
 
     assert reopened.verify() is True
+
+
+def test_missing_observation_time_is_unknown_not_static():
+    assert FreshnessPolicy().classify(None, 1_800_000_000) == Freshness.UNKNOWN
+
+
+def test_ledger_refuses_to_append_after_tampering(tmp_path):
+    path = tmp_path / "tampered_ledger.jsonl"
+    ledger = MMIExecutionLedger(path)
+    ledger.append({"stage": "RECEIVED"})
+
+    event = json.loads(path.read_text().splitlines()[0])
+    event["stage"] = "TAMPERED"
+    path.write_text(json.dumps(event) + "\\n")
+
+    try:
+        ledger.append({"stage": "SHOULD_NOT_APPEND"})
+    except RuntimeError as exc:
+        assert "verification failed" in str(exc)
+    else:
+        raise AssertionError("tampered ledger must reject append")
