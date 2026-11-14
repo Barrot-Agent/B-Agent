@@ -111,6 +111,100 @@ python3 scripts/pingpong_refine.py data.json --max-rounds 8 --no-ledger
 
 Exit codes: `0` converged, `1` capped (`max_rounds`/`pool_exhausted`), `2` input error.
 
+## Large documents: the patch pipeline (pp-refine/1.1.0)
+
+The classic loop truncates its prompt echo at 24,000 chars. Documents above
+that threshold are automatically routed through the **patch pipeline**
+(`RefinementPipeline`, `refine_document`), which implements the full
+10-step workflow:
+
+```
+SOURCE → AUDIT → SEGMENT → REFINE → GENERATE PATCHES → VALIDATE → APPLY
+       → SEMANTIC EVALUATION → REGRESSION TEST → RECORD RESULTS
+```
+
+- **AUDIT** (`segmentation.audit_document`): size/depth/leaf profile, and
+  whether segmentation is needed (threshold: 24,000 chars).
+- **SEGMENT** (`segmentation.segment_document`): coverage-exact slot plan.
+  Every leaf of the source is covered exactly once — `dict_keys` slots
+  (key groups), `list_slice` slots (contiguous, ordered), and
+  `string_range` slots (paragraph/sentence-bounded ranges of oversized
+  string leaves). Each slot carries bounded sibling context. The coverage
+  contract raises if the plan would skip anything, so no content can be
+  silently dropped.
+- **REFINE** (`RefinementPipeline._refine_slot`): each slot ping-pongs
+  through the existing refiner pool (same `LunaRouteRefiner`/`HeuristicRefiner`
+  engine); a candidate is rejected up front on mechanical or deterministic
+  semantic regression, with the critique fed back for the retry.
+- **GENERATE PATCHES / VALIDATE / APPLY** (`patches.py`): section diffs
+  become targeted patches (`replace`/`set`/`delete`/`splice`) on canonical
+  dot-paths. Every patch is hash-preconditioned against the live document;
+  overlapping, conflicting (same path, different new value) and
+  incompatible (DELETE vs SET) patches are rejected with an explicit cause;
+  splices on one leaf apply in offset-safe order. Failed patches never
+  abort the batch — they are rejected individually and reported.
+- **SEMANTIC EVALUATION** (`semantics.py`): four separate results —
+  **A.** mechanical score (unchanged `scoring.py`), **B.** semantic score,
+  **C.** regression score, **D.** overall status (`improved`/`unchanged`/
+  `regressed`). The deterministic core is offline, repeatable, and can
+  only certify non-regression or flag loss (meaning coverage, numeric
+  drift, key loss) — it never claims improvement. Claiming `improved`
+  requires an **independent judge** (`LLMSemanticJudge` wired to a
+  different model than the refiner) that has passed **calibration**: three
+  reference cases (`CALIBRATION_CASES`) with known expected verdicts. An
+  uncalibrated judge is downgraded and cannot vote `improved`; the
+  deterministic core can veto any judge verdict.
+- **REGRESSION TEST** (`patches.verify_against_original`): proves the
+  final document against the original — every original leaf still present
+  (unless a declared DELETE removed it), nothing changed outside declared
+  patch scopes (smuggle detection), untouched containers keep their exact
+  child structure, ordering preserved.
+- **RECORD RESULTS** (`pipeline.py`): atomic per-section run state
+  (`refinement_runs/<run_id>.json`) is the resume point; the persistent
+  learning history (`refinement_history.jsonl`) records source
+  identity/hashes, objective, patches, mechanical + semantic + regression
+  results, failures and corrections, disposition, timestamp and
+  implementation version (`pp-refine/1.1.0`).
+
+Failure handling: if semantic quality regresses, the refinement is NOT
+accepted merely because the mechanical score improved — the batch is
+rolled back to the original and one corrected attempt is made with the
+judge's regressions as critique; if that also regresses, the run is
+recorded as `rolled_back`. A run is only `complete` when **no** section
+failed or was skipped AND verification passed; otherwise it reports
+`incomplete` with the exact section IDs. Interrupted runs resume with
+`--resume <run_id>` (sections already `refined` are never repeated), and
+a `(source, objective)` pair already converged in the learning history is
+skipped unless `--force` is given.
+
+```python
+from barrot_agent import RefinementPipeline, refine_document, LLMSemanticJudge
+
+out = refine_document(big_doc, objective="tighten and verify")
+out["disposition"], out["mechanical"], out["semantic"], out["verification"]
+out["run_id"]                          # resume/audit handle
+
+pipe = RefinementPipeline(refiners, judge=LLMSemanticJudge(other_refiner))
+out = pipe.run(big_doc, objective="...")
+out = pipe.resume(out["run_id"])       # after interruption
+```
+
+CLI:
+
+```bash
+python3 scripts/pingpong_refine.py big.json --objective "tighten and verify"
+python3 scripts/pingpong_refine.py big.json --resume ref-<id>
+python3 scripts/pingpong_refine.py big.json --force    # ignore history
+```
+
+Exit codes: `0` complete/already_converged, `1` incomplete/rolled_back,
+`2` input error. Small documents (<24K chars) keep using the classic loop.
+
+Known limitations: judge context is capped at 20,000 chars per side
+(`LLMSemanticJudge.max_chars`) — for very large documents the judge sees
+a prefix; canonical dot-paths escape literal dots in keys, so keys
+containing dots are not addressable.
+
 ## Standing rule
 
 This engine is the **baseline of all data processing**: new data pipelines

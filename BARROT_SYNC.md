@@ -37,6 +37,84 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
+- Last sync: 2026-11-14 (session 4) - PINGPONG REFINEMENT UPGRADE: patch-based
+  large-document refinement + semantic evaluation (directive: Barrot V3)
+- Test suite: 846 passed, 76.64% coverage - GREEN (39 new tests; see session
+  3 archive below for the pre-upgrade baseline of 807)
+- What was built (all reuse session 3's refiners/engine/scorer - nothing replaced):
+  * paths.py - canonical dot-path pointers with escaping for keys containing
+    dots/backslashes (real KB keys like "a2a_server.py" exposed TWO escaping
+    bugs pre-ship: ptr_join escaping the prefix's structural dots, and the
+    ESC constant being the 2-char "\." instead of the 1-char "\"; both fixed
+    + locked with roundtrip regression tests), value hashes, walk_leaves
+  * segmentation.py - document audit + coverage-exact slot plan
+    (dict_keys / list_slice / string_range slots, <=9000 chars each incl.
+    key-name overhead, bounded sibling context, natural-boundary string
+    splitting). COVERAGE CONTRACT: raises if any leaf would be uncovered -
+    the pipeline can never silently skip source content. list slots map
+    local->absolute leaf paths via Slot.absolute_leaf_path (start offset)
+  * patches.py - targeted patches (replace/set/delete/splice) with hash
+    preconditions validated against the LIVE document; conflict detection
+    (same-path duplicate/conflict, ancestor-supersedes, DELETE-vs-SET
+    incompatible); batch apply returns the mutated document + undo stack;
+    exact rollback; verify_against_original proves nothing missing, nothing
+    smuggled outside declared scopes, untouched containers keep shape,
+    deletions declared
+  * semantics.py - FOUR separate results: A mechanical (scoring.py
+    unchanged) / B semantic / C regression / D overall status. The
+    deterministic core is offline+repeatable and can ONLY certify
+    non-regression or flag loss (meaning coverage with hedge vocabulary
+    excluded, >40% loss line, numeric drift, key loss) - it never claims
+    improvement. "improved" requires an INDEPENDENT judge
+    (LLMSemanticJudge wraps a DIFFERENT model than the refiner) that passed
+    calibration on 3 reference cases (CALIBRATION_CASES); uncalibrated
+    judges cannot vote improved; the deterministic core can veto any judge.
+    Judge context capped at 20,000 chars/side (documented limitation)
+  * pipeline.py - the 10-step workflow SOURCE->AUDIT->SEGMENT->REFINE->
+    GENERATE PATCHES->VALIDATE->APPLY->SEMANTIC EVALUATION->REGRESSION
+    TEST->RECORD RESULTS. Per-section atomic run state = resume point
+    (interrupted runs resume with --resume, refined sections never
+    repeated); persistent learning history refinement_history.jsonl records
+    source identity/hashes/objective/patches/evals/failures/disposition/
+    timestamp/implementation version (pp-refine/1.1.0); (source, objective)
+    pairs already complete are skipped unless --force; semantic regression
+    veto -> rollback to original + one corrected attempt with judge
+    regressions as critique; disposition "complete" ONLY if no section
+    failed/skipped AND verification passed
+  * scoring.py - completeness rewritten dedupe-aware: list elements count
+    per UNIQUE value (raw counting made legitimate dedup LOWER the score -
+    real bug, found by the resume test, fixed)
+  * scripts/pingpong_refine.py - CLI keeps all old flags/exit codes; adds
+    --objective / --resume RUN_ID / --force; small docs -> classic loop,
+    >24K docs -> patch pipeline; prints mechanical/semantic/verification +
+    incomplete sections explicitly
+  * scripts/live_refine_verify.py - live-runtime verification driver
+  * tests/test_refinement_upgrade.py - 39 tests, all MOCKED/offline by
+    default; REAL-runtime tier gated behind BARROT_LIVE_REFINEMENT=1 env
+    (live section refine + independent judge, never runs in default suite)
+- Verified live (REAL LunaRoute runtime, NOT mocked):
+  * source: barrot_capability_audit.json - 28,582 chars, 642 leaves, 782
+    nodes -> 5 dict_keys slots (max 8,856 chars), coverage contract held
+  * pool: lunaroute:glm-5.3-flash + deepseek-4.1-flash + muse-spark-open;
+    judge = deepseek-4.1-flash (independent of the glm refiner)
+  * result: disposition=complete in 322s, 5/5 sections refined, 8 attempts,
+    1 patch applied (doc already near-clean), mechanical 0.9989 -> 0.9989,
+    semantic=unchanged regression=1.0, verification ok=True 0 missing
+    0 smuggled 0 deletions
+  * TRUST GATE PROVEN LIVE: the judge scored all 9 dimensions 1.0 but
+    FAILED calibration on the 3 reference cases -> downgraded, could NOT
+    vote "improved" (calibrated=False) - no manufactured improvements
+  * refined output persisted: refinement_runs/live_refined_capability_audit.json
+    (29,904 chars); learning history run_id ref-5698ae8b7657-1794692948
+- Still open / limitations:
+  * judge sees max 20,000 chars per side (prefix) for very large docs
+  * keys containing dots are addressable but awkward (escaped as \.)
+  * classic engine still truncates at 24K by design - it is the SMALL-doc
+    path; the pipeline is the large-doc path
+- Next step: wire refine_document into data_registry write paths; optional
+  nightly GitHub Action re-refining knowledge-base JSON via the pipeline
+
+## Session 3 Archive - PING-PONG REFINEMENT ENGINE (2026-11-14)
 - Last sync: 2026-11-14 (session 3) - PING-PONG REFINEMENT ENGINE shipped:
   models now refine data dynamically until it can be refined NO FURTHER
   (a measured fixed point) - this is the new BASELINE of all data processing
