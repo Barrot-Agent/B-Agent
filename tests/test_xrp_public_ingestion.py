@@ -1190,6 +1190,10 @@ def test_walk_forward_report_evaluates_daily_horizon_matrix_with_horizon_sized_e
     assert report["evaluations"]["binance_xrpusdt_30d"]["horizon_label"] == "30d"
     assert report["model_eligible"] is False
     assert "target windows overlap" in report["oos_dependence_policy"]
+    assert "paired temporal/source-clustered moving-block bootstrap diagnostics" in report["oos_dependence_policy"]
+    assert "policy-v6 candidate-versus-four-baseline" in report["oos_dependence_policy"]
+    assert "single-venue target lineage yields only one source cluster" in report["oos_dependence_policy"]
+    assert any("1,000 resamples" in item and "10,000 resamples" in item for item in report["limitations"])
     assert report["live_forecast_issued"] is False
     assert report["paper_trade_executed"] is False
 
