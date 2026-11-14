@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T163900Z-sbi-jpysc-jgb-circle-aci-latam-rails",
+  "captured_at_utc": "2026-11-02T16:39:00Z",
+  "data_cutoff_utc": "2026-11-02T16:39:00Z",
+  "mission": "XRP ecosystem intelligence; institutional stablecoin rails, actual-capital accounting, SBI and Circle relationship graph",
+  "status": "RESEARCH_ONLY",
+  "sources": [
+    {
+      "source_id": "sbi-jpysc-jgb-20260907",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / SBI VC Trade",
+      "published_at": "2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "source_type": "official_joint_press_release",
+      "claims": [
+        "JPYSC issuance balance was approximately JPY 20.1B as of 2026-09-07.",
+        "JPYSC Lending applications were approximately JPY 6.9B; SBI described issuance plus lending as approximately JPY 27B handled scale.",
+        "JPY 1B of JPYSC trust assets began being invested in short-term Japanese government bonds.",
+        "The 2026-06-01 legal change permits, subject to requirements, up to 50% of issuance backing in government securities with remaining maturity no longer than three months or term deposits."
+      ],
+      "limitations": [
+        "The JPY 1B is an initial disclosed allocation, not the entire reserve portfolio.",
+        "The figures are dated 2026-09-07 and must not be presented as 2026-11-02 balances.",
+        "The press release does not establish XRP purchases or XRP settlement."
+      ]
+    },
+    {
+      "source_id": "sbi-jpysc-lending-20261102",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "published_at": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "source_type": "official_press_release",
+      "claims": [
+        "JPYSC lending balance exceeded JPY 10B.",
+        "JPYSC handled balance exceeded JPY 30B.",
+        "SBI defines handled balance as on-chain balance plus lending balance.",
+        "JPYSC Lending is a customer-to-SBI VC Trade token-lending product, not a customer borrowing-against-collateral product."
+      ],
+      "limitations": [
+        "The release does not provide a synchronized public-chain circulating-supply snapshot.",
+        "Handled balance is not equivalent to publicly transferable supply or net external settlement."
+      ]
+    },
+    {
+      "source_id": "circle-aci-colombia-20261027",
+      "publisher": "Circle / ACI Worldwide",
+      "published_at": "2026-10-27",
+      "url": "https://www.circle.com/pressroom/aci-worldwide-and-circle-collaborate-to-bring-usdc-settlement-to-existing-payments-infrastructure-in-latin-america",
+      "source_type": "official_joint_press_release",
+      "claims": [
+        "Circle and ACI announced a collaboration to demonstrate USDC settlement integrated into existing banking and payment infrastructure.",
+        "The initial focus is Colombia and ACI Connetic.",
+        "ACI says it built central infrastructure powering Bre-B, Colombia's interoperable instant-payment ecosystem.",
+        "The initiative is framed as evaluation and demonstration of stablecoin settlement alongside existing rails."
+      ],
+      "limitations": [
+        "No production settlement volume, active bank count, corridor value, fees or on-chain chain allocation is disclosed.",
+        "A collaboration/pilot announcement is not evidence of live commercial throughput."
+      ]
+    },
+    {
+      "source_id": "circle-q3-calendar-20261007",
+      "publisher": "Circle",
+      "published_at": "2026-10-07",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "source_type": "official_investor_notice",
+      "claims": [
+        "Circle scheduled Q3 2026 results for 2026-11-04 at 8:00 a.m. Eastern.",
+        "Circle identifies its investor site, pressroom, webcast and filings as disclosure channels."
+      ],
+      "limitations": [
+        "No Q3 results are available in this cutoff; do not infer the results."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relationship": "issuer_and_trust_asset_manager",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relationship": "issuance委託者_distribution_and_customer_lending_program",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "JPYSC trust assets",
+      "to": "short-term Japanese government bonds",
+      "relationship": "JPY 1B initial disclosed allocation on 2026-09-07",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI VC Trade / SBI Shinsei Trust Bank",
+      "relationship": "group ownership and strategic oversight",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Circle",
+      "to": "ACI Worldwide",
+      "relationship": "USDC settlement integration collaboration for Colombia",
+      "status": "CONFIRMED_AS_ANNOUNCED"
+    },
+    {
+      "from": "ACI Connetic",
+      "to": "Bre-B",
+      "relationship": "ACI platform supports the central infrastructure described by ACI for Colombia's instant-payment ecosystem",
+      "status": "SOURCED_CLAIM"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relationship": "issuer and payment infrastructure provider",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relationship": "founding validator participation, previously disclosed by Circle",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Ripple",
+      "relationship": "longstanding strategic/equity and commercial relationships, distinct from JPYSC reserve ownership",
+      "status": "CONFIRMED_IN_PRIOR_ARCHIVE"
+    },
+    {
+      "from": "XRP",
+      "to": "ACI/Bre-B Colombia initiative",
+      "relationship": "possible competing or complementary payment-rail exposure only; no direct integration found",
+      "status": "INFERENCE_NOT_CONFIRMED"
+    }
+  ],
+  "actual_capital_accounting": {
+    "jpysc_2026_09_07": {
+      "issuance_balance_jpy_approx": 20100000000,
+      "lending_applications_jpy_approx": 6900000000,
+      "combined_handled_scale_jpy_approx": 27000000000,
+      "initial_short_term_jgb_allocation_jpy": 1000000000,
+      "note": "SBI's issuance balance and customer lending balance are separate accounting categories. Do not add lending applications to public on-chain supply."
+    },
+    "jpysc_2026_11_02": {
+      "lending_balance_jpy_greater_than": 10000000000,
+      "handled_balance_jpy_greater_than": 30000000000,
+      "handled_balance_definition": "on-chain balance + lending balance",
+      "note": "These are company-reported product balances, not XRP flows or publicly circulating JPYSC supply."
+    },
+    "circle_aci_colombia": {
+      "production_volume": null,
+      "onchain_settlement_volume": null,
+      "active_financial_institutions": null,
+      "note": "The announced initiative has no disclosed realized settlement volume at this cutoff."
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "USDC settlement embedded in existing Colombian payment infrastructure could compete with XRP as an intermediary/bridge asset on some corridors.",
+      "support": [
+        "Circle and ACI explicitly announced a USDC settlement initiative focused on Colombia and Bre-B."
+      ],
+      "disconfirming_or_limits": [
+        "The announcement describes demonstration/evaluation, not production volume.",
+        "No XRP route-level settlement baseline or bank adoption count is available."
+      ],
+      "status": "PLAUSIBLE_UNTESTED"
+    },
+    {
+      "id": "H2",
+      "statement": "USDC could complement rather than displace XRP by serving as a stable settlement leg while XRP remains useful for liquidity bridging on other routes.",
+      "support": [
+        "Circle says ACI Connetic supports an evolving ecosystem of payment networks and digital-asset providers.",
+        "USDC is already available on XRPL in the previously documented relationship graph."
+      ],
+      "disconfirming_or_limits": [
+        "No ACI-XRPL or ACI-XRP integration is disclosed.",
+        "No matched-corridor flow data is available."
+      ],
+      "status": "PLAUSIBLE_UNTESTED"
+    },
+    {
+      "id": "H3",
+      "statement": "JPYSC reserve investment in short-term JGBs ties the yen stablecoin's backing economics to Japanese short-term sovereign yields and liquidity management.",
+      "support": [
+        "SBI disclosed an initial JPY 1B short-term JGB allocation and the applicable maturity/percentage constraints."
+      ],
+      "disconfirming_or_limits": [
+        "The disclosed allocation is only a dated initial tranche.",
+        "No current full reserve composition, duration, yield or liquidity ladder is disclosed."
+      ],
+      "status": "SUPPORTED_BUT_INCOMPLETE"
+    },
+    {
+      "id": "H4",
+      "statement": "SBI's participation in Ripple-related businesses, Circle/Arc and JPYSC/OUSD interoperability indicates multi-network strategic optionality rather than exclusive commitment to one settlement rail.",
+      "support": [
+        "SBI has separate Ripple relationships, Circle Arc participation and JPYSC development; SBI and Startale announced exploration of JPYSC/OUSD interoperability."
+      ],
+      "disconfirming_or_limits": [
+        "These relationships may be siloed by subsidiary, customer segment and regulatory perimeter.",
+        "No consolidated SBI capital-allocation or route-volume disclosure is available."
+      ],
+      "status": "INFERENCE"
+    }
+  ],
+  "unknowns": [
+    "ACI/USDC pilot production status, participating banks, settlement volumes, fees, FX corridors, chains and customer flows.",
+    "Whether any Colombian Bre-B bank routes currently use XRP or XRPL.",
+    "JPYSC reserve composition after 2026-09-07, including total JGB share, maturities, counterparties and reserve liquidity.",
+    "Synchronized 2026-11-02 JPYSC on-chain supply versus SBI VC Trade lending balance and redemption obligations.",
+    "Whether JPYSC has moved to public-chain distribution or Arc/StableFX deployment.",
+    "Whether Circle's ACI initiative creates measurable USDC demand that substitutes for, or complements, XRP bridge liquidity."
+  ],
+  "feature_store_admissions": [
+    {
+      "feature": "jpysc_issued_supply",
+      "unit": "JPY",
+      "frequency": "daily_or_disclosure_event",
+      "required_scope": "public_chain_supply_only"
+    },
+    {
+      "feature": "jpysc_customer_lending_balance",
+      "unit": "JPY",
+      "frequency": "disclosure_event",
+      "required_scope": "centralized_lending_separate_from_supply"
+    },
+    {
+      "feature": "jpysc_trust_reserve_jgb_allocation",
+      "unit": "JPY",
+      "frequency": "disclosure_event",
+      "required_scope": "dated_reserve_asset_allocation"
+    },
+    {
+      "feature": "jpysc_jgb_maturity_and_yield",
+      "unit": "days_and_rate",
+      "frequency": "disclosure_event",
+      "required_scope": "only_when_source_discloses"
+    },
+    {
+      "feature": "aci_usdc_colombia_pilot_status",
+      "unit": "categorical",
+      "frequency": "event_driven",
+      "required_scope": "announcement_vs_pilot_vs_production"
+    },
+    {
+      "feature": "aci_usdc_colombia_settlement_volume",
+      "unit": "USD",
+      "frequency": "daily",
+      "required_scope": "only_verified_realized_volume"
+    },
+    {
+      "feature": "xrp_vs_usdc_corridor_share",
+      "unit": "share",
+      "frequency": "monthly",
+      "required_scope": "matched_corridor_and_provider_coverage"
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No verified corridor-level production volumes, synchronized JPYSC reserve series or calibrated XRP model evidence were obtained. These developments are institutional feature candidates, not directional price signals."
+  },
+  "next_actions": [
+    "Reconcile the November 2 JPYSC handled balance against on-chain supply and customer lending definitions.",
+    "Track JPYSC reserve disclosures and short-term JGB allocations without treating the statutory 50% ceiling as actual allocation.",
+    "Monitor ACI/Circle for named bank pilots, production launch dates and realized USDC settlement volume.",
+    "Search for matched Colombia payment corridors with independently sourced XRP/XRPL usage before testing substitution hypotheses.",
+    "Add policy-rate, JGB yield and USD/JPY features with point-in-time publication timestamps."
+  ]
+}
