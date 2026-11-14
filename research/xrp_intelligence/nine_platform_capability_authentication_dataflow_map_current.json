@@ -2,10 +2,10 @@
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "captured_at_utc": "2026-11-13T16:47:57.954Z",
-  "last_verified_at_utc": "2026-11-14T14:32:17Z",
+  "last_verified_at_utc": "2026-11-14T14:51:48Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-  "observed_integration_head_before_map_commit": "f13cdcc66476be19dd077fc728778c5ab0ee6651",
+  "observed_integration_head_before_map_commit": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
@@ -8978,8 +8978,8 @@
     "1653": "UNIQUE_UNREVIEWED_GRAPH_WORK; six source-only paths; preserve.",
     "1655": "UNIQUE_UNREVIEWED; preserve source-only work.",
     "1659": "UNIQUE_UNREVIEWED; preserve source-only work.",
-    "1660": "SUPERSEDED_SOURCE_CANDIDATE_PENDING_MERGE_VERIFICATION; 972 paths overlap #1662; remains open until successor content is merged and verified on main; blob-level differences and semantic review remain.",
-    "1661": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; 1,071/1,072 paths overlap #1662; source-only BARROT_SYNC.md replaces the operational sync file with a Run63 mission log; preserve pending semantic review.",
+    "1660": "SUPERSEDED_SOURCE; 972/972 paths overlap #1662; retain until successor merge and exact main verification.",
+    "1661": "SUPERSEDED_SOURCE_CANDIDATE; 1,071/1,072 paths overlap #1662; unique source-only BARROT_SYNC.md is preserved for semantic review; do not close until successor merge and exact main verification.",
     "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT; current head 4b7fc; 1,095 changed files; 2,227 commits ahead; zero formal reviews/approvals; Run84 current-map schema regression under correction; no merge.",
     "1640_1642_1643_1644_1650_1317_1318_1320_1254_1255": "OVERLAP_OR_SUPERSESSION_CANDIDATES; retain until verified successor merge; reconcile differing blobs first",
     "1644_1650": "DEPENDABOT_DEPENDENCY_CANDIDATES; reconcile versions, workflow compatibility and security before any closure.",
@@ -10393,7 +10393,7 @@
     "latest_run_id": "Run87"
   },
   "latest_run_id": "Run130",
-  "latest_run_captured_at_utc": "2026-11-14T14:32:17Z",
+  "latest_run_captured_at_utc": "2026-11-14T14:51:48Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -21940,7 +21940,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-14T14:32:17Z",
+  "updated_at_utc": "2026-11-14T14:51:48Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -37052,13 +37052,15 @@
     "integration_behind_by": 0,
     "integration_tree_entries": 2438,
     "integration_pr": {
+      "number": 1662,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "changed_files": 1197,
+      "head_sha": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
+      "changed_files": 1199,
       "additions": 355926,
       "deletions": 5354,
-      "commits": 2395,
+      "commits": 2396,
       "formal_approvals": 0,
       "reviews": 0,
       "review_threads": 0,
@@ -37072,18 +37074,19 @@
       "other_base": 8
     },
     "current_full_suite": {
-      "run_id": 43605844704,
-      "passed": 3637,
-      "failed": 4,
-      "subtests": 8,
-      "coverage_percent": 62.47,
+      "head_sha": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
+      "run_id": 43606680744,
       "conclusion": "failure",
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_latest_market_refresh_is_research_only_and_preserves_provider_disagreement",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity",
-        "tests/test_xrp_nine_platform_current_map_run73.py::test_github_connector_admin_scope_is_explicitly_flagged"
-      ]
+      "full_repository_suite": {
+        "passed": 3640,
+        "failed": 1,
+        "subtests": 8,
+        "coverage_percent": 62.47,
+        "duration_seconds": 162.9
+      },
+      "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit",
+      "failure_reason": "Only the #1661 backlog label assertion remains. Canonical schema assertions pass. #1661 has 1,071/1,072 path overlap; its source-only BARROT_SYNC.md is preserved for semantic review.",
+      "fix": "Mark #1661 SUPERSEDED_SOURCE_CANDIDATE while explicitly preserving the unique source-only path; do not close the PR."
     },
     "previous_parent_full_suite": {
       "head_sha": "96e925249ee053d2a3c8fffb4b81b449244f8a9f",
@@ -37157,7 +37160,13 @@
           "Same-wallet is a provider coverage adjustment, not independently verified net customer withdrawals.",
           "Cold storage, omnibus and exchange-owned wallets are included.",
           "This is not immediately tradable exchange float."
-        ]
+        ],
+        "wrapped_reserves_included": {
+          "Coinbase_cbXRP_reserve_xrp": 152900000,
+          "Binance_Peg_XRP_reserve_xrp": 327400000,
+          "note": "Included in attributed exchange wallet totals; not customer deposits or tradable float."
+        },
+        "methodology": "Daily per-exchange aggregate balances, not per-wallet historical balances. Same-wallet is a coverage-adjusted proxy. Newly tracked wallets and transfers to unlabeled addresses can alter apparent changes."
       },
       "derivatives": {
         "source": "TradRadar secondary snapshot",
@@ -37173,23 +37182,34 @@
         "model_eligibility": "STALE_RESEARCH_ONLY"
       },
       "etf": {
+        "xrp_insights": {
+          "as_of": "2026-11-13",
+          "daily_holdings_change_xrp": 3400000,
+          "week46_net_holdings_change_xrp": -6080000,
+          "holdings_xrp": 1189000000,
+          "scope": "six spot ETFs plus BITW",
+          "methodology": "issuer-reported XRP holdings changes; GXRP excluded from flow totals during a data-gap correction but its holdings remain included"
+        },
         "alpha_finance": {
           "as_of": "2026-11-13",
-          "daily_flow_usd": -1100000,
-          "thirty_session_flow_usd": -581700,
-          "tracked_funds": 5
+          "daily_net_flow_usd": -1100000,
+          "tracked_funds": 5,
+          "fund_rows": {
+            "GXRP_usd": -5500000,
+            "Franklin_usd": 4400000
+          },
+          "thirty_session_net_flow_usd": -581700,
+          "methodology": "cash-flow aggregator; includes GXRP"
         },
         "xrp_desk": {
-          "as_of": "2026-11-13",
-          "holdings_change_xrp": -503900,
-          "tracked_products": 6
+          "as_of": "2026-11-14",
+          "refreshed_at_utc": "2026-11-14T14:19:00Z",
+          "daily_holdings_change_xrp": -10000,
+          "tracked_products": 6,
+          "reported_holdings_xrp": 1150000000,
+          "methodology": "reported holdings change, not ETF trading volume"
         },
-        "xrp_insights": {
-          "settled_window": "2026-11-09_to_2026-11-12",
-          "holdings_change_xrp": -9481905,
-          "nov13": "provisional"
-        },
-        "reconciliation": "Different units, fund/product universes, issuer-file completeness and holdings-vs-cash methodologies; do not average."
+        "reconciliation": "The Nov13 apparent sign difference is largely explained by scope: Alpha includes GXRP's -5.5M USD and Franklin +4.4M USD, net -1.1M USD; XRP Insights excludes GXRP from flow totals and includes BITW. XRP Desk is a Nov14 six-product holdings change. Do not average units or cohorts."
       }
     },
     "identity_research": {
@@ -37218,62 +37238,25 @@
       "kamilah_stevenson": "Dr. Kamilah Stevenson is identified by first-party Wealth Doctor material; ownership of the candidate XRP YouTube channel is unverified. Eleven attributed candidate videos remain quarantined; no new channel-owned video was verified. Camilla spelling remains unresolved."
     },
     "evernorth_sbi_correction": {
-      "filing": "Evernorth October 30, 2026 Form 424B3 and November 13, 2026 Form 10-Q",
-      "gross_cash_at_close_usd": 272600000,
-      "private_placement_cash_usd": 224600000,
-      "spac_trust_release_usd": 48000000,
-      "cash_used_to_purchase_xrp_usd": 214050000,
-      "xrp_purchased_with_cash": 84365876,
-      "advance_funding_in_kind_xrp": 600000,
-      "ripple_in_kind_contribution_xrp": 126791458,
-      "pathfinder_transfer_xrp": 346484972,
-      "reported_xrp_held_oct9_approx": 473000000,
-      "warrant_exercises_oct12_to_nov9": {
-        "shares": 3073366,
-        "exercise_price_usd": 11.5,
-        "gross_cash_usd": 35300000,
-        "remaining_warrants": 8666279
-      },
-      "pathfinder_ripple_company_facility": {
-        "borrowed_as_of_oct7_usd": 9700000,
-        "repayment_due": "within five business days after closing or earlier on demand",
-        "repayment_status": "not established by retrieved filing"
-      },
-      "separate_evernorth_facility": {
-        "limit_usd": 1000000,
-        "drawn_as_of_sep30_usd": 0
-      },
-      "eloc": {
-        "max_shares": 5218935,
-        "price_formula": "97% of applicable VWAP",
-        "beneficial_ownership_cap_percent": 4.99,
-        "term_months": 14,
-        "registration_effective": "2026-10-30",
-        "commitment_fee_usd": 521893.5,
-        "proceeds_as_of_nov9": "no purchase proceeds disclosed"
-      },
-      "eloc_disclosure_inconsistency": {
-        "cover_and_table_gross_usd": 76800000,
-        "use_of_proceeds_gross_usd": 80700000,
-        "estimated_net_after_fees_usd": 74400000,
-        "status": "unresolved internal prospectus inconsistency; none is actual proceeds"
-      },
-      "sbi_holdings_equity": {
-        "sbi_defined_as": "SBI Holdings, Inc.",
-        "stockholder_entities": [
-          "SBI Venture Fund 2023A Investment LPS",
-          "SBI Venture Fund 2023B Investment LPS",
-          "SBI PE Holdings Co., Ltd.",
-          "SBI Holdings USA, Inc."
-        ],
-        "class_a_shares": 9431914,
-        "class_c_shares": 2359038,
-        "total_shares": 11790952,
-        "percent_outstanding_common_stock": 21.4,
-        "percent_voting_power": 39.9,
-        "interpretation": "39.9% is voting power, not XRP ownership or capital contributed"
-      },
-      "correction": "Run129's statement that the prospectus did not identify the SBI stockholder group was incomplete. The 424B3 defines SBI as SBI Holdings, Inc. and names all four SBI Stockholders. The 11,790,952 total comprises 9,431,914 Class A plus 2,359,038 Class C; the table reports 21.4% of outstanding common stock and 39.9% of voting power."
+      "sbi_defined_as": "SBI Holdings, Inc.",
+      "entities": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "class_a_shares": 9431914,
+      "class_a_shares_outstanding": 26094680,
+      "class_a_percent_of_class": 36.1,
+      "class_c_shares": 2359038,
+      "class_c_shares_outstanding": 31392746,
+      "class_c_percent_of_class": 7.5,
+      "class_c_voting_status": "non-voting",
+      "total_class_a_plus_class_c_shares": 11790952,
+      "total_common_shares_outstanding": 57487426,
+      "derived_total_common_percent": 20.51,
+      "initial_class_a_ownership_cap_at_closing_percent": 39.9,
+      "correction": "39.9% was the contractual Class A ownership cap at closing, not the current voting percentage shown in the Oct22 table. The table shows 36.1% of Class A and 7.5% of non-voting Class C. Combined 20.51% of all Class A+Class C common shares is derived, not a directly stated SEC percentage."
     },
     "prediction_engine": {
       "implemented": [
@@ -37411,18 +37394,278 @@
       "source_prs_closed": 0
     },
     "map_schema_regression": {
-      "failed_run": 43605844704,
-      "failed_tests": 4,
-      "passed_tests": 3637,
-      "subtests": 8,
-      "current_bad_blob_sha": "9a95848fa7a47aae85a1f61b6948cdfe8f6dc187",
-      "restored_original_blob_sha": "0912d806b94b95db800411bf2978a91275ec174b",
-      "correction": "Restore original canonical schema; preserve Run128/Run129 unique snapshot keys; append Run130 separately. Tests remain unchanged."
+      "stage1": {
+        "run_id": 43605844704,
+        "failed_tests": 4,
+        "passed_tests": 3637,
+        "root_cause": "Current map lost required historical schema fields."
+      },
+      "stage2": {
+        "run_id": 43606680744,
+        "failed_tests": 1,
+        "passed_tests": 3640,
+        "subtests": 8,
+        "root_cause": "Only #1661 backlog classification marker remained; canonical schema tests now pass."
+      },
+      "canonical_blob_restored_from": "0912d806b94b95db800411bf2978a91275ec174b",
+      "run128_run129_snapshot_keys_preserved": true,
+      "next_fix": "Mark #1661 SUPERSEDED_SOURCE_CANDIDATE while preserving unique source-only BARROT_SYNC.md; do not close source PR."
     },
     "forecast_status": "NOT_ISSUED",
     "accuracy_status": "NOT_EVALUATED",
     "merge_decision": "NO_MERGE",
-    "source_pr_closures": 0
+    "source_pr_closures": 0,
+    "integration_head_before_run130_supplement_commit": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
+    "capital_bridge": {
+      "artifact_type": "evernorth_actual_capital_and_xrp_asset_bridge",
+      "schema_version": "1.0.0",
+      "captured_at_utc": "2026-11-14T14:51:48Z",
+      "cash_bridge": {
+        "sbi_group_announced_cash_commitment_usd": 200000000,
+        "announcement_date": "2025-10-21",
+        "announcement_status": "issuer-announced PIPE commitment; subscriber-level amount not disclosed in the 10-Q",
+        "advance_funding_cash_received_usd": 214049995,
+        "advance_funding_cash_use": "used to purchase 84,365,876.3625 XRP",
+        "delayed_funding_cash_usd": 10500000,
+        "delayed_funding_status": "additional investors; delivered at closing",
+        "spac_trust_release_usd": 48000000,
+        "private_placement_cash_usd": 224549995,
+        "gross_cash_at_close_usd": 272549995,
+        "rounded_filing_total_usd": 272600000,
+        "reconciliation": "214.05M advance funding + 10.5M delayed funding = 224.55M private-placement cash; plus 48M SPAC trust release = 272.55M, reported as 272.6M. SBI's announced 200M is consistent with being within the 214.05M pool; the 10-Q does not disclose the subscriber-level split. Do not add 200M on top."
+      },
+      "xrp_asset_bridge": {
+        "cash_purchased_xrp": 84365876.3625,
+        "advance_funding_inkind_xrp": 600000,
+        "delayed_funding_inkind_xrp": 200000,
+        "rippleworks_to_sponsor_series_c_inkind_xrp": 211319096,
+        "ripple_related_entity_inkind_xrp": 50000000,
+        "pathfinder_transfer_xrp": 346484972,
+        "pathfinder_transfer_reconciliation": "84,365,876.3625 cash-purchased + 600,000 advance in-kind + 200,000 delayed in-kind + 211,319,096 RippleWorks/Sponsor in-kind + 50,000,000 Ripple-related-entity in-kind = 346,484,972 XRP transferred to Pathfinder.",
+        "ripple_separate_in_kind_contribution_xrp": 126791458,
+        "total_derived_xrp": 473276430.3625,
+        "reported_total_xrp_approx": 473000000,
+        "total_reconciliation": "346,484,972 Pathfinder transfer + 126,791,458 separate Ripple contribution = 473,276,430 XRP, consistent with the approximately 473M reported at closing. The 84.366M XRP purchased with cash is already included in XRP assets; do not add it again to cash raised."
+      },
+      "post_close_financing": {
+        "public_warrant_exercises": {
+          "period": "2026-10-12_to_2026-11-09",
+          "shares": 3073366,
+          "exercise_price_usd": 11.5,
+          "gross_cash_usd": 35300000,
+          "remaining_warrants": 8666279,
+          "status": "actual gross cash reported in 10-Q"
+        },
+        "pik_note": {
+          "principal_usd": 30000000,
+          "net_proceeds_usd": 29000000,
+          "type": "debt; not equity"
+        },
+        "pathfinder_ripple_company_facility": {
+          "borrowed_as_of": "2026-10-07",
+          "amount_usd": 9700000,
+          "type": "related-party debt",
+          "repayment_due": "within five business days after closing or earlier on demand",
+          "repayment_status": "not established by retrieved filing"
+        },
+        "separate_evernorth_facility": {
+          "limit_usd": 1000000,
+          "drawn_as_of": "2026-09-30",
+          "amount_usd": 0
+        },
+        "eloc": {
+          "max_shares": 5218935,
+          "price_formula": "97% of applicable VWAP",
+          "beneficial_ownership_cap_percent": 4.99,
+          "term_months": 14,
+          "registration_effective": "2026-10-30",
+          "commitment_fee_usd": 521893.5,
+          "purchase_proceeds_as_of_2026_11_09": "none disclosed"
+        },
+        "eloc_disclosure_inconsistency": {
+          "cover_and_table_gross_usd": 76800000,
+          "use_of_proceeds_gross_usd": 80700000,
+          "estimated_net_after_fees_usd": 74400000,
+          "status": "unresolved prospectus inconsistency; none is actual ELOC proceeds"
+        },
+        "resale_registration": {
+          "registered_shares_approx": 73688162,
+          "type": "secondary selling-holder resale; not issuer proceeds"
+        }
+      },
+      "sbi_equity_table_as_of_2026_10_22": {
+        "sbi_defined_as": "SBI Holdings, Inc.",
+        "entities": [
+          "SBI Venture Fund 2023A Investment LPS",
+          "SBI Venture Fund 2023B Investment LPS",
+          "SBI PE Holdings Co., Ltd.",
+          "SBI Holdings USA, Inc."
+        ],
+        "class_a_shares": 9431914,
+        "class_a_shares_outstanding": 26094680,
+        "class_a_percent_of_class": 36.1,
+        "class_c_shares": 2359038,
+        "class_c_shares_outstanding": 31392746,
+        "class_c_percent_of_class": 7.5,
+        "class_c_voting_status": "non-voting",
+        "total_class_a_plus_class_c_shares": 11790952,
+        "total_common_shares_outstanding": 57487426,
+        "derived_total_common_percent": 20.51,
+        "initial_class_a_ownership_cap_at_closing_percent": 39.9,
+        "correction": "39.9% was the contractual Class A ownership cap at closing, not the current voting percentage shown in the Oct22 table. The table shows 36.1% of Class A and 7.5% of non-voting Class C. Combined 20.51% of all Class A+Class C common shares is derived, not a directly stated SEC percentage."
+      },
+      "interpretation_rules": [
+        "Do not add the announced SBI 200M commitment to the 214.05M aggregate advance-funding cash.",
+        "Do not add cash-funded XRP purchases to cash raised; they are a use of proceeds and are already included in the XRP asset bridge.",
+        "Keep in-kind XRP contributions separate from cash subscriptions.",
+        "Keep debt, PIK notes, warrants, ELOC capacity, resale registrations and actual cash proceeds in separate categories.",
+        "Do not treat the 39.9% initial Class A ownership cap as current voting power, total share ownership or XRP ownership."
+      ],
+      "sources": [
+        {
+          "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+          "type": "primary_SBI_Holdings_announcement",
+          "date": "2025-10-21"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+          "type": "primary_SEC_10Q",
+          "date": "2026-11-13"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+          "type": "primary_SEC_424B3",
+          "date": "2026-10-30"
+        }
+      ]
+    },
+    "source_pr_overlap": {
+      "1317": {
+        "source_paths": 6,
+        "overlap": 6,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE"
+      },
+      "1318": {
+        "source_paths": 2,
+        "overlap": 2,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE"
+      },
+      "1320": {
+        "source_paths": 5,
+        "overlap": 5,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE"
+      },
+      "1611": {
+        "source_paths": 8,
+        "overlap": 7,
+        "source_only": 1,
+        "status": "UNIQUE_UNREVIEWED"
+      },
+      "1614": {
+        "source_paths": 57,
+        "overlap": 30,
+        "source_only": 27,
+        "status": "UNIQUE_UNREVIEWED"
+      },
+      "1615": {
+        "source_paths": 14,
+        "overlap": 1,
+        "source_only": 13,
+        "status": "UNIQUE_UNREVIEWED"
+      },
+      "1640": {
+        "source_paths": 280,
+        "overlap": 280,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE"
+      },
+      "1642": {
+        "source_paths": 7,
+        "overlap": 7,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE_PRESERVE_FOR_SEMANTIC_REVIEW"
+      },
+      "1643": {
+        "source_paths": 670,
+        "overlap": 670,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE"
+      },
+      "1653": {
+        "source_paths": 7,
+        "overlap": 1,
+        "source_only": 6,
+        "status": "UNIQUE_UNREVIEWED"
+      },
+      "1655": {
+        "source_paths": 8,
+        "overlap": 5,
+        "source_only": 3,
+        "status": "UNIQUE_UNREVIEWED"
+      },
+      "1659": {
+        "source_paths": 6,
+        "overlap": 2,
+        "source_only": 4,
+        "status": "UNIQUE_UNREVIEWED"
+      },
+      "1660": {
+        "source_paths": 972,
+        "overlap": 972,
+        "source_only": 0,
+        "status": "SUPERSESSION_CANDIDATE"
+      },
+      "1661": {
+        "source_paths": 1072,
+        "overlap": 1071,
+        "source_only": 1,
+        "source_only_path": "BARROT_SYNC.md",
+        "status": "SUPERSESSION_CANDIDATE_WITH_UNIQUE_PATH_PRESERVED"
+      },
+      "1644-1650_and_1254-1255": "BLOCKED_DEPENDENCY_CANDIDATES_REQUIRE_INDIVIDUAL_CURRENT_MAIN_VALIDATION",
+      "source_prs_closed": 0
+    },
+    "latest_ci": {
+      "parent_head": "96e925249ee053d2a3c8fffb4b81b449244f8a9f",
+      "parent_full_suite": {
+        "passed": 3641,
+        "failed": 0,
+        "subtests": 8,
+        "coverage_percent": 62.47,
+        "conclusion": "success"
+      },
+      "current_head": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
+      "current_full_suite": {
+        "head_sha": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
+        "run_id": 43606680744,
+        "conclusion": "failure",
+        "full_repository_suite": {
+          "passed": 3640,
+          "failed": 1,
+          "subtests": 8,
+          "coverage_percent": 62.47,
+          "duration_seconds": 162.9
+        },
+        "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit",
+        "failure_reason": "Only the #1661 backlog label assertion remains. Canonical schema assertions pass. #1661 has 1,071/1,072 path overlap; its source-only BARROT_SYNC.md is preserved for semantic review.",
+        "fix": "Mark #1661 SUPERSEDED_SOURCE_CANDIDATE while explicitly preserving the unique source-only path; do not close the PR."
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 5,
+        "known_vulnerabilities": 0,
+        "run_id": 43605844686
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "run_id": 43605844701
+      },
+      "canonical_map_schema_restore": "PENDING_EXACT_HEAD_CI",
+      "map_schema_restore": "THREE_SCHEMA_FAILURES_RESOLVED; ONE_BACKLOG_LABEL_ASSERTION_REMAINS"
+    }
   },
   "run130_research_artifact_path": "research/xrp_intelligence/20261114T143217Z-run130-exact-head-ci-exchange-wallet-flow-sbic-and-sec-correction.json",
   "run130_platform_map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run130.json",
