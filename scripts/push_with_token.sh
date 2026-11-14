@@ -6,8 +6,12 @@
 #   - No password auth, no SSH key requirement: fine-grained PAT over HTTPS
 #     with username "x-access-token" only.
 #   - The token is read from the GH_TOKEN env var, NEVER written to disk,
-#     never echoed, never stored in .git/config or remote URLs, never passed
-#     on the command line (uses a git credential helper instead).
+#     never echoed, never stored in .git/config or remote URLs. The git
+#     credential helper below is passed via `git -c`, which does place it in
+#     the short-lived git process argv (visible to same-user local processes
+#     only); if that matters in your threat model, run this on a single-user
+#     box. Alternatives (askpass scripts, credential store) all require
+#     writing the token to disk, which this script refuses to do.
 #
 # One-time token setup (do this in your browser, NOT in chat):
 #   1. Open https://github.com/settings/personal-access-tokens/new
