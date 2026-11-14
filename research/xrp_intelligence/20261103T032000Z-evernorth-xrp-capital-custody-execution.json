@@ -1,0 +1,273 @@
+{
+  "schema_version": "barrot.xrp.institutional-treasury-custody.v1",
+  "artifact_id": "20261103T032000Z-evernorth-xrp-capital-custody-execution",
+  "created_at_utc": "2026-11-03T03:20:00Z",
+  "data_cutoff_utc": "2026-11-03T03:20:00Z",
+  "entity": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",
+  "focus": "actual XRP capital sources, custody, governance, execution and principal-market designation",
+  "forecast_status": "NOT_ISSUED",
+  "claims": [
+    {
+      "id": "E01",
+      "class": "confirmed_fact",
+      "claim": "Evernorth's October 30, 2026 SEC 10-Q says it held approximately 473 million XRP as of October 9, 2026. Since inception it raised USD 214.1M in cash and 261,919,096 XRP through private-placement subscription agreements; it used the USD 214.1M cash proceeds to purchase 84,365,876 XRP.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "E02",
+      "class": "confirmed_fact",
+      "claim": "Ripple contributed 126,791,458 XRP to Pathfinder/Evernorth under an October 19, 2025 contribution agreement in exchange for company units. This is a related-party in-kind contribution, not an open-market XRP purchase.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "E03",
+      "class": "derived",
+      "claim": "The three disclosed components total 473,076,430 XRP: 261,919,096 private-placement XRP contributions (55.37%), 84,365,876 cash-funded XRP purchases (17.83%) and 126,791,458 Ripple-contributed XRP (26.80%). This reconciles to the company's approximately 473M October 9 holding.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "E04",
+      "class": "derived",
+      "claim": "The disclosed USD 214.1M cash proceeds used to purchase 84,365,876 XRP imply an average acquisition cost of approximately USD 2.53657 per XRP. The filing excerpt does not identify the exact execution venue, timing schedule or order-routing counterparties for those purchases.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "E05",
+      "class": "confirmed_fact",
+      "claim": "Evernorth selected Coinbase as the principal market for XRP for financial-reporting impairment measurement. The filing says it reassesses this principal-market determination at least annually. This is an accounting-market designation, not proof of exclusive execution or custody.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "E06",
+      "class": "confirmed_fact",
+      "claim": "Evernorth names Coinbase, Ripple, Kraken and BitGo as inaugural institutional execution partners, with strategy deployment expected in Q4 2026. The reviewed disclosure does not provide individual execution sizes, venue allocation or completed deployment evidence.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "E07",
+      "class": "confirmed_fact",
+      "claim": "BitGo Bank & Trust is Evernorth's primary XRP custodian. The prospectus says 100% of XRP was held in offline/cold storage as of prospectus date, with multisignature key management and hardware security modules.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "E08",
+      "class": "confirmed_fact",
+      "claim": "BitGo's approximately USD 250M cold-storage insurance policy is shared among eligible BitGo clients and is not dedicated to Evernorth. Evernorth's prospectus estimates this aggregate coverage at approximately 36.9% of the value of its XRP holdings as of October 9, 2026.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "E09",
+      "class": "confirmed_fact",
+      "claim": "Evernorth's SEC ownership table reports SBI with approximately 39.9% of Pubco voting power at the October 9, 2026 closing. The table also reports approximately 21.4% of total common stock; class-specific holdings differ because Class C shares have no ordinary voting rights. This is Evernorth governance, not Ripple ownership or XRP-token ownership.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "E10",
+      "class": "confirmed_fact",
+      "claim": "SBI Holdings and SBI Shinsei Bank each invested USD 25M in Circle in 2025; SBI separately states it holds approximately 9% of Ripple Labs shares as Ripple's largest external shareholder. These are two separate corporate equity relationships, neither of which is an XRP-token balance.",
+      "source_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "E11",
+      "class": "confirmed_fact",
+      "claim": "As of October 7, 2026, Evernorth had borrowed USD 9.7M under a USD 10M Ripple-related credit facility. This is related-party borrowing, not an external cash purchase of XRP.",
+      "source_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "E12",
+      "class": "sourced_claim",
+      "claim": "Evernorth's prospectus states that up to 5,218,935 Class A shares may be issued/resold under a committed equity financing arrangement with CF Principal Investments/Cantor, subject to contractual conditions. This is potential equity dilution, not evidence that the maximum amount has been issued.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "E13",
+      "class": "inference",
+      "claim": "Only 17.83% of the disclosed 473.076M XRP treasury is explicitly identified as cash-funded acquisition. The remaining 82.17% is disclosed XRP contributed through private-placement subscriptions or by Ripple. The treasury therefore should not be treated as 473M of fresh open-market buy pressure.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "E14",
+      "class": "unknown",
+      "claim": "The beneficial source/investor breakdown of the 261.919M XRP private-placement contributions, exact purchase venues for the 84.366M cash-funded XRP and subsequent post-October 9 treasury movements are not fully reconstructed in this artifact.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "E15",
+      "class": "unknown",
+      "claim": "The exact amount of XRP currently pledged, lent, deployed in yield strategies, used as collateral or held in operational wallets after the October 9 snapshot is not established by the reviewed excerpt. The prospectus states BitGo cannot pledge or lend XRP unless expressly directed under yield-generation strategies.",
+      "source_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "E16",
+      "class": "disconfirming_evidence",
+      "claim": "Coinbase being Evernorth's principal market for impairment accounting does not establish that Coinbase is the sole execution venue, the custodian, the beneficial owner of Evernorth XRP or the controller of XRP spot price.",
+      "source_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "E17",
+      "class": "disconfirming_evidence",
+      "claim": "SBI's 39.9% voting power is in Evernorth Pubco, while SBI's approximately 9% holding is in Ripple Labs. Neither figure is a percentage of XRP supply or proof of unilateral control over Ripple or the XRP Ledger.",
+      "source_ids": [
+        "S02",
+        "S03"
+      ]
+    }
+  ],
+  "capital_ledger": {
+    "snapshot_date": "2026-10-09",
+    "total_xrp": 473076430,
+    "components": [
+      {
+        "type": "private-placement XRP contributions",
+        "xrp": 261919096,
+        "share_pct": 55.37,
+        "market_buy_proven": false
+      },
+      {
+        "type": "cash-funded XRP acquisitions",
+        "xrp": 84365876,
+        "share_pct": 17.83,
+        "usd_cash_used": 214100000,
+        "implied_average_usd_per_xrp": 2.53657,
+        "execution_venue_known": false
+      },
+      {
+        "type": "Ripple related-party XRP contribution",
+        "xrp": 126791458,
+        "share_pct": 26.8,
+        "market_buy_proven": false
+      }
+    ],
+    "total_check_xrp": 473076430,
+    "note": "Components reconcile to approximately 473M. This is an October 9 treasury snapshot, not a November 3 current-balance query."
+  },
+  "custody_and_governance": {
+    "primary_custodian": "BitGo Bank & Trust",
+    "cold_storage_pct_as_of_prospectus": 100,
+    "aggregate_shared_cold_storage_insurance_usd": 250000000,
+    "insurance_pct_of_evernorth_xrp_value_as_of_2026_10_09": 36.9,
+    "sbi_evernorth_voting_power_pct": 39.9,
+    "sbi_ripple_equity_pct_company_disclosed": "approximately 9%",
+    "ripple_credit_facility_usd": 10000000,
+    "ripple_credit_drawn_as_of_2026_10_07_usd": 9700000
+  },
+  "hypotheses": [
+    {
+      "id": "H01",
+      "hypothesis": "Evernorth creates institutional XRP ownership and public-equity access but its disclosed treasury should not be interpreted as equivalent fresh spot demand because 82.17% came through XRP contributions.",
+      "supporting_claims": [
+        "E01",
+        "E02",
+        "E03",
+        "E13"
+      ],
+      "counter_evidence": [],
+      "test": "Track future cash-funded acquisitions, in-kind contributions, treasury changes and disclosed execution venues separately."
+    },
+    {
+      "id": "H02",
+      "hypothesis": "Coinbase's principal-market designation reflects price discovery/accessibility for accounting and does not imply exclusive execution.",
+      "supporting_claims": [
+        "E05",
+        "E06",
+        "E16"
+      ],
+      "counter_evidence": [],
+      "test": "Monitor disclosed execution allocations and Coinbase-versus-other-venue price/volume dispersion."
+    },
+    {
+      "id": "H03",
+      "hypothesis": "SBI's large Evernorth voting position plus separate Ripple and Circle equity stakes gives it cross-ecosystem strategic exposure, but not token-level control.",
+      "supporting_claims": [
+        "E09",
+        "E10",
+        "E17"
+      ],
+      "counter_evidence": [],
+      "test": "Track filings, board rights, voting arrangements and actual XRP/stablecoin movements; do not infer from equity stakes."
+    },
+    {
+      "id": "H04",
+      "hypothesis": "BitGo custody and shared insurance create counterparty concentration despite cold-storage controls.",
+      "supporting_claims": [
+        "E07",
+        "E08"
+      ],
+      "counter_evidence": [],
+      "test": "Track additional custodian onboarding, insurance policy terms, wallet segregation and any collateral/yield mandates."
+    }
+  ],
+  "source_records": [
+    {
+      "id": "S01",
+      "publisher": "Evernorth / SEC",
+      "type": "Form 10-Q",
+      "date": "2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm"
+    },
+    {
+      "id": "S02",
+      "publisher": "Evernorth / SEC",
+      "type": "Form 424B3 prospectus",
+      "date": "2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+    },
+    {
+      "id": "S03",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "type": "official corporate investment announcement",
+      "date": "2025-06-09",
+      "url": "https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html"
+    }
+  ],
+  "next_actions": [
+    "Obtain Evernorth's next public filing and reconcile current XRP holdings against the October 9 snapshot.",
+    "Track Q4 2026 strategy deployment and distinguish execution partner announcements from completed XRP transactions.",
+    "Determine actual venue/time allocation for the 84.366M cash-funded acquisitions if future disclosures provide it.",
+    "Monitor SBI's Evernorth governance/voting changes separately from its Ripple equity position.",
+    "Monitor BitGo custody balances, additional custodian diversification and any disclosed XRP collateral/yield deployment.",
+    "Track ELOC actual issuance separately from registered maximum potential dilution."
+  ],
+  "prediction_policy": {
+    "status": "NOT_ISSUED",
+    "no_directional_forecast": true,
+    "no_paper_position": true
+  }
+}
