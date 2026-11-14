@@ -1,44 +1,44 @@
 # Barrot XRP Intelligence — Canonical Mission Handoff (Run112)
 
-Updated: 2026-11-14 02:13 UTC
+Updated: 2026-11-14 02:16 UTC
 
 **Mission priority 1:** XRP intelligence and measured prediction-engine mastery. **Protected foundation:** Barrot V3 execution, orchestration, safety, verification and external-action controls.
 
 ## 1. Current repository state
 
-- Repository: `Barrot-Agent/B-Agent`.
-- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306` (unchanged).
-- Integration branch: `integration/xrp-v3-unified-main-20261112`.
-- Current documentation head before this handoff refresh: `97d35ab5f14b2b41e1a9f75ffa7c38917d8b6be2`; 2,329 commits ahead of main, zero behind.
-- Code-bearing integration head verified in Run112: `6b9c8dadc1810e3a0b296a4b713f307ab106bef4`; 2,325 commits ahead, zero behind.
-- Recursive trees are complete and not truncated: main 1,381 entries; current integration 2,402 entries.
-- Consolidated PR #1662: draft/open, mergeable, 1,161 changed files, 301,520 additions, 5,354 deletions; 50 workflow files and seven public web files.
+- Repository: Barrot-Agent/B-Agent.
+- Main SHA: fb272b40966834754ec686f9ed3ab94123f09306 (unchanged).
+- Integration branch: integration/xrp-v3-unified-main-20261112.
+- Current documentation head before this handoff refresh: ac1ab44eff0f7091354cf08cd4b850dcb6396353; 2,331 commits ahead of main, zero behind.
+- Code-bearing integration head verified in Run112: 6b9c8dadc1810e3a0b296a4b713f307ab106bef4; 2,325 commits ahead, zero behind.
+- Recursive trees are complete and not truncated: main 1,381 entries; current integration 2,403 entries.
+- Consolidated PR #1662: draft/open, mergeable, 1,162 changed files, 301,649 additions, 5,354 deletions; 50 workflow files and seven public web files.
 - Open PR inventory: 375 (361 drafts, 14 non-drafts). PR #1662 has zero formal reviews, approvals and review threads.
-- Run112 commits on the existing integration branch: research artifact `5b31c825270003f9f993d286505d595c831173a1`; handoff refresh `d2a1943464e03fc8082ed9d26f464bf02ac42e70`; nine-platform map snapshot `25a23f28371a829bcc71b25834576f0c93dda7e7`; current-map restoration `97d35ab5f14b2b41e1a9f75ffa7c38917d8b6be2`. All are documentation/research updates; no runtime code changed.
-- The previous `nine_platform_capability_authentication_dataflow_map_current.json` was a zero-byte file. Run112 restored it to a 31,096-byte structured map and created the immutable Run112 snapshot `nine_platform_capability_authentication_dataflow_map_run112.json`.
+- Run112 research artifact: research/xrp_intelligence/20261114T020619Z-run112-market-sec-capital-bootstrap-and-integration-audit.json.
+- Run112A RLUSD addendum: research/xrp_intelligence/20261114T021605Z-run112a-rlusd-crosschain-volume-and-payment-quality.json.
+- Run112 platform-map snapshot: research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run112.json. The current map was restored from a zero-byte file to a valid 31,096-byte JSON document.
+- Run112 commits on the existing integration branch are documentation/research only: research artifact 5b31c825; handoff refresh d2a1943; map snapshot 25a23f28; current-map restoration 97d35ab5; RLUSD addendum ac1ab44. No runtime code changed.
 - Main remains unchanged. No new branch or PR was created.
 
 ## 2. Integrated architecture and exact-head verification
 
-**DESIGNED:** 48 scheduled public XRP endpoints; read-only main-only ingestion; SHA-256 raw receipts and local cross-run receipt chain; SQLite point-in-time feature store; event timeline and source-independence registry; scenario/counter-hypothesis generation; four deterministic baselines; chronological walk-forward with purge/embargo; temporal calibration and PSI drift diagnostics; paired temporal/source-clustered moving-block bootstrap; v6 fail-closed forecast ledger with Ed25519 evaluator attestation.
+DESIGNED: 48 scheduled public XRP endpoints; read-only main-only ingestion; SHA-256 raw receipts and local cross-run receipt chain; SQLite point-in-time feature store; event timeline and source-independence registry; scenario/counter-hypothesis generation; four deterministic baselines; chronological walk-forward with purge/embargo; temporal calibration and PSI drift diagnostics; paired temporal/source-clustered moving-block bootstrap; v6 fail-closed forecast ledger with Ed25519 evaluator attestation.
 
-**EXECUTED in prior integration work:** paired bootstrap, Bonferroni familywise checks, policy v6, source-cluster minimum safeguards and regression tests. Run112 made documentation/research updates only.
+EXECUTED in prior integration work: paired bootstrap, Bonferroni familywise checks, policy v6, source-cluster minimum safeguards and regression tests. Run112/112A made documentation/research updates only.
 
-**VERIFIED on code-bearing head `6b9c8dad`:**
+VERIFIED on code-bearing head 6b9c8dad:
 - Full repository suite: 3,626 passed, eight subtests, zero failures; 62.34% inclusive coverage; 108.87 seconds.
 - Core tests: 739 passed; 76% core coverage.
 - Wheel build and installed primary mission verification: passed.
 - Dependency audit: five manifest groups passed; zero known vulnerabilities reported.
 - Fail-closed gate: passed with merge disabled.
-- Evidence: full CI 43541249872; dependency audit 43541249830; fail-closed gate 43541249816. Full-suite job 132282075619 and core job 132282075305 completed successfully.
+- Evidence: full CI 43541249872; dependency audit 43541249830; fail-closed gate 43541249816.
 - Main's latest visible Cross Analysis workflow 43543067246 succeeded on unchanged main. The last recorded main full suite passed 747 tests and eight subtests; no newer main full-suite run was verified in Run112.
 
-**Current documentation head `97d35ab5`:**
-- Push CI run 43545147401: in progress at the last poll.
-- Push dependency audit 43545147369: in progress.
-- Push fail-closed gate 43545147377: in progress.
-- PR-event CI 43545153256, dependency audit 43545151117 and fail-closed gate 43545150993: in progress at the last poll.
-- Do not reuse the code-bearing parent's green full-suite result as proof for the documentation descendant. Exact-head verification is pending.
+Current documentation-head verification:
+- Previous docs head 71e4680f had push full-suite run 43545205818 still in progress at last poll; its core job passed, full repository suite was still installing complete development dependencies, and dependency audit 43545209429 was still running.
+- That head was superseded by Run112A commit ac1ab44.
+- The new current head ac1ab44 had no workflow runs visible at the last inspection. Exact-head full suite, dependency audit and fail-closed verification must be completed on the final documentation head. Do not reuse the code-bearing parent's green full-suite result as proof for the documentation descendant.
 
 ## 3. Prediction-engine readiness and verified integration gaps
 
@@ -46,18 +46,17 @@ Implemented on integration: read-only scheduled ingestion; SHA-256 receipts/loca
 
 Policy v6 requires candidate-versus-each-of-four-baselines Brier/log-loss comparisons in independent OOS and shadow cohorts; at least 10,000 bootstrap replicates; at least 100 paired origins per cohort; at least five receipt-backed source clusters; at least five observations per source cluster and no less than the block length; Bonferroni familywise confidence of at least 95% across eight comparisons, requiring at least 99.375% per interval. Every required interval must have an upper bound below zero.
 
-**Run112 code inspection found concrete integration mismatches:**
-
-1. `walk_forward.py` invokes `evaluate_paired_block_bootstrap` with defaults of 1,000 replicates, 30 minimum origins and 95% confidence. The v6 ledger requires 10,000, 100 and 99.375% individual confidence. The default walk-forward output is not policy-v6 admission evidence.
-2. The current walk-forward bootstrap uses `naive_class_prior` as its single benchmark. It does not itself produce a trained candidate's paired comparisons against all four required baselines in both OOS and shadow windows.
-3. The moving-block bootstrap sorts by timestamp but resamples circular row-index blocks without enforcing expected cadence or a maximum elapsed-time gap. Missing-origin gaps can be bridged.
+Run112 code inspection found concrete integration mismatches:
+1. walk_forward.py invokes evaluate_paired_block_bootstrap with defaults of 1,000 replicates, 30 minimum origins and 95% confidence. The v6 ledger requires 10,000, 100 and 99.375% individual confidence. The default walk-forward output is not policy-v6 admission evidence.
+2. The current walk-forward bootstrap uses naive_class_prior as its single benchmark. It does not itself produce a trained candidate's paired comparisons against all four required baselines in both OOS and shadow windows.
+3. The moving-block bootstrap sorts observations by timestamp but resamples circular row-index blocks without enforcing expected cadence or a maximum elapsed-time gap. Missing-origin gaps can be bridged.
 4. A target record receives a source cluster only when its outcome resolves to exactly one canonical independence group. Multi-publisher composites remain unclustered rather than being arbitrarily assigned. Five groups are feasible only if single-lineage target observations across independent publishers provide sufficient origins per group; this is not demonstrated by current data.
 
 No trained XRP-specific candidate model exists. Current walk-forward results are deterministic-baseline diagnostics. Synchronized historical spot/L2/derivatives/exchange-flow/collateral data, independent WORM storage and trusted timestamp anchoring, and independent shadow outcomes remain insufficient. The ingestion workflow has not executed on main because it remains unmerged.
 
-Forecast status: **NOT_ISSUED**. Accuracy: **NOT_EVALUATED**. No directional forecast, paper trade or real-money action.
+Forecast status: NOT_ISSUED. Accuracy: NOT_EVALUATED. No directional forecast, paper trade or real-money action.
 
-## 4. Run112 XRP market, flow and macro observations
+## 4. Run112 market, flow and macro observations
 
 Research cutoff: 2026-11-14 02:06:19 UTC. Web/API observations below do not have byte-exact Barrot raw-source receipts and are not model-eligible.
 
@@ -69,9 +68,9 @@ Research cutoff: 2026-11-14 02:06:19 UTC. Web/API observations below do not have
 - XRP Insights' Nov 13 08:01 UTC exchange-wallet scan: 22.26B XRP across 707 wallets/24 exchanges; same-wallet changes -77.3M over seven days and -279.7M over 30 days. Including 517.7M XRP in newly tracked wallets changes the naive 30-day total change to +238.0M XRP. Cold/omnibus storage is included; not tradable float or complete exchange accounting.
 - Reuters' Nov 13 report: yen crossed 160 per USD; Japan had spent 15.4T yen intervening in July/August; reported New York Fed operations were about $497M, far below prior approximately $10B indications. Macro/FX context only; no XRP-specific causation established.
 
-## 5. Run112 institutional, capital and identity findings
+## 5. Run112/112A institutional, capital and identity findings
 
-**Evernorth Form 10-Q:** SEC accession 000162828026073871, filed Nov 13 at 21:29 UTC, for the quarter ended Sep 30. Historical financial statements are pre-combination; the Oct 9 closing occurred afterward, and a Pathfinder/combined-company Form 8-K/A remained pending.
+Evernorth Form 10-Q: SEC accession 000162828026073871, filed Nov 13 at 21:29 UTC, for the quarter ended Sep 30. Historical financial statements are pre-combination; the Oct 9 closing occurred afterward, and a Pathfinder/combined-company Form 8-K/A remained pending.
 
 - Nine-month net loss: $32.870M; Q3 net income: $155.265M, primarily reflecting a $162.834M fair-value gain on refundable investor advances. Nine-month XRP impairment: $271.037M.
 - Sep 30 pre-close XRP carrying value: $341.887M; unrestricted cash: $91,397.
@@ -83,7 +82,7 @@ Research cutoff: 2026-11-14 02:06:19 UTC. Web/API observations below do not have
 - Coinbase is the selected principal market for XRP financial-reporting/impairment purposes, not an exclusive execution or custody venue. Initial post-close custody is with BitGo Trust.
 - The 10-Q says no revenue had been generated and Pubco has no independent revenue source; it depends on Pathfinder distributions. Do not treat Q3 net income as recurring operating profit.
 
-**Coinbase/Circle/Ripple/SBI distinctions:**
+Coinbase/Circle/Ripple/SBI distinctions:
 - Coinbase RLUSD is live on Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was forthcoming, not live.
 - PNC/Coinbase pilot uses Circle USDC with USD conversion, not XRP settlement.
 - Standard Chartered RLUSD custody on XRPL is live through its DIFC branch; LMAX collateral mirroring is planned and conditional.
@@ -92,7 +91,15 @@ Research cutoff: 2026-11-14 02:06:19 UTC. Web/API observations below do not have
 - SBI Ripple Asia is a 60/40 SBI Group/Ripple software-services JV and does not directly handle XRP.
 - EBA correction: USDC was classified as significant on October 14, 2026; dual supervision took effect November 12. November 12 is the supervision start, not the original classification date.
 
-**Identity:** SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies, distinct from SBI Holdings. Their ChatGPT seminars are educational activity, not proof of an OpenAI commercial partnership. ASK Coin: no canonical XRPL issuer/deployment verified; Permission Coin (ASK) is a separate Base/Polygon candidate. “Actual capital” remains an accounting classification. Dr. Kamilah Stevenson identity is established, but first-party YouTube channel ownership remains unverified; own-channel inventory remains zero.
+RLUSD cross-chain activity — Run112A:
+- DefiLlama Nov 14 snapshot: $2.781B RLUSD across six chains; Ethereum $2.001B, XRPL $764.09M, Base $16.11M and small residual balances on OP Mainnet, Ink and Unichain. Displayed 30-day supply change: Ethereum +47.62%, XRPL -27.90%. Current tracked supply is about 72.0% Ethereum and 27.5% XRPL. Aggregator snapshot, not issuer reserve accounting.
+- Token Relations' Nov 6 post, quoted by Coinpedia Nov 13, reports October gross RLUSD transfers of $20.056B on XRPL versus $15.449B on Ethereum (56.4%/43.6%). Coindoo's calculation from daily average supply gives about 19x XRPL and 11x Ethereum turnover. Gross turnover is repeated movement, not new capital or unique customers. The week beginning Nov 2 was essentially tied, with Ethereum narrowly ahead.
+- Bitquery's direct on-chain investigation for Sep 19–Oct 18 found 7.82M RLUSD payments; 99.6% of payment count came from a 110-wallet cluster sending 7,722 RLUSD to three collectors. The 14,600 payments of at least 1 RLUSD carried $7.33B; ten senders accounted for $6.05B (82%). Issuer mint/redemption loops accounted for roughly one fifth of measured value, and a $424M round trip added $848M to gross volume. The cluster was funded by Binance-labelled wallets and swept through a Binance-labelled deposit path; Bitquery does not attribute the activity to Binance itself. The Oct 14–16 shutdown coincided with Cross River's announcement; causality is unknown.
+- Cross River's Oct 15 primary announcement confirms RLUSD integration into its Core Operating System and availability to eligible businesses in limited US states through one API. It disclosed no actual transaction volume.
+- Feature implication: keep RLUSD supply, gross transfers, net issuer change, mint/redemption, round trips, high-value payments, unique counterparties, concentration, exchange/custodian routing and actual XRP fee demand as separate measures. Do not use raw RLUSD payment count as an adoption proxy or infer proportional XRP demand.
+- Token Relations' original X post returned HTTP 403 through direct retrieval; its quoted values are retained with the Coinpedia source. Bitquery and Cross River primary pages were accessible. These research summaries are not byte-exact Barrot receipts and remain non-model-eligible.
+
+Identity: SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies, distinct from SBI Holdings. Their ChatGPT seminars are educational activity, not proof of an OpenAI commercial partnership. ASK Coin: no canonical XRPL issuer/deployment verified; Permission Coin (ASK) is a separate Base/Polygon candidate. “Actual capital” remains an accounting classification. Dr. Kamilah Stevenson identity is established, but first-party YouTube channel ownership remains unverified; own-channel inventory remains zero.
 
 ## 6. Nine-platform status
 
@@ -108,16 +115,16 @@ Research cutoff: 2026-11-14 02:06:19 UTC. Web/API observations below do not have
 | Kaggle | Untested; no submission |
 | Databricks | HTTP 403 previously; no write verified |
 
-LunaRoute is separate from the nine platforms. Remote MCP is disabled on integration but enabled on main; endpoint authentication is unverified. No external-model dispatch, nine-platform evidence exchange or data transfer occurred. The current nine-platform map has been restored from a zero-byte placeholder and now records Run112 observations.
+LunaRoute is separate from the nine platforms. Remote MCP is disabled on integration but enabled on main; endpoint authentication is unverified. No external-model dispatch, nine-platform evidence exchange or data transfer occurred. The current nine-platform map was restored from a zero-byte placeholder and now records Run112 observations.
 
 ## 7. Security, merge decision and backlog
 
 - Main branch metadata reports protected=true; detailed branch-protection access returns HTTP 403. Fallback ruleset 10863829 is disabled; integration is unprotected.
 - GitHub connection has admin, maintain, push, pull and triage permissions, exceeding least privilege.
 - Main OpenCode retains remote LunaRoute MCP and write-capable edit/bash/webfetch; integration has safer controls.
-- Main Barrot Sync previously masked missing `httpx`, skipped synchronization and performed a no-op push. Main Pillars Consistency remains failed on GitHub App configuration, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+- Main Barrot Sync previously masked missing httpx, skipped synchronization and performed a no-op push. Main Pillars Consistency remains failed on GitHub App configuration, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
 - GitHub Pages deployment is automatic; seven changed public web files require publication authorization.
-- Semantic reconciliation of all 1,161 changed paths, particularly 50 workflows and seven public web files, remains incomplete.
+- Semantic reconciliation of all 1,162 changed paths, particularly 50 workflows and seven public web files, remains incomplete.
 
 Backlog:
 - #1662: blocked integration; draft, zero approvals.
@@ -127,18 +134,19 @@ Backlog:
 - #1650–#1644 and #1255/#1254: dependency candidates blocked pending individual current-main validation.
 - No source PR was closed.
 
-**Decision: NO MERGE.** Draft status, zero approvals, incomplete semantic review, least-privilege failure, branch-protection visibility, integration branch protection and public Pages publication authorization remain blockers despite successful exact code-head tests.
+Decision: NO MERGE. Draft status, zero approvals, incomplete semantic review, least-privilege failure, branch-protection visibility, integration branch protection and public Pages publication authorization remain blockers despite successful exact code-head tests.
 
 ## 8. Next concrete actions
 
-1. Complete exact-head full-suite, dependency and fail-closed verification on the latest documentation head after map restoration.
+1. Complete exact-head full-suite, dependency and fail-closed verification on the latest documentation head after the Run112A addendum.
 2. Correct the walk-forward/bootstrap parameter mismatch and add v6 policy-level regression tests for 10,000 resamples, 100 origins, 99.375% individual confidence and candidate-versus-each-baseline OOS/shadow comparisons.
 3. Implement time-gap-aware block segmentation and empirical coverage, cluster-count and block-length sensitivity tests.
 4. Define an auditable multi-source outcome-panel estimand without assigning composite outcomes to an arbitrary publisher.
-5. Acquire synchronized historical spot/L2/derivatives/flows/collateral data with byte-exact receipts and independent retention/timestamp anchoring.
-6. Complete semantic review of 1,161 changed paths, prioritizing 50 workflows and seven public web files.
-7. Resolve least privilege, branch-protection visibility, remote MCP containment and Pages publication authorization.
-8. Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
+5. Add RLUSD chain supply, net issuance, gross/adjusted transfers, mint/redemption, round-trip, high-value payment, unique-counterparty and concentration features only after raw receipt ingestion.
+6. Acquire synchronized historical spot/L2/derivatives/flows/collateral data with byte-exact receipts and independent retention/timestamp anchoring.
+7. Complete semantic review of 1,162 changed paths, prioritizing 50 workflows and seven public web files.
+8. Resolve least privilege, branch-protection visibility, remote MCP containment and Pages publication authorization.
+9. Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
 
@@ -361,3 +369,15 @@ Structured evidence: [Run111 audit JSON](research/xrp_intelligence/20261114T0128
 Structured evidence: `research/xrp_intelligence/20261114T020619Z-run112-market-sec-capital-bootstrap-and-integration-audit.json`.
 
 The exact-head code verification, research corrections, implementation gaps, source limitations, backlog and next actions are summarized in the current-state snapshot above. No runtime code changed in Run112. The code-bearing head remains `6b9c8dad`; the Run112 artifact is a documentation-only descendant. Exact-head full-suite, dependency and fail-closed verification must be rerun on the resulting documentation head before merge consideration.
+
+## Run112A — RLUSD cross-chain flow and payment-quality addendum (2026-11-14T02:16:05Z)
+
+Structured evidence: research/xrp_intelligence/20261114T021605Z-run112a-rlusd-crosschain-volume-and-payment-quality.json (commit ac1ab44eff0f7091354cf08cd4b850dcb6396353).
+
+- DefiLlama Nov 14 snapshot: RLUSD $2.781B across six chains; Ethereum $2.001B, XRPL $764.09M, Base $16.11M and small residual balances on OP Mainnet, Ink and Unichain. Displayed 30-day supply change: Ethereum +47.62%, XRPL -27.90%. Current tracked supply is about 72.0% Ethereum and 27.5% XRPL. This is an aggregator snapshot, not issuer reserve accounting.
+- Token Relations' Nov 6 post, quoted by Coinpedia on Nov 13, reports October gross RLUSD transfers of $20.056B on XRPL versus $15.449B on Ethereum (56.4%/43.6%). Coindoo's calculation from daily average supply gives approximately 19x XRPL and 11x Ethereum turnover. Gross turnover is repeated movement, not new capital or unique customers. The week beginning Nov 2 was essentially tied, with Ethereum narrowly ahead.
+- Bitquery's direct on-chain investigation for Sep 19–Oct 18 found 7.82M RLUSD payments; 99.6% of payment count came from a 110-wallet cluster sending 7,722 RLUSD to three collectors. The 14,600 payments of at least 1 RLUSD carried $7.33B; ten senders accounted for $6.05B (82%). Issuer mint/redemption loops accounted for roughly one fifth of measured value, and a $424M round trip added $848M to gross volume. The cluster was funded by Binance-labelled wallets and swept through a Binance-labelled deposit path; Bitquery does not attribute the activity to Binance itself. The cluster's Oct 14–16 shutdown coincided with the Cross River announcement; causality is unknown.
+- Cross River's Oct 15 primary announcement confirms RLUSD integration into its Core Operating System and availability to eligible businesses in limited US states through one API. It disclosed no actual transaction volume.
+- Feature implication: keep RLUSD supply, gross transfers, net issuer change, mint/redemption, round trips, high-value payments, unique counterparties, concentration, exchange/custodian routing and actual XRP fee demand as separate measures. Do not use raw RLUSD payment count as an adoption proxy or infer proportional XRP demand.
+- Token Relations' original X post returned HTTP 403 through direct retrieval; its quoted values are retained with the Coinpedia source. Bitquery and Cross River primary pages were accessible. None of these research summaries has been captured as a byte-exact Barrot receipt; they remain non-model-eligible.
+
