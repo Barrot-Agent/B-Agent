@@ -9,12 +9,23 @@ import json
 import logging
 import os
 import sys
+from pathlib import Path
+
+# Make package imports work regardless of invocation directory.
+_REPO_ROOT = str(Path(__file__).resolve().parents[2])
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
 
 # Attempt to load legacy architecture
 try:
-    import agi_orchestrator
+    try:
+        from barrot_agent.agi import agi_orchestrator  # package import
 
-    LEGACY_ACTIVE = True
+        LEGACY_ACTIVE = True
+    except ImportError:
+        import agi_orchestrator  # bare import (repo root on sys.path)
+
+        LEGACY_ACTIVE = True
 except ImportError:
     LEGACY_ACTIVE = False
 
