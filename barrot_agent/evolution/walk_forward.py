@@ -315,6 +315,7 @@ def evaluate_chronological_walk_forward(
     calibration_max_history: int = 250,
     max_source_age_seconds: int | None = None,
     expected_cadence_seconds: float | None = None,
+    expected_source_cadence_seconds_by_group: Mapping[str, float] | None = None,
 ) -> dict[str, Any]:
     """Evaluate four deterministic baselines with purged, embargoed point-in-time windows.
 
@@ -739,7 +740,8 @@ def evaluate_chronological_walk_forward(
             "log_loss": item["scoring"]["log_loss"],
         }
         for item in forecasts
-    ], expected_cadence_seconds=expected_cadence_seconds)
+    ], expected_cadence_seconds=expected_cadence_seconds,
+        expected_source_cadence_seconds_by_group=expected_source_cadence_seconds_by_group)
     out_of_sample_origin_count = len({item["data_cutoff_utc"] for item in forecasts})
     reference_forecasts = [item for item in forecasts if item["model_id"] == "naive_class_prior"]
     overlap_metrics = _overlap_adjusted_effective_sample_size(reference_forecasts)
@@ -790,6 +792,7 @@ def evaluate_chronological_walk_forward(
         "metrics": metrics,
         "paired_uncertainty": paired_uncertainty,
         "bootstrap_expected_cadence_seconds": expected_cadence_seconds,
+        "bootstrap_expected_source_cadence_seconds_by_group": dict(expected_source_cadence_seconds_by_group or {}),
         "paired_uncertainty_source_cluster_semantics": (
             "Clusters use the canonical publisher lineage of each observed target record. "
             "They do not assert independence of model-training feature sources. Multi-publisher "
