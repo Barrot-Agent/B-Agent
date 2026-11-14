@@ -43,8 +43,9 @@ def _rows(*, origins=60, source_clusters=5):
 
 def test_paired_temporal_and_source_bootstrap_is_deterministic_and_paired():
     rows = _rows()
-    first = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300, expected_cadence_seconds=3600)
-    second = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300, expected_cadence_seconds=3600)
+    source_cadence = {f"independent-source-{index}": 18_000 for index in range(5)}
+    first = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300, expected_cadence_seconds=3600, expected_source_cadence_seconds_by_group=source_cadence)
+    second = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300, expected_cadence_seconds=3600, expected_source_cadence_seconds_by_group=source_cadence)
 
     comparison = first["comparisons"]["momentum_sign"]
     assert comparison["paired_origin_count"] == 60
