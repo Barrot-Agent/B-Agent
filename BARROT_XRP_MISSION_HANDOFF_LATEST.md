@@ -1,3 +1,23 @@
+## Run125 correction — compatibility-map preservation and exact-head failure
+
+**Observed:** 2026-11-14T10:50:00Z.
+
+The Run125 update initially treated `nine_platform_capability_authentication_dataflow_map_current.json` as empty because the file-content endpoint returned an empty body. That interpretation was wrong. The recursive Git tree showed the parent file was **1,670,546 bytes**, blob `0912d806b94b95db800411bf2978a91275ec174b`, schema `1.1.0`. The file was a large historical compatibility artifact required by repository tests.
+
+The exact original blob was recovered from the parent commit and is being restored without rewriting its contents. The compact Run125 capability snapshot remains separately stored as `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run125.json`.
+
+Exact-head CI on the intervening Run125 commit `2c03aca78b19e840cd807ea3945404eb65477049` failed because that compatibility file had been replaced by the compact Run125 schema:
+- 42 tests failed; 3,593 passed; eight subtests passed.
+- Inclusive coverage was 62.44%; the 62% floor passed.
+- Core test job passed.
+- Failures were schema/key/type assertions in `test_nine_platform_capability_authentication_dataflow_map.py`, `test_xrp_nine_platform_current_map_run73.py` and the historical Run58 map-contract test.
+- No runtime ingestion, prediction, execution or Barrot V3 code test failure was reported.
+- No tests were weakened or removed.
+
+The original schema blob is restored in the correction commit. The full suite must pass on the restoration commit before the branch is considered verified. No merge is authorized while this correction CI is pending.
+
+---
+
 # Run125 — XRP Intelligence, Exact-Head CI and Integration Safety Audit
 
 **Observed:** 2026-11-14T10:34:49Z  
@@ -10,7 +30,7 @@
 - **VERIFIED:** Exact integration head `d6a4bbec8998f90c9e0aaaacbdb522036b172385` passed the full repository suite: 3,635 tests, eight subtests, zero failures, 62.44% inclusive coverage, 76% legacy core coverage, 156.99 seconds. Wheel build and installed Barrot V3/XRP mission verification passed.
 - **VERIFIED:** Five dependency manifest groups passed with no known vulnerabilities reported. Push and PR fail-closed gates passed.
 - **EXECUTED:** Refreshed the static public forecast-status timestamp to 2026-11-14T10:34:49Z; status remains NOT_ISSUED, with null data cutoff, target, horizon and probabilities. This is an integration-branch change only; no Pages deployment occurred.
-- **EXECUTED:** Populated the previously empty `nine_platform_capability_authentication_dataflow_map_current.json` from the Run124 map and this run's verified state.
+- **EXECUTED:** Created a separate compact Run125 capability-map snapshot. The 1.67MB schema-1.1.0 compatibility map was not empty; the content endpoint returned an empty body due its size. Its exact parent blob was recovered and restored without content changes.
 - **NOT EXECUTED:** No runtime predictor or ingestion code change, model training, directional forecast, paper trade, external-model dispatch, external data transfer, deployment, secret rotation, Space restart, Databricks write, Kaggle download/submission, funds movement, branch rewrite, source-PR closure or merge.
 
 ## Repository state
@@ -109,7 +129,7 @@ No independent task exchange, external-model dispatch, data transfer or red-team
 
 ## Next concrete actions
 
-1. Verify exact-head CI on the Run125 documentation/status commit created after this audit.
+1. Verify exact-head full-suite CI on the map-restoration correction commit; the intervening 2c03aca head failed 42 historical map-schema assertions.
 2. Complete semantic review of all 1,187 changed paths, prioritizing the 50 workflows and seven public web files.
 3. Resolve least-privilege access, independent review ownership, branch protection and Pages publication authorization.
 4. Establish independent WORM/timestamp anchoring for raw-source receipts and populate synchronized historical XRP datasets.

@@ -79,7 +79,23 @@
       "barrot_agent.data.missions package discovery warning",
       "data.research package discovery warning"
     ],
-    "package_warnings_fatal": false
+    "package_warnings_fatal": false,
+    "run_43586742821": {
+      "head_sha": "2c03aca78b19e840cd807ea3945404eb65477049",
+      "conclusion": "failure",
+      "tests_passed": 3593,
+      "tests_failed": 42,
+      "subtests_passed": 8,
+      "coverage_percent": 62.44,
+      "core_job": "success",
+      "failed_test_groups": [
+        "test_nine_platform_capability_authentication_dataflow_map.py",
+        "test_xrp_nine_platform_current_map_run73.py",
+        "test_xrp_mission_handoff_run58.py"
+      ],
+      "cause": "Run125 replaced a 1.67MB schema-1.1.0 compatibility map with a compact incompatible schema.",
+      "no_runtime_code_failure_reported": true
+    }
   },
   "security_and_governance": {
     "main_branch_protected": true,
@@ -303,6 +319,23 @@
     "real_money": false,
     "force_push": false,
     "history_rewrite": false,
-    "destructive_worktree_operation": false
+    "destructive_worktree_operation": false,
+    "current_map_restored_from_original_blob_in_correction_commit": true
+  },
+  "current_map_recovery": {
+    "original_blob_sha": "0912d806b94b95db800411bf2978a91275ec174b",
+    "original_size_bytes": 1670546,
+    "original_schema_version": "1.1.0",
+    "mistaken_interpretation": "fetch_file returned empty content; file was incorrectly treated as empty",
+    "recovery": "restore exact original blob in correction commit; compact Run125 map remains separate",
+    "tests_not_weakened": true,
+    "intervening_head": "2c03aca78b19e840cd807ea3945404eb65477049",
+    "intervening_full_suite_run_id": 43586742821,
+    "intervening_full_suite_conclusion": "failure",
+    "tests_passed": 3593,
+    "tests_failed": 42,
+    "subtests_passed": 8,
+    "failure_classification": "historical current-map schema/type/key assertions; no runtime predictor/ingestion test failure reported",
+    "correction_commit_ci": "PENDING"
   }
 }
