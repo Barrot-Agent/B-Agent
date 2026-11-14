@@ -134,7 +134,17 @@
     "unresolved": {
       "pages_liquid_failure": "Main Pages workflow previously failed parsing GLOBAL_STATE_MANIFEST.md line 6456; do not merge changes that trigger publication without authorization and verified build.",
       "sync_failure_masking": "Main Barrot Sync previously reported success while b_agent.py --sync failed due missing rich and the workflow masked errors. Integration remains quarantined.",
-      "token_argv": "Main scripts/push_with_token.sh passes a GH_TOKEN-bearing credential-helper argument to git; token-bearing argv visibility to same-user processes remains a security finding. Script not executed and credentials not changed."
+      "token_argv": {
+        "status": "confirmed_in_validation_paths; prior git-helper attribution corrected",
+        "finding": "The single-quoted git -c credential.helper contains literal ${GH_TOKEN}; the parent shell does not interpolate the secret into git argv. The actual exposure was in the preceding curl -H Authorization argument and the Python fallback positional argument.",
+        "correction": "Run134 changes curl validation to pass its config over stdin and changes the Python fallback to read token and repository slug from stdin. A regression test captures child argv for both paths and asserts the sentinel token is absent.",
+        "files": [
+          "scripts/push_with_token.sh",
+          "tests/test_push_with_token_security.py"
+        ],
+        "secrets_rotated": false,
+        "main_unchanged": true
+      }
     }
   },
   "xrp_market": {
@@ -339,6 +349,13 @@
       "conclusion": null
     },
     "exact_head_dependency_audit": "The handoff-only commit did not match dependency-audit path filters. This final commit also updates a file under research/xrp_intelligence and therefore triggers the path-filtered audit; no result is claimed before it runs.",
-    "final_manifest_commit": "This commit; see the resulting PR #1662 head because a commit cannot embed its own SHA."
+    "final_manifest_commit": "This commit; see the resulting PR #1662 head because a commit cannot embed its own SHA.",
+    "security_fix_parent": "d6566d8a2245fd01fec1874677cec4987ba53a04",
+    "security_fix_scope": [
+      "scripts/push_with_token.sh",
+      "tests/test_push_with_token_security.py",
+      "research/xrp_intelligence/20261114T180335Z-run134-xrp-spot-raw-receipt-ci-and-integration-audit.json",
+      "BARROT_XRP_MISSION_HANDOFF_LATEST.md"
+    ]
   }
 }

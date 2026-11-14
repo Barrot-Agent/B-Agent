@@ -3535,3 +3535,11 @@ No merge, deployment, secret rotation, Space restart, external-model transfer, D
 - Previous-head six-manifest audits passed on `09f256` (push [43621109748](https://github.com/Barrot-Agent/B-Agent/actions/runs/43621109748), PR [43621114353](https://github.com/Barrot-Agent/B-Agent/actions/runs/43621114353)); those results are not substituted for the final head.
 - The final Run134 JSON contains raw response payloads, SHA-256 hashes, provider timestamps, derived market metrics, ETF scope disagreements, stale derivatives snapshots, repository inventory, security blockers, and forecast status. GitHub history is not independent WORM storage.
 - No merge, deployment, external dispatch, paper trade, Kaggle submission, Databricks write, funds transfer, secret rotation, force-push, history rewrite, or destructive worktree action occurred.
+
+
+### Run134 security finding correction and argv hardening
+The earlier Run132/Run134 note incorrectly attributed token exposure to the single-quoted `git -c credential.helper` value. Inspection shows that value contains the literal `${GH_TOKEN}`; the parent shell does not interpolate the secret into the git argument. The actual argv exposure was in the earlier validation path: `curl -H "Authorization: Bearer ${GH_TOKEN}"` and the Python fallback `python3 - "$GH_TOKEN"` passed the token as child-process arguments.
+
+**Executed fix on integration only:** `scripts/push_with_token.sh` now passes the curl config through stdin and the Python fallback reads token and repository slug from stdin. The single-quoted credential helper remains unchanged. New regression tests capture the child argv and stdin for both validation paths, asserting that the sentinel token is absent from argv and output. No real credential was used, no secret was rotated, and main remains unchanged. This supersedes the earlier incorrect attribution; the broader finding (token present in validation argv before this correction) was real.
+
+The new exact-head full suite, wheel verification, six-manifest dependency audit and fail-closed gate must pass before merge readiness can be reconsidered.
