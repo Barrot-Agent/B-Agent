@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "entity_disambiguation",
+  "artifact_id": "20261102T091000Z-ask-coin-coinbase-wallet-xrp-disambiguation",
+  "created_at_utc": "2026-11-02T09:10:00Z",
+  "query_terms": [
+    "ASK Coin",
+    "ASK token",
+    "ASK Wallet",
+    "Coinbase",
+    "XRP"
+  ],
+  "resolution": {
+    "strongest_match": "Permission's ASK token (Permission ecosystem)",
+    "confidence": "high_for_the_Permission_ASK_candidate; not universal for every asset ticker ASK",
+    "basis": "Permission's own token documentation and September 22, 2026 wallet migration announcement explicitly connect ASK to Coinbase Embedded Wallets.",
+    "alternatives": [
+      "Other unrelated assets may also use the ticker ASK; do not conflate them without matching contract, issuer or context."
+    ]
+  },
+  "claims": [
+    {
+      "id": "ASK-01",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "ASK is the native token of the Permission ecosystem and is described as supporting rewards, consent, agent-to-agent coordination and ecosystem participation.",
+      "source": "https://docs.permission.ai/ask-token"
+    },
+    {
+      "id": "ASK-02",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "Permission documents ASK as a 100,000,000,000 token fixed-supply LayerZero OFT, live on Base and Polygon.",
+      "contracts": {
+        "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      },
+      "limits": [
+        "The official network list does not include XRPL.",
+        "The documentation says additional EVM-compatible chains may be added in the future; this is not a current XRPL deployment."
+      ],
+      "source": "https://docs.permission.ai/ask-token"
+    },
+    {
+      "id": "ASK-03",
+      "classification": "CONFIRMED_OFFICIAL_COMPANY_STATEMENT",
+      "claim": "On September 22, 2026, Permission announced that its ASK Wallet moved to Coinbase Embedded Wallets. Permission says Coinbase secures the wallet private key on the user's behalf and that only the user's Permission login authorizes transactions.",
+      "data_flow": "Permission user email, account identifier and wallet information are shared with Coinbase to operate the embedded wallet.",
+      "limits": [
+        "This describes Permission's implementation and representation; no private wallet configuration or individual user data was accessed.",
+        "It is wallet infrastructure/custody technology, not a token listing, market-making agreement or XRP integration."
+      ],
+      "source": "https://www.permission.ai/blog/ask-wallet-update"
+    },
+    {
+      "id": "ASK-04",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "Permission says ASK rewards are redeemable for gift cards through Tremendous, subject to minimum redemption thresholds.",
+      "limits": [
+        "Gift-card redemption is not evidence of cash redemption, XRP conversion or direct fiat liquidity."
+      ],
+      "source": "https://www.permission.ai/blog/ask-wallet-update"
+    },
+    {
+      "id": "ASK-05",
+      "classification": "DISTINCT_ENTITY",
+      "claim": "AskSurf is a separate merchant name appearing in XRPL x402 payment activity. It is not the Permission ASK token or Permission's ASK Wallet.",
+      "source": "https://xrp-insights.com/xrp-radar"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Permission",
+      "to": "Coinbase Embedded Wallets",
+      "relation": "wallet infrastructure integration announced 2026-09-22",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Permission ASK",
+      "to": "Base",
+      "relation": "LayerZero OFT deployment",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Permission ASK",
+      "to": "Polygon",
+      "relation": "LayerZero OFT deployment",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Permission ASK",
+      "to": "XRPL/XRP",
+      "relation": "no current deployment or direct integration identified in official token documentation",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "AskSurf",
+      "to": "XRPL x402",
+      "relation": "separate merchant/payment activity",
+      "status": "SOURCE_REPORTED"
+    }
+  ],
+  "disconfirming_evidence": [
+    "No XRPL contract appears in Permission's official active-network list.",
+    "No XRP settlement, XRP bridge, XRP collateral or Ripple partnership is identified in Permission's wallet migration announcement.",
+    "Coinbase Embedded Wallet integration alone does not establish that ASK is listed on Coinbase Exchange or supported as a Coinbase trading asset."
+  ],
+  "data_quality_rules": [
+    "Resolve ASK by issuer and contract address, not ticker alone.",
+    "Do not merge Permission ASK, AskSurf, Ask Coin exchange listings or unrelated ASK tickers.",
+    "Do not infer XRP exposure from Coinbase infrastructure used by an ASK wallet.",
+    "Keep gift-card redemption separate from cash, USDC and XRP settlement."
+  ],
+  "source_register": [
+    {
+      "id": "S1",
+      "type": "Permission official token documentation",
+      "url": "https://docs.permission.ai/ask-token"
+    },
+    {
+      "id": "S2",
+      "type": "Permission official wallet migration announcement",
+      "url": "https://www.permission.ai/blog/ask-wallet-update"
+    },
+    {
+      "id": "S3",
+      "type": "Coinbase official CDP Embedded Wallet documentation",
+      "url": "https://www.coinbase.com/developer-platform/products/embeddedwallets"
+    },
+    {
+      "id": "S4",
+      "type": "XRP Radar secondary XRPL/x402 dashboard",
+      "url": "https://xrp-insights.com/xrp-radar"
+    }
+  ],
+  "forecast_status": "NOT_APPLICABLE_NO_XRP_CAUSAL_LINK_ESTABLISHED",
+  "safety": {
+    "public_sources_only": true,
+    "no_private_data_access": true,
+    "no_wallet_access": true,
+    "no_trade": true
+  }
+}

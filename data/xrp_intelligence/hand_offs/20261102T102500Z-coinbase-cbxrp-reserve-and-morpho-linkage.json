@@ -1,0 +1,174 @@
+{
+  "schema_version": "barrot-xrp-research-handoff/v1",
+  "captured_at_utc": "2026-11-02T10:25:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "evidence_cutoff_utc": "2026-11-02T10:24:00Z",
+  "status": {
+    "source_retrieval": "EXECUTED",
+    "calculations": "VERIFIED against displayed balances",
+    "morpho_user_attribution": "UNVERIFIED",
+    "forecast": "NOT_ISSUED"
+  },
+  "findings": [
+    {
+      "id": "CBXRP-RESERVE-2026-11-02",
+      "classification": "official_coinbase_proof_of_reserves_page",
+      "refreshed_at": "2026-11-02T10:07:00Z",
+      "metrics": {
+        "xrp_reserve": 150942337.33,
+        "cbxrp_total_supply": 150940089.8,
+        "reserve_excess_xrp": 2247.53,
+        "reserve_coverage_pct": 100.00148902124214,
+        "cbxrp_supply_on_base": 150940089.796,
+        "listed_xrpl_reserve_addresses": 20,
+        "largest_address_balance_xrp": 40123288.636,
+        "largest_address_share_pct": 26.58186519815169,
+        "top_six_address_share_pct": 59.74921163359728,
+        "displayed_address_balance_sum_xrp": 150942337.325,
+        "displayed_sum_rounding_difference_xrp": 0.005
+      },
+      "claim": "Coinbase describes cbXRP as a wrapped token backed 1:1 by XRP held by Coinbase. Its proof-of-reserves page reports 150,942,337.33 XRP reserves against 150,940,089.8 cbXRP supply, with the displayed cbXRP supply on Base.",
+      "source": "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves",
+      "interpretation": "The displayed reserve excess is approximately 2,247.53 XRP (about 0.00149% above supply). The listed reserve balances sum to 150,942,337.325 XRP, a 0.005 XRP display-rounding difference from the page total. The largest listed XRPL reserve address represents about 26.6% of reserves; the top six about 59.7%. These are concentration calculations from Coinbase's displayed address list, not an independent proof that no other reserve or liability exists."
+    },
+    {
+      "id": "CBXRP-CONTRACT-2026-11-02",
+      "classification": "official_coinbase_support_documentation",
+      "claim": "Coinbase's USDC-loan backup instructions map XRP collateral to cbXRP on Base and publish the token contract address.",
+      "details": {
+        "underlying_asset": "XRP",
+        "collateral_representation": "cbXRP",
+        "network": "Base",
+        "contract": "0xcb585250f852c6c6bf90434ab21a00f02833a4af"
+      },
+      "source": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "interpretation": "This documents cbXRP as the onchain collateral representation in the backup-add-collateral flow. The exact wrapping/transfer sequence used in every normal in-app loan path is not fully described by this page."
+    },
+    {
+      "id": "CBXRP-MORPHO-LINKAGE-2026-11",
+      "classification": "third_party_market_snapshot_not_attributed_to_COINBASE_USERS",
+      "snapshot_at": "2026-11-01T22:11:00Z",
+      "metrics": {
+        "cbxrp_collateral": 118770000,
+        "collateral_value_usd": 148500000,
+        "usdc_supplied": 65800000,
+        "usdc_borrowed": 59300000,
+        "utilization_pct": 90.1,
+        "available_usdc": 6500000,
+        "borrowers": 12035,
+        "liquidation_threshold_pct": 62.5,
+        "liquidation_bonus_pct": 12.68,
+        "liquidations_30d": 1118,
+        "debt_repaid_by_liquidations_30d_usd": 3940000
+      },
+      "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "interpretation": "This third-party snapshot describes a cbXRP/USDC Morpho market on Base. Its 118.77M cbXRP collateral is about 78.7% of Coinbase's later 150.94M cbXRP supply snapshot, but the timestamps differ and the Morpho market's borrowers have not been attributed to Coinbase Borrow customers. Do not equate this market's utilization, LLTV or liquidations with Coinbase's entire consumer loan book."
+    },
+    {
+      "id": "CBXRP-PRODUCT-SEPARATION",
+      "classification": "relationship_graph_scope_control",
+      "claim": "Coinbase's consumer USDC loan, Coinbase Global Exchange cross collateral, and Coinbase Bermuda Global Derivatives cross collateral are separate product regimes.",
+      "distinctions": [
+        "Consumer USDC loan: Coinbase interface to Morpho on Base; XRP is represented by cbXRP in the documented backup collateral flow.",
+        "Coinbase Global Exchange cross collateral: XRP is listed as an eligible margin asset for perpetual-futures positions; UBO/average-daily-quantity limits and collateral haircuts apply.",
+        "Coinbase Bermuda Global Derivatives: eligible non-U.S. customers; published XRP haircut is 15% in X:SM and no fixed haircut is displayed in X:PM.",
+        "Coinbase Global Exchange USDC Borrow: separate negative-USDC-balance facility with its own 10% APY terms."
+      ],
+      "source_urls": [
+        "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+        "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+        "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-cross-collateral",
+        "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relationship": "holds disclosed 1:1 backing reserves for cbXRP",
+      "status": "official proof-of-reserves page"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP on Base",
+      "relationship": "issues/distributes wrapped representation",
+      "status": "official Coinbase description and supply display"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho cbXRP/USDC market",
+      "relationship": "used as collateral in a public market",
+      "status": "third-party market snapshot; Coinbase customer attribution unknown"
+    },
+    {
+      "from": "Coinbase consumer Borrow",
+      "to": "Morpho on Base",
+      "relationship": "Coinbase interface to onchain lending protocol",
+      "status": "official product documentation"
+    },
+    {
+      "from": "Coinbase Global Exchange",
+      "to": "XRP",
+      "relationship": "centralized cross-collateral margin asset",
+      "status": "separate product regime"
+    },
+    {
+      "from": "Coinbase Bermuda Global Derivatives",
+      "to": "XRP",
+      "relationship": "cross-collateral margin asset",
+      "status": "separate non-U.S. product regime"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H_CBXRP_UTILITY",
+      "statement": "cbXRP expands XRP collateral utility and may reduce immediate need for holders to sell XRP to obtain USDC liquidity.",
+      "counter": "Loan proceeds cannot be used for trading on Coinbase; collateral is locked; actual user-level balances and net-new acquisition are undisclosed."
+    },
+    {
+      "id": "H_CBXRP_REDEMPTION_PRESSURE",
+      "statement": "Collateral liquidation, loan repayment or cbXRP redemption can create XRP reserve outflows and spot/market pressure depending on how the underlying XRP is sourced or sold.",
+      "counter": "No public aggregate redemption, liquidation-to-XRPL or reserve rebalancing series has been reconciled."
+    },
+    {
+      "id": "H_CUSTODY_CONCENTRATION",
+      "statement": "The disclosed cbXRP reserve concentration creates an operational custody concentration feature independent of XRP's market price.",
+      "counter": "The address list is Coinbase's displayed reserve set; key-management controls, segregation, legal claims and operational dependencies are not established by balances alone."
+    }
+  ],
+  "data_quality": [
+    "Coinbase proof-of-reserves page is an issuer-controlled disclosure; independently validate listed XRPL addresses and Base supply at matched ledger/block timestamps.",
+    "Displayed address balances sum to 0.005 XRP below the page total, consistent with display rounding but not independently reconciled.",
+    "MorphoWatch is a third-party snapshot and does not identify Coinbase Borrow customer positions.",
+    "Do not add cbXRP supply to XRP supply; it is a wrapped representation backed by the underlying XRP and would double count the same economic exposure."
+  ],
+  "next_actions": [
+    "Fetch all 20 Coinbase-listed XRPL reserve addresses at a pinned validated ledger and reconcile the 150,942,337.33 XRP total.",
+    "Fetch the cbXRP Base contract totalSupply and transfer events at a pinned block and reconcile the 150,940,089.8 supply.",
+    "Trace mint/burn/redemption mechanics and reserve address movements to distinguish custody rotation from net XRP inflows/outflows.",
+    "Identify the exact Morpho market contract and compare its collateral/borrow/liquidation events with Coinbase's public loan product terms without inferring customer identity.",
+    "Build separate feature series for native XRP reserve balances, cbXRP supply, Morpho collateral, USDC debt and Coinbase centralized margin eligibility."
+  ],
+  "sources": [
+    {
+      "url": "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "date": "2026-11-02 10:07 UTC refresh",
+      "classification": "official reserve disclosure"
+    },
+    {
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "publisher": "Coinbase",
+      "date": "retrieved 2026-11-02",
+      "classification": "official product documentation"
+    },
+    {
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "MorphoWatch",
+      "date": "2026-11-01 22:11 UTC snapshot",
+      "classification": "third-party market observation"
+    }
+  ]
+}
