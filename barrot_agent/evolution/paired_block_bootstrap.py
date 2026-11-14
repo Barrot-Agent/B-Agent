@@ -177,7 +177,7 @@ def _source_cluster_interval(
     seed: int,
     confidence_level: float,
     max_gap_multiple: float,
-    expected_cadence_seconds: float | None,
+    expected_cadence_seconds_by_group: Mapping[str, float] | None,
 ) -> tuple[list[float] | None, float, dict[str, Any]]:
     """Resample independent source groups and contiguous time blocks within each."""
     cluster_ids = sorted(clusters)
@@ -196,7 +196,7 @@ def _source_cluster_interval(
             times,
             block_length=block_length,
             max_gap_multiple=max_gap_multiple,
-            expected_cadence_seconds=expected_cadence_seconds,
+            expected_cadence_seconds=(expected_cadence_seconds_by_group or {}).get(group_id),
         )
         cluster_windows[group_id] = windows
         cluster_diagnostics[group_id] = diagnostics
@@ -254,6 +254,7 @@ def evaluate_paired_block_bootstrap(
     confidence_level: float = 0.95,
     max_gap_multiple: float = 1.5,
     expected_cadence_seconds: float | None = None,
+    expected_source_cadence_seconds_by_group: Mapping[str, float] | None = None,
 ) -> dict[str, Any]:
     """Compare each model with a benchmark using paired temporal/source resampling.
 
@@ -298,6 +299,19 @@ def evaluate_paired_block_bootstrap(
         or float(expected_cadence_seconds) <= 0
     ):
         raise PairedBootstrapError("expected_cadence_seconds must be finite and positive")
+    if expected_source_cadence_seconds_by_group is not None:
+        if not isinstance(expected_source_cadence_seconds_by_group, Mapping):
+            raise PairedBootstrapError("expected_source_cadence_seconds_by_group must be a mapping")
+        for group_id, cadence in expected_source_cadence_seconds_by_group.items():
+            if not isinstance(group_id, str) or not group_id.strip():
+                raise PairedBootstrapError("source cadence group IDs must be non-empty strings")
+            if (
+                isinstance(cadence, bool)
+                or not isinstance(cadence, (int, float))
+                or not math.isfinite(float(cadence))
+                or float(cadence) <= 0
+            ):
+                raise PairedBootstrapError("source-group cadence values must be finite and positive")
     if minimum_origins_per_source_cluster < block_length_origins:
         raise PairedBootstrapError(
             "minimum_origins_per_source_cluster must be at least block_length_origins"
@@ -429,7 +443,7 @@ def evaluate_paired_block_bootstrap(
                 seed=random_seed + model_index * 10 + 3,
                 confidence_level=confidence_level,
                 max_gap_multiple=max_gap_multiple,
-                expected_cadence_seconds=expected_cadence_seconds,
+                expected_cadence_seconds_by_group=expected_source_cadence_seconds_by_group,
             )
             log_ci, log_cluster_mean, log_diagnostics = _source_cluster_interval(
                 log_clusters,
@@ -438,7 +452,7 @@ def evaluate_paired_block_bootstrap(
                 seed=random_seed + model_index * 10 + 4,
                 confidence_level=confidence_level,
                 max_gap_multiple=max_gap_multiple,
-                expected_cadence_seconds=expected_cadence_seconds,
+                expected_cadence_seconds_by_group=expected_source_cadence_seconds_by_group,
             )
             if brier_ci is None or log_ci is None:
                 source_clustered = {
