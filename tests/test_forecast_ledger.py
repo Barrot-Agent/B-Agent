@@ -526,6 +526,23 @@ def test_readiness_rejects_non_superior_familywise_interval():
         _validate_readiness_report(report)
 
 
+def test_readiness_rejects_inferred_temporal_bootstrap_cadence():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    temporal = report["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"]
+    temporal["sampling_diagnostics"]["cadence_source"] = "median_observed_interval"
+    with pytest.raises(ForecastLedgerError, match="must use a declared expected cadence"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_inferred_source_cluster_bootstrap_cadence():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    source = report["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"]
+    first_group = source["source_group_ids"][0]
+    source["brier_sampling_diagnostics"]["per_cluster"][first_group]["cadence_source"] = "median_observed_interval"
+    with pytest.raises(ForecastLedgerError, match="must use a declared expected cadence"):
+        _validate_readiness_report(report)
+
+
 def test_readiness_rejects_unadjusted_confidence_intervals():
     report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
     temporal = report["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"]
