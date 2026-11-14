@@ -12,8 +12,6 @@ this. This does NOT replace the Groq classification - it's a free
 secondary signal to flag disagreement, not a primary source.
 """
 
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
 _CRYPTO_LEXICON = {
     "bullish": 2.5, "bearish": -2.5, "surge": 2.0, "surges": 2.0,
     "rally": 2.0, "rallies": 2.0, "plunge": -2.5, "plunges": -2.5,
@@ -27,15 +25,36 @@ _CRYPTO_LEXICON = {
     "delisting": -2.0,
 }
 
-_analyzer = SentimentIntensityAnalyzer()
-_analyzer.lexicon.update(_CRYPTO_LEXICON)
+_analyzer = None
+
+
+def _get_analyzer():
+    """Lazy VADER init so this module imports cleanly without the package.
+
+    vaderSentiment is an optional sentiment backstop: callers guard their
+    import of this module, but the module itself must stay import-safe so a
+    missing optional dep degrades instead of crashing the caller's startup.
+    """
+    global _analyzer
+    if _analyzer is None:
+        try:
+            from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+        except ImportError:
+            return None
+        _analyzer = SentimentIntensityAnalyzer()
+        _analyzer.lexicon.update(_CRYPTO_LEXICON)
+    return _analyzer
 
 
 def vader_check(text: str) -> dict:
     """Returns VADER's read on the given text plus a bullish/bearish/
     neutral label using the same thresholds convention as the Groq
     classification, so the two can be directly compared."""
-    scores = _analyzer.polarity_scores(text or "")
+    analyzer = _get_analyzer()
+    if analyzer is None:
+        return {"vader_compound": 0.0, "vader_sentiment": "neutral",
+                "vader_available": False}
+    scores = analyzer.polarity_scores(text or "")
     compound = scores["compound"]
     if compound >= 0.2:
         label = "bullish"
