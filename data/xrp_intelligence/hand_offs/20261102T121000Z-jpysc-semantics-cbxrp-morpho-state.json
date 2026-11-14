@@ -1,0 +1,183 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T121019Z-jpysc-semantics-cbxrp-morpho-state",
+  "captured_at_utc": "2026-11-02T12:10:19.978Z",
+  "evidence_cutoff_utc": "2026-11-02T12:10:19.978Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "jpysc": {
+    "issuer": "SBI Shinsei Trust Bank",
+    "distributor_and_lending_counterparty": "SBI VC Trade",
+    "development_partner": "Startale Group",
+    "official_2026_11_02_statement": {
+      "lending_balance_jpy_gt": 10000000000,
+      "handled_balance_jpy_gt": 30000000000,
+      "handled_balance_definition": "SBI's footnote defines JPYSC handled balance as the sum of on-chain balance and lending balance.",
+      "lending_product_semantics": "Customers lend JPYSC they hold to SBI VC Trade and receive a usage fee. This is a centralized customer-to-exchange lending program, not customers borrowing against collateral and not a DeFi lending market.",
+      "terms_as_of_2026_11_02": [
+        {
+          "term_days": 168,
+          "annual_rate_pct": 3
+        },
+        {
+          "term_days": 84,
+          "annual_rate_pct": 2.5
+        },
+        {
+          "term_days": 28,
+          "annual_rate_pct": 2
+        }
+      ],
+      "product_scope": "VCTRADE service only; the announcement excludes BITPOINT.",
+      "public_chain_status": "The June 24 launch notice said initial availability was limited to SBI VC Trade accounts and public-chain circulation would follow only after legal and tax treatment was clarified. The November 2 statement still describes public-chain deployment as a future step after legal changes. No public XRPL or Arc deployment is established."
+    },
+    "capital_interpretation": "The >JPY30B handled figure is not automatically circulating supply, net issuance, external payment volume, reserve assets, XRP purchases or XRP collateral. It includes the separately reported lending balance and must be modeled as a product-level handled-balance metric.",
+    "related_corporate_developments": [
+      {
+        "date": "2026-10-27",
+        "parties": [
+          "SBI Holdings",
+          "Startale Group",
+          "BlackRock Financial Management",
+          "BlackRock Japan"
+        ],
+        "event": "Memorandum of understanding to explore a tokenized money-market-fund and JPYSC-linked digital-asset ecosystem.",
+        "classification": "official MOU; not a launched product or measured capital flow",
+        "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+      },
+      {
+        "date": "2026-10-30",
+        "parties": [
+          "SBI Holdings",
+          "Sumitomo Mitsui Financial Group"
+        ],
+        "event": "Capital and business alliance to jointly study new financial services using stablecoins and related infrastructure.",
+        "classification": "official strategic agreement; specific XRP usage not established",
+        "source": "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+      }
+    ],
+    "relationship_boundary": "SBI Group's Ripple relationships and Circle relationships remain separate edges in the graph. The JPYSC November 2 balance announcement does not establish JPYSC deployment on XRPL, Arc or StableFX, nor a direct Tokyo SBIC relationship.",
+    "sources": [
+      "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+    ]
+  },
+  "coinbase_cbxrp": {
+    "proof_of_reserves_observation": {
+      "provider": "Coinbase",
+      "page_refresh_display": "2026-11-02 10:07 AM",
+      "timezone": "not exposed by the localized page",
+      "reserve_xrp": 150942337.33,
+      "cbxrp_total_supply": 150940089.8,
+      "base_supply": 150940089.796,
+      "reserve_excess_xrp": 2247.53,
+      "approximate_coverage_pct": 100.00149,
+      "meaning": "cbXRP is described by Coinbase as a wrapped token backed 1:1 by XRP held by Coinbase. Do not count cbXRP supply as additional native XRP.",
+      "caveats": [
+        "The page is localized in Brazilian Portuguese/BRL and does not expose the refresh timezone.",
+        "The displayed reserve address balances should be reconciled to a pinned validated XRPL ledger before using as a precise custody concentration series."
+      ],
+      "source": "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves"
+    },
+    "morpho_base_cbxrp_usdc_market": {
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "cbxrp_contract": "0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+      "created": "2026-01-15",
+      "lltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "morpowatch_snapshot_utc": "2026-11-02T10:11:00Z",
+      "morpowatch_observations": {
+        "supplied_usdc": 65690000,
+        "borrowed_usdc": 59190000,
+        "utilization_pct": 90.1,
+        "available_usdc": 6510000,
+        "collateral_cbxrp": 118620000,
+        "collateral_value_usd": 148400000,
+        "borrow_apy_pct": 7.13,
+        "supply_apy_pct": 6.4,
+        "reported_borrowers": 12058
+      },
+      "separate_morpho_app_observation": {
+        "captured_at_utc": "2026-11-02T12:10:19.978Z",
+        "outstanding_loans_usd": 59170000,
+        "total_liquidity_usdc": 22740000,
+        "current_utilization_pct": 90.08,
+        "instant_borrow_rate_pct": 7.11,
+        "realized_bad_debt_usdc": 0,
+        "unrealized_bad_debt_usdc": 0,
+        "oracle": "ChainlinkOracleV2",
+        "oracle_price_cbXRP_usdc": 1.24,
+        "source": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp"
+      },
+      "data_quality": {
+        "borrower_count": "MorphoWatch reports 12,058 borrowers while the Morpho app pagination displays 1 of 1,206. Definition/snapshot mismatch unresolved; exclude borrower count until reconciled.",
+        "liquidation_count": "MorphoWatch's 30-day 1,118 liquidations and approximately $3.94M debt repaid are not bad debt. Morpho app reports zero realized and unrealized bad debt in its captured view. These metrics are not contradictory if liquidations repaid debt without losses.",
+        "provider_time": "MorphoWatch explicitly timestamps its snapshot at 10:11 UTC. The Morpho app page has no explicit capture timestamp; keep it as a separate capture, not a synchronized row."
+      },
+      "interpretation": "The market is large and highly utilized, creating a collateral-credit and liquidity channel. It does not prove new spot purchases. cbXRP collateral liquidation is not itself proof of native XRP redemption or sale; trace liquidator receipts and subsequent redemption/venue flows.",
+      "sources": [
+        "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+        "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+        "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves"
+      ]
+    }
+  },
+  "causal_hypotheses": [
+    {
+      "id": "JPYSC-H1",
+      "claim": "JPYSC handled-balance growth indicates adoption of a centralized yen stablecoin product and customer asset utilization.",
+      "support": "SBI VC Trade's official November 2 announcement reports >JPY10B lending balance and >JPY30B handled balance, explicitly defined as on-chain plus lending balance.",
+      "limitation": "No public-chain deployment or net external settlement series is established."
+    },
+    {
+      "id": "JPYSC-H2",
+      "claim": "JPYSC lending balances represent new XRP-related capital demand.",
+      "status": "DISCONFIRMED_BY_SCOPE",
+      "reason": "The program is JPYSC lent by customers to SBI VC Trade, not XRP collateral or XRP purchases."
+    },
+    {
+      "id": "CBXRP-H1",
+      "claim": "Coinbase's XRP-backed USDC lending increases the utility of held XRP and can reduce the need to sell collateral for liquidity.",
+      "support": "Coinbase reserve/supply observations and the Morpho cbXRP/USDC market are publicly visible.",
+      "limitation": "Collateralized supply is not new spot demand and may create liquidation/rebalancing sell pressure."
+    },
+    {
+      "id": "CBXRP-H2",
+      "claim": "High Morpho utilization creates liquidity sensitivity and liquidation feedback risk.",
+      "support": "Approximately 90.1% utilization in the 10:11 UTC MorphoWatch snapshot.",
+      "limitation": "Current app view reports zero realized/unrealized bad debt; high utilization alone does not establish stress or imminent liquidation."
+    }
+  ],
+  "feature_admission": {
+    "jpysc_handled_balance": "ADMIT_AS_PRODUCT_LEVEL_STOCK_ONLY_AFTER_TIMESTAMPED_HISTORY; do not label as external settlement or XRP flow.",
+    "jpysc_lending_balance": "ADMIT_AS_CENTRALIZED_LENDING_STOCK; not DeFi borrowing or XRP collateral.",
+    "cbxrp_supply": "ADMIT_AS_WRAPPED_CUSTODY_CLAIM; do not add to native XRP supply.",
+    "morpho_utilization": "ADMIT_AS_CREDIT_LIQUIDITY_FEATURE_WITH_PROVIDER_TIMESTAMP.",
+    "morpho_liquidations": "SEPARATE_DEBT_REPAID_FROM_REALIZED_BAD_DEBT; require transaction-level reconciliation.",
+    "forecast": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Track JPYSC on-chain balance and lending balance separately; establish whether the on-chain component is public, permissioned or internal before interpreting it as public circulation.",
+    "Monitor any legal change enabling JPYSC public-chain circulation and identify the actual chain/contract if announced.",
+    "Reconcile Coinbase's reserve addresses at a pinned XRPL ledger with cbXRP total supply at a Base block height.",
+    "Use the full Morpho market ID to ingest daily collateral, USDC supply/borrow, utilization, rate, liquidations, repayments, bad debt and liquidator addresses.",
+    "Trace liquidated cbXRP from liquidator receipts through transfers and redemption; do not infer native XRP sales from cbXRP liquidation events.",
+    "Continue Circle/SBI Japan JV, Arc validator and USDC distribution research separately from Tokyo SBIC.",
+    "Keep all XRP forecasts NOT_ISSUED until point-in-time historical features, fixed-horizon walk-forward baselines, calibration and shadow outcomes are verified."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No validated point-in-time XRP feature store, walk-forward baseline, calibrated probabilities or resolved shadow forecasts."
+  },
+  "safety": {
+    "append_only": true,
+    "existing_artifacts_overwritten": false,
+    "main_modified": false,
+    "merge_performed": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "real_money_trade": false
+  }
+}
