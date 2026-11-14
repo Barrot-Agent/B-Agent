@@ -1,11 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode/glm-5.3-flash",
-  "provider": {
+  "providers": {
     "opencode": {
-      "npm": "@ai-sdk/openai-compatible",
+      "package": "aisdk:@ai-sdk/openai-compatible",
       "name": "OpenCode",
-      "options": {
+      "settings": {
         "baseURL": "https://gw.opencode.com/v1",
         "apiKey": "{env:OPENCODE_API_KEY}"
       },
@@ -27,23 +27,22 @@
       "opencode": {
         "type": "remote",
         "url": "https://mcp.opencode.com/mcp",
-        "enabled": true,
         "headers": {
           "Authorization": "Bearer {env:OPENCODE_API_KEY}"
         }
       }
     }
   },
-  "agent": {
+  "agents": {
     "barrot": {
       "description": "Barrot - main agent",
       "model": "opencode/glm-5.3-flash",
-      "prompt": "You are Barrot. Speak as Barrot. Use OpenCode MCP.",
-      "permission": {
-        "edit": "allow",
-        "bash": "allow",
-        "webfetch": "allow"
-      }
+      "system": "You are Barrot. Speak as Barrot. Use OpenCode MCP.",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "allow" },
+        { "action": "shell", "resource": "*", "effect": "allow" },
+        { "action": "webfetch", "resource": "*", "effect": "allow" }
+      ]
     }
   }
 }
