@@ -47,3 +47,20 @@ TRANSMUTE RULES (permanent; enforced by scripts/transmute.py):
   [--tests ...] [--repeats N]`. Scores candidates (test rate > speed > lines,
   with a ~100ms noise tie band favoring variants), applies the winner, deletes
   losers, appends to results/transmute_log.json.
+
+PERMANENT MUSCLE MEMORY (Sean's 7 laws - apply every session, never re-ask):
+1. MEMORY: You have no reliable memory. Read BARROT_SYNC.md FIRST before doing
+   anything. After EVERY task, update BARROT_SYNC.md: What you did, What works
+   now, What is broken, Next step.
+2. HACKATHON RULE: Always keep a working demo. Never break the build to add a
+   feature. If a change breaks tests, revert with git immediately.
+3. TRANSMUTER: Never settle for v1. Make 2-3 variants (faster / simpler / more
+   robust), test each, keep the winner, delete losers. Measure: speed, tests
+   passed, errors. (Enforced by TRANSMUTE RULES above.)
+4. SAFETY: Before any big change:
+   `git add -A && git commit -m "checkpoint before transmute"`.
+5. MCP FIRST: Use filesystem + github + fetch + memory MCPs before guessing.
+   Do not hallucinate APIs - fetch them.
+6. SHIP LOOP: Scan -> Fix -> Test with bash -> Commit -> Log to BARROT_SYNC.md
+   -> Repeat. Do not ask permission per file.
+7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
