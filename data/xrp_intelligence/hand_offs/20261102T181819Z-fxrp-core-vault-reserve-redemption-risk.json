@@ -1,0 +1,450 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "fxrp-core-vault-reserve-redemption-risk-20261102T181819Z",
+  "captured_at_utc": "2026-11-02T18:18:19Z",
+  "data_cutoff_utc": "2026-11-02T18:18:19Z",
+  "purpose": "Reconcile FXRP underlying XRP reserves, Core Vault governance/control, agent collateral, bridge representations, redemption rules and dissenting risk assessment.",
+  "status": "RESEARCH_ONLY",
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Reserve coverage and DeFi collateral utilization are structural risk variables, not a calibrated directional XRP forecast."
+  },
+  "sources": [
+    {
+      "source_id": "flareforge-fxrp-api-20261102",
+      "publisher": "FlareForge",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T01:57:21Z",
+      "url": "https://flareforge.io/api/fxrp.json",
+      "independence_group": "flareforge-public-api",
+      "evidence_class": "third_party_block_and_ledger_snapshot",
+      "claims": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5"
+      ]
+    },
+    {
+      "source_id": "flaremetrics-fassets-20261102",
+      "publisher": "Flare Metrics",
+      "published_at": "2026-11-02",
+      "retrieved_at_utc": "2026-11-02T18:18:19Z",
+      "url": "https://flaremetrics.io/fassets",
+      "independence_group": "flaremetrics-dashboard",
+      "evidence_class": "third_party_dashboard",
+      "claims": [
+        "V6",
+        "V7",
+        "V8"
+      ]
+    },
+    {
+      "source_id": "flare-core-vault-docs",
+      "publisher": "Flare Developer Hub",
+      "published_at": "current documentation retrieved 2026-11-02",
+      "url": "https://dev.flare.network/fassets/core-vault",
+      "independence_group": "flare-official-docs",
+      "evidence_class": "protocol_primary_documentation",
+      "claims": [
+        "V9",
+        "V10",
+        "V11",
+        "V12"
+      ]
+    },
+    {
+      "source_id": "flare-fxrp-parameters",
+      "publisher": "Flare Developer Hub",
+      "published_at": "current documentation retrieved 2026-11-02",
+      "url": "https://dev.flare.network/fxrp/parameters",
+      "independence_group": "flare-official-docs",
+      "evidence_class": "protocol_primary_documentation",
+      "claims": [
+        "V13"
+      ]
+    },
+    {
+      "source_id": "ketju-fassets-review-20260818",
+      "publisher": "Ketju Research",
+      "published_at": "2026-08-18",
+      "url": "https://ketjuresearch.com/register/fassets/",
+      "independence_group": "ketju-independent-research",
+      "evidence_class": "independent_opinionated_risk_review",
+      "claims": [
+        "V14"
+      ]
+    },
+    {
+      "source_id": "morphowatch-fxrp-rlusd-20261102",
+      "publisher": "MorphoWatch",
+      "published_at": "2026-11-02",
+      "provider_timestamp_utc": "2026-11-02T17:21:00Z",
+      "url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/",
+      "independence_group": "morphowatch-morpho-api-blockchain",
+      "evidence_class": "independent_aggregator_from_public_api_and_chain",
+      "claims": [
+        "V15",
+        "V16",
+        "V17"
+      ]
+    },
+    {
+      "source_id": "flareforge-network-snapshot-20261021",
+      "publisher": "FlareForge",
+      "published_at": "2026-10-21",
+      "provider_timestamp_utc": "2026-10-21T09:12:21Z",
+      "url": "https://flareforge.io/network",
+      "independence_group": "flareforge-public-api",
+      "evidence_class": "third_party_cached_historical_snapshot",
+      "claims": [
+        "V18"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "V1",
+      "classification": "THIRD_PARTY_PINNED_SNAPSHOT",
+      "statement": "FlareForge API snapshot generated 2026-11-02 01:57:21 UTC at Flare block 73,532,960 and XRPL ledger 108,057,311 reports FXRP supply 143,948,176.22.",
+      "interpretation": "A cross-chain point-in-time supply observation with explicit Flare and XRPL cutoffs.",
+      "limitations": [
+        "At 18:18 UTC capture, this API snapshot was approximately 16 hours 21 minutes old; not live state."
+      ]
+    },
+    {
+      "claim_id": "V2",
+      "classification": "THIRD_PARTY_PINNED_SNAPSHOT",
+      "statement": "The same API reports 144,032,206.81 XRP backing: 142,530,810.78 XRP in the Core Vault plus 1,501,396.03 XRP held by agents.",
+      "derived_calculation": {
+        "value": 1.0005837558,
+        "formula": "144,032,206.805854 / 143,948,176.222337",
+        "label": "100.0584% XRP reserve coverage"
+      },
+      "interpretation": "The reported underlying XRP backing slightly exceeds FXRP supply at the pinned snapshot.",
+      "limitations": [
+        "Reserve existence at one ledger/block does not prove future solvency, redemption speed, signer integrity, smart-contract security or bridge security."
+      ]
+    },
+    {
+      "claim_id": "V3",
+      "classification": "THIRD_PARTY_PINNED_SNAPSHOT",
+      "statement": "The API reports 98.9576% of FXRP supply backed through the Core Vault share; Core Vault XRPL address is rfkXSaCZKTg1EZzec2rLDyrWHxRVJdtVXj.",
+      "interpretation": "Backing is highly concentrated in one system-level multisig vault rather than distributed evenly among independent agents.",
+      "limitations": [
+        "The API's Core Vault share is an accounting attribution; it is not the same as beneficial ownership or signer control."
+      ]
+    },
+    {
+      "claim_id": "V4",
+      "classification": "THIRD_PARTY_PINNED_SNAPSHOT",
+      "statement": "The Core Vault record reports 140,000,000 XRP escrowed, approximately 2,530,810.78 liquid XRP, zero pending requests and paused=false.",
+      "interpretation": "Most underlying XRP is time-locked in escrow at the captured ledger; liquid redemption capacity is much smaller than total reserve.",
+      "limitations": [
+        "Escrow release schedule, secret/condition control and manual multisig operations determine practical availability."
+      ]
+    },
+    {
+      "claim_id": "V5",
+      "classification": "THIRD_PARTY_CROSS_CHAIN_RECONCILIATION",
+      "statement": "The API reports 20,098,496.19 FXRP locked on Flare and reconciled across Ethereum, Monad, HyperEVM, Katana, Base and BNB Chain.",
+      "interpretation": "Remote FXRP representations are reconciled to the locked amount; they must not be added to native XRP or Flare FXRP supply as independent economic supply.",
+      "limitations": [
+        "This is a third-party API reconciliation; destination contract states were not separately fetched in this run."
+      ]
+    },
+    {
+      "claim_id": "V6",
+      "classification": "THIRD_PARTY_DASHBOARD_OBSERVATION",
+      "statement": "Flare Metrics' November 2 dashboard reports approximately 143.98M FXRP supply and 100.01% verified proof of reserve.",
+      "interpretation": "A second public dashboard is directionally consistent with the FlareForge API's approximately 100.06% reserve coverage, though the snapshots and methods differ.",
+      "limitations": [
+        "No exact provider timestamp or raw payload hash was exposed on the page."
+      ]
+    },
+    {
+      "claim_id": "V7",
+      "classification": "THIRD_PARTY_DASHBOARD_OBSERVATION",
+      "statement": "Flare Metrics reports six agents, 13,810 non-zero holders, 825.36M FLR in agent pools, 633% collateral ratio and 84.7% of the 170M FXRP minting cap used.",
+      "interpretation": "The 633% agent-pool collateral ratio is a separate metric from 100.01% underlying XRP proof of reserve; it must not be reported as 633% total FXRP backing.",
+      "limitations": [
+        "The 633% ratio relates to agent collateral pools and the agent-minted portion; denominator distinctions must be retained."
+      ]
+    },
+    {
+      "claim_id": "V8",
+      "classification": "THIRD_PARTY_DASHBOARD_FLOW_OBSERVATION",
+      "statement": "Flare Metrics reports the November 1–2 trailing 24-hour period with 90.5K FXRP minted, 108.5K redeemed, net redemption of 18.0K FXRP (about USD 22.3K), 81.3% success rate, six payment defaults, zero pending mints and zero agent liquidations.",
+      "interpretation": "The net redemption amount is small relative to 143.98M supply (approximately 0.0125%); it is not sufficient by itself to establish a material market supply shock.",
+      "limitations": [
+        "The success-rate denominator and payment-default count require source-code/API definition reconciliation; do not infer a failure percentage from these displayed values."
+      ]
+    },
+    {
+      "claim_id": "V9",
+      "classification": "CONFIRMED_PROTOCOL_DOCUMENTATION",
+      "statement": "Flare's Core Vault documentation says the XRP Core Vault is an XRPL multisig account; only authorized signers approved by Flare governance can move XRP, and outgoing transfers require multiple signatures.",
+      "interpretation": "The design reduces unilateral agent theft risk but concentrates operational authority in governance-approved multisig signers.",
+      "limitations": [
+        "The full signer identities, threshold, key-management controls and independent operational audits were not retrieved."
+      ]
+    },
+    {
+      "claim_id": "V10",
+      "classification": "CONFIRMED_PROTOCOL_DOCUMENTATION",
+      "statement": "Flare documentation says the Core Vault is operated manually; multisig signers validate outgoing transactions against pre-approved rules and sign during designated daily windows.",
+      "interpretation": "Redemption is operationally gated and not an always-on autonomous transfer path.",
+      "limitations": [
+        "Actual processing latency distribution and service-level performance were not retrieved."
+      ]
+    },
+    {
+      "claim_id": "V11",
+      "classification": "CONFIRMED_PROTOCOL_DOCUMENTATION",
+      "statement": "Direct user redemption from the Core Vault requires KYC approval and a minimum threshold, is typically processed once per day, and has lower priority than agent return requests.",
+      "interpretation": "FXRP holders do not necessarily have immediate permissionless direct redemption from the shared Core Vault; secondary-market liquidity and agent pathways matter.",
+      "limitations": [
+        "Approved-user criteria, threshold amount and actual processing times were not captured."
+      ]
+    },
+    {
+      "claim_id": "V12",
+      "classification": "CONFIRMED_PROTOCOL_DOCUMENTATION",
+      "statement": "Agent return requests have no explicit time limit for Core Vault execution; documentation says governance ensures timely execution.",
+      "interpretation": "This creates an operational dependency on multisig signers and governance coordination.",
+      "limitations": [
+        "No measured delay distribution or independent SLA evidence was found."
+      ]
+    },
+    {
+      "claim_id": "V13",
+      "classification": "CONFIRMED_PROTOCOL_PARAMETERS",
+      "statement": "Current Flare FXRP parameters list a 170M XRP minting cap, 10 XRP lot size, 0.01% collateral reservation fee, 0.18% agent redemption fee, 0.02% system redemption fee, 5% redemption default premium and maximum 20 redemption tickets per request.",
+      "interpretation": "These are protocol parameters and not equivalent to market borrowing rates or Morpho liquidation settings.",
+      "limitations": [
+        "Parameters can change through governance/contract upgrades; snapshots must be timestamped."
+      ]
+    },
+    {
+      "claim_id": "V14",
+      "classification": "INDEPENDENT_DISSENTING_RISK_OPINION",
+      "statement": "Ketju Research's 2026-08-18 FAssets memo labels the system 'Not approved' under its own risk-review framework, citing manual multisig custody, governance dependence and concentration in the Core Vault.",
+      "interpretation": "Retain as an independent minority objection to the project's security narrative; it is an analyst opinion, not a regulator's determination or a formal audit finding.",
+      "limitations": [
+        "The memo's approval rubric is proprietary/opinionated and should not be treated as a universal safety standard."
+      ]
+    },
+    {
+      "claim_id": "V15",
+      "classification": "INDEPENDENT_AGGREGATOR_OBSERVATION",
+      "statement": "MorphoWatch reports 13.49M FXRP collateral worth USD 16.84M against USD 8.45M RLUSD debt in the Ethereum FXRP/RLUSD Morpho market at 2026-11-02 17:21 UTC.",
+      "interpretation": "This is a live collateralized credit position using an XRP representation and Ripple's stablecoin.",
+      "limitations": [
+        "MorphoWatch uses Morpho public API and blockchain data; raw payload hash was not captured."
+      ]
+    },
+    {
+      "claim_id": "V16",
+      "classification": "INDEPENDENT_AGGREGATOR_RISK_OBSERVATION",
+      "statement": "The Morpho market has 77% liquidation LTV, 90.3% utilization, 57 borrowers and the three largest borrowers account for approximately 90.9% of debt.",
+      "interpretation": "High utilization and borrower concentration create market-specific liquidity and liquidation sensitivity.",
+      "limitations": [
+        "Borrower beneficial ownership is unknown; isolated-market design limits direct contagion to other markets but not losses within this market."
+      ]
+    },
+    {
+      "claim_id": "V17",
+      "classification": "INDEPENDENT_AGGREGATOR_ORACLE_OBSERVATION",
+      "statement": "The FXRP/RLUSD Morpho market uses a RedStone XRP/FXRP market-price feed and Chainlink RLUSD/USD feed, with reported heartbeat/deviation settings of 6 hours/0.25% and 1 day/0.3%, respectively.",
+      "interpretation": "Oracle freshness and feed dependency are material inputs to liquidation risk.",
+      "limitations": [
+        "A heartbeat is not a guaranteed update interval; direct oracle contract and failure-mode review remains necessary."
+      ]
+    },
+    {
+      "claim_id": "V18",
+      "classification": "SAME_PROVIDER_HISTORICAL_COMPARISON",
+      "statement": "FlareForge's October 21 snapshot reported 143,277,822 FXRP supply; its November 2 API snapshot reports 143,948,176.22.",
+      "derived_calculation": {
+        "value": 670354.22,
+        "percentage": 0.004679,
+        "formula": "143,948,176.222337 - 143,277,822; divide by 143,277,822",
+        "label": "approximately +670,354 FXRP (+0.468%) between the two provider snapshots"
+      },
+      "interpretation": "This shows a modest rebound from the October 21 snapshot; it does not establish a return to the June peak or a price signal.",
+      "limitations": [
+        "Same provider/source family, not independent corroboration.",
+        "October 21 page is a cached snapshot and explicitly stale at the time of retrieval.",
+        "November 2 API generated at 01:57:21 UTC, not at the 18:18 research cutoff."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "XRPL Core Vault",
+      "to": "FXRP",
+      "relationship": "underlying XRP reserve backing",
+      "status": "THIRD_PARTY_PINNED_SNAPSHOT_AND_PROTOCOL_DOCS",
+      "source_ids": [
+        "flareforge-fxrp-api-20261102",
+        "flare-core-vault-docs"
+      ]
+    },
+    {
+      "from": "Flare governance multisig",
+      "to": "XRPL Core Vault",
+      "relationship": "authorized manual signing and pause control",
+      "status": "CONFIRMED_PROTOCOL_DOCS",
+      "source_ids": [
+        "flare-core-vault-docs"
+      ]
+    },
+    {
+      "from": "Six FAssets agents",
+      "to": "FXRP",
+      "relationship": "minting/redemption and agent collateral",
+      "status": "THIRD_PARTY_SNAPSHOT",
+      "source_ids": [
+        "flareforge-fxrp-api-20261102",
+        "flaremetrics-fassets-20261102"
+      ]
+    },
+    {
+      "from": "FXRP",
+      "to": "Morpho Ethereum",
+      "relationship": "collateral asset",
+      "status": "LIVE_MARKET",
+      "source_ids": [
+        "morphowatch-fxrp-rlusd-20261102"
+      ]
+    },
+    {
+      "from": "RLUSD",
+      "to": "Morpho Ethereum",
+      "relationship": "loan asset",
+      "status": "LIVE_MARKET",
+      "source_ids": [
+        "morphowatch-fxrp-rlusd-20261102"
+      ]
+    },
+    {
+      "from": "Sentora RLUSD Main",
+      "to": "FXRP/RLUSD Morpho market",
+      "relationship": "primary supply vault",
+      "status": "LIVE_MARKET",
+      "source_ids": [
+        "morphowatch-fxrp-rlusd-20261102",
+        "morphowatch-sentora-vault-20261102"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "Near-1:1 reserve coverage reduces shortfall risk at the captured block but does not eliminate multisig, governance, bridge, oracle, smart-contract or redemption-latency risk.",
+      "supporting_evidence": [
+        "V2",
+        "V3",
+        "V4",
+        "V9",
+        "V10",
+        "V11"
+      ],
+      "disconfirming_evidence": [
+        "Escrows and multisig controls reduce unilateral agent theft and support reserve preservation"
+      ],
+      "status": "OPEN_RISK_BALANCE"
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "Core Vault concentration is a deliberate security/capital-efficiency tradeoff that reduces agent custody risk while increasing operational governance concentration.",
+      "supporting_evidence": [
+        "V3",
+        "V9",
+        "V10",
+        "V12",
+        "V14"
+      ],
+      "disconfirming_evidence": [
+        "Multisig, escrow, emergency pause and formal governance agreements provide controls"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H3",
+      "statement": "The 633% agent-pool collateral ratio and approximately 100% underlying XRP reserve ratio measure different layers and must never be combined as a single total collateralization percentage.",
+      "supporting_evidence": [
+        "V2",
+        "V6",
+        "V7"
+      ],
+      "disconfirming_evidence": [
+        "No conflicting denominator evidence in this snapshot"
+      ],
+      "status": "ACCOUNTING_CONTROL"
+    },
+    {
+      "hypothesis_id": "H4",
+      "statement": "Net FXRP redemptions in the November 1–2 dashboard snapshot are small relative to supply and do not establish material native XRP sell pressure.",
+      "supporting_evidence": [
+        "V6",
+        "V8"
+      ],
+      "disconfirming_evidence": [
+        "Sustained redemptions or large redemption clusters could change this conclusion"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H5",
+      "statement": "Borrowing RLUSD against FXRP creates a real credit utility channel for XRP exposure but also a liquidation path that can create FXRP supply pressure during drawdowns.",
+      "supporting_evidence": [
+        "V15",
+        "V16",
+        "V17"
+      ],
+      "disconfirming_evidence": [
+        "Current realized bad debt is zero and recent liquidations were small"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H6",
+      "statement": "FXRP supply may have peaked in the first half of 2026 and contracted through October, but the October 21 to November 2 FlareForge snapshots show a small recent rebound; a simple linear supply trend is not justified.",
+      "supporting_evidence": [
+        "V1",
+        "V18"
+      ],
+      "disconfirming_evidence": [
+        "The recent increase is small and snapshots are same-provider; it does not prove a durable reversal"
+      ],
+      "unknowns": [
+        "Continuous daily totalSupply history",
+        "Net mints/redemptions by cause",
+        "Cross-chain locked supply and DeFi deployment at common cutoffs"
+      ],
+      "status": "OPEN"
+    }
+  ],
+  "data_quality_controls": [
+    "Use FlareForge's generated_at, Flare block and XRPL ledger index as a synchronized point-in-time reserve snapshot; the captured API response is 16h 21m old at the research cutoff.",
+    "Do not use the 633% agent-pool collateral ratio as total FXRP reserve backing; underlying XRP proof of reserve is approximately 100.06% in the pinned API snapshot.",
+    "Do not equate 98.96% Core Vault share with beneficial ownership or independent control; the vault is a governance-approved multisig.",
+    "Do not count 20.10M remote FXRP as new native XRP or extra FXRP supply; the API reports remote supply reconciles to FXRP locked on Flare.",
+    "Do not equate Morpho liquidations with FAssets agent liquidations; they are separate systems.",
+    "Do not treat zero FAssets agent liquidations as zero Morpho borrower liquidations.",
+    "Do not assume direct user redemption is permissionless or instant; Flare documentation requires KYC and describes daily manual processing.",
+    "Keep the Ketju 'Not approved' assessment as a dissenting risk opinion, not a regulatory or audit conclusion.",
+    "Retain the Morpho market's borrower concentration and oracle dependencies separately from system-wide FAssets reserve coverage."
+  ],
+  "next_actions": [
+    "Capture FlareForge API and XRPL account_info/account_objects at a common pinned ledger and Flare block; independently recompute the 1:1 reserve ratio including escrows.",
+    "Verify the Core Vault multisig signer set, threshold, governance controls, pause authority and escrow conditions from public contracts and XRPL ledger objects.",
+    "Measure actual direct-redemption KYC throughput, daily payout capacity, queue length and processing latency.",
+    "Reconcile FlareMetrics' 24-hour payment-default and 81.3% success metrics against raw FAssets request/response events.",
+    "Track FXRP total supply, Core Vault backing, agent collateral, bridged supply and DeFi deployment as separate time series.",
+    "Track Morpho FXRP/RLUSD utilization, top borrower health, liquidation events, oracle heartbeat and market depth at fixed timestamps.",
+    "Trace liquidated FXRP from seizure to DEX/CEX execution or redemption before classifying any event as native XRP sell pressure."
+  ]
+}
