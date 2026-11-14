@@ -124,7 +124,31 @@ Output ONLY JSON: {{"action": "buy|sell|hold", "amount_usd": 0, "reasoning": "..
     return parsed
 
 
-def execute_paper_trade(state, decision, current_price):
+def validate_position_product(state, product_id):
+    """Fail closed if an open simulated position cannot be tied to this product."""
+    try:
+        position_size = float(state.get("position_size", 0) or 0)
+    except (TypeError, ValueError):
+        return "aborted -- invalid position size; manual reconciliation required"
+
+    if position_size < 0:
+        return "aborted -- negative position size; manual reconciliation required"
+
+    if position_size > 1e-8:
+        position_product = state.get("position_product")
+        if not isinstance(position_product, str) or not position_product.strip():
+            return "aborted -- nonzero position has no product identity; manual reconciliation required"
+        if position_product != product_id:
+            return f"aborted -- configured product {product_id} does not match open position {position_product}"
+
+    return None
+
+
+def execute_paper_trade(state, decision, current_price, product_id=PRODUCT_ID):
+    identity_error = validate_position_product(state, product_id)
+    if identity_error:
+        return identity_error
+
     action = decision.get("action", "hold")
     amount_usd = float(decision.get("amount_usd", 0) or 0)
 
@@ -132,6 +156,8 @@ def execute_paper_trade(state, decision, current_price):
         amount_usd = min(amount_usd, state["cash_usd"] * 0.2, state["cash_usd"])
         if amount_usd < 1:
             return "hold -- insufficient cash for a meaningful buy"
+        if state["position_size"] <= 1e-8:
+            state["position_product"] = product_id
         qty = amount_usd / current_price
         total_qty = state["position_size"] + qty
         prev_cost = (state["avg_entry_price"] or 0) * state["position_size"]
@@ -149,6 +175,7 @@ def execute_paper_trade(state, decision, current_price):
         if state["position_size"] <= 0.00000001:
             state["position_size"] = 0.0
             state["avg_entry_price"] = None
+            state["position_product"] = None
         state["trade_count"] += 1
         return f"sold ${proceeds:.2f} at ${current_price:.2f}"
 
@@ -172,10 +199,15 @@ def run():
     recent_trades = fetch_recent_trades(PRODUCT_ID)
 
     state = load_state()
+    identity_error = validate_position_product(state, PRODUCT_ID)
+    if identity_error:
+        print(identity_error)
+        raise SystemExit(2)
+
     starting_value = portfolio_value(state, current_price)
 
     decision = decide(PRODUCT_ID, ticker, recent_trades, state)
-    result = execute_paper_trade(state, decision, current_price)
+    result = execute_paper_trade(state, decision, current_price, PRODUCT_ID)
 
     ending_value = portfolio_value(state, current_price)
 
