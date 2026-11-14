@@ -1,0 +1,131 @@
+{
+  "schema": "barrot.nine-platform-capability-authentication-dataflow.v1",
+  "run": "Run110",
+  "observed_at_utc": "2026-11-14T01:06:08Z",
+  "coordination_status": "DESIGNED; no external-model dispatch, structured evidence exchange or data transfer executed",
+  "repository_observation": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_code_head": "2945c5617519ed297dbd311af2bb8dbee47dc6bb",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "exact_head_full_suite": "passed on code head 2945c561; documentation descendants require their own exact-head run"
+  },
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "capabilities": [
+        "research",
+        "reasoning",
+        "repository inspection",
+        "orchestration"
+      ],
+      "authentication": "GitHub connector verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT GitHub connector to Barrot-Agent/B-Agent; no external model transfer",
+      "risk": "overprivileged; least-privilege remediation required"
+    },
+    {
+      "name": "Claude",
+      "capabilities": [
+        "independent SEC/corporate filing audit",
+        "capital reconciliation"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch",
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    {
+      "name": "Grok",
+      "capabilities": [
+        "market-structure red team",
+        "counter-hypothesis review"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch",
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    {
+      "name": "Gemini",
+      "capabilities": [
+        "stablecoin/custody/payment-rail primary-source cross-check"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch",
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    {
+      "name": "Copilot",
+      "capabilities": [
+        "repository integration review",
+        "workflow security review"
+      ],
+      "authentication": "review artifacts visible; formal PR approval absent",
+      "permissions": "not independently verified",
+      "data_flow": "no structured evidence exchange verified",
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    {
+      "name": "Codex",
+      "capabilities": [
+        "prediction-engine implementation",
+        "test and CI remediation"
+      ],
+      "authentication": "unverified",
+      "permissions": "unverified",
+      "data_flow": "unverified; no dispatch",
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    {
+      "name": "Hugging Face",
+      "capabilities": [
+        "later shadow-model hosting and inference"
+      ],
+      "authentication": "no current deployment verified; prior BUILD_ERROR",
+      "permissions": "unverified",
+      "data_flow": "no deployment or data transfer",
+      "task_status": "BLOCKED"
+    },
+    {
+      "name": "Kaggle",
+      "capabilities": [
+        "later chronological backtesting and reproducibility"
+      ],
+      "authentication": "untested",
+      "permissions": "unverified",
+      "data_flow": "no submission",
+      "task_status": "NOT_AUTHORIZED"
+    },
+    {
+      "name": "Databricks",
+      "capabilities": [
+        "later historical feature-store engineering"
+      ],
+      "authentication": "HTTP 403; no write verified",
+      "permissions": "unverified",
+      "data_flow": "no write or data transfer",
+      "task_status": "BLOCKED"
+    }
+  ],
+  "additional_provider": {
+    "name": "LunaRoute",
+    "is_one_of_nine": false,
+    "main_remote_mcp": "enabled",
+    "integration_remote_mcp": "disabled",
+    "endpoint_authentication": "unverified",
+    "external_data_transfer": "none verified"
+  },
+  "least_privilege_status": "Not satisfied for current GitHub connector; no permission change attempted",
+  "fallback": "Use local deterministic analysis and GitHub CI. Do not dispatch to any external platform until authentication, permission scope and data-flow are tested and approved."
+}

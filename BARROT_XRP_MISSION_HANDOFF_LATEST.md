@@ -140,3 +140,98 @@ Backlog: #1662 blocked integration; #1661/#1660/#1643/#1642 are zero-ahead path-
 8. Train an XRP-specific candidate only when the dataset supports it; require calibrated out-of-sample superiority and independent shadow outcomes before forecast issuance.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source PR closure occurred.
+
+## Run110 — 2026-11-14T01:06:08Z
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain mission priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+- Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Code-bearing integration head verified in this run: `2945c5617519ed297dbd311af2bb8dbee47dc6bb`.
+- Branch: `integration/xrp-v3-unified-main-20261112`; 2,322 commits ahead of main, zero behind.
+- Main tree: 1,381 entries / 87 workflows. Integration tree: 2,397 entries / 88 workflows.
+- PR #1662: draft, open, 1,156 changed files, 334,325 additions, 5,354 deletions; 50 workflow files and seven public web files.
+- Open PR inventory: 375 total; 361 drafts and 14 non-drafts.
+- PR #1662 has zero formal reviews, approvals and review threads. No merge occurred.
+
+This Run110 handoff and its JSON/map records are documentation-only descendants of the verified code head above. They do not alter runtime code. Their own exact-head CI is pending after this commit; do not transfer the parent head's test result to a later descendant.
+
+### Exact-head verification — EXECUTED and VERIFIED on 2945c561
+
+A failing full-suite run on predecessor `e915307` exposed a contract-documentation mismatch: a regression test required the literal “block-bootstrap adjustment” phrase, which was missing from `research/xrp_intelligence/forecast-ledger-contract.md`. The phrase was added with a policy explanation in commit `2945c561`. No runtime code changed.
+
+Exact-head evidence on `2945c561`:
+
+- [Full CI 43538066244](https://github.com/Barrot-Agent/B-Agent/actions/runs/43538066244): 3,626 passed, eight subtests passed, zero failures; 62.34% inclusive coverage; 88.95 seconds. Wheel build and installed Barrot V3 / primary-mission verification passed.
+- Core test job: 739 passed, eight subtests, 13.95 seconds; legacy core coverage 76%.
+- [Dependency audit 43538066242](https://github.com/Barrot-Agent/B-Agent/actions/runs/43538066242): five groups audited (runtime, dev, Hugging Face Space, legacy and PEP 621 pyproject dependencies); no known vulnerabilities reported.
+- [Fail-closed push gate 43538066174](https://github.com/Barrot-Agent/B-Agent/actions/runs/43538066174) and [PR gate 43538072699](https://github.com/Barrot-Agent/B-Agent/actions/runs/43538072699): passed with automatic merge disabled.
+- PR-event CI 43538072864 was skipped by the explicit integration-branch condition. The push-event full-suite run is the actual exact-head full-suite evidence.
+
+Non-blocking build warnings remain: deprecated TOML table-form license metadata and setuptools package-discovery warnings for `barrot_agent.data.missions` / `data.research`. The wheel's primary mission resource was nevertheless verified after installation.
+
+### Prediction-engine gate — critical design limitation
+
+Implemented on integration: four deterministic baselines, chronological walk-forward with purge/embargo, paired temporal moving-block bootstrap, outcome-source-clustered bootstrap, 95% familywise Bonferroni control across eight baseline/metric comparisons (99.375% individual intervals), minimum 100 paired origins, 10,000 resamples, five source clusters and minimum five origins per cluster, calibration/drift checks, receipt-backed provenance and independent Ed25519 readiness attestation.
+
+New inspection of `walk_forward.py` shows that an outcome-source cluster ID is assigned only when the target outcome resolves to exactly one canonical independence group. Multi-publisher target aggregates are explicitly marked unclustered. The source-cluster interval measures outcome-publisher lineage; it does not establish independence among training-feature sources.
+
+This creates a structural feasibility problem: a per-venue target fed by one exchange publisher can produce only one outcome cluster, while a composite multi-venue target is currently marked unclustered. The five-cluster admission gate may therefore be impossible to satisfy under the current target schema without redefining the estimand or adding genuinely independent outcome observations. Do not weaken the five-cluster fail-closed rule or count API wrappers sharing one upstream venue as independent sources. Resolve target definition, cluster unit, weighting, and dependence assumptions; then add small-cluster coverage and block-length sensitivity simulations before candidate admission.
+
+There is still no trained XRP-specific candidate model. Walk-forward results currently evaluate deterministic baselines. No directional forecast was issued; accuracy remains NOT_EVALUATED. No paper trade or real-money action occurred.
+
+### Fresh XRP market and ETF observations
+
+Research cutoff: 2026-11-14T01:06:08Z.
+
+- OKX XRP-USDT ticker event timestamp: 2026-11-14 00:56:03.669 UTC; last $1.0100, bid $1.0097, ask $1.0098, 24h open $1.0364, high $1.0438, low $0.9974, volume 47.067M XRP. At the automation start (01:00:55 UTC) the quote was 291 seconds old; by this research cutoff it was about 604 seconds old and outside the 300-second admission limit. Best-level sizes (4,152.49 bid / 316.3 ask) are one price level, not full depth. No raw byte receipt/hash was captured; not model-eligible.
+- Kraken XRP/USD separately returned last $1.01123, bid $1.01050 and ask $1.01054 without a provider event timestamp. Do not synchronize or average it with OKX.
+- XRPN secondary-market history reports a Nov 13 close of $7.85, down 12.49%, on 388,810 shares. This is equity-market context, not evidence of XRP demand or a causal signal.
+- XRP Insights' data page says four settled sessions Nov 9–12 net -9,481,905 XRP; Nov 12 alone -268,644 XRP; holdings 1,185,698,783 XRP. Nov 13 is provisional. The same provider's homepage agrees on Nov 12 and the weekly total. The dataset computes flows from day-over-day issuer-reported holdings, with GXRP flows withheld during a capture gap; BITW rebalancing and fees can appear as flow. CryptoKeyhole's Nov 12 observation is partial (three of four funds, -3,322 XRP); Alpha Finance's five-fund cohort reports zero. Different coverage and settlement vintages are not averaged.
+
+### Evernorth: material primary-filing correction and actual-capital reconciliation
+
+Primary source review found that the XRP Insights Evernorth page still says no closing 8-K was on EDGAR at its Nov 13 23:41 UTC check and says no filing reports the closing share count. That statement is contradicted by Evernorth's Oct 9 closing Form 8-K, its Oct 13 corrective Form 8-K, and its Nov 13 Form 10-Q. The tracker page itself lists the 10-Q as filed after its last review. Treat its wallet attribution as a third-party partial ledger analysis, not the authority for corporate closing status or capital structure.
+
+- The Oct 9 business combination closed. The Oct 13 8-K corrected a clerical error: delayed-funding Class A shares were 1,078,613, not 663,510. Corrected closing shares were 23,638,882 Class A and 31,392,746 Class C.
+- The Nov 13 10-Q states Pubco's principal asset is a 71.5% ownership interest in Pathfinder. The 473,276,430 XRP headline is gross Pathfinder treasury, not 100% directly attributable to public Pubco equity. Pathfinder received 346,484,972 XRP transferred by Evernorth and 126,791,458 XRP contributed by Ripple. Applying 71.5% to gross Pathfinder XRP gives approximately 338,392,647 XRP attributable to Pubco, a derived estimate rather than a company-reported post-close balance. The 10-Q defines XRP per share as XRP attributable to Pubco divided by outstanding Class A plus Class C shares.
+- As of Nov 9 the 10-Q reports 27,012,248 Class A and 31,392,746 Class C shares. Using the derived 338.393M XRP and those 58.405M A+C shares gives approximately 5.79 XRP per A+C share; this is a calculation, not a company-reported KPI. Exact attributable holdings and later share changes require further reconciliation.
+- SBI Holdings' Oct 13 8-K disclosure lists 9,431,914 Class A and 2,359,038 Class C shares at closing; Class C represented 7.5% of that class. The Class A amount was about 39.9% of closing Class A shares. If those holdings remained unchanged through Nov 9, the implied percentages would be about 34.9% of Class A, 7.5% of Class C and 20.2% of combined A+C shares. No updated beneficial-ownership filing was verified, so these are conditional calculations, not current confirmed percentages.
+- The 10-Q reports 3,073,366 warrant exercises from Oct 12 through Nov 9 for approximately $35.3M gross cash; 8,666,279 warrants remained at $11.50. The 10-Q's Nov 9 Class A count exceeds corrected closing shares plus those disclosed exercises by 300,000 shares. No reviewed filing reconciles that residual; do not attribute it to an ELOC draw, employee plan or other issuance without evidence.
+- Gross closing cash proceeds were $272.6M before expenses (private-placement cash plus SPAC trust release). Of this, $214.05M was used to purchase 84.365876M XRP at approximately $2.5366; do not count it again as cash still available. In-kind XRP contributions were 388.910554M. The $524.26M refundable investor advances were settled in equity at closing, not repaid as cash and not a second new cash raise.
+- A $30M 4% PIK convertible note was issued Oct 13; reported net cash after a $1M advisor fee was about $29M. A discretionary ELOC for up to 5,218,935 shares at 97% of VWAP is financing capacity, not cash received; no ELOC proceeds were disclosed in the reviewed 10-Q. Registered secondary-resale shares generate no issuer proceeds.
+- The 10-Q's financial statements are for the period ended Sep 30, before the Oct 9 combination: unrestricted cash $91,397, restricted cash $49,995, no revenue, Q3 net income $155.265M primarily from a $162.834M fair-value gain on refundable investor advances, and nine-month net loss $32.870M with $271.037M digital-asset impairment. The Q3 gain is not operating profitability and the Sep 30 cash balance is not post-close liquidity.
+- The 10-Q says Coinbase is Evernorth's principal market for XRP fair-value/impairment accounting and says the initial post-combination custodian is BitGo Trust. Principal-market designation does not prove Coinbase is the custodian or the exclusive execution venue.
+
+The tracker reports 103,129,905 XRP in 13 attributed XRPL wallets at ledger 108,313,323 (Nov 13 23:41 UTC), and 370,346,663 XRP moved outside that attributed set, with destinations not attributed (latest Oct 22). The tracker explicitly does not assume those transfers were sold. Its wallet set includes Ripple-contribution-related wallets; it is not a complete Pathfinder custody inventory. The SEC gross treasury and the tracker’s partial wallet attribution must remain separate.
+
+### Workflow/security and PR reconciliation
+
+All 50 changed workflow-file patches were screened for triggers, permissions, secrets, deployments, pushes and confirmation gates. The XRP public ingestion workflow is scheduled/read-only and main-only. External write/deploy paths remain manual and require action-specific confirmation and main-SHA pinning; the Hugging Face sync and self-hosted brain sync paths are disabled/quarantined in integration. No external action was executed.
+
+Main-side observations:
+- Main metadata says protected=true, enforcement for non-admins, but required status-check contexts are empty. Detailed protection endpoint returned HTTP 403; fallback ruleset 10863829 is disabled. Integration is unprotected.
+- GitHub connector permission set includes admin, maintain, push, pull and triage; this exceeds least privilege.
+- Main Pillars Consistency run 43430139937 failed because required GitHub App identifiers were missing, Databricks returned HTTP 403 and Hugging Face reported BUILD_ERROR.
+- Main Barrot Sync run 43343513347 reported success but logs show `ModuleNotFoundError: httpx`, sync skipped and a no-op `Everything up-to-date` push. Treat the green status as a workflow defect, not verified synchronization.
+- GitHub Pages has deployed automatically after main pushes. Seven public web files change in #1662; publication authorization remains unresolved.
+
+PR #1662 remains draft with zero formal reviews, approvals or review threads. Current path/ancestry reconciliation:
+- #1661, #1660, #1643 and #1642 have full path overlap with #1662 and no source-only commits; integration is respectively 190, 328, 1,390 and 2,295 commits ahead of those heads. They are exact supersession candidates, but remain open until #1662 is merged and verified on main.
+- #1640 has one source-only commit; its action-specific Databricks/Kaggle approval workflow and tests are semantically present in integration with stricter gates. Preserve until successor merge/verification.
+- #1653 and #1655 retain 18 and 17 unique commits respectively. Preserve. #1659, #1615, #1614, #1320, #1318, #1317 and #1269 remain unique/unreviewed or individually blocked. #1644–#1650 and #1254/#1255 remain dependency candidates blocked pending current-main validation.
+- No source PR was closed.
+
+**Merge decision: NO MERGE.** Draft status, no approvals, incomplete semantic review of 1,156 files, branch-protection visibility, overprivileged connector permissions, automatic Pages publication and unresolved source-cluster target design remain blockers.
+
+### Next concrete actions
+
+1. Resolve the source-cluster estimand/target-schema feasibility without weakening independence requirements; add coverage simulations and require the resulting evidence in forecast readiness.
+2. Reconcile Evernorth's 71.5% Pathfinder ownership, 473.276M gross treasury, 338.393M derived attributable amount, 300K share-count residual, ELOC status and custody wallets against the next combined-company disclosure.
+3. Continue synchronized historical XRP spot/L2/derivatives/flows/collateral ingestion with byte-exact raw receipts and independent durable anchoring.
+4. Complete semantic review of the 1,156-file integration, prioritizing 50 workflows and seven public web files.
+5. Resolve least-privilege GitHub access, branch-protection visibility, main-side remote MCP containment and Pages publication authorization.
+6. Train an XRP-specific candidate only after sufficient point-in-time history exists; require calibrated out-of-sample superiority against all four baselines and independent shadow outcomes before any directional forecast.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
