@@ -128,7 +128,8 @@ class LunaRouteRefiner(Refiner):
         if not self.available:
             raise PermissionError(
                 "LunaRoute is disabled: explicit allow_external, public data "
-                "classification, BARROT_ALLOW_EXTERNAL_REFINEMENT=1, and a key are required"
+                "classification, BARROT_ALLOW_EXTERNAL_REFINEMENT=1, "
+                "BARROT_LIVE_REFINEMENT_APPROVED=1, and a key are required"
             )
         body = json.dumps({
             "model": self.model,

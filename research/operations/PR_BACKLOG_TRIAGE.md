@@ -687,3 +687,29 @@ Open PR inventory: 374 total; 360 drafts, 14 non-drafts; 366 target main, eight 
 Security: the previously identified .config/gh/hosts.yml exposure set covers 17 open branch tips. Run65 rechecked the named overlap candidates; six of seven checked branches contained the path, while #1660 did not. No contents were read. Provider-side OAuth revocation remains unverified. All seven checked source branches contain 18 Orbit paths; integration excludes them.
 
 No source PR was closed. Close only exact duplicates/superseded PRs after successor merge and merged-file verification on main; do not bulk-close unique work.
+
+---
+
+## Run142 — 2026-11-14T22:50:55Z — Current backlog and exact-head CI
+
+- Main SHA: `0d05b59a037f4ad4b0c345ee6e8c1c442d25fa2e`.
+- Active consolidated integration: **#1662**, branch `integration/xrp-v3-unified-main-20261112`, pre-repair head `272ca9ff8e1e3894684edbea0044fe4abcdc688d`, open/draft, base main, 2,423 ahead/0 behind, 1,223 changed files, 366,215 additions, 6,295 deletions. GitHub mergeable=true is not a readiness approval.
+- Open PR inventory: **373** total, **361 drafts**, **12 non-drafts**. No PR created or closed.
+- Exact-head push full suite on pre-repair head: **3,758 passed, four failed, one skipped, 19 subtests passed, 63.79% coverage**. Three failures were mocked LunaRoute adapter tests missing the explicit live-approval environment gate; one resume fixture omitted the saved data classification. Test fixtures were corrected; production default-deny and classification checks remain unchanged. New exact-head CI is pending.
+- Push and PR six-manifest dependency audits passed; push and PR fail-closed gates passed. PR event skipped core/full suite for integration branch and therefore is not a substitute for push full-suite evidence.
+
+### Current classifications
+
+- **Active integration / blocked:** #1662. Do not merge until exact-head full suite, wheel, security/dependency gates, semantic review, independent approvals, least privilege, branch protection and publication/automatic-workflow authorization are satisfied.
+- **Supersession candidates / preserve:** #1661 and #1660. Carry source-only workflow/content and review history; no closure before successor merge and main verification.
+- **Overlap / reconcile:** #1643 and #1640. Compare exact patches, retain unique evidence and implementation.
+- **Unique prediction / preserve:** #1642, #1614, #1611 and related fixed-horizon/feature-snapshot work. Reconcile into the consolidated mission without losing distinct evidence.
+- **Unique or blocked feature work / preserve:** #1653 (knowledge graph/safe sync, blocked pending review), #1655 (structural/catalog), #1659 (local inference/Termux), #1320 (paper-trader identity/safety), #1318 (schema safety), #1317 (MMI/structural analysis), #1269 (topology/triangulation).
+- **Dependency/workflow candidates:** #1644–#1650 and #1254/#1255; reconcile each manifest, lockfile, action version and workflow side effect independently.
+- **Remaining 373-item inventory:** unique/unreviewed or individually blocked; no bulk closure.
+
+### Security and closure boundary
+
+- Connector permission set includes admin/maintain/push/pull/triage; main branch-protection API returns 403; visible ruleset 10863829 is disabled; integration is unprotected; independent CODEOWNERS review is not established.
+- Main Barrot Sync can false-green on missing dependencies and failed push; integration keeps it quarantined. Main Pages validation/deployment failed. No main change or deployment was made.
+- Close only exact duplicate/superseded source PRs after successor merge, fetch of new main, blob/path verification and explicit cross-reference. Preserve unique research and feature work.

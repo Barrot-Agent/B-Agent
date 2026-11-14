@@ -327,7 +327,12 @@ class TestBaselineAPI(unittest.TestCase):
 
 class TestLunaRouteAdapterShape(unittest.TestCase):
     def setUp(self):
-        self._external_gate = mock.patch.dict(os.environ, {"BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"})
+        # These adapter tests mock every HTTP request. Satisfy both explicit external
+        # refinement gates without enabling any real provider call.
+        self._external_gate = mock.patch.dict(os.environ, {
+            "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1",
+            "BARROT_LIVE_REFINEMENT_APPROVED": "1",
+        })
         self._external_gate.start()
         self.addCleanup(self._external_gate.stop)
 

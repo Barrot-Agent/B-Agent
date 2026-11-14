@@ -480,7 +480,8 @@ class TestPipeline(unittest.TestCase):
                 source_chars=1, objective="partial resume test",
                 document=copy.deepcopy(big), original=copy.deepcopy(big),
                 sections=[SectionState(id=s.id, path_label=s.path_label)
-                          for s in slots], created="t")
+                          for s in slots], created="t",
+                data_classification=pipe.data_classification)
             for s in state.sections[:2]:
                 s.status = "refined"
             pipe._commit(state)

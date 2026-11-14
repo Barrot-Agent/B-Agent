@@ -4261,3 +4261,77 @@ Both venues were approximately 10.6% below their 24-hour opens and near their re
 7. No directional forecast until calibrated out-of-sample superiority and independent shadow outcomes are demonstrated.
 
 No merge to main, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred during Run141.
+
+
+---
+
+## Run142 — exact-head Ping-Pong refinement test repair and repository audit
+
+**Captured:** 2026-11-14T22:50:55Z. **Mission:** XRP intelligence and prediction-engine mastery; preserve Barrot V3 as the execution, orchestration, safety, authorization and verification foundation.
+
+### Current repository state
+
+- Main: `0d05b59a037f4ad4b0c345ee6e8c1c442d25fa2e`.
+- Integration before Run142 repair: `272ca9ff8e1e3894684edbea0044fe4abcdc688d`.
+- Existing PR #1662: open, draft, base main at `0d05b59`, 1,223 changed files, 366,215 additions and 6,295 deletions; 2,423 commits ahead, zero behind. GitHub's mergeable indicator is true but does not establish review or security readiness.
+- Complete recursive trees: main 1,391 entries; integration 2,463 entries.
+- Open PR inventory: 373 total, 361 drafts and 12 non-drafts.
+- Connector permissions: admin, maintain, push, pull and triage.
+- Main branch-protection endpoint returns HTTP 403. Visible ruleset 10863829 is disabled. Integration is unprotected.
+
+### Exact-head CI diagnosis and correction
+
+Push CI [43649256808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43649256808) failed on `272ca9ff8e1e3894684edbea0044fe4abcdc688d`: 3,758 passed, four failed, one skipped, 19 subtests passed, 63.79% inclusive coverage. Dependency audits and fail-closed gates passed on both push and PR events. PR CI [43649261424](https://github.com/Barrot-Agent/B-Agent/actions/runs/43649261424) passed Pages validation but skipped its core and full-suite jobs because the branch is an integration branch; its success is not full-suite evidence.
+
+Four failures were diagnosed:
+
+1. Three mocked LunaRoute adapter tests did not set `BARROT_LIVE_REFINEMENT_APPROVED=1`. Production code correctly enforced its second approval gate and returned FAILED. The test setup now explicitly sets both approval variables. All network calls in this test class are mocked; no live external provider call is enabled.
+2. The resume test manually constructed a RunState without `data_classification`. The production resume guard correctly rejected the mismatch between unknown and the pipeline's `derived_summary`. The fixture now persists `pipe.data_classification`.
+
+The LunaRoute PermissionError now names both environment gates. Production authorization enforcement is unchanged; tests were corrected to match the intended contract, not weakened.
+
+The repair is committed on the existing integration branch. New exact-head full-suite, wheel, six-manifest dependency audit and fail-closed results must be obtained before verification or merge.
+
+### Main workflow side effects and security
+
+- Main CI [43649006834](https://github.com/Barrot-Agent/B-Agent/actions/runs/43649006834) passed on `0d05b59`.
+- Main Pages build [43649006105](https://github.com/Barrot-Agent/B-Agent/actions/runs/43649006105) failed. Deployment did not succeed.
+- Main Barrot Sync [43649006881](https://github.com/Barrot-Agent/B-Agent/actions/runs/43649006881) reports success while the workflow contains `python b_agent.py --sync || echo ...` and `git push || true`; sync can fail while the job stays green. Its output truncates the fixed 30-character label before the API key; no key characters were exposed in the reviewed command output. No secret was read or rotated.
+- Main Barrot Auto PR [43649006799](https://github.com/Barrot-Agent/B-Agent/actions/runs/43649006799) succeeded; the open inventory remains 373. No new integration PR was created.
+- Integration keeps automatic Barrot Sync quarantined and Ping-Pong refinement offline by default. External refinement requires caller opt-in, an approved public-derived classification, both explicit environment gates and a key. Raw sources, receipts, feature stores, event timelines, market data, forecast ledgers, secrets and private data remain prohibited.
+
+### Main versus integration packaging
+
+Main `pyproject.toml` discovers only `barrot_agent*`. Integration additionally packages `data`, `directive_platform` and selected data assets, and expands inclusive coverage across all three package roots. The prior integration wheel check imports Barrot V3, DirectivePlatform, LearningCurriculum and the primary XRP mission. Current-head wheel verification remains pending after the Run142 test repair.
+
+### XRP research and prediction status
+
+No new market snapshot was admitted in Run142. The latest Run141 OKX quote was already older than the 300-second cutoff and Kraken lacked an exchange event timestamp. ETF-flow fund-universe/settlement disagreement and derivatives OI/funding provider disagreement remain quarantined from model features. No synchronized multi-venue L2 or independent WORM receipt archive is verified.
+
+Implemented on integration: public-source ingestion definitions, SHA-256 receipts and local receipt-chain prototype, SQLite point-in-time feature store, event timelines and source-independence registry, naive/momentum/mean-reversion/volatility baselines, chronological walk-forward evaluation, calibration/drift diagnostics, fail-closed forecast ledger and Ed25519 evaluator attestation.
+
+Not verified: scheduled ingestion on main, independent WORM storage and trusted timestamps, trained XRP candidate, out-of-sample superiority over all four baselines, independent shadow outcomes, and synchronized historical multi-venue spot/L2/derivatives/exchange-flow/collateral data.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.**
+
+### Backlog and merge decision
+
+- #1662: sole active consolidated integration workstream; blocked pending exact-head full suite, semantic review, independent approval, least privilege, branch protection and Pages/automatic-workflow authorization.
+- #1661 and #1660: supersession candidates; preserve unique source-only paths and review history until successor merge and main verification.
+- #1643 and #1640: overlap/reconcile; compare semantic patches and preserve research evidence.
+- #1642: unique prediction feature-snapshot work; preserve.
+- #1653: unique knowledge-graph/safe-sync work; blocked pending review.
+- #1655 and #1659: unique structural/catalog and local inference/Termux work; preserve.
+- #1320, #1318, #1317 and #1269: preserve unique paper-trader safety, schema, MMI/structural and topology work.
+- #1644–#1650 and #1254/#1255: individually reconcile exact dependency manifests and workflow side effects.
+- Remaining open PRs are unique/unreviewed or individually blocked; do not bulk-close.
+
+PR #1662 has zero formal reviews, zero approvals and zero review threads. No source PR was closed. **NO MERGE.**
+
+### Next concrete action
+
+Wait for exact-head CI on the Run142 repair commit. Diagnose any remaining failures without weakening tests. Verify full-suite tests, wheel installation, six-manifest dependency/security checks and fail-closed gate on the same SHA. Then continue semantic review of all 1,223 PR paths, with priority on workflows, public-web files, XRP ingestion and producer external-data claims. Resolve least privilege, branch protection and independent review before any merge. Keep forecast issuance disabled.
+
+**DESIGNED:** scheduled public-data ingestion, receipts, point-in-time features, baselines, walk-forward evaluation, calibration, drift and forecast ledger. **EXECUTED:** current main/integration/PR/CI/security audit; exact-head failure diagnosis; test-contract repair. **VERIFIED:** repository refs/trees, current PR inventory, four failure causes, push/PR dependency audits and fail-closed gates. **PENDING:** repaired-head full suite, wheel, security audit, scheduled ingestion on main and predictive lift.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
