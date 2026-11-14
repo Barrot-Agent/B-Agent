@@ -579,7 +579,7 @@ Number of Traders in Each Category Total Traders: 284
             raise AssertionError(source_id)
         raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
         response = {"raw_bytes": raw, "payload": payload}
-        if source_id in {"coinbase_spot_ticker", "kraken_spot_ticker", "kraken_spot_depth", "xrp_exchange_balances_json"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
+        if source_id in {"coinbase_spot_ticker", "coinbase_spot_book", "binance_spot_depth", "kraken_spot_ticker", "kraken_spot_depth", "xrp_exchange_balances_json"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
             response["http_date"] = http_date
         return response
 

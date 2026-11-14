@@ -53,6 +53,7 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "bybit_linear_open_interest": MAX_LIVE_AGE_SECONDS,
     "deribit_xrp_usdc_perpetual_ticker": MAX_LIVE_AGE_SECONDS,
     "coinbase_spot_book": MAX_ORDERBOOK_AGE_SECONDS,
+    "binance_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "kraken_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "bitbank_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "okx_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
