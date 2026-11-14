@@ -1,3 +1,44 @@
+## Run126 primary-source follow-up — 2026-11-14T12:15:24Z
+
+**New high-value finding: SBI is a direct strategic partner and investor in both Ripple and Circle.** This creates a shared institutional hub, not a proven Ripple–Circle partnership.
+
+### SBI–Circle: verified direct relationship
+
+- SBI's June 2, 2025 investor presentation identifies **Circle SBI Japan KK / SBI Circle Holdings as a 50/50 joint venture**: 50% SBI, 50% Circle. SBI announced the JV's establishment on August 22, 2025. The JV's paid-in capital and current financial performance were not disclosed in the reviewed sources.
+- SBI Holdings and SBI Shinsei Bank each disclosed a **$25M Circle share purchase** at Circle's June 2025 IPO: $50M combined. This is actual disclosed equity capital, not an inferred allocation.
+- SBI VC Trade launched public USDC trading in Japan in March 2025; the 2023 SBI–Circle MOU also identified SBI Shinsei Bank as a banking-services partner for Circle.
+- Circle's September 16, 2026 Arc mainnet release names **SBI Group as a founding validator**. Arc uses USDC for gas and a permissioned validator set. Circle's CEO said SBI intends to deepen collaboration using both USDC and JPYSC. This does not establish that JPYSC is deployed on Arc.
+- SBI disclosed that a consolidated subsidiary participated in the ARC-token presale. The overall investor consortium raised $222M; **SBI's own allocation was not disclosed**. Circle's Arc launch release says 10B ARC were genesis-minted but explicitly says this is not a commitment to public token launch.
+- SBI's June 9, 2025 release states an approximately **9% Ripple stake** at that date; a later January 2026 official message used approximately 10%. No current audited Ripple share register was located. Retain both dated/rounded disclosures.
+
+Sources: [SBI 50/50 JV presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf), [SBI JV establishment](https://www.sbigroup.co.jp/news/2025/0822_15679.html), [SBI $50M Circle investment and Ripple stake disclosure](https://www.sbigroup.co.jp/news/2025/0609_15491.html), [Circle Arc mainnet launch](https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet), [SBI ARC presale](https://www.sbigroup.co.jp/news/2026/0512_16310.html).
+
+### SBI exchange footprint and BNY independent confirmation
+
+- SBI Holdings and bitbank independently confirm that bitbank became a wholly owned SBI subsidiary on **October 1, 2026**. This expands SBI's exchange footprint; no post-acquisition XRP volume or balance-sheet effect is established. [bitbank notice](https://corporate.bitbank.cc/news/20261001_01) · [SBI notice](https://www.sbigroup.co.jp/news/2026/1001_16640.html).
+- BNY's own newsroom independently confirms XRP and RLUSD custody support, RLUSD primary reserve custody and the Ripple Prime custody relationship. Direct RLUSD mint/redeem through BNY and broader tokenized-asset support remain future capabilities subject to final approvals. [BNY primary confirmation](https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+
+### Arc measurement caveats
+
+- A third-party aggregator snapshot placed Arc DeFi TVL around $602.9M at 06:37Z on Nov 14. TVL is not settlement volume.
+- A custom tracker claims $6.8B first-week USDC transfers and $175.56M DEX volume (2.6%); this requires raw on-chain reproduction and CCTP/internal-transfer treatment.
+- Agent GDP reports only $34.16 of seven-day x402 agent-payment volume through Nov 12, with beta/incomplete coverage. This is a narrow agent-payment measure, not total chain settlement.
+- These measures are not contradictory: broad transfers, DEX swaps, x402 payments and TVL are different quantities. None is admitted to the feature store.
+
+Sources: [TVL snapshot](https://coindesk.cc/services/defi-chains), [Arc transfer/DEX tracker](https://arc-exit-liquidity.vercel.app/), [Agent GDP Arc data](https://agentgdp.io/chain/arc), [Arc status log](https://builtonarc.app/guides/whats-live-on-arc-mainnet).
+
+### Network interpretation
+
+SBI is a disclosed strategic investor/partner in both Ripple and Circle; it operates XRP ODL-related remittance relationships while also building USDC/JPYSC distribution and Arc validator participation. Coinbase distributes USDC and RLUSD and is listed in Arc's exchange ecosystem. BNY supports XRP/RLUSD custody and appears in Arc's institutional bank/access cohort. **These shared counterparties do not prove a direct Circle–Ripple partnership, XRP settlement on Arc, or substitution of Arc for XRP.**
+
+### Exact-head CI before this documentation follow-up
+
+The code-bearing integration head `c98b5e58ea62af188607f25f6fd9672eda2f4a89` passed [full suite 43593494374](https://github.com/Barrot-Agent/B-Agent/actions/runs/43593494374): 3,635 passed, eight subtests passed, zero failures, 62.44% inclusive coverage, 76% legacy core coverage, 142.94 seconds; wheel build and packaged primary mission passed. Exact-head push/PR dependency audits and push/PR fail-closed gates passed. PR-event CI was skipped by branch condition. This follow-up is documentation/research only and will receive its own exact-head CI.
+
+Structured evidence: `research/xrp_intelligence/20261114T121524Z-run126-circle-sbi-arc-bitbank-bny-primary-reconciliation.json`.
+
+---
+
 ## Run126 — 2026-11-14T12:06:38Z
 
 **Mission priority 1 remains XRP intelligence and prediction-engine mastery. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.**
