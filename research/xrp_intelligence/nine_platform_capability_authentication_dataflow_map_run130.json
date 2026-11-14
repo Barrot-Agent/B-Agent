@@ -1,0 +1,187 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-14T14:32:17Z",
+  "last_verified_at_utc": "2026-11-14T14:32:17Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "observed_integration_head_before_map_commit": "f13cdcc66476be19dd077fc728778c5ab0ee6651",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "verified_capability": "GitHub connector read/write on existing integration branch",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT session -> GitHub connector -> repository metadata, trees, files, PRs, CI and Git Data API",
+      "least_privilege_status": "FAIL_OVERPRIVILEGED",
+      "independent_task_status": "LOCAL_RESEARCH_ONLY"
+    },
+    {
+      "name": "Claude",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Grok",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No Grok authentication tested; Groq is separate",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Gemini",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Copilot",
+      "authentication_status": "NO_LIVE_AUTH_VERIFIED",
+      "verified_capabilities": [
+        "Historical one-off review activity"
+      ],
+      "data_flow": "No persistent data exchange; no formal approval on #1662",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Codex",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication_status": "PREVIOUS_BUILD_ERROR",
+      "verified_capabilities": [],
+      "data_flow": "No current deployment or write verified",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Kaggle",
+      "authentication_status": "UNTESTED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow or submission tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Databricks",
+      "authentication_status": "READ_ONLY_CHECK_FAILED_HTTP_403",
+      "verified_capabilities": [],
+      "data_flow": "Prior read-only validation returned HTTP 403; no write attempted",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    }
+  ],
+  "coordination": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "independent_tasks_dispatched": 0,
+    "structured_evidence_exchange": "NONE",
+    "disagreement_resolution": "Evidence reconciled locally from public/authorized sources; no external consensus claimed",
+    "minority_objections": "Preserved in research records and source disagreement",
+    "independent_red_team": "NOT_EXECUTED",
+    "no_unverified_platform_calls": true,
+    "no_external_model_data_transfer": true
+  },
+  "repository_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_run130_commit": "f13cdcc66476be19dd077fc728778c5ab0ee6651",
+    "integration_ahead_by": 2395,
+    "integration_behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2438,
+    "open_prs": 375,
+    "open_pr_drafts": 361,
+    "open_pr_non_drafts": 14
+  },
+  "integration_pr": {
+    "number": 1662,
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "head_sha": "f13cdcc66476be19dd077fc728778c5ab0ee6651",
+    "changed_files": 1197,
+    "additions": 355926,
+    "deletions": 5354,
+    "commits": 2395,
+    "formal_approvals": 0,
+    "reviews": 0,
+    "review_threads": 0,
+    "requested_reviewers": 0
+  },
+  "latest_ci": {
+    "parent_head": "96e925249ee053d2a3c8fffb4b81b449244f8a9f",
+    "parent_full_suite": {
+      "passed": 3641,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 62.47,
+      "conclusion": "success"
+    },
+    "current_head": "f13cdcc66476be19dd077fc728778c5ab0ee6651",
+    "current_full_suite": {
+      "passed": 3637,
+      "failed": 4,
+      "subtests": 8,
+      "coverage_percent": 62.47,
+      "conclusion": "failure",
+      "run_id": 43605844704
+    },
+    "dependency_audit": {
+      "passed": true,
+      "manifests": 5,
+      "known_vulnerabilities": 0,
+      "run_id": 43605844686
+    },
+    "fail_closed_gate": {
+      "passed": true,
+      "run_id": 43605844701
+    },
+    "canonical_map_schema_restore": "PENDING_EXACT_HEAD_CI"
+  },
+  "security": {
+    "main_branch_protected": true,
+    "integration_branch_protected": false,
+    "branch_protection_details": "HTTP 403; required checks and approval rules not visible",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "codeowners": "@Barrot-Agent owns all paths; independent reviewer not established",
+    "pages_publication_authorized": false,
+    "main_branch_write": false,
+    "secret_values_read": false,
+    "external_model_transfer": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Restore canonical map schema while preserving Run128/Run129 snapshot keys and add Run130 snapshot.",
+    "Rerun exact-head full repository suite, wheel build, dependency audit and fail-closed gates.",
+    "Complete semantic review of all 1,197 PR paths, prioritizing 50 workflows and seven public web files.",
+    "Resolve least-privilege connector access, branch-protection visibility, independent CODEOWNERS/review and Pages publication authorization.",
+    "Establish independently anchored raw-source receipts and synchronized historical XRP datasets.",
+    "Reconcile exchange wallet-label changes, ETF cohort differences and current derivatives coverage before model admission.",
+    "Train an XRP-specific candidate only after dataset and outcome independence requirements are met.",
+    "Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified."
+  ]
+}
