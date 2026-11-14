@@ -43,8 +43,8 @@ def _rows(*, origins=60, source_clusters=5):
 
 def test_paired_temporal_and_source_bootstrap_is_deterministic_and_paired():
     rows = _rows()
-    first = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300)
-    second = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300)
+    first = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300, expected_cadence_seconds=3600)
+    second = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=300, expected_cadence_seconds=3600)
 
     comparison = first["comparisons"]["momentum_sign"]
     assert comparison["paired_origin_count"] == 60
@@ -57,6 +57,11 @@ def test_paired_temporal_and_source_bootstrap_is_deterministic_and_paired():
         "independent-source-0", "independent-source-1", "independent-source-2",
         "independent-source-3", "independent-source-4",
     ]
+    temporal_diagnostics = comparison["temporal_moving_block_bootstrap"]["sampling_diagnostics"]
+    assert temporal_diagnostics["cadence_source"] == "declared"
+    source_diagnostics = comparison["source_clustered_moving_block_bootstrap"]["brier_sampling_diagnostics"]["per_cluster"]
+    assert set(source_diagnostics) == set(comparison["source_clustered_moving_block_bootstrap"]["source_group_ids"])
+    assert all(item["cadence_source"] == "declared" for item in source_diagnostics.values())
     assert comparison["temporal_moving_block_bootstrap"]["brier_difference_ci_95"] == pytest.approx([-0.05, -0.05])
     assert comparison["source_clustered_moving_block_bootstrap"]["log_loss_difference_ci_95"] == pytest.approx([-0.10, -0.10])
     assert first == second
