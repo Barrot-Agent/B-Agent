@@ -9,7 +9,7 @@
   "EVIDENCE_PATH": "/root/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
   "EVIDENCE_SCOPE": "LOCAL_SIMULATED_INTERRUPTION",
   "EXECUTION_STATUS": "EXECUTED",
-  "EXECUTION_TIMESTAMP": "2026-11-14T07:06:48Z",
+  "EXECUTION_TIMESTAMP": "2026-11-14T13:29:59Z",
   "LIMITATIONS": [
     "Verified with a deterministic local interruption simulation after durable queue persistence.",
     "Does not prove recovery from a genuine remote executor interruption."
