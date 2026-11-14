@@ -7,6 +7,8 @@ from pathlib import Path
 import json
 import time
 
+from barrot_agent.evolution.source_independence import canonical_publisher_group
+
 
 class ParseState(str, Enum):
     OBSERVED = "OBSERVED"
@@ -94,6 +96,8 @@ class SourceRecord:
     depth: int = 1
     content_hash: str = ""
     observed_at: str = ""
+    # Canonical publisher/origin; shared groups are not independent.
+    independence_group: str = ""
 
 
 @dataclass
@@ -116,6 +120,7 @@ class EvidenceRecord:
     independent: bool = False
     content_hash: str = ""
     observed_at: str = ""
+    claim_id: str = ""
 
     def lineage_key(self) -> str:
         source = self.source_ids[0] if self.source_ids else "none"
@@ -191,6 +196,25 @@ class MMIRecord:
         source_classes = {
             s.source_id: s.provenance_class for s in self.source_graph
         }
+        if len(source_classes) != len(self.source_graph):
+            errors.append("duplicate source IDs in source graph")
+
+        evidence_ids = [e.evidence_id for e in self.evidence]
+        if len(set(evidence_ids)) != len(evidence_ids):
+            errors.append("duplicate evidence IDs")
+
+        for index, result in enumerate(self.corroboration_results):
+            if not isinstance(result, dict):
+                errors.append(f"invalid corroboration result: {index}")
+                continue
+            status = str(result.get("status", "")).upper()
+            if status in {"CORROBORATED", "CONTRADICTORY"}:
+                if not self._claim_bound_corroboration(result):
+                    errors.append(
+                        f"{status} result requires claim-bound observed evidence, "
+                        "source-linked publisher identities, and at least two "
+                        "distinct independence groups"
+                    )
 
         for evidence in self.evidence:
             if evidence.independent:
@@ -211,6 +235,166 @@ class MMIRecord:
                     )
 
         return errors
+
+    def _independence_groups_for(self, source_ids):
+        if not isinstance(source_ids, list) or len(source_ids) < 2:
+            return None
+        if any(
+            not isinstance(source_id, str) or not source_id.strip()
+            for source_id in source_ids
+        ):
+            return None
+        if len(set(source_ids)) != len(source_ids):
+            return None
+
+        source_by_id = {source.source_id: source for source in self.source_graph}
+        if any(source_id not in source_by_id for source_id in source_ids):
+            return None
+
+        external_classes = {
+            ProvenanceClass.EXTERNAL_PRIMARY,
+            ProvenanceClass.EXTERNAL_SECONDARY,
+            ProvenanceClass.INDEPENDENT_EXTERNAL,
+        }
+        groups = set()
+        for source_id in source_ids:
+            source = source_by_id[source_id]
+            if source.provenance_class not in external_classes:
+                return None
+            resolved = canonical_publisher_group(source.uri)
+            declared = source.independence_group
+            if not resolved or not isinstance(declared, str):
+                return None
+            if declared.strip().casefold() != resolved.casefold():
+                return None
+            groups.add(resolved.casefold())
+        return groups
+
+    def _claim_bound_corroboration(self, result: dict) -> bool:
+        status = str(result.get("status", "")).upper()
+        claim_id = result.get("claim_id")
+        if not isinstance(claim_id, str) or not claim_id.strip():
+            return False
+
+        evidence_by_id = {}
+        for evidence in self.evidence:
+            if not evidence.evidence_id or evidence.evidence_id in evidence_by_id:
+                return False
+            evidence_by_id[evidence.evidence_id] = evidence
+
+        if status == "CORROBORATED":
+            supporting_ids = result.get("supporting_evidence_ids")
+            if (
+                not isinstance(supporting_ids, list)
+                or len(supporting_ids) < 2
+                or len(set(supporting_ids)) != len(supporting_ids)
+            ):
+                return False
+            if any(
+                not isinstance(evidence_id, str)
+                or evidence_id not in evidence_by_id
+                for evidence_id in supporting_ids
+            ):
+                return False
+            evidence_records = [evidence_by_id[eid] for eid in supporting_ids]
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not True
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not evidence.source_ids
+                for evidence in evidence_records
+            ):
+                return False
+            if any(
+                evidence.claim_id == claim_id and evidence.supporting is False
+                for evidence in self.evidence
+            ):
+                return False
+            required_evidence_ids = set(supporting_ids)
+        elif status == "CONTRADICTORY":
+            supporting_ids = result.get("supporting_evidence_ids")
+            contradicting_ids = result.get("contradicting_evidence_ids")
+            if (
+                not isinstance(supporting_ids, list)
+                or not supporting_ids
+                or not isinstance(contradicting_ids, list)
+                or not contradicting_ids
+            ):
+                return False
+            all_ids = supporting_ids + contradicting_ids
+            if len(set(all_ids)) != len(all_ids):
+                return False
+            if any(
+                not isinstance(evidence_id, str)
+                or evidence_id not in evidence_by_id
+                for evidence_id in all_ids
+            ):
+                return False
+            supporting_records = [evidence_by_id[eid] for eid in supporting_ids]
+            contradicting_records = [evidence_by_id[eid] for eid in contradicting_ids]
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not True
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not evidence.source_ids
+                for evidence in supporting_records
+            ):
+                return False
+            if any(
+                evidence.claim_id != claim_id
+                or evidence.supporting is not False
+                or evidence.state not in {ParseState.OBSERVED, ParseState.PARSED}
+                or not evidence.source_ids
+                for evidence in contradicting_records
+            ):
+                return False
+            required_evidence_ids = set(all_ids)
+            reconciled_ids = set()
+            for item in self.reconciliation:
+                if not isinstance(item, dict):
+                    continue
+                evidence_ids = item.get("evidence_ids")
+                if isinstance(evidence_ids, list):
+                    reconciled_ids.update(
+                        evidence_id
+                        for evidence_id in evidence_ids
+                        if isinstance(evidence_id, str) and evidence_id.strip()
+                    )
+            if not required_evidence_ids.issubset(reconciled_ids):
+                return False
+            evidence_records = supporting_records + contradicting_records
+        else:
+            return False
+
+        source_ids = {
+            source_id
+            for evidence in evidence_records
+            for source_id in evidence.source_ids
+            if isinstance(source_id, str) and source_id.strip()
+        }
+        declared_source_ids = result.get("independent_source_ids")
+        if (
+            not isinstance(declared_source_ids, list)
+            or len(set(declared_source_ids)) != len(declared_source_ids)
+            or set(declared_source_ids) != source_ids
+        ):
+            return False
+
+        groups = self._independence_groups_for(declared_source_ids)
+        if groups is None or len(groups) < 2:
+            return False
+        if result.get("independent_sources") != len(groups):
+            return False
+        return True
+
+    def corroboration_complete(self) -> bool:
+        return any(
+            isinstance(result, dict)
+            and str(result.get("status", "")).upper()
+            in {"CORROBORATED", "CONTRADICTORY"}
+            and self._claim_bound_corroboration(result)
+            for result in self.corroboration_results
+        )
 
 
 class MMIStateMachine:
@@ -247,7 +431,12 @@ class MMIStateMachine:
         if any(outcomes.get(x) == StageOutcome.BLOCKED for x in required):
             return MMIResult.BLOCKED
 
-        if any(outcomes.get(x) == StageOutcome.PARTIAL for x in required):
+        if any(outcomes.get(x) != StageOutcome.COMPLETE for x in required):
+            return MMIResult.PARTIAL
+
+        if outcomes.get("CORROBORATION") == StageOutcome.BLOCKED:
+            return MMIResult.BLOCKED
+        if outcomes.get("CORROBORATION") == StageOutcome.PARTIAL:
             return MMIResult.PARTIAL
 
         # A COMPLETE label is not sufficient proof by itself.
@@ -261,7 +450,22 @@ class MMIStateMachine:
                 return MMIResult.PARTIAL
 
         if outcomes.get("CORROBORATION") == StageOutcome.COMPLETE:
-            if not record.corroboration_results:
+            if not record.corroboration_complete():
+                return MMIResult.PARTIAL
+
+        if outcomes.get("CORROBORATION") == StageOutcome.NOT_APPLICABLE:
+            corroboration_stage = next(
+                (
+                    stage
+                    for stage in record.stages
+                    if stage.name == "CORROBORATION"
+                ),
+                None,
+            )
+            if (
+                corroboration_stage is None
+                or not corroboration_stage.details.strip()
+            ):
                 return MMIResult.PARTIAL
 
         if all(
@@ -431,14 +635,21 @@ class MMICompletenessReport:
                 else None
             )
 
-        protocol_complete = (
-            all(
-                outcome in {
-                    StageOutcome.COMPLETE.value,
-                    StageOutcome.NOT_APPLICABLE.value,
-                }
-                for outcome in required_stages.values()
+        if required_stages.get("CORROBORATION") == StageOutcome.NOT_APPLICABLE.value:
+            corroboration_stage = next(
+                (
+                    stage
+                    for stage in record.stages
+                    if stage.name == "CORROBORATION"
+                ),
+                None,
             )
+            if corroboration_stage is not None and corroboration_stage.details.strip():
+                artifact_presence["corroboration_results"] = True
+
+        state_result = MMIStateMachine.evaluate(record)
+        protocol_complete = (
+            state_result == MMIResult.COMPLETE
             and all(artifact_presence.values())
         )
 
@@ -449,6 +660,25 @@ class MMICompletenessReport:
             }
             for outcome in required_stages.values()
         )
+        if (
+            required_stages.get("CORROBORATION") == StageOutcome.COMPLETE.value
+            and not record.corroboration_complete()
+        ):
+            completed_stages = max(0, completed_stages - 1)
+        for stage_name in (
+            "RECEIVED",
+            "PROVENANCE_CAPTURED",
+            "EVIDENCE_NORMALIZED",
+            "VERIFICATION",
+        ):
+            if required_stages.get(stage_name) != StageOutcome.COMPLETE.value:
+                if required_stages.get(stage_name) == StageOutcome.NOT_APPLICABLE.value:
+                    completed_stages = max(0, completed_stages - 1)
+        completed_stages = max(
+            0,
+            completed_stages - sum(not present for present in artifact_presence.values()),
+        )
+
         protocol_completeness = (
             completed_stages / len(required_stages)
             if required_stages
@@ -463,11 +693,9 @@ class MMICompletenessReport:
             "knowledge_completeness": record.knowledge_completeness,
             "required_artifacts": artifact_presence,
             "stage_outcomes": required_stages,
-            "result": (
-                MMIResult.COMPLETE.value
-                if protocol_complete
-                else MMIResult.PARTIAL.value
-            ),
+            "corroboration_complete": record.corroboration_complete(),
+            "validation_errors": record.validate(),
+            "result": state_result.value,
         }
 
 
