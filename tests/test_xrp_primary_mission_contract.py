@@ -123,3 +123,12 @@ def test_forecast_admission_policy_matches_fail_closed_ledger() -> None:
     }
     assert policy["forecast_issuance_enabled"] is False
     assert policy["status"] == "NOT_SATISFIED"
+
+def test_forecast_ledger_contract_documents_policy_v6() -> None:
+    contract = (ROOT / "research" / "xrp_intelligence" / "forecast-ledger-contract.md").read_text(
+        encoding="utf-8"
+    )
+    assert "# XRP fixed-horizon forecast ledger contract v6" in contract
+    assert "BARROT_XRP_MODEL_READINESS_V6" in contract
+    assert "minimum_origins_per_source_cluster >= block_length_origins" in contract
+    assert "Coverage simulations, cluster-count sensitivity and block-length sensitivity" in contract
