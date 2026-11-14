@@ -6,7 +6,7 @@ Barrot (Groq) makes a real buy/sell/hold decision against real current prices.
 All positions and cash are SIMULATED. No Coinbase API key used or needed here.
 """
 
-import os, json, urllib.request, urllib.error
+import os, json, math, urllib.request, urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -77,9 +77,14 @@ def extract_json(text):
 def load_state():
     if STATE_FILE.exists():
         try:
-            return json.loads(STATE_FILE.read_text())
-        except Exception:
-            pass
+            state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(
+                "persisted paper-trading state is unreadable; refusing to initialize fresh state"
+            ) from exc
+        if not isinstance(state, dict):
+            raise ValueError("persisted paper-trading state must be a JSON object")
+        return state
     return {
         "cash_usd": STARTING_BALANCE_USD, "position_size": 0.0,
         "position_product": None, "avg_entry_price": None,
@@ -124,7 +129,33 @@ Output ONLY JSON: {{"action": "buy|sell|hold", "amount_usd": 0, "reasoning": "..
     return parsed
 
 
-def execute_paper_trade(state, decision, current_price):
+def validate_position_product(state, product_id):
+    """Fail closed when an open simulated position has unknown or mismatched identity."""
+    raw_size = state.get("position_size", 0)
+    if isinstance(raw_size, bool) or not isinstance(raw_size, (int, float)):
+        return "aborted -- invalid position size"
+    position_size = float(raw_size)
+    if not math.isfinite(position_size):
+        return "aborted -- non-finite position size"
+    if position_size < 0:
+        return "aborted -- negative position size"
+    if position_size > 1e-8:
+        position_product = state.get("position_product")
+        if not isinstance(position_product, str) or not position_product.strip():
+            return "aborted -- open position has no product identity"
+        if position_product != product_id:
+            return (
+                f"aborted -- configured product {product_id} does not match "
+                f"open position {position_product}"
+            )
+    return None
+
+
+def execute_paper_trade(state, decision, current_price, product_id):
+    identity_error = validate_position_product(state, product_id)
+    if identity_error:
+        return identity_error
+
     action = decision.get("action", "hold")
     amount_usd = float(decision.get("amount_usd", 0) or 0)
 
@@ -132,6 +163,8 @@ def execute_paper_trade(state, decision, current_price):
         amount_usd = min(amount_usd, state["cash_usd"] * 0.2, state["cash_usd"])
         if amount_usd < 1:
             return "hold -- insufficient cash for a meaningful buy"
+        if state["position_size"] <= 1e-8:
+            state["position_product"] = product_id
         qty = amount_usd / current_price
         total_qty = state["position_size"] + qty
         prev_cost = (state["avg_entry_price"] or 0) * state["position_size"]
@@ -149,6 +182,7 @@ def execute_paper_trade(state, decision, current_price):
         if state["position_size"] <= 0.00000001:
             state["position_size"] = 0.0
             state["avg_entry_price"] = None
+            state["position_product"] = None
         state["trade_count"] += 1
         return f"sold ${proceeds:.2f} at ${current_price:.2f}"
 
@@ -160,6 +194,13 @@ def portfolio_value(state, current_price):
 
 
 def run():
+    # Load and validate persisted state before any provider/network call or model invocation.
+    state = load_state()
+    identity_error = validate_position_product(state, PRODUCT_ID)
+    if identity_error:
+        print(identity_error)
+        raise SystemExit(2)
+
     if not GROQ_KEY:
         print("GROQ_API_KEY not set")
         raise SystemExit(1)
@@ -171,11 +212,10 @@ def run():
     current_price = float(ticker["price"])
     recent_trades = fetch_recent_trades(PRODUCT_ID)
 
-    state = load_state()
     starting_value = portfolio_value(state, current_price)
 
     decision = decide(PRODUCT_ID, ticker, recent_trades, state)
-    result = execute_paper_trade(state, decision, current_price)
+    result = execute_paper_trade(state, decision, current_price, PRODUCT_ID)
 
     ending_value = portfolio_value(state, current_price)
 
