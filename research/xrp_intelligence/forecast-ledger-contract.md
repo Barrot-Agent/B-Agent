@@ -50,6 +50,9 @@ This is a conservative correction for overlapping target windows, not a claim th
 
 ## Paired uncertainty and source-cluster admission (policy v6)
 
+The block-bootstrap adjustment is mandatory evidence for candidate-versus-baseline uncertainty; it does not replace source-dependence, residual-autocorrelation, cluster-count or block-length sensitivity diagnostics.
+
+
 Readiness policy v6 requires paired temporal and source-clustered moving-block bootstrap comparisons for the candidate against all four required baselines, for both Brier score and log loss, in both out-of-sample and independent shadow cohorts.
 
 - Familywise confidence is at least 95% across eight baseline/metric comparisons, using Bonferroni adjustment; each interval therefore requires at least 99.375% individual confidence.
