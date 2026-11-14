@@ -430,10 +430,12 @@ def test_walk_forward_clusters_each_origin_by_its_observed_target_publisher():
         min_effective_out_of_sample_samples=1,
         target_tolerance_seconds=5,
         expected_cadence_seconds=3600,
+        expected_source_cadence_seconds_by_group={f"venue-{index}": 18_000 for index in range(5)},
         venue="kraken",
         currency_pair="XRP/USD",
     )
     assert result["bootstrap_expected_cadence_seconds"] == 3600
+    assert result["bootstrap_expected_source_cadence_seconds_by_group"] == {f"venue-{index}": 18_000 for index in range(5)}
     comparison = result["paired_uncertainty"]["comparisons"]["momentum_sign"]
     source = comparison["source_clustered_moving_block_bootstrap"]
     assert source["status"] == "ESTIMATED"
