@@ -495,9 +495,12 @@
       "xrp_specific": {
         "binance_phase_one_announcement_date": "2026-11-01",
         "xrp_network_in_phase_one": true,
-        "official_claim": "XRP balances included among ten assets stated 100% backed",
-        "asset_specific_purchase_amount": "not disclosed",
-        "current_network_status": "static network-status page returned no records; current per-asset status not independently verified"
+        "xrp_withdrawals_reopened": "phase one scheduled between 06:00 and 09:00 UTC on 2026-11-01",
+        "xrp_balances_claimed_100_percent_backed_as_of": "2026-11-01",
+        "remaining_5_percent_at_2026_11_01": "tokens outside the top ten listed assets; XRP was in the top ten and stated fully backed",
+        "xrp_specific_replenishment_purchase_amount": "not disclosed",
+        "post_november_1_xrp_replenishment": "no evidence disclosed; do not infer ongoing XRP buying",
+        "current_network_status": "static network-status page returned no records; current per-asset status not independently rechecked"
       },
       "withdrawal_reopening": {
         "latest_official_update_date": "2026-11-14",
@@ -506,8 +509,14 @@
         "remaining_target": "end of next week",
         "note": "XRP was included in the November 1 phase-one withdrawal list; the November 14 87-network list is additional networks, not evidence XRP remained suspended"
       },
-      "market_structure_implication": "Treat Binance exchange-balance and on-chain-flow observations around the October 29 pause and phased reopening as event-confounded. Deferred withdrawals may create catch-up outflows after reopening. Binance's market/OTC replenishment could include XRP, but no XRP-specific purchase amount or timing was disclosed.",
-      "reserve_verification": "Binance's PoR page is dynamic; the static retrieval did not expose the November 12 audit time, Merkle root or completed proof status in this retrieval. The company's coverage claim is not independently asset-by-asset verified in this run."
+      "market_structure_implication": "Treat Binance exchange-balance and on-chain-flow observations around the Oct29 incident and phased withdrawal restoration as event-confounded. Binance said XRP was fully backed and included in phase-one withdrawals by Nov1; the remaining 5% at that time was outside the top ten, so it was not XRP. The later Binance 7-day attributed-wallet decline may be deferred customer withdrawals or transfers to unlabeled wallets. No XRP-specific replenishment amount is disclosed.",
+      "reserve_verification": "Binance's PoR page is dynamic; the static retrieval did not expose the November 12 audit time, Merkle root or completed proof status in this retrieval. The company's coverage claim is not independently asset-by-asset verified in this run.",
+      "unverified_claims": [
+        {
+          "claim": "US DOJ seized $1.2B specifically linked to the October 29 Binance incident",
+          "status": "not corroborated by a DOJ primary-source search in this run; quarantine and do not use"
+        }
+      ]
     },
     "source_independence": "Reuters is independent reporting; recovery and reserve statements are Binance self-reports; FBI attribution is reported by Reuters and remains disputed by North Korea."
   },
@@ -630,6 +639,13 @@
       "wallet coverage changes create discontinuities; daily Nov12 and Nov13 aggregate rows explicitly exclude Binance",
       "some exchanges have incomplete wallet coverage; total is not an official exchange reserve measure"
     ],
-    "incident_interpretation": "The Binance 7-day same-wallet decline is temporally after XRP withdrawals were included in phase-one reopening on Nov1; it may include deferred customer withdrawals or internal wallet movements. The 30-day window includes the Oct29 incident. No direct transaction attribution or XRP-specific replenishment purchases disclosed."
+    "incident_interpretation": "The Binance 7-day same-wallet decline is temporally after XRP withdrawals were included in phase-one reopening on Nov1; it may include deferred customer withdrawals or internal wallet movements. The 30-day window includes the Oct29 incident. No direct transaction attribution or XRP-specific replenishment purchases disclosed.",
+    "binance_event_decomposition": {
+      "binance_seven_day_change_xrp": -100400000,
+      "all_tracked_exchanges_seven_day_change_xrp": -74600000,
+      "other_exchanges_net_same_wallet_change_xrp": 25800000,
+      "interpretation": "Arithmetic on same-wallet attributed wallet balances only; not customer withdrawal volume or actual capital. Binance's decline exceeds the net aggregate decline because other venues net increased.",
+      "daily_coverage_warning": "XRP Insights excludes Binance from the all-exchange daily rows for Nov12 and Nov13 because of wallet-count changes."
+    }
   }
 }
