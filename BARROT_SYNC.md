@@ -125,6 +125,25 @@
     Karplus-Strong, squelch glide bass, rhythmic harp) + README manifest
   * commits adc8843 + d00f158; next: rebuild v2 tracks against the patch
     list, then user feedback loop (kill/keep/change + rating anchors)
+- v2 rebuild EXECUTED (session 4 cont., user authorized + gave baseline
+  anchor: ALL 5 v1 tracks = 3/10; prediction gap 4 pts logged in ledger):
+  * make_beats.py patched (not rewritten): kit-sample render path
+    (KIT_DRUMS velocity ladder + KIT_MELODIC pitch-shifted one-shots),
+    per-layer offsets (Timbo: kick rigid / percussion +28-35ms), strange
+    accent every 4 bars, kick-dropout hook bars, explicit 3-2 clave,
+    and-of-2 snare accent, static root-only sub, tom-loop (80Hz HP + ducked
+    vs kick), bar-end shaker, noise-build, ambient bed, Darkchild rhythmic
+    harp + squelch bass, Missy tumbi + call-and-response
+  * FIX: v1 Missy "pluck" hook layer was missing from render/MIDI mapping
+    lists - never sounded in v1; now renders (tumbi) - likely part of the 3
+  * evidence: MIDI offsets measured +27.3ms vs 28 spec; clave steps exactly
+    [0,6,12,20,24]; dropout bars verified; sample-vs-synth correlation in
+    rendered WAVs (kick 0.408 vs 0.106, conga 0.342 vs 0.129); all 5
+    spectral centroids shifted (nothing skipped); pattern duration bug fixed
+  * commit 0186c88; ledger tracks/feedback/ledger.jsonl live (2 entries);
+    v2 predictions logged (4-5/10, NOT claiming vocal-ready)
+  * next: user re-scores v2 + kill/keep/change -> gap shrinks or patches; a
+    10-anchor still missing
 
 ## Session 3 Archive - PING-PONG REFINEMENT ENGINE (2026-11-14)
 - Last sync: 2026-11-14 (session 3) - PING-PONG REFINEMENT ENGINE shipped:
