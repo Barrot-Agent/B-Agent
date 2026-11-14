@@ -178,6 +178,12 @@ class OpenCodeRefiner(Refiner):
             parsed = self._extract_json(content) or self._extract_json(reasoning)
         return parsed, finish
 
+    def complete_json(self, system: str, user: str) -> tuple[dict | None, str]:
+        """Public strict-JSON completion for protocol consumers other than
+        the refine/critique roles (e.g. the independent semantic judge).
+        Same retry + truncation-retry behavior."""
+        return self._complete(system, user)
+
     def refine(self, data: Any, critique: str | None) -> RefinementOutput:
         user = ("PREVIOUS CRITIQUE (address every point):\n"
                 f"{critique or '(none — first pass)'}\n\nDATA:\n"

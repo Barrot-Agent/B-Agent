@@ -43,14 +43,57 @@ def _walk(node: Any, key_path: str = ""):
             yield from _walk(v, f"{key_path}[{i}]")
 
 
+def canonical_local(v: Any) -> str:
+    """Canonical string for value identity (list-element dedupe)."""
+    import json as _json
+    try:
+        return _json.dumps(v, sort_keys=True, ensure_ascii=False)
+    except TypeError:
+        return repr(v)
+
+
 def completeness(data: Any) -> float:
-    """Fraction of leaf values that are non-empty."""
-    leaves = [(p, v) for p, v in _walk(data)
-              if not isinstance(v, (dict, list, tuple))]
-    if not leaves:
+    """Fraction of leaf values that are non-empty.
+
+    List elements are counted per UNIQUE value within their parent list:
+    duplicates are redundancy (scored separately), not missing content —
+    counting them raw would make legitimate deduplication *lower* this
+    score ((f-1)/(t-1) < f/t when t > f)."""
+    def count(node: Any) -> tuple[int, int]:
+        f = t = 0
+        if isinstance(node, dict):
+            for v in node.values():
+                f2, t2 = count(v)
+                f += f2
+                t += t2
+        elif isinstance(node, (list, tuple)):
+            seen = set()
+            uniq = []
+            for v in node:
+                if isinstance(v, (dict, list, tuple)):
+                    uniq.append(v)
+                else:
+                    key = canonical_local(v)
+                    if key in seen:
+                        continue          # duplicate: not a content slot
+                    seen.add(key)
+                    uniq.append(v)
+            t += len(uniq)
+            f += sum(1 for v in uniq if not _is_empty(v))
+            for v in uniq:
+                if isinstance(v, (dict, list, tuple)):
+                    f2, t2 = count(v)
+                    f += f2
+                    t += t2
+        else:
+            t += 1
+            f += 0 if _is_empty(node) else 1
+        return f, t
+
+    filled, total = count(data)
+    if total == 0:
         return 0.0 if _is_empty(data) else 1.0
-    filled = sum(1 for _, v in leaves if not _is_empty(v))
-    return filled / len(leaves)
+    return filled / total
 
 
 def consistency(data: Any) -> float:

@@ -18,6 +18,12 @@ RecursiveFeedbackLoop
 refine_data / refine_json_file
     Ping-pong model refinement — THE baseline of all data processing.
     Alternating models refine + critique until a measured fixed point.
+RefinementPipeline / refine_document
+    Patch-based refinement of LARGE documents: segmentation, validated
+    patches, rollback, resumability, semantic evaluation, regression
+    testing, persistent learning history.
+LLMSemanticJudge
+    Independent semantic judge (never the refiner's own model).
 """
 
 from .smart_agent import (
@@ -39,12 +45,15 @@ from .upgrade_flywheel import (
 )
 from .refinement import (
     HeuristicRefiner,
+    LLMSemanticJudge,
     OpenCodeRefiner,
     PingPongRefiner,
     Refiner,
+    RefinementPipeline,
     RefinementReport,
     make_model_refiners,
     refine_data,
+    refine_document,
     refine_json_file,
 )
 
@@ -56,12 +65,15 @@ __all__ = [
     "ToolCall",
     "ToolResult",
     "HeuristicRefiner",
+    "LLMSemanticJudge",
     "OpenCodeRefiner",
     "PingPongRefiner",
     "Refiner",
+    "RefinementPipeline",
     "RefinementReport",
     "make_model_refiners",
     "refine_data",
+    "refine_document",
     "refine_json_file",
 ]
 

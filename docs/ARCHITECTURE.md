@@ -35,6 +35,7 @@ B-Agent is a modular Python application integrating IBM Granite 4.0-3B Vision fo
 | `barrot_agent/inference.py` | Inference pipeline |
 | `barrot_agent/config.py` | Pydantic configuration |
 | `barrot_agent/logger.py` | Structured logging |
+| `barrot_agent/refinement/` | Ping-pong refinement baseline of all data processing: classic fixed-point loop for small documents; patch pipeline (segmentation → validated patches → semantic evaluation → regression test → learning history) for documents >24K chars. See `PINGPONG_USAGE.md` |
 | `app.py` | Streamlit web interface |
 
 ## Configuration Flow
