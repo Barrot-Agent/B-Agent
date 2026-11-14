@@ -27,8 +27,8 @@ jobs:
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
       - name: Run one subtask on its own runner
@@ -44,7 +44,7 @@ jobs:
               json.dump({"id": subtask["id"], "result": result}, f, indent=2)
           print(result[:200])
           PY
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: subagent-${{ matrix.subtask.id }}
           path: subagent_matrix_*.json
