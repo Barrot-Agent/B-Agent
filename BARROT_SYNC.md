@@ -37,40 +37,49 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last commit: 59599cb SHRM 2.0 hierarchical reasoning refinement
-- Last sync: 2026-11-14 - full repo-repair session COMPLETE
-- Test suite: 784 passed, 75.33% coverage (Termux python3 -m pytest) - GREEN
-- Python: use /data/data/com.termux/files/usr/bin/python3 (has pytest); /usr/bin/python3 has NO pip
-- Works now (all fixed + committed this session):
-  * mcp_sync engine (barrot_agent/mcp_sync.py + CLI + 17 tests)
-  * 13 broken imports fixed (9 bare paths + emit_pingpong restored + AGIEngine alias)
-  * emit_pingpong.py recreated (stdlib, never-raises, JSONL to ping-pongings/)
-  * pyproject [integrations] extra + requirements-integrations.txt (databricks-sdk,
-    flask, huggingface_hub, kaggle, pandas, scikit-learn)
-  * a2a/worker.js rate-limiter Map leak fixed (sweep at 1024; verified 429/recovery)
-  * README: all 15 dead links repaired; missing-dir refs removed
-  * 13 workflows bumped to action majors v7 (checkout/setup-python/artifacts)
-  * SHRM 2.0: barrot_agent/reasoning/hrm.py - weighted sources, opt-in 2-level
-    H-hierarchy, slope convergence (opt-in), decision traces, v1 label parity
-    proven (0 mismatches on 3000 randomized cases), 20 new tests
-  * removed dead config: package-hardhat.json, .gitlab-ci.yml
-- SHRM 2.0 usage: from barrot_agent.reasoning import hrm2_resolve,
-  resolve_with_trace; scripts/emit_signal_with_hrm.py --engine hrm2 [--refined]
-- Optional deps RESOLVED (2026-11-14): Debian side (apt) holds python3-cryptography
-  43, python3-pandas 2.2.3, python3-sklearn 1.4.2; pip added databricks-sdk 0.30.0,
-  flask, huggingface_hub 0.23.5, kaggle 1.5.12 -> ALL 4 optional modules import OK
-  under /usr/bin/python3. Termux python lacks pandas (fine: integrations extra).
-  Rust-free pins recorded in requirements-integrations.txt (hf<0.31, kaggle<1.6).
-  kaggle module is now import-safe without kaggle.json (credential error deferred
-  to _build_api call time).
-- Blocked: gh CLI not installed; SSH push denied (no key). UNBLOCK: the plug is
-  ready - scripts/push_with_token.sh. In YOUR terminal (not chat) run:
-    GH_TOKEN=github_pat_... bash scripts/push_with_token.sh
-  PAT spec: fine-grained, repo B-Agent only, Contents: Read and write.
-  Script validates the token via API first, shows the pending commits, then
-  pushes over HTTPS via credential helper (token never stored or logged).
-  Pass --verify-only to check the token without pushing.
-- Known flake: tests/test_transmute.py CLI test occasionally fails in full runs
-  (timing tie-band), passes in isolation - not a regression
-- Next task: verify optional-deps imports after pip finishes; push commits once
-  GH_TOKEN available; consider trimming .barrot-backup/ from git history
+- Last sync: 2026-11-14 (session 2) - full repo audit + repair COMPLETE
+- Test suite: 784 passed, 75.25% coverage - GREEN; wheel builds clean
+- Fixed / Upgraded this session (all committed):
+  * 11 broken imports fixed: mcp_orchestrator (7 bare sibling/cross-package
+    imports -> _import_flexible), orchestrator_bridge (legacy AGI now loads
+    in package mode), dependency_micro_ingestion (longevity dispatch)
+  * b_agent.py unrunnable -> fixed (undeclared rich/httpx declared; shebang
+    moved to line 1; imports reordered; flake8 clean; --help verified)
+  * vader_check.py import-safe without vaderSentiment (lazy analyzer,
+    neutral fallback with vader_available=False; real path verified)
+  * barrot_task_allocator.py direct-execution ImportError -> sys.path shim
+  * WHEEL UNBUILDABLE -> fixed: setuptools discovery scoped to
+    barrot_agent* (4 top-level __init__.py dirs broke auto-discovery);
+    python -m build verified, wheel contains only barrot_agent/*
+  * dependency-audit.yml: requirements.tx typo -> requirements-integrations.txt
+    (gate was permanently red); gates test updated to match
+  * 2 flaky timing tests hardened (transmute CLI, mcp_sync concurrency:
+    bounded retry rounds)
+  * opencode.json migrated to native OpenCode V2 shape (providers/package:
+    aisdk:/settings/agents/ordered permissions)
+  * app.json + GLOBAL_STATE_MANIFEST.md: wrong repo/website URLs corrected
+    (were Barrot-Agent/Barrot-Agent -> B-Agent), dead logo URL dropped
+  * Dockerfiles: python:3.10-slim -> 3.12-slim (3.10 EOL 2026-10)
+  * Dependency floors raised (torch 2.6, transformers 4.48, streamlit 1.41,
+    numpy 2.1, cryptography 44, PyJWT 2.10, websockets 14, pillow 11,
+    pydantic 2.10, rich 13.7, httpx 0.27); dev toolchain refreshed
+    (pytest 9.2, flake8 7.5, mypy 2.4.1, black 26.10.1, pre-commit 4.7 +
+    hook revs v6.0.0/26.10.1/9.0.2/7.5.0); cdp-sdk declared in integrations
+  * .env.example: +23 env vars derived from actual os.getenv usage
+  * v_sync_relay.sh hardened: never auto-commits secret-like files,
+    rebase-before-push, no force push
+  * .barrot-backup/ untracked (duplicate of git history) + gitignored
+  * CHANGELOG.md [Unreleased] section written
+  * Security scan clean: no hardcoded secrets, no pull_request_target,
+    no eval/exec/pickle on untrusted input, cron schedules all valid
+- Still blocked:
+  * Docker not installed on this machine -> 3.12 image upgrades are
+    compile-checked, not build-tested
+  * opencode binary not installed locally -> V2 config migration verified
+    against official docs, not runtime-tested
+  * 2 TODO-class items left intentionally: smart_agent.py:390 TODO lives
+    inside generated code-scaffold text; kaggle/hf Rust-free pins are
+    documented platform constraints, not bugs
+- Next step: push remaining commits (gh authenticated as Barrot-Agent);
+  after push, verify CI green on GitHub; then optional: history-trim of
+  removed .barrot-backup/ blobs, Docker build test when docker available
