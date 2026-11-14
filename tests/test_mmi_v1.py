@@ -29,6 +29,60 @@ def complete_stages():
     ]
 
 
+def add_valid_corroboration(record):
+    source_by_id = {source.source_id: source for source in record.source_graph}
+    if "s1" not in source_by_id:
+        record.source_graph.append(
+            SourceRecord(
+                source_id="s1",
+                uri="https://source-a.example/report",
+                provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
+                independence_group="publisher-a",
+            )
+        )
+    else:
+        source_by_id["s1"].independence_group = "publisher-a"
+
+    source_by_id = {source.source_id: source for source in record.source_graph}
+    if "s2" not in source_by_id:
+        record.source_graph.append(
+            SourceRecord(
+                source_id="s2",
+                uri="https://source-b.example/report",
+                provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
+                independence_group="publisher-b",
+            )
+        )
+    else:
+        source_by_id["s2"].independence_group = "publisher-b"
+
+    record.corroboration_results.append({
+        "status": "CORROBORATED",
+        "independent_source_ids": ["s1", "s2"],
+        "independent_sources": 2,
+    })
+
+
+def complete_record_with_two_sources():
+    record = MMIEngine().create_record(
+        "independent-corroboration-001",
+        {"name": "fixture"},
+        {"source": "fixture://source"},
+    )
+    record.stages = complete_stages()
+    record.provenance = {"source": "fixture"}
+    add_valid_corroboration(record)
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="e1",
+            claim="test claim",
+            state=ParseState.OBSERVED,
+            source_ids=["s1", "s2"],
+        )
+    )
+    return record
+
+
 def test_mmi_complete_requires_all_protocol_stages():
     record = MMIEngine().create_record(
         "ing-001",
@@ -52,7 +106,7 @@ def test_mmi_complete_requires_all_protocol_stages():
             source_ids=["s1"],
         )
     )
-    record.corroboration_results.append({"status": "checked"})
+    add_valid_corroboration(record)
 
     assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
 
@@ -297,7 +351,7 @@ def test_missing_provenance_prevents_completion():
             source_ids=["s1"],
         )
     )
-    record.corroboration_results.append({"status": "checked"})
+    add_valid_corroboration(record)
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
@@ -323,7 +377,7 @@ def test_missing_evidence_prevents_completion():
         )
     )
     record.evidence.clear()
-    record.corroboration_results.append({"status": "checked"})
+    add_valid_corroboration(record)
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
 
@@ -358,6 +412,194 @@ def test_missing_corroboration_prevents_completion():
     )
 
     assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+
+
+def test_unstructured_checked_result_is_not_corroboration():
+    record = complete_record_with_two_sources()
+    record.corroboration_results = [{"status": "checked"}]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is False
+
+
+def test_zero_independent_sources_cannot_complete_corroboration():
+    record = complete_record_with_two_sources()
+    record.corroboration_results = [{
+        "status": "CORROBORATED",
+        "independent_sources": 0,
+        "scope": "LOCAL_DETERMINISTIC_FIXTURE",
+    }]
+
+    assert any(
+        "distinct independence groups" in error
+        for error in record.validate()
+    )
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is False
+    assert report["corroboration_complete"] is False
+    assert report["result"] == MMIResult.BLOCKED.value
+
+
+def test_same_publisher_group_is_not_independent_corroboration():
+    record = complete_record_with_two_sources()
+    record.source_graph[1].independence_group = "publisher-a"
+    record.corroboration_results = [{
+        "status": "CORROBORATED",
+        "independent_source_ids": ["s1", "s2"],
+        "independent_sources": 2,
+    }]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_two_distinct_external_groups_can_corroborate():
+    record = complete_record_with_two_sources()
+
+    assert record.corroboration_complete() is True
+    assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is True
+    assert report["result"] == MMIResult.COMPLETE.value
+
+
+def test_missing_independence_group_blocks_corroboration():
+    record = complete_record_with_two_sources()
+    record.source_graph[1].independence_group = ""
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_model_generated_source_cannot_corroborate_external_claim():
+    record = complete_record_with_two_sources()
+    record.source_graph[1].provenance_class = ProvenanceClass.BARROT_GENERATED
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_independent_group_count_must_match_declared_count():
+    record = complete_record_with_two_sources()
+    record.corroboration_results[0]["independent_sources"] = 1
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
+    record = complete_record_with_two_sources()
+    record.source_graph.append(
+        SourceRecord(
+            source_id="s3",
+            uri="https://source-b.example/second-report",
+            provenance_class=ProvenanceClass.EXTERNAL_SECONDARY,
+            independence_group="publisher-b",
+        )
+    )
+    record.corroboration_results = [{
+        "status": "CORROBORATED",
+        "independent_source_ids": ["s1", "s2", "s3"],
+        "independent_sources": 2,
+    }]
+
+    assert record.corroboration_complete() is True
+    assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
+
+
+def test_contradictory_independent_evidence_can_complete_without_forced_unanimity():
+    record = complete_record_with_two_sources()
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="e2",
+            claim="contrary claim",
+            state=ParseState.OBSERVED,
+            source_ids=["s2"],
+            supporting=False,
+        )
+    )
+    record.corroboration_results = [{
+        "status": "CONTRADICTORY",
+        "independent_source_ids": ["s1", "s2"],
+        "supporting_evidence": ["e1"],
+        "contradicting_evidence": ["e2"],
+    }]
+    record.reconciliation.append({
+        "relationship": Reconciliation.CONTRADICTS_EXISTING.value,
+        "evidence_ids": ["e1", "e2"],
+    })
+
+    assert record.corroboration_complete() is True
+    assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
+
+
+def test_corroboration_not_applicable_requires_reason():
+    record = MMIEngine().create_record(
+        "corroboration-not-applicable-001",
+        {"name": "single-source-fixture"},
+        {"source": "fixture://primary"},
+    )
+    record.provenance = {"source": "fixture://primary"}
+    record.source_graph.append(
+        SourceRecord(
+            source_id="s1",
+            uri="https://primary.example/source",
+            provenance_class=ProvenanceClass.EXTERNAL_PRIMARY,
+            independence_group="primary-publisher",
+        )
+    )
+    record.evidence.append(
+        EvidenceRecord(
+            evidence_id="e1",
+            claim="single-source primary record",
+            state=ParseState.OBSERVED,
+            source_ids=["s1"],
+        )
+    )
+    record.stages = [
+        StageRecord(
+            name,
+            (
+                StageOutcome.NOT_APPLICABLE
+                if name == "CORROBORATION"
+                else StageOutcome.COMPLETE
+            ),
+            "",
+        )
+        for name in MMIStateMachine.ORDER
+    ]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+
+    record.stages = [
+        StageRecord(
+            name,
+            StageOutcome.NOT_APPLICABLE if name == "CORROBORATION" else StageOutcome.COMPLETE,
+            "No independent comparison is applicable to this single-source record."
+            if name == "CORROBORATION" else "",
+        )
+        for name in MMIStateMachine.ORDER
+    ]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.COMPLETE
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is True
+
+
+
+def test_required_core_stage_cannot_be_not_applicable():
+    record = complete_record_with_two_sources()
+    record.stages = [
+        StageRecord(
+            name,
+            StageOutcome.NOT_APPLICABLE if name == "PROVENANCE_CAPTURED" else StageOutcome.COMPLETE,
+            "Not applicable" if name == "PROVENANCE_CAPTURED" else "",
+        )
+        for name in MMIStateMachine.ORDER
+    ]
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.PARTIAL
+    report = MMICompletenessReport.build(record)
+    assert report["protocol_complete"] is False
+    assert report["protocol_completeness"] < 1.0
 
 
 def test_contradictory_evidence_is_preserved():
@@ -543,9 +785,7 @@ def test_completeness_report_is_deterministic():
         )
     )
 
-    record.corroboration_results.append({
-        "status": "checked",
-    })
+    add_valid_corroboration(record)
 
     report_a = MMICompletenessReport.build(record)
     report_b = MMICompletenessReport.build(record)
@@ -586,7 +826,7 @@ def test_completeness_report_calculates_protocol_score():
         )
     )
 
-    record.corroboration_results.append({"status": "checked"})
+    add_valid_corroboration(record)
 
     report = MMICompletenessReport.build(record)
 

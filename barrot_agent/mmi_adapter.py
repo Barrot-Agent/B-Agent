@@ -99,6 +99,7 @@ class MMIExistingSystemsAdapter:
         content: str = "",
         depth: int = 1,
         observed_at: str = "",
+        independence_group: str = "",
     ) -> SourceRecord:
         content_hash = ""
         if content:
@@ -114,6 +115,7 @@ class MMIExistingSystemsAdapter:
             depth=depth,
             content_hash=content_hash,
             observed_at=observed_at,
+            independence_group=independence_group,
         )
 
     @staticmethod
