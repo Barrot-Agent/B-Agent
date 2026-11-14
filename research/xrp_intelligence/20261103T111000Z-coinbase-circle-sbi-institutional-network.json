@@ -1,0 +1,262 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "captured_at_utc": "2026-11-03T11:10:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "9283d6741754ced75da3ce8e6199db246c0c7fa9",
+  "topic": "Coinbase Q3 positioning; Circle Q2 economics and SBI Japan/Arc relationships; XRP ETF tracker quality; creator identity separation",
+  "claims": [
+    {
+      "id": "COIN-Q3-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Coinbase reported Q3 2026 net income of $718.7M, adjusted net income of $78M, adjusted EBITDA of $332.9M, net revenue of $1.2B, crypto trading-volume market share of 10.7%, and assets on platform equal to 12.5% of total crypto market capitalization.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "source_location": "MD&A lines 1529-1535; earnings release October 29 2026"
+    },
+    {
+      "id": "COIN-USDC-01",
+      "class": "CONFIRMED_COMPANY_CLAIM",
+      "claim": "Coinbase average USDC held in its products reached $22B in Q3 2026, about 30% of average USDC market capitalization. Coinbase states it captured approximately 50% of USDC economics over the prior year.",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "source_location": "October 29 2026 earnings release"
+    },
+    {
+      "id": "COIN-CIRCLE-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Coinbase states its arrangement with Circle Internet Financial was renewed on the same terms. Coinbase's Q3 10-Q attributes a $84.6M increase in stablecoin revenue to higher average USDC balances and a $52.8M decrease to lower average interest rates.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "source_location": "MD&A lines 1520-1522 and 1605-1612"
+    },
+    {
+      "id": "COIN-DERIV-01",
+      "class": "CONFIRMED_COMPANY_CLAIM",
+      "claim": "Coinbase reported 179% compound annual growth in crypto derivatives trading volume over two years and said it leads in open interest in global options. These are company-reported platform metrics, not XRP-specific metrics.",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "source_location": "October 29 2026 earnings release"
+    },
+    {
+      "id": "COIN-XRP-NEGATIVE",
+      "class": "BOUNDED_NEGATIVE_EVIDENCE",
+      "claim": "A text search of Coinbase's Q3 2026 Form 10-Q found no XRP mention. This does not prove Coinbase had no XRP activity; it means this filing does not provide an XRP-specific holdings, flow or market-share disclosure.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "source_location": "Full filing text search"
+    },
+    {
+      "id": "CIRCLE-Q2-01",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle reported Q2 2026 USDC circulation of $73.3B, $14.8T onchain transaction volume (+151% YoY), $701M total revenue and reserve income, $668M reserve income, $34M other revenue, $412M total distribution/transaction/other costs, $48M net income and $143M adjusted EBITDA.",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "source_location": "August 5 2026 Q2 release; SEC 10-Q https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "id": "CIRCLE-SBI-JV-01",
+      "class": "CONFIRMED_SEC_DISCLOSURE",
+      "claim": "Circle's Q2 2026 10-Q states Circle and SBI Holdings each contributed Japanese yen worth approximately $1.5M to Circle SBI Japan K.K. in November 2025. Circle owns 50%, consolidates the entity as a VIE because it directs the most significant activities and absorbs potentially significant losses/benefits, and reported no significant operating results to date as of June 30 2026.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "source_location": "Note 3, lines 696-699"
+    },
+    {
+      "id": "CIRCLE-ARC-SBI-01",
+      "class": "CONFIRMED_COMPANY_CLAIM",
+      "claim": "Circle's Q2 release lists SBI Group among the founding third-party Arc validator cohort alongside BlackRock, DTCC, Galaxy, Global Payments, ICE, Mastercard, MoneyGram, Standard Chartered, Sumitomo Corporation and Visa. Validator participation is not evidence of XRP integration.",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "source_location": "August 5 2026 release, Arc validator list"
+    },
+    {
+      "id": "CIRCLE-CPN-01",
+      "class": "CONFIRMED_COMPANY_CLAIM",
+      "claim": "Circle reported CPN annualized trailing-30-day transaction volume of $14.7B and 175 enrolled financial institutions at Q2 end. This is Circle Payments Network activity, not XRP-specific payment volume.",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "source_location": "August 5 2026 release"
+    },
+    {
+      "id": "CIRCLE-COLLATERAL-01",
+      "class": "CONFIRMED_COMPANY_CLAIM",
+      "claim": "Circle's Q2 release states Marex enabled USDC as collateral for CFTC-regulated derivatives under a December 2025 CFTC no-action letter. This confirms a USDC collateral pathway, not XRP collateral.",
+      "source": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "source_location": "August 5 2026 release"
+    },
+    {
+      "id": "ETF-TRACKER-01",
+      "class": "SOURCE_CLAIM_DATA_QUALITY_FLAG",
+      "claim": "TheXRPInvestor page retrieved November 3 reports 12 products, but its displayed breakdown is 6 spot + 4 derivative + 1 index = 11. It reports approximately 1.19B XRP in trust and $1.49B AUM. Product count inconsistency blocks canonical promotion; holdings/AUM remain provider claims pending fund-by-fund reconciliation.",
+      "source": "https://thexrpinvestor.com/xrp-etf-flows",
+      "source_location": "Retrieved November 3 2026"
+    },
+    {
+      "id": "ETF-FLOW-01",
+      "class": "SECONDARY_PROVIDER_OBSERVATION",
+      "claim": "TradingDigits reports October 30 XRP ETF net flow of -$0.49M, October 29 +$8.43M, and October 26 -$3.61M. This is provider-reported daily data, not an issuer-confirmed consolidated creations/redemptions file.",
+      "source": "https://www.tradingdigits.io/ar/xrp-etf-inflows-tracker",
+      "source_location": "Retrieved November 3 2026"
+    },
+    {
+      "id": "SBIC-IDENTITY-01",
+      "class": "CONFIRMED_OFFICIAL_IDENTITY",
+      "claim": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC) is distinct from SBI Holdings. Its February 26 2025 ChatGPT seminar was co-hosted with the Taito Chamber of Commerce and featured a Microsoft Japan speaker; no OpenAI partnership or XRP integration is established.",
+      "source": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "CREATOR-CAMILLA-01",
+      "class": "CONFIRMED_PUBLIC_RECORD_CANDIDATE",
+      "claim": "Camilla (Millie) Stephenson, UK, Wholesome Mils, is a content creator named in a New Zealand official-information response. One creator-linked WholesomeMils video is directly verified. The complete public channel inventory remains unavailable; no XRP connection is established.",
+      "source": "https://www.youtube.com/watch?v=FQTOensuU-Y"
+    },
+    {
+      "id": "CREATOR-KAMILAH-01",
+      "class": "SEPARATE_CREATOR_CANDIDATE",
+      "claim": "An XRP-focused creator is indexed as Kamilah Stevenson/Dr Kamilah Stevenson. An iHeart podcast transcript has the speaker self-report X as 'cam i am cam', Instagram as Kamilla Stevenson, and YouTube as 'doctor Camilla Stevenson', while warning of fake pages. This may explain spelling variants within that creator identity, but it does not establish that she is Camilla Stephenson/Wholesome Mils.",
+      "source": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "source_location": "Transcript around 40:07-40:26"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "type": "commercial_USDC_distribution_and_revenue_sharing",
+      "status": "confirmed",
+      "evidence": [
+        "COIN-CIRCLE-01",
+        "COIN-USDC-01"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Holdings",
+      "type": "50_50_Circle_SBI_Japan_KK_distribution_JV",
+      "status": "confirmed",
+      "evidence": [
+        "CIRCLE-SBI-JV-01"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "type": "founding_third_party_validator",
+      "status": "confirmed",
+      "evidence": [
+        "CIRCLE-ARC-SBI-01"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Marex",
+      "type": "USDC_collateral_for_CFTC_regulated_derivatives",
+      "status": "confirmed",
+      "evidence": [
+        "CIRCLE-COLLATERAL-01"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Circle Payments Network",
+      "type": "institutional_payment_rail",
+      "status": "confirmed",
+      "evidence": [
+        "CIRCLE-CPN-01"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "type": "exchange_and_historical_execution_liquidity",
+      "status": "confirmed_as_market_access_not_direct_capital",
+      "evidence": [
+        "COIN-Q3-01"
+      ]
+    },
+    {
+      "from": "Camilla Stephenson / Wholesome Mils",
+      "to": "XRP",
+      "type": "relationship",
+      "status": "not_established",
+      "evidence": [
+        "CREATOR-CAMILLA-01"
+      ]
+    },
+    {
+      "from": "Kamilah Stevenson / Dr Kamilah Stevenson",
+      "to": "XRP",
+      "type": "public_XRP_content",
+      "status": "source_candidate",
+      "evidence": [
+        "CREATOR-KAMILAH-01"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Coinbase's increased USDC balances and market share strengthen its distribution and liquidity role but do not imply XRP-specific accumulation.",
+      "support": [
+        "COIN-Q3-01",
+        "COIN-USDC-01",
+        "COIN-CIRCLE-01"
+      ],
+      "disconfirming_or_limit": "Coinbase Q3 10-Q contains no XRP-specific disclosure; USDC balances are not XRP purchases."
+    },
+    {
+      "id": "H2",
+      "hypothesis": "SBI's Circle Japan JV and Arc validator participation represent a parallel institutional USDC/Japanese payment strategy that can coexist with SBI's Ripple/RLUSD relationships.",
+      "support": [
+        "CIRCLE-SBI-JV-01",
+        "CIRCLE-ARC-SBI-01"
+      ],
+      "disconfirming_or_limit": "Circle reported no significant Circle Japan operating results through June 30 2026; Arc validator status is not proof of XRP integration."
+    },
+    {
+      "id": "H3",
+      "hypothesis": "USDC's use as regulated derivatives collateral can expand stablecoin settlement and margin infrastructure, potentially complementing rather than replacing XRP-based liquidity use cases.",
+      "support": [
+        "CIRCLE-COLLATERAL-01",
+        "CIRCLE-CPN-01"
+      ],
+      "disconfirming_or_limit": "No evidence that this Marex USDC collateral pathway uses XRP or changes XRP demand."
+    },
+    {
+      "id": "H4",
+      "hypothesis": "ETF holdings and AUM are growing institutional exposure indicators, but tracker coverage/count inconsistencies can overstate or misclassify the underlying capital signal.",
+      "support": [
+        "ETF-TRACKER-01",
+        "ETF-FLOW-01"
+      ],
+      "disconfirming_or_limit": "Fund-level issuer holdings and share-creation/redemption files may reconcile the provider discrepancy; current observations are not final."
+    },
+    {
+      "id": "H5",
+      "hypothesis": "Camilla Stephenson/Wholesome Mils and Kamilah Stevenson/Dr Kamilah Stevenson are separate creator identities; the latter may use Camilla/Kamilla variants.",
+      "support": [
+        "CREATOR-CAMILLA-01",
+        "CREATOR-KAMILAH-01"
+      ],
+      "disconfirming_or_limit": "A direct verified official channel-to-person identity record for every variant is still incomplete."
+    }
+  ],
+  "capital_taxonomy": [
+    "cash-funded XRP purchases",
+    "in-kind XRP contributions",
+    "drawn debt",
+    "undrawn financing capacity",
+    "ETF holdings and issuer share flows",
+    "stablecoin reserves",
+    "customer lending balances",
+    "proof-of-reserves snapshots",
+    "exchange order-book depth",
+    "executed spot turnover"
+  ],
+  "data_quality_rules": [
+    "Provider universes and timestamps remain separate.",
+    "Missing fund reports are null, never zero.",
+    "Product-count arithmetic is validated before ETF aggregate promotion.",
+    "Coinbase and Circle self-reported metrics are tagged as primary company claims, not independent corroboration.",
+    "USDC collateral usage is not counted as XRP collateral.",
+    "Arc validator status is not counted as XRP adoption.",
+    "Creator aliases are not merged without direct identity evidence."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "limitations": [
+    "Circle Q3 results are scheduled for November 4 2026 at 08:00 ET / 13:00 UTC; no Q3 result is available in this snapshot.",
+    "No synchronized current XRP order-book data was acquired in this artifact.",
+    "No directional XRP forecast, paper position or real-money action was created."
+  ]
+}
