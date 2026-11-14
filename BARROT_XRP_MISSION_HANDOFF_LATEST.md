@@ -1,8 +1,68 @@
-# Barrot XRP Intelligence — Canonical Mission Handoff (Run113)
+# Barrot XRP Intelligence — Canonical Mission Handoff (Run114)
 
-Updated: 2026-11-14T02:33:52.368Z
+Updated: 2026-11-14T03:11:00Z
 
 **Mission priority 1:** XRP intelligence and measured prediction-engine mastery. **Protected foundation:** Barrot V3 execution, orchestration, safety, verification and external-action controls.
+
+
+## Latest current-state snapshot — Run114 (2026-11-14T03:11:00Z)
+
+**Mission priority 1:** XRP intelligence and measured prediction-engine mastery. **Protected foundation:** Barrot V3 execution, orchestration, safety, verification and external-action controls.
+
+### Repository and integration
+- Main SHA: fb272b40966834754ec686f9ed3ab94123f09306 (unchanged).
+- Code-bearing integration head: 6a629caa566c2587d64194fbbb65a982f9418250; 2,335 commits ahead of main, zero behind.
+- Recursive trees: main 1,381 entries; integration 2,405 entries; neither truncated.
+- PR #1662: open/draft, mergeable=true, 1,164 changed files, 339,499 additions, 5,354 deletions; 50 workflow files and seven public web files.
+- Open PR inventory: 375 (361 drafts, 14 non-drafts), verified across four REST pages. PR #1662 has zero formal reviews, approvals or review threads.
+- No new branch or PR was created. Main was not modified.
+
+### Exact-head engineering verification
+Verified on code-bearing head 6a629caa566c2587d64194fbbb65a982f9418250:
+- Full repository suite: **3,628 passed**, eight subtests, zero failures; 62.40% inclusive coverage; 95.23 seconds.
+- Core suite: **740 passed**, eight subtests.
+- Wheel build and installed Barrot V3/XRP mission verification: passed.
+- Dependency audit: five manifest groups passed; zero known vulnerabilities reported.
+- Fail-closed gate: passed; merge remained disabled.
+- Evidence: [full suite 43549699788](https://github.com/Barrot-Agent/B-Agent/actions/runs/43549699788), [dependency audit 43549704900](https://github.com/Barrot-Agent/B-Agent/actions/runs/43549704900), [fail-closed gate 43549699901](https://github.com/Barrot-Agent/B-Agent/actions/runs/43549699901), [PR fail-closed gate 43549704885](https://github.com/Barrot-Agent/B-Agent/actions/runs/43549704885).
+- PR-event CI is intentionally skipped by the integration-branch condition; the push-event full-suite job ran on the exact code-bearing SHA.
+
+### Prediction-engine change executed and verified
+Commit 6a629caa changes paired_block_bootstrap.py, forecast_ledger.py, test_paired_block_bootstrap.py and test_forecast_ledger.py.
+- Moving-block bootstrap now uses non-circular contiguous timestamp blocks. Gaps greater than 1.5 times declared or median-observed cadence split segments; no block wraps around or bridges a missing-origin gap.
+- Sampling diagnostics record cadence, segment lengths and valid windows. If no full contiguous block exists, no confidence interval is emitted.
+- Source-cluster time series infer cadence separately.
+- Forecast readiness rejects missing or circular sampling-policy declarations; new tests cover large gaps and missing/circular policy markers.
+- Remaining: diagnostic defaults are still 1,000 resamples, 30 origins and 95% confidence; policy v6 requires 10,000, 100 paired origins and 99.375% individual confidence across eight comparisons. Candidate-versus-four-baseline OOS and independent-shadow readiness is not integrated. Per-source cadence is inferred unless explicitly declared; production admission must require a declared cadence contract.
+
+### XRP and institutional evidence
+- OKX XRP-USDT snapshot at 2026-11-14T02:59:19.671Z: last $1.0035; bid $1.0035 / 1,558.666 XRP; ask $1.0036 / 176.969 XRP; 24h open $1.0204, high $1.0438, low $0.9843; volume 51.200M XRP. Top-of-book spread about 0.996 bps; this is not full depth and is not asserted fresh at a later cutoff. Kraken separately returned $1.00435 without provider event timestamp. No synchronized full L2 or executable cross-venue spread admitted.
+- Derivatives snapshots are stale and coverage-incompatible: Liqwall about $1.13B OI (Nov 13 10:02 UTC), TradRadar about $1.53B (Nov 13 22:35 UTC), Kodexius about $606.72M (Nov 13 19:14 UTC). Funding signs and venue universes disagree; do not average.
+- XRP Insights ETF dataset is settled through Nov 12: 1,185,698,783 XRP held; -9,481,905 XRP holdings change over Nov 9–12; Nov 13 provisional. Aggregate break-even estimate $1.7095 and cost basis $2.03B; estimated -$817M mark-to-market at Nov 12's $1.02 reference. Holdings deltas are not direct issuer cash flows; BITW rebalancing/fees can count, GXRP flows are excluded during a capture gap, and reconstructed rows are estimates.
+- Ripple transparency dashboard: $2,689.9M circulating RLUSD and $2,826.5M reserves as of Nov 12, 2026; $136.6M excess, about 105.08% coverage. Latest retrieved monthly independent attestation remains September 30.
+- Stableradar on-chain read (Nov 13 12:43 UTC): 754,149,934 RLUSD on XRPL and 1,917,942,634 on Ethereum. Its separate DefiLlama column: 829,348,347 XRPL and 1,856,525,007 Ethereum. Preserve both; do not average.
+- XRP Radar exchange-wallet snapshot: 22.26B XRP across 707 wallets and 24 exchanges; Upbit 6.47B, Coinbase 5.80B, Binance 2.66B, SBI VC Trade 56M. South Korea 8.59B, US 8.45B, Japan 1.38B. Cold storage, omnibus and wrapped backing are included; not tradable float.
+- XRP Radar reports 15,679,858 x402 agent transactions, 191 agents, 193 merchants, 5,882 paid endpoints and 7,031 XRP plus 69,061 RLUSD all-time settlement value. Operator index plus periodic on-chain spot-check; transaction count is not capital throughput. RWA headline $4.33B splits into $276M transferable and $4.06B platform-locked represented notional.
+- Evernorth's Nov 13 SEC 10-Q confirms the Oct 9 close and subsequent transfer of 346,484,972 XRP to Pathfinder. XRP Radar reports 103.130M XRP in 13 attributed wallets and 370.347M moved outside that set through Oct 22, but its deal metadata still says closing8k:null and its page says no closing filing, contradicted by the 10-Q. No sale is inferred; no matching transaction hash/recipient mapping was established.
+- SBI VC Trade's described RLUSD deposit/withdrawal service is Ethereum-only. SBI Crypto Card points may convert to XRP, BTC or ETH, but one asset is selected per card, a VCTRADE account is required, and aggregate XRP reward volume is undisclosed. This is a retail channel, not evidence of institutional XRP capital.
+- SBI Ripple Asia remains a software JV that does not directly handle XRP; SBI Remit/SBI VC Trade/Tranglo is the separate XRP remittance route. SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate regional SME investment companies, not SBI Holdings.
+- ASK Coin: no canonical XRPL issuer/deployment verified; AskSurf is an x402 merchant name, not evidence of ASK Coin. “Actual capital” remains an accounting classification problem. Dr. Kamilah/Camilla Stevenson person identity is established, but first-party YouTube channel ownership is unverified; verified own-channel upload inventory remains zero.
+
+### Nine-platform status
+No authentication/data-flow status changed. ChatGPT GitHub connection is verified but overprivileged (admin/maintain/push/pull/triage). Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal approval on #1662; Hugging Face has a prior BUILD_ERROR and no deployment; Kaggle is untested; Databricks previously returned HTTP 403; LunaRoute endpoint authentication remains unverified. No external-model dispatch or data transfer occurred.
+
+### Security, backlog and merge decision
+- Main branch metadata reports protected=true and non-admin enforcement but an empty required-status-check context list. Detailed branch-protection access returns HTTP 403. Fallback ruleset 10863829 is disabled; integration is unprotected.
+- GitHub connector permissions include admin, maintain, push, pull and triage. Main OpenCode retains remote LunaRoute MCP and allow-level edit/bash/webfetch; integration has remote MCP disabled and mutation approvals.
+- Latest main Cross Analysis succeeded on unchanged main (run 43548566524, Nov 14 02:51 UTC). Latest main Pillars Consistency remains failed (run 43430139937) on missing GitHub App identifiers, Databricks HTTP 403 and Hugging Face BUILD_ERROR.
+- Seven public web files require Pages publication authorization; full semantic reconciliation of 1,164 changed paths remains incomplete. All 50 changed workflow patches were inspected previously.
+- #1661, #1660, #1643 and #1642 remain supersession candidates; integration is respectively 203, 384, 1,446 and 2,351 commits ahead, zero behind each. #1640 remains one commit diverged, but its unique action-gate workflow/test content is present in integration; retain until successor merge and main verification. Preserve unique/unreviewed #1653, #1655, #1659, #1615, #1614, #1320, #1318, #1317 and #1269. Dependency candidates #1650–#1644 and #1255/#1254 remain individually blocked. No source PR was closed.
+- **NO MERGE.** Draft status, zero approvals, incomplete semantic review, least-privilege failure, branch-protection visibility and Pages authorization remain blockers.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast, paper trade, real-money action, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, funds transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Previous detailed snapshot: Run113 (historical; superseded by Run114)
 
 ## 1. Repository state
 
@@ -494,3 +554,10 @@ Structured evidence: research/xrp_intelligence/20261114T021605Z-run112a-rlusd-cr
 - Feature implication: keep RLUSD supply, gross transfers, net issuer change, mint/redemption, round trips, high-value payments, unique counterparties, concentration, exchange/custodian routing and actual XRP fee demand as separate measures. Do not use raw RLUSD payment count as an adoption proxy or infer proportional XRP demand.
 - Token Relations' original X post returned HTTP 403 through direct retrieval; its quoted values are retained with the Coinpedia source. Bitquery and Cross River primary pages were accessible. None of these research summaries has been captured as a byte-exact Barrot receipt; they remain non-model-eligible.
 
+
+
+## Run114 durable evidence
+
+- Structured research/engineering audit: research/xrp_intelligence/20261114T031100Z-run114-current-market-prediction-engine-and-integration-audit.json.
+- Nine-platform capability/authentication snapshot: research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run114.json.
+- Code-bearing exact-head commit: 6a629caa566c2587d64194fbbb65a982f9418250.
