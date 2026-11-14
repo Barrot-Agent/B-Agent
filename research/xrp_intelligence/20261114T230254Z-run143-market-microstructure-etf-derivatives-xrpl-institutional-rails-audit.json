@@ -93,17 +93,18 @@
       "ask": 0.9041,
       "bid_size_xrp": 3829.011932,
       "ask_size_xrp": 395.3,
-      "one_level_imbalance_bid_fraction": 0.8129,
-      "spread_basis_points": 1.106,
+      "one_level_imbalance_bid_fraction": 0.8128452603106678,
+      "spread_basis_points": 1.106133510314573,
       "open_24h": 1.0117,
       "high_24h": 1.0138,
       "low_24h": 0.8932,
       "volume_24h_xrp": 81741962.619906,
-      "derived_24h_return_percent": -10.646,
-      "distance_above_24h_low_percent": 1.209,
+      "derived_24h_return_percent": -10.645448255411683,
+      "distance_above_24h_low_percent": 1.2091356918943141,
       "freshness_threshold_seconds": 300,
       "freshness": "stale",
-      "response_text_sha256": "5b9f3c6b3b3d82c3c7a5c5c2c0e3d8e5a2fbd54e1c1f1c7c8e8a4c5b2f1a8c7d"
+      "response_text_sha256": "2ddc319927c39980666213df53f8cd9cee31c49c2da969f8a318994860d67eda",
+      "response_text_bytes": 346
     },
     "kraken": {
       "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
@@ -116,7 +117,9 @@
       "volume_24h_xrp": 70928075.7359375,
       "event_timestamp": "not provided",
       "freshness": "not independently verifiable",
-      "response_text_sha256": "7e7c0f3e6b9c2d1a4f8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f"
+      "response_text_sha256": "17b678774f1960e7be7dd91298930a2bf1d2941957d9328ea0586a0432b36fe9",
+      "response_text_bytes": 317,
+      "derived_24h_return_percent": -10.473371023475476
     },
     "raw_payload_receipt": {
       "type": "captured_response_text_sha256",
@@ -124,7 +127,8 @@
       "archive": "repository audit JSON; not independent WORM",
       "okx_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"0.904\",\"lastSz\":\"110\",\"askPx\":\"0.9041\",\"askSz\":\"395.3\",\"bidPx\":\"0.904\",\"bidSz\":\"3829.011932\",\"open24h\":\"1.0117\",\"high24h\":\"1.0138\",\"low24h\":\"0.8932\",\"volCcy24h\":\"78336133.7996978935\",\"vol24h\":\"81741962.619906\",\"ts\":\"1794695397463\",\"sodUtc0\":\"1.011\",\"sodUtc8\":\"0.9719\"}],\"msg\":\"\"}",
       "kraken_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.90454000\",\"2011\",\"2011.000\"],\"b\":[\"0.90444000\",\"23\",\"23.000\"],\"c\":[\"0.90421000\",\"166.66435928\"],\"v\":[\"69300257.80428730\",\"70928075.73593750\"],\"p\":[\"0.95896252\",\"0.96001998\"],\"t\":[64644,66721],\"l\":[\"0.89112000\",\"0.89112000\"],\"h\":[\"1.01248000\",\"1.01248000\"],\"o\":\"1.00999000\"}}}",
-      "note": "Hash is for the UTF-8 response text as exposed by the web retrieval, not a direct socket-level raw-byte capture. Do not label it a verified exchange raw-byte receipt."
+      "note": "Hash is for the UTF-8 response text as exposed by the web retrieval, not a direct socket-level raw-byte capture. Do not label it a verified exchange raw-byte receipt.",
+      "hash_provenance": "SHA-256 recomputed locally over the exact UTF-8 response-text strings stored in this audit JSON. This is not a direct socket-level raw-byte capture or independent WORM archive."
     },
     "secondary_market_crosscheck": {
       "source": "CoinDesk CC / CoinGecko market feed",
