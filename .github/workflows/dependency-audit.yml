@@ -6,7 +6,7 @@ on:
     paths:
       - "requirements.txt"
       - "requirements-dev.txt"
-      - "requirements.tx"
+      - "requirements-integrations.txt"
       - "pyproject.toml"
       - "hf_space/requirements.txt"
       - "legacy/requirements_legacy.txt"
@@ -46,10 +46,10 @@ jobs:
         continue-on-error: true
         run: pip-audit -r requirements-dev.txt --strict
 
-      - name: Audit supplemental requirements.tx declarations
+      - name: Audit supplemental integrations declarations
         id: supplemental
         continue-on-error: true
-        run: pip-audit -r requirements.tx --strict
+        run: pip-audit -r requirements-integrations.txt --strict
 
       - name: Audit Hugging Face Space declarations
         id: hf_space
