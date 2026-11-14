@@ -34,10 +34,10 @@
       "title": "Barrot V3 + XRP Intelligence — current-main consolidated successor",
       "state": "open",
       "draft": true,
-      "head_sha": "3c533574b73943cfe4a21b06b64af61b6e06c3a5",
+      "head_sha": "01de25b68e457dda89badb9f2e9c1a7413635d1f",
       "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
-      "changed_files": 1174,
-      "additions": 344639,
+      "changed_files": 1175,
+      "additions": 345570,
       "deletions": 5354,
       "changed_workflow_files": 50,
       "changed_public_web_files": 7,
@@ -137,7 +137,8 @@
       "enabled": true,
       "automatic_main_push_deployment": true,
       "authorization_for_7_changed_public_files": "UNRESOLVED"
-    }
+    },
+    "current_head_after_run118": "01de25b68e457dda89badb9f2e9c1a7413635d1f"
   },
   "ci": {
     "exact_head_sha": "3c533574b73943cfe4a21b06b64af61b6e06c3a5",
@@ -237,6 +238,56 @@
       },
       "low_or_zero_coverage_areas": "Several legacy modules under agi, analysis, ingestion, monetization and portions of orchestration remain at 0% or low coverage in the inclusive report.",
       "decision": "Expanded package scope is present, but 53% inclusive floor needs a documented ratchet; legacy 70% floor excludes major packages. Coverage policy remains a merge blocker."
+    },
+    "current_head_verification": {
+      "head_sha": "01de25b68e457dda89badb9f2e9c1a7413635d1f",
+      "full_suite": {
+        "run_id": 43565549709,
+        "event": "push",
+        "conclusion": "success",
+        "tests_passed": 3631,
+        "subtests_passed": 8,
+        "failures": 0,
+        "inclusive_coverage_percent": 62.42,
+        "duration_seconds": 60.25,
+        "legacy_core_coverage_percent": 76,
+        "wheel_build": "passed",
+        "packaged_primary_mission": "passed",
+        "installed_barrot_v3_and_xrp_mission": "passed",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549709"
+      },
+      "dependency_audit_push": {
+        "run_id": 43565549701,
+        "conclusion": "success",
+        "manifest_groups_passed": 5,
+        "known_vulnerabilities_reported": 0,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549701"
+      },
+      "dependency_audit_pull_request": {
+        "run_id": 43565555309,
+        "conclusion": "success",
+        "manifest_groups_passed": 5,
+        "known_vulnerabilities_reported": 0,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555309"
+      },
+      "fail_closed_push": {
+        "run_id": 43565549721,
+        "conclusion": "success",
+        "merge_enabled": false,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549721"
+      },
+      "fail_closed_pull_request": {
+        "run_id": 43565555283,
+        "conclusion": "success",
+        "merge_enabled": false,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555283"
+      },
+      "pull_request_ci": {
+        "run_id": 43565555577,
+        "conclusion": "skipped",
+        "reason": "integration branch condition",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555577"
+      }
     }
   },
   "workflow_security_review": {
@@ -545,7 +596,50 @@
       "sbi_vc_trade_wallet_7d_change_xrp": -453000,
       "sbi_vc_trade_wallet_30d_change_xrp": -1200000,
       "caveat": "labeled exchange wallet balance, not SBI-owned XRP, customer holdings or remittance volume",
-      "multi_rail": "SBI also has JPYSC/Startale, Solana and Ondo initiatives; do not treat as exclusive XRP demand"
+      "multi_rail": "SBI also has JPYSC/Startale, Solana and Ondo initiatives; do not treat as exclusive XRP demand",
+      "sbi_vc_trade_registered_accounts": {
+        "count": 2000000,
+        "as_of": "2026-07-06",
+        "interpretation": "registered service accounts, not active users or XRP holders"
+      },
+      "jpy_sc": {
+        "service_handled_balance_jpy": 30000000000,
+        "lending_balance_jpy": 10000000000,
+        "as_of": "2026-11-02",
+        "interpretation": "SBI VC Trade reported JPYSC handling balance above ¥30B and lending balance above ¥10B; non-XRP yen stablecoin rail, not XRP flow or circulating supply"
+      },
+      "rlusd_vctrade": {
+        "launch_date": "2026-06-24",
+        "classification": "SBI VC Trade's Japanese-law classification as a Type 4 electronic payment instrument; not a statement of US legal classification",
+        "supported_chain": "Ethereum only",
+        "xrpl_supported": false,
+        "deposit_withdrawal_fee": "free",
+        "withdrawal_limit_jpy_per_transaction": 1000000,
+        "interpretation": "SBI's RLUSD distribution does not directly create XRPL RLUSD activity or prove XRP demand"
+      },
+      "crypto_card": {
+        "launch_date": "2026-05-01",
+        "partners": [
+          "SBI VC Trade",
+          "Aplus",
+          "Visa"
+        ],
+        "selectable_rewards": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "mechanism": "card points automatically convert to the selected asset",
+        "interpretation": "not direct card-funded XRP purchases; reward volume undisclosed"
+      },
+      "sbi_ripple_asia_details": {
+        "sbi_group_voting_rights_percent": 60,
+        "ripple_voting_rights_percent": 40,
+        "as_of": "2026-03-31",
+        "feb26_2026": "concept study for tokenized deposits and deposit-type digital money using MoneyTap and a token-issuance platform, with XRPL considered; not a production payment-volume disclosure",
+        "feb24_2026": "SBI Ripple Asia and DSRV began Japan-Korea remittance/payment blockchain research; release says study is not a specific service-development or commercialization commitment",
+        "sep30_2025": "Tobu Top Tours MOU for partner-specific tokens/NFT-linked payment platform targeting first-half 2026 launch; current launch not verified"
+      }
     },
     "sbic": {
       "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
@@ -559,7 +653,24 @@
       "circle_q3_coinbase_distribution_cost_usd": 331300000,
       "pnc_coinbase_pilot": "USDC with automatic USD conversion; not XRP settlement",
       "bny": "XRP/RLUSD custody support; no XRP-specific collateral utilization disclosed",
-      "note": "Coinbase revenue and Circle distribution cost are different accounting measures, not mirror entries; RLUSD/USDC growth is not XRP demand"
+      "note": "Coinbase revenue and Circle distribution cost are different accounting measures, not mirror entries; RLUSD/USDC growth is not XRP demand",
+      "coinbase_rlusd": {
+        "launch_date": "2026-10-28",
+        "channels": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase Retail"
+        ],
+        "supported_chains": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "global_exchange_collateral": "forthcoming, not verified live"
+      },
+      "sbi_coinbase_direct_relationship": "No direct SBI-Coinbase joint venture or commercial partnership verified. Coinbase is Evernorth's disclosed principal XRP market for accounting, not evidence of SBI ownership or custody.",
+      "ripple_circle_direct_relationship": "No direct Ripple-Circle joint venture verified. They are separate stablecoin issuers; SBI has separate relationships with both.",
+      "circle_arc": "SBI-group participation in Circle Arc presale is a separate Layer-1 investment relationship, not XRPL activity."
     },
     "ask_coin": {
       "permission_coin_ask": "CoinMarketCap identifies ASK as LayerZero OFT on Base and Polygon",
@@ -821,6 +932,90 @@
       "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
       "published_at": "2025-12-24",
       "independence_group": "youtube_metadata"
+    },
+    {
+      "id": "sbi_jpysc_nov2",
+      "publisher": "SBI Holdings/SBI VC Trade",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "published_at": "2026-11-02",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_accounts_2m",
+      "publisher": "SBI Holdings/SBI VC Trade",
+      "url": "https://www.sbigroup.co.jp/news/2026/0707_16468.html",
+      "published_at": "2026-07-07",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_rlusd_listing",
+      "publisher": "SBI Holdings/SBI VC Trade and Ripple",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at": "2026-06-24",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_crypto_card",
+      "publisher": "Visa/SBI/Aplus",
+      "url": "https://www.visa.co.jp/about-visa/newsroom/press-releases/nr-jp-260501.html",
+      "published_at": "2026-05-01",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_ripple_asia_profile",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "observed_at": "2026-11-14",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_ripple_asia_tokenized_deposit_poc",
+      "publisher": "SBI Ripple Asia/SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "published_at": "2026-02-26",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_ripple_asia_dsrv_research",
+      "publisher": "SBI Ripple Asia/SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "published_at": "2026-02-24",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_tobu_mou",
+      "publisher": "SBI Ripple Asia/SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/2025/0930_15782.html",
+      "published_at": "2025-09-30",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_circle_jv",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "published_at": "2025-05-09",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_circle_arc",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "published_at": "2026-05-12",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "ripple_coinbase_rlusd",
+      "publisher": "Ripple",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published_at": "2026-10-28",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "ripple_bny_custody",
+      "publisher": "Ripple/BNY",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "published_at": "2026-10-27",
+      "independence_group": "corporate_primary"
     }
   ]
 }

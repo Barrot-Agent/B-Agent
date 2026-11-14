@@ -1151,3 +1151,39 @@ Path overlaps: #1661 1,072/1,072; #1660 972/972; #1643 670/670; #1642 7/7; #1640
 - [Consolidated PR #1662](https://github.com/Barrot-Agent/B-Agent/pull/1662)
 
 Next: complete semantic review of 1,174 paths; resolve least privilege, branch protection, independent review and Pages authorization; add a documented inclusive-coverage ratchet and tests for uncovered legacy packages; build a policy-v6-compliant independent target-source cohort; collect synchronized historical spot/L2/derivatives/flow/collateral data with trusted raw receipts; train an XRP-specific candidate only when the dataset supports it. Keep forecasts disabled.
+
+
+---
+
+## Run118 verification and SBI/Ripple ecosystem addendum (2026-11-14)
+
+### Latest exact-head verification
+
+The documentation-only Run118 commit `01de25b68e457dda89badb9f2e9c1a7413635d1f` has now passed the full repository suite and all available push/PR safety and dependency gates.
+
+- Full repository suite: 3,631 passed, eight subtests, zero failures; 62.42% inclusive coverage; 60.25 seconds.
+- Legacy core coverage: 76%.
+- Wheel build, packaged primary mission, installed Barrot V3 and XRP mission: passed.
+- Dependency audit: five manifest groups passed, zero known vulnerabilities reported.
+- Push and PR fail-closed gates: passed; merge disabled.
+- PR CI: skipped by the integration-branch condition.
+
+Evidence: [full suite 43565549709](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549709), [push dependency audit 43565549701](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549701), [PR dependency audit 43565555309](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555309), [push fail-closed 43565549721](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549721), [PR fail-closed 43565555283](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555283).
+
+Current head remains documentation-only; no runtime code changed.
+
+### Additional primary SBI findings
+
+- SBI VC Trade reported more than **¥30B JPYSC handling balance** and more than **¥10B JPYSC lending balance** as of November 2, 2026. This is a separate yen-stablecoin rail, not XRP volume, XRP collateral or circulating supply.
+- SBI VC Trade reported **two million registered crypto-service accounts** as of July 6, 2026. These are registered service accounts, not active users or XRP holders.
+- SBI VC Trade began handling RLUSD on June 24, 2026 and classifies it under Japan's Type 4 electronic payment instrument framework. The official release explicitly says the supported network is **Ethereum only**; XRPL RLUSD deposits/withdrawals are not supported by VCTRADE. This is a critical distinction: SBI's RLUSD distribution does not prove XRPL RLUSD activity or XRP demand.
+- The SBI VISA Crypto Card, launched with Aplus and Visa on May 1, lets applicants select BTC, ETH or XRP. Card points automatically convert to the selected asset; this is not direct card-funded XRP purchasing, and reward volumes are undisclosed.
+- SBI Ripple Asia's official group profile shows SBI Group 60% voting rights and Ripple 40% as of March 31, 2026.
+- SBI Ripple Asia's February 26, 2026 tokenized-deposit/deposit-money concept study uses MoneyTap and a token-issuance platform and considers XRPL; it does not disclose production transaction volume.
+- SBI Ripple Asia and DSRV's February 24, 2026 Japan-Korea payment/remittance release describes joint research and explicitly says it is not a specific commercial service-development commitment.
+- A September 30, 2025 SBI Ripple Asia/Tobu Top Tours MOU targeted a first-half 2026 partner-token/NFT-linked payment platform; current production launch was not verified.
+- No direct SBI-Coinbase joint venture or commercial partnership was verified. Coinbase is Evernorth's disclosed principal XRP market for accounting, not evidence of SBI ownership or custody.
+- No direct Ripple-Circle joint venture was verified. SBI has separate relationships with both issuers. SBI's Circle Arc presale participation concerns a separate Layer-1, not XRPL.
+
+Primary sources: [SBI JPYSC balances](https://www.sbigroup.co.jp/news/2026/1102_16704.html), [SBI two-million accounts](https://www.sbigroup.co.jp/news/2026/0707_16468.html), [SBI RLUSD listing and Ethereum-only network restriction](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html), [SBI/Visa crypto card](https://www.visa.co.jp/about-visa/newsroom/press-releases/nr-jp-260501.html), [SBI Ripple Asia profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html), [tokenized-deposit concept study](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html), [Japan-Korea research](https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html), [Tobu Top Tours MOU](https://www.sbigroup.co.jp/news/2025/0930_15782.html), [SBI/Circle JV presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf), [SBI Circle Arc presale](https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf).
+
