@@ -48,6 +48,7 @@ jobs:
             tests/test_weighted_corroboration.py \
             tests/test_risk_manager.py \
             tests/test_coinbase_trader.py \
+            tests/test_paper_trader_product_state.py \
             tests/test_repository_repair.py \
             tests/test_v3_scripts.py \
             tests/test_barrot_agent_script.py \
