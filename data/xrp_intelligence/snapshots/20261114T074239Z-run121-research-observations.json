@@ -1,0 +1,313 @@
+{
+  "schema_version": "barrot.xrp.observation_snapshot.v1",
+  "snapshot_id": "run121_20261114T074239Z",
+  "captured_at_utc": "2026-11-14T07:42:39Z",
+  "recorded_at_utc": "2026-11-14T07:49:55Z",
+  "model_eligible": false,
+  "forecast_issued": false,
+  "raw_source_capture_status": "NOT_CAPTURED",
+  "hash_scope": "Source-note hashes cover authored normalized notes only; no raw publisher bytes or raw HTTP payload hashes were captured.",
+  "observations": {
+    "spot": {
+      "coinglass": {
+        "price_usd": 0.986,
+        "change_24h_pct": -4.32,
+        "change_7d_pct": -15.15,
+        "change_30d_pct": -26.04,
+        "change_90d_pct": -0.6,
+        "change_ytd_pct": -46.41,
+        "change_1y_pct": -56.06,
+        "low_24h": 0.9811,
+        "high_24h": 1.043,
+        "spot_volume_24h_usd": 638680000,
+        "futures_volume_24h_usd": 2840000000,
+        "open_interest_usd": 2180000000,
+        "open_interest_header_change_pct": -3.65,
+        "open_interest_page_narrative_change_pct": 0.7,
+        "funding_8h_pct": -0.0042,
+        "liquidations_24h_usd": 13280000,
+        "long_share_of_liquidations_pct": 91,
+        "etf_net_flow_2026_11_13_usd": -1100000,
+        "fear_greed_index": 12,
+        "provider_event_timestamp": null,
+        "model_admissible": false,
+        "exclusion_reason": "Rendered aggregator snapshot lacks a provider event timestamp; same-page OI fields conflict; depth table blank."
+      },
+      "okx": {
+        "event_timestamp_utc": "2026-11-14T07:33:40.164Z",
+        "retrieved_at_utc": "2026-11-14T07:42:39Z",
+        "last": 0.9871,
+        "bid": 0.987,
+        "ask": 0.9871,
+        "open_24h": 1.0302,
+        "high_24h": 1.0438,
+        "low_24h": 0.9816,
+        "volume_24h_xrp": 43602459.674647,
+        "age_seconds_at_cutoff": 538.836,
+        "model_admissible": false,
+        "exclusion_reason": "Event age exceeds 300-second freshness limit."
+      },
+      "order_book": {
+        "synchronized_multi_venue_l2_admitted": false,
+        "reason": "No synchronized raw spot L2 snapshot; OKX ticker is top-of-book only; CoinGlass depth table blank; Kraken snapshot lacks event timestamp."
+      },
+      "historical_low_claim": {
+        "claim": "Below the August 2025 low and lowest since November 2024",
+        "status": "SECONDARY_CLAIM_NOT_VERIFIED",
+        "reason": "Current venue lows are below 0.985, but a two-year venue-level historical OHLC comparison was not completed."
+      }
+    },
+    "derivatives": {
+      "coinglass_open_interest_usd": 2180000000,
+      "coinglass_header_change_pct": -3.65,
+      "coinglass_narrative_change_pct": 0.7,
+      "funding_8h_pct": -0.0042,
+      "liquidations_24h_usd": 13280000,
+      "long_liquidation_share_pct": 91,
+      "source_disagreement": "CoinGlass header and generated narrative disagree on OI direction; provider coverage and timestamp differences prevent averaging.",
+      "model_admissible": false
+    },
+    "etf_flows": {
+      "xrp_insights_settled_2026_11_09_to_12_xrp": -9481905,
+      "xrp_insights_2026_11_13_status": "PROVISIONAL",
+      "alpha_finance_2026_11_13_usd": -1100000,
+      "coinglass_2026_11_13_usd": -1100000,
+      "independence": "CoinGlass and Alpha may share issuer daily-flow inputs; not independent confirmations. XRP Insights uses holdings changes and has different fund coverage.",
+      "model_admissible": false
+    },
+    "exchange_balances": {
+      "observed_at": "2026-11-13",
+      "tracked_xrp": 22260000000,
+      "labeled_wallets": 707,
+      "exchanges": 24,
+      "same_wallet_change_7d_xrp": -77300000,
+      "same_wallet_change_30d_xrp": -279700000,
+      "caveat": "Includes cold storage, omnibus and wrapped-asset backing; not immediately tradable exchange float."
+    },
+    "cbxrp_morpho": {
+      "coinbase_reserve_xrp": 154660521.83,
+      "cbxrp_supply_base": 154658275.3,
+      "reserve_excess_xrp": 2246.53,
+      "reserve_supply_ratio": 1.000014526,
+      "morpho_market": "Base USDC/cbXRP",
+      "outstanding_loans_usdc": 52990000,
+      "total_liquidity_usdc": 18470000,
+      "total_market_size_usdc": 71460000,
+      "displayed_utilization_pct": 90.92,
+      "derived_loans_over_loans_plus_liquidity_pct": 74.16,
+      "utilization_discrepancy_percentage_points": 16.76,
+      "borrowers": 1139,
+      "suppliers": 216,
+      "top_three_supplier_vault_share_pct": 70.63,
+      "liquidation_ltv_pct": 62.5,
+      "liquidation_penalty_pct": 12.67,
+      "borrow_rate_pct": 7.52,
+      "lend_rate_pct": 6.04,
+      "realized_bad_debt_usdc": 0,
+      "unrealized_bad_debt_usdc": 0,
+      "oracle": {
+        "provider": "Chainlink",
+        "heartbeat": "1d",
+        "deviation_threshold_pct": 0.5,
+        "reported_price": 0.99385
+      },
+      "market_price_comparison": {
+        "coinglass": 0.986,
+        "approx_difference_pct": 0.8
+      },
+      "model_admissible": false,
+      "exclusion_reason": "App-reported data only; utilization denominator and value-secured scope inconsistent; oracle timestamp absent; BaseScan verification unavailable."
+    },
+    "stablecoins": {
+      "rlusd_defillama_total_usd": 2781000000,
+      "rlusd_xrpl_usd": 764090000,
+      "rlusd_ethereum_usd": 2001000000,
+      "rlusd_base_usd": 16110000,
+      "rlusd_xrpl_share_pct": 27.5,
+      "rlusd_ethereum_share_pct": 72,
+      "rlusd_xrpl_change_30d_pct": -27.9,
+      "rlusd_ethereum_change_30d_pct": 47.62,
+      "ripple_issuer_snapshot_2026_11_12_circulating_usd": 2689900000,
+      "ripple_issuer_snapshot_2026_11_12_reserves_usd": 2826500000,
+      "ripple_issuer_reserve_coverage_pct": 105.08,
+      "ripple_latest_published_monthly_attestation_at_retrieval": "2026-09",
+      "cross_source_discrepancy_usd": 91100000,
+      "cross_source_discrepancy_note": "DefiLlama Nov 14 supply exceeds Ripple's Nov 12 issuer circulating figure by $91.1M; different dates/methodologies, not averaged.",
+      "usdc_defillama_total_usd": 69203000000,
+      "usdc_xrpl_visibility": "No XRPL row in displayed top-chain table; not evidence of zero."
+    },
+    "agentic_payments": {
+      "x402_all_time_payments": 15741228,
+      "x402_all_time_value_usd": 81088.4,
+      "x402_registered_merchants": 193,
+      "x402_listed_services": 5412,
+      "x402_monid_endpoints": 2600,
+      "x402_monid_upstream_providers": 80,
+      "x402_derived_mean_value_per_payment_usd": 0.00515,
+      "recent_displayed_token": "RLUSD",
+      "recent_merchant_status_label": "Unverified",
+      "independent_reconciliation": false,
+      "interpretation": "High payment count but small reported value; no token-level split, so not evidence of comparable XRP demand."
+    },
+    "macro": {
+      "observation_date": "2026-11-13",
+      "usd_jpy_above": 160,
+      "us_10y_yield_pct": 5.13,
+      "us_2y_yield_pct": 4.85,
+      "ppi_yoy_pct": 6.5,
+      "ppi_monthly_pct": 0.3,
+      "consensus_monthly_pct": 0.4,
+      "december_fed_hike_probability_pct": 92,
+      "interpretation": "Dollar strength, high yields and Japan intervention risk are cross-asset liquidity variables; no XRP-specific causal relationship established."
+    },
+    "institutional_capital": {
+      "evernorth_gross_cash_proceeds_usd": 272600000,
+      "evernorth_in_kind_xrp": 388910554,
+      "evernorth_cash_funded_xrp_purchase": 84365876,
+      "evernorth_cash_used_for_xrp_purchase_usd": 214050000,
+      "evernorth_post_close_warrant_cash_usd": 35300000,
+      "evernorth_remaining_warrants": 8666279,
+      "evernorth_pik_note_principal_usd": 30000000,
+      "evernorth_eloc_proceeds_disclosed_as_of_2026_11_09_usd": 0,
+      "evernorth_q3_net_income_usd": 155265000,
+      "evernorth_q3_non_cash_fair_value_gain_usd": 162834000,
+      "evernorth_nine_month_net_loss_usd": 32870000,
+      "evernorth_revenue_reported": false,
+      "accounting_note": "The $214.05M XRP purchase is a use of gross cash proceeds, not another capital raise; debt, warrants, ELOC capacity and secondary resales are separate."
+    }
+  },
+  "source_note_ids": [
+    {
+      "id": "coinglass_20261114",
+      "sha256": "dfa0720c7274f2439e5315afe5dd7e497fc3ff22cb47934e81e8000c7b5cb2da"
+    },
+    {
+      "id": "okx_ticker_20261114",
+      "sha256": "162aa245fbf0c94bb53e54468b804ed6905ef351828c52f0cf00fd97a00f783e"
+    },
+    {
+      "id": "coinbase_cbxrp_20261114",
+      "sha256": "d365ddb9dd2e093ac8ec33ba6d1c7cc88cba936e1ef944d6cdbfe879aa1de10e"
+    },
+    {
+      "id": "morpho_cbxrp_usdc_20261114",
+      "sha256": "5a32f7a5c58d413e34f55ddd7c89e6d4def24b93b2d23020559361b0ae0b3860"
+    },
+    {
+      "id": "defillama_rlusd_20261114",
+      "sha256": "241a6718268bf04e6c41ef0d33f2f28b4bf3985e437afbbba481ee1b6359d0e7"
+    },
+    {
+      "id": "ripple_rlusd_transparency_20261112",
+      "sha256": "f285d594c3e86dadee6226b4fd428900a6885387f72a0f52fafadcd3332cf6dc"
+    },
+    {
+      "id": "defillama_usdc_20261114",
+      "sha256": "db94c215d2fd83c5a19e9ea6747397fa38bb8dc1783f8a867ead845840febe27"
+    },
+    {
+      "id": "t54_xrpl_ai_hub_20261114",
+      "sha256": "61680e514fe393b1e7c4723bf85268127cef56894927cfd980ac28b0282c7f23"
+    },
+    {
+      "id": "mastercard_agent_pay_20260610",
+      "sha256": "0e8258fb2835376f8afeec7ffb0d985b6bd22314fe8cdae45b9a7cc77a5a37bb"
+    },
+    {
+      "id": "linux_foundation_x402_20260714",
+      "sha256": "d7494421a63bcc386b2456046beee766d2e67b269470d339fa5dfe40cc9c31f5"
+    },
+    {
+      "id": "circle_sec_q3_2026",
+      "sha256": "07354d67ddeb19076d941db478e8a117f8828ff55080fdbfe1a008efad3a83ac"
+    },
+    {
+      "id": "coinbase_sec_q3_2026",
+      "sha256": "b79484b4b88adfe0b8ecf151543530ce527fb4e64472d7504c65c795ad093769"
+    },
+    {
+      "id": "sbi_open_standard_20261016",
+      "sha256": "9b043227be35bd12cf1addf16c969795131feee7d293371a900e2ba79e741580"
+    },
+    {
+      "id": "sbi_blackrock_jpysc_20261027",
+      "sha256": "e730c7a002a6352585e69154c71c7333d1ff040c175b7a8f829d8c73f62e7752"
+    },
+    {
+      "id": "sbi_smbc_20261030",
+      "sha256": "f7960223fe70f57703829176d3465c8ef7cce1ee477d624543e5de44d99dcda7"
+    },
+    {
+      "id": "sbi_jpysc_balance_20261102",
+      "sha256": "b0480ea84a8c65de3e5453764f568478523cd72181f17e0b1ca19510b6f2a64a"
+    },
+    {
+      "id": "sbi_circle_jv_20250509",
+      "sha256": "35e80c2c035a32a17667de628af1e270fab286480635d1eccc2ca76d30833554"
+    },
+    {
+      "id": "sbi_ripple_asia_profile_20260331",
+      "sha256": "e01146127e8fc42d6461de9217b15aea09e4baf4d9fac4124da1bea3c12ddfe2"
+    },
+    {
+      "id": "sbi_ripple_stake_20250207",
+      "sha256": "8f7be3e253791b2028c84864a00f7b2634258300bacb224ddb9e3925eafd1b77"
+    },
+    {
+      "id": "sbi_remit_xrp_20230906",
+      "sha256": "bb7ce6675f38aa7d761918c3f6d752a031e43478d377a543d193b788fe03e5d0"
+    },
+    {
+      "id": "sbi_dsrv_research_20260224",
+      "sha256": "fcb7834cc0bd3522f4c7a37555ccafeb3cbca5ca8c4bf70205633db7e4135801"
+    },
+    {
+      "id": "sbi_awaj_support_20260220",
+      "sha256": "1a88f9bebbea9b323d559703ba3f6f78b9a07ec8a07071c6c1e2cf8fa64f2245"
+    },
+    {
+      "id": "sbi_tobu_platform_20250930",
+      "sha256": "0a1cc36be87e08bc35681c4eaf8f1260c4d3d68a65ef047b1d7e3e50dbb6c370"
+    },
+    {
+      "id": "sbi_vc_rlusd_20260624",
+      "sha256": "138eb85ec41197cfc44d8088334d063a42929e490b8fe2c28bc81c24a9827322"
+    },
+    {
+      "id": "sbi_vc_jpysc_20260624",
+      "sha256": "246b1c494ec12c3d1af8efb7cb11dc0489bb14e761eb39f44c653117ae443d7b"
+    },
+    {
+      "id": "sbi_bitbank_20261001",
+      "sha256": "a69de75c922ad3b4f7ff34f1c768612ee9559a4b9e7338179e78905ea8a026f0"
+    },
+    {
+      "id": "sbic_identity_20261114",
+      "sha256": "73b3a7d545d7738c3d7bb579783194da6161b8a31cc6c2fb911aa4dcbeaeaad9"
+    },
+    {
+      "id": "sbic_chatgpt_training_20250612",
+      "sha256": "18691c636b281cc0ad8728d5864a751178dfc58bbf9eba26e762ade85904aa70"
+    },
+    {
+      "id": "permission_ask_token",
+      "sha256": "53934f688c09c86906a50a6ab512f6ed9bc063e516f2f083083952a63be05e2e"
+    },
+    {
+      "id": "actual_capital_commentary_20250609",
+      "sha256": "66eb1c5952e828e5e74c3716d7a327f2c2abb5d112b52f6127d31550f4b4eda4"
+    },
+    {
+      "id": "evernorth_sec_q3_2026",
+      "sha256": "30c0e8bd2524adb231a798b3fea17919bd601c7bd2c1970444d67a5e98e28e04"
+    }
+  ],
+  "warnings": [
+    "No raw publisher bytes were captured in this run; normalized note hashes are not raw-source hashes.",
+    "No market observation in this snapshot is eligible for a directional forecast.",
+    "CoinGlass OI fields conflict internally; ETF trackers overlap upstream issuer data.",
+    "Morpho utilization, total liquidity and oracle price require on-chain reconciliation.",
+    "RLUSD supply differs between DefiLlama Nov 14 and Ripple issuer Nov 12 snapshots.",
+    "x402 counts and value are operator-reported and not independently audited."
+  ]
+}

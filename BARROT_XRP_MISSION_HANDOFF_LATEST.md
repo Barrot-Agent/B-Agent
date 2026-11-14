@@ -1,5 +1,5 @@
-# Barrot XRP Intelligence — Canonical Mission Handoff (Run115)
-
+# BARROT XRP MISSION HANDOFF — Run121
+Updated: 2026-11-14T07:49:55Z | Main SHA: fb272b40966834754ec686f9ed3ab94123f09306 | Verified code head: e3cb41e90afa466d2285a0fa68c82443bd757f67
 Updated 2026-11-14T03:41:31Z; market capture cutoff 2026-11-14T03:36:16Z.
 
 **Priority 1: XRP intelligence and measured prediction-engine mastery. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.**
@@ -1514,3 +1514,117 @@ This reinforces the distinction: feature-store and receipt architecture is imple
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No model-eligible synchronized L2 dataset, trained XRP candidate or independent shadow outcome cohort exists. No paper trade, deployment, external-model dispatch, real-money action, or source-PR closure occurred.
 
 PR #1662 remains draft/open with zero formal approvals. **NO MERGE.** The exact-head tests now pass, but independent review, semantic reconciliation, least-privilege permissions, branch protection, coverage-ratchet justification and Pages publication authorization remain blockers.
+
+
+
+## Run121 — 2026-11-14T07:49:55Z
+
+### Mission and execution status
+
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation. This run used the existing integration branch and PR #1662. No new branch or PR was created. No main-branch change, merge, deployment, external-model dispatch, secret rotation, paper trade or financial action occurred.
+
+### Repository and exact-head verification
+
+- Main: \`fb272b40966834754ec686f9ed3ab94123f09306\`, unchanged.
+- Integration code head verified: \`e3cb41e90afa466d2285a0fa68c82443bd757f67\`.
+- Integration branch: \`integration/xrp-v3-unified-main-20261112\`; 2,371 commits ahead, zero behind.
+- Main tree: 1,381 entries / 87 workflows. Integration tree: 2,417 entries / 88 workflows.
+- Open PR inventory: 375 (361 drafts, 14 non-drafts). #1662 is the only open PR based on current main.
+- PR #1662: draft/open, 1,176 changed files, 347,579 additions, 5,354 deletions; 50 workflow files and seven public web files. Zero formal reviews, approvals and inline review comments. GitHub's mergeable flag is only a conflict indicator, not approval.
+- The 666-file research directory contrasts with only nine entries under \`data/xrp_intelligence\`. No tracked SQLite feature-store database was found. The latest persisted market snapshot is October 28. Both existing source-preimage records still have null raw-content hashes and null retrieval timestamps.
+
+### Engineering change actually implemented
+
+Commit \`e3cb41e\` adds and exports \`evaluate_candidate_readiness_uncertainty\` in \`barrot_agent/evolution/paired_block_bootstrap.py\`, with four tests.
+
+The evaluator compares a candidate against each of the four required baselines (naive class prior, momentum, mean reversion and volatility) in both the out-of-sample and independent shadow windows. It applies Bonferroni correction across eight comparisons, requiring 99.375% individual confidence for 95% familywise confidence. It enforces 10,000 bootstrap resamples, 100 paired origins, five independent source clusters, at least five origins per cluster and declared cadence. Candidate-minus-baseline Brier and log-loss means and both temporal/source-clustered interval upper bounds must be negative.
+
+The helper is exported but is not yet called by walk-forward because there is no trained XRP candidate. It does not validate source receipts, sign evaluator attestation or authorize issuance; the forecast ledger remains the final gate.
+
+**Exact code-head verification:** [Full repository suite 43571925779](https://github.com/Barrot-Agent/B-Agent/actions/runs/43571925779) passed 3,635 tests, eight subtests, zero failures, 62.44% inclusive coverage, 76% legacy core coverage, 101.99 seconds, wheel build and installed V3/XRP mission verification. [Dependency audit 43571930099](https://github.com/Barrot-Agent/B-Agent/actions/runs/43571930099) passed five manifest groups with zero known vulnerabilities reported. [Fail-closed push gate 43571925767](https://github.com/Barrot-Agent/B-Agent/actions/runs/43571925767) and [PR gate 43571930049](https://github.com/Barrot-Agent/B-Agent/actions/runs/43571930049) passed. PR-event full CI is skipped by the explicit branch condition; the push-event full suite is authoritative.
+
+### Current XRP market and derivatives
+
+Research cutoff: 2026-11-14 07:42:39 UTC.
+
+- CoinGlass rendered snapshot: $0.9860, -4.32% 24h, -15.15% 7d, -26.04% 30d, -0.60% 90d, -46.41% YTD, -56.06% 1y; 24h low $0.9811, high $1.043; spot volume $638.68M, futures volume $2.84B.
+- CoinGlass OI header: $2.18B, -3.65%; the same page's generated narrative says +0.70%. Preserve both; do not choose or average. Funding -0.0042% per 8h; 24h liquidations $13.28M with 91% long-side; ETF flow -$1.1M for November 13; Fear & Greed 12. Exchange-depth table was blank.
+- OKX event timestamp 07:33:40.164 UTC: $0.9871 last, $0.9870/$0.9871 bid/ask, 24h range $0.9816–$1.0438, volume 43.60M XRP. It was 538.836 seconds old at cutoff and is excluded by the five-minute admission rule.
+- No synchronized raw spot L2 was admitted. The claim that XRP traded below its August 2025 low and at the lowest level since November 2024 remains secondary and has not been verified against a two-year venue-level OHLC series.
+- XRP Insights: -9.482M XRP holdings changes for settled November 9–12; November 13 remained provisional. Alpha and CoinGlass both show about -$1.1M on November 13, but likely share issuer inputs. Do not call them independent confirmations.
+- The November 13 wallet scan still shows 22.26B XRP across 707 labeled wallets/24 exchanges, with same-wallet changes of -77.3M (7d) and -279.7M (30d). Cold storage, omnibus and wrapped backing are included; this is not tradable float.
+
+### cbXRP collateral and stablecoins
+
+- Coinbase proof-of-reserves page refreshed November 14 at 07:15 AM (timezone unstated): 154,660,521.83 XRP reserves versus 154,658,275.30 cbXRP on Base; excess 2,246.53 XRP, ratio 1.000014526x. This is issuer-published proof, not independent CPA attestation.
+- Morpho Base USDC/cbXRP app page reports $52.99M loans, $18.47M liquidity, $71.46M market size, 90.92% utilization, 1,139 borrowers, 216 suppliers, 62.5% LLTV, 12.67% liquidation penalty, 7.52% borrow rate and zero displayed bad debt. Top three supplier vaults account for 70.63% of displayed supply shares.
+- Morpho's utilization does not reconcile with loans/(loans + displayed liquidity), which is 74.16%. Its $200.81M value-secured field also exceeds Coinbase's entire cbXRP reserve and has unresolved scope. Chainlink displays 1d heartbeat/0.5% deviation and $0.99385 oracle price, about 0.8% above the contemporaneous CoinGlass snapshot. The discrepancy warrants investigation but does not prove an oracle fault. BaseScan returned 403, so raw on-chain verification is outstanding.
+- DefiLlama November 14: RLUSD approximately $2.781B; XRPL $764.09M (27.5%), Ethereum $2.001B (72.0%), Base $16.11M. XRPL 30d -27.90%, Ethereum +47.62%. This is native chain issuance distribution, not evidence of direct cross-chain transfers.
+- Ripple's November 12 transparency page: $2.6899B circulating and $2.8265B reserve funds (issuer-reported 105.08% coverage). Latest downloadable independent monthly report at retrieval was September 2026, so the November 12 live balances were not yet covered by a published monthly report. DefiLlama's November 14 total exceeds the issuer November 12 figure by $91.1M; preserve dates and methodology disagreement.
+- DefiLlama USDC total was about $69.203B across 127 chains. XRPL did not appear in the displayed top-chain table; that does not prove zero XRPL supply.
+
+### Institutional relationships and actual capital
+
+- Circle Q3 SEC filing: $73.879B USDC end-period circulation, $73.264B average; $13.868B USDC on Circle's own platform (Circle Mint accounts, corporate-held and noncustodial wallets offered by Circle), not Coinbase's platform. Circle's distribution costs under Coinbase agreements were $331.3M in Q3 and $986.6M for nine months.
+- Coinbase Q3 SEC filing reports $306.905M stablecoin revenue. It is not directly comparable to Circle's distribution costs. Coinbase lists RLUSD across its channels; Coinbase's Global Exchange collateral support was forthcoming, not live.
+- SBI/Circle: 50/50 Circle SBI Japan KK / SBI Circle Holdings JV; SBI also disclosed a $50M strategic investment in Circle shares. SBI VC Trade handles USDC and RLUSD. This is a direct relationship, distinct from XRP.
+- SBI/Ripple: SBI Ripple Asia is 60/40 SBI/Ripple and provides RippleNet software; it does not itself directly handle XRP. SBI Remit/SBI VC Trade/Ripple use XRP as a bridge in cross-border remittances. SBI's 2025 presentation stated ~9% actual Ripple holdings as largest external shareholder then; current November 2026 ownership is not reverified.
+- SBI VC Trade began handling RLUSD as a Japanese Type 4 electronic payment instrument on June 24, 2026. The notice does not specify an XRPL network route; do not infer one. JPYSC was initially restricted to SBI VC Trade accounts, with public-chain distribution deferred pending legal/tax clarification. November 2 JPYSC handling balance exceeded JPY 30B and lending balance exceeded JPY 10B; these are separate JPYSC measures, not XRP or public-chain supply.
+- SBI/Startale joined Open Standard with 140+ participants including Coinbase, Visa, Stripe, Mastercard and BlackRock; their JPYSC/OUSD interoperability is a proposed proof of concept, not a direct SBI-Coinbase commercial partnership or production XRP integration.
+- SBI/Startale/BlackRock signed an MOU to explore tokenized money-market fund and JPYSC interoperability. SMBC took a 5% stake in SBI Startale Marketing. Both are JPYSC/RWA initiatives, not XRP-specific.
+- SBI completed its 100% Bitbank acquisition October 1. September JVCEA statistics predate the closing and cannot establish a post-acquisition effect.
+- SBI Ripple Asia's February 2026 DSRV Japan-Korea payment research and AWAJ XRPL startup-support initiative are feasibility/technical-support activities, not verified production volumes. Its September 2025 Tobu Top Tours XRPL token/NFT payment platform targeted first-half 2026; no production launch confirmation was found by November 14.
+- SBI VC Trade ended XRP leverage trading in its Prime program on July 1, 2026; this is a counter-signal to broadening leverage access, while spot/remittance support remains separate.
+
+### Agentic payments and source interpretation
+
+- Linux Foundation x402 launched operationally July 14. Coinbase contributed x402; premier members include Circle, Coinbase, Mastercard, Ripple, Stripe and Visa; t54 Labs is a general member. Membership does not mean every member settles in XRP. Michael Hursta was appointed executive director October 1 as membership passed 50 organizations.
+- Mastercard Agent Pay for Machines participants include Coinbase, RippleX and t54 Labs. The system is multi-rail across cards, accounts and stablecoins. RippleX mentions XRPL/RLUSD, but Mastercard participation does not prove a production XRP payment rail.
+- t54's operator dashboard reports 15.741M payments and $81,088.40 all-time value, 193 merchants and 5,412 services; Monid contributes 2,600+ endpoints from 80+ providers. Recent displayed examples are RLUSD and merchant status is labeled Unverified. No token-level split or independent audit was shown. Derived mean value is about $0.00515 per payment. Counts are not capital inflows or XRP demand.
+- "Actual capital" is not a standardized XRP metric. Keep cash subscriptions, in-kind XRP, cash-funded purchases, warrant cash, debt, ELOC capacity, secondary resales, ETF holdings changes, exchange wallet transfers, spot buyer notional, realized cap, DeFi credit and stablecoin payment value separate. Market-cap change is mark-to-market, not cash inflow.
+
+### Identity and exact-phrase checks
+
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings. SBIC East's ChatGPT/Copilot course was external training for investee companies, not an OpenAI commercial partnership.
+- Permission's official ASK documentation lists Base and Polygon contracts; no XRPL issuer/contract was found.
+- Kamilah/Camilla Stevenson YouTube ownership remains unverified. A same-name TEDx appearance and third-party channel analytics are not sufficient to attribute the candidate channel. Verified own-channel video inventory remains zero; candidates stay quarantined.
+- Exact phrase "actual capital" yields commentary and inconsistent usages, not a canonical accounting field.
+
+### Nine-platform coordination
+
+Run121 map: \`research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run121.json\`.
+
+- ChatGPT GitHub access is verified and was used for repository reads and code/test writes on the existing integration branch; permissions remain overprivileged (admin, maintain, push, pull, triage).
+- Claude, Grok, Gemini and Codex: authentication/data flow unverified.
+- Copilot: no formal review on #1662.
+- Hugging Face: prior BUILD_ERROR, no deployment.
+- Kaggle: untested, no submission.
+- Databricks: previous HTTP 403, no write.
+- LunaRoute remains separate; main sync fails on missing httpx and masks the failure; integration quarantines the automatic push path. No external model dispatch or data transfer occurred.
+
+### Merge and backlog decision
+
+**NO MERGE.** PR #1662 remains draft with zero formal approvals. The exact code head passed full tests, but the branch remains 2,371 commits ahead of main, has 1,176 changed files, 50 workflow changes and seven public web changes. Semantic reconciliation is incomplete. Main branch-protection detail returns 403; fallback ruleset 10863829 is disabled; integration is unprotected; CODEOWNERS is self-owned; GitHub connector permissions are overprivileged; Pages publication authorization is unresolved.
+
+Backlog:
+- Supersession candidates: #1661, #1660, #1643, #1642, #1640, #1320, #1318, #1317. Preserve until a successor is merged and verified on main.
+- Unique/unreviewed: #1653 (six source-only paths), #1269 (eight), #1641 (three), #1614 (27), plus #1655, #1659 and #1615. Preserve.
+- Dependency candidates #1644–#1650 and #1254/#1255: blocked pending individual current-main validation.
+- No source PR was closed.
+
+### Data and forecast limitations
+
+The scheduled ingestion workflow is main-only and read-only, but it remains unmerged and has not executed on main. It uses GitHub artifacts/cache with 90-day raw artifacts, seven-day per-run checkpoints and 90-day daily archives; this is not independent WORM storage. The tracked data directory has nine entries, no current SQLite feature-store database, and the latest persisted market snapshot is October 28. Two source preimages still have null raw hashes and retrieval timestamps. The current run's SHA-256 values cover authored normalized notes, not raw publisher bytes; raw HTTP payloads were not captured.
+
+**Forecast NOT_ISSUED. Accuracy NOT_EVALUATED.** There is no trained XRP-specific candidate model, no current synchronized L2/spot/derivatives/exchange-flow/collateral dataset, and no independent shadow outcome cohort. No directional forecast, paper trade or real-money action occurred.
+
+### Next concrete actions
+
+1. Complete exact-head full-suite and dependency/security verification on the documentation/audit successor.
+2. Wire the new policy-matched evaluator into a candidate-evaluation orchestrator only after a trained candidate exists.
+3. Establish raw-payload capture and independently anchored WORM receipts; repair the two null source preimages.
+4. Persist synchronized spot/L2/derivatives/flow/collateral observations and a current point-in-time feature-store database.
+5. Reconcile Morpho utilization, oracle timestamp, collateral value and supplier concentration against raw Base state.
+6. Reconcile RLUSD chain supply against issuer reports and publish a dated reserve/attestation lineage.
+7. Finish semantic review of the 1,176 PR paths, resolve least privilege, independent review, branch protection and Pages publication authorization.
+8. Keep forecast issuance disabled until candidate superiority is calibrated out of sample and independently confirmed in shadow evaluation.
