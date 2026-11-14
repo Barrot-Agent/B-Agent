@@ -171,3 +171,91 @@ def test_temporal_bootstrap_refuses_to_bridge_large_timestamp_gaps():
     assert temporal["sampling_diagnostics"]["contiguous_segment_count"] == 2
     assert temporal["sampling_diagnostics"]["contiguous_segment_lengths"] == [4, 4]
     assert temporal["sampling_diagnostics"]["valid_block_window_count"] == 0
+
+
+def _candidate_rows(*, origins=100, start=BASE):
+    rows = []
+    baseline_levels = {
+        "naive_class_prior": (0.30, 0.80),
+        "momentum_sign": (0.29, 0.75),
+        "mean_reversion_sign": (0.28, 0.70),
+        "volatility_normal": (0.27, 0.65),
+    }
+    for index in range(origins):
+        origin_id = f"candidate-origin-{index:04d}"
+        stamp = (start + timedelta(hours=index)).isoformat().replace("+00:00", "Z")
+        group_id = f"independent-source-{index % 5}"
+        brier_variation = (index % 3) * 0.001
+        log_variation = (index % 4) * 0.002
+        rows.append({
+            "origin_id": origin_id,
+            "origin_time_utc": stamp,
+            "source_group_id": group_id,
+            "model_id": "xrp-candidate-v1",
+            "brier_loss": 0.20 + brier_variation,
+            "log_loss": 0.40 + log_variation,
+        })
+        for model_id, (brier_base, log_base) in baseline_levels.items():
+            rows.append({
+                "origin_id": origin_id,
+                "origin_time_utc": stamp,
+                "source_group_id": group_id,
+                "model_id": model_id,
+                "brier_loss": brier_base + brier_variation,
+                "log_loss": log_base + log_variation,
+            })
+    return rows
+
+
+def test_candidate_readiness_uncertainty_compares_all_baselines_in_both_windows():
+    from barrot_agent.evolution.paired_block_bootstrap import evaluate_candidate_readiness_uncertainty
+
+    source_cadence = {f"independent-source-{index}": 18_000 for index in range(5)}
+    result = evaluate_candidate_readiness_uncertainty(
+        _candidate_rows(),
+        _candidate_rows(start=BASE + timedelta(days=10)),
+        candidate_model_id="xrp-candidate-v1",
+        expected_cadence_seconds=3600,
+        expected_source_cadence_seconds_by_group=source_cadence,
+    )
+
+    assert result["status"] == "PASS"
+    assert result["familywise_comparison_count"] == 8
+    assert result["individual_confidence_level"] == pytest.approx(0.99375)
+    for window_name in ("out_of_sample", "shadow_evaluation"):
+        window = result[window_name]
+        assert window["status"] == "PASS"
+        assert set(window["comparisons"]) == {
+            "naive_class_prior",
+            "momentum_sign",
+            "mean_reversion_sign",
+            "volatility_normal",
+        }
+        for comparison in window["comparisons"].values():
+            assert comparison["status"] == "PASS"
+            assert comparison["paired_origin_count"] == 100
+            assert comparison["temporal_moving_block_bootstrap"]["confidence_level"] == pytest.approx(0.99375)
+            assert comparison["source_clustered_moving_block_bootstrap"]["source_cluster_count"] == 5
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("bootstrap_replicates", 9_999, "bootstrap_replicates"),
+        ("minimum_paired_origins", 99, "minimum_paired_origins"),
+        ("minimum_source_clusters", 4, "minimum_source_clusters"),
+    ],
+)
+def test_candidate_readiness_uncertainty_rejects_below_policy_floors(field, value, message):
+    from barrot_agent.evolution.paired_block_bootstrap import evaluate_candidate_readiness_uncertainty
+
+    kwargs = {
+        "candidate_model_id": "xrp-candidate-v1",
+        "expected_cadence_seconds": 3600,
+        "expected_source_cadence_seconds_by_group": {
+            f"independent-source-{index}": 18_000 for index in range(5)
+        },
+        field: value,
+    }
+    with pytest.raises(PairedBootstrapError, match=message):
+        evaluate_candidate_readiness_uncertainty([], [], **kwargs)
