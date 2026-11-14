@@ -2833,3 +2833,40 @@ These are three separate regional statutory investment-development companies and
 8. Keep forecast issuance disabled until every policy-v6 out-of-sample, calibration, drift, effective-sample-size, source-cluster, shadow and independent-attestation gate passes.
 
 No merge, deployment, secret rotation, Space restart, external model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, reset, clean, stash, destructive restore or user-worktree mutation occurred.
+
+
+### Run127 addendum — exact-head CI and Circle/ASK primary-source refinement — 2026-11-14T13:42:49Z
+
+#### Exact current handoff-head CI
+
+The Run127 artifact and handoff commit head `46fc50187391f6bbf6c4720275b6923ce43a2328` completed exact-head push CI successfully:
+
+- [Full CI 43600765301](https://github.com/Barrot-Agent/B-Agent/actions/runs/43600765301): **3,641 passed, eight subtests passed, zero failures**, 62.47% inclusive coverage, 76% legacy core coverage, 164.68 seconds.
+- The wheel built, installed and loaded Barrot V3, the XRP primary mission and canonical data assets.
+- [Dependency Audit 43600769720](https://github.com/Barrot-Agent/B-Agent/actions/runs/43600769720): all five manifest groups passed; no known vulnerabilities reported.
+- [Fail-closed gates 43600765288 and 43600769717](https://github.com/Barrot-Agent/B-Agent/actions/runs/43600765288): passed; automatic merge remains disabled.
+- The PR-event full-suite job was skipped by the integration-branch guard; the exact-head push run above is the successful full-suite evidence.
+
+This CI evidence applies to `46fc501`. Any later commit requires a new exact-head verification.
+
+#### Circle, SBI Holdings and Coinbase — Q3 2026 primary filing refinement
+
+Circle's Q3 2026 10-Q adds a distinction that must not be collapsed into the previously reported SBI/Circle share-purchase activity:
+
+- Circle and SBI Holdings each contributed Japanese yen worth approximately **$1.5M** to **Circle SBI Japan K.K.** in November 2025.
+- The JV was established to support USDC distribution in Japan. Circle owns 50% and consolidates it as a VIE because Circle directs the activities that most significantly affect it and absorbs/receives potentially significant losses/benefits. SBI's interest is recorded as noncontrolling interest.
+- Circle reported no significant operating results to date for the JV. This is a verified corporate relationship and capitalization event, not evidence of material USDC distribution volume.
+- This JV is **Circle SBI Japan K.K.**, not any of the three regional SBIC companies.
+- Circle's Q3 2026 filing states Coinbase distribution costs of $331.3M for Q3 and $986.6M for the first nine months of 2026 under their collaboration agreement. It also says Coinbase receives allocations based on USDC balances on its platform and broader ecosystem growth.
+- Coinbase's Q3 2026 10-Q says its Circle arrangement was renewed on the same terms and average USDC balances held in Coinbase products reached an all-time high. Its USDC rewards table shows $17.675M Q3 and $47.655M nine-month year-over-year increases, while the narrative states $71.6M and $175.7M. The filing section does not reconcile the difference; preserve both figures.
+- Circle's Q3 2026 10-Q recognizes $181.8M ARC presale revenue and describes 807.5M ARC tokens sold to institutional investors. The filing identifies a $25M IDG Capital allocation, but does not disclose an SBI-specific ARC allocation. Do not attribute the total presale or consortium amounts to SBI.
+
+Sources: [Circle Q3 2026 10-Q](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html), [Coinbase Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+
+#### ASK token primary-source clarification
+
+The strongest public homonym surfaced is Permission's **ASK** token. Permission's own documentation identifies it as the native token of the Permission ecosystem, with official LayerZero OFT contracts on Base and Polygon. No Ripple, XRP Ledger or XRP integration was verified. Treat it as a separate asset until contrary primary evidence appears. [Permission ASK tokenomics](https://docs.permission.ai/ask-token/ask-tokenomics), [official contract addresses](https://docs.permission.ai/ask-token/contract-addresses).
+
+The Kamilah Stevenson YouTube handle remains unverified: third-party directory/profile links are leads only. No channel-level video inventory was added. The verified TEDx event video remains separately attributed; Camilla and Kamilah identities are not merged.
+
+No forecast was issued. No additional PR was created or closed. Main remained unchanged. No deployment, secret rotation, Space restart, external model transfer, paper trade, funds transfer or real-money action occurred.
