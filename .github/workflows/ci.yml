@@ -93,6 +93,23 @@ jobs:
             tests/test_ci_coverage_scope.py \
             -v --no-cov
 
+  pages-build:
+    if: github.event_name == 'pull_request'
+    name: GitHub Pages build (validation only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build with the GitHub Pages Jekyll stack
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Verify the global mission manifest rendered
+        run: test -s ./_site/GLOBAL_STATE_MANIFEST.html
+
   full-suite:
     if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'integration/')
     name: Full repository test suite

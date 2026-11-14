@@ -3691,3 +3691,99 @@ Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. There is no tra
 - Pages publication is a deployment side effect and remains unauthorized. The integration fix is not permission to deploy.
 - Next: verify exact-head full suite, wheel/package verification, six-manifest dependency audit and fail-closed gates on the Run135 commit; verify the Jekyll raw-block fix with a real Pages-compatible build before considering merge; complete semantic review of all changed files; resolve least privilege and independent review; keep forecast issuance disabled.
 - No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run135 institutional, stablecoin-liquidity and CI addendum
+
+### Exact-head verification on the Run135 research/Pages-fix head
+- Integration head `f7d990fd3585197d223da01b6534b35a68fe0443` passed the full repository suite: 3,682 passed, zero failed, eight subtests; inclusive coverage 62.84%, legacy core coverage 76%; duration 128.72 seconds. The new Liquid-manifest regression test was included and passed.
+- Wheel build and installed primary mission verification passed. Six-manifest dependency audit passed with zero known vulnerabilities reported. Fail-closed gate passed.
+- Evidence: [full suite 43630374913](https://github.com/Barrot-Agent/B-Agent/actions/runs/43630374913), [dependency audit 43630374830](https://github.com/Barrot-Agent/B-Agent/actions/runs/43630374830), [fail-closed gate 43630374819](https://github.com/Barrot-Agent/B-Agent/actions/runs/43630374819).
+- These results apply to `f7d990`. The next commit adds a PR-only, build-only GitHub Pages/Jekyll validation job; its exact-head CI must run separately.
+
+### Institutional rail mapping
+- Circle's Arc public mainnet launched September 16, 2026. USDC is the gas asset; validators are permissioned. Circle identifies SBI Group as a founding validator, Coinbase as an exchange-access partner, BNY among bank participants, and Aave/Morpho among lending protocols. This is an institutional stablecoin rail adjacent to or competing with XRPL; no XRP settlement requirement is established.
+- Circle and SBI each own 50% of Circle SBI Japan K.K.; Circle controls and consolidates the VIE, while SBI's interest is noncontrolling. Circle's Q3 10-Q reports approximately $1.5M initial contribution from each and no significant operating results through September 30.
+- Circle paid Coinbase $331.3M in Q3 and $986.6M for nine months in USDC distribution costs. These are USDC distribution economics, not XRP demand or RLUSD collateral revenue.
+- Coinbase's RLUSD availability spans XRPL, Base and Ethereum; Ripple supplies Base liquidity. The announcement described Global Exchange collateral support as a future follow-up, not already live.
+- SBI VC Trade's RLUSD release supports Ethereum only at launch, with transaction/deposit limits. This is not an XRPL deposit/withdrawal channel at launch.
+- Coinbase/PNC's November 9 payment pilot accepts USDC and automatically converts incoming payments 1:1 to USD for PNC account deposit. It is not XRP settlement.
+- Circle Arc token presale accounting: $242.2M gross proceeds, $181.8M recognized revenue and $60.4M ARC-specific deferred consideration. The $25M IDG purchase is included in gross proceeds, not additional. This is not XRP capital.
+
+### SBIC identity resolution
+- Official profiles identify Tokyo SBIC East, Nagoya SBIC Central and Osaka SBIC West as three separate regional Small and Medium Business Investment & Consultation companies founded in November 1963. They identify one another as sister companies and publish separate capital and service regions. No primary evidence links them to SBI Holdings.
+- SB OAI Japan GK is a different entity: a 50/50 OpenAI/C Holdings joint venture; C Holdings is 51% SoftBank Corp and 49% SoftBank Group. It is not an SBIC and not SBI Holdings.
+- Exact phrase `SBIC, ChatGPT SBIC` remains unverified as a partnership claim. A possible confusion with SB OAI Japan is not proven.
+- Official profiles: [SBIC East](https://www.sbic.co.jp/company/profile/), [SBIC Central](https://www.sbic-cj.co.jp/company/about/), [SBIC West](https://www.sbic-wj.co.jp/profiles/profile/), [SB OAI Japan](https://www.sb-oai.co.jp/en/about/).
+
+### Stablecoin liquidity: new adverse signal and unresolved chain allocation
+- Glassnode's November 13 Week 46 report shows the tracked 11-stablecoin basket contracted by $14.2B over 30 days. Its November 13 chart shows roughly $283.7B total; this is not identical to every provider's stablecoin universe.
+- ChainReport's live DefiLlama-based XRP Ledger scoreboard, updated approximately ten minutes before retrieval on November 14, reports $841M total XRPL USD stablecoins, down 13% over seven days and 26% over 30 days. Its asset table reports RLUSD $764M (-14% 7d, -28% 30d), USDV $72.8M, and USDC $3.7M. The prior daily chart says $895M on November 13 and $942M on August 16; the page explicitly warns the daily chart and live total count assets differently.
+- ChainReport says none of the checked public exchange currency endpoints (Binance, Coinbase, KuCoin, Bitget, Gate) list USDT or USDC on XRPL; Kraken, OKX and Bybit are not covered. This is an exchange-support observation, not a universal statement about all venues.
+- StableRadar's November 12 17:28Z on-chain snapshot reports 2.71018B total RLUSD: 863.843M XRPL, 1.83023B Ethereum, 16.107M Base and tiny amounts elsewhere; its DefiLlama column totals 2.70938B. The page is a prototype and this snapshot is older than ChainReport's current DefiLlama-based reading.
+- Ripple's issuer transparency page reports $2.6899B circulating and $2.8265B reserve funds as of November 12. The latest linked CPA attestation is September 2026; November 12 dashboard balances are not a November CPA attestation.
+- The XRPL RLUSD supply figures (ChainReport ~$764M, StableRadar Nov 12 ~$863.8M, prior Run131 StableRadar observation ~$754.1M) are not reconciled. Do not average. Global RLUSD growth can coexist with XRPL RLUSD contraction if issuance is allocated to Ethereum or other chains. That is not automatically XRP demand.
+- StableRadar's Nov 12 snapshot also showed an XRP/RLUSD AMM pool of 2.044M XRP and 2.094M RLUSD, RLUSD/USDC depth within ±2% of $413K bid/$785K ask, and issuer controls including clawback enabled, deposit authorization and destination-tag requirements. Its DEX snapshot is stale and not current executable depth.
+- The new feature requirements are global stablecoin supply, chain-specific RLUSD supply, XRPL stablecoin 7d/30d changes, exchange network support, and alternative-rail events. They are not yet scheduled model features.
+
+### Macro and competing hypotheses
+- Global stablecoin contraction, XRPL stablecoin contraction and long-liquidation-heavy XRP derivatives data form a broad liquidity/deleveraging headwind.
+- Counter-hypothesis: RLUSD's global growth, cross-chain reallocation, and institutional adoption on Arc/USDC rails can coexist with lower XRPL stablecoin supply. This may be a network allocation change, not a direct XRP-demand signal.
+- Neither hypothesis justifies a directional forecast without synchronized historical features and out-of-sample evaluation.
+
+### Pages validation
+- The integration-only Liquid raw-block repair and static regression test passed in the 3,682-test suite on `f7d990`.
+- A new PR-only Jekyll build job has been added to `ci.yml`; it builds with GitHub Pages' Jekyll action and verifies `GLOBAL_STATE_MANIFEST.html` exists. It has no upload or deployment step. Its first PR-event result is pending.
+- Main remains unchanged. No Pages deployment was triggered.
+
+### Forecast and next actions
+- Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action.
+- Next: verify the new exact head's full suite, dependency audit, fail-closed gate and PR-only Jekyll build; add public stablecoin-supply and XRPL-amendment sources to the scheduled ingestion catalog with source-specific parsers and provenance; reconcile RLUSD chain allocation; retain Arc/USDC and XRPL lending status as competing institutional-rail events; keep least-privilege and independent review blockers open.
+
+
+## Run135 institutional, stablecoin-liquidity and CI addendum
+
+### Exact-head verification on the Run135 research/Pages-fix head
+- Integration head `f7d990fd3585197d223da01b6534b35a68fe0443` passed the full repository suite: 3,682 passed, zero failed, eight subtests; inclusive coverage 62.84%, legacy core coverage 76%; duration 128.72 seconds. The new Liquid-manifest regression test was included and passed.
+- Wheel build and installed primary mission verification passed. Six-manifest dependency audit passed with zero known vulnerabilities reported. Fail-closed gate passed.
+- Evidence: [full suite 43630374913](https://github.com/Barrot-Agent/B-Agent/actions/runs/43630374913), [dependency audit 43630374830](https://github.com/Barrot-Agent/B-Agent/actions/runs/43630374830), [fail-closed gate 43630374819](https://github.com/Barrot-Agent/B-Agent/actions/runs/43630374819).
+- These results apply to `f7d990`. The next commit adds a PR-only, build-only GitHub Pages/Jekyll validation job; its exact-head CI must run separately.
+
+### Institutional rail mapping
+- Circle's Arc public mainnet launched September 16, 2026. USDC is the gas asset; validators are permissioned. Circle identifies SBI Group as a founding validator, Coinbase as an exchange-access partner, BNY among bank participants, and Aave/Morpho among lending protocols. This is an institutional stablecoin rail adjacent to or competing with XRPL; no XRP settlement requirement is established.
+- Circle and SBI each own 50% of Circle SBI Japan K.K.; Circle controls and consolidates the VIE, while SBI's interest is noncontrolling. Circle's Q3 10-Q reports approximately $1.5M initial contribution from each and no significant operating results through September 30.
+- Circle paid Coinbase $331.3M in Q3 and $986.6M for nine months in USDC distribution costs. These are USDC distribution economics, not XRP demand or RLUSD collateral revenue.
+- Coinbase's RLUSD availability spans XRPL, Base and Ethereum; Ripple supplies Base liquidity. The announcement described Global Exchange collateral support as a future follow-up, not already live.
+- SBI VC Trade's RLUSD release supports Ethereum only at launch, with transaction/deposit limits. This is not an XRPL deposit/withdrawal channel at launch.
+- Coinbase/PNC's November 9 payment pilot accepts USDC and automatically converts incoming payments 1:1 to USD for PNC account deposit. It is not XRP settlement.
+- Circle Arc token presale accounting: $242.2M gross proceeds, $181.8M recognized revenue and $60.4M ARC-specific deferred consideration. The $25M IDG purchase is included in gross proceeds, not additional. This is not XRP capital.
+
+### SBIC identity resolution
+- Official profiles identify Tokyo SBIC East, Nagoya SBIC Central and Osaka SBIC West as three separate regional Small and Medium Business Investment & Consultation companies founded in November 1963. They identify one another as sister companies and publish separate capital and service regions. No primary evidence links them to SBI Holdings.
+- SB OAI Japan GK is a different entity: a 50/50 OpenAI/C Holdings joint venture; C Holdings is 51% SoftBank Corp and 49% SoftBank Group. It is not an SBIC and not SBI Holdings.
+- Exact phrase `SBIC, ChatGPT SBIC` remains unverified as a partnership claim. A possible confusion with SB OAI Japan is not proven.
+- Official profiles: [SBIC East](https://www.sbic.co.jp/company/profile/), [SBIC Central](https://www.sbic-cj.co.jp/company/about/), [SBIC West](https://www.sbic-wj.co.jp/profiles/profile/), [SB OAI Japan](https://www.sb-oai.co.jp/en/about/).
+
+### Stablecoin liquidity: new adverse signal and unresolved chain allocation
+- Glassnode's November 13 Week 46 report shows the tracked 11-stablecoin basket contracted by $14.2B over 30 days. Its November 13 chart shows roughly $283.7B total; this is not identical to every provider's stablecoin universe.
+- ChainReport's live DefiLlama-based XRP Ledger scoreboard, updated approximately ten minutes before retrieval on November 14, reports $841M total XRPL USD stablecoins, down 13% over seven days and 26% over 30 days. Its asset table reports RLUSD $764M (-14% 7d, -28% 30d), USDV $72.8M, and USDC $3.7M. The prior daily chart says $895M on November 13 and $942M on August 16; the page explicitly warns the daily chart and live total count assets differently.
+- ChainReport says none of the checked public exchange currency endpoints (Binance, Coinbase, KuCoin, Bitget, Gate) list USDT or USDC on XRPL; Kraken, OKX and Bybit are not covered. This is an exchange-support observation, not a universal statement about all venues.
+- StableRadar's November 12 17:28Z on-chain snapshot reports 2.71018B total RLUSD: 863.843M XRPL, 1.83023B Ethereum, 16.107M Base and tiny amounts elsewhere; its DefiLlama column totals 2.70938B. The page is a prototype and this snapshot is older than ChainReport's current DefiLlama-based reading.
+- Ripple's issuer transparency page reports $2.6899B circulating and $2.8265B reserve funds as of November 12. The latest linked CPA attestation is September 2026; November 12 dashboard balances are not a November CPA attestation.
+- The XRPL RLUSD supply figures (ChainReport ~$764M, StableRadar Nov 12 ~$863.8M, prior Run131 StableRadar observation ~$754.1M) are not reconciled. Do not average. Global RLUSD growth can coexist with XRPL RLUSD contraction if issuance is allocated to Ethereum or other chains. That is not automatically XRP demand.
+- StableRadar's Nov 12 snapshot also showed an XRP/RLUSD AMM pool of 2.044M XRP and 2.094M RLUSD, RLUSD/USDC depth within ±2% of $413K bid/$785K ask, and issuer controls including clawback enabled, deposit authorization and destination-tag requirements. Its DEX snapshot is stale and not current executable depth.
+- The new feature requirements are global stablecoin supply, chain-specific RLUSD supply, XRPL stablecoin 7d/30d changes, exchange network support, and alternative-rail events. They are not yet scheduled model features.
+
+### Macro and competing hypotheses
+- Global stablecoin contraction, XRPL stablecoin contraction and long-liquidation-heavy XRP derivatives data form a broad liquidity/deleveraging headwind.
+- Counter-hypothesis: RLUSD's global growth, cross-chain reallocation, and institutional adoption on Arc/USDC rails can coexist with lower XRPL stablecoin supply. This may be a network allocation change, not a direct XRP-demand signal.
+- Neither hypothesis justifies a directional forecast without synchronized historical features and out-of-sample evaluation.
+
+### Pages validation
+- The integration-only Liquid raw-block repair and static regression test passed in the 3,682-test suite on `f7d990`.
+- A new PR-only Jekyll build job has been added to `ci.yml`; it builds with GitHub Pages' Jekyll action and verifies `GLOBAL_STATE_MANIFEST.html` exists. It has no upload or deployment step. Its first PR-event result is pending.
+- Main remains unchanged. No Pages deployment was triggered.
+
+### Forecast and next actions
+- Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action.
+- Next: verify the new exact head's full suite, dependency audit, fail-closed gate and PR-only Jekyll build; add public stablecoin-supply and XRPL-amendment sources to the scheduled ingestion catalog with source-specific parsers and provenance; reconcile RLUSD chain allocation; retain Arc/USDC and XRPL lending status as competing institutional-rail events; keep least-privilege and independent review blockers open.

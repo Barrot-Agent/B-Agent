@@ -23,3 +23,14 @@ def test_global_state_manifest_liquid_tokens_are_guarded_by_raw_blocks():
 
     assert not in_raw, "unterminated Liquid raw block"
     assert raw_blocks == 2
+
+
+def test_ci_validates_pages_build_on_pull_requests_without_deployment():
+    workflow = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "ci.yml"
+    text = workflow.read_text(encoding="utf-8")
+    assert "  pages-build:" in text
+    assert "if: github.event_name == 'pull_request'" in text
+    assert "actions/jekyll-build-pages@v1" in text
+    assert "test -s ./_site/GLOBAL_STATE_MANIFEST.html" in text
+    assert "actions/deploy-pages" not in text
+    assert "upload-pages-artifact" not in text

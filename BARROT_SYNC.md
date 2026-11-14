@@ -114,3 +114,14 @@
 - Ripple official RLUSD page as of Nov 12: $2.6899B circulating, $2.8265B reserves; latest linked CPA attestation is September.
 - Forecast remains NOT_ISSUED; accuracy NOT_EVALUATED. No trained XRP candidate or independent shadow cohort is verified. No paper trade or real-money action.
 - PR #1662 remains draft, zero approvals/reviews/threads. Main branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is self-owned; connector permissions remain admin/maintain/push/pull/triage. NO MERGE.
+
+
+## Run135 institutional/stablecoin and verification addendum
+- Exact head `f7d990fd3585197d223da01b6534b35a68fe0443`: full suite 3,682 passed, zero failed, eight subtests; 62.84% inclusive coverage; wheel and installed mission passed; six-manifest dependency audit and fail-closed gate passed (43630374913, 43630374830, 43630374819). This is parent-head evidence; the next CI/Jekyll validation commit needs its own run.
+- Circle Arc public mainnet launched Sep 16; USDC gas, permissioned validators, SBI Group founding validator, Coinbase exchange access, BNY institutional participation, Aave/Morpho lending. Adjacent/competing stablecoin rail; no XRP settlement requirement established.
+- Circle SBI Japan K.K. is 50/50; Circle controls/consolidates, SBI noncontrolling. Circle Q3 10-Q reports $331.3M Q3 and $986.6M nine-month USDC distribution costs paid to Coinbase.
+- SBI VC Trade RLUSD supports Ethereum only at launch; Coinbase RLUSD supports XRPL/Base/Ethereum. Coinbase/PNC pilot uses USDC and 1:1 USD conversion, not XRP.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka are three separate regional investment companies and sister companies; no primary evidence links them to SBI Holdings. SB OAI Japan is the separate OpenAI/SoftBank joint venture.
+- Global stablecoin supply (Glassnode 11-asset basket) contracted $14.2B over 30 days to Nov 11. ChainReport's live DefiLlama-based XRPL scoreboard reports $841M stablecoins, -13% 7d/-26% 30d; RLUSD $764M, -14% 7d/-28% 30d. Stableradar's older Nov 12 on-chain snapshot reports 863.8M RLUSD on XRPL; Ripple issuer page reports $2.6899B total circulating and $2.8265B reserves Nov 12. These vintages/definitions are not reconciled; do not average.
+- New PR-only Jekyll build validation is added to `.github/workflows/ci.yml`; it builds but does not upload or deploy. The raw-block fix and static test passed on parent f7d990; the new Jekyll job is pending.
+- Forecast NOT_ISSUED; accuracy NOT_EVALUATED. No paper trade or real-money action.

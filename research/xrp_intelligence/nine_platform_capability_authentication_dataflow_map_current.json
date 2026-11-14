@@ -1,27 +1,27 @@
 {
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
-  "captured_at_utc": "2026-11-13T16:47:57.954Z",
-  "last_verified_at_utc": "2026-11-14T14:51:48Z",
+  "captured_at_utc": "2026-11-14T19:11:45Z",
+  "last_verified_at_utc": "2026-11-14T19:11:45Z",
   "repository": "Barrot-Agent/B-Agent",
-  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "observed_main_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
   "observed_integration_head_before_map_commit": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
   "integration_branch": "integration/xrp-v3-unified-main-20261112",
   "integration_pr": {
     "number": 1662,
-    "state": "open",
+    "state": "OPEN",
     "draft": true,
     "mergeable": true,
-    "ahead_by": 2276,
+    "ahead_by": 2415,
     "behind_by": 0,
-    "changed_files": 1128,
+    "changed_files": 1207,
     "workflow_files": 50,
     "other_changed_paths": 1078,
-    "head_sha": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
-    "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "head_sha": "f7d990fd3585197d223da01b6534b35a68fe0443",
+    "base_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
     "commits": 2276,
-    "additions": 323975,
-    "deletions": 5230,
+    "additions": 361545,
+    "deletions": 5547,
     "formal_approvals": 0,
     "formal_reviews": 0,
     "unresolved_review_threads": 0,
@@ -84,20 +84,20 @@
         "cross-source disagreement and red-team review"
       ],
       "authentication_status": "VERIFIED_CURRENT_SESSION",
-      "permission_scope": "GitHub API reports admin, maintain, push, pull and triage; overprivileged.",
+      "permission_scope": "GitHub connector currently reports admin, maintain, push, pull and triage; overprivileged for research-only integration work.",
       "data_flow": {
         "verified": true,
-        "direction": "ChatGPT session <-> authorized GitHub connector <-> Barrot-Agent/B-Agent",
+        "direction": "Current ChatGPT session through authorized GitHub connector to Barrot-Agent/B-Agent",
         "persistent_agent_connection": false,
         "external_model_transfer": false,
-        "last_verified_at_utc": "2026-11-13T11:10:50Z",
-        "observed_flow": "Run87 verified main/integration branch heads, full open-PR inventory, PR #1662 reviews/threads, recursive tree, source branch ancestry, workflow jobs/logs, critical workflow diffs, current market/institutional sources and prepared an integration-branch documentation handoff; no main write or external-model transfer.",
+        "last_verified_at_utc": "2026-11-14T19:11:45Z",
+        "observed_flow": "Fetched current main and integration trees, all open PR pages, branch ancestry, PR reviews/threads, exact-head CI, dependency audit and workflow logs; committed research and a Jekyll validation fix only to integration; main unchanged.",
         "main_branch_write": false
       },
       "limitations": [
         "This verifies the current GitHub connector only; it does not verify an external ChatGPT API credential or a separate autonomous agent."
       ],
-      "last_verified_at_utc": "2026-11-13T11:10:50Z",
+      "last_verified_at_utc": "2026-11-14T19:11:45Z",
       "last_verified_run": "Run87"
     },
     "Claude": {
@@ -267,7 +267,7 @@
       "head_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
       "conclusion": "success"
     },
-    "last_verified_at_utc": "2026-11-13T11:10:50Z",
+    "last_verified_at_utc": "2026-11-14T19:11:45Z",
     "latest_run37_platform_state": {
       "ChatGPT": {
         "intended_role": [
@@ -481,7 +481,8 @@
     "run87_status": "DESIGNED_NOT_DISPATCHED",
     "external_dispatches": 0,
     "external_data_transfers": 0,
-    "least_privilege": "NOT_SATISFIED"
+    "least_privilege": "NOT_SATISFIED",
+    "independent_red_team_quorum": 0
   },
   "task_assignments_designed_not_executed": [
     {
@@ -3648,7 +3649,7 @@
       "access_restriction": "Bybit public API may return HTTP 403 for U.S./Mainland China IPs; collector fails closed and does not proxy or bypass.",
       "model_eligible": false
     },
-    "latest_exact_head_tested": "8ea8ffa2c37b0e63a64b731193dc7c0abb31e4d1",
+    "latest_exact_head_tested": "f7d990fd3585197d223da01b6534b35a68fe0443",
     "latest_exact_head_suite_passed": 3595,
     "latest_exact_head_suite_failed": 3,
     "latest_exact_head_coverage_percent": 62.14,
@@ -3728,7 +3729,21 @@
       "deribit_xrp_usdc_perpetual_order_book"
     ],
     "raw_only_derivatives_sources": 2,
-    "raw_only_derivatives_in_scheduled_collection": true
+    "raw_only_derivatives_in_scheduled_collection": true,
+    "latest_exact_head_suite_run": 43630374913,
+    "latest_exact_head_tests_passed": 3682,
+    "latest_exact_head_tests_failed": 0,
+    "latest_exact_head_subtests_passed": 8,
+    "latest_exact_head_inclusive_coverage_pct": 62.84,
+    "latest_exact_head_legacy_core_coverage_pct": 76,
+    "latest_exact_head_duration_seconds": 128.72,
+    "latest_exact_head_wheel_build": "PASSED",
+    "latest_exact_head_installed_mission": "PASSED",
+    "latest_exact_head_dependency_audit_run": 43630374830,
+    "latest_exact_head_dependency_audit": "SIX_MANIFEST_GROUPS_PASSED_ZERO_KNOWN_VULNERABILITIES",
+    "latest_exact_head_fail_closed_gate_run": 43630374819,
+    "latest_exact_head_fail_closed_gate": "PASSED",
+    "accuracy_status": "NOT_EVALUATED"
   },
   "current_market_snapshot": {
     "retrieved_at_utc": "2026-11-11T07:58:26.504Z",
@@ -10392,8 +10407,8 @@
     },
     "latest_run_id": "Run87"
   },
-  "latest_run_id": "Run130",
-  "latest_run_captured_at_utc": "2026-11-14T14:51:48Z",
+  "latest_run_id": "Run135",
+  "latest_run_captured_at_utc": "2026-11-14T19:11:45Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -13421,7 +13436,7 @@
     },
     "forecast_status": "NOT_ISSUED"
   },
-  "last_reconciled_at_utc": "2026-11-13T06:56:56.751Z",
+  "last_reconciled_at_utc": "2026-11-14T19:11:45Z",
   "run29_snapshot": {
     "captured_at_utc": "2026-11-11T15:36:00Z",
     "repository_state": {
@@ -21940,7 +21955,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-14T14:51:48Z",
+  "updated_at_utc": "2026-11-14T19:11:45Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -26612,7 +26627,7 @@
       "source_pr_closure": false
     }
   },
-  "current_market_snapshot_note": "Earlier raw-capture snapshot preserved. Run54 web/API market observations are stored separately with raw_source_sha256=null and model_eligible=false; they are not substituted into the point-in-time feature store.",
+  "current_market_snapshot_note": "Run135 direct exchange snapshots are asynchronous and research-only; no synchronized full L2 or feature-store admission. Latest XRPL stablecoin supply is contracting on the DefiLlama-based ChainReport series, while RLUSD chain-allocation sources disagree materially.",
   "last_verification_scope": "Run70 CI failure diagnosis: full-suite log and four failing assertions inspected; root cause is stale canonical repository_state and ci_evidence fields in the nine-platform map. Core tests, dependency audit and fail-closed gate passed. No runtime failures.",
   "run52_snapshot": {
     "captured_at_utc": "2026-11-12T09:04:43Z",
@@ -37677,5 +37692,314 @@
     "current_bad_blob_sha": "9a95848fa7a47aae85a1f61b6948cdfe8f6dc187",
     "restored_original_blob_sha": "0912d806b94b95db800411bf2978a91275ec174b",
     "correction": "Restore original canonical schema; preserve Run128/Run129 unique snapshot keys; append Run130 separately. Tests remain unchanged."
-  }
+  },
+  "observed_integration_head_before_run135_addendum_commit": "f7d990fd3585197d223da01b6534b35a68fe0443",
+  "run135_snapshot": {
+    "captured_at_utc": "2026-11-14T19:11:45Z",
+    "main_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
+    "integration_head_before_addendum_commit": "f7d990fd3585197d223da01b6534b35a68fe0443",
+    "integration_ancestry": {
+      "ahead": 2415,
+      "behind": 0
+    },
+    "repository_trees": {
+      "main_entries": 1341,
+      "integration_entries": 2408,
+      "main_python_files": 503,
+      "integration_python_files": 885,
+      "main_test_files": 104,
+      "integration_test_files": 456,
+      "main_workflows": 87,
+      "integration_workflows": 88
+    },
+    "open_pr_inventory": {
+      "open": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "target_main": 365,
+      "target_other_bases": 8
+    },
+    "pr1662": {
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "changed_files": 1207,
+      "reviews": 0,
+      "review_threads": 0
+    },
+    "exact_head_ci": {
+      "run": 43630374913,
+      "tests_passed": 3682,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "inclusive_coverage_pct": 62.84,
+      "legacy_core_coverage_pct": 76,
+      "duration_seconds": 128.72,
+      "wheel_build": "PASSED",
+      "installed_mission": "PASSED",
+      "dependency_audit": 43630374830,
+      "fail_closed_gate": 43630374819
+    },
+    "current_commit_verification_note": "These CI results apply to f7d990; the current map/CI addendum commit requires its own exact-head run."
+  },
+  "run135_market_snapshot": {
+    "spot": {
+      "OKX": {
+        "last": 0.9587,
+        "provider_timestamp_utc": "2026-11-14T18:39:41.569Z"
+      },
+      "Bybit": {
+        "last": 0.9558,
+        "provider_timestamp_utc": "2026-11-14T19:02:06.653Z",
+        "change_24h_pct": -6.44
+      },
+      "Kraken": {
+        "last": 0.95802,
+        "provider_timestamp_utc": null
+      }
+    },
+    "derivatives": {
+      "Liqwall_24h_liquidations_usd": 24300000,
+      "Liqwall_long_liquidation_share_pct": 97,
+      "Liqwall_open_interest_usd": 1050000000,
+      "Liqwall_oi_change_24h_pct": 0.9,
+      "Liqwall_funding_8h_pct": -0.0008
+    },
+    "xrpl_stablecoins": {
+      "ChainReport_live_total_usd": 841000000,
+      "change_7d_pct": -13,
+      "change_30d_pct": -26,
+      "RLUSD_usd": 764000000,
+      "RLUSD_change_7d_pct": -14,
+      "RLUSD_change_30d_pct": -28
+    },
+    "model_eligible": false
+  },
+  "run135_institutional_network": {
+    "Circle_Arc": "Public mainnet since 2026-09-16; USDC gas; SBI Group founding validator; Coinbase exchange-access partner; BNY institutional bank participant; Aave/Morpho lending; no XRP settlement requirement established.",
+    "Circle_SBI_Japan": "50/50 ownership; Circle controls and consolidates VIE; SBI noncontrolling.",
+    "Coinbase_Circle": "Circle Q3 USDC distribution costs paid to Coinbase: $331.3M Q3, $986.6M nine months.",
+    "Coinbase_Ripple": "RLUSD support across XRPL/Base/Ethereum; Ripple Base liquidity; Global Exchange collateral support future at announcement.",
+    "SBI_VC_Trade_RLUSD": "Ethereum-only at launch; limits apply.",
+    "PNC_Coinbase": "USDC accepted and auto-converted 1:1 to USD; not XRP settlement."
+  },
+  "run135_identity_research": {
+    "SBIC_East_Central_West": "Three separate Tokyo/Nagoya/Osaka Small and Medium Business Investment & Consultation companies founded in November 1963; official profiles call one another sister companies; no primary evidence linking them to SBI Holdings.",
+    "SB_OAI_Japan": "Separate OpenAI/C Holdings 50/50 joint venture; C Holdings owned 51% SoftBank Corp and 49% SoftBank Group.",
+    "exact_phrase_status": {
+      "ASK_Coin": "No canonical XRPL issuer verified.",
+      "actual_capital": "Not a standardized metric.",
+      "SBIC_ChatGPT_SBIC": "No primary partnership evidence; possible confusion with SB OAI Japan is unproven."
+    },
+    "Kamilah_Stevenson": "Person identity supported; candidate XRP YouTube channel ownership unverified; inventory quarantined."
+  },
+  "run135_stablecoin_reconciliation": {
+    "global_11_asset_basket_30d_change_usd": -14200000000,
+    "xrpl_total_live_usd": 841000000,
+    "xrpl_total_change_7d_pct": -13,
+    "xrpl_total_change_30d_pct": -26,
+    "xrpl_rlusd_live_usd": 764000000,
+    "xrpl_rlusd_change_7d_pct": -14,
+    "xrpl_rlusd_change_30d_pct": -28,
+    "competing_snapshot": "StableRadar on-chain snapshot Nov 12 17:28Z: total RLUSD 2.71018B, XRPL 863.843M, Ethereum 1.83023B, Base 16.107M; Ripple issuer dashboard Nov 12: 2.6899B circulating, reserves 2.8265B. Not reconciled with ChainReport's current XRPL RLUSD ~$764M; do not average.",
+    "issuer_attestation": "Latest linked CPA report September 2026; November balances are not a November CPA attestation."
+  },
+  "run135_source_capture_integrity": {
+    "exchange_hashes": "SHA-256 hashes cover web-rendered JSON response text only, not original HTTP wire bytes.",
+    "raw_source_bytes_captured": false,
+    "feature_store_admission": false
+  },
+  "run135_jekyll_validation": {
+    "manifest_fix": "Two JSON-containing code blocks wrapped in Liquid raw tags; static regression test passed on f7d990.",
+    "ci_job": "PR-only actions/jekyll-build-pages@v1 build added; verifies GLOBAL_STATE_MANIFEST.html; no artifact upload or deployment.",
+    "status": "EXECUTION_PENDING_ON_NEW_HEAD"
+  },
+  "run135_platform_status": {
+    "ChatGPT": "GitHub connector authenticated in current session; admin/maintain/push/pull/triage; overprivileged.",
+    "Claude": "UNVERIFIED",
+    "Grok": "UNVERIFIED",
+    "Gemini": "UNVERIFIED",
+    "Copilot": "No formal PR approval",
+    "Codex": "UNVERIFIED",
+    "HuggingFace": "Previous BUILD_ERROR; no deployment",
+    "Kaggle": "Untested; no submission",
+    "Databricks": "Previous HTTP 403; no write",
+    "external_model_dispatch": false,
+    "external_data_transfer": false,
+    "red_team_quorum": 0
+  },
+  "run135_backlog_classification": {
+    "consolidated_integration_pr": 1662,
+    "source_prs_closed": 0,
+    "overlap_candidates": [
+      "1661",
+      "1660",
+      "1643",
+      "1642",
+      "1640",
+      "1320",
+      "1318",
+      "1317"
+    ],
+    "unique_or_blocked_preserved": [
+      "1653",
+      "1614",
+      "1615",
+      "1269",
+      "1655",
+      "1659",
+      "1641",
+      "1644-1650",
+      "1254",
+      "1255"
+    ],
+    "note": "Path overlap is not semantic duplication; preserve unique content and close only exact superseded PRs after successor merge and main verification."
+  },
+  "run135_merge_decision": "NO_MERGE: draft PR, zero independent approvals, main branch-protection details HTTP 403, integration unprotected, disabled fallback ruleset 10863829, self-owned CODEOWNERS, overprivileged connector, Pages deployment side effect not authorized.",
+  "run135_next_actions": [
+    "Verify exact-head full suite, six-manifest dependency audit, fail-closed gate and PR-only Jekyll build on the next integration head.",
+    "Add DefiLlama stablecoin supply and XRPL amendment roll-call sources to scheduled ingestion with explicit parser, source lineage and freshness rules.",
+    "Reconcile RLUSD supply by chain against issuer disclosures and independent node reads; preserve source disagreement.",
+    "Add institutional alternative-rail events for Circle Arc, SBI/USDC/JPYSC, Coinbase/PNC and Ripple/RLUSD as event features, not XRP-demand proxies.",
+    "Resolve least privilege, independent review and branch protection before merge.",
+    "Keep forecast NOT_ISSUED until trained candidate, calibrated OOS superiority and independent shadow outcomes exist."
+  ],
+  "run135_research_artifact_path": "research/xrp_intelligence/20261114T190206Z-run135-xrp-market-amendment-derivatives-macro-reconciliation.json",
+  "run135_source_provenance": [
+    {
+      "name": "Glassnode Week On-Chain W46",
+      "url": "https://insights.glassnode.com/the-week-onchain-week-46-2026/",
+      "source_timestamp": "2026-11-13",
+      "independence_group": "aggregator:glassnode",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "$14.2B 30d contraction in tracked 11-stablecoin basket; no raw bytes captured."
+    },
+    {
+      "name": "ChainReport XRPL stablecoins",
+      "url": "https://chainreport.co/stablechains/xrpl/",
+      "source_timestamp": "2026-11-14",
+      "independence_group": "aggregator:chainreport-defillama",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Live $841M; -13% 7d/-26% 30d; RLUSD $764M; DefiLlama-based; no raw bytes captured."
+    },
+    {
+      "name": "StableRadar RLUSD on-chain snapshot",
+      "url": "https://stableradar.com/es/coin/rlusd",
+      "source_timestamp": "2026-11-12T17:28:00Z",
+      "independence_group": "aggregator:stableradar-own-node",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "2.71018B total; XRPL 863.843M; Ethereum 1.83023B; prototype and stale; no raw bytes captured."
+    },
+    {
+      "name": "Ripple RLUSD transparency",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "source_timestamp": "2026-11-12",
+      "independence_group": "issuer:ripple",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "2.6899B circulating; 2.8265B reserve funds; latest linked CPA attestation September."
+    },
+    {
+      "name": "Circle Arc mainnet",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "source_timestamp": "2026-09-16",
+      "independence_group": "issuer:circle",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "USDC gas; SBI Group founding validator; Coinbase exchange access; BNY participant; Aave/Morpho."
+    },
+    {
+      "name": "Circle Q3 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_timestamp": "2026-11",
+      "independence_group": "regulator:sec-circle",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Circle SBI Japan ownership/control; Coinbase distribution costs; ARC presale accounting."
+    },
+    {
+      "name": "SBIC East",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "source_timestamp": "reference",
+      "independence_group": "issuer:sbic-east",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Official regional company profile."
+    },
+    {
+      "name": "SBIC Central",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "source_timestamp": "reference",
+      "independence_group": "issuer:sbic-central",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Official regional company profile."
+    },
+    {
+      "name": "SBIC West",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "source_timestamp": "reference",
+      "independence_group": "issuer:sbic-west",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Official regional company profile."
+    },
+    {
+      "name": "SB OAI Japan",
+      "url": "https://www.sb-oai.co.jp/en/about/",
+      "source_timestamp": "reference",
+      "independence_group": "issuer:sb-oai-japan",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Official OpenAI/C Holdings ownership and company profile."
+    },
+    {
+      "name": "SBI VC Trade RLUSD",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "source_timestamp": "2026-06-24",
+      "independence_group": "issuer:sbi-vc-trade",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "Ethereum-only support at launch and service limits."
+    },
+    {
+      "name": "Coinbase PNC USDC",
+      "url": "https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance",
+      "source_timestamp": "2026-11-09",
+      "independence_group": "issuer:coinbase-pnc",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "USDC auto-converted 1:1 to USD."
+    },
+    {
+      "name": "Coinbase RLUSD",
+      "url": "https://www.coinbase.com/blog/ripple-usd-rlusd-now-available-on-coinbase",
+      "source_timestamp": "2026-10-28",
+      "independence_group": "issuer:coinbase-ripple",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "RLUSD on XRPL/Base/Ethereum; Ripple Base liquidity."
+    },
+    {
+      "name": "XRPL amendment roll-call",
+      "url": "https://xrpldashboard.com/amendments",
+      "source_timestamp": "2026-11-14T18:50:00Z",
+      "independence_group": "independent-node:xrpldashboard",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "note": "34/35 validators heard; lending amendments below threshold; no countdown."
+    }
+  ],
+  "run135_disagreements_and_counter_hypotheses": [
+    "XRP CEX spot fell about 6.4% over 24h while top-of-book imbalance differed sharply across OKX/Bybit versus Kraken; fragmented venue liquidity, not a single direction.",
+    "Liqwall reports 97% long liquidations but OI +0.9% and funding near zero/slightly negative; forced long unwind can coexist with new positions, shorts or hedges.",
+    "Global stablecoin basket contracted $14.2B while RLUSD global supply increased over the prior 90-day window; this can be share rotation, not uniform capital flight.",
+    "XRPL stablecoin supply is down 26% over 30 days in ChainReport's DefiLlama series, while StableRadar's Nov12 on-chain snapshot reports a higher XRPL RLUSD allocation; data vintages and definitions remain unresolved.",
+    "Circle Arc/USDC and SBI/JPYSC rails may compete with or complement XRPL; no evidence establishes XRP settlement in those flows.",
+    "XRPL lending amendments remain below threshold while Arc's Aave/Morpho lending markets are live; this is a competitive timing difference, not proof of XRP demand decline."
+  ],
+  "run135_handoff_status": "Run135 parent f7d990 exact-head suite verified; current addendum/CI job commit pending its own exact-head verification."
 }

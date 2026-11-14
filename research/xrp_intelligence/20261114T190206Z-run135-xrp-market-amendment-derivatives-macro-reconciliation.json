@@ -33,8 +33,11 @@
           "top_level_imbalance": -0.8923,
           "ask_to_bid_size": 17.5664
         },
-        "raw_payload": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"0.9587\",\"lastSz\":\"300\",\"askPx\":\"0.9589\",\"askSz\":\"806.738865\",\"bidPx\":\"0.9588\",\"bidSz\":\"45.925094\",\"open24h\":\"1.0241\",\"high24h\":\"1.0297\",\"low24h\":\"0.9457\",\"volCcy24h\":\"53365600.2871295153\",\"vol24h\":\"54225445.465869\",\"ts\":\"1794681581569\",\"sodUtc0\":\"1.011\",\"sodUtc8\":\"0.9719\"}],\"msg\":\"\"}",
-        "raw_payload_sha256": "6f5f5d411c9529d4d36eb7dc679a09d074ae376e8fed48e5a804dbf26950f144"
+        "rendered_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"0.9587\",\"lastSz\":\"300\",\"askPx\":\"0.9589\",\"askSz\":\"806.738865\",\"bidPx\":\"0.9588\",\"bidSz\":\"45.925094\",\"open24h\":\"1.0241\",\"high24h\":\"1.0297\",\"low24h\":\"0.9457\",\"volCcy24h\":\"53365600.2871295153\",\"vol24h\":\"54225445.465869\",\"ts\":\"1794681581569\",\"sodUtc0\":\"1.011\",\"sodUtc8\":\"0.9719\"}],\"msg\":\"\"}",
+        "rendered_response_text_sha256": "6f5f5d411c9529d4d36eb7dc679a09d074ae376e8fed48e5a804dbf26950f144",
+        "raw_source_bytes_captured": false,
+        "capture_representation": "web-rendered JSON response text; original HTTP wire bytes and headers were not exposed",
+        "model_eligible": false
       },
       {
         "source": "Bybit",
@@ -57,8 +60,11 @@
           "top_level_imbalance": -0.7721,
           "ask_to_bid_size": 7.777
         },
-        "raw_payload": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"spot\",\"list\":[{\"symbol\":\"XRPUSDT\",\"bid1Price\":\"0.9557\",\"bid1Size\":\"263.16\",\"ask1Price\":\"0.9559\",\"ask1Size\":\"2046.59\",\"lastPrice\":\"0.9558\",\"prevPrice24h\":\"1.0216\",\"price24hPcnt\":\"-0.0644\",\"highPrice24h\":\"1.0298\",\"lowPrice24h\":\"0.9458\",\"turnover24h\":\"45527304.162427\",\"volume24h\":\"46074938.27\",\"usdIndexPrice\":\"0.954783\"}]},\"retExtInfo\":{},\"time\":1794682926653}",
-        "raw_payload_sha256": "4e17fa452569096e16a8fa5e17becf700c750685bba6b4a5be6bb5168699afba"
+        "rendered_response_text": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"spot\",\"list\":[{\"symbol\":\"XRPUSDT\",\"bid1Price\":\"0.9557\",\"bid1Size\":\"263.16\",\"ask1Price\":\"0.9559\",\"ask1Size\":\"2046.59\",\"lastPrice\":\"0.9558\",\"prevPrice24h\":\"1.0216\",\"price24hPcnt\":\"-0.0644\",\"highPrice24h\":\"1.0298\",\"lowPrice24h\":\"0.9458\",\"turnover24h\":\"45527304.162427\",\"volume24h\":\"46074938.27\",\"usdIndexPrice\":\"0.954783\"}]},\"retExtInfo\":{},\"time\":1794682926653}",
+        "rendered_response_text_sha256": "4e17fa452569096e16a8fa5e17becf700c750685bba6b4a5be6bb5168699afba",
+        "raw_source_bytes_captured": false,
+        "capture_representation": "web-rendered JSON response text; original HTTP wire bytes and headers were not exposed",
+        "model_eligible": false
       },
       {
         "source": "Kraken",
@@ -80,8 +86,11 @@
           "top_level_imbalance": -0.0142,
           "ask_to_bid_size": 1.0289
         },
-        "raw_payload": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.95818000\",\"1461\",\"1461.000\"],\"b\":[\"0.95790000\",\"1420\",\"1420.000\"],\"c\":[\"0.95802000\",\"1038.61559658\"],\"v\":[\"44042512.53550367\",\"51070509.72905242\"],\"p\":[\"0.97780560\",\"0.98271467\"],\"t\":[45628,53072],\"l\":[\"0.94522000\",\"0.94522000\"],\"h\":[\"1.01248000\",\"1.02881000\"],\"o\":\"1.00999000\"}}}",
-        "raw_payload_sha256": "b2dd238dde82b9ef29e751cc40f78c816649fb74d6192755c3441251e7053bb6"
+        "rendered_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.95818000\",\"1461\",\"1461.000\"],\"b\":[\"0.95790000\",\"1420\",\"1420.000\"],\"c\":[\"0.95802000\",\"1038.61559658\"],\"v\":[\"44042512.53550367\",\"51070509.72905242\"],\"p\":[\"0.97780560\",\"0.98271467\"],\"t\":[45628,53072],\"l\":[\"0.94522000\",\"0.94522000\"],\"h\":[\"1.01248000\",\"1.02881000\"],\"o\":\"1.00999000\"}}}",
+        "rendered_response_text_sha256": "b2dd238dde82b9ef29e751cc40f78c816649fb74d6192755c3441251e7053bb6",
+        "raw_source_bytes_captured": false,
+        "capture_representation": "web-rendered JSON response text; original HTTP wire bytes and headers were not exposed",
+        "model_eligible": false
       }
     ],
     "interpretation": [
@@ -235,7 +244,15 @@
       "Energy shock could fade without persistent monetary tightening.",
       "Crypto liquidation may reflect leverage and technology-equity spillover rather than XRP-specific fundamentals.",
       "XRP-specific flows and venue positioning can diverge from BTC and broader risk assets."
-    ]
+    ],
+    "stablecoin_contraction": {
+      "date": "2026-11-11",
+      "source": "Glassnode Week On-Chain, week 46",
+      "url": "https://insights.glassnode.com/the-week-onchain-week-46-2026/",
+      "change_30d_usd": -14200000000,
+      "competing_explanation": "RLUSD grew by approximately $971M over 90 days through Nov 4 while USDT and USDC declined in the same window; this can represent share rotation rather than uniform stablecoin redemption.",
+      "causal_status": "BROAD_RISK_CONTEXT_ONLY"
+    }
   },
   "repository": {
     "repository": "Barrot-Agent/B-Agent",
@@ -342,7 +359,13 @@
     "forecast_status": "NOT_ISSUED",
     "accuracy_status": "NOT_EVALUATED",
     "no_paper_trade": true,
-    "no_real_money": true
+    "no_real_money": true,
+    "feature_gaps": [
+      "Global stablecoin supply and issuer/chain-specific supply are not yet scheduled features.",
+      "XRPL amendment vote distance and activation countdown are not yet scheduled features.",
+      "Institutional alternative-rail events (Arc, PNC USDC, SBI/Circle) remain curated research, not point-in-time model features.",
+      "Current web observations are not admitted to the point-in-time feature store."
+    ]
   },
   "nine_platforms": {
     "ChatGPT": "GitHub authenticated; repository permissions overprivileged",
@@ -368,5 +391,306 @@
       "the new Run135 documentation/test/Pages-fix head will require its own exact-head CI"
     ],
     "source_prs_closed": 0
+  },
+  "source_capture_integrity": {
+    "status": "RENDERED_TEXT_RECEIPTS_ONLY",
+    "note": "The three exchange hashes authenticate the exact JSON text displayed by the web interface. They are not hashes of original HTTP wire bytes. No original response headers or byte stream were captured. These observations remain research-only and were not ingested into the point-in-time feature store.",
+    "raw_source_bytes_captured": false
+  },
+  "xrpl_stablecoin_supply": {
+    "source": "ChainReport Stablechain Scoreboard",
+    "url": "https://chainreport.co/stablechains/xrpl/",
+    "source_time": "Updated approximately 10 minutes before retrieval; exact UTC retrieval time not exposed",
+    "method": "DefiLlama stablecoins API; refreshed hourly",
+    "live_total_usd": 841000000,
+    "change_7d_pct": -13,
+    "change_30d_pct": -26,
+    "daily_chart": {
+      "2026-08-16": 942000000,
+      "2026-11-13": 895000000,
+      "note": "Daily chart counts a few assets differently from the live total; do not compare as one continuous series without aligning definitions."
+    },
+    "assets": [
+      {
+        "symbol": "RLUSD",
+        "issuer": "Ripple",
+        "supply_usd": 764000000,
+        "share_pct": 90.9,
+        "change_7d_pct": -14,
+        "change_30d_pct": -28
+      },
+      {
+        "symbol": "USDV",
+        "issuer": "Valtorum",
+        "supply_usd": 72800000,
+        "share_pct": 8.7,
+        "change_7d_pct": 0,
+        "change_30d_pct": 0
+      },
+      {
+        "symbol": "USDC",
+        "issuer": "Circle",
+        "supply_usd": 3700000,
+        "share_pct": 0.4,
+        "change_7d_pct": -27,
+        "change_30d_pct": -28
+      }
+    ],
+    "exchange_network_support": {
+      "supported_by_checked_public_currency_endpoints": [
+        "Binance",
+        "Coinbase",
+        "KuCoin",
+        "Bitget",
+        "Gate"
+      ],
+      "usdt_on_xrpl": false,
+      "usdc_on_xrpl": false,
+      "not_covered": [
+        "Kraken",
+        "OKX",
+        "Bybit"
+      ],
+      "limitation": "The source says Kraken has no public per-network data and OKX/Bybit require an API key."
+    },
+    "network_metrics": {
+      "estimated_cost_to_send_100_usd": "< $0.0001",
+      "estimated_finality_seconds": 4,
+      "source_note": "Network fee/finality are not liquidity or adoption metrics."
+    },
+    "source_limitations": [
+      "Third-party aggregator using DefiLlama; not an issuer attestation.",
+      "Live total and daily chart use different asset-count definitions.",
+      "No exact retrieval timestamp exposed in the page."
+    ]
+  },
+  "rlusd_chain_reconciliation": {
+    "official_ripple_transparency": {
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "as_of_date": "2026-11-12",
+      "circulating_usd": 2689900000,
+      "reserve_funds_usd": 2826500000,
+      "derived_coverage_pct": 105.078,
+      "latest_linked_cpa_attestation": "2026-09-30"
+    },
+    "stableradar_onchain_snapshot": {
+      "url": "https://stableradar.com/es/coin/rlusd",
+      "snapshot_utc": "2026-11-12T17:28:00Z",
+      "xrpl_ledger": 108286405,
+      "total_supply": 2710179158,
+      "by_chain": {
+        "XRPL": 863843328,
+        "Ethereum": 1830228715,
+        "Base": 16106576,
+        "OP_Mainnet": 143,
+        "Ink": 139,
+        "Unichain": 136
+      },
+      "defillama_total": 2709377167,
+      "defillama_by_chain": {
+        "XRPL": 862043958,
+        "Ethereum": 1831228715,
+        "Base": 16104076,
+        "OP_Mainnet": 143,
+        "Ink": 139,
+        "Unichain": 136
+      },
+      "page_warning": "Prototype; data partly live and partly reference. This snapshot is not a CPA attestation."
+    },
+    "competing_chainreport_snapshot": {
+      "url": "https://chainreport.co/stablechains/xrpl/",
+      "observed_on": "2026-11-14",
+      "rlusd_on_xrpl_usd": 764000000,
+      "total_xrpl_stablecoins_usd": 841000000,
+      "change_30d_pct": -26,
+      "note": "Uses DefiLlama stablecoins API and reports an update approximately ten minutes before retrieval."
+    },
+    "unresolved_difference": "ChainReport's live DefiLlama-based RLUSD-on-XRPL figure (~$764M) is materially below StableRadar's Nov 12 17:28 on-chain snapshot (~$863.8M). Ripple's issuer dashboard reports $2.6899B total circulating on Nov 12, while StableRadar's multi-chain on-chain read totals $2.7102B. These vintages/definitions are not reconciled and must not be averaged.",
+    "derived_chain_share_from_stableradar_pct": {
+      "XRPL": 31.87,
+      "Ethereum": 67.53,
+      "Base": 0.59
+    }
+  },
+  "xrpl_rlusd_dex_snapshot": {
+    "source": "StableRadar RLUSD page",
+    "url": "https://stableradar.com/es/coin/rlusd",
+    "as_of_utc": "2026-11-12T17:28:00Z",
+    "status": "STALE_RESEARCH_REFERENCE_NOT_CURRENT_DEPTH",
+    "xrp_rlusd_amm_pool": {
+      "xrp": 2043686,
+      "rlusd": 2093914,
+      "fee_pct": 0.315
+    },
+    "rlusd_usdc": {
+      "mid": 1,
+      "spread_bps": 0.5,
+      "depth_within_2pct_usd": {
+        "bid": 412911,
+        "ask": 784958
+      }
+    },
+    "rlusd_xrp_mid_xrp": 0.9752,
+    "issuer_controls": {
+      "clawback_enabled": true,
+      "global_freeze_active": false,
+      "no_freeze_flag": false,
+      "require_auth": false,
+      "master_key_disabled": true,
+      "deposit_authorization": true,
+      "destination_tag_required": true,
+      "reject_incoming_xrp": true,
+      "default_rippling": true,
+      "transfer_rate_pct": 0
+    },
+    "note": "Snapshot is over a day old and its RLUSD/XRP implied mid is inconsistent with the later CEX XRP snapshot. Do not use as current executable depth."
+  },
+  "global_stablecoin_liquidity": {
+    "source": "Glassnode Week On-Chain, week 46 2026",
+    "url": "https://insights.glassnode.com/the-week-onchain-week-46-2026/",
+    "date": "2026-11-13",
+    "total_stablecoin_supply_30d_change_usd": -14200000000,
+    "stablecoin_total_market_cap_usd": 283700000000,
+    "rlusd_market_cap_usd": 2784600000,
+    "usdt_market_cap_usd": 175240000000,
+    "usdc_market_cap_usd": 69050000000,
+    "methodology_note": "Glassnode's chart uses a basket of 11 large USD stablecoins; this is not the same universe as The Block's headline or Ripple issuer circulation.",
+    "interpretation": "Broad stablecoin contraction is a risk-liquidity headwind, but redemptions, chain migration and rotation among stablecoins must be separated."
+  },
+  "institutional_network": {
+    "circle_arc": {
+      "source": "Circle official mainnet launch",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "launch_date": "2026-09-16",
+      "status": "PUBLIC_MAINNET_LAUNCHED",
+      "gas_asset": "USDC",
+      "validator_set": "Permissioned validator cohort",
+      "sbi_group_role": "Founding validator",
+      "coinbase_role": "Exchange-access partner",
+      "bny_role": "Institutional bank participant",
+      "lending_protocols": [
+        "Aave",
+        "Morpho"
+      ],
+      "interpretation": "Adjacent/competing institutional stablecoin rail; no XRP settlement requirement or Ripple integration established."
+    },
+    "circle_sbi_japan": {
+      "source": "Circle Q3 2026 SEC 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "ownership": {
+        "Circle": 50,
+        "SBI": 50
+      },
+      "initial_contributions_usd_each": 1500000,
+      "accounting": "Circle controls and consolidates the VIE; SBI interest is noncontrolling.",
+      "operations_as_of_2026_09_30": "No significant operating results reported."
+    },
+    "circle_coinbase_distribution": {
+      "source": "Circle Q3 2026 SEC 10-Q",
+      "q3_distribution_costs_paid_to_coinbase_usd": 331300000,
+      "nine_month_distribution_costs_paid_to_coinbase_usd": 986600000,
+      "qualification": "USDC distribution economics; not XRP demand and not Coinbase RLUSD collateral revenue."
+    },
+    "coinbase_ripple_rlusd": {
+      "source": "Coinbase official listing/partnership announcement",
+      "url": "https://www.coinbase.com/blog/ripple-usd-rlusd-now-available-on-coinbase",
+      "supported_networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "ripple_base_liquidity_support": true,
+      "global_exchange_collateral_support_at_announcement": "Future follow-up, not confirmed live."
+    },
+    "sbi_vc_trade_rlusd": {
+      "source": "SBI VC Trade official release",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "launch_date": "2026-06-24",
+      "supported_network_at_launch": "Ethereum only",
+      "qualification": "SBI's RLUSD distribution channel did not establish XRPL-network deposits/withdrawals at launch; transaction and deposit limits apply."
+    },
+    "coinbase_pnc_usdc": {
+      "source": "Coinbase official announcement",
+      "url": "https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance",
+      "date": "2026-11-09",
+      "asset": "USDC",
+      "conversion": "Incoming USDC automatically converted 1:1 to USD for PNC account deposit.",
+      "xrp_settlement": false
+    },
+    "circle_arc_token_capital": {
+      "source": "Circle Q3 2026 SEC 10-Q",
+      "gross_presale_proceeds_usd": 242200000,
+      "revenue_recognized_usd": 181800000,
+      "arc_specific_deferred_consideration_usd": 60400000,
+      "idg_purchase_usd": 25000000,
+      "idg_purchase_included_in_gross": true,
+      "qualification": "The $25M IDG purchase is included in gross proceeds, not additional. Total deferred-revenue rollforward includes other contracts."
+    }
+  },
+  "identity_research": {
+    "sbic_regional_entities": [
+      {
+        "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "brand": "SBIC East Japan",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "founded": "1963-11-15",
+        "capital_jpy": 6673400000,
+        "coverage": "Eastern Japan regional area",
+        "shareholder_description": "Local governments, chambers of commerce, financial institutions and businesses; official profile lists Nagoya and Osaka sister companies."
+      },
+      {
+        "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "brand": "SBIC Central Japan",
+        "url": "https://www.sbic-cj.co.jp/company/about/",
+        "founded": "1963-11-18",
+        "capital_jpy": 4380800000,
+        "coverage": "Aichi, Gifu, Mie, Toyama and Ishikawa; official profile lists Tokyo and Osaka sister companies."
+      },
+      {
+        "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "brand": "SBIC West Japan",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "founded": "1963-11-20",
+        "capital_jpy": 6822000000,
+        "coverage": "Western Japan regional area; official profile lists Tokyo and Nagoya sister companies."
+      }
+    ],
+    "sbic_conclusion": "Three distinct regional legal entities established under Japan's Small and Medium Business Investment & Consultation Company Act. They identify one another as sister companies. No primary evidence found that they are SBI Holdings subsidiaries or the source of an OpenAI/ChatGPT partnership.",
+    "sb_oai_japan": {
+      "name": "SB OAI Japan GK",
+      "url": "https://www.sb-oai.co.jp/en/about/",
+      "ownership": {
+        "OpenAI": 50,
+        "C Holdings": 50
+      },
+      "c_holdings_ownership": {
+        "SoftBank Corp": 51,
+        "SoftBank Group": 49
+      },
+      "business": "OpenAI/SoftBank enterprise AI joint venture; distinct from SBI Holdings and the three regional SBIC companies."
+    },
+    "exact_phrase_status": {
+      "SBIC, ChatGPT SBIC": "No primary source found tying the regional SBIC companies to ChatGPT/OpenAI; possible name confusion with SB OAI Japan is not proven.",
+      "ASK Coin": "No canonical XRPL ASK issuer verified; Permission Coin (ASK) is a separate Base/Polygon candidate.",
+      "actual capital": "Not a standardized XRP metric; classify gross cash, recognized revenue, deferred consideration, in-kind XRP, debt, warrants, conditional facilities and secondary resales separately."
+    },
+    "kamilah_stevenson": "Dr. Kamilah Stevenson identity supported; candidate XRP YouTube channel ownership remains unverified; candidate inventory remains quarantined."
+  },
+  "run135_verification": {
+    "tested_head": "f7d990fd3585197d223da01b6534b35a68fe0443",
+    "full_suite_run": 43630374913,
+    "tests_passed": 3682,
+    "tests_failed": 0,
+    "subtests_passed": 8,
+    "inclusive_coverage_pct": 62.84,
+    "legacy_core_coverage_pct": 76,
+    "duration_seconds": 128.72,
+    "wheel_build": "passed",
+    "installed_mission_verification": "passed",
+    "dependency_audit_run": 43630374830,
+    "dependency_audit": "six manifest groups passed; zero known vulnerabilities reported",
+    "fail_closed_gate_run": 43630374819,
+    "fail_closed_gate": "passed",
+    "note": "These results are exact-head evidence for f7d990. A subsequent commit adding the Jekyll validation job and institutional research will require its own exact-head run."
   }
 }
