@@ -46,6 +46,10 @@ This repository now also ships a typed Python package under [`barrot_agent/`](ba
 - configuration and logging primitives
 - a lightweight `BAgent` application wrapper
 - Granite model metadata and inference helpers
+- SHRM 2.0 hierarchical reasoning ([`barrot_agent/reasoning/`](barrot_agent/reasoning/)) —
+  Sapient's Hierarchical Reasoning Model refined for the Barrot ternary
+  pipeline: weighted sources, opt-in two-level H-hierarchy, decision traces,
+  and exact v1 label parity (see [`core/hrm_ternary.py`](core/hrm_ternary.py))
 - a Streamlit demo entrypoint in [`app.py`](app.py)
 
 Development quickstart:
