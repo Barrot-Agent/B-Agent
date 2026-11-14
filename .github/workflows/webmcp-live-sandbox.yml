@@ -1,4 +1,4 @@
-name: WebMCP Live Sandbox
+name: WebMCP Live Sandbox (fail-closed)
 
 on:
   workflow_dispatch:
@@ -20,10 +20,15 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: webmcp-live-sandbox
+  cancel-in-progress: false
+
 jobs:
   sandbox:
     if: ${{ inputs.confirm_live_execution == 'YES' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
         with:
