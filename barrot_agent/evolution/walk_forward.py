@@ -314,6 +314,7 @@ def evaluate_chronological_walk_forward(
     calibration_minimum_log_loss_improvement: float = 0.005,
     calibration_max_history: int = 250,
     max_source_age_seconds: int | None = None,
+    expected_cadence_seconds: float | None = None,
 ) -> dict[str, Any]:
     """Evaluate four deterministic baselines with purged, embargoed point-in-time windows.
 
@@ -387,6 +388,13 @@ def evaluate_chronological_walk_forward(
     max_age = horizon_seconds if max_origin_age_seconds is None else max_origin_age_seconds
     if isinstance(max_age, bool) or not isinstance(max_age, int) or max_age <= 0:
         raise WalkForwardEvaluationError("max_origin_age_seconds must be a positive integer")
+    if expected_cadence_seconds is not None and (
+        isinstance(expected_cadence_seconds, bool)
+        or not isinstance(expected_cadence_seconds, (int, float))
+        or not math.isfinite(float(expected_cadence_seconds))
+        or float(expected_cadence_seconds) <= 0
+    ):
+        raise WalkForwardEvaluationError("expected_cadence_seconds must be finite and positive")
 
     raw_input = list(records)
     if not raw_input or any(not isinstance(item, Mapping) for item in raw_input):
@@ -731,7 +739,7 @@ def evaluate_chronological_walk_forward(
             "log_loss": item["scoring"]["log_loss"],
         }
         for item in forecasts
-    ])
+    ], expected_cadence_seconds=expected_cadence_seconds)
     out_of_sample_origin_count = len({item["data_cutoff_utc"] for item in forecasts})
     reference_forecasts = [item for item in forecasts if item["model_id"] == "naive_class_prior"]
     overlap_metrics = _overlap_adjusted_effective_sample_size(reference_forecasts)
@@ -781,6 +789,7 @@ def evaluate_chronological_walk_forward(
         "forecast_count": len(forecasts),
         "metrics": metrics,
         "paired_uncertainty": paired_uncertainty,
+        "bootstrap_expected_cadence_seconds": expected_cadence_seconds,
         "paired_uncertainty_source_cluster_semantics": (
             "Clusters use the canonical publisher lineage of each observed target record. "
             "They do not assert independence of model-training feature sources. Multi-publisher "
