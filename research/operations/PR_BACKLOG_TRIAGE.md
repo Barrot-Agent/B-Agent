@@ -747,3 +747,13 @@ No source PR was closed. Close only exact duplicates/superseded PRs after succes
 Main Pages build 43650499344 failed. Main Barrot Sync 43650499411 false-greened masked sync/push failures; integration remains quarantined. Main Auto PR 43650499406 succeeded with no inventory growth. Branch-protection API returns 403; ruleset 10863829 disabled; integration unprotected; connector permissions overprivileged.
 
 Run143 research: spot snapshots stale/no L2; derivatives aggregates disagree by scope/timestamp; ETF flows use different fund universes and holdings-change methods; XRPL XLS-66 remains Draft, uncollateralized with optional first-loss capital and no activation countdown; Circle Arc/SBI, Coinbase/Ripple RLUSD, Standard Chartered/LMAX, SBI/Dsrv/NICE and Circle/Binance relationships are recorded as separate rails. No directional forecast. **NOT_ISSUED / NOT_EVALUATED.**
+
+
+## Run143 final verification — 2026-11-14T23:13:31.023Z
+
+- Tested integration code head: `a466c11879926009cfcaf88a3d3814268f323e13`; main: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`; 2,430 ahead / 0 behind.
+- Exact-head full suite: 3,762 passed, zero failed, one skipped, 19 subtests; 63.96% inclusive coverage; 112.38 seconds. Wheel and installed mission passed. Push dependency audit, push fail-closed, PR dependency audit, PR fail-closed and PR Pages validation passed.
+- PR #1662 remains open/draft, 1,225 files, 367,334 additions, 6,309 deletions, zero reviews/approvals/threads. No PR is ready to merge.
+- Main CI 43650499432 passed 848 tests, one skipped, eight subtests. Main Pages build 43650499344 failed; main Barrot Sync 43650499411 false-greened masked failures; integration quarantines automatic sync.
+- PR inventory remains 373 total (361 drafts, 12 non-drafts). #1661/#1660/#1640 are supersession candidates with unique workflows to preserve; #1643/#1642/#1320/#1318/#1317 need semantic reconciliation; #1653/#1269/#1655/#1659 preserve unique content; dependency candidates #1644–#1650 and #1254/#1255 remain individually blocked/overlap-review. No exact duplicate certified; no source PR closed.
+- No merge to main. Branch protection, independent approval, least privilege and Pages authorization remain blockers.

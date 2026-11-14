@@ -4479,3 +4479,25 @@ Binance's official November 1 Recovery Update #4 explicitly lists XRP withdrawal
 XRP Insights' November 14 08:00 UTC attributed-wallet snapshot shows Binance down 100.4M XRP over seven days and 129.3M over 30 days. All tracked exchanges together are down 74.6M over seven days, so other exchanges collectively increased by 25.8M on the same-wallet measure. This is arithmetic on attributed wallet balances, not customer withdrawals or actual capital. The seven-day window is after XRP withdrawals reopened; transfers to unlabeled wallets remain an alternative explanation. The page excludes Binance from the Nov12 and Nov13 aggregate daily rows because of wallet-count changes.
 
 The exchange-wallet page reports 327.4M Binance-Peg XRP in the exchange table but 325.8M in its reserve-methodology narrative. Preserve that discrepancy. A separate secondary claim of a $1.2B DOJ seizure specifically linked to this incident was not corroborated by a DOJ primary source in this run and remains quarantined.
+
+
+### Run143 final exact-head verification — 2026-11-14T23:13:31.023Z
+
+**Current main:** `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`. **Tested integration code head:** `a466c11879926009cfcaf88a3d3814268f323e13`. Main remains an ancestor of integration; integration is 2,430 commits ahead and zero behind. The two-parent main reconciliation commit is `1ed9d62b679d1a6a6dbd4d0c97d3179eb196a20e`.
+
+<badge>Exact-head full suite passed</badge>
+
+- [Push full suite 43651708769](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651708769): **3,762 passed, 0 failed, 1 skipped, 19 subtests passed**, 63.96% inclusive coverage, 112.38 seconds; 62% total coverage floor and legacy core 70% floor passed.
+- Wheel build passed; installed primary Barrot V3/XRP mission verification passed.
+- [Push dependency audit 43651708761](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651708761): passed.
+- [Push fail-closed gate 43651708762](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651708762): passed.
+- [PR dependency audit 43651712878](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651712878): passed.
+- [PR fail-closed gate 43651712880](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651712880): passed.
+- [PR Pages validation 43651712880](https://github.com/Barrot-Agent/B-Agent/actions/runs/43651712880): passed. This is validation only, not deployment.
+- PR-event core/full-suite jobs were skipped by the integration-branch condition; the push-event full suite above is the authoritative full-suite evidence.
+
+The current PR #1662 is open/draft, base `16ec152`, tested head `a466c118`, 1,225 files, 367,334 additions, 6,309 deletions, 2,430 ahead/zero behind. GitHub reports a mergeable indicator, but the PR remains ineligible: zero independent reviews/approvals/review threads, semantic review incomplete, main branch-protection details return HTTP 403, integration is unprotected, fallback ruleset 10863829 is disabled, CODEOWNERS is self-owned, and the GitHub connector has admin/maintain/push/pull/triage permissions.
+
+Main's 848-test CI passed, but its Pages deployment failed and its Barrot Sync workflow masked missing-dependency/synchronization/push failures. Integration's Pages validation passed and automatic sync remains quarantined. Main was not modified after the verified merge into integration.
+
+This handoff/backlog update is documentation-only and follows tested code head `a466c118`; it will trigger another exact-head CI cycle. No runtime code changed in this update. No merge to main, deployment, external model transfer, paper trade, funds transfer, secret rotation, force-push, history rewrite or source-PR closure occurred.

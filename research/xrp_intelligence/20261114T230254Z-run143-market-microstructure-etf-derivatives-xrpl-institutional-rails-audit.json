@@ -25,20 +25,24 @@
     "main_only_paths_after_merge": 0,
     "producer_asset_paths_verified_equal_to_main": 18,
     "producer_addendum_lines_preserved_in_BARROT_SYNC": 19,
-    "user_music_assets": "preserved byte-for-byte from main; sample licensing/provenance not independently verified; no external publication or distribution"
+    "user_music_assets": "preserved byte-for-byte from main; sample licensing/provenance not independently verified; no external publication or distribution",
+    "current_main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "latest_tested_integration_head": "a466c11879926009cfcaf88a3d3814268f323e13",
+    "latest_handoff_parent": "a466c11879926009cfcaf88a3d3814268f323e13"
   },
   "pull_request": {
     "number": 1662,
     "state": "open",
     "draft": true,
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "head_sha": "1ed9d62b679d1a6a6dbd4d0c97d3179eb196a20e",
-    "changed_files": 1224,
-    "additions": 366505,
+    "head_sha": "a466c11879926009cfcaf88a3d3814268f323e13",
+    "changed_files": 1225,
+    "additions": 367334,
     "deletions": 6309,
-    "ahead_of_main": 2424,
+    "ahead_of_main": 2430,
     "behind_main": 0,
     "mergeable_indicator": true,
+    "mergeable_state": "unstable",
     "reviews": 0,
     "approvals": 0,
     "review_threads": 0
@@ -71,7 +75,45 @@
     "merge_head_fail_closed_pr": 43651110191,
     "merge_head_pr_ci": 43651110174,
     "merge_head_pr_dependency_audit": 43651110187,
-    "merge_head_status": "full repository suite and dependency audit were still in progress at evidence capture; PR-event core/full-suite jobs were skipped by integration-branch condition; new Run143 documentation commit will require exact-head CI again"
+    "merge_head_status": "full repository suite and dependency audit were still in progress at evidence capture; PR-event core/full-suite jobs were skipped by integration-branch condition; new Run143 documentation commit will require exact-head CI again",
+    "final_tested_head": {
+      "sha": "a466c11879926009cfcaf88a3d3814268f323e13",
+      "push_full_suite_run": 43651708769,
+      "result": {
+        "passed": 3762,
+        "failed": 0,
+        "skipped": 1,
+        "subtests_passed": 19,
+        "inclusive_coverage_percent": 63.96,
+        "coverage_floor_percent": 62,
+        "legacy_core_coverage_floor": "passed",
+        "test_duration_seconds": 112.38,
+        "wheel_build": "passed",
+        "installed_primary_xrp_mission": "passed"
+      },
+      "push_dependency_audit_run": 43651708761,
+      "push_dependency_audit": "passed",
+      "push_fail_closed_gate_run": 43651708762,
+      "push_fail_closed_gate": "passed",
+      "pr_dependency_audit_run": 43651712878,
+      "pr_dependency_audit": "passed",
+      "pr_fail_closed_gate_run": 43651712880,
+      "pr_fail_closed_gate": "passed",
+      "pr_pages_validation_run": 43651712880,
+      "pr_pages_validation": "passed",
+      "pr_event_tests": "skipped by integration-branch condition; not counted as full-suite evidence"
+    },
+    "main_current": {
+      "sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "run": 43650499432,
+      "result": {
+        "passed": 848,
+        "failed": 0,
+        "skipped": 1,
+        "subtests_passed": 8
+      }
+    },
+    "final_status": "success on exact code head a466c118; a documentation-only handoff/backlog update follows and will trigger a new exact-head CI cycle"
   },
   "workflows": {
     "main_pages_run": 43650499344,
