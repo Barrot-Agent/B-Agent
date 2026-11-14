@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Mission Handoff (Run114)
 
-Updated: 2026-11-14T03:20:00Z
+Updated: 2026-11-14T03:23:00Z
 
 **Mission priority 1:** XRP intelligence and measured prediction-engine mastery. **Protected foundation:** Barrot V3 execution, orchestration, safety, verification and external-action controls.
 
@@ -611,3 +611,29 @@ Primary sources:
 - SBI Crypto Card: https://www.sbigroup.co.jp/news/2026/0501_16280.html
 
 No directional XRP forecast is supported by these corporate disclosures. They are institutional adoption, stablecoin-economics and macro-sensitivity evidence, not proof of incremental XRP spot demand.
+
+
+## Run114C — latest integration-head verification (2026-11-14T03:23:00Z)
+
+The latest pre-handoff documentation head was 789ef945898491d67ba5d33e81108cf4b0195ea9. It is a documentation-only descendant of the verified code-bearing head 6a629caa566c2587d64194fbbb65a982f9418250. No runtime code or dependencies changed after the code-bearing head.
+
+Exact latest-head verification on 789ef945:
+- Full repository suite: 3,628 passed, eight subtests, zero failures; inclusive coverage 62.40%; 104.45 seconds.
+- Core suite: 740 passed, eight subtests; core coverage 76%.
+- Wheel build and installed Barrot V3/primary mission verification: passed.
+- Dependency audit: five manifest groups passed; zero known vulnerabilities reported.
+- Push fail-closed gate: passed; PR fail-closed gate: passed.
+- PR-event CI: skipped by the explicit integration-branch condition.
+- Evidence: [full suite 43550803774](https://github.com/Barrot-Agent/B-Agent/actions/runs/43550803774), [push dependency audit 43550803776](https://github.com/Barrot-Agent/B-Agent/actions/runs/43550803776), [PR dependency audit 43550810191](https://github.com/Barrot-Agent/B-Agent/actions/runs/43550810191), [push fail-closed 43550803956](https://github.com/Barrot-Agent/B-Agent/actions/runs/43550803956), [PR fail-closed 43550810184](https://github.com/Barrot-Agent/B-Agent/actions/runs/43550810184).
+
+Latest integration before this handoff commit: 2,337 commits ahead of main, zero behind; main remains fb272b40966834754ec686f9ed3ab94123f09306. Main tree 1,381 entries; integration tree 2,407 entries. PR #1662 is open/draft, mergeable=true, 1,167 changed files, 341,035 additions and 5,354 deletions; 50 workflow files and seven public web files. The full 375-open-PR inventory remains 361 drafts and 14 non-drafts.
+
+Latest timestamped market snapshot: OKX XRP-USDT at 2026-11-14T03:17:29.365Z was $0.9972, bid $0.9971 (2,920.39 XRP displayed), ask $0.9972 (2,764.11 XRP displayed), 24h open $1.0152, high $1.0438, low $0.9843 and volume 51.111M XRP. Top-of-book spread about 1.00 bps. Kraken returned $1.00435 without a provider event timestamp; do not infer executable arbitrage. No synchronized full L2 or byte-exact publisher receipt was admitted.
+
+Circle/Coinbase Q3 economics and Ripple/SBI institutional distinctions are recorded in the Run114B addendum and structured artifact. They remain stablecoin/corporate-adoption evidence, not proof of incremental XRP spot demand.
+
+**Decision remains NO MERGE.** PR #1662 is draft with zero approvals/reviews/threads. Full semantic review of 1,167 changed paths remains incomplete; least privilege, branch-protection visibility and Pages publication authorization remain blockers. No source PR was closed.
+
+Forecast remains NOT_ISSUED; accuracy NOT_EVALUATED. No paper trade, real-money action, external deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external-model transfer, funds transfer, force-push, history rewrite or destructive worktree operation occurred.
+
+This Run114C handoff commit is a documentation-only descendant of 789ef945; the exact latest-head tests above apply to its parent. The code-bearing changes remain verified on 6a629caa and no runtime code changed in the documentation descendant.
