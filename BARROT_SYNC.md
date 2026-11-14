@@ -39,7 +39,7 @@
 ## Last State
 - Last sync: 2026-11-14 (session 4) - PINGPONG REFINEMENT UPGRADE: patch-based
   large-document refinement + semantic evaluation (directive: Barrot V3)
-- Test suite: 846 passed, 76.64% coverage - GREEN (39 new tests; see session
+- Test suite: 848 passed, 76.68% coverage - GREEN (41 new tests; see session
   3 archive below for the pre-upgrade baseline of 807)
 - What was built (all reuse session 3's refiners/engine/scorer - nothing replaced):
   * paths.py - canonical dot-path pointers with escaping for keys containing
