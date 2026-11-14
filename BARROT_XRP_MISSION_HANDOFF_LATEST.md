@@ -1,3 +1,42 @@
+## Run126 main-automation safety and filing follow-up — 2026-11-14T12:21:03Z
+
+### Main Barrot Sync: credential-prefix disclosure and false-green execution
+
+Main `.github/workflows/barrot-sync.yml` currently prints the first 30 characters of `LUNAROUTE_API_KEY` into the Actions log. The workflow also masks the Python sync failure with `|| echo` and masks `git push` failure with `|| true`. Main run [43343513347](https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513347) concluded success despite a logged `ModuleNotFoundError: No module named 'httpx'`. A green status therefore did not establish a successful sync or push. Treat the key as potentially partially exposed; **no rotation was performed**. Rotation requires separate authorization. The integration branch already quarantines this workflow with an empty permissions block and a disabled job. Do not dispatch main Barrot Sync.
+
+### Main Coinbase paper-trader state: open position with missing identity
+
+Main `web/paper_trading_state.json` contains:
+- `position_size=0.012445158497236623`
+- `position_product=null`
+- `avg_entry_price=80436.84`
+- `trade_count=126`
+- `cash_usd=9009.936613782476`
+
+Main `.github/workflows/coinbase-paper-trader.yml` has no explicit confirmation input, calls Groq for buy/sell/hold, and commits state/log changes to main. This is a simulated position, not real-money exposure, but its product identity is missing. Do not assume BTC-USD merely because the workflow hardcodes that default. No paper-trader workflow was dispatched. The integration version requires explicit YES, exact 40-character current main SHA, validates persisted state/product identity before any network or model call, uses contents:read and uploads an artifact instead of committing state.
+
+### Circle/Coinbase filing reconciliation
+
+Circle's Q3 2026 10-Q reports:
+- $331.3M Q3 and $986.6M nine-month distribution costs in connection with its Coinbase agreements.
+- $181.8M ARC-token-presale revenue recognized in Q3 and nine-month results.
+- SBI's own ARC presale allocation remains undisclosed; the $222M figure is the total consortium, not SBI's check.
+
+Coinbase's Q3 2026 10-Q has an internal inconsistency:
+- Table: USDC rewards expense $129.245M Q3 2026 vs $111.570M Q3 2025 (arithmetic increase $17.675M); $361.780M nine months 2026 vs $314.125M 2025 (arithmetic increase $47.655M).
+- Narrative below the table: reports increases of $71.6M and $175.7M.
+- The reviewed filing section does not reconcile the table and narrative. Preserve both; do not silently choose one or net Coinbase rewards against Circle's distribution costs.
+
+Sources: [Circle Q3 2026 10-Q](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html), [Coinbase Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+
+### Exact-head CI before this follow-up
+
+The code-bearing head `b34d2f89e33cea37bc736d8978fb1ad27a143c87` passed [full suite 43593974632](https://github.com/Barrot-Agent/B-Agent/actions/runs/43593974632): 3,635 passed, eight subtests passed, zero failures, 62.44% inclusive coverage, 76% legacy core coverage, 159.32 seconds; wheel and packaged mission passed. Push/PR dependency audits and push/PR fail-closed gates passed; PR CI was skipped by the integration-branch condition. This follow-up is documentation/evidence only and will receive its own exact-head CI.
+
+Structured evidence: `research/xrp_intelligence/20261114T122103Z-run126-main-automation-safety-and-filing-reconciliation.json`.
+
+---
+
 ## Run126 primary-source follow-up — 2026-11-14T12:15:24Z
 
 **New high-value finding: SBI is a direct strategic partner and investor in both Ripple and Circle.** This creates a shared institutional hub, not a proven Ripple–Circle partnership.
