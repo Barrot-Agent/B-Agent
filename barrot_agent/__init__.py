@@ -134,3 +134,23 @@ if _research_available:
 
 if _creative_available:
     __all__ += ["ProductionDirector", "CreativeProductionRecord"]
+
+# Optional derived-data refinement. External LunaRoute use is default-deny.
+try:
+    from .refinement import (
+        EXTERNAL_REFINEMENT_ALLOWED_CLASSES, IMMUTABLE_DATA_CLASSES,
+        REFINABLE_DATA_CLASSES, HeuristicRefiner, LunaRouteRefiner,
+        PingPongRefiner, Refiner, RefinementReport, make_model_refiners,
+        refine_data, refine_json_file,
+    )
+    _refinement_available = True
+except Exception:
+    _refinement_available = False
+
+if _refinement_available:
+    __all__ += [
+        "EXTERNAL_REFINEMENT_ALLOWED_CLASSES", "IMMUTABLE_DATA_CLASSES",
+        "REFINABLE_DATA_CLASSES", "HeuristicRefiner", "LunaRouteRefiner",
+        "PingPongRefiner", "Refiner", "RefinementReport",
+        "make_model_refiners", "refine_data", "refine_json_file",
+    ]

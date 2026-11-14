@@ -125,3 +125,32 @@
 - Global stablecoin supply (Glassnode 11-asset basket) contracted $14.2B over 30 days to Nov 11. ChainReport's live DefiLlama-based XRPL scoreboard reports $841M stablecoins, -13% 7d/-26% 30d; RLUSD $764M, -14% 7d/-28% 30d. Stableradar's older Nov 12 on-chain snapshot reports 863.8M RLUSD on XRPL; Ripple issuer page reports $2.6899B total circulating and $2.8265B reserves Nov 12. These vintages/definitions are not reconciled; do not average.
 - New PR-only Jekyll build validation is added to `.github/workflows/ci.yml`; it builds but does not upload or deploy. The raw-block fix and static test passed on parent f7d990; the new Jekyll job is pending.
 - Forecast NOT_ISSUED; accuracy NOT_EVALUATED. No paper trade or real-money action.
+
+
+## Run137 — main advance and ping-pong refinement safety reconciliation
+- Main advanced to `f1708870fcde80a01d14509609affc558e5cc065`. Its ping-pong
+  refinement engine, deterministic adapter, optional LunaRoute adapter, CLI,
+  tests, usage guide and JSONL log are preserved in this integration merge.
+- The committed `ping-pongings/knowledge-base/refinement_log.jsonl` records
+  historical LunaRoute model responses from 18:56 to 20:01 UTC. This proves
+  prior endpoint calls, not provider retention terms, ownership, permissions,
+  source classification or authorization for XRP data. Payloads are absent,
+  so their exact contents cannot be reconstructed.
+- Main's original `refine_data` and CLI defaulted to live LunaRoute models
+  whenever `LUNAROUTE_API_KEY` existed and silently truncated payloads to
+  24,000 characters. Integration changes this to offline-by-default,
+  explicit data classification, immutable-data rejection, dual opt-in for
+  external calls, secret-like payload blocking and reject-not-truncate size
+  limits. LunaRoute is outside the nine-platform map and is not authorized
+  for XRP data transfer.
+- Main Barrot Sync run `43635426753` attempted `b_agent.py --sync` but
+  failed before synchronization: `ModuleNotFoundError: No module named 'rich'`.
+  The workflow suppressed the failure with `|| echo`; the push reported
+  `Everything up-to-date`. Green conclusion does not mean successful sync.
+- Main CI `43635426745`: full repository suite 810 passed, eight subtests;
+  core suite 485 passed, eight subtests. Main Pages `43635426265` failed
+  Liquid parsing in `GLOBAL_STATE_MANIFEST.md`; deploy was skipped.
+  Auto-PR check `43635426704` passed without creating a PR.
+- No LunaRoute call, secret read/rotation, external publication, deployment,
+  Databricks write, Kaggle submission, paper trade or funds action occurred
+  in this integration run. Forecast NOT_ISSUED; accuracy NOT_EVALUATED.
