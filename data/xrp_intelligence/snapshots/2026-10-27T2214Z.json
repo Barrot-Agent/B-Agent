@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "record_type": "sbic_identity_disambiguation_and_sbi_xrp_relationships",
+  "snapshot_id": "SBIC-IDENTITY-SBI-XRP-RELATIONSHIPS-2026-10-27T221448Z",
+  "captured_at_utc": "2026-10-27T22:14:48Z",
+  "classification": "PUBLIC_SOURCE_RESEARCH; ACRONYM_AMBIGUOUS; RELATIONSHIPS_ENTITY_SCOPED; NO_PRICE_FORECAST",
+  "sbic_identity": {
+    "status": "MULTIPLE_JAPAN_CANDIDATES; INTENDED_ENTITY_UNRESOLVED",
+    "candidates": [
+      {
+        "name": "SBIC East Japan / Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "source": "official company profile",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "description": "Regional SME investment and consultation organization. Distinct from SBI Holdings and SBI Ripple Asia.",
+        "xrp_relationship": "No direct XRP relationship established in the reviewed sources; absence of a hit is not proof of no relationship."
+      },
+      {
+        "name": "SBI Capital Co., Ltd. / SBIキャピタル",
+        "source": "official SBI Group historical releases",
+        "url": "https://www.sbigroup.co.jp/news/2004/0623_80.html",
+        "description": "Official 2004 SBI Group release explicitly abbreviated SBI Capital as SBIC. Historical activity included private-equity/buyout, mezzanine and corporate-restructuring investment. A 2007 SBI Group announcement described a joint venture in which 40% of SBI Capital was transferred to the Goldman Sachs group, leaving SBI with 60% at that time.",
+        "xrp_relationship": "No direct XRP relationship established in reviewed sources. The SBI Group directory dated 2026-10-07 lists SBI Capital, but legal continuity from the historical company to the current listing is not established by the reviewed records."
+      }
+    ],
+    "other_distinct_entity": "SBI Ripple Asia Co., Ltd. is a separate SBI Group–Ripple joint venture. Ripple's official page says SBI Ripple Asia does not itself handle XRP, while providing RippleNet software/services and describing Japan ODL as commercialized through SBI Remit, Coins.ph and SBI VC Trade.",
+    "resolution": "Do not collapse SBIC East Japan, SBI Capital, SBI Ripple Asia, SBI Remit and SBI VC Trade into one entity. The exact intended meaning of the phrase 'SBIC, ChatGPT SBIC' remains unresolved without the original context."
+  },
+  "confirmed_sbi_xrp_relationships": [
+    {
+      "relationship": "SBI Remit + Coins.ph + SBI VC Trade + Ripple launched Japan-to-Philippines ODL using XRP as bridge",
+      "source_url": "https://ripple.com/ripple-press/ripple-launches-on-demand-liquidity-with-sbi-remit-to-accelerate-and-grow-cross-border-payments-from-japan/",
+      "date": "2021-07-28",
+      "status": "CONFIRMED_LAUNCH_ANNOUNCEMENT; CURRENT_VOLUME_UNKNOWN"
+    },
+    {
+      "relationship": "SBI VC Trade announced XRP-using remittance expansion to Philippines, Vietnam and Indonesia",
+      "source_url": "https://www.sbivc.co.jp/newsview/88ut48zo5l",
+      "date": "2023-09-06",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT; CURRENT_VOLUME_UNKNOWN"
+    },
+    {
+      "relationship": "SBI ARUHI shareholder benefit offers eligible holders XRP distributed through SBI VC Trade",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0312_16171.html",
+      "date": "2026-03-12",
+      "status": "CONFIRMED_RETAIL_DISTRIBUTION_CHANNEL; REDEMPTION_VOLUME_UNKNOWN"
+    },
+    {
+      "relationship": "SBI Shinsei Bank shareholder benefit offers an XRP coupon through SBI VC Trade",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0225_16135.html",
+      "date": "2026-02-25",
+      "status": "CONFIRMED_RETAIL_DISTRIBUTION_CHANNEL; REDEMPTION_VOLUME_UNKNOWN"
+    },
+    {
+      "relationship": "SBI VC Trade / Aplus / Visa card allows a choice of BTC, ETH or XRP reward conversion",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "date": "2026-05-01",
+      "status": "CONFIRMED_PRODUCT_ANNOUNCEMENT; XRP_SELECTION_SHARE_UNKNOWN"
+    },
+    {
+      "relationship": "SBI VC Trade began handling RLUSD in Japan with Ripple",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "date": "2026-06-24",
+      "status": "CONFIRMED_STABLECOIN_DISTRIBUTION; NOT_PROOF_OF_XRP_DEMAND"
+    },
+    {
+      "relationship": "SBI Ripple Asia and dsrv labs study Japan–Korea blockchain remittance/payment and consider XRPL",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "date": "2026-02-24",
+      "status": "RESEARCH_STAGE; PRODUCTION_VOLUME_UNKNOWN"
+    },
+    {
+      "relationship": "SBI Ripple Asia conceptually studies tokenized deposits/deposit-type digital money using XRPL as a possible ledger",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "date": "2026-02-26",
+      "status": "CONCEPTUAL_POC; XRP_AS_VALUE_ASSET_NOT_ESTABLISHED"
+    }
+  ],
+  "counterevidence_and_limits": [
+    "Ripple's official SBI Ripple Asia page explicitly says that company does not handle XRP directly; it is not the exchange or the ODL customer itself.",
+    "The XRP ODL corridor is specifically associated with SBI Remit, Coins.ph and SBI VC Trade; do not attribute the corridor directly to SBIC East Japan or SBI Capital.",
+    "No disclosed current ODL volume, XRP inventory, net purchases, collateral balance or price impact was found in these announcements.",
+    "The original exact phrase 'SBIC, ChatGPT SBIC' remains unresolved."
+  ],
+  "repository_state": {
+    "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+    "main_unchanged_since_last_checkpoint": true,
+    "research_pr_1195": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "state": "open_draft",
+      "head_sha": "09e3ab4f0d976aadd0e733139a38d87de8952b6e",
+      "ahead_by": 37,
+      "behind_by": 45,
+      "ci": {
+        "run_id": 40593202456,
+        "conclusion": "success",
+        "tests_passed": 145,
+        "duration_seconds": 4.17,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593202456"
+      },
+      "gate": {
+        "run_id": 40593202473,
+        "conclusion": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593202473"
+      },
+      "note": "These checks validate head 09e3ab4 only. This snapshot and the following ledger update are newer."
+    },
+    "safety_pr_1220": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+      "state": "open_draft",
+      "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+      "ci": {
+        "run_id": 40592404749,
+        "conclusion": "success",
+        "tests_passed": 164,
+        "duration_seconds": 6.11,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749"
+      },
+      "gate": {
+        "run_id": 40592404758,
+        "conclusion": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758"
+      }
+    },
+    "safety_boundary": "No main write, merge, force-push, reset, clean, stash, deployment, secret change or real-money action was performed."
+  },
+  "video_identity_status": {
+    "exact_requested_name": "Camilla Stephenson",
+    "candidate": "Kamilah Stevenson | Xrp & Stocks",
+    "candidate_channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+    "status": "IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
+    "note": "The exact spelling differs and no first-party cross-link proves identity. Two indexed videos were found, but not an exhaustive public-upload inventory."
+  },
+  "exact_phrase_status": {
+    "phrases": [
+      "ASK Coin",
+      "actual capital",
+      "SBIC, ChatGPT SBIC"
+    ],
+    "status": "UNRESOLVED",
+    "note": "No reliable original context for these exact phrases was established."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Keep SBIC East Japan, historical SBI Capital, SBI Ripple Asia, SBI Remit and SBI VC Trade as separate graph nodes until legal identity and ownership are verified.",
+    "Search current official corporate registry/group disclosures to resolve whether the SBI Capital listed in the 2026 group directory is legally continuous with historical SBI Capital/SBIC.",
+    "Quantify ODL, XRP reward and shareholder-benefit flows only if official volume disclosures or public chain/venue data support it.",
+    "Keep the exact phrase SBIC, ChatGPT SBIC unresolved until its original source is found.",
+    "Preserve research PR #1195 and PR #1220; neither is merged."
+  ],
+  "source_ids": [
+    "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+    "SRC-SBI-CAPITAL-SBIC-2004",
+    "SRC-SBI-CAPITAL-GS-JV-2007",
+    "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+    "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
+    "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+    "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06",
+    "SRC-SBI-ALHI-XRP-SHAREHOLDER-REWARDS-2026-03-12",
+    "SRC-SBI-SHINSEI-XRP-SHAREHOLDER-REWARDS-2026-02-25",
+    "SRC-RIPPLE-RLUSD-JAPAN-2026-06-24"
+  ],
+  "validation": {
+    "entity_separation": "PASS",
+    "direct_sbi_remit_xrp_link": "CONFIRMED_BY_OFFICIAL_ANNOUNCEMENTS",
+    "sbic_intended_entity": "UNRESOLVED",
+    "model_feature_admission": "BLOCKED_FOR_UNVERIFIED_FLOWS",
+    "forecast_status": "NOT_ISSUED",
+    "main_modified": false,
+    "merge_performed": false
+  }
+}
