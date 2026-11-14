@@ -11,17 +11,17 @@
 - **EXECUTED:** Raised the inclusive full-suite coverage floor from 53% to 62%, aligned CI and its coverage-policy test, and committed the change on the existing integration branch.
 - **EXECUTED:** Researched current spot/ETF data, t54 XRPL AI Hub activity, Mastercard Agent Pay for Machines, XRPL testnet/devnet reset and SBIC West Japan's primary ChatGPT seminar record.
 - **NOT EXECUTED:** No runtime predictor/ingestion code, model training, forecast issuance, external-model dispatch, data transfer, paper trade, deployment, secret rotation, funds movement, branch rewrite, source-PR closure or merge.
-- **NEXT VERIFICATION:** This handoff/map/evidence commit is documentation-only. Its own exact-head CI is pending after commit; the passing test result below belongs to the immediately preceding code head `0d50f0f`, not to a future documentation head.
+- **VERIFIED:** Documentation-only handoff/map/evidence head `3b03d59cf9d08a4497de3eb766d4be4d9c9f9293` passed its own exact-head full-suite CI, dependency audits and fail-closed gates. The following Run124 market/AP4M addendum commit is documentation-only and will receive separate exact-head CI.
 
 ## Current repository snapshot
 
 - Main SHA: `fb272b40966834754ec686f9ed3ab94123f09306` — unchanged.
 - Code head verified: `0d50f0fd3163ac3c0873180f2976223c2504a186`.
 - Integration branch: `integration/xrp-v3-unified-main-20261112`.
-- Ahead/behind: 2,379 ahead, zero behind.
+- Latest fully verified documentation head at this snapshot: `3b03d59cf9d08a4497de3eb766d4be4d9c9f9293` (2,380 ahead, zero behind). The next addendum commit is a documentation-only successor.
 - Main tree: 1,381 entries (495 Python files, 93 test files, 79 workflows).
 - Integration tree: 2,425 entries (875 Python files, 452 test files, 80 workflows).
-- PR #1662: open, draft, mergeable/clean indicator; 1,184 changed files, 351,142 additions, 5,354 deletions. Its changed paths include 50 workflows, seven public web files, 646 research files, 385 test files, seven data files, three documentation files and `pyproject.toml`.
+- PR #1662 at `3b03d59`: open, draft, mergeable/clean indicator; 1,186 changed files, 352,150 additions, 5,354 deletions. Its changed paths include 50 workflows, seven public web files, 646 research files, 385 test files, seven data files, three documentation files and `pyproject.toml`.
 - PR #1662 has zero formal reviews, zero approvals, zero review threads and no requested reviewers.
 - Open PR inventory: 375 unique PRs; 361 drafts, 14 non-drafts; 367 target main and eight target other branches.
 - GitHub compare: 2,379 commits ahead, zero behind. The compare-files endpoint is capped at 300 entries; the PR file inventory is the source for the 1,184 changed-path count.
@@ -48,7 +48,7 @@ Full-suite log:
 - Pytest execution: 126.10 seconds.
 - Wheel built successfully and installed wheel verified Barrot V3, the XRP mission and canonical data assets.
 
-The previous 53% inclusive floor was below the measured 62.44% baseline. This run changed:
+The exact-head verification was repeated on documentation-only head `3b03d59cf9d08a4497de3eb766d4be4d9c9f9293`: [full suite 43584868115](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584868115), 3,635 tests passed, eight subtests passed, zero failures, 62.44% inclusive coverage, 76% legacy core coverage, and 130.15 seconds. The wheel build and installed Barrot V3/XRP mission checks passed. [Push dependency audit 43584868044](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584868044), [PR dependency audit 43584873687](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584873687), [push fail-closed gate 43584868040](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584868040), and [PR fail-closed gate 43584873686](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584873686) passed; PR-event CI [43584873705](https://github.com/Barrot-Agent/B-Agent/actions/runs/43584873705) was skipped by branch condition. The previous 53% inclusive floor was below the measured 62.44% baseline. This run changed:
 - `pyproject.toml`: `fail_under = 62`.
 - `.github/workflows/ci.yml`: both the generated coverage config and pytest CLI threshold now use 62.
 - `tests/test_ci_coverage_scope.py`: asserts the project and CI floors remain aligned at 62.
@@ -240,6 +240,70 @@ Backlog classification:
 6. Design agentic-payment measurement from authorized APIs or direct public-ledger transactions; do not scrape t54's hub.
 7. Reconcile ETF provider disagreements against issuer disclosures and preserve provider-specific histories.
 8. Train an XRP-specific candidate only when the point-in-time dataset supports it; keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
+
+## Run124 addendum — aggregate derivatives, agentic payments and partner evidence (2026-11-14 10:26 UTC)
+
+### CoinGlass aggregate market snapshot
+
+CoinGlass reported an update time of 2026-11-14 18:08 UTC+8 (10:08 UTC):
+- XRP: $0.9894, 24h -3.75%, 7d -14.86%, 30d -25.79%.
+- 24h range: $0.9789–$1.043.
+- Spot volume: $664.99M; futures volume: $2.92B (about 4.39x spot).
+- Open interest: $2.19B; OI/market cap: 3.48%.
+- Aggregate funding: -0.0054% (page shows approximately -6.0% annualized).
+- 24h liquidations: $14.15M, 91% longs ($12.90M); shorts approximately $1.24M.
+- Fear & Greed: 12, “Extreme Fear”.
+- November 13 XRP spot ETF net flow: -$1.09M.
+
+**Internal data-quality conflict:** The page's headline reports OI down 3.28% over 24 hours, while its automatically generated “Why is XRP down?” narrative says OI rose 0.49%, mostly new shorts. The rendered exchange-level OI and funding tables are blank. Preserve both readings; do not infer either net deleveraging or net short build until timestamped exchange-level series reconcile.
+
+Competing hypotheses:
+1. Long deleveraging: falling price, 91% long liquidation share, negative funding and headline OI contraction are consistent with long-side risk reduction.
+2. New short build: negative funding and the generated narrative's +0.49% OI figure are consistent with additional short positioning.
+3. Mixed/hedged positioning: aggregate OI may combine venues, contract types and time windows; negative funding can reflect hedging or basis differences, not only directional shorts.
+
+No exchange-level raw OI, funding or full L2 was admitted from this page. CoinGlass is one secondary aggregate provider, not independent exchange-level confirmation. Research context only, not a point-in-time model feature.
+
+Source: [CoinGlass XRP overview](https://www.coinglass.com/currencies/XRP).
+
+### Mastercard Agent Pay for Machines
+
+Mastercard's June 10, 2026 official announcement names Coinbase, RippleX and t54 Labs among initial Agent Pay for Machines participants. It describes multi-rail settlement across cards, accounts and stablecoins, with microtransactions and machine-speed payments.
+
+- Coinbase's Head of Stablecoin Business Development describes programmable digital dollars and open standards such as x402.
+- RippleX SVP Markus Infanger describes XRPL and RLUSD for authorized agent transactions with programmable compliance and an audit trail. This does not establish that Mastercard AP4M requires XRP.
+- t54 Labs CEO Chandler Fang describes transaction-level risk assessment, Know Your Agent checks and traceability.
+
+This establishes named participation and direct collaboration with Mastercard for Coinbase, RippleX and t54 Labs. It does not establish a production Mastercard-to-XRP settlement route, exclusive integration among these firms, or a Circle/SBI role in AP4M. Circle was not on the initial participant list retrieved; absence is not proof of no other relationship.
+
+Source: [Mastercard Investor Relations](https://investor.mastercard.com/investor-news/investor-news-details/2026/Mastercard-Launches-Agent-Pay-for-Machines-to-Unlock-Super-Fast-Always-On-Payments/default.aspx).
+
+### Ripple–t54 XRPL AI Starter Kit and facilitator
+
+Ripple's June 9, 2026 XRPL AI Starter Kit announcement credits t54 with contributing XRPL support to x402 and says agents can pay for APIs, compute and other services using XRP or RLUSD.
+
+t54's separate facilitator documentation advertises:
+- Hosted XRPL mainnet endpoint and network identifier xrpl:0.
+- Payer-signed XRPL Payment blobs.
+- Invoice binding via Memos plus InvoiceID hash for replay protection.
+- No-custody operation.
+- XRP and IOU asset support including RLUSD and USDC.
+- Optional x402-secure/Trustline/Verifiable Intent risk gating.
+
+The displayed 1.00 XRP / 3.9-second “settled” example is a product demonstration, not independently verified live activity. The hosted /supported and /health endpoints could not be verified through the available web retrieval; no live API test is claimed.
+
+The x402 Foundation's default facilitator documentation describes XRPL support as testnet-only. That is separate from t54's advertised mainnet facilitator.
+
+Sources: [Ripple XRPL AI Starter Kit](https://ripple.com/insights/xrpl-ai-starter-kit/), [t54 XRPL x402 Facilitator](https://xrpl-x402.t54.ai/), [x402 network support](https://github.com/x402-foundation/x402/blob/main/docs/core-concepts/network-and-token-support.mdx).
+
+**Verifiable Intent caveat:** Mastercard AP4M uses Mastercard Verifiable Intent. t54 separately advertises a Trustline/Verifiable Intent extension. The retrieved sources do not establish that these are the same credential implementation or that they interoperate in production.
+
+### Ingestion decision
+
+The 48-source Barrot ingestion catalog contains no CoinGlass or t54 dashboard endpoint. No t54 dashboard scraper was added: the hub Terms prohibit scraping, harvesting, data mining and systematic extraction except as expressly permitted. Its aggregate asset mix is not published, its Terms warn that metrics may be incomplete/delayed, and its payment counter cannot be equated to XRP demand or one native ledger transaction per request.
+
+Next implementation should use authorized API/written permission or independently query permitted public XRPL mainnet data, verifying transaction hash, ledger index, validated result, asset issuer, amount, destination, memo/invoice binding, source tag, fee and ledger close time. Keep XRP, RLUSD and USDC amounts separate. Do not scrape t54's directory or dashboard.
+
 
 ---
 
