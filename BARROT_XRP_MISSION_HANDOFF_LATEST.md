@@ -3846,3 +3846,132 @@ Nine-platform map: ChatGPT GitHub authenticated but overprivileged; Claude, Grok
 **Forecast NOT_ISSUED. Accuracy NOT_EVALUATED. NO MERGE.** PR #1662 remains draft with zero independent approvals. Preserve unique source PRs. Do not close path-overlap candidates until successor content is merged and verified on main. Do not merge or deploy while independent review, least privilege, branch protection and Pages publication authorization remain unresolved.
 
 Run136 structured artifact: `research/xrp_intelligence/20261114T192816Z-run136-repository-ci-xrp-market-institutional-reconciliation.json`. This handoff captures parent head `194c367`; exact-head CI on the new correction commit is pending.
+
+---
+## Run137 — 2026-11-14 20:31 UTC
+
+### Current repository and integration state
+
+- Main: `f1708870fcde80a01d14509609affc558e5cc065`.
+- Existing integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before this Run137 correction: `777d4a445d215c7c181d89f9be4693bec4acba1f`.
+- Main is merged into the integration branch; the branch is 2,418 commits ahead and zero behind main.
+- Main tree: 1,349 entries, 1,243 blobs, 87 workflows, 96 Python test files and 509 Python files.
+- Integration tree: 2,417 entries, 2,301 blobs, 88 workflows, 457 Python test files and 891 Python files.
+- All 1,349 main paths are present in integration: zero missing, 1,165 identical blobs and 184 content-modified blobs. Modified content remains subject to semantic review.
+- PR #1662 remains open, draft and mergeable by GitHub's conflict indicator: 1,215 changed files, 363,125 additions, 5,797 deletions; 48 workflow files, 388 test files, 670 research files, seven public-web files and 102 other paths. It has zero formal approvals, reviews and review threads.
+- Open PR inventory: 373 total, 361 drafts and 12 non-drafts; 365 target main and eight target other bases.
+
+### Main's new ping-pong refinement engine
+
+Main commit `f170887` introduced the deterministic scoring and ping-pong refinement engine, refiner adapters, CLI, usage guide and tests. Main was merged into the existing integration branch by merge commit `777d4a`; main itself was not changed.
+
+The integration version adds safeguards not present in the main implementation:
+
+- Offline heuristic refinement is the default.
+- Raw sources, receipts, feature snapshots, feature stores, event timelines, forecast ledgers, market data, credentials, secrets and private user data are immutable and rejected.
+- External LunaRoute refinement is restricted to public-derived summaries, public documentation and public research notes.
+- External use requires explicit caller opt-in, matching refiner classification, `BARROT_ALLOW_EXTERNAL_REFINEMENT=1` and a key.
+- CLI requires `--live`, `--allow-external-data` and an eligible classification.
+- Secret-like payload screening and a 24,000-character payload limit are implemented.
+- `.github/workflows/Barrot.Cognitive.PingPong.Engine.yml` remains quarantined with empty permissions and `if: false`.
+
+No external model call occurred. This is a general refinement capability, not a trained XRP forecasting model.
+
+### Exact-head CI regression and correction
+
+On integration head `777d4a`, push CI run [43636388623](https://github.com/Barrot-Agent/B-Agent/actions/runs/43636388623) completed with:
+
+- Full repository suite: 3,716 passed, one failed, 19 subtests, 63.28% inclusive coverage, 107.42 seconds.
+- Core suite: 742 passed, zero failed, eight subtests.
+- The sole failure was `tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head`, raising `KeyError: exact_head_verified`.
+- The map already recorded `exact_head: true`, but omitted the required explicit `exact_head_verified` field and the failure classification did not include the required exact-head wording.
+- The correction adds `exact_head_verified` as an evidence-identity flag, adds `exact_head_passed: false`, and clarifies that the flag does not mean tests passed. The recorded historical failure remains intact. No tests were removed or weakened.
+
+The Run137 map/handoff correction commit is based on the verified branch head above. Its own exact-head CI is pending.
+
+Additional checks on the parent head:
+- [PR CI 43636394453](https://github.com/Barrot-Agent/B-Agent/actions/runs/43636394453) succeeded; PR-only Jekyll validation passed, while duplicate PR core/full-suite jobs were intentionally skipped.
+- [Six-manifest PR dependency audit 43636394433](https://github.com/Barrot-Agent/B-Agent/actions/runs/43636394433) passed; no known vulnerabilities found.
+- [Push fail-closed gate 43636388571](https://github.com/Barrot-Agent/B-Agent/actions/runs/43636388571) passed.
+- [PR fail-closed gate 43636394459](https://github.com/Barrot-Agent/B-Agent/actions/runs/43636394459) passed; automatic merge remains disabled.
+- Main's [CI 43635426745](https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426745) passed 810 tests and eight subtests.
+- Main's [Pages build 43635426265](https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426265) failed Liquid parsing in `GLOBAL_STATE_MANIFEST.md` line 6456; deployment was skipped.
+- Main's [Barrot Sync 43635426753](https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426753) reported wrapper success, but the actual sync was skipped because `rich` was missing. The subsequent push said “Everything up-to-date”; no sync commit or push was verified.
+
+### XRP market snapshot
+
+Research cutoff: 2026-11-14 20:31:19 UTC.
+
+| Source | Last | Bid / ask | Time and eligibility |
+|---|---:|---:|---|
+| OKX XRP-USDT | $0.9428 | $0.9427 / $0.9428 | Provider timestamp 20:25:24.175 UTC; 354.825 seconds old, outside the 300-second admission limit |
+| Kraken XRP-USD | $0.9508 | $0.95077 / $0.9508 | No provider event timestamp; research-only |
+| Kraken USDT-USD | $0.99914 | $0.99913 / $0.99914 | No provider event timestamp; conversion context only |
+
+OKX's 24-hour open/high/low were $1.0273/$1.0279/$0.9383, with approximately 58.01M XRP volume. Kraken's 24-hour open/high/low were $1.00999/$1.01248/$0.94522, with approximately 54.82M XRP volume.
+
+After using the Kraken USDT/USD midpoint, the asynchronous OKX implied USD price is approximately $0.941984, about 0.94% below Kraken's XRP/USD last. This is not executable arbitrage evidence. No synchronized multi-venue L2 snapshot was admitted.
+
+Response-text SHA-256 receipts are preserved in the Run137 structured artifact:
+- OKX: `38dad608cb88928a195eb04aae03ac11f5b71839afc4af4f2ff256fe9b7f4336`.
+- Kraken XRP/USD: `238a73ada77894b905bd561798c7501a748d0ce37f809cea155692e940f1034a`.
+- Kraken USDT/USD: `026b5bac83bfa61d3845a48380a8cae6b4655974f2f59a9c53c61870279b9843`.
+
+These are hashes of retrieved response text, not signed provider receipts or independent WORM anchors.
+
+### ETF, derivatives and XRPL governance
+
+ETF flows remain contradictory by universe and methodology:
+
+- XRP Insights: November 13 +3.40M XRP, but November 9–13 weekly flow -6.08M XRP; its November 13 row is provisional, and GXRP is excluded from flow totals during a data gap.
+- Alpha Finance: five-fund November 13 flow -$1.1M; seven-session -$19.1M; 30-session -$581.7K.
+- CoinGlass: disclosed three-of-five-fund cohort, November 13 -$1.1M, $777.24M disclosed net assets and 756.37M XRP holdings.
+- CryptoKeyhole's latest daily holdings date is November 11; GXRP uses quarterly SEC holdings.
+
+These series are not averaged.
+
+TradRadar's November 14 16:45 UTC derivatives snapshot showed $1.40B open interest, -5.5% 24-hour OI change, -0.0006% funding per eight hours and at least $19.75M liquidations, $19.28M long-side. It was about 3h46 old at this run's cutoff and is not model-eligible.
+
+XRPL amendment dashboard's 20:17 UTC roll call, ledger 108,331,519, heard 35 validators and required 29 yes votes. SingleAssetVault had 23; LendingProtocol and LendingProtocolV1_1 had 22 each. No amendment was in the 14-day activation countdown. Native XRPL lending remains inactive.
+
+### Identity and institutional relationships
+
+- SB OAI Japan GK remains the verified 50/50 OpenAI–C Holdings joint venture. It is distinct from SBI Holdings and SBIC East/Central/West.
+- SBIC East/Tokyo, Central/Nagoya and West/Osaka remain separate regional SME investment companies. No OpenAI–SBI Holdings or OpenAI–SBIC partnership was established.
+- No canonical XRPL ASK issuer was verified. “Actual capital” remains a descriptive research label, not a standardized XRP metric.
+- Dr. Kamilah Stevenson is identified as a person, but candidate YouTube channel ownership remains unverified. No additional video was certified as an official upload.
+- Coinbase, Circle, Ripple and SBI's previously documented stablecoin, custody, distribution and corporate relationships remain separate from proof of XRP settlement demand.
+
+### Prediction engine and forecast boundary
+
+Implemented on integration: 50 public-source definitions, read-only scheduled ingestion architecture, SHA-256 receipts, local receipt-chain prototype, SQLite point-in-time feature store, event/source registry, four baselines, purged/embargoed chronological walk-forward evaluation, calibration/PSI drift diagnostics, policy-v6 uncertainty checks, fail-closed forecast ledger and Ed25519 evaluator attestation.
+
+Still missing: trained XRP candidate model, candidate superiority against all four baselines, independent shadow outcomes, synchronized historical spot/L2/derivatives/exchange-flow/collateral data, independent WORM/timestamp anchoring and scheduled ingestion verified on main.
+
+**Forecast NOT_ISSUED. Accuracy NOT_EVALUATED.** No paper trade or real-money action.
+
+### Backlog, security and merge decision
+
+Current source-path overlap counts against #1662:
+- #1661: 1,070/1,072 overlap; preserve two unique workflows.
+- #1660: 970/972 overlap; preserve two unique workflows.
+- #1643: 670/670 overlap; path overlap does not prove semantic identity.
+- #1642: 7/7 overlap; preserve until successor merge and exact comparison.
+- #1640: 278/280 overlap; preserve two unique workflows.
+- #1653: six source-only paths; preserve unique/unreviewed work.
+- #1614, #1615, #1269, #1655, #1659 and #1641 retain unique paths; preserve.
+
+Main is protected; integration is unprotected. Branch-protection detail returns HTTP 403. Fallback ruleset 10863829 is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, not an independent reviewer. The GitHub connector exposes admin, maintain, push, pull and triage permissions; least privilege is not established.
+
+**NO MERGE.** PR #1662 remains draft with zero independent approvals. No source PR was closed. No deployment, credential rotation, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, force-push or history rewrite occurred.
+
+### Next actions
+
+1. Complete exact-head full-suite CI on the Run137 correction commit; then verify dependency audit, fail-closed gate, wheel build and installed mission.
+2. Complete semantic review of all 1,215 changed paths, prioritizing 48 workflows and seven public-web files.
+3. Resolve independent review ownership, least privilege, branch protection and Pages publication authorization.
+4. Establish independently anchored raw-source receipts and synchronized historical XRP datasets.
+5. Build and evaluate an XRP-specific candidate only when the point-in-time dataset supports it; keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
+
+Run137 structured artifact: `research/xrp_intelligence/20261114T203119Z-run137-current-main-integration-ci-market-and-refinement-audit.json`.

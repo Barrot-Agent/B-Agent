@@ -1272,7 +1272,10 @@
       "conclusion": "failure",
       "run_id": 43631403649,
       "job_id": 132558605783,
-      "head_sha": "194c3673ee9d3bc1ebbdf5125507dd40bdd8585d"
+      "head_sha": "194c3673ee9d3bc1ebbdf5125507dd40bdd8585d",
+      "exact_head_verified": true,
+      "exact_head_passed": false,
+      "exact_head_verification_scope": "Evidence-identity flag only: the recorded run and SHA were matched to the exact tested commit. It does not mean the suite passed; conclusion=failure and failed=7 remain authoritative."
     },
     "dependency_audit": {
       "passed": true,
@@ -1339,7 +1342,10 @@
         "conclusion": "failure",
         "run_id": 43631403649,
         "job_id": 132558605783,
-        "head_sha": "194c3673ee9d3bc1ebbdf5125507dd40bdd8585d"
+        "head_sha": "194c3673ee9d3bc1ebbdf5125507dd40bdd8585d",
+        "exact_head_verified": true,
+        "exact_head_passed": false,
+        "exact_head_verification_scope": "Evidence-identity flag only: the recorded run and SHA were matched to the exact tested commit. It does not mean the suite passed; conclusion=failure and failed=7 remain authoritative."
       },
       "core_tests": {
         "passed": 742,
@@ -1375,7 +1381,7 @@
         "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
         "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity"
       ],
-      "failure_classification": "Seven failures are stale current-map metadata assertions: main SHA/tree/workflow counts, PR state casing, tested-head pairing and dependency manifest count. No runtime XRP pipeline failure was reported."
+      "failure_classification": "Exact-head full-suite failed on 194c3673ee9d3bc1ebbdf5125507dd40bdd8585d with seven stale current-map metadata assertions: main SHA/tree/workflow counts, PR state casing, tested-head pairing and dependency manifest count. No runtime XRP pipeline failure was reported."
     },
     "previous_attempt": {
       "head_sha": "f7d990fd3585197d223da01b6534b35a68fe0443",
@@ -38164,5 +38170,148 @@
     "history_rewrite": false,
     "source_pr_closure": false
   },
-  "run136_artifact_path": "research/xrp_intelligence/20261114T192816Z-run136-repository-ci-xrp-market-institutional-reconciliation.json"
+  "run136_artifact_path": "research/xrp_intelligence/20261114T192816Z-run136-repository-ci-xrp-market-institutional-reconciliation.json",
+  "run137_snapshot": {
+    "captured_at_utc": "2026-11-14T20:31:19Z",
+    "main_sha": "f1708870fcde80a01d14509609affc558e5cc065",
+    "integration_head_before_run137_commit": "777d4a445d215c7c181d89f9be4693bec4acba1f",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "ancestry": {
+      "ahead_by": 2418,
+      "behind_by": 0
+    },
+    "trees": {
+      "main_entries": 1349,
+      "main_files": 1243,
+      "main_workflows": 87,
+      "main_tests": 96,
+      "main_python": 509,
+      "integration_entries": 2417,
+      "integration_files": 2301,
+      "integration_workflows": 88,
+      "integration_tests": 457,
+      "integration_python": 891
+    },
+    "main_path_preservation": {
+      "main_paths_missing_in_integration": 0,
+      "identical_blob_paths": 1165,
+      "changed_blob_paths": 184
+    },
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "777d4a445d215c7c181d89f9be4693bec4acba1f",
+      "base_sha": "f1708870fcde80a01d14509609affc558e5cc065",
+      "ahead_by": 2418,
+      "behind_by": 0,
+      "changed_files": 1215,
+      "additions": 363125,
+      "deletions": 5797,
+      "workflow_files": 48,
+      "test_files": 388,
+      "research_files": 670,
+      "public_web_files": 7,
+      "other_files": 102,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "base_main": 365,
+      "other_bases": 8
+    },
+    "current_head_ci": {
+      "run_id": 43636388623,
+      "job_id": 132574006215,
+      "head_sha": "777d4a445d215c7c181d89f9be4693bec4acba1f",
+      "conclusion": "failure",
+      "passed": 3716,
+      "failed": 1,
+      "subtests": 19,
+      "coverage_percent": 63.28,
+      "duration_seconds": 107.42,
+      "failing_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "error": "KeyError: exact_head_verified",
+      "classification": "Documentation/map-schema assertion; no runtime XRP pipeline failure reported."
+    },
+    "correction": {
+      "scope": "Add explicit exact_head_verified and exact_head_passed metadata to the historical CI evidence record; clarify that exact_head_verified means evidence is SHA-bound, not that tests passed. Preserve the recorded failure. No tests changed or weakened.",
+      "status": "included in this handoff/map commit; exact-head CI pending"
+    },
+    "run137_artifact_path": "research/xrp_intelligence/20261114T203119Z-run137-current-main-integration-ci-market-and-refinement-audit.json"
+  },
+  "run137_ci": {
+    "push_full_suite": {
+      "run_id": 43636388623,
+      "head_sha": "777d4a445d215c7c181d89f9be4693bec4acba1f",
+      "passed": 3716,
+      "failed": 1,
+      "subtests": 19,
+      "coverage_percent": 63.28,
+      "duration_seconds": 107.42,
+      "conclusion": "failure"
+    },
+    "core_tests": {
+      "job_id": 132574006173,
+      "passed": 742,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "run_id": 43636394453,
+      "conclusion": "success",
+      "pages_validation": "success",
+      "core_tests": "skipped",
+      "full_repository_suite": "skipped"
+    },
+    "pr_dependency_audit": {
+      "run_id": 43636394433,
+      "job_id": 132574023265,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "push_fail_closed_gate": {
+      "run_id": 43636388571,
+      "conclusion": "success"
+    },
+    "pr_fail_closed_gate": {
+      "run_id": 43636394459,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "main_ci": {
+      "run_id": 43635426745,
+      "head_sha": "f1708870fcde80a01d14509609affc558e5cc065",
+      "passed": 810,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "main_pages": {
+      "run_id": 43635426265,
+      "conclusion": "failure",
+      "deploy": "skipped",
+      "error": "Liquid syntax error in GLOBAL_STATE_MANIFEST.md line 6456"
+    },
+    "main_sync": {
+      "run_id": 43635426753,
+      "conclusion": "success_wrapper_only",
+      "actual_sync": "skipped",
+      "error": "ModuleNotFoundError: No module named 'rich'; subsequent git push reported Everything up-to-date; no sync commit or push verified"
+    }
+  },
+  "run137_next_actions": [
+    "Verify the exact-head full suite after the map-schema correction.",
+    "Verify six-manifest dependency audit, fail-closed gate, wheel build and installed mission on the corrected head.",
+    "Keep PR #1662 draft until independent review, least privilege, branch protection and publication authorization are resolved.",
+    "Continue synchronized historical spot/L2/derivatives/exchange-flow/collateral ingestion and independent raw-source anchoring.",
+    "Do not issue a directional forecast until a trained XRP candidate beats all four baselines under calibrated walk-forward and independent shadow evaluation."
+  ],
+  "run137_artifact_path": "research/xrp_intelligence/20261114T203119Z-run137-current-main-integration-ci-market-and-refinement-audit.json"
 }
