@@ -92,3 +92,6 @@ results/mcp_sync/sync_log.jsonl
 web/hrm_sandbox_signal.json
 .config/gh/hosts.yml
 .config/gh/
+
+# Agent-local backup dir (superseded by git history itself)
+.barrot-backup/
