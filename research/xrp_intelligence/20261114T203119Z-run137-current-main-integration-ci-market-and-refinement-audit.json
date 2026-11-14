@@ -441,5 +441,188 @@
     "force_push": false,
     "history_rewrite": false,
     "source_pr_closure": false
+  },
+  "post_correction_verification": {
+    "correction_commit": "8d07b684e73a1c75b8ecfe95e80fe5a66da50962",
+    "full_suite": {
+      "run_id": 43638731001,
+      "conclusion": "success",
+      "passed": 3717,
+      "failed": 0,
+      "subtests": 19,
+      "inclusive_coverage_percent": 63.28,
+      "legacy_core_coverage_percent": 77,
+      "duration_seconds": 141.39,
+      "exact_head": true
+    },
+    "wheel_build": "passed",
+    "installed_mission": "passed; Barrot V3, XRP mission and canonical data assets verified",
+    "dependency_audits": {
+      "push_run": 43638730956,
+      "pr_run": 43638737449,
+      "conclusion": "success",
+      "manifest_groups": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed": {
+      "push_run": 43638730913,
+      "pr_run": 43638737527,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "pr_ci": {
+      "run_id": 43638737568,
+      "conclusion": "success",
+      "pages_validation": "success",
+      "core_tests": "skipped",
+      "full_suite": "skipped; push-event full suite is authoritative"
+    },
+    "warnings": [
+      "Actions cache budget is read-only; cache save failed without affecting tests/build.",
+      "setuptools package-discovery warning for barrot_agent.data.missions; packaged mission resource verified in installed wheel."
+    ],
+    "status": "VERIFIED on exact correction commit; this handoff-only follow-up commit will receive its own CI."
+  },
+  "market_followup": {
+    "captured_at_utc": "2026-11-14T20:47:13.243Z",
+    "spot": {
+      "kraken_xrp_usd": {
+        "last": 0.9402,
+        "bid": 0.94002,
+        "ask": 0.94032,
+        "open24h": 1.00999,
+        "high24h": 1.01248,
+        "low24h": 0.93183,
+        "volume24hXRP": 58390882.92970996,
+        "provider_timestamp": null,
+        "model_eligible": false
+      },
+      "okx_xrp_usdt": {
+        "last": 0.9428,
+        "provider_timestamp": "2026-11-14T20:25:24.175Z",
+        "model_eligible": false,
+        "reason": "stale at follow-up"
+      },
+      "kraken_usdt_usd": {
+        "last": 0.99916,
+        "bid": 0.99915,
+        "ask": 0.99916,
+        "provider_timestamp": null,
+        "model_eligible": false
+      },
+      "interpretation": "No synchronized current multi-venue L2 or timestamped spot set admitted."
+    },
+    "cbxrp": {
+      "displayed_refresh": "2026-11-14 6:22 PM; timezone unspecified",
+      "reserve_xrp": 153504830.3,
+      "supply_cbxrp": 153502583.76,
+      "excess_xrp": 2246.54,
+      "coverage_ratio": 1.0000146352,
+      "previous_reserve": 155176313.79,
+      "previous_supply": 155174067.26,
+      "reserve_decrease": 1671483.49,
+      "supply_decrease": 1671483.5,
+      "interpretation": "One-for-one wrapper contraction; not proof of native XRP sale."
+    },
+    "morpho": {
+      "loans_usd": 51860000,
+      "liquidity_usd": 20480000,
+      "market_size_usd": 72340000,
+      "utilization_percent": 89.52,
+      "target_percent": 90,
+      "borrow_rate": 8.13,
+      "lend_rate": 7.58,
+      "liquidation_ltv": 62.5,
+      "penalty": 12.67,
+      "bad_debt_usd": 0,
+      "borrowers": 1131,
+      "suppliers": 216,
+      "top_three_supplier_vaults_usd": [
+        13519000,
+        13495000,
+        13483000
+      ],
+      "oracle_usdc": 0.961,
+      "kraken_spot_usd": 0.9402,
+      "oracle_premium_percent": 2.21,
+      "calculated_loans_over_loans_plus_liquidity_percent": 71.69,
+      "accounting_discrepancy": "Displayed utilization does not reconcile with displayed loans and liquidity; definitions unresolved.",
+      "model_eligible": false
+    },
+    "rlusd": {
+      "global_usd": 2780000000,
+      "xrpl_usd": 762820000,
+      "ethereum_usd": 2020000000,
+      "xrpl_share_percent": 27.4,
+      "global_24h_net_change_usd": 17690000,
+      "xrpl_24h_net_change_usd": -1270000,
+      "ethereum_mints_usd": 19370000,
+      "ethereum_burns_usd": 410000,
+      "refresh_relative_seconds": 123,
+      "feed": "live feed unavailable; snapshot retained",
+      "ethereum_anchor": "not anchored to daily signed snapshot"
+    },
+    "amm": {
+      "total_tvl_usd": 5802000,
+      "xrp_rlusd_usd": 4719000,
+      "xrp_rlusd_share_percent": 81.33,
+      "xrp_usdc_usd": 638000,
+      "xrp_usdc_share_percent": 11,
+      "orderbook_dex_included": false,
+      "rwa_tokens_held_not_actively_traded": 38,
+      "usdt_symbol_issuer_warning": "XRPL token using USDT symbol is not issued by Tether."
+    },
+    "video_candidate": {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published": "2026-01-13",
+      "views_indexed": 20400,
+      "third_party_byline": "Kamilah Stevenson",
+      "transcript_self_identification": "Camila Stevenson",
+      "channel_ownership": "unverified"
+    },
+    "operational_findings": {
+      "main_sync_root_cause": "Workflow invokes b_agent.py --sync without installing requirements.txt; rich is in requirements.txt but absent in runner environment. The command fails; subsequent git push is masked by || true.",
+      "secret_log_check": "cut -c1-30 outputs only the fixed 30-character text 'Barrot running on LunaRoute - '; captured log contains no secret bytes. No exposure from this line established.",
+      "integration_action": "automatic sync remains quarantined; no credential rotation or workflow dispatch."
+    }
+  },
+  "source_references": [
+    {
+      "id": "S12",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "type": "primary Coinbase proof-of-reserves page",
+      "displayed_refresh": "2026-11-14 6:22 PM; timezone unspecified"
+    },
+    {
+      "id": "S13",
+      "url": "https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/cbxrp-usdc",
+      "type": "Morpho Base cbXRP/USDC market page"
+    },
+    {
+      "id": "S14",
+      "url": "https://xrpldashboard.com/rlusd",
+      "type": "secondary XRPL RLUSD supply dashboard"
+    },
+    {
+      "id": "S15",
+      "url": "https://xrpldashboard.com/tokens",
+      "type": "secondary XRPL AMM/token dashboard"
+    },
+    {
+      "id": "S16",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "type": "third-party YouTube transcript attribution; channel ownership unverified"
+    },
+    {
+      "id": "S17",
+      "url": "https://www.coindesk.com/markets/2026/11/13/crypto-markets-slide-as-dollar-surges-and-traders-price-in-fed-hike",
+      "type": "secondary macro reporting"
+    }
+  ],
+  "operational_findings": {
+    "main_sync_root_cause": "Workflow invokes b_agent.py --sync without installing requirements.txt; rich is in requirements.txt but absent in runner environment. The command fails; subsequent git push is masked by || true.",
+    "secret_log_check": "cut -c1-30 outputs only the fixed 30-character text 'Barrot running on LunaRoute - '; captured log contains no secret bytes. No exposure from this line established.",
+    "integration_action": "automatic sync remains quarantined; no credential rotation or workflow dispatch."
   }
 }

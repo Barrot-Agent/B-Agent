@@ -3975,3 +3975,68 @@ Main is protected; integration is unprotected. Branch-protection detail returns 
 5. Build and evaluate an XRP-specific candidate only when the point-in-time dataset supports it; keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified.
 
 Run137 structured artifact: `research/xrp_intelligence/20261114T203119Z-run137-current-main-integration-ci-market-and-refinement-audit.json`.
+
+---
+## Run137 exact-head correction verification and market follow-up
+
+### Exact-head CI on the correction commit
+
+Correction commit `8d07b684e73a1c75b8ecfe95e80fe5a66da50962` passed its exact-head full repository suite:
+
+- [Full suite 43638731001](https://github.com/Barrot-Agent/B-Agent/actions/runs/43638731001): **3,717 passed, zero failed, 19 subtests**, 63.28% inclusive coverage, 77% legacy core coverage, 141.39 seconds.
+- Wheel build passed; installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- [Push dependency audit 43638730956](https://github.com/Barrot-Agent/B-Agent/actions/runs/43638730956) and [PR dependency audit 43638737449](https://github.com/Barrot-Agent/B-Agent/actions/runs/43638737449) passed across six manifest groups: root runtime, development, integrations, Hugging Face Space, legacy and PEP 621 dependencies. No known vulnerabilities found.
+- [Push fail-closed gate 43638730913](https://github.com/Barrot-Agent/B-Agent/actions/runs/43638730913) and [PR fail-closed gate 43638737527](https://github.com/Barrot-Agent/B-Agent/actions/runs/43638737527) passed; automatic merge remains disabled.
+- [PR CI 43638737568](https://github.com/Barrot-Agent/B-Agent/actions/runs/43638737568) passed its PR-only Pages validation. Its duplicate core and full-suite jobs were intentionally skipped; the push-event full suite above is the authoritative exact-head run.
+- The corrected map-schema test passed. No test was modified or weakened.
+- Non-blocking warnings: Actions cache budget is read-only, so the cache could not be saved; setuptools warns that `barrot_agent.data.missions` is absent from explicit package configuration, but the mission resource was verified in the built and installed wheel.
+
+The handoff/map follow-up commit is documentation and research data only; it will receive its own exact-head CI cycle.
+
+### XRP market follow-up
+
+A later Kraken retrieval showed XRP/USD at $0.9402, bid $0.94002 and ask $0.94032, with a 24-hour open of $1.00999, high $1.01248, low $0.93183 and about 58.39M XRP volume. Kraken does not expose a provider event timestamp in this response. OKX remained at $0.9428 from its 20:25:24.175 UTC event timestamp and was stale at the follow-up. USDT/USD was $0.99916, also without an event timestamp. None of these observations is model-eligible; no synchronized L2 snapshot was admitted.
+
+### Coinbase cbXRP reserves and Morpho collateral
+
+Coinbase's proof-of-reserves page, displayed refreshed November 14 at 6:22 PM (timezone unspecified), showed:
+
+- Native XRP reserve: 153,504,830.30 XRP.
+- cbXRP supply: 153,502,583.76.
+- Excess reserve: 2,246.54 XRP.
+- Reserve/supply ratio: approximately 1.00001464x.
+
+Compared with the earlier captured page state, reserve and supply each declined by approximately 1.67148M XRP while the excess reserve remained unchanged. This is consistent with a one-for-one wrapper supply contraction/redemption; it does not prove native XRP was sold.
+
+The Morpho Base cbXRP/USDC page showed approximately $51.86M outstanding loans, $20.48M displayed liquidity, $72.34M displayed market size, 89.52% utilization against a 90% target, 8.13% borrow rate, 7.58% lend rate, 62.5% liquidation LTV, 12.67% liquidation penalty and zero displayed realized/unrealized bad debt. It listed 1,131 borrowers and 216 suppliers; its three largest listed supplier vaults were approximately $13.52M, $13.50M and $13.48M.
+
+**Unresolved accounting/oracle discrepancies:**
+- Loans divided by loans plus displayed liquidity is about 71.69%, not the page's 89.52% utilization. Definitions or denominators differ; do not recompute or average.
+- Morpho's displayed oracle price was about $0.961 USDC versus the later Kraken XRP/USD observation of $0.9402, roughly 2.21% higher. Timestamps are not synchronized; this is a stale-oracle check candidate, not proof of mispricing.
+- Small November 14 liquidation records showed no realized bad debt in the displayed examples.
+
+This is wrapped-XRP collateral activity, not proof of native XRP spot demand.
+
+### RLUSD and XRPL AMM liquidity
+
+The XRPL dashboard's follow-up snapshot showed approximately $2.78B global RLUSD, $762.82M on XRPL (27.4%) and $2.02B on Ethereum (72.6%). It reported +$17.69M global net supply change over 24 hours, with -$1.27M on XRPL and Ethereum mints of $19.37M against $0.41M burns. The page said the live feed was unavailable; the snapshot was refreshed 123 seconds before retrieval. XRPL supply was cross-checked via independent RPC against a November 13 finalized state; the Ethereum side was not anchored to the daily signed snapshot. These are chain-supply changes, not proof of cross-chain transfers or XRP demand.
+
+The token dashboard showed about $5.802M total AMM TVL, with XRP/RLUSD around $4.719M (81.3%) and XRP/USDC around $638K (11%). It explicitly excludes order-book DEX activity. It also reported 38 RWA tokens held on-chain but not actively traded, with no on-chain market anchor. A token labeled USDT on XRPL is not issued by Tether; issuer address identity remains mandatory.
+
+The evidence indicates concentrated, relatively small visible AMM liquidity and a growing global RLUSD footprint with a slightly contracting XRPL supply snapshot. It does not establish XRP settlement demand.
+
+### Identity and video research follow-up
+
+A 12th candidate video was added to the quarantined attribution inventory: [“XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.”](https://www.youtube.com/watch?v=ci0FH73lbCs), dated January 13, 2026, with approximately 20.4K views in Glasp's index. The third-party page attributes it to Kamilah Stevenson, while the transcript self-identifies the speaker as “Camila Stevenson.” This does not verify ownership of the candidate YouTube channel. It is not certified as an official upload.
+
+Exact-phrase searches produced no new primary evidence for an XRPL ASK issuer, a standardized XRP “actual capital” metric, or an SBIC–ChatGPT partnership. SB OAI Japan remains distinct from SBI Holdings and SBIC East/Central/West.
+
+### Main workflow root cause and disconfirming security check
+
+Main's `.github/workflows/barrot-sync.yml` invokes `python b_agent.py --sync` without installing `requirements.txt`. `rich` is present in the manifest but absent from the runner environment, causing `ModuleNotFoundError: rich`. The workflow then masks later push failure with `git push || true`; its latest wrapper success did not represent a successful synchronization. Integration keeps automatic sync quarantined.
+
+The workflow's diagnostic line uses `cut -c1-30`; the fixed text `Barrot running on LunaRoute - ` is exactly 30 characters. The captured GitHub log contains only that static prefix and no secret bytes. No secret exposure was established from this line. No credential rotation was performed.
+
+### Merge and forecast boundary
+
+PR #1662 remains draft and open, with zero independent formal approvals. Main remains unchanged. No source PR was closed. **NO MERGE.** Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action occurred.
