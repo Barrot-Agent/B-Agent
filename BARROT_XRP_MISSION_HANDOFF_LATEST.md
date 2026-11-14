@@ -3244,3 +3244,70 @@ After canonical map restoration, exact-head suite on 9c2914c reached 3,640 passe
 **Current market remains research-only:** the 15:00:15 UTC snapshot included OKX XRP-USDT $0.9811 at event time 14:55:34 UTC, Kraken XRP/USD $0.97969 without an exchange timestamp, CoinMarketCap $0.9899 without a comparable event timestamp, and CoinGlass's November 14 daily aggregate $0.9890. These asynchronous observations are not arbitrage evidence. Derivatives providers ranged from approximately $594M OI on seven contracts to $2.21B aggregate, with materially different update times and funding. No averaging, synchronized L2 admission or directional inference is permitted.
 
 The restored map commit triggers a new exact-head full suite. Its result must be recorded against the new SHA; the 3,641-test result belongs to `847a207`, not to any later head. Merge remains blocked by draft status, zero independent approvals, branch-protection visibility, least-privilege, semantic review and Pages publication authorization.
+
+
+### Run132 — current-main drift, integration reconciliation and CI status (2026-11-14T16:09:47Z)
+
+**Mission:** XRP intelligence and measured prediction-engine mastery remain the highest priority. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.
+
+**Current Git state — re-fetched this run**
+- Current main: `ef41ea7d8f1d236774c3e593bc6205bf42555351` (commit at 2026-11-14T15:31:56Z).
+- Existing integration branch: `052e159a7755d39be64ad4ebd892ac35cf33c6af`.
+- Existing PR #1662 base SHA remains `fb272b40966834754ec686f9ed3ab94123f09306`; PR head is `052e159a7755d39be64ad4ebd892ac35cf33c6af`.
+- The integration branch is now **32 commits behind current main** and 2,399 commits ahead of its common ancestor. The earlier zero-behind status is stale.
+- PR #1662 is open, draft, and GitHub reports mergeable=false. It has 1,202 changed files, 359,587 additions, 5,354 deletions. No formal reviews, approvals or review threads were recorded in the previous PR audit.
+- Repository connector reports admin/maintain/push/pull/triage permissions. Main branch reports protected=true, but required status-check contexts are empty. Integration branch is unprotected. Detailed branch-protection endpoint returns HTTP 403; fallback ruleset 10863829 is disabled.
+
+**Current main's 32 commits are material and must be preserved.** They include:
+- Concurrent MCP sync engine and updated Barrot operating instructions.
+- 13 broken-import repairs and restoration of emit_pingpong.
+- A2A rate-limiter memory-growth fix.
+- 13 workflow action-major upgrades to checkout/setup-python/artifact v7.
+- SHRM 2.0 HRM reasoning implementation.
+- Kaggle import-safety and Rust-free dependency adjustments.
+- MCP sync and push tooling, with a documented credential-in-argv caveat.
+- Dependency floor upgrades and supplemental integrations manifest.
+- Removal of tracked .barrot-backup duplicates.
+- Additional sibling-import, entry-point, lint and setuptools package-discovery repairs.
+- OpenCode V2 configuration migration.
+- Dependency-audit manifest correction and expanded environment-variable documentation.
+- Current main's producer-mode additions: five technique sheets, beat-generation script, MIDI/WAV assets and related documentation.
+
+Main changed 215 files since the common ancestor, totaling 28,503 additions/deletions. The integration PR overlaps 25 of those paths. The other main changes must remain intact in any successor.
+
+**Semantic overlap review executed for 14 high-risk paths and their base/main/integration versions.**
+- `pyproject.toml`: main has newer runtime dependency floors and an optional integrations extra; integration adds inclusive coverage over barrot_agent/directive_platform/data and mission/data package-data declarations. Merge must retain both dependency modernization and integration's package/coverage requirements.
+- `requirements-dev.txt`: main has newer pytest/flake8/mypy/pre-commit/types-requests; integration adds build/setuptools/wheel. Merge the union using main's newer version floors.
+- `.github/workflows/ci.yml`: main upgrades actions to v7; integration adds the full-repository test job and broader package coverage. Preserve both.
+- `.github/workflows/dependency-audit.yml`: main adds requirements-integrations.txt auditing; integration audits root runtime/dev, HF Space and legacy manifests and watches XRP/paper-trader safety paths. Reconcile into one complete audit.
+- `barrot_agent/orchestration/mcp_orchestrator.py`: main adds flexible package/bare import handling; integration adds default-deny MCP approval gates for external model downloads, Databricks, GitHub commits and CI triggers. Preserve both.
+- `BARROT_SYNC.md`: main adds Sean's seven operating laws; integration adds explicit unverified-authentication, no automatic transfer and no secret-presence assumptions. Merge both without treating historical secret claims as verified.
+- `.github/workflows/barrot-sync.yml`: main only upgrades actions; integration quarantines automatic LunaRoute transfer. Preserve quarantine.
+- `.github/workflows/ask-barrot.yml`: main version reads Groq credentials and has contents/issues write; integration quarantines it. Preserve quarantine.
+- `.github/workflows/barrot-self-upgrade.yml`: main has a YES-gated branch/PR writer; integration quarantines until complete-PR dedup and integration-first controls are verified. Preserve quarantine.
+- `.github/workflows/signal-summary.yml`: main invokes Groq; integration requires YES, exact main SHA and artifact-only behavior. Preserve integration's stricter gate.
+- `.github/workflows/subagent-matrix.yml`: main sends arbitrary prompts to Groq; integration quarantines it pending authenticated nine-platform coordination. Preserve quarantine.
+- `.github/workflows/ibm-bob-barrot-audit.yml`: main invokes an external provider outside the nine-platform map; integration quarantines it. Preserve quarantine.
+- `barrot_agent/orchestration/orchestrator_bridge.py`: main restores a legacy council-weight application path; integration returns a fail-closed NOT_APPLIED status. Preserve the V3-only authorization path.
+- `opencode.json` and `.opencode/agent/barrot.md`: main allows broad edit/shell/webfetch permissions and active transmutation; integration disables the unverified remote provider, requires approval and quarantines destructive transmutation. Preserve the safer integration controls.
+- `.gitignore`: merge main's MCP log/HRM scratch/backup ignores with integration's autonomous-task runtime-state ignore.
+- `b_agent.py`: main adds repository-repair functionality; integration requires explicit LunaRoute transfer and local-repair flags plus clean-worktree checks. Reconcile without restoring implicit external transfer.
+- `tests/test_automation_containment.py`, `tests/test_external_action_gates.py`, `tests/test_signal_summary.py`, `tests/test_transmute.py`, `tests/test_v3_scripts.py`: main adds action-v7, approval and functional tests; integration adds stricter quarantine/no-side-effect assertions. Merge compatible assertions; do not re-enable a workflow merely to satisfy a test.
+
+Other overlapping workflow paths were identified but not yet semantically reconciled: `barrot-bundle-operational-smoke.yml`, `barrot-controlled-feature-validation.yml`, `cross-analysis.yml`, and `formal-verification-benchmarks.yml`. Their main/integration versions differ in action versions, triggers, freshness behavior or pinned third-party bootstrap sources. Reconcile before any successor branch is considered ready.
+
+**CI and workflow status**
+- Exact integration-head push CI run 43608966692 completed successfully. Both the core Tests job and Full repository test suite job completed successfully, including wheel build and packaged primary-mission verification. The exact numeric pytest count was not extracted from the job log in this run; do not reuse the older 3,641 count as if it belonged to this SHA.
+- Main CI run 43610729541 passed on `ef41ea7`.
+- Main Cross Analysis scheduled run 43612425533 passed on `ef41ea7`.
+- Main Pages build/deployment run 43610728772 failed on `ef41ea7`.
+- Main Barrot Sync run 43610729676 reports success; this run did not inspect its job log, so no successful external synchronization is inferred.
+- Deploy A2A Worker run 43609374181 failed on prior main commit `74b87aea8d3333b45ab7eb7f75d1eab9b8169e05`.
+- The 32-commit main delta includes security, import, dependency and workflow fixes; do not overwrite it with the stale integration tree.
+
+**Decision and next action**
+- Do not merge PR #1662. It is stale by 32 main commits, has mergeable=false, remains draft, and has no independent approvals.
+- Do not force-push or rewrite the existing integration branch.
+- Do not create a successor until all 25 overlaps have been semantically reconciled and the complete 1,202-file PR change set is mapped. The reviewed subset establishes several important safe merges and several workflows that must remain quarantined; it is not a complete 1,202-file review.
+- Next concrete action: build one consolidated successor from current main `ef41ea7`, overlay the reviewed integration work while preserving all 32 main commits and all V3 fail-closed controls, finish remaining overlap review, then run exact-head full-suite CI, dependency/security audits and fail-closed gates. Only after that should the successor be made ready for independent review.
+- No new branch/PR, merge, source-PR closure, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred.
