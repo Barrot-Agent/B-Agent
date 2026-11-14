@@ -385,6 +385,21 @@ def test_walk_forward_overlap_adjusted_effective_sample_size_gates_longer_horizo
     assert result["paper_trade_executed"] is False
 
 
+def test_walk_forward_rejects_non_positive_declared_cadence():
+    with pytest.raises(WalkForwardEvaluationError, match="expected_cadence_seconds must be finite and positive"):
+        evaluate_chronological_walk_forward(
+            _series(12),
+            feature_id=FEATURE_ID,
+            evaluation_as_of_utc=_stamp(BASE + timedelta(hours=11, seconds=3)),
+            horizon_seconds=3600,
+            min_train_samples=3,
+            target_tolerance_seconds=5,
+            expected_cadence_seconds=0,
+            venue="kraken",
+            currency_pair="XRP/USD",
+        )
+
+
 def test_walk_forward_rejects_non_positive_effective_sample_minimum():
     with pytest.raises(
         WalkForwardEvaluationError,
@@ -414,12 +429,16 @@ def test_walk_forward_clusters_each_origin_by_its_observed_target_publisher():
         min_out_of_sample_samples=1,
         min_effective_out_of_sample_samples=1,
         target_tolerance_seconds=5,
+        expected_cadence_seconds=3600,
         venue="kraken",
         currency_pair="XRP/USD",
     )
+    assert result["bootstrap_expected_cadence_seconds"] == 3600
     comparison = result["paired_uncertainty"]["comparisons"]["momentum_sign"]
     source = comparison["source_clustered_moving_block_bootstrap"]
     assert source["status"] == "ESTIMATED"
+    per_cluster = source["brier_sampling_diagnostics"]["per_cluster"]
+    assert all(item["cadence_source"] == "declared" for item in per_cluster.values())
     assert source["source_cluster_count"] == 5
     assert source["observed_minimum_origins_per_source_cluster"] >= 2
     assert all(
