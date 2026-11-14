@@ -1,0 +1,371 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "evernorth-equity-instrument-inventory-and-sbi-affiliate-class-c-20261103",
+  "captured_at_utc": "2026-11-03T13:30:02Z",
+  "data_cutoff_utc": "2026-11-03T13:30:02Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "6f0a4c34d21c6aa20c344b4b4107d2f59f7b29a1",
+  "topic": "Evernorth capital structure: issued Class A and Class C, SBI-affiliated Class C holders, Company Unit redemption rights, and contingent Class A supply",
+  "status": {
+    "primary_filings": "VERIFIED",
+    "share_category_inventory": "EXECUTED",
+    "fully_diluted_share_count": "NOT_COMPUTED_DUE_TO_NONADDITIVITY_AND_POSSIBLE_OVERLAP",
+    "sbi_affiliate_class_c_relationship": "VERIFIED_AT_ISSUANCE_LEVEL",
+    "beneficial_ownership": "NOT_FULLY_RECONCILED",
+    "facility_drawdown": "NOT_VERIFIED",
+    "incremental_xrp_purchase": "NOT_VERIFIED",
+    "forecast": "NOT_ISSUED"
+  },
+  "summary": [
+    "Evernorth's October 30 prospectus reports 26,094,680 issued Class A shares as of October 22, 2026 and separately reports 31,392,746 issued and outstanding Class C shares as of the prospectus date.",
+    "The October 9 closing 8-K states that 2,359,038 Class C shares were issued to investors affiliated with SBI Holdings, Inc. because of the 39.9% ownership threshold. This is an Evernorth equity relationship, not evidence that those investors purchased XRP or control SBI's separate SBIC East Japan entity.",
+    "Class C shares carry economic rights but generally no voting rights, are not listed for trading, are transfer-restricted and are convertible into Class A under the prospectus's charter terms. Conversion changes class composition; it is not automatically new economic equity issuance.",
+    "The prospectus separately lists 22,953,128 Company Units that may be redeemed/exchanged for newly issued Class A shares one-for-one or, at Pubco's election, cash at the Class A VWAP. This is a potential share-issuance or cash-liquidity channel.",
+    "Other listed contingent or reserved Class A categories include warrants, convertible notes, incentive-plan shares, ESPP shares and the separate Cantor equity facility. They are not all issued, immediately exercisable or necessarily additive.",
+    "A simple sum of listed contingent Class A maxima is not a valid fully diluted count: it mixes conversion, redemption, exercise and reserved-share categories, some with alternative cash settlement and possible structural overlap. The artifact preserves each category separately.",
+    "None of these corporate-equity figures is XRP token supply, XRP escrow, XRP collateral or proof of actual XRP market purchases."
+  ],
+  "capital_structure": {
+    "reference_date_class_a": "2026-10-22",
+    "issued_class_a_shares": 26094680,
+    "issued_class_c_shares_as_of_prospectus": 31392746,
+    "class_c_status": "ALREADY_ISSUED_AND_OUTSTANDING; NONVOTING_ECONOMIC_CLASS; NOT_LISTED_FOR_TRADING; TRANSFER_RESTRICTED; CONVERTIBLE_TO_CLASS_A_UNDER_CHARTER_TERMS",
+    "sbi_affiliate_class_c_shares_at_closing": 2359038,
+    "sbi_affiliate_class_c_pct_of_issued_a_plus_c": 4.1039,
+    "sbi_affiliate_pct_caveat": "Derived only as 2,359,038 divided by 26,094,680 Class A plus 31,392,746 Class C. This is not total beneficial ownership, voting power or an ownership percentage of all Company Units.",
+    "contingent_or_reserved_class_a_categories": [
+      {
+        "category": "Pubco warrants",
+        "shares": 9283847,
+        "status": "POTENTIAL_UPON_EXERCISE",
+        "source": "S1"
+      },
+      {
+        "category": "Convertible notes",
+        "shares": 3585278,
+        "status": "INITIAL_CONVERSION_ESTIMATE; ASSUMES_MAXIMUM_PIK_INTEREST; SUBJECT_TO_ADJUSTMENT",
+        "source": "S1"
+      },
+      {
+        "category": "Company Units held by holders other than Evernorth",
+        "shares": 22953128,
+        "status": "REDEEMABLE/EXCHANGEABLE; PUBCO MAY ELECT NEW CLASS_A_SHARES_ONE_FOR_ONE_OR_CASH_AT_VWAP",
+        "source": "S1"
+      },
+      {
+        "category": "Incentive Plan",
+        "shares": 8930929,
+        "status": "RESERVED; NOT_ISSUED",
+        "source": "S1"
+      },
+      {
+        "category": "Employee Stock Purchase Plan",
+        "shares": 1786185,
+        "status": "RESERVED; NOT_ISSUED",
+        "source": "S1"
+      },
+      {
+        "category": "Cantor committed equity facility",
+        "shares": 5218935,
+        "status": "ISSUER_OPTIONAL; CONDITIONAL; NOT_VERIFIED_AS_DRAWN",
+        "source": "S1"
+      }
+    ],
+    "gross_arithmetic_sum_of_contingent_class_a_categories": 51758302,
+    "gross_sum_caveat": "Arithmetic sum only. Not a fully diluted share count or expected issuance: units may settle in cash; plan/ESPP reserves are not necessarily issued; warrants and notes are conditional; the ELOC is discretionary; overlap among legal instruments has not been fully reconciled.",
+    "issued_class_a_plus_class_c": 57487426,
+    "issued_a_plus_c_caveat": "Simple issued share-class sum only. Does not include Company Units, warrants, notes, reserves, other securities or any conversion/settlement mechanics."
+  },
+  "sbi_relationship": {
+    "issuer_named_in_filing": "SBI Holdings, Inc.",
+    "relationship": "Investors affiliated with SBI Holdings received 2,359,038 Pubco Class C shares at the October 9, 2026 closing.",
+    "stated_reason": "Class C shares were issued to certain SBI-affiliated investors as a result of the 39.9% ownership threshold.",
+    "classification": "CONFIRMED_EVERNORTH_EQUITY_ISSUANCE",
+    "not_established": [
+      "The filing does not establish that SBI Holdings itself is the direct registered holder of all 2,359,038 shares; it describes affiliated investors.",
+      "The Class C position does not establish XRP custody, XRP collateral, new XRP purchases or XRPL transaction flows.",
+      "This SBI Holdings relationship is not the same entity as SBIC East Japan discussed in the separate ChatGPT educational-event research."
+    ]
+  },
+  "claims": [
+    {
+      "id": "EV-EQ-001",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Evernorth reports 26,094,680 Class A shares issued and outstanding as of October 22, 2026.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-002",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Evernorth reports 31,392,746 Class C shares issued and outstanding as of the prospectus date.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-003",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The October 9 closing 8-K says 2,359,038 Class C shares were issued to certain investors affiliated with SBI Holdings, Inc. because of the 39.9% ownership threshold.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "EV-EQ-004",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Class C shares have economic rights but generally no voting rights, are not listed for trading and are subject to transfer restrictions; the prospectus describes conversion into Class A under the charter.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-005",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The prospectus lists 22,953,128 shares potentially issuable on redemption or exchange of Company Units held by holders other than Evernorth; the company may elect newly issued Class A one-for-one or cash at the Class A VWAP.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-006",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The prospectus lists 9,283,847 shares issuable upon warrant exercise and 3,585,278 shares initially issuable upon convertible-note conversion, with the latter based on maximum PIK interest and subject to adjustment.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-007",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The prospectus lists 8,930,929 Class A shares reserved for the Incentive Plan and 1,786,185 for the ESPP; these are reserves, not current issued shares.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-008",
+      "class": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The Cantor facility separately allows Evernorth, at its option and subject to conditions, to issue and sell up to 5,218,935 new Class A shares.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "EV-EQ-009",
+      "class": "DERIVED_ARITHMETIC_WITH_LIMITATION",
+      "claim": "SBI-affiliated Class C shares equal approximately 4.10% of the simple issued Class A plus Class C share count. This is not a total beneficial ownership or voting-power measure.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "EV-EQ-010",
+      "class": "UNKNOWN_AND_MODEL_LIMITATION",
+      "claim": "The prospectus cover lists Class C conversion and Company Unit redemption/exchange categories separately; their complete overlap and settlement paths are not reconciled in this inventory. Do not add every category into one fully diluted count.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI-affiliated investors",
+      "to": "Evernorth Holdings",
+      "type": "RECEIVED_CLASS_C_EQUITY_AT_CLOSING",
+      "evidence": [
+        "EV-EQ-003"
+      ]
+    },
+    {
+      "from": "Evernorth Class C shares",
+      "to": "Evernorth Class A shares",
+      "type": "CONVERSION_RIGHT_SUBJECT_TO_CHARTER",
+      "evidence": [
+        "EV-EQ-004"
+      ]
+    },
+    {
+      "from": "Evernorth Class C shares",
+      "to": "Voting rights",
+      "type": "GENERALLY_NONVOTING_CLASS",
+      "evidence": [
+        "EV-EQ-004"
+      ]
+    },
+    {
+      "from": "Evernorth Company Units",
+      "to": "New Class A shares or cash",
+      "type": "REDEMPTION_EXCHANGE_AT_PUBCO_ELECTION",
+      "evidence": [
+        "EV-EQ-005"
+      ]
+    },
+    {
+      "from": "Evernorth warrants",
+      "to": "Class A share supply",
+      "type": "POTENTIAL_ISSUANCE_ON_EXERCISE",
+      "evidence": [
+        "EV-EQ-006"
+      ]
+    },
+    {
+      "from": "Evernorth convertible notes",
+      "to": "Class A share supply",
+      "type": "POTENTIAL_CONVERSION",
+      "evidence": [
+        "EV-EQ-006"
+      ]
+    },
+    {
+      "from": "Evernorth Incentive Plan and ESPP",
+      "to": "Class A share supply",
+      "type": "RESERVED_POTENTIAL_ISSUANCE",
+      "evidence": [
+        "EV-EQ-007"
+      ]
+    },
+    {
+      "from": "Evernorth Cantor facility",
+      "to": "Class A share supply",
+      "type": "OPTIONAL_CONDITIONAL_ISSUANCE",
+      "evidence": [
+        "EV-EQ-008"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-EV-EQ-1",
+      "statement": "SBI-affiliated Class C holdings create a meaningful long-term economic alignment between SBI-affiliated investors and Evernorth's XRP-treasury strategy.",
+      "status": "PLAUSIBLE_EQUITY_ALIGNMENT_NOT_XRP_FLOW",
+      "support": [
+        "The closing 8-K confirms the Class C issuance to SBI-affiliated investors."
+      ],
+      "counterevidence_or_limits": [
+        "The filing does not establish current beneficial ownership, voting control, XRP custody or future purchase obligations."
+      ]
+    },
+    {
+      "id": "H-EV-EQ-2",
+      "statement": "Class C conversion could increase Class A tradable/voting float without creating the same amount of new economic equity.",
+      "status": "MECHANICALLY_PLAUSIBLE",
+      "support": [
+        "Class C is already issued and has economic rights; the prospectus describes conversion to Class A."
+      ],
+      "counterevidence_or_limits": [
+        "Conversion timing, holder elections and class-specific restrictions are not quantified."
+      ]
+    },
+    {
+      "id": "H-EV-EQ-3",
+      "statement": "Company Unit redemption/exchange could create Class A issuance or cash outflow depending on Pubco's election.",
+      "status": "CONFIRMED_CONTRACTUAL_CHANNEL",
+      "support": [
+        "The prospectus describes one-for-one Class A issuance or cash at VWAP."
+      ],
+      "counterevidence_or_limits": [
+        "Actual redemption requests and Pubco settlement elections were not verified."
+      ]
+    },
+    {
+      "id": "H-EV-EQ-4",
+      "statement": "The gross sum of all excluded/reserved shares represents expected dilution.",
+      "status": "REJECTED_AS_STATED",
+      "support": [],
+      "counterevidence_or_limits": [
+        "The categories have different legal states; Class C is already issued, units may settle in cash, and warrants/notes/reserves/ELOC are conditional."
+      ]
+    }
+  ],
+  "feature_rules": [
+    {
+      "feature": "evernorth_class_a_issued",
+      "treatment": "CURRENT_ISSUED_SHARE_COUNT_WITH_AS_OF_DATE"
+    },
+    {
+      "feature": "evernorth_class_c_issued",
+      "treatment": "CURRENT_ISSUED_NONVOTING_ECONOMIC_CLASS; KEEP_SEPARATE_FROM_CLASS_A"
+    },
+    {
+      "feature": "sbi_affiliate_class_c",
+      "treatment": "ISSUANCE_TO_AFFILIATES; DO_NOT_INFER_DIRECT_SBI_HOLDINGS_BENEFICIAL_OWNERSHIP"
+    },
+    {
+      "feature": "company_unit_redemption_rights",
+      "treatment": "CONTINGENT_SHARE_OR_CASH_SETTLEMENT; TRACK_ACTUAL_ELECTIONS"
+    },
+    {
+      "feature": "warrants_and_convertible_notes",
+      "treatment": "CONDITIONAL_POTENTIAL_CLASS_A_ISSUANCE"
+    },
+    {
+      "feature": "incentive_plan_and_espp",
+      "treatment": "RESERVED_NOT_ISSUED"
+    },
+    {
+      "feature": "cantor_eloc_shares",
+      "treatment": "OPTIONAL_CONDITIONAL_NEW_CLASS_A_ISSUANCE; NOT_ACTUAL_CAPITAL"
+    },
+    {
+      "feature": "fully_diluted_share_count",
+      "treatment": "DO_NOT_COMPUTE_UNTIL_OVERLAP_AND_SETTLEMENT_MECHANICS_ARE_RECONCILED"
+    },
+    {
+      "feature": "xrp_supply_or_xrp_buying",
+      "treatment": "DO_NOT_INFER_FROM_EVERNORTH_CORPORATE_SHARE_COUNTS"
+    }
+  ],
+  "limitations": [
+    "The exact current beneficial owners of all SBI-affiliated Class C shares were not independently reconciled.",
+    "The simple 4.10% SBI-affiliate ratio uses issued Class A plus Class C only and is not a complete ownership measure.",
+    "The relationship between Class C conversions and Company Unit redemptions/exchanges is not fully reconciled here.",
+    "Company Unit redemptions may settle in cash or newly issued Class A; actual elections and quantities were not verified.",
+    "Warrants, notes, plan reserves, ESPP reserves and the Cantor facility are not current issued shares.",
+    "No facility drawdown or incremental XRP acquisition was verified.",
+    "No directional XRP forecast is supported by this corporate-equity inventory."
+  ],
+  "next_actions": [
+    "Reconcile the amended and restated charter and Company A&R LLCA to determine whether any Class C conversion and Company Unit redemption counts overlap.",
+    "Identify the exact SBI-affiliated registered/beneficial holders and any subsequent ownership filings without inferring from the issuer's affiliate label.",
+    "Monitor Class C conversion notices, Company Unit redemption/exchange notices, warrant exercises, note conversions and plan issuances.",
+    "Keep Evernorth equity issuance, treasury XRP custody, new XRP acquisitions and XRPL transfers as separate ledgers.",
+    "Revisit facility-funded XRP accumulation only after a confirmed Cantor drawdown, cash settlement and separate XRP purchase evidence."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Capital-structure inventory is not synchronized XRP market data or proof of actual XRP buying."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PRIMARY_SEC_424B3",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Final prospectus for up to 5,218,935 Class A shares under Cantor committed equity facility, filed 2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_locations": [
+        "The Offering, p. 5: current Class A and excluded categories",
+        "Description of Securities: Class C rights and restrictions",
+        "Company A&R LLCA: Company Unit redemption/exchange mechanics"
+      ]
+    },
+    {
+      "id": "S2",
+      "type": "PRIMARY_SEC_8K",
+      "publisher": "Evernorth Holdings Inc.",
+      "title": "Form 8-K, closing equity issuance and SBI-affiliated Class C allocation, 2026-10-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "source_locations": [
+        "Closing issuance description: 2,359,038 Class C shares issued to SBI-affiliated investors due to 39.9% threshold"
+      ]
+    }
+  ],
+  "provenance_notes": [
+    "Issuer-reported counts and rights are distinguished from derived arithmetic and unverified beneficial ownership.",
+    "No gross sum of the listed instruments is represented as a fully diluted share count.",
+    "SBI Holdings, Inc. and SBIC East Japan remain distinct entities in the research graph.",
+    "No private data, unauthorized access or trading actions were used."
+  ]
+}

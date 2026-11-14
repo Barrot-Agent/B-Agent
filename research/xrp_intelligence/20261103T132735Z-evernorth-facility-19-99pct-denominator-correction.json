@@ -1,0 +1,73 @@
+{
+  "schema_version": "barrot.xrp-research-correction.v1",
+  "correction_id": "xrp-evernorth-cantor-facility-preagreement-percentage-20261103T132735Z",
+  "captured_at_utc": "2026-11-03T13:27:35Z",
+  "data_cutoff_utc": "2026-11-03T13:27:35Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "supersedes_artifact_id": "xrp-evernorth-cantor-equity-line-and-etf-flow-quality-20261103",
+  "correction_scope": "Clarify the legal pre-agreement percentage stated in the Evernorth SEC prospectus versus the derived percentage calculated using the separately stated October 22 share count.",
+  "status": {
+    "primary_source": "VERIFIED",
+    "arithmetic": "EXECUTED",
+    "exact_october_23_share_denominator": "NOT_STATED_IN_THE_CITED_NOTE",
+    "prior_artifact": "PRESERVED_UNCHANGED",
+    "forecast": "NOT_ISSUED"
+  },
+  "findings": [
+    {
+      "id": "EVLOC-CORR-001",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "Evernorth's October 30 424B3 states that the maximum 5,218,935 shares represent 19.99% of Pubco Class A shares outstanding immediately before the October 23, 2026 Purchase Agreement was signed.",
+      "source_id": "S1",
+      "source_location": "Note ELOC Facility, prospectus page F-85, lines 6716-6719."
+    },
+    {
+      "id": "EVLOC-CORR-002",
+      "classification": "CONFIRMED_PRIMARY_SEC_FACT",
+      "claim": "The same prospectus separately states that 26,094,680 Class A shares were outstanding as of October 22, 2026 and uses that October 22 count for its post-issuance dilution table.",
+      "source_id": "S1",
+      "source_location": "Prospectus pages 73-74, lines 2035-2057."
+    },
+    {
+      "id": "EVLOC-CORR-003",
+      "classification": "DERIVED_ARITHMETIC_WITH_DATE_LIMITATION",
+      "claim": "5,218,935 divided by 26,094,680 equals approximately 20.0%. This is an October 22 denominator calculation, not a restatement of the issuer's 19.99% immediately-before-signing figure on October 23.",
+      "source_id": "S1",
+      "calculation": {
+        "numerator_shares": 5218935,
+        "denominator_shares": 26094680,
+        "percentage": 19.999996169,
+        "rounded_percentage": 20
+      }
+    }
+  ],
+  "corrected_interpretation": {
+    "issuer_reported_pct_immediately_before_october_23_agreement": 19.99,
+    "issuer_reported_denominator_shares": null,
+    "issuer_reported_denominator_status": "NOT_GIVEN_IN_THE_CITED_NOTE",
+    "derived_pct_using_october_22_share_count": 20,
+    "derived_denominator_date": "2026-10-22",
+    "relationship": "These are measurements using different stated dates/denominators. They are not treated as contradictory. Preserve both with their date labels.",
+    "no_change_to_maximum_shares": 5218935,
+    "no_change_to_97pct_vwap_terms": true,
+    "no_change_to_proceeds_or_fee_reconciliation": true,
+    "no_change_to_actual_drawdown_status": "NOT_VERIFIED",
+    "no_change_to_incremental_xrp_purchase_status": "NOT_VERIFIED"
+  },
+  "model_rules": [
+    "Use 19.99% only as the issuer-reported immediately-before-agreement percentage.",
+    "Use 20.0% only as a derived ratio against the October 22 reported share count.",
+    "Do not infer the exact October 23 share denominator from rounded percentages.",
+    "Do not treat either percentage as a measure of XRP token dilution or XRP circulating supply.",
+    "Do not promote the facility to actual capital inflow or XRP acquisition without verified drawdown and purchase evidence."
+  ],
+  "source": {
+    "id": "S1",
+    "type": "PRIMARY_SEC_424B3",
+    "publisher": "Evernorth Holdings Inc.",
+    "title": "Final prospectus for up to 5,218,935 Class A shares under Cantor committed equity facility, filed 2026-10-30",
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+  },
+  "next_action": "Retrieve a primary-source Class A share count as of immediately before the October 23 agreement if available; otherwise retain the issuer's 19.99% and the October 22 derived 20.0% as separately dated observations.",
+  "forecast_status": "NOT_ISSUED"
+}

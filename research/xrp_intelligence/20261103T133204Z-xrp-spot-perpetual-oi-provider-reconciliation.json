@@ -1,0 +1,304 @@
+{
+  "schema_version": "barrot.xrp-market-observation.v1",
+  "artifact_id": "xrp-spot-perpetual-oi-provider-reconciliation-20261103T133204Z",
+  "captured_at_utc": "2026-11-03T13:32:04Z",
+  "retrieval_cutoff_utc": "2026-11-03T13:32:04Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_main_sha": "6f0a4c34d21c6aa20c344b4b4107d2f59f7b29a1",
+  "status": {
+    "retrieval": "EXECUTED",
+    "source_payloads": "VERIFIED_AS_PUBLISHED",
+    "cross_provider_time_alignment": "NOT_ESTABLISHED",
+    "derivatives_universe_alignment": "NOT_ESTABLISHED",
+    "feature_admission": "QUARANTINED_PENDING_NORMALIZATION",
+    "forecast": "NOT_ISSUED"
+  },
+  "summary": [
+    "A public Kraken XRP/USD ticker payload retrieved at 13:32:04 UTC reports bid 1.28085, ask 1.28086 and last 1.27986. The payload contains no exchange timestamp, so retrieval time is not asserted to be the quote's exact event time.",
+    "Three public derivatives aggregators report materially different XRP perpetual open-interest totals: Kodexius $834.52M (updated 06:04 UTC), TradRadar $1.98B (updated 07:20 UTC, 15-minute delay) and CoinGlass approximately $2.84B on its English page and $2.92B on its Italian page. Their instrument/exchange universes and capture times are not harmonized.",
+    "TradRadar reports positive OI-weighted funding of 0.0062% per 8 hours, a 2.96 long/short account ratio (74.8% long), and at least $2.43M in 24-hour liquidations, mostly longs. These are provider-specific observations, not a confirmed whole-market positioning measure.",
+    "Kodexius reports 0.0072% OI-weighted funding per 8 hours and $1.11B 24-hour perpetual volume. Its visible exchange rows do not exhaust the stated seven-contract total.",
+    "CoinGlass's English and Italian pages show an internal provider discrepancy in open interest and futures volume, so the pages are not independent corroboration.",
+    "CryptoETF's November 2 XRP ETF flow remains partial at 3 of 5 funds. The reported -$0.5M is all attributed to XRPC; XRPZ and GXRP are missing.",
+    "The market observations are quarantined from directional forecasting until exchange universes, timestamps, quote currencies and calculation methods are aligned."
+  ],
+  "spot_observations": [
+    {
+      "source_id": "S1",
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "retrieval_time_utc": "2026-11-03T13:32:04Z",
+      "exchange_timestamp_in_payload": false,
+      "bid_usd": 1.28085,
+      "bid_size_xrp": 4120,
+      "ask_usd": 1.28086,
+      "ask_size_xrp": 1000,
+      "last_usd": 1.27986,
+      "last_trade_size_xrp": 1000,
+      "volume_24h_xrp": 19912832.61847824,
+      "trade_count_24h": 22627,
+      "open_24h_usd": 1.24803,
+      "high_24h_usd": 1.28627,
+      "low_24h_usd": 1.23364,
+      "weighted_average_24h_usd": 1.25792913,
+      "limitations": "Kraken payload does not include a timestamp. The retrieval timestamp records when this response was obtained, not a guaranteed exchange event timestamp. One venue only."
+    },
+    {
+      "source_id": "S6",
+      "venue": "Binance.US",
+      "pair": "XRP/USD",
+      "publisher_observation_date": "2026-11-03",
+      "reported_price_usd": 1.25,
+      "reported_24h_change_pct": -0.35,
+      "reported_24h_low_usd": 1.23,
+      "reported_24h_high_usd": 1.26,
+      "reported_7d_change_pct": -4.03,
+      "reported_30d_change_pct": -16.65,
+      "reported_1y_change_pct": -48.14,
+      "limitations": "Public price page; exact exchange quote timestamp and underlying trade feed were not captured. Not directly comparable to Kraken's untimestamped ticker response."
+    }
+  ],
+  "derivatives_observations": [
+    {
+      "source_id": "S2",
+      "provider": "Kodexius",
+      "updated_at_utc": "2026-11-03T06:04:00Z",
+      "contract_universe": "Seven XRP perpetual contracts; exchange rows visible in retrieved result are not exhaustive.",
+      "open_interest_usd": 834520000,
+      "funding_oi_weighted_per_8h_pct": 0.0072,
+      "volume_24h_usd": 1110000000,
+      "oi_to_volume_ratio": 0.75,
+      "visible_exchange_open_interest_usd": {
+        "Binance": 410340000,
+        "Bybit": 154820000,
+        "Hyperliquid": 104270000,
+        "OKX": 103710000,
+        "HTX": 28030000
+      },
+      "limitations": "The provider's stated total exceeds the sum of the five visible exchange rows; remaining rows were not present in the retrieved snippet. Do not infer missing exchanges or allocate the residual."
+    },
+    {
+      "source_id": "S3",
+      "provider": "TradRadar",
+      "updated_at_utc": "2026-11-03T07:20:00Z",
+      "display_delay_minutes": 15,
+      "contract_universe": "Seven exchanges listed by provider.",
+      "mark_price_usd": 1.2523,
+      "price_change_24h_pct": 0.13,
+      "open_interest_usd": 1980000000,
+      "open_interest_change_24h_pct": 2.84,
+      "funding_oi_weighted_per_8h_pct": 0.0062,
+      "liquidation_24h_min_usd": 2430000,
+      "long_liquidations_24h_usd": 2150000,
+      "short_liquidations_24h_usd": 287320,
+      "long_short_account_ratio": 2.96,
+      "accounts_long_pct": 74.8,
+      "limitations": "Aggregated provider estimate with 15-minute delay. Exchange coverage and instrument inclusion differ from Kodexius and CoinGlass."
+    },
+    {
+      "source_id": "S4",
+      "provider": "CoinGlass",
+      "page_variant": "English",
+      "retrieval_date": "2026-11-03",
+      "reported_mark_price_usd": 1.2512,
+      "open_interest_usd": 2840000000,
+      "futures_volume_24h_usd": 1870000000,
+      "spot_volume_24h_usd": 353370000,
+      "exact_provider_update_time_utc": null,
+      "limitations": "Page crawl is current-date but exact data timestamp and complete instrument universe are not exposed in the retrieved result."
+    },
+    {
+      "source_id": "S5",
+      "provider": "CoinGlass",
+      "page_variant": "Italian",
+      "retrieval_date": "2026-11-03",
+      "reported_mark_price_usd": 1.2512,
+      "open_interest_usd": 2920000000,
+      "futures_volume_24h_usd": 1980000000,
+      "spot_volume_24h_usd": 352040000,
+      "exact_provider_update_time_utc": null,
+      "limitations": "Same provider, different localized page and retrieved snapshot. Not an independent source. Difference from English page requires provider methodology/timestamp reconciliation."
+    }
+  ],
+  "etf_observation": {
+    "source_id": "S7",
+    "underlying_date": "2026-11-02",
+    "published_at_utc": "2026-11-03T05:47:00Z",
+    "provider": "CryptoETF.today",
+    "flow_usd": -500000,
+    "funds_reported": 3,
+    "funds_in_universe": 5,
+    "fund_detail": "XRPC -$0.5M; Bitwise XRP and TOXR zero; XRPZ and GXRP not yet reported.",
+    "completeness": "PARTIAL",
+    "feature_status": "NOT_ADMITTED_AS_FINAL_WHOLE_MARKET_FLOW"
+  },
+  "cross_provider_reconciliation": {
+    "oi_min_usd": 834520000,
+    "oi_max_usd": 2920000000,
+    "max_to_min_ratio": 3.499,
+    "interpretation": "The 3.5x range is not evidence of a true market-state contradiction. Providers report different contract/exchange universes, data timestamps and possibly valuation/aggregation conventions. CoinGlass's own English/Italian page variants also differ.",
+    "price_alignment": "Kraken retrieval-time last 1.27986 is not time-aligned with TradRadar's 1.2523 observation updated 07:20 UTC or CoinGlass's 1.2512 page snapshot. No venue premium/discount conclusion is drawn.",
+    "funding_alignment": "Kodexius and TradRadar weighted funding observations are close but not identical; weights and instrument coverage are not harmonized.",
+    "aggregation_policy": "Never average these provider totals. Preserve raw provider, venue, contract universe, observation timestamp, retrieval timestamp, currency, unit and revision status."
+  },
+  "hypotheses": [
+    {
+      "id": "H-MKT-1",
+      "statement": "XRP perpetual positioning is materially long-skewed and may be vulnerable to long liquidation if spot weakens.",
+      "status": "PLAUSIBLE_PROVIDER_SPECIFIC_NOT_MARKET_CONFIRMED",
+      "support": [
+        "TradRadar reports 74.8% long accounts and long liquidations larger than short liquidations."
+      ],
+      "counterevidence_or_limits": [
+        "One aggregator only; exchange universe and account ratio method are not independently reconciled.",
+        "Positive funding and OI do not establish a future price direction."
+      ]
+    },
+    {
+      "id": "H-MKT-2",
+      "statement": "The large OI range is mainly a contract-universe and provider-methodology difference.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "Kodexius, TradRadar and CoinGlass list different exchange/contract universes; CoinGlass localized pages differ internally."
+      ],
+      "counterevidence_or_limits": [
+        "Exact instrument-level constituents and timestamps remain unavailable for harmonized recomputation."
+      ]
+    },
+    {
+      "id": "H-MKT-3",
+      "statement": "The Kraken/aggregator price difference reflects non-synchronous observations rather than an executable venue dislocation.",
+      "status": "PLAUSIBLE_NOT_VERIFIED",
+      "support": [
+        "Kraken payload has no event timestamp; TradRadar provides a 07:20 UTC update and other pages lack exact timestamps."
+      ],
+      "counterevidence_or_limits": [
+        "A synchronized order-book and trade capture is required to test the hypothesis."
+      ]
+    },
+    {
+      "id": "H-MKT-4",
+      "statement": "The November 2 partial ETF outflow represents broad institutional XRP de-risking.",
+      "status": "NOT_ESTABLISHED",
+      "support": [
+        "CryptoETF reports an outflow in the three funds that have reported."
+      ],
+      "counterevidence_or_limits": [
+        "Only 3/5 funds reported; the full universe is incomplete; ETF flow is not the same as net exchange spot execution."
+      ]
+    }
+  ],
+  "feature_rules": [
+    {
+      "feature": "xrp_spot_quote",
+      "treatment": "STORE_PER_VENUE_WITH_EXCHANGE_TIMESTAMP_OR_RETRIEVAL_TIMESTAMP_AND_PAIR"
+    },
+    {
+      "feature": "xrp_perpetual_open_interest",
+      "treatment": "STORE_PER_EXCHANGE_AND_CONTRACT; NORMALIZE_TO_XRP_UNITS_AND_USD; NEVER_AVERAGE_UNMATCHED_UNIVERSES"
+    },
+    {
+      "feature": "xrp_funding_rate",
+      "treatment": "STORE_PER_CONTRACT_AND_FUNDING_INTERVAL; RECOMPUTE_WEIGHTED_RATE_ONLY_FROM_ALIGNED_CONSTITUENTS"
+    },
+    {
+      "feature": "xrp_long_short_ratio",
+      "treatment": "PROVIDER_SPECIFIC_ACCOUNT_OR_POSITION_RATIO; DO_NOT_MIX_DEFINITIONS"
+    },
+    {
+      "feature": "xrp_liquidations",
+      "treatment": "STORE_EXCHANGE_COVERAGE_AND_PUBLICATION_COMPLETENESS; REPORTED_LIQUIDATIONS_MAY_BE_INCOMPLETE"
+    },
+    {
+      "feature": "xrp_etf_flow",
+      "treatment": "PER_FUND_AND_COMPLETENESS_FLAG; MISSING_IS_NOT_ZERO"
+    },
+    {
+      "feature": "directional_forecast",
+      "treatment": "BLOCK_UNTIL_SYNCHRONIZED_MULTI_VENUE_SPOT_AND_DERIVATIVES_FEATURES_AND_VALIDATED_WALK_FORWARD_MODEL"
+    }
+  ],
+  "limitations": [
+    "Coinbase and Binance raw public API endpoints were inaccessible through the current web retrieval path; no substitute values were invented.",
+    "Kraken ticker response does not expose an exchange timestamp.",
+    "CoinGlass page variants disagree internally and lack an exact observation timestamp in the retrieved output.",
+    "Kodexius, TradRadar and CoinGlass contract/exchange universes are not reconciled.",
+    "No CME futures open interest, CFTC positioning, venue order-book depth, or synchronized liquidation feed is included.",
+    "November 2 ETF flows remain partial at 3/5 funds.",
+    "No synchronized post-event return window or calibrated predictive model is evaluated."
+  ],
+  "next_actions": [
+    "Use direct authorized exchange adapters to collect timestamped spot tickers and L2 snapshots from a fixed venue list.",
+    "Collect each exchange's XRP perpetual open interest in native contract units and USD with contract identifiers and update timestamps.",
+    "Recompute a common-universe OI aggregate; keep CME regulated futures separate from crypto perpetuals.",
+    "Capture funding intervals, long/short methodology and liquidation coverage per exchange.",
+    "Wait for all XRP ETF issuer reports and record late revisions by fund before calculating a final daily aggregate.",
+    "Run synchronized feature checks and walk-forward baselines before issuing any directional forecast."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "The retrieved spot and derivatives observations are not time-aligned or universe-aligned; provider disagreement and partial ETF reporting remain unresolved.",
+    "target": null,
+    "horizon": null,
+    "probability": null,
+    "confidence": null
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "type": "PUBLIC_EXCHANGE_API",
+      "publisher": "Kraken",
+      "title": "Public XRP/USD ticker endpoint",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-03T13:32:04Z"
+    },
+    {
+      "id": "S2",
+      "type": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "publisher": "Kodexius",
+      "title": "XRP perpetual open interest and funding by exchange; updated 2026-11-03 06:04 UTC",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP"
+    },
+    {
+      "id": "S3",
+      "type": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "publisher": "TradRadar",
+      "title": "XRP futures open interest, funding, liquidations and long/short; updated 2026-11-03 07:20 UTC",
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    {
+      "id": "S4",
+      "type": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "publisher": "CoinGlass",
+      "title": "XRP futures data, English page variant",
+      "url": "https://www.coinglass.com/currencies/XRP/futures"
+    },
+    {
+      "id": "S5",
+      "type": "SECONDARY_DERIVATIVES_AGGREGATOR_SAME_PROVIDER_VARIANT",
+      "publisher": "CoinGlass",
+      "title": "XRP futures data, Italian page variant",
+      "url": "https://www.coinglass.com/it/currencies/XRP/futures"
+    },
+    {
+      "id": "S6",
+      "type": "SECONDARY_EXCHANGE_PRICE_PAGE",
+      "publisher": "Binance.US",
+      "title": "XRP price and historical percentage changes as of 2026-11-03",
+      "url": "https://www.binance.us/price/xrp"
+    },
+    {
+      "id": "S7",
+      "type": "SECONDARY_ETF_FLOW_AGGREGATOR_PARTIAL",
+      "publisher": "CryptoETF.today",
+      "title": "XRP ETF flows for 2026-11-02, published 2026-11-03 05:47 UTC, 3/5 funds reported",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows"
+    }
+  ],
+  "provenance_notes": [
+    "The Kraken API payload was retrieved directly without authentication; its timestamp limitation is explicitly retained.",
+    "Kodexius, TradRadar and CoinGlass are secondary aggregators and are not treated as independent primary exchange feeds.",
+    "CoinGlass language variants are one provider, not independent corroboration.",
+    "No credentials, private data, unauthorized access or trading actions were used."
+  ]
+}
