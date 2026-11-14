@@ -92,6 +92,7 @@ def _paired_comparisons_fixture(sample_count=200):
 def _paired_uncertainty_fixture():
     return {
         "method": "paired_temporal_and_source_clustered_moving_block_bootstrap_v1",
+        "sampling_policy": "non_circular_contiguous_time_blocks_v1",
         "candidate_model_id": "xrp-test-v1",
         "familywise_confidence_level": 0.95,
         "familywise_comparison_count": 8,
@@ -1311,4 +1312,16 @@ def test_readiness_rejects_effective_sample_size_above_raw_count_or_horizon_capa
     report = json.loads(READINESS_FIXTURES[("XRP", 14400)]["report_bytes"])
     report["out_of_sample_effective_sample_size"] += 1
     with pytest.raises(ForecastLedgerError, match="exceeds horizon-span capacity"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_rejects_unspecified_or_circular_bootstrap_sampling_policy():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["paired_uncertainty"].pop("sampling_policy")
+    with pytest.raises(ForecastLedgerError, match="sampling_policy"):
+        _validate_readiness_report(report)
+
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["paired_uncertainty"]["sampling_policy"] = "circular_moving_blocks_v1"
+    with pytest.raises(ForecastLedgerError, match="sampling_policy"):
         _validate_readiness_report(report)

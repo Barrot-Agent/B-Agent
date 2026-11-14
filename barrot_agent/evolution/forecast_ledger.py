@@ -575,6 +575,8 @@ def _validate_readiness_report(report: Any) -> dict[str, Any]:
         raise ForecastLedgerError("readiness report needs paired_uncertainty for all baselines and both evaluation windows")
     if paired_uncertainty.get("method") != "paired_temporal_and_source_clustered_moving_block_bootstrap_v1":
         raise ForecastLedgerError("paired_uncertainty method is unsupported")
+    if paired_uncertainty.get("sampling_policy") != "non_circular_contiguous_time_blocks_v1":
+        raise ForecastLedgerError("paired_uncertainty sampling_policy must use non-circular contiguous time blocks")
     if paired_uncertainty.get("candidate_model_id") != report["model_version"]:
         raise ForecastLedgerError("paired_uncertainty candidate_model_id must match model_version")
     if paired_uncertainty.get("multiplicity_method") != "bonferroni":

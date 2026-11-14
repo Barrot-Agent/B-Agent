@@ -47,33 +47,126 @@ def _percentile(values: list[float], probability: float) -> float:
     return ordered[lower] * (1.0 - weight) + ordered[upper] * weight
 
 
-def _moving_block_sample(values: list[float], block_length: int, rng: random.Random) -> list[float]:
-    """Circular moving-block resample with the original sample length."""
-    if not values:
-        return []
-    size = len(values)
-    width = min(block_length, size)
+def _contiguous_block_windows(
+    values: list[float],
+    times: list[datetime],
+    *,
+    block_length: int,
+    max_gap_multiple: float,
+    expected_cadence_seconds: float | None = None,
+) -> tuple[list[tuple[float, ...]], dict[str, Any]]:
+    """Build non-circular blocks that never cross an observed timestamp gap."""
+    if len(values) != len(times):
+        raise PairedBootstrapError("block values and timestamps must have equal lengths")
+    if not values or len(values) < block_length:
+        return [], {
+            "cadence_seconds": expected_cadence_seconds,
+            "cadence_source": "declared" if expected_cadence_seconds is not None else "unavailable",
+            "max_gap_multiple": max_gap_multiple,
+            "contiguous_segment_count": 0,
+            "contiguous_segment_lengths": [],
+            "largest_contiguous_segment": 0,
+            "valid_block_window_count": 0,
+            "sample_origin_count": len(values),
+            "sampling_policy": "non_circular_contiguous_time_blocks_v1",
+        }
+
+    deltas = [
+        (times[index] - times[index - 1]).total_seconds()
+        for index in range(1, len(times))
+    ]
+    positive_deltas = [delta for delta in deltas if delta > 0]
+    if expected_cadence_seconds is None:
+        cadence = statistics.median(positive_deltas) if positive_deltas else None
+        cadence_source = "median_observed_interval"
+    else:
+        cadence = float(expected_cadence_seconds)
+        cadence_source = "declared"
+
+    if cadence is None or not math.isfinite(float(cadence)) or cadence <= 0:
+        return [], {
+            "cadence_seconds": None,
+            "cadence_source": cadence_source,
+            "max_gap_multiple": max_gap_multiple,
+            "contiguous_segment_count": 0,
+            "contiguous_segment_lengths": [],
+            "largest_contiguous_segment": 0,
+            "valid_block_window_count": 0,
+            "sample_origin_count": len(values),
+            "sampling_policy": "non_circular_contiguous_time_blocks_v1",
+        }
+
+    segments: list[tuple[int, int]] = []
+    segment_start = 0
+    for index, delta in enumerate(deltas, start=1):
+        if delta <= 0 or delta > cadence * max_gap_multiple:
+            segments.append((segment_start, index))
+            segment_start = index
+    segments.append((segment_start, len(values)))
+
+    segment_lengths = [end - start for start, end in segments]
+    windows: list[tuple[float, ...]] = []
+    for start, end in segments:
+        for window_start in range(start, end - block_length + 1):
+            windows.append(tuple(values[window_start:window_start + block_length]))
+
+    return windows, {
+        "cadence_seconds": float(cadence),
+        "cadence_source": cadence_source,
+        "max_gap_multiple": float(max_gap_multiple),
+        "contiguous_segment_count": len(segments),
+        "contiguous_segment_lengths": segment_lengths,
+        "largest_contiguous_segment": max(segment_lengths, default=0),
+        "valid_block_window_count": len(windows),
+        "sample_origin_count": len(values),
+        "sampling_policy": "non_circular_contiguous_time_blocks_v1",
+    }
+
+
+def _moving_block_sample(
+    windows: list[tuple[float, ...]],
+    sample_size: int,
+    rng: random.Random,
+) -> list[float] | None:
+    """Sample fixed-length blocks without circular wrap or gap bridging."""
+    if not windows:
+        return None
     sample: list[float] = []
-    while len(sample) < size:
-        start = rng.randrange(size)
-        for offset in range(width):
-            sample.append(values[(start + offset) % size])
-            if len(sample) == size:
-                break
+    while len(sample) < sample_size:
+        block = rng.choice(windows)
+        sample.extend(block[:sample_size - len(sample)])
     return sample
 
 
 def _temporal_interval(
-    values: list[float], *, block_length: int, replicates: int, seed: int,
+    values: list[float],
+    times: list[datetime],
+    *,
+    block_length: int,
+    replicates: int,
+    seed: int,
     confidence_level: float,
-) -> list[float]:
+    max_gap_multiple: float,
+    expected_cadence_seconds: float | None = None,
+) -> tuple[list[float] | None, dict[str, Any]]:
+    windows, diagnostics = _contiguous_block_windows(
+        values,
+        times,
+        block_length=block_length,
+        max_gap_multiple=max_gap_multiple,
+        expected_cadence_seconds=expected_cadence_seconds,
+    )
+    if not windows:
+        return None, diagnostics
     rng = random.Random(seed)
-    means = [
-        statistics.fmean(_moving_block_sample(values, block_length, rng))
-        for _ in range(replicates)
-    ]
+    means = []
+    for _ in range(replicates):
+        sampled = _moving_block_sample(windows, len(values), rng)
+        if sampled is None:
+            return None, diagnostics
+        means.append(statistics.fmean(sampled))
     tail = (1.0 - confidence_level) / 2.0
-    return [_percentile(means, tail), _percentile(means, 1.0 - tail)]
+    return [_percentile(means, tail), _percentile(means, 1.0 - tail)], diagnostics
 
 
 def _source_cluster_interval(
@@ -83,28 +176,67 @@ def _source_cluster_interval(
     replicates: int,
     seed: int,
     confidence_level: float,
-) -> tuple[list[float], float]:
-    """Resample source groups, then contiguous time blocks within each group."""
+    max_gap_multiple: float,
+) -> tuple[list[float] | None, float, dict[str, Any]]:
+    """Resample independent source groups and contiguous time blocks within each."""
     cluster_ids = sorted(clusters)
     point_estimate = statistics.fmean(
         statistics.fmean(value for _, value in clusters[group_id])
         for group_id in cluster_ids
     )
+    cluster_windows: dict[str, list[tuple[float, ...]]] = {}
+    cluster_diagnostics: dict[str, dict[str, Any]] = {}
+    for group_id in cluster_ids:
+        ordered = sorted(clusters[group_id], key=lambda item: item[0])
+        times = [timestamp for timestamp, _ in ordered]
+        values = [value for _, value in ordered]
+        windows, diagnostics = _contiguous_block_windows(
+            values,
+            times,
+            block_length=block_length,
+            max_gap_multiple=max_gap_multiple,
+        )
+        cluster_windows[group_id] = windows
+        cluster_diagnostics[group_id] = diagnostics
+        if not windows:
+            return None, point_estimate, {
+                "status": "INSUFFICIENT_CONTIGUOUS_BLOCKS",
+                "source_cluster_count": len(cluster_ids),
+                "source_group_ids": cluster_ids,
+                "per_cluster": cluster_diagnostics,
+            }
+
     rng = random.Random(seed)
     means: list[float] = []
     for _ in range(replicates):
         selected_cluster_means = []
         for _ in cluster_ids:
             group_id = rng.choice(cluster_ids)
-            values = [
-                value
-                for _, value in sorted(clusters[group_id], key=lambda item: item[0])
-            ]
-            sampled = _moving_block_sample(values, min(block_length, len(values)), rng)
-            selected_cluster_means.append(statistics.fmean(sampled))
+            sample = _moving_block_sample(
+                cluster_windows[group_id],
+                len(clusters[group_id]),
+                rng,
+            )
+            if sample is None:
+                return None, point_estimate, {
+                    "status": "INSUFFICIENT_CONTIGUOUS_BLOCKS",
+                    "source_cluster_count": len(cluster_ids),
+                    "source_group_ids": cluster_ids,
+                    "per_cluster": cluster_diagnostics,
+                }
+            selected_cluster_means.append(statistics.fmean(sample))
         means.append(statistics.fmean(selected_cluster_means))
     tail = (1.0 - confidence_level) / 2.0
-    return [_percentile(means, tail), _percentile(means, 1.0 - tail)], point_estimate
+    return (
+        [_percentile(means, tail), _percentile(means, 1.0 - tail)],
+        point_estimate,
+        {
+            "status": "ESTIMATED",
+            "source_cluster_count": len(cluster_ids),
+            "source_group_ids": cluster_ids,
+            "per_cluster": cluster_diagnostics,
+        },
+    )
 
 
 def evaluate_paired_block_bootstrap(
@@ -118,6 +250,8 @@ def evaluate_paired_block_bootstrap(
     minimum_origins_per_source_cluster: int = 5,
     random_seed: int = 20261113,
     confidence_level: float = 0.95,
+    max_gap_multiple: float = 1.5,
+    expected_cadence_seconds: float | None = None,
 ) -> dict[str, Any]:
     """Compare each model with a benchmark using paired temporal/source resampling.
 
@@ -147,6 +281,21 @@ def evaluate_paired_block_bootstrap(
     ):
         raise PairedBootstrapError("confidence_level must be finite and strictly between zero and one")
     confidence_level = float(confidence_level)
+    if (
+        isinstance(max_gap_multiple, bool)
+        or not isinstance(max_gap_multiple, (int, float))
+        or not math.isfinite(float(max_gap_multiple))
+        or float(max_gap_multiple) < 1.0
+    ):
+        raise PairedBootstrapError("max_gap_multiple must be finite and at least one")
+    max_gap_multiple = float(max_gap_multiple)
+    if expected_cadence_seconds is not None and (
+        isinstance(expected_cadence_seconds, bool)
+        or not isinstance(expected_cadence_seconds, (int, float))
+        or not math.isfinite(float(expected_cadence_seconds))
+        or float(expected_cadence_seconds) <= 0
+    ):
+        raise PairedBootstrapError("expected_cadence_seconds must be finite and positive")
     if minimum_origins_per_source_cluster < block_length_origins:
         raise PairedBootstrapError(
             "minimum_origins_per_source_cluster must be at least block_length_origins"
@@ -206,28 +355,53 @@ def evaluate_paired_block_bootstrap(
         brier = [item["brier_difference"] for item in paired]
         log_loss = [item["log_loss_difference"] for item in paired]
 
-        if count >= minimum_origins:
-            temporal = {
-                "status": "ESTIMATED",
-                "confidence_level": confidence_level,
-                "brier_difference_ci": _temporal_interval(
-                    brier, block_length=block_length_origins,
-                    replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 1,
-                    confidence_level=confidence_level,
-                ),
-                "log_loss_difference_ci": _temporal_interval(
-                    log_loss, block_length=block_length_origins,
-                    replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 2,
-                    confidence_level=confidence_level,
-                ),
-            }
-        else:
+        origin_times_for_pairing = [item["origin_time"] for item in paired]
+        temporal_brier_ci, temporal_brier_diagnostics = _temporal_interval(
+            brier,
+            origin_times_for_pairing,
+            block_length=block_length_origins,
+            replicates=bootstrap_replicates,
+            seed=random_seed + model_index * 10 + 1,
+            confidence_level=confidence_level,
+            max_gap_multiple=max_gap_multiple,
+            expected_cadence_seconds=expected_cadence_seconds,
+        )
+        temporal_log_ci, temporal_log_diagnostics = _temporal_interval(
+            log_loss,
+            origin_times_for_pairing,
+            block_length=block_length_origins,
+            replicates=bootstrap_replicates,
+            seed=random_seed + model_index * 10 + 2,
+            confidence_level=confidence_level,
+            max_gap_multiple=max_gap_multiple,
+            expected_cadence_seconds=expected_cadence_seconds,
+        )
+        if count < minimum_origins:
             temporal = {
                 "status": "INSUFFICIENT_ORIGINS",
                 "required_origins": minimum_origins,
                 "observed_origins": count,
                 "brier_difference_ci": None,
                 "log_loss_difference_ci": None,
+                "sampling_diagnostics": temporal_brier_diagnostics,
+            }
+        elif temporal_brier_ci is None or temporal_log_ci is None:
+            temporal = {
+                "status": "INSUFFICIENT_CONTIGUOUS_BLOCKS",
+                "required_block_length_origins": block_length_origins,
+                "brier_difference_ci": None,
+                "log_loss_difference_ci": None,
+                "sampling_diagnostics": temporal_brier_diagnostics,
+                "log_loss_sampling_diagnostics": temporal_log_diagnostics,
+            }
+        else:
+            temporal = {
+                "status": "ESTIMATED",
+                "confidence_level": confidence_level,
+                "brier_difference_ci": temporal_brier_ci,
+                "log_loss_difference_ci": temporal_log_ci,
+                "sampling_diagnostics": temporal_brier_diagnostics,
+                "log_loss_sampling_diagnostics": temporal_log_diagnostics,
             }
 
         brier_clusters: dict[str, list[tuple[datetime, float]]] = defaultdict(list)
@@ -246,28 +420,48 @@ def evaluate_paired_block_bootstrap(
             and min(cluster_sizes) >= minimum_origins_per_source_cluster
         )
         if enough_clusters:
-            brier_ci, brier_cluster_mean = _source_cluster_interval(
-                brier_clusters, block_length=block_length_origins,
-                replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 3,
+            brier_ci, brier_cluster_mean, brier_diagnostics = _source_cluster_interval(
+                brier_clusters,
+                block_length=block_length_origins,
+                replicates=bootstrap_replicates,
+                seed=random_seed + model_index * 10 + 3,
                 confidence_level=confidence_level,
+                max_gap_multiple=max_gap_multiple,
             )
-            log_ci, log_cluster_mean = _source_cluster_interval(
-                log_clusters, block_length=block_length_origins,
-                replicates=bootstrap_replicates, seed=random_seed + model_index * 10 + 4,
+            log_ci, log_cluster_mean, log_diagnostics = _source_cluster_interval(
+                log_clusters,
+                block_length=block_length_origins,
+                replicates=bootstrap_replicates,
+                seed=random_seed + model_index * 10 + 4,
                 confidence_level=confidence_level,
+                max_gap_multiple=max_gap_multiple,
             )
-            source_clustered = {
-                "status": "ESTIMATED",
-                "confidence_level": confidence_level,
-                "source_cluster_count": cluster_count,
-                "source_group_ids": sorted(brier_clusters),
-                "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
-                "observed_minimum_origins_per_source_cluster": min(cluster_sizes),
-                "equal_cluster_weighted_mean_brier_difference": brier_cluster_mean,
-                "equal_cluster_weighted_mean_log_loss_difference": log_cluster_mean,
-                "brier_difference_ci": brier_ci,
-                "log_loss_difference_ci": log_ci,
-            }
+            if brier_ci is None or log_ci is None:
+                source_clustered = {
+                    "status": "INSUFFICIENT_CONTIGUOUS_BLOCKS",
+                    "source_cluster_count": cluster_count,
+                    "source_group_ids": sorted(brier_clusters),
+                    "required_block_length_origins": block_length_origins,
+                    "brier_sampling_diagnostics": brier_diagnostics,
+                    "log_loss_sampling_diagnostics": log_diagnostics,
+                    "brier_difference_ci": None,
+                    "log_loss_difference_ci": None,
+                }
+            else:
+                source_clustered = {
+                    "status": "ESTIMATED",
+                    "confidence_level": confidence_level,
+                    "source_cluster_count": cluster_count,
+                    "source_group_ids": sorted(brier_clusters),
+                    "minimum_origins_per_source_cluster": minimum_origins_per_source_cluster,
+                    "observed_minimum_origins_per_source_cluster": min(cluster_sizes),
+                    "equal_cluster_weighted_mean_brier_difference": brier_cluster_mean,
+                    "equal_cluster_weighted_mean_log_loss_difference": log_cluster_mean,
+                    "brier_difference_ci": brier_ci,
+                    "log_loss_difference_ci": log_ci,
+                    "brier_sampling_diagnostics": brier_diagnostics,
+                    "log_loss_sampling_diagnostics": log_diagnostics,
+                }
         else:
             source_clustered = {
                 "status": "INSUFFICIENT_SOURCE_CLUSTERS",
@@ -296,6 +490,9 @@ def evaluate_paired_block_bootstrap(
 
     return {
         "method": "paired_temporal_and_source_clustered_moving_block_bootstrap_v1",
+        "sampling_policy": "non_circular_contiguous_time_blocks_v1",
+        "max_gap_multiple": max_gap_multiple,
+        "expected_cadence_seconds": expected_cadence_seconds,
         "benchmark_model_id": benchmark_model_id,
         "block_length_origins": block_length_origins,
         "bootstrap_replicates": bootstrap_replicates,
@@ -306,10 +503,12 @@ def evaluate_paired_block_bootstrap(
         "confidence_level": confidence_level,
         "interpretation": (
             "Loss differences are model minus benchmark; negative values favor the model. "
-            "Temporal intervals resample contiguous origin blocks. Source-clustered intervals "
-            "resample registry independence groups and then temporal blocks within each group. "
-            "Too few independent source groups yields no source-clustered CI. These diagnostics "
-            "do not authorize a live forecast."
+            "Temporal and source-clustered intervals use non-circular blocks drawn only from "
+            "contiguous timestamp segments. Gaps larger than max_gap_multiple times the declared "
+            "or median-observed cadence split segments; no block crosses a segment boundary. "
+            "Per-cluster cadence is inferred separately unless a future source-specific cadence "
+            "contract is supplied. Too few valid blocks or independent source groups yields no CI. "
+            "These diagnostics do not authorize a live forecast."
         ),
         "comparisons": comparisons,
     }

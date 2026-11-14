@@ -119,3 +119,49 @@ def test_model_without_benchmark_match_is_not_paired():
     result = evaluate_paired_block_bootstrap(rows, bootstrap_replicates=200)
     assert result["comparisons"]["momentum_sign"]["paired_origin_count"] == 29
     assert result["comparisons"]["momentum_sign"]["temporal_moving_block_bootstrap"]["status"] == "INSUFFICIENT_ORIGINS"
+
+
+def test_temporal_bootstrap_refuses_to_bridge_large_timestamp_gaps():
+    rows = []
+    indexes = [0, 1, 2, 3, 20, 21, 22, 23]
+    for position, hour in enumerate(indexes):
+        stamp = (BASE + timedelta(hours=hour)).isoformat().replace("+00:00", "Z")
+        group_id = "single-independent-source"
+        naive_brier = 0.30 + (position % 3) * 0.001
+        naive_log = 0.80 + (position % 4) * 0.002
+        rows.extend([
+            {
+                "origin_id": f"gap-origin-{position:04d}",
+                "origin_time_utc": stamp,
+                "source_group_id": group_id,
+                "model_id": "naive_class_prior",
+                "brier_loss": naive_brier,
+                "log_loss": naive_log,
+            },
+            {
+                "origin_id": f"gap-origin-{position:04d}",
+                "origin_time_utc": stamp,
+                "source_group_id": group_id,
+                "model_id": "momentum_sign",
+                "brier_loss": naive_brier - 0.05,
+                "log_loss": naive_log - 0.10,
+            },
+        ])
+
+    result = evaluate_paired_block_bootstrap(
+        rows,
+        block_length_origins=5,
+        bootstrap_replicates=200,
+        minimum_origins=5,
+        minimum_source_clusters=5,
+        expected_cadence_seconds=3600,
+    )
+    comparison = result["comparisons"]["momentum_sign"]
+    temporal = comparison["temporal_moving_block_bootstrap"]
+
+    assert comparison["paired_origin_count"] == 8
+    assert temporal["status"] == "INSUFFICIENT_CONTIGUOUS_BLOCKS"
+    assert temporal["brier_difference_ci"] is None
+    assert temporal["sampling_diagnostics"]["contiguous_segment_count"] == 2
+    assert temporal["sampling_diagnostics"]["contiguous_segment_lengths"] == [4, 4]
+    assert temporal["sampling_diagnostics"]["valid_block_window_count"] == 0
