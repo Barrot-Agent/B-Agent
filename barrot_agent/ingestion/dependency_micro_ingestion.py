@@ -17,13 +17,38 @@ import hashlib
 import json
 import os
 import re
+import sys
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from html.parser import HTMLParser
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+
+
+def _pkg_import(bare_name: str, package_path: str):
+    """Import a repo module regardless of how this file was invoked.
+
+    Tries the fully-qualified package path first (normal package usage), then
+    the bare name (standalone execution from the module's directory), then the
+    package path again with the repo root on ``sys.path``.
+    """
+    import importlib
+
+    try:
+        return importlib.import_module(package_path)
+    except ImportError:
+        pass
+    try:
+        return importlib.import_module(bare_name)
+    except ImportError:
+        pass
+    repo_root = str(Path(__file__).resolve().parents[2])
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
+    return importlib.import_module(package_path)
 
 # Configuration constants
 MAX_DOC_CONTENT_SIZE = 5000  # Maximum characters to extract per documentation source
@@ -854,7 +879,11 @@ class DependencyMicroIngestion:
             print(f"\n🔬 Dispatching research domain: {domain_name}")
             if domain_name == "longevity_research":
                 try:
-                    from longevity_micro_ingestion import LongevityMicroIngestion
+                    _mod = _pkg_import(
+                        "longevity_micro_ingestion",
+                        "barrot_agent.ingestion.longevity_micro_ingestion",
+                    )
+                    LongevityMicroIngestion = _mod.LongevityMicroIngestion
 
                     ingestion = LongevityMicroIngestion()
                     payload = ingestion.build_unified_payload(

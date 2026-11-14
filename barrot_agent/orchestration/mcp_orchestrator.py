@@ -30,13 +30,38 @@ Usage
 
 from __future__ import annotations
 
+import importlib
 import logging
 import os
+import sys
 import time
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, Generator, List, Optional
+
+
+def _import_flexible(bare_name: str, package_path: str):
+    """Import a repo module regardless of how this file was invoked.
+
+    Tries the fully-qualified package path first (normal
+    ``import barrot_agent.orchestration.mcp_orchestrator`` usage), then the
+    bare name (standalone execution, where ``sys.path[0]`` is this file's
+    directory), and finally retries the package path with the repo root on
+    ``sys.path``. Raises ImportError only if all three fail.
+    """
+    try:
+        return importlib.import_module(package_path)
+    except ImportError:
+        pass
+    try:
+        return importlib.import_module(bare_name)
+    except ImportError:
+        pass
+    repo_root = str(Path(__file__).resolve().parents[2])
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
+    return importlib.import_module(package_path)
 
 logger = logging.getLogger(__name__)
 
@@ -165,16 +190,18 @@ class MCPOrchestrator:
 
     def _get_hf(self):
         if self._hf is None:
-            from mcp_huggingface import HuggingFaceMCP
-
-            self._hf = HuggingFaceMCP(token=self.config.hf_token)
+            _mod = _import_flexible(
+                "mcp_huggingface", "barrot_agent.orchestration.mcp_huggingface"
+            )
+            self._hf = _mod.HuggingFaceMCP(token=self.config.hf_token)
         return self._hf
 
     def _get_db(self):
         if self._db is None:
-            from mcp_databricks import DatabricksMCP
-
-            self._db = DatabricksMCP(
+            _mod = _import_flexible(
+                "mcp_databricks", "barrot_agent.orchestration.mcp_databricks"
+            )
+            self._db = _mod.DatabricksMCP(
                 host=self.config.databricks_host,
                 token=self.config.databricks_token,
                 cluster_id=self.config.databricks_cluster_id,
@@ -183,9 +210,10 @@ class MCPOrchestrator:
 
     def _get_gh(self):
         if self._gh is None:
-            from mcp_github import GitHubMCP
-
-            self._gh = GitHubMCP(
+            _mod = _import_flexible(
+                "mcp_github", "barrot_agent.orchestration.mcp_github"
+            )
+            self._gh = _mod.GitHubMCP(
                 token=self.config.github_token,
                 owner=self.config.github_owner,
                 repo=self.config.github_repo,
@@ -280,7 +308,11 @@ class MCPOrchestrator:
             progress=0.20,
         )
         try:
-            from stupid_sindy_series_generator import get_episode
+            _mod = _import_flexible(
+                "stupid_sindy_series_generator",
+                "barrot_agent.tools.stupid_sindy_series_generator",
+            )
+            get_episode = _mod.get_episode
 
             ep = get_episode(episode_number)
             script_text = ep.full_script()
@@ -311,7 +343,10 @@ class MCPOrchestrator:
 
         if self.config.use_databricks and self._get_db().is_configured():
             # --- Databricks path ---
-            from mcp_databricks import JobRunState  # noqa: F811
+            _mod = _import_flexible(
+                "mcp_databricks", "barrot_agent.orchestration.mcp_databricks"
+            )
+            JobRunState = _mod.JobRunState
 
             yield OrchestratorEvent(
                 step=OrchestratorStep.DATABRICKS_SUBMIT,
@@ -386,7 +421,11 @@ class MCPOrchestrator:
 
             # Build metadata payload
             try:
-                from stupid_sindy_series_generator import get_episode as _get_ep
+                _mod = _import_flexible(
+                    "stupid_sindy_series_generator",
+                    "barrot_agent.tools.stupid_sindy_series_generator",
+                )
+                _get_ep = _mod.get_episode
 
                 ep_meta = _get_ep(episode_number)
                 metadata: Dict[str, Any] = {
@@ -483,7 +522,11 @@ class MCPOrchestrator:
     def _local_render(self, episode_number: int) -> Optional[str]:
         """Run the local SindyVideoPipeline and return the video path, or None."""
         try:
-            from sindy_video_pipeline import RenderStatus, SindyVideoPipeline
+            _mod = _import_flexible(
+                "sindy_video_pipeline", "barrot_agent.analysis.sindy_video_pipeline"
+            )
+            RenderStatus = _mod.RenderStatus
+            SindyVideoPipeline = _mod.SindyVideoPipeline
 
             pipeline = SindyVideoPipeline()
             if pipeline.get_state(episode_number) is None:
