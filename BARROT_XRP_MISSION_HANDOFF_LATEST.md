@@ -1,3 +1,240 @@
+# Run123 — XRP Intelligence and Prediction-Engine Audit
+
+**Observed:** 2026-11-14 08:58:52 UTC  
+**Mission priority:** XRP intelligence and measured prediction-engine mastery.  
+**Foundation:** Preserve Barrot V3 execution, orchestration, safety and verification.
+
+## Execution classification
+
+- **EXECUTED:** Fetched main and integration refs; inspected recursive trees, current PR inventory, branch ancestry, PR metadata/reviews, current handoff, prediction-engine code, ingestion workflow, security-sensitive workflows, dependencies and current Actions runs.
+- **VERIFIED:** Full repository suite, dependency audit and fail-closed gate all passed on the exact pre-handoff integration head `3c5fe9543635db0774d2f4dc4e9576797584efdc`.
+- **EXECUTED:** Captured fresh public XRP, ETF, RLUSD, Ripple, Coinbase and SBI evidence; preserved timestamp and methodology disagreements.
+- **EXECUTED:** Updated this canonical handoff, a structured Run123 evidence artifact and the Run123 nine-platform status snapshot in one expected-SHA Git commit on the existing integration branch.
+- **NOT EXECUTED:** No runtime-code changes, model training, forecast issuance, external-model dispatch, data transfer, paper trade, deployment, provider write, secret rotation, funds movement or PR closure.
+
+## Repository snapshot
+
+- Main: `fb272b40966834754ec686f9ed3ab94123f09306` — unchanged.
+- Integration before this documentation commit: `3c5fe9543635db0774d2f4dc4e9576797584efdc`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Ahead/behind: 2,377 ahead, zero behind.
+- Main tree: 1,381 entries (495 Python files, 93 test files, 79 workflows).
+- Integration tree: 2,420 entries (875 Python files, 452 test files, 80 workflows).
+- PR #1662: open draft, mergeable conflict indicator true, 1,182 changed files, 350,044 additions, 5,354 deletions, 50 workflow files and seven public web files changed.
+- PR #1662 has zero formal reviews, zero approvals and zero review threads.
+- Open PR inventory: 375 unique PRs; 361 drafts and 14 non-drafts. 367 target main; eight target other feature/research branches.
+
+The GitHub compare endpoint reports 2,377 commits ahead and zero behind. Its compare-files response is capped at 300 entries; the PR file inventory is the source for the 1,182 changed-path count. Full semantic/blob-level reconciliation is still incomplete.
+
+## Exact-head CI evidence
+
+All listed runs have `head_sha=3c5fe9543635db0774d2f4dc4e9576797584efdc`.
+
+| Check | Run | Result |
+|---|---:|---|
+| Full repository CI | 43575105747 | **success** |
+| Dependency audit, push | 43575105722 | **success** |
+| Fail-closed gate, push | 43575105750 | **success** |
+| Dependency audit, PR event | 43575110727 | **success** |
+| Fail-closed gate, PR event | 43575110750 | **success** |
+
+Full-suite log:
+- 3,635 tests passed.
+- Eight subtests passed.
+- Zero failures.
+- Inclusive coverage 62.44%; configured integration floor 53%.
+- Pytest execution 127.65 seconds.
+- Wheel build and installed Barrot V3/XRP mission checks passed.
+
+The dependency audit ran strict pip-audit against five groups: root runtime, development, Hugging Face Space, legacy and PEP 621 project dependencies. All five passed; each reported no known vulnerabilities. The PR-event CI job is intentionally skipped by the integration-branch condition; the push-event full-suite job ran and passed.
+
+The current integration head remains documentation/research-only relative to this tested code head. The subsequent Run123 handoff/artifact/map commit is a new exact head and must receive its own CI result before anyone claims that new head is fully verified.
+
+## XRP market snapshot — 2026-11-14 08:58:52 UTC
+
+### Spot and top of book
+
+OKX XRP-USDT:
+- Last 0.9833; bid 0.9833; ask 0.9834.
+- Top bid size 7,873.171053 XRP; top ask size 1,387.444179 XRP.
+- 24-hour open 1.0293; high 1.0438; low 0.9794.
+- 24-hour volume 45,113,144.496426 XRP.
+- Provider event timestamp 08:34:45.264 UTC; age 24m06.736s at the research cutoff.
+- Derived spread approximately 1.017 basis points.
+- Derived one-level bid/ask size imbalance approximately +70.04% toward the bid.
+
+The one-level imbalance is not a full-depth liquidity measure. The observation is older than the five-minute admission threshold and is excluded from model features.
+
+Kraken XRP/USD:
+- Last 0.98218; bid 0.98214; ask 0.98215.
+- No provider event timestamp was exposed.
+- Its asynchronous difference from OKX is not executable arbitrage evidence.
+
+CoinGecko page snapshot:
+- XRP 0.9834; 24-hour range 0.9799–1.04.
+- Market capitalization 62.498B USD.
+- 24-hour volume 1.953B USD.
+- Perpetual open interest 2.078B USD, without a matching provider timestamp.
+
+No synchronized multi-venue raw L2 snapshot was admitted. No current spot observation is eligible for five-minute model admission.
+
+### Derivatives disagreement
+
+- TradRadar: 1.52B USD open interest, +0.0017% OI-weighted funding per eight hours, OI down 1.19% over 24 hours, and at least 13.55M USD liquidations (11.76M long-side). Updated 01:10 UTC with a 15-minute delay; stale by nearly eight hours at the cutoff.
+- Kodexius: 597.33M USD OI, +0.0045% funding per eight hours, 1.70B USD 24-hour volume. Updated 00:59 UTC; stale by nearly eight hours.
+- CoinGecko: 2.078B USD perpetual OI, no event timestamp in the retrieved page.
+
+These are different venue universes and aggregation methods. Do not average them. The stale long-liquidation skew is a historical positioning observation, not a current directional signal.
+
+## ETF-flow reconciliation
+
+The four public trackers materially disagree because their fund universes, source files, flow definitions and settlement vintages differ.
+
+- **XRP Insights:** JSON generated 07:48:17.795 UTC; settled data through November 12; November 13 provisional. Seven tracked instruments including BITW; 236 trading days. November 9–12 settled holdings changes total -9,481,905 XRP; November 12 tracked holdings 1,185,698,783 XRP. GXRP flows are withheld because of a known capture gap; BITW rebalancing and fees can appear as flows; some older rows are reconstructed estimates.
+- **Alpha Finance:** five-fund flow-only cohort through November 13; November 13 -1.1M USD; seven sessions -19.1M USD; 30 sessions -581.7K USD; cumulative +1.71B USD. It does not publish fund holdings/AUM on this dashboard.
+- **ByKaranteli:** November 12 daily flow 0 USD; five-day net -18.0M USD; cumulative +1.79B USD; net assets 1.16B USD. Snapshot refreshed November 13 22:50 UTC.
+- **CryptoKeyhole:** updated November 14 08:57 UTC. November 13 is partial: three of four daily-reporting funds, -9,967 XRP so far, waiting for Franklin XRPZ. November 12 complete four-fund flow is +4,337,131 XRP, dominated by Franklin +4,340,454 XRP and Canary -3,322 XRP. November 6–12 complete five-session flow is -5,665,115 XRP.
+
+CryptoKeyhole also labels its latest issuer file as dated November 16 while saying it was read November 14 05:30 UTC. That future-dated file is quarantined as a source-date anomaly until verified.
+
+Do not average the tracker totals or call holdings deltas cash subscriptions. Preserve each provider's fund coverage and vintage separately.
+
+## RLUSD: issuer reserves, on-chain supply and control flags
+
+Ripple's official transparency page displays balances as of November 12:
+- Circulating RLUSD: 2,689.9M USD.
+- Reserve funds: 2,826.5M USD.
+- Derived reserve coverage: approximately 105.08%.
+- Derived excess reserves: approximately 136.6M USD.
+
+The page says monthly CPA attestations are published; the available report links extend through September 2026. The November 12 live dashboard balances are not themselves a November CPA attestation.
+
+A separate Stableradar prototype page reports direct on-chain reads at November 13 12:43 UTC:
+- Total supply 2,688,199,683.
+- XRPL issued 754,149,934.
+- Ethereum totalSupply 1,917,942,634.
+- Base totalSupply 16,106,576.
+
+Its separate DefiLlama column reports XRPL 829,348,347, Ethereum 1,856,525,007 and Base 16,106,576, for a total 2,701,980,348. Relative to the on-chain column, DefiLlama is +75,198,413 on XRPL, -61,417,627 on Ethereum and +13,780,665 in total. This is a material chain-allocation/methodology discrepancy; do not merge the series.
+
+Stableradar's XRPL account_info read reports clawback enabled, global freeze inactive, NoFreeze not set, require-authorization false, master key disabled, deposit authorization enabled, destination tag required, incoming XRP disallowed, default rippling enabled and zero transfer fee. These issuer-control flags matter to RLUSD holder/transfer risk and are not equivalent to unrestricted bearer cash.
+
+Ripple's official token-address page identifies the XRPL issuer and Ethereum/Base proxy addresses. Stableradar labels its own page a prototype with partly live and partly reference data; it is not the issuer or a CPA.
+
+## Coinbase, Circle, Ripple and SBI: new relationship distinctions
+
+### Coinbase and Ripple / RLUSD
+
+The October 28 Ripple-origin Business Wire announcement says Coinbase made RLUSD available through Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 conversion from USD and supported USD stablecoins. Ripple said it would provide liquidity on Base.
+
+Coinbase Global Exchange collateral support was described as a future follow-up at announcement time, not a completed capability. The integration broadens RLUSD distribution; it does not prove XRP is required for the trade, conversion or settlement.
+
+### Ripple Prime / RLUSD collateral
+
+Ripple's October 15 primary announcement confirms that Ripple Prime launched 24/7 institutional RWA perpetual swaps across more than 100 reference markets, with Virtu among clients already trading. Ripple Prime acts as principal; swaps reference Trade.xyz perpetuals on Hyperliquid; RLUSD can be used as collateral and exposures can be cross-margined.
+
+This is a live Ripple institutional product, but the announcement names RLUSD collateral and Hyperliquid reference contracts, not XRP settlement. No client volumes, XRP-specific demand or public-market liquidity figures were disclosed. The product is available through Ripple Prime's BVI license; wider regional availability is not established.
+
+### SBI / JPYSC / Bitbank
+
+SBI VC Trade's November 2 primary release says JPYSC lending balances exceeded ¥10B and total JPYSC handling balances exceeded ¥30B. The latter combines on-chain and lending balances. Customers lend JPYSC to SBI VC Trade under fixed-term courses (as of that release: 168 days at 3%, 84 days at 2.5%, 28 days at 2%). It is not a bank deposit, is not deposit-insured, and generally cannot be cancelled early. JPYSC remains account-limited at VCTRADE pending legal changes before public-chain circulation.
+
+SBI Holdings' October 1 release confirms full ownership of bitbank. This is exchange-group consolidation, but no post-acquisition XRP volume, custody migration or net-flow effect was verified.
+
+SBI/Startale/BlackRock's October 27 MOU concerns tokenized money-market funds and JPYSC interoperability. It is not an XRP-specific production integration. Keep JPYSC lending balances separate from XRP capital, collateral and demand.
+
+## Kamilah/Camilla Stevenson attribution audit
+
+First-party identity evidence: learn.kamilahstevenson.com identifies Dr. Kamilah Stevenson as The Wealth Doctor. This verifies the person identity, not ownership of a particular YouTube channel. No first-party website-to-YouTube-channel ownership link was found; YouTube fetches were throttled. Third-party channel directories show inconsistent subscriber/video counts and multiple similar-name channels. Do not merge them or infer ownership.
+
+Three additional public videos are attributed to Kamilah Stevenson by DailyCoin articles that embed/link the videos:
+- [If You Hold XRP, You Need to Understand 24/7 Markets (Before It’s Too Late)](https://www.youtube.com/embed/X3IkFZxhge8?feature=oembed) — DailyCoin article dated November 5.
+- [Many XRP Holders Will Sell at the BOTTOM. Here’s Who’s Still Holding](https://www.youtube.com/embed/iRrZzoM95fk?feature=oembed) — DailyCoin article dated November 13.
+- [Korea’s Banks, Insurers & Brokers Picked Ripple. XRP’s Asia Moment Is Here](https://www.youtube.com/embed/zIgfNrV-sfQ?feature=oembed) — DailyCoin article dated November 6.
+
+These are third-party attributed video candidates, not verified uploads from an authenticated official channel. Their market claims remain claims until independently sourced. The first video describes Ripple Prime's RLUSD-collateral product; it does not establish XRP settlement. The second cites exchange-balance/long-term-holder data; exchange deposits do not prove intent to sell. The third discusses Korean custody/payment agreements; those do not establish XRP use in the banks' payment flows.
+
+The spelling “Camilla” remains unresolved as a distinct person or alias.
+
+## Exact-phrase checks
+
+- “ASK Coin”: Permission's ASK token remains documented on Base/Polygon; no canonical XRPL issuer/deployment verified.
+- “actual capital”: not a standardized XRP metric. Preserve cash subscriptions, in-kind XRP, cash-funded purchases, warrants, debt, conditional facilities, secondary resales, ETF holdings changes, wallet transfers, spot buyer notional, realized capitalization, DeFi credit and stablecoin payment value as separate measures.
+- “SBIC, ChatGPT SBIC”: no primary evidence of a commercial OpenAI partnership with Japanese SBIC East/Central/West. Do not confuse those regional Japanese SME investment companies with SBI Holdings or unrelated U.S. SBA-licensed SBIC investment subsidiaries.
+
+## Prediction-engine status
+
+**Implemented on integration:**
+- 48 scheduled public-source definitions and a read-only, main-only ingestion workflow.
+- SHA-256 receipt manifests and a local cross-run receipt-chain prototype.
+- SQLite point-in-time feature-store implementation, event timeline and source-independence registry.
+- Naive/class-prior, momentum, mean-reversion and volatility baselines.
+- Purged/embargoed chronological walk-forward evaluation.
+- Probability calibration and PSI drift diagnostics.
+- Non-circular contiguous timestamp-block bootstrap.
+- Policy-v6 candidate uncertainty helper comparing a distinct candidate against all four required baselines in independent out-of-sample and later shadow windows.
+- Forecast ledger requiring source receipts, leakage checks, calibration, stable drift, independent shadow evaluation, all four baselines, 10,000 bootstrap replicates, at least 100 paired origins, at least five independent source clusters, declared cadence and Bonferroni adjustment across eight comparisons, plus independent Ed25519 evaluator attestation.
+
+**Not demonstrated:**
+1. No trained XRP-specific candidate model.
+2. The candidate-vs-four-baseline helper has no real candidate observations to evaluate; current walk-forward results are deterministic-baseline diagnostics.
+3. No independent shadow-outcome cohort.
+4. No synchronized historical spot/L2/derivatives/exchange-flow/collateral dataset sufficient for model admission.
+5. The ingestion workflow is unmerged and has not executed on main.
+6. GitHub artifacts/cache (90-day raw artifacts, seven-day per-run feature checkpoint, 90-day daily archive) are not independent WORM storage or trusted timestamp anchoring.
+7. The tracked XRP data directory has nine entries, no current SQLite feature-store database, and the latest persisted market snapshot is October 28. Two source preimages have null raw-content hashes and retrieval timestamps.
+
+**Forecast NOT_ISSUED. Accuracy NOT_EVALUATED.** No directional forecast, paper trade or real-money action occurred.
+
+## Nine-platform status
+
+Run123 map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run123.json`.
+
+- ChatGPT: current GitHub authentication verified; permissions remain overprivileged (admin, maintain, push, pull, triage).
+- Claude, Grok, Gemini and Codex: authentication/data flow unverified.
+- Copilot: no formal review/approval on #1662.
+- Hugging Face: prior BUILD_ERROR; no deployment.
+- Kaggle: untested; no submission.
+- Databricks: previous HTTP 403; no write.
+- LunaRoute: separate internal provider, authentication unverified; main sync masks missing-httpx and push failures; integration quarantines the automatic path.
+- No external-model dispatch, data transfer, independent model task exchange or red-team quorum occurred.
+
+## PR backlog, security and merge decision
+
+Current open inventory: 375 (361 drafts, 14 non-drafts; 367 base main, eight base other branches).
+
+- #1662: **blocked** — sole active consolidated integration PR; draft, zero approvals/reviews/threads.
+- #1661 and #1660: **supersession candidates** — older integration branches; preserve until successor is merged and verified on main.
+- #1643: **supersession candidate** — XRP evidence archive; verify source-specific evidence before any closure.
+- #1640: **supersession candidate** — MMI/V3 safety; unique action-specific content is represented in integration but must be checked after main merge.
+- #1320, #1318 and #1317: **supersession candidates** — paper-trader guard, strict response schema and structural-analysis content appear represented; preserve until verified on main.
+- #1642: **unique/unreviewed** — preserve for prediction-feature-snapshot semantics until complete content-level comparison.
+- #1653, #1655, #1659, #1641, #1615, #1614 and #1269: **unique/unreviewed or individually blocked**; preserve source-only work.
+- #1644–#1650 and #1254/#1255: **blocked dependency candidates** pending individual current-main validation.
+- No source PR was closed.
+
+Main branch metadata reports `protected=true`; integration reports `protected=false`. Detailed branch-protection endpoints return HTTP 403. The only visible repository ruleset, 10863829 “Fall Back”, is disabled and contains deletion/non-fast-forward rules only. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, not an independent reviewer. The GitHub connector has admin/maintain/push/pull/triage permissions.
+
+Main Barrot Sync still has an automatic push trigger, masks sync failure and masks Git push failure; its observed run failed due missing `httpx`. Integration quarantines the workflow. Main Coinbase paper trader remains manual and writes/pushes state; its persisted nonzero position has null product identity. Integration requires explicit YES, exact main SHA and product-identity preflight, uses read-only permissions and artifact-only output. Neither workflow was dispatched.
+
+Main coverage configuration has a 70% floor but excludes major packages. Integration expands the measured package scope but lowers the floor to 53%; the 62.44% result is not a like-for-like comparison. A documented coverage ratchet is required. Seven public web files are changed; automatic Pages publication authorization remains unresolved.
+
+**NO MERGE.** Passing exact-head tests do not override draft status, absent independent reviews, incomplete semantic reconciliation of 1,182 paths, overprivileged connector access, inaccessible detailed branch protection, self-owned CODEOWNERS, coverage-floor reduction and public Pages publication authorization.
+
+## Next concrete actions
+
+1. Finish the exact-head CI run for the new Run123 documentation commit.
+2. Complete semantic/blob-level reconciliation of all 1,182 PR paths, prioritizing 50 workflows and seven public web files.
+3. Resolve least-privilege permissions, independent review ownership, branch protection and Pages publication authorization.
+4. Establish independently anchored raw-source receipts and synchronized historical XRP spot/L2/derivatives/flows/collateral datasets.
+5. Reconcile the RLUSD on-chain/DefiLlama chain split and obtain the next issuer CPA attestation when published.
+6. Keep the candidate uncertainty helper fail-closed; do not train or evaluate a candidate until point-in-time data and a genuinely independent shadow cohort exist.
+7. Keep forecast issuance disabled until calibrated out-of-sample superiority is demonstrated against all four baselines and independently confirmed in shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+---
+
 # BARROT XRP MISSION HANDOFF — Run122
 Updated: 2026-11-14T08:01:34Z | Main SHA: fb272b40966834754ec686f9ed3ab94123f09306 | Integration head at audit: aedfc52223abb0cf01af14ace9eb1795de40922c
 

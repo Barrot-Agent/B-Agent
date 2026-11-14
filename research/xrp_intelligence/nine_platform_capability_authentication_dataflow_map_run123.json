@@ -1,0 +1,159 @@
+{
+  "schema_version": "barrot.nine_platform_capability_authentication_dataflow_map.v1",
+  "run_id": "Run123",
+  "observed_at_utc": "2026-11-14T08:58:52Z",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_at_audit": "3c5fe9543635db0774d2f4dc4e9576797584efdc",
+    "pr_number": 1662,
+    "pr_state": "OPEN_DRAFT",
+    "formal_reviews": 0,
+    "approvals": 0,
+    "pr_changed_files": 1182,
+    "pr_additions": 350044,
+    "pr_deletions": 5354,
+    "open_pr_count": 375,
+    "open_pr_draft_count": 361,
+    "open_pr_non_draft_count": 14,
+    "open_pr_base_main_count": 367,
+    "open_pr_base_other_count": 8,
+    "main_branch_protected_metadata": true,
+    "integration_branch_protected_metadata": false,
+    "branch_protection_detail_access": "HTTP_403",
+    "visible_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled",
+      "rules": [
+        "deletion",
+        "non_fast_forward"
+      ]
+    },
+    "codeowners": "* @Barrot-Agent",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "exact_head_ci": {
+      "head_sha": "3c5fe9543635db0774d2f4dc4e9576797584efdc",
+      "full_suite_run_id": 43575105747,
+      "full_suite_conclusion": "success",
+      "tests_passed": 3635,
+      "subtests_passed": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.44,
+      "dependency_audit_run_id": 43575105722,
+      "dependency_audit_conclusion": "success",
+      "fail_closed_run_id": 43575105750,
+      "fail_closed_conclusion": "success"
+    }
+  },
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "capabilities": [
+        "GitHub repository reads",
+        "existing integration-branch documentation/research writes",
+        "repository tree, PR and Actions inspection"
+      ],
+      "data_flow": "ChatGPT GitHub connector to Barrot-Agent/B-Agent only",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "risk": "OVERPRIVILEGED",
+      "least_privilege_target": "repository-scoped contents read/write and pull-request read/write only; remove admin and maintain"
+    },
+    {
+      "name": "Claude",
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [],
+      "data_flow": "NOT_TESTED",
+      "permissions": "UNKNOWN",
+      "fallback": "local deterministic review"
+    },
+    {
+      "name": "Grok",
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [],
+      "data_flow": "NOT_TESTED",
+      "permissions": "UNKNOWN",
+      "fallback": "local deterministic review; Grok is distinct from Groq"
+    },
+    {
+      "name": "Gemini",
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [],
+      "data_flow": "NOT_TESTED",
+      "permissions": "UNKNOWN",
+      "fallback": "local deterministic review"
+    },
+    {
+      "name": "Copilot",
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [
+        "No formal PR review/approval observed"
+      ],
+      "data_flow": "No verified review/approval data flow on PR #1662",
+      "permissions": "UNKNOWN",
+      "evidence": "PR #1662 has zero formal reviews, approvals and review threads"
+    },
+    {
+      "name": "Codex",
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [],
+      "data_flow": "NOT_TESTED",
+      "permissions": "UNKNOWN",
+      "fallback": "local deterministic code review"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication_status": "NOT_VERIFIED",
+      "capabilities": [],
+      "data_flow": "No current deployment",
+      "permissions": "UNKNOWN",
+      "last_observed_issue": "Previous BUILD_ERROR; no restart or upload"
+    },
+    {
+      "name": "Kaggle",
+      "authentication_status": "UNTESTED",
+      "capabilities": [],
+      "data_flow": "No submission or dataset transfer",
+      "permissions": "UNKNOWN"
+    },
+    {
+      "name": "Databricks",
+      "authentication_status": "FAILED_PREVIOUSLY_HTTP_403",
+      "capabilities": [],
+      "data_flow": "No successful read/write verified",
+      "permissions": "UNKNOWN",
+      "fallback": "local deterministic evaluation"
+    }
+  ],
+  "internal_providers": [
+    {
+      "name": "LunaRoute",
+      "authentication_status": "UNVERIFIED",
+      "main_status": "main Barrot Sync masks sync and push failures; no successful data flow verified",
+      "integration_status": "automatic push path quarantined; manual job disabled; no external dispatch",
+      "secrets_exposed": "No secret-prefix disclosure demonstrated by static 30-character banner cut."
+    }
+  ],
+  "coordination": {
+    "external_model_dispatch_this_run": false,
+    "external_data_transfer_this_run": false,
+    "independent_task_exchange": "NOT_EXECUTED",
+    "disagreement_resolution": "Evidence-based local review only; no external-model quorum",
+    "red_team_review": "NOT_EXECUTED",
+    "least_privilege": "NOT_SATISFIED for ChatGPT GitHub connector; all other platform permissions unknown"
+  }
+}
