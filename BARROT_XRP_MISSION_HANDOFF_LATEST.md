@@ -3324,3 +3324,34 @@ Fresh public-source relationship check:
 - Current web-indexed XRP derivatives snapshots are not contemporaneous enough for feature admission: TradRadar's page says 01:10 UTC and SwiftEdge's says 09:02 UTC, both stale at the 16:09 UTC audit cutoff. No synchronized current multi-venue spot/L2/derivatives snapshot was admitted. Forecast remains NOT_ISSUED.
 
 This supplement updates the Run132 overlap review but does not make the existing PR ready. The 1,202-file semantic review remains incomplete, and no successor branch has been created.
+
+
+### Run132 identity resolution — SB OAI Japan is distinct from SBIC and SBI Holdings
+
+A high-confidence primary-source resolution surfaced for the recurring phrase “SBIC, ChatGPT SBIC.” The likely source of acronym/name conflation is **SB OAI Japan GK**, not an entity called “ChatGPT SBIC.”
+
+Official SB OAI Japan corporate profile:
+- Legal name: SB OAI Japan GK.
+- Ownership: OpenAI 50%; C Holdings Co., Ltd. 50%.
+- C Holdings ownership: SoftBank Corp. 51%; SoftBank Group Corp. 49%.
+- Business: implementation and deployment of Crystal intelligence for Japanese enterprises.
+- CEO message identifies Daichi Nozaki; CTO message identifies Colin Jarvis.
+- Official company profile: https://www.sb-oai.co.jp/en/about/
+
+OpenAI independently lists SB OAI Japan as an official partner and describes it as a joint venture established by SoftBank Group and OpenAI: https://openai.com/business/partners/sb-oai-japan-gk/
+
+The JV's February 6, 2026 release says SB OAI Japan and SoftBank Corp. are using OpenAI's Frontier enterprise AI platform to accelerate the Crystal intelligence rollout: https://www.sb-oai.co.jp/en/news/20260206_01/
+
+Its June 16, 2026 announcement identifies an OpenAI-powered Patching as a Service cybersecurity solution delivered in Japan through SB OAI Japan: https://www.sb-oai.co.jp/en/news/20260616_01/
+
+The July 14, 2026 home-page announcement says rollout expanded to 3,000 eligible companies and the service launched at scale: https://www.sb-oai.co.jp/en/
+
+**Entity disambiguation — preserve four separate names:**
+1. **SB OAI Japan GK** — OpenAI/SoftBank joint venture, 50/50 through C Holdings. This is the verified Japan/OpenAI enterprise-AI relationship.
+2. **SoftBank Group Corp.** — parent group holding 49% of C Holdings; not SBI Holdings.
+3. **SBI Holdings, Inc.** — separate Japanese financial-services group with Ripple, SBI VC Trade, Circle SBI Japan and digital-asset relationships.
+4. **SBIC East/Central/West** — three separate regional SME investment/consultation companies in Tokyo/Nagoya/Osaka; not SB OAI Japan and not SBI Holdings.
+
+This resolves a likely phonetic/transcription collision: “SBIC” may have been used when the source meant “SB OAI.” The exact phrase “ChatGPT SBIC” is not the JV's legal name. The verified OpenAI relationship is **SB OAI Japan**, and its corporate purpose is enterprise AI/cybersecurity in Japan—not an XRP, Ripple or SBI Holdings venture. No evidence was found linking SB OAI Japan to XRP settlement or the XRP ecosystem.
+
+Sources are first-party company and OpenAI pages; no inference from similarly spelled acronyms is required. This is a verified identity correction, not evidence of an OpenAI–SBI Holdings partnership.
