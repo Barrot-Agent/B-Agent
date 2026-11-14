@@ -6,14 +6,14 @@ ownership is what causes concurrent-push collisions. Every assignment
 becomes a scoped branch + PR through barrot-gated-merge.yml.
 """
 
-import os, json, subprocess, sys, re, urllib.request, urllib.error
+import os, json, subprocess, sys, urllib.request, urllib.error  # noqa: E401
 from pathlib import Path
 from datetime import datetime, timezone
 
 # scripts/ is not a package; make the sibling import work when this file is
 # executed directly (python scripts/barrot_task_allocator.py).
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from scripts.barrot_repo_state_manifest import build_manifest
+from scripts.barrot_repo_state_manifest import build_manifest  # noqa: E402
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 OPENAI_KEY = os.environ.get("OPENAI_API_KEY") or os.environ.get("CHATGPT_TOKEN", "")

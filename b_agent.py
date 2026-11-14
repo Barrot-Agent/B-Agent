@@ -1,3 +1,21 @@
+#!/data/data/com.termux/files/usr/bin/python3
+import os
+import sys
+import json
+import logging
+import argparse
+from datetime import datetime
+from pathlib import Path
+
+from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
+from rich import print
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.prompt import Prompt
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+log = logging.getLogger("b_agent")
+console = Console()
 
 SYSTEM_PROMPT = """
 You are Barrot, an autonomous software engineering agent.
@@ -17,27 +35,6 @@ Rules:
   apply the smallest safe repair, and continue validation until the
   repository passes or no safe repair remains.
 """.strip()
-
-#!/data/data/com.termux/files/usr/bin/python3
-import os
-import sys
-import json
-import base64
-import logging
-import argparse
-from pathlib import Path
-from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
-from datetime import datetime
-
-import httpx
-from rich import print
-from rich.prompt import Prompt
-from rich.console import Console
-from rich.markdown import Markdown
-
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-log = logging.getLogger("b_agent")
-console = Console()
 
 LUNAROUTE_API_KEY = os.getenv("LUNAROUTE_API_KEY")
 GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
@@ -257,8 +254,6 @@ class GitHubRepo:
         self.client.close()
 
 
-
-
 def build_repo_context(
     repo,
     limit=12,
@@ -351,6 +346,7 @@ def build_repo_context(
             )
 
     return "".join(blocks)
+
 
 def run_repository_audit(repo, llm):
     tree = repo.get_tree()
@@ -575,13 +571,11 @@ def main():
     console.print(
         Markdown(audit)
     )
-
-
     console.print(
         "[yellow]Starting autonomous repository repair loop...[/yellow]"
     )
 
-    repair_report = run_repository_repair_loop(
+    run_repository_repair_loop(
         repo=repo,
         llm=llm,
         workspace=".",
