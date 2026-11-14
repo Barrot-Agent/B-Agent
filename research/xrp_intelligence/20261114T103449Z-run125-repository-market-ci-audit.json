@@ -1,0 +1,308 @@
+{
+  "schema_version": "barrot.xrp_run_audit.v1",
+  "run_id": "Run125",
+  "observed_at_utc": "2026-11-14T10:34:49Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and measured prediction-engine mastery",
+    "protected_foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_at_audit": "d6a4bbec8998f90c9e0aaaacbdb522036b172385",
+    "commits_ahead": 2381,
+    "commits_behind": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2428,
+    "integration_python_files": 875,
+    "integration_test_files": 461,
+    "integration_workflow_files": 88,
+    "pr_number": 1662,
+    "pr_state": "OPEN_DRAFT",
+    "mergeable": true,
+    "changed_files": 1187,
+    "additions": 352396,
+    "deletions": 5354,
+    "changed_workflow_files": 50,
+    "changed_public_web_files": 7,
+    "open_prs": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "base_main": 367,
+      "base_other": 8
+    }
+  },
+  "ci": {
+    "head_sha": "d6a4bbec8998f90c9e0aaaacbdb522036b172385",
+    "full_suite_run_id": 43585397167,
+    "full_suite_conclusion": "success",
+    "tests_passed": 3635,
+    "subtests_passed": 8,
+    "failures": 0,
+    "inclusive_coverage_percent": 62.44,
+    "inclusive_coverage_floor_percent": 62,
+    "legacy_core_coverage_percent": 76,
+    "legacy_core_floor_percent": 70,
+    "pytest_seconds": 156.99,
+    "wheel_build": "success",
+    "installed_barrot_v3_xrp_mission": "verified",
+    "setuptools_package_discovery_warnings": "non_fatal",
+    "dependency_audit_push_run_id": 43585397144,
+    "dependency_audit_push_conclusion": "success",
+    "dependency_audit_manifest_groups": [
+      "root_runtime",
+      "development",
+      "hugging_face_space",
+      "legacy",
+      "pep621"
+    ],
+    "known_vulnerabilities_reported": 0,
+    "dependency_audit_pr_run_id": 43585401792,
+    "dependency_audit_pr_conclusion": "success",
+    "fail_closed_push_run_id": 43585397136,
+    "fail_closed_push_conclusion": "success",
+    "fail_closed_pr_run_id": 43585401821,
+    "fail_closed_pr_conclusion": "success",
+    "pr_event_ci_run_id": 43585401882,
+    "pr_event_ci_conclusion": "skipped_by_integration_branch_condition",
+    "authoritative_full_suite_event": "push",
+    "full_suite_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43585397167",
+    "dependency_audit_push_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43585397144",
+    "dependency_audit_pr_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43585401792",
+    "fail_closed_push_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43585397136",
+    "fail_closed_pr_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43585401821",
+    "pr_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43585401882",
+    "setuptools_warnings": [
+      "barrot_agent.data.missions package discovery warning",
+      "data.research package discovery warning"
+    ],
+    "package_warnings_fatal": false
+  },
+  "security_and_governance": {
+    "main_branch_protected": true,
+    "integration_branch_protected": false,
+    "branch_protection_detail": "HTTP_403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege": "NOT_SATISFIED",
+    "pages_enabled": true,
+    "pages_configuration_access": "NOT_AVAILABLE_THROUGH_CURRENT_GITHUB_CONNECTION",
+    "pages_publication": "BLOCKED"
+  },
+  "workflow_review": {
+    "observed_at_utc": "2026-11-14T10:34:49Z",
+    "changed_workflow_files": 50,
+    "reviewed_workflow_diffs": 50,
+    "changed_public_web_files": 7,
+    "reviewed_public_web_diffs": 7,
+    "findings": [
+      "XRP public ingestion is main-only, read-only, scheduled hourly at minute 3 and daily at 00:15 UTC; no scheduled run can occur from the unmerged integration branch.",
+      "Ingestion artifacts use GitHub Actions artifacts/cache with 7-day per-run and 90-day daily retention; this is not independent WORM storage or trusted timestamp anchoring.",
+      "Barrot Sync, signal-ledger write-back, subagent spawn/matrix and multiple agent/asset workflows are quarantined or disabled.",
+      "Coinbase paper-trader is manual, requires YES and exact main SHA, validates persisted product identity and uploads artifacts only; it was not dispatched.",
+      "Databricks workspace import and Kaggle dataset download require separate YES inputs and exact main SHA; neither was executed.",
+      "Cloudflare deployment and secret rotation require separate YES inputs and exact main SHA; neither was executed.",
+      "Groq-backed research/design workflows are manual and require explicit public/authorized-input confirmation and exact main SHA; no external-model dispatch occurred."
+    ],
+    "status": "REVIEWED_NO_EXTERNAL_ACTION_EXECUTED"
+  },
+  "market": {
+    "cutoff_utc": "2026-11-14T10:34:49Z",
+    "okx": {
+      "last": 0.9896,
+      "bid": 0.9896,
+      "ask": 0.9897,
+      "bid_size_xrp": 1067.65198,
+      "ask_size_xrp": 4639.959612,
+      "event_timestamp_utc": "2026-11-14T10:12:45.762Z",
+      "age_seconds_at_cutoff": 1323.238,
+      "admission": "EXCLUDED_STALE",
+      "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "kraken": {
+      "last": 0.9893,
+      "bid": 0.98947,
+      "ask": 0.98948,
+      "provider_event_timestamp": null,
+      "admission": "EXCLUDED_UNTIMESTAMPED",
+      "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "coinglass": {
+      "observed_at_utc": "2026-11-14T10:08:00Z",
+      "price_usd": 0.9894,
+      "change_24h_percent": -3.75,
+      "change_7d_percent": -14.86,
+      "change_30d_percent": -25.79,
+      "spot_volume_24h_usd": 664990000,
+      "futures_volume_24h_usd": 2920000000,
+      "open_interest_usd": 2190000000,
+      "headline_oi_change_24h_percent": -3.28,
+      "narrative_oi_change_24h_percent": 0.49,
+      "funding_rate_percent": -0.0054,
+      "liquidations_24h_usd": 14150000,
+      "long_liquidation_share_percent": 91,
+      "etf_flow_2026_11_13_usd": -1090000,
+      "fear_greed_index": 12,
+      "admission": "RESEARCH_ONLY",
+      "source": "https://www.coinglass.com/currencies/XRP"
+    },
+    "alpha_etf": {
+      "through_session": "2026-11-13",
+      "funds": 5,
+      "daily_flow_usd": -1100000,
+      "seven_session_flow_usd": -19100000,
+      "thirty_session_flow_usd": -581700,
+      "cumulative_net_flow_usd": 1710000000,
+      "source": "https://alphafinance.io/etf/xrp/"
+    },
+    "source_receipts": "NOT_CAPTURED_FROM_WEB_RETRIEVAL; none of these snapshots were inserted into the feature store."
+  },
+  "prediction_engine": {
+    "implemented_on_integration": [
+      "48-source public catalog",
+      "main-only read-only scheduled ingestion workflow",
+      "content-addressed raw receipt and per-run hash-chain code",
+      "cross-run receipt-chain artifact",
+      "SQLite append-only point-in-time feature store",
+      "verified snapshot cross-store forecast-ledger checks",
+      "four deterministic baselines",
+      "purged/embargoed chronological walk-forward evaluator",
+      "calibration and PSI drift diagnostics",
+      "policy-v6 candidate uncertainty helper",
+      "fail-closed forecast ledger and Ed25519 evaluator attestation"
+    ],
+    "not_verified": [
+      "successful scheduled ingestion on main",
+      "independent WORM archive",
+      "trusted timestamp anchoring",
+      "synchronized historical XRP dataset sufficient for training",
+      "trained XRP candidate",
+      "candidate-versus-four-baseline out-of-sample evaluation",
+      "independent shadow outcome cohort"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "nine_platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "GitHub connector verified",
+      "permissions": "admin,maintain,push,pull,triage",
+      "status": "OVERPRIVILEGED"
+    },
+    {
+      "name": "Claude",
+      "authentication": "UNVERIFIED",
+      "status": "NOT_CONNECTED_OR_TESTED"
+    },
+    {
+      "name": "Grok",
+      "authentication": "UNVERIFIED",
+      "status": "NOT_CONNECTED_OR_TESTED"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "UNVERIFIED",
+      "status": "NOT_CONNECTED_OR_TESTED"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "No formal PR review or approval observed",
+      "status": "NOT_VERIFIED"
+    },
+    {
+      "name": "Codex",
+      "authentication": "UNVERIFIED",
+      "status": "NOT_CONNECTED_OR_TESTED"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "Prior BUILD_ERROR; no deployment",
+      "status": "NOT_VERIFIED"
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "Untested; no submission",
+      "status": "UNTESTED"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "Previous HTTP 403; no write",
+      "status": "BLOCKED"
+    }
+  ],
+  "pr_backlog": {
+    "integration_pr_1662": "BLOCKED_DRAFT_NO_INDEPENDENT_APPROVALS",
+    "supersession_candidates": [
+      1661,
+      1660,
+      1643,
+      1640,
+      1320,
+      1318,
+      1317
+    ],
+    "pr_1642": "CORE_FEATURE_STORE_AND_FORECAST_LEDGER_CROSS_STORE_CHECKS_SEMANTICALLY_PRESENT_IN_INTEGRATION; all seven source blobs differ; retain open pending full path review and successor merge",
+    "unique_or_unreviewed_preserve": [
+      1653,
+      1655,
+      1659,
+      1641,
+      1615,
+      1614,
+      1269
+    ],
+    "stacked_other_base_prs_preserve": [
+      1541,
+      1460,
+      1450,
+      1440,
+      1437,
+      1436,
+      1353,
+      1265
+    ],
+    "dependency_candidates_individually_blocked": [
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1255,
+      1254
+    ],
+    "source_prs_closed": []
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "source_pr_closures": [],
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_dispatch": false,
+    "external_data_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operation": false
+  }
+}
