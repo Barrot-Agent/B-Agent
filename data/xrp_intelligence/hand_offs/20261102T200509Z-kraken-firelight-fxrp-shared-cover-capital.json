@@ -1,0 +1,240 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_cross_product_shared_cover_capital_graph",
+  "created_at_utc": "2026-11-02T20:05:09Z",
+  "data_cutoff_utc": "2026-11-02T20:05:09Z",
+  "forecast_status": "NOT_ISSUED",
+  "integration": {
+    "platform": "Kraken DeFi Earn",
+    "vault": "Protected Strategies USDC (formerly Boosted USDC)",
+    "vault_deposit_asset": "USDC",
+    "curator": "Sentora",
+    "coverage_provider": "Firelight",
+    "coverage_network": "Flare",
+    "coverage_backing_asset": "FXRP",
+    "announced_date": "2026-10-15",
+    "decision_owner": "Sentora enrolled the vault; Kraken's support documentation says this was Sentora's decision, not Kraken's.",
+    "affiliate_status": "Kraken states Firelight is a third party not affiliated with Kraken.",
+    "pool_structure": "Shared Firelight pool of staked FXRP supports the full portfolio of cover programmes; pool is separate from Kraken vault assets and depositor funds.",
+    "coverage_period_days": 30,
+    "per_depositor_address_cap_usd": 100000,
+    "aggregate_vault_coverage_limit": "Not quantified in reviewed public sources; total payouts are constrained by the vault aggregate limit and available coverage capital.",
+    "covered_failure_modes": [
+      "Smart-contract exploits",
+      "Oracle failures",
+      "Governance exploits",
+      "Mechanism-driven bad debt",
+      "Mechanism-driven stablecoin depegs",
+      "Redemption failures"
+    ],
+    "excluded_risks": [
+      "Ordinary market-price movements not caused by a covered failure",
+      "User error",
+      "Insider theft",
+      "Regulatory action",
+      "Other exclusions in Firelight's standard terms"
+    ],
+    "pricing_and_revenue": "No separate depositor fee; coverage cost is paid from the vault's yield. Kraken says it receives no part of this cost.",
+    "claim_process": [
+      "ZeroShadow publishes an exploit report.",
+      "Firelight calculates the loss schedule and opens the incident onchain.",
+      "Five-firm Risk Consortium reviews the event; at least three of five must approve through an onchain multisig.",
+      "A first-loss buffer is used before staked capital is drawn pro rata.",
+      "Payout is released in stablecoins to the covered vault; Sentora distributes it to eligible depositor addresses."
+    ],
+    "risk_consortium": [
+      "Hypernative",
+      "Native",
+      "Credora",
+      "Cyfrin",
+      "GFX Labs"
+    ],
+    "security_review_claims": [
+      "OpenZeppelin audit",
+      "Coinspect audit",
+      "0xMacro audit",
+      "Immunefi competitive audit review"
+    ],
+    "firelight_shared_capital_observation": {
+      "defillama_daily_history_nov_2_tvl_usd": 64470000,
+      "defillama_faq_current_tvl_usd": 64390000,
+      "reported_30d_change_pct": -13.6,
+      "reported_all_time_high_usd": 90770000,
+      "all_time_high_date": "2026-05-15",
+      "interpretation": "Shared Firelight vault TVL across coverage programmes; not the Kraken vault's coverage limit, not total value covered, not a guaranteed payout reserve, and not a measure of Kraken vault deposits.",
+      "discrepancy": "Daily-history and FAQ values differ by $80,000; retained separately."
+    },
+    "kraken_defi_earn_scale_context": {
+      "sentora_reported_total_deposits_usd": 611000000,
+      "sentora_reported_active_depositors": 80000,
+      "date_context": "Sentora case study reports more than $600M total balance across four DeFi Earn vaults within six months of January 2026 launch; individual vault balances are dated July 2026.",
+      "source_class": "company_self_report",
+      "scope_warning": "This is aggregate DeFi Earn programme scale across four vaults, not the current Protected Strategies USDC balance and not the amount protected by Firelight."
+    },
+    "underlying_strategy_dependencies": {
+      "reported_protocols": [
+        "Aave",
+        "Euler",
+        "Morpho",
+        "Curve",
+        "Tydro"
+      ],
+      "evidence_scope": "Sentora's Kraken case study names Aave, Euler, Morpho and Curve as vetted strategy venues; Firelight's October 15 article names Tydro as an example in the Protected Strategies USDC vault.",
+      "current_allocation_status": "Exact live per-market allocations were not independently fetched at pinned block heights."
+    },
+    "xrp_link_classification": "FXRP is staked as shared cover capital backing a USDC-denominated vault. This is not a Kraken XRP-backed loan, not USDC collateralized by XRP, and not evidence of a Kraken XRP spot purchase."
+  },
+  "relationship_edges": [
+    {
+      "from": "Kraken",
+      "to": "Protected Strategies USDC",
+      "relation": "DeFi Earn distribution platform",
+      "evidence_class": "Kraken_support_primary"
+    },
+    {
+      "from": "Sentora",
+      "to": "Protected Strategies USDC",
+      "relation": "independent third-party curator; enrolled the vault in Firelight",
+      "evidence_class": "Kraken_support_primary"
+    },
+    {
+      "from": "Firelight",
+      "to": "Protected Strategies USDC",
+      "relation": "onchain coverage provider",
+      "evidence_class": "Firelight_primary"
+    },
+    {
+      "from": "Firelight",
+      "to": "Flare",
+      "relation": "coverage protocol deployed on Flare",
+      "evidence_class": "Firelight_and_Flare_primary"
+    },
+    {
+      "from": "FXRP",
+      "to": "Firelight shared vault",
+      "relation": "staked slashable cover capital",
+      "evidence_class": "Flare_and_Firelight_primary"
+    },
+    {
+      "from": "Firelight Risk Consortium",
+      "to": "coverage claims",
+      "relation": "independent event assessment and onchain approval",
+      "evidence_class": "Firelight_primary"
+    },
+    {
+      "from": "ZeroShadow",
+      "to": "coverage claims",
+      "relation": "security incident reporting",
+      "evidence_class": "Firelight_primary"
+    },
+    {
+      "from": "Sentora",
+      "to": "Kraken depositors",
+      "relation": "distributes any validated payouts to eligible addresses",
+      "evidence_class": "Kraken_support_primary"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "K1",
+      "claim": "Firelight cover may reduce defined technical tail-risk and make Kraken's USDC DeFi Earn vault more acceptable to depositors.",
+      "support": "Kraken's official support page confirms the enrollment; Firelight publishes defined terms and a five-firm claims process.",
+      "disconfirming": "No evidence isolates deposit growth caused by coverage; ordinary market-price risk, user error and regulatory action are excluded.",
+      "status": "plausible_product_mechanism"
+    },
+    {
+      "id": "K2",
+      "claim": "Kraken's USDC vault creates an additional demand/use channel for FXRP as slashable cover capital.",
+      "support": "Firelight's shared cover pool is backed by staked FXRP and now supports Kraken Protected Strategies USDC.",
+      "disconfirming": "Staking existing XRP into FXRP does not prove new native XRP purchases; the amount allocated specifically to Kraken is not disclosed.",
+      "status": "confirmed_mechanism_with_unmeasured_incremental_demand"
+    },
+    {
+      "id": "K3",
+      "claim": "A claim at any covered programme may transmit loss to the shared FXRP staker pool and affect capital backing other programmes.",
+      "support": "Firelight says one shared pool supports its full portfolio and staked positions are slashable after a confirmed cover event.",
+      "disconfirming": "Claims are limited to defined events, use a first-loss buffer, require independent consortium approval and are subject to caps.",
+      "status": "structural_cross_program_risk"
+    },
+    {
+      "id": "K4",
+      "claim": "The curator, vault infrastructure, coverage provider and user-facing platform are separated to reduce concentration of operational responsibility.",
+      "support": "Kraken, Sentora and Firelight describe separate roles; Kraken disclaims underwriting and coverage decisions.",
+      "disconfirming": "Operational separation does not eliminate correlated protocol, oracle, bridge, governance or issuer dependencies.",
+      "status": "documented_design_with_residual_dependency_risk"
+    },
+    {
+      "id": "K5",
+      "claim": "FXRP cover capital links XRP holders to USDC and other DeFi vault risk without making those vaults XRP-collateralized.",
+      "support": "The Kraken vault deposits USDC while Firelight's separate shared pool is backed by FXRP.",
+      "disconfirming": "The actual covered amount and the FXRP quantity backing the Kraken programme are not publicly quantified in the reviewed sources.",
+      "status": "confirmed_asset_role_distinction"
+    }
+  ],
+  "source_independence": {
+    "kraken_support": "Primary platform disclosure for roles, exclusions, per-address cap and fee treatment.",
+    "firelight": "Primary provider disclosure for coverage mechanics, shared pool and consortium.",
+    "flare": "Primary network announcement for FXRP backing and Firelight deployment.",
+    "sentora": "Primary curator case study; self-reported programme scale and strategy venues.",
+    "defillama": "Secondary aggregator for shared Firelight TVL; two displayed Nov 2 values differ."
+  },
+  "data_quality_flags": [
+    "Firelight TVL is shared across all cover programmes and cannot be assigned to Kraken.",
+    "TVL is not total value covered and does not establish claim capacity for a specific vault.",
+    "The per-address cap is $100,000; aggregate vault cap and actual programme coverage amount were not quantified in reviewed sources.",
+    "The Kraken USDC vault's exact live protocol allocations were not fetched at pinned block heights.",
+    "The shared pool creates cross-program exposure; a covered event elsewhere can affect FXRP stakers supporting this vault.",
+    "The cover is not insurance, a deposit guarantee or protection from ordinary market losses.",
+    "The source claims a five-firm independent consortium; its independence and operating effectiveness were not independently audited in this research.",
+    "The Sentora case study's $611M is total deposits across four vaults and a historical company-reported figure, not current Kraken Protected Strategies USDC TVL."
+  ],
+  "sources": [
+    {
+      "url": "https://support.kraken.com/ca/articles/firelight-coverage",
+      "publisher": "Kraken Support",
+      "updated_at": "2026-10-16",
+      "class": "platform_primary_disclosure"
+    },
+    {
+      "url": "https://firelight.finance/articles/firelight-brings-onchain-cover-to-kraken-defi-earn",
+      "publisher": "Firelight",
+      "published_at": "2026-10-15",
+      "class": "provider_primary_announcement"
+    },
+    {
+      "url": "https://firelight.finance/articles/how-protected-vaults-reach-users-the-kraken-defi-earn-example",
+      "publisher": "Firelight",
+      "published_at": "2026-10-22",
+      "class": "provider_primary_explainer"
+    },
+    {
+      "url": "https://flare.network/news/firelight-is-live-backed-by-staked-fxrp-on-flare",
+      "publisher": "Flare",
+      "published_at": "2026-10-06",
+      "class": "network_primary_announcement"
+    },
+    {
+      "url": "https://sentora.com/case-studies/kraken-defi-earn-vaults-curated-by-sentora-hit-500m-deposits-milestone-in-under-6-months",
+      "publisher": "Sentora",
+      "class": "curator_company_self_report"
+    },
+    {
+      "url": "https://defillama.com/protocol/firelight",
+      "publisher": "DefiLlama",
+      "captured_at_utc": "2026-11-02T20:05:09Z",
+      "class": "secondary_aggregator"
+    }
+  ],
+  "forecast_policy": {
+    "status": "NOT_ISSUED",
+    "reason": "The integration is confirmed, but no validated time-series exists for programme-specific coverage amount, FXRP units, premiums, claims, slashing or deposit response.",
+    "next_actions": [
+      "Read Firelight Cover Registry at pinned Flare block heights and record programme-specific capacity, rates and terms for Kraken.",
+      "Track FXRP units staked, unstaked, slashed and redeemed, not only USD TVL.",
+      "Map every covered vault to the shared pool to quantify cross-program claim exposure.",
+      "Fetch Kraken Protected Strategies USDC live allocations and underlying protocol positions at pinned Ethereum/Ink heights.",
+      "Record cover token terms and monthly epoch resets.",
+      "Measure whether cover availability changes deposits, net flows or net yield after coverage cost; use event-study controls and avoid attributing all growth to cover."
+    ]
+  }
+}
