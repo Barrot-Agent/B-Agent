@@ -1187,3 +1187,65 @@ Current head remains documentation-only; no runtime code changed.
 
 Primary sources: [SBI JPYSC balances](https://www.sbigroup.co.jp/news/2026/1102_16704.html), [SBI two-million accounts](https://www.sbigroup.co.jp/news/2026/0707_16468.html), [SBI RLUSD listing and Ethereum-only network restriction](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html), [SBI/Visa crypto card](https://www.visa.co.jp/about-visa/newsroom/press-releases/nr-jp-260501.html), [SBI Ripple Asia profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html), [tokenized-deposit concept study](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html), [Japan-Korea research](https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html), [Tobu Top Tours MOU](https://www.sbigroup.co.jp/news/2025/0930_15782.html), [SBI/Circle JV presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf), [SBI Circle Arc presale](https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf).
 
+
+
+---
+
+## Run118B — SBI Bitbank acquisition and Japanese XRP market evidence (2026-11-14)
+
+### SBI now owns Bitbank
+
+SBI Holdings' October 1, 2026 completion release confirms Bitbank became a **100%-owned subsidiary**. The June 25 transaction announcement reported total consideration of ¥46.7B, structured through an existing-share purchase and new-share subscription followed by Bitbank share buybacks. This is corporate acquisition capital, not an XRP purchase.
+
+The April 30 pre-close reference combined scale was 2.92M accounts and ¥1.1T assets for SBI VC Trade and Bitbank. Do not treat those as current post-close figures. The separate July 6 two-million registered-account figure covers SBI VC Trade and BITPOINT together, not Bitbank; it is not active users or XRP holders. These populations and dates must not be added.
+
+XRP Insights' November 13 08:01 UTC attributed wallet snapshot lists:
+- Bitbank: 577.7M XRP; same-wallet change +3.5M over seven days and -676K over 30 days.
+- SBI VC Trade: 56.0M XRP; same-wallet change -453K over seven days and -1.2M over 30 days.
+- Derived combined attributed exchange-wallet footprint: 633.7M XRP, about 2.85% of XRP Insights' 22.26B tracked exchange-wallet total.
+
+These are exchange-controlled/omnibus wallet balances that may include customer and cold storage. They are not SBI corporate XRP holdings, not customer-level ownership and not immediately tradable float. The 46.7B yen acquisition price is not XRP capital.
+
+### Official Japanese XRP spot-market volume
+
+JVCEA's official September 2026 top-spot-asset PDF reports:
+- XRP volume: **¥132.771B** and 592.283M XRP units.
+- Total reported domestic spot volume: ¥868.339B.
+- XRP share: 15.29%.
+- August 2026 XRP volume: ¥102.665B and 490.234M XRP units, 13.43% of ¥764.353B total spot volume.
+- September versus August: XRP value +29.32%, XRP units +20.82%, total spot market +13.60%.
+
+These are JVCEA-member aggregate statistics, not Bitbank-specific volumes. The notes say routed user trades are included and individual assets are separately listed when at least three members handle them. September data predates Bitbank's October 1 acquisition, so it cannot establish the acquisition's impact. October/November post-acquisition venue-level data remains a priority.
+
+### Bitbank ingestion is already implemented — do not create duplicate work
+
+The existing integration already includes four Bitbank source IDs: `bitbank_spot_circuit_break`, `bitbank_spot_transactions`, `bitbank_spot_ticker`, and `bitbank_spot_depth`. The parser:
+- Requires ticker/depth freshness within 300 seconds.
+- Requires circuit-break mode `NONE` with a synchronized circuit-break timestamp within 60 seconds.
+- Rejects crossed/locked quotes.
+- Calculates 10/50/100-basis-point depth in JPY; no USD conversion is assumed.
+- Retains sequence IDs in raw receipts without claiming sequence continuity.
+- Keeps the latest 60-trade sample research-only and not model-eligible.
+
+The source adapter and tests are present on integration. The main-only scheduled ingestion workflow has not executed on main because it remains unmerged. Fuelmaps' current six-venue snapshot excludes Bitbank, so this existing adapter fills an important Japanese venue gap once the workflow is approved and merged. No new PR is needed.
+
+### Strategic interpretation and counter-hypotheses
+
+The Bitbank acquisition, SBI VC Trade/Bitbank exchange-wallet footprint and JVCEA's high Japanese XRP spot share make SBI-controlled Japanese exchange infrastructure materially relevant to XRP distribution and liquidity.
+
+Counter-hypotheses remain:
+1. Acquisition consolidates corporate ownership but may only migrate existing users and volume between brands.
+2. Exchange wallets are predominantly custody/omnibus balances, not SBI proprietary accumulation.
+3. September's high XRP volume predates the acquisition; post-close market-share and order-book evidence is not yet available.
+4. SBI's JPYSC and Ethereum-only RLUSD distribution are separate stablecoin rails, not XRP demand.
+
+Required next evidence: Bitbank and SBI VC Trade venue-specific XRP/JPY trades, ticker, full depth and circuit-break state; synchronized post-acquisition order-book history; JVCEA October/November reports; and issuer/venue wallet flows. Keep JPY and USD/USDT instruments separate until a timestamped FX conversion is available.
+
+Primary sources: [SBI Bitbank acquisition completion](https://www.sbigroup.co.jp/news/2026/1001_16640.html), [acquisition terms](https://www.sbigroup.co.jp/news/2026/0625_16429.html), [JVCEA September 2026 XRP volume](https://jvcea.or.jp/cms2026/wp-content/uploads/2026/10/202609-KOUKAI-02-FINAL.pdf), [JVCEA August 2026 XRP volume](https://jvcea.or.jp/cms2026/wp-content/uploads/2026/09/202608-KOUKAI-02-FINAL.pdf), [Bitbank public API documentation](https://github.com/bitbankinc/bitbank-api-docs).
+
+### Latest exact-head CI
+
+The preceding documentation-only head `e3e8ed0` passed: 3,631 tests, eight subtests, zero failures, 62.42% inclusive coverage, 93.33 seconds; 76% legacy core coverage; wheel and installed mission verification passed. Five dependency groups and push/PR fail-closed gates passed. PR CI was skipped by its explicit integration-branch condition.
+
+Evidence: [full suite 43565866729](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866729), [dependency push 43565866713](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866713), [dependency PR 43565871843](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871843), [fail-closed push 43565866699](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866699), [fail-closed PR 43565871841](https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871841).
+

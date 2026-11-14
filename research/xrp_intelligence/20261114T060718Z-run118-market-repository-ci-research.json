@@ -34,7 +34,7 @@
       "title": "Barrot V3 + XRP Intelligence — current-main consolidated successor",
       "state": "open",
       "draft": true,
-      "head_sha": "01de25b68e457dda89badb9f2e9c1a7413635d1f",
+      "head_sha": "e3e8ed021da57aebe361790711b7a3b0d99e7d21",
       "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
       "changed_files": 1175,
       "additions": 345570,
@@ -138,7 +138,7 @@
       "automatic_main_push_deployment": true,
       "authorization_for_7_changed_public_files": "UNRESOLVED"
     },
-    "current_head_after_run118": "01de25b68e457dda89badb9f2e9c1a7413635d1f"
+    "current_head_after_run118": "e3e8ed021da57aebe361790711b7a3b0d99e7d21"
   },
   "ci": {
     "exact_head_sha": "3c533574b73943cfe4a21b06b64af61b6e06c3a5",
@@ -240,53 +240,53 @@
       "decision": "Expanded package scope is present, but 53% inclusive floor needs a documented ratchet; legacy 70% floor excludes major packages. Coverage policy remains a merge blocker."
     },
     "current_head_verification": {
-      "head_sha": "01de25b68e457dda89badb9f2e9c1a7413635d1f",
+      "head_sha": "e3e8ed021da57aebe361790711b7a3b0d99e7d21",
       "full_suite": {
-        "run_id": 43565549709,
+        "run_id": 43565866729,
         "event": "push",
         "conclusion": "success",
         "tests_passed": 3631,
         "subtests_passed": 8,
         "failures": 0,
         "inclusive_coverage_percent": 62.42,
-        "duration_seconds": 60.25,
+        "duration_seconds": 93.33,
         "legacy_core_coverage_percent": 76,
         "wheel_build": "passed",
         "packaged_primary_mission": "passed",
         "installed_barrot_v3_and_xrp_mission": "passed",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549709"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866729"
       },
       "dependency_audit_push": {
-        "run_id": 43565549701,
+        "run_id": 43565866713,
         "conclusion": "success",
         "manifest_groups_passed": 5,
         "known_vulnerabilities_reported": 0,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549701"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866713"
       },
       "dependency_audit_pull_request": {
-        "run_id": 43565555309,
+        "run_id": 43565871843,
         "conclusion": "success",
         "manifest_groups_passed": 5,
         "known_vulnerabilities_reported": 0,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555309"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871843"
       },
       "fail_closed_push": {
-        "run_id": 43565549721,
+        "run_id": 43565866699,
         "conclusion": "success",
         "merge_enabled": false,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565549721"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565866699"
       },
       "fail_closed_pull_request": {
-        "run_id": 43565555283,
+        "run_id": 43565871841,
         "conclusion": "success",
         "merge_enabled": false,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555283"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871841"
       },
       "pull_request_ci": {
-        "run_id": 43565555577,
+        "run_id": 43565871973,
         "conclusion": "skipped",
         "reason": "integration branch condition",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565555577"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43565871973"
       }
     }
   },
@@ -333,7 +333,32 @@
     "forecast": "NOT_ISSUED",
     "accuracy": "NOT_EVALUATED",
     "no_paper_trade": true,
-    "no_real_money": true
+    "no_real_money": true,
+    "bitbank_adapter": {
+      "status": "IMPLEMENTED_AND_TESTED_ON_INTEGRATION; NOT_EXECUTED_ON_MAIN",
+      "source_ids": [
+        "bitbank_spot_circuit_break",
+        "bitbank_spot_transactions",
+        "bitbank_spot_ticker",
+        "bitbank_spot_depth"
+      ],
+      "endpoints": [
+        "https://public.bitbank.cc/xrp_jpy/circuit_break_info",
+        "https://public.bitbank.cc/xrp_jpy/transactions",
+        "https://public.bitbank.cc/xrp_jpy/ticker",
+        "https://public.bitbank.cc/xrp_jpy/depth"
+      ],
+      "controls": [
+        "ticker/depth freshness limits 300 seconds",
+        "ticker and depth require synchronized circuit-break state within 60 seconds and continuous mode NONE",
+        "crossed/locked quotes are rejected",
+        "depth features are JPY-denominated at 10/50/100 basis-point bands",
+        "provider sequence IDs are retained in raw receipts but no sequence continuity is claimed",
+        "latest 60-trade sample is research-only and model_eligible=false"
+      ],
+      "schedule": "included in main-only hourly/daily public ingestion workflow; workflow is not on main and has not run on main",
+      "market_coverage_gap": "Fuelmaps six-venue snapshot excludes Bitbank; the existing adapter is the intended primary source for this SBI-controlled XRP/JPY venue"
+    }
   },
   "market": {
     "spot": {
@@ -597,16 +622,11 @@
       "sbi_vc_trade_wallet_30d_change_xrp": -1200000,
       "caveat": "labeled exchange wallet balance, not SBI-owned XRP, customer holdings or remittance volume",
       "multi_rail": "SBI also has JPYSC/Startale, Solana and Ondo initiatives; do not treat as exclusive XRP demand",
-      "sbi_vc_trade_registered_accounts": {
-        "count": 2000000,
-        "as_of": "2026-07-06",
-        "interpretation": "registered service accounts, not active users or XRP holders"
-      },
       "jpy_sc": {
         "service_handled_balance_jpy": 30000000000,
         "lending_balance_jpy": 10000000000,
         "as_of": "2026-11-02",
-        "interpretation": "SBI VC Trade reported JPYSC handling balance above ¥30B and lending balance above ¥10B; non-XRP yen stablecoin rail, not XRP flow or circulating supply"
+        "interpretation": "SBI VC Trade reported handling balance above ¥30B and lending balance above ¥10B; separate JPY stablecoin rail, not XRP volume or circulating supply"
       },
       "rlusd_vctrade": {
         "launch_date": "2026-06-24",
@@ -639,6 +659,35 @@
         "feb26_2026": "concept study for tokenized deposits and deposit-type digital money using MoneyTap and a token-issuance platform, with XRPL considered; not a production payment-volume disclosure",
         "feb24_2026": "SBI Ripple Asia and DSRV began Japan-Korea remittance/payment blockchain research; release says study is not a specific service-development or commercialization commitment",
         "sep30_2025": "Tobu Top Tours MOU for partner-specific tokens/NFT-linked payment platform targeting first-half 2026 launch; current launch not verified"
+      },
+      "sbi_vc_trade_and_bitpoint_registered_accounts": {
+        "count": 2000000,
+        "as_of": "2026-07-06",
+        "scope": "SBI VC Trade and BITPOINT services combined after their April 1, 2026 integration",
+        "interpretation": "registered service accounts, not active users, XRP holders or the Bitbank customer count"
+      },
+      "bitbank_acquisition": {
+        "completion_date": "2026-10-01",
+        "ownership": "100% subsidiary of SBI Holdings",
+        "reported_transaction_consideration_jpy": 46700000000,
+        "structure": "SBI subsidiary SBICAH acquired existing shares and subscribed to new shares; Bitbank subsequently bought back shares held by MIXI and Ceres; completion release reports full subsidiary status",
+        "pre_close_combined_scale_as_of": "2026-04-30",
+        "pre_close_combined_accounts": 2920000,
+        "pre_close_combined_assets_jpy": 1100000000000,
+        "scale_caveat": "April figures are a pre-close simple combined reference for SBI VC Trade and Bitbank, not current post-acquisition assets or accounts; do not add to the later two-million VCTRADE/BITPOINT figure",
+        "xrp_strategy": "The acquisition brings a major Japanese XRP trading venue under SBI group control, but the consideration is corporate equity/transaction capital, not XRP purchase capital. No post-close Bitbank XRP market-share or incremental XRP demand is disclosed."
+      },
+      "exchange_wallets": {
+        "xrp_insights_snapshot": "2026-11-13T08:01:00Z",
+        "bitbank_xrp": 577700000,
+        "bitbank_7d_same_wallet_change_xrp": 3500000,
+        "bitbank_30d_same_wallet_change_xrp": -676000,
+        "sbi_vc_trade_xrp": 56000000,
+        "sbi_vc_trade_7d_same_wallet_change_xrp": -453000,
+        "sbi_vc_trade_30d_same_wallet_change_xrp": -1200000,
+        "derived_combined_exchange_wallet_balance_xrp": 633700000,
+        "share_of_xrp_insights_tracked_exchange_wallets_percent": 2.846,
+        "interpretation": "attributed exchange-controlled/omnibus wallets across two SBI-group exchanges; not SBI corporate XRP holdings, not customer-level ownership and not immediately tradable float"
       }
     },
     "sbic": {
@@ -719,6 +768,34 @@
       ],
       "attribution_status": "person-level identity cross-match is strong; direct first-party ownership link for the YouTube channel remains unverified. Inventory is platform-attributed, not a verified ownership claim.",
       "external_appearance": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek is a TEDx channel upload, not counted as her own-channel upload"
+    },
+    "sbi_jvcea_japan_spot_market": {
+      "source": "Japan Virtual and Crypto Assets Exchange Association (JVCEA) official monthly top-spot-asset PDFs",
+      "september_2026": {
+        "xrp_volume_jpy": 132771000000,
+        "xrp_units": 592283034,
+        "total_domestic_spot_volume_jpy": 868339000000,
+        "xrp_share_percent": 15.29,
+        "publication_update": "2026-11-02"
+      },
+      "august_2026": {
+        "xrp_volume_jpy": 102665000000,
+        "xrp_units": 490234421,
+        "total_domestic_spot_volume_jpy": 764353000000,
+        "xrp_share_percent": 13.43,
+        "publication_update": "2026-10-02"
+      },
+      "month_over_month": {
+        "xrp_value_change_percent": 29.32,
+        "xrp_units_change_percent": 20.82,
+        "total_spot_market_change_percent": 13.6
+      },
+      "limitations": [
+        "aggregate across JVCEA member companies, not Bitbank-specific",
+        "includes user trades routed to other exchange service providers",
+        "only individual assets handled by at least three members are separately listed",
+        "September data predates Bitbank acquisition completion on October 1, so it cannot measure acquisition impact"
+      ]
     }
   },
   "nine_platforms": {
@@ -1016,6 +1093,41 @@
       "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
       "published_at": "2026-10-27",
       "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_bitbank_completion",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/2026/1001_16640.html",
+      "published_at": "2026-10-01",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "sbi_bitbank_acquisition_terms",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/2026/0625_16429.html",
+      "published_at": "2026-06-25",
+      "independence_group": "corporate_primary"
+    },
+    {
+      "id": "jvcea_xrp_spot_september_2026",
+      "publisher": "JVCEA",
+      "url": "https://jvcea.or.jp/cms2026/wp-content/uploads/2026/10/202609-KOUKAI-02-FINAL.pdf",
+      "published_at": "2026-11-02",
+      "independence_group": "regulatory_association_primary"
+    },
+    {
+      "id": "jvcea_xrp_spot_august_2026",
+      "publisher": "JVCEA",
+      "url": "https://jvcea.or.jp/cms2026/wp-content/uploads/2026/09/202608-KOUKAI-02-FINAL.pdf",
+      "published_at": "2026-10-02",
+      "independence_group": "regulatory_association_primary"
+    },
+    {
+      "id": "bitbank_public_api_docs",
+      "publisher": "Bitbank",
+      "url": "https://github.com/bitbankinc/bitbank-api-docs",
+      "observed_at": "2026-11-14",
+      "independence_group": "exchange_primary"
     }
   ]
 }
