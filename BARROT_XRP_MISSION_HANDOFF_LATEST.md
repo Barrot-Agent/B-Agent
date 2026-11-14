@@ -4102,3 +4102,74 @@ Main's Pages build fails Liquid parsing at `GLOBAL_STATE_MANIFEST.md:6456`; inte
 ### Forecast and merge boundary
 
 **Forecast NOT_ISSUED. Accuracy NOT_EVALUATED. NO MERGE.** PR #1662 remains draft with zero independent approvals. No source PR was closed, and no deployment, external-model transfer, Kaggle submission, Databricks write, paper trade, funds transfer, force-push or history rewrite occurred.
+
+
+## Run139 — 2026-11-14 21:03 UTC
+
+**Mission priority remains XRP intelligence and prediction-engine mastery. Barrot V3 remains the protected execution, orchestration, safety, authorization and verification foundation.**
+
+### Repository and exact-head verification
+
+- Main: `f1708870fcde80a01d14509609affc558e5cc065`.
+- Existing integration branch: `integration/xrp-v3-unified-main-20261112`, head `32333a4433281a4c574fac52dc57c9a7e70d74cf`; 2,421 commits ahead, zero behind.
+- Main tree: 1,349 entries, 509 Python files, 96 test files, 79 workflows. Integration: 2,418 entries, 891 Python files, 457 test files, 80 workflows and 696 XRP research files.
+- PR #1662 is the sole PR on the current integration branch. It is open, draft and mergeable by GitHub's conflict indicator; 1,216 changed paths, 364,734 additions, 5,797 deletions, 48 workflows and seven public-web files. Zero formal reviews, approvals or review threads.
+- Open inventory: 373 PRs, 361 drafts and 12 non-drafts. #1661, #1660, #1640 and older XRP integration/research PRs remain overlap or supersession candidates. No source PR was closed.
+
+The exact integration head `32333a4` passed the full repository suite: **3,717 passed, 19 subtests passed, zero failures, 63.28% inclusive coverage and 77% legacy core coverage**. Wheel build and installed Barrot V3/XRP mission verification passed. Six dependency manifest groups passed with no known vulnerabilities reported. Push and PR fail-closed gates passed. Exact evidence: [full suite](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639966602), [dependency audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639966560), [fail-closed gate](https://github.com/Barrot-Agent/B-Agent/actions/runs/43639966637). PR-event CI validated Pages but skipped Tests and Full repository suite under the integration-branch guard; the full-suite evidence is the exact-head push run.
+
+Main's own full-suite run on `f170887` passed 810 tests and eight subtests. The new Run139 evidence commit will trigger its own CI; the parent-head result above must not be represented as verification of the new documentation commit.
+
+### New main-branch data-flow risk: Ping-Pong refinement
+
+Main's new commit `f170887` introduces `barrot_agent/refinement`. On main, `refine_data()` defaults to `make_model_refiners()`; that factory constructs live LunaRoute adapters whenever `LUNAROUTE_API_KEY` is present. The main implementation has no explicit caller opt-in, public-data classification, immutable-data denylist or secret-pattern gate on this default path. Because main's standing `BARROT_SYNC.md` rule directs new data pipelines through `refine_data`, unclassified data could be sent to the LunaRoute gateway if the key is present. This is an authorization/data-flow risk; no transfer occurred in this run.
+
+The existing integration branch already contains the required correction: deterministic offline refinement by default; explicit `allow_external=True`; `BARROT_ALLOW_EXTERNAL_REFINEMENT=1`; allowlisted public-derived classifications only; immutable raw-source/receipt/feature-store/event/forecast/market/credential/private classes rejected; secret-like payload detection; payloads above 24,000 characters rejected without truncation. Regression tests verify default-offline behavior even when a key and environment flag exist, immutable-class rejection and explicit opt-in. Preserve this integration hardening; do not merge main's unguarded default. The three-model LunaRoute pool is not nine-platform coordination, and no provider authentication or data transfer was tested here.
+
+### Main workflow hazards and correction
+
+- Main Barrot Sync run [43635426753](https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426753) reports success despite `b_agent.py --sync` failing with `ModuleNotFoundError: No module named 'rich'`; the workflow masks the sync error and masks `git push` failure with `|| true`. The log prints only the fixed 30-character prefix; this run did **not** observe secret bytes in the log, so the earlier claim of a confirmed key-prefix disclosure is not supported. Integration keeps the workflow quarantined with no permissions.
+- Main's manual Coinbase paper-trader workflow hardcodes `BTC-USD`, while persisted state has `position_size=0.012445158497236623`, `position_product=null`, `avg_entry_price=80436.84` and `trade_count=126`. No dispatch or paper trade occurred. Integration requires explicit confirmation, exact-main-SHA and product-identity preflight.
+- `.github/workflows/xrp-public-ingestion.yml` exists only on integration; it is absent from main. It is scheduled but main-only, so it has not executed on main. Its 90-day GitHub artifacts/cache are not independent WORM storage.
+- Main Pages build [43635426265](https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426265) failed; PR Pages validation passed. No deployment occurred.
+
+Main is reported protected; integration is not. Detailed branch-protection endpoints return HTTP 403. Fallback ruleset 10863829 is disabled. Repository permissions exposed to the current GitHub integration are admin, maintain, push, pull and triage. Independent review and least privilege remain blockers.
+
+### XRP market and derivatives — research-only, not model admitted
+
+At the 21:03:10 UTC cutoff, OKX's provider timestamp was 20:55:58.271 UTC: XRP-USDT $0.9254, bid/ask $0.9253/$0.9254, top sizes 1,910.3/1,463.76 XRP, 24-hour open $1.0243, low $0.9149 and volume 65.69M XRP. The observation was 432 seconds old, beyond the 300-second gate. Kraken showed XRP/USD $0.9402 without an event timestamp; Kraken USDT/USD showed $0.99916 without an event timestamp. The apparent normalized cross-venue gap is about 1.68%, but the clocks are unsynchronized and is not arbitrage evidence. No raw-byte receipt or synchronized L2 was captured; no feature admission occurred.
+
+ETF sources disagree: XRP Insights reports a provisional +3.40M XRP on Nov 13 but -6.08M XRP for Nov 9–13 across six spot funds plus BITW, with GXRP excluded from flow due a data gap. Alpha Finance and ByKaranteli report -$1.1M daily and about -$19.1M over five sessions; CoinGlass reports -$1.1M while covering only three of five funds. Fund universes, BITW treatment, issuer gaps and provisional settlement differ. These aggregators reuse overlapping issuer data; do not average them or count them as independent source clusters.
+
+Derivatives providers show approximately $1.09B OI (Liqwall, 10:02 UTC), $2.17B (Alpha Finance, 14:50 UTC) and $1.40B (TradRadar, 16:45 UTC). Their venue coverage and windows differ; the observations are stale at cutoff. Reported liquidations are long-dominated, but do not establish unhedged net exposure. Alpha's heatmap levels are modelled from OI, not resting orders. No averaging or directional inference.
+
+### XRPL governance
+
+An independent node dashboard's latest roll call was 20:35 UTC: 35 validators heard; 23 yes for SingleAssetVault and 22 each for LendingProtocol/LendingProtocolV1_1; 29 required; zero amendments in the 14-day countdown. The dashboard was fetched 20:44 UTC and reported a 468.9-second cache, plus a header/validated-ledger mismatch. Treat counts as stale/provisional. Official XRPL documentation confirms the rule: more than 80% support for 14 consecutive days, with the clock restarting if support falls to 80% or less. Native XRPL lending remains inactive; do not count it as live collateral demand.
+
+### SBIC identity and exact phrases
+
+Primary corporate profiles resolve the three regional SBICs:
+- **SBIC East:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; established Nov 15, 1963; capital ¥6.6734B; East Japan territory. [Official profile](https://www.sbic.co.jp/company/profile/)
+- **SBIC Central:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established Nov 18, 1963; capital ¥4.3008B; Aichi, Gifu, Mie, Toyama and Ishikawa. [Official profile](https://www.sbic-cj.co.jp/company/about/)
+- **SBIC West:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established Nov 20, 1963; capital ¥6.822B; 24 prefectures west of Fukui, Shiga, Nara and Wakayama. [Official profile](https://www.sbic-wj.co.jp/profiles/profile/)
+
+These are sibling regional policy-investment companies, not SBI Holdings subsidiaries. A primary SBIC East page documents a June 12–13, 2025 AI/ML training course for investee companies that included ChatGPT and Copilot; this is a plausible explanation for the phrase co-occurrence, not evidence of an OpenAI partnership. [Course page](https://www.sbic.co.jp/training/20250612co/). SB OAI Japan GK remains a separate 50/50 OpenAI/SoftBank-controlled JV, not SBI Holdings and not an SBIC.
+
+One identifiable ASK is Permission Coin, listed as an ASK utility token on Base and Polygon; no canonical XRPL ASK issuer address was verified. “Actual capital” remains non-standard and must be decomposed into cash received, XRP in-kind, purchases, debt, warrants, facilities and secondary resales. A new `@KamilahStevensonXrpStocks` channel candidate surfaced, but no first-party link to Dr. Kamilah Stevenson was verified; no videos were added to the verified own-channel inventory.
+
+### Nine-platform and prediction status
+
+ChatGPT GitHub authentication worked, but permissions are overprivileged. Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal approval; Hugging Face has no verified deployment; Kaggle is untested; Databricks has a prior HTTP 403 and no write. LunaRoute is separate from the nine; its current auth/data flow was not tested. The large current map blob was preserved; the file reader returned empty content for its non-empty blob SHA, so it was not overwritten.
+
+Prediction code on integration includes public-source ingestion, SHA-256 receipt manifests, cross-run receipt-chain prototype, SQLite point-in-time feature store, event timelines/counter-hypotheses, four baselines, chronological walk-forward evaluation, calibration, PSI drift monitoring and a fail-closed forecast ledger with Ed25519 evaluator attestation. It is not running on main. There is no trained XRP-specific candidate, no demonstrated superiority against all four baselines, no independent shadow cohort and no independent WORM archive/trusted timestamp anchor.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast, paper trade or real-money action.
+
+### Merge decision and next actions
+
+**NO MERGE.** PR #1662 remains draft with zero independent approvals. The 1,216-path semantic review is incomplete; 48 workflows and seven public-web files require focused review. Least privilege, independent CODEOWNERS/review, branch protection, required-check visibility, main Pages failure and main automation hazards remain blockers. No source PR was closed.
+
+Next: finish semantic review; preserve the integration PingPong opt-in gates; fix main Barrot Sync false-green behavior; keep the ambiguous paper-trader state quarantined; resolve governance; only then merge the read-only XRP ingestion workflow and verify real scheduled main runs. Build a trained XRP candidate only after synchronized historical data supports leakage-safe evaluation and independent shadow outcomes.
+
+No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
