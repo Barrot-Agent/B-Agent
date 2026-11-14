@@ -1313,3 +1313,128 @@ The preceding documentation-only head `084e173c` passed the exact full suite:
 
 Evidence: [full suite 43566261057](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261057), [dependency push 43566261015](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261015), [dependency PR 43566266010](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266010), [fail-closed push 43566261086](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566261086), [fail-closed PR 43566266055](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566266055).
 
+
+
+---
+
+## Run120 — exact-head integration verification, current XRP spot and cbXRP/Morpho reconciliation (2026-11-14 06:35 UTC)
+
+### Current repository and exact-head CI
+
+- Main remains `fb272b40966834754ec686f9ed3ab94123f09306`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Code-bearing integration head at the start of this run: `9d2e92ae174b143628900ef23357acf400bce8f4`.
+- Main tree: 1,381 entries / 87 workflows. Integration tree: 2,416 entries / 88 workflows.
+- Integration ancestry: 2,361 commits ahead, zero behind.
+- PR #1662 remains open, draft, mergeable by conflict indicator, with 1,175 changed files, 346,172 additions and 5,354 deletions. It changes 50 workflows and seven public web files.
+- All 375 open PRs were retrieved across four API pages: 361 drafts and 14 non-drafts. No new branch or PR was created.
+
+**Exact-head full-suite verification on `9d2e92ae174b143628900ef23357acf400bce8f4`:**
+
+| Check | Result |
+|---|---:|
+| Full repository tests | 3,631 passed |
+| Subtests | 8 passed |
+| Failures | 0 |
+| Inclusive coverage | 62.42% |
+| Full-suite duration | 66.54 seconds |
+| Legacy core coverage | 76% |
+| Wheel build | Passed |
+| Packaged primary mission | Passed |
+| Installed Barrot V3/XRP mission | Passed |
+| Five-manifest dependency audit | Passed |
+| Known vulnerabilities reported | 0 |
+| Push fail-closed gate | Passed |
+| PR fail-closed gate | Passed |
+
+Evidence: [exact-head full CI 43566624126](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566624126), [dependency push 43566624071](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566624071), [dependency PR 43566629299](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566629299), [fail-closed push 43566624114](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566624114), [fail-closed PR 43566629223](https://github.com/Barrot-Agent/B-Agent/actions/runs/43566629223). The PR-event CI job 43566629231 is intentionally skipped by the integration-branch condition; the push-event full suite ran on the exact head.
+
+### Current XRP spot and derivatives snapshot
+
+Research cutoff: **2026-11-14 06:35:27 UTC**.
+
+**OKX XRP-USDT public ticker**, provider timestamp 06:30:55.070 UTC, age 271.93 seconds at cutoff:
+
+- Last $0.9971; bid $0.9970; ask $0.9971.
+- Top bid size 932.985 XRP; top ask size 4,623.378 XRP.
+- 24-hour open $1.0233; high $1.0438; low $0.9843.
+- 24-hour volume 42.369M XRP / 42.984M USDT.
+- Change from 24-hour open: -2.56%.
+
+This quote is within the five-minute timestamp gate, but it is only a ticker/top-of-book observation. It does not provide full L2 depth or a synchronized multi-venue executable spread.
+
+Kraken returned $0.99411 last, $0.99417 bid and $0.99419 ask, with 36.496M XRP 24-hour volume. Its returned ticker had no provider event timestamp. The approximately 30-basis-point last-price difference versus OKX is not an arbitrage signal: the quotes are asynchronous and use USD versus USDT.
+
+Binance's USD-M premium-index response at 06:14:23 UTC showed mark $0.99700555, index $0.99758869 and last funding -0.003039% per eight hours. It was 21 minutes old at the research cutoff and is not synchronized with the OKX spot observation.
+
+Secondary derivatives snapshots are older and disagree:
+- Alpha Finance 02:20 UTC: OI about $2.22B; modelled 24-hour long liquidation $13.3M and short liquidation $1.7M.
+- TradRadar 01:10 UTC: OI about $1.52B; OI-weighted funding +0.0017%/8h; at least $13.55M liquidations, $11.76M long-side; 79.4% long accounts.
+
+Do not average different provider universes or interpret modelled liquidation levels as resting order-book depth. No synchronized raw spot L2 was admitted; OKX and Kraken depth endpoints were inaccessible through this retrieval path.
+
+### ETF flows and holdings
+
+- XRP Insights: November 9–12 settled holdings changes -9,481,905 XRP; 1,185,698,783 XRP holdings at November 12; November 13 remains provisional.
+- Alpha Finance: five-fund cohort reports November 13 -$1.1M; 30-session flow -$581.7K.
+- CryptoKeyhole: latest complete day November 11; later issuer files are incomplete.
+- Corpstacking: 1,398,781,503 XRP across ten funds/ETPs as of November 13.
+
+These are different universes, settlement vintages and methods. Holdings changes are not necessarily cash subscriptions. Do not average them.
+
+### Coinbase cbXRP reserve and Morpho collateral market
+
+Coinbase's issuer proof-of-reserves page displays 154,660,521.83 native XRP reserve against 154,658,275.30 cbXRP on Base, an excess of 2,246.53 XRP and a ratio of approximately 1.0000145x. The page says it refreshed at 05:55 AM but does not state the timezone. This is issuer-published proof, not an independent CPA attestation, and it demonstrates wrapper backing/custody rather than new XRP purchases.
+
+Morpho's Base cbXRP/USDC market page currently displays:
+- $52.98M outstanding USDC loans and $18.76M total liquidity.
+- 90.47% utilization against a 90% target.
+- 62.5% liquidation LTV and 12.67% liquidation penalty.
+- Borrow rate 7.27%, lend rate 5.71%.
+- Zero displayed realized and unrealized bad debt.
+
+The page lists a batch of small liquidations at 02:29:48 UTC. Examples include 12.19 USDC repaid against 13.947 cbXRP seized and 25.258 USDC repaid against 28.898 cbXRP seized, both with zero realized bad debt. These are actual cbXRP collateral liquidations, not proof of native-XRP sales or unwraps.
+
+**Important data-quality conflict:** $52.98M loans divided by $52.98M plus $18.76M displayed liquidity implies 73.85%, not the displayed 90.47% utilization. The page's snapshot fields do not reconcile. Its oracle updatedAt/round ID was not exposed. Do not use these market fields as one synchronized model row until raw Morpho API/on-chain state, oracle timestamp and loan/liquidity accounting are aligned. A cbXRP liquidation transfers the wrapped collateral to the liquidator; subsequent unwrap or native-XRP sale requires separate transaction evidence.
+
+### Repository safety and public-signal corrections
+
+- Main `.github/workflows/barrot-sync.yml` triggers on every main push. It masks missing-`httpx` synchronization failure with `|| echo` and masks Git push failure with `|| true`. The 30-character output cut emits only the static banner; no secret characters were observed. Integration quarantines the workflow.
+- Main Coinbase paper-trader workflow sets `PRODUCT_ID=BTC-USD`, but persisted state has a nonzero 0.0124451585 position with `position_product=null`. The configured default does not prove the persisted position identity. Integration correctly rejects the null identity before running. No paper-trader workflow was dispatched.
+- Main `web/latest_signal.json` is dated October 29, confidence 0, and reports unavailable sentiment; it is stale descriptive content, not a forecast.
+- Integration `web/latest_signal.json` is `NOT_ISSUED`, but its status timestamp is November 10. Refresh it before any authorized public release. Automatic Pages publication remains a merge blocker.
+- Main `pyproject.toml` retains a 70% floor but excludes major packages including AGI, ingestion, analysis, monetization and orchestration. Integration measures `barrot_agent`, `directive_platform` and `data` inclusively at 62.42% with a 53% floor. The expanded scope is useful, but the lower floor needs a documented ratchet; coverage policy remains a merge blocker.
+- Main branch metadata says protected=true but required status-check contexts are empty. Detailed branch-protection read returns HTTP 403. Fallback ruleset 10863829 is disabled; integration is unprotected.
+- Repository connector permissions include admin, maintain, push, pull and triage; CODEOWNERS assigns all paths to the repository owner. Least privilege and independent review are not satisfied.
+
+### Prediction-engine code review
+
+The current integration contains timestamp-contiguous non-circular bootstrap sampling, four deterministic baselines, point-in-time walk-forward evaluation, calibration/drift diagnostics and a fail-closed ledger. A direct source review confirms the remaining integration gap:
+
+- Paired bootstrap defaults: 1,000 replicates, 30 origins, 95% confidence.
+- Readiness policy requires at least 10,000 replicates, 100 paired origins, five independent source clusters, declared cadence, and Bonferroni-adjusted confidence across eight comparisons (four baselines × two loss metrics; 99.375% individual confidence for a 95% familywise level).
+- Walk-forward currently evaluates four deterministic baselines and invokes the bootstrap with `naive_class_prior` as benchmark. No trained XRP candidate exists, and candidate-versus-each-of-four-baselines is not yet one policy-compliant readiness artifact.
+- Only a target with exactly one canonical publisher-independence lineage receives a source-group ID. Multi-publisher aggregate targets remain unclustered. This avoids falsely claiming independent sources, but a five-cluster single-lineage cohort has not been demonstrated.
+- Independent shadow outcomes, independent WORM storage and trusted timestamp anchoring remain absent.
+
+**Forecast NOT_ISSUED. Accuracy NOT_EVALUATED.** No directional forecast or paper trade occurred.
+
+### PR backlog and merge decision
+
+PR #1662 remains draft/open with zero formal reviews, approvals and review threads. The complete 375-PR inventory was fetched and paginated.
+
+Exact path-overlap candidates: #1661 (1,072/1,072), #1660 (972/972), #1643 (670/670), #1642 (7/7), #1640 (280/280), #1320 (5/5), #1318 (2/2), #1317 (6/6). Do not close these until a successor is merged and its contents verified on main.
+
+Preserve unique work: #1653 (six source-only paths), #1269 (eight), #1641 (three), #1614 (27), plus #1655, #1659 and #1615 pending individual review. Dependency candidates #1644–#1650 and #1254/#1255 remain individually blocked pending current-main validation. No source PR was closed.
+
+**Merge decision: NO MERGE.** Exact-head tests and fail-closed/dependency gates pass, but the PR is draft, has no approvals, and still has incomplete semantic review of 1,175 paths, overprivileged access, branch-protection visibility, disabled fallback ruleset, self-owned CODEOWNERS, coverage-ratchet and Pages-publication blockers.
+
+### Nine-platform status
+
+No new external authentication or data exchange was verified. ChatGPT GitHub access works but is overprivileged; Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal PR approval; Hugging Face previously returned BUILD_ERROR; Kaggle remains untested; Databricks previously returned HTTP 403. LunaRoute remains separate with endpoint authentication unverified.
+
+### Run120 durable artifact
+
+[Structured Run120 market, CI, collateral, prediction and security record](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261114T063527Z-run120-current-spot-cbxrp-morpho-ci-integration-audit.json).
+
+Next actions: finish semantic reconciliation; resolve least privilege, independent review, branch protection and Pages authorization; establish independent raw-source anchoring; align Morpho/cbXRP on-chain state; build policy-compliant candidate-versus-four-baseline uncertainty; and train an XRP candidate only after sufficient synchronized point-in-time data exists.
