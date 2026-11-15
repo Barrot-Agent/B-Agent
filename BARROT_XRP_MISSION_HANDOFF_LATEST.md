@@ -7725,3 +7725,116 @@ The OptimistFi page's November 14 4:57 PM ET as-of time equals 21:57 UTC. From t
 Primary SEC evidence: [Evernorth 424B3/10-Q supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm). SBI presentation: [SBI Holdings 1H FY2026 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf).
 
 This is an append-only correction. No prior source record was overwritten.
+
+
+## Run164 — 2026-11-15T14:00:43Z — Exact-head repository audit, current-map repair, XRP market/ETF reconciliation and SBIC/Kamilah verification
+
+### Mission and repository state
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety, authorization and verification foundation.
+
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before Run164: `b204df68506da9962692af99d5c78fc1979f0c78`, 2,500 commits ahead of main and zero behind.
+- PR #1662: open, draft, mergeable=true; 1,252 changed files, 349,895 additions and 6,309 deletions according to the current PR API. A prior PR-body statement of 1,249 paths is stale; use the API count of 1,252.
+- Complete recursive trees: main 1,393 entries/87 workflows; integration 2,494 entries/88 workflows.
+- Open PR inventory: 373 total, 361 drafts and 12 non-drafts.
+
+### Exact-head CI — VERIFIED on predecessor b204df
+The full repository suite completed on exact head `b204df68506da9962692af99d5c78fc1979f0c78`:
+- 3,796 passed, zero failed, one skipped, 19 subtests passed.
+- Inclusive coverage 64.02%; legacy core floor 77%.
+- Duration 176.12 seconds.
+- Wheel build and installed Barrot V3/XRP primary-mission verification passed.
+- Six-manifest push and PR dependency audits passed with zero known vulnerabilities.
+- Push and PR fail-closed gates passed.
+- PR Pages build-only validation passed. PR-event test jobs are intentionally skipped for integration branches; the push-event full suite is authoritative.
+
+Evidence:
+- Full suite: https://github.com/Barrot-Agent/B-Agent/actions/runs/43721228030
+- Push dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43721228065
+- PR dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43721232414
+- Push fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43721228035
+- PR fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43721232439
+- PR CI/Pages: https://github.com/Barrot-Agent/B-Agent/actions/runs/43721232406
+
+This result is exact-head evidence for b204df, not for the Run164 documentation/map commits. The resulting new head requires its own full-suite and gate cycle.
+
+### Main-branch health and workflow review
+- Scheduled Cross Analysis run 43721191456 succeeded.
+- Pillars Consistency Check 43716820298 failed because GitHub App ID/private key/installation ID were unavailable and the Hugging Face Space reported BUILD_ERROR.
+- Main Pages build 43650499344 failed with a Liquid syntax error at `GLOBAL_STATE_MANIFEST.md:6456`; its deploy job was skipped.
+- Main Barrot Sync run 43650499411 reported success despite `ModuleNotFoundError: rich` and `git push || true` masking push failure. Treat this as FALSE_GREEN.
+- Main CI run 43650499432 succeeded.
+
+All 48 changed workflow files were compared between main and integration at the control-plane level: triggers, permissions, secrets, external providers, repository writes, deployment paths and fail-closed gates. Sixteen additional unchanged high-risk workflows were inspected. The complete called-script semantic review remains incomplete.
+
+Integration quarantines legacy unattended writers including Ask Barrot, Barrot Agent, Barrot Sync and Ping-Pong. The scheduled XRP ingestion workflow exists on integration only, is read-only, has hourly/daily schedules and a `refs/heads/main` guard; it is absent from main and has not run there. GitHub artifact retention (90 days for raw receipts/event timeline, 7 days for a feature checkpoint) and cache are not independent WORM storage.
+
+The unchanged `barrot-approve-pr.yml` can apply an `approved` label after explicit YES, exact PR-head, non-draft and mergeability checks. It only applies a label/comment; it does not create a formal GitHub review and cannot substitute for independent approval. Hugging Face upload, Databricks deployment, Space restart, A2A deployment and secret operations were not invoked.
+
+### Nine-platform map repair
+The canonical current map `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json` was found to be zero bytes. It has been restored from the populated Run157 schema 1.1.0 snapshot and refreshed for Run164 with the current repository/PR state and tested capabilities.
+
+- ChatGPT: GitHub connector authenticated in this session; admin/maintain/push/pull/triage permissions; least-privilege FAIL.
+- Claude, Grok, Gemini and Codex: unverified.
+- Copilot: historical review activity only; no formal approval on #1662.
+- Hugging Face: no verified deployment.
+- Kaggle: untested; no submission.
+- Databricks: previous HTTP 403; no write.
+- LunaRoute is separate from the nine and unverified; Groq is separate from Grok.
+- No independent model dispatch, evidence exchange or red-team quorum occurred.
+
+Current map: https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json
+
+### PR backlog reconciliation
+No source PR was closed.
+- #1661/#1660 are ancestors of integration with 1,070/1,072 and 970/972 path overlap; each retains two source-only workflow paths.
+- #1643/#1642 are ancestors with 670/670 and 7/7 path overlap; superseded-content candidates, not yet certified for closure.
+- #1640 diverges and retains the same two unique workflow paths.
+- #1641 has three unique experimentation paths.
+- #1614 has 27 unique research/handoff paths; its compare endpoint returned 404.
+- #1611 has one unique handoff; #1608 has two unique research artifacts; #1603 has one unique workflow; #1597/#1591 each retain two unique artifacts.
+- #1586 (19 unique paths), #1583 (8) and #1581 (2) retain unique Evernorth/Cantor, ETF, SBIC/ASK, collateral, custody and Coinbase/Circle/SBI research.
+- #1653 retains six unique repository-knowledge-graph paths; #1269 retains eight unique mesh-topology paths.
+- #1602/#1601/#1600/#1590 contain related prediction-integrity work with overlapping code and unique workflow/research/test artifacts; reconcile before any closure.
+- The 12 non-draft PRs are not certified ready. #1650/#1649 contain newer legacy dependency targets than #1254/#1255; #1653 and #1269 retain unique code. No merge or bulk closure.
+
+### XRP spot and derivatives — research-only
+Capture time: 2026-11-15 14:00:43 UTC.
+
+- OKX XRP-USDT: last 0.9718; bid/ask 0.9717/0.9718; provider event timestamp 13:56:20.664 UTC (262.336 seconds old at capture); 24-hour open 0.995; UTC-day open 0.9145; 24-hour volume 104.124M XRP. Best-level spread approximately 1.03 bps; bid-size imbalance approximately +54.18%.
+- Kraken XRP/USD: last 0.97065; bid/ask 0.97064/0.97075; no provider event timestamp; best-level spread approximately 1.13 bps; bid-size imbalance approximately +14.13%.
+- Cross-venue mid gap is approximately 10.87 bps. No synchronized USDT/USD basis quote was captured; Kraken lacks event time; no synchronized full-depth L2 snapshot or raw-byte receipt exists. Do not normalize, infer executable arbitrage or admit these observations as model features.
+- Liqwall snapshot as of 13:52 UTC: aggregate OI approximately $1.04B, down 3.2%/24h; $42.2M liquidations ($37.9M longs, $4.3M shorts); average funding -0.0114%/8h; 72.8% of Binance XRP-position accounts long. One aggregator snapshot; long-side liquidation pressure is not a directional forecast.
+
+### ETF-flow disagreement and price/flow separation
+- XRP Insights: six US spot funds plus BITW; 1.1891B XRP and approximately $1.22B AUM; week Nov 9–13 -6.08M XRP; Nov 13 +3.40M XRP. GXRP is excluded from flow calculation during a data gap while its holdings remain included.
+- Alpha Finance: five funds; Nov 13 -$1.1M, week Nov 6–13 -$19.1M and 30-session -$581.7K.
+- CryptoKeyhole: four of six listed daily funds reported for Nov 13, partial -9,967 XRP; latest complete day Nov 12 +4.337M XRP; five complete sessions -5.665M XRP. Its displayed Nov 16 issuer-file date conflicts with a Nov 14 read timestamp and is retained as a timestamp anomaly.
+- Maketo: five funds, approximately 1.14B XRP/$1.15B as of Nov 13; dollar holdings down about $401.92M from Oct 13, while its decomposition attributes only about $12M to net outflows and most of the change to XRP price repricing. Coin counts are approximate where issuer daily holdings were unavailable.
+
+These trackers do not measure one common universe. Their issuer coverage, BITW/GXRP treatment, partial versus complete settlement dates and methods differ. AUM decline is not equivalent to cash outflow; issuer holdings changes are not direct subscription records. Preserve all series separately.
+
+### SBIC, exact phrases and Kamilah Stevenson
+- SBIC East's official June 12–13, 2025 training included ChatGPT, Copilot, RAG, API integration and information-leakage risk: https://www.sbic.co.jp/training/20250612co/
+- SBIC West's official October 23, 2024 seminar covered ChatGPT for accounting firms: https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf
+- SBIC West's December 4, 2025 generative-AI seminar explicitly included ChatGPT and was co-hosted with Japan Finance Corporation: https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf
+- These are SBIC East/West training events, not an OpenAI commercial partnership and not evidence that SBIC regional companies are SBI Holdings.
+- No new canonical XRPL ASK issuer was verified. Permission's ASK token remains a separate Base/Polygon asset.
+- “Actual capital” remains a research taxonomy, not a standardized XRP metric. Keep cash, XRP purchases, in-kind contributions, debt, warrant proceeds, undrawn facilities and secondary resales distinct.
+- First-party site https://learn.kamilahstevenson.com/ identifies Dr. Kamilah Stevenson as The Wealth Doctor. The June 11, 2026 iHeart interview transcript (automatically generated) has the guest identify her YouTube as “doctor Camilla Stevenson” and warn of fake pages: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+- One verified third-party appearance was found: Paul Barron Podcast, “Crypto Panics! W/ @drkamilahstevenson”, June 11, 2026: https://www.youtube.com/watch?v=Sulo54IlQ60. This is a guest appearance on the host's channel, not proof that the tagged channel is her own. Do not attribute other same-name channels/videos without a first-party ownership link.
+
+### Provenance and prediction status
+Web observations above are descriptive research only. Barrot did not capture original publisher response bytes for this refresh; `raw_source_sha256=null`. The 85 curated event-registry records still have zero byte-exact publisher-payload receipts and remain model-ineligible. No independent WORM archive or trusted timestamp anchor is verified.
+
+Implemented on integration: scheduled public-source ingestion definitions, SHA-256 receipt-chain prototype, point-in-time SQLite feature store, event timeline/counter-hypotheses, four deterministic baselines, purged/embargoed walk-forward evaluation, paired temporal/source-clustered block bootstrap, calibration, PSI drift monitoring, fail-closed forecast ledger and Ed25519 evaluator attestation. A qualified XRP candidate, demonstrated out-of-sample superiority, synchronized historical multi-venue data, independent shadow cohort and successful scheduled ingestion on main remain absent.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.**
+
+### Merge decision and next actions
+**NO MERGE.** PR #1662 remains draft with zero formal reviews/approvals. Main is protected, but branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is only `* @Barrot-Agent`; connector permissions are overprivileged. Full semantic review of all 1,252 changed paths and called scripts remains incomplete. Main Pages publication would be a deployment side effect and is not authorized.
+
+Next: verify the new Run164 map/audit/handoff commits with exact-head full-suite, dependency and fail-closed checks; complete the 1,252-path/48-workflow called-script review; resolve independent review, least privilege, branch-protection and Pages authorization; capture byte-exact receipts for the 85 events; only then consider controlled merge and verify scheduled ingestion on main.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
