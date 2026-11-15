@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "coinbase-xrp-collateral-and-derivatives-reconciliation-20261107T081543Z",
+  "artifact_type": "institutional_xrp_collateral_derivatives_and-market-data-reconciliation",
+  "captured_at_utc": "2026-11-07T08:15:43.828Z",
+  "evidence": {
+    "primary_coinbase_sources": [
+      {
+        "id": "coinbase_global_exchange_collateral",
+        "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+        "source_class": "first_party_product_documentation",
+        "retrieved_at_utc": "2026-11-07T08:15:43.828Z",
+        "excerpt": {
+          "text": "Currently, BTC, ETH, SOL, EURC, XRP, ADA, cbETH, DOGE HBAR, LINK, AAVE, NEAR, TAO, HYPE, PAXG, and USDT can be used as collateral in addition to USDC.",
+          "sha256": "86f83eb878cf903d7937aee951e739467a4759ecb0c37ad329d2b44377863de4"
+        },
+        "claim": "Coinbase Global Exchange lists XRP as an accepted collateral asset alongside USDC and other assets."
+      },
+      {
+        "id": "coinbase_cross_collateral_mechanics",
+        "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+        "source_class": "first_party_product_documentation",
+        "retrieved_at_utc": "2026-11-07T08:15:43.828Z",
+        "excerpts": [
+          {
+            "text": "There are limits on how much of an asset can be used as collateral across your organization (UBO). These limits are calculated as a percentage of the average daily quantity (ADQ) of the asset. Exceeding a limit means the excess collateral above the limit does not contribute to portfolio value.",
+            "sha256": "f685d00e633ae66c143491120d0496f2591bece7bfa0091d273af06d4a489e1e"
+          },
+          {
+            "text": "Collateral Value is calculated by multiplying notional value by collateral weight. Collateral weight is 1 minus collateral haircut. The greater of the base haircut and closeout horizon haircut is applied.",
+            "sha256": "28c53e6d8e1c0854d2939df568eaa52a1a3179a6031076b0cdecbea51df76675"
+          }
+        ],
+        "claim": "Collateral use is constrained by per-UBO average-daily-quantity limits and haircuts; excess above the ADQ cap does not contribute to portfolio value, and collateral may be liquidated when margin falls below maintenance."
+      },
+      {
+        "id": "coinbase_global_xrp_perp",
+        "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/perpetual-futures-product-specifications",
+        "source_class": "first_party_product_documentation",
+        "retrieved_at_utc": "2026-11-07T08:15:43.828Z",
+        "excerpt": {
+          "text": "XRP Perpetual Futures; Linear Perpetual (USDC-settled); no expiration; XRP-USD; XRP-PERP; all INTX-offered collateral; settled every 5 minutes in USDC; contract multiplier 1; maximum leverage 50x; default initial margin 25% (4x leverage).",
+          "sha256": "f7a86f14fa321c48509f16e301c92c2b3e1b1b58ae1c039aed59ab738fe0cf50"
+        },
+        "claim": "Coinbase Global Exchange documents XRP-PERP as a linear USDC-settled, no-expiry contract with one-XRP multiplier, 50x maximum leverage, 25% default initial margin, and all INTX-offered collateral."
+      },
+      {
+        "id": "coinbase_us_xpp_contract_spec",
+        "url": "https://help.coinbase.com/en/derivatives/perpetual-style-futures/contract-specifications",
+        "source_class": "first_party_product_documentation",
+        "retrieved_at_utc": "2026-11-07T08:15:43.828Z",
+        "excerpt": {
+          "text": "nano XRP Perp Futures (XPP): 500 XRP contract size; $0.0001 tick size; $0.05 tick value; no expiration date and no final settlement date; continuous trading except Friday 5pm–6pm ET maintenance.",
+          "sha256": "befc80e45a3693e783843d31a082142e5cb342e3b4f876d8f80f07681ad78943"
+        },
+        "claim": "Coinbase's US nano XRP Perp Futures code XPP is specified as 500 XRP per contract, $0.0001 tick size and $0.05 tick value."
+      },
+      {
+        "id": "coinbase_us_perpetual_overview",
+        "url": "https://help.coinbase.com/en/coinbase/derivatives/us-perpetual-futures-overview",
+        "source_class": "first_party_product_documentation",
+        "retrieved_at_utc": "2026-11-07T08:15:43.828Z",
+        "excerpt": {
+          "text": "US perpetual-style futures are available to eligible US, Canada and most EEA customers. US derivatives balances are held with Coinbase Financial Markets, a CFTC-registered futures commission merchant and NFA member; spot balances are managed by Coinbase Inc. and do not benefit from the CFTC customer-protection regime. The overview says contracts expire after five years and current contracts expire December 20, 2030.",
+          "sha256": "172d8c90f0e447891681629a9f5283ecb7ce4ee39e8b6434e915dd375b7a3977"
+        },
+        "claim": "US derivatives balances are held with CFM, a CFTC-registered FCM and NFA member; spot balances are managed by CBI. The overview states a five-year contract term."
+      }
+    ],
+    "secondary_market_sources": [
+      {
+        "id": "loris_xrp_perps_aggregate",
+        "url": "https://loris.tools/markets/perps/xrp",
+        "source_class": "secondary_aggregator",
+        "independence_group": "loris_tools",
+        "page_update_utc": "2026-11-07T06:49:00Z",
+        "age_seconds_at_capture": 5203.828,
+        "excerpt": {
+          "text": "Updated Nov 7 06:49 UTC: XRP perpetual futures across 40 venues; $2.16B open interest; $2.53B 24-hour volume; average funding +0.0038% per 8 hours; 39 venues reporting volume; funding range -3.50 bps to +1.00 bps across 39 reporting venues.",
+          "sha256": "889687f9b23f96fcbf85f7fdba76de7f19bb82c9971780437fd373d7edd8f6c6"
+        },
+        "claim": "The page reports 40 venues, $2.16B OI, $2.53B 24-hour volume, +0.0038% average eight-hour funding, and a -3.50 to +1.00 bps funding range."
+      },
+      {
+        "id": "loris_coinbase_us_market",
+        "url": "https://loris.tools/markets/exchanges/coinbaseus",
+        "source_class": "secondary_aggregator",
+        "independence_group": "loris_tools",
+        "page_update_utc": "2026-11-06T18:03:10Z",
+        "age_seconds_at_capture": 51153.828,
+        "excerpts": [
+          {
+            "text": "Coinbase US XRP row last updated 2026-11-06T18:03:10Z: price $1.1814; 24-hour change -4.18%; 24-hour volume $39.28M; open interest $21.65M; funding -0.90 bps per 8 hours.",
+            "sha256": "cc5129b30fd2054ad5f9831fa912659b8d4b09eedc6f133640277f8d9e591a22"
+          },
+          {
+            "text": "Coinbase US page reports 29 perpetual markets, aggregate 24-hour volume $1.13B and aggregate open interest $328.07M; its XRP row shows $21.65M open interest.",
+            "sha256": "8e5f8f18158614627a880255107fe24517be55145766f5c976c514261a4876f5"
+          }
+        ],
+        "claim": "The stale Coinbase US subpage reports XRP OI $21.65M, volume $39.28M and funding -0.90 bps per eight hours; the aggregate page's Coinbase US row reports $22.7M XRP OI. Treat the difference as an unresolved data-vintage discrepancy.",
+        "mapping_status": "UNVERIFIED_PRODUCT_MAPPING"
+      }
+    ]
+  },
+  "product_separation": {
+    "coinbase_global_exchange": {
+      "contract_code": "XRP-PERP",
+      "product_type": "linear_perpetual",
+      "settlement": "USDC every 5 minutes",
+      "expiry": "no expiration",
+      "underlying": "XRP-USD",
+      "contract_multiplier_xrp": 1,
+      "max_leverage": 50,
+      "default_initial_margin_pct": 25,
+      "default_leverage_multiple": 4,
+      "acceptable_collateral": "all INTX-offered collateral",
+      "xrp_accepted_as_collateral": true,
+      "jurisdiction_note": "Global Exchange/INTX product; do not assume US retail eligibility."
+    },
+    "coinbase_us": {
+      "contract_code": "XPP",
+      "product_type": "nano XRP perpetual-style futures",
+      "contract_size_xrp": 500,
+      "tick_size_index_points": 0.0001,
+      "tick_value_usd": 0.05,
+      "operator_and_custody_note": "Coinbase's US overview identifies CFM as the CFTC-registered FCM holding US derivatives balances; spot balances are managed by CBI.",
+      "official_document_conflict": {
+        "contract_spec_page": "States no expiration date and no final settlement date.",
+        "us_overview_page": "States contracts expire after five years and current contracts expire on 2030-12-20.",
+        "status": "UNRESOLVED_PRIMARY_SOURCE_CONFLICT",
+        "policy": "Do not normalize these statements into one expiry rule. Verify the current rulebook and contract-specific listing before using expiry as a feature."
+      }
+    }
+  },
+  "collateral_interpretation": {
+    "confirmed": "XRP is an accepted collateral asset on Coinbase Global Exchange/INTX perpetual-futures accounts.",
+    "constraints": [
+      "Per-UBO collateral caps are based on average daily quantity.",
+      "Collateral value is reduced by haircuts; the greater of base and closeout-horizon haircut applies.",
+      "Collateral can be liquidated if margin falls below maintenance."
+    ],
+    "unknowns": [
+      "No XRP-specific haircut or ADQ cap value was captured.",
+      "No actual XRP collateral balances, utilization, concentration or client-level exposure were disclosed.",
+      "The Global Exchange collateral policy must not be transferred to Coinbase's US CFM/CBI product without a separate source."
+    ],
+    "demand_conclusion": "Accepted collateral creates a potential utility channel but is not evidence that customers have posted XRP, that XRP is locked, or that net spot demand increased."
+  },
+  "market_data_interpretation": {
+    "loris_aggregate_oi_usd": 2160000000,
+    "loris_aggregate_24h_volume_usd": 2530000000,
+    "loris_average_funding_8h_pct": 0.0038,
+    "loris_venue_count": 40,
+    "loris_volume_reporting_venues": 39,
+    "loris_funding_range_bps_8h": {
+      "min": -3.5,
+      "max": 1
+    },
+    "coinbase_us_xrp_oi_usd_secondary": 21650000,
+    "coinbase_us_xrp_volume_24h_usd_secondary": 39280000,
+    "coinbase_us_xrp_funding_bps_8h_secondary": -0.9,
+    "coinbase_us_xrp_data_age_seconds": 51153.828,
+    "coinbase_us_xrp_oi_vintage_discrepancy_usd": 1050000,
+    "limitations": [
+      "Loris is a secondary aggregator, not a direct Coinbase market-data receipt.",
+      "The Coinbase US XRP row is more than 14 hours old at capture.",
+      "The Loris aggregate page is more than 86 minutes old at capture.",
+      "The 40-venue universe is not comparable to seven-exchange trackers or narrower providers.",
+      "The $21.65M versus $22.7M Coinbase US XRP OI difference is not averaged."
+    ]
+  },
+  "source_independence": {
+    "coinbase_product_documentation_group": "coinbase_first_party",
+    "loris_market_data_group": "loris_tools",
+    "independence_note": "Coinbase's product pages are multiple documents from one issuer and are not independent confirmations. Loris's aggregate and exchange-specific pages are one aggregator family, not two independent sources."
+  },
+  "model_admission": {
+    "eligible": false,
+    "reasons": [
+      "Collateral availability is not observed collateral usage or an XRP flow.",
+      "No XRP-specific collateral haircut, cap or posted balance is available.",
+      "The Loris Coinbase row is stale secondary data.",
+      "The official Coinbase US XPP expiry documents conflict.",
+      "Global INTX XRP-PERP and US XPP are different products and legal/customer scopes."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "external_actions": {
+    "accounts_accessed": false,
+    "orders_sent": false,
+    "collateral_posted": false,
+    "funds_transferred": false,
+    "real_money_used": false
+  },
+  "provenance_policy": {
+    "excerpt_hash_algorithm": "SHA-256",
+    "hash_scope": "Normalized excerpts copied from rendered first-party documentation and secondary aggregator page text, not original HTTP response bytes.",
+    "raw_http_bytes_preserved": false,
+    "independent_timestamp_anchor": false
+  }
+}

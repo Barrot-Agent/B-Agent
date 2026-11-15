@@ -1,0 +1,333 @@
+{
+  "schema_version": "barrot.xrp.run-audit.v1",
+  "run_id": "run129",
+  "recorded_at_utc": "2026-11-14T14:28:57.349Z",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "mission_priority": "HIGHEST",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "integration_branch": "integration/xrp-v3-unified-main-20261112",
+  "integration_head_before_handoff_update": "6a2e24d0ccd94b51eb238e15b006d06cc85e3868",
+  "execution_scope": "read-only repository audit, public-source research, durable handoff update; no runtime or external side effects",
+  "repository_inventory": {
+    "main_tree": {
+      "entries": 1381,
+      "files": 1277,
+      "directories": 104,
+      "python_files": 495,
+      "test_files": 93,
+      "workflow_files": 87,
+      "truncated": false
+    },
+    "integration_tree": {
+      "entries": 2435,
+      "files": 2321,
+      "directories": 114,
+      "python_files": 875,
+      "test_files": 452,
+      "workflow_files": 88,
+      "truncated": false
+    },
+    "pull_requests": {
+      "open": 375,
+      "draft": 361,
+      "non_draft": 14,
+      "target_main": 367,
+      "target_other_base": 8
+    },
+    "active_integration_pr": {
+      "number": 1662,
+      "title": "Barrot V3 + XRP Intelligence — current-main consolidated successor",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1662",
+      "state": "open",
+      "draft": true,
+      "mergeable_conflict_indicator": true,
+      "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "head_sha": "6a2e24d0ccd94b51eb238e15b006d06cc85e3868",
+      "commits_ahead": 2393,
+      "commits_behind": 0,
+      "changed_files": 1194,
+      "additions": 356033,
+      "deletions": 5354,
+      "workflow_files": 50,
+      "public_web_files": 7,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "classification": "BLOCKED_ACTIVE_INTEGRATION_DRAFT"
+    },
+    "source_branch_ancestry": {
+      "1611": "DIVERGED_BY_ONE_SOURCE_ONLY_COMMIT; original fixed-horizon ledger/feature-store work is superseded by current evolved implementation; retain until successor merge and verification",
+      "1614": "SOURCE_HEAD_COMPARE_RETURNED_404; preserve and investigate reference before any classification change",
+      "1640": "DIVERGED_BY_ONE_SOURCE_ONLY_COMMIT; action-specific Databricks/Kaggle approval change and tests are present in current integration; retain until successor is merged and main-verified",
+      "1642": "ANCESTOR_OF_1662; 2409 commits behind current integration head",
+      "1643": "ANCESTOR_OF_1662; 1504 commits behind current integration head",
+      "1653": "UNIQUE_REPOSITORY_GRAPH_WORK; 7 files, 747 additions; 18 source-only commits relative to current integration; retain, not merge-ready",
+      "1660": "ANCESTOR_OF_1662; 442 commits behind current integration head",
+      "1661": "ANCESTOR_OF_1662; 261 commits behind current integration head"
+    },
+    "backlog_policy": "Only exact source content proven present in a merged and main-verified successor may be closed as superseded/duplicate. All other PRs remain unique/unreviewed or blocked pending semantic/path/ancestry review. No PRs closed."
+  },
+  "exact_head_verification": {
+    "head_sha": "6a2e24d0ccd94b51eb238e15b006d06cc85e3868",
+    "full_repository_suite": {
+      "run_id": 43603559415,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43603559415",
+      "job_id": 132473244215,
+      "status": "SUCCESS",
+      "tests_passed": 3641,
+      "subtests_passed": 8,
+      "failures": 0,
+      "inclusive_coverage_pct": 62.47,
+      "legacy_core_coverage_pct": 76,
+      "duration_seconds": 128.38,
+      "scope": "all repository tests in the configured tests tree, inclusive package coverage, wheel build/install and primary-mission verification"
+    },
+    "core_suite": {
+      "run_id": 43603559415,
+      "job_id": 132473244075,
+      "status": "SUCCESS"
+    },
+    "dependency_audit": {
+      "run_id": 43603559424,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43603559424",
+      "job_id": 132473244460,
+      "status": "SUCCESS",
+      "manifest_groups": [
+        "requirements.txt",
+        "requirements-dev.txt",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt",
+        "pyproject.toml PEP 621 dependencies"
+      ],
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gates": [
+      {
+        "run_id": 43603559412,
+        "status": "SUCCESS",
+        "trigger": "push"
+      },
+      {
+        "run_id": 43603565956,
+        "status": "SUCCESS",
+        "trigger": "pull_request"
+      }
+    ],
+    "pr_event_full_suite": "SKIPPED_BY_EXPLICIT_INTEGRATION_BRANCH_GUARD; successful exact-head push run is the authoritative full-suite evidence",
+    "wheel": "BUILD_AND_INSTALL_VERIFIED; package warnings remain for deprecated project.license table and package-discovery configuration"
+  },
+  "main_governance_and_safety": {
+    "branch_metadata": {
+      "protected": true,
+      "required_status_check_enforcement": "non_admins",
+      "required_status_contexts": [],
+      "required_status_checks": []
+    },
+    "detailed_branch_protection": "NOT_VISIBLE; endpoint returned HTTP 403",
+    "visible_fallback_ruleset": "DISABLED",
+    "independent_approval": "NONE",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege": "FAIL_OVERPRIVILEGED",
+    "pages": {
+      "automatic_main_push_publication": true,
+      "prior_successful_run": 43343511839,
+      "affected_public_web_files": 7,
+      "authorization": "NOT_GRANTED",
+      "merge_blocker": true
+    },
+    "main_barrot_sync": {
+      "status": "FALSE_GREEN_RELIABILITY_DEFECT",
+      "evidence": "main workflow masks python sync and git push failures with || echo and || true; prior run logged ModuleNotFoundError for httpx",
+      "credential_prefix_correction": "The 30-character cut emits only the fixed banner; no key characters were present in the inspected output",
+      "integration_containment": "workflow disabled with permissions:{} and if:false"
+    },
+    "main_paper_trader": {
+      "state": {
+        "position_size": 0.012445158497236623,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "trade_count": 126
+      },
+      "main_workflow": "manual dispatch without explicit confirmation; Groq call; commits simulated state/log to main",
+      "integration_guard": "requires typed YES, exact 40-character unchanged main SHA, validates product identity before provider call, uploads artifact only",
+      "current_preflight": "ABORTS because the persisted nonzero position has null product identity",
+      "dispatched": false
+    },
+    "historical_credential_path": "Run128 carry-forward: .config/gh/hosts.yml appeared in 17 historical open-PR branch tips, absent from main and #1662; contents not read, no history rewrite or credential rotation"
+  },
+  "workflow_review": {
+    "changed_workflow_files": 50,
+    "prior_run128_review": "All 50 patches reviewed; 26 quarantined/disabled and 24 read-only or manual/approval-gated",
+    "current_delta_since_run127": "Only handoff, current platform-map JSON and one map-contract test changed; no workflow files changed after the last workflow review",
+    "current_critical_workflows": {
+      "xrp_public_ingestion": "main-only hourly/daily schedule; actions:read and contents:read; public sources; no secrets; not on main and not executed",
+      "barrot_sync": "disabled in integration",
+      "coinbase_paper_trader": "manual and exact-SHA/product-identity guarded; not dispatched",
+      "barrot_ops": "Databricks import and Kaggle download require separate explicit YES inputs; not dispatched"
+    }
+  },
+  "xrp_prediction_engine": {
+    "implemented_on_integration": [
+      "50 public source endpoint definitions (48 scheduled)",
+      "SHA-256 raw receipt prototype",
+      "local cross-run receipt-chain index",
+      "SQLite point-in-time feature store",
+      "event/source registry",
+      "four deterministic baselines",
+      "purged/embargoed chronological walk-forward",
+      "temporal calibration",
+      "PSI drift diagnostics",
+      "non-circular timestamp-contiguous paired bootstrap",
+      "candidate-vs-four-baselines policy-v6 uncertainty helper",
+      "fixed-horizon ledger with raw receipt validation and independent Ed25519 evaluator attestation"
+    ],
+    "limitations": [
+      "No trained XRP-specific candidate model",
+      "Walk-forward output remains deterministic-baseline diagnostics; candidate helper is not wired because no candidate exists",
+      "No independent shadow-outcome cohort",
+      "No synchronized historical spot/L2/derivatives/exchange-flow/collateral dataset",
+      "No independent WORM raw-source store or trusted timestamp anchor",
+      "GitHub artifacts/cache are bounded retention, not immutable adversarial storage",
+      "No production independent-evaluator public key"
+    ],
+    "policy_v6": {
+      "bootstrap_replicates_min": 10000,
+      "paired_origins_min": 100,
+      "source_clusters_min": 5,
+      "individual_confidence_min": 0.99375,
+      "comparison_family": "four baselines times two loss metrics",
+      "source_cadence": "must be declared per source group"
+    },
+    "current_public_signal": "web/latest_signal.json status NOT_ISSUED; accuracy status NOT_EVALUATED",
+    "forecast_decision": "NOT_ISSUED"
+  },
+  "market_observations": {
+    "capture_method": "Public web retrieval of exchange JSON and secondary dashboards; original raw HTTP bytes and exact retrieval receipt were not retained. These are research observations only, not canonical raw-source receipts.",
+    "model_eligible": false,
+    "spot": [
+      {
+        "source": "Bybit public spot ticker",
+        "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "provider_response_time_utc": "2026-11-14T13:45:49.324Z",
+        "quote": "USDT",
+        "last": 0.9942,
+        "bid": 0.9942,
+        "bid_size_xrp": 6905.3,
+        "ask": 0.9943,
+        "ask_size_xrp": 4263.61,
+        "previous_24h": 1.0389,
+        "change_24h_pct": -4.3,
+        "high_24h": 1.0404,
+        "low_24h": 0.9797,
+        "volume_24h_xrp": 41707982.24,
+        "turnover_24h_usdt": 41820937.643235,
+        "provider_timestamp_semantics": "top-level server response time; not matching-engine event time"
+      },
+      {
+        "source": "OKX public spot ticker",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_event_time_utc": "2026-11-14T14:20:35.466Z",
+        "quote": "USDT",
+        "last": 0.9903,
+        "bid": 0.9902,
+        "bid_size_xrp": 75.216659,
+        "ask": 0.9903,
+        "ask_size_xrp": 3738.049154,
+        "open_24h": 1.0312,
+        "high_24h": 1.0378,
+        "low_24h": 0.9794,
+        "volume_24h_xrp": 41072141.859949,
+        "turnover_24h_usdt": 41112811.33584442
+      },
+      {
+        "cross_venue_event_time_skew_seconds": 2086.142,
+        "reason": "34m46s skew; both quotes are USDT; no independent USDT/USD normalization; no synchronized multi-level order book; do not combine or infer executable liquidity"
+      }
+    ],
+    "etf_flows": {
+      "source": "Alpha Finance secondary ETF dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "through_session": "2026-11-13",
+      "latest_daily_net_flow_usd": -1100000,
+      "last_7_sessions_net_flow_usd": -19100000,
+      "last_30_sessions_net_flow_usd": -581700,
+      "cumulative_net_inflow_since_launch_usd": 1710000000,
+      "limitation": "Dashboard says fund net assets/holdings/fees are not published; cumulative net flows are not current holdings or immediate spot-market execution."
+    },
+    "derivatives": {
+      "primary_status": "NOT_OBTAINED",
+      "secondary_observations": [
+        {
+          "source": "TradRadar",
+          "url": "https://tradradar.io/markets/xrp",
+          "as_of_utc": "2026-11-14T01:10:00Z",
+          "open_interest_usd": 1520000000,
+          "oi_change_24h_pct": -1.19,
+          "oi_weighted_funding_pct_per_8h": 0.0017,
+          "liquidations_24h_usd_minimum": 13550000,
+          "long_liquidations_usd": 11760000,
+          "short_liquidations_usd": 1790000,
+          "long_account_share_pct": 79.4
+        },
+        {
+          "source": "Liqwall",
+          "url": "https://liqwall.com/coins/xrp",
+          "as_of_utc": "2026-11-13T22:12:00Z",
+          "open_interest_usd": 1100000000,
+          "oi_weighted_funding_pct_per_8h": 0.0034,
+          "liquidations_24h_usd": 13900000,
+          "long_liquidations_usd": 12300000,
+          "short_liquidations_usd": 1600000,
+          "binance_long_account_share_pct": 75.4
+        }
+      ],
+      "disagreement": "Open-interest totals differ materially and use different exchange coverage/timestamps. Preserve as separate secondary estimates; do not average or admit to the feature store."
+    },
+    "market_interpretation": "Spot observations show contemporaneous weakness but are not synchronized, normalized or raw-byte receipted. ETF flow and derivatives figures are secondary aggregates with coverage limitations. No directional inference."
+  },
+  "ecosystem_reconciliation": {
+    "sbic": "Primary-source identities remain three distinct regional statutory investment companies: SBIC East (Tokyo), SBIC Central (Nagoya), SBIC West (Osaka); none is SBI Holdings or Circle SBI Japan K.K. Tokyo SBIC's ChatGPT training page establishes curriculum use, not an OpenAI partnership.",
+    "ask_coin": "Permission ASK is a Base/Polygon token; no verified XRP/XRPL/Ripple relationship. The exact intended phrase ASK Coin remains a homonym search, not an XRP attribution.",
+    "actual_capital": "Evernorth SEC 10-Q distinguishes $272.6M gross closing cash, $29.0M net note proceeds, $35.3M gross warrant exercise proceeds, $214.1M earlier private-placement cash used to buy 84,365,876 XRP, 388,910,554 XRP in-kind contributions, and $76.8M/$80.7M ELOC capacity estimates with no actual sales disclosed in the reviewed filing. The 42,425,582 XRP contribution/transfer difference remains unreconciled; 473M XRP claim remains unverified.",
+    "coinbase_circle_ripple_sbi": "SBI Circle Japan is a 50/50 JV with approximately $1.5M contributed by each partner and no significant operating results reported to date. SBI Holdings and SBI Shinsei separately disclosed $50M combined Circle IPO share purchases. SBI separately disclosed an approximately 9% Ripple stake in 2025; do not treat that as a current percentage without a newer filing. Coinbase distributes USDC under its Circle agreement and added Ripple RLUSD; BNY supports XRP/RLUSD custody. Circle Arc uses USDC gas and SBI is a founding validator. These links do not prove a direct Circle-Ripple partnership or XRP settlement demand from USDC/Arc.",
+    "stevenson_identity": "One verified Kamilah Stevenson TEDx appearance; own-channel attribution remains unverified. Do not merge Camilla and Kamilah identities or inventory candidate channel videos."
+  },
+  "decision": {
+    "merge": "NO_MERGE",
+    "forecast": "NOT_ISSUED",
+    "deployment": "NOT_AUTHORIZED",
+    "source_pr_closure": "NONE",
+    "new_prs_created": 0,
+    "main_changes": 0,
+    "external_actions": [
+      "No workflow dispatch",
+      "No Pages deployment",
+      "No Hugging Face Space restart",
+      "No Databricks write",
+      "No Kaggle submission",
+      "No paper trade",
+      "No funds transfer",
+      "No real-money action",
+      "No secret rotation",
+      "No force-push or history rewrite"
+    ]
+  },
+  "next_actions": [
+    "Obtain independent formal review and verify effective branch protection/required checks; do not self-approve or bypass protection.",
+    "Resolve Pages publication authorization before any merge that changes the seven public-web files.",
+    "Reduce GitHub connector permissions to least privilege before external writes or automation.",
+    "Finish semantic review of the 1,144 non-workflow paths, prioritizing XRP ingestion, forecast readiness, V3 execution boundaries and public-web artifacts.",
+    "Keep scheduled ingestion on integration only until safe merge authorization; then use read-only public ingestion with independent WORM/timestamp anchoring and raw-artifact replay.",
+    "Build synchronized USD-normalized spot/L2/derivatives/exchange-flow/collateral history; preserve venue and source independence.",
+    "Train a candidate only when data support it; require policy-v6 OOS superiority, independent shadow outcomes, calibration, drift stability and trusted evaluator attestation before forecast issuance.",
+    "After a successor is merged and verified on main, close only exact superseded source PRs; preserve unique work."
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "Run167",
+  "captured_at_utc": "2026-11-15T15:06:54Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety, authorization and verification foundation"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run167": "af0dd3c8db0020f780e91424452b94264e4721f3",
+    "main_tree": {
+      "entries": 1393,
+      "blobs": 1283,
+      "trees": 110,
+      "workflows": 87,
+      "python_files": 516,
+      "test_paths": 97,
+      "truncated": false
+    },
+    "integration_tree": {
+      "entries": 2497,
+      "blobs": 2377,
+      "trees": 120,
+      "workflows": 88,
+      "python_files": 899,
+      "test_paths": 461,
+      "truncated": false
+    },
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "base": "main",
+      "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "head_sha": "534e65b76115b1eee7272947557de6a8bfa4f8ca",
+      "commits": 2508,
+      "changed_files": 1255,
+      "additions": 352099,
+      "deletions": 6309,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "targeting_main": 365,
+      "targeting_other_branches": 8,
+      "pages_retrieved": 4
+    },
+    "integration_head_before_map_update": "534e65b76115b1eee7272947557de6a8bfa4f8ca"
+  },
+  "verification": {
+    "exact_head": "af0dd3c8db0020f780e91424452b94264e4721f3",
+    "full_suite": {
+      "run_id": 43728655918,
+      "job_id": 132856014726,
+      "status": "success",
+      "passed": 3796,
+      "failed": 0,
+      "skipped": 1,
+      "subtests_passed": 19,
+      "inclusive_coverage_percent": 64.02,
+      "legacy_core_coverage_percent": 77,
+      "duration_seconds": 172.73,
+      "wheel_build": "passed",
+      "installed_wheel_mission": "verified",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728655918"
+    },
+    "dependency_audit_push": {
+      "run_id": 43728655913,
+      "status": "success",
+      "manifest_groups": 6,
+      "known_vulnerabilities": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728655913"
+    },
+    "dependency_audit_pr": {
+      "run_id": 43728661588,
+      "status": "success",
+      "manifest_groups": 6,
+      "known_vulnerabilities": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728661588"
+    },
+    "fail_closed_push": {
+      "run_id": 43728655901,
+      "status": "success",
+      "merge_disabled": true,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728655901"
+    },
+    "fail_closed_pr": {
+      "run_id": 43728661780,
+      "status": "success",
+      "merge_disabled": true,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728661780"
+    },
+    "pr_ci": {
+      "run_id": 43728661595,
+      "status": "success",
+      "pages_validation": "passed",
+      "pages_manifest_rendered": true,
+      "core_tests": "skipped by integration-branch condition",
+      "full_suite": "skipped by integration-branch condition",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728661595"
+    },
+    "combined_status_endpoint": "returned no status contexts; GitHub Actions run/job evidence is authoritative",
+    "exact_head_full_suite_log": "3796 passed, 1 skipped, 19 subtests passed in 176.28s; inclusive coverage 64.02%; legacy core coverage 77%",
+    "current_head": "534e65b76115b1eee7272947557de6a8bfa4f8ca",
+    "map_update_commit_ci": "pending exact-head full-suite; do not reuse parent result"
+  },
+  "main_operations": {
+    "latest_cross_analysis": {
+      "run_id": 43726616992,
+      "status": "success",
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "created_at": "2026-11-15T14:51:20Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726616992"
+    },
+    "pillars_consistency": {
+      "run_id": 43716820298,
+      "status": "failure",
+      "failure_causes": [
+        "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "Databricks HTTP 403",
+        "Hugging Face Space stage BUILD_ERROR"
+      ],
+      "interpretation": "external integration/credential availability failure, not repository full-suite failure",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43716820298"
+    },
+    "barrot_sync_false_green": {
+      "run_id": 43650499411,
+      "status": "reported_success_but_sync_skipped",
+      "evidence": [
+        "python b_agent.py --sync failed with ModuleNotFoundError: No module named 'rich'",
+        "shell fallback printed sync skipped and allowed job success",
+        "git push || true masks push failure"
+      ],
+      "secret_handling": "LUNAROUTE_API_KEY was masked; echo/cut printed only the fixed label prefix, no key characters",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499411",
+      "integration_containment": "barrot-sync.yml is workflow_dispatch-only, permissions {}, disabled job"
+    }
+  },
+  "workflow_review": {
+    "changed_workflow_files": 48,
+    "method": "All 48 changed workflow definitions fetched and triaged for trigger, permissions, credentials, external calls, writes, deployment, artifact and dispatch behavior. Called-script semantic review remains incomplete.",
+    "verified_controls": [
+      "ask-barrot, barrot-agent, barrot-self-upgrade, barrot-sync, pingpong, signal_ledger, task-allocator, subagent-matrix, subagent-spawn, sync-huggingface and several diagnostics/capability placeholders are quarantined as no-op workflows with permissions {}",
+      "barrot-agent main still has issue-label and workflow-dispatch write permissions; integration disables it",
+      "barrot-sync main is push-triggered and can commit/push BARROT_SYNC.md; integration disables it",
+      "barrot-ops integration requires exact main SHA and separate YES inputs for Databricks workspace overwrite and Kaggle dataset download",
+      "deploy-a2a-worker integration requires explicit deployment confirmation, explicit secret-rotation confirmation and exact main SHA",
+      "sync-self-hosted-brain integration job is disabled with if false; no HF secret is read",
+      "coinbase-paper-trader integration is manual, exact-main-SHA pinned, validates open-position product identity and uploads artifact only",
+      "signal-summary and selected Groq research workflows are manual, require public/authorized-input confirmation, exact main SHA, contents read and artifact output",
+      "xrp-public-ingestion is scheduled but main-ref guarded, contents/actions read-only, and publishes GitHub artifacts; it has not run on main because the workflow is absent there"
+    ],
+    "archival_limitations": [
+      "GitHub artifacts expire (90 days for raw/event archives; seven days for some feature checkpoints)",
+      "Actions cache is mutable/evictable",
+      "neither is independent WORM storage or trusted timestamp anchoring"
+    ]
+  },
+  "security": {
+    "codeowners": "* @Barrot-Agent",
+    "independent_codeowners_review": false,
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "pull": true,
+      "push": true,
+      "triage": true
+    },
+    "branch_protection_read": "HTTP 403 Resource not accessible by integration",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "integration_branch_protected": false,
+    "merge_decision": "NO MERGE: PR remains draft, no formal reviews/approvals, no independent reviewer, full semantic diff/called-script review incomplete, branch-protection requirements cannot be verified"
+  },
+  "pr_reconciliation": [
+    {
+      "pr": 1661,
+      "source_paths": 1072,
+      "overlap_with_1662": 1069,
+      "nonoverlap_paths": [
+        ".github/workflows/barrot-bundle-operational-smoke.yml",
+        ".github/workflows/barrot-controlled-feature-validation.yml",
+        "b_agent.sh"
+      ],
+      "ancestry": "source head is ancestor of integration (integration ahead by 415 commits)",
+      "content_reconciliation": "the two workflow variants use actions/setup-python@v5 while main/integration use @v7; b_agent.sh blob is identical but source branch mode is 100644 versus main/integration 100755",
+      "classification": "superseded candidate; retain until successor merge and main verification"
+    },
+    {
+      "pr": 1660,
+      "source_paths": 972,
+      "overlap_with_1662": 969,
+      "nonoverlap_paths": [
+        ".github/workflows/barrot-bundle-operational-smoke.yml",
+        ".github/workflows/barrot-controlled-feature-validation.yml",
+        "b_agent.sh"
+      ],
+      "ancestry": "source head is ancestor of integration (integration ahead by 596 commits)",
+      "content_reconciliation": "same older action-version and executable-mode differences as #1661",
+      "classification": "superseded candidate; retain until successor merge and main verification"
+    },
+    {
+      "pr": 1643,
+      "source_paths": 670,
+      "overlap_with_1662": 670,
+      "ancestry": "source head is ancestor of integration (integration ahead by 1658 commits)",
+      "classification": "superseded candidate; path overlap not semantic-duplicate certification"
+    },
+    {
+      "pr": 1642,
+      "source_paths": 7,
+      "overlap_with_1662": 7,
+      "ancestry": "source head is ancestor of integration (integration ahead by 2563 commits)",
+      "classification": "superseded candidate; path overlap not semantic-duplicate certification"
+    },
+    {
+      "pr": 1640,
+      "source_paths": 280,
+      "overlap_with_1662": 278,
+      "nonoverlap_paths": [
+        ".github/workflows/barrot-bundle-operational-smoke.yml",
+        ".github/workflows/barrot-controlled-feature-validation.yml"
+      ],
+      "ancestry": "diverged; integration ahead by 1589 and behind by 1",
+      "classification": "unique/unreviewed until workflow-path reconciliation"
+    },
+    {
+      "pr": 1653,
+      "source_paths": 7,
+      "overlap_with_1662": 1,
+      "nonoverlap_paths": [
+        "barrot_agent/mcp_adapters.py",
+        "barrot_agent/mcp_discovery.py",
+        "barrot_agent/mcp_targets.py",
+        "barrot_agent/repository/codebase_memory.py",
+        "docs/REPOSITORY_INTELLIGENCE.md",
+        "tests/test_codebase_memory.py"
+      ],
+      "ancestry": "diverged; integration ahead by 2564 and behind by 18",
+      "classification": "unique/unreviewed; preserve"
+    }
+  ],
+  "xrpl_stablecoin_research": {
+    "tokenpost": {
+      "published": "2026-11-15T08:18:00-05:00",
+      "snapshot_date": "2026-11-13",
+      "stablecoin_value_usd": 908210000,
+      "weekly_change_percent": -8.01,
+      "rlusd_value_usd": 818560000,
+      "rlusd_share_percent": 90.13,
+      "dex_volume_7d_usd": 35140000,
+      "dex_change_7d_percent": 28.87,
+      "dex_volume_24h_usd": 5760000,
+      "url": "https://www.tokenpost.com/news/investing/57810"
+    },
+    "defillama": {
+      "snapshot_date": "2026-11-15",
+      "stablecoin_market_cap_usd": 850820000,
+      "stablecoin_change_7d_percent": -12.82,
+      "rlusd_dominance_percent": 89.65,
+      "defi_tvl_usd": 30030000,
+      "tvl_change_24h_percent": -4.19,
+      "dex_volume_24h_usd": 16350000,
+      "dex_volume_7d_usd": 56460000,
+      "dex_change_7d_percent": 93.6,
+      "active_addresses_24h": 69704,
+      "new_addresses_24h": 4475,
+      "transactions_24h": 4470000,
+      "chain_fees_24h_usd": 1975,
+      "url": "https://defillama.com/chain/xrpl"
+    },
+    "reconciliation": "Both sources indicate a smaller stablecoin pool and active DEX turnover, but supply levels, weekly percentage changes and DEX volume differ materially by provider/date/measurement. Do not average. Stablecoin supply is a stock; DEX volume is gross turnover. Neither establishes net capital inflow or proportional XRP demand.",
+    "source_receipts": "No byte-exact raw response bytes or SHA-256 receipts captured; web observations are descriptive and model-ineligible."
+  },
+  "disconfirming_evidence": [
+    {
+      "source": "eBTCNews",
+      "published": "2026-11-15",
+      "claim": "XRP around $1.29-$1.30 and OI $871.22M",
+      "url": "https://www.ebtcnews.com/xrp-holds-above-1-29-as-futures-leverage-gets-flushed-out/",
+      "treatment": "excluded as an outlier because it conflicts with the contemporaneous DeFiLlama XRP reference near $0.97 and prior direct venue snapshots; no source-level reconciliation"
+    },
+    {
+      "source": "DefiLlama",
+      "published": "2026-11-15",
+      "claim": "XRP reference price approximately $0.97",
+      "url": "https://defillama.com/chain/xrpl",
+      "treatment": "secondary market reference only, not executable exchange quote"
+    }
+  ],
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "candidate_model": "none qualified",
+    "blockers": [
+      "85 curated event records still lack byte-exact publisher-payload SHA-256 receipts",
+      "no independent WORM archive or trusted timestamp anchor",
+      "synchronized historical spot/L2/derivatives/exchange-flow/collateral coverage incomplete",
+      "no candidate demonstrated OOS superiority against naive, momentum, mean-reversion and volatility baselines",
+      "no independent shadow-outcome cohort",
+      "scheduled ingestion has not been verified on main"
+    ]
+  },
+  "actions": {
+    "main_modified": false,
+    "new_branch_created": false,
+    "new_pr_created": false,
+    "pr_closed": [],
+    "merge_performed": false,
+    "deployment_performed": false,
+    "secret_rotation_performed": false,
+    "space_restart_performed": false,
+    "external_model_dispatch": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operation": false
+  },
+  "next_actions": [
+    "Verify exact-head CI after this Run167 handoff/artifact commit.",
+    "Finish semantic review of all 1,254 PR paths and every called script behind the 48 changed workflows.",
+    "Resolve independent review, least-privilege access and branch-protection visibility.",
+    "Fix or quarantine the false-green main Barrot Sync workflow before any integration merge.",
+    "Resolve main Pages Liquid syntax/publication side effects before merge.",
+    "Preserve the unique codebase-memory work in #1653 and reconcile the older workflow variants in #1661/#1660/#1640.",
+    "Capture byte-exact event receipts, establish independent WORM/time anchoring, and build synchronized historical data plus shadow outcomes.",
+    "Keep directional forecasts blocked until out-of-sample superiority and calibration gates pass."
+  ],
+  "platform_map": {
+    "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "schema_version": "1.1.0",
+    "previous_blob_sha": "7428a47841de9c3a0b2dc66156f0c3c446cc855d",
+    "previous_size_bytes": 1961673,
+    "previous_capture_at_utc": "2026-11-15T14:31:27Z",
+    "fetch_file_empty_reason": "The fetch_file wrapper returned an empty string for a blob larger than 1 MB; fetch_blob retrieved the complete content.",
+    "updated_at_utc": "2026-11-15T15:18:30Z",
+    "current_snapshot_run": "Run167",
+    "integration_head_before_map_update_commit": "534e65b76115b1eee7272947557de6a8bfa4f8ca",
+    "historical_run165_snapshot_preserved": true,
+    "regression_test_path": "tests/test_xrp_nine_platform_current_map_run73.py",
+    "regression_test_updated": true,
+    "new_run167_regression_test_added": true,
+    "parent_exact_head_ci_passed": true,
+    "map_update_commit_ci_pending": true
+  },
+  "run167_map_update": {
+    "previous_blob_sha": "7428a47841de9c3a0b2dc66156f0c3c446cc855d",
+    "previous_size_bytes": 1961673,
+    "fetch_file_size_limit_explained": true,
+    "full_blob_recovered": true,
+    "run165_preserved_as_historical": true,
+    "run167_set_current": true,
+    "regression_test_updated": true,
+    "new_regression_test_added": true,
+    "map_update_commit_ci_pending": true
+  }
+}

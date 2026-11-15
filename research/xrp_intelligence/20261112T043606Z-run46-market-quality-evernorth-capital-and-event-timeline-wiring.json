@@ -1,0 +1,227 @@
+{
+  "artifact_type": "barrot.xrp.run_research_snapshot",
+  "run_id": "Run46",
+  "captured_at_utc": "2026-11-12T04:36:06Z",
+  "mission_priority": 1,
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run46_commit": "4b6e61e31b27322e6c71dfb3b412ec5f0ad3eb50",
+    "pr": 1661,
+    "pr_state": "open",
+    "draft": true,
+    "commits_ahead": 2081,
+    "behind": 0,
+    "changed_files": 1044,
+    "workflow_files": 49,
+    "non_workflow_paths": 995,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2303,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14
+  },
+  "ci": {
+    "run_id": 43151000823,
+    "head_sha": "4b6e61e31b27322e6c71dfb3b412ec5f0ad3eb50",
+    "conclusion": "failure",
+    "full_suite": {
+      "passed": 3495,
+      "failed": 5,
+      "subtests": 8,
+      "coverage_percent": 61.31,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 59.26
+    },
+    "core_suite": {
+      "job_id": 130959853334,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 43151000842,
+      "job_id": 130959853244,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43151000788,
+      "job_id": 130959852960,
+      "conclusion": "success"
+    },
+    "failing_tests": [
+      "test_current_map_schema_and_capture_timestamps_are_consistent",
+      "test_repository_snapshot_matches_current_main_and_successor_branch",
+      "test_superseded_pr_1660_is_retained_until_successor_merge",
+      "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "test_run20_snapshot_is_append_only_and_tracks_current_integration_head"
+    ],
+    "root_cause": "All five failures were stale-map metadata assertions: capture/verification timestamp order and integration-head consistency. No runtime or ingestion failure was reported."
+  },
+  "security": {
+    "credential_path": ".config/gh/hosts.yml",
+    "main_tree_present": false,
+    "integration_tree_present": false,
+    "affected_open_prs": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1643,
+      1642,
+      1640,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ],
+    "complete_recursive_tree_scans": 17,
+    "branch_tips_containing_path": 17,
+    "truncated_trees": 0,
+    "file_contents_read": false,
+    "provider_side_oauth_revocation_verified": false
+  },
+  "market": {
+    "spot": {
+      "captured_at_utc": "2026-11-12T04:36:06Z",
+      "okx": {
+        "last": 1.0453,
+        "bid": 1.0453,
+        "ask": 1.0454,
+        "event_time_utc": "2026-11-12T04:16:46.570Z",
+        "age_seconds": 1160,
+        "stale": true
+      },
+      "kraken": {
+        "last": 1.04471,
+        "bid": 1.04437,
+        "ask": 1.04444,
+        "event_timestamp_available": false
+      },
+      "usdt_usd": 0.9987,
+      "normalized_mid_gap_percent": -0.0401359,
+      "model_eligible": false
+    },
+    "derivatives": {
+      "tradradar": {
+        "updated_at_utc": "2026-11-11T19:05:00Z",
+        "oi_usd": 1570000000,
+        "oi_24h_percent": -0.97,
+        "funding_8h_percent": 0.0045,
+        "long_account_share_percent": 79.7
+      },
+      "swiftedge": {
+        "updated_at_utc": "2026-11-11T21:02:00Z",
+        "oi_24h_percent": -7.6,
+        "funding_8h_percent": 0.0052,
+        "long_account_share_percent": 55.8
+      },
+      "reconciliation": "Different contract universes and vintages; no averaging."
+    },
+    "etf": {
+      "provider": "Alpha Finance",
+      "through_session": "2026-11-11",
+      "latest_session_usd": 0,
+      "seven_sessions_usd": -18000000,
+      "thirty_sessions_usd": 1300000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "cumulative_net_xrp": 972800000,
+      "fund_count": 5,
+      "net_assets_or_holdings_published": false
+    }
+  },
+  "institutional": {
+    "evernorth": {
+      "sec_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "registered_resale_shares": 73688162,
+      "closing_xrp": 473276430,
+      "cash_purchased_xrp": 84365876.3625,
+      "in_kind_xrp": 388910554,
+      "advance_funding_cash_usd": 214049995,
+      "average_cash_purchase_price": 2.53657058,
+      "sbi_registered_shares": 11790952,
+      "rippleworks_sponsor_lp_majority": true,
+      "chr_larsen_conflict_disclosed": true,
+      "resale_proceeds_to_company": "None except Sponsor Warrant exercise proceeds.",
+      "resale_is_not_xrp_sale": true
+    },
+    "wallet_tracker": {
+      "ledger": 108273772,
+      "attributed_wallets": 13,
+      "attributed_xrp": 103129905,
+      "moved_outside_attributed_set": 370346663,
+      "latest_movement": "2026-10-22",
+      "destinations_unattributed": true,
+      "not_proof_of_sale": true
+    },
+    "rlusd": {
+      "circulation_usd": 2632900000,
+      "reserves_usd": 2748000000,
+      "as_of": "2026-11-05"
+    },
+    "xrpl_lending": {
+      "lendingprotocol_votes": 21,
+      "total_validators": 35,
+      "short_of_threshold": 8,
+      "as_of": "2026-11-06",
+      "activated": false
+    }
+  },
+  "event_timeline": {
+    "registry": "research/xrp_intelligence/event_registry_current.json",
+    "events": 14,
+    "raw_source_hashes": 0,
+    "registry_file_hash_only": true,
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "prediction": {
+    "source_definitions": 47,
+    "scheduled_sources": 45,
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean_reversion",
+      "volatility"
+    ],
+    "walk_forward": "chronological with purge/embargo",
+    "calibration": "prototype",
+    "drift": "PSI diagnostics",
+    "forecast_status": "NOT_ISSUED",
+    "production_blockers": [
+      "independent WORM/timestamp anchor",
+      "replayable point-in-time history",
+      "synchronized spot/L2/derivatives/flow/collateral history",
+      "independent shadow outcomes",
+      "production Ed25519 key",
+      "out-of-sample lift over all four baselines",
+      "verified main scheduled ingestion"
+    ]
+  },
+  "research_identity": {
+    "sbic": "East/Tokyo, Central/Nagoya and West/Osaka are separate Japanese regional SME investment companies, not SBI Holdings.",
+    "ask_coin": "Unresolved; no XRP Ledger deployment verified.",
+    "actual_capital": "Not a standardized XRP metric; keep cash purchases, in-kind XRP, debt, facilities, collateral and resales separate.",
+    "kamilah_camilla": "YouTube channel ownership unverified; no videos attributed."
+  },
+  "raw_source_receipts": {
+    "captured_by_barrot": false,
+    "raw_source_sha256_receipts_created": false,
+    "trusted_timestamp_created": false,
+    "model_eligible": false
+  },
+  "decisions": {
+    "forecast": "NOT_ISSUED",
+    "merge": "BLOCKED",
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  }
+}

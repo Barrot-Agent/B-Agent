@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107-ousd-official-coinbase-contract-and-same-ticker-identity-reconciliation",
+  "artifact_type": "openusd_contract_identity_coinbase_listing_and_same_ticker_collision",
+  "mission": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as the execution, orchestration, safety and verification foundation.",
+  "source_capture": {
+    "retrieval_date_utc": "2026-11-07",
+    "exact_network_retrieval_clock_available": false,
+    "raw_full_page_bytes_preserved": false,
+    "http_headers_preserved": false,
+    "hash_scope": "SHA-256 hashes authenticate exact UTF-8 excerpts stored in this artifact, not complete web pages or original HTTP wire bytes."
+  },
+  "source_independence": {
+    "groups": [
+      "open_standard_first_party_product",
+      "coinbase_first_party_platform",
+      "solscan_chain_explorer",
+      "tempo_chain_explorer"
+    ],
+    "qualification": "Coinbase is both a platform source and a network partner. Open Standard's marketing/integration statements and Coinbase's platform statements are not independent confirmations of reserve quality or settlement volume. Solscan and Tempo are separate explorer sources with chain-specific scope."
+  },
+  "official_ousd": {
+    "name": "Open USD",
+    "symbol": "OUSD",
+    "issuer": "Bridge Building Inc.",
+    "operator": "Open Standard",
+    "supported_networks": [
+      "Base",
+      "Ethereum",
+      "Solana",
+      "Tempo"
+    ],
+    "xrpl_supported": false,
+    "contracts": {
+      "Base": "0xB2000000000000000000002fEb517dFeC7415344",
+      "Ethereum": "0x9f6F3991D525015a6F8CaF062C83b62fD3AC4436",
+      "Solana": "ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB",
+      "Tempo": "0x20c0000000000000000000006a37DA5C996874BE"
+    },
+    "official_openstandard_source": {
+      "url": "https://joinopenstandard.com/integrate",
+      "claims": [
+        "OUSD is issued by Bridge Building Inc.",
+        "OUSD is supported natively on Base, Ethereum, Solana and Tempo.",
+        "Coinbase is listed as an integration path and exchange venue.",
+        "The Open Standard partner roster includes Coinbase, Ripple, BlackRock, BNY and Sumitomo Mitsui Financial Group."
+      ]
+    }
+  },
+  "coinbase_listing": {
+    "source_url": "https://www.coinbase.com/price/ousd",
+    "source_type": "first_party_coinbase_asset_page",
+    "retrieval_date_utc": "2026-11-07",
+    "claims": {
+      "official_asset_name": "OpenUSD",
+      "symbol": "OUSD",
+      "centralized_exchange_availability": "Coinbase page explicitly states OpenUSD is currently available on Coinbase's centralized exchange.",
+      "displayed_price_usd": 1,
+      "displayed_market_cap_usd": 904990000,
+      "displayed_circulating_supply_ousd": 909000000,
+      "displayed_total_supply_ousd": 909000000,
+      "displayed_24h_volume_usd": 561770
+    },
+    "data_quality": "Coinbase platform-displayed market statistics; no provider event timestamp or independent issuer reserve attestation is attached to these displayed metrics. Supply is rounded."
+  },
+  "solana_chain_observation": {
+    "source_url": "https://solscan.io/token/ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB",
+    "source_type": "Solscan token explorer",
+    "retrieval_date_utc": "2026-11-07",
+    "official_mint": "ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB",
+    "displayed_name": "OpenUSD (OUSD)",
+    "displayed_current_supply": 83453579.90664,
+    "displayed_price_usd": 0.9999,
+    "displayed_market_cap_usd": 83445234.54,
+    "qualification": "This is the Solana token supply only, not total multi-chain OUSD supply. It is not directly comparable to Coinbase's rounded 909M aggregate supply without a cross-chain issuance/bridge reconciliation."
+  },
+  "tempo_chain_observation": {
+    "source_url": "https://explore.tempo.xyz/address/0x20c0000000000000000000006a37DA5C996874BE",
+    "source_type": "Tempo explorer",
+    "retrieval_date_utc": "2026-11-07",
+    "official_contract": "0x20c0000000000000000000006a37DA5C996874BE",
+    "displayed_observation": "No transactions found; no transfers found; 0 transfers.",
+    "qualification": "A page-level explorer observation only. It does not prove that the contract is inactive, that indexing is complete, or that OUSD has no use on other supported networks."
+  },
+  "same_ticker_token_collision": {
+    "source_url": "https://www.coinbase.com/how-to-buy/open-standard-solana-ddxswhpujlpvu7937zrssur1rmo9vbbejtzufyqlpump-token",
+    "source_type": "Coinbase DEX how-to page for a different token",
+    "displayed_name": "Open Standard",
+    "displayed_symbol": "OUSD",
+    "displayed_price_usd": 0.000005497,
+    "displayed_market_cap_usd": 5497.32,
+    "displayed_supply": 1000000000,
+    "page_scope": "DEX-only token guide",
+    "solana_mint_in_url": "ddxswhpujlpvu7937zrssur1rmo9vbbejtzufyqlpump",
+    "official_openusd_solana_mint": "ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB",
+    "identity_decision": "DISTINCT_TOKEN_SAME_TICKER_OR_NEAR_IDENTICAL_NAME",
+    "caution": "Do not label this separate Open Standard token as official Open USD (Bridge Building Inc.). The address and displayed economics differ materially. The evidence establishes a distinct token identity, not malicious intent."
+  },
+  "exact_excerpt_receipts": [
+    {
+      "source_id": "coinbase_official_addresses",
+      "source_url": "https://www.coinbase.com/price/ousd",
+      "excerpt": "Network  | Address  |\nBase  | 0xB2000000000000000000002fEb517dFeC7415344  |\nEthereum  | 0x9f6F3991D525015a6F8CaF062C83b62fD3AC4436  |\nSolana  | ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB  |\nTempo  | 0x20c0000000000000000000006a37DA5C996874BE  |",
+      "sha256": "a6fde0b1372962e7cd9da5148a801ba10b49304b7a6957083c6c938121067924"
+    },
+    {
+      "source_id": "coinbase_official_centralized_exchange",
+      "source_url": "https://www.coinbase.com/price/ousd",
+      "excerpt": "Can I buy OpenUSD on Coinbase?\nYes, OpenUSD is currently available on Coinbase’s centralized exchange.",
+      "sha256": "ae215b9e74ea01cb46ce5dcbb8a26240652fa3059b324881d0ab2353a8045e40"
+    },
+    {
+      "source_id": "coinbase_lookalike",
+      "source_url": "https://www.coinbase.com/how-to-buy/open-standard-solana-ddxswhpujlpvu7937zrssur1rmo9vbbejtzufyqlpump-token",
+      "excerpt": "Open Standard Price $0.000005497. Coinbase users in United States can buy Open Standard via DEX trading on Coinbase. While Open Standard does not directly trade on Coinbase’s centralized exchange, you can still buy, sell, and manage it using Coinbase’s decentralized exchange trading experience (DEX).",
+      "sha256": "9f1e633e23db9eb79de9030575bad4b919061270c1a621dd17261d57e1f3f9ee"
+    },
+    {
+      "source_id": "solscan_official_solana_mint",
+      "source_url": "https://solscan.io/token/ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB",
+      "excerpt": "Token Name\nOpenUSD (OUSD)\nCurrent Supply\n83,453,579.90664\nToken Address\nousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB",
+      "sha256": "018725c215dd7d1c4fc97d9c17da2c4410fc4de70f17203c1f33e17e20f63942"
+    },
+    {
+      "source_id": "tempo_explorer",
+      "source_url": "https://explore.tempo.xyz/address/0x20c0000000000000000000006a37DA5C996874BE",
+      "excerpt": "OpenUSD OUSD\nAddress\n0x20c0000000000000000000006a37DA5C996874BE\nNo transactions found.\nNo transfers found.\n0 transfers",
+      "sha256": "18a14b291163d315d41fe0e1723be67350a2a6bfb6ea2a38b6c32766ec0d213c"
+    },
+    {
+      "source_id": "coinbase_market_snapshot",
+      "source_url": "https://www.coinbase.com/price/ousd",
+      "excerpt": "OpenUSD Price (OUSD)\n$1.00\nMarket Cap\n$904.99M\nCirc. Supply\n909M OUSD\nTotal Supply\n909M OUSD\nVolume (24H)\n$561.77K",
+      "sha256": "1a306cf8cfcc7d42d00736870df928bd19f1116a3a11b42817f40ed13e101d27"
+    }
+  ],
+  "reconciled_findings": [
+    "Official OUSD is a Bridge Building Inc.-issued Open Standard stablecoin, operated by Open Standard.",
+    "Coinbase's official OpenUSD asset page identifies the official four-network contract set and says the asset is available on Coinbase's centralized exchange.",
+    "A separate Coinbase DEX guide for a token named Open Standard with ticker OUSD refers to a different Solana mint and a roughly $0.0000055 token. It is not the official $1 OpenUSD contract.",
+    "The Solscan supply is the Solana-chain component only; Coinbase's 909M supply is a rounded platform aggregate. Do not subtract or average these figures without cross-chain accounting.",
+    "The Tempo explorer showed no transactions/transfers at retrieval. Treat that as a scoped explorer observation, not a network-wide inactivity conclusion.",
+    "The official OUSD network list does not include XRPL. No XRP bridge use, XRP purchases, XRP collateral or XRP settlement volume is established by these sources.",
+    "SBI/Startale's JPYSC-OUSD interoperability work remains an exploratory PoC; JPYSC public-chain distribution was still described as future in SBI's November 2 release. The OUSD listing does not turn the JPYSC-OUSD PoC into a live XRP route."
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "OUSD_SUBSTITUTION",
+      "statement": "A Coinbase-listed, multi-chain USD stablecoin with Open Standard partner distribution could substitute for XRP in some USD-denominated settlement corridors.",
+      "supporting_evidence": [
+        "Official Coinbase CEX availability",
+        "Base/Ethereum/Solana/Tempo deployment",
+        "Open Standard partner network includes Coinbase and Ripple"
+      ],
+      "disconfirming_evidence": [
+        "No transaction-level corridor data or XRP displacement measurement",
+        "SBI/Startale JPYSC-OUSD work remains a PoC",
+        "OUSD's existence does not establish that any specific payment route uses it instead of XRP"
+      ]
+    },
+    {
+      "id": "OUSD_COMPLEMENTARITY",
+      "statement": "OUSD, JPYSC, USDC, RLUSD and XRP may coexist in multi-rail institutional workflows, with route choice depending on liquidity, custody, compliance and redemption access.",
+      "supporting_evidence": [
+        "Separate SBI relationships with Circle, Ripple/Standard Custody and Open Standard",
+        "Multiple stablecoin networks and custody providers"
+      ],
+      "disconfirming_evidence": [
+        "No production JPYSC-OUSD route, XRPL OUSD contract or measured XRP intermediary flow is established"
+      ]
+    }
+  ],
+  "model_admission": {
+    "event_timeline_only": true,
+    "xrp_price_feature": false,
+    "xrp_exchange_flow_feature": false,
+    "xrp_demand_measure": false,
+    "reason": "This artifact resolves stablecoin identity, listing and network scope. It contains no transaction-level XRP linkage or synchronized price/flow feature."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "shadow_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false
+  }
+}

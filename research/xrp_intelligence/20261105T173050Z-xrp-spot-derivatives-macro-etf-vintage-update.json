@@ -1,0 +1,371 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_spot_derivatives_macro_etf_vintage_update_20261105T173050Z",
+  "artifact_type": "append_only_spot_derivatives_macro_and_etf_vintage_reconciliation",
+  "title": "XRP November 5 late-session repricing, asynchronous derivatives and ETF vintages",
+  "recorded_at_utc": "2026-11-05T17:30:50Z",
+  "research_cutoff_utc": "2026-11-05T17:30:50Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "append_only": {
+    "original_artifacts_modified": false,
+    "purpose": "Preserve a later Kraken spot observation and reconcile it with an earlier cross-venue composite, lagged derivatives dashboard, ETF reporting vintages and same-day macro/security context without treating asynchronous observations as a single synchronized market state."
+  },
+  "source_capture_policy": {
+    "raw_bytes_preserved": false,
+    "raw_source_sha256_receipts": null,
+    "rendered_extract_sha256_receipts": null,
+    "independent_timestamp_anchors": false,
+    "model_eligible": false,
+    "forecast_issued": false,
+    "reason": "The public Kraken API body and public pages were retrieved through a rendered web interface. The Kraken response has no provider event timestamp; the other sources have distinct update times and incomplete/raw issuer data. No rendered extract is represented as an original byte-exact HTTP receipt."
+  },
+  "source_registry": [
+    {
+      "source_id": "kraken_xrpusd_ticker_20261105T173050Z",
+      "publisher": "Kraken",
+      "source_type": "public_exchange_rest_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "publisher_event_time_utc": null,
+      "independence_group": "kraken_spot_exchange",
+      "raw_capture_status": "web_rendered_json_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "No provider event timestamp or sequence identifier in the returned ticker.",
+        "Single venue; not a consolidated market quote or full depth snapshot.",
+        "The o field is the current UTC-day open, not a rolling 24-hour open.",
+        "The API response is a rendered extract, not a byte-exact archived HTTP payload."
+      ]
+    },
+    {
+      "source_id": "chartexchange_xrpusd_composite_20261105T112640Z",
+      "publisher": "ChartExchange",
+      "source_type": "multi_venue_spot_composite_and_historical_tape",
+      "url": "https://chartexchange.com/symbol/crypto-xrpusd/historical/",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "publisher_updated_at_utc": "2026-11-05T11:26:40Z",
+      "independence_group": "chartexchange_composite",
+      "raw_capture_status": "rendered_page_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "venue_observations": {
+        "composite_usd": 1.31793,
+        "coinbase_usd": 1.3181,
+        "bitstamp_usd": 1.31793,
+        "bitfinex_usd": 1.32,
+        "gemini_usd": 1.31838
+      },
+      "limitations": [
+        "Observation is more than six hours earlier than the Kraken ticker retrieval.",
+        "Venue universe and composite methodology differ from the single-venue Kraken quote.",
+        "Historical table volume is not directly comparable with Kraken's single-venue 24-hour volume."
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_perpetuals_20261105T124500Z",
+      "publisher": "TradRadar",
+      "source_type": "seven_exchange_perpetuals_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "publisher_updated_at_utc": "2026-11-05T12:45:00Z",
+      "stated_delay_minutes": 15,
+      "independence_group": "tradradar_aggregated_perpetual_feeds",
+      "underlying_data_independence_group": "overlapping_multi_exchange_perpetual_feeds",
+      "raw_capture_status": "rendered_page_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "venue_coverage": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "Bitget",
+        "MEXC",
+        "Hyperliquid",
+        "OKX"
+      ],
+      "limitations": [
+        "Snapshot is 4 hours 45 minutes older than the Kraken ticker retrieval and is not synchronized with the late-session spot observation.",
+        "USD open interest is not contract quantity.",
+        "Long/short ratio is account-based, not notional exposure.",
+        "Liquidations are a lower bound and underlying feeds overlap other aggregators."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_etf_data_20261105",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_holdings_derived_etf_flow_aggregator",
+      "url": "https://xrp-insights.com/data",
+      "data_url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "data_as_of": "2026-11-03",
+      "independence_group": "issuer_published_etf_holdings_files",
+      "raw_capture_status": "rendered_page_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The Nov 2–3 figure is a two-settled-session holdings delta, not direct AP cash records.",
+        "The Nov 4 row remains provisional until re-settled.",
+        "BITW is a multi-asset index sleeve; GXRP flow is withheld; XRPR direct-only holdings do not represent indirect exposure."
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_vintage_20261105",
+      "publisher": "CryptoKeyhole",
+      "source_type": "issuer_file_derived_etf_holdings_and_flow_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "data_as_of": "2026-11-03",
+      "independence_group": "issuer_published_etf_holdings_files",
+      "raw_capture_status": "rendered_page_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "fund_universe": [
+        "Bitwise XRP",
+        "Franklin XRPZ",
+        "Canary XRPC",
+        "21Shares TOXR"
+      ],
+      "limitations": [
+        "Latest complete holdings table shown is Nov 3; issuer file timestamps extend into Nov 4–5 but do not establish synchronized fund-level cash creations/redemptions.",
+        "GXRP is not collected daily and no workaround was used for its bot challenge.",
+        "Underlying issuer files overlap other ETF aggregators."
+      ]
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_vintage_20261103",
+      "publisher": "Alpha Finance",
+      "source_type": "five_fund_etf_flow_aggregator",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "data_through": "2026-11-03",
+      "independence_group": "issuer_published_etf_holdings_files",
+      "raw_capture_status": "rendered_page_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Five-fund dashboard through Nov 3; not a Nov 5 flow observation.",
+        "Flow values are holdings-derived and are not direct AP cash settlement records.",
+        "Underlying issuer files overlap other aggregators."
+      ]
+    },
+    {
+      "source_id": "ap_us_equity_risk_off_20261105",
+      "publisher": "Associated Press",
+      "source_type": "same_day_macro_news_report",
+      "url": "https://apnews.com/article/7ee9c212805aa5e70cf34d25aab7a36e",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "publication_date": "2026-11-05",
+      "publication_time_utc": null,
+      "independence_group": "associated_press",
+      "raw_capture_status": "rendered_article_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Broad US equity context only; no XRP causal attribution.",
+        "Exact publication timestamp was not exposed in the retrieved extract."
+      ]
+    },
+    {
+      "source_id": "reuters_boe_rate_and_iran_energy_context_20261105",
+      "publisher": "Reuters",
+      "source_type": "same_day_macro_geopolitical_news_report",
+      "url": "https://www.reuters.com/world/uk/view-bank-of-england-delivers-first-rate-hike-in-three-years-gilt-yields-rise-2026-11-05/",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "publication_date": "2026-11-05",
+      "independence_group": "reuters",
+      "raw_capture_status": "rendered_article_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "UK monetary policy and energy-inflation context; not direct evidence of XRP flows or price causality."
+      ]
+    },
+    {
+      "source_id": "reuters_binance_bank_supervisory_outreach_20261105",
+      "publisher": "Reuters",
+      "source_type": "same_day_crypto_security_and_regulatory_news_report",
+      "url": "https://www.reuters.com/legal/government/binance-hack-prompted-us-regulators-check-bank-systems-sources-say-2026-11-05/",
+      "retrieved_at_utc": "2026-11-05T17:30:50Z",
+      "publication_date": "2026-11-05",
+      "independence_group": "reuters",
+      "raw_capture_status": "rendered_article_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Reported supervisory outreach based on sources; Fed and OCC declined comment and Binance said it was unaware of the discussions.",
+        "No XRP-specific flow or direct market-impact attribution."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "observation_window": "2026-11-05 11:26:40–17:30:50 UTC; sources are asynchronous",
+    "kraken_spot": {
+      "pair": "XRP/USD",
+      "last_usd": 1.23809,
+      "best_bid_usd": 1.23799,
+      "best_ask_usd": 1.23831,
+      "midpoint_usd": 1.23815,
+      "spread_usd": 0.00032,
+      "spread_bps": 2.584501070145765,
+      "volume_24h_xrp": 31257313.53273539,
+      "vwap_24h_usd": 1.28839824,
+      "high_24h_usd": 1.32583,
+      "low_24h_usd": 1.23349,
+      "utc_day_open_usd": 1.3041,
+      "utc_day_open_label": "current UTC-day open; not a rolling 24-hour open",
+      "last_vs_vwap_pct": -3.904711946827877,
+      "last_vs_utc_day_open_pct": -5.0617283950617376,
+      "last_vs_24h_low_pct": 0.37292560134252195,
+      "provider_event_time_utc": null
+    },
+    "earlier_cross_venue_composite": {
+      "publisher": "ChartExchange",
+      "updated_at_utc": "2026-11-05T11:26:40Z",
+      "composite_usd": 1.31793,
+      "venue_quotes_usd": {
+        "coinbase": 1.3181,
+        "bitstamp": 1.31793,
+        "bitfinex": 1.32,
+        "gemini": 1.31838
+      },
+      "reported_24h_volume_xrp": 68722764,
+      "comparison_to_later_kraken_pct": -6.057984870213151,
+      "elapsed_seconds": 21850,
+      "interpretation_limit": "The approximately 6.06% difference is a cross-source, asynchronous comparison, not a synchronized return series or executable cross-venue arbitrage observation."
+    },
+    "derivatives": {
+      "tradradar": {
+        "updated_at_utc": "2026-11-05T12:45:00Z",
+        "mark_price_usd": 1.305,
+        "price_change_24h_pct": 1.86,
+        "open_interest_usd": 2040000000,
+        "open_interest_change_24h_pct": 2.21,
+        "funding_rate_pct_per_8h": 0.01,
+        "liquidations_24h_min_usd": 5350000,
+        "long_liquidations_usd": 1750000,
+        "short_liquidations_usd": 3600000,
+        "long_short_account_ratio": 3.21,
+        "long_accounts_pct": 76.2
+      },
+      "synchronization_warning": "This dashboard snapshot predates the later Kraken spot observation by 4h45m. It cannot be used to infer the derivatives state at 17:30 UTC."
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "data_as_of": "2026-11-03",
+        "net_flow_xrp_nov2_to_nov3": -194875,
+        "trading_days_in_aggregate": 2,
+        "total_holdings_xrp": 1196405311,
+        "nov4_row_status": "provisional_until_re_settled"
+      },
+      "cryptokeyhole": {
+        "latest_complete_holdings_date": "2026-11-03",
+        "funds_covered": 4,
+        "issuer_file_stamps_through": "2026-11-05",
+        "daily_cash_creation_redemption_data": false
+      },
+      "alpha_finance": {
+        "data_through": "2026-11-03",
+        "funds_covered": 5,
+        "net_flow_usd_oct23_to_nov3": 4800000,
+        "net_flow_usd_last_30_sessions": 98900000,
+        "cumulative_net_flow_usd_since_launch": 1730000000
+      },
+      "reconciliation": {
+        "aggregation": "not_averaged",
+        "cash_flow_status": "No direct AP cash creation/redemption ledger was retrieved; publisher outputs are holdings-derived or vintage-limited.",
+        "interpretation_limit": "Do not compare a two-session XRP-denominated holdings delta, a latest-complete four-fund holdings table and a five-fund USD flow series as if they were the same daily cash-flow measurement."
+      }
+    }
+  },
+  "macro_context": {
+    "reported_observations": {
+      "ap_sp500_change_pct": -3.2,
+      "ap_nasdaq_change_pct": -4.9,
+      "ap_dow_point_change": -1079,
+      "boe_policy_rate_pct": 4,
+      "boe_change_bps": 25,
+      "boe_vote": "8-1",
+      "geopolitical_driver_reported": "Iran conflict and energy-price inflation"
+    },
+    "interpretation_limit": "These are contemporaneous risk and rates context. They do not prove that macro news caused the XRP move."
+  },
+  "crypto_security_context": {
+    "binance_incident": "Reuters reports Federal Reserve and OCC supervisors contacted banks after the reported Binance security incident. Fed and OCC declined comment; Binance said it was unaware of those discussions.",
+    "interpretation_limit": "Regulatory outreach is not evidence of XRP-specific enforcement, an XRP exchange outflow or a causal explanation for the spot move."
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "broad_risk_off_and_rates",
+      "claim": "The XRP decline is partly consistent with broad risk aversion and energy-driven inflation/rate uncertainty.",
+      "supporting_evidence": [
+        "Same-day AP report of US equity weakness.",
+        "Reuters report of a Bank of England rate increase amid energy-inflation risks."
+      ],
+      "disconfirming_evidence": [
+        "No synchronized XRP-versus-BTC/ETH/broad-risk return panel was captured.",
+        "No causal event study was performed."
+      ]
+    },
+    {
+      "hypothesis_id": "xrp_specific_spot_supply",
+      "claim": "XRP-specific spot selling or thin executable bids may have amplified the decline.",
+      "supporting_evidence": [
+        "Later Kraken last is near its reported 24-hour low and below its 24-hour VWAP."
+      ],
+      "disconfirming_evidence": [
+        "Only one late-session venue book was captured; no synchronized multi-venue depth or trade-signing data is available.",
+        "ETF data is stale/provisional and does not establish Nov 5 net cash flow."
+      ]
+    },
+    {
+      "hypothesis_id": "derivatives_positioning_shift",
+      "claim": "Perpetual positioning may have changed during the decline, potentially amplifying volatility.",
+      "supporting_evidence": [
+        "Earlier TradRadar snapshot showed rising USD-notional OI and positive funding with a long-skewed account ratio."
+      ],
+      "disconfirming_evidence": [
+        "That snapshot is 4h45m older than the Kraken ticker and showed shorts, not longs, accounting for the larger reported liquidations.",
+        "No synchronized venue-level contract quantities, liquidations and spot aggressor flow were captured."
+      ]
+    },
+    {
+      "hypothesis_id": "venue_and_vintage_mismatch",
+      "claim": "Part of the apparent cross-source move and flow disagreement reflects asynchronous windows and different aggregation universes.",
+      "supporting_evidence": [
+        "ChartExchange and Kraken observations are more than six hours apart.",
+        "ETF sources use different fund universes, currencies, settlement dates and completeness rules."
+      ],
+      "disconfirming_evidence": [
+        "This explains measurement disagreement, not the full observed decline in Kraken's own 24-hour range."
+      ]
+    },
+    {
+      "hypothesis_id": "binance_security_contagion",
+      "claim": "The Binance incident and supervisory outreach may have affected broader crypto risk sentiment.",
+      "supporting_evidence": [
+        "Reuters reported bank supervisory outreach following the security incident."
+      ],
+      "disconfirming_evidence": [
+        "No direct XRP exchange-flow, custody or counterparty exposure link was established.",
+        "Regulator contact does not establish market causation."
+      ]
+    }
+  ],
+  "admission": {
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "reason": "No byte-exact raw-source receipts, independent event-time anchors, synchronized cross-venue spot/depth/derivatives panel or current issuer-level ETF cash-flow vintages. This artifact is for research chronology and source disagreement only."
+  },
+  "next_research_actions": [
+    "Capture exchange responses byte-for-byte with provider event/sequence times through the read-only ingestion adapter.",
+    "Obtain synchronized Coinbase, Kraken and Binance spot trades/depth with aggressor-side classification and common cutoffs.",
+    "Collect contract-quantity open interest, funding, liquidations and account/notional ratios per venue at the same event cutoff.",
+    "Retrieve issuer-level ETF holdings/share counts and AP creation/redemption evidence with first-publication and revision timestamps.",
+    "Align XRP, BTC, ETH, equity index, rates, oil and USD returns to test broad-risk versus XRP-specific hypotheses."
+  ]
+}

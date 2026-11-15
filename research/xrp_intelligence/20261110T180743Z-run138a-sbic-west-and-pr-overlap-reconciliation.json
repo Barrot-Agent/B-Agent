@@ -1,0 +1,239 @@
+{
+  "schema_version": "barrot.identity_and_integration_reconciliation.v1",
+  "run_id": "138A",
+  "captured_at_utc": "2026-11-10T18:07:43Z",
+  "research_cutoff_utc": "2026-11-10T18:07:43Z",
+  "topic": "SBIC East/Central/West ChatGPT references, Kamilah Stevenson channel identity gate, and source-PR overlap reconciliation for PR #1660",
+  "sbic": {
+    "legal_identity_source": "https://www.sbic-wj.co.jp/disclose/law/",
+    "conclusion": "Tokyo (East), Nagoya (Central), and Osaka (West) are three separate Japanese statutory companies under the Small and Medium Business Investment & Consultation Companies Act, distinct from SBI Holdings, Inc.",
+    "primary_event_sources": [
+      {
+        "entity": "SBIC East / Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "url": "https://www.sbic.co.jp/seminar/20260305js/",
+        "event_date": "2026-03-05",
+        "subject": "Generative AI / ChatGPT: current state and future",
+        "status": "OFFICIAL_EVENT_PAGE",
+        "finding": "Tokyo SBIC hosted a ChatGPT-focused educational seminar; Microsoft Japan executive presented and demonstrated use cases. No OpenAI partnership or procurement disclosed."
+      },
+      {
+        "entity": "SBIC East / Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "url": "https://www.sbic.co.jp/training/20250612co/",
+        "event_date": "2025-06-12/2025-06-13",
+        "subject": "Generative AI and machine-learning introductory training",
+        "status": "OFFICIAL_TRAINING_PAGE",
+        "finding": "Investee-company training included ChatGPT use, Copilot, RAG and API implementation. Educational use only."
+      },
+      {
+        "entity": "SBIC West / Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "event_date": "2024-10-23",
+        "subject": "Generative AI introductory seminar for accounting firms and support organizations",
+        "status": "OFFICIAL_PDF",
+        "finding": "Official SBIC West publication advertises a ChatGPT-focused generative-AI seminar. Educational event only; no OpenAI commercial relationship disclosed."
+      },
+      {
+        "entity": "SBIC Central / Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "url": "https://www.sbic-cj.co.jp/news/5077/",
+        "event_date": "2026-07-31",
+        "subject": "Investee-company generative-AI roundtable",
+        "status": "OFFICIAL_EVENT_PAGE",
+        "finding": "Generative-AI experience sharing and practical-use discussion; the page does not name ChatGPT or OpenAI."
+      }
+    ],
+    "exact_phrase": "SBIC, ChatGPT SBIC",
+    "exact_phrase_match": false,
+    "partnership_established": false,
+    "interpretation": "Public primary sources establish regional educational activity around ChatGPT/generative AI at Tokyo and Osaka SBIC, and a generative-AI roundtable at Nagoya SBIC. They do not establish an OpenAI partnership, a shared SBIC procurement, SBI Holdings involvement, or an XRP relationship.",
+    "source_independence": "The three companies are legally distinct but share a statutory framework; each event page is primary evidence for its own event. Do not treat them as three independent confirmations of a commercial partnership.",
+    "model_eligible": false,
+    "raw_pdf_bytes_preserved": false
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "status": "UNRESOLVED",
+      "candidate": "Permission Coin (ASK)",
+      "direct_xrp_relationship": "NOT_ESTABLISHED",
+      "model_eligible": false
+    },
+    "actual_capital": {
+      "status": "NO_STANDARDIZED_XRP_METRIC_FOUND",
+      "required_separation": [
+        "cash subscribed",
+        "cash received",
+        "cash deployed to buy XRP",
+        "in-kind XRP",
+        "debt issued and drawn",
+        "contingent equity capacity",
+        "warrants",
+        "secondary resales",
+        "on-chain custody transfers"
+      ],
+      "model_eligible": false
+    },
+    "Kamilah Stevenson YouTube": {
+      "person_identity": "not used to infer channel ownership",
+      "discovery": "Third-party directories surfaced multiple same-name channels and conflicting subscriber snapshots (including approximately 143K and 138K for a similarly branded channel), plus several small similarly named channels.",
+      "cross_link": "A third-party Telegram bio points to a YouTube handle with a trailing 'a'; no reciprocal first-party link or verified ownership chain was found.",
+      "verified_channel_ownership": false,
+      "verified_personal_video_inventory_count": 0,
+      "action": "Do not attribute videos to the person until a first-party website/social profile or verified channel cross-link confirms ownership."
+    }
+  },
+  "pull_request_reconciliation": {
+    "main_sha": "e35f3d16b842d0f75847dd4bb0b51531f38c5f38",
+    "integration_head": "26980d28cda7f68b09780a3706b6186e5c18c7d6",
+    "successor_pr": 1660,
+    "successor_changed_files_before_this_addendum": 951,
+    "successor_ahead_by": 1914,
+    "successor_behind_by": 0,
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 358,
+      "non_drafts": 15
+    },
+    "pr_1640": {
+      "changed_paths": 280,
+      "paths_in_successor": 280,
+      "unique_paths_outside_successor": 0
+    },
+    "pr_1643": {
+      "changed_paths": 670,
+      "paths_in_successor": 670,
+      "unique_paths_outside_successor": 0
+    },
+    "pr_1640_pr_1643": {
+      "shared_paths": 8,
+      "union_paths": 942,
+      "union_paths_in_successor": 942,
+      "successor_only_paths_before_this_addendum": 9
+    },
+    "pr_1642": {
+      "changed_paths": 7,
+      "paths_in_successor": 7,
+      "unique_paths_outside_successor": 0
+    },
+    "dependabot": {
+      "pr_1644": {
+        "paths": 8,
+        "all_paths_in_successor": true,
+        "content_status": "PARTIAL: checkout@v7 appears in active safe workflows, but self-upgrade, IBM Bob and subagent-matrix paths are quarantined rather than retaining their previous executable jobs."
+      },
+      "pr_1645": {
+        "paths": 1,
+        "all_paths_in_successor": true,
+        "verified": "actions/download-artifact@v8 in webmcp-monetization-enrich.yml"
+      },
+      "pr_1646": {
+        "paths": 1,
+        "all_paths_in_successor": true,
+        "verified": "types-requests>=2.33.0.20261030 in requirements-dev.txt"
+      },
+      "pr_1647": {
+        "paths": 6,
+        "all_paths_in_successor": true,
+        "content_status": "PARTIAL: upload-artifact@v7 is present in active safe workflows; IBM Bob and subagent-matrix paths are quarantined."
+      },
+      "pr_1648": {
+        "paths": 1,
+        "all_paths_in_successor": true,
+        "verified": "pytest>=9.2.0 in requirements-dev.txt"
+      },
+      "pr_1649": {
+        "paths": 1,
+        "all_paths_in_successor": true,
+        "verified": "databricks-sdk>=0.158.0 in legacy/requirements_legacy.txt"
+      },
+      "pr_1650": {
+        "paths": 1,
+        "all_paths_in_successor": true,
+        "verified": "huggingface_hub>=2.4.0 in legacy/requirements_legacy.txt"
+      }
+    },
+    "pr_1653": {
+      "changed_paths": 7,
+      "paths_in_successor": 1,
+      "unique_paths": 6,
+      "shared_path": ".github/workflows/ci.yml",
+      "unique_paths_preserved": [
+        "barrot_agent/mcp_adapters.py",
+        "barrot_agent/mcp_discovery.py",
+        "barrot_agent/mcp_targets.py",
+        "barrot_agent/repository/codebase_memory.py",
+        "docs/REPOSITORY_INTELLIGENCE.md",
+        "tests/test_codebase_memory.py"
+      ],
+      "unresolved_review_threads": 8,
+      "status": "UNIQUE_UNREVIEWED_PRESERVE"
+    },
+    "close_policy": "No source PRs closed. PRs #1640/#1643/#1642 and dependency PRs may be closed only after #1660 merges and each exact content/functional requirement is verified on main. #1644/#1647 require explicit treatment of quarantined workflow functionality before closure."
+  },
+  "workflow_safety": {
+    "changed_workflow_files": 44,
+    "quarantined_files": 25,
+    "operational_parity_gap": true,
+    "interpretation": "Quarantine prevents unsafe unattended main writes, unapproved provider data transfer, direct main commits and broad tool invocation. It also pauses several Barrot V3 automation entry points. Restore safe branch-only, artifact-first, least-privilege replacements; do not re-enable legacy jobs unchanged.",
+    "no_workflow_dispatch_performed": true,
+    "no_external_action_performed": true
+  },
+  "verification_on_parent_head": {
+    "head": "26980d28cda7f68b09780a3706b6186e5c18c7d6",
+    "push_ci": {
+      "run_id": 42871250382,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42871250382",
+      "result": "success",
+      "passed": 3363,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_pct": 59.58,
+      "duration_seconds": 78.66
+    },
+    "pr_ci": {
+      "run_id": 42871260747,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42871260747",
+      "result": "success",
+      "passed": 3363,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_pct": 59.58,
+      "duration_seconds": 73.12
+    },
+    "push_dependency_audit": {
+      "run_id": 42871250045,
+      "result": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "pr_dependency_audit": {
+      "run_id": 42871260574,
+      "result": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "push_fail_closed_gate": {
+      "run_id": 42871250049,
+      "result": "success",
+      "automatic_merge_disabled": true
+    },
+    "pr_fail_closed_gate": {
+      "run_id": 42871260523,
+      "result": "success",
+      "automatic_merge_disabled": true
+    },
+    "installed_wheel": "Barrot V3, primary XRP mission and canonical resources verified"
+  },
+  "safety": {
+    "forecast_status": "NOT_ISSUED",
+    "main_write": false,
+    "merge_performed": false,
+    "deployment_performed": false,
+    "external_model_data_transfer": false,
+    "branch_protection_details": "UNVERIFIED_HTTP_403",
+    "main_branch_protected": true,
+    "fallback_ruleset": "DISABLED",
+    "pages_publication_authorized": false,
+    "formal_reviews_pr_1660": 0,
+    "approvals_pr_1660": 0,
+    "merge_decision": "BLOCKED"
+  }
+}

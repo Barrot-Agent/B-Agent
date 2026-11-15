@@ -1,0 +1,388 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_live_market_snapshot",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": "XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
+  "captured_at_utc": "2026-11-04T15:47:05Z",
+  "data_cutoff_utc": "2026-11-04T15:47:05Z",
+  "ingested_at_utc": "2026-11-04T15:47:05Z",
+  "historical_replay_eligible_from_utc": null,
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261104T154705Z",
+      "publisher": "Kraken",
+      "source_type": "public_exchange_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XXRPZUSD",
+      "instrument": "XRP/USD spot",
+      "retrieved_at_utc": "2026-11-04T15:47:05Z",
+      "source_time_utc": null,
+      "capture_method": "public JSON endpoint response body retrieved through web access",
+      "raw_content_encoding": "UTF-8",
+      "raw_content_bytes": 320,
+      "raw_content_sha256": "615794bb64469661a8b28d7ce5e80a90fe22d97cefd3e630ce0257af7562ccf8",
+      "raw_response_body": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.32757000\",\"2043\",\"2043.000\"],\"b\":[\"1.32744000\",\"3270\",\"3270.000\"],\"c\":[\"1.32744000\",\"75.09680447\"],\"v\":[\"22586614.46090936\",\"33055310.52026051\"],\"p\":[\"1.27867337\",\"1.27904818\"],\"t\":[21734,31661],\"l\":[\"1.24016000\",\"1.24016000\"],\"h\":[\"1.34000000\",\"1.34000000\"],\"o\":\"1.27513000\"}}}",
+      "raw_capture_status": "exact_api_response_body_captured_in_run",
+      "independence_group": "kraken_spot_venue",
+      "model_eligible": false,
+      "limitations": [
+        "Ticker response has no source timestamp; retrieval time is run-level.",
+        "Ticker provides best bid/ask only, not a full depth curve.",
+        "One venue only."
+      ]
+    },
+    {
+      "id": "binance_xrpusdt_premium_index_20261104T153541Z",
+      "publisher": "Binance",
+      "source_type": "public_exchange_api",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "instrument": "XRPUSDT perpetual",
+      "retrieved_at_utc": "2026-11-04T15:47:05Z",
+      "source_time_utc": "2026-11-04T15:35:41Z",
+      "source_time_unix_ms": 1793806541000,
+      "capture_method": "public JSON endpoint response body retrieved through web access",
+      "raw_content_encoding": "UTF-8",
+      "raw_content_bytes": 219,
+      "raw_content_sha256": "7a9269d0702d985cdb642a26c9e3cabfd8aaaae36349cce9c49bca57150e50fd",
+      "raw_response_body": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.32100311\",\"indexPrice\":\"1.32076989\",\"estimatedSettlePrice\":\"1.32931819\",\"lastFundingRate\":\"0.00010000\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1793808000000,\"time\":1793806541000}",
+      "raw_capture_status": "exact_api_response_body_captured_in_run",
+      "independence_group": "binance_derivatives_venue",
+      "model_eligible": false,
+      "limitations": [
+        "The endpoint response timestamp is 11 minutes 24 seconds older than the snapshot capture.",
+        "Mark/index prices are not spot execution prices.",
+        "The endpoint does not provide open interest or liquidation data."
+      ]
+    },
+    {
+      "id": "tradradar_xrp_derivatives_20261104T1430Z",
+      "publisher": "TradRadar",
+      "source_type": "market_data_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-11-04T15:47:05Z",
+      "source_time_utc": "2026-11-04T14:30:00Z",
+      "capture_method": "web-rendered page extract",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "tradradar_derivatives_aggregation",
+      "model_eligible": false,
+      "limitations": [
+        "Seven-exchange aggregation; not a raw exchange receipt.",
+        "Page states a 15-minute delay but its displayed update time is 14:30 UTC, 77 minutes before this snapshot.",
+        "Displayed mark price $1.2846 is 3.23% below the Kraken spot observation and is not synchronized; do not use it as current spot."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_20261104T1043Z",
+      "publisher": "CryptoKeyhole",
+      "source_type": "ETF_flow_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "retrieved_at_utc": "2026-11-04T15:47:05Z",
+      "source_time_utc": "2026-11-04T10:43:00Z",
+      "capture_method": "web-rendered issuer-file aggregation page extract",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "cryptokeyhole_issuer_holdings_aggregation",
+      "model_eligible": false,
+      "limitations": [
+        "Page aggregates issuer holdings files; it is not a direct issuer flow report.",
+        "November 3 remains partial at 3 of 4 daily-reporting funds; Franklin Templeton XRPZ is missing.",
+        "Grayscale GXRP is not collected daily and REX-Osprey XRPR is excluded."
+      ]
+    },
+    {
+      "id": "xrpldashboard_fixcleanup_activation",
+      "publisher": "XRPL Dashboard",
+      "source_type": "node_backed_amendment_tracker",
+      "url": "https://xrpldashboard.com/amendments",
+      "retrieved_at_utc": "2026-11-04T15:25:33Z",
+      "source_time_utc": "2026-11-04T14:52:00Z",
+      "capture_method": "web-rendered tracker extract; prior run artifact",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "xrpldashboard_node_observer",
+      "model_eligible": false,
+      "limitations": [
+        "Node-backed public tracker; direct raw RPC response was not captured in this run."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_activation",
+      "publisher": "XRPLWin",
+      "source_type": "node_backed_amendment_tracker",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "retrieved_at_utc": "2026-11-04T15:25:33Z",
+      "source_time_utc": "2026-11-04T14:52:00Z",
+      "capture_method": "web-rendered tracker extract; prior run artifact",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "independence_group": "xrplwin_node_observer",
+      "model_eligible": false,
+      "limitations": [
+        "Node-backed public tracker; direct raw RPC response was not captured in this run."
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "spot": {
+      "venue": "Kraken",
+      "instrument": "XRP/USD",
+      "last_usd": 1.32744,
+      "best_bid_usd": 1.32744,
+      "best_ask_usd": 1.32757,
+      "spread_usd": 0.00013,
+      "spread_basis_points": 0.9793,
+      "best_bid_size_xrp": 3270,
+      "best_ask_size_xrp": 2043,
+      "volume_24h_xrp": 33055310.52026051,
+      "trades_24h": 31661,
+      "vwap_24h_usd": 1.27904818,
+      "high_24h_usd": 1.34,
+      "low_24h_usd": 1.24016,
+      "daily_open_utc_usd": 1.27513,
+      "last_vs_daily_open_pct": 4.1023,
+      "source_id": "kraken_xrpusd_ticker_20261104T154705Z",
+      "model_eligible": false,
+      "limitations": [
+        "Single venue.",
+        "Best bid/ask is not full order-book depth.",
+        "Ticker has no source timestamp.",
+        "The open field is the UTC-day open, not a rolling 24-hour open."
+      ]
+    },
+    "order_book_depth": {
+      "status": "NOT_CAPTURED",
+      "best_bid_ask_only": true,
+      "reason": "The Kraken depth endpoint did not return a usable depth payload through the available retrieval path; Binance spot book and Coinbase public ticker/book endpoints were inaccessible. No multi-level depth or cross-venue liquidity claim is made."
+    },
+    "perpetuals": {
+      "venue": "Binance",
+      "instrument": "XRPUSDT perpetual",
+      "mark_price_usdt": 1.32100311,
+      "index_price_usdt": 1.32076989,
+      "estimated_settle_price_usdt": 1.32931819,
+      "funding_rate_decimal": 0.0001,
+      "funding_rate_pct_per_8h": 0.01,
+      "next_funding_time_utc": "2026-11-04T16:00:00Z",
+      "source_time_utc": "2026-11-04T15:35:41Z",
+      "retrieved_at_utc": "2026-11-04T15:47:05Z",
+      "age_at_capture_seconds": 684,
+      "stale_at_capture": true,
+      "source_id": "binance_xrpusdt_premium_index_20261104T153541Z",
+      "model_eligible": false,
+      "limitations": [
+        "The response is 11 minutes 24 seconds old at capture.",
+        "Perpetual mark/index is not spot execution price.",
+        "USDT and USD quotes are not normalized in this snapshot."
+      ]
+    },
+    "derivatives_aggregates": {
+      "publisher": "TradRadar",
+      "as_of_utc": "2026-11-04T14:30:00Z",
+      "open_interest_usd": 2020000000,
+      "open_interest_change_24h_pct": 0.57,
+      "funding_oi_weighted_pct_per_8h": 0.01,
+      "liquidations_24h_lower_bound_usd": 4120000,
+      "long_liquidations_usd": 3360000,
+      "short_liquidations_usd": 766550,
+      "long_short_account_ratio": 2.76,
+      "long_accounts_pct": 73.4,
+      "venue_count_open_interest": 7,
+      "venue_count_liquidations": 5,
+      "venue_count_long_short": 4,
+      "displayed_mark_price_usd": 1.2846,
+      "displayed_mark_price_vs_kraken_spot_pct": -3.2273,
+      "stale_or_unsynchronized_price": true,
+      "source_id": "tradradar_xrp_derivatives_20261104T1430Z",
+      "model_eligible": false,
+      "limitations": [
+        "Aggregator page timestamp is 14:30 UTC; not synchronized to Kraken's 15:47 capture.",
+        "Open-interest venue set differs from other providers and must not be averaged with them.",
+        "Long/short ratio is account-based, not notional exposure."
+      ]
+    },
+    "prior_open_interest_provider_disagreement": {
+      "reference_artifact": "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+      "observations": [
+        {
+          "publisher": "Kodexius",
+          "as_of_utc": "2026-11-04T10:49:00Z",
+          "open_interest_usd": 880080000,
+          "venue_scope": "Five exchanges; seven XRP contracts."
+        },
+        {
+          "publisher": "Liqwall",
+          "as_of_utc": "2026-11-04T11:12:00Z",
+          "open_interest_usd": 1480000000,
+          "venue_scope": "All exchanges claimed; XRP venue set not enumerated."
+        },
+        {
+          "publisher": "TradRadar",
+          "as_of_utc": "2026-11-04T11:05:00Z",
+          "open_interest_usd": 2030000000,
+          "venue_scope": "Binance, Bybit, OKX, Bitget, Gate, MEXC, Hyperliquid."
+        }
+      ],
+      "treatment": "Preserve the $0.88B/$1.48B/$2.03B provider disagreement; do not average or construct a single OI series without venue-level reconciliation."
+    },
+    "etf_flows": {
+      "publisher": "CryptoKeyhole",
+      "page_updated_at_utc": "2026-11-04T10:43:00Z",
+      "latest_complete_trading_day": "2026-11-02",
+      "latest_complete_day_net_flow_xrp": -3339,
+      "last_5_complete_trading_days_net_flow_xrp": 6178709,
+      "holdings_xrp_on_2026_11_02": 1076815901,
+      "partial_day": "2026-11-03",
+      "partial_funds_reported": 3,
+      "daily_reporting_funds_expected": 4,
+      "partial_net_flow_xrp": -3339,
+      "missing_fund": "Franklin Templeton XRPZ",
+      "partial_day_is_final": false,
+      "excluded_funds": [
+        "Grayscale GXRP daily flow not collected; quarterly filing holdings only.",
+        "REX-Osprey XRPR excluded from daily flow calculation."
+      ],
+      "source_id": "cryptokeyhole_xrp_etf_20261104T1043Z",
+      "model_eligible": false,
+      "limitations": [
+        "Issuer-file aggregator, not a direct issuer report.",
+        "November 3 is incomplete; no final four-fund daily flow is asserted."
+      ]
+    },
+    "exchange_balances_reference": {
+      "publisher": "XRP Insights",
+      "reference_artifact": "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+      "as_of_utc": "2026-11-04T08:00:00Z",
+      "tracked_xrp": 22330000000,
+      "wallets": 701,
+      "exchanges": 24,
+      "same_wallet_change_24h_xrp": -14100000,
+      "same_wallet_change_7d_xrp": -290700000,
+      "treatment": "Tracked wallet subset only; same-wallet changes are not proof of customer withdrawals, net exchange outflows, accumulation or available float."
+    },
+    "historical_liquidity_benchmark": {
+      "publisher": "CoinGecko",
+      "reference_artifact": "research/xrp_intelligence/20261104T113845Z-live-spot-derivatives-etf-reconciliation.json",
+      "as_of_utc": "2026-09-30T00:00:00Z",
+      "exchanges": 8,
+      "bid_depth_usd_approx": 18000000,
+      "ask_depth_usd_approx": 14000000,
+      "depth_band": "approximately +/-2%",
+      "current_depth_claim": false,
+      "model_eligible": false
+    }
+  },
+  "event_timeline": [
+    {
+      "event_id": "XRPL-FIXCLEANUP-20261104",
+      "event": "fixCleanup3_4_0 enabled on XRPL mainnet",
+      "event_time_utc": "2026-11-04T14:52:00Z",
+      "enablement_ledger": 108112129,
+      "reported_yes_votes": 33,
+      "threshold_yes_votes": 29,
+      "source_ids": [
+        "xrpldashboard_fixcleanup_activation",
+        "xrplwin_fixcleanup_activation"
+      ],
+      "direct_rpc_raw_receipt_captured": false,
+      "official_docs_status": "The XRPL permission-values page still carried its pre-activation warning; treated as documentation lag after two node-backed public trackers reported activation.",
+      "xrp_native_supply_effect": false,
+      "directional_price_signal": "NONE_ADMITTED"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_SPOT_ADVANCE_WITH_POSITION_BUILD",
+      "claim": "The Kraken spot observation is above the UTC-day open while TradRadar reports modestly higher OI; this could be consistent with new positions accompanying price appreciation.",
+      "supporting_evidence": [
+        "Kraken last $1.32744 versus UTC-day open $1.27513.",
+        "TradRadar OI $2.02B, +0.57% at 14:30 UTC."
+      ],
+      "disconfirming_evidence": [
+        "TradRadar mark price is stale/unsynchronized by more than 3%.",
+        "OI provider scope is not reconciled.",
+        "No synchronized multi-venue spot or depth curve.",
+        "No historical walk-forward evaluation."
+      ]
+    },
+    {
+      "id": "H2_LEVERAGED_LONG_CROWDING",
+      "claim": "Positive funding and a 73.4% long-account share may indicate one-sided positioning and liquidation vulnerability rather than durable spot demand.",
+      "supporting_evidence": [
+        "Funding +0.0100% per 8h in the stale Binance snapshot and TradRadar aggregate.",
+        "TradRadar reports 73.4% long accounts and at least $3.36M long liquidations."
+      ],
+      "disconfirming_evidence": [
+        "Account ratios are not notional exposure.",
+        "The source timestamps are stale or unsynchronized.",
+        "No venue-level position or liquidation cluster data."
+      ]
+    },
+    {
+      "id": "H3_ETF_FLOW_SIGNAL_INCOMPLETE",
+      "claim": "The last five complete days show net XRP accumulation, but the latest complete day was mildly negative and November 3 remains partial.",
+      "supporting_evidence": [
+        "Last five complete days +6,178,709 XRP.",
+        "Latest complete day November 2 -3,339 XRP.",
+        "November 3 partial 3/4 funds -3,339 XRP."
+      ],
+      "disconfirming_evidence": [
+        "Missing Franklin Templeton XRPZ for November 3.",
+        "GXRP daily flow not collected and XRPR excluded.",
+        "Aggregator totals are not direct issuer flow statements."
+      ]
+    },
+    {
+      "id": "H4_STABLECOIN_RAIL_SUBSTITUTION_OR_COMPLEMENT",
+      "claim": "Circle's USDC/Arc and SBI's multi-rail strategy could complement or compete with XRP-based bridge settlement in specific corridors; the current evidence does not establish XRP demand.",
+      "supporting_evidence": [
+        "Circle Q3 2026 reported $73.3B average USDC circulation and $13.9T gross on-chain volume.",
+        "Arc fees are paid in USDC; SBI Group was named in the founding validator cohort."
+      ],
+      "disconfirming_evidence": [
+        "Gross on-chain volume is not net new capital or unique economic payment volume.",
+        "No independent SBI validator runtime telemetry.",
+        "No direct XRP purchases or XRP settlement volume attributable to Arc."
+      ]
+    }
+  ],
+  "data_quality": {
+    "raw_content_sha256_available": true,
+    "raw_sha256_source_count": 2,
+    "raw_sources_externally_anchored": false,
+    "source_independence_groups": [
+      "kraken_spot_venue",
+      "binance_derivatives_venue",
+      "tradradar_derivatives_aggregation",
+      "cryptokeyhole_issuer_holdings_aggregation",
+      "xrpldashboard_node_observer",
+      "xrplwin_node_observer"
+    ],
+    "cross_venue_spot": false,
+    "full_order_book_depth": false,
+    "synchronized_derivatives_snapshot": false,
+    "final_november_3_etf_flow": false,
+    "historical_feature_store_ingestion": false,
+    "point_in_time_replay_ready": false,
+    "model_eligible": false,
+    "limitations": [
+      "Only Kraken spot top-of-book and Binance perpetual premium-index API bodies have raw SHA-256 receipts in this artifact.",
+      "The raw hashes are stored in GitHub artifacts but are not externally timestamped or WORM anchored.",
+      "Binance's source timestamp is 11m24 older than capture; TradRadar and ETF pages are substantially older.",
+      "No current multi-level order-book depth or second spot venue was captured.",
+      "ETF flows remain incomplete for November 3.",
+      "Exchange wallet balances are from a prior 08:00 UTC snapshot and remain a labeled-wallet subset.",
+      "No point-in-time historical dataset or out-of-sample prediction test is established by this artifact."
+    ]
+  },
+  "predictions": [],
+  "prediction_status": "NOT_ISSUED",
+  "forecast_issued": false,
+  "model_eligible": false,
+  "next_actions": [
+    "Capture synchronized spot ticker and multi-level depth from at least three independent venues with source timestamps.",
+    "Reconcile OI by venue and contract rather than provider headline totals.",
+    "Wait for all four daily-reporting XRP ETF issuer files before treating November 3 as complete.",
+    "Ingest these observations into the point-in-time feature store only after source-quality checks and immutable receipt verification.",
+    "Continue chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility baselines before any directional forecast."
+  ]
+}

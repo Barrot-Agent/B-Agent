@@ -1,0 +1,283 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "xrp_etf_cross_provider_flow_universe_and_methodology_reconciliation_20261105",
+  "artifact_type": "xrp_etf_holdings_cash_flow_and_source_vintage_reconciliation",
+  "recorded_on_date": "2026-11-05",
+  "model_eligible": false,
+  "forecast_issued": false,
+  "source_capture_policy": {
+    "raw_issuer_bytes_captured": false,
+    "raw_content_sha256": null,
+    "independent_timestamp_anchor": false,
+    "rendered_aggregator_pages_are_not_raw_receipts": true,
+    "admission_rule": "Do not admit ETF flow features until each issuer's original daily file, shares outstanding, XRP-per-share factor, NAV/net assets, publication time and cash creation/redemption record are captured and independently reconciled."
+  },
+  "source_registry": [
+    {
+      "id": "xrp_insights_etf_20261105_073558",
+      "publisher": "XRP Insights",
+      "source_type": "third_party_issuer_holdings_aggregator",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "generated_at_utc": "2026-11-05T07:35:58.959Z",
+      "data_as_of_date": "2026-11-03",
+      "latest_row_date": "2026-11-04",
+      "latest_row_status": "provisional",
+      "raw_content_sha256": null,
+      "capture_status": "rendered_metadata_only",
+      "independence_group": "xrp_insights_issuer_scraper",
+      "model_eligible": false,
+      "limitations": [
+        "The aggregate includes six spot ETF products plus the BITW multi-asset index sleeve.",
+        "The two-day -194,875 XRP figure is derived from holdings changes, not directly verified AP cash creations/redemptions.",
+        "GXRP daily flow was withheld because of an issuer-page capture gap; XRPR and BITW have different product structures and should not be treated as identical spot ETF exposures.",
+        "The November 4 row is provisional."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_etf_20261105_0954",
+      "publisher": "CryptoKeyhole",
+      "source_type": "third_party_issuer_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_updated_at_utc": "2026-11-05T09:54:00Z",
+      "latest_issuer_file_read_at_utc": "2026-11-05T05:22:00Z",
+      "latest_complete_day": "2026-11-03",
+      "latest_partial_day": "2026-11-04",
+      "raw_content_sha256": null,
+      "capture_status": "rendered_page_only",
+      "independence_group": "cryptokeyhole_issuer_scraper",
+      "model_eligible": false,
+      "limitations": [
+        "Daily flow universe contains four issuer files: XRP/Bitwise, XRPZ/Franklin Templeton, XRPC/Canary Capital and TOXR/21Shares.",
+        "GXRP is not collected daily because of an automated bot challenge; its displayed holdings are a stale quarter-end SEC figure and are excluded from daily flow totals.",
+        "XRPR is not counted because it is a 1940 Act fund with indirect holdings through other ETPs; its direct coin file is not a complete holdings/flow measure.",
+        "The page explicitly defines flow as the change in XRP held: creations minus redemptions, plus staking rewards where applicable, less coins sold for fees or cash payouts.",
+        "The November 4 row is partial at 3 of 4 funds; Franklin Templeton XRPZ had not yet published."
+      ]
+    },
+    {
+      "id": "cryptoetf_today_xrp_20261105_0547",
+      "publisher": "Crypto ETF Today",
+      "source_type": "third_party_crypto_etf_flow_aggregator",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publication_at_utc": "2026-11-05T05:47:00Z",
+      "data_date": "2026-11-04",
+      "tracked_spot_funds": 5,
+      "latest_status": "PARTIAL_NOT_ALL_FUNDS_REPORTED",
+      "net_flow_xrp_displayed": 0,
+      "raw_content_sha256": null,
+      "capture_status": "rendered_page_only",
+      "independence_group": "cryptoetf_today_issuer_scraper",
+      "model_eligible": false,
+      "limitations": [
+        "The page says zero means the funds that reported showed no money moving in or out; a dash means not all funds have reported.",
+        "The page is T+1 and partial, so the zero is not a completed all-funds daily total.",
+        "The page's live summary can change as issuers publish; no original issuer files or AP cash records were preserved in this capture."
+      ]
+    },
+    {
+      "id": "goldman_sachs_q2_2026_13f_info_table",
+      "publisher": "Goldman Sachs Group, Inc. / U.S. SEC",
+      "source_type": "primary_manager_reported_form_13f",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+      "filing_date": "2026-08-14",
+      "position_as_of_date": "2026-06-30",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_13F_information_table",
+      "independence_group": "goldman_sachs_group_13f_filing",
+      "model_eligible": false,
+      "limitations": [
+        "Form 13F reports securities over which the filer exercises investment discretion; positions may be client assets and are not necessarily Goldman Sachs proprietary capital.",
+        "The filing reports quarter-end long reportable securities, not acquisition timing, net cash flows, beneficial owners, short positions or all derivatives exposure.",
+        "The Armada Acquisition Corp II position predates the October 9, 2026 Evernorth business-combination closing and does not establish current XRPN ownership."
+      ]
+    },
+    {
+      "id": "goldman_sachs_q1_2026_13f_info_table",
+      "publisher": "Goldman Sachs Group, Inc. / U.S. SEC",
+      "source_type": "primary_manager_reported_form_13f",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000274/",
+      "filing_date": "2026-05-15",
+      "position_as_of_date": "2026-03-31",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_13F_filing_index_and_information_table",
+      "independence_group": "goldman_sachs_group_13f_filing",
+      "model_eligible": false,
+      "limitations": [
+        "The five XRP ETF CUSIPs identified in the Q2 filing were not found in the Q1 information table.",
+        "Absence of these five reportable long positions does not prove absence of all XRP-related exposure, derivatives, short positions or client positions outside the filer's reportable discretion."
+      ]
+    }
+  ],
+  "provider_observations": {
+    "xrp_insights": {
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "spot_etf_funds": 6,
+      "index_sleeves": 1,
+      "net_flow_xrp_nov2_nov3": -194875,
+      "holdings_xrp_nov3": 1196405311,
+      "flow_method": "day-over-day change in issuer-reported holdings",
+      "model_eligible": false
+    },
+    "cryptokeyhole": {
+      "daily_flow_universe": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "TOXR"
+      ],
+      "net_flow_xrp_nov3": -3339,
+      "net_flow_xrp_nov4_partial": -3339,
+      "nov4_reporting_funds": 3,
+      "nov4_total_daily_funds": 4,
+      "holdings_xrp_nov3": 1076812562,
+      "xrpc_nov2_nov4_daily_change_xrp": -3339,
+      "method": "holdings change, including creations/redemptions, staking rewards, fee sales and cash payouts",
+      "model_eligible": false
+    },
+    "cryptoetf_today": {
+      "tracked_spot_funds": 5,
+      "status": "PARTIAL_NOT_ALL_FUNDS_REPORTED",
+      "definition": "0 means the funds that have reported show no money moved in or out; missing funds are not treated as zero.",
+      "model_eligible": false,
+      "net_flow_usd_millions_displayed": 0,
+      "net_flow_unit": "USD millions",
+      "reported_funds_count": 2,
+      "fund_universe": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "GXRP",
+        "TOXR"
+      ],
+      "holdings_xrp_nov4": 1141793765,
+      "net_assets_usd_millions": 1490,
+      "cumulative_net_flow_usd_millions": 1810
+    }
+  },
+  "cross_provider_reconciliation": {
+    "holdings_difference_xrp_xrp_insights_minus_cryptokeyhole": 119592749,
+    "explanation": "The holdings totals are not the same universe: XRP Insights includes six spot products plus BITW and different quarterly/indirect exposures; CryptoKeyhole's daily total contains four issuer files and excludes GXRP and XRPR from daily totals.",
+    "comparison_rule": "Do not average -194,875 XRP, -3,339 XRP and 0 XRP. They refer to different dates, universes, source vintages and flow definitions.",
+    "source_independence": "All three aggregators use issuer-published files or derived issuer data. Their capture and calculation methods differ, but they are not three independent measurements of cash creation/redemption.",
+    "interpretation": [
+      "XRP Insights' two-day negative holdings delta is not proof of dollar or XRP cash redemptions.",
+      "CryptoKeyhole's repeated -3,339 XRP daily XRPC change may reflect fees or other holdings adjustments; its own method explicitly includes fee sales and cash payouts, so it cannot be called investor redemptions without issuer/AP confirmation.",
+      "Crypto ETF Today's zero is partial and only describes funds that had reported at its publication cutoff.",
+      "The three observations are not contradictory once dates, fund universes and methods are kept separate."
+    ],
+    "model_eligible": false,
+    "cryptoetf_today_holdings_xrp_nov4": 1141793765,
+    "xrp_insights_minus_cryptoetf_today_holdings_xrp": 54611546,
+    "cryptoetf_today_minus_cryptokeyhole_holdings_xrp": 64981203,
+    "holdings_difference_note": "These derived differences compare unlike provider universes and dates; they are not unexplained same-universe reconciliation breaks."
+  },
+  "counter_hypotheses": [
+    {
+      "id": "reported_holdings_delta_not_investor_redemption",
+      "hypothesis": "Negative holdings deltas may reflect fees, cash payouts, staking rewards, index rebalancing or indirect fund structure rather than net investor redemptions.",
+      "disconfirming_evidence_to_seek": [
+        "Issuer creation/redemption share counts",
+        "Authorized-participant cash records",
+        "Custodian XRP movements reconciled to shares outstanding"
+      ]
+    },
+    {
+      "id": "partial_zero_not_complete_neutrality",
+      "hypothesis": "A zero flow on a partial dashboard may simply mean the funds that reported were flat; missing funds may later change the daily total.",
+      "disconfirming_evidence_to_seek": [
+        "All tracked issuer files for the same US trading date",
+        "A final T+1 daily report with every fund status marked complete"
+      ]
+    }
+  ],
+  "predictive_admission": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "reasons": [
+      "Fund universes differ and some funds are excluded or only quarterly reported.",
+      "The latest day is provisional or partial across providers.",
+      "Holdings changes are not equivalent to direct AP cash creations/redemptions.",
+      "The three providers may share underlying issuer files and are not independent measurements.",
+      "Raw issuer files, SHA-256 receipts and independent publication timestamps were not captured."
+    ],
+    "next_data_requirements": [
+      "Capture each issuer's original daily holdings file with bytes and SHA-256.",
+      "Record issuer publication time, data effective date and first-seen time separately.",
+      "Reconcile shares outstanding, XRP-per-share, NAV, net assets and custodian balances.",
+      "Separate spot ETFs, multi-asset index funds, 1940 Act funds and indirect ETP exposure.",
+      "Obtain AP creation/redemption or issuer cash-flow records before labeling movements as institutional cash."
+    ]
+  },
+  "institutional_13f": {
+    "filer": "Goldman Sachs Group, Inc.",
+    "q2_2026_position_as_of": "2026-06-30",
+    "q2_2026_filing_date": "2026-08-14",
+    "q1_2026_position_as_of": "2026-03-31",
+    "q1_2026_filing_date": "2026-05-15",
+    "q2_xrp_etf_long_positions": [
+      {
+        "issuer": "21Shares XRP ETF",
+        "cusip": "90137T103",
+        "value_usd": 8206363,
+        "shares": 806126
+      },
+      {
+        "issuer": "Bitwise XRP ETF",
+        "cusip": "09174F107",
+        "value_usd": 25756345,
+        "shares": 2208949
+      },
+      {
+        "issuer": "Canary XRP ETF",
+        "cusip": "13723M100",
+        "value_usd": 19490717,
+        "shares": 1759090
+      },
+      {
+        "issuer": "Franklin XRP Trust",
+        "cusip": "355233107",
+        "value_usd": 25405919,
+        "shares": 2238407
+      },
+      {
+        "issuer": "Grayscale XRP Trust ETF",
+        "cusip": "38965L106",
+        "value_usd": 7646785,
+        "shares": 377619
+      }
+    ],
+    "q2_total_value_usd": 86506129,
+    "q2_total_shares": 7390191,
+    "q1_positions_in_these_five_cusips_found": false,
+    "additional_pre_merger_spac_position": {
+      "issuer": "Armada Acquisition Corp II",
+      "cusip": "G0R38G104",
+      "value_usd": 3813470,
+      "shares": 365976,
+      "position_as_of": "2026-06-30",
+      "interpretation": "Pre-merger SPAC equity position; the Evernorth business combination closed October 9, 2026. This is not proof of a current XRPN holding."
+    },
+    "interpretation": [
+      "The Q2 filing establishes $86.506M in Goldman Sachs Group-reported long positions across five XRP ETF share classes as of June 30, 2026.",
+      "The Q1 filing contains no positions in those five CUSIPs, so the Q2 positions are newly reportable relative to the Q1 snapshot; 13F does not reveal when they were acquired.",
+      "These are ETF shares, not direct XRP custody or proof of unhedged XRP exposure.",
+      "13F positions may represent client portfolios or proprietary holdings; the filing does not distinguish them.",
+      "Q3 2026 Form 13F filings were not yet due as of November 5, 2026; the next filing window is expected by November 14, 2026."
+    ],
+    "source_ids": [
+      "goldman_sachs_q1_2026_13f_info_table",
+      "goldman_sachs_q2_2026_13f_info_table"
+    ],
+    "model_eligible": false
+  }
+}

@@ -1,0 +1,699 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_people_sbi_japan_claim_and_video_reconciliation",
+  "research_date": "2026-11-05",
+  "objective": "Resolve the identity and public-video attribution of Dr. Kamilah/Camilla Stevenson; red-team her public claims about Japanese XRP banking adoption, SBI Shinsei deposit rewards, Japanese crypto-asset law and RLUSD/XRP demand; preserve exact-phrase research and actual-capital distinctions.",
+  "identity_resolution": {
+    "person_name": "Dr. Kamilah Stevenson",
+    "name_variants": [
+      "Kamilah Stevenson",
+      "Camilla Stevenson",
+      "Camila Stevenson",
+      "Kamilla Stevenson"
+    ],
+    "person_identity_status": "CONFIRMED",
+    "identity_evidence": [
+      {
+        "source": "iHeart / The XRP Podcast with Paul Barron",
+        "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "published_date": "2026-06-11",
+        "evidence": [
+          "Episode guest is named Dr. Kamilah Stevenson.",
+          "Transcript has the host address her as Camila/Camilla Stevenson.",
+          "Guest says her YouTube presence is under the name doctor Camilla Stevenson.",
+          "Guest warns that many fake pages exist and asks viewers to be careful."
+        ],
+        "source_quality": "primary interview; transcript is auto-generated and may contain speech-recognition errors."
+      },
+      {
+        "source": "Dr. Kamilah Stevenson / The Wealth Doctor official site",
+        "url": "https://learn.kamilahstevenson.com/",
+        "evidence": [
+          "The site identifies its owner as Dr. Kamilah Stevenson, also known as The Wealth Doctor."
+        ],
+        "source_quality": "first-party self-identification."
+      },
+      {
+        "source": "Vling channel directory and Scrumball creator directory",
+        "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+        "evidence": [
+          "Both directories identify channel ID UCqUPJMQdkCN6lsLVDnichPA as Kamilah Stevenson.",
+          "Vling reports 143K subscribers, 1.3K videos and a 2015-08-25 join date; Scrumball reports 139K subscribers."
+        ],
+        "source_quality": "secondary channel-directory corroboration; not proof of ownership or of the relationship to @drkamilahstevenson."
+      },
+      {
+        "source": "OracleCheck public creator tracker",
+        "url": "https://oraclecheck.io/youtube/drkamilahstevenson",
+        "evidence": [
+          "The tracker links to the @drkamilahstevenson YouTube handle and lists seven dated market-call videos through 2026-10-17."
+        ],
+        "source_quality": "third-party tracker; useful for discovery, not first-party ownership proof."
+      }
+    ],
+    "candidate_youtube_channel": {
+      "display_name": "Kamilah Stevenson",
+      "handle": "@drkamilahstevenson",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "tracker_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
+      "tracker_reported_subscribers": 143000,
+      "tracker_last_call_date": "2026-10-17",
+      "attribution_confidence": "PROBABLE_NOT_FULLY_FIRST_PARTY_LINKED",
+      "basis": [
+        "The interview's self-disclosed YouTube display name is doctor Camilla Stevenson.",
+        "The tracker links to a YouTube channel named Kamilah Stevenson with handle @drkamilahstevenson.",
+        "The official site independently identifies the same person as Dr. Kamilah Stevenson."
+      ],
+      "unresolved": [
+        "No first-party website/social profile linking the exact @drkamilahstevenson handle was located in this research.",
+        "The interview explicitly warns about fake pages; handle ownership should not be treated as fully authenticated."
+      ],
+      "relationship_to_main_registry_channel_id": "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
+    },
+    "excluded_similar_channel": {
+      "display_name": "Kamilah Stevenson | XRP & Stocks",
+      "handle": "@KamilahStevensonXrpStocks",
+      "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "status": "UNVERIFIED_SEPARATE_CANDIDATE",
+      "reason": "No first-party cross-link or reliable identity match; do not merge its uploads into the verified person's inventory."
+    },
+    "main_registry_channel_id_candidate": {
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "vling_url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "scrumball_source": "https://www.scrumball.com/ranking/top-sport-influencers-on-youtube",
+      "reported_channel_name": "Kamilah Stevenson",
+      "reported_subscribers": {
+        "vling": 143000,
+        "scrumball": 139000
+      },
+      "reported_video_count": 1300,
+      "reported_join_date": "2015-08-25",
+      "status": "THIRD_PARTY_CHANNEL_ID_CANDIDATE_NOT_FIRST_PARTY_VERIFIED"
+    },
+    "oraclecheck_handle_candidate": {
+      "handle": "@drkamilahstevenson",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "tracker_url": "https://oraclecheck.io/youtube/drkamilahstevenson",
+      "tracker_reported_subscribers": 143000,
+      "tracker_last_call_date": "2026-10-17",
+      "status": "PROBABLE_HANDLE_CANDIDATE_NOT_FIRST_PARTY_LINKED_TO_CHANNEL_ID"
+    },
+    "channel_identity_status": "PERSON_CONFIRMED; CHANNEL_ID_AND_HANDLE_CANDIDATES_PROBABLE; RECIPROCAL_FIRST_PARTY_LINK_NOT_FOUND"
+  },
+  "youtube_video_inventory": [
+    {
+      "video_id": "ywQEoYPzhlQ",
+      "title": "XRP Was Built for What's Coming",
+      "published_date_reported": "2026-03-03",
+      "youtube_url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry"
+      ]
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "published_date_reported": "2025-12-24",
+      "youtube_url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; CHANNEL_ID_CANDIDATE",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry"
+      ]
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published_date_reported": "2026-03-19",
+      "youtube_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_IDENTITY_NOT_CAPTURED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry",
+        "glasp_transcript_index"
+      ]
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published_date_reported": null,
+      "published_date_observations": [
+        "2025-12-13",
+        "2025-12-14"
+      ],
+      "published_date_status": "SOURCE_DISAGREEMENT",
+      "youtube_url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA; YOUTUBE_INDEXED_CREATOR_LABEL",
+      "person_attribution_confidence": "HIGH",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry",
+        "prior_video_inventory_20261105T084500Z",
+        "glasp_transcript_index"
+      ],
+      "themes": [
+        "Ripple regulatory status",
+        "XRP institutional liquidity",
+        "collateral and lending commentary"
+      ]
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published_date_reported": "2026-01-13",
+      "youtube_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA",
+      "person_attribution_confidence": "HIGH",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry",
+        "prior_video_inventory_20261105T084500Z",
+        "glasp_transcript_index"
+      ]
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "published_date_reported": "2026-01-15",
+      "youtube_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "GLASP_CREATOR_LABEL; TRANSCRIPT_SELF_INTRO_CAMILA",
+      "person_attribution_confidence": "HIGH",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry",
+        "prior_video_inventory_20261105T084500Z",
+        "glasp_transcript_index"
+      ]
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP’s Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "published_date_reported": "2026-07-30",
+      "youtube_url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_AND_CHAPTERS_ONLY",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry",
+        "prior_video_inventory_20261105T084500Z"
+      ],
+      "themes": [
+        "Confidential Transfers",
+        "Sponsored Fees and Reserves",
+        "Batch",
+        "Permission Delegation",
+        "Dynamic MPT"
+      ]
+    },
+    {
+      "video_id": "pFru4idBTMA",
+      "title": "XRP Tokenization: $3.5 Billion Just Settled on XRPL — And Nobody Is Watching",
+      "published_date_reported": "2026-05-12",
+      "youtube_url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY; NUMERIC_CLAIMS_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry"
+      ],
+      "corroboration_priority": "HIGH"
+    },
+    {
+      "video_id": "Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "published_date_reported": "2025-12-03",
+      "youtube_url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; DESCRIPTION_ONLY",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry",
+        "prior_video_inventory_20261105T084500Z"
+      ],
+      "themes": [
+        "XRP ETFs",
+        "macro liquidity",
+        "Federal Reserve policy",
+        "U.S. legislation"
+      ]
+    },
+    {
+      "video_id": "qtT2hLeFkM0",
+      "title": "More Than 100 Million XRP Just Moved Into Flare — And Holders Did It Voluntarily",
+      "published_date_reported": "2026-08-25",
+      "youtube_url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "YOUTUBE_INDEXED_CREATOR_LABEL; TITLE_AND_DESCRIPTION_ONLY; METRIC_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "sources": [
+        "main_creator_registry"
+      ],
+      "corroboration_priority": "HIGH"
+    },
+    {
+      "video_id": "SvxxNGA1Xpc",
+      "title": null,
+      "published_date_reported": "2026-10-17",
+      "youtube_url": "https://www.youtube.com/watch?v=SvxxNGA1Xpc",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "TOTAL market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "nRkbAOQ01Os",
+      "title": null,
+      "published_date_reported": "2026-09-28",
+      "youtube_url": "https://www.youtube.com/watch?v=nRkbAOQ01Os",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "QNT market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "-wWxFrsZL6A",
+      "title": null,
+      "published_date_reported": "2026-09-23",
+      "youtube_url": "https://www.youtube.com/watch?v=-wWxFrsZL6A",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "XRP market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "VBQBQio6MFw",
+      "title": null,
+      "published_date_reported": "2026-09-21",
+      "youtube_url": "https://www.youtube.com/watch?v=VBQBQio6MFw",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "XRP market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "G7tIWEbonHg",
+      "title": null,
+      "published_date_reported": "2026-09-19",
+      "youtube_url": "https://www.youtube.com/watch?v=G7tIWEbonHg",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "XRP market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "pDQ9JyYZyck",
+      "title": null,
+      "published_date_reported": "2026-09-03",
+      "youtube_url": "https://www.youtube.com/watch?v=pDQ9JyYZyck",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "HBAR / XLM / XDC market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "eT6Kj1qHJyE",
+      "title": null,
+      "published_date_reported": "2026-08-21",
+      "youtube_url": "https://www.youtube.com/watch?v=eT6Kj1qHJyE",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "ORACLECHECK_TRACKER_LINKED_TO_HANDLE_CANDIDATE; CHANNEL_ID_RELATION_UNVERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "PROBABLE",
+      "tracker_asset_label": "XRP market call",
+      "sources": [
+        "oraclecheck_channel_tracker"
+      ]
+    },
+    {
+      "video_id": "OvODErBT9Ug",
+      "title": "My Top 10 Digital Assets — What They Do & Why I Hold Them",
+      "published_date_reported": null,
+      "youtube_url": "https://www.youtube.com/watch?v=OvODErBT9Ug",
+      "alternate_link": "https://www.youtube.com/live/OvODErBT9Ug",
+      "attribution_type": "OWN_CHANNEL_CANDIDATE",
+      "attribution_status": "LINKTREE_PROFILE_DIRECT_LINK; PROFILE_OWNERSHIP_AND_CHANNEL_OWNERSHIP_NOT_VERIFIED",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "LOW",
+      "sources": [
+        "linktree_drkamilahstevenson_candidate"
+      ]
+    },
+    {
+      "video_id": "Sulo54IlQ60",
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "published_date_reported": "2026-06-11",
+      "youtube_url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "attribution_type": "GUEST_APPEARANCE_NOT_OWN_CHANNEL_UPLOAD",
+      "attribution_status": "VERIFIED_GUEST_APPEARANCE_ON_PAUL_BARRON_PODCAST",
+      "person_attribution_confidence": "HIGH",
+      "channel_attribution_confidence": "NOT_APPLICABLE",
+      "sources": [
+        "paul_barron_youtube_guest",
+        "iheart_interview"
+      ]
+    },
+    {
+      "video_id": "5DzBk8DfoLs",
+      "title": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+      "published_date_reported": "2025-12-16",
+      "youtube_url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "attribution_type": "THIRD_PARTY_CLIP_NOT_OWN_CHANNEL_UPLOAD",
+      "attribution_status": "UPLOADED_BY_ALINA_X; EXCLUDED_FROM_OWN_CHANNEL_INVENTORY",
+      "person_attribution_confidence": "MEDIUM",
+      "channel_attribution_confidence": "NOT_APPLICABLE",
+      "sources": [
+        "third_party_clip_index"
+      ]
+    }
+  ],
+  "video_inventory_exhaustive": false,
+  "exact_phrase_research": {
+    "ask_coin": {
+      "status": "NO_NEW_VERIFIED_XRP_RELATION",
+      "notes": [
+        "Permission Coin (ASK ticker) and a separate inactive Ask Coin listing remain distinct candidates from the earlier disambiguation.",
+        "No direct XRP, Ripple, Coinbase, Circle or SBI relationship established."
+      ]
+    },
+    "actual_capital": {
+      "status": "RELEVANT_EVERNORTH_USAGE_FOUND",
+      "secondary_phrase_context": "Recent Evernorth coverage says actual capital raised depends on warrants exercised.",
+      "primary_reconciliation": "SEC disclosures distinguish advance-funding subscription cash, in-kind XRP contributions, debt, undrawn equity-facility capacity and potential warrant proceeds. The maximum facility/warrant amounts are not actual cash received; warrant proceeds require exercise and facility proceeds require completed sales.",
+      "model_note": "Do not count undrawn facility capacity, unexercised warrants or in-kind XRP contributions as new open-market XRP purchases."
+    },
+    "sbic_chatgpt_sbic": {
+      "status": "ACRONYM_COLLISION_RESOLVED",
+      "notes": [
+        "Social Bias Inference Corpus (SBIC) is the academic NLP dataset used in ChatGPT/LLM bias research.",
+        "Japanese SBIC East, Central and West are separate regional investment/consultation companies, not SBI Holdings.",
+        "No direct XRP relationship is implied by the acronym collision."
+      ]
+    }
+  },
+  "claim_reconciliation": [
+    {
+      "claim_id": "sbi_shinsei_20_percent_interest_crypto_pilot",
+      "claimant": "Dr. Kamilah Stevenson in the June 11, 2026 XRP Podcast interview; also reported by secondary outlets citing Nikkei.",
+      "claim": "A three-month SBI Shinsei pilot beginning June 10, 2026 gives depositors crypto vouchers equal to 20% of earned interest, redeemable for BTC, ETH or XRP through SBI VC Trade; a permanent autumn 2026 rollout was contemplated.",
+      "status": "SECONDARY_REPORTED_PRIMARY_CONFIRMATION_NOT_LOCATED",
+      "secondary_sources": [
+        {
+          "publisher": "The Block",
+          "url": "https://www.theblock.co/news/business/2026-06-09-japan-sbi-shinsei-bank-plans-crypto-rewards-program-404080",
+          "date": "2026-06-09",
+          "attribution": "Nikkei report"
+        },
+        {
+          "publisher": "Bitcoin News",
+          "url": "https://news.bitcoin.com/sbi-shinsei-bank-plans-to-let-customers-stack-btc-eth-or-xrp-on-top-of-deposit-interest/",
+          "date": "2026-06-09",
+          "attribution": "Nikkei report"
+        },
+        {
+          "publisher": "Ledger Insights",
+          "url": "https://www.ledgerinsights.com/sbi-shinsei-bank-to-offer-crypto-vouchers-as-a-bonus-on-deposit-interest/",
+          "date": "2026-06-09",
+          "attribution": "Nikkei report"
+        },
+        {
+          "publisher": "Superex",
+          "url": "https://news.superex.com/articles/35387.html",
+          "date": "2026-06-11",
+          "attribution": "Nikkei report"
+        }
+      ],
+      "source_independence": "These outlets repeat the same Nikkei report; they are not four independent primary confirmations.",
+      "official_related_but_distinct_programs": [
+        {
+          "publisher": "SBI VC Trade / SBI Shinsei Bank",
+          "url": "https://www.sbivc.co.jp/newsview/i0i_8fanmbdi",
+          "date": "2026-02-02",
+          "terms": "Six-month yen fixed-term deposit at 0.70% pre-tax plus XRP exchange vouchers tiered by deposit principal, up to ¥20,000; this is not the reported 20%-of-interest pilot."
+        },
+        {
+          "publisher": "SBI VC Trade campaign terms",
+          "url": "https://www.sbivc.co.jp/lp/sbishinsei/2026/02/",
+          "date": "2026-02",
+          "terms": "Deposit-tier voucher amounts from ¥500 to ¥20,000; redemption application deadline June 30, 2026; XRP credit scheduled by July 2026."
+        },
+        {
+          "publisher": "SBI Shinsei Bank",
+          "url": "https://www.sbishinseibank.co.jp/info/news2510_sbihyper_2000.html",
+          "date": "2025-10-07",
+          "terms": "SBI Hyper Deposit balance exceeded ¥200 billion two weeks after launch; the announcement cites an XRP voucher campaign as one promotion, not the June 2026 interest pilot."
+        }
+      ],
+      "capital_and_demand_interpretation": [
+        "Deposits remain yen-denominated under the secondary report; the crypto voucher is a fraction of earned interest, not 20% of principal.",
+        "A voucher is not an XRP market purchase until the customer selects XRP and redeems it through SBI VC Trade.",
+        "No aggregate pilot participation, voucher redemption, XRP units delivered, market sourcing or exchange net-flow data were found.",
+        "The reported 4.33 million eligible accounts are not 4.33 million participants or buyers.",
+        "The autumn permanent rollout and pilot outcome remain unverified as of 2026-11-05."
+      ],
+      "example_consistency": "Secondary examples vary and are not supported by published official rate/eligibility tables. Do not calculate aggregate XRP demand from them.",
+      "model_eligible": false
+    },
+    {
+      "claim_id": "japan_crypto_asset_reclassification",
+      "claimant": "Dr. Kamilah Stevenson in the June 11, 2026 interview.",
+      "claim": "Japan approved reclassifying XRP and roughly 100 other crypto assets as financial instruments.",
+      "status": "PARTIALLY_ACCURATE_BUT_OVERSTATED",
+      "primary_timeline": [
+        {
+          "event": "House of Representatives approved the bill",
+          "date": "2026-06-11",
+          "source": "https://www.shugiin.go.jp/Internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm"
+        },
+        {
+          "event": "House of Councillors approved the bill",
+          "date": "2026-07-15",
+          "source": "https://www.shugiin.go.jp/Internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm"
+        },
+        {
+          "event": "Promulgated as Law No. 64 of 2026",
+          "date": "2026-07-23",
+          "source": "https://www.shugiin.go.jp/Internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm"
+        }
+      ],
+      "statutory_detail": "The enacted law's Article 1 amendments to the Financial Instruments and Exchange Act, including the principal crypto-asset financial-product framework, are scheduled to take effect on 2027-04-01 under Supplementary Provision Article 1 item 4, subject to the specific exceptions stated there. As of 2026-11-05, the law is enacted but the principal new crypto-asset framework is not yet in force.",
+      "unsupported_parts": [
+        "The statute does not approve XRP individually.",
+        "No official list of approximately 100 approved assets was located in the statute or Diet record.",
+        "Enactment is not the same as the entire new regime already being in force.",
+        "The principal Article 1 crypto-asset framework is not yet in force as of 2026-11-05; its scheduled commencement is 2027-04-01."
+      ],
+      "primary_law_pdf": "https://www.fsa.go.jp/common/diet/221/02/01.pdf",
+      "model_eligible": false,
+      "statutory_effective_date": "2027-04-01",
+      "statutory_effective_date_basis": "Financial Services Agency official bill text, Supplementary Provision Article 1 item 4; the Article 1 FIEA amendments (including the crypto-asset financial-product framework) are scheduled for 2027-04-01, subject to the specific exceptions in that item."
+    },
+    {
+      "claim_id": "japanese_banks_live_xrp_vs_swift_50x_60_percent",
+      "claimant": "Public commentary attributed to Kamilah Stevenson; a secondary article summarizes a claim of 50x faster and 60% cheaper results from a Tokyo conference.",
+      "status": "UNVERIFIED_NO_PRIMARY_PERFORMANCE_EVIDENCE_FOUND",
+      "primary_counterevidence": [
+        {
+          "source": "SBI Ripple Asia",
+          "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+          "date": "2026-02-26",
+          "classification": "CONCEPTUAL_PROOF_OF_CONCEPT",
+          "details": "Tokenized deposits and deposit-backed digital money conceptually evaluated using MoneyTap and an SBI Ripple Asia token-issuance platform, with XRPL assumed as the blockchain. No live XRP-vs-SWIFT bank test or measured 50x/60% result disclosed."
+        },
+        {
+          "source": "SBI Ripple Asia and DSRV",
+          "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+          "date": "2026-02-24",
+          "classification": "RESEARCH_NOT_COMMERCIAL_SERVICE",
+          "details": "Japan-Korea remittance/payment research; official notice explicitly says it is not aimed at a specific service development or commercialization."
+        },
+        {
+          "source": "SBI Group / SBI Remit / SBI VC Trade / SBI Ripple Asia",
+          "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+          "date": "2023-09-06",
+          "classification": "ANNOUNCED_OPERATIONAL_XRP_BRIDGE_SERVICE",
+          "details": "SBI Remit announced XRP-bridge international remittances to bank accounts in the Philippines, Vietnam and Indonesia. This is real XRP use in specified corridors, but the notice does not publish a SWIFT comparison or 50x/60% metrics."
+        }
+      ],
+      "conclusion": "SBI has genuine XRP-linked remittance activity and separate XRPL research/POCs. That does not verify the specific live bank-versus-SWIFT performance claim.",
+      "model_eligible": false
+    },
+    {
+      "claim_id": "rlusd_necessarily_increases_xrp_demand",
+      "claimant": "Public commentary attributed to Kamilah Stevenson.",
+      "status": "HYPOTHESIS_NOT_ESTABLISHED",
+      "primary_protocol_facts": [
+        {
+          "source": "XRPL transaction-cost documentation",
+          "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+          "fact": "Each XRPL transaction destroys a small XRP fee; the standard minimum is typically 10 drops."
+        },
+        {
+          "source": "XRPL cross-currency payment documentation",
+          "url": "https://xrpl.org/docs/concepts/payment-types/cross-currency-payments",
+          "fact": "Cross-currency paths can auto-bridge through XRP when cheaper, but direct token-to-token paths may be used when better."
+        },
+        {
+          "source": "Ripple/Coinbase announcement",
+          "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+          "date": "2026-10-28",
+          "fact": "RLUSD launched on Coinbase across XRPL, Base and Ethereum; RLUSD on non-XRPL networks does not require XRP for those networks' transaction fees."
+        }
+      ],
+      "interpretation": "RLUSD on XRPL mechanically requires XRP for network fees, and may use XRP as a bridge where routing economics favor it. Neither fact proves material net XRP spot demand. Transaction-level bridge volume, fee burn, inventory and liquidity data are required.",
+      "model_eligible": false
+    }
+  ],
+  "sbi_ripple_relationship_graph": {
+    "joint_venture": {
+      "entity": "SBI Ripple Asia Co., Ltd.",
+      "formed": "2016-05-18",
+      "source": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "sbi_group_voting_rights_pct": 60,
+      "ripple_share_pct": 40,
+      "as_of": "2026-03-31",
+      "source_note": "SBI Group page states 60% voting rights; SBI presentation states SBI 60% / Ripple 40%."
+    },
+    "historical_ripple_investment": {
+      "investor": "SBI Group",
+      "investee": "Ripple Labs",
+      "announced_year": 2016,
+      "latest_percentage_found": "approximately 9% based on actual holdings in SBI's 2025-02-07 presentation",
+      "current_percentage_status": "not independently refreshed for 2026"
+    },
+    "operational_xrp_use": {
+      "entity": "SBI Remit",
+      "corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "announced_date": "2023-09-06",
+      "bridge_asset": "XRP",
+      "source": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "transaction_volume_disclosed": false
+    },
+    "research_and_poc": [
+      {
+        "date": "2026-02-24",
+        "source": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+        "status": "research only; not a specific service development or commercialization"
+      },
+      {
+        "date": "2026-02-26",
+        "source": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+        "status": "conceptual proof of concept for tokenized deposits/deposit-backed digital money; XRPL assumed; not evidence of live XRP bridge demand"
+      }
+    ],
+    "rlusd_distribution": {
+      "entity": "SBI VC Trade",
+      "date": "2026-06-24",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "status": "official RLUSD listing as a Type 4 electronic payment instrument in Japan; direct SBI/Ripple collaboration; not evidence of XRP purchases."
+    }
+  },
+  "ecosystem_relationships": {
+    "coinbase_ripple": {
+      "date": "2026-10-28",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "status": "RLUSD distribution across Coinbase Prime, Exchange and Retail on XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was described as future availability at launch."
+    },
+    "circle_ripple": {
+      "status": "NO_DIRECT_PARTNERSHIP_ESTABLISHED_HERE",
+      "note": "Circle issues USDC; Ripple issues RLUSD. BNY is a shared institutional custody/reserve-services node, not proof of a direct Circle-Ripple partnership."
+    }
+  },
+  "provenance": {
+    "web_retrieval_channel_exposed_raw_bytes": false,
+    "raw_source_sha256_receipts": null,
+    "independent_timestamp_anchors": null,
+    "model_eligible": false,
+    "reasons": [
+      "Interview transcript is auto-generated.",
+      "Video attribution uses third-party transcript/tracker sources and the exact channel handle remains probable rather than fully first-party linked.",
+      "Secondary reporting on the June 10 SBI Shinsei pilot repeats Nikkei and is not independent primary confirmation.",
+      "Official SBI and Japanese legal sources were used to separate operational services, research, conceptual POCs, enacted law and future commencement.",
+      "No raw byte capture or independent timestamp anchor was available for these web observations.",
+      "The law's supplementary provisions were inspected; the principal FIEA/crypto framework is scheduled for 2027-04-01, correcting the earlier generic within-one-year description.",
+      "The consolidated inventory reconciles the existing main creator registry, earlier partial inventories, the Linktree-linked video and OracleCheck tracker without asserting that the candidate channel ID and handle are the same account."
+    ]
+  },
+  "next_actions": [
+    "Resolve whether channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson are the same channel using a first-party reciprocal link or authorized YouTube channel metadata.",
+    "Locate a first-party link from the verified Kamilah Stevenson website or social profile to the exact @drkamilahstevenson YouTube channel before upgrading channel identity to confirmed.",
+    "Obtain official SBI Shinsei/SBI VC Trade terms and post-pilot outcome for the June 10 interest-voucher pilot; quantify actual XRP redemptions only from issuer or exchange records.",
+    "Monitor Cabinet Orders for the commencement date of Law No. 64 of 2026 and any implementing asset classification list; do not treat XRP as individually approved.",
+    "Seek primary conference proceedings or bank disclosures for the alleged XRP-vs-SWIFT 50x/60% test.",
+    "Measure XRPL RLUSD transaction fees, XRP auto-bridged payment paths and XRP inventory/market sourcing before attributing stablecoin adoption to XRP spot demand.",
+    "Preserve the 2025-12-13 versus 2025-12-14 publication-date disagreement for QslbjGQD0MU until YouTube first-party metadata resolves it."
+  ],
+  "inventory_reconciliation": {
+    "unique_video_id_count": 20,
+    "own_channel_candidate_count": 18,
+    "guest_appearance_count": 1,
+    "third_party_clip_count": 1,
+    "deduplication": "Video IDs were merged across the current main creator registry, prior 2026-11-05 inventory snapshots, the Linktree-linked video and the OracleCheck handle tracker. Historical artifacts remain unchanged.",
+    "inventory_sources": [
+      "data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+      "research/xrp_intelligence/20261105T084500Z-kamilah-stevenson-youtube-identity-and-video-inventory.json",
+      "research/xrp_intelligence/20261105T150100Z-kamilah-stevenson-youtube-identity-and-video-inventory.json",
+      "research/xrp_intelligence/20261105T011154Z-kamilah-youtube-channel-identity-quarantine.json",
+      "https://oraclecheck.io/youtube/drkamilahstevenson",
+      "https://glasp.co/youtube/QslbjGQD0MU",
+      "https://glasp.co/youtube/ci0FH73lbCs",
+      "https://glasp.co/youtube/cxeX_eu_2H0",
+      "https://glasp.co/youtube/rv0BAV0vLgo"
+    ],
+    "published_date_conflicts": [
+      {
+        "video_id": "QslbjGQD0MU",
+        "observations": [
+          "2025-12-13",
+          "2025-12-14"
+        ],
+        "status": "PRESERVED_NOT_RESOLVED"
+      }
+    ],
+    "channel_resolution": "Person identity is confirmed. UCqUPJMQdkCN6lsLVDnichPA and @drkamilahstevenson are separate third-party channel candidates that may be the same channel; no first-party reciprocal mapping was retrieved. Do not merge by name or subscriber count alone.",
+    "completeness": "PARTIAL; not a complete crawl of uploads, Shorts, livestreams or archived streams."
+  }
+}

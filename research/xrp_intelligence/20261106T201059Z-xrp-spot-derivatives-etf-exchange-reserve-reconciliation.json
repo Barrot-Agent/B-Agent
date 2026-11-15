@@ -1,0 +1,391 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_spot_derivatives_etf_exchange_reserve_snapshot_20261106T201059Z",
+  "artifact_type": "timestamped_spot_derivatives_etf_exchange_reserve_and_escrow_reconciliation",
+  "recorded_at_utc": "2026-11-06T20:10:59Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation.",
+  "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+  "capture_contract": {
+    "capture_time_utc": "2026-11-06T20:10:59Z",
+    "common_point_in_time_cutoff_utc": null,
+    "exact_per_request_retrieval_timestamps_available": false,
+    "original_http_wire_bytes_captured": false,
+    "response_headers_captured": false,
+    "excerpt_hash_scope": "SHA-256 over exact rendered API JSON or normalized source excerpt stored below; not a claim of original wire-byte capture.",
+    "note": "Kraken and OKX were retrieved as direct public ticker API responses. OKX exposes a provider snapshot timestamp; Kraken does not. Secondary dashboards expose different publication times and universes. No common synchronized cutoff is claimed."
+  },
+  "source_independence_groups": [
+    "kraken_exchange",
+    "okx_exchange",
+    "tradradar_seven_exchange_aggregator",
+    "alpha_finance_modelled_aggregator",
+    "xrp_insights_wallet_tracker",
+    "xrp_insights_etf_tracker",
+    "cryptokeyhole_issuer_holdings_aggregator"
+  ],
+  "source_registry": [
+    {
+      "id": "KRAKEN_XRPUSD_20261106T2010Z",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_ticker_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken_exchange",
+      "provider_timestamp_utc": null,
+      "retrieval_time_upper_bound_utc": "2026-11-06T20:10:59Z",
+      "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.18392000\",\"4224\",\"4224.000\"],\"b\":[\"1.18391000\",\"1241\",\"1241.000\"],\"c\":[\"1.18394000\",\"4.00000000\"],\"v\":[\"25984332.51118909\",\"37605520.34173590\"],\"p\":[\"1.19190184\",\"1.20199658\"],\"t\":[29915,39265],\"l\":[\"1.17173000\",\"1.17173000\"],\"h\":[\"1.22190000\",\"1.24301000\"],\"o\":\"1.20567000\"}}}",
+      "sha256": "fe3b9c6fa4ad85b5da128dc018bc55c0e99c8d4949249fb08a8bcc879ff54e1c",
+      "limitations": [
+        "The response does not expose a provider event timestamp.",
+        "The captured response is rendered JSON, not original HTTP wire bytes or response headers.",
+        "Last trade and best bid/ask are not assumed to share an event sequence."
+      ]
+    },
+    {
+      "id": "OKX_XRPUSDT_20261106T200334Z",
+      "publisher": "OKX",
+      "source_type": "primary_exchange_public_spot_ticker_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "independence_group": "okx_exchange",
+      "provider_snapshot_timestamp_utc": "2026-11-06T20:03:34.863Z",
+      "retrieval_time_upper_bound_utc": "2026-11-06T20:10:59Z",
+      "excerpt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.185\",\"lastSz\":\"1.5\",\"askPx\":\"1.1851\",\"askSz\":\"1001.5\",\"bidPx\":\"1.185\",\"bidSz\":\"4862.49965\",\"open24h\":\"1.2418\",\"high24h\":\"1.2445\",\"low24h\":\"1.1743\",\"volCcy24h\":\"77325311.0398662308\",\"vol24h\":\"64433111.055132\",\"ts\":\"1793995414863\",\"sodUtc0\":\"1.2072\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "sha256": "01776df84678cc3a6014b7222725b24f21ae744426b2023e4b42449deb701664",
+      "limitations": [
+        "The ts field is a ticker snapshot timestamp, not a separately supplied last-trade event time.",
+        "XRP-USDT is not XRP-USD; no FX normalization is performed.",
+        "The captured response is rendered JSON, not original HTTP wire bytes or response headers."
+      ]
+    },
+    {
+      "id": "TRADRADAR_XRP_PERPS_20261106T1645Z",
+      "publisher": "TradRadar",
+      "source_type": "seven_exchange_perpetual_aggregation",
+      "url": "https://tradradar.io/markets/xrp",
+      "independence_group": "tradradar_seven_exchange_aggregator",
+      "provider_or_display_timestamp_utc": "2026-11-06T16:45:00Z",
+      "excerpt": "TradRadar XRP perpetuals: mark price $1.1935, -4.43% over 24h; seven-exchange open interest $1.92B, down 1.65% over 24h; OI-weighted funding +0.0029% per 8h; 24h liquidations at least $12.87M across five venues, including $12.27M longs and $598.04K shorts; long/short account ratio 3.89 (79.6% long). Updated 2026-11-06 16:45 UTC; figures are delayed 15 minutes.",
+      "sha256": "af16edc1ebf760c720ecc75c4a43318a92ce5a3eeea78389efb9063cc92fb859",
+      "limitations": [
+        "Seven-exchange aggregate; 15-minute delay.",
+        "Liquidations are reported as a lower bound.",
+        "Long/short ratio is account share, not notional exposure."
+      ]
+    },
+    {
+      "id": "ALPHA_XRP_LIQUIDATION_HEATMAP_20261106T1444Z",
+      "publisher": "Alpha Finance",
+      "source_type": "modelled_all_exchange_liquidation_heatmap",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "independence_group": "alpha_finance_modelled_aggregator",
+      "provider_or_display_timestamp_utc": "2026-11-06T14:44:00Z",
+      "excerpt": "Alpha Finance XRP liquidation heatmap, all-exchange view, as of 2026-11-06 14:44 UTC: spot $1.1856; open interest $2.77B; 24h volume $3.78B; longs liquidated $21.3M and shorts $825.4K in 24h. Modelled short liquidation levels total $129.5M above price, with largest displayed cluster $6.5M at $1.2052; modelled long levels total $34.5M below price, with largest displayed cluster $4.1M at $1.1690. Levels are modelled from OI and standard leverage tiers, not exchange-published open positions.",
+      "sha256": "a425dd36b961c63bc61dc9b1c58467ead4dbd50776ddc7462c199820943c16c7",
+      "limitations": [
+        "OI and liquidation levels are provider-defined and not directly reconciled to TradRadar.",
+        "Liquidation levels are modelled from OI and leverage tiers, not verified position-level orders.",
+        "The snapshot is over five hours older than the capture upper bound."
+      ]
+    },
+    {
+      "id": "XRP_INSIGHTS_EXCHANGE_BALANCES_20261106T0800Z",
+      "publisher": "XRP Insights",
+      "source_type": "XRPL_wallet_balance_attribution_aggregator",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "independence_group": "xrp_insights_wallet_tracker",
+      "provider_or_display_timestamp_utc": "2026-11-06T08:00:00Z",
+      "excerpt": "XRP Insights exchange-balance page, data read 2026-11-06 08:00 UTC: 22.34B XRP across 701 publicly attributed wallets at 24 exchanges. Same-wallet change: 7d -34.7M XRP and 30d -152.6M XRP. Naive total change is +359.4M XRP because two newly tracked wallets add 512.0M XRP. Tracked balances include cold storage and non-customer reserves. 487.7M XRP is identified as wrapped-asset or other reserve backing: 325.8M Binance XRP-BF2 backing Binance-Peg XRP on BNB Chain, 150.7M Coinbase wallets backing cbXRP on Base, and 11.2M insurance/charity wallets.",
+      "sha256": "2768bc0b1ebf28d93221a45ea3ae478156096c99f0751c8e0e277b9f1c4a9e92",
+      "limitations": [
+        "Wallet labels are provider-maintained and not exhaustive.",
+        "Same-wallet changes still cannot distinguish customer withdrawals from exchange internal transfers or newly relabelled wallets.",
+        "Cold storage and wrapped-asset backing are included; totals are not tradable float."
+      ]
+    },
+    {
+      "id": "XRP_INSIGHTS_ETF_HOLDINGS_20261105",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_holdings_delta_aggregator",
+      "url": "https://xrp-insights.com/",
+      "independence_group": "xrp_insights_etf_tracker",
+      "provider_or_display_timestamp_utc": "2026-11-05",
+      "excerpt": "XRP Insights ETF tracker, data through the 2026-11-05 US close: six US spot XRP ETFs plus BITW show a 2026-11-05 holdings-derived net change of +110,214 XRP; combined holdings about 1.20B XRP and net assets about $1.54B. The 2026-11-02 through 2026-11-05 four-session holdings-derived change is -149,487 XRP (about -$201.5K). Daily flow is calculated from issuer-reported holdings changes; it is not an AP cash creation/redemption record.",
+      "sha256": "3b2c9310da0340ededd85eede3f6c8c44cc1128e2d8ffeb696194ecad3fe10a7",
+      "limitations": [
+        "Holdings-derived XRP quantity changes are not AP cash creations/redemptions.",
+        "Six spot ETFs plus BITW is not identical to every tracker universe.",
+        "Daily issuer holdings can be revised or settled after initial publication."
+      ]
+    },
+    {
+      "id": "CRYPTOKEYHOLE_XRP_ETF_PARTIAL_20261105",
+      "publisher": "CryptoKeyhole",
+      "source_type": "issuer_holdings_delta_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "independence_group": "cryptokeyhole_issuer_holdings_aggregator",
+      "provider_or_display_timestamp_utc": "2026-11-06T04:18:00Z",
+      "excerpt": "CryptoKeyhole XRP ETF tracker, updated 2026-11-06 04:18 UTC: 2026-11-04 net holdings change -3,339 XRP (about -$4K) across four funds. The 2026-11-05 row is partial, with only two of four funds reported; the displayed total for those two is zero. Latest issuer file was dated 2026-11-05 and read 2026-11-06 03:07 UTC. The tracker was still waiting for Franklin XRPZ and Canary XRPC.",
+      "sha256": "0422397ebf2271d2b18dcdb6de1e56b7ce98e32b8aefd8ab79d4889874fca869",
+      "limitations": [
+        "Only four funds are covered in this extract.",
+        "The Nov 5 row is partial at 2/4 funds and cannot be treated as a complete zero-flow day.",
+        "Underlying issuer files overlap with other trackers, so this is not independent issuer evidence."
+      ]
+    },
+    {
+      "id": "XRP_INSIGHTS_ESCROW_20261106",
+      "publisher": "XRP Insights",
+      "source_type": "XRPL_escrow_ledger_aggregator",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence_group": "xrp_insights_wallet_tracker",
+      "provider_or_display_timestamp_utc": "2026-11-06",
+      "excerpt": "XRP Insights XRP Radar reports 31.10B XRP locked in live XRPL escrow objects as of 2026-11-06, summed daily from ledger Escrow objects via rippled. This run did not capture the underlying raw ledger responses or independent ledger receipts.",
+      "sha256": "870e23518ae1d5bf7921785c95b507ad8ce79019a5e041322cd7bad1382e9a2e",
+      "limitations": [
+        "Provider reports a sum of live ledger Escrow objects, but this run did not capture raw ledger responses or independently verify the query.",
+        "Locked escrow is not the same as circulating or immediately tradable supply."
+      ]
+    }
+  ],
+  "observations": {
+    "spot": {
+      "kraken": {
+        "pair": "XRP/USD",
+        "last_usd": 1.18394,
+        "best_bid_usd": 1.18391,
+        "best_ask_usd": 1.18392,
+        "spread_usd": 0.00001,
+        "spread_bps": 0.0844655233,
+        "volume_utc_day_xrp": 25984332.51118909,
+        "volume_rolling_24h_xrp": 37605520.3417359,
+        "vwap_utc_day_usd": 1.19190184,
+        "vwap_rolling_24h_usd": 1.20199658,
+        "utc_day_open_usd": 1.20567,
+        "low_rolling_24h_usd": 1.17173,
+        "high_rolling_24h_usd": 1.24301,
+        "last_vs_utc_day_open_pct": -1.8023173837,
+        "last_vs_rolling_24h_vwap_pct": -1.5022155887,
+        "provider_timestamp_utc": null,
+        "retrieval_time_upper_bound_utc": "2026-11-06T20:10:59Z",
+        "last_above_best_ask": true,
+        "interpretation": "Last trade is marginally above displayed ask; the rendered ticker components are not assumed synchronous or executable as a single book state."
+      },
+      "okx": {
+        "instrument": "XRP-USDT",
+        "last_usdt": 1.185,
+        "best_bid_usdt": 1.185,
+        "best_ask_usdt": 1.1851,
+        "spread_usdt": 0.0001,
+        "spread_bps": 0.8438462512,
+        "volume_rolling_24h_xrp": 64433111.055132,
+        "volume_rolling_24h_usdt": 77325311.03986622,
+        "rolling_24h_open_usdt": 1.2418,
+        "rolling_24h_high_usdt": 1.2445,
+        "rolling_24h_low_usdt": 1.1743,
+        "utc_day_open_usdt": 1.2072,
+        "utc_day_open_8_usdt": 1.1877,
+        "last_vs_rolling_24h_open_pct": -4.5740054759,
+        "last_vs_utc_day_open_pct": -1.8389662028,
+        "last_vs_utc_day_open_8_pct": -0.2273301339,
+        "provider_snapshot_timestamp_utc": "2026-11-06T20:03:34.863Z",
+        "provider_timestamp_epoch_ms": 1793995414863,
+        "interpretation": "The ts field is a ticker snapshot time, not a separately supplied last-trade event time."
+      },
+      "cross_venue_comparison_eligible": false,
+      "reason": "Kraken XRP/USD and OKX XRP-USDT are asynchronous, have different quote currencies and expose different windows. No USD/USDT normalization, common cutoff or executable cross-venue arbitrage claim is made."
+    },
+    "depth": {
+      "status": "NO_NEW_SYNCHRONIZED_SPOT_DEPTH_OBSERVATION",
+      "last_known_fuelmaps_snapshot_utc": "2026-11-06T18:00:00Z",
+      "age_at_current_capture_minutes": 130.983,
+      "note": "The prior six-venue Fuelmaps spot-depth snapshot is now more than two hours old. Direct depth API retrievals were inaccessible in this capture. Do not carry the prior depth bands forward as current."
+    },
+    "derivatives": {
+      "tradradar": {
+        "displayed_update_time_utc": "2026-11-06T16:45:00Z",
+        "displayed_delay_minutes": 15,
+        "venue_count_oi": 7,
+        "oi_usd": 1920000000,
+        "oi_change_24h_pct": -1.65,
+        "funding_pct_per_8h": 0.0029,
+        "liquidations_lower_bound_usd": 12870000,
+        "liquidation_venue_count": 5,
+        "long_liquidations_usd": 12270000,
+        "short_liquidations_usd": 598040,
+        "long_short_account_ratio": 3.89,
+        "long_account_share_pct": 79.6
+      },
+      "alpha_finance": {
+        "as_of_utc": "2026-11-06T14:44:00Z",
+        "oi_usd": 2770000000,
+        "volume_24h_usd": 3780000000,
+        "long_liquidations_24h_usd": 21300000,
+        "short_liquidations_24h_usd": 825400,
+        "modelled_short_liquidation_levels_usd": 129500000,
+        "modelled_long_liquidation_levels_usd": 34500000,
+        "largest_short_cluster_usd": 6500000,
+        "largest_short_cluster_price_usd": 1.2052,
+        "largest_long_cluster_usd": 4100000,
+        "largest_long_cluster_price_usd": 1.169,
+        "scope": "All-exchange dashboard; liquidation levels modelled from OI and standard leverage tiers."
+      },
+      "oi_scope_disagreement": {
+        "absolute_difference_usd": 850000000,
+        "alpha_vs_tradradar_pct": 44.270833,
+        "comparison_eligible": false,
+        "reason": "Provider venue universes, methods and timestamps differ; Alpha's liquidation levels are modelled. Do not average OI or combine liquidation values."
+      },
+      "interpretation": "Both providers show a long-liquidation skew, but they do not provide synchronized, comparable position-level evidence. Funding is positive in TradRadar's delayed snapshot; this is not sufficient for a directional signal."
+    },
+    "etf": {
+      "xrp_insights": {
+        "data_as_of_date": "2026-11-05",
+        "universe": "Six US spot XRP ETFs plus BITW",
+        "nov5_holdings_delta_xrp": 110214,
+        "nov2_to_nov5_holdings_delta_xrp": -149487,
+        "nov2_to_nov5_sessions": 4,
+        "total_holdings_xrp_approx": 1200000000,
+        "net_assets_usd_approx": 1540000000,
+        "method": "Day-over-day issuer-reported holdings changes; holdings settle once per trading day."
+      },
+      "cryptokeyhole": {
+        "nov4_holdings_delta_xrp": -3339,
+        "nov4_fund_count": 4,
+        "nov5_partial_fund_count": 2,
+        "nov5_total_for_reported_funds_xrp": 0,
+        "latest_issuer_file_read_utc": "2026-11-06T03:07:00Z",
+        "method": "Issuer-file holdings deltas for a four-fund subset; Nov 5 incomplete."
+      },
+      "comparison_eligible": false,
+      "reason": "Different fund universes and publication/settlement status; the partial Nov 5 CryptoKeyhole row is not a full-day zero. Holdings changes are not equivalent to AP cash creations/redemptions or SoSoValue dollar flows."
+    },
+    "exchange_balances": {
+      "xrp_insights": {
+        "snapshot_time_utc": "2026-11-06T08:00:00Z",
+        "tracked_wallet_count": 701,
+        "tracked_exchange_count": 24,
+        "tracked_xrp": 22340000000,
+        "same_wallet_change_7d_xrp": -34700000,
+        "same_wallet_change_30d_xrp": -152600000,
+        "naive_total_change_xrp": 359400000,
+        "newly_tracked_wallet_count": 2,
+        "newly_tracked_wallet_xrp": 512000000,
+        "exchange_balances_xrp": {
+          "Upbit": 6420000000,
+          "Coinbase": 5790000000,
+          "Binance": 2740000000,
+          "Kraken": 983100000,
+          "SBI VC Trade": 56500000
+        },
+        "wrapped_and_other_reserves_xrp": {
+          "total": 487700000,
+          "Binance_XRP_BF2": 325800000,
+          "Coinbase_cbXRP_Base": 150700000,
+          "insurance_and_charity": 11200000
+        }
+      },
+      "interpretation": "The same-wallet series is a provider-attributed balance measure, not customer net flow. Newly tracked wallets explain why the naive total rises while same-wallet balances fall. Wrapped-asset backing and cold storage are controlled-wallet balances, not freely tradable customer float."
+    },
+    "escrow": {
+      "provider_reported_live_escrow_xrp": 31100000000,
+      "as_of_date": "2026-11-06",
+      "source_method": "XRP Insights says it sums live XRPL Escrow objects daily via rippled.",
+      "direct_ledger_receipts_captured": false,
+      "interpretation": "Provider-derived locked escrow estimate; not circulating or immediately tradable supply, and not independently verified from raw ledger responses in this capture."
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "spot_drawdown_and_near_low",
+      "claim": "The current XRP move is still under short-term sell pressure.",
+      "support": [
+        "OKX last is 4.57% below its rolling 24h open and within 1% of its reported 24h low.",
+        "Kraken last is 1.50% below its rolling 24h VWAP."
+      ],
+      "counter": [
+        "The quotes are not synchronized across venues and Kraken does not expose a provider timestamp.",
+        "Price remains above the observed 24h lows; no synchronized depth or executable order-flow data were captured."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "leveraged_long_unwind",
+      "claim": "Long-side leverage reduction is amplifying the move.",
+      "support": [
+        "TradRadar reports at least $12.27M long liquidations versus $0.598M shorts in its delayed 24h window.",
+        "Alpha Finance also reports a larger long-than-short liquidation amount."
+      ],
+      "counter": [
+        "Open interest differs by $850M across provider dashboards with different universes and methods.",
+        "Alpha Finance liquidation levels are modelled, and the time windows are not synchronized."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "exchange_supply_signal",
+      "claim": "Exchange-wallet changes may indicate changing immediately available XRP supply.",
+      "support": [
+        "XRP Insights reports same-wallet exchange balances down 34.7M XRP over seven days and 152.6M over 30 days."
+      ],
+      "counter": [
+        "Two newly tracked wallets add 512M XRP and make naive totals rise 359.4M.",
+        "487.7M XRP of tracked exchange balances is wrapped-asset or other reserve backing; cold storage and internal transfers are not customer sell supply."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "etf_holdings_and_cash_flow_divergence",
+      "claim": "ETF-related XRP holdings have weakened over the four-session Nov 2-5 window.",
+      "support": [
+        "XRP Insights reports -149,487 XRP over four sessions."
+      ],
+      "counter": [
+        "XRP Insights reports +110,214 XRP on Nov 5 alone.",
+        "CryptoKeyhole's Nov 5 row is partial at 2/4 funds and cannot establish a full-day zero.",
+        "Holdings deltas are not AP cash creations/redemptions; fund universes differ."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "escrow_supply_overhang",
+      "claim": "Locked XRP escrow is a material supply overhang to monitor.",
+      "support": [
+        "XRP Insights reports 31.10B XRP in live ledger escrow as of Nov 6."
+      ],
+      "counter": [
+        "This is not circulating supply or immediate exchange supply.",
+        "The underlying raw ledger objects were not independently captured in this run; monthly releases are not equivalent to net market sales."
+      ],
+      "status": "UNRESOLVED"
+    }
+  ],
+  "model_eligibility": {
+    "eligible": false,
+    "reason_codes": [
+      "NO_COMMON_POINT_IN_TIME_CUTOFF",
+      "NO_CURRENT_SYNCHRONIZED_SPOT_DEPTH",
+      "DERIVATIVES_PROVIDER_SCOPE_DISAGREEMENT",
+      "ETF_HOLDINGS_NOT_AP_CASH_FLOWS",
+      "EXCHANGE_WALLET_LABELS_NOT_TRADABLE_FLOAT",
+      "ESCROW_RAW_LEDGER_RECEIPTS_NOT_CAPTURED",
+      "INSUFFICIENT_HISTORICAL_MULTI_DOMAIN_FEATURES",
+      "OUT_OF_SAMPLE_LIFT_AND_CALIBRATION_NOT_ESTABLISHED",
+      "EXTERNAL_IMMUTABLE_TIMESTAMP_ANCHOR_NOT_CONFIGURED"
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "data_cutoff_utc": "2026-11-06T20:10:59Z",
+    "reason": "This is an asynchronous research snapshot with incomplete synchronized depth and unresolved provider scope differences; no leakage-safe out-of-sample evidence supports a directional XRP forecast."
+  },
+  "safety": {
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "funds_transfer": false,
+    "external_submission": false,
+    "deployment": false,
+    "secret_operation": false
+  }
+}

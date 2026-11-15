@@ -1,0 +1,108 @@
+{
+  "artifact_type": "coinbase_xrp_rlusd_custody_holdings_and_commercial_engagement_disclosure",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T203213Z-coinbase-xrp-rlusd-holdings-engagement-disclosure",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "076b2f18f1abe6340563e6169eba363c751c4b58",
+  "append_only": true,
+  "captured_at_utc": "2026-11-08T20:32:13Z",
+  "source_capture": {
+    "source_url": "https://www.coinbase.com/en-br/legal/digital-asset-disclosures",
+    "source_title": "Coinbase Digital Asset Disclosures",
+    "publisher": "Coinbase",
+    "source_class": "primary_company_disclosure",
+    "crawl_label": "crawled last week",
+    "exact_retrieval_timestamp_available": false,
+    "raw_http_wire_bytes_or_headers_captured": false,
+    "hash_scope": "SHA-256 of a 24-word normalized excerpt containing the disclosed holdings vintage and XRP/RLUSD table rows; not raw HTML or HTTP bytes.",
+    "independence_group": "coinbase_digital_asset_disclosures",
+    "independence_assessment": "One Coinbase disclosure. It is not independent corroboration of Coinbase's own holdings or engagement statements."
+  },
+  "source_receipts": [
+    {
+      "source_id": "coinbase_digital_asset_disclosures_xrp_rlusd_20261108",
+      "publisher": "Coinbase",
+      "url": "https://www.coinbase.com/en-br/legal/digital-asset-disclosures",
+      "source_date": "2026-11-08_retrieved_during_run",
+      "source_lines": {
+        "definition_and_vintage": "55-62",
+        "us_trading_asset_xrp_row": "63-66,272",
+        "custody_trust_company_section": "276-279",
+        "custody_cbxrp_row": "370",
+        "custody_rlusd_row": "589",
+        "custody_xrp_row": "661"
+      },
+      "normalized_excerpt": "Coinbase Holdings are provided as of March 31, 2026. XRP | XRP | Yes | Yes; Ripple USD | RLUSD | No | Yes.",
+      "normalized_excerpt_sha256": "10ddd4cce09faf19d26568fd51f48cfe1e6243df485e967d8aebf0b4ef5961ea",
+      "sha256": "10ddd4cce09faf19d26568fd51f48cfe1e6243df485e967d8aebf0b4ef5961ea",
+      "hash_scope": "SHA-256 of exact normalized excerpt string stored here; not raw HTML or HTTP bytes."
+    }
+  ],
+  "disclosure_vintage": {
+    "coinbase_holdings_as_of_date": "2026-03-31",
+    "page_update_frequency_claim": "quarterly",
+    "commercial_engagement_start_date": "NOT_DISCLOSED",
+    "page_crawl_label": "last week",
+    "exact_page_update_timestamp": "NOT_AVAILABLE"
+  },
+  "commercial_engagement_definition": {
+    "publisher_definition": "Coinbase defines commercial engagement broadly to include financial or business activities involving the asset, its issuer or an affiliated party; the engagement may have begun before or after Coinbase supported the asset.",
+    "direct_counterparty_named": "NO",
+    "direct_ripple_contract_established": "NO",
+    "interpretation": "A Yes flag is evidence of a Coinbase-reported commercial relationship under its broad definition, not proof of a direct Ripple agreement, XRP purchase, collateral posting or a specific payment rail."
+  },
+  "observations": {
+    "us_incl_ny_trading_assets": {
+      "xrp": {
+        "coinbase_holding": "YES",
+        "commercial_engagement": "YES"
+      }
+    },
+    "coinbase_custody_trust_company": {
+      "xrp": {
+        "coinbase_holding": "YES",
+        "commercial_engagement": "YES"
+      },
+      "cbxrp": {
+        "coinbase_holding": "YES",
+        "commercial_engagement": "YES"
+      },
+      "rlusd": {
+        "coinbase_holding": "NO",
+        "commercial_engagement": "YES"
+      }
+    },
+    "holdings_amounts_disclosed": false,
+    "customer_custody_balances_disclosed": false,
+    "xrp_collateral_balance_disclosed": false,
+    "rlusd_balance_disclosed": false,
+    "issuer_or_affiliate_counterparty_identified": false
+  },
+  "interpretation": {
+    "supported": "Coinbase's disclosure marks XRP as held and commercially engaged in its US trading-assets table and its Coinbase Custody Trust Company table; the custody table also marks cbXRP Yes/Yes and RLUSD No/Yes.",
+    "vintage_limit": "The page states Coinbase holding data are as of 2026-03-31. Do not present the holding flags as November 8 balances.",
+    "relationship_limit": "Commercial engagement is broad and can involve the asset, issuer or affiliate; the page does not identify Ripple as the specific counterparty.",
+    "capital_limit": "No quantity, dollar balance, customer custody balance, XRP collateral balance, purchase flow or net capital amount is disclosed.",
+    "counter_hypotheses": [
+      "The engagement flag may relate to custody, listing, an affiliate or another business/financial activity rather than direct issuer financing.",
+      "The March 31 holding vintage may not reflect holdings on the November 8 page crawl date.",
+      "A Yes holding flag does not quantify balance or establish whether the holding is corporate inventory versus customer assets."
+    ],
+    "source_independence": "Single Coinbase primary disclosure; no independent confirmation."
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Disclosure context only; stale holdings vintage, no amounts, no direct counterparty attribution and no demonstrated out-of-sample price-prediction value."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability_issued": false
+  },
+  "external_actions": {
+    "feature_store_write": false,
+    "paper_trade": false,
+    "real_money": false
+  }
+}

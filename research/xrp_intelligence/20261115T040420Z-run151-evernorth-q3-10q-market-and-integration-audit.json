@@ -1,0 +1,1124 @@
+{
+  "artifact_type": "barrot_xrp_run151_reconciliation",
+  "schema_version": "1.1.0",
+  "run_id": "Run151",
+  "captured_at_utc": "2026-11-15T04:04:20Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, authorization, safety and verification foundation",
+    "forecast_policy": "No directional forecast before leakage-safe out-of-sample superiority and independent shadow outcomes"
+  },
+  "source_capture": {
+    "raw_source_bytes_captured": false,
+    "raw_sha256_receipts_available": false,
+    "trusted_timestamp_anchor": false,
+    "model_eligible": false,
+    "reason": "SEC filing text and public API responses were inspected through web-rendered retrieval. Exact source bytes were not captured by the repository collector in this run; no raw SHA-256 receipt is claimed."
+  },
+  "repository_snapshot_before_run151_commit": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head": "c3a6e8a65131e795144401abdb8b32a699c97a6f",
+    "commits_ahead": 2449,
+    "commits_behind": 0,
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2477,
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable_indicator": true,
+    "pr_changed_files": 1235,
+    "pr_additions": 375631,
+    "pr_deletions": 6309,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "pages_retrieved": 4,
+      "page_sizes": [
+        100,
+        100,
+        100,
+        73
+      ]
+    },
+    "current_handoff_blob_sha_before_update": "ce4f62603fc31916aec6fb68cfe397ca8540e0b4"
+  },
+  "verification": {
+    "tested_head_sha": "c3a6e8a65131e795144401abdb8b32a699c97a6f",
+    "exact_head_push_ci": {
+      "run_id": 43674587879,
+      "conclusion": "success",
+      "core_tests": {
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8
+      },
+      "full_repository_suite": {
+        "passed": 3766,
+        "failed": 0,
+        "skipped": 1,
+        "subtests": 19,
+        "inclusive_coverage_percent": 64.02,
+        "legacy_core_coverage_percent": 77,
+        "duration_seconds": 135.14,
+        "conclusion": "success"
+      },
+      "wheel_build": "success",
+      "installed_primary_mission_verification": "success",
+      "warnings": [
+        "GitHub Actions cache budget reached; cache became read-only. Test/build execution still succeeded.",
+        "Setuptools warns that barrot_agent.data.missions and data.research are absent from explicit package discovery; the primary mission JSON was nevertheless included in the wheel and the installed wheel loaded Barrot V3 and the XRP mission.",
+        "project.license TOML-table deprecation warning."
+      ]
+    },
+    "dependency_audit": {
+      "run_id": 43674587849,
+      "manifests_audited": 6,
+      "known_vulnerabilities_reported": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 43674587863,
+      "conclusion": "success",
+      "behavior": "Automatic merge intentionally disabled; workflow states that it does not approve, label or merge PRs."
+    },
+    "pr_event_ci": {
+      "run_id": 43674591402,
+      "conclusion": "success",
+      "full_suite": "skipped by integration-branch event condition",
+      "core_tests": "skipped by integration-branch event condition",
+      "pages_validation": "success"
+    },
+    "pr_dependency_audit_run": 43674591440,
+    "pr_fail_closed_gate_run": 43674591454,
+    "new_run151_commit_verification": "PENDING; new audit, map and regression test will trigger a separate exact-head CI cycle.",
+    "run151a_exact_head": {
+      "tested_head_sha": "95e181ca44b0a6cf00172860e95185d8a212b867",
+      "full_ci_run_id": 43676126105,
+      "full_suite": {
+        "passed": 3776,
+        "failed": 2,
+        "skipped": 1,
+        "subtests": 19,
+        "inclusive_coverage_percent": 64.02,
+        "duration_seconds": 106.97,
+        "conclusion": "failure"
+      },
+      "core_tests": "passed",
+      "dependency_audit": {
+        "run_id": 43676126104,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43676126149,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        {
+          "test": "test_run151_reconciles_postclose_known_treasury_without_double_counting",
+          "cause": "The test indexed evernorth_q3_2026 twice; fixture path error, not repository product behavior."
+        },
+        {
+          "test": "test_run151_preserves_ripple_related_entity_and_pathfinder_distinctions",
+          "cause": "Assertion still expected Run135A fractional precision instead of the Q3 10-Q whole-XRP amount."
+        }
+      ],
+      "product_code_failures": "NONE_IDENTIFIED_IN_THIS_RUN",
+      "wheel_build": "SKIPPED_AFTER_TEST_FAILURE",
+      "remediation": "Fix the two research-artifact assertions, add SEC/CFTC and stablecoin-regulatory evidence, then rerun the full suite on the new exact head."
+    },
+    "run151b_exact_head": {
+      "tested_head_sha": "5c248edb26444db62e2ae4161e0764fd6619e840",
+      "push_ci_run_id": 43676502293,
+      "full_suite": {
+        "passed": 3783,
+        "failed": 0,
+        "skipped": 1,
+        "subtests": 19,
+        "coverage_inclusive_percent": 64.02,
+        "legacy_core_coverage_percent": 77,
+        "duration_seconds": 132.59,
+        "conclusion": "success"
+      },
+      "wheel_build": "success",
+      "installed_wheel": "verified Barrot V3, primary XRP mission and canonical data assets",
+      "dependency_audit": {
+        "run_id": 43676502220,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43676502224,
+        "conclusion": "success",
+        "automatic_merge": "disabled"
+      },
+      "pr_event_ci": {
+        "run_id": 43676506971,
+        "conclusion": "success",
+        "core_and_full_tests": "skipped by integration-branch event condition"
+      },
+      "new_run151c_commit_verification": "PENDING"
+    }
+  },
+  "main_branch_verification": {
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "ci_run_id": 43650499432,
+    "full_suite": {
+      "passed": 848,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 8
+    },
+    "core_tests": {
+      "passed": 485,
+      "failed": 0,
+      "subtests": 8
+    },
+    "pages_run": {
+      "run_id": 43650499344,
+      "conclusion": "failure",
+      "error": "Liquid syntax error at GLOBAL_STATE_MANIFEST.md:6456",
+      "deployment": "skipped"
+    },
+    "barrot_sync_run": {
+      "run_id": 43650499411,
+      "wrapper_conclusion": "success",
+      "actual_sync": "skipped",
+      "error": "ModuleNotFoundError: rich",
+      "external_api_call": false,
+      "sync_commit_or_push": false
+    },
+    "cross_analysis_run": {
+      "run_id": 43674239548,
+      "conclusion": "success",
+      "mode": "read-only artifact"
+    },
+    "auto_pr_workflow": {
+      "run_id": 43650499406,
+      "conclusion": "success",
+      "permissions": "contents:read",
+      "behavior": "Checkout and configuration validation only; it does not create branches or PRs."
+    }
+  },
+  "security_and_governance": {
+    "branch_protection_api": "HTTP 403; required-check and approval settings could not be independently inspected.",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "enforcement": "disabled"
+    },
+    "codeowners": {
+      "path": ".github/CODEOWNERS",
+      "content": "* @Barrot-Agent",
+      "independent_reviewer": "none"
+    },
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege_status": "FAIL; connector permissions remain overprivileged.",
+    "pages_publication_authorized": false,
+    "merge_decision": "NO_MERGE",
+    "merge_blockers": [
+      "PR #1662 remains draft with zero formal approvals and zero review threads.",
+      "Complete semantic reconciliation of all 1,235 changed paths remains unfinished; the latest detailed blob comparison is Run150.",
+      "Branch-protection requirements are not visible through the current API access.",
+      "CODEOWNERS does not provide an independent reviewer.",
+      "GitHub connector has admin and maintain permissions.",
+      "Main Pages build still fails and publication authorization is unresolved."
+    ]
+  },
+  "prediction_engine": {
+    "source_registry": {
+      "total_definitions": 51,
+      "hourly": 46,
+      "weekly": 3,
+      "excluded_noncommercial_xrpl_node_sources": 2,
+      "scheduled_sources": 49
+    },
+    "quote_basis_normalization": {
+      "source_id": "okx_usdt_usd_ticker",
+      "method": "same-venue XRP-USDT multiplied by USDT-USD",
+      "max_component_age_seconds": 300,
+      "max_event_time_skew_seconds": 60,
+      "exact_head_tests": "passed on c3a6e8a; new Run151 commit pending",
+      "admission_policy": "Fail closed if either component is stale or event-time skew exceeds 60 seconds."
+    },
+    "implemented_on_integration": [
+      "Read-only scheduled public-source ingestion workflow",
+      "SHA-256 raw-source receipt manifest and local receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "Event timeline and source-independence registry",
+      "Naive, momentum, mean-reversion and volatility baselines",
+      "Chronological walk-forward evaluation",
+      "Paired temporal and source-clustered block-bootstrap diagnostics",
+      "Policy-v6 candidate readiness gate with 10,000-resample familywise evidence requirements",
+      "Probability calibration and PSI drift diagnostics",
+      "Fail-closed forecast ledger and independent Ed25519 evaluator attestation"
+    ],
+    "remaining_unverified": [
+      "No trained XRP-specific candidate model.",
+      "No demonstrated candidate superiority against all four baselines.",
+      "No independent shadow-outcome cohort.",
+      "No synchronized historical multi-venue full-depth L2 dataset.",
+      "No independently anchored WORM archive or trusted timestamp service.",
+      "Scheduled ingestion has not been verified on main; primary_mission.json and xrp-public-ingestion.yml are absent from main."
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "market_snapshot": {
+    "observation_cutoff_utc": "2026-11-15T04:04:20Z",
+    "okx_xrp_usdt": {
+      "last_usd": "0.9643",
+      "bid_usd": "0.9642",
+      "ask_usd": "0.9643",
+      "bid_size_xrp": "1001.5",
+      "ask_size_xrp": "3669.926584",
+      "spread_basis_points_approx": 1.0371,
+      "top_ask_to_bid_size_ratio_approx": 3.6644,
+      "open_24h_usd": "0.9929",
+      "high_24h_usd": "1.0002",
+      "low_24h_usd": "0.8929",
+      "volume_24h_xrp": "100906105.583341",
+      "volume_24h_usdt": "95290634.3401038988",
+      "provider_event_time_utc": "2026-11-15T03:42:02.769Z",
+      "age_at_cutoff_seconds": 1337.231,
+      "model_eligible": false,
+      "exclusion": "Provider event time exceeds the 300-second freshness gate; raw bytes and SHA-256 receipt were not captured."
+    },
+    "kraken_xrp_usd": {
+      "last_usd": "0.96517",
+      "bid_usd": "0.96493",
+      "ask_usd": "0.96517",
+      "top_bid_size_xrp": "3289",
+      "top_ask_size_xrp": "4270",
+      "high_24h_usd": "0.99897",
+      "low_24h_usd": "0.89112",
+      "volume_24h_xrp": "84939258.48609665",
+      "vwap_24h_usd": "0.94688565",
+      "utc_day_open_usd": "0.91378",
+      "rolling_24h_open": "NOT_SUPPLIED_BY_THIS_ENDPOINT",
+      "provider_event_time": "ABSENT",
+      "model_eligible": false,
+      "exclusion": "No provider event timestamp; no raw bytes or SHA-256 receipt."
+    },
+    "binance_xrpusdt_perpetual": {
+      "mark_price_usdt": "0.96420000",
+      "index_price_usdt": "0.96460350",
+      "last_funding_rate_decimal": "-0.00003071",
+      "provider_event_time_utc": "2026-11-15T03:56:29Z",
+      "next_funding_time_utc": "2026-11-15T08:00:00Z",
+      "age_at_cutoff_seconds": 471,
+      "instrument": "perpetual futures, not spot",
+      "model_eligible": false,
+      "exclusion": "Perpetual mark/index observation is not a spot quote; older than 300 seconds at cutoff and no raw receipt."
+    },
+    "cross_venue_read": "The three direct observations cluster near $0.964–$0.965, but they are asynchronous and use different instruments. No executable arbitrage or synchronized feature is established.",
+    "depth": {
+      "full_depth": "NOT_CAPTURED",
+      "okx_depth_endpoint": "inaccessible through current browser retrieval",
+      "bybit_orderbook_endpoint": "inaccessible through current browser retrieval",
+      "synchronized_l2": "NONE_ADMITTED",
+      "top_of_book": "Only single-level ticker bid/ask sizes are available; not full-depth liquidity."
+    },
+    "aggregator_disagreement": {
+      "coinglass_historical_page": {
+        "displayed_header_price_usd": "1.031",
+        "last_daily_close_date": "2026-11-13",
+        "last_daily_close_usd": "1.030",
+        "open_interest_usd": "2.27B",
+        "funding_percent_per_8h": "0.0088%",
+        "liquidations_24h_usd": "13.67M",
+        "long_share_percent": 87,
+        "model_eligible": false,
+        "reason": "Page identifies its last daily close as Nov 13 and its dynamic header does not reconcile with direct exchange API observations near $0.964."
+      },
+      "competing_explanations": [
+        "Dashboard/header caching or stale historical data.",
+        "Different collection timestamps and venue universes.",
+        "Instrument/quote-basis or aggregation differences."
+      ]
+    }
+  },
+  "etf_flow_reconciliation": {
+    "alpha_finance": {
+      "through_session": "2026-11-13",
+      "fund_count": 5,
+      "last_7_sessions_usd": "-19100000",
+      "nov13_daily_usd": "-1100000",
+      "last_30_sessions_usd": "-581700",
+      "fund_level_nov13": {
+        "XRPZ_usd": "+4400000",
+        "GXRP_usd": "-5500000",
+        "XRPC_usd": "0",
+        "XRP_usd": "0",
+        "TOXR_usd": "0"
+      },
+      "method": "Five-fund flow series; page says daily values are net creations/redemptions and flow prints describe prior sessions."
+    },
+    "xrp_insights": {
+      "fund_count": 7,
+      "week_46_net_flow_xrp": "-6080000",
+      "week_46_net_flow_usd": "-5860000",
+      "total_aum_usd": "1220180000",
+      "xrp_locked": "1189100000",
+      "method": "Six US spot funds plus BITW; holdings/AUM and flow series are not the same measurement."
+    },
+    "reconciliation": "Do not average. Alpha Finance covers five funds and reports USD net flows; XRP Insights covers six spot funds plus BITW and reports XRP holdings changes and AUM. ETF redemptions can reflect arbitrage unwinds and flows settle with timing lags; neither dashboard alone establishes contemporaneous spot selling."
+  },
+  "evernorth_q3_2026": {
+    "issuer": "Evernorth Holdings Inc.",
+    "ticker": "XRPN",
+    "filing_period_end": "2026-09-30",
+    "filing_date": "2026-11-13",
+    "filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+    "sec_accession": "0001628280-26-073871",
+    "preclose_structure": "At September 30 Evernorth was wholly owned by Ripple. Business combination closed October 9; XRPN began Nasdaq trading October 12.",
+    "cash_and_purchase": {
+      "advance_funding_cash_received_usd": "214049995",
+      "cash_used_for_identified_xrp_purchase_usd": "214000000",
+      "xrp_purchased_with_cash": "84365876",
+      "restricted_cash_dec31_usd": "49995",
+      "restricted_cash_sep30_usd": "49995",
+      "residual_cash_postclose_disposition": "NOT_DISCLOSED",
+      "prior_run135a_claim": "The prior artifact treated the $49,995 as used for an additional XRP purchase at closing.",
+      "current_disposition": "The Q3 10-Q shows $49,995 restricted cash at both December 31 and September 30, and the XRP cost table assigns $214,000,000 to 84,365,876 XRP. The Q3 filing does not disclose post-close use or an additional XRP quantity. Treat the prior use-at-close claim as unverified/superseded for current analysis; do not infer extra XRP.",
+      "prior_run135a_claim_status": "UNVERIFIED_SUPERSEDED_FOR_CURRENT_ANALYSIS",
+      "residual_cash_purchase_xrp_quantity": null
+    },
+    "in_kind_xrp": {
+      "reported_total_at_close": "388910554",
+      "prior_precise_component_sum": "388910554.061435",
+      "components": {
+        "advance_funding_xrp": "600000",
+        "arrington_series_c_xrp_via_rippleworks": "211319096",
+        "ripple_affiliated_entity_xrp": "50000000",
+        "ripple_direct_contribution_to_pathfinder_xrp": "126791458",
+        "delayed_funding_xrp": "200000"
+      },
+      "note": "The Q3 10-Q narrative components sum exactly to 388,910,554 XRP. The earlier Run135A fractional precision is preserved as historical but superseded for current analysis.",
+      "prior_run135a_precise_component_sum": "388910554.061435",
+      "prior_precision_status": "SUPERSEDED_BY_Q3_2026_10Q_WHOLE_XRP_DISCLOSURE",
+      "private_placement_xrp_subtotal": "261919096"
+    },
+    "holdings_bridge": {
+      "evernorth_holdings_sep30_xrp": "346284972",
+      "evernorth_transfer_to_pathfinder_postclose_xrp": "346484972",
+      "ripple_contribution_already_in_pathfinder_xrp": "126791458",
+      "known_combined_postclose_treasury_xrp": "473276430",
+      "alternative_sum": "84365876 cash-purchased XRP + 388910554 in-kind XRP = 473276430 XRP",
+      "completeness": "KNOWN_GROSS_PATHFINDER_SUBTOTAL; Pubco owns approximately 71.5% of Pathfinder and the exact XRP attributable to Pubco is not computed here.",
+      "gross_pathfinder_treasury_postclose_xrp": "473276430",
+      "classification": "GROSS_PATHFINDER_TREASURY_NOT_PUBCO_ATTRIBUTABLE_AMOUNT",
+      "complete_total_including_possible_restricted_cash_purchase": "NOT_ESTABLISHED",
+      "pubco_attributable_xrp": "NOT_COMPUTED"
+    },
+    "gross_closing_cash": {
+      "total_usd_approx": "272600000",
+      "private_placement_cash_usd_approx": "224600000",
+      "spac_trust_release_usd_approx": "48000000",
+      "note": "Gross cash before transaction expenses; do not add the $214.05M advance funding again to the $224.6M private-placement subtotal."
+    },
+    "debt_and_equity": {
+      "convertible_note": {
+        "principal_usd": "30000000",
+        "net_cash_proceeds_usd": "29000000",
+        "advisor_fee_usd": "1000000",
+        "coupon": "4.00% PIK",
+        "maturity": "2031",
+        "conversion_start": "On or after first anniversary of October 13, 2026",
+        "conversion_settlement": "Holder may elect cash, shares or combination",
+        "classification": "CONVERTIBLE_DEBT; not equity cash raised and not proof of XRP purchase"
+      },
+      "warrants": {
+        "exercised_shares": "3073366",
+        "strike_usd": "11.50",
+        "gross_cash_proceeds_usd_rounded": "35300000",
+        "remaining_warrants": "8666279",
+        "period": "2026-10-12 through 2026-11-09",
+        "classification": "REALIZED_GROSS_WARRANT_CASH"
+      },
+      "cantor_eloc": {
+        "maximum_shares": "5218935",
+        "price": "97% of applicable VWAP",
+        "volume_cap": "20% of trading volume per purchase period",
+        "beneficial_ownership_cap": "4.99%",
+        "registration_effective_date": "2026-10-30",
+        "commitment_fee_usd": "500000",
+        "actual_draw_or_proceeds": "NOT_DISCLOSED",
+        "fee_payment": "NOT_VERIFIED",
+        "classification": "CONDITIONAL_EQUITY_CAPACITY_NOT_CASH_RECEIVED"
+      }
+    },
+    "liquidity_and_results": {
+      "unrestricted_cash_sep30_usd": "91397",
+      "restricted_cash_sep30_usd": "49995",
+      "net_working_capital_deficit_usd_approx": "10000000",
+      "accumulated_deficit_usd": "185587435",
+      "related_party_payable_to_pathfinder_usd": "3562118",
+      "ripple_revolver_limit_usd": "1000000",
+      "ripple_revolver_drawn_sep30_usd": "0",
+      "operating_loss_q3_usd_approx": "7600000",
+      "operating_loss_9m_usd_approx": "273200000",
+      "net_income_q3_usd": "155264700",
+      "net_loss_9m_usd": "32870033",
+      "q3_fair_value_gain_on_refundable_advances_usd": "162834432",
+      "nine_month_fair_value_gain_usd": "240311432",
+      "digital_asset_impairment_usd": "271037170",
+      "revenue_generated": "NONE_REPORTED",
+      "interpretation": "Q3 net income is not operating revenue: the filing reports no revenue, material noncash fair-value gains on refundable investor advances, and digital-asset impairment.",
+      "digital_asset_cost_basis_usd": "846575043",
+      "digital_asset_carrying_value_sep30_usd": "341887231",
+      "cumulative_impairment_since_inception_usd": "504687812",
+      "accounting_method": "Indefinite-lived intangible asset at cost less impairment under ASC 350-30; not recurring fair-value accounting.",
+      "principal_market_for_financial_reporting": "Coinbase",
+      "principal_market_basis": "Issuer says it selected Coinbase after assessing volume/activity, quote consistency/stability, and regulatory/KYC accessibility.",
+      "coinbase_sep30_reference_price_usd": "1.49",
+      "coinbase_price_use": "Used in fair-value model for refundable investor advances at September 30; not a current spot quote and not proof of Coinbase custody."
+    },
+    "sbi_affiliated_investors": {
+      "filing_language": "Certain investors affiliated with SBI Holdings, Inc.",
+      "class_a_ownership_threshold": "39.9%",
+      "class_c_shares_issued_to_sbi_affiliated_investors": "2359038",
+      "class_c_convertible": "YES",
+      "direct_sbi_holdings_ownership": "NOT_ESTABLISHED",
+      "caution": "The filing identifies investors affiliated with SBI Holdings; do not attribute the shares directly to SBI Holdings without a separate beneficial-ownership filing."
+    },
+    "ripple_and_related_entities": {
+      "ripple_direct_contribution_to_pathfinder_xrp": "126791458",
+      "ripple_class_a_shares": "1678382",
+      "ripple_pathfinder_units": "16461545",
+      "ripple_affiliated_entity_xrp": "50000000",
+      "affiliate_class_a_shares": "661867",
+      "affiliate_pathfinder_units": "6491583",
+      "combined_ripple_and_affiliate_pubco_ownership_limit": "9.9%",
+      "arrington_sponsor_xrp_via_rippleworks": "211319096",
+      "rippleworks_relationship": "RippleWorks, a nonprofit foundation and limited partner of the Arrington XRP Capital Fund, contributed the Series C XRP to the sponsor.",
+      "caution": "Ripple Labs, RippleWorks, the Ripple-affiliated investor and the SBI-affiliated investors are distinct legal/economic counterparties.",
+      "arrington_sponsor_pubco_shares": "30233211",
+      "arrington_voting_ownership_threshold": "19.9%"
+    },
+    "xrp_per_share_kpi": {
+      "issuer_formula": "XRP attributable to Pubco divided by outstanding Class A plus Class C shares",
+      "nov9_class_a_shares": "27012248",
+      "nov9_class_c_shares": "31392746",
+      "calculated_xrp_per_share": "NOT_COMPUTED",
+      "reason": "Gross Pathfinder XRP is not equivalent to XRP attributable to Pubco; reconcile Pathfinder units and noncontrolling interests first.",
+      "pubco_ownership_of_pathfinder_percent": "71.5",
+      "calculation": "NOT_COMPUTED"
+    },
+    "cost_basis_lot_table": {
+      "as_of": "2026-09-30",
+      "source_table": "Q3 2026 Form 10-Q Note 4, cost basis of XRP by lot",
+      "lots": [
+        {
+          "units": "50000001",
+          "historical_cost_usd": "124800002"
+        },
+        {
+          "units": "199999",
+          "historical_cost_usd": "484598"
+        },
+        {
+          "units": "211619196",
+          "historical_cost_usd": "507039594"
+        },
+        {
+          "units": "99900",
+          "historical_cost_usd": "250849"
+        },
+        {
+          "units": "84365876",
+          "historical_cost_usd": "214000000"
+        }
+      ],
+      "total_units": "346284972",
+      "total_historical_cost_usd": "846575043",
+      "category_mapping": "NOT_EXPLICITLY_DISCLOSED",
+      "discrepancy_note": "The cost-basis lot table totals 346,284,972 XRP, but its 211,619,196-unit lot does not equal the 211,319,096 XRP Series C subscription described in Note 1. The 199,999 and 99,900 lots also do not map one-to-one to the 600,000 advance-funding narrative. Both disclosures reconcile to the same 346,284,972 total; do not relabel the 211,619,196 lot as Arrington Series C."
+    },
+    "pathfinder_ownership": {
+      "pubco_ownership_percent": "71.5",
+      "source": "Q3 2026 Form 10-Q, Part II Item 1A, lines 995-996",
+      "gross_pathfinder_treasury_xrp": "473276430",
+      "pubco_attributable_xrp": "NOT_COMPUTED",
+      "reason": "The issuer's XRP-per-share KPI uses XRP attributable to Pubco, not simply gross Pathfinder treasury. Unit-level economic allocation must be reconciled before calculating."
+    },
+    "custody": {
+      "preclose": "Custody XRP held in an unencumbered wallet maintained and controlled by Evernorth, contractually restricted from sale, transfer, pledge or encumbrance until closing.",
+      "postclose_initial_custodian": "BitGo Trust",
+      "source": "Q3 2026 Form 10-Q lines 539-540 and 967-969",
+      "coinbase_custody_relationship": "NOT_ESTABLISHED_BY_THIS_FILING"
+    },
+    "operating_strategy": {
+      "issuer_describes": "Active XRP asset management, diversified yield-generation strategies, strategic geographic expansion, possible secured financing using XRP as collateral where permissible, and possible XRP sales for corporate purposes.",
+      "current_execution_status": "STRATEGIC_INTENT_NOT_PROOF_OF_LIVE_YIELD_OR_COLLATERAL_TRANSACTIONS",
+      "revenue_generated": "NONE_REPORTED"
+    },
+    "xrp_per_share": {
+      "issuer_formula": "XRP attributable to Pubco divided by Class A plus Class C shares",
+      "pubco_ownership_of_pathfinder_percent": "71.5",
+      "calculated_xrp_per_share": "NOT_COMPUTED",
+      "reason": "Gross Pathfinder treasury is not the same as XRP attributable to Pubco."
+    },
+    "disclosure_reconciliation": {
+      "subscription_narrative_components": {
+        "advance_funding_xrp": "600000",
+        "series_c_arrington_via_rippleworks_xrp": "211319096",
+        "ripple_affiliated_entity_xrp": "50000000",
+        "delayed_funding_xrp": "200000",
+        "ripple_direct_pathfinder_contribution_xrp": "126791458",
+        "total_in_kind_xrp": "388910554"
+      },
+      "cost_basis_lot_table_units_sum": "346284972",
+      "narrative_evernorth_sep30_holdings": "346284972",
+      "postclose_transfer_from_evernorth_to_pathfinder": "346484972",
+      "ripple_contribution_already_in_pathfinder": "126791458",
+      "gross_pathfinder_treasury_subtotal": "473276430",
+      "pubco_pathfinder_ownership_percent": "71.5",
+      "pubco_attributable_xrp": "NOT_COMPUTED",
+      "unresolved_items": [
+        "Cost-basis lot categories do not map one-to-one to subscription narrative categories, although total XRP reconciles.",
+        "Post-close disposition of $49,995 restricted cash is not disclosed.",
+        "XRP attributable to Pubco after Pathfinder unit economics is not computed."
+      ]
+    }
+  },
+  "institutional_network": {
+    "ripple_bny": {
+      "date": "2026-10-27",
+      "status": "BNY supports custody for XRP and RLUSD; BNY is primary reserve custodian for RLUSD.",
+      "future_items": "Direct mint/redeem for BNY clients and tokenized trade finance are future plans subject to client and regulatory requirements; C2FO supply-chain finance remains exploratory."
+    },
+    "ripple_sbi": {
+      "date": "2026-06-24",
+      "status": "RLUSD launched in Japan through SBI VC Trade after JFSA approval.",
+      "xrp_required_for_rlusd": "NOT_ESTABLISHED"
+    },
+    "ripple_coinbase": {
+      "date": "2026-10-28",
+      "status": "RLUSD listing/distribution on Coinbase across XRPL, Base and Ethereum.",
+      "coinbase_global_exchange_collateral": "Described as future follow-up, not live in the cited announcement."
+    },
+    "circle_sbi_japan": {
+      "ownership": "Circle 50%; SBI 50%",
+      "capital_contributed_usd_each": "1500000",
+      "accounting_control": "Circle consolidates the VIE; SBI is noncontrolling interest.",
+      "operating_results_as_of_2026_09_30": "NO_SIGNIFICANT_OPERATING_RESULTS",
+      "distinction": "Separate from SB OAI Japan GK and from SBIC East/Central/West."
+    },
+    "circle_coinbase_distribution": {
+      "q3_2026_distribution_costs_usd": "331300000",
+      "nine_month_2026_distribution_costs_usd": "986600000",
+      "arrangement": "Payments to Coinbase are based on USDC held on Coinbase's platform after issuer retention and a share of remaining distribution economics after third-party ecosystem participants; not a flat 50% of all Circle reserve income.",
+      "renewal": "Coinbase and Circle renewed their commercial agreement on the same terms in 2026.",
+      "coinbase_product_usdc": "Coinbase reports average USDC held in its products reached an all-time high in Q3 2026.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    "pnc_coinbase_usdc": {
+      "date": "2026-11-09",
+      "status": "Limited payment pilot using Circle USDC with automatic USD conversion.",
+      "xrp_settlement": "NOT_ESTABLISHED"
+    },
+    "circle_binance": {
+      "investment_date": "2026-09-17",
+      "equity_investment_usd": "100000000",
+      "shares_purchased": "1200000",
+      "price_per_share_usd": "80.84",
+      "commercial_relationship": "Binance expanded USDC distribution/access across products and uses USDC as a treasury stablecoin.",
+      "classification": "DIRECT_EQUITY_INVESTMENT_PLUS_DISTRIBUTION_RELATIONSHIP",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    "circle_reserve_economics": {
+      "usdc_circulation_end_q3_usd": "73879000000",
+      "average_usdc_in_circulation_q3_usd": "73264000000",
+      "average_usdc_in_circulation_nine_months_usd": "74983000000",
+      "reserve_return_rate_q3": "3.5%",
+      "reserve_income_q3_usd": "657624000",
+      "reserve_income_nine_months_usd": "1977865000",
+      "reserve_income_share_of_revenue_q3": "76.0%",
+      "reserve_income_share_of_revenue_nine_months": "87.5%",
+      "q3_yoy_reserve_income_change_usd": "-53617000",
+      "q3_rate_yield_effect_usd": "-106500000",
+      "q3_average_usdc_circulation_effect_usd": "+52800000",
+      "q3_average_daily_usdc_circulation_change": "8.0%",
+      "nine_month_yoy_reserve_income_change_usd": "+74439000",
+      "nine_month_rate_yield_effect_usd": "-326800000",
+      "nine_month_average_usdc_circulation_effect_usd": "+401200000",
+      "nine_month_average_daily_usdc_circulation_change": "22.8%",
+      "sensitivity_from_september_average_yield": "3.62%",
+      "twelve_month_sensitivity_usd_millions": {
+        "rate_change_plus_100_bps": {
+          "reserve_income": "+739",
+          "distribution_and_transaction_costs": "+371"
+        },
+        "rate_change_minus_100_bps": {
+          "reserve_income": "-739",
+          "distribution_and_transaction_costs": "-371"
+        },
+        "rate_change_plus_200_bps": {
+          "reserve_income": "+1478",
+          "distribution_and_transaction_costs": "+742"
+        },
+        "rate_change_minus_200_bps": {
+          "reserve_income": "-1478",
+          "distribution_and_transaction_costs": "-742"
+        }
+      },
+      "sensitivity_assumptions": "Circle holds USDC circulation at the September 30, 2026 level, changes rates on October 1 and holds them constant, applies rate changes equally to reserve assets, and assumes reserve allocation unchanged.",
+      "caveat": "Company sensitivity scenario, not a forecast. Circle says the relationship between rates and USDC circulation is complex, highly uncertain and unproven, and it cannot accurately predict resulting reserve income or distribution costs."
+    },
+    "coinbase_usdc_rewards_discrepancy": {
+      "table_q3_expense_usd": "129245000",
+      "table_q3_comparator_usd": "111570000",
+      "table_q3_change_usd": "17675000",
+      "table_nine_month_expense_usd": "361780000",
+      "table_nine_month_comparator_usd": "314125000",
+      "table_nine_month_change_usd": "47655000",
+      "narrative_q3_increase_usd": "71600000",
+      "narrative_nine_month_increase_usd": "175700000",
+      "reconciliation": "UNRESOLVED_INTERNAL_TABLE_NARRATIVE_DISAGREEMENT",
+      "note": "Coinbase's USDC rewards expense is not Circle's distribution cost paid to Coinbase.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    "circle_custody": {
+      "circle_national_trust": {
+        "legal_name": "First National Digital Currency Bank, N.A., operating as Circle National Trust",
+        "occ_final_approval_date": "2026-07-09",
+        "opened_date": "2026-07-24",
+        "oversight": "Direct federal OCC oversight",
+        "initial_services": "Fiduciary digital-asset custody services to Circle and its affiliates",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      },
+      "circle_internet_trust_company": {
+        "legal_name": "Circle Internet Trust Company LLC",
+        "charter": "NYDFS limited-purpose trust charter",
+        "date": "2026-07-31"
+      },
+      "scope_caveat": "Circle National Trust's initial custody services are disclosed for Circle and affiliates; do not assume all third-party customer assets are held there."
+    },
+    "coinbase_q3_2026": {
+      "sec_filing_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filing_date": "2026-11-13",
+      "q3_net_revenue_usd_approx": "1200000000",
+      "nine_month_net_revenue_usd_approx": "3700000000",
+      "q3_net_income_usd": "718700000",
+      "nine_month_net_loss_usd": "34900000",
+      "assets_on_platform_sep30_usd": "376600000000",
+      "monthly_transacting_users_q3_millions": "7.4",
+      "monthly_transacting_users_nine_month_average_millions": "7.7",
+      "usdc_platform_note": "Coinbase says average USDC held in its products reached an all-time high in Q3 and its Circle agreement was renewed on the same terms.",
+      "source_type": "SEC_PRIMARY"
+    }
+  },
+  "identity_research": {
+    "sbic": "SBIC East, Central and West are separate regional SME investment companies; they are not SBI Holdings.",
+    "sbic_chatgpt": "SBIC East's official June 12-13, 2025 AI/ML course for investees explicitly covered ChatGPT, Copilot, information-leakage risk, RAG and API implementation. This plausibly explains the phrase but does not establish an OpenAI commercial partnership.",
+    "sb_oai_japan": {
+      "ownership": "OpenAI 50%; C Holdings 50%",
+      "c_holdings_ownership": "SoftBank Corp 51%; SoftBank Group Corp 49%",
+      "distinction": "Separate OpenAI/SoftBank joint venture, not SBI Holdings and not SBIC East/Central/West."
+    },
+    "ask_coin": {
+      "identified_asset": "Permission ASK token",
+      "deployments": [
+        "Base",
+        "Polygon"
+      ],
+      "xrpl_issuer": "NO_CANONICAL_XRPL_ISSUER_VERIFIED"
+    },
+    "actual_capital": "Not a standardized market metric. Use source-specific categories: cash subscriptions, in-kind XRP, purchases, debt proceeds, warrant proceeds, conditional equity capacity, fees and secondary resales.",
+    "exact_phrase_results": "No new primary evidence of an XRPL ASK issuer, an OpenAI-SBI/SBIC partnership, or a standard XRP metric named 'actual capital'."
+  },
+  "video_identity": {
+    "person": "Dr. Kamilah Stevenson",
+    "person_identity": "CONFIRMED",
+    "canonical_channel": "NOT_VERIFIED",
+    "candidate_handle": "@drkamilahstevenson",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "handle_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "candidate_reference_count": 21,
+    "verified_own_channel_video_count": 0,
+    "verified_guest_appearance": {
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "date": "2026-06-11",
+      "host": "Paul Barron",
+      "video_id": "Sulo54IlQ60",
+      "attribution": "GUEST_APPEARANCE_NOT_OWN_CHANNEL_UPLOAD"
+    },
+    "third_party_clip": {
+      "video_id": "5DzBk8DfoLs",
+      "uploader": "Alina X",
+      "attribution": "THIRD_PARTY_CLIP; EXCLUDED_FROM_OWN_CHANNEL_INVENTORY"
+    },
+    "correction": "The source-of-truth channel record uses @drkamilahstevenson and UCqUPJMQdkCN6lsLVDnichPA. A different handle/ID in the Run150 prose is not verified and must not be treated as canonical."
+  },
+  "platform_coordination": {
+    "dispatches_this_run": 0,
+    "structured_external_evidence_exchanges": 0,
+    "red_team_quorum": 0,
+    "note": "Capability/authentication/permission/data-flow map is updated separately. No live external-model connection is claimed."
+  },
+  "backlog": {
+    "open_prs": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "integration_pr": 1662,
+    "integration_pr_state": "OPEN_DRAFT",
+    "classifications": "Run150 blob-level comparisons remain authoritative for the listed source PRs. #1661/#1660 are supersession candidates, not exact duplicates; #1653 is unique/blocked; #1643/#1642/#1640 and dependency PRs have differing content that requires semantic review.",
+    "source_prs_closed": [],
+    "exact_duplicate_closures": "NONE"
+  },
+  "next_actions": [
+    "Run exact-head full repository suite, wheel build, installed mission verification, six-manifest dependency audit and fail-closed gate on the new Run151 commit.",
+    "Preserve Run135a historical artifacts but supersede its $49,995-at-close assertion with the Q3 10-Q status: restricted at September 30; post-close disposition and any extra XRP quantity not disclosed.",
+    "Continue complete semantic reconciliation of 1,187 non-workflow paths and all 48 workflow changes.",
+    "Resolve independent review, branch-protection visibility, least-privilege GitHub permissions and Pages publication authorization.",
+    "Keep XRP public ingestion read-only; verify scheduled runs on main only after an authorized, fully verified merge.",
+    "Capture synchronized spot, full-depth L2, derivatives, exchange-flow and collateral data with raw bytes, hashes, timestamps and independent archive anchoring.",
+    "Train an XRP candidate only after sufficient point-in-time history; require calibrated out-of-sample superiority against all four baselines and independent shadow outcomes."
+  ],
+  "source_provenance": [
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "361-371, 389-400, 416-427, 441-442, 553-567, 700-707, 712-746, 760-761, 782-784, 838-859, 871-879, 891-904",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth resale prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "filed": "2026-11-13",
+      "lines": "412-414, 583-591, 873",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "OKX XRP-USDT ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-15T03:42:02.769Z",
+      "type": "EXCHANGE_API",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Kraken XRP/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time": "ABSENT",
+      "type": "EXCHANGE_API",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Binance XRPUSDT perpetual premium index",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "provider_event_time_utc": "2026-11-15T03:56:29Z",
+      "type": "EXCHANGE_API",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Alpha Finance XRP ETF dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "through_session": "2026-11-13",
+      "type": "SECONDARY_AGGREGATOR",
+      "fund_universe": 5
+    },
+    {
+      "source": "XRP Insights ETF tracker",
+      "url": "https://xrp-insights.com/",
+      "captured_at_utc": "2026-11-15",
+      "type": "SECONDARY_AGGREGATOR",
+      "fund_universe": 7
+    },
+    {
+      "source": "CoinGlass XRP historical page",
+      "url": "https://www.coinglass.com/es/currencies/XRP/historical-data/2026",
+      "last_close_date": "2026-11-13",
+      "type": "SECONDARY_AGGREGATOR",
+      "model_eligible": false
+    },
+    {
+      "source": "SBIC East official AI/ML course",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "dated": "2025-06-12/13",
+      "type": "CORPORATE_PRIMARY"
+    },
+    {
+      "source": "SB OAI Japan company profile",
+      "url": "https://www.sb-oai.co.jp/en/about/",
+      "retrieved_at_utc": "2026-11-15",
+      "type": "CORPORATE_PRIMARY"
+    },
+    {
+      "source": "Ripple and BNY custody announcement",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "dated": "2026-10-27",
+      "type": "ISSUER_ANNOUNCEMENT"
+    },
+    {
+      "source": "Ripple and SBI RLUSD Japan announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "dated": "2026-06-24",
+      "type": "ISSUER_ANNOUNCEMENT"
+    },
+    {
+      "source": "iHeart XRP Podcast guest episode",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "dated": "2026-06-11",
+      "type": "PODCAST_PRIMARY_DISTRIBUTION"
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — XRP lot table and cost basis",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "539-567",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — Coinbase principal market and impairment accounting",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "912-919",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — BitGo Trust custody",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "967-969",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — Pathfinder 71.5% ownership",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "995-996",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "SEC Commission interpretation Release 33-11412",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "issued": "2026-03-17",
+      "lines": "349-365, 368-399, 419-440, 509-510",
+      "type": "SEC_COMMISSION_PRIMARY"
+    },
+    {
+      "source": "CFTC joint interpretation release",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+      "issued": "2026-03-17",
+      "type": "CFTC_PRIMARY"
+    },
+    {
+      "source": "OCC GENIUS Act final rule",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "issued": "2026-10-21",
+      "effective": "2027-01-18",
+      "type": "OCC_PRIMARY"
+    },
+    {
+      "source": "Circle Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "1555-1561, 1590-1612, 1810-1826",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "Coinbase Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "USDC rewards table and MD&A",
+      "type": "SEC_PRIMARY",
+      "accession": "0001679788-26-000122"
+    },
+    {
+      "source": "Coinbase Q3 2026 Form 10-Q — USDC rewards and operating metrics",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filed": "2026-11-13",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "Circle Q3 2026 Form 10-Q — Circle National Trust and NYDFS trust charters",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "1531-1536",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "Circle Q3 2026 Form 10-Q — reserve economics and rate sensitivity",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "1493-1497, 1591-1595, 1780-1782, 1844-1846, 2117-2130",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "OCC Corporate Applications Search — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "OCC_PRIMARY"
+    },
+    {
+      "source": "OCC Corporate Applications Search — Coinbase National Trust Company",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "OCC_PRIMARY"
+    }
+  ],
+  "market_snapshot_followup": {
+    "observation_cutoff_utc": "2026-11-15T04:21:02Z",
+    "okx_xrp_usdt": {
+      "last_usdt": "0.9663",
+      "bid_usdt": "0.9663",
+      "ask_usdt": "0.9664",
+      "bid_size_xrp": "5291.519205",
+      "ask_size_xrp": "1425.255309",
+      "spread_basis_points_approx": 1.0359,
+      "bid_to_ask_size_ratio_approx": 3.712,
+      "open_24h_usdt": "0.987",
+      "high_24h_usdt": "1.0002",
+      "low_24h_usdt": "0.8929",
+      "volume_24h_xrp": "100967431.782141",
+      "provider_event_time_utc": "2026-11-15T04:13:58.767Z",
+      "age_at_cutoff_seconds": 423.233,
+      "model_eligible": false,
+      "exclusion": "Exceeds the 300-second freshness gate; no raw bytes or SHA-256 receipt."
+    },
+    "kraken_xrp_usd": {
+      "last_usd": "0.96957",
+      "bid_usd": "0.96933",
+      "ask_usd": "0.96966",
+      "top_bid_size_xrp": "1437",
+      "top_ask_size_xrp": "1296",
+      "spread_basis_points_approx": 3.4043,
+      "high_24h_usd": "0.99897",
+      "low_24h_usd": "0.89112",
+      "volume_24h_xrp": "84588320.10570319",
+      "vwap_24h_usd": "0.94642863",
+      "utc_day_open_usd": "0.91378",
+      "provider_event_time": "ABSENT",
+      "model_eligible": false,
+      "exclusion": "No provider event timestamp or raw-source receipt."
+    },
+    "binance_xrpusdt_perpetual": {
+      "mark_price_usdt": "0.96420000",
+      "index_price_usdt": "0.96460350",
+      "last_funding_rate_decimal": "-0.00003071",
+      "provider_event_time_utc": "2026-11-15T03:56:29Z",
+      "age_at_cutoff_seconds": 1473,
+      "model_eligible": false,
+      "exclusion": "Perpetual futures rather than spot; stale by more than 300 seconds."
+    },
+    "cross_venue_read": "OKX and Kraken observations differ by about 0.34%, but event times are asynchronous and Kraken supplies no event timestamp. Not executable arbitrage.",
+    "depth": "No synchronized multi-venue L2 captured. Single-level ticker sizes are not full depth."
+  },
+  "regulatory_status": {
+    "sec_commission_interpretation": {
+      "release_number": "33-11412",
+      "issued_date": "2026-03-17",
+      "effective_date": "2026-03-23",
+      "xrp_classification": "DIGITAL_COMMODITY",
+      "xrp_itself_is_security": false,
+      "commission_basis": "The Commission expressly lists XRP as a digital commodity based on its understanding of XRP's characteristics, terms and functions as of the release date.",
+      "nonsecurity_asset_sale_caveat": "A non-security crypto asset may still be offered or sold subject to an investment contract, which is a security.",
+      "howey_test_preserved": true,
+      "blanket_exemption": false,
+      "status": "COMMISSION_INTERPRETATION_NOT_A_STATUTORY_EXEMPTION",
+      "source": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "relevant_lines": "349-365, 368-399, 419-440, 509-510"
+    },
+    "cftc_joint_interpretation": {
+      "joined_sec_interpretation": true,
+      "effect": "CFTC states it will administer the Commodity Exchange Act consistently with the Commission interpretation; certain non-security crypto assets may meet the CEA commodity definition.",
+      "limitation": "Does not itself create a comprehensive federal spot-exchange registration regime.",
+      "source": "https://www.cftc.gov/PressRoom/PressReleases/9198-26"
+    },
+    "genius_act_occ_final_rule": {
+      "announced_date": "2026-10-21",
+      "effective_date": "2027-01-18",
+      "status_as_of_2026_11_15": "NOT_YET_EFFECTIVE",
+      "scope": [
+        "permitted payment stablecoin issuers",
+        "foreign payment stablecoin issuers under OCC jurisdiction",
+        "certain custody activities"
+      ],
+      "bsa_aml_ofac": "Not covered in this final rule; separate rulemaking.",
+      "source": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html"
+    },
+    "occ_trust_charters": [
+      {
+        "entity": "Circle National Trust / First National Digital Currency Bank, N.A.",
+        "status": "FINAL_OCC_APPROVAL_AND_OPENED",
+        "approval_date": "2026-07-09",
+        "opened_date": "2026-07-24",
+        "powers": "National trust bank; initial fiduciary custody for Circle and affiliates",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      },
+      {
+        "entity": "Ripple National Trust Bank",
+        "status": "CONSUMMATED_EFFECTIVE",
+        "effective_date": "2026-10-26",
+        "powers": "National trust bank powers; do not infer full commercial deposit-taking bank status",
+        "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2"
+      },
+      {
+        "entity": "Coinbase National Trust Company",
+        "status": "CONSUMMATED_EFFECTIVE",
+        "effective_date": "2026-11-06",
+        "powers": "National trust company powers; do not infer full commercial deposit-taking bank status",
+        "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2"
+      }
+    ],
+    "proposed_rulemaking": [
+      {
+        "agency": "SEC",
+        "name": "Regulation Crypto Assets",
+        "issued": "2026-08-21",
+        "comment_deadline": "2026-10-20",
+        "status": "PROPOSED_NOT_FINAL"
+      },
+      {
+        "agency": "CFTC",
+        "name": "Digital Commodity Trading ANPRM",
+        "issued": "2026-10-05",
+        "comment_deadline": "2026-11-20",
+        "status": "PROPOSED_NOT_FINAL"
+      }
+    ],
+    "nydfs_circle_trust": {
+      "entity": "Circle Internet Trust Company LLC",
+      "charter": "NYDFS limited-purpose trust charter",
+      "date": "2026-07-31",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    }
+  },
+  "repository_snapshot_run151b": {
+    "integration_head": "5c248edb26444db62e2ae4161e0764fd6619e840",
+    "pr_number": 1662,
+    "pr_state": "OPEN_DRAFT",
+    "pr_draft": true,
+    "pr_changed_files": 1238,
+    "pr_additions": 377146,
+    "pr_deletions": 6309,
+    "pr_mergeable_indicator": true,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "rlusd_reserve_attestation_vintage_reconciliation_20261106T031500Z",
+  "artifact_type": "rlusd_stablecoin_reserve_and_custody_attestation_reconciliation",
+  "title": "RLUSD September independent reserve attestation versus October 29 live issuer dashboard",
+  "recorded_at_utc": "2026-11-06T03:15:00Z",
+  "research_window": {
+    "run_start_utc": "2026-11-06T03:01:36Z",
+    "exact_per_source_retrieval_times_utc": null,
+    "note": "Source pages and PDF were inspected through rendered web text and a page image. Original PDF/HTTP bytes and response headers were not preserved in this run."
+  },
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "source_capture_policy": {
+    "raw_source_bytes_preserved": false,
+    "raw_source_sha256_receipts": null,
+    "rendered_extract_sha256_receipts": null,
+    "independent_timestamp_anchors": false,
+    "model_eligible": false,
+    "forecast_issued": false,
+    "reason": "The CPA report is primary independent attestation evidence, but this run retained rendered text/image rather than byte-complete PDF and issuer-dashboard payloads. RLUSD reserve measurements are not XRP market-price, XRP collateral or XRP flow features."
+  },
+  "source_registry": [
+    {
+      "source_id": "ripple_rlusd_transparency_dashboard_20261029",
+      "publisher": "Ripple",
+      "source_type": "issuer_live_transparency_dashboard",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "balance_as_of_date": "2026-10-29",
+      "exact_retrieval_timestamp_utc": null,
+      "independence_group": "ripple_rlusd_issuer_dashboard",
+      "raw_capture_status": "rendered_page_extract",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The page labels balances as of October 29, 2026 but does not expose an exact dashboard retrieval timestamp in the rendered capture.",
+        "The latest linked independent reserve attestation on the page is September 2026, not an October 29 attestation.",
+        "Live dashboard balances are issuer-published and must not be described as independently attested October 29 balances.",
+        "The page does not disclose chain-by-chain RLUSD circulating supply or XRP settlement volume."
+      ]
+    },
+    {
+      "source_id": "standard_custody_rlusd_independent_cpa_attestation_20260930",
+      "publisher": "Standard Custody & Trust Company, LLC; independent CPA report",
+      "source_type": "independent_aicpa_attestation_of_issuer_management_assertion",
+      "url": "https://cdn.sanity.io/files/ior4a5y3/production/850ed07e8f0556b3b1c1d43eb2a0fc4ef6538ce1.pdf/RLUSD%20Attestation%20Report%20(Sep)_Final%20Signed.pdf",
+      "report_date": "2026-10-26",
+      "report_dates_local": [
+        {
+          "date": "2026-09-21",
+          "time": "17:00",
+          "timezone": "America/New_York"
+        },
+        {
+          "date": "2026-09-30",
+          "time": "17:00",
+          "timezone": "America/New_York"
+        }
+      ],
+      "independence_group": "independent_cpa_examination_of_standard_custody_management_assertion",
+      "raw_capture_status": "rendered_pdf_text_and_page_image",
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The CPA report examines management's assertion at two historical report dates; it is not a continuous reserve audit.",
+        "The report does not disclose each depository institution or custody counterparty by name in the rendered reserve table.",
+        "A fair-presentation opinion on the specified dates does not independently attest later live dashboard balances."
+      ]
+    }
+  ],
+  "issuer_and_regulatory_scope": {
+    "stablecoin": "Ripple USD (RLUSD)",
+    "legal_issuer": "Standard Custody & Trust Company, LLC",
+    "parent": "Ripple Labs Inc.",
+    "charter": "New York limited purpose trust company supervised by NYDFS",
+    "reserve_requirement": "100% backing by highly liquid, transparent reserve assets under the issuer's stated NYDFS framework",
+    "nydfs_approved_blockchain_networks": [
+      "XRPL",
+      "Ethereum",
+      "Base",
+      "Unichain",
+      "Optimism",
+      "Ink",
+      "XRPL EVM Sidechain"
+    ],
+    "network_approval_limitation": "Approved network status does not establish actual circulating supply, settlement volume, collateral use or XRP purchases on any specific network."
+  },
+  "independently_attested_reserve_snapshots": {
+    "report_signed_date": "2026-10-26",
+    "independent_accountant_opinion": "Management's assertion that the RLUSD Reserve Report is presented in accordance with its criteria is fairly stated, in all material respects, as of the two report dates.",
+    "report_dates": {
+      "2026-09-21": {
+        "outstanding_stablecoin_units": 2425816183,
+        "market_value_of_reserve_usd": 2558148227,
+        "reserve_surplus_usd": 132332044,
+        "reserve_coverage_percent": 105.4551554617937,
+        "asset_composition_usd": {
+          "us_treasury_bills": 1601551550,
+          "government_money_market_funds": 581770188,
+          "cash_deposits_at_us_regulated_financial_institutions": 393826489,
+          "timing_adjustments": -19000000
+        }
+      },
+      "2026-09-30": {
+        "outstanding_stablecoin_units": 2399995528,
+        "market_value_of_reserve_usd": 2524008274,
+        "reserve_surplus_usd": 124012746,
+        "reserve_coverage_percent": 105.16720737822976,
+        "asset_composition_usd": {
+          "us_treasury_bills": 1693595956,
+          "government_money_market_funds": 451826457,
+          "cash_deposits_at_us_regulated_financial_institutions": 378585861,
+          "timing_adjustments": 0
+        }
+      }
+    },
+    "reserve_asset_criteria": [
+      "US Treasury bills acquired three months or less from maturity",
+      "Overnight reverse repurchase agreements fully collateralized by US Treasury bills, notes or bonds, subject to NYDFS-approved conditions",
+      "Government money-market funds subject to NYDFS-approved caps and restrictions",
+      "Deposits at US state- or federally chartered depository institutions subject to NYDFS-approved restrictions"
+    ],
+    "segregation": "The report states that the reserve is segregated from the proprietary assets of the issuing entity.",
+    "interpretation": "The two CPA-attested dates show reserve assets above outstanding RLUSD units. The report's displayed actual composition consists of US Treasury bills, government money-market funds, regulated-institution cash deposits and a timing adjustment; it does not identify XRP as a reserve asset."
+  },
+  "issuer_dashboard_snapshot": {
+    "as_of_date": "2026-10-29",
+    "circulating_rlusd_usd": 2627000000,
+    "reserve_funds_usd": 2758600000,
+    "arithmetic_excess_reserves_usd": 131600000,
+    "arithmetic_coverage_percent": 105.00951655881235,
+    "attested_as_of_this_date": false,
+    "latest_independent_attestation_report_date": "2026-10-26",
+    "latest_independent_attestation_balance_date": "2026-09-30",
+    "interpretation": "The issuer dashboard's October 29 figures imply approximately 105.01% reserve coverage, but the latest linked CPA report only attests September 21 and September 30. The October 29 calculation is an issuer-dashboard observation, not an independently attested reserve ratio."
+  },
+  "source_independence": {
+    "groups": [
+      "Ripple issuer dashboard",
+      "Independent CPA examination of Standard Custody management assertion"
+    ],
+    "limitation": "The independent CPA report examines issuer management's reserve assertion and source records; it is stronger assurance than an issuer-only dashboard, but it is not an independent continuous market feed."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_RLUSD_STABLECOIN_ADOPTION_NOT_XRP_DEMAND",
+      "hypothesis": "RLUSD circulation and reserve growth can indicate adoption of Ripple's stablecoin without implying incremental XRP demand.",
+      "supporting_evidence": [
+        "Issuer dashboard reports $2.627B RLUSD circulation as of October 29.",
+        "RLUSD reserve assets are USD-denominated cash equivalents and short-dated US government instruments."
+      ],
+      "disconfirming_or_missing": [
+        "No chain-by-chain circulation or settlement-volume split was disclosed in the captured dashboard.",
+        "No matching XRP purchase, bridge, DEX or payment-rail flow was established."
+      ],
+      "status": "INSTITUTIONAL_STABLECOIN_CONTEXT_ONLY"
+    },
+    {
+      "id": "H2_ATTESTED_RESERVE_COVERAGE",
+      "hypothesis": "At the September 21 and September 30 report dates, the independent CPA report supports reserve assets exceeding outstanding RLUSD units.",
+      "supporting_evidence": [
+        "September 21 coverage 105.4552%, surplus $132.332M.",
+        "September 30 coverage 105.1672%, surplus $124.013M.",
+        "The independent accountant states management's assertion is fairly stated in all material respects."
+      ],
+      "disconfirming_or_missing": [
+        "Only two historical report dates are attested.",
+        "The report does not attest the October 29 dashboard snapshot."
+      ],
+      "status": "HISTORICAL_ATTESTATION_NOT_CONTINUOUS_ASSURANCE"
+    },
+    {
+      "id": "H3_OCT29_DASHBOARD_VINTAGE",
+      "hypothesis": "The October 29 issuer dashboard implies a reserve ratio near 105.01%, but independent confirmation for that date is not yet linked.",
+      "supporting_evidence": [
+        "Dashboard displays $2.7586B reserves and $2.627B circulating RLUSD."
+      ],
+      "disconfirming_or_missing": [
+        "Latest linked CPA report is for September 30.",
+        "No October 29 reserve attestation was captured."
+      ],
+      "status": "ISSUER_REPORTED_NOT_INDEPENDENTLY_ATTESTED"
+    },
+    {
+      "id": "H4_MULTICHAIN_APPROVAL_NOT_CHAIN_ACTIVITY",
+      "hypothesis": "NYDFS-approved network scope establishes where RLUSD may be supported under the issuer's framework, not actual distribution or XRP settlement on each network.",
+      "supporting_evidence": [
+        "The September report lists XRPL, Ethereum, Base, Unichain, Optimism, Ink and XRPL EVM Sidechain as NYDFS-approved networks."
+      ],
+      "disconfirming_or_missing": [
+        "No chain-specific outstanding-unit table or transfer/settlement volume was disclosed in the captured report."
+      ],
+      "status": "REGULATORY_NETWORK_SCOPE_ONLY"
+    }
+  ],
+  "model_eligibility": {
+    "eligible": false,
+    "forecast_issued": false,
+    "feature_admission": "INSTITUTIONAL_CONTEXT_ONLY_NOT_XRP_FEATURE",
+    "reasons": [
+      "RLUSD reserve balances are not XRP balances or XRP collateral.",
+      "The October 29 dashboard snapshot is not covered by the latest linked CPA attestation.",
+      "No chain-specific RLUSD supply or XRP settlement volume was captured.",
+      "Original PDF and dashboard response bytes, SHA-256 receipts and independent timestamp anchors were not retained.",
+      "Stablecoin adoption and reserve coverage do not establish XRP price direction."
+    ]
+  },
+  "next_actions": [
+    "Retain the original signed CPA PDF as a byte-complete raw source when a permitted capture route is available, and record SHA-256 plus receipt timestamp.",
+    "Capture each subsequent monthly RLUSD attestation as a separate point-in-time vintage.",
+    "Capture chain-specific RLUSD supply and transfer data from XRPL and other approved networks without treating network approval as usage.",
+    "Reconcile RLUSD mint/redemption and XRPL settlement records against actual XRP ledger and exchange-flow evidence before considering any XRP feature.",
+    "Keep RLUSD reserve assets separate from XRP collateral, XRP holdings and XRP purchases."
+  ]
+}

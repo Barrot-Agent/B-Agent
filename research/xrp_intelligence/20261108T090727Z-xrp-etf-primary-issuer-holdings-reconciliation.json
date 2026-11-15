@@ -1,0 +1,348 @@
+{
+  "artifact_type": "xrp_etf_primary_issuer_holdings_and_point_in_time_reconciliation",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T090727Z-xrp-etf-primary-issuer-holdings-reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "8f2779b3c271b49f58b535e75e53bfcb052c6d66",
+  "append_only": true,
+  "reference_time_utc": "2026-11-08T09:07:27Z",
+  "correction_to_prior_artifact": {
+    "artifact": "20261108T090727Z-xrp-source-vintage-and-hash-correction.json",
+    "field": "source_vintage_corrections.cryptokeyhole.future_stamp_disposition",
+    "prior_interpretation": "QUARANTINED",
+    "corrected_interpretation": "FUTURE_FILE_DATE_LABEL_AVAILABLE_BEFORE_REFERENCE_TIME; EFFECTIVE_DATE_MAPPED_TO_2026-11-06_BY_PUBLISHER_METHOD",
+    "reason": "CryptoKeyhole states the Canary file labeled 9 Nov was read 7 Nov 2026 05:07–05:12 UTC and maps to 6 Nov because the file is dated one trading day after the previous trading day's orders. The file-date label is later than the effective trading date, but its stated availability precedes the 8 Nov run reference. This is not future availability relative to the run. The Nov 6 row remains partial and the issuer-vintage conflict remains unresolved."
+  },
+  "source_capture": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "raw_http_headers_captured": false,
+    "exact_browser_retrieval_times_retained": false,
+    "hash_scope": "SHA-256 hashes cover the normalized excerpts stored in source_receipts, not full issuer pages or raw daily holdings files.",
+    "primary_vs_secondary": "Issuer product pages are primary for the values they explicitly publish. CryptoKeyhole is a secondary aggregator that says it reads issuer daily holdings files; its availability windows and effective-date mapping are not equivalent to direct issuer HTTP receipts."
+  },
+  "issuer_observations": [
+    {
+      "issuer": "Grayscale",
+      "ticker": "GXRP",
+      "product_scope": "exchange-traded product; not registered under the Investment Company Act of 1940",
+      "as_of_date": "2026-11-06",
+      "xrp_units": 64838291.2993,
+      "shares_outstanding": 3350100,
+      "aum_usd": 75953260,
+      "xrp_per_share": 19.35413609,
+      "administrator": "BNY",
+      "custodians": [
+        "Coinbase Custody Trust Company, LLC",
+        "Anchorage Digital Bank N.A."
+      ],
+      "daily_holdings_availability": "Issuer page readable in this browser; CryptoKeyhole says its automated reads encounter a bot challenge and therefore it uses quarter-end SEC holdings for GXRP."
+    },
+    {
+      "issuer": "21Shares",
+      "ticker": "TOXR",
+      "product_scope": "spot XRP ETF; issuer says it holds actual XRP",
+      "as_of_date": "2026-11-06",
+      "nav_usd": 11.46,
+      "aum_usd": 126271816.14,
+      "daily_volume_shares": 2962.14,
+      "xrp_units": null,
+      "custodians": [
+        "Anchorage Digital Bank N.A.",
+        "BitGo Bank & Trust, N.A.",
+        "Coinbase Custody Trust Company LLC"
+      ],
+      "unit_quantity_status": "NOT_EXPOSED_IN_RENDERED_UNDERLYING_ASSETS_TABLE"
+    },
+    {
+      "issuer": "Franklin Templeton",
+      "ticker": "XRPZ",
+      "product_scope": "spot XRP ETF",
+      "as_of_date": "2026-11-04",
+      "xrp_units": 310430333.34,
+      "xrp_per_basket": 542607.93,
+      "shares_outstanding": 28600000,
+      "custodian": "Coinbase Custody Trust Company, LLC",
+      "nov6_primary_page_update": "NOT_VISIBLE_IN_RENDERED_PAGE; do not carry Nov 4 values forward to Nov 6"
+    },
+    {
+      "issuer": "Bitwise",
+      "ticker": "XRP",
+      "product_scope": "spot XRP ETF",
+      "as_of_date": "2026-11-05",
+      "xrp_units": 415365129.04,
+      "market_value_usd": 488726918.14,
+      "xrp_per_share": 11.162729,
+      "shares_outstanding": 37210000,
+      "trust_custodian": "BNY",
+      "digital_asset_custodian": "Coinbase Custody Trust Co., LLC"
+    },
+    {
+      "issuer": "Canary Capital",
+      "ticker": "XRPC",
+      "product_scope": "spot XRP ETF",
+      "nov6_daily_nav_table": {
+        "as_of_date": "2026-11-06",
+        "net_assets_usd": 286858926.41,
+        "nav_usd": 12.48,
+        "market_price_usd": 12.43,
+        "shares_outstanding": 22990000,
+        "spread_30d_pct": 0.07,
+        "nov5_shares_outstanding": 22990000
+      },
+      "separate_holdings_section": {
+        "as_of_date_label": "2026-11-09",
+        "xrp_units": 242962753.64,
+        "shares_outstanding": 22920000
+      },
+      "custodians": [
+        "BitGo Bank & Trust, N.A.",
+        "Gemini Trust Company LLC"
+      ],
+      "reconciliation": "The issuer page's Nov 6 daily NAV table shows 22.99M shares, unchanged from Nov 5. Its separate Nov 9 holdings section shows 22.92M shares and 242.963M XRP. CryptoKeyhole maps a Nov 9 issuer file published 7 Nov 05:07–05:12 UTC to Nov 6 holdings and reports a -752,048 XRP change. The file was available before the 8 Nov reference time, so the date label is not future availability; however, the 22.99M versus 22.92M share counts and the flow calculation remain unresolved."
+    },
+    {
+      "issuer": "REX-Osprey",
+      "ticker": "XRPR",
+      "product_scope": "1940 Act fund with multiple holdings and direct/subsidiary exposure; not a pure single-token spot ETF",
+      "as_of_date": "2026-11-05",
+      "fund_assets_usd": 40953750,
+      "shares_outstanding": 4075000,
+      "number_of_holdings": 4,
+      "total_expense_ratio_pct": 0.75,
+      "investment_policy": "At least 80% of net assets in the Reference Asset directly or through the REX-Osprey XRP Subsidiary.",
+      "xrp_units": null
+    }
+  ],
+  "aggregator_reconciliation": {
+    "publisher": "CryptoKeyhole",
+    "daily_flow_universe": [
+      "Bitwise XRP",
+      "Franklin Templeton XRPZ",
+      "Canary Capital XRPC",
+      "21Shares TOXR"
+    ],
+    "excluded_from_daily_flow_universe": {
+      "GXRP": "Not collected daily; aggregator uses quarterly SEC holdings because its automated page reads encounter a bot challenge.",
+      "XRPR": "Not counted; issuer daily file shows only direct coins and not total underlying exposure through other exchange-traded products."
+    },
+    "nov5_complete_flow_xrp": -3339,
+    "nov5_four_fund_holdings_xrp": 1076805885,
+    "nov6_partial": {
+      "coverage": "3 of 4",
+      "missing": "Franklin Templeton XRPZ",
+      "bitwise_flow_xrp": 0,
+      "canary_xrpc_flow_xrp": -752048,
+      "toxr_flow_xrp": 0,
+      "partial_total_xrp": -752048,
+      "complete_total": false
+    },
+    "file_availability_windows": {
+      "bitwise_nov6_file_published_utc": [
+        "2026-11-07T01:27:00Z",
+        "2026-11-07T01:32:00Z"
+      ],
+      "franklin_nov6_file_published_utc": [
+        "2026-11-06T23:42:00Z",
+        "2026-11-06T23:47:00Z"
+      ],
+      "canary_file_date_label": "2026-11-09",
+      "canary_file_published_utc": [
+        "2026-11-07T05:07:00Z",
+        "2026-11-07T05:12:00Z"
+      ],
+      "canary_effective_trading_date_by_publisher": "2026-11-06",
+      "toxr_nov6_file_published_utc": [
+        "2026-11-07T03:02:00Z",
+        "2026-11-07T03:07:00Z"
+      ]
+    },
+    "date_semantics": "Store issuer file label, effective trading date, publisher-observed availability time and retrieval time as separate fields. A file label of 9 Nov published 7 Nov and explicitly mapped to 6 Nov is not a future-available feature at the 8 Nov cutoff. It remains partial and must not be backdated without preserving the publisher's mapping method.",
+    "source_independence": "CryptoKeyhole's flow series uses the same issuer files represented on issuer pages; it is not an independent confirmation. Grayscale and REX are excluded from its daily flow universe for stated methodology reasons."
+  },
+  "primary_aggregator_disagreements": [
+    {
+      "topic": "Canary XRPC shares/holdings vintage",
+      "primary": "Canary daily NAV table shows 22,990,000 shares on Nov 5 and Nov 6; separate Nov 9 holdings section shows 22,920,000 shares and 242,962,753.64 XRP.",
+      "secondary": "CryptoKeyhole maps the Nov 9 issuer file, published Nov 7, to Nov 6 and reports -752,048 XRP for XRPC.",
+      "status": "UNRESOLVED_VINTAGE_AND_SHARE_COUNT_CONFLICT",
+      "disconfirming": "The 9 Nov file was available before the 8 Nov reference; it is not future availability. The primary issuer page itself contains separate Nov 6 NAV and Nov 9 holdings sections."
+    },
+    {
+      "topic": "Grayscale daily holdings",
+      "primary": "Grayscale issuer page shows 64,838,291.2993 XRP as of Nov 6.",
+      "secondary": "CryptoKeyhole uses a June 30 quarter-end SEC figure for GXRP because it says its automated reads encounter a bot challenge.",
+      "status": "DIFFERENT_DATA_AVAILABILITY_AND_CUTOFF",
+      "disconfirming": "The issuer page is readable in this browser, but the aggregator's earlier access limitation is its own stated constraint."
+    },
+    {
+      "topic": "Franklin Nov 6 flow",
+      "primary": "Franklin issuer page rendered Nov 4 holdings of 310,430,333.34 XRP and 28.6M shares; no Nov 6 holdings update was visible.",
+      "secondary": "CryptoKeyhole marks Franklin XRPZ missing for Nov 6 and therefore shows a 3/4 partial total.",
+      "status": "CONSISTENT_WITH_PARTIAL_COVERAGE",
+      "disconfirming": "The latest visible Franklin issuer page is stale; do not infer Nov 6 holdings from Nov 4."
+    },
+    {
+      "topic": "REX classification",
+      "primary": "REX page shows four holdings and direct or subsidiary exposure under an 80% policy.",
+      "secondary": "CryptoKeyhole excludes XRPR because the daily file does not represent total underlying exposure.",
+      "status": "KEEP_SEPARATE_FROM_PURE_SPOT_ETF_UNIVERSE",
+      "disconfirming": "AUM and shares alone do not establish XRP units or total indirect XRP exposure."
+    }
+  ],
+  "data_quality": {
+    "point_in_time_available_before_reference": true,
+    "synchronized_issuer_cutoff": false,
+    "raw_daily_issuer_files_captured": false,
+    "raw_http_wire_bytes_captured": false,
+    "franklin_nov6_file_missing": true,
+    "canary_share_count_conflict": true,
+    "grayscale_primary_page_vs_aggregator_cutoff_difference": true,
+    "rex_total_underlying_xrp_unknown": true,
+    "do_not_sum_incompatible_vintages": true
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Issuer holdings have mixed effective dates, incomplete daily coverage, Canary share-count/vintage disagreement, missing Franklin Nov 6 data, no raw issuer files and no common synchronized cutoff."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  },
+  "external_actions": {
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "grayscale_gxrp_20261106",
+      "publisher": "Grayscale",
+      "source_class": "primary_issuer_product_page",
+      "url": "https://etfs.grayscale.com/gxrp",
+      "effective_date": "2026-11-06",
+      "independence_group": "grayscale_issuer",
+      "excerpt": "Grayscale XRP Trust ETF (GXRP), as of 11/06/2026: AUM $75,953,260; shares outstanding 3,350,100; total XRP in Fund 64,838,291.2993; XRP per share 19.35413609. Fund administrator BNY; digital asset custodian Coinbase Custody Trust Company, LLC; additional digital asset custodian Anchorage Digital Bank N.A. The issuer states GXRP is an exchange-traded product and not registered under the Investment Company Act of 1940.",
+      "excerpt_sha256": "3fb5781f77a9ebcf222feaeea554a2f27c8bda1dd2dd110e7793c845eb3bb96b",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer file.",
+      "limitations": [
+        "Issuer page is primary but browser retrieval time was not retained.",
+        "GXRP is an exchange-traded product and not registered under the Investment Company Act of 1940.",
+        "Its current issuer-page holdings are not the same vintage as CryptoKeyhole's quarter-end SEC fallback."
+      ]
+    },
+    {
+      "source_id": "21shares_toxr_20261106",
+      "publisher": "21shares",
+      "source_class": "primary_issuer_product_page",
+      "url": "https://www.21shares.com/en-us/products-us/toxr",
+      "effective_date": "2026-11-06",
+      "independence_group": "21shares_issuer",
+      "excerpt": "21shares XRP ETF (TOXR), value as of November 6, 2026: NAV $11.46; AUM $126,271,816.14; daily volume 2,962.14 shares. The issuer says TOXR holds actual XRP. Its fund XRP is held by Anchorage Digital Bank N.A., BitGo Bank & Trust, N.A., and Coinbase Custody Trust Company LLC. The rendered Underlying Assets table did not expose an XRP-unit quantity.",
+      "excerpt_sha256": "d83f490b983cbce9756b6af4383f90cab3dffa6b482d493745309203a95a2384",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer file.",
+      "limitations": [
+        "The rendered underlying-assets table did not expose the XRP-unit quantity.",
+        "AUM and NAV are not substitutes for issuer-reported XRP units.",
+        "Browser retrieval time was not retained."
+      ]
+    },
+    {
+      "source_id": "franklin_xrpz_20261104",
+      "publisher": "Franklin Templeton",
+      "source_class": "primary_issuer_product_page",
+      "url": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ",
+      "effective_date": "2026-11-04",
+      "independence_group": "franklin_issuer",
+      "excerpt": "Franklin XRP ETF (XRPZ), as of 11/04/2026 (Updated Daily): XRP in Fund 310,430,333.34; XRP per Basket 542,607.93; custodian Coinbase Custody Trust Company, LLC; shares outstanding 28,600,000; daily volume 407,116. The issuer page did not show a Nov 6 holdings update in the rendered view.",
+      "excerpt_sha256": "464efeb908b9439ef6f1fdb33bd3d7455d9b50d244c0989ef4ae6fb5645b8004",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer file.",
+      "limitations": [
+        "The rendered issuer page is two trading sessions older than Nov 6.",
+        "Do not carry Nov 4 holdings forward as Nov 6 holdings.",
+        "Browser retrieval time was not retained."
+      ]
+    },
+    {
+      "source_id": "bitwise_xrp_20261105",
+      "publisher": "Bitwise",
+      "source_class": "primary_issuer_product_page",
+      "url": "https://bitxrpetf.com/",
+      "effective_date": "2026-11-05",
+      "independence_group": "bitwise_issuer",
+      "excerpt": "Bitwise XRP ETF, holdings data as of 11/05/2026: XRP in Trust 415,365,129.04; market value $488,726,918.14; XRP per Share 11.162729; shares outstanding 37,210,000. Trust Custodian: Bank of New York Mellon. Digital Asset Custodian: Coinbase Custody Trust Co., LLC.",
+      "excerpt_sha256": "c0b5d7527b1a0ac0d4a7b79d9dcc916b44555d4fe2f91fcdbf90b9f313a671bc",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer file.",
+      "limitations": [
+        "Issuer page holdings are dated Nov 5, not Nov 6.",
+        "Trust custodian and digital-asset custodian are distinct roles.",
+        "Browser retrieval time was not retained."
+      ]
+    },
+    {
+      "source_id": "canary_xrpc_20261106_and_1109",
+      "publisher": "Canary Capital",
+      "source_class": "primary_issuer_product_page",
+      "url": "https://canaryetfs.com/xrpc/",
+      "effective_date": "2026-11-06_with_separate_2026-11-09_holdings_section",
+      "independence_group": "canary_issuer",
+      "excerpt": "Canary XRP ETF (XRPC), issuer page as of 11/06/2026: net assets $286,858,926.41; NAV $12.48; market price $12.43; 30-day median spread 0.07%. The historical daily table shows 22,990,000 shares outstanding on 11/05/2026 and 22,990,000 on 11/06/2026. Digital asset custodians listed: BitGo Bank & Trust, N.A. and Gemini Trust Company LLC. The separate Holdings section is explicitly dated 11/09/2026 and shows 242,962,753.64 XRP and 22,920,000 shares; this is not the same vintage as the Nov 6 daily NAV table.",
+      "excerpt_sha256": "2a6ac746c50bc83a5ab4ff716b0896bf9f3655b3954bbd9729099a02f6daa418",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer file.",
+      "limitations": [
+        "The page contains two different vintages: Nov 6 daily NAV history and a separate holdings section labeled Nov 9.",
+        "The Nov 9 holdings section must not be silently relabeled as Nov 6 primary issuer data.",
+        "The 22.99M versus 22.92M share-count discrepancy is unresolved."
+      ]
+    },
+    {
+      "source_id": "rex_xrpr_20261105",
+      "publisher": "REX Shares / Osprey Funds",
+      "source_class": "primary_issuer_product_page",
+      "url": "https://www.rexshares.com/xrpr/",
+      "effective_date": "2026-11-05",
+      "independence_group": "rex_osprey_issuer",
+      "excerpt": "REX-Osprey XRP ETF (XRPR), as of 11/05/2026: fund assets $40,953,750; shares outstanding 4,075,000; number of holdings 4; total expense ratio 0.75%. The prospectus language says the fund invests at least 80% of net assets in the Reference Asset directly or through the REX-Osprey XRP Subsidiary. It is not a pure single-token spot holding record.",
+      "excerpt_sha256": "68ec36a9444796895baf6823880daaf1bf5325c6721aea398bebdd8582445756",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer file.",
+      "limitations": [
+        "XRPR is a 1940 Act fund with multiple holdings and direct/subsidiary exposure.",
+        "Fund assets and share count are not XRP units or a pure spot-ETF holding total."
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_method_and_timing",
+      "publisher": "CryptoKeyhole",
+      "source_class": "secondary_aggregator_with_issuer_file_methodology",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "effective_date": "2026-11-06_partial",
+      "independence_group": "cryptokeyhole_issuer_files",
+      "excerpt": "CryptoKeyhole says it collects daily issuer holdings files for four US spot XRP ETFs: Bitwise (XRP), Franklin Templeton (XRPZ), Canary Capital (XRPC) and 21Shares (TOXR). Grayscale GXRP is not collected daily and is shown from quarterly SEC filings; REX-Osprey XRPR is not counted because its daily file states only direct coins and not total underlying exposure. The page states flows are changes in issuer-reported XRP held, and USD values use the publisher's own XRP/USD close. For Canary, the issuer file for a day holds coins after the previous trading day's orders and is dated one trading day later. The 9 Nov 2026 Canary issuer-file label was published/read 7 Nov 2026 05:07–05:12 UTC and mapped by the publisher to 6 Nov holdings; it is a future file-date label, not future availability. The 6 Nov 2026 row is partial at 3 of 4 funds because Franklin XRPZ is missing; Bitwise 0 XRP, XRPC -752,048 XRP, TOXR 0 XRP, partial total -752,048 XRP. The 5 Nov complete flow is -3,339 XRP across all four funds.",
+      "excerpt_sha256": "47f5809dd1d36059c1e5755c04301bd9902123b37a0fa649d02aa0f62fef25f8",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer files.",
+      "limitations": [
+        "Secondary aggregator; raw issuer files were not captured directly in this artifact.",
+        "Nov 6 is partial at 3/4 daily funds; Franklin XRPZ is missing.",
+        "Its file-date-to-effective-date mapping is a publisher methodology and must be separately verified against issuer files."
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_file_availability_windows",
+      "publisher": "CryptoKeyhole",
+      "source_class": "secondary_aggregator_availability_metadata",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "effective_date": "2026-11-06_partial",
+      "independence_group": "cryptokeyhole_issuer_files",
+      "excerpt": "Observed publication windows: Bitwise 6 Nov file 7 Nov 2026 01:27–01:32 UTC; Franklin 6 Nov file 6 Nov 2026 23:42–23:47 UTC; Canary 9 Nov file 7 Nov 2026 05:07–05:12 UTC, mapped by its methodology to 6 Nov holdings; 21Shares 6 Nov file 7 Nov 2026 03:02–03:07 UTC. Issuer file labels and effective trading dates are separate timestamps.",
+      "excerpt_sha256": "05eeddd0fa9c53cb230c099fb058a139aa85a694e4dac64daf0b87696fbb96d1",
+      "hash_scope": "SHA-256 of normalized excerpt stored here; not page HTML or raw issuer files.",
+      "limitations": [
+        "Publication windows are reported by the aggregator, not independently captured from each issuer's HTTP headers.",
+        "File date and effective trading date are distinct.",
+        "The page is partial because Franklin's effective Nov 6 holdings were not yet published."
+      ]
+    }
+  ]
+}

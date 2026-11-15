@@ -1,14 +1,14 @@
-# One-Shot Kit — `tracks/kits/pd/`
+# One-Shot Kit — tracks/kits/pd/
 
-Acquired 2026-11-14 to close the v1 "toy-timbre" gap (see
-`producers/reference_acquisition.md`). Two origins, both clean:
+Acquired 2026-11-14 as a producer-mode resource. The folder name is historical and is NOT a rights determination.
 
-## 1. Public-domain drum machine one-shots (15)
-Source: `github.com/smpldsnds/drum-machines` — repository README declares
-"A collection of public domain samples of different drum machines"
-(checked before download; DrumCurate/Boochi44 candidates had NO license and
-were rejected). Decoded TR-808 / 808-mini ogg one-shots to 44.1kHz mono
-16-bit WAV, peak-normalized to 0.89, silence-trimmed.
+## Rights and provenance status — provisional
+
+The upstream smpldsnds/drum-machines README describes its collection as public-domain samples. The upstream GitHub repository currently has no SPDX license metadata and no separate LICENSE file. No per-file provenance or rights instrument was verified for the 15 converted TR-808/808-mini samples. Treat the public-domain statement as an upstream maintainer assertion, not a verified blanket license. Keep these files for internal evaluation; do not redistribute or commercialize them until per-sample rights and attribution are documented.
+
+The other nine files are described as original synthesized sounds. The import commit does not include the generator source or reproducible build receipt, so originality is recorded as an unverified project assertion pending the synthesis script and parameter manifest. No third-party source was identified in this run.
+
+The 15 source-derived samples were described as decoded from upstream OGG files to 44.1 kHz mono 16-bit WAV, peak-normalized to 0.89 and silence-trimmed. Those processing details were not independently reproduced in this run.
 
 kick_808, kick_808_soft, kick_808mini, snare_808, snare_808_ghost,
 clap_808, hihat_closed_808, hihat_open_808, conga_low_808, conga_mid_808,
@@ -18,7 +18,7 @@ Notes: `bd0000/bd0025/…/bd1000` naming = the 808's velocity ladder; we took
 the full-velocity + mid-velocity variants. Congas/rimshot/maraca directly
 cover the v2 patch list for tracks 04/05 (percussion layer + dembow rims).
 
-## 2. Synthesized signature sounds (9) — original, no third-party rights
+## 2. Synthesized signature sounds (9) — claimed original; generator source not included
 Generated from physics in-house (numpy; modal synthesis, Karplus-Strong,
 state-variable filters). No sampled commercial material involved.
 
@@ -39,3 +39,8 @@ state-variable filters). No sampled commercial material involved.
 - Copyrighted producer drum kits (search results were store listings).
 - Producer reference loops/stems: need YOUR supply for the learning loop —
   analysis is fine to run, but taste anchors and A/B verdicts come from you.
+
+## Source references
+- Upstream repository: https://github.com/smpldsnds/drum-machines
+- Upstream README: https://github.com/smpldsnds/drum-machines/blob/main/README.md
+- Upstream repository metadata currently reports no machine-readable license and no separate LICENSE file.

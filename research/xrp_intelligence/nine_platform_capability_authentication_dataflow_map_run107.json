@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.2",
+  "snapshot_id": "Run107",
+  "captured_at_utc": "2026-11-13T23:03:17Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "integration/xrp-v3-unified-main-20261112",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "status": "TESTED_CURRENT_RUNTIME",
+      "authentication": "GitHub connector tested against repository, main, full tree, open PR inventory, PR #1662, files and workflow runs",
+      "data_flow": "ChatGPT connector -> GitHub REST -> B-Agent",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": "FAIL"
+    },
+    {
+      "name": "Claude",
+      "status": "UNVERIFIED",
+      "authentication": "No Barrot authentication tested",
+      "data_flow": "NONE"
+    },
+    {
+      "name": "Grok",
+      "status": "UNVERIFIED",
+      "authentication": "No Barrot authentication tested",
+      "data_flow": "NONE",
+      "note": "Groq workflows do not establish a Grok connection."
+    },
+    {
+      "name": "Gemini",
+      "status": "UNVERIFIED",
+      "authentication": "No Barrot authentication tested",
+      "data_flow": "NONE"
+    },
+    {
+      "name": "Copilot",
+      "status": "REVIEW_ARTIFACTS_ONLY",
+      "authentication": "Review artifacts on PR #1653; no formal approval on #1662",
+      "data_flow": "No structured nine-platform exchange"
+    },
+    {
+      "name": "Codex",
+      "status": "UNVERIFIED",
+      "authentication": "No Barrot authentication tested",
+      "data_flow": "NONE"
+    },
+    {
+      "name": "Hugging Face",
+      "status": "PRIOR_MAIN_BUILD_ERROR",
+      "authentication": "No current successful Barrot deployment",
+      "data_flow": "No current transfer"
+    },
+    {
+      "name": "Kaggle",
+      "status": "UNTESTED",
+      "authentication": "No submission or dataset action",
+      "data_flow": "NONE"
+    },
+    {
+      "name": "Databricks",
+      "status": "HTTP_403",
+      "authentication": "Main Pillars workflow receives HTTP 403",
+      "data_flow": "No write"
+    }
+  ],
+  "separate_internal_providers": [
+    {
+      "name": "LunaRoute",
+      "main_mcp": "enabled",
+      "integration_mcp": "disabled",
+      "endpoint_authentication": "UNVERIFIED",
+      "dispatch": "NOT_EXECUTED"
+    },
+    {
+      "name": "Groq",
+      "authentication": "No call in this run",
+      "dispatch": "NOT_EXECUTED",
+      "note": "Groq is not Grok."
+    }
+  ],
+  "repository_security": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "main_branch_protected": true,
+    "main_status_enforcement": "non_admins",
+    "main_required_status_contexts": [],
+    "branch_protection_details": "HTTP 403",
+    "fallback_ruleset_10863829": "disabled",
+    "integration_branch_protected": false,
+    "github_connector_least_privilege": "FAIL"
+  },
+  "coordination": {
+    "independent_dispatch": "NOT_EXECUTED",
+    "structured_exchange": "NOT_EXECUTED",
+    "disagreement_resolution": "NOT_EXECUTED",
+    "minority_objections": "PRESERVED",
+    "red_team": "NOT_EXECUTED",
+    "external_transfer": "NONE"
+  },
+  "policy": [
+    "Lawful public/authorized sources only.",
+    "No live connection claims without tested authentication and data flow.",
+    "Least privilege and read-only fallbacks.",
+    "No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade or real-money action."
+  ]
+}

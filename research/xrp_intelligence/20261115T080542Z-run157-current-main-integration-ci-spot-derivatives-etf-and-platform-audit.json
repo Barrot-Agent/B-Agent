@@ -1,0 +1,1205 @@
+{
+  "artifact_type": "barrot_xrp_run_audit",
+  "schema_version": "1.0.0",
+  "run": 157,
+  "captured_at_utc": "2026-11-15T08:05:42Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety, authorization and verification",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head": "a5a6364bf544fb4a27d6406c40a2c4e8a5148e3c",
+    "integration_ahead_by": 2469,
+    "integration_behind_by": 0,
+    "main_tree_entries": 1393,
+    "main_blob_count": 1283,
+    "integration_tree_entries": 2484,
+    "integration_blob_count": 2364,
+    "integration_added_blobs": 1081,
+    "integration_modified_blobs": 161,
+    "integration_removed_blobs": 0,
+    "pr_number": 1662,
+    "pr_state": "OPEN_DRAFT",
+    "pr_mergeable": true,
+    "pr_changed_files": 1242,
+    "pr_workflow_files_changed": 48,
+    "pr_additions": 342325,
+    "pr_deletions": 6309,
+    "formal_reviews": 0,
+    "formal_approvals": 0,
+    "review_threads": 0
+  },
+  "ci": {
+    "exact_head": "a5a6364bf544fb4a27d6406c40a2c4e8a5148e3c",
+    "push_ci_run": 43692191769,
+    "full_suite_job": 132744999063,
+    "full_suite_status": "SUCCESS",
+    "tests_collected": 3789,
+    "tests_passed": 3788,
+    "tests_failed": 0,
+    "tests_skipped": 1,
+    "subtests_passed": 19,
+    "inclusive_coverage_percent": 64.02,
+    "legacy_core_coverage_percent": 77,
+    "full_suite_duration_seconds": 169.73,
+    "wheel_build": "PASS",
+    "packaged_primary_mission": "PASS",
+    "installed_barrot_v3_and_xrp_mission": "PASS",
+    "push_fail_closed_run": 43692191772,
+    "push_fail_closed_status": "SUCCESS",
+    "pr_dependency_audit_run": 43692195496,
+    "pr_dependency_audit_status": "SUCCESS",
+    "dependency_manifests_audited": 6,
+    "known_vulnerabilities_reported": 0,
+    "pr_fail_closed_run": 43692195551,
+    "pr_fail_closed_status": "SUCCESS",
+    "pr_pages_validation_run": 43692195512,
+    "pr_pages_validation_status": "SUCCESS",
+    "pr_event_tests": "SKIPPED_BY_INTEGRATION_BRANCH_CONDITION; exact-head push run performed full suite",
+    "non_blocking_warnings": [
+      "GitHub Actions cache budget reached; cache became read-only.",
+      "Setuptools warned that barrot_agent.data.missions is not explicitly included as a package, although the primary mission JSON was included in the wheel and installed-resource verification passed."
+    ]
+  },
+  "main_workflows": {
+    "latest_cross_analysis_run": 43691825671,
+    "cross_analysis_status": "SUCCESS",
+    "cross_analysis_mode": "scheduled read-only analysis with artifact upload",
+    "barrot_sync_run": 43650499411,
+    "barrot_sync_conclusion": "SUCCESS_FALSE_GREEN",
+    "barrot_sync_observed_failure": "ModuleNotFoundError: No module named 'rich'; wrapper printed sync skipped; git push failure masked by || true; log ended Everything up-to-date.",
+    "barrot_sync_secret_note": "The echo/cut command printed only the fixed 30-character label prefix; no LunaRoute key characters were observed.",
+    "pages_run": 43650499344,
+    "pages_status": "FAILURE",
+    "pages_failure": "Jekyll Liquid syntax error at GLOBAL_STATE_MANIFEST.md line 6456 due unescaped JSON/template braces; deploy job skipped.",
+    "main_ci_run": 43650499432,
+    "main_ci_status": "SUCCESS"
+  },
+  "workflow_control_review": {
+    "changed_workflows_total": 48,
+    "high_risk_workflows_reinspected_this_run": 24,
+    "integration_quarantines": [
+      "ask-barrot.yml",
+      "barrot-sync.yml",
+      "coinbase-independent pingpong.yml",
+      "pingpong.yml",
+      "barrot-self-upgrade.yml",
+      "barrot-agent.yml",
+      "barrot-speak.yml",
+      "subagent-matrix.yml",
+      "subagent-spawn.yml",
+      "sync-huggingface.yml",
+      "signal_ledger.yml",
+      "knowledge-signal-cycle.yml"
+    ],
+    "integration_approval_gates": [
+      "coinbase-paper-trader.yml: typed YES, exact main SHA, product identity validation, artifact-only output",
+      "barrot-ops.yml: separate Databricks workspace-import and Kaggle dataset-download approvals",
+      "capability-10-design.yml, capability-discovery.yml, financial-data-refresh.yml, frontier-digest.yml and signal-summary.yml: main-ref, explicit confirmation and expected-main-SHA checks"
+    ],
+    "cross_analysis": "read-only outputs and artifact upload",
+    "xrp_public_ingestion": "main-ref-only; actions:read and contents:read; hourly and daily schedule; not active on main because workflow exists only on integration",
+    "workflow_files_reinspected_total_this_run": 48
+  },
+  "security": {
+    "github_connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "least_privilege": "FAIL_OVERPRIVILEGED",
+    "codeowners": "* @Barrot-Agent; no independent owner",
+    "main_branch_protection_read": "HTTP 403 Resource not accessible by integration",
+    "ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled",
+      "rules": [
+        "deletion",
+        "non_fast_forward"
+      ]
+    },
+    "integration_branch_protection": "NOT_VERIFIED_IN_THIS_RUN",
+    "merge_decision": "NO_MERGE"
+  },
+  "open_pr_inventory": {
+    "total": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "targeting_main": 365,
+    "targeting_other_branches": 8,
+    "selected_path_overlap": {
+      "1611": {
+        "source_paths": 8,
+        "overlap_with_1662": 7,
+        "unique": [
+          "research/xrp_intelligence/HANDOFF_20261103T211427Z-FORECAST-LEDGER-FEATURE-STORE.md"
+        ],
+        "classification": "UNIQUE_HANDOFF; PRESERVE"
+      },
+      "1612": {
+        "source_paths": 4,
+        "overlap_with_1662": 3,
+        "unique": [
+          ".github/workflows/check-signal-accuracy.yml"
+        ],
+        "classification": "UNIQUE_WORKFLOW; PRESERVE"
+      },
+      "1614": {
+        "source_paths": 57,
+        "overlap_with_1662": 30,
+        "unique_count": 27,
+        "classification": "UNIQUE_RESEARCH_AND_PROVENANCE_CLOCK; PRESERVE"
+      },
+      "1615": {
+        "source_paths": 14,
+        "overlap_with_1662": 1,
+        "unique_count": 13,
+        "classification": "UNIQUE_SECURITY_WORKFLOWS_AND_AUDIT; PRESERVE"
+      },
+      "1640": {
+        "source_paths": 280,
+        "overlap_with_1662": 278,
+        "unique": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "UNIQUE_WORKFLOWS_RETAINED; SUCCESSOR CONTENT PRESENT"
+      },
+      "1642": {
+        "source_paths": 7,
+        "overlap_with_1662": 7,
+        "unique": [],
+        "classification": "PATH_OVERLAP_ONLY; SEMANTIC_DUPLICATE_NOT_PROVEN"
+      },
+      "1643": {
+        "source_paths": 670,
+        "overlap_with_1662": 670,
+        "unique": [],
+        "classification": "PATH_OVERLAP_ONLY; SEMANTIC_DUPLICATE_NOT_PROVEN"
+      },
+      "1653": {
+        "source_paths": 7,
+        "overlap_with_1662": 1,
+        "unique": [
+          "barrot_agent/mcp_adapters.py",
+          "barrot_agent/mcp_discovery.py",
+          "barrot_agent/mcp_targets.py",
+          "barrot_agent/repository/codebase_memory.py",
+          "docs/REPOSITORY_INTELLIGENCE.md",
+          "tests/test_codebase_memory.py"
+        ],
+        "classification": "UNIQUE_UNREVIEWED; BLOCKED"
+      },
+      "1660": {
+        "source_paths": 972,
+        "overlap_with_1662": 970,
+        "unique": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "UNIQUE_WORKFLOWS_RETAINED; SEMANTIC_REVIEW_REQUIRED"
+      },
+      "1661": {
+        "source_paths": 1072,
+        "overlap_with_1662": 1070,
+        "unique": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "UNIQUE_WORKFLOWS_RETAINED; SEMANTIC_REVIEW_REQUIRED"
+      }
+    },
+    "source_pr_closures": 0
+  },
+  "market": {
+    "data_cutoff_utc": "2026-11-15T08:05:42Z",
+    "spot": {
+      "okx_xrp_usdt": {
+        "provider_event_time_utc": "2026-11-15T07:52:07.856Z",
+        "age_at_capture_seconds": 814.144,
+        "last": 0.9432,
+        "bid": 0.9432,
+        "ask": 0.9433,
+        "open_24h": 0.9823,
+        "high_24h": 0.9983,
+        "low_24h": 0.8929,
+        "volume_24h_xrp": 101970899.865672,
+        "volume_24h_quote_usdt": 96115619.8951275,
+        "derived_24h_change_percent": -3.980454,
+        "derived_top_spread_bps": 1.0602,
+        "top_bid_size_xrp": 3061.299124,
+        "top_ask_size_xrp": 1060.164325,
+        "derived_top_level_bid_share_percent": 74.277,
+        "model_eligible": false,
+        "exclusion": "Provider quote older than 300-second freshness threshold; one level is not full-depth liquidity."
+      },
+      "okx_usdt_usd": {
+        "provider_event_time_utc": "2026-11-15T08:01:19.066Z",
+        "age_at_capture_seconds": 262.934,
+        "last": 0.99956,
+        "bid": 0.99956,
+        "ask": 0.99957,
+        "model_eligible": false,
+        "exclusion": "Timestamp skew versus XRP-USDT observation is 551.210 seconds, exceeding the 60-second basis synchronization gate."
+      },
+      "kraken_xrp_usd": {
+        "response_capture_approx_utc": "2026-11-15T08:05:42Z",
+        "provider_event_time": "NOT_PROVIDED",
+        "last": 0.9442,
+        "bid": 0.94456,
+        "ask": 0.94474,
+        "vwap_24h": 0.94469262,
+        "high_24h": 0.99738,
+        "low_24h": 0.89112,
+        "volume_24h_xrp": 83997235.08376981,
+        "derived_top_spread_bps": 1.9055,
+        "model_eligible": false,
+        "exclusion": "No provider event timestamp; API open field is daily open, not a 24-hour open."
+      },
+      "kraken_usdt_usd": {
+        "response_capture_approx_utc": "2026-11-15T08:05:42Z",
+        "provider_event_time": "NOT_PROVIDED",
+        "last": 0.9992,
+        "model_eligible": false,
+        "exclusion": "No provider event timestamp; cannot establish synchronized USD basis."
+      },
+      "cross_venue": {
+        "raw_last_price_gap_percent": 0.106022,
+        "status": "NOT_ARBITRAGE_EVIDENCE",
+        "reason": "Asynchronous observations and mixed XRP-USDT/XRP-USD quote bases; no synchronized full-depth books."
+      }
+    },
+    "depth_secondary_snapshots": [
+      {
+        "source": "Aperiodic",
+        "snapshot_window_utc": "2026-11-15T04:55:00Z/2026-11-15T05:00:00Z",
+        "coverage": "Binance, OKX and Hyperliquid XRP perpetual contracts; five contracts",
+        "open_interest_usd": 478800000,
+        "open_interest_24h_change_percent": -4.32,
+        "volume_24h_usd": 2250000000,
+        "depth_usd": 9200000,
+        "depth_per_basis_point_usd": 587800,
+        "status": "SECONDARY; STALE; COVERAGE-BOUNDED"
+      },
+      {
+        "source": "Basis Charts",
+        "snapshot_time_utc": "2026-11-15T01:50:00Z",
+        "coverage": "Binance XRPUSDT perpetual; 1,000 levels each side",
+        "bid_depth_usd": 36100000,
+        "ask_depth_usd": 26000000,
+        "bid_share_percent": 53,
+        "depth_within_0_5_percent_usd": 11600000,
+        "status": "SECONDARY; STALE; PERPETUAL NOT SPOT"
+      },
+      {
+        "source": "CoinGecko 2026 liquidity report",
+        "snapshot_vintage": "2026-10",
+        "coverage": "Eight spot CEXes, approximately ±2%",
+        "bid_depth_usd_approx": 18000000,
+        "ask_depth_usd_approx": 14000000,
+        "total_depth_usd_approx": 30000000,
+        "status": "MONTHLY AGGREGATE; NOT CURRENT"
+      }
+    ],
+    "derivatives": [
+      {
+        "source": "Aperiodic",
+        "snapshot_window_utc": "2026-11-15T04:55:00Z/2026-11-15T05:00:00Z",
+        "coverage": "5 contracts, Binance/OKX/Hyperliquid",
+        "open_interest_usd": 478800000,
+        "oi_24h_change_percent": -4.32,
+        "volume_24h_usd": 2250000000,
+        "model_eligible": false
+      },
+      {
+        "source": "Liqwall",
+        "snapshot_time_utc": "2026-11-14T22:32:00Z",
+        "coverage": "All-exchange aggregate as defined by provider",
+        "open_interest_usd": 983000000,
+        "oi_24h_change_percent": 0.7,
+        "funding_average_per_8h_percent": 0.0007,
+        "liquidations_24h_usd": 44900000,
+        "long_liquidations_usd": 44100000,
+        "short_liquidations_usd": 781000,
+        "binance_accounts_long_percent": 72.4,
+        "model_eligible": false
+      },
+      {
+        "source": "TradRadar",
+        "snapshot_time_utc": "2026-11-14T20:00:00Z",
+        "coverage": "7 exchanges OI; 5 exchanges liquidations",
+        "open_interest_usd": 1400000000,
+        "oi_24h_change_percent": -7.25,
+        "funding_oi_weighted_per_8h_percent": -0.0047,
+        "long_liquidations_usd": 24010000,
+        "short_liquidations_usd": 698190,
+        "long_short_ratio": 3.57,
+        "model_eligible": false
+      }
+    ],
+    "etf_flows": {
+      "date": "2026-11-13",
+      "sources": [
+        {
+          "source": "XRP Insights",
+          "universe": "6 US spot funds plus BITW",
+          "daily_flow_xrp": 3400000,
+          "weekly_flow_xrp": -6078606,
+          "total_holdings_xrp": 1189102081,
+          "method": "issuer-reported holdings delta; GXRP flow excluded due capture gap; BITW index rebalancing and XRP-denominated fee accrual can affect holdings deltas",
+          "status": "NOT_CASH_SUBSCRIPTIONS"
+        },
+        {
+          "source": "Alpha Finance",
+          "universe": "5 funds XRP/XRPZ/XRPC/GXRP/TOXR",
+          "daily_flow_usd": -1100000,
+          "seven_session_flow_usd": -19100000,
+          "thirty_session_flow_usd": -581700,
+          "method": "provider-reported/derived fund flow series",
+          "status": "DIFFERENT_UNIVERSE"
+        },
+        {
+          "source": "CryptoETF.today",
+          "universe": "5 funds",
+          "daily_flow_usd": -1000000,
+          "fund_rows": {
+            "XRPZ": 4300000,
+            "GXRP": -5300000
+          },
+          "published_utc": "2026-11-14T05:48:00Z",
+          "status": "T_PLUS_1_DIFFERENT_UNIVERSE"
+        },
+        {
+          "source": "SoSoValue",
+          "universe": "5 reported funds",
+          "weekly_flow_usd": -19130000,
+          "status": "SECONDARY"
+        }
+      ],
+      "reconciliation": "Do not average. The positive XRP Insights daily result and negative five-fund trackers use different fund universes; weekly XRP Insights holdings change is not cash flow."
+    }
+  },
+  "macro": {
+    "source": "Reuters",
+    "publication_date": "2026-11-13",
+    "week_ending": "2026-11-11",
+    "global_equity_fund_inflows_usd": 50990000000,
+    "european_equity_fund_inflows_usd": 35130000000,
+    "us_equity_fund_inflows_usd": 6600000000,
+    "asia_equity_fund_inflows_usd": 6150000000,
+    "global_bond_fund_outflows_usd": 507890000,
+    "money_market_fund_outflows_usd": 37480000000,
+    "interpretation": "Mixed cross-asset risk appetite; not XRP-specific causality."
+  },
+  "institutions": {
+    "ripple_coinbase_rlusd": "Ripple announced Oct 28 RLUSD trading/management across Coinbase Prime, Exchange and retail, with XRPL/Base/Ethereum rails. Coinbase Global Exchange collateral support was described as future follow-up.",
+    "ripple_bny": "BNY announced Oct 27 support for XRP and RLUSD custody; BNY is RLUSD primary reserve custodian. Tokenized trade-finance work with C2FO is exploratory, not confirmed production financing.",
+    "pnc_coinbase_circle": "PNC's Nov 9 limited incoming-only pilot uses USDC on Ethereum through Coinbase Payments with 1:1 USD conversion; it is not XRP settlement.",
+    "circle_sbi": "Circle and SBI each own 50% of Circle SBI Japan K.K.; Circle controls/consolidates the JV. This is distinct from SBI VC Trade's RLUSD distribution and SBI's Ripple investment.",
+    "sbic_identity": "SBIC East/Central/West are separate regional SME investment-development companies, not SBI Holdings. SB OAI Japan is the separate OpenAI/SoftBank JV. SBIC East's official June 12-13 2025 course explicitly covered ChatGPT, Copilot, RAG, APIs and information-leakage risk; this explains a plausible phrase association but is not an OpenAI commercial partnership.",
+    "ripple_national_trust": "OCC CAS identifies Ripple National Trust Bank as a national trust-bank charter, approved Dec 12 2025 and consummated/effective Oct 26 2026. This does not by itself establish a full-service deposit bank or XRP settlement demand."
+  },
+  "prediction_engine": {
+    "implemented_on_integration": [
+      "51 public-source definitions; 49 scheduled (46 hourly, 3 weekly) in the current mission inventory",
+      "read-only hourly/daily public XRP ingestion workflow",
+      "SHA-256 source receipts and local receipt-chain prototype",
+      "SQLite append-only point-in-time feature store with SQL update/delete guards",
+      "event timeline and counter-hypothesis artifacts",
+      "naive, momentum, mean-reversion and volatility baselines",
+      "purged/embargoed chronological walk-forward evaluation",
+      "paired temporal and source-clustered moving-block bootstrap",
+      "rolling temporal temperature calibration",
+      "univariate PSI feature drift diagnostics",
+      "fixed-horizon append-only forecast/outcome ledger and Ed25519 evaluator attestation"
+    ],
+    "forecast_admission_policy": "xrp_forecast_readiness_v6",
+    "minimums": {
+      "training_samples": 100,
+      "out_of_sample_samples": 100,
+      "shadow_samples": 100,
+      "independent_source_groups": 5,
+      "maximum_weighted_calibration_error": 0.05,
+      "bootstrap_replicates": 10000,
+      "paired_origins": 100,
+      "block_length_origins": 5,
+      "source_clusters": 5,
+      "origins_per_source_cluster": 5,
+      "familywise_confidence": 0.95,
+      "bonferroni_comparisons": 8,
+      "individual_confidence": 0.99375
+    },
+    "required_candidate_superiority": "Must beat each of naive class-prior, momentum-sign, mean-reversion-sign and volatility-normal baselines on both Brier and log loss, with temporal and source-clustered upper confidence bounds below zero in both OOS and shadow windows.",
+    "remaining_gaps": [
+      "XRP ingestion workflow and primary mission are absent from main; scheduled ingestion has not been verified on main.",
+      "No independent WORM archive or trusted timestamp anchor.",
+      "Historical synchronized multi-venue spot, full-depth L2, derivatives, exchange-flow, ETF, custody and collateral dataset remains incomplete.",
+      "No trained XRP-specific candidate has demonstrated superiority against all four baselines.",
+      "No independent shadow-outcome cohort has passed admission.",
+      "Feature drift monitor is univariate PSI and does not establish multivariate or concept-drift coverage."
+    ],
+    "feature_admission": "All Run157 live ticker observations fail freshness, event-time or basis-skew gates; secondary depth/derivatives snapshots are stale and coverage-bounded.",
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "real_money_actions": 0,
+    "paper_trades": 0
+  },
+  "nine_platform_status": {
+    "ChatGPT": "GitHub connector authenticated in this session; admin/maintain/push/pull/triage; overprivileged; data flow only to GitHub.",
+    "Claude": "UNVERIFIED",
+    "Grok": "UNVERIFIED",
+    "Gemini": "UNVERIFIED",
+    "Copilot": "One-off review history only; no formal approval on PR #1662; no live connection verified.",
+    "Codex": "UNVERIFIED",
+    "HuggingFace": "Prior BUILD_ERROR; no deployment/restart verified.",
+    "Kaggle": "UNTESTED; no submission.",
+    "Databricks": "Prior HTTP 403; no write.",
+    "LunaRoute": "Separate provider, not one of the nine; authentication and live model data flow NOT VERIFIED."
+  },
+  "source_provenance": [
+    {
+      "id": "turn307547view4",
+      "source": "OKX public spot ticker XRP-USDT",
+      "provider_event_time_utc": "2026-11-15T07:52:07.856Z",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn155944view0",
+      "source": "OKX public spot ticker USDT-USD",
+      "provider_event_time_utc": "2026-11-15T08:01:19.066Z",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn307547view3",
+      "source": "Kraken public XRP/USD ticker",
+      "provider_event_time": "NOT_PROVIDED",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn155944view1",
+      "source": "Kraken public USDT/USD ticker",
+      "provider_event_time": "NOT_PROVIDED",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn557421search10",
+      "source": "Aperiodic multi-venue perpetual liquidity snapshot",
+      "snapshot_window_utc": "2026-11-15T04:55:00Z/2026-11-15T05:00:00Z",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn557421search8",
+      "source": "Basis Charts Binance XRPUSDT perpetual depth",
+      "snapshot_time_utc": "2026-11-15T01:50:00Z",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn557421search6",
+      "source": "CoinGecko 2026 spot liquidity report",
+      "vintage": "2026-10",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn849927search0",
+      "source": "XRP Insights issuer-reported ETF holdings/flow data",
+      "data_as_of": "2026-11-13",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn849927search4",
+      "source": "Alpha Finance XRP ETF dashboard",
+      "data_as_of": "2026-11-13",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn849927search2",
+      "source": "CryptoETF.today XRP ETF flow issue",
+      "published_utc": "2026-11-14T05:48:00Z",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn849927search3",
+      "source": "CryptoTuts/SoSoValue ETF dashboard",
+      "data_as_of": "2026-11-13",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn849927news60",
+      "source": "Reuters cross-asset fund flows",
+      "publication_date": "2026-11-13",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn557421search0",
+      "source": "Ripple RLUSD/Coinbase partnership",
+      "publication_date": "2026-10-28",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn557421search3",
+      "source": "BNY/Ripple custody and tokenized trade-finance announcement",
+      "publication_date": "2026-10-27",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn460259search11",
+      "source": "OCC CAS Ripple National Trust Bank filing",
+      "approved_date": "2025-12-12",
+      "effective_date": "2026-10-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn460259search3",
+      "source": "SBIC East official ChatGPT/AI training course",
+      "event_dates": "2025-06-12/2025-06-13",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn544640view0",
+      "source": "SBI Holdings FY2025 financial results presentation",
+      "publication_date": "2026-05-01",
+      "pages": "58-60",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn776529view0",
+      "source": "SBI VC Trade RLUSD launch and operating terms",
+      "publication_date": "2026-06-24",
+      "lines": "88-158",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn153001view0",
+      "source": "Circle Q3 2026 SEC 10-Q, Circle SBI Japan K.K.",
+      "lines": "726-729",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn153001view1",
+      "source": "Circle Q3 2026 SEC 10-Q, USDC minted/redeemed",
+      "lines": "1647-1661",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn153001view2",
+      "source": "Circle Q3 2026 SEC 10-Q, distribution costs and Coinbase terms",
+      "lines": "1566-1573;1682-1688",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn460259search11",
+      "source": "OCC Corporate Applications Search, Ripple National Trust Bank",
+      "approved_date": "2025-12-12",
+      "effective_date": "2026-10-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn526487search4",
+      "source": "SBI Ripple Asia tokenized-deposit POC",
+      "publication_date": "2026-02-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn526487search6",
+      "source": "SBI Ripple Asia and dsrv labs Japan-Korea payments research",
+      "publication_date": "2026-02-24",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn185078search0",
+      "source": "SBIC Central Japan official company profile",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn185078search1",
+      "source": "SBIC West Japan official company profile",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn460259search10",
+      "source": "SBIC East Japan official company profile",
+      "raw_bytes_captured": false
+    }
+  ],
+  "actions_this_run": [
+    "Fetched current main commit and complete main recursive tree.",
+    "Fetched current integration ref and complete integration recursive tree.",
+    "Inspected PR #1662 metadata, reviews and review threads.",
+    "Retrieved all 373 open PRs across four REST pages.",
+    "Compared PR #1662 file paths with ten major source PRs.",
+    "Re-inspected 24 high-risk workflow files across main and integration.",
+    "Verified exact-head full suite and dependency/fail-closed/Pages checks on a5a6364.",
+    "Inspected main Cross Analysis, Barrot Sync, Pages and CI run evidence/logs.",
+    "Retrieved direct public spot ticker responses and current secondary derivatives, depth and ETF-flow snapshots.",
+    "No code changes, merges, deployments, external model calls, paper trades, financial transactions, force pushes or source-PR closures.",
+    "Completed control-plane inspection of all 48 changed workflow files across main and integration; 24 were classified high-risk. Called-script semantic review remains incomplete."
+  ],
+  "limitations": [
+    "Web/API ticker responses were excerpts, not byte-exact downloaded raw payloads; no SHA-256 raw-source receipts were created for Run157 market data.",
+    "Depth API endpoints were inaccessible through the web retrieval path; only delayed secondary depth snapshots were available.",
+    "Main branch-protection API returned HTTP 403; effective required-check and approval rules remain not visible.",
+    "The current 1.59MB platform map could not be read through the GitHub contents connector; a compact Run157 snapshot is created separately."
+  ],
+  "next_actions": [
+    "Complete semantic review of the 1,242-file PR, prioritizing all 48 workflow files and 161 modified existing files.",
+    "Resolve least-privilege GitHub permissions, independent human review and branch protection.",
+    "Repair main Pages Liquid parsing and false-green Barrot Sync only through a reviewed successor; keep main unsafe writers quarantined on integration.",
+    "Keep XRP ingestion integration-only until authorized merge; then verify scheduled main runs and external artifact retention.",
+    "Capture raw exchange responses through authorized adapters with SHA-256 receipts; synchronize event time, USDT/USD basis and L2 sequences.",
+    "Populate historical point-in-time data and independent shadow outcomes before training or issuing forecasts."
+  ],
+  "institutional_primary_source_update": {
+    "captured_at_utc": "2026-11-15T08:15:00Z",
+    "sbi_holdings_fy2025_presentation": {
+      "publication_date": "2026-05-01",
+      "ripple_equity_stake_percent_approx": 9,
+      "ripple_valuation_events": [
+        {
+          "date": "2025-11",
+          "valuation_usd": 40000000000,
+          "financing_round_usd": 500000000
+        },
+        {
+          "date": "2026-03",
+          "valuation_usd": 50000000000,
+          "share_buyback_usd": 750000000
+        }
+      ],
+      "ripple_xrp_distribution_as_of": "2026-04-27",
+      "xrp_circulated_bn": 61.68,
+      "ripple_direct_holdings_labelled_actual_bn": 5.1,
+      "ripple_escrow_bn": 33.2,
+      "burned_bn": 0.01,
+      "value_of_ripple_noncirculating_holdings_jpy_trillion_approx": 8.8,
+      "caveat": "SBI's investor presentation estimate based on XRP price on 2026-04-27; not an independent custody audit and not evidence that escrow is immediately marketable.",
+      "evernorth_pipe": {
+        "sbi_cash_investment_usd": 200000000,
+        "total_raised_usd_over": 1000000000,
+        "composition": "Combination of spot XRP and cash from multiple participants, including SBI, Ripple, Chris Larsen, institutional investors and exchanges.",
+        "caveat": "The total is not SBI's contribution; the $200M is the amount the SBI presentation attributes to SBI."
+      },
+      "sbi_crypto_asset_segment_fy2025": {
+        "revenue_jpy_billion": 89.6,
+        "profit_before_tax_jpy_billion": 21.2,
+        "revenue_yoy_percent": 10.9,
+        "note": "Segment includes SBI VC Trade, B2C2 and other crypto-asset businesses; not XRP-only revenue."
+      },
+      "sbi_vc_trade_bitpoint_integration": {
+        "effective_date": "2026-04-01",
+        "combined_accounts_thousand_as_of_2026_03_31": 1922,
+        "combined_customer_deposits_jpy_billion_as_of_2026_04_29": 610,
+        "caveat": "Aggregate platform accounts and deposits; not XRP holdings or XRP trading volume."
+      },
+      "ripple_acquisitions_reported_by_sbi": [
+        {
+          "name": "Metaco",
+          "date": "2023-05",
+          "reported_amount_usd": 250000000,
+          "business": "Digital-asset custody technology"
+        },
+        {
+          "name": "Standard Custody",
+          "date": "2024-02",
+          "reported_amount_usd": null,
+          "business": "Custody, escrow and settlement platform"
+        },
+        {
+          "name": "Rail",
+          "date": "2025-08",
+          "reported_amount_usd": 200000000,
+          "business": "Stablecoin payment platform for corporate clients"
+        },
+        {
+          "name": "Hidden Road",
+          "date": "2025-10",
+          "reported_amount_usd": 1250000000,
+          "business": "Multi-asset prime broker"
+        },
+        {
+          "name": "GTreasury",
+          "date": "2025-10",
+          "reported_amount_usd": 1000000000,
+          "business": "Corporate treasury and cash-flow software"
+        }
+      ],
+      "caveat_acquisition_values": "Amounts are as reported in SBI's presentation; they should not be treated as verified cash paid without transaction-level closing disclosures."
+    },
+    "sbi_ripple_asia": {
+      "ownership": {
+        "sbi_percent": 60,
+        "ripple_percent": 40
+      },
+      "projects": [
+        {
+          "date": "2026-02-24",
+          "partner": "dsrv labs",
+          "scope": "Japan-Korea remittance and payments research using XRPL",
+          "status": "RESEARCH/IMPLEMENTATION-FEASIBILITY; NOT VERIFIED PRODUCTION"
+        },
+        {
+          "date": "2026-02-26",
+          "scope": "Proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and an XRPL-based token issuance platform",
+          "status": "CONCEPTUAL POC; NOT VERIFIED PRODUCTION"
+        }
+      ]
+    },
+    "sbi_vc_trade_rlusd": {
+      "launch_date": "2026-06-24",
+      "legal_japan_classification": "Type 4 electronic payment instrument, as assessed by SBI VC Trade under Japanese law; not a US-law trust interest.",
+      "service": "VCTRADE only; BITPOINT service excluded.",
+      "supported_chain_for_deposits_withdrawals": "Ethereum only as of the June 24 notice; XRPL deposits/withdrawals were not supported by this SBI service at launch.",
+      "issuer": "Standard Custody & Trust Company, LLC, a New York-chartered special-purpose trust company in Ripple's group.",
+      "deposits_withdrawals": "24/7 intake, no SBI VC Trade transfer fee; per-withdrawal cap JPY 1,000,000; daily deposit cap separately set by SBI.",
+      "operational_controls": "SBI may suspend deposit reflection if USD/RLUSD deviation occurs, cap deposits, or restrict trading if deposited balances exceed redemption capacity; it monitors issuer RLUSD supply and USD reserve balances.",
+      "implication": "SBI's RLUSD distribution does not establish XRP settlement or XRPL-based RLUSD liquidity through VCTRADE; the official notice specifies Ethereum-only chain support."
+    },
+    "circle_sbi_japan_q3_2026_sec_10q": {
+      "circle_contribution_usd_approx": 1500000,
+      "sbi_contribution_usd_approx": 1500000,
+      "ownership_each_percent": 50,
+      "circle_controls_and_consolidates_vie": true,
+      "significant_operating_results_as_of_2026_09_30": false,
+      "sbi_interest_accounting": "Noncontrolling interest",
+      "implication": "The JV is a real legal relationship but the filing reports no significant operating results to date."
+    },
+    "circle_mint_actual_customer_fiat_flows_q3_2026": {
+      "minted_usd_millions": 104304,
+      "redeemed_usd_millions": 103694,
+      "net_mint_less_redemption_usd_millions": 610,
+      "nine_month_minted_usd_millions": 260847,
+      "nine_month_redeemed_usd_millions": 262234,
+      "nine_month_net_mint_less_redemption_usd_millions": -1387,
+      "definition": "Circle states these measures capture fiat converted to USDC and USDC converted to fiat, initiated by Circle Mint customers.",
+      "caveat": "This is Circle Mint customer fiat flow, not total onchain net capital flow or XRP flow."
+    },
+    "circle_coinbase_distribution_q3_2026": {
+      "q3_distribution_cost_usd_millions": 331.3,
+      "nine_month_distribution_cost_usd_millions": 986.6,
+      "contractual_basis": "Coinbase receives allocations tied to USDC held on Coinbase after issuer retention and a share of broader ecosystem growth after approved third-party participants.",
+      "caveat": "Circle expense / Coinbase distribution receipt; not Coinbase net profit, XRP capital inflow or XRP settlement volume."
+    },
+    "circle_q3_2026_platform_metrics": {
+      "usdc_circulation_end_period_usd_billions": 73.879,
+      "usdc_circulation_average_usd_billions": 73.264,
+      "usdc_on_platform_end_period_usd_billions": 13.868,
+      "daily_weighted_average_on_platform_percent": 18.1,
+      "q3_onchain_transaction_volume_usd_trillions": 13.9,
+      "q3_onchain_volume_yoy_percent": 49,
+      "caveat": "Onchain transaction volume is gross network activity, not net capital inflow or economic settlement value."
+    },
+    "regulatory": {
+      "ripple_national_trust_bank": {
+        "occ_control_number": "2025-Charter-342347",
+        "proposed_charter_number": 25364,
+        "approved_date": "2025-12-12",
+        "consummated_effective_date": "2026-10-26",
+        "powers": "Trust powers requested",
+        "caveat": "National trust-bank charter status does not by itself establish a full-service deposit bank or incremental XRP settlement demand."
+      }
+    },
+    "identity_reconciliation": {
+      "sbic_east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; SBIC East Japan; founded 1963-11-15.",
+      "sbic_central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; SBIC Central Japan; founded 1963-11-18.",
+      "sbic_west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.; SBIC West Japan; founded 1963-11-20.",
+      "sbi_holdings": "Separate Japanese financial-services conglomerate and Ripple strategic shareholder; not the SBIC regional companies.",
+      "sb_oai_japan": "Separate OpenAI/SoftBank JV; not SBI Holdings and not SBIC.",
+      "sbic_chatgpt": "SBIC East's official June 12-13 2025 AI/ML course explicitly included ChatGPT, Copilot, RAG, APIs and information-leakage risk; plausible phrase source, not a commercial OpenAI partnership."
+    }
+  },
+  "sbi_operational_xrp_and_tokenized_finance_update": {
+    "captured_at_utc": "2026-11-15T08:22:00Z",
+    "sbi_remit_xrp_odl_corridors": {
+      "initial_live_service_date": "2021-07-28",
+      "initial_corridor": "Japan to Philippines digital wallet",
+      "expansion_announcement_date": "2023-09-06",
+      "bank_account_corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "flow": "SBI Remit sends customer request; SBI VC Trade sends XRP in real time; Tranglo processes payout to beneficiary bank account in local fiat.",
+      "bridge_asset": "XRP explicitly used between fiat currencies through Ripple Payments/ODL.",
+      "evidence": [
+        "turn759599search7",
+        "turn182171search1",
+        "turn759599search0"
+      ],
+      "status": "COMPANY-ANNOUNCED LIVE SERVICE AT LAUNCH/EXPANSION; CURRENT VOLUME NOT DISCLOSED",
+      "caveat": "SBI Remit's cumulative remittance turnover exceeded JPY 2.5T by 2026-05-27, but that total covers all SBI Remit corridors and rails and cannot be attributed to XRP. No XRP-specific volume or market-purchase amount was disclosed."
+    },
+    "sbi_remit_alternative_rails": {
+      "nium": {
+        "date": "2025-06-30",
+        "scope": "SBI Remit added bank-account payout coverage to more than 190 countries using Nium, with USD/EUR and other fiat rails.",
+        "xrp_bridge": "NOT ESTABLISHED",
+        "evidence": "turn182171search7"
+      },
+      "cambodia": {
+        "date": "2025-10-28",
+        "scope": "SBI Remit, SBI LY HOUR Bank and SBI Ripple Asia launched a Japan-Cambodia DLT fiat-remittance service.",
+        "xrp_bridge": "NOT SPECIFIED IN THE OFFICIAL RELEASE",
+        "evidence": "turn759599search1"
+      },
+      "kirayaka_bank": {
+        "date": "2026-01-21",
+        "scope": "25th bank partnership for SBI Remit service distribution.",
+        "xrp_bridge": "NOT ESTABLISHED",
+        "evidence": "turn182171search8"
+      },
+      "cumulative_turnover": {
+        "date": "2026-05-27",
+        "amount_jpy": 2500000000000,
+        "scope": "All SBI Remit international remittance services, not the XRP corridor alone.",
+        "evidence": "turn182171search0"
+      }
+    },
+    "sbi_ripple_asia_xrpl_issuance_platform": {
+      "announcement_date": "2026-04-07",
+      "system_status": "SYSTEM DEVELOPMENT COMPLETED",
+      "issuer_registration_date": "2026-03-26",
+      "registration": "Third-party prepaid payment instrument issuer under Japan's Payment Services Act",
+      "chain": "XRPL public blockchain",
+      "architecture": "API-connected token issuance and management platform with SBI Ripple Asia wallet-control technology",
+      "planned_use_cases": "Tourism and defined economic zones linking consumption with digital incentives",
+      "production_customer_or_volume": "NOT DISCLOSED",
+      "evidence": "turn729871view0",
+      "interpretation": "A concrete regulated XRPL issuance capability, but not proof of a live commercial token, XRP bridge settlement or material XRP demand."
+    },
+    "sbi_ripple_asia_dsr_research": {
+      "date": "2026-02-24",
+      "partner": "dsrv labs",
+      "scope": "Japan-Korea remittance and payments feasibility research using XRPL as a contemplated blockchain base.",
+      "explicit_limitation": "Official release says the work is not aimed at developing or commercializing a specific service; it is research and issue-mapping.",
+      "evidence": "turn178830search0",
+      "interpretation": "Not a production bank pilot and no transaction volumes established."
+    },
+    "sbi_ripple_asia_tokenized_deposit_poc": {
+      "date": "2026-02-26",
+      "scope": "Conceptual proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and SBI Ripple Asia's token issuance platform on XRPL.",
+      "status": "POC/CONCEPTUAL; NO PRODUCTION BANK ISSUANCE VOLUME DISCLOSED",
+      "evidence": "turn178830search1"
+    },
+    "sbi_start_security_token_bond": {
+      "issuer": "SBI Holdings",
+      "amount_jpy": 10000000000,
+      "issue_date": "2026-03-24",
+      "maturity_date": "2029-03-23",
+      "term_years": 3,
+      "fixed_annual_coupon_percent": 2.15,
+      "coupon_currency": "JPY",
+      "principal_redemption_percent": 100,
+      "rating": "A- (R&I)",
+      "issuance_ledger": "BOOSTRY ibet for Fin",
+      "secondary_market": "Osaka Digital Exchange START",
+      "xrp_reward": {
+        "official_product_page": "200 JPY worth of XRP per 100,000 JPY purchase for eligible subscription-period purchasers; SBI VC Trade account required; product page states credit by 2026-05-15.",
+        "classification": "LOYALTY/SUBSCRIPTION BONUS, NOT COUPON OR PRINCIPAL",
+        "source": "turn924991search2",
+        "market_sourcing": "NOT DISCLOSED; do not infer spot buying."
+      },
+      "source_disagreement": {
+        "secondary_claim": "CoinDesk reports XRP rewards at issuance and on each coupon date through 2029.",
+        "source": "turn924991search0",
+        "status": "NOT CONFIRMED BY THE SBI PRODUCT-PAGE EXCERPT RETRIEVED; prospectus/coupon-specific terms would be needed to establish recurring XRP rewards."
+      },
+      "actual_capital_classification": "JPY debt proceeds raised by SBI Holdings. The security token is on ibet for Fin, not XRPL. It is not Ripple capital, XRP treasury capital or an XRP-denominated bond."
+    },
+    "sbi_visa_crypto_card": {
+      "launch_date": "2026-05-01",
+      "partners": [
+        "SBI VC Trade",
+        "Aplus",
+        "Visa"
+      ],
+      "mechanism": "Card points are automatically converted fee-free into one user-selected asset: BTC, ETH or XRP; VCTRADE account required.",
+      "campaign_max_rates": {
+        "standard_percent": 2.5,
+        "gold_percent": 10
+      },
+      "evidence": "turn182171search3",
+      "interpretation": "Retail XRP distribution/acquisition channel. Reward-asset sourcing is not disclosed; do not treat card spend or points as confirmed spot-market purchases."
+    },
+    "doppler_institutional_xrp_finance": {
+      "sbi_ripple_asia_mou": {
+        "date": "2025-12-17",
+        "scope": "Explore XRP yield infrastructure and RWA tokenization on XRPL; SBI Digital Markets named as institutional custodian.",
+        "status": "MOU/EXPLORATORY",
+        "evidence": "turn687507search1"
+      },
+      "sbi_digital_finance_partnership": {
+        "date": "2026-07-13",
+        "announcement_source": "Doppler Finance only; no corresponding SBI announcement found in this search.",
+        "scope": "Collaborate on development of institutional XRP and digital-asset infrastructure, financing, liquidity and collateral management in Japan.",
+        "status": "STRATEGIC DEVELOPMENT ANNOUNCEMENT; NO NAMED PRODUCTION CLIENTS, TERMS OR LAUNCH VOLUME",
+        "evidence": "turn874975view0"
+      },
+      "evernorth_collaboration": {
+        "date": "2026-01-08",
+        "scope": "Explore institutional liquidity deployment and XRPL treasury use cases.",
+        "status": "EXPLORATORY",
+        "evidence": "turn687507search4"
+      },
+      "self_reported_vault_metrics": {
+        "september_28_blog_claim": {
+          "tvl_usd_over": 150000000,
+          "depositors_over": 14000
+        },
+        "analytics_snapshot": {
+          "tvl_usd": 29478906,
+          "xrp_vault_apy_percent": 2.46,
+          "rlusd_vault_apy_percent": 5.66
+        },
+        "homepage_snapshot": {
+          "tvl_usd": 0,
+          "xrp_vault_apy_percent": 0,
+          "rlusd_vault_apy_percent": 0
+        },
+        "status": "INCONSISTENT SELF-REPORTED SNAPSHOTS; NOT INDEPENDENTLY VERIFIED",
+        "evidence": [
+          "turn687507search2",
+          "turn687507search0",
+          "turn687507search11"
+        ]
+      },
+      "product_risk": "Doppler describes arbitrage/basis strategies and 7-8 day withdrawal settlement. This is third-party strategy/vault risk, not native XRP staking and not the XRPL XLS-66 lending protocol."
+    },
+    "capital_classification_addendum": {
+      "sbi_start_bond_jpy_debt": 10000000000,
+      "sbi_evernorth_cash_pipe_usd": 200000000,
+      "circle_mint_q3_2026_net_customer_fiat_flow_usd": 610000000,
+      "circle_mint_nine_month_2026_net_customer_fiat_flow_usd": -1387000000,
+      "sbi_remit_total_cumulative_turnover_jpy": 2500000000000,
+      "xrp_odl_corridor_volume": "NOT DISCLOSED",
+      "rule": "Do not aggregate JPY debt proceeds, SBI cash PIPE, Circle Mint fiat conversions, total remittance turnover, XRP bonuses, vault TVL, ETF holdings deltas and XRP bridge transactions as one capital-flow number."
+    },
+    "youtube_attribution": {
+      "person_identity": "Dr. Kamilah Stevenson is identifiable through her first-party Wealth Doctor site.",
+      "candidate_channel_handles": [
+        "@KamilahStevensonXrpStocks",
+        "@DrKamilahStevenson"
+      ],
+      "first_party_crosslink_to_candidate_channel": false,
+      "identity_status": "PERSON VERIFIED; CANDIDATE YOUTUBE CHANNEL OWNERSHIP NOT VERIFIED",
+      "verified_video_inventory": [],
+      "quarantined_candidate_videos": [
+        {
+          "video_id": "rv0BAV0vLgo",
+          "title": "How Much XRP Do You ACTUALLY Need?",
+          "attribution": "Kamilah Stevenson",
+          "status": "CHANNEL OWNERSHIP UNVERIFIED"
+        },
+        {
+          "video_id": "QslbjGQD0MU",
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "attribution": "Kamilah/Camila Stevenson",
+          "status": "CHANNEL OWNERSHIP UNVERIFIED"
+        },
+        {
+          "video_id": "ci0FH73lbCs",
+          "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+          "attribution": "Kamilah Stevenson",
+          "status": "CHANNEL OWNERSHIP UNVERIFIED"
+        },
+        {
+          "video_id": "cxeX_eu_2H0",
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+          "attribution": "Kamilah Stevenson",
+          "status": "CHANNEL OWNERSHIP UNVERIFIED"
+        },
+        {
+          "video_id": "NChkamwOUEk",
+          "title": "The Wealthy Never Sell... Soon XRP Holders Won't Have To Either",
+          "attribution": "Kamilah Stevenson",
+          "status": "CHANNEL OWNERSHIP UNVERIFIED"
+        }
+      ],
+      "claim_fact_checks": [
+        {
+          "claim": "Japanese bank pilots are 60% cheaper and settle in under four seconds.",
+          "status": "PARTIALLY_UNSUPPORTED",
+          "evidence": "Official SBI sources confirm a live XRP-based remittance corridor and describe XRPL's approximately four-second ledger payment capability; they do not substantiate 60% savings or the specific unnamed-bank pilot. SBI Ripple Asia's Feb 24 2026 DSRV work is explicitly feasibility research, not a specific commercial service."
+        },
+        {
+          "claim": "SBI's 10B yen START bond pays interest in XRP.",
+          "status": "MISLEADING",
+          "evidence": "SBI Securities product page specifies a 2.15% JPY coupon and 100% JPY principal redemption; XRP is a separate 200 JPY-per-100k subscription reward."
+        },
+        {
+          "claim": "Ripple became a full-service bank.",
+          "status": "OVERSTATED",
+          "evidence": "OCC approved Ripple National Trust Bank with trust powers; that does not establish a full-service deposit bank."
+        }
+      ]
+    },
+    "source_provenance_addendum": [
+      {
+        "id": "turn759599search7",
+        "source": "SBI official 2021 XRP ODL launch",
+        "date": "2021-07-28",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn182171search1",
+        "source": "SBI Remit official English 2023 XRP corridor expansion",
+        "date": "2023-09-06",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn182171search0",
+        "source": "SBI Remit official cumulative remittance turnover",
+        "date": "2026-05-29",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn182171search7",
+        "source": "SBI Remit/Nium alternative fiat rail",
+        "date": "2025-06-30",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn759599search1",
+        "source": "SBI Remit/SBI LY HOUR Bank Cambodia DLT service",
+        "date": "2025-10-28",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn729871view0",
+        "source": "SBI Ripple Asia XRPL token issuance platform and issuer registration",
+        "date": "2026-04-07",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn178830search0",
+        "source": "SBI Ripple Asia/DSRV Japan-Korea feasibility research",
+        "date": "2026-02-24",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn178830search1",
+        "source": "SBI Ripple Asia tokenized-deposit conceptual POC",
+        "date": "2026-02-26",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn924991search2",
+        "source": "SBI Securities SBI START bond official product page",
+        "date": "2026-02-20",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn182171search3",
+        "source": "SBI VC Trade/Aplus/Visa crypto-card launch",
+        "date": "2026-05-01",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn874975view0",
+        "source": "Doppler Finance/SBI Digital Finance strategic partnership announcement",
+        "date": "2026-07-13",
+        "raw_bytes_captured": false
+      },
+      {
+        "id": "turn687507search1",
+        "source": "Doppler/SBI Ripple Asia MOU",
+        "date": "2025-12-17",
+        "raw_bytes_captured": false
+      }
+    ]
+  },
+  "event_timeline_update": {
+    "registry_path": "research/xrp_intelligence/event_registry_current.json",
+    "registry_version": "run157-20261115",
+    "previous_event_count": 73,
+    "new_event_count": 85,
+    "added_event_ids": [
+      "sbi-remit-xrp-odl-corridors-2023-09-06",
+      "sbi-remit-nium-fiat-alternative-rail-2025-06-30",
+      "sbi-remit-cambodia-dlt-rail-2025-10-28",
+      "sbi-remit-cumulative-turnover-all-rails-2026-05-27",
+      "sbi-ripple-asia-dsrv-feasibility-2026-02-24",
+      "sbi-ripple-asia-tokenized-deposit-poc-2026-02-26",
+      "sbi-ripple-asia-xrpl-token-issuance-platform-2026-03-26",
+      "sbi-start-bond-jpy-debt-xrp-reward-2026-03-24",
+      "sbi-visa-crypto-card-xrp-rewards-2026-05-01",
+      "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
+      "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
+      "ripple-national-trust-bank-occ-effective-2026-10-26"
+    ],
+    "updated_existing_event_ids": [
+      "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+      "circle-q3-2026-usdc-and-cpn-results-2026-11-04"
+    ],
+    "raw_source_sha256_present": 0,
+    "raw_source_sha256_missing": 85,
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "regression_test": "tests/test_xrp_event_timeline_ingestion.py verifies all 12 new event IDs, key claim/counter-hypothesis distinctions, updated 85/85 missing-receipt count and no forecast admission.",
+    "caveat": "The events are verified from public primary-source pages and SEC/OCC filings but byte-exact publisher payloads have not been captured into RawReceiptArchive. They remain research-only and model-ineligible."
+  },
+  "source_provenance_addendum": [
+    {
+      "id": "turn182171search1",
+      "source": "SBI Remit XRP bridge corridor expansion",
+      "date": "2023-09-06",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn182171search7",
+      "source": "SBI Remit/Nium fiat alternative rail",
+      "date": "2025-06-30",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn759599search1",
+      "source": "SBI Remit Cambodia DLT rail",
+      "date": "2025-10-28",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn182171search0",
+      "source": "SBI Remit cumulative all-rail turnover",
+      "date": "2026-05-29",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn178830search0",
+      "source": "SBI Ripple Asia/DSRV feasibility research",
+      "date": "2026-02-24",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn178830search1",
+      "source": "SBI Ripple Asia tokenized-deposit POC",
+      "date": "2026-02-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn729871view0",
+      "source": "SBI Ripple Asia XRPL issuance platform and issuer registration",
+      "date": "2026-04-07",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn924991search2",
+      "source": "SBI START Bond JPY coupon and XRP subscription reward",
+      "date": "2026-02-20",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn182171search3",
+      "source": "SBI VISA Crypto Card XRP rewards",
+      "date": "2026-05-01",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn874975view0",
+      "source": "Doppler/SBI Digital Finance partnership announcement",
+      "date": "2026-07-13",
+      "raw_bytes_captured": false
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+{
+  "schema_version": "barrot.xrp_mission_run.v1",
+  "run_id": "Run124",
+  "observed_at_utc": "2026-11-14T10:16:00Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "code_head_verified": "0d50f0fd3163ac3c0873180f2976223c2504a186",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "ahead_by": 2379,
+    "behind_by": 0,
+    "tree": {
+      "main": {
+        "entries": 1381,
+        "python_files": 495,
+        "test_files": 93,
+        "workflow_files": 79
+      },
+      "integration": {
+        "entries": 2425,
+        "python_files": 875,
+        "test_files": 452,
+        "workflow_files": 80
+      }
+    },
+    "pr_1662": {
+      "state": "OPEN_DRAFT",
+      "head_sha": "0d50f0fd3163ac3c0873180f2976223c2504a186",
+      "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "changed_files": 1184,
+      "additions": 351142,
+      "deletions": 5354,
+      "workflow_files": 50,
+      "public_web_files": 7,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0
+    },
+    "open_pr_inventory": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "base_main": 367,
+      "base_other": 8
+    },
+    "coverage_change": {
+      "previous_floor_percent": 53,
+      "new_floor_percent": 62,
+      "measured_coverage_percent": 62.44,
+      "legacy_core_floor_percent": 70,
+      "legacy_core_coverage_percent": 76,
+      "files": [
+        "pyproject.toml",
+        ".github/workflows/ci.yml",
+        "tests/test_ci_coverage_scope.py"
+      ]
+    },
+    "exact_head_ci": {
+      "head_sha": "0d50f0fd3163ac3c0873180f2976223c2504a186",
+      "full_suite_run": 43584108140,
+      "full_suite": "success",
+      "tests_passed": 3635,
+      "subtests_passed": 8,
+      "failures": 0,
+      "inclusive_coverage_percent": 62.44,
+      "legacy_core_coverage_percent": 76,
+      "pytest_seconds": 126.1,
+      "wheel_build": "success",
+      "installed_v3_xrp_mission": "verified",
+      "dependency_audit_run": 43584108158,
+      "dependency_audit": "success_after_retry",
+      "dependency_groups": 5,
+      "known_vulnerabilities": 0,
+      "fail_closed_push": 43584108182,
+      "fail_closed_push_result": "success",
+      "dependency_audit_pr": 43584112874,
+      "dependency_audit_pr_result": "success",
+      "fail_closed_pr": 43584112912,
+      "fail_closed_pr_result": "success",
+      "pr_ci": 43584112846,
+      "pr_ci_result": "skipped_by_branch_condition"
+    },
+    "security": {
+      "main_protected": true,
+      "integration_protected": false,
+      "main_protection_detail": "HTTP_403",
+      "fallback_ruleset": {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled",
+        "rules": [
+          "deletion",
+          "non_fast_forward"
+        ]
+      },
+      "codeowners": "* @Barrot-Agent",
+      "connector_permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "pages_enabled": true,
+      "pages_configuration": "not exposed by current connector",
+      "security_and_analysis": "not returned in repository metadata"
+    }
+  },
+  "source_pr_reconciliation": [
+    {
+      "pr": 1661,
+      "paths": 1072,
+      "overlap": 1072,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1660,
+      "paths": 972,
+      "overlap": 972,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1643,
+      "paths": 670,
+      "overlap": 670,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1642,
+      "paths": 7,
+      "overlap": 7,
+      "source_only": 0,
+      "blob_identity": "all seven source blobs differ from current integration blobs",
+      "classification": "overlap_requires_semantic_reconciliation_not_exact_duplicate"
+    },
+    {
+      "pr": 1640,
+      "paths": 280,
+      "overlap": 280,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1320,
+      "paths": 5,
+      "overlap": 5,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1318,
+      "paths": 2,
+      "overlap": 2,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1317,
+      "paths": 6,
+      "overlap": 6,
+      "source_only": 0,
+      "classification": "supersession_candidate"
+    },
+    {
+      "pr": 1653,
+      "paths": 7,
+      "overlap": 1,
+      "source_only": 6,
+      "classification": "unique_unreviewed_preserve"
+    },
+    {
+      "pr": 1655,
+      "paths": 8,
+      "overlap": 5,
+      "source_only": 3,
+      "classification": "unique_unreviewed_preserve"
+    },
+    {
+      "pr": 1659,
+      "paths": 6,
+      "overlap": 2,
+      "source_only": 4,
+      "classification": "unique_unreviewed_preserve"
+    },
+    {
+      "pr": 1641,
+      "paths": 3,
+      "overlap": 0,
+      "source_only": 3,
+      "classification": "unique_unreviewed_preserve"
+    },
+    {
+      "pr": 1615,
+      "paths": 14,
+      "overlap": 1,
+      "source_only": 13,
+      "classification": "unique_unreviewed_preserve"
+    },
+    {
+      "pr": 1614,
+      "paths": 57,
+      "overlap": 30,
+      "source_only": 27,
+      "classification": "unique_unreviewed_preserve"
+    },
+    {
+      "pr": 1269,
+      "paths": 9,
+      "overlap": 1,
+      "source_only": 8,
+      "classification": "unique_unreviewed_preserve"
+    }
+  ],
+  "research": {
+    "market_cutoff_utc": "2026-11-14T10:16:00Z",
+    "spot_observations": [
+      {
+        "source": "OKX",
+        "instrument": "XRP-USDT",
+        "last": 0.9895,
+        "bid": 0.9894,
+        "ask": 0.9895,
+        "bid_size_xrp": 4778.002245,
+        "ask_size_xrp": 3766.27246,
+        "high_24h": 1.0438,
+        "low_24h": 0.9794,
+        "open_24h": 1.0302,
+        "volume_24h_xrp": 45641081.967692,
+        "event_time_utc": "2026-11-14T09:42:01.473Z",
+        "age_seconds_at_cutoff": 2038.527,
+        "model_admission": "EXCLUDED_STALE"
+      },
+      {
+        "source": "Kraken",
+        "instrument": "XRP/USD",
+        "last": 0.9893,
+        "bid": 0.98947,
+        "ask": 0.98948,
+        "provider_event_timestamp": null,
+        "model_admission": "EXCLUDED_UNTIMESTAMPED"
+      }
+    ],
+    "etf_flows": {
+      "alpha_finance": {
+        "session": "2026-11-13",
+        "funds": 5,
+        "daily_usd": -1100000,
+        "seven_session_usd": -19100000,
+        "thirty_session_usd": -581700,
+        "cumulative_usd": 1710000000
+      },
+      "cryptoetf_today": {
+        "session": "2026-11-13",
+        "daily_usd": -1000000,
+        "funds_reported": 4,
+        "funds_total": 5,
+        "missing": "XRPC",
+        "thirty_trading_day_usd": 93500000,
+        "cumulative_usd": 1800000000,
+        "internal_inconsistency": "Detailed section says 4/5 and XRPC missing; summary elsewhere says 5/5"
+      },
+      "reconciliation": "Keep source series separate; daily known-fund components broadly align, cumulative and 30-day figures materially disagree; no averaging"
+    },
+    "x402": {
+      "source": "t54-operated XRPL AI Hub",
+      "home_dashboard": {
+        "payments": 15745956,
+        "settled_value_usd": 81173.72,
+        "registered_merchants": 193,
+        "live_services": 5410,
+        "four_week_average_usd_per_week": 12048
+      },
+      "transactions_page": {
+        "records": 15746478,
+        "pages": 401,
+        "example": {
+          "amount": "0.001 RLUSD",
+          "ledger_index": 108322549,
+          "intent_status": "Unverified",
+          "facilitator": "t54 XRPL Facilitator",
+          "source_tag": 804681468
+        }
+      },
+      "derived_mean_usd_per_reported_payment": 0.005155210645831857,
+      "caveats": [
+        "Pages are not synchronized snapshots",
+        "Asset mix not published in aggregate",
+        "XRP/RLUSD/USDC are supported",
+        "Batch settlement allows multiple x402 payments per XRPL Check",
+        "Payment count is not XRP demand",
+        "No independent transaction replay"
+      ],
+      "terms": {
+        "automated_scraping_allowed": false,
+        "reason": "Terms prohibit scraping, harvesting, data-mining and systematic extraction except as expressly permitted"
+      }
+    },
+    "institutional": {
+      "mastercard_ap4m": {
+        "date": "2026-06-10",
+        "participants": [
+          "t54 Labs",
+          "RippleX",
+          "Coinbase"
+        ],
+        "rails": [
+          "cards",
+          "accounts",
+          "stablecoins"
+        ],
+        "xrp_specific_production_settlement": "not established"
+      },
+      "x402_default_xrpl": "testnet only in public x402 docs",
+      "t54_facilitator": "hub advertises live XRPL mainnet; XRP and IOU assets RLUSD/USDC"
+    },
+    "identity": {
+      "sbic_west_japan": {
+        "primary_pdf": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "event_date": "2024-10-23",
+        "topic": "Generative AI introductory seminar for accounting firms and support organizations",
+        "speaker": "Taichi Kakinuma, STORIA law firm",
+        "mentions_chatgpt": true,
+        "openai_partnership": "not established"
+      },
+      "ask_coin": "No canonical XRPL issuer established",
+      "actual_capital": "No standardized XRP metric",
+      "kamilah_camilla_stevenson": "No new first-party channel ownership evidence; candidate attributions quarantined"
+    },
+    "xrpl_reset": {
+      "date": "2026-11-25",
+      "networks": [
+        "Testnet",
+        "Devnet"
+      ],
+      "mainnet_impact": "none per XRPL.org",
+      "reason": "Testnet full-history server failure and storage upgrade"
+    }
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "trained_xrp_candidate": false,
+    "policy_evaluator_executed": false,
+    "independent_shadow_outcomes": false,
+    "independent_worm_archive": false,
+    "trusted_timestamp_anchor": false
+  },
+  "platforms": {
+    "ChatGPT": "GitHub authenticated; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "unverified",
+    "HuggingFace": "previous BUILD_ERROR; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "previous HTTP 403; no write"
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "source_pr_closed": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_dispatch": false,
+    "external_data_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operation": false
+  }
+}

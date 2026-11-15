@@ -1,0 +1,324 @@
+{
+  "schema_version": "barrot.xrp.run_evidence.v1",
+  "run_id": "Run63",
+  "captured_at_utc": "2026-11-12T15:11:42Z",
+  "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+  "integration_head": "5bb95ccb14026f0561b3d136f85f9a90dc11e2bf",
+  "full_ci": {
+    "run_id": 43245195036,
+    "passed": 3512,
+    "failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 61.42,
+    "duration_seconds": 61.57
+  },
+  "core_ci": {
+    "passed": 721,
+    "subtests_passed": 8,
+    "coverage_percent": 76
+  },
+  "dependency_audit": {
+    "run_id": 43245195334,
+    "manifest_groups": 6,
+    "pep621_dependencies": 15,
+    "known_vulnerabilities": 0
+  },
+  "fail_closed_gate": {
+    "run_id": 43245194887,
+    "result": "passed_merge_disabled"
+  },
+  "repository": {
+    "ahead": 2126,
+    "behind": 0,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2323,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "pr1661_changed_files": 1066,
+    "pr1661_additions": 293885,
+    "pr1661_deletions": 4492,
+    "changed_workflows": 49,
+    "other_changed_paths": 1017
+  },
+  "spot": {
+    "okx": {
+      "last": 1.0317,
+      "bid": 1.0316,
+      "ask": 1.0318,
+      "event_time_utc": "2026-11-12T14:41:15.796Z",
+      "open_24h": 1.0563,
+      "high_24h": 1.0807,
+      "low_24h": 1.0196,
+      "volume_xrp_24h": 36271000,
+      "turnover_usdt_24h": 38151000
+    },
+    "kraken": {
+      "last": 1.02593,
+      "bid": 1.02532,
+      "ask": 1.02551,
+      "event_time_utc": null,
+      "open_24h": 1.05104,
+      "high_24h": 1.07953,
+      "low_24h": 1.01838,
+      "volume_xrp_24h": 26399159.118
+    },
+    "usdt_usd_mid": 0.998775,
+    "normalized_okx_mid_usd": 1.030436,
+    "kraken_mid_usd": 1.025415,
+    "asynchronous_gap_percent": 0.4897,
+    "raw_source_sha256": null,
+    "model_eligible": false
+  },
+  "order_book": {
+    "publisher": "Fuelmaps",
+    "uri": "https://fuelmaps.io/order-book/",
+    "as_of_utc": "2026-11-12T08:00:00Z",
+    "mid": 1.0428,
+    "depth_usd": {
+      "0.5pct": {
+        "bids": 6300000,
+        "asks": 6800000
+      },
+      "1pct": {
+        "bids": 12100000,
+        "asks": 10500000
+      },
+      "2pct": {
+        "bids": 17000000,
+        "asks": 13400000
+      },
+      "5pct": {
+        "bids": 27000000,
+        "asks": 15600000
+      },
+      "10pct": {
+        "bids": 32500000,
+        "asks": 16800000,
+        "venues": 5
+      }
+    },
+    "venues": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "excluded": [
+      "Binance",
+      "Bitget"
+    ],
+    "model_eligible": false,
+    "reason": "7h11m old; cancellable resting orders; incomplete venue coverage."
+  },
+  "exchange_balances": {
+    "publisher": "XRP Insights",
+    "uri": "https://xrp-insights.com/exchange-balances",
+    "as_of_utc": "2026-11-12T08:00:00Z",
+    "attributed_xrp": 22340000000,
+    "wallets": 706,
+    "exchanges": 24,
+    "same_wallet_7d_xrp": 45800000,
+    "same_wallet_30d_xrp": -180900000,
+    "naive_7d_xrp": 61400000,
+    "naive_30d_xrp": 346700000,
+    "cold_storage_included": true,
+    "tradable_float": false,
+    "model_eligible": false
+  },
+  "etf_flows": {
+    "cryptoetf_today": {
+      "as_of": "2026-11-11",
+      "published_at_utc": "2026-11-12T05:48:00Z",
+      "reported": "3/5",
+      "net_usd": -200000,
+      "source_fund": "XRPC",
+      "outflow_streak": 3,
+      "outflow_since_nov9_usd": -18100000,
+      "thirty_session_usd": 108200000,
+      "cumulative_usd": 1800000000
+    },
+    "cryptokeyhole": {
+      "as_of": "2026-11-11",
+      "reported": "3/4",
+      "net_xrp": -3322,
+      "missing": "XRPZ",
+      "latest_complete_day": "2026-11-06",
+      "latest_complete_flow_xrp": -752048
+    },
+    "xrp_insights": {
+      "settled_through": "2026-11-10",
+      "nov9_nov10_flow_xrp": -9568334,
+      "nov11_status": "provisional"
+    },
+    "model_eligible": false,
+    "disagreement": "Partial cohorts and cutoffs differ; do not average."
+  },
+  "derivatives": {
+    "liqwall": {
+      "as_of_utc": "2026-11-12T02:52:00Z",
+      "oi_usd": 1160000000,
+      "oi_change_24h_pct": 0.2,
+      "funding_avg_8h_pct": 0.0057,
+      "binance_funding_8h_pct": 0.004,
+      "binance_long_accounts_pct": 75.3,
+      "liquidations_usd": 4100000,
+      "long_liquidations_usd": 2900000,
+      "short_liquidations_usd": 1100000
+    },
+    "coinglass": {
+      "faq_as_of": "2026-11-10T19:55:00+08:00",
+      "oi_usd": 2420000000,
+      "oi_change_24h_pct": -2.72,
+      "funding_8h_pct": 0.0084,
+      "liquidations_usd": 3950000,
+      "long_liquidation_share_pct": 90,
+      "stale": true
+    },
+    "tradradar": {
+      "as_of_utc": "2026-11-11T19:05:00Z",
+      "oi_usd": 1570000000,
+      "oi_change_24h_pct": -0.97,
+      "funding_8h_pct": 0.0045,
+      "long_accounts_pct": 79.7,
+      "liquidations_min_usd": 2850000
+    },
+    "model_eligible": false,
+    "disagreement": "Different venue universes and stale vintages; OI not averaged."
+  },
+  "collateral": {
+    "coinbase_latest_display": {
+      "uri": "https://www.coinbase.com/en-in/cbxrp/proof-of-reserves",
+      "displayed_time": "2026-11-12 06:15 AM timezone unstated",
+      "reserves_xrp": 152909832.68,
+      "cbxrp_supply": 152907586.15,
+      "excess_xrp": 2246.53
+    },
+    "coinbase_older_locale": {
+      "uri": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "displayed_time": "2026-11-12 04:45 AM timezone unstated",
+      "reserves_xrp": 152087932.36,
+      "cbxrp_supply": 152085685.83
+    },
+    "ripple_rlusd": {
+      "uri": "https://ripple.com/products/stablecoin/transparency/",
+      "as_of": "2026-11-05",
+      "circulating_usd": 2632900000,
+      "reserves_usd": 2748000000,
+      "latest_cpa_period_end": "2026-09-30",
+      "report_signed": "2026-10-26"
+    },
+    "model_eligible": false
+  },
+  "macro": {
+    "publisher": "Reuters",
+    "uri": "https://www.reuters.com/world/asia-pacific/dollar-near-one-month-high-yen-edges-toward-160-2026-11-12/",
+    "date": "2026-11-12",
+    "dollar_index": 102.88,
+    "dollar_index_intraday_high": 103.08,
+    "usd_jpy_near": 160,
+    "context_only": true,
+    "model_eligible": false
+  },
+  "institutional_relationships": {
+    "coinbase_circle": "Circle SEC filings disclose the 2023 Centre acquisition from Coinbase for about $209.9M in approximately 8.4M Circle shares and the ongoing Collaboration Agreement. Q3 2026 Form 10-Q reports Coinbase-related distribution costs of $331.3M for Q3 and $986.6M for nine months.",
+    "sbi_circle": "SBI Holdings and SBI Shinsei Bank each invested $25M in Circle at its June 2025 IPO; SBI VC Trade distributes USDC; SBI Group is an Arc founding validator.",
+    "sbi_ripple": "SBI VC Trade began RLUSD distribution in Japan June 24, 2026.",
+    "jpysc": "Issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade, co-developed with Startale; exploratory OUSD/tokenized MMF links are not production.",
+    "boundary": "None of these corporate relationships proves XRP settlement demand, collateral eligibility or net XRP buying."
+  },
+  "identity": {
+    "sbic": "East/Tokyo, Central/Nagoya, West/Osaka are separate regional SME investment companies, not SBI Holdings.",
+    "ask_coin": "No primary-source XRPL deployment verified.",
+    "actual_capital": "Not a standardized XRP metric; distinguish cash, in-kind XRP, debt, facilities, ELOC, warrants and resales.",
+    "sbic_chatgpt": "No verified formal OpenAI partnership; SBIC ChatGPT training is educational.",
+    "kamilah": "Dr Kamilah Stevenson is identifiable as The Wealth Doctor via first-party site; YouTube channel ownership is not verified, so no videos attributed."
+  },
+  "architecture": {
+    "source_definitions": 47,
+    "scheduled_sources": 45,
+    "collector": "Read-only allowlisted public-data collector, adapter v3.24/parser v3.23, live age 300s, order-book age 60s.",
+    "receipts": "SHA-256 local append-only receipt/hash-chain prototype with fsync; no independent WORM or trusted timestamp; some digest-only sources.",
+    "feature_store": "Point-in-time SQLite with append-only triggers; database file remains rewriteable by authorized filesystem owner.",
+    "evaluation": "Chronological walk-forward, purge/embargo, rolling calibration and PSI drift; four baselines, no candidate model with demonstrated lift.",
+    "readiness": "100 training, 100 OOS and 100 independent shadow samples; two independent receipted source groups; 10x horizon spans; leakage PASS; calibration error <=0.05; drift STABLE; candidate beats all four baselines on Brier and log loss; Ed25519 evaluator attestation.",
+    "workflow": "Hourly at minute 3 and daily 00:15 UTC; main-only, read-only; artifacts 90d and 7d; not WORM; collector/workflow absent from main."
+  },
+  "platforms": {
+    "latest_accessible_snapshot": "Run57 2026-11-12T13:11:31Z",
+    "verified": [
+      "ChatGPT/GitHub connector"
+    ],
+    "overprivileged": [
+      "ChatGPT/GitHub: admin, maintain, push, pull, triage"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot persistent session",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks",
+      "LunaRoute endpoint"
+    ],
+    "external_model_transfer": false,
+    "note": "1.188MB current map exists but connector returned empty content."
+  },
+  "security": {
+    "main_branch_protection": "HTTP 403",
+    "visible_ruleset": {
+      "id": 10863829,
+      "enforcement": "disabled"
+    },
+    "codeowners": "Wildcard @Barrot-Agent; no independent owner.",
+    "pages": "Automatic main-push publication possible; authorization unresolved.",
+    "credential_path": ".config/gh/hosts.yml absent from main/integration, present in 17 historical PR branch tips in prior audit; contents not read and OAuth revocation unverified.",
+    "semantic_review": "49 workflows patch-reviewed; 1,017 non-workflow paths still require integrated review.",
+    "source_prs": {
+      "1640": "retain 46 differing blobs",
+      "1642": "unique prediction",
+      "1643": "retain 9 differing blobs",
+      "1653": "unique graph",
+      "1655": "unique structural/docs",
+      "1659": "unique local llama.cpp/Termux",
+      "1660": "retain 32 differing blobs"
+    },
+    "merge_decision": "WITHHELD"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No candidate model with measured leakage-safe OOS lift and independent shadow outcomes; Run63 observations lack byte-exact RawReceiptArchive receipts.",
+    "paper_trade": false,
+    "real_money": false
+  },
+  "sources": [
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+    "https://fuelmaps.io/order-book/",
+    "https://xrp-insights.com/exchange-balances",
+    "https://cryptoetf.today/en/xrp-etf-flows",
+    "https://cryptokeyhole.com/etf-flows/xrp/",
+    "https://xrp-insights.com/data",
+    "https://liqwall.com/coins/xrp",
+    "https://www.coinglass.com/currencies/XRP/futures",
+    "https://tradradar.io/markets/xrp",
+    "https://www.coinbase.com/en-in/cbxrp/proof-of-reserves",
+    "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+    "https://ripple.com/products/stablecoin/transparency/",
+    "https://www.reuters.com/world/asia-pacific/dollar-near-one-month-high-yen-edges-toward-160-2026-11-12/",
+    "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+    "https://www.sec.gov/Archives/edgar/data/1876042/000119312525084832/d737521ds1a.htm",
+    "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+    "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+    "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+    "https://www.sbic.co.jp/company/profile/",
+    "https://www.sbic-cj.co.jp/",
+    "https://www.sbic-wj.co.jp/profiles/profile/",
+    "https://learn.kamilahstevenson.com/"
+  ]
+}

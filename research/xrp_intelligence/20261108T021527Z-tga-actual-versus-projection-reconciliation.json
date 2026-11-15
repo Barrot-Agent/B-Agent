@@ -1,0 +1,96 @@
+{
+  "schema_version": "barrot.xrp.macro-observation.v1",
+  "artifact_id": "20261108T021527Z-tga-actual-versus-projection-reconciliation",
+  "artifact_type": "daily_treasury_cash_observation_and_projection_disconfirmation",
+  "captured_at_utc": "2026-11-08T02:15:27Z",
+  "observation_date": "2026-11-05",
+  "measure": "Treasury General Account closing operating cash balance",
+  "primary_source": {
+    "publisher": "U.S. Department of the Treasury, Bureau of the Fiscal Service",
+    "official_methodology_url": "https://fiscal.treasury.gov/accounting/daily-treasury-statement",
+    "official_description": "The Daily Treasury Statement summarizes federal cash and debt operations on a modified cash basis; it reports operating cash balance, deposits and withdrawals. Treasury operating cash is maintained at the Federal Reserve Bank of New York.",
+    "official_dataset_access": "The current Treasury FiscalData dataset/API and direct statement file were not accessible through this retrieval path (HTTP 403 / URL inaccessible).",
+    "classification": "official_underlying_source_with_secondary_mirror_retrieval"
+  },
+  "mirror_sources": [
+    {
+      "publisher": "Fed Gazette",
+      "url": "https://fedgazette.com/treasury-operating-cash/",
+      "source_class": "secondary_mirror",
+      "upstream": "U.S. Treasury Daily Treasury Statement",
+      "retrieved_at_utc": "2026-11-08T02:15:27Z",
+      "independence": "same Treasury upstream dataset; not independent confirmation"
+    },
+    {
+      "publisher": "Daily Treasury Statement mirror",
+      "url": "https://dailytreasurystatement.com/table-1",
+      "source_class": "secondary_mirror",
+      "upstream": "U.S. Treasury Daily Treasury Statement",
+      "retrieved_at_utc": "2026-11-08T02:15:27Z",
+      "independence": "same Treasury upstream dataset; not independent confirmation"
+    }
+  ],
+  "observations": {
+    "latest_closing_balance_usd_millions": 922752,
+    "previous_day_closing_balance_usd_millions": 936248,
+    "nov3_closing_balance_usd_millions": 938208,
+    "nov2_closing_balance_usd_millions": 930757,
+    "oct30_closing_balance_usd_millions": 951593,
+    "oct29_closing_balance_usd_millions": 1040236,
+    "oct28_closing_balance_usd_millions": 1015632,
+    "oct27_closing_balance_usd_millions": 1052530,
+    "oct26_closing_balance_usd_millions": 1020700,
+    "oct23_closing_balance_usd_millions": 982489,
+    "sep30_closing_balance_usd_millions": 984046,
+    "nov5_opening_balance_usd_millions": 936248,
+    "nov5_deposits_usd_millions": 300916,
+    "nov5_withdrawals_usd_millions": 314412,
+    "nov5_net_change_usd_millions": -13496,
+    "change_from_oct27_peak_usd_millions": -129778,
+    "change_from_oct30_usd_millions": -28841,
+    "change_from_sep30_usd_millions": -61294
+  },
+  "reconciliation_to_treasury_projection": {
+    "projection_source_url": "https://home.treasury.gov/news/press-releases/sb0678",
+    "projection_published_at": "2026-11-04",
+    "projected_tga_peak_usd_billions": 1025,
+    "tolerance_usd_billions": 50,
+    "projected_peak_windows": [
+      "late November 2026",
+      "late January 2027"
+    ],
+    "assumed_end_december_cash_balance_usd_billions": 850,
+    "interpretation": "The November 5 observed balance of $922.752B is below the projected future peak; the projection is not an observed current balance. The TGA had declined materially from its October 27 peak by November 5."
+  },
+  "scenario_update": [
+    {
+      "id": "H1_current_tga_absorption",
+      "status": "DISCONFIRMED_FOR_THE_OBSERVED_OCT27_TO_NOV5_WINDOW",
+      "evidence": "TGA fell from $1,052.530B on October 27 to $922.752B on November 5, a $129.778B decline. November 5 deposits were $300.916B and withdrawals $314.412B, producing a $13.496B daily decrease.",
+      "limit": "This does not prove a net system-wide liquidity expansion because other Treasury, Fed, money-market and bank balance-sheet flows are not included."
+    },
+    {
+      "id": "H2_future_tga_rebuild",
+      "status": "OPEN_FORWARD_HYPOTHESIS",
+      "evidence": "Treasury's November 4 statement projects later TGA peaks near $1.025T in late November and late January, with ±$50B tolerance.",
+      "limit": "Future projection, not realized data; must be updated against subsequent Daily Treasury Statements."
+    },
+    {
+      "id": "H3_xrp_risk_appetite_support",
+      "status": "UNTESTED",
+      "evidence": "A declining TGA can release cash into the private sector all else equal.",
+      "limit": "No XRP-specific response, synchronized reserve data, RRP, bill issuance or out-of-sample relationship was measured."
+    }
+  ],
+  "source_independence": "Both mirror pages reproduce the same Treasury Daily Treasury Statement source. They are not two independent observations; the official Treasury page is the primary source and the mirrors are retrieval fallbacks.",
+  "feature_policy": {
+    "feature_store_admission": false,
+    "reason": "Secondary mirror retrieval, no raw official Treasury response body or official file bytes, and no historical point-in-time XRP response study."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "external_actions": {
+    "financial_action": false,
+    "paper_trade": false,
+    "real_money": false
+  }
+}

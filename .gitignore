@@ -17,24 +17,20 @@ MANIFEST
 venv/
 env/
 ENV/
-
 # Testing
 .pytest_cache/
 .coverage
 coverage.xml
 htmlcov/
 .tox/
-
 # Type checking
 .mypy_cache/
 .dmypy.json
-
 # Environment files
 .env
 .env.local
 .env.*.local
 !.env.example
-
 # Secrets & credentials
 *.pem
 *.key
@@ -42,56 +38,45 @@ htmlcov/
 kaggle.json
 .databrickscfg
 .git-credentials
-
 # Logs
 logs/
 *.log
-
 # Docker
 .docker/
-
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
 # OS
 .DS_Store
 Thumbs.db
-
 # Databricks
 .databricks/
-
 # Node
 node_modules/
 .npm/
 npm-debug.log*
-.npm/
-
 # apex_lattice local audit scratch (regenerated each run, not meant to be committed)
 .apex_lattice/
-
 # Local XRP forecast ledger runtime state (never commit)
 data/xrp_intelligence/forecast_ledger.sqlite3
 data/xrp_intelligence/forecast_ledger.sqlite3-wal
 data/xrp_intelligence/forecast_ledger.sqlite3-shm
 data/xrp_intelligence/forecast_ledger.sqlite3-journal
-
 # Local XRP historical feature-store runtime state (never commit)
 data/xrp_intelligence/feature_store.sqlite3
 data/xrp_intelligence/feature_store.sqlite3-wal
 data/xrp_intelligence/feature_store.sqlite3-shm
 data/xrp_intelligence/feature_store.sqlite3-journal
-
 # MCP sync append-only runtime log (snapshots and last-good cache ARE committed)
 results/mcp_sync/sync_log.jsonl
-
 # HRM sandbox comparison output (scratch, regenerated per run)
 web/hrm_sandbox_signal.json
 .config/gh/hosts.yml
 .config/gh/
-
 # Agent-local backup dir (superseded by git history itself)
 .barrot-backup/
+# Durable local autonomous task checkpoints (never commit runtime state)
+.barrot/autonomous_tasks/

@@ -1,0 +1,519 @@
+{
+  "artifact_type": "xrp_market_derivatives_etf_institutional_reconciliation",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T090727Z-xrp-market-etf-derivatives-institutional-reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "3271eb4cd595b2f31d8286bcdd1065fafb50e8b7",
+  "append_only": true,
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "reference_time_utc": "2026-11-08T09:07:27Z",
+  "research_cutoff_utc": null,
+  "capture_clock_note": "The run reference is 09:07:27Z. Exact browser retrieval wall-clock times and HTTP headers were not retained. Page/provider update timestamps are stored separately. Kraken's direct ticker response contains no provider event timestamp. The run reference is not a synchronized market cutoff.",
+  "source_capture_policy": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "raw_http_headers_captured": false,
+    "excerpt_sha256": true,
+    "hash_scope": "Each SHA-256 covers the exact normalized excerpt string stored in the corresponding source_receipt. The Kraken receipt hashes the exact JSON text returned by the browser retrieval. None of these hashes is a raw HTTP wire-byte or full-page digest.",
+    "source_independence_policy": "Different publishers are not automatically independent economic sources. ETF aggregators reuse overlapping issuer holdings files; derivatives aggregators may overlap exchange APIs but differ in contract and venue scope.",
+    "model_eligible": false,
+    "reason": "No synchronized spot/depth/perpetual capture; unresolved derivatives OI coverage and convention differences; ETF flow universe and publication-vintage disagreement; secondary aggregator data; no raw HTTP wire receipts."
+  },
+  "market_observations": {
+    "spot": {
+      "instrument": "Kraken XRP/USD",
+      "last_usd": 1.16127,
+      "bid_usd": 1.16126,
+      "ask_usd": 1.16127,
+      "bid_size_xrp": 1285,
+      "ask_size_xrp": 3829,
+      "last_trade_size_xrp": 578.694,
+      "volume_24h_xrp": 11072625.96187044,
+      "vwap_24h_usd": 1.16056161,
+      "open_24h_usd": 1.16234,
+      "high_24h_usd": 1.17714,
+      "low_24h_usd": 1.14888,
+      "trades_24h": 16167,
+      "provider_event_timestamp_utc": null,
+      "retrieval_time_utc": null,
+      "eligibility": "RESEARCH_ONLY_TIMESTAMP_MISSING"
+    },
+    "spot_derived": {
+      "level1_spread_bps": 0.0861129889,
+      "last_vs_24h_open_pct": -0.0920556808,
+      "last_vs_24h_vwap_pct": 0.0610385518,
+      "note": "Single-venue Level-1 only; no depth ladder, synchronized trade tape, fee/slippage model or provider event timestamp."
+    },
+    "derivatives": {
+      "provider_observations": [
+        {
+          "provider": "TradRadar",
+          "as_of_utc": "2026-11-08T08:20:00Z",
+          "exchange_count": 7,
+          "open_interest_usd": 1910000000,
+          "oi_change_24h_pct": -0.42,
+          "funding_oi_weighted_pct_per_8h": 0.0068,
+          "liquidations_24h_lower_bound_usd": 1450000,
+          "long_liquidations_usd": 1230000,
+          "short_liquidations_usd": 213670,
+          "long_short_accounts_ratio": 3.81,
+          "long_account_share_pct": 79.2,
+          "exchange_oi_usd": {
+            "Binance": 477400000,
+            "Bybit": 330460000,
+            "Gate": 292440000,
+            "MEXC": 260600000,
+            "Bitget": 245730000,
+            "Hyperliquid": 197060000,
+            "OKX": 106680000
+          },
+          "scope_note": "Seven named perpetual venues; liquidation totals cover five exchanges and are lower-bound values."
+        },
+        {
+          "provider": "Liqwall",
+          "as_of_utc": "2026-11-08T08:52:00Z",
+          "open_interest_usd": 1380000000,
+          "oi_change_24h_pct": 1.2,
+          "funding_average_pct_per_8h": 0.0076,
+          "binance_funding_pct_per_8h": 0.0094,
+          "liquidations_24h_usd": 1300000,
+          "long_liquidations_usd": 1300000,
+          "short_liquidations_usd": 68000,
+          "binance_long_account_share_pct": 73.8,
+          "scope_note": "Rendered page says all-exchange OI but does not fully enumerate OI coverage; liquidation table lists Binance, Bybit, OKX, Hyperliquid, Aster, Gate and Lighter."
+        },
+        {
+          "provider": "Bentley Markets",
+          "as_of_utc": "2026-11-08T01:06:00Z",
+          "exchange_count": 17,
+          "open_interest_usd": 1620000000,
+          "oi_change_24h_pct": -1.5,
+          "scope_note": "Perpetual contracts only, USD at mark price; quarterly futures and options excluded; unverifiable/outlier exchange reports filtered."
+        },
+        {
+          "provider": "Kodexius",
+          "as_of_utc": "2026-11-08T01:19:00Z",
+          "contract_count": 7,
+          "exchange_count": 5,
+          "open_interest_usd": 775070000,
+          "funding_weighted_pct_per_8h": 0.0053,
+          "volume_24h_usd": 1010000000,
+          "scope_note": "Seven contracts across Binance, Bybit, Hyperliquid, OKX and HTX."
+        }
+      ],
+      "funding_crosscheck": {
+        "provider": "FundingRates.app",
+        "as_of_utc": "2026-11-08T06:20:51.267Z",
+        "median_pct_per_8h": 0.0043,
+        "venues_positive": 7,
+        "venues_negative": 0,
+        "venues_zero": 2,
+        "venues_used_in_summary": 9,
+        "venues_listed": 10,
+        "scope_note": "Median across venues, not OI-weighted mean; page lists ten venues but summary counts nine, requiring scope reconciliation."
+      },
+      "cross_provider_reconciliation": {
+        "minimum_open_interest_usd": 775070000,
+        "maximum_open_interest_usd": 1910000000,
+        "max_to_min_ratio": 2.4643,
+        "tradradar_vs_liqwall_difference_usd": 530000000,
+        "oi_change_sign_disagreement": true,
+        "status": "UNRESOLVED_DO_NOT_AVERAGE",
+        "possible_explanations": [
+          "different venue/contract universes",
+          "different treatment of contract types or quote currencies",
+          "provider filtering and outlier rules",
+          "snapshot timing",
+          "unresolved open-interest unit or counting conventions"
+        ],
+        "note": "A 17-exchange total lower than a seven-exchange total shows that exchange count alone does not reconcile the series. Raw venue payloads and per-contract definitions are required."
+      },
+      "admission": "EXCLUDED_FROM_FEATURE_STORE"
+    },
+    "etf_flows": {
+      "window": "US ETF trading sessions through 2026-11-06",
+      "providers": [
+        {
+          "provider": "CryptoKeyhole",
+          "fund_universe": "Four daily-readable US spot funds of six listed",
+          "nov5_complete_flow_xrp": -3339,
+          "oct30_to_nov5_five_complete_sessions_xrp": -1137098,
+          "nov5_collected_holdings_xrp": 1076805885,
+          "nov6_partial_flow_usd": -887000,
+          "nov6_coverage": "3 of 4; Franklin Templeton XRPZ missing",
+          "page_updated_at_utc": "2026-11-08T08:12:00Z",
+          "future_issuer_file_stamp": "2026-11-09",
+          "future_issuer_file_stamp_quarantined": true
+        },
+        {
+          "provider": "Alpha Finance",
+          "fund_universe": "Five US spot funds",
+          "as_of_date": "2026-11-06",
+          "nov6_flow_usd": 0,
+          "oct27_to_nov6_seven_session_flow_usd": 8400000,
+          "thirty_session_flow_usd": 45900000,
+          "cumulative_flow_usd": 1730000000
+        },
+        {
+          "provider": "XRP Insights",
+          "fund_universe": "Six US spot funds plus BITW for combined holdings",
+          "as_of_date": "2026-11-06",
+          "nov6_flow_xrp": -663043,
+          "nov6_flow_usd_approx": -775800,
+          "nov2_to_nov6_week_flow_xrp": -812500,
+          "holdings_xrp_approx": 1200000000,
+          "net_assets_usd_approx": 1430000000
+        }
+      ],
+      "reconciliation": "The values are not the same population or publication vintage. CryptoKeyhole's Nov 6 value is explicitly partial at 3/4; Alpha Finance reports five-fund $0; XRP Insights reports six spot funds plus BITW and a negative holdings-change flow. Fund universe, missing issuer files, settlement vintages and USD valuation differ.",
+      "source_independence": "The publishers are distinct, but their series reuse overlapping issuer holdings files. They are not independent confirmations of institutional demand.",
+      "admission": "EXCLUDED_UNTIL_ISSUER_LEVEL_COMMON_UNIVERSE_REBUILD"
+    }
+  },
+  "institutional_relationships": {
+    "ripple_coinbase_rlusd": {
+      "status": "DIRECT_PARTNERSHIP_LIVE_WITH_LIMITED_LAUNCH_SCOPE",
+      "announced_date": "2026-10-28",
+      "live_channels": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase Retail app"
+      ],
+      "networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "live_capabilities": [
+        "trade and manage RLUSD",
+        "deposit and withdraw RLUSD",
+        "1:1 conversion from USD and supported USD stablecoins"
+      ],
+      "future_at_launch": [
+        "Coinbase Global Exchange availability",
+        "RLUSD collateral use on Coinbase Global Exchange"
+      ],
+      "liquidity_note": "Ripple said it would provide liquidity on Base; this is not evidence of XRP purchases or XRP settlement volume.",
+      "unknowns": [
+        "RLUSD balances held by Coinbase customers",
+        "RLUSD trading and transfer volumes",
+        "XRP purchased or held as collateral",
+        "XRP bridge throughput attributable to the partnership"
+      ]
+    },
+    "bny_ripple_custody": {
+      "status": "CUSTODY_SUPPORT_ANNOUNCED",
+      "announced_date": "2026-10-27",
+      "eligible_assets": [
+        "XRP",
+        "RLUSD"
+      ],
+      "relationship_edges": [
+        "BNY is primary reserve custodian for RLUSD",
+        "BNY has a custody relationship with Ripple Prime",
+        "BNY Digital Asset Custody platform supports XRP and RLUSD for eligible institutional clients"
+      ],
+      "unknowns": [
+        "actual customer XRP balances",
+        "actual customer RLUSD balances",
+        "new XRP purchases",
+        "XRPL settlement throughput"
+      ]
+    },
+    "circle_coinbase_q3_2026": {
+      "source_period_end": "2026-09-30",
+      "circle_usdc_end_circulation_usd": 73879000000,
+      "circle_usdc_average_circulation_usd": 73264000000,
+      "circle_reserve_return_rate_pct": 3.5,
+      "circle_usdc_on_platform_end_usd": 13868000000,
+      "circle_usdc_on_platform_daily_weighted_average_pct": 18.1,
+      "circle_distribution_costs_to_coinbase_q3_usd": 331300000,
+      "circle_distribution_costs_to_coinbase_nine_months_usd": 986600000,
+      "coinbase_q3_stablecoin_revenue_usd": 306905000,
+      "coinbase_usdc_on_platform_end_usd": 8616000000,
+      "coinbase_total_assets_on_platform_end_usd": 376645000000,
+      "reconciliation": "Circle distribution costs to Coinbase and Coinbase stablecoin revenue are different accounting line items and must not be netted or described as a direct profit split. Circle's on-platform metric and Coinbase's USDC assets-on-platform metric have different issuer definitions and should not be equated.",
+      "xrp_implication": "These filings establish the scale/economics of USDC distribution, not XRP purchases, XRP collateral or XRPL payment volume. Coinbase's cited asset-on-platform table has no XRP-specific line."
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-oi-scope-not-price-signal",
+      "claim": "The $775M-$1.91B OI range is mainly a scope/definition disagreement, not evidence of a sudden position change.",
+      "support": "Providers report different exchange and contract universes; Bentley filters unverifiable/outlier exchange reports; OI change signs differ.",
+      "disconfirming_or_missing": "No raw exchange-level response set or normalized contract inventory was captured.",
+      "test": "Collect native OI for each perpetual contract at one UTC cutoff, normalize units and mark prices, then reconcile each provider's exact venue list."
+    },
+    {
+      "id": "H2-long-liquidation-deleveraging",
+      "claim": "Long-heavy liquidations and positive funding indicate a long-leaning derivatives cohort, but do not establish a directional price forecast.",
+      "support": "TradRadar and Liqwall both report long liquidations exceeding shorts and positive funding.",
+      "disconfirming_or_missing": "Their OI levels and 24h changes disagree; account ratios are not position notional; price/flow synchronization is absent.",
+      "test": "Compare native liquidation streams, funding settlements, position OI and synchronized spot returns at common intervals."
+    },
+    {
+      "id": "H3-etf-flow-weakness-vs-neutral",
+      "claim": "Recent ETF demand may be modest/negative, but the Nov 6 sign is not resolved across providers.",
+      "support": "XRP Insights reports -663,043 XRP; CryptoKeyhole reports a partial -$887K; five-fund Alpha reports $0.",
+      "disconfirming_or_missing": "Different fund universes, missing Franklin file, future-dated CryptoKeyhole issuer stamp and different holdings vintages.",
+      "test": "Rebuild daily flows from each issuer's own holdings/share files at a common trading close; separately classify direct and indirect holdings."
+    },
+    {
+      "id": "H4-stablecoin-rails-complement-or-substitute",
+      "claim": "RLUSD and USDC adoption may complement XRP in some payment routes and substitute for XRP bridge legs in others.",
+      "support": "RLUSD is distributed on XRPL/Base/Ethereum; Coinbase and Circle disclose substantial USDC economics; BNY supports custody for XRP and RLUSD.",
+      "disconfirming_or_missing": "No route-level settlement volume, XRP bridge leg, customer balance or collateral usage is disclosed.",
+      "test": "Obtain chain-specific RLUSD/USDC supply and transfers, payment corridor volumes, actual bridge-asset routing and institution-level balance disclosures."
+    },
+    {
+      "id": "H5-custody-is-not-demand",
+      "claim": "Institutional custody availability expands access but does not prove XRP accumulation or new demand.",
+      "support": "BNY explicitly announces custody support for XRP/RLUSD without balances or purchase amounts.",
+      "disconfirming_or_missing": "Client balances, custody inflows and transaction throughput are undisclosed.",
+      "test": "Track disclosed custody balances, actual inflows/outflows and issuer or custodian statements that identify asset quantities."
+    },
+    {
+      "id": "H6-single-venue-spot-not-global-state",
+      "claim": "The Kraken snapshot is descriptive of one venue only and cannot represent synchronized global XRP spot structure.",
+      "support": "Kraken provider timestamp is absent; no synchronized order-book depth or cross-venue tape was captured.",
+      "disconfirming_or_missing": "No same-cutoff primary snapshots from Coinbase, Binance, OKX and Bitbank.",
+      "test": "Capture raw venue responses with provider event timestamps and local receive times; normalize quote currencies and compute executable depth."
+    }
+  ],
+  "source_receipts": [
+    {
+      "source_id": "kraken_xrpusd_ticker_0907",
+      "publisher": "Kraken",
+      "source_class": "primary_exchange_public_rest",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "as_of_utc": null,
+      "independence_group": "kraken_exchange",
+      "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16127000\",\"3829\",\"3829.000\"],\"b\":[\"1.16126000\",\"1285\",\"1285.000\"],\"c\":[\"1.16127000\",\"578.69400000\"],\"v\":[\"2151597.35088217\",\"11072625.96187044\"],\"p\":[\"1.16064353\",\"1.16056161\"],\"t\":[3861,16167],\"l\":[\"1.15376000\",\"1.14888000\"],\"h\":[\"1.16541000\",\"1.17714000\"],\"o\":\"1.16234000\"}}}",
+      "excerpt_sha256": "69e9f4b6b95654ae1989d14aed7bb109afc32e80d88e723651f24efbb082ab6f",
+      "hash_scope": "SHA-256 of exact JSON text returned by browser retrieval; not raw HTTP wire bytes or headers.",
+      "limitations": [
+        "Provider event timestamp absent.",
+        "Exact browser retrieval wall-clock time and HTTP headers not retained.",
+        "Not eligible for point-in-time feature admission."
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_perps_0820",
+      "publisher": "TradRadar",
+      "source_class": "secondary_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "as_of_utc": "2026-11-08T08:20:00Z",
+      "independence_group": "tradradar",
+      "excerpt": "XRP trades at $1.1624 (-1.62% in 24h), open interest $1.91B, mostly longs were liquidated over the day. Open interest, 7 exchanges: $1.91B; OI 24h change -0.42%; OI-weighted funding +0.0068% per 8h; 24h liquidations >=$1.45M, longs $1.23M, shorts $213.67K; long/short 3.81 (79.2% long). Updated Nov 8, 2026, 08:20 UTC. Binance $477.40M, Bybit $330.46M, Gate $292.44M, MEXC $260.60M, Bitget $245.73M, Hyperliquid $197.06M, OKX $106.68M.",
+      "excerpt_sha256": "9f871a3f422b1c386b03b4d7f815e7b435e4d4ce66541fd417de15cbbad68d57",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Seven-exchange aggregation; raw venue payloads not captured.",
+        "Liquidations are a lower bound across five exchanges.",
+        "Long/short ratio is a multi-exchange account statistic, not position notional."
+      ]
+    },
+    {
+      "source_id": "liqwall_xrp_perps_0852",
+      "publisher": "Liqwall",
+      "source_class": "secondary_derivatives_aggregator",
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-08T08:52:00Z",
+      "independence_group": "liqwall",
+      "excerpt": "As of 08:52, November 8, 2026 UTC, XRP is at $1.16. In 24 hours, $1.3M of XRP positions were liquidated: $1.3M of longs and $68K of shorts. Funding +0.0094% per 8 hours on Binance and +0.0076% average across exchanges. Open interest across exchanges $1.38B, +1.2% in 24 hours. 73.8% of Binance accounts with an XRP position are long.",
+      "excerpt_sha256": "912ac2988be01211445af5ae0cc47fa0c7dc1f8f96653d3b9364701bb3d585a4",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Provider's exact open-interest exchange coverage is not fully specified on the rendered page.",
+        "Liquidation coverage and OI coverage differ.",
+        "Binance account long share is not comparable to a seven-exchange weighted account ratio."
+      ]
+    },
+    {
+      "source_id": "bentley_xrp_perps_0106",
+      "publisher": "Bentley Markets",
+      "source_class": "secondary_derivatives_aggregator",
+      "url": "https://www.bentleymarkets.com/tools/open-interest",
+      "as_of_utc": "2026-11-08T01:06:00Z",
+      "independence_group": "bentley_markets",
+      "excerpt": "Updated 8 Nov 2026, 01:06 UTC, from 17 exchanges. XRP open interest $1.62B, down 1.5% in 24 hours. Perpetual-contract open interest converted to USD at mark price; quarterly futures and options excluded; exchanges whose reported OI cannot be verified or appear out of line with trading volume are excluded. Total $1.62B.",
+      "excerpt_sha256": "9432e6c47da128f27fa745c2280226d9510b89222de847c4b4714366c8e12312",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Seventeen-exchange perpetual-contract universe; quarterly futures/options excluded.",
+        "Provider filters unverifiable/outlier exchange reports.",
+        "Older snapshot than the 08:20/08:52 readings."
+      ]
+    },
+    {
+      "source_id": "kodexius_xrp_perps_0119",
+      "publisher": "Kodexius",
+      "source_class": "secondary_derivatives_aggregator",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "as_of_utc": "2026-11-08T01:19:00Z",
+      "independence_group": "kodexius",
+      "excerpt": "XRP perpetual futures open interest $775.07M across 7 contracts; funding +0.0053% per 8h; 24h volume $1.01B. Updated Nov 8, 2026, 01:19 UTC. Binance $418.62M, Bybit $139.89M, Hyperliquid $98.15M, OKX $93.29M, HTX $25.13M.",
+      "excerpt_sha256": "25f0931c6491576c22ce7419aa8e7f977dab4d6e07ea2d98eb007740d55f738e",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Seven contracts across five exchanges; smaller stated universe.",
+        "Not directly comparable to broader seven- or seventeen-exchange aggregates."
+      ]
+    },
+    {
+      "source_id": "fundingrates_xrp_0620",
+      "publisher": "FundingRates.app",
+      "source_class": "secondary_funding_aggregator",
+      "url": "https://fundingrates.app/xrp-funding-rate/",
+      "as_of_utc": "2026-11-08T06:20:51.267Z",
+      "independence_group": "fundingrates_app",
+      "excerpt": "As of 06:20 UTC on 2026-11-08, median XRP funding rate 0.0043% per 8h across 9 venues; 7 positive, 0 negative, 2 zero. 10 venues listed; per-venue normalized rates include Binance +0.0098%, Lighter +0.0096%, Hyperliquid +0.0043%, OKX +0.0038%, Bybit +0.0031%, dYdX 0.0000%, LeverUp 0.0000%.",
+      "excerpt_sha256": "4ad52b75d17e8d451ac1c245d408ad74dd32894ddc74cacedf59f217a3676166",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Median funding is not an OI-weighted mean.",
+        "Page states ten venues listed but nine used in summary; venue-count scope requires reconciliation.",
+        "Commercial relationships with listed venues are disclosed by publisher."
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_0812",
+      "publisher": "CryptoKeyhole",
+      "source_class": "secondary_aggregator_of_issuer_holdings",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "as_of_utc": "2026-11-08T08:12:00Z",
+      "independence_group": "cryptokeyhole_issuer_files",
+      "excerpt": "On 5 November 2026 the 4 US spot XRP ETFs that CryptoKeyhole reads daily (of 6 listed) paid out a net 3,339 XRP ($4K). Last 5 complete trading days: -1,137,098 XRP from 30 Oct to 5 Nov. Held by funds collected daily: 1,076,805,885 XRP on 5 Nov. Latest issuer file 9 Nov 2026 dated by issuer and read at 05:12 UTC on 7 Nov 2026. 6 Nov 2026 partial: 3 of 4 funds published, waiting for Franklin Templeton XRPZ. Updated 8 Nov 2026, 08:12 UTC.",
+      "excerpt_sha256": "c3bdacb8ca4b5a79856dd90777d837380a169ff6616071b94d3294dfecdf5b8e",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw issuer bytes.",
+      "limitations": [
+        "Only four of six listed spot funds are collected daily.",
+        "November 6 is explicitly partial at three of four funds.",
+        "A latest issuer-file date of 9 Nov 2026 is future relative to the page update on 8 Nov and is quarantined."
+      ]
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_1106",
+      "publisher": "Alpha Finance",
+      "source_class": "secondary_etf_flow_aggregator",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "as_of_utc": "2026-11-06",
+      "independence_group": "alpha_finance_issuer_files",
+      "excerpt": "Alpha Finance covers 5 US spot XRP ETF funds through the 6 Nov 2026 session. 27 Oct to 6 Nov net flow +$8.4M over last 7 sessions. 6 Nov 2026 net flow +$0; 30-session flow +$45.9M; cumulative net inflow $1.73B since launch.",
+      "excerpt_sha256": "7a72694b88f6f2b6e2fa25eea787169c5b5526a9be6118527981d14818bcc5bf",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw issuer bytes.",
+      "limitations": [
+        "Five-fund universe differs from other providers.",
+        "The page does not expose all fund-level issuer file receipts in the reviewed excerpt.",
+        "A reported zero does not establish that all issuers had published."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_xrp_etf_1106",
+      "publisher": "XRP Insights",
+      "source_class": "secondary_aggregator_of_issuer_holdings",
+      "url": "https://xrp-insights.com/",
+      "as_of_utc": "2026-11-06",
+      "independence_group": "xrp_insights_issuer_files",
+      "excerpt": "XRP Insights reports that on Fri 6 Nov 2026, US XRP ETFs (6 spot funds plus BITW) recorded net outflows of 663,043 XRP (approximately $775.8K at that day's XRP price). Combined holdings ended the day at 1.20B XRP with $1.43B net assets. Latest week 2-6 Nov: -812.5K XRP, approximately -$978.3K.",
+      "excerpt_sha256": "c2122c16cbf11036355261464b3379312de670187cdc704b4da1236a89ab516d",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw issuer bytes.",
+      "limitations": [
+        "Six spot funds plus BITW holdings universe; not identical to daily flow coverage.",
+        "Uses day-over-day holdings changes; source-vintage and settlement timing need issuer-level reconstruction.",
+        "Not an independent confirmation of other aggregators using issuer files."
+      ]
+    },
+    {
+      "source_id": "ripple_coinbase_rlusd_20261028",
+      "publisher": "Ripple",
+      "source_class": "primary_joint_platform_partnership_announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "as_of_utc": "2026-10-28",
+      "independence_group": "ripple_press_office",
+      "excerpt": "Ripple and Coinbase announced 28 Oct 2026 that retail and institutional clients can trade/manage RLUSD via Coinbase Prime, Coinbase Exchange and Coinbase Retail; deposits/withdrawals across XRPL, Base and Ethereum. Coinbase Global Exchange customers, including RLUSD as collateral, were stated as future availability. Ripple said it would provide liquidity on Base.",
+      "excerpt_sha256": "d2f5823b8b636bf1625133a069c5896aee4cf7923ec4ca792586e8fc13f21bd8",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw HTTP bytes.",
+      "limitations": [
+        "Partnership announcement is one transaction; Ripple and Coinbase releases are not separate integrations.",
+        "Coinbase Global Exchange collateral support was future at launch.",
+        "Does not disclose XRP purchases, RLUSD volumes or XRP bridge throughput."
+      ]
+    },
+    {
+      "source_id": "bny_ripple_xrp_rlusd_custody_20261027",
+      "publisher": "BNY",
+      "source_class": "primary_custody_platform_announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "as_of_utc": "2026-10-27",
+      "independence_group": "bny_press_office",
+      "excerpt": "BNY's 27 Oct 2026 release says BNY, already primary reserve custodian for RLUSD and custodian for Ripple Prime, now supports XRP and RLUSD on its Digital Asset Custody platform for eligible institutional clients. It does not disclose client balances or XRP purchases.",
+      "excerpt_sha256": "5d9ff2c9b1284a7814cddba1e79750db1e855f6eb669c3584641488d1a70bc7c",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not page HTML or raw HTTP bytes.",
+      "limitations": [
+        "Custody eligibility/capability is not an actual customer balance.",
+        "No XRP purchase, net inflow or settlement throughput is disclosed."
+      ]
+    },
+    {
+      "source_id": "circle_q3_2026_10q",
+      "publisher": "Circle Internet Group / SEC filing",
+      "source_class": "primary_sec_quarterly_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "as_of_utc": "2026-09-30",
+      "independence_group": "circle_sec_filing",
+      "excerpt": "Circle Q3 2026 Form 10-Q: USDC in circulation end of period $73.879B; average $73.264B; reserve return rate 3.5%; USDC on platform end of period $13.868B; daily weighted-average percentage 18.1%; Q3 distribution costs to Coinbase $331.3M; nine-month distribution costs $986.6M.",
+      "excerpt_sha256": "cb6304f478a58e5b2919cc1f670c63314bd7bdf68756f9373c76ea1befa9a564",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not filing bytes.",
+      "limitations": [
+        "Quarterly issuer accounting; not live stablecoin flow.",
+        "Coinbase distribution cost is not Coinbase revenue and must not be netted against it.",
+        "USDC circulation/platform balances do not establish XRP demand."
+      ]
+    },
+    {
+      "source_id": "coinbase_q3_2026_10q",
+      "publisher": "Coinbase Global / SEC filing",
+      "source_class": "primary_sec_quarterly_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "as_of_utc": "2026-09-30",
+      "independence_group": "coinbase_sec_filing",
+      "excerpt": "Coinbase Q3 2026 Form 10-Q: Q3 stablecoin revenue $306.905M; USDC assets on platform $8.616B at 30 Sep 2026; total assets on platform $376.645B; no XRP-specific line in the asset-on-platform table.",
+      "excerpt_sha256": "30c900a9fdc6c14accb3708f0705bad6fa45e00f500372b54b8a4ba4e05afa49",
+      "hash_scope": "SHA-256 of exact normalized excerpt stored here; not filing bytes.",
+      "limitations": [
+        "Quarterly issuer accounting; not live stablecoin flow.",
+        "Assets on platform include multiple assets/services; USDC is not XRP.",
+        "No XRP-specific balance is separately identified in the cited table."
+      ]
+    }
+  ],
+  "data_quality": {
+    "synchronized_market_cutoff": false,
+    "raw_http_wire_bytes_captured": false,
+    "provider_timestamp_missing_for_kraken": true,
+    "full_orderbook_depth_captured": false,
+    "synchronized_trade_tape_captured": false,
+    "native_exchange_oi_payloads_captured": false,
+    "issuer_level_etf_files_rebuilt": false,
+    "source_disagreement_policy": "Preserve each universe and cutoff; do not average incompatible OI, funding or ETF series.",
+    "future_timestamp_quarantine": "CryptoKeyhole's 9 Nov 2026 issuer-file stamp is future relative to its 8 Nov 2026 page update and is excluded from current-cutoff claims."
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "The spot capture lacks provider event time and raw HTTP bytes; OI/funding provider universes and changes disagree; ETF issuer coverage is partial and inconsistent; no synchronized depth, trades or native exchange flow receipts."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized, point-in-time eligible feature set or demonstrated out-of-sample predictive lift supports a directional forecast."
+  },
+  "external_actions": {
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  }
+}

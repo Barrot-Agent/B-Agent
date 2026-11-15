@@ -1,0 +1,499 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "20261108T061536Z-rlusd-usdc-jpysc-custody-collateral-reconciliation",
+  "artifact_type": "rlusd_usdc_jpysc_supply_custody_collateral_and_institutional_distribution_reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "recorded_at_utc": "2026-11-08T06:15:36.582Z",
+  "research_cutoff_utc": "2026-11-08T06:15:36.582Z",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "23f1cbfe5ef105701df22ac778ff32524ded2d76",
+  "append_only": true,
+  "source_capture_policy": {
+    "lawful_public_sources_only": true,
+    "raw_http_bytes_preserved": false,
+    "raw_http_headers_preserved": false,
+    "normalized_excerpt_sha256": true,
+    "hash_scope": "Each SHA-256 covers only the exact normalized paraphrase stored in captured_excerpt_text. It is not a digest of the full webpage, PDF, API response, HTTP body or headers.",
+    "retrieval_timestamp_scope": "Artifact capture time is recorded; publisher publication dates and dashboard measurement dates are stored separately.",
+    "model_eligible": false,
+    "reason": "Issuer/custody/partnership snapshots and secondary supply commentary are not synchronized XRP market-flow observations. No raw HTTP wire capture or independently reproducible on-chain wallet trace was obtained."
+  },
+  "source_registry": [
+    {
+      "id": "ripple_rlusd_transparency_20261105",
+      "publisher": "Ripple / Standard Custody & Trust Company LLC",
+      "source_type": "primary_issuer_transparency_dashboard",
+      "published_at_utc": null,
+      "as_of_date": "2026-11-05",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "evidence_family": "rlusd_issuer_dashboard",
+      "independence_group": "ripple_standard_custody",
+      "captured_excerpt_text": "Ripple's official RLUSD transparency dashboard reports total circulating RLUSD of $2,632.9 million and reserve funds of $2,748.0 million as of 2026-11-05. The page identifies Standard Custody & Trust Company LLC as the issuer and says reserve attestations are monthly and performed by an independent U.S.-licensed CPA. The displayed balance snapshot is not itself the monthly attestation report.",
+      "captured_excerpt_sha256": "49c85440d9b4bb4558b52279b29a1204c49df5a8333c63d0276a703ceed76010",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Total circulating RLUSD $2,632.9M; reserve funds $2,748.0M as of 2026-11-05.",
+        "Standard Custody & Trust Company LLC remains the issuer and is described as a NYDFS-chartered limited-purpose trust company.",
+        "Monthly CPA attestations are described; the current dashboard snapshot is not itself an attestation report."
+      ],
+      "limitations": [
+        "Rendered page exposes the dashboard balance date and values but not the underlying raw API or wire bytes.",
+        "The Nov 5 dashboard balance is not an independent attestation; the linked monthly report index was not captured as a new report in this pass.",
+        "Issuer-reported reserve funds do not establish XRP holdings or XRP collateral."
+      ]
+    },
+    {
+      "id": "coinbase_rlusd_listing_20261028",
+      "publisher": "Coinbase",
+      "source_type": "primary_platform_announcement",
+      "published_at_utc": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "evidence_family": "coinbase_ripple_rlusd_20261028",
+      "independence_group": "coinbase_platform",
+      "captured_excerpt_text": "Coinbase's official 2026-10-28 announcement says RLUSD is available through Coinbase Prime, Coinbase Exchange and the Coinbase retail app, with deposits and withdrawals across XRPL, Base and Ethereum and 1:1 USD conversion. Coinbase Global Exchange collateral availability was future at launch; Ripple said it would provide liquidity on Base.",
+      "captured_excerpt_sha256": "3601c4fa7a58ba64d244bd5f02ca9f94859439d077ed2dff6d3fdd34f634e968",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "RLUSD trading/management live through Coinbase Prime, Coinbase Exchange and Coinbase retail app.",
+        "Deposits and withdrawals supported across XRPL, Base and Ethereum at launch.",
+        "Coinbase Global Exchange collateral support was future at launch; Ripple would provide liquidity on Base."
+      ],
+      "limitations": [
+        "The announcement does not disclose RLUSD customer balances, deposits, net purchases, collateral posted or XRP purchases.",
+        "Future Global Exchange collateral is not live evidence."
+      ]
+    },
+    {
+      "id": "ripple_coinbase_rlusd_20261028",
+      "publisher": "Ripple",
+      "source_type": "primary_issuer_partnership_announcement",
+      "published_at_utc": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "evidence_family": "coinbase_ripple_rlusd_20261028",
+      "independence_group": "ripple_press_office",
+      "captured_excerpt_text": "Ripple's 2026-10-28 announcement confirms the same RLUSD distribution partnership with Coinbase and states that Global Exchange collateral support would follow. The Ripple and Coinbase announcements describe one partnership and are not independent evidence of two separate integrations.",
+      "captured_excerpt_sha256": "2859c8ad5ecc52a7e3b02f66f651cf7058cfecdfd98e63934ef0b7a04637f701",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Ripple independently confirms its direct RLUSD distribution partnership with Coinbase.",
+        "The same launch announcement distinguishes live Prime/Exchange/Retail access from future Coinbase Global Exchange collateral support."
+      ],
+      "limitations": [
+        "This is the same transaction announcement as Coinbase's release; do not count the two releases as independent market-flow observations.",
+        "It does not establish Coinbase as RLUSD issuer or any XRP purchase."
+      ]
+    },
+    {
+      "id": "sbi_jpysc_balance_20261102",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "source_type": "primary_group_company_release",
+      "published_at_utc": "2026-11-02",
+      "as_of_date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "evidence_family": "sbi_vc_trade_jpysc_20261102",
+      "independence_group": "sbi_vc_trade_press_office",
+      "captured_excerpt_text": "SBI VC Trade's official 2026-11-02 release reports JPYSC lending balance above JPY 10 billion and total handling balance above JPY 30 billion. Its footnote defines handling balance as on-chain balance plus lending balance, so the lending amount is included in the total and must not be added again. The release says JPYSC public-chain circulation remains a future objective subject to legal changes.",
+      "captured_excerpt_sha256": "4ef61bed27ddfd9319e268c688b273323e8e39c5c2f97a35bf30531fd36efe72",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "JPYSC lending balance exceeded JPY 10B and total handling balance exceeded JPY 30B on Nov 2.",
+        "SBI defines handling balance as on-chain balance plus lending balance; the JPY 10B lending amount is already included in the JPY 30B-plus total.",
+        "JPYSC public-chain circulation is described as a future objective subject to legal changes.",
+        "The lending product offers fixed-term courses and is not a bank deposit or covered by deposit insurance."
+      ],
+      "limitations": [
+        "The two 'exceeded' figures are thresholds, not exact balances; do not subtract them to infer an exact on-chain amount.",
+        "The handling total is not circulating supply on a public chain, XRP liquidity, or XRP collateral.",
+        "SBI VC Trade is a consolidated SBI Holdings subsidiary; this is not evidence of SBIC East/Central/West involvement."
+      ]
+    },
+    {
+      "id": "sbi_vc_trade_rlusd_launch_20260624",
+      "publisher": "SBI VC Trade and Ripple Labs Inc.",
+      "source_type": "primary_joint_service_announcement",
+      "published_at_utc": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "evidence_family": "sbi_ripple_rlusd_listing_20260624",
+      "independence_group": "sbi_ripple_joint_announcement",
+      "captured_excerpt_text": "SBI VC Trade's official 2026-06-24 joint notice with Ripple says RLUSD handling began in VCTRADE and SBI classified it as a Type 4 electronic payment instrument under its Japanese-law interpretation. The notice says VCTRADE deposits and withdrawals were Ethereum-only at launch, BITPOINT was excluded, per-transfer limits applied, and deposits could be restricted if they exceeded SBI VC Trade's redemption capacity. The notice identifies Standard Custody & Trust Company LLC as RLUSD issuer.",
+      "captured_excerpt_sha256": "e40ba2c540f16f6f48c43f74c5c697d569f1cb6cf0ffa3658fee46932113f124",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "SBI VC Trade is a consolidated subsidiary of SBI Holdings and began RLUSD handling in VCTRADE on 2026-06-24.",
+        "SBI VC Trade's Type 4 electronic payment instrument classification is its stated Japanese-law interpretation; the notice explicitly distinguishes this from U.S. law.",
+        "At launch VCTRADE deposits/withdrawals were Ethereum-only; BITPOINT was excluded; a JPY 1M per-transfer cap and undisclosed daily deposit cap applied.",
+        "The notice identifies Standard Custody & Trust Company LLC as issuer and says the SBI Group/Ripple relationship dates to 2016."
+      ],
+      "limitations": [
+        "No later dated primary notice confirming SBI VCTRADE XRPL deposits/withdrawals was located in this pass; the Ethereum-only statement is the launch scope, not a claim about RLUSD globally.",
+        "Listing/distribution does not establish XRP purchases, XRP settlement or collateral."
+      ]
+    },
+    {
+      "id": "occ_ripple_national_trust_bank_cas_20261026",
+      "publisher": "Office of the Comptroller of the Currency",
+      "source_type": "primary_regulatory_corporate_application_record",
+      "published_at_utc": null,
+      "as_of_date": "2026-10-26",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "evidence_family": "occ_ripple_national_trust_bank_charter_2025",
+      "independence_group": "occ_regulator",
+      "captured_excerpt_text": "The OCC Corporate Applications Search lists Ripple National Trust Bank charter application 2025-Charter-342347 as approved on 2025-12-12 and consummated/effective on 2026-10-26. Ripple's 2026-10-26 announcement describes approved activities including management of segregated RLUSD reserves, acting as collateral trustee for reserve holders and fiduciary digital-asset custody. The approval does not establish that customer operations have commenced or change Standard Custody & Trust Company LLC's issuer role.",
+      "captured_excerpt_sha256": "2fde7e1673993deac1401c7bd59b355b77e8949193ff4c58b7a31288da8b8200",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "OCC control number 2025-Charter-342347; Ripple National Trust Bank proposed charter 25364.",
+        "Application approved 2025-12-12 and consummated/effective 2026-10-26."
+      ],
+      "limitations": [
+        "The OCC record confirms charter status and effective date, not the commencement of customer operations or actual balances.",
+        "Approved-activity descriptions are separately attributed to Ripple's announcement, not inferred from the CAS status record."
+      ]
+    },
+    {
+      "id": "ripple_national_trust_bank_scope_20261026",
+      "publisher": "Ripple",
+      "source_type": "primary_company_regulatory_announcement",
+      "published_at_utc": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "evidence_family": "occ_ripple_national_trust_bank_charter_2025",
+      "independence_group": "ripple_press_office",
+      "captured_excerpt_text": "The OCC Corporate Applications Search lists Ripple National Trust Bank charter application 2025-Charter-342347 as approved on 2025-12-12 and consummated/effective on 2026-10-26. Ripple's 2026-10-26 announcement describes approved activities including management of segregated RLUSD reserves, acting as collateral trustee for reserve holders and fiduciary digital-asset custody. The approval does not establish that customer operations have commenced or change Standard Custody & Trust Company LLC's issuer role.",
+      "captured_excerpt_sha256": "2fde7e1673993deac1401c7bd59b355b77e8949193ff4c58b7a31288da8b8200",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Ripple describes approved activities including managing segregated RLUSD reserves, acting as collateral trustee for RLUSD reserve holders and providing fiduciary digital-asset custody.",
+        "Standard Custody & Trust Company LLC remains RLUSD issuer; Ripple National Trust Bank is a separate Ripple group entity."
+      ],
+      "limitations": [
+        "The approved-activity summary is a Ripple statement; the OCC CAS record is the independent regulator source for approval/effective dates.",
+        "Final charter status does not prove the bank has commenced customer operations or holds XRP."
+      ]
+    },
+    {
+      "id": "bny_ripple_custody_trade_finance_20261027",
+      "publisher": "BNY",
+      "source_type": "primary_counterparty_company_release",
+      "published_at_utc": "2026-10-27",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "evidence_family": "bny_ripple_custody_20261027",
+      "independence_group": "bny_counterparty",
+      "captured_excerpt_text": "BNY's 2026-10-27 announcement says its Digital Asset Custody platform now supports XRP and RLUSD for eligible institutional clients and identifies BNY as primary reserve custodian for RLUSD. Direct RLUSD mint/redeem through BNY and tokenized trade-finance activity with C2FO are described as future or exploratory, not completed production services.",
+      "captured_excerpt_sha256": "c49a2a33ca8e3db7b11e3a5728ee4dae717eb621822428adf4c68b487f6181f5",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "BNY supports XRP and RLUSD custody for eligible institutional clients.",
+        "BNY identifies itself as primary RLUSD reserve custodian.",
+        "Direct mint/redeem through BNY and C2FO/tokenized trade finance remain future or exploratory."
+      ],
+      "limitations": [
+        "No XRP/RLUSD custody balance, collateral amount or transaction volume disclosed.",
+        "Custody support does not prove purchase, net inflow or XRP settlement."
+      ]
+    },
+    {
+      "id": "standard_chartered_rlusd_custody_20261012",
+      "publisher": "Ripple",
+      "source_type": "primary_transaction_party_release",
+      "published_at_utc": "2026-10-12",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "evidence_family": "standard_chartered_lmax_rlusd_20261012",
+      "independence_group": "ripple_press_office",
+      "captured_excerpt_text": "Ripple's 2026-10-12 announcement says Standard Chartered's DIFC branch has live institutional custody support for RLUSD on XRPL. The associated RLUSD collateral-mirroring integration with LMAX is planned and subject to documentation, testing, legal requirements, internal approvals and jurisdictional readiness; it is not confirmed live.",
+      "captured_excerpt_sha256": "1f301e8a71c7dfc54201ae27ff7ecd89ab3b7f6d90ab641e88bd7d3f6322a0ba",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Standard Chartered DIFC branch RLUSD custody on XRPL is reported live for eligible institutional clients.",
+        "LMAX collateral mirroring remains planned and conditional."
+      ],
+      "limitations": [
+        "Ripple is a transaction party; no separate Standard Chartered press page was located in this pass.",
+        "No actual RLUSD balances, LMAX collateral acceptance or XRP collateral were disclosed."
+      ]
+    },
+    {
+      "id": "circle_usdc_transparency_20261105",
+      "publisher": "Circle",
+      "source_type": "primary_issuer_transparency_dashboard",
+      "published_at_utc": null,
+      "as_of_date": "2026-11-05",
+      "url": "https://www.circle.com/transparency",
+      "evidence_family": "circle_usdc_issuer_dashboard",
+      "independence_group": "circle_issuer",
+      "captured_excerpt_text": "Circle's official transparency page is dated 2026-11-05, states USDC and EURC are redeemable 1:1, describes weekly reserve and mint/burn disclosure and monthly third-party assurance. The rendered page text retrieved in this pass did not expose the numerical USDC circulation or reserve balances.",
+      "captured_excerpt_sha256": "daaf560edd053dda5a63ce7b3a37d80d17608fa4ddb16efc419b14c641995455",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Circle's dashboard as-of date is Nov 5, 2026.",
+        "Circle states weekly reserve and mint/burn disclosure and monthly third-party reserve assurance."
+      ],
+      "limitations": [
+        "Rendered extraction did not expose numeric balances or issuance/redemption amounts in this pass.",
+        "The page's reserve assurances do not establish XRP collateral or XRP purchases."
+      ]
+    },
+    {
+      "id": "cryptoeconomics_usdc_secondary_20261105",
+      "publisher": "Cryptoeconomics",
+      "source_type": "secondary_transcription_of_primary_dashboard",
+      "published_at_utc": null,
+      "as_of_date": "2026-11-05",
+      "url": "https://cryptoeconomics.com/data/stablecoin-supply-usdc/",
+      "evidence_family": "circle_usdc_issuer_dashboard_transcription",
+      "independence_group": "secondary_circle_dashboard_transcription",
+      "captured_excerpt_text": "A secondary Cryptoeconomics transcription of Circle's transparency page reports USDC circulation of approximately $69.21 billion as of 2026-11-05. This is a secondary transcription of Circle data, not an independent reserve attestation or separate issuer measurement.",
+      "captured_excerpt_sha256": "ffe97ba8fab6cd072bc07c8b3b1a408fca0fd1151ff170003c738261f19bc78d",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Secondary transcription reports USDC circulation about $69.21B as of Nov 5."
+      ],
+      "limitations": [
+        "Not a primary issuer value and not independent from Circle's dashboard; do not treat as a separate confirmation.",
+        "The ratio of RLUSD to USDC below is indicative only because the USDC value is secondary."
+      ]
+    },
+    {
+      "id": "coindaro_rlusd_xrpl_supply_event_20261102",
+      "publisher": "Coindaro",
+      "source_type": "secondary_onchain_analysis",
+      "published_at_utc": "2026-11-02",
+      "as_of_date": "2026-10-30",
+      "url": "https://www.coindaro.com/rlusd-supply-xrp-ledger-burns/",
+      "evidence_family": "rlusd_xrpl_supply_change_20261030",
+      "independence_group": "coindaro_secondary_analysis",
+      "captured_excerpt_text": "A secondary Coindaro report says XRPL RLUSD supply fell by about $284.4 million on 2026-10-30, from roughly $991.7 million to $707.4 million, through twelve large returns attributed to one unidentified wallet. It says Ethereum supply rose about $92.7 million and total RLUSD supply fell about $191.7 million. Ripple's explanation was not located. The figures are not independently verified in this capture.",
+      "captured_excerpt_sha256": "8709e3dcba15b97c1433f58daaae3fbce0b87e07a944db3ed70ca537970d5a07",
+      "hash_scope": "SHA-256 of the normalized paraphrase above; not page HTML or raw HTTP bytes.",
+      "claims": [
+        "Secondary report attributes a $284.4M XRPL supply decline to twelve returns from one unidentified wallet on Oct 30.",
+        "It reports a smaller Ethereum supply increase and a net total-supply decline."
+      ],
+      "limitations": [
+        "No primary Ripple explanation was found.",
+        "The wallet identity, transaction classification and supply accounting were not independently reproduced in this capture.",
+        "Potential explanations include redemption, issuer treasury rebalancing, cross-chain migration, month-end inventory movement or wallet consolidation; no directional inference is justified."
+      ]
+    }
+  ],
+  "balance_snapshot": {
+    "rlusd": {
+      "as_of_date": "2026-11-05",
+      "currency": "USD",
+      "circulating_supply_m": 2632.9,
+      "reserve_funds_m": 2748,
+      "reported_reserve_funds_excess_m": 115.1,
+      "reported_reserve_funds_to_circulation_ratio_pct": 104.37160545406205,
+      "reported_excess_as_pct_of_circulation_pct": 4.371605454062057,
+      "previous_snapshot": {
+        "as_of_date": "2026-10-29",
+        "circulating_supply_m": 2627,
+        "reserve_funds_m": 2758.6,
+        "reported_excess_m": 131.6,
+        "source_artifact": "20261105T054303Z-rlusd-institutional-custody-collateral-network.json"
+      },
+      "change_between_issuer_snapshots": {
+        "circulating_supply_change_m": 5.9,
+        "circulating_supply_change_pct": 0.22459078797107956,
+        "reserve_funds_change_m": -10.6,
+        "reserve_funds_change_pct": -0.38425288189660733,
+        "reported_excess_change_m": -16.5,
+        "coverage_ratio_change_percentage_points": -0.6379111047502732
+      },
+      "interpretation": "Two snapshots from the same issuer dashboard show modest supply growth and a lower displayed reserve-funds surplus. This is not evidence of under-reserving, a redemption event, XRP purchases or a reserve audit opinion. The Nov 5 dashboard is not itself a monthly CPA attestation.",
+      "model_eligible": false
+    },
+    "usdc": {
+      "as_of_date": "2026-11-05",
+      "circulating_supply_secondary_usd": 69210000000,
+      "primary_dashboard_as_of_date": "2026-11-05",
+      "primary_numeric_balance_visible_in_rendered_capture": false,
+      "secondary_source_id": "cryptoeconomics_usdc_secondary_20261105",
+      "rlusd_to_usdc_supply_ratio_secondary_pct": 3.804219043490825,
+      "interpretation": "Approximate scale comparison only; USDC amount is a secondary transcription of Circle's dashboard and must not be represented as a primary Circle balance.",
+      "model_eligible": false
+    },
+    "jpysc": {
+      "as_of_date": "2026-11-02",
+      "currency": "JPY",
+      "handling_balance_threshold": 30000000000,
+      "lending_balance_threshold": 10000000000,
+      "handling_balance_includes_lending_balance": true,
+      "lending_balance_is_additive_to_handling_balance": false,
+      "exact_balance_disclosed": false,
+      "public_chain_circulation_status": "FUTURE_OBJECTIVE_SUBJECT_TO_LEGAL_CHANGES",
+      "interpretation": "The reported JPY 30B-plus handling balance includes the JPY 10B-plus lending balance. The figures are thresholds, not exact values. Do not add them together or treat the total as public-chain supply, XRP liquidity or XRP collateral.",
+      "model_eligible": false
+    }
+  },
+  "entity_roles": {
+    "rlusd_issuer": "Standard Custody & Trust Company LLC, a Ripple subsidiary and NYDFS-chartered limited-purpose trust company.",
+    "ripple_national_trust_bank": "Separate Ripple group national trust bank; OCC filing consummated/effective 2026-10-26. Ripple describes reserve-management, collateral-trustee and fiduciary-custody permissions. Customer operations and actual balances are unverified.",
+    "bny": "Primary RLUSD reserve custodian; supports XRP and RLUSD custody for eligible institutional clients. No customer balances disclosed.",
+    "standard_chartered": "DIFC branch RLUSD custody on XRPL reported live; LMAX collateral mirroring remains planned.",
+    "coinbase": "RLUSD distribution/trading platform through Prime, Exchange and Retail; Coinbase Global Exchange collateral support future at launch.",
+    "sbi_vc_trade": "SBI Holdings consolidated subsidiary; RLUSD VCTRADE listing under SBI's Japanese Type 4 classification; launch notice limited deposits/withdrawals to Ethereum.",
+    "jpysc_issuer": "SBI Shinsei Trust Bank; SBI VC Trade distributes/services JPYSC and operates the customer lending product.",
+    "circle": "USDC issuer; Circle's dashboard provides weekly reserve/mint-burn disclosure and monthly assurance."
+  },
+  "custody_collateral_state": {
+    "bny_rlusd_xrp_custody": "LIVE_REPORTED_FOR_ELIGIBLE_INSTITUTIONAL_CLIENTS",
+    "bny_direct_rlusd_mint_redeem": "PLANNED_NOT_VERIFIED_LIVE",
+    "standard_chartered_rlusd_custody_on_xrpl": "LIVE_REPORTED",
+    "lmax_rlusd_collateral_mirroring": "PLANNED_NOT_LIVE",
+    "coinbase_prime_exchange_retail_rlusd_access": "LIVE_REPORTED",
+    "coinbase_global_exchange_rlusd_collateral": "FUTURE_NOT_LIVE_IN_LAUNCH_ANNOUNCEMENT",
+    "sbi_vctrade_rlusd_chain_support_at_launch": [
+      "Ethereum"
+    ],
+    "sbi_vctrade_xrpl_rlusd_deposits_withdrawals": "NOT_CONFIRMED_BY_REVIEWED_PRIMARY_NOTICE",
+    "ripple_national_trust_bank_customer_operations": "NOT_VERIFIED_COMMENCED"
+  },
+  "relationship_graph": {
+    "edges": [
+      {
+        "from": "Standard Custody & Trust Company LLC",
+        "to": "RLUSD",
+        "type": "issuer",
+        "status": "CURRENT_ISSUER"
+      },
+      {
+        "from": "Ripple National Trust Bank",
+        "to": "RLUSD reserve management/collateral trustee/fiduciary custody",
+        "type": "OCC-approved bank activities",
+        "status": "EFFECTIVE_2026-10-26_COMMENCEMENT_UNVERIFIED"
+      },
+      {
+        "from": "BNY",
+        "to": "RLUSD reserves",
+        "type": "primary reserve custodian",
+        "status": "LIVE_REPORTED"
+      },
+      {
+        "from": "BNY",
+        "to": "XRP and RLUSD",
+        "type": "institutional custody",
+        "status": "LIVE_REPORTED_FOR_ELIGIBLE_CLIENTS"
+      },
+      {
+        "from": "Standard Chartered DIFC Branch",
+        "to": "RLUSD on XRPL",
+        "type": "institutional custody",
+        "status": "LIVE_REPORTED"
+      },
+      {
+        "from": "Standard Chartered + Ripple + LMAX",
+        "to": "RLUSD collateral mirroring",
+        "type": "planned collateral integration",
+        "status": "PLANNED_NOT_LIVE"
+      },
+      {
+        "from": "Coinbase",
+        "to": "RLUSD",
+        "type": "distribution/trading",
+        "status": "LIVE_REPORTED"
+      },
+      {
+        "from": "Coinbase Global Exchange",
+        "to": "RLUSD collateral",
+        "type": "collateral eligibility",
+        "status": "FUTURE_NOT_LIVE_AT_LAUNCH"
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "RLUSD",
+        "type": "Japan VCTRADE distribution/listing",
+        "status": "LIVE_REPORTED_ETHEREUM_ONLY_AT_LAUNCH"
+      },
+      {
+        "from": "SBI Shinsei Trust Bank",
+        "to": "JPYSC",
+        "type": "issuer",
+        "status": "LIVE_REPORTED"
+      },
+      {
+        "from": "SBI VC Trade",
+        "to": "JPYSC",
+        "type": "distribution and customer lending product",
+        "status": "LIVE_REPORTED"
+      }
+    ],
+    "not_established": [
+      "Any XRP purchase attributable to RLUSD or JPYSC distribution.",
+      "Any actual XRP or RLUSD customer custody balance at BNY, Standard Chartered, Coinbase or SBI VC Trade.",
+      "Any RLUSD collateral actually posted or accepted on Coinbase Global Exchange or LMAX.",
+      "Any direct XRP settlement flow arising from the SBI JPYSC handling/lending balance.",
+      "Any direct Circle-Ripple equity or control relationship from these announcements.",
+      "Any SBI Holdings involvement by Japan's SBIC East/Central/West statutory regional investment companies."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "RLUSD growth and custody support can expand XRPL stablecoin utility and marginal XRP fee/reserve usage.",
+      "required_discriminating_data": [
+        "RLUSD supply by chain",
+        "XRPL RLUSD transfer counts/value",
+        "unique active accounts",
+        "XRP fee burn and reserve lock changes",
+        "cross-chain bridge flows"
+      ],
+      "status": "PLAUSIBLE_NOT_QUANTIFIED"
+    },
+    {
+      "id": "H2",
+      "hypothesis": "RLUSD growth may be concentrated on Ethereum, Base, centralized exchange custody or treasury balances, producing little measurable incremental XRP demand.",
+      "required_discriminating_data": [
+        "RLUSD supply by chain",
+        "Coinbase/BNY/SBI balances",
+        "XRPL vs EVM transfer share",
+        "net XRP exchange flows"
+      ],
+      "status": "PLAUSIBLE_NOT_DISPROVEN"
+    },
+    {
+      "id": "H3",
+      "hypothesis": "The reported 2026-10-30 XRPL RLUSD supply decline could reflect issuer treasury rebalancing, cross-chain migration, month-end inventory movement, redemption or wallet consolidation.",
+      "required_discriminating_data": [
+        "primary XRPL ledger transaction replay",
+        "issuer/treasury address attribution",
+        "Ethereum mint/burn reconciliation",
+        "issuer redemption explanation"
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H4",
+      "hypothesis": "JPYSC handling/lending growth indicates product adoption and customer lending, but not public-chain settlement or XRP liquidity.",
+      "required_discriminating_data": [
+        "issuer-defined ledger balances",
+        "public-chain launch confirmation",
+        "payment transaction volume",
+        "XRP conversion/settlement evidence"
+      ],
+      "status": "SUPPORTED_AS_A_LIMITATION"
+    }
+  ],
+  "source_disagreement_and_independence": [
+    "Ripple and Coinbase published separate statements about the same Oct 28 RLUSD integration; treat them as counterparty confirmation of one event, not two independent usage measurements.",
+    "Ripple's Nov 5 dashboard and Oct 29 dashboard are two observations from the same issuer source family, not independent reserve attestations.",
+    "Circle's Nov 5 primary page exposed the as-of date and assurance policy but not numeric balances in the rendered capture; the $69.21B value is a secondary transcription.",
+    "The SBI JPYSC release reports thresholds above JPY 30B and JPY 10B; the lending balance is included in the handling total and exact values are undisclosed.",
+    "The OCC CAS record independently confirms Ripple National Trust Bank's approval/effective dates; the specific activity summary is separately attributed to Ripple's company announcement.",
+    "The Coindaro XRPL RLUSD supply event is secondary and was not independently replayed from ledger transactions in this capture."
+  ],
+  "model_admission": {
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "reason": "Stablecoin issuance/custody and institutional relationship evidence is not synchronized XRP spot/order-book/flow data. No actual XRP balances, collateral utilization, net XRP purchases or executable payment-rail volume were disclosed."
+  },
+  "next_evidence_requirements": [
+    "Capture Circle's numerical USDC dashboard fields or official reserve report bytes with source timestamp and SHA-256.",
+    "Capture Ripple's full Nov 5 reserve report and dashboard raw response, preserving the monthly attestation separately from the dashboard snapshot.",
+    "Reproduce the Oct 30 RLUSD XRPL supply change from ledger transactions and identify the issuer/treasury wallet before interpreting the event.",
+    "Obtain dated SBI VC Trade operational confirmation of any XRPL RLUSD deposit/withdrawal support after the Ethereum-only launch notice.",
+    "Obtain actual institutional XRP/RLUSD custody and collateral balances or explicit non-disclosure status; do not infer from platform capability.",
+    "Measure RLUSD and JPYSC payment volumes and XRP conversion/settlement legs before attributing any XRP demand."
+  ]
+}

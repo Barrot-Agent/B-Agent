@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "fixed_horizon_forecast_ledger_and_feature_store_design",
+  "captured_at_utc": "2026-11-03T21:14:27.613Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "fada1c0712894e92f301e2cb5e6aa098280bfbe8",
+  "status": "EXECUTED_PENDING_CI_AND_REVIEW",
+  "components": [
+    {
+      "path": "barrot_agent/evolution/forecast_ledger.py",
+      "status": "EXECUTED_PROPOSED",
+      "description": "SQLite append-only forecast/outcome/event ledger; deterministic IDs; fixed horizons; UTC and look-ahead checks; immutable row guards; Brier/log-loss and baseline scoring; cohort-separated summaries."
+    },
+    {
+      "path": "tests/test_forecast_ledger.py",
+      "status": "EXECUTED_PROPOSED",
+      "test_count": 22,
+      "description": "Covers idempotency, horizons, timestamps, leakage, probability validity, outcome tolerance, cross-venue normalization, unscorable outcomes, immutability, calibration bins and cohort separation."
+    },
+    {
+      "path": "research/xrp_intelligence/forecast-ledger-contract.md",
+      "status": "DESIGNED_AND_DOCUMENTED"
+    },
+    {
+      "path": "research/xrp_intelligence/feature-store-contract.md",
+      "status": "DESIGNED_ONLY"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "status": "EXECUTED_PROPOSED",
+      "description": "Explicitly includes the new forecast-ledger test module."
+    },
+    {
+      "path": ".gitignore",
+      "status": "EXECUTED_PROPOSED",
+      "description": "Excludes SQLite runtime DB and WAL/SHM/journal sidecars."
+    }
+  ],
+  "limits": [
+    "Ledger records and scores; it does not generate forecasts, ingest data, train or trade.",
+    "SQLite triggers are not cryptographic tamper protection.",
+    "Feature-store contract is design only; no adapter or historical database is implemented.",
+    "Missing outcome data is unscorable, not a miss.",
+    "Metrics are cohort-separated; unlike horizons and venues are not pooled."
+  ],
+  "verification_required": [
+    "CI must collect and pass all 22 tests in tests/test_forecast_ledger.py.",
+    "Fail-closed gate must pass and automatic merging remain disabled.",
+    "Exact-head readback must confirm runtime DB ignore rules and CI test inclusion."
+  ],
+  "next_actions": [
+    "Implement point-in-time feature snapshot validator.",
+    "Build public-data adapters with source provenance and revision timestamps.",
+    "Populate historical XRP snapshots without backdating source availability.",
+    "Run chronological walk-forward tests against simple baselines.",
+    "Add class-wise calibration, uncertainty and drift before shadow/paper evaluation."
+  ],
+  "safety": {
+    "live_ingestion": false,
+    "forecast_generation": false,
+    "paper_trading": false,
+    "real_money_trading": false,
+    "external_actions": false,
+    "merge": false
+  }
+}

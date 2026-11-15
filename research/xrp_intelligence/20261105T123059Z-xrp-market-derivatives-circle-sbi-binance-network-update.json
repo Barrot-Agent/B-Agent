@@ -1,0 +1,307 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_market_derivatives_circle_sbi_binance_network_update_20261105",
+  "title": "XRP spot, derivatives, ETF-flow, Circle/Coinbase/SBI and Binance network-status reconciliation",
+  "retrieved_at_utc": "2026-11-05T12:30:59Z",
+  "retrieval_time_semantics": "The retrieval timestamp is the research capture window time. Provider event/publication times are stored separately and are not replaced by this timestamp.",
+  "raw_capture": {
+    "status": "rendered_web_page_and_api_response_text_only",
+    "raw_source_bytes_preserved": false,
+    "sha256": null,
+    "independent_timestamp_anchor": false,
+    "model_eligible": false,
+    "reason": "The web retrieval exposed rendered response content, not byte-complete source files and transport headers. No SHA-256 or independent timestamp anchor is claimed."
+  },
+  "market_snapshot": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD",
+    "captured_at_utc": "2026-11-05T12:30:59Z",
+    "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "last_trade_usd": 1.31254,
+    "best_bid_usd": 1.31252,
+    "best_ask_usd": 1.31253,
+    "midpoint_usd": 1.312525,
+    "displayed_spread_usd": 0.00001,
+    "displayed_spread_bps": 0.07618902497145207,
+    "best_bid_displayed_size_xrp": 191,
+    "best_ask_displayed_size_xrp": 5402,
+    "ask_to_bid_top_level_size_ratio": 28.282722513089006,
+    "volume_24h_xrp": 33825539.83951506,
+    "vwap_24h_usd": 1.31114102,
+    "high_24h_usd": 1.34,
+    "low_24h_usd": 1.27488,
+    "daily_open_usd": 1.3041,
+    "daily_open_semantics": "Kraken ticker field o is today's open, not a 24-hour open.",
+    "trade_count_24h": 30952,
+    "interpretation_limits": [
+      "One venue only; no consolidated NBBO or cross-venue depth.",
+      "One top-of-book level only; displayed sizes are transient and not executable-depth curves.",
+      "The 28.28 ask/bid size ratio is a single snapshot and is not a stable liquidity imbalance estimate.",
+      "The last trade can differ from the current displayed ask because trades and book updates are asynchronous."
+    ],
+    "model_eligible": false
+  },
+  "derivatives": {
+    "retrieved_at_utc": "2026-11-05T12:30:59Z",
+    "observations": [
+      {
+        "provider": "TradRadar",
+        "source_url": "https://tradradar.io/markets/xrp",
+        "provider_updated_at_utc": "2026-11-05T11:45:00Z",
+        "provider_delay": "approximately 15 minutes",
+        "venue_scope": "seven exchanges: Binance, Bybit, Gate, Bitget, MEXC, Hyperliquid and OKX",
+        "aggregate_open_interest_usd": 2080000000,
+        "aggregate_open_interest_change_24h_pct": 2.46,
+        "binance_open_interest_usd": 543300000,
+        "oi_weighted_funding_pct_per_8h": 0.01,
+        "liquidations_24h_floor_usd": 4930000,
+        "short_liquidations_usd": 3600000,
+        "long_liquidations_usd": 1330000,
+        "long_short_account_ratio": 3.17,
+        "long_account_fraction_pct": 76,
+        "long_short_ratio_scope": "five exchanges; account-count ratio, not notional exposure"
+      },
+      {
+        "provider": "Seandra AI",
+        "source_url": "https://seandra.ai/perp/xrp",
+        "provider_updated_at_utc": "2026-11-05T11:55:00Z",
+        "venue_scope": "Binance XRPUSDT perpetual",
+        "open_interest_usd": 454300000,
+        "open_interest_change_24h_pct": -0.2,
+        "open_interest_change_7d_contract_units_pct": 13,
+        "funding_pct_per_period": 0.01,
+        "accounts_long_pct": 72,
+        "top_traders_long_by_size_pct": 69,
+        "liquidations_24h_floor_usd": 2500000,
+        "liquidation_direction": "mostly shorts"
+      }
+    ],
+    "unresolved_same_venue_disagreement": {
+      "venue": "Binance XRP perpetual",
+      "tradradar_open_interest_usd": 543300000,
+      "seandra_open_interest_usd": 454300000,
+      "absolute_difference_usd": 89000000,
+      "tradradar_above_seandra_pct": 19.590578912612795,
+      "resolution": "Do not average. The providers' contract scope, mark-price conversion, capture times and aggregation methods are not sufficiently documented to reconcile this difference."
+    },
+    "interpretation": [
+      "Positive funding and a high long-account fraction indicate long-side crowding risk, not a directional forecast.",
+      "Short liquidations exceed long liquidations in the TradRadar observation; a short-covering component is plausible.",
+      "TradRadar's seven-venue OI rises while Seandra's Binance-only USD OI is nearly flat. These observations can coexist if other venues drove aggregate growth, but the Binance component itself disagrees materially.",
+      "Account ratios are not position notionals, and reported liquidations are lower bounds."
+    ],
+    "source_independence": "TradRadar and Seandra are separate aggregators but share Binance as an upstream venue for overlapping data. They are not independent economic sources.",
+    "model_eligible": false
+  },
+  "etf_flows": {
+    "provider": "XRP Insights",
+    "source_url": "https://xrp-insights.com/data",
+    "machine_readable_sources": [
+      "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "https://xrp-insights.com/data/xrp-etf-totals.json"
+    ],
+    "generated_at_utc": {
+      "per_fund": "2026-11-05T11:08:16.889Z",
+      "totals": "2026-11-05T11:45:08.741Z"
+    },
+    "data_as_of": "2026-11-04",
+    "trading_days_covered": 229,
+    "fund_rows": 1583,
+    "net_flow_nov_2_to_4_xrp": -259701,
+    "net_flow_nov_2_to_4_usd_approx": -335000,
+    "total_holdings_xrp": 1196340485,
+    "total_aum_usd_approx": 1550830000,
+    "net_flow_as_pct_of_total_holdings": -0.021707950475319742,
+    "row_semantics": {
+      "flow_status_computed": "Holdings delta; not an issuer-reported AP cash creation/redemption record.",
+      "flow_status_initial": "Starting balance, not a flow.",
+      "flow_status_excluded": "Known capture gap; excluded from computed flow and contributes nothing to the aggregate.",
+      "row_status_settled": "Final row.",
+      "row_status_provisional": "May be rewritten by next-morning settlement.",
+      "row_status_reconstructed": "Daily split estimated from third-party flow estimates between issuer-reported anchors."
+    },
+    "scope_warnings": [
+      "The seven-fund universe includes BITW, a diversified multi-asset index sleeve whose XRP holdings can change through index rebalancing.",
+      "GXRP flow is excluded because its issuer page was inaccessible from September 2 to September 28; its later holdings catch-up must not be booked as one day's flow.",
+      "XRPR includes some indirect ETP exposure rather than exclusively direct XRP holdings.",
+      "Changes below 100 XRP are rounded to zero by the publisher.",
+      "Holdings-derived changes can reflect fees or index rebalancing as well as creations/redemptions.",
+      "The reported three-day net outflow is approximately 0.0217% of tracked XRP holdings; it is small relative to the stock of holdings."
+    ],
+    "model_eligible": false
+  },
+  "institutional_and_network": {
+    "circle_q3_2026": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+      "filing_accession": "0001876042-26-000309",
+      "report_date": "2026-11-04",
+      "average_usdc_circulation_usd": 73300000000,
+      "average_usdc_circulation_yoy_pct": 8,
+      "end_period_usdc_circulation_usd": 73900000000,
+      "end_period_usdc_circulation_yoy_pct": 0,
+      "usdc_onchain_transaction_volume_q3_usd": 13900000000000,
+      "usdc_onchain_transaction_volume_yoy_pct": 49,
+      "reserve_income_usd": 658000000,
+      "reserve_income_yoy_pct": -8,
+      "reserve_return_rate_pct": 3.5,
+      "reserve_return_rate_yoy_change_bps": -61,
+      "other_revenue_usd": 207000000,
+      "other_revenue_yoy_pct": 627,
+      "arc_token_presale_revenue_usd": 182000000,
+      "total_revenue_and_reserve_income_usd": 865000000,
+      "adjusted_ebitda_usd": 317000000,
+      "adjusted_ebitda_yoy_pct": 85,
+      "usdc_minted_q3_usd_rounded": 104000000000,
+      "usdc_redeemed_q3_usd_rounded": 104000000000,
+      "circle_payments_network_annualized_tpv_usd": 41300000000,
+      "tazapay_acquisition_status": "Definitive agreement signed; expected to close in 2027 subject to regulatory approvals.",
+      "tazapay_annualized_payment_volume_usd_reported": 25000000000,
+      "tazapay_partners_reported": 60,
+      "tazapay_local_payout_markets_reported": 100,
+      "tazapay_share_of_transaction_volume_with_stablecoins_pct_reported": 60,
+      "arc_mainnet_status": "Launched September 16, 2026 with native USDC integration and 100+ institutional/ecosystem builders on day one.",
+      "interpretation_limits": [
+        "USDC transaction volume is gross on-chain transfer volume, not net issuance, unique payments, XRP settlement volume or incremental XRP demand.",
+        "The rounded $104B minted and $104B redeemed figures do not establish an exactly zero net flow.",
+        "End-period USDC circulation was flat year over year despite average circulation growth.",
+        "Reserve income declined while other revenue included $182M from the ARC token presale; EBITDA growth must not be attributed solely to USDC reserve economics.",
+        "Tazapay has not been acquired yet; its stated volumes are target-company metrics, not Circle realized volume.",
+        "Arc is a competing Circle-controlled settlement/network strategy that may reduce dependence on external ledgers."
+      ],
+      "model_eligible": false
+    },
+    "coinbase_q3_2026": {
+      "source_url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "report_date": "2026-10-29",
+      "crypto_trading_volume_market_share_pct": 10.7,
+      "average_usdc_held_in_coinbase_products_usd": 22000000000,
+      "average_usdc_held_yoy_pct": 49,
+      "average_usdc_held_as_pct_of_average_usdc_market_cap_approx": 30,
+      "subscription_and_services_share_of_net_revenue_pct": 49,
+      "assets_on_platform_as_pct_of_total_crypto_market_cap_pct": 12.5,
+      "adjusted_ebitda_usd": 333000000,
+      "net_income_usd": 719000000,
+      "coinbase_clearing_status": "CFTC-approved DCO; Coinbase describes a USDC-native clearinghouse with 24/7 settlement.",
+      "interpretation_limits": [
+        "USDC held in Coinbase products is not XRP holdings or XRP collateral.",
+        "Coinbase's reported USDC economics and market share are company-reported, not independently audited XRP demand.",
+        "Coinbase Clearing's USDC collateral design is not evidence of XRP collateral eligibility."
+      ],
+      "model_eligible": false
+    },
+    "coinbase_rlusd_distribution": {
+      "source_url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "announced": "2026-10-28",
+      "supported_at_launch": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "products": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase retail app"
+      ],
+      "global_exchange_rlusd_collateral": "Future availability; not live at launch.",
+      "ripple_base_liquidity": "Ripple said it would provide liquidity on Base.",
+      "interpretation": "Coinbase is a distribution/trading venue; Ripple's Standard Custody & Trust Company is the issuer. No XRP bridge volume or RLUSD settlement volume was disclosed.",
+      "model_eligible": false
+    },
+    "coinbase_custody_security_claim": {
+      "source_url": "https://www.coinbase.com/blog/how-coinbase-protects-customer-assets",
+      "announced": "2026-11-04",
+      "company_reported_cold_storage_pct": ">99",
+      "company_reported_customer_asset_backing": "1:1",
+      "company_reported_lending_policy": "Customer assets are not lent or used unless customers instruct Coinbase.",
+      "company_reported_binance_incident_impact": "Coinbase said it was not impacted.",
+      "source_status": "Coinbase self-description; not an independent audit or proof of XRP-specific custody balances."
+    },
+    "sbi_visa_crypto_rewards": {
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "announced": "2026-05-01",
+      "parties": [
+        "SBI VC Trade",
+        "Aplus",
+        "Visa"
+      ],
+      "supported_reward_assets": [
+        "BTC",
+        "ETH",
+        "XRP"
+      ],
+      "mechanism": "Card reward points can be automatically converted into the crypto asset selected by the cardholder and credited to an SBI VC Trade account.",
+      "interpretation_limits": [
+        "This is a retail distribution/rewards channel, not evidence of direct card-funded XRP purchases.",
+        "No XRP reward conversion volume, cardholder count, market execution or net spot demand was disclosed."
+      ],
+      "model_eligible": false
+    },
+    "sbi_vctrade_rlusd": {
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "announced": "2026-06-24",
+      "legal_classification": "SBI VC Trade classified RLUSD as a Japanese No. 4 electronic payment instrument for its VCTRADE service.",
+      "issuer": "Standard Custody & Trust Company, LLC, a Ripple subsidiary.",
+      "fees": "SBI announced no-fee deposits and withdrawals.",
+      "network_scope": {
+        "official_release": "The SBI official release does not name the supported chain.",
+        "secondary_launch_reporting": "New Economy reported Ethereum-only support at launch: https://www.neweconomy.jp/posts/586315",
+        "current_status": "No later official SBI VC Trade announcement confirming XRPL deposit/withdrawal support was found in this research.",
+        "global_rlusd_networks": "RLUSD exists natively on Ethereum and XRPL; global support must not be confused with SBI's domestic service network."
+      },
+      "model_eligible": false
+    },
+    "binance_post_incident_withdrawal_networks": {
+      "source_url": "https://www.binance.com/en/square/post/11-03-2026-binance-will-restore-more-asset-withdrawal-services-384130583013446",
+      "announced": "2026-11-03",
+      "status": "Gradual resumption after per-asset/network security checks; not all pairs enabled simultaneously.",
+      "bsc_network_asset_list_includes": "XRP",
+      "xrp_ledger_network_asset_string": "RLUSDFD",
+      "deposits": "Binance said deposits were operating normally.",
+      "loss_allocation": "Binance said it would bear losses from the stolen funds rather than pass them to users.",
+      "interpretation_limits": [
+        "The BSC XRP entry is a network-specific representation and does not establish native XRPL XRP withdrawal status.",
+        "The XRP-network entry is the exact publisher string RLUSDFD; do not silently normalize it to RLUSD without token-issuer/contract verification.",
+        "This notice does not establish recovery of stolen XRP or customer-level restoration amounts."
+      ],
+      "model_eligible": false
+    }
+  },
+  "source_independence": {
+    "kraken": "Primary exchange API for its own XRP/USD ticker only.",
+    "tradradar_and_seandra": "Separate aggregators with overlapping Binance upstream data; not independent economic observations.",
+    "xrp_insights": "Aggregator using issuer holdings pages; holdings-derived flow estimates are not issuer AP cash-flow reports.",
+    "circle_sec": "Primary issuer filing hosted by SEC; Circle pressroom republication would not count as an independent source.",
+    "coinbase": "Primary company disclosures for Coinbase products, performance and custody claims.",
+    "sbi": "Primary company disclosures for SBI card and RLUSD distribution; secondary network support reporting is explicitly separated.",
+    "binance": "Primary exchange notice for its own withdrawal/network status."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "derivatives_short_covering_with_long_crowding",
+      "statement": "The short-liquidation skew and rising multi-venue OI are consistent with a short-covering component, while positive funding and a 76% long-account share indicate crowding risk.",
+      "disconfirming_evidence": "Seandra reports Binance USD OI nearly flat over 24 hours; provider OI values disagree materially for Binance."
+    },
+    {
+      "id": "spot_led_accumulation",
+      "statement": "A spot-led advance remains possible if unobserved venues or OTC flows absorbed supply while aggregate derivatives OI increased.",
+      "disconfirming_evidence": "The current ETF aggregate shows small net outflows; no synchronized cross-venue spot trade imbalance or verified exchange-wallet netflow is present."
+    },
+    {
+      "id": "stablecoin_rail_growth_without_xrp_demand",
+      "statement": "USDC and RLUSD expansion on XRPL can increase ledger activity and dollar liquidity while some settlement routes bypass XRP as a bridge asset.",
+      "disconfirming_evidence": "Coinbase RLUSD launch on XRPL and SBI/Ripple distribution can increase access and possible complementarity, but route-level XRP usage is undisclosed."
+    }
+  ],
+  "model_eligibility": {
+    "eligible_sources": 0,
+    "directional_forecast_issued": false,
+    "forecast_status": "NOT_ISSUED",
+    "reasons": [
+      "Rendered captures do not have byte-complete raw receipts and independent timestamp anchors.",
+      "Derivatives providers disagree materially on Binance open interest.",
+      "ETF flow figures are holdings-derived and include product-specific caveats.",
+      "No synchronized venue-level spot order-book/trade imbalance, verified exchange-wallet flow or route-level XRP payment volume is included.",
+      "Circle and Coinbase corporate disclosures do not establish XRP-specific demand."
+    ]
+  }
+}

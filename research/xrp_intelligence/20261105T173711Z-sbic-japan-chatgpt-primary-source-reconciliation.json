@@ -1,0 +1,112 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "sbic_japan_chatgpt_primary_source_reconciliation_20261105T173711Z",
+  "artifact_type": "primary_source_entity_and_training_event_reconciliation",
+  "recorded_at_utc": "2026-11-05T17:37:11Z",
+  "research_cutoff_utc": "2026-11-05T17:37:11Z",
+  "append_only": true,
+  "entity_resolution": {
+    "japan_regional_sbic_network": "Small and Medium Business Investment & Consultation companies operating in East/Tokyo, Central/Nagoya and West/Osaka regions.",
+    "sbic_east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社)",
+    "sbic_central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (名古屋中小企業投資育成株式会社)",
+    "sbic_west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (大阪中小企業投資育成株式会社)",
+    "distinction": "These regional SBIC entities are not SBI Holdings. The training events below are not evidence of an OpenAI commercial partnership, API contract, equity relationship or enterprise deployment."
+  },
+  "source_registry": [
+    {
+      "source_id": "sbic_west_investment_forum_128_20241023",
+      "publisher": "SBIC West Japan / Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_pdf",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "published_event_date": "2024-10-23",
+      "retrieved_at_utc": "2026-11-05T17:37:11Z",
+      "primary_source": true,
+      "content": {
+        "publication": "Investment Forum No.128",
+        "event_title": "Generative AI introductory seminar for accounting firms and support organizations",
+        "explicit_chatgpt_reference": true,
+        "format": "in person plus Zoom",
+        "venue": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. seminar room, Nakanoshima Daibiru 28F, Osaka",
+        "time_local": "14:00–15:30",
+        "fee_jpy": 0,
+        "capacity_approx": 30,
+        "registration_deadline": "2024-10-16",
+        "lecturer": "Taichi Kakinuma, representative partner attorney, STORIA Law Firm",
+        "audience": "accounting firms and support institutions"
+      },
+      "interpretation": "SBIC West publicly hosted a ChatGPT-referencing generative-AI seminar in 2024. The PDF names an external lecturer and does not describe an OpenAI partnership or SBI Holdings program."
+    },
+    {
+      "source_id": "sbic_east_manufacturing_genai_ml_course_20250612",
+      "publisher": "SBIC East / Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_training_page",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "published_event_dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "retrieved_at_utc": "2026-11-05T17:37:11Z",
+      "primary_source": true,
+      "content": {
+        "event_title": "Introduction to generative AI and machine learning for manufacturing (two days)",
+        "explicit_chatgpt_reference": true,
+        "day_one": "Generative AI and machine-learning basics, tools and ChatGPT usage",
+        "day_two": "Generative-AI workflows, Microsoft Copilot, prompting and business use, information-leakage risks, RAG and API/no-code implementation",
+        "audience": "beginner companies seeking to introduce generative AI and machine learning",
+        "eligibility": "investee companies only; general companies not eligible",
+        "fee_jpy": 35000,
+        "capacity": 25,
+        "lecturer": "Takashi Otsuka, VOST Education Division"
+      },
+      "interpretation": "SBIC East offered a practical training course to its investee companies, with ChatGPT explicitly in the curriculum and Copilot also covered. This is training, not evidence of an OpenAI contract or SBI Holdings enterprise deployment."
+    },
+    {
+      "source_id": "sbic_central_chatgpt_search_scope_20261105",
+      "publisher": "SBIC Central / Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "targeted_public_web_search",
+      "retrieved_at_utc": "2026-11-05T17:37:11Z",
+      "primary_source": false,
+      "queries": [
+        "site:sbic-cj.co.jp ChatGPT generative AI training",
+        "site:sbic-cj.co.jp ChatGPT"
+      ],
+      "finding_status": "no explicit ChatGPT-branded event located in this search",
+      "interpretation_limit": "Search non-discovery is not proof that SBIC Central has never held an AI or ChatGPT event. No absence claim is made."
+    }
+  ],
+  "chronology": [
+    {
+      "date": "2024-10-23",
+      "entity": "SBIC West",
+      "event": "Free ChatGPT-referencing generative-AI seminar for accounting firms and support institutions."
+    },
+    {
+      "date": "2025-06-12/13",
+      "entity": "SBIC East",
+      "event": "Two-day manufacturing generative-AI/ML course for investee companies; ChatGPT day one and Copilot day two."
+    }
+  ],
+  "exact_phrase_resolution": {
+    "phrase": "SBIC, ChatGPT SBIC",
+    "finding": "There are primary-source examples of two different Japanese regional SBIC companies running training that explicitly mentions ChatGPT: SBIC West in 2024 and SBIC East in 2025.",
+    "not_established": [
+      "Direct OpenAI partnership",
+      "OpenAI API or enterprise contract",
+      "SBI Holdings sponsorship or ownership of the regional SBIC companies",
+      "XRP, Ripple, Coinbase or Circle connection"
+    ],
+    "separate_academic_meaning": "SBIC can also mean Social Bias Inference Corpus in AI research; that academic corpus is unrelated to the Japanese investment companies."
+  },
+  "source_capture_policy": {
+    "raw_pdf_or_html_bytes_preserved": false,
+    "raw_source_sha256_receipts": null,
+    "independent_timestamp_anchor": false,
+    "model_eligible": false,
+    "reason": "Primary-source pages/PDF were inspected through rendered web retrieval; no byte-exact original HTTP/PDF payload was archived into the repository receipt chain."
+  },
+  "next_actions": [
+    "Obtain byte-exact PDF and HTML captures with SHA-256 receipts through the approved ingestion adapter.",
+    "Continue targeted SBIC Central official-site and company-report searches without treating search non-discovery as proof of absence.",
+    "Keep Japanese SBIC entities separate from SBI Holdings and from the academic Social Bias Inference Corpus."
+  ]
+}

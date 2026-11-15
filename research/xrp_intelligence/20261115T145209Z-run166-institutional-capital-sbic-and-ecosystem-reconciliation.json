@@ -1,0 +1,423 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "Run166",
+  "captured_at_utc": "2026-11-15T14:52:09.159Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run166_commit": "22bda14bbb39fd9ff3dc3ee350a0f320b63f6266",
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "commits_ahead": 2506,
+    "commits_behind": 0,
+    "changed_files": 1254,
+    "additions": 351199,
+    "deletions": 6309
+  },
+  "status": {
+    "research": "EXECUTED",
+    "source_byte_capture": "NOT_EXECUTED",
+    "raw_source_hashes": "NOT_CAPTURED",
+    "prediction": "NOT_ISSUED",
+    "out_of_sample_accuracy": "NOT_EVALUATED",
+    "shadow_evaluation": "NOT_EXECUTED"
+  },
+  "source_capture_policy": {
+    "retrieval_method": "Public web search and opened publisher pages",
+    "raw_bytes_retained": false,
+    "raw_source_sha256": null,
+    "hash_claims_made": false,
+    "reason": "This run captured publisher metadata and extracted page text, not byte-exact source responses. No normalized excerpt hash is represented as a raw-source hash.",
+    "immutable_receipt_status": "NOT_VERIFIED"
+  },
+  "source_provenance": [
+    {
+      "id": "evernorth_sec_2026_11_13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+      "published_at": "2026-11-13",
+      "evidence_level": "PRIMARY_REGULATORY_FILING_ISSUER_AUTHORED",
+      "independence_group": "EVERNORTH_ISSUER",
+      "raw_source_sha256": null,
+      "notes": "424B3 supplement containing the unaudited September 30, 2026 quarterly financial statements and post-combination disclosures"
+    },
+    {
+      "id": "sbi_fy2026_presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "published_at": "2026-05-01",
+      "evidence_level": "PRIMARY_ISSUER_PRESENTATION",
+      "independence_group": "SBI_HOLDINGS",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbi_new_year_2026",
+      "url": "https://www.sbigroup.co.jp/english/others/newyear/2026.html",
+      "published_at": "2026-01-05",
+      "evidence_level": "PRIMARY_ISSUER_STATEMENT",
+      "independence_group": "SBI_HOLDINGS",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbi_ripple_asia",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "published_at": null,
+      "evidence_level": "PRIMARY_GROUP_COMPANY_PROFILE",
+      "independence_group": "SBI_RIPPLE_ASIA",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbi_circle_investment",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "published_at": "2025-06-09",
+      "evidence_level": "PRIMARY_ISSUER_RELEASE",
+      "independence_group": "SBI_HOLDINGS",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "circle_japan_sbi",
+      "url": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "published_at": null,
+      "evidence_level": "PRIMARY_ISSUER_RELEASE",
+      "independence_group": "CIRCLE",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "circle_arc_mainnet",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "published_at": "2026-09-16",
+      "evidence_level": "PRIMARY_ISSUER_RELEASE",
+      "independence_group": "CIRCLE",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "circle_q3_2026",
+      "url": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results",
+      "published_at": "2026-11-04",
+      "evidence_level": "PRIMARY_ISSUER_FINANCIAL_RESULTS",
+      "independence_group": "CIRCLE",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "coinbase_q3_2026",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "published_at": "2026-10-29",
+      "evidence_level": "PRIMARY_ISSUER_FINANCIAL_RESULTS",
+      "independence_group": "COINBASE",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "coinbase_rlusd_listing",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "published_at": "2026-10-28",
+      "evidence_level": "PRIMARY_ISSUER_PRODUCT_RELEASE",
+      "independence_group": "COINBASE",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "coinbase_asset_disclosures",
+      "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
+      "published_at": "2026-03-31",
+      "evidence_level": "PRIMARY_ISSUER_LEGAL_DISCLOSURE",
+      "independence_group": "COINBASE",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbic_east_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "published_at": null,
+      "evidence_level": "PRIMARY_COMPANY_PROFILE",
+      "independence_group": "SBIC_EAST",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbic_central_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "published_at": null,
+      "evidence_level": "PRIMARY_COMPANY_PROFILE",
+      "independence_group": "SBIC_CENTRAL",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbic_west_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "published_at": null,
+      "evidence_level": "PRIMARY_COMPANY_PROFILE",
+      "independence_group": "SBIC_WEST",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "sbic_chatgpt_training",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "published_at": "2025-06-12",
+      "evidence_level": "PRIMARY_COMPANY_TRAINING_PAGE",
+      "independence_group": "SBIC_EAST",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "permission_ask_token",
+      "url": "https://docs.permission.ai/ask-token",
+      "published_at": null,
+      "evidence_level": "PRIMARY_TOKEN_DOCUMENTATION",
+      "independence_group": "PERMISSION",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "permission_ask_contracts",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "published_at": null,
+      "evidence_level": "PRIMARY_TOKEN_CONTRACT_DOCUMENTATION",
+      "independence_group": "PERMISSION",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "permission_coinbase_wallet",
+      "url": "https://www.permission.ai/blog?dc6c17df_page=6&fc41f8a9_page=3",
+      "published_at": "2026-09-22",
+      "evidence_level": "PRIMARY_ISSUER_PRODUCT_ANNOUNCEMENT",
+      "independence_group": "PERMISSION",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "kamilah_stevenson_tedx_catalog",
+      "url": "https://www.classcentral.com/course/youtube-thinking-your-way-into-health-kamilah-stevenson-tedxwillowcreek-174524",
+      "published_at": null,
+      "evidence_level": "INDEPENDENT_COURSE_CATALOG",
+      "independence_group": "CLASS_CENTRAL",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "kamilah_stevenson_video",
+      "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "published_at": null,
+      "evidence_level": "TEDX_VIDEO_LISTING",
+      "independence_group": "TEDX_WILLOW_CREEK",
+      "raw_source_sha256": null
+    }
+  ],
+  "evernorth_capital_reconciliation": {
+    "reporting_period_end": "2026-09-30",
+    "filing_date": "2026-11-13",
+    "direct_evernorth_xrp_units_as_of_period_end": 346284972,
+    "direct_evernorth_xrp_cost_basis_usd": 846575043,
+    "impairment_ytd_usd": 271037170,
+    "direct_evernorth_xrp_carrying_value_usd": 341887231,
+    "q3_xrp_additions_units": 0,
+    "advance_funding_cash_usd": 214049995,
+    "advance_funding_xrp_units": 600000,
+    "xrp_purchased_with_advance_cash_units": 84365876,
+    "private_placement_pubco_xrp_contributed_in_kind_units": 261919096,
+    "ripple_xrp_contributed_to_pathfinder_units": 126791458,
+    "delayed_funding_xrp_units": 200000,
+    "total_in_kind_xrp_units": 388910554,
+    "broader_evernorth_pathfinder_delayed_funding_xrp_units": 473276430,
+    "gross_cash_at_october_9_closing_usd": 272600000,
+    "gross_private_placement_cash_usd": 224600000,
+    "spac_trust_cash_usd": 48000000,
+    "pre_close_cash_at_2026_09_30_usd": 91397,
+    "net_working_capital_deficit_at_2026_09_30_usd": 10000000,
+    "accumulated_deficit_at_2026_09_30_usd": 185600000,
+    "related_party_payable_at_2026_09_30_usd": 3968000,
+    "ripple_credit_facility_usd": 1000000,
+    "ripple_credit_facility_borrowed_at_period_end_usd": 0,
+    "warrants_exercised_2026_10_12_to_2026_11_09_units": 3073366,
+    "gross_warrant_exercise_proceeds_usd": 35300000,
+    "warrants_outstanding_at_2026_11_09_units": 8666279,
+    "interpretation": "The previously cited approximately 473.276 million XRP is a broader project-level aggregation, not Evernorth's direct treasury. The SEC filing separates 346.285 million XRP held by Evernorth from 126.791 million XRP contributed by Ripple to Pathfinder and 200,000 XRP of delayed funding. The $214.05 million advance cash funded the purchase of approximately 84.366 million XRP; other XRP contributions were in kind. The $272.6 million closing cash is gross and includes $48 million from the SPAC trust, so it is not all new investor cash and not all XRP purchases.",
+    "caveats": [
+      "The September 30 balance sheet predates the October 9 business combination; the $91,397 pre-close cash balance must not be presented as the November 13 post-close cash balance.",
+      "The SEC filing does not allocate the $214.05 million advance cash purchase among individual investors; SBI-affiliated investors are identified in the ownership structure, but their exact share of that cash is not disclosed.",
+      "The $200 million SBI investment is an investment in Evernorth equity, not evidence that SBI directly purchased $200 million of XRP.",
+      "The $271.0 million impairment is an accounting charge, not proof of an XRP sale or realized cash loss.",
+      "Q3 reported no XRP additions; positive quarterly net income was substantially affected by fair-value changes in refundable investor advances rather than operating revenue."
+    ]
+  },
+  "relationships": {
+    "SBI_Ripple": {
+      "direct_links": [
+        "SBI FY2026 presentation describes an approximately 9% Ripple stake; SBI's 2026 New Year message rounds the investment to approximately 10%; prior disclosures use different dates and bases.",
+        "SBI Ripple Asia is a 60% SBI Group / 40% Ripple joint venture according to SBI group-company information.",
+        "SBI Remit corridors use XRP in selected international remittances.",
+        "SBI VC Trade has announced Japan distribution of RLUSD."
+      ],
+      "uncertainty": "No current precise Ripple cap table was located. Treat the 9%-10% statements as rounded issuer disclosures, not an exact current percentage."
+    },
+    "SBI_Circle": {
+      "direct_links": [
+        "SBI Holdings and SBI Shinsei Bank each invested $25 million in Circle, according to SBI's June 2025 release.",
+        "Circle SBI Japan KK and SBI VC Trade provide a regulated distribution path for USDC in Japan.",
+        "SBI Group is listed as a founding validator for Circle's Arc network; JPYSC is issued by SBI Shinsei Trust Bank."
+      ],
+      "caveat": "Circle's Arc is a separate network from XRPL; validator participation does not imply XRP purchases."
+    },
+    "Coinbase_Circle": {
+      "direct_links": [
+        "Coinbase Q3 2026 reported approximately $22 billion in average USDC held on its platform.",
+        "Circle Q3 2026 reported approximately $73.3 billion average USDC circulation."
+      ],
+      "derived_metric": "Coinbase-held average USDC is approximately 30% of Circle's reported average USDC circulation; this is a cross-report estimate, not a disclosed ownership share or revenue split."
+    },
+    "Coinbase_Ripple": {
+      "direct_links": [
+        "Coinbase's legal asset disclosure lists XRP as held and commercially engaged for U.S. markets and its custody business.",
+        "Coinbase announced RLUSD availability on Prime, Exchange and its app, with XRP Ledger, Base and Ethereum support.",
+        "Coinbase's RLUSD announcement says Ripple provides liquidity on Base."
+      ],
+      "caveat": "Global Exchange RLUSD collateral availability was described as a follow-on capability, not as live at launch. Coinbase help content has older geographic restrictions that conflict with later legal disclosures; current state-specific trading access remains unverified."
+    },
+    "Circle_Ripple": {
+      "direct_links": [
+        "USDC is available on XRPL and Ripple's RLUSD is also issued on XRPL."
+      ],
+      "caveat": "Coexistence on XRPL creates parallel stablecoin liquidity and competition; it does not establish coordinated capital flows or XRP spot purchases."
+    },
+    "SBI_Evernorth": {
+      "direct_links": [
+        "SBI announced a $200 million Evernorth investment.",
+        "SEC filings identify SBI-affiliated investors in the Evernorth structure and an ownership cap mechanism."
+      ],
+      "caveat": "The filing does not disclose the exact amount of the $214.05 million advance cash attributable to SBI affiliates; the $200 million PIPE investment is not equivalent to direct XRP purchases."
+    }
+  },
+  "sbic_identity": {
+    "distinction": "SBIC East, SBIC Central and SBIC West are three separate Japanese statutory investment/consultation companies. They are not SBI Holdings and should not be conflated with the SBI financial group.",
+    "east": {
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "corporate_number": "9011001030621",
+      "founded": "1963-11-15",
+      "service_area": "Tokyo and 17 additional prefectures",
+      "url": "https://www.sbic.co.jp/company/profile/"
+    },
+    "central": {
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "founded": "1963-11-18",
+      "service_area": "Chubu region",
+      "corporate_number": "NOT_VERIFIED_IN_THIS_RUN",
+      "url": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    "west": {
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "founded": "1963-11-20",
+      "service_area": "Western Japan regional remit",
+      "corporate_number": "NOT_VERIFIED_IN_THIS_RUN",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    "chatgpt_reference": "Tokyo SBIC's 2025 AI/ML training page lists ChatGPT and Copilot. This establishes a training-course reference, not an OpenAI partnership, product integration or commercial relationship."
+  },
+  "exact_phrase_research": {
+    "ASK_Coin": {
+      "result": "Candidate match only",
+      "official_name": "Permission ASK Token",
+      "networks": [
+        "Base",
+        "Polygon"
+      ],
+      "coinbase_link": "Permission's September 22, 2026 post says its ASK wallet moved to Coinbase embedded-wallet infrastructure; Coinbase holds keys on users' behalf under Permission login authorization.",
+      "xrp_or_sbi_link": "No direct XRP, Ripple or SBI relationship established."
+    },
+    "actual_capital": {
+      "exact_phrase_result": "No reliable exact-phrase source identified in this pass.",
+      "resolved_evidence": "Use the SEC cash-versus-in-kind reconciliation above rather than treating the $1B+ headline as $1B cash spent on XRP."
+    },
+    "SBIC_ChatGPT_SBIC": {
+      "exact_phrase_result": "No exact phrase hit established.",
+      "resolved_evidence": "A Tokyo SBIC training page lists ChatGPT and Copilot in a 2025 AI/ML course; no OpenAI partnership evidence."
+    },
+    "Camilla_Kamilah_Stevenson": {
+      "identity_result": "One identity-linked TEDx Willow Creek video listing for Kamilah Stevenson: Thinking Your Way Into Health.",
+      "verified_video_url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "corroborating_catalog": "https://www.classcentral.com/course/youtube-thinking-your-way-into-health-kamilah-stevenson-tedxwillowcreek-174524",
+      "additional_verified_videos": 0,
+      "personal_channel_ownership": "UNVERIFIED",
+      "Camilla_identity": "UNVERIFIED"
+    }
+  },
+  "stablecoin_and_market_context": {
+    "circle_q3_2026": {
+      "average_usdc_circulation_usd": 73300000000,
+      "onchain_volume_usd": 13900000000000,
+      "reserve_income_usd": 658000000,
+      "other_revenue_usd": 207000000,
+      "arc_presale_revenue_in_other_revenue_usd": 182000000,
+      "distribution_costs_usd": 412000000,
+      "adjusted_ebitda_usd": 317000000,
+      "interpretation": "USDC scale is growing, but reserve income remains sensitive to lower rates; ARC presale materially contributed to other revenue. This is not XRP spot demand."
+    },
+    "coinbase_q3_2026": {
+      "average_usdc_held_usd": 22000000000,
+      "reported_crypto_market_share_percent": 10.7,
+      "interpretation": "Coinbase is a major USDC distribution and custody venue. The figures are issuer-reported platform metrics, not XRP-specific flows."
+    },
+    "arc": {
+      "network": "Circle Arc",
+      "SBI_role": "Founding validator",
+      "Coinbase_role": "Exchange/network participant",
+      "separate_from_xrpl": true
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Evernorth's treasury can become a structural XRP demand source if post-close cash is deployed into additional spot purchases.",
+      "supporting_evidence": "The SEC filing documents cash-funded XRP purchases and a large XRP treasury.",
+      "counterevidence": "Q3 reported no XRP additions; the headline project-level XRP total includes Pathfinder operational funding and in-kind contributions; post-close cash deployment is not yet demonstrated.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "hypothesis": "SBI/Circle/Coinbase/Ripple integrations can expand stablecoin and payment-rail utility around XRP.",
+      "supporting_evidence": "USDC and RLUSD distribution, XRPL issuance, SBI Ripple Asia, Coinbase listings and Arc validator/network roles.",
+      "counterevidence": "Arc is a separate L1; stablecoin settlement can occur without XRP; corporate equity, custody, listings and validator roles do not equal spot XRP purchases.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "hypothesis": "Institutional holdings and ecosystem integrations may support longer-term XRP utility.",
+      "supporting_evidence": "SBI's Ripple stake, XRP remittance corridors, institutional custody and stablecoin rails.",
+      "counterevidence": "No synchronized live spot/depth snapshot, no verified net exchange outflow, and no point-in-time capital-flow attribution in the current dataset.",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "prediction_readiness": {
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "event_registry_records": 85,
+    "event_registry_records_with_raw_source_sha256": 0,
+    "synchronized_spot_observations_within_300_seconds": 0,
+    "bybit_adapter_live_execution": "NOT_VERIFIED; mocked-response tests only",
+    "raw_receipts": "Hash-chained/append-only design exists, but no independent WORM or external timestamp anchor is verified.",
+    "candidate_model": "No trained candidate has demonstrated out-of-sample lift over baselines.",
+    "shadow_evaluation": "Not yet executed.",
+    "reason": "The current evidence is useful for research and event features but does not meet the dataset, provenance and out-of-sample requirements for a directional forecast."
+  },
+  "nine_platform_status": {
+    "map_reference": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "last_map_snapshot": "Run165",
+    "chatgpt": "GitHub connector authenticated and tested; repository permissions are admin-level, exceeding least privilege.",
+    "claude": "No live authentication or data flow verified.",
+    "grok": "No live authentication or data flow verified.",
+    "gemini": "No live authentication or data flow verified.",
+    "copilot": "No live authentication or data flow verified.",
+    "codex": "No live authentication or data flow verified.",
+    "hugging_face": "No live authentication or data flow verified.",
+    "kaggle": "No live authentication or data flow verified.",
+    "databricks": "No live authentication or data flow verified.",
+    "task_assignments": "Designed only; no external platform tasks dispatched and no external evidence transfers performed."
+  },
+  "raw_source_hash_coverage": {
+    "captured_raw_source_bytes": 0,
+    "raw_source_sha256_records": 0,
+    "web_source_records": 20,
+    "all_web_records_marked_hash_null": true
+  },
+  "safety": {
+    "no_merge": true,
+    "no_main_changes": true,
+    "no_deployment": true,
+    "no_secret_rotation": true,
+    "no_space_restart": true,
+    "no_kaggle_submission": true,
+    "no_databricks_write": true,
+    "no_paper_trade": true,
+    "no_funds_transfer": true,
+    "no_real_money": true,
+    "no_force_push": true
+  }
+}

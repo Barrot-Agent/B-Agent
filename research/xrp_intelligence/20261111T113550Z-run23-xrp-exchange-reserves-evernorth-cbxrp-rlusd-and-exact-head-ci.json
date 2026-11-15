@@ -1,0 +1,384 @@
+{
+  "artifact_type": "barrot_xrp_research_run",
+  "schema_version": "1.0.0",
+  "run_id": "Run23",
+  "captured_at_utc": "2026-11-11T11:35:50Z",
+  "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+  "integration_parent_sha": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
+  "integration_branch": "integration/xrp-v3-unified-main-20261111",
+  "integration_pr": 1661,
+  "model_eligible": false,
+  "raw_source_receipts": {
+    "captured_by_barrot": false,
+    "sha256_receipts_created": false,
+    "reason": "Web observations were not ingested through Barrot's raw receipt pipeline; do not admit to model features."
+  },
+  "repository_state": {
+    "ahead_by": 2014,
+    "behind_by": 0,
+    "changed_files_before_run": 997,
+    "workflow_files": 44,
+    "non_workflow_paths_before_run": 953,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2262,
+    "complete_recursive_trees": true,
+    "local_git_clone": "FAILED_DNS_RESOLUTION; authenticated GitHub API inspection succeeded."
+  },
+  "ci_evidence": {
+    "exact_parent_head": "7a55848cab17f7cb2fd6549b0c463cc45efd47ae",
+    "full_suite_run": 43012397193,
+    "full_suite_job": 130495019833,
+    "full_suite": {
+      "passed": 3423,
+      "failed": 0,
+      "subtests": 8,
+      "duration_seconds": 93.67,
+      "coverage_percent": 59.98,
+      "coverage_floor_percent": 53
+    },
+    "wheel_build": true,
+    "installed_mission_verification": true,
+    "dependency_audit_run": 43012397124,
+    "dependency_manifests": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 43012397190,
+    "fail_closed_gate_passed": true,
+    "main_ci_run": 42944864014,
+    "main_full_suite_passed": 718,
+    "main_cross_analysis_run": 43007129290,
+    "main_cross_analysis_conclusion": "success",
+    "main_pages_build_run": 42944862534,
+    "main_pages_build_conclusion": "success; automatic push-triggered side effect",
+    "new_run23_commit_ci": "PENDING"
+  },
+  "security": {
+    "github_connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "least_privilege_target_met": false,
+    "main_protected": true,
+    "required_status_contexts": [],
+    "enforcement_level": "non_admins",
+    "detailed_branch_protection_http": 403,
+    "fallback_ruleset": "Fall Back",
+    "fallback_ruleset_enforcement": "disabled",
+    "credential_path": ".config/gh/hosts.yml",
+    "main_path_present": false,
+    "integration_path_present": false,
+    "affected_open_pr_tips": 17,
+    "affected_tips_containing_path": 17,
+    "credential_contents_read": false,
+    "provider_revocation_verified": false,
+    "no_main_write": true,
+    "no_secret_rotation": true,
+    "no_force_push": true
+  },
+  "code_review": {
+    "reviewed_paths": [
+      "barrot_agent/data/missions/primary_mission.json",
+      "barrot_agent/evolution/xrp_public_ingestion.py",
+      "barrot_agent/evolution/feature_store.py",
+      "barrot_agent/evolution/forecast_ledger.py",
+      "barrot_agent/evolution/walk_forward.py",
+      "barrot_agent/evolution/source_independence.py",
+      "barrot_agent/orchestration/action_executor.py",
+      "barrot_agent/orchestration/validated_publisher.py",
+      "hf_space/app.py",
+      ".github/workflows/xrp-public-ingestion.yml",
+      "tests/test_xrp_nine_platform_current_map_run73.py"
+    ],
+    "hf_space_app_changed": true,
+    "hf_space_app_safety_change": "v7.0 to v7.1; external inference disabled by default, operator opt-in plus session consent, one provider/no silent fallback, public signal NOT_ISSUED, legacy ledger quarantined.",
+    "orbitron_font_css_preserved": true,
+    "orbit_paths_changed_in_pr": false,
+    "active_orbit_runtime_reintroduced": false,
+    "remaining_non_workflow_paths": 953,
+    "semantic_review_complete": false
+  },
+  "spot": {
+    "okx": {
+      "pair": "XRP-USDT",
+      "event_time_utc": "2026-11-11T11:33:13.571Z",
+      "last": 1.0583,
+      "bid": 1.0581,
+      "ask": 1.0582,
+      "open_24h": 1.0787,
+      "high_24h": 1.0854,
+      "low_24h": 1.0311,
+      "volume_24h_xrp": 67762000,
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "kraken": {
+      "pair": "XRP/USD",
+      "retrieved_at_utc": "2026-11-11T11:35:50Z",
+      "event_timestamp_available": false,
+      "last": 1.06031,
+      "bid": 1.06034,
+      "ask": 1.06035,
+      "volume_24h_xrp": 33355000,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "kraken_usdt_usd": {
+      "last": 0.99902,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+    },
+    "normalized_okx_usd": 1.057262866,
+    "difference_vs_kraken_last_percent": -0.28738,
+    "interpretation": "Asynchronous; not executable arbitrage."
+  },
+  "spot_orderbook": {
+    "provider": "Fuelmaps",
+    "snapshot_time_utc": "2026-11-11T09:00:00Z",
+    "venues": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "within_1_percent": {
+      "bids_usd": 11900000,
+      "asks_usd": 9200000
+    },
+    "within_5_percent": {
+      "bids_usd": 23100000,
+      "asks_usd": 12200000
+    },
+    "limitations": [
+      "older than two hours",
+      "resting orders can cancel",
+      "not executed volume or guaranteed support"
+    ],
+    "url": "https://fuelmaps.io/order-book/"
+  },
+  "derivatives": {
+    "provider": "TradRadar",
+    "snapshot_time_utc": "2026-11-11T11:10:00Z",
+    "mark_price_usd": 1.0615,
+    "open_interest_usd": 1570000000,
+    "oi_24h_change_percent": -4.2,
+    "funding_8h_percent": 0.0092,
+    "liquidations_24h_usd": 15170000,
+    "long_liquidations_usd": 14050000,
+    "short_liquidations_usd": 1130000,
+    "long_account_share_percent": 79.6,
+    "url": "https://tradradar.io/markets/xrp"
+  },
+  "options": {
+    "provider": "Fuelmaps",
+    "snapshot_time_utc": "2026-11-11T00:01:00Z",
+    "reference_price_usd": 1.0564,
+    "expiry_atm_iv_percent": {
+      "2026-11-12": 65.5,
+      "2026-11-13": 66,
+      "2026-11-20": 61.6,
+      "2026-11-27": 59.4,
+      "2026-12-25": 59
+    },
+    "historical_3sigma_exceedances": 20,
+    "historical_observations": 928,
+    "observed_exceedance_percent": 2.16,
+    "normal_reference_percent": 0.27,
+    "independently_reproduced": false,
+    "url": "https://fuelmaps.io/options/"
+  },
+  "exchange_balances": {
+    "provider": "XRP Insights",
+    "publisher_group": "xrp-insights.com",
+    "as_of_utc": "2026-11-11T08:00:00Z",
+    "tracked_xrp": 22330000000,
+    "wallets": 701,
+    "exchanges": 24,
+    "circulating_supply_share_percent": 32.4,
+    "same_wallet_change_7d_xrp": 1300000,
+    "same_wallet_change_30d_xrp": -155700000,
+    "cold_percent": 48,
+    "hot_percent": 12,
+    "unclassified_percent": 40,
+    "regional_xrp": {
+      "south_korea": 8590000000,
+      "united_states": 8460000000,
+      "japan": 1380000000
+    },
+    "coinbase_including_cbxrp_xrp": 5800000000,
+    "coinbase_cbxrp_reserve_annotation_xrp": 149600000,
+    "binance_including_binance_peg_xrp": 269000000,
+    "binance_peg_reserve_annotation_xrp": 327400000,
+    "sbi_vc_trade_xrp": 56900000,
+    "sbi_vc_trade_wallets": 2,
+    "sbi_vc_trade_cold_percent": 99,
+    "limitations": [
+      "wallet attribution not complete exchange liabilities",
+      "cold storage and wrapped reserves included",
+      "not tradable float",
+      "same-wallet change cannot distinguish customer withdrawals from untracked wallet transfers"
+    ],
+    "url": "https://xrp-insights.com/exchange-balances"
+  },
+  "external_flow_tracker": {
+    "provider": "TrackWhale",
+    "snapshot_time_utc": "2026-11-11T01:30:00Z",
+    "retrieved_in_run23": false,
+    "inflows_xrp": 501720000,
+    "outflows_xrp": 602930000,
+    "net_flow_xrp": -101210000,
+    "largest_transfer_xrp": 368480000,
+    "largest_transfer_label": "unknown wallet",
+    "url": "https://trackwhale.io/xrp-whale-tracker"
+  },
+  "flow_reconciliation": {
+    "must_not_average": true,
+    "reason": "Different wallet universes, definitions and timestamps; same-wallet balance change and tracked external transfer flow disagree in sign."
+  },
+  "evernorth": {
+    "sec_reported_xrp_as_of_2026_10_09": 473276430,
+    "onchain_ledger_index": 108259036,
+    "ledger_read_utc": "2026-11-11T10:57:00Z",
+    "attributed_xrp": 103129905,
+    "moved_outside_attributed_set_xrp": 370346663,
+    "last_outside_transfer_date": "2026-10-22",
+    "attributed_wallet_count": 13,
+    "outside_attribution_percent": 78.25,
+    "not_proof_of_sale": true,
+    "sec_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "tracker_url": "https://xrp-insights.com/xrp-radar/evernorth"
+  },
+  "coinbase_cbxrp": {
+    "reserve_xrp": 151866756.78,
+    "supply": 151864510.253,
+    "excess_xrp": 2246.527,
+    "displayed_refresh": "2026-11-11 10:40 AM; timezone unspecified",
+    "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"
+  },
+  "rlusd": {
+    "circulating_usd": 2632900000,
+    "reserves_usd": 2748000000,
+    "as_of": "2026-11-05",
+    "coverage_percent": 104.37,
+    "url": "https://ripple.com/products/stablecoin/transparency/"
+  },
+  "circle_usdc": {
+    "page_as_of": "2026-11-09",
+    "numeric_balance_extracted": false,
+    "url": "https://www.circle.com/transparency"
+  },
+  "evernorth_capital": {
+    "reported_xrp": 473276430,
+    "cash_purchased_xrp": 84365876.3625,
+    "in_kind_xrp": 388910554.061435,
+    "advance_cash_usd": 214050000,
+    "delayed_cash_usd": 10500000,
+    "spac_trust_usd": 48000000,
+    "gross_closing_cash_before_expenses_usd": 272600000,
+    "average_cash_purchase_price_usd": 2.53657,
+    "sbi_200m_included_in_advance_pool": true,
+    "cash_tranche_mark_usd_at_normalized_okx": 89196908.24,
+    "mark_change_percent": -58.33,
+    "mark_is_realized_loss": false,
+    "sec_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+  },
+  "protocol": {
+    "xrpl_quantum": {
+      "status": "proposed_not_approved",
+      "scheme": "ML-DSA-44",
+      "study_target": "H1 2027",
+      "development_target": "late 2027 or 2028",
+      "validator_vote_required": true,
+      "url": "https://pages.xrpl.foundation/protocol-roadmap/"
+    },
+    "ripple_prime_leadership": {
+      "outgoing": "Marc Asch",
+      "incoming": "Noel Kimmel",
+      "transition": "year-end 2026",
+      "status": "secondary-source company-spokesperson attributed",
+      "url": "https://www.coindesk.com/business/2026/11/11/ripple-prime-leadership-transition-marc-asch-noel-kimmel"
+    }
+  },
+  "prediction_engine": {
+    "scheduled_sources": 44,
+    "total_source_definitions": 46,
+    "xrp_exchange_balances_json": "scheduled; digest-only because raw redistribution permission not explicit",
+    "raw_archive": "SHA-256 and per-run hash chain; no independent WORM",
+    "artifact_retention_days": {
+      "raw": 90,
+      "per_run_feature_store": 7,
+      "daily_feature_store": 90
+    },
+    "walk_forward_embargo": "equal to horizon",
+    "effective_sample_size": "greedy non-overlapping target intervals; residual dependence not corrected",
+    "baselines": [
+      "naive_class_prior",
+      "momentum_sign",
+      "mean_reversion_sign",
+      "volatility_normal"
+    ],
+    "volatility_normal": "Gaussian CDF",
+    "tail_followup": "reproduce 20/928 tail statistic; test Student-t/empirical-quantile baselines",
+    "scenario_generator": "not implemented; alternatives field is schema only",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "identity_research": {
+    "sbic_east_central_west": "resolved; distinct regional SME investment companies, not SBI Holdings",
+    "ask_coin": "exact phrase unresolved; Permission Coin ASK has no verified XRP/XRPL relationship",
+    "actual_capital": "Evernorth cash/in-kind/debt/facility/ELOC/resale categories reconciled; exact phrase context unresolved",
+    "sbic_chatgpt_phrase": "unresolved; SBI Holdings Enterprise adoption and regional SBIC seminars distinct",
+    "kamilah_camilla_youtube": "no channel/video attribution without first-party verification"
+  },
+  "platforms": {
+    "chatgpt": "GitHub current-session connector verified; repo metadata admin=true",
+    "claude": "unverified",
+    "grok": "unverified",
+    "gemini": "unverified",
+    "copilot": "one-off review only; no formal approval",
+    "codex": "unverified",
+    "hugging_face": "prior build error; no deployment",
+    "kaggle": "untested; no submission",
+    "databricks": "previous HTTP 403; no workspace write",
+    "lunaroute": "declared, not authenticated",
+    "external_model_transfer": false
+  },
+  "backlog": {
+    "1269": "unique topology",
+    "1317": "unique MMI",
+    "1318": "unique schema guard",
+    "1320": "unique paper-trading pause",
+    "1608": "unique C2FO/Evernorth capital research",
+    "1610": "unique safety",
+    "1611": "unique ledger contract",
+    "1612": "unique security",
+    "1614": "unique prediction",
+    "1640": "overlap; 27 differing blobs",
+    "1642": "overlap; seven differing blobs",
+    "1643": "overlap; nine differing blobs",
+    "1653": "unique graph",
+    "1655": "unique structural analysis",
+    "1659": "unique local llama phone chat",
+    "1660": "superseded-source candidate retained",
+    "1661": "blocked active integration draft",
+    "confirmed_duplicate_closures": 0
+  },
+  "forecast_status": "NOT_ISSUED",
+  "sources": [
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+    "https://tradradar.io/markets/xrp",
+    "https://fuelmaps.io/order-book/",
+    "https://fuelmaps.io/options/",
+    "https://xrp-insights.com/exchange-balances",
+    "https://xrp-insights.com/xrp-radar/evernorth",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+    "https://ripple.com/products/stablecoin/transparency/",
+    "https://www.circle.com/transparency",
+    "https://pages.xrpl.foundation/protocol-roadmap/"
+  ]
+}

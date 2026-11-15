@@ -1,0 +1,238 @@
+{
+  "run_id": "barrot-xrp-run-11c",
+  "captured_at_utc": "2026-11-10T22:33:00Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "main_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+    "integration_head_before_artifact": "c63481432786f6914351ac9ae943326a44df62f7",
+    "integration_pr": 1660,
+    "open_prs": 373,
+    "draft_prs": 358,
+    "non_draft_prs": 15,
+    "changed_files": 964,
+    "full_suite": {
+      "run_id": 42915004976,
+      "head_sha": "c63481432786f6914351ac9ae943326a44df62f7",
+      "passed": 3369,
+      "failed": 0,
+      "subtests_passed": 8,
+      "coverage_total_percent": 60,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 42915004982,
+      "head_sha": "c63481432786f6914351ac9ae943326a44df62f7",
+      "manifests_audited": 6,
+      "known_vulnerabilities": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 42915004942,
+      "head_sha": "c63481432786f6914351ac9ae943326a44df62f7",
+      "conclusion": "success",
+      "automatic_merge": "disabled"
+    },
+    "core_tests": "passed",
+    "main_ci": {
+      "head_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+      "run_id": 42911392830,
+      "passed": 718,
+      "subtests_passed": 8,
+      "conclusion": "success"
+    }
+  },
+  "security": {
+    "main_and_integration_current_tree_contains_gh_hosts_yml": false,
+    "targeted_open_pr_branch_scan": {
+      "checked": 17,
+      "with_path": 17,
+      "prs": [
+        1653,
+        1650,
+        1649,
+        1648,
+        1647,
+        1646,
+        1645,
+        1644,
+        1643,
+        1642,
+        1640,
+        1320,
+        1318,
+        1317,
+        1269,
+        1255,
+        1254
+      ]
+    },
+    "secret_contents_read": false,
+    "credential_revoked_or_rotated": false,
+    "required_owner_action": "Revoke and reissue the exposed GitHub CLI credential, then remediate affected source branches under authorization."
+  },
+  "b_agent_cli_safety": {
+    "integration_branch_default_mode": "read-only proposal/audit",
+    "direct_default_branch_writer": "removed",
+    "automatic_branch_commit_pr_calls": "removed",
+    "local_audit_write": "requires --write-local-audit",
+    "local_repair": "requires --execute-local-repair, interactive TTY, and APPLY LOCAL REPAIRS",
+    "external_lunaroute_transfer": "requires --allow-lunaroute-data-transfer, interactive TTY, and SEND REPOSITORY CONTEXT TO LUNAROUTE",
+    "external_transfer_executed": false,
+    "default_branch_write_executed": false
+  },
+  "market": {
+    "coingecko_capture": {
+      "price_usd": 1.06,
+      "market_cap_usd": 67468147774,
+      "fdv_usd": 106205958256,
+      "spot_24h_volume_usd": 2252927857,
+      "perpetual_open_interest_usd": 2363000000,
+      "oi_to_market_cap_percent": 3.5,
+      "aggregate_8h_funding_percent": 0.0087,
+      "perpetual_to_spot_volume_ratio": 13.9,
+      "circulating_supply_xrp_b": 63.517,
+      "displayed_treasury_holding_xrp": 473276430,
+      "exact_provider_event_timestamp": null,
+      "limitations": [
+        "Aggregator snapshot; exact source event timestamp not displayed",
+        "Page displayed inconsistent return signs across sections; percentage returns excluded",
+        "Treasury holding matches an October 9 Evernorth figure and is not accepted as a current custody balance"
+      ]
+    },
+    "exchange_observations": {
+      "kraken": {
+        "last_usd": 1.06188,
+        "bid_usd": 1.06184,
+        "ask_usd": 1.06185,
+        "provider_timestamp": null,
+        "staleness": "Repeated identical response across later retrievals; suspected cache"
+      },
+      "okx": {
+        "last_usdt": 1.0636,
+        "bid_usdt": 1.0633,
+        "ask_usdt": 1.0634,
+        "provider_timestamp_utc": "2026-11-10T22:19:54.674Z",
+        "staleness": "No newer provider timestamp observed"
+      },
+      "kraken_usdt_usd": 0.9988,
+      "normalized_okx_usd": 1.06232368,
+      "relative_difference_vs_kraken_percent": 0.0418,
+      "admission": "Asynchronous/stale; not executable arbitrage or synchronized consensus"
+    },
+    "order_book": "CoinGecko displayed recent but not precisely timestamped ±2% depth: Kraken +$5.36M/-$5.65M; Binance +$1.74M/-$1.98M; Coinbase +$2.69M/-$8.24M; OKX +$2.12M/-$1.32M. Indicative only; no synchronized executable L2 snapshot admitted.",
+    "derivatives": "CoinGecko aggregate OI $2.363B and 8-hour funding +0.0087%; venue-level funding differs, and aggregate is not independent from its component exchanges. No forecast inference.",
+    "etf_flows": {
+      "november_9_daily_net_outflow_usd": -10400000,
+      "bitwise_component_usd": -9400000,
+      "october_12_to_november_9_cumulative_net_flow_usd": -4200000,
+      "assets_usd": 1240000000,
+      "interpretation": "Single-day outflow concentrated in Bitwise; rolling window is modest relative to AUM and does not establish sustained institutional exit. Tracker uses issuer-derived inputs."
+    }
+  },
+  "xrpl_onchain": {
+    "payment_volume_xrp_november_9": 1160000000,
+    "reported_24h_change_percent": 207.4,
+    "reported_30d_average_xrp": 580600000,
+    "prior_spikes": {
+      "october_30_xrp": 1800000000,
+      "september_25_xrp": 1900000000,
+      "reported_ath_xrp": 7000000000
+    },
+    "november_10_intraday_note": "U.Today reported volume moving back toward approximately 300M XRP before the day ended.",
+    "source": "U.Today article quoting XRPScan; XRPScan metrics endpoint returned HTTP 403 during verification.",
+    "interpretation": "Gross XRP moved in Payment transactions, not unique users, commercial settlement, or incremental demand. Weekend-to-Monday transition and volatility are competing explanations; exchange-deposit/liquidation interpretation remains unverified."
+  },
+  "post_quantum_xrpl": {
+    "official_roadmap": {
+      "updated": "2026-11-04",
+      "status": "proposed/draft; no XLS number",
+      "migration_study": "H1 2027",
+      "development_review_audit": "late 2027 or 2028",
+      "size": "XL",
+      "complexity": 3,
+      "market_fit": 7,
+      "cost_usd_range": [
+        215000,
+        255000
+      ],
+      "activation": "Only if validators vote it in; roadmap is not a commitment"
+    },
+    "security_review": {
+      "discussion": "https://github.com/XRPLF/XRPL-Standards/discussions/295",
+      "draft_branch": "Transia-RnD/rippled quantum",
+      "base_sha": "8666c9ae4ceaa793ce378fdb747416668351cafd",
+      "finding": "Draft checkSign guards the force-quantum key-size rejection with existence of a quantum keylet derived from the presented public key; an open fork PR argues this lets classical master/regular keys bypass the force-quantum check. Multi-sign and batch paths also lacked the check.",
+      "fix_pr": "https://github.com/Transia-RnD/rippled/pull/46",
+      "fix_head": "a496fbedbd746b5859652a16ae939d7bf013cf9e",
+      "fix_status": "open, unmerged, two files, zero reviews, no CI runs, full node build not run"
+    },
+    "crypto_conformance_disagreement": "A Nov 9 discussion comment alleges round-3/FIPS-204 incompatibility and key-size/domain-separation issues. The pinned dependency/API evidence also exposes context-aware interfaces and 2560-byte secret-key constants, so the broader claim remains disputed and is not treated as verified. Independent FIPS-204 known-answer testing is still required."
+  },
+  "identity_research": {
+    "sbic": "SBIC East/Central/West remain separate regional investment-consultation companies, not SBI Holdings. No OpenAI partnership established by training seminars.",
+    "ask_coin": "CoinMarketCap Ask Coin exchange listing is untracked/inactive with reserves unavailable. Permission Coin ASK is a distinct LayerZero OFT token on Base and Polygon; official docs publish contract addresses. No XRP integration verified.",
+    "actual_capital": "No standardized XRP metric. Cash received, in-kind XRP, drawn debt, contingent equity capacity, ELOC resale registration and secondary sales remain separate.",
+    "kamilah_stevenson": "Official site identifies Dr. Kamilah Stevenson, but no first-party link to candidate YouTube channel was verified. No personal-channel video inventory attributed."
+  },
+  "coordination": {
+    "ChatGPT": "Current-session GitHub read/write on integration verified.",
+    "Copilot": "Comment-only historical review activity; no formal approval on #1660.",
+    "Claude": "Unverified",
+    "Grok": "Unverified",
+    "Gemini": "Unverified",
+    "Codex": "Unverified",
+    "HuggingFace": "Prior BUILD_ERROR; no deployment",
+    "Kaggle": "Untested; no submission",
+    "Databricks": "Prior HTTP 403; no workspace write",
+    "external_data_transfer": "None in this run"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Synchronized historical data, independent receipt anchoring, shadow outcomes, and demonstrated out-of-sample lift remain insufficient."
+  },
+  "pr_backlog": {
+    "integration_pr_1660": "Blocked: zero formal approvals; branch-protection details return HTTP 403; visible fallback ruleset disabled; automatic Pages publication not authorized; 44 changed workflow files and 964-file diff not fully semantically reviewed.",
+    "fully_overlapping_candidates": [
+      1640,
+      1643,
+      1642,
+      1644,
+      1645,
+      1646,
+      1647,
+      1648,
+      1649,
+      1650,
+      1317,
+      1318,
+      1320,
+      1254,
+      1255
+    ],
+    "preserve_unique": {
+      "1269": 8,
+      "1608": 2,
+      "1610": 7,
+      "1611": 1,
+      "1612": 2,
+      "1614": 27,
+      "1653": 6
+    },
+    "closure_policy": "No source PR closed; close exact duplicates only after successor merge and verified main."
+  },
+  "source_urls": [
+    "https://www.coingecko.com/en/coins/xrp",
+    "https://u.today/xrp-ledgers-payments-volume-crosses-historic-1-billion-threshold",
+    "https://pages.xrpl.foundation/protocol-roadmap/",
+    "https://github.com/XRPLF/XRPL-Standards/discussions/295",
+    "https://github.com/Transia-RnD/rippled/pull/46",
+    "https://coinmarketcap.com/exchanges/ask-coin/",
+    "https://coinmarketcap.com/currencies/permission-coin/",
+    "https://docs.permission.ai/ask-token/contract-addresses",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+  ]
+}

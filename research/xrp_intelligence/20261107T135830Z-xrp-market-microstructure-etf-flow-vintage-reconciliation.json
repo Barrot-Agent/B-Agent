@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_market_microstructure_etf_flow_vintage_reconciliation",
+  "artifact_id": "20261107T135830Z-xrp-market-microstructure-etf-flow-vintage-reconciliation",
+  "captured_at_utc": "2026-11-07T13:58:30Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_commit": "10ce332a786cd3a1f835b142dc2f70b370f1db41",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "source_capture_contract": {
+    "retrieval_interface": "public web page rendering",
+    "raw_http_response_bytes_retained": false,
+    "raw_http_sha256_claimed": false,
+    "headers_retained": false,
+    "limitation": "The retrieval interface supplied normalized page text, not original HTTP response bytes or headers. Source URLs, publisher timestamps, page timestamps, line-qualified evidence references and the values transcribed are retained. No raw-page hash is claimed.",
+    "event_time_rule": "Publisher event/update times are kept distinct from this run's retrieval reference time."
+  },
+  "market_microstructure": {
+    "spot_context": [
+      {
+        "source_id": "trad_radar_xrp_perpetual_summary",
+        "publisher": "TradRadar",
+        "independence_group": "tradradar_exchange_aggregator",
+        "url": "https://tradradar.io/markets/xrp",
+        "publisher_updated_at_utc": "2026-11-07T13:20:00Z",
+        "retrieval_reference_utc": "2026-11-07T13:58:30Z",
+        "reported_mark_price_usd": 1.1612,
+        "reported_24h_change_pct": -2.19,
+        "scope": "Perpetual futures summary; displayed with a 15-minute delay.",
+        "limitations": [
+          "Mark price is not a synchronized spot midpoint.",
+          "Aggregator's exchange set and contract normalization may differ from other providers."
+        ],
+        "model_eligible": false
+      },
+      {
+        "source_id": "alpha_finance_xrp_liquidation_heatmap_spot_context",
+        "publisher": "Alpha Finance",
+        "independence_group": "alpha_finance_market_aggregator",
+        "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+        "publisher_updated_at_utc": "2026-11-07T12:46:00Z",
+        "retrieval_reference_utc": "2026-11-07T13:58:30Z",
+        "reported_spot_usd": 1.1593,
+        "reported_24h_change_pct": -2.98,
+        "limitations": [
+          "Aggregator spot field; not a direct exchange event-time receipt.",
+          "Snapshot is 34 minutes older than the retrieval reference and 34 minutes older than the TradRadar page update."
+        ],
+        "model_eligible": false
+      }
+    ],
+    "order_book_depth": {
+      "source_id": "edge_or_not_xrp_mixed_market_depth",
+      "publisher": "Edge or Not",
+      "independence_group": "edge_or_not_orderbook_aggregator",
+      "url": "https://edgeornot.com/order-book-heatmap/xrp",
+      "publisher_updated_at_utc": "2026-11-07T13:14:00Z",
+      "snapshot_mid_usd": 1.1606,
+      "bids_within_1pct_usd": 10400000,
+      "asks_within_1pct_usd": 9200000,
+      "largest_ask_walls": [
+        {
+          "price_usd": 1.1618,
+          "notional_usd": 3200000
+        },
+        {
+          "price_usd": 1.1629,
+          "notional_usd": 1700000
+        },
+        {
+          "price_usd": 1.1652,
+          "notional_usd": 907000
+        }
+      ],
+      "largest_bid_walls": [
+        {
+          "price_usd": 1.1594,
+          "notional_usd": 1700000
+        },
+        {
+          "price_usd": 1.1583,
+          "notional_usd": 2300000
+        },
+        {
+          "price_usd": 1.1571,
+          "notional_usd": 1100000
+        }
+      ],
+      "methodology": {
+        "venues": [
+          "Binance spot",
+          "OKX perpetual"
+        ],
+        "sampling": "One-minute samples averaged into 15-minute buckets.",
+        "displayed_range": "Within +/-1.5% of price.",
+        "combined_market_types": true
+      },
+      "limitations": [
+        "This is mixed spot/perpetual depth, not spot-only consolidated depth.",
+        "Provider-derived samples were not archived as raw exchange order-book payloads.",
+        "Displayed orders can be placed or pulled; walls are not guaranteed support or resistance.",
+        "No synchronized executable-cost, fee, latency or market-impact calculation is available."
+      ],
+      "model_eligible": false
+    },
+    "derivatives": {
+      "trad_radar": {
+        "publisher": "TradRadar",
+        "independence_group": "tradradar_exchange_aggregator",
+        "url": "https://tradradar.io/markets/xrp",
+        "updated_at_utc": "2026-11-07T13:20:00Z",
+        "open_interest_usd": 1890000000,
+        "open_interest_24h_change_pct": -0.77,
+        "open_interest_venue_count": 7,
+        "weighted_funding_pct_per_8h": 0.009,
+        "liquidations_24h_usd_minimum": 8630000,
+        "long_liquidations_24h_usd": 8220000,
+        "short_liquidations_24h_usd": 416280,
+        "long_short_account_ratio": 3.83,
+        "long_account_share_pct": 79.3,
+        "liquidation_venue_count": 5,
+        "long_short_venue_count": 5,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "MEXC",
+          "Bitget",
+          "Hyperliquid",
+          "OKX"
+        ],
+        "limitations": [
+          "Liquidations are marked as at least because exchanges publish only part of the live liquidation stream.",
+          "Long/short is an account ratio, not notional exposure.",
+          "The 15-minute reporting delay applies."
+        ]
+      },
+      "alpha_finance": {
+        "publisher": "Alpha Finance",
+        "independence_group": "alpha_finance_market_aggregator",
+        "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+        "updated_at_utc": "2026-11-07T12:46:00Z",
+        "open_interest_usd": 2740000000,
+        "reported_24h_volume_usd": 2390000000,
+        "long_liquidations_24h_usd": 10400000,
+        "short_liquidations_24h_usd": 454200,
+        "modelled_short_liquidation_liquidity_usd": 55000000,
+        "modelled_long_liquidation_liquidity_usd": 31800000,
+        "model_scope": "All-exchange aggregate; liquidation clusters are modelled from open interest and standard leverage tiers.",
+        "limitations": [
+          "Modelled liquidation clusters are not observed resting orders.",
+          "The page does not expose a reconciled contract-by-contract venue universe in this snapshot.",
+          "Real liquidation prices depend on position size, margin mode and maintenance margin."
+        ]
+      },
+      "reconciliation": {
+        "open_interest_absolute_difference_usd": 850000000,
+        "difference_pct_of_trad_radar": 44.9735449735,
+        "status": "UNRECONCILED_DIFFERENT_PROVIDER_SCOPE_AND_CUTOFF",
+        "explanation": "The two snapshots are 34 minutes apart, report different venue/contract scopes, and do not expose matching aggregation definitions. Preserve both values; do not average or select one as ground truth.",
+        "liquidations_status": "NOT_COMPARABLE_AS_A_SINGLE_TOTAL",
+        "model_eligible": false
+      }
+    }
+  },
+  "etf_flow_reconciliation": {
+    "xrp_insights": {
+      "publisher": "XRP Insights",
+      "independence_group": "xrp_insights_issuer_holdings_scraper",
+      "page_url": "https://xrp-insights.com/data",
+      "dataset_url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "dataset_generated_at_utc": "2026-11-07T13:37:52.484Z",
+      "data_as_of": "2026-11-06",
+      "universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "by_fund_rows": 1597,
+      "total_rows": 231,
+      "nov6_net_flow_xrp": -663043,
+      "nov2_to_nov6_net_flow_xrp": -812529,
+      "nov6_total_holdings_xrp": 1195787657,
+      "nov6_combined_net_assets_usd_approx": 1430000000,
+      "method": "Per-fund day-over-day change in issuer-reported XRP holdings, with dollar values calculated using the dataset's XRP reference price.",
+      "important_scope_notes": [
+        "GXRP flow is excluded across the history because a four-week automated-capture gap would collapse accumulated holdings changes into one misleading day; GXRP holdings remain in totals.",
+        "XRPR includes exposure through another XRP exchange-traded product, so its reported XRP exposure is not necessarily direct spot custody.",
+        "BITW is a multi-asset index fund; its XRP sleeve can change through index rebalancing.",
+        "The aggregate is not a direct issuer-published cash creation/redemption total.",
+        "The dataset notes that reconstructed rows can use third-party daily flow estimates; the Nov 6 row is identified as the latest settled row in the current metadata."
+      ],
+      "limitations": [
+        "Underlying holdings originate from issuer pages, but the daily flow series is calculated by XRP Insights.",
+        "The dataset is not a complete direct cash-flow ledger.",
+        "No original HTTP response bytes or per-issuer source payloads were retained in this browser capture."
+      ]
+    },
+    "cryptokeyhole": {
+      "publisher": "CryptoKeyhole",
+      "independence_group": "cryptokeyhole_issuer_file_scraper",
+      "page_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_updated_at_utc": "2026-11-07T13:23:00Z",
+      "nov6_flow_xrp": -752048,
+      "nov6_reporting_funds": 3,
+      "nov6_expected_funds": 4,
+      "nov6_by_fund_xrp": {
+        "XRP": 0,
+        "XRPZ": null,
+        "XRPC": -752048,
+        "TOXR": 0
+      },
+      "nov6_missing_fund": "XRPZ / Franklin Templeton",
+      "nov5_complete_flow_xrp": -3339,
+      "universe": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "TOXR"
+      ],
+      "excluded_funds": {
+        "GXRP": "Not included in daily flow because automated issuer reads encounter a bot challenge; latest quarterly SEC filing holdings are shown separately.",
+        "XRPR": "Not counted because its 1940 Act structure includes exposure through other exchange-traded products and its direct-holdings file is not a complete measure of total exposure."
+      },
+      "issuer_file_observations": {
+        "XRP": "Nov 6 issuer file observed Nov 7 13:13 UTC.",
+        "XRPC": "Nov 6 issuer file observed Nov 7 05:07–05:12 UTC.",
+        "TOXR": "Nov 6 issuer file observed Nov 7 12:01 UTC.",
+        "XRPZ": "Latest row remained Nov 5; the Nov 6 file had not been observed by the page's 13:23 UTC update."
+      },
+      "date_anomaly": {
+        "status": "HEADER_CONFLICT_WITH_PER_FUND_TABLE",
+        "observation": "The page header says an issuer file dated Nov 9, 2026 was read at 05:12 UTC on Nov 7, 2026, which is future-dated relative to the read time. Per-fund rows separately report Nov 6 files and the 3/4 partial status.",
+        "treatment": "Do not use the future-dated header as a valid issuer event time. Preserve it as a page consistency defect; use the explicit per-fund publication observations only as the page reports them."
+      },
+      "limitations": [
+        "Nov 6 total is explicitly partial, not a complete four-fund total.",
+        "The per-fund issuer publication times are page-reported; original issuer response bytes were not captured here.",
+        "XRP Insights and CryptoKeyhole both depend on issuer holdings, so their results are not independent economic flow sources."
+      ]
+    },
+    "alpha_finance": {
+      "publisher": "Alpha Finance",
+      "independence_group": "alpha_finance_etf_flow_aggregator",
+      "page_url": "https://alphafinance.io/etf/xrp/",
+      "page_cutoff": "2026-11-06",
+      "reported_nov6_flow_usd": 0,
+      "funds_reporting": 5,
+      "reported_7_session_flow_usd": 8400000,
+      "reported_30_session_flow_usd": 45900000,
+      "reported_cumulative_net_inflow_usd": 1730000000,
+      "published_holdings_or_aum": false,
+      "published_fund_list_or_custody_balances": false,
+      "source_lineage_disclosed_on_page": false,
+      "update_claim": "Every ten minutes.",
+      "limitations": [
+        "The page reports a five-fund flow series but does not publish fund holdings, AUM or daily issuer receipts.",
+        "The visible methodology does not identify the upstream source or provide enough detail to reproduce the Nov 6 zero from issuer holdings.",
+        "Treat the $0 print as that provider's reported value, not as independently verified zero net creations/redemptions."
+      ]
+    },
+    "reconciliation": {
+      "status": "UNRESOLVED_DIFFERENT_UNIVERSES_METHODS_AND_COMPLETENESS",
+      "conclusions": [
+        "XRP Insights reports a negative Nov 6 holdings-derived change across its wider six-spot-plus-BITW universe, with GXRP flow excluded.",
+        "CryptoKeyhole reports a more negative Nov 6 partial change from three of four tracked daily-reporting funds, entirely attributable to XRPC in its displayed table.",
+        "Alpha Finance reports zero across five funds but does not expose holdings, AUM, issuer receipts or a reproducible source lineage on the page.",
+        "The three figures cannot be averaged or treated as independent confirmations."
+      ],
+      "hypotheses": [
+        {
+          "id": "H1",
+          "statement": "There was a genuine XRPC redemption/holdings reduction on Nov 6.",
+          "support": "CryptoKeyhole's issuer-file-derived table reports -752,048 XRP for XRPC; XRP Insights' wider holdings-derived total is also negative.",
+          "status": "SUPPORTED_BUT_NOT_FULLY_INDEPENDENTLY_VERIFIED"
+        },
+        {
+          "id": "H2",
+          "statement": "The complete six-spot-plus-BITW Nov 6 net flow was exactly -663,043 XRP.",
+          "support": "XRP Insights publishes a settled Nov 6 row and describes its holdings-delta methodology.",
+          "counterevidence": "GXRP flow is excluded; XRPR and BITW have special exposure/rebalancing characteristics; source issuer bytes were not captured in this run.",
+          "status": "PROVIDER_REPORTED_NOT_ISSUER_TOTAL"
+        },
+        {
+          "id": "H3",
+          "statement": "The full five-fund Nov 6 flow was exactly zero.",
+          "support": "Alpha Finance reports $0 across 5/5 funds.",
+          "counterevidence": "No fund holdings, AUM, issuer receipts or reproducible upstream source lineage are exposed on the page; this conflicts with the other holdings-derived observations.",
+          "status": "UNVERIFIED_PROVIDER_PRINT"
+        },
+        {
+          "id": "H4",
+          "statement": "The apparent disagreement is mostly universe and publication-cutoff mismatch rather than a true economic contradiction.",
+          "support": "CryptoKeyhole explicitly marks Nov 6 as 3/4 partial; XRP Insights uses a wider universe; Alpha Finance uses a five-fund flow-only series.",
+          "counterevidence": "The provider-specific underlying rows are not all available for a full same-fund reconciliation.",
+          "status": "PLAUSIBLE_NOT_PROVEN"
+        }
+      ]
+    },
+    "source_independence": {
+      "xrp_insights_vs_cryptokeyhole": "Different collectors and fund coverage, but both depend on the same issuer holdings source material; not independent economic flow confirmation.",
+      "alpha_finance": "Separate dashboard, but its upstream flow lineage is not disclosed on the captured page; independence cannot be verified.",
+      "primary_issuer_confirmation": "No complete issuer-primary daily cash creation/redemption ledger was captured."
+    }
+  },
+  "model_admission": {
+    "admitted_to_live_price_features": false,
+    "admitted_to_historical_price_features": false,
+    "admitted_to_exchange_flow_features": false,
+    "admitted_to_etf_flow_features": false,
+    "eligible_for_event_timeline": true,
+    "reasons": [
+      "Spot, derivatives and order-book sources have different timestamps and aggregation scopes.",
+      "The order-book snapshot mixes Binance spot and OKX perpetual depth.",
+      "Open-interest providers disagree by USD 850M and expose different venue coverage.",
+      "ETF flow sources use different universes, methods and completeness; one Nov 6 total is explicitly partial.",
+      "No complete primary issuer cash-flow ledger or original page bytes were captured."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "external_actions": {
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "funds_transfer": false,
+    "paper_trade": false
+  }
+}

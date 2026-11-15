@@ -1,0 +1,164 @@
+{
+  "schema_version": "barrot.xrp.research-correction.v1",
+  "artifact_id": "circle_q3_source_correction_20261104T200200Z",
+  "artifact_type": "append_only_primary_source_correction",
+  "captured_at_utc": "2026-11-04T20:02:00Z",
+  "data_cutoff_utc": "2026-11-04T20:02:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "reviewed_head_sha": "83ec4ef4c180e08625dab8fd06141725ccafa680",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "preservation": {
+    "original_artifacts_modified": false,
+    "original_source_registry_modified": false,
+    "correction_mode": "append_only_entity_scoped_source_overlay",
+    "force_push": false,
+    "branch_rewrite": false,
+    "destructive_operations": false
+  },
+  "source_registry": [
+    {
+      "id": "circle_ir_q3_2026_results_page",
+      "publisher": "Circle Investor Relations",
+      "authority": "official issuer investor-relations index",
+      "url": "https://investor.circle.com/overview/default.aspx",
+      "retrieved_at_utc": "2026-11-04T20:02:00Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_page_extract_only",
+      "claims_supported": [
+        "Circle Investor Relations lists separate Q3 2026 earnings press-release and earnings-presentation PDF links."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "circle_q3_2026_earnings_release_pdf",
+      "publisher": "Circle Internet Group, Inc.",
+      "authority": "primary issuer Q3 2026 earnings release",
+      "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T20:02:00Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_pdf_text_extract_only",
+      "claims_supported": [
+        "Circle's Q3 2026 earnings release date is November 4, 2026.",
+        "Average USDC circulation was $73.3 billion and end-of-period circulation was $73.9 billion.",
+        "Q3 USDC on-chain transaction volume was $13.9 trillion.",
+        "Total revenue and reserve income was $864.888 million; reserve income was $657.624 million; other revenue was $207.264 million, including $182 million from the ARC token presale.",
+        "Revenue less distribution, transaction and other costs was approximately $453 million, with a 52% RLDC margin.",
+        "Circle Payments Network annualized TPV was $41.3 billion.",
+        "Circle disclosed a $100 million Binance equity investment announcement and a five-year USDC partnership expansion."
+      ],
+      "limitations": [
+        "Issuer-reported figures; no raw PDF bytes or independent timestamp receipt were archived in this run.",
+        "The release is primary issuer disclosure, not an SEC filing in this correction record."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "circle_q3_2026_earnings_presentation_pdf",
+      "publisher": "Circle Investor Relations",
+      "authority": "primary issuer Q3 2026 earnings presentation",
+      "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T20:02:00Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_pdf_text_extract_only",
+      "claims_supported": [
+        "Circle's issuer presentation is a separate primary source from its earnings release.",
+        "Issuer-defined USDC platform/location mix must not be interpreted as beneficial ownership, custody, collateral utilization or XRP demand."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "sec_edgar_circle_company_directory_20261104",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "authority": "issuer CIK archive directory listing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042",
+      "retrieved_at_utc": "2026-11-04T20:02:00Z",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_directory_extract_only",
+      "visible_latest_circle_accession": "0001876042-26-000291",
+      "visible_latest_circle_accession_filing_date": "2026-10-23",
+      "claims_supported": [
+        "The retrieved directory listing visibly includes Circle accession 0001876042-26-000291 dated October 23, 2026.",
+        "The candidate accession 0001876042-26-000309 was not verified by the direct URL retrieval or the visible directory excerpt in this run."
+      ],
+      "limitations": [
+        "A rendered directory excerpt is not proof that no later accession exists elsewhere in EDGAR.",
+        "Do not describe accession 0001876042-26-000309 as a verified SEC filing without a resolvable SEC filing index or primary document."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "correction_overlay": {
+    "consumer_application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY",
+    "entries": [
+      {
+        "correction_id": "C22_CIRCLE_Q3_RELEASE_SOURCE_ID_AND_URL",
+        "target_artifact": "research/xrp_intelligence/20261104T180409Z-xrp-market-and-circle-q3-update.json",
+        "target_field": "$.source_registry[2]",
+        "original_source_id": "circle_q3_2026_8k_ex99_1_20261104",
+        "original_value": {
+          "publisher": "Circle Internet Group, Inc.",
+          "source_type": "primary_sec_8k_exhibit_99_1",
+          "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+          "filed_date": "2026-11-04"
+        },
+        "canonical_source_id": "circle_q3_2026_earnings_release_pdf",
+        "canonical_value": {
+          "publisher": "Circle Internet Group, Inc.",
+          "source_type": "primary_issuer_earnings_release_pdf",
+          "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf",
+          "published_at_utc": "2026-11-04"
+        },
+        "evidence_source_ids": [
+          "circle_ir_q3_2026_results_page",
+          "circle_q3_2026_earnings_release_pdf",
+          "sec_edgar_circle_company_directory_20261104"
+        ],
+        "rule": "Do not label the 000309 URL as a verified SEC 8-K exhibit. Use the accessible primary issuer earnings-release PDF as the canonical Q3 results source unless a resolvable SEC filing index/document is independently captured.",
+        "model_eligible": false,
+        "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+      },
+      {
+        "correction_id": "C23_CIRCLE_Q3_PRESENTATION_CANONICAL_SOURCE",
+        "target_artifact": "research/xrp_intelligence/20261104T180409Z-xrp-market-and-circle-q3-update.json",
+        "target_field": "$.source_registry[3]",
+        "original_source_id": "circle_q3_2026_presentation_mirror_20261104",
+        "original_value": {
+          "publisher": "MarketScreener / Publicnow republication of Circle Investor Relations presentation",
+          "source_type": "secondary_hosted_issuer_presentation_mirror",
+          "url": "https://www.marketscreener.com/news/circle-internet-third-quarter-2026-earnings-presentation-ce785fdfdb8cf626",
+          "canonical_origin_url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf"
+        },
+        "canonical_source_id": "circle_q3_2026_earnings_presentation_pdf",
+        "canonical_value": {
+          "publisher": "Circle Investor Relations",
+          "source_type": "primary_issuer_earnings_presentation_pdf",
+          "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf"
+        },
+        "treatment": "Retain the third-party mirror only as a secondary copy; use the official issuer-hosted PDF for primary claims and keep both in the same Circle issuer-independence group.",
+        "evidence_source_ids": [
+          "circle_ir_q3_2026_results_page",
+          "circle_q3_2026_earnings_presentation_pdf"
+        ],
+        "model_eligible": false,
+        "application_status": "NOT_EXECUTED_RESEARCH_ONLY_OVERLAY"
+      }
+    ]
+  },
+  "forecast_issued": false,
+  "prediction_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "notes": [
+    "The Q3 2026 release and presentation are accessible from Circle's official Investor Relations page.",
+    "The 000309 SEC accession in the 18:04Z market artifact remains unverified; this correction does not claim that the accession definitively does not exist.",
+    "Circle's reported USDC circulation, reserve income, platform distribution, payment-network TPV and ARC presale revenue are separate measures.",
+    "No Circle growth metric is treated as proof of XRP demand, XRP collateral utilization or XRP displacement.",
+    "Rendered evidence remains research-only because byte-complete raw receipts and independently anchored timestamps are unavailable."
+  ]
+}

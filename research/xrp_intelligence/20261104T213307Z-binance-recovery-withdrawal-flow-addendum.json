@@ -1,0 +1,283 @@
+{
+  "schema_version": "barrot.xrp.binance-recovery-flow-addendum.v1",
+  "artifact_id": "xrp_binance_recovery_withdrawal_flow_20261104T213307Z",
+  "artifact_type": "append_only_exchange_recovery_and_customer_flow_addendum",
+  "captured_at_utc": "2026-11-04T21:33:07Z",
+  "data_cutoff_utc": "2026-11-04T21:33:07Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "reviewed_parent_sha": "8dd4292ba67620e862cdbfc6d36962fb94a44aff",
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+  },
+  "preservation": {
+    "prior_artifacts_modified": false,
+    "append_only": true,
+    "raw_source_bytes_archived": false,
+    "forecast_issued": false,
+    "model_eligible": false
+  },
+  "source_registry": [
+    {
+      "source_id": "REUTERS-BINANCE-NET-WITHDRAWALS-20261103",
+      "publisher": "Reuters",
+      "source_type": "independent_news_reporting_with_company_attributed_operating_metrics",
+      "published_at_utc": "2026-11-03T07:35:00Z",
+      "retrieved_at_utc": "2026-11-04T21:33:07Z",
+      "url": "https://www.reuters.com/world/asia-pacific/binance-co-ceo-says-company-is-very-strong-financial-health-after-63-billion-2026-11-03/",
+      "source_independence_group": "reuters_news",
+      "claims_supported": [
+        "Reuters reported Binance co-CEO Richard Teng said hourly inflows and outflows had pretty much normalized and 95% of affected tokens had been replenished.",
+        "Reuters reported Binance said customers had withdrawn a net $4.72 billion as of Monday 2026-11-02, approximately 3% of platform assets, with most withdrawals in USDT.",
+        "Reuters reported the remaining 5% of affected tokens were less liquid and Binance was working with OTC providers to restore them."
+      ],
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_article_extract_only",
+      "limitations": [
+        "The $4.72 billion net-withdrawal figure is attributed by Reuters to Binance; it is not an independent reconstruction from customer ledgers or on-chain balances.",
+        "Reuters did not provide an XRP-specific withdrawal amount, asset-by-asset breakdown, exact intraday cutoff or venue-level flow series.",
+        "The 95% replenishment statement is dated to the November 3 event/reporting context and should not be averaged with later issuer updates."
+      ]
+    },
+    {
+      "source_id": "BINANCE-RECOVERY-UPDATE-7-20261104",
+      "publisher": "Binance",
+      "source_type": "official_issuer_recovery_and_proof_of_reserves_update",
+      "published_at_utc": "2026-11-04T15:23:00Z",
+      "retrieved_at_utc": "2026-11-04T21:33:07Z",
+      "url": "https://www.binance.bh/en/support/announcement/detail/c6ba9aa726974fc6b9332a2c8f63b405",
+      "source_independence_group": "binance_primary",
+      "claims_supported": [
+        "Binance reported approximately 98% of affected assets replenished and said it had set aside more than 100% of the assets required to cover the loss.",
+        "Binance reported a November 4 00:00 UTC Proof of Reserves snapshot covering 44 tokens.",
+        "Binance said generation of the complete zero-knowledge proof was expected to take approximately 50 to 60 hours.",
+        "Binance said the remaining approximately 2% consisted of lower-liquidity tokens still being acquired through market and OTC channels."
+      ],
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_issuer_announcement_extract_only",
+      "limitations": [
+        "The 98% replenishment and greater-than-100% reserve coverage are issuer statements, not independently verified completed asset-level reconciliation in this capture.",
+        "The 44-token snapshot's complete zero-knowledge proof was pending at the stated update; do not describe it as already independently verified.",
+        "The remaining-token market/OTC purchases are not quantified by asset; no XRP-specific purchase quantity is established."
+      ]
+    },
+    {
+      "source_id": "BINANCE-RECOVERY-UPDATE-3-XRP-BACKING-20261031",
+      "publisher": "Binance",
+      "source_type": "official_issuer_recovery_announcement",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "retrieved_at_utc": "2026-11-04T21:33:07Z",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "source_independence_group": "binance_primary",
+      "claims_supported": [
+        "Binance listed XRP among ten named assets it reported as 100% backed by reserves in its October 31 recovery update."
+      ],
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_issuer_announcement_extract_only",
+      "limitations": [
+        "Reserve backing is not evidence of net XRP customer flows, spot purchases, market impact, stolen-XRP recovery or current executable liquidity.",
+        "This is an earlier issuer statement and does not independently validate the later 44-token proof."
+      ]
+    }
+  ],
+  "event_timeline": [
+    {
+      "event_id": "BINANCE-NET-WITHDRAWALS-REPORTED",
+      "event_time_utc": null,
+      "event_date": "2026-11-02",
+      "report_time_utc": "2026-11-03T07:35:00Z",
+      "event_type": "exchange_customer_net_withdrawals",
+      "description": "Reuters reported Binance's company-attributed net customer withdrawals of $4.72 billion as of Monday, approximately 3% of platform assets; most withdrawals were in USDT.",
+      "source_ids": [
+        "REUTERS-BINANCE-NET-WITHDRAWALS-20261103"
+      ],
+      "limitations": [
+        "Exact cutoff time and asset-by-asset withdrawal amounts were not disclosed."
+      ]
+    },
+    {
+      "event_id": "BINANCE-FLOW-NORMALIZATION-AND-95PCT",
+      "event_time_utc": "2026-11-03T07:35:00Z",
+      "event_type": "exchange_recovery_operating_update",
+      "description": "Reuters reported the Binance co-CEO said hourly inflows and outflows had pretty much normalized and 95% of affected tokens had been replenished.",
+      "source_ids": [
+        "REUTERS-BINANCE-NET-WITHDRAWALS-20261103"
+      ],
+      "limitations": [
+        "This is an attributed executive statement; no native exchange flow series was supplied."
+      ]
+    },
+    {
+      "event_id": "BINANCE-44-TOKEN-POR-SNAPSHOT",
+      "event_time_utc": "2026-11-04T00:00:00Z",
+      "event_type": "proof_of_reserves_snapshot",
+      "description": "Binance reported completion of a 44-token Proof of Reserves snapshot; the complete zero-knowledge proof was still being generated.",
+      "source_ids": [
+        "BINANCE-RECOVERY-UPDATE-7-20261104"
+      ],
+      "limitations": [
+        "A snapshot is not the same as a published, independently verified proof."
+      ]
+    },
+    {
+      "event_id": "BINANCE-98PCT-REPLENISHMENT",
+      "event_time_utc": "2026-11-04T15:23:00Z",
+      "event_type": "exchange_asset_replenishment_update",
+      "description": "Binance reported approximately 98% of affected assets replenished, compared with Reuters' November 3 report of 95%.",
+      "source_ids": [
+        "BINANCE-RECOVERY-UPDATE-7-20261104"
+      ],
+      "limitations": [
+        "Different report times and potentially different denominators or update cutoffs; preserve both observations without averaging."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "REUTERS-NET-WITHDRAWALS-472B",
+      "status": "reported_company_supplied_metric",
+      "net_customer_withdrawals_usd": 4720000000,
+      "as_of_date": "2026-11-02",
+      "approximate_share_of_platform_assets_pct": 3,
+      "majority_withdrawal_asset": "USDT",
+      "hourly_inflows_outflows_status": "pretty_much_normalised_as_reported_by_co_ceo",
+      "affected_tokens_replenished_pct": 95,
+      "source_ids": [
+        "REUTERS-BINANCE-NET-WITHDRAWALS-20261103"
+      ],
+      "limitations": [
+        "The $4.72B is a Binance-supplied figure quoted by Reuters, not an independently reconstructed customer-flow total.",
+        "Most withdrawals being USDT does not establish the XRP share; the XRP amount is unknown.",
+        "A later statement that hourly flows normalized does not erase the earlier net withdrawals."
+      ]
+    },
+    {
+      "claim_id": "BINANCE-98PCT-44TOKEN-POR",
+      "status": "issuer_reported_replenishment_and_pending_proof",
+      "replenished_pct": 98,
+      "remaining_pct": 2,
+      "company_funds_reserved_vs_required_pct": "greater_than_100",
+      "por_snapshot_time_utc": "2026-11-04T00:00:00Z",
+      "por_token_count": 44,
+      "zero_knowledge_proof_estimate_hours": [
+        50,
+        60
+      ],
+      "source_ids": [
+        "BINANCE-RECOVERY-UPDATE-7-20261104"
+      ],
+      "limitations": [
+        "The 98% is aggregate affected-asset replenishment, not an XRP-specific flow or buy quantity.",
+        "The 44-token proof was pending; the issuer's snapshot statement is not the completed cryptographic proof.",
+        "The remaining low-liquidity token purchases may occur through market or OTC channels, but asset-level quantities are undisclosed."
+      ]
+    },
+    {
+      "claim_id": "XRP-100PCT-RESERVE-BACKING-EARLIER-UPDATE",
+      "status": "issuer_reported_asset_backing",
+      "as_of_utc": "2026-10-31T14:24:00Z",
+      "asset": "XRP",
+      "reported_backing_pct": 100,
+      "source_ids": [
+        "BINANCE-RECOVERY-UPDATE-3-XRP-BACKING-20261031"
+      ],
+      "limitations": [
+        "This earlier reserve-backing statement does not prove current net XRP flows, stolen-XRP recovery, customer withdrawal amounts or Binance XRP purchases.",
+        "Reserve backing and exchange inventory flows are separate measurements."
+      ]
+    }
+  ],
+  "reporting_disagreement": [
+    {
+      "metric": "affected_token_replenishment_percentage",
+      "observations": [
+        {
+          "publisher": "Reuters quoting Binance co-CEO",
+          "report_date": "2026-11-03",
+          "reported_pct": 95,
+          "source_id": "REUTERS-BINANCE-NET-WITHDRAWALS-20261103"
+        },
+        {
+          "publisher": "Binance official update",
+          "report_date": "2026-11-04",
+          "reported_pct": 98,
+          "source_id": "BINANCE-RECOVERY-UPDATE-7-20261104"
+        }
+      ],
+      "interpretation": "These are sequentially dated reports and may reflect later replenishment, different cutoffs or denominator definitions. Preserve both; do not average or force a same-time reconciliation."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1-CONTAINED-CONFIDENCE-SHOCK",
+      "description": "The incident caused a measurable but contained confidence shock: Reuters reported net withdrawals near 3% of platform assets, mostly USDT, while hourly flows were said to have normalized by November 3.",
+      "supporting_evidence": [
+        "Reuters' $4.72B net-withdrawal figure was approximately 3% of platform assets.",
+        "Reuters reported hourly inflows and outflows had pretty much normalized."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "The $4.72B outflow is still material in absolute terms.",
+        "No independent exchange-wide or asset-level flow series was captured.",
+        "Normalization is an executive-reported aggregate, not proof that XRP flows normalized."
+      ]
+    },
+    {
+      "hypothesis_id": "H2-PERSISTENT-ASSET-SPECIFIC-STRESS",
+      "description": "Aggregate normalization may conceal continuing stress in particular assets, venues or withdrawal networks, especially the remaining lower-liquidity tokens.",
+      "supporting_evidence": [
+        "Binance said the remaining approximately 2% of affected assets were lower-liquidity tokens still being acquired.",
+        "The 44-token zero-knowledge proof was pending at the November 4 update."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Binance reported 98% replenishment and more than 100% of required coverage reserved.",
+        "Reuters reported hourly inflows and outflows had largely normalized.",
+        "No XRP-specific withdrawal or reserve shortfall is established."
+      ]
+    },
+    {
+      "hypothesis_id": "H3-RESIDUAL-REPLENISHMENT-DEMAND",
+      "description": "Market and OTC purchases to restore the final less-liquid assets could create asset-specific demand, but the effect depends on which tokens remain and their quantities.",
+      "supporting_evidence": [
+        "Binance said it was continuing to acquire the remaining tokens through market and OTC channels."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No remaining-token list or per-token purchase amount was disclosed in the reviewed excerpt.",
+        "XRP had already been listed among ten assets reported 100% backed in the October 31 update.",
+        "No XRP-specific market or OTC purchase is evidenced."
+      ]
+    }
+  ],
+  "xrp_interpretation": {
+    "direct_xrp_net_withdrawals_usd": null,
+    "direct_xrp_net_withdrawals_xrp": null,
+    "xrp_specific_replenishment_quantity": null,
+    "xrp_specific_market_or_otc_purchase_confirmed": false,
+    "conclusion": "The reported $4.72B Binance net withdrawals are mostly USDT and are not an XRP flow measurement. The earlier 100% XRP reserve-backing statement and later 98% aggregate replenishment update do not establish XRP net flows, market purchases or stolen-XRP recovery."
+  },
+  "data_quality": {
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "independent_timestamp_anchor": false,
+    "exchange_native_asset_level_flow_series": false,
+    "reuters_metric_independently_reconstructed": false,
+    "source_disagreement_preserved": true,
+    "source_independence_groups": [
+      "reuters_news",
+      "binance_primary"
+    ],
+    "model_eligible": false,
+    "forecast_issued": false,
+    "prediction_status": "NOT_ISSUED",
+    "reason_model_ineligible": "Web-rendered sources lack byte-complete raw receipts and independent timestamp anchoring; the withdrawal metric is company-attributed and lacks asset-level decomposition; no XRP-specific flow series is supplied."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "forecast_issued": false,
+  "model_eligible": false,
+  "next_actions": [
+    "Retrieve and verify Binance's completed 44-token zero-knowledge Proof of Reserves when published; preserve the snapshot time and proof-generation time separately.",
+    "Reconcile the Reuters 95% report and Binance's later 98% update by exact publication time, affected-token denominator and replenishment definition; do not average.",
+    "Seek public asset-level Binance reserve/withdrawal evidence and ledger-backed XRP flows; do not infer XRP flows from aggregate platform withdrawals dominated by USDT.",
+    "Keep the security incident and recovery observations out of predictive features until raw-source receipts, point-in-time availability and asset-level scope are verified."
+  ]
+}

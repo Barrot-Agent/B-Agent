@@ -1,0 +1,384 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.research_run",
+  "run_id": "Run44",
+  "captured_at_utc": "2026-11-12T03:28:57Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_run44": "cf9ff25783de0fabb9193b5505edb85157d45ae6",
+    "integration_tree_entries": 2302,
+    "main_tree_entries": 1388,
+    "ahead_by": 2078,
+    "behind_by": 0,
+    "pr": 1661,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable": true,
+    "formal_reviews": 0,
+    "review_threads": 0,
+    "changed_files": 1043,
+    "workflow_files": 49,
+    "non_workflow_paths": 994,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "integration_head_after_run44": "6510a8e0272c22b6c480d6fa14b4118748d4cb4a"
+  },
+  "ci": {
+    "exact_head": "6510a8e0272c22b6c480d6fa14b4118748d4cb4a",
+    "workflow_run_id": 43149136286,
+    "full_suite_job_id": 130953903772,
+    "full_suite": {
+      "passed": 3495,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 61.27,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 96.42,
+      "exact_head": true,
+      "wheel_build_verified": true,
+      "installed_wheel_mission_verified": true
+    },
+    "core_suite": {
+      "job_id": 130953903447,
+      "passed": 716,
+      "failed": 0,
+      "subtests": 8
+    },
+    "dependency_audit": {
+      "run_id": 43149136348,
+      "job_id": 130953903667,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43149136353,
+      "job_id": 130953903267,
+      "passed": true,
+      "automatic_merge_enabled": false
+    }
+  },
+  "implemented_run44": {
+    "files": [
+      "barrot_agent/evolution/event_timeline.py",
+      "tests/test_xrp_event_timeline.py",
+      "barrot_agent/evolution/__init__.py"
+    ],
+    "purpose": "Deterministic point-in-time event timeline builder feeding the existing scenario/counter-hypothesis assembler.",
+    "tests_added": 16,
+    "guarantees": [
+      "Separates event time, publisher publication time, first availability and actual capture time.",
+      "Excludes historical events captured after the data cutoff.",
+      "Includes future events only when explicitly scheduled, already captured by the cutoff and inside the requested horizon.",
+      "Rejects stale scheduled events, unverified future events, malformed timestamps, duplicate event IDs and invalid receipt hashes.",
+      "Collapses declared source lineage and canonical publisher aliases.",
+      "Preserves contrary evidence as minority objections through the existing scenario assembler.",
+      "Always emits research-only NOT_ISSUED output with null probabilities and model_eligible=false."
+    ],
+    "limitations": [
+      "The module accepts explicit event records; it does not fetch or discover events.",
+      "It is not yet wired to the scheduled XRP collector because no validated, canonical event-record registry exists.",
+      "Local SHA-256 receipts are not independent WORM storage or trusted timestamp anchoring."
+    ],
+    "status": "VERIFIED_ON_HEAD_6510A8E; PROVENANCE_HARDENING_FOLLOWUP"
+  },
+  "research": {
+    "market_capture_utc": "2026-11-12T03:26:00Z",
+    "raw_byte_receipt_captured": false,
+    "model_eligible": false,
+    "spot": {
+      "okx_xrp_usdt": {
+        "last": 1.0465,
+        "bid": 1.0465,
+        "ask": 1.0466,
+        "provider_event_time_utc": "2026-11-12T03:14:49.567Z",
+        "volume_24h_xrp": 39293844.789096
+      },
+      "kraken_xrp_usd": {
+        "last": 1.04543,
+        "bid": 1.04543,
+        "ask": 1.04553,
+        "provider_event_time_utc": null,
+        "volume_24h_xrp": 21692006.30062262
+      },
+      "kraken_usdt_usd": {
+        "bid": 0.99869,
+        "ask": 0.9987,
+        "mid": 0.998695
+      },
+      "normalized_okx_mid_usd": 1.04518425225,
+      "kraken_mid_usd": 1.04548,
+      "normalized_gap_percent": -0.0283,
+      "interpretation": "Near-aligned asynchronous quotes; OKX provider event time is about 12 minutes old at capture and Kraken exposes no event timestamp. Not executable arbitrage.",
+      "freshness_warning": "The second retrieval repeated identical OKX and Kraken quote payloads; OKX event timestamp remained 03:14:49.567 UTC and Kraken exposes no trade-event timestamp. Treat as cached/stale, not live executable quotes."
+    },
+    "spot_orderbook": {
+      "source": "Fuelmaps",
+      "as_of_utc": "2026-11-12T03:00:00Z",
+      "venues": 6,
+      "venues_listed": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "mid_usd": 1.05,
+      "depth": {
+        "0.5_percent": {
+          "bids_usd": 7100000,
+          "asks_usd": 7200000,
+          "bid_share_percent": 49.8
+        },
+        "1_percent": {
+          "bids_usd": 13800000,
+          "asks_usd": 12000000,
+          "bid_share_percent": 53.5
+        },
+        "2_percent": {
+          "bids_usd": 19400000,
+          "asks_usd": 13300000,
+          "bid_share_percent": 59.5
+        },
+        "5_percent": {
+          "bids_usd": 29700000,
+          "asks_usd": 15800000,
+          "bid_share_percent": 65.3
+        },
+        "10_percent": {
+          "bids_usd": 35100000,
+          "asks_usd": 16900000,
+          "bid_share_percent": 67.5
+        }
+      },
+      "caveats": [
+        "Hourly averages of one-minute book snapshots.",
+        "Resting orders can be cancelled.",
+        "Binance and Bitget are excluded.",
+        "This is spot depth, not derivatives depth."
+      ]
+    },
+    "derivatives": {
+      "coinalyze_binance_bybit": {
+        "as_of_utc": "2026-11-12T03:15:00Z",
+        "covered_open_interest_usd": 576660000,
+        "coverage": "2 of 22 venue/contract universe; Binance and Bybit XRPUSDT contracts",
+        "binance_oi_usd": 315420000,
+        "bybit_oi_usd": 261240000,
+        "binance_funding_percent": 0.00446,
+        "bybit_funding_percent": 0.007883,
+        "binance_long_account_percent": 75.23,
+        "bybit_long_account_percent": 81.45
+      },
+      "tradradar": {
+        "as_of_utc": "2026-11-11T19:05:00Z",
+        "open_interest_usd": 1570000000,
+        "venue_count": 7,
+        "funding_percent_per_8h": 0.0045,
+        "long_account_share_percent": 79.7,
+        "liquidations_24h_usd_at_least": 2850000,
+        "long_liquidations_usd": 1580000,
+        "short_liquidations_usd": 1270000
+      },
+      "interpretation": "Do not average. Coinalyze's fresh $576.66M covers two contracts; TradRadar's $1.57B covers seven exchanges at an older timestamp. Account ratios are not notional directional exposure."
+    },
+    "options": {
+      "source": "OptimistFi/Deribit",
+      "as_of_utc": "2026-11-12T00:00:00Z",
+      "atm_iv_30d_percent": 57.5,
+      "risk_reversal_25_delta_points": -0.1,
+      "put_call_ratio": 0.55,
+      "dec_25_2026_open_interest_usd": 46900000,
+      "interpretation": "Aggregate 30-day skew nearly flat; near-expiry puts richer while Dec/Mar expiries modestly call-rich. Term structure mixed."
+    },
+    "etf_flows": {
+      "source": "Alpha Finance",
+      "completed_issuer_day": "2026-11-10",
+      "fund_universe": "five US spot products",
+      "nov10_net_flow_usd": -7600000,
+      "nov9_net_flow_usd": -10400000,
+      "seven_session_net_flow_usd": -18000000,
+      "thirty_session_net_flow_usd": 1300000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "interpretation": "Nov11 issuer flow not yet complete on the opened page; do not extrapolate or mix with different fund universes."
+    },
+    "exchange_wallets": {
+      "source": "XRP Insights",
+      "as_of_utc": "2026-11-11T08:00:00Z",
+      "attributed_wallets": 701,
+      "exchanges": 24,
+      "xrp": 22330000000,
+      "same_wallet_7d_change_xrp": 1300000,
+      "same_wallet_30d_change_xrp": -155700000,
+      "includes_cold_storage": true,
+      "wrapped_reserves_included_xrp": 480500000,
+      "interpretation": "Attributed wallet balances, not tradable float. Same-wallet changes reduce new-label coverage jumps but still cannot distinguish customer withdrawals from exchange wallet migration."
+    },
+    "tracked_external_flows": {
+      "source": "TrackWhale",
+      "as_of_utc": "2026-11-12T03:26:00Z",
+      "seven_day_inflows_xrp": 166830000,
+      "seven_day_outflows_xrp": 221610000,
+      "net_xrp": -54780000,
+      "largest_transfer_xrp": 168420000,
+      "largest_transfer_attribution": "unknown wallet",
+      "interpretation": "Large-transfer tracker only; not comprehensive exchange reserve accounting. Unlabeled transfer is not an exchange flow."
+    },
+    "xrpl_lending": {
+      "source": "xrpldashboard own-node roll call",
+      "as_of_utc": "2026-11-12T02:57:00Z",
+      "validators_heard": 35,
+      "threshold_yes": 29,
+      "lending_protocol_yes": 22,
+      "single_asset_vault_yes": 23,
+      "lending_protocol_v1_1_yes": 22,
+      "active_14_day_countdown": false,
+      "interpretation": "Native XLS-66 lending stack remains inactive; XLS-66 is fixed-term and uncollateralized with off-chain underwriting. No native XRP collateral/liquidation system."
+    },
+    "sources": [
+      {
+        "publisher": "OKX",
+        "source_group": "exchange:okx",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "as_of_utc": "2026-11-12T03:14:49.567Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Kraken",
+        "source_group": "exchange:kraken",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "as_of_utc": null,
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Kraken",
+        "source_group": "exchange:kraken",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "as_of_utc": null,
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Fuelmaps",
+        "source_group": "aggregator:fuelmaps",
+        "url": "https://fuelmaps.io/order-book/",
+        "as_of_utc": "2026-11-12T03:00:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "BitcoinLeverage/Coinalyze",
+        "source_group": "aggregator:coinalyze",
+        "url": "https://bitcoinleverage.com/xrp",
+        "as_of_utc": "2026-11-12T03:15:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "TradRadar",
+        "source_group": "aggregator:tradradar",
+        "url": "https://tradradar.io/markets/xrp",
+        "as_of_utc": "2026-11-11T19:05:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "OptimistFi/Deribit",
+        "source_group": "aggregator:optimistfi",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "as_of_utc": "2026-11-12T00:00:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "Alpha Finance",
+        "source_group": "aggregator:alpha-finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "as_of_utc": "2026-11-10",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "XRP Insights",
+        "source_group": "aggregator:xrp-insights",
+        "url": "https://xrp-insights.com/exchange-balances",
+        "as_of_utc": "2026-11-11T08:00:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "TrackWhale",
+        "source_group": "aggregator:trackwhale",
+        "url": "https://trackwhale.io/xrp-whale-tracker",
+        "as_of_utc": "2026-11-12T03:26:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      },
+      {
+        "publisher": "xrpldashboard",
+        "source_group": "independent_node:xrpldashboard",
+        "url": "https://xrpldashboard.com/amendments",
+        "as_of_utc": "2026-11-12T02:57:00Z",
+        "capture_utc": "2026-11-12T03:26:00Z",
+        "model_eligible": false
+      }
+    ]
+  },
+  "security": {
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true,
+      "least_privilege_met": false
+    },
+    "branch_protection_detail": "HTTP 403",
+    "fallback_ruleset": "disabled",
+    "credential_path_absent_from_main_integration_and_17_affected_pr_file_inventories": true,
+    "provider_side_oauth_revocation_verified": false,
+    "pages_publication_authorized": false
+  },
+  "platform_status": {
+    "ChatGPT": "GitHub API verified; connector permissions overprivileged",
+    "Claude": "authentication/data flow unverified",
+    "Grok": "authentication/data flow unverified",
+    "Gemini": "authentication/data flow unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "authentication/data flow unverified",
+    "HuggingFace": "BUILD_ERROR",
+    "Kaggle": "untested; no submission",
+    "Databricks": "HTTP 403; no write",
+    "LunaRoute": "repository-declared canonical brain; endpoint authentication/data flow unverified"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "implemented_run45": {
+    "purpose": "Hardening point-in-time event timeline validation and excluded-event provenance.",
+    "tests_added": 5,
+    "changes": [
+      "Validates source/event status and stance before cutoff exclusion.",
+      "Validates HTTP(S) URLs and rejects embedded credentials even for excluded records.",
+      "Validates raw-source hashes before cutoff exclusion.",
+      "Preserves full event, source, timestamp, lineage, hypothesis and receipt metadata for excluded events.",
+      "Rejects non-text source names rather than coercing them."
+    ],
+    "status": "CODE_PREPARED_FOR_INTEGRATION"
+  }
+}

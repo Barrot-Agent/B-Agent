@@ -1,0 +1,140 @@
+{
+  "schema_version": "barrot.xrp.capital-reconciliation.v1",
+  "run_id": "run75b",
+  "captured_at_utc": "2026-11-13T03:01:51Z",
+  "eligibility": {
+    "status": "RESEARCH_ONLY_NO_RAW_RECEIPTS",
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "model_eligible": false,
+    "directional_forecast_issued": false
+  },
+  "source": {
+    "publisher": "SEC",
+    "issuer": "Evernorth Holdings Inc.",
+    "form": "424B3",
+    "filed": "2026-11-09",
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+  },
+  "contributions": {
+    "advance_funding": {
+      "cash_usd_m": 214.05,
+      "xrp": 600000,
+      "usage": "Approximately $214.0M cash used to acquire XRP."
+    },
+    "delayed_funding": {
+      "cash_usd_m": 10.5,
+      "xrp": 200000
+    },
+    "rippleworks_to_arrington_sponsor": {
+      "xrp": 211319096.061435,
+      "contributor": "RippleWorks, Inc. nonprofit foundation",
+      "recipient": "Arrington XRP Capital Fund, LP",
+      "condition": "Sponsor obligated to invest the XRP for Evernorth equity; sponsor voting power capped at 19.9%."
+    },
+    "larsen_lam_children_remainder_trust": {
+      "xrp": 50000000,
+      "relationship": "Contributor identified as investor affiliated with Ripple."
+    },
+    "ripple_direct_contribution": {
+      "xrp": 126791458,
+      "contributor": "Ripple Labs Inc.",
+      "consideration": "Company Units"
+    },
+    "total_in_kind_xrp": 388910554.061435,
+    "total_private_placement_cash_usd_m": 224.55,
+    "clarification": "388.910554M XRP is in-kind, not cash. The $214.05M advance cash was used to buy XRP. Do not describe the entire treasury as cash-purchased."
+  },
+  "ownership_at_2026_10_09": {
+    "SBI_group_voting_power_percent": 39.9,
+    "SBI_group_total_common_stock_percent": 21.4,
+    "SBI_class_a_shares": 9431914,
+    "SBI_class_c_nonvoting_shares": 2359038,
+    "SBI_controlled_entities": [
+      "SBI Venture Fund 2023A Investment LPS",
+      "SBI Venture Fund 2023B Investment LPS",
+      "SBI PE Holdings Co., Ltd.",
+      "SBI Holdings USA, Inc."
+    ],
+    "sponsor_voting_power_percent": 19.9,
+    "contributor_group_voting_power_percent": 9.9,
+    "public_shareholders_voting_power_percent": 20.5,
+    "other_advance_delayed_subscribers_voting_power_percent": 9.8,
+    "clarification": "39.9% is SBI Group voting power in Evernorth, not SBI's separate approximately 9% Ripple equity stake disclosed in 2025. Class C shares explain why 39.9% voting power corresponds to 21.4% of total common shares."
+  },
+  "financing": {
+    "convertible_pik_note": {
+      "principal_usd_m": 30,
+      "interest_percent": 4,
+      "interest_paid": "in kind semi-annually",
+      "initial_conversion_price_usd": 10.2,
+      "potential_class_a_shares": 3585278,
+      "classification": "Debt; conversion not established."
+    },
+    "related_party_credit_facility": {
+      "limit_usd_m": 10,
+      "drawn_usd_m": 9.7,
+      "drawn_as_of": "2026-10-07",
+      "repayment_due": "within five business days after 2026-10-09 closing",
+      "repayment_status": "not established by this filing excerpt"
+    },
+    "company_facility": {
+      "aggregate_capacity_usd_m": 8,
+      "drawn_usd_m": 5.4,
+      "drawn_as_of": "2026-06-30",
+      "current_balance": "not reconciled"
+    },
+    "public_warrants": {
+      "count": 11499992,
+      "strike_usd": 11.5,
+      "potential_cash_if_all_exercised_usd": 132249908,
+      "XRPN_close_2026_11_06_usd": 10.58,
+      "exercise_status": "no exercise established; stock below strike on stated date"
+    },
+    "sponsor_warrants": {
+      "count": 239653,
+      "strike_usd": 11.5,
+      "potential_cash_if_all_exercised_usd": 2756009.5,
+      "exercise_status": "no exercise established"
+    },
+    "resale_shares": {
+      "count": 73688162,
+      "issuer_proceeds_usd": 0,
+      "notes": "Selling-securityholder resales; Evernorth explicitly says it receives no proceeds."
+    },
+    "committed_equity_facility": {
+      "potential_shares": 5218935,
+      "price_formula": "97% of applicable VWAP",
+      "drawn_proceeds": "not established"
+    }
+  },
+  "custody_and_deployment": {
+    "custodian": "BitGo Bank & Trust, National Association",
+    "XRP_in_cold_storage_percent_as_of": "2026-11-09",
+    "shared_insurance_usd_m": 250,
+    "shared_insurance_percent_of_holdings_value_as_of_2026_10_09": 36.9,
+    "FDIC_or_SIPC_protection": false,
+    "strategy": "Use existing XRP holdings for institutional lending, options, structured products, DeFi lending and AMM liquidity; RLUSD intended as a stable-value asset in XRP/RLUSD pools.",
+    "management_says_yield_strategies_commenced": "following 2026-10-09 closing",
+    "management_says_no_material_deployment_before": "2026-Q4",
+    "management_says_no_direct_cash_investment_into_ecosystem_projects": true,
+    "unresolved_gap": "The same Nov9 filing says 100% of XRP was in cold storage at BitGo while saying yield strategies/DeFi participation commenced after closing. It names no protocol, wallet, deployed amount or counterparty. Actual deployed XRP remains UNVERIFIED pending custody-movement and protocol-position reconciliation.",
+    "transparency": "The prospectus says Evernorth is not required to publish daily holdings/NAV."
+  },
+  "counter_evidence": [
+    "The prospectus says retail/commercial XRP payment use remains limited and speculators are a significant portion of users.",
+    "The prospectus identifies permissioned payment networks that do not require a native digital asset as competitors.",
+    "XRP is less liquid than cash and may not be usable as collateral during market stress.",
+    "BitGo's approximately $250M insurance is shared among clients, not dedicated to Evernorth."
+  ],
+  "exact_phrase": "The literal phrase 'actual capital' does not appear in this 424B3; the filing reports cash, in-kind XRP, debt, warrants, resale supply and conditional equity separately.",
+  "repo_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "tested_predecessor_head": "7f4954f7b03aad5edbb9ee12e39ed8794ef522df",
+    "full_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43355718596",
+    "dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43355712792",
+    "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43355718569",
+    "full_suite": "3542 passed; 8 subtests; 0 failures; 61.55% inclusive coverage; 723 core tests; 76% core coverage; wheel and installed package passed"
+  },
+  "model_eligible": false
+}

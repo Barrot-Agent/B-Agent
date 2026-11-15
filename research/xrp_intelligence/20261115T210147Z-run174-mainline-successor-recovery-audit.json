@@ -1,0 +1,400 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "Run174",
+  "captured_at_utc": "2026-11-15T21:01:47Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety, authorization and verification foundation"
+  },
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "current_main_sha": "5b2a9c46eb878250dfec99190e294909cd5835bf",
+    "current_main_parent": "3e99659bc377b087df4dc551081364da1b3bc88c",
+    "source_integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "source_integration_head_sha": "b48ba44bcaf712be154a2ccb6745c0c5aa839aeb",
+    "source_pr": {
+      "number": 1662,
+      "state": "closed",
+      "merged": false,
+      "draft": true,
+      "closed_at": "2026-11-15T20:55:02Z",
+      "closed_by": "Barrot-Agent",
+      "superseded_by_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z"
+    },
+    "common_ancestor_with_current_main": false,
+    "tree_reconciliation": {
+      "main_entries": 1392,
+      "source_entries": 2503,
+      "identical_path_blobs": 1185,
+      "different_path_entries": 205,
+      "source_only_entries": 1113,
+      "main_only_paths": [
+        ".github/FUNDING.yml",
+        "MEMORY.md"
+      ],
+      "path_type_conflicts": 0,
+      "source_mode_differences": 3
+    },
+    "successor_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "successor_base_sha": "5b2a9c46eb878250dfec99190e294909cd5835bf",
+    "successor_pr_created": false,
+    "successor_exact_head_ci": "PENDING",
+    "preserved_main_paths": [
+      "README.md",
+      ".github/FUNDING.yml",
+      "MEMORY.md"
+    ],
+    "curated_exclusions": {
+      "directories": [
+        ".config",
+        ".termux",
+        "barrot_chunk_results"
+      ],
+      "files": [
+        ".bashrc",
+        ".gitconfig",
+        ".termux_dna_harvest.log",
+        "mcp_config.json",
+        "barrot_repo_snapshot.txt",
+        "cron_relay_log.txt",
+        "barrot_all_chunk_analysis.txt",
+        "barrot_chunk_analysis.txt",
+        "barrot_compact_analysis.txt",
+        "barrot_partial_syntheses.txt",
+        "barrot_priority_modules.txt",
+        "barrot_provider_runtime_task.txt",
+        "barrot_tool_call_resilience_task.txt",
+        "barrot_v3_nested_integration_task.txt",
+        "barrot_dual_agent_task.txt",
+        "barrot_final_coverage_plan.txt",
+        "README.md",
+        "BARROT_XRP_MISSION_HANDOFF_LATEST.md"
+      ],
+      "barrot_local_state": [
+        ".barrot/repo_state_manifest.json",
+        ".barrot/repository_identity.json",
+        ".barrot/target_registry.json",
+        ".barrot/autonomous_tasks",
+        ".barrot/backups",
+        ".barrot/orbit",
+        ".barrot/practice"
+      ],
+      "reason": "Local shell/Git/Termux configuration, local MCP config, stale worktree snapshot and generated scratch/task artifacts remain on the preserved source branch. Only V3 collaboration/acceptance evidence, disabled-test archive and MMI execution ledger are ported from .barrot."
+    },
+    "preserved_v3_evidence": [
+      ".barrot/collaboration_records",
+      ".barrot/disabled_tests",
+      ".barrot/mmi_execution_ledger.jsonl"
+    ],
+    "old_source_branch_unchanged": true,
+    "history_rewritten": false
+  },
+  "ci": {
+    "current_main": {
+      "run_id": 43760742911,
+      "head_sha": "5b2a9c46eb878250dfec99190e294909cd5835bf",
+      "conclusion": "success",
+      "full_repository_suite": {
+        "passed": 848,
+        "failed": 0,
+        "skipped": 1,
+        "subtests": 8,
+        "coverage_measured": false,
+        "job_id": 132954761156
+      }
+    },
+    "current_main_pages": {
+      "run_id": 43760719743,
+      "head_sha": "5b2a9c46eb878250dfec99190e294909cd5835bf",
+      "conclusion": "failure",
+      "error": "Jekyll/Liquid syntax error in GLOBAL_STATE_MANIFEST.md near line 6456",
+      "deploy_job": "skipped",
+      "deployment_performed": false
+    },
+    "current_main_barrot_sync": {
+      "run_id": 43760742862,
+      "head_sha": "5b2a9c46eb878250dfec99190e294909cd5835bf",
+      "wrapper_conclusion": "success",
+      "actual_sync": "skipped after ModuleNotFoundError: No module named 'rich'",
+      "push_error_suppressed": "git push || true",
+      "external_call_observed": false
+    },
+    "source_integration": {
+      "run_id": 43757499109,
+      "head_sha": "b48ba44bcaf712be154a2ccb6745c0c5aa839aeb",
+      "conclusion": "failure",
+      "full_repository_suite": {
+        "passed": 3805,
+        "failed": 1,
+        "skipped": 1,
+        "subtests": 19,
+        "failed_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current"
+      },
+      "failure_classification": "Stale historical evidence assertion compared Run173 latest head to an older Run162 top-level value; corrected to the Run173 snapshot's integration_head_before_run173_commit without removing or weakening assertions."
+    },
+    "source_dependency_audit": {
+      "run_id": 43757499132,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "source_fail_closed_gates": {
+      "push_run_id": 43757499106,
+      "pr_run_id": 43757504295,
+      "conclusion": "success"
+    },
+    "source_pr_ci": {
+      "run_id": 43757504281,
+      "conclusion": "success",
+      "pages_validation": "success_build_only",
+      "core_and_full_suite": "skipped_by_integration_branch_condition"
+    },
+    "successor": "PENDING"
+  },
+  "dependencies": {
+    "main_has_lockfile": false,
+    "main_dependency_specs": "Primarily open-ended >= constraints; no fully pinned lockfile",
+    "main_coverage_omits": [
+      "barrot_agent/agi/*",
+      "barrot_agent/ingestion/*",
+      "barrot_agent/analysis/*",
+      "barrot_agent/monetization/*",
+      "barrot_agent/orchestration/*",
+      "barrot_agent/mem_palace.py"
+    ],
+    "integration_audit_manifests": 6,
+    "integration_audit_known_vulnerabilities": 0,
+    "integration_full_coverage_config": true,
+    "note": "Main full suite passes its 848 tests, but its coverage configuration does not measure major excluded packages. Integration expands coverage and audits six dependency manifests."
+  },
+  "workflow_safety": {
+    "main_coinbase_paper_trader": "Manual BTC-USD simulation lacks typed YES approval and product-identity validation; persists simulation state to main. No run dispatched.",
+    "integration_coinbase_paper_trader": "Typed approval, exact main SHA, product identity, fail-closed state validation, read-only repository permissions and artifact-only output.",
+    "main_barrot_sync": "False-green wrapper; missing rich prevents sync and git push failure is suppressed.",
+    "integration_barrot_sync": "Quarantined/disabled with empty permissions.",
+    "main_ask_barrot_barrot_agent_ping_pong": "Legacy write-capable paths remain on main.",
+    "integration_legacy_writers": "Quarantined with disabled jobs and empty permissions.",
+    "xrp_public_ingestion": "Present on source integration; read-only, main-ref guarded, not active on main.",
+    "pages": "Integration Pages validation is build-only; no deployment authorization or deployment."
+  },
+  "prediction_engine": {
+    "implemented": [
+      "51 public-source definitions",
+      "49 scheduled source definitions",
+      "SHA-256 receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "event timelines",
+      "scenario and counter-hypothesis generation",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "purged and embargoed chronological walk-forward evaluation",
+      "paired temporal and source-clustered moving-block bootstrap",
+      "probability calibration",
+      "PSI drift monitoring",
+      "fail-closed forecast ledger",
+      "Ed25519 evaluator attestation"
+    ],
+    "event_registry": {
+      "events": 85,
+      "raw_source_sha256_missing": 85,
+      "publisher_timestamp_missing": 43,
+      "model_eligible": false
+    },
+    "archival": "Independent WORM storage and trusted timestamp anchoring not verified.",
+    "historical_data": "Synchronized multi-venue spot, full-depth L2, derivatives, exchange-flow and collateral history incomplete.",
+    "candidate_superiority": "Not demonstrated against all four baselines.",
+    "shadow_evaluation": "No qualified independent shadow cohort.",
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "admission_policy": {
+      "minimum_training_samples": 100,
+      "minimum_oos_samples": 100,
+      "minimum_shadow_samples": 100,
+      "minimum_oos_effective_sample_size": 10,
+      "minimum_shadow_effective_sample_size": 10,
+      "minimum_horizon_span": 10,
+      "minimum_independent_source_clusters": 5,
+      "minimum_bootstrap_replicates": 10000,
+      "individual_confidence": 0.99375,
+      "maximum_weighted_calibration_error": 0.05,
+      "required_baselines": [
+        "naive_class_prior",
+        "momentum_sign",
+        "mean_reversion_sign",
+        "volatility_normal"
+      ],
+      "required_losses": [
+        "mean_brier_score",
+        "mean_log_loss"
+      ],
+      "required_drift": "STABLE",
+      "required_shadow": "PASS",
+      "required_attestation": "VALID_ED25519"
+    }
+  },
+  "market_research": {
+    "latest_snapshot": "Run173",
+    "captured_at_utc": "2026-11-15T19:43:14Z",
+    "eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "raw_http_bytes_captured": false,
+    "raw_sha256_captured": false,
+    "full_depth_l2_admitted": false,
+    "usd_normalization_admitted": false,
+    "new_snapshot_in_run174": false
+  },
+  "institutional_research": {
+    "circle_binance": "Circle disclosed $100M primary equity placement to Binance at $80.84/share and a five-year USDC distribution arrangement; monthly incentive fee based on USDC held, rate undisclosed.",
+    "circle_coinbase": "Circle Q3 distribution costs paid to Coinbase: $331.3M for Q3 and $986.6M for nine months; not Coinbase net profit or XRP capital.",
+    "circle_sbi": "Circle SBI Japan K.K. is a 50/50 Circle/SBI venture; distinct from regional SBIC companies.",
+    "circle_arc_sbi": "SBI Group is a named Arc founding validator; exact legal validating subsidiary not identified.",
+    "sbi_vc_trade": "USDC and RLUSD distribution are separate commercial rails; JPYSC is separate, with public-chain circulation not verified.",
+    "pnc_coinbase_circle": "Limited incoming USDC-on-Ethereum pilot converted to USD deposits; not XRP settlement.",
+    "bny_ripple": "XRP/RLUSD custody support and primary RLUSD reserve custody; tokenized trade finance remains exploratory.",
+    "standard_chartered_ripple_lmax": "Eligible RLUSD custody is live through DIFC; LMAX collateral integration remains planned and conditional.",
+    "evernorth": "Cash proceeds, cash-funded XRP purchases, in-kind XRP, debt, warrants and undrawn ELOC capacity remain separate capital categories."
+  },
+  "identity_research": {
+    "sbic": "SBIC East, Central and West are separate regional SME investment companies, not SBI Holdings. Official SBIC East and West training records reference ChatGPT; no OpenAI commercial partnership is established.",
+    "ask_coin": "No canonical XRPL ASK issuer verified; Permission ASK on Base/Polygon is a candidate only.",
+    "actual_capital": "Not a standardized XRP metric; maintain separate cash, XRP purchases, in-kind XRP, debt, warrants, undrawn facilities, wallet balances and stablecoin supply.",
+    "kamilah_stevenson": "Person identity verified, but candidate YouTube channel ownership remains unverified. Camilla/Kamilah name variants are not conflated; video inventory remains quarantined."
+  },
+  "nine_platforms": {
+    "ChatGPT": "Current-session GitHub connector verified; permissions admin/maintain/push/pull/triage, overprivileged.",
+    "Claude": "Unverified",
+    "Grok": "Unverified",
+    "Gemini": "Unverified",
+    "Copilot": "One-off review activity only; no formal approval",
+    "Codex": "Unverified",
+    "HuggingFace": "Previous BUILD_ERROR; no verified deployment",
+    "Kaggle": "Untested; no submission",
+    "Databricks": "Previous HTTP 403; no write"
+  },
+  "governance": {
+    "current_main_branch_protection": "Detailed API returned HTTP 403; previously visible fallback ruleset 10863829 is disabled; required status contexts were empty in last readable settings snapshot.",
+    "codeowners": "* @Barrot-Agent; no independent owner.",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "independent_approvals": 0,
+    "full_semantic_review_complete": false
+  },
+  "open_prs": [
+    {
+      "number": 1541,
+      "classification": "unique_unreviewed",
+      "topic": "MMI claim identity fingerprint security"
+    },
+    {
+      "number": 1460,
+      "classification": "unique_unreviewed",
+      "topic": "XRP institutional multirail, Binance and Kamilah research"
+    },
+    {
+      "number": 1450,
+      "classification": "unique_unreviewed",
+      "topic": "Binance phase-one status, escrow and PR audit"
+    },
+    {
+      "number": 1440,
+      "classification": "unique_unreviewed",
+      "topic": "XRP ledger archive validation repair"
+    },
+    {
+      "number": 1437,
+      "classification": "unique_unreviewed",
+      "topic": "XRP ledger source addenda and snapshot pointer"
+    },
+    {
+      "number": 1436,
+      "classification": "unique_unreviewed",
+      "topic": "Binance XRP theft and issuer-freeze graph"
+    },
+    {
+      "number": 1353,
+      "classification": "unique_unreviewed",
+      "topic": "XRP ledger shard migration"
+    },
+    {
+      "number": 1265,
+      "classification": "unique_unreviewed",
+      "topic": "XRP ledger index migration"
+    }
+  ],
+  "backlog": {
+    "ready": [],
+    "blocked": [
+      "successor integration until exact-head CI, semantic review and independent governance pass"
+    ],
+    "superseded": [
+      1662
+    ],
+    "duplicate": [],
+    "unique_unreviewed": [
+      1541,
+      1460,
+      1450,
+      1440,
+      1437,
+      1436,
+      1353,
+      1265
+    ]
+  },
+  "merged_prs": [],
+  "actions": {
+    "successor_branch_created": true,
+    "new_pr_created": false,
+    "main_modified": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "source_pr_closure": false
+  },
+  "status": {
+    "designed": [
+      "XRP mission architecture",
+      "forecast readiness policy",
+      "nine-platform capability map"
+    ],
+    "executed": [
+      "current-main tree reconciliation",
+      "mainline successor branch creation",
+      "historical evidence assertion correction",
+      "preservation of main-only files and V3 acceptance evidence"
+    ],
+    "verified": [
+      "current main full suite",
+      "source-branch dependency audit",
+      "source-branch fail-closed gates"
+    ],
+    "pending": [
+      "successor exact-head full suite",
+      "successor Pages validation",
+      "full semantic review",
+      "independent governance"
+    ]
+  },
+  "next_actions": [
+    "Finish exact-head full repository suite on the successor branch.",
+    "Review every changed workflow and its called scripts; complete semantic review of divergent and newly added product paths.",
+    "Refresh the nine-platform map's repository-state snapshot to Run174 after CI.",
+    "Resolve independent review, least-privilege GitHub permissions and branch-protection visibility.",
+    "Establish byte-exact raw-source receipts and independent WORM archival for the XRP event registry.",
+    "Verify scheduled ingestion on main only after authorized merge and main CI.",
+    "Open one consolidated PR only after the successor is conflict-free, fully tested and independently reviewed."
+  ]
+}

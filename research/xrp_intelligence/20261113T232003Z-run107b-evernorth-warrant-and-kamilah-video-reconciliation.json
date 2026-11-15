@@ -1,0 +1,165 @@
+{
+  "schema_version": "barrot.xrp.run-addendum.v1",
+  "run_id": "Run107B",
+  "captured_at_utc": "2026-11-13T23:20:03Z",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_parent_sha": "8b30c6b931d5f86fcaca303a0537e3c9bf93a935",
+    "branch": "integration/xrp-v3-unified-main-20261112",
+    "pr_number": 1662
+  },
+  "ci_failure": {
+    "run_id": 43525757356,
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43525757356",
+    "head_sha": "8b30c6b931d5f86fcaca303a0537e3c9bf93a935",
+    "conclusion": "failure",
+    "tests_failed": 42,
+    "tests_passed": 3571,
+    "subtests_passed": 8,
+    "coverage_percent": 62.26,
+    "duration_seconds": 64.15,
+    "root_cause": "Run107 mistakenly replaced the 1,660,889-byte canonical current platform-map blob (schema 1.1.0) with the separate Run107 snapshot schema 1.2. Existing current-map contract tests failed on expected keys and version. No runtime code failure was reported.",
+    "affected_test_files": [
+      "tests/test_nine_platform_capability_authentication_dataflow_map.py",
+      "tests/test_xrp_mission_handoff_run58.py",
+      "tests/test_xrp_nine_platform_current_map_run73.py"
+    ]
+  },
+  "corrective_action": {
+    "action": "Restore the canonical current platform map byte-for-byte from the audited parent commit. Keep the Run107 map as a separate additive snapshot.",
+    "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "restored_blob_sha": "aaa327be7b6b23437f129c6f08abcffe78ce6e41",
+    "restored_size_bytes": 1660889,
+    "source_commit": "fe90fd5ebf7627524249be989af3655fd2cedbb3",
+    "method": "Git tree entry references the original blob SHA; no content reconstruction or rewriting.",
+    "runtime_code_changed": false,
+    "force_push": false,
+    "history_rewritten": false,
+    "destructive_worktree_operation": false
+  },
+  "evernorth_actual_capital": {
+    "sources": [
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+        "filing_date": "2026-10-19",
+        "scope": "Public warrant issuance prospectus"
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+        "filing_date": "2026-11-09",
+        "scope": "Latest retrieved resale prospectus and Oct 22 capitalization"
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+        "filing_date": "2026-10-30",
+        "scope": "ELOC prospectus"
+      },
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+        "filing_date": "2026-10-23",
+        "scope": "ELOC agreement and commitment fee"
+      }
+    ],
+    "public_warrants": {
+      "shares_issuable_in_oct19_prospectus": 11499992,
+      "exercise_price_usd": 11.5,
+      "maximum_gross_if_all_cash_exercised_usd": 132249908,
+      "issuer_receives_proceeds_only_on_cash_exercise": true,
+      "use_of_proceeds": "General corporate purposes; broad discretion; not earmarked for XRP.",
+      "no_assurance_of_exercise": true,
+      "warrants_outstanding_as_of_2026_10_22_in_nov9_filing": 9283847,
+      "unexplained_difference": 2216145,
+      "theoretical_gross_if_difference_had_all_been_cash_exercised_usd": 25485667.5,
+      "theoretical_remaining_gross_if_all_oct22_outstanding_warrants_cash_exercised_usd": 106764240.5,
+      "actual_exercise_proceeds_from_difference": "NOT_VERIFIED",
+      "reconciliation_status": "UNRESOLVED: the Oct 19 prospectus registers up to 11,499,992 shares on public-warrant exercise; the Nov 9 filing reports 9,283,847 Pubco Warrants outstanding as of Oct 22. The retrieved filings do not explain the 2,216,145 reduction or establish whether it reflects cash exercise, cashless exercise, cancellation or another adjustment. Do not book $25.486M as actual capital."
+    },
+    "eloc": {
+      "shares_capacity": 5218935,
+      "purchase_price": "97% of applicable VWAP, subject to contractual limits and conditions",
+      "company_option": "At Evernorth's sole discretion; not unconditional cash.",
+      "oct30_cover_reference_price_usd": 14.71,
+      "oct30_cover_reference_gross_capacity_usd": 76800000,
+      "proceeds_as_of_2026_11_09_usd": 0,
+      "ownership_limit_percent": 4.99,
+      "volume_limit_percent": 20
+    },
+    "other_confirmed_capital": {
+      "closing_gross_cash_proceeds_usd": 272600000,
+      "in_kind_xrp_contributions": 388910554,
+      "cash_funded_xrp_purchase": {
+        "xrp": 84365876,
+        "cash_used_usd": 214050000,
+        "note": "Use of closing cash, not a second capital raise."
+      },
+      "pik_note_principal_usd": 30000000,
+      "net_cash_after_advisor_fee_usd": 29000000,
+      "classification": "Debt",
+      "related_company_facility_draw_as_of_2026_10_07_usd": 9700000,
+      "classification2": "Debt"
+    },
+    "sponsor_warrants": {
+      "shares": 239653,
+      "exercise_price_usd": 11.5,
+      "maximum_gross_if_all_cash_exercised_usd": 2756009.5,
+      "actual_exercises": "NOT_VERIFIED"
+    },
+    "resale_shares": {
+      "registered_shares": 73688162,
+      "issuer_proceeds_from_holder_resales_usd": 0
+    },
+    "commitment_fee": {
+      "amount_usd": 521893.5,
+      "classification": "Non-refundable fee/outflow",
+      "terms": "Fully earned on signing; payable within five business days after registration effectiveness.",
+      "payment_status": "NOT_VERIFIED"
+    },
+    "ownership_and_market": {
+      "sbi_controlled_entities_class_a_voting_percent": 39.9,
+      "sbi_controlled_entities_class_c_voting_percent": 9,
+      "warning": "Voting rights are not contribution share.",
+      "coinbase_designation": "Principal market for financial reporting, not exclusive execution venue or custodian."
+    },
+    "interpretation": "Separate confirmed cash, in-kind XRP, cash-funded XRP purchases, debt, potential public/sponsor warrant exercise proceeds, optional ELOC capacity, secondary resales and fees. Potential warrant/ELOC capacity is not capital received."
+  },
+  "kamilah_video_inventory": {
+    "identity": "Dr. Kamilah Stevenson is the verified spelling/identity; no separate Camilla identity matching this person was verified.",
+    "verified_speaker_appearances": [
+      {
+        "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+        "youtube_url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+        "youtube_id": "VSgeDgOCexs",
+        "channel": "TEDx Talks",
+        "published_at": "2018-05-18",
+        "views_at_retrieval": 414061,
+        "likes_at_retrieval": 19000,
+        "attribution_type": "Verified speaker appearance; not an own-channel upload",
+        "identity_evidence": "TEDx video title/description identifies Kamilah Stevenson and links to kamilahstevenson.com."
+      }
+    ],
+    "official_financial_education_site": "https://prescribewealth.com",
+    "official_site_identity_evidence": "Identifies Dr. Kamilah Stevenson as founder of MKS Health LLC and describes a financial-education company.",
+    "candidate_channel": {
+      "handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "third_party_analytics": "Vling reports approximately 143K subscribers and 1.3K videos; channel description references stocks, crypto and macro.",
+      "first_party_link_from_official_site": false,
+      "ownership_status": "UNVERIFIED",
+      "attributed_videos": 0
+    },
+    "inventory": {
+      "verified_speaker_appearances": 1,
+      "verified_own_channel_videos": 0,
+      "unverified_candidate_channels": "Quarantined; no video attribution."
+    },
+    "sources": [
+      "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "https://kamilahstevenson.com",
+      "https://prescribewealth.com",
+      "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "model_accuracy": "NOT_EVALUATED",
+  "no_real_money_or_paper_trade": true
+}

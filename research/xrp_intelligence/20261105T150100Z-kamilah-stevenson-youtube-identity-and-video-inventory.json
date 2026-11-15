@@ -1,0 +1,122 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "kamilah_stevenson_youtube_identity_20261105T150100Z",
+  "artifact_type": "public_identity_and_video_inventory",
+  "title": "Kamilah Stevenson identity corroboration and directly linked public YouTube video",
+  "recorded_at_utc": "2026-11-05T15:01:00Z",
+  "research_cutoff_utc": "2026-11-05T15:01:00Z",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "append_only": true,
+  "source_capture_policy": {
+    "raw_bytes_preserved": false,
+    "sha256_receipts": null,
+    "independent_timestamp_anchors": false,
+    "model_eligible": false,
+    "reason": "Public pages were rendered but YouTube channel/video pages were throttled; no byte-exact captures, channel-owner verification or independent timestamp receipts were obtained."
+  },
+  "identity": {
+    "canonical_display_name": "Dr. Kamilah Stevenson",
+    "spelling_variant_camilla": "not established by reviewed first-party evidence",
+    "identity_status": "strongly_corroborated_but_canonical_youtube_channel_not_independently_verified",
+    "evidence": [
+      "First-person official website says 'Hi, I'm Dr. Kamilah Stevenson' and identifies the brand as The Wealth Doctor.",
+      "Linktree account @Dr.Kamilahstevenson links to the Kamilah Stevenson website and labels a YouTube link 'Watch My YouTube Channel'.",
+      "The same Linktree lists a public video titled 'My Top 10 Digital Assets — What They Do & Why I Hold Them'."
+    ],
+    "limitations": [
+      "No reciprocal link from the official website back to the Linktree was established in the rendered page.",
+      "YouTube channel page fetch was throttled and returned only a static shell; channel About metadata and video list were unavailable.",
+      "The prior candidate channel ID UCqUPJMQdkCN6lsLVDnichPA has not been cross-verified against the @drkamilahstevenson handle.",
+      "Do not attribute every video mentioning Kamilah or Camilla Stevenson to this person."
+    ]
+  },
+  "source_registry": [
+    {
+      "source_id": "kamilah_first_person_website",
+      "publisher": "Kamilah Stevenson branded website",
+      "source_type": "first_person_identity_page",
+      "url": "https://learn.kamilahstevenson.com/",
+      "retrieved_at_utc": "2026-11-05T15:01:00Z",
+      "claims": [
+        "Page states 'Hi, I'm Dr. Kamilah Stevenson, also known as The Wealth Doctor.'"
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "dr_kamilah_linktree",
+      "publisher": "Linktree account @Dr.Kamilahstevenson",
+      "source_type": "self_described_social_link_hub",
+      "url": "https://linktr.ee/drkamilahstevenson",
+      "retrieved_at_utc": "2026-11-05T15:01:00Z",
+      "claims": [
+        "Account describes crypto, stock and macro awareness.",
+        "Lists a YouTube channel link labelled 'Kamilah Stevenson' and 'Watch My YouTube Channel'.",
+        "Lists a YouTube video link titled 'My Top 10 Digital Assets — What They Do & Why I Hold Them'.",
+        "Also links to kamilahstevenson.com."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "youtube_channel_page",
+      "publisher": "YouTube",
+      "source_type": "public_channel_page",
+      "url": "https://www.youtube.com/@drkamilahstevenson/videos",
+      "retrieved_at_utc": "2026-11-05T15:01:00Z",
+      "claims": [
+        "Rendered page returned only a static shell with the name 'Kamilah Stevenson'; channel metadata and video list could not be retrieved."
+      ],
+      "fetch_status": "throttled_or_shell_only",
+      "model_eligible": false
+    },
+    {
+      "source_id": "youtube_video_link",
+      "publisher": "YouTube via Linktree",
+      "source_type": "public_video_link",
+      "url": "https://www.youtube.com/live/OvODErBT9Ug",
+      "retrieved_at_utc": "2026-11-05T15:01:00Z",
+      "claims": [
+        "Linktree title: 'My Top 10 Digital Assets — What They Do & Why I Hold Them'."
+      ],
+      "fetch_status": "throttled",
+      "published_at": null,
+      "content_reviewed": false,
+      "model_eligible": false
+    },
+    {
+      "source_id": "iheart_first_person_interview",
+      "publisher": "The XRP Podcast with Paul / iHeart",
+      "source_type": "public_interview_listing",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "retrieved_at_utc": "2026-11-05T15:01:00Z",
+      "claims": [
+        "Public episode listing identifies guest as Dr. Kamilah Stevenson; retained as corroborating identity context, not proof of YouTube account ownership."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "video_inventory": [
+    {
+      "video_id": "OvODErBT9Ug",
+      "title": "My Top 10 Digital Assets — What They Do & Why I Hold Them",
+      "url": "https://www.youtube.com/live/OvODErBT9Ug",
+      "discovery_source": "Linktree @Dr.Kamilahstevenson",
+      "attribution_status": "directly_linked_by_matching_name/account; provisional pending YouTube channel ownership verification",
+      "published_at": null,
+      "duration": null,
+      "description": null,
+      "content_reviewed": false,
+      "xrp_relevance": "unknown; title indicates general digital-assets topic only"
+    }
+  ],
+  "inventory_scope": {
+    "confirmed_linked_videos": 1,
+    "exhaustive": false,
+    "reason": "YouTube channel and video page fetches were throttled; only the video directly linked by the matching Linktree is listed."
+  },
+  "admission": {
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "reason": "Identity evidence is strong but not sufficient to assert canonical channel ownership or exhaustive attribution; video content was not reviewed."
+  }
+}

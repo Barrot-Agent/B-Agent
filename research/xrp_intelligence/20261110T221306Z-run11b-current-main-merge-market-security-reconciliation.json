@@ -1,0 +1,409 @@
+{
+  "schema_version": "barrot.xrp.run-evidence.v1",
+  "run_id": "run-11b",
+  "captured_at": "2026-11-10T22:13:06Z",
+  "mission": {
+    "id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "main_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+    "integration_branch": "integration/xrp-v3-unified-main-20261110",
+    "integration_head": "1313521b98e3dec32ae8630fbb03363135c8abf8",
+    "integration_tree_entries": 2254,
+    "main_tree_entries": 1404,
+    "commits_ahead": 1930,
+    "commits_behind": 0,
+    "pr": 1660,
+    "pr_state": "open",
+    "pr_draft": false,
+    "pr_base_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+    "changed_files": 961,
+    "additions": 270144,
+    "deletions": 3695,
+    "open_prs": 373,
+    "draft_prs": 358,
+    "non_draft_prs": 15,
+    "latest_main_ci": {
+      "run_id": 42911392830,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42911392830",
+      "conclusion": "success",
+      "full_repository_suite": "success"
+    },
+    "main_auto_pr_run": {
+      "run_id": 42911391887,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42911391887",
+      "conclusion": "success"
+    },
+    "main_pages_run": {
+      "run_id": 42911391541,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42911391541",
+      "conclusion": "success",
+      "note": "Automatic side effect of a main-branch push; not initiated by this run."
+    },
+    "integration_exact_head_checks": {
+      "head": "1313521b98e3dec32ae8630fbb03363135c8abf8",
+      "core_tests": "passed",
+      "full_suite": "in_progress",
+      "dependency_audit": "in_progress",
+      "fail_closed_gate": "passed",
+      "runs": [
+        {
+          "id": 42912478302,
+          "name": "CI PR",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42912478302",
+          "status": "in_progress"
+        },
+        {
+          "id": 42912478348,
+          "name": "Dependency Audit PR",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42912478348",
+          "status": "in_progress"
+        },
+        {
+          "id": 42912478307,
+          "name": "Fail-closed gate PR",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42912478307",
+          "status": "success"
+        },
+        {
+          "id": 42912469786,
+          "name": "CI push",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42912469786",
+          "status": "in_progress"
+        },
+        {
+          "id": 42912469745,
+          "name": "Fail-closed gate push",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42912469745",
+          "status": "success"
+        }
+      ]
+    },
+    "branch_protection": {
+      "main_protected": true,
+      "required_status_check_contexts": [],
+      "detailed_endpoint": "HTTP 403 Resource not accessible by integration",
+      "visible_repository_ruleset": "Fall Back",
+      "ruleset_enforcement": "disabled",
+      "effective_required_approvals": "unverified"
+    },
+    "integration_commits": [
+      {
+        "sha": "b75764ae4f2d06c82d37816c292eec132d38b608",
+        "message": "Merge current main repair and LunaRoute/OpenCode integration into XRP V3 workstream",
+        "parents": [
+          "c9d975c877f89901946b9d9ad29e7e76744911ba",
+          "afb3024fbcb976db5acdf52b85e253ff46859ce6"
+        ],
+        "paths": [
+          "b_agent.py",
+          "b_agent.sh",
+          "opencode.json",
+          "data/repository_architecture_audit.md",
+          "data/autonomous_repair_status.md"
+        ],
+        "verification": "commit and resulting tree verified"
+      },
+      {
+        "sha": "c8511498e63083f0be6c6308f07fee10825587bf",
+        "message": "fix(security): remove unsupported automatic PR merge path from B-Agent CLI",
+        "note": "Intermediate commit; replaced by the follow-up entrypoint-preserving commit."
+      },
+      {
+        "sha": "1313521b98e3dec32ae8630fbb03363135c8abf8",
+        "message": "fix(security): preserve B-Agent CLI entry point after merge-gate removal",
+        "paths": [
+          "b_agent.py",
+          "tests/test_b_agent_cli_safety.py"
+        ],
+        "verification": "commit/tree verified; CI pending"
+      }
+    ],
+    "lunaRoute_openCode": {
+      "config_path": "opencode.json",
+      "launcher_path": "b_agent.sh",
+      "provider_base_url": "https://gw.lunaroute.com/v1",
+      "default_model": "glm-5.3-flash",
+      "authentication": "LUNAROUTE_API_KEY required in code; no live provider authentication test performed",
+      "data_flow": "not independently tested"
+    },
+    "b_agent_cli_safety": {
+      "auto_merge_flag_removed": true,
+      "undefined_repo_merge_pr_call_removed": true,
+      "github_token_required_for_repository_write_path": true,
+      "regression_tests": 3,
+      "test_file": "tests/test_b_agent_cli_safety.py",
+      "exact_head_ci": "pending"
+    }
+  },
+  "security": {
+    "gh_hosts_path": ".config/gh/hosts.yml",
+    "present_on_current_main": false,
+    "present_on_current_integration": false,
+    "present_on_17_known_open_pr_branches": true,
+    "branches_checked": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1643,
+      1642,
+      1640,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ],
+    "inspection_scope": "recursive Git tree path metadata only; file contents were not fetched",
+    "historical_git_blob": "still exists; no history rewrite",
+    "credential_status": "potentially compromised; actual secret value was not inspected",
+    "required_owner_action": "revoke and reissue the credential through its owner",
+    "rotation_or_revocation_performed": false,
+    "caveat": "17 known branches were checked; this was not an exhaustive tree scan of all 373 open PR heads."
+  },
+  "market": {
+    "spot": {
+      "okx": {
+        "instrument": "XRP-USDT",
+        "event_time": "2026-11-10T21:49:15.772Z",
+        "last": 1.0639,
+        "bid": 1.0639,
+        "ask": 1.064,
+        "open_24h": 1.0942,
+        "high_24h": 1.1073,
+        "low_24h": 1.0311,
+        "volume_24h_xrp": 72447831.127694,
+        "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      "kraken": {
+        "pair": "XRP/USD",
+        "provider_event_timestamp": null,
+        "retrieval_time": "2026-11-10T22:13:06Z",
+        "last": 1.06188,
+        "bid": 1.06184,
+        "ask": 1.06185,
+        "vwap_24h": 1.06839084,
+        "open_24h": 1.09748,
+        "high_24h": 1.10584,
+        "low_24h": 1.03011,
+        "volume_24h_xrp": 36596841.2987135,
+        "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+      },
+      "kraken_usdt_usd": {
+        "bid": 0.9988,
+        "ask": 0.99881,
+        "midpoint": 0.998805,
+        "source": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+      },
+      "derived": {
+        "okx_normalized_usd": 1.0626286395,
+        "difference_vs_kraken_last_percent": 0.0705013278,
+        "kraken_last_vs_vwap_percent": -0.6094061982,
+        "okx_event_age_at_capture_minutes": 23.84,
+        "consensus_eligible": false,
+        "reason": "OKX event time is approximately 24 minutes before capture; Kraken does not expose a provider event timestamp. Quotes are asynchronous."
+      },
+      "depth": {
+        "status": "NOT_CAPTURED",
+        "reason": "Direct OKX books and Kraken depth endpoints were inaccessible through the current retrieval path. No stale depth snapshot substituted."
+      }
+    },
+    "derivatives": {
+      "tradradar": {
+        "observed_at": "2026-11-10T20:55:00Z",
+        "open_interest_usd": 1570000000,
+        "open_interest_change_24h_percent": -5.64,
+        "oi_venues": 7,
+        "funding_oi_weighted_percent_per_8h": 0.008,
+        "liquidations_24h_lower_bound_usd": 16300000,
+        "long_liquidations_usd": 15260000,
+        "short_liquidations_usd": 1040000,
+        "long_short_accounts_ratio": 3.82,
+        "long_account_share_percent": 79.3,
+        "liquidation_venues": 5,
+        "source": "https://tradradar.io/markets/xrp",
+        "limitations": "15-minute delayed provider data; not raw exchange receipts."
+      },
+      "alpha_finance": {
+        "observed_at": "2026-11-10T14:28:00Z",
+        "open_interest_usd": 2370000000,
+        "source": "https://alphafinance.io/liquidation-heatmap/xrp",
+        "limitations": "Older snapshot and broader all-venue model; not directly comparable to TradRadar's seven-venue subset."
+      },
+      "interpretation": "Long-heavy positioning and deleveraging are descriptive. They do not determine future direction."
+    },
+    "exchange_flows": {
+      "binance_whale_deposit_report": {
+        "event_window": "24 hours before 2026-11-09 article",
+        "amount_xrp": 691000000,
+        "approximate_usd": 900000000,
+        "source": "https://www.altcoinbuzz.io/xrp-whales-move-900-million-to-binance-as-price-crashes-to-1-08",
+        "provenance": "Secondary report citing CryptoQuant; raw wallet list and raw CryptoQuant series not independently retrieved.",
+        "counterevidence": {
+          "withdrawal_date": "2026-11-04",
+          "amount_xrp": 418500000,
+          "source_same_article": true
+        },
+        "interpretation": "Potential exchange sell-side liquidity, but internal transfers, custody movements and OTC settlement remain alternatives."
+      },
+      "labeled_wallet_snapshot": {
+        "observed_at": "2026-11-10T08:00:00Z",
+        "xrp": 22330000000,
+        "wallets": 701,
+        "exchanges": 24,
+        "share_of_circulating_supply_percent": 32.4,
+        "same_wallet_set_change_7d_xrp": -8900000,
+        "same_wallet_set_change_30d_xrp": -150900000,
+        "source": "https://xrp-insights.com/exchange-balances",
+        "limitations": "Includes cold storage and labeled wallets; not tradable float. Two newly tracked wallets can distort naive totals."
+      }
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "date": "2026-11-09",
+        "universe": "six U.S. spot XRP ETFs plus BITW",
+        "net_flow_xrp": -9540000,
+        "approximate_usd": -9930000,
+        "combined_holdings_xrp": 1190000000,
+        "net_assets_usd": 1300000000,
+        "source": "https://xrp-insights.com/",
+        "methodology": "issuer-reported holdings change; BITW included"
+      },
+      "cryptokeyhole": {
+        "date": "2026-11-09",
+        "universe": "four spot funds tracked daily",
+        "reported_funds": 3,
+        "total_funds": 4,
+        "partial_flow_xrp": -9216552,
+        "components": {
+          "bitwise": -8594551,
+          "canary": -427341,
+          "toxr": -194660
+        },
+        "franklin": "pending",
+        "source": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "methodology": "issuer-file holdings change; excludes Grayscale daily automation and XRPR indirect holdings"
+      },
+      "alpha_finance": {
+        "date": "2026-11-09",
+        "net_flow_usd": -10400000,
+        "top_outflow": "Bitwise approximately -9.4M USD",
+        "thirty_session_net_flow_usd": 8900000,
+        "source": "https://alphafinance.io/etf/xrp/",
+        "methodology": "five displayed funds; overlap issuer files with other trackers"
+      },
+      "cryptoetf_today": {
+        "date": "2026-11-09",
+        "reported_funds": 3,
+        "total_funds": 5,
+        "net_flow_usd": -10400000,
+        "missing_funds": [
+          "XRPZ",
+          "GXRP"
+        ],
+        "source": "https://cryptoetf.today/en/xrp-etf-flows",
+        "methodology": "partial T+1 provider summary"
+      },
+      "admission": "MODEL_INELIGIBLE",
+      "disagreement": "Trackers overlap issuer source files but differ in fund universe, timing, partial-report handling and conversion method. Holdings changes do not prove exchange sales or cash redemptions."
+    }
+  },
+  "counter_hypotheses": [
+    "Large Binance whale deposits may be sale preparation, but can also reflect internal wallet reclassification, custody movement or OTC settlement.",
+    "The 4 November large Binance withdrawal and same-wallet-set exchange-balance decline are counterevidence to a simple one-way exchange accumulation story.",
+    "The November 9 ETF outflow is large for one session but follows a positive multi-session/cumulative history on some trackers; it does not by itself establish persistent institutional exit.",
+    "Long-heavy derivatives positioning can amplify downside liquidations, but positive funding is not a price forecast and aggregate provider coverage differs."
+  ],
+  "institutional_context": {
+    "status": "prior primary-source relationship graph retained; no new direct Ripple-Circle equity partnership identified",
+    "verified_primary_references": [
+      "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    ],
+    "identity_controls": {
+      "sbic_east_central_west": "three separate regional investment-consultation companies; not SBI Holdings",
+      "ask_coin": "unresolved as XRP-linked identity; Permission Coin ASK remains separate candidate",
+      "actual_capital": "cash, in-kind XRP, debt, contingent equity capacity, warrants and secondary resales remain separate",
+      "kamilah_stevenson": "person/channel attribution requires first-party identity link; no unverified personal-channel inventory"
+    }
+  },
+  "prediction_engine": {
+    "source_definitions": 46,
+    "hourly_sources": 42,
+    "weekly_cftc_sources": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "implemented": [
+      "read-only public collector",
+      "SHA-256 raw-source receipt-chain logic",
+      "point-in-time SQLite feature-store prototype",
+      "four deterministic baselines",
+      "chronological walk-forward evaluation with purge/embargo",
+      "probability calibration and drift diagnostics",
+      "fail-closed forecast ledger requiring trusted Ed25519 evaluator attestation"
+    ],
+    "production_gaps": [
+      "independent WORM storage and trusted timestamp anchoring",
+      "raw-source replay and durable feature-store reconstruction",
+      "synchronized historical spot, L2, derivatives, exchange-flow and collateral dataset",
+      "vintage-aware macro ingestion and event timeline",
+      "scenario/counter-hypothesis generation",
+      "effective-sample-size correction for overlapping horizons",
+      "sufficient independent shadow outcomes",
+      "production evaluator signing key",
+      "demonstrated out-of-sample lift over naive baselines"
+    ],
+    "scheduled_collector": "workflow exists only on integration; no successful main-branch ingestion run verified",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "nine_platforms": {
+    "ChatGPT": "current-session GitHub read/write on integration verified",
+    "Claude": "authentication/data flow unverified",
+    "Grok": "authentication/data flow unverified",
+    "Gemini": "authentication/data flow unverified",
+    "Copilot": "comment-only activity; no approval",
+    "Codex": "authentication/data flow unverified",
+    "HuggingFace": "previous build error; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "previous HTTP 403; no workspace write",
+    "external_model_data_transfer": "none"
+  },
+  "merge_decision": {
+    "pr_1660": "OPEN_UNMERGED",
+    "blockers": [
+      "latest exact-head full repository suite and dependency audit still running",
+      "zero formal approvals",
+      "branch protection details unavailable via integration (HTTP 403); visible fallback ruleset disabled",
+      "full semantic review of 961 changed files and 44 workflow changes incomplete",
+      "automatic GitHub Pages publication is an external side effect without specific authorization",
+      "potential GitHub CLI credential exposure remains on 17 known source branches and historical Git blob"
+    ],
+    "source_pr_cleanup": "no PRs closed; only exact duplicate/superseded sources may close after verified successor merge",
+    "no_bypass": true
+  },
+  "actions_not_taken": [
+    "no merge",
+    "no main-branch write",
+    "no deployment initiated",
+    "no secret rotation or revocation",
+    "no Space restart",
+    "no Kaggle submission",
+    "no Databricks write",
+    "no external-model data transfer",
+    "no paper trade or real-money action",
+    "no funds transfer",
+    "no force-push or history rewrite",
+    "no PR closure"
+  ]
+}

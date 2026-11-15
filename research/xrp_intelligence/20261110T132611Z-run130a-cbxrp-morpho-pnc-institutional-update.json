@@ -1,0 +1,130 @@
+{
+  "schema_version": "barrot.xrp.institutional-collateral-update.v1",
+  "run_id": "130A",
+  "captured_at_utc": "2026-11-10T13:26:11Z",
+  "repository_head_before_addendum": "e6794a2e82ced10472ffb6f1f5c115d0673d6841",
+  "exact_head_verification": {
+    "full_ci_run": 42824076149,
+    "full_ci_conclusion": "success",
+    "full_suite": "1371 passed, zero failed, eight subtests passed",
+    "inclusive_coverage_pct": 59.58,
+    "wheel_build_install": "success",
+    "dependency_audit_run": 42824076046,
+    "dependency_audit_conclusion": "success",
+    "manifests_passed": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42824076086,
+    "fail_closed_gate_conclusion": "success",
+    "exact_head": "e6794a2e82ced10472ffb6f1f5c115d0673d6841"
+  },
+  "cbxrp_reserves": {
+    "source": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+    "issuer_claim": "cbXRP is backed 1:1 by XRP held by Coinbase.",
+    "observed_reserve_xrp": 152372342.33,
+    "observed_supply_cbxrp": 152370095.8,
+    "excess_reserve_xrp": 2246.53,
+    "supply_network": "Base",
+    "timestamp_labels": {
+      "us_locale_search_snapshot": "2026-11-10 05:09 AM (timezone not explicit in rendered result)",
+      "localized_open_page": "2026-11-10 09:34 AM (timezone not explicit)",
+      "earlier_locale_snapshot": "2026-11-10 02:04 AM (timezone not explicit)"
+    },
+    "earlier_snapshot": {
+      "reserve_xrp": 151921083.53,
+      "supply_cbxrp": 151918836.99
+    },
+    "apparent_balance_change_since_earlier_snapshot_xrp": 451258.8,
+    "quality": "Coinbase-published reserve/supply display; not an independent third-party attestation. Locale/time labels differ, so do not align to UTC without source metadata."
+  },
+  "morpho_cbxrp_usdc_base": {
+    "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+    "data_source": "Morpho public API and Base on-chain state; independent MorphoWatch aggregation",
+    "observed_utc": "2026-11-10T11:01:00Z",
+    "market_id": "0xd4a903dc…6e4109",
+    "collateral_token": "cbXRP",
+    "loan_token": "USDC",
+    "network": "Base",
+    "supplied_usdc": 62980000,
+    "borrowed_usdc": 55580000,
+    "utilization_pct": 88.2,
+    "available_usdc": 7410000,
+    "collateral_cbxrp": 120410000,
+    "collateral_value_usd": 129900000,
+    "borrow_apy_pct": 7,
+    "borrow_apy_30d_avg_pct": 7.25,
+    "supply_apy_pct": 6.15,
+    "supply_apy_30d_avg_pct": 6.52,
+    "liquidation_ltv_pct": 62.5,
+    "liquidation_bonus_pct": 12.68,
+    "oracle_price_usdc": 1.08,
+    "oracle": "ChainlinkOracleV2 0x031b…0fdE",
+    "price_feed": "0x9f0C…6D34",
+    "borrowers": 11694,
+    "liquidations_last_30d": 1466,
+    "debt_repaid_last_30d_usd": 6230000,
+    "modeled_collateral_at_risk_if_price_falls_20pct_usd": 26010000,
+    "largest_borrower_health_ratio": 1.04,
+    "largest_borrower_price_drop_to_liquidation_pct": 3.6,
+    "notes": [
+      "MorphoWatch attributes this market to Coinbase app XRP loans using public on-chain matching; Coinbase does not publish its exact markets. Treat the Coinbase product attribution as secondary-source inference.",
+      "Market is cbXRP/USDC on Base, not native XRP lending on XRPL.",
+      "The $26.01M figure is a scenario estimate of collateral at risk under a 20% cbXRP price decline, not a forecast of actual liquidations or losses.",
+      "The largest-borrower metric is one account, not a market-wide risk distribution."
+    ]
+  },
+  "morpho_later_summary": {
+    "source": "https://morphowatch.com/coinbase/",
+    "updated_utc": "2026-11-10T12:31:00Z",
+    "borrowed_usd": 55520000,
+    "collateral_value_usd": 129900000,
+    "borrow_apy_pct": 6.98,
+    "borrow_apy_30d_avg_pct": 7.25,
+    "note": "Later summary page differs slightly from the detailed 11:01 UTC market page; preserve both vintages rather than overwrite."
+  },
+  "approximate_supply_concentration": {
+    "calculation": "120.41M cbXRP in the main Morpho market / 152.3700958M total Coinbase-displayed cbXRP supply",
+    "indicative_pct": 79.0247,
+    "status": "CROSS_SOURCE_APPROXIMATION_ONLY",
+    "caveats": [
+      "Coinbase proof-of-reserves timestamp timezone is unspecified and page variants differ.",
+      "Morpho market snapshot is 11:01 UTC.",
+      "This is one market, not all cbXRP collateral venues.",
+      "Do not admit this ratio as a point-in-time feature until source vintages are synchronized."
+    ]
+  },
+  "interpretation": {
+    "actual_usage": "This is a material XRP-linked collateral/credit use case: cbXRP on Base supports USDC borrowing, with approximately $55.6M debt and $129.9M collateral in the primary market snapshot.",
+    "supportive_hypothesis": "Borrowing USDC against cbXRP can let some holders obtain liquidity without immediately selling XRP.",
+    "adverse_hypothesis": "Leveraged collateral creates forced-liquidation supply if cbXRP/USD falls; recent 30-day liquidations and near-threshold borrowers show this risk is not theoretical.",
+    "boundary": "This does not establish net XRP spot demand, net new XRP purchases, or XRPL-native lending. It is wrapped XRP collateral on Base."
+  },
+  "pnc_coinbase_circle_payment_rail": {
+    "date": "2026-11-09",
+    "pnc_primary_source": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+    "coinbase_primary_source": "https://www.coinbase.com/blog/coinbase-secures-mica-license-from-luxembourg",
+    "independent_reporting": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+    "details": {
+      "eligible_clients": "PNC Corporate & Institutional Banking clients, limited pilot",
+      "asset": "USDC, issued by Circle",
+      "chain": "Ethereum",
+      "infrastructure": "Coinbase Payment APIs/products",
+      "conversion": "Incoming USDC automatically converted 1:1 to USD and deposited to designated PNC deposit accounts",
+      "disclosed_volume_or_client_count": "NOT_DISCLOSED"
+    },
+    "interpretation": "A live institutional dollar-payment pilot linking PNC, Coinbase and Circle-issued USDC. It is not an XRP/XRPL rail and there is no disclosed XRP bridge leg or Ripple involvement. It is a competing/adjacent stablecoin payment route, not evidence that XRP use is displaced in other corridors."
+  },
+  "boundaries": {
+    "xrpl_native_lending": "Still inactive at the latest 13:05 UTC amendment snapshot: SingleAssetVault 23/29, LendingProtocol 22/29.",
+    "cbxrp_morpho": "Active public on-chain cbXRP/USDC lending on Base; keep separate from XRPL-native lending.",
+    "reserve_custody": "Coinbase reserve backing does not equal freely tradable float; cbXRP posted as collateral is encumbered in a lending market.",
+    "price_forecast": "No directional XRP forecast issued."
+  },
+  "sources": [
+    "https://www.coinbase.com/cbxrp/proof-of-reserves",
+    "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+    "https://morphowatch.com/coinbase/",
+    "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+    "https://www.coinbase.com/blog/coinbase-secures-mica-license-from-luxembourg",
+    "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/"
+  ]
+}

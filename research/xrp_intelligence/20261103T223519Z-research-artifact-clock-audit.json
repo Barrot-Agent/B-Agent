@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "research_artifact_commit_clock_audit",
+  "audit_time_utc": "2026-11-03T22:35:19Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "inspected_main_commit": "8007440e08a40608c119e48b7f8fa4e189175280",
+  "inspected_branch": "prediction/point-in-time-feature-validator-8007440e-20261103",
+  "inspected_head": "e828784d00a6b54dd0e3c2b352fc2677499aba58",
+  "rule": {
+    "id": "CAPTURE_NOT_AFTER_COMMIT",
+    "requirement": "An artifact's captured_at_utc must not be later than the GitHub server commit creation time that first adds that artifact.",
+    "rationale": "A file cannot be captured in the future relative to the commit that records it. Commit-time consistency is a minimum provenance check, not proof that the source observation itself is genuine."
+  },
+  "summary": {
+    "artifacts_examined": 9,
+    "timestamp_consistent_with_commit": 2,
+    "timestamp_inconsistent_with_commit": 7,
+    "future_relative_to_audit_time": 4,
+    "model_eligible_from_this_audit": 0
+  },
+  "findings": [
+    {
+      "path": "research/xrp_intelligence/20261103T211427Z-forecast-ledger-feature-store-design.json",
+      "captured_at_utc": "2026-11-03T21:14:27.613Z",
+      "commit_created_at_utc": "2026-11-03T22:13:30Z",
+      "delta_seconds": -3542.387,
+      "status": "timestamp_precedes_commit",
+      "model_eligible": false,
+      "reason": "Design artifact; timestamp ordering passes minimum clock check, but design is not market data."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T220800Z-xrp-point-in-time-feature-validator.json",
+      "captured_at_utc": "2026-11-03T22:08:00Z",
+      "commit_created_at_utc": "2026-11-03T22:13:30Z",
+      "delta_seconds": -330,
+      "status": "timestamp_precedes_commit",
+      "model_eligible": false,
+      "reason": "Implementation report, not an observed market feature."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T221600Z-sbic-chatgpt-actual-capital-youtube-etf-flows.json",
+      "captured_at_utc": "2026-11-03T22:16:00Z",
+      "commit_created_at_utc": "2026-11-03T22:15:46Z",
+      "delta_seconds": 14,
+      "status": "quarantined_capture_after_commit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 14 seconds later than the commit that first adds the artifact."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T222300Z-actual-capital-sbic-creator-network-research.json",
+      "captured_at_utc": "2026-11-03T22:23:00Z",
+      "commit_created_at_utc": "2026-11-03T22:19:32Z",
+      "delta_seconds": 208,
+      "status": "quarantined_capture_after_commit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 3 minutes 28 seconds later than the commit that first adds the artifact."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T223100Z-circle-ripple-coinbase-bank-charter-stablecoin-network.json",
+      "captured_at_utc": "2026-11-03T22:31:00Z",
+      "commit_created_at_utc": "2026-11-03T22:21:49Z",
+      "delta_seconds": 551,
+      "status": "quarantined_capture_after_commit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 9 minutes 11 seconds later than the commit that first adds the artifact."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T223800Z-sbi-circle-ripple-xrp-ai-network.json",
+      "captured_at_utc": "2026-11-03T22:38:00Z",
+      "commit_created_at_utc": "2026-11-03T22:23:46Z",
+      "delta_seconds": 854,
+      "status": "quarantined_capture_after_commit_and_future_at_audit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 14 minutes 14 seconds later than the commit and 2 minutes 41 seconds later than this audit."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T224400Z-xrp-collateral-eligibility-and-prime-financing.json",
+      "captured_at_utc": "2026-11-03T22:44:00Z",
+      "commit_created_at_utc": "2026-11-03T22:25:10Z",
+      "delta_seconds": 1130,
+      "status": "quarantined_capture_after_commit_and_future_at_audit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 18 minutes 50 seconds later than the commit and 8 minutes 41 seconds later than this audit."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T225200Z-sbi-mixseek-multiagent-reference.json",
+      "captured_at_utc": "2026-11-03T22:52:00Z",
+      "commit_created_at_utc": "2026-11-03T22:28:16Z",
+      "delta_seconds": 1424,
+      "status": "quarantined_capture_after_commit_and_future_at_audit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 23 minutes 44 seconds later than the commit and 16 minutes 41 seconds later than this audit."
+    },
+    {
+      "path": "research/xrp_intelligence/20261103T230000Z-sbi-ripple-equity-and-xrp-remittance.json",
+      "captured_at_utc": "2026-11-03T23:00:00Z",
+      "commit_created_at_utc": "2026-11-03T22:28:45Z",
+      "delta_seconds": 1875,
+      "status": "quarantined_capture_after_commit_and_future_at_audit",
+      "model_eligible": false,
+      "reason": "Capture timestamp is 31 minutes 15 seconds later than the commit and 24 minutes 41 seconds later than this audit."
+    }
+  ],
+  "interpretation": {
+    "confirmed": "Seven artifacts have capture timestamps later than the GitHub commit creation times for the commits that first added them.",
+    "not_established": "This audit does not prove the underlying factual claims are false. It establishes that their stated capture times are not trustworthy.",
+    "action": "Preserve original artifacts unchanged for auditability. Quarantine all seven timestamp-inconsistent artifacts from feature construction, training, forecast justification and event-time ordering. Re-fetch each cited source and create a new artifact with a contemporaneous capture timestamp before reuse.",
+    "earlier_artifacts": "The two earlier timestamps pass only the minimum capture-before-commit test. They remain design/report artifacts, not model observations."
+  },
+  "safety": {
+    "public_repository_metadata_only": true,
+    "private_data_accessed": false,
+    "secrets_accessed": false,
+    "workflow_dispatched": false,
+    "main_modified": false,
+    "merge_performed": false,
+    "external_action": false
+  },
+  "next_actions": [
+    "Add a deterministic artifact-clock validator that compares captured_at_utc to the commit that first introduces each artifact.",
+    "Re-verify all source claims in the seven quarantined artifacts from their original public URLs with actual retrieval timestamps.",
+    "Do not backdate or overwrite the original records; append corrected records with explicit supersedes references.",
+    "Require CI to reject newly added research artifacts whose capture timestamp exceeds their introducing commit timestamp."
+  ]
+}

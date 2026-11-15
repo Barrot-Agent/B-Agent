@@ -1,0 +1,309 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_evernorth_cantor_eloc_pricing_fee_reconciliation_addendum",
+  "record_id": "xrp-intel-2026-11-04-evernorth-cantor-eloc-pricing-fee-reconciliation",
+  "hypothesis_id_namespace": "20261104T140144Z-evernorth-cantor-eloc",
+  "captured_at_utc": "2026-11-04T14:01:44Z",
+  "data_cutoff_utc": "2026-11-04T14:01:44Z",
+  "subject": "Evernorth October 30 Form 424B3: Cantor committed-equity capacity, 97%-of-VWAP pricing, stated gross/net proceeds, fee terms and actual-capital status",
+  "repository_context": {
+    "source_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "inspected_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "append_only": true,
+    "raw_source_policy": "The SEC filing was inspected as rendered web text. An exact byte download was unavailable in this capture, so raw_content_sha256 is null, raw_capture_status is web_rendered_html_extract_only and all observations remain model-ineligible until the ingestion system captures exact bytes, response headers and a SHA-256 receipt."
+  },
+  "source_registry": [
+    {
+      "id": "evernorth_424b3_20261030_cantor_eloc_pricing_fees",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "primary SEC Form 424B3 prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "published_at_utc": "2026-10-30",
+      "retrieved_at_utc": "2026-11-04T14:01:44Z",
+      "source_independence_group": "evernorth_issuer_disclosure",
+      "raw_content_sha256": null,
+      "raw_capture_status": "web_rendered_html_extract_only",
+      "model_eligible": false,
+      "source_locators": [
+        {
+          "pages": "cover and p. 66-67",
+          "rendered_lines": "13, 20, 1916-1922",
+          "claims": "5,218,935-share capacity; $14.71 October 29 cover price; $76.8M gross and $74.4M net estimates; intended use of proceeds."
+        },
+        {
+          "pages": "pp. 68-69",
+          "rendered_lines": "1928-1947",
+          "claims": "issuer discretion, 14-month term, share/ownership limits, commitment fee, true-up cap and expense reimbursements."
+        },
+        {
+          "pages": "p. 150 and pricing provisions",
+          "rendered_lines": "704-706, 1962",
+          "claims": "97% of applicable VWAP pricing and StoneX qualified-independent-underwriter fee."
+        }
+      ],
+      "claims_supported": [
+        "The issuer may elect, subject to conditions, to sell up to 5,218,935 newly issued Class A shares to Cantor under a committed equity facility.",
+        "The prospectus uses an October 29 closing price of $14.71 and states approximately $76.8 million gross and $74.4 million net proceeds under its full-share scenario.",
+        "The contractual VWAP Purchase Price is 97% of applicable VWAP, subject to additional terms.",
+        "Proceeds may fund general corporate purposes, including XRP and other XRP-ecosystem activities, and working capital; the issuer expects a substantial portion to acquire XRP but retains broad discretion.",
+        "The prospectus discloses a $521,893.50 upfront commitment fee, an aggregate $1 million cap for upfront plus additional commitment fees, Cantor expense reimbursement capped at $500,000, and a $200,000 StoneX qualified-independent-underwriter fee plus up to $1,000 expenses.",
+        "Cantor's subsequent resale of shares is for Cantor's account; Evernorth does not receive proceeds from those resales."
+      ],
+      "limitations": [
+        "The filing does not establish that the facility commenced, that Cantor purchased any shares, that cash was received under the facility, or that facility proceeds were used to purchase XRP.",
+        "The prospectus's gross/net scenario does not disclose the exact VWAP path and fee assumptions needed to reproduce the net estimate from the contractual pricing formula.",
+        "Other registration, listing, legal and accounting expenses are described but not all numerically capped in the cited sections.",
+        "This source is issuer-authored disclosure hosted by the SEC; it is not an independent corroborating publisher."
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-ELOC-20261104-01",
+      "class": "confirmed_issuer_disclosure",
+      "status": "confirmed",
+      "claim": "Evernorth has a discretionary committed equity facility for up to 5,218,935 newly issued Class A shares to Cantor, subject to commencement and purchase conditions.",
+      "detail": "The issuer controls whether and when to direct purchases. The agreement is not an unconditional cash advance and the prospectus does not establish that any drawdown occurred.",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-ELOC-20261104-02",
+      "class": "confirmed_issuer_intention_not_execution",
+      "status": "confirmed_intention",
+      "claim": "Evernorth expects a substantial portion of any facility proceeds to be used to acquire additional XRP.",
+      "detail": "Proceeds are also permitted for general corporate purposes, other XRP-ecosystem activities and working capital. The issuer retains broad discretion; the statement is not evidence of a completed XRP purchase.",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-ELOC-20261104-03",
+      "class": "confirmed_contractual_pricing",
+      "status": "confirmed",
+      "claim": "The VWAP Purchase Price is 97% of applicable VWAP, subject to the contract's additional provisions.",
+      "detail": "A scenario that multiplies the cover-page closing price by the full share count at 100% is not the same calculation as applying the contractual 97%-of-VWAP purchase price.",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-ELOC-20261104-04",
+      "class": "derived_scenario_reconciliation",
+      "status": "unresolved_assumption_and_fee_basis",
+      "claim": "Using the $14.71 cover price as a proxy for VWAP produces approximately $74.467M before issuer fees at 97% pricing, leaving only about $67,418 between that amount and the stated $74.4M net estimate.",
+      "detail": "The same-price proxy is illustrative, not actual VWAP. The $67,418 remainder is below the disclosed $521,893.50 upfront fee plus $200,000 StoneX fee, before capped Cantor expenses and other registration costs. This flags an unreconciled scenario/fee basis; it does not establish an accounting error because the filing does not provide the exact VWAP and fee assumptions used for the net estimate.",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-ELOC-20261104-05",
+      "class": "confirmed_fee_terms",
+      "status": "confirmed",
+      "claim": "The prospectus discloses up to $1M aggregate Cantor commitment fees, up to $500K Cantor/CF&CO reimbursable expenses, and a $200K StoneX fee plus up to $1K expenses.",
+      "detail": "These are contractual fee/expense terms and caps, not proof that every capped amount has been incurred or paid. Other registration expenses are separately described.",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-ELOC-20261104-06",
+      "class": "actual_capital_unknown",
+      "status": "not_established_in_reviewed_filing",
+      "claim": "Actual facility drawdown, cash receipt and XRP purchases funded by the Cantor facility are not established by the reviewed prospectus.",
+      "detail": "Track capacity, issuer share issuance to Cantor, Cantor resale, issuer cash receipt and subsequent XRP acquisition as separate events. Cantor's resale proceeds do not flow to Evernorth.",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "model_eligible": false
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Evernorth Holdings Inc.",
+      "to": "CF Principal Investments LLC (Cantor)",
+      "relation": "discretionary committed equity purchase facility",
+      "status": "contracted_capacity; drawdown_not_established",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "notes": "Up to 5,218,935 new Class A shares; subject to commencement, VWAP, price, volume and beneficial-ownership conditions."
+    },
+    {
+      "from": "CF Principal Investments LLC (Cantor)",
+      "to": "Evernorth Holdings Inc.",
+      "relation": "conditional purchase of newly issued Class A shares",
+      "status": "purchase_execution_not_established",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "notes": "Initial share purchases fund Evernorth; Cantor's later resale is for Cantor's account and does not fund Evernorth."
+    },
+    {
+      "from": "Evernorth Holdings Inc.",
+      "to": "XRP",
+      "relation": "intended potential use of a substantial portion of facility proceeds",
+      "status": "issuer_intention_not_executed_purchase",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "notes": "General corporate and working-capital discretion remains; no facility-funded XRP purchase is established."
+    },
+    {
+      "from": "StoneX Financial Inc.",
+      "to": "Evernorth Holdings Inc.",
+      "relation": "qualified independent underwriter",
+      "status": "disclosed_fee_200000_usd_plus_expenses_up_to_1000_usd",
+      "evidence": [
+        "evernorth_424b3_20261030_cantor_eloc_pricing_fees"
+      ],
+      "notes": "A fee term, not a financing source or XRP purchase."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261104T140144Z-evernorth-cantor-eloc::H1",
+      "claim": "If the facility is activated and shares are sold to Cantor, a substantial share of the resulting issuer cash may fund additional XRP purchases.",
+      "support": [
+        "The issuer explicitly expects a substantial portion of proceeds to acquire XRP."
+      ],
+      "disconfirming_or_missing": [
+        "No facility drawdown or facility-funded XRP purchase is established in the reviewed prospectus.",
+        "The issuer retains broad discretion and may use proceeds for working capital or other corporate purposes."
+      ],
+      "tests": [
+        "Review subsequent 8-K/prospectus supplements for VWAP purchase notices, issued-share counts and cash receipts.",
+        "Reconcile post-facility XRP holdings and wallet transfers against the issuer's disclosed purchase dates and venues."
+      ]
+    },
+    {
+      "id": "20261104T140144Z-evernorth-cantor-eloc::H2",
+      "claim": "The facility may be used primarily for working capital and corporate expenses, with little or no incremental XRP acquisition.",
+      "support": [
+        "The prospectus permits general corporate and working-capital uses and leaves allocation to the issuer."
+      ],
+      "disconfirming_or_missing": [
+        "The issuer says it expects a substantial portion of proceeds to acquire XRP."
+      ],
+      "tests": [
+        "Compare future use-of-proceeds disclosures, operating cash needs, share issuance and independently observed XRP holdings changes."
+      ]
+    },
+    {
+      "id": "20261104T140144Z-evernorth-cantor-eloc::H3",
+      "claim": "The facility may remain unused or only partially used if market, registration, price, volume or ownership conditions are not satisfied.",
+      "support": [
+        "The issuer has the right but not the obligation to direct purchases; commencement and purchase conditions apply."
+      ],
+      "disconfirming_or_missing": [
+        "Subsequent purchase notices, share issuance and issuer cash receipts would disconfirm non-use for the covered period."
+      ],
+      "tests": [
+        "Monitor effectiveness/commencement notices, 8-K filings, share counts and Cantor resale prospectus supplements."
+      ]
+    },
+    {
+      "id": "20261104T140144Z-evernorth-cantor-eloc::H4",
+      "claim": "The stated $74.4M net scenario is not reproducible from the disclosed cover-price assumption, 97%-of-VWAP formula and enumerated fees without additional assumptions or clarification.",
+      "support": [
+        "At a same-price VWAP proxy, 97% of the cover-price gross is about $74.467M before fees; disclosed upfront and StoneX fees alone total about $721,894 if due/paid."
+      ],
+      "disconfirming_or_missing": [
+        "Actual applicable VWAP and the exact fee/expense assumptions used for the net estimate are not disclosed in the cited scenario."
+      ],
+      "tests": [
+        "Seek a subsequent prospectus supplement or issuer clarification that states the assumed VWAP and fee bridge; compare with actual notices and paid fees."
+      ]
+    },
+    {
+      "id": "20261104T140144Z-evernorth-cantor-eloc::H5",
+      "claim": "Equity-line issuance and Cantor resale may affect XRPN share supply/liquidity but do not mechanically create XRP token supply or spot purchases.",
+      "support": [
+        "The facility issues Evernorth Class A shares; XRP acquisition is a separate possible use of issuer cash."
+      ],
+      "disconfirming_or_missing": [
+        "A disclosed and reconciled facility-funded XRP purchase would establish a separate XRP acquisition event."
+      ],
+      "tests": [
+        "Track XRPN issuance/resale separately from issuer cash receipts, XRP holdings and XRPL/exchange transaction evidence."
+      ]
+    }
+  ],
+  "capital_reconciliation": {
+    "reference_assumptions": {
+      "maximum_new_class_a_shares": 5218935,
+      "cover_page_closing_price_usd_per_share": 14.71,
+      "cover_page_price_date": "2026-10-29",
+      "prospectus_stated_gross_proceeds_usd": 76800000,
+      "prospectus_stated_net_proceeds_usd": 74400000,
+      "contractual_purchase_price": "97% of applicable VWAP, subject to additional terms",
+      "illustrative_vwap_proxy_usd_per_share": 14.71,
+      "illustrative_vwap_proxy_is_actual_vwap": false
+    },
+    "derived_scenarios": {
+      "full_shares_at_cover_price_gross_usd": 76770533.85,
+      "hypothetical_purchase_price_at_97pct_usd_per_share": 14.2687,
+      "hypothetical_proceeds_at_97pct_before_issuer_fees_usd": 74467417.8345,
+      "stated_net_proceeds_usd": 74400000,
+      "difference_97pct_proxy_proceeds_minus_stated_net_usd": 67417.8345,
+      "difference_cover_price_gross_minus_stated_net_usd": 2370533.85,
+      "disclosed_upfront_commitment_fee_usd": 521893.5,
+      "stoneX_qualified_independent_underwriter_fee_usd": 200000,
+      "specified_upfront_plus_stoneX_fee_usd": 721893.5,
+      "maximum_disclosed_capped_fee_items_usd": 1701000,
+      "hypothetical_97pct_proxy_proceeds_after_capped_fee_items_usd": 72766417.8345,
+      "calculation_note": "The 97%-of-VWAP scenario assumes VWAP equals the $14.71 cover-page closing price. The $1.701M capped-fee envelope sums the $1M aggregate Cantor commitment-fee cap, $500K Cantor/CF&CO expense cap, $200K StoneX fee and $1K StoneX expense cap. It excludes other unquantified registration/listing/legal/accounting costs and is a maximum-cap sensitivity, not expected or actual fees."
+    },
+    "fee_terms": {
+      "upfront_commitment_fee_usd": 521893.5,
+      "upfront_fee_payment_timing": "within five business days after the Upfront Determination Date (registration effectiveness); the filing says it is non-refundable and fully earned under the agreement.",
+      "aggregate_upfront_plus_additional_commitment_fee_cap_usd": 1000000,
+      "cantor_and_cFco_reimbursable_expense_cap_usd": 500000,
+      "stoneX_qualified_independent_underwriter_fee_usd": 200000,
+      "stoneX_expense_cap_usd": 1000,
+      "other_registration_costs": "registration/filing, Nasdaq listing, counsel and independent-accountant expenses are described separately; the cited sections do not provide a single aggregate cap for all such costs."
+    },
+    "actual_capital": {
+      "facility_drawdown_status": "not_established_in_reviewed_prospectus",
+      "issuer_cash_receipt_from_facility": "not_established_in_reviewed_prospectus",
+      "facility_funded_xrp_purchase": "not_established_in_reviewed_prospectus",
+      "cantors_subsequent_resale_proceeds_to_issuer": false,
+      "required_event_separation": [
+        "facility capacity",
+        "issuer purchase notice",
+        "new shares issued to Cantor",
+        "cash received by Evernorth",
+        "Cantor resale",
+        "XRP acquired",
+        "XRP custody/ledger movement"
+      ]
+    }
+  },
+  "data_quality": {
+    "reconciliation_status": "UNRESOLVED_ASSUMPTION_AND_FEE_BASIS",
+    "model_eligibility": "quarantined",
+    "raw_receipt_status": "not_captured",
+    "source_independence": "single issuer disclosure; SEC hosting is not an independent second publisher",
+    "no_averaging_policy": "No scenario values or fee caps are averaged; exact contractual VWAP and actual fee receipts are unknown.",
+    "limitations": [
+      "The cover-page closing price is not the contractual VWAP.",
+      "The exact VWAP path and assumptions behind the stated net estimate are not disclosed in the reviewed scenario.",
+      "Fee caps are not proof of fees paid; the upfront fee and StoneX fee have separate timing/conditions.",
+      "Actual share sales, cash receipts, XRP purchases, counterparties, execution venues and wallet movements require later filings or independently captured transaction evidence.",
+      "The prospectus is issuer-authored; its statements are not independently corroborated by the same SEC-hosted document."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "This corporate-financing disclosure is not synchronized market evidence and contains no verified facility-funded XRP purchase. It is not admitted to directional XRP prediction features."
+  }
+}

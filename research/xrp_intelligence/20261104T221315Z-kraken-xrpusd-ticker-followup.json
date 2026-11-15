@@ -1,0 +1,145 @@
+{
+  "schema_version": "barrot.xrp.market-observation.v1",
+  "artifact_id": "xrp_kraken_ticker_followup_20261104T221315Z",
+  "artifact_type": "append_only_single_venue_spot_ticker_followup",
+  "captured_at_utc": "2026-11-04T22:13:15Z",
+  "data_cutoff_utc": "2026-11-04T22:13:15Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+    "parent_sha": "7e12cbf18a56d2d000c2d6f90f8f7351471dad73"
+  },
+  "preservation": {
+    "prior_artifacts_modified": false,
+    "append_only": true,
+    "raw_source_bytes_archived": false,
+    "forecast_issued": false,
+    "real_money_actions": false
+  },
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261104T221315Z",
+      "publisher": "Kraken",
+      "authority": "primary exchange public ticker API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-04T22:13:15Z",
+      "source_event_timestamp_utc": null,
+      "source_independence_group": "kraken_primary_exchange",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "capture_status": "web-open rendered JSON text only; original HTTP body and headers were not retained",
+      "model_eligible": false,
+      "limitations": [
+        "The API response does not expose an exchange event timestamp in the returned ticker object.",
+        "The web retrieval did not preserve original HTTP bytes or headers, so no raw-source SHA-256 receipt is asserted.",
+        "Two web-open reads approximately five minutes apart returned identical rendered JSON; cache reuse cannot be excluded.",
+        "A single venue ticker and top-of-book quote are not consolidated market depth or executable market impact."
+      ]
+    }
+  ],
+  "raw_rendered_source_excerpt": {
+    "content": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.30504000\",\"6575\",\"6575.000\"],\"b\":[\"1.30503000\",\"615\",\"615.000\"],\"c\":[\"1.30504000\",\"2.68666094\"],\"v\":[\"38374798.58795171\",\"40449322.64798510\"],\"p\":[\"1.29227458\",\"1.29159664\"],\"t\":[32948,34592],\"l\":[\"1.24016000\",\"1.24016000\"],\"h\":[\"1.34000000\",\"1.34000000\"],\"o\":\"1.27513000\"}}}",
+    "content_status": "rendered JSON text; not verified original HTTP bytes",
+    "raw_sha256": null
+  },
+  "market_snapshot": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD spot",
+    "retrieved_at_utc": "2026-11-04T22:13:15Z",
+    "exchange_event_timestamp_utc": null,
+    "last_usd": 1.30504,
+    "last_trade_size_xrp": 2.68666094,
+    "best_bid_usd": 1.30503,
+    "best_bid_size_xrp": 615,
+    "best_ask_usd": 1.30504,
+    "best_ask_size_xrp": 6575,
+    "spread_usd": 0.00001,
+    "midpoint_usd": 1.305035,
+    "spread_bps": 0.0766263,
+    "best_ask_to_bid_size_ratio": 10.6910569,
+    "best_bid_level_notional_usd": 802.59345,
+    "best_ask_level_notional_usd": 8580.638,
+    "volume_24h_xrp": 40449322.6479851,
+    "vwap_24h_usd": 1.29159664,
+    "high_24h_usd": 1.34,
+    "low_24h_usd": 1.24016,
+    "utc_day_open_usd": 1.27513
+  },
+  "prior_same_venue_comparison": {
+    "prior_artifact": "research/xrp_intelligence/20261104T210500Z-market-derivatives-etf-disagreement-update.json",
+    "prior_retrieval_utc": "2026-11-04T21:05:00Z",
+    "elapsed_seconds": 4095,
+    "prior_last_usd": 1.30059,
+    "last_price_change_pct": 0.3421524,
+    "prior_best_bid_usd": 1.30041,
+    "prior_best_bid_size_xrp": 1921,
+    "prior_best_ask_usd": 1.30042,
+    "prior_best_ask_size_xrp": 561,
+    "prior_volume_24h_xrp": 42977237.51961062,
+    "prior_vwap_24h_usd": 1.29066544,
+    "interpretation": [
+      "The two rendered ticker observations differ by about 0.342% in last price over 68 minutes 15 seconds, but neither carries an exchange event timestamp.",
+      "Displayed top-level size changed from 1,921 bid versus 561 ask to 615 bid versus 6,575 ask. This is a transient one-level quote comparison, not evidence of sustained order flow or market-wide sell pressure.",
+      "The 24-hour volume is a rolling-window statistic and must not be interpreted as cumulative volume falling by the difference between snapshots."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-ordinary-quote-drift",
+      "claim": "The observed price difference is ordinary single-venue quote movement inside the reported 24-hour range.",
+      "support": [
+        "Both snapshots remain within the same reported 24-hour high/low interval."
+      ],
+      "disconfirming_or_missing": [
+        "No synchronized trades, cross-venue observations or exact exchange event timestamps are attached."
+      ],
+      "test": "Capture raw exchange responses at synchronized intervals across multiple venues and compare executable depth and realized returns."
+    },
+    {
+      "id": "H2-transient-top-level-supply",
+      "claim": "The larger displayed ask size may represent temporary supply at the best ask.",
+      "support": [
+        "The latest single-level ask quantity is about 10.69 times the displayed bid quantity."
+      ],
+      "disconfirming_or_missing": [
+        "Only one price level is shown; the response may be cached; displayed size can be cancelled and is not executed flow."
+      ],
+      "test": "Use sequence-bridged order-book deltas, cancellation/trade classification and multi-level depth."
+    },
+    {
+      "id": "H3-cache-or-snapshot-timing-artifact",
+      "claim": "Some apparent stability or size configuration may reflect cached or delayed rendering rather than a fresh exchange event.",
+      "support": [
+        "Two web-open reads approximately five minutes apart returned identical rendered JSON and no exchange event timestamp."
+      ],
+      "disconfirming_or_missing": [
+        "No HTTP cache headers or server Date header were preserved."
+      ],
+      "test": "Capture direct HTTP response bytes and headers in the scheduled collector, store response Date/sequence fields, and compare with exchange-native websocket updates."
+    }
+  ],
+  "data_quality": {
+    "source_count": 1,
+    "independent_source_group_count": 1,
+    "model_eligible": false,
+    "exclusion_reasons": [
+      "No original HTTP response bytes or raw SHA-256 receipt.",
+      "No exchange event timestamp or independently verified response Date header.",
+      "Possible cache reuse across two identical rendered reads.",
+      "Single-venue top-of-book only; no synchronized multi-venue depth."
+    ],
+    "no_averaging_policy": "Do not combine this observation with unsynchronized Yahoo, CoinMarketCap or third-party aggregator quotes."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "A descriptive single-venue ticker update without byte-complete provenance, exchange event time or validated out-of-sample performance cannot support a directional forecast."
+  },
+  "next_actions": [
+    "Capture original HTTP response bytes and headers through the read-only scheduled collector.",
+    "Add exchange sequence bridging before admitting Binance or Coinbase order-book data.",
+    "Build synchronized venue-level depth, trade and cancellation features before evaluating imbalance."
+  ]
+}

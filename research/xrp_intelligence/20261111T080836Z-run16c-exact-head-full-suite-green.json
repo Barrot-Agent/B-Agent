@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run16c_exact_head_full_suite_green",
+  "run_id": "run16c",
+  "captured_at_utc": "2026-11-11T08:08:36.247Z",
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_head": "540fdad1f406d19349b4997e52956dd6ebc4a56d",
+    "pr": 1661,
+    "changed_files": 988,
+    "workflow_files": 44,
+    "non_workflow_paths": 944,
+    "ahead_by": 1998,
+    "behind_by": 0,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14
+  },
+  "ci": {
+    "full_suite": {
+      "run_id": 42984147689,
+      "job_id": 130401224459,
+      "head_sha": "540fdad1f406d19349b4997e52956dd6ebc4a56d",
+      "passed": 3407,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "duration_seconds": 63.46,
+      "conclusion": "success",
+      "wheel_build": true,
+      "installed_wheel_primary_mission_verified": true
+    },
+    "core_suite": {
+      "conclusion": "success",
+      "run_id": 42984147689
+    },
+    "dependency_audit": {
+      "run_id": 42984147681,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42984147691,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "push_dependency_audit": {
+      "run_id": 42984139451,
+      "conclusion": "success"
+    },
+    "push_fail_closed_gate": {
+      "run_id": 42984139620,
+      "conclusion": "success"
+    },
+    "previous_head_failure": {
+      "sha": "5a5ec55bc346e992c06da2a444774d37d901fb11",
+      "run_id": 42983423156,
+      "passed": 3405,
+      "failed": 2,
+      "diagnosis": "Two brittle tests froze prior OKX and Fuelmaps timestamps/depth; test-only change replaced exact values with chronology and market invariants."
+    }
+  },
+  "security": {
+    "credential_path": ".config/gh/hosts.yml",
+    "absent_main_and_integration": true,
+    "other_open_pr_tips_with_path": 17,
+    "credential_contents_read": false,
+    "oauth_provider_revocation": "unverified",
+    "branch_protection_details": "HTTP 403; main endpoint reports protected=true; visible fallback ruleset disabled"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "raw_source_receipts_created": false,
+    "public_web_data_model_eligible": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "merge": {
+    "pr_state": "open draft",
+    "formal_approvals": 0,
+    "unresolved_review_threads": 0,
+    "merge": false,
+    "reason": "Publication authorization, branch-protection visibility, credential remediation and 944-path semantic review remain blockers."
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_action": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "force_push": false,
+    "source_pr_closure": false
+  },
+  "next_actions": [
+    "Complete semantic review of the 944 non-workflow paths, prioritizing V3 execution/safety, XRP ingestion/feature store/forecast ledger, package configuration and public signal assets.",
+    "Verify provider-side OAuth revocation and continue additive remediation of the 17 affected open-PR branch tips without reading credential contents or rewriting history.",
+    "Obtain authoritative branch-protection/approval requirements and explicit GitHub Pages publication authorization.",
+    "Raise the 53% inclusive coverage floor toward the prior 70% through additional tests; do not hide the tradeoff or exclude major packages.",
+    "Preserve unique research, graph, prediction, safety and topology PRs; close exact duplicates only after verified successor merge and main verification.",
+    "Keep XRP collector off main until authorized merge; then verify first successful read-only main ingestion and immutable receipts.",
+    "Continue synchronized spot/L2, derivatives, exchange-flow, collateral, macro-event, scenario, replay, calibration and shadow-evaluation work; keep forecasts disabled until evidence gates pass.",
+    "Verify exact-head full-suite, dependency and fail-closed results on the new Run16C handoff commit before considering any merge."
+  ]
+}

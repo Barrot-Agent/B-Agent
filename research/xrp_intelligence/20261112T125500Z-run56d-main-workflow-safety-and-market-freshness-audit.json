@@ -1,0 +1,161 @@
+{
+  "schema_version": "barrot.xrp.workflow-safety-audit.v1",
+  "run_id": "56D",
+  "captured_at_utc": "2026-11-12T12:55:00Z",
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_parent_head": "a17cc3a55599ab8bfa1820511e9cd913d18fbf95",
+    "pr": 1661,
+    "pr_state": "open",
+    "pr_draft": true,
+    "branch": "integration/xrp-v3-unified-main-20261111"
+  },
+  "main_workflow_findings": [
+    {
+      "path": ".github/workflows/knowledge-signal-cycle-btc.yml",
+      "trigger": "workflow_dispatch",
+      "permissions": "contents:write",
+      "external_model": "Groq",
+      "writes_main": true,
+      "explicit_confirmation": false,
+      "exact_main_sha": false,
+      "integration_status": "quarantined permissions:{} and if:false"
+    },
+    {
+      "path": ".github/workflows/capability-1-market-analysis.yml",
+      "trigger": "workflow_dispatch",
+      "external_models": [
+        "Groq",
+        "Databricks"
+      ],
+      "writes_main": true,
+      "explicit_confirmation": false,
+      "exact_main_sha": false,
+      "integration_status": "disabled legacy; permissions:{} and if:false"
+    },
+    {
+      "path": ".github/workflows/capability-9-data-resolver.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": true,
+      "explicit_confirmation": false,
+      "exact_main_sha": false,
+      "integration_status": "quarantined permissions:{} and if:false"
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": false,
+      "explicit_confirmation": true,
+      "exact_main_sha": false,
+      "integration_status": "quarantined legacy blended-signal path"
+    },
+    {
+      "path": ".github/workflows/signal-summary.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": false,
+      "explicit_confirmation": false,
+      "exact_main_sha": false,
+      "integration_status": "requires YES and exact main SHA; artifact only"
+    },
+    {
+      "path": ".github/workflows/signal_ledger.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": false,
+      "explicit_confirmation": false,
+      "exact_main_sha": false,
+      "integration_status": "quarantined permissions:{} and if:false"
+    },
+    {
+      "path": ".github/workflows/capability-10-design.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": true,
+      "explicit_confirmation": false,
+      "exact_main_sha": false,
+      "integration_status": "requires YES and exact main SHA; read-only artifact-only"
+    },
+    {
+      "path": ".github/workflows/capability-discovery.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": false,
+      "explicit_confirmation": true,
+      "exact_main_sha": true,
+      "integration_status": "manual artifact-only"
+    },
+    {
+      "path": ".github/workflows/entity-relations.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": false,
+      "explicit_confirmation": true,
+      "exact_main_sha": false,
+      "integration_status": "manual artifact-only; exact SHA residual gap"
+    },
+    {
+      "path": ".github/workflows/content-pipeline.yml",
+      "trigger": "workflow_dispatch",
+      "external_model": "Groq",
+      "writes_main": false,
+      "explicit_confirmation": true,
+      "exact_main_sha": false,
+      "integration_status": "manual artifact-only; exact SHA residual gap"
+    }
+  ],
+  "other_workflows": {
+    "barrot_approve_pr": "manual YES + exact PR head; applies label/comment only; not formal review or merge",
+    "release": "tag-triggered v*.*.* only",
+    "cross_analysis": "read-only artifact-only",
+    "riemann_harvest": "weekly read-only artifact-only",
+    "pillars_check": "daily scheduled read-only GitHub App/Databricks access"
+  },
+  "main_xrp_ingestion": {
+    "workflow_present": false,
+    "module_present": false,
+    "scheduled_ingestion_active": false
+  },
+  "market_freshness": {
+    "okx_event_timestamp": "2026-11-12T12:36:29.686Z",
+    "repeated_at_approx": "2026-11-12T12:54Z",
+    "kraken_provider_timestamp": null,
+    "all_repeated_fields_unchanged": true,
+    "eligible_for_live_features": false
+  },
+  "verified_preceding_head_ci": {
+    "head_sha": "a17cc3a55599ab8bfa1820511e9cd913d18fbf95",
+    "run_id": 43221336112,
+    "tests": 3507,
+    "passed": 3507,
+    "failed": 0,
+    "subtests": 8,
+    "broad_coverage": 61.35,
+    "core_coverage_rounded": 76,
+    "core_floor": 70,
+    "full_suite_seconds": 90.27,
+    "core_tests": 716,
+    "wheel_verified": true,
+    "dependency_audit_run": 43221336087,
+    "fail_closed_pr_run": 43221336018,
+    "fail_closed_push_run": 43221324056
+  },
+  "safety": {
+    "external_workflows_dispatched": 0,
+    "external_model_transfers": 0,
+    "databricks_kaggle_writes": 0,
+    "deployments": 0,
+    "secret_rotations": 0,
+    "paper_trades": 0,
+    "merges": 0,
+    "source_prs_closed": 0
+  },
+  "next_actions": [
+    "Do not dispatch legacy main Groq/write workflows.",
+    "Merge only after the existing integration PR is non-draft, exact-head CI and full-suite pass, security gates and required approvals are satisfied, and semantic review is complete.",
+    "Resolve main branch protection, least privilege, Pages side effects and provider-side credential revocation.",
+    "Keep XRP forecast issuance disabled until independent raw anchoring, historical replay, shadow outcomes and measured out-of-sample lift pass."
+  ]
+}

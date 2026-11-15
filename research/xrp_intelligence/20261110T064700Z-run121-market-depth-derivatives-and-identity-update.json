@@ -1,0 +1,171 @@
+{
+  "run_id": "Run121",
+  "checked_at_utc": "2026-11-10T06:47:00Z",
+  "parent_integration_sha": "43aa63532969f61ad677a443f4bdcf2dc0f46e9d",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "run120_verification": {
+    "tested_sha": "43aa63532969f61ad677a443f4bdcf2dc0f46e9d",
+    "full_suite_passed": 1347,
+    "full_suite_failed": 0,
+    "subtests_passed": 8,
+    "inclusive_coverage_pct": 59.48,
+    "core_suite_passed": 677,
+    "wheel_build_and_installed_verification": true,
+    "dependency_manifests_passed": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate": true,
+    "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42770438065",
+    "audit_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42770437956",
+    "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42770437998"
+  },
+  "market": {
+    "kraken_xrpusd": {
+      "last": 1.09923,
+      "bid": 1.09909,
+      "ask": 1.09921,
+      "spread_bps": 1.0918,
+      "volume_24h_xrp": 26083593.24961186,
+      "vwap_24h": 1.09399877,
+      "high_24h": 1.10404,
+      "low_24h": 1.07502,
+      "event_timestamp": null,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "okx_xrpusdt": {
+      "last": 1.0999,
+      "bid": 1.0997,
+      "ask": 1.0998,
+      "volume_24h_xrp": 65111789.468091,
+      "high_24h": 1.1167,
+      "low_24h": 1.0764,
+      "event_timestamp_utc": "2026-11-10T06:40:33.969Z",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "kraken_usdtusd": {
+      "bid": 0.99866,
+      "ask": 0.99867,
+      "mid": 0.998665,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+    },
+    "normalized_okx_last_usd": 1.098437133,
+    "difference_vs_kraken_last_pct": -0.0721293,
+    "caveat": "Asynchronous venue and conversion snapshots; not an executable arbitrage signal."
+  },
+  "spot_orderbook": {
+    "provider": "Fuelmaps",
+    "snapshot_utc": "2026-11-10T06:00:00Z",
+    "published_utc": "2026-11-10T06:05:00Z",
+    "mid": 1.0977,
+    "venues": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "depth_usd": {
+      "within_0_5pct": {
+        "bids": 9100000,
+        "asks": 6500000,
+        "bid_share_pct": 58.5
+      },
+      "within_1pct": {
+        "bids": 13800000,
+        "asks": 10800000,
+        "bid_share_pct": 56
+      },
+      "within_2pct": {
+        "bids": 18300000,
+        "asks": 11600000,
+        "bid_share_pct": 61.2
+      },
+      "within_5pct": {
+        "bids": 24400000,
+        "asks": 14200000,
+        "bid_share_pct": 63.3
+      },
+      "within_10pct": {
+        "bids": 33200000,
+        "asks": 15600000,
+        "bid_share_pct": 68
+      }
+    },
+    "coverage": {
+      "within_5pct": "6 of 6",
+      "within_10pct": "5 of 6"
+    },
+    "url": "https://fuelmaps.io/order-book/",
+    "caveat": "Hourly averages of one-minute snapshots; Binance and Bitget omitted; near-price and full-depth venue reach differ; displayed orders can be cancelled."
+  },
+  "derivatives": {
+    "provider": "TradRadar",
+    "updated_utc": "2026-11-10T05:50:00Z",
+    "reported_delay_minutes": 15,
+    "mark_price": 1.1007,
+    "price_change_24h_pct": 0.18,
+    "venue_count": 7,
+    "open_interest_usd": 1660000000,
+    "open_interest_change_24h_pct": -3.97,
+    "oi_weighted_funding_pct_per_8h": 0.0069,
+    "liquidations_24h_min_usd": 7580000,
+    "long_liquidations_usd": 6800000,
+    "short_liquidations_usd": 777690,
+    "long_short_accounts_ratio": 3.9,
+    "long_accounts_pct": 79.6,
+    "url": "https://tradradar.io/markets/xrp",
+    "interpretation": "Declining OI and long-heavy reported liquidations; not a directional forecast."
+  },
+  "etf_status": "Unchanged from Run120: CryptoKeyhole November 9 partial -9,216,553 XRP / about -$10.1M, 3 of 4 daily-tracked funds; Franklin missing. Alpha Finance about -$10.4M across five funds and CryptoETF.today about -$10.3M across three of five are separate coverage/methodology observations.",
+  "cftc_status": "Unchanged: CFTC TFF futures-only report as of 2026-11-03; CME 176740 OI 7,216, leveraged funds net +280; Coinbase Nano 176LM1 OI 32,505, net -2,308; Nano Perp Style 176LM3 OI 38,392, net -27,774; 396,248,500 XRP-equivalent OI.",
+  "channel_identity": {
+    "candidates": [
+      {
+        "handle": "@drkamilahstevenson",
+        "channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+        "third_party_stats": {
+          "subscribers_range": [
+            138000,
+            143000
+          ],
+          "videos_approx": 1200
+        },
+        "identity_status": "unverified"
+      },
+      {
+        "handle": "@CoachKamilahStevensonxrp",
+        "third_party_subscribers_approx": 40,
+        "identity_status": "unverified"
+      },
+      {
+        "handle": "@KamilahStevensonDigitalNetwork",
+        "third_party_subscribers_approx": 245,
+        "identity_status": "unverified"
+      }
+    ],
+    "reason": "Similar descriptions and names are not proof of channel ownership; direct YouTube fetch was incomplete and no independent official cross-link was established.",
+    "verified_personal_channel_video_inventory_additions": 0,
+    "vidiq_status": "insufficient credits; no credits charged; no retry"
+  },
+  "workflow_repairs": {
+    "hover_bike": {
+      "main_failure": "generator ran from project working directory but wrote to a nested project path; artifact upload expected repository-root paths",
+      "integration_fix": "generator and documentation steps execute from repository root",
+      "regression_test": "tests/test_hover_bike_workflow.py passed in Run120 full suite",
+      "end_to_end_dispatch": "not verified"
+    },
+    "riemann_harvest": {
+      "main_failure": "shared pytest conftest imports pydantic-settings but main workflow installed pytest only",
+      "integration_fix": "integration workflow installs pytest and pydantic-settings",
+      "end_to_end_dispatch": "not verified"
+    },
+    "pillars_check": {
+      "status": "blocked by missing GitHub App credentials, Databricks HTTP 403, Hugging Face Space BUILD_ERROR; remains read-only/fail-closed"
+    }
+  },
+  "prediction_status": "NOT_ISSUED",
+  "run121_web_data_model_eligible": false,
+  "raw_http_bytes_retained": false,
+  "raw_source_sha256_receipts_claimed": false,
+  "no_merge_or_external_actions": true
+}

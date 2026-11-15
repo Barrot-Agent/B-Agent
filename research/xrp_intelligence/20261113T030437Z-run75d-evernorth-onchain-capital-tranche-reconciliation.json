@@ -1,0 +1,81 @@
+{
+  "schema_version": "barrot.xrp.onchain-capital-reconciliation.v1",
+  "run_id": "run75d",
+  "captured_at_utc": "2026-11-13T03:04:37Z",
+  "eligibility": {
+    "status": "RESEARCH_ONLY_NO_RAW_RECEIPTS",
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "model_eligible": false,
+    "directional_forecast_issued": false
+  },
+  "sources": [
+    {
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "data_as_of_utc": "2026-11-13T01:42:00Z",
+      "ledger": 108293784
+    },
+    {
+      "publisher": "SEC/Evernorth",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "filed": "2026-11-09"
+    },
+    {
+      "publisher": "SEC/Evernorth",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "filed": "2026-10-19"
+    }
+  ],
+  "closing_treasury": {
+    "company_reported_xrp": 473276430,
+    "advance_subscriber_xrp": 600000,
+    "delayed_subscriber_xrp": 200000,
+    "rippleworks_to_arrington_sponsor_xrp": 211319096.061435,
+    "larsen_lam_children_remainder_trust_xrp": 50000000,
+    "ripple_direct_xrp": 126791458,
+    "purchased_with_advance_cash_xrp": 84365876.3625,
+    "cash_used_for_purchase_usd": 214000000,
+    "implied_average_purchase_price_usd": 2.5366,
+    "in_kind_contribution_total_xrp": 388910554.061435,
+    "arithmetic_note": "Exact in-kind components plus the purchased tranche equal 473,276,430.423935 XRP, about 0.424 XRP above the rounded 473,276,430 company-reported figure."
+  },
+  "on_chain_attribution": {
+    "validated_ledger": 108293784,
+    "data_as_of_utc": "2026-11-13T01:42:00Z",
+    "attributed_wallets": 13,
+    "current_attributed_balance_xrp": 103129905,
+    "percent_of_company_reported_closing_amount": 21.8,
+    "payment_linked_to_two_labeled_evernorth_wallets_xrp": 103129900,
+    "purchased_tranche_wallet_balance_xrp": 5,
+    "tracker_reported_transfers_outside_attributed_set_xrp": 370346663,
+    "latest_transfer_date": "2026-10-22",
+    "reconciliation_warning": "Current attributed balance plus the reported transfer-out figure exceeds the company-reported closing total by approximately 200,138 XRP. The tracker does not establish that the transfer-out figure is a net, unique-token quantity; do not interpret it as net missing balance or sales.",
+    "transfer_destination_status": "unattributed; not assumed sold",
+    "purchased_tranche_match": "84,365,876.3625 XRP matched to within 0.0001 XRP from a BitGo-activated trading wallet via a purchase-staging wallet into custody wallets H/I/J.",
+    "delayed_funding_match": "A 199,999.999 XRP Uphold transfer on 2026-10-03 is consistent with the 200,000 XRP delayed-funding tranche, but the tracker notes no filing confirms this specific on-chain deposit.",
+    "advance_funding_match": "600,006 XRP received 2025-10-21 to 2025-10-24 versus the 600,000 XRP subscription; excess is likely dust/fees and must not be treated as additional subscribed capital.",
+    "custody_fingerprint": "13 attributed wallets share BitGo initialization, 2-of-3 multisig and disabled master key characteristics according to tracker methodology."
+  },
+  "custody_and_deployment": {
+    "sec_statement": "100% of XRP held in cold storage at BitGo as of 2026-11-09.",
+    "shared_insurance_usd_m": 250,
+    "insurance_percent_of_holdings_value_as_of_2026_10_09": 36.9,
+    "deployment_disclosure": "The prospectus says yield strategies/DeFi participation commenced after the 2026-10-09 closing, but gives no protocol, amount, wallet or counterparty; it also says no material deployment before Q4 2026.",
+    "hypotheses": [
+      "Unattributed destinations may be additional BitGo cold-storage wallets, consistent with the SEC custody statement.",
+      "Some transfers may represent internal custody restructuring or other custodial addresses.",
+      "A portion could have been moved to DeFi or counterparties, but no named protocol/position is established.",
+      "Sales or OTC disposition are possible but not proven by the transfer tracker."
+    ],
+    "verified_deployed_xrp": null,
+    "status": "UNVERIFIED"
+  },
+  "interpretation": "Evernorth's 473.276M XRP at closing comprises approximately 388.911M in-kind contributions and 84.366M purchased with approximately $214M cash at an average $2.5366. The public on-chain tracker attributes 103.130M XRP to 13 wallets; its 370.347M transfer-out figure is not a verified sale and is not arithmetically reconciled as a net balance. The SEC's all-cold-storage disclosure is consistent with, but does not prove, transfers to other BitGo cold wallets.",
+  "repo_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head": "838f89231ec66e8544673793bdfb00103ed9c1a3",
+    "previous_exact_head_full_suite": "3542 passed; 8 subtests; 0 failures; 61.55% inclusive coverage",
+    "next_head_ci_trigger": "CI push trigger now includes integration/**"
+  }
+}

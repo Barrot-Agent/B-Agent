@@ -1,0 +1,519 @@
+{
+  "run_id": "Run120",
+  "captured_at_utc": "2026-11-10T06:35:24Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety, permissions and verification"
+  },
+  "repository": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "parent_sha": "4d4a752aaa000353b4522bb8f83e7f7fe16d021b",
+    "pr_number": 1640,
+    "commits_ahead": 908,
+    "commits_behind": 0,
+    "changed_paths": 239,
+    "trees": {
+      "main": {
+        "entries": 1404,
+        "files": 1299,
+        "python_files": 493,
+        "test_modules": 87,
+        "workflow_files": 86,
+        "xrp_research_artifacts": 30
+      },
+      "integration": {
+        "entries": 1536,
+        "files": 1423,
+        "python_files": 568,
+        "test_modules": 145,
+        "workflow_files": 87,
+        "xrp_research_artifacts": 69
+      }
+    },
+    "parent_head_verification": {
+      "sha": "4d4a752aaa000353b4522bb8f83e7f7fe16d021b",
+      "full_suite": {
+        "passed": 1347,
+        "failed": 0,
+        "subtests_passed": 8,
+        "inclusive_coverage_pct": 59.48,
+        "coverage_floor_pct": 53
+      },
+      "core_suite": {
+        "passed": 677,
+        "subtests_passed": 8
+      },
+      "wheel_build": true,
+      "installed_wheel_v3_and_xrp_resources": true,
+      "dependency_manifests_passed": 6,
+      "known_vulnerabilities": 0,
+      "fail_closed_gate": true,
+      "automatic_merge": false,
+      "links": {
+        "full_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42764891140",
+        "dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42764891132",
+        "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42764891383"
+      },
+      "limitation": "These checks are for the parent code head. The new Run120 documentation/research commit requires independent exact-head verification."
+    },
+    "pr_review": {
+      "submissions": 62,
+      "commented": 62,
+      "approved": 0,
+      "threads": 22,
+      "resolved_threads": 22,
+      "outdated_threads": 22,
+      "coderabbit_latest_check": "skipped"
+    },
+    "branch_protection": {
+      "api_status": 403,
+      "visible_fallback_ruleset": "disabled",
+      "pages_side_effect_authorization": "unresolved"
+    },
+    "open_pr_inventory": {
+      "total": 372,
+      "drafts": 356,
+      "non_drafts": 16
+    },
+    "overlap_classifications": [
+      {
+        "pr": 1643,
+        "changed_paths": 670,
+        "overlap": 7,
+        "unique": 663,
+        "classification": "unique research archive; preserve"
+      },
+      {
+        "pr": 1653,
+        "changed_paths": 7,
+        "overlap": 1,
+        "unique": 6,
+        "classification": "unique repository knowledge graph; preserve"
+      },
+      {
+        "pr": 1642,
+        "changed_paths": 7,
+        "overlap": 7,
+        "unique": 0,
+        "classification": "superseded-content candidate"
+      },
+      {
+        "pr": 1614,
+        "changed_paths": 57,
+        "overlap": 8,
+        "unique": 49,
+        "classification": "unique prediction/clock work; preserve"
+      },
+      {
+        "pr": 1317,
+        "changed_paths": 6,
+        "overlap": 6,
+        "unique": 0,
+        "classification": "superseded candidate"
+      },
+      {
+        "pr": 1318,
+        "changed_paths": 2,
+        "overlap": 2,
+        "unique": 0,
+        "classification": "superseded candidate"
+      },
+      {
+        "pr": 1320,
+        "changed_paths": 5,
+        "overlap": 5,
+        "unique": 0,
+        "classification": "superseded candidate"
+      },
+      {
+        "pr": 1644,
+        "changed_paths": 8,
+        "overlap": 8,
+        "unique": 0,
+        "classification": "workflow dependency overlap"
+      },
+      {
+        "pr": 1645,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "workflow dependency overlap"
+      },
+      {
+        "pr": 1646,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "development dependency overlap"
+      },
+      {
+        "pr": 1647,
+        "changed_paths": 6,
+        "overlap": 6,
+        "unique": 0,
+        "classification": "workflow dependency overlap"
+      },
+      {
+        "pr": 1648,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "development dependency overlap"
+      },
+      {
+        "pr": 1649,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "legacy dependency overlap"
+      },
+      {
+        "pr": 1650,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "legacy dependency overlap"
+      },
+      {
+        "pr": 1254,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "older legacy dependency candidate"
+      },
+      {
+        "pr": 1255,
+        "changed_paths": 1,
+        "overlap": 1,
+        "unique": 0,
+        "classification": "older legacy dependency candidate"
+      },
+      {
+        "pr": 1269,
+        "changed_paths": 9,
+        "overlap": 1,
+        "unique": 8,
+        "classification": "unique mesh/topology work; preserve"
+      },
+      {
+        "pr": 1655,
+        "changed_paths": 8,
+        "overlap": 5,
+        "unique": 3,
+        "classification": "unique source-catalog material; preserve"
+      },
+      {
+        "pr": 1659,
+        "changed_paths": 6,
+        "overlap": 2,
+        "unique": 4,
+        "classification": "unique local inference material; preserve"
+      },
+      {
+        "pr": 1641,
+        "changed_paths": 3,
+        "overlap": 0,
+        "unique": 3,
+        "classification": "unique experimentation work; preserve"
+      }
+    ],
+    "no_prs_closed": true,
+    "no_new_branch_or_pr": true
+  },
+  "market": {
+    "spot": {
+      "kraken_xrpusd": {
+        "last": 1.09923,
+        "bid": 1.09909,
+        "ask": 1.09921,
+        "spread_bps": 1.0918,
+        "volume_24h_xrp": 26083593.2496,
+        "vwap_24h": 1.09399877,
+        "high_24h": 1.11573,
+        "low_24h": 1.07502,
+        "provider_event_timestamp": null,
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+      },
+      "okx_xrpusdt": {
+        "last": 1.0986,
+        "bid": 1.0986,
+        "ask": 1.0987,
+        "volume_24h_xrp": 66694987.616,
+        "provider_event_timestamp_utc": "2026-11-10T06:10:20.977Z",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      "kraken_usdtusd": {
+        "bid": 0.99866,
+        "ask": 0.99867,
+        "mid": 0.998665,
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+      },
+      "normalized_okx_last_usd": 1.097133369,
+      "normalized_difference_vs_kraken_last_pct": -0.190736,
+      "caveat": "Asynchronous retrieval; not an executable arbitrage observation."
+    },
+    "spot_orderbook": {
+      "provider": "Fuelmaps",
+      "snapshot_utc": "2026-11-10T02:00:00Z",
+      "venue_count": 6,
+      "market_type": "spot-only",
+      "depth_usd": {
+        "within_0_5pct": {
+          "bids": 9600000,
+          "asks": 6700000,
+          "bid_share_pct": 58.8
+        },
+        "within_1pct": {
+          "bids": 14000000,
+          "asks": 11200000,
+          "bid_share_pct": 55.5
+        },
+        "within_2pct": {
+          "bids": 18600000,
+          "asks": 12900000
+        },
+        "within_5pct": {
+          "bids": 24700000,
+          "asks": 15100000
+        }
+      },
+      "url": "https://fuelmaps.io/order-book/",
+      "caveat": "4h35m stale at capture; no fresh raw L2 capture; orders can be cancelled."
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "updated_utc": "2026-11-10T05:30:00Z",
+        "open_interest_usd": 1650000000,
+        "oi_change_24h_pct": -4.12,
+        "funding_pct_per_8h": 0.0063,
+        "liquidations_24h_min_usd": 8400000,
+        "long_liquidations_usd": 7650000,
+        "short_liquidations_usd": 749120,
+        "long_short_accounts_ratio": 3.89,
+        "long_accounts_pct": 79.5,
+        "venue_count": 7,
+        "url": "https://tradradar.io/markets/xrp"
+      },
+      {
+        "provider": "Liqwall",
+        "snapshot_utc": "2026-11-10T02:22:00Z",
+        "open_interest_usd": 1220000000,
+        "url": "https://liqwall.com/coins/xrp"
+      },
+      {
+        "provider": "Alpha Finance",
+        "snapshot_utc": "2026-11-10T01:40:00Z",
+        "open_interest_usd": 2480000000,
+        "url": "https://alphafinance.io/liquidation-heatmap/xrp/"
+      }
+    ],
+    "etf_flows": {
+      "date": "2026-11-09",
+      "tracker": "CryptoKeyhole",
+      "updated_utc": "2026-11-10T06:12:00Z",
+      "reporting_coverage": "3 of 4 daily-tracked funds; Franklin XRPZ missing",
+      "source_reported_total_xrp": -9216553,
+      "component_display_sum_xrp": -9216552,
+      "display_difference_xrp": 1,
+      "source_reported_total_usd_millions": -10.1,
+      "components": [
+        {
+          "ticker": "XRP",
+          "issuer": "Bitwise",
+          "flow_xrp": -8594551,
+          "issuer_file_utc": "2026-11-10T05:51:00Z"
+        },
+        {
+          "ticker": "XRPC",
+          "issuer": "Canary",
+          "flow_xrp": -427341,
+          "published_window_utc": "2026-11-10T05:22:00Z/2026-11-10T05:27:00Z"
+        },
+        {
+          "ticker": "TOXR",
+          "issuer": "21Shares",
+          "flow_xrp": -194660,
+          "issuer_file_utc": "2026-11-10T05:01:00Z"
+        },
+        {
+          "ticker": "XRPZ",
+          "issuer": "Franklin",
+          "status": "missing_for_2026-11-09"
+        }
+      ],
+      "independent_tracker_disagreement": [
+        {
+          "provider": "Alpha Finance",
+          "fund_coverage": "5 funds",
+          "reported_usd_millions": -10.4,
+          "url": "https://alphafinance.io/etf/xrp/"
+        },
+        {
+          "provider": "CryptoETF.today",
+          "fund_coverage": "3 of 5 funds",
+          "reported_usd_millions": -10.3,
+          "url": "https://cryptoetf.today/en/xrp-etf-flows"
+        }
+      ],
+      "complete_day_cumulative_through_2026_11_06": {
+        "xrp": 2622459,
+        "usd_millions": 3.45,
+        "excludes_2026_11_09_partial": true
+      },
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "caveat": "Different fund universes, issuer file vintages and USD valuation methods; do not average. Holdings changes are not a complete cash subscription/redemption series."
+    },
+    "cftc_tff_futures_only": {
+      "report_as_of": "2026-11-03",
+      "source": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "products": [
+        {
+          "name": "XRP CME",
+          "code": "176740",
+          "contract_size_xrp": 50000,
+          "open_interest_contracts": 7216,
+          "leveraged_funds_long": 1976,
+          "leveraged_funds_short": 1696,
+          "leveraged_funds_net": 280,
+          "oi_change_contracts": -845
+        },
+        {
+          "name": "Nano XRP Coinbase",
+          "code": "176LM1",
+          "contract_size_xrp": 500,
+          "open_interest_contracts": 32505,
+          "leveraged_funds_long": 29317,
+          "leveraged_funds_short": 31625,
+          "leveraged_funds_net": -2308,
+          "oi_change_contracts": -32864
+        },
+        {
+          "name": "Nano XRP Perp Style Coinbase",
+          "code": "176LM3",
+          "contract_size_xrp": 500,
+          "open_interest_contracts": 38392,
+          "leveraged_funds_long": 1780,
+          "leveraged_funds_short": 29554,
+          "leveraged_funds_net": -27774,
+          "oi_change_contracts": -465
+        }
+      ],
+      "open_interest_xrp_equivalent": 396248500,
+      "caveat": "Contract-size normalized OI, not cash capital or directional net risk. TFF leveraged-fund categories are distinct from Legacy COT non-commercial categories; products must remain separate."
+    }
+  },
+  "evernorth_custody": {
+    "sec_filing": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "filing_fact": "All XRP owned by Evernorth is initially held in custody accounts at BitGo Bank & Trust, National Association.",
+    "q_eternal_secondary_analysis": "https://q-eternal.com/blog/2026-10-29/",
+    "transfer": {
+      "date_utc": "2026-10-28T18:02:02Z",
+      "ledger_index": 107963318,
+      "source": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+      "destination": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "destination_tag": 2,
+      "amount_xrp": 3846153.846152,
+      "arithmetic_note": "5,000,000 / 1.3 to six decimals; not proof of $5M consideration"
+    },
+    "source_account_bithomp": {
+      "url": "https://bithomp.com/account/rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+      "username": "none",
+      "control": "multisig",
+      "activated_by": "BitGo",
+      "activation_date": "2019-09-09",
+      "displayed_balance_xrp": 26600000
+    },
+    "destination_account_bithomp": {
+      "url": "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "username": "none",
+      "control": "multisig",
+      "activated_by": "BitGo",
+      "activation_date": "2026-10-20",
+      "displayed_balance_xrp": 96200000
+    },
+    "xrp_insights_tracker": {
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "ledger_index": 108233072,
+      "ledger_closed_utc": "2026-11-10T05:45:00Z",
+      "attributed_wallets": 13,
+      "attributed_balance_xrp": 103129905,
+      "moved_outside_attributed_set_xrp": 370346663,
+      "latest_outside_transfer_date": "2026-10-22"
+    },
+    "classification": "BitGo-originated multisig-to-multisig custody transfer; probable custody reallocation is a hypothesis, beneficial ownership and Evernorth attribution unresolved; not a verified exchange inflow, sale or new purchase."
+  },
+  "macro": {
+    "event": "BLS October 2026 CPI and Real Earnings",
+    "scheduled_utc": "2026-11-10T13:30:00Z",
+    "scheduled_et": "2026-11-10 08:30 ET",
+    "status_at_capture": "future; not released",
+    "primary_url": "https://www.bls.gov/news.release/cpi.htm"
+  },
+  "ingestion_and_prediction": {
+    "source_registry_count": 40,
+    "hourly_sources": 36,
+    "weekly_cftc_sources": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "implemented_on_integration_branch": [
+      "raw-byte capture and SHA-256 receipt contracts",
+      "receipt-chain validation",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "chronological walk-forward with purge/embargo",
+      "calibration and drift diagnostics",
+      "fixed-horizon forecast ledger",
+      "Ed25519 evaluator attestation gate"
+    ],
+    "operational_limitations": [
+      "XRP workflow is main-only and absent from main",
+      "raw receipts retained as GitHub Actions artifacts for 90 days, not independent WORM",
+      "per-run feature-store artifact retention is 7 days; daily archive 90 days",
+      "trusted timestamp anchoring absent",
+      "synchronized historical spot/L2/derivatives/exchange-flow/collateral history incomplete",
+      "sufficient independent shadow outcomes and demonstrated OOS lift absent"
+    ],
+    "run120_web_observations_model_eligible": false,
+    "raw_transport_bytes_preserved": false,
+    "forecast_status": "NOT_ISSUED",
+    "paper_trade_or_real_money_action": false
+  },
+  "nine_platforms": {
+    "ChatGPT": "current-session GitHub read/write and public-web research verified",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "one-off COMMENTED review only; no approval or persistent data flow",
+    "Codex": "unverified",
+    "HuggingFace": "prior build error; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no workspace write",
+    "persistent_cross_platform_data_exchange": false
+  },
+  "sources": {
+    "kraken_xrpusd": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "okx_xrpusdt": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "kraken_usdtusd": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+    "fuelmaps_depth": "https://fuelmaps.io/order-book/",
+    "tradradar": "https://tradradar.io/markets/xrp",
+    "liqwall": "https://liqwall.com/coins/xrp",
+    "alpha_liquidations": "https://alphafinance.io/liquidation-heatmap/xrp/",
+    "cryptokeyhole_etf": "https://cryptokeyhole.com/etf-flows/xrp/",
+    "alpha_etf": "https://alphafinance.io/etf/xrp/",
+    "cryptoetf_today": "https://cryptoetf.today/en/xrp-etf-flows",
+    "cftc_tff_futures_only": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+    "cftc_tff_combined": "https://www.cftc.gov/dea/options/financial_lof.htm",
+    "bls_cpi": "https://www.bls.gov/news.release/cpi.htm",
+    "evernorth_sec": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "q_eternal_wallet_analysis": "https://q-eternal.com/blog/2026-10-29/",
+    "xrp_insights_evernorth": "https://xrp-insights.com/xrp-radar/evernorth",
+    "bithomp_source": "https://bithomp.com/account/rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+    "bithomp_destination": "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj"
+  },
+  "provenance_limitations": {
+    "raw_http_bytes_saved": false,
+    "source_hashes_claimed": false,
+    "reason": "Web-rendered observations were not retained as original HTTP response bytes; no raw SHA-256 receipt is claimed. These observations are research-only and excluded from model admission."
+  }
+}

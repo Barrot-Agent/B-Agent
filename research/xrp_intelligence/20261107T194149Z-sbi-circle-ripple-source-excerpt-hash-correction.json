@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T194149Z-sbi-circle-ripple-source-excerpt-hash-correction",
+  "artifact_type": "append_only_source_receipt_hash_correction",
+  "captured_at_utc": "2026-11-07T19:41:49Z",
+  "supersedes_only_hash_fields_in": "research/xrp_intelligence/20261107T193840Z-sbi-circle-coinbase-ripple-institutional-relationship-graph.json",
+  "original_artifact_commit": "5a2271259c156049f081f3b4fe7bd664e0d3a1ee",
+  "correction_reason": "The original digest calculation included one terminal newline that was not present in the serialized captured_excerpt_text field. No source excerpt content is changed. This append-only correction binds each exact stored UTF-8 excerpt to its actual SHA-256 digest while preserving the original incorrect digest for audit.",
+  "hash_scope": "SHA-256 over the exact UTF-8 bytes of captured_excerpt_text as stored in the original artifact, with no appended newline.",
+  "corrections": [
+    {
+      "source_id": "sbi_circle_equity_2025",
+      "original_sha256": "dfb4ba51589466ad02c13b0a9878f93bbeb477a32b0ccd069ca27fa48a9258d1",
+      "corrected_sha256": "e611652077aaea5e4e0eab57a1e91d78b14b268e6e2a09533ad4747ffbbae9ef"
+    },
+    {
+      "source_id": "sbi_circle_arc_presale_2026",
+      "original_sha256": "2f1c89324340b55a92052f82e15c22df5cdc483e167024a59985bdc24b8e2ca2",
+      "corrected_sha256": "5f49d23b15dee5b1dc81781cf4ab2251a4bc4cbaecffe295b5c5f29e33eba544"
+    },
+    {
+      "source_id": "sbi_startale_equity_2026",
+      "original_sha256": "0232f2ec0c85bb1118282edc1e33ac24060f813a89fc143c1a27c57ba8c21562",
+      "corrected_sha256": "6a6d035e8caf3c5baa320aac743d43c1e7f5b6b57ff92a2360c1cd866c5480db"
+    },
+    {
+      "source_id": "sbi_blackrock_jpysc_mmf_2026",
+      "original_sha256": "751de8265b9499369b66ffbd8fdfa1ec8d6551c82b26c7a88885ec7a359d0041",
+      "corrected_sha256": "b37a61fb769ad921dc6e5e049ce717aa2bb9efd582188dd05588a57d9fb200c6"
+    },
+    {
+      "source_id": "sbi_visa_xrp_rewards_2026",
+      "original_sha256": "bd8646d64592b5ddf60969c80594da8c32de9a908885f88dc90f3789a2af5e4d",
+      "corrected_sha256": "0e191a3fbea08793e542406adf1d52f6fa34cb8cf21ddd8da64e2607b566e76d"
+    },
+    {
+      "source_id": "rlusd_user_terms_2026",
+      "original_sha256": "e33f66dfe6e81625bc2427d3469eeedaf2f0a1efb258d476069bbf91736d609f",
+      "corrected_sha256": "d894d87d4e3bc5717b35d438b0525e4faf9a30ec4ad3631925a460abd6c57943"
+    },
+    {
+      "source_id": "coinbase_ripple_rlusd_2026",
+      "original_sha256": "6e4206aca5911338ba8b611e99e725c1781e4b239fbd9bec79f2d5bdd127256f",
+      "corrected_sha256": "e395ebe50ee736a3c391b4db888291315fd182f3c6460c03e51b928a9b6f5215"
+    },
+    {
+      "source_id": "ripple_coinbase_partnership_2026",
+      "original_sha256": "300da05e5c7959bcfd0e52f5699a8cf2f333713e5060072e0a35123579ee4615",
+      "corrected_sha256": "a1d659477b7a5b576adcd11591c3d30b9bdc012c67a25b8103c99063c7be4072"
+    },
+    {
+      "source_id": "ripple_standardchartered_lmax_2026",
+      "original_sha256": "13e5922d0da7ffe11faac89a78c62ebc0e3d55c61c4adcb667f9e3b9db4a5565",
+      "corrected_sha256": "d270955b5feebc1c6940e94dff43fb43e3686d06372306f7e7110d5c40e2a3c5"
+    },
+    {
+      "source_id": "ripple_bny_custody_2026",
+      "original_sha256": "6e2b2758d65db548aa1b8146d839abd8206bd0cc07868fa93696277a6b49cfdb",
+      "corrected_sha256": "8ee24bab2992849b12a395250982abd16e16d28801e452b772eaca69224695bd"
+    },
+    {
+      "source_id": "ripple_occ_trust_2026",
+      "original_sha256": "c34e1c4b0b55afc7485e57e3c93f7ca7a90404575a5c3cc076de78501f92f080",
+      "corrected_sha256": "39b77d3683abff03e6014e053b34731769e715c52c84e81cc7da1a07011a8565"
+    },
+    {
+      "source_id": "sbi_ripple_rlusd_japan_2026",
+      "original_sha256": "9f361ea8bc907eb52de99d5062c0e9db5ef27eaec531ea0cb82fdb329ef38fcc",
+      "corrected_sha256": "f75feaa7041f6ab15cb18e4c34433bf9c456b9ea2dffff7a30d95d9be2854941"
+    },
+    {
+      "source_id": "sbi_smfg_startale_2026",
+      "original_sha256": "2aceaef57552577184c69dd0250a34b988517e55148f383490a8d60d7dc5b0f7",
+      "corrected_sha256": "5772e81d2deafa88f6053f848024ca793452f3b4079110d78f7ac4a4a9cf628c"
+    },
+    {
+      "source_id": "sbi_open_standard_2026",
+      "original_sha256": "c36ecd7658354e31c7eafe77e6d92ebea5122e0afa085fef1eecda27cfd1fa0d",
+      "corrected_sha256": "5e0c36d2e8d72ccaf7a21442a57049a11ce587c6ee7566ea95bdc7f24311f71e"
+    }
+  ]
+}

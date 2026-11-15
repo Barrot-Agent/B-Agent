@@ -599,7 +599,7 @@ class HoverBikeGenerator:
 
 
 if __name__ == "__main__":
-    gen = HoverBikeGenerator(output_dir=Path("hover_bike_revolution"))
+    gen = HoverBikeGenerator(output_dir=Path(__file__).resolve().parents[1])
     outputs = gen.generate_all()
     for name, path in outputs.items():
         print(f"  {name:30s} → {path}")

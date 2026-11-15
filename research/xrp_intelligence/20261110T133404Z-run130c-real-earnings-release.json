@@ -1,0 +1,111 @@
+{
+  "schema_version": "barrot.xrp.macro-event-run.v1",
+  "artifact_id": "20261110T133404Z-run130c-real-earnings-release",
+  "run_id": "130C",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-10T13:34:04Z",
+  "data_cutoff_utc": "2026-11-10T13:34:04Z",
+  "provenance": {
+    "lawful_public_sources_only": true,
+    "primary_source": "U.S. Bureau of Labor Statistics",
+    "raw_http_wire_bytes_captured": false,
+    "raw_source_sha256_captured": false,
+    "normalized_excerpt_sha256_algorithm": "SHA-256",
+    "capture_method": "Official BLS HTML release inspected through public web retrieval; normalized facts transcribed into this append-only artifact.",
+    "source_publication_time_utc": "2026-11-10T13:30:00Z",
+    "source_independence": "The CPI and Real Earnings releases are separate BLS releases but share one publisher and are not independent publisher corroboration."
+  },
+  "release": {
+    "title": "Real Earnings Summary — October 2026",
+    "release_id": "USDL-26-1686",
+    "official_source_url": "https://www.bls.gov/news.release/realer.nr0.htm",
+    "related_cpi_release_id": "USDL-26-1685",
+    "related_cpi_source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+    "results": {
+      "all_employees": {
+        "real_average_hourly_earnings_mom_sa_pct": 0,
+        "nominal_average_hourly_earnings_mom_sa_pct": 0.4,
+        "cpi_u_mom_sa_pct": 0.4,
+        "real_average_weekly_earnings_mom_sa_pct": 0,
+        "average_workweek_mom_pct": 0
+      },
+      "production_nonsupervisory": {
+        "real_average_hourly_earnings_mom_sa_pct": 0.1,
+        "nominal_average_hourly_earnings_mom_sa_pct": 0.4,
+        "cpi_w_mom_sa_pct": 0.3,
+        "real_average_weekly_earnings_mom_sa_pct": -0.3,
+        "average_workweek_mom_pct": -0.3
+      },
+      "year_over_year": {
+        "all_employees_real_earnings_pct": null,
+        "production_nonsupervisory_real_earnings_pct": null,
+        "missing_reason": "BLS could not collect October 2025 CPI data during the lapse in appropriations; October 2025 to October 2026 real-earnings comparisons are unavailable."
+      }
+    }
+  },
+  "evidence_classification": {
+    "confirmed_primary_facts": [
+      "All-employee real average hourly earnings were unchanged from September to October 2026, seasonally adjusted.",
+      "All-employee nominal average hourly earnings increased 0.4 percent while CPI-U increased 0.4 percent.",
+      "All-employee real average weekly earnings were unchanged because real hourly earnings and the average workweek were unchanged.",
+      "Production and nonsupervisory real average hourly earnings increased 0.1 percent.",
+      "Production and nonsupervisory real average weekly earnings decreased 0.3 percent because the average workweek decreased 0.3 percent.",
+      "October 2025 to October 2026 real-earnings comparisons are unavailable because the required October 2025 CPI data were not collected."
+    ],
+    "inference_not_fact": [
+      "The release indicates no aggregate real hourly or weekly earnings gain for all private nonfarm employees in October, while production/nonsupervisory weekly purchasing power declined modestly.",
+      "The real-earnings release does not offset the October CPI surprise: headline monthly CPI was 0.4 percent versus 0.3 percent preview consensus, and core was 0.3 percent versus 0.2 percent preview consensus."
+    ],
+    "competing_macro_hypotheses": [
+      {
+        "id": "H130C_STICKY_CORE_HAWKISH",
+        "statement": "Core CPI at 0.3 percent month over month, matching Waller's stated threshold, may reinforce expectations of restrictive Federal Reserve policy and weigh on high-beta risk assets.",
+        "disconfirming_evidence": [
+          "The headline monthly rate slowed from 0.6 to 0.4 percent.",
+          "The real-earnings release shows no broad acceleration in real wages.",
+          "Post-release rates, dollar and risk-asset repricing have not been captured in synchronized provider-timestamped data."
+        ]
+      },
+      {
+        "id": "H130C_HEADLINE_MODERATION",
+        "statement": "The decline in headline monthly CPI from 0.6 to 0.4 percent may be read as partial headline disinflation and could limit a hawkish interpretation.",
+        "disconfirming_evidence": [
+          "Headline and core monthly CPI both exceeded the Reuters preview consensus by 0.1 percentage point.",
+          "Core remained at 0.3 percent for a third consecutive month.",
+          "Annual headline and core comparisons are unavailable for October."
+        ]
+      },
+      {
+        "id": "H130C_NO_STABLE_XRP_CAUSAL_SIGNAL",
+        "statement": "The CPI and real-earnings releases may have no stable directional XRP effect absent synchronized market repricing and repeated out-of-sample event evidence.",
+        "tests_needed": [
+          "Provider-timestamped XRP/USD and XRP/USDT trades, top-of-book and depth around the 13:30 UTC release.",
+          "Synchronized BTC, broad risk, DXY, Treasury yields and Fed-futures observations.",
+          "Repeated event study with pre-registered windows, non-event controls and leakage-safe evaluation."
+        ]
+      }
+    ]
+  },
+  "model_admission": {
+    "status": "NOT_ADMITTED",
+    "reason": "The release has not yet been ingested into the point-in-time feature store with a verified raw-source receipt and independent timestamp anchor.",
+    "candidate_features": [
+      "all_employee_real_hourly_earnings_mom_sa_pct",
+      "all_employee_real_weekly_earnings_mom_sa_pct",
+      "production_nonsupervisory_real_hourly_earnings_mom_sa_pct",
+      "production_nonsupervisory_real_weekly_earnings_mom_sa_pct"
+    ],
+    "missing_values": "YoY values remain null; never zero-fill, interpolate or carry forward."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  },
+  "normalized_evidence_sha256": "b7e43b7571476ac659a4266aff7f225ed089a4990d17dd92ce119481ebc9eaf2"
+}

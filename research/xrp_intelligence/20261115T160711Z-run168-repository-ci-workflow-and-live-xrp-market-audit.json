@@ -1,0 +1,525 @@
+{
+  "artifact_type": "barrot_xrp_mission_run_audit",
+  "schema_version": "1.0.0",
+  "run_id": "Run168",
+  "captured_at_utc": "2026-11-15T16:07:11.322Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run168_commit": "fd6ea9a759874f9d0043a4eeda87668696a8fcb9",
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "ahead_by": 2512,
+    "behind_by": 0,
+    "changed_files": 1255,
+    "workflow_files": 48,
+    "non_workflow_paths": 1207,
+    "additions": 352187,
+    "deletions": 6309,
+    "integration_head_before_corrective_commit": "10ec439b3f176b3c92aed1b1da6ec8146d2fbf1d",
+    "pr_changed_files": 1256,
+    "pr_commits": 2513,
+    "pr_ahead_by": 2513
+  },
+  "execution_status": {
+    "repository_audit": "EXECUTED",
+    "full_suite_on_parent_head": "VERIFIED",
+    "workflow_patch_review": "EXECUTED",
+    "live_market_observation": "EXECUTED_DESCRIPTIVE_ONLY",
+    "canonical_handoff_update": "EXECUTED_IN_THIS_COMMIT",
+    "new_commit_ci": "PENDING",
+    "latest_documentation_head_ci": "FAILED_12_EVIDENCE_CONTRACT_REGRESSIONS",
+    "corrective_commit": "IN_THIS_COMMIT",
+    "corrective_commit_exact_head_ci": "PENDING"
+  },
+  "ci": {
+    "head": "fd6ea9a759874f9d0043a4eeda87668696a8fcb9",
+    "full_suite_run": 43731953048,
+    "full_suite_job": 132866141138,
+    "conclusion": "success",
+    "passed": 3797,
+    "failed": 0,
+    "skipped": 1,
+    "subtests": 19,
+    "inclusive_coverage_percent": 64.02,
+    "legacy_core_coverage_percent": 77,
+    "duration_seconds": 143.78,
+    "wheel_build": true,
+    "installed_mission": true,
+    "dependency_audit_run": 43731953030,
+    "dependency_audit_conclusion": "success",
+    "manifest_groups": 6,
+    "known_vulnerabilities": 0,
+    "push_fail_closed_run": 43731953029,
+    "push_fail_closed_conclusion": "success",
+    "pr_ci_run": 43731958232,
+    "pr_ci_conclusion": "success",
+    "pr_pages_validation": "success",
+    "pr_core_and_full_suite_jobs": "skipped_for_integration_branch_condition",
+    "pr_dependency_audit_run": 43731958198,
+    "pr_dependency_audit_conclusion": "success",
+    "pr_fail_closed_run": 43731958269,
+    "pr_fail_closed_conclusion": "success",
+    "last_fully_passing_head": {
+      "head": "fd6ea9a759874f9d0043a4eeda87668696a8fcb9",
+      "run_id": 43731953048,
+      "conclusion": "success",
+      "passed": 3797,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02
+    },
+    "latest_documentation_head": {
+      "head": "10ec439b3f176b3c92aed1b1da6ec8146d2fbf1d",
+      "run_id": 43734383357,
+      "conclusion": "failure",
+      "passed": 3785,
+      "failed": 12,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "failing_tests": [
+        "test_current_map_preserves_fail_closed_permissions_and_no_money_actions",
+        "test_least_privilege_and_external_action_gates_remain_closed",
+        "test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+        "test_spot_orderbook_is_resting_liquidity_not_guaranteed_support",
+        "test_exchange_flow_snapshot_preserves_methodology_and_attribution_limits",
+        "test_derivatives_snapshot_preserves_provider_universe_disagreement",
+        "test_options_snapshot_preserves_term_structure_and_skew",
+        "test_etf_flow_snapshot_preserves_fund_cohort_and_missing_data",
+        "test_cftc_snapshot_preserves_contract_code_and_missing_as_unknown",
+        "test_run67_snapshot_is_additive_and_preserves_prior_evidence",
+        "test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_historical_while_run167_is_current",
+        "test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_are_fail_closed"
+      ]
+    },
+    "failure_classification": "Evidence-map schema and stale Run167-current assertions only; no XRP/V3 runtime failures. Corrective commit restores historical schema and updates assertions without weakening tests.",
+    "corrective_commit_exact_head_ci": "PENDING"
+  },
+  "workflow_review": {
+    "changed_workflows": 48,
+    "patches_reviewed": 48,
+    "added_repo_write_permissions": 0,
+    "added_direct_git_pushes": 0,
+    "legacy_writers_quarantined": true,
+    "manual_external_actions_are_visible_and_gated": true,
+    "manual_groq_workflows": [
+      "frontier-digest.yml",
+      "self-benchmark.yml",
+      "webmcp-trend-digest.yml",
+      "financial-data-refresh.yml",
+      "capability-10-design.yml",
+      "capability-discovery.yml",
+      "data-value-triage.yml",
+      "signal-summary.yml"
+    ],
+    "no_external_dispatch": true,
+    "main_xrp_ingestion_workflow_present": false,
+    "integration_xrp_ingestion_main_only": true,
+    "scheduled_ingestion_on_main_verified": false,
+    "artifacts_not_worm": true,
+    "main_legacy_writers": [
+      "barrot-sync.yml",
+      "ask-barrot.yml"
+    ],
+    "latest_main_cross_analysis_run": 43732181812,
+    "latest_main_cross_analysis_conclusion": "success",
+    "latest_main_cross_analysis_read_only": true
+  },
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-15T16:07:11.322Z",
+    "okx_xrp_usdt": {
+      "last": 0.9581,
+      "bid": 0.9582,
+      "ask": 0.9583,
+      "open24h": 0.9719,
+      "high24h": 0.9795,
+      "low24h": 0.8929,
+      "volume24h_xrp": 98876000.912786,
+      "event_time_utc": "2026-11-15T15:59:51.077Z"
+    },
+    "bybit_xrpusdt": {
+      "last": 0.9556,
+      "bid": 0.9555,
+      "ask": 0.9556,
+      "previous_24h": 0.9681,
+      "change_24h_pct": -1.29,
+      "high24h": 0.9794,
+      "low24h": 0.8928,
+      "volume24h_xrp": 52551070.71,
+      "usd_index_price": 0.954977,
+      "event_time_utc": "2026-11-15T16:07:11.322Z"
+    },
+    "kraken_xrp_usd": {
+      "last": 0.95711,
+      "bid": 0.95699,
+      "ask": 0.95712,
+      "high24h": 0.97914,
+      "low24h": 0.89112,
+      "volume24h_xrp": 79998048.57939665,
+      "provider_event_timestamp": null,
+      "open_field": 0.91378
+    },
+    "okx_usdt_usd": {
+      "last": 0.99959,
+      "event_time_utc": "2026-11-15T15:46:49.074Z"
+    },
+    "kraken_usdt_usd": {
+      "last": 0.99932,
+      "provider_event_timestamp": null
+    },
+    "same_venue_quote_basis_skew_seconds": 782.003,
+    "allowed_skew_seconds": 60,
+    "component_max_age_seconds": 300,
+    "model_eligible": false,
+    "raw_http_bytes_captured": false,
+    "sha256_receipt_created": false,
+    "full_depth_l2_retrieved": false,
+    "arbitrage_claimed": false,
+    "freshness_recheck": "STALE_AT_RECHECK",
+    "provider_timestamps_unchanged": true,
+    "exact_recheck_time_exposed": false
+  },
+  "market_context": {
+    "coindesk_nov15": {
+      "xrp_low_usd": 0.89,
+      "quarter_change_pct": -36,
+      "weekly_xrp_etf_outflow_usd": -19130000,
+      "usdt_usdc_combined_market_cap_usd": 244000000000,
+      "glassnode_quoted_30d_supply_change_usd": -17000000000
+    },
+    "cryptonews_net_defillama_nov7": {
+      "all_stablecoin_supply_usd": 292310000000,
+      "seven_day_change_usd": -6660000000,
+      "thirty_day_change_usd": -15030000000
+    },
+    "conflict": "Different stablecoin universes/cutoffs; not averaged.",
+    "cryptonews_nov15_derivatives": {
+      "open_interest_usd": 1980000000,
+      "liquidations_24h_usd": 47320000,
+      "long_liquidation_share_pct": 91,
+      "funding_8h_pct": -0.002
+    },
+    "etf_flow_week_ended": "2026-11-13",
+    "etf_flow_usd": -19130000,
+    "technical_context": {
+      "rsi14": 16.1,
+      "ema20_usd": 1.1497,
+      "ema50_usd": 1.2499,
+      "atr14_usd": 0.0612
+    },
+    "all_secondary_or_provider_derived": true,
+    "model_eligible": false
+  },
+  "institutional": {
+    "ripple_bny": "BNY supports XRP/RLUSD custody; primary RLUSD reserve custodian; tokenized trade-finance uses exploratory.",
+    "ripple_coinbase": "RLUSD trading/management on Prime, Exchange and Retail; XRPL/Base/Ethereum; Global Exchange collateral support described as future.",
+    "ripple_sbi": "RLUSD launched in Japan through SBI VC Trade after JFSA approval.",
+    "circle_sbi": "Circle and SBI each own 50% of Circle SBI Japan K.K.; separate from SBIC East/Central/West.",
+    "new_primary_relationships_verified": 0
+  },
+  "identity_research": {
+    "sbic": {
+      "companies": {
+        "east": {
+          "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "english_name": "SBIC East Japan",
+          "url": "https://www.sbic.co.jp/company/profile/"
+        },
+        "central": {
+          "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "english_name": "SBIC Central Japan",
+          "url": "https://www.sbic-cj.co.jp/company/about/"
+        },
+        "west": {
+          "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "english_name": "SBIC West Japan",
+          "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+        }
+      },
+      "sbi_holdings_is_separate": true,
+      "sbi_holdings_url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "sbic_east_chatgpt_course_url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    "sb_oai_japan": {
+      "url": "https://www.sb-oai.co.jp/en/about/",
+      "ownership": "C Holdings 50%, OpenAI 50%; C Holdings 51% SoftBank Corp and 49% SoftBank Group",
+      "patching_as_a_service_url": "https://www.sb-oai.co.jp/en/news/20260714_01/",
+      "launch_date": "2026-07-14",
+      "eligible_companies": 3000
+    },
+    "kamilah_stevenson": {
+      "candidate_channel": "https://www.youtube.com/@KamilahStevensonXrpStocks/about",
+      "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "first_party_crosslink_to_verified_identity": false,
+      "video_inventory_status": "NOT_INVENTORIED_IDENTITY_LINK_UNVERIFIED",
+      "videos_attributed": 0
+    }
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub connector verified in current session; admin/maintain/push/pull/triage; overprivileged.",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "one-off review activity; no formal approval",
+    "Codex": "unverified",
+    "HuggingFace": "last known BUILD_ERROR; no deployment",
+    "Kaggle": "untested",
+    "Databricks": "last known HTTP 403; no write",
+    "LunaRoute": "separate provider; declared not authenticated",
+    "Groq": "separate provider; no dispatch",
+    "external_dispatches": 0,
+    "structured_exchange": false,
+    "red_team_quorum": false
+  },
+  "open_pr_inventory": {
+    "total": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "base_main": 365,
+    "other_base": 8,
+    "non_draft_numbers": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1646,
+      1645,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ]
+  },
+  "backlog": {
+    "1254": "older HF Hub dependency candidate; preserve until successor verified",
+    "1255": "older Databricks SDK dependency candidate; preserve until successor verified",
+    "1269": "unique mesh topology",
+    "1317": "unique structural core",
+    "1318": "unique schema safety",
+    "1320": "unique paper-trader safety",
+    "1640": "supersession candidate; preserve two unique workflows",
+    "1642": "path-overlap candidate; preserve pending semantic comparison",
+    "1643": "path-overlap candidate; preserve pending semantic comparison",
+    "1645": "blocked 57 commits behind main; no statuses",
+    "1646": "blocked 57 commits behind main; no statuses",
+    "1648": "blocked 57 commits behind main; no statuses",
+    "1649": "blocked 57 commits behind main; no statuses",
+    "1650": "blocked 57 commits behind main; no statuses",
+    "1653": "unique unreviewed graph work",
+    "1660": "supersession candidate; preserve two unique source paths",
+    "1661": "supersession candidate; preserve two unique source paths",
+    "1662": "blocked active integration draft",
+    "closed": []
+  },
+  "security": {
+    "main_branch_protected": true,
+    "protection_enabled": true,
+    "enforcement_level": "non_admins",
+    "required_status_contexts": [],
+    "detail_endpoint_http_403": true,
+    "fallback_ruleset_10863829": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "least_privilege_satisfied": false,
+    "semantic_review_complete": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "credential_path_exposure": {
+      "path": ".config/gh/hosts.yml",
+      "branch_tips_checked": 17,
+      "branch_tips_containing_path": 17,
+      "open_pr_tips": 15,
+      "closed_pr_tips": 2,
+      "same_git_blob_sha": "f58b27f14436088db99662d3a45c59b8437ec3a1",
+      "size_bytes": 216,
+      "main_contains_path": false,
+      "integration_contains_path": false,
+      "changed_file_inventories_checked": 17,
+      "path_absent_from_all_changed_file_inventories": true,
+      "affected_pr_numbers": [
+        1653,
+        1650,
+        1649,
+        1648,
+        1647,
+        1646,
+        1645,
+        1644,
+        1643,
+        1642,
+        1640,
+        1320,
+        1318,
+        1317,
+        1269,
+        1255,
+        1254
+      ],
+      "introduced_commit": "084b1625f2f8fce2a9e1d1d42b40c4b2e2f3b9b8",
+      "removed_from_mainline_commit": "ec5f8212f0a45b8a1c6a31b9c2a8f6c8b2f7d9e4",
+      "credential_contents_read": false,
+      "provider_side_revocation_verified": false,
+      "secret_rotation_performed": false,
+      "status": "POTENTIAL_GITHUB_CLI_CREDENTIAL_EXPOSURE"
+    }
+  },
+  "prediction_engine": {
+    "implemented": [
+      "read-only public-data ingestion definitions",
+      "SHA-256 receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "event timeline and counter-hypotheses",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "purged and embargoed walk-forward tests",
+      "paired temporal and source-clustered moving-block bootstrap",
+      "probability calibration and PSI drift monitoring",
+      "fail-closed forecast ledger and Ed25519 evaluator attestation"
+    ],
+    "outstanding": [
+      "byte-exact raw receipts for curated event registry",
+      "independent WORM archive and trusted timestamp",
+      "synchronized historical multi-venue L2/spot/derivatives/exchange-flow/collateral data",
+      "XRP candidate superiority over all four baselines",
+      "independent shadow outcomes",
+      "verified scheduled ingestion on main"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "sources": [
+    {
+      "id": "okx_xrp_usdt",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time": "2026-11-15T15:59:51.077Z"
+    },
+    {
+      "id": "bybit_xrpusdt",
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "provider_event_time": "2026-11-15T16:07:11.322Z"
+    },
+    {
+      "id": "kraken_xrp_usd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time": null
+    },
+    {
+      "id": "okx_usdt_usd",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "provider_event_time": "2026-11-15T15:46:49.074Z"
+    },
+    {
+      "id": "kraken_usdt_usd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "provider_event_time": null
+    },
+    {
+      "id": "coindesk_market_context",
+      "url": "https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto",
+      "published": "2026-11-14T21:50:00-05:00",
+      "updated": "2026-11-14T22:44:00-05:00"
+    },
+    {
+      "id": "crypto_news_scenario",
+      "url": "https://crypto.news/xrp-price-prediction-after-the-1-break-is-0-80-back-in-play/",
+      "published": "2026-11-15T08:53:00Z"
+    },
+    {
+      "id": "cryptonews_net_defillama",
+      "url": "https://cryptonews.net/news/analytics/33719810/",
+      "source_publisher": "BlockchainReporter",
+      "published": "2026-11-08T03:37:00Z"
+    },
+    {
+      "id": "ripple_bny",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "published": "2026-10-27"
+    },
+    {
+      "id": "ripple_coinbase",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published": "2026-10-28"
+    },
+    {
+      "id": "ripple_sbi",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published": "2026-06-24"
+    },
+    {
+      "id": "sbic_east_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "SBIC East Japan",
+      "type": "primary"
+    },
+    {
+      "id": "sbic_central_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "SBIC Central Japan",
+      "type": "primary"
+    },
+    {
+      "id": "sbic_west_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "SBIC West Japan",
+      "type": "primary"
+    },
+    {
+      "id": "sbi_holdings_profile",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "publisher": "SBI Holdings",
+      "type": "primary"
+    },
+    {
+      "id": "sb_oai_profile",
+      "url": "https://www.sb-oai.co.jp/en/about/",
+      "publisher": "SB OAI Japan",
+      "type": "primary"
+    },
+    {
+      "id": "sb_oai_patching_launch",
+      "url": "https://www.sb-oai.co.jp/en/news/20260714_01/",
+      "publisher": "SB OAI Japan",
+      "type": "primary",
+      "published": "2026-07-14"
+    },
+    {
+      "id": "sbic_east_chatgpt_course",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "SBIC East Japan",
+      "type": "primary",
+      "published": "2025-06-12"
+    },
+    {
+      "id": "candidate_kamilah_youtube_channel",
+      "url": "https://www.youtube.com/@KamilahStevensonXrpStocks/about",
+      "publisher": "YouTube channel candidate",
+      "type": "candidate_not_attributed"
+    }
+  ],
+  "no_external_actions": true,
+  "no_merge": true,
+  "no_source_pr_closures": true,
+  "corrective_work": {
+    "commit_parent": "10ec439b3f176b3c92aed1b1da6ec8146d2fbf1d",
+    "current_market_snapshot_restored_from_prior_blob": true,
+    "run167_preserved_as_historical": true,
+    "run168_added_as_current": true,
+    "security_tip_counts_updated": true,
+    "branch_protection_marker_restored": true,
+    "tests_updated_without_weakening": true,
+    "tests_removed": 0,
+    "tests_disabled": 0,
+    "exact_head_ci": "PENDING"
+  }
+}

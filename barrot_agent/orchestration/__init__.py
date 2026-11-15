@@ -1,5 +1,10 @@
 """Barrot orchestration components."""
 
+from .autonomous_state import AutonomousTaskStore
+from .autonomous_loop import AutonomousResult, BarrotAutonomousLoop
+from .executor import BarrotExecutor, ExecutionError, ExecutionResult
+from .verifier import BarrotVerifier, VerificationResult
+
 from .bundle_engineering import (
     BundleEngineeringController,
     BundleEngineeringError,
@@ -22,6 +27,10 @@ from .verified_learning_store import (
 )
 from .learning_curriculum import (
     LearningCurriculum,
+)
+from .mission_registry import (
+    MissionRegistry,
+    MissionRegistryError,
 )
 from .validated_publisher import (
     ValidatedPublisher,
@@ -64,6 +73,14 @@ from .repository_repair import (
 )
 
 __all__ = [
+    "AutonomousTaskStore",
+    "AutonomousResult",
+    "BarrotAutonomousLoop",
+    "BarrotExecutor",
+    "ExecutionError",
+    "ExecutionResult",
+    "BarrotVerifier",
+    "VerificationResult",
     "BundleEngineeringController",
     "BundleEngineeringError",
     "BundleEngineeringResult",
@@ -78,6 +95,8 @@ __all__ = [
     "LearningRecord",
     "VerifiedLearningStore",
     "LearningCurriculum",
+    "MissionRegistry",
+    "MissionRegistryError",
     "ValidatedPublisher",
     "PublishResult",
     "Artifact",

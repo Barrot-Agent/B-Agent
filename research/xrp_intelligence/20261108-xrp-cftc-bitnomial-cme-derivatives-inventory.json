@@ -1,0 +1,368 @@
+{
+  "artifact_type": "xrp_cftc_bitnomial_cme_derivatives_product_and_relationship_inventory",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108-xrp-cftc-bitnomial-cme-derivatives-inventory",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_artifact": "05826160423a50db93736552ed83eefd60618f9a",
+  "append_only": true,
+  "captured_date": "2026-11-08",
+  "retrieval_time_precision": "Exact retrieval timestamps are not exposed by the public page/PDF retrievals; filing, registry and reporting dates are preserved separately.",
+  "source_receipts": [
+    {
+      "source_id": "cftc_registry_btnl_xrp_products",
+      "publisher": "CFTC",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts?Organization=BTNL&col=ProductName&dir=DESC&page=0",
+      "source_date": "2026-11-08 retrieval; exact page update timestamp unavailable",
+      "independence_group": "cftc_registry_of_exchange_self_certifications",
+      "normalized_excerpt": "XRP US Dollar Perpetual Futures Contract | Future | Certified | 09/02/2026",
+      "normalized_excerpt_sha256": "6648712a1e869a3c4035e70c9fb393a184684ad44677438f46cda663f8eefdd9",
+      "sha256": "6648712a1e869a3c4035e70c9fb393a184684ad44677438f46cda663f8eefdd9",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "95-101"
+    },
+    {
+      "source_id": "bitnomial_2025_xrpusd_self_certification",
+      "publisher": "Bitnomial",
+      "url": "https://www.cftc.gov/filings/ptc/ptc12012533865.pdf",
+      "source_date": "2025-12-01",
+      "independence_group": "bitnomial_exchange_filings_and_rulebook",
+      "normalized_excerpt": "spot contract based on the price of 1 XRP (XRP)",
+      "normalized_excerpt_sha256": "403bbf44b2e0c63ae6eea5b805a3885bf68635c45524d88191152257d796fad1",
+      "sha256": "403bbf44b2e0c63ae6eea5b805a3885bf68635c45524d88191152257d796fad1",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "8-17,115-129"
+    },
+    {
+      "source_id": "bitnomial_2026_xrpusd_self_certification",
+      "publisher": "Bitnomial",
+      "url": "https://bitnomial.com/exchange/regulatory/cftc/product-filings/26-030.pdf",
+      "source_date": "2026-04-21",
+      "independence_group": "bitnomial_exchange_filings_and_rulebook",
+      "normalized_excerpt": "physically-settled, margined futures contract ... intended trade date on or after April 23, 2026.",
+      "normalized_excerpt_sha256": "7723e5cf9cd0477adb4a2d94e625a7f65f5a0026d41d8957c4fa87912817c192",
+      "sha256": "7723e5cf9cd0477adb4a2d94e625a7f65f5a0026d41d8957c4fa87912817c192",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "8-18,45-48,118-147"
+    },
+    {
+      "source_id": "bitnomial_2026_pxrpus_self_certification",
+      "publisher": "Bitnomial",
+      "url": "https://bitnomial.com/exchange/regulatory/cftc/product-filings/26-090.pdf",
+      "source_date": "2026-09-02",
+      "independence_group": "bitnomial_exchange_filings_and_rulebook",
+      "normalized_excerpt": "plan to list XRP US Dollar Perpetual Futures ... intended trade date on or after September 4, 2026.",
+      "normalized_excerpt_sha256": "ebd573f67caa9030c2ddedd26b3a76dbf49bed9eb12654761f809455ba0a26c1",
+      "sha256": "ebd573f67caa9030c2ddedd26b3a76dbf49bed9eb12654761f809455ba0a26c1",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "8-18,48-51,122-145"
+    },
+    {
+      "source_id": "bitnomial_2026_pxrpuh_self_certification",
+      "publisher": "Bitnomial",
+      "url": "https://bitnomial.com/exchange/regulatory/cftc/product-filings/26-039.pdf",
+      "source_date": "2026-05-14",
+      "independence_group": "bitnomial_exchange_filings_and_rulebook",
+      "normalized_excerpt": "XRP US Dollar Hecto Perpetual Futures | 500 XRP | 24/7",
+      "normalized_excerpt_sha256": "3e3518f5a6732b98567bd30ebe5608fb412b03d56edb78a9d9ffe47a3997e132",
+      "sha256": "3e3518f5a6732b98567bd30ebe5608fb412b03d56edb78a9d9ffe47a3997e132",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "filing summary and rulebook product specifications"
+    },
+    {
+      "source_id": "cme_standard_micro_specs",
+      "publisher": "CME Group",
+      "url": "https://www.cmegroup.com/articles/faqs/frequently-asked-questions-cryptocurrency-futures.html",
+      "source_date": "2026-11-08 retrieval; exact page update timestamp unavailable",
+      "independence_group": "cme_group_product_specs_and_statistics",
+      "normalized_excerpt": "Micro XRP futures | MXP | 2,500 XRP; XRP futures | XRP | 50,000 XRP",
+      "normalized_excerpt_sha256": "5c0a14dd3cdf2771845779a4eb18d4f7609400428114767beac978c30c9828d3",
+      "sha256": "5c0a14dd3cdf2771845779a4eb18d4f7609400428114767beac978c30c9828d3",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "95-109,148-170,282-287,326-338"
+    },
+    {
+      "source_id": "cme_qxrp_spot_quoted_specs",
+      "publisher": "CME Group",
+      "url": "https://www.cmegroup.com/articles/faqs/faq-spot-quoted-futures.html",
+      "source_date": "2026-11-08 retrieval; exact page update timestamp unavailable",
+      "independence_group": "cme_group_product_specs_and_statistics",
+      "normalized_excerpt": "Spot-Quoted XRP futures | QXRP | 250 XRP",
+      "normalized_excerpt_sha256": "0dd32b2155589a7d867485c8ab1ec179f63d62cbe9bbe7177a1a32a324fba465",
+      "sha256": "0dd32b2155589a7d867485c8ab1ec179f63d62cbe9bbe7177a1a32a324fba465",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "product details and contract specifications"
+    },
+    {
+      "source_id": "cme_q2_2026_xrp_suite_statistics",
+      "publisher": "CME Group",
+      "url": "https://www.cmegroup.com/newsletters/quarterly-cryptocurrencies-report/2026-q2-cryptocurrency-highlights.html",
+      "source_date": "2026-Q2",
+      "independence_group": "cme_group_product_specs_and_statistics",
+      "normalized_excerpt": "XRP suite | 36.6K ADV | $10.8B notional; QXRP record ADV 32.1K",
+      "normalized_excerpt_sha256": "4b7377b90a909087408c63f1652b431ab1888aa6be2ebfae7ff8c5794ac14447",
+      "sha256": "4b7377b90a909087408c63f1652b431ab1888aa6be2ebfae7ff8c5794ac14447",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "Q2 2026 F&O table and spot-quoted futures section"
+    },
+    {
+      "source_id": "bitnomial_investor_relationship_disclosure",
+      "publisher": "Bitnomial",
+      "url": "https://bitnomial.com/news/2025-04-23/self-certification-perpetual-futures/",
+      "source_date": "2025-04-23",
+      "independence_group": "bitnomial_company_press_release",
+      "normalized_excerpt": "Backed by leading institutional investors including Jump Capital, Electric Capital, Coinbase Ventures, Franklin Templeton, Ripple Labs, and DV Trading.",
+      "normalized_excerpt_sha256": "048856625c2b0f4efb5324431e8a615eb6a7eb145a123ddb9d3191c7807d303d",
+      "sha256": "048856625c2b0f4efb5324431e8a615eb6a7eb145a123ddb9d3191c7807d303d",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "company announcement"
+    },
+    {
+      "source_id": "bitnomial_hecto_futures_rulebook",
+      "publisher": "Bitnomial",
+      "url": "https://bitnomial.com/exchange/rulebook/product/crypto/xruh/",
+      "source_date": "2026-11-08 retrieval; exact page update timestamp unavailable",
+      "independence_group": "bitnomial_exchange_filings_and_rulebook",
+      "normalized_excerpt": "XRP US Dollar Hecto Futures | 100 XRP | Deliverable",
+      "normalized_excerpt_sha256": "0fee6644f849ece0d0b24d78eaf633833d307fec2721992042d8b22ae71ae73e",
+      "sha256": "0fee6644f849ece0d0b24d78eaf633833d307fec2721992042d8b22ae71ae73e",
+      "hash_scope": "SHA-256 of the exact short normalized excerpt stored in this artifact; not raw PDF bytes, HTML or HTTP wire bytes.",
+      "evidence_location": "current rulebook product specification"
+    }
+  ],
+  "entity_resolution": {
+    "registry_organization_code": "BTNL",
+    "legal_entity": "Bitnomial Exchange, LLC",
+    "primary_evidence": "Bitnomial's own CFTC filing identifies Bitnomial Exchange, LLC as BTNL or the Exchange.",
+    "clearing_entity": "Bitnomial Clearinghouse, LLC (BNCH)",
+    "clearing_status": "Bitnomial identifies BNCH as a CFTC-registered derivatives clearing organization.",
+    "independence": "Bitnomial filing, rulebook and press release are issuer-originated. The CFTC registry independently records filing status, but product terms originate with the exchange."
+  },
+  "cftc_registry_entries": [
+    {
+      "organization": "BTNL",
+      "product": "XRP US Dollar Spot Contract",
+      "type": "Future",
+      "status": "Certified",
+      "registry_date": "2025-12-01",
+      "filing": "BTNL 2025-39"
+    },
+    {
+      "organization": "BTNL",
+      "product": "XRP US Dollar Spot Contract",
+      "type": "Future",
+      "status": "Certified",
+      "registry_date": "2026-04-21",
+      "filing": "BTNL 2026-30"
+    },
+    {
+      "organization": "BTNL",
+      "product": "XRP US Dollar Hecto Perpetual Futures",
+      "type": "Future",
+      "status": "Certified",
+      "registry_date": "2026-05-14",
+      "filing": "BTNL 26-039"
+    },
+    {
+      "organization": "BTNL",
+      "product": "XRP US Dollar Perpetual Futures Contract",
+      "type": "Future",
+      "status": "Certified",
+      "registry_date": "2026-09-02",
+      "filing": "BTNL 26-090"
+    },
+    {
+      "organization": "BTNL",
+      "product": "XRP US Dollar Hecto Futures (XRUH)",
+      "type": "Future",
+      "status": "Certified",
+      "registry_date": "2025-09-26",
+      "filing": "BTNL 25-031"
+    },
+    {
+      "organization": "BTNL",
+      "product": "XRP US DOLLAR FUTURES",
+      "type": "Future",
+      "status": "Certified",
+      "registry_date": "2024-08-09",
+      "filing": "BTNL 24-003"
+    }
+  ],
+  "cftc_status_interpretation": {
+    "certified_means": "The registry records a certified product filing/self-certification.",
+    "self_certification_basis": "Bitnomial filings cite CFTC Regulation 40.2(a).",
+    "not_a_cftc_approval": "A Certified registry status is not an affirmative CFTC order approving the product or verifying that it is actively trading.",
+    "type_label_caveat": "The CFTC registry labels the XRP US Dollar Spot Contract as Type Future despite Spot in the product name. The 2026 filing describes it as a physically settled, margined futures contract."
+  },
+  "bitnomial_products": {
+    "XRPUSD_2025_version": {
+      "product_name": "XRP US Dollar Spot Contract",
+      "filing": "BTNL 2025-39",
+      "intended_trade_date_on_or_after": "2025-12-03",
+      "contract_size_xrp": 1,
+      "settlement_method": "Deliverable",
+      "position_limit_contracts": 500000000,
+      "source_note": "The 2025 self-certification describes a spot contract based on 1 XRP and lists a 500,000,000-contract position limit."
+    },
+    "XRPUSD_2026_version": {
+      "product_name": "XRP US Dollar Spot Contract",
+      "filing": "BTNL 2026-30",
+      "intended_trade_date_on_or_after": "2026-04-23",
+      "cftc_registry_type": "Future",
+      "contract_size_xrp": 1e-8,
+      "contract_description": "Physically settled, margined futures contract.",
+      "current_rulebook_market_hours": "24/7 subject to Rule 501",
+      "settlement_method": "Deliverable; positions below the $0.50 de minimis delivery threshold are cash settled.",
+      "long_position_limit_xrp": 3200000,
+      "short_position_limit_xrp": 1800000,
+      "reportable_position_xrp": 900000,
+      "contract_size_change_factor_vs_2025_version": 100000000,
+      "source_note": "The 2026 filing and current Bitnomial rulebook show a 1e-8 XRP contract unit. Preserve separately from the 2025 1 XRP version; do not assume the old unit remains current."
+    },
+    "PXRPUS": {
+      "product_name": "XRP US Dollar Perpetual Futures",
+      "filing": "BTNL 26-090",
+      "intended_trade_date_on_or_after": "2026-09-04",
+      "contract_description": "Financially settled, margined perpetual futures contract.",
+      "reportable_contract_size_xrp": 10000,
+      "minimum_contract_size_xrp": 1,
+      "settlement_method": "Cash settled",
+      "market_hours": "24/7",
+      "funding_rate_methodology": "Published by Bitnomial; perpetual funding/settlement mechanics",
+      "position_limit_contracts": 35000,
+      "reportable_position_level_contracts": 25,
+      "filing_supply_context": {
+        "as_of_date": "2026-08-30",
+        "circulating_supply_xrp": 62744504852,
+        "position_limit_xrp": 350000000,
+        "share_of_circulating_supply_pct": 0.56
+      },
+      "source_note": "The filing says intended trade date on or after September 4, 2026; registry status is Certified and the current rulebook lists the product. Current traded volume/open interest/funding observations were not captured."
+    },
+    "PXRPUH": {
+      "product_name": "XRP US Dollar Hecto Perpetual Futures",
+      "filing": "BTNL 26-039",
+      "intended_trade_date_on_or_after": "2026-05-18",
+      "contract_size_xrp": 500,
+      "settlement_method": "Cash settled",
+      "market_hours": "24/7",
+      "position_limit_contracts": 700000,
+      "reportable_position_level_contracts": 25
+    },
+    "XRUH": {
+      "product_name": "XRP US Dollar Hecto Futures",
+      "filing": "BTNL 25-031",
+      "contract_size_xrp": 100,
+      "settlement_method": "Deliverable",
+      "market_hours": "23/5",
+      "position_limit_contracts": 600000,
+      "reportable_position_level_contracts": 25
+    },
+    "XUS_historical": {
+      "product_name": "XRP US Dollar Futures",
+      "filing": "BTNL 24-003",
+      "registry_date": "2024-08-09",
+      "contract_size_xrp": 100000,
+      "settlement_method": "Deliverable",
+      "historical_hours": "08:30-14:30 CT Monday-Friday",
+      "status_note": "Historical certified registry record; current trading activity not established in this retrieval."
+    },
+    "XRUY_rulebook_only": {
+      "product_name": "XRP US Dollar Myra Futures",
+      "product_code": "XRUY",
+      "contract_size_xrp": 10000,
+      "settlement_method": "Deliverable",
+      "market_hours": "23/5",
+      "position_limit_contracts": 6000,
+      "status_note": "Present in Bitnomial's current crypto rulebook page; no matching XRUY row was identified in the CFTC product-list page inspected in this run."
+    }
+  },
+  "cme_products": {
+    "standard_xrp_futures": {
+      "product_code": "XRP",
+      "contract_size_xrp": 50000,
+      "settlement": "Financially settled to CME CF XRP-Dollar Reference Rate (XRPUSD_RR)",
+      "market_hours": "24/7 except maintenance windows"
+    },
+    "micro_xrp_futures": {
+      "product_code": "MXP",
+      "contract_size_xrp": 2500,
+      "settlement": "Financially settled to the corresponding standard CME CF reference rate",
+      "market_hours": "24/7 except maintenance windows"
+    },
+    "spot_quoted_xrp_futures": {
+      "product_code": "QXRP",
+      "contract_size_xrp": 250,
+      "reference": "CME CF Spot-Quoted XRP Marker (XRPSPOT16)",
+      "settlement": "Spot marker plus total financing adjustment; financially settled",
+      "product_type": "Long-dated spot-quoted future with daily financing adjustment; not a perpetual spot market and not physical XRP delivery",
+      "trading_hours": "Excluded from CME's 24/7 schedule; older SER describes Sunday-Friday with a daily maintenance window",
+      "launch_context": "CME Q4 2025 report says Spot-Quoted XRP futures were introduced on 2025-12-15; the initial listed contract was June 2026 expiry."
+    },
+    "market_data_access": "CME states real-time futures data are available on MDP Channel 326 and historical data through DataMine; access may require a market-data entitlement.",
+    "product_mix_warning": "50,000 XRP, 2,500 XRP and 250 XRP contract units differ substantially. Contract counts must be converted to XRP-equivalent notional and settlement type before aggregation."
+  },
+  "cme_q2_2026_reported_statistics": {
+    "xrp_suite_average_daily_volume_contracts": 36600,
+    "xrp_suite_total_notional_volume_usd": 10800000000,
+    "xrp_suite_peak_open_interest_contracts": 18200,
+    "xrp_futures_peak_open_interest_contracts": 14800,
+    "qxrp_record_average_daily_volume_contracts": 32100,
+    "qxrp_contract_size_xrp": 250,
+    "qxrp_xrp_equivalent_contract_turnover_per_day": 8025000,
+    "source": "CME Group Q2 2026 cryptocurrency highlights",
+    "independence_group": "cme_group_product_specs_and_statistics",
+    "source_quality": "Issuer-reported quarterly aggregate; no raw daily series or independent confirmation captured.",
+    "interpretation": "Contract turnover and notional volume are not net XRP purchases, spot inflows, collateral posted or physical deliveries. Product mix changed with QXRP; do not compare contract-count ADV across quarters without unit and product normalization."
+  },
+  "bitnomial_corporate_relationships": {
+    "investors_named_in_2025_press_release": [
+      "Jump Capital",
+      "Electric Capital",
+      "Coinbase Ventures",
+      "Franklin Templeton",
+      "Ripple Labs",
+      "DV Trading"
+    ],
+    "relationship_interpretation": "Bitnomial named Coinbase Ventures and Ripple Labs among its investors/backers. This is a shared-investee link through Bitnomial, not proof of a direct Coinbase-Ripple partnership.",
+    "investment_amounts_disclosed": false,
+    "current_ownership_percentages_disclosed": false,
+    "current_investor_status_independently_verified": false,
+    "rlusd_settled_contracts": "The April 2025 press release described RLUSD-settled perpetuals as planned pending necessary regulatory approvals. No current RLUSD-settled XRP contract was identified in the CFTC registry or current XRP rulebook pages inspected in this run."
+  },
+  "source_independence_and_limitations": {
+    "cftc_registry": "Independent government record of self-certification status; underlying product terms are exchange-authored.",
+    "bitnomial_filings_and_rulebook": "Same issuer evidence family; do not count as independent confirmation of actual trading.",
+    "cme_specs_and_statistics": "Same CME issuer evidence family; quarterly volumes are self-reported.",
+    "missing_market_data": [
+      "Current Bitnomial order books",
+      "Current Bitnomial daily volume",
+      "Current Bitnomial open interest",
+      "Current PXRPUS funding observations",
+      "Current CME daily product-level volume and open interest series"
+    ],
+    "no_proof_of": [
+      "Net spot XRP purchases",
+      "Net capital inflows",
+      "Actual XRP collateral balances",
+      "Physical XRP delivery volumes",
+      "Current Bitnomial trading activity from registry status alone"
+    ]
+  },
+  "model_admission": {
+    "event_timeline_eligible": true,
+    "feature_store_admission": false,
+    "directional_price_signal": false,
+    "reason": "Product certifications, contract-spec revisions and CME quarterly derivatives aggregates are contextual/event evidence. Current daily product-level data, contract-normalized histories, source timestamps and out-of-sample incremental predictive value are not yet established."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability_issued": false
+  },
+  "external_actions": {
+    "feature_store_write": false,
+    "paper_trade": false,
+    "real_money": false
+  }
+}

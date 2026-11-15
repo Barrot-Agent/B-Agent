@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_etf_and_occ_charter_reconciliation",
+  "observed_on_utc_date": "2026-11-05",
+  "run_started_at_utc": "2026-11-05T21:35:10Z",
+  "exact_per_source_retrieval_timestamps_utc": null,
+  "timestamp_note": "The public retrieval surfaces did not provide per-response capture timestamps or byte-complete payloads. The run-start timestamp is context only, not a substitute for source event time. Provider timestamps remain null where absent.",
+  "research_scope": [
+    "XRP/USD spot microstructure",
+    "US spot XRP ETF holdings-derived flow estimates",
+    "OCC national trust bank charter status",
+    "Coinbase institutional custody infrastructure",
+    "Ripple institutional custody and RLUSD reserve infrastructure"
+  ],
+  "market_snapshot": {
+    "source_id": "KRAKEN_XRPUSD_TICKER_20261105",
+    "pair": "XRP/USD",
+    "provider_event_timestamp_utc": null,
+    "retrieved_during_run": true,
+    "last_trade_usd": 1.22097,
+    "best_bid_usd": 1.22093,
+    "best_ask_usd": 1.22094,
+    "spread_bps": 0.081904,
+    "volume_xrp": {
+      "rolling_24h": 37955216.22697216,
+      "utc_day_since_midnight": 34405107.02523266
+    },
+    "vwap_usd": {
+      "rolling_24h": 1.27253343,
+      "utc_day_since_midnight": 1.26872955
+    },
+    "high_usd": 1.32583,
+    "low_usd": 1.21554,
+    "utc_day_open_usd": 1.3041,
+    "derived_context": {
+      "last_vs_utc_day_open_pct": -6.3745,
+      "last_vs_rolling_24h_vwap_pct": -4.052,
+      "last_above_rolling_24h_low_pct": 0.4467,
+      "derivation_note": "Derived from the same Kraken ticker response. Kraken's open field is the UTC-day open, not a rolling 24-hour open."
+    },
+    "scope_limits": [
+      "Single venue only; not consolidated executable liquidity.",
+      "Top-of-book only; not full order-book depth or sweep cost.",
+      "The response supplies no provider event timestamp.",
+      "The 24-hour and UTC-day volume/VWAP fields are distinct and must not be interchanged."
+    ]
+  },
+  "etf_flow_reconciliation": {
+    "event_date_scope": "2026-11-03 settled day, plus a provisional 2026-11-04 vintage",
+    "observations": [
+      {
+        "source_id": "XRP_INSIGHTS_ETF_DATA_20261105",
+        "publisher": "XRP Insights",
+        "reported_scope": "2026-11-02 to 2026-11-03; two settled trading days",
+        "net_flow_xrp": -194875,
+        "total_xrp_held_on_2026_11_03": 1196405311,
+        "methodology": "Sum of day-over-day issuer-reported holdings changes for funds with computed flows; flow-excluded funds count as zero.",
+        "caveats": [
+          "The aggregate is two days, not the 2026-11-03 daily value alone.",
+          "Flow-excluded funds counted as zero can suppress the aggregate relative to a complete fund universe.",
+          "2026-11-04 is marked provisional until re-settled."
+        ]
+      },
+      {
+        "source_id": "CRYPTOKEYHOLE_XRP_ETF_20261105",
+        "publisher": "CryptoKeyhole",
+        "reported_scope": "2026-11-03; four funds with reported daily data",
+        "net_flow_xrp": -3339,
+        "total_xrp_held_by_collected_funds_on_2026_11_03": 1076812562,
+        "five_day_flow_xrp_2026_10_28_to_2026_11_03": 6178705,
+        "caveats": [
+          "Grayscale was not collected daily in this dataset.",
+          "2026-11-04 was partial: two of four daily-reporting funds had published."
+        ]
+      },
+      {
+        "source_id": "ALPHA_FINANCE_XRP_ETF_20261105",
+        "publisher": "Alpha Finance",
+        "reported_scope": "2026-11-03; five-fund universe",
+        "net_flow_usd": 0,
+        "coverage_through": "2026-11-03",
+        "seven_session_flow_usd_2026_10_23_to_2026_11_03": 4800000,
+        "caveats": [
+          "Publisher's dashboard reports a zero daily flow for the date; it does not supply a complete independent cash-creation ledger in the rendered page.",
+          "Holdings-derived flow calculations depend on issuer holdings files."
+        ]
+      }
+    ],
+    "reconciliation": {
+      "values_comparable_as_one_daily_total": false,
+      "raw_underlying_data_independence": "The publishers are separate calculators, but the underlying holdings are issuer-published files; this is not independent primary-data corroboration.",
+      "reason": "Different date windows, fund universes, excluded funds, provisional vintages and flow calculation rules. The -194,875 XRP two-day aggregate, -3,339 XRP four-fund daily estimate and $0 five-fund daily estimate must not be averaged or substituted for one another.",
+      "cash_creation_redemption_verified": false,
+      "direct_xrp_spot_purchase_verified": false
+    }
+  },
+  "regulatory_charter_comparison": {
+    "ripple_national_trust_bank": {
+      "occ_control_number": "2025-Charter-342347",
+      "proposed_charter_number": "25364",
+      "receipt_date": "2025-07-02",
+      "conditional_approval_date": "2025-12-12",
+      "consummated_effective_date": "2026-10-26",
+      "source_of_status": "OCC Corporate Applications Search",
+      "ripple_described_activities": [
+        "segregated RLUSD reserve management",
+        "RLUSD reserve collateral-trustee function",
+        "fiduciary digital-asset custody services"
+      ],
+      "issuer_status": "Ripple states Standard Custody & Trust Company remains the RLUSD issuer.",
+      "operating_status": "OCC filing is Consummated/Effective; operational opening, customer onboarding and actual service volumes are not established by the retrieved record.",
+      "xrp_flow_or_collateral_disclosed": false
+    },
+    "coinbase_national_trust_company": {
+      "occ_control_number": "2025-Charter-343449",
+      "proposed_charter_number": "25390",
+      "receipt_date": "2025-10-03",
+      "conditional_approval_date": "2026-04-02",
+      "later_effective_action_visible_in_retrieved_cas_record": false,
+      "source_of_status": "OCC Corporate Applications Search and Corporate Decision 1370",
+      "operating_status": "The retrieved OCC record shows Approved on 2026-04-02 and no later Consummated/Effective row. This is a snapshot of this proposed national trust bank application only; it does not imply Coinbase's other custody entities or services are inactive.",
+      "xrp_flow_or_collateral_disclosed": false
+    },
+    "comparison_limits": [
+      "The Ripple and Coinbase records concern separate proposed national trust bank entities and are not evidence of a direct commercial relationship between the companies.",
+      "Ripple's effective charter status is not proof that the bank has opened or commenced customer services.",
+      "Coinbase National Trust Company's approval status must not be conflated with Coinbase Custody Trust Company or other existing Coinbase custody operations.",
+      "Neither charter status establishes XRP purchases, XRP assets under custody, XRP collateral balances or XRPL settlement volume."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_INTRADAY_RISK_OFF_OR_LEVERAGED_UNWIND",
+      "hypothesis": "The observed single-venue price weakness may reflect broad risk-off selling, leverage reduction or both.",
+      "disconfirming_or_missing_evidence": [
+        "No synchronized cross-venue order-book and trade-flow panel was captured in this artifact.",
+        "No contemporaneous full derivatives panel was captured at the Kraken observation time."
+      ]
+    },
+    {
+      "id": "H2_ETF_HOLDINGS_OUTFLOW",
+      "hypothesis": "Some issuer-reported holdings changes may represent marginal ETF-related XRP supply.",
+      "disconfirming_or_missing_evidence": [
+        "Provider values disagree and use different date windows and fund universes.",
+        "Holdings changes are not direct AP cash creation/redemption records.",
+        "November 4 remained partial or provisional in the retrieved datasets."
+      ]
+    },
+    {
+      "id": "H3_INSTITUTIONAL_INFRASTRUCTURE_WITHOUT_IMMEDIATE_XRP_DEMAND",
+      "hypothesis": "Ripple's effective trust-bank charter and Coinbase's separate trust-bank application expand institutional infrastructure but may not produce immediate XRP purchases or collateral use.",
+      "disconfirming_or_missing_evidence": [
+        "No XRP-specific bank custody balances, client flows, collateral balances or transaction volumes are disclosed in the retrieved records."
+      ]
+    },
+    {
+      "id": "H4_STABLECOIN_RAILS_CAN_BE_COMPLEMENTARY_OR_SUBSTITUTIVE",
+      "hypothesis": "RLUSD/USDC settlement on XRPL may support ecosystem activity while also substituting for XRP as a bridge asset in some payment flows.",
+      "disconfirming_or_missing_evidence": [
+        "No chain-specific RLUSD settlement volume, XRP bridge volume or fee/reserve demand attributable to these integrations was captured."
+      ]
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+    "reasons": [
+      "No byte-complete raw HTTP payloads or immutable SHA-256 source receipts were captured in this research pass.",
+      "Kraken provider event timestamp is absent.",
+      "ETF observations are methodologically non-comparable and include provisional/incomplete vintages.",
+      "Institutional charter status is contextual event evidence, not a measured XRP capital flow.",
+      "No synchronized cross-venue market/derivatives dataset was assembled."
+    ],
+    "directional_forecast_issued": false,
+    "xrp_net_cash_flow_usd": null,
+    "xrp_custody_balance": null,
+    "xrp_collateral_balance": null,
+    "etf_ap_cash_creation_redemption_usd": null
+  },
+  "sources": [
+    {
+      "id": "KRAKEN_XRPUSD_TICKER_20261105",
+      "publisher": "Kraken",
+      "publication_or_event_date": "2026-11-05",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "public exchange ticker API",
+      "independence_group": "Kraken exchange market data",
+      "raw_bytes_captured": false,
+      "provider_timestamp_present": false
+    },
+    {
+      "id": "XRP_INSIGHTS_ETF_DATA_20261105",
+      "publisher": "XRP Insights",
+      "publication_or_event_date": "2026-11-05",
+      "url": "https://xrp-insights.com/data",
+      "source_type": "issuer-holdings-derived ETF dataset",
+      "independence_group": "issuer-published ETF holdings",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "CRYPTOKEYHOLE_XRP_ETF_20261105",
+      "publisher": "CryptoKeyhole",
+      "publication_or_event_date": "2026-11-05",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_type": "issuer-holdings-derived ETF dataset",
+      "independence_group": "issuer-published ETF holdings",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "ALPHA_FINANCE_XRP_ETF_20261105",
+      "publisher": "Alpha Finance",
+      "publication_or_event_date": "2026-11-05",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_type": "issuer-holdings-derived ETF dashboard",
+      "independence_group": "issuer-published ETF holdings",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "OCC_RIPPLE_NATIONAL_TRUST_CAS",
+      "publisher": "Office of the Comptroller of the Currency",
+      "publication_or_event_date": "2026-10-26",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "source_type": "regulatory corporate applications record",
+      "independence_group": "OCC regulatory filing record",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "RIPPLE_RNTB_FINAL_APPROVAL",
+      "publisher": "Ripple",
+      "publication_or_event_date": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "source_type": "issuer announcement",
+      "independence_group": "Ripple National Trust Bank announcement",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "OCC_COINBASE_NATIONAL_TRUST_CAS",
+      "publisher": "Office of the Comptroller of the Currency",
+      "publication_or_event_date": "2026-04-02",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "source_type": "regulatory corporate applications record",
+      "independence_group": "OCC regulatory filing record",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "OCC_COINBASE_CORPORATE_DECISION_1370",
+      "publisher": "Office of the Comptroller of the Currency",
+      "publication_or_event_date": "2026-04-02",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "source_type": "regulatory conditional-approval decision letter",
+      "independence_group": "OCC regulatory filing record",
+      "raw_bytes_captured": false
+    }
+  ],
+  "preservation": {
+    "source_disagreements_retained": true,
+    "source_independence_not_overstated": true,
+    "issuer_holdings_not_called_cash_flows": true,
+    "charter_effective_not_called_operational": true,
+    "no_xrp_purchase_or_collateral_inferred": true,
+    "no_directional_price_claim": true,
+    "original_source_payloads_not_claimed_immutable": true
+  }
+}

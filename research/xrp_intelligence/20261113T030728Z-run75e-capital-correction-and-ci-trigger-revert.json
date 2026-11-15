@@ -1,0 +1,113 @@
+{
+  "schema_version": "barrot.xrp.capital-correction.v1",
+  "run_id": "run75e",
+  "captured_at_utc": "2026-11-13T03:07:28Z",
+  "eligibility": {
+    "status": "RESEARCH_ONLY_NO_RAW_RECEIPTS",
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "model_eligible": false
+  },
+  "sources": [
+    {
+      "publisher": "SEC/Evernorth",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "filed": "2026-11-09"
+    },
+    {
+      "publisher": "SEC/Evernorth",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "filed": "2026-10-19"
+    },
+    {
+      "publisher": "StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/xrpn/",
+      "data_as_of": "2026-11-12 close and after-hours"
+    },
+    {
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "data_as_of_utc": "2026-11-13T01:42:00Z"
+    }
+  ],
+  "corrections": {
+    "prior_run75b_facility_classification": "The $5.4M drawn at June30 and $9.7M drawn at October7 are the same Pathfinder Company Facility from Ripple, initially $7M and amended to $10M. They must not be counted as two separate loans.",
+    "company_facility": {
+      "borrower": "Pathfinder (Evernorth's subsidiary)",
+      "lender": "Ripple",
+      "initial_limit_usd_m": 7,
+      "amended_limit_usd_m": 10,
+      "drawn_as_of_2026_06_30_usd_m": 5.4,
+      "drawn_as_of_2026_10_07_usd_m": 9.7,
+      "repayment_due": "within five business days after 2026-10-09 closing",
+      "repayment_status": "not established in the prospectus"
+    },
+    "separate_evernorth_facility": {
+      "borrower": "Evernorth",
+      "lender": "Ripple",
+      "limit_usd_m": 1,
+      "drawn_as_of_2026_06_30_usd_m": 0
+    },
+    "public_warrants": {
+      "originally_registered_count": 11499992,
+      "current_pubco_warrants_outstanding_as_of_2026_10_22": 9283847,
+      "strike_usd": 11.5,
+      "potential_cash_on_current_count_if_all_cash_exercised_usd": 106764240.5,
+      "prior_original_max_if_11_499_992_exercised_usd": 132249908,
+      "exercise_status": "no exercise established"
+    },
+    "sponsor_warrants": {
+      "count": 239653,
+      "strike_usd": 11.5,
+      "potential_cash_if_all_cash_exercised_usd": 2756009.5,
+      "exercise_status": "no exercise established"
+    },
+    "total_potential_warrant_cash_if_current_pubco_and_sponsor_warrants_all_cash_exercised_usd": 109520250,
+    "XRPN_market": {
+      "close_2026_11_12_usd": 8.97,
+      "after_hours_2026_11_12_usd": 9,
+      "public_warrant_strike_usd": 11.5,
+      "share_price_below_strike_percent": 22,
+      "source": "StockAnalysis",
+      "notes": "As of Nov12 close/after-hours; this does not establish future exercise or warrant value."
+    },
+    "resale_shares": {
+      "count": 73688162,
+      "issuer_proceeds_usd": 0,
+      "notes": "Selling-securityholder resales; includes existing shares, Class C conversion shares, Company Unit exchange shares and sponsor-warrant shares. No issuer proceeds from resales."
+    },
+    "eloc": {
+      "potential_shares": 5218935,
+      "price_formula": "97% of VWAP",
+      "proceeds_as_of_2026_11_09_usd": 0,
+      "upfront_commitment_fee_usd": 521893.5,
+      "notes": "Conditional facility; not cash received. Upfront fee is non-refundable once earned; additional fees/expenses subject to filing terms."
+    },
+    "gross_cash_at_close": {
+      "gross_usd_m": 272.6,
+      "private_placement_cash_usd_m": 224.6,
+      "trust_account_release_usd_m": 48,
+      "transaction_expenses": "excluded; amounts before fees",
+      "public_share_redemption_percent": 80.3
+    },
+    "operating_and_accounting": {
+      "revenue_through_2026_06_30_usd": 0,
+      "net_loss_2026_h1_usd_m": 188.1,
+      "digital_asset_impairment_2026_h1_usd_m": 264.1,
+      "accounting": "XRP is an indefinite-lived intangible asset at cost less impairment; principal market selected for financial reporting is Coinbase; impairment uses the lowest observable intraday price since acquisition."
+    }
+  },
+  "CI_correction": {
+    "failing_test": "tests/test_ci_coverage_scope.py::test_integration_full_suite_runs_once_on_pull_request_not_duplicate_push",
+    "observed_core_result": "722 passed; 8 subtests passed; 1 failed",
+    "cause": "Adding integration/** to push duplicated the full-suite workflow on push, contrary to the repository's explicit CI scope test.",
+    "fix": "Reverted the integration/** push trigger. Full repository CI remains on pull_request to main, main push and workflow_dispatch. The connector has no workflow-dispatch action; PR synchronize events do trigger full CI.",
+    "no_runtime_code_change": true
+  },
+  "repo_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "pre_correction_head": "6685380871d03536840f668d5c771108552d9d4b",
+    "previous_exact_head_full_suite": "3542 passed; 8 subtests; 0 failures; 61.55% inclusive coverage",
+    "new_head_ci_pending": true
+  }
+}

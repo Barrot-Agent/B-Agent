@@ -1,0 +1,372 @@
+{
+  "schema_version": "barrot.xrp.market_snapshot.v1",
+  "artifact_id": "xrp-late-session-spot-derivatives-etf-macro-20261105T1908Z",
+  "artifact_type": "append_only_market_observation_and_source_disagreement",
+  "mission": {
+    "priority": 1,
+    "foundation": "Barrot V3 execution orchestration safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "recorded_at_utc": "2026-11-05T19:08:03Z",
+  "retrieval_window_start_utc": "2026-11-05T19:02:35Z",
+  "research_cutoff_utc": "2026-11-05T19:08:03Z",
+  "source_registry": [
+    {
+      "source_id": "kraken_xrpusd_ticker_20261105_1902_window",
+      "publisher": "Kraken",
+      "publisher_group": "kraken.com",
+      "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_event_time_utc": null,
+      "retrieval_window_utc": {
+        "start": "2026-11-05T19:02:35Z",
+        "end": "2026-11-05T19:08:03Z"
+      },
+      "capture_method": "web tool returned the endpoint JSON response text",
+      "raw_http_bytes_captured": false,
+      "raw_response_text_sha256": "321c1b45086a484b368e0238bbaa4d67b0c61c500434f42dfe327646022154eb",
+      "raw_response_text_bytes": 319,
+      "source_timestamp_quality": "capture window only; provider timestamp not present in returned ticker object",
+      "model_eligible": false,
+      "limitation": "SHA-256 covers the exact response text returned by the web retrieval, not the original HTTP wire bytes or headers."
+    },
+    {
+      "source_id": "binance_xrpusdt_premium_index_20261105_190033",
+      "publisher": "Binance",
+      "publisher_group": "binance.com",
+      "source_uri": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_event_time_utc": "2026-11-05T19:00:33Z",
+      "next_funding_time_utc": "2026-11-06T00:00:00Z",
+      "capture_method": "web tool returned the endpoint JSON response text",
+      "raw_http_bytes_captured": false,
+      "raw_response_text_sha256": "fa71db5eb2f01aae7ca28e27c11db6b07f3583ff53ef690ecd1de442ba2e2f40",
+      "raw_response_text_bytes": 219,
+      "model_eligible": false,
+      "limitation": "Response text hash is reproducible but does not establish independent HTTP header capture or external timestamp anchoring."
+    },
+    {
+      "source_id": "bitcoinleverage_coinalyze_oi_20261105_0900",
+      "publisher": "BitcoinLeverage via Coinalyze",
+      "publisher_group": "coinalyze-upstream",
+      "source_uri": "https://bitcoinleverage.com/xrp/open-interest",
+      "source_event_time_utc": "2026-11-05T09:00:00Z",
+      "page_checked_at_utc": "2026-11-05T10:44:00Z",
+      "model_eligible": false,
+      "limitation": "Two-venue completed-hour snapshot; stale relative to the 19:00 UTC spot/mark observation."
+    },
+    {
+      "source_id": "tradradar_oi_20261105_1450",
+      "publisher": "TradRadar",
+      "publisher_group": "tradradar.io",
+      "source_uri": "https://tradradar.io/de/markets/xrp",
+      "source_event_time_utc": "2026-11-05T14:50:00Z",
+      "model_eligible": false,
+      "limitation": "Seven-exchange aggregate, about four hours older than the latest spot/mark capture; exchange definitions not fully reconciled."
+    },
+    {
+      "source_id": "aiscalp_oi_dynamic_20261105",
+      "publisher": "AIScalp",
+      "publisher_group": "aiscalp.net",
+      "source_uri": "https://aiscalp.net/en/open-interest/xrp",
+      "source_event_time_utc": null,
+      "model_eligible": false,
+      "limitation": "Five-exchange live block is not pinned to a precise event timestamp; page also contains a dated November 4 paragraph."
+    },
+    {
+      "source_id": "xrp_insights_etf_20261104",
+      "publisher": "XRP Insights",
+      "publisher_group": "xrp-insights.com",
+      "source_uri": "https://xrp-insights.com/",
+      "source_event_time_utc": "2026-11-04T21:00:00Z",
+      "model_eligible": false,
+      "limitation": "Holdings-delta estimate; six spot funds plus BITW universe; not direct AP cash creation/redemption."
+    },
+    {
+      "source_id": "cryptokeyhole_etf_20261103_partial_20261105",
+      "publisher": "CryptoKeyhole",
+      "publisher_group": "cryptokeyhole.com",
+      "source_uri": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_event_time_utc": "2026-11-03T21:00:00Z",
+      "page_checked_at_utc": "2026-11-05T03:04:00Z",
+      "model_eligible": false,
+      "limitation": "November 4 remains partial; Franklin XRPZ issuer vintage was still pending in the displayed table."
+    },
+    {
+      "source_id": "alpha_finance_etf_20261103",
+      "publisher": "Alpha Finance",
+      "publisher_group": "alphafinance.io",
+      "source_uri": "https://alphafinance.io/etf/xrp/",
+      "source_event_time_utc": "2026-11-03T21:00:00Z",
+      "model_eligible": false,
+      "limitation": "Five-fund universe through November 3; does not cover the same fund universe or date completeness as XRP Insights."
+    },
+    {
+      "source_id": "reuters_binance_bank_supervisory_outreach_20261105",
+      "publisher": "Reuters",
+      "publisher_group": "reuters.com",
+      "source_uri": "https://www.reuters.com/legal/government/binance-hack-prompted-us-regulators-check-bank-systems-sources-say-2026-11-05/",
+      "publication_date": "2026-11-05",
+      "model_eligible": false,
+      "limitation": "Reported supervisory outreach based on sources; not a public regulator confirmation and not XRP-specific."
+    },
+    {
+      "source_id": "marketwatch_ai_innovation_etf_20261105",
+      "publisher": "MarketWatch",
+      "publisher_group": "marketwatch.com",
+      "source_uri": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-democrat-sweep-midterm-elections-rally/card/popular-ai-stocks-etf-plunges-deepening-its-recent-loss-q8wBWFBXYDNXtXVNkMjB",
+      "publication_date": "2026-11-05",
+      "model_eligible": false,
+      "limitation": "Single AI-focused ETF move; not a broad equity-index return and no XRP causal link established."
+    },
+    {
+      "source_id": "bls_employment_situation_calendar",
+      "publisher": "US Bureau of Labor Statistics",
+      "publisher_group": "bls.gov",
+      "source_uri": "https://www.bls.gov/schedule/news_release/empSit.htm",
+      "event_time_local": "2026-11-06T08:30:00-05:00",
+      "model_eligible": false,
+      "limitation": "Scheduled future event; actual release values are unknown before publication."
+    }
+  ],
+  "market_snapshot": {
+    "asset": "XRP",
+    "spot": {
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "last_usd": 1.23363,
+      "bid_usd": 1.23363,
+      "bid_size_xrp": 5971,
+      "ask_usd": 1.23364,
+      "ask_size_xrp": 446,
+      "mid_usd": 1.233635,
+      "spread_bps": 0.081061253937,
+      "volume_24h_xrp": 32156285.22873522,
+      "vwap_24h_usd": 1.2831113,
+      "high_24h_usd": 1.32583,
+      "low_24h_usd": 1.22688,
+      "daily_open_utc_usd": 1.3041,
+      "price_vs_daily_open_pct": -5.4037267081,
+      "price_vs_vwap_24h_pct": -3.8563529134,
+      "position_in_24h_range_fraction": 0.06821627084,
+      "distance_above_24h_low_pct": 0.5501760563,
+      "source_timestamp_semantics": "Kraken ticker o field is the current UTC-day open, not rolling 24-hour open; high/low/volume/VWAP use the returned 24-hour fields."
+    },
+    "perpetual": {
+      "venue": "Binance USD-M",
+      "symbol": "XRPUSDT",
+      "mark_price_usd": 1.2326,
+      "index_price_usd": 1.23284253,
+      "estimated_settle_price_usd": 1.23424198,
+      "mark_discount_to_index_bps": -1.9672423209,
+      "funding_rate_decimal": 0.0001,
+      "funding_rate_pct_per_8h": 0.01,
+      "interest_rate_decimal": 0.0001,
+      "source_event_time_utc": "2026-11-05T19:00:33Z",
+      "next_funding_time_utc": "2026-11-06T00:00:00Z"
+    },
+    "open_interest_observations": [
+      {
+        "source_id": "bitcoinleverage_coinalyze_oi_20261105_0900",
+        "coverage": "Binance and Bybit USDT perpetuals",
+        "total_oi_usd": 773000000,
+        "venues": {
+          "binance_usd": 454790000,
+          "bybit_usd": 318210000
+        },
+        "long_short_accounts": {
+          "binance_long_pct": 71.61,
+          "binance_ratio": 2.5224,
+          "bybit_long_pct": 78.43,
+          "bybit_ratio": 3.63606861
+        },
+        "funding_pct_per_8h": 0.01,
+        "liquidations_24h_usd": {
+          "longs": 818630,
+          "shorts": 1790000
+        },
+        "event_time_utc": "2026-11-05T09:00:00Z"
+      },
+      {
+        "source_id": "tradradar_oi_20261105_1450",
+        "coverage": "Seven exchanges",
+        "total_oi_usd": 2010000000,
+        "oi_change_24h_pct": -1.58,
+        "long_short_ratio": 3.31,
+        "long_accounts_pct": 76.8,
+        "funding_weighted_pct_per_8h": 0.01,
+        "liquidations_24h_usd": {
+          "minimum_total": 4930000,
+          "longs": 2980000,
+          "shorts": 1950000
+        },
+        "venues_oi_usd": {
+          "binance": 525730000,
+          "bybit": 357350000,
+          "gate": 277730000,
+          "bitget": 268790000,
+          "mexc": 246070000,
+          "hyperliquid": 220700000,
+          "okx": 112240000
+        },
+        "event_time_utc": "2026-11-05T14:50:00Z"
+      },
+      {
+        "source_id": "aiscalp_oi_dynamic_20261105",
+        "coverage": "Five exchanges; dynamic block event time unavailable",
+        "total_oi_usd": 1347300000,
+        "venues_oi_usd": {
+          "binance": 452300000,
+          "bybit": 322600000,
+          "okx": 106500000,
+          "bitget": 247200000,
+          "hyperliquid": 218700000
+        },
+        "event_time_utc": null
+      }
+    ],
+    "etf_flows": [
+      {
+        "source_id": "xrp_insights_etf_20261104",
+        "fund_universe": "six US spot XRP funds plus BITW",
+        "daily_flow_2026_11_04_xrp": -64826,
+        "aggregate_flow_2026_11_02_to_2026_11_04_xrp": -259700,
+        "holdings_2026_11_04_xrp_approx": 1200000000,
+        "method": "day-over-day issuer holdings changes"
+      },
+      {
+        "source_id": "cryptokeyhole_etf_20261103_partial_20261105",
+        "fund_universe": "four daily-collected funds in displayed table; GXRP not collected daily",
+        "daily_flow_2026_11_03_xrp": -3339,
+        "november_4_status": "partial; waiting for Franklin XRPZ issuer file",
+        "method": "day-over-day issuer holdings changes"
+      },
+      {
+        "source_id": "alpha_finance_etf_20261103",
+        "fund_universe": "five funds",
+        "daily_flow_2026_11_03_xrp": 0,
+        "coverage_through": "2026-11-03",
+        "method": "dashboard-reported issuer-holdings-derived flow"
+      }
+    ]
+  },
+  "event_timeline": [
+    {
+      "event_time": "2026-10-29",
+      "event": "Binance security incident; XRP transfers from five hot wallets were part of the incident tracing",
+      "xrp_price_causality": "not established"
+    },
+    {
+      "event_time": "2026-11-05",
+      "event": "Reuters reported US bank supervisors contacted banks following the Binance incident",
+      "xrp_price_causality": "not established"
+    },
+    {
+      "event_time": "2026-11-05",
+      "event": "MarketWatch reported an AI-focused ETF fell more than 11% in early afternoon",
+      "xrp_price_causality": "not established"
+    },
+    {
+      "event_time": "2026-11-06T08:30:00-05:00",
+      "event": "BLS October Employment Situation scheduled release",
+      "xrp_price_causality": "future event; result unknown"
+    }
+  ],
+  "source_disagreement": [
+    {
+      "topic": "Open interest",
+      "observations_usd": [
+        773000000,
+        1347300000,
+        2010000000
+      ],
+      "resolution": "Do not average. The sources have different exchange coverage, event times and contract/aggregation definitions; the two-venue Binance+Bybit sum is internally consistent at 09:00 UTC but does not validate the later five- or seven-venue totals."
+    },
+    {
+      "topic": "ETF flows",
+      "resolution": "Do not average. XRP Insights includes six spot funds plus BITW and has a November 4 settled holdings-delta row; CryptoKeyhole is partial on November 4 and reports a different November 3 universe; Alpha Finance covers five funds through November 3."
+    },
+    {
+      "topic": "Spot price",
+      "resolution": "The Kraken ticker response is the direct venue observation in this artifact. Dynamic dashboards with older or unknown timestamps are not treated as simultaneous quotes."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "name": "Intraday risk-off selloff with leveraged positioning pressure",
+      "supporting": [
+        "Kraken price is 5.40% below the UTC daily open and 3.86% below its 24-hour VWAP",
+        "Price is only 0.55% above the 24-hour low",
+        "Earlier same-day dashboards showed long-account skews above 70% and positive funding"
+      ],
+      "counterevidence": [
+        "The long/short and OI observations are stale relative to the 19:00 UTC quote",
+        "Current Binance funding remains positive; this alone does not prove new long liquidation",
+        "No synchronized current multi-venue OI or liquidation feed was captured"
+      ]
+    },
+    {
+      "id": "H2",
+      "name": "Broad risk-off and security-contagion repricing",
+      "supporting": [
+        "Reuters reported bank supervisory outreach after the Binance incident",
+        "MarketWatch reported a sharp decline in an AI-focused ETF on November 5"
+      ],
+      "counterevidence": [
+        "Neither report establishes a causal XRP flow or price channel",
+        "A single sector ETF is not a broad-market benchmark",
+        "No synchronized macro factor regression is available"
+      ]
+    },
+    {
+      "id": "H3",
+      "name": "ETF holdings outflows contribute to marginal spot supply",
+      "supporting": [
+        "XRP Insights reports a three-session net holdings decrease of about 259,700 XRP"
+      ],
+      "counterevidence": [
+        "Flows are holdings deltas, not direct AP cash records",
+        "Other trackers have different fund universes and incomplete November 4 vintages",
+        "Magnitude is small relative to exchange turnover and does not establish causal price impact"
+      ]
+    },
+    {
+      "id": "H4",
+      "name": "Venue and aggregation timing differences exaggerate apparent market disagreement",
+      "supporting": [
+        "Direct Kraken and Binance observations are timestamped more precisely than third-party OI dashboards",
+        "OI values differ materially across two-, five- and seven-venue coverage"
+      ],
+      "counterevidence": [
+        "A genuine cross-venue market move can also produce short-lived basis differences",
+        "No synchronized raw order-book and trade tape was captured across venues"
+      ]
+    }
+  ],
+  "source_independence": {
+    "rule": "Publisher domains are not sufficient to establish independent underlying data. Exchange-derived dashboards may share Binance/Bybit APIs; ETF dashboards reuse issuer holdings files. Reuters, MarketWatch and BLS are separate publisher/primary-source groups, but their events do not automatically corroborate XRP price causality."
+  },
+  "admission": {
+    "model_eligible": false,
+    "forecast_eligible": false,
+    "reasons": [
+      "Kraken raw HTTP bytes and headers were not captured; only returned response text was hashed",
+      "Kraken provider event timestamp is absent from ticker response",
+      "Current multi-venue OI and order-book depth are not synchronized to the spot capture",
+      "Third-party OI aggregates disagree and some are stale or undated",
+      "ETF flows are holdings-derived with non-matching fund universes and incomplete November 4 coverage",
+      "No independent timestamp anchor or validated out-of-sample forecast evaluation is attached"
+    ]
+  },
+  "forecast": {
+    "issued": false,
+    "directional": false,
+    "reason": "A single late-session spot snapshot and stale/conflicting derivatives/ETF aggregates do not establish a validated predictive edge. Preserve as an observation and competing-hypothesis record only."
+  },
+  "next_actions": [
+    "Capture exact HTTP response bytes, headers, provider timestamps and independent time anchors for Kraken and Binance",
+    "Capture synchronized Kraken, Coinbase, Binance and additional venue depth/trade data at one common cutoff",
+    "Fetch current OI, funding, long/short and liquidation endpoints from each venue with explicit contract coverage",
+    "Reconcile ETF issuer holdings and AP cash creation/redemption records by fund and publication vintage",
+    "Run chronological walk-forward tests only after point-in-time history and source receipts are complete"
+  ]
+}

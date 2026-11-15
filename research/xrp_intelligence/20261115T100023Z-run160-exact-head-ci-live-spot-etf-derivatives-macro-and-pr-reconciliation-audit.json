@@ -1,0 +1,708 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "BARROT_XRP_MISSION_RUN_AUDIT",
+  "run_id": 160,
+  "captured_at_utc": "2026-11-15T10:00:23Z",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head": "85bfdf19bb022619f18f4889f81de28bbaf631df",
+    "integration_ahead_by": 2480,
+    "integration_behind_by": 0,
+    "main_tree": {
+      "entries": 1393,
+      "python": 516,
+      "tests": 97,
+      "workflows": 87,
+      "truncated": false
+    },
+    "integration_tree": {
+      "entries": 2489,
+      "python": 899,
+      "tests": 459,
+      "workflows": 80,
+      "truncated": false
+    },
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "85bfdf19bb022619f18f4889f81de28bbaf631df",
+      "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "changed_files": 1247,
+      "additions": 345839,
+      "deletions": 6309,
+      "workflow_files": 48,
+      "review_count": 0,
+      "review_threads": 0
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "base_main": 365,
+      "other_base": 8,
+      "pages": [
+        100,
+        100,
+        100,
+        73
+      ]
+    }
+  },
+  "execution": {
+    "current_main_inspected": true,
+    "complete_recursive_main_tree": true,
+    "complete_recursive_integration_tree": true,
+    "all_open_pr_pages_retrieved": true,
+    "current_pr_diff_and_changed_paths_inspected": true,
+    "branch_ancestry_checked": true,
+    "current_ci_jobs_and_logs_inspected": true,
+    "dependency_audit_inspected": true,
+    "main_workflow_side_effects_inspected": true,
+    "security_settings_inspected": true,
+    "latest_durable_handoff_read": true,
+    "existing_integration_branch_only": true,
+    "new_branch": false,
+    "new_pr": false,
+    "main_modified": false,
+    "source_prs_closed": [],
+    "force_push": false,
+    "destructive_worktree_action": false
+  },
+  "ci": {
+    "exact_head": "85bfdf19bb022619f18f4889f81de28bbaf631df",
+    "push_run": {
+      "id": 43700901184,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43700901184",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "full_suite": {
+      "job_id": 132771590153,
+      "status": "success",
+      "passed": 3788,
+      "failed": 0,
+      "skipped": 1,
+      "subtests_passed": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 139.21,
+      "wheel_build": true,
+      "installed_primary_mission_verification": true
+    },
+    "core_suite": {
+      "job_id": 132771590014,
+      "status": "success",
+      "passed": 742,
+      "failed": 0,
+      "subtests_passed": 8
+    },
+    "dependency_audit": {
+      "run_id": 43700901218,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43700901218",
+      "status": "success",
+      "manifests": {
+        "root_runtime": "success",
+        "development": "success",
+        "integrations": "success",
+        "hugging_face_space": "success",
+        "legacy": "success",
+        "pyproject": "success"
+      },
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43700901201,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43700901201",
+      "status": "success",
+      "merge_enabled": false
+    },
+    "pr_event": {
+      "ci_run_id": 43700903492,
+      "status": "success",
+      "full_suite": "skipped by integration-branch event condition",
+      "core_tests": "skipped by integration-branch event condition",
+      "pages_validation": "success"
+    },
+    "cache_warning": "GitHub Actions cache budget reached; cache became read-only. Tests, wheel build and installation still passed.",
+    "nonblocking_build_warnings": [
+      "project.license TOML table deprecation",
+      "setuptools package discovery warnings for barrot_agent.data.missions and data.research"
+    ]
+  },
+  "mission": {
+    "mission_id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "primary_mission_file_present_on_integration": true,
+    "primary_mission_file_present_on_main": false,
+    "forecast_issuance_enabled": false,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "platform_map": {
+    "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "schema_version": "1.1.0",
+    "captured_at_utc": "2026-11-15T09:30:37Z",
+    "platform_count": 9,
+    "platforms": {
+      "ChatGPT": {
+        "authentication": "VERIFIED_CURRENT_SESSION",
+        "data_flow": "GitHub connector read main and integration and wrote bounded evidence only to the existing integration branch",
+        "permission": "admin/maintain/push/pull/triage; overprivileged"
+      },
+      "Claude": {
+        "authentication": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow": "none observed"
+      },
+      "Grok": {
+        "authentication": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow": "none observed"
+      },
+      "Gemini": {
+        "authentication": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow": "none observed"
+      },
+      "Copilot": {
+        "authentication": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY",
+        "data_flow": "no persistent connection; no formal approval on PR #1662"
+      },
+      "Codex": {
+        "authentication": "UNVERIFIED_NO_AUTH_TEST",
+        "data_flow": "none observed"
+      },
+      "Hugging Face": {
+        "authentication": "INCONCLUSIVE_FAILED_HEALTH_CHECK",
+        "data_flow": "previous BUILD_ERROR; no upload or deployment"
+      },
+      "Kaggle": {
+        "authentication": "NOT_TESTED",
+        "data_flow": "none observed; no submission"
+      },
+      "Databricks": {
+        "authentication": "AUTHORIZATION_FAILED_HTTP_403",
+        "data_flow": "no successful SQL read/write; no deployment"
+      }
+    },
+    "external_model_dispatch": false,
+    "nine_platform_evidence_exchange": false,
+    "independent_red_team_quorum": false,
+    "luna_route": {
+      "status": "DECLARED_NOT_AUTHENTICATED",
+      "external_mcp_disabled_on_integration": true
+    }
+  },
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-15T10:00:23Z",
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256": null,
+    "model_eligible": false,
+    "reason": "Web-rendered exchange responses were observed, but exact raw HTTP response bytes, response headers and receipt hashes were not captured. Kraken event timestamp is unavailable; no synchronized full-depth multi-venue L2 snapshot was retrieved.",
+    "okx_xrp_usdt": {
+      "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time_utc": "2026-11-15T09:58:53.560Z",
+      "age_seconds_at_capture": 89.44,
+      "last": 0.9631,
+      "bid": 0.9631,
+      "ask": 0.9632,
+      "bid_size_xrp": 3403.800375,
+      "ask_size_xrp": 792,
+      "rolling_24h_open": 0.991,
+      "utc_day_open": "0.9145",
+      "high_24h": 0.9983,
+      "low_24h": 0.8929,
+      "volume_24h_xrp": 103678298.493909,
+      "volume_24h_usdt": 97659790.7478,
+      "spread_bps": 1.038,
+      "top_of_book_bid_fraction": 0.81124,
+      "top_of_book_imbalance": 0.62248
+    },
+    "kraken_xrp_usd": {
+      "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time_utc": null,
+      "last": 0.96204,
+      "bid": 0.962,
+      "ask": 0.96209,
+      "bid_size_xrp": 926,
+      "ask_size_xrp": 5198,
+      "open_field": 0.91378,
+      "high_24h": 0.99738,
+      "low_24h": 0.89112,
+      "volume_24h_xrp": 84572515.319333,
+      "spread_bps": 0.935,
+      "top_of_book_bid_fraction": 0.15121,
+      "top_of_book_imbalance": -0.69758
+    },
+    "cross_venue_mid_difference_bps": 11.48,
+    "interpretation": "OKX and Kraken top-of-book sizes show opposite imbalances (+62.25% vs -69.76%). These are not full-depth books and are not synchronized; the price difference is not executable arbitrage evidence. OKX rolling 24-hour open ($0.991) differs from its UTC day open ($0.9145); Kraken's open field ($0.91378) is close to the UTC-day open, not the rolling 24-hour open. Preserve window semantics.",
+    "quote_age_gate_seconds": 300,
+    "same_venue_basis_skew_gate_seconds": 60
+  },
+  "derivatives": {
+    "liqwall": {
+      "source": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-15T07:22:00Z",
+      "age_seconds_at_capture": 9503,
+      "price": 0.9547,
+      "open_interest_usd": 1020000000,
+      "open_interest_change_24h_percent": -2.8,
+      "funding_average_8h_percent": -0.0011,
+      "liquidations_24h_usd": 42300000,
+      "long_liquidations_usd": 38400000,
+      "short_liquidations_usd": 3800000,
+      "binance_accounts_long_percent": 72.3,
+      "hyperliquid_accounts_long_percent": 47.1
+    },
+    "tradradar": {
+      "source": "https://tradradar.io/markets/xrp",
+      "as_of_utc": "2026-11-14T20:00:00Z",
+      "age_seconds_at_capture": 50423,
+      "open_interest_usd": 1400000000,
+      "open_interest_change_24h_percent": -7.25,
+      "funding_weighted_8h_percent": -0.0047,
+      "liquidations_24h_min_usd": 24710000,
+      "long_liquidations_usd": 24010000,
+      "short_liquidations_usd": 698190,
+      "accounts_long_percent": 78.1
+    },
+    "interpretation": "Both provider snapshots indicate negative funding, declining open interest and long-side liquidation pressure, but timestamps, exchange coverage and aggregation differ. Do not average OI or liquidations; these snapshots are stale for model admission."
+  },
+  "etf_flows": {
+    "alpha_finance": {
+      "source": "https://alphafinance.io/etf/xrp/",
+      "fund_universe": 5,
+      "through_date": "2026-11-13",
+      "nov13_flow_usd": -1100000,
+      "thirty_session_flow_usd": -581700
+    },
+    "xrp_insights": {
+      "source": "https://xrp-insights.com/",
+      "fund_universe": "six US spot funds plus BITW",
+      "nov13_holdings_change_xrp": 3400000,
+      "week_nov9_13_holdings_change_xrp": -6080000,
+      "week_usd_approx": -6480000
+    },
+    "interpretation": "Different fund universes and measurement methods. XRP Insights uses issuer-reported holdings changes, not direct cash subscriptions; Alpha reports a five-fund flow series. Do not average or treat holdings changes as actual cash."
+  },
+  "macro": {
+    "cpi": {
+      "source": "https://www.bls.gov/news.release/CPI.htm",
+      "reference_month": "2026-10",
+      "released": "2026-11-10",
+      "headline_monthly_percent": 0.4,
+      "core_monthly_percent": 0.3,
+      "year_over_year": "not published for series requiring missing October 2025 comparator because BLS did not collect survey data during lapse in appropriations"
+    },
+    "ppi": {
+      "source": "https://www.bls.gov/news.release/ppi.nr0.htm",
+      "reference_month": "2026-10",
+      "released": "2026-11-13",
+      "final_demand_monthly_percent": 0.3,
+      "final_demand_year_over_year_percent": 6.5,
+      "core_ex_food_energy_trade_monthly_percent": 0.5,
+      "core_ex_food_energy_trade_year_over_year_percent": 4.9
+    },
+    "treasury_curve": {
+      "source": "https://home.treasury.gov/",
+      "date": "2026-11-13",
+      "two_year_percent": 4.88,
+      "ten_year_percent": 5.15,
+      "thirty_year_percent": 5.47,
+      "ten_year_tips_real_percent": 2.91
+    },
+    "interpretation": "Inflation and yields provide a higher-for-longer macro risk context. This is not evidence of a causal XRP price effect; preserve as a dated macro feature candidate only after vintage-aware ingestion."
+  },
+  "institutional_and_identity_continuity": {
+    "sbi": {
+      "status": "prior_primary_research_retained",
+      "notes": [
+        "SBI Remit XRP ODL corridors are confirmed by SBI/SBI Remit releases; undisclosed XRP volume and procurement prevent attributing all remittance turnover to XRP.",
+        "SBI Ripple Asia XRPL prepaid-token issuance platform registration is not proof of XRP bridge demand.",
+        "SBI START Bond is JPY debt on ibet for Fin; XRP reward is separate from coupon/principal.",
+        "SBI Holdings, SBI Remit, SBI VC Trade, SBI Ripple Asia, SBI Digital Finance, SBI Digital Markets and SBIC East/Central/West remain distinct entities."
+      ]
+    },
+    "sbic_chatgpt": {
+      "status": "identity_distinction_retained",
+      "notes": [
+        "SBIC East/Central/West are regional SME investment companies, not SBI Holdings.",
+        "SBIC East's 2025 ChatGPT/Copilot training is a plausible phrase connection, not an OpenAI partnership.",
+        "SB OAI Japan GK is the distinct OpenAI/SoftBank joint venture."
+      ]
+    },
+    "ask_coin": {
+      "status": "no_canonical_xrpl_issuer_verified",
+      "notes": [
+        "Permission ASK token on Base/Polygon remains a separate asset; do not infer an XRPL issuer."
+      ]
+    },
+    "actual_capital": {
+      "status": "taxonomy_retained",
+      "notes": [
+        "Separate fiat cash, in-kind XRP, debt, warrants, conditional facilities, ETF holdings changes, rewards and secondary resales."
+      ]
+    },
+    "kamilah_stevenson": {
+      "status": "identity_verified_channel_unverified",
+      "notes": [
+        "Dr. Kamilah Stevenson identity is first-party verified; candidate XRP channel ownership is not. Verified own-channel XRP video inventory remains zero."
+      ]
+    },
+    "evernorth_capital_update": {
+      "primary_sec_filing_s1": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "primary_sec_filing_q3_10q": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "primary_sbi_presentation": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "holdings": {
+        "as_of_2026_10_09_xrp_approx": 473000000,
+        "sbi_presentation_as_of_2026_11_02_xrp_approx": 473000000,
+        "as_of_2026_09_30_sec_10q_xrp": 346284972,
+        "cash_purchased_xrp": 84365876,
+        "cash_used_to_purchase_xrp_usd": 214100000,
+        "private_placement_xrp_in_kind": 261919096,
+        "aggregate_in_kind_xrp_at_closing": 388910554,
+        "ripple_contribution_to_pathfinder_xrp": 126791458,
+        "note": "The 473m total is approximately the 388.91m aggregate in-kind XRP plus 84.366m XRP purchased with $214.1m cash. The cash is not additive to the purchased XRP as a separate holding. A Q3 10-Q subsequent-event line reports 346,484,972 XRP transferred to Pathfinder, 200,000 more than the 346,284,972 reported as of September 30; preserve as a filing discrepancy pending reconciliation."
+      },
+      "cash_and_financing": {
+        "closing_gross_cash_proceeds_usd": 272600000,
+        "closing_gross_cash_components_usd": {
+          "private_placement_investments": 224600000,
+          "spac_trust_account_release": 48000000
+        },
+        "gross_cash_before_transaction_expenses": true,
+        "note": "The $214.1m used to buy 84.366m XRP is included within the private-placement cash and is not an additional amount to add to $272.6m.",
+        "convertible_note": {
+          "principal_usd": 30000000,
+          "net_proceeds_usd": 29000000,
+          "issue_date": "2026-10-13",
+          "coupon_percent": 4,
+          "interest_type": "PIK",
+          "maturity_year": 2031,
+          "classification": "debt, not equity; no evidence the proceeds were used to buy XRP"
+        },
+        "warrant_exercises": {
+          "period_start": "2026-10-12",
+          "period_end": "2026-11-09",
+          "warrants_exercised": 3073366,
+          "shares_issued": 3073366,
+          "exercise_price_usd": 11.5,
+          "gross_cash_proceeds_usd": 35300000,
+          "warrants_remaining": 8666279,
+          "classification": "actual gross cash from equity warrant exercises; use of proceeds for XRP not disclosed"
+        },
+        "eloc": {
+          "counterparty": "CF Principal Investments LLC (Cantor)",
+          "agreement_date": "2026-10-23",
+          "registration_effective_date": "2026-10-30",
+          "maximum_shares": 5218935,
+          "price_percent_of_vwap": 97,
+          "nonrefundable_commitment_fee_usd": 500000,
+          "classification": "committed equity capacity, not cash received until share purchases occur; filing says proceeds depend on how often and at what prices shares are sold; no draw/purchase amount established in the reviewed filing"
+        }
+      },
+      "pre_close_financial_condition": {
+        "as_of": "2026-09-30",
+        "unrestricted_cash_usd": 91397,
+        "net_working_capital_deficit_usd": 10000000,
+        "accumulated_deficit_usd": 185600000,
+        "operating_loss_nine_months_usd": 273200000,
+        "net_loss_nine_months_usd": 32900000,
+        "digital_asset_impairment_usd": 271000000,
+        "noncash_gain_from_fair_value_of_refundable_investor_advances_usd": 240300000,
+        "related_party_payable_to_pathfinder_usd": 3562118,
+        "revenue_generated": "none reported as of the Q3 filing",
+        "note": "These are pre-business-combination historical balances as of September 30 and must not be presented as the post-closing cash balance. Post-closing note and warrant proceeds occurred later."
+      },
+      "sbi_ownership_reconciliation": {
+        "sbi_group_presentation_date": "2026-11-02",
+        "voting_rights_percent": 36.1,
+        "economic_interest_percent": 20.5,
+        "denominator_note": "SBI says voting rights are calculated against Class A shares; economic interest against total Class A and Class C shares.",
+        "sec_s1_as_of": "2026-10-09",
+        "sec_s1_sbi_group_ownership_percentage": 39.9,
+        "sec_definition": "SBI Group Ownership Percentage is Class A and Class B shares beneficially held by SBI Group Holders divided by Outstanding Voting Shares; 39.9% is also the maximum ownership restriction/cap. SBI Group Holders include SBI Venture Fund 2023A, SBI Venture Fund 2023B, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc., each controlled by SBI.",
+        "reconciliation": "39.9% SEC contractual voting-ownership metric/cap as of October 9 is not the same as SBI's November 2 36.1% voting-rights and 20.5% economic-interest metrics. Class A versus Class A+Class C denominators and subsequent share-count changes differ. The 3.073m warrant exercises through November 9 may affect the denominator, but a complete cap-table bridge was not established; do not infer causality."
+      },
+      "capital_classification": "Actual cash, cash used to buy XRP, XRP contributed in kind, SPAC trust cash, debt, warrant proceeds and undrawn/unused ELOC capacity remain separate. The $35.3m warrant proceeds are actual gross cash but not proof of XRP purchases; the $30m note is debt; the ELOC is capacity, not cash.",
+      "raw_source_sha256": null
+    }
+  },
+  "main_workflow_side_effects": {
+    "main_latest_scheduled_cross_analysis": {
+      "run_id": 43701255132,
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "conclusion": "success",
+      "permissions": "contents:read",
+      "external_provider_calls": false,
+      "repository_commit": false,
+      "artifact_retention_days": 30
+    },
+    "barrot_sync_main": {
+      "status": "unsafe_legacy_writer",
+      "contents_write": true,
+      "secret_env": [
+        "LUNAROUTE_API_KEY",
+        "GH_TOKEN"
+      ],
+      "failure_masking": true,
+      "integration_quarantined": true
+    },
+    "pingpong_main": {
+      "status": "unsafe_legacy_writer",
+      "contents_write": true,
+      "provider": "Groq",
+      "commits_to_main": true,
+      "integration_quarantined": true
+    },
+    "coinbase_paper_trader_main": {
+      "status": "manual_writer_to_main",
+      "hardcoded_product": "BTC-USD",
+      "integration": "manual explicit YES, exact-main-SHA and product-state preflight; artifact-only; no repo write"
+    },
+    "xrp_ingestion": {
+      "status": "integration_only",
+      "workflow_absent_from_main": true,
+      "permissions": "actions:read, contents:read",
+      "scheduled": true,
+      "artifact_retention_days": 90,
+      "cache_not_worm": true,
+      "successful_main_run": false
+    }
+  },
+  "security_and_governance": {
+    "main_branch_protected_flag": true,
+    "main_required_status_contexts": [],
+    "main_protection_endpoint": "HTTP 403; detailed protection settings unavailable",
+    "integration_branch_protected": false,
+    "repository_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": "admin, maintain, push, pull, triage; overprivileged",
+    "pr_1662_draft": true,
+    "pr_1662_formal_reviews": 0,
+    "pr_1662_review_threads": 0,
+    "merge_decision": "NO_MERGE"
+  },
+  "backlog": {
+    "pr_1661": {
+      "classification": "superseded_candidate",
+      "source_head_is_ancestor_of_integration": true,
+      "compare_ahead": 388,
+      "compare_behind": 0,
+      "close_only_after_successor_merge_and_main_verification": true
+    },
+    "pr_1660": {
+      "classification": "superseded_candidate",
+      "source_head_is_ancestor_of_integration": true,
+      "compare_ahead": 569,
+      "compare_behind": 0,
+      "close_only_after_successor_merge_and_main_verification": true
+    },
+    "pr_1643": {
+      "classification": "superseded_candidate",
+      "source_head_is_ancestor_of_integration": true,
+      "compare_ahead": 1631,
+      "compare_behind": 0,
+      "close_only_after_successor_merge_and_main_verification": true
+    },
+    "pr_1642": {
+      "classification": "superseded_candidate",
+      "source_head_is_ancestor_of_integration": true,
+      "compare_ahead": 2536,
+      "compare_behind": 0,
+      "close_only_after_successor_merge_and_main_verification": true
+    },
+    "pr_1640": {
+      "classification": "unique_diverged_blocked",
+      "compare_status": "diverged",
+      "integration_ahead": 1562,
+      "integration_behind": 1,
+      "unique_source_commit_requires_preservation": true
+    },
+    "unique_research_and_feature_prs": [
+      "#1659",
+      "#1655",
+      "#1653",
+      "#1641",
+      "#1615",
+      "#1614",
+      "#1611",
+      "#1610",
+      "#1608",
+      "#1597",
+      "#1591",
+      "#1605",
+      "#1583",
+      "#1581"
+    ],
+    "no_source_pr_closures": true
+  },
+  "prediction_engine": {
+    "implemented_on_integration": [
+      "51 public-source definitions (49 scheduled; two noncommercial XRPL node sources excluded from default scheduling)",
+      "SHA-256 raw-source receipt and local receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "event timeline and counter-hypothesis registry",
+      "naive, momentum, mean-reversion and volatility baselines",
+      "purged/embargoed chronological walk-forward evaluator",
+      "paired temporal and source-clustered moving-block bootstrap",
+      "probability calibration and PSI drift diagnostics",
+      "fail-closed forecast ledger and Ed25519 evaluator attestation"
+    ],
+    "remaining": [
+      "byte-exact receipt hashes for all 85 event registry entries; all 85 currently have null raw_source_sha256",
+      "independent WORM archive and trusted timestamp anchor",
+      "complete synchronized historical multi-venue L2, derivatives, exchange-flow and collateral data",
+      "trained XRP-specific candidate that beats all four baselines out of sample",
+      "qualified independent shadow-outcome cohort",
+      "verified scheduled ingestion on main"
+    ],
+    "status": "NO_QUALIFIED_XRP_CANDIDATE",
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "source_register": [
+    {
+      "source": "OKX public spot ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_type": "exchange API rendered through web retrieval",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Kraken public spot ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "exchange API rendered through web retrieval",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Liqwall XRP derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_type": "aggregator",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "TradRadar XRP derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_type": "aggregator",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Alpha Finance XRP ETF flows",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_type": "ETF data aggregator",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "source_type": "wallet/issuer-holdings analytics",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "US BLS CPI",
+      "url": "https://www.bls.gov/news.release/CPI.htm",
+      "source_type": "primary government release",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "US BLS PPI",
+      "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+      "source_type": "primary government release",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "US Treasury interest rates",
+      "url": "https://home.treasury.gov/",
+      "source_type": "primary government data",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Evernorth SEC Form S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "source_type": "primary SEC filing",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Evernorth SEC Q3 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "source_type": "primary SEC filing",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "SBI Holdings 1H FY2026 financial presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "source_type": "primary issuer presentation",
+      "raw_source_sha256": null
+    }
+  ],
+  "next_actions": [
+    "Update the canonical handoff and PR discussion with Run160 and the exact-head 3,788-test result.",
+    "Keep PR #1662 draft; resolve independent review, least-privilege connector scope, required checks and branch-protection governance before merge.",
+    "Review the one unique diverged commit in PR #1640 before any supersession decision.",
+    "Keep main's Barrot Sync and Ping-Pong writers quarantined in the successor; do not merge until external side-effect controls and main Pages publication effects are reviewed.",
+    "Capture raw exchange response bytes and SHA-256 receipts through an authorized byte-preserving collector; current web-rendered snapshots are research-only.",
+    "Use same-venue basis and event-time checks; do not admit current top-of-book snapshots without synchronized full-depth data.",
+    "Reconcile ETF fund universes and holdings-change versus cash-subscription semantics.",
+    "Ingest BLS CPI/PPI and Treasury vintages with release timestamps and missing-comparator metadata.",
+    "Complete synchronized historical feature data, then evaluate a candidate against all four baselines and independent shadow outcomes before any directional forecast."
+  ],
+  "external_actions": {
+    "model_dispatch": false,
+    "external_data_transfer": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "real_money": false,
+    "funds_transfer": false,
+    "main_write": false,
+    "pr_merge": false
+  },
+  "regulatory_update": {
+    "captured_at_utc": "2026-11-15T10:00:23Z",
+    "entity": "Ripple National Trust Bank (RNTB)",
+    "status": "FINAL_CHARTER_APPROVAL_AND_CONSUMMATION_CONFIRMED",
+    "primary_occ_corporate_applications_search": {
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "control_number": "2025-Charter-342347",
+      "application_type": "New Bank Charter",
+      "transaction_form": "Charter National Bank Under Holding Company (Trust Bank)",
+      "proposed_charter_number": "25364",
+      "receipt_date": "2025-07-02",
+      "approved_date": "2025-12-12",
+      "consummated_effective_date": "2026-10-26"
+    },
+    "ripple_first_party_announcement": {
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "published_date": "2026-10-26",
+      "claims_final_occ_approval": true,
+      "approved_activities": [
+        "manage segregated RLUSD reserves",
+        "act as collateral trustee of RLUSD reserves for holders",
+        "provide fiduciary digital-asset custody"
+      ],
+      "operating_status_qualification": "Ripple states fiduciary custody will be authorized upon opening; actual operational launch, customer count and transaction volume were not verified."
+    },
+    "issuer_boundary": {
+      "rlusd_issuer": "Standard Custody & Trust Company, LLC (SCTC), Ripple's NYDFS-regulated limited-purpose trust company",
+      "rntb_role": "Federal OCC-supervised national trust bank supporting reserves, collateral-trustee duties and fiduciary custody",
+      "rntb_is_rlusd_issuer": false
+    },
+    "index_disagreement": {
+      "occ_interpretations_decisions_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "displayed_entry": "Conditional Approval 1359 dated 2025-12-12 remains visible",
+      "explanation": "The I&D index retains the original conditional-approval letter, while OCC Corporate Applications Search records the application as approved and consummated/effective on 2026-10-26. Ripple's October 26 first-party announcement independently states final approval. The index entry is a stale/incomplete status view, not sufficient disconfirmation of the later CAS status.",
+      "source_independence": "OCC CAS is regulator filing-status evidence; Ripple release is issuer announcement; OCC I&D index is the original decision-letter index."
+    },
+    "model_eligibility": "institutional/regulatory event candidate only after byte-exact source receipt capture; not a directional price signal",
+    "raw_source_sha256": null
+  }
+}

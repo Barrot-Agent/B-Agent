@@ -1,0 +1,143 @@
+{
+  "artifact_type": "barrot.xrp.run88.model_readiness_circle_binance_coinbase_collateral_addendum",
+  "schema_version": "1.0.0",
+  "run_id": "Run88-addendum-1",
+  "captured_at_utc": "2026-11-13T11:45:00Z",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_at_audit": "b21e8c5580b6da977fbff05d43449af50ffc55a7",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112"
+  },
+  "corporate_capital_and_collateral": {
+    "circle_binance": {
+      "filing_date": "2026-09-30",
+      "event_date": "2026-09-17",
+      "direct_equity_investment_usd": 100000000,
+      "shares_issued": 1200000,
+      "price_per_share_usd": 80.84,
+      "terms": "Binance agreed to transfer restrictions through the earlier of the second anniversary or termination of specified commercial arrangements",
+      "classification": "direct equity investment in Circle",
+      "not_evidence_of": [
+        "XRP purchase",
+        "USDC reserve deposit",
+        "XRPL deployment",
+        "XRP collateral utilization"
+      ],
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    "circle_arc_presale": {
+      "q3_2026_revenue_recognized_usd": 181800000,
+      "nine_month_cash_proceeds_usd": 242200000,
+      "classification": "Circle Arc token presale revenue/proceeds; separate from USDC reserve income",
+      "accounting_warning": "Revenue recognized and cash proceeds are distinct measures; do not add them together or treat either as XRP capital",
+      "network_distinction": "Arc is a separate Layer 1, not XRPL",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    "coinbase_aggregate_crypto_collateral": {
+      "period": "nine months ended 2026-09-30",
+      "table_units": "USD thousands in supplemental non-cash investing and financing activities",
+      "customer_crypto_assets_received_as_collateral_usd": 3038805000,
+      "customer_crypto_asset_collateral_returned_usd": 2731034000,
+      "crypto_assets_borrowed_usd": 2846349000,
+      "crypto_assets_borrowed_repaid_usd": 2861799000,
+      "crypto_asset_loan_receivables_originated_usd": 3562896000,
+      "crypto_asset_loan_receivables_repaid_usd": 3562928000,
+      "classification": "aggregate multi-asset Coinbase activity",
+      "limitations": [
+        "no XRP-specific amount is disclosed in this table",
+        "period flows are not an end-of-period collateral balance",
+        "do not infer XRP collateral acceptance, utilization or demand"
+      ],
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    "circle_coinbase_distribution_reconciliation": {
+      "circle_distribution_costs_to_coinbase_q3_2026_usd": 331300000,
+      "circle_distribution_costs_to_coinbase_9m_2026_usd": 986600000,
+      "coinbase_stablecoin_revenue_q3_2026_usd": 306905000,
+      "coinbase_stablecoin_revenue_9m_2026_usd": 904487000,
+      "coinbase_average_usdc_held_in_products": "company reported all-time high",
+      "interpretation": "different accounting measures; Circle distribution costs are not a direct one-for-one reconciliation to Coinbase stablecoin revenue",
+      "source_circle": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_coinbase": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    }
+  },
+  "prediction_engine_code_audit": {
+    "inspected_files": [
+      "barrot_agent/evolution/walk_forward.py",
+      "barrot_agent/evolution/forecast_ledger.py",
+      "barrot_agent/evolution/feature_store.py",
+      "barrot_agent/evolution/point_in_time_features.py",
+      "barrot_agent/evolution/feature_drift.py",
+      "barrot_agent/evolution/probability_calibration.py",
+      "barrot_agent/evolution/scenario_hypotheses.py",
+      "barrot_agent/models.py",
+      "barrot_agent/inference.py",
+      "web/latest_signal.json",
+      "web/latest_signal_summary.json",
+      "web/signal_accuracy.json",
+      "web/legacy/signal_accuracy_unvalidated.json"
+    ],
+    "current_capabilities": [
+      "point-in-time feature validation",
+      "local append-only SQLite feature snapshots with stored-at visibility",
+      "four deterministic baselines: naive class prior, momentum sign, mean-reversion sign and volatility-normal",
+      "chronological walk-forward baseline evaluation with cutoff-available training labels, purge and embargo",
+      "overlap-adjusted effective sample size based on non-overlapping target intervals",
+      "temporal temperature calibration using earlier outcomes and later temporal validation",
+      "univariate PSI feature-distribution drift diagnostics",
+      "evidence-backed scenario/counter-hypothesis assembly",
+      "fail-closed readiness report validation and independent Ed25519 evaluator attestation"
+    ],
+    "critical_gap": {
+      "xrp_specific_learned_candidate_model": "NOT_IMPLEMENTED",
+      "explanation": "walk_forward.py evaluates deterministic baselines; forecast_ledger.py validates an independently supplied model-readiness report but does not train a model. barrot_agent/models.py and barrot_agent/inference.py manage IBM Granite 4.0-3B Vision image/text inference, not XRP time-series prediction.",
+      "consequence": "the current system is an ingestion, point-in-time integrity, baseline evaluation, calibration, drift and forecast-admission foundation; it is not yet a measured learned XRP prediction model"
+    },
+    "statistical_uncertainty_gap": {
+      "current_gate": "requires model point estimates to beat all four baselines on Brier score and log loss, plus OOS/shadow sample counts, effective horizon windows, calibration, drift, source groups and Ed25519 attestation",
+      "not_implemented": [
+        "paired block-bootstrap confidence intervals for model-minus-baseline Brier differences",
+        "paired block-bootstrap confidence intervals for model-minus-baseline log-loss differences",
+        "source-clustered uncertainty across independent provenance groups",
+        "residual serial-dependence adjustment beyond non-overlapping target-window counting",
+        "confidence intervals for calibration error and shadow performance"
+      ],
+      "explicit_code_limitation": "walk_forward._overlap_adjusted_effective_sample_size documents that its non-overlap count does not correct residual serial dependence or shared-source correlation",
+      "forecast_policy": "do not issue a forecast until this uncertainty gap is addressed and the model demonstrates robust out-of-sample and shadow superiority"
+    },
+    "drift_gap": "feature_drift.py computes univariate PSI and explicitly does not measure label/concept drift",
+    "scenario_gap": "scenario_hypotheses.py assembles authored evidence and counter-hypotheses; it does not infer causal relationships or generate forecast probabilities",
+    "public_signal_status": "NOT_ISSUED",
+    "public_accuracy_status": "NOT_EVALUATED",
+    "legacy_accuracy_status": "45.5% is preserved as invalid variable-horizon legacy scoring and is not predictive-performance evidence",
+    "current_event_registry": {
+      "curated_events": 73,
+      "byte_exact_raw_publisher_receipts_for_run88_web_observations": 0,
+      "model_eligible_events": 0
+    },
+    "next_implementation_sequence": [
+      "capture synchronized historical spot, L2, derivatives, exchange-flow, ETF, stablecoin/collateral and macro observations through the main-only ingestion workflow",
+      "persist exact raw bytes, SHA-256 receipts and trusted external/WORM timestamp anchors with retention sufficient for replay",
+      "build and version an XRP-specific candidate time-series model using only point-in-time verified features",
+      "evaluate chronologically against all four baselines with purge/embargo",
+      "add paired block-bootstrap and source-clustered confidence intervals for Brier/log-loss differences in OOS and independent shadow windows",
+      "require robust improvement, calibration, stable feature and concept drift, and independent evaluator attestation before any forecast"
+    ],
+    "status": "DESIGNED_FOUNDATION_EXECUTED; CANDIDATE_MODEL_AND_DEPENDENCE_AWARE_INFERENCE_NOT_IMPLEMENTED"
+  },
+  "source_independence": {
+    "circle_and_coinbase_10q": "separate issuer-primary filings describing the same commercial relationship; accounting metrics are not independent economic flows",
+    "circle_binance": "Circle SEC disclosure is primary evidence for the equity investment; no inference to XRP demand",
+    "coinbase_collateral": "Coinbase SEC filing is primary but aggregate multi-asset and not XRP-specific",
+    "arc_presale": "Circle SEC disclosure is primary; Arc is a separate Layer 1",
+    "raw_receipts": "these filings were web-read and cited but not captured as byte-exact Barrot raw receipts in this run"
+  },
+  "actions_not_taken": [
+    "No candidate model trained",
+    "No directional forecast issued",
+    "No paper trade",
+    "No real-money action",
+    "No external model transfer",
+    "No deployment or secret rotation"
+  ]
+}

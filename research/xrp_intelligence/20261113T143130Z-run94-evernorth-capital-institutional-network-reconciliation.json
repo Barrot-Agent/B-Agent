@@ -1,0 +1,439 @@
+{
+  "artifact_type": "barrot.xrp.run94.evernorth_capital_institutional_network_reconciliation",
+  "schema_version": "1.0",
+  "run_id": "Run94",
+  "captured_at_utc": "2026-11-13T14:31:30.954Z",
+  "audited_code_head": "b4b5fc3d8c6f8a9dc182b5a5d207c2515565b0cd",
+  "current_docs_head_before_run94": "404a34152adc8535dd3bd803d8eb1ba89e9a2269",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "repository": {
+    "branch": "integration/xrp-v3-unified-main-20261112",
+    "active_pr": 1662,
+    "pr_draft": true,
+    "pr_changed_files": 1115,
+    "pr_commits": 2259,
+    "pr_ahead_by": 2259,
+    "pr_behind_by": 0,
+    "open_prs": 375,
+    "drafts": 361,
+    "non_drafts": 14
+  },
+  "references": {
+    "prior_market_regulatory_lending_evidence": "research/xrp_intelligence/20261113T142317Z-run93c-market-regulatory-security-addendum.json",
+    "prior_nine_platform_map": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run93c.json"
+  },
+  "evidence_policy": {
+    "lawful_public_sources_only": true,
+    "primary_sources_preferred": true,
+    "source_independence_preserved": true,
+    "disagreements_retained": true,
+    "web_raw_byte_hashes_captured": 0,
+    "web_sources_model_eligible": false,
+    "issuer_disclosures_treated_as_primary_but_not_independent_assurance": true
+  },
+  "sources": [
+    {
+      "id": "evernorth_sec_424b3",
+      "type": "SEC prospectus/issuer filing",
+      "primary": true,
+      "filed_date": "2026-11-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "claims": [
+        "October 9, 2026 closing capital stack and XRP holdings.",
+        "$214.05m advance private-placement cash; $10.5m delayed private-placement cash; approximately $48m SPAC trust proceeds; approximately $272.6m gross cash at close before expenses.",
+        "Approximately $214.1m advance cash used to purchase 84,365,876 XRP; venue, counterparty and execution timestamps not disclosed.",
+        "Approximately 388,910,554 XRP contributed in kind; approximately 473m total XRP held at close.",
+        "$30m 4% PIK convertible senior notes issued and paid October 12, 2026; $30m proceeds before expenses.",
+        "Cantor equity line up to 5,218,935 shares and approximately $76.8m potential gross proceeds; zero proceeds received as of prospectus date; $521,893.50 commitment fee.",
+        "Company says it does not actively trade XRP on digital asset markets.",
+        "BitGo is custodian; Coinbase is the selected principal market for accounting valuation."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "circle_sec_s1a",
+      "type": "SEC S-1/A issuer filing",
+      "primary": true,
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm",
+      "claims": [
+        "As of March 31, 2025, approximately 90% of USDC reserves were held in the Circle Reserve Fund managed by BlackRock and custodied by BNY; the remainder was cash distributed across banks.",
+        "The Circle Reserve Fund is a Rule 2a-7 government money market fund holding short-dated U.S. Treasuries, overnight Treasury repos and cash; it is not FDIC-insured or guaranteed by a government agency.",
+        "Circle's S-1/A says Coinbase has a minority equity stake and a USDC distribution/revenue-sharing relationship.",
+        "Coinbase-held USDC was 20% of circulation at 2024-12-31, 25% at 2025-03-31 and 21% at 2025-06-30; historical, not current.",
+        "Circle explicitly says USDC minted/redeemed do not represent the amount acquired or redeemed by end users."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbi_circle_ipo_investment",
+      "type": "SBI Holdings corporate announcement",
+      "primary": true,
+      "published_date": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "claims": [
+        "SBI Holdings and SBI Shinsei Bank announced a combined $50m investment in Circle's IPO; $25m each."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbi_arc_presale",
+      "type": "SBI Holdings corporate announcement",
+      "primary": true,
+      "published_date": "2026-05-12",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "claims": [
+        "SBI Group announced participation in Circle's ARC token presale; SBI-specific amount not disclosed."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "circle_arc_mainnet",
+      "type": "Circle corporate announcement",
+      "primary": true,
+      "published_date": "2026-09-16",
+      "url": "https://www.circle.com/blog/arc-mainnet-is-live",
+      "claims": [
+        "Arc mainnet launched with a permissioned validator set; USDC is gas; SBI Group is a founding validator; Coinbase is listed as an exchange provider, not a validator in this announcement."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "circle_usdc_xrpl",
+      "type": "Circle product announcement",
+      "primary": true,
+      "published_date": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "claims": [
+        "USDC is native on XRPL mainnet; Circle Mint and APIs support it; no bridging is required."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "ripple_rlusd_japan",
+      "type": "Ripple corporate announcement",
+      "primary": true,
+      "published_date": "2026-06-24",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "claims": [
+        "RLUSD launched in Japan through SBI VC Trade following JFSA approval under Japan's Payment Services Act."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbi_ripple_asia_profile",
+      "type": "SBI Holdings corporate profile",
+      "primary": true,
+      "published_date": "2026-03-31",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "claims": [
+        "SBI Group held 60% of SBI Ripple Asia voting rights as of March 31, 2026."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "ripple_sbi_ripple_asia",
+      "type": "Ripple corporate profile",
+      "primary": true,
+      "url": "https://ripple.com/company/sbi-ripple-asia/",
+      "claims": [
+        "SBI Ripple Asia states it does not handle XRP; it describes RippleNet/fintech solutions.",
+        "Ripple describes the ODL service with SBI Remit, Coins.ph and SBI VC Trade as commercialized; current corridor volumes are not disclosed."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "ripple_sbi_odl_launch",
+      "type": "Ripple press release",
+      "primary": true,
+      "published_date": "2021-07-28",
+      "url": "https://ripple.com/ripple-press/ripple-launches-on-demand-liquidity-with-sbi-remit-to-accelerate-and-grow-cross-border-payments-from-japan/",
+      "claims": [
+        "Japan-to-Philippines ODL launch used XRP as a bridge asset through SBI Remit, Coins.ph and SBI VC Trade."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbi_odl_expansion",
+      "type": "SBI Holdings corporate announcement",
+      "primary": true,
+      "published_date": "2023-09-06",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "claims": [
+        "XRP-based remittance routes were announced for bank-account payouts in the Philippines, Vietnam and Indonesia."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbic_east",
+      "type": "regional SBIC official company profile",
+      "primary": true,
+      "url": "https://www.sbic.co.jp/english/company/",
+      "claims": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; distinct legal entity."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbic_central",
+      "type": "regional SBIC official company profile",
+      "primary": true,
+      "url": "https://www.sbic-cj.co.jp/english/company/",
+      "claims": [
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; distinct regional legal entity."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbic_west",
+      "type": "regional SBIC official company profile",
+      "primary": true,
+      "url": "https://www.sbic-wj.co.jp/english/company/",
+      "claims": [
+        "Osaka Small and Medium Business Investment & Consultation Co., Ltd.; distinct regional legal entity."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "sbic_chatgpt_event",
+      "type": "regional SBIC official seminar listing",
+      "primary": true,
+      "published_date": "2026-03-05",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "claims": [
+        "Tokyo SBIC hosted a ChatGPT/Generative AI seminar with Hamamatsu Iwata Shinkin and a Microsoft speaker; this is an SBIC training event, not an OpenAI partnership."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "coinbase_xrp_support",
+      "type": "Coinbase official help page",
+      "primary": true,
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec",
+      "claims": [
+        "Coinbase's help page lists XRP support on Retail, Prime and Custody but excludes New York, Japan and Singapore; availability statement, not a Ripple partnership."
+      ],
+      "raw_payload_sha256": null
+    },
+    {
+      "id": "bybit_orderbook_docs",
+      "type": "Bybit API documentation",
+      "primary": true,
+      "url": "https://bybit-exchange.github.io/docs/v5/market/orderbook",
+      "claims": [
+        "REST spot order-book limit 100 is within the documented range; cts is matching-engine timestamp; ts is system snapshot time; RPI orders are excluded from the standard book."
+      ],
+      "raw_payload_sha256": null
+    }
+  ],
+  "capital_reconciliation": {
+    "closing_date": "2026-10-09",
+    "private_placement_cash": {
+      "advance_usd": 214050000,
+      "delayed_usd": 10500000,
+      "total_usd": 224550000,
+      "reported_rounded_total_usd": 224600000
+    },
+    "spac_trust_cash_released_usd": 48000000,
+    "gross_cash_at_close_reported_usd": 272600000,
+    "advance_cash_used_for_xrp_purchase_usd_reported_rounded": 214100000,
+    "cash_purchased_xrp": 84365876,
+    "implied_cash_per_xrp_usd": 2.537755905005953,
+    "in_kind_xrp": {
+      "advance_subscribers": 600000,
+      "delayed_subscribers": 200000,
+      "arrington_sponsor": 211319096,
+      "larsen_lam_ripple_affiliated_trust": 50000000,
+      "ripple_direct": 126791458,
+      "total": 388910554
+    },
+    "total_xrp_components": 473276430,
+    "cash_purchased_pct_of_components": 17.8,
+    "in_kind_pct_of_components": 82.2,
+    "post_close_debt": {
+      "principal_usd": 30000000,
+      "issued_date": "2026-10-12",
+      "coupon": "4% PIK",
+      "maturity": "2031",
+      "proceeds_before_expenses_usd": 30000000,
+      "purchaser": "NH Investment & Securities as trustee for Kyobo AIM Corporate Finance General Private Investment Trust No. 3"
+    },
+    "contingent_equity": {
+      "facility": "Cantor equity line",
+      "maximum_shares": 5218935,
+      "potential_gross_proceeds_usd": 76800000,
+      "proceeds_received_as_of_2026_11_09_usd": 0,
+      "commitment_fee_usd": 521893.5
+    },
+    "public_warrants": {
+      "count": 11499992,
+      "exercise_price_usd": 11.5,
+      "potential_gross_if_all_cash_exercised_usd": 132249908,
+      "exercise_status": "not verified"
+    },
+    "related_party_credit": {
+      "facility_usd": 10000000,
+      "drawn_by_operating_subsidiary_as_of_2026_10_07_usd": 9700000,
+      "equity": false
+    },
+    "custody": {
+      "custodian": "BitGo Bank & Trust National Association",
+      "xrp_cold_storage_pct": 100,
+      "aggregate_shared_insurance_usd": 250000000,
+      "insurance_dedicated": false,
+      "coverage_as_pct_of_october_9_holdings_value": 36.9
+    },
+    "accounting_market": "Coinbase selected as principal market for fair-value accounting; BitGo is custodian.",
+    "counterevidence": [
+      "Evernorth says it does not actively trade XRP on digital asset markets.",
+      "The 84,365,876 XRP cash-purchase venue, counterparty and timestamps are undisclosed.",
+      "Most treasury XRP was contributed in kind, not bought in open markets.",
+      "No subsequent XRP purchase using the October 12 note proceeds was verified.",
+      "Cantor ELOC had zero proceeds as of the prospectus date."
+    ]
+  },
+  "relationships": [
+    {
+      "from": "SBI Holdings",
+      "to": "Evernorth",
+      "relationship": "equity ownership through four controlled entities",
+      "evidence": "9,431,914 Class A plus 2,359,038 Class C shares; 21.4% of common stock and 39.9% voting power",
+      "caveat": "not SBIC East/Central/West"
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relationship": "direct XRP contribution, affiliate XRP contribution, related-party credit/advisory links",
+      "evidence": "126,791,458 XRP direct; 50m XRP from Ripple-affiliated trust; $10m credit facility with $9.7m drawn by operating subsidiary; disclosed board/adviser relationships",
+      "caveat": "in-kind contributions are not market purchases"
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relationship": "strategic shareholder and SBI Ripple Asia joint venture",
+      "evidence": "SBI stated approximately 9% Ripple ownership in 2025; SBI Group 60% of SBI Ripple Asia voting rights as of 2026-03-31",
+      "caveat": "current Ripple equity percentage not reverified"
+    },
+    {
+      "from": "SBI Remit/SBI VC Trade",
+      "to": "Ripple ODL",
+      "relationship": "historical commercial XRP bridge remittance rail",
+      "evidence": "2021 Japan–Philippines launch; 2023 route expansion",
+      "caveat": "current corridor volumes not disclosed"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "Ripple RLUSD",
+      "relationship": "regulated Japanese stablecoin distribution",
+      "evidence": "2026-06-24 Japan launch after JFSA approval",
+      "caveat": "RLUSD distribution does not prove XRP bridge use"
+    },
+    {
+      "from": "SBI Holdings/SBI Shinsei Bank",
+      "to": "Circle",
+      "relationship": "$50m Circle IPO investment and strategic JV",
+      "evidence": "SBI corporate announcement",
+      "caveat": "exact JV ownership ratio not confirmed in retrieved primary source"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relationship": "founding validator and ARC presale participant",
+      "evidence": "Circle Arc launch and SBI presale announcement",
+      "caveat": "SBI-specific presale amount undisclosed; Arc uses USDC gas, not XRP"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relationship": "native USDC issuance",
+      "evidence": "2025-06-12 Circle announcement",
+      "caveat": "XRPL stablecoin activity is not proof of material XRP demand"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relationship": "minority equity stake and USDC distribution/revenue share",
+      "evidence": "Circle S-1/A; Coinbase held 21% of USDC circulation as of 2025-06-30",
+      "caveat": "historical share; not current; their flow measures are economically linked"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Evernorth",
+      "relationship": "principal market for accounting valuation",
+      "evidence": "SEC prospectus",
+      "caveat": "not custodian; BitGo is custodian"
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "relationship": "USDC and RLUSD coexist on XRPL",
+      "evidence": "Circle USDC and Ripple RLUSD network support",
+      "caveat": "no direct commercial partnership verified"
+    }
+  ],
+  "sbic_identity": {
+    "distinction": "SBIC East, Central and West are three separate regional Japanese Small and Medium Business Investment & Consultation companies, not SBI Holdings.",
+    "east": {
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "corporate_number": "9011001030621",
+      "url": "https://www.sbic.co.jp/english/company/"
+    },
+    "central": {
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "url": "https://www.sbic-cj.co.jp/english/company/"
+    },
+    "west": {
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "url": "https://www.sbic-wj.co.jp/english/company/"
+    },
+    "chatgpt_phrase": "No exact authoritative match for 'SBIC, ChatGPT SBIC' or an OpenAI partnership. Tokyo SBIC did host a ChatGPT seminar on 2026-03-05 with a Microsoft speaker."
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "status": "unresolved",
+      "finding": "No primary XRPL issuer or XRP relationship verified; Permission Coin (ASK) and an unrelated Ask Coin exchange listing remain separate candidates."
+    },
+    "actual_capital": {
+      "status": "primary_source_reconciled",
+      "finding": "Distinguish private-placement cash used to buy XRP, delayed cash, SPAC trust, in-kind XRP, post-close debt and unused ELOC capacity."
+    },
+    "sbic_chatgpt": {
+      "status": "no_partnership_evidence",
+      "finding": "An SBIC-hosted ChatGPT seminar is real; no OpenAI commercial/data partnership verified."
+    },
+    "camilla_kamilah_stevenson": {
+      "status": "partially_verified",
+      "video_url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+      "title": "Thinking Your Way Into Health — TEDxWillowCreek",
+      "identity": "Kamilah Stevenson is verified as the TEDx speaker; personal channel ownership and broader channel inventory remain unverified; Camilla spelling remains separate."
+    }
+  },
+  "prediction_and_data_quality": {
+    "run93c_reference": "research/xrp_intelligence/20261113T142317Z-run93c-market-regulatory-security-addendum.json",
+    "source_definitions": 48,
+    "scheduled_sources": 46,
+    "curated_events": 73,
+    "raw_byte_exact_hashes": 0,
+    "model_eligible_events": 0,
+    "candidate_model_implemented": false,
+    "candidate_model_trained": false,
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean_reversion",
+      "volatility"
+    ],
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "reason": "no synchronized byte-hashed historical market/depth/derivatives dataset or verified real-data out-of-sample lift"
+  },
+  "limitations": [
+    "SEC and corporate announcements are primary but issuer-reported; they are not all independent evidence.",
+    "The Evernorth $214.1m XRP purchase has no disclosed venue, counterparty or execution timestamp.",
+    "Current ODL corridor volumes are not disclosed.",
+    "Coinbase-held USDC percentages are historical 2025 values.",
+    "Circle Mint mint/redeem is not an end-user acquisition measure.",
+    "No direct Circle-Ripple commercial partnership verified.",
+    "No live Bybit API test or geographic restriction bypass.",
+    "No nine-platform external collaboration or data transfer."
+  ]
+}

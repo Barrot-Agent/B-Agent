@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "artifact_type": "cross_provider_xrp_market_microstructure_snapshot",
+  "captured_at_utc": "2026-11-03T20:05:45Z",
+  "capture_method": "Public web pages retrieved during one research pass; provider-specific timestamps and coverage retained separately.",
+  "mission_priority": "xrp_intelligence_and_prediction_engine",
+  "sources": [
+    {
+      "id": "M1",
+      "publisher": "CoinMarketCap",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "source_type": "market_aggregator",
+      "provider_timestamp": "not exposed",
+      "retrieved_at_utc": "2026-11-03T20:05:45Z",
+      "reported": {
+        "price_usd": 1.28,
+        "change_24h_pct": 3.41,
+        "volume_24h_usd": 1798321517,
+        "market_cap_usd": 81122952802,
+        "circulating_supply_xrp": 63351197653
+      },
+      "limitations": [
+        "Dynamic aggregate; exact server cutoff not exposed.",
+        "Not an executable quote or synchronized venue snapshot."
+      ]
+    },
+    {
+      "id": "M2",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_type": "derivatives_aggregator",
+      "provider_timestamp": "2026-11-03T15:30:00Z",
+      "reported": {
+        "mark_price_usd": 1.2747,
+        "change_24h_pct": 1.88,
+        "open_interest_usd": 2000000000,
+        "open_interest_change_24h_pct": 4.4,
+        "funding_rate_8h_pct": 0.01,
+        "liquidations_24h_usd_at_least": 5180000,
+        "long_liquidations_usd": 2570000,
+        "short_liquidations_usd": 2610000,
+        "long_short_accounts_ratio": 3.22,
+        "long_accounts_share_pct": 76.3,
+        "exchange_coverage": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ]
+      },
+      "limitations": [
+        "Provider states 15-minute delay.",
+        "Aggregated OI methodology and contract normalization require independent reproduction.",
+        "Account-count long/short ratio is not position-size or notional exposure."
+      ]
+    },
+    {
+      "id": "M3",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_type": "derivatives_aggregator",
+      "provider_timestamp": "2026-11-03T15:22:00Z",
+      "reported": {
+        "price_usd": 1.27,
+        "open_interest_usd": 1460000000,
+        "open_interest_change_24h_pct": 5.9,
+        "funding_rate_8h_pct": 0.0101,
+        "liquidations_24h_usd": 4900000,
+        "long_liquidations_usd": 2300000,
+        "short_liquidations_usd": 2600000,
+        "binance_long_accounts_share_pct": 69.9
+      },
+      "limitations": [
+        "Page labels coverage all exchanges but detailed constituent/methodology coverage was not independently verified.",
+        "Binance account share is not market-wide notional positioning."
+      ]
+    },
+    {
+      "id": "M4",
+      "publisher": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "source_type": "derivatives_aggregator",
+      "provider_timestamp": "2026-11-03T12:09:00Z",
+      "reported": {
+        "open_interest_usd": 849140000,
+        "funding_rate_8h_pct": 0.0091,
+        "volume_24h_usd": 1150000000,
+        "contract_count": 7,
+        "exchange_coverage": [
+          "Binance",
+          "Bybit",
+          "OKX",
+          "Hyperliquid",
+          "HTX"
+        ]
+      },
+      "limitations": [
+        "Different timestamp and contract/exchange coverage from M2 and M3.",
+        "Not directly comparable without instrument-level normalization."
+      ]
+    },
+    {
+      "id": "M5",
+      "publisher": "ByKaranteli",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "source_type": "spot_etf_flow_aggregator",
+      "provider_timestamp": "last complete US trading day 2026-11-02; refreshed 2026-11-03T09:09:00Z",
+      "reported": {
+        "net_flow_2026_11_02_usd": -530000,
+        "cumulative_net_inflow_since_launch_usd": 1810000000,
+        "total_net_assets_usd": 1420000000,
+        "latest_complete_day_fund_rows": 5
+      },
+      "limitations": [
+        "Provider says daily data are provisional until settled.",
+        "Fund universe and issuer-level source files must be reconciled."
+      ]
+    },
+    {
+      "id": "M6",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_type": "issuer_file_etf_aggregator",
+      "provider_timestamp": "2026-11-03T05:18:00Z",
+      "reported": {
+        "net_flow_2026_10_30_xrp": -1123743,
+        "net_flow_2026_10_30_usd": -1400000,
+        "holdings_xrp_2026_10_30": 1076819240,
+        "funds_included_2026_10_30": 4,
+        "2026_11_02_status": "partial; 3 of 4 issuer files published; Franklin XRPZ pending"
+      },
+      "limitations": [
+        "Different dates, included fund counts and cutoffs from M5.",
+        "Preserve XRP units and USD estimates separately; do not average with other trackers."
+      ]
+    },
+    {
+      "id": "M7",
+      "publisher": "TheXRPInvestor",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "source_type": "etf_market_dashboard",
+      "provider_timestamp": "updated 2026-11-03; exact time not exposed",
+      "reported": {
+        "products_reported": 12,
+        "spot_products_reported": 6,
+        "derivative_products_reported": 4,
+        "index_products_reported": 1,
+        "total_aum_usd": 1530000000,
+        "total_xrp_in_trust": 1190000000,
+        "total_daily_volume_usd": 7730000
+      },
+      "limitations": [
+        "Listed category counts sum to 11, not 12.",
+        "Combines spot, derivative and index products; AUM and XRP in trust are not directly comparable with spot-only trackers."
+      ]
+    },
+    {
+      "id": "M8",
+      "publisher": "XRPL.to",
+      "url": "https://xrpl.to/token-market",
+      "source_type": "xrpl_dex_analytics",
+      "provider_timestamp": "2026-11-03 15:42:34; timezone not exposed",
+      "reported": {
+        "volume_24h_xrp": 3420000,
+        "trades_24h": 137024,
+        "unique_traders_24h": 10850,
+        "amm_liquidity_xrp": 24960000,
+        "amm_pool_count": 22577,
+        "amm_share_of_volume_pct": 19.4,
+        "firstledger_all_time_platform_volume_share_pct": 90
+      },
+      "limitations": [
+        "Token-market DEX aggregates are not total XRPL ledger payments or global XRP spot volume.",
+        "FirstLedger share is an all-time platform metric, not a 24-hour share.",
+        "Provider timezone and raw ledger cutoff were not exposed."
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "M-OBS1",
+      "classification": "provider_reported_aggregate",
+      "claim": "CoinMarketCap displayed XRP at $1.28, up 3.41% over 24 hours, with approximately $1.798B 24-hour volume and $81.12B market capitalization.",
+      "source_ids": [
+        "M1"
+      ],
+      "confidence": "medium",
+      "reason": "Provider aggregate is clear but exact quote timestamp and constituent venue weights are not exposed."
+    },
+    {
+      "id": "M-OBS2",
+      "classification": "cross_provider_disagreement",
+      "claim": "XRP derivatives open interest snapshots ranged from approximately $849.14M to $2.00B across three providers.",
+      "source_ids": [
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "confidence": "high_for_disagreement",
+      "reason": "The reported values and timestamps are explicit; the range is not a valid consolidated estimate because exchange, contract and methodology coverage differ."
+    },
+    {
+      "id": "M-OBS3",
+      "classification": "cross_provider_convergence_with_limits",
+      "claim": "All three derivatives providers reported positive funding near 0.0091% to 0.0101% per eight hours; two reported long-account shares near 70% to 76%.",
+      "source_ids": [
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "confidence": "medium",
+      "reason": "Positive funding direction is consistent, but sampling times, contracts and account-vs-notional measures differ."
+    },
+    {
+      "id": "M-OBS4",
+      "classification": "cross_provider_disagreement",
+      "claim": "Two providers reported approximately $4.9M to at least $5.18M of XRP liquidations over 24 hours, with long and short liquidations nearly balanced.",
+      "source_ids": [
+        "M2",
+        "M3"
+      ],
+      "confidence": "medium",
+      "reason": "Coverage differs and one provider reports a lower bound."
+    },
+    {
+      "id": "M-OBS5",
+      "classification": "provisional_etf_flow",
+      "claim": "ByKaranteli reports a $530K net outflow for 2026-11-02, while CryptoKeyhole reports a 2026-10-30 outflow of 1.124M XRP (about $1.4M) and says 2026-11-02 issuer coverage is incomplete.",
+      "source_ids": [
+        "M5",
+        "M6"
+      ],
+      "confidence": "medium",
+      "reason": "Different dates, fund universes and settlement status; these observations are not contradictory measurements of the same completed session."
+    },
+    {
+      "id": "M-OBS6",
+      "classification": "data_quality_warning",
+      "claim": "A third ETF dashboard reports 12 products but its listed categories total 11 and it combines spot, derivative and index products.",
+      "source_ids": [
+        "M7"
+      ],
+      "confidence": "high",
+      "reason": "Internal category arithmetic does not reconcile; do not use its aggregate as a spot-only measure."
+    },
+    {
+      "id": "M-OBS7",
+      "classification": "provider_reported_onchain_activity",
+      "claim": "XRPL.to displayed 3.42M XRP of 24-hour token DEX volume, 137,024 trades, 10,850 unique traders and 24.96M XRP of AMM liquidity.",
+      "source_ids": [
+        "M8"
+      ],
+      "confidence": "medium",
+      "reason": "Useful ecosystem activity snapshot, but not total ledger payment volume or external XRP spot demand."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "M-H1",
+      "thesis": "Rising open interest, positive funding and a long-account skew increase the chance that leverage amplifies the next material move.",
+      "status": "plausible_volatility_hypothesis_not_directional",
+      "supporting": [
+        "Three providers show positive funding.",
+        "Two providers show a majority of long accounts.",
+        "Two providers show 24-hour OI growth."
+      ],
+      "disconfirming": [
+        "Liquidations are currently reported as nearly balanced between longs and shorts.",
+        "Open-interest levels disagree materially across providers.",
+        "Account counts do not measure notional positioning."
+      ]
+    },
+    {
+      "id": "M-H2",
+      "thesis": "Spot ETF ownership and cumulative inflows provide a structural institutional access channel, but recent daily flows are mixed and provisional.",
+      "status": "plausible_structural_channel_not_short_term_signal",
+      "supporting": [
+        "Trackers report material cumulative inflows and holdings."
+      ],
+      "disconfirming": [
+        "Recent complete/partial sessions include outflows.",
+        "Issuer coverage and fund classifications differ.",
+        "ETF share flows do not alone reveal intraday XRP execution or hedging."
+      ]
+    },
+    {
+      "id": "M-H3",
+      "thesis": "XRPL DEX activity can rise without a proportional increase in XRP investment demand.",
+      "status": "plausible_and_testable",
+      "supporting": [
+        "Token DEX volume includes many issued assets and stablecoin pairs.",
+        "DEX aggregate is distinct from centralized spot volume and payments."
+      ],
+      "disconfirming": [
+        "XRP remains the native fee and reserve asset.",
+        "XRP may be used as an intermediary in some routes; route-level evidence is required."
+      ]
+    },
+    {
+      "id": "M-H4",
+      "thesis": "A broad market or macro factor may explain much of the current XRP price move, with XRP-specific flows contributing less.",
+      "status": "unresolved",
+      "supporting": [
+        "Current snapshot lacks matched BTC, ETH, rates, dollar, volatility and cross-asset controls."
+      ],
+      "disconfirming": [
+        "No causal conclusion is possible without synchronized comparative data."
+      ]
+    }
+  ],
+  "model_feature_policy": {
+    "preserve_provider_series_separately": true,
+    "never_average_open_interest_without_instrument_level_reconciliation": true,
+    "never_mix_spot_etf_with_derivative_or_index_products": true,
+    "distinguish_account_long_short_ratio_from_notional_exposure": true,
+    "distinguish_xrpl_dex_token_volume_from_global_xrp_spot_volume": true,
+    "require_timestamp_timezone_units_exchange_universe_contract_and_methodology": true,
+    "no_directional_forecast_issued": true
+  },
+  "next_actions": [
+    "Reconcile XRP perpetual open interest by exchange, contract, settlement asset and timestamp using exchange-native public endpoints.",
+    "Rebuild ETF flows from issuer holdings/creation-redemption files with a fixed fund universe and finalized session cutoffs.",
+    "Capture synchronized spot order-book depth and trades from multiple major venues.",
+    "Join XRPL ledger-level DEX executions and payment transactions to token issuer/currency IDs; keep stablecoin and XRP-denominated paths separate.",
+    "Add BTC, ETH, broad crypto index, USD, rates and volatility controls before attributing the move to XRP-specific drivers."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "no_private_data": true,
+    "no_wallet_interaction": true,
+    "no_trading": true,
+    "no_market_manipulation": true
+  },
+  "forecast_status": "NOT_ISSUED"
+}

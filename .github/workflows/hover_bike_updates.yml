@@ -31,14 +31,16 @@ jobs:
         run: |
           pip install --upgrade pip
 
-      - name: Generate hover bike design artefacts
+      - name: Generate hover bike design artefacts from repository root
+        run: python hover_bike_revolution/src/hover_bike_generator.py
+
+      - name: Generate component analysis reports
         working-directory: hover_bike_revolution
         run: |
-          python src/hover_bike_generator.py
           python src/magnetic_system_designer.py > /tmp/magnetic_report.json
           python src/propulsion_simulator.py    > /tmp/propulsion_report.json
           python src/power_management_system.py > /tmp/power_report.json
-          echo "Design artefacts generated"
+          echo "Component analysis reports generated"
 
       - name: Run simulations
         working-directory: hover_bike_revolution
@@ -49,9 +51,8 @@ jobs:
           python simulations/flight_dynamics_sim.py
           echo "Simulations complete"
 
-      - name: Generate documentation
-        working-directory: hover_bike_revolution
-        run: python src/assembly_guide_generator.py
+      - name: Generate documentation from repository root
+        run: python hover_bike_revolution/src/assembly_guide_generator.py
 
       - name: Estimate print cost
         working-directory: hover_bike_revolution

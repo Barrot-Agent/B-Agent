@@ -409,3 +409,61 @@ def test_controller_restores_revision_invariants_and_normalizes_rollback_plan():
     assert "constraints" in result.attempts[1]["invariant_repairs"]
     assert "objective" in result.attempts[1]["invariant_repairs"]
     assert "tasks[0].rollback_plan" in result.attempts[1]["invariant_repairs"]
+
+
+@pytest.mark.parametrize(
+    "instruction",
+    [
+        "Run git reset --hard HEAD to recover.",
+        "Run git clean -fdx before retrying.",
+        "Run git stash push --all to hide local work.",
+        "Run git restore --worktree . to discard local edits.",
+        "Run git checkout -- . to discard local edits.",
+        "Run rm -rf .git to clean the repository.",
+        "Run Remove-Item -Recurse -Force .git.",
+        "Run git push --force-with-lease origin main.",
+        "Run git push -f origin main.",
+        "Run git branch -D main.",
+        "Run git rebase main.",
+        "Run git commit --amend to replace the prior commit.",
+        "Run git filter-repo --force.",
+        "Discard all uncommitted user changes before retrying.",
+    ],
+)
+def test_recovery_plan_rejects_destructive_repository_operations(instruction):
+    bundle = sample_bundle()
+    bundle["recovery_plan"].append(instruction)
+    result = review_work_bundle(bundle)
+    assert "UNSAFE_RECOVERY_ACTION" in {finding.code for finding in result.findings}
+    assert result.valid is False
+
+
+def test_explicit_prohibitions_of_destructive_commands_are_allowed():
+    bundle = sample_bundle()
+    bundle["recovery_plan"] = [
+        "Never run git reset --hard.",
+        "Never run git clean.",
+        "Never run git stash.",
+        "Resume from the last verified checkpoint and block if state is ambiguous.",
+    ]
+    result = review_work_bundle(bundle)
+    assert result.valid is True
+    assert "UNSAFE_RECOVERY_ACTION" not in {finding.code for finding in result.findings}
+
+
+def test_prohibition_does_not_mask_a_later_destructive_command():
+    bundle = sample_bundle()
+    bundle["recovery_plan"] = [
+        "Never run git reset --hard. If recovery fails, run git clean -fdx."
+    ]
+    result = review_work_bundle(bundle)
+    assert "UNSAFE_RECOVERY_ACTION" in {finding.code for finding in result.findings}
+
+
+def test_task_rollback_plan_rejects_destructive_repository_operations():
+    bundle = sample_bundle()
+    bundle["tasks"][0]["rollback_plan"] = [
+        "Run git restore --worktree . if validation fails."
+    ]
+    result = review_work_bundle(bundle)
+    assert "UNSAFE_RECOVERY_ACTION" in {finding.code for finding in result.findings}

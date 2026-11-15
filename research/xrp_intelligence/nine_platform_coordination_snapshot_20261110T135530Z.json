@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_id": "20261110T135530Z-run131",
+  "captured_at_utc": "2026-11-10T13:55:30Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head_before_snapshot_commit": "12d9a32201199738a27030b0f6873a16fbce6597",
+    "active_integration_pr": 1640,
+    "pr_ahead_by": 962,
+    "pr_behind_by": 0,
+    "pr_changed_files": 270,
+    "open_prs": 372,
+    "draft_prs": 356,
+    "non_draft_prs": 16
+  },
+  "mission_priority": {
+    "rank": 1,
+    "objective": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "platforms": {
+    "ChatGPT": {
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "capabilities": [
+        "public web research",
+        "GitHub main/integration inspection",
+        "existing integration branch read/write",
+        "open PR inventory and changed-path overlap analysis",
+        "exact-head CI, dependency audit and workflow-log verification"
+      ],
+      "permissions": {
+        "repository_read": true,
+        "existing_branch_write": true,
+        "main_write": false,
+        "branch_protection_admin": false,
+        "secrets_access": false,
+        "external_deployment": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": true,
+        "direction": "Current ChatGPT session <-> Barrot-Agent/B-Agent existing integration branch; public web evidence -> current session",
+        "persistent_external_model_exchange": false
+      },
+      "evidence": [
+        "Main and complete recursive trees inspected.",
+        "All 372 open PRs enumerated across four pages.",
+        "PR #1640 exact-head full suite passed 1,380 tests, eight subtests, 59.58% coverage on 12d9a322.",
+        "Six-manifest dependency audit passed; fail-closed gate passed.",
+        "Latest BLS CPI, CFTC XRP TFF, spot, spot depth, derivatives, ETF and Circle SEC filing reviewed."
+      ]
+    },
+    "Claude": {
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [
+        "Independent SEC/OCC/legal source audit planned",
+        "Counter-hypothesis review planned"
+      ],
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [],
+      "limitations": [
+        "No authenticated session or data-flow test"
+      ]
+    },
+    "Grok": {
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [
+        "Independent market-structure and event-disagreement review planned"
+      ],
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [],
+      "limitations": [
+        "No authenticated session or data-flow test"
+      ]
+    },
+    "Gemini": {
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [
+        "Independent XRPL ledger and amendment review planned"
+      ],
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [],
+      "limitations": [
+        "No authenticated session or data-flow test"
+      ]
+    },
+    "Copilot": {
+      "authentication_status": "COMMENT_ONLY_ACTIVITY",
+      "capabilities": [
+        "GitHub review comments observed"
+      ],
+      "permissions": {
+        "review_comments_observed": true,
+        "review_submissions": 62,
+        "approved_reviews": 0,
+        "review_threads": 22,
+        "resolved_threads": 22,
+        "outdated_threads": 22,
+        "code_write_verified": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "No persistent external data pipeline verified"
+      },
+      "evidence": [
+        "PR #1640 has 62 COMMENTED reviews and zero approvals.",
+        "All 22 inline review threads are resolved but outdated."
+      ],
+      "limitations": [
+        "Comment activity is not approval or persistent authenticated data exchange"
+      ]
+    },
+    "Codex": {
+      "authentication_status": "UNVERIFIED",
+      "capabilities": [
+        "Independent code/test review planned"
+      ],
+      "permissions": {
+        "repository_access": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [],
+      "limitations": [
+        "No authenticated session or data-flow test"
+      ]
+    },
+    "Hugging Face": {
+      "authentication_status": "UNVERIFIED_PRIOR_BUILD_ERROR",
+      "capabilities": [
+        "Model hosting/evaluation planned"
+      ],
+      "permissions": {
+        "upload": false,
+        "space_restart": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [
+        "Prior BUILD_ERROR; no deployment or Space restart performed"
+      ],
+      "limitations": [
+        "No current authentication or successful build verification"
+      ]
+    },
+    "Kaggle": {
+      "authentication_status": "UNTESTED",
+      "capabilities": [
+        "Benchmark dataset evaluation planned"
+      ],
+      "permissions": {
+        "dataset_download": false,
+        "competition_submission": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [],
+      "limitations": [
+        "No Kaggle submission or authenticated data flow"
+      ]
+    },
+    "Databricks": {
+      "authentication_status": "UNVERIFIED_PRIOR_HTTP_403",
+      "capabilities": [
+        "Warehouse/feature-store analytics planned"
+      ],
+      "permissions": {
+        "workspace_read": false,
+        "workspace_write": false,
+        "external_data_transfer": false
+      },
+      "data_flow": {
+        "verified": false,
+        "direction": "none"
+      },
+      "evidence": [
+        "Main Pillars workflow returned HTTP 403; no workspace write"
+      ],
+      "limitations": [
+        "No current authenticated workspace access"
+      ]
+    }
+  },
+  "independent_assignments": [
+    {
+      "platform": "ChatGPT",
+      "task": "Integrate public evidence, inspect repository, verify exact-head CI and maintain canonical handoff",
+      "status": "EXECUTED"
+    },
+    {
+      "platform": "Claude",
+      "task": "Independent SEC/OCC/legal source and corporate relationship red-team review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Grok",
+      "task": "Independent spot/depth/derivatives and counter-hypothesis review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Gemini",
+      "task": "Independent XRPL ledger, amendment and on-chain oracle review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Copilot",
+      "task": "Review code and identify correctness/security objections",
+      "status": "COMMENT_ONLY; NO_APPROVAL"
+    },
+    {
+      "platform": "Codex",
+      "task": "Independent code, test and dependency review",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Hugging Face",
+      "task": "Model hosting/evaluation after authenticated build verification",
+      "status": "BLOCKED"
+    },
+    {
+      "platform": "Kaggle",
+      "task": "Benchmark dataset research only; no submission",
+      "status": "UNTESTED"
+    },
+    {
+      "platform": "Databricks",
+      "task": "Warehouse/feature-store evaluation after authenticated access",
+      "status": "BLOCKED_HTTP_403"
+    }
+  ],
+  "least_privilege": {
+    "external_model_data_transfer": false,
+    "secret_transfer": false,
+    "main_write": false,
+    "unapproved_external_action": false
+  },
+  "red_team": {
+    "independent_external_review": "NOT_EXECUTED",
+    "minority_objections": "Preserved in evidence and handoff; no external model opinions fabricated."
+  }
+}

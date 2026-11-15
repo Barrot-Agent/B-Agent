@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp_kraken_binance_macro_context_reconciliation_20261107T114313Z",
+  "recorded_at_utc": "2026-11-07T11:43:13Z",
+  "recorded_time_basis": "Latest known reference timestamp in this run; the web retrieval interface did not expose an exact retrieval timestamp. Treat this as a reference time, not a claim that both API responses were captured at precisely this instant.",
+  "market_snapshot": {
+    "asset": "XRP",
+    "spot": {
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "last_usd": 1.16894,
+      "best_bid_usd": 1.16879,
+      "best_ask_usd": 1.1688,
+      "bid_size_xrp": 3767,
+      "ask_size_xrp": 4278,
+      "level_1_spread_bps": 0.08555820310717885,
+      "rolling_24h_volume_xrp": 27118515.73954739,
+      "rolling_24h_vwap_usd": 1.17687018,
+      "utc_daily_open_usd": 1.17749,
+      "last_vs_utc_daily_open_pct": -0.7261208163126476,
+      "last_vs_rolling_24h_vwap_pct": -0.6738364294352372,
+      "rolling_24h_low_usd": 1.15046,
+      "rolling_24h_high_usd": 1.20135,
+      "rolling_24h_trade_count": 30250,
+      "provider_event_timestamp_utc": null,
+      "freshness_status": "UNKNOWN_NO_PROVIDER_TIMESTAMP",
+      "model_feature_eligible": false,
+      "limitation": "Kraken ticker field `o` is the UTC daily open, not a rolling-24-hour open. The response has no provider event timestamp. Only Level-1 quote sizes are present; this is not a depth ladder."
+    },
+    "derivatives": {
+      "venue": "Binance USD-M perpetual",
+      "contract": "XRPUSDT",
+      "mark_price_usdt": 1.1699,
+      "index_price_usdt": 1.170233,
+      "estimated_settle_price_usdt": 1.17078331,
+      "last_funding_rate_fraction": 0.0001,
+      "last_funding_rate_pct_per_8h": 0.01,
+      "provider_timestamp_utc": "2026-11-07T11:22:50Z",
+      "reference_time_utc": "2026-11-07T11:43:13Z",
+      "minimum_age_at_reference_seconds": 1223,
+      "next_funding_time_utc": "2026-11-07T16:00:00Z",
+      "freshness_status": "STALE_OVER_300_SECONDS",
+      "model_feature_eligible": false,
+      "limitation": "The premium-index response reports lastFundingRate, not a forecast of the next rate. Open interest and multi-level depth endpoints were not retrievable through this capture path."
+    }
+  },
+  "raw_source_receipts": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "exchange_native_public_api",
+      "independence_group": "kraken_exchange_market_data",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16880000\",\"4278\",\"4278.000\"],\"b\":[\"1.16879000\",\"3767\",\"3767.000\"],\"c\":[\"1.16894000\",\"4.72456278\"],\"v\":[\"9337569.57075395\",\"27118515.73954739\"],\"p\":[\"1.16583064\",\"1.17687018\"],\"t\":[10827,30250],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.20135000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_sha256": "f86efa0393564a6b5251643e9a831326ed90613eb9b5d9ccdbf97328cfc411e0",
+      "hash_scope": "SHA-256 of exact JSON text exposed by the retrieval interface; not original HTTP wire bytes, headers, TLS metadata or an independently timestamped exchange receipt.",
+      "provider_event_timestamp_utc": null
+    },
+    {
+      "source_id": "binance_xrpusdt_premium_index",
+      "source_url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "source_type": "exchange_native_public_api",
+      "independence_group": "binance_usdm_market_data",
+      "raw_response_text": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.16990000\",\"indexPrice\":\"1.17023300\",\"estimatedSettlePrice\":\"1.17078331\",\"lastFundingRate\":\"0.00010000\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794067200000,\"time\":1794050570000}",
+      "raw_response_sha256": "90a442322b5fe23b10dc2deea6b40d2cc666b6e89e112b1b103b89c5b61d7d1b",
+      "hash_scope": "SHA-256 of exact JSON text exposed by the retrieval interface; not original HTTP wire bytes or headers.",
+      "provider_event_timestamp_utc": "2026-11-07T11:22:50Z"
+    }
+  ],
+  "secondary_market_context": [
+    {
+      "source_id": "coindesk_global_derivatives_liquidations_20261106",
+      "publisher": "CoinDesk",
+      "source_url": "https://www.coindesk.com/daybook-us/2026/11/06/over-usd1-billion-in-bullish-bets-liquidated-while-etf-flows-suggest-no-help-in-spot-market",
+      "published_at_utc": "2026-11-06T12:30:00Z",
+      "reported_context": {
+        "crypto_derivatives_liquidations_24h_usd_at_least": 1270000000,
+        "bullish_liquidations_usd_at_least": 1100000000,
+        "us_spot_bitcoin_etf_net_outflows_thursday_usd": 430200000
+      },
+      "normalized_excerpt": "CoinDesk reported more than $1.27 billion in total crypto derivatives liquidations over the prior 24 hours, including more than $1.1 billion in bullish positions, and $430.2 million of U.S. spot Bitcoin ETF net outflows on Thursday. This is broad crypto/BTC context, not XRP-specific.",
+      "normalized_excerpt_sha256": "80d90bebb2b42a261f4384d4f6d9d4224135d413c75f03a298e2a13d6d107e94",
+      "raw_article_bytes_captured": false,
+      "xrp_attribution_permitted": false
+    },
+    {
+      "source_id": "reuters_us_money_market_fund_flows_20261106",
+      "publisher": "Reuters / LSEG Lipper",
+      "source_url": "https://www.reuters.com/business/caution-over-midterms-ai-cash-burn-drives-surge-us-money-market-fund-inflows-2026-11-06/",
+      "published_at_utc": "2026-11-06T11:23:00Z",
+      "reported_context": {
+        "us_money_market_fund_net_inflows_week_to_2026_11_04_usd": 117970000000,
+        "us_equity_fund_net_inflows_usd": 14810000000,
+        "technology_industrials_communication_services_sector_fund_outflows": true
+      },
+      "normalized_excerpt": "Reuters reported $117.97 billion of U.S. money-market fund inflows for the week to November 4, while U.S. equity funds received $14.81 billion; technology, industrial and communication-services sector funds recorded outflows. This is macro risk context, not an XRP-specific flow.",
+      "normalized_excerpt_sha256": "5f5f61b4799811b4e670c05cd00bc6c43eb22271e7f4cecd3c90092aec721de6",
+      "raw_article_bytes_captured": false,
+      "xrp_attribution_permitted": false
+    },
+    {
+      "source_id": "cryptoticker_okx_xrp_derivatives_analysis_20261106",
+      "publisher": "CryptoTicker",
+      "source_url": "https://cryptoticker.io/en/xrp-price-drop-etf-standstill/",
+      "publication_date": "2026-11-06",
+      "market_data_vintage": "Article identifies spot price context around 2026-11-06T05:50:00Z; derivatives series spans prior observations and exact per-observation timestamps are not supplied in the retrieved excerpt.",
+      "reported_context": {
+        "okx_xrp_futures_open_interest_usd_from": 128900000,
+        "okx_xrp_futures_open_interest_usd_to": 117400000,
+        "open_interest_change_pct": -8.9216446858,
+        "long_to_short_account_ratio_peak": 4.12,
+        "long_to_short_account_ratio_latest_reported": 3.91,
+        "latest_reported_funding_rate_pct_per_8h": 0.0024
+      },
+      "normalized_excerpt": "CryptoTicker's November 6 analysis, based on OKX XRP futures data, reported open interest declining from $128.9 million to $117.4 million, the long-to-short account ratio reaching 4.12 and later 3.91, and the latest reported funding rate at 0.0024% per eight-hour interval. These are secondary analysis figures, not a direct exchange receipt.",
+      "normalized_excerpt_sha256": "9f473370f658c112f2c548801fa6cd0b55307443cdc38f7f13e2c9300fd2f0e7",
+      "raw_article_bytes_captured": false,
+      "independence_group": "cryptoticker_analysis_using_okx_market_data",
+      "model_feature_eligible": false
+    }
+  ],
+  "retrieval_limitations": {
+    "retrieval_time_utc": null,
+    "retrieval_time_precision": "The retrieval interface did not expose a precise capture timestamp.",
+    "inaccessible_endpoints": [
+      "https://us.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "https://api.exchange.coinbase.com/products/XRP-USD/ticker",
+      "https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT",
+      "https://fapi.binance.com/fapi/v1/openInterest?symbol=XRPUSDT",
+      "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100",
+      "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2",
+      "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"
+    ],
+    "inaccessible_endpoint_interpretation": "These URLs were not retrievable through this web capture path. This does not establish that the exchange endpoints were down.",
+    "no_synchronized_cross_venue_book": true,
+    "no_executable_depth_estimate": true,
+    "no_xrp_specific_global_liquidation_attribution": true
+  },
+  "competing_hypotheses": [
+    {
+      "id": "broad_risk_off_and_leverage_reduction",
+      "status": "plausible_context_not_xrp_specific",
+      "support": [
+        "CoinDesk's broad crypto liquidation report",
+        "Reuters' money-market inflow and sector rotation report"
+      ],
+      "counterevidence": [
+        "No synchronized BTC-equity-XRP event panel was captured",
+        "These sources do not establish the cause of the Kraken quote"
+      ]
+    },
+    {
+      "id": "xrp_specific_long_position_crowding",
+      "status": "plausible_but_secondary",
+      "support": [
+        "CryptoTicker's OKX long-account ratio and open-interest observations"
+      ],
+      "counterevidence": [
+        "Secondary analysis rather than direct exchange receipts",
+        "No synchronized current OI, funding and price series"
+      ]
+    },
+    {
+      "id": "venue_liquidity_and_quote_fragmentation",
+      "status": "unresolved",
+      "support": [
+        "Only Kraken Level-1 quote available in this capture",
+        "Other venue and depth endpoints were inaccessible"
+      ],
+      "counterevidence": [
+        "No direct evidence that fragmentation caused the observed price"
+      ]
+    },
+    {
+      "id": "institutional_flows_offset_by_macro_or_derivatives",
+      "status": "unresolved",
+      "support": [
+        "Prior ETF-flow and derivatives disagreement in the research archive"
+      ],
+      "counterevidence": [
+        "No current issuer-confirmed ETF creation/redemption data in this capture"
+      ]
+    }
+  ],
+  "model_admission": {
+    "eligible_for_feature_store": false,
+    "eligible_for_directional_forecast": false,
+    "reasons": [
+      "Kraken spot response has no provider event timestamp.",
+      "Binance funding observation is at least 1,223 seconds old at the recorded reference time, above the 300-second threshold.",
+      "No synchronized cross-venue price/depth/OI panel was retrieved.",
+      "Secondary sources are context only and are not independent exchange-native receipts."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED"
+}

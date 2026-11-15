@@ -404,3 +404,16 @@ def _case_multistage_attack(workspace: Path) -> dict[str, object]:
     decision = watchdog.inspect_patch(path="pkg/module.py", new_content='api_key = "secret"\n', reason="persist access")
     assert watchdog.safe_mode_active is True
     return {"final_decision": decision.to_dict(), "snapshot": watchdog.snapshot()}
+
+def test_default_watchdog_denies_neutral_external_repository_sync(tmp_path: Path) -> None:
+    watchdog = new_watchdog(tmp_path)
+    decision = watchdog.authorize(
+        Capability.EXTERNAL_ACTION,
+        "git push origin barrot/task",
+        authorization="repository_sync",
+        process="git push",
+    )
+
+    assert decision.allowed is False
+    assert decision.reason == "Requested capability is not authorized."
+

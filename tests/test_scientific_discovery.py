@@ -569,6 +569,16 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
 def test_checkout_branch_uses_safe_task_branch_helper_and_rejects_unsafe_names(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script_module("barrot_agent_resume_branch_test")
+    monkeypatch.setattr(module, "list_open_pull_requests", lambda: [])
+    monkeypatch.setattr(module, "require_external_action_approval", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "require_pr_dedup_attestation", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        module,
+        "run",
+        lambda args, *, check=True, quiet=False: module.subprocess.CompletedProcess(
+            args, 1, stdout="", stderr=""
+        ),
+    )
     calls: list[tuple[Path, str]] = []
 
     def fake_safe_checkout(workspace, branch):
@@ -590,6 +600,13 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
     monkeypatch.setenv("ISSUE_NUMBER", "42")
     monkeypatch.setenv("BRANCH", "barrot/task-42")
     monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-science-approval")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "barrot/task-42")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "repository_sync,pull_request_create")
+    monkeypatch.setenv("BARROT_PR_DEDUP_VERIFIED", "YES")
+    monkeypatch.setenv("BARROT_PR_DEDUP_EVIDENCE", "test open-PR/path/commit review")
     module = load_script_module("barrot_agent_persist_science_test")
     module.ROOT = tmp_path
     calls: list[list[str]] = []
@@ -612,6 +629,8 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
         return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
 
     def fake_run_gh(args):
+        if args[:2] == ["pr", "list"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="[]", stderr="")
         pr_calls.append(args)
         return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
 
@@ -644,6 +663,13 @@ def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Pa
     monkeypatch.setenv("ISSUE_NUMBER", "42")
     monkeypatch.setenv("BRANCH", "barrot/task-42")
     monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVED", "YES")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "test-real-git-approval")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTION_BRANCH", "barrot/task-42")
+    monkeypatch.setenv("BARROT_EXTERNAL_ACTIONS", "repository_branch_create,repository_sync,pull_request_create")
+    monkeypatch.setenv("BARROT_PR_DEDUP_VERIFIED", "YES")
+    monkeypatch.setenv("BARROT_PR_DEDUP_EVIDENCE", "test open-PR/path/commit review")
     module = load_script_module("barrot_agent_real_git_persistence_test")
     remote = tmp_path / "origin.git"
     workspace = tmp_path / "workspace"
@@ -666,15 +692,17 @@ def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Pa
     module.REPO = "Barrot-Agent/B-Agent"
     module.ISSUE = "42"
     module.TITLE = "Navier-Stokes research"
-    module.checkout_branch(module.BRANCH)
 
     pr_calls: list[list[str]] = []
 
     def fake_run_gh(args):
+        if args[:2] == ["pr", "list"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="[]", stderr="")
         pr_calls.append(args)
         return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
 
     monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    module.checkout_branch(module.BRANCH)
     cycle = {
         "cycle_id": "cycle-42",
         "problem_id": "navier_stokes_millennium_prize",
@@ -816,9 +844,84 @@ def test_scientific_track_output_fails_closed_after_bad_retry(monkeypatch) -> No
         def think(self, message, system=None):
             return "still not JSON"
 
-    with pytest.raises(RuntimeError, match="invalid JSON after one compact retry"):
+    with pytest.raises(RuntimeError, match="invalid response after one compact retry"):
         module._parse_scientific_track_output(
             "not JSON",
             FakeBrain(),
             {"track": {"track_id": "adversarial_mathematical_verification"}},
+        )
+
+
+def test_scientific_track_output_retries_schema_violations(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_scientific_schema_retry_test")
+    import json
+
+    valid = {
+        "findings": ["Provisional result"],
+        "open_questions": ["Needs independent check"],
+        "counterarguments": ["Assumption may be too strong"],
+        "recommended_checks": ["Reproduce the derivation"],
+    }
+    invalid_cases = []
+    wrong_type = dict(valid)
+    wrong_type["findings"] = "not an array"
+    invalid_cases.append(wrong_type)
+    missing_key = dict(valid)
+    del missing_key["recommended_checks"]
+    invalid_cases.append(missing_key)
+    extra_key = dict(valid)
+    extra_key["unreviewed_claim"] = ["must not pass"]
+    invalid_cases.append(extra_key)
+    too_many = dict(valid)
+    too_many["findings"] = ["one", "two", "three", "four"]
+    invalid_cases.append(too_many)
+    non_string = dict(valid)
+    non_string["findings"] = [7]
+    invalid_cases.append(non_string)
+    too_long = dict(valid)
+    too_long["findings"] = ["x" * 301]
+    invalid_cases.append(too_long)
+
+    class FakeBrain:
+        def __init__(self):
+            self.calls = 0
+
+        def think(self, message, system=None):
+            self.calls += 1
+            return json.dumps(valid)
+
+    for index, invalid in enumerate(invalid_cases):
+        brain = FakeBrain()
+        result = module._parse_scientific_track_output(
+            json.dumps(invalid),
+            brain,
+            {"track": {"track_id": f"schema_case_{index}"}},
+        )
+        assert brain.calls == 1
+        assert result == valid
+
+
+def test_scientific_track_output_fails_closed_after_schema_retry(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_scientific_schema_retry_fail_test")
+    import json
+    import pytest
+
+    invalid = {
+        "findings": ["x" * 301],
+        "open_questions": [],
+        "counterarguments": [],
+        "recommended_checks": [],
+    }
+
+    class FakeBrain:
+        def think(self, message, system=None):
+            return json.dumps(invalid)
+
+    with pytest.raises(RuntimeError, match="invalid response after one compact retry"):
+        module._parse_scientific_track_output(
+            json.dumps(invalid),
+            FakeBrain(),
+            {"track": {"track_id": "schema_failure"}},
         )

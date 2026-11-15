@@ -15,15 +15,6 @@ KimiClient
     Kimi 3 model integration for paradigm-shifting feedback.
 RecursiveFeedbackLoop
     Self-improving recursive feedback loop orchestrator.
-refine_data / refine_json_file
-    Ping-pong model refinement — THE baseline of all data processing.
-    Alternating models refine + critique until a measured fixed point.
-RefinementPipeline / refine_document
-    Patch-based refinement of LARGE documents: segmentation, validated
-    patches, rollback, resumability, semantic evaluation, regression
-    testing, persistent learning history.
-LLMSemanticJudge
-    Independent semantic judge (never the refiner's own model).
 """
 
 from .smart_agent import (
@@ -43,39 +34,6 @@ from .upgrade_flywheel import (
     UpgradeFlywheel,
     VerificationResult,
 )
-from .refinement import (
-    HeuristicRefiner,
-    LLMSemanticJudge,
-    OpenCodeRefiner,
-    PingPongRefiner,
-    Refiner,
-    RefinementPipeline,
-    RefinementReport,
-    make_model_refiners,
-    refine_data,
-    refine_document,
-    refine_json_file,
-)
-
-__all__ = [
-    "SmartAgent",
-    "AgentEvent",
-    "AgentEventType",
-    "PlanStep",
-    "ToolCall",
-    "ToolResult",
-    "HeuristicRefiner",
-    "LLMSemanticJudge",
-    "OpenCodeRefiner",
-    "PingPongRefiner",
-    "Refiner",
-    "RefinementPipeline",
-    "RefinementReport",
-    "make_model_refiners",
-    "refine_data",
-    "refine_document",
-    "refine_json_file",
-]
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
@@ -176,3 +134,40 @@ if _research_available:
 
 if _creative_available:
     __all__ += ["ProductionDirector", "CreativeProductionRecord"]
+
+# Optional derived-data refinement. External LunaRoute use is default-deny.
+try:
+    from .refinement import (
+        EXTERNAL_REFINEMENT_ALLOWED_CLASSES, IMMUTABLE_DATA_CLASSES,
+        REFINABLE_DATA_CLASSES, HeuristicRefiner, LunaRouteRefiner,
+        PingPongRefiner, Refiner, RefinementOutput, RefinementReport,
+        RoundRecord, make_model_refiners, refine_data, refine_json_file,
+        scoring, ref_paths, DocumentAudit, Slot, audit_document,
+        segment_document, BatchResult, Patch, VerificationReport,
+        apply_patches, detect_conflicts, make_delete, make_replace,
+        make_set, make_splice, rollback, verify_against_original,
+        CALIBRATION_CASES, LLMSemanticJudge, SemanticVerdict, calibrate,
+        evaluate, heuristic_semantic_eval, IMPLEMENTATION_VERSION,
+        RefinementPipeline, RunState, SectionState, find_completed,
+        load_run, refine_document,
+    )
+    _refinement_available = True
+except Exception:
+    _refinement_available = False
+
+if _refinement_available:
+    __all__ += [
+        "EXTERNAL_REFINEMENT_ALLOWED_CLASSES", "IMMUTABLE_DATA_CLASSES",
+        "REFINABLE_DATA_CLASSES", "HeuristicRefiner", "LunaRouteRefiner",
+        "PingPongRefiner", "Refiner", "RefinementOutput",
+        "RefinementReport", "RoundRecord", "make_model_refiners",
+        "refine_data", "refine_json_file", "scoring", "ref_paths",
+        "DocumentAudit", "Slot", "audit_document", "segment_document",
+        "BatchResult", "Patch", "VerificationReport", "apply_patches",
+        "detect_conflicts", "make_delete", "make_replace", "make_set",
+        "make_splice", "rollback", "verify_against_original",
+        "CALIBRATION_CASES", "LLMSemanticJudge", "SemanticVerdict",
+        "calibrate", "evaluate", "heuristic_semantic_eval",
+        "IMPLEMENTATION_VERSION", "RefinementPipeline", "RunState",
+        "SectionState", "find_completed", "load_run", "refine_document",
+    ]
