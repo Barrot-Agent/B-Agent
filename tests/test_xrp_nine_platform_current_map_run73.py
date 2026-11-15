@@ -149,7 +149,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["failed"] == latest_suite["failed"]
     assert suite["subtests"] == latest_suite["subtests"]
     assert suite["coverage_percent"] == latest_suite["coverage_percent"]
-    assert suite["exact_head_verified"] is True
+    assert suite["exact_head"] is True
     latest = ci["latest_attempt"]
     assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
     assert len(latest["head_sha"]) == 40 and all(ch in "0123456789abcdef" for ch in latest["head_sha"])
@@ -634,16 +634,16 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_snapshot_remains_historical_and_run153_is_latest_ci():
+def test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
+    run154 = data["run154_snapshot"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run153"
+    assert data["latest_run_id"] == "Run154"
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
-    assert run152["documentation_commit_head_sha"] != data["integration_pr"]["head_sha"]
-    assert run152["documentation_commit_head_sha"] != data["repository_state"]["integration_head_before_current_map_commit"]
+    assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
     assert run152["main_sha"] == data["repository_state"]["main_sha"]
     assert run152["full_suite"]["head_sha"] == run152["documentation_commit_head_sha"]
     assert run152["full_suite"]["passed"] == 3787
@@ -652,7 +652,7 @@ def test_run152_snapshot_remains_historical_and_run153_is_latest_ci():
     assert run152["last_known_good_full_suite"]["passed"] == 3787
     assert run152["last_known_good_full_suite"]["failed"] == 0
     assert run152["last_known_good_full_suite"]["head_sha"] == run152["integration_head_at_capture"]
-    assert run152["followup_ci"]["head_sha"] == data["integration_pr"]["head_sha"]
+    assert run152["followup_ci"]["head_sha"] == run153["integration_head_at_capture"]
     assert run152["followup_ci"]["passed"] == 3788
     assert run152["followup_ci"]["failed"] == 0
     assert run152["followup_ci"]["conclusion"] == "success"
@@ -663,7 +663,7 @@ def test_run152_snapshot_remains_historical_and_run153_is_latest_ci():
     assert run152["accuracy_status"] == "NOT_EVALUATED"
     assert run152["merge_decision"] == "NO_MERGE"
     assert run152["market"]["raw_source_sha256_captured"] is False
-    assert run153["integration_head_at_capture"] == data["integration_pr"]["head_sha"]
+    assert run153["integration_head_at_capture"] == run153["full_suite"]["head_sha"]
     assert run153["full_suite"]["passed"] == 3788
     assert run153["full_suite"]["failed"] == 0
     assert run153["full_suite"]["skipped"] == 1
@@ -675,8 +675,26 @@ def test_run152_snapshot_remains_historical_and_run153_is_latest_ci():
     assert run153["accuracy_status"] == "NOT_EVALUATED"
     assert run153["merge_decision"] == "NO_MERGE"
     assert run153["handoff_commit_ci_pending"] is True
-    assert latest["head_sha"] == run153["integration_head_at_capture"]
-    assert latest["conclusion"] == "success"
-    assert latest["full_repository_suite"]["passed"] == 3788
-    assert latest["full_repository_suite"]["failed"] == 0
+    assert run154["integration_head_at_capture"] == data["integration_pr"]["head_sha"]
+    assert run154["full_suite"]["head_sha"] == run154["integration_head_at_capture"]
+    assert run154["full_suite"]["passed"] == 3787
+    assert run154["full_suite"]["failed"] == 1
+    assert run154["full_suite"]["skipped"] == 1
+    assert run154["full_suite"]["subtests"] == 19
+    assert run154["full_suite"]["exact_head"] is True
+    assert run154["full_suite"]["failing_tests"] == [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+    ]
+    assert run154["dependency_audit"]["manifests"] == 6
+    assert run154["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run154["fail_closed_gate"]["passed"] is True
+    assert run154["forecast_status"] == "NOT_ISSUED"
+    assert run154["accuracy_status"] == "NOT_EVALUATED"
+    assert run154["merge_decision"] == "NO_MERGE"
+    assert run154["correction"]["test_contract_fixed"] is True
+    assert run154["correction"]["tests_weakened"] is False
+    assert latest["head_sha"] == run154["integration_head_at_capture"]
+    assert latest["conclusion"] == "failure"
+    assert latest["full_repository_suite"]["passed"] == 3787
+    assert latest["full_repository_suite"]["failed"] == 1
     assert latest["full_repository_suite"]["exact_head"] is True
