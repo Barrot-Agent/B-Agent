@@ -150,6 +150,62 @@
       "skipped": 1,
       "subtests": 19,
       "coverage_percent": 64.02
+    },
+    "latest_map_minification_commit": {
+      "head_sha": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
+      "run_id": 43714047461,
+      "job_id": 132811628169,
+      "conclusion": "failure",
+      "passed": 3787,
+      "failed": 3,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 172.8,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_snapshot_is_append_only_and_research_remains_model_ineligible",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_corrective_commit_snapshot_tracks_exact_head_ci_and_research_addendum"
+      ],
+      "classification": "Exact-head full-suite failed on 10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9: three evidence-contract mismatches, not runtime or XRP prediction-engine failures. The defects are (1) historical Run162 parent-head assertions still bound to the latest attempt, (2) the Run162 market snapshot lacks an explicit model_eligible=false field, and (3) the Run162 corrective-head classification does not include the exact evidence-contract wording required by its regression test. Correct the snapshot bindings and wording without weakening tests.",
+      "core_tests": {
+        "head_sha": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
+        "run_id": 43714047461,
+        "job_id": 132811628384,
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "push_run_id": 43714047456,
+        "pr_run_id": 43714052793,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "push_run_id": 43714047483,
+        "pr_run_id": 43714052822,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "pr_event": {
+        "run_id": 43714052787,
+        "conclusion": "success",
+        "pages_validation": "success",
+        "pages_validation_job_id": 132811643988,
+        "pages_manifest_rendered": true,
+        "core_tests": "skipped by integration-branch condition",
+        "full_suite": "skipped by integration-branch condition",
+        "dependency_audit_run": 43714052793,
+        "fail_closed_gate_run": 43714052822
+      }
     }
   },
   "correction": {
@@ -210,7 +266,14 @@
       "mode": "scheduled read-only"
     },
     "xrp_ingestion": "integration-only, main-ref-only schedule, read-only repository permissions, artifacts/cache; not WORM; no main run.",
-    "manual_external_actions": "Databricks workspace import/Kaggle download, Cloudflare deployment/secret rotation, Hugging Face upload and Coinbase paper simulation were not dispatched."
+    "manual_external_actions": "Databricks workspace import/Kaggle download, Cloudflare deployment/secret rotation, Hugging Face upload and Coinbase paper simulation were not dispatched.",
+    "pr_pages_validation": {
+      "run_id": 43714052787,
+      "job_id": 132811643988,
+      "conclusion": "success",
+      "manifest_rendered": true,
+      "build_only": true
+    }
   },
   "market": {
     "captured_at_utc": "2026-11-15T11:58:47Z",
@@ -693,11 +756,12 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Correct the three remaining map/test contract assertions and restore compact single-line map JSON; run the full repository suite on the new exact head.",
+    "Correct the three remaining evidence-contract assertions: bind the original seven-failure Run162 snapshot separately from the latest attempt, set model_eligible=false explicitly on the Run162 market snapshot, and use the required evidence-contract wording.",
+    "Rerun the full repository suite on the next exact integration head; retain all historical Run152-Run162 snapshots and do not weaken tests.",
     "Finish semantic review of all 1,249 changed paths, including 48 workflow files and every called script.",
     "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
-    "Keep main's automatic Barrot Sync quarantined in the successor; latest main run was a false-green import failure with broad token permissions.",
-    "Resolve the main Pages build failure and publication side effects before any merge.",
+    "Keep main's automatic Barrot Sync quarantined; latest main run was a false-green import failure with broad token permissions.",
+    "Resolve the main Pages build/publication side effect before any merge; PR Pages build-only validation succeeded and a merge could publish the site.",
     "Add byte-exact raw-source receipts to the 85-event registry and establish independent WORM storage and trusted timestamp anchoring.",
     "Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets; preserve provider disagreement and source independence.",
     "Do not train or issue a directional XRP forecast until out-of-sample superiority against all four baselines, calibration, drift and independent shadow outcomes are verified."
@@ -707,13 +771,13 @@
     "number": 1662,
     "state": "open",
     "draft": true,
-    "head_sha": "fb1e554fc469be246de1755e84774d91a405094e",
+    "head_sha": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "ahead_by": 2490,
+    "ahead_by": 2491,
     "behind_by": 0,
-    "commits": 2490,
+    "commits": 2491,
     "changed_files": 1249,
-    "additions": 394254,
+    "additions": 347981,
     "deletions": 6309,
     "workflow_files": 48,
     "other_changed_paths": 1201
@@ -754,8 +818,7 @@
     },
     "circle_arc_sbi": {
       "announced": "2026-08-05",
-      "public_mainnet_launch": "2026-09-16",
-      "network_type": "Circle describes Arc as an open Layer-1; launch architecture operates with a permissioned validator set",
+      "mainnet_launch": "2026-09-16",
       "founding_validators": [
         "BlackRock",
         "DTCC",
@@ -769,26 +832,59 @@
         "Sumitomo Corporation",
         "Visa"
       ],
-      "sbi_entity": "Circle's announcement says SBI Group; it does not identify the exact legal SBI subsidiary, so do not silently equate this with SBI Holdings.",
-      "relationship": "SBI Group is a founding validator participant in a separate Circle network; this is distinct from Circle SBI Japan K.K. and from SBIC East/Central/West.",
-      "xrp_implication": "Potential competing/complementary institutional settlement rail; no XRP usage or Ripple partnership inferred."
+      "sbi_group_attribution": "Circle names SBI Group as a founding validator and quotes Yoshitaka Kitao as Chairman, President and CEO of SBI Holdings. This supports group-level attribution to SBI Holdings, but the exact legal validator subsidiary is not identified.",
+      "sbi_vc_trade_usdc_distribution": "Circle states SBI VC Trade became the first and only company in Japan to distribute USDC in March 2025.",
+      "jpysc": "JPYSC is a trust-type yen stablecoin issued by SBI Shinsei Trust; Circle's Arc launch material says SBI Group intends to leverage USDC and JPYSC on Arc.",
+      "network": "Circle describes Arc as an open Layer-1 with native USDC and sub-second finality; launch disclaimer states it is operated by a permissioned validator set.",
+      "xrp_implication": "Separate Circle payment/settlement rail and possible XRPL competitor/complement; Circle USDC is also natively issued on XRPL. No inference that Arc transactions require XRP."
     },
     "sbic_chatgpt": "SBIC West October 23 2024 ChatGPT/generative-AI seminar plus SBIC East training are primary evidence of educational activity, not an OpenAI commercial partnership.",
     "youtube_identity": "Two candidate channels surfaced, but first-party site does not link either. Linktree self-assertion is not sufficient identity verification. No video inventory.",
     "actual_capital": {
+      "circle_arc_token_presale": {
+        "genesis_mint_date": "2026-09-14",
+        "genesis_supply_tokens": 10000000000,
+        "presale": {
+          "tokens_sold": 807500000,
+          "price_per_token_usd": 0.3,
+          "gross_proceeds_usd": 242200000,
+          "implied_fully_diluted_valuation_usd": 3000000000,
+          "revenue_recognized_usd": 181800000,
+          "deferred_revenue_usd": 60400000,
+          "idg_capital_purchase_usd": 25000000,
+          "idg_purchase_included_in_presale_total": true
+        },
+        "lockup": "At least one year after transition to PoS/DPoS; additional transfer restrictions may extend through four years after that transition.",
+        "repayment_rights": "Token purchase agreements provide repayment rights if the network has not transitioned to PoS/DPoS by May 8, 2028, tokens are not delivered, or specified regulatory conditions are not met.",
+        "public_launch_commitment": false,
+        "public_trading_status": "No public ARC token launch commitment was identified in Circle's reviewed Q3 filing and launch materials; do not treat presale tokens as public circulating supply.",
+        "classification": "Token-sale proceeds/operating cash-flow category, not equity capital, not USDC issuance and not XRP investment."
+      },
       "binance_circle_equity": {
-        "amount_usd": 100000000,
-        "classification": "primary equity proceeds to Circle",
+        "shares": 1237011,
+        "price_per_share_usd": 80.84,
+        "gross_proceeds_usd": 100000000,
+        "classification": "primary equity cash to Circle",
+        "commercial_term_years": 5,
+        "monthly_incentive_fee_basis": "percentage of USDC held through Circle's Modular Smart Contract Wallet infrastructure service",
+        "fee_rate_disclosed": false,
+        "lockup": "until earlier of second anniversary or specified termination",
         "not_xrp_investment": true
       },
       "circle_coinbase_distribution_costs": {
         "q3_2026_usd": 331300000,
         "nine_months_2026_usd": 986600000,
-        "classification": "Circle distribution expense paid to Coinbase; not capital raised, not XRP flow"
+        "classification": "Circle distribution expense paid to Coinbase, not Coinbase net profit or XRP capital flow"
       },
       "circle_binance_distribution_fee": {
-        "classification": "monthly incentive expense based on USDC held through Modular Smart Contract Wallet",
-        "rate_disclosed": false
+        "rate_disclosed": false,
+        "classification": "monthly USDC-balance-based distribution expense; not separately quantified in reviewed Q3 filing"
+      },
+      "circle_tazapay_consideration": {
+        "announced_share_consideration_usd": 400000000,
+        "status": "pending acquisition, expected 2027 subject to approvals",
+        "cash_consideration_usd": 0,
+        "classification": "Circle share consideration, not $400M cash"
       },
       "evernorth": {
         "closing_gross_cash_proceeds_usd": 272600000,
@@ -805,10 +901,10 @@
         "undrawn ELOC capacity",
         "ETF issuer-reported holdings changes",
         "exchange-wallet balance changes",
-        "RLUSD/USDC circulation",
+        "RLUSD/USDC supply",
         "market capitalization"
       ],
-      "rule": "Never add an XRP purchase funded from closing cash a second time to gross proceeds; do not equate stablecoin supply, ETF holdings change or wallet balances with new cash invested in XRP."
+      "rule": "Keep equity, token presale proceeds, operating revenue/deferred revenue, debt, cash XRP purchases, in-kind XRP, warrant proceeds, undrawn capacity and distribution expenses separate. Do not count a cash XRP purchase again on top of the gross proceeds that funded it."
     },
     "sources": [
       {
@@ -909,14 +1005,100 @@
         "source_independence_group": "coinmarketcap_aggregator",
         "raw_sha256": null,
         "model_eligible": false
+      },
+      {
+        "source": "Circle Q3 2026 Form 10-Q: ARC token presale, Binance equity placement, Coinbase distribution costs, Circle National Trust",
+        "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "source_timestamp": "2026-11-04",
+        "retrieved_at_utc": "2026-11-15T12:40:34.626Z",
+        "source_independence_group": "sec_circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Circle Arc mainnet launch announcement",
+        "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+        "source_timestamp": "2026-09-16",
+        "retrieved_at_utc": "2026-11-15T12:40:34.626Z",
+        "source_independence_group": "circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Circle Arc founding validator cohort announcement",
+        "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+        "source_timestamp": "2026-08-05",
+        "retrieved_at_utc": "2026-11-15T12:40:34.626Z",
+        "source_independence_group": "circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Circle native USDC on XRPL announcement",
+        "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+        "source_timestamp": "2025-06-12",
+        "retrieved_at_utc": "2026-11-15T12:40:34.626Z",
+        "source_independence_group": "circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
       }
-    ]
+    ],
+    "circle_arc_token_presale": {
+      "genesis_mint_date": "2026-09-14",
+      "genesis_supply_tokens": 10000000000,
+      "presale": {
+        "tokens_sold": 807500000,
+        "price_per_token_usd": 0.3,
+        "gross_proceeds_usd": 242200000,
+        "implied_fully_diluted_valuation_usd": 3000000000,
+        "revenue_recognized_usd": 181800000,
+        "deferred_revenue_usd": 60400000,
+        "idg_capital_purchase_usd": 25000000,
+        "idg_purchase_included_in_presale_total": true
+      },
+      "lockup": "At least one year after transition to PoS/DPoS; additional transfer restrictions may extend through four years after that transition.",
+      "repayment_rights": "Token purchase agreements provide repayment rights if the network has not transitioned to PoS/DPoS by May 8, 2028, tokens are not delivered, or specified regulatory conditions are not met.",
+      "public_launch_commitment": false,
+      "public_trading_status": "No public ARC token launch commitment was identified in Circle's reviewed Q3 filing and launch materials; do not treat presale tokens as public circulating supply.",
+      "classification": "Token-sale proceeds/operating cash-flow category, not equity capital, not USDC issuance and not XRP investment."
+    },
+    "circle_arc_mainnet": {
+      "date": "2026-09-16",
+      "status": "public mainnet launched",
+      "reported_ecosystem": "Circle reports more than 100 apps and more than 100 institutional/ecosystem builders at launch; company-reported adoption, not independently verified transaction volume.",
+      "validator_model": "Permissioned validator set at launch despite Circle's open-L1 positioning.",
+      "gas_asset": "USDC",
+      "arc_token": {
+        "genesis_mint_date": "2026-09-14",
+        "genesis_supply_tokens": 10000000000,
+        "presale": {
+          "tokens_sold": 807500000,
+          "price_per_token_usd": 0.3,
+          "gross_proceeds_usd": 242200000,
+          "implied_fully_diluted_valuation_usd": 3000000000,
+          "revenue_recognized_usd": 181800000,
+          "deferred_revenue_usd": 60400000,
+          "idg_capital_purchase_usd": 25000000,
+          "idg_purchase_included_in_presale_total": true
+        },
+        "lockup": "At least one year after transition to PoS/DPoS; additional transfer restrictions may extend through four years after that transition.",
+        "repayment_rights": "Token purchase agreements provide repayment rights if the network has not transitioned to PoS/DPoS by May 8, 2028, tokens are not delivered, or specified regulatory conditions are not met.",
+        "public_launch_commitment": false,
+        "public_trading_status": "No public ARC token launch commitment was identified in Circle's reviewed Q3 filing and launch materials; do not treat presale tokens as public circulating supply.",
+        "classification": "Token-sale proceeds/operating cash-flow category, not equity capital, not USDC issuance and not XRP investment."
+      },
+      "exchange_access": "Circle names Binance, Coinbase, Kraken and Upbit among digital-asset access providers; this is not proof of exclusive or comprehensive commercial contracts."
+    }
   },
   "map_representation_correction": {
     "original_parent_map_size_bytes": 1648476,
     "first_correction_map_size_bytes": 2073446,
     "first_correction_newline_count": 46646,
     "correction": "Restore single-line JSON while preserving all data and historical snapshots.",
-    "tests_weakened": false
-  }
+    "tests_weakened": false,
+    "current_head": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
+    "current_map_size_bytes": 1715712,
+    "current_newline_count": 1
+  },
+  "current_integration_head_after_minification": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9"
 }

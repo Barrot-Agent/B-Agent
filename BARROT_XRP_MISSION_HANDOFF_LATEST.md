@@ -7395,3 +7395,73 @@ The first-party site identifies Dr Kamilah Stevenson. Two public channel candida
 The current map and tests are being corrected again from exact head `fb1e554f`. The latest completed suite on that head is 3,786/3, with three remaining evidence-contract failures described above. The follow-up commit's full suite is pending. PR #1662 remains draft and unmerged. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
 
 No main-branch write, merge, deployment, external-model dispatch, secret rotation, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run162 current-head verification and Circle Arc capital/validator addendum
+
+### Exact-head result on the minified-map commit
+
+On exact head `10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9`, full-suite run [43714047461](https://github.com/Barrot-Agent/B-Agent/actions/runs/43714047461) completed with **3,787 passed, 3 failed, 1 skipped, 19 subtests, 64.02% coverage**, in 172.80 seconds.
+
+Core tests passed (742, zero failures, eight subtests). Six-manifest push and PR dependency audits passed with zero known vulnerabilities. Push and PR fail-closed gates passed. PR Pages build-only validation [43714052787](https://github.com/Barrot-Agent/B-Agent/actions/runs/43714052787) succeeded and verified that the global mission manifest rendered. PR-event core and full-suite jobs were skipped; the push-event full suite is authoritative.
+
+The three remaining failures are test/evidence-contract mismatches:
+
+1. A historical Run162 parent-head assertion still points at the latest attempt rather than the immutable parent snapshot.
+2. The Run162 market snapshot does not explicitly contain `model_eligible=false`, despite the descriptive eligibility field.
+3. The historical corrective-head test requires the exact phrase “evidence-contract mismatches” in its failure classification.
+
+The next correction separates the original Run162 parent snapshot (seven failures), first corrective snapshot (three failures), and minification snapshot (three failures); adds the explicit model eligibility flag; and preserves exact test assertions. No runtime, ingestion or prediction-engine failure was observed.
+
+### Circle Arc presale: a new capital-flow distinction
+
+Circle's Q3 2026 Form 10-Q reports **$242.2M gross proceeds from an institutional ARC-token presale**: 807.5M tokens at $0.30 each, implying a $3B fully diluted valuation. Circle recognized $181.8M as revenue and deferred $60.4M. A $25M IDG Capital affiliate purchase is included in the $242.2M, not additive.
+
+The 10B ARC genesis supply was minted September 14, 2026. Presale tokens carry a minimum one-year lockup after transition to PoS/DPoS, with additional transfer restrictions potentially extending to four years after transition. Agreements provide repayment rights if the network has not transitioned by May 8, 2028, tokens are not delivered, or specified regulatory conditions are not met. Circle's reviewed materials do not establish a public ARC-token launch; do not treat presale allocations as publicly circulating supply.
+
+This is token-sale/operating-cash-flow proceeds, not equity capital, USDC issuance, reserve deposits or XRP investment. Keep it separate from Binance's $100M primary equity placement in Circle.
+
+Sources: [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), [Circle Arc mainnet launch](https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet).
+
+### SBI Group, Circle, USDC, JPYSC and Arc
+
+Circle's August 5 validator announcement names **SBI Group** among Arc's founding validators and quotes Yoshitaka Kitao as Chairman, President and CEO of SBI Holdings. This supports group-level attribution to SBI Holdings, but the exact legal validator subsidiary is not identified.
+
+Circle's September 16 Arc launch material states:
+- SBI VC Trade became the first and only company in Japan to distribute USDC in March 2025.
+- JPYSC is a trust-type yen stablecoin issued by SBI Shinsei Trust.
+- SBI Group intends to leverage USDC and JPYSC on Arc.
+- Arc launched as a separate Layer-1 with native USDC, USDC gas and sub-second finality. Circle calls it an open L1 but states that the launch validator set is permissioned.
+- Circle names more than 100 applications and more than 100 institutional/ecosystem builders at launch; these are company-reported adoption figures, not independently verified XRP settlement volume.
+
+Circle's native USDC has also been live on XRPL since June 12, 2025, through Circle Mint and APIs without bridging. That is a direct technical deployment on XRPL, not proof of a commercial partnership with Ripple. USDC and RLUSD can coexist on XRPL; not every stablecoin payment requires XRP.
+
+This produces a more accurate relationship graph:
+- SBI Group ↔ Circle: Circle SBI Japan K.K., USDC distribution through SBI VC Trade, Arc validator participation and JPYSC/USDC strategy.
+- SBI Group ↔ Ripple: SBI VC Trade RLUSD distribution in Japan, SBI Ripple Asia and Evernorth/SBI ownership relationships.
+- Circle ↔ Ripple/XRPL: native USDC on XRPL, while Circle's separate Arc network competes/complements as another institutional payment rail.
+- Coinbase ↔ Circle: USDC distribution economics and Coinbase National Trust.
+- Coinbase ↔ Ripple: RLUSD platform distribution, with Coinbase Global Exchange collateral support described as future, not live.
+- Binance ↔ Circle: $100M equity placement and five-year USDC distribution agreement.
+- PNC ↔ Coinbase ↔ Circle: incoming USDC pilot on Ethereum, not XRP settlement.
+- BNY ↔ Ripple and BNY ↔ Circle Arc: separate custody/exploratory integrations, not exclusive commitments.
+
+Sources: [Circle Arc founding validators](https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch), [Circle Arc mainnet launch](https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet), [Circle USDC on XRPL](https://www.circle.com/blog/now-available-usdc-on-the-xrpl).
+
+### Capital categories preserved
+
+- Circle ARC presale: $242.2M token-sale proceeds; $181.8M recognized, $60.4M deferred; $25M IDG included.
+- Binance private placement: $100M primary equity proceeds to Circle.
+- Coinbase distribution costs: $331.3M in Q3 and $986.6M for nine months; Circle expense, not Coinbase net profit or XRP flow.
+- Binance monthly incentive: USDC-balance-based distribution expense; exact rate not disclosed.
+- Tazapay acquisition: $400M share consideration, pending; not $400M cash.
+- Evernorth: cash, in-kind XRP, debt, warrant proceeds and undrawn ELOC capacity remain separate; cash XRP purchases funded from closing proceeds are not double counted.
+- ETF issuer holdings changes, attributed exchange-wallet balances, stablecoin supply and market capitalization are not equivalent to cash invested in XRP.
+
+### Current state
+
+PR #1662 remains draft and unmerged. Current integration head at this capture is `10f6455`, 2,491 commits ahead of main, zero behind, 1,249 changed files. The map is restored to a single-line JSON representation; the earlier 46,646-line formatting expansion is removed without deleting historical data.
+
+PR Pages build-only validation succeeded. A merge would trigger main Pages publication because the successor fixes the current main Liquid build failure. Publication is a deployment side effect and is not authorized; do not merge until explicitly approved or safely decoupled. Independent review, least privilege, branch-protection visibility and complete semantic review also remain blockers.
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.

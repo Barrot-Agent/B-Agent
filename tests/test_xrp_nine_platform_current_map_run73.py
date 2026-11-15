@@ -151,23 +151,15 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     assert suite["coverage_percent"] == latest_suite["coverage_percent"]
     assert suite["exact_head"] is True
     latest = ci["latest_attempt"]
-    assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
-    assert len(latest["head_sha"]) == 40 and all(ch in "0123456789abcdef" for ch in latest["head_sha"])
-    assert data["repository_state"]["integration_head_before_current_map_commit"] == data["integration_pr"]["head_sha"]
-    suite = latest["full_repository_suite"]
-    assert suite["passed"] > 0
-    assert suite["failed"] == len(latest["failing_tests"])
-    assert suite["subtests"] == 19
-    assert suite["exact_head"] is True
-    assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
-    if suite["failed"] == 0:
-        assert latest["conclusion"] == "success"
-        assert latest["failing_tests"] == []
-        assert "exact-head full-suite passed" in latest["failure_classification"].lower()
-    else:
-        assert latest["conclusion"] == "failure"
-        assert len(latest["failing_tests"]) == suite["failed"]
-        assert "exact-head full-suite failed" in latest["failure_classification"].lower()
+    run162_parent = data["run162_snapshot"]
+    parent_suite = run162_parent["ci"]["full_repository_suite"]
+    assert parent_suite["head_sha"] == run162_parent["integration_head_before_map_commit"]
+    assert parent_suite["passed"] == 3781
+    assert parent_suite["failed"] == 7
+    assert parent_suite["exact_head"] is True
+    assert len(parent_suite["failing_tests"]) == 7
+    assert any("current_map" in name for name in parent_suite["failing_tests"])
+    assert "exact-head full-suite failed" in run162_parent["ci"]["failure_classification"].lower()
     assert ci["dependency_audit"]["manifests"] == 6
     assert ci["dependency_audit"]["known_vulnerabilities"] == 0
     assert ci["dependency_audit"]["passed"] is True
@@ -806,10 +798,10 @@ def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_
     assert last_good["head_sha"] == run158["full_suite"]["head_sha"]
     assert last_good["passed"] == 3788
     assert last_good["failed"] == 0
-    corrective = data["run162_corrective_commit_snapshot"]
-    assert latest["head_sha"] == corrective["integration_head_before_map_commit"]
+    current = data["run162_map_minification_commit_snapshot"]
+    assert latest["head_sha"] == current["integration_head_before_map_commit"]
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert latest["full_repository_suite"]["passed"] == 3786
+    assert latest["full_repository_suite"]["passed"] == 3787
     assert latest["full_repository_suite"]["failed"] == 3
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
@@ -817,7 +809,7 @@ def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_
     assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
     assert "exact-head full-suite failed" in latest["failure_classification"].lower()
     assert "evidence-contract mismatches" in latest["failure_classification"].lower()
-    assert "not a runtime or xrp prediction-engine failure" in latest["failure_classification"].lower()
+    assert "not runtime or xrp prediction-engine failures" in latest["failure_classification"].lower()
     assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert data["ci_evidence"]["full_repository_suite"]["failed"] == 3
     assert data["schema_version"] == "1.1.0"
@@ -857,10 +849,28 @@ def test_run162_corrective_commit_snapshot_tracks_exact_head_ci_and_research_add
     assert run["ci"]["full_repository_suite"]["exact_head"] is True
     assert run["ci"]["latest_attempt"]["failing_tests"] == run["test_failures"]
     assert "evidence-contract mismatches" in run["failure_classification"].lower()
-    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == run["integration_head_before_map_commit"]
-    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
+    assert run["ci"]["latest_attempt"]["head_sha"] == run["integration_head_before_map_commit"]
+    assert run["ci"]["latest_attempt"]["conclusion"] == "failure"
+    assert run["ci"]["latest_attempt"]["full_repository_suite"]["failed"] == 3
     assert data["run162_snapshot"]["ci"]["full_repository_suite"]["failed"] == 7
     assert run["research_addendum"]["binance_circle"]["equity"]["gross_proceeds_to_circle_usd"] == 100000000
     assert run["research_addendum"]["circle_usdc_xrpl"]["bridge_required"] is False
     assert run["research_addendum"]["identity"]["sbic"]["conclusion"].startswith("Recurring training events")
     assert run["research_addendum"]["identity"]["kamilah_stevenson"]["video_inventory_status"] == "NOT_STARTED_IDENTITY_UNVERIFIED"
+
+
+def test_run162_map_minification_commit_snapshot_tracks_current_exact_head():
+    data = load_current()
+    current = data["run162_map_minification_commit_snapshot"]
+    assert current["integration_head_before_map_commit"] == current["integration_pr"]["head_sha"]
+    assert current["repository"]["main_sha"] == data["observed_main_sha"]
+    assert current["ci"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["ci"]["full_repository_suite"]["passed"] == 3787
+    assert current["ci"]["full_repository_suite"]["failed"] == 3
+    assert current["ci"]["full_repository_suite"]["exact_head"] is True
+    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
+    assert current["map_minification"]["current_newline_count"] == 1
+    assert current["research_addendum"]["circle_arc_token_presale"]["presale"]["gross_proceeds_usd"] == 242200000
+    assert current["research_addendum"]["circle_arc_sbi"]["sbi_vc_trade_usdc_distribution"].startswith("Circle states")
+    assert current["research_addendum"]["identity"]["kamilah_stevenson"]["video_inventory_status"] == "NOT_STARTED_IDENTITY_UNVERIFIED"
