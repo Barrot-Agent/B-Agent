@@ -14,3 +14,8 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Model: `opencode/deepseek-v4.1-flash-free`
 - Default agent in this repo: `barrot`
 - Runtime: OpenCode free models only. No external providers.
+
+## MCP
+- `github` — remote GitHub MCP; needs one-time OAuth (`opencode mcp auth github`).
+- `docling` — local document/OCR conversion via `uvx`.
+- `searxng` — local web search via `npx mcp-searxng`; run `bash scripts/start_searxng.sh` first.

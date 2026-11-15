@@ -3,7 +3,41 @@
   "default_agent": "barrot",
   "model": "opencode/deepseek-v4.1-flash-free",
   "mcp": {
-    "servers": {}
+    "servers": {
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/"
+      },
+      "docling": {
+        "type": "local",
+        "command": [
+          "uvx",
+          "--from",
+          "docling-mcp[local]",
+          "docling-mcp-server",
+          "--transport",
+          "stdio"
+        ],
+        "environment": {
+          "DOCLING_MCP_CONVERSION_MODE": "local",
+          "UV_LINK_MODE": "copy"
+        },
+        "timeout": {
+          "startup": 240000,
+          "catalog": 120000
+        }
+      },
+      "searxng": {
+        "type": "local",
+        "command": ["npx", "-y", "mcp-searxng"],
+        "environment": {
+          "SEARXNG_URL": "http://127.0.0.1:8888"
+        },
+        "timeout": {
+          "startup": 90000
+        }
+      }
+    }
   },
   "permission": {
     "external_directory": "allow",

@@ -24,6 +24,30 @@ opencode
 
 Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durable facts in `MEMORY.md` when asked to remember something.
 
+### MCP integrations
+
+[`opencode.json`](opencode.json) wires three MCP servers:
+
+| Server | Transport | What it adds | Prerequisite |
+|---|---|---|---|
+| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | One-time OAuth sign-in: `opencode mcp auth github` (or `/mcps` inside OpenCode) |
+| `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
+| `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
+
+Start SearXNG first — it listens on `127.0.0.1:8888` and enables `format=json`:
+
+```bash
+bash scripts/start_searxng.sh
+```
+
+Then check connections inside OpenCode with `/mcps`:
+
+```text
+/mcps
+```
+
+The `github` server reports `needs authentication` until the OAuth flow is completed once (`opencode mcp auth github`). `docling` and `searxng` connect without credentials.
+
 ## 🔄 Two Distinct Systems
 
 Barrot-Agent now maintains **two independent systems**:

@@ -10,4 +10,6 @@ Barrot is the main agent for this repo.
 ## PERMANENT MEMORY - DO NOT ASK AGAIN
 - OpenCode is the agent runtime for this repo.
 - Barrot uses opencode free models only.
-- Web search, document conversion with OCR, and image generation/editing are not wired into this repo's OpenCode config.
+- MCP servers in `opencode.json`: GitHub (remote, one-time OAuth), Docling (local OCR/document conversion), SearXNG (local web search).
+- Start SearXNG with `bash scripts/start_searxng.sh` before using the `searxng` MCP server.
+- Image generation/editing is not wired into this repo's OpenCode config.
