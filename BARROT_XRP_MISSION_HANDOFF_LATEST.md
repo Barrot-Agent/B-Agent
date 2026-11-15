@@ -7984,3 +7984,15 @@ Still blocking:
 6. Qualify an XRP candidate only after out-of-sample superiority over all four baselines and calibration policy pass.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation, source-PR closure or main-branch write occurred.
+
+
+### Run165 exact-head evidence-commit regression and corrective action
+
+The first Run165 documentation/map/audit commit `cd6c57d0f176b4f7742e6f9fca88f93bada6ab10` received its own full-suite run, which failed **4 tests**: 3,792 passed, 4 failed, 1 skipped, 19 subtests passed, 64.02% inclusive coverage, in 122.91 seconds. Core tests passed 742/742. Push and PR six-manifest dependency audits passed; both fail-closed gates passed; PR Pages build-only validation passed.
+
+The four failures were stale assertions in `tests/test_xrp_nine_platform_current_map_run73.py`, not runtime, ingestion or prediction-engine failures:
+1. `repository_state.integration_head_before_current_map_commit` still contained Run164 head `d6dbb636...` while `integration_pr.head_sha` had been advanced to the Run165 parent `49afd8a...`.
+2. The superseded-PR and Run20 preservation tests repeated that same inconsistent repository-state reference.
+3. A historical test still asserted Run162 was the current run after the map was correctly advanced to Run165.
+
+Correction: update the repository-state SHA and tree/PR counts to the verified Run165 parent; retain Run162 and all earlier snapshots as historical; update the regression test to assert Run165 is current and verify its exact 3,796-pass parent suite. No test was removed, skipped, weakened or converted to an expected failure. The corrected evidence/test commit is a child of `cd6c57d0f176b4f7742e6f9fca88f93bada6ab10`; its own exact-head full suite, dependency and fail-closed checks remain pending until GitHub reports them.

@@ -626,7 +626,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current():
+def test_run152_run153_run154_run155_run158_run159_and_run162_remain_historical_while_run165_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -637,7 +637,19 @@ def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run162"
+    assert data["latest_run_id"] == "Run165"
+    run165 = data["run165_snapshot"]
+    assert run165["main_sha"] == data["repository_state"]["main_sha"]
+    assert run165["integration_head_before_run165_commit"] == data["integration_pr"]["head_sha"]
+    assert run165["pr_number"] == 1662
+    assert run165["open_prs"] == 373
+    assert run165["drafts"] == 361
+    assert run165["non_drafts"] == 12
+    run165_suite = data["run165_ci_evidence"]["full_suite"]
+    assert run165_suite["head_sha"] == run165["integration_head_before_run165_commit"]
+    assert run165_suite["tests_passed"] == 3796
+    assert run165_suite["tests_failed"] == 0
+    assert run165_suite["exact_head"] is True
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
     assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
