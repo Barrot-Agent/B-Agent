@@ -30,7 +30,7 @@ Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durab
 
 | Server | Transport | What it adds | Prerequisite |
 |---|---|---|---|
-| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | One-time OAuth sign-in: `opencode mcp auth github` (or `/mcps` inside OpenCode) |
+| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` set to a GitHub personal access token (stored in the OpenCode service environment) |
 | `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
 | `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
 
@@ -46,7 +46,13 @@ Then check connections inside OpenCode with `/mcps`:
 /mcps
 ```
 
-The `github` server reports `needs authentication` until the OAuth flow is completed once (`opencode mcp auth github`). `docling` and `searxng` connect without credentials.
+The `github` server authenticates with a personal access token read from `GITHUB_MCP_TOKEN`. It is already stored in the OpenCode service environment on this machine:
+
+```bash
+opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"
+```
+
+OAuth is disabled for this server because GitHub's MCP authorization server does not support dynamic client registration, which OpenCode requires for its browser flow. `docling` and `searxng` connect without credentials.
 
 ## 🔄 Two Distinct Systems
 
