@@ -8132,3 +8132,16 @@ All 48 workflow definitions changed by PR #1662 were fetched and triaged for tri
 7. Keep directional forecasts blocked until out-of-sample superiority and calibration gates pass.
 
 No merge, main change, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run167 platform-map currentness repair and regression update
+
+Captured: 2026-11-15T15:18:30Z
+
+The nine-platform map was **not empty**. The contents wrapper returned an empty string because the tracked JSON blob is larger than 1 MB. Git tree metadata showed the existing map blob was 1,961,673 bytes (SHA `7428a47841de9c3a0b2dc66156f0c3c446cc855d`); the Git blob API retrieved the complete 1.96 MB document. No compact replacement was made.
+
+The schema 1.1.0 map is refreshed to Run167 while preserving its historical snapshots, all nine platform records, source provenance, least-privilege controls and counter-hypotheses. The updated snapshot records main SHA `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`, pre-map-update integration head `534e65b76115b1eee7272947557de6a8bfa4f8ca`, PR #1662 at 2,508 commits and 1,255 changed files, and the exact-head full-suite pass on that parent: 3,796 passed, zero failed, one skipped, 19 subtests, 64.02% inclusive and 77% legacy-core coverage, wheel build and installed mission verified.
+
+The regression contract now preserves Run165 as historical and asserts Run167 as current. One new test checks the Run167 workflow review, XRPL stablecoin source disagreement and forecast-safety boundary. The map/test/handoff update commit requires its own exact-head CI; the parent-head pass is not transferred.
+
+No main write, merge, deployment, secret rotation, external-model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.

@@ -626,7 +626,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_run158_run159_and_run162_remain_historical_while_run165_is_current():
+def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_historical_while_run167_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -637,10 +637,9 @@ def test_run152_run153_run154_run155_run158_run159_and_run162_remain_historical_
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run165"
+    assert data["latest_run_id"] == "Run167"
     run165 = data["run165_snapshot"]
     assert run165["main_sha"] == data["repository_state"]["main_sha"]
-    assert run165["integration_head_before_run165_commit"] == data["integration_pr"]["head_sha"]
     assert run165["pr_number"] == 1662
     assert run165["open_prs"] == 373
     assert run165["drafts"] == 361
@@ -650,6 +649,19 @@ def test_run152_run153_run154_run155_run158_run159_and_run162_remain_historical_
     assert run165_suite["tests_passed"] == 3796
     assert run165_suite["tests_failed"] == 0
     assert run165_suite["exact_head"] is True
+    run167 = data["run167_snapshot"]
+    assert run167["main_sha"] == data["repository_state"]["main_sha"]
+    assert run167["integration_head_before_run167_map_commit"] == data["integration_pr"]["head_sha"]
+    assert run167["pr_number"] == 1662
+    assert run167["open_prs"] == 373
+    assert run167["drafts"] == 361
+    assert run167["non_drafts"] == 12
+    run167_suite = data["run167_ci_evidence"]["full_suite"]
+    assert run167_suite["head_sha"] == run167["integration_head_before_run167_map_commit"]
+    assert run167_suite["tests_passed"] == 3796
+    assert run167_suite["tests_failed"] == 0
+    assert run167_suite["exact_head"] is True
+    assert run167["map_update_commit_ci_pending"] is True
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
     assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
@@ -978,3 +990,29 @@ def test_run162_current_head_verification_snapshot_tracks_latest_ci():
     assert current["workflow_safety"]["main_pillars_consistency_check"]["read_only"] is True
     assert current["forecast_status"] == "NOT_ISSUED"
     assert current["accuracy_status"] == "NOT_EVALUATED"
+
+
+def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_are_fail_closed():
+    data = load_current()
+    run = data["run167_snapshot"]
+    assert data["latest_run_id"] == "Run167"
+    assert run["pr_changed_files"] == data["integration_pr"]["changed_files"] == 1255
+    assert run["integration_head_before_run167_map_commit"] == data["integration_pr"]["head_sha"]
+    assert data["run167_workflow_review"]["changed_workflow_files"] == 48
+    assert data["run167_workflow_review"]["workflow_definition_triage_complete"] is True
+    assert data["run167_workflow_review"]["called_script_semantic_review_complete"] is False
+    assert data["run167_workflow_review"]["no_external_dispatch"] is True
+    market = data["run167_xrpl_stablecoin_research"]
+    assert market["model_eligible"] is False
+    assert "Do not average" in market["reconciliation"]
+    assert market["raw_bytes_captured"] is False
+    assert market["forecast_status"] == "NOT_ISSUED"
+    assert data["forecast_status"] == "NOT_ISSUED"
+    assert data["accuracy_status"] == "NOT_EVALUATED"
+    assert data["run167_platform_status"]["verified_external_platforms_beyond_chatgpt_github_connector"] == 0
+    assert data["run167_no_external_actions"]["merge"] is False
+    assert data["run167_no_external_actions"]["real_money_action"] is False
+    tokenpost = next(x for x in data["source_provenance"] if x["source"] == "TokenPost XRPL stablecoin and DEX snapshot (Nov 13)")
+    defillama = next(x for x in data["source_provenance"] if x["source"] == "DefiLlama XRPL chain dashboard snapshot (Nov 15)")
+    assert tokenpost["raw_sha256"] is None and tokenpost["model_eligible"] is False
+    assert defillama["raw_sha256"] is None and defillama["model_eligible"] is False

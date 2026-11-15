@@ -37,10 +37,10 @@
       "mergeable": true,
       "base": "main",
       "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-      "head_sha": "af0dd3c8db0020f780e91424452b94264e4721f3",
-      "commits": 2507,
-      "changed_files": 1254,
-      "additions": 351684,
+      "head_sha": "534e65b76115b1eee7272947557de6a8bfa4f8ca",
+      "commits": 2508,
+      "changed_files": 1255,
+      "additions": 352099,
       "deletions": 6309,
       "formal_reviews": 0,
       "review_threads": 0,
@@ -53,13 +53,14 @@
       "targeting_main": 365,
       "targeting_other_branches": 8,
       "pages_retrieved": 4
-    }
+    },
+    "integration_head_before_map_update": "534e65b76115b1eee7272947557de6a8bfa4f8ca"
   },
   "verification": {
     "exact_head": "af0dd3c8db0020f780e91424452b94264e4721f3",
     "full_suite": {
-      "run_id": 43726707272,
-      "job_id": 132850102517,
+      "run_id": 43728655918,
+      "job_id": 132856014726,
       "status": "success",
       "passed": 3796,
       "failed": 0,
@@ -67,47 +68,50 @@
       "subtests_passed": 19,
       "inclusive_coverage_percent": 64.02,
       "legacy_core_coverage_percent": 77,
-      "duration_seconds": 176.28,
+      "duration_seconds": 172.73,
       "wheel_build": "passed",
       "installed_wheel_mission": "verified",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726707272"
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728655918"
     },
     "dependency_audit_push": {
-      "run_id": 43726707270,
+      "run_id": 43728655913,
       "status": "success",
       "manifest_groups": 6,
       "known_vulnerabilities": 0,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726707270"
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728655913"
     },
     "dependency_audit_pr": {
-      "run_id": 43726712746,
+      "run_id": 43728661588,
       "status": "success",
       "manifest_groups": 6,
       "known_vulnerabilities": 0,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726712746"
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728661588"
     },
     "fail_closed_push": {
-      "run_id": 43726707290,
+      "run_id": 43728655901,
       "status": "success",
       "merge_disabled": true,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726707290"
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728655901"
     },
     "fail_closed_pr": {
-      "run_id": 43726712751,
+      "run_id": 43728661780,
       "status": "success",
       "merge_disabled": true,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726712751"
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728661780"
     },
     "pr_ci": {
-      "run_id": 43726712790,
+      "run_id": 43728661595,
       "status": "success",
       "pages_validation": "passed",
+      "pages_manifest_rendered": true,
       "core_tests": "skipped by integration-branch condition",
       "full_suite": "skipped by integration-branch condition",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43726712790"
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43728661595"
     },
     "combined_status_endpoint": "returned no status contexts; GitHub Actions run/job evidence is authoritative",
-    "exact_head_full_suite_log": "3796 passed, 1 skipped, 19 subtests passed in 176.28s; inclusive coverage 64.02%; legacy core coverage 77%"
+    "exact_head_full_suite_log": "3796 passed, 1 skipped, 19 subtests passed in 176.28s; inclusive coverage 64.02%; legacy core coverage 77%",
+    "current_head": "534e65b76115b1eee7272947557de6a8bfa4f8ca",
+    "map_update_commit_ci": "pending exact-head full-suite; do not reuse parent result"
   },
   "main_operations": {
     "latest_cross_analysis": {
@@ -337,5 +341,33 @@
     "Preserve the unique codebase-memory work in #1653 and reconcile the older workflow variants in #1661/#1660/#1640.",
     "Capture byte-exact event receipts, establish independent WORM/time anchoring, and build synchronized historical data plus shadow outcomes.",
     "Keep directional forecasts blocked until out-of-sample superiority and calibration gates pass."
-  ]
+  ],
+  "platform_map": {
+    "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "schema_version": "1.1.0",
+    "previous_blob_sha": "7428a47841de9c3a0b2dc66156f0c3c446cc855d",
+    "previous_size_bytes": 1961673,
+    "previous_capture_at_utc": "2026-11-15T14:31:27Z",
+    "fetch_file_empty_reason": "The fetch_file wrapper returned an empty string for a blob larger than 1 MB; fetch_blob retrieved the complete content.",
+    "updated_at_utc": "2026-11-15T15:18:30Z",
+    "current_snapshot_run": "Run167",
+    "integration_head_before_map_update_commit": "534e65b76115b1eee7272947557de6a8bfa4f8ca",
+    "historical_run165_snapshot_preserved": true,
+    "regression_test_path": "tests/test_xrp_nine_platform_current_map_run73.py",
+    "regression_test_updated": true,
+    "new_run167_regression_test_added": true,
+    "parent_exact_head_ci_passed": true,
+    "map_update_commit_ci_pending": true
+  },
+  "run167_map_update": {
+    "previous_blob_sha": "7428a47841de9c3a0b2dc66156f0c3c446cc855d",
+    "previous_size_bytes": 1961673,
+    "fetch_file_size_limit_explained": true,
+    "full_blob_recovered": true,
+    "run165_preserved_as_historical": true,
+    "run167_set_current": true,
+    "regression_test_updated": true,
+    "new_regression_test_added": true,
+    "map_update_commit_ci_pending": true
+  }
 }
