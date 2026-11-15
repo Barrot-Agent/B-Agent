@@ -1,6 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "opencode/glm-5.3-flash",
+  "default_agent": "barrot",
+  "model": "opencode/deepseek-v4.1-flash-free",
   "providers": {
     "opencode": {
       "package": "aisdk:@ai-sdk/openai-compatible",
@@ -23,26 +24,11 @@
     }
   },
   "mcp": {
-    "servers": {
-      "opencode": {
-        "type": "remote",
-        "url": "https://mcp.opencode.com/mcp",
-        "headers": {
-          "Authorization": "Bearer {env:OPENCODE_API_KEY}"
-        }
-      }
-    }
+    "servers": {}
   },
-  "agents": {
-    "barrot": {
-      "description": "Barrot - main agent",
-      "model": "opencode/glm-5.3-flash",
-      "system": "You are Barrot. Speak as Barrot. Use OpenCode MCP.",
-      "permissions": [
-        { "action": "edit", "resource": "*", "effect": "allow" },
-        { "action": "shell", "resource": "*", "effect": "allow" },
-        { "action": "webfetch", "resource": "*", "effect": "allow" }
-      ]
-    }
+  "permission": {
+    "external_directory": "allow",
+    "edit": "allow",
+    "bash": "allow"
   }
 }
