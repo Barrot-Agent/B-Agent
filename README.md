@@ -24,6 +24,36 @@ opencode
 
 Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durable facts in `MEMORY.md` when asked to remember something.
 
+### MCP integrations
+
+[`opencode.json`](opencode.json) wires three MCP servers:
+
+| Server | Transport | What it adds | Prerequisite |
+|---|---|---|---|
+| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` set to a least-privilege GitHub personal access token in the OpenCode service environment; authentication is not yet verified |
+| `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
+| `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
+
+Start SearXNG first — it listens on `127.0.0.1:8888` and enables `format=json`:
+
+```bash
+bash scripts/start_searxng.sh
+```
+
+Then check connections inside OpenCode with `/mcps`:
+
+```text
+/mcps
+```
+
+The `github` server reads a personal access token from `GITHUB_MCP_TOKEN`. Configure it in the OpenCode service environment before use. This connection is not verified until `/mcps` reports healthy and a test request succeeds:
+
+```bash
+opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"
+```
+
+OAuth is disabled for this server because GitHub's MCP authorization server does not support dynamic client registration, which OpenCode requires for its browser flow. `docling` and `searxng` require local dependencies/services and have not been launched or tested in this run. Use a least-privilege token; do not assume any MCP connection is active.
+
 ## 🔄 Two Distinct Systems
 
 Barrot-Agent now maintains **two independent systems**:

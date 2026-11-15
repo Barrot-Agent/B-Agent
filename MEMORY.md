@@ -13,4 +13,9 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - OpenCode agent: `.opencode/agent/barrot.md`
 - Model: `opencode/deepseek-v4.1-flash-free`
 - Default agent in this repo: `barrot`
-- Runtime: OpenCode free models only. No external providers.
+- Default runtime uses the OpenCode free model. LunaRoute remains optional/unverified; its MCP server is disabled.
+
+## MCP
+- `github` — remote GitHub MCP; requires `GITHUB_MCP_TOKEN` in the OpenCode service environment; authentication and data flow are not yet verified.
+- `docling` — local document/OCR conversion via `uvx`.
+- `searxng` — local web search via `npx mcp-searxng`; run `bash scripts/start_searxng.sh` first.

@@ -11,7 +11,11 @@ Barrot is the main agent for this repository.
 
 - OpenCode is the repository agent runtime.
 - The verified default model remains the OpenCode free model above.
-- Web search, document conversion/OCR, and image generation/editing are not wired into the verified default OpenCode configuration.
+- GitHub, Docling, and SearXNG MCP servers are declared in `opencode.json`; none is considered connected until authentication/startup and a test request are verified.
+- `github` requires `GITHUB_MCP_TOKEN`; do not commit it or assume it is configured. Use least privilege.
+- `docling` is a local `uvx` server and has not been launched or tested in this run.
+- `searxng` is local, configured for `127.0.0.1`, and has not been launched or tested in this run. `scripts/start_searxng.sh` is an operator-run local setup script, not an automatic workflow.
+- Image generation/editing is not wired into this OpenCode configuration.
 - An optional LunaRoute provider entry exists, but authentication and model data-flow have not been verified. The LunaRoute MCP server is disabled. Do not claim it is connected or send data through it until authentication, permissions, and data-flow are tested.
 
 ## Mission priority

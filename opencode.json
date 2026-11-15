@@ -1,6 +1,70 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "default_agent": "barrot",
   "model": "opencode/deepseek-v4.1-flash-free",
+  "mcp": {
+    "servers": {
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}"
+        },
+        "timeout": {
+          "startup": 60000
+        }
+      },
+      "docling": {
+        "type": "local",
+        "command": [
+          "uvx",
+          "--from",
+          "docling-mcp[local]",
+          "docling-mcp-server",
+          "--transport",
+          "stdio"
+        ],
+        "environment": {
+          "DOCLING_MCP_CONVERSION_MODE": "local",
+          "UV_LINK_MODE": "copy"
+        },
+        "timeout": {
+          "startup": 240000,
+          "catalog": 120000
+        }
+      },
+      "searxng": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "mcp-searxng"
+        ],
+        "environment": {
+          "SEARXNG_URL": "http://127.0.0.1:8888"
+        },
+        "timeout": {
+          "startup": 90000
+        }
+      },
+      "lunaroute": {
+        "type": "remote",
+        "url": "https://mcp.lunaroute.com/mcp",
+        "disabled": true,
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
+        }
+      }
+    }
+  },
+  "permission": {
+    "external_directory": "ask",
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "ask"
+  },
   "provider": {
     "lunaroute": {
       "npm": "@ai-sdk/openai-compatible",
@@ -18,19 +82,6 @@
         },
         "muse-spark-open": {
           "name": "Muse Spark Open"
-        }
-      }
-    }
-  },
-  "mcp": {
-    "servers": {
-      "lunaroute": {
-        "type": "remote",
-        "url": "https://mcp.lunaroute.com/mcp",
-        "disabled": true,
-        "oauth": false,
-        "headers": {
-          "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
         }
       }
     }
@@ -54,12 +105,5 @@
         "question": "allow"
       }
     }
-  },
-  "default_agent": "barrot",
-  "permission": {
-    "external_directory": "ask",
-    "edit": "ask",
-    "bash": "ask",
-    "webfetch": "ask"
   }
 }

@@ -186,7 +186,8 @@ def test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit():
     assert audit["changed_workflow_files"] == 50
     assert audit["quarantined_or_disabled"] == 26
     assert audit["active_changed_workflows"] == 24
-    assert audit["patch_scan_workflows_reviewed"] == 50
+    # Recorded patch-body count; the historical changed-workflow inventory is 50.
+    assert audit["patch_scan_workflows_reviewed"] == 47
     assert audit["manual_dispatch_additions"] == 29
     assert audit["secondary_brain_deployment_quarantined"] is True
     assert audit["xrp_public_ingestion_workflow_on_main"] is False
