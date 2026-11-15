@@ -125,7 +125,9 @@
     "byte_exact": true,
     "large_manifest_bytes": 3513853,
     "large_manifest_content_read": false,
-    "regression_test": "tests/test_run175_mainline_successor_state.py"
+    "regression_test": "tests/test_run175_mainline_successor_state.py",
+    "main_gitignore_blob_sha1": "f63d4ea6c01a6dbeb72cd80d8f5fcdac93ea66d4",
+    "main_gitignore_restored_byte_exact": true
   },
   "ci": {
     "tested_head": "692caffaba27e9653fddfde3823785efad096e17",

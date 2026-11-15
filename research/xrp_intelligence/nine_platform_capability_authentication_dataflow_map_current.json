@@ -60495,7 +60495,8 @@
     "branch_protection_details_http_403": true,
     "repository_allow_auto_merge": true,
     "automatic_merge_triggered": false,
-    "successor_head_after_preservation_commit": "9fe0849a5c483f5b2059344fb691aa0eafe6b39a"
+    "successor_head_after_preservation_commit": "9fe0849a5c483f5b2059344fb691aa0eafe6b39a",
+    "main_gitignore_sha1": "f63d4ea6c01a6dbeb72cd80d8f5fcdac93ea66d4"
   },
   "run175_snapshot": {
     "run_id": "Run175",
@@ -60616,7 +60617,9 @@
       "manifest_size_bytes": 3513853,
       "content_read": false,
       "preservation_commit": "9fe0849a5c483f5b2059344fb691aa0eafe6b39a",
-      "main_paths_missing_after_restore": 0
+      "main_paths_missing_after_restore": 0,
+      "main_gitignore_blob_sha1": "f63d4ea6c01a6dbeb72cd80d8f5fcdac93ea66d4",
+      "main_gitignore_restored_byte_exact": true
     },
     "ci": {
       "tested_head": "692caffaba27e9653fddfde3823785efad096e17",
