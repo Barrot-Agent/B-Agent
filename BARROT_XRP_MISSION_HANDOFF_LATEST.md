@@ -7703,3 +7703,25 @@ The Run163 append-only handoff/audit head `ccb7a0c5` completed exact-head verifi
 Evidence: [full suite 43720162925](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720162925), [push dependency audit 43720162962](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720162962), [PR dependency audit 43720167478](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720167478), [push fail-closed 43720162939](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720162939), [PR fail-closed 43720167493](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720167493), [PR Pages validation 43720167483](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720167483).
 
 This correction is append-only. No original source record or prior audit was overwritten.
+
+
+## Run163-C2 — 2026-11-15T13:51:47.371Z — SBI-affiliated Evernorth allocation and source-age correction
+
+### SBI-affiliated share allocation: primary SEC detail
+The November 13 Evernorth 424B3 supplement/10-Q provides a more precise distinction between SBI Holdings-affiliated investors and the regional SBIC companies:
+- As of November 9, Evernorth reported 27,012,248 Class A shares, zero Class B and 31,392,746 Class C shares outstanding.
+- Certain investors affiliated with **SBI Holdings, Inc.** received 2,359,038 Class C shares under the Advance and Delayed Subscription Agreements, described as resulting from a 39.9% ownership threshold.
+- The Sponsor received 30,233,211 Series C Initial Subscribed Shares reflecting a 19.9% voting threshold.
+- Ripple received 1,678,382 Class A shares and 16,461,545 Pathfinder units; a related contributor entity received 661,867 Class A shares and 6,491,583 Pathfinder units. The filing says their combined Ripple-related ownership did not exceed 9.9% immediately after closing.
+- These are transaction allocations and contractual thresholds. They do not establish that SBI Holdings itself directly holds every share allocated to affiliated investors. They do not identify SBIC East/Central/West as subscribers.
+- SBI Holdings' November 2 presentation separately reports 36.1% voting rights and 20.5% economic interest. These are not the same denominator as the SEC's 39.9% contractual issuance threshold. A full share-class/unit bridge is still required before presenting one “SBI ownership” percentage.
+
+### Convertible note use-of-proceeds distinction
+The SEC filing states the $30M principal 4.00% Convertible Senior PIK Notes due 2031 generated $29M net cash and were intended for general corporate purposes, including acquisition of XRP and other XRP-ecosystem activities. This establishes financing receipt and stated intended use, not that the proceeds were actually converted into XRP or deployed.
+
+### Source-age arithmetic correction
+The OptimistFi page's November 14 4:57 PM ET as-of time equals 21:57 UTC. From that timestamp to the November 15 13:45:37.656 UTC retrieval is approximately 15 hours 49 minutes (15.81 hours), not 15.66 hours. The earlier 15.66 figure was an arithmetic error. The page remains a stale, 37-venue perpetual-futures aggregate and remains model-ineligible; its scope and source vintage are unchanged.
+
+Primary SEC evidence: [Evernorth 424B3/10-Q supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm). SBI presentation: [SBI Holdings 1H FY2026 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf).
+
+This is an append-only correction. No prior source record was overwritten.
