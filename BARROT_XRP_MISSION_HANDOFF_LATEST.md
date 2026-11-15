@@ -7012,3 +7012,17 @@ Captured approximately 2026-11-15 10:00 UTC. Exact raw HTTP response bytes and S
 6. Resolve independent review, least-privilege connector scope, branch-protection required checks and Pages publication side effects before any merge.
 7. Keep main's unsafe writers quarantined in the successor; only after controlled merge verify scheduled ingestion on main.
 8. Train/evaluate an XRP candidate against all four baselines and independent shadow outcomes; keep forecasts disabled until every versioned admission criterion passes.
+
+
+### Run160 regulatory addendum — Ripple National Trust Bank final OCC approval reconciled (2026-11-15)
+
+A new primary-source reconciliation resolves the earlier uncertainty over Ripple National Trust Bank (RNTB).
+
+- The OCC Corporate Applications Search entry for control number `2025-Charter-342347` identifies the application as a new national bank charter under a trust-bank transaction form, proposed charter number 25364. It records receipt on July 2, 2025, approval on December 12, 2025, and **Consummated/Effective on October 26, 2026**: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+- Ripple's October 26, 2026 first-party announcement says the OCC granted final approval. It lists the approved activities as managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders, and providing fiduciary digital-asset custody: https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+- The OCC Interpretations & Decisions index still displays Conditional Approval 1359 dated December 12, 2025. That is the original conditional-approval letter. It does not negate the later OCC CAS record of consummation/effectiveness or Ripple's October 26 final-approval announcement. Treat the I&D index as an incomplete/lagging status view for this application.
+- **Issuer boundary:** Ripple's release explicitly says RLUSD continues to be issued by Standard Custody & Trust Company (SCTC), Ripple's NYDFS-regulated limited-purpose trust company. RNTB adds federal OCC supervision and the stated reserve/collateral-trustee/custody roles; RNTB is not the RLUSD issuer.
+- **Operational boundary:** final charter approval and consummation/effectiveness are verified. Ripple says fiduciary custody authority applies upon opening; actual operational launch, customer balances, transactions and XRP purchase/settlement volumes were not established by these sources.
+- This is a regulatory/institutional adoption event, not evidence of incremental XRP spot demand. Raw HTTP bytes and SHA-256 receipts were not captured, so the event remains excluded from receipt-backed model features.
+
+Source hierarchy: OCC Corporate Applications Search (regulator filing status), Ripple first-party final-approval announcement, and the OCC I&D index (original conditional letter). The structured reconciliation is appended to the Run160 audit JSON.
