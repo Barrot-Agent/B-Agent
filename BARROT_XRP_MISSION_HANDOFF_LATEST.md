@@ -5073,3 +5073,133 @@ The legal issuer is Standard Custody & Trust Company, LLC, a New York limited-pu
 8. DeFi cbXRP/wXRP balances overlap exchange/custody reserves and require wallet-level de-duplication.
 
 All figures remain research-only until source bytes, timestamps, wallet/contract IDs and hashes are captured through the scheduled ingestion pipeline and independently replayed.
+
+---
+
+## Run147 — 2026-11-15 — exact-head CI, XRP market, derivatives and XRPL stablecoin reconciliation
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority 1. **Foundation:** Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+### Current repository and PR state
+
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before this append-only evidence commit: `d13726ba48bc7ca4a25ca6454517f328d7bca4fd`.
+- Main is the exact merge base; integration is 2,442 commits ahead and zero behind.
+- Recursive trees are complete and not truncated: main 1,393 entries; integration 2,473 entries.
+- PR #1662 is open, draft, GitHub mergeable/clean, 1,231 changed files, 2,442 commits ahead, zero behind, zero formal reviews, zero review threads and no requested reviewers.
+- Changed-path composition: 48 workflows, 59 `barrot_agent` paths, 680 research paths, 389 test paths, seven public-web paths and 17 scripts. Path overlap is not proof of semantic duplication.
+- Open PR inventory: 373 total, 361 drafts and 12 non-drafts. #1661 and #1660 remain integration supersession candidates; #1643, #1642 and #1640 remain semantic-overlap candidates. Preserve their unique paths and review history. Unique research/feature work remains open; no source PR was closed.
+
+### Exact-head CI — VERIFIED
+
+On exact integration head `d13726ba48bc7ca4a25ca6454517f328d7bca4fd`:
+
+- [Full repository CI 43660665894](https://github.com/Barrot-Agent/B-Agent/actions/runs/43660665894): **3,762 passed, zero failed, one skipped, 19 subtests passed** in 175.62 seconds.
+- Inclusive coverage: **63.96%**; legacy core coverage: **77%**.
+- Wheel build passed; installed wheel verified Barrot V3, the primary XRP mission and canonical data assets.
+- [Six-manifest dependency audit 43660665902](https://github.com/Barrot-Agent/B-Agent/actions/runs/43660665902): all six manifest groups passed; no known vulnerabilities reported.
+- [Push fail-closed gate 43660665895](https://github.com/Barrot-Agent/B-Agent/actions/runs/43660665895): passed; automatic merging intentionally disabled.
+- [PR Pages validation 43660670662](https://github.com/Barrot-Agent/B-Agent/actions/runs/43660670662): Jekyll build and mission-manifest render passed. This was validation only; no artifact upload or deployment occurred.
+- PR-event core and full-suite jobs were skipped by the integration-branch workflow condition; the exact-head push full-suite run is authoritative.
+- Non-blocking warnings: Actions cache budget is read-only; setuptools warns that `barrot_agent.data.missions` and `data.research` are absent from package discovery. The packaged primary mission resource nevertheless passed installed-wheel verification.
+
+Main's current SHA also has a successful CI run: [43650499432](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499432), with 848 passed, one skipped and eight subtests. Main has a smaller test tree (100 test files) than the integration branch (463 test files); these are different test populations.
+
+### Main/integration operational and security differences
+
+- `.github/workflows/xrp-public-ingestion.yml` is absent from main (404) and exists on integration. It is scheduled hourly at minute 3 and daily at 00:15 UTC, has read-only Actions/Contents permissions, and its job is guarded to run only on main. Raw artifacts are retained for 90 days, snapshots for seven days, and the feature store uses Actions cache. This is not WORM storage and no successful scheduled run on main has been verified.
+- Main `pingpong.yml` still has manual dispatch, `contents: write` and a Groq key in its job environment. Integration disables the workflow with `permissions: {}` and an always-false job. No Ping-Pong dispatch occurred in this run.
+- Main Barrot Sync is push-triggered on main and manually dispatchable; its latest main run [43650499411](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499411) succeeded. Integration quarantines it pending explicit authorization.
+- Main's Coinbase paper trader is manual-only. Integration adds typed `YES`, expected-main-SHA validation, `contents: read` and artifact-only output. No paper-trading workflow was dispatched.
+- Main's Pages build [43650499344](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499344) failed with a Liquid syntax error at `GLOBAL_STATE_MANIFEST.md:6456`; the deploy job was skipped. The integration PR's Jekyll validation passes, but merging the Pages fix could trigger publication. Publication authorization is not established.
+- CODEOWNERS remains `* @Barrot-Agent`; this is not independent review. The only visible fallback ruleset (10863829) is disabled. Branch-protection read returns HTTP 403 through the current integration, so effective classic branch protection cannot be verified. The GitHub connection has admin/maintain/push/pull/triage permissions.
+
+### XRP spot and microstructure — RESEARCH ONLY
+
+Retrieval cutoff: approximately 2026-11-15 01:05 UTC. The exchange quotes are stale or lack event time and are not model-admissible.
+
+| Source | Quote | Provider time / limitation | Other observations |
+|---|---:|---|---|
+| OKX XRP-USDT | $0.9259 | 00:37:09.076 UTC; 1,692 seconds old | bid/ask $0.9257/$0.9258; 24h open $1.0099, high $1.0138, low $0.8929; 90.18M XRP volume; one-level bid size 2.69x ask |
+| Bybit XRPUSDT | $0.9198 | server time 00:10:30.014 UTC; 3,291 seconds old | bid/ask $0.9196/$0.9197; reported 24h change -9.14%; high $1.0138, low $0.8928; 56.64M XRP volume; one-level bid size 3.80x ask |
+| Kraken XRP/USD | $0.91569 | no exchange event timestamp | bid/ask $0.91523/$0.91586; 78.59M XRP 24h volume; high $1.00935, low $0.89112; `o=0.91378` is today's open, not a comparable rolling 24h open |
+
+The asynchronous OKX/Kraken difference is about 1.12%; OKX/Bybit about 0.66%. These are not executable arbitrage observations. The displayed bid-heavy top level is not full L2 depth. No synchronized multi-venue L2 snapshot was captured.
+
+Historical providers also disagree: CoinMarketCap's Nov 14 history shows $0.9486, DefiLlama's XRPL page shows about $0.95, while CoinCodex's Nov 13–14 row shows a $1.01 close. Date windows and provider vintages are not reconciled.
+
+### Derivatives and options — RESEARCH ONLY
+
+Three provider snapshots disagree materially on open interest:
+
+- Liqwall, Nov 14 19:22 UTC: OI $1.05B, +0.8% 24h, funding -0.0020% per eight hours, $24.5M liquidations ($23.8M longs, $695K shorts), 74.2% of Binance XRP-position accounts long.
+- TradRadar, Nov 14 20:00 UTC: OI $1.40B across seven exchanges, -7.25% 24h, funding -0.0047% per eight hours, at least $24.71M liquidations ($24.01M longs, $698K shorts), long/short account ratio 3.57 (78.1% long).
+- Alpha Finance, Nov 14 20:44 UTC: OI $2.03B, $3.39B 24h volume, $32.3M long and $824.3K short liquidations. Its liquidation clusters are modelled from OI, not observed resting liquidation orders.
+
+Funding is negative in the Liqwall/TradRadar samples and long liquidations dominate all three, but OI direction conflicts (+0.8% versus -7.25%) and provider universes differ. Do not average.
+
+OptimistFi/Deribit at 20:00 UTC reports 30-day ATM IV 62.4%, 25-delta skew -2.7 points, and Dec 25 put/call OI 0.55 with $43.1M open interest. Negative skew means downside puts are richer, while Dec 25 calls still outnumber puts. Hedging, tenor and expiry composition prevent a single directional interpretation. Max pain $1.00 is descriptive, not a target.
+
+### XRPL stablecoin liquidity — NEW DISAGREEMENT
+
+DefiLlama's Nov 14 XRPL page reports:
+
+- Stablecoin market cap $852.04M, down 12.72% over seven days.
+- RLUSD dominance 89.66% (implied RLUSD about $763.94M).
+- DeFi TVL $28.31M, down 12.22% over 24 hours.
+- RWA active AUM $21.99M.
+- DEX volume $8.02M over 24 hours and $44.21M over seven days (+67.62%); DEX/CEX dominance 0.02%.
+- 61,813 active addresses, 4,271 new addresses, 4.46M transactions and $1,305 chain fees over 24 hours.
+
+The rising weekly DEX-volume measure coexists with falling stablecoin supply and TVL. It may represent turnover, not net capital inflow; XRPL DEX volume remains very small relative to CEX volume.
+
+RLUSD chain allocation is not fully reconciled:
+
+- StableRadar's direct XRPL ledger read: 754,149,934 RLUSD at ledger 108303573, updated Nov 13 12:43 UTC.
+- RWA.xyz and XRP Insights' Nov 14 observations were about 764.07M and 763.3M XRPL RLUSD.
+- DefiLlama's chain page implies about 763.94M from $852.04M total XRPL stablecoins times 89.66% RLUSD dominance.
+- StableRadar's separate DefiLlama subtable reports 829,348,347 RLUSD on XRPL, which is inconsistent with the chain-page implied value by about $65.4M.
+- StableRadar's direct all-chain read totals 2.6882B; its DefiLlama table totals 2.7020B. XRPL allocation differs by +75.2M in the DefiLlama subtable while Ethereum differs by -61.4M; the total difference is only 13.8M.
+
+The direct XRPL read is about 36 hours older than this audit. Competing explanations include different snapshot times, cross-chain movement, chain/token mapping or a stale/mismatched StableRadar subtable. No transaction path was verified. Do not average, and do not label the difference a confirmed inflow.
+
+Ripple's official token-address documentation identifies the XRPL issuer as `rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De`: https://docs.ripple.com/products/stablecoin/overview/token-addresses.
+
+### ETF flows and capital definitions
+
+XRP Insights covers six US spot funds plus BITW and reports Week 46 holdings change of -6.08M XRP. Its homepage currently shows +3.40M XRP on Nov 13, but the data-download page says data as of Nov 12 and marks the Nov 13 row provisional until re-settled. Alpha Finance covers five funds (XRP, XRPZ, XRPC, GXRP, TOXR) and reports -$1.1M on Nov 13, -$19.1M over seven sessions and -$581.7K over 30 sessions; GXRP is -$5.5M and XRPZ +$4.4M. The universes, units and provisional status differ. Holdings changes are not direct cash subscriptions or proof of spot purchases. No common flow series was created.
+
+### Macro context and entity status
+
+Reuters reports $50.99B global equity-fund inflows in the week to Nov 11, led by $35.13B into European equity funds, while money-market funds lost $37.48B and global bond funds lost about $508M. This is broad cross-asset context only, not evidence of XRP-specific capital flow.
+
+No new primary-source change was found in this run for SBIC East/Central/West versus SBI Holdings/SB OAI Japan, ASK Coin, the meaning of "actual capital", or Kamilah Stevenson channel ownership. Prior verified distinctions remain. The candidate XRP YouTube channel remains unverified; no own-channel videos are certified.
+
+### Prediction-engine status
+
+Implemented on integration: public-source definitions; scheduled read-only ingestion; content-addressed receipts where raw retention is permitted; digest-only records for sources whose redistribution terms are unreviewed; SQLite point-in-time feature store; event timeline; source-independence registry; four deterministic baselines; chronological walk-forward evaluation; calibration/drift diagnostics; fail-closed forecast ledger and Ed25519 evaluator attestation.
+
+Still not verified: successful scheduled ingestion on main; independent WORM archive and trusted timestamp anchor; synchronized historical spot/L2/derivatives/flow/collateral data; trained XRP-specific candidate; superiority against all four baselines; independent shadow outcomes. The local SQLite triggers deter ordinary application-level mutation but are not adversarial tamper-proof storage. GitHub artifacts (90 days) and cache are not WORM.
+
+**Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`.** All Run147 market and stablecoin observations are research-only; original HTTP response bytes were not captured in this run, so no raw SHA-256 receipts are claimed.
+
+### Nine-platform map
+
+ChatGPT is GitHub-authenticated but the connection is overprivileged (admin/maintain/push/pull/triage). Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal PR approval; Hugging Face has no verified deployment; Kaggle is untested with no submission; Databricks previously returned HTTP 403 and has no verified write. No external-model dispatch or evidence transfer occurred.
+
+### Merge decision and backlog
+
+**NO MERGE.** PR #1662 remains draft with zero independent reviews/approvals. The exact-head full suite, dependency audit, fail-closed gate and PR-only Pages validation pass, but semantic review of all 1,231 paths is incomplete; independent review and least-privilege governance are absent; branch-protection visibility is unavailable; the fallback ruleset is disabled; and merging the Pages fix may trigger publication. No required check was bypassed. No source PR was closed.
+
+### Next concrete actions
+
+1. Complete semantic reconciliation of all 1,231 changed paths, prioritizing the 48 workflows, 389 tests, 680 research files and seven public-web files.
+2. Resolve independent review, least-privilege GitHub access, and verifiable branch protection.
+3. Obtain explicit publication authorization before any merge that would trigger Pages deployment.
+4. Keep the scheduled ingestion workflow read-only; merge only after all governance gates pass, then verify actual scheduled runs on main.
+5. Establish independent WORM receipts and trusted timestamp anchoring; preserve source-specific digest-only restrictions where raw redistribution is not authorized.
+6. Train and evaluate an XRP-specific candidate only after sufficient synchronized point-in-time history exists; retain all four baselines, calibration, drift and independent shadow gates.
+7. Keep directional forecast issuance disabled until the complete versioned admission certificate passes.
+
+No branch or PR was created, no merge or deployment occurred, no source PR was closed, no external model was dispatched, no Kaggle submission or paper trade occurred, no funds moved, no secret was rotated, and no force-push or destructive worktree action occurred.
