@@ -7674,3 +7674,32 @@ The prediction engine has 51 source definitions and 49 scheduled sources on inte
 **Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED. NO MERGE.** No new branch/PR, source-PR closure, deployment, secret operation, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or destructive worktree operation occurred.
 
 **Next concrete action:** capture byte-exact original publisher payloads for the 85 curated events through authorized source-specific adapters; record event/published/retrieval times, hashes, source-independence groups and corrections. Keep all 85 events model-ineligible until receipts are complete. Then continue the 1,249-path/48-workflow semantic review and resolve independent review, least-privilege, branch-protection and Pages authorization blockers.
+
+
+## Run163-C1 — 2026-11-15T13:45:37.656Z — Source-vintage correction and Evernorth filing scope
+
+### Correction to the Run163 OptimistFi observation
+The opened OptimistFi page is an **aggregate XRP perpetual-futures dashboard across 37 venues**, not a Hyperliquid-only taker-flow page. Its explicit as-of label is November 14, 2026, 4:57 PM ET (21:57 UTC), approximately 15.66 hours before retrieval. The corrected snapshot reports price $0.9097 (-10.26%/24h), OI $1.1B (-10.5%), $2.6B 24-hour volume, -5.3% annualized OI-weighted funding, 46% taker buys, and aggregate taker flow of +$1.4M/1h, -$13.7M/4h, -$68.0M/24h and -$201.0M/7d. Perpetual-book depth within ±1% is $31.1M bids versus $35.4M asks. The source shows 37 venues and Binance as the largest venue by OI share (26%). It also reports a 53.1% funding spread and 51.7-basis-point price dispersion.
+
+The earlier search snippet contained different rolling-window values but no exact capture timestamp. It is preserved as an unverified alternate page vintage and excluded from model use. Neither vintage is synchronized with Fuelmaps' November 15 13:00 UTC spot-book snapshot or Liqwall's November 15 10:32 UTC derivatives snapshot. The original Run163 `market.hyperliquid_taker_flow` field is superseded by the correction artifact; do not use it as Hyperliquid-only evidence.
+
+### Evernorth 10-Q and “actual capital” correction
+The November 13 Form 424B3 supplement attaches Evernorth's September 30 Form 10-Q and explicitly states that the financial statements describe **pre-business-combination** financial condition and nominal capitalization. Therefore, the September 30 $91,397 cash balance, $341.9M digital-asset accounting balance, $524.3M refundable investor advances and $271.0M nine-month impairment are not current post-close financials. The refundable advances were settled through equity issuance at the October 9 closing.
+
+The supplement registers potential resale of 73,688,162 Class A shares: 19,102,635 already-issued Class A shares, up to 31,392,746 Class C conversions, up to 22,953,128 Pathfinder unit exchanges/redemptions and 239,653 Sponsor Warrant shares. Evernorth says it receives no proceeds from selling-securityholder resales except proceeds from Sponsor Warrant exercises. This is potential secondary share supply, not fresh issuer capital and not an XRP treasury sale.
+
+Post-close events disclosed in the filing include $29.0M net convertible-note cash proceeds; 3,073,366 warrant exercises producing $35.3M gross proceeds; 8,666,279 warrants remaining; a 5,218,935-share ELOC capacity with a $500,000 commitment fee; and a 346,484,972-XRP transfer to Pathfinder. ELOC capacity is not cash drawn. The company-reported 473M-XRP treasury and planned Q4 institutional strategies with Ripple, Kraken, Coinbase and BitGo are announced treasury/deployment plans; actual deployment balances, realized yield and revenue are not established by the reviewed filing.
+
+The correct capital ledger keeps cash proceeds, XRP purchases, in-kind contributions, debt, warrant cash, undrawn ELOC capacity, secondary resales and XRP sales separate. Do not double-count cash used to purchase XRP.
+
+### Exact-head CI before this correction
+The Run163 append-only handoff/audit head `ccb7a0c5` completed exact-head verification:
+- Full repository suite: 3,796 passed, zero failed, one skipped, 19 subtests; 64.02% inclusive coverage, 77% legacy-core coverage; 133.66 seconds.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Six-manifest push and PR dependency audits passed with zero known vulnerabilities.
+- Push and PR fail-closed gates passed.
+- PR Pages build-only validation passed.
+
+Evidence: [full suite 43720162925](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720162925), [push dependency audit 43720162962](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720162962), [PR dependency audit 43720167478](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720167478), [push fail-closed 43720162939](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720162939), [PR fail-closed 43720167493](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720167493), [PR Pages validation 43720167483](https://github.com/Barrot-Agent/B-Agent/actions/runs/43720167483).
+
+This correction is append-only. No original source record or prior audit was overwritten.
