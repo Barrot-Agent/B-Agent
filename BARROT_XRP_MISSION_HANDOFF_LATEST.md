@@ -8963,3 +8963,21 @@ The map is being corrected to Run157/85 events and the five-source-group policy.
 After the Run172 audit commit `c73a1c5ae1610f01ffa997c652746347766a93e4`, PR #1662 has 2,524 commits ahead, zero behind, 1,259 changed files, 355,040 additions and 6,309 deletions. The recursive integration tree has 2,502 entries, including 2382 files. Main remains unchanged.
 
 The exact 3,803-test pass remains verified on predecessor code head `ad2ac1b072afbc710fdcc4b26a888f7351e0ea86`. The map/test correction commit is not yet verified; its own full-suite CI must complete before any merge consideration.
+
+
+## Run172 exact-head regression correction — c71ae4
+
+The full repository suite on map/test correction head `c71ae4d0fdbd967b56f1122a86559d27812d3690` completed with **3,800 passed, four failed, one skipped and 19 subtests passed**; inclusive coverage remained 64.02%. The core suite passed 742 tests with eight subtests. Six-manifest dependency audit and both push/PR fail-closed gates passed.
+
+The four failures were in `tests/test_xrp_nine_platform_current_map_run73.py`, not runtime or XRP prediction code:
+
+1. A production-gap regression requires the exact phrase “scenario outputs remain authored research hypotheses without forecast probabilities”; the map refresh had omitted “authored”.
+2. New Run172 provenance entries used `name` but omitted the required `source` field.
+3. A combined historical/current test still compared the latest passing CI head to Run167's historical head and still expected 3,796 tests; it now needs to distinguish the latest failed attempt from the last fully passing head.
+4. A Run162 historical-snapshot test still equated the current latest CI head with Run167's historical snapshot.
+
+The correction restores the exact wording, adds `source` labels without inventing URLs, updates historical assertions to their own snapshots, and explicitly records the c71ae4 failure separately from the last fully passing head `ad2ac1b` (3,803 passed, zero failed). A new regression test records the four exact failure names and verifies that no tests were removed, disabled or weakened.
+
+The c71ae4 full-suite evidence is [run 43751545035](https://github.com/Barrot-Agent/B-Agent/actions/runs/43751545035). Dependency audit [43751545012](https://github.com/Barrot-Agent/B-Agent/actions/runs/43751545012) and push fail-closed gate [43751545038](https://github.com/Barrot-Agent/B-Agent/actions/runs/43751545038) passed. PR event tests were skipped by integration-branch conditions.
+
+A corrective commit is being prepared on the same integration branch. Its own exact-head full-suite result is required before merge. PR #1662 remains draft and blocked; main is unchanged.

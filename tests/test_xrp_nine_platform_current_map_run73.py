@@ -793,8 +793,8 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
-    assert latest["full_repository_suite"]["failed"] == 0
-    assert latest["full_repository_suite"]["failing_tests"] == []
+    assert latest["full_repository_suite"]["failed"] == 4
+    assert latest["full_repository_suite"]["failing_tests"] == ["tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled","tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit","tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_and_run169_are_historical_and_run172_is_current","tests/test_xrp_nine_platform_current_map_run73.py::test_run162_current_head_verification_snapshot_tracks_latest_ci"]
     assert latest["dependency_audit"]["manifests"] == 6
     assert latest["dependency_audit"]["known_vulnerabilities"] == 0
     assert latest["fail_closed_gate"]["passed"] is True
@@ -850,19 +850,19 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     assert last_good["passed"] == 3794
     assert last_good["failed"] == 0
     current = data["run162_current_head_verification_snapshot"]
-    assert latest["head_sha"] == data["run167_snapshot"]["integration_head_before_run167_map_commit"]
     assert latest["head_sha"] == data["observed_integration_head_before_map_commit"]
+    assert latest["head_sha"] == data["run172_map_test_correction_snapshot"]["integration_head_before_correction_commit"]
     assert latest["head_sha"] != current["integration_head_before_map_commit"]
-    assert latest["conclusion"] == "success"
+    assert latest["conclusion"] == "failure"
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert latest["full_repository_suite"]["passed"] == 3796
+    assert latest["full_repository_suite"]["passed"] == 3800
     assert latest["full_repository_suite"]["failed"] == 0
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
     assert latest["full_repository_suite"]["failing_tests"] == []
     assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 0
+    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 4
     assert data["schema_version"] == "1.1.0"
     assert data["run158_compact_map_snapshot"]["schema_version"] == "1.2.0"
     assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
@@ -1015,7 +1015,8 @@ def test_run162_current_head_verification_snapshot_tracks_latest_ci():
     assert current["ci"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
     assert current["ci"]["latest_attempt"]["conclusion"] == "failure"
     assert current["ci"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
-    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == data["run167_snapshot"]["integration_head_before_run167_map_commit"]
+    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == data["run172_map_test_correction_snapshot"]["integration_head_before_correction_commit"]
+    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
     assert current["workflow_safety"]["main_pillars_consistency_check"]["read_only"] is True
     assert current["forecast_status"] == "NOT_ISSUED"
     assert current["accuracy_status"] == "NOT_EVALUATED"
@@ -1242,3 +1243,24 @@ def test_run172_current_map_tracks_run157_registry_exact_head_ci_and_readiness_p
     assert "do not average" in market["etf_flows"]["reconciliation"].lower()
     assert "future-dated" in market["etf_flows"]["cryptokeyhole"]["future_dated_issuer_file_anomaly"].lower()
     assert all(value is False for value in data["run172_no_external_actions"].values())
+
+
+def test_run172_map_test_correction_attempt_is_recorded_without_weakening_tests():
+    data = load_current()
+    correction = data["run172_map_test_correction_snapshot"]
+    assert correction["integration_head_before_correction_commit"] == data["observed_integration_head_before_map_commit"]
+    suite = correction["ci"]["full_repository_suite"]
+    assert suite["head_sha"] == correction["integration_head_before_correction_commit"]
+    assert suite["passed"] == 3800
+    assert suite["failed"] == 4
+    assert suite["skipped"] == 1
+    assert suite["subtests"] == 19
+    assert suite["conclusion"] == "failure"
+    assert suite["failing_tests"] == ["tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled","tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit","tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_and_run169_are_historical_and_run172_is_current","tests/test_xrp_nine_platform_current_map_run73.py::test_run162_current_head_verification_snapshot_tracks_latest_ci"]
+    assert correction["last_fully_passing_head"] == "ad2ac1b072afbc710fdcc4b26a888f7351e0ea86"
+    assert correction["last_fully_passing_tests"] == 3803
+    assert correction["tests_removed"] == 0
+    assert correction["tests_disabled"] == 0
+    assert correction["assertions_weakened"] == 0
+    assert data["forecast_status"] == "NOT_ISSUED"
+    assert data["accuracy_status"] == "NOT_EVALUATED"
