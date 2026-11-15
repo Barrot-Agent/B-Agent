@@ -8417,3 +8417,78 @@ No merge, deployment, secret rotation, Space restart, external-model transfer, D
 3. Resolve independent review, least-privilege access and branch-protection visibility.
 4. Address the historical GitHub CLI credential-path exposure through provider-side review/revocation; do not rewrite old branches.
 5. Continue synchronized historical spot/L2/derivatives/flow/collateral data and byte-exact receipts before model admission.
+
+
+## Run169 follow-up — exact-head correction, primary-source capital reconciliation and institutional rails
+
+Follow-up captured: 2026-11-15T17:21:30Z. This section supplements the Run169 handoff above.
+
+### Exact-head test correction — EXECUTED, verification pending
+The first correction commit `4b8849e8e548bed141a7539efc21ca59b1e2f2ed` ran the full repository suite on that exact head: 3,797 passed, two failed, one skipped, 19 subtests passed, 64.02% inclusive coverage, 136.23 seconds. The two remaining failures were evidence-map compatibility errors:
+1. A historical Run167 tested-head pointer was overwritten with the current PR head.
+2. Run168's historical security-hold object retained alternate field names, while the regression test expected explicit aliases.
+
+The follow-up restores the historical Run167 pointer, adds compatibility aliases without removing original fields, updates the current PR snapshot to `4b8849e`, and adds source-bounded tests for Evernorth capital, SBIC identity, Kamilah attribution and competing stablecoin rails. No tests were removed, disabled or weakened. The new follow-up commit's exact-head full-suite run is pending.
+
+### Evernorth — the 200,000-XRP difference is resolved
+The November 13 SEC filing provides the missing component: delayed funding investors committed 200,000 XRP for delivery at closing. The 200,000-XRP difference between the September 30 balance and the October 9 Pathfinder transfer is therefore explained, not an unexplained discrepancy.
+
+The complete XRP reconciliation is:
+- 84,365,876 XRP purchased with $214,049,995 of advance cash.
+- 261,919,096 XRP in private-placement subscriptions, comprising 211,319,096 XRP from RippleWorks through Arrington XRP Capital Fund, 50,000,000 XRP from a Ripple-affiliated contributor entity, and 600,000 XRP from advance-funding investors.
+- 200,000 XRP from delayed-funding investors delivered at closing.
+- 126,791,458 XRP contributed directly by Ripple to Pathfinder.
+- Total: **473,276,430 XRP**.
+
+The arithmetic bridges:
+- Pre-close holdings: 84,365,876 + 261,919,096 = 346,284,972 XRP.
+- Post-close Pathfinder transfer: 346,284,972 + 200,000 = 346,484,972 XRP.
+- In-kind total: 261,919,096 + 200,000 + 126,791,458 = 388,910,554 XRP.
+- Total XRP: 346,484,972 + 126,791,458 = 473,276,430 XRP.
+
+Capital must remain categorized:
+- Gross closing cash proceeds were $272.6M: $224.6M private-placement cash plus $48.0M SPAC trust release, before expenses.
+- The $214.05M used to purchase 84.366M XRP is already inside the gross closing cash and must not be added again.
+- The $10.5M delayed cash commitment is part of the private-placement funding.
+- The October 13 convertible note generated $29.0M net from $30.0M principal after a $1.0M fee; it is 4% senior unsecured PIK debt due 2031, with general corporate use including possible XRP acquisition.
+- Cash warrant exercises between October 12 and November 9 generated $35.3M gross from 3,073,366 exercises; 8,666,279 remained. No filing evidence establishes that these proceeds purchased XRP.
+- The Cantor ELOC permits up to 5,218,935 shares at 97% of applicable VWAP. Registration became effective October 30; the $500K commitment fee is not a draw, and no actual draw was established.
+- SBI's 2025 announcement of a $200M cash commitment and an expected raise above $1B is not proof that the full amount was realized. The SEC filing identifies SBI-affiliated investors and a 39.9% Class A ownership threshold but does not individually reconcile SBI's cash contribution. Do not attribute all $214.05M of advance funding to SBI.
+- September 30 balance-sheet cash and liabilities are pre-combination figures; they do not describe post-close liquidity.
+- The prospectus cover's 11,499,992 shares issuable and the Q3 note's 11,739,645 assumed warrants remain different disclosure populations; no full reconciliation is asserted.
+
+Primary filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+
+### Japan SBIC identity — primary-source resolution
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; established November 15, 1963; service area 18 prefectures east of Shizuoka/Nagano/Niigata.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established November 18, 1963; Aichi, Gifu, Mie, Toyama and Ishikawa.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established November 20, 1963; 24 prefectures west of Fukui/Shiga/Nara/Wakayama.
+- The three identify one another as sister companies and operate under Japan's SME Investment Promotion Companies Act. They are not SBI Holdings.
+- SBIC East's June 2025 course for investee companies included ChatGPT and Copilot. It is training, not evidence of an OpenAI partnership.
+- SB OAI Japan GK is a separate SoftBank/OpenAI 50/50 joint venture and must not be conflated with SBIC or SBI Holdings.
+
+Official profiles:
+https://www.sbic.co.jp/company/profile/
+https://www.sbic-cj.co.jp/company/about/
+https://www.sbic-wj.co.jp/profiles/profile/
+
+### Kamilah Stevenson identity and video attribution
+A June 11, 2026 first-person interview on The XRP Podcast with Paul Barron verifies the person's self-identification and reports her own social-platform names: X as “cam i am cam Stevenson,” Instagram as “Kamilla Stevenson,” and YouTube as “doctor Camilla Stevenson.” The speaker explicitly warned that fake pages exist. This verifies the person at identity level, but not the candidate XRP channel `@KamilahStevensonXrpStocks`. No channel first-party cross-link was found; no YouTube video was attributed or inventoried. Keep the channel and candidate videos quarantined until a verified account links them.
+
+Interview: https://www.iheart.com/podcast/269-the-xrp-podcast-with-paul-32005265/episode/crypto-panics-with-dr-kamilah-stevenson-284095994/
+
+### Circle, SBI, Coinbase, Ripple, BNY and PNC
+- Circle Q3 2026: average USDC circulation $73.3B (+8% YoY), onchain volume $13.9T (+49%), reserve income $658M (-8%), total revenue plus reserve income $865M, net income $226M and adjusted EBITDA $317M. ARC presale revenue was $182M of $207M other revenue; do not treat this as recurring USDC economics.
+- Circle's Arc public mainnet launched September 16 with 100+ institutional/ecosystem builders, USDC-denominated gas, sub-second finality, native USDC, Circle Payments Network integration and a permissioned founding validator cohort including SBI Group, BNY, BlackRock, DTCC, Mastercard, MoneyGram, Visa and others.
+- Circle says SBI VC Trade was the first and only company in Japan to distribute USDC; SBI also identifies JPYSC as a trust-type yen-pegged stablecoin issued by SBI Shinsei Trust. This is a direct SBI–Circle stablecoin relationship, separate from XRP settlement.
+- PNC's November 9 limited pilot accepts incoming USDC on Ethereum, powered by Coinbase Payment products, automatically converts 1:1 to USD and deposits to eligible PNC accounts. It is not an XRP rail.
+- Coinbase supports RLUSD on Prime, Exchange and retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support remains future, not live.
+- BNY supports XRP and RLUSD custody and is primary RLUSD reserve custodian. Direct RLUSD mint/redeem through BNY is intended subject to approvals; C2FO tokenized supply-chain finance remains exploratory.
+
+### XRPL on-chain snapshot — November 15
+DefiLlama reports $29.88M DeFi TVL (-4.64%/24h), $850.85M stablecoins (-12.81%/7d), 89.65% RLUSD dominance, $16.35M DEX volume/24h and $56.46M/7d (+93.60%), DEX/CEX dominance 0.04%, 69,704 active addresses, 4,475 new addresses and 4.47M transactions. Implied XRPL RLUSD from dominance is approximately $762.8M, not global RLUSD supply. DEX turnover rose while stablecoin supply and TVL contracted; that is not evidence of net capital inflow or XRP demand.
+
+Ripple reports 36.809B XRP held, 63.176B distributed and 31.7B in escrow as of September 30; escrow is a subset of Ripple's reported holdings, not an additional amount. CoinMarketCap's circulating-supply figure differs by roughly 340.5M XRP; methodology and cutoff remain unreconciled.
+
+### Forecast and authorization
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. The market observations have no byte-exact raw receipts and are model-ineligible. No real-money or paper-trading action was performed. No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, funds transfer, force-push, history rewrite or destructive worktree operation occurred.

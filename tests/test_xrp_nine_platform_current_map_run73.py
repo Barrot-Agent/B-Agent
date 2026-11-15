@@ -1090,7 +1090,7 @@ def test_run169_exact_head_regression_market_security_and_forecast_gates():
     assert data["latest_run_id"] == "Run169"
     run = data["run169_snapshot"]
     assert run["main_sha"] == data["observed_main_sha"]
-    assert run["integration_head_before_run169_commit"] == data["integration_pr"]["head_sha"]
+    assert run["integration_head_before_run169_commit"] == run["pr_head_sha"]
     assert run["pr_number"] == 1662
     assert run["pr_changed_files"] == 1256
     assert run["open_prs"] == 373
@@ -1121,3 +1121,66 @@ def test_run169_exact_head_regression_market_security_and_forecast_gates():
     assert data["forecast_status"] == "NOT_ISSUED"
     assert data["accuracy_status"] == "NOT_EVALUATED"
     assert all(value is False for value in data["run169_no_external_actions"].values())
+
+
+def test_run169_evernorth_actual_capital_components_reconcile_without_double_counting():
+    data = load_current()
+    e = data["run169_institutional_research_update"]["evernorth"]
+    assert e["cash_purchased_xrp"] == 84365876
+    assert e["private_placement_xrp"] == 261919096
+    assert e["delayed_funding_xrp"] == 200000
+    assert e["ripple_direct_contribution_xrp"] == 126791458
+    assert e["total_xrp_reconciled"] == 473276430
+    assert e["cash_purchased_xrp"] + e["private_placement_xrp"] == e["reported_preclose_holdings_xrp"]
+    assert e["reported_preclose_holdings_xrp"] + e["delayed_funding_xrp"] == e["postclose_pathfinder_transfer_xrp"]
+    assert e["private_placement_xrp"] + e["delayed_funding_xrp"] + e["ripple_direct_contribution_xrp"] == e["in_kind_total_xrp"]
+    assert e["postclose_pathfinder_transfer_xrp"] + e["ripple_direct_contribution_xrp"] == e["total_xrp_reconciled"]
+    assert e["components_reconcile"] is True
+    assert e["delayed_200k_difference_resolved"] is True
+    assert e["gross_closing_cash_proceeds_usd"] == 272600000
+    assert e["gross_cash_components_usd"]["private_placement_investments"] + e["gross_cash_components_usd"]["spac_trust_release"] == 272600000
+    assert e["advance_cash_used_for_xrp_is_already_inside_gross_closing_cash"] is True
+    assert e["sbi"]["individual_sbi_cash_amount_reconciled_in_10q"] is False
+    assert e["raise_target_over_1b"]["verified_as_realized_cash_in_2026_10q"] is False
+    assert e["eloc"]["capacity_is_cash"] is False
+    assert e["eloc"]["actual_draw_reported"] is False
+    assert e["warrant_exercises"]["proceeds_used_to_buy_xrp_verified"] is False
+
+
+def test_run169_sbic_identity_and_kamilah_attribution_remain_source_bounded():
+    data = load_current()
+    identity = data["run169_identity_research_update"]
+    sbic = identity["sbic"]
+    assert sbic["east"]["english_name"] == "SBIC East Japan"
+    assert sbic["central"]["english_name"] == "SBIC Central Japan"
+    assert sbic["west"]["english_name"] == "SBIC West Japan"
+    assert sbic["sbi_holdings_is_separate"] is True
+    assert identity["chatgpt_sbic"]["commercial_openai_partnership_established"] is False
+    assert identity["ask_coin"]["xrpl_issuer_verified"] is False
+    kam = identity["kamilah_stevenson"]
+    assert kam["person_identity_status"] == "FIRST_PERSON_SELF_IDENTIFICATION_VERIFIED"
+    assert kam["candidate_channel_first_party_crosslink"] is False
+    assert kam["video_inventory_status"] == "NOT_INVENTORIED_CHANNEL_LINK_UNVERIFIED"
+    assert kam["videos_attributed"] == 0
+
+
+def test_run169_circle_arc_bny_pnc_and_xrpl_metrics_are_not_misclassified_as_xrp_demand():
+    data = load_current()
+    institutional = data["run169_institutional_research_update"]
+    assert institutional["circle_arc_sbi"]["founding_validator_cohort_includes"].count("SBI Group") == 1
+    assert institutional["circle_arc_sbi"]["xrp_relationship"].startswith("No direct XRP")
+    assert institutional["pnc_coinbase"]["rail"] == "incoming USDC on Ethereum"
+    assert institutional["pnc_coinbase"]["xrp_settlement"] is False
+    assert institutional["ripple_coinbase"]["coinbase_global_exchange_collateral"] == "FUTURE_NOT_LIVE"
+    assert institutional["ripple_bny"]["tokenized_trade_finance"].startswith("EXPLORATORY")
+    market = data["run169_market_research"]
+    xrpl = market["xrpl_onchain_metrics"]
+    assert xrpl["stablecoin_market_cap_usd"] == 850850000
+    assert xrpl["stablecoin_change_7d_pct"] == -12.81
+    assert xrpl["rlusd_dominance_pct"] == 89.65
+    assert xrpl["dex_volume_7d_change_pct"] == 93.60
+    assert xrpl["dex_vs_cex_dominance_pct"] == 0.04
+    assert market["raw_http_bytes_captured"] is False
+    assert market["point_in_time_eligibility"] == "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE"
+    assert data["forecast_status"] == "NOT_ISSUED"
+    assert data["accuracy_status"] == "NOT_EVALUATED"
