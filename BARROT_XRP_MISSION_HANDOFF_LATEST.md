@@ -459,3 +459,107 @@ PR #1663 has zero formal reviews, zero approvals and zero review threads. CodeRa
 7. Do not train/issue a directional candidate until the OOS and independent shadow policy passes.
 
 No main-branch write, merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission/download, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
+## Run176 follow-up — exact-head mode preservation, Absa, Evernorth and Kamilah Stevenson
+
+**Follow-up captured:** 2026-11-15T22:49:30Z.  
+**Verified code head before this documentation/map update:** `4fdeb540ae048e390a24d0265411fe5f7b7401e1`.
+
+### Exact-head verification and mode preservation
+
+After Run176 identified three executable-mode differences, the successor restored all three Python entrypoints to main's `100755` mode without changing their file contents:
+
+- `barrot_agent/analysis/xrp_telemetry_matrix.py`
+- `barrot_agent/ingestion/council_ingest_node.py`
+- `barrot_agent/orchestration/orchestrator_bridge.py`
+
+A fresh recursive tree comparison on code head `4fdeb54` reports **zero main paths missing and zero executable-mode differences**.
+
+The exact-head push CI on `4fdeb54` passed:
+- Full repository suite: **3,820 passed, 0 failed, 1 skipped, 19 subtests passed** in 174.96 seconds.
+- Inclusive coverage: **64.02%**; legacy core coverage **77%**.
+- Core suite: 743 passed, zero failed, eight subtests passed.
+- Wheel build and installed Barrot V3 / XRP mission verification passed.
+- Six-manifest dependency audit passed with zero known vulnerabilities.
+- PR Pages build-only validation passed.
+
+Evidence:
+- [Exact-head full suite 43770605208](https://github.com/Barrot-Agent/B-Agent/actions/runs/43770605208)
+- [Six-manifest dependency audit 43770605285](https://github.com/Barrot-Agent/B-Agent/actions/runs/43770605285)
+- [PR Pages validation 43770611091](https://github.com/Barrot-Agent/B-Agent/actions/runs/43770611091)
+- [PR dependency audit 43770611121](https://github.com/Barrot-Agent/B-Agent/actions/runs/43770611121)
+
+The fail-closed gate was last verified on predecessor code head `9c69f1a` (runs 43768474015 and 43768476665). It was not re-triggered on `4fdeb54`; exact-head fail-closed evidence remains a merge blocker. The documentation/map update in this follow-up is also a new head and requires its own exact-head CI.
+
+### Absa — correction to the “$119B African bank behind XRP” narrative
+
+A public Kamilah Stevenson video indexed as “A $119 Billion African Bank Just Put Its License Behind XRP” refers to Absa.
+
+Primary evidence establishes a narrower and materially different event:
+
+- Absa's 2025 financial statements show group total assets of R2.068695 trillion for 2024 and R2.239479 trillion for 2025. These are group balance-sheet assets, not capital committed to XRP. [Absa 2025 annual statements](https://www.absa.africa/wp-content/uploads/2026/03/Absa-Group-Annual-Consolidated-and-Separate-Financial-Statements-single-page.pdf).
+- Absa announced on September 29, 2026 that it had secured regulatory approval and launched an institutional digital-asset custody proposition for South African clients. It is not currently a retail cryptocurrency offering. [Absa primary announcement](https://www.absa.africa/our-stories/our-voices/2026/absa-becomes-first-bank-in-africa-to-secure-regulatory-approval-for-digital-asset-custody/).
+- Ripple and Absa announced a custody-technology partnership on October 15, 2025. Absa's own product explanation says it uses Ripple's custody technology together with Absa's internal infrastructure. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-expands-global-custody-footprint-into-africa-with-absa-bank/) · [Absa CIB explanation](https://cib.absa.africa/home/insights-and-events/the-gold-standard-in-digital-asset-custody/).
+
+The official Absa announcement does not name XRP as a required settlement asset, disclose an XRP position or announce XRP-specific capital deployment. This is evidence of institutional digital-asset custody and Ripple enterprise-software adoption, not proof of XRP demand or an “XRP license.”
+
+### SBI / Startale / BlackRock — correction to the “BlackRock signed with Ripple’s closest partner” framing
+
+The November 10, 2026 Kamilah Stevenson video “BlackRock Just Signed With Ripple’s Closest Partner in Japan” appears to refer to the October 27, 2026 MOU among SBI Holdings, Startale, BlackRock Financial Management and BlackRock Japan.
+
+The primary SBI announcement says the parties will **explore** an ecosystem connecting tokenized money-market funds with JPYSC. Ripple is not a party to the MOU. XRP is not identified as a required settlement asset. No BlackRock XRP purchase or capital commitment is disclosed.
+
+Sources:
+- [SBI Holdings primary announcement, October 27](https://www.sbigroup.co.jp/news/2026/1027_16682.html)
+- [Startale announcement](https://startale.com/en/news/blackrock-startale-sbi)
+
+This is a real SBI/Startale/BlackRock institutional relationship, but it must not be converted into a Ripple/BlackRock XRP partnership claim.
+
+### Evernorth — “400M XRP committed to native lending” claim not substantiated
+
+The May 5 Kamilah Stevenson video makes a claim about approximately 400M XRP being committed to native lending.
+
+Primary and SEC evidence:
+- Evernorth's January 8, 2026 SEC-filed announcement with Doppler describes a strategic relationship to **explore** institutional liquidity deployment frameworks and design/pilot potential XRPL use cases. It is not a disclosure that 400M XRP was deployed. [SEC-filed Evernorth/Doppler announcement](https://www.sec.gov/Archives/edgar/data/2092592/000095010326000288/dp239779_425.htm).
+- The September 30, 2026 Form 10-Q reports approximately 346.285M XRP held by Evernorth and separately describes Pathfinder's approximately 126.791M XRP, for the roughly 473M combined treasury. [SEC Form 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm).
+- The reviewed SEC filings do not report 400M XRP deployed through Doppler or yield earned from such lending. The Q3 filing says Evernorth had not yet generated revenue. The strategy is real; completed lending volume and yield are not established.
+
+Do not count treasury holdings, exploratory lending frameworks, deployed collateral, loans outstanding and earned yield as the same category.
+
+### Kamilah Stevenson — identity resolution and public video inventory
+
+The June 11, 2026 iHeart episode identifies its guest as Dr. Kamilah Stevenson. At transcript 40:07, the guest gives her own social identities: X as “cam i am cam Stevenson,” Instagram as “Kamilla Stevenson,” and YouTube as “Doctor Camilla Stevenson”; she explicitly warns that fake pages exist. The transcript is automatically generated and may explain the Camilla/Kamilah spelling variation. [First-party interview transcript](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/).
+
+YouTube search results identify a channel titled **Kamilah Stevenson | XRP & Stocks**, channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`, handle [@KamilahStevensonXrpStocks](https://www.youtube.com/@KamilahStevensonXrpStocks). The channel title and author attribution match the interview. Because the creator warns about impersonators and a direct first-party X/Instagram-to-channel link was not retrieved, person identity is high-confidence and channel attribution is **high-confidence but not fully cross-linked**. Do not treat lookalike pages as hers.
+
+Five public videos were identified as attributed to that channel/person:
+
+| Published | Video | YouTube ID | Indexed views / likes |
+|---|---|---|---|
+| 2026-05-05 | Evernorth, Ripple Prime, Japan/SWIFT claims | [SId2NMmBi3s](https://www.youtube.com/watch?v=SId2NMmBi3s) | 13,052 / about 1.1K |
+| 2026-05-12 | XRPL RWA, RLUSD and payment-volume claims | [pFru4idBTMA](https://www.youtube.com/watch?v=pFru4idBTMA) | 28,264 / about 2K |
+| 2026-07-25 | Japan regulatory/tax and XRP claims | [Z1ai8L497aM](https://www.youtube.com/watch?v=Z1ai8L497aM) | 14,581 views |
+| 2026-09-13 | CLARITY Act and macro/Fed claims | [Wa0Teymjaks](https://www.youtube.com/watch?v=Wa0Teymjaks) | 19,984 / 1,131 |
+| 2026-11-10 | BlackRock/SBI/Startale Japan MOU | [anzmlZ-a7K4](https://www.youtube.com/watch?v=anzmlZ-a7K4) | 44.8K |
+
+The first four are direct YouTube search-result attributions. The November 10 video is linked from TrendReport's channel listing, which identified the channel as Kamilah Stevenson with approximately 144K subscribers and linked the video to YouTube. This is a partial public inventory, not an exhaustive channel crawl. YouTube page retrieval was throttled for some IDs.
+
+Three additional titles were surfaced by third-party channel indexes—“Ripple Just Got FINAL Bank Approval. What Changes for XRP?”, “A $119 Billion African Bank Just Put Its License Behind XRP,” and “Japan’s Next Move Could Change Everything for XRP”—but direct YouTube IDs were not resolved in this pass. Keep those as indexed candidates, not verified video records.
+
+Creator claims are source material, not ground truth. In particular:
+- The Absa video overstates a custody approval as an XRP-specific license.
+- The BlackRock video frames an SBI/Startale/JPYSC MOU as an XRP/Ripple event, although Ripple and XRP are absent from the MOU's stated scope.
+- The Evernorth video conflates treasury size and exploratory lending strategy with actual XRP deployed and yield earned.
+- The reported “$900M one-day XRPL RWA jump” remains subject to the previously recorded Justoken valuation/index discrepancy.
+- “Ripple Prime inside DTCC alongside Goldman/JPM” and “Japanese banks 60% cheaper than SWIFT” were not verified against primary evidence in this pass.
+
+### Current mission and safety status
+
+- XRP remains priority 1 on the integration successor; Barrot V3 remains the execution/orchestration/safety foundation.
+- `latest_signal.json`: `NOT_ISSUED`; `signal_accuracy.json`: `NOT_EVALUATED`.
+- No raw-byte receipts were created for this web research; the claims above are research leads and counter-hypotheses, not model features.
+- No external-model dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle action, paper trade, funds transfer or real-money action occurred.
+- **NO MERGE.** PR #1663 remains draft with zero independent approvals; semantic review and exact-head fail-closed verification remain incomplete.
