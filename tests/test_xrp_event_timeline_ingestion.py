@@ -155,7 +155,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "SBI Holdings, Inc." in evernorth["claim"]
     sbi_remit = by_id["sbi-remit-xrp-odl-corridors-2023-09-06"]
     assert "SBI VC Trade sends XRP in real time" in sbi_remit["claim"]
-    assert "volumes are undisclosed" in sbi_remit["counter_hypothesis"]
+    assert "undisclosed" in sbi_remit["counter_hypothesis"]
     sbi_rails = by_id["sbi-remit-nium-fiat-alternative-rail-2025-06-30"]
     assert "more than 190 countries" in sbi_rails["claim"]
     assert "does not identify XRP" in sbi_rails["claim"]

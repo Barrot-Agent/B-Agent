@@ -6857,3 +6857,13 @@ Keep these categories separate:
 - Doppler/SBI Ripple Asia December MOU: https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization
 
 The graph now distinguishes SBI Holdings, SBI Remit, SBI VC Trade, SBI Ripple Asia, SBI Digital Finance, SBI Digital Markets, SBIC East/Central/West and SB OAI Japan. No entity or relationship is inferred from name similarity alone.
+
+
+### Run157 event-timeline expansion and workflow-review completion
+
+The curated current event registry was expanded from 73 to 85 events. Twelve new records cover SBI Remit's XRP bridge corridors, Nium and Cambodia alternative rails, all-rail remittance turnover, SBI Ripple Asia's Japan-Korea feasibility work, tokenized-deposit POC and registered XRPL token-issuance platform, SBI START Bond, SBI VISA Crypto Card, SBI's Ripple equity/XRP-supply snapshot, Doppler's counterparty-only SBI Digital Finance announcement and the OCC Ripple National Trust Bank status. Existing SBI VCTRADE RLUSD and Circle Q3 events were enriched with Ethereum-only RLUSD routing and SEC-reported Circle Mint customer fiat flows.
+
+Regression coverage was added to tests/test_xrp_event_timeline_ingestion.py. All 85 event records still have null raw_source_sha256 because byte-exact publisher payloads have not been captured into RawReceiptArchive. The registry explicitly remains model-ineligible and forecast NOT_ISSUED. The events can inform research and scenario/counter-hypothesis generation, but cannot enter predictive features until source receipts and point-in-time availability are established.
+
+A follow-up control-plane pass also completed inspection of all 48 changed workflow files across main and integration. Twenty-four were high-risk; the remaining 24 were reviewed for triggers, permissions, secrets, external calls, repository writes, artifact flow and approval gates. This is a workflow-control review, not a complete semantic audit of every called script.
+

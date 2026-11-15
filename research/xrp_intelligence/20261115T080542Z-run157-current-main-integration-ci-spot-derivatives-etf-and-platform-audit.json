@@ -99,7 +99,8 @@
       "capability-10-design.yml, capability-discovery.yml, financial-data-refresh.yml, frontier-digest.yml and signal-summary.yml: main-ref, explicit confirmation and expected-main-SHA checks"
     ],
     "cross_analysis": "read-only outputs and artifact upload",
-    "xrp_public_ingestion": "main-ref-only; actions:read and contents:read; hourly and daily schedule; not active on main because workflow exists only on integration"
+    "xrp_public_ingestion": "main-ref-only; actions:read and contents:read; hourly and daily schedule; not active on main because workflow exists only on integration",
+    "workflow_files_reinspected_total_this_run": 48
   },
   "security": {
     "github_connector_permissions": {
@@ -634,7 +635,8 @@
     "Verified exact-head full suite and dependency/fail-closed/Pages checks on a5a6364.",
     "Inspected main Cross Analysis, Barrot Sync, Pages and CI run evidence/logs.",
     "Retrieved direct public spot ticker responses and current secondary derivatives, depth and ETF-flow snapshots.",
-    "No code changes, merges, deployments, external model calls, paper trades, financial transactions, force pushes or source-PR closures."
+    "No code changes, merges, deployments, external model calls, paper trades, financial transactions, force pushes or source-PR closures.",
+    "Completed control-plane inspection of all 48 changed workflow files across main and integration; 24 were classified high-risk. Called-script semantic review remains incomplete."
   ],
   "limitations": [
     "Web/API ticker responses were excerpts, not byte-exact downloaded raw payloads; no SHA-256 raw-source receipts were created for Run157 market data.",
@@ -1107,5 +1109,97 @@
         "raw_bytes_captured": false
       }
     ]
-  }
+  },
+  "event_timeline_update": {
+    "registry_path": "research/xrp_intelligence/event_registry_current.json",
+    "registry_version": "run157-20261115",
+    "previous_event_count": 73,
+    "new_event_count": 85,
+    "added_event_ids": [
+      "sbi-remit-xrp-odl-corridors-2023-09-06",
+      "sbi-remit-nium-fiat-alternative-rail-2025-06-30",
+      "sbi-remit-cambodia-dlt-rail-2025-10-28",
+      "sbi-remit-cumulative-turnover-all-rails-2026-05-27",
+      "sbi-ripple-asia-dsrv-feasibility-2026-02-24",
+      "sbi-ripple-asia-tokenized-deposit-poc-2026-02-26",
+      "sbi-ripple-asia-xrpl-token-issuance-platform-2026-03-26",
+      "sbi-start-bond-jpy-debt-xrp-reward-2026-03-24",
+      "sbi-visa-crypto-card-xrp-rewards-2026-05-01",
+      "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
+      "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
+      "ripple-national-trust-bank-occ-effective-2026-10-26"
+    ],
+    "updated_existing_event_ids": [
+      "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+      "circle-q3-2026-usdc-and-cpn-results-2026-11-04"
+    ],
+    "raw_source_sha256_present": 0,
+    "raw_source_sha256_missing": 85,
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "regression_test": "tests/test_xrp_event_timeline_ingestion.py verifies all 12 new event IDs, key claim/counter-hypothesis distinctions, updated 85/85 missing-receipt count and no forecast admission.",
+    "caveat": "The events are verified from public primary-source pages and SEC/OCC filings but byte-exact publisher payloads have not been captured into RawReceiptArchive. They remain research-only and model-ineligible."
+  },
+  "source_provenance_addendum": [
+    {
+      "id": "turn182171search1",
+      "source": "SBI Remit XRP bridge corridor expansion",
+      "date": "2023-09-06",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn182171search7",
+      "source": "SBI Remit/Nium fiat alternative rail",
+      "date": "2025-06-30",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn759599search1",
+      "source": "SBI Remit Cambodia DLT rail",
+      "date": "2025-10-28",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn182171search0",
+      "source": "SBI Remit cumulative all-rail turnover",
+      "date": "2026-05-29",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn178830search0",
+      "source": "SBI Ripple Asia/DSRV feasibility research",
+      "date": "2026-02-24",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn178830search1",
+      "source": "SBI Ripple Asia tokenized-deposit POC",
+      "date": "2026-02-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn729871view0",
+      "source": "SBI Ripple Asia XRPL issuance platform and issuer registration",
+      "date": "2026-04-07",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn924991search2",
+      "source": "SBI START Bond JPY coupon and XRP subscription reward",
+      "date": "2026-02-20",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn182171search3",
+      "source": "SBI VISA Crypto Card XRP rewards",
+      "date": "2026-05-01",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn874975view0",
+      "source": "Doppler/SBI Digital Finance partnership announcement",
+      "date": "2026-07-13",
+      "raw_bytes_captured": false
+    }
+  ]
 }
