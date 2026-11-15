@@ -6,6 +6,24 @@
 
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
+## 🦜 Barrot in OpenCode
+
+Barrot is the default OpenCode agent for this repository.
+
+- Agent definition: [`.opencode/agent/barrot.md`](.opencode/agent/barrot.md)
+- Default agent: `barrot` ([`opencode.json`](opencode.json))
+- Model: `opencode/deepseek-v4.1-flash-free` (OpenCode free tier)
+- Long-term memory: [`MEMORY.md`](MEMORY.md)
+- Offline build: Termux on Android, 0.5B model via `llama-cli`, no network
+
+Start OpenCode in the repository and Barrot is selected by default:
+
+```bash
+opencode
+```
+
+Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durable facts in `MEMORY.md` when asked to remember something.
+
 ## 🔄 Two Distinct Systems
 
 Barrot-Agent now maintains **two independent systems**:
@@ -242,6 +260,9 @@ The mobile guide covers:
 
 ```
 B-Agent/
+├── .opencode/                  # 🦜 OpenCode agent definitions & skills
+├── MEMORY.md                   # 🧠 Barrot long-term memory
+├── AGENTS.md                   # 📋 Project instructions for agents
 ├── barrot_agent/               # 🐍 Core Python package
 │   ├── agi/                    #   AGI reasoning, quantum entanglement, algorithms
 │   ├── analysis/               #   Email, vision, signal, character analysis
