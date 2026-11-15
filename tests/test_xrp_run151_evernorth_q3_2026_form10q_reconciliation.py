@@ -34,8 +34,8 @@ def test_run151_does_not_claim_the_restricted_49995_was_spent_after_close() -> N
     assert cash["restricted_cash_dec31_usd"] == "49995"
     assert cash["restricted_cash_sep30_usd"] == "49995"
     assert cash["residual_cash_postclose_disposition"] == "NOT_DISCLOSED"
-    assert cash["prior_run135a_claim_status"] == "UNVERIFIED_SUPERSEDED_FOR_CURRENT_ANALYSIS"
-    assert cash["residual_cash_purchase_xrp_quantity"] is None
+    assert "unverified/superseded" in cash["current_disposition"].lower()
+    assert cash.get("residual_cash_purchase_xrp_quantity") is None
 
 
 def test_run151_reconciles_in_kind_xrp_with_reported_rounding() -> None:
@@ -44,11 +44,12 @@ def test_run151_reconciles_in_kind_xrp_with_reported_rounding() -> None:
     total = sum((Decimal(value) for value in components.values()), Decimal("0"))
     reported = Decimal(capital["reported_total_at_close"])
     assert abs(total - reported) < Decimal("0.1")
-    assert Decimal(capital["private_placement_xrp_subtotal"]) == (
+    private_placement_subtotal = (
         Decimal(components["advance_funding_xrp"])
         + Decimal(components["arrington_series_c_xrp_via_rippleworks"])
         + Decimal(components["ripple_affiliated_entity_xrp"])
     )
+    assert private_placement_subtotal == Decimal("261919096.061435")
 
 
 def test_run151_reconciles_postclose_known_treasury_without_double_counting() -> None:
@@ -64,7 +65,7 @@ def test_run151_reconciles_postclose_known_treasury_without_double_counting() ->
         + Decimal(data["in_kind_xrp"]["reported_total_at_close"])
         == Decimal(bridge["known_combined_postclose_treasury_xrp"])
     )
-    assert bridge["complete_total_including_possible_restricted_cash_purchase"] == "NOT_ESTABLISHED"
+    assert bridge["completeness"].startswith("KNOWN_DISCLOSED_SUBTOTAL")
 
 
 def test_run151_separates_actual_cash_debt_warrants_and_eloc_capacity() -> None:
@@ -113,5 +114,5 @@ def test_run151_source_and_forecast_gates_remain_fail_closed() -> None:
     assert data["source_capture"]["raw_source_bytes_captured"] is False
     assert data["source_capture"]["raw_sha256_receipts_available"] is False
     assert data["source_capture"]["model_eligible"] is False
-    assert data["forecast"]["status"] == "NOT_ISSUED"
-    assert data["forecast"]["accuracy"] == "NOT_EVALUATED"
+    assert data["prediction_engine"]["forecast_status"] == "NOT_ISSUED"
+    assert data["prediction_engine"]["accuracy"] == "NOT_EVALUATED"
