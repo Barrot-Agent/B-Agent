@@ -421,8 +421,10 @@ def test_source_provenance_and_current_backlog_classification_are_explicit():
     assert any(item["source"] == "Tokyo SBIC official generative-AI training notice" for item in sources)
     backlog = data["backlog_classification"]
     assert backlog["1662"].startswith("BLOCKED_ACTIVE_INTEGRATION_DRAFT")
-    assert "SUPERSEDED_SOURCE" in backlog["1661"]
-    assert "SUPERSEDED_SOURCE" in backlog["1660"]
+    assert "SUPERSESSION_CANDIDATE" in backlog["1661"]
+    assert "50 blob differences" in backlog["1661"]
+    assert "SUPERSESSION_CANDIDATE" in backlog["1660"]
+    assert "59 blob differences" in backlog["1660"]
     assert "UNIQUE_UNREVIEWED" in backlog["1653"]
     assert "UNIQUE_UNREVIEWED" in backlog["1614"]
     assert any("semantic review" in item.lower() for item in data["next_actions"])
