@@ -6303,3 +6303,57 @@ Current integration head at verification: `956dcf0882e85555d0a62b51646cea5285ec5
 **NO MERGE.** PR #1662 is still draft with zero independent reviews or approvals. Full semantic review of the 1,193 non-workflow paths remains incomplete. Branch-protection details remain inaccessible through the connector (HTTP 403), integration is unprotected, fallback ruleset 10863829 is disabled, CODEOWNERS has no independent reviewer, connector permissions remain overprivileged, and Pages publication authorization is unresolved. The full-suite pass satisfies the technical test gate but does not satisfy governance, independent review or external-side-effect authorization.
 
 **Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.**
+
+## Run155 — 2026-11-15T07:12:55Z
+
+**Mission:** XRP intelligence and prediction-engine mastery remains priority 1. Barrot V3 remains the protected execution, orchestration, authorization, safety and verification foundation.
+
+### Repository and exact-head verification
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration code head audited: `dc5d3024004036fdbd93afb1d0a9dcbbd9635622`; this run's structured audit commit: `048b265cd0dd0a5012343a443f9f8c0c3d3b0c01`.
+- Main tree: 1,393 entries; integration tree: 2,483 entries. Integration is 2,461 commits ahead, zero behind; no main paths are missing.
+- PR #1662 remains open/draft, mergeable by GitHub's conflict indicator, 1,241 changed files, zero formal reviews and zero review threads.
+- Exact code head `dc5d302`: full repository suite **3,788 passed, 1 skipped, 19 subtests passed, zero failures**, 64.02% inclusive coverage, 77% legacy-core coverage; wheel build and installed V3/XRP mission verification passed. Full CI: [43685139304](https://github.com/Barrot-Agent/B-Agent/actions/runs/43685139304).
+- Six-manifest dependency audit passed with zero known vulnerabilities reported: [push 43685139288](https://github.com/Barrot-Agent/B-Agent/actions/runs/43685139288), [PR 43685142731](https://github.com/Barrot-Agent/B-Agent/actions/runs/43685142731). Push and PR fail-closed gates passed: [43685139319](https://github.com/Barrot-Agent/B-Agent/actions/runs/43685139319), [43685142761](https://github.com/Barrot-Agent/B-Agent/actions/runs/43685142761).
+- PR-event CI [43685142739](https://github.com/Barrot-Agent/B-Agent/actions/runs/43685142739) passed Pages validation but skipped core/full tests because the integration-branch condition excludes those PR jobs. The exact-SHA push full-suite run above is the authoritative test evidence.
+- The Run155 audit and handoff commits are documentation/research descendants of the verified code head; they require their own exact-head CI before any merge decision.
+
+### Main-branch governance and workflow findings
+- Main CI on current SHA passed both the full repository suite and core suite: [43650499432](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499432). Scheduled Cross Analysis also passed: [43687335577](https://github.com/Barrot-Agent/B-Agent/actions/runs/43687335577).
+- Main Ping-Pong workflow has manual dispatch, `contents: write`, caller-supplied task text, Groq credentials, and commits/pushes generated knowledge-base output to main. Integration quarantines it with `permissions: {}` and a disabled job.
+- Main Barrot Sync masks sync/push failures; integration keeps automatic synchronization disabled.
+- Main Pages build failed because a literal JSON double-brace example in `GLOBAL_STATE_MANIFEST.md` is parsed as Liquid at line 6456: [43650499344](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499344). Integration's PR Pages validation passed in build-only mode. Merge could trigger publication; no deployment authorization exists.
+- Main `SECURITY.md` references a PYSEC-2024-232 CI exception that does not appear in the active main `ci.yml` or `dependency-audit.yml`. Main dependency audit covers four manifests; integration expands to six, including root runtime and PEP 621 dependencies.
+- Main branch-protection details remain HTTP 403; fallback ruleset 10863829 is disabled; integration is unprotected; CODEOWNERS is not independent; GitHub connector permissions remain overprivileged.
+
+### PR inventory and backlog
+- 373 open PRs: 361 drafts and 12 non-drafts. All 12 non-drafts compared against current main are diverged and behind by 57–556 commits; none is merge-ready from current evidence.
+- #1661 and #1660 overlap #1662 on 1,070/1,072 and 970/972 paths respectively; preserve two unique workflows from each until reconciliation.
+- #1643 overlaps all 670 paths but semantic/research comparison remains incomplete.
+- #1642 overlaps all seven paths; its verified feature-snapshot lookup and forecast-ledger binding are already present in #1662. Treat as superseded candidate, not a closure authorization.
+- #1640 overlaps 278/280 paths; preserve two unique workflows.
+- #1614 retains 27 unique research paths; #1611 one unique handoff; #1615 thirteen unique safety paths; #1653 six unique codebase-memory paths; #1612 one unique workflow.
+- Older dependency PRs #1255/#1254 are superseded candidates relative to newer #1649/#1650, but neither pair is closed. Remaining PRs stay unique/unreviewed unless semantic duplication is proven. No source PR was closed.
+
+### XRP and institutional research
+- Direct OKX ticker: XRP-USDT last 0.9613, bid 0.9613/ask 0.9614, provider timestamp 06:51:34.227Z. At capture 07:12:55Z it was stale beyond the 300-second model gate. Kraken XRP/USD last 0.96354 and USDT/USD 0.99934 had no provider event timestamps. No synchronized USD-normalized multi-venue price or L2 book was admitted. Web observations were not retained as raw bytes or SHA-256 receipts.
+- ETF evidence: Coindaro citing SoSoValue reports 11 sessions without net inflow since Oct 29, November redemptions of $19.66M and $1.15B net assets. Its implied holdings estimate stays around 1.13–1.14B XRP from Sep 25 to Nov 13; this is derived from rounded AUM/price, not issuer-reported custody. Alpha Finance separately reports -$1.1M on Nov 13 and -$581.7K over 30 sessions for its five-fund universe. Do not equate AUM decline with cash outflow or average differing datasets.
+- DefiLlama's Nov 15 XRPL snapshot: $850.83M stablecoins (-12.81% 7d), RLUSD dominance 89.65%, $30.01M DeFi TVL (-4.24% 24h), $40.12M weekly DEX volume (+37.58%), 0.02% DEX/CEX dominance. Rising DEX turnover alongside falling stablecoin supply/TVL is not proof of net capital inflow or proportional XRP demand.
+- SBI VC Trade's Nov 2 official JPYSC update: lending balance exceeded ¥10B; total handling balance exceeded ¥30B, explicitly defined as on-chain balance plus lending balance. JPYSC remains account-limited with deposits/withdrawals unavailable pending legal/tax treatment and regulator confirmation for public-chain circulation. The balances are not XRP inflows or public XRPL supply.
+- SBI XDC Network APAC, SBI VC Trade and Shinhan Card signed an Oct 21 MOU to explore XDC infrastructure, stablecoin cross-border payments and trade settlement. This is exploratory, not verified production volume; it demonstrates SBI's multi-rail strategy, not exclusive XRP adoption.
+- SBIC East/Central/West remain distinct regional SME investment companies, separate from SBI Holdings and SB OAI Japan. SBIC East's ChatGPT training is not an OpenAI commercial partnership. Permission ASK remains distinct from any unverified XRPL ASK issuer. Kamilah Stevenson identity is verified at first-party level, but the candidate XRP YouTube channel remains unverified.
+
+### Prediction readiness
+- Implemented on integration: 51-source registry; scheduled read-only ingestion workflow; SHA-256 receipts/local receipt-chain prototype; SQLite point-in-time feature store; event timeline/counter-hypotheses; four baselines; purged/embargoed walk-forward; paired temporal and source-clustered block bootstrap; calibration/PSI drift; fail-closed forecast ledger and Ed25519 evaluator attestation.
+- Not verified/implemented: scheduled ingestion on main; independent WORM archive/trusted timestamp anchor; complete synchronized historical spot/L2/derivatives/ETF/exchange-flow/collateral dataset; trained XRP candidate superiority; independent shadow-outcome cohort.
+- **Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.**
+
+### Next concrete actions
+1. Verify full suite, six-manifest dependency audit and fail-closed gates on the Run155 documentation descendant.
+2. Finish semantic reconciliation of all 1,241 PR paths, prioritizing 48 workflow files and seven public-web files.
+3. Resolve independent review, least-privilege permissions and branch-protection visibility.
+4. Keep Ping-Pong, Barrot Sync and ambiguous paper-trader operations quarantined; do not merge while Pages publication side effects are unauthorized.
+5. Build synchronized historical XRP data with raw hashes and independent source receipts; reconcile ETF holdings against actual subscriptions/redemptions and stablecoin/collateral records.
+6. Train an XRP-specific candidate only after point-in-time data, out-of-sample superiority over all four baselines and independent shadow evaluation pass policy v6.
+
+Structured audit: [Run155 JSON](research/xrp_intelligence/20261115T071255Z-run155-current-main-ci-market-sbi-xdc-and-branch-audit.json).
