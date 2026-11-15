@@ -8058,3 +8058,77 @@ The November 13 SEC filing distinguishes Evernorth's direct treasury from the wi
 8. Keep forecasts blocked until leakage-safe out-of-sample results justify issuance.
 
 No merge, main change, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or history rewrite occurred.
+
+ 
+## Run167 — exact-head CI, 48-workflow security review and XRPL stablecoin liquidity reconciliation
+
+Captured: 2026-11-15T15:06:54Z
+
+### Repository state
+- Main SHA remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before Run167 documentation/evidence commit: `af0dd3c8db0020f780e91424452b94264e4721f3`.
+- Complete recursive trees: main 1,393 entries (1,283 blobs/110 trees; 87 workflows; 516 Python files; 97 test paths); integration 2,497 entries (2,377 blobs/120 trees; 88 workflows; 899 Python files; 461 test paths). Both responses report `truncated=false`.
+- PR #1662 remains open/draft/mergeable, based on current main, 2,507 commits ahead and zero behind, 1,254 changed files (+351,684/-6,309), zero formal reviews, zero review threads and no requested reviewers.
+- Open PR inventory: 373 total (361 drafts, 12 non-drafts; 365 target main and eight target other branches).
+
+### Exact-head CI — VERIFIED on `af0dd3c8db0020f780e91424452b94264e4721f3`
+- Full repository suite: **3,796 passed, 0 failed, 1 skipped, 19 subtests passed**; inclusive coverage 64.02%; legacy-core coverage 77%; duration 176.28 seconds.
+- Wheel build succeeded; installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- [Push full suite 43726707272](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726707272).
+- [Push six-manifest dependency audit 43726707270](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726707270) and [PR dependency audit 43726712746](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726712746) passed; zero known vulnerabilities reported.
+- [Push fail-closed gate 43726707290](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726707290) and [PR fail-closed gate 43726712751](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726712751) passed; merge remains disabled.
+- [PR CI 43726712790](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726712790): Pages build-only validation passed; PR-event core/full-suite jobs were skipped by the integration-branch condition. The push-event full suite is authoritative.
+- The combined-status endpoint returned no status contexts; exact-head GitHub Actions run/job evidence was inspected directly.
+
+### Main-branch operational findings
+- Latest scheduled [Cross Analysis 43726616992](https://github.com/Barrot-Agent/B-Agent/actions/runs/43726616992) succeeded at 14:51:20Z on current main.
+- [Pillars Consistency Check 43716820298](https://github.com/Barrot-Agent/B-Agent/actions/runs/43716820298) failed at 13:01Z because the GitHub App ID/private key/installation ID are absent, Databricks returned HTTP 403, and the Hugging Face Space stage was BUILD_ERROR. These are external integration-availability failures, not the repository's pytest result.
+- Main's [Barrot Sync run 43650499411](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499411) reported success but the log shows `ModuleNotFoundError: No module named 'rich'`; `python b_agent.py --sync || echo ...` converted the failure into a successful step, and `git push || true` hides push failure. The log masked `LUNAROUTE_API_KEY`; the echo/cut command emitted only its fixed label prefix, not key characters. Integration quarantines Barrot Sync with `permissions: {}` and a disabled job.
+- Main's [Pages build 43650499344](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499344) fails on a Liquid syntax error in `GLOBAL_STATE_MANIFEST.md:6456`. Integration PR Pages build-only validation passes.
+- Main's Barrot Agent remains issue-label/workflow-dispatch automation with contents, pull-request and issue write permissions; integration disables it pending exact-main pinning, objective/path/commit deduplication and one-active-integration enforcement.
+
+### Workflow security review — EXECUTED
+All 48 workflow definitions changed by PR #1662 were fetched and triaged for triggers, permissions, credential use, external calls, repository writes, deployment and artifact behavior. This is workflow-definition triage, not a completed semantic audit of every called script.
+- Legacy autonomous writers and unverified dispatchers (including Barrot Sync, Barrot Agent, Ping-Pong, task allocator, subagent spawners, self-upgrade and several diagnostics/capability placeholders) are quarantined as no-op workflows with empty permissions.
+- `barrot-ops.yml` requires an exact approved main SHA and separate explicit YES inputs for Databricks workspace overwrite and Kaggle dataset download.
+- `deploy-a2a-worker.yml` requires explicit deployment confirmation, explicit secret-rotation confirmation and an exact main SHA.
+- `sync-self-hosted-brain.yml` has a disabled job (`if: false)); no Hugging Face secret is read.
+- `coinbase-paper-trader.yml` is manual, exact-main-SHA pinned, checks persisted open-position product identity, and uploads simulation output as an artifact only.
+- Selected Groq research workflows require public/authorized-input confirmation, exact main SHA, contents-read permissions and artifact output.
+- `xrp-public-ingestion.yml` is scheduled but main-ref guarded, read-only (`actions: read`, `contents: read`) and artifact-based. It is absent from main and has not run on main. GitHub artifact retention (90 days for raw/event artifacts; seven days for some feature checkpoints) and Actions cache are not WORM or trusted timestamp anchoring.
+
+### PR ancestry and overlap reconciliation
+- #1661: 1,072 source paths; 1,069 overlap PR #1662. Source head is an ancestor of integration (integration ahead by 415 commits). Three non-overlap paths are two workflow files and `b_agent.sh`; the source workflows use `actions/setup-python@v5` while main/integration use `@v7`, and source `b_agent.sh` has mode 100644 while main/integration use 100755.
+- #1660: 972 source paths; 969 overlap. Same three older workflow/mode differences; source head is an ancestor (integration ahead by 596 commits).
+- #1643: 670/670 paths overlap; source head is an ancestor (integration ahead by 1,658 commits).
+- #1642: 7/7 paths overlap; source head is an ancestor (integration ahead by 2,563 commits).
+- #1640: 280 source paths; 278 overlap; two workflow paths remain outside the current integration diff. Branch diverged (integration ahead 1,589, behind one).
+- #1653: seven source paths; six unique codebase-memory files; branch diverged and is 18 commits behind main. Preserve as unique/unreviewed.
+- These are path/ancestry results, not permission to close PRs. No PR was closed.
+
+### Fresh XRPL stablecoin/DEX reconciliation
+**TokenPost**, published Nov 15 at 08:18 ET, reports a Nov 13 snapshot: tracked XRPL stablecoins $908.21M (-8.01% week); RLUSD $818.56M (90.13%); DEX volume $35.14M over seven days (+28.87%) and $5.76M over 24 hours. The reported weekly prior balance is a calculation from rounded figures, not a directly reported withdrawal total. [TokenPost](https://www.tokenpost.com/news/investing/57810).
+**DefiLlama**, as of Nov 15, reports $850.82M stablecoins (-12.82%/7d), RLUSD dominance 89.65%, DeFi TVL $30.03M (-4.19%/24h), DEX volume $16.35M/24h and $56.46M/7d (+93.60%), 69,704 active addresses, 4,475 new addresses and 4.47M transactions. [DefiLlama XRPL](https://defillama.com/chain/xrpl).
+- Both indicate a smaller stablecoin pool alongside active DEX turnover, but the supply levels, weekly changes and DEX volumes differ materially by provider, date and measurement. Preserve disagreement; do not average.
+- Stablecoin supply is a stock; DEX volume is gross turnover. Neither proves net capital inflow or proportional XRP demand. Redemptions, cross-chain movement, issuer treasury transfers, repeated swaps and bots remain competing explanations.
+- A secondary article published Nov 15 claimed XRP around $1.29–$1.30, inconsistent with the contemporaneous DefiLlama reference near $0.97 and recent direct exchange snapshots. It is quarantined as an unresolved price outlier, not admitted as a market observation. [Outlier source](https://www.ebtcnews.com/xrp-holds-above-1-29-as-futures-leverage-gets-flushed-out/).
+- These web observations were not captured as raw publisher bytes and have no SHA-256 receipts. They remain descriptive/model-ineligible.
+
+### Forecast and merge decision
+- Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`.
+- Existing architecture includes scheduled-ingestion definitions, raw-receipt/hash-chain prototype, point-in-time feature store, event/counter-hypothesis ledger, four baselines, purged/embargoed walk-forward testing, paired temporal/source-clustered block bootstrap, calibration, drift monitoring and fail-closed forecast ledger.
+- Still blocked by 85 event-registry records without byte-exact source hashes, absent independent WORM/time anchor, incomplete synchronized historical spot/L2/derivatives/flow/collateral data, no candidate beating all four baselines out of sample, no qualified shadow cohort, and no verified scheduled ingestion on main.
+
+**NO MERGE.** PR #1662 remains draft with zero formal reviews/approvals. Branch-protection read returns HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; connector permissions include admin/maintain/push/pull/triage; semantic review of 1,254 paths and called scripts remains incomplete. Main Pages publication and workflow side effects remain unresolved.
+
+### Next concrete actions
+1. Verify exact-head CI on the Run167 handoff/artifact commit.
+2. Complete semantic review of the 1,254 changed paths and called scripts behind all 48 changed workflows.
+3. Resolve independent review, least-privilege permissions and branch-protection visibility.
+4. Fix or keep quarantined the false-green main Barrot Sync; resolve Pages Liquid/publication side effects before merge.
+5. Preserve unique codebase-memory work in #1653 and reconcile the older workflow variants in #1661/#1660/#1640.
+6. Capture byte-exact event receipts, establish independent WORM/time anchoring, and build synchronized historical market data plus shadow outcomes.
+7. Keep directional forecasts blocked until out-of-sample superiority and calibration gates pass.
+
+No merge, main change, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
