@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "lunaroute/glm-5.3-flash",
+  "model": "opencode/deepseek-v4.1-flash-free",
   "provider": {
     "lunaroute": {
       "npm": "@ai-sdk/openai-compatible",
@@ -38,8 +38,8 @@
   "agent": {
     "barrot": {
       "description": "Barrot - main agent",
-      "model": "lunaroute/glm-5.3-flash",
-      "prompt": "Use LunaRoute MCP only after it is explicitly enabled and authentication, tool permissions, and data-flow have been verified. Never claim a live connection without verification.",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "prompt": "Use only providers with tested authentication and data-flow. The default OpenCode free model is the verified configuration. LunaRoute remains optional/unverified and its MCP server is disabled; do not claim a live connection or send data through it until explicitly authorized and verified. Preserve Barrot V3 and follow the XRP mission readiness gates.",
       "permission": {
         "*": "ask",
         "edit": "ask",
@@ -54,5 +54,12 @@
         "question": "allow"
       }
     }
+  },
+  "default_agent": "barrot",
+  "permission": {
+    "external_directory": "ask",
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "ask"
   }
 }

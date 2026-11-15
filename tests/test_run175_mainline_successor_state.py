@@ -73,3 +73,21 @@ def test_run175_credential_file_stays_absent_and_ignored() -> None:
     assert audit["open_pr_branch_tips_with_path"] == 8
     assert audit["content_read"] is False
     assert audit["credential_rotation_performed"] is False
+
+
+def test_run175_preserves_verified_opencode_default_and_disables_unverified_lunaroute() -> None:
+    config = json.loads((ROOT / "opencode.json").read_text(encoding="utf-8"))
+    assert config["default_agent"] == "barrot"
+    assert config["model"] == "opencode/deepseek-v4.1-flash-free"
+    assert config["agent"]["barrot"]["model"] == "opencode/deepseek-v4.1-flash-free"
+    assert config["mcp"]["servers"]["lunaroute"]["disabled"] is True
+    assert "authentication" in config["agent"]["barrot"]["prompt"].lower()
+    assert config["permission"]["edit"] == "ask"
+    agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    assert "authentication and model data-flow have not been verified" in agents
+    assert agents.count("## Permanent memory") == 1
+    prompt = (ROOT / ".opencode/agent/barrot.md").read_text(encoding="utf-8")
+    assert "offline phone deployment in Termux" in prompt
+    assert "Highest priority: XRP intelligence" in prompt
+    assert "scripts/transmute.py\u0060 is QUARANTINED" in prompt
+    assert "git add -A" in prompt

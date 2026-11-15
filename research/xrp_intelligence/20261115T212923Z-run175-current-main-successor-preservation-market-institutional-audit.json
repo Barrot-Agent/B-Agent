@@ -467,6 +467,12 @@
       "authentication_status": "SECRET_REFERENCE_IN_MANUAL_WORKFLOWS_ONLY",
       "dispatch": false,
       "distinct_from": "Grok"
+    },
+    "LunaRoute": {
+      "authentication_status": "UNVERIFIED_PROVIDER_CONFIGURATION_ONLY",
+      "mcp_status": "DISABLED",
+      "live_connection": false,
+      "data_transfer": false
     }
   },
   "governance": {
@@ -705,6 +711,32 @@
     },
     "no_secret_contents_read": true,
     "no_secret_rotation": true,
-    "no_external_model_dispatch": true
+    "no_external_model_dispatch": true,
+    "opencode_configuration_correction": {
+      "previous_successor_default_model": "lunaroute/glm-5.3-flash",
+      "restored_default_model": "opencode/deepseek-v4.1-flash-free",
+      "default_agent": "barrot",
+      "lunaroute_mcp_disabled": true,
+      "authentication_verified": false,
+      "false_secret_presence_claim_removed": true,
+      "permissions": "ask by default; read-only discovery allowed"
+    }
+  },
+  "opencode_configuration": {
+    "default_agent": "barrot",
+    "default_model": "opencode/deepseek-v4.1-flash-free",
+    "optional_lunaroute_provider_configured": true,
+    "lunaroute_authentication": "UNVERIFIED",
+    "lunaroute_mcp_disabled": true,
+    "root_permissions": {
+      "external_directory": "ask",
+      "edit": "ask",
+      "bash": "ask",
+      "webfetch": "ask"
+    },
+    "agent_permissions": "ask by default; read/list/grep/glob/lsp/skill/question allowed",
+    "mainline_agent_memory_preserved": true,
+    "duplicated_agents_md_removed": true,
+    "false_claim_of_lunaroute_credentials_in_github_secrets_removed": true
   }
 }

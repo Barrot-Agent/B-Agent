@@ -610,6 +610,12 @@
         "authentication_status": "SECRET_REFERENCE_IN_MANUAL_WORKFLOWS_ONLY",
         "dispatch": false,
         "distinct_from": "Grok"
+      },
+      "LunaRoute": {
+        "authentication_status": "UNVERIFIED_PROVIDER_CONFIGURATION_ONLY",
+        "mcp_status": "DISABLED",
+        "live_connection": false,
+        "data_transfer": false
       }
     },
     "independent_platform_red_team_executed": false
@@ -4817,6 +4823,23 @@
         "risk": "Model-generated code can read inherited GROQ_API_KEY and use runner network/filesystem; no isolation boundary.",
         "successor_action": "workflow disabled with empty permissions until a secret-free, network-disabled, filesystem-restricted sandbox exists.",
         "workflow_dispatched": false
+      },
+      "opencode_configuration": {
+        "default_agent": "barrot",
+        "default_model": "opencode/deepseek-v4.1-flash-free",
+        "optional_lunaroute_provider_configured": true,
+        "lunaroute_authentication": "UNVERIFIED",
+        "lunaroute_mcp_disabled": true,
+        "root_permissions": {
+          "external_directory": "ask",
+          "edit": "ask",
+          "bash": "ask",
+          "webfetch": "ask"
+        },
+        "agent_permissions": "ask by default; read/list/grep/glob/lsp/skill/question allowed",
+        "mainline_agent_memory_preserved": true,
+        "duplicated_agents_md_removed": true,
+        "false_claim_of_lunaroute_credentials_in_github_secrets_removed": true
       }
     },
     "called_script_semantic_review_complete": false
@@ -7917,7 +7940,8 @@
     "SBI XRP shareholder coupons distribute XRP through SBI VC Trade but do not establish an open-market purchase or aggregate redemptions.",
     "SBI Ripple Asia/DSRV research and tokenized-deposit concept proof are not commercial XRPL payment deployments.",
     "The identical 216-byte .config/gh/hosts.yml blob in eight open PR tips may be a placeholder or credential configuration; contents were not read, so compromise is unconfirmed.",
-    "Self-benchmark is manual and typed-approval gated, but generated Python inherits the Groq key in an unsandboxed subprocess; user confirmation does not substitute for process isolation."
+    "Self-benchmark is manual and typed-approval gated, but generated Python inherits the Groq key in an unsandboxed subprocess; user confirmation does not substitute for process isolation.",
+    "The successor's prior AGENTS.md claimed a LunaRoute key was already in GitHub Secrets and that LunaRoute MCP tools were available, but the OpenCode config has the MCP server disabled and no authentication/data-flow test exists. Those claims were removed; the mainline free-model default was restored."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -60873,6 +60897,12 @@
         "authentication_status": "SECRET_REFERENCE_IN_MANUAL_WORKFLOWS_ONLY",
         "dispatch": false,
         "distinct_from": "Grok"
+      },
+      "LunaRoute": {
+        "authentication_status": "UNVERIFIED_PROVIDER_CONFIGURATION_ONLY",
+        "mcp_status": "DISABLED",
+        "live_connection": false,
+        "data_transfer": false
       }
     },
     "prediction": {
@@ -60925,6 +60955,23 @@
       "owner_review_required": true,
       "credential_rotation_performed": false,
       "interpretation": "Potential credential exposure only; file may be a placeholder. Do not assume compromise without owner-side inspection."
+    },
+    "opencode_configuration": {
+      "default_agent": "barrot",
+      "default_model": "opencode/deepseek-v4.1-flash-free",
+      "optional_lunaroute_provider_configured": true,
+      "lunaroute_authentication": "UNVERIFIED",
+      "lunaroute_mcp_disabled": true,
+      "root_permissions": {
+        "external_directory": "ask",
+        "edit": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      },
+      "agent_permissions": "ask by default; read/list/grep/glob/lsp/skill/question allowed",
+      "mainline_agent_memory_preserved": true,
+      "duplicated_agents_md_removed": true,
+      "false_claim_of_lunaroute_credentials_in_github_secrets_removed": true
     }
   },
   "run175_next_actions": [
