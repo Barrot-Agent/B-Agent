@@ -8610,3 +8610,78 @@ Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`. No directional forecast, pape
 6. Establish byte-exact publisher receipts and independent immutable archival, then complete synchronized XRP historical spot/L2/derivatives/flow/collateral data and independent shadow evaluation before training a candidate.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run170 follow-up — 2026-11-15T17:45Z — Final exact-head verification, RLUSD control conflict and paper-trader safety correction
+
+### Documentation commit d4087488 — VERIFIED
+
+The Run170 handoff commit `d4087488e0fd818a76d78012386912a9ab120145` completed its own exact-head verification:
+
+- **3,803 passed, 0 failed, 1 skipped, 19 subtests passed.**
+- Inclusive coverage 64.02%; legacy core coverage 77%.
+- Full-suite duration 137.59 seconds.
+- Wheel build and packaged primary-mission verification passed.
+- Push full-suite run: [43742496803](https://github.com/Barrot-Agent/B-Agent/actions/runs/43742496803).
+- Six-manifest PR dependency audit: [43742502785](https://github.com/Barrot-Agent/B-Agent/actions/runs/43742502785), passed.
+- Push fail-closed gate: [43742496840](https://github.com/Barrot-Agent/B-Agent/actions/runs/43742496840), passed.
+- PR CI: [43742502909](https://github.com/Barrot-Agent/B-Agent/actions/runs/43742502909), passed; PR-event test jobs are skipped on this integration branch and Pages validation is build-only.
+- PR fail-closed gate: [43742502889](https://github.com/Barrot-Agent/B-Agent/actions/runs/43742502889), passed.
+
+The cache-budget warning persists; the cache is read-only. This did not affect test, wheel or dependency-audit success.
+
+### Correction — main-branch Coinbase paper trader is an actual unapproved paper-trading path
+
+A direct comparison of the current main script and integration script changes the risk assessment materially.
+
+**Main script:** `scripts/coinbase_paper_trader.py`, blob `b38ab435f575b6037f05fa8e9ea00fd487d2d9eb`.
+
+- No `BARROT_PAPER_TRADER_APPROVED=YES` gate.
+- No persisted-position product-identity validation.
+- `load_state()` silently substitutes a fresh default state when persisted JSON cannot be read.
+- Fetches live public Coinbase ticker/trade data, sends a buy/sell/hold prompt to Groq, mutates a simulated position, and writes paper-trading state/logs.
+- Main workflow `.github/workflows/coinbase-paper-trader.yml` is manually dispatchable, hardcodes `BTC-USD`, and attempts to commit those state/log files to main without a typed approval or expected-main-SHA gate.
+
+Main's persisted state was read without mutation:
+
+- Cash: $9,009.94.
+- Open position: 0.012445158497236623.
+- `position_product`: null.
+- Average entry: $80,436.84.
+- Trade count: 126.
+
+The main script does not reject that unidentified open position before using the configured BTC-USD product. A manual dispatch could therefore continue an unidentified simulated position as BTC-USD. It is paper trading, not real-money exchange execution, but it violates the user's no-paper-trade-without-specific-approval rule. No dispatch occurred.
+
+**Integration containment:** `scripts/coinbase_paper_trader.py`, blob `866d8695f0e7787db397179e9d3be648061e8b1f`, requires `BARROT_PAPER_TRADER_APPROVED=YES` before reading mutable state or making provider calls, validates the persisted position's product identity, rejects invalid/corrupt state rather than silently resetting it, and the integration workflow requires typed YES plus the expected main SHA. Its repository permission is read-only and outputs are artifacts only. No paper-trader workflow was dispatched.
+
+This main-branch workflow/script pair remains a **blocked safety item**. Do not dispatch it. Do not merge PR #1662 until the full integrated review and all other merge gates pass.
+
+### Additional XRP ecosystem evidence — descriptive, not model-eligible
+
+**Live spot snapshot:** OKX XRP-USDT last 0.9480, bid 0.9481/ask 0.9482, provider timestamp 17:37:12.367 UTC; Kraken XRP/USD last 0.94986, bid 0.94985/ask 0.94986 with no provider event timestamp. OKX rolling 24-hour open was 0.9665 while UTC-day open was 0.9145. OKX USDT/USD basis was 0.99957 at 17:12:19.068 UTC, 1,493.299 seconds older than the XRP ticker. The 60-second same-venue basis-skew gate rejects normalization. No synchronized full-depth L2 or byte-exact receipt was captured. Sources: [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX USDT/USD](https://www.okx.com/api/v5/market/ticker?instId=USDT-USD).
+
+**XRPL stablecoin contraction versus higher DEX turnover:** TokenPost's November 15 report, using November 13 observations, puts XRPL stablecoins at $908.21M, down 8.01% week over week; RLUSD at $818.56M (90.13% of the tracked total), down 8.75%; and seven-day DEX volume at $35.14M, up 28.87%. It explicitly cautions that higher turnover does not prove net capital inflow or net XRP buying. [TokenPost, Nov 15, 2026](https://www.tokenpost.com/news/investing/57810).
+
+**RLUSD supply allocation disagreement:** StableRadar labels its page a prototype with partly live and partly reference data. Its on-chain reads, dated November 13 12:43 UTC, show total supply 2,688,199,683, including 754,149,934 on XRPL and 1,917,942,634 on Ethereum. Its separately sourced DefiLlama column shows 2,701,980,348 total, 829,348,347 on XRPL and 1,856,525,007 on Ethereum. The XRPL chain-level difference is 75,198,413; the Ethereum difference is 61,417,627 in the opposite direction; total difference is only 13,780,665. The on-chain and DefiLlama timestamps are not synchronized, so this is an unresolved allocation/coverage reconciliation, not proof that either series is wrong. [StableRadar supply and source labels](https://stableradar.com/coin/rlusd).
+
+Ripple's official documentation confirms the XRPL RLUSD issuer address `rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De` and that RLUSD uses XRPL issued-token/trust-line functionality: [official token addresses](https://docs.ripple.com/products/stablecoin/overview/token-addresses), [RLUSD on XRPL](https://docs.ripple.com/products/stablecoin/developer-resources/rlusd-on-the-xrpl).
+
+**Issuer-control conflict preserved:** Ripple's own [RLUSD-Implementation settings file](https://github.com/ripple/RLUSD-Implementation/blob/main/doc/rlusd-xrpl-settings.md) marks `lsfGlobalFreeze` enabled, `lsfAllowTrustLineClawback` enabled, `lsfNoFreeze` disabled, `lsfRequiredAuth` disabled and `lsfDepositAuth` enabled. StableRadar's separate November 13 account-info display reports clawback enabled, NoFreeze disabled, RequireAuth disabled and Global Freeze active: No; it also reports master key disabled. These are not fully consistent. The Ripple file's table may describe configuration/capability rather than a currently active global freeze; a currently active global freeze would materially restrict holder transfers. Do not resolve this from labels. Obtain a fresh validated-ledger `account_info` response and compare exact flag bits before admitting issuer-control features.
+
+XRPL documentation explains that an active global freeze restricts trust-line token balances, that clawback is a distinct issuer capability, and that native XRP cannot be frozen by an issuer: [clawback rules](https://xrpl.org/docs/concepts/tokens/fungible-tokens/clawing-back-tokens), [freeze rules](https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes). RLUSD issuer controls therefore belong in collateral/custody risk features; they must not be conflated with native XRP's ledger properties.
+
+**ETF flow coverage disagreement:** Alpha Finance reports five funds through November 13: -$1.1M on the day, -$19.1M over November 6–13, -$581.7K over 30 sessions and +$1.71B cumulative. ByKaranteli reports the same -$1.1M daily and -$19.1M five-day figures but +$1.79B cumulative and $1.15B net assets; identical short-window values do not make the cumulative universes independently corroborated. [Alpha Finance](https://alphafinance.io/etf/xrp/), [ByKaranteli](https://bykaranteli.com/etf/xrp).
+
+XRP Insights uses six US spot funds plus BITW and reports -6.08M XRP for November 9–13, with a +3.40M XRP November 13 holdings change; its method is issuer-reported holdings deltas and excludes GXRP from flow totals during a data gap. [XRP Insights](https://xrp-insights.com/). These universes and methods are not interchangeable. No flow totals were averaged.
+
+### Run170 state after this follow-up
+
+The new follow-up is a documentation/research-only commit. The exact-head 3,803-test pass above belongs to `d4087488`; the new follow-up commit must receive its own full-suite and security-gate verification before being called verified.
+
+Main remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`. PR #1662 remains open/draft, 1,257 changed files, 2,518 commits ahead, zero behind, zero reviews and zero review threads. No source PR was closed.
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. The event/market observations above are not admitted as model features without synchronized point-in-time capture and byte-exact permitted-source receipts.
+
+Next actions: verify the new exact head; keep the main-branch paper trader and other legacy writers undispatched; resolve the RLUSD issuer-flag conflict with validated ledger data; complete the 1,257-path semantic and called-script review; address the potential GitHub CLI credential exposure without reading or republishing the file; obtain independent review and branch-protection evidence; then continue historical XRP data and independent shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
