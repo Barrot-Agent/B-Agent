@@ -7596,3 +7596,81 @@ Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No deployment, 
 The full repository suite on exact head `d6dbb63626e407ecd2f3ac0fd9d4ab608a7f53ea` completed with **3,794 passed, 1 failed, 1 skipped, 19 subtests**, 64.02% inclusive coverage, in 103.29 seconds. The single failure is `KeyError: failing_tests` in the Run152 evidence assertion: the successful full-suite snapshot omitted an explicit empty `failing_tests: []` field while the top-level latest-attempt record contained that field. No runtime, ingestion or XRP prediction-engine test failed. The last fully passing exact head remains `35270afd`, with 3,794 passed and zero failed.
 
 The next correction adds the explicit empty array to the successful snapshot, preserves `35270afd` as the last fully passing head, and records the d6db attempt separately. No test is removed or weakened.
+
+
+## Run163 — 2026-11-15T13:39:37.541Z — Exact-head 3,796-pass, XRP depth, ETF flow-universe and C2FO/BNY reconciliation
+
+**Mission:** XRP intelligence and prediction-engine mastery. Preserve Barrot V3 as the execution, orchestration, safety, authorization and verification foundation.
+
+### Repository and exact-head CI
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before this Run163 append: `daab8b33a47b5afa6b215ef87d518303883a9765`.
+- PR #1662 remains the single consolidated integration PR: draft/open, 2,497 commits ahead, zero behind, 1,249 changed files, 48 workflow files, 348,880 additions and 6,309 deletions.
+- Complete recursive trees: main 1,393 entries; integration 2,491 entries; no truncation.
+- Open PR inventory: 373 total, 361 drafts, 12 non-drafts; 365 target main, eight target other branches.
+- **Exact-head full repository suite on `daab8b33a47b5afa6b215ef87d518303883a9765` passed:** 3,796 passed, zero failed, one skipped, 19 subtests, 64.02% inclusive coverage, 77% legacy-core coverage, 143.95 seconds. Wheel build passed; installed wheel loaded Barrot V3, the XRP mission and canonical assets.
+- Full-suite evidence: [43719220698](https://github.com/Barrot-Agent/B-Agent/actions/runs/43719220698).
+- Six-manifest push and PR dependency audits passed with zero known vulnerabilities: [43719220725](https://github.com/Barrot-Agent/B-Agent/actions/runs/43719220725), [43719225263](https://github.com/Barrot-Agent/B-Agent/actions/runs/43719225263).
+- Push and PR fail-closed gates passed: [43719220695](https://github.com/Barrot-Agent/B-Agent/actions/runs/43719220695), [43719225285](https://github.com/Barrot-Agent/B-Agent/actions/runs/43719225285).
+- PR Pages validation passed in build-only mode and rendered the global mission manifest. PR-event core/full-suite jobs were skipped by the integration-branch condition; the push-event full suite is authoritative.
+- GitHub Actions cache budget is exhausted; cache-save warning occurred after tests and wheel verification, not as a test failure.
+
+### Current-map and event-registry integrity
+- The current nine-platform map is **not empty**. Its 1,947,216-byte Git blob parses as schema 1.1.0; the ordinary file-fetch endpoint returned an empty content field because the file is oversized. Blob retrieval verified the complete JSON.
+- The current curated event registry is version `run157-20261115`, with 85 events and **zero** byte-exact publisher payload SHA-256 receipts. All 85 `raw_source_sha256` fields are null; `model_eligible=false`; forecast remains `NOT_ISSUED`.
+- The registry file's own Git hash authenticates only the curated JSON, not the original publisher bytes. Browser excerpts must not be represented as raw-source receipts.
+- The active priority-1 mission manifest exists on integration and is absent from main.
+
+### XRP spot depth and derivatives — research-only
+Fuelmaps' 13:00 UTC November 15 six-venue hourly composite reports XRP mid $0.9689:
+- ±0.5%: $5.2M bids / $4.6M asks; 53.3% bid share.
+- ±1%: $8.1M / $7.0M; 53.6%.
+- ±2%: $14.9M / $8.0M; 65.0%.
+- ±5%: $15.8M / $10.7M; 59.8%.
+- ±10%: $22.4M / $12.0M; 65.2%.
+- Largest displayed levels: $1.5M bid at $0.902; $1.4M ask at $0.999; $1.3M bid at $0.966; $1.2M ask at $0.978; $1.1M bid at $0.880.
+
+Coverage is Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Coinbase/Bitstamp/Bitfinex/Gemini provide full-depth books; OKX and Kraken add near-price depth only. Binance and Bitget are absent. The map averages one-minute snapshots into hourly columns, can be about 65 minutes old, is spot-only, and resting orders can cancel. This is a six-venue composite, not whole-market executable depth. No raw HTTP bytes or SHA-256 receipt were captured; it remains model-ineligible.
+
+Liqwall's older 10:32 UTC snapshot reported $1.03B XRP open interest, down 3.1%; average funding -0.0099% per eight hours; $42.2M liquidations ($38.1M longs, $4.1M shorts); and 72.8% of Binance position accounts long. It is not synchronized to the 13:00 spot snapshot.
+
+OptimistFi's Hyperliquid rolling taker-flow page shows a time-scale split: +$11.8M over one hour (58% buys) and +$7.9M over four hours (52%), versus -$45.4M over 12 hours (47%), -$68.1M over 24 hours (47%), -$199.1M over three days (47%) and -$321.1M over seven days (48%). The exact capture timestamp is not exposed in the retrieved page. This is a counter-hypothesis (short-window buying inside broader net selling), not a forecast.
+
+### ETF flows — coverage reconciliation, not an average
+- Alpha Finance covers five funds through November 13. It reports -$1.1M on November 13 and -$19.1M across November 6–13. Its fund table shows Franklin +$4.4M and Grayscale GXRP -$5.5M, with the other three funds at zero; 30-session flow is -$581.7K. Its page says fund AUM/holdings are not published in its flow-series dataset.
+- CryptoKeyhole tracks four daily-readable funds out of six listed. On November 13 it had only three of four reports, -9,967 XRP, with Franklin pending. Its latest complete day was November 12: +4,337,131 XRP. The last five complete sessions (Nov 6–12) were -5,665,115 XRP. It excludes GXRP from daily data because it relies on quarterly SEC holdings, and excludes XRPR/REX because direct holdings are not a full measure of its ETP holdings.
+- XRP Insights reports -6.1M XRP (about -$6.5M) for the settled-close week Nov 6–13 across six US spot funds plus BITW.
+- The apparent Nov 13 disagreement is explained substantially by coverage: Alpha includes GXRP's -$5.5M and Franklin's +$4.4M; CryptoKeyhole excludes GXRP and had Franklin pending, leaving only -9,967 XRP in its partial four-fund universe. XRP Insights uses a wider universe and a settled weekly window. Do not average these series.
+- CryptoKeyhole's page contains a future-dated “16 Nov 2026” issuer-file label while the page update is Nov 15 12:55 UTC and other issuer stamps are Nov 15. That field is excluded pending correction.
+
+### Ripple, C2FO and BNY
+Ripple's October 27 C2FO announcement says the C2FO Instant Pay initiative is intended to put financing/settlement activity on XRPL using RLUSD. Participating capital providers fund early invoice payments; invoice terms/due dates remain unchanged; suppliers are intended to receive funds in seconds. The stated $520B is existing C2FO Early Pay working-capital access, not new XRPL throughput. A waitlist is presented; no production volume, named capital providers or funded invoice balances are disclosed.
+
+BNY's October 27 release says XRP and RLUSD custody support is available to eligible institutional clients, and BNY is already RLUSD's primary reserve custodian. Direct RLUSD mint/redeem through BNY is intended but subject to final BNY/regulatory approvals. Tokenized trade finance is subject to client requirements; BNY and Ripple describe exploring a C2FO supply-chain-finance initiative. No BNY XRP custody balance, incremental XRP purchase, live C2FO financing volume or live RLUSD collateral use is disclosed.
+
+### Governance and safety
+- PR #1662 has zero formal reviews, zero approvals, zero inline review threads and no requested reviewers. It remains draft/open; GitHub reports mergeable=true but mergeable_state=unstable.
+- Main branch-protection details return HTTP 403. Visible ruleset 10863829 (“Fall Back”) is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`. Connector permissions include admin, maintain, push, pull and triage.
+- Main's scheduled read-only Pillars Consistency Check [43716820298](https://github.com/Barrot-Agent/B-Agent/actions/runs/43716820298) failed because GitHub App workflow credentials are missing, Databricks returned HTTP 403 and Hugging Face reported BUILD_ERROR. Main's hourly Cross Analysis [43715967282](https://github.com/Barrot-Agent/B-Agent/actions/runs/43715967282) succeeded.
+- Main Barrot Sync remains a push/manual writer with LunaRoute/GH-token environment and a masked sync/push failure pattern; integration quarantines it. Main Ask Barrot is manual-only but can load Groq credentials and write issues/memory to main. Main Barrot Agent has issue-label/manual triggers and contents/PR/issues write permissions; integration quarantines both. Correction: the Ping-Pong workflow is already disabled on main with empty permissions.
+- The scheduled XRP ingestion workflow is read-only and present on integration only; its job requires refs/heads/main, and it has not run on main.
+- Main Pages build remains failed at `GLOBAL_STATE_MANIFEST.md:6456`; current integration PR Pages validation is build-only and passed. Deployment authorization remains absent.
+
+### Backlog and forecast
+Path overlap is not semantic duplicate certification:
+- #1661: 1,070/1,072 shared; preserve two unique workflows.
+- #1660: 970/972 shared; preserve two unique workflows.
+- #1643: 670/670 shared; semantic differences remain to review.
+- #1642: 7/7 shared; semantic differences remain to review.
+- #1640: 278/280 shared; preserve two unique workflows and diverged source work.
+- #1653: six unique knowledge-graph/MCP paths.
+- #1614: 27 unique prediction/research paths.
+- #1615: 13 unique security paths.
+- #1611: one unique handoff; #1610 seven unique workflow/security paths; #1608 two unique C2FO/Evernorth paths; #1655 three unique structural/catalog paths; #1659 four unique local-inference/Termux paths.
+
+The prediction engine has 51 source definitions and 49 scheduled sources on integration; four deterministic baselines, purged/embargoed walk-forward evaluation, paired block bootstrap, calibration/PSI diagnostics and a fail-closed ledger are implemented. Production blockers remain: 85/85 event receipts missing, no independent WORM/trusted timestamp anchor, incomplete synchronized multi-venue history, no demonstrated OOS superiority over all four baselines, no qualified shadow cohort, no verified production evaluator key, and no successful scheduled ingestion on main.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED. NO MERGE.** No new branch/PR, source-PR closure, deployment, secret operation, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or destructive worktree operation occurred.
+
+**Next concrete action:** capture byte-exact original publisher payloads for the 85 curated events through authorized source-specific adapters; record event/published/retrieval times, hashes, source-independence groups and corrections. Keep all 85 events model-ineligible until receipts are complete. Then continue the 1,249-path/48-workflow semantic review and resolve independent review, least-privilege, branch-protection and Pages authorization blockers.
