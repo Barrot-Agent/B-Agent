@@ -74,6 +74,8 @@
     "knowledge_distill_btc.py",
     "knowledge_ingest.py",
     "knowledge_ingest_btc.py",
+    "live_refine_verify.py",
+    "make_beats.py",
     "make_track.py",
     "market_analysis_engine.py",
     "market_analysis_trading_recommendations.py",
@@ -93,6 +95,7 @@
     "patch_report_mode.py",
     "pillars_check.py",
     "pingpong.py",
+    "pingpong_refine.py",
     "research_synthesis.py",
     "research_topics.py",
     "resolve_issue.py",
@@ -124,7 +127,7 @@
     "wire_in_hrm.py",
     "write_lyrics.py"
   ],
-  "current_capabilities": 114,
+  "current_capabilities": 117,
   "evidence": {
     "a2a_server.py": {
       "fingerprint": "67c784e1362b543ddb43c6f6a45ce53e8a3494174d6d3cc036b16c750c5d571b",
@@ -516,6 +519,18 @@
       "path": "/root/barrot/Barrot-Agent/scripts/knowledge_ingest_btc.py",
       "size": 3670
     },
+    "live_refine_verify.py": {
+      "fingerprint": "dc2fa26ed2d67ccbd223a663a68c33597402040949450112c126245cffba7e95",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/live_refine_verify.py",
+      "size": 3936
+    },
+    "make_beats.py": {
+      "fingerprint": "379109cc1bffa12bf9c899454063b4ed3caa2873b5d55241fe3bdbe243a31713",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/make_beats.py",
+      "size": 26288
+    },
     "make_track.py": {
       "fingerprint": "792ec41e6496dece3c1f3585f403648a20f0b7b602c00b0a94b50d034621465f",
       "has_workflow": false,
@@ -629,6 +644,12 @@
       "has_workflow": true,
       "path": "/root/barrot/Barrot-Agent/scripts/pingpong.py",
       "size": 8444
+    },
+    "pingpong_refine.py": {
+      "fingerprint": "d857e4c1103969b0352a1daaa5f9ece55daa4b09d6f3140645606ce757c83353",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/pingpong_refine.py",
+      "size": 6724
     },
     "research_synthesis.py": {
       "fingerprint": "8a50d604d6641fddf446a89521ad2f709dcd79e380b30d09888f9d7f4e6acc43",
@@ -816,9 +837,9 @@
     "failure": null,
     "input_fingerprint": "263dc756f2c3a9f4b77c4d65d13529fed0e9f265caa1ca2bcbaae56b2a6d40a1",
     "operation": "capability_audit",
-    "output_fingerprint": "75a834ea0ec23c47805e57fb4f8d587691542634f5c67d80f12aa93bf91fec6a",
+    "output_fingerprint": "253f3ffdf8d665b4de80f8e924090a198c924da074836a89224bb9d35cf083f2",
     "provider": "",
-    "record_id": "de1e247cca3d39df5e7825799e21dad97c43b21fc0a278ee8c9a0497acba38e7",
+    "record_id": "9994010871cce399200af430d57059302ea85042b483a1dcfea3357f6077e21d",
     "request": {},
     "response": {
       "gap_count": 13
@@ -895,5 +916,5 @@
   ],
   "status": "VERIFIED",
   "target_capabilities": 15,
-  "timestamp": "2026-11-14T14:29:56Z"
+  "timestamp": "2026-11-14T21:58:47Z"
 }

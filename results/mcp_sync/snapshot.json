@@ -1,0 +1,298 @@
+{
+  "elapsed_ms": 44.1,
+  "gaps": [
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "agent_communication",
+        "task_distribution"
+      ],
+      "name": "Multi-agent coordination",
+      "priority": "high",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "agent_communication",
+        "task_distribution"
+      ],
+      "target_id": "cap-001"
+    },
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "dependency_audit",
+        "security_scanning"
+      ],
+      "name": "Real-time security monitoring",
+      "priority": "critical",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "dependency_audit",
+        "security_scanning"
+      ],
+      "target_id": "cap-002"
+    },
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "financial_data",
+        "signal_generation"
+      ],
+      "name": "Market analysis and trading recommendations",
+      "priority": "medium",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "financial_data",
+        "signal_generation"
+      ],
+      "target_id": "cap-003"
+    },
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "observability",
+        "predictive_modelling"
+      ],
+      "name": "System degradation prediction",
+      "priority": "medium",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "observability",
+        "predictive_modelling"
+      ],
+      "target_id": "cap-004"
+    },
+    {
+      "candidates": [
+        {
+          "full_match": true,
+          "license": "MIT",
+          "matched_categories": [
+            "fact_checking",
+            "knowledge_graph"
+          ],
+          "name": "mcp-server-memory",
+          "requires_auth": false,
+          "server_id": "memory",
+          "source": "static-spec"
+        }
+      ],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": true,
+      "missing_categories": [
+        "fact_checking",
+        "knowledge_graph"
+      ],
+      "name": "Data contradiction resolution",
+      "priority": "medium",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "fact_checking",
+        "knowledge_graph"
+      ],
+      "target_id": "cap-005"
+    },
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "media_processing",
+        "vision"
+      ],
+      "name": "Video analysis and autofix",
+      "priority": "medium",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "media_processing",
+        "vision"
+      ],
+      "target_id": "cap-006"
+    },
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "generative_media",
+        "text_generation"
+      ],
+      "name": "Creative content production",
+      "priority": "medium",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "generative_media",
+        "text_generation"
+      ],
+      "target_id": "cap-007"
+    },
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "optimisation",
+        "resource_management"
+      ],
+      "name": "Resource allocation engine",
+      "priority": "medium",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "optimisation",
+        "resource_management"
+      ],
+      "target_id": "cap-008"
+    }
+  ],
+  "generated_at": "2026-11-15T22:28:12.384152+00:00",
+  "mode": "threads",
+  "servers": {
+    "barrot-core-repository": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 12.4,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "barrot-filesystem": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 9.1,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "barrot-memory": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 11.9,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "docling": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 12.5,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "fetch": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 7.5,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "filesystem": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 9.4,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "github": {
+      "attempts": 0,
+      "error": "unset environment variable(s): GITHUB_MCP_TOKEN",
+      "latency_ms": 0.0,
+      "missing_env": [
+        "GITHUB_MCP_TOKEN"
+      ],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "auth_missing",
+      "tools": [],
+      "transport": "remote",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "memory": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 2.8,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    },
+    "searxng": {
+      "attempts": 0,
+      "error": "local stdio execution disabled (pass include_local_exec=True to opt in)",
+      "latency_ms": 27.8,
+      "missing_env": [],
+      "protocol_version": "",
+      "server_info": {},
+      "source": "live",
+      "status": "unreachable",
+      "tools": [],
+      "transport": "stdio",
+      "url": ""
+    }
+  },
+  "summary": {
+    "gaps_filled_static": 1,
+    "gaps_total": 8,
+    "servers_live": 0,
+    "servers_reachable": 0,
+    "servers_total": 9,
+    "statuses": {
+      "auth_missing": 1,
+      "unreachable": 8
+    },
+    "tools_live": 0,
+    "tools_total": 0
+  }
+}
