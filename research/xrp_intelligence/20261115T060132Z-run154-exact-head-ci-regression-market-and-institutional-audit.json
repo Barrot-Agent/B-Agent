@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "run_id": "Run154",
-  "captured_at_utc": "2026-11-15T06:01:32Z",
+  "captured_at_utc": "2026-11-15T06:15:27Z",
   "repository": {
     "captured_at_utc": "2026-11-15T06:01:32Z",
     "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
@@ -502,7 +502,70 @@
       "pages_validation": "success"
     },
     "correction": "Change the stale test assertion from nonexistent exact_head_verified alias to canonical exact_head. Preserve Run154 failed snapshot; no tests weakened.",
-    "corrected_head_ci": "PENDING_AT_CAPTURE"
+    "corrected_head_ci": "PENDING_ON_NEXT_COMMIT",
+    "corrective_attempt": {
+      "head_sha": "ee7a02e4ca4f8993b629ab10e396cfbe80cc38d5",
+      "run_id": 43684270127,
+      "job_id": 132721313014,
+      "completed_at_utc": "2026-11-15T06:15:27Z",
+      "full_suite": {
+        "head_sha": "ee7a02e4ca4f8993b629ab10e396cfbe80cc38d5",
+        "run_id": 43684270127,
+        "job_id": 132721313014,
+        "passed": 3787,
+        "failed": 1,
+        "skipped": 1,
+        "subtests": 19,
+        "coverage_percent": 64.02,
+        "duration_seconds": 148.56,
+        "exact_head": true,
+        "conclusion": "failure",
+        "completed_at_utc": "2026-11-15T06:15:27Z",
+        "failing_tests": [
+          "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head"
+        ],
+        "failure_classification": "Exact-head full-suite failed because the Run154 failure-classification record omitted the required literal phrase; this is a test-contract regression only, not a runtime or prediction-engine failure. The only failed test is the current-map evidence assertion. 3,787 passed, one failed, one skipped, 19 subtests; core tests, dependency audit and fail-closed gates passed."
+      },
+      "core_tests": {
+        "head_sha": "ee7a02e4ca4f8993b629ab10e396cfbe80cc38d5",
+        "run_id": 43684270127,
+        "job_id": 132721312805,
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "push_run_id": 43684270153,
+        "pr_run_id": 43684274795,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "push_run_id": 43684270106,
+        "pr_run_id": 43684274801,
+        "conclusion": "success"
+      },
+      "pr_event": {
+        "run_id": 43684274780,
+        "conclusion": "success",
+        "core_tests": "skipped",
+        "full_suite": "skipped",
+        "pages_validation": "success"
+      },
+      "failure_classification": "Exact-head full-suite failed because the Run154 failure-classification record omitted the required literal phrase; this is a test-contract regression only, not a runtime or prediction-engine failure. The only failed test is the current-map evidence assertion. 3,787 passed, one failed, one skipped, 19 subtests; core tests, dependency audit and fail-closed gates passed.",
+      "correction": {
+        "failure_classification_phrase_fixed": true,
+        "tests_weakened": false,
+        "corrective_head_ci_pending": true
+      }
+    },
+    "latest_tested_head": "ee7a02e4ca4f8993b629ab10e396cfbe80cc38d5",
+    "latest_conclusion": "failure"
   },
   "overlap_reconciliation": [
     {
@@ -858,11 +921,11 @@
   "accuracy_status": "NOT_EVALUATED",
   "merge_decision": "NO_MERGE",
   "next_actions": [
-    "Commit the exact-head CI contract correction and trigger a new full-suite run on that resulting SHA.",
+    "Commit the corrected Run154 failure-classification field and rerun the entire repository suite on the resulting exact SHA.",
+    "Verify wheel build, installed primary mission, six-manifest dependency audit and both fail-closed gates on that same SHA.",
     "Complete semantic review of the 1,193 remaining non-workflow paths, including seven public-web files.",
     "Resolve independent review, least-privilege permissions, branch-protection visibility and Pages publication authorization.",
-    "Keep scheduled XRP ingestion on integration only until merge gates pass; no main ingestion run is verified.",
-    "Build synchronized historical XRP spot/L2/derivatives/exchange-flow/collateral data before training a candidate model."
+    "Keep scheduled XRP ingestion on integration only until merge gates pass; no main ingestion run is verified."
   ],
   "no_external_actions": {
     "merge": false,

@@ -6236,3 +6236,37 @@ Not production-verified: scheduled ingestion on main, independent WORM/timestamp
 Next: verify the corrective commit with the entire repository suite, wheel/package checks, six-manifest dependency audit and fail-closed gates on the exact resulting SHA; then continue semantic review and synchronized historical XRP data coverage.
 
 No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+### Run154 follow-up — exact-head verification on `ee7a02e`
+
+The full repository suite completed on the compact-map head `ee7a02e4ca4f8993b629ab10e396cfbe80cc38d5`:
+
+- 3,787 passed; one failed; one skipped; 19 subtests.
+- 64.02% inclusive coverage.
+- 148.56 seconds.
+- Core tests: 742 passed, zero failed, eight subtests.
+- Six-manifest push and PR dependency audits passed; zero known vulnerabilities reported.
+- Push and PR fail-closed gates passed.
+- PR Pages validation passed in build-only mode.
+- Wheel build and installed mission verification were skipped after the full-suite assertion failure.
+
+The sole failing test remains `test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head`. The first correction replaced the nonexistent `exact_head_verified` alias with canonical `exact_head`. The next run then exposed a second test/data-contract requirement: the `failure_classification` text must contain the literal phrase `exact-head full-suite failed`. The recorded explanation was accurate but omitted that required phrase. This is a metadata-contract assertion, not a runtime prediction-engine failure.
+
+The Run154 map now records both attempts:
+- Initial parent `a54f295`: 3,787 passed, one failed due the missing `exact_head_verified` alias.
+- Corrective head `ee7a02e`: 3,787 passed, one failed because the failure-classification text omitted the required literal phrase.
+
+The next correction adds the required phrase while retaining the explanation and all test assertions. No test is removed, skipped, weakened or converted to an expected failure. A new full-suite run on the next exact head is required.
+
+Current evidence:
+- [Corrective-head full suite 43684270127](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684270127)
+- [Push dependency audit 43684270153](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684270153)
+- [Push fail-closed gate 43684270106](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684270106)
+- [PR CI 43684274780](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684274780)
+- [PR dependency audit 43684274795](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684274795)
+- [PR fail-closed gate 43684274801](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684274801)
+
+The current quote-basis implementation was also verified directly in code: `_parse_okx_usdt_usd_ticker` and `_derive_okx_usd_normalized_features` already exist and are invoked during ingestion. The normalizer uses same-venue OKX bid/ask, preserves both source hashes, requires each component within 300 seconds and snapshot skew within 60 seconds, and refuses a fixed 1:1 USDT peg. Tests cover synchronized success and stale/skew failure. Run154's observed quotes correctly failed those gates; no new quote-normalization code is needed.
+
+**Forecast remains NOT_ISSUED. Accuracy remains NOT_EVALUATED. Merge remains NO_MERGE.**
