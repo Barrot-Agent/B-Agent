@@ -6777,3 +6777,83 @@ These are three regional SME investment-development companies. They are not SBI 
 - SBIC East ChatGPT training: https://www.sbic.co.jp/training/20250612co/
 
 The structured relationship graph and expanded Run157 audit are stored in the research folder. The graph explicitly distinguishes equity ownership, token holdings, escrow, fiat mint/redemption flows, distribution costs, stablecoin rails and research/POC relationships.
+
+
+## Run157 institutional operating-rails and attribution addendum — 2026-11-15
+
+### 1. Verified live XRP bridge usage through SBI Remit
+
+The strongest direct SBI-linked XRP utility found in this run is not the RLUSD distribution or the tokenized-deposit POC. It is SBI Remit's XRP-based On-Demand Liquidity remittance corridor.
+
+SBI's July 28, 2021 release confirms the original Japan-to-Philippines digital-wallet service using XRP as the bridge between fiat currencies. SBI's September 6, 2023 release confirms expansion to bank-account payouts in the Philippines, Vietnam and Indonesia. The operating flow is explicit: SBI Remit sends the customer's payment request; SBI VC Trade sends XRP in real time; Tranglo processes payout in the destination fiat currency.
+
+This is a real XRP bridge-asset use case announced by the operating companies, not merely an XRPL pilot. The actual XRP volume, average transfer size, market-purchase share and current corridor share of total remittances are not disclosed. Do not attribute SBI Remit's total remittance volume to XRP.
+
+SBI Remit reported JPY 2.5T cumulative remittance turnover as of May 27, 2026. That is all SBI Remit services and rails, not XRP volume. Its June 2025 Nium partnership expands fiat bank payout coverage to more than 190 countries, while the October 2025 Cambodia DLT service does not explicitly identify XRP as the bridge asset. These rails must remain separate.
+
+### 2. SBI Ripple Asia's regulated XRPL issuance capability
+
+SBI Ripple Asia completed an XRPL-based token-issuance platform and registered as a third-party prepaid-payment-instrument issuer on March 26, 2026, announced April 7. The system connects to existing apps/websites through APIs and includes SBI Ripple Asia wallet-control technology. The company describes tourism and defined economic zones as intended use cases.
+
+This is a concrete regulated XRPL infrastructure milestone. It does not establish that a commercial prepaid token has been issued at scale, that banks are using the platform in production, or that the issued tokens use XRP as a bridge asset. Track XRPL token issuance and native XRP demand as separate features.
+
+The February 24, 2026 SBI Ripple Asia/dsrv Japan-Korea work is explicitly feasibility research and says it is not intended to develop or commercialize a specific service. The February 26 MoneyTap/tokenized-deposit work is a conceptual POC, not a live bank-deposit token system.
+
+### 3. SBI START bond — actual capital versus XRP reward
+
+SBI START Bond is a JPY 10B, three-year security-token bond issued by SBI Holdings on BOOSTRY's ibet for Fin platform, with a 2.15% annual JPY coupon and 100% JPY principal redemption. Secondary trading is through Osaka Digital Exchange START. It is not issued on XRPL.
+
+Eligible subscribers purchasing at least JPY 100,000 and holding an SBI VC Trade account receive an XRP benefit stated on the SBI Securities product page as JPY 200 of XRP per JPY 100,000 subscription. The official page describes the benefit as a separate reward, not the coupon or principal. The exact sourcing of XRP is not disclosed.
+
+CoinDesk reports that XRP rewards recur at each coupon date through 2029, but the SBI product-page excerpt retrieved explicitly documents the subscription-period reward and May 15, 2026 credit deadline. Until the prospectus or coupon notices confirm recurring distributions, retain this as an unresolved source disagreement.
+
+Classification: the JPY 10B is debt capital raised by SBI Holdings. It is not XRP capital, Ripple capital or an XRP-denominated bond. The XRP benefit is a loyalty incentive; it is not proof of spot-market buying.
+
+### 4. Additional SBI retail XRP distribution channels
+
+SBI VC Trade, Aplus and Visa announced the SBI VISA Crypto Card on May 1, 2026. Customers choose BTC, ETH or XRP; card points automatically convert fee-free into the selected crypto and require an SBI VC Trade account. This is a retail acquisition/distribution channel. The source of XRP used to satisfy rewards is not disclosed, so card spending and reward points are not modelled as confirmed spot purchases.
+
+SBI's other shareholder and deposit reward programs similarly distribute XRP benefits. These are potential retail onboarding and distribution channels, not confirmed net-new market demand unless procurement/source-of-inventory data are disclosed.
+
+### 5. SBI Digital Finance and Doppler — status and conflicts
+
+Doppler Finance announced on July 13, 2026 that it had entered a strategic partnership with SBI Digital Finance to develop institutional XRP finance in Japan. The announcement describes infrastructure development for XRP, tokenized assets, liquidity, financing and collateral management. It gives no named production clients, transaction volumes, financial terms or launch date. No matching SBI-side announcement was found in this search; classify it as a counterparty announcement, not a verified live service.
+
+A separate December 17, 2025 MOU between Doppler and SBI Ripple Asia explores XRP yield and RWA tokenization; SBI Digital Markets was named as institutional custodian. Evernorth and Doppler announced an exploratory liquidity/treasury collaboration in January 2026. These are distinct relationships and do not prove that SBI Holdings or SBI subsidiaries deposited XRP into Doppler.
+
+Doppler's own September 28 blog claims more than $150M across XRP/RLUSD vaults and 14,000+ depositors. Its analytics snapshot separately displayed about $29.48M TVL and 2.46% XRP / 5.66% RLUSD vault APY, while the homepage snapshot returned zero TVL and zero APY. These are inconsistent self-reported snapshots, not independently verified TVL. The product describes arbitrage/basis strategies and a 7–8 day withdrawal period; this is third-party strategy/custody/liquidity risk, not native XRP staking or native XRPL lending.
+
+### 6. Fact-check of video claims and attribution
+
+Dr. Kamilah Stevenson is identifiable through her first-party Wealth Doctor site, but that site does not link the candidate XRP YouTube channels found in search. Multiple similarly named channels exist. No channel ownership is verified, so the verified video inventory remains empty and candidate video IDs remain quarantined.
+
+A candidate video claim that Japanese banks are running a named XRP pilot with 60% lower cost and sub-four-second end-to-end settlement is not established by the official SBI sources retrieved. SBI's 2023 release confirms XRP bridge remittance corridors and describes XRPL's approximately four-second ledger payment capability; that is not an end-to-end bank payout SLA and does not substantiate 60% savings. SBI Ripple Asia's February 2026 DSRV work is expressly feasibility research, not a specific commercial service.
+
+A candidate claim that the SBI START bond “pays investors in XRP” is misleading: the bond coupon and principal are JPY; XRP is a separate subscription reward. A candidate claim that Ripple “became a bank” is overstated: OCC trust-bank approval/effectiveness does not establish a full-service deposit bank.
+
+### 7. Updated actual-capital taxonomy
+
+Keep these categories separate:
+- JPY 10B SBI START Bond: SBI Holdings debt proceeds; security token on ibet for Fin; not XRP.
+- USD 200M SBI cash PIPE contribution to Evernorth: actual cash invested in an XRP treasury company; not the whole >USD 1B mixed cash/XRP raise.
+- Circle Mint Q3 2026: +USD 610M net customer fiat conversions; nine-month net -USD 1.387B; not all-chain net flow.
+- SBI Remit XRP ODL: actual bridge-asset transfers in named corridors; volume and market sourcing undisclosed.
+- ETF issuer holdings deltas: not cash subscriptions.
+- XRP bonuses/card rewards/shareholder benefits: distribution incentives; procurement source undisclosed.
+- Doppler TVL: self-reported vault balances; not verified SBI capital.
+- Ripple direct XRP holdings and escrow: corporate holdings, not circulating tradable float.
+
+### Additional primary sources
+
+- SBI Remit 2021 XRP ODL launch: https://www.sbigroup.co.jp/news/2021/0728_12577
+- SBI Remit 2023 expansion to Philippines/Vietnam/Indonesia: https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/
+- SBI Remit JPY 2.5T cumulative turnover: https://www.sbigroup.co.jp/news/2026/0529_16356.html
+- SBI Remit/Nium alternative fiat rail: https://www.sbigroup.co.jp/news/pr/2025/0630_15541.html
+- SBI Cambodia DLT corridor: https://www.sbigroup.co.jp/news/pr/2025/1028_15848.html
+- SBI Ripple Asia XRPL issuance platform: https://www.sbigroup.co.jp/news/pr/pdf/2026/0407_a.pdf
+- SBI START Bond official product terms: https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html
+- SBI VISA Crypto Card launch: https://www.sbigroup.co.jp/news/2026/0501_16304.html
+- Doppler/SBI Digital Finance July partnership: https://blog.doppler.finance/blog/doppler-finance-and-sbi-digital-finance-announce-strategic-partnership-to-expand-institutional-xrp-finance-in-japan
+- Doppler/SBI Ripple Asia December MOU: https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization
+
+The graph now distinguishes SBI Holdings, SBI Remit, SBI VC Trade, SBI Ripple Asia, SBI Digital Finance, SBI Digital Markets, SBIC East/Central/West and SB OAI Japan. No entity or relationship is inferred from name similarity alone.

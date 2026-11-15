@@ -98,6 +98,81 @@
       "id": "softbank_group",
       "name": "SoftBank Group Corp.",
       "type": "technology_investment_group"
+    },
+    {
+      "id": "sbi_remit",
+      "name": "SBI Remit Co., Ltd.",
+      "type": "international_remittance_provider"
+    },
+    {
+      "id": "tranglo",
+      "name": "Tranglo Pte. Ltd.",
+      "type": "cross_border_payout_provider"
+    },
+    {
+      "id": "nium",
+      "name": "Nium Pte. Ltd.",
+      "type": "cross_border_fiat_payment_network"
+    },
+    {
+      "id": "sbi_digital_finance",
+      "name": "SBI Digital Finance Inc.",
+      "type": "crypto_asset_lending_company"
+    },
+    {
+      "id": "sbi_digital_markets",
+      "name": "SBI Digital Markets Pte. Ltd.",
+      "type": "institutional_digital_asset_custodian"
+    },
+    {
+      "id": "doppler",
+      "name": "Doppler Finance",
+      "type": "third_party_xrp_rlusd_vault_and_tokenized_finance_infrastructure"
+    },
+    {
+      "id": "sbi_start_bond",
+      "name": "SBI START Bond",
+      "type": "JPY_security_token_bond"
+    },
+    {
+      "id": "boostry_ibet",
+      "name": "BOOSTRY ibet for Fin",
+      "type": "security_token_issuance_and_management_platform"
+    },
+    {
+      "id": "odx_start",
+      "name": "Osaka Digital Exchange START",
+      "type": "security_token_secondary_market"
+    },
+    {
+      "id": "sbi_visa_crypto_card",
+      "name": "SBI VISA Crypto Card",
+      "type": "crypto_reward_credit_card"
+    },
+    {
+      "id": "aplus",
+      "name": "Aplus Co., Ltd.",
+      "type": "card_issuer"
+    },
+    {
+      "id": "visa",
+      "name": "Visa",
+      "type": "card_network"
+    },
+    {
+      "id": "sbi_ripple_asia_token_platform",
+      "name": "SBI Ripple Asia XRPL Token Issuance Platform",
+      "type": "regulated_prepaid_payment_token_issuance_infrastructure"
+    },
+    {
+      "id": "dsrv_labs",
+      "name": "dsrv labs Co., Ltd.",
+      "type": "blockchain_infrastructure_provider"
+    },
+    {
+      "id": "sbi_new_shinsei",
+      "name": "SBI Shinsei Bank",
+      "type": "bank"
     }
   ],
   "relationships": [
@@ -275,6 +350,169 @@
       "type": "NO_VERIFIED_CORPORATE_RELATIONSHIP",
       "status": "NOT_ESTABLISHED",
       "caveat": "SBIC East's ChatGPT training course is not evidence of an OpenAI partnership."
+    },
+    {
+      "from": "sbi_remit",
+      "to": "sbi_vc_trade",
+      "type": "XRP_ODL_liquidity_and_execution",
+      "as_of": "2023-09-06",
+      "status": "OFFICIAL_LIVE_SERVICE_LAUNCH_ANNOUNCEMENT",
+      "evidence": "turn182171search1",
+      "caveat": "SBI VC Trade sends XRP in response to remittance requests; transaction volumes and spot-market sourcing are not disclosed."
+    },
+    {
+      "from": "sbi_vc_trade",
+      "to": "xrp",
+      "type": "bridge_asset_transfer_for_ODL",
+      "as_of": "2023-09-06",
+      "status": "OFFICIAL_LIVE_SERVICE_LAUNCH_ANNOUNCEMENT",
+      "evidence": "turn182171search1",
+      "caveat": "Corridors named: Philippines, Vietnam and Indonesia; not all SBI Remit transfers use XRP."
+    },
+    {
+      "from": "tranglo",
+      "to": "sbi_remit",
+      "type": "local_fiat_payout_partner",
+      "as_of": "2023-09-06",
+      "status": "OFFICIAL_LIVE_SERVICE_LAUNCH_ANNOUNCEMENT",
+      "evidence": "turn182171search1"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "nium",
+      "type": "alternative_fiat_payment_network",
+      "as_of": "2025-06-30",
+      "status": "OFFICIAL_ANNOUNCEMENT",
+      "evidence": "turn182171search7",
+      "caveat": "USD/EUR and fiat bank payout coverage; no XRP bridge established."
+    },
+    {
+      "from": "sbi_remit",
+      "to": "sbi_ripple_asia",
+      "type": "DLT_remittance_service_partner",
+      "as_of": "2025-10-28",
+      "status": "OFFICIAL_LAUNCH_ANNOUNCEMENT",
+      "evidence": "turn759599search1",
+      "caveat": "Cambodia route uses DLT/Ripple technology; XRP bridge use is not specified."
+    },
+    {
+      "from": "sbi_ripple_asia",
+      "to": "sbi_ripple_asia_token_platform",
+      "type": "platform_operator",
+      "as_of": "2026-04-07",
+      "status": "OFFICIAL_SYSTEM_COMPLETED_AND_ISSUER_REGISTERED",
+      "evidence": "turn729871view0"
+    },
+    {
+      "from": "sbi_ripple_asia_token_platform",
+      "to": "xrp",
+      "type": "XRPL_native_network_dependency",
+      "as_of": "2026-04-07",
+      "status": "XRPL_BASED_TOKEN_ISSUANCE_CAPABILITY",
+      "evidence": "turn729871view0",
+      "caveat": "Issued prepaid tokens are not necessarily XRP bridge payments; actual customer issuance/volume is undisclosed."
+    },
+    {
+      "from": "sbi_ripple_asia",
+      "to": "dsrv_labs",
+      "type": "Japan_Korea_remittance_feasibility_research",
+      "as_of": "2026-02-24",
+      "status": "RESEARCH_NOT_COMMERCIAL_SERVICE",
+      "evidence": "turn178830search0"
+    },
+    {
+      "from": "sbi_ripple_asia",
+      "to": "sbi_ripple_asia_token_platform",
+      "type": "tokenized_deposit_conceptual_POC",
+      "as_of": "2026-02-26",
+      "status": "CONCEPTUAL_POC",
+      "evidence": "turn178830search1",
+      "caveat": "No production bank token issuance or transaction volume established."
+    },
+    {
+      "from": "sbi_holdings",
+      "to": "sbi_start_bond",
+      "type": "JPY_debt_issuance",
+      "value": "JPY 10B; 3 years; 2.15% fixed JPY coupon; 100% JPY principal redemption",
+      "as_of": "2026-03-24",
+      "status": "OFFICIAL_PRODUCT_TERMS",
+      "evidence": "turn924991search2",
+      "caveat": "Issued on BOOSTRY ibet for Fin, not XRPL; XRP is a separate subscription reward, not coupon or principal."
+    },
+    {
+      "from": "sbi_start_bond",
+      "to": "boostry_ibet",
+      "type": "security_token_issuance_platform",
+      "status": "OFFICIAL_PRODUCT_TERMS",
+      "evidence": "turn924991search2"
+    },
+    {
+      "from": "sbi_start_bond",
+      "to": "odx_start",
+      "type": "secondary_market_trading",
+      "as_of": "2026-03-25",
+      "status": "OFFICIAL_PRODUCT_TERMS",
+      "evidence": "turn924991search2"
+    },
+    {
+      "from": "sbi_start_bond",
+      "to": "sbi_vc_trade",
+      "type": "XRP_subscription_reward_distribution",
+      "value": "JPY 200 of XRP per JPY 100,000 subscription for eligible buyers",
+      "as_of": "2026-05-15",
+      "status": "OFFICIAL_PRODUCT_PAGE_REWARD",
+      "evidence": "turn924991search2",
+      "caveat": "Not the bond coupon; sourcing of XRP not disclosed. Secondary reporting of recurring coupon-date rewards is not confirmed by the retrieved SBI product-page text."
+    },
+    {
+      "from": "sbi_vc_trade",
+      "to": "sbi_visa_crypto_card",
+      "type": "crypto_reward_account_and_conversion",
+      "as_of": "2026-05-01",
+      "status": "OFFICIAL_CARD_LAUNCH",
+      "evidence": "turn182171search3"
+    },
+    {
+      "from": "sbi_visa_crypto_card",
+      "to": "xrp",
+      "type": "customer_selected_crypto_reward",
+      "as_of": "2026-05-01",
+      "status": "OFFICIAL_CARD_LAUNCH",
+      "evidence": "turn182171search3",
+      "caveat": "Reward points convert to selected BTC/ETH/XRP; underlying XRP sourcing is undisclosed."
+    },
+    {
+      "from": "sbi_digital_finance",
+      "to": "doppler",
+      "type": "institutional_XRP_finance_development_partnership",
+      "as_of": "2026-07-13",
+      "status": "COUNTERPARTY_ANNOUNCEMENT_ONLY",
+      "evidence": "turn874975view0",
+      "caveat": "No SBI-side confirmation, named production clients, launch date, terms or transaction volumes found."
+    },
+    {
+      "from": "sbi_ripple_asia",
+      "to": "doppler",
+      "type": "XRP_yield_and_RWA_tokenization_MOU",
+      "as_of": "2025-12-17",
+      "status": "EXPLORATORY_MOU",
+      "evidence": "turn687507search1"
+    },
+    {
+      "from": "sbi_digital_markets",
+      "to": "doppler",
+      "type": "proposed_institutional_custody_for_MOU",
+      "as_of": "2025-12-17",
+      "status": "ANNOUNCED_CUSTODY_ROLE",
+      "evidence": "turn687507search1"
+    },
+    {
+      "from": "evernorth",
+      "to": "doppler",
+      "type": "institutional_liquidity_and_treasury_use_case_exploration",
+      "as_of": "2026-01-08",
+      "status": "EXPLORATORY",
+      "evidence": "turn687507search4"
     }
   ],
   "capital_flow_classification": {
@@ -336,5 +574,14 @@
     "Circle Mint net fiat flows are a better actual-capital measure than gross onchain transaction volume, but they cover only Circle Mint customers.",
     "Coinbase's Circle distribution compensation is a material expense/revenue relationship, not XRP demand.",
     "SBI Ripple Asia's 2026 XRPL work is research/POC; production settlement volumes are not established."
+  ],
+  "sbi_operational_rails_conclusion": [
+    "SBI Remit's 2021/2023 Philippines, Vietnam and Indonesia corridors are the strongest verified SBI-linked live XRP bridge-asset use case in this research; SBI VC Trade sends XRP in real time and Tranglo pays out local fiat. Volume is undisclosed.",
+    "SBI Remit's JPY 2.5T cumulative remittance turnover is across all corridors and rails, not an XRP volume metric. Nium and Cambodia DLT rails are separate and should not be attributed to XRP without evidence.",
+    "SBI Ripple Asia's XRPL token issuance platform is a concrete regulated infrastructure milestone, but issued prepaid tokens and tokenized deposits are not automatically XRP bridge demand.",
+    "SBI START Bond is a JPY debt security token on ibet for Fin. Its XRP subscription reward is a loyalty incentive; the coupon and principal are JPY.",
+    "SBI VC Trade's RLUSD deposits/withdrawals were Ethereum-only at launch, so this distribution channel is not an XRPL RLUSD rail.",
+    "SBI Digital Finance, SBI Digital Markets, SBI Ripple Asia and SBI VC Trade are distinct legal/business units and must not be conflated.",
+    "Doppler partnerships and TVL are exploratory/self-reported; no independent institutional SBI deposit or live XRP lending volume is established."
   ]
 }
