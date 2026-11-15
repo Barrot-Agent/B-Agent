@@ -5636,3 +5636,22 @@ Structured audit: [Run151 Evernorth Q3 SEC, market and integration audit](resear
 Nine-platform map: [Run151 capability/authentication/permission/data-flow map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run151.json).
 
 Regression tests: [Run151 Evernorth Q3 Form 10-Q reconciliation](tests/test_xrp_run151_evernorth_q3_2026_form10q_reconciliation.py).
+
+
+## Run151A — 2026-11-15 — SEC lot-allocation, Pathfinder ownership and Coinbase/BitGo correction
+
+A second line-by-line review of the November 13 Evernorth Q3 2026 Form 10-Q found four material distinctions that must be carried into current capital and treasury analysis.
+
+1. **Use the SEC narrative's exact in-kind components.** The 10-Q describes 600,000 XRP advance funding, 211,319,096 XRP contributed by RippleWorks to Arrington's Series C sponsor, 50,000,000 XRP from a Ripple-affiliated entity, 200,000 XRP delayed funding, and 126,791,458 XRP contributed by Ripple to Pathfinder. These sum exactly to the reported 388,910,554 XRP in-kind at closing. The prior Run135A fractional component sum of 388,910,554.061435 is historical and superseded for current analysis by the Q3 filing's whole-XRP amounts.
+
+2. **Do not misattribute the cost-basis lot table.** The Q3 cost table lists 50,000,001; 199,999; 211,619,196; 99,900; and 84,365,876 XRP, totaling 346,284,972. The narrative separately identifies the Series C subscription as 211,319,096 XRP and advance funding as 600,000 XRP. The filing does not map the cost-basis lots one-to-one to those subscription categories. Both disclosures reconcile to the same total, but the 211,619,196 cost lot must not be relabeled as the Arrington Series C contribution.
+
+3. **473,276,430 XRP is gross Pathfinder treasury, not a Pubco-attributable balance.** Evernorth transferred 346,484,972 XRP to Pathfinder after close, and Ripple had separately contributed 126,791,458 XRP to Pathfinder. Their sum is 473,276,430 XRP. The Q3 risk-factor section states Pubco owns approximately 71.5% of Pathfinder. Evernorth's XRP-per-share KPI is based on XRP attributable to Pubco, not gross Pathfinder XRP. No XRP-per-share figure is computed until the unit-level economic allocation is reconciled.
+
+4. **Coinbase is Evernorth's selected accounting principal market; BitGo Trust is the initial post-close custodian.** Evernorth says it selected Coinbase for financial reporting after assessing volume/activity, quote consistency/stability and regulatory/KYC accessibility. Its September 30 Coinbase reference price of $1.49 was used in a fair-value model for refundable investor advances, not as a current spot price. This does not prove Coinbase custody. The 10-Q identifies BitGo Trust as the initial post-transaction third-party custodian.
+
+**Accounting and strategy:** Evernorth accounts for XRP as an indefinite-lived intangible at cost less impairment, not recurring fair value. The 10-Q reports $846.575M historical cost basis, $341.887M carrying value and $504.688M cumulative impairment at September 30. The company reports no revenue; Q3 net income is materially affected by noncash fair-value changes in refundable investor advances. Future yield generation, XRP-collateralized financing and active management are stated strategies, not proof of live transactions.
+
+The Run151 audit and regression tests were corrected to encode these distinctions. The earlier Run151 commit is retained in Git history; the current Run151A commit supersedes its fractional in-kind attribution and clarifies gross Pathfinder treasury versus Pubco-attributable XRP.
+
+Primary source: [Evernorth Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm), filed November 13, 2026, especially Notes 1 and 4, the XRP lot table, the Coinbase principal-market discussion, custody risk and Pathfinder ownership disclosure.

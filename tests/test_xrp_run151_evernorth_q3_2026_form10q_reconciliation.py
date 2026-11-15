@@ -43,13 +43,14 @@ def test_run151_reconciles_in_kind_xrp_with_reported_rounding() -> None:
     components = capital["components"]
     total = sum((Decimal(value) for value in components.values()), Decimal("0"))
     reported = Decimal(capital["reported_total_at_close"])
-    assert abs(total - reported) < Decimal("0.1")
+    assert total == reported
     private_placement_subtotal = (
         Decimal(components["advance_funding_xrp"])
         + Decimal(components["arrington_series_c_xrp_via_rippleworks"])
         + Decimal(components["ripple_affiliated_entity_xrp"])
     )
-    assert private_placement_subtotal == Decimal("261919096.061435")
+    assert private_placement_subtotal == Decimal("261919096")
+    assert capital["prior_precision_status"] == "SUPERSEDED_BY_Q3_2026_10Q_WHOLE_XRP_DISCLOSURE"
 
 
 def test_run151_reconciles_postclose_known_treasury_without_double_counting() -> None:
@@ -65,7 +66,12 @@ def test_run151_reconciles_postclose_known_treasury_without_double_counting() ->
         + Decimal(data["in_kind_xrp"]["reported_total_at_close"])
         == Decimal(bridge["known_combined_postclose_treasury_xrp"])
     )
-    assert bridge["completeness"].startswith("KNOWN_DISCLOSED_SUBTOTAL")
+    assert bridge["completeness"].startswith("KNOWN_GROSS_PATHFINDER_SUBTOTAL")
+    assert bridge["classification"] == "GROSS_PATHFINDER_TREASURY_NOT_PUBCO_ATTRIBUTABLE_AMOUNT"
+    assert bridge["complete_total_including_possible_restricted_cash_purchase"] == "NOT_ESTABLISHED"
+    pathfinder = data["evernorth_q3_2026"]["pathfinder_ownership"]
+    assert pathfinder["pubco_ownership_percent"] == "71.5"
+    assert pathfinder["pubco_attributable_xrp"] == "NOT_COMPUTED"
 
 
 def test_run151_separates_actual_cash_debt_warrants_and_eloc_capacity() -> None:
@@ -116,3 +122,25 @@ def test_run151_source_and_forecast_gates_remain_fail_closed() -> None:
     assert data["source_capture"]["model_eligible"] is False
     assert data["prediction_engine"]["forecast_status"] == "NOT_ISSUED"
     assert data["prediction_engine"]["accuracy"] == "NOT_EVALUATED"
+
+
+def test_run151_cost_basis_lots_reconcile_without_false_source_attribution() -> None:
+    data = _audit()["evernorth_q3_2026"]
+    lots = data["cost_basis_lot_table"]
+    assert sum(Decimal(lot["units"]) for lot in lots["lots"]) == Decimal("346284972")
+    assert lots["category_mapping"] == "NOT_EXPLICITLY_DISCLOSED"
+    assert lots["lots"][2]["units"] == "211619196"
+    assert data["in_kind_xrp"]["components"]["arrington_series_c_xrp_via_rippleworks"] == "211319096"
+
+
+def test_run151_coinbase_principal_market_is_not_misreported_as_custodian() -> None:
+    data = _audit()["evernorth_q3_2026"]
+    assert data["liquidity_and_results"]["principal_market_for_financial_reporting"] == "Coinbase"
+    assert data["custody"]["postclose_initial_custodian"] == "BitGo Trust"
+    assert data["custody"]["coinbase_custody_relationship"] == "NOT_ESTABLISHED_BY_THIS_FILING"
+
+
+def test_run151_does_not_compute_xrp_per_share_from_gross_pathfinder_treasury() -> None:
+    data = _audit()["evernorth_q3_2026"]["xrp_per_share"]
+    assert data["pubco_ownership_of_pathfinder_percent"] == "71.5"
+    assert data["calculated_xrp_per_share"] == "NOT_COMPUTED"

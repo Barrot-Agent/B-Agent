@@ -326,19 +326,24 @@
       "restricted_cash_sep30_usd": "49995",
       "residual_cash_postclose_disposition": "NOT_DISCLOSED",
       "prior_run135a_claim": "The prior artifact treated the $49,995 as used for an additional XRP purchase at closing.",
-      "current_disposition": "The Q3 10-Q shows $49,995 restricted cash at both December 31 and September 30, and the XRP cost table assigns $214,000,000 to 84,365,876 XRP. The Q3 filing does not disclose post-close use or an additional XRP quantity. Treat the prior use-at-close claim as unverified/superseded for current analysis; do not infer extra XRP."
+      "current_disposition": "The Q3 10-Q shows $49,995 restricted cash at both December 31 and September 30, and the XRP cost table assigns $214,000,000 to 84,365,876 XRP. The Q3 filing does not disclose post-close use or an additional XRP quantity. Treat the prior use-at-close claim as unverified/superseded for current analysis; do not infer extra XRP.",
+      "prior_run135a_claim_status": "UNVERIFIED_SUPERSEDED_FOR_CURRENT_ANALYSIS",
+      "residual_cash_purchase_xrp_quantity": null
     },
     "in_kind_xrp": {
       "reported_total_at_close": "388910554",
       "prior_precise_component_sum": "388910554.061435",
       "components": {
         "advance_funding_xrp": "600000",
-        "arrington_series_c_xrp_via_rippleworks": "211319096.061435",
+        "arrington_series_c_xrp_via_rippleworks": "211319096",
         "ripple_affiliated_entity_xrp": "50000000",
         "ripple_direct_contribution_to_pathfinder_xrp": "126791458",
         "delayed_funding_xrp": "200000"
       },
-      "note": "The precise component sum is 0.061435 XRP above the Q3 filing's rounded whole-XRP figure. Preserve the source precision and the issuer's rounded disclosure."
+      "note": "The Q3 10-Q narrative components sum exactly to 388,910,554 XRP. The earlier Run135A fractional precision is preserved as historical but superseded for current analysis.",
+      "prior_run135a_precise_component_sum": "388910554.061435",
+      "prior_precision_status": "SUPERSEDED_BY_Q3_2026_10Q_WHOLE_XRP_DISCLOSURE",
+      "private_placement_xrp_subtotal": "261919096"
     },
     "holdings_bridge": {
       "evernorth_holdings_sep30_xrp": "346284972",
@@ -346,7 +351,11 @@
       "ripple_contribution_already_in_pathfinder_xrp": "126791458",
       "known_combined_postclose_treasury_xrp": "473276430",
       "alternative_sum": "84365876 cash-purchased XRP + 388910554 in-kind XRP = 473276430 XRP",
-      "completeness": "KNOWN_DISCLOSED_SUBTOTAL; post-close disposition of $49,995 restricted cash is not disclosed, so do not claim this is an exhaustive current wallet balance."
+      "completeness": "KNOWN_GROSS_PATHFINDER_SUBTOTAL; Pubco owns approximately 71.5% of Pathfinder and the exact XRP attributable to Pubco is not computed here.",
+      "gross_pathfinder_treasury_postclose_xrp": "473276430",
+      "classification": "GROSS_PATHFINDER_TREASURY_NOT_PUBCO_ATTRIBUTABLE_AMOUNT",
+      "complete_total_including_possible_restricted_cash_purchase": "NOT_ESTABLISHED",
+      "pubco_attributable_xrp": "NOT_COMPUTED"
     },
     "gross_closing_cash": {
       "total_usd_approx": "272600000",
@@ -401,7 +410,15 @@
       "nine_month_fair_value_gain_usd": "240311432",
       "digital_asset_impairment_usd": "271037170",
       "revenue_generated": "NONE_REPORTED",
-      "interpretation": "Q3 net income is not operating revenue: the filing reports no revenue, material noncash fair-value gains on refundable investor advances, and digital-asset impairment."
+      "interpretation": "Q3 net income is not operating revenue: the filing reports no revenue, material noncash fair-value gains on refundable investor advances, and digital-asset impairment.",
+      "digital_asset_cost_basis_usd": "846575043",
+      "digital_asset_carrying_value_sep30_usd": "341887231",
+      "cumulative_impairment_since_inception_usd": "504687812",
+      "accounting_method": "Indefinite-lived intangible asset at cost less impairment under ASC 350-30; not recurring fair-value accounting.",
+      "principal_market_for_financial_reporting": "Coinbase",
+      "principal_market_basis": "Issuer says it selected Coinbase after assessing volume/activity, quote consistency/stability, and regulatory/KYC accessibility.",
+      "coinbase_sep30_reference_price_usd": "1.49",
+      "coinbase_price_use": "Used in fair-value model for refundable investor advances at September 30; not a current spot quote and not proof of Coinbase custody."
     },
     "sbi_affiliated_investors": {
       "filing_language": "Certain investors affiliated with SBI Holdings, Inc.",
@@ -419,16 +436,96 @@
       "affiliate_class_a_shares": "661867",
       "affiliate_pathfinder_units": "6491583",
       "combined_ripple_and_affiliate_pubco_ownership_limit": "9.9%",
-      "arrington_sponsor_xrp_via_rippleworks": "211319096.061435",
+      "arrington_sponsor_xrp_via_rippleworks": "211319096",
       "rippleworks_relationship": "RippleWorks, a nonprofit foundation and limited partner of the Arrington XRP Capital Fund, contributed the Series C XRP to the sponsor.",
-      "caution": "Ripple Labs, RippleWorks, the Ripple-affiliated investor and the SBI-affiliated investors are distinct legal/economic counterparties."
+      "caution": "Ripple Labs, RippleWorks, the Ripple-affiliated investor and the SBI-affiliated investors are distinct legal/economic counterparties.",
+      "arrington_sponsor_pubco_shares": "30233211",
+      "arrington_voting_ownership_threshold": "19.9%"
     },
     "xrp_per_share_kpi": {
       "issuer_formula": "XRP attributable to Pubco divided by outstanding Class A plus Class C shares",
       "nov9_class_a_shares": "27012248",
       "nov9_class_c_shares": "31392746",
       "calculated_xrp_per_share": "NOT_COMPUTED",
-      "reason": "Exact XRP attributable to Pubco after Pathfinder unit economics is not fully established by the reviewed excerpts."
+      "reason": "Gross Pathfinder XRP is not equivalent to XRP attributable to Pubco; reconcile Pathfinder units and noncontrolling interests first.",
+      "pubco_ownership_of_pathfinder_percent": "71.5",
+      "calculation": "NOT_COMPUTED"
+    },
+    "cost_basis_lot_table": {
+      "as_of": "2026-09-30",
+      "source_table": "Q3 2026 Form 10-Q Note 4, cost basis of XRP by lot",
+      "lots": [
+        {
+          "units": "50000001",
+          "historical_cost_usd": "124800002"
+        },
+        {
+          "units": "199999",
+          "historical_cost_usd": "484598"
+        },
+        {
+          "units": "211619196",
+          "historical_cost_usd": "507039594"
+        },
+        {
+          "units": "99900",
+          "historical_cost_usd": "250849"
+        },
+        {
+          "units": "84365876",
+          "historical_cost_usd": "214000000"
+        }
+      ],
+      "total_units": "346284972",
+      "total_historical_cost_usd": "846575043",
+      "category_mapping": "NOT_EXPLICITLY_DISCLOSED",
+      "discrepancy_note": "The cost-basis lot table totals 346,284,972 XRP, but its 211,619,196-unit lot does not equal the 211,319,096 XRP Series C subscription described in Note 1. The 199,999 and 99,900 lots also do not map one-to-one to the 600,000 advance-funding narrative. Both disclosures reconcile to the same 346,284,972 total; do not relabel the 211,619,196 lot as Arrington Series C."
+    },
+    "pathfinder_ownership": {
+      "pubco_ownership_percent": "71.5",
+      "source": "Q3 2026 Form 10-Q, Part II Item 1A, lines 995-996",
+      "gross_pathfinder_treasury_xrp": "473276430",
+      "pubco_attributable_xrp": "NOT_COMPUTED",
+      "reason": "The issuer's XRP-per-share KPI uses XRP attributable to Pubco, not simply gross Pathfinder treasury. Unit-level economic allocation must be reconciled before calculating."
+    },
+    "custody": {
+      "preclose": "Custody XRP held in an unencumbered wallet maintained and controlled by Evernorth, contractually restricted from sale, transfer, pledge or encumbrance until closing.",
+      "postclose_initial_custodian": "BitGo Trust",
+      "source": "Q3 2026 Form 10-Q lines 539-540 and 967-969",
+      "coinbase_custody_relationship": "NOT_ESTABLISHED_BY_THIS_FILING"
+    },
+    "operating_strategy": {
+      "issuer_describes": "Active XRP asset management, diversified yield-generation strategies, strategic geographic expansion, possible secured financing using XRP as collateral where permissible, and possible XRP sales for corporate purposes.",
+      "current_execution_status": "STRATEGIC_INTENT_NOT_PROOF_OF_LIVE_YIELD_OR_COLLATERAL_TRANSACTIONS",
+      "revenue_generated": "NONE_REPORTED"
+    },
+    "xrp_per_share": {
+      "issuer_formula": "XRP attributable to Pubco divided by Class A plus Class C shares",
+      "pubco_ownership_of_pathfinder_percent": "71.5",
+      "calculated_xrp_per_share": "NOT_COMPUTED",
+      "reason": "Gross Pathfinder treasury is not the same as XRP attributable to Pubco."
+    },
+    "disclosure_reconciliation": {
+      "subscription_narrative_components": {
+        "advance_funding_xrp": "600000",
+        "series_c_arrington_via_rippleworks_xrp": "211319096",
+        "ripple_affiliated_entity_xrp": "50000000",
+        "delayed_funding_xrp": "200000",
+        "ripple_direct_pathfinder_contribution_xrp": "126791458",
+        "total_in_kind_xrp": "388910554"
+      },
+      "cost_basis_lot_table_units_sum": "346284972",
+      "narrative_evernorth_sep30_holdings": "346284972",
+      "postclose_transfer_from_evernorth_to_pathfinder": "346484972",
+      "ripple_contribution_already_in_pathfinder": "126791458",
+      "gross_pathfinder_treasury_subtotal": "473276430",
+      "pubco_pathfinder_ownership_percent": "71.5",
+      "pubco_attributable_xrp": "NOT_COMPUTED",
+      "unresolved_items": [
+        "Cost-basis lot categories do not map one-to-one to subscription narrative categories, although total XRP reconciles.",
+        "Post-close disposition of $49,995 restricted cash is not disclosed.",
+        "XRP attributable to Pubco after Pathfinder unit economics is not computed."
+      ]
     }
   },
   "institutional_network": {
@@ -618,6 +715,38 @@
       "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
       "dated": "2026-06-11",
       "type": "PODCAST_PRIMARY_DISTRIBUTION"
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — XRP lot table and cost basis",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "539-567",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — Coinbase principal market and impairment accounting",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "912-919",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — BitGo Trust custody",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "967-969",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
+    },
+    {
+      "source": "Evernorth Q3 2026 Form 10-Q — Pathfinder 71.5% ownership",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "995-996",
+      "type": "SEC_PRIMARY",
+      "raw_bytes_captured": false
     }
   ]
 }
