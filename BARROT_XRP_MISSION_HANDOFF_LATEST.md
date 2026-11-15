@@ -9068,3 +9068,17 @@ PR #1662 remains draft, zero formal reviews/approvals/review threads. Main branc
 - [Current nine-platform map](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json)
 - [Run173 structured audit](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-unified-main-20261112/research/xrp_intelligence/20261115T200122Z-run173-integration-ci-market-and-institutional-audit.json)
 - [Consolidated PR #1662](https://github.com/Barrot-Agent/B-Agent/pull/1662)
+
+
+## Run173 post-commit test-contract correction — 2026-11-15T20:18:21Z
+
+The first full-suite run on the Run173 evidence commit `7c09ccdba8582886bd82f7b7d173ff762187f912` completed with **3,804 passed, two failed, one skipped, 19 subtests**, in 160.50 seconds. Core tests passed; dependency audits, both fail-closed gates and PR Pages validation passed.
+
+The two failures were stale historical evidence assertions in `tests/test_xrp_nine_platform_current_map_run73.py`, not production-code failures:
+
+1. `test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head` found `ci_evidence.integration_head_tested` still pointing to historical head `c71ae4d` while `latest_attempt` correctly pointed to verified code head `754e7d1`. The map field is being reconciled to the exact verified head.
+2. The Run152–Run172 historical regression test expected the Run162 last-passing head `35270afd`, but the generic `last_fully_passing_full_suite` field had correctly advanced to the newer `754e7d1` run. The Run162 historical result is now preserved in an explicit `run162_last_fully_passing_full_suite` field and the historical test reads that field.
+
+No tests were removed or weakened. No production code changed. The correction is committed on the same existing integration branch; its own full-suite, dependency and fail-closed CI must complete before any merge consideration. The failed 7c09 run remains preserved as historical evidence.
+
+Evidence: [Run173 full-suite failure 43756891173](https://github.com/Barrot-Agent/B-Agent/actions/runs/43756891173), [push dependency audit 43756891155](https://github.com/Barrot-Agent/B-Agent/actions/runs/43756891155), [PR validation 43756897598](https://github.com/Barrot-Agent/B-Agent/actions/runs/43756897598).

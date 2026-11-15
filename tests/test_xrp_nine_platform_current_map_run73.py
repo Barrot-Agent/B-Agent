@@ -780,7 +780,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_run167_run168_r
     assert run154["accuracy_status"] == "NOT_EVALUATED"
     assert run154["merge_decision"] == "NO_MERGE"
 
-    last_good = data["ci_evidence"]["last_fully_passing_full_suite"]
+    last_good = data["ci_evidence"]["run162_last_fully_passing_full_suite"]
     assert run155["integration_head_before_map_handoff_commit"] == run155["full_suite"]["head_sha"]
     assert run155["full_suite"]["head_sha"] == run155["integration_head_before_map_handoff_commit"]
     assert run155["full_suite"]["passed"] == 3788

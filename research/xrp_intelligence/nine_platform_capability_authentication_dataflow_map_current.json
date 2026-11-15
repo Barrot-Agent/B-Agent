@@ -2,7 +2,7 @@
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "captured_at_utc": "2026-11-15T20:01:22Z",
-  "last_verified_at_utc": "2026-11-15T20:01:22Z",
+  "last_verified_at_utc": "2026-11-15T20:18:21Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
   "observed_integration_head_before_map_commit": "c71ae4d0fdbd967b56f1122a86559d27812d3690",
@@ -1114,7 +1114,7 @@
     "base_main_prs": 365,
     "base_other_prs": 8,
     "current_head_before_run34_commit": "c857f637939be32f196d1a8268a8001443fe4d9d",
-    "latest_fully_passing_full_suite_head": "35270afdac9a61e17c777dca534184a4acb8db2b",
+    "latest_fully_passing_full_suite_head": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
     "run34_new_paths": [
       "research/xrp_intelligence/20261111T201854Z-run34-current-head-ci-capital-market-and-identity-reconciliation.json"
     ],
@@ -1482,7 +1482,7 @@
     "codeowners": "* @Barrot-Agent",
     "latest_full_suite_run_id": 43728655918,
     "latest_full_suite_duration_seconds": 172.73,
-    "latest_fully_passing_full_suite_run_id": 43717356750,
+    "latest_fully_passing_full_suite_run_id": 43753051601,
     "full_semantic_review_complete": false,
     "non_workflow_semantic_review_remaining": 1209,
     "workflow_called_script_semantic_review_remaining": 48,
@@ -1511,7 +1511,7 @@
     "no_force_push": true,
     "no_history_rewrite": true,
     "no_destructive_worktree_operations": true,
-    "latest_fully_passing_full_suite_passed": 3794,
+    "latest_fully_passing_full_suite_passed": 3805,
     "latest_fully_passing_full_suite_failed": 0,
     "latest_fully_passing_full_suite_skipped": 1,
     "latest_fully_passing_full_suite_subtests": 19,
@@ -1797,7 +1797,7 @@
     }
   },
   "ci_evidence": {
-    "integration_head_tested": "c71ae4d0fdbd967b56f1122a86559d27812d3690",
+    "integration_head_tested": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
     "integration_pr_run": 43751551507,
     "integration_full_suite_job": 132926385675,
     "dependency_audit_run": 43751545012,
@@ -4181,7 +4181,17 @@
       "Hugging Face Space BUILD_ERROR"
     ],
     "latest_pr_pages_validation_run": 43753056331,
-    "latest_pr_pages_validation_conclusion": "success"
+    "latest_pr_pages_validation_conclusion": "success",
+    "run162_last_fully_passing_full_suite": {
+      "head_sha": "35270afdac9a61e17c777dca534184a4acb8db2b",
+      "run_id": 43717356750,
+      "passed": 3794,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "legacy_core_coverage_percent": 77
+    }
   },
   "workflow_safety_audit": {
     "changed_workflow_files": 50,
@@ -12972,7 +12982,7 @@
     "latest_run_id": "Run87"
   },
   "latest_run_id": "Run173",
-  "latest_run_captured_at_utc": "2026-11-15T20:01:22Z",
+  "latest_run_captured_at_utc": "2026-11-15T20:18:21Z",
   "run20_snapshot": {
     "run_id": "Run20b",
     "captured_at_utc": "2026-11-11T10:14:30Z",
@@ -16021,7 +16031,7 @@
     },
     "forecast_status": "NOT_ISSUED"
   },
-  "last_reconciled_at_utc": "2026-11-15T20:01:22Z",
+  "last_reconciled_at_utc": "2026-11-15T20:18:21Z",
   "run29_snapshot": {
     "captured_at_utc": "2026-11-11T15:36:00Z",
     "repository_state": {
@@ -24557,7 +24567,7 @@
     },
     "next_action": "Exact head dd015288 passed. Commit the corrected Dependabot/workflow backlog classifications and append final exact-head evidence to the canonical handoff; then verify CI on the resulting new documentation head."
   },
-  "updated_at_utc": "2026-11-15T20:01:22Z",
+  "updated_at_utc": "2026-11-15T20:18:21Z",
   "latest_market_refresh_run38": {
     "captured_at_utc": "2026-11-11T23:15:21Z",
     "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
@@ -40616,7 +40626,7 @@
     "XRPL lending amendments remain below threshold while Arc's Aave/Morpho lending markets are live; this is a competitive timing difference, not proof of XRP demand decline."
   ],
   "run135_handoff_status": "Run135 parent f7d990 exact-head suite verified; current addendum/CI job commit pending its own exact-head verification.",
-  "last_updated_at_utc": "2026-11-15T20:01:22Z",
+  "last_updated_at_utc": "2026-11-15T20:18:21Z",
   "observed_integration_head_before_run136_commit": "194c3673ee9d3bc1ebbdf5125507dd40bdd8585d",
   "run136_snapshot": {
     "captured_at_utc": "2026-11-14T19:28:16Z",
@@ -59840,5 +59850,49 @@
     "Resolve independent review, branch protection and least privilege.",
     "Establish byte-exact source receipts, WORM archival and synchronized XRP history before candidate evaluation."
   ],
-  "run173_research_artifact_path": "research/xrp_intelligence/20261115T200122Z-run173-integration-ci-market-and-institutional-audit.json"
+  "run173_research_artifact_path": "research/xrp_intelligence/20261115T200122Z-run173-integration-ci-market-and-institutional-audit.json",
+  "run173_first_handoff_commit_ci": {
+    "head_sha": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "run_id": 43756891173,
+    "job_id": 132942828889,
+    "status": "completed",
+    "conclusion": "failure",
+    "passed": 3804,
+    "failed": 2,
+    "skipped": 1,
+    "subtests": 19,
+    "duration_seconds": 160.5,
+    "failing_tests": [
+      {
+        "name": "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "cause": "ci_evidence.integration_head_tested remained at historical c71ae4 while latest_attempt was updated to verified code head 754e7."
+      },
+      {
+        "name": "test_run152_run153_run154_run155_run158_run159_run162_run165_run167_run168_run169_and_run172_remain_historical_while_run173_is_current",
+        "cause": "historical Run162 last-fully-passing head 35270 was replaced in the generic last_fully_passing_full_suite field by the newer verified head 754e7; the test needed an explicit Run162 historical field."
+      }
+    ],
+    "classification": "Evidence-contract/test-fixture mismatches; no production runtime failure. Core tests, dependency audits, fail-closed gates and PR Pages validation passed."
+  },
+  "run173_test_contract_correction": {
+    "captured_at_utc": "2026-11-15T20:18:21Z",
+    "failed_head": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "correction_scope": "Tests and map evidence fields only; no production code changed.",
+    "corrections": [
+      "Set ci_evidence.integration_head_tested to the same verified code head as ci_evidence.latest_attempt (754e7d1...).",
+      "Preserve the Run162 historical last-passing suite in ci_evidence.run162_last_fully_passing_full_suite while retaining the latest 754e7 suite in ci_evidence.last_fully_passing_full_suite.",
+      "Update the Run152-Run172 historical regression test to read the explicit Run162 historical field."
+    ],
+    "tests_removed": 0,
+    "assertions_weakened": 0,
+    "production_code_changed": false,
+    "post_correction_exact_head_ci": "PENDING"
+  },
+  "run173_post_correction_ci": {
+    "status": "PENDING",
+    "parent_head": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "full_suite_required": true,
+    "dependency_audit_required": true,
+    "fail_closed_gate_required": true
+  }
 }

@@ -553,5 +553,41 @@
     "Finish semantic review of all 1,259 changed paths.",
     "Resolve independent review, branch protection and least privilege.",
     "Establish byte-exact source receipts, WORM archival and synchronized XRP history before candidate evaluation."
-  ]
+  ],
+  "post_evidence_commit_ci": {
+    "status": "FAILED",
+    "head_sha": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "run_id": 43756891173,
+    "passed": 3804,
+    "failed": 2,
+    "skipped": 1,
+    "subtests": 19,
+    "duration_seconds": 160.5,
+    "failing_tests": [
+      {
+        "name": "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "cause": "ci_evidence.integration_head_tested remained at historical c71ae4 while latest_attempt was updated to verified code head 754e7."
+      },
+      {
+        "name": "test_run152_run153_run154_run155_run158_run159_run162_run165_run167_run168_run169_and_run172_remain_historical_while_run173_is_current",
+        "cause": "historical Run162 last-fully-passing head 35270 was replaced in the generic last_fully_passing_full_suite field by the newer verified head 754e7; the test needed an explicit Run162 historical field."
+      }
+    ],
+    "classification": "Evidence-contract/test-fixture mismatches; no production runtime failure. Core tests, dependency audits, fail-closed gates and PR Pages validation passed."
+  },
+  "run173_test_contract_correction": {
+    "captured_at_utc": "2026-11-15T20:18:21Z",
+    "failed_head": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "correction_scope": "Tests and map evidence fields only; no production code changed.",
+    "corrections": [
+      "Set ci_evidence.integration_head_tested to the same verified code head as ci_evidence.latest_attempt (754e7d1...).",
+      "Preserve the Run162 historical last-passing suite in ci_evidence.run162_last_fully_passing_full_suite while retaining the latest 754e7 suite in ci_evidence.last_fully_passing_full_suite.",
+      "Update the Run152-Run172 historical regression test to read the explicit Run162 historical field."
+    ],
+    "tests_removed": 0,
+    "assertions_weakened": 0,
+    "production_code_changed": false,
+    "post_correction_exact_head_ci": "PENDING"
+  },
+  "post_correction_exact_head_ci": "PENDING"
 }
