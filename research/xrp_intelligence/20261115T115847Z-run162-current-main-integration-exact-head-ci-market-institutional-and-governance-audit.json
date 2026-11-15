@@ -262,6 +262,61 @@
         "dependency_audit_run": 43715077511,
         "fail_closed_gate_run": 43715077556
       }
+    },
+    "latest_test_correction_commit": {
+      "head_sha": "0c0782112ad57550c2ac0ea675d362075860920a",
+      "run_id": 43715776175,
+      "job_id": 132816874700,
+      "conclusion": "failure",
+      "passed": 3788,
+      "failed": 2,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 148.97,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_map_minification_commit_snapshot_tracks_current_exact_head"
+      ],
+      "classification": "Exact-head full-suite failed on 0c0782112ad57550c2ac0ea675d362075860920a: two evidence-contract assertion mismatches, not runtime or XRP prediction-engine failures. The Run152 historical/current test still reads the top-level latest attempt where it must read the immutable Run162 parent snapshot; the minification snapshot test expects 3,787 passed although the exact recorded run reports 3,788. Correct snapshot binding and the recorded count without weakening tests.",
+      "core_tests": {
+        "head_sha": "0c0782112ad57550c2ac0ea675d362075860920a",
+        "run_id": 43715776175,
+        "job_id": 132816874379,
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "push_run_id": 43715776132,
+        "pr_run_id": 43715780907,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "push_run_id": 43715776155,
+        "pr_run_id": 43715780944,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "pr_event": {
+        "run_id": 43715781062,
+        "conclusion": "success",
+        "pages_validation": "success",
+        "pages_manifest_rendered": true,
+        "build_only": true,
+        "core_tests": "skipped by integration-branch condition",
+        "full_suite": "skipped by integration-branch condition",
+        "dependency_audit_run": 43715780907,
+        "fail_closed_gate_run": 43715780944
+      }
     }
   },
   "correction": {
@@ -811,10 +866,10 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Update top-level latest CI evidence to the completed 53e2 exact-head run and preserve earlier Run162 snapshots separately.",
-    "Add main_barrot_sync.external_call_observed=false to the original Run162 workflow-safety snapshot, preserving the observed missing-rich false-green main run.",
-    "Keep the Run162 parent (fe8a), first correction (fb1e), minification (10f6455) and handoff-update (53e2) snapshots distinct in tests.",
-    "Rerun the full repository suite on the next exact head; retain every historical run and do not weaken tests.",
+    "Bind Run152's historical seven-failure assertions to run162_snapshot rather than the top-level latest CI attempt.",
+    "Correct the Run162 minification snapshot's exact passed count to 3,788.",
+    "Preserve the immutable Run162 snapshots for fe8a43ac, fb1e554f, 10f64551, 53e2aa88 and 0c078211.",
+    "Rerun the full repository suite on the next exact head; do not weaken tests.",
     "Finish semantic review of all 1,249 changed paths, including 48 workflows and every called script.",
     "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
     "Keep main's automatic Barrot Sync quarantined and resolve Pages publication side effects before any merge.",
@@ -827,13 +882,13 @@
     "number": 1662,
     "state": "open",
     "draft": true,
-    "head_sha": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
+    "head_sha": "0c0782112ad57550c2ac0ea675d362075860920a",
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "ahead_by": 2492,
+    "ahead_by": 2493,
     "behind_by": 0,
-    "commits": 2492,
+    "commits": 2493,
     "changed_files": 1249,
-    "additions": 348243,
+    "additions": 348429,
     "deletions": 6309
   },
   "research_addendum": {
@@ -1219,6 +1274,98 @@
       "issued": "2026-06-24",
       "initial_distribution": "SBI VC Trade accounts only",
       "public_chain_status": "Public-chain circulation contingent on legal/tax practice clarification; not independently verified live on Arc."
+    },
+    "market_refresh": {
+      "captured_at_utc": "2026-11-15T12:48:42.069Z",
+      "spot": {
+        "okx_xrp_usdt": {
+          "last": 0.9697,
+          "bid": 0.9697,
+          "bid_size_xrp": 791.5,
+          "ask": 0.9698,
+          "ask_size_xrp": 2685.03,
+          "open_24h": 0.9952,
+          "high_24h": 0.9983,
+          "low_24h": 0.8929,
+          "volume_24h_xrp": 104360000,
+          "event_timestamp_utc": "2026-11-15T12:48:42.069Z",
+          "spread_bps": 1.03,
+          "one_level_bid_share_pct": 22.77
+        },
+        "kraken_xrp_usd": {
+          "last": 0.96714,
+          "bid": 0.96694,
+          "bid_size_xrp": 1206,
+          "ask": 0.96733,
+          "ask_size_xrp": 415,
+          "high_field": 0.99738,
+          "low_field": 0.89112,
+          "open_field": 0.91378,
+          "volume_24h_xrp": 84446000,
+          "event_timestamp_available": false,
+          "spread_bps": 4.03,
+          "one_level_bid_share_pct": 74.4
+        },
+        "cross_venue_mid_difference_bps": 27.05,
+        "synchronized": false,
+        "note": "Kraken open field is UTC-day open while OKX open_24h is rolling 24-hour open; do not compare as same return window. One-level imbalances point in opposite directions; no full-depth L2 snapshot."
+      },
+      "usdt_basis": {
+        "okx_usdt_usd": {
+          "last": 0.99956,
+          "event_timestamp_utc": "2026-11-15T12:39:39.073Z"
+        },
+        "skew_seconds": 543,
+        "required_max_skew_seconds": 60,
+        "required_max_age_seconds": 300,
+        "gate_passed": false,
+        "normalized_usd_price_admitted": false
+      },
+      "xrpl_defi": {
+        "provider": "DefiLlama",
+        "captured_at_utc": "2026-11-15T12:58:56.752Z",
+        "stablecoin_supply_usd": 850760000,
+        "stablecoin_change_7d_pct": -12.82,
+        "rlusd_dominance_pct": 89.65,
+        "tvl_usd": 30090000,
+        "tvl_change_24h_pct": -3.98,
+        "dex_volume_24h_usd": 8020000,
+        "dex_volume_7d_usd": 40120000,
+        "dex_volume_change_7d_pct": 37.58,
+        "active_addresses_24h": 69704,
+        "transactions_24h": 4470000,
+        "dex_cex_dominance_pct": 0.02,
+        "rwa_active_aum_usd": 21990000,
+        "interpretation": "DEX turnover increased while stablecoin supply and TVL declined; this does not establish net new capital inflow."
+      },
+      "derivatives": {
+        "liqwall": {
+          "captured_at_utc": "2026-11-15T10:32:00Z",
+          "open_interest_usd": 1030000000,
+          "open_interest_change_24h_pct": -3.1,
+          "funding_8h_pct": -0.0099,
+          "liquidations_24h_usd": 42200000,
+          "long_liquidations_usd": 38100000,
+          "short_liquidations_usd": 4100000,
+          "binance_accounts_long_pct": 72.8
+        },
+        "tradradar": {
+          "captured_at_utc": "2026-11-14T20:00:00Z",
+          "open_interest_usd": 1400000000,
+          "open_interest_change_24h_pct": -7.25,
+          "funding_8h_pct": -0.0047,
+          "liquidations_min_usd": 24710000,
+          "long_liquidations_usd": 24010000,
+          "short_liquidations_usd": 698000
+        },
+        "provider_universes_comparable": false,
+        "do_not_average": true
+      },
+      "raw_source_receipts": {
+        "captured_by_barrot": false,
+        "sha256_available": false
+      },
+      "model_eligible": false
     }
   },
   "map_representation_correction": {
@@ -1232,5 +1379,6 @@
     "current_newline_count": 1
   },
   "current_integration_head_after_minification": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
-  "current_integration_head_after_handoff_update": "53e2aa881807fdd9e56d5bf018aec6bde6f26726"
+  "current_integration_head_after_handoff_update": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
+  "current_integration_head_after_test_correction": "0c0782112ad57550c2ac0ea675d362075860920a"
 }

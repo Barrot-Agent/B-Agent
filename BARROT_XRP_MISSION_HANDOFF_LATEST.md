@@ -7502,3 +7502,27 @@ Source: [SBI Holdings JPYSC launch](https://www.sbigroup.co.jp/news/2026/0624_16
 Circle's Arc announcement names SBI Group as a founding validator and quotes SBI Holdings' CEO. This supports group-level attribution to SBI Holdings, but the exact legal validator subsidiary is not named. Arc's validator set is permissioned at launch. Circle's 10B ARC genesis mint is not a commitment to public token launch; its institutional presale and lockups remain separate from XRP.
 
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. PR #1662 remains draft and unmerged.
+
+
+## Run162 test-correction head — exact CI and fresh market snapshot
+
+On exact head `0c0782112ad57550c2ac0ea675d362075860920a`, full-suite run [43715776175](https://github.com/Barrot-Agent/B-Agent/actions/runs/43715776175) completed with **3,788 passed, 2 failed, 1 skipped, 19 subtests, 64.02% coverage**, in 148.97 seconds. Core tests passed (742, zero failures, eight subtests). Six-manifest push and PR dependency audits passed with zero known vulnerabilities. Push and PR fail-closed gates passed. PR Pages build-only validation [43715781062](https://github.com/Barrot-Agent/B-Agent/actions/runs/43715781062) passed and rendered the global mission manifest.
+
+The two remaining failures are historical/evidence assertions, not runtime or XRP prediction-engine failures:
+
+1. The Run152 history test still binds the original Run162 parent snapshot (fe8a43ac, 3,781 passed/7 failed) to top-level latest metadata, which correctly points to the later 53e2aa88 snapshot.
+2. The Run162 minification snapshot assertion expects 3,787 passed; the exact recorded 10f6455 run reports 3,788 passed/3 failed.
+
+The next correction binds the parent test to its immutable Run162 snapshot and corrects the historical count. The handoff-update snapshot (53e2aa88) remains separate from the minification snapshot (10f64551). The current 0c078211 result is preserved as a new snapshot. No tests are removed or weakened.
+
+### Fresh spot, liquidity and XRPL activity snapshot — November 15, 2026
+
+At 12:48:42 UTC, OKX reported XRP-USDT at $0.9697, bid/ask $0.9697/$0.9698, with 1.03 bps spread. Its top-level ask size exceeded bid size. Kraken reported XRP-USD mid approximately $0.96714, bid/ask $0.96694/$0.96733, but supplied no provider event timestamp. The cross-venue mid gap was approximately 27 bps; it is not synchronized arbitrage evidence. The OKX USDT/USD basis quote was 543 seconds older than the XRP quote, failing the 60-second same-venue skew and 300-second freshness gates. No full-depth L2 snapshot or raw byte receipt was captured; these observations are excluded from model features.
+
+DefiLlama's XRPL snapshot showed stablecoin supply $850.76M, down 12.82% over seven days; RLUSD dominance 89.65%; DeFi TVL $30.09M, down 3.98% over 24 hours; DEX volume $8.02M over 24 hours and $40.12M over seven days, up 37.58%; active addresses 69,704; transactions 4.47M; DEX/CEX dominance 0.02%; RWA active AUM $21.99M. Higher DEX turnover alongside falling stablecoin supply and TVL does not establish net new capital inflow.
+
+Liqwall's 10:32 UTC snapshot reported $1.03B XRP open interest, down 3.1%, funding -0.0099% per eight hours, $42.2M liquidations ($38.1M longs, $4.1M shorts) and 72.8% of Binance position accounts long. TradRadar's older seven-exchange snapshot reported $1.40B OI, down 7.25%, funding -0.0047% and at least $24.71M liquidations. Provider universes/timestamps differ; do not average.
+
+Sources: [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP-USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX USDT-USD](https://www.okx.com/api/v5/market/ticker?instId=USDT-USD), [XRPL DefiLlama](https://defillama.com/chain/XRPL), [Liqwall](https://liqwall.com/asset/xrp), [TradRadar](https://trad-radar.com/cryptocurrency/xrp/open-interest).
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
