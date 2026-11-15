@@ -5708,3 +5708,25 @@ Core tests passed, six-manifest dependency audit passed with no known vulnerabil
 Primary regulatory source: [SEC Release 33-11412](https://www.sec.gov/files/rules/interp/2026/33-11412.pdf), lines 349-365 and 368-399.
 Primary stablecoin source: [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
 Primary Coinbase source: [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000075/coin-20260930.htm).
+
+
+## Run151C — 2026-11-15 — Coinbase filing-link correction and Circle/OCC custody and rate-sensitivity detail
+
+The Coinbase Q3 2026 Form 10-Q link in the Run151B audit was corrected to accession `0001679788-26-000122` (filed November 13, 2026). The prior accession string in the Run151B source link was wrong; the reported table/narrative discrepancy itself is preserved and unchanged.
+
+Additional primary-source findings from Circle's Q3 2026 Form 10-Q:
+
+- Circle National Trust is the legal name used by First National Digital Currency Bank, N.A. The OCC gave final approval July 9, 2026; the trust bank opened July 24 under direct OCC oversight and initially offers fiduciary digital-asset custody to Circle and its affiliates.
+- Circle Internet Trust Company LLC separately received a NYDFS limited-purpose trust charter on July 31, 2026. These two Circle trust entities are distinct.
+- Circle's Q3 reserve return rate was 3.5%; average USDC in circulation was $73.264B in Q3 and $74.983B for nine months; end-of-period USDC circulation was $73.879B. Reserve income represented 76.0% of Q3 revenue and 87.5% of nine-month revenue.
+- Q3 reserve income fell $53.6M year over year: Circle attributes approximately $106.5M of decline to a 61-basis-point reduction in average yields, partly offset by approximately $52.8M from 8.0% growth in average daily USDC circulation. Nine-month reserve income rose $74.4M: approximately $401.2M from 22.8% growth in average daily USDC circulation was partly offset by approximately $326.8M from a 64-basis-point yield decline.
+- Circle's internal 12-month sensitivity table, based on a 3.62% September average yield, shows a 100-basis-point rate move changes modeled reserve income by approximately $739M and distribution/transaction costs by $371M; a 200-basis-point move doubles those figures. This scenario assumes USDC circulation and reserve allocation remain fixed. Circle explicitly says the relationship between rates and USDC circulation is complex, highly uncertain and unproven, so the table is not a forecast.
+- Circle's Coinbase distribution formula is not a flat 50% of all reserve income: allocations depend on USDC held on Coinbase after issuer retention, plus half of the remaining broader-ecosystem amount after approved third-party participant payments. Q3 and nine-month distribution costs paid to Coinbase were $331.3M and $986.6M.
+
+These findings reinforce the separation between stablecoin supply, reserve economics, distribution expense, custody and XRP demand. They do not establish XRP settlement or XRP price direction.
+
+Primary sources:
+- [Correct Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+- [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), especially lines 1493-1497, 1531-1536, 1591-1595, 1684-1688 and 2117-2130.
+- [Ripple National Trust Bank OCC record](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2).
+- [Coinbase National Trust Company OCC record](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2).

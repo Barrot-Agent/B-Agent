@@ -190,3 +190,36 @@ def test_run151_fresh_spot_observations_remain_model_ineligible() -> None:
     assert market["kraken_xrp_usd"]["provider_event_time"] == "ABSENT"
     assert market["kraken_xrp_usd"]["model_eligible"] is False
     assert market["depth"] == "No synchronized multi-venue L2 captured. Single-level ticker sizes are not full depth."
+
+
+def test_run151_coinbase_sec_filing_link_uses_correct_accession() -> None:
+    data = _audit()["institutional_network"]
+    correct = "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    assert data["coinbase_q3_2026"]["sec_filing_url"] == correct
+    assert data["coinbase_usdc_rewards_discrepancy"]["source_url"] == correct
+
+
+def test_run151_circle_custody_entities_are_distinguished() -> None:
+    data = _audit()["institutional_network"]["circle_custody"]
+    assert data["circle_national_trust"]["opened_date"] == "2026-07-24"
+    assert data["circle_national_trust"]["initial_services"] == "Fiduciary digital-asset custody services to Circle and its affiliates"
+    assert data["circle_internet_trust_company"]["date"] == "2026-07-31"
+    assert "do not assume all third-party customer assets" in data["scope_caveat"]
+
+
+def test_run151_circle_reserve_sensitivity_is_not_a_forecast() -> None:
+    data = _audit()["institutional_network"]["circle_reserve_economics"]
+    assert data["reserve_income_share_of_revenue_q3"] == "76.0%"
+    assert data["reserve_income_share_of_revenue_nine_months"] == "87.5%"
+    assert data["sensitivity_from_september_average_yield"] == "3.62%"
+    assert data["twelve_month_sensitivity_usd_millions"]["rate_change_minus_100_bps"]["reserve_income"] == "-739"
+    assert "not a forecast" in data["caveat"].lower()
+    assert "highly uncertain and unproven" in data["caveat"]
+
+
+def test_run151_occ_trust_charters_keep_entity_and_scope_distinct() -> None:
+    charters = _audit()["regulatory_status"]["occ_trust_charters"]
+    by_name = {x["entity"]:x for x in charters}
+    assert by_name["Circle National Trust / First National Digital Currency Bank, N.A."]["opened_date"] == "2026-07-24"
+    assert by_name["Ripple National Trust Bank"]["effective_date"] == "2026-10-26"
+    assert by_name["Coinbase National Trust Company"]["effective_date"] == "2026-11-06"

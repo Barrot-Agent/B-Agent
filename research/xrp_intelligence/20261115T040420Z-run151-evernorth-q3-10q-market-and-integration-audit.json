@@ -134,6 +134,39 @@
       "product_code_failures": "NONE_IDENTIFIED_IN_THIS_RUN",
       "wheel_build": "SKIPPED_AFTER_TEST_FAILURE",
       "remediation": "Fix the two research-artifact assertions, add SEC/CFTC and stablecoin-regulatory evidence, then rerun the full suite on the new exact head."
+    },
+    "run151b_exact_head": {
+      "tested_head_sha": "5c248edb26444db62e2ae4161e0764fd6619e840",
+      "push_ci_run_id": 43676502293,
+      "full_suite": {
+        "passed": 3783,
+        "failed": 0,
+        "skipped": 1,
+        "subtests": 19,
+        "coverage_inclusive_percent": 64.02,
+        "legacy_core_coverage_percent": 77,
+        "duration_seconds": 132.59,
+        "conclusion": "success"
+      },
+      "wheel_build": "success",
+      "installed_wheel": "verified Barrot V3, primary XRP mission and canonical data assets",
+      "dependency_audit": {
+        "run_id": 43676502220,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43676502224,
+        "conclusion": "success",
+        "automatic_merge": "disabled"
+      },
+      "pr_event_ci": {
+        "run_id": 43676506971,
+        "conclusion": "success",
+        "core_and_full_tests": "skipped by integration-branch event condition"
+      },
+      "new_run151c_commit_verification": "PENDING"
     }
   },
   "main_branch_verification": {
@@ -582,9 +615,11 @@
       "coinbase_global_exchange_collateral": "Described as future follow-up, not live in the cited announcement."
     },
     "circle_sbi_japan": {
-      "ownership": "Circle and SBI each 50% of Circle SBI Japan K.K.",
+      "ownership": "Circle 50%; SBI 50%",
+      "capital_contributed_usd_each": "1500000",
       "accounting_control": "Circle consolidates the VIE; SBI is noncontrolling interest.",
-      "note": "Separate from SB OAI Japan and separate from SBIC East/Central/West."
+      "operating_results_as_of_2026_09_30": "NO_SIGNIFICANT_OPERATING_RESULTS",
+      "distinction": "Separate from SB OAI Japan GK and from SBIC East/Central/West."
     },
     "circle_coinbase_distribution": {
       "q3_2026_distribution_costs_usd": "331300000",
@@ -592,7 +627,8 @@
       "arrangement": "Payments to Coinbase are based on USDC held on Coinbase's platform after issuer retention and a share of remaining distribution economics after third-party ecosystem participants; not a flat 50% of all Circle reserve income.",
       "renewal": "Coinbase and Circle renewed their commercial agreement on the same terms in 2026.",
       "coinbase_product_usdc": "Coinbase reports average USDC held in its products reached an all-time high in Q3 2026.",
-      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
     },
     "pnc_coinbase_usdc": {
       "date": "2026-11-09",
@@ -606,15 +642,47 @@
       "price_per_share_usd": "80.84",
       "commercial_relationship": "Binance expanded USDC distribution/access across products and uses USDC as a treasury stablecoin.",
       "classification": "DIRECT_EQUITY_INVESTMENT_PLUS_DISTRIBUTION_RELATIONSHIP",
-      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
     },
     "circle_reserve_economics": {
+      "usdc_circulation_end_q3_usd": "73879000000",
       "average_usdc_in_circulation_q3_usd": "73264000000",
       "average_usdc_in_circulation_nine_months_usd": "74983000000",
       "reserve_return_rate_q3": "3.5%",
+      "reserve_income_q3_usd": "657624000",
+      "reserve_income_nine_months_usd": "1977865000",
       "reserve_income_share_of_revenue_q3": "76.0%",
       "reserve_income_share_of_revenue_nine_months": "87.5%",
-      "interpretation": "Circle's revenue remains highly exposed to USDC circulation and short-term reserve yields; falling policy rates or USDC balances can pressure reserve income."
+      "q3_yoy_reserve_income_change_usd": "-53617000",
+      "q3_rate_yield_effect_usd": "-106500000",
+      "q3_average_usdc_circulation_effect_usd": "+52800000",
+      "q3_average_daily_usdc_circulation_change": "8.0%",
+      "nine_month_yoy_reserve_income_change_usd": "+74439000",
+      "nine_month_rate_yield_effect_usd": "-326800000",
+      "nine_month_average_usdc_circulation_effect_usd": "+401200000",
+      "nine_month_average_daily_usdc_circulation_change": "22.8%",
+      "sensitivity_from_september_average_yield": "3.62%",
+      "twelve_month_sensitivity_usd_millions": {
+        "rate_change_plus_100_bps": {
+          "reserve_income": "+739",
+          "distribution_and_transaction_costs": "+371"
+        },
+        "rate_change_minus_100_bps": {
+          "reserve_income": "-739",
+          "distribution_and_transaction_costs": "-371"
+        },
+        "rate_change_plus_200_bps": {
+          "reserve_income": "+1478",
+          "distribution_and_transaction_costs": "+742"
+        },
+        "rate_change_minus_200_bps": {
+          "reserve_income": "-1478",
+          "distribution_and_transaction_costs": "-742"
+        }
+      },
+      "sensitivity_assumptions": "Circle holds USDC circulation at the September 30, 2026 level, changes rates on October 1 and holds them constant, applies rate changes equally to reserve assets, and assumes reserve allocation unchanged.",
+      "caveat": "Company sensitivity scenario, not a forecast. Circle says the relationship between rates and USDC circulation is complex, highly uncertain and unproven, and it cannot accurately predict resulting reserve income or distribution costs."
     },
     "coinbase_usdc_rewards_discrepancy": {
       "table_q3_expense_usd": "129245000",
@@ -626,7 +694,37 @@
       "narrative_q3_increase_usd": "71600000",
       "narrative_nine_month_increase_usd": "175700000",
       "reconciliation": "UNRESOLVED_INTERNAL_TABLE_NARRATIVE_DISAGREEMENT",
-      "note": "Coinbase's USDC rewards expense is not Circle's distribution cost paid to Coinbase."
+      "note": "Coinbase's USDC rewards expense is not Circle's distribution cost paid to Coinbase.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    "circle_custody": {
+      "circle_national_trust": {
+        "legal_name": "First National Digital Currency Bank, N.A., operating as Circle National Trust",
+        "occ_final_approval_date": "2026-07-09",
+        "opened_date": "2026-07-24",
+        "oversight": "Direct federal OCC oversight",
+        "initial_services": "Fiduciary digital-asset custody services to Circle and its affiliates",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      },
+      "circle_internet_trust_company": {
+        "legal_name": "Circle Internet Trust Company LLC",
+        "charter": "NYDFS limited-purpose trust charter",
+        "date": "2026-07-31"
+      },
+      "scope_caveat": "Circle National Trust's initial custody services are disclosed for Circle and affiliates; do not assume all third-party customer assets are held there."
+    },
+    "coinbase_q3_2026": {
+      "sec_filing_url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filing_date": "2026-11-13",
+      "q3_net_revenue_usd_approx": "1200000000",
+      "nine_month_net_revenue_usd_approx": "3700000000",
+      "q3_net_income_usd": "718700000",
+      "nine_month_net_loss_usd": "34900000",
+      "assets_on_platform_sep30_usd": "376600000000",
+      "monthly_transacting_users_q3_millions": "7.4",
+      "monthly_transacting_users_nine_month_average_millions": "7.7",
+      "usdc_platform_note": "Coinbase says average USDC held in its products reached an all-time high in Q3 and its Circle agreement was renewed on the same terms.",
+      "source_type": "SEC_PRIMARY"
     }
   },
   "identity_research": {
@@ -846,10 +944,41 @@
     },
     {
       "source": "Coinbase Q3 2026 Form 10-Q",
-      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000075/coin-20260930.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
       "filed": "2026-11-13",
       "lines": "USDC rewards table and MD&A",
+      "type": "SEC_PRIMARY",
+      "accession": "0001679788-26-000122"
+    },
+    {
+      "source": "Coinbase Q3 2026 Form 10-Q — USDC rewards and operating metrics",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filed": "2026-11-13",
       "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "Circle Q3 2026 Form 10-Q — Circle National Trust and NYDFS trust charters",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "1531-1536",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "Circle Q3 2026 Form 10-Q — reserve economics and rate sensitivity",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "1493-1497, 1591-1595, 1780-1782, 1844-1846, 2117-2130",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "OCC Corporate Applications Search — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "OCC_PRIMARY"
+    },
+    {
+      "source": "OCC Corporate Applications Search — Coinbase National Trust Company",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "type": "OCC_PRIMARY"
     }
   ],
   "market_snapshot_followup": {
@@ -934,16 +1063,26 @@
     },
     "occ_trust_charters": [
       {
+        "entity": "Circle National Trust / First National Digital Currency Bank, N.A.",
+        "status": "FINAL_OCC_APPROVAL_AND_OPENED",
+        "approval_date": "2026-07-09",
+        "opened_date": "2026-07-24",
+        "powers": "National trust bank; initial fiduciary custody for Circle and affiliates",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      },
+      {
         "entity": "Ripple National Trust Bank",
         "status": "CONSUMMATED_EFFECTIVE",
         "effective_date": "2026-10-26",
-        "powers": "National trust bank powers; do not infer full commercial deposit-taking bank status."
+        "powers": "National trust bank powers; do not infer full commercial deposit-taking bank status",
+        "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2"
       },
       {
         "entity": "Coinbase National Trust Company",
         "status": "CONSUMMATED_EFFECTIVE",
         "effective_date": "2026-11-06",
-        "powers": "National trust company powers; do not infer full commercial deposit-taking bank status."
+        "powers": "National trust company powers; do not infer full commercial deposit-taking bank status",
+        "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2"
       }
     ],
     "proposed_rulemaking": [
@@ -961,6 +1100,25 @@
         "comment_deadline": "2026-11-20",
         "status": "PROPOSED_NOT_FINAL"
       }
-    ]
+    ],
+    "nydfs_circle_trust": {
+      "entity": "Circle Internet Trust Company LLC",
+      "charter": "NYDFS limited-purpose trust charter",
+      "date": "2026-07-31",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    }
+  },
+  "repository_snapshot_run151b": {
+    "integration_head": "5c248edb26444db62e2ae4161e0764fd6619e840",
+    "pr_number": 1662,
+    "pr_state": "OPEN_DRAFT",
+    "pr_draft": true,
+    "pr_changed_files": 1238,
+    "pr_additions": 377146,
+    "pr_deletions": 6309,
+    "pr_mergeable_indicator": true,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0
   }
 }
