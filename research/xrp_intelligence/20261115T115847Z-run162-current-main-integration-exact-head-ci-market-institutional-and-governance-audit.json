@@ -374,6 +374,26 @@
         "dependency_audit_run": 43716620113,
         "fail_closed_gate_run": 43716620166
       }
+    },
+    "final_exact_head_verification": {
+      "head_sha": "35270afdac9a61e17c777dca534184a4acb8db2b",
+      "run_id": 43717356750,
+      "job_id": 132821652835,
+      "conclusion": "success",
+      "passed": 3794,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "legacy_core_coverage_percent": 77,
+      "duration_seconds": 174.3,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "dependency_audit_push": 43717356691,
+      "dependency_audit_pr": 43717361971,
+      "fail_closed_push": 43717356700,
+      "fail_closed_pr": 43717362056,
+      "pages_validation_pr": 43717361945
     }
   },
   "correction": {
@@ -390,21 +410,17 @@
   },
   "governance": {
     "main_protected": true,
-    "required_status_contexts": [],
-    "branch_protection_detail_http": 403,
+    "main_required_status_contexts": [],
+    "branch_protection_detail_http_status": 403,
     "fallback_ruleset_id": 10863829,
-    "fallback_ruleset_enforcement": "disabled",
+    "fallback_ruleset_enabled": false,
+    "integration_protected": false,
     "codeowners": "* @Barrot-Agent",
-    "independent_reviewers": 0,
+    "open_prs": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "formal_reviews": 0,
     "formal_approvals": 0,
-    "connector_permissions": {
-      "admin": true,
-      "maintain": true,
-      "push": true,
-      "pull": true,
-      "triage": true
-    },
-    "least_privilege": "NOT_MET",
     "merge_decision": "NO_MERGE"
   },
   "workflow_safety": {
@@ -923,30 +939,29 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Change the Run152 historical last-good assertion to the latest fully passing head 46700a59; keep Run158's own head/result in its immutable snapshot.",
-    "Make the Run162 handoff-update test read its own historical CI snapshot rather than top-level latest CI metadata.",
-    "Make the Run162 test-correction test read SBIC through research_addendum.identity.sbic.",
-    "Preserve immutable snapshots for fe8a43ac, fb1e554f, 10f64551, 53e2aa88, 0c078211 and 35c658c2.",
-    "Rerun the full repository suite on the next exact head; do not weaken tests.",
-    "Finish semantic review of all 1,249 changed paths, including 48 workflows and every called script.",
-    "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
-    "Keep main's automatic Barrot Sync quarantined and resolve Pages publication side effects before any merge.",
+    "Finish semantic review of all 1,249 changed paths and the called scripts behind all 48 changed workflow files.",
+    "Resolve independent formal review and CODEOWNERS; current CODEOWNERS assigns all paths to @Barrot-Agent.",
+    "Resolve least-privilege GitHub permissions and obtain branch-protection details; main is protected but required status contexts are empty and details return HTTP 403, while fallback ruleset 10863829 is disabled.",
+    "Keep main's unsafe Barrot Sync, Ping-Pong and autonomous write workflows quarantined until a verified fail-closed successor is merged.",
+    "Explicitly authorize or decouple the main Pages publication side effect; PR build-only validation succeeds but merge would publish.",
+    "Treat missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR as unresolved platform authentication/runtime blockers; do not rotate secrets or deploy without explicit authorization.",
     "Add byte-exact raw-source receipts to the 85-event registry and establish independent WORM storage and trusted timestamp anchoring.",
     "Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets; preserve provider disagreement and source independence.",
-    "Do not train or issue a directional XRP forecast until out-of-sample superiority against all four baselines, calibration, drift and independent shadow outcomes are verified."
+    "Train an XRP candidate only after the dataset is sufficient, then require out-of-sample superiority over all four baselines, calibration, drift controls and independent shadow outcomes.",
+    "Do not issue a directional XRP forecast until the prediction-readiness policy passes."
   ],
   "current_integration_head_after_first_correction": "fb1e554fc469be246de1755e84774d91a405094e",
   "current_pr_snapshot": {
     "number": 1662,
     "state": "open",
     "draft": true,
-    "head_sha": "35c658c22c85e9cd706d163b8be2491672814602",
+    "head_sha": "35270afdac9a61e17c777dca534184a4acb8db2b",
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "ahead_by": 2494,
+    "ahead_by": 2495,
     "behind_by": 0,
-    "commits": 2494,
+    "commits": 2495,
     "changed_files": 1249,
-    "additions": 348621,
+    "additions": 348713,
     "deletions": 6309
   },
   "research_addendum": {
@@ -1439,5 +1454,46 @@
   "current_integration_head_after_minification": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
   "current_integration_head_after_handoff_update": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
   "current_integration_head_after_test_correction": "0c0782112ad57550c2ac0ea675d362075860920a",
-  "current_integration_head_after_exact_head_correction": "35c658c22c85e9cd706d163b8be2491672814602"
+  "current_integration_head_after_exact_head_correction": "35c658c22c85e9cd706d163b8be2491672814602",
+  "current_integration_head_after_final_verification": "35270afdac9a61e17c777dca534184a4acb8db2b",
+  "current_main_integrations": {
+    "pillars_consistency_check": {
+      "run_id": 43716820298,
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "event": "schedule",
+      "conclusion": "failure",
+      "job_id": 132820041137,
+      "read_only": true,
+      "writes_observed": false,
+      "failures": [
+        "github_app: missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID",
+        "databricks: HTTP 403",
+        "hf_space: stage=BUILD_ERROR"
+      ],
+      "interpretation": "Authentication/provider-health status failures, not repository test failures. ChatGPT's current GitHub connector is a separate authenticated path from the missing GitHub App credentials."
+    },
+    "pages_build": {
+      "run_id": 43650499344,
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "conclusion": "failure",
+      "job_id": 132617657229,
+      "stage": "Jekyll build",
+      "error": "Liquid syntax error at GLOBAL_STATE_MANIFEST.md:6456; unescaped template braces in embedded repair-planner example.",
+      "integration_validation": {
+        "run_id": 43717361945,
+        "conclusion": "success",
+        "pages_validation_job_id": 132821669016,
+        "manifest_rendered": true
+      },
+      "merge_side_effect": "Merging the fix would trigger main Pages publication. Deployment authorization has not been granted."
+    },
+    "barrot_sync": {
+      "run_id": 43650499411,
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "wrapper_conclusion": "success",
+      "actual_status": "ModuleNotFoundError: rich; sync command did not execute; fallback masked failure; git push reported Everything up-to-date.",
+      "external_call_observed": false,
+      "integration_successor": "disabled with permissions empty"
+    }
+  }
 }

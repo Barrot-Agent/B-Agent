@@ -7541,3 +7541,51 @@ The three failures are historical/evidence assertions only:
 The next correction fixes these historical bindings and field paths without weakening tests. The current 35c658 result is preserved as a separate exact-head snapshot. No runtime, ingestion or XRP prediction-engine failure was observed.
 
 The main branch remains unchanged. PR #1662 remains draft and unmerged. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+
+
+## Run162 final exact-head verification — 35270afd
+
+**The current integration head `35270afdac9a61e17c777dca534184a4acb8db2b` passed the entire repository suite.**
+
+[Full-suite run 43717356750](https://github.com/Barrot-Agent/B-Agent/actions/runs/43717356750):
+- 3,794 passed, zero failed, one skipped.
+- 19 subtests passed.
+- 64.02% inclusive coverage; 77% legacy-core coverage.
+- 174.30 seconds.
+- Wheel build passed.
+- Installed wheel loaded the Barrot V3/XRP primary mission successfully.
+
+Additional exact-head controls:
+- Six-manifest push dependency audit passed, zero known vulnerabilities: [43717356691](https://github.com/Barrot-Agent/B-Agent/actions/runs/43717356691).
+- Six-manifest PR dependency audit passed, zero known vulnerabilities: [43717361971](https://github.com/Barrot-Agent/B-Agent/actions/runs/43717361971).
+- Push fail-closed gate passed: [43717356700](https://github.com/Barrot-Agent/B-Agent/actions/runs/43717356700).
+- PR fail-closed gate passed: [43717362056](https://github.com/Barrot-Agent/B-Agent/actions/runs/43717362056).
+- PR Pages build-only validation passed and the global mission manifest rendered: [43717361945](https://github.com/Barrot-Agent/B-Agent/actions/runs/43717361945). PR-event test jobs are skipped on this integration branch; the push-event full suite is authoritative.
+
+### Current main-branch integration blockers
+
+The latest scheduled read-only Pillars Consistency Check on main, [43716820298](https://github.com/Barrot-Agent/B-Agent/actions/runs/43716820298), failed for three external integration reasons:
+- GitHub App credentials are missing: `GITHUB_APP_ID`, `PRIVATE_KEY`, `INSTALLATION_ID`.
+- Databricks returned HTTP 403.
+- Hugging Face Space reported `BUILD_ERROR`.
+
+No writes occurred. This GitHub App credential path is separate from the authenticated current-session ChatGPT/GitHub connector. The nine-platform map therefore continues to mark Claude, Grok, Gemini and Codex unverified; Copilot as one-off review activity only; Hugging Face failed health check; Kaggle untested; Databricks authorization failed.
+
+Main's latest Pages build, [43650499344](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499344), fails at `GLOBAL_STATE_MANIFEST.md:6456` because embedded repair-planner code contains unescaped Liquid template braces. The integration version wraps the embedded example in Liquid raw blocks; PR Pages build-only validation passes. **Merging would trigger main Pages publication. No deployment authorization has been granted.**
+
+Main's latest Barrot Sync wrapper, [43650499411](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499411), reports success despite `ModuleNotFoundError: rich`; the sync command did not execute and the fallback masked the failure. No external API call was observed. Integration keeps automatic synchronization disabled with empty permissions.
+
+### Governance and merge decision
+
+- Main SHA remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`; recursive main tree 1,393 entries / 1,283 files.
+- Integration head `35270afd`; recursive tree 2,491 entries / 2,371 files; 2,495 commits ahead, zero behind.
+- PR #1662 remains draft, 1,249 changed files, zero formal reviews, zero approvals.
+- Open PR inventory remains 373 (361 drafts, 12 non-drafts); no source PR was closed.
+- Main branch reports protected=true, but detailed branch-protection access returns HTTP 403. Its visible required status contexts are empty. Fallback ruleset 10863829 is disabled. Integration is unprotected.
+- `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`; no independent code-owner review is configured.
+- The GitHub connector has admin/maintain/push/pull/triage permissions; least-privilege reduction has not been performed.
+- The semantic review of all 1,249 changed paths remains incomplete, including called scripts for 48 workflows.
+
+**NO MERGE.** Exact-head tests, dependency audits, fail-closed gates and PR Pages validation pass, but draft status, absent independent approvals, branch-protection visibility, overprivileged access, incomplete semantic review and the unauthorized Pages publication side effect remain blockers.
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No deployment, secret rotation, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source-PR closure occurred.

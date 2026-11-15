@@ -737,8 +737,8 @@ def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_
     assert run155["dependency_audit"]["manifests"] == 6
     assert run155["dependency_audit"]["known_vulnerabilities"] == 0
     assert run155["fail_closed_gate"]["passed"] is True
-    assert last_good["head_sha"] == "46700a59e4b1d062906ee8eb02b47a31d66e3eac"
-    assert last_good["passed"] == 3788
+    assert last_good["head_sha"] == "35270afdac9a61e17c777dca534184a4acb8db2b"
+    assert last_good["passed"] == 3794
     assert last_good["failed"] == 0
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert latest["full_repository_suite"]["skipped"] == 1
@@ -799,20 +799,19 @@ def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_
     assert last_good["head_sha"] == "46700a59e4b1d062906ee8eb02b47a31d66e3eac"
     assert last_good["passed"] == 3788
     assert last_good["failed"] == 0
-    current = data["run162_exact_head_correction_commit_snapshot"]
+    current = data["run162_final_verified_head_snapshot"]
     assert latest["head_sha"] == current["integration_head_before_map_commit"]
+    assert latest["conclusion"] == "success"
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert latest["full_repository_suite"]["passed"] == 3790
-    assert latest["full_repository_suite"]["failed"] == 3
+    assert latest["full_repository_suite"]["passed"] == 3794
+    assert latest["full_repository_suite"]["failed"] == 0
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
-    assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
-    assert "exact-head full-suite failed" in latest["failure_classification"].lower()
-    assert "evidence-contract mismatches" in latest["failure_classification"].lower()
-    assert "not runtime or xrp prediction-engine failures" in latest["failure_classification"].lower()
+    assert latest["full_repository_suite"]["wheel_build_verified"] is True
+    assert latest["full_repository_suite"]["installed_wheel_primary_mission_verified"] is True
     assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 3
+    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 0
     assert data["schema_version"] == "1.1.0"
     assert data["run158_compact_map_snapshot"]["schema_version"] == "1.2.0"
     assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
@@ -922,10 +921,32 @@ def test_run162_exact_head_correction_commit_snapshot_tracks_latest_ci():
     assert current["ci"]["full_repository_suite"]["passed"] == 3790
     assert current["ci"]["full_repository_suite"]["failed"] == 3
     assert current["ci"]["full_repository_suite"]["exact_head"] is True
-    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
-    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
-    assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["ci"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["ci"]["latest_attempt"]["conclusion"] == "failure"
+    assert current["ci"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
     assert current["market"]["model_eligible"] is False
     assert current["workflow_safety"]["main_barrot_sync"]["external_call_observed"] is False
     assert current["research_addendum"]["identity"]["sbic"]["companies"]["east"]["english_name"] == "SBIC East Japan"
     assert current["research_addendum"]["circle_arc_token_presale"]["presale"]["gross_proceeds_usd"] == 242200000
+
+
+def test_run162_final_verified_head_snapshot_tracks_current_pass_and_main_blockers():
+    data = load_current()
+    current = data["run162_final_verified_head_snapshot"]
+    assert current["integration_head_before_map_commit"] == current["integration_pr"]["head_sha"]
+    assert current["repository"]["main_sha"] == data["observed_main_sha"]
+    assert current["ci"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["ci"]["full_repository_suite"]["passed"] == 3794
+    assert current["ci"]["full_repository_suite"]["failed"] == 0
+    assert current["ci"]["full_repository_suite"]["exact_head"] is True
+    assert current["ci"]["full_repository_suite"]["wheel_build_verified"] is True
+    assert current["ci"]["full_repository_suite"]["installed_wheel_primary_mission_verified"] is True
+    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "success"
+    assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["workflow_safety"]["main_pillars_consistency_check"]["conclusion"] == "failure"
+    assert current["workflow_safety"]["main_pillars_consistency_check"]["read_only"] is True
+    assert current["workflow_safety"]["main_pages_build"]["conclusion"] == "failure"
+    assert current["workflow_safety"]["main_barrot_sync"]["external_call_observed"] is False
+    assert current["forecast_status"] == "NOT_ISSUED"
+    assert current["accuracy_status"] == "NOT_EVALUATED"
