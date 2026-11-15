@@ -350,6 +350,84 @@
       "notes": [
         "Dr. Kamilah Stevenson identity is first-party verified; candidate XRP channel ownership is not. Verified own-channel XRP video inventory remains zero."
       ]
+    },
+    "evernorth_capital_update": {
+      "primary_sec_filing_s1": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "primary_sec_filing_q3_10q": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "primary_sbi_presentation": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "holdings": {
+        "as_of_2026_10_09_xrp_approx": 473000000,
+        "sbi_presentation_as_of_2026_11_02_xrp_approx": 473000000,
+        "as_of_2026_09_30_sec_10q_xrp": 346284972,
+        "cash_purchased_xrp": 84365876,
+        "cash_used_to_purchase_xrp_usd": 214100000,
+        "private_placement_xrp_in_kind": 261919096,
+        "aggregate_in_kind_xrp_at_closing": 388910554,
+        "ripple_contribution_to_pathfinder_xrp": 126791458,
+        "note": "The 473m total is approximately the 388.91m aggregate in-kind XRP plus 84.366m XRP purchased with $214.1m cash. The cash is not additive to the purchased XRP as a separate holding. A Q3 10-Q subsequent-event line reports 346,484,972 XRP transferred to Pathfinder, 200,000 more than the 346,284,972 reported as of September 30; preserve as a filing discrepancy pending reconciliation."
+      },
+      "cash_and_financing": {
+        "closing_gross_cash_proceeds_usd": 272600000,
+        "closing_gross_cash_components_usd": {
+          "private_placement_investments": 224600000,
+          "spac_trust_account_release": 48000000
+        },
+        "gross_cash_before_transaction_expenses": true,
+        "note": "The $214.1m used to buy 84.366m XRP is included within the private-placement cash and is not an additional amount to add to $272.6m.",
+        "convertible_note": {
+          "principal_usd": 30000000,
+          "net_proceeds_usd": 29000000,
+          "issue_date": "2026-10-13",
+          "coupon_percent": 4,
+          "interest_type": "PIK",
+          "maturity_year": 2031,
+          "classification": "debt, not equity; no evidence the proceeds were used to buy XRP"
+        },
+        "warrant_exercises": {
+          "period_start": "2026-10-12",
+          "period_end": "2026-11-09",
+          "warrants_exercised": 3073366,
+          "shares_issued": 3073366,
+          "exercise_price_usd": 11.5,
+          "gross_cash_proceeds_usd": 35300000,
+          "warrants_remaining": 8666279,
+          "classification": "actual gross cash from equity warrant exercises; use of proceeds for XRP not disclosed"
+        },
+        "eloc": {
+          "counterparty": "CF Principal Investments LLC (Cantor)",
+          "agreement_date": "2026-10-23",
+          "registration_effective_date": "2026-10-30",
+          "maximum_shares": 5218935,
+          "price_percent_of_vwap": 97,
+          "nonrefundable_commitment_fee_usd": 500000,
+          "classification": "committed equity capacity, not cash received until share purchases occur; filing says proceeds depend on how often and at what prices shares are sold; no draw/purchase amount established in the reviewed filing"
+        }
+      },
+      "pre_close_financial_condition": {
+        "as_of": "2026-09-30",
+        "unrestricted_cash_usd": 91397,
+        "net_working_capital_deficit_usd": 10000000,
+        "accumulated_deficit_usd": 185600000,
+        "operating_loss_nine_months_usd": 273200000,
+        "net_loss_nine_months_usd": 32900000,
+        "digital_asset_impairment_usd": 271000000,
+        "noncash_gain_from_fair_value_of_refundable_investor_advances_usd": 240300000,
+        "related_party_payable_to_pathfinder_usd": 3562118,
+        "revenue_generated": "none reported as of the Q3 filing",
+        "note": "These are pre-business-combination historical balances as of September 30 and must not be presented as the post-closing cash balance. Post-closing note and warrant proceeds occurred later."
+      },
+      "sbi_ownership_reconciliation": {
+        "sbi_group_presentation_date": "2026-11-02",
+        "voting_rights_percent": 36.1,
+        "economic_interest_percent": 20.5,
+        "denominator_note": "SBI says voting rights are calculated against Class A shares; economic interest against total Class A and Class C shares.",
+        "sec_s1_as_of": "2026-10-09",
+        "sec_s1_sbi_group_ownership_percentage": 39.9,
+        "sec_definition": "SBI Group Ownership Percentage is Class A and Class B shares beneficially held by SBI Group Holders divided by Outstanding Voting Shares; 39.9% is also the maximum ownership restriction/cap. SBI Group Holders include SBI Venture Fund 2023A, SBI Venture Fund 2023B, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc., each controlled by SBI.",
+        "reconciliation": "39.9% SEC contractual voting-ownership metric/cap as of October 9 is not the same as SBI's November 2 36.1% voting-rights and 20.5% economic-interest metrics. Class A versus Class A+Class C denominators and subsequent share-count changes differ. The 3.073m warrant exercises through November 9 may affect the denominator, but a complete cap-table bridge was not established; do not infer causality."
+      },
+      "capital_classification": "Actual cash, cash used to buy XRP, XRP contributed in kind, SPAC trust cash, debt, warrant proceeds and undrawn/unused ELOC capacity remain separate. The $35.3m warrant proceeds are actual gross cash but not proof of XRP purchases; the $30m note is debt; the ELOC is capacity, not cash.",
+      "raw_source_sha256": null
     }
   },
   "main_workflow_side_effects": {
@@ -542,6 +620,24 @@
       "source": "US Treasury interest rates",
       "url": "https://home.treasury.gov/",
       "source_type": "primary government data",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Evernorth SEC Form S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "source_type": "primary SEC filing",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Evernorth SEC Q3 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "source_type": "primary SEC filing",
+      "raw_source_sha256": null
+    },
+    {
+      "source": "SBI Holdings 1H FY2026 financial presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "source_type": "primary issuer presentation",
       "raw_source_sha256": null
     }
   ],
