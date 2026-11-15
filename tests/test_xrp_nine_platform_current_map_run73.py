@@ -806,18 +806,20 @@ def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_
     assert last_good["head_sha"] == run158["full_suite"]["head_sha"]
     assert last_good["passed"] == 3788
     assert last_good["failed"] == 0
-    assert latest["head_sha"] == run159["full_suite"]["head_sha"]
+    corrective = data["run162_corrective_commit_snapshot"]
+    assert latest["head_sha"] == corrective["integration_head_before_map_commit"]
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert latest["full_repository_suite"]["passed"] == 3745
-    assert latest["full_repository_suite"]["failed"] == 43
+    assert latest["full_repository_suite"]["passed"] == 3786
+    assert latest["full_repository_suite"]["failed"] == 3
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
-    assert latest["full_repository_suite"]["coverage_percent"] == 64.0
+    assert latest["full_repository_suite"]["coverage_percent"] == 64.02
     assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
-    assert "map schema regression" in latest["failure_classification"].lower()
+    assert "exact-head full-suite failed" in latest["failure_classification"].lower()
+    assert "evidence-contract mismatches" in latest["failure_classification"].lower()
     assert "not a runtime or xrp prediction-engine failure" in latest["failure_classification"].lower()
     assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 43
+    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 3
     assert data["schema_version"] == "1.1.0"
     assert data["run158_compact_map_snapshot"]["schema_version"] == "1.2.0"
     assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
@@ -842,3 +844,23 @@ def test_run162_snapshot_is_append_only_and_research_remains_model_ineligible():
     assert run["workflow_safety"]["main_barrot_sync"]["external_call_observed"] is False
     assert run["no_external_actions"]["merge"] is False
     assert run["no_external_actions"]["real_money"] is False
+
+
+def test_run162_corrective_commit_snapshot_tracks_exact_head_ci_and_research_addendum():
+    data = load_current()
+    run = data["run162_corrective_commit_snapshot"]
+    assert run["integration_head_before_map_commit"] == run["integration_pr"]["head_sha"]
+    assert run["repository"]["main_sha"] == data["observed_main_sha"]
+    assert run["ci"]["full_repository_suite"]["head_sha"] == run["integration_head_before_map_commit"]
+    assert run["ci"]["full_repository_suite"]["passed"] == 3786
+    assert run["ci"]["full_repository_suite"]["failed"] == 3
+    assert run["ci"]["full_repository_suite"]["exact_head"] is True
+    assert run["ci"]["latest_attempt"]["failing_tests"] == run["test_failures"]
+    assert "evidence-contract mismatches" in run["failure_classification"].lower()
+    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == run["integration_head_before_map_commit"]
+    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
+    assert data["run162_snapshot"]["ci"]["full_repository_suite"]["failed"] == 7
+    assert run["research_addendum"]["binance_circle"]["equity"]["gross_proceeds_to_circle_usd"] == 100000000
+    assert run["research_addendum"]["circle_usdc_xrpl"]["bridge_required"] is False
+    assert run["research_addendum"]["identity"]["sbic"]["conclusion"].startswith("Recurring training events")
+    assert run["research_addendum"]["identity"]["kamilah_stevenson"]["video_inventory_status"] == "NOT_STARTED_IDENTITY_UNVERIFIED"

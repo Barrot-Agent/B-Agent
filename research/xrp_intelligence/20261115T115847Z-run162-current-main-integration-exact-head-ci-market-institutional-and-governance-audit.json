@@ -87,6 +87,69 @@
       "skipped": 1,
       "subtests": 19,
       "coverage_percent": 64.02
+    },
+    "latest_corrective_commit": {
+      "head_sha": "fb1e554fc469be246de1755e84774d91a405094e",
+      "run_id": 43713058214,
+      "job_id": 132808630573,
+      "conclusion": "failure",
+      "passed": 3786,
+      "failed": 3,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 147.03,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_snapshot_is_append_only_and_research_remains_model_ineligible"
+      ],
+      "classification": "Exact-head full-suite failed on fb1e554fc469be246de1755e84774d91a405094e: three remaining current-map test-contract mismatches, not runtime or XRP prediction-engine failures. The defects are an exact disposition-phrase mismatch for PR #1660, stale assertions that still treated Run159 as current instead of historical, and a missing nested main_sha in the Run162 snapshot repository object. Correct all three without weakening tests.",
+      "core_tests": {
+        "head_sha": "fb1e554fc469be246de1755e84774d91a405094e",
+        "run_id": 43713058214,
+        "job_id": 132808630318,
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "push_run_id": 43713058184,
+        "pr_run_id": 43713064540,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "push_run_id": 43713058208,
+        "pr_run_id": 43713064499,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "pr_event": {
+        "run_id": 43713064536,
+        "conclusion": "success",
+        "core_tests": "skipped by integration-branch condition",
+        "full_suite": "skipped by integration-branch condition",
+        "pages_validation": "success",
+        "dependency_audit_run": 43713064540,
+        "fail_closed_gate_run": 43713064499
+      }
+    },
+    "last_fully_passing_full_suite": {
+      "head_sha": "46700a59e4b1d062906ee8eb02b47a31d66e3eac",
+      "run_id": 43707986383,
+      "passed": 3788,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02
     }
   },
   "correction": {
@@ -630,13 +693,230 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Correct the current-map evidence contract without deleting historical snapshots or weakening tests; rerun the entire repository suite on the corrective head.",
-    "Finish semantic review of all 1,248 changed paths, including 48 workflow files and every called script.",
+    "Correct the three remaining map/test contract assertions and restore compact single-line map JSON; run the full repository suite on the new exact head.",
+    "Finish semantic review of all 1,249 changed paths, including 48 workflow files and every called script.",
     "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
     "Keep main's automatic Barrot Sync quarantined in the successor; latest main run was a false-green import failure with broad token permissions.",
     "Resolve the main Pages build failure and publication side effects before any merge.",
     "Add byte-exact raw-source receipts to the 85-event registry and establish independent WORM storage and trusted timestamp anchoring.",
     "Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets; preserve provider disagreement and source independence.",
     "Do not train or issue a directional XRP forecast until out-of-sample superiority against all four baselines, calibration, drift and independent shadow outcomes are verified."
-  ]
+  ],
+  "current_integration_head_after_first_correction": "fb1e554fc469be246de1755e84774d91a405094e",
+  "current_pr_snapshot": {
+    "number": 1662,
+    "state": "open",
+    "draft": true,
+    "head_sha": "fb1e554fc469be246de1755e84774d91a405094e",
+    "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "ahead_by": 2490,
+    "behind_by": 0,
+    "commits": 2490,
+    "changed_files": 1249,
+    "additions": 394254,
+    "deletions": 6309,
+    "workflow_files": 48,
+    "other_changed_paths": 1201
+  },
+  "research_addendum": {
+    "binance_circle": {
+      "date": "2026-09-17",
+      "filed": "2026-09-22",
+      "counterparty": "Binance",
+      "equity": {
+        "type": "primary private placement of newly issued Circle Class A common stock",
+        "shares": 1237011,
+        "price_per_share_usd": 80.84,
+        "gross_proceeds_to_circle_usd": 100000000,
+        "lockup": "until the earlier of the second anniversary or certain specified termination of the commercial arrangements",
+        "voting_rights": "Binance retains voting rights during the lockup",
+        "classification": "actual corporate equity capital received by Circle; not USDC issuance, reserve funding or XRP investment"
+      },
+      "commercial": {
+        "term_years": 5,
+        "scope": "Binance promotes USDC on its platform; Circle pays a monthly incentive fee as a percentage of USDC held through Circle's Modular Smart Contract Wallet infrastructure service",
+        "fee_rate": "not disclosed in the 8-K",
+        "replaces": [
+          "November 2024 agreement",
+          "August 2025 agreement"
+        ]
+      },
+      "xrp_implication": "Potentially strengthens USDC distribution and liquidity on Binance; no direct XRP purchase, XRP settlement or XRP capital inflow established."
+    },
+    "circle_usdc_xrpl": {
+      "date": "2025-06-12",
+      "status": "native USDC live on XRPL mainnet",
+      "bridge_required": false,
+      "circle_mint_and_apis_supported": true,
+      "issuer": "Circle regulated issuer affiliates",
+      "relationship": "direct technical issuance/distribution on XRPL; not evidence of a commercial partnership with Ripple",
+      "xrp_implication": "USDC and RLUSD can coexist on XRPL; stablecoin supply/turnover does not automatically imply XRP demand."
+    },
+    "circle_arc_sbi": {
+      "announced": "2026-08-05",
+      "public_mainnet_launch": "2026-09-16",
+      "network_type": "Circle describes Arc as an open Layer-1; launch architecture operates with a permissioned validator set",
+      "founding_validators": [
+        "BlackRock",
+        "DTCC",
+        "Galaxy",
+        "Global Payments",
+        "ICE",
+        "Mastercard",
+        "MoneyGram",
+        "SBI Group",
+        "Standard Chartered",
+        "Sumitomo Corporation",
+        "Visa"
+      ],
+      "sbi_entity": "Circle's announcement says SBI Group; it does not identify the exact legal SBI subsidiary, so do not silently equate this with SBI Holdings.",
+      "relationship": "SBI Group is a founding validator participant in a separate Circle network; this is distinct from Circle SBI Japan K.K. and from SBIC East/Central/West.",
+      "xrp_implication": "Potential competing/complementary institutional settlement rail; no XRP usage or Ripple partnership inferred."
+    },
+    "sbic_chatgpt": "SBIC West October 23 2024 ChatGPT/generative-AI seminar plus SBIC East training are primary evidence of educational activity, not an OpenAI commercial partnership.",
+    "youtube_identity": "Two candidate channels surfaced, but first-party site does not link either. Linktree self-assertion is not sufficient identity verification. No video inventory.",
+    "actual_capital": {
+      "binance_circle_equity": {
+        "amount_usd": 100000000,
+        "classification": "primary equity proceeds to Circle",
+        "not_xrp_investment": true
+      },
+      "circle_coinbase_distribution_costs": {
+        "q3_2026_usd": 331300000,
+        "nine_months_2026_usd": 986600000,
+        "classification": "Circle distribution expense paid to Coinbase; not capital raised, not XRP flow"
+      },
+      "circle_binance_distribution_fee": {
+        "classification": "monthly incentive expense based on USDC held through Modular Smart Contract Wallet",
+        "rate_disclosed": false
+      },
+      "evernorth": {
+        "closing_gross_cash_proceeds_usd": 272600000,
+        "cash_used_to_purchase_xrp_usd": 214100000,
+        "cash_purchase_already_included_in_gross_proceeds": true,
+        "in_kind_xrp": 388911000,
+        "convertible_note_principal_usd": 30000000,
+        "convertible_note_net_proceeds_usd": 29000000,
+        "warrant_exercise_gross_proceeds_usd": 35300000,
+        "undrawn_eloc_capacity_shares": 5218935
+      },
+      "non_cash_or_non_equivalent": [
+        "in-kind XRP contribution",
+        "undrawn ELOC capacity",
+        "ETF issuer-reported holdings changes",
+        "exchange-wallet balance changes",
+        "RLUSD/USDC circulation",
+        "market capitalization"
+      ],
+      "rule": "Never add an XRP purchase funded from closing cash a second time to gross proceeds; do not equate stablecoin supply, ETF holdings change or wallet balances with new cash invested in XRP."
+    },
+    "sources": [
+      {
+        "source": "Circle SEC Form 8-K: Binance private placement and five-year USDC arrangement",
+        "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+        "source_timestamp": "2026-09-17",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "sec_circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Circle Q3 2026 Form 10-Q: Binance shares, Coinbase distribution costs and Circle National Trust",
+        "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "source_timestamp": "2026-11-04",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "sec_circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Circle: native USDC on XRPL",
+        "url": "https://www.circle.com/fr/blog/now-available-usdc-on-the-xrpl",
+        "source_timestamp": "2025-06-12",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Circle: Arc founding validator cohort including SBI Group",
+        "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+        "source_timestamp": "2026-08-05",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "circle_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "SBIC West Japan: 2024 generative-AI seminar material referencing ChatGPT",
+        "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+        "source_timestamp": "2024-10-23",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "sbic_west_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "SBIC East Japan: AI/ChatGPT training for investee companies",
+        "url": "https://www.sbic.co.jp/training/20250612co/",
+        "source_timestamp": "2025-06-12",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "sbic_east_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Kamilah Stevenson first-party site",
+        "url": "https://learn.kamilahstevenson.com/",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "self_published_identity",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Dr Kamilah Stevenson Linktree candidate",
+        "url": "https://linktr.ee/DrKamilahStevenson1",
+        "source_timestamp": "2026-10",
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "self_asserted_social_profile",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "YouTube candidate channel KamilahStevensonXrpStocks",
+        "url": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "youtube_candidate_channel",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "YouTube candidate channel drkamilahstevenson",
+        "url": "https://www.youtube.com/@drkamilahstevenson",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "youtube_candidate_channel",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "CoinMarketCap Askcoin preview listing",
+        "url": "https://coinmarketcap.com/currencies/askcoin/",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:28:32.334Z",
+        "source_independence_group": "coinmarketcap_aggregator",
+        "raw_sha256": null,
+        "model_eligible": false
+      }
+    ]
+  },
+  "map_representation_correction": {
+    "original_parent_map_size_bytes": 1648476,
+    "first_correction_map_size_bytes": 2073446,
+    "first_correction_newline_count": 46646,
+    "correction": "Restore single-line JSON while preserving all data and historical snapshots.",
+    "tests_weakened": false
+  }
 }

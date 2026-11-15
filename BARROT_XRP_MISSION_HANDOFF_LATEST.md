@@ -7325,3 +7325,73 @@ Still not production verified: 85 curated events without byte-exact raw receipts
 Next action: finish exact-head full-suite verification on the Run162 corrective commit. Then complete semantic review of 1,248 paths and 48 workflows/called scripts, resolve independent review and least privilege, and keep PR #1662 unmerged until branch protection, Pages side effects, full suite, dependency/security checks and exact-head gates are verified.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run162 corrective-head follow-up and research addendum
+
+### Exact-head verification on the first correction commit
+
+The first Run162 corrective commit was `fb1e554fc469be246de1755e84774d91a405094e`. Its exact-head full repository run [43713058214](https://github.com/Barrot-Agent/B-Agent/actions/runs/43713058214) completed with **3,786 passed, 3 failed, 1 skipped, 19 subtests, 64.02% coverage**, in 147.03 seconds.
+
+The remaining three failures are still evidence-contract/test assertions, not runtime or XRP prediction-engine failures:
+
+1. PR #1660 disposition used “retain until successor merge” rather than the exact required phrase “retained until successor merge”.
+2. The historical Run159 test retained assertions that treated Run159 as the current run instead of preserving Run159 as historical and validating Run162 as current.
+3. The new Run162 snapshot test expected `repository.main_sha`, but the nested repository snapshot did not include that field.
+
+The follow-up corrects the exact phrase, migrates the latest-run assertions while preserving Run159's historical metrics, and adds the nested main SHA. No test is removed or weakened.
+
+### Map serialization correction
+
+The current platform map was originally a single-line JSON file. The first Run162 correction reserialized it as pretty-printed JSON, creating approximately 46,646 added lines and unnecessary diff churn. The next correction restores the compact single-line representation while preserving all map fields, source history and prior run snapshots. This is a representation-only correction; no historical data is deleted.
+
+### New Circle/Binance capital and distribution relationship
+
+Circle's September 17, 2026 SEC Form 8-K establishes that Binance purchased **1,237,011 newly issued Circle Class A shares at $80.84**, producing **$100M gross proceeds to Circle** in a private placement. The shares carry a transfer/hedging restriction through the earlier of the second anniversary or specified termination events, while Binance retains voting rights.
+
+The same 8-K describes a separate **five-year USDC promotion agreement**. Circle pays Binance a monthly incentive fee based on a percentage of USDC held through Circle's Modular Smart Contract Wallet infrastructure service; Binance promotes USDC on its platform. The exact fee percentage is not disclosed. The new agreement replaces November 2024 and August 2025 arrangements.
+
+This is primary corporate equity capital to Circle. It is not a $100M USDC issuance, reserve deposit, XRP purchase or XRP settlement flow.
+
+Circle's Q3 2026 10-Q reports $331.3M of Q3 distribution costs and $986.6M for nine months paid to Coinbase. Those are Circle expenses, not Coinbase net profit or XRP capital flow. Binance's new monthly incentive is not separately quantified in the reviewed filing.
+
+Sources: [Circle SEC 8-K](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm), [Circle Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+### Circle, Ripple, SBI and XRPL network structure
+
+- Circle's native USDC has been live on XRPL mainnet since June 12, 2025, with Circle Mint and API support and no bridging required. This is a direct technical deployment on XRPL, not proof of a commercial partnership with Ripple. [Circle USDC on XRPL](https://www.circle.com/fr/blog/now-available-usdc-on-the-xrpl).
+- Circle's Arc founding-validator cohort, announced August 5, 2026, includes SBI Group, BlackRock, DTCC, Visa, Mastercard, Standard Chartered and others. Arc launched public mainnet September 16, 2026. Circle describes Arc as an open L1 but its launch disclaimer says it is operated by a permissioned validator set. The announcement says “SBI Group” and does not identify the exact legal SBI subsidiary; do not automatically equate it with SBI Holdings or any SBIC regional company. [Circle Arc validator announcement](https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch).
+- Circle USDC and Ripple RLUSD therefore coexist on XRPL; Arc is a separate Circle network and a potential competing/complementary institutional payment rail. None of these relationships proves that every stablecoin transfer requires XRP.
+- Coinbase's RLUSD listing, SBI VC Trade's Japan RLUSD distribution, the SBI/Circle Japan joint venture, PNC's incoming USDC pilot and BNY/Ripple custody remain distinct commercial relationships. No single integrated three-way Coinbase/Circle/Ripple/SBI arrangement is established.
+
+### SBIC and ChatGPT phrase research
+
+An additional primary-source record from SBIC West Japan documents an October 23, 2024 beginner generative-AI seminar for accountants and support institutions; the material explicitly references ChatGPT. SBIC East's official June 2025 training also includes ChatGPT and generative-AI implementation. These recurring training events are a plausible source of “SBIC/ChatGPT” phrase associations. They are not evidence of an OpenAI partnership.
+
+SBIC East, Central and West remain separate regional SME investment companies. SBI Holdings is a separate financial-services group. SB OAI Japan GK is a separate SoftBank/OpenAI joint venture.
+
+Sources: [SBIC West seminar material](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf), [SBIC East training](https://www.sbic.co.jp/training/20250612co/).
+
+### Kamilah/Camilla Stevenson identity gate
+
+The first-party site identifies Dr Kamilah Stevenson. Two public channel candidates surfaced: `@KamilahStevensonXrpStocks` (channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`) and `@drkamilahstevenson`. A Linktree account named DrKamilahStevenson1 links to the latter, but the Linktree is not linked from the first-party site and its ownership is not independently verified. The first-party site does not link either candidate channel. The spelling variant Camilla is not resolved.
+
+**No public video inventory was performed.** Channel identity remains unverified.
+
+### Actual-capital classification
+
+- Binance's $100M Circle private placement: primary equity cash to Circle.
+- Circle's Coinbase distribution costs: expenses paid to a distributor.
+- Circle's Binance monthly incentive: distribution expense, rate undisclosed.
+- Evernorth's XRP purchased with closing cash: already included in gross closing proceeds; do not double count.
+- Evernorth in-kind XRP: non-cash contribution.
+- Convertible note: debt, not equity.
+- Warrant exercises: gross equity cash, with no XRP use assumed.
+- Undrawn ELOC: financing capacity, not proceeds.
+- ETF issuer-reported holdings changes, attributed exchange-wallet balances, RLUSD/USDC supply and market capitalization are not interchangeable with cash invested in XRP.
+
+### Run162 current status
+
+The current map and tests are being corrected again from exact head `fb1e554f`. The latest completed suite on that head is 3,786/3, with three remaining evidence-contract failures described above. The follow-up commit's full suite is pending. PR #1662 remains draft and unmerged. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+
+No main-branch write, merge, deployment, external-model dispatch, secret rotation, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
