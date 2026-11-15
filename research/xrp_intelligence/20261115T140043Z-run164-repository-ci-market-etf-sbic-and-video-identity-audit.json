@@ -1,7 +1,7 @@
 {
   "audit_id": "barrot-xrp-run164",
   "captured_at_utc": "2026-11-15T14:00:43Z",
-  "status": "EXECUTED_RESEARCH_AND_REPOSITORY_AUDIT",
+  "status": "CORRECTED_RUN164_AUDIT_AFTER_FULL_MAP_RESTORATION",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
@@ -46,7 +46,19 @@
     "pr_fail_closed_run": 43721232439,
     "pr_ci_run": 43721232406,
     "pr_event_test_jobs": "SKIPPED_FOR_INTEGRATION_BRANCH; push-event exact-head full suite is authoritative",
-    "cache_warning": "GitHub cache budget exhausted; cache is read-only. Test and wheel jobs still passed."
+    "cache_warning": "GitHub cache budget exhausted; cache is read-only. Test and wheel jobs still passed.",
+    "post_run164_map_regression": {
+      "tested_head": "9d84c392c6370e3e3a8c7f9fcd109b95a1ed0f7f",
+      "run_id": 43723196118,
+      "conclusion": "failure",
+      "passed": 3745,
+      "failed": 51,
+      "skipped": 1,
+      "subtests_passed": 19,
+      "duration_seconds": 141.46,
+      "failure_classification": "MAP_SCHEMA_AND_HISTORICAL_SNAPSHOT_REGRESSION",
+      "remediation": "Restore original 1,947,216-byte Run162 map blob exactly; do not weaken tests."
+    }
   },
   "main_health": {
     "cross_analysis_run": {
@@ -440,10 +452,9 @@
     "source_prs_closed": 0
   },
   "next_actions": [
-    "Repair and maintain the zero-byte current nine-platform map.",
-    "Append Run164 to the canonical handoff.",
-    "Run exact-head full-suite, dependency, fail-closed and Pages build-only checks on the resulting integration head.",
-    "Complete semantic review of all 1,252 PR paths and called scripts for 48 changed workflows.",
+    "Restore the original full 1,947,216-byte Run162 current-map blob and verify its tree size and SHA.",
+    "Rerun the full repository suite, dependency audit, fail-closed gates and PR Pages build-only validation on the restored exact head.",
+    "Complete semantic review of all 1,252 PR paths and called scripts for the 48 changed workflows.",
     "Resolve independent review, least privilege, branch-protection visibility and Pages publication authorization.",
     "Capture byte-exact receipts for the 85 curated events and establish independent archival.",
     "Build synchronized historical market datasets and independent shadow outcomes before training or issuing a forecast."
@@ -463,5 +474,28 @@
     "history rewrite",
     "destructive worktree operation",
     "source PR closure"
-  ]
+  ],
+  "map_restoration": {
+    "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "original_blob_sha": "7879942c15edefacf5526de93d7b13b245f7384e",
+    "original_size_bytes": 1947216,
+    "original_schema_version": "1.1.0",
+    "original_latest_run_id": "Run162",
+    "content_reader_behavior": "fetch_file returned an empty content string for this >1 MB blob; Git tree metadata showed a 1,947,216-byte blob. The file was not zero bytes.",
+    "prior_run164_statement_corrected": true,
+    "temporary_compact_replacement_commit": "84e6071bf7bc717eacc68d4e842d97e1071286f0",
+    "regression_run_id": 43723196118,
+    "regression_head": "9d84c392c6370e3e3a8c7f9fcd109b95a1ed0f7f",
+    "regression_result": {
+      "passed": 3745,
+      "failed": 51,
+      "skipped": 1,
+      "subtests_passed": 19,
+      "duration_seconds": 141.46
+    },
+    "failure_scope": "All 51 failures were current-map schema/history assertions caused by the compact replacement; no production XRP or Barrot V3 code was changed by that replacement.",
+    "restoration_method": "Restore the exact original Git blob through a new tree and fast-forward commit; no force-push or history rewrite.",
+    "historical_data_preserved": true,
+    "run164_snapshot_policy": "Keep the full Run162 schema/history map intact because current tests explicitly assert Run162 remains the current map snapshot. Run164 capability and repository status remain in the Run164 audit and handoff; do not replace the large map with the compact Run157 snapshot."
+  }
 }

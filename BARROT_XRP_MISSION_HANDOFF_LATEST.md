@@ -7772,10 +7772,14 @@ Integration quarantines legacy unattended writers including Ask Barrot, Barrot A
 
 The unchanged `barrot-approve-pr.yml` can apply an `approved` label after explicit YES, exact PR-head, non-draft and mergeability checks. It only applies a label/comment; it does not create a formal GitHub review and cannot substitute for independent approval. Hugging Face upload, Databricks deployment, Space restart, A2A deployment and secret operations were not invoked.
 
-### Nine-platform map repair
-The canonical current map `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json` was found to be zero bytes. It has been restored from the populated Run157 schema 1.1.0 snapshot and refreshed for Run164 with the current repository/PR state and tested capabilities.
+### Nine-platform map preservation and retrieval correction
+The canonical current map `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json` was **not zero bytes**. The content-fetch wrapper returned an empty string because the tracked Git blob is larger than 1 MB. Git tree metadata identified the original blob as SHA `7879942c15edefacf5526de93d7b13b245f7384e`, size 1,947,216 bytes, schema 1.1.0, with the complete Run162 history and required platform/evidence fields.
 
-- ChatGPT: GitHub connector authenticated in this session; admin/maintain/push/pull/triage permissions; least-privilege FAIL.
+A temporary 4.8 KB Run157 compact-map replacement was made during Run164. This was incorrect: it removed the full Run162 snapshot fields from the working tree and caused 51 map-schema/history tests to fail on head `9d84c392` (3,745 passed, 51 failed, one skipped, 19 subtests). The failures were confined to map schema and historical snapshot assertions; no production XRP or Barrot V3 code was changed.
+
+The corrective action restores the exact original 1,947,216-byte blob through a Git tree update and fast-forward commit. The original blob remains in Git history; no force-push, history rewrite or destructive worktree operation is used. Preserve the Run162 current-map snapshot because the existing tests explicitly require Run162 to remain current. Run164 capability and repository findings are recorded in the Run164 audit and handoff; do not substitute the compact Run157 snapshot for the full current map.
+
+- ChatGPT: current-session GitHub connector verified; admin/maintain/push/pull/triage permissions; least-privilege FAIL.
 - Claude, Grok, Gemini and Codex: unverified.
 - Copilot: historical review activity only; no formal approval on #1662.
 - Hugging Face: no verified deployment.
