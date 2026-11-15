@@ -104,7 +104,8 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     state = data["repository_state"]
     assert state["main_sha"] == data["observed_main_sha"]
     assert data["integration_branch"] == "integration/xrp-v3-unified-main-20261112"
-    assert state["integration_pr"] == 1662
+    assert state["integration_pr"]["number"] == 1662
+    assert state["integration_pr"] == data["integration_pr"]
     assert state["integration_head_before_current_map_commit"] == data["integration_pr"]["head_sha"]
     assert state["integration_ahead_by"] == data["integration_pr"]["ahead_by"]
     assert state["integration_behind_by"] == data["integration_pr"]["behind_by"]
@@ -768,7 +769,8 @@ def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_hist
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
-    assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
+    assert latest["full_repository_suite"]["failed"] == 0
+    assert latest["full_repository_suite"]["failing_tests"] == []
     assert latest["dependency_audit"]["manifests"] == 6
     assert latest["dependency_audit"]["known_vulnerabilities"] == 0
     assert latest["fail_closed_gate"]["passed"] is True
@@ -984,9 +986,10 @@ def test_run162_current_head_verification_snapshot_tracks_latest_ci():
     assert current["ci"]["full_repository_suite"]["passed"] == 3794
     assert current["ci"]["full_repository_suite"]["failed"] == 1
     assert current["ci"]["full_repository_suite"]["failing_tests"] == current["test_failures"]
-    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
-    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
-    assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["ci"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert current["ci"]["latest_attempt"]["conclusion"] == "failure"
+    assert current["ci"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
+    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == data["run167_snapshot"]["integration_head_before_run167_map_commit"]
     assert current["workflow_safety"]["main_pillars_consistency_check"]["read_only"] is True
     assert current["forecast_status"] == "NOT_ISSUED"
     assert current["accuracy_status"] == "NOT_EVALUATED"
