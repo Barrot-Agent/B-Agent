@@ -23,3 +23,15 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - `searxng` — `npx mcp-searxng` against `http://127.0.0.1:8888`; start with `bash scripts/start_searxng.sh --daemon` (idempotent, logs to `~/.local/share/searxng/searxng.log`).
 - Legacy `mcp_config.json` + `data/mcp_config.json` mirror the live stack for the Python MCP layer (`barrot_agent.mcp_sync`); they are not read by OpenCode.
 - Phone RAM is tight (~3.6 GB total, <0.5 GB available). MCP connections cycle/reconnect under that pressure — that is resource churn, not a config error. Docling (Python) is the heaviest.
+
+## Offline memory (gist compression)
+- Source: Memorilla (Stanford, arXiv 2610.21375) — encodes a collection once, then a ~200M-param module produces 16 query-conditioned memory tokens for a frozen Qwen3-8B. Numbers: FactKG 84.33% vs 80.43% full context at 108x fewer tokens; 0.74 s vs 19.9 s at 512 docs (paper); NarrativeQA >4,000x compression.
+- Barrot implementation: `barrot_agent/gist_memory.py` — stdlib, CPU, deterministic, extractive. 16 gist slots x 6 words, two-pass IDF selection, MMR redundancy penalty, source span kept for lookup.
+- Rules: fixed budget always; condition on the query; two passes; never generate text — extract verbatim; keep the raw source for names/numbers/dates.
+- Verified failure modes of the real system: buried-clue test hallucinated a shellfish allergy and a wrong name/birthday; Hound of the Baskervilles plot QA 1/8 vs 5/8 full context. Gist = context/preferences; RAG = exact facts.
+- Limits of our version: lexical only (no embeddings), so synonyms ("health issues" vs "diabetes") do not match.
+
+## Agent leverage (from AGI video, verified part)
+- Same model, different harness: GPT-6 Astra scored 62.7% (ARC standard) vs 99.9% (provider adapter with persistent reasoning state + compaction). Environment/tools/memory move the score more than the model name.
+- Long-run prompt pattern: clear finish line, permission to self-check, `progress.md` memory file, room to run, stop only for truly undecidable items.
+- ARC Prize explicitly says ARC-AGI-3 is not proof of AGI. "AGI is here" = hype; verify at arcprize.org before repeating claims.

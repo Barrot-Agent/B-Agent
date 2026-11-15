@@ -36,7 +36,20 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last sync: 2026-11-15 (session 6) - MCP RECONFIGURED: github/docling/searxng all reachable
+- Last sync: 2026-11-15 (session 7) - VIDEO EXTRACTION + GIST MEMORY: built an offline
+  memory compressor from the Memorilla research, and documented both requested videos.
+  * Transcripts: both fetched (youtube-transcript-api); ids lNpDxKfBlf8 (Better Stack,
+    "Did Stanford Just Solve AI Memory? (Memorilla)") and us_pnC6ETNA (Julia McCoy,
+    "It's Official: We've Entered AGI"). 293 and 325 caption segments.
+  * New: barrot_agent/gist_memory.py - stdlib/CPU extractive compressor, 16 slots x 6
+    words, two-pass IDF scoring, MMR redundancy, verbatim source span + expand() for RAG
+    fallback. New: tests/test_gist_memory.py (14 passed), flake8 clean.
+  * Docs: docs/VIDEO_EXTRACTION_2026-11-15.md - mechanism, prompts, numbers, verified vs
+    hype table. Key verified fact: GPT-6 Astra 62.7% (ARC standard) vs 99.9% (provider
+    adapter) - harness matters more than model. Memorilla failure modes recorded.
+  * MEMORY.md: offline-memory rules + agent-leverage facts added.
+  * Not implemented: latent token training / Qwen3-8B / vLLM - needs 80GB GPU, not Termux.
+- Previous sync: 2026-11-15 (session 6) - MCP RECONFIGURED: github/docling/searxng all reachable
   in OpenCode. What changed:
   * Root cause of the github "Authorization header is badly formatted (HTTP 400)"
     failure: `{env:GITHUB_MCP_TOKEN}` was unset in the running server process. Fix =
