@@ -8505,3 +8505,108 @@ The correction stores `current_pr_changed_files_at_capture=1256` on the historic
 On `8dd83f1`, both six-manifest dependency audits passed with zero known vulnerabilities; push and PR fail-closed gates passed; PR Pages validation passed in build-only mode. The full-suite failure above is the only reported test failure.
 
 The current integration PR remains draft and unmerged. No main-branch write, deployment, secret rotation, external-model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer, force-push, history rewrite or source-PR closure occurred.
+
+
+## Run170 — 2026-11-15T17:37Z — Exact-head 3,803-pass, 48-workflow containment review and live quote-basis rejection
+
+**Mission:** XRP intelligence and measured prediction-engine mastery remain priority 1. Preserve Barrot V3 as the execution, orchestration, safety, authorization and verification foundation.
+
+**Main SHA:** `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`  
+**Integration branch:** `integration/xrp-v3-unified-main-20261112`  
+**Integration head at evidence capture:** `ee296865233c608c94d297ec97cfa332909587dd`  
+**PR #1662:** open, draft, 2,517 commits ahead, zero behind, 1,257 changed files.  
+**Recursive trees:** main 1,393 entries; integration 2,500 entries.  
+**Open PR inventory:** 373 total, 361 drafts, 12 non-drafts.
+
+### Exact-head CI — VERIFIED on ee296865
+
+The prior Run169 correction on `ee296865` completed the full repository suite successfully:
+
+- **3,803 passed, 0 failed, 1 skipped, 19 subtests passed.**
+- Inclusive coverage: **64.02%**; legacy core coverage: **77%**.
+- Full-suite duration: 175.93 seconds.
+- Wheel build and installed primary-mission verification passed.
+- Push CI: [43741574267](https://github.com/Barrot-Agent/B-Agent/actions/runs/43741574267).
+- Six-manifest push dependency audit: [43741574213](https://github.com/Barrot-Agent/B-Agent/actions/runs/43741574213), passed with zero known vulnerabilities.
+- Push fail-closed gate: [43741574172](https://github.com/Barrot-Agent/B-Agent/actions/runs/43741574172), passed.
+- PR CI: [43741580750](https://github.com/Barrot-Agent/B-Agent/actions/runs/43741580750), passed; PR-event test jobs were skipped by the integration-branch condition, while Pages build-only validation passed.
+- Six-manifest PR dependency audit: [43741580759](https://github.com/Barrot-Agent/B-Agent/actions/runs/43741580759), passed.
+- PR fail-closed gate: [43741580761](https://github.com/Barrot-Agent/B-Agent/actions/runs/43741580761), passed.
+
+The predecessor `8dd83f1` had one historical PR-count regression (3,801 passed, one failed). The Run169 correction bound the historical count to its own snapshot and the full suite then passed on `ee296865`. No test was removed or weakened.
+
+**Cache warning:** GitHub Actions cache reservation reached the configured budget and is read-only. This did not fail tests or dependency/security checks; it can reduce future cache reuse and increase run time.
+
+This Run170 handoff update is documentation-only and creates a new integration commit. Its own exact-head CI is pending; the 3,803-pass result above belongs to `ee296865`, not the new documentation commit.
+
+### Workflow/security review — EXECUTED
+
+All **48 changed workflow YAML paths** in PR #1662 were enumerated and fetched from integration. The high-risk subset was re-read in full and key current-main versions were compared. This is a workflow-definition audit, not completion of the called-script semantic review.
+
+Integration protections verified:
+
+- `ask-barrot.yml`, `audio-ingest.yml`, `barrot-agent.yml`, `barrot-self-upgrade.yml`, `barrot-speak.yml`, `barrot-sync.yml`, Ping-Pong and related legacy writers are inert/quarantined with empty permissions and disabled jobs.
+- `sync-self-hosted-brain.yml` has a hard-false job condition; no Hugging Face deployment occurs.
+- External Groq research/design workflows inspected are manual, require explicit per-run authorization and exact main SHA, use read-only repository permissions, and publish artifacts rather than committing generated files.
+- Databricks workspace overwrite and Kaggle dataset download each require explicit YES and exact approved main SHA.
+- Cloudflare Worker deployment requires explicit deployment approval, exact main SHA and a separate explicit secret-rotation approval.
+- Coinbase paper simulation on integration requires typed YES, exact main SHA, a persisted-position product-identity preflight, read-only repository permissions and artifact-only output. No simulation was dispatched.
+- The XRP ingestion workflow is hourly plus daily, main-ref-only, read-only (`actions:read`, `contents:read`) and artifact/cache based. It uses 90-day GitHub artifacts, a seven-day per-run feature checkpoint and an evictable cache. It is absent from main and has not been verified running there. GitHub artifacts/cache are not WORM storage.
+
+Current-main unsafe legacy differences confirmed:
+
+- `ask-barrot.yml` has `contents:write` and `issues:write`, loads Groq credentials, creates issues and commits memory directly to main.
+- `barrot-agent.yml` has contents, issue and PR write permissions and can claim/dispatch issue-label tasks.
+- `barrot-sync.yml` triggers on main pushes and manual dispatch, uses LunaRoute/GitHub credentials and attempts to push generated sync updates; push failure is suppressed.
+- `coinbase-paper-trader.yml` has an unguarded manual dispatch, fixed `BTC-USD` configuration and commits paper-trading state/logs directly to main without the integration's explicit approval and product-identity preflight.
+- Main lacks `barrot_agent/data/missions/primary_mission.json` and `.github/workflows/xrp-public-ingestion.yml`; both exist on integration.
+
+These main-branch writers remain merge blockers until a consolidated, exact-head, independently reviewed successor is ready. Do not dispatch them. No writer, paper-trader, deployment or external-action workflow was dispatched in this run.
+
+### Potential GitHub CLI credential exposure — HOLD
+
+The preceding exact-tree audit identified the same 216-byte `.config/gh/hosts.yml` blob (SHA `f58b27f14436088db99662d3a45c59b8437ec3a1`) in 17 PR branch-tip trees (15 open and two closed), absent from main and active integration. **The file contents were not read.** This is a potential GitHub CLI OAuth credential exposure, not a confirmed credential compromise. Provider-side token revocation is unverified. The owner should inspect the affected GitHub CLI OAuth authorization and revoke it if it corresponds to the historical file. No secret was read, rotated or disclosed by this run; no branch history was rewritten.
+
+### Fresh XRP spot observation — EXECUTED, descriptive only
+
+Public exchange API capture: 2026-11-15, approximately 17:37 UTC.
+
+- OKX XRP-USDT: last 0.9480 USDT; bid 0.9481; ask 0.9482; 24-hour volume 91.84M XRP; provider timestamp 17:37:12.367 UTC.
+- Kraken XRP/USD: last 0.94986 USD; bid 0.94985; ask 0.94986; 24-hour volume 70.52M XRP; no provider event timestamp supplied.
+- OKX USDT/USD: 0.99957; provider timestamp 17:12:19.068 UTC.
+- OKX USDT/USD basis age/skew versus XRP quote: 1,493.299 seconds, exceeding the 300-second component-age and 60-second same-venue skew gates. USD normalization is rejected.
+- OKX rolling 24-hour open 0.9665 and UTC-day open 0.9145 are distinct. No return comparison mixes these windows.
+- Only ticker/top-of-book data were captured; no synchronized full-depth L2, publisher raw-byte archive or SHA-256 receipt was created.
+
+Sources: [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP/USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX USDT/USD](https://www.okx.com/api/v5/market/ticker?instId=USDT-USD). These web observations remain descriptive and model-ineligible.
+
+### PR inventory and governance
+
+- 373 open PRs: 361 drafts and 12 non-drafts, across four pages.
+- #1662 remains the sole consolidated integration workstream, open and draft.
+- #1661/#1660 remain supersession candidates; preserve their unique workflow paths until semantic reconciliation.
+- #1643/#1642 have substantial path overlap but are not certified semantic duplicates.
+- #1640 diverges and has unique workflow paths.
+- #1653, #1614, #1615, #1611, #1610, #1608 and #1597 retain unique work requiring individual review.
+- No source PR was closed.
+
+PR #1662 has zero formal reviews, zero approvals and zero review threads. Main branch-protection details still return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; connector permissions include admin, maintain, push, pull and triage. The full 1,257-path semantic review and called-script audit remain incomplete.
+
+### Mission and forecast state
+
+The integration mission manifest is verified: `mission_id=xrp_intelligence_prediction_engine`, `priority=1`, `status=active`; Barrot V3 is explicitly preserved for execution, orchestration, safety and verification. Main does not yet contain the manifest.
+
+Nine-platform authentication status is unchanged: ChatGPT/GitHub verified but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot has no formal approval; Hugging Face has no verified deployment; Kaggle untested; Databricks previously returned HTTP 403. No external-model dispatch or independent nine-platform red-team quorum occurred.
+
+Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`. No directional forecast, paper trade, real-money action or external mutation occurred.
+
+### Next concrete actions
+
+1. Verify exact-head full-suite, dependency/security and fail-closed checks on the new documentation commit.
+2. Complete semantic review of the 1,209 non-workflow paths and the called scripts behind the 48 workflow changes.
+3. Resolve the potential historical GitHub CLI credential exposure through provider-side review/revocation; do not read or republish the file.
+4. Resolve independent review, least-privilege permissions and branch-protection visibility.
+5. Keep main's unsafe writers quarantined in the consolidated successor; do not merge PR #1662 while draft or while any gate remains unresolved.
+6. Establish byte-exact publisher receipts and independent immutable archival, then complete synchronized XRP historical spot/L2/derivatives/flow/collateral data and independent shadow evaluation before training a candidate.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
