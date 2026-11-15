@@ -856,11 +856,11 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     assert latest["conclusion"] == "failure"
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert latest["full_repository_suite"]["passed"] == 3800
-    assert latest["full_repository_suite"]["failed"] == 0
+    assert latest["full_repository_suite"]["failed"] == 4
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
-    assert latest["full_repository_suite"]["failing_tests"] == []
+    assert latest["full_repository_suite"]["failing_tests"] == ["tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled","tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit","tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_and_run169_are_historical_and_run172_is_current","tests/test_xrp_nine_platform_current_map_run73.py::test_run162_current_head_verification_snapshot_tracks_latest_ci"]
     assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert data["ci_evidence"]["full_repository_suite"]["failed"] == 4
     assert data["schema_version"] == "1.1.0"
