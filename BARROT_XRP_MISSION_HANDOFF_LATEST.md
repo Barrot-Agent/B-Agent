@@ -6587,3 +6587,22 @@ Next:
 6. Establish synchronized historical spot, L2, derivatives, exchange-flow, ETF, custody, and collateral datasets; then evaluate an XRP candidate against all four baselines and independent shadow outcomes.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation, or source-PR closure occurred.
+
+
+### Run156 follow-up — exact handoff-head verification and PR classification correction
+
+The canonical handoff commit `c8053d463366c9b879c106594df656734ea18cda` itself completed exact-head CI:
+- 3,788 passed, one skipped, 19 subtests passed, zero failures.
+- Inclusive coverage 64.02%; legacy core coverage 77%.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Push CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/43691864971
+- Push fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43691864982
+- PR fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43691869511
+- PR dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43691869521
+- PR Pages validation: https://github.com/Barrot-Agent/B-Agent/actions/runs/43691869524. PR-event test jobs were skipped by the branch condition; the push-event run performed the exact-head full suite.
+
+**Correction to the earlier Run156 PR inventory wording:** PR #1612 is not fully superseded. Its `check-signal-accuracy.yml` is blob-identical to integration, but `cross-analysis.yml`, `tests/test_repository_causality.py`, and `tests/test_signal_summary.py` have different blobs. Reclassify #1612 as **unique/unreviewed** and preserve it for semantic comparison. Do not close it.
+
+**PR #1640 safety content is already represented on integration:** its source branch has the action-specific Databricks/Kaggle approval gates and fail-closed missing-secret behavior. Integration's `.github/workflows/barrot-ops.yml` has separate action-specific inputs defaulting to NO and emits an error/exit 1 when an approved Databricks or Kaggle operation lacks its required secret. Main still has only the generic external-change approval for these actions and warns/exits 0 when the secrets are missing. Thus integration is stricter; no duplicate code patch is needed. Classify #1640 as **superseded, pending successor merge**, not ready for closure.
+
+This follow-up supersedes the earlier #1612 classification in the preceding Run156 section. No source PR was closed.
