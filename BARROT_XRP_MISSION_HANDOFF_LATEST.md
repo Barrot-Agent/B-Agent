@@ -8492,3 +8492,16 @@ Ripple reports 36.809B XRP held, 63.176B distributed and 31.7B in escrow as of S
 
 ### Forecast and authorization
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. The market observations have no byte-exact raw receipts and are model-ineligible. No real-money or paper-trading action was performed. No merge, deployment, secret rotation, Space restart, external-model dispatch, Databricks write, Kaggle submission, funds transfer, force-push, history rewrite or destructive worktree operation occurred.
+
+
+## Run169 exact-head follow-up — historical PR count correction
+
+Captured: 2026-11-15T17:31:00Z
+
+The exact-head full repository suite on `8dd83f1fabb08828daae01b17c60d9b3f2c3f9f4` completed with 3,801 passed, one failed, one skipped, 19 subtests passed, 64.02% inclusive coverage, in 105.96 seconds. The only failure was a historical Run167 assertion that expected the current PR's changed-file count to remain 1,256. The current PR had advanced to 1,257 when the Run169 audit file was added.
+
+The correction stores `current_pr_changed_files_at_capture=1256` on the historical Run167 snapshot, asserts that value against the historical record, and separately asserts the current PR has 1,257 changed files. This preserves the historical snapshot and the current PR state without weakening any test. No tests were removed or disabled. The final correction head's full repository suite is pending.
+
+On `8dd83f1`, both six-manifest dependency audits passed with zero known vulnerabilities; push and PR fail-closed gates passed; PR Pages validation passed in build-only mode. The full-suite failure above is the only reported test failure.
+
+The current integration PR remains draft and unmerged. No main-branch write, deployment, secret rotation, external-model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer, force-push, history rewrite or source-PR closure occurred.

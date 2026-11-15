@@ -1018,7 +1018,8 @@ def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_remain
     run = data["run167_snapshot"]
     assert run.get("run_id") == "Run167"
     assert run["pr_changed_files"] == 1255
-    assert data["integration_pr"]["changed_files"] == 1256
+    assert run["current_pr_changed_files_at_capture"] == 1256
+    assert data["integration_pr"]["changed_files"] == 1257
     assert run["integration_head_before_run167_map_commit"] != data["integration_pr"]["head_sha"]
     assert data["run167_workflow_review"]["changed_workflow_files"] == 48
     assert data["run167_workflow_review"]["workflow_definition_triage_complete"] is True
@@ -1184,3 +1185,12 @@ def test_run169_circle_arc_bny_pnc_and_xrpl_metrics_are_not_misclassified_as_xrp
     assert market["point_in_time_eligibility"] == "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE"
     assert data["forecast_status"] == "NOT_ISSUED"
     assert data["accuracy_status"] == "NOT_EVALUATED"
+
+
+def test_run169_current_pr_snapshot_does_not_rewrite_run167_historical_counts():
+    data = load_current()
+    assert data["run167_snapshot"]["current_pr_changed_files_at_capture"] == 1256
+    assert data["integration_pr"]["changed_files"] == 1257
+    assert data["integration_pr"]["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
+    assert data["run169_followup_snapshot"]["integration_head_before_followup_commit"] != data["integration_pr"]["head_sha"]
+    assert data["forecast_status"] == "NOT_ISSUED"
