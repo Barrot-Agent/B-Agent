@@ -6699,3 +6699,81 @@ Next: run exact-head CI after this handoff update; semantically reconcile all 1,
 **NOT VERIFIED:** exact-head CI after this documentation update, ingestion on main, independent WORM storage, predictive lift, shadow outcomes, nine-platform coordination and synchronized full-depth spot liquidity.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run157 institutional primary-source addendum — 2026-11-15
+
+The official SBI Holdings FY2025 presentation and Circle's Q3 2026 SEC 10-Q resolve several capital and relationship questions that must be kept separate.
+
+### SBI Holdings, Ripple and XRP supply
+
+SBI Holdings' May 1, 2026 FY2025 presentation states that SBI holds approximately 9% of Ripple. It says Ripple's corporate valuation reached $40B in November 2025 after a $500M financing round and $50B in March 2026 after a $750M share buyback. The valuation of SBI's approximately 9% stake had not yet reflected that increase.
+
+The same SBI presentation gives an XRP distribution snapshot as of April 27, 2026:
+- 61.68B XRP circulated in the market.
+- 5.10B XRP labelled “Actual XRP” held by Ripple.
+- 33.20B XRP under escrow.
+- Approximately 0.01B XRP burned.
+- SBI estimated Ripple's non-circulating holdings at approximately JPY 8.8T.
+
+This is SBI's market-price-based presentation, not an independent custody audit. The 5.10B direct holdings and 33.20B escrow are Ripple's holdings, not SBI's XRP inventory. Escrow is not equivalent to immediately tradable float.
+
+SBI's slide on Evernorth says SBI invested $200M cash in its PIPE. Total Evernorth capital exceeded $1B through a mixture of spot XRP and cash from multiple participants, including Ripple, Chris Larsen, institutions and exchanges. Do not attribute the entire $1B to SBI.
+
+SBI's presentation lists Ripple acquisitions and reported transaction values: Metaco $250M, Rail $200M, Hidden Road $1.25B and GTreasury $1B, with Standard Custody's price undisclosed. These are SBI-presented transaction figures, not independently reconciled cash-paid amounts.
+
+SBI's FY2025 crypto-asset segment reported JPY 89.6B revenue and JPY 21.2B profit before tax. This segment includes SBI VC Trade, B2C2 and other businesses; it is not XRP-only revenue. SBI's presentation reports the April 1, 2026 absorption/merger of BITPOINT into SBI VC Trade, approximately 1.922M combined accounts at March 31 and approximately JPY 610B combined deposits as of April 29. These are platform-wide deposits/accounts, not XRP holdings or XRP trading volume.
+
+### Critical RLUSD chain-support correction: SBI VCTRADE is Ethereum-only
+
+SBI VC Trade's official June 24, 2026 RLUSD launch notice states:
+- RLUSD is treated by SBI VC Trade as a Japanese Type 4 electronic payment instrument.
+- The service is VCTRADE only; BITPOINT is excluded.
+- The issuer is Standard Custody & Trust Company, LLC, a New York-chartered special-purpose trust company in Ripple's group.
+- Deposits and withdrawals are accepted 24/7, with no SBI VC Trade transfer fee.
+- Withdrawals are capped at JPY 1M per transaction; SBI separately sets a daily deposit cap.
+- **The notice explicitly says the VCTRADE service supports Ethereum only for RLUSD deposits and withdrawals. XRPL is not supported by this SBI channel at launch.**
+- SBI can suspend deposit reflection if the USD/RLUSD price diverges, impose limits, or restrict trading if deposited balances exceed its redemption capacity. It monitors issuer RLUSD supply and USD reserve balances.
+
+This is material disconfirming evidence against treating SBI's RLUSD distribution as an XRPL liquidity rail or as proof of XRP bridge demand. SBI's RLUSD distribution and SBI's separate XRPL work must be modelled as distinct rails.
+
+### Circle and SBI: separate USDC joint venture
+
+Circle's Q3 2026 SEC 10-Q states that Circle and SBI Holdings each contributed approximately $1.5M to Circle SBI Japan K.K. in November 2025 and each owns 50%. Circle controls and consolidates the VIE; SBI's share is noncontrolling interest. The filing says there were no significant operating results to date as of September 30, 2026.
+
+Circle's SEC-reported Circle Mint customer flows:
+- Q3 2026: $104.304B minted less $103.694B redeemed = **+$610M net**.
+- Nine months 2026: $260.847B minted less $262.234B redeemed = **-$1.387B net**.
+
+Circle defines these measures as customer fiat converted to USDC and USDC converted back to fiat through Circle Mint. They are not all-chain net flows and not XRP flows.
+
+Circle's Q3 platform metrics included $73.879B USDC end-period circulation, $73.264B average circulation, $13.868B on-platform USDC and $13.9T Q3 onchain transaction volume (+49% year over year). Gross transaction volume is not net capital inflow.
+
+Circle reported $331.3M Q3 and $986.6M nine-month distribution costs connected to Coinbase. The filing explains that Coinbase compensation is tied to USDC held on Coinbase after issuer retention and a share of broader ecosystem growth after approved third-party participants. This is Circle expense and Coinbase distribution revenue, not Coinbase net profit or evidence of XRP settlement.
+
+### SBI Ripple Asia and institutional use cases
+
+SBI reports SBI Ripple Asia ownership at 60% SBI / 40% Ripple. Its February 24, 2026 work with dsrv labs is Japan-Korea remittance/payment feasibility research using XRPL. Its February 26, 2026 tokenized-deposit and deposit-type digital-money work is a conceptual proof of concept using MoneyTap and an XRPL-based issuance platform. Neither source establishes production settlement volumes.
+
+The OCC Corporate Applications Search lists Ripple National Trust Bank as approved December 12, 2025 and consummated/effective October 26, 2026, with trust powers requested. This supports a trust-bank regulatory milestone; it does not by itself establish a full-service deposit bank or incremental XRP demand.
+
+### SBIC identity — primary profiles
+
+- SBIC East Japan: Tokyo Small and Medium Business Investment & Consultation Co., Ltd., established November 15, 1963.
+- SBIC Central Japan: Nagoya Small and Medium Business Investment & Consultation Co., Ltd., established November 18, 1963.
+- SBIC West Japan: Osaka Small and Medium Business Investment & Consultation Co., Ltd., established November 20, 1963.
+
+These are three regional SME investment-development companies. They are not SBI Holdings. SB OAI Japan is the separate OpenAI/SoftBank JV. SBIC East's 2025 ChatGPT/AI course is a training program for investee companies, not a commercial OpenAI partnership.
+
+### Primary-source records
+
+- SBI FY2025 presentation: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf
+- SBI VC Trade RLUSD terms: https://www.sbivc.co.jp/newsview/bsqs09vn_yzv
+- Circle Q3 2026 SEC 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- OCC Ripple National Trust Bank filing: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+- SBIC East profile: https://www.sbic.co.jp/company/profile/
+- SBIC Central profile: https://www.sbic-cj.co.jp/company/about/
+- SBIC West profile: https://www.sbic-wj.co.jp/profiles/profile/
+- SBIC East ChatGPT training: https://www.sbic.co.jp/training/20250612co/
+
+The structured relationship graph and expanded Run157 audit are stored in the research folder. The graph explicitly distinguishes equity ownership, token holdings, escrow, fiat mint/redemption flows, distribution costs, stablecoin rails and research/POC relationships.

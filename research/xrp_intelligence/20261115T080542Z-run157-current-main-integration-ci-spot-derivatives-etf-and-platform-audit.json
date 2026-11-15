@@ -556,6 +556,72 @@
       "source": "SBIC East official ChatGPT/AI training course",
       "event_dates": "2025-06-12/2025-06-13",
       "raw_bytes_captured": false
+    },
+    {
+      "id": "turn544640view0",
+      "source": "SBI Holdings FY2025 financial results presentation",
+      "publication_date": "2026-05-01",
+      "pages": "58-60",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn776529view0",
+      "source": "SBI VC Trade RLUSD launch and operating terms",
+      "publication_date": "2026-06-24",
+      "lines": "88-158",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn153001view0",
+      "source": "Circle Q3 2026 SEC 10-Q, Circle SBI Japan K.K.",
+      "lines": "726-729",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn153001view1",
+      "source": "Circle Q3 2026 SEC 10-Q, USDC minted/redeemed",
+      "lines": "1647-1661",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn153001view2",
+      "source": "Circle Q3 2026 SEC 10-Q, distribution costs and Coinbase terms",
+      "lines": "1566-1573;1682-1688",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn460259search11",
+      "source": "OCC Corporate Applications Search, Ripple National Trust Bank",
+      "approved_date": "2025-12-12",
+      "effective_date": "2026-10-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn526487search4",
+      "source": "SBI Ripple Asia tokenized-deposit POC",
+      "publication_date": "2026-02-26",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn526487search6",
+      "source": "SBI Ripple Asia and dsrv labs Japan-Korea payments research",
+      "publication_date": "2026-02-24",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn185078search0",
+      "source": "SBIC Central Japan official company profile",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn185078search1",
+      "source": "SBIC West Japan official company profile",
+      "raw_bytes_captured": false
+    },
+    {
+      "id": "turn460259search10",
+      "source": "SBIC East Japan official company profile",
+      "raw_bytes_captured": false
     }
   ],
   "actions_this_run": [
@@ -583,5 +649,163 @@
     "Keep XRP ingestion integration-only until authorized merge; then verify scheduled main runs and external artifact retention.",
     "Capture raw exchange responses through authorized adapters with SHA-256 receipts; synchronize event time, USDT/USD basis and L2 sequences.",
     "Populate historical point-in-time data and independent shadow outcomes before training or issuing forecasts."
-  ]
+  ],
+  "institutional_primary_source_update": {
+    "captured_at_utc": "2026-11-15T08:15:00Z",
+    "sbi_holdings_fy2025_presentation": {
+      "publication_date": "2026-05-01",
+      "ripple_equity_stake_percent_approx": 9,
+      "ripple_valuation_events": [
+        {
+          "date": "2025-11",
+          "valuation_usd": 40000000000,
+          "financing_round_usd": 500000000
+        },
+        {
+          "date": "2026-03",
+          "valuation_usd": 50000000000,
+          "share_buyback_usd": 750000000
+        }
+      ],
+      "ripple_xrp_distribution_as_of": "2026-04-27",
+      "xrp_circulated_bn": 61.68,
+      "ripple_direct_holdings_labelled_actual_bn": 5.1,
+      "ripple_escrow_bn": 33.2,
+      "burned_bn": 0.01,
+      "value_of_ripple_noncirculating_holdings_jpy_trillion_approx": 8.8,
+      "caveat": "SBI's investor presentation estimate based on XRP price on 2026-04-27; not an independent custody audit and not evidence that escrow is immediately marketable.",
+      "evernorth_pipe": {
+        "sbi_cash_investment_usd": 200000000,
+        "total_raised_usd_over": 1000000000,
+        "composition": "Combination of spot XRP and cash from multiple participants, including SBI, Ripple, Chris Larsen, institutional investors and exchanges.",
+        "caveat": "The total is not SBI's contribution; the $200M is the amount the SBI presentation attributes to SBI."
+      },
+      "sbi_crypto_asset_segment_fy2025": {
+        "revenue_jpy_billion": 89.6,
+        "profit_before_tax_jpy_billion": 21.2,
+        "revenue_yoy_percent": 10.9,
+        "note": "Segment includes SBI VC Trade, B2C2 and other crypto-asset businesses; not XRP-only revenue."
+      },
+      "sbi_vc_trade_bitpoint_integration": {
+        "effective_date": "2026-04-01",
+        "combined_accounts_thousand_as_of_2026_03_31": 1922,
+        "combined_customer_deposits_jpy_billion_as_of_2026_04_29": 610,
+        "caveat": "Aggregate platform accounts and deposits; not XRP holdings or XRP trading volume."
+      },
+      "ripple_acquisitions_reported_by_sbi": [
+        {
+          "name": "Metaco",
+          "date": "2023-05",
+          "reported_amount_usd": 250000000,
+          "business": "Digital-asset custody technology"
+        },
+        {
+          "name": "Standard Custody",
+          "date": "2024-02",
+          "reported_amount_usd": null,
+          "business": "Custody, escrow and settlement platform"
+        },
+        {
+          "name": "Rail",
+          "date": "2025-08",
+          "reported_amount_usd": 200000000,
+          "business": "Stablecoin payment platform for corporate clients"
+        },
+        {
+          "name": "Hidden Road",
+          "date": "2025-10",
+          "reported_amount_usd": 1250000000,
+          "business": "Multi-asset prime broker"
+        },
+        {
+          "name": "GTreasury",
+          "date": "2025-10",
+          "reported_amount_usd": 1000000000,
+          "business": "Corporate treasury and cash-flow software"
+        }
+      ],
+      "caveat_acquisition_values": "Amounts are as reported in SBI's presentation; they should not be treated as verified cash paid without transaction-level closing disclosures."
+    },
+    "sbi_ripple_asia": {
+      "ownership": {
+        "sbi_percent": 60,
+        "ripple_percent": 40
+      },
+      "projects": [
+        {
+          "date": "2026-02-24",
+          "partner": "dsrv labs",
+          "scope": "Japan-Korea remittance and payments research using XRPL",
+          "status": "RESEARCH/IMPLEMENTATION-FEASIBILITY; NOT VERIFIED PRODUCTION"
+        },
+        {
+          "date": "2026-02-26",
+          "scope": "Proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and an XRPL-based token issuance platform",
+          "status": "CONCEPTUAL POC; NOT VERIFIED PRODUCTION"
+        }
+      ]
+    },
+    "sbi_vc_trade_rlusd": {
+      "launch_date": "2026-06-24",
+      "legal_japan_classification": "Type 4 electronic payment instrument, as assessed by SBI VC Trade under Japanese law; not a US-law trust interest.",
+      "service": "VCTRADE only; BITPOINT service excluded.",
+      "supported_chain_for_deposits_withdrawals": "Ethereum only as of the June 24 notice; XRPL deposits/withdrawals were not supported by this SBI service at launch.",
+      "issuer": "Standard Custody & Trust Company, LLC, a New York-chartered special-purpose trust company in Ripple's group.",
+      "deposits_withdrawals": "24/7 intake, no SBI VC Trade transfer fee; per-withdrawal cap JPY 1,000,000; daily deposit cap separately set by SBI.",
+      "operational_controls": "SBI may suspend deposit reflection if USD/RLUSD deviation occurs, cap deposits, or restrict trading if deposited balances exceed redemption capacity; it monitors issuer RLUSD supply and USD reserve balances.",
+      "implication": "SBI's RLUSD distribution does not establish XRP settlement or XRPL-based RLUSD liquidity through VCTRADE; the official notice specifies Ethereum-only chain support."
+    },
+    "circle_sbi_japan_q3_2026_sec_10q": {
+      "circle_contribution_usd_approx": 1500000,
+      "sbi_contribution_usd_approx": 1500000,
+      "ownership_each_percent": 50,
+      "circle_controls_and_consolidates_vie": true,
+      "significant_operating_results_as_of_2026_09_30": false,
+      "sbi_interest_accounting": "Noncontrolling interest",
+      "implication": "The JV is a real legal relationship but the filing reports no significant operating results to date."
+    },
+    "circle_mint_actual_customer_fiat_flows_q3_2026": {
+      "minted_usd_millions": 104304,
+      "redeemed_usd_millions": 103694,
+      "net_mint_less_redemption_usd_millions": 610,
+      "nine_month_minted_usd_millions": 260847,
+      "nine_month_redeemed_usd_millions": 262234,
+      "nine_month_net_mint_less_redemption_usd_millions": -1387,
+      "definition": "Circle states these measures capture fiat converted to USDC and USDC converted to fiat, initiated by Circle Mint customers.",
+      "caveat": "This is Circle Mint customer fiat flow, not total onchain net capital flow or XRP flow."
+    },
+    "circle_coinbase_distribution_q3_2026": {
+      "q3_distribution_cost_usd_millions": 331.3,
+      "nine_month_distribution_cost_usd_millions": 986.6,
+      "contractual_basis": "Coinbase receives allocations tied to USDC held on Coinbase after issuer retention and a share of broader ecosystem growth after approved third-party participants.",
+      "caveat": "Circle expense / Coinbase distribution receipt; not Coinbase net profit, XRP capital inflow or XRP settlement volume."
+    },
+    "circle_q3_2026_platform_metrics": {
+      "usdc_circulation_end_period_usd_billions": 73.879,
+      "usdc_circulation_average_usd_billions": 73.264,
+      "usdc_on_platform_end_period_usd_billions": 13.868,
+      "daily_weighted_average_on_platform_percent": 18.1,
+      "q3_onchain_transaction_volume_usd_trillions": 13.9,
+      "q3_onchain_volume_yoy_percent": 49,
+      "caveat": "Onchain transaction volume is gross network activity, not net capital inflow or economic settlement value."
+    },
+    "regulatory": {
+      "ripple_national_trust_bank": {
+        "occ_control_number": "2025-Charter-342347",
+        "proposed_charter_number": 25364,
+        "approved_date": "2025-12-12",
+        "consummated_effective_date": "2026-10-26",
+        "powers": "Trust powers requested",
+        "caveat": "National trust-bank charter status does not by itself establish a full-service deposit bank or incremental XRP settlement demand."
+      }
+    },
+    "identity_reconciliation": {
+      "sbic_east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; SBIC East Japan; founded 1963-11-15.",
+      "sbic_central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; SBIC Central Japan; founded 1963-11-18.",
+      "sbic_west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.; SBIC West Japan; founded 1963-11-20.",
+      "sbi_holdings": "Separate Japanese financial-services conglomerate and Ripple strategic shareholder; not the SBIC regional companies.",
+      "sb_oai_japan": "Separate OpenAI/SoftBank JV; not SBI Holdings and not SBIC.",
+      "sbic_chatgpt": "SBIC East's official June 12-13 2025 AI/ML course explicitly included ChatGPT, Copilot, RAG, APIs and information-leakage risk; plausible phrase source, not a commercial OpenAI partnership."
+    }
+  }
 }
