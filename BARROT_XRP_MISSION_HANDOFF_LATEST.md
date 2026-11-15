@@ -6270,3 +6270,36 @@ Current evidence:
 The current quote-basis implementation was also verified directly in code: `_parse_okx_usdt_usd_ticker` and `_derive_okx_usd_normalized_features` already exist and are invoked during ingestion. The normalizer uses same-venue OKX bid/ask, preserves both source hashes, requires each component within 300 seconds and snapshot skew within 60 seconds, and refuses a fixed 1:1 USDT peg. Tests cover synchronized success and stale/skew failure. Run154's observed quotes correctly failed those gates; no new quote-normalization code is needed.
 
 **Forecast remains NOT_ISSUED. Accuracy remains NOT_EVALUATED. Merge remains NO_MERGE.**
+
+
+### Run154 final exact-head verification — `956dcf0`
+
+The corrected integration head `956dcf0882e85555d0a62b51646cea5285ec5169` completed its own full repository suite successfully.
+
+- **3,788 passed; zero failed; one skipped; 19 subtests passed.**
+- Inclusive package coverage: **64.02%**.
+- Legacy core-package coverage: **77%**.
+- Full-suite execution: **114.25 seconds**.
+- Core test job: 742 passed, zero failed, eight subtests.
+- Six-manifest push dependency audit: passed; zero known vulnerabilities reported.
+- Six-manifest PR dependency audit: passed; zero known vulnerabilities reported.
+- Push and PR fail-closed gates: passed; automatic merge remains disabled.
+- PR Pages validation: passed in build-only mode; no publication.
+- Wheel `b_agent-0.1.0-py3-none-any.whl`: built successfully.
+- Installed wheel verified loading Barrot V3, the primary XRP mission and canonical data assets.
+
+This is an exact-head pass on `956dcf0`, not a result borrowed from an earlier commit. The two earlier Run154 failures remain preserved as historical test-contract regressions; neither was hidden or reclassified as a runtime failure. The corrections use the canonical `exact_head` field and include the required failure-classification phrase. No test was removed, skipped or weakened to obtain the pass.
+
+Evidence:
+- [Exact-head full repository CI 43684755093](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684755093)
+- [Push dependency audit 43684755073](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684755073)
+- [Push fail-closed gate 43684755074](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684755074)
+- [PR Pages validation and event CI 43684759663](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684759663)
+- [PR dependency audit 43684759619](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684759619)
+- [PR fail-closed gate 43684759661](https://github.com/Barrot-Agent/B-Agent/actions/runs/43684759661)
+
+Current integration head at verification: `956dcf0882e85555d0a62b51646cea5285ec5169`; 2,460 commits ahead of main, zero behind; PR #1662 has 1,241 changed files (48 workflow paths, 1,193 non-workflow paths). Main remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9` and is unchanged.
+
+**NO MERGE.** PR #1662 is still draft with zero independent reviews or approvals. Full semantic review of the 1,193 non-workflow paths remains incomplete. Branch-protection details remain inaccessible through the connector (HTTP 403), integration is unprotected, fallback ruleset 10863829 is disabled, CODEOWNERS has no independent reviewer, connector permissions remain overprivileged, and Pages publication authorization is unresolved. The full-suite pass satisfies the technical test gate but does not satisfy governance, independent review or external-side-effect authorization.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.**
