@@ -826,7 +826,9 @@ def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_hist
     assert last_good["passed"] == 3794
     assert last_good["failed"] == 0
     current = data["run162_current_head_verification_snapshot"]
-    assert latest["head_sha"] == current["integration_head_before_map_commit"]
+    assert latest["head_sha"] == data["run167_snapshot"]["integration_head_before_run167_map_commit"]
+    assert latest["head_sha"] == data["observed_integration_head_before_map_commit"]
+    assert latest["head_sha"] != current["integration_head_before_map_commit"]
     assert latest["conclusion"] == "failure"
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert latest["full_repository_suite"]["passed"] == 3794
