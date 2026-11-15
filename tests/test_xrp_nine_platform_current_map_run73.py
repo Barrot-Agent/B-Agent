@@ -634,27 +634,49 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_snapshot_tracks_parent_and_followup_ci_without_hiding_failure():
+def test_run152_snapshot_remains_historical_and_run153_is_latest_ci():
     data = load_current()
-    run = data["run152_snapshot"]
+    run152 = data["run152_snapshot"]
+    run153 = data["run153_snapshot"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run152"
-    assert run["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
-    assert run["documentation_commit_head_sha"] == data["integration_pr"]["head_sha"]
-    assert run["documentation_commit_head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
-    assert run["main_sha"] == data["repository_state"]["main_sha"]
-    assert run["full_suite"]["head_sha"] == latest["head_sha"]
-    assert run["full_suite"]["passed"] == 3787
-    assert run["full_suite"]["failed"] == 1
-    assert run["full_suite"]["exact_head"] is True
-    assert run["last_known_good_full_suite"]["passed"] == 3787
-    assert run["last_known_good_full_suite"]["failed"] == 0
-    assert run["last_known_good_full_suite"]["head_sha"] == run["integration_head_at_capture"]
-    assert run["changed_workflow_files"] == 48
-    assert run["patch_scan_workflows_reviewed"] == 50
-    assert run["open_pr_inventory"]["total"] == 373
-    assert run["forecast_status"] == "NOT_ISSUED"
-    assert run["accuracy_status"] == "NOT_EVALUATED"
-    assert run["merge_decision"] == "NO_MERGE"
-    assert run["market"]["raw_source_sha256_captured"] is False
-
+    assert data["latest_run_id"] == "Run153"
+    assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
+    assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
+    assert run152["documentation_commit_head_sha"] != data["integration_pr"]["head_sha"]
+    assert run152["documentation_commit_head_sha"] != data["repository_state"]["integration_head_before_current_map_commit"]
+    assert run152["main_sha"] == data["repository_state"]["main_sha"]
+    assert run152["full_suite"]["head_sha"] == run152["documentation_commit_head_sha"]
+    assert run152["full_suite"]["passed"] == 3787
+    assert run152["full_suite"]["failed"] == 1
+    assert run152["full_suite"]["exact_head"] is True
+    assert run152["last_known_good_full_suite"]["passed"] == 3787
+    assert run152["last_known_good_full_suite"]["failed"] == 0
+    assert run152["last_known_good_full_suite"]["head_sha"] == run152["integration_head_at_capture"]
+    assert run152["followup_ci"]["head_sha"] == data["integration_pr"]["head_sha"]
+    assert run152["followup_ci"]["passed"] == 3788
+    assert run152["followup_ci"]["failed"] == 0
+    assert run152["followup_ci"]["conclusion"] == "success"
+    assert run152["changed_workflow_files"] == 48
+    assert run152["patch_scan_workflows_reviewed"] == 50
+    assert run152["open_pr_inventory"]["total"] == 373
+    assert run152["forecast_status"] == "NOT_ISSUED"
+    assert run152["accuracy_status"] == "NOT_EVALUATED"
+    assert run152["merge_decision"] == "NO_MERGE"
+    assert run152["market"]["raw_source_sha256_captured"] is False
+    assert run153["integration_head_at_capture"] == data["integration_pr"]["head_sha"]
+    assert run153["full_suite"]["passed"] == 3788
+    assert run153["full_suite"]["failed"] == 0
+    assert run153["full_suite"]["skipped"] == 1
+    assert run153["full_suite"]["subtests"] == 19
+    assert run153["full_suite"]["exact_head"] is True
+    assert run153["dependency_audit"]["manifests"] == 6
+    assert run153["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run153["forecast_status"] == "NOT_ISSUED"
+    assert run153["accuracy_status"] == "NOT_EVALUATED"
+    assert run153["merge_decision"] == "NO_MERGE"
+    assert run153["handoff_commit_ci_pending"] is True
+    assert latest["head_sha"] == run153["integration_head_at_capture"]
+    assert latest["conclusion"] == "success"
+    assert latest["full_repository_suite"]["passed"] == 3788
+    assert latest["full_repository_suite"]["failed"] == 0
+    assert latest["full_repository_suite"]["exact_head"] is True
