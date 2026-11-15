@@ -43,10 +43,10 @@ def test_legacy_handoff_history_and_run112_current_handoff_bind_exact_heads_and_
 
 
 def test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive():
-    assert len(ENDPOINTS) == 50
-    assert len(SCHEDULED_ENDPOINTS) == 45
+    assert len(ENDPOINTS) == 51
+    assert len(SCHEDULED_ENDPOINTS) == 46
     assert len(WEEKLY_ENDPOINTS) == 3
-    assert len({source_id for source_id, _ in ENDPOINTS}) == 50
+    assert len({source_id for source_id, _ in ENDPOINTS}) == 51
     raw_only_deribit = {"deribit_xrp_usdc_perpetual_ticker", "deribit_xrp_usdc_perpetual_order_book"}
     scheduled_source_ids = {source_id for source_id, _ in SCHEDULED_ENDPOINTS}
     assert raw_only_deribit <= scheduled_source_ids

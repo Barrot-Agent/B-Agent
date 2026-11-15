@@ -111,7 +111,7 @@ def test_repository_snapshot_matches_current_main_and_successor_branch():
     assert state["changed_files"] == data["integration_pr"]["changed_files"]
     assert state["workflow_files_changed"] == 48
     assert state["non_workflow_paths_changed"] == data["integration_pr"]["other_changed_paths"]
-    assert state["main_tree_entries"] == 1341
+    assert state["main_tree_entries"] == 1393
     assert state["integration_tree_entries"] > state["main_tree_entries"]
     assert state["orbit_paths_in_integration"] is False
     assert state["hf_space_app_py_changed"] is True
@@ -157,7 +157,7 @@ def test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head():
     suite = latest["full_repository_suite"]
     assert suite["passed"] > 0
     assert suite["failed"] == len(latest["failing_tests"])
-    assert suite["subtests"] == 8
+    assert suite["subtests"] == 19
     assert suite["exact_head"] is True
     assert latest["conclusion"] == ("failure" if suite["failed"] else "success")
     if suite["failed"] == 0:
