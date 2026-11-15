@@ -640,7 +640,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_and_run169_are_historical_and_run172_is_current():
+def test_run152_run153_run154_run155_run158_run159_run162_run165_run167_run168_run169_and_run172_remain_historical_while_run173_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -650,8 +650,13 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     run159 = data["run159_snapshot"]
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
-    latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run172"
+    latest = data["ci_evidence"]["run172_map_test_correction_attempt"]
+    latest_current = data["ci_evidence"]["latest_attempt"]
+    assert data["latest_run_id"] == "Run173"
+    assert latest_current["head_sha"] == data["run173_snapshot"]["integration_head_before_run173_commit"]
+    assert latest_current["conclusion"] == "success"
+    assert latest_current["full_repository_suite"]["passed"] == 3805
+    assert latest_current["full_repository_suite"]["failed"] == 0
     run165 = data["run165_snapshot"]
     assert run165["main_sha"] == data["repository_state"]["main_sha"]
     assert run165["pr_number"] == 1662
@@ -850,7 +855,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     assert last_good["passed"] == 3794
     assert last_good["failed"] == 0
     current = data["run162_current_head_verification_snapshot"]
-    assert latest["head_sha"] == data["observed_integration_head_before_map_commit"]
+    assert latest_current["head_sha"] == data["observed_integration_head_before_map_commit"]
     assert latest["head_sha"] == data["run172_map_test_correction_snapshot"]["integration_head_before_correction_commit"]
     assert latest["head_sha"] != current["integration_head_before_map_commit"]
     assert latest["conclusion"] == "failure"
@@ -861,8 +866,8 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
     assert latest["full_repository_suite"]["failing_tests"] == ["tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled","tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit","tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_and_run169_are_historical_and_run172_is_current","tests/test_xrp_nine_platform_current_map_run73.py::test_run162_current_head_verification_snapshot_tracks_latest_ci"]
-    assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 4
+    assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest_current["head_sha"]
+    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 0
     assert data["schema_version"] == "1.1.0"
     assert data["run158_compact_map_snapshot"]["schema_version"] == "1.2.0"
     assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
@@ -1015,8 +1020,8 @@ def test_run162_current_head_verification_snapshot_tracks_latest_ci():
     assert current["ci"]["latest_attempt"]["head_sha"] == current["integration_head_before_map_commit"]
     assert current["ci"]["latest_attempt"]["conclusion"] == "failure"
     assert current["ci"]["full_repository_suite"]["head_sha"] == current["integration_head_before_map_commit"]
-    assert data["ci_evidence"]["latest_attempt"]["head_sha"] == data["run172_map_test_correction_snapshot"]["integration_head_before_correction_commit"]
-    assert data["ci_evidence"]["latest_attempt"]["conclusion"] == "failure"
+    assert data["ci_evidence"]["run172_map_test_correction_attempt"]["head_sha"] == data["run172_map_test_correction_snapshot"]["integration_head_before_correction_commit"]
+    assert data["ci_evidence"]["run172_map_test_correction_attempt"]["conclusion"] == "failure"
     assert current["workflow_safety"]["main_pillars_consistency_check"]["read_only"] is True
     assert current["forecast_status"] == "NOT_ISSUED"
     assert current["accuracy_status"] == "NOT_EVALUATED"
@@ -1205,9 +1210,9 @@ def test_run169_current_pr_snapshot_does_not_rewrite_run167_historical_counts():
     assert data["forecast_status"] == "NOT_ISSUED"
 
 
-def test_run172_current_map_tracks_run157_registry_exact_head_ci_and_readiness_policy():
+def test_run172_snapshot_remains_historical_after_run173_map_update():
     data = load_current()
-    assert data["latest_run_id"] == "Run172"
+    assert data["latest_run_id"] == "Run173"
     run = data["run172_snapshot"]
     assert run["main_sha"] == data["observed_main_sha"]
     assert run["integration_head_before_run172_map_commit"] == run["pr_head_sha"]
@@ -1264,3 +1269,37 @@ def test_run172_map_test_correction_attempt_is_recorded_without_weakening_tests(
     assert correction["assertions_weakened"] == 0
     assert data["forecast_status"] == "NOT_ISSUED"
     assert data["accuracy_status"] == "NOT_EVALUATED"
+
+
+def test_run173_current_map_records_exact_head_ci_and_preserves_prediction_gates():
+    data = load_current()
+    run = data["run173_snapshot"]
+    assert data["latest_run_id"] == "Run173"
+    assert run["main_sha"] == data["observed_main_sha"]
+    assert run["integration_head_before_run173_commit"] == "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c"
+    assert run["pr_number"] == 1662
+    assert run["open_prs"] == 373
+    assert run["drafts"] == 361
+    assert run["non_drafts"] == 12
+    suite = run["exact_head_full_suite"]
+    assert suite["head_sha"] == run["integration_head_before_run173_commit"]
+    assert suite["tests_passed"] == 3805
+    assert suite["tests_failed"] == 0
+    assert suite["skipped"] == 1
+    assert suite["subtests"] == 19
+    assert suite["coverage_percent"] == 64.02
+    assert suite["legacy_core_coverage_percent"] == 77
+    assert suite["wheel_build_verified"] is True
+    assert suite["installed_wheel_primary_mission_verified"] is True
+    assert run["dependency_audit"]["manifests"] == 6
+    assert run["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run["fail_closed_gate"]["passed"] is True
+    assert run["fail_closed_gate"]["automatic_merge_enabled"] is False
+    assert data["run173_market_research"]["point_in_time_eligibility"] == "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE"
+    assert data["run173_market_research"]["raw_http_bytes_captured"] is False
+    assert data["event_registry"]["event_count"] == 85
+    assert data["event_registry"]["raw_source_sha256_count"] == 0
+    assert data["event_registry"]["model_eligible"] is False
+    assert data["run173_forecast_status"]["forecast_status"] == "NOT_ISSUED"
+    assert data["run173_forecast_status"]["accuracy_status"] == "NOT_EVALUATED"
+    assert all(value is False for value in data["run173_no_external_actions"].values())
