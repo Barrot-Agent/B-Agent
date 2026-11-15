@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.xrp.run_audit.v1",
   "run_id": "Run155",
-  "captured_at_utc": "2026-11-15T07:12:55Z",
+  "captured_at_utc": "2026-11-15T07:20:18Z",
   "mission": {
     "id": "xrp_intelligence_prediction_engine",
     "priority": 1,
@@ -23,13 +23,15 @@
       "other_yaml_files": 9,
       "json_files": 253
     },
-    "integration_tree_entries": 2483,
+    "integration_tree_entries": 2484,
     "integration_tree": {
       "python_files": 899,
       "markdown_files": 266,
       "yaml_workflows": 83,
       "other_yaml_files": 9,
-      "json_files": 929
+      "json_files": 929,
+      "files": 2363,
+      "workflow_files": 88
     },
     "main_commits_missing_from_integration": 0,
     "integration_commits_ahead": 2461,
@@ -40,14 +42,17 @@
       "state": "OPEN",
       "draft": true,
       "mergeable": true,
-      "head_sha": "dc5d3024004036fdbd93afb1d0a9dcbbd9635622",
+      "head_sha": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed",
       "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-      "changed_files": 1241,
+      "changed_files": 1242,
       "commits_ahead": 2461,
       "commits_behind": 0,
       "formal_reviews": 0,
       "review_threads": 0,
-      "requested_reviewers": 0
+      "requested_reviewers": 0,
+      "additions": 341718,
+      "deletions": 6309,
+      "commits": 2463
     },
     "open_pr_inventory": {
       "total": 373,
@@ -158,67 +163,112 @@
     "github_connector_permissions": "admin, maintain, push, pull and triage; overprivileged for least-privilege governance",
     "no_new_branch_or_pr": true,
     "no_main_mutation": true,
-    "no_force_push_or_history_rewrite": true
+    "no_force_push_or_history_rewrite": true,
+    "integration_head_before_run155_map_update": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed"
   },
   "verification": {
     "exact_head": "dc5d3024004036fdbd93afb1d0a9dcbbd9635622",
     "full_suite": {
-      "run_id": 43685139304,
-      "conclusion": "success",
-      "tests_collected": 3789,
+      "head_sha": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed",
+      "run_id": 43689081722,
+      "job_id": 132735671665,
       "passed": 3788,
       "failed": 0,
       "skipped": 1,
-      "subtests_passed": 19,
-      "execution_seconds": 176,
+      "subtests": 19,
       "inclusive_coverage_percent": 64.02,
       "legacy_core_coverage_percent": 77,
-      "coverage_floor_percent": 62,
+      "duration_seconds": 112.63,
       "wheel_build": "PASS",
-      "installed_wheel_mission_verification": "PASS"
+      "installed_mission_verification": "PASS",
+      "conclusion": "success",
+      "completed_at_utc": "2026-11-15T07:18:57Z"
     },
     "dependency_audit": {
-      "push_run_id": 43685139288,
-      "pr_run_id": 43685142731,
+      "push_parent_head_run_id": 43685139288,
+      "push_parent_head_sha": "dc5d3024004036fdbd93afb1d0a9dcbbd9635622",
+      "pr_exact_head_run_id": 43689087189,
+      "pr_exact_head_sha": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed",
       "conclusion": "success",
       "manifest_count": 6,
       "known_vulnerabilities_reported": 0
     },
     "fail_closed": {
-      "push_run_id": 43685139319,
-      "pr_run_id": 43685142761,
+      "push_exact_head_run_id": 43689081706,
+      "pr_exact_head_run_id": 43689087210,
       "conclusion": "success",
       "automatic_merge": "disabled"
     },
     "pr_event_ci": {
-      "run_id": 43685142739,
+      "run_id": 43689087155,
+      "head_sha": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed",
       "conclusion": "success",
-      "full_suite_job": "SKIPPED by integration-branch event condition",
-      "core_test_job": "SKIPPED by integration-branch event condition",
+      "core_tests": "SKIPPED_BY_INTEGRATION_BRANCH_CONDITION",
+      "full_suite": "SKIPPED_BY_INTEGRATION_BRANCH_CONDITION",
       "pages_validation": "PASS"
     },
     "main_ci": {
       "run_id": 43650499432,
       "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-      "full_repository_suite": "PASS",
-      "core_suite": "PASS"
+      "passed": 848,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 8,
+      "conclusion": "success"
     },
     "main_cross_analysis": {
       "run_id": 43687335577,
       "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-      "conclusion": "success"
+      "conclusion": "success",
+      "read_only": true,
+      "artifact_only": true
     },
     "main_pages": {
       "run_id": 43650499344,
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
       "conclusion": "failure",
-      "reason": "Liquid syntax error at GLOBAL_STATE_MANIFEST.md line 6456; unescaped literal JSON double-brace example"
+      "reason": "Liquid syntax error at GLOBAL_STATE_MANIFEST.md line 6456"
     },
     "warnings": [
       "pip cache budget exhausted; cache became read-only, no test failure",
       "setuptools warns project.license table is deprecated",
       "setuptools warns barrot_agent.data.missions and data.research package discovery is incomplete despite installed mission verification passing"
     ],
-    "latest_handoff_commit_before_run": "dc5d3024004036fdbd93afb1d0a9dcbbd9635622"
+    "latest_handoff_commit_before_run": "dc5d3024004036fdbd93afb1d0a9dcbbd9635622",
+    "previous_code_head_full_suite": {
+      "head_sha": "dc5d3024004036fdbd93afb1d0a9dcbbd9635622",
+      "run_id": 43685139304,
+      "passed": 3788,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "conclusion": "success"
+    },
+    "latest_exact_head": {
+      "head_sha": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed",
+      "run_id": 43689081722,
+      "job_id": 132735671665,
+      "passed": 3788,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "inclusive_coverage_percent": 64.02,
+      "legacy_core_coverage_percent": 77,
+      "duration_seconds": 112.63,
+      "wheel_build": "PASS",
+      "installed_mission_verification": "PASS",
+      "conclusion": "success",
+      "completed_at_utc": "2026-11-15T07:18:57Z"
+    },
+    "main_sync": {
+      "run_id": 43650499411,
+      "head_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+      "conclusion": "success_wrapper_only",
+      "actual_sync": "skipped",
+      "error": "ModuleNotFoundError: No module named 'rich'",
+      "push_error_suppressed": true
+    }
   },
   "security_and_workflows": {
     "main_pingpong": {
@@ -388,7 +438,79 @@
       "model_eligible": false,
       "reason": "aggregated dynamic snapshot; no raw receipt or synchronized ledger capture"
     },
-    "counter_hypothesis": "Rising DEX volume can coexist with falling stablecoin supply and TVL; gross turnover is not net capital inflow or evidence of proportional XRP demand."
+    "counter_hypothesis": "Rising DEX volume can coexist with falling stablecoin supply and TVL; gross turnover is not net capital inflow or evidence of proportional XRP demand.",
+    "etf_flow_reconciliation": {
+      "source": "Coindaro citing SoSoValue",
+      "published_at_utc": "2026-11-14T12:05:00Z",
+      "funds": [
+        "XRP/Bitwise",
+        "XRPZ/Franklin Templeton",
+        "XRPC/Canary Capital",
+        "TOXR/21Shares",
+        "GXRP/Grayscale"
+      ],
+      "excluded": [
+        "XRPR",
+        "BITW"
+      ],
+      "no_net_inflow_sessions": 11,
+      "last_inflow_date": "2026-10-29",
+      "november_net_redemptions_usd": 19660000,
+      "cumulative_net_inflows_usd": 1790000000,
+      "net_assets_usd": 1150000000,
+      "net_assets_oct28_usd": 1510000000,
+      "net_assets_nov9_usd": 1240000000,
+      "nov13_daily_flow_usd": -1090000,
+      "nov13_fund_flows_usd": {
+        "XRPZ": 4450000,
+        "GXRP": -5540000,
+        "XRP": 0,
+        "XRPC": 0,
+        "TOXR": 0
+      },
+      "implied_xrp_holdings_estimate": [
+        {
+          "date": "2026-09-25",
+          "xrp": 1130000000
+        },
+        {
+          "date": "2026-10-28",
+          "xrp": 1140000000
+        },
+        {
+          "date": "2026-11-04",
+          "xrp": 1140000000
+        },
+        {
+          "date": "2026-11-09",
+          "xrp": 1130000000
+        },
+        {
+          "date": "2026-11-13",
+          "xrp": 1140000000
+        }
+      ],
+      "estimate_method": "rounded AUM divided by Coinbase daily close; not issuer-reported custody",
+      "counter_hypothesis": "AUM fell 24% while cumulative inflows fell about 1%; most AUM loss appears price-driven, not mass redemptions."
+    },
+    "cftc_positioning": {
+      "official_dataset": "TFF_All",
+      "official_url": "https://publicreporting.cftc.gov/Commitments-of-Traders/TFF_All/udgc-27he/about_data",
+      "last_updated": "2026-11-06",
+      "contract_code": "176740",
+      "latest_positions_as_of": "2026-11-03",
+      "next_report": "2026-11-16T15:30:00-05:00",
+      "secondary_parsed": {
+        "open_interest_contracts": 7216,
+        "large_speculator_net_long_contracts": 1465,
+        "one_year_percentile": 95
+      },
+      "sources": [
+        "https://www.tradingster.com/cot/futures/fin/176740",
+        "https://forexbullion.com/cot/xrp/"
+      ],
+      "caveat": "Direct CFTC row API was inaccessible; position values are secondary parsed data and stale. TFF_All includes futures-only and futures/options combined; filter correctly to avoid double counting."
+    }
   },
   "institutional": {
     "sbivc_jpysc": {
@@ -432,13 +554,11 @@
       ],
       "parent_jv": "SBI Holdings and TradeFinex Tech Ltd.",
       "scope": [
-        "XDC Network infrastructure/ecosystem",
-        "explore stablecoin cross-border payments",
-        "explore digital-asset merchant payments",
-        "explore cross-border trade settlement"
+        "cross-border stablecoin payments",
+        "merchant payments",
+        "trade settlement"
       ],
-      "status": "MOU/exploratory; no production settlement volume verified",
-      "interpretation": "SBI is pursuing a multi-rail digital-asset strategy. This may be complementary or competitive with Ripple/XRP depending on actual production routing and asset usage.",
+      "status": "MOU/exploratory; production volume not verified",
       "source": "https://www.sbigroup.co.jp/news/2026/1021_16674.html"
     },
     "rlusd_xrpl": {
@@ -447,6 +567,36 @@
       "derived_rlusd_share_usd": 762270000,
       "status": "aggregator-derived estimate only; not issuer attestation or XRP demand",
       "interpretation": "RLUSD supply and activity on XRPL must be separated from XRP spot purchases; transaction fees and reserves are not proportional to gross stablecoin transfer value."
+    },
+    "jpysc": {
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "developer": "Startale Group",
+      "update_date": "2026-11-02",
+      "lending_balance_jpy_gt": 10000000000,
+      "handling_balance_jpy_gt": 30000000000,
+      "handling_balance_definition": "on-chain balance plus lending balance",
+      "terms": [
+        {
+          "days": 168,
+          "rate": 3
+        },
+        {
+          "days": 84,
+          "rate": 2.5
+        },
+        {
+          "days": 28,
+          "rate": 2
+        }
+      ],
+      "public_deposits_withdrawals": "unavailable; public-chain circulation subject to legal/tax and regulatory conditions",
+      "not_xrp": true,
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+        "https://www.sbivc.co.jp/newsview/uvcf-_ax6",
+        "https://www.sbivc.co.jp/jpysc"
+      ]
     }
   },
   "identity_and_exact_phrase_research": {
@@ -511,15 +661,14 @@
     "independent_shadow_outcome_cohort": "not established"
   },
   "next_actions": [
-    "Run full-suite, dependency audit and fail-closed gates on the Run155 documentation descendant before considering merge.",
-    "Complete semantic review of the 1,241-file PR; prioritize all 48 workflow files and seven public-web files.",
-    "Resolve least-privilege GitHub permissions, independent review, and branch-protection visibility.",
-    "Preserve the main Ping-Pong, Barrot Sync and paper-trader containment gates.",
-    "Do not merge while Pages publication side effects remain unauthorized.",
-    "Establish synchronized historical XRP spot, L2, derivatives, ETF, exchange-flow and collateral data with raw hashes and point-in-time receipts.",
-    "Reconcile ETF AUM changes against issuer-reported XRP holdings and actual cash subscriptions.",
-    "Model JPYSC and XDC as SBI ecosystem/alternative payment-rail evidence, not XRP inflows.",
-    "Train an XRP candidate only after the historical dataset and independent shadow cohort satisfy policy v6."
+    "Run exact-head full suite, six-manifest dependency audit and fail-closed gates on the map/handoff/audit descendant.",
+    "Complete semantic review of 1,242 PR paths, prioritizing 48 workflows and seven public-web files.",
+    "Resolve independent review, least-privilege permissions and branch-protection visibility.",
+    "Keep main Ping-Pong, Barrot Sync and ambiguous paper-trader paths quarantined; no merge while Pages publication is unauthorized.",
+    "Capture synchronized historical spot/L2/USDT basis with raw bytes and SHA-256 receipts.",
+    "Reconcile ETF cash flows, issuer holdings and fund-universe coverage; ingest Nov16 CFTC report only after publication.",
+    "Treat JPYSC and XDC as SBI multi-rail evidence, not XRP inflows.",
+    "Train a candidate only after point-in-time data, out-of-sample superiority over four baselines and independent shadow outcomes."
   ],
   "safety": {
     "merge_performed": false,
@@ -533,5 +682,15 @@
     "force_push": false,
     "history_rewrite": false,
     "source_pr_closed": false
+  },
+  "map_update": {
+    "current_map_refreshed": true,
+    "map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+    "prior_historical_snapshots_preserved": true,
+    "parent_head": "655eec4c75361f6b9dda4c8c6cdc25bb2ac2e0ed",
+    "captured_at_utc": "2026-11-15T07:20:18Z",
+    "only_current_chatgpt_github_connector_verified": true,
+    "external_model_transfer": false,
+    "final_descendant_ci_pending": true
   }
 }
