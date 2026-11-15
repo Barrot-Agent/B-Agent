@@ -754,7 +754,7 @@ def test_run152_run153_run154_remain_historical_and_run155_is_latest_ci():
     assert latest["fail_closed_gate"]["passed"] is True
     assert latest["fail_closed_gate"]["automatic_merge_enabled"] is False
     assert data["run155_test_correction"]["head_sha"] == latest["head_sha"]
-    assert data["run155_test_correction"]["tests_weakened"] is False
+    assert data["run155_test_correction"]["correction"]["tests_weakened"] is False
     assert data["run155_test_correction"]["corrected_in_next_commit"] is True
     assert data["run155_map_handoff_commit_ci"].startswith("FAILED_ON_6757c")
     assert data["run155_forecast_status"]["forecast_status"] == "NOT_ISSUED"
