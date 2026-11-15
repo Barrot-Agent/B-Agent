@@ -35,7 +35,7 @@
       "base": "main",
       "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
       "head_sha": "da267d5a9f893a5016ad74530642eae5b2d8ea30",
-      "commits_ahead": 2521,
+      "commits_ahead": 2522,
       "commits_behind": 0,
       "changed_files": 1258,
       "additions": 353426,
@@ -92,7 +92,8 @@
       "1649_and_1255": "same legacy/requirements_legacy.txt dependency path; newer databricks-sdk proposal supersedes the older version candidate but neither is merged.",
       "1648_1646_1645": "unique dependency-update candidates; individually unverified for current-head full-suite and approval requirements."
     },
-    "integration_head_after_run171_documentation_commits": "f017bcfde5cff1c6325e3e25209406ee81b21955"
+    "integration_head_after_run171_documentation_commits": "f017bcfde5cff1c6325e3e25209406ee81b21955",
+    "current_integration_head_before_final_handoff_metadata_commit": "abbd0a4b338e71e507968d94175731283f229943"
   },
   "ci": {
     "integration_exact_head": {
@@ -161,6 +162,21 @@
       "dependency_audit": "success",
       "pr_fail_closed_run_id": 43745416730,
       "pr_fail_closed": "success"
+    },
+    "current_documentation_head": {
+      "head_sha": "abbd0a4b338e71e507968d94175731283f229943",
+      "push_full_suite_run_id": 43745904926,
+      "push_full_suite": "in_progress_at_final_handoff_capture",
+      "push_dependency_audit_run_id": 43745904877,
+      "push_dependency_audit": "in_progress_at_final_handoff_capture",
+      "push_fail_closed_run_id": 43745904874,
+      "push_fail_closed": "success",
+      "pr_ci_run_id": 43745910240,
+      "pr_dependency_audit_run_id": 43745910232,
+      "pr_fail_closed_run_id": 43745910174,
+      "pr_fail_closed": "success",
+      "exact_preceding_code_head": "da267d5a9f893a5016ad74530642eae5b2d8ea30",
+      "exact_preceding_code_head_full_suite": "3,803 passed; 0 failed; 1 skipped; 19 subtests; 64.02% inclusive coverage; 77% legacy-core coverage"
     }
   },
   "main_branch_risk_and_integration_containment": {

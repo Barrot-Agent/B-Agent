@@ -8817,3 +8817,11 @@ On November 13 Circle named Dante Disparte Vice Chairman, Strategy and Global Af
 A time-stamped OKX XRP-USDT observation at 17:37:12 UTC was $0.9480; Swiftedge's 16:55 UTC XRP perpetual reference was $0.9482. Other public aggregators showed $0.9661 at 11:53 UTC (Trust Wallet), $0.9631 in an Investing.com daily row without an exact capture time, and $0.9193 as Kinzan's November 15 daily close. These are not a synchronized multi-venue spot sample: Swiftedge is a perpetual, aggregator timestamps differ, and daily-close conventions are not comparable. No price feature or directional inference is admitted.
 
 All additions are descriptive-only because byte-exact publisher payloads and SHA-256 receipts were not captured. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+## Run171 final handoff pointer and current-head verification state
+
+- Main remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Immediately before this final handoff metadata commit, integration head was `abbd0a4b338e71e507968d94175731283f229943`; PR #1662 had 2,522 commits ahead, zero behind and 1,258 changed files.
+- Exact full-suite verification is confirmed on code head `da267d5a9f893a5016ad74530642eae5b2d8ea30`: 3,803 passed, zero failed, one skipped, 19 subtests; wheel and installed mission checks passed.
+- The later commits only add the Run171 structured audit and handoff documentation. Exact-head CI for the current documentation head `abbd0a4` was still running at capture: push full suite [43745904926](https://github.com/Barrot-Agent/B-Agent/actions/runs/43745904926), dependency audit [43745904877](https://github.com/Barrot-Agent/B-Agent/actions/runs/43745904877), and both fail-closed gates passed. PR-event full-suite jobs are skipped on the integration branch.
+- PR #1662 remains draft with zero formal reviews and zero review threads. No merge is authorized by the current evidence; branch-protection detail and independent review remain blockers.
+- This metadata commit becomes the latest integration head; the exact SHA is recorded in PR #1662 after the ref update. No code, workflow, forecast or main-branch file is changed by this final note.
