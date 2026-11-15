@@ -281,3 +281,181 @@ Run175 restores the verified free-model default and default agent, retains LunaR
 ### Run175 .gitignore preservation correction
 
 A final tree review found the successor had added a broad `.barrot/autonomous_tasks/` ignore rule that was not present on current main. Although existing tracked files remain tracked, that rule could hide new user-authored files in the directory. Run175 restores `.gitignore` byte-for-byte to current main's blob (`f63d4ea6c01a6dbeb72cd80d8f5fcdac93ea66d4`); the existing `.config/gh/hosts.yml` ignore remains because it is already in main. A regression test now verifies the exact main Git blob hash.
+
+
+---
+
+## Run176 — current-main successor, exact-head verification and market-data reconciliation
+
+**Captured:** 2026-11-15T22:32:23Z  
+**Run status:** EXECUTED; current code head VERIFIED; new handoff/audit commit requires its own exact-head CI.
+
+### Current repository and branch reconciliation
+
+- **Current main:** `1f30e5c18f151f75ad5d157ddde175723584ec69` (main advanced from the Run175 handoff's `5b2a9c46...`; this commit changes OpenCode GitHub MCP authentication documentation/configuration).
+- **Current integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- **Verified code/evidence head:** `9c69f1affad3f34aab9922c88cddc2be85735fb6`.
+- **Active consolidated PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), base `main` at `1f30e5c...`, head `9c69f1a...`, 12 commits ahead / 0 behind, GitHub mergeable=true, but **draft**.
+- PR #1663 contains 1,276 changed files, 410,830 additions and 6,473 deletions. The complete changed-filename inventory was retrieved. The compare endpoint's per-file statistics response is capped at 300 entries, so the full 1,276-file list is the authoritative count.
+- The previous PR [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662) was closed unmerged at 2026-11-15T20:55:02Z. Its archived branch and history remain intact. No merge commit is counted for #1662.
+- The mainline successor was created directly from the then-current main; its PR base has since advanced to the current main SHA. Current compare is 12 ahead / 0 behind.
+
+### Complete tree reconciliation at code head 9c69f1a
+
+| Measure | Result |
+|---|---:|
+| Main recursive tree | 1,393 entries |
+| Successor recursive tree | 2,511 entries |
+| Main paths missing from successor | **0** |
+| Shared blob differences | 169 |
+| Shared directory-tree differences | 36 |
+| Executable-mode differences | 3 |
+| Successor-only entries | 1,118 (1,107 blobs, 11 trees) |
+| Changed workflow files | 48 |
+| Changed test/fixture paths | 393 |
+| XRP-related paths | 975 |
+
+The three shared-file mode changes are:
+- `barrot_agent/analysis/xrp_telemetry_matrix.py`: main executable, successor non-executable.
+- `barrot_agent/ingestion/council_ingest_node.py`: main executable, successor non-executable.
+- `barrot_agent/orchestration/orchestrator_bridge.py`: main executable, successor non-executable.
+
+No main path is missing. These three mode changes remain explicit review items; they have not been silently normalized.
+
+### Exact-head CI — code head 9c69f1a
+
+**Push CI run 43768474012 passed on the exact code head:**
+- Full repository suite: **3,820 passed, 0 failed, 1 skipped, 19 subtests passed** in 104.74 seconds.
+- Inclusive coverage: **64.02%** across 27,650 statements; legacy core coverage **77%**.
+- Core suite: **743 passed, 0 failed, 8 subtests passed**.
+- Wheel build passed.
+- Installed wheel verified Barrot V3, the priority-1 XRP mission and canonical data assets.
+- Full-suite job included every repository test, not only the core CI selection.
+
+Evidence:
+- [Exact-head full suite 43768474012](https://github.com/Barrot-Agent/B-Agent/actions/runs/43768474012)
+- [Push fail-closed gate 43768474015](https://github.com/Barrot-Agent/B-Agent/actions/runs/43768474015)
+- [Six-manifest dependency audit 43768474026](https://github.com/Barrot-Agent/B-Agent/actions/runs/43768474026)
+
+The six-manifest audit covered root runtime, development, supplemental integrations, Hugging Face Space, legacy and PEP 621 dependencies; pip-audit reported no known vulnerabilities. The fail-closed gate passed.
+
+PR-event checks on the same head:
+- [PR CI 43768476667](https://github.com/Barrot-Agent/B-Agent/actions/runs/43768476667): Pages build-only validation passed; core and full-suite jobs were skipped by the integration-branch condition.
+- [PR dependency audit 43768476648](https://github.com/Barrot-Agent/B-Agent/actions/runs/43768476648): passed.
+- [PR fail-closed gate 43768476665](https://github.com/Barrot-Agent/B-Agent/actions/runs/43768476665): passed.
+
+The authoritative full-suite result is the push-triggered run 43768474012, not the skipped PR-event job.
+
+**Current main CI:** [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed on main SHA `1f30e5c...`: 848 passed, zero failed, one skipped and eight subtests passed. Main's current suite is materially smaller than the successor's full repository suite.
+
+### Workflow and side-effect review
+
+All 48 changed workflow diffs were enumerated. Fourteen high-impact workflow definitions and their principal execution boundaries were inspected in content.
+
+Verified containment:
+- Ask Barrot, Audio Ingest, Barrot Agent, Barrot Sync, Ping-Pong, self-upgrade, self-benchmark, Databricks bundle and Hugging Face sync legacy writers/deploy paths are quarantined or disabled with empty permissions / false job conditions.
+- `barrot-ops.yml` is manual, main-only, exact-source-SHA checked and requires explicit per-run approval for Databricks workspace overwrite or Kaggle dataset download. It was not dispatched.
+- `deploy-a2a-worker.yml` requires separate YES confirmations for deployment and secret rotation plus exact-main-SHA validation. It was not dispatched.
+- `coinbase-paper-trader.yml` is manual, main-only, typed-YES gated, exact-SHA checked, validates persisted position product identity, and publishes artifacts only. It was not dispatched.
+- Groq-backed design/discovery/triage/financial/frontier/signal/WebMCP workflows are manual, require explicit YES and exact main SHA, use read-only repository permissions and publish artifacts. No external-model workflow was dispatched.
+- `sync-self-hosted-brain.yml` is hard-disabled. No Hugging Face Space was restarted or deployed.
+- `xrp-public-ingestion.yml` schedules hourly and daily, is main-ref guarded, uses actions/contents read permissions, restores only prior artifacts, and publishes 90-day GitHub artifacts plus cache. It is not WORM storage and has not run on main because it is not merged.
+- No Databricks write, Kaggle download/submission, deployment, secret rotation, paper trade, external-model data transfer or repository write occurred.
+
+The workflow review is not a complete semantic review of all called scripts and all 1,276 changed paths. The remaining code/research/test review is still a merge blocker.
+
+### Current main OpenCode PAT configuration
+
+Main commit `1f30e5c...` changes `opencode.json` to send `Authorization: Bearer {env:GITHUB_MCP_TOKEN}` and disables OAuth. Main README/AGENTS/MEMORY describe the token as already stored in the OpenCode service environment. No OpenCode `/mcps` health result or successful test request was available to verify that claim or its token scope. The successor README correctly labels the OpenCode GitHub MCP connection **unverified until a health check and test request succeed**. The ChatGPT GitHub connector is authenticated, but its repository permission snapshot remains admin/maintain/push/pull/triage and is overprivileged. Do not equate the ChatGPT connector with a tested OpenCode PAT connection.
+
+### Fresh XRP market and derivatives observations — descriptive only
+
+Capture time: 2026-11-15T22:32:23Z. These web/API-rendered observations have **no byte-exact raw-payload SHA-256 receipts** and are not model eligible.
+
+**Spot**
+- OKX XRP-USDT provider timestamp: 2026-11-15T22:21:21.864Z; age at capture 661.136 seconds. Last 0.9679, bid 0.9677, ask 0.9678; best-level bid size 106.404113 XRP and ask size 9,345.405602 XRP; 24h volume 64.372M XRP; rolling 24h open 0.9104, high 0.9795, low 0.8929; UTC-day open 0.9145; UTC+8 open 0.9579.
+- Kraken XRP/USD: last 0.96926, bid 0.96920, ask 0.96921; 24h volume 47.456M XRP; event timestamp not supplied. Best-level sizes were 114 XRP bid and 1,582 XRP ask.
+- OKX USDT-USD provider timestamp: 2026-11-15T22:00:28.065Z; age 1,914.935 seconds; last 0.99959. Same-venue timestamp skew against the XRP-USDT quote is **1,253.799 seconds**, exceeding the 60-second normalization gate. USD normalization is rejected.
+- The cross-venue mid difference is roughly 15 basis points, but the observations are stale/unsynchronized and Kraken supplies no event timestamp. It is not an arbitrage signal.
+- Bybit spot ticker returned HTTP 403 through this retrieval route. OKX and Kraken depth endpoints were inaccessible in this pass. The displayed top levels are not full-depth liquidity.
+
+Primary endpoint references:
+- [OKX XRP-USDT ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT)
+- [Kraken XRP/USD ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD)
+- [OKX USDT-USD ticker](https://www.okx.com/api/v5/market/ticker?instId=USDT-USD)
+
+**Derivatives provider disagreement**
+- Liqwall, stated update 20:12 UTC: XRP $0.9617; open interest about $1.01B, down 4.5% over 24h; average funding −0.0007%/8h; liquidations $28.4M ($24.2M longs, $4.2M shorts); 72.7% of Binance XRP-position accounts long.
+- TradRadar, stated update 16:00 UTC: XRP $0.9548; open interest $1.33B across seven exchanges, down 6.53%; funding −0.0027%/8h; liquidations at least $37.51M ($33.87M longs, $3.65M shorts); long/short ratio 3.14 (75.9% long).
+- These provider universes, update times and liquidation coverage differ. Preserve both; do not average. Long-heavy liquidations and negative funding support a deleveraging hypothesis, not a directional forecast.
+
+Sources: [Liqwall](https://liqwall.com/coins/xrp) · [TradRadar](https://tradradar.io/markets/xrp).
+
+**ETF flow disagreement**
+- XRP Insights, settled Nov 6–13 holdings-change method: −6.1M XRP (approximately −$6.5M), 1.19B XRP held and $1.22B AUM. Nov 13 daily change +3.4M XRP. GXRP is excluded from flow while its holdings remain in totals because a scrape block/catch-up issue remains.
+- XRP Insights' Nov 14 wallet snapshot reports 22.26B XRP in attributed exchange wallets. Across 23 exchanges with unchanged tracked wallet sets, same-wallet balances increased 25.7M XRP over Nov 7–14; Binance is excluded because its tracked wallet set changed. This is not beneficial ownership, tradable float or a cash-flow measure. The earlier Run171 −97.9M XRP seven-day observation has a different exchange universe/coverage and is not silently overwritten.
+- Alpha Finance, five-fund/SoSoValue-style series through Nov 13: weekly −$19.1M; Nov 9 −$10.4M, Nov 10 −$7.6M, Nov 13 −$1.1M, with zero entries on missing sessions. XRP Macro/CoinGlass prints match the SoSoValue values to the decimal; they are not independent confirmation.
+- CryptoKeyhole reports Nov 13 partial −9,967 XRP from three of four funds while awaiting XRPZ; Nov 12 was a complete +4,337,131 XRP. Its Nov 16 issuer-file row shown as read Nov 14 is temporally impossible and remains quarantined.
+
+Sources: [XRP Insights](https://xrp-insights.com/news/xrp-supply-report-2026-11-14) · [Alpha Finance](https://alphafinance.io/etf/xrp/) · [XRP Macro](https://xrpmacro.com/brief/b2f4c6d8-1113-4a11-9e13-20261113a0e1) · [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+
+### Institutional relationship confirmations
+
+- Ripple's October 28 Coinbase announcement confirms RLUSD distribution on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as a future follow-up, not as already live. This is RLUSD distribution, not evidence that XRP is required for every settlement. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- Ripple/BNY's October 27 announcement confirms BNY custody support for XRP and RLUSD. Tokenized trade-finance use cases are exploratory, not verified production throughput or BNY proprietary XRP buying. [Ripple/BNY primary announcement](https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/).
+- No new primary-source correction to SBIC East/Central/West versus SBI Holdings, ASK Coin, “actual capital,” or Kamilah/Camilla Stevenson identity was established in this run. Existing identity decisions remain: regional SBIC entities are distinct from SBI Holdings; no canonical XRPL ASK issuer or OpenAI/SBIC commercial partnership is verified; “actual capital” is not a standardized XRP metric; Kamilah person identity is verified but candidate YouTube channel ownership remains unverified.
+
+### Prediction readiness — current files re-read
+
+- `research/xrp_intelligence/event_registry_current.json`: 85 events, 64 independence groups; 42 verified, 42 provisional, one disputed; **85/85 lack raw_source_sha256** and **43/85 lack publisher publication timestamps**.
+- `web/latest_signal.json`: `NOT_ISSUED`; data cutoff, target, horizon and probabilities are null.
+- `web/signal_accuracy.json`: `NOT_EVALUATED`; fixed-horizon OOS accuracy is null; the legacy variable-horizon percentage is invalid.
+- The primary mission manifest remains priority 1 and active on the successor.
+- The implemented engine includes 51 public-source definitions, 49 scheduled definitions, SHA-256 receipt-chain prototype, point-in-time SQLite feature store, event timeline/counter-hypotheses, four baselines, purged/embargoed walk-forward evaluation, paired block bootstrap, calibration, drift monitoring and a fail-closed forecast ledger.
+- Still missing: byte-exact receipts, independent WORM/trusted timestamps, synchronized historical multi-venue data, qualified candidate superiority against all four baselines, and independent shadow outcomes. Scheduled ingestion is not verified on main.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast, paper trade or real-money action.
+
+### Nine-platform and PR governance
+
+| Platform | Current verified state |
+|---|---|
+| ChatGPT | Current GitHub connector authenticated; repository permissions overprivileged |
+| Claude | Unverified |
+| Grok | Unverified |
+| Gemini | Unverified |
+| Copilot | One-off review activity; no formal approval |
+| Codex | Unverified |
+| Hugging Face | Previous BUILD_ERROR; no verified deployment |
+| Kaggle | Untested; no submission |
+| Databricks | Previous HTTP 403; no write |
+
+No external-model dispatch, nine-platform evidence exchange or independent red-team quorum occurred.
+
+The current open-PR inventory is **9**, not the older Run173 count of 373: one PR targets main (#1663); eight remain open against separate research/security bases and are preserved as unique/unreviewed or blocked. They are #1541 (MMI claim-identity security; blocked pending credential-owner review), #1460 (institutional multirail/Binance/Kamilah research), #1450 (Binance phase-one/escrow audit), #1440 (archive-validation repair), #1437 (source-addenda repair), #1436 (Binance XRP theft graph), #1353 (ledger shard migration) and #1265 (index-pointer migration). No source PR was closed.
+
+PR #1663 has zero formal reviews, zero approvals and zero review threads. CodeRabbit reports draft PRs are not automatically reviewed. It remains draft and must not be merged.
+
+### Security, merge blockers and preservation
+
+- Main branch-protection read returned HTTP 403. The visible fallback ruleset 10863829 is disabled. Required protection contexts and independent approval requirements cannot be verified through this connection.
+- Repository connector permission snapshot remains admin/maintain/push/pull/triage; least privilege is unresolved.
+- The eight remaining open PR branch tips were previously found to contain the same tracked 216-byte `.config/gh/hosts.yml` blob (Git blob SHA `f58b27f14436088db99662d3a45c59b8437ec3a1`). Its contents were not read; it is absent from current main and successor. This is a potential credential exposure, not a confirmed compromise. The eight branches remain preserved. Provider-side revocation is unverified.
+- `scripts/self_benchmark.py` previously showed Groq-generated Python execution through subprocess without a restrictive environment/network/filesystem sandbox. Its successor workflow is quarantined; do not re-enable until sandboxing is verified.
+- The current nine-platform map remains a Run173 snapshot; its repository-state fields need a Run176 refresh. The full 1,276-path semantic review and remaining called-script review are incomplete.
+- The three executable-mode differences listed above require disposition.
+- Main's OpenCode PAT configuration is not a verified connection; no token value was read or exposed.
+
+**NO MERGE.** Exact-head CI is green, but draft state, zero independent reviews/approvals, incomplete semantic review, three mode differences, overprivileged connector access and inaccessible branch-protection details remain blockers.
+
+### Run176 next concrete actions
+
+1. Refresh the nine-platform map's repository-state section to main `1f30e5c` and successor `9c69f1a`, without claiming untested provider connections.
+2. Complete semantic review of all 1,276 changed paths, prioritizing the 48 workflows, their called scripts, the 169 divergent shared blobs and the three executable-mode changes.
+3. Obtain independent review and verified branch-protection/required-check evidence; resolve least-privilege connector access.
+4. Preserve the eight unique research/security PRs; do not close them.
+5. Capture byte-exact source receipts for the 85 event records, resolve missing publisher timestamps and establish independent WORM/trusted timestamp anchoring.
+6. Verify scheduled XRP ingestion only after a compliant merge to main and then verify the main-run artifacts.
+7. Do not train/issue a directional candidate until the OOS and independent shadow policy passes.
+
+No main-branch write, merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission/download, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
