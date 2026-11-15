@@ -5203,3 +5203,92 @@ ChatGPT is GitHub-authenticated but the connection is overprivileged (admin/main
 7. Keep directional forecast issuance disabled until the complete versioned admission certificate passes.
 
 No branch or PR was created, no merge or deployment occurred, no source PR was closed, no external model was dispatched, no Kaggle submission or paper trade occurred, no funds moved, no secret was rotated, and no force-push or destructive worktree action occurred.
+
+
+---
+
+## Run148 — 2026-11-15 — workflow control-plane review, current derivatives and RLUSD on-chain reconciliation
+
+### Repository and verification
+
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration head at the start of this update: `5f5f0032e98b31e7b928a89302df999a9f6adcc8`; 2,443 commits ahead, zero behind.
+- Recursive trees remain complete: main 1,393 entries; integration 2,473 entries.
+- PR #1662 remains open/draft, 1,232 changed files, zero formal reviews, zero review threads. Open inventory: 373 (361 drafts, 12 non-drafts).
+- Previous code head `d13726b` passed 3,762 tests, zero failures, one skipped, 19 subtests, 63.96% inclusive coverage and 77% legacy-core coverage; wheel and installed V3/mission verification passed.
+- Evidence head `5f5f003`: dependency audits passed on push and PR; fail-closed gates passed; PR-only Pages validation passed. The exact-head full repository suite was still running at capture time; no parent-head result is substituted.
+- Main CI passed 848 tests, one skipped and eight subtests. Main Pages build failed at `GLOBAL_STATE_MANIFEST.md:6456`; deployment was skipped. Main Barrot Sync run succeeded.
+
+### 48-workflow control-plane audit
+
+All 48 changed workflow files were inspected for trigger types, permissions, secrets, external-provider calls, artifacts, repository writes, deployment and approval guards. This is a control-plane review; semantic review of all 1,232 changed paths and every called script remains incomplete.
+
+- 27 workflows are disabled/quarantined with `permissions: {}` or an always-false job. This includes Ask Barrot, audio ingest, autonomous agent/self-upgrade/speech, automatic sync, Databricks bundle deploy, Cloudflare diagnostics, legacy signal cycles, Ping-Pong, subagent matrix/spawn, Hugging Face sync, task allocator, Groq tests, WebMCP sandbox, lyrics and media generation.
+- Nine Groq-backed manual research/design workflows require explicit per-run public/authorized-data confirmation and exact main SHA. They use `contents: read`, `persist-credentials: false`, and artifact-only outputs. None was dispatched.
+- Barrot Ops requires separate approval and expected source SHA before Databricks workspace overwrite or Kaggle dataset download. No Databricks write, Kaggle download or submission occurred.
+- A2A Cloudflare deployment requires separate deploy YES and secret-rotation YES plus exact main SHA. It was not dispatched.
+- Coinbase paper simulation requires typed YES, expected main SHA, product identity preflight and artifact-only output. It was not dispatched.
+- Self-hosted brain deployment remains disabled by `if: false`; no Hugging Face deployment or secret rotation occurred.
+- CI, dependency audit, Cross Analysis, Riemann harvest, hover-bike artifacts, WebMCP enrichment and XRP ingestion are read-only or artifact-only. The formal verification workflow is manual/read-only, with optional external Lean toolchain installation. The merge gate is audit-only and cannot merge.
+
+The XRP ingestion workflow exists only on integration and is main-ref-only, so it cannot run on the integration branch. It is scheduled hourly at minute 3 and daily at 00:15 UTC, with Actions/Contents read permissions. Raw and receipt artifacts retain 90 days, per-run feature checkpoints seven days, daily feature archives 90 days; SQLite also uses an evictable Actions cache. This is not WORM storage. No successful scheduled run on main is verified.
+
+### Prediction-engine coverage limits verified in code
+
+- Historical walk-forward price evaluation currently uses Binance XRP/USDT and Coinbase XRP/USD hourly closes.
+- Derivatives history/features remain Binance USD-M XRPUSDT only; Binance OI and global long/short history are limited to 30 days.
+- Binance/Coinbase order books are raw-only without a validated exchange sequence/timestamp bridge. Kraken depth requires a fresh HTTP Date; OKX depth requires a fresh exchange timestamp but still lacks sequence continuity. Deribit XRP-USDC L2 remains raw-only until amount units, depth semantics and sequence continuity are validated.
+- CFTC data are parsed with separate units/taxonomies but remain model-ineligible. XRP Insights ETF/exchange-wallet balances and several issuer pages remain hash-only/raw-only until wallet-set, fund-universe, date-vintage and parser semantics are validated.
+- Free noncommercial XRPL nodes are excluded from scheduled use under provider terms; a self-hosted or contracted commercial endpoint is required.
+- The evaluator uses naive, momentum, mean-reversion and volatility baselines with purged/embargoed chronological splits. Multi-day target windows overlap; no dependence-aware confidence interval or temporal/source-clustered moving-block bootstrap is implemented. Automatic feature-store rebuild from raw artifacts is not implemented.
+- Receipt IDs and per-run/cross-run chains are SHA-256 verified and fsynced, but the chain is tamper-evident only relative to its final head. There is no independent WORM anchor or trusted timestamp. Raw artifacts expire after 90 days.
+
+### Spot and derivatives — research only
+
+At approximately 01:13:35 UTC:
+
+- OKX XRP-USDT: $0.9120, provider timestamp 01:08:48.876 UTC (286 seconds old), bid/ask $0.9120/$0.9121, 24h open $1.0066, high $1.0104, low $0.8929, approximately 93.69M XRP volume. This is near the 300-second freshness limit but was captured as rendered web output, not raw bytes, and is only a top-of-book quote.
+- Kraken returned $0.91569 without an exchange event timestamp; Bybit's latest request returned HTTP 403. No synchronized multi-venue L2 snapshot was obtained.
+- Liqwall at 01:02 UTC: $0.9306 reference price, $1.00B OI (-1.2% 24h), average funding -0.0040% per eight hours, $46.0M liquidations ($44.5M longs, $1.5M shorts), 72.2% of Binance position accounts long and 65.1% of top traders long.
+- Alpha Finance at 23:48 UTC: $1.94B OI, $4.14B 24h volume, $49.8M long and $989.4K short liquidations. Its projected liquidation clusters are modelled from OI and standard leverage tiers, not actual resting orders.
+- TradRadar at 20:00 UTC: $1.40B OI across seven venues, -7.25% 24h, funding -0.0047% per eight hours, at least $24.71M liquidations ($24.01M longs, $698K shorts), and 78.1% long accounts across its five-venue ratio sample.
+- OptimistFi/Deribit at Nov 14 16:00 UTC: 30-day ATM IV 60.5%, 25-delta skew -1.7 points, Dec 25 put/call OI 0.55 and $43.8M OI. Downside puts are richer while calls still outnumber puts in that expiry.
+
+Long-liquidation dominance and negative funding agree across providers. OI nevertheless ranges from $1.00B to $1.94B and reported OI changes differ. Account ratios are not notional exposure. No averaging or directional inference is justified.
+
+### RLUSD and XRPL stablecoin supply
+
+**Legal issuer:** Ripple's official transparency page identifies Ripple Custody & Trust Co.; its footnote identifies the legal entity as Standard Custody & Trust Company, LLC doing business as Ripple Custody & Trust Co. This is a naming clarification, not a second issuer. Official customer terms were updated October 14, 2026. Eligible customers may redeem one RLUSD for one US dollar less fees subject to the customer agreement; ordinary holders have no direct right to reserve assets. The official dashboard shows $2.6899B circulating and $2.8265B reserve funds as of November 12 (about 105.1% derived coverage). The latest monthly CPA attestation listed is September 2026; the Nov 12 dashboard balance is not a November CPA report.
+
+**XRPL supply triangulation:** Current tracker observations cluster around 762.8–764.1M RLUSD on XRPL: DefiLlama's chain-page total and 89.66% RLUSD dominance imply about 763.94M; XRPL Dashboard's own-node page shows 762.82M; current search snippets from XRPL.to and xrpl.fi show 762.8M; stables.cool shows 764.1M. StableRadar's direct ledger read is 754.15M at ledger 108303573 on Nov 13 12:43 UTC and is older. Its separate embedded DefiLlama row says 829.35M, inconsistent with DefiLlama's own chain-page implied value. The 829.35M row is not accepted.
+
+**All-chain supply remains unresolved:** Ripple's Nov 12 dashboard shows $2.6899B; StableRadar's Nov 13 direct multi-chain read shows $2.6882B; its DefiLlama table shows $2.7020B; XRPL Dashboard estimates $2.78B across XRPL and Ethereum, but explicitly leaves the Ethereum side unanchored. Do not average these snapshots or infer net issuance from the difference.
+
+**24-hour flow claims are internally inconsistent:** XRPL Dashboard's detail page shows XRPL net change -$1.27M, Ethereum mints +$19.37M and total +$18.10M. Its homepage separately says XRPL supply fell $54.5M (-6.66%). The claim registry classifies the 24-hour net-change claim as `self-attested-only`, last verified September 26, with no independent cross-check path, despite the detail page's newer text saying an independent RPC agrees. No RLUSD net-flow feature is admitted.
+
+DefiLlama's Nov 14 XRPL page reports $852.04M total stablecoins (-12.72% seven days), 89.66% RLUSD dominance, $28.31M DeFi TVL (-12.22% 24h), $8.02M DEX volume over 24h and $44.21M over seven days (+67.62%), but DEX/CEX dominance is only 0.02%. Rising DEX turnover coexists with falling stablecoin supply and TVL; it does not establish net capital inflow. Tracker pages have stale cached views and current search snippets; no raw response bytes were captured.
+
+XRPL.to's public page explicitly restricts automated clients to its documented API and directs bulk/partnership use through the provider. Do not scrape its UI or add it to scheduled ingestion without API authorization.
+
+### Entity and forecast status
+
+No new primary-source change was found for SBIC East/Central/West versus SBI Holdings/SB OAI Japan, ASK Coin, "actual capital", or Kamilah Stevenson channel ownership. Prior distinctions remain. No external-model dispatch occurred.
+
+**Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`.** No Run148 market or stablecoin observation is admitted to the feature store. No directional forecast, paper trade or real-money action occurred.
+
+### Merge decision
+
+**NO MERGE.** PR #1662 remains draft with no independent approvals. Full semantic reconciliation of 1,232 paths is incomplete; branch protection is not verifiable (HTTP 403), fallback ruleset 10863829 is disabled, CODEOWNERS is `* @Barrot-Agent`, the GitHub connection is overprivileged, and a merge that fixes Pages may trigger publication. No source PR was closed.
+
+### Next actions
+
+1. Finish exact-head full-suite verification on the current evidence commit and retain its run ID/test counts.
+2. Complete semantic reconciliation of all changed paths and retain the 48-workflow control-plane inventory.
+3. Obtain independent review, least-privilege access and verifiable branch protection.
+4. Obtain explicit Pages publication authorization before any merge that triggers deployment.
+5. Obtain documented API permission before automated use of restricted XRPL data-provider UIs.
+6. Reconcile RLUSD chain balances with synchronized ledger reads, the official issuer dashboard and the next independent CPA report.
+7. Add dependence-aware block-bootstrap evaluation, synchronized multi-venue spot/L2/derivatives history and independent shadow outcomes before training/admitting an XRP candidate.
+8. Keep forecast issuance disabled.
+
+No branch or PR was created, no merge/deployment occurred, no source PR was closed, no external model was dispatched, no Databricks write or Kaggle submission occurred, no paper trade or funds transfer occurred, no secret was rotated, and no force-push or destructive worktree operation occurred.

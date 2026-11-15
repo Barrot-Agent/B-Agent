@@ -1,0 +1,324 @@
+{
+  "schema_version": "barrot.xrp.run-audit.v1",
+  "run_id": 148,
+  "captured_at_utc": "2026-11-15T01:13:35Z",
+  "mission": {
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3",
+    "forecast_issuance_enabled": false,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "repository": {
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_sha_before_append": "5f5f0032e98b31e7b928a89302df999a9f6adcc8",
+    "ahead_by": 2443,
+    "behind_by": 0,
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2473,
+    "open_prs": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "pr1662": {
+      "state": "open",
+      "draft": true,
+      "changed_files": 1232,
+      "commits_ahead": 2443,
+      "reviews": 0,
+      "review_threads": 0
+    },
+    "overlap_candidates": [
+      1661,
+      1660,
+      1643,
+      1642,
+      1640
+    ],
+    "unique_work_preserved": [
+      1653,
+      1655,
+      1659,
+      1641,
+      1614,
+      1615,
+      1269
+    ]
+  },
+  "verification": {
+    "previous_code_head": {
+      "sha": "d13726ba48bc7ca4a25ca6454517f328d7bca4fd",
+      "run": 43660665894,
+      "status": "PASS",
+      "passed": 3762,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_pct": 63.96,
+      "legacy_core_coverage_pct": 77,
+      "wheel": "PASS",
+      "installed_mission": "PASS"
+    },
+    "evidence_head": {
+      "sha": "5f5f0032e98b31e7b928a89302df999a9f6adcc8",
+      "full_suite_run": 43661944409,
+      "status": "IN_PROGRESS",
+      "dependency_audit_push": "PASS",
+      "dependency_audit_pr": "PASS",
+      "fail_closed_push": "PASS",
+      "fail_closed_pr": "PASS",
+      "pages_pr_validation": "PASS"
+    },
+    "main_ci": {
+      "run": 43650499432,
+      "status": "PASS",
+      "passed": 848,
+      "skipped": 1,
+      "subtests": 8
+    },
+    "main_pages": {
+      "run": 43650499344,
+      "status": "FAIL",
+      "error": "Liquid syntax error GLOBAL_STATE_MANIFEST.md:6456",
+      "deploy": "SKIPPED"
+    },
+    "main_sync": {
+      "run": 43650499411,
+      "status": "SUCCESS"
+    },
+    "dependency_manifests": 6,
+    "known_vulnerabilities_reported": 0
+  },
+  "workflow_audit": {
+    "changed_workflows_reviewed": 48,
+    "review_scope": "triggers, permissions, secrets, external calls, artifacts, writes, deploys and approval gates; not line-by-line audit of all called scripts",
+    "quarantined_count": 27,
+    "manual_groq_workflows": 9,
+    "manual_groq_controls": "per-run public/authorized-data YES, exact main SHA, contents:read, persist-credentials:false, artifact-only; none dispatched",
+    "manual_external_actions": {
+      "barrot_ops": "Databricks overwrite/Kaggle dataset download require separate YES and expected source SHA; no dispatch",
+      "a2a_deploy": "Cloudflare deploy and secret rotation require separate YES and exact main SHA; no dispatch",
+      "coinbase_paper_trader": "typed YES, expected main SHA, product identity preflight, artifact-only; no dispatch",
+      "self_hosted_brain": "disabled by if:false"
+    },
+    "scheduled_read_only": [
+      "ci",
+      "dependency-audit",
+      "cross-analysis",
+      "riemann-harvest",
+      "hover-bike-updates",
+      "webmcp-monetization-enrich",
+      "xrp-public-ingestion"
+    ],
+    "xrp_ingestion": {
+      "main_present": false,
+      "integration_present": true,
+      "main_ref_only": true,
+      "schedule": [
+        "minute 3 hourly",
+        "00:15 UTC daily"
+      ],
+      "permissions": [
+        "actions:read",
+        "contents:read"
+      ],
+      "artifact_retention_days": 90,
+      "feature_checkpoint_days": 7,
+      "daily_archive_days": 90,
+      "cache": true,
+      "WORM": false,
+      "successful_main_run_verified": false
+    },
+    "governance": {
+      "codeowners": "* @Barrot-Agent",
+      "fallback_ruleset": 10863829,
+      "enforcement": "disabled",
+      "branch_protection_read": "HTTP 403",
+      "github_permission": "admin/maintain/push/pull/triage"
+    }
+  },
+  "prediction_engine": {
+    "source_definitions": 50,
+    "historical_price_coverage": "Binance XRP/USDT and Coinbase XRP/USD hourly closes",
+    "derivatives": "Binance USD-M XRPUSDT only; OI/global long-short history 30 days",
+    "orderbooks": "Binance/Coinbase raw-only; Kraken requires fresh HTTP Date; OKX requires fresh timestamp but no sequence continuity; Deribit XRP-USDC L2 raw-only",
+    "CFTC": "parsed with separate units but model-ineligible",
+    "ETF_wallets": "hash-only/raw-only until fund/wallet/date semantics validated",
+    "XRPL_nodes": "free noncommercial nodes excluded by provider terms",
+    "evaluation": "naive/momentum/mean-reversion/volatility baselines; purged/embargoed walk-forward; no dependence-aware block bootstrap",
+    "storage": "SQLite append-only application triggers; 90-day GitHub artifacts/cache; no WORM or external timestamp anchor",
+    "limitations": [
+      "multi-day targets overlap without dependence-aware confidence intervals",
+      "automatic rebuild from raw artifacts not implemented",
+      "no trained XRP-specific candidate",
+      "no independent shadow cohort"
+    ],
+    "acceptance_gate": "candidate beats all four baselines on Brier and log loss; train/OOS/shadow >=100 raw samples; OOS/shadow ESS>=10 and >=10 horizons; >=10,000 paired temporal/source-clustered block-bootstrap replicates; 99.375% individual confidence for 95% familywise coverage; upper bounds below zero; >=5 receipt-backed outcome clusters with >=2 origins each; leakage PASS; drift STABLE; shadow PASS; weighted calibration error <=0.05; independent Ed25519 attestation"
+  },
+  "spot": {
+    "cutoff_utc": "2026-11-15T01:13:35Z",
+    "max_quote_age_seconds": 300,
+    "okx": {
+      "last": 0.912,
+      "bid": 0.912,
+      "ask": 0.9121,
+      "provider_time": "2026-11-15T01:08:48.876Z",
+      "age_seconds": 286,
+      "open24h": 1.0066,
+      "high24h": 1.0104,
+      "low24h": 0.8929,
+      "volume24h_xrp": 93694205,
+      "top_level_bid_ask_size_ratio": 1.92,
+      "model_eligible": false,
+      "reason": "rendered web response, no raw bytes, one level only"
+    },
+    "kraken": {
+      "last": 0.91569,
+      "event_time": false,
+      "model_eligible": false
+    },
+    "bybit": {
+      "latest_status": "HTTP 403"
+    },
+    "note": "asynchronous spot observations differ from Liqwall/Alpha snapshots; no synchronized L2"
+  },
+  "derivatives": {
+    "liqwall": {
+      "time": "2026-11-15T01:02:00Z",
+      "price": 0.9306,
+      "OI_usd": 1000000000,
+      "OI_change_24h_pct": -1.2,
+      "funding_8h_pct": -0.004,
+      "liquidations_usd": 46000000,
+      "longs_usd": 44500000,
+      "shorts_usd": 1500000,
+      "long_share_pct": 97,
+      "binance_accounts_long_pct": 72.2,
+      "top_traders_long_pct": 65.1,
+      "url": "https://liqwall.com/coins/xrp"
+    },
+    "alpha": {
+      "time": "2026-11-14T23:48:00Z",
+      "price": 0.9081,
+      "OI_usd": 1940000000,
+      "volume24h_usd": 4140000000,
+      "long_liquidations_usd": 49800000,
+      "short_liquidations_usd": 989400,
+      "clusters_modelled": true,
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/"
+    },
+    "tradradar": {
+      "time": "2026-11-14T20:00:00Z",
+      "OI_usd": 1400000000,
+      "venues": 7,
+      "OI_change_24h_pct": -7.25,
+      "funding_8h_pct": -0.0047,
+      "liquidations_min_usd": 24710000,
+      "longs_usd": 24010000,
+      "shorts_usd": 698190,
+      "long_accounts_pct": 78.1,
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    "options": {
+      "time": "2026-11-14T16:00:00Z",
+      "ATM_IV_30d_pct": 60.5,
+      "skew_25delta_points": -1.7,
+      "Dec25_put_call_OI": 0.55,
+      "Dec25_OI_usd": 43800000,
+      "url": "https://optimistfi.com/perps/options/xrp"
+    },
+    "conclusion": "long-liquidation dominance and negative funding agree; OI $1.00B-$1.94B differs by provider; no averaging or directional inference"
+  },
+  "rlusd": {
+    "legal_issuer": "Standard Custody & Trust Company, LLC d/b/a Ripple Custody & Trust Co.",
+    "issuer_dashboard": {
+      "as_of": "2026-11-12",
+      "circulating_usd": 2689900000,
+      "reserve_funds_usd": 2826500000,
+      "coverage_pct": 105.08,
+      "latest_monthly_CPA_attestation": "2026-09-30",
+      "url": "https://ripple.com/rlusd-transparency/"
+    },
+    "terms": {
+      "updated": "2026-10-14",
+      "eligible_customer_redemption": "one USD less fees subject to agreement",
+      "ordinary_holder_reserve_right": false,
+      "url": "https://ripple.com/legal/rlusd-customer-agreement/"
+    },
+    "xrpl_supply_estimates": {
+      "defillama_implied": 763939064,
+      "xrpldashboard": 762820000,
+      "xrpl_to_snippet": 762800000,
+      "stables_cool_snippet": 764100000,
+      "xrpl_fi_snippet": 762800000,
+      "stableRadar_direct": 754149934,
+      "stableRadar_ledger": 108303573,
+      "stableRadar_read_time": "2026-11-13T12:43:00Z",
+      "working_range": [
+        762800000,
+        764100000
+      ]
+    },
+    "all_chain_supply": {
+      "ripple_dashboard_nov12": 2689900000,
+      "stableRadar_direct_nov13": 2688199683,
+      "stableRadar_defillama_table": 2701980348,
+      "xrpldashboard_estimate": 2780000000,
+      "xrpldashboard_ethereum_side": "not anchored",
+      "status": "unreconciled"
+    },
+    "flow_claim_conflict": {
+      "detail_page_xrpl_24h_usd": -1270000,
+      "detail_page_total_24h_usd": 18100000,
+      "detail_page_eth_mints_usd": 19370000,
+      "homepage_xrpl_decline_usd": 54500000,
+      "homepage_decline_pct": 6.66,
+      "claim_registry": "self-attested-only; last verified 2026-09-26",
+      "status": "conflicting; no net flow admitted"
+    },
+    "defillama_xrpl": {
+      "stablecoins_usd": 852040000,
+      "change_7d_pct": -12.72,
+      "rlusd_dominance_pct": 89.66,
+      "TVL_usd": 28310000,
+      "TVL_change_24h_pct": -12.22,
+      "DEX_24h_usd": 8020000,
+      "DEX_7d_usd": 44210000,
+      "DEX_7d_change_pct": 67.62,
+      "DEX_CEX_dominance_pct": 0.02,
+      "active_addresses": 61813,
+      "transactions_24h": 4460000
+    },
+    "xrpl_to_terms": "automated clients must use documented API; no UI scraping"
+  },
+  "provenance": {
+    "raw_http_bytes_captured": false,
+    "raw_sha256_receipts_claimed": false,
+    "rendered_web_observations_only": true,
+    "disagreement_preserved": true
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authenticated; admin/maintain/push/pull/triage",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal approval",
+    "Codex": "unverified",
+    "HuggingFace": "no verified deployment",
+    "Kaggle": "untested",
+    "Databricks": "previous HTTP 403"
+  },
+  "actions": {
+    "branches_created": 0,
+    "prs_created": 0,
+    "prs_closed": 0,
+    "merges": 0,
+    "deployments": 0,
+    "external_model_dispatches": 0,
+    "kaggle_submissions": 0,
+    "paper_trades": 0,
+    "real_money_actions": 0,
+    "secret_rotations": 0,
+    "force_pushes": 0
+  }
+}
