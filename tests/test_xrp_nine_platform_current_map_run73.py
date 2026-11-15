@@ -88,10 +88,15 @@ def test_least_privilege_and_external_action_gates_remain_closed():
     assert exposure["path"] == ".config/gh/hosts.yml"
     assert exposure["main_branch_contains_path"] is False
     assert exposure["active_integration_branch_contains_path"] is False
-    assert exposure["other_open_pr_tips_checked"] == 17
-    assert exposure["other_open_pr_tips_containing_path"] == 17
+    assert exposure["other_open_pr_tips_checked"] == 15
+    assert exposure["other_open_pr_tips_containing_path"] == 15
     assert exposure["path_absent_from_all_current_pr_file_inventories"] is True
-    assert exposure["all_17_target_prs_open_and_base_main"] is True
+    assert exposure["other_closed_pr_tips_checked"] == 2
+    assert exposure["other_closed_pr_tips_containing_path"] == 2
+    assert exposure["all_17_target_prs_open_and_base_main"] is False
+    assert exposure["all_17_target_prs_base_main"] is True
+    assert exposure["same_blob_sha"] == "f58b27f14436088db99662d3a45c59b8437ec3a1"
+    assert exposure["same_blob_size_bytes"] == 216
     assert exposure["provider_side_revocation_verified"] is False
     assert exposure["revocation_independently_verified"] is False
     assert exposure["branch_tip_presence_verified_via_recursive_tree"] is True
@@ -627,7 +632,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_historical_while_run167_is_current():
+def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -638,7 +643,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_hist
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run167"
+    assert data["latest_run_id"] == "Run168"
     run165 = data["run165_snapshot"]
     assert run165["main_sha"] == data["repository_state"]["main_sha"]
     assert run165["pr_number"] == 1662
@@ -652,7 +657,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_hist
     assert run165_suite["exact_head"] is True
     run167 = data["run167_snapshot"]
     assert run167["main_sha"] == data["repository_state"]["main_sha"]
-    assert run167["integration_head_before_run167_map_commit"] == data["integration_pr"]["head_sha"]
+    assert run167["integration_head_before_run167_map_commit"] != data["integration_pr"]["head_sha"]
     assert run167["pr_number"] == 1662
     assert run167["open_prs"] == 373
     assert run167["drafts"] == 361
@@ -663,6 +668,17 @@ def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_hist
     assert run167_suite["tests_failed"] == 0
     assert run167_suite["exact_head"] is True
     assert run167["map_update_commit_ci_pending"] is True
+    run168 = data["run168_snapshot"]
+    assert run168["main_sha"] == data["repository_state"]["main_sha"]
+    assert run168["integration_head_before_run168_commit"] == "fd6ea9a759874f9d0043a4eeda87668696a8fcb9"
+    run168_suite = data["run168_ci_evidence"]["full_suite"]
+    assert run168_suite["head_sha"] == run168["integration_head_before_run168_commit"]
+    assert run168_suite["tests_passed"] == 3797
+    assert run168_suite["failed"] == 0
+    followup = data["run168_followup_snapshot"]
+    assert followup["integration_head_before_followup_commit"] == data["integration_pr"]["head_sha"]
+    assert followup["ci"]["full_repository_suite"]["failed"] == 12
+    assert followup["ci"]["full_repository_suite"]["exact_head"] is True
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
     assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
@@ -997,12 +1013,13 @@ def test_run162_current_head_verification_snapshot_tracks_latest_ci():
     assert current["accuracy_status"] == "NOT_EVALUATED"
 
 
-def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_are_fail_closed():
+def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_remain_historical():
     data = load_current()
     run = data["run167_snapshot"]
-    assert data["latest_run_id"] == "Run167"
-    assert run["pr_changed_files"] == data["integration_pr"]["changed_files"] == 1255
-    assert run["integration_head_before_run167_map_commit"] == data["integration_pr"]["head_sha"]
+    assert run.get("run_id") == "Run167"
+    assert run["pr_changed_files"] == 1255
+    assert data["integration_pr"]["changed_files"] == 1256
+    assert run["integration_head_before_run167_map_commit"] != data["integration_pr"]["head_sha"]
     assert data["run167_workflow_review"]["changed_workflow_files"] == 48
     assert data["run167_workflow_review"]["workflow_definition_triage_complete"] is True
     assert data["run167_workflow_review"]["called_script_semantic_review_complete"] is False
@@ -1021,3 +1038,48 @@ def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_are_fa
     defillama = next(x for x in data["source_provenance"] if x["source"] == "DefiLlama XRPL chain dashboard snapshot (Nov 15)")
     assert tokenpost["raw_sha256"] is None and tokenpost["model_eligible"] is False
     assert defillama["raw_sha256"] is None and defillama["model_eligible"] is False
+
+
+def test_run168_current_snapshot_security_hold_and_identity_resolution_are_explicit():
+    data = load_current()
+    assert data["latest_run_id"] == "Run168"
+    initial = data["run168_snapshot"]
+    assert initial["main_sha"] == data["observed_main_sha"]
+    assert initial["integration_head_before_run168_commit"] == data["run168_ci_evidence"]["full_suite"]["head_sha"]
+    assert data["run168_ci_evidence"]["full_suite"]["tests_passed"] == 3797
+    assert data["run168_ci_evidence"]["full_suite"]["failed"] == 0
+    followup = data["run168_followup_snapshot"]
+    assert followup["integration_head_before_followup_commit"] == data["integration_pr"]["head_sha"]
+    assert followup["ci"]["full_repository_suite"]["passed"] == 3785
+    assert followup["ci"]["full_repository_suite"]["failed"] == 12
+    assert followup["ci"]["full_repository_suite"]["exact_head"] is True
+    assert data["run168_corrective_commit_snapshot"]["tests_weakened"] is False
+    assert data["run168_workflow_review"]["changed_workflow_files"] == 48
+    assert data["run168_workflow_review"]["workflow_definition_triage_complete"] is True
+    assert data["run168_workflow_review"]["called_script_semantic_review_complete"] is False
+    assert data["run168_workflow_review"]["no_external_dispatch"] is True
+    market = data["run168_market_research"]
+    assert market["model_eligible"] is False
+    assert market["freshness_status"] == "STALE_AT_RECHECK"
+    assert market["raw_http_bytes_captured"] is False
+    assert market["quality_gates"]["normalized_usd_quote_admitted"] is False
+    assert set(("spot", "spot_order_book", "exchange_flows", "derivatives", "options", "etf_flows", "cftc")).issubset(data["current_market_snapshot"])
+    security = data["run168_security_hold"]
+    assert security["branch_tips_checked"] == 17
+    assert security["open_pr_tips_containing_path"] == 15
+    assert security["closed_pr_tips_containing_path"] == 2
+    assert security["same_blob_sha"] == "f58b27f14436088db99662d3a45c59b8437ec3a1"
+    assert security["credential_contents_read"] is False
+    assert security["provider_side_revocation_verified"] is False
+    assert data["run168_platform_status"]["verified_external_platforms_beyond_chatgpt_github_connector"] == 0
+    assert data["run168_no_external_actions"]["merge"] is False
+    assert data["run168_no_external_actions"]["real_money_action"] is False
+    identity = data["run168_identity_research"]
+    assert identity["sbic"]["companies"]["east"]["english_name"] == "SBIC East Japan"
+    assert identity["sbic"]["companies"]["central"]["english_name"] == "SBIC Central Japan"
+    assert identity["sbic"]["companies"]["west"]["english_name"] == "SBIC West Japan"
+    assert identity["sbic"]["sbi_holdings_is_separate"] is True
+    assert identity["sb_oai_japan"]["ownership"]["OpenAI_percent"] == 50
+    assert identity["kamilah_stevenson"]["video_inventory_status"] == "NOT_INVENTORIED_IDENTITY_LINK_UNVERIFIED"
+    assert data["forecast_status"] == "NOT_ISSUED"
+    assert data["accuracy_status"] == "NOT_EVALUATED"

@@ -8,6 +8,68 @@
 **Existing integration PR:** [#1662](https://github.com/Barrot-Agent/B-Agent/pull/1662), open and draft.  
 **Capture time:** 2026-11-15T16:07:11.322Z
 
+## Run168 addendum — primary-source SBIC resolution, branch-tip credential hold and exact-head regression correction
+
+**Current integration head before this corrective commit:** `10ec439b3f176b3c92aed1b1da6ec8146d2fbf1d`. The Run168 handoff/map/audit commit was tested separately and its full repository suite failed 12 evidence-contract regressions: 3,785 passed, 12 failed, one skipped and 19 subtests. The parent code head `fd6ea9a` had passed 3,797 tests with zero failures. The failures were confined to the evidence map and its historical regression assertions; no XRP runtime, V3 execution or prediction-engine runtime failure was identified.
+
+### Regression diagnosis and correction
+
+The Run168 map update replaced the existing `current_market_snapshot` object with a compact summary, dropping its historical `spot`, `spot_order_book`, `exchange_flows`, `derivatives`, `options`, `etf_flows` and `cftc` structures. That was incorrect. The historical snapshot is restored unchanged; Run168 market observations remain in a separate additive object.
+
+Two other evidence-contract defects were corrected:
+- The branch-protection description again explicitly states that required checks and approval rules are NOT_VISIBLE because the detailed endpoint returns HTTP 403.
+- The security inventory now distinguishes 15 open PR branch tips from two closed PR branch tips.
+- Run167 remains a historical snapshot. Run168 is the current run; tests now assert both snapshots independently.
+
+No test was removed, disabled or weakened. New Run168 assertions cover the current snapshot, exact-head CI, credential-tip counts, primary-source identity resolution and forecast gates. This corrective commit is on the existing integration branch; its exact-head full-suite result is pending.
+
+### Primary-source Japan identity resolution
+
+| Region | Legal entity | Official English designation | Location |
+|---|---|---|---|
+| East | Tokyo Small and Medium Business Investment & Consultation Co., Ltd. | SBIC East Japan | Tokyo |
+| Central | Nagoya Small and Medium Business Investment & Consultation Co., Ltd. | SBIC Central Japan | Nagoya |
+| West | Osaka Small and Medium Business Investment & Consultation Co., Ltd. | SBIC West Japan | Osaka |
+
+The East profile identifies Nagoya and Osaka as sister companies; Central and West profiles independently cross-link the other two. These are regional SME investment/development institutions, not SBI Holdings subsidiaries.
+
+Primary profiles:
+- [SBIC East / Tokyo](https://www.sbic.co.jp/company/profile/) — established November 15, 1963; corporate number 9011001030621.
+- [SBIC Central / Nagoya](https://www.sbic-cj.co.jp/company/about/) — established November 18, 1963; five prefectures in the Chubu region.
+- [SBIC West / Osaka](https://www.sbic-wj.co.jp/profiles/profile/) — established November 20, 1963; 24 prefectures in western Japan.
+- [SBI Holdings corporate profile](https://www.sbigroup.co.jp/english/company/information/profile.html) — established July 8, 1999; principal business is control and management of SBI Group through share ownership. This is a separate legal entity.
+
+SBIC East's June 12–13, 2025 training for investee companies included ChatGPT, Copilot, RAG, API implementation and information-leakage risk. This explains a plausible SBIC/ChatGPT phrase association but is not evidence of an OpenAI commercial partnership.
+
+### SB OAI Japan is a separate OpenAI–SoftBank joint venture
+
+[SB OAI Japan's official profile](https://www.sb-oai.co.jp/en/about/) states that SB OAI Japan GK is owned 50% by C Holdings Co., Ltd. and 50% by OpenAI; C Holdings is 51% SoftBank Corp. and 49% SoftBank Group Corp.
+
+On July 14, 2026, SB OAI Japan and SoftBank announced full launch of OpenAI-powered Patching as a Service to 3,000 eligible Japanese companies, with a planned delivery organization of approximately 1,000 personnel. [Official announcement](https://www.sb-oai.co.jp/en/news/20260714_01/)
+
+This is a direct OpenAI/SoftBank relationship, not an SBIC relationship or XRP integration.
+
+### Kamilah/Camilla Stevenson attribution remains quarantined
+
+A candidate public YouTube channel titled “Kamilah Stevenson | XRP & Stocks” surfaced, handle `@KamilahStevensonXrpStocks`, channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`. No first-party cross-link from the previously verified Dr Kamilah Stevenson identity to this channel was found. Candidate videos have not been inventoried or attributed. “Camilla” and “Camila” spelling variants remain unresolved.
+
+### Potential GitHub CLI credential exposure in historical PR branches
+
+A fresh recursive-tree scan checked 17 affected PR branch tips without reading file contents:
+- The same `.config/gh/hosts.yml` blob (Git blob SHA `f58b27f14436088db99662d3a45c59b8437ec3a1`, 216 bytes) is present in all 17 branch tips.
+- 15 tips belong to currently open PRs; two belong to closed PRs #1647 and #1644.
+- The path is absent from current main and the active integration branch.
+- The path is absent from all 17 current PR changed-file inventories, indicating inherited branch history.
+- Commit history records an earlier addition on February 24, 2026 and removal from mainline on November 10, 2026. Old divergent PR tips still retain it.
+
+The contents were not read or reproduced. Provider-side GitHub CLI OAuth revocation remains unverified. Treat this as a potential credential exposure: the account owner should revoke/rotate any affected GitHub CLI OAuth authorization. No secret rotation was performed. Preserve branch history; no force-push or history rewrite.
+
+### XRP quote freshness
+
+A second API retrieval returned unchanged OKX/Bybit provider event timestamps. The earlier 16:07 UTC quote snapshot is now stale; Kraken supplies no event timestamp. OKX's USDT/USD basis was already 782 seconds older than its XRP-USDT observation. No fresh synchronized spot, normalized USD quote or full-depth L2 snapshot was admitted. Raw HTTP bytes and source hashes were not captured, so all Run168 web market observations remain descriptive and model-ineligible.
+
+**Forecast remains NOT_ISSUED. Accuracy remains NOT_EVALUATED. Merge remains NO_MERGE.**
+
 ## Repository and exact-head verification
 
 - Complete recursive trees retrieved without truncation: main 1,393 entries; integration 2,498 entries.
@@ -31,7 +93,7 @@ Exact evidence:
 - [PR dependency audit 43731958198](https://github.com/Barrot-Agent/B-Agent/actions/runs/43731958198) — success.
 - [PR fail-closed gate 43731958269](https://github.com/Barrot-Agent/B-Agent/actions/runs/43731958269) — success.
 
-The Run168 handoff/map/audit commit is a new head. Its exact-head CI is pending and must be verified separately; the parent-head result is not carried forward as proof for the new commit.
+The Run168 handoff/map/audit commit 10ec439 was tested separately and its full repository suite failed 12 evidence-contract regressions (3,785 passed, 12 failed, one skipped, 19 subtests). No runtime XRP or V3 test failure was identified. A corrective commit restores the full current-market schema, updates the security-tip counts, preserves Run167 as historical and adds Run168-specific assertions; its exact-head CI is pending. The parent-head pass is not carried forward.
 
 ## Workflow and security review
 
