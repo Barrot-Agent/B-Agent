@@ -49,6 +49,28 @@
       "tests": 389,
       "web_or_config_assets": 4,
       "markdown_docs": 29
+    },
+    "latest_integration_head_before_final_handoff": "ac4354ed24d10abb8c6d6515bbbd9430809a97b1",
+    "commits_ahead_at_parent": 2437,
+    "tree_entries_at_parent": {
+      "main": 1393,
+      "integration": 2469
+    },
+    "pr_changed_files_at_parent": 1227,
+    "pr_additions_at_parent": 368805,
+    "pr_deletions_at_parent": 6309,
+    "pr_mergeable_state": "clean",
+    "pr_formal_reviews": 0,
+    "pr_review_threads": 0,
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "integration_prs": [
+        1662,
+        1661,
+        1660
+      ]
     }
   },
   "ci": {
@@ -110,7 +132,34 @@
       "run_id": 43653687093,
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43653687093",
       "conclusion": "success"
-    }
+    },
+    "final_exact_head": {
+      "head": "ac4354ed24d10abb8c6d6515bbbd9430809a97b1",
+      "full_suite_run_id": 43657451049,
+      "full_suite_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657451049",
+      "conclusion": "success",
+      "tests_passed": 3762,
+      "tests_failed": 0,
+      "tests_skipped": 1,
+      "subtests_passed": 19,
+      "inclusive_coverage_percent": 63.96,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_mission_verification": "passed",
+      "dependency_audit_run_id": 43657451018,
+      "dependency_audit_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657451018",
+      "fail_closed_run_id": 43657451052,
+      "fail_closed_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657451052",
+      "pr_pages_validation_run_id": 43657454952,
+      "pr_pages_validation_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657454952",
+      "pr_event_full_suite": "skipped by integration-branch event condition; push-triggered exact-head run above is the full-suite evidence"
+    },
+    "packaging_warnings": [
+      "setuptools warns that barrot_agent.data.missions is absent from the explicit packages configuration",
+      "setuptools warns that data.research is absent from the explicit packages configuration",
+      "project.license TOML table deprecation warning",
+      "GitHub Actions cache budget reached and cache became read-only"
+    ]
   },
   "workflow_security_review": {
     "reviewed_high_risk_diffs": true,
@@ -242,7 +291,53 @@
       "next_scheduled_release": "2026-11-16T15:30:00-05:00",
       "quality": "secondary aggregator; stale date-only positioning; research-only until reconciled against official CFTC files"
     },
-    "exchange_wallets": "Earlier XRP Insights attributed-wallet snapshots remain non-equivalent to tradable float; Coinbase includes cbXRP backing and Binance includes Binance-Peg backing."
+    "exchange_wallets": "Earlier XRP Insights attributed-wallet snapshots remain non-equivalent to tradable float; Coinbase includes cbXRP backing and Binance includes Binance-Peg backing.",
+    "perpetuals": {
+      "kodexius": {
+        "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+        "updated_utc": "2026-11-14T19:29:00Z",
+        "open_interest_usd": 566500000,
+        "contract_count": 7,
+        "funding_8h_percent": -0.002,
+        "volume_24h_usd": 1910000000,
+        "oi_to_volume_ratio": 0.3,
+        "exchange_breakdown_usd": {
+          "Binance": 316090000,
+          "Bybit": 111880000,
+          "OKX": 79240000,
+          "Hyperliquid": 40880000,
+          "HTX": 18420000
+        },
+        "coverage_note": "seven contracts; provider-specific public exchange coverage"
+      },
+      "trradar": {
+        "source": "https://tradradar.io/markets/xrp",
+        "updated_utc": "2026-11-14T16:45:00Z",
+        "open_interest_usd": 1400000000,
+        "exchange_count": 7,
+        "oi_change_24h_percent": -5.5,
+        "funding_oi_weighted_8h_percent": -0.0006,
+        "liquidation_24h_lower_bound_usd": 19750000,
+        "long_liquidations_usd": 19280000,
+        "short_liquidations_usd": 464470,
+        "long_short_account_ratio": 3.68,
+        "long_account_share_percent": 78.6,
+        "caveat": "liquidation feed is a lower bound; 15-minute delay"
+      },
+      "swolecharts": {
+        "source": "https://swolecharts.com/exchanges/binance/XRP",
+        "updated_utc": "2026-11-14T15:26:00Z",
+        "open_interest_usd": 906000000,
+        "exchange_count": 9,
+        "oi_weighted_funding_8h_percent": -0.0003,
+        "binance_open_interest_usd": 371040000,
+        "binance_funding_8h_percent": 0.0024,
+        "binance_liquidations_24h_usd": 7190000,
+        "binance_long_liquidation_share_percent": 96.5,
+        "caveat": "different exchange/contract coverage and earlier timestamp"
+      },
+      "interpretation": "The $566.5M, $906M and $1.40B totals are not comparable aggregates. Coverage, contract types, venue lists and timestamps differ; do not average. Long-side liquidations dominate the reported samples, while funding is near-zero/negative in the broader aggregates and positive on selected venues. This supports a long-deleveraging hypothesis but does not prove new shorts or unhedged directional exposure."
+    }
   },
   "stablecoins_and_institutional_network": {
     "xrpl_stablecoins_defillama": {
@@ -381,7 +476,8 @@
     ],
     "forecast_status": "NOT_ISSUED",
     "accuracy_status": "NOT_EVALUATED",
-    "paper_trading": "not performed"
+    "paper_trading": "not performed",
+    "packaging_warning_status": "Wheel built and installed mission verification passed, but two setuptools package-discovery warnings remain unresolved; verify whether barrot_agent.data.missions and data.research are intentionally excluded or must be included before merge."
   },
   "nine_platform_coordination": {
     "ChatGPT": "GitHub authenticated; repository permission admin, overprivileged",
@@ -416,7 +512,14 @@
     "https://github.com/Barrot-Agent/B-Agent/actions/runs/43653682435",
     "https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499432",
     "https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499344",
-    "https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499411"
+    "https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499411",
+    "https://kodexius.com/data/crypto-derivatives/XRP",
+    "https://tradradar.io/markets/xrp",
+    "https://swolecharts.com/exchanges/binance/XRP",
+    "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+    "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+    "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+    "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html"
   ],
   "decisions": {
     "merge": "NO MERGE",
@@ -688,5 +791,39 @@
       "retrieval_time_precision": "Provider event time is available; exact web-tool retrieval timestamp is not. Do not calculate age from run start.",
       "interpretation": "Bybit's top level is bid-size-heavy while the earlier OKX top level was ask-size-heavy. Different venue times and single-level snapshots prevent a market-wide order-book inference."
     }
+  },
+  "geopolitical_event": {
+    "date": "2026-11-02",
+    "source": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+    "reported_event": "Reuters reported roughly $4.72B net Binance outflows after a roughly $6.3B theft attributed by the FBI to North Korea-linked TraderTraitor.",
+    "exchange_response": "Binance reported about $2.7B of subsequent inflows and said withdrawals were stabilizing.",
+    "stablecoin_freezes": "Reuters reported issuer freezes including more than $1.1B in USDC by Circle; attribution and scope should remain source-specific.",
+    "xrp_link": "No direct XRP-specific reserve, flow or loss attribution established. Treat as exchange-counterparty and geopolitical-risk context, not an XRP feature without measured cross-asset linkage."
+  },
+  "regulatory_status": {
+    "occ_ripple_national_trust": {
+      "source": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "effective_date": "2026-10-26",
+      "status": "consummated/effective national trust-bank charter"
+    },
+    "occ_coinbase_national_trust": {
+      "source": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "effective_date": "2026-11-06",
+      "status": "consummated/effective national trust-bank charter"
+    },
+    "scope": "National trust-bank fiduciary powers and custody capability do not establish ordinary deposit-taking commercial-bank status or FDIC-insured deposits.",
+    "genius_act_final_rule": {
+      "source": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "effective_date": "2027-01-18"
+    }
+  },
+  "coinbase_circle_economics": {
+    "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+    "circle_distribution_costs_paid_to_coinbase_usd": {
+      "q3_2026": 331300000,
+      "nine_months_2026": 986600000
+    },
+    "basis": "Circle's collaboration agreement allocates Coinbase compensation tied to USDC held on Coinbase and broader ecosystem growth.",
+    "distinction": "These are Circle distribution expenses paid in connection with Coinbase agreements, not Coinbase's USDC rewards expense."
   }
 }

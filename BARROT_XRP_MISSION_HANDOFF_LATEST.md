@@ -4733,3 +4733,46 @@ Arc is a separate L1, not XRPL. The SBI/Arc relationship therefore demonstrates 
 SBI's strategy now has documented live account products and several separate exploratory rails: USDC, RLUSD, JPYSC, Arc, Open Standard/OUSD, Solana, XDC, Canton, BlackRock tokenized-MMF collaboration and Ondo. The 55/40/5 SBI Holdings/Startale/SMFG ownership is in SBI Startale Marketing, the JPYSC adoption company. These must not be conflated with Circle SBI Japan K.K. or SBIC East/Central/West.
 
 The current XRP spot follow-up from Bybit was $0.9198 at provider time 00:10:30.014 UTC, down 9.14% from its reported prior-24-hour price. Top-level bid size was 3.80 times ask size, opposite the earlier OKX one-level snapshot. The provider times are not synchronized and neither observation is full-depth L2; no directional book conclusion is admitted.
+
+
+## Run145 final exact-head verification and market-risk addendum
+
+### Final code/evidence head before this handoff-only commit
+- Main remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration code/evidence head `ac4354ed24d10abb8c6d6515bbbd9430809a97b1`, 2,437 commits ahead and zero behind main.
+- Recursive tree counts: main 1,393 entries; integration 2,469 entries; neither truncated.
+- PR #1662: open, draft, mergeable state clean; 1,227 changed files, 368,805 additions and 6,309 deletions at this checkpoint.
+- Open inventory: 373 PRs (361 drafts, 12 non-drafts); #1662 is the primary integration PR, #1661/#1660 remain stale predecessors with unique source-only work preserved.
+- PR #1662 has zero formal reviews and zero review threads.
+
+### Exact-head CI on `ac4354`
+- Full repository suite [43657451049](https://github.com/Barrot-Agent/B-Agent/actions/runs/43657451049): **3,762 passed, zero failed, one skipped, 19 subtests passed**, 63.96% inclusive coverage and 77% legacy-core coverage.
+- Wheel build passed; installed wheel verification confirmed Barrot V3, the XRP mission and canonical data assets load.
+- Dependency audit [43657451018](https://github.com/Barrot-Agent/B-Agent/actions/runs/43657451018) passed.
+- Fail-closed gate [43657451052](https://github.com/Barrot-Agent/B-Agent/actions/runs/43657451052) passed.
+- PR Pages validation [43657454952](https://github.com/Barrot-Agent/B-Agent/actions/runs/43657454952) passed. PR-event core/full-suite jobs were skipped by the integration-branch condition; the push-triggered exact-head run above is the full-suite evidence.
+- Build warnings remain: setuptools reports `barrot_agent.data.missions` and `data.research` absent from explicit package configuration; `project.license` table is deprecated; GitHub Actions cache is read-only after budget exhaustion. The wheel and mission verification passed, but package-discovery warnings need semantic review before merge.
+- Main's own CI [43650499432](https://github.com/Barrot-Agent/B-Agent/actions/runs/43650499432) passed 848 tests, one skipped and eight subtests on its smaller 100-test-file tree. Do not substitute that result for the expanded integration suite.
+
+### Derivatives and liquidation reconciliation
+Three public aggregators disagree materially:
+- Kodexius, Nov 14 19:29 UTC: $566.5M open interest across seven contracts, -0.0020% funding per eight hours, $1.91B 24h volume.
+- TradRadar, Nov 14 16:45 UTC: $1.40B across seven exchanges, OI down 5.5% over 24h, -0.0006% weighted funding, at least $19.75M liquidations (about $19.28M longs and $0.464M shorts), account long/short 3.68.
+- Swolecharts, Nov 14 15:26 UTC: $906M across nine exchanges, -0.0003% weighted funding; Binance $371M OI and $7.19M reported liquidations, 96.5% long-side.
+The universes, contract types, timestamps and liquidation coverage differ. Do not average. Long liquidations dominate these samples, but the data do not prove new shorts or unhedged directional exposure. CFTC positioning remains a separate, delayed series: latest secondary aggregation as of Nov 3 reports 7,216 CME XRP contracts open and large-speculator net long 1,465 (95th percentile of its one-year range); next scheduled release Nov 16 at 3:30 p.m. ET.
+
+### Geopolitical exchange-risk context
+Reuters reported on November 2 that Binance experienced about $4.72B of net outflows after a roughly $6.3B theft attributed by the FBI to North Korea-linked TraderTraitor; Binance reported about $2.7B of subsequent inflows and said withdrawals were stabilizing. Reuters also described issuer freezes including more than $1.1B in USDC by Circle. No direct XRP-specific reserve/flow effect is established. This is exchange-counterparty and geopolitical context, not an XRP directional feature.
+
+### Regulatory and institutional cash-flow distinctions
+- OCC records show Ripple National Trust Bank effective October 26 and Coinbase National Trust Company effective November 6, 2026. These are national trust-bank fiduciary/custody charters, not proof of ordinary deposit-taking commercial-bank status or FDIC-insured deposits.
+- OCC's final GENIUS Act rule takes effect January 18, 2027.
+- Circle's Q3 2026 SEC filing says Circle's distribution agreement paid Coinbase $331.3M in Q3 and $986.6M over the first nine months of 2026, tied to USDC on Coinbase and ecosystem growth. These are Circle expenses, not Coinbase's USDC rewards expense.
+- Circle/SBI Japan K.K. remains 50/50 with approximately $1.5M contributed by each, but Circle consolidates the VIE and reports no significant operating results to date.
+- SBI Startale Marketing remains a separate 55/40/5 SBI Holdings/Startale/SMFG JPYSC vehicle. JPYSC's >¥30B handling balance and >¥10B lending balance are platform balances; public-chain transfers are not enabled. SBI VC Trade's RLUSD service supports Ethereum only at launch. SBI's Arc, JPYSC, Open Standard/OUSD, Solana, XDC, Canton and tokenized-fund relationships do not establish XRP as a required settlement asset.
+- The prior Run126 claim of a logged secret prefix was corrected in PR discussion: the 30-character Barrot Sync label is the entire `cut -c1-30` output; no secret bytes were observed in the Actions log. The actual confirmed issue is the false-green sync caused by missing `rich` and swallowed command/push failures.
+
+### Merge decision and next actions
+**NO MERGE.** PR #1662 remains draft, with no independent formal approvals. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`; branch-protection API returns 403; fallback ruleset 10863829 is disabled; the connected GitHub identity has admin permission. Full semantic reconciliation of all 1,227 changed paths is incomplete, and package-discovery warnings remain.
+
+Next: resolve independent review and least-privilege governance; inspect the two setuptools package warnings; complete the remaining workflow/code semantic review; fix main's Barrot Sync false-green behavior and Pages Liquid error; only then merge the read-only XRP ingestion after exact-head full-suite, dependency/security, approval and branch-protection requirements pass. Verify scheduled ingestion actually runs on main. Forecast remains `NOT_ISSUED`; accuracy `NOT_EVALUATED`.
