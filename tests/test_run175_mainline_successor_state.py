@@ -40,7 +40,7 @@ def test_run175_restores_current_main_barrot_state_blobs_byte_for_byte() -> None
     assert len(expected) == 10
     for relative_path, expected_sha in expected.items():
         payload = (ROOT / relative_path).read_bytes()
-        header = b"blob " + str(len(payload)).encode("ascii") + b"\\0"
+        header = b"blob " + str(len(payload)).encode("ascii") + b"\0"
         actual_sha = hashlib.sha1(header + payload).hexdigest()
         assert actual_sha == expected_sha, relative_path
 

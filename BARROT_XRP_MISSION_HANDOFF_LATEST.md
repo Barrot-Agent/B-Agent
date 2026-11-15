@@ -257,3 +257,8 @@ Only the current ChatGPT/GitHub connector is verified. Claude, Grok, Gemini and 
 **NO MERGE.** PR #1662 is closed unmerged. Eight other open PRs remain drafts targeting non-main branches and are classified unique/unreviewed: #1541, #1460, #1450, #1440, #1437, #1436, #1353 and #1265. Preserve all eight. Do not close any source PRs.
 
 Next: verify the Run175 preservation commit on its own exact head; complete the 36 remaining workflow diffs and all called scripts; fix Pages and Barrot Sync false-green behavior; resolve independent review, least privilege and branch protection; only then open one successor PR. No forecast until data and OOS readiness gates pass.
+
+
+### Run175 preservation commit verification note
+
+The Run175 preservation commit is `9fe0849a5c483f5b2059344fb691aa0eafe6b39a`. A fresh recursive-tree comparison against current main `5b2a9c46eb878250dfec99190e294909cd5835bf` confirms **zero main paths missing** after restoring all ten `.barrot` blobs. The 3.51MB repository-state manifest was restored by its existing Git blob SHA without reading its contents. The byte-hash regression test was corrected to use the exact Git blob header delimiter and is included in the next exact-head CI run.
