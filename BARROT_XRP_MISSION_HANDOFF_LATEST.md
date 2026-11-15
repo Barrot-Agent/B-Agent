@@ -563,3 +563,8 @@ Creator claims are source material, not ground truth. In particular:
 - No raw-byte receipts were created for this web research; the claims above are research leads and counter-hypotheses, not model features.
 - No external-model dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle action, paper trade, funds transfer or real-money action occurred.
 - **NO MERGE.** PR #1663 remains draft with zero independent approvals; semantic review and exact-head fail-closed verification remain incomplete.
+
+
+### Run176 deterministic map regression guard
+
+Added `tests/test_run176_platform_map_overlay.py` to validate the current nine-platform overlay: exactly nine named platforms, only the authenticated ChatGPT/GitHub connector marked verified, Grok kept distinct from Groq, OpenCode kept separate and unverified, no external-model dispatch or red-team quorum claimed, and least-privilege/branch-protection gaps retained explicitly. This is a read-only local JSON test with no network, credentials or external side effects. The resulting test-bearing commit requires its own exact-head full-suite and security-gate verification.
