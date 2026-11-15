@@ -1,0 +1,347 @@
+{
+  "artifact_type": "barrot_xrp_mission_run_audit",
+  "schema_version": "1.0.0",
+  "run_id": "Run168",
+  "captured_at_utc": "2026-11-15T16:07:11.322Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run168_commit": "fd6ea9a759874f9d0043a4eeda87668696a8fcb9",
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "ahead_by": 2512,
+    "behind_by": 0,
+    "changed_files": 1255,
+    "workflow_files": 48,
+    "non_workflow_paths": 1207,
+    "additions": 352187,
+    "deletions": 6309
+  },
+  "execution_status": {
+    "repository_audit": "EXECUTED",
+    "full_suite_on_parent_head": "VERIFIED",
+    "workflow_patch_review": "EXECUTED",
+    "live_market_observation": "EXECUTED_DESCRIPTIVE_ONLY",
+    "canonical_handoff_update": "EXECUTED_IN_THIS_COMMIT",
+    "new_commit_ci": "PENDING"
+  },
+  "ci": {
+    "head": "fd6ea9a759874f9d0043a4eeda87668696a8fcb9",
+    "full_suite_run": 43731953048,
+    "full_suite_job": 132866141138,
+    "conclusion": "success",
+    "passed": 3797,
+    "failed": 0,
+    "skipped": 1,
+    "subtests": 19,
+    "inclusive_coverage_percent": 64.02,
+    "legacy_core_coverage_percent": 77,
+    "duration_seconds": 143.78,
+    "wheel_build": true,
+    "installed_mission": true,
+    "dependency_audit_run": 43731953030,
+    "dependency_audit_conclusion": "success",
+    "manifest_groups": 6,
+    "known_vulnerabilities": 0,
+    "push_fail_closed_run": 43731953029,
+    "push_fail_closed_conclusion": "success",
+    "pr_ci_run": 43731958232,
+    "pr_ci_conclusion": "success",
+    "pr_pages_validation": "success",
+    "pr_core_and_full_suite_jobs": "skipped_for_integration_branch_condition",
+    "pr_dependency_audit_run": 43731958198,
+    "pr_dependency_audit_conclusion": "success",
+    "pr_fail_closed_run": 43731958269,
+    "pr_fail_closed_conclusion": "success"
+  },
+  "workflow_review": {
+    "changed_workflows": 48,
+    "patches_reviewed": 48,
+    "added_repo_write_permissions": 0,
+    "added_direct_git_pushes": 0,
+    "legacy_writers_quarantined": true,
+    "manual_external_actions_are_visible_and_gated": true,
+    "manual_groq_workflows": [
+      "frontier-digest.yml",
+      "self-benchmark.yml",
+      "webmcp-trend-digest.yml",
+      "financial-data-refresh.yml",
+      "capability-10-design.yml",
+      "capability-discovery.yml",
+      "data-value-triage.yml",
+      "signal-summary.yml"
+    ],
+    "no_external_dispatch": true,
+    "main_xrp_ingestion_workflow_present": false,
+    "integration_xrp_ingestion_main_only": true,
+    "scheduled_ingestion_on_main_verified": false,
+    "artifacts_not_worm": true,
+    "main_legacy_writers": [
+      "barrot-sync.yml",
+      "ask-barrot.yml"
+    ],
+    "latest_main_cross_analysis_run": 43732181812,
+    "latest_main_cross_analysis_conclusion": "success",
+    "latest_main_cross_analysis_read_only": true
+  },
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-15T16:07:11.322Z",
+    "okx_xrp_usdt": {
+      "last": 0.9581,
+      "bid": 0.9582,
+      "ask": 0.9583,
+      "open24h": 0.9719,
+      "high24h": 0.9795,
+      "low24h": 0.8929,
+      "volume24h_xrp": 98876000.912786,
+      "event_time_utc": "2026-11-15T15:59:51.077Z"
+    },
+    "bybit_xrpusdt": {
+      "last": 0.9556,
+      "bid": 0.9555,
+      "ask": 0.9556,
+      "previous_24h": 0.9681,
+      "change_24h_pct": -1.29,
+      "high24h": 0.9794,
+      "low24h": 0.8928,
+      "volume24h_xrp": 52551070.71,
+      "usd_index_price": 0.954977,
+      "event_time_utc": "2026-11-15T16:07:11.322Z"
+    },
+    "kraken_xrp_usd": {
+      "last": 0.95711,
+      "bid": 0.95699,
+      "ask": 0.95712,
+      "high24h": 0.97914,
+      "low24h": 0.89112,
+      "volume24h_xrp": 79998048.57939665,
+      "provider_event_timestamp": null,
+      "open_field": 0.91378
+    },
+    "okx_usdt_usd": {
+      "last": 0.99959,
+      "event_time_utc": "2026-11-15T15:46:49.074Z"
+    },
+    "kraken_usdt_usd": {
+      "last": 0.99932,
+      "provider_event_timestamp": null
+    },
+    "same_venue_quote_basis_skew_seconds": 782.003,
+    "allowed_skew_seconds": 60,
+    "component_max_age_seconds": 300,
+    "model_eligible": false,
+    "raw_http_bytes_captured": false,
+    "sha256_receipt_created": false,
+    "full_depth_l2_retrieved": false,
+    "arbitrage_claimed": false
+  },
+  "market_context": {
+    "coindesk_nov15": {
+      "xrp_low_usd": 0.89,
+      "quarter_change_pct": -36,
+      "weekly_xrp_etf_outflow_usd": -19130000,
+      "usdt_usdc_combined_market_cap_usd": 244000000000,
+      "glassnode_quoted_30d_supply_change_usd": -17000000000
+    },
+    "cryptonews_net_defillama_nov7": {
+      "all_stablecoin_supply_usd": 292310000000,
+      "seven_day_change_usd": -6660000000,
+      "thirty_day_change_usd": -15030000000
+    },
+    "conflict": "Different stablecoin universes/cutoffs; not averaged.",
+    "cryptonews_nov15_derivatives": {
+      "open_interest_usd": 1980000000,
+      "liquidations_24h_usd": 47320000,
+      "long_liquidation_share_pct": 91,
+      "funding_8h_pct": -0.002
+    },
+    "etf_flow_week_ended": "2026-11-13",
+    "etf_flow_usd": -19130000,
+    "technical_context": {
+      "rsi14": 16.1,
+      "ema20_usd": 1.1497,
+      "ema50_usd": 1.2499,
+      "atr14_usd": 0.0612
+    },
+    "all_secondary_or_provider_derived": true,
+    "model_eligible": false
+  },
+  "institutional": {
+    "ripple_bny": "BNY supports XRP/RLUSD custody; primary RLUSD reserve custodian; tokenized trade-finance uses exploratory.",
+    "ripple_coinbase": "RLUSD trading/management on Prime, Exchange and Retail; XRPL/Base/Ethereum; Global Exchange collateral support described as future.",
+    "ripple_sbi": "RLUSD launched in Japan through SBI VC Trade after JFSA approval.",
+    "circle_sbi": "Circle and SBI each own 50% of Circle SBI Japan K.K.; separate from SBIC East/Central/West.",
+    "new_primary_relationships_verified": 0
+  },
+  "identity_research": {
+    "sbic": "SBIC East/Central/West are distinct regional SME investment companies; SBI Holdings is separate; SB OAI Japan GK is separate OpenAI/SoftBank JV.",
+    "ask_coin": "Permission ASK token on Base/Polygon; no canonical XRPL ASK issuer verified.",
+    "actual_capital": "Taxonomy only; separate cash proceeds, redemptions, in-kind contributions, debt, facilities, holdings and collateral.",
+    "camilla_kamilah_stevenson": "No new primary channel ownership evidence; no YouTube videos attributed."
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub connector verified in current session; admin/maintain/push/pull/triage; overprivileged.",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "one-off review activity; no formal approval",
+    "Codex": "unverified",
+    "HuggingFace": "last known BUILD_ERROR; no deployment",
+    "Kaggle": "untested",
+    "Databricks": "last known HTTP 403; no write",
+    "LunaRoute": "separate provider; declared not authenticated",
+    "Groq": "separate provider; no dispatch",
+    "external_dispatches": 0,
+    "structured_exchange": false,
+    "red_team_quorum": false
+  },
+  "open_pr_inventory": {
+    "total": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "base_main": 365,
+    "other_base": 8,
+    "non_draft_numbers": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1646,
+      1645,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ]
+  },
+  "backlog": {
+    "1254": "older HF Hub dependency candidate; preserve until successor verified",
+    "1255": "older Databricks SDK dependency candidate; preserve until successor verified",
+    "1269": "unique mesh topology",
+    "1317": "unique structural core",
+    "1318": "unique schema safety",
+    "1320": "unique paper-trader safety",
+    "1640": "supersession candidate; preserve two unique workflows",
+    "1642": "path-overlap candidate; preserve pending semantic comparison",
+    "1643": "path-overlap candidate; preserve pending semantic comparison",
+    "1645": "blocked 57 commits behind main; no statuses",
+    "1646": "blocked 57 commits behind main; no statuses",
+    "1648": "blocked 57 commits behind main; no statuses",
+    "1649": "blocked 57 commits behind main; no statuses",
+    "1650": "blocked 57 commits behind main; no statuses",
+    "1653": "unique unreviewed graph work",
+    "1660": "supersession candidate; preserve two unique source paths",
+    "1661": "supersession candidate; preserve two unique source paths",
+    "1662": "blocked active integration draft",
+    "closed": []
+  },
+  "security": {
+    "main_branch_protected": true,
+    "protection_enabled": true,
+    "enforcement_level": "non_admins",
+    "required_status_contexts": [],
+    "detail_endpoint_http_403": true,
+    "fallback_ruleset_10863829": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "least_privilege_satisfied": false,
+    "semantic_review_complete": false,
+    "merge_performed": false,
+    "main_modified": false
+  },
+  "prediction_engine": {
+    "implemented": [
+      "read-only public-data ingestion definitions",
+      "SHA-256 receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "event timeline and counter-hypotheses",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "purged and embargoed walk-forward tests",
+      "paired temporal and source-clustered moving-block bootstrap",
+      "probability calibration and PSI drift monitoring",
+      "fail-closed forecast ledger and Ed25519 evaluator attestation"
+    ],
+    "outstanding": [
+      "byte-exact raw receipts for curated event registry",
+      "independent WORM archive and trusted timestamp",
+      "synchronized historical multi-venue L2/spot/derivatives/exchange-flow/collateral data",
+      "XRP candidate superiority over all four baselines",
+      "independent shadow outcomes",
+      "verified scheduled ingestion on main"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "sources": [
+    {
+      "id": "okx_xrp_usdt",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_time": "2026-11-15T15:59:51.077Z"
+    },
+    {
+      "id": "bybit_xrpusdt",
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "provider_event_time": "2026-11-15T16:07:11.322Z"
+    },
+    {
+      "id": "kraken_xrp_usd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time": null
+    },
+    {
+      "id": "okx_usdt_usd",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "provider_event_time": "2026-11-15T15:46:49.074Z"
+    },
+    {
+      "id": "kraken_usdt_usd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "provider_event_time": null
+    },
+    {
+      "id": "coindesk_market_context",
+      "url": "https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto",
+      "published": "2026-11-14T21:50:00-05:00",
+      "updated": "2026-11-14T22:44:00-05:00"
+    },
+    {
+      "id": "crypto_news_scenario",
+      "url": "https://crypto.news/xrp-price-prediction-after-the-1-break-is-0-80-back-in-play/",
+      "published": "2026-11-15T08:53:00Z"
+    },
+    {
+      "id": "cryptonews_net_defillama",
+      "url": "https://cryptonews.net/news/analytics/33719810/",
+      "source_publisher": "BlockchainReporter",
+      "published": "2026-11-08T03:37:00Z"
+    },
+    {
+      "id": "ripple_bny",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "published": "2026-10-27"
+    },
+    {
+      "id": "ripple_coinbase",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published": "2026-10-28"
+    },
+    {
+      "id": "ripple_sbi",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published": "2026-06-24"
+    }
+  ],
+  "no_external_actions": true,
+  "no_merge": true,
+  "no_source_pr_closures": true
+}
