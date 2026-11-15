@@ -312,26 +312,28 @@ def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None
 
 def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() -> None:
     workflow = _read("dependency-audit.yml")
-    for manifest in (
-        "requirements.txt",
-        "requirements-dev.txt",
-        "pyproject.toml",
-        "hf_space/requirements.txt",
-        "legacy/requirements_legacy.txt",
+    for command in (
+        "pip-audit -r requirements.txt --strict",
+        "pip-audit -r requirements-dev.txt --strict",
+        "pip-audit -r requirements-integrations.txt --strict",
+        "pip-audit -r hf_space/requirements.txt --strict",
+        "pip-audit -r legacy/requirements_legacy.txt --strict",
+        'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict',
     ):
-        assert f'"{manifest}"' in workflow
-    assert "pip-audit -r requirements.txt --strict" in workflow
-    assert "pip-audit -r requirements-dev.txt --strict" in workflow
+        assert command in workflow
+    assert "Path(\"pyproject.toml\").read_text(encoding=\"utf-8\")" in workflow
+    assert "tomllib.loads" in workflow
     assert "ROOT_RUNTIME: ${{ steps.root_runtime.outcome }}" in workflow
     assert "DEV: ${{ steps.dev.outcome }}" in workflow
-    assert "root_runtime=%s dev=%s" in workflow
+    assert "INTEGRATIONS: ${{ steps.integrations.outcome }}" in workflow
+    assert "HF_SPACE: ${{ steps.hf_space.outcome }}" in workflow
+    assert "LEGACY: ${{ steps.legacy.outcome }}" in workflow
+    assert "PYPROJECT: ${{ steps.pyproject.outcome }}" in workflow
     assert '"$ROOT_RUNTIME" != "success"' in workflow
     assert '"$DEV" != "success"' in workflow
-    assert "tomllib.loads" in workflow
-    assert 'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict' in workflow
-    assert 'target.write_text("\\n".join(dependencies) + "\\n", encoding="utf-8")' in workflow
-    assert "pyproject=%s" in workflow
-    assert "PYPROJECT: ${{ steps.pyproject.outcome }}" in workflow
+    assert '"$INTEGRATIONS" != "success"' in workflow
+    assert '"$HF_SPACE" != "success"' in workflow
+    assert '"$LEGACY" != "success"' in workflow
     assert '"$PYPROJECT" != "success"' in workflow
     assert "--ignore-vuln PYSEC-2024-232" not in workflow
     active_ci = _read("ci.yml")

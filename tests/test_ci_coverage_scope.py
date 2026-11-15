@@ -63,15 +63,17 @@ def test_integration_full_suite_runs_once_on_push_not_duplicate_pull_request():
 
 def test_dependency_audit_runs_for_safety_and_ci_changes():
     audit = (ROOT / ".github" / "workflows" / "dependency-audit.yml").read_text(encoding="utf-8")
-    required_paths = (
-        ".github/workflows/ci.yml",
-        ".github/workflows/coinbase-paper-trader.yml",
-        "barrot_agent/orchestration/mcp_orchestrator.py",
-        "legacy/app_legacy.py",
-        "scripts/coinbase_paper_trader.py",
-        "tests/test_mcp_orchestrator_safety.py",
-        "tests/test_paper_trader_*.py",
-        "tests/test_ci_coverage_scope.py",
-    )
-    for path in required_paths:
-        assert audit.count(f'"{path}"') >= 2, f"dependency audit path filter missing push/PR coverage: {path}"
+    triggers = audit.split("permissions:", 1)[0]
+    assert 'branches: [main, "integration/**"]' in triggers
+    assert "pull_request:\n    branches: [main]" in triggers
+    assert "paths:" not in triggers
+    assert "contents: read" in audit
+    for manifest_command in (
+        "pip-audit -r requirements.txt --strict",
+        "pip-audit -r requirements-dev.txt --strict",
+        "pip-audit -r requirements-integrations.txt --strict",
+        "pip-audit -r hf_space/requirements.txt --strict",
+        "pip-audit -r legacy/requirements_legacy.txt --strict",
+        'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict',
+    ):
+        assert manifest_command in audit
