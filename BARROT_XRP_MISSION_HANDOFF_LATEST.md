@@ -4713,3 +4713,23 @@ This is a material counterexample to the assumption that SBI's RLUSD distributio
 - PNC's Coinbase pilot receives Circle USDC and automatically converts it to USD; this is a USDC rail, not XRP settlement. <Cite ref="turn110013news79"/>
 
 **Conclusion:** SBI's institutional network spans RLUSD, USDC, JPYSC, Circle Arc, Open Standard/OUSD, Solana, XDC, Canton and tokenized funds. These relationships establish real institutional stablecoin and tokenization activity. They do not establish that XRP is the settlement asset for those rails. Keep issuer, network, custody, collateral, distribution and actual transaction-volume evidence as separate graph edges.
+
+
+## Run145 follow-up — JPYSC balances, public-chain constraint and Arc validator evidence
+
+### JPYSC has meaningful SBI platform balances, but is not yet a public payment rail
+SBI VC Trade's November 2 release reports **JPYSC handling balance above ¥30B** and **JPYSC lending balance above ¥10B**. Its footnote defines handling balance as the sum of on-chain balance and lending balance. The three published lending courses were 168 days at 3%, 84 days at 2.5%, and 28 days at 2%; lending is not a bank deposit, is not deposit-insured and is generally not cancellable before maturity. <Cite ref="turn156583view1"/>
+
+This is actual product adoption and customer lending to SBI VC Trade. It is **not** ¥30B of public-chain circulation, external settlement volume, XRP purchases or XRP collateral demand. SBI's June 24 launch release says JPYSC was initially restricted to VCTRADE accounts and could not be withdrawn to external wallets; public-chain circulation depends on legal/tax treatment and regulatory confirmation. <Cite ref="turn156583view0"/>
+
+SBI's September 7 reserve release reported about ¥20.1B JPYSC issuance, ¥6.9B of lending applications and ¥1B allocated to short-term Japanese government bonds. The June 1, 2026 law change permits qualifying short-term government bonds/time deposits up to 50% of issuance under conditions, with maturities no longer than three months. The release does not disclose the entire backing composition. <Cite ref="turn156583view2"/>
+
+### Circle Arc: direct SBI validator role and Coinbase access
+Circle's September 16 Arc mainnet announcement explicitly names **SBI Group** in the founding validator cohort. SBI Holdings CEO Yoshitaka Kitao says SBI Group will contribute to Arc's operation and governance. Coinbase is listed among the exchanges giving access to Arc; Aave and Morpho anchor the stated credit-market launch. Arc fees are paid in USDC. Circle also claims USDC represented 98.8% of agent-driven transaction volume at the announcement; treat that as an issuer-reported claim, not an independently audited market statistic. <Cite refs={['turn199606view0','turn199606view1','turn199606view2']}/>
+
+Arc is a separate L1, not XRPL. The SBI/Arc relationship therefore demonstrates a direct institutional stablecoin network role, not XRP settlement demand.
+
+### Institutional network conclusion
+SBI's strategy now has documented live account products and several separate exploratory rails: USDC, RLUSD, JPYSC, Arc, Open Standard/OUSD, Solana, XDC, Canton, BlackRock tokenized-MMF collaboration and Ondo. The 55/40/5 SBI Holdings/Startale/SMFG ownership is in SBI Startale Marketing, the JPYSC adoption company. These must not be conflated with Circle SBI Japan K.K. or SBIC East/Central/West.
+
+The current XRP spot follow-up from Bybit was $0.9198 at provider time 00:10:30.014 UTC, down 9.14% from its reported prior-24-hour price. Top-level bid size was 3.80 times ask size, opposite the earlier OKX one-level snapshot. The provider times are not synchronized and neither observation is full-depth L2; no directional book conclusion is admitted.

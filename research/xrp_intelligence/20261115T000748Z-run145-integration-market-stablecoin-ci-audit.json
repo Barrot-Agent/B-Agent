@@ -575,5 +575,118 @@
       "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
       "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/"
     ]
+  },
+  "jpysc_arc_and_market_followup": {
+    "official_jpysc_activity": {
+      "nov_2_2026_source": "https://www.sbivc.co.jp/newsview/uvcf-_ax6",
+      "reported_handling_balance_jpy": 30000000000,
+      "reported_lending_balance_jpy": 10000000000,
+      "balance_definition": "SBI VC Trade footnote says JPYSC handling balance is the sum of on-chain balance and lending balance.",
+      "lending_terms_as_of_nov_2": [
+        {
+          "term_days": 168,
+          "annual_rate_percent": 3
+        },
+        {
+          "term_days": 84,
+          "annual_rate_percent": 2.5
+        },
+        {
+          "term_days": 28,
+          "annual_rate_percent": 2
+        }
+      ],
+      "risk_terms": "JPYSC lending is not a bank deposit, is not covered by deposit insurance, and generally cannot be cancelled before maturity.",
+      "public_chain_status": "JPYSC remains restricted to VCTRADE account use; external-wallet withdrawal and public-chain circulation are not enabled. SBI says transition depends on legal/tax treatment and regulatory confirmation.",
+      "interpretation": "The reported 30B JPY is a platform handling balance, not public circulating supply, external settlement volume or XRP capital flow. The 10B JPY lending component is a customer loan to SBI VC Trade, not an XRP purchase."
+    },
+    "jpysc_reserve_management": {
+      "sep_7_2026_source": "https://www.sbivc.co.jp/newsview/p9lx_sf_x",
+      "issuance_balance_jpy": 20100000000,
+      "short_term_japanese_government_bonds_allocated_jpy": 1000000000,
+      "lending_applications_jpy": 6900000000,
+      "combined_issuance_plus_lending_jpy": 27000000000,
+      "reserve_rule": "Under the June 1, 2026 amendments, qualifying short-term JGBs and time deposits may be used up to 50% of issuance, subject to conditions and a maximum three-month maturity.",
+      "caveat": "Only 1B JPY of short-term JGB allocation is disclosed in this release; the remaining backing composition is not inferred."
+    },
+    "circle_arc_official": {
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "launch_date": "2026-09-16",
+      "gas_asset": "USDC",
+      "finality_claim": "sub-second deterministic finality, issuer claim",
+      "founding_validator_cohort_includes": [
+        "BlackRock",
+        "DTCC",
+        "Galaxy",
+        "ICE",
+        "Mastercard",
+        "MoneyGram",
+        "SBI Group",
+        "Standard Chartered",
+        "Sumitomo Corporation",
+        "Visa",
+        "Worldpay"
+      ],
+      "exchange_access_includes": [
+        "Binance",
+        "Bybit",
+        "Coinbase",
+        "Kraken",
+        "OKX",
+        "Upbit"
+      ],
+      "credit_protocols_at_launch": [
+        "Aave",
+        "Morpho"
+      ],
+      "agentic_payments_claim": "Circle says USDC accounted for 98.8% of agent-driven transaction volume at announcement; issuer-reported claim, not independently audited in this run.",
+      "sbi_quote": "SBI Holdings CEO Yoshitaka Kitao says SBI Group will contribute to Arc operation and governance as a founding validator and intends to leverage USDC and JPYSC.",
+      "caveat": "Arc is a separate L1, not XRPL. The announced validators/access partners do not prove XRP use or XRP demand."
+    },
+    "jpysc_smfg_and_network": {
+      "official_sbi_presentation": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "sbi_startale_marketing_ownership_percent": {
+        "SBI_Holdings": 55,
+        "Startale": 40,
+        "SMFG": 5
+      },
+      "purpose": "promote JPYSC adoption; explore integration into SMFG Olive",
+      "other_sbi_rails": [
+        "Circle Arc",
+        "USDC",
+        "RLUSD",
+        "JPYSC",
+        "Open Standard/OUSD",
+        "Solana",
+        "XDC",
+        "Canton",
+        "tokenized MMFs with BlackRock",
+        "Ondo tokenized assets"
+      ],
+      "status": "mix of live product distribution, validator participation, signed agreements and exploratory PoCs; each edge must retain its own status",
+      "non_xrp_caveat": "None of the cited JPYSC/OUSD, Solana, XDC, Canton, Arc or tokenized-MMF initiatives establishes XRP as a required settlement asset."
+    },
+    "bybit_followup": {
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "provider_timestamp_utc": "2026-11-15T00:10:30.014Z",
+      "last_usdt": 0.9198,
+      "prev_price_24h": 1.0123,
+      "price_24h_change_percent": -9.14,
+      "bid": 0.9196,
+      "ask": 0.9197,
+      "bid_size_xrp": 3110.45,
+      "ask_size_xrp": 818.8,
+      "top_level_bid_to_ask_size_ratio": 3.7988,
+      "spread_bps": 1.0874,
+      "high_24h": 1.0138,
+      "low_24h": 0.8928,
+      "volume_24h_xrp": 56642935.39,
+      "turnover_24h_usdt": 54628944.207119,
+      "captured_response_text_sha256": "e8b4dec33edc753888a9c3ca8d6fc7e7c6abf4838f08e35f59fca7d62ec36fc1",
+      "captured_response_text_bytes": 407,
+      "raw_response_text": "{\"retCode\":0,\"retMsg\":\"OK\",\"result\":{\"category\":\"spot\",\"list\":[{\"symbol\":\"XRPUSDT\",\"bid1Price\":\"0.9196\",\"bid1Size\":\"3110.45\",\"ask1Price\":\"0.9197\",\"ask1Size\":\"818.8\",\"lastPrice\":\"0.9198\",\"prevPrice24h\":\"1.0123\",\"price24hPcnt\":\"-0.0914\",\"highPrice24h\":\"1.0138\",\"lowPrice24h\":\"0.8928\",\"turnover24h\":\"54628944.207119\",\"volume24h\":\"56642935.39\",\"usdIndexPrice\":\"0.919297\"}]},\"retExtInfo\":{},\"time\":1794701430014}",
+      "retrieval_time_precision": "Provider event time is available; exact web-tool retrieval timestamp is not. Do not calculate age from run start.",
+      "interpretation": "Bybit's top level is bid-size-heavy while the earlier OKX top level was ask-size-heavy. Different venue times and single-level snapshots prevent a market-wide order-book inference."
+    }
   }
 }
