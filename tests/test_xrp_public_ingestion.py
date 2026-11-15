@@ -650,6 +650,20 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     )
     assert summary["forecast_status"] == "NOT_ISSUED"
     assert summary["forecast_model_eligible"] is False
+    dependence_limitations = [
+        item for item in summary["limitations"]
+        if "paired temporal and source-clustered moving-block bootstrap diagnostics" in item
+    ]
+    assert len(dependence_limitations) == 1
+    assert "1,000 resamples at 95% confidence" in dependence_limitations[0]
+    assert "10,000 resamples" in dependence_limitations[0]
+    assert "99.375% individual confidence" in dependence_limitations[0]
+    assert "no trained XRP-specific candidate" in dependence_limitations[0]
+    assert "does not remove residual serial dependence or source correlation" in dependence_limitations[0]
+    assert not any(
+        "no dependence-aware confidence interval or block-bootstrap adjustment is implemented" in item
+        for item in summary["limitations"]
+    )
     walk_forward = json.loads((tmp_path / "run" / "walk_forward.json").read_text(encoding="utf-8"))
     assert any(
         "rolling temporal temperature scaling" in item.lower()
