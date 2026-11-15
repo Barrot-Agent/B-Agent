@@ -7526,3 +7526,18 @@ Liqwall's 10:32 UTC snapshot reported $1.03B XRP open interest, down 3.1%, fundi
 Sources: [OKX XRP-USDT](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken XRP-USD](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX USDT-USD](https://www.okx.com/api/v5/market/ticker?instId=USDT-USD), [XRPL DefiLlama](https://defillama.com/chain/XRPL), [Liqwall](https://liqwall.com/asset/xrp), [TradRadar](https://trad-radar.com/cryptocurrency/xrp/open-interest).
 
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+
+
+## Run162 exact-head correction attempt — 35c658
+
+Full repository run [43716616596](https://github.com/Barrot-Agent/B-Agent/actions/runs/43716616596) on exact head `35c658c22c85e9cd706d163b8be2491672814602` completed with **3,790 passed, 3 failed, 1 skipped, 19 subtests, 64.02% coverage**, in 178.09 seconds. Core tests passed (742, zero failures, eight subtests). Six-manifest push and PR dependency audits passed with zero known vulnerabilities. Push and PR fail-closed gates passed. PR Pages build-only validation [43716620153](https://github.com/Barrot-Agent/B-Agent/actions/runs/43716620153) passed and rendered the global mission manifest.
+
+The three failures are historical/evidence assertions only:
+
+1. The Run152 test compares the latest fully passing head `46700a59` with the older Run158 head `68c228ce`; the historical Run158 result is separately preserved and should not replace the current last-good pointer.
+2. The Run162 handoff-update test compares its historical `53e2aa88` snapshot with the top-level latest metadata at `0c078211`.
+3. The Run162 test-correction test reads the SBIC object at the wrong nesting level; it belongs under `research_addendum.identity.sbic`.
+
+The next correction fixes these historical bindings and field paths without weakening tests. The current 35c658 result is preserved as a separate exact-head snapshot. No runtime, ingestion or XRP prediction-engine failure was observed.
+
+The main branch remains unchanged. PR #1662 remains draft and unmerged. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.

@@ -317,6 +317,63 @@
         "dependency_audit_run": 43715780907,
         "fail_closed_gate_run": 43715780944
       }
+    },
+    "latest_exact_head_correction_commit": {
+      "head_sha": "35c658c22c85e9cd706d163b8be2491672814602",
+      "run_id": 43716616596,
+      "job_id": 132819448452,
+      "conclusion": "failure",
+      "passed": 3790,
+      "failed": 3,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 178.09,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_handoff_update_commit_snapshot_tracks_latest_ci",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_test_correction_commit_snapshot_tracks_latest_ci_and_market_quality"
+      ],
+      "classification": "Exact-head full-suite failed on 35c658c22c85e9cd706d163b8be2491672814602: three historical/evidence-contract mismatches, not runtime or XRP prediction-engine failures. The Run152 history test compares the latest fully passing head (46700a59) to the older Run158 head (68c228ce); the Run162 handoff snapshot test compares its historical 53e2 snapshot to top-level latest metadata at 0c078; and the Run162 test-correction snapshot test reads the SBIC object at the wrong nesting level. Correct historical bindings and field paths without weakening tests.",
+      "core_tests": {
+        "head_sha": "35c658c22c85e9cd706d163b8be2491672814602",
+        "run_id": 43716616596,
+        "job_id": 132819448296,
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "push_run_id": 43716617527,
+        "pr_run_id": 43716620113,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "push_run_id": 43716616564,
+        "pr_run_id": 43716620166,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "pr_event": {
+        "run_id": 43716620153,
+        "conclusion": "success",
+        "pages_validation": "success",
+        "pages_validation_job_id": 132819459447,
+        "pages_manifest_rendered": true,
+        "build_only": true,
+        "core_tests": "skipped by integration-branch condition",
+        "full_suite": "skipped by integration-branch condition",
+        "dependency_audit_run": 43716620113,
+        "fail_closed_gate_run": 43716620166
+      }
     }
   },
   "correction": {
@@ -866,9 +923,10 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Bind Run152's historical seven-failure assertions to run162_snapshot rather than the top-level latest CI attempt.",
-    "Correct the Run162 minification snapshot's exact passed count to 3,788.",
-    "Preserve the immutable Run162 snapshots for fe8a43ac, fb1e554f, 10f64551, 53e2aa88 and 0c078211.",
+    "Change the Run152 historical last-good assertion to the latest fully passing head 46700a59; keep Run158's own head/result in its immutable snapshot.",
+    "Make the Run162 handoff-update test read its own historical CI snapshot rather than top-level latest CI metadata.",
+    "Make the Run162 test-correction test read SBIC through research_addendum.identity.sbic.",
+    "Preserve immutable snapshots for fe8a43ac, fb1e554f, 10f64551, 53e2aa88, 0c078211 and 35c658c2.",
     "Rerun the full repository suite on the next exact head; do not weaken tests.",
     "Finish semantic review of all 1,249 changed paths, including 48 workflows and every called script.",
     "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
@@ -882,13 +940,13 @@
     "number": 1662,
     "state": "open",
     "draft": true,
-    "head_sha": "0c0782112ad57550c2ac0ea675d362075860920a",
+    "head_sha": "35c658c22c85e9cd706d163b8be2491672814602",
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "ahead_by": 2493,
+    "ahead_by": 2494,
     "behind_by": 0,
-    "commits": 2493,
+    "commits": 2494,
     "changed_files": 1249,
-    "additions": 348429,
+    "additions": 348621,
     "deletions": 6309
   },
   "research_addendum": {
@@ -1380,5 +1438,6 @@
   },
   "current_integration_head_after_minification": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
   "current_integration_head_after_handoff_update": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
-  "current_integration_head_after_test_correction": "0c0782112ad57550c2ac0ea675d362075860920a"
+  "current_integration_head_after_test_correction": "0c0782112ad57550c2ac0ea675d362075860920a",
+  "current_integration_head_after_exact_head_correction": "35c658c22c85e9cd706d163b8be2491672814602"
 }
