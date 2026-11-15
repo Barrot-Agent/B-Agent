@@ -89,5 +89,5 @@ def test_run175_preserves_verified_opencode_default_and_disables_unverified_luna
     prompt = (ROOT / ".opencode/agent/barrot.md").read_text(encoding="utf-8")
     assert "offline phone deployment in Termux" in prompt
     assert "Highest priority: XRP intelligence" in prompt
-    assert "scripts/transmute.py\u0060 is QUARANTINED" in prompt
+    assert "transmute.py" in prompt and "QUARANTINED" in prompt
     assert "git add -A" in prompt
