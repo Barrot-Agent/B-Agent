@@ -1,7 +1,7 @@
 ---
 description: Barrot - my offline pocket AI
 mode: primary
-model: opencode/deepseek-v4.1-flash-free#barrot
+model: opencode/deepseek-v4.1-flash-free
 temperature: 0.7
 ---
 

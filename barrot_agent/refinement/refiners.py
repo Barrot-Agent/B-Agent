@@ -1,7 +1,7 @@
 """Refiner adapters for the ping-pong refinement engine.
 
 Two families:
-- OpenCodeRefiner: live model via the OpenAI-compatible OpenCode API
+- OpenCodeRefiner: live model via the OpenAI-compatible OpenCode inference API
   (model passed by name; never logs or echoes the API key).
 - HeuristicRefiner: fully deterministic offline refiner — dedupes lists,
   trims vague placeholders, normalizes whitespace. Guarantees a fixed point
@@ -25,11 +25,9 @@ from typing import Any
 
 from . import scoring
 
-OPENCODE_BASE = "https://gw.opencode.com/v1"
+OPENCODE_BASE = "https://opencode.ai/inference/openai/v1"
 DEFAULT_MODELS = (
-    "glm-5.3-flash",
-    "deepseek-4.1-flash",
-    "muse-spark-open",
+    "deepseek-v4.1-flash-free",
 )
 
 REFINE_SYSTEM = (
@@ -76,7 +74,7 @@ class Refiner(ABC):
 
 # ------------------------------------------------------------------ live API
 class OpenCodeRefiner(Refiner):
-    """OpenAI-compatible chat refiner backed by OpenCode."""
+    """OpenAI-compatible chat refiner backed by OpenCode inference."""
 
     def __init__(self, model: str, api_key: str | None = None,
                  base_url: str = OPENCODE_BASE, timeout: int = 120,
@@ -87,7 +85,7 @@ class OpenCodeRefiner(Refiner):
         self.timeout = timeout
         self.max_tokens = max_tokens
         self.temperature = temperature
-        self.api_key = api_key if api_key is not None else os.environ.get("OPENCODE_API_KEY", "")
+        self.api_key = api_key if api_key is not None else os.environ.get("OPENCODE_API_KEY", "public")
         self.calls = 0
         self.errors = 0
 
@@ -303,7 +301,6 @@ class HeuristicRefiner(Refiner):
 
 def make_model_refiners(models: tuple[str, ...] = DEFAULT_MODELS,
                         api_key: str | None = None) -> list[OpenCodeRefiner]:
-    """Build live refiners for the given OpenCode model names, skipping
-    any without a key available."""
-    key = api_key or os.environ.get("OPENCODE_API_KEY", "")
+    """Build live refiners for the given OpenCode model names."""
+    key = api_key or os.environ.get("OPENCODE_API_KEY", "public")
     return [OpenCodeRefiner(m, api_key=key) for m in models if key]

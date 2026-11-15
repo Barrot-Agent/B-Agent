@@ -465,23 +465,17 @@ done
 ```
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "opencode/glm-5.3-flash",
-  "provider": {
-    "opencode": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "OpenCode",
-      "options": {
-        "baseURL": "https://gw.opencode.com/v1",
-        "apiKey": "{env:OPENCODE_API_KEY}"
-      },
-      "models": {
-        "glm-5.3-flash": {
-          "name": "GLM 5.3 Flash"
-        },
-        "deepseek-4.1-flash": {
-          "name": "DeepSeek 4.1 Flash"
-        },
-        "muse-
+  "default_agent": "barrot",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "mcp": {
+    "servers": {}
+  },
+  "permission": {
+    "external_directory": "allow",
+    "edit": "allow",
+    "bash": "allow"
+  }
+}
 ```
 
 ## Module: ./.git/barrot_capability_audit/index.json
@@ -10588,56 +10582,6 @@ mod = im
         "test_rate": 1.0,
         "test_passed": 6,
      
-```
-
-## Module: ./results/mcp_sync/snapshot.json
-```
-{
-  "elapsed_ms": 6055.2,
-  "gaps": [
-    {
-      "candidates": [],
-      "covered_by": [],
-      "covered_categories": [],
-      "filled": false,
-      "missing_categories": [
-        "agent_communication",
-        "task_distribution"
-      ],
-      "name": "Multi-agent coordination",
-      "priority": "high",
-      "reason": "not all required categories have a live tool",
-      "required_tool_categories": [
-        "agent_communication",
-        "task_distribution"
-      ],
-      "target_id": 
-```
-
-## Module: ./results/mcp_sync/last_good.json
-```
-{
-  "generated_at": "2026-11-13T01:45:28.773291+00:00",
-  "servers": {
-    "opencode": {
-      "attempts": 1,
-      "error": "",
-      "latency_ms": 6029.6,
-      "missing_env": [],
-      "protocol_version": "2025-06-18",
-      "server_info": {
-        "name": "opencode-mcp",
-        "version": "0.1.0"
-      },
-      "source": "live",
-      "status": "connected",
-      "tools": [
-        {
-          "categories": [
-            "document_conversion",
-            "vision"
-          ],
-          
 ```
 
 ## Module: ./scripts/a2a_server.py

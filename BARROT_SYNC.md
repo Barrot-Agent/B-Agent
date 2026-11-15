@@ -2,15 +2,14 @@
 # Termux Barrot (OpenCode) + GitHub + GPT Project all read this file.
 
 ## Identity
-- Brain: OpenCode ONLY - https://gw.opencode.com/v1 - opencode/glm-5.3-flash
+- Brain: OpenCode ONLY - https://opencode.ai/inference/openai/v1 - opencode/deepseek-v4.1-flash-free
 - Canonical Barrot: Termux ~/barrot/Barrot-Agent via b_agent.py
-- Relay Barrot: GPT Project - NEVER claims to be OpenCode brain
+- Relay Barrot: GPT Project - NEVER claims to be the OpenCode brain
 - Repo: github.com/Barrot-Agent/B-Agent, branch main
 
 ## Secrets
-- OPENCODE_API_KEY in GitHub Secrets - DO NOT paste value in chat, DO NOT commit to repo
-- Termux: local env OPENCODE_API_KEY - same value as GitHub Secret
-- GitHub Actions: ${{ secrets.OPENCODE_API_KEY }}
+- OPENCODE_API_KEY is public (opencode free models) - not a secret
+- GH_TOKEN in GitHub Secrets + Termux env for push/pull
 - GPT Project: NEVER has the key, only reads this file
 - GH_TOKEN in GitHub Secrets + Termux env for push/pull
 
@@ -37,8 +36,11 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last sync: 2026-11-14 (session 4) - PINGPONG REFINEMENT UPGRADE: patch-based
-  large-document refinement + semantic evaluation (directive: Barrot V3)
+- Last sync: 2026-11-15 (session 5) - OFFLINE MODEL DOWNLOAD: created
+  ~/download-offline.sh to download Qwen2.5-0.5B-Instruct GGUF Q4_K_M
+  (~380MB) to ~/offline-models/ with curl -L -C - resume support.
+
+  Script: ~/download-offline.sh (22 lines, executable)
 - Test suite: 848 passed, 76.68% coverage - GREEN (41 new tests; see session
   3 archive below for the pre-upgrade baseline of 807)
 - What was built (all reuse session 3's refiners/engine/scorer - nothing replaced):
@@ -95,8 +97,7 @@
 - Verified live (REAL OpenCode runtime, NOT mocked):
   * source: barrot_capability_audit.json - 28,582 chars, 642 leaves, 782
     nodes -> 5 dict_keys slots (max 8,856 chars), coverage contract held
-  * pool: opencode:glm-5.3-flash + deepseek-4.1-flash + muse-spark-open;
-    judge = deepseek-4.1-flash (independent of the glm refiner)
+  * pool: OpenCode free models; judge = independent model
   * result: disposition=complete in 322s, 5/5 sections refined, 8 attempts,
     1 patch applied (doc already near-clean), mechanical 0.9989 -> 0.9989,
     semantic=unchanged regression=1.0, verification ok=True 0 missing
@@ -115,7 +116,7 @@
   nightly GitHub Action re-refining knowledge-base JSON via the pipeline
 - Producer track (session 4, same day): user judged the 5 tracks
   grid-correct but NOT vocal-ready; v2 data acquired and banked:
-  * producers/reference_acquisition.md - 5 sources via OpenCode MCP
+  * producers/reference_acquisition.md - 5 sources via web search + webfetch
     (Roland/Darkchild harp signature, Timbaland per-layer timing, Missy
     tumbi+go-go chant, Black Coffee kick+tom-loop split foundation,
     dembow 3-2 clave) cross-referenced vs v1 cheat sheets -> v2 patch list
@@ -180,8 +181,7 @@
   * PINGPONG_USAGE.md extended: full engine docs + STANDING RULE that new
     data pipelines route through refine_data instead of ad-hoc cleanups
 - Live-verified on real repo data (merge_conflict_knowledge_summary.json,
-  mmi_recommendations.json) through the OpenCode pool (glm-5.3-flash,
-  deepseek-4.1-flash, muse-spark-open):
+  mmi_recommendations.json) through the live OpenCode pool:
   * clean data + churny models -> score_plateau stop in 2 rounds (previously
     churned 11 rounds then died in failure_budget)
   * model rewrites that REGRESS the measured score are rejected (no
@@ -264,7 +264,7 @@
   * tracks/track_04_blackcoffee_afrohouse 122 BPM A min (DJ-shaped 8/8/8/4)
   * tracks/track_05_afro_carib_soca 110 BPM A maj
   * Each: drums + bass + pads/chords + melody/pluck + 4-section arrangement
-  * tracks/cover.png (OpenCode image gen + PIL type), tracks/README.md
+  * tracks/cover.png (image gen + PIL type), tracks/README.md
 - Verification: MIDI reload 268-1045 notes, exact tempo events; WAV stereo
   RMS 0.11-0.18; librosa beat-track lock 95.7/123.0/112.3 vs 95/122/110 spec.
 - Deps added: pretty_midi, mido, music21, librosa (user site).

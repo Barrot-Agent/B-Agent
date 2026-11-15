@@ -11,5 +11,6 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 
 ## Agent setup
 - OpenCode agent: `.opencode/agent/barrot.md`
-- Model: `opencode/deepseek-v4.1-flash-free#barrot`
+- Model: `opencode/deepseek-v4.1-flash-free`
 - Default agent in this repo: `barrot`
+- Runtime: OpenCode free models only. No external providers.

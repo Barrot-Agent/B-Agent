@@ -5,7 +5,7 @@ Test tiers (explicitly distinguished):
 - MOCKED (default): every test here is offline/deterministic — scripted
   refiners/judges, temp dirs, no network.
 - REAL RUNTIME: tests marked with @skipUnless(BARROT_LIVE_REFINEMENT) hit
-  the live OpenCode API with a real document slice; they never run in the
+  the live OpenCode inference API with a real document slice; they never run in the
   default suite.
 """
 from __future__ import annotations
@@ -555,7 +555,7 @@ class TestPipeline(unittest.TestCase):
 
 
 class TestRealRuntime(unittest.TestCase):
-    """REAL RUNTIME TIER — hits the live OpenCode API. Opt-in via
+    """REAL RUNTIME TIER — hits the live OpenCode inference API. Opt-in via
     BARROT_LIVE_REFINEMENT=1; never runs in the default suite."""
 
     @unittest.skipUnless(LIVE, "real-runtime tier: set BARROT_LIVE_REFINEMENT=1")

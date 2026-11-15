@@ -245,7 +245,7 @@ def refine_data(data: Any, refiners: Iterable[Refiner] | None = None,
 
     Ping-pongs refinement between models until the data cannot be refined
     further (measured fixed point). Pass explicit refiners for offline /
-    deterministic use; default to the live OpenCode pool when a key exists,
+    deterministic use; default to the live OpenCode pool when available,
     falling back to the deterministic HeuristicRefiner otherwise.
     """
     if refiners is None:

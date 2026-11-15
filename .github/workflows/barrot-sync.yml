@@ -14,10 +14,10 @@ jobs:
           python-version: '3.11'
       - name: Run Barrot on OpenCode
         env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          OPENCODE_API_KEY: public
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          echo "Barrot running on OpenCode - $OPENCODE_API_KEY" | cut -c1-30
+          echo "Barrot running on OpenCode free models"
           python b_agent.py --sync || echo "b_agent.py sync skipped - manual sync"
       - name: Commit sync update if changed
         run: |

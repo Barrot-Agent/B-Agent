@@ -89,7 +89,7 @@ with backoff).
 ```python
 from barrot_agent import refine_data, refine_json_file, HeuristicRefiner
 
-report = refine_data(data)                       # live OpenCode pool (needs OPENCODE_API_KEY)
+report = refine_data(data)                       # live OpenCode pool
 report = refine_data(data, refiners=[HeuristicRefiner()], ledger=None)  # offline
 report.converged, report.stop_reason, report.score_start, report.score_end
 report.data        # the refined data (fixed point)

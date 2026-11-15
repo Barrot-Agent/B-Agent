@@ -27,9 +27,6 @@ OUT = (Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    if "OPENCODE_API_KEY" not in __import__("os").environ:
-        print("FATAL: OPENCODE_API_KEY not set", file=sys.stderr)
-        return 2
     source = json.loads(DOC.read_text(encoding="utf-8"))
     audit = audit_document(source)
     slots = segment_document(source)

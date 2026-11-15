@@ -308,20 +308,20 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
             captured["body"] = json.loads(req.data.decode())
             return FakeResp(json.dumps(payload))
 
-        r = OpenCodeRefiner("glm-5.3-flash", api_key="test-key-123")
+        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="test-key-123")
         with mock.patch("urllib.request.urlopen", fake_urlopen):
             out = r.refine({"a": 1}, critique="fix the thing")
         self.assertEqual(out.verdict, "REFINED")
         self.assertEqual(out.data, {"a": 1})
         self.assertIn("/chat/completions", captured["url"])
-        self.assertEqual(captured["body"]["model"], "glm-5.3-flash")
+        self.assertEqual(captured["body"]["model"], "deepseek-v4.1-flash-free")
         # the key must go to the API, never into the URL
         auth = captured["headers"].get("Authorization", "")
         self.assertTrue(auth.startswith("Bearer "))
         self.assertNotIn("test-key-123", captured["url"])
 
     def test_no_key_means_unavailable(self):
-        r = OpenCodeRefiner("glm-5.3-flash", api_key="")
+        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="")
         self.assertFalse(r.available)
 
     def test_garbage_output_is_failed_not_fatal(self):
@@ -337,7 +337,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
         def fake_urlopen(req, timeout=0):
             return FakeResp(json.dumps(payload))
 
-        r = OpenCodeRefiner("glm-5.3-flash", api_key="k")
+        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
         with mock.patch("urllib.request.urlopen", fake_urlopen):
             out = r.refine({"a": 1}, critique=None)
         self.assertEqual(out.verdict, "FAILED")
@@ -365,7 +365,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
                     "reasoning_content": ""},
                 "finish_reason": "stop"}]}))
 
-        r = OpenCodeRefiner("deepseek-4.1-flash", api_key="k")
+        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
         with mock.patch("urllib.request.urlopen", truncated_then_ok):
             out = r.refine({"a": 1}, critique=None)
         self.assertEqual(out.verdict, "REFINED")
@@ -398,7 +398,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
                                              "slow down", {}, None)
             return FakeResp(json.dumps(payload))
 
-        r = OpenCodeRefiner("deepseek-4.1-flash", api_key="k")
+        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
         with mock.patch("urllib.request.urlopen", flaky_urlopen), \
                 mock.patch("barrot_agent.refinement.refiners.time.sleep") as sleeper:
             out = r.refine({"a": 1}, critique=None)
@@ -412,7 +412,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
             raise urllib.error.HTTPError(req.full_url, 403,
                                          "forbidden", {}, None)
 
-        r = OpenCodeRefiner("deepseek-4.1-flash", api_key="k")
+        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
         with mock.patch("urllib.request.urlopen", forbidden_urlopen), \
                 mock.patch("barrot_agent.refinement.refiners.time.sleep") as sleeper:
             out = r.refine({"a": 1}, critique=None)
