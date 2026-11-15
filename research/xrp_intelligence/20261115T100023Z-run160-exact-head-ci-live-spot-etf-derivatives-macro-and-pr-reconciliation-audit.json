@@ -569,5 +569,44 @@
     "funds_transfer": false,
     "main_write": false,
     "pr_merge": false
+  },
+  "regulatory_update": {
+    "captured_at_utc": "2026-11-15T10:00:23Z",
+    "entity": "Ripple National Trust Bank (RNTB)",
+    "status": "FINAL_CHARTER_APPROVAL_AND_CONSUMMATION_CONFIRMED",
+    "primary_occ_corporate_applications_search": {
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "control_number": "2025-Charter-342347",
+      "application_type": "New Bank Charter",
+      "transaction_form": "Charter National Bank Under Holding Company (Trust Bank)",
+      "proposed_charter_number": "25364",
+      "receipt_date": "2025-07-02",
+      "approved_date": "2025-12-12",
+      "consummated_effective_date": "2026-10-26"
+    },
+    "ripple_first_party_announcement": {
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "published_date": "2026-10-26",
+      "claims_final_occ_approval": true,
+      "approved_activities": [
+        "manage segregated RLUSD reserves",
+        "act as collateral trustee of RLUSD reserves for holders",
+        "provide fiduciary digital-asset custody"
+      ],
+      "operating_status_qualification": "Ripple states fiduciary custody will be authorized upon opening; actual operational launch, customer count and transaction volume were not verified."
+    },
+    "issuer_boundary": {
+      "rlusd_issuer": "Standard Custody & Trust Company, LLC (SCTC), Ripple's NYDFS-regulated limited-purpose trust company",
+      "rntb_role": "Federal OCC-supervised national trust bank supporting reserves, collateral-trustee duties and fiduciary custody",
+      "rntb_is_rlusd_issuer": false
+    },
+    "index_disagreement": {
+      "occ_interpretations_decisions_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "displayed_entry": "Conditional Approval 1359 dated 2025-12-12 remains visible",
+      "explanation": "The I&D index retains the original conditional-approval letter, while OCC Corporate Applications Search records the application as approved and consummated/effective on 2026-10-26. Ripple's October 26 first-party announcement independently states final approval. The index entry is a stale/incomplete status view, not sufficient disconfirmation of the later CAS status.",
+      "source_independence": "OCC CAS is regulator filing-status evidence; Ripple release is issuer announcement; OCC I&D index is the original decision-letter index."
+    },
+    "model_eligibility": "institutional/regulatory event candidate only after byte-exact source receipt capture; not a directional price signal",
+    "raw_source_sha256": null
   }
 }
