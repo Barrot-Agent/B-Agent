@@ -5,12 +5,13 @@
       "args": [
         "mcp-server-git",
         "--repository",
-        "/workspace/B-Agent"
+        "."
       ],
       "env": {
         "XRP_ENV": "production",
         "STABILITY_ANCHOR": "0.707"
-      }
+      },
+      "_note": "Run from the repository root; the git server scopes itself to the current directory."
     },
     "barrot-memory": {
       "command": "npx",
@@ -19,7 +20,7 @@
         "@modelcontextprotocol/server-memory"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/workspace/B-Agent/ping-pongings/knowledge-base/barrot_memory.jsonl"
+        "MEMORY_FILE_PATH": "ping-pongings/knowledge-base/barrot_memory.jsonl"
       }
     },
     "barrot-filesystem": {
@@ -27,40 +28,60 @@
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/workspace/B-Agent"
+        "."
       ]
     },
     "github": {
-      "command": "uvx",
-      "args": ["mcp-server-github"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}"
       },
       "_requires_approval": true,
-      "_note": "Requires human approval for repo writes and workflow execution."
+      "_note": "Official GitHub remote MCP. Token comes from the OpenCode service env (opencode service set env GITHUB_MCP_TOKEN)."
     },
-    "filesystem": {
+    "docling": {
       "command": "uvx",
       "args": [
-        "mcp-server-filesystem",
-        "--allowed-directories",
-        "/workspace/B-Agent/sandbox"
+        "--from",
+        "docling-mcp[local]",
+        "docling-mcp-server",
+        "--transport",
+        "stdio"
       ],
-      "_note": "Read-only access scoped to /sandbox. Write ops require approval."
+      "env": {
+        "DOCLING_MCP_CONVERSION_MODE": "local",
+        "UV_LINK_MODE": "copy"
+      },
+      "_note": "PDF/DOCX/HTML conversion with OCR. First cold start downloads the Docling stack."
+    },
+    "searxng": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-searxng"
+      ],
+      "env": {
+        "SEARXNG_URL": "http://127.0.0.1:8888"
+      },
+      "_note": "Requires the local SearXNG instance: bash scripts/start_searxng.sh --daemon"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "sandbox"
+      ],
+      "_note": "Read-only access scoped to ./sandbox. Write ops require approval."
     },
     "fetch": {
       "command": "uvx",
       "args": ["mcp-server-fetch"],
       "_note": "Read-only HTTP fetch. No auth required."
-    },
-    "memory": {
-      "command": "uvx",
-      "args": ["mcp-server-memory"],
-      "_note": "Persistent knowledge-graph memory for Barrot agent sessions."
     }
   },
   "_integration_framework": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "entry_point": "barrot_agent.mcp_integration.MCPIntegration",
     "default_dry_run": true,
     "approval_required_for": [

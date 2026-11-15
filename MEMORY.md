@@ -16,6 +16,9 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Runtime: OpenCode free models only. No external providers.
 
 ## MCP
-- `github` — remote GitHub MCP; authenticates with `GITHUB_MCP_TOKEN` (stored in the OpenCode service env).
-- `docling` — local document/OCR conversion via `uvx`.
-- `searxng` — local web search via `npx mcp-searxng`; run `bash scripts/start_searxng.sh` first.
+- Live stack (opencode.json): `github` remote + `docling` local + `searxng` local. Verified 2026-11-15: github 49 tools, docling 21 tools, searxng 4 tools.
+- `github` — remote `https://api.githubcopilot.com/mcp/`; PAT read from `GITHUB_MCP_TOKEN` via `{env:GITHUB_MCP_TOKEN}` header. Token lives in the OpenCode service env (`opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"`). A service restart is required before MCP connections see new config or env.
+- OAuth for github MCP does not work: GitHub's authorization server has no dynamic client registration.
+- `docling` — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio`; cold start is slow (tens of seconds), startup timeout is 240s.
+- `searxng` — `npx mcp-searxng` against `http://127.0.0.1:8888`; start with `bash scripts/start_searxng.sh --daemon` (idempotent, logs to `~/.local/share/searxng/searxng.log`).
+- Legacy `mcp_config.json` + `data/mcp_config.json` mirror the live stack for the Python MCP layer (`barrot_agent.mcp_sync`); they are not read by OpenCode.

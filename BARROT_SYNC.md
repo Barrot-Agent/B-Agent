@@ -36,7 +36,22 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last sync: 2026-11-15 (session 5) - OFFLINE MODEL DOWNLOAD: created
+- Last sync: 2026-11-15 (session 6) - MCP RECONFIGURED: github/docling/searxng all reachable
+  in OpenCode. What changed:
+  * Root cause of the github "Authorization header is badly formatted (HTTP 400)"
+    failure: `{env:GITHUB_MCP_TOKEN}` was unset in the running server process. Fix =
+    token in the OpenCode service env + service restart (verified: 49 github tools,
+    live MCP sync probe from scripts/mcp_sync.py).
+  * Rewrote mcp_config.json + data/mcp_config.json: removed phantom packages
+    (`mcp-server-github`, `mcp-server-memory`, `mcp-server-filesystem`) and
+    `/workspace/B-Agent` paths; now mirrors the live stack (github remote, docling,
+    searxng, git, memory, filesystem, fetch) with portable relative paths.
+  * scripts/start_searxng.sh: added --daemon (idempotent background start; logs to
+    ~/.local/share/searxng/searxng.log). SearXNG was NOT running before; now up on
+    ~~~~127.0.0.1:8888.
+  * README MCP section updated (--daemon, `opencode mcp list`, service restart note).
+  * Tests: tests/test_mcp_sync.py 17 passed; tests/test_mcp_integration.py 42 passed.
+- Previous sync: 2026-11-15 (session 5) - OFFLINE MODEL DOWNLOAD: created
   ~/download-offline.sh to download Qwen2.5-0.5B-Instruct GGUF Q4_K_M
   (~380MB) to ~/offline-models/ with curl -L -C - resume support.
 

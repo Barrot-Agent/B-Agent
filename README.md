@@ -34,16 +34,24 @@ Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durab
 | `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
 | `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
 
-Start SearXNG first — it listens on `127.0.0.1:8888` and enables `format=json`:
+Start SearXNG first — it listens on `127.0.0.1:8888` and enables `format=json`.
+`--daemon` starts it in the background and is idempotent (safe to re-run):
 
 ```bash
-bash scripts/start_searxng.sh
+bash scripts/start_searxng.sh --daemon
 ```
 
-Then check connections inside OpenCode with `/mcps`:
+Then check connections inside OpenCode with `/mcps`, or from a shell:
 
-```text
-/mcps
+```bash
+opencode mcp list
+```
+
+A restart of the OpenCode service is required after changing `opencode.json` or the
+service environment, because MCP connections are opened at startup:
+
+```bash
+opencode service restart
 ```
 
 The `github` server authenticates with a personal access token read from `GITHUB_MCP_TOKEN`. It is already stored in the OpenCode service environment on this machine:
