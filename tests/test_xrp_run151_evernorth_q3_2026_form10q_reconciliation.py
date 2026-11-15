@@ -69,7 +69,7 @@ def test_run151_reconciles_postclose_known_treasury_without_double_counting() ->
     assert bridge["completeness"].startswith("KNOWN_GROSS_PATHFINDER_SUBTOTAL")
     assert bridge["classification"] == "GROSS_PATHFINDER_TREASURY_NOT_PUBCO_ATTRIBUTABLE_AMOUNT"
     assert bridge["complete_total_including_possible_restricted_cash_purchase"] == "NOT_ESTABLISHED"
-    pathfinder = data["evernorth_q3_2026"]["pathfinder_ownership"]
+    pathfinder = data["pathfinder_ownership"]
     assert pathfinder["pubco_ownership_percent"] == "71.5"
     assert pathfinder["pubco_attributable_xrp"] == "NOT_COMPUTED"
 
@@ -112,7 +112,7 @@ def test_run151_preserves_ripple_related_entity_and_pathfinder_distinctions() ->
     assert ripple["ripple_pathfinder_units"] == "16461545"
     assert ripple["ripple_affiliated_entity_xrp"] == "50000000"
     assert ripple["combined_ripple_and_affiliate_pubco_ownership_limit"] == "9.9%"
-    assert ripple["arrington_sponsor_xrp_via_rippleworks"] == "211319096.061435"
+    assert ripple["arrington_sponsor_xrp_via_rippleworks"] == "211319096"
 
 
 def test_run151_source_and_forecast_gates_remain_fail_closed() -> None:
@@ -144,3 +144,49 @@ def test_run151_does_not_compute_xrp_per_share_from_gross_pathfinder_treasury() 
     data = _audit()["evernorth_q3_2026"]["xrp_per_share"]
     assert data["pubco_ownership_of_pathfinder_percent"] == "71.5"
     assert data["calculated_xrp_per_share"] == "NOT_COMPUTED"
+
+
+def test_run151_sec_commission_interpretation_classifies_xrp_but_preserves_howey() -> None:
+    rule = _audit()["regulatory_status"]["sec_commission_interpretation"]
+    assert rule["release_number"] == "33-11412"
+    assert rule["xrp_classification"] == "DIGITAL_COMMODITY"
+    assert rule["xrp_itself_is_security"] is False
+    assert rule["nonsecurity_asset_sale_caveat"]
+    assert rule["howey_test_preserved"] is True
+    assert rule["blanket_exemption"] is False
+
+
+def test_run151_genius_act_occ_rule_is_not_yet_effective() -> None:
+    rule = _audit()["regulatory_status"]["genius_act_occ_final_rule"]
+    assert rule["announced_date"] == "2026-10-21"
+    assert rule["effective_date"] == "2027-01-18"
+    assert rule["status_as_of_2026_11_15"] == "NOT_YET_EFFECTIVE"
+
+
+def test_run151_circle_binance_equity_and_coinbase_distribution_are_separate() -> None:
+    data = _audit()["institutional_network"]
+    binance = data["circle_binance"]
+    distribution = data["circle_coinbase_distribution"]
+    assert binance["equity_investment_usd"] == "100000000"
+    assert binance["shares_purchased"] == "1200000"
+    assert distribution["q3_2026_distribution_costs_usd"] == "331300000"
+    assert distribution["nine_month_2026_distribution_costs_usd"] == "986600000"
+    assert "not a flat 50%" in distribution["arrangement"]
+
+
+def test_run151_coinbase_rewards_table_narrative_mismatch_is_preserved() -> None:
+    item = _audit()["institutional_network"]["coinbase_usdc_rewards_discrepancy"]
+    assert item["table_q3_change_usd"] == "17675000"
+    assert item["narrative_q3_increase_usd"] == "71600000"
+    assert item["table_nine_month_change_usd"] == "47655000"
+    assert item["narrative_nine_month_increase_usd"] == "175700000"
+    assert item["reconciliation"] == "UNRESOLVED_INTERNAL_TABLE_NARRATIVE_DISAGREEMENT"
+
+
+def test_run151_fresh_spot_observations_remain_model_ineligible() -> None:
+    market = _audit()["market_snapshot_followup"]
+    assert market["okx_xrp_usdt"]["age_at_cutoff_seconds"] > 300
+    assert market["okx_xrp_usdt"]["model_eligible"] is False
+    assert market["kraken_xrp_usd"]["provider_event_time"] == "ABSENT"
+    assert market["kraken_xrp_usd"]["model_eligible"] is False
+    assert market["depth"] == "No synchronized multi-venue L2 captured. Single-level ticker sizes are not full depth."

@@ -97,7 +97,44 @@
     },
     "pr_dependency_audit_run": 43674591440,
     "pr_fail_closed_gate_run": 43674591454,
-    "new_run151_commit_verification": "PENDING; new audit, map and regression test will trigger a separate exact-head CI cycle."
+    "new_run151_commit_verification": "PENDING; new audit, map and regression test will trigger a separate exact-head CI cycle.",
+    "run151a_exact_head": {
+      "tested_head_sha": "95e181ca44b0a6cf00172860e95185d8a212b867",
+      "full_ci_run_id": 43676126105,
+      "full_suite": {
+        "passed": 3776,
+        "failed": 2,
+        "skipped": 1,
+        "subtests": 19,
+        "inclusive_coverage_percent": 64.02,
+        "duration_seconds": 106.97,
+        "conclusion": "failure"
+      },
+      "core_tests": "passed",
+      "dependency_audit": {
+        "run_id": 43676126104,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "fail_closed_gate": {
+        "run_id": 43676126149,
+        "conclusion": "success"
+      },
+      "failing_tests": [
+        {
+          "test": "test_run151_reconciles_postclose_known_treasury_without_double_counting",
+          "cause": "The test indexed evernorth_q3_2026 twice; fixture path error, not repository product behavior."
+        },
+        {
+          "test": "test_run151_preserves_ripple_related_entity_and_pathfinder_distinctions",
+          "cause": "Assertion still expected Run135A fractional precision instead of the Q3 10-Q whole-XRP amount."
+        }
+      ],
+      "product_code_failures": "NONE_IDENTIFIED_IN_THIS_RUN",
+      "wheel_build": "SKIPPED_AFTER_TEST_FAILURE",
+      "remediation": "Fix the two research-artifact assertions, add SEC/CFTC and stablecoin-regulatory evidence, then rerun the full suite on the new exact head."
+    }
   },
   "main_branch_verification": {
     "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
@@ -551,13 +588,45 @@
     },
     "circle_coinbase_distribution": {
       "q3_2026_distribution_costs_usd": "331300000",
-      "nine_month_distribution_costs_usd": "986600000",
-      "note": "Circle's expenses paid to Coinbase; not Coinbase XRP purchases and not a simple universal revenue-share rate."
+      "nine_month_2026_distribution_costs_usd": "986600000",
+      "arrangement": "Payments to Coinbase are based on USDC held on Coinbase's platform after issuer retention and a share of remaining distribution economics after third-party ecosystem participants; not a flat 50% of all Circle reserve income.",
+      "renewal": "Coinbase and Circle renewed their commercial agreement on the same terms in 2026.",
+      "coinbase_product_usdc": "Coinbase reports average USDC held in its products reached an all-time high in Q3 2026.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
     },
     "pnc_coinbase_usdc": {
       "date": "2026-11-09",
       "status": "Limited payment pilot using Circle USDC with automatic USD conversion.",
       "xrp_settlement": "NOT_ESTABLISHED"
+    },
+    "circle_binance": {
+      "investment_date": "2026-09-17",
+      "equity_investment_usd": "100000000",
+      "shares_purchased": "1200000",
+      "price_per_share_usd": "80.84",
+      "commercial_relationship": "Binance expanded USDC distribution/access across products and uses USDC as a treasury stablecoin.",
+      "classification": "DIRECT_EQUITY_INVESTMENT_PLUS_DISTRIBUTION_RELATIONSHIP",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    "circle_reserve_economics": {
+      "average_usdc_in_circulation_q3_usd": "73264000000",
+      "average_usdc_in_circulation_nine_months_usd": "74983000000",
+      "reserve_return_rate_q3": "3.5%",
+      "reserve_income_share_of_revenue_q3": "76.0%",
+      "reserve_income_share_of_revenue_nine_months": "87.5%",
+      "interpretation": "Circle's revenue remains highly exposed to USDC circulation and short-term reserve yields; falling policy rates or USDC balances can pressure reserve income."
+    },
+    "coinbase_usdc_rewards_discrepancy": {
+      "table_q3_expense_usd": "129245000",
+      "table_q3_comparator_usd": "111570000",
+      "table_q3_change_usd": "17675000",
+      "table_nine_month_expense_usd": "361780000",
+      "table_nine_month_comparator_usd": "314125000",
+      "table_nine_month_change_usd": "47655000",
+      "narrative_q3_increase_usd": "71600000",
+      "narrative_nine_month_increase_usd": "175700000",
+      "reconciliation": "UNRESOLVED_INTERNAL_TABLE_NARRATIVE_DISAGREEMENT",
+      "note": "Coinbase's USDC rewards expense is not Circle's distribution cost paid to Coinbase."
     }
   },
   "identity_research": {
@@ -747,6 +816,151 @@
       "lines": "995-996",
       "type": "SEC_PRIMARY",
       "raw_bytes_captured": false
+    },
+    {
+      "source": "SEC Commission interpretation Release 33-11412",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "issued": "2026-03-17",
+      "lines": "349-365, 368-399, 419-440, 509-510",
+      "type": "SEC_COMMISSION_PRIMARY"
+    },
+    {
+      "source": "CFTC joint interpretation release",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+      "issued": "2026-03-17",
+      "type": "CFTC_PRIMARY"
+    },
+    {
+      "source": "OCC GENIUS Act final rule",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "issued": "2026-10-21",
+      "effective": "2027-01-18",
+      "type": "OCC_PRIMARY"
+    },
+    {
+      "source": "Circle Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "1555-1561, 1590-1612, 1810-1826",
+      "type": "SEC_PRIMARY"
+    },
+    {
+      "source": "Coinbase Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000075/coin-20260930.htm",
+      "filed": "2026-11-13",
+      "lines": "USDC rewards table and MD&A",
+      "type": "SEC_PRIMARY"
     }
-  ]
+  ],
+  "market_snapshot_followup": {
+    "observation_cutoff_utc": "2026-11-15T04:21:02Z",
+    "okx_xrp_usdt": {
+      "last_usdt": "0.9663",
+      "bid_usdt": "0.9663",
+      "ask_usdt": "0.9664",
+      "bid_size_xrp": "5291.519205",
+      "ask_size_xrp": "1425.255309",
+      "spread_basis_points_approx": 1.0359,
+      "bid_to_ask_size_ratio_approx": 3.712,
+      "open_24h_usdt": "0.987",
+      "high_24h_usdt": "1.0002",
+      "low_24h_usdt": "0.8929",
+      "volume_24h_xrp": "100967431.782141",
+      "provider_event_time_utc": "2026-11-15T04:13:58.767Z",
+      "age_at_cutoff_seconds": 423.233,
+      "model_eligible": false,
+      "exclusion": "Exceeds the 300-second freshness gate; no raw bytes or SHA-256 receipt."
+    },
+    "kraken_xrp_usd": {
+      "last_usd": "0.96957",
+      "bid_usd": "0.96933",
+      "ask_usd": "0.96966",
+      "top_bid_size_xrp": "1437",
+      "top_ask_size_xrp": "1296",
+      "spread_basis_points_approx": 3.4043,
+      "high_24h_usd": "0.99897",
+      "low_24h_usd": "0.89112",
+      "volume_24h_xrp": "84588320.10570319",
+      "vwap_24h_usd": "0.94642863",
+      "utc_day_open_usd": "0.91378",
+      "provider_event_time": "ABSENT",
+      "model_eligible": false,
+      "exclusion": "No provider event timestamp or raw-source receipt."
+    },
+    "binance_xrpusdt_perpetual": {
+      "mark_price_usdt": "0.96420000",
+      "index_price_usdt": "0.96460350",
+      "last_funding_rate_decimal": "-0.00003071",
+      "provider_event_time_utc": "2026-11-15T03:56:29Z",
+      "age_at_cutoff_seconds": 1473,
+      "model_eligible": false,
+      "exclusion": "Perpetual futures rather than spot; stale by more than 300 seconds."
+    },
+    "cross_venue_read": "OKX and Kraken observations differ by about 0.34%, but event times are asynchronous and Kraken supplies no event timestamp. Not executable arbitrage.",
+    "depth": "No synchronized multi-venue L2 captured. Single-level ticker sizes are not full depth."
+  },
+  "regulatory_status": {
+    "sec_commission_interpretation": {
+      "release_number": "33-11412",
+      "issued_date": "2026-03-17",
+      "effective_date": "2026-03-23",
+      "xrp_classification": "DIGITAL_COMMODITY",
+      "xrp_itself_is_security": false,
+      "commission_basis": "The Commission expressly lists XRP as a digital commodity based on its understanding of XRP's characteristics, terms and functions as of the release date.",
+      "nonsecurity_asset_sale_caveat": "A non-security crypto asset may still be offered or sold subject to an investment contract, which is a security.",
+      "howey_test_preserved": true,
+      "blanket_exemption": false,
+      "status": "COMMISSION_INTERPRETATION_NOT_A_STATUTORY_EXEMPTION",
+      "source": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "relevant_lines": "349-365, 368-399, 419-440, 509-510"
+    },
+    "cftc_joint_interpretation": {
+      "joined_sec_interpretation": true,
+      "effect": "CFTC states it will administer the Commodity Exchange Act consistently with the Commission interpretation; certain non-security crypto assets may meet the CEA commodity definition.",
+      "limitation": "Does not itself create a comprehensive federal spot-exchange registration regime.",
+      "source": "https://www.cftc.gov/PressRoom/PressReleases/9198-26"
+    },
+    "genius_act_occ_final_rule": {
+      "announced_date": "2026-10-21",
+      "effective_date": "2027-01-18",
+      "status_as_of_2026_11_15": "NOT_YET_EFFECTIVE",
+      "scope": [
+        "permitted payment stablecoin issuers",
+        "foreign payment stablecoin issuers under OCC jurisdiction",
+        "certain custody activities"
+      ],
+      "bsa_aml_ofac": "Not covered in this final rule; separate rulemaking.",
+      "source": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html"
+    },
+    "occ_trust_charters": [
+      {
+        "entity": "Ripple National Trust Bank",
+        "status": "CONSUMMATED_EFFECTIVE",
+        "effective_date": "2026-10-26",
+        "powers": "National trust bank powers; do not infer full commercial deposit-taking bank status."
+      },
+      {
+        "entity": "Coinbase National Trust Company",
+        "status": "CONSUMMATED_EFFECTIVE",
+        "effective_date": "2026-11-06",
+        "powers": "National trust company powers; do not infer full commercial deposit-taking bank status."
+      }
+    ],
+    "proposed_rulemaking": [
+      {
+        "agency": "SEC",
+        "name": "Regulation Crypto Assets",
+        "issued": "2026-08-21",
+        "comment_deadline": "2026-10-20",
+        "status": "PROPOSED_NOT_FINAL"
+      },
+      {
+        "agency": "CFTC",
+        "name": "Digital Commodity Trading ANPRM",
+        "issued": "2026-10-05",
+        "comment_deadline": "2026-11-20",
+        "status": "PROPOSED_NOT_FINAL"
+      }
+    ]
+  }
 }

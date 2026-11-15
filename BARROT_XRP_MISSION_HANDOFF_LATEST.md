@@ -5655,3 +5655,56 @@ A second line-by-line review of the November 13 Evernorth Q3 2026 Form 10-Q foun
 The Run151 audit and regression tests were corrected to encode these distinctions. The earlier Run151 commit is retained in Git history; the current Run151A commit supersedes its fractional in-kind attribution and clarifies gross Pathfinder treasury versus Pubco-attributable XRP.
 
 Primary source: [Evernorth Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm), filed November 13, 2026, especially Notes 1 and 4, the XRP lot table, the Coinbase principal-market discussion, custody risk and Pathfinder ownership disclosure.
+
+
+## Run151B — 2026-11-15 — SEC XRP commodity classification, stablecoin regulation and refreshed market observations
+
+### Regulatory status
+
+The SEC's March 17, 2026 Commission interpretation, Release 33-11412, expressly lists XRP as a **digital commodity** and says the listed digital commodities are not themselves securities. The Commission's conclusion is based on the characteristics, terms and functions of XRP as of the release date.
+
+This is not a blanket exemption for every XRP transaction. The same interpretation says a non-security crypto asset can still be offered or sold subject to an investment contract, which is a security. The Howey analysis remains relevant to particular offers, sales and schemes. The CFTC joined the interpretation and says it will administer the Commodity Exchange Act consistently with it.
+
+The OCC's October 21, 2026 GENIUS Act final rule is not effective until January 18, 2027. It addresses permitted payment-stablecoin issuers, certain foreign issuers under OCC jurisdiction and specified custody activities. BSA/AML and OFAC requirements are left to separate rulemaking. Do not describe this future-effective rule as already operative.
+
+OCC Corporate Applications Search records Ripple National Trust Bank as consummated/effective October 26, 2026, and Coinbase National Trust Company as consummated/effective November 6, 2026. These are national trust-bank/company charters with trust powers; do not infer ordinary commercial-bank deposit-taking powers. The OCC's digital-asset licensing list excludes certain conversion applications, so absence from that list is not evidence that a converted trust bank lacks a charter.
+
+SEC Regulation Crypto Assets (August 21, 2026) and the CFTC Digital Commodity Trading ANPRM (October 5, 2026) remain proposed rulemakings, not final rules.
+
+### Coinbase, Circle, Binance and PNC — primary SEC filing reconciliation
+
+Circle's November 13 Q3 Form 10-Q reports:
+- $331.3M Q3 and $986.6M nine-month distribution costs paid to Coinbase.
+- The agreement's economics are tied to USDC held on Coinbase's platform after issuer retention and a share of remaining distribution economics after third-party ecosystem participants. It is not a flat 50% of all Circle reserve income.
+- Circle and Coinbase renewed their commercial agreement on the same terms in 2026; Coinbase reports average USDC held in its products reached an all-time high.
+- Binance invested $100M for 1.2M Circle shares on September 17, 2026 at $80.84 per share and expanded its USDC distribution/treasury use. This is both an equity investment and a commercial distribution relationship.
+- Circle's average USDC in circulation was approximately $73.264B in Q3 and $74.983B over nine months; the reported reserve return rate was 3.5%. Reserve income represented 76.0% of Q3 revenue and 87.5% of nine-month revenue. Circle remains materially exposed to USDC circulation and short-term reserve yields.
+- Circle and SBI each own 50% of Circle SBI Japan K.K.; Circle consolidates the VIE, SBI is noncontrolling interest, and each contributed approximately $1.5M. The filing reports no significant operating results for the JV through September 30.
+
+Coinbase's November 13 Q3 Form 10-Q contains an unresolved USDC rewards discrepancy:
+- Table: $129.245M Q3 versus $111.570M, a $17.675M increase; nine months $361.780M versus $314.125M, a $47.655M increase.
+- Narrative: $71.6M Q3 and $175.7M nine-month increases.
+Do not reconcile by speculation. Coinbase's USDC rewards expense is distinct from Circle's distribution costs paid to Coinbase.
+
+PNC's November 9 pilot through Coinbase uses Circle USDC with automatic USD conversion; XRP settlement is not established. Ripple's RLUSD distribution on Coinbase, Ripple/BNY XRP and RLUSD custody, SBI VC Trade's RLUSD Japan launch, and Evernorth's Coinbase accounting-principal-market selection are distinct relationships. None establishes an exclusive XRP payment rail.
+
+### Refreshed spot observations
+
+At the 04:21:02 UTC observation cutoff:
+- OKX XRP-USDT: $0.9663, bid $0.9663 / ask $0.9664; top bid size 5,291.5 XRP and ask size 1,425.3 XRP; 24-hour volume approximately 100.97M XRP. Provider event timestamp 04:13:58.767 UTC, 423 seconds old, so it fails the 300-second freshness gate.
+- Kraken XRP/USD: $0.96957, bid $0.96933 / ask $0.96966; 24-hour volume approximately 84.59M XRP, VWAP $0.94643, high $0.99897 and low $0.89112. No provider event timestamp; model-ineligible.
+- Binance XRPUSDT perpetual mark/index $0.9642 / $0.9646035 and last funding rate -0.00003071, timestamp 03:56:29 UTC; stale by 1,473 seconds and not spot.
+- Cross-venue difference is about 0.34%, but the observations are asynchronous. No arbitrage inference.
+- Full-depth synchronized L2 remains unavailable. Top-of-book sizes are not full-depth liquidity. No raw bytes or SHA-256 receipts were captured; none of these observations enters the feature store.
+
+### Run151A exact-head test diagnosis
+
+The exact-head full suite on `95e181ca` ran 3,776 passed, two failed, one skipped and 19 subtests, with 64.02% inclusive coverage. Both failures were in the new Run151 research regression tests:
+1. A test indexed the `evernorth_q3_2026` object twice.
+2. A test retained the prior Run135A fractional XRP expectation after the Q3 10-Q correction to whole XRP.
+
+Core tests passed, six-manifest dependency audit passed with no known vulnerabilities, and the fail-closed gate passed. No runtime product-code failure was identified. The two test assertions are corrected in the next commit; the corrected exact head must rerun the entire repository suite and wheel verification.
+
+Primary regulatory source: [SEC Release 33-11412](https://www.sec.gov/files/rules/interp/2026/33-11412.pdf), lines 349-365 and 368-399.
+Primary stablecoin source: [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+Primary Coinbase source: [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000075/coin-20260930.htm).
