@@ -5,6 +5,14 @@ from datetime import datetime
 from pathlib import Path
 
 from barrot_agent.evolution.xrp_public_ingestion import ENDPOINTS, SCHEDULED_ENDPOINTS, WEEKLY_ENDPOINTS
+from barrot_agent.evolution.forecast_ledger import (
+    READINESS_POLICY_ID,
+    _MAX_WEIGHTED_CALIBRATION_ERROR,
+    _MIN_HORIZON_MULTIPLE,
+    _MIN_OOS_SAMPLES,
+    _MIN_SHADOW_SAMPLES,
+    _MIN_SOURCE_GROUPS,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 CURRENT = ROOT / "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json"
@@ -632,7 +640,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_is_historical_and_run169_is_current():
+def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_and_run169_are_historical_and_run172_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -643,7 +651,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run169"
+    assert data["latest_run_id"] == "Run172"
     run165 = data["run165_snapshot"]
     assert run165["main_sha"] == data["repository_state"]["main_sha"]
     assert run165["pr_number"] == 1662
@@ -1019,7 +1027,7 @@ def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_remain
     assert run.get("run_id") == "Run167"
     assert run["pr_changed_files"] == 1255
     assert run["current_pr_changed_files_at_capture"] == 1256
-    assert data["integration_pr"]["changed_files"] == 1257
+    assert data["integration_pr"]["changed_files"] == 1259
     assert run["integration_head_before_run167_map_commit"] != data["integration_pr"]["head_sha"]
     assert data["run167_workflow_review"]["changed_workflow_files"] == 48
     assert data["run167_workflow_review"]["workflow_definition_triage_complete"] is True
@@ -1043,7 +1051,7 @@ def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_remain
 
 def test_run168_historical_snapshot_security_hold_and_identity_resolution_are_explicit():
     data = load_current()
-    assert data["latest_run_id"] == "Run169"
+    assert data["run168_snapshot"]["run_id"] == "Run168"
     initial = data["run168_snapshot"]
     assert initial["main_sha"] == data["observed_main_sha"]
     assert initial["integration_head_before_run168_commit"] == data["run168_ci_evidence"]["full_suite"]["head_sha"]
@@ -1088,7 +1096,7 @@ def test_run168_historical_snapshot_security_hold_and_identity_resolution_are_ex
 
 def test_run169_exact_head_regression_market_security_and_forecast_gates():
     data = load_current()
-    assert data["latest_run_id"] == "Run169"
+    assert data["run169_snapshot"]["run_id"] == "Run169"
     run = data["run169_snapshot"]
     assert run["main_sha"] == data["observed_main_sha"]
     assert run["integration_head_before_run169_commit"] == run["pr_head_sha"]
@@ -1190,7 +1198,47 @@ def test_run169_circle_arc_bny_pnc_and_xrpl_metrics_are_not_misclassified_as_xrp
 def test_run169_current_pr_snapshot_does_not_rewrite_run167_historical_counts():
     data = load_current()
     assert data["run167_snapshot"]["current_pr_changed_files_at_capture"] == 1256
-    assert data["integration_pr"]["changed_files"] == 1257
+    assert data["integration_pr"]["changed_files"] == 1259
     assert data["integration_pr"]["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
     assert data["run169_followup_snapshot"]["integration_head_before_followup_commit"] != data["integration_pr"]["head_sha"]
     assert data["forecast_status"] == "NOT_ISSUED"
+
+
+def test_run172_current_map_tracks_run157_registry_exact_head_ci_and_readiness_policy():
+    data = load_current()
+    assert data["latest_run_id"] == "Run172"
+    run = data["run172_snapshot"]
+    assert run["main_sha"] == data["observed_main_sha"]
+    assert run["integration_head_before_run172_map_commit"] == run["pr_head_sha"]
+    assert run["pr_number"] == 1662
+    assert run["open_prs"] == 373
+    assert run["drafts"] == 361
+    assert run["non_drafts"] == 12
+    assert data["integration_pr"]["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
+    assert data["integration_pr"]["changed_files"] == 1259
+    assert data["repository_state"]["integration_tree_entries"] == 2502
+    assert data["event_timeline_registry_version"] == "run157-20261115"
+    assert data["event_timeline_registry_event_count"] == 85
+    assert data["event_timeline_registry_raw_hashes"] == 0
+    assert data["event_timeline_model_eligible"] is False
+    assert data["event_registry"]["registry_version"] == "run157-20261115"
+    assert data["event_registry"]["event_count"] == 85
+    assert data["event_registry"]["raw_source_sha256_count"] == 0
+    assert data["event_registry"]["model_eligible"] is False
+    engine = data["prediction_engine_status"]
+    policy = engine["readiness_policy"]
+    assert policy["id"] == READINESS_POLICY_ID
+    assert policy["minimum_oos_samples"] == _MIN_OOS_SAMPLES == 100
+    assert policy["minimum_shadow_samples"] == _MIN_SHADOW_SAMPLES == 100
+    assert policy["minimum_horizon_multiple"] == _MIN_HORIZON_MULTIPLE == 10
+    assert policy["minimum_source_groups"] == _MIN_SOURCE_GROUPS == 5
+    assert policy["maximum_weighted_calibration_error"] == _MAX_WEIGHTED_CALIBRATION_ERROR == 0.05
+    assert data["forecast_status"] == "NOT_ISSUED"
+    assert data["accuracy_status"] == "NOT_EVALUATED"
+    market = data["run172_market_research"]
+    assert market["point_in_time_eligibility"] == "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE"
+    assert market["spot"]["usd_normalization_admitted"] is False
+    assert "do not average" in market["derivatives"]["reconciliation"].lower()
+    assert "do not average" in market["etf_flows"]["reconciliation"].lower()
+    assert "future-dated" in market["etf_flows"]["cryptokeyhole"]["future_dated_issuer_file_anomaly"].lower()
+    assert all(value is False for value in data["run172_no_external_actions"].values())

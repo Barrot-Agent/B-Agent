@@ -627,5 +627,60 @@
       "raw_sha256": null,
       "model_eligible": false
     }
-  ]
+  ],
+  "repository_after_audit_commit": {
+    "head_sha": "c73a1c5ae1610f01ffa997c652746347766a93e4",
+    "pr_commits": 2524,
+    "pr_changed_files": 1259,
+    "pr_additions": 355040,
+    "pr_deletions": 6309,
+    "integration_tree_entries": 2502,
+    "main_tree_entries": 1393,
+    "integration_tree_files": 2382,
+    "main_tree_files": 1283,
+    "main_paths_missing_in_integration": 0,
+    "open_prs": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "target_main": 365,
+    "target_other": 8
+  },
+  "map_reconciliation": {
+    "captured_at_utc": "2026-11-15T19:16:46.126Z",
+    "source_registry": {
+      "path": "research/xrp_intelligence/event_registry_current.json",
+      "version": "run157-20261115",
+      "events": 85,
+      "declared_independence_groups": 64,
+      "raw_source_sha256_receipts": 0,
+      "model_eligible": false
+    },
+    "corrected_stale_map_fields": {
+      "previous_event_timeline_registry_version": "run84-2026-11-13",
+      "current_event_timeline_registry_version": "run157-20261115",
+      "previous_event_count": 73,
+      "current_event_count": 85,
+      "previous_root_event_registry_version": "run53-2026-11-12",
+      "current_root_event_registry_version": "run157-20261115",
+      "previous_readiness_source_groups_claim": 2,
+      "current_forecast_ledger_minimum_source_groups": 5,
+      "forecast_ledger_policy_id": "xrp_forecast_readiness_v6"
+    },
+    "regression_contract": {
+      "historical_run168_and_run169_assertions_now_check_their_own_snapshot_ids": true,
+      "latest_run_id_assertion_updated_to_run172": true,
+      "current_pr_changed_file_assertions_updated_to_1259": true,
+      "new_run172_policy_and_registry_test_added": true,
+      "tests_removed": 0,
+      "tests_disabled": 0,
+      "assertions_weakened": 0
+    },
+    "map_test_update_parent_sha": "c73a1c5ae1610f01ffa997c652746347766a93e4",
+    "map_test_update_exact_head_ci": "PENDING"
+  },
+  "run172_map_test_update": {
+    "parent_sha": "c73a1c5ae1610f01ffa997c652746347766a93e4",
+    "audit_path": "research/xrp_intelligence/20261115T190401Z-run172-exact-head-ci-market-etf-derivatives-and-integration-audit.json",
+    "status": "PREPARED; COMMIT_AND_EXACT_HEAD_CI_PENDING"
+  }
 }

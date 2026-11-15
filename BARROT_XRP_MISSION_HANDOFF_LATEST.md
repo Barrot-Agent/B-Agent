@@ -8946,3 +8946,20 @@ Potential GitHub CLI credential exposure remains: identical 216-byte `.config/gh
 - [Integration PR #1662](https://github.com/Barrot-Agent/B-Agent/pull/1662)
 
 **Next concrete actions:** reconcile the nine-platform map and map regression assertions with the actual 85-event Run157 registry and five-source-group readiness policy; refresh the PR body; complete called-script and non-workflow semantic review; resolve independent review, least-privilege and branch-protection blockers; establish byte-exact receipts, independent WORM/timestamp anchoring and synchronized historical data before model training.
+
+
+## Run172 map and regression-contract reconciliation
+
+The Run172 source audit exposed stale current-state fields in the nine-platform map. The repository's actual `event_registry_current.json` is version `run157-20261115`, captured 2026-11-15 08:22 UTC, with **85 curated events, 64 declared independence groups and zero raw publisher SHA-256 receipts**. The map still reported an older 73-event Run84 registry, a 70-event Run53 registry and Run47's 20-event scenario registry. The registry remains model-ineligible.
+
+A second mismatch was found between documentation and executable code: the map described a two-source-group readiness threshold, while `forecast_ledger.py` policy `xrp_forecast_readiness_v6` requires **five independent source groups**, 100 OOS samples, 100 shadow samples, at least 10 non-overlapping target windows in each, weighted calibration error no greater than 0.05, and better Brier score and log loss than all four baselines.
+
+The map is being corrected to Run157/85 events and the five-source-group policy. The map regression test is being updated without weakening coverage:
+- Historical Run168 and Run169 assertions now validate their own snapshot IDs rather than incorrectly requiring them to remain the latest run.
+- Current PR changed-file assertions are updated from 1,257 to 1,259 after the Run172 audit artifact.
+- A new Run172 test validates the current registry, exact-head CI record, readiness constants imported from the executable forecast ledger, model-ineligible market evidence and closed external-action gates.
+- No tests are removed or disabled.
+
+After the Run172 audit commit `c73a1c5ae1610f01ffa997c652746347766a93e4`, PR #1662 has 2,524 commits ahead, zero behind, 1,259 changed files, 355,040 additions and 6,309 deletions. The recursive integration tree has 2,502 entries, including 2382 files. Main remains unchanged.
+
+The exact 3,803-test pass remains verified on predecessor code head `ad2ac1b072afbc710fdcc4b26a888f7351e0ea86`. The map/test correction commit is not yet verified; its own full-suite CI must complete before any merge consideration.
