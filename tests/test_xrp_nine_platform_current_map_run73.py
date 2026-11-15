@@ -829,16 +829,16 @@ def test_run152_run153_run154_run155_run158_run159_run162_and_run165_remain_hist
     assert latest["head_sha"] == data["run167_snapshot"]["integration_head_before_run167_map_commit"]
     assert latest["head_sha"] == data["observed_integration_head_before_map_commit"]
     assert latest["head_sha"] != current["integration_head_before_map_commit"]
-    assert latest["conclusion"] == "failure"
+    assert latest["conclusion"] == "success"
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert latest["full_repository_suite"]["passed"] == 3794
-    assert latest["full_repository_suite"]["failed"] == 1
+    assert latest["full_repository_suite"]["passed"] == 3796
+    assert latest["full_repository_suite"]["failed"] == 0
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
     assert latest["full_repository_suite"]["coverage_percent"] == 64.02
-    assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
+    assert latest["full_repository_suite"]["failing_tests"] == []
     assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
-    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 1
+    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 0
     assert data["schema_version"] == "1.1.0"
     assert data["run158_compact_map_snapshot"]["schema_version"] == "1.2.0"
     assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
