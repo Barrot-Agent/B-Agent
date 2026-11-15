@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run103-2026-11-13",
-  "captured_at_utc": "2026-11-13T20:14:15Z",
-  "source_receipt_status": "73 of 73 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive. All Run71 additions are research-only and model-ineligible.",
+  "registry_version": "run157-20261115",
+  "captured_at_utc": "2026-11-15T08:22:00Z",
+  "source_receipt_status": "85 of 85 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; Run157 official-source research is point-in-time and remains research-only until scheduled raw receipts are captured.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -2736,8 +2736,8 @@
       "hypothesis_id": "circle-q3-usdc-usage-vs-recurring-economics-run64c",
       "domain": "stablecoin_capital_flows",
       "hypothesis": "Circle's Q3 2026 results show substantial USDC circulation and transaction activity alongside expanding payment-network volume, but reserve income and recurring economics differ from headline revenue.",
-      "counter_hypothesis": "The $182 million ARC presale is non-recurring token revenue, transaction volume is not payment settlement volume, and USDC activity does not establish XRP demand or displacement.",
-      "claim": "Circle's SEC-filed Q3 2026 release reports average USDC circulation of $73.3B, Q3 on-chain transaction volume of $13.9T, total revenue and reserve income of $865M, reserve income of $658M, ARC presale revenue of $182M, and Circle Payments Network annualized TPV of $41.3B with 205 financial institutions enrolled.",
+      "counter_hypothesis": "The $182 million ARC presale is non-recurring token revenue, transaction volume is not payment settlement volume, and USDC activity does not establish XRP demand or displacement. Circle Mint net flows cover Circle Mint customer fiat conversions, not all-chain net capital flow or XRP flow; the Circle-SBI Japan JV had no significant operating results as of September 30, 2026.",
+      "claim": "Circle's SEC-filed Q3 2026 release reports average USDC circulation of $73.3B, Q3 on-chain transaction volume of $13.9T, total revenue and reserve income of $865M, reserve income of $658M, ARC presale revenue of $182M, and Circle Payments Network annualized TPV of $41.3B with 205 financial institutions enrolled. The Q3 2026 SEC 10-Q further reports Circle Mint customer fiat conversions of $104.304B minted less $103.694B redeemed in Q3 (+$610M net), and $260.847B less $262.234B over nine months (-$1.387B net). Circle and SBI each own 50% of Circle SBI Japan K.K., with approximately $1.5M contributed each; Circle controls/consolidates the VIE and reports no significant operating results to date.",
       "source_id": "circle_sec_q3_2026_results",
       "source_name": "Circle Internet Group SEC Exhibit 99.1",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
@@ -2864,8 +2864,8 @@
       "hypothesis_id": "sbi-ripple-rlusd-japan-availability-vs-xrp-demand-run64c",
       "domain": "japan_stablecoin_distribution",
       "hypothesis": "SBI VC Trade's regulated Japanese distribution of RLUSD expands the SBI-Ripple stablecoin relationship beyond equity and payment-rail announcements.",
-      "counter_hypothesis": "RLUSD availability is a stablecoin distribution event, not evidence of XRP purchases, XRP settlement volume or XRP collateral use; custody, issuer and distributor roles remain distinct.",
-      "claim": "SBI VC Trade and Ripple announced RLUSD handling on 2026-06-24. SBI VC Trade described RLUSD as a Japanese Type 4 electronic payment instrument; Standard Custody & Trust Company is the U.S. issuer. SBI VC Trade already handled USDC separately.",
+      "counter_hypothesis": "RLUSD availability is a stablecoin distribution event, not evidence of XRP purchases, XRP settlement volume or XRP collateral use; custody, issuer and distributor roles remain distinct. SBI's VCTRADE RLUSD channel is Ethereum-only, so it does not establish XRPL RLUSD liquidity or XRP bridge demand.",
+      "claim": "SBI VC Trade and Ripple announced RLUSD handling on 2026-06-24. SBI VC Trade described RLUSD as a Japanese Type 4 electronic payment instrument; Standard Custody & Trust Company is the U.S. issuer. SBI VC Trade already handled USDC separately. The official SBI VC Trade notice further states that RLUSD deposits and withdrawals are supported on Ethereum only at launch; XRPL deposits/withdrawals are not supported through VCTRADE, and BITPOINT is excluded.",
       "source_id": "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24",
       "source_name": "SBI VC Trade / Ripple official release",
       "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
@@ -3094,6 +3094,489 @@
         "not-XRP-burn",
         "not-native-XRPL-lending"
       ]
+    },
+    {
+      "event_id": "sbi-remit-xrp-odl-corridors-2023-09-06",
+      "event_type": "payments",
+      "event_name": "SBI Remit expands XRP bridge-asset remittance corridors",
+      "hypothesis_id": "sbi-remit-xrp-bridge-share",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Remit uses XRP as a bridge asset in named Japan-to-Philippines, Vietnam and Indonesia corridors.",
+      "counter_hypothesis": "The scale and current activity of these XRP corridors are undisclosed; aggregate SBI Remit turnover includes multiple rails and cannot be attributed to XRP.",
+      "claim": "SBI Remit's September 6, 2023 release describes SBI VC Trade sending XRP in real time in response to customer remittance requests, with Tranglo paying beneficiaries in local fiat through bank accounts in the Philippines, Vietnam and Indonesia.",
+      "source_id": "sbi_remit_xrp_odl_corridor_expansion_20230906",
+      "source_name": "SBI Remit official release",
+      "source_url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2023-09-06T00:00:00Z",
+      "source_published_at_utc": "2023-09-06T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Remit",
+        "SBI VC Trade",
+        "Tranglo",
+        "Ripple",
+        "XRP",
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "tags": [
+        "SBI",
+        "Ripple",
+        "ODL",
+        "XRP bridge",
+        "remittances"
+      ]
+    },
+    {
+      "event_id": "sbi-remit-nium-fiat-alternative-rail-2025-06-30",
+      "event_type": "payments",
+      "event_name": "SBI Remit adds Nium fiat payout coverage",
+      "hypothesis_id": "sbi-remit-xrp-bridge-share",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Remit uses XRP as a bridge asset in named Japan-to-Philippines, Vietnam and Indonesia corridors.",
+      "counter_hypothesis": "The scale and current activity of these XRP corridors are undisclosed; aggregate SBI Remit turnover includes multiple rails and cannot be attributed to XRP.",
+      "claim": "SBI Remit announced a Nium partnership to expand bank-account payout coverage to more than 190 countries. The announcement does not identify XRP as the bridge asset for these Nium routes.",
+      "source_id": "sbi_remit_nium_alternative_rail_20250630",
+      "source_name": "SBI Holdings official release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2025/0630_15541.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2025-06-30T00:00:00Z",
+      "source_published_at_utc": "2025-06-30T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Remit",
+        "Nium"
+      ],
+      "tags": [
+        "SBI",
+        "remittances",
+        "fiat rails",
+        "counter-hypothesis"
+      ]
+    },
+    {
+      "event_id": "sbi-remit-cambodia-dlt-rail-2025-10-28",
+      "event_type": "payments",
+      "event_name": "SBI Remit launches Japan-Cambodia DLT remittance service",
+      "hypothesis_id": "sbi-remit-xrp-bridge-share",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Remit uses XRP as a bridge asset in named Japan-to-Philippines, Vietnam and Indonesia corridors.",
+      "counter_hypothesis": "The scale and current activity of these XRP corridors are undisclosed; aggregate SBI Remit turnover includes multiple rails and cannot be attributed to XRP.",
+      "claim": "SBI Remit, SBI LY HOUR Bank and SBI Ripple Asia announced a Japan-Cambodia remittance service using distributed-ledger technology. The official release does not specify XRP as the bridge asset.",
+      "source_id": "sbi_remit_cambodia_dlt_rail_20251028",
+      "source_name": "SBI Holdings official release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2025/1028_15848.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2025-10-28T00:00:00Z",
+      "source_published_at_utc": "2025-10-28T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Remit",
+        "SBI LY HOUR Bank",
+        "SBI Ripple Asia",
+        "Cambodia"
+      ],
+      "tags": [
+        "SBI",
+        "DLT",
+        "remittances",
+        "counter-hypothesis"
+      ]
+    },
+    {
+      "event_id": "sbi-remit-cumulative-turnover-all-rails-2026-05-27",
+      "event_type": "corporate",
+      "event_name": "SBI Remit reports JPY 2.5 trillion cumulative remittance turnover",
+      "hypothesis_id": "sbi-remit-xrp-bridge-share",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Remit uses XRP as a bridge asset in named Japan-to-Philippines, Vietnam and Indonesia corridors.",
+      "counter_hypothesis": "The scale and current activity of these XRP corridors are undisclosed; aggregate SBI Remit turnover includes multiple rails and cannot be attributed to XRP.",
+      "claim": "SBI Remit reported cumulative international remittance turnover exceeding JPY 2.5 trillion as of May 27, 2026. This figure covers all SBI Remit corridors and rails, not an XRP-specific volume.",
+      "source_id": "sbi_remit_cumulative_turnover_20260527",
+      "source_name": "SBI Holdings official release",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0529_16356.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-05-27T00:00:00Z",
+      "source_published_at_utc": "2026-05-29T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Remit"
+      ],
+      "tags": [
+        "SBI",
+        "capital flows",
+        "remittances",
+        "volume caveat"
+      ]
+    },
+    {
+      "event_id": "sbi-ripple-asia-dsrv-feasibility-2026-02-24",
+      "event_type": "payments",
+      "event_name": "SBI Ripple Asia and dsrv begin Japan-Korea remittance feasibility research",
+      "hypothesis_id": "sbi-ripple-asia-production-status",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Ripple Asia is expanding XRPL-based institutional payment infrastructure.",
+      "counter_hypothesis": "Feasibility research and POCs are not production services or disclosed payment volume; native XRPL token use does not necessarily mean XRP is the bridge asset.",
+      "claim": "SBI Ripple Asia and dsrv labs announced feasibility research on Japan-Korea remittance and payments using XRPL. The official release says the work is not intended to develop or commercialize a specific service.",
+      "source_id": "sbi_ripple_asia_dsrv_feasibility_20260224",
+      "source_name": "SBI Holdings official release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0224_15954.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2026-02-24T00:00:00Z",
+      "source_published_at_utc": "2026-02-24T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Ripple Asia",
+        "dsrv labs",
+        "XRPL"
+      ],
+      "tags": [
+        "SBI",
+        "XRPL",
+        "feasibility",
+        "not production"
+      ]
+    },
+    {
+      "event_id": "sbi-ripple-asia-tokenized-deposit-poc-2026-02-26",
+      "event_type": "protocol",
+      "event_name": "SBI Ripple Asia and MoneyTap conduct tokenized-deposit POC",
+      "hypothesis_id": "sbi-ripple-asia-production-status",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Ripple Asia is expanding XRPL-based institutional payment infrastructure.",
+      "counter_hypothesis": "Feasibility research and POCs are not production services or disclosed payment volume; native XRPL token use does not necessarily mean XRP is the bridge asset.",
+      "claim": "SBI Ripple Asia and MoneyTap described a conceptual proof of concept for tokenized deposits and deposit-type digital money using an XRPL-based token issuance platform; no production bank issuance volume was disclosed.",
+      "source_id": "sbi_ripple_asia_tokenized_deposit_poc_20260226",
+      "source_name": "SBI Holdings official release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0226_15965.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-02-26T00:00:00Z",
+      "source_published_at_utc": "2026-02-26T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Ripple Asia",
+        "MoneyTap",
+        "XRPL"
+      ],
+      "tags": [
+        "SBI",
+        "XRPL",
+        "tokenized deposits",
+        "POC"
+      ]
+    },
+    {
+      "event_id": "sbi-ripple-asia-xrpl-token-issuance-platform-2026-03-26",
+      "event_type": "protocol",
+      "event_name": "SBI Ripple Asia completes XRPL token-issuance platform and registers as prepaid-instrument issuer",
+      "hypothesis_id": "sbi-ripple-asia-production-status",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Ripple Asia is expanding XRPL-based institutional payment infrastructure.",
+      "counter_hypothesis": "Feasibility research and POCs are not production services or disclosed payment volume; native XRPL token use does not necessarily mean XRP is the bridge asset.",
+      "claim": "SBI Ripple Asia announced completion of an XRPL-based token-issuance platform and registration on March 26, 2026 as a third-party prepaid-payment-instrument issuer under Japan's Payment Services Act. Planned use cases include tourism and defined economic zones; commercial issuance and transaction volumes were not disclosed.",
+      "source_id": "sbi_ripple_asia_xrpl_token_issuance_platform_20260407",
+      "source_name": "SBI Holdings official release/PDF",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/pdf/2026/0407_a.pdf",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-03-26T00:00:00Z",
+      "source_published_at_utc": "2026-04-07T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Ripple Asia",
+        "XRPL",
+        "Japan Payment Services Act"
+      ],
+      "tags": [
+        "SBI",
+        "XRPL",
+        "token issuance",
+        "prepaid instrument"
+      ]
+    },
+    {
+      "event_id": "sbi-start-bond-jpy-debt-xrp-reward-2026-03-24",
+      "event_type": "corporate",
+      "event_name": "SBI START Bond raises JPY 10 billion with separate XRP subscription reward",
+      "hypothesis_id": "sbi-start-bond-capital-classification",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI START Bond is JPY debt capital with a separate XRP loyalty reward, not an XRP-denominated bond.",
+      "counter_hypothesis": "The bond's coupon and principal are JPY; the XRP benefit is a separate subscription reward whose sourcing is undisclosed.",
+      "claim": "SBI Holdings issued a JPY 10 billion, three-year security-token bond on BOOSTRY's ibet for Fin with a 2.15% fixed annual JPY coupon and 100% JPY principal redemption. Eligible subscribers received a separate JPY 200 worth of XRP per JPY 100,000 subscription; SBI's product page does not describe XRP as coupon or principal.",
+      "source_id": "sbi_start_bond_product_terms_20260220",
+      "source_name": "SBI Securities official product page",
+      "source_url": "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2026-03-24T00:00:00Z",
+      "source_published_at_utc": "2026-02-20T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SBI Securities",
+        "SBI VC Trade",
+        "BOOSTRY",
+        "ibet for Fin",
+        "Osaka Digital Exchange",
+        "XRP"
+      ],
+      "tags": [
+        "SBI",
+        "actual capital",
+        "debt",
+        "security token",
+        "XRP reward"
+      ]
+    },
+    {
+      "event_id": "sbi-visa-crypto-card-xrp-rewards-2026-05-01",
+      "event_type": "corporate",
+      "event_name": "SBI VISA Crypto Card enables XRP as a card-reward asset",
+      "hypothesis_id": "sbi-xrp-retail-distribution",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI is expanding retail XRP distribution through rewards and account-linked products.",
+      "counter_hypothesis": "Reward distribution and account onboarding do not establish that SBI purchases XRP in the spot market; sourcing and quantities are undisclosed.",
+      "claim": "SBI VC Trade, Aplus and Visa launched the SBI VISA Crypto Card; card points can be automatically converted fee-free into a selected asset including XRP, subject to a VCTRADE account. The source of reward XRP is not disclosed.",
+      "source_id": "sbi_visa_crypto_card_launch_20260501",
+      "source_name": "SBI Holdings official release",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-05-01T00:00:00Z",
+      "source_published_at_utc": "2026-05-01T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI VC Trade",
+        "Aplus",
+        "Visa",
+        "XRP"
+      ],
+      "tags": [
+        "SBI",
+        "XRP",
+        "retail distribution",
+        "rewards"
+      ]
+    },
+    {
+      "event_id": "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
+      "event_type": "corporate",
+      "event_name": "SBI presentation discloses Ripple equity stake and Ripple XRP holdings estimate",
+      "hypothesis_id": "sbi-ripple-equity-versus-token-holdings",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "SBI Holdings has a material equity relationship with Ripple while Ripple separately holds direct XRP and escrow balances.",
+      "counter_hypothesis": "SBI's presentation is an issuer-investor estimate, not an independent custody audit; SBI's Ripple equity stake is not ownership of Ripple's XRP or XRP Ledger control.",
+      "claim": "SBI Holdings' May 1, 2026 presentation reports an approximately 9% Ripple equity stake and, as of April 27, 2026, 61.68B XRP circulated, 5.10B labelled Actual XRP held by Ripple, 33.20B in Ripple escrow and about 0.01B burned. SBI values Ripple's non-circulating holdings at approximately JPY 8.8 trillion.",
+      "source_id": "sbi_holdings_fy2025_presentation_20260501",
+      "source_name": "SBI Holdings FY2025 financial results presentation",
+      "source_url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "independence_group": "sbi_group",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-04-27T00:00:00Z",
+      "source_published_at_utc": "2026-05-01T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "Ripple",
+        "XRP",
+        "XRPL"
+      ],
+      "tags": [
+        "SBI",
+        "Ripple equity",
+        "XRP supply",
+        "escrow",
+        "capital"
+      ]
+    },
+    {
+      "event_id": "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
+      "event_type": "institutional",
+      "event_name": "Doppler announces strategic partnership with SBI Digital Finance",
+      "hypothesis_id": "doppler-sbi-institutional-xrp-finance",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "Doppler and SBI entities are exploring institutional XRP finance infrastructure.",
+      "counter_hypothesis": "The announcement is from Doppler only; no SBI-side confirmation, named production clients, transaction volumes, launch date or financial terms were found. Self-reported vault metrics are inconsistent.",
+      "claim": "Doppler Finance announced a July 13, 2026 strategic partnership with SBI Digital Finance to develop institutional XRP/digital-asset infrastructure, financing, liquidity and collateral management in Japan. No corresponding SBI announcement or production volume was located.",
+      "source_id": "doppler_sbi_digital_finance_partnership_20260713",
+      "source_name": "Doppler Finance announcement",
+      "source_url": "https://blog.doppler.finance/blog/doppler-finance-and-sbi-digital-finance-announce-strategic-partnership-to-expand-institutional-xrp-finance-in-japan",
+      "independence_group": "doppler",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-07-13T00:00:00Z",
+      "source_published_at_utc": "2026-07-13T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "Doppler Finance",
+        "SBI Digital Finance",
+        "XRP",
+        "Japan"
+      ],
+      "tags": [
+        "Doppler",
+        "SBI",
+        "institutional finance",
+        "provisional"
+      ]
+    },
+    {
+      "event_id": "ripple-national-trust-bank-occ-effective-2026-10-26",
+      "event_type": "regulatory",
+      "event_name": "OCC CAS records Ripple National Trust Bank as effective with trust powers",
+      "hypothesis_id": "ripple-trust-bank-scope",
+      "domain": "XRP institutional and capital-flow research",
+      "hypothesis": "Ripple's national trust-bank charter can expand institutional custody and fiduciary infrastructure.",
+      "counter_hypothesis": "The OCC record requests trust powers; it does not establish a full-service deposit bank, migration of reserves/custody balances or incremental XRP settlement demand.",
+      "claim": "The OCC Corporate Applications Search records Ripple National Trust Bank as approved December 12, 2025 and consummated/effective October 26, 2026, with trust powers requested.",
+      "source_id": "occ_ripple_national_trust_bank_cas_20261026",
+      "source_name": "Office of the Comptroller of the Currency",
+      "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "independence_group": "occ_regulator",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-26T00:00:00Z",
+      "source_published_at_utc": "2026-10-26T00:00:00Z",
+      "available_at_utc": "2026-11-15T08:22:00Z",
+      "captured_at_utc": "2026-11-15T08:22:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The publisher's stated date and description accurately represent the announced event."
+      ],
+      "falsification_conditions": [
+        "A later primary disclosure materially revises the event status, terms, corridor or operating scope."
+      ],
+      "related_entities": [
+        "OCC",
+        "Ripple National Trust Bank",
+        "Ripple",
+        "RLUSD",
+        "XRP"
+      ],
+      "tags": [
+        "OCC",
+        "regulation",
+        "trust bank",
+        "custody"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -3101,5 +3584,27 @@
   "run64c_note": "Eight events appended with unique hypothesis_id values to avoid inconsistent scenario-group definitions: one current cross-venue spot refresh, SBI JPYSC balances, Circle Arc, Circle Q3 results, Coinbase trust charter, Ripple trust-bank approval, SBI/Ripple RLUSD Japan availability and the December 1 Ripple escrow schedule. Existing events and historical capture timestamps are preserved. No publisher bytes were archived; no event is model-eligible.",
   "run71_note": "Added Circle's primary-source confirmation that USDC has been native on XRPL mainnet since 2025-06-12. PNC's 2026-11-09 USDC incoming-payment pilot explicitly uses Ethereum. These are distinct rails; neither proves XRP bridge use or XRP demand. The new event has no raw receipt and remains model-ineligible.",
   "run71b_note": "Added SEC primary-source capital decomposition for Evernorth and Flare's official FXRP deployment/backing statement. The 388.91M XRP in-kind contribution is not a 400M native-lending allocation; FXRP backing remains on XRPL. Both events lack raw receipts and remain model-ineligible.",
-  "run71c_note": "Validated event types against the event-timeline allowlist. Evernorth's SEC filing confirms yield strategies commenced following Closing, but gives no deployed XRP amount or 400M allocation to XRPL-native XLS-66; it also defines SBI as SBI Holdings, Inc. with a 39.9% SBI Group Ownership Percentage. Flare's FXRP is a representation backed by XRP remaining on XRPL."
+  "run71c_note": "Validated event types against the event-timeline allowlist. Evernorth's SEC filing confirms yield strategies commenced following Closing, but gives no deployed XRP amount or 400M allocation to XRPL-native XLS-66; it also defines SBI as SBI Holdings, Inc. with a 39.9% SBI Group Ownership Percentage. Flare's FXRP is a representation backed by XRP remaining on XRPL.",
+  "run157_update": {
+    "captured_at_utc": "2026-11-15T08:22:00Z",
+    "added_event_ids": [
+      "sbi-remit-xrp-odl-corridors-2023-09-06",
+      "sbi-remit-nium-fiat-alternative-rail-2025-06-30",
+      "sbi-remit-cambodia-dlt-rail-2025-10-28",
+      "sbi-remit-cumulative-turnover-all-rails-2026-05-27",
+      "sbi-ripple-asia-dsrv-feasibility-2026-02-24",
+      "sbi-ripple-asia-tokenized-deposit-poc-2026-02-26",
+      "sbi-ripple-asia-xrpl-token-issuance-platform-2026-03-26",
+      "sbi-start-bond-jpy-debt-xrp-reward-2026-03-24",
+      "sbi-visa-crypto-card-xrp-rewards-2026-05-01",
+      "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
+      "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
+      "ripple-national-trust-bank-occ-effective-2026-10-26"
+    ],
+    "updated_existing_event_ids": [
+      "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+      "circle-q3-2026-usdc-and-cpn-results-2026-11-04"
+    ],
+    "note": "Run157 adds official SBI Remit XRP ODL, SBI Ripple Asia XRPL infrastructure, SBI START Bond, SBI crypto-card distribution, alternative remittance rails, Doppler counterparty announcement and OCC trust-bank scope. All new records have null raw_source_sha256 and remain model-ineligible."
+  }
 }

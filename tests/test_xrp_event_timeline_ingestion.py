@@ -116,6 +116,18 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert registry["model_eligible"] is False
     assert registry["forecast_status"] == "NOT_ISSUED"
     expected = {
+        "sbi-remit-xrp-odl-corridors-2023-09-06",
+        "sbi-remit-nium-fiat-alternative-rail-2025-06-30",
+        "sbi-remit-cambodia-dlt-rail-2025-10-28",
+        "sbi-remit-cumulative-turnover-all-rails-2026-05-27",
+        "sbi-ripple-asia-dsrv-feasibility-2026-02-24",
+        "sbi-ripple-asia-tokenized-deposit-poc-2026-02-26",
+        "sbi-ripple-asia-xrpl-token-issuance-platform-2026-03-26",
+        "sbi-start-bond-jpy-debt-xrp-reward-2026-03-24",
+        "sbi-visa-crypto-card-xrp-rewards-2026-05-01",
+        "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
+        "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
+        "ripple-national-trust-bank-occ-effective-2026-10-26",
         "xrp-okx-spot-2026-11-12T0447Z",
         "xrp-kraken-spot-2026-11-12T0502Z",
         "xrp-fuelmaps-depth-2026-11-12T0400Z",
@@ -141,13 +153,45 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "388,910,554 XRP" in evernorth["claim"]
     assert "yield strategies commenced following the Closing" in evernorth["claim"]
     assert "SBI Holdings, Inc." in evernorth["claim"]
+    sbi_remit = by_id["sbi-remit-xrp-odl-corridors-2023-09-06"]
+    assert "SBI VC Trade sends XRP in real time" in sbi_remit["claim"]
+    assert "volumes are undisclosed" in sbi_remit["counter_hypothesis"]
+    sbi_rails = by_id["sbi-remit-nium-fiat-alternative-rail-2025-06-30"]
+    assert "more than 190 countries" in sbi_rails["claim"]
+    assert "does not identify XRP" in sbi_rails["claim"]
+    issuance = by_id["sbi-ripple-asia-xrpl-token-issuance-platform-2026-03-26"]
+    assert "third-party prepaid-payment-instrument issuer" in issuance["claim"]
+    assert "does not necessarily mean XRP is the bridge asset" in issuance["counter_hypothesis"]
+    start_bond = by_id["sbi-start-bond-jpy-debt-xrp-reward-2026-03-24"]
+    assert "2.15% fixed annual JPY coupon" in start_bond["claim"]
+    assert "XRP reward" in start_bond["claim"]
+    assert "not coupon or principal" in start_bond["claim"]
+    assert start_bond["raw_source_sha256"] is None
+    visa_card = by_id["sbi-visa-crypto-card-xrp-rewards-2026-05-01"]
+    assert "XRP" in visa_card["claim"]
+    assert "source of reward XRP is not disclosed" in visa_card["claim"]
+    sbi_stake = by_id["sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27"]
+    assert "approximately 9% Ripple equity stake" in sbi_stake["claim"]
+    assert "33.20B in Ripple escrow" in sbi_stake["claim"]
+    doppler = by_id["doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13"]
+    assert doppler["source_status"] == "provisional"
+    assert "No corresponding SBI announcement" in doppler["claim"]
+    occ = by_id["ripple-national-trust-bank-occ-effective-2026-10-26"]
+    assert "trust powers requested" in occ["claim"]
+    rlusd = by_id["sbi-vc-trade-rlusd-japan-availability-2026-06-24"]
+    assert "Ethereum only" in rlusd["claim"]
+    assert "XRPL deposits/withdrawals are not supported" in rlusd["claim"]
+    circle = by_id["circle-q3-2026-usdc-and-cpn-results-2026-11-04"]
+    assert "$610M net" in circle["claim"]
+    assert "-$1.387B net" in circle["claim"]
+    assert "no significant operating results" in circle["claim"]
     assert "39.9%" in evernorth["claim"]
     assert evernorth["event_status"] == "occurred"
     assert "does not disclose a 400 million XRP allocation" in evernorth["counter_hypothesis"]
     flare = by_id["flare-fxrp-one-year-2026-09-24"]
     assert "145.2 million FXRP" in flare["claim"]
     assert "remains on XRPL" in flare["counter_hypothesis"]
-    assert registry["source_receipt_status"].startswith("73 of 73")
+    assert registry["source_receipt_status"].startswith("85 of 85")
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
