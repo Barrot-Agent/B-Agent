@@ -32,10 +32,11 @@ from .event_timeline import EventTimelineError, build_event_timeline
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.27"
-PARSER_VERSION = "xrp-public-market-v3.26"
+ADAPTER_VERSION = "xrp-public-market-v3.28"
+PARSER_VERSION = "xrp-public-market-v3.27"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
+OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
 HTTP_PROVENANCE_HEADER_NAMES = frozenset({
     "age", "cache-control", "content-type", "content-encoding",
     "etag", "expires", "last-modified", "cf-cache-status", "x-cache",
@@ -46,6 +47,7 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "kraken_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "bitbank_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "okx_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "okx_usdt_usd_ticker": MAX_LIVE_AGE_SECONDS,
     "bybit_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "binance_perp_premium": MAX_LIVE_AGE_SECONDS,
     "binance_perp_open_interest": MAX_LIVE_AGE_SECONDS,
@@ -106,6 +108,7 @@ ENDPOINTS = (
     ("bitbank_spot_ticker", "https://public.bitbank.cc/xrp_jpy/ticker"),
     ("bitbank_spot_depth", "https://public.bitbank.cc/xrp_jpy/depth"),
     ("okx_spot_ticker", "https://us.okx.com/api/v5/market/ticker?instId=XRP-USDT"),
+    ("okx_usdt_usd_ticker", "https://us.okx.com/api/v5/market/ticker?instId=USDT-USD"),
     ("okx_spot_depth", "https://us.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100"),
     ("bybit_spot_ticker", "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT"),
     ("bybit_spot_depth", "https://api.bybit.com/v5/market/orderbook?category=spot&symbol=XRPUSDT&limit=100"),
@@ -4413,6 +4416,265 @@ def _parse_deribit_xrp_usdc_perpetual_order_book(
     return [], _iso(source_time), False, reason
 
 
+
+def _parse_okx_usdt_usd_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+):
+    """Parse OKX USDT-USD top-of-book as a market-derived quote basis, never a fixed peg."""
+    if not isinstance(payload, Mapping) or payload.get("code") != "0":
+        raise XRPIngestionError("OKX USDT-USD ticker response code or shape mismatch")
+    data = payload.get("data")
+    if not isinstance(data, list) or len(data) != 1 or not isinstance(data[0], Mapping):
+        raise XRPIngestionError("OKX USDT-USD ticker response must contain exactly one data row")
+    row = data[0]
+    if row.get("instId") != "USDT-USD":
+        raise XRPIngestionError("OKX USDT-USD ticker instrument mismatch")
+    source_time = _from_ms(row.get("ts"), "OKX USDT-USD ticker ts")
+    if source_time > captured:
+        raise XRPIngestionError("OKX USDT-USD ticker timestamp is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+    bid = _number(row.get("bidPx"), "OKX USDT-USD best bid", allow_zero=False)
+    ask = _number(row.get("askPx"), "OKX USDT-USD best ask", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("OKX USDT-USD ticker bid/ask is crossed or locked")
+    mid = (bid + ask) / 2.0
+    spread_bps = (ask - bid) / mid * 10000.0
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    limitations = [
+        "USDT/USD is observed as an exchange-traded basis; no fixed 1:1 peg is assumed.",
+        "OKX ts timestamps ticker snapshot generation, not the individual last-trade event.",
+        "This is a top-of-book quote basis, not full-depth USD-normalized liquidity.",
+    ]
+    metrics = (
+        ("best_bid", bid, "USD/USDT"),
+        ("best_ask", ask, "USD/USDT"),
+        ("mid_price", mid, "USD/USDT"),
+        ("spread_bps", spread_bps, "bps"),
+    )
+    records = [
+        _feature_record(
+            feature_id=f"xrp.quote_basis.okx.usdt_usd.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="okx",
+            venue="OKX",
+            instrument="USDT-USD spot",
+            currency_pair="USDT/USD",
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in metrics
+    ]
+    return records, event_s, eligible, reason
+
+
+def _derive_okx_usd_normalized_features(
+    records: list[dict[str, Any]],
+    captured: datetime,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Normalize only OKX top-of-book quotes using a fresh, same-venue USDT/USD snapshot."""
+    source_features = {
+        "xrp_bid": ("xrp.spot.okx.bid_price", "okx_spot_ticker"),
+        "xrp_ask": ("xrp.spot.okx.ask_price", "okx_spot_ticker"),
+        "basis_bid": ("xrp.quote_basis.okx.usdt_usd.best_bid", "okx_usdt_usd_ticker"),
+        "basis_ask": ("xrp.quote_basis.okx.usdt_usd.best_ask", "okx_usdt_usd_ticker"),
+        "basis_mid": ("xrp.quote_basis.okx.usdt_usd.mid_price", "okx_usdt_usd_ticker"),
+    }
+
+    def find_record(feature_id: str, source_id: str) -> dict[str, Any] | None:
+        matches = [
+            record for record in records
+            if record.get("feature_id") == feature_id
+            and any(
+                isinstance(source, Mapping) and source.get("source_id") == source_id
+                for source in record.get("sources", [])
+            )
+        ]
+        return matches[0] if len(matches) == 1 else None
+
+    components = {
+        key: find_record(feature_id, source_id)
+        for key, (feature_id, source_id) in source_features.items()
+    }
+    missing = sorted(key for key, record in components.items() if record is None)
+    if missing:
+        return [], {
+            "schema_version": 1,
+            "status": "NOT_AVAILABLE",
+            "reason": "required_same_venue_quote_components_missing_or_ambiguous",
+            "missing_components": missing,
+            "model_eligible": False,
+            "normalized_feature_count": 0,
+        }
+
+    ineligible = sorted(
+        key for key, record in components.items()
+        if record.get("model_eligible") is not True or record.get("quality_status") != "verified"
+    )
+    if ineligible:
+        return [], {
+            "schema_version": 1,
+            "status": "NOT_ELIGIBLE",
+            "reason": "one_or_more_quote_components_failed_source_freshness_or_quality_gates",
+            "ineligible_components": ineligible,
+            "component_eligibility_reasons": {
+                key: record.get("eligibility_reason", "")
+                for key, record in components.items()
+                if key in ineligible
+            },
+            "model_eligible": False,
+            "normalized_feature_count": 0,
+        }
+
+    event_times = {
+        key: _from_iso8601(record["event_time_utc"], f"{key} event time")
+        for key, record in components.items()
+    }
+    ages = {
+        key: (captured - event_time).total_seconds()
+        for key, event_time in event_times.items()
+    }
+    if any(age < 0 or age > MAX_LIVE_AGE_SECONDS for age in ages.values()):
+        return [], {
+            "schema_version": 1,
+            "status": "NOT_FRESH",
+            "reason": "quote_component_age_outside_live_limit",
+            "component_ages_seconds": ages,
+            "max_component_age_seconds": MAX_LIVE_AGE_SECONDS,
+            "model_eligible": False,
+            "normalized_feature_count": 0,
+        }
+
+    xrp_time = max(event_times["xrp_bid"], event_times["xrp_ask"])
+    basis_time = max(event_times["basis_bid"], event_times["basis_ask"], event_times["basis_mid"])
+    skew = abs((xrp_time - basis_time).total_seconds())
+    if skew > OKX_QUOTE_BASIS_MAX_SKEW_SECONDS:
+        return [], {
+            "schema_version": 1,
+            "status": "NOT_SYNCHRONIZED",
+            "reason": "same_venue_xrp_usdt_and_usdt_usd_snapshot_skew_exceeds_limit",
+            "component_event_times_utc": {key: _iso(value) for key, value in event_times.items()},
+            "snapshot_skew_seconds": skew,
+            "max_snapshot_skew_seconds": OKX_QUOTE_BASIS_MAX_SKEW_SECONDS,
+            "component_ages_seconds": ages,
+            "model_eligible": False,
+            "normalized_feature_count": 0,
+        }
+
+    xrp_bid = _number(components["xrp_bid"]["value"], "OKX XRP-USDT bid", allow_zero=False)
+    xrp_ask = _number(components["xrp_ask"]["value"], "OKX XRP-USDT ask", allow_zero=False)
+    basis_bid = _number(components["basis_bid"]["value"], "OKX USDT-USD bid", allow_zero=False)
+    basis_ask = _number(components["basis_ask"]["value"], "OKX USDT-USD ask", allow_zero=False)
+    basis_mid = _number(components["basis_mid"]["value"], "OKX USDT-USD mid", allow_zero=False)
+    if xrp_ask <= xrp_bid or basis_ask <= basis_bid or not basis_bid <= basis_mid <= basis_ask:
+        return [], {
+            "schema_version": 1,
+            "status": "INVALID_QUOTE",
+            "reason": "crossed_or_inconsistent_same_venue_quote_components",
+            "model_eligible": False,
+            "normalized_feature_count": 0,
+        }
+
+    normalized_bid = xrp_bid * basis_bid
+    normalized_ask = xrp_ask * basis_ask
+    normalized_mid = (normalized_bid + normalized_ask) / 2.0
+    if not all(math.isfinite(value) and value > 0 for value in (normalized_bid, normalized_ask, normalized_mid)) or normalized_ask <= normalized_bid:
+        return [], {
+            "schema_version": 1,
+            "status": "INVALID_DERIVED_QUOTE",
+            "reason": "normalized_bid_ask_is_nonfinite_nonpositive_or_crossed",
+            "model_eligible": False,
+            "normalized_feature_count": 0,
+        }
+    spread_bps = (normalized_ask - normalized_bid) / normalized_mid * 10000.0
+
+    xrp_source = next(source for source in components["xrp_bid"]["sources"] if source.get("source_id") == "okx_spot_ticker")
+    basis_source = next(source for source in components["basis_mid"]["sources"] if source.get("source_id") == "okx_usdt_usd_ticker")
+    combined_sources = [xrp_source, basis_source]
+    event_s = _iso(max(xrp_time, basis_time))
+    captured_s = _iso(captured)
+    limitations = [
+        "Derived from same-venue OKX XRP-USDT and USDT-USD top-of-book snapshots.",
+        "Both provider snapshot timestamps must be no more than 60 seconds apart and each no more than 300 seconds old.",
+        "The USD conversion uses observed USDT/USD bid and ask; no fixed 1:1 peg is assumed.",
+        "The two source receipts share one OKX publisher-independence group and are not independent corroboration.",
+        "Only top-of-book prices are normalized; depth levels and sequence continuity are not converted or admitted by this derivation.",
+    ]
+    values = {
+        "best_bid": (normalized_bid, "USD/XRP"),
+        "best_ask": (normalized_ask, "USD/XRP"),
+        "mid_price": (normalized_mid, "USD/XRP"),
+        "spread_bps": (spread_bps, "bps"),
+    }
+    derived = []
+    for name, (value, unit) in values.items():
+        feature_id = f"xrp.spot.okx.usd_normalized.{name}"
+        record = _feature_record(
+            feature_id=feature_id,
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id="okx_spot_ticker+okx_usdt_usd_ticker",
+            source_uri=xrp_source["source_uri"],
+            raw_sha256=xrp_source["raw_content_sha256"],
+            independence_group="okx",
+            venue="OKX",
+            instrument="XRP-USDT spot normalized with same-venue USDT-USD",
+            currency_pair="XRP/USD",
+            market_type="spot",
+            model_eligible=True,
+            quality_status="verified",
+            limitations=limitations,
+        )
+        record["record_id"] = f"{feature_id}:{event_s}:okx_spot_ticker+okx_usdt_usd_ticker"
+        record["sources"] = combined_sources
+        derived.append(record)
+
+    return derived, {
+        "schema_version": 1,
+        "status": "VERIFIED",
+        "method": "same_venue_synchronized_top_of_book_product",
+        "venue": "OKX",
+        "component_event_times_utc": {key: _iso(value) for key, value in event_times.items()},
+        "component_record_ids": {key: record["record_id"] for key, record in components.items()},
+        "component_raw_sha256": {
+            "okx_spot_ticker": xrp_source["raw_content_sha256"],
+            "okx_usdt_usd_ticker": basis_source["raw_content_sha256"],
+        },
+        "component_ages_seconds": ages,
+        "max_component_age_seconds": max(ages.values()),
+        "snapshot_skew_seconds": skew,
+        "max_snapshot_skew_seconds": OKX_QUOTE_BASIS_MAX_SKEW_SECONDS,
+        "publisher_independence_groups": ["okx"],
+        "publisher_independence_group_count": 1,
+        "normalized_values": {
+            "best_bid_usd": normalized_bid,
+            "best_ask_usd": normalized_ask,
+            "mid_price_usd": normalized_mid,
+            "spread_bps": spread_bps,
+        },
+        "normalized_feature_count": len(derived),
+        "model_eligible": True,
+        "limitations": limitations,
+    }
+
+
 PARSERS = {
     "xrpl_inftf_server_info": _parse_xrpl_server_info,
     "xrpl_honeycluster_server_info": _parse_xrpl_server_info,
@@ -4433,6 +4695,7 @@ PARSERS = {
     "kraken_spot_ticker": _parse_kraken_ticker,
     "kraken_spot_depth": _parse_kraken_depth,
     "okx_spot_ticker": _parse_okx_ticker,
+    "okx_usdt_usd_ticker": _parse_okx_usdt_usd_ticker,
     "okx_spot_depth": _parse_okx_depth,
     "bybit_spot_ticker": _parse_bybit_ticker,
     "bybit_spot_depth": _parse_bybit_depth,
@@ -5231,6 +5494,9 @@ def run_ingestion(
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
 
+    quote_basis_records, quote_basis_diagnostics = _derive_okx_usd_normalized_features(records, captured)
+    records.extend(quote_basis_records)
+
     coinbase_backfill = {
         "status": "NOT_REQUESTED",
         "mode": "MANUAL_ONLY_ADDITIONAL_HISTORY",
@@ -5394,6 +5660,9 @@ def run_ingestion(
         "evaluation_as_of_utc": evaluation_as_of_s,
         "source_receipt_count": len(receipts),
         "coinbase_backfill": coinbase_backfill,
+        "quote_basis": quote_basis_diagnostics,
+        "quote_basis_path": "quote_basis.json",
+        "quote_basis_feature_count": len(quote_basis_records),
         "receipt_chain_manifest_path": "receipt_chain_manifest.json",
         "receipt_chain_verification": receipt_chain_verification,
         "cross_run_receipt_chain_path": "cross_run_receipt_chain.json",
@@ -5493,8 +5762,9 @@ def run_ingestion(
         "feature_store_restore_search_max_pages": 30,
         "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
-            "Spot coverage includes Binance, Coinbase, Kraken and OKX XRP-USDT; Deribit XRP-USDC perpetual ticker and L2 snapshots are retained raw-only, while derivatives history/features remain Binance USD-M XRPUSDT only.",
-            "USDT quotes and Binance-reported open-interest value are not converted to USD; open-interest contracts, quote value, funding fractions and account ratios remain separate units.",
+            "Spot coverage includes Binance XRP/USDT, Coinbase and Kraken XRP/USD, and OKX XRP/USDT; same-venue OKX USDT/USD can produce top-of-book USD-normalized features only when timestamp-skew and freshness gates pass. Deribit XRP-USDC perpetual ticker and L2 snapshots remain raw-only, while derivatives history/features remain Binance USD-M XRPUSDT only.",
+            "Only OKX top-of-book XRP-USDT quotes are converted to USD, and only with a same-venue USDT-USD snapshot no more than 60 seconds apart and both snapshots no more than 300 seconds old; Binance and Bybit XRP-USDT quotes and Binance-reported open-interest value remain unconverted, while open-interest contracts, quote value, funding fractions and account ratios remain separate units.",
+            "The normalized OKX USD features are top-of-book only, share one OKX publisher-independence group, and do not establish independent corroboration, full-depth USD liquidity, or a synchronized cross-venue market.",
             "Historical Binance funding settlements are timestamped per event; the actual funding interval is not assumed fixed. Binance open-interest and global long/short history are one-hour observations limited to the latest 30 days, with no-trade gaps preserved as missing.",
             "Binance and Coinbase order-book snapshots remain raw-only because no exchange timestamp/sequence bridge is maintained; Kraken depth requires a fresh HTTP Date header; OKX depth is admitted only with a fresh exchange-provided snapshot timestamp and does not establish sequence continuity; Deribit XRP-USDC perpetual L2 remains raw-only until contract amount units, depth semantics and sequence continuity are independently validated.",
             "Historical Binance and Coinbase candles are known to this collector only at captured_at_utc; they cannot be used at earlier historical cutoffs. Coinbase history beyond the latest endpoint page is manual-only, bounded to 365 additional days, paged at no more than 300 hourly candles per request, and never polled by the scheduled workflow.",
@@ -5525,6 +5795,7 @@ def run_ingestion(
         "event_timeline_model_eligible": False,
         "event_timeline_forecast_status": "NOT_ISSUED",
     })
+    _write_json(output / "quote_basis.json", quote_basis_diagnostics)
     _write_json(output / "summary.json", summary)
     return summary
 

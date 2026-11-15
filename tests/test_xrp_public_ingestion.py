@@ -164,6 +164,21 @@ def _fake_fetcher(captured: datetime):
                     "ts": str(captured_ms - 1000),
                 }],
             }
+        elif source_id == "okx_usdt_usd_ticker":
+            payload = {
+                "code": "0",
+                "msg": "",
+                "data": [{
+                    "instId": "USDT-USD",
+                    "last": "0.9995",
+                    "lastSz": "1000",
+                    "askPx": "0.9996",
+                    "askSz": "10000",
+                    "bidPx": "0.9994",
+                    "bidSz": "11000",
+                    "ts": str(captured_ms - 1200),
+                }],
+            }
         elif source_id == "okx_spot_depth":
             payload = {
                 "code": "0",
@@ -707,8 +722,10 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.27"
-    assert summary["parser_version"] == "xrp-public-market-v3.26"
+    assert summary["adapter_version"] == "xrp-public-market-v3.28"
+    assert summary["parser_version"] == "xrp-public-market-v3.27"
+    assert summary["quote_basis"]["status"] == "VERIFIED"
+    assert summary["quote_basis_feature_count"] == 4
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
@@ -718,6 +735,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.last_price" and item["unit"] == "USDT/XRP" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.okx.usd_normalized.mid_price" and item["unit"] == "USD/XRP" and item["model_eligible"] is True for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.coinbase.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.binance.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
@@ -1017,6 +1035,109 @@ def test_okx_spot_sources_are_timestamped_and_in_scheduled_registry():
     assert PARSERS["okx_spot_depth"] is not None
     assert {"okx_spot_ticker", "okx_spot_depth"}.issubset(
         {source_id for source_id, _url in SCHEDULED_ENDPOINTS}
+    )
+
+
+def test_okx_usdt_usd_basis_source_is_timestamped_and_scheduled():
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    source_id = "okx_usdt_usd_ticker"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, event_time, eligible, reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+    )
+    by_feature = {record["feature_id"]: record for record in records}
+    assert url == "https://us.okx.com/api/v5/market/ticker?instId=USDT-USD"
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert xrp_ingestion.LIVE_HTTP_CACHE_AGE_LIMITS[source_id] == xrp_ingestion.MAX_LIVE_AGE_SECONDS
+    assert event_time == "2026-11-04T12:29:58.800000Z"
+    assert eligible is True
+    assert reason == ""
+    assert by_feature["xrp.quote_basis.okx.usdt_usd.best_bid"]["value"] == pytest.approx(0.9994)
+    assert by_feature["xrp.quote_basis.okx.usdt_usd.best_ask"]["value"] == pytest.approx(0.9996)
+    assert by_feature["xrp.quote_basis.okx.usdt_usd.mid_price"]["value"] == pytest.approx(0.9995)
+    assert all(record["currency_pair"] == "USDT/USD" for record in records)
+
+
+def test_okx_usd_quote_basis_derives_only_synchronized_same_venue_top_of_book(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    output = tmp_path / "okx-usd-basis"
+    summary = run_ingestion(output, fetcher=_fake_fetcher(captured), now=captured)
+    assert summary["quote_basis"]["status"] == "VERIFIED"
+    assert summary["quote_basis"]["model_eligible"] is True
+    assert summary["quote_basis"]["publisher_independence_groups"] == ["okx"]
+    assert summary["quote_basis"]["publisher_independence_group_count"] == 1
+    assert summary["quote_basis"]["snapshot_skew_seconds"] == pytest.approx(0.2)
+    assert summary["quote_basis_feature_count"] == 4
+    assert summary["quote_basis_path"] == "quote_basis.json"
+
+    snapshot = json.loads((output / "snapshot.json").read_text(encoding="utf-8"))
+    normalized = {
+        record["feature_id"]: record
+        for record in snapshot["records"]
+        if record["feature_id"].startswith("xrp.spot.okx.usd_normalized.")
+    }
+    assert set(normalized) == {
+        "xrp.spot.okx.usd_normalized.best_bid",
+        "xrp.spot.okx.usd_normalized.best_ask",
+        "xrp.spot.okx.usd_normalized.mid_price",
+        "xrp.spot.okx.usd_normalized.spread_bps",
+    }
+    assert normalized["xrp.spot.okx.usd_normalized.mid_price"]["value"] == pytest.approx(1.289355)
+    assert normalized["xrp.spot.okx.usd_normalized.mid_price"]["unit"] == "USD/XRP"
+    assert normalized["xrp.spot.okx.usd_normalized.mid_price"]["model_eligible"] is True
+    assert {source["source_id"] for source in normalized["xrp.spot.okx.usd_normalized.mid_price"]["sources"]} == {
+        "okx_spot_ticker",
+        "okx_usdt_usd_ticker",
+    }
+    assert {
+        source["independence_group"]
+        for source in normalized["xrp.spot.okx.usd_normalized.mid_price"]["sources"]
+    } == {"okx"}
+
+    receipts = json.loads((output / "receipt_manifest.json").read_text(encoding="utf-8"))
+    basis_receipt = next(item for item in receipts if item["source_id"] == "okx_usdt_usd_ticker")
+    assert basis_receipt["model_eligible_source"] is True
+    assert basis_receipt["raw_bytes_retained"] is True
+    assert len(basis_receipt["raw_content_sha256"]) == 64
+    quote_basis = json.loads((output / "quote_basis.json").read_text(encoding="utf-8"))
+    assert quote_basis == summary["quote_basis"]
+
+
+@pytest.mark.parametrize(
+    ("basis_age_ms", "expected_status"),
+    [
+        (70_000, "NOT_SYNCHRONIZED"),
+        (301_000, "NOT_ELIGIBLE"),
+    ],
+)
+def test_okx_usd_quote_basis_fails_closed_on_skew_or_staleness(tmp_path, basis_age_ms, expected_status):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    captured_ms = _iso_ms(captured)
+    base_fetcher = _fake_fetcher(captured)
+
+    def delayed_basis_fetcher(source_id: str, url: str):
+        response = base_fetcher(source_id, url)
+        if source_id == "okx_usdt_usd_ticker":
+            response["payload"]["data"][0]["ts"] = str(captured_ms - basis_age_ms)
+            response["raw_bytes"] = json.dumps(
+                response["payload"], separators=(",", ":")
+            ).encode("utf-8")
+        return response
+
+    output = tmp_path / f"basis-{basis_age_ms}"
+    summary = run_ingestion(output, fetcher=delayed_basis_fetcher, now=captured)
+    assert summary["quote_basis"]["status"] == expected_status
+    assert summary["quote_basis"]["model_eligible"] is False
+    assert summary["quote_basis_feature_count"] == 0
+    snapshot = json.loads((output / "snapshot.json").read_text(encoding="utf-8"))
+    assert not any(
+        record["feature_id"].startswith("xrp.spot.okx.usd_normalized.")
+        for record in snapshot["records"]
     )
 
 
@@ -1444,8 +1565,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 50
-    assert len(SCHEDULED_ENDPOINTS) == 45
+    assert len(ENDPOINTS) == 51
+    assert len(SCHEDULED_ENDPOINTS) == 46
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2974,8 +3095,8 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 50
-    assert len(SCHEDULED_ENDPOINTS) == 45
+    assert len(ENDPOINTS) == 51
+    assert len(SCHEDULED_ENDPOINTS) == 46
 
 
 def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
@@ -3067,8 +3188,8 @@ def test_sbi_vc_trade_lending_page_is_scheduled_digest_only_and_not_a_feature_so
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
     assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
-    assert len(ENDPOINTS) == 50
-    assert len(SCHEDULED_ENDPOINTS) == 45
+    assert len(ENDPOINTS) == 51
+    assert len(SCHEDULED_ENDPOINTS) == 46
 
 
 def test_sbi_vc_trade_lending_page_parser_is_raw_only_and_rejects_wrong_publisher():

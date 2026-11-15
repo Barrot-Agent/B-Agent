@@ -166,6 +166,7 @@ jobs:
             artifacts/xrp_ingestion/cross_run_receipt_chain.json
             artifacts/xrp_ingestion/source_failures.json
             artifacts/xrp_ingestion/raw_only_sources.json
+            artifacts/xrp_ingestion/quote_basis.json
             artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
           retention-days: 90
@@ -189,7 +190,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: xrp-public-feature-store-${{ github.run_id }}
-          path: artifacts/xrp_ingestion/feature_store.sqlite3
+          path: |
+            artifacts/xrp_ingestion/feature_store.sqlite3
+            artifacts/xrp_ingestion/quote_basis.json
           if-no-files-found: error
           retention-days: 7
       - name: Upload daily point-in-time feature-store backup and walk-forward report
@@ -202,6 +205,7 @@ jobs:
             artifacts/xrp_ingestion/snapshot.json
             artifacts/xrp_ingestion/walk_forward.json
             artifacts/xrp_ingestion/summary.json
+            artifacts/xrp_ingestion/quote_basis.json
             artifacts/xrp_ingestion/snapshot_blocked.json
             artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
