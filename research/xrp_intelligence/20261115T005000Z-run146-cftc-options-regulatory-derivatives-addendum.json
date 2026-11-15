@@ -1,0 +1,222 @@
+{
+  "artifact_type": "barrot_xrp_derivatives_cftc_options_regulatory_addendum",
+  "schema_version": "1.0.0",
+  "run": 146,
+  "captured_at_utc": "2026-11-15T00:50:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "integration_parent_head": "510a77ea1d81bde52848cf5cf9eb5405e2c1ab39",
+  "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+  "market_derivatives": {
+    "liqwall": {
+      "as_of_utc": "2026-11-15T00:32:00Z",
+      "spot_usd": 0.9269,
+      "open_interest_usd": 1000000000,
+      "open_interest_change_24h_percent": -1.1,
+      "funding_8h_percent": -0.0068,
+      "liquidations_24h_usd": 46000000,
+      "long_liquidations_usd": 44500000,
+      "short_liquidations_usd": 1500000,
+      "binance_account_long_percent": 72.5,
+      "venue_count": 9,
+      "source_url": "https://liqwall.com/coins/xrp",
+      "source_ref": "turn671918search0"
+    },
+    "tradradar": {
+      "as_of_utc": "2026-11-14T20:00:00Z",
+      "open_interest_usd": 1400000000,
+      "open_interest_change_24h_percent": -7.25,
+      "funding_8h_percent": -0.0047,
+      "liquidations_24h_min_usd": 24710000,
+      "long_liquidations_usd": 24010000,
+      "short_liquidations_usd": 698190,
+      "liquidation_venue_count": 5,
+      "oi_venue_count": 7,
+      "source_ref": "turn671918search1"
+    },
+    "alpha_finance": {
+      "as_of_utc": "2026-11-14T20:44:00Z",
+      "open_interest_usd": 2030000000,
+      "spot_usd": 0.937,
+      "volume_24h_usd": 3390000000,
+      "long_liquidations_usd": 32300000,
+      "short_liquidations_usd": 824300,
+      "heatmap_method": "Modeled from OI and leverage tiers, not resting liquidation orders.",
+      "source_url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "source_ref": "turn650424search0"
+    },
+    "webconomia": {
+      "as_of_utc": "2026-11-14T11:28:00Z",
+      "open_interest_usd": 1230000000,
+      "venue_count": 7,
+      "funding_current_8h_percent": -0.006,
+      "funding_7d_average_8h_percent": 0.0077,
+      "liquidations_24h_usd": 11400000,
+      "long_liquidation_share_percent": 91,
+      "liquidation_method": "Exchange-published verified liquidation events from four venues; excludes estimated unreported events.",
+      "source_url": "https://www.webeconomia.it/mercati/crypto/derivati/xrp/"
+    },
+    "marginpad": {
+      "as_of_utc": "2026-11-14T20:25:00Z",
+      "liquidations_24h_usd": 25700000,
+      "long_liquidations_usd": 25000000,
+      "short_liquidations_usd": 614000,
+      "venue_count": 12,
+      "method": "Public websocket liquidation events.",
+      "source_url": "https://marginpad.io/xrp-liquidation-map/",
+      "source_ref": "turn650424search9"
+    },
+    "disagreement": "Liquidation totals range from ~$11.4M verified four-venue events to ~$46M nine-venue aggregate/estimated feeds. Coverage, exchange reporting gaps, estimation and event windows differ. OI ranges from ~$1.00B to ~$2.03B. Do not average or treat modeled heatmap clusters as executable resting liquidity."
+  },
+  "cftc_futures_only_report": {
+    "report_as_of": "2026-11-03",
+    "report_type": "Traders in Financial Futures, futures only",
+    "official_url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+    "products": [
+      {
+        "product": "XRP - Chicago Mercantile Exchange",
+        "cftc_code": "176740",
+        "contract_size_xrp": 50000,
+        "_open_interest_contracts": 7216,
+        "open_interest_xrp_equivalent": 360800000,
+        "open_interest_change_contracts_from_oct27": -845,
+        "trader_count": 29,
+        "net_contracts_by_category": {
+          "leveraged_funds": 280,
+          "asset_managers": 66,
+          "dealers": -203,
+          "nonreportables": -143
+        },
+        "net_xrp_equivalent_by_category": {
+          "leveraged_funds": 14000000,
+          "asset_managers": 3300000,
+          "dealers": -10150000,
+          "nonreportables": -7150000
+        }
+      },
+      {
+        "product": "NANO XRP - Coinbase Derivatives LLC",
+        "cftc_code": "176LM1",
+        "contract_size_xrp": 500,
+        "open_interest_contracts": 32505,
+        "open_interest_xrp_equivalent": 16252500,
+        "open_interest_change_contracts_from_oct27": -32864,
+        "open_interest_change_percent_approx": -50.27,
+        "trader_count": 37,
+        "net_contracts_by_category": {
+          "leveraged_funds": -2308,
+          "other_reportables": 2092,
+          "nonreportables": 216
+        },
+        "net_xrp_equivalent_by_category": {
+          "leveraged_funds": -1154000,
+          "other_reportables": 1046000,
+          "nonreportables": 108000
+        }
+      },
+      {
+        "product": "NANO XRP PERP STYLE - Coinbase Derivatives LLC",
+        "cftc_code": "176LM3",
+        "contract_size_xrp": 500,
+        "open_interest_contracts": 38392,
+        "open_interest_xrp_equivalent": 19196000,
+        "open_interest_change_contracts_from_oct27": -465,
+        "open_interest_change_percent_approx": -1.2,
+        "trader_count": 284,
+        "net_contracts_by_category": {
+          "leveraged_funds": -27774,
+          "other_reportables": 26005,
+          "nonreportables": 1769
+        },
+        "net_xrp_equivalent_by_category": {
+          "leveraged_funds": -13887000,
+          "other_reportables": 13002500,
+          "nonreportables": 884500
+        }
+      }
+    ],
+    "interpretation": "The CFTC report is a regulated-market subset, not global XRP positioning. Leveraged funds are net short in Coinbase's perpetual-style contract but net long in CME standard XRP futures; other reportables are net long in both Coinbase nano products. This can reflect cross-product basis/hedging as well as directional views. The 50% fall in monthly Nano XRP OI may reflect expiry/roll or de-risking; no direct roll mapping is proven. Do not combine these positions into one directional signal.",
+    "next_report": "The latest official report visible in this run is as of Nov 3; the Nov 10 report was not yet available on Nov 15.",
+    "source_ref": "turn947744view0"
+  },
+  "coinbase_derivatives_product_page": {
+    "source_url": "https://www.coinbase.com/derivatives",
+    "snapshot": {
+      "nano_xrp_perp_style_contract_size_xrp": 500,
+      "open_interest_contracts": 35062,
+      "daily_volume_contracts": 77698
+    },
+    "timestamp": "Not supplied by page; do not compare as a synchronized event with CFTC Nov 3."
+  },
+  "options": {
+    "source": "OptimistFi Deribit options snapshot",
+    "source_url": "https://optimistfi.com/perps/options/xrp",
+    "as_of_utc": "2026-11-14T16:00:00Z",
+    "atm_iv_30d_percent": 60.5,
+    "skew_25d_points": -1.7,
+    "put_call_ratio_dec25": 0.55,
+    "expiry_open_interest_usd": {
+      "2026-11-15": 299100,
+      "2026-11-20": 2200000,
+      "2026-11-27": 22000000,
+      "2026-12-25": 43800000,
+      "2027-03-26": 6900000
+    },
+    "expiry_put_call_ratio": {
+      "2026-11-15": 1.1,
+      "2026-11-20": 1.13,
+      "2026-11-27": 0.26,
+      "2026-12-25": 0.55,
+      "2027-03-26": 0.8
+    },
+    "expiry_25d_skew_points": {
+      "2026-11-15": -6.1,
+      "2026-11-16": -6.8,
+      "2026-11-20": -4.8,
+      "2026-11-27": -2.4,
+      "2026-12-25": -1.3,
+      "2027-03-26": -0.3
+    },
+    "max_pain_nov15_usd": 1,
+    "history": {
+      "atm_iv_30d_oct15_percent": 55,
+      "skew_25d_oct15_points": 3
+    },
+    "conflicting_search_snapshot": {
+      "as_of_utc": "2026-11-14T20:00:00Z",
+      "atm_iv_30d_percent": 62.4,
+      "skew_25d_points": -2.7,
+      "dec25_open_interest_usd": 43100000
+    },
+    "interpretation": "The opened page's Nov14 16:00 snapshot shows downside puts richer, especially near expiry, while Dec25 call open interest exceeds puts (put/call 0.55). An earlier indexed 20:00 snapshot differs; preserve the version disagreement. Max pain is descriptive, not a forecast."
+  },
+  "regulation": {
+    "sec_cftc_interpretation": {
+      "effective_date": "2026-03-23",
+      "xrp_in_digital_commodity_examples": true,
+      "legal_character": "SEC interpretive release with CFTC guidance; not a new XRP-specific statute",
+      "limits": [
+        "does not replace the Howey test",
+        "transaction-specific investment-contract analysis remains possible",
+        "does not create blanket exemption for every XRP offer, sale, issuer or intermediary"
+      ],
+      "source_ref": "turn124950view0"
+    },
+    "clarity_act": {
+      "date": "2026-09-15",
+      "bill": "H.R.3633 Digital Asset Market Clarity Act",
+      "vote": "cloture on motion to proceed not invoked, 49-50",
+      "motion_to_reconsider": "entered",
+      "enacted": false,
+      "source_ref": "turn775102search3"
+    }
+  },
+  "counter_hypotheses": [
+    "Offshore long-liquidation cascade: several providers show negative funding and long-heavy liquidations.",
+    "Provider coverage/estimation explains much of the liquidation-total gap; verified exchange events and modeled or inferred totals are not interchangeable.",
+    "Regulated CME leveraged funds are net long while Coinbase perp-style leveraged funds are net short; cross-product basis hedging is plausible.",
+    "The large monthly Nano XRP OI reduction may be expiry/roll, not broad XRP deleveraging.",
+    "Options show negative put skew while far-dated Dec25 open interest is call-heavy; hedging and upside speculation coexist.",
+    "A positive price rebound after a sharp daily decline is not proof of trend reversal."
+  ],
+  "model_admission": "Research-only. CFTC data is weekly and as of Nov3; options are secondary and delayed; liquidation aggregators differ in venue coverage and modeled versus verified events. No directional forecast."
+}

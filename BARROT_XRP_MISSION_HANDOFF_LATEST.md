@@ -4950,3 +4950,62 @@ No source PR was closed. No branch was force-pushed or rewritten. No merge, depl
 5. Merge only after all requirements pass; then fetch main, verify the merge commit/files, rerun main CI and verify scheduled XRP ingestion actually runs.
 6. Build synchronized historical spot/L2/derivatives/exchange-flow/collateral data and independently anchored WORM receipts before training a candidate.
 7. Require calibrated out-of-sample superiority over all four baselines and independent shadow outcomes before enabling any directional forecast.
+
+---
+
+## Run146 derivatives, CFTC positioning and regulatory addendum
+
+Captured during the same research run after the first Run146 commit. This addendum supersedes earlier stale derivatives snapshots where timestamps overlap; it does not alter the Run146 forecast gate.
+
+### Newest offshore derivatives snapshot
+
+Liqwall's November 15 00:32 UTC page reports approximately $1.00B open interest, -1.1% 24-hour change, -0.0068% average funding per eight hours and $46.0M liquidations, including $44.5M long and $1.5M short liquidations. Its nine-venue breakdown includes Binance, Bybit, Hyperliquid, OKX, Gate, Aster, Kraken, Lighter and Bitfinex.
+
+Other providers remain materially different:
+
+- TradRadar, November 14 20:00 UTC: $1.40B OI, -0.0047% funding, at least $24.71M liquidations; five venues for liquidation reporting and seven for OI.
+- Alpha Finance, November 14 20:44 UTC: $2.03B OI, $32.3M long and $824K short liquidations. Its price-level heatmap is modeled from OI and leverage tiers, not actual resting orders.
+- Webeconomia, November 14 11:28 UTC: $1.23B OI, -0.0060% current funding and +0.0077% seven-day average funding; $11.4M verified exchange-reported liquidations across four venues.
+- MarginPad, November 14 20:25 UTC: $25.7M reported liquidations, $25.0M long and $614K short, from 12 public websocket venues.
+
+The liquidation totals are not a common denominator. Webeconomia explicitly limits its figure to verified exchange-published events; broader aggregators may include more venues or estimates for unreported events. Preserve the $11.4M–$46.0M range and methodology differences; do not average. OI ranges from roughly $1.00B to $2.03B and must also remain provider-specific. <Cite refs={['turn650424search0','turn650424search9']}/>
+
+### Regulated U.S. XRP futures positioning
+
+The official CFTC Traders in Financial Futures report, as of November 3, lists three distinct XRP products:
+
+| Product | Open interest | XRP equivalent | Change from Oct 27 | Traders |
+|---|---:|---:|---:|---:|
+| CME standard XRP futures, 50,000 XRP | 7,216 contracts | 360.8M XRP | -845 | 29 |
+| Coinbase NANO XRP monthly, 500 XRP | 32,505 contracts | 16.25M XRP | -32,864 | 37 |
+| Coinbase NANO XRP PERP STYLE, 500 XRP | 38,392 contracts | 19.20M XRP | -465 | 284 |
+
+Positioning is split by product. In CME standard XRP futures, leveraged funds are net long 280 contracts (+14.0M XRP equivalent) and asset managers net long 66 (+3.3M); dealers are net short 203 (-10.15M) and nonreportables net short 143 (-7.15M).
+
+In Coinbase's perpetual-style product, leveraged funds are net short 27,774 contracts (-13.887M XRP equivalent), while other reportables are net long 26,005 (+13.0025M) and nonreportables net long 1,769 (+0.8845M). The monthly Nano XRP contract shows a much smaller leveraged-fund net short of 2,308 contracts.
+
+The monthly Nano XRP contract's open interest fell 32,864 contracts from October 27 to November 3, about 50.3%; the perpetual-style contract fell only 465, about 1.2%. Expiry/roll is plausible but not proven. The report is futures-only, as of November 3, and is not comparable to global offshore perpetual OI. The CFTC's classifications also do not reveal whether positions are hedged across products or spot. <Cite ref="turn947744view0"/>
+
+Coinbase's derivatives product page lists the Nano XRP Perp Style at 500 XRP per contract, with a page snapshot of 35,062 open-interest contracts and 77,698 daily volume contracts; the page does not provide an event timestamp. Do not treat it as synchronized with the November 3 CFTC report. <Cite ref="turn947744search2"/>
+
+### Options positioning
+
+OptimistFi's Deribit snapshot for November 14 16:00 UTC reports 30-day ATM implied volatility of 60.5% and 25-delta skew of -1.7 points, meaning downside puts are richer than upside calls. Skew has moved from +3.0 points on October 15 to -1.7 on November 14.
+
+Open interest is concentrated in later expiries: November 27 approximately $22.0M and December 25 approximately $43.8M. December 25 put/call open interest is 0.55, so calls outnumber puts despite the negative volatility skew. Near-dated November 15 and November 20 skew is more negative (-6.1 and -4.8 points). An earlier indexed 20:00 snapshot reported 62.4% ATM IV and -2.7 skew; the page opened for this audit shows a 16:00 snapshot. Preserve this source-version disagreement. Max pain at $1.00 is descriptive, not a price target. <Cite ref="turn336223view0"/>
+
+### U.S. regulatory interpretation
+
+The SEC's March 2026 interpretive release, effective March 23, includes XRP in its digital-commodity examples and is accompanied by CFTC guidance. It is an interpretive framework, not a new XRP-specific statute or blanket exemption. The release expressly says it does not replace the Howey test; transaction-specific investment-contract analysis can still apply.
+
+On September 15, 2026, the Senate failed to invoke cloture on the motion to proceed to H.R.3633, the Digital Asset Market Clarity Act, by 49-50; a motion to reconsider was entered. The bill was not enacted by that vote. <Cite ref="turn124950view0"/> <Cite ref="turn775102search3"/>
+
+### Counter-hypotheses retained
+
+1. Offshore long liquidation and negative funding indicate deleveraging pressure, but the aggregate liquidation total depends heavily on venue coverage and estimated versus verified events.
+2. CFTC regulated-market positioning is not uniformly bearish: leveraged funds are net long in CME standard XRP futures but net short in Coinbase's perpetual-style contract, while other reportables are net long. Cross-product basis/hedging is plausible.
+3. The 50% monthly Nano XRP OI drop may be expiry/roll, not broad XRP deleveraging; no roll mapping is proven.
+4. Negative options skew indicates downside protection demand, while far-dated call-heavy open interest indicates simultaneous upside positioning.
+5. A short-term price rebound after a large 24-hour decline is not proof of a trend reversal.
+
+These data are research-only. No directional forecast was issued; accuracy remains NOT_EVALUATED.
