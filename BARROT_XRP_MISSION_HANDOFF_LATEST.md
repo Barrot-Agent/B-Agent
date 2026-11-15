@@ -8782,3 +8782,38 @@ Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
 6. Establish byte-exact receipts and independent archival; complete synchronized historical XRP data and independent shadow evaluation before any candidate forecast.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+## Run171 institutional and market supplement — JPYSC public-chain status, SBI/BlackRock/SMFG, RLUSD and Circle rails
+
+### JPYSC: service balances are not XRP float
+
+SBI VC Trade's November 2 release reports a JPYSC lending balance above ¥10B and total handled balance above ¥30B. The total is defined as on-chain balance plus lending balance. The three lending courses then offered were 3% for 168 days, 2.5% for 84 days and 2% for 28 days. These are JPYSC service balances, not XRP capital flows, XRP collateral or evidence of XRP purchases. [SBI VC Trade, November 2](https://www.sbigroup.co.jp/news/2026/1102_16704.html).
+
+The current official JPYSC product page says the network label is Ethereum, but external deposits and withdrawals are not supported; public-chain circulation remains contingent on legal/tax treatment and supervisory confirmation. No official XRPL issuer was found. XRPL validators previously warned about fake JPYSC tickers. Do not count JPYSC as freely transferable XRPL supply. [SBI VC Trade JPYSC page](https://www.sbivc.co.jp/jpysc) · [validator warning](https://thecryptobasic.com/2026/06/25/abdul-sbi-lauxrp-ledger-validators-issue-warning-over-fake-jpysc-tokens/).
+
+The JPYSC lending product is a customer-to-SBI VC Trade consumer-loan contract, not a bank deposit. SBI's own risk disclosure says borrowed JPYSC is not segregated under the cited structure, may be on-lent, is not covered by deposit insurance, and may not be fully returned if SBI VC Trade fails. This is a material counterparty-risk and collateral-classification distinction. [SBI VC Trade risk disclosure](https://www.sbivc.co.jp/jpysc).
+
+### SBI/Startale/BlackRock/SMFG
+
+- October 27: SBI Holdings, Startale and BlackRock Financial Management/BlackRock Japan signed a basic agreement to explore tokenized MMF and JPYSC linkage across technology/infrastructure, business/distribution and regulatory/market development. This is exploratory, not a launched settlement service or disclosed cash investment. [SBI announcement](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+- October 30: SBI Holdings and SMBC Group agreed to explore stablecoin and digital-asset financial services. SMFG takes a 5% equity stake in SBI Startale Marketing; SBI's November 2 presentation shows SBI Holdings 55%, Startale 40%, SMFG 5%. Potential JPYSC use cases and SMBC Olive integration remain exploratory; no production service or investment amount was disclosed. [SBI announcement](https://www.sbigroup.co.jp/news/2026/1030_16698.html) · [SBI presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf).
+
+### SBI/Ripple RLUSD is a direct live distribution relationship
+
+SBI VC Trade launched RLUSD on VCTRADE on June 24, 2026 after Japanese regulatory approval, classifying it as a Type 4 electronic payment instrument under its Japanese-law interpretation. Deposits and withdrawals are free; BITPOINT is excluded. This is distinct from SBI's JPYSC issuance. [SBI VC Trade release](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html) · [Ripple release](https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/).
+
+Ripple's transparency page reports $2.6899B RLUSD circulation and $2.8265B reserve funds as of November 12, approximately 105.08% by simple ratio. The latest CPA report visible is September 2026; November 12 balances are not a November CPA attestation. The legal issuer is Standard Custody & Trust Company, LLC, doing business as Ripple Custody & Trust Co.; Ripple National Trust Bank is separate. BNY remains primary reserve custodian. [Ripple transparency](https://ripple.com/products/stablecoin/transparency/).
+
+### Circle's institutional rails and governance
+
+Circle's Q3 2026 release reports average USDC circulation of $73.3B, Q3 onchain transaction volume of $13.9T and Circle Payments Network annualized TPV of $41.3B. Its Tazapay acquisition agreement is expected to close in 2027 subject to approvals; Tazapay reports $25B+ annualized payment volume, 60+ banking/fintech partners, payout rails in 100+ markets and approximately 60% stablecoin transaction volume. Circle also says Visa Direct USDC prefunding moved from pilots to commercial deployment through Inyo Global across 180+ countries, and eligible Samsung Wallet users can send USDC to qualifying bank accounts in 60+ countries. These are Circle-reported metrics, not XRP flows. [Circle Q3 2026](https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results).
+
+Circle and ACI Worldwide announced an October 27 collaboration to demonstrate USDC settlement through ACI Connetic alongside existing payment rails, initially in Colombia's Bre-B ecosystem. This is a pilot/evaluation, not confirmed production migration. [Circle/ACI announcement](https://www.circle.com/pressroom/aci-worldwide-and-circle-collaborate-to-bring-usdc-settlement-to-existing-payments-infrastructure-in-latin-america).
+
+On November 13 Circle named Dante Disparte Vice Chairman, Strategy and Global Affairs, and Mandeep Walia Chief Compliance and Risk Officer and Chief Operating Officer. Circle says compliance/risk remains independent with direct board lines. [Circle leadership announcement](https://www.circle.com/pressroom/circle-names-dante-disparte-vice-chairman-strategy-and-global-affairs-and-mandeep-walia-chief-compliance-and-risk-officer-and-chief-operating-officer).
+
+### Spot-data cross-check
+
+A time-stamped OKX XRP-USDT observation at 17:37:12 UTC was $0.9480; Swiftedge's 16:55 UTC XRP perpetual reference was $0.9482. Other public aggregators showed $0.9661 at 11:53 UTC (Trust Wallet), $0.9631 in an Investing.com daily row without an exact capture time, and $0.9193 as Kinzan's November 15 daily close. These are not a synchronized multi-venue spot sample: Swiftedge is a perpetual, aggregator timestamps differ, and daily-close conventions are not comparable. No price feature or directional inference is admitted.
+
+All additions are descriptive-only because byte-exact publisher payloads and SHA-256 receipts were not captured. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.

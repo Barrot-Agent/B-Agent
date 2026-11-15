@@ -35,9 +35,9 @@
       "base": "main",
       "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
       "head_sha": "da267d5a9f893a5016ad74530642eae5b2d8ea30",
-      "commits_ahead": 2519,
+      "commits_ahead": 2521,
       "commits_behind": 0,
-      "changed_files": 1257,
+      "changed_files": 1258,
       "additions": 353426,
       "deletions": 6309,
       "formal_reviews": 0,
@@ -91,7 +91,8 @@
       "1650_and_1254": "same legacy/requirements_legacy.txt dependency path; newer huggingface-hub proposal supersedes the older version candidate but neither is merged.",
       "1649_and_1255": "same legacy/requirements_legacy.txt dependency path; newer databricks-sdk proposal supersedes the older version candidate but neither is merged.",
       "1648_1646_1645": "unique dependency-update candidates; individually unverified for current-head full-suite and approval requirements."
-    }
+    },
+    "integration_head_after_run171_documentation_commits": "f017bcfde5cff1c6325e3e25209406ee81b21955"
   },
   "ci": {
     "integration_exact_head": {
@@ -147,6 +148,19 @@
       ],
       "latest_cross_analysis_run_id": 43743444760,
       "latest_cross_analysis_conclusion": "success_read_only_artifact_outputs"
+    },
+    "latest_documentation_head": {
+      "head_sha": "f017bcfde5cff1c6325e3e25209406ee81b21955",
+      "push_full_suite_run_id": 43745413140,
+      "push_core_tests": "success",
+      "push_full_suite": "in_progress_at_supplement_capture",
+      "push_fail_closed": "success",
+      "pr_ci_run_id": 43745416934,
+      "pr_ci": "success_build_only_tests_skipped_by_integration_branch_condition",
+      "dependency_audit_run_id": 43745416763,
+      "dependency_audit": "success",
+      "pr_fail_closed_run_id": 43745416730,
+      "pr_fail_closed": "success"
     }
   },
   "main_branch_risk_and_integration_containment": {
@@ -312,7 +326,48 @@
         "chronology_warning": "Page also claims a latest issuer file dated 2026-11-16 read 2026-11-14, a future-dated inconsistency. That metadata is excluded; only the explicitly partial Nov 13 and complete Nov 12 observations are retained."
       },
       "reconciliation": "Do not average. Fund universes, issuer-file coverage, settlement windows and holdings-delta methods differ; providers reuse overlapping underlying issuer data and are not independent corroborations."
-    }
+    },
+    "secondary_price_cross_checks": {
+      "trust_wallet": {
+        "price_usd": 0.9661,
+        "updated_at_utc": "2026-11-15T11:53:00Z",
+        "change_24h_percent": -2.7,
+        "change_7d_percent": -15.92,
+        "change_30d_percent": -26.4,
+        "source": "https://trustwallet.com/price/xrp",
+        "qualification": "aggregator; venue/event timestamp not supplied"
+      },
+      "swiftedge_perpetual": {
+        "price_usd": 0.9482,
+        "updated_at_utc": "2026-11-15T16:55:00Z",
+        "change_24h_percent": -1.04,
+        "change_7d_percent": -17.98,
+        "change_30d_percent": -27.5,
+        "source": "https://swiftedge.uk/xrp-price-today",
+        "qualification": "perpetual-futures reference, not spot"
+      },
+      "investing_daily": {
+        "date": "2026-11-15",
+        "price_usd": 0.9631,
+        "open": 0.9137,
+        "high": 0.9785,
+        "low": 0.9004,
+        "volume_usd": 856400000,
+        "change_percent": 5.39,
+        "source": "https://ph.investing.com/crypto/xrp/historical-data",
+        "qualification": "daily aggregator row; exact intraday capture time and venue universe not supplied"
+      },
+      "kinzan_daily": {
+        "date": "2026-11-15",
+        "close": 0.9193,
+        "high_24h": 0.9812,
+        "low_24h": 0.898,
+        "source": "https://kinzan.io/markets/crypto/xrp-usd/",
+        "qualification": "daily close/aggregator; not synchronized with venue ticker"
+      },
+      "admission": "Do not combine these asynchronous, differently defined sources. All are descriptive-only."
+    },
+    "admission": "All Run171 public observations are descriptive-only; no byte-exact HTTP payloads or SHA-256 receipts were captured."
   },
   "institutional_and_identity": {
     "circle_arc": {
@@ -524,5 +579,128 @@
     "Address the potential GitHub CLI credential exposure through owner/provider review without reading or republishing the file.",
     "Capture byte-exact publisher receipts and independent archival; continue synchronized historical XRP data and independent shadow evaluation.",
     "Do not issue a directional forecast until all manifest readiness criteria pass."
-  ]
+  ],
+  "supplemental_institutional_research": {
+    "jpysc": {
+      "november_2_2026_lending_balance_jpy": 10000000000,
+      "november_2_2026_total_handled_balance_jpy": 30000000000,
+      "total_definition": "SBI VC Trade defines total handled balance as on-chain balance plus lending balance.",
+      "lending_courses_as_of_2026_11_02": [
+        {
+          "term_days": 168,
+          "annual_rate_percent": 3
+        },
+        {
+          "term_days": 84,
+          "annual_rate_percent": 2.5
+        },
+        {
+          "term_days": 28,
+          "annual_rate_percent": 2
+        }
+      ],
+      "official_network_label": "Ethereum",
+      "external_deposits_withdrawals": "not supported",
+      "public_chain_status": "pending legal/tax treatment and supervisory confirmation",
+      "lending_structure": "customer lends JPYSC to SBI VC Trade under a consumer-loan contract; not a bank deposit",
+      "risk": "not deposit-insured; borrowed tokens are not segregated under the cited structure; SBI VC Trade says it may on-lend; customer may not recover all tokens if SBI VC Trade fails",
+      "xrpl_issuer": "not verified; XRPL community validators warned about fake JPYSC tickers",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+        "https://www.sbivc.co.jp/jpysc",
+        "https://thecryptobasic.com/2026/06/25/abdul-sbi-lauxrp-ledger-validators-issue-warning-over-fake-jpysc-tokens/"
+      ],
+      "qualification": "The 30B handled balance is not public-chain XRP float, XRP collateral or proof of an XRPL issue."
+    },
+    "sbi_blackrock": {
+      "date": "2026-10-27",
+      "parties": [
+        "SBI Holdings",
+        "Startale Group",
+        "BlackRock Financial Management",
+        "BlackRock Japan"
+      ],
+      "status": "basic agreement to explore tokenized MMF and JPYSC linkage across technology/infrastructure, business/distribution and regulatory/market development",
+      "production_service": "not announced",
+      "capital_amount": "not disclosed",
+      "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+    },
+    "sbi_smfg": {
+      "date": "2026-10-30",
+      "parties": [
+        "SBI Holdings",
+        "SMBC Group",
+        "SBI Startale Marketing",
+        "Startale Group"
+      ],
+      "facts": [
+        "SMFG agreed to take a 5% equity stake in SBI Startale Marketing",
+        "SBI November 2 presentation shows 55% SBI Holdings, 40% Startale and 5% SMFG",
+        "parties will explore JPYSC/stablecoin use cases and potential SMBC Olive integration"
+      ],
+      "capital_amount": "not disclosed",
+      "production_service": "not announced",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+      ]
+    },
+    "ripple_sbi_rlusd": {
+      "launch_date": "2026-06-24",
+      "status": "direct commercial distribution on SBI VC Trade VCTRADE",
+      "facts": [
+        "RLUSD launched after Japanese regulatory approval",
+        "SBI VC Trade classifies RLUSD as a Type 4 electronic payment instrument under its Japanese-law interpretation",
+        "deposits and withdrawals are free",
+        "BITPOINT is excluded"
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/"
+      ]
+    },
+    "rlusd_transparency": {
+      "issuer_legal_entity": "Standard Custody & Trust Company, LLC, doing business as Ripple Custody & Trust Co.",
+      "circulating_usd": 2689900000,
+      "reserve_funds_usd": 2826500000,
+      "as_of": "2026-11-12",
+      "calculated_coverage_percent": 105.08,
+      "latest_cpa_attestation_visible": "2026-09",
+      "source": "https://ripple.com/products/stablecoin/transparency/",
+      "qualification": "November 12 balances are not a November CPA attestation; RNTB is separate from the RLUSD issuer."
+    },
+    "circle": {
+      "q3_2026": {
+        "average_usdc_circulation_usd": 73300000000,
+        "onchain_transaction_volume_usd": 13900000000000,
+        "cpn_annualized_tpv_usd": 41300000000,
+        "tazapay_annualized_volume_usd": 25000000000,
+        "tazapay_partners": 60,
+        "tazapay_payout_markets": 100,
+        "tazapay_stablecoin_volume_percent": 60,
+        "visa_direct": "USDC prefunding moved from pilot to commercial deployment through Inyo Global; eligible payouts across 180+ countries",
+        "samsung_wallet": "eligible users can send USDC to bank accounts in 60+ countries",
+        "source": "https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results"
+      },
+      "aci_colombia": {
+        "date": "2026-10-27",
+        "parties": [
+          "ACI Worldwide",
+          "Circle"
+        ],
+        "status": "pilot/evaluation",
+        "facts": [
+          "ACI Connetic integrates USDC settlement alongside traditional payment rails",
+          "initial focus Colombia and Bre-B"
+        ],
+        "source": "https://www.circle.com/pressroom/aci-worldwide-and-circle-collaborate-to-bring-usdc-settlement-to-existing-payments-infrastructure-in-latin-america"
+      },
+      "leadership_2026_11_13": {
+        "Dante_Disparte": "Vice Chairman, Strategy and Global Affairs",
+        "Mandeep_Walia": "Chief Compliance and Risk Officer and Chief Operating Officer; compliance/risk remains independent with direct board lines",
+        "source": "https://www.circle.com/pressroom/circle-names-dante-disparte-vice-chairman-strategy-and-global-affairs-and-mandeep-walia-chief-compliance-and-risk-officer-and-chief-operating-officer"
+      },
+      "interpretation": "These USDC/Arc payment rails are competitive or complementary infrastructure; the announcements do not establish XRP settlement or XRP demand."
+    }
+  }
 }
