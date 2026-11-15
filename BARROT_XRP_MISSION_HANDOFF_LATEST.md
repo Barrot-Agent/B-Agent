@@ -7996,3 +7996,65 @@ The four failures were stale assertions in `tests/test_xrp_nine_platform_current
 3. A historical test still asserted Run162 was the current run after the map was correctly advanced to Run165.
 
 Correction: update the repository-state SHA and tree/PR counts to the verified Run165 parent; retain Run162 and all earlier snapshots as historical; update the regression test to assert Run165 is current and verify its exact 3,796-pass parent suite. No test was removed, skipped, weakened or converted to an expected failure. The corrected evidence/test commit is a child of `cd6c57d0f176b4f7742e6f9fca88f93bada6ab10`; its own exact-head full suite, dependency and fail-closed checks remain pending until GitHub reports them.
+
+ 
+## Run166 — Institutional capital, SBIC identity and connected-ecosystem reconciliation
+
+Captured: 2026-11-15T14:52:09.159Z
+
+### Repository and execution state
+- Main remained `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration parent before this Run166 commit: `22bda14bbb39fd9ff3dc3ee350a0f320b63f6266`.
+- PR #1662 remains the single consolidated XRP/V3 integration target, open and draft. It is 2,506 commits ahead, zero behind, and reports 1,254 changed files before this Run166 artifact/mode correction.
+- Exact-head verification on `22bda14bbb39fd9ff3dc3ee350a0f320b63f6266`: full repository suite 3,796 passed, 0 failed, 1 skipped; 19 subtests passed; inclusive coverage 64.02%; legacy core coverage 77%; core tests 742 passed; wheel build/install and mission packaging passed.
+- Exact evidence: full suite [43725671841](https://github.com/Barrot-Agent/B-Agent/actions/runs/43725671841), dependency audit [43725671834](https://github.com/Barrot-Agent/B-Agent/actions/runs/43725671834), fail-closed gate [43725671849](https://github.com/Barrot-Agent/B-Agent/actions/runs/43725671849). Six manifest groups audited; no known vulnerabilities reported; merge gate remains disabled.
+- The preceding `cd6c57d` head failed four Run165 map-contract assertions. The correction in `22bda14bbb39fd9ff3dc3ee350a0f320b63f6266` preserves Run162 history, represents Run165 separately, and passes the full suite. No tests were removed or weakened.
+- `b_agent.sh` had a mode-only regression from 100755 to 100644 while its blob content matched main. This commit restores mode 100755 without changing content.
+- This commit adds one Run166 research artifact and the append-only handoff update. Its own exact-head CI is pending.
+
+### New institutional-capital reconciliation
+The November 13 SEC filing distinguishes Evernorth's direct treasury from the wider Evernorth/Pathfinder funding pool:
+- Evernorth direct holdings at September 30, 2026: 346,284,972 XRP.
+- The broader 473,276,430 XRP figure reconciles as 346,284,972 held by Evernorth + 126,791,458 contributed by Ripple to Pathfinder + 200,000 XRP of delayed funding. The Pathfinder contribution can be liquidated for operating costs; it is not the same as static Evernorth treasury.
+- The $214,049,995 advance cash plus 600,000 XRP included cash used to purchase 84,365,876 XRP. The 261,919,096 Pubco XRP contribution was in kind.
+- Gross cash at the October 9 closing was approximately $272.6 million: $224.6 million private-placement cash plus $48 million SPAC trust proceeds. This is not $272.6 million of fresh investor cash spent on XRP.
+- The filing reports no Q3 XRP additions, $846.6 million cost basis, $271.0 million YTD impairment and $341.9 million carrying value at September 30. The impairment is an accounting charge, not evidence of a sale.
+- SBI's $200 million investment is an Evernorth equity investment. The filing does not disclose the exact portion of the $214.05 million advance cash attributable to SBI-affiliated investors. Do not convert the $200 million commitment into a direct XRP purchase claim.
+- The September 30 cash balance predates the October 9 combination; it must not be represented as post-close November cash. The filing reports $272.6 million gross closing cash before expenses.
+- Warrant exercises between October 12 and November 9 generated approximately $35.3 million gross proceeds; 8,666,279 warrants remained at November 9. This is capital-structure context, not XRP spot inflow.
+
+### Coinbase, Circle, Ripple and SBI
+- SBI disclosures describe its Ripple holding as approximately 9% in the FY2026 presentation and approximately 10% in the 2026 New Year message. Earlier disclosures use different dates and bases. Record this as a rounded 9–10% issuer-disclosure range, not an exact current cap table.
+- SBI Ripple Asia is a 60% SBI Group / 40% Ripple joint venture. SBI Remit has XRP-based remittance corridors; SBI VC Trade distributes USDC in Japan and has announced RLUSD distribution.
+- SBI Holdings and SBI Shinsei Bank each invested $25 million in Circle. Circle SBI Japan and SBI VC Trade provide the regulated USDC distribution path. SBI Group is a founding validator on Circle Arc; JPYSC is issued by SBI Shinsei Trust Bank.
+- Coinbase Q3 2026 reported approximately $22 billion in average USDC held on its platform and 10.7% crypto market share. Circle Q3 2026 reported approximately $73.3 billion average USDC circulation. The derived Coinbase-held share is about 30%, not a disclosed revenue split.
+- Coinbase listed RLUSD on Prime, Exchange and its app, with XRP Ledger, Base and Ethereum support; Coinbase says Ripple provides liquidity on Base. Global Exchange collateral support was described as a follow-on capability, not live at launch.
+- Coinbase's legal disclosure lists XRP as held/commercially engaged, while older help content contains geographic restrictions. Current state-specific access remains unresolved.
+- These are real corporate, custody, distribution and network links. They do not establish coordinated XRP buying or direct spot capital flows.
+
+### SBIC and exact-phrase research
+- SBIC East is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; SBIC Central is Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; SBIC West is Osaka Small and Medium Business Investment & Consultation Co., Ltd. They are separate regional legal entities, not SBI Holdings.
+- Tokyo SBIC's 2025 AI/ML training page lists ChatGPT and Copilot. This is a training reference, not evidence of an OpenAI partnership.
+- The only credible ASK candidate is Permission's official ASK Token, deployed on Base and Polygon. Permission says its ASK wallet moved to Coinbase embedded-wallet infrastructure on September 22, 2026. No XRP or SBI relationship was established.
+- No reliable exact-phrase source for "actual capital" was identified; the SEC cash/in-kind reconciliation above is the substantive evidence.
+- One identity-linked Kamilah Stevenson TEDx Willow Creek video listing was verified: "Thinking Your Way Into Health". No personal channel ownership, additional videos or Camilla identity were verified.
+
+### Provenance and prediction gate
+- The Run166 web research captured publisher URLs, dates and extracted text, not byte-exact source responses. All raw_source_sha256 values are null. Do not treat these observations as immutable raw-source receipts or model-eligible data.
+- The current event registry still has 85 records and zero byte-exact raw-source hashes.
+- The public ingestion workflow remains on the integration branch; no live main-branch ingestion has been verified. Bybit tests remain mocked-response tests.
+- Hash-chained receipts and the point-in-time feature store are implemented as architecture, but independent WORM retention and an external timestamp anchor are not verified.
+- Four deterministic baselines and chronological evaluation controls exist; no candidate model has demonstrated out-of-sample superiority and no shadow evaluation has been executed.
+- Forecast status remains NOT_ISSUED; accuracy remains NOT_EVALUATED.
+
+### Integration blockers and next actions
+1. Verify exact-head CI for the Run166 commit, including full suite, dependency audit, wheel and fail-closed gate.
+2. Complete semantic review of the remaining 48 workflow called scripts and approximately 1,190 non-workflow paths.
+3. Obtain independent formal review and required approvals; #1662 remains draft with zero approving reviews.
+4. Resolve GitHub Pages automatic-publication authorization before any merge; no deployment is authorized.
+5. Resolve branch-protection visibility; the protection endpoint returned 403 and the fallback ruleset is disabled.
+6. Address the historical `.config/gh/hosts.yml` exposure through the credential owner. The file contents were not read and no rotation was performed.
+7. Capture byte-exact source receipts for the 85 event-registry records, then build synchronized historical spot/depth/derivatives data and shadow outcomes.
+8. Keep forecasts blocked until leakage-safe out-of-sample results justify issuance.
+
+No merge, main change, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or history rewrite occurred.
