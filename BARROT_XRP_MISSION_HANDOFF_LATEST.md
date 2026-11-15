@@ -7026,3 +7026,36 @@ A new primary-source reconciliation resolves the earlier uncertainty over Ripple
 - This is a regulatory/institutional adoption event, not evidence of incremental XRP spot demand. Raw HTTP bytes and SHA-256 receipts were not captured, so the event remains excluded from receipt-backed model features.
 
 Source hierarchy: OCC Corporate Applications Search (regulator filing status), Ripple first-party final-approval announcement, and the OCC I&D index (original conditional letter). The structured reconciliation is appended to the Run160 audit JSON.
+
+
+### Run160 institutional-capital addendum — Evernorth, Ripple and SBI (primary SEC/SBI records)
+
+New primary filings materially improve the “actual capital” ledger.
+
+**Evernorth XRP holdings and closing consideration**
+- Evernorth's October 30, 2026 SEC S-1 states approximately **473 million XRP held as of October 9, 2026**. SBI Holdings' November 2 presentation independently reports approximately 473 million XRP and identifies Evernorth as an SBI investee listed on Nasdaq on October 12.
+- The SEC S-1 states that $214.1 million in private-placement cash was used to buy **84,365,876 XRP**. That cash purchase is included in the approximately 473 million XRP holding; do not count the $214.1 million cash and the acquired XRP as two separate additions.
+- The Q3 10-Q states aggregate closing gross cash proceeds of approximately **$272.6 million**: $224.6 million from private-placement investments plus $48.0 million released from the SPAC trust account, before transaction expenses. Investors also contributed approximately **388,910,554 XRP in kind**.
+- The 473 million XRP total is approximately consistent with 388.91 million in-kind XRP plus 84.366 million purchased with cash. The XRP contributed in kind is not fiat cash and the SPAC trust release is not a new XRP market purchase.
+- The Q3 10-Q reports 346,284,972 XRP as of September 30, but a subsequent-event line reports 346,484,972 XRP transferred to Pathfinder after the business combination, a 200,000-XRP discrepancy. Preserve it unresolved; do not silently normalize it.
+
+**Post-closing actual cash versus financing capacity**
+- On October 13, Evernorth issued $30.0 million principal of 4% convertible senior PIK notes due 2031 and received approximately $29.0 million net after a $1.0 million advisor fee. Classify as debt, not equity; the filing does not establish that the proceeds were used to buy XRP.
+- Between October 12 and November 9, holders exercised 3,073,366 warrants at $11.50, and Evernorth issued the same number of shares for **$35.3 million gross cash proceeds**. 8,666,279 warrants remained. This is actual gross equity cash, but the filing does not establish XRP purchases with it.
+- The Cantor committed equity facility allows up to 5,218,935 shares at 97% of the applicable VWAP. Its resale registration became effective October 30; a non-refundable $0.5 million commitment fee was due. The company chooses whether to issue purchase notices, and proceeds depend on actual share sales. Treat the ELOC as capacity, not cash received; no draw/purchase amount was established in the reviewed filing.
+- The 10-Q's September 30 pre-closing historical position included $91,397 unrestricted cash, a $10.0 million net working-capital deficit, $185.6 million accumulated deficit, $273.2 million nine-month operating loss and $271.0 million digital-asset impairment. It reported $32.9 million nine-month net loss after a $240.3 million non-cash gain on refundable investor advances. These are pre-closing historical figures, not the post-closing cash balance. The 10-Q also reported no revenue and a $3.56 million payable to Pathfinder.
+
+**SBI ownership denominator reconciliation**
+- SBI Holdings' November 2 presentation (page 51) reports **36.1% voting rights** and **20.5% economic interest** in Evernorth. SBI explicitly says voting rights are calculated against Class A shares, while economic interest is calculated against total Class A and Class C shares.
+- Evernorth's October 30 S-1 reports a **39.9% SBI Group Ownership Percentage** as of October 9 and defines it as Class A and Class B shares beneficially held by SBI Group Holders divided by Outstanding Voting Shares. It is also a contractual maximum-ownership restriction. SBI Group Holders include SBI Venture Fund 2023A, SBI Venture Fund 2023B, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc., each controlled by SBI.
+- The 39.9% SEC contractual metric/cap is not interchangeable with SBI's 36.1% voting-rights and 20.5% economic-interest figures. The dates and denominators differ. Warrant exercises after October 9 may change the share denominator, but a full cap-table bridge was not established; do not assert that warrants alone explain the difference.
+
+**Implication**
+Evernorth is a real institutional XRP treasury with approximately 473 million XRP, a direct SBI group ownership position, Ripple's XRP contribution, actual post-close note and warrant proceeds, and an equity-line capacity. It is not evidence that all those cash proceeds became XRP spot purchases. For flow modeling, keep cash subscriptions, cash-to-XRP purchases, in-kind XRP, SPAC trust release, debt, warrant exercises and undrawn equity capacity as separate event types.
+
+Primary sources:
+- SEC S-1: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm
+- SEC Q3 Form 10-Q: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+- SBI Holdings 1H FY2026 presentation (Nov. 2, 2026): https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf
+
+Raw SEC/PDF response bytes and SHA-256 receipts were not captured in this web research pass. These facts are primary-source research, not yet receipt-backed model features.
