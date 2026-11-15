@@ -634,15 +634,16 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci():
+def test_run152_run153_run154_remain_historical_and_run155_is_latest_ci():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
     run154 = data["run154_snapshot"]
+    run155 = data["run155_snapshot"]
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run154"
+    assert data["latest_run_id"] == "Run155"
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
     assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
@@ -677,7 +678,7 @@ def test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci()
     assert run153["accuracy_status"] == "NOT_EVALUATED"
     assert run153["merge_decision"] == "NO_MERGE"
     assert run153["handoff_commit_ci_pending"] is True
-    assert run154["integration_head_at_capture"] == data["integration_pr"]["head_sha"]
+    assert run154["integration_head_at_capture"] == run154["full_suite"]["head_sha"]
     assert run154["full_suite"]["head_sha"] == run154["integration_head_at_capture"]
     assert run154["full_suite"]["passed"] == 3787
     assert run154["full_suite"]["failed"] == 1
@@ -700,7 +701,7 @@ def test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci()
     assert corrective["fail_closed_gate"]["passed"] is True
     assert corrective["correction"]["failure_classification_phrase_fixed"] is True
     assert corrective["correction"]["tests_weakened"] is False
-    assert final_verification["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
+    assert final_verification["head_sha"] == run154["final_verification"]["head_sha"]
     assert final_verification["head_sha"] == "956dcf0882e85555d0a62b51646cea5285ec5169"
     assert final_verification["run_id"] == 43684755093
     assert final_verification["full_suite"]["passed"] == 3788
@@ -718,13 +719,85 @@ def test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci()
     assert final_verification["fail_closed_gate"]["passed"] is True
     assert final_verification["fail_closed_gate"]["automatic_merge_enabled"] is False
     assert final_verification["correction"]["tests_weakened"] is False
-    assert latest["head_sha"] == final_verification["head_sha"]
-    assert latest["conclusion"] == "success"
-    assert latest["full_repository_suite"]["passed"] == 3788
-    assert latest["full_repository_suite"]["failed"] == 0
+    assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
+    assert latest["conclusion"] == "failure"
+    assert latest["full_repository_suite"]["passed"] == 3787
+    assert latest["full_repository_suite"]["failed"] == 1
     assert latest["full_repository_suite"]["exact_head"] is True
-    assert latest["failing_tests"] == []
-    assert "exact-head full-suite passed" in latest["failure_classification"].lower()
+    assert latest["failing_tests"] == ["tests/test_xrp_nine_platform_current_map_run73.py::test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci"]
+    assert "exact-head full-suite failed" in latest["failure_classification"].lower()
     assert run154["forecast_status"] == "NOT_ISSUED"
     assert run154["accuracy_status"] == "NOT_EVALUATED"
     assert run154["merge_decision"] == "NO_MERGE"
+
+    last_good = data["ci_evidence"]["last_fully_passing_full_suite"]
+    assert run155["integration_head_before_map_handoff_commit"] == data["integration_pr"]["head_sha"]
+    assert run155["full_suite"]["head_sha"] == run155["integration_head_before_map_handoff_commit"]
+    assert run155["full_suite"]["passed"] == 3788
+    assert run155["full_suite"]["failed"] == 0
+    assert run155["full_suite"]["skipped"] == 1
+    assert run155["full_suite"]["subtests"] == 19
+    assert run155["full_suite"]["exact_head"] is True
+    assert run155["dependency_audit"]["manifests"] == 6
+    assert run155["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run155["fail_closed_gate"]["passed"] is True
+    assert last_good["head_sha"] == run155["full_suite"]["head_sha"]
+    assert last_good["passed"] == 3788
+    assert last_good["failed"] == 0
+    assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
+    assert latest["full_repository_suite"]["skipped"] == 1
+    assert latest["full_repository_suite"]["subtests"] == 19
+    assert latest["full_repository_suite"]["coverage_percent"] == 64.02
+    assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
+    assert latest["dependency_audit"]["manifests"] == 6
+    assert latest["dependency_audit"]["known_vulnerabilities"] == 0
+    assert latest["fail_closed_gate"]["passed"] is True
+    assert latest["fail_closed_gate"]["automatic_merge_enabled"] is False
+    assert data["run155_test_correction"]["head_sha"] == latest["head_sha"]
+    assert data["run155_test_correction"]["tests_weakened"] is False
+    assert data["run155_test_correction"]["corrected_in_next_commit"] is True
+    assert data["run155_map_handoff_commit_ci"].startswith("FAILED_ON_6757c")
+    assert data["run155_forecast_status"]["forecast_status"] == "NOT_ISSUED"
+    assert data["run155_forecast_status"]["accuracy_status"] == "NOT_EVALUATED"
+    assert data["run155_no_external_actions"]["merge"] is False
+    assert data["run155_no_external_actions"]["deployment"] is False
+    assert data["run155_no_external_actions"]["external_model_transfer"] is False
+
+wer()
+    assert run154["forecast_status"] == "NOT_ISSUED"
+    assert run154["accuracy_status"] == "NOT_EVALUATED"
+    assert run154["merge_decision"] == "NO_MERGE"
+
+    last_good = data["ci_evidence"]["last_fully_passing_full_suite"]
+    assert run155["integration_head_before_map_handoff_commit"] == data["integration_pr"]["head_sha"]
+    assert run155["full_suite"]["head_sha"] == run155["integration_head_before_map_handoff_commit"]
+    assert run155["full_suite"]["passed"] == 3788
+    assert run155["full_suite"]["failed"] == 0
+    assert run155["full_suite"]["skipped"] == 1
+    assert run155["full_suite"]["subtests"] == 19
+    assert run155["full_suite"]["exact_head"] is True
+    assert run155["dependency_audit"]["manifests"] == 6
+    assert run155["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run155["fail_closed_gate"]["passed"] is True
+    assert last_good["head_sha"] == run155["full_suite"]["head_sha"]
+    assert last_good["passed"] == 3788
+    assert last_good["failed"] == 0
+    assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
+    assert latest["full_repository_suite"]["skipped"] == 1
+    assert latest["full_repository_suite"]["subtests"] == 19
+    assert latest["full_repository_suite"]["coverage_percent"] == 64.02
+    assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
+    assert latest["dependency_audit"]["manifests"] == 6
+    assert latest["dependency_audit"]["known_vulnerabilities"] == 0
+    assert latest["fail_closed_gate"]["passed"] is True
+    assert latest["fail_closed_gate"]["automatic_merge_enabled"] is False
+    assert data["run155_test_correction"]["head_sha"] == latest["head_sha"]
+    assert data["run155_test_correction"]["tests_weakened"] is False
+    assert data["run155_test_correction"]["corrected_in_next_commit"] is True
+    assert data["run155_map_handoff_commit_ci"].startswith("FAILED_ON_6757c")
+    assert data["run155_forecast_status"]["forecast_status"] == "NOT_ISSUED"
+    assert data["run155_forecast_status"]["accuracy_status"] == "NOT_EVALUATED"
+    assert data["run155_no_external_actions"]["merge"] is False
+    assert data["run155_no_external_actions"]["deployment"] is False
+    assert data["run155_no_external_actions"]["external_model_transfer"] is False
+
