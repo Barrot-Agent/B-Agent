@@ -8339,3 +8339,81 @@ The schema 1.1.0 map is refreshed to Run167 while preserving its historical snap
 The regression contract now preserves Run165 as historical and asserts Run167 as current. One new test checks the Run167 workflow review, XRPL stablecoin source disagreement and forecast-safety boundary. The map/test/handoff update commit requires its own exact-head CI; the parent-head pass is not transferred.
 
 No main write, merge, deployment, secret rotation, external-model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run169 — exact-head regression diagnosis, current XRP snapshot and security hold
+
+Captured: 2026-11-15T17:08:28Z
+
+### Repository and integration state — EXECUTED
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Existing integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before this Run169 correction: `f4650b14789a3e535cc58e9f9efc4e6fd479d217`.
+- Complete recursive trees: main 1,393 entries; integration 2,499 entries; neither tree is truncated. The 216-byte `.config/gh/hosts.yml` path is absent from main and the active integration branch.
+- PR #1662 is still open and draft: 2,514 commits ahead, zero behind, 1,256 changed files, 48 changed workflow files, 1,208 non-workflow paths, zero formal approvals/reviews and zero review threads.
+- All four open-PR inventory pages were retrieved: 373 total, 361 drafts, 12 non-drafts, 365 target main and eight target other branches.
+- No new branch or PR was created. The existing integration branch was used.
+
+### Exact-head CI failure and correction — EXECUTED
+The full repository suite on `f4650b14789a3e535cc58e9f9efc4e6fd479d217` collected 3,799 items: 3,796 passed, two failed, one skipped, 19 subtests passed, 64.02% inclusive coverage. The two failures were confined to `tests/test_xrp_nine_platform_current_map_run73.py` and both raised `KeyError: 'head_sha'`.
+
+Root causes:
+1. `run168_ci_evidence.full_suite` omitted the exact tested head even though Run168's snapshot recorded it as `fd6ea9a759874f9d0043a4eeda87668696a8fcb9`.
+2. A historical Run168 follow-up assertion compared its recorded head to the top-level current PR head. That assertion became invalid when the PR advanced to `f4650b14789a3e535cc58e9f9efc4e6fd479d217`; the historical record must be compared to its own full-suite head.
+
+The correction restores the Run168 `head_sha` and exact-head marker, binds the historical follow-up to its own CI head, updates the current PR snapshot to `f4650b14789a3e535cc58e9f9efc4e6fd479d217`, and adds Run169 regression coverage. No test was removed, disabled or weakened. The correction commit's exact-head full suite is pending; the 3,796/2 failure result above remains the verified pre-correction result.
+
+Other checks on `f4650b14789a3e535cc58e9f9efc4e6fd479d217`:
+- Six-manifest push and PR dependency audits passed; zero known vulnerabilities.
+- Push and PR fail-closed gates passed.
+- PR CI and Pages build-only validation passed; PR-event core/full-suite jobs were skipped by the integration-branch condition.
+
+### Current spot observations — EXECUTED, DESCRIPTIVE ONLY
+Capture: 2026-11-15T17:08:28Z
+- OKX XRP-USDT: last 0.9507 USDT, bid 0.9505, ask 0.9506; 24-hour volume 95.122M XRP. Provider event timestamp 17:04:22.671 UTC; age 245.329 seconds at capture.
+- Kraken XRP/USD: last 0.9518 USD, bid 0.9518, ask 0.95187; 24-hour volume 73.313M XRP. The public ticker did not supply an exchange event timestamp.
+- OKX USDT/USD basis: 0.99959, provider event time 16:33:46.054 UTC. Its age was 2,081.946 seconds and the same-venue basis skew was 1,836.617 seconds, exceeding the 300-second component-age and 60-second skew gates. USD normalization is rejected.
+- OKX rolling 24-hour open (0.9551) and UTC-day open (0.9145) are distinct fields. Kraken's open field (0.91378) is not assumed to have the same window semantics.
+- Only top-of-book observations were available. Bybit returned HTTP 403 through the research fetch path; Kraken depth and Coinbase Exchange endpoints were inaccessible. No synchronized full-depth L2 snapshot was admitted.
+- No raw HTTP bytes or SHA-256 publisher-payload receipts were captured. These web observations are research-only and model-ineligible.
+
+### Derivatives disagreement
+- Liqwall, as of 13:42 UTC: OI $1.04B (-3.6%/24h), average funding -0.0114%/8h, $42.2M liquidations ($37.9M long, $4.3M short), 72.8% of Binance position accounts long.
+- CoinGlass, as of 15:16 UTC: OI $1.99B (-8.42%/24h; coin-denominated OI -5.50%), weighted funding -0.0087%/8h, $45.42M liquidations with 90% long, $4.81B futures volume versus $1.30B spot volume.
+- The OI totals differ materially by provider coverage/universe and are not averaged. Both snapshots indicate falling OI, negative funding and long-heavy liquidations; neither establishes the next price direction.
+
+### ETF and stablecoin reconciliation
+- Alpha Finance's five-fund view through November 13 reports a $1.1M November 13 outflow and a $581.7K 30-session outflow.
+- XRP Insights' six US spot funds plus BITW reports -6.08M XRP for November 9–13 (about -$6.48M) while November 13 alone was +3.40M XRP. This is issuer-holdings change, not necessarily direct cash subscriptions.
+- CryptoKeyhole's November 13 figure is partial (three of four daily-tracked funds: -9,967 XRP); November 12 is its latest complete day (+4.337M XRP). Different fund cohorts and partial-day status are not averaged.
+- Ripple's transparency dashboard reports $2.6899B RLUSD circulating against $2.8265B reserves as of November 12, derived coverage about 105.08%. The latest visible CPA attestation is September 2026; the November 12 balance is not a November attestation.
+
+### Institutional and identity findings
+- Ripple/Coinbase: RLUSD is on Coinbase Prime, Exchange and retail with XRPL, Base and Ethereum support. Coinbase Global Exchange collateral support was described as future, not live.
+- Ripple/BNY: BNY supports XRP and RLUSD custody and is the primary RLUSD reserve custodian. Tokenized trade-finance use cases were exploratory.
+- Circle/SBI: Circle and SBI each own 50% of Circle SBI Japan K.K.; SBI VC Trade distributes USDC in Japan. SBI's Circle Arc validator participation and JPYSC/USDC strategy are separate from XRP settlement.
+- PNC/Coinbase: the November 9 limited pilot accepts incoming USDC on Ethereum and converts it to USD for PNC accounts; it is not an XRP payment rail.
+- SBIC East, Central and West remain separate regional SME investment companies, not SBI Holdings. SBIC East's June 2025 ChatGPT/Copilot course is training, not an OpenAI partnership.
+- No new canonical XRP-linked ASK Coin issuer was verified. The Permission ASK token remains a separate asset.
+- The candidate Kamilah Stevenson YouTube channel still lacks a first-party identity cross-link. No videos were attributed or inventoried.
+
+### Potential credential exposure — VERIFIED BY PATH ONLY
+The path `.config/gh/hosts.yml` is present in 17/17 complete PR branch-tip trees (15 open PRs and two closed PRs), with the same 216-byte Git blob SHA `f58b27f14436088db99662d3a45c59b8437ec3a1`. It is absent from main and the active integration branch. The file contents were not read. Provider-side OAuth revocation is not verified. Treat this as a potential GitHub CLI credential exposure: the owner should inspect/revoke any GitHub CLI OAuth token represented by that historical file. No secret was read or rotated by this run. The affected PRs are #1653, #1650, #1649, #1648, #1647, #1646, #1645, #1644, #1643, #1642, #1640, #1320, #1318, #1317, #1269, #1255 and #1254.
+
+### Workflow, platform and governance status
+- All 48 changed workflow definitions have been triaged; called-script semantic review remains incomplete.
+- Main still contains legacy Barrot Sync and Ask Barrot writers. Integration keeps these quarantined. Main Pages build remains failed at `GLOBAL_STATE_MANIFEST.md:6456`; no publication authorization.
+- ChatGPT/GitHub connector is verified in this session but overprivileged (admin/maintain/push/pull/triage). Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal PR approval; Hugging Face's last health state was BUILD_ERROR; Kaggle is untested; Databricks previously returned HTTP 403. No external-model dispatch or nine-platform evidence exchange occurred.
+- Main reports protected=true, but detailed branch-protection access returns HTTP 403; visible required contexts are empty; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; integration is unprotected.
+- Backlog: #1662 blocked active integration draft; #1661/#1660 supersession candidates with unique paths retained; #1643/#1642 path-overlap candidates awaiting semantic comparison; #1640 diverged with unique workflow paths; #1653 and the remaining non-draft safety/dependency PRs remain unique/unreviewed. No source PR was closed.
+
+### Forecast and action status
+Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`. No paper trade, real-money action or directional forecast.
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, funds transfer, force-push, history rewrite or destructive worktree operation occurred.
+
+### Next concrete actions
+1. Verify the new Run169 correction commit's exact-head full repository suite.
+2. Complete semantic review of the 1,208 non-workflow paths and the called scripts behind 48 workflow changes.
+3. Resolve independent review, least-privilege access and branch-protection visibility.
+4. Address the historical GitHub CLI credential-path exposure through provider-side review/revocation; do not rewrite old branches.
+5. Continue synchronized historical spot/L2/derivatives/flow/collateral data and byte-exact receipts before model admission.

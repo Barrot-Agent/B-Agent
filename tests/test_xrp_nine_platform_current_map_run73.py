@@ -632,7 +632,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_is_current():
+def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_remain_historical_while_run168_is_historical_and_run169_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -643,7 +643,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run168"
+    assert data["latest_run_id"] == "Run169"
     run165 = data["run165_snapshot"]
     assert run165["main_sha"] == data["repository_state"]["main_sha"]
     assert run165["pr_number"] == 1662
@@ -676,7 +676,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_and_run167_rema
     assert run168_suite["tests_passed"] == 3797
     assert run168_suite["failed"] == 0
     followup = data["run168_followup_snapshot"]
-    assert followup["integration_head_before_followup_commit"] == data["integration_pr"]["head_sha"]
+    assert followup["integration_head_before_followup_commit"] == followup["ci"]["full_repository_suite"]["head_sha"]
     assert followup["ci"]["full_repository_suite"]["failed"] == 12
     assert followup["ci"]["full_repository_suite"]["exact_head"] is True
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
@@ -1040,16 +1040,16 @@ def test_run167_platform_map_workflow_review_and_xrpl_stablecoin_evidence_remain
     assert defillama["raw_sha256"] is None and defillama["model_eligible"] is False
 
 
-def test_run168_current_snapshot_security_hold_and_identity_resolution_are_explicit():
+def test_run168_historical_snapshot_security_hold_and_identity_resolution_are_explicit():
     data = load_current()
-    assert data["latest_run_id"] == "Run168"
+    assert data["latest_run_id"] == "Run169"
     initial = data["run168_snapshot"]
     assert initial["main_sha"] == data["observed_main_sha"]
     assert initial["integration_head_before_run168_commit"] == data["run168_ci_evidence"]["full_suite"]["head_sha"]
     assert data["run168_ci_evidence"]["full_suite"]["tests_passed"] == 3797
     assert data["run168_ci_evidence"]["full_suite"]["failed"] == 0
     followup = data["run168_followup_snapshot"]
-    assert followup["integration_head_before_followup_commit"] == data["integration_pr"]["head_sha"]
+    assert followup["integration_head_before_followup_commit"] == followup["ci"]["full_repository_suite"]["head_sha"]
     assert followup["ci"]["full_repository_suite"]["passed"] == 3785
     assert followup["ci"]["full_repository_suite"]["failed"] == 12
     assert followup["ci"]["full_repository_suite"]["exact_head"] is True
@@ -1083,3 +1083,41 @@ def test_run168_current_snapshot_security_hold_and_identity_resolution_are_expli
     assert identity["kamilah_stevenson"]["video_inventory_status"] == "NOT_INVENTORIED_IDENTITY_LINK_UNVERIFIED"
     assert data["forecast_status"] == "NOT_ISSUED"
     assert data["accuracy_status"] == "NOT_EVALUATED"
+
+
+def test_run169_exact_head_regression_market_security_and_forecast_gates():
+    data = load_current()
+    assert data["latest_run_id"] == "Run169"
+    run = data["run169_snapshot"]
+    assert run["main_sha"] == data["observed_main_sha"]
+    assert run["integration_head_before_run169_commit"] == data["integration_pr"]["head_sha"]
+    assert run["pr_number"] == 1662
+    assert run["pr_changed_files"] == 1256
+    assert run["open_prs"] == 373
+    ci = data["run169_ci_evidence"]["pre_correction"]
+    assert ci["head_sha"] == run["integration_head_before_run169_commit"]
+    assert ci["exact_head"] is True
+    assert ci["passed"] == 3796
+    assert ci["failed"] == 2
+    assert ci["skipped"] == 1
+    assert ci["failing_tests"] == data["run169_ci_evidence"]["pre_correction"]["failing_tests"]
+    correction = data["run169_ci_evidence"]["corrective_commit"]
+    assert correction["tests_removed"] == 0
+    assert correction["tests_disabled"] == 0
+    assert correction["tests_weakened"] is False
+    market = data["run169_market_research"]
+    assert market["point_in_time_eligibility"] == "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE"
+    assert market["raw_http_bytes_captured"] is False
+    assert market["spot"]["same_venue_basis_skew_seconds"] > market["spot"]["allowed_basis_skew_seconds"]
+    assert market["spot"]["usd_normalization_admitted"] is False
+    assert market["derivatives"]["reconciliation"].endswith("do not establish direction.")
+    security = data["run169_security_hold"]
+    assert security["branch_tips_checked"] == 17
+    assert security["branch_tips_containing_path"] == 17
+    assert security["same_blob_sha"] == "f58b27f14436088db99662d3a45c59b8437ec3a1"
+    assert security["size_bytes"] == 216
+    assert security["credential_contents_read"] is False
+    assert security["provider_side_revocation_verified"] is False
+    assert data["forecast_status"] == "NOT_ISSUED"
+    assert data["accuracy_status"] == "NOT_EVALUATED"
+    assert all(value is False for value in data["run169_no_external_actions"].values())
