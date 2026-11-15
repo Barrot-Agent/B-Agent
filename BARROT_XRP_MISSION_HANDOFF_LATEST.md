@@ -5730,3 +5730,187 @@ Primary sources:
 - [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), especially lines 1493-1497, 1531-1536, 1591-1595, 1684-1688 and 2117-2130.
 - [Ripple National Trust Bank OCC record](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2).
 - [Coinbase National Trust Company OCC record](https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2).
+
+
+## Run152 — 2026-11-15 05:04 UTC — exact-head verification, live XRP basis, institutional rails and repository reconciliation
+
+### Repository state and integration
+
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head at capture: `2e9ddebe2220025b0f9ae731a304c06580c73742` (2,454 commits ahead, zero behind).
+- Existing PR #1662 remains open, draft and mergeable according to GitHub's conflict indicator. It contains 1,238 changed files, 377,359 additions and 6,309 deletions.
+- Recursive trees: main 1,393 entries; integration 2,480 entries. Main has 97 test files; integration has 461. The integration tree preserves current main's MCP synchronization, SHRM 2.0, OpenCode V2, import repairs, Kaggle import-safety and producer-mode work.
+- Main still lacks `barrot_agent/data/missions/primary_mission.json` and `.github/workflows/xrp-public-ingestion.yml`; both exist on integration. The scheduled collector is main-ref-only and has not run on main.
+- No new branch or PR was created. Main was not modified.
+
+### Exact-head CI on the captured parent
+
+The exact integration head `2e9ddebe2220025b0f9ae731a304c06580c73742` passed:
+
+| Check | Result |
+|---|---|
+| Full repository suite | 3,787 passed, 0 failed, 1 skipped, 19 subtests |
+| Inclusive package coverage | 64.02% against 62% floor |
+| Legacy-core coverage | 77% against 70% floor |
+| Wheel build | Passed |
+| Installed Barrot V3/primary mission verification | Passed |
+| Core test job | 485 passed, 0 failed, 8 subtests |
+| Six-manifest dependency audit | Passed; zero known vulnerabilities reported |
+| Push and PR fail-closed gates | Passed |
+| PR Pages validation | Passed |
+
+Evidence:
+- Full suite: https://github.com/Barrot-Agent/B-Agent/actions/runs/43676907682
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43676907674
+- PR dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43676912503
+- Push fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43676907741
+- PR fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43676912533
+- PR Pages validation: https://github.com/Barrot-Agent/B-Agent/actions/runs/43676912548
+
+The PR-event core/full-suite jobs are skipped by the integration-branch condition; the exact-head push run above executed the full suite. The documentation/test commit created by Run152 requires a new exact-head run. Do not reuse the parent-head result for that commit.
+
+Coverage clarification: main's `pyproject.toml` sets a 70% floor but its current CI command is `pytest tests -v --no-cov`, so that run did not enforce coverage. Integration measures the broader `barrot_agent`, `directive_platform` and `data` source set at 62%, while retaining a separate 70% legacy-core floor. The 64.02% inclusive and 77% legacy-core results are separate measurements.
+
+### Main-branch workflow health
+
+- Main CI on `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`: 848 passed, 0 failed, 1 skipped, 8 subtests; run 43650499432.
+- Main Pages run 43650499344 failed with a Liquid syntax error at `GLOBAL_STATE_MANIFEST.md:6456`. Publication authorization remains unresolved.
+- Main Barrot Sync run 43650499411 reports workflow success, but the log shows `ModuleNotFoundError: No module named 'rich'`, `b_agent.py sync skipped`, and `git push || true`. The workflow conclusion is false-green; actual synchronization did not occur.
+- Main Cross Analysis run 43678594116 succeeded as a read-only artifact workflow.
+- Integration keeps automatic Barrot Sync quarantined. No deployment or synchronization was triggered.
+
+### XRP spot, quote basis and liquidity
+
+Direct public exchange API observations were retrieved at approximately 05:04:34 UTC. No raw bytes or SHA-256 receipts were captured by the web retrieval, so all observations below are research-only and model-ineligible.
+
+| Source | Observation | Limitation |
+|---|---:|---|
+| OKX XRP-USDT | $0.9731; bid $0.9730 / ask $0.9731 | Event timestamp 04:44:20.573 UTC; 1,213 seconds old at capture |
+| Kraken XRP/USD | $0.97820; bid $0.97711 / ask $0.97744 | No provider event timestamp |
+| OKX USDT-USD | $0.99957 | Event timestamp 05:03:05.052 UTC |
+| Kraken USDT/USD | $0.99946 | No provider event timestamp |
+
+OKX's one-level ticker spread is approximately 1.03 basis points and its top-level bid-size share is approximately 68.48%. This is one level only, not full-depth liquidity. The OKX XRP quote is stale beyond the 300-second gate. The same-venue XRP-USDT/USDT-USD timestamps are 18m44s apart, exceeding the 60-second basis gate. The approximate normalized OKX price is $0.97268, about 0.56% below the Kraken observation, but the inputs are asynchronous. This is not executable arbitrage evidence.
+
+OKX and Kraken depth endpoints were inaccessible through the research retrieval path. No synchronized multi-venue L2 snapshot was admitted.
+
+The integration already implements same-venue OKX quote-basis normalization with a 60-second event-time skew and 300-second component-age gate. The live snapshot failed those gates and was excluded; no code change was needed.
+
+### Derivatives and positioning
+
+Liqwall's latest captured pages show:
+- As of 04:52 UTC: XRP reference price $0.9764; average funding -0.0044% per eight hours; Binance funding -0.0032%.
+- As of 04:42 UTC: aggregate open interest $1.03B, down 3.3% in 24 hours.
+- As of 05:02 UTC: 72.9% of Binance XRP-position accounts long; account ratio 2.69; top traders' positions 63.1% long.
+- As of 04:42 UTC: $42.9M XRP liquidations, $39.4M long and $3.6M short.
+
+TradRadar's older November 14 20:00 UTC seven-exchange snapshot reports $1.40B open interest, down 7.25% in 24 hours, -0.0047% funding, at least $24.71M liquidations, and 78.1% long accounts across its five-exchange ratio cohort.
+
+The OI estimates ($1.03B vs $1.40B) are not averaged; provider venue coverage and methodology differ. Negative funding and long-heavy liquidations show a deleveraging/positioning imbalance, not a reliable next-price direction.
+
+### ETF flow reconciliation
+
+- Alpha Finance through the November 13 session: five funds; -$1.1M on November 13, -$19.1M over the last seven sessions, -$581.7K over 30 sessions, cumulative net inflows $1.71B.
+- XRP Insights as of November 13: six US spot ETFs plus BITW; November 9–13 holdings change -6,078,606 XRP (approximately -$6.5M); total holdings 1,189,102,081 XRP. Its flow is the day-over-day change in issuer-reported holdings; flow-excluded funds count as zero.
+
+The fund universes and units differ. Holdings changes are not direct cash-subscription records. Do not average these series or infer investor identity.
+
+### New institutional network findings
+
+1. **Ripple/Coinbase:** RLUSD is live on Coinbase Prime, Exchange and Retail, with XRPL, Base and Ethereum deposit/withdrawal support. Coinbase Global Exchange collateral support was described as future, not live.
+2. **Ripple/Standard Chartered/LMAX:** Standard Chartered RLUSD custody on XRPL is live through its DFSA-regulated DIFC branch. RLUSD eligibility as collateral and collateral mirroring with LMAX are planned. This is RLUSD collateral, not XRP collateral.
+3. **Ripple/C2FO:** The October 27 initiative moves C2FO Instant Pay financing/settlement activity onto XRPL using RLUSD. No live transaction volume was reported.
+4. **Ripple/Robinhood:** RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; institutional settlement on XRPL using RLUSD, Ripple Treasury and Ripple Prime integrations were announced. RLUSD settlement does not establish XRP as the settlement asset.
+5. **Ripple/BNY:** BNY supports XRP and RLUSD custody on its Digital Asset Custody platform and remains primary RLUSD reserve custodian. Tokenized trade-finance use cases remain exploratory.
+6. **Ripple/SBI:** RLUSD launched in Japan through SBI VC Trade after JFSA approval. SBI Holdings/SBI VC Trade are distinct from SBIC East/Central/West; RLUSD use does not establish XRP is required.
+7. **Ripple National Trust Bank:** OCC Corporate Applications Search lists control 2025-Charter-342347 as consummated/effective October 26, 2026. The public OCC letter located is preliminary Conditional Approval #1359 from December 12, 2025; the CAS status is the primary evidence of consummation/effectiveness. The national trust bank is not the RLUSD legal issuer; Standard Custody & Trust Company, LLC remains the issuer entity identified in RLUSD terms.
+8. **Circle/SBI:** Circle SBI Japan K.K. is 50/50 owned by Circle and SBI Holdings; Circle controls and consolidates the VIE. It is not SBIC and is not SB OAI Japan.
+9. **Coinbase/PNC/Circle:** PNC's pilot uses Circle USDC with automatic USD conversion; XRP settlement is not established.
+10. Ripple's October 28 claims of approximately $900M annualized product revenue run-rate, over $16T in 2025 transactions enabled across Ripple products, 1,700+ institutions and 85+ licenses are issuer-reported corporate metrics, not independently audited XRP volume.
+
+### Identity and exact-phrase research
+
+- SBIC East, SBIC Central and SBIC West are the Tokyo, Nagoya and Osaka regional SME investment companies; they are not SBI Holdings.
+- SBIC East's official June 12–13, 2025 AI/ML training course included ChatGPT and Copilot. This explains a plausible SBIC/ChatGPT phrase source; it is not an OpenAI commercial partnership.
+- SB OAI Japan is a separate 50/50 OpenAI/C Holdings joint venture; C Holdings is owned 51% by SoftBank Corp and 49% by SoftBank Group Corp.
+- Permission's ASK token is documented on Base and Polygon. No canonical XRPL ASK issuer was verified.
+- “Actual capital” remains a non-standard phrase; cash subscriptions, XRP in-kind contributions, purchases, debt, warrants, conditional facilities and secondary resales remain separate categories.
+- Six Kamilah-attributed YouTube candidates were added to a quarantine list, not the verified own-channel inventory. Candidate handles include `@drkamilahstevenson` and `@KamilahStevensonXrpStocks`. A Linktree profile and third-party transcript bylines are not sufficient identity proof; some transcripts say “Camila”. Camilla, Camila and Kamilah remain unmerged identities. Verified personal-channel inventory remains zero.
+
+### Prediction-engine state
+
+Implemented on integration:
+- 51 source definitions: 46 hourly, three weekly CFTC, two excluded noncommercial XRPL node sources.
+- Read-only scheduled ingestion workflow, SHA-256 raw-source receipts, receipt-chain prototype and SQLite point-in-time feature store.
+- Four deterministic baselines: naive, momentum, mean reversion and Gaussian volatility normal.
+- Chronological walk-forward evaluation with horizon-sized embargo.
+- Temporal calibration, PSI drift diagnostics and source-independence groups.
+- Paired temporal and source-clustered moving-block bootstrap implementation.
+- Fail-closed forecast ledger and Ed25519 evaluator attestation.
+- Same-venue quote-basis normalization and freshness/skew gates.
+
+Candidate-readiness policy requires 10,000 bootstrap replicates, 95% familywise confidence, 99.375% adjusted individual confidence, eight baseline/metric comparisons, at least five independent source clusters and five origins per cluster, at least 100 out-of-sample and 100 shadow samples, and weighted calibration error no greater than 0.05.
+
+Still not production-verified:
+- No trained XRP-specific candidate.
+- No demonstrated superiority over all four baselines.
+- No independent shadow-outcome cohort.
+- No synchronized historical multi-venue spot/L2/derivatives/exchange-flow/collateral history.
+- Overlap-adjusted effective sample size does not eliminate residual serial dependence or shared-source correlation.
+- No production evaluator key, independent WORM archive or trusted timestamp anchor.
+- The 20-event curated timeline has no raw publisher hashes and does not yet constitute an automated event feed.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.**
+
+### Nine-platform coordination
+
+| Platform | Verified status |
+|---|---|
+| ChatGPT | GitHub authenticated; admin/maintain/push/pull/triage permissions are overprivileged |
+| Claude | Unverified |
+| Grok | Unverified |
+| Gemini | Unverified |
+| Copilot | No formal PR approval |
+| Codex | Unverified |
+| Hugging Face | No verified deployment; prior BUILD_ERROR |
+| Kaggle | Untested; no submission |
+| Databricks | Previous HTTP 403; no write |
+
+No independent model task exchange, external-model dispatch or red-team quorum occurred.
+
+### PR backlog and merge decision
+
+The current open inventory is 373 PRs: 361 drafts and 12 non-drafts. PR #1662 is the only PR record whose base SHA snapshot matches current main; 372 others report older base SHA snapshots and require fresh ancestry/mergeability checks. That metadata alone does not prove a duplicate or authorize closure.
+
+Selected path overlaps:
+- #1661: 1,070/1,072 paths overlap; preserve two unique workflow paths.
+- #1660: 970/972 overlap; preserve two unique workflow paths.
+- #1643: 670/670 overlap, 661 identical blobs and nine differing blobs.
+- #1642: 7/7 overlap, all seven blobs differ.
+- #1640: 278/280 overlap, 217 identical blobs, 63 differing blobs and two unique paths.
+- #1653: six unique paths and eight unresolved review threads; blocked.
+- #1614: 27 unique paths.
+- #1615: 13 unique paths.
+- #1269: eight unique paths.
+- #1655: three unique paths.
+- #1659: four unique paths.
+- #1641: three unique paths.
+- #1611: one unique path.
+
+Path overlap is not semantic duplication. No source PR was closed.
+
+**NO MERGE.** PR #1662 remains draft with zero formal reviews, approvals or review threads. Main is marked protected by repository metadata, but detailed branch-protection inspection returns HTTP 403; visible required contexts are empty. Fallback ruleset 10863829 is disabled. CODEOWNERS assigns all paths to `@Barrot-Agent`, not an independent reviewer. The GitHub connector has admin, maintain, push, pull and triage permissions. Main Pages publication remains an automatic side effect without authorization. Semantic reconciliation of 1,190 non-workflow paths remains incomplete.
+
+### Next concrete actions
+
+1. Run exact-head full-suite, wheel, installed-mission, dependency and fail-closed checks on the Run152 documentation/test commit.
+2. Reconcile the remaining 1,190 non-workflow paths; prioritize security, runtime, dependency, ingestion, forecast and public-web paths.
+3. Resolve independent review, least-privilege access, branch protection and required-check visibility.
+4. Fix main's Barrot Sync false-green and Pages Liquid failure without authorizing deployment.
+5. Only after a compliant merge, verify the read-only scheduled XRP collector on main and verify receipt continuity.
+6. Build synchronized historical spot, L2, derivatives, exchange-flow and collateral datasets; address residual dependence and source correlation.
+7. Train an XRP candidate only after the dataset supports leakage-safe out-of-sample evaluation and independent shadow outcomes.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+

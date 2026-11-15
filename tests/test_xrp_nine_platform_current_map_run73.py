@@ -633,3 +633,23 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["institutional_and_capital"]["rlusd"], dict)
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
+
+def test_run152_snapshot_tracks_exact_parent_head_ci_and_forecast_boundary():
+    data = load_current()
+    run = data["run152_snapshot"]
+    assert data["latest_run_id"] == "Run152"
+    assert run["integration_head_at_capture"] == data["integration_pr"]["head_sha"]
+    assert run["integration_head_at_capture"] == data["repository_state"]["integration_head_before_current_map_commit"]
+    assert run["main_sha"] == data["repository_state"]["main_sha"]
+    assert run["full_suite"]["head_sha"] == data["ci_evidence"]["latest_attempt"]["head_sha"]
+    assert run["full_suite"]["passed"] == 3787
+    assert run["full_suite"]["failed"] == 0
+    assert run["full_suite"]["exact_head"] is True
+    assert run["changed_workflow_files"] == 48
+    assert run["patch_scan_workflows_reviewed"] == 50
+    assert run["open_pr_inventory"]["total"] == 373
+    assert run["forecast_status"] == "NOT_ISSUED"
+    assert run["accuracy_status"] == "NOT_EVALUATED"
+    assert run["merge_decision"] == "NO_MERGE"
+    assert run["market"]["raw_source_sha256_captured"] is False
+
