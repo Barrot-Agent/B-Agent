@@ -4680,3 +4680,36 @@ PR #1662 remains draft with zero formal reviews and zero review threads. `.githu
 Structured audit with exact raw API response text, SHA-256 receipts, source links, current main/integration SHAs, CI evidence, workflow review, institutional/market evidence and forecast boundary: [Run145 audit](research/xrp_intelligence/20261115T000748Z-run145-integration-market-stablecoin-ci-audit.json).
 
 Next concrete action: finish semantic review of all 1,226 paths, resolve independent review/least-privilege/branch protection, correct main's false-green Barrot Sync and Pages failure, then merge the read-only XRP ingestion only after exact-head full-suite, dependency/security, independent approvals and all required checks pass. Verify actual scheduled ingestion runs on main before treating it as operational.
+
+
+## Run145 institutional-network addendum — official SBI first-half FY2026 presentation
+
+A deeper primary-source review of SBI Holdings' November 2, 2026 investor presentation changes the institutional relationship map materially. SBI's digital-asset strategy is explicitly multi-rail, not XRP-exclusive.
+
+### SBI / Startale / SMFG / JPYSC
+SBI Holdings' official presentation identifies **SBI Startale Marketing** as the JPYSC-adoption vehicle with ownership of **SBI Holdings 55%, Startale 40%, SMFG 5%**. SMFG's 5% is an equity participation in this JPYSC venture, not a stake in SBI Holdings, Circle SBI Japan K.K. or Ripple. The cash amount for that 5% is not disclosed in the cited presentation. The stated objective includes exploring JPYSC integration into SMFG's Olive ecosystem. [SBI first-half FY2026 presentation, pages 79–80](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf) <Cite ref="turn762752view2"/>
+
+SBI and Startale joined Open Standard and are considering a JPYSC/OUSD interoperability PoC. Coinbase is named among more than 140 participating companies. SBI explicitly describes this as a proposed proof of concept, not a launched commercial rail. [SBI announcement, October 16](https://www.sbigroup.co.jp/news/2026/1016_16665.html) <Cite ref="turn575212search2"/>
+
+### SBI's other network relationships
+The same official SBI presentation documents:
+- BlackRock collaboration exploration for tokenized money-market funds tradable using JPYSC.
+- An Ondo strategic partnership/basic agreement exploring JPYSC for settlement and collateral, Japanese tokenized assets and distribution of Ondo products in Japan.
+- SBI Solana Global with Solana Foundation for stablecoins and tokenized RWAs.
+- SBI XDC and Shinhan Card exploring cross-border stablecoin payments on XDC Network.
+- SBI Digital Practice and Kyobo Life testing JPY-stablecoin cross-border transactions on Canton.
+- SBI Holdings/SBI EVERSPIN with KB Kookmin Card/Everspin exploring transactions linking Japanese AI agents with Korean payment services.
+These are distinct networks and exploratory/PoC initiatives. They are not evidence of XRP settlement or production transaction volume. <Cite ref="turn762752view0"/>
+
+### Critical RLUSD distribution constraint at SBI VC Trade
+SBI VC Trade's official June 24 RLUSD launch announcement explicitly says its VCTRADE service supports **Ethereum only** for RLUSD deposits and withdrawals; non-Ethereum RLUSD is not accepted at that service. The service classifies RLUSD as a Japanese-law Type 4 electronic payment instrument; the company notes this is its Japanese-law treatment, not a U.S. trust-beneficial-interest classification. <Cite ref="turn154707view0"/>
+
+This is a material counterexample to the assumption that SBI's RLUSD distribution automatically adds RLUSD liquidity to XRPL or increases XRP demand. Ripple's RLUSD is multi-chain, and Coinbase's October 28 listing supports XRP Ledger, Base and Ethereum, but the SBI VC Trade product initially uses Ethereum only. Coinbase Global Exchange collateral support was announced as a future follow-up, not a live launch capability. <Cite refs={['turn710145search1','turn154707view0']}/>
+
+### Other direct ownership and commercial links
+- SBI Holdings confirms bitbank became a wholly owned subsidiary on October 1, 2026. This changes SBI's exchange footprint but does not prove an XRP-volume increase. <Cite ref="turn898480search10"/>
+- Circle's Q3 2026 SEC filing confirms Circle and SBI Holdings each contributed approximately $1.5M to Circle SBI Japan K.K.; each owns 50%, but Circle controls and consolidates the VIE. The filing reports no significant operating results to date. This is distinct from SBI Startale Marketing. <Cite ref="turn154707view4"/>
+- Circle names SBI Group in Arc's founding-validator cohort and Coinbase among Arc exchange/access integrations. Arc is a separate L1 with USDC gas. <Cite ref="turn213292view4"/>
+- PNC's Coinbase pilot receives Circle USDC and automatically converts it to USD; this is a USDC rail, not XRP settlement. <Cite ref="turn110013news79"/>
+
+**Conclusion:** SBI's institutional network spans RLUSD, USDC, JPYSC, Circle Arc, Open Standard/OUSD, Solana, XDC, Canton and tokenized funds. These relationships establish real institutional stablecoin and tokenization activity. They do not establish that XRP is the settlement asset for those rails. Keep issuer, network, custody, collateral, distribution and actual transaction-volume evidence as separate graph edges.

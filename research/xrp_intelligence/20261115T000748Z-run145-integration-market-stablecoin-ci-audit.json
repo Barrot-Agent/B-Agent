@@ -435,5 +435,145 @@
     "Establish independent WORM receipts and trusted timestamps; then merge the read-only XRP ingestion workflow only after all merge requirements pass and verify actual scheduled main runs.",
     "Collect synchronized historical XRP spot/L2/derivatives/ETF/exchange-flow/collateral data; train and evaluate a candidate only when the dataset supports it.",
     "Do not enable directional forecasts until calibrated out-of-sample superiority and independent shadow outcomes are demonstrated."
-  ]
+  ],
+  "institutional_network_addendum": {
+    "primary_source_cutoff": "2026-11-15",
+    "findings": [
+      {
+        "entity": "SBI Startale Marketing",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "filing_date": "2026-11-02",
+        "ownership_percentages": {
+          "SBI_Holdings": 55,
+          "Startale": 40,
+          "SMFG": 5
+        },
+        "purpose": "Promote JPYSC adoption",
+        "strategic_goal": "Explore JPYSC integration into SMFG's Olive ecosystem and new stablecoin-based services",
+        "evidence_status": "official SBI Holdings first-half FY2026 investor presentation",
+        "capital_amount": "not disclosed in the cited presentation; 5% equity participation is verified, cash amount is not"
+      },
+      {
+        "entity": "SBI Holdings + Startale + Open Standard",
+        "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+        "date": "2026-10-16",
+        "objective": "Explore proof-of-concept interoperability between JPYSC and Open USD (OUSD)",
+        "participants": "SBI Holdings and Startale joined Open Standard; Coinbase is named among more than 140 participating companies",
+        "status": "pilot under consideration, not a launched commercial payment rail"
+      },
+      {
+        "entity": "SBI / BlackRock / Startale",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "objective": "Explore tokenized money-market funds tradable using JPYSC",
+        "status": "basic agreement and collaboration areas described; no production settlement volume established"
+      },
+      {
+        "entity": "SBI / Ondo",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "date": "2026-07",
+        "objective": "Explore JPYSC for settlement and collateral on Ondo, Japanese tokenized assets and distribution of Ondo token products in Japan",
+        "status": "strategic partnership/basic agreement; do not treat as live collateral utilization"
+      },
+      {
+        "entity": "SBI Solana Global / Solana Foundation",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "date": "2026-07",
+        "objective": "JV development of stablecoin and tokenized-RWA infrastructure and institutional services",
+        "status": "announced JV plan; not XRP infrastructure"
+      },
+      {
+        "entity": "SBI XDC / SBI VC Trade / Shinhan Card",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "objective": "Explore stablecoin cross-border payments on XDC Network and integration with existing financial/payment infrastructure",
+        "status": "PoC consideration; not XRPL"
+      },
+      {
+        "entity": "SBI Digital Practice / Kyobo Life",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "objective": "Verify JPY-stablecoin cross-border transactions on Canton Network",
+        "status": "PoC; not XRPL"
+      },
+      {
+        "entity": "SBI Holdings / SBI EVERSPIN / KB Kookmin Card / Everspin",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "objective": "Verify transactions linking Japanese AI agents with Korean payment services",
+        "status": "PoC; no public production volume or XRP settlement evidence"
+      },
+      {
+        "entity": "SBI VC Trade / Ripple RLUSD",
+        "source": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+        "date": "2026-06-24",
+        "product": "RLUSD",
+        "legal_classification": "SBI VC Trade classifies RLUSD as a Type 4 electronic payment instrument under its Japanese-law analysis; it explicitly says this is not a U.S. trust-beneficial-interest classification",
+        "supported_network_at_launch": "Ethereum only",
+        "deposit_withdrawal": "24/7 intake, free deposit/withdrawal subject to service maintenance and limits",
+        "explicit_exclusion": "XRP Ledger RLUSD deposits/withdrawals were not supported by this VCTRADE service announcement",
+        "consequence": "SBI's RLUSD distribution does not by itself establish new XRPL-side RLUSD liquidity or XRP demand"
+      },
+      {
+        "entity": "SBI Holdings / bitbank",
+        "source": "https://www.sbigroup.co.jp/news/2026/1001_16640.html",
+        "date": "2026-10-01",
+        "status": "SBI Holdings confirms bitbank became a wholly owned subsidiary after the share repurchase transaction completed",
+        "caveat": "ownership consolidation is not evidence of a post-acquisition change in XRP volume, custody or customer holdings"
+      },
+      {
+        "entity": "Circle SBI Japan K.K.",
+        "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "ownership_percentages": {
+          "Circle": 50,
+          "SBI_Holdings": 50
+        },
+        "initial_contributions_usd": {
+          "Circle": 1500000,
+          "SBI_Holdings": 1500000
+        },
+        "accounting": "Circle consolidates the VIE because it controls the activities that most affect the entity and absorbs potentially significant losses/benefits; SBI's interest is noncontrolling",
+        "operating_results": "no significant operating results reported to date",
+        "caveat": "separate entity from SBI Startale Marketing and separate from SBI regional SBIC companies"
+      },
+      {
+        "entity": "Circle Arc / SBI Group / Coinbase",
+        "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+        "date": "2026-09-16",
+        "status": "Circle identifies SBI Group in Arc's founding validator cohort and Coinbase among exchange/access integrations",
+        "caveat": "Arc is a separate L1 with USDC gas; public announcement does not prove all validators are actively signing blocks or any XRP settlement"
+      },
+      {
+        "entity": "Coinbase / Ripple RLUSD",
+        "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+        "date": "2026-10-28",
+        "supported_networks": [
+          "XRP Ledger",
+          "Base",
+          "Ethereum"
+        ],
+        "products": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase app"
+        ],
+        "collateral": "Coinbase Global Exchange collateral support was described as future follow-up at launch"
+      },
+      {
+        "entity": "PNC / Coinbase / Circle",
+        "source": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+        "date": "2026-11-09",
+        "rail": "Circle USDC",
+        "status": "limited pilot; incoming USDC automatically converted to USD",
+        "caveat": "not an XRP settlement rail"
+      }
+    ],
+    "cross_network_conclusion": "SBI's digital-asset strategy is explicitly multi-rail: RLUSD and USDC distribution, JPYSC, Circle Arc, Open Standard/OUSD, Solana, XDC, Canton and tokenized-fund partnerships. These initiatives show institutional stablecoin and tokenized-asset activity but do not imply that XRP is required for their settlement. The SBI VC Trade RLUSD product's Ethereum-only network support at launch is a direct counterexample to assuming every SBI-RLUSD relationship creates XRPL liquidity.",
+    "source_links": [
+      "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "https://www.sbigroup.co.jp/news/2026/1001_16640.html",
+      "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/"
+    ]
+  }
 }
