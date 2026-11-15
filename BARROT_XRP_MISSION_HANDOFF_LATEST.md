@@ -5009,3 +5009,67 @@ On September 15, 2026, the Senate failed to invoke cloture on the motion to proc
 5. A short-term price rebound after a large 24-hour decline is not proof of a trend reversal.
 
 These data are research-only. No directional forecast was issued; accuracy remains NOT_EVALUATED.
+---
+
+## Run146 on-chain supply, exchange wallets, XRPL RWA, ETF and RLUSD addendum
+
+Captured during the same run after the CFTC/options/regulatory addendum. This section adds on-chain wallet, tokenization and stablecoin reconciliation. All third-party tracker data remains research-only until raw ledger/API receipts are captured and independently replayed.
+
+### Exchange wallet balances are not tradable float
+
+XRP Insights' November 14 08:00 UTC snapshot attributes approximately 22.26B XRP to 707 wallets across 24 exchanges. The page classifies roughly 48.5% as cold, 12% hot and 39.7% unclassified. It explicitly includes omnibus/cold custody and wrapped-token reserves, so this is not immediately tradable customer float.
+
+Same-wallet balances declined approximately 74.6M XRP over seven days and 318.2M over 30 days. The naive 30-day total instead increased about 200.1M because eight newly tracked wallets added 518.4M XRP to the label set. The same-wallet series is the more defensible comparison.
+
+The seven-day decline is concentrated in Binance: its tracked wallets fell approximately 100.4M XRP, while the other 23 tracked venues collectively offset roughly 25.8M XRP. Coinbase's 5.81B tracked balance includes about 152.9M cbXRP backing; Binance's 2.64B includes about 327.4M Binance-Peg backing. The page identifies approximately 483.8M XRP of wrapped/insurance reserves in total. These balances must not be counted as customer deposits or immediately available spot supply. <Cite refs={['turn216567view0','turn415829view0']}/>
+
+### Circulating-supply definitions and the December escrow event
+
+XRP Insights' broad ledger definition is 100B fixed supply less 31.10B in escrow and 14.4M burned, yielding approximately 68.89B circulating. It includes Ripple's non-escrow operational wallets. SBI's October 28 presentation instead shows 63.35B market-circulating, 31.4B escrow and 5.23B Ripple-held 'Actual XRP' outside escrow. XRP Insights separately reports about 4.74B in Ripple operational wallets. These wallet/supply definitions and dates are not fully reconciled; preserve the approximately 0.49B difference rather than averaging.
+
+The next scheduled escrow event is December 1, 2026: 1B XRP unlocks. The tracker cites an approximate historical 70% re-locking rate, leaving roughly 300M net monthly release on average. That is a historical average, not a guaranteed release or sale; the event belongs in the timeline, not as an assumed spot-supply shock. <Cite ref="turn216567view0"/>
+
+### ETF holdings versus cash-flow reporting
+
+XRP Insights aggregates six U.S. spot XRP ETFs plus BITW: approximately 1.189B XRP holdings and $1.22B AUM. Its issuer-holdings method reports -6.08M XRP for November 9–13 but +3.40M XRP on November 13. It includes GXRP holdings in total holdings but excludes GXRP from flow totals while an issuer-data gap is unresolved.
+
+Alpha/SoSoValue's five-fund USD flow series includes GXRP: it reports approximately -$1.1M on November 13, with GXRP at -$5.5M and XRPZ at +$4.4M. The opposite daily sign is therefore explained by fund-universe and GXRP treatment, not necessarily contradictory underlying issuer data. The roughly $80M difference in cumulative inflow totals between Alpha and SoSoValue-derived reporting remains unresolved. Holdings changes are not direct cash subscriptions or proof of XRP spot purchases. <Cite ref="turn415829view0"/>
+
+### XRPL RWA: headline value versus transferable value
+
+XRP Insights tracks 18 XRPL tokenized assets with a combined reported value of $4.33B, but only $276M across seven assets is classified as distributed/transferable. The remaining $4.06B across eleven assets is represented registry value for contracted energy, credit and vault assets that cannot move freely wallet-to-wallet. Several values were last updated between July 3 and October 23, and some are issuer-reported notionals rather than live ledger balances.
+
+Therefore, the $4.33B headline is not $4.33B of liquid RWA collateral. The $4.06B represented component is not transferable float; even the $276M distributed component is not automatically eligible collateral or executable market depth. <Cite ref="turn216567view0"/>
+
+### DeFi and wrapped-XRP double-counting
+
+The same tracker reports approximately 422.9M XRP locked across tracked DeFi, bridges and wrapped-XRP products, about $416M at its snapshot. Components include roughly 155.2M cbXRP, 145.4M Flare FAssets, 90.1M Doppler, 19.4M wXRP and 12.9M native XRPL AMM. cbXRP and wXRP backing can overlap exchange/custody wallet balances; do not add these totals to exchange balances without address-level de-duplication.
+
+### Agentic x402: transaction count is not capital
+
+XRP Insights attributes about 15.74M agent transactions, 191 agents, 193 merchants and 5,884 endpoints to the t54 XRPL AI Hub source tag. Its reported all-time settlement value is only 7,032 XRP plus 72,177 RLUSD, approximately $78.7K at the $0.9259 reference spot quote. The tracker reports 26,218 settlements on its latest day, but transaction count is not settlement value or net XRP demand.
+
+The page identifies source tag 804681468 and last confirmed ledger 108,320,673. Its linked XRPSCAN transaction page returned HTTP 403 during this audit, so the individual transactions and aggregate were not independently replayed. t54's Ripple backing and Mastercard Agent Pay participation are separate technology/corporate relationships; they do not establish material XRP payment volume. <Cite ref="turn216567view0"/>
+
+### RLUSD supply: three snapshots and a strong XRPL cross-check
+
+Ripple's issuer dashboard as of November 12 reports approximately $2.6899B circulating and $2.8265B reserve funds, or 105.08% derived coverage. The latest accessible independent monthly attestation archive is September; the November 12 dashboard balances are not themselves a November 12 independent attestation. <Cite ref="turn743070search3"/>
+
+RWA.xyz's November 14 snapshot reports $2.709B total RLUSD: 1.94496B on Ethereum and 764.07M on XRPL. XRP Insights reports approximately $2.76B total, 2.00B Ethereum and 763.3M XRPL. XRPL.to reports 762,824,103 RLUSD on XRPL and 68,115 holder accounts. The XRPL component is tightly clustered around 763–764M across three trackers; Ethereum differs by about 55M between RWA.xyz and XRP Insights. Total supply ranges from $2.6899B to $2.76B across dates/providers. Preserve these snapshots and the network-coverage difference; do not average. <Cite refs={['turn106545view0','turn197525search2','turn216567view0']}/>
+
+RWA.xyz reports 78,940 holders, 8,621 active addresses over 30 days and $27.37B monthly transfer volume. Transfer volume is turnover, not net minting, new capital or economic settlement; holders/addresses are not beneficial owners. Its November 14 secondary-market dashboard reports $372.9M 24-hour RLUSD market volume and $38.6M/$29.8M depth at +2%/-2%, but pair-level base/quote conventions require validation before using XRP/RLUSD turnover as XRP demand. <Cite ref="turn106545view0"/>
+
+The legal issuer is Standard Custody & Trust Company, LLC, a New York limited-purpose trust company; RWA.xyz identifies BNY Mellon as custodian and describes segregated, bankruptcy-remote reserves. Ripple's separate National Trust Bank is not the RLUSD legal issuer and is not a conventional deposit-taking bank. Ripple's official product page lists seven networks: XRPL, Ethereum, Base, Optimism, Ink, Unichain and XRPL EVM Sidechain. The fact that roughly 72% of supply is on Ethereum means RLUSD adoption does not automatically imply XRP bridge demand or XRPL settlement. <Cite refs={['turn106545view0','turn197525search9']}/>
+
+### Integrated counter-hypotheses
+
+1. Exchange-wallet declines are concentrated in Binance and can represent custody transfers; broad labeled balances include cold/omnibus/reserve wallets, not tradable float.
+2. The apparent 30-day exchange-wallet increase is a label-coverage artifact; same-wallet balances declined.
+3. ETF daily-flow disagreement is explained by GXRP inclusion/exclusion; holdings changes are not cash subscriptions.
+4. XRPL RWA gross value materially exceeds transferable float; represented registry value is not liquid collateral.
+5. RLUSD is mostly on Ethereum; stablecoin growth is not equivalent to XRP demand.
+6. x402 transaction count is large but reported all-time settlement value is small; it does not establish material XRP demand.
+7. RLUSD transfer volume is turnover and may include repeated exchange/custody/DeFi movements, not net capital inflow.
+8. DeFi cbXRP/wXRP balances overlap exchange/custody reserves and require wallet-level de-duplication.
+
+All figures remain research-only until source bytes, timestamps, wallet/contract IDs and hashes are captured through the scheduled ingestion pipeline and independently replayed.

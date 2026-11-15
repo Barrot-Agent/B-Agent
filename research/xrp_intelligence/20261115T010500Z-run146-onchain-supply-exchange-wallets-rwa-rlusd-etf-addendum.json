@@ -1,0 +1,255 @@
+{
+  "artifact_type": "barrot_xrp_onchain_supply_exchange_rwa_rlusd_etf_addendum",
+  "schema_version": "1.0.0",
+  "run": 146,
+  "captured_at_utc": "2026-11-15T01:05:00Z",
+  "capture_time_precision": "Approximate run-time marker; source event/as-of timestamps below are authoritative.",
+  "repository": "Barrot-Agent/B-Agent",
+  "integration_parent_head": "0c4968b12977344f606200bf5d87f58a9e1c8646",
+  "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+  "exchange_wallets": {
+    "source": "XRP Insights/XRP Radar; XRPL account balances read via rippled, wallet labels attributed via XRPSCAN and public exchange disclosures.",
+    "as_of_utc": "2026-11-14T08:00:00Z",
+    "tracked_wallets": 707,
+    "exchanges": 24,
+    "attributed_exchange_balances_xrp": 22260000000,
+    "share_of_fixed_100b_supply_percent": 22.3,
+    "same_wallet_change_7d_xrp": -74600000,
+    "same_wallet_change_30d_xrp": -318200000,
+    "naive_total_change_30d_xrp": 200100000,
+    "newly_tracked_wallets_30d": 8,
+    "newly_tracked_wallet_balances_xrp": 518400000,
+    "binance_same_wallet_change_7d_xrp": -100400000,
+    "non_binance_23_venues_net_change_7d_approx_xrp": 25800000,
+    "largest_balances_xrp": {
+      "Upbit": 6470000000,
+      "Coinbase": 5810000000,
+      "Binance": 2640000000,
+      "Bithumb": 1790000000,
+      "Uphold": 1690000000,
+      "Kraken": 956600000,
+      "bitbank": 580300000
+    },
+    "regional_balances_xrp": {
+      "South_Korea": 8590000000,
+      "United_States": 8460000000,
+      "Japan": 1380000000,
+      "offshore": 2680000000
+    },
+    "storage_classification_percent": {
+      "cold": 48.5,
+      "hot": 12,
+      "unclassified": 39.7
+    },
+    "reserve_backing_xrp": 483800000,
+    "reserve_components_xrp": {
+      "Binance_Peg": 327400000,
+      "Coinbase_cbXRP": 152900000,
+      "insurance_and_charity": 3500000
+    },
+    "interpretation": "22.26B is a floor of labeled omnibus/cold/hot exchange-controlled wallets, not customer beneficial ownership or immediately tradable float. The 30-day naive total increase is explained by newly tracked wallets; same-wallet balances declined. The 7-day net decline is concentrated in Binance; other tracked venues collectively offset about 25.8M XRP. Transfers may be internal custody movements, not sales.",
+    "source_ref": "turn415829view0"
+  },
+  "supply_definitions": {
+    "broad_ledger_definition": {
+      "fixed_supply_xrp": 100000000000,
+      "escrow_xrp": 31100000000,
+      "burned_xrp": 14400000,
+      "broad_circulating_xrp": 68890000000,
+      "as_of": "2026-11-14"
+    },
+    "sbi_presentation_definition": {
+      "market_circulating_xrp": 63350000000,
+      "escrow_xrp": 31400000000,
+      "ripple_actual_xrp_outside_escrow": 5230000000,
+      "as_of": "2026-10-28"
+    },
+    "ripple_operational_wallets_static_company_reported_xrp": 4740000000,
+    "interpretation": "The 68.89B broad figure subtracts escrow and burns but includes Ripple non-escrow operational holdings. SBI's ~63.35B market-circulating figure also excludes its 5.23B 'Actual XRP' classification and uses a different escrow snapshot. XRP Insights' 4.74B Ripple operational-wallet figure and SBI's 5.23B Actual XRP are not directly reconciled; preserve the ~0.49B difference and source definitions.",
+    "next_escrow_event": {
+      "date": "2026-12-01",
+      "scheduled_unlock_xrp": 1000000000,
+      "historical_relock_rate_approx_percent": 70,
+      "interpretation": "Historical average only; the full 1B is not automatically new circulating float or market selling."
+    }
+  },
+  "etf_holdings_and_flows": {
+    "xrp_insights": {
+      "fund_count": 7,
+      "universe": "Six U.S. spot XRP ETFs plus BITW index fund",
+      "holdings_xrp": 1189100000,
+      "aum_usd": 1220180000,
+      "nov13_daily_holdings_change_xrp": 3400000,
+      "nov9_to_nov13_weekly_holdings_change_xrp": -6080000,
+      "gxrp_treatment": "GXRP holdings included in total holdings, but GXRP excluded from flow totals while issuer data gap is unresolved."
+    },
+    "alpha_sosovalue_comparison": {
+      "fund_count": 5,
+      "nov13_daily_flow_usd": -1100000,
+      "seven_session_flow_usd": -19100000,
+      "cumulative_net_inflows_usd_alpha": 1710000000,
+      "cumulative_net_inflows_usd_sosovalue_derived": 1790000000,
+      "gxrp_nov13_flow_usd": -5500000,
+      "xrpz_nov13_flow_usd": 4400000
+    },
+    "reconciliation": "The opposite Nov13 daily sign is explained by the XRP Insights exclusion of GXRP from flow totals while Alpha includes GXRP's reported ~$5.5M outflow. XRP Insights measures issuer-reported XRP holdings changes, not direct cash subscriptions. The ~$80M cumulative inflow discrepancy between Alpha and SoSoValue-derived reporting remains unresolved.",
+    "source_ref": "turn415829view0"
+  },
+  "xrpl_rwa": {
+    "tracker_snapshot_as_of": "2026-11-14",
+    "tokenized_assets": 18,
+    "gross_reported_value_usd": 4330000000,
+    "distributed_transferable_value_usd": 276000000,
+    "distributed_transferable_assets": 7,
+    "represented_registry_value_usd": 4060000000,
+    "represented_platform_locked_assets": 11,
+    "asset_value_vintages": "Per-asset values last updated between 2026-07-03 and 2026-10-23; several values are issuer-reported notional amounts, not live ledger balances.",
+    "liquidity_interpretation": "The $4.06B represented amount is not wallet-to-wallet transferable and is not freely available collateral. Even the $276M distributed amount is not automatically eligible collateral or executable liquidity.",
+    "source_ref": "turn216567view0"
+  },
+  "defi_and_wrapped_xrp": {
+    "snapshot_as_of": "2026-11-14",
+    "tracked_xrp_locked": 422900000,
+    "reported_tvl_usd": 416000000,
+    "components_xrp": {
+      "cbXRP": 155200000,
+      "Flare_FAssets": 145400000,
+      "Doppler": 90100000,
+      "wrapped_XRP_wXRP": 19400000,
+      "XRPL_native_AMM": 12900000
+    },
+    "overlap_warning": "cbXRP and wXRP backing may already be included in exchange/custody wallet balances. Do not add DeFi locked XRP to exchange totals without address-level de-duplication."
+  },
+  "agentic_x402_activity": {
+    "tracker_reported_transactions_all_time": 15740000,
+    "active_agents": 191,
+    "merchants": 193,
+    "endpoints": 5884,
+    "latest_day_settlements_reported": 26218,
+    "all_time_settled_value_xrp": 7032,
+    "all_time_settled_value_rlusd": 72177,
+    "approximate_usd_value_at_xrp_0_9259": 78687,
+    "source_tag": 804681468,
+    "last_confirmed_ledger_reported": 108320673,
+    "claimed_facilitator": "t54 XRPL AI Hub",
+    "claimed_payment_types": [
+      "XRP",
+      "RLUSD"
+    ],
+    "verification": "Tracker attributes native XRPL Payment transactions to the source tag, but the linked XRPSCAN transaction page returned HTTP 403 during this audit. Exact transactions and the aggregate totals were not independently verified.",
+    "interpretation": "15.74M is transaction count, not dollar volume. The tracker-reported all-time value is only about $78.7K at the reference spot price, so this dataset does not establish material XRP demand. t54's Ripple backing and Mastercard Agent Pay participation are separate corporate/technology relationships, not proof of material settlement volume.",
+    "source_ref": "turn216567view0"
+  },
+  "rlusd_supply_and_distribution": {
+    "ripple_issuer_dashboard": {
+      "as_of_utc": "2026-11-12",
+      "circulating_supply_usd": 2689900000,
+      "reserve_funds_usd": 2826500000,
+      "derived_reserve_coverage_percent": 105.08,
+      "latest_accessible_independent_attestation_month": "2026-09",
+      "note": "Nov12 dashboard balances are not themselves a Nov12 independent attestation.",
+      "source_ref": "turn743070search3"
+    },
+    "rwa_xyz": {
+      "as_of_utc": "2026-11-14",
+      "total_supply": 2709026368.2,
+      "ethereum_supply": 1944958603.54,
+      "xrpl_supply": 764067764.66,
+      "holders": 78940,
+      "active_addresses_30d": 8621,
+      "monthly_transfer_volume_usd": 27370000000,
+      "secondary_markets_24h_volume_usd": 372900000,
+      "secondary_markets_depth_plus2pct_usd": 38600000,
+      "secondary_markets_depth_minus2pct_usd": 29800000,
+      "source_ref": "turn106545view0"
+    },
+    "xrp_insights": {
+      "as_of_utc": "2026-11-14",
+      "total_supply_approx": 2760000000,
+      "xrpl_supply_approx": 763300000,
+      "ethereum_supply_approx": 2000000000,
+      "source_ref": "turn216567view0"
+    },
+    "xrpl_to": {
+      "as_of_run": "2026-11-15",
+      "xrpl_supply": 762824103,
+      "holder_accounts": 68115,
+      "top_ten_account_share_percent": 83,
+      "canonical_xrpl_issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "source_ref": "turn197525search2"
+    },
+    "reconciliation": "XRPL supply is consistently around 763-764M across three secondary on-chain trackers. Ethereum supply differs by about 55M between RWA.xyz and XRP Insights. Total supply ranges from Ripple dashboard $2.6899B (Nov12) to RWA.xyz $2.709B (Nov14) and XRP Insights ~$2.76B (Nov14). Different snapshots/network coverage and contract inclusion remain unresolved; do not average.",
+    "network_share_approx_percent": {
+      "xrpl": 28,
+      "ethereum": 72
+    },
+    "interpretation": "Most RLUSD supply is on Ethereum, not XRPL. RLUSD adoption therefore does not imply equivalent XRP bridge demand. The high reported monthly transfer volume is turnover, not net issuance or cash inflow; holder/active-address counts are not beneficial-owner counts."
+  },
+  "rlusd_institutional_structure": {
+    "legal_issuer": "Standard Custody & Trust Company, LLC, a New York limited-purpose trust company",
+    "custodian": "The Bank of New York Mellon Corporation",
+    "reserve_structure": "Segregated high-quality liquid assets and bankruptcy-remote protections described in issuer terms and RWA.xyz.",
+    "networks": [
+      "XRP Ledger",
+      "Ethereum",
+      "Base",
+      "Optimism",
+      "Ink",
+      "Unichain",
+      "XRPL EVM Sidechain"
+    ],
+    "coinbase_distribution": "Coinbase RLUSD listing/availability spans its platforms and supported networks; Coinbase Global Exchange collateral support was described as a future follow-up, not confirmed active.",
+    "ripple_national_trust_bank": "OCC final approval effective October 26, 2026 for national trust-bank activities; separate entity from RLUSD's legal issuer and not a conventional deposit-taking commercial bank.",
+    "source_refs": [
+      "turn106545view0",
+      "turn197525search9"
+    ]
+  },
+  "counter_hypotheses": [
+    "Exchange wallet balances are mostly custody/omnibus/cold storage, not tradable float; same-wallet outflows are concentrated in Binance and may be internal custody movements.",
+    "The naive 30-day exchange balance increase is caused by eight newly tracked wallets, while same-wallet balances declined by 318.2M XRP.",
+    "ETF flow sign disagreement on Nov13 is explained by GXRP being excluded from XRP Insights flow totals but included by Alpha; neither series is direct cash subscription data.",
+    "The XRPL RWA headline of $4.33B materially overstates transferable float; $4.06B is represented/locked registry value.",
+    "RLUSD supply growth is concentrated on Ethereum; only about 28% is on XRPL, so stablecoin adoption is not synonymous with XRP demand.",
+    "Agentic x402 transaction count is high but tracker-reported settlement value is only about $78.7K all-time; count is not economic value.",
+    "RLUSD monthly transfer volume can reflect repeated turnover, exchange/custody movements and DeFi churn rather than net capital inflow.",
+    "DeFi cbXRP/wXRP reserves overlap with exchange/custody balances and must be de-duplicated."
+  ],
+  "source_provenance": [
+    {
+      "source": "XRP Insights XRP Radar",
+      "type": "secondary dashboard using XRPL ledger reads, issuer pages and wallet labels",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_ref": "turn216567view0"
+    },
+    {
+      "source": "XRP Insights exchange balances and flows",
+      "type": "secondary wallet attribution using rippled account balances and XRPSCAN labels",
+      "source_ref": "turn415829view0"
+    },
+    {
+      "source": "RWA.xyz Ripple USD",
+      "type": "secondary on-chain and market data aggregator",
+      "url": "https://app.rwa.xyz/assets/RLUSD",
+      "source_ref": "turn106545view0"
+    },
+    {
+      "source": "XRPL.to RLUSD supply tracker",
+      "type": "secondary on-chain tracker",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "source_ref": "turn197525search2"
+    },
+    {
+      "source": "Ripple RLUSD transparency dashboard",
+      "type": "issuer dashboard with monthly independent attestation archive",
+      "source_ref": "turn743070search3"
+    },
+    {
+      "source": "Ripple RLUSD official product documentation",
+      "type": "primary issuer documentation",
+      "url": "https://ripple.com/products/stablecoin/",
+      "source_ref": "turn197525search9"
+    }
+  ],
+  "model_admission": "Research-only. Wallet labels are secondary, balances include cold/omnibus/reserve wallets, RWA values have mixed vintages, ETF holdings changes are not cash flows, x402 transactions were not independently replayed, and RLUSD supply totals differ by provider. No directional forecast."
+}
