@@ -634,17 +634,22 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_snapshot_tracks_exact_parent_head_ci_and_forecast_boundary():
+def test_run152_snapshot_tracks_parent_and_followup_ci_without_hiding_failure():
     data = load_current()
     run = data["run152_snapshot"]
+    latest = data["ci_evidence"]["latest_attempt"]
     assert data["latest_run_id"] == "Run152"
-    assert run["integration_head_at_capture"] == data["integration_pr"]["head_sha"]
-    assert run["integration_head_at_capture"] == data["repository_state"]["integration_head_before_current_map_commit"]
+    assert run["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
+    assert run["documentation_commit_head_sha"] == data["integration_pr"]["head_sha"]
+    assert run["documentation_commit_head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
     assert run["main_sha"] == data["repository_state"]["main_sha"]
-    assert run["full_suite"]["head_sha"] == data["ci_evidence"]["latest_attempt"]["head_sha"]
+    assert run["full_suite"]["head_sha"] == latest["head_sha"]
     assert run["full_suite"]["passed"] == 3787
-    assert run["full_suite"]["failed"] == 0
+    assert run["full_suite"]["failed"] == 1
     assert run["full_suite"]["exact_head"] is True
+    assert run["last_known_good_full_suite"]["passed"] == 3787
+    assert run["last_known_good_full_suite"]["failed"] == 0
+    assert run["last_known_good_full_suite"]["head_sha"] == run["integration_head_at_capture"]
     assert run["changed_workflow_files"] == 48
     assert run["patch_scan_workflows_reviewed"] == 50
     assert run["open_pr_inventory"]["total"] == 373

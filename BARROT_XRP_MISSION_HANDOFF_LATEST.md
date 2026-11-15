@@ -5914,3 +5914,48 @@ Path overlap is not semantic duplication. No source PR was closed.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
 
+
+## Run152-CI follow-up — 2026-11-15 05:23 UTC
+
+The first Run152 documentation/map/test commit was `3ffda1a61bb2586c3c750b314595ba9666cbd765`. Its exact-head full-suite run 43680468262 completed with **3,787 passed, 1 failed, 1 skipped and 19 subtests**. Inclusive coverage was 64.02%; legacy-core coverage was 77%.
+
+The single failure was:
+`tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit`.
+
+The failure was not missing source provenance: all five required source records were present. The updated canonical `next_actions` list omitted the literal phrase `semantic review`, which the regression contract requires. This is a handoff/map consistency assertion, not a runtime XRP ingestion or prediction-engine failure.
+
+The exact-head push dependency audit (six manifests, zero known vulnerabilities reported) and push fail-closed gate passed. PR CI passed its core test job (485 passed, eight subtests); the PR full suite was skipped by the integration-branch condition and Pages validation was skipped by the path filter. The parent head `2e9ddebe2220025b0f9ae731a304c06580c73742` had previously passed 3,787 tests with zero failures.
+
+**Correction:** restore an explicit next action to complete semantic review of all 1,191 remaining non-workflow changed paths; preserve both the failed exact-head attempt and the preceding known-good result in the current map; update the regression test so it verifies both rather than hiding the failed attempt. No runtime prediction-engine code was changed. The correction commit must receive its own full exact-head suite, wheel, installed-mission, dependency and fail-closed verification before any merge consideration.
+
+### Additional primary derivatives evidence — CFTC report updated November 6, positions as of November 3
+
+The CFTC Traders in Financial Futures combined report adds regulated US venue positioning not represented by the multi-exchange USD OI dashboards:
+
+| Contract | Open interest | Contract multiplier | Underlying-equivalent |
+|---|---:|---:|---:|
+| CME XRP | 7,216 | 50,000 XRP | 360.8M XRP |
+| Coinbase Nano XRP | 32,505 | 500 XRP | 16.2525M XRP |
+| Coinbase Nano XRP Perp Style | 38,392 | 500 XRP | 19.196M XRP |
+
+CME TFF categories: dealers 4,228 long / 4,431 short; asset managers 868 / 802; leveraged funds 1,976 / 1,696; nonreportable 84 / 227. Coinbase Nano XRP: leveraged funds 29,317 / 31,625; other reportables 2,693 / 601; nonreportable 375 / 159. Coinbase Nano XRP Perp Style: leveraged funds 1,780 / 29,554; other reportables 28,858 / 2,853; nonreportable 7,754 / 5,985.
+
+The two Coinbase Nano products show leveraged-fund net shorts offset by other-reportable net longs; CME trader-category balances differ. The products have different multipliers and structures. Do not sum raw contracts or combine this CFTC report with aggregator USD open interest. This is a November 3 positioning snapshot, not a November 15 live signal, and categories do not reveal whether positions are hedged elsewhere.
+
+Primary source: https://www.cftc.gov/dea/options/financial_lof.htm
+
+### Additional market-source disagreement
+
+A CoinGlass November 15 in-progress daily row showed approximately $0.9223, with a displayed high of $0.9364, materially below the direct Kraken observation near $0.9782, the older OKX observation near $0.9731 and Liqwall's approximately $0.9764 reference. A secondary Robod snapshot showed approximately $0.9709, but did not expose a provider event timestamp. These observations are not averaged. CoinGlass's current-day row is treated as stale/incomplete pending timestamp reconciliation.
+
+OKX documentation warns that independent market-data caches can return an earlier timestamp on a subsequent request. Kraken's ticker `o` field is today's UTC opening price, not a rolling 24-hour open. The ingestion pipeline must retain provider timestamps and field semantics rather than infer synchronized snapshots.
+
+Sources:
+- CFTC TFF: https://www.cftc.gov/dea/options/financial_lof.htm
+- CoinGlass: https://www.coinglass.com/currencies/XRP
+- Robod: https://robod.xyz/markets/xrp
+- OKX API documentation: https://www.okx.com/docs-v5/en/
+- Kraken ticker documentation: https://docs.kraken.com/api/docs/rest-api/get-ticker-information/
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No paper trade or real-money action occurred.
+
