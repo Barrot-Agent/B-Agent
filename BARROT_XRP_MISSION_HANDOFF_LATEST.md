@@ -568,3 +568,57 @@ Creator claims are source material, not ground truth. In particular:
 ### Run176 deterministic map regression guard
 
 Added `tests/test_run176_platform_map_overlay.py` to validate the current nine-platform overlay: exactly nine named platforms, only the authenticated ChatGPT/GitHub connector marked verified, Grok kept distinct from Groq, OpenCode kept separate and unverified, no external-model dispatch or red-team quorum claimed, and least-privilege/branch-protection gaps retained explicitly. This is a read-only local JSON test with no network, credentials or external side effects. The resulting test-bearing commit requires its own exact-head full-suite and security-gate verification.
+
+
+## Run177 — exact-head verification, workflow audit and institutional rails
+
+**Captured:** 2026-11-15 23:08:28 UTC. **Mission:** XRP intelligence and prediction-engine mastery, with Barrot V3 preserved as the execution/orchestration/safety/verification foundation.
+
+### Repository state
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; source head before this audit update: `cfb143da7aca9835b4b972b1413e31821a8d1b82`.
+- Main recursive tree: 1,393 entries; integration tree: 2,515 entries; both complete and untruncated. Zero main paths are missing from integration.
+- PR #1663 remains the sole active main-target integration PR: draft, 16 commits ahead, 0 behind, 1,280 changed files, 411,983 additions, 6,473 deletions, zero formal reviews and zero review threads. It is technically mergeable but not governance-ready.
+- The eight other open PRs target stacked research/security branches. They remain unique/unreviewed; none was closed. PR #1541 has 1 unique path/4 overlaps with #1663; #1265 has 143 unique/1 overlap; #1460 has 8 unique; #1450 116; #1440 64; #1437 5; #1436 24; #1353 1,084. Direct compare-to-main returns no common ancestor for these non-main branch tips; changed-path overlap was checked separately.
+
+### Exact-head verification — VERIFIED
+On exact integration head `cfb143da7aca9835b4b972b1413e31821a8d1b82`:
+- Full repository suite run [43771335063](https://github.com/Barrot-Agent/B-Agent/actions/runs/43771335063), job 132987690152: **3,825 passed, 0 failed, 1 skipped, 19 subtests passed**, 175.71 seconds.
+- Inclusive coverage 64.02%; legacy core coverage 77%; 36 files skipped by coverage because fully covered. Core job: 743 passed and 8 subtests passed.
+- Wheel build and installed primary-mission verification passed.
+- Six-manifest dependency audit [43771335068](https://github.com/Barrot-Agent/B-Agent/actions/runs/43771335068) passed with zero known vulnerabilities across root runtime, dev, integrations, HF Space, legacy and PEP 621 manifests.
+- Push and PR fail-closed audit jobs [43771335072](https://github.com/Barrot-Agent/B-Agent/actions/runs/43771335072) and [43771338383](https://github.com/Barrot-Agent/B-Agent/actions/runs/43771338383) passed by keeping merge disabled pending all required gates; these are audit-only, not a replacement for branch protection.
+- PR Pages validation [43771338335](https://github.com/Barrot-Agent/B-Agent/actions/runs/43771338335) passed and rendered `GLOBAL_STATE_MANIFEST.html`. PR-event test jobs were skipped by the integration-branch condition; the push full-suite run is authoritative.
+
+### Workflow safety audit — EXECUTED
+All 48 changed workflow files were enumerated and inspected. 28 are quarantined with empty permissions and disabled jobs; 20 remain active. Active mutating paths require per-run controls: Databricks/Kaggle operations require a global YES, a separate destination-specific YES and exact current-main SHA; Cloudflare deployment requires YES plus a separate secret-rotation YES and exact SHA; paper simulation requires YES, exact SHA, position-product identity validation and artifact-only output. Eight Groq research workflows require public/authorized inputs, typed YES and exact-main validation. No external-model dispatch, deployment, secret rotation, Databricks write, Kaggle download or paper trade occurred.
+
+The scheduled XRP ingestion workflow is main-ref guarded and has only `actions:read` and `contents:read`; it does not write to the repository. Raw receipts and feature-store checkpoints are stored in 90-day GitHub artifacts, **not independent WORM storage**. Its scheduled operation on main is not verified because the workflow is not yet on main. The cross-run receipt index explicitly marks continuity unverified when the latest successful run lacks its index artifact.
+
+### New/updated institutional evidence
+- **BNY is a shared institutional service-provider node, not a direct Circle–Ripple partnership.** BNY's June 29 USDC service provides institutional custody/transfer/mint/burn; its October 27 Ripple collaboration supports XRP and RLUSD custody for eligible clients. BNY is also Ripple's primary RLUSD reserve custodian. No BNY-specific XRP holdings, purchases, collateral balances or customer AUC were disclosed. Sources: [BNY/Circle](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-expands-relationship-circle-adds-institutional-grade-stablecoin-enablement-services.html), [BNY/Ripple](https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- **Ripple/Coinbase RLUSD** launched on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum on October 28. Coinbase Global Exchange collateral eligibility was future at launch; RLUSD distribution is not XRP buying or XRP collateral. [Ripple announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- **PNC/Coinbase USDC** was announced November 9 as a limited corporate/institutional pilot: incoming USDC via Coinbase Payment APIs is converted 1:1 into USD in PNC deposit accounts. Reuters independently confirms this is a pilot. It is USDC, not XRP or RLUSD. [Coinbase](https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance) · [Reuters](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
+- **C2FO Instant Pay** is still presented on C2FO's current site as a waitlist with limited US rollout over coming months. The announced XRPL settlement asset is RLUSD; participating capital providers fund the invoices. C2FO's $525B+ historical Early Pay figure is not Instant Pay funding, XRPL throughput or XRP liquidity. [C2FO current page](https://c2fo.com/instant-pay/) · [C2FO/Ripple announcement](https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/).
+- Standard Chartered's RLUSD custody on XRPL is reported live through its DIFC branch; the LMAX collateral-mirroring use remains planned and subject to documentation, testing, laws, approvals and jurisdiction readiness. The instrument is RLUSD, not XRP. [Announcement](https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/).
+
+### ETF flow reconciliation
+Five-fund SoSoValue-based reporting shows 11 sessions without net inflow since October 29 and approximately $19.66M November net outflow through November 13, with about $1.15B net assets. Approximate fund XRP holdings stayed near 1.13–1.14B between September 25 and November 13 while AUM fell from about $1.77B to $1.15B; most AUM decline is consistent with price depreciation rather than equivalent redemptions. Other trackers differ because XRP Insights covers six spot funds plus BITW and excludes GXRP from flow calculations during a data gap; it reports -6.08M XRP for November 9–13 and +3.40M XRP on November 13. CryptoKeyhole's November 13 figure is partial (3/4 funds) and its future-dated November 16 issuer-file metadata read on November 14 is quarantined. Do not average these universes. [Coindaro](https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/) · [CryptoETF.today](https://cryptoetf.today/en/xrp-etf-flows) · [XRP Insights](https://xrp-insights.com/) · [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+
+### Spot snapshot — descriptive only
+At 22:51:34.667 UTC, OKX XRP-USDT reported $0.9685, bid $0.9686, ask $0.9687, 24h volume 63.57M XRP, UTC-day open $0.9145. At the 23:08:28 UTC capture it was 1,013.333 seconds old, beyond the 300-second live-age gate. Kraken reported $0.97327 with no provider event timestamp; the asynchronous mid-price difference was about 47.7 bps. Bybit returned HTTP 403; depth retrieval was unavailable. No synchronized L2 or raw-byte SHA-256 receipt was captured. USD normalization and model admission are rejected.
+
+### Prediction readiness
+The current event registry has 85 curated events and 64 independence groups; all 85 lack publisher-payload `raw_source_sha256`, and 43 lack publisher timestamps. The four baselines, point-in-time store, purged/embargoed walk-forward evaluator, calibration and drift monitoring exist on integration, but no qualified XRP candidate has demonstrated out-of-sample superiority or completed independent shadow evaluation. `latest_signal=NOT_ISSUED`; `signal_accuracy=NOT_EVALUATED`.
+
+### Governance and decision
+**NO MERGE.** Main branch-protection access remains HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; the GitHub connector exposes admin/maintain/push/pull/triage. Full semantic review of all 1,280 changed paths remains incomplete. No PR was merged or closed. No deployment, secret rotation, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, force-push or destructive worktree operation occurred.
+
+### Next concrete actions
+1. Complete semantic review of all 1,280 changed paths, prioritizing 471 Python files, 48 workflows and called scripts.
+2. Establish independent reviewers, enforce branch protection and reduce connector permissions.
+3. Preserve main's unsafe workflow containment until a verified successor is merged.
+4. Capture byte-exact publisher payloads and SHA-256 receipts for all 85 events; establish independent WORM archival and trusted timestamps.
+5. Verify scheduled XRP ingestion on main only after merge gates pass; then complete synchronized historical spot/L2/derivatives/flow data and independent shadow evaluation.
+
+Structured audit: `research/xrp_intelligence/20261115T230828Z-run177-exact-head-ci-institutional-rails-etf-and-market-audit.json`.
