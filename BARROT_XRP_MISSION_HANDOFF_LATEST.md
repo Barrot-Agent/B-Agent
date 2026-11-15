@@ -6867,3 +6867,60 @@ Regression coverage was added to tests/test_xrp_event_timeline_ingestion.py. All
 
 A follow-up control-plane pass also completed inspection of all 48 changed workflow files across main and integration. Twenty-four were high-risk; the remaining 24 were reviewed for triggers, permissions, secrets, external calls, repository writes, artifact flow and approval gates. This is a workflow-control review, not a complete semantic audit of every called script.
 
+
+
+## Run 158 — current integration, full-suite repair, SBI and market reconciliation (2026-11-15T09:14:17Z)
+
+### Repository and execution state
+
+- Main remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`; no main write or merge occurred.
+- Existing integration PR #1662 is open and draft on code head `68c228ce0e17d214b235b146d0e266726bd1ae16`, based directly on current main, with 1,245 changed files. Complete recursive main/integration trees: 1,393/2,487 entries, neither truncated.
+- All four open-PR API pages were fetched: 373 open PRs (361 drafts, 12 non-drafts; 365 target main, eight other bases). No new branch or PR was created.
+- Two event-registry wording defects caused successive one-assertion full-suite failures. SBI Remit wording now states that SBI VC Trade sends XRP in real time; the SBI START bond record distinguishes its separate XRP reward from the JPY coupon/principal. No tests were edited or weakened.
+
+### Exact-head verification on code head 68c228
+
+- Full repository suite: **3,788 passed, 0 failed, 1 skipped, 19 subtests passed** in 100.97 seconds; inclusive coverage **64.02%**.
+- Wheel build and installed-wheel verification passed; the installed package loads Barrot V3, the XRP primary mission and canonical data assets.
+- Six-manifest dependency audit passed (root runtime, development, integrations, Hugging Face Space, legacy and pyproject); zero known vulnerabilities reported.
+- Push and PR fail-closed gates passed. PR-event full-suite/core jobs were skipped by the integration-branch event condition; push CI is the authoritative full-suite evidence.
+- Evidence: [full suite 43697979219](https://github.com/Barrot-Agent/B-Agent/actions/runs/43697979219), [dependency audit 43697979210](https://github.com/Barrot-Agent/B-Agent/actions/runs/43697979210), [push fail-closed 43697979196](https://github.com/Barrot-Agent/B-Agent/actions/runs/43697979196), [PR CI 43697983901](https://github.com/Barrot-Agent/B-Agent/actions/runs/43697983901), [PR dependency audit 43697983888](https://github.com/Barrot-Agent/B-Agent/actions/runs/43697983888), [PR fail-closed 43697983949](https://github.com/Barrot-Agent/B-Agent/actions/runs/43697983949).
+
+### New primary institutional evidence — SBI Holdings, November 2, 2026
+
+SBI Holdings' official 1H FY2026 results presentation (period ended September 30) reports approximately **473M XRP** in Evernorth's treasury, with SBI Group holding **36.1% voting rights** and **20.5% economic interest**. These are Evernorth company ownership measures, not SBI ownership of 36.1% of the XRP treasury.
+
+The same presentation estimates Ripple held **5.23B “Actual XRP”** and **31.4B XRP under escrow**, while approximately **63.35B XRP** was circulated in the market, all as of October 28. These are SBI presentation figures, not independent custody attestations. SBI's crypto-asset business reported 1H FY2026 revenue of JPY23.1B (down 30.1% YoY) and a JPY1.6B pretax loss. SBI also reported 3.05M Japan crypto accounts and JPY1,111.6B combined deposits across VCTRADE, BITPOINT and bitbank; these are platform-wide totals, not XRP balances.
+
+The presentation reports SBI Group use of Claude Security from July 2026 and Claude Mythos from October 2026 for cybersecurity. This is corporate Anthropic adoption, not Barrot authentication.
+
+Primary source: [SBI Holdings 1H FY2026 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf), pages 50–54 and 58–60.
+
+Evernorth's October 14 release names Ripple, Kraken, Coinbase and BitGo as partners for a phased Q4 2026 deployment program from its 473M XRP treasury. It discloses no actual deployed amount or execution volume and says agreements remain subject to customary conditions and approvals. Treat this as announced/planned, not proof of deployment: [Evernorth release](https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo).
+
+### Market and ETF observations — research-only
+
+At 09:14:17 UTC, the latest accessible OKX ticker still carried an 08:55:03.666 UTC provider timestamp (19m13s old): XRP-USDT $0.9535, bid $0.9535/ask $0.9536, 24h volume 102.24M XRP. Top-level ask size was 56.46% of combined top-level size, but the quote fails the 300-second freshness rule. Kraken reported XRP/USD $0.95173 without an exchange event timestamp; its 24h open $0.91378 differs materially from OKX's $0.9823, so 24h changes are not safely comparable. Bybit's earlier quote was stale and its refresh returned HTTP 403. Binance's earlier perpetual funding observation was stale and its refresh returned HTTP 451. Full-depth endpoints were inaccessible; no synchronized L2 snapshot was admitted.
+
+ETF trackers still disagree by universe and method: Alpha Finance (five funds) reports -$1.1M on November 13 and -$581.7K over 30 sessions; XRP Insights (six US spot funds plus BITW) reports -6.079M XRP for November 9–13 but +3.40M XRP on November 13; CryptoTuts reports -$19.13M over seven days and no November 14 fund breakdown. TheXRPInvestor's 12-product universe also includes derivatives, index and income products. Do not average these series or treat issuer-holdings changes as direct cash subscriptions.
+
+Sources: [OKX API](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [Kraken API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [TradRadar derivatives](https://tradradar.io/markets/xrp), [Alpha Finance](https://alphafinance.io/etf/xrp/), [XRP Insights](https://xrp-insights.com/data), [CryptoTuts](https://cryptotuts.co/xrp/etf).
+
+### Prediction-engine truth
+
+- Integration has 51 public-source definitions (49 scheduled, two noncommercial XRPL public-node sources excluded from default scheduling), SQLite point-in-time feature storage, SHA-256 receipt-chain prototypes, event timelines, four deterministic baselines, chronological purged/embargoed walk-forward evaluation, paired temporal/source-clustered moving-block bootstrap, calibration/PSI drift diagnostics and fail-closed forecast ledger/Ed25519 attestation.
+- The curated event registry contains 85 events, but **all 85 still have null raw_source_sha256**. It is not model-eligible. Rendered web/API and PDF text from this run were not captured as byte-exact raw receipts.
+- Scheduled XRP ingestion and the primary mission JSON remain absent from main; no successful scheduled main ingestion has been verified.
+- No trained XRP candidate has demonstrated superiority over all four baselines, and no independent shadow-outcome cohort is qualified. **Forecast remains NOT_ISSUED; accuracy NOT_EVALUATED.**
+
+### PR reconciliation and governance
+
+- #1661 (1,070/1,072 paths overlap), #1660 (970/972), #1643 (670/670) and #1642 (7/7) have source heads that are ancestors of current integration. Their content is integrated into #1662 history; close only after #1662 is merged and verified on main.
+- #1661/#1660's two source-only workflow paths are currently byte-identical to main; source branches carry older action versions. They are superseded-content candidates.
+- #1640 diverges by one source-only commit, but its action-specific Databricks/Kaggle approval inputs and regression tests are present in current integration; its two source-only workflow paths are older versions identical to main. Full diff verification is still required before closure.
+- #1653, #1614, #1615, #1611, #1610, #1608, #1597, #1591, #1605, #1583 and #1581 remain diverged/unique work and must be preserved.
+- PR #1662 remains draft, with zero formal reviews and zero review threads. Main is reported protected; integration is unprotected. Branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is only `* @Barrot-Agent`; connector permissions include admin, maintain, push, pull and triage. **No merge.**
+
+### Next action
+
+Repair the empty current nine-platform capability/authentication map, preserve the Run158 audit and handoff, then run exact-head full CI, dependency/security checks and fail-closed gate on the final documentation head. Complete the 1,245-path semantic review and resolve independent review/least-privilege governance before any merge. Keep scheduled ingestion off main until approval and verify real scheduled runs only after a controlled merge.
