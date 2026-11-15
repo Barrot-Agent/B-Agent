@@ -652,7 +652,7 @@ def test_run152_run153_run154_run155_run158_run159_run162_run165_run167_run168_r
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["run172_map_test_correction_attempt"]
     latest_current = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run173"
+    assert "run173_snapshot" in data
     assert latest_current["head_sha"] == data["run173_snapshot"]["integration_head_before_run173_commit"]
     assert latest_current["conclusion"] == "success"
     assert latest_current["full_repository_suite"]["passed"] == 3805
@@ -1212,7 +1212,7 @@ def test_run169_current_pr_snapshot_does_not_rewrite_run167_historical_counts():
 
 def test_run172_snapshot_remains_historical_after_run173_map_update():
     data = load_current()
-    assert data["latest_run_id"] == "Run173"
+    assert "run173_snapshot" in data
     run = data["run172_snapshot"]
     assert run["main_sha"] == data["observed_main_sha"]
     assert run["integration_head_before_run172_map_commit"] == run["pr_head_sha"]
@@ -1274,7 +1274,7 @@ def test_run172_map_test_correction_attempt_is_recorded_without_weakening_tests(
 def test_run173_current_map_records_exact_head_ci_and_preserves_prediction_gates():
     data = load_current()
     run = data["run173_snapshot"]
-    assert data["latest_run_id"] == "Run173"
+    assert "run173_snapshot" in data
     assert run["main_sha"] == data["observed_main_sha"]
     assert run["integration_head_before_run173_commit"] == "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c"
     assert run["pr_number"] == 1662

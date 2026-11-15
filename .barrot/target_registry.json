@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "targets": [
+    {
+      "id": "autonomous_math",
+      "path": ".barrot/autonomous_tasks/math_task.py",
+      "tests": [
+        ".barrot/autonomous_tasks/test_math_task.py"
+      ],
+      "mode": "controlled",
+      "rollback": true,
+      "enabled": true
+    }
+  ]
+}
