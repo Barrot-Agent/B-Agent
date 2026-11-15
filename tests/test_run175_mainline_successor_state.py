@@ -55,3 +55,21 @@ def test_run175_platform_map_does_not_claim_unverified_external_connections() ->
     assert platforms["Codex"]["authentication_status"] == "UNVERIFIED_NO_AUTH_TEST"
     assert platforms["Groq"]["dispatch"] is False
     assert platforms["ChatGPT"]["external_model_transfer"] is False
+
+
+def test_run175_self_benchmark_is_quarantined_until_isolated() -> None:
+    workflow = (ROOT / ".github/workflows/self-benchmark.yml").read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "GROQ_API_KEY" not in workflow
+    assert "network-disabled" in workflow
+
+
+def test_run175_credential_file_stays_absent_and_ignored() -> None:
+    assert not (ROOT / ".config/gh/hosts.yml").exists()
+    ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    assert ".config/gh/hosts.yml" in ignore
+    audit = _load_map()["run175_snapshot"]["credential_path_audit"]
+    assert audit["open_pr_branch_tips_with_path"] == 8
+    assert audit["content_read"] is False
+    assert audit["credential_rotation_performed"] is False

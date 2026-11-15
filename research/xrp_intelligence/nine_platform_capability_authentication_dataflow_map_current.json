@@ -2,7 +2,7 @@
   "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.1.0",
   "captured_at_utc": "2026-11-15T21:29:23Z",
-  "last_verified_at_utc": "2026-11-15T21:29:23Z",
+  "last_verified_at_utc": "2026-11-15T21:44:17Z",
   "repository": "Barrot-Agent/B-Agent",
   "observed_main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
   "observed_integration_head_before_map_commit": "c71ae4d0fdbd967b56f1122a86559d27812d3690",
@@ -4764,7 +4764,9 @@
         ".github/workflows/databricks-bundle.yml",
         ".github/workflows/deploy-a2a-worker.yml",
         ".github/workflows/sync-huggingface.yml",
-        ".github/workflows/ci.yml"
+        ".github/workflows/ci.yml",
+        ".github/workflows/self-benchmark.yml",
+        "scripts/self_benchmark.py"
       ],
       "findings": {
         "legacy_writers": "Ask Barrot, Barrot Agent, Ping-Pong, Barrot Sync, self-upgrade and media/subagent workflows are disabled/quarantined with empty permissions on the successor.",
@@ -4801,6 +4803,20 @@
         },
         "permission_assessment": "overprivileged",
         "merge_authorization": "No merge: no independent reviewer/approval and semantic review incomplete."
+      },
+      "high_risk_workflows_full_content_reviewed": 12,
+      "self_benchmark": {
+        "main_workflow_manual_dispatch": true,
+        "main_requires_typed_yes": true,
+        "successor_workflow_quarantined": true,
+        "generated_python_executed_in_subprocess": true,
+        "subprocess_inherits_parent_environment": true,
+        "groq_api_key_present_in_parent_environment": true,
+        "network_and_filesystem_isolation": false,
+        "checkout_persist_credentials": false,
+        "risk": "Model-generated code can read inherited GROQ_API_KEY and use runner network/filesystem; no isolation boundary.",
+        "successor_action": "workflow disabled with empty permissions until a secret-free, network-disabled, filesystem-restricted sandbox exists.",
+        "workflow_dispatched": false
       }
     },
     "called_script_semantic_review_complete": false
@@ -7899,7 +7915,9 @@
     "XRPSONAR seven-day ETF outflow sums three reported days; Nov 11-12 have no flow reports and may be missing rather than true zero.",
     "OKX and Kraken spot quotes are not synchronized; Kraken event timestamp is absent. Cross-venue difference is not an executable arbitrage signal.",
     "SBI XRP shareholder coupons distribute XRP through SBI VC Trade but do not establish an open-market purchase or aggregate redemptions.",
-    "SBI Ripple Asia/DSRV research and tokenized-deposit concept proof are not commercial XRPL payment deployments."
+    "SBI Ripple Asia/DSRV research and tokenized-deposit concept proof are not commercial XRPL payment deployments.",
+    "The identical 216-byte .config/gh/hosts.yml blob in eight open PR tips may be a placeholder or credential configuration; contents were not read, so compromise is unconfirmed.",
+    "Self-benchmark is manual and typed-approval gated, but generated Python inherits the Groq key in an unsandboxed subprocess; user confirmation does not substitute for process isolation."
   ],
   "forecast_status": "NOT_ISSUED",
   "source_provenance": [
@@ -12135,58 +12153,97 @@
         "title": "MMI canonical claim fingerprint",
         "base": "security branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1460,
         "title": "XRP institutional multirail Binance/Kamilah handoff",
         "base": "verification archive branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1450,
         "title": "Research successor Binance phase one",
         "base": "research graph branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1440,
         "title": "Stacked repair XRP ledger validator",
         "base": "research graph branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1437,
         "title": "Ledger source addenda",
         "base": "shard migration branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1436,
         "title": "Binance XRP theft graph",
         "base": "shard migration branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1353,
         "title": "Losslessly shard XRP ledger",
         "base": "index pointer migration branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       },
       {
         "number": 1265,
         "title": "Compact XRP ledger index",
         "base": "legacy base branch",
         "draft": true,
-        "classification": "unique/unreviewed"
+        "classification": "blocked",
+        "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
       }
-    ]
+    ],
+    "run175_credential_path_audit": {
+      "path": ".config/gh/hosts.yml",
+      "identical_blob_sha": "f58b27f14436088db99662d3a45c59b8437ec3a1",
+      "size_bytes": 216,
+      "open_pr_branch_tips_with_path": 8,
+      "open_pr_numbers": [
+        1541,
+        1460,
+        1450,
+        1440,
+        1437,
+        1436,
+        1353,
+        1265
+      ],
+      "identical_blob_across_all_eight": true,
+      "absent_from_main": true,
+      "absent_from_successor": true,
+      "ignored_by_main_gitignore": true,
+      "actual_dotenv_files_found": [],
+      "env_example_found": {
+        "path": ".env.example",
+        "size_bytes": 2041,
+        "identical_blob_across_eight": true
+      },
+      "content_read": false,
+      "secret_scanning_alert_status": "NOT_VERIFIED; sensitive endpoint unavailable through current connector",
+      "owner_review_required": true,
+      "credential_rotation_performed": false,
+      "interpretation": "Potential credential exposure only; file may be a placeholder. Do not assume compromise without owner-side inspection."
+    }
   },
   "next_actions": [
     "Add failing_tests:[] to the exact-head successful full-suite snapshot so the test evidence contract is complete.",
@@ -60448,56 +60505,64 @@
           "title": "MMI canonical claim fingerprint",
           "base": "security branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1460,
           "title": "XRP institutional multirail Binance/Kamilah handoff",
           "base": "verification archive branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1450,
           "title": "Research successor Binance phase one",
           "base": "research graph branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1440,
           "title": "Stacked repair XRP ledger validator",
           "base": "research graph branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1437,
           "title": "Ledger source addenda",
           "base": "shard migration branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1436,
           "title": "Binance XRP theft graph",
           "base": "shard migration branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1353,
           "title": "Losslessly shard XRP ledger",
           "base": "index pointer migration branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         },
         {
           "number": 1265,
           "title": "Compact XRP ledger index",
           "base": "legacy base branch",
           "draft": true,
-          "classification": "unique/unreviewed"
+          "classification": "blocked",
+          "blocker": "Owner review required for identical tracked .config/gh/hosts.yml blob in branch tip; unique work preserved; do not close."
         }
       ]
     },
@@ -60566,7 +60631,9 @@
         ".github/workflows/databricks-bundle.yml",
         ".github/workflows/deploy-a2a-worker.yml",
         ".github/workflows/sync-huggingface.yml",
-        ".github/workflows/ci.yml"
+        ".github/workflows/ci.yml",
+        ".github/workflows/self-benchmark.yml",
+        "scripts/self_benchmark.py"
       ],
       "findings": {
         "legacy_writers": "Ask Barrot, Barrot Agent, Ping-Pong, Barrot Sync, self-upgrade and media/subagent workflows are disabled/quarantined with empty permissions on the successor.",
@@ -60603,6 +60670,20 @@
         },
         "permission_assessment": "overprivileged",
         "merge_authorization": "No merge: no independent reviewer/approval and semantic review incomplete."
+      },
+      "high_risk_workflows_full_content_reviewed": 12,
+      "self_benchmark": {
+        "main_workflow_manual_dispatch": true,
+        "main_requires_typed_yes": true,
+        "successor_workflow_quarantined": true,
+        "generated_python_executed_in_subprocess": true,
+        "subprocess_inherits_parent_environment": true,
+        "groq_api_key_present_in_parent_environment": true,
+        "network_and_filesystem_isolation": false,
+        "checkout_persist_credentials": false,
+        "risk": "Model-generated code can read inherited GROQ_API_KEY and use runner network/filesystem; no isolation boundary.",
+        "successor_action": "workflow disabled with empty permissions until a secret-free, network-disabled, filesystem-restricted sandbox exists.",
+        "workflow_dispatched": false
       }
     },
     "market": {
@@ -60809,8 +60890,42 @@
       "Resolve independent review, least-privilege access and branch-protection visibility.",
       "Establish byte-exact raw-source receipts and independent WORM/timestamp anchoring.",
       "Complete synchronized XRP spot/L2/derivatives/exchange-flow/collateral history and shadow evaluation.",
-      "Do not issue a directional forecast until readiness gates pass."
-    ]
+      "Do not issue a directional forecast until readiness gates pass.",
+      "Owner-side inspect the identical .config/gh/hosts.yml blob in eight open PR branch tips; revoke any live GitHub CLI token if present.",
+      "Keep all eight PRs blocked for credential review while preserving their unique work; do not bulk-close.",
+      "Keep self-benchmark quarantined until generated code runs in a secret-free, network-disabled sandbox."
+    ],
+    "credential_path_audit": {
+      "path": ".config/gh/hosts.yml",
+      "identical_blob_sha": "f58b27f14436088db99662d3a45c59b8437ec3a1",
+      "size_bytes": 216,
+      "open_pr_branch_tips_with_path": 8,
+      "open_pr_numbers": [
+        1541,
+        1460,
+        1450,
+        1440,
+        1437,
+        1436,
+        1353,
+        1265
+      ],
+      "identical_blob_across_all_eight": true,
+      "absent_from_main": true,
+      "absent_from_successor": true,
+      "ignored_by_main_gitignore": true,
+      "actual_dotenv_files_found": [],
+      "env_example_found": {
+        "path": ".env.example",
+        "size_bytes": 2041,
+        "identical_blob_across_eight": true
+      },
+      "content_read": false,
+      "secret_scanning_alert_status": "NOT_VERIFIED; sensitive endpoint unavailable through current connector",
+      "owner_review_required": true,
+      "credential_rotation_performed": false,
+      "interpretation": "Potential credential exposure only; file may be a placeholder. Do not assume compromise without owner-side inspection."
+    }
   },
   "run175_next_actions": [
     "Restore the ten exact main .barrot blobs and add byte-hash regression coverage.",
@@ -61035,5 +61150,6 @@
       "source_status": "verified_public_reference_not_raw_receipt",
       "note": "eligible domestic holders receive XRP coupon through SBI VC Trade"
     }
-  ]
+  ],
+  "run175_security_followup_at_utc": "2026-11-15T21:44:17Z"
 }
