@@ -96,6 +96,6 @@ def test_run175_preserves_verified_opencode_default_and_disables_unverified_luna
 def test_run175_gitignore_preserves_current_main_rules_byte_for_byte() -> None:
     data = _load_map()
     payload = (ROOT / ".gitignore").read_bytes()
-    header = b"blob " + str(len(payload)).encode("ascii") + b"\\0"
+    header = b"blob " + str(len(payload)).encode("ascii") + bytes([0])
     actual = hashlib.sha1(header + payload).hexdigest()
     assert actual == data["run175_snapshot"]["preservation"]["main_gitignore_blob_sha1"]
