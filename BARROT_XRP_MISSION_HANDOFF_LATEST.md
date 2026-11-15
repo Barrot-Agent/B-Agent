@@ -5292,3 +5292,67 @@ No new primary-source change was found for SBIC East/Central/West versus SBI Hol
 8. Keep forecast issuance disabled.
 
 No branch or PR was created, no merge/deployment occurred, no source PR was closed, no external model was dispatched, no Databricks write or Kaggle submission occurred, no paper trade or funds transfer occurred, no secret was rotated, and no force-push or destructive worktree operation occurred.
+
+
+---
+
+## Run149 — 2026-11-15 — exact-head CI, bootstrap-policy correction and live cross-venue quote-basis audit
+
+### Repository and exact-head verification
+
+- Main remains `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`; the integration branch is a descendant, 2,444 commits ahead and zero behind.
+- Complete recursive tree counts: main 1,393 entries (516 Python, 100 test, 87 workflow, 44 XRP-named paths); integration 2,475 entries (898 Python, 463 test, 88 workflow, 997 XRP-named paths).
+- PR #1662 remains the single integration workstream, open/draft, 1,233 changed files, zero formal reviews, zero review threads. The complete open-PR inventory was retrieved in four pages: 373 total (361 drafts, 12 non-drafts).
+- The previous exact code head `f7a452018538a4177767c9276d71499bd1cf1fe4` passed its full repository suite: **3,762 passed, zero failed, one skipped, 19 subtests passed**, 64% inclusive coverage, 77% legacy-core coverage, 109.67 seconds. Wheel build and installed Barrot V3/XRP mission verification passed. Six dependency manifests passed with no known vulnerabilities; push and PR fail-closed gates passed. The PR-event Pages validation job was skipped.
+- Main's current CI on `16ec152` passed 848 tests, one skipped and eight subtests. Main Pages build failed with a Liquid syntax error at `GLOBAL_STATE_MANIFEST.md:6456`; deploy was skipped. Main Barrot Sync reports success while its job log contains `ModuleNotFoundError: rich` and masks Git push failure with `git push || true`.
+- Branch-protection read remains HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; GitHub connector permissions include admin/maintain/push/pull/triage. No independent review or effective protection was verified.
+
+### Implemented correction: paired block bootstrap is present
+
+Run148's audit and the ingestion report's generated limitations incorrectly stated that no dependence-aware confidence interval or block-bootstrap adjustment was implemented. Direct code inspection disproves that statement.
+
+- `barrot_agent/evolution/paired_block_bootstrap.py` implements non-circular contiguous-time paired moving-block resampling and source-clustered resampling.
+- `barrot_agent/evolution/walk_forward.py` imports and calls the bootstrap diagnostics for each candidate-versus-baseline comparison.
+- `evaluate_candidate_readiness_uncertainty` implements the stricter policy-v6 candidate gate: at least 10,000 resamples; 95% familywise confidence with 99.375% individual Bonferroni-adjusted confidence across four baselines and two loss metrics; separate out-of-sample and later shadow windows; at least 100 paired origins; five source clusters; and at least five origins per cluster.
+- `barrot_agent/evolution/forecast_ledger.py` validates those thresholds, all baseline comparisons, negative Brier/log-loss intervals and receipt-backed source-cluster IDs before forecast issuance.
+- The full suite on `f7a452` includes the bootstrap and walk-forward regression tests and passed.
+
+The actual remaining limitations are narrower and important: routine walk-forward diagnostics default to 1,000 resamples at 95%; the separate policy-v6 readiness evaluator requires 10,000/99.375%; no trained XRP-specific candidate or independent shadow cohort exists; and the current effective-sample-size calculation counts non-overlapping target intervals but does not remove residual serial dependence or source correlation.
+
+**Executed:** commit `a7bd522b4fc42245e087e13e88c634093bec710a` corrects the stale generated limitation and adds a regression assertion in `tests/test_xrp_public_ingestion.py`. The correction is on the existing integration branch; no new branch or PR was created. **Not yet verified:** no exact-head Actions run or combined status was visible for `a7bd522` at capture time. The 3,762-test result belongs to its parent and is not substituted.
+
+### Fresh spot and derivatives discrepancy — research only
+
+At the 2026-11-15 02:11:23 UTC cutoff:
+
+- OKX XRP-USDT returned 0.9304 at provider time 02:10:07.733 UTC; bid/ask 0.9302/0.9303; 24-hour volume 98.624M XRP.
+- Kraken XRP/USD returned 0.90929 with no provider event timestamp; bid/ask 0.90815/0.90893; 24-hour volume 81.442M XRP.
+- Kraken USDT/USD was 0.99921 with no provider event timestamp. OKX USDT-USD was 0.99949 at 01:59:41.084 UTC.
+- Applying the two unsynchronized USDT basis observations to OKX's XRP-USDT quote yields roughly 0.92967–0.92993 USD, about 2.24–2.27% above Kraken's XRP/USD last. This is an unresolved venue/time/quote-basis discrepancy, not arbitrage evidence. No full-depth synchronized books or sequence continuity were captured; none of these observations is model-admissible.
+- Liqwall's 02:02 UTC snapshot reports XRP at 0.9007, $973M aggregate open interest (-1.2% 24h), average funding -0.0051%/8h, $47.5M liquidations ($45.9M longs), 72.2% of Binance position accounts long and 45.7% of Hyperliquid accounts long. It is a provider aggregate at a different timestamp; account ratios are not notional exposure.
+- Alpha Finance's five-fund series through Nov 13 reports -$1.1M daily and -$19.1M over seven sessions. XRP Insights' six spot funds plus BITW series reports -6.079M XRP for Nov 9–13 (about -$6.5M). Different universes and flow definitions; do not average.
+
+**New engineering requirement:** the ingestion registry has no USDT/USD basis source and explicitly leaves Binance/OKX/Bybit USDT quotes unconverted. Add authorized, timestamped USDT/USD basis feeds and preserve raw pair prices before any normalized cross-venue comparison. Keep all current cross-venue gaps excluded until basis and event-time synchronization are verified.
+
+### Main/integration and PR backlog
+
+Main does not contain `barrot_agent/data/missions/primary_mission.json` or `.github/workflows/xrp-public-ingestion.yml`; both exist on integration. The ingestion workflow is main-ref-only, scheduled hourly and daily, read-only, and uses 90-day artifacts plus a seven-day checkpoint and evictable cache. It has not been verified running on main and is not WORM storage.
+
+Key overlap checks: #1661 (1,070/1,072 paths overlap, two source-only workflows); #1660 (970/972, two source-only); #1643 (670/670, semantic equivalence unproven); #1642 (7/7); #1640 (278/280, two source-only); #1653 (one of seven overlaps, six unique); #1614 (30/57 overlap, 27 unique); #1615 (1/14 overlap, 13 unique); #1269 (1/9 overlap, eight unique); #1655 (5/8 overlap, three unique); #1659 (2/6 overlap, four unique); #1641 (zero of three overlap); #1611 (7/8 overlap, one unique). These remain individually classified; path overlap is not semantic duplication. No source PR was closed.
+
+### Forecast, identity and safety status
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No trained candidate or independent shadow cohort exists. SBIC East/Central/West remain distinct regional SME investment companies, separate from SBI Holdings and from SB OAI Japan GK (OpenAI/SoftBank JV). No new primary partnership or XRP-settlement evidence was established. ASK Coin has no verified canonical XRPL issuer; "actual capital" remains an accounting taxonomy; Kamilah Stevenson channel ownership remains unverified. ChatGPT-to-GitHub is authenticated but overprivileged; the other eight platforms remain unverified as live connections.
+
+**NO MERGE.** PR #1662 remains draft with zero independent approvals; semantic reconciliation of all 1,233 paths is incomplete; branch protection and least privilege remain unresolved; Pages publication authorization is unresolved; and the new code correction has no exact-head CI yet. No deployment, external-model dispatch, secret operation, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source-PR closure occurred.
+
+### Next concrete actions
+
+1. Obtain exact-head full-suite, wheel, dependency and fail-closed results for `a7bd522` and the final Run149 handoff commit.
+2. Keep the bootstrap correction and regression test; do not revert to the stale “no block bootstrap” claim.
+3. Add timestamped, authorized USDT/USD basis sources and normalized quote features with explicit source-age and FX-basis gates.
+4. Complete synchronized full-depth multi-venue L2 and broader historical derivatives data.
+5. Preserve the existing integration PR, finish the 1,233-path semantic review, obtain independent approval, least-privilege access, verifiable branch protection and explicit Pages publication authorization before any merge.
+6. Train/evaluate a candidate only after point-in-time history and independent shadow outcomes exist; retain the 10,000-resample policy-v6 gate.
+
+Structured audit: [Run149 exact-head CI, bootstrap correction and live venue-basis audit](research/xrp_intelligence/20261115T021123Z-run149-exact-head-ci-bootstrap-correction-and-live-venue-basis-audit.json).
