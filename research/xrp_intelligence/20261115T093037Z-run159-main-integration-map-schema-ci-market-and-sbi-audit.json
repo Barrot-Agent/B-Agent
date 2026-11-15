@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "BARROT_XRP_MISSION_RUN_AUDIT",
+  "run_id": 159,
+  "captured_at_utc": "2026-11-15T09:30:37Z",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_at_capture": "30d9aba3b433b806f0d96e4264e4d8838a8a105a",
+    "ahead_by": 2479,
+    "behind_by": 0,
+    "main_tree": {
+      "entries": 1393,
+      "files": 1283,
+      "python": 516,
+      "tests": 97,
+      "workflows": 87,
+      "research": 30,
+      "truncated": false
+    },
+    "integration_tree": {
+      "entries": 2488,
+      "files": 2368,
+      "python": 899,
+      "tests": 459,
+      "workflows": 88,
+      "research": 720,
+      "truncated": false
+    },
+    "pr": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "changed_files": 1246,
+      "workflow_files": 48,
+      "other_paths": 1198,
+      "public_web_paths": 7,
+      "additions": 345581,
+      "deletions": 6309,
+      "commits": 2479,
+      "formal_reviews": 0,
+      "formal_approvals": 0,
+      "review_threads": 0
+    },
+    "open_prs": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "base_main": 365,
+      "other_base": 8
+    }
+  },
+  "execution": {
+    "inspected_current_main": true,
+    "complete_recursive_trees": true,
+    "all_open_pr_pages": true,
+    "open_pr_diff_inventory": true,
+    "branch_ancestry": true,
+    "ci_and_job_logs": true,
+    "dependencies_and_security": true,
+    "branch_protection_and_rulesets": true,
+    "latest_handoff": true,
+    "existing_branch_only": true,
+    "new_branch": false,
+    "new_pr": false,
+    "main_modified": false,
+    "tests_weakened": false,
+    "exact_head_rerun_pending": true
+  },
+  "ci": {
+    "last_fully_passing": {
+      "head": "68c228ce0e17d214b235b146d0e266726bd1ae16",
+      "run": 43697979219,
+      "passed": 3788,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage": 64.02,
+      "wheel": true,
+      "installed_mission": true
+    },
+    "latest": {
+      "head": "30d9aba3b433b806f0d96e4264e4d8838a8a105a",
+      "run": 43698623827,
+      "job": 132764584263,
+      "passed": 3745,
+      "failed": 43,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage": 64,
+      "duration": 177.24,
+      "conclusion": "failure",
+      "failing_tests": [
+        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_is_nonempty_and_contains_the_nine_requested_platforms",
+        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_never_claims_unverified_platforms_are_live",
+        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_keeps_lunaroute_declared_but_not_authenticated",
+        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_preserves_fail_closed_permissions_and_no_money_actions",
+        "tests/test_nine_platform_capability_authentication_dataflow_map.py::test_current_map_task_assignments_are_design_only_until_authentication",
+        "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_current_map_schema_and_capture_timestamps_are_consistent",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_primary_mission_and_v3_foundation_are_explicit",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_nine_platform_map_verifies_only_the_current_chatgpt_connector",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_lunaroute_is_declared_but_not_authenticated",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_nine_platform_coordination_is_design_only_without_external_exchange",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_least_privilege_and_external_action_gates_remain_closed",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_superseded_pr_1660_is_retained_until_successor_merge",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_workflow_review_counts_and_xrp_collector_branch_scope_are_explicit",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_lunaroute_only_architecture_quarantines_secondary_brain_deployment",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_source_registry_counts_are_consistent",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_prediction_engine_production_gaps_keep_forecasts_disabled",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_spot_orderbook_is_resting_liquidity_not_guaranteed_support",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_exchange_flow_snapshot_keeps_unattributed_transfer_separate",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_derivatives_provider_disagreement_is_preserved_without_averaging",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_options_snapshot_keeps_near_and_deferred_expiry_skew_distinct",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_etf_flow_windows_and_holdings_limitations_are_separate",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_cftc_contract_reconciliation_treats_dropped_contract_as_unknown",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_institutional_and_capital_relationships_keep_entities_and_categories_separate",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_macro_and_geopolitical_observations_keep_competing_hypotheses",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_disagreements_and_counterhypotheses_are_preserved",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_source_provenance_and_current_backlog_classification_are_explicit",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_latest_market_refresh_is_research_only_and_preserves_provider_disagreement",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_snapshot_is_append_only_and_preserves_original_branch_identity",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_market_refresh_preserves_point_in_time_and_provider_disagreement",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_ci_failure_is_classified_as_map_schema_not_runtime_failure",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_evernorth_capital_reconciles_without_double_counting",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_collateral_distinguishes_wrapped_cbxrp_from_native_xrpl_lending",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run20_sbi_and_sbic_entity_relationships_remain_separate",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_github_connector_admin_scope_is_explicitly_flagged",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run23_research_remains_non_model_eligible_and_preserves_disagreement",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_xrp_ingestion_artifact_retention_is_not_mislabeled_worm",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_remain_historical_and_run155_is_latest_ci"
+      ]
+    },
+    "core": {
+      "run": 43698623827,
+      "job": 132764584533,
+      "passed": 742,
+      "failed": 0,
+      "subtests": 8
+    },
+    "dependency_audit": {
+      "run": 43698623822,
+      "job": 132764584389,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run": 43698623825,
+      "job": 132764584399,
+      "passed": true
+    },
+    "pr_event": {
+      "run": 43698628646,
+      "conclusion": "success",
+      "full_suite": "skipped by integration-branch condition",
+      "core_tests": "skipped by integration-branch condition",
+      "pages_validation": "success"
+    }
+  },
+  "map_schema_regression": {
+    "prior_schema": "1.1.0",
+    "prior_blob_sha": "518477fc78f101f8869d3f2724aff408d5981777",
+    "prior_bytes": 1594191,
+    "compact_schema": "1.2.0",
+    "compact_blob_sha": "b83d4a39a7ac3f4be86d6fc566c6ca0d34a6dec3",
+    "compact_bytes": 6928,
+    "failed_tests": 43,
+    "root_cause": "Compact v1.2 removed the v1.1 contract and changed the Hugging Face key; required authentication/data-flow, repository/CI, market, institutional, provenance and historical fields were lost.",
+    "correction": "Restore v1.1, preserve v1.2 compact object additively, append Run158/Run159 and update latest-run test.",
+    "tests_weakened": false,
+    "exact_head_rerun_pending": true
+  },
+  "market": {
+    "captured_at_utc": "2026-11-15T09:30:37Z",
+    "admission": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "raw_source_receipts": {
+      "captured_by_barrot": false,
+      "sha256_captured": false,
+      "reason": "Web-rendered public API responses were inspected; raw response bytes were not ingested into Barrot's receipt archive."
+    },
+    "spot": {
+      "okx": {
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "pair": "XRP-USDT",
+        "last": 0.9687,
+        "bid": 0.9686,
+        "ask": 0.9687,
+        "event_time_utc": "2026-11-15T09:28:34.161Z",
+        "open24h": 0.9886,
+        "high24h": 0.9983,
+        "low24h": 0.8929,
+        "volume24h_xrp": 103854639.260532,
+        "top_bid_size_xrp": 2112.964944,
+        "top_ask_size_xrp": 2695.235061,
+        "top_ask_share_percent": 56.055,
+        "spread_basis_points": 1.0324
+      },
+      "kraken": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "pair": "XRP/USD",
+        "last": 0.97096,
+        "bid": 0.97009,
+        "ask": 0.97018,
+        "event_timestamp_available": false,
+        "open24h": 0.91378,
+        "high24h": 0.99738,
+        "low24h": 0.89112,
+        "volume24h_xrp": 84500344.65439923
+      },
+      "okx_usdt_usd": {
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+        "pair": "USDT-USD",
+        "last": 0.99957,
+        "bid": 0.99956,
+        "ask": 0.99957,
+        "event_time_utc": "2026-11-15T09:19:15.059Z"
+      }
+    },
+    "quote_basis": {
+      "same_venue_basis_skew_seconds": 559.102,
+      "max_allowed_skew_seconds": 60,
+      "max_source_age_seconds": 300,
+      "normalization_admitted": false,
+      "reason": "OKX USDT/USD basis is 559.102 seconds older than XRP-USDT; both skew and freshness gates fail."
+    },
+    "cross_venue": {
+      "kraken_comparison_admitted": false,
+      "reason": "Kraken ticker has no exchange event timestamp; no synchronized spread or arbitrage conclusion."
+    },
+    "bybit": {
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "status": "HTTP_403"
+    },
+    "l2": {
+      "full_depth": "NOT_CAPTURED",
+      "model_eligible": false,
+      "notes": "OKX books/trades endpoints were inaccessible through web retrieval; no full-depth snapshot or sequence continuity admitted."
+    },
+    "model_eligible": false
+  },
+  "institutional": {
+    "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+    "publication_date": "2026-11-02",
+    "reporting_period_end": "2026-09-30",
+    "page50": {
+      "as_of": "2026-10-28",
+      "market_circulated_xrp": 63350000000,
+      "ripple_actual_xrp": 5230000000,
+      "ripple_escrow_xrp": 31400000000,
+      "classification": "SBI presentation figures; not an independent audit of Ripple wallets."
+    },
+    "page51": {
+      "evernorth_xrp_treasury": 473000000,
+      "as_of": "2026-11-02",
+      "sbi_group_voting_rights_percent": 36.1,
+      "sbi_group_economic_interest_percent": 20.5,
+      "classification": "Evernorth treasury, not direct SBI Holdings inventory."
+    },
+    "pages53_54": {
+      "bitbank_wholly_owned_by_sbi_holdings_effective": "2026-10-01",
+      "combined_platform_accounts": 3050000,
+      "combined_customer_deposits_jpy": 1111600000000,
+      "platforms": [
+        "SBI VC Trade",
+        "BITPOINT",
+        "bitbank"
+      ],
+      "as_of": "2026-09-30",
+      "classification": "Platform-wide accounts/deposits, not XRP-specific holdings or inflows."
+    },
+    "pages59_60": {
+      "claude_security": "SBI says Claude Mythos/Claude Security was introduced across SBI Group for cybersecurity and vulnerability diagnosis.",
+      "classification": "Institutional SBI adoption, not Barrot authentication or authorization."
+    }
+  },
+  "prediction_engine": {
+    "source_definitions": 51,
+    "hourly": 46,
+    "weekly": 3,
+    "scheduled": 49,
+    "excluded_xrpl_public_nodes": 2,
+    "event_registry_events": 85,
+    "event_registry_raw_hashes": 0,
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authenticated; admin permission overprivileged",
+    "Claude": "unverified for Barrot; SBI adoption is not a connector",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "unverified",
+    "Hugging Face": "no verified deployment",
+    "Kaggle": "untested",
+    "Databricks": "prior HTTP 403; no write",
+    "external_dispatch": false,
+    "external_evidence_exchange": false,
+    "red_team_quorum": false
+  },
+  "pr_backlog": {
+    "1614": "unique prediction/feature work",
+    "1615": "unique security work",
+    "1640": "278/280 overlap; preserve two unique paths",
+    "1642": "7/7 path overlap; semantic review",
+    "1643": "670/670 path overlap; semantic review",
+    "1653": "unique knowledge graph work",
+    "1660": "1,963 ahead/52 behind; 970/972 path overlap; retain",
+    "1661": "1,070/1,072 path overlap; retain",
+    "1662": "BLOCKED_ACTIVE_INTEGRATION_DRAFT",
+    "confirmed_duplicate_closures": []
+  },
+  "merge_decision": {
+    "status": "NO_MERGE",
+    "reasons": [
+      "PR #1662 draft",
+      "zero independent formal reviews or approvals",
+      "exact-head suite failed on captured head; corrective rerun pending",
+      "1,246 paths not fully semantically reviewed",
+      "least-privilege access unresolved",
+      "branch protection detail HTTP 403",
+      "Pages side effects not authorized"
+    ]
+  },
+  "external_actions": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operation": false,
+    "source_pr_closure": false,
+    "main_branch_mutation": false
+  },
+  "next_actions": [
+    "Verify exact-head full suite and gates on correction commit.",
+    "Finish semantic review of 1,246 paths, workflows and called scripts.",
+    "Resolve independent review, least privilege, branch protection and Pages authorization.",
+    "Keep main-only ingestion off main until authorized merge.",
+    "Build synchronized historical XRP data and independent shadow cohort before candidate training or forecasts."
+  ]
+}

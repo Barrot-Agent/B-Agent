@@ -634,16 +634,18 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_remain_historical_and_run155_is_latest_ci():
+def test_run152_run153_run154_run155_remain_historical_and_run158_run159_are_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
     run154 = data["run154_snapshot"]
     run155 = data["run155_snapshot"]
+    run158 = data["run158_snapshot"]
+    run159 = data["run159_snapshot"]
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run155"
+    assert data["latest_run_id"] == "Run159"
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
     assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
@@ -721,17 +723,18 @@ def test_run152_run153_run154_remain_historical_and_run155_is_latest_ci():
     assert final_verification["correction"]["tests_weakened"] is False
     assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
     assert latest["conclusion"] == "failure"
-    assert latest["full_repository_suite"]["passed"] == 3787
-    assert latest["full_repository_suite"]["failed"] == 1
+    assert latest["full_repository_suite"]["passed"] == 3745
+    assert latest["full_repository_suite"]["failed"] == 43
     assert latest["full_repository_suite"]["exact_head"] is True
-    assert latest["failing_tests"] == ["tests/test_xrp_nine_platform_current_map_run73.py::test_run152_and_run153_snapshots_remain_historical_and_run154_is_latest_ci"]
+    assert len(latest["failing_tests"]) == 43
+    assert any("current_map" in name for name in latest["failing_tests"])
     assert "exact-head full-suite failed" in latest["failure_classification"].lower()
     assert run154["forecast_status"] == "NOT_ISSUED"
     assert run154["accuracy_status"] == "NOT_EVALUATED"
     assert run154["merge_decision"] == "NO_MERGE"
 
     last_good = data["ci_evidence"]["last_fully_passing_full_suite"]
-    assert run155["integration_head_before_map_handoff_commit"] == data["integration_pr"]["head_sha"]
+    assert run155["integration_head_before_map_handoff_commit"] == run155["full_suite"]["head_sha"]
     assert run155["full_suite"]["head_sha"] == run155["integration_head_before_map_handoff_commit"]
     assert run155["full_suite"]["passed"] == 3788
     assert run155["full_suite"]["failed"] == 0
@@ -741,19 +744,19 @@ def test_run152_run153_run154_remain_historical_and_run155_is_latest_ci():
     assert run155["dependency_audit"]["manifests"] == 6
     assert run155["dependency_audit"]["known_vulnerabilities"] == 0
     assert run155["fail_closed_gate"]["passed"] is True
-    assert last_good["head_sha"] == run155["full_suite"]["head_sha"]
+    assert last_good["head_sha"] == run158["full_suite"]["head_sha"]
     assert last_good["passed"] == 3788
     assert last_good["failed"] == 0
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
-    assert latest["full_repository_suite"]["coverage_percent"] == 64.02
+    assert latest["full_repository_suite"]["coverage_percent"] == 64.0
     assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
     assert latest["dependency_audit"]["manifests"] == 6
     assert latest["dependency_audit"]["known_vulnerabilities"] == 0
     assert latest["fail_closed_gate"]["passed"] is True
     assert latest["fail_closed_gate"]["automatic_merge_enabled"] is False
-    assert data["run155_test_correction"]["head_sha"] == latest["head_sha"]
+    assert data["run155_test_correction"]["head_sha"] == data["run155_current_head_ci_failure"]["head_sha"]
     assert data["run155_test_correction"]["correction"]["tests_weakened"] is False
     assert data["run155_test_correction"]["corrected_in_next_commit"] is True
     assert data["run155_map_handoff_commit_ci"].startswith("FAILED_ON_6757c")
@@ -763,3 +766,60 @@ def test_run152_run153_run154_remain_historical_and_run155_is_latest_ci():
     assert data["run155_no_external_actions"]["deployment"] is False
     assert data["run155_no_external_actions"]["external_model_transfer"] is False
 
+
+
+    assert run158["integration_head_at_capture"] == run158["full_suite"]["head_sha"]
+    assert run158["full_suite"]["head_sha"] == "68c228ce0e17d214b235b146d0e266726bd1ae16"
+    assert run158["full_suite"]["run_id"] == 43697979219
+    assert run158["full_suite"]["passed"] == 3788
+    assert run158["full_suite"]["failed"] == 0
+    assert run158["full_suite"]["skipped"] == 1
+    assert run158["full_suite"]["subtests"] == 19
+    assert run158["full_suite"]["coverage_percent"] == 64.02
+    assert run158["full_suite"]["wheel_build"] is True
+    assert run158["full_suite"]["installed_mission"] is True
+    assert run158["dependency_audit"]["manifests"] == 6
+    assert run158["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run158["fail_closed_gate"]["passed"] is True
+    assert run159["integration_head_at_capture"] == run159["full_suite"]["head_sha"]
+    assert run159["full_suite"]["head_sha"] == "30d9aba3b433b806f0d96e4264e4d8838a8a105a"
+    assert run159["full_suite"]["run_id"] == 43698623827
+    assert run159["full_suite"]["passed"] == 3745
+    assert run159["full_suite"]["failed"] == 43
+    assert run159["full_suite"]["skipped"] == 1
+    assert run159["full_suite"]["subtests"] == 19
+    assert run159["full_suite"]["coverage_percent"] == 64.0
+    assert run159["full_suite"]["exact_head"] is True
+    assert len(run159["full_suite"]["failing_tests"]) == 43
+    assert run159["core_tests"]["passed"] == 742
+    assert run159["core_tests"]["failed"] == 0
+    assert run159["dependency_audit"]["passed"] is True
+    assert run159["dependency_audit"]["manifests"] == 6
+    assert run159["dependency_audit"]["known_vulnerabilities"] == 0
+    assert run159["fail_closed_gate"]["passed"] is True
+    assert run159["pr_event"]["full_suite"] == "skipped by integration-branch condition"
+    assert run159["map_schema_regression"]["failed_tests"] == 43
+    assert run159["map_schema_regression"]["tests_weakened"] is False
+    assert run159["forecast_status"] == "NOT_ISSUED"
+    assert run159["accuracy_status"] == "NOT_EVALUATED"
+    assert run159["merge_decision"] == "NO_MERGE"
+    assert last_good["head_sha"] == run158["full_suite"]["head_sha"]
+    assert last_good["passed"] == 3788
+    assert last_good["failed"] == 0
+    assert latest["head_sha"] == run159["full_suite"]["head_sha"]
+    assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
+    assert latest["full_repository_suite"]["passed"] == 3745
+    assert latest["full_repository_suite"]["failed"] == 43
+    assert latest["full_repository_suite"]["skipped"] == 1
+    assert latest["full_repository_suite"]["subtests"] == 19
+    assert latest["full_repository_suite"]["coverage_percent"] == 64.0
+    assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
+    assert "map schema regression" in latest["failure_classification"].lower()
+    assert "not a runtime or xrp prediction-engine failure" in latest["failure_classification"].lower()
+    assert data["ci_evidence"]["full_repository_suite"]["head_sha"] == latest["head_sha"]
+    assert data["ci_evidence"]["full_repository_suite"]["failed"] == 43
+    assert data["schema_version"] == "1.1.0"
+    assert data["run158_compact_map_snapshot"]["schema_version"] == "1.2.0"
+    assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
+    assert data["run158_map_schema_regression"]["compact_snapshot_preserved_additively"] is True
+    assert data["run158_map_schema_regression"]["tests_weakened"] is False
