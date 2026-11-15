@@ -7842,3 +7842,145 @@ Implemented on integration: scheduled public-source ingestion definitions, SHA-2
 Next: verify the new Run164 map/audit/handoff commits with exact-head full-suite, dependency and fail-closed checks; complete the 1,252-path/48-workflow called-script review; resolve independent review, least privilege, branch-protection and Pages authorization; capture byte-exact receipts for the 85 events; only then consider controlled merge and verify scheduled ingestion on main.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run165 — 2026-11-15 — Exact-head CI, XRP risk-off/liquidity reconciliation, Coinbase stablecoin macro and XRPL activity
+
+**Mission:** XRP intelligence and measured prediction-engine mastery. Preserve Barrot V3 as the execution, orchestration, authorization, safety and verification foundation.
+
+### Repository state and exact-head verification
+
+- Main SHA: `16ec152c5278d38fd8fb4ad8b361de88ab5c7da9`.
+- Integration branch: `integration/xrp-v3-unified-main-20261112`.
+- Integration head before this Run165 evidence commit: `49afd8a365ee333909262e3186b6d9bb006fdaf9`.
+- Main recursive tree: 1,393 entries (1,283 blobs, 110 trees), 516 Python files, 97 test files, 79 workflows.
+- Integration recursive tree: 2,495 entries (2,375 blobs, 120 trees), 899 Python files, 459 test files, 80 workflows. Both trees were complete, not truncated.
+- PR #1662: open, draft, mergeable/clean at Git level; 2,504 commits ahead, zero behind; 1,253 changed files, +350,513/-6,309; zero formal reviews, zero review threads, zero requested reviewers.
+- Open PR inventory retrieved across all four pages: 373 total, 361 drafts and 12 non-drafts.
+- Exact-head full suite on `49afd8a365ee333909262e3186b6d9bb006fdaf9`: **3,796 passed, zero failed, one skipped, 19 subtests passed, 64.02% inclusive coverage, 77% legacy-core coverage, 152.17 seconds**. Wheel build and installed Barrot V3/XRP mission verification passed.
+- Full suite: https://github.com/Barrot-Agent/B-Agent/actions/runs/43724019275
+- Six-manifest push dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43724019189 — all six groups passed, zero known vulnerabilities.
+- Push fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43724019211 — passed, merge disabled.
+- PR Pages build-only validation: https://github.com/Barrot-Agent/B-Agent/actions/runs/43724024964 — passed and global mission manifest rendered. PR-event full-suite/core jobs were skipped by the integration-branch condition; the push-event full suite is authoritative.
+- PR dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43724024973 — passed.
+- PR fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43724025029 — passed.
+- This Run165 evidence/map/handoff commit creates a new head and must receive its own exact-head full-suite, dependency and fail-closed verification. The 3,796-test result belongs to `49afd8a365ee333909262e3186b6d9bb006fdaf9`, not the new evidence commit.
+
+### Main health and workflow side effects
+
+- Latest main Cross Analysis scheduled run 43721191456 succeeded on main SHA; it is read-only and did not commit.
+- Latest main Pillars Consistency Check 43716820298 failed: GitHub App credentials missing and Hugging Face Space reported BUILD_ERROR.
+- Main CI 43650499432 passed.
+- Main Pages build 43650499344 failed; deployment job skipped. Prior Liquid parse error at `GLOBAL_STATE_MANIFEST.md:6456` remains unresolved.
+- Main Barrot Sync 43650499411 reports success despite `ModuleNotFoundError: No module named rich` and a masked `git push || true` failure. Classify as false-green.
+- Main branch metadata reports protected=true, but the branch-protection endpoint returns HTTP 403; visible required status contexts are empty. Fallback ruleset 10863829 is disabled. Integration branch is unprotected.
+- CODEOWNERS remains `* @Barrot-Agent`; no independent reviewer is defined. Current connector permissions remain admin, maintain, push, pull and triage; least privilege FAIL.
+- The previous Run164 review covered 48 changed workflow files and 16 unchanged high-risk workflows. Called-script semantic review remains incomplete.
+
+### Fresh XRP spot snapshot — descriptive, not model-eligible
+
+Capture time: 2026-11-15 14:31:27 UTC.
+
+- OKX XRP-USDT: last $0.9655; bid/ask $0.9654/$0.9655; provider timestamp 14:27:12.668 UTC (254.332 seconds old); 24-hour open $0.9853, UTC-day open $0.9145, high $0.9889, low $0.8929; volume 101.75M XRP.
+- OKX best-level spread ~1.04 bps; top-level bid-size imbalance +71.35%.
+- Kraken XRP/USD: last $0.96638; bid/ask $0.96583/$0.96590; no provider event timestamp; best-level spread ~0.73 bps; top-level bid-size imbalance +92.94%.
+- Cross-venue mid gap ~4.30 bps; last-price gap ~9.11 bps. These are asynchronous USD/USDT observations, not executable arbitrage.
+- OKX USDT/USD: $0.99958, provider timestamp 14:30:16.069 UTC (71.0 seconds old). The XRP-USDT and USDT-USD event timestamps differ by 183.401 seconds, exceeding Barrot's 60-second same-venue basis-skew gate. USD normalization is rejected.
+- OKX's last is about 2.01% below its rolling 24-hour open, 5.58% above UTC-day open and 8.13% above the 24-hour low. Do not confuse rolling 24-hour open with UTC-day open.
+- No synchronized full-depth L2 snapshot or byte-exact raw HTTP receipt/SHA-256 was captured. These observations remain model-ineligible.
+
+Sources:
+- OKX XRP-USDT: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+- OKX USDT-USD: https://www.okx.com/api/v5/market/ticker?instId=USDT-USD
+- Kraken XRP/USD: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+### Derivatives — large liquidation pressure, incompatible provider totals
+
+**Liqwall, as of 14:12 UTC (19.45 minutes old at capture):**
+- $41.9M total XRP liquidations in 24 hours.
+- $37.6M longs (90%); $4.3M shorts.
+- Binance $19.3M, Bybit $9.2M, Hyperliquid $7.3M, OKX $4.3M, Gate $1.3M.
+- https://liqwall.com/liquidations/xrp
+
+**OptimistFi, as of Nov 15 06:51 ET / 11:51 UTC (about 2h40m old):**
+- 37-venue XRP perpetual aggregate, not Hyperliquid-only.
+- OI $1.1B, down 11.8% over 24 hours; volume $3.4B.
+- Funding -5.8% annualized; $15.9M 24-hour and $55M seven-day liquidations.
+- Taker buys 48%; net taker flow -$56.3M/24h and -$513.7M/7d, but +$1.7M/1h and +$2.8M/4h.
+- https://optimistfi.com/perps/markets/xrp
+
+The $41.9M and $15.9M liquidation totals are materially different. Preserve provider universe, methodology and vintage; do not average. Long-side deleveraging is supported, but it does not establish next-price direction. Positive 1h/4h taker flow and the spot rebound are counter-evidence to a one-sided continuation narrative.
+
+### ETF and broader liquidity
+
+- US spot XRP ETFs reportedly recorded about $19.13M net outflows for Nov 9–13, described by sources citing SoSoValue as the largest weekly outflow since March.
+- Cumulative net inflows since launch remain about $1.79B; reported net assets around $1.15B. Weekly outflow is about 1.66% of that reported asset figure.
+- Fund universes and source coverage differ. CoinPaper, Kriptofoni and XRP Macro share underlying SoSoValue/CoinGlass prints; their agreement is not three independent datasets. AUM change is not equal to cash outflow, and issuer holdings changes are not direct subscriptions.
+- https://www.kriptofoni.com/en/xrp-price-level-since-november-2024/
+- https://coinpaper.com/38867/why-is-xrp-crashing-today-ripple-token-falls-18-in-a-week-as-bitcoin-and-ethereum-selloff-deepens
+- https://xrpmacro.com/brief/b2f4c6d8-1113-4a11-9e13-20261113a0e1
+
+### Coinbase institutional macro — primary-source finding
+
+Coinbase Institutional's November 13 weekly commentary reports that combined USDT, USDC and DAI supply contracted by $11.5B over 30 days, the largest 30-day drop in its series; its comparison is approximately $9.2B after TerraUSD collapsed in May 2022. Coinbase also reports futures pricing about 64 basis points of Fed hikes over the next 12 months, up from 37 basis points earlier in November; October headline CPI +0.4% m/m, core +0.3%, and DXY 102.9.
+
+https://www.coinbase.com/institutional/research-insights/research/weekly-market-commentary/weekly-2026-11-13
+
+Coinbase's October 29 Q3 2026 earnings release reports:
+- 10.7% crypto trading-volume market share in Q3, with spot and derivatives gains.
+- Average USDC held in Coinbase products of $22B, about 30% of average USDC market cap.
+- Coinbase says it captured approximately 50% of USDC economics over the past year.
+- Crypto derivatives volume grew at 179% compound annual rate over two years.
+
+https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx
+
+Interpretation: system-wide stablecoin supply contraction and Coinbase's $22B average USDC held are different measures and can coexist. These Coinbase metrics describe stablecoin distribution/platform concentration and broader macro liquidity; they are not XRP inflows, XRP collateral demand or XRP settlement volume.
+
+### XRPL activity — useful but purpose attribution remains unresolved
+
+XRPL Dashboard's own-node page shows ledger 108,347,329 at 14:18:39 UTC, closing about every 4 seconds, network operating normally; 5,552 new accounts in 24h and 40,216 in 7d; 30,252 pools, 22,317 priced pools and estimated AMM TVL of $36.11M. The dashboard's price check failed. Its escrow/wallet supply refresh has been paused since Oct 14, so those supply figures are withheld.
+
+The dashboard's separate “What's new” panel is only as of ledger 108,336,368 at 03:45 UTC, not the 14:18 live snapshot. It reports RLUSD XRPL supply -$1.3M (-0.17%) and AMM TVL +$377K; preserve the older panel vintage.
+
+https://xrpldashboard.com/
+
+U.Today, citing XRPScan, reports payment volume around 1.1B XRP (+139.9%) and active accounts 42,300 (+154.5%). This is one secondary report; it does not identify transaction purpose or prove new buying. Automated trading, exchange transfers, liquidation/cash-out movements and organic payments remain competing explanations.
+
+https://u.today/xrp-ledger-creates-new-baseline-1-billion-secured
+
+### Prediction and source-integrity status
+
+Implemented on integration: scheduled public-source definitions, SHA-256 receipt-chain prototype, SQLite point-in-time feature store, event timelines/counter-hypotheses, naive/momentum/mean-reversion/volatility baselines, purged/embargoed chronological walk-forward testing, paired temporal/source-clustered block bootstrap, calibration, PSI drift monitoring, fail-closed fixed-horizon forecast ledger and Ed25519 evaluator attestation.
+
+Still blocking:
+1. All 85 curated event-registry entries lack byte-exact publisher-payload SHA-256 receipts.
+2. Independent WORM archival and trusted timestamp anchoring are absent.
+3. Synchronized historical multi-venue spot/L2, derivatives, exchange-flow and collateral coverage is incomplete.
+4. No XRP-specific candidate has demonstrated out-of-sample superiority against all four baselines.
+5. No qualified independent shadow-outcome cohort.
+6. Scheduled XRP ingestion and the primary mission manifest remain integration-only; no successful run on main.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** Web excerpts were not retained as original raw publisher bytes; `raw_source_sha256=null`. All Run165 market observations are descriptive only.
+
+### PR backlog and merge decision
+
+- Open PRs: 373 (361 drafts, 12 non-drafts); all four pages retrieved.
+- #1662 remains the sole consolidated integration PR and is still draft.
+- #1661/#1660 are supersession candidates; each retains two unique workflow paths.
+- #1643/#1642 are ancestry/path-overlap candidates, not certified for closure.
+- #1640 diverges and retains two unique workflow paths.
+- Preserve unique/diverged work in #1641, #1614, #1611, #1608, #1605, #1603, #1602/#1601/#1600/#1590, #1597, #1591, #1586, #1583, #1581, #1653 and #1269. Path overlap alone is not semantic duplicate certification.
+- No source PR was closed.
+
+**NO MERGE.** #1662 is draft, has zero formal approvals/reviews and no independent requested reviewer. Integration is unprotected; main protection details are unavailable via the connector, visible required contexts are empty, fallback ruleset is disabled, and CODEOWNERS is self-only. Semantic review of all 1,253 paths and called scripts is incomplete. Main Pages publication side effects remain unresolved.
+
+### Next actions
+
+1. Verify exact-head full suite, dependency audit and fail-closed gates on the Run165 evidence commit.
+2. Complete semantic review of all 1,253 changed paths and called scripts for the 48 changed workflows.
+3. Resolve independent review, least-privilege access, branch-protection visibility and Pages publication authorization.
+4. Capture byte-exact receipts for the 85 curated events and establish independent WORM/time anchoring.
+5. Build synchronized historical multi-venue spot/L2/derivatives/exchange-flow/collateral datasets and independent shadow outcomes.
+6. Qualify an XRP candidate only after out-of-sample superiority over all four baselines and calibration policy pass.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation, source-PR closure or main-branch write occurred.
