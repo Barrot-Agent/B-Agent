@@ -4776,3 +4776,57 @@ Reuters reported on November 2 that Binance experienced about $4.72B of net outf
 **NO MERGE.** PR #1662 remains draft, with no independent formal approvals. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`; branch-protection API returns 403; fallback ruleset 10863829 is disabled; the connected GitHub identity has admin permission. Full semantic reconciliation of all 1,227 changed paths is incomplete, and package-discovery warnings remain.
 
 Next: resolve independent review and least-privilege governance; inspect the two setuptools package warnings; complete the remaining workflow/code semantic review; fix main's Barrot Sync false-green behavior and Pages Liquid error; only then merge the read-only XRP ingestion after exact-head full-suite, dependency/security, approval and branch-protection requirements pass. Verify scheduled ingestion actually runs on main. Forecast remains `NOT_ISSUED`; accuracy `NOT_EVALUATED`.
+
+
+## Run145 XRP supply, Evernorth closing and capital-flow reconciliation
+
+### Ripple supply: two valid but different circulating-supply definitions
+SBI Holdings' November 2 presentation labels the October 28 XRP distribution as:
+- 63.35B market-circulating XRP.
+- 5.23B Ripple-held “Actual XRP” outside escrow and not in circulation.
+- 31.4B XRP in escrow.
+- Approximately 10M burned.
+This “Actual XRP” label is a Ripple wallet/supply classification, not a cash or “actual capital” measure. [SBI FY2026 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf) <Cite ref="turn546485view0"/>
+
+The XRP Insights ledger-derived tracker reports 31.1B escrow at ledger 108,313,145 on November 13, 23:29 UTC, with 68.89B broad circulating supply. It defines broad circulation as supply less escrow and burn, therefore including Ripple's non-escrow operational wallets. SBI's narrower 63.35B figure subtracts the 5.23B Ripple-held amount. These denominators must not be mixed. <Cite ref="turn252194view1"/>
+
+The same tracker reports 1B gross escrow unlocks on November 1, about 700M re-escrowed and approximately 300M net leaving escrow; over 12 months it estimates 12B gross releases, 8.4B re-escrowed and 3.6B net outflow. The next 1B gross unlock is December 1. This is ledger-derived secondary aggregation, not proof of 300M XRP sold or added to free float. <Cite ref="turn252194view1"/>
+
+### Exchange, ETF, DeFi and RWA inventory
+The November 13 tracker reports 22.26B XRP in 707 attributed wallets across 24 exchanges. The largest balances include Upbit 6.47B, Coinbase 5.81B, Binance 2.64B, Bithumb 1.79B, Uphold 1.69B, Kraken 956.6M, bitbank 580.3M and SBI VC Trade 56.3M. Coinbase includes cbXRP backing; Binance includes Binance-Peg backing. These are omnibus/cold-storage wallet balances, not tradable float. Geographic totals use exchange headquarters, not customer residency. <Cite ref="turn252194view1"/>
+
+The tracker reports 1.19B XRP of ETF/index holdings across seven products, 422.9M XRP in DeFi/AMM and $4.33B of XRPL RWA registry notional. Only $276M is described as distributed investor float; $4.054B is represented/registry notional. The $4.33B headline must not be used as transferable collateral or liquid market float. The seven-product ETF holdings universe is not the same as the five-fund ETF-flow dashboards. <Cite ref="turn252194view1"/>
+
+### Evernorth: primary SEC evidence resolves the closing and wallet movement
+The SEC Q3 2026 10-Q and October 9/October 13 closing filings confirm that the business combination closed **October 9, 2026**, with XRPN trading beginning October 12. The secondary XRP Insights page's later note that no closing 8-K had been found is superseded by these primary filings. <Cite refs={['turn474634view2','turn286399view1','turn695008search1']}/>
+
+The closing XRP calculation is:
+- Evernorth pre-close: 346,284,972 XRP.
+- Pathfinder contribution from Ripple: 126,791,458 XRP.
+- Additional delayed funding: 200,000 XRP.
+- Evernorth transferred 346,484,972 XRP to Pathfinder after closing.
+- Combined company total: **473,276,430 XRP**.
+SBI's November 2 presentation rounds this to 473M. <Cite refs={['turn474634view2','turn286399view1','turn695008search1','turn546485view0']}/>
+
+This materially improves the interpretation of the tracker’s 370.347M XRP moved out of attributed wallets by October 22. The SEC-disclosed 346.485M transfer to Pathfinder is close in size and could explain most of the movement as corporate restructuring/custody transfer, not sale. The exact wallet destinations and transaction IDs have not yet been matched, so this remains a strong hypothesis, not a proven transaction reconciliation. <Cite ref="turn252194view1"/>
+
+### Evernorth capital: cash, XRP in-kind, equity conversion and debt
+The SEC filing distinguishes:
+- $214.05M prior cash advance proceeds, used to purchase 84.366M XRP. The purchase is use of cash proceeds, not a second raise.
+- 261.919M XRP contributed directly to Evernorth.
+- 126.791M XRP contributed through Pathfinder.
+- $10.5M delayed cash funding and 200,000 additional XRP at closing.
+- $272.6M gross cash proceeds at closing, comprising $224.6M private placements and $48M SPAC trust, before expenses.
+- $524.260M of refundable investor advances settled through equity at closing; no cash was repaid for those advances.
+- $35.3M gross warrant-exercise cash from October 12 through November 9.
+- $30M PIK convertible notes, approximately $29M net proceeds.
+- An equity line for up to 5.219M shares at 97% of qualifying VWAP; facility capacity is not cash received.
+
+The company reported $271M of digital-asset impairment over nine months. Q3 net income of $155.264M was driven primarily by a $162.834M fair-value gain on refundable investor advances; it is not evidence of operating profitability. September 30 unrestricted cash was only $91,397 and working capital was negative $10M. These financial-quality factors matter when evaluating the sustainability of the XRP treasury strategy. <Cite ref="turn474634view2"/>
+
+### Ownership and personnel network
+The October 13 SEC amendment reports SBI Holdings with 9,431,914 Class A shares and 2,359,038 Class C shares. SBI's November 2 presentation reports 36.1% voting rights and 20.5% economic interest. Those figures use different share classes/denominators and dates; the complete post-close cap table must be reconciled before treating them as interchangeable. Ripple is separately reported with a 7.1% Class A interest, Chris Larsen 9.9%, and the Arrington sponsor 19.9% of Class A voting shares. <Cite refs={['turn695008search1','turn546485view0']}/>
+
+Evernorth's CEO Asheesh Birla has a Ripple background; its CIO Hugo Jeandesboz came from Coinbase Asset Management/Coinbase derivatives. BitGo Bank & Trust, National Association is disclosed as custodian. This creates a direct SBI–Ripple–Coinbase–BitGo institutional network around a public XRP treasury, but does not mean those institutions themselves own the entire 473M XRP or that all holdings are liquid. <Cite refs={['turn286399view1','turn695008search1']}/>
+
+**Research consequence:** the next high-value task is to reconcile the 346.485M XRP Pathfinder transfer against the 370.347M attributed-wallet outflow, and to separate market-circulating supply, Ripple operational XRP, escrow releases, institutional treasury holdings, exchange omnibus balances, ETF holdings and transferable RWA float. Do not create a forecast feature from the 473M treasury number without point-in-time ownership/custody and transfer classification.

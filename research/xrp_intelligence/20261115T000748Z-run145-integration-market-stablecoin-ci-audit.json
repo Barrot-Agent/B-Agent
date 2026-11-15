@@ -159,7 +159,28 @@
       "setuptools warns that data.research is absent from the explicit packages configuration",
       "project.license TOML table deprecation warning",
       "GitHub Actions cache budget reached and cache became read-only"
-    ]
+    ],
+    "latest_exact_head": {
+      "head": "ad530f133e1e9b655d177ee01501459a1907d40e",
+      "full_suite_run_id": 43657852248,
+      "full_suite_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657852248",
+      "conclusion": "success",
+      "tests_passed": 3762,
+      "tests_failed": 0,
+      "tests_skipped": 1,
+      "subtests_passed": 19,
+      "inclusive_coverage_percent": 63.96,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_mission_verification": "passed",
+      "dependency_audit_run_id": 43657852234,
+      "dependency_audit_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657852234",
+      "fail_closed_gate_run_id": 43657852225,
+      "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657852225",
+      "pr_event_run_id": 43657858464,
+      "pr_event_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43657858464",
+      "pr_event_core_and_full_suite": "skipped by integration-branch condition; PR Pages validation passed"
+    }
   },
   "workflow_security_review": {
     "reviewed_high_risk_diffs": true,
@@ -825,5 +846,156 @@
     },
     "basis": "Circle's collaboration agreement allocates Coinbase compensation tied to USDC held on Coinbase and broader ecosystem growth.",
     "distinction": "These are Circle distribution expenses paid in connection with Coinbase agreements, not Coinbase's USDC rewards expense."
-  }
+  },
+  "xrp_supply_reconciliation": {
+    "sbi_holdings_primary_presentation": {
+      "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "as_of": "2026-10-28",
+      "max_supply_xrp": 100000000000,
+      "market_circulating_xrp": 63350000000,
+      "ripple_actual_non_escrow_holdings_xrp": 5230000000,
+      "ripple_escrow_xrp": 31400000000,
+      "burned_xrp": 10000000,
+      "definition": "SBI presentation labels 5.23B as 'Actual XRP' held by Ripple outside escrow and not in circulation; this is not a cash/capital metric."
+    },
+    "ledger_derived_escrow_tracker": {
+      "source": "https://xrp-insights.com/xrp-radar/escrow",
+      "ledger_as_of": "2026-11-13T23:29:00Z",
+      "ledger_index": 108313145,
+      "escrow_xrp": 31100000000,
+      "escrow_objects": 99,
+      "owner_accounts": 8,
+      "next_unlock_utc": "2026-12-01T00:00:00Z",
+      "next_gross_unlock_xrp": 1000000000,
+      "trailing_12_month_gross_releases_xrp": 12000000000,
+      "trailing_12_month_reescrow_xrp": 8400000000,
+      "trailing_12_month_net_escrow_outflow_xrp": 3600000000,
+      "monthly_net_average_xrp": 300000000,
+      "caveat": "Third-party ledger-derived tracker; not independently queried from XRPL nodes in this run. Gross unlock is not market sale or circulating-float addition."
+    },
+    "circulating_supply_definitions": {
+      "tracker_broad_circulating_xrp": 68890000000,
+      "broad_definition": "100B max less 31.1B escrow and approximately 14.4M burned; includes Ripple non-escrow operational holdings.",
+      "sbi_market_circulating_xrp_as_of_2026_10_28": 63350000000,
+      "narrow_definition": "SBI subtracts Ripple's 5.23B actual non-escrow holdings from the broad market float.",
+      "reconciliation": "The approximately 5.23B difference is primarily a definition difference; the dates also differ. Do not mix these denominators in market-cap or supply features."
+    },
+    "market_allocation_tracker": {
+      "source": "https://xrp-insights.com/xrp-radar",
+      "as_of": "2026-11-13T23:29:00Z",
+      "attributed_exchange_wallets_xrp": 22260000000,
+      "exchange_count": 24,
+      "exchange_balances_xrp": {
+        "Upbit": 6470000000,
+        "Coinbase": 5810000000,
+        "Binance": 2640000000,
+        "Bithumb": 1790000000,
+        "Uphold": 1690000000,
+        "Kraken": 956600000,
+        "bitbank": 580300000,
+        "SBI VC Trade": 56300000
+      },
+      "geography_by_exchange_hq_xrp": {
+        "South_Korea": 8590000000,
+        "United_States": 8460000000,
+        "Japan": 1380000000
+      },
+      "etf_and_index_holdings_xrp": 1190000000,
+      "etf_aum_usd": 1220000000,
+      "defi_and_amm_xrp": 422900000,
+      "rwa_registry_notional_usd": 4330000000,
+      "rwa_distributed_investor_float_usd": 276000000,
+      "rwa_registry_represented_notional_usd": 4054000000,
+      "caveats": [
+        "Exchange balances include omnibus custody and cold storage, not free float.",
+        "Coinbase balance includes cbXRP backing; Binance includes Binance-Peg backing.",
+        "Geography is based on exchange headquarters, not customer residency.",
+        "ETF/index holdings use seven products, unlike five-fund ETF flow dashboards.",
+        "RWA total includes registry/represented notional; only $276M is described as distributed investor float. Do not treat $4.33B as transferable liquidity."
+      ]
+    }
+  },
+  "evernorth_capital_reconciliation": {
+    "primary_sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/xrpn-20261113.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067000/xrpn-20261009.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068000/xrpn-20261013.htm",
+      "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+    ],
+    "business_combination": {
+      "closed_date": "2026-10-09",
+      "trading_start": "2026-10-12",
+      "evidence": "SEC Q3 10-Q and closing 8-K/October 13 amendment confirm the business combination closed. This supersedes the secondary XRP Insights page's note that no closing 8-K had been found."
+    },
+    "xrp_holdings_at_close": {
+      "evernorth_pre_close_xrp_as_of_2026_09_30": 346284972,
+      "pathfinder_xrp_contributed_by_ripple": 126791458,
+      "delayed_funding_xrp_at_close": 200000,
+      "evernorth_xrp_transferred_to_pathfinder_after_close": 346484972,
+      "combined_xrp_at_close": 473276430,
+      "status": "SEC filing reconciles the 473.276M XRP company-reported holding; SBI's November 2 presentation rounds it to 473M."
+    },
+    "wallet_flow_reconciliation": {
+      "tracker_attributed_wallet_balance_xrp": 103129905,
+      "tracker_cumulative_outflow_from_attributed_wallets_xrp": 370346663,
+      "sec_disclosed_transfer_to_pathfinder_xrp": 346484972,
+      "difference_xrp": 23861691,
+      "hypothesis": "The SEC-disclosed 346.485M transfer to Pathfinder could explain most of the tracker-observed 370.347M movement out of previously attributed wallets as a corporate restructuring/custody transfer rather than sale.",
+      "status": "Plausible size match, not transaction-ID proof. Wallet destination mapping and transaction hashes still need reconciliation. Do not classify as exchange deposit or sale."
+    },
+    "capital_sources_and_uses": {
+      "gross_cash_proceeds_at_close_usd": 272600000,
+      "gross_cash_proceeds_composition_usd": {
+        "private_placements": 224600000,
+        "spac_trust": 48000000
+      },
+      "prior_cash_advance_proceeds_usd": 214049995,
+      "cash_used_to_purchase_xrp_usd": 214049995,
+      "xrp_purchased_with_cash": 84365876,
+      "direct_xrp_contributions_to_evernorth": 261919096,
+      "pathfinder_xrp_contribution": 126791458,
+      "investor_advances_settled_through_equity_usd": 524259563,
+      "cash_repaid_for_those_advances_usd": 0,
+      "warrant_exercise_cash_gross_usd": 35300000,
+      "warrant_exercise_period": "2026-10-12 through 2026-11-09",
+      "convertible_notes_principal_usd": 30000000,
+      "convertible_notes_net_proceeds_usd": 29000000,
+      "convertible_notes_type": "4% payment-in-kind notes due 2031",
+      "equity_line_max_shares": 5218935,
+      "equity_line_price": "97% of qualifying VWAP, subject to conditions",
+      "equity_line_cash_proceeds": "not established; facility capacity is not cash received"
+    },
+    "financial_quality": {
+      "unrestricted_cash_as_of_2026_09_30_usd": 91397,
+      "working_capital_deficit_as_of_2026_09_30_usd": 10000000,
+      "digital_asset_impairment_9m_usd": 271000000,
+      "q3_net_income_usd": 155264000,
+      "q3_fair_value_gain_on_refundable_investor_advances_usd": 162834000,
+      "nine_month_net_loss_usd": 32870000,
+      "interpretation": "Q3 net income was driven primarily by fair-value accounting on refundable investor advances; it is not evidence of operating profitability. XRP impairment and financing costs materially affect the treasury economics."
+    },
+    "ownership_and_people": {
+      "sbi_holdings_sec_oct_13_8k_class_a_shares": 9431914,
+      "sbi_holdings_sec_oct_13_8k_class_c_shares": 2359038,
+      "class_c_share_of_class_c_percent": 7.5,
+      "sbi_nov_2_presentation_voting_rights_percent": 36.1,
+      "sbi_nov_2_presentation_economic_interest_percent": 20.5,
+      "ripple_sec_ownership_class_a_percent": 7.1,
+      "chris_larsen_sec_ownership_class_a_percent": 9.9,
+      "arrington_sponsor_sec_ownership_class_a_percent": 19.9,
+      "caveat": "The SEC share counts and SBI presentation voting/economic percentages use different share classes/denominators and dates; reconcile the full post-close cap table before treating the percentages as interchangeable.",
+      "ceo": "Asheesh Birla, former Ripple executive",
+      "cio": "Hugo Jeandesboz, former Coinbase Asset Management co-CIO and Coinbase derivatives professional",
+      "custodian": "BitGo Bank & Trust, National Association, under disclosed custody agreements"
+    },
+    "conclusion": "Evernorth is a public XRP treasury with approximately 473.276M XRP at closing, backed by cash, in-kind XRP, Pathfinder and post-close financing. The SBI ownership link is substantial. XRP contributions, cash used to buy XRP, investor advances converted to equity, warrant exercises, notes and conditional equity facilities must remain separate. The large on-chain wallet outflow is plausibly explained in part by the SEC-disclosed transfer to Pathfinder, not proven sales."
+  },
+  "sources_additional": [
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/xrpn-20261113.htm",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067000/xrpn-20261009.htm",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068000/xrpn-20261013.htm",
+    "https://xrp-insights.com/xrp-radar/escrow",
+    "https://xrp-insights.com/xrp-radar",
+    "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+  ]
 }
