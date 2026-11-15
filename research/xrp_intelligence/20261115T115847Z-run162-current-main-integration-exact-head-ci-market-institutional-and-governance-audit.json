@@ -394,6 +394,23 @@
       "fail_closed_push": 43717356700,
       "fail_closed_pr": 43717362056,
       "pages_validation_pr": 43717361945
+    },
+    "latest_documentation_update_attempt": {
+      "head_sha": "d6dbb63626e407ecd2f3ac0fd9d4ab608a7f53ea",
+      "run_id": 43718721150,
+      "job_id": 132825798733,
+      "conclusion": "failure",
+      "passed": 3794,
+      "failed": 1,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 103.29,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current"
+      ],
+      "classification": "Exact-head full-suite on d6dbb636 completed with 3,794 passed, 1 failed, 1 skipped and 19 subtests. The sole failure is an evidence-contract KeyError: the full_repository_suite snapshot omitted an explicit empty failing_tests array while the top-level latest attempt correctly had failing_tests=[]. No runtime, ingestion or XRP prediction-engine test failed. Add failing_tests:[] to the successful historical snapshot and preserve separate current/historical heads.",
+      "last_fully_passing_head": "35270afdac9a61e17c777dca534184a4acb8db2b"
     }
   },
   "correction": {
@@ -939,15 +956,16 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Finish semantic review of all 1,249 changed paths and the called scripts behind all 48 changed workflow files.",
-    "Resolve independent formal review and CODEOWNERS; current CODEOWNERS assigns all paths to @Barrot-Agent.",
-    "Resolve least-privilege GitHub permissions and obtain branch-protection details; main is protected but required status contexts are empty and details return HTTP 403, while fallback ruleset 10863829 is disabled.",
+    "Add failing_tests:[] to the exact-head successful full-suite snapshot so the test evidence contract is complete.",
+    "Bind Run152's current assertions to the new d6db current-head snapshot and preserve the 35270 final verified pass as last-good.",
+    "Rerun the entire repository suite on the next exact head; do not weaken or remove tests.",
+    "Finish semantic review of all 1,249 changed paths, including 48 workflows and every called script.",
+    "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
     "Keep main's unsafe Barrot Sync, Ping-Pong and autonomous write workflows quarantined until a verified fail-closed successor is merged.",
     "Explicitly authorize or decouple the main Pages publication side effect; PR build-only validation succeeds but merge would publish.",
     "Treat missing GitHub App credentials, Databricks HTTP 403 and Hugging Face BUILD_ERROR as unresolved platform authentication/runtime blockers; do not rotate secrets or deploy without explicit authorization.",
     "Add byte-exact raw-source receipts to the 85-event registry and establish independent WORM storage and trusted timestamp anchoring.",
     "Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets; preserve provider disagreement and source independence.",
-    "Train an XRP candidate only after the dataset is sufficient, then require out-of-sample superiority over all four baselines, calibration, drift controls and independent shadow outcomes.",
     "Do not issue a directional XRP forecast until the prediction-readiness policy passes."
   ],
   "current_integration_head_after_first_correction": "fb1e554fc469be246de1755e84774d91a405094e",
@@ -955,13 +973,13 @@
     "number": 1662,
     "state": "open",
     "draft": true,
-    "head_sha": "35270afdac9a61e17c777dca534184a4acb8db2b",
+    "head_sha": "d6dbb63626e407ecd2f3ac0fd9d4ab608a7f53ea",
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "ahead_by": 2495,
+    "ahead_by": 2496,
     "behind_by": 0,
-    "commits": 2495,
+    "commits": 2496,
     "changed_files": 1249,
-    "additions": 348713,
+    "additions": 348838,
     "deletions": 6309
   },
   "research_addendum": {
@@ -1495,5 +1513,6 @@
       "external_call_observed": false,
       "integration_successor": "disabled with permissions empty"
     }
-  }
+  },
+  "current_integration_head_after_latest_test": "d6dbb63626e407ecd2f3ac0fd9d4ab608a7f53ea"
 }

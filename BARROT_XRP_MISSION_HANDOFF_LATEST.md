@@ -7589,3 +7589,10 @@ Main's latest Barrot Sync wrapper, [43650499411](https://github.com/Barrot-Agent
 **NO MERGE.** Exact-head tests, dependency audits, fail-closed gates and PR Pages validation pass, but draft status, absent independent approvals, branch-protection visibility, overprivileged access, incomplete semantic review and the unauthorized Pages publication side effect remain blockers.
 
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No deployment, secret rotation, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source-PR closure occurred.
+
+
+## Run162 documentation-update head d6dbb636 — one evidence-contract failure
+
+The full repository suite on exact head `d6dbb63626e407ecd2f3ac0fd9d4ab608a7f53ea` completed with **3,794 passed, 1 failed, 1 skipped, 19 subtests**, 64.02% inclusive coverage, in 103.29 seconds. The single failure is `KeyError: failing_tests` in the Run152 evidence assertion: the successful full-suite snapshot omitted an explicit empty `failing_tests: []` field while the top-level latest-attempt record contained that field. No runtime, ingestion or XRP prediction-engine test failed. The last fully passing exact head remains `35270afd`, with 3,794 passed and zero failed.
+
+The next correction adds the explicit empty array to the successful snapshot, preserves `35270afd` as the last fully passing head, and records the d6db attempt separately. No test is removed or weakened.
