@@ -131,7 +131,7 @@ def test_superseded_pr_1660_is_retained_until_successor_merge():
     assert old["number"] == 1660
     assert old["state"] == "open"
     assert old["draft"] is True
-    assert old["behind_by"] == 3
+    assert old["behind_by"] == 52
     assert "retained until successor merge" in old["disposition"].lower().replace("_", " ")
     assert "exact main-file verification" in old["disposition"].lower()
     assert current["head_sha"] == data["repository_state"]["integration_head_before_current_map_commit"]
@@ -634,7 +634,7 @@ def test_run67_snapshot_is_additive_and_preserves_model_eligibility_gates():
     assert isinstance(data["identity_research"]["sbic"], dict)
     assert isinstance(data["source_provenance"], list)
 
-def test_run152_run153_run154_run155_remain_historical_and_run158_run159_are_current():
+def test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current():
     data = load_current()
     run152 = data["run152_snapshot"]
     run153 = data["run153_snapshot"]
@@ -645,7 +645,7 @@ def test_run152_run153_run154_run155_remain_historical_and_run158_run159_are_cur
     corrective = run154["corrective_attempt"]
     final_verification = run154["final_verification"]
     latest = data["ci_evidence"]["latest_attempt"]
-    assert data["latest_run_id"] == "Run159"
+    assert data["latest_run_id"] == "Run162"
     assert run152["integration_head_at_capture"] == "2e9ddebe2220025b0f9ae731a304c06580c73742"
     assert run152["documentation_commit_head_sha"] == "3ffda1a61bb2586c3c750b314595ba9666cbd765"
     assert run152["documentation_commit_head_sha"] != run153["integration_head_at_capture"]
@@ -723,10 +723,10 @@ def test_run152_run153_run154_run155_remain_historical_and_run158_run159_are_cur
     assert final_verification["correction"]["tests_weakened"] is False
     assert latest["head_sha"] == data["repository_state"]["latest_full_suite_tested_head"]
     assert latest["conclusion"] == "failure"
-    assert latest["full_repository_suite"]["passed"] == 3745
-    assert latest["full_repository_suite"]["failed"] == 43
+    assert latest["full_repository_suite"]["passed"] == 3781
+    assert latest["full_repository_suite"]["failed"] == 7
     assert latest["full_repository_suite"]["exact_head"] is True
-    assert len(latest["failing_tests"]) == 43
+    assert len(latest["failing_tests"]) == 7
     assert any("current_map" in name for name in latest["failing_tests"])
     assert "exact-head full-suite failed" in latest["failure_classification"].lower()
     assert run154["forecast_status"] == "NOT_ISSUED"
@@ -750,7 +750,7 @@ def test_run152_run153_run154_run155_remain_historical_and_run158_run159_are_cur
     assert latest["full_repository_suite"]["head_sha"] == latest["head_sha"]
     assert latest["full_repository_suite"]["skipped"] == 1
     assert latest["full_repository_suite"]["subtests"] == 19
-    assert latest["full_repository_suite"]["coverage_percent"] == 64.0
+    assert latest["full_repository_suite"]["coverage_percent"] == 64.02
     assert latest["full_repository_suite"]["failing_tests"] == latest["failing_tests"]
     assert latest["dependency_audit"]["manifests"] == 6
     assert latest["dependency_audit"]["known_vulnerabilities"] == 0
@@ -823,3 +823,22 @@ def test_run152_run153_run154_run155_remain_historical_and_run158_run159_are_cur
     assert data["run158_map_schema_regression"]["full_v1_1_schema_restored"] is True
     assert data["run158_map_schema_regression"]["compact_snapshot_preserved_additively"] is True
     assert data["run158_map_schema_regression"]["tests_weakened"] is False
+
+
+def test_run162_snapshot_is_append_only_and_research_remains_model_ineligible():
+    data = load_current()
+    run = data["run162_snapshot"]
+    assert run["run_id"] == "Run162"
+    assert run["repository"]["main_sha"] == data["observed_main_sha"]
+    assert run["integration_head_before_map_commit"] == run["integration_pr"]["head_sha"]
+    assert run["ci"]["full_repository_suite"]["head_sha"] == run["integration_head_before_map_commit"]
+    assert run["ci"]["full_repository_suite"]["failed"] == 7
+    assert run["ci"]["full_repository_suite"]["exact_head"] is True
+    assert run["market"]["model_eligible"] is False
+    assert run["market"]["raw_source_receipts"]["captured_by_barrot"] is False
+    assert run["forecast_status"] == "NOT_ISSUED"
+    assert run["accuracy_status"] == "NOT_EVALUATED"
+    assert run["institutional"]["trust_bank_convergence"].startswith("Coinbase National Trust")
+    assert run["workflow_safety"]["main_barrot_sync"]["external_call_observed"] is False
+    assert run["no_external_actions"]["merge"] is False
+    assert run["no_external_actions"]["real_money"] is False
