@@ -250,7 +250,6 @@ def test_barrot_auto_pr_has_no_unnecessary_pull_request_write_permission() -> No
 def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
     names = (
         "webmcp-trend-digest.yml",
-        "self-benchmark.yml",
         "financial-data-refresh.yml",
         "research-topics.yml",
         "frontier-digest.yml",
@@ -265,6 +264,14 @@ def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
         assert "persist-credentials: false" in content, name
         assert "upload-artifact@v7" in content, name
         assert "git push" not in content, name
+
+
+def test_self_benchmark_is_quarantined_until_generated_code_is_sandboxed() -> None:
+    content = _read("self-benchmark.yml")
+    assert "permissions: {}" in content
+    assert "if: ${{ false }}" in content
+    assert "GROQ_API_KEY" not in content
+    assert "network-disabled" in content
 
 
 def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -> None:
@@ -412,7 +419,6 @@ def test_barrot_ops_fails_closed_when_approved_external_credentials_are_missing(
 def test_all_groq_external_research_workflows_are_main_only_and_exact_sha_pinned() -> None:
     names = (
         "webmcp-trend-digest.yml",
-        "self-benchmark.yml",
         "financial-data-refresh.yml",
         "research-topics.yml",
         "frontier-digest.yml",
