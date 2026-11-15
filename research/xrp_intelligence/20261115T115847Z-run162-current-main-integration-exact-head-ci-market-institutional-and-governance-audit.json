@@ -206,6 +206,62 @@
         "dependency_audit_run": 43714052793,
         "fail_closed_gate_run": 43714052822
       }
+    },
+    "latest_handoff_update_commit": {
+      "head_sha": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
+      "run_id": 43715073313,
+      "job_id": 132814719670,
+      "conclusion": "failure",
+      "passed": 3788,
+      "failed": 3,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "duration_seconds": 176.85,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run152_run153_run154_run155_run158_run159_remain_historical_and_run162_is_current",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_snapshot_is_append_only_and_research_remains_model_ineligible",
+        "tests/test_xrp_nine_platform_current_map_run73.py::test_run162_map_minification_commit_snapshot_tracks_current_exact_head"
+      ],
+      "classification": "Exact-head full-suite failed on 53e2aa881807fdd9e56d5bf018aec6bde6f26726: three evidence-contract mismatches, not runtime or XRP prediction-engine failures. The defects are (1) top-level latest CI metadata remained on fb1e while the latest immutable snapshot was 10f6455, (2) the Run162 workflow-safety snapshot lacked the main_barrot_sync.external_call_observed field, and (3) the historical minification test incorrectly compared its own head to stale top-level latest metadata. The follow-up preserves four immutable Run162 head snapshots and points the top-level latest attempt to 53e2.",
+      "core_tests": {
+        "head_sha": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
+        "run_id": 43715073313,
+        "job_id": 132814719318,
+        "passed": 742,
+        "failed": 0,
+        "subtests": 8,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "dependency_audit": {
+        "passed": true,
+        "manifests": 6,
+        "known_vulnerabilities": 0,
+        "push_run_id": 43715073331,
+        "pr_run_id": 43715077511,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "fail_closed_gate": {
+        "passed": true,
+        "automatic_merge_enabled": false,
+        "push_run_id": 43715073334,
+        "pr_run_id": 43715077556,
+        "conclusion": "success",
+        "exact_head": true
+      },
+      "pr_event": {
+        "run_id": 43715077534,
+        "conclusion": "success",
+        "pages_validation": "success",
+        "pages_validation_job_id": 132814766002,
+        "pages_manifest_rendered": true,
+        "core_tests": "skipped by integration-branch condition",
+        "full_suite": "skipped by integration-branch condition",
+        "dependency_audit_run": 43715077511,
+        "fail_closed_gate_run": 43715077556
+      }
     }
   },
   "correction": {
@@ -268,8 +324,7 @@
     "xrp_ingestion": "integration-only, main-ref-only schedule, read-only repository permissions, artifacts/cache; not WORM; no main run.",
     "manual_external_actions": "Databricks workspace import/Kaggle download, Cloudflare deployment/secret rotation, Hugging Face upload and Coinbase paper simulation were not dispatched.",
     "pr_pages_validation": {
-      "run_id": 43714052787,
-      "job_id": 132811643988,
+      "run_id": 43715077534,
       "conclusion": "success",
       "manifest_rendered": true,
       "build_only": true
@@ -756,12 +811,13 @@
     "main_branch_write": false
   },
   "next_actions": [
-    "Correct the three remaining evidence-contract assertions: bind the original seven-failure Run162 snapshot separately from the latest attempt, set model_eligible=false explicitly on the Run162 market snapshot, and use the required evidence-contract wording.",
-    "Rerun the full repository suite on the next exact integration head; retain all historical Run152-Run162 snapshots and do not weaken tests.",
-    "Finish semantic review of all 1,249 changed paths, including 48 workflow files and every called script.",
+    "Update top-level latest CI evidence to the completed 53e2 exact-head run and preserve earlier Run162 snapshots separately.",
+    "Add main_barrot_sync.external_call_observed=false to the original Run162 workflow-safety snapshot, preserving the observed missing-rich false-green main run.",
+    "Keep the Run162 parent (fe8a), first correction (fb1e), minification (10f6455) and handoff-update (53e2) snapshots distinct in tests.",
+    "Rerun the full repository suite on the next exact head; retain every historical run and do not weaken tests.",
+    "Finish semantic review of all 1,249 changed paths, including 48 workflows and every called script.",
     "Resolve independent reviewer/CODEOWNERS, least-privilege GitHub permissions, branch-protection visibility and required status checks.",
-    "Keep main's automatic Barrot Sync quarantined; latest main run was a false-green import failure with broad token permissions.",
-    "Resolve the main Pages build/publication side effect before any merge; PR Pages build-only validation succeeded and a merge could publish the site.",
+    "Keep main's automatic Barrot Sync quarantined and resolve Pages publication side effects before any merge.",
     "Add byte-exact raw-source receipts to the 85-event registry and establish independent WORM storage and trusted timestamp anchoring.",
     "Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets; preserve provider disagreement and source independence.",
     "Do not train or issue a directional XRP forecast until out-of-sample superiority against all four baselines, calibration, drift and independent shadow outcomes are verified."
@@ -771,16 +827,14 @@
     "number": 1662,
     "state": "open",
     "draft": true,
-    "head_sha": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
+    "head_sha": "53e2aa881807fdd9e56d5bf018aec6bde6f26726",
     "base_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
-    "ahead_by": 2491,
+    "ahead_by": 2492,
     "behind_by": 0,
-    "commits": 2491,
+    "commits": 2492,
     "changed_files": 1249,
-    "additions": 347981,
-    "deletions": 6309,
-    "workflow_files": 48,
-    "other_changed_paths": 1201
+    "additions": 348243,
+    "deletions": 6309
   },
   "research_addendum": {
     "binance_circle": {
@@ -1041,6 +1095,42 @@
         "source_independence_group": "circle_primary",
         "raw_sha256": null,
         "model_eligible": false
+      },
+      {
+        "source": "SBIC East Japan official company profile",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:48:57.751Z",
+        "source_independence_group": "sbic_east_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "SBIC Central Japan official company profile",
+        "url": "https://www.sbic-cj.co.jp/company/about/",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:48:57.751Z",
+        "source_independence_group": "sbic_central_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "SBIC West Japan official company profile",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+        "source_timestamp": null,
+        "retrieved_at_utc": "2026-11-15T12:48:57.751Z",
+        "source_independence_group": "sbic_west_primary",
+        "raw_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "SBI Holdings JPYSC launch",
+        "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "source_timestamp": "2026-06-24",
+        "retrieved_at_utc": "2026-11-15T12:48:57.751Z",
+        "source_independence_group": "sbi_group_primary",
+        "raw_sha256": null,
+        "model_eligible": false
       }
     ],
     "circle_arc_token_presale": {
@@ -1088,6 +1178,47 @@
         "classification": "Token-sale proceeds/operating cash-flow category, not equity capital, not USDC issuance and not XRP investment."
       },
       "exchange_access": "Circle names Binance, Coinbase, Kraken and Upbit among digital-asset access providers; this is not proof of exclusive or comprehensive commercial contracts."
+    },
+    "sbic_company_profiles": {
+      "east": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_name": "SBIC East Japan",
+        "established": "1963-11-15",
+        "capital_jpy": 6673400000,
+        "territory": "18 prefectures east of Shizuoka, Nagano and Niigata boundary as specified by the company",
+        "profile_url": "https://www.sbic.co.jp/company/profile/"
+      },
+      "central": {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_name": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "capital_jpy": 4300800000,
+        "territory": [
+          "Aichi",
+          "Gifu",
+          "Mie",
+          "Toyama",
+          "Ishikawa"
+        ],
+        "profile_url": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      "west": {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_name": "SBIC West Japan",
+        "established": "1963-11-20",
+        "capital_jpy": 6822000000,
+        "territory": "24 prefectures west of Fukui, Shiga, Nara and Wakayama boundary as specified by the company",
+        "profile_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    },
+    "sbic_chatgpt_conclusion": "Recurring official training events are a plausible source of SBIC/ChatGPT phrase associations; they are not evidence of an OpenAI commercial partnership.",
+    "jpysc": {
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "co_developer": "Startale Group",
+      "issued": "2026-06-24",
+      "initial_distribution": "SBI VC Trade accounts only",
+      "public_chain_status": "Public-chain circulation contingent on legal/tax practice clarification; not independently verified live on Arc."
     }
   },
   "map_representation_correction": {
@@ -1100,5 +1231,6 @@
     "current_map_size_bytes": 1715712,
     "current_newline_count": 1
   },
-  "current_integration_head_after_minification": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9"
+  "current_integration_head_after_minification": "10f64551f185d6cd1a4f2c67edb82fcaa40bd5c9",
+  "current_integration_head_after_handoff_update": "53e2aa881807fdd9e56d5bf018aec6bde6f26726"
 }

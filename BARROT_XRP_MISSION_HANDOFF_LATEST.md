@@ -7465,3 +7465,40 @@ PR #1662 remains draft and unmerged. Current integration head at this capture is
 PR Pages build-only validation succeeded. A merge would trigger main Pages publication because the successor fixes the current main Liquid build failure. Publication is a deployment side effect and is not authorized; do not merge until explicitly approved or safely decoupled. Independent review, least privilege, branch-protection visibility and complete semantic review also remain blockers.
 
 Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+
+
+## Run162 latest exact-head verification — head 53e2
+
+The current integration head at this capture was `53e2aa881807fdd9e56d5bf018aec6bde6f26726`. PR #1662 was 2,492 commits ahead of main, zero behind, with 1,249 changed files (48 workflows), 348,243 additions and 6,309 deletions. The recursive tree contained 2,491 entries and 2,371 files.
+
+Full repository run [43715073313](https://github.com/Barrot-Agent/B-Agent/actions/runs/43715073313) completed on that exact head with **3,788 passed, 3 failed, 1 skipped, 19 subtests, 64.02% coverage**, in 176.85 seconds. Core tests passed (742, zero failures, eight subtests). Six-manifest push and PR dependency audits passed with zero known vulnerabilities. Push and PR fail-closed gates passed. PR Pages build-only validation [43715077534](https://github.com/Barrot-Agent/B-Agent/actions/runs/43715077534) passed and verified the global mission manifest rendered.
+
+The three remaining failures are evidence-contract mismatches, not runtime or XRP prediction-engine failures:
+
+1. Top-level latest CI metadata still pointed to `fb1e554f`, while the latest immutable full-suite snapshot was `10f6455`.
+2. The original Run162 workflow-safety snapshot lacked the explicit `main_barrot_sync.external_call_observed=false` field.
+3. The minification snapshot test compared a historical head against the stale top-level latest attempt.
+
+The next correction adds a distinct immutable handoff-update snapshot for `53e2aa88`, updates top-level latest CI metadata to that completed exact-head run, adds the explicit main Barrot Sync evidence, and keeps the four Run162 snapshots separate: parent `fe8a43ac`, first correction `fb1e554f`, minification `10f64551`, and handoff update `53e2aa88`. No tests are removed or weakened.
+
+### SBIC legal-entity resolution completed with official company profiles
+
+The three regional SBIC companies are distinct sister legal entities:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; established November 15, 1963; capital ¥6.6734B; 18-prefecture territory.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established November 18, 1963; capital ¥4.3008B; Aichi, Gifu, Mie, Toyama and Ishikawa.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established November 20, 1963; capital ¥6.822B; 24-prefecture territory.
+
+Their official profiles identify each other as sister companies. They are not SBI Holdings. SB OAI Japan GK is a separate SoftBank/OpenAI joint venture. SBIC East and West both published ChatGPT/generative-AI training events; this plausibly explains the phrase association but does not establish an OpenAI partnership.
+
+Primary profiles: [SBIC East](https://www.sbic.co.jp/company/profile/), [SBIC Central](https://www.sbic-cj.co.jp/company/about/), [SBIC West](https://www.sbic-wj.co.jp/profiles/profile/), [SBIC West ChatGPT seminar](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
+
+### SBI, Circle, JPYSC and Arc precision
+
+SBI Holdings' June 24, 2026 announcement identifies SBI Shinsei Trust as JPYSC issuer, SBI VC Trade as distributor, and Startale Group as co-developer. Initial JPYSC availability was limited to SBI VC Trade accounts; public-chain distribution was contingent on legal and tax practices being clarified. Circle's Arc launch announcement quotes SBI Holdings CEO Yoshitaka Kitao describing an intention to leverage both USDC and JPYSC on Arc. No live public-chain or Arc deployment of JPYSC was independently verified.
+
+Source: [SBI Holdings JPYSC launch](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+
+Circle's Arc announcement names SBI Group as a founding validator and quotes SBI Holdings' CEO. This supports group-level attribution to SBI Holdings, but the exact legal validator subsidiary is not named. Arc's validator set is permissioned at launch. Circle's 10B ARC genesis mint is not a commitment to public token launch; its institutional presale and lockups remain separate from XRP.
+
+Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. PR #1662 remains draft and unmerged.
