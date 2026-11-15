@@ -1,0 +1,1663 @@
+{
+  "generated_at": "2026-11-15T23:22:24Z",
+  "stats": {
+    "nodes": 96,
+    "edges": 80,
+    "sources": 2,
+    "kinds": 2
+  },
+  "nodes": [
+    {
+      "id": "97e32352f5750e06",
+      "label": "Here's an AI model that has to read about 128,000 tokens of Sherlock Holmes novels before it can answer a single questio",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "fb408f738d236910",
+      "label": "And that takes it a little over 19 seconds.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c11102ed3a567be8",
+      "label": "And here's the exact same model with the exact same books, except this time the whole pile was squeezed down into just 1",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "4a377b5c7b882716",
+      "label": "And no matter how many more documents you add, the model itself only ever reads those 16 tokens.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "321805ffa9e40ceb",
+      "label": "Now, how can a model answer questions about a whole pile of books from just 16 tokens?",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "03d7cd4b71af91b8",
+      "label": "Well, this is a new research project from Stanford called Memorilla, and it claims that it can squeeze a whole conversat",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "e3ce399316382774",
+      "label": "A language model can only use what fits into its prompt, which is called the context window.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "d9e6ad86807ae1fc",
+      "label": "So the way it works is that first an embedding model turns every document into a single vector and then a small trained ",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "654dcaeda408b030",
+      "label": "So, those 16 memory tokens are actually 16 vectors, and they get plugged directly into Quinn 3's input in the same spot ",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "ec219546a442f794",
+      "label": "all it's around 200 million parameters by my count.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "f6a2e3e6af9f6492",
+      "label": "And basically it starts with 16 learned slots which first look at your question and then go through all of your document",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "b81b64047da4959c",
+      "label": "So basically each slot gives every document a score for how relevant it is to the question and then it blends the docume",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "a848de2a9391eefe",
+      "label": "And it does that twice so the second pass can refine what the first one picked up.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "e0a60184c9d0e6d6",
+      "label": "And what's nice about the setup is that Quen 3 and the embedding model stay frozen the whole time.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "2ff53731b99fc62b",
+      "label": "The researchers trained it in three stages.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "b160984640af1cd8",
+      "label": "First they taught it to reconstruct around 2 million Wikipedia passages.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "202670de31ef5715",
+      "label": "Then they trained it on a mix of question and answering and summarization data sets.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "6620b12c236268ee",
+      "label": "Memorila always hands the model the same 16 tokens, however big your history gets.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c6a575e4471e5fbb",
+      "label": "And on one factchecking benchmark, it was even more accurate than giving a model every single document.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "cd2f5f934d7a020e",
+      "label": "They also reported that on one H00 GPU, the answering speed stayed at about 0.74 seconds.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "f636b08228177d9d",
+      "label": "And even with a context of 512 documents while putting everything in the prompt took almost 20 seconds.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "17c4942706dafb1e",
+      "label": "So for these tests, I spun up the same H100 GPU in the cloud, similar to the conditions they had in their tests.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "1e012e917daed21d",
+      "label": "So, in their own example, a user has 107 old chats with an assistant, which is about 32,000 tokens, and the assistant as",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "97f1cf1f4b39086e",
+      "label": "The plain quen 3 model gives the usual list of oatmeal and yogurt recommendations, but Memorilla starts its answer with ",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "13164fd9dc22d710",
+      "label": "There was just one chat where they asked whether diabetes on your mother's side raises your risk.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "d7c184ed629d9e2d",
+      "label": "But Memorilla made the connection from just 16 tokens.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c115925233727b68",
+      "label": "And I asked Claude to write 150 short chats from a madeup user called Sam.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "f1f54ea2bbb4ea54",
+      "label": "For example, in one chat, Sam mentions being vegan while asking about alternatives to a leather jacket.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "00a8bc0284a7c60f",
+      "label": "And later, I asked, \"What should I cook for my parents this Sunday?\" And I also added one easy control question, Sam's s",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "bc527d38a4a5cb02",
+      "label": "And then I compared four methods, all using the same Quen 3 model.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "6866fff3b685ef39",
+      "label": "The second one is a rag with five most similar chats.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "4cddb98c48365634",
+      "label": "The third one has the full chat history in the prompt, and the fourth one is using memorilla.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "bec34d969674917b",
+      "label": "And it said that Sam's sister is called Emily and was born on April 12th when in the chat it clearly had a different nam",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "85eeb67f1d0963c5",
+      "label": "When I gave Memorilla only the one chat about the sister, it got the name Priya right, but the birthday was still wrong.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c2b4a9bf98751b0f",
+      "label": "So my guess is that squeezing a whole chat into one vector keeps the general gist but loses the precise details and that",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "47ce7b1a695ee27f",
+      "label": "But the good news is that the repo lets you train your own memory module on your own documents and questions without cha",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "0fe4c54e0e8f9c71",
+      "label": "Because no matter how big your history gets, the model only ever reads those 16 tokens.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "76e11ad60f8dcf2b",
+      "label": "I asked the same question over a growing pile of 250 token messages from one all the way up to 512, which is about 128,0",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "8a8b89d06241c73d",
+      "label": "And with everything in the prompt, the answer time went from about third of a second to a little over 19 seconds, which ",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "7879869c92da9b4b",
+      "label": "And Memorilla's answering time stayed basically flat at around 0.12 seconds.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "34e1550a9c2a5cdb",
+      "label": "And once you count that in, Memorilla took about 3.2 seconds at 512 documents.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "1f521fcf8e617922",
+      "label": "So, it's still about six times faster, just not the 27 times faster that the paper numbers suggest.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c576080710c58981",
+      "label": "The whole book is about 72,000 tokens in size.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c4dfc819a508d021",
+      "label": "And technically, it's too big for Quen 3's model's normal context window.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "51c95535d24484ce",
+      "label": "And when I ran this test, the full context version got five out of eight plot questions, right?",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "b080897017167888",
+      "label": "Even though it could only see the second half of the book, while Rag got four and Memorilla got just one.",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "4b3d99b09f649d30",
+      "label": "The idea behind it is a really good one because a memory that always costs the same 16 tokens no matter how much you thr",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "3e87dd74775fda39",
+      "label": "But the good news is that the speed promise actually holds up because the answering time stayed flat even when it had to",
+      "kind": "capability_note",
+      "capability": "long_context_memory",
+      "source_url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "0020ab217039fec6",
+      "label": "<h1 align=\"center\"> <img src=\"assets/gorilla.png\" alt=\"\" height=\"60\" align=\"absmiddle\" /> &nbsp;Memorilla: Latent Semant",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "412bcd5da1691f4b",
+      "label": "The code is based on our paper *[Memorilla: Latent Semantic Memory for LLMs](https://arxiv.org/abs/2610.21375)*.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "1029d044578acb88",
+      "label": "A frozen LLM can only use what fits in its context window, so Memorilla reads an entire document collection, such as a u",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "72e0d809db1005ec",
+      "label": "With this small budget, it achieves the best average performance against methods such as Mem0 and MemoRAG, and on FactKG",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "6a4e08da381eb3d8",
+      "label": "Furthermore, Memorilla can also help an agent keep learning from its own history, raising its average success rate on Te",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "d1bf7f233b5e0ada",
+      "label": "<p align=\"center\"> <img src=\"assets/architecture.png\" alt=\"Memorilla architecture\" width=\"100%\" /> </p>",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c6a75f1e75d7d190",
+      "label": "[Installation](#installation) - [Getting started](#getting-started) - [Efficiency](#efficiency) - [Training and Evaluati",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "95583cef8963f070",
+      "label": "Memorilla needs Linux with CUDA GPUs and Python 3.11; the recipes were run on NVIDIA H100 80GB GPUs.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "0aaecedd649564a9",
+      "label": "```bash $ git clone https://github.com/snap-stanford/memorilla.git && cd memorilla $ uv venv --python 3.11 && source .ve",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "03a22c6d7e96beba",
+      "label": "$ uv pip install --no-build-isolation flash-attn==2.7.4.post1 ```",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "6fd182bdd632dddd",
+      "label": "<details> <summary>FlashAttention-2 and optional extras</summary>",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "192549ee2876f6cb",
+      "label": "The last command installs FlashAttention-2, which training uses by default.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "21e563fe78297682",
+      "label": "```bash $ scripts/train.sh configs/stage1_enwiki.yaml --attn_implementation sdpa ```",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "ce57fb422f781f56",
+      "label": "```bash $ uv pip install -e \".[dev]\" # tests, linters and pre-commit $ uv pip install -e \".[wandb]\" # Weights & Biases l",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "be09da4ca812c0ff",
+      "label": "Here is an example from the PersonaMem-v2 test set.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "db0ce51cbb2dfe06",
+      "label": "The user has had 107 earlier conversations with an assistant, about 32,000 tokens in total, and now asks a new question.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "0b8088a78b6e3eae",
+      "label": "Memorilla reads all of the conversations and hands them to a frozen Qwen3-8B as just 16 memory tokens, about 2,000 times",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "86442d1a15f6f979",
+      "label": "You need one 80 GB GPU, and the first run downloads about 25 GB of models and the 37 MB test set.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "52723b30d8f5f39f",
+      "label": "row = load_split(\"pmv2\", \"test\", ensure_data(\"pmv2\", [\"test\"]))[73] # one user's question and past conversations",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "8b61d0c2e6e5376e",
+      "label": "model = MemoryVLLM.from_pretrained(\"memorilla/Memorilla-Qwen3-8B\", \"pmv2\") # Qwen3-8B, the memory module and the encoder",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "6248e4ad541041ea",
+      "label": "> > **Memorilla:** Since you’ve got a family history of type 2 diabetes, you might enjoy breakfasts that balance > prote",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "dcf07283f2878820",
+      "label": "The only clue is in one of the 107 conversations, where they > asked whether diabetes on the mother's side of the family",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "c564bc95b3c560af",
+      "label": "> Memorilla connects that clue to a breakfast question that has nothing to do with it, while Qwen3-8B without the > memo",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "d98d960ba47226f7",
+      "label": "Because the LLM always receives the same **16 memory tokens**, no matter how many documents are stored, the approach can",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "3bf672d552c3d24b",
+      "label": "In the paper, Memorilla compresses books and movie scripts from NarrativeQA by **more than 4,000x**.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "5cd61825290d7335",
+      "label": "On one H100, growing a collection from 1 to **512 documents (about 128K tokens)** leaves Memorilla's response time at **",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "8cdad6157e8dab15",
+      "label": "The decoder always reads the same 16 memory tokens, so its cost does not depend on the number of documents.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "3bcab7d08abaa3b3",
+      "label": "The figure shows it on one B200 GPU for up to four million documents, about one billion tokens at 250 tokens per documen",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "f73502b524554818",
+      "label": "<p align=\"center\"> <img src=\"assets/efficiency.png\" alt=\"Memory module latency and GPU memory for 1 to 4 million documen",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "5fc7b81078814c80",
+      "label": "By default, the memory module processes all document embeddings again for every question, which takes 74 ms for one mill",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "2ca344141af957aa",
+      "label": "A question then takes 8.1 ms for one million documents and 33 ms for four million, and `torch.compile` brings the one-mi",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "3fda83e82cd27812",
+      "label": "The cache takes four times the memory of the embeddings, 80 GiB for four million documents, which still fits on one GPU.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "6701909d3de15e7e",
+      "label": "Its memory tokens match the default up to bfloat16 rounding, and FactKG accuracy stays within 0.06 points of the default",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "96251129a11e6c7f",
+      "label": "```python model = MemoryVLLM.from_pretrained(\"memorilla/Memorilla-Qwen3-8B\", \"pmv2\", memory_cache=True, compile_memory=T",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "0305d8fc01c56cc1",
+      "label": "The [profiling guide](profiling/README.md) has the full results on B200 and A100 GPUs and the commands that produce the ",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "b1ce679d0349b06a",
+      "label": "```bash Train the three stages with the Qwen3-8B decoder on 4 GPUs.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "a12db5a8e456e65f",
+      "label": "$ scripts/train.sh configs/stage1_enwiki.yaml $ scripts/train.sh configs/stage2_mixture.yaml $ scripts/train.sh configs/",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "88358e00161ddd5a",
+      "label": "$ scripts/train.sh configs/personalization_pv4.yaml $ scripts/train.sh configs/personalization_pmv2.yaml",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "bd0552709cb411ca",
+      "label": "Evaluate a checkpoint on every benchmark (or name one, e.g.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "747b799118440bdd",
+      "label": "$ scripts/evaluate.sh runs/stage3/epoch-04 all $ scripts/evaluate.sh runs/personalization_pv4/epoch-04 pv4",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "2a210ecd7a60d6f2",
+      "label": "Text-only baselines: closed book, RAG over the top-5 documents, full context.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "daa5af35501c9ce0",
+      "label": "$ scripts/baselines.sh closed_book all $ scripts/baselines.sh rag all --top_k 5 $ scripts/baselines.sh full_context triv",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "3eb5cf8f8424f2b3",
+      "label": "On 4 H100 80GB GPUs, the three stages take about 19 hours and download about 310 GiB of data and embeddings, and evaluat",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "e092c5cd1c1d2bd3",
+      "label": "The trained memory modules are on Hugging Face at [`memorilla/Memorilla-Qwen3-8B`](https://huggingface.co/memorilla/Memo",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "2220d8cedbbbba7f",
+      "label": "All were trained with the Qwen3-8B decoder and the Qwen3-Embedding-4B encoder, the defaults of `train.py` and `evaluate.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "58065eb31b3d8fdb",
+      "label": "PersonalizationV4 (PV4) is a synthetic personalisation benchmark released with Memorilla.",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "80f9044273353df8",
+      "label": "The pinned versions of vLLM (0.9.1), transformers (4.53.3) and PyTorch (2.7.0) have public advisories about crafted mode",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    },
+    {
+      "id": "523efd16a7e0404f",
+      "label": "Each config of Memorilla-Data keeps the license of its source dataset, and PersonalizationV4 is released under CC BY 4.0",
+      "kind": "fact",
+      "capability": "long_context_memory",
+      "source_url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "retrieved_at": "2026-11-15T23:22:24Z"
+    }
+  ],
+  "edges": [
+    {
+      "source": "03d7cd4b71af91b8",
+      "target": "1029d044578acb88",
+      "weight": 7,
+      "terms": [
+        "book",
+        "chat",
+        "document",
+        "entire",
+        "memorilla",
+        "memory"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97f1cf1f4b39086e",
+      "target": "6248e4ad541041ea",
+      "weight": 7,
+      "terms": [
+        "diabet",
+        "family",
+        "history",
+        "memorilla",
+        "since",
+        "type"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "13164fd9dc22d710",
+      "target": "dcf07283f2878820",
+      "weight": 6,
+      "terms": [
+        "diabet",
+        "mother'",
+        "rais",
+        "risk",
+        "side",
+        "whether"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "d9e6ad86807ae1fc",
+      "target": "1029d044578acb88",
+      "weight": 5,
+      "terms": [
+        "document",
+        "memory",
+        "question",
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "d9e6ad86807ae1fc",
+      "target": "5fc7b81078814c80",
+      "weight": 5,
+      "terms": [
+        "document",
+        "every",
+        "memory",
+        "module",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "d9e6ad86807ae1fc",
+      "target": "8b61d0c2e6e5376e",
+      "weight": 5,
+      "terms": [
+        "document",
+        "memory",
+        "model",
+        "module",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "03d7cd4b71af91b8",
+      "target": "0b8088a78b6e3eae",
+      "weight": 4,
+      "terms": [
+        "conversation",
+        "memorilla",
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "03d7cd4b71af91b8",
+      "target": "6248e4ad541041ea",
+      "weight": 4,
+      "terms": [
+        "full",
+        "history",
+        "like",
+        "memorilla"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "47ce7b1a695ee27f",
+      "target": "5fc7b81078814c80",
+      "weight": 4,
+      "terms": [
+        "document",
+        "memory",
+        "module",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "47ce7b1a695ee27f",
+      "target": "8b61d0c2e6e5376e",
+      "weight": 4,
+      "terms": [
+        "document",
+        "memory",
+        "module",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4a377b5c7b882716",
+      "target": "d98d960ba47226f7",
+      "weight": 4,
+      "terms": [
+        "document",
+        "many",
+        "matter",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4b3d99b09f649d30",
+      "target": "8cdad6157e8dab15",
+      "weight": 4,
+      "terms": [
+        "alway",
+        "cost",
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4b3d99b09f649d30",
+      "target": "d98d960ba47226f7",
+      "weight": 4,
+      "terms": [
+        "alway",
+        "matter",
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "c11102ed3a567be8",
+      "target": "5cd61825290d7335",
+      "weight": 4,
+      "terms": [
+        "model",
+        "second",
+        "time",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "c6a575e4471e5fbb",
+      "target": "72e0d809db1005ec",
+      "weight": 4,
+      "terms": [
+        "accurate",
+        "document",
+        "even",
+        "every"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "d9e6ad86807ae1fc",
+      "target": "8cdad6157e8dab15",
+      "weight": 4,
+      "terms": [
+        "document",
+        "memory",
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "d9e6ad86807ae1fc",
+      "target": "96251129a11e6c7f",
+      "weight": 4,
+      "terms": [
+        "document",
+        "memory",
+        "model",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "f636b08228177d9d",
+      "target": "5cd61825290d7335",
+      "weight": 4,
+      "terms": [
+        "document",
+        "prompt",
+        "putt",
+        "second"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "03d7cd4b71af91b8",
+      "target": "2a210ecd7a60d6f2",
+      "weight": 3,
+      "terms": [
+        "book",
+        "document",
+        "full"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "03d7cd4b71af91b8",
+      "target": "8b61d0c2e6e5376e",
+      "weight": 3,
+      "terms": [
+        "document",
+        "memorilla",
+        "memory"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "1e012e917daed21d",
+      "target": "6248e4ad541041ea",
+      "weight": 3,
+      "terms": [
+        "breakfast",
+        "full",
+        "keep"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "1e012e917daed21d",
+      "target": "db0ce51cbb2dfe06",
+      "weight": 3,
+      "terms": [
+        "assistant",
+        "token",
+        "user"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "2ff53731b99fc62b",
+      "target": "b1ce679d0349b06a",
+      "weight": 3,
+      "terms": [
+        "stag",
+        "three",
+        "train"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "321805ffa9e40ceb",
+      "target": "1029d044578acb88",
+      "weight": 3,
+      "terms": [
+        "book",
+        "question",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "321805ffa9e40ceb",
+      "target": "8b61d0c2e6e5376e",
+      "weight": 3,
+      "terms": [
+        "answer",
+        "model",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "321805ffa9e40ceb",
+      "target": "96251129a11e6c7f",
+      "weight": 3,
+      "terms": [
+        "answer",
+        "model",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "47ce7b1a695ee27f",
+      "target": "1029d044578acb88",
+      "weight": 3,
+      "terms": [
+        "document",
+        "memory",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "47ce7b1a695ee27f",
+      "target": "96251129a11e6c7f",
+      "weight": 3,
+      "terms": [
+        "document",
+        "memory",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "47ce7b1a695ee27f",
+      "target": "c564bc95b3c560af",
+      "weight": 3,
+      "terms": [
+        "memory",
+        "question",
+        "without"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4a377b5c7b882716",
+      "target": "1029d044578acb88",
+      "weight": 3,
+      "terms": [
+        "document",
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4a377b5c7b882716",
+      "target": "5cd61825290d7335",
+      "weight": 3,
+      "terms": [
+        "document",
+        "model",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4a377b5c7b882716",
+      "target": "8cdad6157e8dab15",
+      "weight": 3,
+      "terms": [
+        "document",
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4cddb98c48365634",
+      "target": "6248e4ad541041ea",
+      "weight": 3,
+      "terms": [
+        "full",
+        "history",
+        "memorilla"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "7879869c92da9b4b",
+      "target": "5cd61825290d7335",
+      "weight": 3,
+      "terms": [
+        "memorilla'",
+        "second",
+        "time"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "8a8b89d06241c73d",
+      "target": "5cd61825290d7335",
+      "weight": 3,
+      "terms": [
+        "prompt",
+        "second",
+        "time"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97e32352f5750e06",
+      "target": "8b61d0c2e6e5376e",
+      "weight": 3,
+      "terms": [
+        "answer",
+        "model",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97e32352f5750e06",
+      "target": "96251129a11e6c7f",
+      "weight": 3,
+      "terms": [
+        "answer",
+        "model",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97f1cf1f4b39086e",
+      "target": "96251129a11e6c7f",
+      "weight": 3,
+      "terms": [
+        "answer",
+        "memorilla",
+        "model"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97f1cf1f4b39086e",
+      "target": "c564bc95b3c560af",
+      "weight": 3,
+      "terms": [
+        "answer",
+        "list",
+        "memorilla"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "b81b64047da4959c",
+      "target": "5fc7b81078814c80",
+      "weight": 3,
+      "terms": [
+        "document",
+        "every",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "0fe4c54e0e8f9c71",
+      "target": "0b8088a78b6e3eae",
+      "weight": 2,
+      "terms": [
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "0fe4c54e0e8f9c71",
+      "target": "8cdad6157e8dab15",
+      "weight": 2,
+      "terms": [
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "0fe4c54e0e8f9c71",
+      "target": "d98d960ba47226f7",
+      "weight": 2,
+      "terms": [
+        "matter",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "13164fd9dc22d710",
+      "target": "6248e4ad541041ea",
+      "weight": 2,
+      "terms": [
+        "diabet",
+        "side"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "202670de31ef5715",
+      "target": "52723b30d8f5f39f",
+      "weight": 2,
+      "terms": [
+        "data",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "202670de31ef5715",
+      "target": "c564bc95b3c560af",
+      "weight": 2,
+      "terms": [
+        "answer",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "202670de31ef5715",
+      "target": "c6a75f1e75d7d190",
+      "weight": 2,
+      "terms": [
+        "data",
+        "train"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "2ff53731b99fc62b",
+      "target": "3eb5cf8f8424f2b3",
+      "weight": 2,
+      "terms": [
+        "stag",
+        "three"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "321805ffa9e40ceb",
+      "target": "c564bc95b3c560af",
+      "weight": 2,
+      "terms": [
+        "answer",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "321805ffa9e40ceb",
+      "target": "db0ce51cbb2dfe06",
+      "weight": 2,
+      "terms": [
+        "question",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "3e87dd74775fda39",
+      "target": "6701909d3de15e7e",
+      "weight": 2,
+      "terms": [
+        "stay",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4a377b5c7b882716",
+      "target": "0b8088a78b6e3eae",
+      "weight": 2,
+      "terms": [
+        "read",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4b3d99b09f649d30",
+      "target": "0b8088a78b6e3eae",
+      "weight": 2,
+      "terms": [
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4b3d99b09f649d30",
+      "target": "6701909d3de15e7e",
+      "weight": 2,
+      "terms": [
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4b3d99b09f649d30",
+      "target": "db0ce51cbb2dfe06",
+      "weight": 2,
+      "terms": [
+        "assistant",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "4cddb98c48365634",
+      "target": "6a4e08da381eb3d8",
+      "weight": 2,
+      "terms": [
+        "history",
+        "memorilla"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "51c95535d24484ce",
+      "target": "2a210ecd7a60d6f2",
+      "weight": 2,
+      "terms": [
+        "context",
+        "full"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "51c95535d24484ce",
+      "target": "52723b30d8f5f39f",
+      "weight": 2,
+      "terms": [
+        "question",
+        "test"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "51c95535d24484ce",
+      "target": "daa5af35501c9ce0",
+      "weight": 2,
+      "terms": [
+        "context",
+        "full"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "654dcaeda408b030",
+      "target": "0b8088a78b6e3eae",
+      "weight": 2,
+      "terms": [
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "654dcaeda408b030",
+      "target": "3fda83e82cd27812",
+      "weight": 2,
+      "terms": [
+        "embedding",
+        "memory"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "654dcaeda408b030",
+      "target": "5fc7b81078814c80",
+      "weight": 2,
+      "terms": [
+        "embedding",
+        "memory"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "654dcaeda408b030",
+      "target": "6701909d3de15e7e",
+      "weight": 2,
+      "terms": [
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "654dcaeda408b030",
+      "target": "8cdad6157e8dab15",
+      "weight": 2,
+      "terms": [
+        "memory",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "6620b12c236268ee",
+      "target": "d98d960ba47226f7",
+      "weight": 2,
+      "terms": [
+        "alway",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "76e11ad60f8dcf2b",
+      "target": "db0ce51cbb2dfe06",
+      "weight": 2,
+      "terms": [
+        "question",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97e32352f5750e06",
+      "target": "c564bc95b3c560af",
+      "weight": 2,
+      "terms": [
+        "answer",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97e32352f5750e06",
+      "target": "db0ce51cbb2dfe06",
+      "weight": 2,
+      "terms": [
+        "question",
+        "token"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97f1cf1f4b39086e",
+      "target": "6a4e08da381eb3d8",
+      "weight": 2,
+      "terms": [
+        "history",
+        "memorilla"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "97f1cf1f4b39086e",
+      "target": "dcf07283f2878820",
+      "weight": 2,
+      "terms": [
+        "diabet",
+        "family"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "b080897017167888",
+      "target": "3bf672d552c3d24b",
+      "weight": 2,
+      "terms": [
+        "book",
+        "memorilla"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "b81b64047da4959c",
+      "target": "2ca344141af957aa",
+      "weight": 2,
+      "terms": [
+        "document",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "b81b64047da4959c",
+      "target": "72e0d809db1005ec",
+      "weight": 2,
+      "terms": [
+        "document",
+        "every"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "c2b4a9bf98751b0f",
+      "target": "6a4e08da381eb3d8",
+      "weight": 2,
+      "terms": [
+        "history",
+        "keep"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "c6a575e4471e5fbb",
+      "target": "5fc7b81078814c80",
+      "weight": 2,
+      "terms": [
+        "document",
+        "every"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "c6a575e4471e5fbb",
+      "target": "bd0552709cb411ca",
+      "weight": 2,
+      "terms": [
+        "benchmark",
+        "every"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "f636b08228177d9d",
+      "target": "2a210ecd7a60d6f2",
+      "weight": 2,
+      "terms": [
+        "context",
+        "document"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "f636b08228177d9d",
+      "target": "72e0d809db1005ec",
+      "weight": 2,
+      "terms": [
+        "document",
+        "even"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "f6a2e3e6af9f6492",
+      "target": "2ca344141af957aa",
+      "weight": 2,
+      "terms": [
+        "document",
+        "question"
+      ],
+      "cross_kind": true
+    },
+    {
+      "source": "f6a2e3e6af9f6492",
+      "target": "c6a75f1e75d7d190",
+      "weight": 2,
+      "terms": [
+        "learn",
+        "start"
+      ],
+      "cross_kind": true
+    }
+  ],
+  "suggestions": [
+    {
+      "status": "hypothesis",
+      "term": "book",
+      "kinds": [
+        "capability_note",
+        "fact"
+      ],
+      "records": [
+        "03d7cd4b71af91b8",
+        "1029d044578acb88"
+      ],
+      "hypothesis": "'book' appears in both a capability_note record and a fact record; candidate combined capability."
+    }
+  ]
+}

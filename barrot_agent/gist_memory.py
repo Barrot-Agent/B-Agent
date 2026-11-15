@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 from typing import Sequence
 
 DEFAULT_NUM_MEMORIES = 16
-DEFAULT_WORDS_PER_TOKEN = 6
+DEFAULT_WORDS_PER_TOKEN = 10
 MIN_UNIT_WORDS = 3
 MAX_UNIT_WORDS = 40
 
@@ -40,6 +40,13 @@ _UNIT_SPLIT = re.compile(
 _WORD = re.compile(r"[A-Za-z0-9][A-Za-z0-9'\-]*")
 _NUMBER = re.compile(r"\d")
 _ABBREVIATIONS = ("Dr.", "Mr.", "Mrs.", "Ms.", "St.", "Jr.", "Sr.", "Prof.", "etc.", "e.g.", "i.e.")
+# A number cut away from its unit ("0.74" without "seconds") is a lost fact.
+_MEASURE_TAIL = re.compile(
+    r"(?:\s*\.\d+)?\s*"
+    r"(?:%|seconds?|secs?|ms|milliseconds?|minutes?|hours?|days?|weeks?|months?|years?"
+    r"|tokens?|gpus?|percent)\b",
+    re.IGNORECASE,
+)
 
 _STOPWORDS = frozenset(
     """
@@ -313,7 +320,11 @@ class GistMemory:
                 best_value, best_span = value, (window[0][1], window[-1][2])
         if best_span is None:
             return unit
-        return " ".join(unit[best_span[0] : best_span[1]].split()).strip(" ,;:-")
+        start, end = best_span
+        tail = _MEASURE_TAIL.match(unit[end:])
+        if tail:
+            end += tail.end()
+        return " ".join(unit[start:end].split()).strip(" ,;:-")
 
     # -- public API -------------------------------------------------------
 
@@ -420,6 +431,11 @@ class GistMemory:
                 if 0 <= neighbour < len(units) and owners[neighbour] == owners[idx]:
                     add(neighbour, pass2_scores[idx] * 0.5)
         return result
+
+
+def content_terms(text: str) -> list[str]:
+    """Public accessor for the stemmed content terms used by gist scoring."""
+    return _terms(text)
 
 
 def compress_documents(

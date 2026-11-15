@@ -95,3 +95,8 @@ web/hrm_sandbox_signal.json
 
 # Agent-local backup dir (superseded by git history itself)
 .barrot-backup/
+data/raw/
+data/ingest_ledger.json
+data/ingest_queue.json
+data/ingest_events.jsonl
+data/refinement_log.jsonl

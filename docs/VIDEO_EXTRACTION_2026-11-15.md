@@ -172,6 +172,10 @@ here as the external confirmation, not as a new mechanism.
 
 ### Hype filter applied
 
+These five rules are now executable in `barrot_agent/hype_filter.py`; every
+video/podcast/TED ingest must pass them before it can refine a capability.
+Two or more failed checks tag the record `HYPE` and block refinement.
+
 - Check the benchmark's own caveat before the speaker's framing.
 - Check the harness (standard vs provider adapter) before comparing scores.
 - Check cost and token budget, not just accuracy.
@@ -186,7 +190,7 @@ New module: `barrot_agent/gist_memory.py`.
 
 | Memorilla element | Barrot implementation (CPU, stdlib) |
 |---|---|
-| 16 latent memory tokens | 16 gist slots, each a verbatim phrase (default budget 16 × 6 words) |
+| 16 latent memory tokens | 16 gist slots, each a verbatim phrase (default budget 16 × 10 words) |
 | Query-conditioned slots | IDF-weighted query overlap + precision bonus |
 | Two cross-attention passes | Two selection passes; pass 2 adds terms found by pass 1 |
 | Blend of relevant documents | Maximal-marginal-relevance selection with redundancy penalty |

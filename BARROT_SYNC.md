@@ -36,7 +36,26 @@
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
 
 ## Last State
-- Last sync: 2026-11-15 (session 7) - VIDEO EXTRACTION + GIST MEMORY: built an offline
+- Last sync: 2026-11-15 (session 8) - HYPE FILTER + INFINITE INGESTION: built the
+  executable hype gate and the four-module ingestion loop, then ran it once.
+  * New: barrot_agent/hype_filter.py - 5 checks, HYPE at 2+ failures, evidence spans.
+    Calibration: Memorilla video OK (0/3 applicable failed); "AGI is here" video HYPE
+    (2/5: benchmark_caveat, funding_vs_intent). tests/test_hype_filter.py: 34 passed.
+  * New: barrot_agent/infinite_ingest/ (models, storage, sources, ingestor, transmuter,
+    cross_analyzer, refiner, cli). tests/test_infinite_ingest.py: 29 passed.
+    Caps: 10 ingests/run, 1 refine/capability/run, stop on 429/503, raw 500MB prune.
+    Every media ingest goes through enforce_gate() before storage/transmutation.
+    New tests total 78 passed (hype 34, ingest 29, gist 15).
+  * First measured run (data/capabilities/long_context_memory.json):
+    0.00 -> 1.00 recall (5/5 facts); 96 records added, 17 bound, no revert.
+    First pass 0.80; fixed gist window width 6->10 + measurement-tail extension and
+    extraction cap 24->48, then re-ran clean. Harness = extractive recall, not LLM QA.
+  * Docs: docs/INFINITE_INGESTION.md. Graph: data/connections.json (96 nodes, 80 edges).
+  * Continuous mode NOT enabled - awaiting Sean's approval. 3 SearXNG results queued.
+  * Known gaps: no in-pipeline PDF parser (use docling), no automatic fetch retry,
+    lexical matching only. Reverted unrelated riemann_hypothesis_harvest.json timestamp
+    churn caused by full pytest collection.
+- Previous sync: 2026-11-15 (session 7) - VIDEO EXTRACTION + GIST MEMORY: built an offline
   memory compressor from the Memorilla research, and documented both requested videos.
   * Transcripts: both fetched (youtube-transcript-api); ids lNpDxKfBlf8 (Better Stack,
     "Did Stanford Just Solve AI Memory? (Memorilla)") and us_pnC6ETNA (Julia McCoy,

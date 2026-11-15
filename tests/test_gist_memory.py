@@ -97,6 +97,16 @@ class CompressionTests(unittest.TestCase):
         self.assertIn("Use only these phrases", prompt)
         self.assertIn("instead of guessing", prompt)
 
+    def test_measurement_units_are_not_cut_from_numbers(self):
+        doc = (
+            "On one H100 with 512 documents and about 128K tokens of context the answering "
+            "speed stayed at about 0.74 seconds while the full context version slowed to "
+            "19.9 seconds."
+        )
+        result = compress_documents([doc], "What is the answering speed at 512 documents?")
+        joined = " ".join(token.text for token in result.tokens)
+        self.assertIn("0.74 seconds", joined)
+
     def test_invalid_arguments(self):
         with self.assertRaises(ValueError):
             GistMemory(num_memories=0)
