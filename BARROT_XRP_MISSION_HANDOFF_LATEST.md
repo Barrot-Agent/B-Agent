@@ -3895,3 +3895,60 @@ ChatGPT's GitHub connector is authenticated and verified for repository reads/wr
 6. Capture byte-exact publisher responses, SHA-256 receipts and independent WORM/timestamp anchors; 125 registry events still have zero raw receipts.
 7. After safe merge, verify merge commit, fetch main again, run main CI, then verify scheduled ingestion on main. Do not dispatch paper-trading, deployment, secret-rotation, Databricks or Kaggle workflows without the specific approval.
 8. Keep forecasts disabled until point-in-time data, leakage-safe OOS superiority, calibration, drift and independent shadow validation pass.
+
+
+## Run198 final-head verification and capital/rail correction (2026-11-16T21:20:00Z)
+
+### Final repository head and CI
+
+- Pre-addendum head `0592539ed894fa5a160941df9d39bc368bea5dbd` was verified against push CI [43958195358](https://github.com/Barrot-Agent/B-Agent/actions/runs/43958195358): **3,844 passed, 1 skipped, 11 warnings, 19 subtests passed in 100.71 seconds**. Inclusive coverage **66.90%**; legacy-core coverage **77%**. Tests, Pages validation, wheel build, packaged mission load and V3/XRP mission smoke test passed.
+- Current-head dependency audit [43958195392](https://github.com/Barrot-Agent/B-Agent/actions/runs/43958195392) passed across six manifests with no known vulnerabilities reported. Current-head fail-closed gate [43958195150](https://github.com/Barrot-Agent/B-Agent/actions/runs/43958195150) passed.
+- At the verified pre-addendum head, integration was 121 commits ahead and zero behind main. Main tree had 1,393 entries; integration had 2,565; zero main paths were missing.
+- PR #1663 was open/draft, 1,337 changed paths, zero formal reviews and zero review threads. It remains unmerged. This evidence-only addendum changes existing handoff/JSON paths; its resulting commit must receive its own exact-head CI before it can be described as verified.
+- No main changes, merges, PR closures, deployments, paper trades, Databricks writes, Kaggle submissions, secret rotations or real-money actions occurred.
+
+### Direct spot cross-check
+
+Kraken's public ticker API returned XRP/USD last **$0.95517**, bid **$0.95496**, ask **$0.95503**, spread **$0.00007 (about 0.73 bp)**, top bid **1,904 XRP (~$1,818)** and top ask **3,491 XRP (~$3,335)**. Its 24-hour volume was **44.645M XRP**, VWAP **$0.955618**, high **$0.97742**, low **$0.94005**, open **$0.97373**. This is one venue and top-of-book only; the public ticker does not provide full depth or a publisher timestamp. No byte-exact response receipt was retained, so it is descriptive only. [Kraken API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+
+Swiftedge's aggregate price ($0.9538) is a separate dashboard observation, not averaged with Kraken. Liqwall OI ($973M, −3.9%/24h) and Swiftedge OI change (−12.1%) remain separate provider universes/cutoffs. ETF flow disagreement and the anomalous Saturday Nov 14 row remain preserved.
+
+### Evernorth — actual capital and pre-close liquidity
+
+The Nov 13 Form 10-Q gives a critical timing distinction. **As of September 30, 2026, before the October 9 business-combination close**, Evernorth was still wholly owned by Ripple and reported:
+- unrestricted cash **$91,397**; restricted cash **$49,995**;
+- net working-capital deficit **$10.0M** and accumulated deficit **$185.6M**;
+- nine-month operating loss **$273.2M**, including **$271.037M** digital-asset impairment; nine-month net loss **$32.87M** after a **$240.311M** fair-value gain on refundable investor advances;
+- operating cash flow **−$1.722M**; related-party financing inflows **$2.845M**;
+- XRP held **346.285M**, carrying value **$341.887M**;
+- Ripple's **$1M** revolving Evernorth facility had **no draws** as of September 30; Pathfinder had paid **$3.562M** of Evernorth expenses, recorded as a related-party payable;
+- **$524.260M** refundable investor advances were settled through equity issuance at the Oct 9 close; no cash was repaid to investors;
+- **$214.1M** private-placement cash was used to buy **84.366M XRP**; it is not remaining cash.
+
+These are pre-close financials and must not be presented as Evernorth's post-close cash balance. The $271.0M digital-asset impairment is non-cash impairment, not operating cash burn. [SEC Form 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm).
+
+The separate Nov 13 424B3 reports **3,073,366 warrants exercised for $35.3M gross proceeds**, a $30M convertible note with **$29M net cash proceeds**, and an ELOC ceiling of **5,218,935 shares at 97% of VWAP**. ELOC capacity is not cash raised; the reviewed filing does not quantify an actual draw. [SEC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+### SBI stablecoin rail-scope correction
+
+The official SBI terms materially narrow what its Ripple relationship means operationally:
+
+- **JPYSC** is a type-three trust-based JPY electronic payment instrument issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale. At the June 24 launch it was limited to SBI VC Trade accounts; external-wallet withdrawals were unavailable. Public-chain migration was contingent on legal/tax treatment and regulator confirmation. [SBI launch release](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+- SBI's Nov 2 report of **¥10B+ JPYSC lending balances** and **¥30B+ handled balances** describes account/lending activity, not public-chain circulation or XRP liquidity. [SBI Nov 2](https://www.sbigroup.co.jp/news/2026/1102_16704.html).
+- **RLUSD** is a separate type-four USD instrument issued by Ripple's Standard Custody & Trust Company and distributed in Japan by SBI VC Trade. SBI's current service page lists **Ethereum only**; XRPL support is future/planned. Its service page lists a **¥1M holding cap** and a **¥1M per-transaction withdrawal cap**. Therefore the SBI RLUSD listing is not current evidence of SBI-side XRPL settlement. [SBI VC Trade RLUSD service](https://www.sbivc.co.jp/rlusd).
+- On Oct 16, SBI and Startale said they would explore a JPYSC/OUSD pilot through Open Standard; the announcement expressly says it is not a new commercial service or production settlement. [SBI/Open Standard](https://www.sbigroup.co.jp/news/2026/1016_16665.html).
+- On Oct 27, SBI, Startale and BlackRock signed an MOU to explore tokenized-MMF/JPYSC connectivity; no live fund, chain or settlement service was announced. [SBI/BlackRock/Startale](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+
+SBI therefore has several parallel relationships—Ripple/RLUSD, Circle/USDC/Arc, and Startale/JPYSC/Open Standard/BlackRock. They must not be collapsed into one XRP settlement rail. The approximately 9% SBI Ripple equity stake is not XRP token ownership.
+
+### Prediction gate and safety
+
+The registry remains at 125 curated events, zero raw-source SHA-256 receipts, 77 missing exact publisher timestamps and zero model-eligible events. Forecast status remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. The code-level readiness gate requires an independently signed evaluator attestation, at least 100 out-of-sample and 100 shadow observations, at least five independent source groups, the four required baselines, weighted calibration error no greater than 0.05 and an adequate horizon/embargo multiple. These gates are designed; none has been satisfied by the current evidence.
+
+The raw receipt archive is content-addressed and hash-chained across runs, but its GitHub artifact/cache transport is not independent WORM storage. The SQLite feature store uses append-only protections but is not a substitute for externally anchored tamper-evident receipts. Event timelines are built from a curated event registry, not a fully autonomous event-discovery feed.
+
+The pre-existing Coinbase trader on main defaults to dry-run, but setting `BARROT_TRADING_DRY_RUN=false` with credentials can activate orders. Code search found no production caller; buy has a risk approval call, sell currently only validates positive size and does not invoke the same risk manager. No live trade occurred. Keep the path disabled until symmetric sell/buy risk controls and a separate explicit live-authorization gate are implemented.
+
+### Merge decision
+
+**NO MERGE.** Exact-head 0592539 full-suite, dependency audit and fail-closed checks passed, but PR #1663 remains draft with zero independent reviews, 1,337 changed paths remain incompletely reviewed, CODEOWNERS is self-only, detailed branch protection returns HTTP 403, and the visible ruleset is disabled. The next addendum commit must pass exact-head CI independently. Keep all forecasts disabled.

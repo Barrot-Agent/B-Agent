@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.xrp-intelligence-run-audit.v1",
   "run_id": "run198",
-  "captured_at_utc": "2026-11-16T21:07:00Z",
+  "captured_at_utc": "2026-11-16T21:20:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
@@ -33,9 +33,9 @@
   },
   "repository_state": {
     "main_tree_entries": 1393,
-    "integration_tree_entries": 2563,
+    "integration_tree_entries": 2565,
     "main_paths_missing_from_integration": 0,
-    "integration_ahead_by": 120,
+    "integration_ahead_by": 121,
     "integration_behind_by": 0,
     "pr_changed_paths": 1335,
     "changed_workflow_files": 49,
@@ -50,9 +50,9 @@
     "state": "open",
     "draft": true,
     "mergeable_metadata": true,
-    "head_sha": "846f9f5b8a235876411174669aeb821d91d8aad4",
+    "head_sha": "0592539ed894fa5a160941df9d39bc368bea5dbd",
     "base_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-    "changed_files": 1335,
+    "changed_files": 1337,
     "formal_reviews": 0,
     "review_threads": 0,
     "merge_decision": "NO_MERGE",
@@ -67,9 +67,9 @@
     ]
   },
   "exact_head_ci": {
-    "push_ci_run": 43952503279,
+    "push_ci_run": 43958195358,
     "full_suite_job": 133598408267,
-    "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests in 166.62 seconds",
+    "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests in 100.71 seconds",
     "inclusive_coverage_percent": 66.9,
     "legacy_core_coverage_percent": 77,
     "wheel_build": "passed",
@@ -78,9 +78,9 @@
     "pages_validation": "passed",
     "pr_ci_run": 43952514668,
     "pr_ci_tests": "skipped by integration-branch condition",
-    "dependency_audit_run": 43952503247,
+    "dependency_audit_run": 43958195392,
     "dependency_audit": "six manifests; no known vulnerabilities reported for each audited manifest",
-    "fail_closed_gate_run": 43952503278,
+    "fail_closed_gate_run": 43958195150,
     "fail_closed_gate": "passed"
   },
   "workflow_review": {
@@ -206,7 +206,123 @@
         "fact": "BNY supports XRP/RLUSD custody; custody does not prove new XRP purchases."
       }
     ],
-    "protocol": "Run197 amendment snapshot retained: LendingProtocol 22/35, V1_1 22/35, SingleAssetVault 23/35 versus 29 required; none enabled; proposed borrower loans are uncollateralized at protocol level."
+    "protocol": "Run197 amendment snapshot retained: LendingProtocol 22/35, V1_1 22/35, SingleAssetVault 23/35 versus 29 required; none enabled; proposed borrower loans are uncollateralized at protocol level.",
+    "direct_kraken_spot": {
+      "source": "Kraken public REST Ticker API",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-16T21:20:00Z",
+      "publisher_timestamp_utc": null,
+      "admission": "DESCRIPTIVE_ONLY",
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "last_usd": 0.95517,
+      "bid_usd": 0.95496,
+      "ask_usd": 0.95503,
+      "spread_usd": 0.00007,
+      "spread_basis_points": 0.7335,
+      "top_bid_size_xrp": 1904,
+      "top_ask_size_xrp": 3491,
+      "top_bid_notional_usd": 1818.26,
+      "top_ask_notional_usd": 3334.5,
+      "volume_24h_xrp": 44645417.90455346,
+      "vwap_24h_usd": 0.95561825,
+      "volume_24h_approx_usd": 42663976,
+      "high_24h_usd": 0.97742,
+      "low_24h_usd": 0.94005,
+      "open_24h_usd": 0.97373,
+      "change_from_open_pct": -1.905,
+      "limitations": [
+        "Single venue only.",
+        "Ticker provides top-of-book, not full depth.",
+        "No publisher timestamp or byte-exact response receipt retained.",
+        "Not admitted to feature store."
+      ]
+    },
+    "evernorth_sec_q3_preclose": {
+      "source": "Evernorth Holdings Inc. Form 10-Q filed Nov 13, 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "as_of_date": "2026-09-30",
+      "entity_status_at_date": "Wholly owned subsidiary of Ripple before Oct 9 business-combination close",
+      "unrestricted_cash_usd": 91397,
+      "restricted_cash_usd": 49995,
+      "working_capital_deficit_usd": 10000000,
+      "accumulated_deficit_usd": 185587435,
+      "operating_loss_nine_months_usd": 273200000,
+      "digital_asset_impairment_nine_months_usd": 271037170,
+      "net_loss_nine_months_usd": 32870033,
+      "fair_value_gain_on_refundable_investor_advances_nine_months_usd": 240311432,
+      "operating_cash_flow_nine_months_usd": -1722130,
+      "related_party_financing_inflows_usd": 2845408,
+      "refundable_investor_advances_usd": 524259563,
+      "settlement": "Settled in full through equity issuance at Oct 9 business-combination close; no cash repaid to investors",
+      "xrp_held_at_sep30": 346284972,
+      "xrp_carrying_value_usd": 341887231,
+      "ripple_credit_facility_usd": 1000000,
+      "drawn_as_of_sep30": false,
+      "pathfinder_payable_on_behalf_usd": 3562118,
+      "private_placement_cash_raised_usd": 214100000,
+      "private_placement_xrp_received": 261919096,
+      "cash_used_to_purchase_xrp_usd": 214100000,
+      "xrp_purchased_with_cash": 84365876,
+      "interpretation": "Pre-close Sep 30 balance sheet, not post-close cash. The $524.26M refundable advances are equity-settled, not cash. The $214.1M private-placement cash was used to buy XRP and must not be counted again as remaining cash. The $271.0M impairment is non-cash digital-asset impairment, not operating cash burn.",
+      "additional_filing": {
+        "source": "Nov 13, 2026 SEC 424B3",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+        "warrants_exercised": 3073366,
+        "gross_warrant_proceeds_usd": 35300000,
+        "convertible_note_principal_usd": 30000000,
+        "convertible_note_net_cash_usd": 29000000,
+        "eloc_share_capacity": 5218935,
+        "eloc_price_formula": "97% of VWAP",
+        "eloc_actual_draw": "Not quantified in reviewed filing; capacity is not proceeds."
+      }
+    },
+    "sbi_stablecoin_rail_scope": {
+      "jpysc": {
+        "issuer": "SBI Shinsei Trust Bank",
+        "distributor": "SBI VC Trade",
+        "co_developer": "Startale Group",
+        "legal_classification": "Japanese type-three trust-based electronic payment instrument",
+        "launch_date": "2026-06-24",
+        "initial_scope": "SBI VC Trade account-only; external-wallet withdrawals unavailable at launch; public-chain migration contingent on legal/tax treatment and regulator confirmation",
+        "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "nov2_metrics": {
+          "lending_balance_jpy": 10000000000,
+          "handled_balance_jpy": 30000000000,
+          "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+        },
+        "sep7_reserve_update": {
+          "short_term_jgb_allocation_jpy": 1000000000,
+          "issued_balance_jpy": 20100000000,
+          "lending_applications_jpy": 6900000000,
+          "source": "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+        }
+      },
+      "rlusd_on_sbi_vc_trade": {
+        "issuer": "Standard Custody & Trust Company/Ripple",
+        "distributor": "SBI VC Trade",
+        "japanese_classification": "Type-four electronic payment instrument",
+        "supported_network_current": "Ethereum only",
+        "xrpl_support": "Planned/future, not currently supported on SBI VC Trade",
+        "holding_cap_jpy": 1000000,
+        "withdrawal_cap_per_transaction_jpy": 1000000,
+        "source": "https://www.sbivc.co.jp/rlusd",
+        "announcement": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv"
+      },
+      "open_standard": {
+        "date": "2026-10-16",
+        "scope": "SBI and Startale joined Open Standard and are exploring a JPYSC/OUSD pilot",
+        "production_status": "Exploratory only; announcement expressly says no new commercial service or production settlement",
+        "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+      },
+      "blackrock_mou": {
+        "date": "2026-10-27",
+        "scope": "SBI Holdings, Startale and BlackRock signed an MOU to explore tokenized MMF/JPYSC connectivity",
+        "production_status": "MOU only; no named fund, chain or launch date",
+        "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+      },
+      "interpretation": "SBI's JPYSC balances are account/lending metrics, not public-chain XRP flows. SBI's RLUSD listing currently supports Ethereum only, with XRPL planned; it is not current evidence of SBI-side XRPL settlement. SBI's USDC/Circle/Arc relationship is a separate rail."
+    }
   },
   "prediction_gate": {
     "registry_path": "research/xrp_intelligence/event_registry_current.json",
@@ -317,6 +433,7 @@
     "external_model_dispatch": false
   },
   "next_actions": [
+    "Re-run exact-head CI after the Run198 final research/handoff addendum commit.",
     "Complete semantic review of 1335 paths, prioritizing 49 workflows and 396 tests.",
     "Obtain independent reviewer and correct self-only CODEOWNERS.",
     "Obtain authorized branch-protection read evidence; do not bypass.",
@@ -325,5 +442,6 @@
     "Capture byte-exact source payloads and independent WORM/timestamp receipts.",
     "After safe merge, verify merge commit and main CI, then validate scheduled ingestion on main.",
     "Keep forecasts disabled until OOS superiority, calibration, drift and shadow gates pass."
-  ]
+  ],
+  "integration_head_verified": "0592539ed894fa5a160941df9d39bc368bea5dbd"
 }
