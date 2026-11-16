@@ -382,5 +382,45 @@
       "interview_url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
       "candidate_video_url": "https://www.youtube.com/watch?v=pFru4idBTMA"
     }
+  },
+  "run184_followup2": {
+    "captured_at_utc": "2026-11-16T04:16:30Z",
+    "head_at_capture": "6063c3dc9004731e02af4205225c1bb9db8e9df4",
+    "previous_head": "909262e12b0306be322e0d4048546c99aee667b2",
+    "previous_full_suite_run": 43802643373,
+    "previous_failure": "SyntaxError unmatched '}' at tests/test_riemann_harvest.py:49; stray brace removed on 6063c3d.",
+    "workflow_test_design": "pytest.ini globally enables --cov and --cov-fail-under=70. The focused three-test Riemann validation now invokes pytest with -o addopts= so it does not inherit the full-package coverage threshold; the full repository suite remains responsible for coverage gates.",
+    "integration_changes": {
+      "workflow_path": ".github/workflows/riemann-harvest.yml",
+      "install": "pytest pytest-cov pydantic-settings",
+      "test_command": "python -m pytest -o addopts= tests/test_riemann_harvest.py -q",
+      "regression_test": "tests/test_riemann_harvest.py asserts pytest, pytest-cov, pydantic-settings and the addopts override are present."
+    },
+    "current_head": "6063c3dc9004731e02af4205225c1bb9db8e9df4",
+    "exact_head_full_suite": {
+      "run_id": 43803021095,
+      "status": "in_progress"
+    },
+    "exact_head_core_tests": {
+      "run_id": 43803021095,
+      "status": "passed"
+    },
+    "exact_head_pages": {
+      "run_id": 43803021095,
+      "status": "passed"
+    },
+    "exact_head_dependency_audit": {
+      "push_run_id": 43803021197,
+      "status": "in_progress",
+      "pr_run_id": 43803027213,
+      "status_pr": "in_progress"
+    },
+    "exact_head_fail_closed": {
+      "push_run_id": 43803021190,
+      "conclusion": "success",
+      "pr_run_id": 43803027302,
+      "pr_conclusion": "success"
+    },
+    "no_merge": true
   }
 }

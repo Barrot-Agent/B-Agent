@@ -1572,3 +1572,17 @@ Exact-phrase follow-up: no new canonical XRPL ASK issuer or Ripple relationship 
 ### Current state
 
 The preceding verified full-suite head remains `18a51be` with 3,829 passed, zero failed, one skipped and 19 subtests. It does not verify `909262e` or the corrective successor. The new correction triggers a fresh full suite and security gates. PR #1663 remains draft with zero approvals/reviews; no merge or source-PR closure occurred.
+
+
+## Run184 follow-up 2 — focused Riemann validation semantics
+
+**Captured:** 2026-11-16T04:16:30Z  
+**Integration head at capture:** `6063c3dc9004731e02af4205225c1bb9db8e9df4`  
+
+The corrected head `6063c3d` passed the core test job and Pages validation; its full repository suite and dependency audits were still running. The prior `909262e` full-suite failure was traced to the unmatched brace introduced in Run184's test edit and corrected on `6063c3d`.
+
+A second issue was found by reading `pytest.ini`: it globally applies `--cov=barrot_agent`, XML/terminal coverage reports and `--cov-fail-under=70`. Installing `pytest-cov` alone would make the focused three-test Riemann job parse, but then the three-test subset would be incorrectly judged against the full-package 70% coverage threshold. The existing integration workflow now runs `python -m pytest -o addopts= tests/test_riemann_harvest.py -q`, preserving the focused subsystem test without weakening the full repository coverage gate. The regression test asserts this override and the required `pytest`, `pytest-cov` and `pydantic-settings` dependencies.
+
+The Riemann scheduled workflow has not been manually dispatched. The correction is statically regression-tested on integration; actual scheduled execution remains unverified.
+
+No merge. PR #1663 remains draft with zero approvals and zero formal reviews.
