@@ -1417,3 +1417,106 @@ The November 13 SEC Form 10-Q and related closing disclosures materially improve
 Primary source: [Evernorth SEC Form 10-Q, quarter ended September 30, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm). Related disclosure: [Pathfinder related-party credit facility and subsequent events](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/R79.htm) and [Evernorth 424B3 supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm).
 
 The event registry now contains 102 events across 79 independence groups; 102 lack byte-exact raw-source SHA-256 receipts and 57 lack exact publisher timestamps. The Evernorth event is primary-source verified but remains model-ineligible until raw bytes are archived and point-in-time features are validated.
+
+
+---
+
+## Run184 — Standard Chartered/LMAX collateral, XRPL amendment and scheduled-workflow repair
+
+**Captured:** 2026-11-16T04:08:43Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head at capture:** `8db2aaef5d96c433ecf677da05843981bad108b1`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open, draft, not merged.
+
+### Exact-head verification
+
+The immediately preceding code head `18a51be5e7b3f8cb999c4ffb8b4673d9ca3fa843` passed the full repository suite:
+
+- **3,829 passed, zero failed, one skipped, 19 subtests passed.**
+- Inclusive coverage **64.09%**; legacy-core coverage **77%**.
+- Pytest duration **177.14 seconds**.
+- Wheel build, installed Barrot V3/XRP mission verification and Pages validation passed.
+- Push and PR dependency audits and fail-closed gates passed.
+- [Full suite 43796840272](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796840272) · [Push dependency audit 43796840220](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796840220) · [Push fail-closed 43796840206](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796840206).
+
+The next head `8db2aaef5d96c433ecf677da05843981bad108b1` contains the Riemann scheduled-workflow dependency correction and regression test. Its exact-head full suite was still running at capture:
+- [Push full suite 43802183416](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802183416) — in progress.
+- [Push dependency audit 43802183421](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802183421) — in progress.
+- [PR CI 43802186871](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802186871) — passed.
+- [PR dependency audit 43802186855](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802186855) — in progress.
+- [Push fail-closed 43802183414](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802183414) and [PR fail-closed 43802186851](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802186851) — passed.
+
+Do not transfer the 18a51be result to the newer head.
+
+### Main scheduled-workflow failure diagnosed and corrected on integration
+
+Main's [Riemann Research Harvest run 43798453131](https://github.com/Barrot-Agent/B-Agent/actions/runs/43798453131) failed during test argument parsing. Its workflow installed `pytest` only, but the shared `pytest.ini` adds `--cov=barrot_agent`, `--cov-report` and `--cov-fail-under`; the environment lacked `pytest-cov`. The shared `tests/conftest.py` also imports AppConfig through `pydantic-settings`.
+
+The existing integration branch now installs `pytest`, `pytest-cov` and `pydantic-settings` in that workflow. A regression test asserts all three dependencies are installed. The two commits are `3b2b4f1` and `8db2aaef`. This is a code correction on the existing integration branch, not a new PR. The scheduled workflow was not manually dispatched; its integration fix remains unverified by a real scheduled execution until a permitted run occurs.
+
+### New institutional collateral evidence — RLUSD, not XRP
+
+Standard Chartered's October 12, 2026 first-party release says institutional custody for **RLUSD issued on XRPL is live** through its DFSA-regulated DIFC Branch. Standard Chartered, Ripple and LMAX Group intend to enable RLUSD as eligible collateral for agreed LMAX products using collateral-value mirroring, so the underlying RLUSD need not transfer directly to the trading venue. The release explicitly makes future capabilities subject to final documentation, successful testing, law/regulation, internal approvals and jurisdictional readiness.
+
+Primary sources:
+- [Standard Chartered, October 12](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group)
+- [LMAX Group, October 12](https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/)
+- [Ripple, October 12](https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/)
+
+These are counterparties' versions of the same joint announcement, not three independent measurements of collateral deployed. RLUSD custody is not native XRP custody; RLUSD collateral is not XRP collateral; neither proves XRP purchases, bridge demand or deployed LMAX collateral balances.
+
+Context: LMAX and Ripple's January 15 multi-year partnership described RLUSD as a planned core collateral asset and announced $150M of Ripple financing for LMAX. The announcement is a financing commitment, not evidence here of cash disbursed or XRP purchased. [LMAX primary release](https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility).
+
+### XRPL amendment snapshot
+
+The XRPL Dashboard own-node roll call at **2026-11-16 04:00 UTC**, voting ledger 108,359,679, heard 35/35 trusted validators and reports that 29 votes are required. SingleAssetVault had 23; LendingProtocol 22; LendingProtocolV1_1 22; ConfidentialTransfer 21. The dashboard reported 98 amendments live, nine in-flight and zero in the 14-day activation countdown. This is a third-party own-node snapshot, not the XRPL Foundation's official vote dataset; counts can change. [Live amendment dashboard](https://xrpldashboard.com/amendments).
+
+The official rule is strictly more than 80% support for 14 consecutive days. These vote counts do not indicate active native lending, XRP collateral or a projected activation date.
+
+### Event registry and forecast boundary
+
+Run184 adds two descriptive events:
+- `standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12`
+- `xrpl-amendment-rollcall-2026-11-16T0400Z`
+
+The registry now contains **104 events across 81 source-independence groups**. All **104** events lack byte-exact publisher-payload SHA-256 receipts; **59** lack exact publisher timestamps. Both new records remain model-ineligible. No hash was derived from rendered HTML or search snippets.
+
+Spot quotes and full-depth L2 could not be synchronized to the required event-time/freshness thresholds in this run. No new market observation was admitted as a model feature.
+
+**Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`.** No directional XRP forecast was issued.
+
+### Current integration and governance
+
+- Main recursive tree: 1393 entries.
+- Integration recursive tree: 2531 entries.
+- Main paths missing from integration: 0.
+- Shared path blob/mode differences: 205.
+- Integration-only paths: 1138.
+- Main test files: 94; integration test files: 460.
+- PR #1663: 60 commits ahead, zero behind; 1,296 changed files; technically mergeable but draft; zero formal reviews, approvals or review threads.
+- Main branch object reports protected=true, but detailed branch-protection read returns HTTP 403; visible required status contexts are empty. Fallback ruleset 10863829 is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`. GitHub connector permissions remain admin/maintain/push/pull/triage and are overprivileged.
+
+### Open PR backlog — preserve all source work
+
+- **#1663:** blocked, consolidated mainline integration; draft; semantic review incomplete.
+- **#1541:** unique/unreviewed security work; four of five paths overlap #1663, one unique path; no common Git ancestor with main.
+- **#1460:** unique/unreviewed research; eight unique paths; no common Git ancestor with main.
+- **#1450:** unique/unreviewed Binance/escrow research; 116 unique paths; no common Git ancestor with main.
+- **#1440:** unique/unreviewed XRP archive trigger repair; 64 unique paths; no common Git ancestor with main.
+- **#1437:** unique/unreviewed ledger source/snapshot repair; five unique paths; no common Git ancestor with main.
+- **#1436:** unique/unreviewed Binance theft/issuer-freeze research; 24 unique paths; no common Git ancestor with main.
+- **#1353:** unique/unreviewed ledger sharding research; 1,084 unique paths; no common Git ancestor with main.
+- **#1265:** unique/unreviewed ledger index research; 144 changed paths, one overlap with #1663 (`.github/workflows/ci.yml`), 143 unique paths; no common Git ancestor with main.
+
+All eight source PRs remain open/draft. No source PR was closed. No merge occurred.
+
+### Next concrete actions
+
+1. Finish exact-head full-suite and dependency verification after the Run184 evidence commit.
+2. Continue semantic review of all 1,296 changed paths, prioritizing the 48 workflow definitions and called scripts.
+3. Obtain independent review, resolve branch protection and reduce connector permissions.
+4. Preserve the two new institutional/protocol events as descriptive-only until byte-exact source receipts and independent archival exist.
+5. Verify the Riemann workflow fix through a permitted manual/scheduled execution; do not claim that workflow has passed based only on a static regression test.
+6. Continue synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral ingestion; do not issue a directional forecast until out-of-sample and shadow gates pass.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.

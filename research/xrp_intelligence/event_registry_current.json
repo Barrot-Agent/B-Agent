@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run182",
-  "captured_at_utc": "2026-11-16T02:56:56Z",
-  "source_receipt_status": "102 of 102 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
+  "registry_version": "run184",
+  "captured_at_utc": "2026-11-16T04:08:43Z",
+  "source_receipt_status": "104 of 104 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -4429,6 +4429,101 @@
         "coinbase-principal-market",
         "bitgo-custody"
       ]
+    },
+    {
+      "event_id": "standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12",
+      "event_type": "institutional",
+      "event_name": "Standard Chartered, Ripple and LMAX Group — RLUSD custody and collateral-mirroring announcement",
+      "hypothesis_id": "rlusd-institutional-custody-and-collateral-is-not-native-xrp-demand",
+      "domain": "institutional_custody_and_collateral",
+      "hypothesis": "Standard Chartered's live custody of XRPL-issued RLUSD and the planned LMAX collateral-mirroring arrangement may expand institutional RLUSD custody and collateral utility on XRPL.",
+      "counter_hypothesis": "RLUSD is not XRP. Live RLUSD custody does not imply native XRP purchases, XRP collateral or XRP bridge-asset use. LMAX collateral eligibility and mirroring remain planned, subject to final documentation, successful testing, applicable law, internal approvals and jurisdictional readiness; no production collateral balance or volume was disclosed.",
+      "claim": "Standard Chartered's October 12, 2026 announcement states that custody support for RLUSD issued on XRPL is live through Standard Chartered Bank's DFSA-regulated DIFC Branch. Standard Chartered, Ripple and LMAX Group intend to enable RLUSD as eligible collateral for agreed LMAX products using collateral-value mirroring without requiring underlying RLUSD to transfer directly to the trading venue. The announcement says the future capabilities remain subject to final documentation, successful testing, applicable laws and regulations, internal approvals and jurisdictional readiness.",
+      "source_id": "standardchartered_rlusd_xrpl_custody_lmax_collateral_20261012",
+      "source_name": "Standard Chartered primary press release",
+      "source_url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group",
+      "independence_group": "standardchartered-ripple-lmax-joint-announcement-2026-10-12",
+      "source_status": "verified",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-12T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T04:08:43Z",
+      "captured_at_utc": "2026-11-16T04:08:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The October 12 joint announcement accurately describes the service as live for eligible clients through the named DIFC branch.",
+        "The collateral-mirroring functionality is not treated as live until separate implementation evidence is published."
+      ],
+      "falsification_conditions": [
+        "A subsequent first-party implementation notice materially changes the service scope or launch status.",
+        "A first-party disclosure establishes that the planned LMAX collateral integration was activated, cancelled or materially altered."
+      ],
+      "related_entities": [
+        "Standard Chartered Bank",
+        "Standard Chartered Bank DIFC Branch",
+        "Ripple Labs",
+        "LMAX Group",
+        "RLUSD",
+        "XRP Ledger",
+        "Dubai Financial Services Authority"
+      ],
+      "tags": [
+        "RLUSD",
+        "XRP-Ledger",
+        "institutional-custody",
+        "Standard-Chartered",
+        "LMAX",
+        "collateral-mirroring",
+        "planned-not-live",
+        "not-native-XRP-demand"
+      ]
+    },
+    {
+      "event_id": "xrpl-amendment-rollcall-2026-11-16T0400Z",
+      "event_type": "protocol_governance",
+      "event_name": "XRPL Dashboard own-node amendment roll call — November 16 04:00 UTC",
+      "hypothesis_id": "xrpl-lending-amendments-remain-inactive-below-supermajority",
+      "domain": "xrpl_protocol_governance_and_lending",
+      "hypothesis": "The proposed SingleAssetVault and LendingProtocol amendments remain below the strict validator supermajority required to begin the 14-day activation window.",
+      "counter_hypothesis": "The roll call is a third-party own-node snapshot and may differ from other validator datasets or later rounds; support can change. It does not establish future activation timing or current XRP collateral demand.",
+      "claim": "XRPL Dashboard's own-node roll call at voting ledger 108,359,679 (flag ledger 108,359,680) at 2026-11-16 04:00 UTC heard 35 of 35 trusted validators and reports that 29 yes votes are required. SingleAssetVault had 23 yes votes, LendingProtocol 22, LendingProtocolV1_1 22 and ConfidentialTransfer 21. The dashboard reported zero amendments in the 14-day activation countdown, 98 amendments live on mainnet and nine in-flight.",
+      "source_id": "xrpldashboard_own_node_amendment_rollcall_20261116_0400",
+      "source_name": "XRPL Dashboard own-node amendment roll call",
+      "source_url": "https://xrpldashboard.com/amendments",
+      "independence_group": "xrpldashboard-own-node-amendment-rollcall",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T04:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T04:08:43Z",
+      "captured_at_utc": "2026-11-16T04:08:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The dashboard's own-node validation stream and displayed roll-call timestamp are accurate for this snapshot.",
+        "The strict more-than-80-percent rule is applied to 35 validators heard, requiring 29 yes votes."
+      ],
+      "falsification_conditions": [
+        "A subsequent validated-ledger roll call changes the vote count or countdown state.",
+        "An official XRPL amendment record contradicts the dashboard's recorded ledger state."
+      ],
+      "related_entities": [
+        "XRP Ledger",
+        "XRPL trusted validators",
+        "XRPL Foundation"
+      ],
+      "tags": [
+        "XRPL-amendments",
+        "SingleAssetVault",
+        "LendingProtocol",
+        "LendingProtocolV1_1",
+        "ConfidentialTransfer",
+        "29-of-35",
+        "14-day-countdown",
+        "not-activated",
+        "own-node-snapshot"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -4565,5 +4660,27 @@
     "eloc_drawn": "not disclosed",
     "xrp_sale_confirmed": false,
     "model_eligible": false
+  },
+  "run184_update": {
+    "captured_at_utc": "2026-11-16T04:08:43Z",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_parent_sha": "8db2aaef5d96c433ecf677da05843981bad108b1",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "added_event_ids": [
+      "standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12",
+      "xrpl-amendment-rollcall-2026-11-16T0400Z"
+    ],
+    "event_count": 104,
+    "independence_group_count": 81,
+    "missing_raw_source_sha256": 104,
+    "missing_publisher_timestamps": 59,
+    "model_eligible_event_count": 0,
+    "source_receipt_policy": "Rendered HTML/search excerpts are not publisher raw bytes; no hash was fabricated. Both new events remain model-ineligible until authorized byte-exact capture, hash receipt and point-in-time validation.",
+    "research_summary": [
+      "Standard Chartered confirms live institutional custody for RLUSD issued on XRPL through its DFSA-regulated DIFC branch; RLUSD collateral mirroring with LMAX is a planned capability subject to final documentation, testing, law, approvals and jurisdiction readiness.",
+      "Ripple, Standard Chartered and LMAX describe the same joint October 12 announcement; their press releases are corroborating party statements, not three independent measurements of deployed collateral.",
+      "XRPL Dashboard own-node roll call at 2026-11-16 04:00 UTC reports 23/35 SingleAssetVault, 22/35 LendingProtocol, 22/35 LendingProtocolV1_1 and 21/35 ConfidentialTransfer; none has the required 29 votes and no amendment is in the 14-day countdown."
+    ],
+    "prediction_boundary": "RLUSD custody or RLUSD collateral must not be represented as native XRP purchases, XRP collateral or XRP bridge demand. No directional forecast is issued."
   }
 }

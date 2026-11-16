@@ -143,6 +143,8 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
         "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
         "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30",
+        "standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12",
+        "xrpl-amendment-rollcall-2026-11-16T0400Z",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
@@ -226,6 +228,17 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "not proof" in coinbase["counter_hypothesis"]
     assert "BitGo Trust" in coinbase["claim"]
     assert coinbase["raw_source_sha256"] is None
+    standard_chartered = by_id["standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12"]
+    assert "custody support for RLUSD issued on XRPL is live" in standard_chartered["claim"]
+    assert "subject to final documentation" in standard_chartered["counter_hypothesis"]
+    assert "does not imply native XRP purchases" in standard_chartered["counter_hypothesis"]
+    assert standard_chartered["raw_source_sha256"] is None
+    xrpl_votes = by_id["xrpl-amendment-rollcall-2026-11-16T0400Z"]
+    assert "23 yes votes" in xrpl_votes["claim"]
+    assert "29 yes votes are required" in xrpl_votes["claim"]
+    assert "zero amendments in the 14-day activation countdown" in xrpl_votes["claim"]
+    assert xrpl_votes["source_status"] == "provisional"
+    assert xrpl_votes["raw_source_sha256"] is None
     cbxrp_reserves = by_id["coinbase-cbxrp-proof-of-reserves-2026-11-16"]
     assert "153,008,338.56 XRP" in cbxrp_reserves["claim"]
     assert "153,006,092.03 cbXRP" in cbxrp_reserves["claim"]
@@ -263,7 +276,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert missing_receipts == len(registry["events"])
     assert registry["model_eligible"] is False
     missing_publisher_timestamps = sum(1 for event in registry["events"] if not event.get("source_published_at_utc"))
-    assert missing_publisher_timestamps == registry["run182_update"]["missing_publisher_timestamps"]
+    assert missing_publisher_timestamps == registry["run184_update"]["missing_publisher_timestamps"]
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
