@@ -1,11 +1,11 @@
 # Current mission status — Run180
 
-**Captured:** 2026-11-16T01:01:31Z  
+**Captured:** 2026-11-16T01:18:22Z  
 **Mission priority:** 1 — XRP intelligence and measured prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.  
 **Main:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
 **Integration head inspected at Run180 start:** `33c065122acf34d3e746aef7add76dcd650d8a98`  
-**Run180 evidence branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`; later evidence commits remain subject to exact-head CI.  
+**Latest integration head before final handoff update:** `e75208ef6c67bd233e7ddde58020109911aa1b25`; exact-head CI remains pending.  
 **Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open and draft  
 
 ## Run180 — current verification and findings
@@ -14,10 +14,10 @@
 
 - Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`. The integration branch is `integration/xrp-v3-mainline-successor-20261115T2101Z`, based directly on main.
 - At the Run180 source-code audit head `33c065122acf34d3e746aef7add76dcd650d8a98`: complete recursive trees were retrieved without truncation; main 1,393 entries, integration 2,521; zero main paths missing; 205 shared blobs differed; 1,128 integration-only paths. GitHub compare reports 27 commits ahead, zero behind, with main as merge base.
-- PR #1663 is the sole open PR targeting main. After Run180 registry/test/map/audit updates it has 30 commits, 27 commits ahead/zero behind, 1,288 changed files, and remains draft/open.
+- PR #1663 is the sole open PR targeting main. After Run180 registry/test/map/audit updates it has 1,288 changed files and remains draft/open; the GitHub compare snapshot shows 27 commits ahead and zero behind. Later evidence commits do not create additional PRs.
 - Open PR inventory is nine: #1663 plus eight preserved research/security PRs. No source PR was closed. PR #1662 remains closed unmerged; no merge occurred.
 - The last fully verified exact code head is `c1a5238c2d98b8446693acdf01f15ab4916bf10f`: [full suite 43780970657](https://github.com/Barrot-Agent/B-Agent/actions/runs/43780970657) passed 3,829 tests, zero failures, one skipped, 19 subtests, 64.09% inclusive coverage, 77% legacy-core coverage, wheel build and installed V3/XRP mission verification. Six-manifest dependency audit [43780970615](https://github.com/Barrot-Agent/B-Agent/actions/runs/43780970615) passed with zero known vulnerabilities; fail-closed gate [43780970662](https://github.com/Barrot-Agent/B-Agent/actions/runs/43780970662) passed.
-- Run180 added four event records, regression assertions, a nine-platform map and this handoff. The latest pre-handoff evidence head `e2324e4517b0ddf938e8cebb42bedfcc2557379f` has its own CI in progress: [full CI 43784933027](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784933027), [dependency audit 43784932982](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784932982) pending, and fail-closed gate [43784933001](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784933001) passed. Do not transfer the c1a test result to the newer head. This handoff commit will create a still newer head and must be verified separately.
+- Run180 added five event records, regression assertions, a nine-platform map, a structured audit, and refreshed the public signal status to remain NOT_ISSUED. The latest pre-handoff evidence head `e2324e4517b0ddf938e8cebb42bedfcc2557379f` has its own CI in progress: [full CI 43784933027](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784933027), [dependency audit 43784932982](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784932982) pending, and fail-closed gate [43784933001](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784933001) passed. Do not transfer the c1a test result to the newer head. This handoff commit will create a still newer head and must be verified separately.
 - Main latest CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed; Pages [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504) failed; scheduled Cross Analysis [43783770404](https://github.com/Barrot-Agent/B-Agent/actions/runs/43783770404) passed.
 
 ### Workflow and called-script audit
