@@ -38,6 +38,7 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/ibm-bob-barrot-audit.yml",
     ".github/workflows/diag-cf.yml",
     ".github/workflows/diag-cf2.yml",
+    ".github/workflows/table-freshness-check.yml",
 )
 
 
@@ -269,3 +270,26 @@ def test_contradiction_resolver_reports_provenance_gaps_without_dropping_records
     assert report["unresolved_records"][0]["record"] == records[1]
     assert report["provenance_gaps"][0]["record"] == records[0]
     assert report["model_eligible"] is False
+
+def test_table_freshness_diagnostic_cannot_publish_private_brain_rows() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "table-freshness-check.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "workflow_dispatch: {}" in lowered
+    assert "permissions: {}" in lowered
+    assert "if: ${{ false }}" in lowered
+    for forbidden in (
+        "secrets.",
+        "databricks_token",
+        "workspace.barrot.brain",
+        "select ",
+        "random",
+        "insight",
+        "session",
+        "requests.post(",
+        "uses:",
+    ):
+        assert forbidden not in lowered, forbidden
+    assert "no private rows are emitted" in lowered
