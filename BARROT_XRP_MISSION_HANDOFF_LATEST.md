@@ -3210,3 +3210,135 @@ No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle s
 - This addendum's web-rendered order-book and exchange-wallet observations were not captured as raw bytes or appended to the model event registry. They remain descriptive research only.
 - The registry remains 125 events with zero verified raw-byte SHA-256 receipts, 48 exact publisher timestamps and 77 missing timestamps. Model-eligible count remains zero. Forecast status **NOT_ISSUED**; accuracy **NOT_EVALUATED**.
 - No directional forecast, paper trade or real-money action was issued or performed.
+
+---
+
+# Run194 — exact-head integration verification, live market refresh and prediction-gate audit
+
+**Captured:** 2026-11-16T18:04:00Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head before Run194 records:** `31babf157ceb73663331e74a85e7a58f02cfc4cf`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open/draft.
+
+## Repository and integration state
+
+- Current main recursive tree: 1,393 entries. Current integration tree: 2,554 entries. Both trees are complete; no main path is missing from integration.
+- Integration is **103 commits ahead and zero behind** main.
+- PR #1663 has **1,326 changed paths**, 485,197 additions and 6,730 deletions. The changed-path inventory contains 49 workflows, 394 test/fixture paths, 750 XRP research artifacts, 60 core files, 17 scripts, 3 docs, 2 XRP data paths and 51 other paths.
+- The current main branch does **not** contain `.github/workflows/xrp-public-ingestion.yml` or `barrot_agent/data/missions/primary_mission.json`. Both exist on the integration branch. No scheduled XRP ingestion run on main is verified.
+
+## Exact-head CI — verified on 31babf1
+
+The push-triggered full repository suite on exact head `31babf157ceb73663331e74a85e7a58f02cfc4cf` passed:
+
+- **3,843 passed, zero failed, one skipped, 11 warnings, 19 subtests passed**.
+- Full-suite duration: 128.63 seconds.
+- Inclusive coverage: 66.90% against a 62% floor.
+- Legacy-core coverage: 77% against a 70% floor.
+- Installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- [Full CI run 43919223859](https://github.com/Barrot-Agent/B-Agent/actions/runs/43919223859).
+
+The six-manifest dependency audit passed with zero known vulnerabilities: [run 43919223909](https://github.com/Barrot-Agent/B-Agent/actions/runs/43919223909). The fail-closed merge gate passed and kept merge disabled: [run 43919223852](https://github.com/Barrot-Agent/B-Agent/actions/runs/43919223852). Pages validation also passed in the full CI run.
+
+Warnings remain: eleven legacy tests return booleans instead of `None`; setuptools reports deprecated `project.license` table syntax and package-discovery warnings for mission/research data. The installed-wheel resource assertion passed. GitHub Actions cache storage is at its configured budget and read-only; the cache save failed non-fatally. No cache settings or artifacts were deleted.
+
+## Mainline scheduled analysis — successful workflow, empty current XRP sentiment windows
+
+[Cross Analysis run 43922792008](https://github.com/Barrot-Agent/B-Agent/actions/runs/43922792008) completed successfully on main. Its sentiment-shift stage reported **XRP recent window n=0 and prior window n=0**, so no current sentiment change can be estimated. The entity profile showed 286 XRP mentions and +0.46 net sentiment, but this is a corpus aggregate and not a current-window signal. Do not treat the positive profile as live market sentiment.
+
+## XRP market structure — public observations, descriptive only
+
+### Spot
+
+A Kraken public XRP/USD ticker response retrieved at 2026-11-16T18:04:00Z showed:
+
+- Last/bid: **$0.96375**; ask: **$0.96376**; mid: **$0.963755**.
+- Displayed spread: approximately **0.104 bps**.
+- 24-hour volume: **43.54M XRP**; VWAP **$0.95543**; 34,588 trades.
+- 24-hour range: **$0.94005–$0.97742**; open **$0.97373**.
+
+This is one venue's ticker and top-of-book only. The response as displayed by web retrieval is not original HTTP wire bytes; no raw-source SHA-256 receipt is claimed.
+
+### Aggregated spot flow and volume
+
+CoinGlass, as of **16:33 UTC November 16**, reported $556.07M 24-hour XRP spot volume across 16 markets, down 54.89%; net taker flow was **−$22.80M over 24 hours** and **−$210.02M over seven days**. It reported $2.42B futures volume, about 4.4 times spot volume. The largest listed spot market was Binance XRP/USDT at $119.99M (23.3%). These are provider aggregates, not raw synchronized venue captures.
+
+### Derivatives — do not average conflicting open-interest totals
+
+- OptimistFi's widgets showed **$1.2B at 11:00 UTC** and **$1.7B at 13:39 UTC**; the latter listed 38 venues and approximately $462.5M CME open interest.
+- Liqwall showed **$981M at 12:52 UTC**.
+- TradRadar showed **$1.33B** across seven exchanges at its November 15 16:00 UTC snapshot.
+- Kraken Futures showed about **$9.87M**, which is Kraken-only, not an all-market total.
+- SwiftEdge's perpetual dashboard at 15:52 UTC showed approximately **75.30M XRP / $71.8M open interest**, down 7.9% over 24 hours, with funding −0.0146% per eight hours.
+
+Venue universe, CME inclusion, contract type, unit conversion and timestamps differ. The difference between OptimistFi's $1.2B and $1.7B views is close to its CME line item, but the provider's methodology does not establish that as the explanation. No total is averaged or admitted as a synchronized feature.
+
+### Resting depth and competing evidence
+
+SwiftEdge's November 16 daily brief displayed a $5.2M bid wall at $0.945 and a $5.1M ask wall at $0.968, alongside positive large-order/taker-flow estimates. These are displayed resting orders that can be cancelled, not guaranteed executable support/resistance. Its price/time basis differs from the Kraken spot ticker and other perpetual snapshots.
+
+### ETF flows — universe and cutoff disagreement retained
+
+- Alpha Finance's five-fund series through November 14 reported approximately **−$20.2M over seven days**, **−$1.7M over 30 days**, and $1.71B cumulative inflows.
+- A SoSoValue-derived five-fund series through November 13 reported approximately **−$19.66M in November** and $1.79B cumulative inflows.
+- XRP Insights' six-spot-fund-plus-BITW series through November 13 reported approximately **−6.08M XRP (−$6.64M) for November 9–13**, but +3.40M XRP (+$3.23M) on November 13. GXRP is excluded from its flow calculation while its data gap is corrected.
+
+These are different universes, cutoffs and methodologies. SoSoValue-derived reports are not independent confirmations of one another. The series are not combined.
+
+### Competing interpretations
+
+1. Lower reported spot volume, negative CoinGlass taker flow and several ETF outflow series are consistent with weakened spot demand.
+2. Falling open interest and negative funding can also reflect deleveraging and short-side crowding; they do not establish a one-way price direction.
+3. SwiftEdge's positive displayed taker/large-order figures and XRP Insights' November 13 positive flow are counterevidence, but differ in source scope and time.
+4. Resting bid walls can be cancelled and are not durable support.
+
+No directional forecast is issued.
+
+## Prediction-engine readiness
+
+- The packaged primary mission definition is **EXECUTED on integration**, not present on main.
+- The 51-endpoint public ingestion collector and hourly/daily workflow are **EXECUTED on integration**, but no scheduled main-branch run is verified. The workflow is read-only public-data collection and uses bounded GitHub Actions cache/artifact recovery; artifact retention is 7/90 days, not WORM or indefinite persistence.
+- The current curated event registry contains **125 events; 125/125 have null raw-source SHA-256; 48 have exact publisher timestamps and 77 do not**. All remain research-only/model-ineligible.
+- The deterministic point-in-time validator, SQLite feature-store prototype, walk-forward baseline evaluator, calibration utilities, drift monitor, scenario assembly and forecast ledger are implemented. The store is not populated with a mature synchronized XRP dataset; drift is insufficient-data; no trained XRP-specific candidate exists.
+- Forecast-ledger policy requires independent Ed25519 readiness attestation, but no trusted evaluator key is configured. The ledger records/scores forecasts; it does not itself generate a forecast.
+- Forecast status: **NOT_ISSUED**. Accuracy: **NOT_EVALUATED**.
+
+Local SQLite triggers and unkeyed hashes are not an adversarial immutable boundary. The scheduled workflow's bounded artifacts/cache are not independent timestamp anchoring or external WORM storage.
+
+## Institutional and identity carry-forward
+
+- Ripple/Coinbase announced RLUSD distribution on Coinbase Prime, Exchange and Retail on October 28. The announcement said RLUSD collateral on Coinbase Global Exchange would follow; distribution is not XRP demand or proof of collateral utilization.
+- Ripple/BNY announced XRP and RLUSD custody support on October 27. Custody availability is not evidence of BNY proprietary XRP purchases or balances.
+- SBI's approximately 9% Ripple ownership is a time-bounded SBI disclosure from June 2025, not a current cap-table audit. SBI's Circle investments/JV and Circle Arc participation are separate from XRP settlement.
+- SBIC East, Central and West are separate Japanese regional Small and Medium Business Investment & Consultation companies, not SBI Holdings. The Tokyo SBIC ChatGPT seminar is a public event, not an OpenAI partnership.
+- ASK Coin remains a candidate-only match to Permission Coin (ASK) on Polygon; no XRP relationship is established. "Actual capital" is partially resolved through Evernorth SEC filings. Kamilah Stevenson's channel identity remains high-confidence, not absolute; no new video was admitted in this run.
+
+## Nine-platform coordination
+
+ChatGPT's GitHub connection is verified, but its permission set remains admin/maintain/push/pull/triage and is broader than least privilege. Claude, Grok, Gemini and Codex remain unverified; Copilot has historical one-off activity only; Hugging Face is unverified; Kaggle is untested; Databricks is unverified. Groq is separate from Grok. No external-model tasks were dispatched, no structured evidence exchange occurred, and no independent red-team quorum exists. Minority objections and source disagreements remain preserved.
+
+The previously empty `nine_platform_capability_authentication_dataflow_map_current.json` has now been populated with the Run194 map.
+
+## Open PR inventory and merge decision
+
+- **#1663 — blocked:** draft, 1,326 changed paths, 103 commits ahead/zero behind, zero formal reviews/approvals. Full-suite, dependency and fail-closed evidence passed on the exact head, but broad semantic review is incomplete.
+- **#1541 — superseded pending merge/main verification:** all five paths overlap #1663; two blobs are identical and three diverge. Preserve source history and reconcile the divergent MMI code/evidence. Do not close until successor content is verified on main.
+- **#1450 (116), #1460 (8), #1440 (64), #1436 (24), #1437 (5), #1353 (1,084) — unique/unreviewed:** preserve; no bulk closure.
+- **#1265 — unique/unreviewed with shared CI path:** 144 changed paths; one overlaps #1663 and 143 are unique. Review separately.
+
+Main is marked protected by the branch API, but detailed protection access returns HTTP 403; the visible repository ruleset (ID 10863829) is disabled. The visible required-check contexts are empty. `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`. The connector has admin/maintain/push/pull/triage permissions. Independent review and least-privilege governance remain unresolved.
+
+**MERGE DECISION: NO MERGE.** The PR is draft, has zero independent approvals, and its 1,326 changed paths—including 49 workflow definitions—have not received complete semantic review. Main still lacks the integration branch's private-data workflow quarantine. No bypass was used.
+
+## Next concrete actions
+
+1. Complete semantic review of all 1,326 paths, prioritizing 49 workflows, invoked scripts, credentials, triggers and external side effects.
+2. Obtain independent review; resolve branch-protection visibility, required checks and self-only CODEOWNERS.
+3. Reconcile the three divergent MMI paths in #1541 and preserve unique evidence.
+4. Review #1265's 143 unique ledger-index paths separately; do not mix that migration into #1663 without a coherent plan.
+5. After safe main integration, verify scheduled ingestion and cross-run receipt continuity.
+6. Establish externally anchored immutable raw storage and independent timestamp receipts.
+7. Collect synchronized multi-venue spot trades, full-depth books, derivatives contracts/funding, ETF holdings and exchange-flow histories.
+8. Keep directional forecasts disabled until mature point-in-time data, leakage-safe walk-forward superiority, baseline comparison, calibration, drift, independent evaluator attestation and shadow evaluation pass.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model dispatch, force-push, history rewrite or destructive worktree operation occurred.
