@@ -62,6 +62,6 @@ def test_riemann_harvest_installs_shared_test_dependencies_before_pytest() -> No
         / "riemann-harvest.yml"
     ).read_text(encoding="utf-8")
 
-    install_step = workflow.index("python -m pip install --quiet pytest pydantic-settings")
-    pytest_step = workflow.index("python -m pytest tests/test_riemann_harvest.py -q")
+    install_step = workflow.index("python -m pip install --quiet pytest pytest-cov pydantic-settings")
+    pytest_step = workflow.index("python -m pytest -o addopts= tests/test_riemann_harvest.py -q")
     assert install_step < pytest_step

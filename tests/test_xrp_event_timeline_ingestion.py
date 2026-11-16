@@ -143,6 +143,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "flare-fxrp-one-year-2026-09-24",
         "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
         "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
+        "sbic-west-chatgpt-generative-ai-seminar-2024-10-23",
         "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
         "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
         "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30",
@@ -215,6 +216,12 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "no OpenAI contract" in sbic["claim"]
     assert sbic["source_status"] == "verified"
     assert sbic["raw_source_sha256"] is None
+    sbic_west = by_id["sbic-west-chatgpt-generative-ai-seminar-2024-10-23"]
+    assert "ChatGPT" in sbic_west["claim"]
+    assert "Taichi Kakinuma" in sbic_west["claim"]
+    assert "does not establish an OpenAI" in sbic_west["claim"]
+    assert sbic_west["event_status"] == "unknown"
+    assert sbic_west["raw_source_sha256"] is None
     okx = by_id["xrp-okx-spot-basis-gate-2026-11-16T0058Z"]
     assert "63.905 seconds" in okx["claim"]
     assert "USD normalization is rejected" in okx["claim"]

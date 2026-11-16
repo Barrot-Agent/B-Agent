@@ -1,0 +1,329 @@
+{
+  "artifact_type": "barrot.xrp.run_audit",
+  "schema_version": "1.0.0",
+  "run_id": "run185",
+  "captured_at_utc": "2026-11-16T05:15:05Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "protected_foundation": "Barrot V3 execution, orchestration, safety, authorization and verification",
+  "main": {
+    "sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "tree_entries": 1393,
+    "truncated": false,
+    "branch_protected": true,
+    "branch_protection_details": "HTTP 403",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "enforcement": "disabled"
+    },
+    "repository_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    }
+  },
+  "integration": {
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "pre_handoff_head": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+    "tree_entries": 2533,
+    "truncated": false,
+    "main_paths_missing": 0,
+    "ahead_by": 65,
+    "behind_by": 0
+  },
+  "pull_request": {
+    "number": 1663,
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+    "commits": 65,
+    "changed_files": 1298,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "decision": "NO_MERGE"
+  },
+  "open_pr_inventory": [
+    {
+      "number": 1541,
+      "classification": "unique/unreviewed",
+      "paths": 5,
+      "overlap_with_integration": 4,
+      "unique_artifact": "research/operations/20261103T005800Z-mmi-canonical-claim-fingerprint.json"
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "paths": 8,
+      "overlap_with_integration": 0
+    },
+    {
+      "number": 1450,
+      "classification": "unique/unreviewed",
+      "paths": 116,
+      "overlap_with_integration": 0
+    },
+    {
+      "number": 1440,
+      "classification": "unique/unreviewed",
+      "paths": 64,
+      "overlap_with_integration": 0
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "paths": 5,
+      "overlap_with_integration": 0
+    },
+    {
+      "number": 1436,
+      "classification": "unique/unreviewed",
+      "paths": 24,
+      "overlap_with_integration": 0
+    },
+    {
+      "number": 1353,
+      "classification": "unique/unreviewed",
+      "paths": 1084,
+      "overlap_with_integration": 0
+    },
+    {
+      "number": 1265,
+      "classification": "unique/unreviewed",
+      "paths": 144,
+      "overlap_with_integration": 1,
+      "overlap_path": ".github/workflows/ci.yml"
+    }
+  ],
+  "branch_ancestry": "GitHub compare reports no common ancestor between each of the eight stacked source PR heads and the consolidated integration head; preserve source histories.",
+  "code_corrections": [
+    {
+      "commit": "f697e2ebb241ae65cbbabffcb915dd3912a23607",
+      "file": "research/xrp_intelligence/event_registry_current.json",
+      "change": "protocol_governance -> protocol because the event timeline schema explicitly allows protocol but not protocol_governance."
+    },
+    {
+      "commit": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "file": "tests/test_xrp_event_timeline_ingestion.py",
+      "change": "Added complete current-registry schema validation."
+    },
+    {
+      "file": "tests/test_hover_bike_workflow_artifact_paths.py",
+      "change": "Update Riemann workflow assertions to require pytest, pytest-cov, pydantic-settings and the -o addopts= focused-test override; included in Run185 commit."
+    }
+  ],
+  "ci": {
+    "prior_schema_failure": {
+      "head_sha": "6daea0723d12d7f7970525268227837eff82454c",
+      "run_id": 43803187834,
+      "conclusion": "failure",
+      "passed": 3802,
+      "failed": 27,
+      "skipped": 1,
+      "subtests": 19,
+      "root_cause": "One event used unsupported event_type protocol_governance, causing 27 ingestion tests to fail at registry validation."
+    },
+    "latest_completed": {
+      "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "run_id": 43808167476,
+      "conclusion": "failure",
+      "passed": 3828,
+      "failed": 1,
+      "skipped": 1,
+      "subtests": 19,
+      "inclusive_coverage_percent": 64.09,
+      "failed_test": "tests/test_hover_bike_workflow_artifact_paths.py::test_riemann_harvest_installs_shared_test_dependencies_before_pytest",
+      "root_cause": "The test expected old Riemann workflow command strings; workflow had already been corrected."
+    },
+    "dependency_audit": {
+      "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "run_id": 43808167434,
+      "conclusion": "success",
+      "known_vulnerabilities": 0
+    },
+    "push_fail_closed": {
+      "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "run_id": 43808167439,
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "run_id": 43808174132,
+      "conclusion": "success",
+      "test_jobs": "skipped by integration-branch condition",
+      "pages_validation": "passed"
+    },
+    "pr_dependency_audit": {
+      "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "run_id": 43808174091,
+      "conclusion": "success"
+    },
+    "pr_fail_closed": {
+      "head_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+      "run_id": 43808174077,
+      "conclusion": "success"
+    },
+    "next_exact_head_full_suite": "pending on the new Run185 commit"
+  },
+  "main_workflow_findings": {
+    "riemann_run": {
+      "run_id": 43798453131,
+      "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+      "conclusion": "failure",
+      "root_cause": "Main installed pytest without pytest-cov while pytest.ini injects --cov options; integration now installs pytest-cov and pydantic-settings and uses -o addopts= for the focused test."
+    },
+    "coinbase_paper_trader": "Main lacks typed approval and exact main SHA checks, references GROQ_API_KEY and pushes simulation state. Integration requires typed YES, exact main SHA, product identity validation and artifact-only output.",
+    "barrot_sync": "Main uses git push || true, masking failed synchronization.",
+    "ask_barrot_and_pingpong": "Main grants contents: write and references GROQ_API_KEY.",
+    "xrp_public_ingestion": "New read-only, main-ref-guarded workflow exists on integration; no matching workflow file exists on main."
+  },
+  "workflow_audit": {
+    "changed_workflow_files": 48,
+    "explicit_false_job_guards": 27,
+    "active_workflows": 21,
+    "high_impact_reviewed": 14,
+    "called_scripts_reviewed": 13,
+    "external_operations_dispatched": false
+  },
+  "sbic_west_research": {
+    "event_id": "sbic-west-chatgpt-generative-ai-seminar-2024-10-23",
+    "source_url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+    "source_date": "2024-10-23",
+    "source_published_at_utc": null,
+    "event_status": "unknown",
+    "claim": "Official SBIC West PDF advertises a ChatGPT/generative-AI seminar; it does not establish OpenAI as a contracting party, sponsor or commercial partner.",
+    "raw_source_sha256": null
+  },
+  "exact_phrase_status": {
+    "ask_coin": "No canonical XRP issuer or Ripple relationship verified; Permission ASK remains a plausible but unconfirmed candidate.",
+    "actual_capital": "Evernorth cash-funded XRP purchase, in-kind XRP, warrant proceeds actually received, convertible debt and undrawn ELOC capacity remain separate.",
+    "sbic_chatgpt": "SBIC East and SBIC West official educational seminar materials found; no OpenAI-SBIC commercial relationship established.",
+    "kamilah_stevenson": "Person verified by interview; @drkamilahstevenson is a third-party directory candidate only; no first-party channel cross-link and no new video attribution."
+  },
+  "market_snapshot": {
+    "okx": {
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_timestamp_utc": "2026-11-16T04:44:06.573Z",
+      "last": 0.96,
+      "bid": 0.96,
+      "bid_size_xrp": 2327.5,
+      "ask": 0.9601,
+      "ask_size_xrp": 1538.700405,
+      "open24h": 0.9737,
+      "high24h": 0.9789,
+      "low24h": 0.9432,
+      "volume24h_xrp": 39048924.4285,
+      "volume24h_quote_usdt": 37552760.29616274
+    },
+    "kraken": {
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_timestamp_utc": null,
+      "last": 0.95523,
+      "bid": 0.95522,
+      "bid_size_xrp": 7502,
+      "ask": 0.95523,
+      "ask_size_xrp": 334,
+      "open24h": 0.97373,
+      "volume24h_xrp": 26382704.86881636
+    },
+    "indicative_mid_difference_bps": 50.3844,
+    "qualification": "Asynchronous cross-venue quotes; Kraken event timestamp absent. Top-of-book only, not full-depth L2; direct depth endpoints unavailable. No raw response bytes/hash, so descriptive-only and not model-eligible."
+  },
+  "source_quality_note": "DigitalToday article surfaced as recently crawled/updated but its actual publication date is 2026-08-13; excluded as current Nov 16 market evidence.",
+  "prediction_engine": {
+    "registry_events": 105,
+    "independence_groups": 82,
+    "missing_raw_source_sha256": 105,
+    "missing_publisher_timestamps": 60,
+    "model_eligible_events": 0,
+    "implemented": [
+      "public-source definitions",
+      "scheduled-source definitions",
+      "point-in-time SQLite feature-store prototype",
+      "SHA-256 receipt-chain prototype",
+      "event timelines and counter-hypotheses",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "purged/embargoed walk-forward evaluation",
+      "probability calibration",
+      "PSI drift monitoring",
+      "fail-closed forecast ledger and evaluator attestation"
+    ],
+    "outstanding": [
+      "byte-exact raw publisher receipts",
+      "independent WORM archival",
+      "trusted timestamp anchoring",
+      "synchronized historical spot/L2/derivatives/exchange-flow/collateral data",
+      "out-of-sample candidate superiority",
+      "independent shadow cohort"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "nine_platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "historical_one_off_activity",
+      "formal_pr_approval": false
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "unverified",
+      "deployment_verified": false
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "untested"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "unverified",
+      "prior_http_status": 403
+    }
+  ],
+  "authorization": {
+    "merged_prs_this_run": [],
+    "external_model_dispatch": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operation": false,
+    "source_pr_closure": false
+  }
+}

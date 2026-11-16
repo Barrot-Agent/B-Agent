@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run184",
-  "captured_at_utc": "2026-11-16T04:08:43Z",
-  "source_receipt_status": "104 of 104 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
+  "registry_version": "run185",
+  "captured_at_utc": "2026-11-16T05:15:05Z",
+  "source_receipt_status": "105 of 105 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -4524,6 +4524,55 @@
         "not-activated",
         "own-node-snapshot"
       ]
+    },
+    {
+      "event_id": "sbic-west-chatgpt-generative-ai-seminar-2024-10-23",
+      "event_type": "identity",
+      "event_name": "SBIC West Japan advertises a ChatGPT-focused generative-AI introductory seminar",
+      "hypothesis_id": "sbic-chatgpt-reference-is-education-not-openai-commercial-partnership",
+      "domain": "entity_identity",
+      "hypothesis": "The reviewed SBIC/ChatGPT reference is an educational event rather than evidence of an OpenAI commercial relationship.",
+      "counter_hypothesis": "The seminar materials do not rule out separate agreements; they establish only the scope of the documented event and do not prove the absence of every possible relationship.",
+      "claim": "SBIC West Japan's official Investment Forum No.128 PDF advertises a generative-AI introductory seminar for accounting firms and support organizations, explicitly using ChatGPT as an example topic. It identifies attorney Taichi Kakinuma of STORIA as the speaker and lists an in-person/Zoom event for 2024-10-23 14:00 JST. The flyer establishes an SBIC West educational reference; it does not identify OpenAI as a contracting party, sponsor or commercial partner. The flyer proves the event was advertised, not that it actually occurred.",
+      "source_id": "sbic_west_official_investment_forum_no128_2024_10_23",
+      "source_name": "SBIC West Japan official Investment Forum No.128 PDF",
+      "source_url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "independence_group": "sbic-west-japan-official-investment-forum-no128",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "unknown",
+      "event_time_utc": "2024-10-23T05:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T05:15:05Z",
+      "captured_at_utc": "2026-11-16T05:15:05Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The official SBIC West PDF accurately identifies the advertised seminar topic, speaker, format and scheduled date.",
+        "The flyer is evidence that the event was advertised; actual occurrence is not independently confirmed.",
+        "The documented ChatGPT educational topic does not establish an OpenAI contract or commercial relationship."
+      ],
+      "falsification_conditions": [
+        "An official SBIC West post-event record materially contradicts the advertised date, speaker or topic.",
+        "A primary agreement or official announcement separately establishes an OpenAI-SBIC commercial partnership."
+      ],
+      "related_entities": [
+        "Osaka Small and Medium Business Investment & Consultation Co.",
+        "SBIC West Japan",
+        "OpenAI",
+        "ChatGPT",
+        "STORIA Law Firm",
+        "Taichi Kakinuma"
+      ],
+      "tags": [
+        "SBIC-West",
+        "ChatGPT",
+        "generative-AI",
+        "education",
+        "identity",
+        "not-OpenAI-partnership"
+      ],
+      "source_date": "2024-10-23",
+      "publisher_timestamp_precision": "date-only; PDF publication timestamp not established"
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -4682,5 +4731,32 @@
       "XRPL Dashboard own-node roll call at 2026-11-16 04:00 UTC reports 23/35 SingleAssetVault, 22/35 LendingProtocol, 22/35 LendingProtocolV1_1 and 21/35 ConfidentialTransfer; none has the required 29 votes and no amendment is in the 14-day countdown."
     ],
     "prediction_boundary": "RLUSD custody or RLUSD collateral must not be represented as native XRP purchases, XRP collateral or XRP bridge demand. No directional forecast is issued."
+  },
+  "run185_update": {
+    "captured_at_utc": "2026-11-16T05:15:05Z",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_parent_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "added_event_ids": [
+      "sbic-west-chatgpt-generative-ai-seminar-2024-10-23"
+    ],
+    "event_count": 105,
+    "independence_group_count": 82,
+    "missing_raw_source_sha256": 105,
+    "missing_publisher_timestamps": 60,
+    "model_eligible_event_count": 0,
+    "source_receipt_policy": "The official SBIC West PDF was read through its public publisher URL, but exact publisher response bytes were not archived. No SHA-256 was invented from rendered PDF text; the event remains descriptive-only and model-ineligible.",
+    "schema_correction": {
+      "invalid_event_id": "xrpl-amendment-rollcall-2026-11-16T0400Z",
+      "prior_event_type": "protocol_governance",
+      "corrected_event_type": "protocol",
+      "reason": "event_timeline.py explicitly permits protocol but not protocol_governance; the event's detailed domain remains xrpl_protocol_governance_and_lending."
+    },
+    "research_summary": [
+      "SBIC West Japan's official Investment Forum No.128 PDF advertises a ChatGPT/generative-AI educational seminar for 2024-10-23 and names attorney Taichi Kakinuma of STORIA. The flyer does not establish that the event occurred or that OpenAI was a contracting party, sponsor or commercial partner.",
+      "This is a separate primary-source SBIC West example from the previously recorded SBIC East/Microsoft Japan seminar; neither establishes an OpenAI-SBIC commercial relationship.",
+      "ASK Coin remains unresolved as an XRP issuer or Ripple relationship; Permission ASK is only a plausible candidate. Evernorth actual-capital classifications remain cash purchase, in-kind XRP, debt, warrant proceeds and undrawn equity capacity separately."
+    ],
+    "prediction_boundary": "No directional forecast is issued. All curated events remain model-ineligible until byte-exact receipts, timestamp/provenance validation, leakage-safe out-of-sample superiority and independent shadow evaluation pass."
   }
 }

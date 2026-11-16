@@ -1,3 +1,122 @@
+# Run185 — exact-head regression correction, SBIC West primary evidence and XRP market-quality audit
+
+**Captured:** 2026-11-16T05:15:05Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Pre-handoff integration code head:** `a07af4259393b7f1c8e93dc776c5b4b199c790f6`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**Mission:** XRP intelligence and prediction-engine mastery is priority 1; Barrot V3 remains the protected execution, orchestration, safety, authorization and verification foundation.
+
+## Repository and integration state
+
+- Complete recursive trees: main **1,393** entries; integration **2,533** entries; neither response was truncated; **zero main paths are missing** from integration.
+- Main-to-integration comparison: **65 commits ahead, zero behind**.
+- PR #1663 is the only open PR targeting main: **1,298 changed files**, 65 commits, draft/open, technically mergeable, zero formal reviews, zero approvals and zero review threads.
+- The eight other open PRs remain preserved on their own stacked research/security branches. No source PR was closed and no merge occurred.
+- This Run185 commit is a fast-forward child of `a07af4259393b7f1c8e93dc776c5b4b199c790f6`; it does not rewrite or force-push branch history.
+
+## Exact-head test failures and corrections
+
+### First Run185 failure on `6daea07`
+
+Full-suite run [43803187834](https://github.com/Barrot-Agent/B-Agent/actions/runs/43803187834) completed with **3,802 passed, 27 failed, one skipped and 19 subtests**. All 27 failures were caused by one newly appended event using `event_type=protocol_governance`, which the existing event-timeline schema rejects. The schema explicitly allows `protocol`; the detailed domain remains `xrpl_protocol_governance_and_lending`.
+
+- Corrected the event type to `protocol` in commit [f697e2e](https://github.com/Barrot-Agent/B-Agent/commit/f697e2ebb241ae65cbbabffcb915dd3912a23607).
+- Added a regression assertion that loads and validates the complete current curated registry in [test_xrp_event_timeline_ingestion.py](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-mainline-successor-20261115T2101Z/tests/test_xrp_event_timeline_ingestion.py).
+
+### Second Run185 failure on `a07af42`
+
+Exact-head full-suite run [43808167476](https://github.com/Barrot-Agent/B-Agent/actions/runs/43808167476) completed with **3,828 passed, one failed, one skipped and 19 subtests**; inclusive coverage was 64.09%. The sole failure was a stale workflow test assertion in `tests/test_hover_bike_workflow_artifact_paths.py`: it still expected the pre-correction Riemann install/test commands. The integration workflow already installs `pytest`, `pytest-cov`, `pydantic-settings` and invokes the focused test with `-o addopts=` so the global 70% full-suite coverage threshold is not applied to the focused three-test job. This Run185 commit updates the regression assertion to the actual safe workflow commands; it does not weaken coverage gates.
+
+Other exact-head evidence on `a07af42`:
+- Core tests passed.
+- Pages validation passed.
+- Six-manifest dependency audit [43808167434](https://github.com/Barrot-Agent/B-Agent/actions/runs/43808167434) passed with zero known vulnerabilities.
+- Push fail-closed [43808167439](https://github.com/Barrot-Agent/B-Agent/actions/runs/43808167439) passed.
+- PR CI [43808174132](https://github.com/Barrot-Agent/B-Agent/actions/runs/43808174132), PR dependency audit [43808174091](https://github.com/Barrot-Agent/B-Agent/actions/runs/43808174091) and PR fail-closed [43808174077](https://github.com/Barrot-Agent/B-Agent/actions/runs/43808174077) passed. PR test jobs are skipped by the integration-branch condition; the push full suite is authoritative.
+
+**The new commit containing this handoff, map, event and test corrections requires its own exact-head full-suite, dependency, fail-closed and Pages verification. No predecessor result is transferred.**
+
+## Riemann workflow: main failure and integration correction
+
+Main's scheduled Riemann Research Harvest run [43798453131](https://github.com/Barrot-Agent/B-Agent/actions/runs/43798453131) failed on main SHA `1f30e5c`. The log confirms pytest rejected `--cov`, `--cov-report` and `--cov-fail-under` because main installed `pytest` but not `pytest-cov`, while shared `pytest.ini` injects those arguments. The integration workflow now installs the shared test dependencies and uses `python -m pytest -o addopts= tests/test_riemann_harvest.py -q`. The stale regression test was corrected in this Run185 commit. No manual Riemann workflow dispatch occurred; actual scheduled execution of the integration fix remains unverified.
+
+## New primary-source SBIC West / ChatGPT evidence
+
+SBIC West Japan's official [Investment Forum No.128 PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf) advertises a generative-AI introductory seminar for accounting firms and support organizations, explicitly mentioning ChatGPT. It names attorney Taichi Kakinuma of STORIA as speaker and lists an in-person/Zoom event for October 23, 2024 at 14:00 JST.
+
+The flyer proves the seminar was advertised, not that it actually occurred. It identifies SBIC West as the educational organizer and does not name OpenAI as a contracting party, sponsor or commercial partner. This is a distinct regional example from the previously recorded SBIC East/Microsoft Japan seminar. SBIC East, Central and West remain separate regional investment companies, not SBI Holdings subsidiaries. The new event is recorded as `event_status=unknown`, `event_type=identity`, `stance=context`, and has no raw hash because the exact publisher PDF bytes were not archived.
+
+## XRP market snapshot — descriptive only
+
+Direct public exchange API observations retrieved during this run:
+- **OKX XRP-USDT:** exchange timestamp **2026-11-16 04:44:06.573 UTC**; last 0.9600; bid 0.9600 (2,327.5 XRP); ask 0.9601 (1,538.700405 XRP); 24h open 0.9737; high 0.9789; low 0.9432; 24h volume 39.0489M XRP / 37.5528M USDT. [OKX ticker API](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT).
+- **Kraken XRP/USD:** last 0.95523; bid 0.95522 (7,502 XRP); ask 0.95523 (334 XRP); 24h open 0.97373; 24h volume 26.3827M XRP. Kraken's response supplied no event timestamp. [Kraken ticker API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+
+The indicative mid-price difference is approximately **50.38 basis points**, but the quotes are asynchronous and Kraken's event timestamp is absent. This is not verified arbitrage. These are top-of-book observations, not full-depth L2. Direct depth endpoints were inaccessible through this capture. No exact raw response bytes or SHA-256 receipts were archived; no observation was admitted as a prediction feature.
+
+A search result for DigitalToday appeared recently crawled/updated but the opened article's actual publication date is August 13, 2026. It was excluded as a current November 16 market report. Search crawl dates are not publisher publication timestamps.
+
+## Identity and exact-phrase research
+
+- **SBIC / ChatGPT:** East and West official seminar materials demonstrate educational references only; no OpenAI-SBIC commercial partnership was established. The three regional SBIC companies remain distinct from SBI Holdings.
+- **ASK Coin:** no canonical XRP issuer or Ripple relationship verified. Permission ASK remains a plausible but unconfirmed candidate; no XRP relationship admitted.
+- **Actual capital:** retain Evernorth's SEC-backed separation of cash-funded XRP purchases, in-kind XRP contributions, warrant proceeds actually received, convertible debt and undrawn ELOC capacity. Never sum or relabel them as one capital raise.
+- **Kamilah/Camilla Stevenson:** the iHeart interview transcript identifies Dr. Kamilah Stevenson and her spoken YouTube name as Doctor Camilla Stevenson. A third-party directory now surfaces `@drkamilahstevenson`, but no first-party cross-link was verified; channel attribution and video inventory remain provisional. No candidate videos were newly attributed.
+
+## Prediction-engine readiness
+
+- Event registry after Run185: **105 events**, **82 independence groups**.
+- **105/105** events still lack byte-exact `raw_source_sha256` receipts; **60** lack exact publisher timestamps; **zero** are model-eligible.
+- The point-in-time feature-store prototype, four deterministic baselines, purged/embargoed walk-forward tests, calibration, PSI drift monitoring and fail-closed forecast ledger remain implemented on integration.
+- Independent WORM archival, trusted timestamp anchoring, synchronized historical multi-venue L2/derivatives/exchange-flow/collateral data, qualified out-of-sample candidate superiority and independent shadow evaluation remain outstanding.
+- `latest_signal.json`: **NOT_ISSUED**. `signal_accuracy.json`: **NOT_EVALUATED**. No directional forecast issued.
+
+## Nine-platform coordination
+
+The Run185 map records no authentication changes:
+- ChatGPT/GitHub: authenticated; repository permissions remain admin/maintain/push/pull/triage and are overprivileged.
+- Claude, Grok, Gemini and Codex: unverified.
+- Copilot: historical one-off activity; no formal PR approval.
+- Hugging Face: no verified deployment.
+- Kaggle: untested.
+- Databricks: prior HTTP 403; no verified connection.
+
+No external-model dispatch, structured nine-platform exchange or independent red-team quorum occurred. Groq is not Grok.
+
+## Workflow security and governance
+
+All **48 changed workflow definitions** were enumerated and reviewed; the current audit records 27 explicit false job guards and 21 active workflows, with 14 high-impact workflows and 13 called scripts receiving focused review. Main remains unsafe in several legacy paths: the Coinbase paper trader lacks typed approval/exact-main-SHA checks and commits simulation state; Barrot Sync suppresses push failure with `git push || true`; Ask Barrot and Ping-Pong grant `contents: write` and reference Groq credentials. Main lacks the new `xrp-public-ingestion.yml`; integration's ingestion workflow is read-only, main-ref guarded and uses no provider secrets.
+
+Main branch object reports `protected=true`, but the detailed branch-protection endpoint returns HTTP 403. Fallback ruleset 10863829 is disabled. CODEOWNERS is self-only. GitHub connector permissions remain overprivileged.
+
+## PR backlog and merge decision
+
+**NO MERGE.** PR #1663 remains draft, technically mergeable, with zero formal reviews/approvals/review threads. Main remains unchanged. Eight other open PRs are preserved:
+- #1541: 5 paths; 4 overlap #1663, with unique MMI fingerprint artifact `research/operations/20261103T005800Z-mmi-canonical-claim-fingerprint.json`.
+- #1460: 8 unique paths.
+- #1450: 116 unique paths.
+- #1440: 64 unique paths.
+- #1437: 5 unique paths.
+- #1436: 24 unique paths.
+- #1353: 1,084 unique paths.
+- #1265: 144 paths; one overlap (`.github/workflows/ci.yml`) and 143 unique paths.
+
+GitHub compare reports no common ancestor between these stacked source heads and the integration head. Preserve their histories; do not bulk-close or call them duplicates.
+
+## Next actions
+
+1. Complete exact-head full-suite, dependency/security, fail-closed and Pages checks on the new Run185 commit; diagnose any remaining failure.
+2. Continue the 1,298-path semantic review, prioritizing the 48 workflow definitions and called scripts.
+3. Resolve independent review, branch-protection visibility and least-privilege permissions.
+4. Verify Riemann workflow through a permitted actual execution; no manual dispatch was performed.
+5. Capture byte-exact public publisher payloads through an authorized ingestion path; establish independent WORM archival and trusted timestamps.
+6. Continue synchronized historical XRP spot, full-depth L2, derivatives, exchange-flow and collateral ingestion.
+7. Qualify a prediction candidate only after leakage-safe out-of-sample superiority against all four baselines and independent shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+---
+
 # Run183 final verification and institutional-rails addendum
 
 **Captured:** 2026-11-16T03:13:10Z  
