@@ -138,6 +138,8 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "circle-usdc-xrpl-native-2025-06-12",
         "evernorth-2026-11-09-capital-cash-vs-in-kind",
         "flare-fxrp-one-year-2026-09-24",
+        "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
+        "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
@@ -191,7 +193,20 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     flare = by_id["flare-fxrp-one-year-2026-09-24"]
     assert "145.2 million FXRP" in flare["claim"]
     assert "remains on XRPL" in flare["counter_hypothesis"]
-    assert registry["source_receipt_status"].startswith("85 of 85")
+    actual_capital = by_id["evernorth-actual-capital-warrant-note-eloc-2026-11-13"]
+    assert "3,073,366" in actual_capital["claim"]
+    assert "$35.3 million gross" in actual_capital["claim"]
+    assert "$29.0 million net" in actual_capital["claim"]
+    assert "8,666,279" in actual_capital["claim"]
+    assert "5,218,935" in actual_capital["claim"]
+    assert "not proof of XRP purchases" in actual_capital["counter_hypothesis"]
+    assert actual_capital["raw_source_sha256"] is None
+    sbic = by_id["sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26"]
+    assert "Microsoft Japan" in sbic["claim"]
+    assert "no OpenAI contract" in sbic["claim"]
+    assert sbic["source_status"] == "verified"
+    assert sbic["raw_source_sha256"] is None
+    assert registry["source_receipt_status"].startswith("87 of 87")
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
