@@ -1,3 +1,102 @@
+# Run186 follow-up — stale event-registry assertion and private-data workflow containment
+
+**Observed:** 2026-11-16T06:14:16Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Pre-follow-up integration SHA:** `9fe325267e91d328ca8508660bd9832873dea484`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`
+
+## Second exact-head full-suite diagnosis
+
+The timestamp-format correction was present on `1e6af0b717054a5410e9eaa12ee5a6f2cc01b1b6`, but its exact-head full-suite run [43814921590](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814921590) still failed one test: **3,828 passed, one failed, one skipped, 19 subtests; 64.09% inclusive coverage**.
+
+The remaining failure was a stale event-registry pointer in `tests/test_xrp_event_timeline_ingestion.py`:
+- The test compared the current missing-publisher-timestamp count to `registry["run184_update"]["missing_publisher_timestamps"]`, which is 59.
+- The current registry is Run185 follow-up: 106 events, with 61 missing publisher timestamps.
+- The test is corrected to compare against `registry["run185_followup"]["missing_publisher_timestamps"]`.
+- This preserves the strict completeness check; no event is made eligible and no coverage threshold is lowered.
+
+The earlier assertion correction remains: the XRPL 04:52 event serializes as `2026-11-16T04:52:00Z`, not a fractional-seconds string. Both were test-fixture/version-pointer defects, not market-feature or forecast-gate failures.
+
+## Private-data workflow containment
+
+The integration audit found `.github/workflows/table-freshness-check.yml` was manually dispatchable without an explicit approval or exact-main-SHA gate. It loaded a Databricks token, queried `workspace.barrot.brain`, selected random insight/session rows and printed them into GitHub Actions logs. The repository is public; this creates a private-memory disclosure path.
+
+**Executed on integration only:** the workflow is now quarantined with `workflow_dispatch`, `permissions: {}` and `if: ${{ false }}`. It reads no credentials, runs no SQL and emits no private rows. The previous diagnostic script is preserved; no file or data was deleted.
+
+A regression test adds the workflow to the high-risk quarantine list and rejects secret access, Databricks queries, random sampling, row fields, external actions or any active job. The main branch remains unchanged and still contains the old workflow; this protection is not effective on main until the reviewed integration is safely merged.
+
+No Databricks request was made, no token was read or rotated, and no workspace data was accessed during this run.
+
+## Workflow/security review
+
+All 48 workflow definitions changed by PR #1663 were fetched and inspected on the current integration branch. Key outcomes:
+- XRP public ingestion: scheduled hourly and daily, main-ref guarded, repository/actions read-only, no provider secrets, serialised; raw receipts and features are uploaded as 90-day GitHub artifacts (not independent WORM).
+- CI: the full repository suite runs on integration-branch pushes. PR-event test jobs are skipped for integration-head PRs by an explicit condition; the push full-suite run is authoritative. Pages, dependency and fail-closed PR checks still run.
+- Dependency audit: six manifests are audited and the final step fails if any audit failed.
+- Coinbase paper trader: manual, exact-main-SHA, position-identity preflight and artifact-only; it still uses Groq and is not dispatched. No paper trade was authorized or executed.
+- Databricks/Kaggle operations: manual exact-main-SHA gates with separate Databricks import and Kaggle download confirmations; not dispatched.
+- A2A deployment: main-only exact-SHA check and separate deployment/secret-rotation confirmations; not dispatched.
+- Financial-data refresh, capability discovery/design, data-value triage, frontier digest, research topics, WebMCP digest and signal summary require explicit YES plus exact main SHA before Groq-backed processing; none was dispatched.
+- Ask Barrot, legacy agent/sync/self-upgrade, legacy signal emitters, scheduler tick, public brain export, subscriber sync, Cloudflare diagnostics, Hugging Face sync and self-benchmark remain quarantined.
+- Riemann harvest and cross-analysis are read-only/artifact-only; no manual dispatch occurred.
+
+One remaining workflow-governance weakness is that the integration branch PR CI event skips its test jobs. The exact-head push suite must remain green, and branch-protection status visibility must be resolved before merge. The integration branch's 48 workflow files were inspected, but semantic review of all 1,302+ changed paths is not complete.
+
+## Exact-head CI state
+
+- `1e6af0b` full suite [43814921590](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814921590): failed one stale registry-count assertion, 3,828 passed.
+- `1e6af0b` push dependency audit [43814921570](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814921570): passed.
+- `1e6af0b` push fail-closed [43814921624](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814921624): passed.
+- `1e6af0b` PR CI [43814931098](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814931098): passed, but PR test jobs skipped by branch condition.
+- `1e6af0b` PR dependency audit [43814930967](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814930967): passed.
+- `1e6af0b` PR fail-closed [43814930892](https://github.com/Barrot-Agent/B-Agent/actions/runs/43814930892): passed.
+- `9fe3252` (private-data workflow quarantine) CI [43815377084](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815377084), dependency audit [43815377141](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815377141) and fail-closed [43815377158](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815377158) were queued when this note was prepared. The new test-pointer correction and this handoff update require fresh exact-head verification.
+
+## Repository and PR governance
+
+Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`. Before this follow-up, main had 1,393 tree entries and integration had 2,537; both recursive trees were complete, no main path was missing, and integration was 69 commits ahead/zero behind. The branch has no force-push or rewritten history.
+
+PR #1663 remains the sole main-targeting PR, draft/open and technically mergeable. It has zero formal reviews, zero approvals and zero review threads. Eight source PRs remain open and unique/unreviewed:
+- #1541: 5 changed paths, 4 overlap #1663, 1 unique MMI fingerprint artifact.
+- #1450: 116 unique paths.
+- #1460: 8 unique paths.
+- #1440: 64 unique paths.
+- #1436: 24 unique paths.
+- #1437: 5 unique paths.
+- #1353: 1,084 unique paths.
+- #1265: 144 changed paths, one overlap with #1663 and 143 unique paths.
+
+All eight source PR heads return GitHub's “no common ancestor” compare result against the integration head. Their branch histories and unique content are preserved; no source PR is closed.
+
+Main's branch object reports protected=true, but the branch-protection endpoint returns 403. The only listed ruleset, ID 10863829 “Fall Back”, is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, so independent code-owner review is not configured. The GitHub connector reports admin/maintain/push/pull/triage permissions. No approval or merge was attempted.
+
+## Research and prediction boundary
+
+Run186 added no event-registry entries because the new market pages were rendered web content without byte-exact publisher payload capture. The existing registry remains 106 events, 82 declared lineage labels, 44 canonical publisher/lineage groups, 106 missing raw-source hashes, 61 missing exact publisher timestamps and zero model-eligible events.
+
+New descriptive evidence retained:
+- XRP Insights Week 46: Nov 6–13 settled holdings-based flow across US spot ETFs plus BITW is −6.1M XRP (about −$6.5M), ending at approximately 1.19B XRP and $1.22B combined AUM. The source excludes GXRP from flow calculation. Its exchange-wallet snapshot is 22.26B XRP across 23 exchanges; the stable wallet set changed +25.7M XRP over seven days, excluding Binance due to wallet-set changes. Ripple escrow was reported at 31.10B XRP, operational wallets at 4.74B, and the Dec 1 unlock window at up to 1B XRP. All these claims come from one XRP Insights source group and remain descriptive-only.
+- Liqwall: 01:02 UTC Nov 16 XRP futures OI $997M, −3.7% over 24h; 30-day range $995M–$1.49B. Do not average with CoinGlass's different venue/contract universe.
+- SBI's Nov 2 primary release: JPYSC lending balance >¥10B and handled balance >¥30B. This is JPYSC platform activity, not XRP collateral or XRP lending.
+
+Prediction engine remains NOT_ISSUED / NOT_EVALUATED. No directional forecast, real-money action or paper trade occurred.
+
+## Next concrete actions
+
+1. Verify the timestamp and latest-registry-count test corrections on the newest exact head.
+2. Verify the private-data workflow quarantine test and full repository suite.
+3. Recheck all exact-head dependency/fail-closed/Pages checks.
+4. Complete the 1,302+ path semantic review and called-script review.
+5. Resolve independent reviewers, CODEOWNERS and branch-protection visibility.
+6. Establish byte-exact raw-source receipts, independent WORM archival and trusted timestamps.
+7. Continue synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral ingestion.
+8. Qualify a model only after leakage-safe out-of-sample superiority over all four baselines and independent shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
 # Run186 — exact-head CI diagnosis, current XRP flow evidence and integration reconciliation
 
 **Run started:** 2026-11-16T06:05:56Z  

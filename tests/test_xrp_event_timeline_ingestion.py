@@ -293,7 +293,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert missing_receipts == len(registry["events"])
     assert registry["model_eligible"] is False
     missing_publisher_timestamps = sum(1 for event in registry["events"] if not event.get("source_published_at_utc"))
-    assert missing_publisher_timestamps == registry["run184_update"]["missing_publisher_timestamps"]
+    assert missing_publisher_timestamps == registry["run185_followup"]["missing_publisher_timestamps"]
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
