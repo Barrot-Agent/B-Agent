@@ -2983,3 +2983,106 @@ The detailed source ledger, exact SEC amounts, channel/video references, RWA.xyz
 
 research/xrp_intelligence/20261116T154625Z-run191-evernorth-ask-coin-kamilah-rwa-verification.json
 
+
+
+---
+
+## Run192 — 2026-11-16 16:11:30 UTC
+
+**Mission priority unchanged:** XRP intelligence and prediction-engine mastery remain the primary Barrot mission. Barrot V3 remains the execution, orchestration, safety and verification foundation. No merge, deployment, paper trade, funds transfer or real-money action occurred.
+
+### Repository and integration state
+
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before Run192 evidence commits: `bf7b95b7006da21f34598cb13a34132502763ab5`.
+- PR #1663 remains open and draft, with 1,320 changed files, 483,348 additions, 6,726 deletions, 89 commits ahead and zero behind.
+- Recursive tree comparison: main 1,393 entries; integration 2,551; no main paths missing from integration.
+- Run192 committed the event-registry update (`4aae5a3da4e7140afb9a0ca3f48b98993a5eaeec`), nine-platform map (`5fa5cbfc495fb4514d90331f380eff0784fe9b9b`) and evidence audit (`5fa1891bc5f10816e2ea52e4647bae73f10ef73d`) to the existing branch only.
+
+### CI and workflow safety
+
+The last exact code-bearing head, `bf7b95b7006da21f34598cb13a34132502763ab5`, passed the full repository suite: **3,830 passed, zero failed, one skipped, 19 subtests**, 64.09% inclusive coverage and 77% legacy-core coverage. Dependency audit passed across six manifests with zero known vulnerabilities. The fail-closed gate passed. The PR-event workflow passed Pages validation but skipped test jobs; the exact-head push CI is the full-suite evidence.
+
+Main remains behind the integration branch in operational safety:
+- Main Pages/Jekyll failed on a Liquid parse error in `GLOBAL_STATE_MANIFEST.md` around line 6450. Integration wraps literal template-like JSON in raw blocks and its Pages validation passed.
+- Main A2A deployment can run on `a2a/**` pushes; integration requires explicit deployment confirmation and separate secret-rotation confirmation.
+- Main table-freshness workflow queries Databricks and logs rows; integration quarantines that workflow.
+- Main Coinbase paper-trader workflow can run the paper-trader script and write results; integration is manual and artifact-only. It was not dispatched.
+
+Current security limitations: main is reported protected, but the branch-protection API returned HTTP 403; the visible ruleset (ID 10863829) is disabled; CODEOWNERS is `* @Barrot-Agent`; the GitHub connector has admin/maintain/push/pull/triage permissions. Least privilege is not established.
+
+Latest main Cross Analysis run `43901441788` succeeded but both recent and prior 24-hour XRP/BTC sentiment windows were empty. XRP sentiment logs remain stale through October 29; the successful workflow status is not evidence of current sentiment coverage.
+
+### Run192 XRP market and derivatives evidence
+
+**Spot:** Kraken's public XRP/USD ticker snapshot captured at 16:11:30 UTC showed last $0.94856, bid $0.94841, ask $0.94865, midpoint $0.94853, top-of-book spread 2.53 bps, 24-hour open $0.97373, high $0.97742, low $0.94005, volume 40.17M XRP and VWAP $0.95501. The last price was 2.585% below the endpoint's rolling 24-hour open. This is one venue's ticker and top-of-book only; no full depth or synchronized multi-venue trade capture was obtained.
+
+**Exchange-wallet attribution:** XRP Insights reported 22.24B XRP across 707 labelled wallets and 24 exchanges as of 08:00 UTC. Same-wallet balances fell 126.3M XRP over seven days and 344.3M over 30 days. A naive rolling total instead rose 177.3M because newly tracked wallets added 521.6M XRP. This is labelled-wallet balance attribution, not customer net flow or tradable float; cold wallets and wrapped-token backing are included.
+
+**Derivatives:** Liqwall reported $994M OI at 15:02 UTC Nov 16, down 3.6% in 24 hours. TradRadar reported $1.33B across seven exchanges at Nov 15 16:00 UTC, down 6.53%, with -0.0027% funding per 8h and at least $37.51M liquidations. OptimistFi reported $1.7B across 38 venues at 13:39 UTC, including a $462.5M CME component (28%); its separate 11:00 UTC widget showed $1.2B. The $500M difference is close to the CME line item, suggesting a contract-universe difference, but the provider has not explicitly confirmed that reconciliation. SwiftEdge's Hyperliquid-only OI was about $71M at 09:36 UTC. Do not average these totals; venue sets, product scope and timestamps differ.
+
+**ETF flows:** Alpha Finance's five-fund series through Nov 14 showed -$20.2M over seven days, -$1.7M over 30 days and $1.71B cumulative net inflows. The SoSoValue-derived five-fund series through Nov 13 showed -$19.66M November net flows and $1.79B cumulative. Different cutoffs and universes are preserved separately.
+
+### Institutional relationships: SBI, Ripple, Circle and Coinbase
+
+- SBI's June 9, 2025 disclosure states SBI Holdings and SBI Shinsei Bank each invested $25M in Circle at its June 5 NYSE listing. The same release says SBI held approximately 9% of Ripple equity as its largest external shareholder at that time. This is corporate equity exposure, not direct XRP ownership.
+- SBI Circle Holdings was established Aug 22, 2025. SBI's June 2, 2025 investor presentation shows a 50/50 SBI/Circle ownership split.
+- SBI disclosed that a consolidated subsidiary participated in the ARC Token presale; the amount was not disclosed. This is a separate Arc exposure, not an XRPL or XRP position.
+- SBI's group-company page reports 60% voting rights in SBI Ripple Asia as of March 31, 2026. Ripple says SBI Ripple Asia sells RippleNet software and does not handle XRP. The documented Japanese XRP bridge-currency remittance service is operated through SBI Remit/SBI VC Trade and named overseas partners. Do not attribute token custody or exchange execution to SBI Ripple Asia.
+- SBI Ripple Asia and DSRV announced Japan-Korea payment research considering XRPL. The announcement is research, not a production service or measured payment volume.
+- SBI and Startale joined Open Standard and said they would consider a JPYSC/OUSD interoperability proof of concept. Coinbase is named as an Open Standard participant, but this does not establish a direct bilateral SBI-Coinbase agreement or production settlement.
+- Prior Coinbase/Circle/Ripple evidence remains: Coinbase distributes USDC and RLUSD and reported material USDC balances/economics in Q3 2026; BNY custody relationships are not proof of settlement volume or XRP demand. Circle Arc remains a parallel USDC-centered rail.
+
+### Japan SBIC identity and exact-phrase research
+
+Japan's Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963) and official company profiles resolve the acronym:
+- SBIC East: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.
+- SBIC Central: Nagoya Small and Medium Business Investment & Consultation Co., Ltd.
+- SBIC West: Osaka Small and Medium Business Investment & Consultation Co., Ltd.
+
+These are separate regional companies, not SBI Holdings.
+
+Tokyo SBIC's official page lists a March 5, 2026 Hamamatsu seminar, “Generative AI (ChatGPT): Current and Future,” co-hosted with Hamamatsu Iwata Shinkin. The listed speaker was a Microsoft Japan executive evangelist. The page does not establish an OpenAI partnership, sponsorship or enterprise agreement.
+
+- ASK Coin: Permission Coin (ASK) on Polygon remains a candidate match; no XRP/Ripple relationship established.
+- “Actual capital”: Run191's Evernorth SEC reconciliation remains the evidence baseline; gross cash, in-kind XRP, debt, warrant proceeds and undrawn facility capacity remain separate.
+- Kamilah Stevenson: prior identity assessment remains high confidence but not absolute; no new video was admitted in Run192 without fresh identity verification.
+
+### Macro and geopolitics
+
+Federal Reserve Governor Michael Barr's Nov 16 speech and the Nov 13 Financial Stability Report report AI-related financial-stability concerns: 87% of survey contacts cited AI risk, 52% risk-asset correction, 48% higher long-term rates, and 43% each cyberattacks and fiscal-debt sustainability. Barr also discussed potential off-balance-sheet AI/data-center financing obligations above $3T and algorithmic herd/manipulation risks. This is financial-stability context, not monetary-policy guidance or an XRP-specific catalyst.
+
+The New York Fed's Nov 16 Markets Group remarks described FX functioning as resilient despite Middle East conflict and energy/rate volatility. FX depth is not a proxy for XRP order-book depth.
+
+### Prediction-engine gate
+
+The canonical event registry now contains **125 events** after 14 Run192 additions. It has **zero raw-source SHA-256 receipts**, 48 exact publisher timestamps and 77 missing exact publisher timestamps. All 125 remain research-only and model-ineligible. No directional forecast was issued; accuracy remains NOT_EVALUATED.
+
+The integration branch contains the designed `xrp-public-ingestion.yml` workflow, public-data adapters, point-in-time SQLite feature-store and chronological baseline-evaluation code. It is configured for 43 hourly public sources plus two weekly CFTC sources and is gated to `main`; it has not executed on main. GitHub's 90-day artifact retention is not immutable WORM storage. No forecast may be issued until exact raw bytes/receipts, point-in-time features, leakage-safe walk-forward results, baseline comparisons, calibration and drift checks pass.
+
+### Nine-platform coordination
+
+Run192 refreshed `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run192.json`. ChatGPT's GitHub read/write access to the existing integration branch is verified. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain untested/unverified; Copilot has historical one-off activity but no current verified data flow. No external model task or data transfer was performed.
+
+### Open PR backlog
+
+- **#1663 — blocked:** draft integration successor; 1,320 changed paths, 89 ahead, zero behind, no formal approvals.
+- **#1541 — blocked:** five paths; four overlap #1663, two identical blobs and two divergent; preserve its one unique evidence artifact.
+- **#1450 — unique/unreviewed:** 116 paths; one shared path is identical.
+- **#1460 — unique/unreviewed:** eight paths.
+- **#1440 — unique/unreviewed:** 64 paths.
+- **#1436 — unique/unreviewed:** 24 paths.
+- **#1437 — unique/unreviewed:** five paths.
+- **#1353 — unique/unreviewed:** 1,084 paths.
+- **#1265 — unique/unreviewed:** 144 paths; four shared with #1663, one identical and three divergent.
+
+No source PR was closed. No duplicate/superseded classification is asserted without verified merged content.
+
+### Durable Run192 artifacts
+
+- Event registry: `research/xrp_intelligence/event_registry_current.json`
+- Nine-platform map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run192.json`
+- Full evidence audit: `research/xrp_intelligence/20261116T161130Z-run192-market-institutional-macro-and-integration-audit.json`
+
+**Next concrete actions:** verify CI triggered by the Run192 commits; complete semantic review of PR #1663's 49 workflow changes, 394 test-file changes and security boundaries; reconcile MMI and ledger-index overlaps; capture byte-exact public-source receipts and synchronized market data; keep forecast issuance disabled until chronological out-of-sample evaluation supports it.
