@@ -1109,3 +1109,37 @@ The event registry now contains 101 events across 78 independence groups. All 10
 
 ## Run182 test-assertion wording correction — 2026-11-16T02:51:10Z
 The current integration head `13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1` had its push full-suite job queued/running. PR-event CI rendered Pages successfully and skipped its test jobs as configured; the push fail-closed gate passed while dependency audits were still running. A final review of the new collateral regression assertions found one wording mismatch: the test expected “not a third-party audit”, while the Coinbase event correctly says “rather than a third-party audit”. The assertion is corrected to match the recorded source qualification. No event, receipt, model-eligibility or safety condition is relaxed. The next head requires fresh exact-head full-suite, dependency and fail-closed verification.
+
+
+## Run182 Evernorth actual-capital and potential-supply supplement — 2026-11-16T02:56:56Z
+The November 13 SEC Form 10-Q and related closing disclosures materially improve the distinction between actual cash, in-kind XRP, debt, contingent financing and potential future XRP supply.
+
+**Pre-close accounting at September 30, 2026:**
+- 346,284,972 XRP held; historical cost basis $846.575M; cumulative impairment $271.037M; carrying value $341.887M.
+- Cash $91,397; restricted cash $49,995; total liabilities $534.477M; stockholders' deficit $185.587M.
+- Nine-month operating loss $273.152M, net loss $32.870M and cash used in operations $1.722M.
+- Q3 net income $155.265M included a non-cash $162.834M fair-value gain on refundable investor advances. The $271.037M impairment is also non-cash. Do not call the accounting gains operating revenue or the impairment a cash outflow.
+
+**October 9 closing and XRP availability:**
+- Contractual restrictions on the previously restricted Custody XRP lapsed at closing.
+- Evernorth transferred 346,484,972 XRP to Pathfinder, including 200,000 delayed-funding XRP.
+- Ripple separately contributed 126,791,458 XRP to Pathfinder; the filing expressly says this contribution can be liquidated to fund operating costs.
+- Arithmetic total of those disclosed post-close transfers/contribution: 473,276,430 XRP, assuming no intervening movement.
+- The company also discloses that it may sell XRP for general corporate purposes or use XRP as collateral. No actual XRP sale, exchange deposit or redemption is disclosed in the reviewed filing. This is a potential supply/collateral catalyst, not a confirmed sale.
+
+**Related-party liquidity and financing classification:**
+- Pathfinder had borrowed $9.7M under a $10M Ripple related-party credit facility as of October 7, after the limit was raised from $7M. Amounts outstanding became repayable within five business days after the October 9 close. The reviewed November 13 filing does not confirm repayment. This is Pathfinder-level debt, not Evernorth's separate $1M Ripple facility; Evernorth's facility had no draws as of September 30.
+- Gross closing cash $272.6M included $224.6M private-placement cash and $48M SPAC trust cash before transaction expenses.
+- The $214.05M cash-funded purchase of 84,365,876 XRP is included in private-placement cash; it must not be counted again on top of gross closing cash.
+- In-kind XRP contributions of 388,910,554 XRP are a separate non-cash category.
+- The $30M convertible note issued October 13 produced $29M net after a $1M fee and accrues 4% PIK interest.
+- Warrant exercises from October 12 to November 9 generated $35.3M gross cash from 3,073,366 exercises; 8,666,279 warrants remained.
+- Cantor ELOC capacity is up to 5,218,935 shares at 97% of VWAP, subject to ownership/issuance limits; no draw amount was disclosed. Capacity is not cash received.
+- Certain SBI Holdings-affiliated investors were subject to a 39.9% Class A issuance threshold, with excess shares issued as Class C. The filing does not attribute all $214.05M private-placement cash to SBI.
+- Coinbase was selected as principal market for XRP valuation; BitGo Trust was the initial custodian.
+
+**Model treatment:** create separate features for (1) cash-funded XRP purchases, (2) in-kind XRP contributions, (3) unrestricted/transferable treasury XRP, (4) related-party debt and maturity/repayment status, (5) warrant cash actually received, (6) convertible debt, (7) undrawn ELOC capacity, and (8) confirmed exchange/custody sales or collateral pledges. Do not collapse them into one “actual capital” number. The 126.791M Ripple contribution and release of restrictions are potential supply variables only until an on-chain disposition is verified.
+
+Primary source: [Evernorth SEC Form 10-Q, quarter ended September 30, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm). Related disclosure: [Pathfinder related-party credit facility and subsequent events](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/R79.htm) and [Evernorth 424B3 supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm).
+
+The event registry now contains 102 events across 79 independence groups; 102 lack byte-exact raw-source SHA-256 receipts and 57 lack exact publisher timestamps. The Evernorth event is primary-source verified but remains model-ineligible until raw bytes are archived and point-in-time features are validated.

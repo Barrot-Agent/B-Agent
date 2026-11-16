@@ -246,6 +246,16 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "33.42M" in coinglass["claim"]
     assert "not averaged" in coinglass["claim"]
     assert coinglass["raw_source_sha256"] is None
+    evernorth = by_id["evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release"]
+    assert "346,284,972 XRP" in evernorth["claim"]
+    assert "126,791,458 XRP" in evernorth["claim"]
+    assert "$9.7M" in evernorth["claim"]
+    assert "five business days" in evernorth["claim"]
+    assert "$214.05M" in evernorth["claim"]
+    assert "84,365,876 XRP" in evernorth["claim"]
+    assert "Coinbase" in evernorth["claim"] and "BitGo Trust" in evernorth["claim"]
+    assert "No XRP sale, exchange deposit or redemption is disclosed" in evernorth["counter_hypothesis"]
+    assert evernorth["raw_source_sha256"] is None
     missing_receipts = sum(1 for event in registry["events"] if not event.get("raw_source_sha256"))
     assert registry["source_receipt_status"].startswith(
         f"{missing_receipts} of {len(registry['events'])} curated events"

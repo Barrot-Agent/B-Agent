@@ -2,8 +2,8 @@
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
   "registry_version": "run182",
-  "captured_at_utc": "2026-11-16T02:44:53Z",
-  "source_receipt_status": "101 of 101 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
+  "captured_at_utc": "2026-11-16T02:56:56Z",
+  "source_receipt_status": "102 of 102 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -4362,6 +4362,73 @@
         "provider-disagreement",
         "stale-cache"
       ]
+    },
+    {
+      "event_id": "evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release",
+      "event_type": "institutional",
+      "event_name": "Evernorth Q3 2026 Form 10-Q and October 9 business-combination close",
+      "hypothesis_id": "evernorth-ripple-pathfinder-liquidity-and-potential-xrp-supply",
+      "domain": "institutional_capital_treasury_and_related_party_debt",
+      "hypothesis": "The October 9 close released contractual restrictions on a large XRP treasury transferred to Pathfinder; Ripple contributed additional XRP that can be liquidated for operating costs, and Pathfinder had a related-party loan repayable shortly after close. These disclosures create a potential XRP supply/liquidity risk that must be monitored, but they do not establish an actual sale.",
+      "counter_hypothesis": "No XRP sale, exchange deposit or redemption is disclosed. Cash, warrant proceeds and the convertible note may fund operations; the $9.7M Pathfinder facility may have been repaid, but repayment is not confirmed in the reviewed filing. The Q3 balance sheet is pre-close and its large impairment and net-income figures are largely non-cash.",
+      "claim": "Evernorth's SEC Form 10-Q for the quarter ended September 30, 2026, filed November 13, reports 346,284,972 XRP held at September 30, with historical cost basis of $846.575M, cumulative impairment of $271.037M and carrying value of $341.887M. The pre-close balance sheet showed $91,397 cash, $49,995 restricted cash, $534.477M total liabilities and a $185.587M stockholders' deficit. Nine-month operating loss was $273.152M, net loss $32.870M and cash used in operations $1.722M. Q3 net income of $155.265M included a non-cash $162.834M fair-value gain on refundable investor advances. At the October 9 business-combination closing, contractual restrictions on the Custody XRP lapsed and Evernorth transferred 346,484,972 XRP to Pathfinder (the September 30 holdings plus 200,000 delayed-funding XRP). Ripple separately contributed 126,791,458 XRP to Pathfinder; the filing says this contribution can be liquidated to fund operating costs. The arithmetic sum of the disclosed post-close Pathfinder XRP transfers/contribution is 473,276,430 XRP, assuming no intervening movements. The company disclosed that it may sell XRP for general corporate purposes or use XRP as collateral; no actual sale is disclosed. Pathfinder, a subsidiary, had borrowed $9.7M under a $10M related-party credit facility from Ripple as of October 7 after the facility limit was increased from $7M; amounts outstanding became repayable within five business days after the October 9 close. Repayment is not confirmed in the reviewed November 13 filing. This is separate from Evernorth's own $1M Ripple credit facility, which had no draws as of September 30. The closing's $272.6M gross cash included $224.6M private-placement cash and $48M SPAC trust cash before expenses; the $214.05M cash-funded purchase of 84,365,876 XRP is included in the private-placement cash and must not be double-counted. In-kind XRP contributions of 388,910,554 XRP are a separate category. A $30M convertible note issued October 13 generated $29M net after a $1M fee and accrues 4% PIK interest. Warrant exercises from October 12 to November 9 generated $35.3M gross cash from 3,073,366 exercises; 8,666,279 warrants remained. A Cantor ELOC permits up to 5,218,935 shares at 97% of VWAP, subject to ownership/issuance limits; no draw amount was disclosed. Certain SBI Holdings-affiliated investors were subject to a 39.9% Class A issuance threshold, with excess shares issued as Class C; the filing does not attribute all $214.05M of private-placement cash to SBI. Coinbase was selected as principal market for XRP valuation and BitGo Trust as initial custodian.",
+      "source_id": "sec_evernorth_2026q3_10q_and_october_close",
+      "source_name": "Evernorth SEC Form 10-Q for quarter ended 2026-09-30 and related Pathfinder subsequent-event disclosure",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "related_source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/R79.htm"
+      ],
+      "independence_group": "sec-evernorth-q3-2026-primary-filing",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-09T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:56:56Z",
+      "captured_at_utc": "2026-11-16T02:56:56Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "2026-10-09T00:00:00Z is a date-only closing anchor; exact closing time is not supplied.",
+        "September 30 balance-sheet figures are pre-close and must not be described as current post-close cash or liabilities.",
+        "The 346,484,972 XRP transfer to Pathfinder includes the 200,000 delayed-funding XRP; the 126,791,458 XRP Ripple contribution is additional.",
+        "The 473,276,430 XRP total is arithmetic from disclosed transfers/contributions and assumes no intervening movements; it is not a fresh on-chain balance.",
+        "The $9.7M facility is Pathfinder-level related-party debt, not Evernorth's separate $1M facility; repayment after the five-business-day deadline is not confirmed in the reviewed filing.",
+        "The $214.05M cash-funded XRP purchase is included in $224.6M private-placement cash and must not be counted again on top of $272.6M gross closing cash.",
+        "The $271.037M impairment and $162.834M fair-value gain are accounting/non-cash items; neither is an operating cash flow.",
+        "ELOC capacity and unexercised warrants are not actual proceeds."
+      ],
+      "falsification_conditions": [
+        "A subsequent SEC filing or company disclosure confirms repayment/extension of Pathfinder's $9.7M facility.",
+        "On-chain wallet attribution and exchange/custody flows establish whether any of the 126.791M Ripple-contributed XRP or the previously restricted Custody XRP was sold, redeemed, pledged or moved.",
+        "A corrected SEC filing changes the holdings, related-party facility, cash, impairment, contribution or ownership figures."
+      ],
+      "related_entities": [
+        "Evernorth",
+        "Pathfinder",
+        "Ripple",
+        "RippleWorks",
+        "SBI Holdings",
+        "Coinbase",
+        "BitGo Trust",
+        "Arrington XRP Capital",
+        "Cantor Fitzgerald",
+        "XRP",
+        "XRPN"
+      ],
+      "tags": [
+        "actual-capital",
+        "xrp-treasury",
+        "in-kind-contribution",
+        "cash-funded-xrp-purchase",
+        "restriction-release",
+        "pathfinder-related-party-debt",
+        "potential-xrp-supply",
+        "no-sale-confirmed",
+        "sbi-ownership-threshold",
+        "coinbase-principal-market",
+        "bitgo-custody"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -4426,16 +4493,17 @@
       "coinbase-cbxrp-proof-of-reserves-2026-11-16",
       "morpho-cbxrp-liquidation-window-2026-11-07-to-13",
       "morpho-base-usdc-cbxrp-market-snapshot-2026-11-16T0244Z",
-      "coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z"
+      "coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z",
+      "evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release"
     ],
     "corrected_event_ids": [
       "xrp-240m-unlabelled-wallet-transfers-2026-11-15",
       "fomc-policy-rate-2026-09-17-and-2026-10-28"
     ],
-    "note": "Run182 collateral supplement adds Coinbase's first-party cbXRP proof-of-reserves, CryptoSlate's Morpho liquidation-log analysis, the live Morpho Base USDC/cbXRP market snapshot and CoinGlass's live XRP futures snapshot. The Morpho/Base events distinguish wrapped cbXRP transfers from native XRP redemptions; no native XRP sale is inferred. CoinGlass's search cache/live-page disagreement and the Morpho oracle/UI discrepancies are preserved. The U.Today wallet-transfer record now links to the original publisher. The October 28 FOMC 10–2 vote and two dissenters are recorded. No exact publisher bytes were captured and no raw hashes were invented.",
-    "source_receipt_status": "101/101 missing byte-exact raw-source SHA-256 receipts",
-    "missing_publisher_timestamps": 56,
-    "independence_groups": 78,
+    "note": "Run182 collateral supplement adds Coinbase's first-party cbXRP proof-of-reserves, CryptoSlate's Morpho liquidation-log analysis, the live Morpho Base USDC/cbXRP market snapshot and CoinGlass's live XRP futures snapshot. The Morpho/Base events distinguish wrapped cbXRP transfers from native XRP redemptions; no native XRP sale is inferred. CoinGlass's search cache/live-page disagreement and the Morpho oracle/UI discrepancies are preserved. The U.Today wallet-transfer record now links to the original publisher. The October 28 FOMC 10–2 vote and two dissenters are recorded. No exact publisher bytes were captured and no raw hashes were invented. Run182 adds the SEC primary-source Evernorth Q3 2026/October 9 close event, separating pre-close accounting, cash-funded XRP purchases, in-kind XRP, Pathfinder related-party debt, warrant proceeds, convertible debt and undrawn ELOC capacity. It records the release of Custody XRP restrictions and Ripple's 126.791M XRP contribution as potential supply, not an actual sale.",
+    "source_receipt_status": "102/102 missing byte-exact raw-source SHA-256 receipts",
+    "missing_publisher_timestamps": 57,
+    "independence_groups": 79,
     "model_eligible": false,
     "forecast_status": "NOT_ISSUED",
     "accuracy_status": "NOT_EVALUATED",
@@ -4444,6 +4512,9 @@
       "morpho-cbxrp-liquidation-window-2026-11-07-to-13",
       "morpho-base-usdc-cbxrp-market-snapshot-2026-11-16T0244Z",
       "coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z"
+    ],
+    "capital_supplement_event_ids": [
+      "evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release"
     ]
   },
   "collateral_supplement": {
@@ -4465,6 +4536,34 @@
     "coinglass_current_funding_8h_percent": -0.0074,
     "coinglass_current_liquidations_usd": 4500000,
     "coinglass_current_long_share_percent": 45,
+    "model_eligible": false
+  },
+  "run182_capital_supplement": {
+    "captured_at_utc": "2026-11-16T02:56:56Z",
+    "event_id": "evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release",
+    "sep30_xrp": 346284972,
+    "sep30_historical_cost_usd": 846575000,
+    "sep30_impairment_usd": 271037000,
+    "sep30_carrying_value_usd": 341887000,
+    "oct9_pathfinder_xrp_transfer": 346484972,
+    "ripple_pathfinder_xrp_contribution": 126791458,
+    "derived_postclose_xrp": 473276430,
+    "pathfinder_ripple_facility_borrowed_usd": 9700000,
+    "pathfinder_facility_limit_usd": 10000000,
+    "repayment_status": "not confirmed in reviewed 2026-11-13 filing",
+    "evernorth_separate_facility_limit_usd": 1000000,
+    "evernorth_facility_drawn_as_of_sep30_usd": 0,
+    "private_placement_cash_usd": 224600000,
+    "cash_funded_xrp_purchase_usd": 214050000,
+    "cash_purchased_xrp": 84365876,
+    "gross_closing_cash_usd": 272600000,
+    "in_kind_xrp_contributions": 388910554,
+    "convertible_note_gross_usd": 30000000,
+    "convertible_note_net_usd": 29000000,
+    "warrant_cash_proceeds_gross_usd": 35300000,
+    "eloc_max_shares": 5218935,
+    "eloc_drawn": "not disclosed",
+    "xrp_sale_confirmed": false,
     "model_eligible": false
   }
 }

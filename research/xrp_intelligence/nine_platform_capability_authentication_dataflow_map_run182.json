@@ -1,10 +1,10 @@
 {
   "schema_version": "1.3.0",
-  "snapshot_id": "run182-test-assertion-correction",
-  "captured_at_utc": "2026-11-16T02:51:10Z",
+  "snapshot_id": "run182-evernorth-capital-supplement",
+  "captured_at_utc": "2026-11-16T02:56:56Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-  "integration_head_at_capture": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
+  "integration_head_at_capture": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -102,7 +102,7 @@
     "least_privilege_satisfied": false,
     "merge_decision": "NO_MERGE",
     "pr1663_changed_files_at_capture": 1293,
-    "pr1663_commits_ahead": 52,
+    "pr1663_commits_ahead": 53,
     "pr1663_commits_behind": 0,
     "blockers": [
       "PR #1663 remains draft",
@@ -114,7 +114,7 @@
       "GitHub connector permissions remain overprivileged",
       "Exact-head full suite on 075642 failed one stale 90-of-90 event-count assertion; corrected test and collateral evidence are being committed; new head CI pending."
     ],
-    "pr1663_head_sha": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
+    "pr1663_head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
     "main_tree_entries": 1393,
     "integration_tree_entries": 2525,
     "main_paths_missing": 0,
@@ -129,49 +129,52 @@
   },
   "verification": {
     "last_verified_full_suite": {
-      "head_sha": "c6084b1330d109f533c477dab86efb797d6887d4",
-      "run_id": 43791907451,
+      "head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
+      "run_id": 43794704584,
       "conclusion": "success",
       "passed": 3829,
       "failed": 0,
       "skipped": 1,
       "subtests": 19,
-      "coverage_percent": 64.09,
+      "pytest_duration_seconds": 101.01,
+      "inclusive_coverage_percent": 64.09,
       "legacy_core_coverage_percent": 77,
-      "duration_seconds": 175.54,
       "wheel_build": "passed",
       "installed_v3_xrp_mission": "passed",
-      "pages_validation": "passed"
+      "pages_validation": "passed",
+      "cache_warning": "GitHub Actions cache budget exhausted/read-only; no test or packaging failure"
     },
     "last_verified_dependency_audit": {
-      "head_sha": "c6084b1330d109f533c477dab86efb797d6887d4",
-      "run_id": 43791907365,
+      "head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
+      "push_run_id": 43794704630,
+      "pr_run_id": 43794709478,
       "conclusion": "success",
-      "known_vulnerabilities": 0,
-      "manifests": 6
+      "manifests": 6,
+      "known_vulnerabilities": 0
     },
     "last_verified_fail_closed": {
-      "head_sha": "c6084b1330d109f533c477dab86efb797d6887d4",
-      "push_run_id": 43791907413,
+      "head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
+      "push_run_id": 43794704566,
       "push_conclusion": "success",
-      "pr_run_id": 43791912783,
+      "pr_run_id": 43794709504,
       "pr_conclusion": "success"
     },
     "last_verified_pr_ci": {
-      "head_sha": "c6084b1330d109f533c477dab86efb797d6887d4",
-      "run_id": 43791912718,
+      "head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
+      "run_id": 43794709489,
       "conclusion": "success",
       "pages_validation": "passed",
       "test_jobs": "skipped by integration-branch condition; push full-suite is authoritative"
     },
     "current_branch_head": {
-      "head_sha": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
-      "full_suite": "in progress; exact result not yet available",
-      "core_tests": "passed",
+      "head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
+      "full_suite": "success — 3,829 passed, zero failed, one skipped, 19 subtests; pytest 101.01s; inclusive coverage 64.09%; legacy-core 77%",
+      "dependency_audit": "six manifests, zero known vulnerabilities",
+      "fail_closed": "push and PR passed",
       "pages_validation": "passed",
-      "push_fail_closed": "passed",
-      "dependency_audits": "in progress",
-      "next_action": "run exact-head full suite and all security gates on the assertion-correction successor"
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission": "passed",
+      "note": "Exact verified head before the Evernorth capital supplement commit."
     },
     "main_ci": {
       "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
@@ -192,8 +195,8 @@
       "barrot_sync_conclusion": "false green: ModuleNotFoundError for rich; sync skipped; git push failure suppressed by || true"
     },
     "last_verified_pr_dependency_audit": {
-      "head_sha": "c6084b1330d109f533c477dab86efb797d6887d4",
-      "run_id": 43791912729,
+      "head_sha": "e6c3ed3d94f5cf5c8ac1edd33e74843db4ddb11c",
+      "run_id": 43794709478,
       "conclusion": "success",
       "known_vulnerabilities": 0,
       "manifests": 6
@@ -210,6 +213,22 @@
       "old": "not a third-party audit",
       "new": "rather than a third-party audit",
       "classification": "test wording aligned with existing event text; no assertion removed or gate weakened"
+    },
+    "coverage_gaps": [
+      "Inclusive coverage is 64.09%; the 77% legacy-core metric omits major packages including agi, ingestion, analysis, monetization and orchestration. Continue package-specific coverage expansion."
+    ],
+    "packaging_warnings": [
+      "project.license TOML table is deprecated",
+      "build warns barrot_agent.data.missions and data.research are absent from package configuration; required primary_mission.json is verified inside the wheel and installed V3/XRP mission loads, but data.research packaging requirements need review."
+    ],
+    "evernorth_capital_supplement": {
+      "event_id": "evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release",
+      "postclose_xrp_arithmetic": 473276430,
+      "pathfinder_related_party_debt_usd": 9700000,
+      "repayment_status": "not confirmed in reviewed filing",
+      "potential_xrp_liquidation_authorized_by_disclosure": true,
+      "actual_sale_confirmed": false,
+      "model_eligible": false
     }
   },
   "workflow_audit": {
