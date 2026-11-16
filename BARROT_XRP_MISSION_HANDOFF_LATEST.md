@@ -2332,3 +2332,97 @@ Governance blockers: branch-protection detail returns HTTP 403; main branch obje
 7. Qualify a candidate only after leakage-safe out-of-sample superiority over all four baselines and independent shadow evaluation.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
+## Run187 follow-up — exact latest-head pass and historical workflow side-effect audit
+
+**Captured:** 2026-11-16 06:52:25 UTC  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head before this follow-up:** `357df8bfecc9cba565ea43a1e07c8a6065db69a4`  
+**PR #1663:** open, draft, technically mergeable; no merge.
+
+### Exact latest-head CI
+
+The complete repository suite passed on exact current PR head `357df8bfecc9cba565ea43a1e07c8a6065db69a4`.
+
+- 3,831 collected.
+- 3,830 passed.
+- Zero failed.
+- One skipped.
+- 19 subtests passed.
+- 154.95 seconds.
+- Inclusive coverage 64.09%.
+- Legacy core coverage 77%.
+- Wheel build passed.
+- Installed Barrot V3/XRP mission verification passed.
+- GitHub Pages validation passed.
+
+Evidence:
+
+- [Exact-head full CI 43819170906](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819170906)
+- [Exact-head dependency audit 43819171220](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819171220) — six manifests passed, zero known vulnerabilities.
+- [Exact-head push fail-closed 43819170879](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819170879) — passed, merge disabled.
+- [PR CI 43819177638](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819177638) — passed; PR test jobs are skipped by the integration-branch condition.
+- [PR dependency audit 43819177636](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819177636) — passed.
+- [PR fail-closed 43819177722](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819177722) — passed.
+
+The cache budget remains read-only. No cache deletion or settings change occurred.
+
+### Additional derivatives-universe disagreement
+
+A further timestamped provider was captured after the initial Run187 audit:
+
+- Kripto Tutkunları reports a Binance USDT perpetual close of $0.9546 at 2026-11-16 05:40 UTC, 24h −0.862%, 7d −13.187% and 30d −27.124%.
+- Its four-venue open-interest universe reports $623.543M at 05:40 UTC, down 4.627% over 24h; the 24h mean funding is −0.006% per eight hours at 05:00 UTC.
+- Account-based long shares are elevated on Binance, Bybit and OKX, but these are account counts, not notional-position shares.
+
+[Kripto Tutkunları XRP derivatives snapshot](https://www.kriptotutkunlari.com/en/coins/XRP).
+
+The same Liqwall page produced two different retrieval vintages: its later opened page reported $983M at 06:22 UTC (−3.3% in 24h), while a search-indexed cached copy still reported $997M at 01:02 UTC (−3.7%). Preserve both vintages; the 06:22 page observation is later. CoinGlass displayed $1.97B without an exact event timestamp, and TradRadar's seven-exchange snapshot was $1.33B at Nov 15 16:00 UTC. The current observed OI spread therefore includes $623.5M (four venues), $983M (Liqwall's all-exchange page), $1.33B (seven exchanges) and $1.97B (CoinGlass aggregate). These are not interchangeable totals and must not be averaged.
+
+The $0.9546 observation is a Binance USDT perpetual close, not spot. No synchronized executable spot quote or full-depth L2 snapshot was admitted.
+
+### Historical workflow side effects discovered in main's manual-dispatch history
+
+The Actions API inventory returned 287 manual-dispatch runs across three pages. The following historical runs were investigated. These are historical findings, not actions taken during Run187.
+
+**Table Freshness Check — potential private-data log exposure**
+
+- Eight successful manual dispatches were found on July 24, 2026; the latest was [run 30130498454](https://github.com/Barrot-Agent/B-Agent/actions/runs/30130498454), triggered by actor `Barrot-Agent`.
+- At that run's commit `2e022e018d4aafeb97fb6196c30b529f3db69935`, the workflow had no approval input and supplied `DATABRICKS_TOKEN` to `scripts/check_table_freshness.py`.
+- The script executed queries against `workspace.barrot.brain` and printed query results to stdout, including a random sample of non-error rows containing timestamp/topic/insight/session fields.
+- The job logs now return HTTP 410 and have expired. Exact row contents and whether non-empty samples were retained in those logs cannot be verified. No private row values were read or reproduced in this audit.
+- This is a confirmed unsafe logging path and a potential prior disclosure, not proof of the exact contents exposed. The main workflow remains unguarded. Integration quarantines it with empty permissions and a false job condition. No Databricks request was made during Run187.
+
+**Barrot Operations Pipeline — historical external side effects cannot be ruled out**
+
+- Two manual dispatches by actor `Barrot-Agent` were found: [Apr 6 run 24017283393](https://github.com/Barrot-Agent/B-Agent/actions/runs/24017283393) and [Apr 8 run 24112679560](https://github.com/Barrot-Agent/B-Agent/actions/runs/24112679560). Both ended in failure.
+- The workflow versions at those run commits contained an initial Hugging Face Space `git push hf main --force`, followed by a Databricks workspace import using `--overwrite` and a Kaggle dataset download. Neither workflow had an explicit human approval input.
+- Both job logs now return HTTP 410. Because the Hugging Face force-push was the first step, a later job failure does not prove that no earlier external step succeeded. Whether the Space was partially updated is unverified.
+- Integration removes the HF deployment from Barrot Ops, requires separate Databricks/Kaggle confirmations and exact source SHA, and quarantines the separate Hugging Face secret-propagation workflow. No deployment, Databricks write or Kaggle operation occurred during Run187.
+
+**Coinbase Paper Trader — one historical simulation, no real order**
+
+- [Successful run 32798583448](https://github.com/Barrot-Agent/B-Agent/actions/runs/32798583448) on Aug 25, 2026 was triggered by actor `Barrot-Agent` without a typed per-run approval input.
+- The decision was `hold`, amount $0, result `held -- no action taken`; state recorded $10,000 cash, zero position and zero trade count.
+- Commit [1bb368e](https://github.com/Barrot-Agent/B-Agent/commit/1bb368e5ddf52267b6c2ed22b929a908a24a00cc) added only `web/paper_trading_state.json` and `web/paper_trading_log.jsonl`. No Coinbase order or real-money transaction was made.
+- A second Aug 25 attempt [32798036530](https://github.com/Barrot-Agent/B-Agent/actions/runs/32798036530) failed when protected-main pushes were rejected.
+- Main's current manual workflow still lacks typed confirmation and commits simulation state to main. Integration requires YES, exact main SHA, product identity preflight and artifact-only output. No paper-trader run occurred during Run187.
+
+**A2A deployment and other workflow history**
+
+- Seven manual `Deploy A2A Worker` runs were found in the 287-run inventory; all ended in failure. The two latest inspected job logs showed Cloudflare API authentication error 10000. No successful A2A deployment was found in this manual-dispatch history.
+- Main's current A2A workflow is also triggered by pushes under `a2a/**` and can deploy the Worker and upload secrets without a typed approval. Integration removes the push trigger and requires deployment YES, separate secret-rotation YES and exact main SHA.
+- Main Barrot Sync run [43767370810](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370810) reported success even though `b_agent.py --sync` failed with `ModuleNotFoundError: rich`; the workflow skipped sync and uses `git push || true`, which can hide push failures. Integration disables this legacy path.
+- Main Cross Analysis run [43812957774](https://github.com/Barrot-Agent/B-Agent/actions/runs/43812957774) uploaded a 240,554-byte artifact and explicitly performed no repository commit or push.
+- Main Barrot Auto PR run [43767370857](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370857) was a no-op workflow-setup validation; it did not create a PR.
+
+### Governance decision unchanged
+
+PR #1663 remains draft with zero formal reviews, approvals and review threads. Main branch-protection detail remains inaccessible (HTTP 403); fallback ruleset 10863829 is disabled; CODEOWNERS is self-only; connector permissions remain admin/maintain/push/pull/triage. The 1,308-path PR still requires full semantic review.
+
+**NO MERGE.** The exact latest-head full suite and security checks pass, but independent review, branch protection, least privilege and complete semantic review remain blockers. Historical private-data logging and unverified partial Hugging Face deployment make the mainline safety review more important, not less.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred during Run187.
