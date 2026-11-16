@@ -141,7 +141,13 @@ jobs:
           EOF
       - name: Run every repository test with inclusive package coverage
         run: |
-          python -m pytest tests -v \
+          # Run every active pytest test module, including the runnable legacy and hidden task tests.
+          # Disabled fixtures and operational/demo scripts are intentionally not executed as tests.
+          python -m pytest tests \
+            legacy/tests/test_email_integration.py \
+            legacy/tests/test_transformative_insights.py \
+            .barrot/autonomous_tasks/test_math_task.py \
+            -v \
             --cov=barrot_agent \
             --cov=directive_platform \
             --cov=data \
