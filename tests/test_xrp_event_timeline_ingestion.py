@@ -218,6 +218,8 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "3,607.157 seconds" in bybit["claim"]
     assert "300-second freshness gate" in bybit["claim"]
     assert bybit["raw_source_sha256"] is None
+    assert bybit["hypothesis_id"] == "xrp-bybit-stale-quote-freshness-2026-11-16"
+    assert bybit["hypothesis_id"] != okx["hypothesis_id"]
     coinbase = by_id["evernorth-coinbase-principal-market-xrp-valuation-2026-09-30"]
     assert "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30" in registry["run180_update"]["added_event_ids"]
     assert "selected Coinbase as the principal market" in coinbase["claim"]
