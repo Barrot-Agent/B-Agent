@@ -3454,3 +3454,66 @@ This supersedes the earlier Run194 creator-audit line mentioning a Stellar 1H 20
 No directional forecast was issued. Raw-source SHA receipts remain zero for this late web refresh; these observations are not admitted to the event registry or feature store. The prediction gate remains closed.
 
 PR #1663 remains draft and blocked pending independent review and complete semantic review of its 1,330 changed paths, including 49 workflows. The parent-head full suite, dependency audit and fail-closed gate passed, but this new evidence commit triggers its own exact-head checks. No merge or external action was performed.
+
+
+## Run195 — 2026-11-16T18:33:25Z
+
+### Mission and evidence status
+
+XRP intelligence and prediction-engine mastery remain the highest-priority mission. Barrot V3 remains the execution, orchestration, safety and verification foundation. No directional forecast was issued; forecast accuracy remains NOT_EVALUATED.
+
+**DESIGNED:** The public XRP ingestion workflow covers Binance, Coinbase, Kraken, OKX, Bybit, bitbank, Deribit, ETF issuer pages, XRP Insights, Ripple RLUSD transparency, Circle USDC transparency, SBI VC Trade, Morpho cbXRP collateral, CFTC reports and event-timeline/feature-drift evaluation. The forecast ledger requires verified readiness, four baselines, at least 100 OOS samples, at least 100 shadow samples, at least five independent source groups and weighted calibration error no greater than 0.05; evaluator attestation is fail-closed. The SQLite feature store explicitly is not adversarially tamper-proof without external signed/checkpointed receipts.
+
+**EXECUTED:** Fresh public research captured spot/derivatives references, two different order-book scopes, exchange-wallet balances, ETF-flow series, institutional announcements, exact-phrase search and creator-channel identity candidates. Current integration tree, main tree, PR inventory, ancestry, CI, critical workflows, CODEOWNERS and visible rulesets were inspected. PR #1541 overlap was compared at blob level and by patch.
+
+**VERIFIED:** Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`. Integration head at start of Run195 was `8c9d78e503a8200670bcf933329aadf3569a6c32`, 109 commits ahead and zero behind. All 1,393 main tree paths are present in the 2,559-entry integration tree; 213 shared paths have different blobs. PR #1663 has 1,331 changed files, 486,787 additions and 6,730 deletions. Exact-head push workflow run [43928791551](https://github.com/Barrot-Agent/B-Agent/actions/runs/43928791551) passed the full suite on `8c9d78e`: 3,843 passed, 1 skipped, 11 warnings, 19 subtests passed in 110.71 seconds; total coverage 66.90%. Wheel build and installed-wheel smoke check passed. Six-manifest dependency audit reported zero known vulnerabilities; fail-closed gate passed. The PR-event full-suite job was skipped by workflow condition; the exact-head push run is the full-suite evidence.
+
+### Market structure — descriptive only
+
+- Fuelmaps' six-venue spot book at 18:00 UTC showed XRP mid $0.9543. Within ±0.5%, displayed bids were $6.8M versus $5.8M asks; within ±1%, $12.4M versus $8.8M; within ±2%, $17.4M versus $10.8M. Venue coverage fell from six to five at ±10%. Binance and Bitget were excluded. This is a dashboard aggregate, not raw per-venue capture.
+- Basis' Binance XRPUSDT perpetual book at 16:05 UTC showed mid $0.9499, 1.05 bp spread, $33.8M bids and $33.5M asks across 1,000 displayed levels. This is a perpetual book, not spot; resting orders can cancel.
+- SwiftEdge's perpetual dashboard at 16:31 UTC showed $0.9545, -0.19% over 24h, a $0.9418–$0.9773 range, -14.3% over seven days and -26.1% over 30 days. ChainRegistry's own 16:25 reading was $0.9577, with -13.32% seven-day and -26.52% 30-day changes. These are different publisher/instrument observations, not a consolidated quote.
+- Derivatives open-interest snapshots remain materially scope-inconsistent: Liqwall $981M at 12:52 UTC and $994M at 15:02 UTC; Kodexius $521.94M at 13:24 UTC; OptimistFi $1.7B across 37 venues at 06:30 UTC; TradRadar $1.33B across seven exchanges on Nov 15. Venue universe, CME inclusion, instruments and timestamps differ. No averaging or directional inference.
+- XRP Insights' Nov 16 08:00 UTC same-wallet tracker showed 22.24B XRP across 707 wallets attributed to 24 exchanges, with -126.3M XRP over seven days and -344.3M over 30 days. The total includes cold storage, cbXRP/Base and Binance-Peg reserves; it is not tradable float.
+- ETF flows remain mixed by universe and session: XRP Insights' six-ETF-plus-BITW series showed -6.079M XRP Nov 9–13; Alpha Finance's five-fund display showed -$20.2M over seven sessions but repeats a -$1.1M Saturday Nov 14 label; CryptoKeyhole's latest complete day was +4.337M XRP on Nov 12 and its Nov 13 figure was partial (3/4 funds). Preserve scope and timestamp differences.
+
+### Institutional and competing-rail updates
+
+- Coinbase and Ripple launched RLUSD access on Coinbase Prime, Exchange and retail on Oct 28, across XRPL, Base and Ethereum. Coinbase Global Exchange collateral use was described as future availability, not confirmed live.
+- BNY's Oct 27 release says it now supports XRP and RLUSD on its Digital Asset Custody platform, remains RLUSD's primary reserve custodian and has a custody relationship with Ripple Prime; tokenized trade finance is exploratory.
+- SBI VC Trade launched RLUSD in Japan on June 24 after Japanese regulatory classification. SBI's JPYSC is a separate yen stablecoin: SBI Shinsei Trust Bank is issuer, SBI VC Trade distributes. SBI reported JPYSC lending balances above ¥10B and handled balances above ¥30B on Nov 2. SBI/Startale's Oct 16 Open Standard announcement describes a JPYSC/OUSD interoperability PoC under consideration, not production interoperability.
+- Circle's USDC Japan relationship with SBI, SBI's Arc founding-validator participation and ARC token presale show SBI is multi-rail, not exclusively aligned with Ripple. PNC/Coinbase's Nov 9 USDC pilot is another competing institutional payment path.
+- DTCC's Oct 28 live tokenization service names Canton and private Besu, 34 securities and 20 DTC participant access agreements. Ripple Prime's earlier working-group membership does not establish launch-client status; no XRP/XRPL integration is listed. DTCC's Nov 12 Solana connection is planned for 2H 2027.
+
+### Identity, phrase and creator research
+
+- No new first-party evidence connected regional SBIC East/Central/West to SBI Holdings, OpenAI or a ChatGPT partnership.
+- No new primary-source match tied exact phrase “ASK Coin” to XRP/Ripple. Permission Coin (ASK) remains a candidate lexical match only.
+- No new first-party exact-phrase result for “actual capital”; the prior Evernorth SEC capital-stack reconciliation remains the primary evidence. Commitments are not proceeds.
+- A YouTube channel titled “Kamilah Stevenson | Xrp & Stocks” (`@KamilahStevensonXrpStocks`, channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`) appeared in search. Its link to the previously tracked `@drkamilahstevenson` identity is unverified. Do not merge identities or add candidate-channel videos to the verified inventory until a first-party cross-link or equivalent corroboration is found.
+
+### Prediction gate and public status
+
+The latest curated registry is `run192-followup`, captured 2026-11-16 16:11:30 UTC: 125 events, 125 missing byte-exact raw-source SHA-256 receipts, 48 exact publisher timestamps, 77 missing exact publisher timestamps and zero model-eligible events. Web-rendered observations in this run have no raw-byte receipt and were not admitted to the point-in-time feature store. `web/latest_signal.json` was refreshed to Run195 descriptive-only status; target, horizon, data cutoff and probabilities remain null. `web/signal_accuracy.json` remains NOT_EVALUATED.
+
+### Integration, security and PR backlog
+
+- PR #1663 remains open and draft, mergeable according to metadata but with zero formal reviews and zero review threads. No merge.
+- Main branch-protection detail is still HTTP 403. Visible repository ruleset 10863829 is disabled. CODEOWNERS is `* @Barrot-Agent`; GitHub connector permissions include admin, maintain, push, pull and triage. Least privilege is not met.
+- Four high-risk workflows were inspected. Main's Table Freshness Check queries private Databricks records and prints sampled rows; integration quarantines it with empty permissions and a disabled job. Main's A2A workflow auto-deploys on push to main; integration requires manual dispatch, explicit confirmations and exact-main-SHA validation. Main's Coinbase paper-trader can commit state to main; integration makes it artifact-only with exact-SHA and position-identity checks. XRP public ingestion exists only on integration and has a main-ref guard, so scheduled ingestion is not verified active until safely merged. Full semantic review of all 49 changed workflow files remains incomplete.
+- PR #1541's five paths all overlap integration. `mmi_adapter.py` and `test_mmi_integration.py` are byte-identical; `mmi_v1.py`, its evidence JSON and `test_mmi_v1.py` differ. It is a superseded candidate requiring semantic reconciliation, not an exact duplicate. PR #1265 overlaps `.github/workflows/ci.yml`, but the blobs differ and 143 other paths are unique. No source PR was closed.
+- Open backlog: #1663 blocked; #1541 superseded-candidate/reconciliation-required; #1450 (116 files), #1460 (8), #1440 (64), #1436 (24), #1437 (5), #1353 (1,084) unique/unreviewed; #1265 (144) unique/unreviewed with one CI workflow overlap.
+
+### Nine-platform coordination
+
+ChatGPT's GitHub connector is verified and has broad permissions. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified/untested; Copilot has only historical one-off activity. Groq is separate from Grok and was not tested. No independent external-model tasks or red-team quorum were run. Minority objections and source disagreements remain preserved.
+
+### Safety and next action
+
+No main change, merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred. No PR was closed.
+
+Next: complete semantic review of all 49 changed workflows, 394 changed tests and 1,331 PR paths; reconcile the three divergent MMI files from #1541; obtain independent code-owner review and read-only branch-protection details; capture byte-exact public-source receipts in externally anchored immutable storage; only then consider activating scheduled ingestion on main. Keep forecast issuance fail-closed until point-in-time data, walk-forward superiority, calibration and independent shadow validation are verified.
+
+Run195 evidence artifacts:
+- `research/xrp_intelligence/20261116T183325Z-run195-market-institutional-and-integration-audit.json`
+- `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run195.json`
