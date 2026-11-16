@@ -622,3 +622,102 @@ The current event registry has 85 curated events and 64 independence groups; all
 5. Verify scheduled XRP ingestion on main only after merge gates pass; then complete synchronized historical spot/L2/derivatives/flow data and independent shadow evaluation.
 
 Structured audit: `research/xrp_intelligence/20261115T230828Z-run177-exact-head-ci-institutional-rails-etf-and-market-audit.json`.
+
+---
+## Run178 — 2026-11-16T00:14:06.811Z
+
+### Repository and CI
+Main SHA: 1f30e5c18f151f75ad5d157ddde175723584ec69. Integration implementation head: 50daa1d4ca55b368cefae0bfd9f14ce806d397e2. PR #1663 remains draft/open, 19 commits ahead, zero behind, 1,282 changed files. Main tree 1,393 entries; integration tree 2,517; both complete. Main paths missing from integration: 0; shared paths 1,393; divergent shared blobs 205; integration-only paths 1,124; mode differences 0. Nine PRs open; #1663 is the only main-target PR.
+
+Exact implementation-head full suite passed: 3,829 passed, 0 failed, 1 skipped, 19 subtests, 176.11 seconds; inclusive coverage 64.09%; legacy core 77%; wheel build and installed mission verification passed. All four new MMI fingerprint tests passed.
+- Full suite: https://github.com/Barrot-Agent/B-Agent/actions/runs/43778234336
+- Six-manifest dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43778234331 — all six strict pip-audit checks passed; no known vulnerabilities.
+- Push fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43778234359 — passed; automatic merge intentionally disabled.
+- PR dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/43778238760 — passed.
+- PR CI/Pages: https://github.com/Barrot-Agent/B-Agent/actions/runs/43778238756 — Pages passed; PR-event tests skipped by integration-branch condition. Push full suite is authoritative.
+- PR fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/43778238839 — passed.
+Warnings: Actions cache budget exhausted/read-only; setuptools license-table deprecation; package-discovery warnings for barrot_agent.data.missions and data.research.
+
+A documentation-only handoff/map/audit commit follows the verified implementation head. Its own push CI must be checked separately.
+
+### MMI claim identity hardening
+Commit 50daa1d4ca55b368cefae0bfd9f14ce806d397e2 ports the canonical claim-fingerprint fix from PR #1541 into the existing integration PR. It adds namespaced barrot-mmi-claim-v1 IDs: SHA-256 over NFKC-normalized, case-folded and whitespace-collapsed claim text, preserving punctuation. Corroboration and contradiction evidence must hash to the same canonical ID; the adapter generates the ID and rejects caller-supplied mismatches. Four regression tests passed.
+Limitation: a fingerprint binds normalized text, not truth, semantic equivalence or source independence. Legacy opaque IDs may need a separately reviewed migration; none was performed. PR #1541 remains open until #1663 is merged and verified on main.
+
+### XRP market and liquidity
+OKX XRP-USDT: $0.9732 last, $0.9732 bid, $0.9733 ask; event time 2026-11-15 23:52:53.962 UTC. At the 23:58:51 UTC run-start cutoff it was already 357 seconds old, beyond the 300-second freshness gate. Kraken XRP/USD: $0.97116 last, $0.97115 bid, $0.97123 ask, no provider event timestamp. Their asynchronous mid-price difference was approximately 21.21 bps; not executable arbitrage and not model-eligible.
+
+Fuelmaps six-venue spot depth, 2026-11-16 00:00 UTC, XRP mid $0.9735 across Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini:
+- ±0.5%: $6.7M bids / $5.8M asks, 53.5% bid share.
+- ±1%: $10.3M / $9.1M, 53.2%.
+- ±2%: $15.8M / $12.7M, 55.5%.
+- ±5%: $17.0M / $14.1M, 54.7%.
+- ±10%: $24.0M / $15.7M, 60.4%.
+Binance and Bitget are excluded; USDT books are converted using a live USDT/USD rate; hourly averages of one-minute snapshots; resting orders can be cancelled.
+
+Basis Binance XRPUSDT perpetual depth at 23:06 UTC: mid $0.9751; 1,000 levels each side; $30.0M bids / $31.1M offers; 44% bid share within ±1%; $15.1M combined depth within ±0.5%. This is one perpetual venue, not spot, and is a counter-signal to the six-venue spot skew.
+
+TradRadar at 16:00 UTC: $1.33B open interest across seven exchanges, down 6.53%/24h; funding -0.0027% per eight hours; at least $37.51M liquidations ($33.87M long, $3.65M short); 75.9% long accounts. Liqwall's earlier Nov 15 snapshot was approximately $995M. Different coverage/time; do not average. These observations support deleveraging as a hypothesis, not a price forecast.
+
+ETF trackers disagree:
+- CryptoKeyhole, updated Nov 15 23:55 UTC: Nov 13 partial -9,967 XRP from 3/4 funds; Franklin XRPZ missing. Nov 12 complete +4,337,131 XRP; Nov 6–12 complete five-day total -5,665,115 XRP. Its Nov 16 issuer-file date read Nov 14 is impossible and quarantined.
+- XRP Insights: six US spot funds plus BITW; Nov 13 +3.40M XRP; week Nov 9–13 -6.08M XRP; holdings approximately 1.189B XRP. GXRP excluded from flow during a data gap but counted in holdings.
+- Alpha Finance five funds: Nov 13 -$1.1M; 30-session -$581.7K. Maketo reports -$19M week and -$14M month.
+Different universes/methods; issuer-holdings deltas are not direct cash subscriptions. No averaging.
+
+### SBIC, ASK and actual-capital research
+SBIC East is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (corporate number 9011001030621; established 1963-11-15; capital ¥6.6734B). SBIC Central is Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-18; ¥4.3808B). SBIC West is Osaka Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-20; ¥6.822B). Official company pages cross-link them as sister companies under Japan's Small and Medium Business Investment & Consultation Companies Act. They are separate regional entities, not SBI Holdings.
+Tokyo SBIC's official March 5, 2024 ChatGPT seminar listed Satoshi Nishiwaki, Microsoft Japan executive evangelist, as speaker. This is an educational event, not an OpenAI commercial partnership.
+Sources: https://www.sbic.co.jp/company/profile/ ; https://www.sbic-cj.co.jp/company/about/ ; https://www.sbic-wj.co.jp/profiles/profile/ ; https://www.sbic.co.jp/seminar/20240305js/
+
+Permission's ASK token official contracts are Base 0xBB146326778227A8498b105a18f84E0987A684b4 and Polygon 0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff, LayerZero OFT-20. No XRPL contract is listed. Bare ASK ticker remains ambiguous.
+Source: https://docs.permission.ai/ask-token/contract-addresses
+
+Evernorth Q3 Form 10-Q resolves the prior 200,000-XRP discrepancy:
+- Advance funding: $214.049995M cash, used to buy 84,365,876 XRP, plus 600,000 XRP in kind.
+- Delayed funding: $10.5M cash plus 200,000 XRP in kind.
+- Series C: 211,319,096.061435 XRP; related-party contributor: 50M XRP. Pubco XRP subtotal: 261,919,096.
+- Ripple separately contributed 126,791,458 XRP to Pathfinder. Total in-kind XRP at closing: 388,910,554 = 261,919,096 + 200,000 + 126,791,458.
+- 346,484,972 XRP transferred to Pathfinder equals the 346,284,972 pre-close Sept 30 balance plus delayed 200,000 XRP. Consolidated treasury approximately 473,276,430 XRP = 388,910,554 in-kind + 84,365,876 cash-purchased.
+- Gross closing cash $272.6M = $224.6M private-placement cash + $48M SPAC trust release before expenses. The $214.05M used to buy XRP is already included; do not double count.
+- Convertible note $30M principal/$29M net, 4% PIK to 2031; general corporate purposes including XRP, not verified earmarked XRP purchase.
+- Warrants: 3.073366M exercised through Nov 9, $35.3M gross proceeds; 8.666279M remain.
+- Cantor ELOC capacity 5.218935M shares at 97% VWAP; $0.5M commitment fee; no draw established.
+- Sept 30 pre-close: $91,397 unrestricted cash, $10M working-capital deficit, $273.2M nine-month operating losses, no revenue yet. Q3 net income included a non-cash fair-value gain; nine-month net loss $32.9M.
+Cash, cash-funded XRP, in-kind XRP, debt, warrant proceeds and undrawn ELOC capacity remain separate. Pathfinder transfer is not a new market purchase.
+Source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+
+BNY is a shared service-provider node between Circle and Ripple, not evidence of a direct partnership or shared reserve. Coinbase RLUSD distribution is not XRP buying/collateral. PNC/Coinbase USDC pilot is USDC payment infrastructure, not XRP settlement. SBI VC Trade RLUSD distribution, SBI/Startale JPYSC, SBI/SMBC investment and SBI/BlackRock/Startale tokenized-MMF MOU remain distinct rails.
+
+Reuters/LSEG Lipper: week to Nov 11, $50.99B global equity inflows, $35.13B European equity inflows, $507.89M bond outflows and $37.48B money-market outflows. Broad risk-allocation context, not XRP flows.
+
+### Kamilah Stevenson attribution
+Dr. Kamilah Stevenson is person-verified through the June 11, 2026 XRP Podcast interview. She self-described her YouTube presence as Doctor Camilla Stevenson and warned about fake pages. Candidate channel @KamilahStevensonXrpStocks / channel ID UCXm6KAr1WHF6UN7g5b2W7wg is not directly cross-linked from her first-party account. Prior candidate videos remain unverified and are not attributed; verified attributed-video count remains zero.
+Source: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+
+### Prediction and nine-platform status
+Implemented on integration: 51 public-source definitions, 49 scheduled definitions, SHA-256 receipt-chain prototype, SQLite point-in-time feature store, event timelines, counter-hypotheses, four baselines, purged/embargoed walk-forward evaluation, block bootstrap, calibration, PSI drift monitoring, fail-closed ledger and Ed25519 evaluator attestation.
+Event registry: 85 events, 64 independence groups, 85 missing byte-exact raw-source hashes, 43 missing publisher timestamps. Web excerpts in this run have no byte-exact payloads or raw-source hashes and remain descriptive-only. GitHub artifact retention is 90 days, not WORM. Trusted timestamping and independent archival remain unverified.
+Forecast remains NOT_ISSUED; accuracy NOT_EVALUATED. No directional forecast.
+
+Nine-platform map: ChatGPT/GitHub authenticated and tested but overprivileged (admin, maintain, push, pull, triage); Claude, Grok, Gemini and Codex unverified; Copilot historical one-off activity without formal approval; Hugging Face prior BUILD_ERROR/no verified deployment; Kaggle untested; Databricks prior HTTP 403/no verified write. OpenCode GitHub MCP token configuration is separate and unverified. Groq is not Grok. No external-model dispatch or independent red-team quorum.
+
+### PR backlog and merge decision
+NO MERGE. #1663 remains draft/open, zero formal reviews, approvals or review threads. Main branch-protection detail returns HTTP 403; fallback ruleset 10863829 disabled; .github/CODEOWNERS is * @Barrot-Agent; connector scopes remain overprivileged.
+- #1663: active consolidated successor, blocked pending semantic review, independent review, branch-protection visibility and exact-head CI on the following docs commit.
+- #1541: superseded-content candidate/blocked; four overlapping code paths differ from #1663, one unique artifact. Canonical claim-fingerprint fix is ported to #1663. Parent #1540 and proposed successor #1542 are closed unmerged. Keep #1541 open until #1663 is merged and verified on main.
+- #1450, #1460, #1440, #1436, #1437, #1353 and #1265: unique/unreviewed research branches; preserve. #1265 has one overlapping ci.yml path with a different blob and 143 unique paths.
+- No source PR closed.
+
+Main's unsafe Coinbase paper trader and legacy repository writers remain undispatched; integration contains fail-closed quarantine. The previously identified potential .config/gh/hosts.yml credential exposure remains unresolved; contents were not read and no secret was rotated.
+
+### Next concrete actions
+1. Verify exact-head full suite, dependency audit, fail-closed gate and Pages build on the documentation-only head created with this Run178 handoff/map/audit.
+2. Complete semantic review of all 1,282 changed paths, prioritizing 48 workflows, called scripts and security-sensitive Python.
+3. Resolve independent reviewers, branch protection and least-privilege connector permissions.
+4. Design a reviewed migration for legacy opaque MMI claim IDs before enabling the gate on old persisted evidence.
+5. Capture byte-exact payloads and receipts for the 85 curated events; establish independent WORM archival and trusted timestamps.
+6. Complete synchronized historical XRP spot/L2/derivatives/flow/collateral data and independent shadow evaluation before any forecast.
+
+Structured audit: research/xrp_intelligence/20261116T001000Z-run178-exact-head-mmi-security-sbic-ask-capital-and-xrp-market-audit.json
+Nine-platform map: research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run178.json
