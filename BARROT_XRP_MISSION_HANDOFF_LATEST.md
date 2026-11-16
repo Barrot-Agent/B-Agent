@@ -4054,3 +4054,40 @@ The event registry remains at 125 curated events, zero raw-source SHA-256 receip
 ### Merge decision
 
 **NO MERGE.** The verified parent `d0bb7e1` passed exact-head full suite, dependency audit and fail-closed checks, but PR #1663 remains draft, 1,338 paths remain incompletely reviewed, zero independent reviews are recorded, branch-protection details return HTTP 403, visible ruleset 10863829 is disabled, CODEOWNERS remains self-only and connector permissions are broader than least privilege. This research addendum does not change that decision. Its resulting head must receive fresh exact-head CI. No external model calls, deployment, secret rotation, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run199 final exact-head verification and PR #1541 reconciliation (2026-11-16T22:20:30Z)
+
+### Final verification of the research-addendum head
+
+The Run199 institutional/sentiment audit commit `19fe66d6eafb844cd5f76f915619e63e532eb8c6` received its own exact-head verification. Push CI [43968447843](https://github.com/Barrot-Agent/B-Agent/actions/runs/43968447843) passed:
+
+- Full repository suite: **3,844 passed, zero failed, one skipped, 11 warnings, 19 subtests passed in 112.56 seconds**.
+- Inclusive coverage: **66.90%**, above the 62% requirement.
+- The separate legacy-core coverage-floor step passed; the current job log did not print a second exact percentage.
+- Wheel build and installed Barrot V3/XRP mission smoke test passed.
+- GitHub Pages validation passed.
+- Push dependency audit [43968448053](https://github.com/Barrot-Agent/B-Agent/actions/runs/43968448053) passed across six manifests; no known vulnerabilities were reported.
+- Push fail-closed gate [43968447816](https://github.com/Barrot-Agent/B-Agent/actions/runs/43968447816) passed.
+- PR-event CI [43968459392](https://github.com/Barrot-Agent/B-Agent/actions/runs/43968459392), PR dependency audit [43968459384](https://github.com/Barrot-Agent/B-Agent/actions/runs/43968459384) and PR fail-closed gate [43968459678](https://github.com/Barrot-Agent/B-Agent/actions/runs/43968459678) passed their applicable jobs. The PR-event Tests and Full repository test suite jobs are intentionally skipped for integration/*; the push-triggered full suite above is authoritative.
+- GitHub Actions cache budget remains exhausted/read-only. This is a non-blocking cache persistence warning, not a test or dependency-audit failure.
+
+Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`; the integration branch is now 127 commits ahead and zero behind, with 2,567 tree entries and no missing main paths. PR #1663 is 1,339 changed paths, 127 commits, still draft, zero formal reviews and zero review threads.
+
+### PR #1541 overlap reconciliation — complete
+
+The exact source head `eabf56d7b2a07e806e6575898c6030957dc01ac6` was compared against the integration branch for all five changed paths:
+
+- `barrot_agent/mmi_adapter.py`: byte-identical.
+- `tests/test_mmi_integration.py`: byte-identical.
+- `research/operations/20261103T005800Z-mmi-canonical-claim-fingerprint.json`: one-byte trailing-newline difference only.
+- `barrot_agent/mmi_v1.py`: all 43 source-branch definitions/methods are present in integration; integration adds structural-analysis integration and stricter validation. There are no source-only definitions.
+- `tests/test_mmi_v1.py`: all 47 source-branch test definitions are present in integration; integration adds 16 hardening tests. There are no source-only tests.
+
+**Backlog classification: PR #1541 is superseded by the MMI implementation in PR #1663.** Keep #1541 open until #1663 is safely merged and these files are verified on main; then close only #1541 with a cross-reference. No closure occurred in Run199.
+
+### Current decision
+
+**NO MERGE.** Exact-head CI and security checks now pass, but PR #1663 remains draft and 1,339 changed paths still require complete semantic review. It has no independent formal review, branch-protection detail remains HTTP 403, visible ruleset 10863829 is disabled, CODEOWNERS is self-only and GitHub connector permissions remain broader than least privilege. Main still contains older workflow behavior that the integration branch quarantines or gates. No branch protection was bypassed.
+
+The new exact-head test result validates this integration head; if another commit is added, its own exact-head checks must run again. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
