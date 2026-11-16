@@ -149,6 +149,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30",
         "standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12",
         "xrpl-amendment-rollcall-2026-11-16T0400Z",
+        "xrpl-amendment-rollcall-2026-11-16T0452Z",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
@@ -219,9 +220,15 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     sbic_west = by_id["sbic-west-chatgpt-generative-ai-seminar-2024-10-23"]
     assert "ChatGPT" in sbic_west["claim"]
     assert "Taichi Kakinuma" in sbic_west["claim"]
-    assert "does not establish an OpenAI" in sbic_west["claim"]
+    assert "does not identify OpenAI as a contracting party" in sbic_west["claim"]
     assert sbic_west["event_status"] == "unknown"
     assert sbic_west["raw_source_sha256"] is None
+    amendment_0452 = by_id["xrpl-amendment-rollcall-2026-11-16T0452Z"]
+    assert "29 yes votes are required" in amendment_0452["claim"]
+    assert "SingleAssetVault had 23 yes votes" in amendment_0452["claim"]
+    assert amendment_0452["source_status"] == "provisional"
+    assert amendment_0452["event_time_utc"] == "2026-11-16T04:52:00.000000Z"
+    assert amendment_0452["raw_source_sha256"] is None
     okx = by_id["xrp-okx-spot-basis-gate-2026-11-16T0058Z"]
     assert "63.905 seconds" in okx["claim"]
     assert "USD normalization is rejected" in okx["claim"]

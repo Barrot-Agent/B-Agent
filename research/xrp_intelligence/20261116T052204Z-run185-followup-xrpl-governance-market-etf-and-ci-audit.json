@@ -1,0 +1,253 @@
+{
+  "artifact_type": "barrot.xrp.run_audit",
+  "schema_version": "1.0.0",
+  "run_id": "run185-followup",
+  "captured_at_utc": "2026-11-16T05:22:04Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+  "integration_parent_sha": "0819ede6ecacbddf6ea97186229e464c4bbc255a",
+  "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+  "integration_tree_entries": 2535,
+  "main_tree_entries": 1393,
+  "main_paths_missing": 0,
+  "commits_ahead": 66,
+  "commits_behind": 0,
+  "pr1663": {
+    "head_sha": "0819ede6ecacbddf6ea97186229e464c4bbc255a",
+    "draft": true,
+    "mergeable": true,
+    "commits": 66,
+    "changed_files": 1300,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "decision": "NO_MERGE"
+  },
+  "exact_head_ci": {
+    "run_id": 43809025219,
+    "conclusion": "failure",
+    "passed": 3828,
+    "failed": 1,
+    "skipped": 1,
+    "subtests": 19,
+    "inclusive_coverage_percent": 64.09,
+    "failed_test": "tests/test_xrp_event_timeline_ingestion.py::test_current_registry_retains_market_and_sbi_resale_counterevidence_without_raw_receipts",
+    "failure": "The SBIC West claim correctly says it does not identify OpenAI as a contracting party; the test expected the different phrase 'does not establish an OpenAI'. The assertion is corrected in the follow-up commit."
+  },
+  "security_checks": {
+    "push_dependency_audit": {
+      "run_id": 43809025285,
+      "conclusion": "success",
+      "known_vulnerabilities": 0
+    },
+    "push_fail_closed": {
+      "run_id": 43809025431,
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "run_id": 43809032448,
+      "conclusion": "success",
+      "test_jobs": "skipped by integration-branch condition",
+      "pages_validation": "passed"
+    },
+    "pr_dependency_audit": {
+      "run_id": 43809032329,
+      "conclusion": "success"
+    },
+    "pr_fail_closed": {
+      "run_id": 43809032424,
+      "conclusion": "success"
+    }
+  },
+  "event_registry": {
+    "events": 106,
+    "declared_lineage_labels": 82,
+    "canonical_publisher_lineage_groups": 44,
+    "missing_raw_source_sha256": 106,
+    "missing_publisher_timestamps": 61,
+    "model_eligible_events": 0
+  },
+  "latest_xrpl_governance_snapshot": {
+    "event_id": "xrpl-amendment-rollcall-2026-11-16T0452Z",
+    "event_type": "protocol",
+    "event_name": "XRPL Dashboard own-node amendment roll call — November 16 04:52 UTC",
+    "hypothesis_id": "xrpl-lending-amendments-remain-inactive-below-supermajority",
+    "domain": "xrpl_protocol_governance_and_lending",
+    "hypothesis": "The proposed SingleAssetVault and LendingProtocol amendments remain below the strict validator supermajority required to begin the 14-day activation window.",
+    "counter_hypothesis": "The roll call is a third-party own-node snapshot and may differ from other validator datasets or later rounds; support can change. It does not establish future activation timing or current XRP collateral demand.",
+    "claim": "XRPL Dashboard's own-node roll call at voting ledger 108,360,447 (flag ledger 108,360,448) at 2026-11-16 04:52 UTC heard 35 of 35 trusted validators and reports that 29 yes votes are required. SingleAssetVault had 23 yes votes, LendingProtocol 22, LendingProtocolV1_1 22, ConfidentialTransfer 21, DynamicMPT 16, fixXChainRewardRounding 10, Sponsor 10, XChainBridge 4 and CryptoConditionsSuite 0. The dashboard reported zero amendments in the 14-day activation countdown, 98 amendments live on mainnet and nine in-flight. This is a third-party own-node snapshot, not the XRPL Foundation's official vote dataset; the canonical Amendments ledger remains authoritative.",
+    "source_id": "xrpldashboard_own_node_amendment_rollcall_20261116_0452",
+    "source_name": "XRPL Dashboard own-node amendment roll call",
+    "source_url": "https://xrpldashboard.com/amendments",
+    "independence_group": "xrpldashboard-own-node-amendment-rollcall",
+    "source_status": "provisional",
+    "stance": "context",
+    "event_status": "occurred",
+    "event_time_utc": "2026-11-16T04:52:00Z",
+    "source_published_at_utc": null,
+    "available_at_utc": "2026-11-16T05:05:00Z",
+    "captured_at_utc": "2026-11-16T05:05:00Z",
+    "raw_source_sha256": null,
+    "assumptions": [
+      "The dashboard's displayed roll-call timestamp and own-node validation stream accurately describe this snapshot.",
+      "The strict more-than-80-percent rule is applied to 35 validators heard, requiring 29 yes votes.",
+      "The dashboard is independent and not affiliated with Ripple, XRPL Foundation or an exchange; its own-node snapshot may differ from other validator datasets."
+    ],
+    "falsification_conditions": [
+      "A subsequent validated-ledger roll call changes the vote count or countdown state.",
+      "The canonical Amendments ledger or an official XRPL record contradicts the dashboard's recorded ledger state."
+    ],
+    "related_entities": [
+      "XRP Ledger",
+      "XRPL trusted validators",
+      "XRPL Foundation",
+      "XRPL Dashboard"
+    ],
+    "tags": [
+      "XRPL-amendments",
+      "SingleAssetVault",
+      "LendingProtocol",
+      "LendingProtocolV1_1",
+      "ConfidentialTransfer",
+      "DynamicMPT",
+      "29-of-35",
+      "14-day-countdown",
+      "not-activated",
+      "own-node-snapshot"
+    ],
+    "source_date": "2026-11-16",
+    "publisher_timestamp_precision": "roll-call time displayed as 04:52 UTC; dashboard page states fetched 05:05 UTC"
+  },
+  "latest_market_context": {
+    "coingecko": {
+      "source_url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+      "capture_date": "2026-11-16",
+      "displayed_price_usd": 0.9563,
+      "range_24h_usd": [
+        0.9433,
+        0.9773
+      ],
+      "volume_24h_usd": 2423929935,
+      "event_timestamp_utc": null
+    },
+    "liqwall": {
+      "source_url": "https://liqwall.com/open-interest/xrp",
+      "provider_timestamp_utc": "2026-11-16T05:02:00Z",
+      "open_interest_usd": 990000000,
+      "change_24h_percent": -2.6,
+      "high_30d_usd": 1490000000,
+      "high_30d_date": "2026-11-04",
+      "low_30d_usd": 995000000,
+      "low_30d_date": "2026-11-14"
+    },
+    "coinglass": {
+      "source_url": "https://www.coinglass.com/currencies/XRP/futures",
+      "open_interest_usd": 1970000000,
+      "event_timestamp_utc": null,
+      "qualification": "Different exchange/contract universe; do not average with Liqwall."
+    },
+    "direct_exchange_api": {
+      "okx_timestamp_utc": "2026-11-16T04:44:06.573Z",
+      "kraken_event_timestamp_utc": null,
+      "qualification": "OKX quote was stale by later capture; Kraken event time absent; top-of-book only, not full-depth L2."
+    }
+  },
+  "etf_flow_context": {
+    "coindaro_sosovalue": {
+      "source_url": "https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/",
+      "published_date": "2026-11-14",
+      "sessions_without_net_inflow": 11,
+      "november_net_outflow_through_2026_11_13_usd": 19660000,
+      "net_assets_usd": 1150000000,
+      "cumulative_inflows_usd": 1790000000,
+      "implied_holdings_xrp_2026_11_13": 1140000000,
+      "qualification": "Five-fund SoSoValue universe; implied XRP holdings were approximately stable from Sep 25, so most AUM decline was price-driven."
+    },
+    "alpha_finance": {
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "through_date": "2026-11-14",
+      "seven_session_net_flow_usd": -20200000,
+      "thirty_session_net_flow_usd": -1700000,
+      "cumulative_inflow_usd": 1710000000,
+      "november_14_net_flow_usd": -1100000,
+      "qualification": "Five-fund tracker with a different cumulative-flow figure and methodology; do not average with SoSoValue."
+    },
+    "cryptokeyhole": {
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "latest_partial_date": "2026-11-13",
+      "partial_flow_xrp": -9967,
+      "reported_funds": 3,
+      "total_expected_funds": 4,
+      "latest_complete_date": "2026-11-12",
+      "complete_flow_xrp": 4337131,
+      "qualification": "Partial latest day; separate issuer-file universe."
+    }
+  },
+  "source_independence_note": "The raw declared-lineage label count is not the effective independent-source count. The source_independence engine's conservative publisher/lineage union produces 44 effective groups.",
+  "nine_platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "verified",
+      "least_privilege": false,
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ]
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "historical_one_off_activity",
+      "formal_pr_approval": false
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "unverified",
+      "deployment_verified": false
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "untested"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "unverified",
+      "prior_http_status": 403
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "accuracy": "NOT_EVALUATED",
+  "next_exact_head_suite": "pending on the follow-up commit",
+  "authorization": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_dispatch": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money_action": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "source_pr_closure": false
+  }
+}

@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run185",
-  "captured_at_utc": "2026-11-16T05:15:05Z",
-  "source_receipt_status": "105 of 105 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
+  "registry_version": "run185-followup",
+  "captured_at_utc": "2026-11-16T05:22:04Z",
+  "source_receipt_status": "106 of 106 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -4573,6 +4573,57 @@
       ],
       "source_date": "2024-10-23",
       "publisher_timestamp_precision": "date-only; PDF publication timestamp not established"
+    },
+    {
+      "event_id": "xrpl-amendment-rollcall-2026-11-16T0452Z",
+      "event_type": "protocol",
+      "event_name": "XRPL Dashboard own-node amendment roll call — November 16 04:52 UTC",
+      "hypothesis_id": "xrpl-lending-amendments-remain-inactive-below-supermajority",
+      "domain": "xrpl_protocol_governance_and_lending",
+      "hypothesis": "The proposed SingleAssetVault and LendingProtocol amendments remain below the strict validator supermajority required to begin the 14-day activation window.",
+      "counter_hypothesis": "The roll call is a third-party own-node snapshot and may differ from other validator datasets or later rounds; support can change. It does not establish future activation timing or current XRP collateral demand.",
+      "claim": "XRPL Dashboard's own-node roll call at voting ledger 108,360,447 (flag ledger 108,360,448) at 2026-11-16 04:52 UTC heard 35 of 35 trusted validators and reports that 29 yes votes are required. SingleAssetVault had 23 yes votes, LendingProtocol 22, LendingProtocolV1_1 22, ConfidentialTransfer 21, DynamicMPT 16, fixXChainRewardRounding 10, Sponsor 10, XChainBridge 4 and CryptoConditionsSuite 0. The dashboard reported zero amendments in the 14-day activation countdown, 98 amendments live on mainnet and nine in-flight. This is a third-party own-node snapshot, not the XRPL Foundation's official vote dataset; the canonical Amendments ledger remains authoritative.",
+      "source_id": "xrpldashboard_own_node_amendment_rollcall_20261116_0452",
+      "source_name": "XRPL Dashboard own-node amendment roll call",
+      "source_url": "https://xrpldashboard.com/amendments",
+      "independence_group": "xrpldashboard-own-node-amendment-rollcall",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T04:52:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T05:05:00Z",
+      "captured_at_utc": "2026-11-16T05:05:00Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The dashboard's displayed roll-call timestamp and own-node validation stream accurately describe this snapshot.",
+        "The strict more-than-80-percent rule is applied to 35 validators heard, requiring 29 yes votes.",
+        "The dashboard is independent and not affiliated with Ripple, XRPL Foundation or an exchange; its own-node snapshot may differ from other validator datasets."
+      ],
+      "falsification_conditions": [
+        "A subsequent validated-ledger roll call changes the vote count or countdown state.",
+        "The canonical Amendments ledger or an official XRPL record contradicts the dashboard's recorded ledger state."
+      ],
+      "related_entities": [
+        "XRP Ledger",
+        "XRPL trusted validators",
+        "XRPL Foundation",
+        "XRPL Dashboard"
+      ],
+      "tags": [
+        "XRPL-amendments",
+        "SingleAssetVault",
+        "LendingProtocol",
+        "LendingProtocolV1_1",
+        "ConfidentialTransfer",
+        "DynamicMPT",
+        "29-of-35",
+        "14-day-countdown",
+        "not-activated",
+        "own-node-snapshot"
+      ],
+      "source_date": "2026-11-16",
+      "publisher_timestamp_precision": "roll-call time displayed as 04:52 UTC; dashboard page states fetched 05:05 UTC"
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -4733,17 +4784,17 @@
     "prediction_boundary": "RLUSD custody or RLUSD collateral must not be represented as native XRP purchases, XRP collateral or XRP bridge demand. No directional forecast is issued."
   },
   "run185_update": {
-    "captured_at_utc": "2026-11-16T05:15:05Z",
+    "captured_at_utc": "2026-11-16T05:22:04Z",
     "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
     "integration_parent_sha": "a07af4259393b7f1c8e93dc776c5b4b199c790f6",
     "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
     "added_event_ids": [
       "sbic-west-chatgpt-generative-ai-seminar-2024-10-23"
     ],
-    "event_count": 105,
+    "event_count": 106,
     "independence_group_count": 82,
-    "missing_raw_source_sha256": 105,
-    "missing_publisher_timestamps": 60,
+    "missing_raw_source_sha256": 106,
+    "missing_publisher_timestamps": 61,
     "model_eligible_event_count": 0,
     "source_receipt_policy": "The official SBIC West PDF was read through its public publisher URL, but exact publisher response bytes were not archived. No SHA-256 was invented from rendered PDF text; the event remains descriptive-only and model-ineligible.",
     "schema_correction": {
@@ -4757,6 +4808,116 @@
       "This is a separate primary-source SBIC West example from the previously recorded SBIC East/Microsoft Japan seminar; neither establishes an OpenAI-SBIC commercial relationship.",
       "ASK Coin remains unresolved as an XRP issuer or Ripple relationship; Permission ASK is only a plausible candidate. Evernorth actual-capital classifications remain cash purchase, in-kind XRP, debt, warrant proceeds and undrawn equity capacity separately."
     ],
-    "prediction_boundary": "No directional forecast is issued. All curated events remain model-ineligible until byte-exact receipts, timestamp/provenance validation, leakage-safe out-of-sample superiority and independent shadow evaluation pass."
+    "prediction_boundary": "No directional forecast is issued. All curated events remain model-ineligible until byte-exact receipts, timestamp/provenance validation, leakage-safe out-of-sample superiority and independent shadow evaluation pass.",
+    "declared_independence_group_count": 82,
+    "canonical_publisher_lineage_group_count": 44,
+    "latest_xrpl_governance_snapshot": {
+      "event_id": "xrpl-amendment-rollcall-2026-11-16T0452Z",
+      "ledger": 108360447,
+      "flag_ledger": 108360448,
+      "roll_call_utc": "2026-11-16T04:52:00Z",
+      "page_fetch_utc": "2026-11-16T05:05:00Z",
+      "validators_heard": "35/35",
+      "required_yes_votes": 29,
+      "votes": {
+        "SingleAssetVault": 23,
+        "LendingProtocol": 22,
+        "LendingProtocolV1_1": 22,
+        "ConfidentialTransfer": 21,
+        "DynamicMPT": 16,
+        "fixXChainRewardRounding": 10,
+        "Sponsor": 10,
+        "XChainBridge": 4,
+        "CryptoConditionsSuite": 0
+      },
+      "countdown_amendments": 0,
+      "live_amendments": 98,
+      "inflight_amendments": 9,
+      "source_status": "third-party own-node snapshot; provisional; no raw bytes/hash"
+    },
+    "source_independence_note": "82 is the count of declared lineage labels. The conservative canonical publisher/lineage union groups these 106 events into 44 groups; SBIC East and SBIC West remain separate legal entities but their publications collapse to the same sbic-regional publisher group."
+  },
+  "run185_followup": {
+    "captured_at_utc": "2026-11-16T05:22:04Z",
+    "event_id_added": "xrpl-amendment-rollcall-2026-11-16T0452Z",
+    "event_count": 106,
+    "declared_independence_group_count": 82,
+    "canonical_publisher_lineage_group_count": 44,
+    "missing_raw_source_sha256": 106,
+    "missing_publisher_timestamps": 61,
+    "model_eligible_event_count": 0,
+    "source_receipt_note": "The 05:05 UTC XRPL Dashboard page was read through its public URL; exact publisher response bytes were not archived, so no hash was invented.",
+    "latest_market_context": {
+      "coingecko": {
+        "source_url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+        "capture_date": "2026-11-16",
+        "displayed_price_usd": 0.9563,
+        "range_24h_usd": [
+          0.9433,
+          0.9773
+        ],
+        "volume_24h_usd": 2423929935,
+        "event_timestamp_utc": null
+      },
+      "liqwall": {
+        "source_url": "https://liqwall.com/open-interest/xrp",
+        "provider_timestamp_utc": "2026-11-16T05:02:00Z",
+        "open_interest_usd": 990000000,
+        "change_24h_percent": -2.6,
+        "high_30d_usd": 1490000000,
+        "high_30d_date": "2026-11-04",
+        "low_30d_usd": 995000000,
+        "low_30d_date": "2026-11-14"
+      },
+      "coinglass": {
+        "source_url": "https://www.coinglass.com/currencies/XRP/futures",
+        "open_interest_usd": 1970000000,
+        "event_timestamp_utc": null,
+        "qualification": "Different exchange/contract universe; do not average with Liqwall."
+      },
+      "direct_exchange_api": {
+        "okx_timestamp_utc": "2026-11-16T04:44:06.573Z",
+        "kraken_event_timestamp_utc": null,
+        "qualification": "OKX quote was stale by later capture; Kraken event time absent; top-of-book only, not full-depth L2."
+      }
+    },
+    "etf_flow_context": {
+      "coindaro_sosovalue": {
+        "source_url": "https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/",
+        "published_date": "2026-11-14",
+        "sessions_without_net_inflow": 11,
+        "november_net_outflow_through_2026_11_13_usd": 19660000,
+        "net_assets_usd": 1150000000,
+        "cumulative_inflows_usd": 1790000000,
+        "implied_holdings_xrp_2026_11_13": 1140000000,
+        "qualification": "Five-fund SoSoValue universe; implied XRP holdings were approximately stable from Sep 25, so most AUM decline was price-driven."
+      },
+      "alpha_finance": {
+        "source_url": "https://alphafinance.io/etf/xrp/",
+        "through_date": "2026-11-14",
+        "seven_session_net_flow_usd": -20200000,
+        "thirty_session_net_flow_usd": -1700000,
+        "cumulative_inflow_usd": 1710000000,
+        "november_14_net_flow_usd": -1100000,
+        "qualification": "Five-fund tracker with a different cumulative-flow figure and methodology; do not average with SoSoValue."
+      },
+      "cryptokeyhole": {
+        "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "latest_partial_date": "2026-11-13",
+        "partial_flow_xrp": -9967,
+        "reported_funds": 3,
+        "total_expected_funds": 4,
+        "latest_complete_date": "2026-11-12",
+        "complete_flow_xrp": 4337131,
+        "qualification": "Partial latest day; separate issuer-file universe."
+      }
+    },
+    "exact_phrase_updates": {
+      "sbic_west": "Official SBIC West Investment Forum No.128 flyer advertises a ChatGPT/generative-AI seminar for 2024-10-23; occurrence unconfirmed; no OpenAI commercial relationship established.",
+      "ask_coin": "No canonical XRPL ASK issuer or Ripple relationship verified.",
+      "actual_capital": "Evernorth SEC categories remain cash-funded XRP purchase, in-kind XRP, actual warrant proceeds, convertible debt and undrawn ELOC capacity separately.",
+      "kamilah_stevenson": "The iHeart interview self-identifies the person and spoken YouTube name; @drkamilahstevenson appears in a third-party directory only, with no first-party cross-link."
+    },
+    "prediction_boundary": "All 106 events remain model-ineligible until byte-exact receipts, point-in-time validation, out-of-sample superiority and independent shadow evaluation pass; no directional forecast issued."
   }
 }

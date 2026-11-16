@@ -1,3 +1,52 @@
+# Run185 follow-up — exact-head test correction and current XRPL/market snapshot
+
+**Captured:** 2026-11-16T05:22:04Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Pre-follow-up integration head:** `0819ede6ecacbddf6ea97186229e464c4bbc255a`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`
+
+## Exact-head test result and correction
+
+On `0819ede6ecacbddf6ea97186229e464c4bbc255a`, full-suite run [43809025219](https://github.com/Barrot-Agent/B-Agent/actions/runs/43809025219) completed with **3,828 passed, one failed, one skipped and 19 subtests**, inclusive coverage **64.09%**. The sole failure was a test-string mismatch in `tests/test_xrp_event_timeline_ingestion.py`: the test expected “does not establish an OpenAI”, while the curated SBIC West claim correctly says “does not identify OpenAI as a contracting party”. The test assertion is corrected to match the recorded claim. No production behavior or safety gate was weakened.
+
+Other checks on `0819ede`:
+- Push dependency audit [43809025285](https://github.com/Barrot-Agent/B-Agent/actions/runs/43809025285): passed, zero known vulnerabilities.
+- Push fail-closed [43809025431](https://github.com/Barrot-Agent/B-Agent/actions/runs/43809025431): passed.
+- PR CI [43809032448](https://github.com/Barrot-Agent/B-Agent/actions/runs/43809032448): passed; PR test jobs skipped by integration-branch condition; Pages validation passed.
+- PR dependency audit [43809032329](https://github.com/Barrot-Agent/B-Agent/actions/runs/43809032329): passed.
+- PR fail-closed [43809032424](https://github.com/Barrot-Agent/B-Agent/actions/runs/43809032424): passed.
+
+The follow-up commit updates the assertion, adds the 05:05 UTC XRPL amendment roll call to the event registry, and refreshes this handoff, audit and platform map. Its own exact-head full-suite and security checks are required; no predecessor result is transferred.
+
+## Latest XRPL governance snapshot
+
+The independent [XRPL Dashboard amendments page](https://xrpldashboard.com/amendments) reports a 04:52 UTC own-node roll call, fetched at 05:05 UTC, voting ledger **108,360,447** / flag ledger **108,360,448**:
+- 35/35 trusted validators heard; **29/35** yes votes required.
+- SingleAssetVault **23**, LendingProtocol **22**, LendingProtocolV1_1 **22**, ConfidentialTransfer **21**, DynamicMPT **16**, fixXChainRewardRounding **10**, Sponsor **10**, XChainBridge **4**, CryptoConditionsSuite **0**.
+- **98** amendments live, **9** in-flight, **zero** in the 14-day activation countdown.
+
+The dashboard is an independent third-party own-node source, not the XRPL Foundation's official vote dataset. The [official XRPL amendment rules](https://xrpl.org/docs/concepts/networks-and-servers/amendments) require support from **more than 80%** of trusted validators for two weeks. At 35 validators, 29 votes are required. XLS-65/66 remain unactivated. This snapshot is recorded as provisional/context with no raw-byte hash; it is not a model feature.
+
+## Updated descriptive XRP market and flow context
+
+These public rendered observations have no byte-exact receipts and remain descriptive-only:
+- CoinGecko's November 16 page displayed XRP at **$0.9563**, 24-hour range **$0.9433–$0.9773**, and 24-hour volume approximately **$2.424B**; it did not provide an exact provider event timestamp. [CoinGecko](https://www.coingecko.com/en/coins/xrp/historical_data).
+- Liqwall's **05:02 UTC** snapshot reported XRP futures open interest **$990M**, down **2.6%** in 24 hours; its 30-day high was **$1.49B** on November 4 and low **$995M** on November 14. [Liqwall](https://liqwall.com/open-interest/xrp).
+- CoinGlass displayed approximately **$1.97B** open interest without a synchronized timestamp. This is a materially different exchange/contract universe; do not average it with Liqwall.
+- Coindaro's November 14 report, using five-fund SoSoValue data, reports **11 sessions without net inflow** since October 29, November outflows **$19.66M** through November 13, cumulative inflows **$1.79B**, and net assets **$1.15B**. Its implied XRP holdings were about **1.14B** on September 25 and November 13, indicating most AUM decline was price-driven rather than equivalent redemptions. [Coindaro](https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/).
+- Alpha Finance's separate five-fund tracker through November 14 reports **-$20.2M** over seven sessions, **-$1.7M** over 30 sessions, cumulative inflows **$1.71B**, and a November 14 outflow of **$1.1M**. [Alpha Finance](https://alphafinance.io/etf/xrp/).
+- CryptoKeyhole's November 13 reading is partial: three of four expected files reported **-9,967 XRP**; its latest complete November 12 day was **+4,337,131 XRP**. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+
+These ETF trackers use different universes, timestamps and methodologies; SoSoValue-derived figures are not independent confirmations. No figures are averaged. No market or flow observation is admitted to the feature store without exact receipts, point-in-time timestamps and quality gates.
+
+## Source-independence accounting correction
+
+The event registry now contains **106 events** and **82 declared lineage labels**. The canonical publisher/lineage union in `source_independence.py` reduces these to **44 effective groups**. This is deliberately conservative: multiple regional SBIC domains are grouped under `sbic-regional` for corroboration, but SBIC East/Central/West remain distinct legal entities and are not aliased to SBI Holdings. All **106** events lack byte-exact raw-source SHA-256 receipts; **61** lack exact publisher timestamps; **zero** are model-eligible.
+
+Forecast remains **NOT_ISSUED**; accuracy **NOT_EVALUATED**. No directional forecast issued.
+
+---
+
 # Run185 — exact-head regression correction, SBIC West primary evidence and XRP market-quality audit
 
 **Captured:** 2026-11-16T05:15:05Z  
@@ -65,8 +114,8 @@ A search result for DigitalToday appeared recently crawled/updated but the opene
 
 ## Prediction-engine readiness
 
-- Event registry after Run185: **105 events**, **82 independence groups**.
-- **105/105** events still lack byte-exact `raw_source_sha256` receipts; **60** lack exact publisher timestamps; **zero** are model-eligible.
+- Event registry after Run185 follow-up: **106 events**, **82 declared lineage labels**, **44 canonical publisher/lineage groups**. The source-independence engine conservatively collapses SBIC East and SBIC West publications into the same `sbic-regional` publisher group while keeping both legal entities distinct from SBI Holdings.
+- **106/106** events still lack byte-exact `raw_source_sha256` receipts; **61** lack exact publisher timestamps; **zero** are model-eligible.
 - The point-in-time feature-store prototype, four deterministic baselines, purged/embargoed walk-forward tests, calibration, PSI drift monitoring and fail-closed forecast ledger remain implemented on integration.
 - Independent WORM archival, trusted timestamp anchoring, synchronized historical multi-venue L2/derivatives/exchange-flow/collateral data, qualified out-of-sample candidate superiority and independent shadow evaluation remain outstanding.
 - `latest_signal.json`: **NOT_ISSUED**. `signal_accuracy.json`: **NOT_EVALUATED**. No directional forecast issued.
