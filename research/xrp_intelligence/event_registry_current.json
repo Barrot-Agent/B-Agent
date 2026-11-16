@@ -3586,7 +3586,7 @@
       "domain": "institutional_capital",
       "hypothesis": "Evernorth's post-close cash receipts expand potential treasury funding capacity, but realized XRP accumulation requires independently verified XRP purchases and custody changes.",
       "counter_hypothesis": "Warrant proceeds and convertible-note proceeds are cash but not proof of XRP purchases; the note is debt, the ELOC is optional and no draw is evidenced in this supplement, while the remaining $11.50 warrants were out of the money at the November 12 XRPN close of $8.97.",
-      "claim": "Evernorth's SEC Form 424B3 supplement dated November 13, 2026 reports 3,073,366 public warrants exercised for cash between October 12 and November 9 at $11.50 each, producing $35.3 million gross proceeds, with 8,666,279 warrants remaining. It separately reports $29.0 million net cash from an October 13 convertible note after a $1.0 million advisor fee. The Cantor ELOC permits Evernorth, at its option and subject to conditions, to sell up to 5,218,935 newly issued shares at 97% of applicable VWAP, with volume and ownership limits. The supplement reports a November 12 XRPN close of $8.97 versus the $11.50 warrant strike. It does not establish an ELOC draw or an XRP purchase funded by these proceeds.",
+      "claim": "Evernorth's SEC Form 424B3 supplement dated November 13, 2026 reports 3,073,366 public warrants exercised for cash between October 12 and November 9 at $11.50 each, producing $35.3 million gross proceeds, with 8,666,279 warrants remaining. It separately reports $30.0 million principal/proceeds before transaction expenses from an October 13 convertible note, a $1.0 million advisory fee and additional reimbursable expenses subject to stated caps; approximately $29.0 million remains after the advisory fee alone, before any other expenses. The Cantor ELOC permits Evernorth, at its option and subject to conditions, to sell up to 5,218,935 newly issued shares at 97% of applicable VWAP, with volume and ownership limits. The supplement reports a November 12 XRPN close of $8.97 versus the $11.50 warrant strike. It does not establish an ELOC draw or an XRP purchase funded by these proceeds.",
       "source_id": "sec_evernorth_424b3_10q_2026_11_13",
       "source_name": "U.S. Securities and Exchange Commission — Evernorth Form 424B3 supplement with Q3 2026 Form 10-Q",
       "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
@@ -3601,10 +3601,10 @@
       "raw_source_sha256": null,
       "assumptions": [
         "The filing reports gross warrant-exercise proceeds; gross proceeds are not net cash after expenses.",
-        "The $29.0 million convertible-note amount is net cash after the stated advisor fee and remains debt.",
         "The ELOC is an optional financing facility; capacity is not a draw or realized cash receipt.",
         "The November 9 event time marks the end of the disclosed warrant-exercise interval, not the timestamp of each exercise.",
-        "The SEC supplement is dated November 13, 2026; its exact EDGAR acceptance time was not captured in this run."
+        "The SEC supplement is dated November 13, 2026; its exact EDGAR acceptance time was not captured in this run.",
+        "The convertible-note filing amount is approximately $30.0 million before transaction expenses; $29.0 million is only the arithmetic remainder after the $1.0 million advisory fee and before additional reimbursable expenses, not a stated final net-proceeds figure."
       ],
       "falsification_conditions": [
         "A later SEC filing corrects or supersedes the warrant exercise count, gross proceeds or convertible-note proceeds.",
