@@ -5,7 +5,7 @@
 **Foundation:** Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.  
 **Main:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
 **Integration head inspected at Run180 start:** `33c065122acf34d3e746aef7add76dcd650d8a98`  
-**Latest Run180 evidence head before this handoff:** `e2324e4517b0ddf938e8cebb42bedfcc2557379f` (exact-head CI in progress)  
+**Run180 evidence branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`; later evidence commits remain subject to exact-head CI.  
 **Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open and draft  
 
 ## Run180 — current verification and findings
@@ -52,6 +52,7 @@ Primary source: [SEC Form 424B3 supplement and Q3 2026 Form 10-Q, dated November
 - **Cantor ELOC:** up to 5,218,935 new shares at 97% of applicable VWAP, subject to a 20% volume limit, 4.99% beneficial-ownership cap and purchase-price threshold. Registration became effective October 30. The non-refundable commitment fee is $0.5M, with up to $0.5M reimbursable expenses. The reviewed supplement does not disclose an ELOC draw. Capacity is not cash received.
 - **Pre-close September 30 condition:** unrestricted cash $91,397, restricted cash $49,995, net working-capital deficit $10.0M, nine-month operating loss $273.2M and net loss $32.9M. Q3 net income of $155.3M includes a $162.8M non-cash fair-value gain on refundable investor advances. Evernorth reported no revenue yet. These are pre-close figures, not post-close current cash.
 - **XRP reconciliation:** 84,365,876 cash-purchased XRP + 388,910,554 in-kind XRP = 473,276,430 XRP. The 346,484,972 XRP transfer to Pathfinder reconciles to the 346,284,972 pre-close balance plus 200,000 delayed-funding XRP; Ripple separately contributed 126,791,458 XRP. The transfer is not a new market purchase.
+- **Coinbase versus custody:** Evernorth selected Coinbase as its principal market for XRP financial-reporting/impairment valuation based on accessible trading volume/activity, quote consistency and regulatory/AML/KYC characteristics. The filing separately says post-transaction XRP was held with third-party custodians, initially BitGo Trust. This does not prove all purchases executed on Coinbase or that Coinbase is the custodian. [SEC filing, market-selection and custody disclosures](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm).
 - The SEC filing says certain investors affiliated with **SBI Holdings** received Class C shares under a 39.9% ownership threshold. This is SBI Holdings, not SBIC East/Central/West.
 
 ### Japan SBIC identity and ChatGPT phrase
@@ -73,7 +74,7 @@ The February 26, 2025 SBIC seminar [official flyer](https://www.sbic.co.jp/wordp
 ### Prediction and nine-platform status
 
 - Implemented on integration: 51 public-source definitions, 49 scheduled definitions, SQLite point-in-time feature-store prototype, event timelines, counter-hypotheses, naive/momentum/mean-reversion/volatility baselines, purged/embargoed walk-forward evaluation, block bootstrap, calibration, PSI drift monitoring, fail-closed forecast ledger and evaluator attestation.
-- Event registry after Run180: 89 events, 67 independence groups, 89 missing raw-source SHA-256 receipts and 47 missing publisher timestamps. All 89 remain model-ineligible. Direct byte capture was unavailable; extracted web text was not hashed.
+- Event registry after Run180: 90 events, 67 independence groups, 90 missing raw-source SHA-256 receipts and 48 missing publisher timestamps. All 90 remain model-ineligible. Direct byte capture was unavailable; extracted web text was not hashed.
 - Independent WORM archival and trusted timestamp anchoring remain unverified. GitHub artifact retention is 90 days.
 - Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No directional forecast was issued.
 - Nine-platform map: ChatGPT/GitHub connector authenticated but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot historical one-off only; Hugging Face no verified deployment; Kaggle untested; Databricks prior HTTP 403. Groq is not Grok. OpenCode GitHub MCP remains unverified. No external-model dispatch, structured nine-platform exchange or independent red-team quorum.
