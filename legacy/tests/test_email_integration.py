@@ -2,7 +2,7 @@
 Test the full Barrot email intelligence integration
 """
 
-from barrot_integration import process_emails, barrot_system
+from barrot_agent.orchestration.barrot_integration import process_emails, barrot_system
 from datetime import datetime, timezone
 import json
 
