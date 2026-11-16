@@ -227,7 +227,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "29 yes votes are required" in amendment_0452["claim"]
     assert "SingleAssetVault had 23 yes votes" in amendment_0452["claim"]
     assert amendment_0452["source_status"] == "provisional"
-    assert amendment_0452["event_time_utc"] == "2026-11-16T04:52:00.000000Z"
+    assert amendment_0452["event_time_utc"] == "2026-11-16T04:52:00Z"
     assert amendment_0452["raw_source_sha256"] is None
     okx = by_id["xrp-okx-spot-basis-gate-2026-11-16T0058Z"]
     assert "63.905 seconds" in okx["claim"]
