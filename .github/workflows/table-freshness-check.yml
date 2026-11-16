@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Explain private-data containment
         run: |
-          echo "The previous diagnostic queried private brain-memory records and printed random insight/session rows into workflow logs."
+          echo "The previous diagnostic queried private brain-memory records and printed sampled private rows into workflow logs."
           echo "A public repository workflow must not expose private workspace content through job logs."
           echo "Re-enable only after a scoped read-only identity, aggregate-only output, explicit per-run authorization, exact-main-SHA validation and private artifact handling are reviewed."
           echo "No Databricks credentials are read, no query is executed, and no private rows are emitted."
