@@ -2159,3 +2159,176 @@ A second issue was found by reading `pytest.ini`: it globally applies `--cov=bar
 The Riemann scheduled workflow has not been manually dispatched. The correction is statically regression-tested on integration; actual scheduled execution remains unverified.
 
 No merge. PR #1663 remains draft with zero approvals and zero formal reviews.
+
+
+---
+
+## Run187 — exact-head full-suite pass, institutional custody update and mainline safety blockers
+
+**Captured:** 2026-11-16T06:33:50Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Verified code head:** `0c75b883800043f9a174555f7f71be78c2bf8db3`  
+**Latest evidence-only commit before this handoff update:** `ddc219aa21509af6dea4cac1d41b1b2bee393a71`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft/open.  
+**Mission:** XRP intelligence and measured prediction-engine mastery remains priority 1. Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.
+
+### Repository and integration audit
+
+- Main recursive tree: 1,393 entries; integration recursive tree: 2,540 entries. Both complete, not truncated.
+- Main paths missing from integration: 0.
+- Integration-only paths: 1,147.
+- Shared paths: 1,393; differing shared blobs: 170; differing shared tree objects: 36.
+- Main is an ancestor of integration; 73 commits ahead, zero behind.
+- PR #1663 has 1,306 changed files, 423,108 additions and 6,487 deletions.
+- Changed-path inventory: 49 workflow definitions, 394 tests, 739 research paths, 738 JSON files and 471 Python files. These categories overlap.
+- Full semantic review of all 1,306 paths remains incomplete.
+
+### Exact-head verification
+
+The full repository suite passed on exact code head `0c75b883800043f9a174555f7f71be78c2bf8db3`.
+
+| Measurement | Result |
+|---|---:|
+| Tests collected | 3,831 |
+| Passed | 3,830 |
+| Failed | 0 |
+| Skipped | 1 |
+| Subtests passed | 19 |
+| Pytest duration | 147.67 seconds |
+| Inclusive coverage | 64.09% |
+| Legacy core coverage | 77% |
+
+The wheel built successfully; the installed package loaded Barrot V3, the XRP mission and canonical data assets. GitHub Pages validation passed on the integration head.
+
+- [Full repository suite 43816480871](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816480871)
+- [Dependency audit 43816480869](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816480869) — all six manifests passed, zero known vulnerabilities.
+- [Push fail-closed gate 43816480914](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816480914) — passed, merge disabled.
+- [PR CI 43816485677](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816485677) — passed; integration-branch PR test jobs are skipped by workflow condition.
+- [PR dependency audit 43816485725](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816485725) — passed.
+- [PR fail-closed gate 43816485770](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816485770) — passed.
+
+The push-triggered full suite is authoritative. The GitHub Actions cache budget was exhausted and cache became read-only; the suite passed, but cache writes are not reliable. No cache was deleted or setting changed.
+
+The Run187 audit/map/status updates after `0c75b88` are evidence/JSON/Markdown-only commits. They do not change Python or workflow code. No full-suite result is claimed for those subsequent documentation-only commits.
+
+### Main-branch health and unresolved safety exposure
+
+Main remains unchanged at `1f30e5c`. Its latest observed runs include:
+
+- Main CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808): success, 848 core tests. This is not the expanded 3,830-test integration suite.
+- Main Pages [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504): failed. Jekyll reports a Liquid syntax error in `GLOBAL_STATE_MANIFEST.md` around line 6450. Integration adds an `endraw` boundary around the template-like prompt; exact-head integration Pages validation passed.
+- Main Riemann scheduled run [43798453131](https://github.com/Barrot-Agent/B-Agent/actions/runs/43798453131): failed because `pytest-cov` and `pydantic-settings` were missing and `pytest.ini` injected coverage arguments. Integration adds those dependencies and `-o addopts=` for the focused subset. Actual integration scheduled execution remains unverified.
+- Main Hover Bike scheduled run [43816240220](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816240220): failed because the generator ran from the wrong working directory and the artifact upload could not find its files. Integration now invokes the generator from repository root; its output directory is derived from `Path(__file__).resolve().parents[1]`. The correction has not yet been executed by an integration workflow run.
+
+**Private-data exposure on main:** `.github/workflows/table-freshness-check.yml` on main invokes `scripts/check_table_freshness.py` with a Databricks token and queries `workspace.barrot.brain`. The script prints sampled `timestamp/topic/insight/session` rows, including random non-error insight records, into public GitHub Actions logs. The integration workflow is quarantined with `permissions: {}` and `if: false`, with regression protection. This containment is not effective on main until safely merged. No Databricks request was made; no token was read or rotated; no private workspace data was accessed.
+
+**Paper-trader exposure on main:** the main Coinbase paper-trader workflow has no typed per-run confirmation, calls Groq, simulates BTC-USD and commits state/log changes directly to main. It does not submit a Coinbase order, but it can mutate repository state and violates the no-paper-trade-without-specific-approval rule. Integration requires typed YES, exact main SHA, position-product identity preflight and artifact-only output. Neither version was dispatched.
+
+**Public signal exposure on main:** main still contains the 2026-10-29 legacy signal (score 44, confidence 0) and a 45.5% variable-horizon accuracy record (772/1,697) that is not valid fixed-horizon predictive accuracy. Integration sets `web/latest_signal.json` to `NOT_ISSUED` and `web/signal_accuracy.json` to `NOT_EVALUATED`, with null accuracy/counts. Main remains unchanged, and its latest Pages build failed, so the currently deployed page state is not verified. The correction is not effective on main until a safe merge.
+
+### Workflow safety review
+
+All 49 changed workflow definitions were inspected on integration.
+
+- XRP public ingestion is main-ref guarded, serialized, uses `actions:read` and `contents:read`, has no provider secrets and fetches from an allowlisted set of public endpoints. It uploads content-addressed receipts and point-in-time feature-store artifacts. Raw artifacts are retained 90 days and feature checkpoints 7/90 days; GitHub artifact retention is not independent WORM storage. No ingestion run on main was verified.
+- Coinbase paper-trader, Databricks/Kaggle operations, Cloudflare/A2A deployment and Hugging Face deployment remain manual and require explicit per-run confirmation and exact-revision checks. None was dispatched.
+- Groq-backed research/design workflows require per-run public/authorized-data confirmation. Groq is not Grok. No external-model transfer occurred.
+- Legacy repository writers, sync, signal-emission, subscriber and private-brain workflows remain quarantined on integration.
+
+### Fresh XRP market and institutional observations
+
+**Derivatives — do not average provider totals**
+
+| Source | Provider timestamp | XRP OI | Additional observation |
+|---|---|---:|---|
+| Liqwall | 2026-11-16 06:22 UTC | $983M | −3.3% in 24h; 30-day high $1.49B on Nov 4 |
+| CoinGlass | No exact event timestamp exposed | $1.97B | Price $0.9509; spot volume $529.35M; futures volume $2.27B; funding −0.0070%/8h; liquidations $3.29M, 60% longs |
+| TradRadar | 2026-11-15 16:00 UTC | $1.33B | Seven exchanges; −6.53% in 24h; funding −0.0027%/8h; liquidations at least $37.51M |
+
+Sources: [Liqwall](https://liqwall.com/open-interest/xrp) · [CoinGlass](https://www.coinglass.com/currencies/XRP/futures) · [TradRadar](https://tradradar.io/markets/xrp).
+
+The $983M, $1.33B and $1.97B totals are not reconciled. Timestamp, venue coverage, contract type, multipliers and notional conventions differ. They are not averaged or admitted as model features. No synchronized full-depth L2 snapshot with sequence continuity was obtained.
+
+**ETF flows**
+
+- Coindaro's five-fund SoSoValue series through Nov 13 reports 11 sessions without net inflow since Oct 29, approximately $19.66M November net outflow, $1.79B cumulative inflows and $1.15B net assets. Nov 13 was approximately $1.09M outflow. [Source](https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/).
+- Coindaro's implied holdings are approximately 1.13–1.14B XRP from Sep 25 through Nov 13; most AUM decline is attributed to price depreciation rather than equivalent redemptions. This is counter-evidence to interpreting the AUM fall as wholesale institutional selling.
+- CryptoKeyhole's issuer-file tracker reports Nov 13 as partial: 3 of 4 collected funds, −9,967 XRP so far; its latest complete Nov 12 day was +4,337,131 XRP. It excludes Grayscale daily data because the issuer site blocks automated reads and excludes XRPR because its 1940 Act structure and direct-holdings file do not represent total holdings/flows. [Source](https://cryptokeyhole.com/etf-flows/xrp/).
+
+Coindaro/SoSoValue and other summaries using the same SoSoValue prints are one source lineage, not independent confirmations. CryptoKeyhole uses issuer files but overlaps the same underlying fund data and has a different universe.
+
+**Institutional custody and distribution**
+
+- BNY's Oct 27 announcement says its Digital Asset Custody platform now supports XRP and RLUSD. BNY is RLUSD's primary reserve custodian and has a custody relationship with Ripple Prime. Broader XRPL tokenized-asset support, direct RLUSD mint/redeem through BNY and tokenized trade-finance use cases are intended/future activity subject to client requirements. No XRP AUC or realized transaction volume was disclosed. [BNY primary release](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- Ripple's Oct 28 Coinbase announcement says RLUSD can be traded/managed through Coinbase Prime, Coinbase Exchange and Retail, with deposits/withdrawals on XRPL, Base and Ethereum. Coinbase Global Exchange collateral eligibility was stated as future rollout, not confirmed active. RLUSD distribution is not proof of XRP purchases or XRP collateral demand. [Ripple primary release](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+
+**Macro counter-hypothesis**
+
+Reuters reported $50.99B global equity-fund inflows in the week to Nov 11, including $35.13B into European funds, while bond funds lost $507.89M and money-market funds lost $37.48B. This cross-asset pattern is not uniformly risk-off and is a counter-hypothesis to treating crypto outflows as proof of broad global capital flight. It is not an XRP-specific directional signal. [Reuters](https://www.reuters.com/business/finance/global-markets-flows-graphic-2026-11-13/).
+
+No new event-registry rows were admitted: rendered web text was not treated as byte-exact publisher payloads.
+
+### Prediction-engine readiness
+
+The current curated registry remains at 106 events, 82 declared independence labels and 44 canonical publisher/lineage groups. Source status: 55 verified, 50 provisional and one disputed. All 106 lack byte-exact raw-source SHA-256 receipts; 61 lack exact publisher timestamps; zero are model-eligible.
+
+Implemented on integration: 51 public-source definitions, 49 scheduled-source definitions, allowlisted HTTPS capture, raw-response hashing and receipt-chain prototype, SQLite point-in-time feature store, four deterministic baselines, purged/embargoed chronological walk-forward evaluation, probability calibration, PSI drift monitoring and fail-closed forecast ledger.
+
+Outstanding: independent WORM archival, trusted timestamp anchoring, automatic feature-store rebuild from archived raw receipts, synchronized full-depth L2/derivatives/exchange-flow data, qualified out-of-sample superiority and an independent shadow cohort.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast, paper trade or real-money action occurred.
+
+### Nine-platform coordination
+
+No authentication state changed:
+
+- ChatGPT: GitHub connector verified; permissions remain admin/maintain/push/pull/triage and are overprivileged.
+- Claude: unverified.
+- Grok: unverified.
+- Gemini: unverified.
+- Copilot: historical one-off activity; no formal PR approval.
+- Codex: unverified.
+- Hugging Face: no verified deployment.
+- Kaggle: untested.
+- Databricks: prior HTTP 403; unverified.
+
+No external-model dispatch, structured nine-platform evidence exchange, disagreement-resolution quorum or independent red-team quorum occurred. Minority objections and provider limitations remain preserved.
+
+### PR inventory and merge decision
+
+**NO MERGE.** PR #1663 remains draft/open and technically mergeable, with zero formal reviews, approvals or review threads.
+
+Eight source PRs remain open and preserved:
+
+- #1541: unique/unreviewed; five paths, four overlap integration and one unique MMI fingerprint artifact. It is stacked on #1540 (closed/unmerged); #1542 is also closed/unmerged. Do not close #1541.
+- #1450: unique/unreviewed; 116 unique paths.
+- #1460: unique/unreviewed; eight unique paths.
+- #1440: unique/unreviewed; 64 unique paths.
+- #1436: unique/unreviewed; 24 unique paths.
+- #1437: unique/unreviewed; five unique paths.
+- #1353: unique/unreviewed; 1,084 unique paths.
+- #1265: unique/unreviewed; 144 paths, one overlap with #1663 and 143 unique paths.
+
+All eight source heads returned no common ancestor against integration. Their histories remain preserved. No source PR was closed.
+
+Governance blockers: branch-protection detail returns HTTP 403; main branch object reports protected=true but required contexts are unavailable; fallback ruleset 10863829 is disabled; CODEOWNERS is self-only; GitHub connector permissions are overprivileged; full semantic review is incomplete. The mainline private-data workflow and stale public forecast artifacts remain unresolved on main until safe merge.
+
+### Run187 durable records
+
+- [Run187 structured audit](research/xrp_intelligence/20261116T063350Z-run187-exact-head-market-institutional-and-integration-audit.json)
+- [Run187 nine-platform map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run187.json)
+- [Updated public forecast status](web/latest_signal.json)
+- [Consolidated PR #1663](https://github.com/Barrot-Agent/B-Agent/pull/1663)
+
+### Next concrete actions
+
+1. Complete the 1,306-path semantic review, prioritizing the 49 workflow definitions, called scripts, public status artifacts and the 394 changed tests.
+2. Resolve independent review, branch-protection visibility, active ruleset enforcement and least-privilege GitHub access.
+3. Contain the main-branch private Databricks row-logging workflow and stale public forecast/accuracy artifacts through the existing integration without bypassing merge gates.
+4. Verify Riemann and Hover Bike workflow corrections through permitted actual executions after safe mainline integration.
+5. Establish byte-exact raw-source receipts, independent WORM archival and trusted timestamp anchoring.
+6. Run public XRP ingestion on main only after a safe merge; reconcile synchronized spot, full-depth L2, derivatives, ETF, exchange-flow and collateral data.
+7. Qualify a candidate only after leakage-safe out-of-sample superiority over all four baselines and independent shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
