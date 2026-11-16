@@ -2426,3 +2426,109 @@ PR #1663 remains draft with zero formal reviews, approvals and review threads. M
 **NO MERGE.** The exact latest-head full suite and security checks pass, but independent review, branch protection, least privilege and complete semantic review remain blockers. Historical private-data logging and unverified partial Hugging Face deployment make the mainline safety review more important, not less.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred during Run187.
+
+
+## Run188 — exact-head suite pass; fresh ETF, derivatives and SEC capital reconciliation
+
+Captured: 2026-11-16T07:07:56Z. XRP intelligence and measured prediction-engine mastery remain the highest-priority mission; Barrot V3 remains the protected execution, orchestration, safety, authorization and verification foundation.
+
+### Repository and integration state
+
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; code head at capture: `8638d88cd5522665c1abee3846935cb88e2ccfba`.
+- Main is an ancestor: 79 commits ahead, zero behind.
+- Complete recursive trees, untruncated: main 1,393; integration 2,542; zero main paths missing; 1,149 integration-only paths; 206 shared paths with differing blobs or modes.
+- PR #1663: 1,308 changed files, 79 commits, draft, technically mergeable, zero formal reviews, zero approvals, zero review threads.
+- The five commits after Run187's 581b593 capture changed only handoff Markdown and research/signal JSON. No Python, workflow or dependency code changed in that interval.
+- Changed-path inventory: 49 workflow definitions, 394 test files, 17 scripts. The 49 workflow definitions were inspected in Run187; no workflow-code path changed since.
+
+### Exact-head verification
+
+**VERIFIED on code head `8638d88cd5522665c1abee3846935cb88e2ccfba`:**
+
+- Full suite [43819934700](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819934700), job 133140462827: 3,830 passed, zero failed, one skipped, 19 subtests; 160.62 seconds; 64.09% inclusive coverage; 77% legacy-core coverage.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Six-manifest dependency audit [43819934702](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819934702): passed, zero known vulnerabilities.
+- Push fail-closed [43819934667](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819934667) and PR fail-closed [43819941783](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819941783): passed; merge remains disabled.
+- PR dependency audit [43819941738](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819941738): passed.
+- PR CI [43819941973](https://github.com/Barrot-Agent/B-Agent/actions/runs/43819941973): passed; integration-branch PR test jobs are skipped by condition, so the push-triggered full suite is authoritative.
+- Non-fatal warning: GitHub Actions cache budget is exhausted/read-only.
+
+The Run188 evidence commit is documentation/JSON only. Its own exact-head full-suite job is pending at capture; do not transfer the 8638d88 test result to the subsequent evidence commit until its run completes.
+
+### Mainline workflow failures and integration corrections
+
+- Main Riemann Research Harvest [43798453131](https://github.com/Barrot-Agent/B-Agent/actions/runs/43798453131) failed because pytest-cov and pydantic-settings were not installed and global pytest.ini injected coverage arguments into a focused test invocation. Integration installs both and uses `-o addopts=`; regression-tested, but the corrected scheduled workflow has not actually executed.
+- Main Hover Bike Updates [43816240220](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816240220) failed because the generator wrote to a different working-directory path than the artifact uploader expected. Integration runs the generator from repository root and has artifact-path regression tests; scheduled execution remains unverified.
+- Main Pages deployment [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504) failed with a Liquid syntax error in GLOBAL_STATE_MANIFEST.md around line 6450. Integration's raw/endraw boundary passes Pages validation; the fix is not on main.
+- Main CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed 848 tests, zero failed, one skipped, eight subtests.
+- Main still contains a private Databricks table-freshness workflow that queries `workspace.barrot.brain` and prints sampled private rows to public Actions logs. Integration quarantines it with empty permissions and a false job guard; the fix is not on main.
+- Main Coinbase paper trader can commit simulated state to main without typed confirmation. Persisted state has nonzero position_size and null product identity; integration adds an exact-SHA and product-identity guard and artifact-only output. Do not dispatch.
+- Main A2A deployment has a push trigger and secret-upload step. Integration requires separate deployment and secret-rotation confirmations plus exact main SHA. No deployment or rotation occurred.
+- XRP public ingestion exists only on integration, not main. No mainline scheduled ingestion is active or verified.
+
+### Fresh XRP market and flow observations
+
+These observations are descriptive only. Provider timestamps are not synchronized; no byte-exact publisher payloads were captured.
+
+- CoinGecko displayed XRP at $0.9636 with a 24-hour range of $0.9006-$0.9784; no exact provider event time was supplied.
+- Coinbase's converter displayed $0.9549 as of November 16, 05:15 AM; the page did not specify timezone.
+- Liqwall reported $983M XRP futures open interest at 06:52 UTC November 16, down 3.0% over 24 hours.
+- Alpha Finance's five-fund US spot XRP ETF dashboard through November 14 reports a $20.2M seven-session net outflow, a $1.1M outflow on November 14, a $1.7M outflow over 30 sessions and $1.71B cumulative inflows.
+- CryptoKeyhole's separate issuer-file universe reports a partial November 13 outflow of 9,967 XRP from three of four daily-reporting funds; its latest complete November 12 day shows a 4,337,131 XRP inflow. Its last five complete sessions, November 6-12, total -5,665,115 XRP.
+- Alpha Finance and CryptoKeyhole use different fund universes and reporting cutoffs. Do not average them or call the partial day complete.
+- Reuters' November 13 LSEG Lipper snapshot reports $50.99B global equity-fund inflows for the week to November 11, alongside $507.89M global bond-fund outflows and $37.48B money-market-fund outflows. This is broad capital-flow context, not XRP-specific flow.
+
+### SEC actual-capital reconciliation — Evernorth
+
+The November 13 SEC Form 424B3 supplement and attached Q3 Form 10-Q provide primary evidence. The separate ELOC supplement attaches the same Q3 report and is not an independent second confirmation.
+
+- As of September 30, 2026, Evernorth reported 346,284,972 XRP: 261,919,096 in-kind XRP plus 84,365,876 XRP purchased using $214,049,995 cash.
+- At closing, the in-kind XRP total was approximately 388,910,554, including pre-close in-kind subscriptions, 200,000 delayed-funding XRP and Ripple's 126,791,458 XRP contribution to Pathfinder.
+- Pathfinder received 346,484,972 XRP from Evernorth at closing; adding Ripple's 126,791,458 XRP contribution yields 473,276,430 combined post-close treasury XRP.
+- The 346,284,972 pre-close subtotal is not additive to the 388,910,554 closing in-kind total. The $214.05M used for the 84.365876M XRP purchase is already part of the private-placement cash; do not count it again as a separate capital raise.
+- Gross closing cash was approximately $272.6M: $224.6M private-placement cash plus $48.0M SPAC trust cash, before transaction expenses.
+- Warrant exercises from October 12 through November 9 generated $35.3M gross cash for 3,073,366 exercised warrants; 8,666,279 warrants remained.
+- The $30M convertible note was issued October 13 and generated $29M net cash after a $1M advisor fee. It is debt, not equity; general-purpose authorization is not proof of a specific XRP purchase.
+- The Cantor ELOC permits up to 5,218,935 shares under conditions. No draw proceeds were verified; capacity is not capital received. The $0.5M commitment fee is an expense, not proceeds.
+- The SEC filing identifies Coinbase as Evernorth's principal XRP valuation market based on volume/activity, price consistency and regulatory/AML/KYC characteristics. This does not prove Coinbase executed every purchase or owes an XRP purchase obligation.
+- Ripple was Evernorth's parent as of September 30, before the October 9 business combination; post-close the public company became parent of the combined entities. SBI-affiliated investors were subject to a 39.9% Class A threshold with excess shares issued as Class C; do not attribute all private-placement cash to SBI.
+
+Primary filings: [November 13 424B3/Q3 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm) and [separate ELOC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm).
+
+### Exact-phrase and identity research
+
+- SBIC East's official June 12-13, 2025 training page includes ChatGPT and Copilot in an AI/ML course for investee companies. This is education, not an OpenAI contract or partnership.
+- SBIC West's official flyer advertises a ChatGPT seminar on October 23, 2024; occurrence was not independently verified. SBIC East/Central/West remain separate regional companies and are not SBI Holdings subsidiaries.
+- Exact phrase ASK Coin remains unresolved. Permission ASK is a candidate only; no XRPL issuer or Ripple relationship was verified.
+- The June 11, 2026 iHeart interview identifies Dr. Kamilah Stevenson. At 40:07 the guest self-identifies her YouTube name as Doctor Camilla Stevenson and warns of fake pages. Candidate channel `@KamilahStevensonXrpStocks` has no first-party cross-link; no videos were attributed to it.
+
+### Prediction gate and nine-platform status
+
+- Event registry remains run185-followup: 106 events; 82 declared independence labels collapse to 44 canonical publisher/lineage groups; all 106 lack byte-exact raw-source SHA-256 receipts; 61 lack exact publisher timestamps; zero are model-eligible.
+- The point-in-time feature store, four deterministic baselines, purged/embargoed walk-forward evaluator, calibration, PSI drift monitoring and fail-closed forecast ledger are implemented on integration.
+- Independent WORM archival, trusted timestamp anchoring, synchronized full-depth L2 and an independent shadow cohort remain unverified. No XRP-specific model has demonstrated out-of-sample superiority over all four baselines.
+- Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`; target, horizon, cutoff and probabilities remain null.
+- Nine-platform map unchanged: ChatGPT GitHub connector verified but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot historical one-off only; Hugging Face unverified; Kaggle untested; Databricks unverified after prior HTTP 403. Groq is not Grok. No external dispatch or independent red-team quorum occurred.
+
+### PR backlog and merge decision
+
+- #1663: blocked — only main-targeting integration PR; draft, no approvals, semantic review incomplete.
+- #1541: blocked/unique — stacked on #1540, which is closed unmerged; do not merge independently.
+- #1450: unique/unreviewed research successor in the #1436/#1440 branch lineage.
+- #1460: unique/unreviewed institutional XRP research stacked on #1450.
+- #1440: unique/unreviewed archive-validation repair stacked on #1436.
+- #1436: unique/unreviewed Binance/XRP theft and issuer-freeze research root.
+- #1437: unique/unreviewed separate XRP ledger source-addenda repair.
+- #1353: unique/unreviewed XRP ledger shard migration root.
+- #1265: unique/unreviewed XRP ledger compact-index root.
+
+All eight source PRs remain open and preserved. No source PR was closed. Main branch-protection details remain inaccessible (HTTP 403); fallback ruleset 10863829 is disabled; CODEOWNERS is self-only; connector permissions remain admin/maintain/push/pull/triage. **NO MERGE.**
+
+### Run188 durable records
+
+- Structured audit: [Run188 audit](research/xrp_intelligence/20261116T070756Z-run188-exact-head-current-market-institutional-capital-and-workflow-audit.json).
+- Nine-platform map: [Run188 capability/authentication map](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run188.json).
+- Latest signal remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
