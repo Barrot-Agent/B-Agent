@@ -3,8 +3,8 @@
   "artifact_type": "barrot.xrp.run_audit",
   "artifact_id": "20261116T010131Z-run180-actual-capital-sbic-spot-and-integration-audit",
   "run": "Run180",
-  "captured_at_utc": "2026-11-16T01:01:31Z",
-  "data_cutoff_utc": "2026-11-16T01:01:31Z",
+  "captured_at_utc": "2026-11-16T01:18:22Z",
+  "data_cutoff_utc": "2026-11-16T01:18:22Z",
   "mission": {
     "priority": 1,
     "objective": "XRP intelligence and measured prediction-engine mastery",
@@ -31,7 +31,9 @@
     "open_pr_count": 9,
     "open_prs_targeting_main": 1,
     "merged_prs_in_this_workstream": [],
-    "historical_source_pr_1662": "closed_unmerged; no merge occurred; source history preserved"
+    "historical_source_pr_1662": "closed_unmerged; no merge occurred; source history preserved",
+    "integration_head_at_finalization": "e75208ef6c67bd233e7ddde58020109911aa1b25",
+    "finalization_time_utc": "2026-11-16T01:18:22Z"
   },
   "ci": {
     "last_verified_exact_head": {
