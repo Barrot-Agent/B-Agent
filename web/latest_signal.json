@@ -6,8 +6,8 @@
   "forecast_status": "NOT_ISSUED",
   "forecast_issued": false,
   "reason_code": "RAW_RECEIPTS_AND_POINT_IN_TIME_EVALUATION_INCOMPLETE",
-  "explanation": "No directional forecast is permitted. The curated registry contains 125 events; all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run197 market, derivatives, ETF, macro and XRPL protocol observations are descriptive only because raw publisher bytes and durable external receipts were not captured. Exact-head push CI and the full repository suite passed on parent head 49d59eef; this Run197 evidence/documentation commit requires its own exact-head CI before it is considered verified.",
-  "status_as_of_utc": "2026-11-16T20:18:11Z",
+  "explanation": "No directional forecast is permitted. The registry has 125 events, all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run197 web observations remain descriptive only. The evidence commit 25c497 passed exact-head full repository CI (3,844 passed, 1 skipped), six-manifest dependency audit and fail-closed gate. The current addendum commit will require its own exact-head CI.",
+  "status_as_of_utc": "2026-11-16T20:36:00Z",
   "integration_head_before_commit": "49d59eef0d65d120290980f967309d5a47faadea",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "data_cutoff_utc": null,
@@ -618,5 +618,21 @@
     "forecast": "NOT_ISSUED",
     "raw_receipts_added": 0,
     "next_head_verification": "The Run197 documentation/evidence commit requires its own exact-head CI."
-  }
+  },
+  "run197_addendum": {
+    "verified_parent_head": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+    "exact_head_full_suite_run": 43950092515,
+    "full_suite_status": "success",
+    "full_suite_result": "3844 passed, 1 skipped, 11 warnings, 19 subtests",
+    "inclusive_coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit": "six manifests; zero known vulnerabilities",
+    "fail_closed_gate": "passed",
+    "workflow_side_effect_scan": "49 changed workflow files scanned; full script/action semantic review remains incomplete",
+    "live_trading_path": "pre-existing dormant code; no production call sites found; no live orders submitted",
+    "creator_identity": "person identity high confidence; exact YouTube handle/channel ownership not directly verified",
+    "forecast": "NOT_ISSUED"
+  },
+  "integration_head_verified": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+  "creator_identity_status": "Person identity high confidence from a first-person iHeart interview; Glasp links a YouTube channel ID, but the direct channel page/handle was not independently fetched. Four videos are retained as attributed candidates, not a complete official-channel inventory."
 }

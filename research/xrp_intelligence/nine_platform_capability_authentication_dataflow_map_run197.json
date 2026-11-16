@@ -1,11 +1,11 @@
 {
   "schema_version": "1.8.0",
-  "snapshot_id": "run197-20261116T201811Z",
-  "captured_at_utc": "2026-11-16T20:18:11Z",
+  "snapshot_id": "run197-addendum-20261116T203600Z",
+  "captured_at_utc": "2026-11-16T20:36:00Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-  "integration_head_before_run": "49d59eef0d65d120290980f967309d5a47faadea",
+  "integration_head_before_run": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -121,14 +121,17 @@
   },
   "execution_evidence": {
     "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-    "integration_head_before_run": "49d59eef0d65d120290980f967309d5a47faadea",
-    "pr1663_head_exact_suite_run": 43944760142,
+    "integration_head_before_run": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+    "pr1663_head_exact_suite_run": 43950092515,
     "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests",
     "coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
     "dependency_audit": "6 manifests; zero known vulnerabilities",
     "fail_closed_gate": "push and PR passed",
-    "pr_ci_test_jobs": "skipped by integration-head condition; exact-head push CI ran the full suite",
-    "full_workflow_semantic_review": "incomplete"
+    "workflow_side_effect_review": "49 changed workflow files scanned; full semantic review remains incomplete",
+    "live_trading_safety_finding": "pre-existing dormant Coinbase live-order path requires explicit second authorization before any future use",
+    "creator_identity": "person identity high confidence; exact YouTube channel handle unverified",
+    "addendum_commit_ci": "pending; verify exact head after commit"
   },
   "no_external_actions": {
     "deployment": false,
@@ -141,7 +144,7 @@
     "real_money": false
   },
   "run197_observation": {
-    "captured_at_utc": "2026-11-16T20:18:11Z",
+    "captured_at_utc": "2026-11-16T20:36:00Z",
     "verified_platform": "ChatGPT GitHub connector",
     "verified_data_flow": "ChatGPT GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent integration branch",
     "verified_permissions": [
@@ -153,6 +156,10 @@
     ],
     "least_privilege": false,
     "other_eight_platforms": "Unverified or untested; no current authenticated data flow claimed.",
-    "note": "No external model task, Kaggle submission or Databricks write was performed."
+    "note": "No external model task, Kaggle submission or Databricks write was performed.",
+    "verified_integration_head": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+    "exact_head_ci_passed": true,
+    "external_model_tasks_dispatched": false,
+    "external_actions_executed": false
   }
 }

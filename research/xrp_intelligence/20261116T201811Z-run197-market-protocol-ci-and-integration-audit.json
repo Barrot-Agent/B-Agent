@@ -44,7 +44,10 @@
     "changed_workflow_files": 49,
     "changed_test_paths": 396,
     "changed_research_paths": 760,
-    "changed_python_files": 474
+    "changed_python_files": 474,
+    "integration_head_after_run197_evidence_commit": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+    "integration_ahead_after_run197_evidence_commit": 118,
+    "integration_behind_after_run197_evidence_commit": 0
   },
   "pull_request_1663": {
     "title": "Barrot V3 + XRP Intelligence — consolidated mainline successor",
@@ -63,7 +66,10 @@
       "Visible repository ruleset 10863829 is disabled",
       "CODEOWNERS assigns all paths to @Barrot-Agent alone",
       "GitHub connector permission set is admin, maintain, push, pull and triage; least privilege is not satisfied"
-    ]
+    ],
+    "current_head_after_run197_evidence_commit": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+    "changed_paths_after_run197_evidence_commit": 1335,
+    "commits_after_run197_evidence_commit": 118
   },
   "exact_head_ci": {
     "head_sha": "49d59eef0d65d120290980f967309d5a47faadea",
@@ -100,7 +106,22 @@
     "fail_closed_push_run": 43944760209,
     "fail_closed_pr_run": 43944770024,
     "fail_closed": "both passed",
-    "combined_commit_status_endpoint": "returned no legacy status entries; workflow-run records are the authoritative evidence in this audit"
+    "combined_commit_status_endpoint": "returned no legacy status entries; workflow-run records are the authoritative evidence in this audit",
+    "run197_evidence_commit": {
+      "head_sha": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+      "full_suite_run_id": 43950092515,
+      "full_suite_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43950092515",
+      "conclusion": "success",
+      "passed": 3844,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 179.7,
+      "inclusive_coverage_percent": 66.9,
+      "legacy_core_coverage_percent": 77,
+      "dependency_audit_run_id": 43950092260,
+      "fail_closed_gate_run_id": 43950092285
+    }
   },
   "mission_contract": {
     "mission_id": "xrp_intelligence_prediction_engine",
@@ -570,5 +591,219 @@
     "Activate scheduled public-data ingestion only after it is on main and first receipt-chain continuity is verified; add independent WORM/timestamp anchoring.",
     "Reconcile XRP spot/derivatives venue universes and issuer ETF files; keep all unreceipted observations out of the point-in-time feature store.",
     "Keep forecast issuance disabled until all mission admission gates and independent shadow evaluation pass."
-  ]
+  ],
+  "run197_addendum": {
+    "captured_at_utc": "2026-11-16T20:36:00Z",
+    "evidence_parent_head": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
+    "exact_head_ci": {
+      "run_id": 43950092515,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43950092515",
+      "conclusion": "success",
+      "full_suite": "3,844 passed, 1 skipped, 11 warnings, 19 subtests passed in 179.70 seconds",
+      "inclusive_coverage_percent": 66.9,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build_and_installed_mission_smoke": "passed",
+      "dependency_audit_run_id": 43950092260,
+      "dependency_audit": "six manifests; zero known vulnerabilities",
+      "fail_closed_gate_run_id": 43950092285,
+      "fail_closed_gate": "passed"
+    },
+    "workflow_review": {
+      "changed_workflow_files_reviewed": 49,
+      "review_scope": [
+        "triggers",
+        "branch guards",
+        "permissions",
+        "secrets",
+        "external action references",
+        "repository writes",
+        "deployment/restart/secret-rotation side effects",
+        "artifact retention"
+      ],
+      "conclusion": "Initial side-effect review completed for all 49 changed workflow files; full semantic review of every script and action implementation remains incomplete.",
+      "gated_external_actions": [
+        {
+          "workflow": ".github/workflows/barrot-ops.yml",
+          "actions": [
+            "Databricks bundle import/overwrite",
+            "Kaggle dataset download"
+          ],
+          "controls": [
+            "manual dispatch",
+            "separate explicit action confirmations",
+            "expected main SHA",
+            "main-branch guard"
+          ],
+          "executed": false
+        },
+        {
+          "workflow": ".github/workflows/deploy-a2a-worker.yml",
+          "actions": [
+            "Cloudflare A2A deployment",
+            "Cloudflare secret upload/rotation"
+          ],
+          "controls": [
+            "manual dispatch",
+            "confirm=YES",
+            "confirm_secret_rotation=YES",
+            "expected main SHA",
+            "main-branch guard"
+          ],
+          "executed": false,
+          "supply_chain_note": "cloudflare/wrangler-action@v4 is tag-pinned rather than full-commit-SHA pinned; pin before any deployment."
+        },
+        {
+          "workflow": ".github/workflows/coinbase-paper-trader.yml",
+          "actions": [
+            "Groq-assisted paper simulation using public Coinbase market data"
+          ],
+          "controls": [
+            "manual dispatch",
+            "confirm=YES",
+            "expected main SHA",
+            "artifact-only output",
+            "no Coinbase trading credentials or live order endpoint"
+          ],
+          "executed": false
+        }
+      ],
+      "quarantined_or_disabled_families": [
+        "self-hosted brain sync",
+        "Hugging Face sync",
+        "Databricks bundle automation",
+        "Barrot self-upgrade and sync",
+        "subagent matrix/spawn",
+        "legacy signal ledger and task allocator",
+        "Groq chain and semantic-memory tests",
+        "lyrics/music/image generation workflows",
+        "Cloudflare diagnostics",
+        "private Databricks table freshness check",
+        "legacy knowledge-signal cycles",
+        "live WebMCP sandbox"
+      ],
+      "scheduled_read_only_or_artifact_only": [
+        "cross-analysis",
+        "Riemann research harvest",
+        "hover-bike updates",
+        "WebMCP monetization enrichment after an explicitly authorized trend-digest run",
+        "XRP public ingestion (integration branch only; absent from main)"
+      ],
+      "no_workflow_executed": true,
+      "no_deployment_or_secret_rotation": true,
+      "no_databricks_write": true,
+      "no_kaggle_submission": true,
+      "no_paper_trade": true
+    },
+    "live_trading_safety_review": {
+      "file": "barrot_agent/trading/coinbase_trader.py",
+      "status": "pre-existing on main; unchanged by PR #1663",
+      "default": "dry_run=true",
+      "live_execution_condition": "BARROT_TRADING_DRY_RUN=false plus Coinbase API credentials",
+      "explicit_second_live_approval_gate": false,
+      "production_call_sites_found_by_GitHub_code_search": 0,
+      "tests_reference_only": true,
+      "risk": "Dormant capability can submit live market orders if a future caller supplies credentials and disables dry-run; buys have a small default cap, but sell path does not apply the same position-size ceiling.",
+      "action": "No live order was submitted. Before any future live use, add a separate explicit approval gate, exact-run authorization and symmetric position/risk limits."
+    },
+    "xrp_engine_code_review": {
+      "public_ingestion": [
+        "HTTPS host allowlist; redirects rejected; no credentials; bounded response size",
+        "HTTP Date and whitelisted cache/validator headers captured",
+        "Cache-age policy can mark stale snapshots ineligible",
+        "Parser/schema failures preserve captured raw bytes as raw-only receipts",
+        "Canonical receipt metadata, raw payload SHA-256/size, path binding, symlink and traversal checks",
+        "Per-run hash chain and cross-run manifest continuity"
+      ],
+      "point_in_time_features": [
+        "Known-at, source-as-of, revision and ingestion availability are checked against the forecast cutoff",
+        "Superseded revisions are excluded",
+        "Historical backfills captured later do not create artificial walk-forward origins"
+      ],
+      "evaluation": [
+        "Chronological cutoffs; training outcome records must be available by cutoff minus embargo",
+        "Future target is selected only from the later evaluation snapshot",
+        "Four baselines: naive class prior, momentum sign, mean-reversion sign and volatility-normal",
+        "Rolling temporal calibration uses only earlier resolved OOS outcomes",
+        "Overlap-adjusted effective sample size and paired block-bootstrap uncertainty are computed"
+      ],
+      "readiness_and_safety": [
+        "Forecast ledger requires externally managed Ed25519 evaluator attestation; empty trusted-key set fails closed",
+        "Canonical raw receipts and retained raw bytes are revalidated",
+        "Candidate must beat every required baseline on Brier score and log loss",
+        "Sample-size, chronological-span, source-cluster, drift and independent-shadow requirements are enforced"
+      ],
+      "limitations": [
+        "No candidate predictive model has yet demonstrated superiority; current walk-forward engine evaluates deterministic baselines.",
+        "Feature drift monitor is univariate PSI and explicitly does not measure label/concept drift or feature interactions.",
+        "Event timeline uses explicitly curated events and authored scenarios; it does not discover events automatically or infer causal probabilities.",
+        "Local hash chains and finite-retention GitHub artifacts are not WORM storage or independent external timestamp anchors.",
+        "Scheduled ingestion remains absent from main and has no verified live run."
+      ]
+    },
+    "creator_identity_and_video_inventory": {
+      "person_identity": "high confidence",
+      "primary_self_identification_source": {
+        "publisher": "iHeart / The XRP Podcast with Paul Barron",
+        "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "date": "2026-06-11",
+        "transcript_locator": "40:07-40:26",
+        "self_identified_profiles": {
+          "x": "cam i am cam Stevenson",
+          "instagram": "Kamilla Stevenson",
+          "youtube_display_name": "doctor Camilla Stevenson"
+        },
+        "warning": "The guest explicitly warns that fake pages exist and asks viewers to verify the real accounts."
+      },
+      "third_party_channel_link": {
+        "publisher": "Glasp",
+        "url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "attribution": "Glasp lists four videos under Kamilah Stevenson and links to this YouTube channel ID.",
+        "direct_youtube_channel_fetch": "failed because the channel page exceeded the web fetch size limit",
+        "channel_handle_status": "not directly verified; do not merge with @drkamilahstevenson or @KamilahStevensonXrpStocks"
+      },
+      "attributed_video_inventory": [
+        {
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "date": "2025-12-14",
+          "views_displayed": "76.0K",
+          "youtube_video_id": "QslbjGQD0MU",
+          "glasp_url": "https://glasp.co/youtube/QslbjGQD0MU"
+        },
+        {
+          "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+          "date": "2026-01-13",
+          "views_displayed": "20.4K",
+          "youtube_video_id": "ci0FH73lbCs",
+          "glasp_url": "https://glasp.co/youtube/ci0FH73lbCs"
+        },
+        {
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+          "date": "2026-01-15",
+          "views_displayed": "23.1K",
+          "youtube_video_id": "cxeX_eu_2H0",
+          "glasp_url": "https://glasp.co/youtube/cxeX_eu_2H0"
+        },
+        {
+          "title": "How Much XRP Do You ACTUALLY Need?",
+          "date": "2026-03-19",
+          "views_displayed": "74.9K",
+          "youtube_video_id": "rv0BAV0vLgo",
+          "glasp_url": "https://glasp.co/youtube/rv0BAV0vLgo"
+        }
+      ],
+      "separate_interview": {
+        "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+        "date": "2026-06-11",
+        "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "classification": "podcast interview, not a verified upload to her YouTube channel"
+      },
+      "inventory_status": "Person identity is supported by self-identification; the channel ID is third-party linked, but exact handle and direct channel ownership remain unverified. Treat the four videos as attributed candidates, not a complete official-channel inventory."
+    },
+    "exact_phrase_research": {
+      "ask_coin": "No new authoritative XRP/Ripple match. Permission Coin (ASK) remains only a lexical candidate.",
+      "actual_capital": "Evernorth SEC filing remains primary evidence; distinguish received proceeds, in-kind XRP, debt, exercised warrants and undrawn equity-facility capacity.",
+      "sbic_chatgpt_phrase": "No exact-phrase partnership evidence; SBIC East's ChatGPT seminar remains a seminar, not an OpenAI partnership."
+    }
+  }
 }

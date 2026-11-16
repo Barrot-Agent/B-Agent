@@ -3706,3 +3706,76 @@ No new PR was created. No source PR was closed. No merge or external action occu
 7. Keep forecast issuance disabled until all admission gates and independent shadow evaluation pass.
 
 No main change, merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run197 addendum — workflow/code safety and creator identity (2026-11-16 20:36 UTC)
+
+### Exact-head verification of the Run197 evidence commit
+
+- The Run197 evidence commit `25c497152a3710fffcc936fc27d2f8daf7ccf055` passed exact-head push CI [43950092515](https://github.com/Barrot-Agent/B-Agent/actions/runs/43950092515).
+- Full repository suite: **3,844 passed, 1 skipped, 11 warnings, 19 subtests passed** in 179.70 seconds.
+- Inclusive coverage: **66.90%**; legacy core-package coverage: **77%**.
+- Wheel build and installed-wheel mission/data-resource smoke test passed.
+- Six-manifest dependency audit passed with zero known vulnerabilities [43950092260](https://github.com/Barrot-Agent/B-Agent/actions/runs/43950092260).
+- Fail-closed gate passed [43950092285](https://github.com/Barrot-Agent/B-Agent/actions/runs/43950092285).
+- Cache budget remains exhausted/read-only; this is a cache performance issue, not a test failure.
+- This addendum itself will create a later documentation/evidence head; its own exact-head CI must be checked separately.
+
+### Workflow side-effect review
+
+An initial trigger/permission/secret/side-effect scan covered all 49 changed workflow files.
+
+- Databricks bundle import/overwrite and Kaggle dataset download require manual dispatch, separate explicit action confirmations and the expected main SHA. Neither was run.
+- Cloudflare A2A deployment and secret upload/rotation require manual dispatch, `confirm=YES`, `confirm_secret_rotation=YES`, the expected main SHA and a main-branch guard. Neither was run. The Cloudflare Wrangler action is tag-pinned (`v4`), not pinned to a full commit SHA; pin it before any deployment.
+- The Coinbase paper-trader workflow is a manual, exact-main-SHA, artifact-only simulation using public Coinbase market data and Groq; it does not submit Coinbase orders or write repository state. It was not run.
+- Self-hosted brain sync, Hugging Face sync, Databricks bundle automation, self-upgrade/sync, subagent workflows, legacy signal ledger, private-table diagnostics, Cloudflare diagnostics, lyrics/music/image workflows and other legacy workflows are disabled or quarantined.
+- Scheduled cross-analysis, Riemann harvest, hover-bike update and downstream WebMCP enrichment are read-only/artifact-only. XRP ingestion is scheduled only on the integration branch and is absent from main.
+- No workflow was executed. No deployment, secret rotation, Databricks write, Kaggle submission or paper trade occurred.
+- Full semantic review of all scripts/actions remains incomplete even though the initial workflow side-effect scan is complete.
+
+### Dormant live-trading code path — pre-existing safety finding
+
+`barrot_agent/trading/coinbase_trader.py` already exists on main and is unchanged by this integration. It defaults to dry-run, but `BARROT_TRADING_DRY_RUN=false` plus Coinbase API credentials can enable live market orders. GitHub code search found no production call sites, only tests. The buy path has a small default cap; the sell path does not apply the same position-size ceiling.
+
+No live order was submitted. Before any future live use, add a second explicit live-authorization gate, exact-run authorization and symmetric position/risk limits. Do not treat the separate paper-trader simulation as permission for live execution.
+
+### XRP prediction-engine code review
+
+The core implementation has substantive safety controls:
+
+- Public ingestion restricts requests to allowlisted HTTPS hosts, rejects redirects, uses no credentials, bounds response size, captures HTTP date and selected cache/validator headers, and can mark over-age cache responses ineligible.
+- Raw receipts bind canonical metadata to payload SHA-256 and size; retained paths are digest-bound and reject traversal/symlinks. Per-run hash chains and cross-run manifests are verified.
+- Point-in-time features enforce known-at, source-as-of, revision and ingestion availability against the cutoff; superseded revisions are excluded.
+- Walk-forward evaluation uses chronological cutoffs, training outcomes available by cutoff minus embargo, future targets only from the later evaluation snapshot, four baselines (naive class prior, momentum, mean reversion and volatility-normal), rolling calibration from earlier resolved OOS outcomes, overlap-adjusted effective sample size and paired block-bootstrap uncertainty.
+- The forecast ledger requires external Ed25519 evaluator attestation, revalidates raw receipts, requires the candidate to beat every baseline on Brier score and log loss, and enforces sample, temporal-span, source-cluster, drift and shadow-evaluation gates.
+
+Remaining limitations:
+
+1. No candidate predictive model has demonstrated superiority. The current walk-forward engine evaluates deterministic baselines; the forecast ledger is a gated record/authorization mechanism.
+2. Feature drift is univariate PSI, not label/concept drift or feature-interaction monitoring.
+3. Event timelines use explicitly curated events and authored scenarios; they do not discover events automatically or generate causal forecast probabilities.
+4. Local hash chains and finite-retention GitHub artifacts are not WORM storage or independent external timestamp anchors.
+5. Scheduled ingestion remains absent from main and has no verified live run.
+
+### Camilla/Kamilah Stevenson identity and video inventory
+
+A stronger identity link was found. In the June 11, 2026 iHeart interview **“Crypto Panics! with Dr. Kamilah Stevenson,”** the guest self-identifies her X account as “cam i am cam Stevenson,” Instagram as “Kamilla Stevenson,” and YouTube display name as “doctor Camilla Stevenson.” She explicitly warns that fake pages exist. [iHeart interview and transcript](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/)
+
+Glasp links a Kamilah Stevenson creator profile to YouTube channel ID `UCqUPJMQdkCN6lsLVDnichPA` and attributes four public videos to her:
+
+1. [Ripple Just Became a BANK — And XRP Holders Need to Understand This](https://glasp.co/youtube/QslbjGQD0MU) — Dec 14, 2025; Glasp displayed 76.0K views.
+2. [XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.](https://glasp.co/youtube/ci0FH73lbCs) — Jan 13, 2026; 20.4K views.
+3. [Why Most People Will Lose Their Crypto Wealth (Even If They're Right)](https://glasp.co/youtube/cxeX_eu_2H0) — Jan 15, 2026; 23.1K views.
+4. [How Much XRP Do You ACTUALLY Need?](https://glasp.co/youtube/rv0BAV0vLgo) — Mar 19, 2026; 74.9K views.
+
+The person identity is high-confidence from the interview. The YouTube channel ID is third-party linked by Glasp, but the direct YouTube channel page exceeded the fetch limit, so the exact handle and channel ownership are not independently verified. Keep these as attributed candidate videos, not a complete official-channel inventory. Do not merge with `@drkamilahstevenson` or `@KamilahStevensonXrpStocks` without a first-party cross-link. The June 11 podcast appearance is separate from the YouTube upload inventory.
+
+### Exact-phrase status
+
+- `ASK Coin`: no new authoritative XRP/Ripple match; Permission Coin (ASK) remains only a lexical candidate.
+- `actual capital`: Evernorth's SEC filing remains the primary source; facility capacity is not proceeds received. Keep cash, in-kind XRP, debt, exercised warrants and undrawn facility capacity separate.
+- `SBIC, ChatGPT SBIC`: no partnership evidence. SBIC East's ChatGPT seminar remains a seminar, not an OpenAI partnership.
+
+### Current merge status
+
+PR #1663 remains draft and unreviewed. The Run197 evidence commit passed its exact-head full suite, dependency audit and fail-closed gate, but the integration is not merge-ready because formal review, branch-protection visibility and complete semantic review remain unresolved. No PR was created or closed.
