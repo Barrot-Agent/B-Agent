@@ -219,6 +219,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "300-second freshness gate" in bybit["claim"]
     assert bybit["raw_source_sha256"] is None
     coinbase = by_id["evernorth-coinbase-principal-market-xrp-valuation-2026-09-30"]
+    assert "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30" in registry["run180_update"]["added_event_ids"]
     assert "selected Coinbase as the principal market" in coinbase["claim"]
     assert "not proof" in coinbase["counter_hypothesis"]
     assert "BitGo Trust" in coinbase["claim"]
