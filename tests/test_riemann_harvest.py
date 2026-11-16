@@ -42,4 +42,8 @@ def test_scheduled_validation_installs_shared_config_dependencies():
         / "workflows"
         / "riemann-harvest.yml"
     ).read_text(encoding="utf-8")
-    assert "pip install --quiet pytest pydantic-settings" in workflow
+    install_line = next(line for line in workflow.splitlines() if "pip install" in line)
+    assert "pytest" in install_line
+    assert "pytest-cov" in install_line
+    assert "pydantic-settings" in install_line
+}
