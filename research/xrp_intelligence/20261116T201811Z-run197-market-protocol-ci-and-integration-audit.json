@@ -805,5 +805,131 @@
       "actual_capital": "Evernorth SEC filing remains primary evidence; distinguish received proceeds, in-kind XRP, debt, exercised warrants and undrawn equity-facility capacity.",
       "sbic_chatgpt_phrase": "No exact-phrase partnership evidence; SBIC East's ChatGPT seminar remains a seminar, not an OpenAI partnership."
     }
+  },
+  "run197_final_verification": {
+    "captured_at_utc": "2026-11-16T20:42:00Z",
+    "evidence_parent_head": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+    "integration_ahead_by": 119,
+    "integration_behind_by": 0,
+    "pr1663": {
+      "state": "open",
+      "draft": true,
+      "changed_files": 1335,
+      "additions": 489591,
+      "deletions": 6730,
+      "commits": 119,
+      "formal_reviews": 0,
+      "review_threads": 0
+    },
+    "exact_head_ci": {
+      "run_id": 43951326643,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43951326643",
+      "head_sha": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+      "conclusion": "success",
+      "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests passed in 178.89 seconds",
+      "inclusive_coverage_percent": 66.9,
+      "legacy_core_coverage_percent": 77,
+      "wheel_and_installed_mission_smoke": "passed",
+      "dependency_audit_run_id": 43951326624,
+      "dependency_audit": "six manifests; zero known vulnerabilities",
+      "fail_closed_gate_run_id": 43951326638,
+      "fail_closed_gate": "passed",
+      "note": "PR-event test jobs were not observed for this API-pushed head; exact-head push CI ran the full suite."
+    },
+    "current_market_refresh": {
+      "price": {
+        "source": "CoinGecko XRP historical page",
+        "url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+        "retrieved_at_utc": "2026-11-16T20:42:00Z",
+        "live_quote_usd": 0.9558,
+        "range_24h_usd": [
+          0.9424,
+          0.9773
+        ],
+        "market_cap_usd": 61868527056,
+        "volume_24h_usd": 2423929935,
+        "current_day_close": "N/A",
+        "raw_source_sha256": null,
+        "model_eligible": false
+      },
+      "same_provider_locale_disagreement": [
+        {
+          "locale": "en",
+          "price_usd": 0.9558
+        },
+        {
+          "locale": "it",
+          "price_usd": 0.96
+        },
+        {
+          "locale": "id",
+          "price_usd": 0.9672
+        },
+        {
+          "locale": "es",
+          "price_usd": 0.9479
+        },
+        {
+          "locale": "de",
+          "price_usd": 0.9509
+        }
+      ],
+      "locale_note": "Same CoinGecko provider, same UTC date, materially different live quotes across localized pages; these are not independent observations and are not averaged.",
+      "investing_daily_record": {
+        "url": "https://www.investing.com/crypto/xrp/historical-data",
+        "date": "2026-11-16",
+        "price_usd": 0.9546,
+        "open_usd": 0.9739,
+        "high_usd": 0.9742,
+        "low_usd": 0.9426,
+        "volume_usd": 350950000,
+        "change_pct": -2.07,
+        "raw_source_sha256": null,
+        "model_eligible": false
+      },
+      "derivatives_update": {
+        "source": "Liqwall all-exchange XRP open interest",
+        "url": "https://liqwall.com/open-interest/xrp",
+        "as_of_utc": "2026-11-16T18:22:00Z",
+        "open_interest_usd": 973000000,
+        "change_24h_pct": -3.9,
+        "thirty_day_high_usd": 1490000000,
+        "thirty_day_high_date": "2026-11-04",
+        "thirty_day_low_usd": 995000000,
+        "thirty_day_low_date": "2026-11-14",
+        "raw_source_sha256": null,
+        "model_eligible": false
+      },
+      "amendment_vote_crosscheck": {
+        "source": "XRPL Dashboard current amendment page",
+        "url": "https://xrpldashboard.com/amendments",
+        "fetched_time_text": "2026-11-16 06:05 AM ET / 11:05 UTC",
+        "LendingProtocol_yes": "22/35",
+        "LendingProtocolV1_1_yes": "22/35",
+        "SingleAssetVault_yes": "23/35",
+        "threshold_yes": 29,
+        "enabled": false
+      }
+    },
+    "mmi_pr_reconciliation": {
+      "pr1541_state": "open",
+      "pr1541_head": "eabf56d7b2a07e806e6575898c6030957dc01ac6",
+      "pr1541_base": "160b56e5e7548d950f40c8a7aadd431872b1cae8",
+      "pr1540_state": "closed_unmerged",
+      "pr1542_state": "closed_unmerged",
+      "pr1541_description_reference_to_1542": "stale; #1542 is closed without merge",
+      "current_integration_contains_canonical_claim_fingerprint": true,
+      "integration_mmi_v1_and_tests": "materially more extensive than PR #1541 source; canonical fingerprint and claim-bound corroboration are present",
+      "duplicate_files": [
+        "barrot_agent/mmi_adapter.py",
+        "tests/test_mmi_integration.py"
+      ],
+      "evidence_json": "parsed JSON equivalent; only trailing newline differs",
+      "material_differences": [
+        "barrot_agent/mmi_v1.py",
+        "tests/test_mmi_v1.py"
+      ],
+      "closure_decision": "keep #1541 open until #1663 successor is merged and its MMI content verified on main"
+    }
   }
 }

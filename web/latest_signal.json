@@ -6,8 +6,8 @@
   "forecast_status": "NOT_ISSUED",
   "forecast_issued": false,
   "reason_code": "RAW_RECEIPTS_AND_POINT_IN_TIME_EVALUATION_INCOMPLETE",
-  "explanation": "No directional forecast is permitted. The registry has 125 events, all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run197 web observations remain descriptive only. The evidence commit 25c497 passed exact-head full repository CI (3,844 passed, 1 skipped), six-manifest dependency audit and fail-closed gate. The current addendum commit will require its own exact-head CI.",
-  "status_as_of_utc": "2026-11-16T20:36:00Z",
+  "explanation": "No directional forecast is permitted. The curated registry has 125 events, all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run197 observations remain descriptive only. The latest code/evidence parent head 6e6d4f8 passed exact-head full repository CI (3,844 passed, 1 skipped), six-manifest dependency audit and fail-closed gate. This final handoff-only commit requires its own exact-head CI.",
+  "status_as_of_utc": "2026-11-16T20:42:00Z",
   "integration_head_before_commit": "49d59eef0d65d120290980f967309d5a47faadea",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "data_cutoff_utc": null,
@@ -17,23 +17,31 @@
   "latest_descriptive_snapshot": {
     "source": "CoinGecko XRP historical-data page live quote",
     "source_url": "https://www.coingecko.com/en/coins/xrp/historical_data",
-    "retrieved_at_utc": "2026-11-16T20:18:11Z",
+    "retrieved_at_utc": "2026-11-16T20:42:00Z",
     "publisher_displayed_update_at_utc": null,
     "admission": "DESCRIPTIVE_ONLY",
     "raw_source_sha256": null,
     "point_in_time_eligible": false,
-    "price_usd": 0.9553,
+    "price_usd": 0.9558,
     "market_cap_usd": 61868527056,
     "volume_24h_usd": 2423929935,
     "range_24h_low_usd": 0.9424,
     "range_24h_high_usd": 0.9773,
     "current_utc_day_close_usd": null,
     "current_utc_day_close_status": "N/A; current UTC date incomplete",
+    "locale_variants_usd": {
+      "en": 0.9558,
+      "it": 0.96,
+      "id": 0.9672,
+      "es": 0.9479,
+      "de": 0.9509
+    },
     "limitations": [
-      "Live page quote and current-day market-cap/volume snapshot; current UTC daily close is not yet available.",
-      "Other provider snapshots ranged from $0.9500 to $0.9627 with differing 24-hour changes and volumes; do not average.",
+      "CoinGecko localized pages display materially different live quotes for the same date; same-provider variants are not independent.",
+      "Current UTC daily close is unavailable.",
+      "Other providers also differ in snapshot time and volume universe.",
       "No raw response bytes or SHA-256 receipt retained.",
-      "Global aggregator price is not venue-specific executable price or depth."
+      "Global aggregator quote is not venue-specific executable price or order-book depth."
     ]
   },
   "other_market_observations": [
@@ -210,6 +218,20 @@
       "raw_source_sha256": null,
       "point_in_time_eligible": false,
       "limitation": "Older rendered page; retained as a version/timestamp disagreement."
+    },
+    {
+      "source": "Liqwall all-exchange XRP open interest",
+      "source_url": "https://liqwall.com/open-interest/xrp",
+      "as_of_utc": "2026-11-16T18:22:00Z",
+      "open_interest_usd": 973000000,
+      "change_24h_pct": -3.9,
+      "thirty_day_high_usd": 1490000000,
+      "thirty_day_high_date": "2026-11-04",
+      "thirty_day_low_usd": 995000000,
+      "thirty_day_low_date": "2026-11-14",
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Aggregator-wide open interest; venue/contract coverage must be reconciled before feature admission."
     }
   ],
   "exchange_wallet_observation": {
@@ -633,6 +655,19 @@
     "creator_identity": "person identity high confidence; exact YouTube handle/channel ownership not directly verified",
     "forecast": "NOT_ISSUED"
   },
-  "integration_head_verified": "25c497152a3710fffcc936fc27d2f8daf7ccf055",
-  "creator_identity_status": "Person identity high confidence from a first-person iHeart interview; Glasp links a YouTube channel ID, but the direct channel page/handle was not independently fetched. Four videos are retained as attributed candidates, not a complete official-channel inventory."
+  "integration_head_verified": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+  "creator_identity_status": "Person identity high confidence from a first-person iHeart interview; Glasp links a YouTube channel ID, but the direct channel page/handle was not independently fetched. Four videos are retained as attributed candidates, not a complete official-channel inventory.",
+  "run197_final_verification": {
+    "verified_parent_head": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+    "exact_head_full_suite_run": 43951326643,
+    "full_suite_status": "success",
+    "full_suite_result": "3844 passed, 1 skipped, 11 warnings, 19 subtests in 178.89 seconds",
+    "inclusive_coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit": "six manifests; zero known vulnerabilities",
+    "fail_closed_gate": "passed",
+    "forecast": "NOT_ISSUED",
+    "model_eligible_events": 0,
+    "raw_receipts_added": 0
+  }
 }

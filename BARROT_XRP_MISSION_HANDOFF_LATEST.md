@@ -3779,3 +3779,16 @@ The person identity is high-confidence from the interview. The YouTube channel I
 ### Current merge status
 
 PR #1663 remains draft and unreviewed. The Run197 evidence commit passed its exact-head full suite, dependency audit and fail-closed gate, but the integration is not merge-ready because formal review, branch-protection visibility and complete semantic review remain unresolved. No PR was created or closed.
+
+
+## Run197 final verification — exact-head CI and later market snapshot (2026-11-16 20:42 UTC)
+
+- Exact-head push CI passed on `6e6d4f8e716ca1669479c2cb189b11bcafd9e275`: [43951326643](https://github.com/Barrot-Agent/B-Agent/actions/runs/43951326643).
+- Full repository suite: **3,844 passed, 1 skipped, 11 warnings, 19 subtests passed** in 178.89 seconds. Inclusive coverage **66.90%**; legacy core-package coverage **77%**.
+- Wheel build and installed mission/data-resource smoke test passed. Six-manifest dependency audit passed with zero known vulnerabilities [43951326624](https://github.com/Barrot-Agent/B-Agent/actions/runs/43951326624). Fail-closed gate passed [43951326638](https://github.com/Barrot-Agent/B-Agent/actions/runs/43951326638).
+- The PR-specific test jobs were not observed on this API-pushed head; exact-head push CI ran core and full repository suites. Branch-protection required-check configuration remains inaccessible (HTTP 403).
+- Later CoinGecko English page snapshot displayed **$0.9558**, market cap **$61.87B**, 24h volume **$2.424B**, range **$0.9424–$0.9773**; Nov 16 UTC close remained N/A. Localized pages from the same provider showed materially different live quotes ($0.9479–$0.9672). These are same-provider page/cache variants, not independent observations; do not average or admit as model features. [CoinGecko English page](https://www.coingecko.com/en/coins/xrp/historical_data) · [Investing.com daily record](https://www.investing.com/crypto/xrp/historical-data)
+- Liqwall's later 18:22 UTC snapshot showed **$973M** XRP open interest, **−3.9%** over 24 hours; 30-day high $1.49B (Nov 4), low $995M (Nov 14). This is an aggregator-wide OI observation, not a forecast. [Liqwall](https://liqwall.com/open-interest/xrp)
+- The XRPL Dashboard current page cross-check remains 22/35 LendingProtocol, 22/35 LendingProtocolV1_1 and 23/35 SingleAssetVault, versus 29 required; none is enabled. [XRPL Dashboard](https://xrpldashboard.com/amendments)
+- MMI reconciliation: #1540 and #1542 are closed without merge. #1541 remains open and its description's reference to #1542 as a fresh-main candidate is stale. The current #1663 integration contains the canonical claim fingerprint and additional claim-bound corroboration tests; two files are byte-identical to #1541, the evidence JSON is parsed-equivalent with a newline difference, and two files materially differ. Keep #1541 open until #1663 is merged and its MMI content is verified on main.
+- This final handoff-only commit will require its own exact-head CI. No code changes, merges, PR closures or external actions were made in this update.
