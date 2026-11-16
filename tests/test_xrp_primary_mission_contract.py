@@ -135,8 +135,12 @@ def test_forecast_ledger_contract_documents_policy_v6() -> None:
 
 
 def test_acceptance_criteria_match_minimum_origins_per_source_cluster():
-    mission = _manifest()
-    policy = mission["prediction_policy"]
+    mission = json.loads(
+        (ROOT / "barrot_agent" / "data" / "missions" / "primary_mission.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    policy = mission["forecast_admission_policy"]
     cluster_rule = next(
         item for item in mission["acceptance_criteria"]
         if "source clusters" in item.lower()
