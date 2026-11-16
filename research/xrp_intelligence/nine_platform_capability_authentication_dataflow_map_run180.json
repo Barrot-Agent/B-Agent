@@ -1,10 +1,10 @@
 {
   "schema_version": "1.2.0",
   "snapshot_id": "run180",
-  "captured_at_utc": "2026-11-16T01:01:31Z",
+  "captured_at_utc": "2026-11-16T01:18:22Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-  "integration_head_at_capture": "3c17931a8fc24d7fe72d613bf010232d4170b7c7",
+  "integration_head_at_capture": "e75208ef6c67bd233e7ddde58020109911aa1b25",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -147,9 +147,9 @@
       "note": "PR-event tests skipped by integration-branch condition; Pages validation passed."
     },
     "current_branch_head": {
-      "head_sha": "3c17931a8fc24d7fe72d613bf010232d4170b7c7",
-      "full_suite": "pending_or_not_yet_observed",
-      "note": "Do not transfer the c1a full-suite result to newer registry/test commits."
+      "head_sha": "e75208ef6c67bd233e7ddde58020109911aa1b25",
+      "full_suite": "pending",
+      "note": "The last verified full suite is on c1a5238; Run180 registry, regression, audit, map and signal-status updates require exact-head verification."
     },
     "main_ci": {
       "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
