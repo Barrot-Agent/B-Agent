@@ -2677,3 +2677,46 @@ The latest verified map remains [Run189](research/xrp_intelligence/nine_platform
 5. After a safe merge, verify the scheduled ingestion workflow on main, establish independent WORM/timestamp anchoring, populate synchronized historical data and evaluate all baselines before any forecast.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+### Run190 supplemental public-source capture — market, institutional relationships and SBIC identity
+
+**Capture time:** 2026-11-16T14:07:56Z  
+**Supplemental evidence file:** `research/xrp_intelligence/20261116T140756Z-run190-supplemental-market-sbic-evidence.json`  
+**Code head at capture:** `537cd58ea75b1d04d25b164bb167e7819477cb6f`
+
+#### Exact-head verification of the Run190 handoff/test-maintenance commit
+
+The follow-on head `537cd58ea75b1d04d25b164bb167e7819477cb6f` passed its own exact-head push suite [43882477549](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882477549), job 133351713460: **3,830 passed, zero failed, one skipped, 19 subtests**, 182.71 seconds; 64.09% inclusive coverage and 77% legacy-core coverage. Wheel/mission verification and Pages validation passed. Six-manifest dependency audits [43882477629](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882477629) and [43882488837](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882488837) passed with zero known vulnerabilities. Push and PR fail-closed gates [43882477423](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882477423) and [43882488864](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882488864) passed. PR test jobs in [43882488995](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882488995) were skipped by the integration-branch condition; the push full-suite run is authoritative.
+
+#### Market context — no forecast
+
+- Price observations are asynchronous: $0.9429 at 09:20 UTC (CoinGecko data relayed by Altcoin Buzz), $0.9482 at 12:07:16 UTC on OKX, and a CoinGecko page display of $0.9636 without an exact event timestamp. They are not averaged.
+- Liqwall at 12:52 UTC showed $981M cross-exchange OI, -3.2%/24h, average funding -0.0049%/8h and $3.4M liquidations, 67% long. CoinGlass showed OI down 5.74% in USD, funding -0.0068%/8h, $4.31B futures versus $1.18B spot volume, and $33.42M liquidations with 86% long. Different venue/contract coverage and timestamps; preserve the discrepancy. TradRadar's Nov 15 seven-exchange snapshot showed $1.33B OI and at least $37.51M liquidations.
+- ETF flow sources are not directly comparable: Alpha Finance's five-fund Nov 14 snapshot showed -$1.1M; XRP Insights' six-spot-funds-plus-BITW Nov 9-13 series showed -6.08M XRP; CryptoKeyhole's Nov 13 was partial (3/4 funds), with Nov 12 the latest complete day at +4.337M XRP.
+- None of these web observations has a byte-exact raw publisher receipt; all remain descriptive only.
+
+#### Institutional relationships
+
+- Ripple/Coinbase: RLUSD launched on Coinbase Prime, Coinbase Exchange and retail app across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was future rollout at launch, not confirmed live.
+- Ripple/BNY: BNY announced XRP and RLUSD custody support; tokenized trade finance was an explored use case, not verified XRP flow.
+- Ripple/Standard Chartered/LMAX: RLUSD custody on XRPL is live at Standard Chartered; the LMAX collateral integration was planned.
+- SBI VC Trade: RLUSD handling launched in Japan, but VCTRADE deposit/withdrawal support is Ethereum-chain only; do not infer XRPL or Base support on that service.
+- SBI Ripple Asia/dsrv labs: Japan-Korea remittance/payment feasibility research with XRPL envisaged; not a launched rail or measured XRP settlement.
+
+#### SBIC identity and ChatGPT disambiguation
+
+Primary company pages establish three distinct companies: Tokyo Small and Medium Business Investment & Consultation Co. Ltd. (SBIC East Japan), Nagoya Small and Medium Business Investment & Consultation Co. Ltd. (SBIC Central Japan), and Osaka Small and Medium Business Investment & Consultation Co. Ltd. (SBIC West Japan). They are regional companies established under Japan's Small and Medium Business Investment & Consultation Company Act, not SBI Holdings or subsidiaries.
+
+SBIC East's official 2025 training included ChatGPT and Copilot; that is education, not an OpenAI enterprise partnership. Separately, SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption, and SBI Holdings announced an Anthropic/Claude collaboration. Those corporate relationships belong to SBI Holdings, not the regional SBIC companies, and do not establish Barrot connectivity.
+
+#### Exact phrases and video attribution
+
+- "actual capital": no new primary filing or proceeds evidence; an ELOC's capacity is not cash received.
+- "ASK Coin": unresolved; no unique issuer, XRPL contract or Ripple relationship verified.
+- "SBIC, ChatGPT SBIC": no exact indexed match.
+- Camilla/Kamilah Stevenson: no new first-party personal YouTube channel verified; preserve the previous TEDx/guest-appearance distinction and unattributed candidate inventory.
+
+The Cross Analysis run [43882016050](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882016050) succeeded, but XRP recent and prior 24-hour sentiment windows both remain empty. All-history XRP/Ripple sentiment scores are not current sentiment.
+
+**Prediction gate unchanged:** 111 events, 111 missing raw-source SHA-256 receipts, 64 missing exact publisher timestamps, zero model-eligible events; forecast `NOT_ISSUED`, accuracy `NOT_EVALUATED`. No merge or external action occurred.
