@@ -4186,3 +4186,77 @@ Main's branch object reports `protected=true`, but the visible status-check cont
 Structured evidence: [Run200 audit](research/xrp_intelligence/20261116T223202Z-run200-exact-head-sbic-market-and-deployment-pin-audit.json).
 
 Next actions: verify exact-head CI for the Run200 commit; update the stale PR #1663 body; complete workflow/test semantic review; obtain independent CODEOWNERS and branch-protection evidence; complete macro/news/geopolitical ingestion; establish independent immutable raw-source retention; keep forecasts disabled until all OOS and shadow gates pass.
+
+
+## Run200 supplement — institutional tokenization, RLUSD activity quality and macro source design (2026-11-16)
+
+### Exact-head result for the Run200 code/security commit
+
+The integration head `7837623644c6cfee51b23e20f2d6a62196750ad0` passed its own push-triggered full suite [43971862175](https://github.com/Barrot-Agent/B-Agent/actions/runs/43971862175): **3,845 passed, zero failed, one skipped, 11 warnings, 19 subtests**, in 134.86 seconds. Inclusive coverage was 66.90%; legacy-core coverage was 77%. Wheel build, installed V3/XRP mission smoke test and Pages validation passed. The new Cloudflare immutable-SHA regression test was included.
+
+- Dependency audit [43971862210](https://github.com/Barrot-Agent/B-Agent/actions/runs/43971862210): passed, six manifests, zero known vulnerabilities reported.
+- Fail-closed gate [43971862145](https://github.com/Barrot-Agent/B-Agent/actions/runs/43971862145): passed.
+- PR-event CI [43971872810](https://github.com/Barrot-Agent/B-Agent/actions/runs/43971872810), dependency audit [43971872988](https://github.com/Barrot-Agent/B-Agent/actions/runs/43971872988) and fail-closed gate [43971872775](https://github.com/Barrot-Agent/B-Agent/actions/runs/43971872775) passed applicable jobs. PR-event full/core tests are skipped for integration/*; the push full-suite run is authoritative.
+
+The research/handoff supplement creates another documentation-only commit. Its exact-head CI must be verified separately; the `783762` result applies only to that code/security head.
+
+### RLUSD on-ledger activity: payment counts are not adoption
+
+Bitquery's October 19, 2026 investigation covers September 19–October 18 and reports 7,821,066 RLUSD payments between accounts. It attributes 7,789,341 (99.6%) to a 110-wallet cluster paying three collectors in sub-dollar dust, with 7,722 RLUSD total value across that cluster. The report identifies 14,600 payments of at least 1 RLUSD totaling $7.33B, but 82% of that value came from ten senders. It also identifies about $728M in issuer mint transfers and $744M in redemptions, plus a $424M round-trip pair that contributes $848M to gross volume.
+
+Bitquery says the 110-wallet cluster was funded from addresses it labels Binance based on published proof-of-reserves wallets; its own conclusion is that the pattern fits one Binance customer, not Binance itself. The cluster's decline around the October 15 Cross River announcement is temporal correlation only; the report cannot identify the operator or establish causation. Its findings are vendor analysis and have not yet been independently reproduced by Barrot.
+
+This changes the ingestion requirements: payment count, notional volume, net economic transfer, dust, issuer mint/redeem, exchange/custodian deposit flows, circular/round-trip flows, counterparty concentration, unique economic senders/receivers and XRP fees must be separate features. Do not treat gross RLUSD transfer volume or transaction count as end-user payment adoption or XRP demand.
+
+- Bitquery report and methodology: https://bitquery.io/investigations/rlusd-xrpl-dust-bots
+- Cross River's October 15 primary announcement confirms RLUSD integration into its core operating system, with XRPL support and availability in limited U.S. states: https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses
+- Cross River has not disclosed public XRPL settlement volume in the reviewed release.
+
+### Institutional tokenization: distinguish live issuance, trading, collateral and redemption
+
+**Aviva Investors:** Ripple's October 26 release says Aviva launched its second tokenized share class on XRPL, after a USD class in July 2026. It reports over £86M invested across two tokenized share classes and £50M invested by Aviva in the new GBP class. The underlying Sterling Liquidity Fund has approximately £22B AUM. The release describes a digital-twin model: tokenized access/holdings over the existing off-chain UCITS fund structure. BNY is the fund custodian; Komainu supports digital-asset custody and Licuido provides tokenization infrastructure. This is a live tokenized fund share class, not evidence that the fund holds XRP or that XRP is used as its collateral/bridge asset. Source: https://ripple.com/ripple-press/aviva-investors-expands-its-tokenised-offering-with-the-launch-of-a-sterling-liquidity-fund-tokenised-share-class/
+
+**Franklin Templeton sgBENJI:** DBS's 2025 Annual Report confirms sgBENJI and RLUSD were listed on DBS Digital Exchange and eligible clients could rebalance between them 24/7. The September 2025 DBS/Franklin/Ripple MOU said DBS would explore repo/credit against sgBENJI; the collateral lending phase remains exploratory, not verified live. Sources: https://www.dbs.com/annualreports/2025/a-disruptive-innovator-for-real-world.html and https://ripple.com/ripple-press/dbs-franklin-templeton-to-launch-trading-and-lending-solutions-tokenised-mmf-ripple-stablecoin-rlusd/
+
+Franklin's September 21, 2026 Product Highlights Sheet states that the tokenized shareholder register combines public-blockchain entries with off-chain records and currently uses Stellar and XRPL. The custodian is DB International Trust (Singapore) Limited, not BNY. The fund deals every business day, is not capital guaranteed, may limit redemptions to 10% of a class on a dealing day, and normally pays redemption proceeds within seven business days. Therefore, 24/7 token transfers or secondary rebalancing do not mean 24/7 primary fund dealing or instant redemption. Source: https://www.franklintempleton.com.sg/download/en-sg/product-highlights-sheet/02ca723d-8616-488d-80a4-eb60705742dd/PHS_41715_en_SG.pdf
+
+CoinDesk reported two $75M subscription receipts and roughly 192.7M sgBENJI shares in one XRPL wallet. One receipt transaction was manually inspected on XRPSCAN: transaction `C78D6A062C50F01ECA22875D250A73A2B3AA3787A09B567E7183D4CABB150A3D`, ledger 107801050, time 2026-10-21 07:38 UTC, successful `MPTokenIssuanceCreate`, metadata `SUBSCRIPTION_CASH Receipt - SGBENJI`, amount $75M. This is a receipt token, not the share issuance itself. The second receipt and two share-transfer batches were not independently retrieved. CoinDesk says the single wallet shares the issuer's eight authorized signers and that beneficial ownership is unknown; the fund's hybrid register confirms wallet-to-real-identity links are kept off-chain. CoinDesk is owned by Bullish, so retain its commercial-industry conflict caveat. XRPSCAN terms prohibit automated bots/scraping; do not schedule this API without authorization. Use authorized Bitquery access or independently operated/authorized XRPL nodes for replication.
+
+**BNY:** BNY now supports XRP and RLUSD custody and remains primary reserve custodian for RLUSD. Direct RLUSD mint/redeem through BNY, broader tokenized-asset custody and tokenized trade finance are intended future capabilities subject to final BNY and regulatory approvals. Source: https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/
+
+**Cross River:** Its October 15 RLUSD/XRPL integration is available only in limited states. It is an operational banking API capability, but public transaction volumes were not disclosed.
+
+**C2FO:** The October 27 C2FO Instant Pay initiative proposes financing approved receivables and settling in RLUSD on XRPL. Businesses are currently invited to join a waitlist; this is not yet evidence of production settlement volume. Source: https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/
+
+**Ripple National Trust Bank:** OCC Corporate Applications Search lists control 2025-Charter-342347 as consummated/effective October 26, 2026. This verifies charter status, not that every planned service has commenced. RLUSD remains issued by Standard Custody & Trust Company; BNY remains primary reserve custodian. Source: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+
+**Competing institutional rail:** DBS and JPMorgan Kinexys launched a commercially ready 24/7 USD tokenized-deposit interoperability solution on November 16, with Ant International as first client. It connects permissioned bank-deposit ecosystems and is not an XRPL/XRP rail. Include it as a competing/adjacent settlement scenario, not as XRP adoption. Source: https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers
+
+Ripple Swell's November 16 recap reports more than 1,700 institutions/corporates/enterprises, a roughly $900M annualized product-revenue run rate and 3x growth in customers using multiple Ripple solutions. These are Ripple's own company claims, not independently audited in this run, not XRP-specific revenue and not direct XRP demand. Source: https://ripple.com/insights/ripple-swell-2026-recap/
+
+### Macro and geopolitical ingestion source design
+
+Official public sources now have a concrete point-in-time design path:
+
+- **FRED/ALFRED:** API key required. Use `realtime_start`, `realtime_end` and `vintage_dates` to reconstruct historical values as known on each date. Capture release time separately from observation date. https://fred.stlouisfed.org/docs/api/fred/series_observations.html
+- **BLS:** Unregistered API v1 allows 25 queries/day, 25 series/query and 10 years. Registered v2 allows 500 queries/day, 50 series/query and 20 years. Store release-calendar time, first-published value and later revisions separately. https://www.bls.gov/developers/api_faqs.htm
+- **Treasury Fiscal Data:** Open GET API, no account or registration token required; supports JSON/CSV/XML, metadata and pagination. `record_date` is not necessarily publication time. https://fiscaldata.treasury.gov/api-documentation/
+- **Federal Reserve:** Use the official calendar, H.4.1, H.15, FOMC statements and minutes; capture scheduled and actual publication timestamps. https://www.federalreserve.gov/newsevents/2026-november.htm
+- **OFAC:** Use the Sanctions List Service SDN/non-SDN datasets and archived published delta files; hash each published version and map entity exposures only after identity resolution. https://ofac.treasury.gov/sanctions-list-service
+- **Federal Register:** Its API/XML is explicitly an informational prototype, not the official legal edition. Use for discovery only and verify legal notices against the official govinfo.gov PDF/electronic edition. https://www.federalregister.gov/developers/documentation/api/v1
+
+Every macro/regulatory record needs observation date, publication time, first-available time, vintage/revision, effective date, raw bytes/hash, source group and retrieval receipt. Never backfill revised macro values into historical feature rows.
+
+### Identity and source-independence updates
+
+Two YouTube candidate handles now appear in search results: `@drkamilahstevenson` and `@KamilahStevensonXrpStocks` (channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`). No first-party cross-link establishes that either is the same person or that both are official channels. Do not publish a video inventory yet; identity remains `HELD_PENDING_IDENTITY_VERIFICATION`.
+
+ASK Coin remains unresolved as an XRP/Ripple reference; Permission Coin (ASK) is only a lexical candidate. “Actual capital” remains tied to the Evernorth SEC-filed cash/in-kind/debt/warrant/ELOC reconciliation. The SBIC East ChatGPT course remains a training event, not an OpenAI partnership.
+
+### Security and merge status
+
+The Cloudflare Wrangler action is now SHA-pinned in both deployment steps, with a regression test. A workflow scan still finds 27 mutable-tag action uses across 12 changed workflow files; they require upstream SHA resolution and a consolidated pinning review. This is a supply-chain hardening backlog, not evidence of malicious actions.
+
+The integration remains one draft PR #1663, no formal reviews, no independent CODEOWNER and no complete semantic review of the 1,339 changed paths. Main protection detail remains inaccessible; the visible ruleset is disabled and the GitHub connection remains over-privileged. **NO MERGE.** No deployment, secret rotation, Databricks write, Kaggle submission, paper trade or real-money action occurred.
+
+Structured evidence is appended to the Run200 audit JSON in this same directory. The audit's exact-head test record applies to `783762`; this research/handoff-only commit must receive its own CI run before being marked verified.

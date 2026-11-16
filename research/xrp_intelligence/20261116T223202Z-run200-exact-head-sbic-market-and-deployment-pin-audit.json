@@ -150,7 +150,49 @@
       "fail_closed": "success",
       "interpretation": "The exact-head push-triggered full suite is authoritative; PR-event tests are skipped for integration/* branches."
     },
-    "runner_warning": "GitHub Actions cache budget is exhausted and read-only; this did not fail tests or dependency audits."
+    "runner_warning": "GitHub Actions cache budget is exhausted and read-only; this did not fail tests or dependency audits.",
+    "current_verified_head": "7837623644c6cfee51b23e20f2d6a62196750ad0",
+    "current_verified_push_ci": {
+      "run_id": 43971862175,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43971862175",
+      "conclusion": "success",
+      "full_repository_suite": {
+        "passed": 3845,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 19,
+        "duration_seconds": 134.86,
+        "inclusive_coverage_pct": 66.9,
+        "legacy_core_coverage_pct": 77,
+        "wheel_build": "passed",
+        "installed_v3_xrp_mission_smoke": "passed",
+        "pages_validation": "passed"
+      }
+    },
+    "current_verified_dependency_audit": {
+      "run_id": 43971862210,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43971862210",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "current_verified_fail_closed_gate": {
+      "run_id": 43971862145,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43971862145",
+      "conclusion": "success"
+    },
+    "current_verified_pr_checks": {
+      "ci_run_id": 43971872810,
+      "ci_conclusion": "success",
+      "full_suite_job": "skipped",
+      "core_tests_job": "skipped",
+      "pages_validation": "success",
+      "dependency_audit_run_id": 43971872988,
+      "dependency_audit": "success",
+      "fail_closed_run_id": 43971872775,
+      "fail_closed": "success"
+    }
   },
   "market_snapshot": {
     "source": "Kraken public REST Ticker API",
@@ -314,5 +356,226 @@
     "Implement credential-free official macro vintages and news/RSS/geopolitical event discovery with byte-exact receipts.",
     "Establish independent WORM or externally timestamped raw-source retention before admitting curated events to the model.",
     "Keep forecasts NOT_ISSUED until the full OOS, calibration, drift and independent shadow gate passes."
-  ]
+  ],
+  "action_supply_chain": {
+    "cloudflare_wranger_action_pinned": true,
+    "pinned_sha": "953926a2e2182532811c01a25e53647d93bf07c0",
+    "release_tag": "v4.1.3",
+    "remaining_unpinned_uses": 27,
+    "workflows_with_unpinned_uses": 12,
+    "note": "27 uses across 12 changed workflow files still reference mutable tags rather than full commit SHAs; resolve upstream releases and pin in a reviewed consolidated change. This is not evidence that any action is malicious."
+  },
+  "institutional_networks": {
+    "ripple_swell_2026": {
+      "date": "2026-11-16",
+      "issuer_reported_annualized_product_revenue_run_rate_usd": 900000000,
+      "issuer_reported_institutions_corporates_enterprises": 1700,
+      "issuer_reported_growth_multiple_solution_customers": "3x",
+      "evidence_class": "Ripple corporate claims; not independently audited in this run",
+      "limitation": "Not XRP-specific revenue, XRP purchase demand, or XRPL settlement volume",
+      "source": "https://ripple.com/insights/ripple-swell-2026-recap/"
+    },
+    "aviva_xrpl_tokenized_funds": {
+      "launched_share_classes": 2,
+      "reported_invested_across_classes_gbp": 86000000,
+      "aviva_investment_in_gbp_class_gbp": 50000000,
+      "underlying_sterling_fund_aum_approx_gbp": 22000000000,
+      "structure": "Digital twin / tokenized share class; underlying UCITS fund and assets remain off-chain",
+      "fund_custodian": "BNY",
+      "digital_asset_custodian": "Komainu",
+      "infrastructure_provider": "Licuido",
+      "source": "https://ripple.com/ripple-press/aviva-investors-expands-its-tokenised-offering-with-the-launch-of-a-sterling-liquidity-fund-tokenised-share-class/",
+      "limitation": "Tokenized fund AUM is not XRP holdings, XRP collateral or disclosed XRP bridge demand"
+    },
+    "franklin_sgbenji_xrpl": {
+      "dbs_franklin_ripple_mou_date": "2025-09-18",
+      "dbs_ddex_listing": "DBS 2025 Annual Report confirms sgBENJI and RLUSD listed on DBS Digital Exchange; eligible clients can rebalance 24/7",
+      "collateral_status": "DBS repo/credit use of sgBENJI was described as exploratory; no live collateral lending evidence verified",
+      "fund_document_date": "2026-09-21",
+      "tokenized_register": "Hybrid on-chain/off-chain register using Stellar and XRP Ledger",
+      "custodian": "DB International Trust (Singapore) Limited",
+      "dealing_frequency": "Every business day",
+      "redemption_proceeds_normally_within_business_days": 7,
+      "possible_redemption_limit_pct": 10,
+      "capital_guaranteed": false,
+      "coin_desk_report": {
+        "date": "2026-10-24",
+        "reported_new_subscriptions_usd": 150000000,
+        "reported_xrpl_share_count": 192698409,
+        "reported_single_wallet": true,
+        "reported_signer_quorum": "same eight signer addresses as issuer; any two can approve",
+        "independence_caveat": "CoinDesk is owned by Bullish; treat as secondary reporting with commercial-industry exposure"
+      },
+      "direct_onchain_receipt_verified": {
+        "source": "XRPSCAN single transaction record viewed manually",
+        "transaction_hash": "C78D6A062C50F01ECA22875D250A73A2B3AA3787A09B567E7183D4CABB150A3D",
+        "ledger_index": 107801050,
+        "ledger_time_utc": "2026-10-21T07:38:00Z",
+        "transaction_type": "MPTokenIssuanceCreate",
+        "transaction_result": "tesSUCCESS",
+        "metadata_label": "SUBSCRIPTION_CASH Receipt - SGBENJI",
+        "metadata_amount_usd": 75000000,
+        "mpt_issuance_id": "064E27886D15D1F5614B4D4E3183F835BCD62E7F6FD9FFD8",
+        "scope": "One $75M subscription-cash receipt token; not the fund-share issuance itself."
+      },
+      "unverified": "Second $75M receipt, both share-transfer batches and beneficial ownership were not independently retrieved.",
+      "terms_source": "https://www.franklintempleton.com.sg/download/en-sg/product-highlights-sheet/02ca723d-8616-488d-80a4-eb60705742dd/PHS_41715_en_SG.pdf",
+      "dbs_source": "https://www.dbs.com/annualreports/2025/a-disruptive-innovator-for-real-world.html",
+      "coindesk_source": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet",
+      "xrpscan_source": "https://api.xrpscan.com/api/v1/tx/C78D6A062C50F01ECA22875D250A73A2B3AA3787A09B567E7183D4CABB150A3D",
+      "authorization_note": "XRPSCAN terms prohibit automated bots/scraping; do not schedule XRPSCAN API ingestion without authorization. Use authorized Bitquery access or independently operated/authorized XRPL nodes for replication.",
+      "limitation": "24/7 token transfer/rebalancing is not 24/7 fund redemption. The fund document states business-day dealing, normally seven business days to redemption proceeds and a possible 10% dealing-day redemption limit."
+    },
+    "bny": {
+      "current_support": [
+        "XRP custody",
+        "RLUSD custody",
+        "primary reserve custody for RLUSD"
+      ],
+      "intended_future": [
+        "Direct RLUSD mint/redeem through BNY",
+        "broader tokenized asset custody",
+        "tokenized trade finance"
+      ],
+      "future_plans_subject_to_final_bny_and_regulatory_approvals": true,
+      "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    "cross_river": {
+      "announcement_date": "2026-10-15",
+      "status": "RLUSD integrated into Cross River core operating system; service limited to selected states",
+      "rail": "RLUSD on XRPL via existing banking API",
+      "public_volume_disclosed": false,
+      "source": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses"
+    },
+    "c2fo": {
+      "announcement_date": "2026-10-27",
+      "status": "Initiative/waitlist; not verified as live production volume",
+      "mechanism": "Approved receivables financing; proposed instant settlement in RLUSD on XRPL",
+      "source": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/"
+    },
+    "ripple_national_trust_bank": {
+      "occ_control_number": "2025-Charter-342347",
+      "occ_status": "Consummated/Effective 2026-10-26",
+      "source": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "distinction": "Charter effective status is not proof every planned service is already operational. RLUSD continues to be issued by Standard Custody & Trust Company; BNY remains primary reserve custodian."
+    },
+    "dbs_kinexys": {
+      "announcement_date": "2026-11-16",
+      "status": "Commercially ready cross-bank 24/7 tokenized-deposit transfer solution launched; Ant International first client",
+      "rails": "DBS Token Services and JPMorgan Kinexys permissioned deposit ecosystems",
+      "xrp_or_xrpl_connection": "None established; competing/adjacent institutional rail",
+      "source": "https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers"
+    },
+    "xrp_collateral_and_lending": {
+      "soil_flare": "Exploring potential XRP credit/collateral use; not verified live",
+      "xrpl_lending_protocol": "Proposed; relevant capabilities remain subject to validator approval",
+      "source": "https://ripple.com/insights/ripple-swell-2026-recap/"
+    }
+  },
+  "onchain_rlusd_quality": {
+    "source": "Bitquery Research",
+    "article_date": "2026-10-19",
+    "data_cutoff_utc": "2026-10-19T13:00:00Z",
+    "window": "2026-09-19 through 2026-10-18",
+    "evidence_class": "Commercial blockchain analytics vendor investigation; not independently reproduced by Barrot",
+    "payments_between_different_accounts": 7821066,
+    "payments_to_three_collector_wallets": 7789341,
+    "collector_share_pct": 99.6,
+    "inferred_sender_cluster_wallets": 110,
+    "dust_payment_threshold_rlusd": 1,
+    "dust_value_total_rlusd": 7722,
+    "payments_at_least_1_rlusd": 14600,
+    "gross_value_at_least_1_rlusd_usd": 7330000000,
+    "top_ten_sender_share_pct": 82,
+    "issuer_mint_value_usd": 728000000,
+    "issuer_redemption_value_reported_usd": 744000000,
+    "round_trip_pair_value_usd": 424000000,
+    "round_trip_gross_volume_contribution_usd": 848000000,
+    "cluster_xrp_fees_reported": 495,
+    "attribution_caveats": [
+      "110-wallet cluster is inferred from shared funding and collector behavior.",
+      "Funding addresses were labeled Binance using proof-of-reserves wallet labels; the article says the pattern fits one customer, not Binance itself.",
+      "The temporal shutdown around the Cross River announcement does not establish causation or operator identity.",
+      "Gross transfer volume includes issuer mint/redemption plumbing and round trips; it is not equivalent to unique economic payments or net capital flow."
+    ],
+    "model_data_quality_requirements": [
+      "Separate payment count from economic value.",
+      "Exclude or separately label sub-1 RLUSD dust.",
+      "Classify issuer mint and redemption flows separately.",
+      "Net round trips and circular transfers where measurable.",
+      "Track counterparty concentration and tagged exchange/custodian deposit patterns.",
+      "Track unique economically active senders and receivers.",
+      "Measure XRP fee burn and account-reserve requirements separately from RLUSD notional."
+    ],
+    "source_url": "https://bitquery.io/investigations/rlusd-xrpl-dust-bots"
+  },
+  "macro_feed_design": {
+    "fred_alfred": {
+      "endpoint": "https://api.stlouisfed.org/fred/series/observations",
+      "authentication": "Registered API key required",
+      "point_in_time": "Use realtime_start/realtime_end and vintage_dates to reconstruct values available on historical dates",
+      "caveat": "Capture release publication time separately; observation date is not availability time",
+      "documentation": "https://fred.stlouisfed.org/docs/api/fred/series_observations.html"
+    },
+    "bls": {
+      "endpoint": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+      "authentication": "v1 unregistered; v2 requires registration",
+      "limits": "v1 25 queries/day, 25 series/query, 10 years; v2 500 queries/day, 50 series/query, 20 years",
+      "point_in_time": "Capture official release calendar time, original response, revision vintage and any later revisions",
+      "documentation": "https://www.bls.gov/developers/api_faqs.htm"
+    },
+    "treasury_fiscal_data": {
+      "endpoint": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/",
+      "authentication": "Open; no account or registration token required",
+      "transport": "GET; JSON/CSV/XML; dataset metadata and pagination",
+      "point_in_time": "Capture retrieval/publication timestamps and endpoint metadata; record_date alone is not release time",
+      "documentation": "https://fiscaldata.treasury.gov/api-documentation/"
+    },
+    "federal_reserve": {
+      "sources": [
+        "Board calendar",
+        "H.4.1",
+        "H.15",
+        "FOMC statements/minutes"
+      ],
+      "point_in_time": "Use scheduled release time and actual publication time; preserve statement revisions and meeting vintages",
+      "calendar": "https://www.federalreserve.gov/newsevents/2026-november.htm"
+    },
+    "ofac": {
+      "source": "Sanctions List Service",
+      "feeds": [
+        "SDN",
+        "Consolidated non-SDN",
+        "Archived published delta files"
+      ],
+      "point_in_time": "Store list version, delta, published time and hash; map affected entities only after identity resolution",
+      "url": "https://ofac.treasury.gov/sanctions-list-service"
+    },
+    "federal_register": {
+      "api": "https://www.federalregister.gov/developers/documentation/api/v1",
+      "caveat": "FederalRegister.gov XML/API is described as an informational prototype; verify legal notices against official govinfo.gov PDF/electronic edition",
+      "use": "Regulatory event discovery, not legal-status authority without official-edition verification"
+    },
+    "design_rule": "Every macro/regulatory observation needs observation_date, publication_time, first_available_time, vintage, revision_id, raw-byte hash, source group and effective_date. Never backfill revised values into historical feature rows."
+  },
+  "youtube_identity_status": {
+    "candidate_channels": [
+      {
+        "handle": "@drkamilahstevenson",
+        "status": "candidate; first-party cross-link not verified"
+      },
+      {
+        "handle": "@KamilahStevensonXrpStocks",
+        "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "status": "candidate; first-party cross-link not verified"
+      }
+    ],
+    "conclusion": "Do not publish an official-channel inventory yet. Multiple similar channels and third-party directory profiles exist; no reliable first-party link establishes that the candidate channels belong to the same person.",
+    "inventory_status": "HELD_PENDING_IDENTITY_VERIFICATION"
+  },
+  "exact_phrase_research": {
+    "ask_coin": "No new verified XRP/Ripple relationship; Permission Coin (ASK) remains only a candidate lexical match.",
+    "actual_capital": "Continue using SEC-filed cash/in-kind/debt/warrant/ELOC reconciliation; commitments and undrawn facilities are not cash proceeds.",
+    "sbic_chatgpt": "SBIC East's 2025-06-12/13 investee-company AI course is a concrete Japanese SBIC/ChatGPT match, not an OpenAI partnership."
+  }
 }
