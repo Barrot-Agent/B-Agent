@@ -3353,3 +3353,71 @@ The earlier Run194 note saying that `nine_platform_capability_authentication_dat
 The compact Run194 capability/authentication/permission/data-flow snapshot is stored separately at `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run194.json`. The historical map was not discarded, rewritten or replaced. The earlier Run194 sentence claiming the old path had been populated with the new map should be read as superseded by this correction.
 
 The branch update is a normal fast-forward from `aa9713f8d8ea6b4661423fdef0e09e2208cd288a`; no force-push or history rewrite was used.
+
+
+---
+
+# Run194 addenda — workflow side effects, creator identity and claim corrections
+
+**Evidence captured:** 2026-11-16 18:20 UTC  
+**Parent integration head:** `5baafa7eb6255310597e84210faf2b3acdaae4a0`  
+**Existing integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663).
+
+## Workflow side-effect audit
+
+The 49 changed workflow files include safety-sensitive surfaces. The highest-risk subset was compared between main and integration:
+
+- `table-freshness-check.yml`: main's manual Databricks diagnostic reads credentials and can emit sampled private rows; integration quarantines the job with `if: false` and states no credentials/query/private rows are used.
+- `deploy-a2a-worker.yml`: main can automatically deploy on pushes to `a2a/**` and inject Groq/brain secrets; integration removes the push trigger and requires a manual exact-main-SHA dispatch with separate deployment and secret-rotation confirmations.
+- `sync-self-hosted-brain.yml`: main can deploy a Hugging Face Space on pushes to `self_hosted_brain/**`; integration removes the push trigger and disables the job.
+- `coinbase-paper-trader.yml`: main's manual workflow can write paper state/logs back to main; integration makes it artifact-only, exact-SHA-pinned and confirmation-gated.
+- `barrot-ops.yml`: integration separates Databricks overwrite and Kaggle dataset-download approvals and pins the source SHA.
+- `databricks-bundle.yml` and `sync-huggingface.yml`: integration quarantines deployment/secret-upload jobs.
+- Capability workflows that use `GROQ_API_KEY` are gated for external-model consent and artifact-only output in integration. No Groq call was dispatched.
+- `xrp-public-ingestion.yml` exists only on integration; it is read-only public-data ingestion scheduled hourly at minute 3 and daily at 00:15 UTC. It will become active on main only after a future merge. No main scheduled ingestion run is verified.
+
+This is a **partial high-risk surface review**, not a complete semantic review of all 49 workflows. The integration versions appear to reduce several main-branch deployment, secret and private-data risks, but PR #1663 remains draft with no independent approvals. No manual dispatch, deployment, secret rotation, Databricks query/write, Hugging Face restart, paper trade, Kaggle submission or external-model call occurred in this run. The latest 100 workflow runs contained no recent runs of the named deployment/trading/Databricks/Hugging Face workflows; that is not a complete historical audit.
+
+If a future merge occurs, verify the exact Actions events on the merge commit. The scheduled XRP public-ingestion workflow will activate; manual workflows should not run merely because of the merge.
+
+## Kamilah Stevenson identity and XRP-video inventory
+
+Identity confidence is **high, not absolute** for the creator using the `@drkamilahstevenson` YouTube channel. The channel page and video metadata attribute uploads to Kamilah Stevenson. The June 11, 2026 Paul Barron Podcast interview identifies the guest as Dr. Kamilah Stevenson; its transcript contains the guest's own references to YouTube as Doctor Camilla Stevenson, Instagram as Kamilla Stevenson and an X identity using the Cam Stevenson name. She also warns that fake pages exist. These spelling variants are retained; similarly named accounts are not merged.
+
+Three public XRP-related uploads attributed to that channel were catalogued:
+
+1. [Motley Fool just predicted XRP goes below a dollar](https://www.youtube.com/watch?v=SId2NMmBi3s) — May 5, 2026; 13,052 views and 1,100 likes at crawl; 140,000 channel followers at crawl.
+2. [The New XRP Ledger Demand Curve: $24M to $1.8B](https://www.youtube.com/watch?v=Y5rESnxoSIA) — April 7, 2026; 31,438 views and 2,100 likes; 139,000 followers at crawl.
+3. [XRPL RWA Settlement Volume Explodes: $3.5B in 30 Days, $900M in One Day](https://www.youtube.com/watch?v=pFru4idBTMA) — May 12, 2026; 28,264 views and 2,000 likes; 139,000 followers at crawl.
+
+Separate guest appearance, not her channel upload: [Crypto Panics! W/ @drkamilahstevenson](https://www.youtube.com/watch?v=Sulo54IlQ60), Paul Barron Podcast, June 11, 2026; 6,724 views and 752 likes at crawl. This is a partial XRP-video inventory, not a complete channel archive.
+
+### Material claim corrections
+
+- **Evernorth / 400M XRP lending:** the SEC 10-Q supplement filed November 13, 2026 reports 346,284,972 XRP held as of September 30 and separately 388,910,554 XRP contributed in kind at closing. It reports approximately $91,397 unrestricted cash, no revenue yet, and no borrowing under the $1M Ripple revolving facility as of September 30. It does not disclose a 400M XRP native-lending commitment or lending revenue. The rounded 400M figure may conflate the in-kind contribution with a lending allocation; that is unproven.
+- **Ripple Prime / DTCC:** DTCC's May 4, 2026 release explicitly lists Ripple Prime, Goldman Sachs and J.P. Morgan among its Industry Working Group participants. That membership is real. DTCC's own Tokenization Service FAQ lists Canton and Hyperledger Besu for launch; its Stellar connection is expected in 1H 2027. The reviewed official materials do not list XRP or XRPL as a DTCC settlement network.
+- **60% cheaper than SWIFT:** SBI Holdings' 2017 financial presentation contains an estimated cost model of 20.9 basis points for the existing system versus 8.3 basis points using Ripple's system with XRP, described as a 60% reduction and sourced to a 2016 Ripple Insight. It is a historical estimate, not evidence of 2026 live-production bank corridors.
+- **$3.5B/30-day and $900M/one-day XRPL settlement:** not verified in this run. RWA.xyz's November 16 row reports $642.84M distributed, $5.208B represented and $5.851B total RWA value excluding stablecoins; it exposes transfer volume as a separate metric. Asset value does not validate settlement-volume claims. A dated transfer-volume export or reproducible ledger calculation is required.
+
+Creator videos remain claim leads, not primary market evidence. No directional forecast was derived from them.
+
+## Exact-head CI evidence before these evidence-only addenda
+
+On parent head `5baafa7eb6255310597e84210faf2b3acdaae4a0`, push CI run [43926467688](https://github.com/Barrot-Agent/B-Agent/actions/runs/43926467688) completed successfully:
+
+- **3,843 passed, zero failed, one skipped, 11 warnings, 19 subtests passed** in 179.17 seconds.
+- Inclusive coverage **66.90%**; legacy-core coverage **77%**.
+- Wheel build and installed-wheel verification passed; Barrot V3, the XRP mission and canonical data assets loaded.
+- Dependency audit [43926467678](https://github.com/Barrot-Agent/B-Agent/actions/runs/43926467678) passed across six manifests with zero known vulnerabilities.
+- Fail-closed gate [43926467831](https://github.com/Barrot-Agent/B-Agent/actions/runs/43926467831) passed and kept merge disabled.
+- PR CI, dependency audit and fail-closed checks also passed for the same parent head.
+
+The evidence-only Run194 addenda commit that contains this handoff will trigger a fresh exact-head push suite. Its commit checks are authoritative for the new head; do not transfer the parent-head result to it.
+
+## Final disposition
+
+- PR #1663 remains **blocked**: draft, no formal reviews/approvals, broad integration, incomplete semantic review.
+- #1541 remains **superseded pending merge/main verification**, with three divergent MMI paths requiring reconciliation.
+- #1265 remains **unique/unreviewed** with 143 unique paths; review separately.
+- Other unique PRs remain open; no bulk closure.
+- No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, external model dispatch, force-push, history rewrite or destructive worktree action occurred.

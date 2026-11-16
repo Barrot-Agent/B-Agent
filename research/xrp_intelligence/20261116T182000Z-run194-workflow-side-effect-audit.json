@@ -1,0 +1,162 @@
+{
+  "artifact_type": "barrot_workflow_side_effect_audit",
+  "schema_version": "1.0.0",
+  "run_id": "run194",
+  "captured_at_utc": "2026-11-16T18:20:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+  "integration_head_reviewed": "5baafa7eb6255310597e84210faf2b3acdaae4a0",
+  "pr": 1663,
+  "workflow_changes_in_pr": 49,
+  "review_status": "PARTIAL_HIGH_RISK_SURFACE_REVIEW_NOT_COMPLETE",
+  "workflows": [
+    {
+      "path": ".github/workflows/table-freshness-check.yml",
+      "main": {
+        "trigger": "workflow_dispatch",
+        "behavior": "Reads Databricks host/token, invokes table freshness diagnostic and emits sampled rows to logs."
+      },
+      "integration": {
+        "trigger": "workflow_dispatch but job if:false",
+        "behavior": "Quarantined; no Databricks credentials read, no query, no private rows emitted."
+      },
+      "risk": "HIGH",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/deploy-a2a-worker.yml",
+      "main": {
+        "trigger": "push to a2a/**",
+        "behavior": "Automatic Cloudflare Worker deployment; injects Groq and brain secrets."
+      },
+      "integration": {
+        "trigger": "manual dispatch only",
+        "behavior": "Requires exact main SHA and separate deployment/secret-rotation confirmations; no push-triggered deployment."
+      },
+      "risk": "CRITICAL",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/sync-self-hosted-brain.yml",
+      "main": {
+        "trigger": "push to self_hosted_brain/**",
+        "behavior": "Automatic Hugging Face Space deployment and secret sync."
+      },
+      "integration": {
+        "trigger": "push trigger removed; job if:false",
+        "behavior": "Quarantined; target and private-data safety checks retained in disabled code."
+      },
+      "risk": "CRITICAL",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/coinbase-paper-trader.yml",
+      "main": {
+        "trigger": "workflow_dispatch",
+        "behavior": "Runs paper-trading workflow and pushes paper state/logs back to main."
+      },
+      "integration": {
+        "trigger": "manual dispatch only",
+        "behavior": "Artifact-only output, exact source SHA, explicit YES confirmation, no state commit to main."
+      },
+      "risk": "HIGH",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/barrot-ops.yml",
+      "main": {
+        "trigger": "workflow_dispatch",
+        "behavior": "One broad YES confirmation can authorize Databricks and Kaggle operations."
+      },
+      "integration": {
+        "trigger": "manual dispatch only",
+        "behavior": "Separates Databricks overwrite and Kaggle dataset-download confirmations and pins source SHA."
+      },
+      "risk": "HIGH",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/databricks-bundle.yml",
+      "main": {
+        "trigger": "workflow_dispatch",
+        "behavior": "Can deploy Databricks bundle after a single confirmation."
+      },
+      "integration": {
+        "trigger": "workflow_dispatch but job if:false",
+        "behavior": "Quarantined; no deployment or write."
+      },
+      "risk": "HIGH",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/sync-huggingface.yml",
+      "main": {
+        "trigger": "workflow_dispatch",
+        "behavior": "Can upload Space code and secrets after one confirmation."
+      },
+      "integration": {
+        "trigger": "workflow_dispatch but job if:false",
+        "behavior": "Quarantined; no Space restart or secret upload."
+      },
+      "risk": "HIGH",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/capability-10-design.yml and .github/workflows/capability-discovery.yml",
+      "main": {
+        "trigger": "workflow_dispatch",
+        "behavior": "Uses GROQ_API_KEY to send workflow inputs to an external model and commit outputs."
+      },
+      "integration": {
+        "trigger": "manual dispatch only",
+        "behavior": "Requires explicit external-model consent and exact source SHA; writes artifact-only results."
+      },
+      "risk": "HIGH",
+      "execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/xrp-public-ingestion.yml",
+      "main": {
+        "present": false,
+        "scheduled_run_verified": false
+      },
+      "integration": {
+        "trigger": "schedule hourly at minute 3 and daily at 00:15 UTC; main-only guard",
+        "behavior": "Read-only public-data collection; bounded GitHub Actions artifacts/cache; no trading or external model dispatch."
+      },
+      "risk": "MEDIUM",
+      "merge_side_effect": "If merged, the public XRP ingestion schedule becomes active on main at the next cron. This is the intended research ingestion action; no run has yet been verified on main.",
+      "execution_this_run": false
+    }
+  ],
+  "workflow_run_inventory": {
+    "latest_main_cross_analysis_run": 43922792008,
+    "cross_analysis_conclusion": "success",
+    "current_xrp_sentiment_recent_rows": 0,
+    "current_xrp_sentiment_prior_rows": 0,
+    "recent_runs_for_named_deploy_trade_databricks_huggingface_workflows_in_latest_100": "none found",
+    "caveat": "The 100-run inventory is not a complete historical audit."
+  },
+  "merge_side_effects": {
+    "scheduled_xrp_public_ingestion": "would activate on main after merge",
+    "cross_analysis": "existing schedule continues",
+    "push_deploys": "integration versions remove the identified A2A and self-hosted-brain push triggers; verify Actions events after any future merge",
+    "manual_dispatch_workflows": "do not run merely because the PR is merged"
+  },
+  "actions_performed": {
+    "workflow_dispatch": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "databricks_query_or_write": false,
+    "kaggle_submission": false,
+    "huggingface_space_restart": false,
+    "coinbase_paper_trade": false,
+    "groq_external_call": false
+  },
+  "blockers": [
+    "49 workflow files are in the PR; this audit covers the highest-risk subset, not all 49.",
+    "PR #1663 remains draft and has zero independent reviews.",
+    "Main retains the old manual/private-data and automatic deployment surfaces until a reviewed successor is merged.",
+    "The integration branch's safety changes require full semantic review and post-merge event verification."
+  ]
+}
