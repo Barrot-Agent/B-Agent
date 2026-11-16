@@ -1,3 +1,206 @@
+# Current mission status — Run183
+
+**Captured:** 2026-11-16T03:04:08Z  
+**Mission priority:** 1 — XRP intelligence and measured prediction-engine mastery  
+**Foundation:** Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration code head at capture:** `b64c16819c854709ad8ba18c350da934cd65447f`  
+**Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open, draft, technically mergeable, not merged.  
+**Run183 correction:** the previous canonical handoff file still began with Run181 even though Run182 audit artifacts and PR metadata existed. This update restores one current canonical handoff. Historical entries below are preserved.
+
+## Run183 — exact-head verification and fresh XRP liquidity reconciliation
+
+### Repository and integration state
+
+- Repository: [Barrot-Agent/B-Agent](https://github.com/Barrot-Agent/B-Agent).
+- Complete recursive main tree: **1,393 entries**, not truncated.
+- Complete recursive integration tree: **2,529 entries**, not truncated.
+- Main paths missing from integration: **0**.
+- Shared paths with different Git blobs: **205**.
+- Integration-only paths: **1,136**.
+- Integration branch is 54 commits ahead and zero behind main.
+- PR #1663 has 1,294 changed files, 418,273 additions and 6,473 deletions.
+- PR #1663 is the only open PR targeting main. Eight other open PRs remain stacked on non-main research/security branches.
+
+The current code head is `b64c16819c854709ad8ba18c350da934cd65447f`. Run183's audit and handoff/map files are documentation-only descendants; each new descendant requires fresh exact-head CI.
+
+### Exact-head CI — VERIFIED on b64c168
+
+[Push full-suite run 43795396503](https://github.com/Barrot-Agent/B-Agent/actions/runs/43795396503) completed successfully on the exact code head:
+
+- **3,829 passed; zero failed; one skipped; 19 subtests passed.**
+- Pytest duration: 154.29 seconds.
+- Inclusive package coverage: **64.09%**.
+- Legacy core-package coverage: **77%**.
+- Wheel build passed.
+- Packaged primary mission resource verified.
+- Installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+
+Additional exact-head checks:
+
+- [Push dependency audit 43795396308](https://github.com/Barrot-Agent/B-Agent/actions/runs/43795396308): passed, six manifests, zero known vulnerabilities.
+- [Push fail-closed gate 43795396637](https://github.com/Barrot-Agent/B-Agent/actions/runs/43795396637): passed.
+- [PR CI 43795400945](https://github.com/Barrot-Agent/B-Agent/actions/runs/43795400945): passed; Pages validation passed. PR-event core/full-suite jobs were skipped by the integration-branch condition.
+- [PR dependency audit 43795401030](https://github.com/Barrot-Agent/B-Agent/actions/runs/43795401030): passed.
+- [PR fail-closed gate 43795400948](https://github.com/Barrot-Agent/B-Agent/actions/runs/43795400948): passed.
+
+The push-triggered full suite is authoritative. The 3,829-test result is specific to b64c168 and does not certify later Run183 documentation commits.
+
+**Non-blocking warnings:** GitHub Actions cache budget is exhausted and cache is read-only; the run still passed. Setuptools warns that `data.research` is absent from package configuration; the required primary mission resource is in the wheel and installed V3/XRP mission verification passed. `project.license` metadata is deprecated. Review whether `data.research` must ship before merge.
+
+### Current market context — descriptive only
+
+CoinDesk published its report at 21:50 EST on November 14 and updated it at 22:44 EST. It reported an XRP intraday low of **$0.89**, the lowest since November 2024, and a 36% quarterly decline. It cited SoSoValue for **$19.13M of weekly U.S. XRP ETF net outflows** through November 13 and Glassnode for a **$17B one-month stablecoin-supply contraction**. CoinDesk also reported USDT+USDC market capitalization near $244B. These are attributed secondary-source observations, not raw exchange or issuer files.
+
+Source: [CoinDesk, November 14 update](https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto).
+
+CoinGlass's XRP futures page, retrieved November 16, displayed:
+
+| Metric | Rendered observation |
+|---|---:|
+| XRP price | $0.9715 |
+| 24-hour change | +3.16% |
+| 24-hour low/high | $0.9427 / $0.9789 |
+| Spot volume | $657.15M, -46.10% |
+| Futures volume | $2.61B, -45.80% |
+| Open interest | $1.98B, +0.32% |
+| Funding per 8h | -0.0074% |
+| Annualized funding | -8.16% |
+| Futures/spot volume ratio | 4.0x |
+| 24-hour liquidations | $4.50M; long share 45% |
+| Displayed ETF flow | -$1.1M on Nov 13 |
+| Fear & Greed | 11 |
+
+The rendered page did not expose a provider event timestamp for the aggregate tile. Treat it as a retrieval-time observation, not a timestamp-verified market event.
+
+CoinGlass's $1.98B OI differs from Liqwall's earlier ~$999M snapshot by about 1.98x. Their timestamps and venue universes are not harmonized. Do not average. CoinGlass's Nov 13 daily ETF tile (-$1.1M) is not comparable to CoinDesk's weekly -$19.13M SoSoValue figure.
+
+Source: [CoinGlass XRP futures dashboard](https://www.coinglass.com/currencies/XRP/futures).
+
+### Stablecoin contraction — important scope disagreement
+
+DeFiLlama's dashboard as of November 16 displays:
+
+- Total stablecoin market capitalization: **$284.954B**, down **5.15% over 30 days**.
+- USDT: **$175.368B**, down **4.42% over 30 days**.
+- USDC: **$69.318B**, down **4.70% over 30 days**.
+- Combined USDT+USDC: **$244.686B**.
+- RLUSD: **$2.799B**, up **15.01% over 30 days**.
+- USDS: **$5.355B**, down **22.02% over 30 days**.
+
+Source: [DeFiLlama stablecoins](https://defillama.com/stablecoins).
+
+The DeFiLlama 30-day fields imply an approximately $11.5B decline for USDT+USDC, while CoinDesk's Glassnode attribution is $17B for a one-month stablecoin-supply measure and its USDT+USDC narrative references a different comparison window. The total DeFiLlama market-cap change implies roughly $15.5B across all tracked stablecoins. Preserve the disagreement; these are not interchangeable calculations.
+
+**Counter-hypothesis:** stablecoin supply contraction can reflect redemptions, issuer mint/burn changes and chain migrations. It does not prove a dollar-for-dollar net fiat withdrawal from crypto or an equal reduction in immediately deployable buying power. RLUSD's reported 15.01% growth shows compositional change while the larger USDT/USDC pools contract; RLUSD's scale remains much smaller.
+
+### Institutional capital and collateral — retained Run182 primary-source reconciliation
+
+Evernorth's SEC filing reconciliation remains the latest reviewed primary-source capital bridge:
+
+- Cash-funded XRP purchase: **$214.05M** for **84,365,876 XRP**.
+- In-kind XRP contributions: **388,910,554 XRP**.
+- Arithmetic post-close treasury: **473,276,430 XRP**, assuming no intervening movement.
+- The $214.05M purchase is part of the $224.6M private-placement cash component; do not double-count it as a separate raise.
+- Pathfinder's $9.7M Ripple-related facility repayment was not confirmed in the reviewed filing.
+- No actual XRP treasury sale was disclosed.
+- Coinbase was the principal market for financial-reporting valuation; BitGo Trust was the initial custodian.
+
+SEC source: [Evernorth Form 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm).
+
+Coinbase's displayed cbXRP proof-of-reserves snapshot showed 153,008,338.56 XRP backing 153,006,092.03 cbXRP, approximately 100.001468% coverage. Coinbase states that underlying reserves are not sold or used for another purpose.
+
+Source: [Coinbase cbXRP proof of reserves](https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves).
+
+The Base Morpho cbXRP/USDC market snapshot showed $48.08M loans, 90.59% utilization, 8.05% borrow rate, 62.5% LLTV and 12.67% liquidation penalty. CryptoSlate's November 7 analysis reported 883 liquidation logs, 4.016M USDC repaid and 4.182M cbXRP seized; it did not trace native XRP redemptions or sales. Morpho's displayed UI oracle price (0.971) and Chainlink feed (0.960902) remained inconsistent. No native-XRP sale should be inferred from cbXRP collateral liquidation.
+
+Sources: [Morpho market API](https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109) · [CryptoSlate analysis](https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/).
+
+### Prediction-engine state
+
+Implemented on integration:
+
+- 51 public-source definitions; 49 scheduled source definitions.
+- Read-only public ingestion adapters and content-addressed raw receipt/hash prototype.
+- Cross-run receipt-chain manifest.
+- SQLite point-in-time feature store.
+- Event timelines and counter-hypotheses.
+- Naive/class-prior, momentum, mean-reversion and volatility baselines.
+- Purged/embargoed chronological walk-forward evaluation.
+- Probability calibration and PSI drift monitoring.
+- Fail-closed forecast ledger and Ed25519 evaluator-attestation verification.
+
+Run182 event registry: 102 curated events across 79 source-independence groups; **102 missing byte-exact raw-source SHA-256 receipts**, **57 missing exact publisher timestamps**, and **zero model-eligible events**. No hash was fabricated from rendered web text.
+
+The ingestion workflow is read-only and guarded to `refs/heads/main`; it has not been verified executing on main. GitHub artifact retention is 7/90 days, not independent WORM storage. No trusted external timestamp anchor or independently operated Ed25519 evaluator is configured.
+
+Forecast admission v6 requires at least 100 training, 100 out-of-sample and 100 shadow samples; overlap-adjusted effective sample size at least 10 in OOS and shadow; at least 10 horizon spans; five receipt-backed source clusters; at least 10,000 paired bootstrap replicates; 99.375% individual confidence for 95% familywise coverage across eight comparisons; candidate superiority on both Brier score and log loss against all four baselines; weighted calibration error <=0.05; leakage PASS; drift STABLE; shadow PASS; and a valid independent Ed25519 attestation.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast was produced.
+
+### Nine-platform coordination
+
+| Platform | Authentication/permission status |
+|---|---|
+| ChatGPT | GitHub connector verified; admin/maintain/push/pull/triage, overprivileged |
+| Claude | Unverified |
+| Grok | Unverified |
+| Gemini | Unverified |
+| Copilot | Historical one-off activity; no formal PR approval |
+| Codex | Unverified |
+| Hugging Face | Unverified; prior BUILD_ERROR |
+| Kaggle | Untested |
+| Databricks | Unverified; prior HTTP 403 |
+
+No external-model dispatch, structured nine-platform evidence exchange or independent red-team quorum occurred. Groq is not Grok.
+
+### Main-branch safety and CI
+
+Main SHA remains `1f30e5c`.
+
+- Main CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed 848 tests, zero failures, one skipped and eight subtests.
+- Main Pages [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504) failed with a Liquid syntax error in `GLOBAL_STATE_MANIFEST.md` around line 6450.
+- Main Barrot Sync [43767370810](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370810) reported success despite a missing `rich` dependency, skipped synchronization and `git push || true` suppressing push failure.
+- Main's Coinbase paper trader still lacks typed approval, exact-SHA validation and position-product identity preflight, and can commit simulation state to main. It was not dispatched.
+- Main legacy Ask Barrot and other repository writers remain unsafe. Integration contains guarded/quarantined variants.
+
+All 48 changed workflow definitions were previously audited; 27 false job guards and 21 active workflows were recorded, with 14 high-impact workflows and 13 called scripts reviewed. No external operation was dispatched.
+
+### PR backlog and merge decision
+
+Nine PRs are open:
+
+- #1663: blocked mainline integration, draft, zero reviews/approvals/review threads.
+- #1541, #1450, #1460, #1440, #1436, #1437, #1353 and #1265: unique/unreviewed stacked security/research branches. Preserve their branch histories and unique research/archive content. Do not bulk-close.
+
+#1663 is the only open PR targeting main. It remains technically mergeable but is not ready.
+
+Governance blockers:
+- Draft state and zero independent formal reviews/approvals.
+- Full semantic review of 1,294 changed files remains incomplete.
+- Main branch-protection read returns HTTP 403.
+- Fallback ruleset 10863829 is disabled.
+- CODEOWNERS is `* @Barrot-Agent`.
+- GitHub connector permissions remain admin/maintain/push/pull/triage.
+
+**Merge decision: NO MERGE.** Exact-head CI is green on b64c168, but governance and complete semantic review requirements are unmet. No source PR was closed.
+
+### Next concrete actions
+
+1. Run full exact-head CI on the final Run183 documentation/map/audit head.
+2. Complete semantic review of all 1,294 changed paths, prioritizing all 48 workflow definitions and their called scripts.
+3. Resolve independent review, branch protection and least-privilege GitHub access.
+4. Establish lawful byte-exact source receipts, independent WORM archival and trusted timestamps for curated events.
+5. Verify scheduled main ingestion only after a safe, approved integration is merged.
+6. Build synchronized historical spot, L2, derivatives, exchange-flow and collateral datasets.
+7. Qualify an XRP model only after the full v6 out-of-sample and shadow gate passes.
+
+No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+---
+
+## Preserved historical handoffs
+
 # Current mission status — Run181
 
 **Captured:** 2026-11-16T02:10:22Z  
