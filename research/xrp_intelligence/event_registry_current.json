@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "registry_version": "run180-20261116",
   "captured_at_utc": "2026-11-16T01:01:31Z",
-  "source_receipt_status": "89 of 89 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
+  "source_receipt_status": "90 of 90 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -3762,6 +3762,54 @@
         "cross-venue",
         "no-full-depth"
       ]
+    },
+    {
+      "event_id": "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30",
+      "event_type": "market",
+      "event_name": "Evernorth selects Coinbase as principal market for XRP financial-reporting valuation",
+      "hypothesis_id": "coinbase-principal-xrp-valuation-market-not-custody-or-execution-proof",
+      "domain": "market_structure",
+      "hypothesis": "Coinbase was Evernorth's selected principal market for XRP valuation at September 30, 2026 because management assessed it as the market with the greatest accessible volume/activity and suitable price consistency and regulatory characteristics.",
+      "counter_hypothesis": "This is an accounting principal-market determination, not proof that Evernorth executed all XRP purchases on Coinbase, that Coinbase holds Evernorth's XRP, or that Coinbase is a required settlement venue. The filing separately says Evernorth's XRP is held with third-party custodians, initially BitGo Trust.",
+      "claim": "Evernorth's November 13, 2026 SEC Form 424B3 supplement/Q3 Form 10-Q states that it does not actively trade XRP on digital-asset markets; management compares eligible platforms using trading volume/activity, price consistency/stability and perceived regulatory/AML/KYC compliance, and selected Coinbase as the principal market for financial-reporting purposes. The same filing says post-transaction XRP is held with third-party custodians, initially BitGo Trust.",
+      "source_id": "sec_evernorth_424b3_10q_2026_11_13",
+      "source_name": "U.S. Securities and Exchange Commission — Evernorth Q3 2026 Form 10-Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+      "independence_group": "sec-edgar-evernorth",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-09-30T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T01:01:31Z",
+      "captured_at_utc": "2026-11-16T01:01:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The filing's principal-market selection describes financial reporting and impairment valuation, not necessarily transaction execution.",
+        "The filing's initial custody statement is specific to the post-transaction arrangements described in the Q3 filing and may change later.",
+        "The filing date is November 13, 2026; exact EDGAR acceptance time was not captured."
+      ],
+      "falsification_conditions": [
+        "A later SEC filing changes the selected principal market or identifies a different market for XRP valuation.",
+        "A primary custody or trade disclosure establishes actual XRP execution venues or custodian balances."
+      ],
+      "related_entities": [
+        "Evernorth Holdings Inc.",
+        "Coinbase",
+        "BitGo Trust",
+        "Ripple Labs Inc.",
+        "XRP"
+      ],
+      "tags": [
+        "coinbase",
+        "principal-market",
+        "xrp-valuation",
+        "accounting",
+        "custody-separation",
+        "market-structure"
+      ],
+      "source_date": "2026-11-13",
+      "publisher_timestamp_precision": "date-only; exact EDGAR acceptance time not captured"
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -3798,8 +3846,9 @@
       "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
       "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
       "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
-      "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z"
+      "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
+      "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30"
     ],
-    "note": "Added the November 13 SEC Evernorth filing reconciliation (cash warrant exercises, convertible-note proceeds and optional ELOC separated from XRP purchases) and primary SBIC East ChatGPT seminar identity evidence. Both records retain source_date precision without inventing a publisher time; raw_source_sha256 remains null, so no event is model-eligible. Added synchronized-time-aware OKX and Bybit spot observations; OKX USD basis skew exceeds 60 seconds, Bybit quote is older than 300 seconds, and no full-depth L2 payload was obtained. Both remain model-ineligible."
+    "note": "Added the November 13 SEC Evernorth filing reconciliation (cash warrant exercises, convertible-note proceeds and optional ELOC separated from XRP purchases) and primary SBIC East ChatGPT seminar identity evidence. Both records retain source_date precision without inventing a publisher time; raw_source_sha256 remains null, so no event is model-eligible. Added synchronized-time-aware OKX and Bybit spot observations; OKX USD basis skew exceeds 60 seconds, Bybit quote is older than 300 seconds, and no full-depth L2 payload was obtained. Both remain model-ineligible. Added Evernorth's SEC-disclosed selection of Coinbase as its principal XRP valuation market, explicitly separated from trade execution and BitGo Trust custody."
   }
 }
