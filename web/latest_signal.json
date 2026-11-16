@@ -1,41 +1,39 @@
 {
   "schema_version": 2,
-  "run_id": "run196",
+  "run_id": "run197",
   "asset": "XRP/USD",
   "status": "NOT_ISSUED",
   "forecast_status": "NOT_ISSUED",
   "forecast_issued": false,
   "reason_code": "RAW_RECEIPTS_AND_POINT_IN_TIME_EVALUATION_INCOMPLETE",
-  "explanation": "No directional forecast is permitted. The curated registry contains 125 events; all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run196 web observations are descriptive only: source bytes and externally anchored receipts were not captured. Exact-head full-suite verification passed on parent code head 58ebd901; the Run196 commit changes mission acceptance wording, a regression test, and descriptive handoff/signal files, so its own CI must complete before merge consideration.",
-  "status_as_of_utc": "2026-11-16T19:35:30Z",
-  "integration_head_before_commit": "8c9d78e503a8200670bcf933329aadf3569a6c32",
+  "explanation": "No directional forecast is permitted. The curated registry contains 125 events; all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run197 market, derivatives, ETF, macro and XRPL protocol observations are descriptive only because raw publisher bytes and durable external receipts were not captured. Exact-head push CI and the full repository suite passed on parent head 49d59eef; this Run197 evidence/documentation commit requires its own exact-head CI before it is considered verified.",
+  "status_as_of_utc": "2026-11-16T20:18:11Z",
+  "integration_head_before_commit": "49d59eef0d65d120290980f967309d5a47faadea",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "data_cutoff_utc": null,
   "target": null,
   "horizon_seconds": null,
   "probabilities": null,
   "latest_descriptive_snapshot": {
-    "source": "CoinGecko XRP live overview",
-    "source_url": "https://www.coingecko.com/en/coins/xrp",
-    "retrieved_at_utc": "2026-11-16T19:35:30Z",
+    "source": "CoinGecko XRP historical-data page live quote",
+    "source_url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+    "retrieved_at_utc": "2026-11-16T20:18:11Z",
     "publisher_displayed_update_at_utc": null,
     "admission": "DESCRIPTIVE_ONLY",
     "raw_source_sha256": null,
     "point_in_time_eligible": false,
-    "price_usd": 0.9518,
-    "market_cap_usd": 60490000000,
-    "volume_24h_usd": 1653000000,
-    "circulating_supply_xrp": 63517000000,
-    "total_supply_xrp": 99986000000,
-    "max_supply_xrp": 100000000000,
+    "price_usd": 0.9553,
+    "market_cap_usd": 61868527056,
+    "volume_24h_usd": 2423929935,
     "range_24h_low_usd": 0.9424,
     "range_24h_high_usd": 0.9773,
-    "change_7d_pct": -12,
-    "change_30d_pct": -25.6,
+    "current_utc_day_close_usd": null,
+    "current_utc_day_close_status": "N/A; current UTC date incomplete",
     "limitations": [
-      "Aggregator snapshot; no raw response bytes or SHA-256 receipt retained.",
-      "A separate CoinGecko historical-data page showed $0.9558, $61.87B market cap and $2.424B 24h volume; preserve separately, do not average.",
-      "Different page snapshots and market-data universes."
+      "Live page quote and current-day market-cap/volume snapshot; current UTC daily close is not yet available.",
+      "Other provider snapshots ranged from $0.9500 to $0.9627 with differing 24-hour changes and volumes; do not average.",
+      "No raw response bytes or SHA-256 receipt retained.",
+      "Global aggregator price is not venue-specific executable price or depth."
     ]
   },
   "other_market_observations": [
@@ -117,6 +115,20 @@
       "raw_source_sha256": null,
       "point_in_time_eligible": false,
       "limitation": "Includes cold storage and wrapped reserves; not confirmed customer flows or tradable float."
+    },
+    {
+      "source": "Investing.com XRP daily history",
+      "source_url": "https://www.investing.com/crypto/xrp/historical-data",
+      "data_date": "2026-11-16",
+      "open_usd": 0.9739,
+      "high_usd": 0.9742,
+      "low_usd": 0.9426,
+      "price_usd": 0.9546,
+      "volume_usd": 350950000,
+      "change_pct": -2.07,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Daily provider record; timestamp/cutoff differs from live aggregator pages."
     }
   ],
   "derivatives_cross_source": [
@@ -165,6 +177,39 @@
       "open_interest_usd": 1200000000,
       "raw_source_sha256": null,
       "point_in_time_eligible": false
+    },
+    {
+      "source": "Kraken XRP perpetual",
+      "source_url": "https://www.kraken.com/features/futures/xrp",
+      "publisher_displayed_time": "2026-11-16 1:16 PM; timezone unspecified",
+      "open_interest_usd": 9867858.15,
+      "volume_24h_usd": 18346621.99,
+      "funding_rate_pct_per_hour": 0.0000017935,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Single venue/contract, not all-exchange OI."
+    },
+    {
+      "source": "Countroom search-indexed predicted funding",
+      "source_url": "https://countroom.org/funding-rates/XRP",
+      "as_of_utc": "2026-11-16T18:52:00Z",
+      "markets": 44,
+      "high_apr_pct": 63.07,
+      "low_apr_pct": -44.27,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Conflicts with opened page's Nov 14 rendering; predicted funding, not realized funding."
+    },
+    {
+      "source": "Countroom opened-page rendering",
+      "source_url": "https://countroom.org/funding-rates/XRP",
+      "as_of_utc": "2026-11-14T14:58:00Z",
+      "markets": 44,
+      "high_apr_pct": 82.34,
+      "low_apr_pct": -29.6,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Older rendered page; retained as a version/timestamp disagreement."
     }
   ],
   "exchange_wallet_observation": {
@@ -222,6 +267,29 @@
       "raw_source_sha256": null,
       "point_in_time_eligible": false,
       "limitation": "Different fund universe and window from CryptoKeyhole."
+    },
+    {
+      "source": "Alpha Finance five-fund XRP ETF dashboard",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "through_session": "2026-11-14",
+      "last_seven_sessions_from": "2026-11-08",
+      "last_seven_sessions_to": "2026-11-14",
+      "last_seven_sessions_net_flow_usd": -20200000,
+      "thirty_session_net_flow_usd": -1700000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "nov14_net_flow_usd": -1100000,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "Maketo XRP ETF flows",
+      "source_url": "https://maketo.com/etf/xrp/flows",
+      "updated_at_utc": "2026-11-16T02:27:00Z",
+      "latest_reported_session": "2026-11-13",
+      "net_flow_usd": -1090000,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Fund universe/methodology not assumed identical to Alpha Finance or issuer-file series."
     }
   ],
   "event_registry_summary": {
@@ -266,6 +334,59 @@
       "price_usd": 0.947,
       "market_cap_usd": 60149000000,
       "volume_24h_usd": 1654000000,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "CoinGecko historical-data page",
+      "retrieved_at_utc": "2026-11-16T20:18:11Z",
+      "price_usd": 0.9553,
+      "market_cap_usd": 61868527056,
+      "volume_24h_usd": 2423929935,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "CoinDesk XRP price page",
+      "retrieved_at_utc": "2026-11-16T20:18:11Z",
+      "price_usd": 0.951,
+      "change_24h_pct": -1.02,
+      "change_7d_pct": -13.51,
+      "change_30d_pct": -26.57,
+      "volume_24h_usd": 1050000000,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "CryptoSlate XRP price page",
+      "retrieved_at_utc": "2026-11-16T20:18:11Z",
+      "price_usd": 0.95,
+      "change_24h_pct": 0.09,
+      "market_cap_usd": 60630000000,
+      "volume_24h_usd": 1970000000,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "Zacks XRP price page",
+      "publisher_displayed_time": "2026-11-16 11:30 AM; timezone unspecified",
+      "price_usd": 0.9627,
+      "change_24h_pct": 1.27,
+      "change_7d_pct": -11.92,
+      "change_30d_pct": -25.42,
+      "volume_24h_usd": 2020000000,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "Investing.com XRP historical data",
+      "data_date": "2026-11-16",
+      "price_usd": 0.9546,
+      "open_usd": 0.9739,
+      "high_usd": 0.9742,
+      "low_usd": 0.9426,
+      "volume_usd": 350950000,
+      "change_pct": -2.07,
       "raw_source_sha256": null,
       "point_in_time_eligible": false
     }
@@ -419,11 +540,83 @@
     "missing_exact_publisher_timestamps": 77,
     "model_eligible_events": 0,
     "web_observations_added_run196": 0,
-    "note": "Run196 web research is not admitted to the feature store because byte-exact payloads and externally anchored receipts were not captured."
+    "note": "Run197 web observations are descriptive only; raw publisher bytes and durable external receipts were not captured.",
+    "web_observations_added_run197": 0
   },
   "run196_changes": {
     "mission_acceptance_policy": "Aligned human-readable minimum origins per source cluster to five, matching machine policy and five-origin block length; regression test added.",
     "predictive_model_change": "None.",
     "verification": "Parent code head 58ebd901 passed; new commit requires its own exact-head CI."
+  },
+  "macro_observations": [
+    {
+      "source": "Reuters USD/Fed/Japan macro report",
+      "source_url": "https://www.reuters.com/world/middle-east/yen-steady-against-euro-dollar-after-soft-japanese-gdp-data-2026-11-16/",
+      "publisher_time_utc": "2026-11-16T01:09:00Z",
+      "dollar_index": 103.5,
+      "highest_since": "2025-04-02",
+      "fedwatch_december_25bp_probability_pct": 93.4,
+      "bitcoin_usd": 64110,
+      "usd_jpy": 159.48,
+      "japan_q3_gdp_annualized_pct": -0.1,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "Federal Reserve Governor Michael Barr speech",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/barr20261116a.htm",
+      "publisher_date": "2026-11-16",
+      "survey_contacts_citing_ai_risk_pct": 87,
+      "estimated_ai_data_center_off_balance_sheet_obligations_usd": ">3000000000000",
+      "interpretation": "Financial-stability context, not an FOMC policy announcement or XRP-specific catalyst.",
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    {
+      "source": "New York Fed Markets Group speech",
+      "source_url": "https://www.newyorkfed.org/newsevents/speeches/2026/nor261116",
+      "publisher_date": "2026-11-16",
+      "interpretation": "FX functioning described as resilient with limited Middle East/energy spillovers; not evidence of crypto/XRP order-book resilience.",
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    }
+  ],
+  "protocol_observations": [
+    {
+      "source": "XRPL Dashboard signed amendment snapshot",
+      "source_url": "https://xrpldashboard.com/amendments/2026-11-16",
+      "signed_at_utc": "2026-11-16T01:00:00Z",
+      "leaf_hash": "ed19ae539e58f97fb6411f66baa18e17ee9fe04ad2bc08f3f1fd3ee8ac45590f",
+      "chain_root": "152c0d53f17bbb910e1cd65d649ecd49462360e476d5e7798f590a2f17ee25b4",
+      "signature_verifier": "VERIFIED",
+      "votes": {
+        "LendingProtocol": "22/35 yes; 29 needed; not enabled",
+        "LendingProtocolV1_1": "22/35 yes; 29 needed; not enabled",
+        "SingleAssetVault": "23/35 yes; 29 needed; not enabled"
+      },
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false,
+      "limitation": "Third-party own-node signed snapshot; no validator identities."
+    },
+    {
+      "source": "XRPL LendingProtocol known-amendment documentation",
+      "source_url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/resources/known-amendments.md",
+      "interpretation": "Fixed-term uncollateralized borrower loans funded from a Single Asset Vault; off-chain underwriting/risk management and broker first-loss capital. Not borrower-posted XRP collateral; vault assets may be XRP or issued/tokenized assets.",
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    }
+  ],
+  "run197_changes": {
+    "exact_head_tested": "49d59eef0d65d120290980f967309d5a47faadea",
+    "exact_head_full_suite_run": 43944760142,
+    "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests; 66.90% inclusive coverage",
+    "dependency_audit": "six manifests; zero known vulnerabilities",
+    "fail_closed_gate": "push and PR passed",
+    "market_research": "price snapshots, ETF flow disagreement, derivatives scope/time disagreement, macro context and XRPL lending amendment status refreshed",
+    "protocol_finding": "LendingProtocol 22/35, V1_1 22/35, SingleAssetVault 23/35; 29 required; none enabled",
+    "model_change": "none",
+    "forecast": "NOT_ISSUED",
+    "raw_receipts_added": 0,
+    "next_head_verification": "The Run197 documentation/evidence commit requires its own exact-head CI."
   }
 }

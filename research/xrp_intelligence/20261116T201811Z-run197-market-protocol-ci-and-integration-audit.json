@@ -1,0 +1,574 @@
+{
+  "schema_version": "barrot.xrp-intelligence-run-audit.v1",
+  "run_id": "run197",
+  "captured_at_utc": "2026-11-16T20:18:11Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+  "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+  "evidence_parent_head": "49d59eef0d65d120290980f967309d5a47faadea",
+  "pr_number": 1663,
+  "execution_classification": {
+    "designed": [
+      "XRP public-data ingestion workflow and adapters on integration branch",
+      "Point-in-time feature store, chronological walk-forward evaluation, four required baselines, calibration, drift monitoring and fail-closed forecast ledger",
+      "Nine-platform capability/authentication/permission/data-flow map"
+    ],
+    "executed": [
+      "Fetched current main and integration recursive trees, open PR inventory, ancestry, changed-file inventory, current PR metadata, reviews, workflow runs, exact-head CI logs, dependency-audit logs, security metadata and durable handoff",
+      "Completed public XRP market, derivatives, ETF-flow, macro, XRPL protocol and institutional research refresh",
+      "Reconciled MMI and CI-workflow overlaps in the open PR backlog"
+    ],
+    "verified": [
+      "Main is an ancestor of integration; 117 commits ahead and zero behind",
+      "Every main path exists on integration",
+      "Exact-head push CI, full repository suite, dependency audits and fail-closed gates passed on parent head 49d59eef0d65d120290980f967309d5a47faadea",
+      "Forecast remains NOT_ISSUED and accuracy remains NOT_EVALUATED"
+    ],
+    "not_verified": [
+      "The Run197 documentation/evidence commit's own exact-head CI until its triggered runs complete",
+      "Scheduled ingestion on main; workflow is absent from main",
+      "Any raw-source receipt for Run197 web research",
+      "Any live authentication/data flow for eight external AI/data platforms",
+      "Any directional predictive superiority or independent shadow cohort"
+    ]
+  },
+  "repository_state": {
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2561,
+    "main_paths_missing_from_integration": 0,
+    "integration_ahead_by": 117,
+    "integration_behind_by": 0,
+    "pr_changed_paths": 1333,
+    "pr_additions": 488252,
+    "pr_deletions": 6730,
+    "changed_workflow_files": 49,
+    "changed_test_paths": 396,
+    "changed_research_paths": 760,
+    "changed_python_files": 474
+  },
+  "pull_request_1663": {
+    "title": "Barrot V3 + XRP Intelligence — consolidated mainline successor",
+    "state": "open",
+    "draft": true,
+    "mergeable_metadata": true,
+    "formal_reviews": 0,
+    "review_threads": 0,
+    "current_head": "49d59eef0d65d120290980f967309d5a47faadea",
+    "merge_decision": "NO_MERGE",
+    "blockers": [
+      "Draft state",
+      "No independent formal review or approval",
+      "Full semantic review of 1,333 changed paths remains incomplete",
+      "Main branch-protection details return HTTP 403",
+      "Visible repository ruleset 10863829 is disabled",
+      "CODEOWNERS assigns all paths to @Barrot-Agent alone",
+      "GitHub connector permission set is admin, maintain, push, pull and triage; least privilege is not satisfied"
+    ]
+  },
+  "exact_head_ci": {
+    "head_sha": "49d59eef0d65d120290980f967309d5a47faadea",
+    "push_ci_run": 43944760142,
+    "push_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43944760142",
+    "push_ci_conclusion": "success",
+    "full_repository_suite": {
+      "passed": 3844,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 104.35,
+      "inclusive_coverage_percent": 66.9,
+      "full_suite_step": "Run every repository test with inclusive package coverage",
+      "result": "success"
+    },
+    "build_and_packaging": {
+      "wheel_build": "success",
+      "packaged_primary_mission_resource": "verified",
+      "installed_wheel_loads_barrot_v3_and_canonical_data_assets": true,
+      "warnings": [
+        "Setuptools warns that project.license table syntax is deprecated.",
+        "Setuptools reports namespace/package-discovery warnings for barrot_agent.data.missions and data.research; the mission resource was nevertheless verified in the built and installed wheel.",
+        "GitHub Actions cache reservation failed because the configured cache budget was exhausted; cache became read-only. This did not fail the test job."
+      ]
+    },
+    "pull_request_ci_run": 43944769104,
+    "pull_request_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43944769104",
+    "pull_request_ci_conclusion": "success",
+    "pull_request_ci_test_jobs": "skipped by integration-head workflow condition; exact-head push CI ran the full suite",
+    "dependency_audit_push_run": 43944760170,
+    "dependency_audit_pr_run": 43944769631,
+    "dependency_audit": "six manifests audited; zero known vulnerabilities; both push and PR runs passed",
+    "fail_closed_push_run": 43944760209,
+    "fail_closed_pr_run": 43944770024,
+    "fail_closed": "both passed",
+    "combined_commit_status_endpoint": "returned no legacy status entries; workflow-run records are the authoritative evidence in this audit"
+  },
+  "mission_contract": {
+    "mission_id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "foundation": "Barrot V3: execution, orchestration, safety and verification",
+    "forecast_issuance_enabled": false,
+    "minimum_origins_per_source_cluster": 5,
+    "regression_test": "tests/test_xrp_primary_mission_contract.py now reads the packaged primary_mission.json directly; exact-head full suite passed",
+    "model_policy": "candidate must beat naive class prior, momentum sign, mean-reversion sign and volatility normal on mean Brier score and mean log loss in leakage-safe walk-forward and independent shadow cohorts, with paired temporal/source-clustered uncertainty, calibration, drift and Ed25519 attestation"
+  },
+  "ingestion_status": {
+    "workflow_path": ".github/workflows/xrp-public-ingestion.yml",
+    "present_on_integration": true,
+    "present_on_main": false,
+    "main_lookup": "404 NOT_FOUND",
+    "schedule": [
+      "3 * * * *",
+      "15 0 * * *"
+    ],
+    "branch_guard": "github.ref == refs/heads/main",
+    "permissions": [
+      "actions: read",
+      "contents: read"
+    ],
+    "source_scope": [
+      "Binance, Coinbase, Kraken, Bitbank, OKX, Bybit and Deribit public spot/perpetual APIs",
+      "ETF issuer pages/files and XRP Insights public feeds",
+      "RLUSD and USDC transparency pages",
+      "Morpho cbXRP market/oracle public API",
+      "CFTC commitment-of-traders sources",
+      "Public XRPL node information endpoints"
+    ],
+    "retention": {
+      "raw_source_artifacts_days": 90,
+      "cross_run_receipt_index_days": 90,
+      "per_run_feature_store_days": 7,
+      "daily_feature_store_archive_days": 90
+    },
+    "immutability_limit": "GitHub Actions artifacts/cache are finite-retention storage, not WORM storage or an independent external timestamp anchor.",
+    "live_scheduled_runs_verified": false,
+    "cache_status": "GitHub Actions cache budget exhausted/read-only on the exact-head CI run; ingestion has artifact-restore fallback but no scheduled main run has been verified."
+  },
+  "prediction_gate": {
+    "registry_path": "research/xrp_intelligence/event_registry_current.json",
+    "registry_version": "run192-followup",
+    "registry_captured_at_utc": "2026-11-16T16:11:30Z",
+    "curated_events": 125,
+    "raw_source_sha256_receipts_present": 0,
+    "events_missing_raw_source_sha256": 125,
+    "exact_publisher_timestamps": 48,
+    "missing_exact_publisher_timestamps": 77,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "signal_accuracy_path": "web/signal_accuracy.json",
+    "signal_accuracy_reason": "NO_QUALIFIED_XRP_MODEL_OR_INDEPENDENT_SHADOW_COHORT",
+    "run197_web_observations_added_to_feature_store": 0,
+    "explanation": "Run197 web research is descriptive only. Search/open page text was not preserved as byte-exact publisher payloads with durable external receipts; none is admitted as a point-in-time model feature."
+  },
+  "market_research": {
+    "price": {
+      "current_cross_provider_snapshot_range_usd": [
+        0.95,
+        0.9627
+      ],
+      "no_aggregate_average": true,
+      "observations": [
+        {
+          "source": "CoinGecko XRP historical-data page",
+          "url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+          "retrieved_at_utc": "2026-11-16T20:18:11Z",
+          "page_price_usd": 0.9553,
+          "market_cap_usd": 61868527056,
+          "volume_24h_usd": 2423929935,
+          "range_24h_usd": [
+            0.9424,
+            0.9773
+          ],
+          "current_day_close": "N/A; current UTC date incomplete",
+          "markets_reported": 430,
+          "exchanges_reported": 136,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "CoinDesk XRP price page",
+          "url": "https://www.coindesk.com/price/xrp",
+          "retrieved_at_utc": "2026-11-16T20:18:11Z",
+          "price_usd": 0.951,
+          "change_24h_pct": -1.02,
+          "change_7d_pct": -13.51,
+          "change_30d_pct": -26.57,
+          "volume_24h_usd": 1050000000,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "CryptoSlate XRP price page",
+          "url": "https://cryptoslate.com/coins/XRP/",
+          "retrieved_at_utc": "2026-11-16T20:18:11Z",
+          "price_usd": 0.95,
+          "change_24h_pct": 0.09,
+          "market_cap_usd": 60630000000,
+          "volume_24h_usd": 1970000000,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "Zacks XRP price page",
+          "url": "https://www.zacks.com/cryptocurrency/coin-price/XRP-USD",
+          "publisher_displayed_time": "2026-11-16 11:30 AM; timezone not specified in page text",
+          "price_usd": 0.9627,
+          "change_24h_pct": 1.27,
+          "change_7d_pct": -11.92,
+          "change_30d_pct": -25.42,
+          "volume_24h_usd": 2020000000,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "Investing.com XRP historical data",
+          "url": "https://www.investing.com/crypto/xrp/historical-data",
+          "data_date": "2026-11-16",
+          "price_usd": 0.9546,
+          "open_usd": 0.9739,
+          "high_usd": 0.9742,
+          "low_usd": 0.9426,
+          "volume_usd": 350950000,
+          "change_pct": -2.07,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        }
+      ],
+      "historical_context": "CoinGecko's current live quote is about 26.5% below its Nov 4 displayed close of $1.30; Nov 16 daily close is not yet available. This is a descriptive comparison, not a forecast.",
+      "source_independence": "Price aggregators may share upstream venue feeds; provider disagreement is retained and is not counted as independent model corroboration."
+    },
+    "derivatives": {
+      "observations": [
+        {
+          "source": "Liqwall all-exchange XRP open interest",
+          "url": "https://liqwall.com/open-interest/xrp",
+          "as_of_utc": "2026-11-16T12:52:00Z",
+          "open_interest_usd": 981000000,
+          "change_24h_pct": -3.2,
+          "thirty_day_high_usd": 1490000000,
+          "thirty_day_high_date": "2026-11-04",
+          "thirty_day_low_usd": 995000000,
+          "thirty_day_low_date": "2026-11-14",
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "Kraken XRP perpetual market",
+          "url": "https://www.kraken.com/features/futures/xrp",
+          "publisher_displayed_time": "2026-11-16 1:16 PM; timezone not specified",
+          "mark_price_usd": 0.95,
+          "change_24h_pct": -2.53,
+          "volume_24h_usd": 18346621.99,
+          "open_interest_usd": 9867858.15,
+          "funding_rate_pct_per_hour": 0.0000017935,
+          "raw_source_sha256": null,
+          "model_eligible": false,
+          "limitation": "Single Kraken contract, not an all-exchange XRP OI total."
+        },
+        {
+          "source": "Countroom search-indexed predicted funding snapshot",
+          "url": "https://countroom.org/funding-rates/XRP",
+          "as_of_utc": "2026-11-16T18:52:00Z",
+          "markets": 44,
+          "displayed_high_apr_pct": 63.07,
+          "displayed_low_apr_pct": -44.27,
+          "raw_source_sha256": null,
+          "model_eligible": false,
+          "limitation": "Search-index snapshot conflicts with the opened page's older Nov 14 14:58 UTC rendering; predicted next-settlement APR, not realized funding."
+        },
+        {
+          "source": "Countroom opened-page rendering",
+          "url": "https://countroom.org/funding-rates/XRP",
+          "as_of_utc": "2026-11-14T14:58:00Z",
+          "markets": 44,
+          "displayed_high_apr_pct": 82.34,
+          "displayed_low_apr_pct": -29.6,
+          "raw_source_sha256": null,
+          "model_eligible": false,
+          "limitation": "Older rendered snapshot; retained as a page-version disagreement."
+        }
+      ],
+      "interpretation": "OI provider totals are not averaged. Contract universe, CME inclusion, venue scope and timestamps must be reconciled before feature admission."
+    },
+    "etf_flows": {
+      "observations": [
+        {
+          "source": "Alpha Finance XRP ETF dashboard",
+          "url": "https://alphafinance.io/etf/xrp/",
+          "fund_universe": "five U.S. spot XRP funds",
+          "through_session": "2026-11-14",
+          "last_seven_sessions": {
+            "from": "2026-11-08",
+            "to": "2026-11-14",
+            "net_flow_usd": -20200000
+          },
+          "thirty_session_net_flow_usd": -1700000,
+          "cumulative_net_inflow_usd": 1710000000,
+          "nov14_flow_usd": -1100000,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "Maketo XRP ETF flows",
+          "url": "https://maketo.com/etf/xrp/flows",
+          "updated_at_utc": "2026-11-16T02:27:00Z",
+          "latest_reported_session": "2026-11-13",
+          "net_flow_usd": -1090000,
+          "raw_source_sha256": null,
+          "model_eligible": false
+        },
+        {
+          "source": "CryptoKeyhole issuer-file aggregation",
+          "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+          "updated_at_utc": "2026-11-15T10:30:00Z",
+          "latest_complete_session": "2026-11-12",
+          "latest_complete_net_flow_xrp": 4337131,
+          "nov13_partial_net_flow_xrp": -9967,
+          "nov13_funds_reported": "3/4",
+          "raw_source_sha256": null,
+          "model_eligible": false,
+          "limitation": "Different fund universe and issuer-file coverage; not comparable to the five-fund USD series."
+        }
+      ],
+      "interpretation": "Recent five-fund USD series show outflows, while issuer-file aggregation has a different partial/latest-complete state. No synthetic combined flow is calculated; Alpha/Maketo/SoSoValue may share upstream data."
+    },
+    "macro_and_geopolitics": [
+      {
+        "source": "Reuters, Dollar hits highest since April 2025 as Fed rate bets lend support",
+        "url": "https://www.reuters.com/world/middle-east/yen-steady-against-euro-dollar-after-soft-japanese-gdp-data-2026-11-16/",
+        "publisher_time_utc": "2026-11-16T01:09:00Z",
+        "facts": {
+          "dollar_index": 103.5,
+          "highest_since": "2025-04-02",
+          "cme_fedwatch_probability_december_25bp_hike_pct": 93.4,
+          "bitcoin_usd": 64110,
+          "usd_jpy": 159.48,
+          "japan_q3_gdp_annualized_pct": -0.1
+        },
+        "raw_source_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "Federal Reserve Governor Michael Barr speech",
+        "url": "https://www.federalreserve.gov/newsevents/speech/barr20261116a.htm",
+        "publisher_date": "2026-11-16",
+        "facts": {
+          "survey_contacts_citing_ai_risk_pct": 87,
+          "estimated_ai_data_center_off_balance_sheet_obligations_usd": ">3000000000000",
+          "risks": [
+            "AI-financing opacity and repricing",
+            "algorithmic herding",
+            "market manipulation",
+            "cyber risk",
+            "AI-agent authentication and consent failures",
+            "rapid deposit outflows"
+          ]
+        },
+        "interpretation": "Financial-stability speech, not a monetary-policy announcement or XRP-specific catalyst.",
+        "raw_source_sha256": null,
+        "model_eligible": false
+      },
+      {
+        "source": "New York Fed Markets Group speech by Anna Nordstrom",
+        "url": "https://www.newyorkfed.org/newsevents/speeches/2026/nor261116",
+        "publisher_date": "2026-11-16",
+        "facts": {
+          "assessment": "FX market functioning remained resilient; spillovers from Middle East conflict and energy repricing were described as limited, with FX volatility relatively contained versus energy and rates."
+        },
+        "interpretation": "Does not establish crypto-exchange or XRP order-book resilience.",
+        "raw_source_sha256": null,
+        "model_eligible": false
+      }
+    ],
+    "xrpl_protocol_and_security": [
+      {
+        "source": "XRPL Dashboard signed amendment snapshot",
+        "url": "https://xrpldashboard.com/amendments/2026-11-16",
+        "snapshot_date": "2026-11-16",
+        "signed_at_utc": "2026-11-16T01:00:00Z",
+        "leaf_hash": "ed19ae539e58f97fb6411f66baa18e17ee9fe04ad2bc08f3f1fd3ee8ac45590f",
+        "chain_root": "152c0d53f17bbb910e1cd65d649ecd49462360e476d5e7798f590a2f17ee25b4",
+        "signature_verifier": "VERIFIED",
+        "votes": {
+          "LendingProtocol": {
+            "yes": 22,
+            "heard": 35,
+            "needed": 29,
+            "enabled": false
+          },
+          "LendingProtocolV1_1": {
+            "yes": 22,
+            "heard": 35,
+            "needed": 29,
+            "enabled": false
+          },
+          "SingleAssetVault": {
+            "yes": 23,
+            "heard": 35,
+            "needed": 29,
+            "enabled": false
+          }
+        },
+        "majority_events": "No majority gained, lost or enabled on Nov 16 signed record.",
+        "limitation": "Third-party node-operator signed record, not an XRPL Foundation or Ripple official publication; no validator identities exposed."
+      },
+      {
+        "source": "XRPL developer portal amendment rules",
+        "url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/concepts/networks-and-servers/amendments.md",
+        "fact": "Amendments require more than 80% of trusted validators for two consecutive weeks."
+      },
+      {
+        "source": "XRPL developer portal known amendments",
+        "url": "https://github.com/XRPLF/xrpl-dev-portal/blob/master/resources/known-amendments.md",
+        "facts": {
+          "LendingProtocol": "Fixed-term uncollateralized loans funded by pooled assets in a Single Asset Vault; off-chain underwriting and risk management.",
+          "SingleAssetVault": "Can pool one asset; supported assets include XRP or issued/tokenized assets.",
+          "LendingProtocolV1_1": "Adds closed-ended vault phases and cash-basis interest accounting."
+        },
+        "key_distinction": "This is not borrower-posted XRP collateral. Borrowers do not post collateral directly to the protocol; brokers underwrite off-chain and supply first-loss capital. Approval would not automatically create XRP demand."
+      },
+      {
+        "source": "XRPLF/rippled pull request #8685",
+        "url": "https://github.com/XRPLF/rippled/pull/8685",
+        "fact": "LendingProtocolV1_2 development PR remains open; code work is not amendment activation."
+      },
+      {
+        "source": "CoinDesk quantum-resistant account proposal coverage",
+        "url": "https://www.coindesk.com/tech/2026/11/10/xrp-ledger-maps-out-quantum-proof-accounts-with-no-extra-fees-for-users",
+        "facts": {
+          "signature_scheme": "ML-DSA-44",
+          "key_and_signature_size_bytes": 3732,
+          "current_comparison_bytes": 105,
+          "migration_study_target": "first half 2027",
+          "development_and_audit_target": "late 2027 or 2028",
+          "status": "draft, not live"
+        }
+      }
+    ],
+    "source_independence": {
+      "price": "CoinGecko, CoinDesk, CryptoSlate, Zacks and Investing.com snapshots are distinct publishers but may share upstream venue feeds; not treated as independent raw market sources.",
+      "derivatives": "Liqwall is an all-exchange aggregator; Kraken is one venue; Countroom search and opened-page renderings conflict in timestamp and range. No averaging.",
+      "etf": "Alpha/Maketo/SoSoValue may share the same five-fund USD flow series; CryptoKeyhole uses issuer files with a different fund universe and partial-report state.",
+      "macro": "Reuters and official Federal Reserve publications are separate publishers; the macro observations are contextual, not XRP-specific causal evidence.",
+      "xrpl_votes": "XRPL Dashboard's signed own-node snapshot and Bithomp are separate observers of the same validator state; the signed leaf is third-party, not protocol governance itself."
+    }
+  },
+  "backlog": {
+    "open_pull_requests": [
+      {
+        "number": 1663,
+        "files": 1333,
+        "classification": "blocked",
+        "reason": "Draft; zero formal reviews; full semantic review incomplete."
+      },
+      {
+        "number": 1541,
+        "files": 5,
+        "overlap_with_1663": 5,
+        "classification": "superseded-candidate/reconciliation-required",
+        "reason": "Two code/test files byte-identical; evidence JSON parsed content equivalent but newline differs; mmi_v1.py and test_mmi_v1.py materially differ. Keep open until semantic reconciliation and verified successor merge."
+      },
+      {
+        "number": 1460,
+        "files": 8,
+        "overlap_with_1663": 0,
+        "classification": "unique/unreviewed"
+      },
+      {
+        "number": 1450,
+        "files": 116,
+        "overlap_with_1663": 0,
+        "classification": "unique/unreviewed"
+      },
+      {
+        "number": 1440,
+        "files": 64,
+        "overlap_with_1663": 0,
+        "classification": "unique/unreviewed"
+      },
+      {
+        "number": 1437,
+        "files": 5,
+        "overlap_with_1663": 0,
+        "classification": "unique/unreviewed"
+      },
+      {
+        "number": 1436,
+        "files": 24,
+        "overlap_with_1663": 0,
+        "classification": "unique/unreviewed"
+      },
+      {
+        "number": 1353,
+        "files": 1084,
+        "overlap_with_1663": 0,
+        "classification": "unique/unreviewed"
+      },
+      {
+        "number": 1265,
+        "files": 144,
+        "overlap_with_1663": 1,
+        "overlap_paths": [
+          ".github/workflows/ci.yml"
+        ],
+        "classification": "unique/unreviewed",
+        "reason": "One non-identical CI workflow overlap; 143 other paths unique."
+      }
+    ],
+    "source_pr_closures": 0,
+    "new_prs_created": 0
+  },
+  "nine_platform_coordination": {
+    "verified": [
+      "ChatGPT GitHub connector"
+    ],
+    "unverified_or_untested": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "adjacent_unverified": [
+      "Groq",
+      "OpenCode GitHub MCP"
+    ],
+    "independent_tasks_dispatched": false,
+    "structured_evidence_exchange": false,
+    "red_team_quorum": false,
+    "least_privilege": false,
+    "permission_observation": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "fallback": "Deterministic repository inspection and lawful public read-only research."
+  },
+  "external_actions": {
+    "main_changes": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "pr_closures": false
+  },
+  "next_actions": [
+    "Verify exact-head CI on the Run197 evidence/documentation commit after it is created.",
+    "Complete semantic review of 49 changed workflows, 396 changed test paths, 474 Python files and all 1,333 changed paths.",
+    "Reconcile the two material MMI differences in PR #1541; do not close the source PR before a verified successor merge.",
+    "Obtain independent code-owner review and authorized read-only branch-protection visibility; replace self-only CODEOWNERS and broad connector permissions through an approved governance path.",
+    "Activate scheduled public-data ingestion only after it is on main and first receipt-chain continuity is verified; add independent WORM/timestamp anchoring.",
+    "Reconcile XRP spot/derivatives venue universes and issuer ETF files; keep all unreceipted observations out of the point-in-time feature store.",
+    "Keep forecast issuance disabled until all mission admission gates and independent shadow evaluation pass."
+  ]
+}

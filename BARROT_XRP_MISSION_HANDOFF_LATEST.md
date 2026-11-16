@@ -3623,3 +3623,86 @@ The Run195 handoff head `c3a9f01d0ec87224e4ce4d69eb36f887ca135962` passed exact-
 6. Keep the forecast gate closed until point-in-time raw receipts, reconciled source definitions, chronological walk-forward superiority, calibration and shadow validation are demonstrated.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run197 — exact-head verification and XRP market/protocol refresh (2026-11-16 20:18 UTC)
+
+### Mission contract and repository state
+
+- XRP intelligence and measured prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration parent head at start of Run197: `49d59eef0d65d120290980f967309d5a47faadea`.
+- PR #1663 remains the single main-targeting integration workstream. It is draft, open, mergeable by metadata, and has zero formal reviews and zero review threads.
+- Main recursive tree: 1,393 entries. Integration recursive tree: 2,561 entries. Main is an ancestor; integration is 117 commits ahead and zero behind. **No main path is missing.**
+- PR #1663 currently changes 1,333 paths: 49 workflow files, 396 test paths, 760 research paths and 474 Python files; 488,252 additions and 6,730 deletions.
+- The packaged mission contract sets XRP priority 1, preserves Barrot V3, requires five origins per source cluster, and keeps `forecast_issuance_enabled=false`. The regression test now reads the packaged mission JSON directly.
+
+### Exact-head CI — parent code head 49d59eef
+
+- Push CI [43944760142](https://github.com/Barrot-Agent/B-Agent/actions/runs/43944760142) passed on exact head `49d59eef0d65d120290980f967309d5a47faadea`.
+- Full repository suite: **3,844 passed, 1 skipped, 11 warnings, 19 subtests passed** in 104.35 seconds; inclusive coverage 66.90%.
+- The full-suite job ran the complete repository test discovery, including legacy tests and `.barrot` tests, not only the hand-selected core subset.
+- Wheel build passed; the packaged mission resource was found in the wheel; the installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Dependency audits passed on push [43944760170](https://github.com/Barrot-Agent/B-Agent/actions/runs/43944760170) and PR [43944769631](https://github.com/Barrot-Agent/B-Agent/actions/runs/43944769631): six manifests, zero known vulnerabilities.
+- Fail-closed gates passed on push [43944760209](https://github.com/Barrot-Agent/B-Agent/actions/runs/43944760209) and PR [43944770024](https://github.com/Barrot-Agent/B-Agent/actions/runs/43944770024).
+- PR CI [43944769104](https://github.com/Barrot-Agent/B-Agent/actions/runs/43944769104) passed Pages validation, but its core and full-suite test jobs were skipped by the integration-head condition. The exact-head push CI above did run both core and full suite.
+- Warnings: 11 legacy pytest return-value warnings; setuptools license-table deprecation and package-discovery warnings; GitHub Actions cache reservation failed because the configured cache budget is exhausted and cache is read-only. These did not fail the exact-head run. The wheel smoke test still verified the mission resource.
+- The Run197 handoff/evidence commit changes Markdown and JSON only. Its own exact-head CI must be checked after the commit; the 49d59 result is not transferred to a later SHA.
+
+### Integration, security and workflow state
+
+- Main `.github/workflows/ci.yml` already has a full-suite job, but its scope is narrower. The integration workflow expands test discovery and coverage across repository packages and legacy tests.
+- `.github/workflows/xrp-public-ingestion.yml` exists on integration and is absent from main (main lookup 404). It is designed for hourly and daily scheduled public-data capture with read-only permissions and a main-ref guard. **Scheduled ingestion is not active or verified on main.**
+- Raw-source artifacts and receipt indexes have 90-day retention; per-run feature-store checkpoints have 7-day retention; daily feature archives have 90-day retention. These are not WORM storage or an independent timestamp anchor. No live scheduled receipt chain has been verified.
+- GitHub Actions cache budget is exhausted/read-only; the ingestion workflow has artifact-restore fallback, but its live continuity remains unverified.
+- Branch-protection details return HTTP 403. Visible ruleset 10863829 is disabled. CODEOWNERS remains `* @Barrot-Agent`. The connector has admin/maintain/push/pull/triage permissions. Least privilege and independent review are not satisfied.
+- **Merge decision: NO MERGE.** Draft state, zero reviews, incomplete semantic review and inaccessible branch-protection requirements remain blockers.
+
+### XRP spot and derivatives — descriptive only
+
+- CoinGecko's historical page displayed XRP at **$0.9553**, 24-hour range **$0.9424–$0.9773**, market cap **$61.87B** and 24-hour volume **$2.424B**; the Nov 16 UTC daily close was still N/A. Its page says the aggregate covers 136 exchanges and 430 markets. [CoinGecko](https://www.coingecko.com/en/coins/xrp/historical_data)
+- Other current provider snapshots ranged from $0.9500 (CryptoSlate) to $0.9627 (Zacks); CoinDesk showed $0.9510 and Investing.com $0.9546. Their 24-hour direction and volumes differ because timestamps and provider universes differ. No synthetic average is produced. [CoinDesk](https://www.coindesk.com/price/xrp) · [CryptoSlate](https://cryptoslate.com/coins/XRP/) · [Zacks](https://www.zacks.com/cryptocurrency/coin-price/XRP-USD) · [Investing.com](https://www.investing.com/crypto/xrp/historical-data)
+- Liqwall reported $981M all-exchange XRP OI at 12:52 UTC, down 3.2% over 24 hours; its 30-day high was $1.49B on Nov 4 and low $995M on Nov 14. Kraken's single XRP perpetual showed $9.87M OI, $18.35M 24-hour volume and near-zero displayed funding. These are different universes and are not combined. [Liqwall](https://liqwall.com/open-interest/xrp) · [Kraken](https://www.kraken.com/features/futures/xrp)
+- Countroom's search-index snapshot and opened-page rendering disagree materially in timestamp and predicted funding range. Both are preserved as stale/version-conflicted; no funding feature is admitted. [Countroom](https://countroom.org/funding-rates/XRP)
+- Recent five-fund ETF dashboard readings show a $20.2M outflow over Nov 8–14, including $1.1M on Nov 14, while the 30-session flow is only $1.7M outflow against $1.71B cumulative inflows. CryptoKeyhole's issuer-file series has a different universe and a partial Nov 13 reading; it is not substituted or averaged. [Alpha Finance](https://alphafinance.io/etf/xrp/) · [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/) · [Maketo](https://maketo.com/etf/xrp/flows)
+
+### XRPL lending and protocol security
+
+- The Nov 16 XRPL Dashboard signed snapshot is marked Ed25519-verified. It records 22/35 votes for LendingProtocol, 22/35 for LendingProtocolV1_1 and 23/35 for SingleAssetVault; 29 votes are required, and none is enabled. No majority event was recorded for the day. [Signed amendment snapshot](https://xrpldashboard.com/amendments/2026-11-16)
+- Official XRPL docs require more than 80% of trusted validators for two consecutive weeks. LendingProtocol is designed for fixed-term **uncollateralized borrower loans** funded from a Single Asset Vault, with off-chain broker underwriting/risk management and broker first-loss capital. It is not a protocol for borrowers to post XRP collateral. Vault assets may be XRP or issued/tokenized assets, so activation would not automatically create XRP demand. [Amendment rules](https://github.com/XRPLF/xrpl-dev-portal/blob/master/docs/concepts/networks-and-servers/amendments.md) · [Known amendments](https://github.com/XRPLF/xrpl-dev-portal/blob/master/resources/known-amendments.md)
+- LendingProtocolV1_2 development remains an open XRPLF/rippled PR, not mainnet activation. [PR #8685](https://github.com/XRPLF/rippled/pull/8685)
+- The quantum-resistant account proposal remains draft. It uses ML-DSA-44, increases protected transaction key/signature bytes, and targets a migration study in 2027 with development/audit later; it is not live or a near-term XRP demand catalyst. [CoinDesk](https://www.coindesk.com/tech/2026/11/10/xrp-ledger-maps-out-quantum-proof-accounts-with-no-extra-fees-for-users)
+
+### Macro and geopolitical context
+
+- Reuters reported the U.S. dollar index at 103.50, its highest since April 2, 2025; FedWatch implied a 93.4% probability of a 25-basis-point December increase; Bitcoin was $64,110; USD/JPY was 159.48; and Japan's Q3 GDP contracted at a 0.1% annualized rate. [Reuters, Nov 16](https://www.reuters.com/world/middle-east/yen-steady-against-euro-dollar-after-soft-japanese-gdp-data-2026-11-16/)
+- Federal Reserve Governor Michael Barr's Nov 16 speech highlighted AI-financing opacity, more than $3T in potential off-balance-sheet AI/data-center obligations, algorithmic herding/manipulation and cyber/agent-authentication risks. It was a financial-stability speech, not a monetary-policy announcement. [Federal Reserve](https://www.federalreserve.gov/newsevents/speech/barr20261116a.htm)
+- New York Fed Markets Group head Anna Nordstrom described FX market functioning as resilient despite Middle East conflict and energy repricing. This is not evidence that crypto or XRP order books are resilient. [New York Fed](https://www.newyorkfed.org/newsevents/speeches/2026/nor261116)
+
+### Evidence admission and forecast status
+
+- Curated registry: 125 events; 125 lack byte-exact raw-source SHA-256 receipts; 48 have exact publisher timestamps; 77 do not; zero are model-eligible.
+- Run197 web observations were not added to the point-in-time feature store. Raw page bytes and independent external receipt anchors were not captured.
+- `web/latest_signal.json` remains `NOT_ISSUED`; `web/signal_accuracy.json` remains `NOT_EVALUATED`. No directional forecast is issued.
+
+### Open PR inventory and overlap reconciliation
+
+Nine PRs remain open:
+- #1663 — blocked; current main-targeting integration PR.
+- #1541 — superseded candidate/reconciliation required. Five paths overlap: `mmi_adapter.py` and `test_mmi_integration.py` are byte-identical; the evidence JSON parses equivalently but differs by one trailing newline; `mmi_v1.py` and `test_mmi_v1.py` materially differ. Keep open pending semantic reconciliation and a verified successor merge.
+- #1265 — unique/unreviewed; 144 files, one non-identical overlap at `.github/workflows/ci.yml`, 143 unique paths.
+- #1460 (8 files), #1450 (116), #1440 (64), #1437 (5), #1436 (24) and #1353 (1,084) — unique/unreviewed, with no path overlap against #1663 in this inventory.
+
+No new PR was created. No source PR was closed. No merge or external action occurred.
+
+### Next actions
+
+1. Verify exact-head CI on the Run197 evidence/documentation commit after it is created.
+2. Complete semantic review of 49 changed workflows, 396 test paths, 474 Python files and all 1,333 changed paths.
+3. Reconcile the two material MMI differences from #1541; do not close it before a verified successor merge.
+4. Obtain independent review and authorized read-only branch-protection visibility; replace self-only CODEOWNERS and broad connector permissions through an approved governance path.
+5. Activate scheduled public ingestion only after it is on main and the first receipt-chain continuity is verified; add independent WORM/timestamp anchoring.
+6. Reconcile derivatives venue/contract universes and ETF issuer files; keep unreceipted observations out of the point-in-time feature store.
+7. Keep forecast issuance disabled until all admission gates and independent shadow evaluation pass.
+
+No main change, merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
