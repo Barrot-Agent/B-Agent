@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run157-20261115",
-  "captured_at_utc": "2026-11-15T08:22:00Z",
-  "source_receipt_status": "85 of 85 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; Run157 official-source research is point-in-time and remains research-only until scheduled raw receipts are captured.",
+  "registry_version": "run180-20261116",
+  "captured_at_utc": "2026-11-16T01:01:31Z",
+  "source_receipt_status": "87 of 87 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -3577,6 +3577,106 @@
         "trust bank",
         "custody"
       ]
+    },
+    {
+      "event_id": "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
+      "event_type": "institutional",
+      "event_name": "Evernorth reports warrant-exercise cash, convertible-note proceeds and optional Cantor ELOC",
+      "hypothesis_id": "evernorth-realized-cash-vs-optional-financing-vs-xrp-purchases",
+      "domain": "institutional_capital",
+      "hypothesis": "Evernorth's post-close cash receipts expand potential treasury funding capacity, but realized XRP accumulation requires independently verified XRP purchases and custody changes.",
+      "counter_hypothesis": "Warrant proceeds and convertible-note proceeds are cash but not proof of XRP purchases; the note is debt, the ELOC is optional and no draw is evidenced in this supplement, while the remaining $11.50 warrants were out of the money at the November 12 XRPN close of $8.97.",
+      "claim": "Evernorth's SEC Form 424B3 supplement dated November 13, 2026 reports 3,073,366 public warrants exercised for cash between October 12 and November 9 at $11.50 each, producing $35.3 million gross proceeds, with 8,666,279 warrants remaining. It separately reports $29.0 million net cash from an October 13 convertible note after a $1.0 million advisor fee. The Cantor ELOC permits Evernorth, at its option and subject to conditions, to sell up to 5,218,935 newly issued shares at 97% of applicable VWAP, with volume and ownership limits. The supplement reports a November 12 XRPN close of $8.97 versus the $11.50 warrant strike. It does not establish an ELOC draw or an XRP purchase funded by these proceeds.",
+      "source_id": "sec_evernorth_424b3_10q_2026_11_13",
+      "source_name": "U.S. Securities and Exchange Commission — Evernorth Form 424B3 supplement with Q3 2026 Form 10-Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+      "independence_group": "sec-edgar-evernorth",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-09T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T01:01:31Z",
+      "captured_at_utc": "2026-11-16T01:01:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The filing reports gross warrant-exercise proceeds; gross proceeds are not net cash after expenses.",
+        "The $29.0 million convertible-note amount is net cash after the stated advisor fee and remains debt.",
+        "The ELOC is an optional financing facility; capacity is not a draw or realized cash receipt.",
+        "The November 9 event time marks the end of the disclosed warrant-exercise interval, not the timestamp of each exercise.",
+        "The SEC supplement is dated November 13, 2026; its exact EDGAR acceptance time was not captured in this run."
+      ],
+      "falsification_conditions": [
+        "A later SEC filing corrects or supersedes the warrant exercise count, gross proceeds or convertible-note proceeds.",
+        "A later filing establishes ELOC draw amounts and settlement dates.",
+        "Primary custody or issuer records reconcile XRP purchased specifically with these cash proceeds."
+      ],
+      "related_entities": [
+        "Evernorth Holdings Inc.",
+        "CF Principal Investments LLC (Cantor)",
+        "Ripple Labs Inc.",
+        "SBI Holdings Inc.",
+        "XRPN",
+        "XRPNW",
+        "XRP"
+      ],
+      "tags": [
+        "actual-capital",
+        "warrant-exercise",
+        "convertible-note",
+        "ELOC",
+        "cash-vs-debt",
+        "XRP-purchase"
+      ],
+      "source_date": "2026-11-13",
+      "publisher_timestamp_precision": "date-only; exact EDGAR acceptance time not captured"
+    },
+    {
+      "event_id": "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
+      "event_type": "identity",
+      "event_name": "SBIC East co-hosts ChatGPT seminar with Microsoft Japan speaker",
+      "hypothesis_id": "sbic-chatgpt-reference-is-education-not-openai-commercial-partnership",
+      "domain": "entity_identity",
+      "hypothesis": "The reviewed SBIC/ChatGPT reference is an educational event rather than evidence of an OpenAI commercial relationship.",
+      "counter_hypothesis": "The seminar materials do not rule out separate agreements; they establish only the scope of the documented event and do not prove the absence of every possible relationship.",
+      "claim": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan) lists a February 26, 2025 seminar on generative AI/ChatGPT. Its official flyer names Tokyo SBIC and the Tokyo Chamber of Commerce Taito Branch as co-hosts and identifies the speaker as Nishiwaki Satoshi, a Microsoft Japan executive officer and evangelist. The materials discuss ChatGPT and OpenAI educationally; they identify no OpenAI contract, sponsorship, commercial partnership or investment.",
+      "source_id": "sbic_east_official_chatgpt_seminar_2025_02_26",
+      "source_name": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
+      "source_url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E在%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+      "independence_group": "sbic-east-official",
+      "source_status": "verified",
+      "stance": "contradicts",
+      "event_status": "occurred",
+      "event_time_utc": "2025-02-26T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T01:01:31Z",
+      "captured_at_utc": "2026-11-16T01:01:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The official SBIC page and flyer accurately identify the event's hosts and speaker.",
+        "The documented seminar is evidence of educational activity, not a complete register of all SBIC/OpenAI dealings.",
+        "The source date is known; exact publisher timestamp was not captured."
+      ],
+      "falsification_conditions": [
+        "A primary agreement or official announcement identifies an OpenAI-SBIC commercial partnership.",
+        "Official event records identify OpenAI as a contracting party, sponsor or commercial service provider rather than an educational subject."
+      ],
+      "related_entities": [
+        "Tokyo Small and Medium Business Investment & Consultation Co.",
+        "SBIC East Japan",
+        "OpenAI",
+        "Microsoft Japan",
+        "Nishiwaki Satoshi"
+      ],
+      "tags": [
+        "SBIC",
+        "ChatGPT",
+        "identity",
+        "education",
+        "OpenAI-relationship-scope"
+      ],
+      "source_date": "2025-02-26",
+      "publisher_timestamp_precision": "date-only; exact publication timestamp not captured"
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -3606,5 +3706,13 @@
       "circle-q3-2026-usdc-and-cpn-results-2026-11-04"
     ],
     "note": "Run157 adds official SBI Remit XRP ODL, SBI Ripple Asia XRPL infrastructure, SBI START Bond, SBI crypto-card distribution, alternative remittance rails, Doppler counterparty announcement and OCC trust-bank scope. All new records have null raw_source_sha256 and remain model-ineligible."
+  },
+  "run180_update": {
+    "captured_at_utc": "2026-11-16T01:01:31Z",
+    "added_event_ids": [
+      "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
+      "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26"
+    ],
+    "note": "Added the November 13 SEC Evernorth filing reconciliation (cash warrant exercises, convertible-note proceeds and optional ELOC separated from XRP purchases) and primary SBIC East ChatGPT seminar identity evidence. Both records retain source_date precision without inventing a publisher time; raw_source_sha256 remains null, so no event is model-eligible."
   }
 }
