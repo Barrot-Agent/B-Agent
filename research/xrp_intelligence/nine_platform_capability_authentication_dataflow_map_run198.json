@@ -1,11 +1,11 @@
 {
   "schema_version": "1.8.1",
-  "snapshot_id": "run198-final-20261116T212000Z",
-  "captured_at_utc": "2026-11-16T21:20:00Z",
+  "snapshot_id": "run199-final-20261116T220420Z",
+  "captured_at_utc": "2026-11-16T22:04:20Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-  "integration_head_before_run": "846f9f5b8a235876411174669aeb821d91d8aad4",
+  "integration_head_before_run": "e59ff7727485f83e9c6348e8e4d0be38e99c5400",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -124,22 +124,22 @@
   },
   "execution_evidence": {
     "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-    "integration_head_before_run": "846f9f5b8a235876411174669aeb821d91d8aad4",
+    "integration_head_before_run": "e59ff7727485f83e9c6348e8e4d0be38e99c5400",
     "pr1663_head_exact_suite_run": 43952503279,
-    "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests in 100.71 seconds",
+    "full_suite": "3844 passed, 0 failed, 1 skipped, 11 warnings, 19 subtests in 181.59 seconds",
     "coverage_percent": 66.9,
     "legacy_core_coverage_percent": 77,
-    "dependency_audit": "six manifests; no known vulnerabilities in each audited manifest",
+    "dependency_audit": "six manifests; audit passed; zero known vulnerabilities reported",
     "fail_closed_gate": "passed",
     "workflow_files_scanned": 49,
-    "workflow_side_effect_review": "All 49 changed workflow paths statically scanned; high-risk workflows compared directly with main; full semantic review of every script/action remains incomplete.",
+    "workflow_side_effect_review": "Run199 rechecked main and integration versions of the XRP ingestion, Databricks freshness, Coinbase paper-trader, A2A deployment, fail-closed merge, operations and self-hosted deployment workflows. Full semantic review of all 1,337 PR paths remains incomplete.",
     "main_tree_entries": 1393,
     "integration_tree_entries": 2565,
     "main_paths_missing_from_integration": 0,
-    "integration_ahead_by": 121,
+    "integration_ahead_by": 122,
     "integration_behind_by": 0,
-    "verified_head": "0592539ed894fa5a160941df9d39bc368bea5dbd",
-    "current_head_full_suite_run": 43958195358
+    "verified_head": "e59ff7727485f83e9c6348e8e4d0be38e99c5400",
+    "current_head_full_suite_run": 43959167272
   },
   "no_external_actions": {
     "deployment": false,
@@ -319,5 +319,47 @@
       "interpretation": "SBI's JPYSC balances are account/lending metrics, not public-chain XRP flows. SBI's RLUSD listing currently supports Ethereum only, with XRPL planned; it is not current evidence of SBI-side XRPL settlement. SBI's USDC/Circle/Arc relationship is a separate rail."
     }
   },
-  "integration_head_verified": "0592539ed894fa5a160941df9d39bc368bea5dbd"
+  "integration_head_verified": "0592539ed894fa5a160941df9d39bc368bea5dbd",
+  "run199_observation": {
+    "captured_at_utc": "2026-11-16T22:04:20Z",
+    "verified_integration_head": "e59ff7727485f83e9c6348e8e4d0be38e99c5400",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "exact_head_full_suite_run": 43959167272,
+    "exact_head_full_suite_passed": true,
+    "full_suite_summary": "3844 passed, 0 failed, 1 skipped, 11 warnings, 19 subtests; 66.90% inclusive coverage; 77% legacy-core coverage.",
+    "dependency_audit_run": 43959167209,
+    "dependency_audit_passed": true,
+    "fail_closed_run": 43959167167,
+    "fail_closed_passed": true,
+    "pr1663": {
+      "draft": true,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "changed_files": 1337,
+      "commits": 122
+    },
+    "integration_ahead_by": 122,
+    "integration_behind_by": 0,
+    "registry_events": 125,
+    "raw_receipts_present": 0,
+    "exact_publisher_timestamps": 48,
+    "missing_publisher_timestamps": 77,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "main_cross_analysis_run": 43964350423,
+    "main_cross_analysis_success": true,
+    "xrp_sentiment_recent_records": 0,
+    "xrp_sentiment_prior_records": 0,
+    "btc_sentiment_recent_records": 0,
+    "btc_sentiment_prior_records": 0,
+    "entity_pairs_found": 3217,
+    "xrp_entity_sentiment_profile_admission": "repository corpus only; not current market sentiment",
+    "scheduled_xrp_ingestion_on_main": false,
+    "integration_ingestion_workflow_main_only": true,
+    "github_cache_budget": "cache reservation failed; cache read-only; test jobs unaffected",
+    "other_platforms_authenticated": false,
+    "external_model_tasks_dispatched": false,
+    "external_actions_executed": false
+  }
 }
