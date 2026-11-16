@@ -192,6 +192,48 @@
       "dependency_audit": "success",
       "fail_closed_run_id": 43971872775,
       "fail_closed": "success"
+    },
+    "latest_verified_head": "fd0638e2bf0bc5fbcf09befecb63d6bb708b4d59",
+    "latest_verified_push_ci": {
+      "run_id": 43972970363,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43972970363",
+      "conclusion": "success",
+      "full_repository_suite": {
+        "passed": 3845,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 19,
+        "duration_seconds": 110.33,
+        "inclusive_coverage_pct": 66.9,
+        "legacy_core_coverage_pct": 77,
+        "wheel_build": "passed",
+        "installed_v3_xrp_mission_smoke": "passed",
+        "pages_validation": "passed"
+      }
+    },
+    "latest_verified_dependency_audit": {
+      "run_id": 43972970393,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43972970393",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "latest_verified_fail_closed_gate": {
+      "run_id": 43972970428,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43972970428",
+      "conclusion": "success"
+    },
+    "latest_verified_pr_checks": {
+      "ci_run_id": 43972982784,
+      "ci_conclusion": "success",
+      "full_suite_job": "skipped",
+      "core_tests_job": "skipped",
+      "pages_validation": "success",
+      "dependency_audit_run_id": 43972982773,
+      "dependency_audit": "success",
+      "fail_closed_run_id": 43972982998,
+      "fail_closed": "success"
     }
   },
   "market_snapshot": {
@@ -577,5 +619,207 @@
     "ask_coin": "No new verified XRP/Ripple relationship; Permission Coin (ASK) remains only a candidate lexical match.",
     "actual_capital": "Continue using SEC-filed cash/in-kind/debt/warrant/ELOC reconciliation; commitments and undrawn facilities are not cash proceeds.",
     "sbic_chatgpt": "SBIC East's 2025-06-12/13 investee-company AI course is a concrete Japanese SBIC/ChatGPT match, not an OpenAI partnership."
+  },
+  "market_structure_refresh": {
+    "observation_date_utc": "2026-11-16",
+    "sources_are_aggregators": true,
+    "model_eligible": false,
+    "liqwall": {
+      "source_timestamp_utc": "2026-11-16T21:02:00Z",
+      "xrp_usd": 0.9563,
+      "open_interest_usd": 973000000,
+      "open_interest_24h_change_pct": -2.8,
+      "average_funding_per_8h_pct": -0.0074,
+      "binance_funding_per_8h_pct": -0.006,
+      "liquidations_24h_usd": 3600000,
+      "long_liquidations_usd": 2100000,
+      "short_liquidations_usd": 1500000,
+      "binance_accounts_long_pct": 73.4,
+      "hyperliquid_long_liquidation_cluster_within_10pct_usd": 3200000,
+      "hyperliquid_short_liquidation_cluster_within_10pct_usd": 601000,
+      "source_url": "https://liqwall.com/coins/xrp"
+    },
+    "tradradar": {
+      "source_timestamp_utc": "2026-11-16T15:30:00Z",
+      "xrp_usd": 0.9444,
+      "open_interest_usd": 1310000000,
+      "venues": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "MEXC",
+        "Bitget",
+        "OKX",
+        "Hyperliquid"
+      ],
+      "open_interest_24h_change_pct": -5.04,
+      "oi_weighted_funding_per_8h_pct": -0.0063,
+      "liquidations_24h_minimum_usd": 3500000,
+      "long_liquidations_usd": 1980000,
+      "short_liquidations_usd": 1520000,
+      "long_account_share_pct": 77.1,
+      "source_url": "https://tradradar.io/markets/xrp"
+    },
+    "derivatives_disagreement": {
+      "oi_aggregate_1_usd": 973000000,
+      "oi_aggregate_2_usd": 1310000000,
+      "difference_pct": 34.6,
+      "explanation": "Different snapshots and venue/contract coverage; provider methodologies not fully reconciled.",
+      "treatment": "Preserve separately; do not average or use as a single feature."
+    },
+    "exchange_wallet_balances": {
+      "source": "XRP Insights; direct XRPL account_info reads with third-party wallet labels",
+      "source_timestamp_utc": "2026-11-16T08:00:00Z",
+      "tracked_exchanges": 24,
+      "tracked_wallets": 707,
+      "attributed_balance_xrp": 22240000000,
+      "circulating_supply_pct": 32.3,
+      "same_wallet_change_7d_xrp": -126300000,
+      "same_wallet_change_30d_xrp": -344300000,
+      "regional_concentration": {
+        "south_korea_xrp": 8570000000,
+        "south_korea_share_pct": 38.6,
+        "united_states_xrp": 8490000000,
+        "japan_xrp": 1380000000
+      },
+      "limitations": [
+        "Includes cold storage.",
+        "Wallet labels are third-party attribution, not ownership proof.",
+        "Wallet movements may be internal and do not establish customer withdrawals.",
+        "OKX and Korbit coverage gaps remain.",
+        "Not tradable float."
+      ],
+      "source_url": "https://xrp-insights.com/exchange-balances"
+    },
+    "etf_flows": {
+      "source_timestamp_utc": "2026-11-16",
+      "five_fund_series": {
+        "funds": [
+          "XRP (Bitwise)",
+          "XRPC (Canary)",
+          "XRPZ (Franklin)",
+          "GXRP (Grayscale)",
+          "TOXR (21Shares)"
+        ],
+        "latest_complete_session": "2026-11-13",
+        "weekly_net_flow_usd": -19100000,
+        "november_13_net_flow_usd": -1100000,
+        "cumulative_net_inflows_usd": 1790000000,
+        "net_assets_usd": 1150000000,
+        "source_urls": [
+          "https://alphafinance.io/etf/xrp/",
+          "https://www.tokenpost.com/news/investing/58018"
+        ]
+      },
+      "issuer_file_series": {
+        "latest_complete_session": "2026-11-12",
+        "net_flow_xrp": 4337131,
+        "november_13_partial_xrp": -9967,
+        "reporting_funds": "3 of 4",
+        "source_url": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      "treatment": "Keep five-fund USD flow series and four-fund issuer-file XRP series separate. TokenPost and Alpha Finance appear to reuse the same SoSoValue five-fund series and are not independent confirmations."
+    },
+    "limitations": [
+      "Aggregated third-party pages are not raw exchange feeds.",
+      "No byte-exact HTTP response hashes or independent capture receipts were retained.",
+      "Price and OI timestamps differ; do not merge into a synchronized snapshot.",
+      "No directional forecast issued."
+    ]
+  },
+  "collateral_matrix": {
+    "ripple_prime": {
+      "status": "RLUSD collateral is live in Ripple Prime; October 15, 2026 RWA perpetual-swap product launched with institutional clients including Virtu.",
+      "product": "RWA perpetual swaps covering 100+ reference markets; contracts reference Trade.xyz markets on Hyperliquid; Ripple Prime acts as principal; 24/7 trading/settlement.",
+      "collateral": "RLUSD is specifically named as collateral for the RWA swaps. Ripple Prime product page also lists XRP as an accepted collateral type across supported positions, but no XRP collateral balance or product-specific usage was disclosed.",
+      "venue": "Underlying perpetual reference contracts are on Hyperliquid/Trade.xyz, not XRPL.",
+      "source": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "capability_page": "https://ripple.com/products/prime-brokerage/"
+    },
+    "standard_chartered_lmax": {
+      "custody": "Standard Chartered RLUSD custody on XRPL is live for eligible clients through its DIFC branch.",
+      "collateral": "LMAX/Standard Chartered collateral mirroring is planned, not yet verified live.",
+      "caveat": "Subject to final documentation, successful testing, laws/regulations, internal approvals and jurisdictional readiness.",
+      "source": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/"
+    },
+    "coinbase": {
+      "rlusd_distribution": "Live on Coinbase Prime, Exchange and retail; 1:1 conversion available.",
+      "collateral": "Coinbase Global Exchange collateral use described as future availability, not verified live.",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    "dbs_franklin": {
+      "tokenized_money_market_fund": "sgBENJI and RLUSD listed on DBS Digital Exchange; 24/7 client rebalancing described by DBS.",
+      "collateral": "Repo/credit against sgBENJI remains exploratory in the MOU; no live lending volume verified.",
+      "source": "https://www.dbs.com/annualreports/2025/a-disruptive-innovator-for-real-world.html"
+    },
+    "bny": {
+      "live": [
+        "XRP custody",
+        "RLUSD custody",
+        "Primary RLUSD reserve custody"
+      ],
+      "planned": [
+        "Direct RLUSD mint/redeem through BNY",
+        "Broader tokenized asset custody",
+        "Tokenized trade finance"
+      ],
+      "caveat": "Future plans subject to final BNY and regulatory approvals.",
+      "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    "soil_flare": {
+      "status": "Exploring potential XRP credit/collateral uses; no live use or collateral balance verified.",
+      "source": "https://ripple.com/insights/ripple-swell-2026-recap/"
+    },
+    "xrpl_lending_protocol": {
+      "status": "Proposed; relevant capabilities remain subject to validator approval; not active.",
+      "source": "https://ripple.com/insights/ripple-swell-2026-recap/"
+    },
+    "c2fo": {
+      "status": "RLUSD/XRPL Instant Pay is an announced initiative with a waitlist; no production settlement volume verified.",
+      "source": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/"
+    }
+  },
+  "rlusd_supply_reconciliation": {
+    "snapshots": [
+      {
+        "date": "2026-10-24",
+        "value": 930000000,
+        "unit": "USD",
+        "scope": "RWA.xyz XRP Ledger RLUSD dashboard value reported by CoinDesk",
+        "source": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet"
+      },
+      {
+        "date": "2026-10-27",
+        "value": ">1000000000",
+        "unit": "USD",
+        "scope": "Ripple statement: more than $1B issued on XRPL, not necessarily circulating supply",
+        "source": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/"
+      },
+      {
+        "date": "2026-11-13",
+        "value": 754150000,
+        "unit": "USD",
+        "scope": "StableRadar reported XRPL RLUSD supply snapshot",
+        "source": "https://stableradar.com/"
+      },
+      {
+        "date": "2026-11-16",
+        "value": 697000000,
+        "unit": "USD",
+        "scope": "xrpl.fi reported XRPL RLUSD supply snapshot",
+        "source": "https://xrpl.fi/"
+      }
+    ],
+    "interpretation": "These are different dates, dashboards and definitions (issued versus outstanding/circulating/represented). They are not a synchronized time series.",
+    "treatment": "Do not average. Reconcile issuer balances, burns, returns and cross-chain supply at identical XRPL ledger indices; record definition and source vintage.",
+    "related_onchain_quality": "Bitquery's Sep19-Oct18 analysis reported issuer mint/redemption plumbing and round-trip transfers that materially inflate gross payment volume."
+  },
+  "source_independence": {
+    "ripple": "Corporate issuer source; use for its own product/partnership claims, not independent validation of market impact.",
+    "coindesk": "CoinDesk is owned by Bullish; retain the industry-affiliation caveat. One on-chain receipt was manually checked.",
+    "bitquery": "Commercial analytics vendor; its RLUSD bot/dust findings have not been independently reproduced by Barrot.",
+    "market_aggregators": "Liqwall and TradRadar have different venue universes and timestamps; do not count as independent confirmations without methodology/source overlap review.",
+    "exchange_balances": "XRP Insights uses direct XRPL account_info plus third-party wallet labels; balances include cold storage and are not tradable float.",
+    "etf": "Alpha Finance and TokenPost appear to use the same SoSoValue five-fund series; not independent."
   }
 }

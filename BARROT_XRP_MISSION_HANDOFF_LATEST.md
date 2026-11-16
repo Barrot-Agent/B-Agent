@@ -4260,3 +4260,45 @@ The Cloudflare Wrangler action is now SHA-pinned in both deployment steps, with 
 The integration remains one draft PR #1663, no formal reviews, no independent CODEOWNER and no complete semantic review of the 1,339 changed paths. Main protection detail remains inaccessible; the visible ruleset is disabled and the GitHub connection remains over-privileged. **NO MERGE.** No deployment, secret rotation, Databricks write, Kaggle submission, paper trade or real-money action occurred.
 
 Structured evidence is appended to the Run200 audit JSON in this same directory. The audit's exact-head test record applies to `783762`; this research/handoff-only commit must receive its own CI run before being marked verified.
+
+
+## Run200 final market/collateral reconciliation (2026-11-16)
+
+### Exact-head CI for the preceding Run200 research commit
+
+The preceding head `fd0638e2bf0bc5fbcf09befecb63d6bb708b4d59` passed the exact push-triggered full repository suite [43972970363](https://github.com/Barrot-Agent/B-Agent/actions/runs/43972970363): **3,845 passed, zero failed, one skipped, 11 warnings, 19 subtests**, in 110.33 seconds. Inclusive coverage was 66.90%; legacy-core coverage was 77%. Wheel build, installed V3/XRP mission smoke test and Pages validation passed. Six-manifest dependency audit [43972970393](https://github.com/Barrot-Agent/B-Agent/actions/runs/43972970393) passed with zero known vulnerabilities reported. Fail-closed gate [43972970428](https://github.com/Barrot-Agent/B-Agent/actions/runs/43972970428) passed. PR-event CI [43972982784](https://github.com/Barrot-Agent/B-Agent/actions/runs/43972982784), dependency audit [43972982773](https://github.com/Barrot-Agent/B-Agent/actions/runs/43972982773) and fail-closed gate [43972982998](https://github.com/Barrot-Agent/B-Agent/actions/runs/43972982998) passed applicable jobs; PR-event core/full-suite tests are skipped for integration/* branches.
+
+The next research/handoff-only commit must receive its own exact-head CI; the `fd0638` result is not transferred.
+
+### XRP market snapshot reconciliation — November 16
+
+- **Liqwall, 21:02 UTC:** XRP $0.9563; aggregate open interest $973M, −2.8% over 24 hours; average funding −0.0074% per 8h; 24-hour liquidations $3.6M ($2.1M longs, $1.5M shorts). Binance accounts with XRP positions were 73.4% long. Source: https://liqwall.com/coins/xrp
+- **TradRadar, 15:30 UTC:** XRP $0.9444; open interest $1.31B across Binance, Bybit, Gate, MEXC, Bitget, OKX and Hyperliquid, −5.04% over 24 hours; OI-weighted funding −0.0063% per 8h; at least $3.5M liquidations. Source: https://tradradar.io/markets/xrp
+- The $973M versus $1.31B open-interest difference is material. Snapshots differ by more than five hours and venue/contract coverage is not reconciled. Preserve both; do not average.
+- **XRP exchange wallets, 08:00 UTC:** XRP Insights attributed 22.24B XRP to 707 wallets across 24 exchanges, including cold storage. Same-wallet balances declined 126.3M XRP over seven days and 344.3M over 30 days. South Korean exchange-labeled wallets accounted for 8.57B XRP (38.6%); the U.S. 8.49B; Japan 1.38B. Wallet attribution and coverage gaps mean this is not tradable float or proven customer outflow. Source: https://xrp-insights.com/exchange-balances
+- **U.S. spot XRP ETFs:** the five-fund SoSoValue-derived series showed −$19.1M over November 9–13, cumulative net inflows of $1.79B and $1.15B net assets; November 13 was −$1.1M. The issuer-file series for November 13 remained partial at three of four reporting funds and is kept separate. Sources: https://alphafinance.io/etf/xrp/ and https://cryptokeyhole.com/etf-flows/xrp/
+- These market pages are descriptive third-party aggregates. No byte-exact response receipts were retained; none is admitted as a point-in-time model feature. The Kraken single-venue ticker snapshot also lacked a provider event timestamp.
+
+### Collateral status — distinguish live from planned
+
+- **Live:** Ripple Prime's October 15 RWA perpetual-swap product names Virtu as an institutional client and covers 100+ reference markets. Contracts reference Trade.xyz markets on Hyperliquid; Ripple Prime acts as principal, and RLUSD is named as collateral. This is not an XRPL-native derivatives venue. Ripple Prime's product page lists both RLUSD and XRP among supported collateral types, but it does not disclose balances or XRP-specific usage.
+- **Live custody / planned collateral mirroring:** Standard Chartered's RLUSD custody on XRPL is live for eligible clients. The planned LMAX collateral-mirroring arrangement remains subject to final documentation, testing, regulation and approvals.
+- **Live distribution / planned collateral:** RLUSD is live on Coinbase Prime, Exchange and retail; Coinbase Global Exchange collateral use was described as future availability.
+- **Live trading / exploratory collateral:** DBS lists sgBENJI and RLUSD on DDEx for 24/7 client rebalancing. Repo/credit against sgBENJI remains exploratory.
+- **Live custody / planned tokenized finance:** BNY supports XRP and RLUSD custody and remains primary RLUSD reserve custodian. Direct RLUSD mint/redeem through BNY and tokenized trade finance are future plans subject to approvals.
+- **Exploratory:** Soil/Flare have discussed XRP credit/collateral use; the proposed XRPL Lending Protocol remains subject to validator approval.
+- **Announced / waitlist:** C2FO Instant Pay proposes RLUSD settlement on XRPL, but a waitlist is not production volume.
+
+The key distinction is that institutional use of RLUSD as collateral does not establish XRP collateral demand. XRP is separately listed as a supported collateral type on Ripple Prime, but no public XRP collateral balances were found.
+
+### RLUSD supply and transfer-volume quality
+
+Reported XRPL RLUSD values differ: CoinDesk cited roughly $930M on RWA.xyz on October 24; Ripple said more than $1B had been issued on XRPL on October 27; StableRadar showed 754.15M on November 13; xrpl.fi showed 697M on November 16. These have different timestamps and definitions (issued, outstanding, circulating or represented). Do not average. Reconcile issuer balances, returns, burns and cross-chain supply at identical ledger indices.
+
+Bitquery's October 19 investigation reported 7.82M RLUSD payments in its September 19–October 18 window, 99.6% attributed to a 110-wallet dust cluster, with a concentrated $7.33B of payments above 1 RLUSD and material issuer mint/redemption and round-trip plumbing. This is commercial-vendor analysis, not independently reproduced. The model must distinguish transaction count, gross value, net economic flow, dust, issuer activity, circular transfers, concentration and XRP fee burn.
+
+### Source-independence and feature admission
+
+Ripple releases are primary evidence of Ripple's own claims and announced partnerships, not independent evidence of price impact. CoinDesk is owned by Bullish; its ledger report has an industry-affiliation caveat. Bitquery is a commercial analytics vendor. Liqwall and TradRadar have different coverage and no reconciled source overlap. XRP Insights uses direct XRPL account reads but third-party wallet labels. Alpha Finance and TokenPost appear to reuse the same SoSoValue ETF series. Preserve all source groups and do not count correlated dashboards as independent confirmations.
+
+All market/aggregate observations above remain descriptive only. Forecast stays `NOT_ISSUED`; accuracy stays `NOT_EVALUATED`.
