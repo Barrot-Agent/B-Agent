@@ -3517,3 +3517,16 @@ Next: complete semantic review of all 49 changed workflows, 394 changed tests an
 Run195 evidence artifacts:
 - `research/xrp_intelligence/20261116T183325Z-run195-market-institutional-and-integration-audit.json`
 - `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run195.json`
+
+
+## Run195 corrections and post-run verification — 2026-11-16
+
+### Evidence corrections
+
+1. **DTCC network roadmap:** The official DTCC Tokenization Service product page clarifies that Canton and DTCC's private Besu network are live at launch. Stellar, Circle Arc and Solana are all listed as anticipated 2027 integrations, not just Solana. DTCC lists 34 securities available to tokenize at launch, approximately $30T in assets available to tokenize, 24/7 intra-chain transfers between DTC-registered wallets, and conversion orders from 2:00 AM to 6:00 PM ET on business days with a 15-minute-or-less target. The Oct 28 launch release names 20 DTC participants with access agreements; Ripple Prime is not on that direct-access list. No XRP/XRPL integration is listed. SBI Group's Circle Arc validator role does not establish SBI as a DTCC participant or user. Sources: https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live ; https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana ; https://www.dtcc.com/products-and-services/digital-assets/tokenization .
+2. **PR #1541 MMI reconciliation:** Five paths overlap integration. `barrot_agent/mmi_adapter.py` and `tests/test_mmi_integration.py` are byte-identical. The evidence JSON differs only by a trailing newline; its parsed content is the same. The two material divergent files are `barrot_agent/mmi_v1.py` and `tests/test_mmi_v1.py`. The integration version contains canonical claim-fingerprint enforcement plus additional structural-analysis changes/tests. Keep #1541 open as a superseded candidate until semantic review is complete and a successor is merged and verified on main.
+3. **Kamilah Stevenson identity:** The 141,000-follower count appeared on a separate YouTube video result and is not attributable to the candidate channel `@KamilahStevensonXrpStocks`; the count is removed from the candidate record. Neither `@KamilahStevensonXrpStocks` nor the previously tracked `@drkamilahstevenson` is promoted to verified identity without first-party cross-link evidence. Candidate videos remain outside the verified inventory.
+
+### Exact-head verification update
+
+The Run195 handoff head `c3a9f01d0ec87224e4ce4d69eb36f887ca135962` passed exact-head push CI run [43931466942](https://github.com/Barrot-Agent/B-Agent/actions/runs/43931466942): 3,843 passed, 1 skipped, 11 warnings, 19 subtests passed in 113.69 seconds; coverage 66.90%; wheel build and installed mission smoke passed. Exact-head PR dependency audit [43931475988](https://github.com/Barrot-Agent/B-Agent/actions/runs/43931475988) passed. Push dependency audit [43931467026](https://github.com/Barrot-Agent/B-Agent/actions/runs/43931467026) was still pending at capture; push and PR fail-closed gates passed. The subsequent Run195 evidence-correction commits change only JSON/Markdown; their new head still requires its own exact-head CI before being treated as verified.
