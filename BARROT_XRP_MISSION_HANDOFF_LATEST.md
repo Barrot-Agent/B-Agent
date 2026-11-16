@@ -3952,3 +3952,57 @@ The pre-existing Coinbase trader on main defaults to dry-run, but setting `BARRO
 ### Merge decision
 
 **NO MERGE.** Exact-head 0592539 full-suite, dependency audit and fail-closed checks passed, but PR #1663 remains draft with zero independent reviews, 1,337 changed paths remain incompletely reviewed, CODEOWNERS is self-only, detailed branch protection returns HTTP 403, and the visible ruleset is disabled. The next addendum commit must pass exact-head CI independently. Keep all forecasts disabled.
+
+
+## Run199 — exact-head verification and main scheduled-data-quality audit (2026-11-16T22:04:20Z)
+
+### Repository and exact-head CI
+
+- Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`; integration head entering Run199 was `e59ff7727485f83e9c6348e8e4d0be38e99c5400` on `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Main recursive tree: 1,393 entries. Integration recursive tree: 2,565 entries. Main is an ancestor; 122 commits ahead, zero behind; no main paths are missing.
+- PR #1663 remains open, draft and unmerged: 1,337 changed paths, 122 commits, zero formal reviews, zero review threads. GitHub's `mergeable=true` metadata is not an approval or a merge-readiness decision.
+- Exact push full-suite run [43959167272](https://github.com/Barrot-Agent/B-Agent/actions/runs/43959167272) passed on `e59ff772`: **3,844 passed, zero failed, one skipped, 11 warnings, 19 subtests**, 181.59 seconds. Inclusive coverage 66.90%; legacy-core coverage 77%. The full-suite job ran every active test under `tests/`, `legacy/tests/` and `.barrot/autonomous_tasks/`; Pages validation, wheel build and installed V3/XRP mission smoke test passed.
+- Six-manifest dependency audit [43959167209](https://github.com/Barrot-Agent/B-Agent/actions/runs/43959167209) passed. No known vulnerabilities were reported in the audited manifests.
+- Exact-head fail-closed gate [43959167167](https://github.com/Barrot-Agent/B-Agent/actions/runs/43959167167) passed.
+- PR CI [43959179605](https://github.com/Barrot-Agent/B-Agent/actions/runs/43959179605) passed its applicable jobs, but the PR-event `Tests` and `Full repository test suite` jobs were skipped by the integration-branch condition. The push-triggered full-suite run above is the authoritative exact-head suite result.
+- The runner reported that GitHub Actions cache budget was exhausted and cache storage became read-only. This did not fail the tests or wheel build, but cache persistence may be impaired.
+
+### Main scheduled Cross Analysis — successful workflow, empty current sentiment windows
+
+The latest main-branch Cross Analysis run [43964350423](https://github.com/Barrot-Agent/B-Agent/actions/runs/43964350423) completed successfully at 21:51:53Z. It found 3,217 repository-corpus entity pairs; Ripple↔XRP appeared 210 times and SEC↔XRP 43 times. However, the sentiment-shift script reported **XRP recent n=0 and prior n=0; BTC recent n=0 and prior n=0**. Its entity sentiment profile reported XRP +0.46 (186 bullish, 44 neutral, 56 bearish), but that profile is calculated from the repository corpus and is not a point-in-time market sentiment window. It is not admitted as a model feature. A green workflow status therefore does not mean current sentiment data was available.
+
+### Scheduled XRP ingestion remains designed, not active on main
+
+- `.github/workflows/xrp-public-ingestion.yml` exists on the integration branch but is absent from the current main tree.
+- It is configured for hourly and daily schedules, but its job explicitly runs only when `github.ref == refs/heads/main`. It has not been activated on main; no production ingestion run is verified.
+- Its raw-source artifacts have 90-day GitHub artifact retention; feature-store checkpoints have 7-day retention. The workflow itself labels these artifacts as not WORM. Independent immutable storage and external trusted timestamp anchoring remain unverified.
+- The curated event registry remains Run192: 125 events, zero byte-exact raw-source SHA-256 receipts, 48 exact publisher timestamps, 77 missing timestamps, zero model-eligible events. `web/latest_signal.json` remains `NOT_ISSUED`; `web/signal_accuracy.json` remains `NOT_EVALUATED`. The last descriptive Kraken snapshot is from Run198 at 21:20Z and was not refreshed in Run199.
+
+### Integrated workflow safety and remaining main-branch risks
+
+Direct main/integration file comparison reconfirmed:
+
+- Main's `table-freshness-check.yml` still executes the Databricks query script with a Databricks token. Integration quarantines it with empty permissions and an unconditional false job.
+- Main's Coinbase paper-trader workflow can be manually dispatched and pushes paper-state commits to main. Integration requires explicit YES and exact-main-SHA confirmation and uploads artifacts without pushing state to main.
+- Main's A2A deployment workflow triggers on pushes under `a2a/**` and uploads secrets. Integration requires manual dispatch, exact-main-SHA validation, explicit deployment approval and separate secret-rotation approval.
+- The integration A2A workflow still references `cloudflare/wrangler-action@v4`; immutable full-commit pinning remains outstanding.
+
+Other main scheduled workflow failures were inspected:
+
+- Riemann Harvest [43798453131](https://github.com/Barrot-Agent/B-Agent/actions/runs/43798453131): focused pytest failed because coverage flags were injected while `pytest-cov` was absent. Integration installs `pytest-cov`/`pydantic-settings` and overrides global `addopts`; no subsequent main scheduled verification yet.
+- Hover Bike Updates [43816240220](https://github.com/Barrot-Agent/B-Agent/actions/runs/43816240220): artifact upload could not find `hover_bike_spec.json` due working-directory/path mismatch. Integration changes generator/documentation execution to repository-root paths; no subsequent main scheduled verification yet.
+- Pillars Consistency Check [43873159077](https://github.com/Barrot-Agent/B-Agent/actions/runs/43873159077): missing GitHub App ID/private key/installation ID and `hf_space` build error. Its workflow is unchanged on integration; this requires authorized configuration review. No secrets were modified.
+
+### Governance, PR inventory and coordination
+
+- Nine PRs remain open. #1663 is blocked pending independent review and complete semantic review. #1541 is a superseded-candidate/reconciliation-required branch: all five paths overlap #1663, and the two MMI implementation/test pairs still require byte-level and semantic reconciliation. #1450, #1460, #1440, #1436, #1437 and #1353 remain unique/unreviewed research or repair work. #1265 remains unique/unreviewed with one non-identical `.github/workflows/ci.yml` overlap. No source PR was closed.
+- Main branch-protection details still return HTTP 403. Visible ruleset 10863829 is disabled. `.github/CODEOWNERS` still assigns all paths to `@Barrot-Agent` alone. The GitHub connection still has admin/maintain/push/pull/triage permissions; least privilege is not satisfied.
+- ChatGPT's GitHub data flow remains verified. No new authentication/data-flow test was performed for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. No external model task was dispatched.
+
+### Merge decision and next actions
+
+**NO MERGE.** Exact-head full suite, dependency audit and fail-closed gate now pass, but PR #1663 is still draft, has no independent reviews, and 1,337 changed paths have not received complete semantic review. Detailed branch-protection requirements remain inaccessible and the visible fallback ruleset is disabled. Main still contains workflow behavior that integration has quarantined or gated. Do not remove draft status or bypass protection.
+
+Next: obtain an independent reviewer and real CODEOWNERS; inspect authorized branch protection; complete semantic review of the 49 workflow paths and 396 changed test paths plus all remaining diffs; reconcile #1541's materially different MMI files; pin Wrangler to a full reviewed SHA; then re-run exact-head CI. After a safe merge only, refetch main, verify the merge commit and run main CI before activating scheduled public ingestion. Keep forecasts disabled until raw-source receipts, exact timestamps, point-in-time eligible data, leakage-safe out-of-sample superiority, calibration and independent shadow validation are demonstrated.
+
+**No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source-PR closure occurred in Run199.**
