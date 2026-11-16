@@ -1,3 +1,75 @@
+# Current mission status — Run179
+
+**Captured:** 2026-11-16T00:26:10Z  
+**Mission priority:** 1 — XRP intelligence and measured prediction-engine mastery  
+**Foundation:** Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.  
+**Main:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration parent/head inspected:** `1a706ef65d116f2db773a8fe20f98b84ca24a452`  
+**Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open and draft  
+
+## Run179 — verified work
+
+### Repository and CI
+
+- Complete recursive trees: main 1,393 entries; integration 2,519 entries; neither truncated.
+- Main paths missing from integration: 0. Shared divergent blobs: 205. Integration-only paths: 1,126.
+- PR #1663: 21 commits ahead, zero behind, 1,284 changed files; sole open PR targeting main. Eight other open PRs target separate research/security branches.
+- Exact-head full suite on `1a706ef65d116f2db773a8fe20f98b84ca24a452`: [run 43779590638](https://github.com/Barrot-Agent/B-Agent/actions/runs/43779590638) passed: 3,829 passed, zero failed, one skipped, 19 subtests; 153.61 seconds; 64.09% inclusive coverage and 77% legacy-core coverage. Wheel build and installed V3/XRP mission verification passed.
+- Six-manifest dependency audit [43779590623](https://github.com/Barrot-Agent/B-Agent/actions/runs/43779590623) passed with zero known vulnerabilities. Push fail-closed gate [43779590700](https://github.com/Barrot-Agent/B-Agent/actions/runs/43779590700), PR dependency audit [43779596103](https://github.com/Barrot-Agent/B-Agent/actions/runs/43779596103), PR fail-closed gate [43779596096](https://github.com/Barrot-Agent/B-Agent/actions/runs/43779596096), and PR Pages validation [43779596028](https://github.com/Barrot-Agent/B-Agent/actions/runs/43779596028) passed. PR test jobs are skipped by the integration-branch condition; push full-suite is authoritative.
+- This Run179 handoff/audit/map commit is a new head after `1a706ef65d116f2db773a8fe20f98b84ca24a452`; its own exact-head CI must complete before merge consideration.
+
+### Workflow and safety audit
+
+- All 48 changed workflow definitions were fetched and inspected. Twenty-five contain an explicit false job guard. No explicit repository write permissions for contents, issues, pull requests, Actions or checks were found in those workflow files.
+- Integration paper-trader requires typed YES, exact current main SHA, product-identity preflight, read-only repository permission and artifact-only output. Databricks bundle is quarantined. Barrot Ops requires typed confirmation, exact main SHA and separate Databricks/Kaggle approvals. A2A deployment requires typed confirmation, a separate secret-rotation confirmation and exact main SHA.
+- Main still contains unsafe manual write paths in Coinbase Paper Trader, Ask Barrot and Barrot Sync. They were not dispatched. Main's Coinbase paper trader still lacks typed approval/product-identity validation and pushes simulation state; main Ask Barrot still has Groq/contents/issues write behavior; main Barrot Sync still masks push failures.
+- Scheduled XRP ingestion on integration is read-only and main-ref guarded. Its GitHub artifacts have 90-day retention, not independent WORM durability. No scheduled ingestion on main is verified.
+
+### XRP market snapshot — descriptive only
+
+- OKX XRP-USDT: $0.9658 last, $0.9660/$0.9661 bid/ask, timestamp 00:25:05.361 UTC; 24h volume 57.56M XRP; rolling open $0.9291, high $0.9795, low $0.8993.
+- Bybit XRPUSDT: $0.9737 last, $0.9737/$0.9738 bid/ask, timestamp 00:01:23.843 UTC, 23m41.5s older than OKX. Kraken XRP/USD: $0.97342 last, $0.97313/$0.97326 bid/ask, no event timestamp.
+- Mid-price differences versus OKX were approximately 79.71 bps for Bybit and 73.96 bps for Kraken, but quotes were asynchronous. OKX USDT-USD reference was timestamped 23:47:30.069 UTC, 2,255.292 seconds away from the OKX XRP quote; USD normalization fails the 60-second gate. No arbitrage inference.
+- Full-depth L2 endpoints were unavailable. Top-of-book sizes are not depth. No raw HTTP byte capture or SHA-256 receipt was created; these observations are model-ineligible.
+
+### Derivatives, exchange balances and ETF flows
+
+- Liqwall snapshot 23:52 UTC: OI approximately $1.01B, down 5.0% over 24h; funding -0.0067%/8h on Binance and -0.0052% average; $7.5M liquidations ($3.3M longs/$4.2M shorts). Binance accounts 72.8% long; Hyperliquid accounts 49.4% long. This is one aggregator universe, not consensus.
+- XRP Insights exchange-wallet snapshot 08:00 UTC Nov 15: 22.25B XRP in 707 wallets across 24 exchanges. Same-wallet change: -97.9M over 7d and -329.7M over 30d. Naive 30d total change is +191.2M because 520.9M XRP entered newly tracked wallets. Tracked wallets include cold storage and 481M XRP in wrapped/insurance reserves; this is not tradable float or beneficial ownership.
+- ETF trackers remain inconsistent by universe and methodology: CryptoKeyhole's Nov 13 figure is partial (-9,967 XRP from 3/4 funds; Nov 12 complete +4.337M XRP); XRP Insights tracks six spot funds plus BITW and reports 1.19B XRP holdings, -6.08M XRP weekly and +3.40M on Nov 13; Alpha Finance's five-fund universe reports -$1.1M on Nov 13 and -$581.7K over 30 sessions. Do not average.
+
+### XRPL lending governance and collateral correction
+
+- Independent XRPL Dashboard roll call at 00:03 UTC Nov 16, ledger 108,356,095: 35/35 validators heard; 29 yes votes required. SingleAssetVault 23/35; LendingProtocol 22/35; LendingProtocolV1_1 22/35; ConfidentialTransfer 21/35. No amendment majority entries and no 14-day activation countdown.
+- Official XRPL docs require **more than 80%** for 14 consecutive days. With 35 validators, 28/35 is exactly 80% and insufficient; 29/35 is required. A secondary dashboard showing 28 as the threshold conflicts with the official rule and the independent node's corrected roll-call explanation.
+- XLS-66 is designed for fixed-term **uncollateralized** loans funded from pooled Single Asset Vault assets, with off-chain underwriting. The current design does not provide automated on-chain collateral or liquidation management. First-loss capital is optional, finite and does not guarantee depositors are made whole. XLS-65 vaults can hold one asset such as XRP, an IOU or an MPT; that does not make borrower loans XRP-collateralized. The XLS-67 risk-sleeve discussion is a community proposal, not an adopted amendment.
+- Neither SingleAssetVault nor LendingProtocol is active on mainnet at this snapshot. Claims that native XLS-66 lending is already live or that it creates mandatory XRP collateral demand are unsupported.
+
+### PR ancestry and backlog
+
+- Open PRs: #1663 plus #1541, #1460, #1450, #1440, #1437, #1436, #1353 and #1265. The eight source branches have no common ancestor with the current integration head; none was closed.
+- #1541 is only partially ported: 2/5 changed-file blobs are identical, 2 code/test files differ, and its unique research artifact is absent from integration. Preserve it as unique/unreviewed pending semantic reconciliation; do not call it a duplicate.
+- #1460/#1450/#1440/#1437/#1436/#1353/#1265 remain unique/unreviewed research, ledger archive or repair branches. No common ancestry is not proof of duplicate content.
+- PR #1663 remains draft with zero formal reviews, zero approvals and zero review threads. Main branch-protection API returns HTTP 403; visible required contexts are empty; fallback ruleset 10863829 is disabled; CODEOWNERS is self-only; connector scopes remain admin/maintain/push/pull/triage. **No merge.**
+
+### Prediction and platform status
+
+- Prediction engine remains implemented as a prototype: 51 public sources, 49 scheduled definitions, 85 curated events, 64 independence groups, 85 missing raw-source SHA-256 receipts and 43 missing publisher timestamps. Independent WORM archive and trusted timestamp anchoring are not verified. No qualified XRP candidate or independent shadow cohort exists.
+- Forecast: `NOT_ISSUED`. Accuracy: `NOT_EVALUATED`.
+- Nine-platform map: ChatGPT/GitHub connector verified but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot historical one-off only; Hugging Face no verified deployment; Kaggle untested; Databricks previous HTTP 403. No independent model dispatch or red-team quorum.
+
+### Next concrete actions
+
+1. Complete exact-head full-suite verification on the Run179 evidence commit.
+2. Continue semantic review of all 1,284 changed paths, prioritizing 48 workflows and called scripts.
+3. Resolve independent review, branch-protection visibility and least-privilege permissions.
+4. Establish byte-exact source receipts and independent WORM archival; complete synchronized historical L2/derivatives/flows data.
+5. Keep all forecasts at NOT_ISSUED until leakage-safe out-of-sample and independent shadow criteria pass.
+
+---
+
+# Historical handoff archive — Run174
+
 # Barrot XRP Mission Handoff — Run174
 
 **Captured:** 2026-11-15 21:01:47 UTC  
