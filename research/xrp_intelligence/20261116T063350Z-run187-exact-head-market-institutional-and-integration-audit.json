@@ -297,13 +297,14 @@
       {
         "source": "Coindaro / SoSoValue five-fund series",
         "url": "https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/",
-        "source_published_at": "2026-11-14T12:05:00Z",
+        "source_published_at": "2026-11-14",
         "latest_session": "2026-11-13",
         "november_net_outflow_usd": 19660000,
         "cumulative_net_inflow_usd": 1790000000,
         "net_assets_usd": 1150000000,
         "sessions_without_net_inflow_since": "2026-10-29",
-        "source_group": "sosovalue_five_fund"
+        "source_group": "sosovalue_five_fund",
+        "source_published_at_utc": null
       },
       {
         "source": "CryptoKeyhole issuer-file tracker",
@@ -324,7 +325,7 @@
     "institutional": [
       {
         "source": "BNY / Ripple",
-        "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+        "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
         "published_at": "2026-10-27",
         "verified_activity": "BNY's Digital Asset Custody platform now supports XRP and RLUSD; BNY is RLUSD's primary reserve custodian and has a custody relationship with Ripple Prime.",
         "planned_activity": "Broader XRPL tokenized-asset support, direct RLUSD mint/redeem through BNY, and tokenized trade finance remain future/intended use cases subject to client requirements.",
