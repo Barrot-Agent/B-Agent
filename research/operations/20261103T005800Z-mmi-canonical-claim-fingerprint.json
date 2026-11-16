@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "mmi_canonical_claim_identity_hardening",
+  "snapshot_id": "mmi-canonical-claim-fingerprint-20261103-run11",
+  "captured_at_utc": "2026-11-03T00:58:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "parent_pull_request": 1540,
+  "parent_head": "160b56e5e7548d950f40c8a7aadd431872b1cae8",
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "finding": {
+    "classification": "CONFIRMED_RESIDUAL_LIMITATION_IN_PARENT_PROPOSAL",
+    "summary": "PR #1540 binds evidence records to a shared caller-supplied claim_id, but that identifier was opaque and was not required to fingerprint the claim text. Different propositions could therefore be assigned the same claim_id.",
+    "correction": {
+      "function": "canonical_claim_id",
+      "version": "barrot-mmi-claim-v1",
+      "algorithm": "SHA-256 over a versioned namespace and NFKC-normalized, case-folded, whitespace-collapsed claim text",
+      "punctuation": "Preserved; wording changes produce a different fingerprint",
+      "enforcement": "Every evidence record named in CORROBORATED or CONTRADICTORY results must have claim_id equal to the canonical fingerprint of its own claim text.",
+      "adapter": "MMIExistingSystemsAdapter.evidence_record now generates the fingerprint by default and rejects a caller-supplied mismatch."
+    },
+    "tests_added": [
+      "Unicode compatibility and whitespace normalization",
+      "Different wording produces different claim fingerprints",
+      "A corroboration result cannot reuse one opaque caller-selected ID across unrelated propositions",
+      "The adapter generates the canonical ID",
+      "The adapter rejects a forged or mismatched ID"
+    ],
+    "limitations": [
+      "A cryptographic fingerprint binds the exact normalized text; it does not prove semantic truth.",
+      "It does not establish that distinct publishers have independent reporting lineage.",
+      "Common-origin lineage_id/origin_source_id and reviewed publisher-alias maintenance remain future work."
+    ]
+  },
+  "changed_paths": [
+    "barrot_agent/mmi_v1.py",
+    "barrot_agent/mmi_adapter.py",
+    "tests/test_mmi_v1.py",
+    "tests/test_mmi_integration.py"
+  ],
+  "verification": {
+    "state": "PENDING_EXACT_HEAD_CI",
+    "local_test_execution": "NOT_EXECUTED",
+    "ci_execution": "PENDING"
+  },
+  "safety": {
+    "main_modified": false,
+    "parent_branch_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "deployment": false,
+    "real_money": false
+  }
+}
