@@ -107,9 +107,11 @@
         "in_kind_xrp": {
           "total_xrp": 388910554,
           "components": {
-            "private_placement_xrp": 261919096,
+            "advance_funding_xrp": 600000,
             "delayed_funding_xrp": 200000,
-            "ripple_contribution_xrp": 126791458
+            "rippleworks_to_arrington_sponsor_xrp": 211319096,
+            "ripple_affiliated_contributor_xrp": 50000000,
+            "ripple_direct_contribution_xrp": 126791458
           },
           "treatment": "In-kind XRP contributions, not cash proceeds."
         },
@@ -131,12 +133,14 @@
         },
         "convertible_note": {
           "principal_usd": 30000000,
-          "net_cash_proceeds_usd": 29000000,
+          "gross_proceeds_before_transaction_expenses_usd": 30000000,
           "advisor_fee_usd": 1000000,
+          "other_reimbursable_expenses_cap_usd": 125000,
+          "approximate_cash_after_advisor_fee_before_other_expenses_usd": 29000000,
           "annual_pik_rate_percent": 4,
           "maturity_year": 2031,
           "use": "General corporate purposes including potential XRP acquisition and other XRP-ecosystem activities.",
-          "treatment": "Debt cash, not equity proceeds and not proof of a specific XRP purchase."
+          "treatment": "Debt cash, not equity proceeds and not proof of a specific XRP purchase. The $29M figure is an arithmetic remainder after the stated advisor fee only, not a final net-proceeds figure after all expenses."
         },
         "eloc": {
           "maximum_new_shares": 5218935,
@@ -166,7 +170,7 @@
         "separate_ripple_contribution": "126,791,458 XRP contributed by Ripple; the Pathfinder transfer plus Ripple contribution reconciles to 473,276,430 XRP.",
         "non_double_counting": "The $214.1M used for XRP purchases is included in the broader $224.6M private-placement cash component of $272.6M gross closing cash."
       },
-      "sbi_relationship": "The SEC filing states that certain investors affiliated with SBI Holdings received Class C shares in connection with the 39.9% ownership threshold. This is SBI Holdings, not the separate Japanese SBIC East/Central/West companies.",
+      "sbi_relationship": "The SEC filing says certain investors affiliated with SBI Holdings, Inc. amended their Advance Funding Subscription Agreements to cap Class A share issuance at a 39.9% threshold; shares otherwise above that threshold were issued as Class C shares, which remain convertible into Class A under governing documents. The filing does not attribute the entire $214.05M advance cash or 600,000 XRP to SBI-affiliated investors and does not state a specific SBI investor cash amount. This is SBI Holdings, not the separate SBIC East/Central/West companies.",
       "coinbase_principal_market": {
         "selected_market": "Coinbase",
         "selection_date": "2026-09-30",
@@ -180,7 +184,15 @@
         "counter_hypothesis": "The accounting-market selection does not prove Evernorth executed every XRP purchase on Coinbase, that Coinbase custodies the XRP, or that Coinbase is a required settlement venue.",
         "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm"
       },
-      "primary_source_note": "The SEC filing also selects Coinbase as Evernorth's principal market for XRP valuation while separately naming BitGo Trust as initial custodian; do not conflate valuation market, execution venue and custodian."
+      "primary_source_note": "The SEC filing also selects Coinbase as Evernorth's principal market for XRP valuation while separately naming BitGo Trust as initial custodian; do not conflate valuation market, execution venue and custodian.",
+      "ripple_related_capital": {
+        "rippleworks_to_arrington_sponsor_xrp": 211319096,
+        "rippleworks_relationship": "RippleWorks, Inc. (a nonprofit foundation and limited partner of Arrington XRP Capital Fund, LP) contributed 211,319,096 XRP to the sponsor, which subscribed the same amount into Pubco.",
+        "ripple_affiliated_contributor_xrp": 50000000,
+        "ripple_affiliated_contributor_treatment": "A Ripple-affiliated contributor subscribed 50,000,000 XRP for Pubco equity; Ripple and the related contributor entity's combined Class A ownership was structured not to exceed 9.9%, with excess interests represented by Pathfinder units.",
+        "ripple_direct_contribution_xrp": 126791458,
+        "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm"
+      }
     },
     "sbic_identity": {
       "resolved": true,
