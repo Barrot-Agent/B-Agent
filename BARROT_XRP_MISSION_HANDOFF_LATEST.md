@@ -2772,3 +2772,37 @@ The earlier prose said “67% long” for the Liqwall Binance account positionin
 Code head `003e65e61dec8816d171cafb328cc9a26e535119` passed [full repository suite 43883681688](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883681688), job 133355975476: **3,830 passed, zero failed, one skipped, 19 subtests**, 106.56 seconds; 64.09% inclusive and 77% legacy-core coverage. Wheel and mission verification passed. Six-manifest dependency audits [43883680311](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883680311) and [43883690801](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883690801) passed with zero known vulnerabilities; fail-closed gates [43883680300](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883680300) and [43883690797](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883690797) passed. Non-failing follow-ups: deprecated TOML license-table metadata, package-discovery warnings for `barrot_agent.data.missions` and `data.research`, and GitHub Actions cache budget now read-only.
 
 **Prediction gate remains closed:** no raw-byte receipts admitted, no model-eligible observations, no directional forecast.
+
+
+### Run190 final verification and regulatory/identity update
+
+**Captured:** 2026-11-16 14:25:44 UTC  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Code head verified:** `2562525ee509492f948efd5b72db392814f6270a`
+
+#### Exact-head CI on the relationship-graph commit
+
+- Push CI [43884664015](https://github.com/Barrot-Agent/B-Agent/actions/runs/43884664015), full-suite job 133359434222: **3,830 passed, zero failed, one skipped, 19 subtests passed**, 114.81 seconds. Inclusive coverage 64.09%; legacy core coverage 77%. Wheel build and packaged primary mission verification passed.
+- Dependency audit push [43884665192](https://github.com/Barrot-Agent/B-Agent/actions/runs/43884665192) and PR [43884683541](https://github.com/Barrot-Agent/B-Agent/actions/runs/43884683541) passed. Six manifests were audited: runtime, development, integrations, Hugging Face Space, legacy and PEP 621; no known vulnerabilities found.
+- Fail-closed gate push [43884664158](https://github.com/Barrot-Agent/B-Agent/actions/runs/43884664158) and PR [43884683806](https://github.com/Barrot-Agent/B-Agent/actions/runs/43884683806) passed. PR CI [43884683577](https://github.com/Barrot-Agent/B-Agent/actions/runs/43884683577) passed; its full-suite job is skipped by the integration-branch condition, so the push full-suite job is authoritative.
+- Non-failing packaging follow-ups: deprecated TOML `project.license` table, package-discovery warnings for `barrot_agent.data.missions` and `data.research`, and GitHub Actions cache budget reached/read-only. The test and wheel gates still passed.
+- This handoff-only commit will require its own exact-head CI; the results above apply only to `2562525`.
+
+#### Regulatory and distribution update
+
+- **Ripple National Trust Bank:** OCC Corporate Applications Search records application 2025-Charter-342347 as **consummated/effective 2026-10-26**. Ripple's announcement says the approved trust-bank activities include managing segregated RLUSD reserves, serving as collateral trustee and fiduciary digital-asset custody. The RLUSD issuer remains Standard Custody & Trust Company. Treat the charter as effective, but do not assume every planned service is already operational; Ripple describes operations as beginning subject to readiness/pre-opening steps. OCC record: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2 ; Ripple announcement: https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+- **BNY:** BNY remains RLUSD's primary reserve custodian and now supports XRP/RLUSD custody. BNY and Ripple intend to enable BNY-client mint/redeem and are exploring a C2FO supply-chain-finance initiative; these are intended future capabilities, not verified live flows. https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/
+- **Standard Chartered/LMAX:** Standard Chartered RLUSD custody on XRPL is live. The collateral-mirroring arrangement with LMAX is planned and remains subject to documentation, testing, legal/regulatory and internal approvals. https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/
+- **Coinbase:** RLUSD is live on Coinbase Prime, Exchange and retail. Global Exchange collateral support was stated as a future rollout. https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+- **Robinhood:** Ripple announced RLUSD live on Robinhood Chain and Bitstamp by Robinhood; availability in the Robinhood app was expected later. This is another distribution channel, not proof of XRP purchase or settlement. https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/
+- **Ripple Mint/network expansion:** Ripple's current product documentation lists RLUSD on seven networks—XRPL, Ethereum, Base, Optimism, Ink, Unichain and XRPL EVM Sidechain—as available through Ripple Mint. Multi-chain RLUSD supply must be separated from XRPL supply and XRP bridge activity. https://ripple.com/products/stablecoin/features/
+
+#### SBIC/ChatGPT exact-phrase clarification
+
+A first-party SBIC East source was found for a free seminar on **2025-02-26** titled “Generative AI (ChatGPT): Current and Future,” with a Microsoft speaker and ChatGPT demonstrations. SBIC East also ran ChatGPT/Copilot training for its investee-company network. This explains an SBIC/ChatGPT association but does **not** establish an OpenAI partnership, an SBI Holdings relationship, or a Barrot integration. Seminar: https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf
+
+#### Current integration status
+
+PR #1663 is still the single main-targeting integration successor: 86 commits ahead, zero behind, 1,317 changed files, 482,561 additions and 6,726 deletions. It remains draft, has zero formal reviews, and has not been merged. Main remains at `1f30e5c18f151f75ad5d157ddde175723584ec69`. No source PR was closed. No deploy, paper trade, Databricks write, Kaggle submission, secret rotation, funds transfer or real-money action occurred.
+
+**Forecast status remains `NOT_ISSUED`; model accuracy remains `NOT_EVALUATED`.** The next evidence gate is direct, same-ledger-index reconciliation of RLUSD issuer obligations, returns/burns and cross-chain movements, followed by byte-exact raw receipts and synchronized XRP spot/depth/derivatives data. Do not infer XRP value capture from stablecoin supply or institutional custody announcements alone.
