@@ -270,11 +270,13 @@
       "first_ingested_at_utc": "2026-07-27T06:55:24.297081Z",
       "last_ingested_at_utc": "2026-10-29T13:38:11.448678Z"
     },
-    "cross_analysis_workflow": "Hourly fallback and workflow_run after successful Knowledge Signal Cycle; it only reads checked-in logs and does not ingest news.",
-    "knowledge_signal_cycle_workflow": "workflow_dispatch only; requires confirm_external_research=YES; performs public-news ingestion and Groq/GitHub Models sentiment distillation. Keep manual because it makes external model calls and may incur usage.",
+    "cross_analysis_workflow": "Main cross-analysis.yml is schedule + workflow_dispatch only; no workflow_run trigger from Knowledge Signal Cycle. It reads checked-in log.jsonl/log_btc.jsonl and does not ingest news.",
+    "knowledge_signal_cycle_workflow": "Main knowledge-signal-cycle.yml is workflow_dispatch only, requires confirm_external_research=YES, calls GitHub Models/Groq for distillation, uploads artifacts and does not commit/push refreshed checked-in logs. It is not connected to the hourly Cross Analysis data path.",
     "entity_sentiment_profile": "Aggregates all historical log rows without a time-window filter; XRP +0.455 (186 bullish, 44 neutral, 56 bearish) is historical corpus sentiment, not current market sentiment.",
     "sentiment_shift": "Filters adjacent 24-hour windows; zero entries because checked-in logs stop on 2026-10-29.",
-    "conclusion": "Cross Analysis success is an execution result, not proof of fresh sentiment coverage. The scheduled public XRP market-ingestion workflow on integration is the deterministic non-LLM path; it is absent from main."
+    "conclusion": "Cross Analysis success is an execution result, not proof of fresh sentiment coverage. The scheduled public XRP market-ingestion workflow on integration is the deterministic non-LLM path; it is absent from main.",
+    "cross_analysis_triggered_by_knowledge_signal_cycle": false,
+    "integration_cross_analysis": "Integration branch uses an hourly read-only Cross Analysis with freshness-aware output; legacy Knowledge Signal Cycle is quarantined/disabled. It does not make external model calls."
   },
   "prediction_engine_code_review": {
     "forecast_ledger_schema": "barrot.xrp.model-readiness.v6",
@@ -345,5 +347,143 @@
     "funds_transfer": false,
     "real_money": false,
     "external_model_dispatch": false
+  },
+  "ingestion_scope_gap": {
+    "current_coverage": [
+      "multi-venue spot tickers",
+      "spot order-book depth",
+      "perpetual order books/open interest/funding",
+      "exchange-attributed wallets",
+      "ETF flows",
+      "RLUSD/USDC supply",
+      "SBI stablecoin lending observations",
+      "Morpho/cbXRP collateral",
+      "CFTC positioning",
+      "XRPL node/operator observations"
+    ],
+    "missing_or_incomplete": [
+      "autonomous public news/RSS ingestion",
+      "systematic FRED/BLS/Treasury/Fed macro series",
+      "geopolitical event feed",
+      "autonomous event discovery beyond curated registry"
+    ],
+    "status": "DESIGNED_GAPS_REMAIN",
+    "note": "Do not schedule the manual LLM-backed Knowledge Signal Cycle as a substitute for deterministic public ingestion. Add credential-free official feeds with byte-exact receipts and publisher timestamps."
+  },
+  "final_exact_head_verification": {
+    "verified_parent_head": "3c91c394a2ac572443bc073722c6eb3f5746605b",
+    "full_suite": {
+      "run_id": 43969238220,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43969238220",
+      "status": "success",
+      "passed": 3844,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 171.72,
+      "inclusive_coverage_pct": 66.9,
+      "legacy_core_coverage_floor": "passed",
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission_smoke": "passed",
+      "pages_validation": "passed"
+    },
+    "dependency_audit": {
+      "push_run_id": 43969238325,
+      "pr_run_id": 43969250508,
+      "status": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed": {
+      "push_run_id": 43969238204,
+      "pr_run_id": 43969250703,
+      "status": "success"
+    },
+    "pr_ci": {
+      "run_id": 43969250911,
+      "status": "success",
+      "tests_job": "skipped_by_integration_branch_condition",
+      "full_suite_job": "skipped_by_integration_branch_condition"
+    },
+    "cache_warning": "GitHub Actions cache budget reached; cache read-only. Tests and build succeeded.",
+    "note": "This is the exact result for parent head 3c91c39. The following research/handoff correction commit is a new head and requires its own exact-head checks."
+  },
+  "identity_research": {
+    "exact_phrase_searches": [
+      {
+        "query": "SBIC, ChatGPT SBIC",
+        "result": "No verified Japan-SBIC/OpenAI partnership found.",
+        "disambiguation": "Search results also surface Social Bias Inference Corpus (SBIC), an academic dataset used in ChatGPT/toxic-content research; this is distinct from Japanese SBIC East/Central/West and SBI Holdings."
+      },
+      {
+        "query": "ASK Coin actual capital XRP",
+        "result": "No verified XRP/Ripple relationship for an ASK Coin matching this exact phrase.",
+        "candidate": "Permission Coin (ASK) remains a lexical candidate only; no XRP relationship established."
+      },
+      {
+        "query": "actual capital XRP",
+        "result": "No distinct project or token relationship verified. Evernorth SEC disclosures remain the primary capital-stack evidence; cash proceeds, in-kind XRP, debt, warrants and ELOC capacity must stay separate."
+      }
+    ],
+    "youtube_channel_candidates": [
+      {
+        "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "title": "Kamilah Stevenson | XRP & Stocks",
+        "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+        "attribution": "YouTube search results",
+        "status": "channel_candidate; cross-channel identity unverified"
+      },
+      {
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "title": "Kamilah Stevenson",
+        "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "attribution": "third-party TrendReport channel link",
+        "status": "channel_candidate; cross-channel identity unverified"
+      },
+      {
+        "handle": "@drkamilahstevenson",
+        "url": "https://www.youtube.com/@drkamilahstevenson",
+        "attribution": "previously observed candidate",
+        "status": "separate candidate; no verified cross-link to other channel IDs"
+      }
+    ],
+    "attributed_video_candidates": [
+      {
+        "video_id": "YJdK1LvmJSo",
+        "url": "https://www.youtube.com/watch?v=YJdK1LvmJSo",
+        "publisher_date": "2026-04-19",
+        "attribution": "Kamilah Stevenson via YouTube search",
+        "status": "candidate; exact channel cross-link unverified"
+      },
+      {
+        "video_id": "pFru4idBTMA",
+        "url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+        "publisher_date": "2026-05-12",
+        "attribution": "Kamilah Stevenson via YouTube search",
+        "status": "candidate; exact channel cross-link unverified"
+      },
+      {
+        "video_id": "anzmlZ-a7K4",
+        "url": "https://www.youtube.com/watch?v=anzmlZ-a7K4",
+        "publisher_date": "2026-11-10",
+        "attribution": "third-party TrendReport links this video to channel UCqUPJMQdkCN6lsLVDnichPA",
+        "status": "candidate; YouTube page fetch throttled"
+      }
+    ],
+    "identity_conclusion": "Channel-level attribution is available for candidates, but no first-party cross-link or legal/person identity verification establishes that these separate channels belong to the same person. No Camilla Stevenson channel was verified.",
+    "unverified_creator_claims": [
+      "4.09B XRP accumulated",
+      "7.03B exchange outflows",
+      "$3.5B XRPL RWA settlement in 30 days",
+      "$900M XRPL settlement in one day"
+    ],
+    "fact_check": "The Nov 10 BlackRock/SBI video title appears to reference SBI's Oct 27 MOU with BlackRock to explore tokenized money-market funds and JPYSC. The MOU is exploratory and does not establish an XRP integration.",
+    "sources": [
+      "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "https://www.youtube.com/@drkamilahstevenson",
+      "https://www.sbigroup.co.jp/news/pr/2026/1027_16512.html"
+    ]
   }
 }
