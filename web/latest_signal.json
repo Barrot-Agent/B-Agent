@@ -6,7 +6,7 @@
   "forecast_issued": false,
   "reason_code": "OUT_OF_SAMPLE_VALIDATION_INCOMPLETE",
   "explanation": "No directional XRP forecast is published. Run180 refreshed official SEC, SBIC and Permission identity evidence plus spot tickers, but the market observations remain asynchronous or fail the 60-second basis/300-second freshness gates, full-depth L2 was unavailable, and raw publisher bytes were not captured. The 90-event registry has 90 missing raw-source SHA-256 receipts and 48 missing publisher timestamps. Leakage-safe out-of-sample superiority, probability calibration, drift validation and an independent shadow cohort remain insufficient. Status is current as of this check; no forecast target, horizon or probabilities are assigned.",
-  "status_as_of_utc": "2026-11-16T01:01:31Z",
+  "status_as_of_utc": "2026-11-16T01:18:22Z",
   "data_cutoff_utc": null,
   "target": null,
   "horizon_seconds": null,
