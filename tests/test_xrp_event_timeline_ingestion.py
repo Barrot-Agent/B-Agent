@@ -293,7 +293,19 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert missing_receipts == len(registry["events"])
     assert registry["model_eligible"] is False
     missing_publisher_timestamps = sum(1 for event in registry["events"] if not event.get("source_published_at_utc"))
-    assert missing_publisher_timestamps == registry["run189_update"]["missing_publisher_timestamps"]
+    # The current registry gains a run metadata block as new evidence is appended.
+    # Select the newest numbered run block rather than pinning this test to a stale run.
+    run_metadata = [
+        (int(key[3:].split("_", 1)[0]), value)
+        for key, value in registry.items()
+        if key.startswith("run")
+        and key[3:].split("_", 1)[0].isdigit()
+        and isinstance(value, dict)
+        and "missing_publisher_timestamps" in value
+    ]
+    assert run_metadata
+    latest_run_metadata = max(run_metadata, key=lambda item: item[0])[1]
+    assert missing_publisher_timestamps == latest_run_metadata["missing_publisher_timestamps"]
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])

@@ -2612,3 +2612,68 @@ Eight source PRs remain preserved as unique/unreviewed: #1541, #1460, #1450, #14
 7. Keep forecast gate closed until data quality, walk-forward, calibration and independent shadow requirements pass.
 
 No merge, deployment, secret rotation, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run190 — integration repair, exact-head verification and governance recheck
+
+**Observed:** 2026-11-16T14:03:42Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**Verified code head:** `3804af65975afff687c5cf7073bdf023a4b64a1b`  
+**Active integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open/draft/mergeable, 1,315 changed files, 83 commits ahead of main, zero behind.
+
+### Exact-head verification on the code head
+
+The full repository push suite [43880986422](https://github.com/Barrot-Agent/B-Agent/actions/runs/43880986422) passed on exact head `3804af65975afff687c5cf7073bdf023a4b64a1b`: **3,830 passed, zero failed, one skipped, 19 subtests**, 180.25 seconds; inclusive coverage **64.09%** and legacy core-package coverage **77%**. Wheel build, packaged mission resource and installed Barrot V3/XRP mission verification passed. GitHub Pages build validation passed; this was validation only, not publication.
+
+Six-manifest dependency audit [43880986301](https://github.com/Barrot-Agent/B-Agent/actions/runs/43880986301) passed with **zero known vulnerabilities** across root runtime, development, supplemental integrations, Hugging Face Space, legacy and PEP 621 manifests. Push fail-closed gate [43880986307](https://github.com/Barrot-Agent/B-Agent/actions/runs/43880986307), PR CI [43880996534](https://github.com/Barrot-Agent/B-Agent/actions/runs/43880996534), PR dependency audit [43880996775](https://github.com/Barrot-Agent/B-Agent/actions/runs/43880996775), and PR fail-closed gate [43880996452](https://github.com/Barrot-Agent/B-Agent/actions/runs/43880996452) passed. PR-event test jobs are intentionally skipped for integration branches; the exact-head push full-suite job is authoritative.
+
+### Regression correction
+
+The predecessor head `910a7d84926e2d9c6fa4a4741f0d0253dac1befe` had 3,829 passing tests and one failure because a current event-registry count of 64 missing publisher timestamps was compared with the stale Run185 value of 61. This was a stale test fixture, not a reason to relax source-quality gates. The Run190 code head corrected the reference to Run189 metadata and passed the full suite. The follow-on handoff commit makes this assertion forward-compatible by selecting the newest numbered run metadata block; its own exact-head CI is pending and must be verified separately.
+
+### Repository, ancestry and PR inventory
+
+- Main recursive tree: 1,393 entries. Integration recursive tree: 2,546 entries. No main path is missing from integration.
+- 209 shared paths have different blobs; 1,153 paths are integration-only.
+- 49 changed workflow definitions were inspected for triggers, permissions, external actions, deployment and secret paths. Integration has 88 workflow files versus 87 on main.
+- PR #1663 is 83 commits ahead and zero behind main. Its 1,315 changed paths still require full semantic review; tree containment is not semantic equivalence.
+- Nine PRs remain open. #1663 is the only main-targeting integration. Eight source PRs remain preserved: #1541, #1450, #1460, #1440, #1436, #1437, #1353 and #1265.
+- #1541 is blocked/stacked on closed unmerged parent #1540. It overlaps four paths with #1663; two blobs are identical and two differ. Its claim-fingerprint work is represented in the successor, but it is not closed before merge and main verification.
+- #1265 overlaps only `.github/workflows/ci.yml` with #1663 and the blobs differ. #1450/#1460, #1440/#1436, #1437/#1353 and #1265 remain unique research/archive workstreams; none is bulk-closed.
+
+### Governance and workflow safety
+
+PR #1663 remains draft with **zero formal reviews, zero approvals and zero review threads**. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, so it does not provide independent ownership. Main branch protection reports non-admin enforcement but its detailed endpoint returns HTTP 403; fallback ruleset 10863829 is disabled. The GitHub connector has admin, maintain, push, pull and triage permissions and is overprivileged. No bypass was used.
+
+Main still contains unsafe or insufficiently scoped legacy automation. The integration branch quarantines the private Databricks table-freshness row logger, issue-label Barrot Agent write automation, Hugging Face secret-propagation workflow, self-hosted Space push deployment and Databricks bundle deployment. It converts A2A deployment to main-only exact-SHA approval with separate secret-rotation authorization, and guards Coinbase paper simulation with explicit confirmation and persisted-position identity checks. Barrot Ops requires explicit per-run Databricks/Kaggle confirmations. None of these external workflows was dispatched. The main versions remain effective until a safe merge; this is a material merge blocker, not a claim that main has already been secured.
+
+### XRP ingestion, evidence and prediction gate
+
+The integration contains hourly and daily read-only public ingestion definitions for synchronized spot, order-book depth, derivatives, funding/open interest, CFTC positioning, ETF/issuer data, stablecoins, custody, collateral and related public evidence. The scheduled workflow is main-only and has not been verified running on main. GitHub artifacts are retained for 90 days and explicitly are **not WORM**; independent archival and trusted timestamp anchoring remain unverified.
+
+The Run189 curated registry contains 111 events, 85 declared independence groups and 46 canonical publisher/lineage groups; **111/111 events lack byte-exact raw-source SHA-256 receipts, 64 lack exact publisher timestamps, and zero are model-eligible**. The latest research preserves source disagreement, counter-hypotheses and corrections. No XRP candidate has demonstrated out-of-sample superiority or an independent shadow cohort.
+
+**Forecast status: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional XRP forecast is authorized.
+
+### Nine-platform authentication and data-flow status
+
+The latest verified map remains [Run189](research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run189.json). ChatGPT is authenticated for GitHub repository access only, with overbroad permissions. Claude, Grok, Gemini and Codex remain unverified; Copilot activity is historical one-off activity, not a live integration or approval; Hugging Face is unverified; Kaggle is untested; Databricks is unverified following prior HTTP 403. No live connection is claimed for those providers.
+
+### Backlog classification
+
+- **Blocked integration:** #1663 — awaiting independent review, complete semantic review, least-privilege governance and branch-protection/deployment authorization.
+- **Blocked stacked security work:** #1541 — parent #1540 is closed unmerged; preserve until its changes are verified on main or explicitly reconciled.
+- **Unique/unreviewed research:** #1450, #1460, #1436, #1437, #1353 and #1265.
+- **Unique/unreviewed validator repair:** #1440.
+- No source PR is closed by this run.
+
+### Next concrete actions
+
+1. Verify the follow-on handoff/test-maintenance commit's own exact-head full suite, dependency audit and fail-closed gate.
+2. Obtain independent review and establish independent CODEOWNERS; resolve branch-protection visibility and least-privilege GitHub access.
+3. Complete semantic review of all 1,315 PR paths, prioritizing the 49 changed workflows and every invoked deployment/secret/data-access script.
+4. Only after all merge gates pass, merge #1663 through normal protection, refetch main, verify the merge commit/tree and run main CI; then close only exact superseded source PRs after file-level verification.
+5. After a safe merge, verify the scheduled ingestion workflow on main, establish independent WORM/timestamp anchoring, populate synchronized historical data and evaluate all baselines before any forecast.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
