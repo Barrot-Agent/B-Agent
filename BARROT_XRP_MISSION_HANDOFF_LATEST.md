@@ -3530,3 +3530,96 @@ Run195 evidence artifacts:
 ### Exact-head verification update
 
 The Run195 handoff head `c3a9f01d0ec87224e4ce4d69eb36f887ca135962` passed exact-head push CI run [43931466942](https://github.com/Barrot-Agent/B-Agent/actions/runs/43931466942): 3,843 passed, 1 skipped, 11 warnings, 19 subtests passed in 113.69 seconds; coverage 66.90%; wheel build and installed mission smoke passed. Exact-head PR dependency audit [43931475988](https://github.com/Barrot-Agent/B-Agent/actions/runs/43931475988) passed. Push dependency audit [43931467026](https://github.com/Barrot-Agent/B-Agent/actions/runs/43931467026) was still pending at capture; push and PR fail-closed gates passed. The subsequent Run195 evidence-correction commits change only JSON/Markdown; their new head still requires its own exact-head CI before being treated as verified.
+
+
+## Run196 — 2026-11-16 19:35 UTC
+
+### Mission priority and policy consistency
+
+- Verified the packaged and repository copies of `primary_mission.json` were identical on the integration branch. XRP intelligence is priority 1; Barrot V3 remains the execution, orchestration, safety and verification foundation. `forecast_issuance_enabled` remains false.
+- Found an admission-policy wording mismatch: machine policy required **5 origins per source cluster** (matching the 5-origin block length), while the human-readable acceptance criterion said **2**. Corrected both mission copies to require five and added a regression test. This tightens consistency; it does not relax the gate.
+
+### Repository and integration state
+
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration parent head at start of Run196: `58ebd9017897759cc422ec88a1c33fe35fc6f9c8`.
+- Compare: **115 commits ahead, 0 behind**; complete recursive trees retrieved; integration contains every main path (0 missing).
+- PR #1663 remains draft. It has 1,333 changed paths, 49 changed workflow files, 396 changed test paths, 760 research paths, zero formal reviews and zero review threads. No merge.
+- Exact-head full-suite run **43932352251** passed on `58ebd901`: 3,843 passed, 1 skipped, 11 warnings, 19 subtests passed; 66.90% inclusive coverage and 77% legacy-core coverage. Wheel build, installed mission smoke test and Pages validation passed. Dependency audits **43932352264** and **43932360888** passed; fail-closed gates **43932352277** and **43932360983** passed. The Run196 commit adds a mission-policy regression test and descriptive handoff/signal updates; its own exact-head CI remains required.
+- Main is marked protected, but branch-protection details return 403. Visible ruleset 10863829 is disabled. CODEOWNERS assigns all paths to `@Barrot-Agent` alone. The connected GitHub token has admin/maintain/push/pull/triage permissions; least privilege is not satisfied.
+- Nine open PRs remain: #1663 blocked; #1541 superseded-candidate/reconciliation required; #1450, #1460, #1440, #1436, #1437, #1353 and #1265 unique/unreviewed. #1541 has five overlapping paths; its adapter and integration test are identical, its evidence JSON differs only by a trailing newline, and two files have material differences. No PR was closed.
+
+### Workflow and execution review
+
+- Static scan covered all 49 changed workflow files. Numerous legacy workflows are explicitly disabled with `if: false` and empty permissions. Manual external-action workflows require explicit confirmation and expected-main-SHA checks; the Coinbase paper workflow is artifact-only on this branch. No manual external workflow was dispatched.
+- `.github/workflows/xrp-public-ingestion.yml` exists only on the integration branch, not main. Its schedule is main-ref gated, so **scheduled XRP ingestion is not active in the main build**.
+- The ingestion workflow is designed for public, read-only sources and stores content-addressed raw payloads, receipt JSONL, per-run hash chains and cross-run manifests. GitHub artifacts have finite retention (90 days for raw receipts); this is not WORM storage or an independent external timestamp anchor. No scheduled live receipt chain has been verified.
+- The curated registry remains at 125 events: 125 missing byte-exact raw-source SHA-256 receipts, 77 missing exact publisher timestamps and zero model-eligible events. Run196 web observations were not inserted into the feature store.
+
+### XRP market observations — descriptive only
+
+**Spot price and turnover**
+- CoinGecko live-page snapshot: approximately $0.9518; $60.49B market cap; $1.653B 24h volume; 63.517B circulating, 99.986B total and 100B max supply; 24h range $0.9424–$0.9773; displayed 7d/30d changes −12.0%/−25.6%. A separate CoinGecko historical page showed $0.9558, $61.87B market cap and $2.424B volume; another live result showed $0.9470. These are separate page snapshots and are not averaged.
+- CoinGlass reported 15 spot markets, $554.50M 24h spot volume, taker net flow −$18.77M over 24h and −$210.02M over 7d; its 24h futures volume was $2.43B, approximately 4.4× its spot universe. CoinGecko and CoinGlass cover different venue universes; their volumes are not directly interchangeable.
+- Fuelmaps' 11:00 UTC six-venue spot snapshot showed $0.9541 mid; bids/asks were $7.5M/$5.9M within ±0.5%, $10.2M/$8.9M within ±1%, $15.8M/$12.0M within ±2%, and $17.1M/$14.3M within ±5%. At ±10%, coverage fell to five of six venues.
+- Basis' 14:15 UTC Binance XRPUSDT perpetual book showed $0.9540 mid, 1.05 bps spread, $33.6M bids/$32.0M asks across 1,000 levels, and 51% bid share within ±1%. This is a **perpetual** book, not spot depth.
+
+**Derivatives disagreement**
+- CoinGecko: approximately $1.869B XRP perpetual OI, funding −0.0021% per 8h.
+- Liqwall: $981M OI at 12:52 UTC, −3.2% over 24h.
+- Kodexius: $521.94M OI across seven contracts at 13:24 UTC; weighted funding −0.0035% per 8h; $1.21B 24h volume.
+- OptimistFi: $1.2B OI across 36 venues at 17:00 UTC.
+- The $522M–$1.869B spread is material. Preserve each venue universe and timestamp; do not average or use as a feature until definitions are reconciled.
+
+**ETF flows**
+- CryptoKeyhole's issuer-file aggregation, updated 19:35 UTC, showed the latest complete day (Nov 12) at +4,337,131 XRP; Nov 13 was partial at −9,967 XRP with 3/4 tracked funds reporting. Its last five complete trading days (Nov 6–12) were −5,665,115 XRP; its Oct 23–Nov 12 15-day total was −2,290,607 XRP, with 11 outflow days and 3 inflow days.
+- XRP Insights' separate Nov 9–13 series (six spot ETFs plus BITW) reported −6,078,606 XRP and 1.189B XRP held. Different fund universes and windows; not directly comparable.
+
+### Institutional network and capital findings
+
+**SBI / Ripple**
+- SBI's 2025 information-meeting presentation says SBI Group holds approximately 9% of Ripple's shares and describes SBI Remit's international transfer service as utilizing XRP since 2021. This is Ripple equity, not XRP token ownership. SBI Ripple Asia is a separate joint venture; SBI Remit is the XRP-remittance operator.
+- SBI's official Circle investment notice confirms $50M total Circle equity investment: $25M from SBI Holdings and $25M from SBI Shinsei Bank. The Circle/SBI Japan joint venture is 50/50. Circle's Q3 2026 SEC filing reports no significant operating results for the Japanese JV through September 30, 2026.
+- Circle's September 16 Arc mainnet announcement names **SBI Group** as a founding validator. Arc uses USDC for gas and a permissioned validator set. This is a parallel stablecoin-native institutional rail, not XRPL/XRP settlement.
+- SBI VC Trade's RLUSD distribution and JPYSC are separate from XRP. JPYSC is issued by Shinsei Trust & Banking and co-developed with Startale.
+
+**Coinbase / Circle**
+- Circle's Q3 2026 SEC Form 10-Q reports average USDC circulation of $73.3B and $13.9T on-chain transaction volume. It reports distribution costs to Coinbase of $331.3M in Q3 and $986.6M for the first nine months.
+- Coinbase's Q3 2026 results report approximately $22B average USDC held in Coinbase products, around 30% of average USDC market capitalization, and about 50% of USDC economics over the preceding year. The SEC filing and Coinbase earnings together confirm a material direct commercial dependency; they do not establish XRP demand.
+- Coinbase lists RLUSD on Prime, Exchange and retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral use was described as planned/future, not verified live.
+
+**Ripple / institutional distribution**
+- BNY's custody announcement covers XRP and RLUSD custody and RLUSD reserve custody; no custody balances or resulting XRP settlement volume were disclosed.
+- Ripple Prime's RWA perpetual-swap expansion uses RLUSD collateral on Trade.xyz/Hyperliquid. This is RLUSD collateral, not XRP collateral.
+- C2FO Instant Pay is announced for RLUSD settlement on XRPL; no realized on-chain volume was verified. The settlement asset is RLUSD, not XRP.
+- OCC CAS records national trust-bank charters as consummated/effective: Circle's First National Digital Currency Bank, N.A. on July 24, 2026; Ripple National Trust Bank on October 26, 2026; Coinbase National Trust Company on November 6, 2026. These are trust-bank charters, not evidence of deposit-taking commercial banks or automatic XRP use. Circle states its national trust bank does not accept deposits or make loans.
+
+**Evernorth — actual capital versus commitments**
+- SBI's October 2025 notice announced a $200M cash commitment to Evernorth. The SEC Q3 2026 filing reports actual closing gross cash of $272.6M: $224.6M private-placement cash plus $48M SPAC trust cash, and 388.91M XRP contributed in kind.
+- The SEC filing does **not** itemize exactly how much of the $224.6M private-placement cash came from SBI; do not assume the full $200M commitment was received without subscriber-level reconciliation.
+- The filing also reports a $30M convertible note with $29M net cash proceeds, which is debt, and a $521.9M equity-line capacity, which is not cash raised. Actual equity-line draws were not established in the reviewed filing.
+- Pre-closing September 30 financials showed $91,397 unrestricted cash, $341.9M XRP assets (346.285M XRP), $534.5M total liabilities, $524.3M refundable investor advances, $32.9M nine-month net loss, $271M impairment and no revenue. This is a treasury vehicle with substantial XRP exposure and financing/valuation risk, not proof of payment-rail volume.
+- At closing, 346.485M XRP was transferred to Pathfinder and Ripple separately contributed 126.791M XRP. The resulting gross 473.276M XRP is not all attributable to public Evernorth shareholders; preserve Pathfinder ownership and related-party interests when calculating exposure.
+
+### Exact-phrase and identity research
+
+- ASK Coin: Permission Coin (ASK) remains a possible lexical match, but no XRP/Ripple relationship was established. Exact intended reference remains unresolved.
+- “Actual capital”: the Evernorth SEC filing now provides primary cash/in-kind/debt/commitment reconciliation. The exact phrase's intended source remains unresolved.
+- “SBIC, ChatGPT SBIC”: no partnership evidence. The SBIC East ChatGPT seminar remains a seminar, not an OpenAI relationship.
+- Camilla/Kamilah Stevenson: a candidate Linktree points to a channel named `@drkamilahstevenson`, but no independent cross-link from an established official website or verified identity source was found. No video inventory was promoted to verified attribution.
+
+### Nine-platform coordination
+
+- ChatGPT GitHub access is verified, but the connector permission set is broader than least privilege.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified/unconnected for this run. No live authentication or data flow is claimed; no external model task was dispatched.
+
+### Next actions
+
+1. Verify the exact-head full-suite, dependency audit and fail-closed gate for the Run196 commit.
+2. Continue full semantic review of the 1,333 changed paths, prioritizing the 49 workflows, 396 test paths, packaging and secret/data-flow boundaries.
+3. Reconcile PR #1541's two material differences; do not close it until a successor is merged and verified.
+4. Obtain independent review and authorized visibility into main branch protection; replace self-only CODEOWNERS and broad connector permissions through an approved governance path.
+5. Activate scheduled public-data ingestion only after the workflow is merged to main and its first receipt chain is verified. Add independent WORM/timestamp anchoring before calling receipts immutable.
+6. Keep the forecast gate closed until point-in-time raw receipts, reconciled source definitions, chronological walk-forward superiority, calibration and shadow validation are demonstrated.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.

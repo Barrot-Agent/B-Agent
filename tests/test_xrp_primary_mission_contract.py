@@ -132,3 +132,17 @@ def test_forecast_ledger_contract_documents_policy_v6() -> None:
     assert "BARROT_XRP_MODEL_READINESS_V6" in contract
     assert "minimum_origins_per_source_cluster >= block_length_origins" in contract
     assert "Coverage simulations, cluster-count sensitivity and block-length sensitivity" in contract
+
+
+def test_acceptance_criteria_match_minimum_origins_per_source_cluster():
+    mission = _manifest()
+    policy = mission["prediction_policy"]
+    cluster_rule = next(
+        item for item in mission["acceptance_criteria"]
+        if "source clusters" in item.lower()
+    )
+
+    # Match the five-origin block length and machine admission policy.
+    assert policy["minimum_origins_per_source_cluster"] == 5
+    assert "at least five origins per cluster" in cluster_rule.lower()
+    assert "at least two origins per cluster" not in cluster_rule.lower()
