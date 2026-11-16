@@ -614,6 +614,21 @@ The current event registry has 85 curated events and 64 independence groups; all
 ### Governance and decision
 **NO MERGE.** Main branch-protection access remains HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; the GitHub connector exposes admin/maintain/push/pull/triage. Full semantic review of all 1,280 changed paths remains incomplete. No PR was merged or closed. No deployment, secret rotation, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, force-push or destructive worktree operation occurred.
 
+
+### Run178 primary-source correction — SBIC Central and Evernorth relationships
+
+The official SBIC Central profile states capital of 43億80万円, which is ¥4.308B (not ¥4.3808B). The structured audit has been corrected accordingly.
+
+The Evernorth SEC Q3 Form 10-Q adds material relationship distinctions:
+- Certain Advance Funding investors are affiliated with SBI Holdings. Their Class A ownership was capped at 39.9%, with excess shares issued as Class C. This does not establish that SBI Holdings itself supplied all $214.05M of Advance Funding.
+- RippleWorks, Inc. (a nonprofit foundation) contributed 211,319,096 XRP to Arrington XRP Capital Fund, LP for the Series C subscription. This is distinct from Ripple Labs, Inc.
+- A separate Contributor Related Party Entity affiliated with Ripple contributed 50M XRP.
+- Ripple Labs, Inc. separately contributed 126,791,458 XRP to Pathfinder. The filing says this contribution can be liquidated to fund operating costs for Evernorth and Pathfinder.
+- Evernorth had a $1M revolving Ripple credit facility, with no draws as of September 30, 2026; it owed Pathfinder approximately $3.562M for costs funded on its behalf.
+- Evernorth's principal asset is a 71.5% ownership interest in Pathfinder. The approximately 473.276M XRP figure is a consolidated group figure, not a statement that Pubco directly holds every token.
+- Evernorth identifies Coinbase as its principal market for XRP financial-reporting purposes. It says XRP is initially held with BitGo Trust as custodian. Coinbase is therefore not established as Evernorth's custodian by this filing.
+- The filing describes possible future secured financing using XRP as collateral and future yield strategies. These are planned/possible strategies, not evidence of current deployed collateral or realized yield.
+
 ### Next concrete actions
 1. Complete semantic review of all 1,280 changed paths, prioritizing 471 Python files, 48 workflows and called scripts.
 2. Establish independent reviewers, enforce branch protection and reduce connector permissions.
@@ -666,7 +681,7 @@ ETF trackers disagree:
 Different universes/methods; issuer-holdings deltas are not direct cash subscriptions. No averaging.
 
 ### SBIC, ASK and actual-capital research
-SBIC East is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (corporate number 9011001030621; established 1963-11-15; capital ¥6.6734B). SBIC Central is Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-18; ¥4.3808B). SBIC West is Osaka Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-20; ¥6.822B). Official company pages cross-link them as sister companies under Japan's Small and Medium Business Investment & Consultation Companies Act. They are separate regional entities, not SBI Holdings.
+SBIC East is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (corporate number 9011001030621; established 1963-11-15; capital ¥6.6734B). SBIC Central is Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-18; ¥4.308B). SBIC West is Osaka Small and Medium Business Investment & Consultation Co., Ltd. (1963-11-20; ¥6.822B). Official company pages cross-link them as sister companies under Japan's Small and Medium Business Investment & Consultation Companies Act. They are separate regional entities, not SBI Holdings.
 Tokyo SBIC's official March 5, 2024 ChatGPT seminar listed Satoshi Nishiwaki, Microsoft Japan executive evangelist, as speaker. This is an educational event, not an OpenAI commercial partnership.
 Sources: https://www.sbic.co.jp/company/profile/ ; https://www.sbic-cj.co.jp/company/about/ ; https://www.sbic-wj.co.jp/profiles/profile/ ; https://www.sbic.co.jp/seminar/20240305js/
 

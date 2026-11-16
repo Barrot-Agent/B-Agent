@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "run_id": 178,
-  "captured_at_utc": "2026-11-16T00:14:06.811Z",
+  "captured_at_utc": "2026-11-16T00:18:18.423Z",
   "repository": "Barrot-Agent/B-Agent",
   "repository_state": {
     "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
@@ -184,7 +184,9 @@
     "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
     "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
     "distinct_from_sbi_holdings": true,
-    "chatgpt_seminar": "2024-03-05; Microsoft Japan speaker; no OpenAI partnership"
+    "chatgpt_seminar": "2024-03-05; Microsoft Japan speaker; no OpenAI partnership",
+    "central_capital_jpy": 4308000000,
+    "central_capital_display": "¥4.308B (43億80万円)"
   },
   "ask": {
     "project": "Permission ASK",
@@ -219,7 +221,25 @@
     "preclose_cash": 91397,
     "preclose_wc_deficit": 10000000,
     "nine_month_operating_losses": 273200000,
-    "revenue_as_of_filing": false
+    "revenue_as_of_filing": false,
+    "relationships": {
+      "sbi_holdings_affiliated_advance_funding_investors": true,
+      "sbi_affiliation_limit": "certain investors affiliated with SBI Holdings; Class A ownership capped at 39.9%, excess Class C",
+      "do_not_attribute_all_advance_cash_to_sbi": true,
+      "rippleworks_series_c_xrp": 211319096,
+      "rippleworks_is_distinct_from_ripple_labs": true,
+      "ripple_affiliated_contributor_entity_xrp": 50000000,
+      "ripple_labs_pathfinder_contribution_xrp": 126791458,
+      "pathfinder_ownership_interest_percent": 71.5,
+      "ripple_revolving_facility_limit_usd": 1000000,
+      "ripple_facility_drawn_as_of_2026_09_30": false,
+      "pathfinder_payable_as_of_2026_09_30_usd": 3562118,
+      "principal_market_for_xrp_financial_reporting": "Coinbase",
+      "initial_xrp_custodian": "BitGo Trust",
+      "coinbase_custody_established": false,
+      "future_xrp_collateral_strategy": "possible future strategy; no deployed collateral balance reported",
+      "future_yield_strategy": "possible future strategy; no realized yield balance reported"
+    }
   },
   "identity": {
     "person": "Dr. Kamilah Stevenson",
@@ -336,5 +356,13 @@
     "no_history_rewrite": true,
     "no_destructive_worktree_operation": true,
     "no_source_pr_closure": true
-  }
+  },
+  "corrections": [
+    {
+      "captured_at_utc": "2026-11-16T00:18:18.423Z",
+      "correction": "SBIC Central capital corrected to 4.308B JPY (43億80万円) from its official company profile",
+      "added_primary_evidence": "Evernorth Q3 2026 Form 10-Q, including SBI-affiliated investors, RippleWorks, Ripple, Coinbase principal market and BitGo custody disclosures",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+    }
+  ]
 }
