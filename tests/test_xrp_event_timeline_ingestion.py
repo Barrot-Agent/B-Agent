@@ -142,6 +142,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
         "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
         "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
+        "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
@@ -216,9 +217,14 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "3,607.157 seconds" in bybit["claim"]
     assert "300-second freshness gate" in bybit["claim"]
     assert bybit["raw_source_sha256"] is None
-    assert registry["source_receipt_status"].startswith("89 of 89")
+    coinbase = by_id["evernorth-coinbase-principal-market-xrp-valuation-2026-09-30"]
+    assert "selected Coinbase as the principal market" in coinbase["claim"]
+    assert "not proof" in coinbase["counter_hypothesis"]
+    assert "BitGo Trust" in coinbase["claim"]
+    assert coinbase["raw_source_sha256"] is None
+    assert registry["source_receipt_status"].startswith("90 of 90")
     assert registry["model_eligible"] is False
-    assert sum(1 for event in registry["events"] if not event.get("source_published_at_utc")) == 47
+    assert sum(1 for event in registry["events"] if not event.get("source_published_at_utc")) == 48
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
