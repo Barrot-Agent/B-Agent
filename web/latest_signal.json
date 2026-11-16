@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
-  "run_id": "run198",
+  "run_id": "run199",
   "asset": "XRP/USD",
   "status": "NOT_ISSUED",
   "forecast_status": "NOT_ISSUED",
   "forecast_issued": false,
   "reason_code": "RAW_RECEIPTS_AND_POINT_IN_TIME_EVALUATION_INCOMPLETE",
-  "explanation": "No directional forecast is permitted. The curated registry has 125 events, all 125 lack byte-exact raw-source SHA-256 receipts, 77 lack exact publisher timestamps, and zero are model-eligible. Run198 observations are descriptive only. Exact-head repository tests, dependency audit and fail-closed checks passed on 846f9f5, but predictive superiority and independent shadow validation remain unverified.",
-  "status_as_of_utc": "2026-11-16T21:20:00Z",
-  "integration_head_before_commit": "0592539ed894fa5a160941df9d39bc368bea5dbd",
+  "explanation": "No directional XRP forecast is permitted. The curated registry remains at 125 events, with zero byte-exact raw-source SHA-256 receipts, 77 missing exact publisher timestamps, and zero model-eligible events. Run199 verified the exact integration-head full repository suite, six-manifest dependency audit and fail-closed gate. The latest scheduled main Cross Analysis workflow succeeded operationally, but its XRP and BTC recent/prior sentiment windows each contained zero records; its repository-corpus entity sentiment profile is not a point-in-time market feature. Scheduled XRP public ingestion exists only on the integration branch and is not active on main. Predictive superiority and independent shadow validation remain unverified.",
+  "status_as_of_utc": "2026-11-16T22:04:20Z",
+  "integration_head_before_commit": "e59ff7727485f83e9c6348e8e4d0be38e99c5400",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "data_cutoff_utc": null,
   "target": null,
@@ -880,5 +880,25 @@
         "eloc_actual_draw": "Not quantified in reviewed filing; capacity is not proceeds."
       }
     }
-  ]
+  ],
+  "latest_descriptive_snapshot_freshness": "Last descriptive snapshot captured at 2026-11-16T21:20:00Z during Run198; not refreshed during Run199.",
+  "latest_data_quality_observation": {
+    "captured_at_utc": "2026-11-16T22:04:20Z",
+    "main_cross_analysis_run": 43964350423,
+    "workflow_conclusion": "success",
+    "xrp_sentiment_recent_records": 0,
+    "xrp_sentiment_prior_records": 0,
+    "btc_sentiment_recent_records": 0,
+    "btc_sentiment_prior_records": 0,
+    "entity_cooccurrence_pairs": 3217,
+    "entity_sentiment_xrp": {
+      "net_sentiment": 0.46,
+      "bullish": 186,
+      "neutral": 44,
+      "bearish": 56,
+      "admission": "repository corpus only; not current market sentiment"
+    },
+    "scheduled_xrp_ingestion_active_on_main": false,
+    "admission": "QUALITY_DIAGNOSTIC_ONLY"
+  }
 }
