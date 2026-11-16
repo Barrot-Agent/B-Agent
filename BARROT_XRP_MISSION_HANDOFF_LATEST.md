@@ -2556,3 +2556,59 @@ The subsequent finalization commit is documentation/JSON only and triggers its o
 ### Branch-protection clarification
 
 The branch object reports main protection enabled with enforcement level `non_admins` and no required status contexts. The detailed protection endpoint still returns HTTP 403. Fallback ruleset 10863829 is disabled. The GitHub connector has admin, maintain, push, pull and triage permissions; it could potentially bypass non-admin-only protections. No bypass was used. The merge decision remains **NO MERGE** because PR #1663 is draft, has zero independent reviews/approvals, the semantic review is incomplete, and least-privilege/independent governance is not satisfied.
+
+
+## Run189 — exact-head CI, live market context and stale Cross Analysis correction
+
+**Observed:** 2026-11-16T12:09:14Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head at start of Run189:** `9147eacb1c5a11cc103266f797a40056d786a229`  
+**PR #1663:** draft/open, 81 commits ahead, zero behind, 1,310 changed files, zero formal reviews/approvals.
+
+### Exact-head verification
+
+The push-triggered full repository suite passed on exact head `9147eacb1c5a11cc103266f797a40056d786a229`: [run 43824202319](https://github.com/Barrot-Agent/B-Agent/actions/runs/43824202319), job 133154030949 — **3,830 passed, zero failed, one skipped, 19 subtests**, 64.09% inclusive coverage; legacy core coverage floor passed. Wheel build, packaged mission resource and installed Barrot V3/XRP mission verification passed. Six-manifest dependency audit [43824202339](https://github.com/Barrot-Agent/B-Agent/actions/runs/43824202339) found zero known vulnerabilities. Push fail-closed [43824202326](https://github.com/Barrot-Agent/B-Agent/actions/runs/43824202326), PR CI [43824207940](https://github.com/Barrot-Agent/B-Agent/actions/runs/43824207940), PR dependency [43824207942](https://github.com/Barrot-Agent/B-Agent/actions/runs/43824207942) and PR fail-closed [43824207959](https://github.com/Barrot-Agent/B-Agent/actions/runs/43824207959) passed. PR-event test jobs are skipped on integration branches; the push full suite is authoritative. Nonfatal setuptools warnings remain for `barrot_agent.data.missions` and `data.research` absent from package configuration, although mission resource and installed V3/XRP mission checks passed. Actions cache became read-only after budget exhaustion.
+
+The Run189 evidence commit is a child of `9147eacb1c5a11cc103266f797a40056d786a229`; its own exact-head CI must be verified separately. The previous pass is not transferred to the new commit.
+
+### XRP market and flows — descriptive only
+
+CoinGlass at 12:07 UTC displayed XRP **$0.9524**, -1.01% 24h, range $0.9418-$0.9777; spot volume $497.66M (-62.10%), futures volume $2.16B (-56.06%), OI $1.97B, funding -0.0045%/8h and $3.59M liquidations ($2.41M long, $1.18M short; 67% long). Futures/spot volume 4.3x; 30+ exchanges including CME. Its OI 24h change conflicts internally: -2.15% headline versus -1.15% narrative. No raw API bytes or full-depth L2 captured. [CoinGlass](https://www.coinglass.com/currencies/XRP)
+
+Provider disagreement is preserved, not averaged: Liqwall at 10:52 UTC reported $980M OI (-3.4%); its current value is below its stated 30-day low of $995M, an internal range inconsistency. [Liqwall](https://liqwall.com/open-interest/xrp) TradRadar's November 15 16:00 UTC seven-exchange snapshot reported $1.33B OI (-6.53%), funding -0.0027%/8h and at least $37.51M liquidations (75.9% long accounts). [TradRadar](https://tradradar.io/markets/xrp)
+
+Alpha Finance's five-fund ETF dashboard through November 14 reported -$20.2M over seven sessions, -$1.7M over 30 sessions, -$1.1M on November 14 and +$1.71B cumulative inflows; +970.7M XRP net flow since launch at each day's price. Similar CoinGlass November 13 flow is not independent confirmation. [Alpha Finance](https://alphafinance.io/etf/xrp/)
+
+### Cross Analysis freshness failure
+
+Main Cross Analysis run [43861739882](https://github.com/Barrot-Agent/B-Agent/actions/runs/43861739882) succeeded at 11:53:53 UTC and uploaded artifact 14224670205 (ZIP SHA-256 `4706abfdd0c8f9bafdfef42c9e45d88c6f3c73b5c9dbf2f6e1b5f1e9e0a0c18f`, 240,558 bytes). Its input corpus was stale: XRP log 1,208 rows, latest ingestion October 29 13:23:01 UTC, latest sentiment October 29 12:39:22 UTC, 11 missing/invalid ingestion timestamps and 186 missing publisher timestamps; BTC log 1,245 rows, latest ingestion October 29 13:38:11 UTC, latest sentiment October 27 03:49:16 UTC. Both recent and prior 24-hour sentiment windows had zero entries. Historical XRP profile was 286 mentions (+0.455); Ripple 219 (+0.484); these are all-history scores, not current sentiment.
+
+Integration scripts already add a 48-hour freshness limit, five-entry minimum, future-timestamp rejection and `forecast_eligible=false`. The Cross Analysis workflow checks out main, so those scripts activate only after a safe merge. Run189 refreshes public sentiment/co-occurrence artifacts with explicit stale labels. Artifact ZIP digest is not an external publisher raw-source receipt; log IDs are Git SHA-1, not publisher SHA-256.
+
+### Institutional and macro counter-hypothesis
+
+DBS and Kinexys by J.P. Morgan announced a commercially ready permissioned tokenized-deposit corridor for institutional USD transfers between Singapore and the United States. Ant International is first client; Partior provides settlement orchestration. Internal Kinexys transfers run 24/7/365, but traditional DDA/BDA on/off-ramp transfers have three-hour Saturday downtime (3-6 p.m. ET). No XRP, XRPL or Ripple role is stated. This is an alternative rail for some institutional corridors, not proof of replacement. [DBS](https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers)
+
+BLS October 2026 PPI: final demand +0.3% m/m and +6.5% y/y; core final demand less food, energy and trade +0.5% m/m and +4.9% y/y. Macro context only. [BLS](https://www.bls.gov/news.release/archives/ppi_11132026.htm)
+
+### Event registry and prediction gate
+
+Five events added: CoinGlass market snapshot, Alpha Finance ETF flows, DBS/Kinexys rail, BLS PPI and Cross Analysis stale-input finding. Registry: **111 events**, 85 declared independence groups, 46 canonical publisher/lineage groups, 111 missing raw-source SHA-256 receipts, 64 missing exact publisher timestamps, zero model-eligible. The GitHub artifact digest is recorded separately, not treated as publisher receipt. Forecast `NOT_ISSUED`; accuracy `NOT_EVALUATED`; no out-of-sample superiority or independent shadow cohort.
+
+### Repository and governance
+
+Main `1f30e5c18f151f75ad5d157ddde175723584ec69`; trees: main 1,393, integration 2,544, zero main paths missing, 206 divergent shared paths, 1,151 integration-only. Integration 81 ahead/zero behind. PR #1663 remains draft and technically mergeable but blocked: zero reviews/approvals, 1,310 changed files not fully semantically reviewed, branch-protection details HTTP 403, fallback ruleset 10863829 disabled, CODEOWNERS self-only, GitHub connector admin/maintain/push/pull/triage. Main is protected with non-admin enforcement; required contexts not visible. No bypass.
+
+Eight source PRs remain preserved as unique/unreviewed: #1541, #1460, #1450, #1440, #1437, #1436, #1353 and #1265. No source PR closed. No deployment, secret rotation, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action.
+
+### Next actions
+
+1. Verify exact-head full suite, dependency and fail-closed checks on the new Run189 evidence commit.
+2. Restore or replace Cross Analysis ingestion so XRP/BTC logs refresh with publisher and ingestion timestamps.
+3. Complete the 1,310-path semantic review, prioritizing workflows and called scripts.
+4. Resolve independent review, branch-protection visibility and least privilege.
+5. Establish byte-exact publisher captures, SHA-256 receipts, independent WORM archival and trusted timestamp anchors.
+6. Continue synchronized spot, full-depth L2, derivatives, exchange-flow, ETF, collateral and institutional-rail ingestion.
+7. Keep forecast gate closed until data quality, walk-forward, calibration and independent shadow requirements pass.
+
+No merge, deployment, secret rotation, external-model dispatch, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.

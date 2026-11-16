@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run185-followup",
-  "captured_at_utc": "2026-11-16T05:22:04Z",
-  "source_receipt_status": "106 of 106 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
+  "registry_version": "run189-followup",
+  "captured_at_utc": "2026-11-16T12:09:14Z",
+  "source_receipt_status": "111 of 111 curated events have null raw_source_sha256; exact external publisher bytes were not captured. All remain research-only and model-ineligible. The Run189 artifact SHA-256 is a generated ZIP digest, not a publisher receipt.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -4624,6 +4624,255 @@
       ],
       "source_date": "2026-11-16",
       "publisher_timestamp_precision": "roll-call time displayed as 04:52 UTC; dashboard page states fetched 05:05 UTC"
+    },
+    {
+      "event_id": "coinglass-xrp-market-snapshot-2026-11-16T1207Z",
+      "event_type": "market",
+      "event_name": "CoinGlass XRP market snapshot — 2026-11-16 12:07 UTC",
+      "hypothesis_id": "xrp-market-deleveraging-and-volume-contraction-2026-11-16",
+      "domain": "spot_derivatives_market_structure",
+      "hypothesis": "Lower spot/futures volume, negative funding and contracting OI are consistent with deleveraging after a sharp drop and rebound.",
+      "counter_hypothesis": "CoinGlass internally conflicts on OI change (-2.15% headline versus -1.15% narrative), while other providers report different OI and liquidation totals due to different universes and timestamps; no direction is established.",
+      "claim": "CoinGlass displayed XRP $0.9524 (-1.01% 24h), range $0.9418-$0.9777, spot volume $497.66M (-62.10%), futures volume $2.16B (-56.06%), OI $1.97B, funding -0.0045%/8h, and $3.59M liquidations ($2.41M long, $1.18M short; 67% long). Futures/spot volume was 4.3x. Page says 30+ exchanges including CME and updated 20:07 UTC+8 (12:07 UTC). OI change conflicts internally. No raw API bytes or full-depth L2 captured.",
+      "source_id": "coinglass_xrp_futures_live_page",
+      "source_name": "CoinGlass XRP market page",
+      "source_url": "https://www.coinglass.com/currencies/XRP",
+      "independence_group": "coinglass-xrp-futures-live-page",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T12:07:00Z",
+      "source_published_at_utc": "2026-11-16T12:07:00Z",
+      "available_at_utc": "2026-11-16T12:09:14Z",
+      "captured_at_utc": "2026-11-16T12:09:14Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Displayed update time corresponds to the snapshot.",
+        "30+ exchange coverage is provider-defined."
+      ],
+      "falsification_conditions": [
+        "Synchronized exchange-level data materially changes the values.",
+        "Raw API capture resolves the OI-change discrepancy."
+      ],
+      "related_entities": [
+        "XRP",
+        "CoinGlass",
+        "Binance",
+        "CME",
+        "OKX",
+        "Bybit"
+      ],
+      "tags": [
+        "XRP",
+        "spot",
+        "derivatives",
+        "open-interest",
+        "funding",
+        "liquidations",
+        "rendered-snapshot"
+      ],
+      "publisher_timestamp_precision": "Displayed update time; UTC+8 converted to UTC"
+    },
+    {
+      "event_id": "alpha-finance-xrp-etf-flow-through-2026-11-14",
+      "event_type": "market",
+      "event_name": "Alpha Finance XRP ETF flows through 2026-11-14",
+      "hypothesis_id": "xrp-short-term-etf-outflows-versus-cumulative-inflows-2026-11-16",
+      "domain": "institutional_capital_flows",
+      "hypothesis": "Five-fund dashboard reports $20.2M outflows over seven sessions and $1.7M over 30 sessions, indicating recent marginal flow weakness.",
+      "counter_hypothesis": "Cumulative net inflow remains $1.71B and net XRP since launch is +970.7M at each day's price; recent outflows are small relative to cumulative inflows and do not prove spot selling.",
+      "claim": "Alpha Finance's five-fund dashboard through November 14 reports -$20.2M over seven sessions, -$1.1M on November 14, -$1.7M over 30 sessions and $1.71B cumulative net inflow; it separately reports +970.7M XRP net flow since launch at each day's price. CoinGlass's similar November 13 figure is not treated as independent because upstream lineage is unclear.",
+      "source_id": "alpha_finance_issuer_flow_series",
+      "source_name": "Alpha Finance XRP ETF dashboard",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "independence_group": "alpha-finance-issuer-flow-series",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-14T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T12:09:14Z",
+      "captured_at_utc": "2026-11-16T12:09:14Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Five-fund universe and session flows are as displayed.",
+        "XRP-denominated cumulative flow values each day's net flow at that day's price."
+      ],
+      "falsification_conditions": [
+        "Issuer-file reconciliation changes the flow values or universe."
+      ],
+      "related_entities": [
+        "XRP",
+        "US spot XRP ETFs",
+        "Alpha Finance",
+        "CoinGlass"
+      ],
+      "tags": [
+        "XRP-ETF",
+        "five-fund",
+        "outflows",
+        "cumulative-inflows"
+      ],
+      "source_date": "2026-11-14",
+      "publisher_timestamp_precision": "Session date only; exact page publication time unavailable"
+    },
+    {
+      "event_id": "dbs-kinexys-tokenized-deposit-interoperability-2026-11-16",
+      "event_type": "payments",
+      "event_name": "DBS and Kinexys launch cross-border tokenized-deposit transfers",
+      "hypothesis_id": "institutional-tokenized-deposit-rails-compete-with-public-bridge-assets-2026-11-16",
+      "domain": "institutional_payment_rails",
+      "hypothesis": "A permissioned-bank deposit corridor can serve some institutional treasury transfers without a public-chain bridge asset.",
+      "counter_hypothesis": "The service is limited to approved institutional accounts and two bank networks; it is not a public stablecoin or general replacement for all cross-border corridors and may coexist with XRPL/Ripple.",
+      "claim": "DBS announced a commercially ready permissioned USD tokenized-deposit corridor between Singapore and the United States connecting DBS Token Services and Kinexys by J.P. Morgan. Ant International is first client; Partior provides settlement orchestration. Transfers inside Kinexys run 24/7/365, but traditional DDA to Kinexys BDA on/off-ramp transfers have three-hour Saturday downtime (3-6 p.m. ET). No XRP, XRPL or Ripple role is stated.",
+      "source_id": "dbs_kinexys_jpmorgan_joint_release_20261116",
+      "source_name": "DBS official announcement",
+      "source_url": "https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers",
+      "independence_group": "dbs-kinexys-joint-release-20261116",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T12:09:14Z",
+      "captured_at_utc": "2026-11-16T12:09:14Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "DBS's official release accurately describes launch status and scope.",
+        "Saturday downtime applies to DDA/BDA on/off ramps, not internal Kinexys transfers."
+      ],
+      "falsification_conditions": [
+        "A subsequent official DBS/J.P. Morgan notice changes launch status or scope.",
+        "A primary technical document establishes XRP/Ripple participation."
+      ],
+      "related_entities": [
+        "DBS",
+        "J.P. Morgan",
+        "Kinexys",
+        "Ant International",
+        "Partior",
+        "Project BLOOM",
+        "Ripple",
+        "XRP Ledger"
+      ],
+      "tags": [
+        "tokenized-deposits",
+        "permissioned",
+        "cross-border-USD",
+        "alternative-rail",
+        "not-XRP-settlement"
+      ],
+      "source_date": "2026-11-16",
+      "publisher_timestamp_precision": "Date only; exact publication time unavailable"
+    },
+    {
+      "event_id": "bls-ppi-october-2026-release-2026-11-13",
+      "event_type": "macro",
+      "event_name": "BLS October 2026 Producer Price Index release",
+      "hypothesis_id": "persistent-producer-price-inflation-may-constrain-risk-liquidity-2026-11-16",
+      "domain": "macro_inflation",
+      "hypothesis": "Final-demand PPI +6.5% y/y and core +4.9% y/y are consistent with persistent upstream price pressure that may keep policy and yields restrictive.",
+      "counter_hypothesis": "Headline PPI rose only 0.3% m/m, below the 0.4% expectation cited by Reuters; revisions, component mix and subsequent CPI/PCE may change the interpretation. PPI is not direct XRP demand.",
+      "claim": "BLS released October 2026 PPI on November 13 at 08:30 ET (13:30 UTC): final demand +0.3% m/m and +6.5% y/y, largest 12-month increase since November 2022; final demand less food, energy and trade +0.5% m/m and +4.9% y/y.",
+      "source_id": "bls_ppi_october_2026_primary_release",
+      "source_name": "U.S. Bureau of Labor Statistics",
+      "source_url": "https://www.bls.gov/news.release/archives/ppi_11132026.htm",
+      "independence_group": "bls-ppi-primary-release",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-13T13:30:00Z",
+      "source_published_at_utc": "2026-11-13T13:30:00Z",
+      "available_at_utc": "2026-11-16T12:09:14Z",
+      "captured_at_utc": "2026-11-16T12:09:14Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Archived BLS release is authoritative."
+      ],
+      "falsification_conditions": [
+        "BLS revision materially changes October figures.",
+        "Subsequent inflation/policy data contradict the restrictive interpretation."
+      ],
+      "related_entities": [
+        "BLS",
+        "U.S. Treasury",
+        "Federal Reserve",
+        "XRP"
+      ],
+      "tags": [
+        "BLS",
+        "PPI",
+        "October-2026",
+        "macro"
+      ],
+      "publisher_timestamp_precision": "08:30 ET official release"
+    },
+    {
+      "event_id": "barrot-cross-analysis-stale-xrp-sentiment-2026-11-16T1153Z",
+      "event_type": "other",
+      "event_name": "Cross Analysis succeeds on stale XRP/BTC sentiment corpus",
+      "hypothesis_id": "barrot-cross-analysis-input-corpus-stale-not-live-sentiment-2026-11-16",
+      "domain": "research_data_quality",
+      "hypothesis": "The checked-in XRP/BTC logs used by main Cross Analysis are stale and cannot support current sentiment features or a directional forecast.",
+      "counter_hypothesis": "This applies only to the two checked-in logs consumed by Cross Analysis; other ingestion pipelines may have fresher data. The workflow is read-only and may be intended as a historical corpus summary.",
+      "claim": "Main Cross Analysis run 43861739882 completed at 2026-11-16 11:53:53 UTC and uploaded artifact 14224670205 (ZIP SHA-256 4706abfdd0c8f9bafdfef42c9e45d88c6f3c73b5c9dbf2f6e1b5f1e9e0a0c18f; 240,558 bytes). Both recent and prior 24h sentiment windows had zero entries. XRP log has 1,208 rows, latest ingestion 2026-10-29 13:23:01 UTC, latest sentiment 2026-10-29 12:39:22 UTC, 11 missing/invalid ingestion timestamps and 186 missing publisher timestamps. BTC log has 1,245 rows, latest ingestion 2026-10-29 13:38:11 UTC and latest sentiment 2026-10-27 03:49:16 UTC. Historical XRP profile is 286 mentions (+0.455); Ripple 219 (+0.484); these are all-history scores, not current sentiment. Integration contains 48-hour freshness gates, five-entry minimums and forecast_eligible=false; main still ran legacy scripts.",
+      "source_id": "github_actions_cross_analysis_run_43861739882",
+      "source_name": "GitHub Actions Cross Analysis run and artifact",
+      "source_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43861739882",
+      "independence_group": "barrot-cross-analysis-run-43861739882",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T11:53:53Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T12:09:14Z",
+      "captured_at_utc": "2026-11-16T12:09:14Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Run and artifact correspond to main SHA 1f30e5c.",
+        "Checked-in JSONL blobs are the inputs consumed by the workflow."
+      ],
+      "falsification_conditions": [
+        "A subsequent ingestion updates logs with timestamped entries inside 48-hour windows.",
+        "Workflow evidence shows a different input snapshot."
+      ],
+      "related_entities": [
+        "Barrot-Agent/B-Agent",
+        "GitHub Actions",
+        "XRP",
+        "BTC",
+        "Ripple",
+        "Coinbase",
+        "Circle",
+        "SBI"
+      ],
+      "tags": [
+        "Cross-Analysis",
+        "stale-input",
+        "zero-recent-sample",
+        "historical-profile",
+        "data-quality"
+      ],
+      "publisher_timestamp_precision": "Workflow execution time is exact; not an external publisher time",
+      "artifact_sha256": "4706abfdd0c8f9bafdfef42c9e45d88c6f3c73b5c9dbf2f6e1b5f1e9e0a0c18f",
+      "artifact_id": 14224670205,
+      "artifact_size_bytes": 240558,
+      "source_log_git_blobs": {
+        "xrp": {
+          "git_blob_sha1": "de9787cdf7911b19ad7be02a74c6b4fabde2b482",
+          "size_bytes": 1494611,
+          "rows": 1208
+        },
+        "btc": {
+          "git_blob_sha1": "31af85bcf269b7af3c3c6ca0792642b4155d3f2c",
+          "size_bytes": 1229307,
+          "rows": 1245
+        }
+      },
+      "retrieval_limitations": [
+        "Artifact SHA-256 covers GitHub-generated ZIP, not external publisher bytes.",
+        "Log IDs are Git SHA-1 blob identifiers, not publisher SHA-256 receipts."
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -4919,5 +5168,28 @@
       "kamilah_stevenson": "The iHeart interview self-identifies the person and spoken YouTube name; @drkamilahstevenson appears in a third-party directory only, with no first-party cross-link."
     },
     "prediction_boundary": "All 106 events remain model-ineligible until byte-exact receipts, point-in-time validation, out-of-sample superiority and independent shadow evaluation pass; no directional forecast issued."
+  },
+  "accuracy_status": "NOT_EVALUATED",
+  "run189_update": {
+    "captured_at_utc": "2026-11-16T12:09:14Z",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_parent_sha": "9147eacb1c5a11cc103266f797a40056d786a229",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "added_event_ids": [
+      "coinglass-xrp-market-snapshot-2026-11-16T1207Z",
+      "alpha-finance-xrp-etf-flow-through-2026-11-14",
+      "dbs-kinexys-tokenized-deposit-interoperability-2026-11-16",
+      "bls-ppi-october-2026-release-2026-11-13",
+      "barrot-cross-analysis-stale-xrp-sentiment-2026-11-16T1153Z"
+    ],
+    "event_count": 111,
+    "unique_source_id_count": 109,
+    "declared_independence_group_count": 85,
+    "canonical_publisher_lineage_group_count": 46,
+    "missing_raw_source_sha256": 111,
+    "missing_publisher_timestamps": 64,
+    "model_eligible_event_count": 0,
+    "source_receipt_policy": "No rendered HTML or web excerpt was hashed as publisher raw bytes. The GitHub artifact ZIP digest is retained separately; log files are identified by Git SHA-1 blob IDs and exact sizes. All five events remain model-ineligible.",
+    "note": "Canonical publisher/lineage groups recomputed with the repository's domain-alias and declared-lineage union rules; SBIC regional aliases remain grouped separately from SBI Holdings."
   }
 }
