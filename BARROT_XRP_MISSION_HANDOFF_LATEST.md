@@ -1,14 +1,90 @@
-# Current mission status — Run180
+# Current mission status — Run181
 
-**Captured:** 2026-11-16T01:18:22Z  
+**Captured:** 2026-11-16T02:10:22Z  
 **Mission priority:** 1 — XRP intelligence and measured prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.  
 **Main:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
-**Integration head inspected at Run180 start:** `33c065122acf34d3e746aef7add76dcd650d8a98`  
-**Latest integration head before final handoff update:** `e75208ef6c67bd233e7ddde58020109911aa1b25`; exact-head CI remains pending.  
+**Integration head at Run181 start:** `035c5f0d9b2801bea700b183173472cad518b2a1`  
+**Latest integration head before Run181 handoff commit:** `7aae420610dbaf4918fdfc3b9d18eb2996650aa2`; exact-head full suite and six-manifest dependency audit passed. The Run181 handoff commit creates a newer head and requires fresh exact-head CI.  
 **Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open and draft  
 
-## Run180 — current verification and findings
+## Run181 — current verification and findings
+
+### Repository and exact-head verification
+
+- Main remains 1f30e5c18f151f75ad5d157ddde175723584ec69. At Run181 start the integration head was 035c5f0d9b2801bea700b183173472cad518b2a1. Both complete recursive trees were retrieved without truncation: main 1,393 entries; integration 2,523; zero main paths missing.
+- The preceding exact-head suite failed because two different spot-event definitions reused one hypothesis_id. This was a correct fail-closed rejection. The Bybit stale-quote event now has its own hypothesis ID, and regression assertions require distinct OKX and Bybit hypotheses.
+- Corrected code/test head 7aae420610dbaf4918fdfc3b9d18eb2996650aa2 passed the full repository suite: **3,829 passed, zero failed, one skipped, 19 subtests**, 64.09% inclusive coverage, 77% legacy-core coverage, 176.21 seconds. Wheel build and installed Barrot V3/XRP mission verification passed. [Full suite 43790021310](https://github.com/Barrot-Agent/B-Agent/actions/runs/43790021310).
+- Six-manifest dependency audit passed with zero known vulnerabilities: [43790021233](https://github.com/Barrot-Agent/B-Agent/actions/runs/43790021233). Push and PR fail-closed gates passed: [43790021238](https://github.com/Barrot-Agent/B-Agent/actions/runs/43790021238) and [43790023464](https://github.com/Barrot-Agent/B-Agent/actions/runs/43790023464). PR Pages validation passed: [43790023649](https://github.com/Barrot-Agent/B-Agent/actions/runs/43790023649). PR-event test jobs are skipped on integration branches; the push full-suite is authoritative.
+- GitHub Actions cache budget was exhausted and cache became read-only. This did not affect tests, wheel build or dependency audit, but may slow subsequent runs.
+- The Run181 handoff/audit/map/signal commit creates a newer head than 7aae420. That newer head must receive its own exact-head CI before it is called verified.
+
+### Main-branch safety and workflow findings
+
+- Main CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed, but Pages [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504) failed because Jekyll/Liquid parsed embedded JSON/code in GLOBAL_STATE_MANIFEST.md as a Liquid variable around line 6450. Integration PR Pages validation passes.
+- Main Barrot Sync [43767370810](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370810) reported success despite ModuleNotFoundError: rich, skipped sync and git push || true masking failure. Integration quarantines this writer.
+- Main Coinbase paper trader remains unsafe: no typed approval or exact SHA gate, silent corrupt-state reset, missing position-product validation and repository commit behavior. Integration has typed YES, exact SHA, identity preflight and artifact-only output. Not dispatched.
+- All 48 changed workflow definitions were inspected: 27 false job guards, 21 active, 14 high-impact workflows and 13 called scripts reviewed. No external operation was dispatched.
+- Main branch-protection detail still returns HTTP 403; fallback ruleset 10863829 is disabled, CODEOWNERS is self-only, and GitHub connector permissions remain admin/maintain/push/pull/triage.
+
+### XRP spot and derivatives snapshot
+
+- OKX XRP-USDT at 2026-11-16T02:02:08.874Z: last 0.9607, bid 0.9607, ask 0.9608, 24h volume 50.827M XRP. Retrieved at 02:03:17Z; age 68.126 seconds. UTC-day open 0.9741; UTC 8-hour open 0.9579. [OKX ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT).
+- Kraken XRP/USD returned last 0.96066, bid 0.96075, ask 0.96082 and 24h volume 38.849M XRP, but no provider event timestamp. [Kraken ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+- Descriptive only: no synchronized USDT/USD basis quote, Kraken event time absent, venue 24h-open statistics differ, OKX books5/Kraken Depth unavailable, Bybit orderbook HTTP 403. No full-depth L2 or executable arbitrage conclusion.
+- Liqwall at 01:22 UTC: XRP open interest $999M, down 3.9% over 24h; 30-day range $995M–$1.49B. [Liqwall](https://liqwall.com/open-interest/xrp).
+- CoinGlass displayed $1.95B open interest (+1.71% USD), funding -0.0086%/8h (-9.41% annualized), futures volume $2.77B, spot volume $774.16M, 3.6x futures/spot volume and $5.84M liquidations with 36% long-side. [CoinGlass](https://www.coinglass.com/currencies/XRP/futures).
+- CoinGlass and Liqwall differ by about 1.95x in open interest and in 24h direction. Contract and venue universes are not harmonized; do not average. CoinGlass coin-denominated OI fell while USD OI rose, consistent with price-denominator effects.
+
+### ETF flow disagreement
+
+- Alpha Finance five-fund series through Nov 13: Nov 13 -$1.1M, last seven sessions -$19.1M, 30-session -$581.7K and cumulative +$1.71B. [Alpha Finance](https://alphafinance.io/etf/xrp/).
+- Coindaro's SoSoValue-based five-fund report says 11 sessions without net inflow since Oct 29, November outflows of $19.66M over ten sessions, $1.15B net assets at Nov 13 close and $1.79B cumulative net inflows. Its implied 1.13–1.14B XRP holdings are estimates, not direct issuer-file totals. [Coindaro](https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/).
+- CryptoKeyhole: Nov 13 partial -9,967 XRP from three of four funds; Nov 12 complete +4.337M XRP; Nov 6–12 five complete days -5.665M XRP. A Nov 16 issuer-file timestamp shown as read on Nov 14 is impossible and quarantined. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+- XRP Insights tracks six U.S. spot funds plus BITW and reports week-46 Nov 6–13 flow -6.08M XRP (about -$6.5M), with 1.19B XRP held. Its universe differs. [XRP Insights](https://xrp-insights.com/news).
+- The trackers overlap issuer files but use different universes, cutoffs, completeness and calculations. No values were averaged; holdings deltas are not automatically issuer cash subscriptions or redemptions.
+
+### Coinbase, Circle, Ripple, SBI and institutional rails
+
+- Standard Chartered's RLUSD custody support on XRPL went live Oct 12. Planned RLUSD collateral eligibility and extension of its collateral-mirroring model to LMAX remain subject to final documentation, successful testing, applicable law, approvals and jurisdiction readiness. [Standard Chartered](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group).
+- Ripple's LMAX agreement describes RLUSD as the intended core collateral asset and $150M of Ripple financing to LMAX. This is RLUSD, not XRP collateral. [LMAX](https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/).
+- Coinbase's Oct 28 RLUSD launch supports Prime, Exchange and retail, with XRPL/Base/Ethereum deposits and withdrawals. Global Exchange collateral support was described as following later, not confirmed live at launch. [Ripple/Coinbase](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- Ripple and Circle directly announced native USDC on XRPL in June 2025. USDC is an issued dollar stablecoin; XRPL USDC activity is not automatically XRP demand. [Ripple/Circle](https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/).
+- Circle Q3 2026 10-Q: average USDC circulation $73.264B, quarter-end $73.879B, 3.5% reserve return and $331.3M Q3 distribution costs under Coinbase agreements ($986.6M for nine months). That is about 81% of Circle's $409.169M Q3 distribution/transaction cost line. [Circle Q3 10-Q](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html).
+- Coinbase Q3 10-Q says the Circle arrangement was renewed on the same terms. Coinbase reports $22B average USDC held in products (about 30% of average market cap) and claims about 50% of USDC economics over the past year. The 81% cost-line ratio and 50% economics claim have different denominators and are not interchangeable. [Coinbase Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm) · [Coinbase Q3 release](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx).
+- Circle recognized $181.8M of ARC presale revenue in Q3; it is not recurring USDC reserve income or stablecoin transaction volume. [Circle Q3 10-Q](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html).
+- Coinbase disclosed $3.039B crypto assets received as customer collateral and $3.563B crypto loan receivables originated over nine months, but no XRP-specific amounts. These aggregate figures cannot be treated as XRP collateral. [Coinbase Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+- SBI Holdings/Startale/BlackRock's Oct 27 MOU concerns tokenized MMFs and JPYSC; SBI Holdings/SMFG's Oct 30 alliance explores stablecoin services. Neither establishes XRP capital deployment or XRP settlement. [SBI/BlackRock/Startale](https://www.sbigroup.co.jp/news/2026/1027_16682.html) · [SBI/SMFG](https://www.sbigroup.co.jp/news/2026/1030_16698.html).
+
+### Macro, identity and research quality
+
+- The Fed maintained a 3.75%–4.00% target range on Oct 28 and said inflation remained elevated with geopolitical uncertainty. [Federal Reserve](https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm). Treasury nominal yields on Nov 13: 2y 4.88%, 10y 5.15%, 30y 5.47%; these are nominal, not real yields. [U.S. Treasury](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve).
+- Reuters Nov 15 reports U.S. diesel at $5.998 and Brent down 18.5% over two weeks amid easing tensions and seasonal demand weakness; a separate Reuters report the same day describes Hormuz disruption and Houthi attacks. These are competing macro scenarios, not direct XRP causality. [Energy](https://www.reuters.com/business/energy/us-diesel-below-6-gallon-2-month-low-easing-tensions-weaker-demand-2026-11-15/) · [Geopolitics](https://www.reuters.com/world/middle-east/gulf-bourses-slide-hormuz-tensions-houthi-strikes-rattle-traders-2026-11-15/).
+- SBIC East/Central/West remain separate Japanese regional investment companies, not SBI Holdings. ASK Coin still has no verified canonical XRPL issuer; Permission ASK documentation identifies Base and Polygon contracts. Actual capital remains separated into cash received, cash-funded XRP purchases, in-kind contributions, debt, warrant proceeds and undrawn facilities.
+- Dr. Kamilah Stevenson is person-verified; a public candidate channel exists (UCXm6KAr1WHF6UN7g5b2W7wg, @KamilahStevensonXrpStocks), but first-party person-to-channel cross-link remains unverified. No new videos were attributed in Run181.
+
+### Prediction and source eligibility
+
+- Integration contains 51 public-source definitions, 49 scheduled-source definitions, a SQLite point-in-time feature-store prototype, event timelines, counter-hypotheses, four baselines, purged/embargoed walk-forward evaluation, calibration, PSI drift monitoring and a fail-closed forecast ledger.
+- The event registry has 90 events and 67 source-independence groups. All 90 still lack byte-exact publisher SHA-256 receipts; 48 lack exact publisher timestamps; zero events are model-eligible. The conflicting hypothesis definition was corrected; no conflicts remain.
+- Run181 web observations were not promoted into the event registry because exact publisher response bytes were not captured. Search/open excerpts are not represented as raw wire bytes. Independent WORM storage and trusted timestamp anchoring remain unverified.
+- latest_signal.json remains NOT_ISSUED; accuracy remains NOT_EVALUATED. No directional forecast or trade was generated.
+
+### PR backlog and merge decision
+
+- Nine open PRs remain. #1663 is the only PR targeting main and remains draft/open with 49 commits ahead, zero behind, 1,288 changed files, zero formal reviews/approvals/review threads. It is the single coherent integration PR.
+- #1541 remains unique/unreviewed MMI security work; #1460, #1450, #1440, #1437, #1436, #1353 and #1265 remain unique/unreviewed stacked XRP research/archive work. No source PR was closed.
+- **NO MERGE.** Main branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is self-only; connector permissions remain overprivileged; 1,288-path semantic review is incomplete.
+
+### Next actions
+
+1. Run exact-head full-suite, dependency/security, fail-closed and Pages validation on the new Run181 handoff commit.
+2. Finish semantic review of all 1,288 changed paths, prioritizing 48 workflow definitions and called scripts.
+3. Resolve branch protection, independent approval and least-privilege GitHub access.
+4. Capture byte-exact publisher payloads through authorized ingestion and establish independent WORM archival/trusted timestamps.
+5. Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets; qualify a candidate only after leakage-safe out-of-sample superiority and independent shadow evaluation.
+
+## Run180 — historical verification and findings
 
 ### Repository integration and exact-head CI
 
