@@ -1,3 +1,165 @@
+# Run186 final — exact code-head full suite passed; XRP evidence and privacy gate reconciled
+
+**Status recorded:** 2026-11-16T06:20:20Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Verified code head:** `b9a9ff76e25f5408f97ceb8d2378492c5290718d`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft/open.  
+**Mission:** XRP intelligence and prediction-engine mastery is priority 1. Barrot V3 remains the protected execution, orchestration, safety, authorization and verification foundation.
+
+## Exact-head full repository verification
+
+The full repository suite passed on exact code head `b9a9ff7`: **3,830 passed, zero failed, one skipped, 19 subtests**, 64.09% inclusive coverage and 77% legacy core coverage. The full test step took 111.75 seconds. The wheel built and installed; the installed package loaded Barrot V3, the XRP mission and canonical data assets. GitHub Pages validation passed.
+
+- [Full suite 43815599255](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815599255)
+- [Push dependency audit 43815599356](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815599356)
+- [Push fail-closed gate 43815599413](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815599413)
+- [PR dependency audit 43815606353](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815606353)
+- [PR fail-closed gate 43815606480](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815606480)
+- [PR CI/Pages 43815606453](https://github.com/Barrot-Agent/B-Agent/actions/runs/43815606453)
+
+All six audited manifests passed strict pip-audit with zero known vulnerabilities: runtime, dev, integrations, Hugging Face Space, legacy and PEP 621 project dependencies. The PR-event test jobs are skipped by the integration-branch condition; the push-triggered full suite is authoritative.
+
+**Cache warning:** GitHub Actions reported that the configured cache budget had been reached and cache became read-only during the setup-python pip-cache save. The suite still passed. The XRP ingestion workflow's derived feature-store cache has an artifact fallback, but cache writes should be treated as unavailable until quota/retention is reviewed. No cache was deleted or setting changed.
+
+A documentation/public-status follow-up commit is being added after this verified code head. Its own exact-head CI must run before any merge consideration.
+
+## Regression corrections and private-data containment
+
+Three test-fixture defects were found through full-suite runs and corrected without weakening tests or gates:
+1. XRPL amendment event timestamp serialization is `2026-11-16T04:52:00Z`, not a fractional-seconds string.
+2. The current missing-publisher-timestamp count is 61; the test now references Run185 follow-up metadata rather than stale Run184 metadata (59).
+3. The private-data workflow quarantine test now checks executable capabilities rather than matching historical-risk wording in a comment.
+
+**Security correction:** `.github/workflows/table-freshness-check.yml` on main could use a Databricks token to query `workspace.barrot.brain` and print sampled private brain-memory rows into public GitHub Actions logs. It is now quarantined on integration with `permissions: {}` and `if: ${{ false }}`. The prior diagnostic script remains preserved. A regression test prevents reactivation without a scoped read-only identity, aggregate-only output, explicit per-run authorization, exact-main-SHA validation and private artifact handling.
+
+Main still contains the unsafe legacy workflow. The quarantine is not effective on main until safely merged. No Databricks request was made; no token was read or rotated; no private workspace data was accessed.
+
+## Repository and PR state at verified code head
+
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Verified integration code head: `b9a9ff76e25f5408f97ceb8d2378492c5290718d`.
+- Main recursive tree: 1,393 entries; integration: 2,538 entries.
+- Both trees complete; no main path is missing from integration.
+- Shared paths with different blobs/modes: 205; integration-only paths: 1,145.
+- Main is an ancestor; integration is 71 commits ahead and zero behind.
+- PR #1663: 1,304 changed files; sole main-targeting PR; draft/open; technically mergeable; zero formal reviews, approvals or review threads.
+- All 48 changed workflow definitions were inspected. Full semantic review of all changed paths remains incomplete.
+
+Nine open PRs remain:
+- #1663: blocked integration, draft.
+- #1541: unique/unreviewed; 5 changed paths, 4 overlap integration, 1 unique MMI fingerprint artifact.
+- #1450: unique/unreviewed; 116 unique paths.
+- #1460: unique/unreviewed; 8 unique paths.
+- #1440: unique/unreviewed; 64 unique paths.
+- #1436: unique/unreviewed; 24 unique paths.
+- #1437: unique/unreviewed; 5 unique paths.
+- #1353: unique/unreviewed; 1,084 unique paths.
+- #1265: unique/unreviewed; 144 paths, one overlap and 143 unique paths.
+
+All eight source PR heads return no common ancestor against integration. Their histories and unique content remain preserved. No source PR is closed.
+
+## Workflow and permissions audit
+
+All 48 changed workflow definitions were inspected on integration:
+- XRP public ingestion: scheduled hourly/daily, main-ref guarded, read-only and no provider secrets. Per-run receipts/checkpoints use GitHub artifacts with 7/90-day retention; this is not WORM.
+- Feature-store cache uses exact-key Actions cache, then latest successful per-run checkpoint, then daily archive. Cache quota is currently read-only; artifact fallback exists but has not been verified on main.
+- Coinbase paper trader: manual, exact-main-SHA, position-identity preflight and artifact-only; it defaults to BTC-USD, uses Groq, and does not submit Coinbase orders. It was not dispatched; no paper trade was authorized.
+- Databricks/Kaggle operations, A2A deployment/secret rotation and Groq-backed research require explicit manual confirmations and exact main SHA; none was dispatched.
+- Ask Barrot, legacy repository writers, sync/self-upgrade, signal emitters, scheduler tick, public brain export, subscriber sync, Cloudflare diagnostics and Hugging Face sync remain quarantined.
+- Riemann and cross-analysis are public-data/artifact-only. No scheduled ingestion run on main was verified.
+
+Main branch object reports `protected=true`, but branch-protection detail returns HTTP 403. The only listed ruleset (ID 10863829, “Fall Back”) is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, not an independent reviewer. Connector permissions remain admin/maintain/push/pull/triage, broader than least privilege. Code-scanning and secret-scanning alert endpoints were not accessible through the connector; their state is unknown.
+
+## New XRP evidence — disagreements preserved
+
+### Week 46 ETF, escrow, exchange wallets and XRPL supply
+
+[XRP Insights, November 14](https://xrp-insights.com/news/xrp-supply-report-2026-11-14) reports November 6–13 settled-close holdings-based US spot XRP ETF plus BITW net outflows of **6.1M XRP** (about **$6.5M**), ending holdings of **1.19B XRP** and combined AUM of **$1.22B**. GXRP is excluded from flow calculations because its issuer-page scrape was blocked September 2–28; its holdings remain in total holdings.
+
+The same single publisher group reports:
+- Ripple escrow **31.10B XRP**, operational wallets **4.74B XRP**.
+- December 1 unlock window up to **1B XRP**; unused amounts have historically been re-escrowed.
+- Attributed exchange wallets **22.26B XRP**.
+- Seven-day change **+25.7M XRP** across 23 exchanges with unchanged tracked wallet sets; Binance excluded because its tracked wallet set changed.
+- RLUSD approximately **$2.76B** total: **$763M XRPL**, **$2.00B Ethereum**.
+- XRPL RWA **$276M distributed/transferable investor float** versus **$4.06B platform-locked registry notionals**.
+
+These are source-attributed aggregates, not beneficial ownership, tradable float or proof of future escrow sales. The RWA notional is issuer-reported; token counts are checked on-chain. All XRP Insights claims remain one source-independence group, not multiple confirmations.
+
+### Derivatives open interest
+
+- [Liqwall](https://liqwall.com/open-interest/xrp), as of **05:42 UTC November 16**, reports **$993M** XRP futures OI, down **2.5%** in 24 hours; 30-day range **$995M (Nov 14) to $1.49B (Nov 4)**.
+- [CoinGlass](https://www.coinglass.com/open-interest/XRP) reports approximately **$1.98B / 2.06B XRP**, down **5.74% USD** and **4.07% coin** over 24 hours. Visible venue rows include CME ~$330M, Binance ~$344M, OKX ~$88.7M, Bybit ~$247M and KuCoin ~$95.5M.
+
+The totals differ by approximately 2x. Venue/product scope, dated versus perpetual contracts, notional conversion and timestamp are competing explanations; none is confirmed as the complete cause. Do not average. Reconcile venue-level contract IDs, multipliers, marks, timestamps and source lineage first.
+
+### SBI/JPYSC and the wider institutional rails
+
+[SBI's November 2 primary release](https://www.sbigroup.co.jp/news/2026/1102_16704.html) reports JPYSC lending balances above **¥10B** and handled balances above **¥30B**. Handled balance is explicitly the sum of on-chain balances and lending balances. The lending program's then-current terms were 168 days at 3%, 84 days at 2.5%, or 28 days at 2%. It is not a bank deposit and is generally not cancellable early.
+
+This is JPYSC service activity, not XRP lending, collateral or public-chain float. JPYSC remains a separate yen stablecoin issued by SBI Shinsei Trust Bank and distributed through SBI VC Trade.
+
+SBI/Startale's October 16 Open Standard announcement includes Coinbase, BlackRock, Visa, Stripe and Mastercard among 140+ participants and says a JPYSC/OUSD interoperability proof of concept is under consideration. SBI/Startale/BlackRock's October 27 tokenized-MMF/JPYSC document is an MOU; SBI/SMFG's October 30 capital/business alliance is exploratory. These are ecosystem-level relationships and counter-hypotheses to an XRP-only settlement thesis, not proof of XRP settlement or a bilateral Coinbase–SBI XRP agreement.
+
+## Prediction-engine readiness
+
+Implemented on integration:
+- 51 public-source definitions and 49 scheduled-source definitions.
+- Allowlisted HTTPS public fetchers; redirects rejected.
+- Raw response hashing, write-once content-addressed receipt archive and per-run hash chain.
+- SQLite point-in-time feature store with revision availability and as-of retrieval.
+- Four deterministic baselines: naive class prior, momentum sign, mean-reversion sign and volatility-normal.
+- Purged/embargoed chronological walk-forward evaluator.
+- Temporal probability calibration and PSI feature-drift monitoring.
+- Fail-closed forecast ledger with readiness certificates, signed evaluator attestation and outcome scoring.
+
+Limits:
+- Curated registry: **106 events**, **82 declared lineage labels**, **44 canonical publisher/lineage groups**.
+- Missing byte-exact raw-source SHA-256 receipts: **106**.
+- Missing exact publisher timestamps: **61**.
+- Model-eligible events: **0**.
+- Some commercial/issuer pages are hash-only where raw retention rights are unclear.
+- GitHub artifact retention is 90 days; no independent WORM store or trusted external timestamp anchor.
+- Automatic feature-store rebuild from raw receipts is not implemented. Actions cache is derived/evictable; current cache quota is read-only.
+- Historical evaluator covers Binance XRP/USDT and Coinbase XRP/USD hourly closes; derivatives history is primarily Binance USD-M XRPUSDT. Binance/Coinbase L2 is raw-only pending timestamp/sequence bridge; Kraken depth requires fresh HTTP Date; OKX depth lacks sequence continuity; Deribit XRP-USDC L2 remains raw-only.
+- Policy-v6 candidate-readiness requires receipt-backed datasets, purged/embargoed OOS evaluation, later independent shadow evaluation, at least 100 paired origins, five receipt-backed source clusters, five origins per cluster, 10,000 bootstrap resamples and Bonferroni-adjusted 99.375% individual confidence across four baselines and two loss metrics in both OOS and shadow windows. These controls are implemented but no candidate/shadow cohort has qualified.
+
+**Forecast: NOT_ISSUED. Accuracy: NOT_EVALUATED.** No directional forecast, paper trade or real-money action occurred.
+
+## Nine-platform coordination
+
+No authentication state changed:
+- ChatGPT: GitHub authenticated; overprivileged.
+- Claude, Grok, Gemini and Codex: unverified.
+- Copilot: historical activity; no formal PR approval.
+- Hugging Face: no verified deployment.
+- Kaggle: untested.
+- Databricks: previous HTTP 403; unverified.
+
+No external-model dispatch, structured nine-platform evidence exchange or independent red-team quorum occurred. Groq is not Grok.
+
+## Merge decision
+
+**NO MERGE.** The full suite passed on code head b9a9ff7, but PR #1663 remains draft with no independent review or approval. The handoff/public-status follow-up commit requires its own exact-head CI. Full semantic review of 1,304+ changed files remains incomplete; branch-protection details are inaccessible; fallback ruleset is disabled; CODEOWNERS is self-only; connector permissions are overbroad.
+
+Eight source PRs remain open and unique/unreviewed. No source PR is closed. Main remains unchanged.
+
+## Next concrete actions
+
+1. Verify exact-head full-suite, dependency, Pages and fail-closed checks on the handoff/public-status follow-up commit.
+2. Complete the 1,304+ path semantic review, prioritizing all 48 workflows and called scripts.
+3. Resolve independent review, CODEOWNERS, branch-protection visibility and least-privilege GitHub access.
+4. Review Actions cache quota/retention; preserve artifact fallback and do not delete caches without authorization.
+5. Verify scheduled XRP ingestion on main only after a safe merge; establish byte-exact receipts, independent WORM archival and trusted timestamps.
+6. Continue synchronized historical XRP spot, full-depth L2, derivatives, ETF holdings, exchange flows, collateral and institutional settlement ingestion.
+7. Qualify a model only after leakage-safe out-of-sample superiority over all four baselines and independent shadow evaluation.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
 # Run186 follow-up — stale event-registry assertion and private-data workflow containment
 
 **Observed:** 2026-11-16T06:14:16Z  

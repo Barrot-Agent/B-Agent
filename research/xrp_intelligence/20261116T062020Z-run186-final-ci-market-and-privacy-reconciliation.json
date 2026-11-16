@@ -1,0 +1,257 @@
+{
+  "artifact_type": "barrot_xrp_run_audit",
+  "schema_version": "1.0",
+  "run": "Run186-final",
+  "observed_at_utc": "2026-11-16T06:20:20Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "verified_code_head": "b9a9ff76e25f5408f97ceb8d2378492c5290718d",
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2538,
+    "main_paths_missing": 0,
+    "shared_blob_differences": 205,
+    "integration_only_paths": 1145,
+    "commits_ahead": 71,
+    "commits_behind": 0,
+    "pr_number": 1663,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable": true,
+    "pr_changed_files": 1304,
+    "open_prs": [
+      1663,
+      1541,
+      1450,
+      1460,
+      1440,
+      1436,
+      1437,
+      1353,
+      1265
+    ]
+  },
+  "ci": {
+    "full_suite": {
+      "run_id": 43815599255,
+      "head_sha": "b9a9ff76e25f5408f97ceb8d2378492c5290718d",
+      "conclusion": "success",
+      "passed": 3830,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "duration_seconds": 111.75,
+      "inclusive_coverage_percent": 64.09,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "success",
+      "installed_v3_xrp_mission": "verified",
+      "pages_validation": "success"
+    },
+    "dependency_audit_push": {
+      "run_id": 43815599356,
+      "conclusion": "success",
+      "manifests": [
+        "requirements.txt",
+        "requirements-dev.txt",
+        "requirements-integrations.txt",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt",
+        "pyproject.toml"
+      ],
+      "known_vulnerabilities": 0
+    },
+    "dependency_audit_pr": {
+      "run_id": 43815606353,
+      "conclusion": "success",
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_push": {
+      "run_id": 43815599413,
+      "conclusion": "success"
+    },
+    "fail_closed_pr": {
+      "run_id": 43815606480,
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "run_id": 43815606453,
+      "conclusion": "success",
+      "tests_skipped_for_integration_branch": true
+    },
+    "cache_warning": "GitHub Actions cache budget reached; cache became read-only during setup-python pip-cache save. Tests passed."
+  },
+  "security": {
+    "changed_workflow_definitions_reviewed": 48,
+    "table_freshness_workflow": {
+      "integration_state": "quarantined",
+      "main_state": "legacy workflow remains active",
+      "previous_risk": "Databricks token queried workspace.barrot.brain and printed sampled private rows into public Actions logs",
+      "integration_controls": [
+        "permissions: {}",
+        "if: false",
+        "regression test"
+      ],
+      "external_databricks_request_made": false,
+      "token_read_or_rotated": false
+    },
+    "main_branch_protected_flag": true,
+    "branch_protection_api": "403 Resource not accessible by integration",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "security_alert_endpoints": "not accessible via current connector; status unknown"
+  },
+  "research": {
+    "xrp_insights": {
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-14",
+      "publication_date": "2026-11-14",
+      "source_group": "xrp-insights",
+      "etf_window": "2026-11-06 through 2026-11-13 settled closes",
+      "etf_flows_xrp": -6100000,
+      "approximate_etf_flows_usd": -6500000,
+      "ending_holdings_xrp": 1190000000,
+      "combined_aum_usd": 1220000000,
+      "g_xrp_excluded_from_flows": true,
+      "ripple_escrow_xrp": 31100000000,
+      "ripple_operational_wallets_xrp": 4740000000,
+      "next_unlock_date": "2026-12-01",
+      "next_unlock_max_xrp": 1000000000,
+      "exchange_wallets_xrp": 22260000000,
+      "unchanged_exchange_wallet_count": 23,
+      "unchanged_wallet_set_7d_delta_xrp": 25700000,
+      "binance_excluded_for_wallet_set_change": true,
+      "rlusd_total_usd": 2760000000,
+      "rlusd_xrpl_usd": 763000000,
+      "rlusd_ethereum_usd": 2000000000,
+      "xrpl_distributed_rwa_float_usd": 276000000,
+      "xrpl_locked_registry_notional_usd": 4060000000,
+      "raw_source_sha256": null,
+      "model_eligible": false
+    },
+    "liqwall": {
+      "url": "https://liqwall.com/open-interest/xrp",
+      "timestamp_utc": "2026-11-16T05:42:00Z",
+      "open_interest_usd": 993000000,
+      "change_24h_percent": -2.5,
+      "low_30d_usd": 995000000,
+      "low_30d_date": "2026-11-14",
+      "high_30d_usd": 1490000000,
+      "high_30d_date": "2026-11-04",
+      "raw_source_sha256": null,
+      "model_eligible": false
+    },
+    "coinglass": {
+      "url": "https://www.coinglass.com/open-interest/XRP",
+      "open_interest_usd": 1980000000,
+      "open_interest_xrp": 2060000000,
+      "change_24h_usd_percent": -5.74,
+      "change_24h_coin_percent": -4.07,
+      "visible_venue_rows_usd": {
+        "CME": 330270000,
+        "Binance": 344000000,
+        "OKX": 88740000,
+        "Bybit": 247290000,
+        "KuCoin": 95490000
+      },
+      "event_timestamp_utc": null,
+      "model_eligible": false,
+      "interpretation": "Different venue/contract universe and asynchronous timestamp; unresolved approximately 2x disagreement with Liqwall; never average."
+    },
+    "sbi_jpysc": {
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "date": "2026-11-02",
+      "lending_balance_yen_gt": 10000000000,
+      "handled_balance_yen_gt": 30000000000,
+      "handled_balance_definition": "on-chain balance plus lending balance",
+      "lending_terms_as_of_date": {
+        "168_day_apr_percent": 3,
+        "84_day_apr_percent": 2.5,
+        "28_day_apr_percent": 2
+      },
+      "xrp_collateral_evidence": false,
+      "public_chain_freely_transferable": false
+    },
+    "institutional": {
+      "sbi_open_standard_url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "sbi_startale_blackrock_mou_url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "sbi_smfg_capital_business_alliance_url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "open_standard_membership_includes_coinbase": true,
+      "jpysc_ousd_poc": "under consideration",
+      "xrp_settlement_evidence": false,
+      "classification": "ecosystem-level membership/MOU/exploration, not proof of bilateral Coinbase-SBI XRP settlement"
+    }
+  },
+  "prediction": {
+    "event_count": 106,
+    "declared_lineage_labels": 82,
+    "canonical_publisher_lineage_groups": 44,
+    "missing_raw_source_sha256": 106,
+    "missing_exact_publisher_timestamps": 61,
+    "model_eligible_events": 0,
+    "public_signal_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "forecast_target": null,
+    "forecast_horizon": null,
+    "probabilities": null
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authenticated; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "historical activity; no formal PR approval",
+    "Codex": "unverified",
+    "HuggingFace": "no verified deployment",
+    "Kaggle": "untested",
+    "Databricks": "prior HTTP 403; unverified"
+  },
+  "governance": {
+    "pr_reviews": 0,
+    "pr_approvals": 0,
+    "review_threads": 0,
+    "merge_decision": "NO MERGE",
+    "source_prs_closed": [],
+    "source_pr_classifications": {
+      "1265": "unique/unreviewed; 1 overlap and 143 unique paths",
+      "1353": "unique/unreviewed; 1084 unique paths",
+      "1436": "unique/unreviewed; 24 unique paths",
+      "1437": "unique/unreviewed; 5 unique paths",
+      "1440": "unique/unreviewed; 64 unique paths",
+      "1450": "unique/unreviewed; 116 unique paths",
+      "1460": "unique/unreviewed; 8 unique paths",
+      "1541": "unique/unreviewed; 4 of 5 paths overlap, 1 unique MMI artifact"
+    }
+  },
+  "actions": [
+    "Fetched current main/integration refs and complete recursive trees",
+    "Reconciled all nine open PRs and source branch overlaps/ancestry",
+    "Inspected all 48 changed workflow definitions and high-impact scripts",
+    "Corrected timestamp and registry-count test assertions",
+    "Quarantined private Databricks brain-row workflow on integration",
+    "Updated public forecast status and accuracy to fail closed",
+    "Recorded Week 46 ETF, escrow, exchange-wallet, OI, RLUSD/RWA and SBI JPYSC observations"
+  ],
+  "not_performed": [
+    "No merge",
+    "No deployment",
+    "No secret read or rotation",
+    "No Databricks request/write",
+    "No Kaggle submission",
+    "No paper trade",
+    "No funds transfer or real-money action",
+    "No force-push/history rewrite",
+    "No source PR closure",
+    "No external-model dispatch"
+  ]
+}
