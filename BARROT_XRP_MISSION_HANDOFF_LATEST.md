@@ -4454,3 +4454,100 @@ Main branch-protection detail remains inaccessible: GitHub returned HTTP 403 “
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model dispatch, force-push, history rewrite or source-PR closure occurred.
 
 **Next actions:** verify exact-head CI for this handoff update; synchronize PR #1663's stale head/test summary; complete semantic review of the 49 workflow files and remaining high-risk paths; obtain independent review and authorized branch-protection evidence; pin remaining mutable workflow action tags; then prioritize raw-source byte receipts and durable point-in-time market ingestion. Keep forecast issuance disabled until chronological out-of-sample and independent shadow admission gates pass.
+
+
+---
+
+# Run201 supplemental — SBI capital, SBIC identity, legacy-signal quarantine and workflow review
+
+**Captured:** 2026-11-16T23:12Z  
+**Parent head:** `81f6daf4352a05cb8fec75b0492c598dfd1a254a`  
+**Classification:** Research-only. Web-rendered primary-source extracts are not byte-exact raw receipts and remain model-ineligible.
+
+## SBI / Evernorth: actual cash versus XRP valuation
+
+A stronger primary-source chain now resolves part of the “actual capital” question:
+
+1. SBI's October 21, 2025 announcement said SBI Group would contribute USD 200 million in cash to Evernorth's PIPE. Its May 1, 2026 fiscal-year presentation later labels the investment as **USD 200 million invested in cash** and describes the transaction as a PIPE investment executed with Ripple and other partners. This is issuer confirmation of the USD 200 million cash investment, not merely a third-party estimate.
+   - https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+   - https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf
+
+2. Evernorth's September 30, 2026 Form 10-Q states that certain investors affiliated with SBI Holdings amended their Advance Funding Subscription Agreements. Their Class A issuance was capped at a 39.9% ownership threshold of outstanding Class A; excess shares were issued as Class C. The 10-Q does **not** separately itemize the cash funded by each SBI-affiliated investor. The SBI USD 200 million should be treated as part of the same PIPE/advance-funding program, not added as a second USD 200 million on top of the USD 214.05 million aggregate advance cash.
+   - https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+
+3. The 10-Q reports USD 214,049,995 advance-funding cash received by October 23, 2025, plus 600,000 XRP; USD 10.5 million and 200,000 XRP of delayed funding; USD 272.6 million gross cash at the business-combination close (USD 224.6 million private placement plus USD 48.0 million SPAC trust cash after redemptions, before transaction expenses); and approximately 388,910,554 XRP contributed in kind.
+
+4. Valuation basis materially changes the combined cash-plus-in-kind headline. Using the filing's stated signing XRP price of USD 2.36609, 388,910,554 XRP is approximately USD 920.20 million; plus USD 272.6 million gross cash gives approximately USD 1.193 billion. Using the closing XRP price of USD 1.43069, the same in-kind XRP is approximately USD 556.41 million; plus the same gross cash gives approximately USD 829.01 million. The SBI presentation's “over USD 1.0 billion” combined spot-XRP-and-cash headline does not state its valuation timestamp in the cited slide. Preserve this as a valuation-basis reconciliation, not a claim that USD 1 billion of cash was raised.
+
+5. Separate later capital: the USD 30 million convertible note was issued October 13, after the October 9 business-combination close; the company reported approximately USD 29 million net after a USD 1 million advisor fee. Warrant exercise proceeds of USD 35.3 million gross were reported through November 9. The Cantor committed-equity facility's share capacity is not cash raised unless shares are actually sold and proceeds received.
+
+6. The 473.276 million XRP gross Evernorth/Pathfinder close position is mixed-source. It includes XRP purchased using cash, XRP contributed by Ripple, RippleWorks/Arrington-linked XRP and other contributor positions. It must not be described as entirely open-market purchases. SBI's 39.9% threshold concerns Class A share ownership, not 39.9% of total company equity or 39.9% of XRP.
+
+## Japan SBIC identity and ChatGPT phrase
+
+Primary company profiles identify three distinct regional companies under Japan's Small and Medium Enterprise Investment & Consultation Companies Act:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; established November 15, 1963.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established November 18, 1963.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established November 20, 1963.
+
+Each regional company's official profile identifies the other two as sister companies. SBI Holdings, Inc. is a separate financial holding company established in 1999. The reviewed official profiles do not identify SBI Holdings as the parent or owner of the three SBIC regional companies. This is a profile-based identity finding, not an absolute negative ownership opinion; complete current shareholder registers were not reviewed.
+
+The exact “SBIC, ChatGPT SBIC” lead is best explained by public education events, not a corporate partnership:
+- SBIC East's February 26, 2025 seminar was titled “The Present and Future of Generative AI (ChatGPT).”
+- SBIC East's June 12–13, 2025 manufacturing-focused training explicitly included ChatGPT and Copilot.
+- SBIC West has separately advertised generative-AI workshops in 2026.
+
+No reviewed source establishes an OpenAI partnership, investment, procurement arrangement, ChatGPT product partnership, Ripple/XRP integration or SBI Holdings ownership link.
+
+Primary references:
+- https://www.sbic.co.jp/company/profile/
+- https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf
+- https://www.sbic.co.jp/training/20250612co/
+- https://www.sbic-cj.co.jp/company/about/
+- https://www.sbic-wj.co.jp/profiles/profile/
+
+## Exact-phrase and creator identity status
+
+- **ASK Coin:** Permission Coin ($ASK) remains the best-supported candidate because Permission's official site and token documentation use the $ASK label and document Base and Polygon deployments. The user's intended referent remains unconfirmed because ASK is non-unique. No direct or indirect XRP/XRPL/Ripple/Coinbase/Circle relationship was found in the reviewed official Permission material. Do not add ASK to the XRP relationship graph.
+  - https://www.permission.ai/
+  - https://docs.permission.ai/ask-token
+
+- **Kamilah/Camilla Stevenson:** Person identity is confirmed by first-person and branded-source evidence. The candidate YouTube handle `@drkamilahstevenson` and channel ID `UCqUPJMQdkCN6lsLVDnichPA` remain a probable match, not platform-side verified. The repository source profile holds 21 candidate video references, zero verified inventory entries, and explicitly prohibits creator attribution or exhaustive inventory until authorized YouTube metadata or a first-party reciprocal link confirms the exact channel ID/handle. No verified creator-video inventory was promoted in this run.
+
+## Main versus integration: forecast publication and mission activation
+
+The current main branch was checked directly:
+
+- `barrot_agent/data/missions/primary_mission.json` is absent from main (404). The integration branch contains the XRP mission as priority 1, status active, and preserves Barrot V3 execution/orchestration/safety/verification responsibilities.
+- `.github/workflows/xrp-public-ingestion.yml` is absent from main (404). It exists on integration with hourly and daily schedules, but its job runs only on main. It has not run in production; the schedule is designed, not executed or verified.
+- Main `web/latest_signal.json` is dated October 29, 2026, has score 44, confidence 0.0 and records missing GitHub model credentials plus Groq HTTP 429. Its content is a stale headline/sentiment summary, not a fixed-horizon XRP price forecast. Main `web/signals.html` maps score 44 to NULL; it does not turn that value into BUY or SELL.
+- Main `web/signal_accuracy.json` still reports 45.5% from 1,697 checks. This is a legacy variable-horizon scorer and is not valid fixed-horizon out-of-sample predictive accuracy. The integration branch preserves the legacy record separately, changes the current status to `NOT_EVALUATED`, sets `forecast_eligible=false`, and replaces the subscriber page with a transparent `NOT_ISSUED` forecast-status page.
+- Main `knowledge-signal-cycle.yml` still permits a manually confirmed legacy RSS/Groq blended-signal path without the new evidence-first forecast boundary. Integration quarantines that path with no permissions and an always-false job. Main `signal-summary.yml` is manual but lacks the integration branch's exact-main-SHA and explicit external-model confirmation requirements; integration makes it summary-only and artifact-only.
+
+This is a significant mainline discrepancy. Do not describe the XRP priority mission or scheduled ingestion as active on main until a safe integrated merge is completed and main CI plus the first scheduled ingestion run are verified. The integration branch has the safer replacement, but it is still draft and unmerged.
+
+## Nine-platform map and workflow safety
+
+The current structured map remains `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run198.json`. This run rechecked the available ChatGPT/GitHub connection. Repository metadata reports the connection has admin, maintain, push, pull and triage permissions—broader than least privilege. No current tested authentication/data-flow evidence was obtained for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks; Copilot has historical one-off activity only. A configured Groq secret is not evidence of a Grok connection. No external model task was dispatched.
+
+Ten high-risk integration workflows were inspected:
+- XRP public ingestion is public/read-only, with `contents: read` and `actions: read`; its only POST is the allowlisted, read-only XRPL `server_info` RPC. It publishes GitHub artifacts and cache, not an external trading action. Artifact retention is 90 days for raw receipts and is not WORM.
+- Coinbase paper-trader workflow is manual, main-only, requires explicit YES and exact main SHA, and is a legacy BTC-USD simulation using public Coinbase market data and Groq; it has no exchange order-creation endpoint in the inspected script. It was not run.
+- Databricks and Kaggle operations require separate explicit inputs and exact main SHA; neither was run.
+- A2A deployment requires explicit deployment and secret-rotation approvals plus exact main SHA; neither action was run.
+- Hugging Face/self-hosted sync paths remain quarantined.
+
+The remaining workflow review is incomplete. Mutable action tags, least-privilege permissions, full semantic review and branch-protection verification remain merge blockers.
+
+## Forecast admission status
+
+The last durable registry remains at 125 curated events, zero byte-exact raw-source SHA-256 receipts, 48 exact publisher timestamps, 77 missing exact publisher timestamps and zero model-eligible events. No directional forecast was issued. Accuracy remains `NOT_EVALUATED`. Public web extracts in this supplemental are not raw receipts and were not admitted to the feature store.
+
+## Run201 supplemental decision
+
+**No merge.** Main still lacks the priority-one mission configuration, scheduled ingestion and fail-closed public forecast status. Integration contains the intended replacements, but PR #1663 remains draft with no independent formal review; branch protection is inaccessible through the current connector, the visible ruleset is disabled, the GitHub permission set is over-broad, and full semantic review of all changed paths is incomplete.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model dispatch, force-push, history rewrite or source-PR closure occurred.
+
+**Next actions:** exact-head CI for this supplemental handoff commit; synchronize PR #1663's stale description; complete workflow/security and code semantic review; obtain independent review and authorized branch-protection evidence; reduce GitHub permissions through the authorized owner; pin remaining mutable action references; then merge only after every gate passes and verify main plus the first scheduled ingestion run.
