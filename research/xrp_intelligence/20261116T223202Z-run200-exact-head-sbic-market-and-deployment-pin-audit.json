@@ -820,6 +820,125 @@
     "bitquery": "Commercial analytics vendor; its RLUSD bot/dust findings have not been independently reproduced by Barrot.",
     "market_aggregators": "Liqwall and TradRadar have different venue universes and timestamps; do not count as independent confirmations without methodology/source overlap review.",
     "exchange_balances": "XRP Insights uses direct XRPL account_info plus third-party wallet labels; balances include cold storage and are not tradable float.",
-    "etf": "Alpha Finance and TokenPost appear to use the same SoSoValue five-fund series; not independent."
+    "etf": "Alpha Finance and TokenPost appear to use the same SoSoValue five-fund series; not independent.",
+    "circle_q3": "Circle issuer financial release; primary for Circle-reported figures, not independent validation of on-chain economic-payment volume.",
+    "coinbase_q3": "Coinbase issuer financial release; primary for Coinbase-reported USDC distribution/economics.",
+    "arc": "Circle corporate network launch release; validator cohort and gas model are issuer-reported."
+  },
+  "final_run200_verification": {
+    "verified_head": "0bb5a7fcb418a96e27a8323267bcc268fa639db5",
+    "push_ci": {
+      "run_id": 43973737737,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43973737737",
+      "conclusion": "success",
+      "full_suite": {
+        "passed": 3845,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 19,
+        "duration_seconds": 172.07,
+        "inclusive_coverage_pct": 66.9,
+        "legacy_core_coverage_pct": 77,
+        "wheel_build": "passed",
+        "installed_v3_xrp_mission_smoke": "passed",
+        "pages_validation": "passed"
+      }
+    },
+    "dependency_audit": {
+      "run_id": 43973737963,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43973737963",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43973737603,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43973737603",
+      "conclusion": "success"
+    },
+    "pr_checks": {
+      "ci_run_id": 43973746512,
+      "ci_conclusion": "success",
+      "full_suite_job": "skipped",
+      "core_tests_job": "skipped",
+      "pages_validation": "success",
+      "dependency_audit_run_id": 43973746325,
+      "dependency_audit": "success",
+      "fail_closed_run_id": 43973746273,
+      "fail_closed": "success"
+    },
+    "cache": "GitHub Actions cache budget exhausted/read-only; cache save failed, but tests, build and audits passed."
+  },
+  "workflow_security_review": {
+    "changed_workflow_files": 49,
+    "explicit_permissions_blocks": 49,
+    "pull_request_target_triggers": 0,
+    "repository_write_permissions_found": 0,
+    "mutable_tag_action_uses": 27,
+    "workflows_with_mutable_tag_uses": 12,
+    "high_risk_workflows": {
+      "sync-huggingface.yml": "Quarantined: permissions {}, job if false; no token read, code upload or Space secret change.",
+      "databricks-bundle.yml": "Quarantined: permissions {}, job if false; no Databricks credentials read, deployment or job start.",
+      "sync-self-hosted-brain.yml": "Quarantined: job if false; underlying code can create a private Space, add a secret and upload code if later re-enabled; requires separate review.",
+      "barrot-gated-merge.yml": "Audit-only; explicitly states it does not approve, label or merge PRs.",
+      "barrot-ops.yml": "Manual main-only, exact approved main SHA, confirm_external_change=YES and separate YES inputs for Databricks workspace import and Kaggle dataset download; no dispatch occurred.",
+      "coinbase-paper-trader.yml": "Manual main-only, exact SHA, explicit YES, paper simulation and artifact-only output; no Coinbase exchange credentials or live order path in this workflow; no dispatch occurred.",
+      "deploy-a2a-worker.yml": "Manual main-only, exact SHA, separate YES inputs for deployment and secret rotation; current job requires both YES values for any deployment, so deploy and secret rotation are coupled. No dispatch occurred.",
+      "xrp-public-ingestion.yml": "Scheduled main-only, no external API secrets, raw/feature receipts published as GitHub artifacts and cache; no WORM storage. Absent from main.",
+      "webmcp-monetization-enrich.yml": "Runs after successful trend-digest workflow, downloads a run artifact, enriches locally and uploads an artifact; no external write detected."
+    },
+    "interpretation": "Structural inventory completed; this is not a complete semantic review of all 49 workflows. External service writes remain possible in explicitly gated workflows. No workflow was dispatched."
+  },
+  "circle_coinbase_sbi_update": {
+    "circle_q3_2026": {
+      "average_usdc_circulation_usd": 73300000000,
+      "end_of_period_usdc_circulation_usd": 73900000000,
+      "q3_onchain_transaction_volume_usd": 13900000000000,
+      "onchain_volume_yoy_change_pct": 49,
+      "total_revenue_and_reserve_income_usd": 865000000,
+      "reserve_income_usd": 658000000,
+      "other_revenue_usd": 207000000,
+      "arc_token_presale_revenue_in_other_revenue_usd": 182000000,
+      "net_income_usd": 226000000,
+      "adjusted_ebitda_usd": 317000000,
+      "circle_payments_network_annualized_tpv_usd": 41300000000,
+      "caveats": [
+        "Issuer-reported metrics.",
+        "$13.9T on-chain transaction volume is not equivalent to economic payments.",
+        "$182M ARC token presale is non-recurring and materially contributes to other revenue.",
+        "Tazapay acquisition is pending, expected 2027 and subject to approvals."
+      ],
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Reports-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    "circle_distribution": {
+      "tazapay": {
+        "status": "Acquisition agreement pending, expected 2027",
+        "annualized_volume_usd": 25000000000,
+        "banking_fintech_partners": 60,
+        "payout_markets": 100,
+        "stablecoin_volume_share_pct": 60
+      },
+      "visa_direct": "USDC prefunding moved from pilots to commercial deployment through Inyo Global, across 180+ countries (Circle-reported).",
+      "samsung_wallet": "USDC remittance for eligible U.S. users to 60+ countries (Circle-reported).",
+      "binance": "$100M strategic equity investment and five-year commercial agreement (Circle-reported)."
+    },
+    "arc": {
+      "mainnet_status": "Launched 2026",
+      "validator_model": "Permissioned founding validator cohort",
+      "gas_asset": "USDC",
+      "founding_validator_sbi_group": true,
+      "arc_token": "10B genesis tokens minted; public token launch not established in this research; transition toward proof-of-stake planned for 2027.",
+      "interpretation": "Institutional stablecoin settlement rail that can pay network gas in USDC rather than XRP; strategic competitor/adjacent network, not XRP adoption.",
+      "source": "https://www.circle.com/pressroom/circle-launches-arc-mainnet"
+    },
+    "coinbase_q3_2026": {
+      "average_usdc_held_in_coinbase_products_usd": 22000000000,
+      "share_of_average_usdc_circulation_pct": 30,
+      "share_of_usdc_economics_captured_by_coinbase_pct": 50,
+      "caveat": "Coinbase-reported; not a direct measure of XRP holdings or RLUSD collateral.",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Reports-Third-Quarter-2026-Results/default.aspx"
+    },
+    "relationship_conclusion": "SBI is multi-rail: Ripple equity/JV and RLUSD distribution coexist with Circle/USDC investment/distribution, Arc founding-validator participation and JPYSC. Coinbase distributes USDC and RLUSD but captures a large share of USDC economics. Circle's Arc and DBS/Kinexys are adjacent/competing institutional rails. None of these metrics by itself establishes XRP token demand."
   }
 }
