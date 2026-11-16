@@ -1,102 +1,193 @@
 {
   "schema_version": 2,
+  "run_id": "run195",
   "asset": "XRP/USD",
   "status": "NOT_ISSUED",
   "forecast_status": "NOT_ISSUED",
   "forecast_issued": false,
   "reason_code": "RAW_RECEIPTS_POINT_IN_TIME_AND_SHADOW_VALIDATION_INCOMPLETE",
-  "explanation": "No directional XRP forecast is published. Exact integration head 9147eacb1c5a11cc103266f797a40056d786a229 passed the full repository suite: 3,830 passed, zero failed, one skipped, 19 subtests; 64.09% inclusive coverage and the legacy core coverage floor passed. Wheel build and installed Barrot V3/XRP mission verification passed; six-manifest dependency audit and push/PR fail-closed checks passed. This Run189 evidence commit is a child of that verified head and requires its own exact-head CI. The event registry now has 111 curated events, 111 missing byte-exact raw-source SHA-256 receipts, 64 missing exact publisher timestamps and zero model-eligible events. CoinGlass's 12:07 UTC rendered snapshot displayed XRP at $0.9524 (-1.01% 24h), spot volume $497.66M (-62.10%), futures volume $2.16B (-56.06%), OI $1.97B, funding -0.0045%/8h and $3.59M liquidations (67% long); its page conflicts internally on OI 24h change. Other provider OI/liquidation totals differ by venue universe and timestamp and are not averaged. Alpha Finance's five-fund ETF dashboard through Nov 14 shows -$20.2M over seven sessions, -$1.7M over 30 sessions and +$1.71B cumulative inflows. Main Cross Analysis run 43861739882 succeeded but its checked-in logs are stale: latest XRP ingestion Oct 29 13:23 UTC and latest BTC ingestion Oct 29 13:38 UTC; both recent and prior sentiment windows contain zero entries. Historical entity scores are not current sentiment. No synchronized full-depth L2, byte-exact publisher receipts, out-of-sample model superiority or independent shadow cohort is available. Target, horizon, data cutoff and probabilities remain null.",
-  "status_as_of_utc": "2026-11-16T12:09:14Z",
+  "explanation": "No directional XRP forecast is published. Run195 captured descriptive spot, order-book, derivatives, exchange-wallet and ETF observations, but the public dashboard values are not byte-exact publisher payloads and the provider universes/timestamps remain inconsistent. The current curated registry contains 125 events, all 125 missing raw-source SHA-256 receipts, 77 missing exact publisher timestamps and zero model-eligible events. Forecast accuracy remains NOT_EVALUATED. The current integration head passed the full repository suite, but PR #1663 remains draft and has not been merged.",
+  "status_as_of_utc": "2026-11-16T18:33:25Z",
+  "integration_head_before_commit": "8c9d78e503a8200670bcf933329aadf3569a6c32",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "data_cutoff_utc": null,
   "target": null,
   "horizon_seconds": null,
   "probabilities": null,
-  "legacy_sentiment_observation": {
-    "observed_at_utc": "2026-10-29T13:23:33.142057Z",
-    "status": "STALE_DESCRIPTIVE_ONLY",
-    "forecast_eligible": false,
-    "sentiment_score": 44,
-    "news_score": 88,
-    "news_entries": 11,
-    "confidence": 0,
-    "source_status": "UNAVAILABLE",
-    "note": "Legacy descriptive sentiment snapshot only. Provider authentication was unavailable and a secondary model provider was rate-limited. Academic XRPL papers were counted as news context; this is not a market forecast."
-  },
   "latest_descriptive_snapshot": {
-    "source": "CoinGlass",
-    "source_url": "https://www.coinglass.com/currencies/XRP",
-    "publisher_displayed_update_at_utc": "2026-11-16T12:07:00Z",
-    "retrieved_at_utc": "2026-11-16T12:09:14Z",
+    "source": "Fuelmaps six-venue spot order-book aggregate",
+    "source_url": "https://fuelmaps.io/order-book/",
+    "publisher_displayed_update_at_utc": "2026-11-16T18:00:00Z",
+    "retrieved_at_utc": "2026-11-16T18:33:25Z",
     "admission": "DESCRIPTIVE_ONLY",
     "raw_source_sha256": null,
-    "price_usd": 0.9524,
-    "change_24h_percent": -1.01,
-    "range_24h_usd": {
-      "low": 0.9418,
-      "high": 0.9777
+    "price_usd": 0.9543,
+    "venue_count": 6,
+    "venues": [
+      "Coinbase",
+      "OKX",
+      "Kraken",
+      "Bitstamp",
+      "Bitfinex",
+      "Gemini"
+    ],
+    "depth_within_0_5_percent_usd": {
+      "bids": 6800000,
+      "asks": 5800000,
+      "bid_share_percent": 53.6
     },
-    "spot_volume_24h_usd": 497660000,
-    "spot_volume_change_24h_percent": -62.1,
-    "futures_volume_24h_usd": 2160000000,
-    "futures_volume_change_24h_percent": -56.06,
-    "open_interest_usd": 1970000000,
-    "open_interest_change_24h_headline_percent": -2.15,
-    "open_interest_change_24h_narrative_percent": -1.15,
-    "funding_rate_per_8h_percent": -0.0045,
-    "liquidations_24h_usd": 3590000,
-    "long_liquidations_usd": 2410000,
-    "short_liquidations_usd": 1180000,
-    "long_liquidation_share_percent": 67,
-    "futures_to_spot_volume_ratio": 4.3,
-    "coverage": "30+ exchanges including CME",
+    "depth_within_1_percent_usd": {
+      "bids": 12400000,
+      "asks": 8800000,
+      "bid_share_percent": 58.4
+    },
+    "depth_within_2_percent_usd": {
+      "bids": 17400000,
+      "asks": 10800000,
+      "bid_share_percent": 61.7
+    },
+    "depth_within_5_percent_usd": {
+      "bids": 20000000,
+      "asks": 13600000,
+      "bid_share_percent": 59.5
+    },
+    "depth_within_10_percent_usd": {
+      "bids": 26000000,
+      "asks": 15200000,
+      "bid_share_percent": 63.1,
+      "venues": 5
+    },
     "limitations": [
-      "Rendered webpage, not raw API response bytes.",
-      "No full-depth order-book payload captured.",
-      "CoinGlass page conflicts internally on open-interest 24h percentage change.",
-      "Cross-venue provider totals are not comparable without contract and venue-universe reconciliation."
+      "Dashboard aggregate; not six independently retained raw payloads.",
+      "Binance and Bitget excluded.",
+      "Resting liquidity may be cancelled and is not guaranteed executable depth."
     ]
   },
-  "cross_analysis_quality": {
-    "run_id": 43861739882,
-    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43861739882",
-    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-    "artifact_id": 14224670205,
-    "artifact_sha256": "4706abfdd0c8f9bafdfef42c9e45d88c6f3c73b5c9dbf2f6e1b5f1e9e0a0c18f",
-    "artifact_size_bytes": 240558,
-    "xrp_log_rows": 1208,
-    "xrp_latest_ingested_at_utc": "2026-10-29T13:23:01.047283Z",
-    "xrp_latest_sentiment_at_utc": "2026-10-29T12:39:22.915Z",
-    "xrp_sentiment_age_hours": 431.498,
-    "xrp_recent_24h_entries": 0,
-    "xrp_prior_24h_entries": 0,
-    "xrp_invalid_ingestion_timestamps": 11,
-    "btc_log_rows": 1245,
-    "btc_latest_ingested_at_utc": "2026-10-29T13:38:11.448678Z",
-    "btc_latest_sentiment_at_utc": "2026-10-27T03:49:16.554Z",
-    "btc_sentiment_age_hours": 488.333,
-    "btc_recent_24h_entries": 0,
-    "btc_prior_24h_entries": 0,
-    "historical_xrp_mentions": 286,
-    "historical_xrp_net_sentiment": 0.455,
-    "historical_ripple_mentions": 219,
-    "historical_ripple_net_sentiment": 0.484,
-    "status": "STALE_INPUT",
-    "forecast_eligible": false
+  "other_market_observations": [
+    {
+      "source": "SwiftEdge XRP perpetual dashboard",
+      "as_of_utc": "2026-11-16T16:31:00Z",
+      "price_usd": 0.9545,
+      "change_24h_percent": -0.19,
+      "low_24h_usd": 0.9418,
+      "high_24h_usd": 0.9773,
+      "change_7d_percent": -14.3,
+      "change_30d_percent": -26.1,
+      "raw_source_sha256": null
+    },
+    {
+      "source": "ChainRegistry",
+      "as_of_utc": "2026-11-16T16:25:00Z",
+      "price_usd": 0.9577,
+      "change_7d_percent": -13.32,
+      "change_30d_percent": -26.52,
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Basis Binance XRPUSDT perpetual book",
+      "as_of_utc": "2026-11-16T16:05:00Z",
+      "mid_usd": 0.9499,
+      "spread_bps": 1.05,
+      "total_bid_depth_usd": 33800000,
+      "total_ask_depth_usd": 33500000,
+      "depth_within_0_5_percent_usd": {
+        "bids": 8400000,
+        "asks": 6400000
+      },
+      "raw_source_sha256": null
+    }
+  ],
+  "derivatives_cross_source": [
+    {
+      "source": "Liqwall",
+      "as_of_utc": "2026-11-16T15:02:00Z",
+      "open_interest_usd": 994000000,
+      "change_24h_percent": -3.6,
+      "funding_per_8h_percent": -0.0029,
+      "liquidations_24h_usd": 3300000,
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Kodexius",
+      "as_of_utc": "2026-11-16T13:24:00Z",
+      "open_interest_usd": 521940000,
+      "funding_per_8h_percent": -0.0035,
+      "volume_24h_usd": 1210000000,
+      "raw_source_sha256": null
+    },
+    {
+      "source": "OptimistFi",
+      "as_of_utc": "2026-11-16T06:30:00Z",
+      "open_interest_usd": 1700000000,
+      "venue_count": 37,
+      "cme_share_percent": 28,
+      "raw_source_sha256": null
+    },
+    {
+      "source": "TradRadar",
+      "as_of_utc": "2026-11-15T16:00:00Z",
+      "open_interest_usd": 1330000000,
+      "venues": 7,
+      "raw_source_sha256": null
+    }
+  ],
+  "exchange_wallet_observation": {
+    "source": "XRP Insights XRPL wallet-label tracker",
+    "source_url": "https://xrp-insights.com/exchange-balances",
+    "publisher_displayed_update_at_utc": "2026-11-16T08:00:00Z",
+    "tracked_exchanges": 24,
+    "tracked_wallets": 707,
+    "total_xrp": 22240000000,
+    "same_wallet_change_7d_xrp": -126300000,
+    "same_wallet_change_30d_xrp": -344300000,
+    "raw_source_sha256": null,
+    "limitations": [
+      "Includes cold storage and wrapped-token reserves.",
+      "Coinbase includes cbXRP Base reserve; Binance includes Binance-Peg XRP reserve.",
+      "Not tradable float."
+    ]
   },
+  "etf_flow_observations": [
+    {
+      "source": "XRP Insights",
+      "through_date": "2026-11-13",
+      "universe": "six spot ETFs plus BITW",
+      "net_flow_xrp": -6078606,
+      "total_xrp_held": 1189102081,
+      "raw_source_sha256": null
+    },
+    {
+      "source": "Alpha Finance",
+      "through_date_label": "2026-11-14",
+      "universe": "five funds",
+      "seven_session_flow_usd": -20200000,
+      "thirty_session_flow_usd": -1700000,
+      "raw_source_sha256": null,
+      "limitation": "Saturday Nov14 label needs issuer-file reconciliation."
+    },
+    {
+      "source": "CryptoKeyhole",
+      "latest_complete_day": "2026-11-12",
+      "complete_day_flow_xrp": 4337131,
+      "nov13_partial_flow_xrp": -9967,
+      "funds_reported_nov13": 3,
+      "raw_source_sha256": null
+    }
+  ],
   "event_registry_summary": {
-    "event_count": 111,
-    "unique_source_ids": 109,
-    "declared_independence_groups": 85,
-    "canonical_publisher_lineage_groups": 46,
-    "missing_raw_source_sha256": 111,
-    "missing_publisher_timestamps": 64,
-    "model_eligible": 0,
-    "added": [
-      "coinglass-xrp-market-snapshot-2026-11-16T1207Z",
-      "alpha-finance-xrp-etf-flow-through-2026-11-14",
-      "dbs-kinexys-tokenized-deposit-interoperability-2026-11-16",
-      "bls-ppi-october-2026-release-2026-11-13",
-      "barrot-cross-analysis-stale-xrp-sentiment-2026-11-16T1153Z"
-    ]
+    "registry_path": "research/xrp_intelligence/event_registry_current.json",
+    "registry_version": "run192-followup",
+    "registry_captured_at_utc": "2026-11-16T16:11:30Z",
+    "event_count": 125,
+    "missing_raw_source_sha256": 125,
+    "events_with_exact_publisher_timestamps": 48,
+    "missing_exact_publisher_timestamps": 77,
+    "model_eligible": 0
+  },
+  "accuracy_status": "NOT_EVALUATED",
+  "legacy_sentiment_observation": {
+    "status": "STALE_DESCRIPTIVE_ONLY",
+    "forecast_eligible": false,
+    "note": "Prior Cross Analysis sentiment data is stale and both recent XRP windows had zero entries; historical entity scores are not current sentiment."
   }
 }
