@@ -226,9 +226,34 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "not proof" in coinbase["counter_hypothesis"]
     assert "BitGo Trust" in coinbase["claim"]
     assert coinbase["raw_source_sha256"] is None
-    assert registry["source_receipt_status"].startswith("90 of 90")
+    cbxrp_reserves = by_id["coinbase-cbxrp-proof-of-reserves-2026-11-16"]
+    assert "153,008,338.56 XRP" in cbxrp_reserves["claim"]
+    assert "153,006,092.03 cbXRP" in cbxrp_reserves["claim"]
+    assert "not a third-party audit" in cbxrp_reserves["counter_hypothesis"]
+    assert cbxrp_reserves["raw_source_sha256"] is None
+    morpho_liquidations = by_id["morpho-cbxrp-liquidation-window-2026-11-07-to-13"]
+    assert "4,016,076.342260 USDC" in morpho_liquidations["claim"]
+    assert "4,181,584.301387 cbXRP" in morpho_liquidations["claim"]
+    assert "No native XRP redemption or sale was traced" in morpho_liquidations["claim"]
+    assert morpho_liquidations["raw_source_sha256"] is None
+    morpho_market = by_id["morpho-base-usdc-cbxrp-market-snapshot-2026-11-16T0244Z"]
+    assert "90.59%" in morpho_market["claim"]
+    assert "0.960902" in morpho_market["claim"]
+    assert "191.62M" in morpho_market["claim"]
+    assert morpho_market["raw_source_sha256"] is None
+    coinglass = by_id["coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z"]
+    assert "4.50M" in coinglass["claim"]
+    assert "33.42M" in coinglass["claim"]
+    assert "not averaged" in coinglass["claim"]
+    assert coinglass["raw_source_sha256"] is None
+    missing_receipts = sum(1 for event in registry["events"] if not event.get("raw_source_sha256"))
+    assert registry["source_receipt_status"].startswith(
+        f"{missing_receipts} of {len(registry['events'])} curated events"
+    )
+    assert missing_receipts == len(registry["events"])
     assert registry["model_eligible"] is False
-    assert sum(1 for event in registry["events"] if not event.get("source_published_at_utc")) == 48
+    missing_publisher_timestamps = sum(1 for event in registry["events"] if not event.get("source_published_at_utc"))
+    assert missing_publisher_timestamps == registry["run182_update"]["missing_publisher_timestamps"]
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])

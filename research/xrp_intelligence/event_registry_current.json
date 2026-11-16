@@ -2,8 +2,8 @@
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
   "registry_version": "run182",
-  "captured_at_utc": "2026-11-16T02:32:43Z",
-  "source_receipt_status": "97 of 97 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
+  "captured_at_utc": "2026-11-16T02:44:53Z",
+  "source_receipt_status": "101 of 101 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -3876,7 +3876,7 @@
       "claim": "The syndicated U.Today report describes two 120M XRP transfers, seven minutes apart, through the same three unlabelled wallets. It says the 240M XRP did not reach an exchange, the first address retained about 98 XRP after the second transfer, and TrackWhale classified the path as approximately 'Rotation'. No beneficial owner is identified.",
       "source_id": "u_today_xrp_240m_wallet_transfers_20261115",
       "source_name": "U.Today report syndicated by TradingView; cites Whale Alert, XRPSCAN and Bithomp",
-      "source_url": "https://www.tradingview.com/news/u_today%3A1b5590628094b%3A0-someone-moves-240-million-xrp-the-exact-moment-price-hits-its-0-89-floor/",
+      "source_url": "https://u.today/someone-moves-240-million-xrp-the-exact-moment-price-hits-its-089-floor",
       "independence_group": "u-today-whale-alert-xrpscan-bithomp-syndicated-wallet-event",
       "source_status": "provisional",
       "stance": "context",
@@ -3908,6 +3908,9 @@
         "rotation-hypothesis",
         "not-exchange-inflow",
         "ownership-unknown"
+      ],
+      "related_source_urls": [
+        "https://www.tradingview.com/news/u_today%3A1b5590628094b%3A0-someone-moves-240-million-xrp-the-exact-moment-price-hits-its-0-89-floor/"
       ]
     },
     {
@@ -4010,7 +4013,7 @@
       "domain": "us_monetary_policy",
       "hypothesis": "The federal funds target range was raised to 3.75%–4.00% effective September 17 and maintained at the October 28 meeting, preserving a restrictive cash/yield alternative to speculative assets.",
       "counter_hypothesis": "A high policy rate does not mechanically determine XRP returns; future inflation, employment, liquidity, risk appetite and expected policy changes can dominate the current target range.",
-      "claim": "The FOMC raised the target range by 25 basis points to 3.75%–4.00%, effective September 17, 2026. The October 28, 2026 statement maintained the same target range. This is macro context, not a causal attribution for the XRP decline.",
+      "claim": "The FOMC raised the target range by 25 basis points to 3.75%–4.00%, effective September 17, 2026. On October 28 the FOMC maintained the same range in a 10–2 vote; two members preferred a further 25-basis-point increase. The October 28 statement said inflation remained elevated. This is macro context, not a causal attribution for XRP price movement.",
       "source_id": "fomc_2026_policy_rate_sep17_oct28",
       "source_name": "Federal Reserve Board and FOMC",
       "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm",
@@ -4135,6 +4138,230 @@
         "regulatory-uncertainty",
         "procedural-failure"
       ]
+    },
+    {
+      "event_id": "coinbase-cbxrp-proof-of-reserves-2026-11-16",
+      "event_type": "institutional",
+      "event_name": "Coinbase — cbXRP proof-of-reserves and wrapped-asset redemption",
+      "hypothesis_id": "coinbase-cbxrp-reserve-backing-and-morpho-collateral-separation",
+      "domain": "custody_and_wrapped_assets",
+      "hypothesis": "Coinbase's displayed XRP reserve backs cbXRP 1:1; DeFi liquidations transfer the wrapped token on Base and do not establish that Coinbase sold or released native XRP.",
+      "counter_hypothesis": "The proof-of-reserves dashboard is Coinbase-published rather than a third-party audit; its displayed refresh time has no timezone label, and reserve/supply differences may reflect timing, fees or hot/cold wallet operations.",
+      "claim": "Coinbase's cbXRP Proof of Reserves page displayed 153,008,338.56 XRP in reserve and 153,006,092.03 cbXRP in total supply, an arithmetic reserve excess of 2,246.53 XRP and a ratio of approximately 100.001468%. The page displayed a refresh time of 11/16/2026 2:41 AM without a timezone label and listed Base as the cbXRP network. Coinbase's wrapped-assets FAQ says wrapped assets are backed 1:1, held in Coinbase custody, can be unwrapped 1:1 by depositing cbXRP into a Coinbase account, and the underlying backing asset will not be sold, transferred or used for another purpose. Coinbase lists Morpho in its wrapped-assets DeFi ecosystem. This is Coinbase's own PoR disclosure, not an independent auditor attestation.",
+      "source_id": "coinbase_cbxrp_proof_of_reserves_20261116",
+      "source_name": "Coinbase first-party cbXRP Proof of Reserves and Wrapped Assets documentation",
+      "source_url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "related_source_urls": [
+        "https://www.coinbase.com/campaigns/wrapped-assets",
+        "https://www.coinbase.com/campaigns/wrapped-assets#faqs",
+        "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp"
+      ],
+      "independence_group": "coinbase-cbxrp-official-proof-of-reserves",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:44:53Z",
+      "captured_at_utc": "2026-11-16T02:44:53Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The 2026-11-16T00:00:00Z event timestamp is a date-only anchor; Coinbase displays 2:41 AM but no timezone label.",
+        "The reserve excess is not treated as free surplus or additional XRP supply; Coinbase says timing, delayed transactions, fees and hot/cold wallet movements can cause reserve/supply differences.",
+        "Coinbase's PoR page is a first-party disclosure with publicly listed reserve addresses, not a third-party audit.",
+        "A Base cbXRP transfer or liquidation does not itself establish native XRP redemption or sale."
+      ],
+      "falsification_conditions": [
+        "Independent reserve reconciliation materially changes the displayed XRP reserve or cbXRP supply.",
+        "A traceable cbXRP redemption/unwrap or custody movement establishes native XRP release or sale."
+      ],
+      "related_entities": [
+        "Coinbase",
+        "cbXRP",
+        "XRP Ledger",
+        "Base",
+        "Morpho"
+      ],
+      "tags": [
+        "cbxrp",
+        "proof-of-reserves",
+        "coinbase-custody",
+        "wrapped-asset",
+        "morpho-ecosystem",
+        "native-xrp-sale-not-established"
+      ]
+    },
+    {
+      "event_id": "morpho-cbxrp-liquidation-window-2026-11-07-to-13",
+      "event_type": "collateral",
+      "event_name": "CryptoSlate analysis of Morpho Base cbXRP/USDC liquidation records",
+      "hypothesis_id": "cbxrp-collateral-deleveraging-without-proven-native-xrp-sale",
+      "domain": "defi_collateral_liquidations",
+      "hypothesis": "Morpho liquidations transferred cbXRP collateral to liquidators while repaying USDC debt; this can create Base wrapped-token selling or rotation pressure without proving native XRP was redeemed or sold.",
+      "counter_hypothesis": "The 883 records are liquidation logs, not unique borrowers; Coinbase says the underlying XRP backing cbXRP remains held and is not sold/transferred/used for another purpose. The reviewed Base transactions do not trace a native XRP redemption or trade.",
+      "claim": "CryptoSlate's analysis of Morpho's indexed transaction records covers November 7, 2026 at 10:30:51 UTC through November 13 before 13:00 UTC: 883 liquidation logs repaid 4,016,076.342260 USDC and seized 4,181,584.301387 cbXRP. The selected logs reported zero bad debt. At the November 13 16:28:22 UTC snapshot, the same market showed approximately 53.53M USDC debt against 121.7M cbXRP collateral and a 62.5% liquidation LTV. A decoded November 10 transaction repaid 202,394.361513 USDC and seized 218,174.720605 cbXRP; the liquidator sent cbXRP onward on Base and received USDC and wrapped ETH. No native XRP redemption or sale was traced.",
+      "source_id": "cryptoslate_morpho_cbxrp_liquidations_20261113",
+      "source_name": "CryptoSlate analysis of Morpho indexed API records and decoded Base transactions",
+      "source_url": "https://cryptoslate.com/xrp-loans-trigger-883-liquidations-and-53m-remains-at-risk/",
+      "related_source_urls": [
+        "https://api.morpho.org/graphql",
+        "https://docs.morpho.org/",
+        "https://basescan.org/",
+        "https://www.coinbase.com/campaigns/wrapped-assets"
+      ],
+      "independence_group": "cryptoslate-morpho-api-cbxrp-liquidation-analysis",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-07T10:30:51Z",
+      "source_published_at_utc": "2026-11-13T20:50:00Z",
+      "available_at_utc": "2026-11-16T02:44:53Z",
+      "captured_at_utc": "2026-11-16T02:44:53Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The event time is the start of the analysis window; the window ends November 13 before 13:00 UTC.",
+        "883 counts individual liquidation logs; a borrower can appear more than once.",
+        "Debt repaid is not the borrower's net economic loss.",
+        "Seized cbXRP is a wrapped Base token; a native XRP sale requires a separately traced unwrap/redemption or custody movement.",
+        "The 121.7M collateral and 53.53M debt values are the November 13 16:28:22 UTC snapshot, not current balances."
+      ],
+      "falsification_conditions": [
+        "Morpho indexed logs or decoded Base transactions are corrected or deduplicated to materially different totals.",
+        "A linked redemption or XRP trade demonstrates native XRP was released or sold as a consequence of the collateral seizure."
+      ],
+      "related_entities": [
+        "Morpho",
+        "Coinbase",
+        "cbXRP",
+        "XRP",
+        "USDC",
+        "Base",
+        "Chainlink"
+      ],
+      "tags": [
+        "morpho",
+        "cbxrp",
+        "883-liquidation-logs",
+        "usdc-debt-repayment",
+        "wrapped-collateral",
+        "native-xrp-sale-unproven"
+      ]
+    },
+    {
+      "event_id": "morpho-base-usdc-cbxrp-market-snapshot-2026-11-16T0244Z",
+      "event_type": "collateral",
+      "event_name": "Morpho Base USDC/cbXRP market — live UI snapshot",
+      "hypothesis_id": "cbxrp-collateral-concentration-utilization-and-oracle-discrepancy",
+      "domain": "defi_collateral_market",
+      "hypothesis": "The Coinbase-wrapped XRP collateral market on Base is actively used for USDC borrowing, with high displayed utilization, concentrated USDC suppliers and an unresolved oracle-price discrepancy.",
+      "counter_hypothesis": "The Morpho page is a dynamic UI snapshot without a publisher event timestamp; its utilization denominator and 'value secured' field do not reconcile from the displayed fields, and the displayed oracle price differs from the underlying Chainlink feed value.",
+      "claim": "At capture 2026-11-16T02:44:53Z, Morpho's Base USDC/cbXRP market page displayed $48.08M outstanding loans, $19.55M total liquidity, $67.64M total market size, 90.59% current utilization against a 90% target, 8.05% borrow rate, 7.10% lend rate, 7.72% 24-hour average borrow rate, 7.05% 7-day average, 62.5% liquidation LTV, 12.67% liquidation penalty, and zero realized/unrealized bad debt. The page listed 1,097 borrowers and 217 suppliers. Its three largest listed USDC suppliers were 25.72%, 25.10% and 17.69% of supply, totaling 68.51%. The page displayed an oracle price of 0.971 USDC per cbXRP, a DefiLlama price of 0.968, and a Chainlink XRP/USD feed latest price of 0.960902 with a 1-day heartbeat and 0.5% deviation parameter. The 0.971 versus 0.960902 difference is approximately 1.05% and is unresolved. The page also displayed 'value secured' of $191.62M; its scope does not reconcile to the Coinbase cbXRP supply and it is excluded. The displayed 90.59% utilization does not equal the simple ratio 48.08/(48.08+19.55)=71.1%; the utilization denominator is not established. The November 13 CryptoSlate debt snapshot was $53.53M versus the current UI's $48.08M, a nominal $5.45M or 10.18% reduction if scopes match; this is not classified as net repayments without transaction reconciliation.",
+      "source_id": "morpho_base_usdc_cbxrp_market_ui_20261116",
+      "source_name": "Morpho first-party Base USDC/cbXRP market page",
+      "source_url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+      "related_source_urls": [
+        "https://basescan.org/token/0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+        "https://www.coinbase.com/cbxrp/proof-of-reserves"
+      ],
+      "independence_group": "morpho-base-usdc-cbxrp-first-party-market-ui",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T02:44:53Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:44:53Z",
+      "captured_at_utc": "2026-11-16T02:44:53Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The timestamp is the retrieval/capture time, not a provider-issued snapshot timestamp; the page's transaction feed showed activity through 02:31:14 UTC.",
+        "Displayed borrower/supplier counts are protocol UI counts, not beneficial-owner counts.",
+        "Top-three supplier share is a displayed vault/source concentration, not a count of independent beneficial owners.",
+        "The page's 90.59% utilization denominator is not established by the displayed loan/liquidity/market-size figures.",
+        "The 'value secured' field is excluded because its scope is not reconciled with the 153.006M cbXRP supply.",
+        "The oracle UI value, DefiLlama price and Chainlink feed value are not timestamp-synchronized."
+      ],
+      "falsification_conditions": [
+        "A synchronized direct Morpho API/chain-state extraction resolves the utilization denominator, collateral amount and oracle price discrepancy.",
+        "Coinbase reserve/supply data or Morpho market state is corrected by a later primary snapshot."
+      ],
+      "related_entities": [
+        "Morpho",
+        "Coinbase",
+        "cbXRP",
+        "USDC",
+        "Base",
+        "Chainlink",
+        "Steakhouse Financial",
+        "Clearstar",
+        "Gauntlet"
+      ],
+      "tags": [
+        "morpho",
+        "cbxrp",
+        "usdc",
+        "collateral",
+        "utilization",
+        "supplier-concentration",
+        "chainlink-oracle",
+        "data-quality"
+      ]
+    },
+    {
+      "event_id": "coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z",
+      "event_type": "derivatives",
+      "event_name": "CoinGlass XRP futures live page — OI, funding, volume and liquidation snapshot",
+      "hypothesis_id": "xrp-derivatives-deleveraging-vs-short-covering-and-provider-window-disagreement",
+      "domain": "derivatives_market_structure",
+      "hypothesis": "CoinGlass's opened live page describes a rebound with positive USD open-interest change but negative XRP-denominated open-interest change, negative funding and a provider-classified short-covering regime.",
+      "counter_hypothesis": "The page has no explicit event timestamp; its search-result cache reported $33.42M/86% long liquidations while the opened page displayed $4.50M/45% long. Other aggregators report materially different OI and liquidation totals, so the figures are not a synchronized consensus.",
+      "claim": "At Run182 retrieval, CoinGlass displayed XRP at $0.9715 (+3.16% 24h), $1.98B open interest (+0.32% in USD and -2.75% in XRP terms), -0.0074% funding per 8 hours (about -8.16% annualized), $2.61B futures volume (-45.80%), $657.15M spot volume (-46.10%), a 4.0x futures/spot volume ratio, OI/market-cap of 3.21% at the 50th percentile, and a 24-hour liquidation tile of $4.50M with longs at 45%. CoinGlass described the price/OI combination as short covering. The same page's cached search snippet returned $33.42M liquidations and 86% longs; that cached value conflicts with the opened page and is excluded as stale. CoinGlass's ETF tile showed -$1.1M on Nov 13, conflicting with XRP Insights' +3.4M Nov 13 observation from a different fund universe. Other retained snapshots are not averaged: TradRadar Nov 15 16:00 UTC reported OI $1.33B and at least $37.51M liquidations (33.87M long/3.65M short); Alpha Finance Nov 15 22:04 UTC reported OI $1.98B and $12.4M liquidations (7.9M long/4.5M short); Liqwall Nov 15 23:52 UTC reported OI $1.01B and $7.5M liquidations (3.3M long/4.2M short); U.Today's Nov 15 report cited CoinGlass at $27M and 97% long. These windows, venue universes and cache states are not comparable.",
+      "source_id": "coinglass_xrp_futures_live_snapshot_20261116",
+      "source_name": "CoinGlass XRP futures live page and retained provider snapshots",
+      "source_url": "https://www.coinglass.com/currencies/XRP/futures",
+      "related_source_urls": [
+        "https://traderradar.com/",
+        "https://alphafinance.io/",
+        "https://liqwall.com/",
+        "https://u.today/someone-moves-240-million-xrp-the-exact-moment-price-hits-its-089-floor"
+      ],
+      "independence_group": "coinglass-xrp-futures-live-page",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T02:44:53Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:44:53Z",
+      "captured_at_utc": "2026-11-16T02:44:53Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Capture time is the retrieval time; CoinGlass page did not expose a provider event timestamp.",
+        "The search-result snippet and opened page are two retrieval representations of the same provider, not independent sources; the conflicting cached snippet is quarantined.",
+        "CoinGlass, TradRadar, Alpha Finance and Liqwall use different exchange universes, windows and calculation methods; totals must not be averaged.",
+        "Negative funding means shorts pay longs; it is not by itself a directional forecast.",
+        "CoinGlass's 'short covering' classification is its interpretation of USD/coin-denominated OI changes, not an independently validated causal label."
+      ],
+      "falsification_conditions": [
+        "Time-synchronized exchange-level raw derivatives feeds reconcile the provider totals and funding values.",
+        "CoinGlass corrects its live page or publishes a timestamped API snapshot that resolves the cache discrepancy."
+      ],
+      "related_entities": [
+        "XRP",
+        "CoinGlass",
+        "TradRadar",
+        "Alpha Finance",
+        "Liqwall",
+        "USDT",
+        "USDC"
+      ],
+      "tags": [
+        "xrp-futures",
+        "open-interest",
+        "funding",
+        "liquidations",
+        "short-covering",
+        "provider-disagreement",
+        "stale-cache"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -4195,15 +4422,49 @@
       "bls-october-2026-cpi-release-and-yoy-data-gap-2026-11-10",
       "fomc-policy-rate-2026-09-17-and-2026-10-28",
       "treasury-par-yield-curve-2026-11-13",
-      "clarity-act-senate-procedural-vote-2026-09-15"
+      "clarity-act-senate-procedural-vote-2026-09-15",
+      "coinbase-cbxrp-proof-of-reserves-2026-11-16",
+      "morpho-cbxrp-liquidation-window-2026-11-07-to-13",
+      "morpho-base-usdc-cbxrp-market-snapshot-2026-11-16T0244Z",
+      "coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z"
     ],
-    "corrected_event_ids": [],
-    "note": "Added a descriptive-only XRP risk-off/ETF/stablecoin event; the 240M unlabelled wallet-transfer event; an asynchronous OKX/Kraken/USDT basis-gate snapshot; official BLS October CPI with the year-over-year data gap; Federal Reserve policy range; U.S. Treasury November 13 nominal yields; and the September 15 CLARITY Act procedural vote. Secondary reports are provisional; primary government sources are verified. Date-only event anchors are explicitly disclosed. No exact publisher payload bytes were retained, no raw SHA-256 hashes were invented, and no event is model-eligible.",
-    "source_receipt_status": "97/97 missing byte-exact raw-source SHA-256 receipts",
-    "missing_publisher_timestamps": 53,
-    "independence_groups": 74,
+    "corrected_event_ids": [
+      "xrp-240m-unlabelled-wallet-transfers-2026-11-15",
+      "fomc-policy-rate-2026-09-17-and-2026-10-28"
+    ],
+    "note": "Run182 collateral supplement adds Coinbase's first-party cbXRP proof-of-reserves, CryptoSlate's Morpho liquidation-log analysis, the live Morpho Base USDC/cbXRP market snapshot and CoinGlass's live XRP futures snapshot. The Morpho/Base events distinguish wrapped cbXRP transfers from native XRP redemptions; no native XRP sale is inferred. CoinGlass's search cache/live-page disagreement and the Morpho oracle/UI discrepancies are preserved. The U.Today wallet-transfer record now links to the original publisher. The October 28 FOMC 10–2 vote and two dissenters are recorded. No exact publisher bytes were captured and no raw hashes were invented.",
+    "source_receipt_status": "101/101 missing byte-exact raw-source SHA-256 receipts",
+    "missing_publisher_timestamps": 56,
+    "independence_groups": 78,
     "model_eligible": false,
     "forecast_status": "NOT_ISSUED",
-    "accuracy_status": "NOT_EVALUATED"
+    "accuracy_status": "NOT_EVALUATED",
+    "collateral_supplement_event_ids": [
+      "coinbase-cbxrp-proof-of-reserves-2026-11-16",
+      "morpho-cbxrp-liquidation-window-2026-11-07-to-13",
+      "morpho-base-usdc-cbxrp-market-snapshot-2026-11-16T0244Z",
+      "coinglass-xrp-futures-live-snapshot-2026-11-16T0244Z"
+    ]
+  },
+  "collateral_supplement": {
+    "captured_at_utc": "2026-11-16T02:44:53Z",
+    "coinbase_reserve_xrp": 153008338.56,
+    "cbxrp_supply": 153006092.03,
+    "reserve_excess_xrp": 2246.53,
+    "reserve_coverage_percent": 100.001468,
+    "morpho_liquidation_logs": 883,
+    "morpho_usdc_repaid": 4016076.34226,
+    "morpho_cbxrp_seized": 4181584.301387,
+    "morpho_nov13_debt_usdc": 53530000,
+    "morpho_nov13_collateral_cbxrp": 121700000,
+    "morpho_current_outstanding_loans_usd": 48080000,
+    "morpho_current_liquidity_usd": 19550000,
+    "morpho_current_utilization_percent": 90.59,
+    "morpho_current_lltv_percent": 62.5,
+    "coinglass_current_oi_usd": 1980000000,
+    "coinglass_current_funding_8h_percent": -0.0074,
+    "coinglass_current_liquidations_usd": 4500000,
+    "coinglass_current_long_share_percent": 45,
+    "model_eligible": false
   }
 }
