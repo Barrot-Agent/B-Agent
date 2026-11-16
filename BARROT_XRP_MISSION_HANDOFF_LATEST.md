@@ -4117,3 +4117,72 @@ The parent integration branch was 128 commits ahead and zero behind main, with 2
 The scheduled XRP adapter covers public spot, order-book depth, derivatives, exchange-attributed wallets, ETF flows, RLUSD/USDC, SBI lending observations, Morpho/cbXRP collateral, CFTC positioning and XRPL node/operator observations. It does not yet provide autonomous news/RSS discovery, systematic FRED/BLS/Treasury/Fed macro series or a geopolitical event feed. The event timeline remains curated. Add credential-free official feeds with exact publisher timestamps and byte-complete receipts; do not substitute manual LLM distillation for deterministic ingestion.
 
 **No merge.** PR #1663 remains draft and unreviewed; the 1,339-path semantic review and branch-protection/independent-approval blockers remain. This correction commit requires exact-head CI. No source PR was closed and no external action was performed.
+
+
+## Run200 — exact-head verification, SBIC identity resolution, current market snapshot and deployment-action pin (2026-11-16)
+
+### Repository state at start of Run200
+
+- Main: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Parent integration head: `1223b1f2e9e861061dd9594acb53d0d55a9c5486`, 129 commits ahead and zero behind main.
+- Main recursive tree: 1,393 entries / 1,284 blobs.
+- Integration recursive tree: 2,567 entries / 2,447 blobs.
+- No main paths are missing from integration.
+- Integration adds 1,163 files and changes 176 shared files, for 1,339 changed files matching PR #1663.
+- PR #1663 has 49 changed workflow paths and 396 changed test paths. It remains open, draft, mergeable/clean, with zero formal reviews, zero review threads and no requested reviewers.
+- Nine PRs remain open. #1541 is superseded pending #1663 merge and verification; #1450, #1460, #1440, #1437, #1436, #1353 and #1265 remain unique/unreviewed.
+
+### Exact-head verification on the Run200 parent
+
+The current parent head `1223b1f2e9e861061dd9594acb53d0d55a9c5486` passed the exact push-triggered full repository suite [43970274956](https://github.com/Barrot-Agent/B-Agent/actions/runs/43970274956):
+
+- 3,844 passed, zero failed, one skipped, 11 warnings and 19 subtests passed.
+- Inclusive coverage 66.90%; legacy-core coverage 77%.
+- Wheel build, installed Barrot V3/XRP mission smoke test and GitHub Pages validation passed.
+- Six-manifest dependency audit [43970274919](https://github.com/Barrot-Agent/B-Agent/actions/runs/43970274919) passed with zero known vulnerabilities reported.
+- Fail-closed gate [43970275363](https://github.com/Barrot-Agent/B-Agent/actions/runs/43970275363) passed.
+- PR-event CI [43970287259](https://github.com/Barrot-Agent/B-Agent/actions/runs/43970287259), dependency audit [43970287235](https://github.com/Barrot-Agent/B-Agent/actions/runs/43970287235) and fail-closed gate [43970287453](https://github.com/Barrot-Agent/B-Agent/actions/runs/43970287453) passed applicable jobs. PR-event core/full-suite jobs are skipped for integration/*; the push-triggered full suite is authoritative.
+- GitHub Actions cache storage is read-only because its configured budget is exhausted. This did not fail tests or audits.
+
+The Run200 workflow/test hardening and this addendum create a new commit. Its exact-head checks must be verified separately; the parent result is not transferred to the new head.
+
+### Deployment workflow supply-chain hardening
+
+The integration-only A2A deployment workflow used the mutable `cloudflare/wrangler-action@v4` tag twice. The official upstream release tag `v4.1.3` resolves to commit `953926a2e2182532811c01a25e53647d93bf07c0`. Both uses are pinned to that immutable commit, and a regression test requires exactly two uses of the pin and rejects the mutable `@v4` reference.
+
+The upstream commit is unsigned; SHA pinning prevents tag movement but does not establish cryptographic publisher identity. The workflow remains manual, main-only, exact-main-SHA gated, and requires separate explicit deployment and secret-rotation approvals. No deployment or secret rotation was run. Other action references across the 49 workflows still need a complete pinning review.
+
+### SBIC identity — primary-source resolution
+
+The Japanese SBIC names refer to three separate legal entities established under the Small and Medium Business Investment & Consultation Companies Act in November 1963. Their official sites call them sister companies and divide national coverage; they are not SBI Holdings.
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社), established November 15, 1963; corporate number 9011001030621; covers 18 prefectures from Shizuoka, Nagano and Niigata east. [Official company profile](https://www.sbic.co.jp/company/profile/).
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (名古屋中小企業投資育成株式会社), established November 18, 1963; covers Aichi, Gifu, Mie, Toyama and Ishikawa. [Official company profile](https://www.sbic-cj.co.jp/company/about/).
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. (大阪中小企業投資育成株式会社), established November 20, 1963; covers 24 prefectures west of Fukui, Shiga, Nara and Wakayama. [Official company profile](https://www.sbic-wj.co.jp/profiles/profile/).
+
+The likely concrete Japanese “SBIC + ChatGPT” reference is an SBIC East two-day generative-AI/machine-learning course held June 12–13, 2025, for investee companies only. Its curriculum included ChatGPT use, Copilot, RAG, information-leakage risk and API/no-code implementation. [Official course page](https://www.sbic.co.jp/training/20250612co/). This is a training course, not an OpenAI partnership, integration or corporate affiliation. “SBIC” also occurs as the academic Social Bias Inference Corpus acronym in ChatGPT-related research; that corpus is unrelated to the Japanese investment-development companies.
+
+### Current descriptive XRP spot snapshot
+
+Kraken's public ticker response returned XRP/USD last `$0.96228`, bid `$0.96220`, ask `$0.96221`, 24-hour volume approximately `45.23M XRP`, VWAP `$0.95555885`, high `$0.97742`, low `$0.94005` and open `$0.97373`. The last price was approximately 1.18% below the 24-hour open; the displayed top-of-book spread was approximately 0.104 basis points.
+
+Source: [Kraken public ticker API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD). Kraken did not provide a publisher event timestamp in the response surfaced here; exact raw HTTP bytes and SHA-256 were not retained. This is a single-venue descriptive observation, not a synchronized multi-venue quote, full-depth measure or point-in-time model feature.
+
+### Prediction gate and remaining data gaps
+
+The curated registry remains version `run192-followup`: 125 events, zero byte-exact raw-source SHA-256 receipts, 48 exact publisher timestamps, 77 missing timestamps and zero model-eligible events. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+
+The scheduled XRP public-ingestion workflow is designed on integration, absent from main and guarded to run only on main. Its schedule is hourly at minute 3 and daily at 00:15 UTC. GitHub artifacts retain raw receipts for 90 days, per-run feature checkpoints for 7 days and daily feature archives for 90 days; this is not WORM storage or an independent external timestamp anchor. The current adapter still lacks autonomous news/RSS discovery, systematic FRED/BLS/Treasury/Federal Reserve point-in-time macro vintages and a geopolitical event feed. The event timeline remains curated.
+
+The latest main Cross Analysis run succeeded but contained zero recent and prior XRP/BTC sentiment records. Checked-in source logs were stale at October 29; workflow success is not evidence of fresh sentiment ingestion. Historical corpus sentiment is not a point-in-time market feature.
+
+### Governance and merge decision
+
+Main's branch object reports `protected=true`, but the visible status-check context list is empty and the detailed branch-protection endpoint returns HTTP 403. The only visible ruleset (10863829, “Fall Back”) is disabled. CODEOWNERS remains `* @Barrot-Agent`, so there is no independent code owner. The GitHub connection reports admin, maintain, push, pull and triage permissions; least privilege is not satisfied. Code-scanning, secret-scanning and Dependabot alert endpoints were not available through the current read allowlist, so their alert state is unknown.
+
+**NO MERGE.** PR #1663 remains draft and has no independent formal review. The 1,339 changed files, 49 workflow paths and 396 test paths require full semantic review. No branch protection was bypassed. No source PR was closed. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+Structured evidence: [Run200 audit](research/xrp_intelligence/20261116T223202Z-run200-exact-head-sbic-market-and-deployment-pin-audit.json).
+
+Next actions: verify exact-head CI for the Run200 commit; update the stale PR #1663 body; complete workflow/test semantic review; obtain independent CODEOWNERS and branch-protection evidence; complete macro/news/geopolitical ingestion; establish independent immutable raw-source retention; keep forecasts disabled until all OOS and shadow gates pass.

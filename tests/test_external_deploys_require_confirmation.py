@@ -81,3 +81,9 @@ def test_lean_installer_script_uses_the_verified_v4_2_4_commit():
     assert "raw.githubusercontent.com/leanprover/elan/227caca133724d5516bee25c2aeb3e609478f2d8/elan-init.sh" in workflow
     assert "raw.githubusercontent.com/leanprover/elan/master/elan-init.sh" not in workflow
     assert 'sh "$RUNNER_TEMP/elan-init.sh" -y' in workflow
+
+def test_cloudflare_wrangler_action_is_pinned_to_the_verified_v4_1_3_release_commit():
+    workflow = (REPO_ROOT / ".github/workflows/deploy-a2a-worker.yml").read_text(encoding="utf-8")
+    pinned = "cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0"
+    assert workflow.count(f"uses: {pinned}") == 2
+    assert "uses: cloudflare/wrangler-action@v4" not in workflow

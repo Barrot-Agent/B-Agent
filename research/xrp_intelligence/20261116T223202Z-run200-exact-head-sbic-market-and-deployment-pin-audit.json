@@ -1,0 +1,318 @@
+{
+  "artifact_type": "barrot.xrp.run_audit",
+  "schema_version": "1.0.0",
+  "run_id": "run200",
+  "run_started_at_utc": "2026-11-16T22:32:02Z",
+  "observation_date_utc": "2026-11-16",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety, authorization and verification",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "parent_head": "1223b1f2e9e861061dd9594acb53d0d55a9c5486",
+    "ahead_by": 129,
+    "behind_by": 0,
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2567,
+    "main_blob_files": 1284,
+    "integration_blob_files": 2447,
+    "main_files_missing_from_integration": 0,
+    "integration_only_files": 1163,
+    "shared_files_with_different_blobs": 176,
+    "pr_changed_files": 1339,
+    "changed_workflow_files": 49,
+    "changed_test_paths": 396,
+    "open_pull_requests": [
+      {
+        "number": 1663,
+        "classification": "blocked",
+        "reason": "Only main-targeting integration PR; remains draft with zero reviews and incomplete semantic review."
+      },
+      {
+        "number": 1541,
+        "classification": "superseded_pending_merge",
+        "reason": "MMI overlap reconciliation is recorded in Run199; retain until #1663 is safely merged and verified on main."
+      },
+      {
+        "number": 1450,
+        "classification": "unique_unreviewed",
+        "changed_files": 116
+      },
+      {
+        "number": 1460,
+        "classification": "unique_unreviewed",
+        "changed_files": 8
+      },
+      {
+        "number": 1440,
+        "classification": "unique_unreviewed",
+        "changed_files": 64
+      },
+      {
+        "number": 1437,
+        "classification": "unique_unreviewed",
+        "changed_files": 5
+      },
+      {
+        "number": 1436,
+        "classification": "unique_unreviewed",
+        "changed_files": 24
+      },
+      {
+        "number": 1353,
+        "classification": "unique_unreviewed",
+        "changed_files": 1084
+      },
+      {
+        "number": 1265,
+        "classification": "unique_unreviewed",
+        "changed_files": 144
+      }
+    ],
+    "pr1663": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "head_sha": "1223b1f2e9e861061dd9594acb53d0d55a9c5486",
+      "base_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+      "changed_files": 1339,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0
+    },
+    "governance": {
+      "main_protected_flag": true,
+      "visible_required_status_check_contexts": [],
+      "branch_protection_detail": "HTTP 403 Resource not accessible by integration",
+      "visible_ruleset": {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      },
+      "codeowners": "* @Barrot-Agent",
+      "independent_code_owner": false,
+      "github_connector_permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false,
+      "code_scanning_alerts": "not accessible through current GitHub fetch allowlist; status unknown",
+      "secret_scanning_alerts": "not accessible through current GitHub fetch allowlist; status unknown",
+      "dependabot_alerts": "not accessible through current GitHub fetch allowlist; status unknown"
+    }
+  },
+  "exact_head_verification": {
+    "head": "1223b1f2e9e861061dd9594acb53d0d55a9c5486",
+    "push_ci": {
+      "run_id": 43970274956,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43970274956",
+      "conclusion": "success",
+      "full_repository_suite": {
+        "passed": 3844,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 19,
+        "duration_seconds": 136.49,
+        "inclusive_coverage_pct": 66.9,
+        "legacy_core_coverage_pct": 77,
+        "wheel_build": "passed",
+        "installed_v3_xrp_mission_smoke": "passed",
+        "pages_validation": "passed"
+      }
+    },
+    "dependency_audit": {
+      "run_id": 43970274919,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43970274919",
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43970275363,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43970275363",
+      "conclusion": "success"
+    },
+    "pull_request_checks": {
+      "ci_run_id": 43970287259,
+      "ci_conclusion": "success",
+      "full_suite_job": "skipped",
+      "core_tests_job": "skipped",
+      "pages_validation": "success",
+      "dependency_audit_run_id": 43970287235,
+      "dependency_audit": "success",
+      "fail_closed_run_id": 43970287453,
+      "fail_closed": "success",
+      "interpretation": "The exact-head push-triggered full suite is authoritative; PR-event tests are skipped for integration/* branches."
+    },
+    "runner_warning": "GitHub Actions cache budget is exhausted and read-only; this did not fail tests or dependency audits."
+  },
+  "market_snapshot": {
+    "source": "Kraken public REST Ticker API",
+    "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "observation_date_utc": "2026-11-16",
+    "provider_event_timestamp_utc": null,
+    "exact_retrieval_timestamp_utc": null,
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256": null,
+    "model_eligible": false,
+    "admission": "DESCRIPTIVE_ONLY",
+    "last_usd": 0.96228,
+    "bid_usd": 0.9622,
+    "ask_usd": 0.96221,
+    "spread_basis_points": 0.10393,
+    "volume_24h_xrp": 45228851.62371441,
+    "vwap_24h_usd": 0.95555885,
+    "high_24h_usd": 0.97742,
+    "low_24h_usd": 0.94005,
+    "open_24h_usd": 0.97373,
+    "change_from_open_pct": -1.17589,
+    "limitations": [
+      "Single venue.",
+      "Top-of-book only; no full depth in this response.",
+      "Provider event timestamp unavailable.",
+      "Exact raw response bytes and SHA-256 receipt unavailable.",
+      "Not admitted to the point-in-time feature store."
+    ]
+  },
+  "sbic_identity_research": {
+    "conclusion": "SBIC East, SBIC Central and SBIC West are three distinct Japanese Small and Medium Business Investment & Consultation companies, described by their official sites as sister companies. They are not SBI Holdings.",
+    "east": {
+      "legal_name_ja": "東京中小企業投資育成株式会社",
+      "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "designation": "SBIC East Japan",
+      "established": "1963-11-15",
+      "corporate_number": "9011001030621",
+      "coverage": "Niigata, Nagano and Shizuoka east; 18 prefectures",
+      "primary_url": "https://www.sbic.co.jp/company/profile/"
+    },
+    "central": {
+      "legal_name_ja": "名古屋中小企業投資育成株式会社",
+      "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "designation": "SBIC Central Japan",
+      "established": "1963-11-18",
+      "coverage": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+      "primary_url": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    "west": {
+      "legal_name_ja": "大阪中小企業投資育成株式会社",
+      "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "designation": "SBIC West Japan",
+      "established": "1963-11-20",
+      "coverage": "Fukui, Shiga, Nara and Wakayama west; 24 prefectures",
+      "primary_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    "chatgpt_reference": {
+      "event": "SBIC East offered a two-day generative-AI and machine-learning course on 2025-06-12 and 2025-06-13 for investee companies only.",
+      "content_included": [
+        "ChatGPT usage",
+        "Copilot",
+        "RAG",
+        "information-leakage risk",
+        "API implementation"
+      ],
+      "primary_url": "https://www.sbic.co.jp/training/20250612co/",
+      "interpretation": "This is an SBIC East training course that mentions ChatGPT, not an OpenAI partnership, product integration or corporate affiliation.",
+      "acronym_collision": "Social Bias Inference Corpus (SBIC) also appears in academic ChatGPT-related research; it is unrelated to the three Japanese investment-development companies."
+    }
+  },
+  "prediction_gate": {
+    "event_registry_version": "run192-followup",
+    "curated_events": 125,
+    "raw_source_sha256_receipts": 0,
+    "exact_publisher_timestamps": 48,
+    "missing_exact_publisher_timestamps": 77,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "scheduled_ingestion": {
+      "workflow": ".github/workflows/xrp-public-ingestion.yml",
+      "schedule": [
+        "hourly at minute 3",
+        "daily at 00:15 UTC"
+      ],
+      "guard": "Only runs on refs/heads/main",
+      "exists_on_main": false,
+      "exists_on_integration": true,
+      "raw_receipt_artifact_retention_days": 90,
+      "feature_checkpoint_retention_days": 7,
+      "daily_feature_archive_retention_days": 90,
+      "independent_worm_storage": false,
+      "external_timestamp_anchor_verified": false,
+      "operational_status": "DESIGNED_ON_INTEGRATION_NOT_ACTIVE_ON_MAIN"
+    },
+    "coverage_gaps": [
+      "Autonomous news/RSS discovery",
+      "FRED/BLS/Treasury/Federal Reserve point-in-time macro vintages",
+      "Geopolitical event feed",
+      "Independent WORM or equivalent immutable external archive"
+    ],
+    "sentiment": {
+      "latest_main_cross_analysis_run": 43964350423,
+      "xrp_recent_records": 0,
+      "xrp_prior_records": 0,
+      "btc_recent_records": 0,
+      "btc_prior_records": 0,
+      "interpretation": "Workflow success did not mean fresh sentiment data existed; checked-in source logs remained stale at October 29."
+    }
+  },
+  "deployment_security_change": {
+    "workflow": ".github/workflows/deploy-a2a-worker.yml",
+    "change": "Pin both Cloudflare Wrangler action uses from mutable @v4 tag to immutable commit 953926a2e2182532811c01a25e53647d93bf07c0.",
+    "upstream_release_tag": "v4.1.3",
+    "upstream_tag_url": "https://github.com/cloudflare/wrangler-action/releases/tag/v4.1.3",
+    "resolved_commit": "953926a2e2182532811c01a25e53647d93bf07c0",
+    "upstream_commit_signature": "unsigned",
+    "test_added": "Regression test requires exactly two uses of the pinned commit and rejects the mutable @v4 reference.",
+    "workflow_authorization_unchanged": "Manual dispatch, main-only, exact main SHA, explicit deployment YES and separate secret-rotation YES remain required.",
+    "deployment_executed": false,
+    "secret_rotation_executed": false,
+    "exact_head_ci_status": "PENDING_AFTER_RUN200_COMMIT"
+  },
+  "nine_platforms": {
+    "verified": [
+      "ChatGPT GitHub connector -> GitHub REST -> Barrot-Agent/B-Agent integration branch"
+    ],
+    "unverified_or_untested": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot current authentication",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "external_tasks_dispatched": false,
+    "note": "Groq is not Grok; configured secrets do not prove an authenticated live data flow."
+  },
+  "actions": {
+    "integration_commit_planned": true,
+    "merge": false,
+    "source_prs_closed": [],
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "external_model_dispatch": false
+  },
+  "next_actions": [
+    "Verify exact-head full-suite, dependency and fail-closed checks after the Run200 workflow/test change.",
+    "Update PR #1663 description to the actual current head and exact-head CI evidence; it is currently stale.",
+    "Complete semantic review of 49 workflow paths and 396 changed test paths.",
+    "Replace self-only CODEOWNERS with a genuine independent reviewer and obtain authorized branch-protection evidence.",
+    "Pin remaining third-party actions to reviewed full commit SHAs, recording whether upstream commits are signed.",
+    "Implement credential-free official macro vintages and news/RSS/geopolitical event discovery with byte-exact receipts.",
+    "Establish independent WORM or externally timestamped raw-source retention before admitting curated events to the model.",
+    "Keep forecasts NOT_ISSUED until the full OOS, calibration, drift and independent shadow gate passes."
+  ]
+}
