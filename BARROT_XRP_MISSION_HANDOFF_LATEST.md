@@ -1,3 +1,74 @@
+# Run183 final verification and institutional-rails addendum
+
+**Captured:** 2026-11-16T03:13:10Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Exact code/docs head verified:** `9c08f26b33833b91ee6ff072aa8c5ab03cf6dd12`  
+**Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open, draft, not merged.
+
+## Exact-head CI — VERIFIED on 9c08f26
+
+The Run183 documentation/map/audit head completed the full repository suite:
+
+- **3,829 passed; zero failed; one skipped; 19 subtests passed.**
+- Pytest duration: **183.68 seconds**.
+- Inclusive package coverage: **64.09%**.
+- Legacy core-package coverage: **77%**.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- Pages validation passed.
+- Six-manifest dependency audit passed with zero known vulnerabilities.
+- Push and PR fail-closed gates passed.
+
+Evidence:
+- [Push full suite 43796221975](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796221975) — exact head 9c08f26, success.
+- [Push dependency audit 43796221972](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796221972) — exact head 9c08f26, success.
+- [Push fail-closed gate 43796222045](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796222045) — exact head 9c08f26, success.
+- [PR CI 43796226244](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796226244) — exact head 9c08f26, success; PR test jobs skipped by integration-branch condition; Pages validation passed.
+- [PR dependency audit 43796226263](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796226263) — exact head 9c08f26, success.
+- [PR fail-closed gate 43796226236](https://github.com/Barrot-Agent/B-Agent/actions/runs/43796226236) — exact head 9c08f26, success.
+
+GitHub Actions cache budget is exhausted and cache is read-only. This did not fail tests or packaging. Setuptools still warns that `data.research` is absent from package configuration, although the primary mission resource was verified in the built wheel and installed V3/XRP mission. The deprecated `project.license` metadata warning also remains. Review package-data configuration before merge.
+
+**Important:** this verification applies to 9c08f26. The Run183 handoff update itself creates a new documentation-only descendant; its own exact-head CI must be checked separately. Do not transfer 9c08f26's result to that later commit.
+
+## Run183 institutional-rails findings — primary sources
+
+### Ripple, Coinbase, Robinhood and SBI
+
+- **Ripple/Robinhood (Oct 27, 2026):** RLUSD is live on Robinhood Chain and Bitstamp by Robinhood. Ripple states RLUSD will be used on XRPL for institutional settlement. Robinhood plans Ripple Treasury integration; Ripple Prime provides financing/margin products across digital assets. This is an actual XRPL stablecoin-settlement relationship, not proof of XRP treasury purchases or native-XRP collateral. [Ripple primary release](https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/).
+- **Ripple/Coinbase (Oct 28, 2026):** RLUSD launched on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral eligibility was described as a future rollout at announcement; subsequent activation was not verified. RLUSD distribution is not evidence of XRP purchases. [Ripple primary release](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- **Ripple/SBI VC Trade (Jun 24, 2026):** SBI VC Trade launched RLUSD after Japanese regulatory approval. Its current official product page states that VCTRADE deposits and withdrawals support **Ethereum only**, not XRPL. The general RLUSD asset is multichain, but the Japanese VCTRADE rail is not currently verified as an XRPL transfer route. [SBI launch release](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html) · [SBI current RLUSD page](https://www.sbivc.co.jp/services/crypto/rlusd).
+- **Circle/SBI:** Circle's Nov 27, 2023 MOU covers USDC circulation in Japan, banking services from SBI Shinsei Bank, SBI VC Trade's registration/distribution and Circle Web3 services. SBI VC Trade's current USDC page also limits deposits/withdrawals to Ethereum. [Circle primary release](https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services) · [SBI USDC page](https://www.sbivc.co.jp/services/crypto/usdc).
+- **Circle/Binance (Sep 22, 2026):** Binance disclosed a $100M strategic equity investment in Circle and a five-year USDC commercial agreement. This is actual corporate capital into Circle and a USDC distribution relationship, not XRP investment. [Circle primary release](https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years).
+- **Ripple company metrics (Oct 28, 2026):** Ripple reported a $900M annualized product-revenue run rate, $16T transactions enabled across its products in 2025, 85+ licenses, 1,700+ institutions and 60+ payout markets. These are company-reported, multi-product metrics; they are not XRP settlement volume or XRP demand. Ripple's 24/7 Returns product includes RLUSD and tokenized money-market funds on XRPL, indicating possible XRPL stablecoin/RWA activity without proving native-XRP purchases. [Ripple primary release](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/).
+
+### SBI JPYSC — supply, backing and transferability
+
+- **Issuer and structure:** JPYSC is a Japanese No. 3 / trust-type electronic payment instrument issued by SBI Shinsei Trust Bank, developed with Startale and distributed by SBI VC Trade. It is not the same legal class as RLUSD, which SBI VC Trade classifies as No. 4.
+- **June 24 launch:** SBI initially restricted JPYSC to VCTRADE accounts. External-wallet transfer/public-chain circulation was deferred pending legal/tax treatment and supervisory confirmation. [SBI primary launch release](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+- **September 7 reserve disclosure:** SBI reported approximately **¥20.1B** JPYSC issuance outstanding, approximately **¥6.9B** of lending applications and the start of investing **¥10B** of trust assets in Japanese short-term government bonds. The new law allows up to 50% of eligible backing assets in qualifying short-term government securities/time deposits with maturities no longer than three months. This is actual reserve-asset deployment into JGBs, not XRP collateral. [SBI Shinsei Trust/SBI VC Trade primary release](https://www.sbigroup.co.jp/news/2026/0907_16567.html).
+- **November 2:** SBI reported JPYSC lending balances above **¥10B** and JPYSC handled balances above **¥30B**. The release does not define these as additive balances; do not sum them. [SBI primary release](https://www.sbigroup.co.jp/news/2026/1102_16704.html).
+- **November 16 on-chain snapshot:** ChainAnalyzer reports approximately **20.25B JPYSC** on Ethereum, two non-zero holder addresses, cumulative mint 31.18B and burn 10.93B. DeFiLlama shows approximately **$126.74M**. The supply is broadly consistent with SBI's September 7 issue balance (~¥20.1B). Two on-chain holders are consistent with custody aggregation and do not represent two beneficial owners. [ChainAnalyzer](https://chain-analyzer.com/en/issuers/jpysc) · [DeFiLlama](https://defillama.com/stablecoins).
+- **Transferability:** SBI's current product page states VCTRADE does not support JPYSC deposits/withdrawals; public-chain circulation remains deferred. Therefore the on-chain supply must not be treated as freely transferable public-chain float. [SBI JPYSC page](https://www.sbivc.co.jp/services/crypto/jpysc).
+- **Lending terms:** SBI VC Trade's current lending page lists XRP, USDC and JPYSC among 29 supported assets, but not RLUSD. Customers lend assets to SBI VC Trade under a consumption-loan product; no mid-term cancellation and counterparty risk apply. Actual XRP lending balances and borrower use were not disclosed. [SBI lending terms](https://www.sbivc.co.jp/services/lending).
+
+### XRPL lending amendments — current validator snapshot
+
+The independent XRPL Dashboard's Nov 16 snapshot at 02:36 UTC (ledger 108,358,399) reported 35/35 trusted validators heard and 29/35 required for activation. Votes: SingleAssetVault 23/35; LendingProtocol 22/35; LendingProtocolV1_1 22/35; ConfidentialTransfer 21/35. Zero amendments were in the 14-day activation countdown. XLS-65/XLS-66 remain inactive. XLS-66 lending is fixed-term and uncollateralized at the borrower level; vault assets may include XRP, but XRP is not mandatory borrower collateral. [XRPL amendment dashboard](https://xrpldashboard.com/amendments).
+
+### Model classification rules
+
+Keep these as separate fields:
+1. Total token supply.
+2. Freely transferable supply.
+3. Custodian-held beneficial balances.
+4. Internal exchange/platform balances.
+5. Collateral pledged.
+6. Assets actually borrowed.
+7. Native XRP purchased.
+8. Stablecoin settlement volume.
+
+No inference from one category to another. The current SBI RLUSD and USDC withdrawal rails are Ethereum-only; JPYSC is account-restricted. These details materially limit claims that SBI's stablecoin business currently creates XRPL settlement or native-XRP demand.
+
 # Current mission status — Run183
 
 **Captured:** 2026-11-16T03:04:08Z  
