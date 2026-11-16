@@ -1,10 +1,10 @@
 {
   "schema_version": "1.3.0",
-  "snapshot_id": "run182-collateral-supplement",
-  "captured_at_utc": "2026-11-16T02:44:53Z",
+  "snapshot_id": "run182-test-assertion-correction",
+  "captured_at_utc": "2026-11-16T02:51:10Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-  "integration_head_at_capture": "075642ec40f22025a6c963bb9210072b17c1d4ac",
+  "integration_head_at_capture": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -101,8 +101,8 @@
     ],
     "least_privilege_satisfied": false,
     "merge_decision": "NO_MERGE",
-    "pr1663_changed_files_at_capture": 1292,
-    "pr1663_commits_ahead": 51,
+    "pr1663_changed_files_at_capture": 1293,
+    "pr1663_commits_ahead": 52,
     "pr1663_commits_behind": 0,
     "blockers": [
       "PR #1663 remains draft",
@@ -114,7 +114,7 @@
       "GitHub connector permissions remain overprivileged",
       "Exact-head full suite on 075642 failed one stale 90-of-90 event-count assertion; corrected test and collateral evidence are being committed; new head CI pending."
     ],
-    "pr1663_head_sha": "075642ec40f22025a6c963bb9210072b17c1d4ac",
+    "pr1663_head_sha": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
     "main_tree_entries": 1393,
     "integration_tree_entries": 2525,
     "main_paths_missing": 0,
@@ -165,12 +165,13 @@
       "test_jobs": "skipped by integration-branch condition; push full-suite is authoritative"
     },
     "current_branch_head": {
-      "head_sha": "075642ec40f22025a6c963bb9210072b17c1d4ac",
-      "full_suite": "failed one stale event-count assertion; 3,828 passed, one failed, one skipped, 19 subtests; coverage 64.08%",
+      "head_sha": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
+      "full_suite": "in progress; exact result not yet available",
+      "core_tests": "passed",
       "pages_validation": "passed",
-      "dependency_audit": "passed",
-      "fail_closed": "push and PR passed",
-      "next_action": "run exact-head full suite after dynamic count/test correction"
+      "push_fail_closed": "passed",
+      "dependency_audits": "in progress",
+      "next_action": "run exact-head full suite and all security gates on the assertion-correction successor"
     },
     "main_ci": {
       "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
@@ -198,16 +199,17 @@
       "manifests": 6
     },
     "last_attempted_full_suite": {
-      "head_sha": "075642ec40f22025a6c963bb9210072b17c1d4ac",
-      "run_id": 43793723901,
-      "conclusion": "failure",
-      "passed": 3828,
-      "failed": 1,
-      "skipped": 1,
-      "subtests": 19,
-      "coverage_percent": 64.08,
-      "failure": "tests/test_xrp_event_timeline_ingestion.py:229 hard-coded 90 of 90 while registry correctly reported 97 of 97; timestamp count assertion also hard-coded 48",
-      "classification": "stale regression expectation; fix computes counts from registry and adds collateral-event assertions"
+      "head_sha": "13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1",
+      "run_id": 43794548813,
+      "status": "in_progress",
+      "conclusion": null,
+      "previous_head_failure": "075642e had one stale hard-coded event-count assertion; dynamic count fix is in 13594d; a wording assertion correction follows in the next commit."
+    },
+    "test_assertion_correction": {
+      "file": "tests/test_xrp_event_timeline_ingestion.py",
+      "old": "not a third-party audit",
+      "new": "rather than a third-party audit",
+      "classification": "test wording aligned with existing event text; no assertion removed or gate weakened"
     }
   },
   "workflow_audit": {

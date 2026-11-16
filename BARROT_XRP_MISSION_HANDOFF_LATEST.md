@@ -1105,3 +1105,7 @@ CoinGlass's opened [XRP futures page](https://www.coinglass.com/currencies/XRP/f
 
 ### Prediction gate
 The event registry now contains 101 events across 78 independence groups. All 101 still lack byte-exact raw-source SHA-256 receipts; 56 lack exact publisher timestamps. The new Coinbase, Morpho and CoinGlass records remain descriptive-only. Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No raw hash was derived from rendered web text.
+
+
+## Run182 test-assertion wording correction — 2026-11-16T02:51:10Z
+The current integration head `13594d0846475ae8b4a45b520e2d6ca0c0ed7ec1` had its push full-suite job queued/running. PR-event CI rendered Pages successfully and skipped its test jobs as configured; the push fail-closed gate passed while dependency audits were still running. A final review of the new collateral regression assertions found one wording mismatch: the test expected “not a third-party audit”, while the Coinbase event correctly says “rather than a third-party audit”. The assertion is corrected to match the recorded source qualification. No event, receipt, model-eligibility or safety condition is relaxed. The next head requires fresh exact-head full-suite, dependency and fail-closed verification.

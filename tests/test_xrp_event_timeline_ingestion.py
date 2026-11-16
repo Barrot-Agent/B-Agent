@@ -229,7 +229,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     cbxrp_reserves = by_id["coinbase-cbxrp-proof-of-reserves-2026-11-16"]
     assert "153,008,338.56 XRP" in cbxrp_reserves["claim"]
     assert "153,006,092.03 cbXRP" in cbxrp_reserves["claim"]
-    assert "not a third-party audit" in cbxrp_reserves["counter_hypothesis"]
+    assert "rather than a third-party audit" in cbxrp_reserves["counter_hypothesis"]
     assert cbxrp_reserves["raw_source_sha256"] is None
     morpho_liquidations = by_id["morpho-cbxrp-liquidation-window-2026-11-07-to-13"]
     assert "4,016,076.342260 USDC" in morpho_liquidations["claim"]
