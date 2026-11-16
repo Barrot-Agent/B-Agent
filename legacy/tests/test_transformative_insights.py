@@ -253,6 +253,9 @@ def test_system_integration():
     assert "total_fragments" in ti_status
     assert "total_insights" in ti_status
     assert "convergence_events" in ti_status
+    agi_status = status["agi_orchestrator_status"]
+    assert "capabilities" in agi_status
+    assert "metrics" in agi_status
 
     print("✅ System integration test passed")
     return True
