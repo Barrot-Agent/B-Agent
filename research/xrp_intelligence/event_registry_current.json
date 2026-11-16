@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run181",
-  "captured_at_utc": "2026-11-16T02:03:17Z",
-  "source_receipt_status": "90 of 90 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
+  "registry_version": "run182",
+  "captured_at_utc": "2026-11-16T02:32:43Z",
+  "source_receipt_status": "97 of 97 curated events have null raw_source_sha256 because exact publisher bytes were not captured into RawReceiptArchive; all remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -3810,6 +3810,331 @@
       ],
       "source_date": "2026-11-13",
       "publisher_timestamp_precision": "date-only; exact EDGAR acceptance time not captured"
+    },
+    {
+      "event_id": "xrp-risk-off-selloff-etf-outflows-stablecoin-contraction-2026-11-15",
+      "event_type": "liquidity",
+      "event_name": "CoinDesk — XRP crashes to its lowest since November 2024 as money leaves crypto",
+      "hypothesis_id": "xrp-risk-off-liquidity-contraction-pressure-vs-weekend-wick",
+      "domain": "macro_liquidity",
+      "hypothesis": "The November 14–15 crypto-wide selloff, U.S. spot XRP ETF outflows and contraction in USDT/USDC supply are consistent with reduced marginal risk capital and pressure on XRP.",
+      "counter_hypothesis": "The $0.89 print may have been amplified by thin weekend liquidity and forced liquidations; stablecoin market-cap contraction is not proof of fiat withdrawals or XRP-specific selling, and XRP subsequently rebounded near $0.963.",
+      "claim": "CoinDesk reported XRP touched $0.89, its lowest since November 2024, and was down 36% in the quarter. It reported $19.13M of U.S.-listed XRP ETF net outflows for Nov 9–13 and a $17B one-month contraction in combined USDT/USDC market capitalization to $244B, citing SoSoValue and Glassnode. CoinDesk described cumulative XRP ETF inflows since launch as about $1.5B; a Nov 15 TokenPost-syndicated Pluang item reported about $1.79B and more than 1B XRP held. These cumulative totals are not reconciled and must not be averaged.",
+      "source_id": "coindesk_xrp_risk_off_20261114",
+      "source_name": "CoinDesk, citing SoSoValue and Glassnode",
+      "source_url": "https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto",
+      "related_source_urls": [
+        "https://pluang.com/en/news-feed/etf-xrp-spot-as-di-as-1-miliar-xrp-tahun-pertama",
+        "https://www.tradingview.com/news/u_today%3A1b5590628094b%3A0-someone-moves-240-million-xrp-the-exact-moment-price-hits-its-0-89-floor/"
+      ],
+      "independence_group": "coindesk-quoted-sosovalue-glassnode-xrp-risk-off-report",
+      "source_status": "provisional",
+      "stance": "supports",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-15T02:50:00Z",
+      "source_published_at_utc": "2026-11-15T02:50:00Z",
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The article publication time is used as the earliest verifiable event anchor; the exact intraday low timestamp is not supplied.",
+        "SoSoValue and Glassnode figures are reported by CoinDesk and are not independent confirmations within this event.",
+        "Stablecoin market-cap contraction may reflect redemptions, burns, price/coverage changes or other supply changes; it is not itself a measured fiat outflow.",
+        "The $1.5B versus $1.79B cumulative ETF-flow disagreement likely reflects universe or methodology differences; no averaging is permitted."
+      ],
+      "falsification_conditions": [
+        "Synchronized issuer holdings and cash-flow records show materially different ETF flows or cumulative holdings.",
+        "Independent supply data revises the USDT/USDC contraction materially.",
+        "Time-synchronized exchange data shows the $0.89 print was an isolated bad tick rather than executable market pricing."
+      ],
+      "related_entities": [
+        "XRP",
+        "Bitcoin",
+        "USDT",
+        "USDC",
+        "SoSoValue",
+        "Glassnode",
+        "U.S. spot XRP ETFs"
+      ],
+      "tags": [
+        "risk-off",
+        "weekend-liquidity",
+        "etf-outflows",
+        "stablecoin-supply",
+        "no-causal-join",
+        "provider-disagreement"
+      ]
+    },
+    {
+      "event_id": "xrp-240m-unlabelled-wallet-transfers-2026-11-15",
+      "event_type": "exchange_flow",
+      "event_name": "U.Today via TradingView — two 120M XRP transfers through unlabelled wallets",
+      "hypothesis_id": "xrp-unlabelled-240m-transfer-rotation-vs-accumulation",
+      "domain": "onchain_flows",
+      "hypothesis": "Two large transfers near the reported $0.89 low may represent internal wallet rotation or custody movement rather than exchange deposits or market accumulation.",
+      "counter_hypothesis": "The beneficial owner and economic purpose are unknown; unlabelled wallets could be controlled by an exchange, custodian, market maker, fund or private holder, and the published address path is not sufficient to identify them.",
+      "claim": "The syndicated U.Today report describes two 120M XRP transfers, seven minutes apart, through the same three unlabelled wallets. It says the 240M XRP did not reach an exchange, the first address retained about 98 XRP after the second transfer, and TrackWhale classified the path as approximately 'Rotation'. No beneficial owner is identified.",
+      "source_id": "u_today_xrp_240m_wallet_transfers_20261115",
+      "source_name": "U.Today report syndicated by TradingView; cites Whale Alert, XRPSCAN and Bithomp",
+      "source_url": "https://www.tradingview.com/news/u_today%3A1b5590628094b%3A0-someone-moves-240-million-xrp-the-exact-moment-price-hits-its-0-89-floor/",
+      "independence_group": "u-today-whale-alert-xrpscan-bithomp-syndicated-wallet-event",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-15T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "2026-11-15T00:00:00Z is a date-only anchor, not the exact transfer time.",
+        "The article is one syndicated report and the cited address explorers/alert service are not treated as independent beneficial-ownership evidence.",
+        "No exchange destination does not establish accumulation, sale, custody change or ownership."
+      ],
+      "falsification_conditions": [
+        "Primary ledger transactions and independently verified address labels identify the beneficial owner and economic purpose.",
+        "A destination is later shown to be an exchange or broker wallet, changing the flow classification."
+      ],
+      "related_entities": [
+        "XRP Ledger",
+        "Whale Alert",
+        "XRPSCAN",
+        "Bithomp",
+        "TrackWhale"
+      ],
+      "tags": [
+        "240m-xrp",
+        "unlabelled-wallets",
+        "rotation-hypothesis",
+        "not-exchange-inflow",
+        "ownership-unknown"
+      ]
+    },
+    {
+      "event_id": "xrp-cross-venue-spot-ticker-and-usdt-basis-gate-2026-11-16T0232Z",
+      "event_type": "market",
+      "event_name": "OKX and Kraken public spot tickers — asynchronous XRP/USD comparison",
+      "hypothesis_id": "xrp-cross-venue-quote-divergence-and-usdt-basis-skew",
+      "domain": "spot_market_structure",
+      "hypothesis": "The two public exchange tickers show XRP near $0.966 at capture, but the quote timestamps and USDT/USD basis do not satisfy the synchronization gate required for cross-venue price or executable-arbitrage features.",
+      "counter_hypothesis": "The small observed last-price difference may be ordinary venue microstructure, spread and timing variation; Kraken's missing event timestamp prevents a valid synchronized comparison.",
+      "claim": "OKX XRP-USDT returned last 0.9662, bid 0.9661, ask 0.9662, 24h volume 46,619,084.604622 XRP and event timestamp 2026-11-16T02:32:42.573Z. Kraken XRP/USD returned last 0.96581, bid 0.96589, ask 0.96596 and 24h volume 35,104,341.29480393 XRP, but supplied no event timestamp. OKX USDT-USD returned 0.9996 at 2026-11-16T02:30:13.022Z, 149.551 seconds before the XRP quote, exceeding the 60-second basis-skew limit. The approximate 4.04-basis-point last-price difference is asynchronous and not executable arbitrage evidence. Full-depth L2 was not retrieved.",
+      "source_id": "okx_kraken_usdt_basis_spot_snapshot_run182",
+      "source_name": "OKX and Kraken public market-data APIs",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "related_source_urls": [
+        "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+        "https://www.okx.com/api/v5/market/books?instId=XRP-USDT&sz=5"
+      ],
+      "independence_group": "cross-venue-public-ticker-observations-run182",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T02:32:42.573Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The OKX ticker event timestamp is authoritative for that venue only.",
+        "Kraken did not return an event timestamp in the captured ticker response.",
+        "The USDT/USD basis observation is 149.551 seconds older than the XRP quote and fails the 60-second gate.",
+        "The web retrieval response is not a byte-exact publisher payload retained in RawReceiptArchive."
+      ],
+      "falsification_conditions": [
+        "A synchronized multi-venue snapshot with retained raw bytes and full-depth order books establishes a materially different executable spread.",
+        "A corrected exchange timestamp or quote invalidates the recorded age/skew calculation."
+      ],
+      "related_entities": [
+        "XRP",
+        "OKX",
+        "Kraken",
+        "Tether USDt"
+      ],
+      "tags": [
+        "spot",
+        "timestamp-skew",
+        "usdt-basis",
+        "no-l2",
+        "descriptive-only",
+        "no-arbitrage-claim"
+      ]
+    },
+    {
+      "event_id": "bls-october-2026-cpi-release-and-yoy-data-gap-2026-11-10",
+      "event_type": "macro",
+      "event_name": "U.S. Bureau of Labor Statistics — October 2026 CPI",
+      "hypothesis_id": "us-inflation-monthly-persistence-with-yoy-comparison-unavailable",
+      "domain": "us_inflation",
+      "hypothesis": "October monthly CPI remained positive at 0.4% while easing from September's 0.6%; core CPI remained 0.3%. The missing October 2025 comparison prevents a published October 2026 12-month rate.",
+      "counter_hypothesis": "Monthly seasonally adjusted readings alone do not establish the full inflation trend or the market's expected policy path; the missing annual comparison must not be imputed.",
+      "claim": "BLS released October 2026 CPI on November 10 at 8:30 a.m. ET. CPI-U rose 0.4% month over month after 0.6% in September; core CPI rose 0.3%, unchanged from August and September. BLS states that October 2025 survey data were not collected during the lapse in appropriations and therefore 12-month percent changes cannot be published for October 2026 for affected indexes.",
+      "source_id": "bls_cpi_october_2026_release",
+      "source_name": "U.S. Bureau of Labor Statistics",
+      "source_url": "https://www.bls.gov/news.release/CPI.htm",
+      "independence_group": "bls-cpi-primary-release",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-10T13:30:00Z",
+      "source_published_at_utc": "2026-11-10T13:30:00Z",
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The BLS release is the primary source for the stated monthly readings and the missing-year-over-year-data qualification.",
+        "No annual CPI rate is inferred for October 2026."
+      ],
+      "falsification_conditions": [
+        "A BLS correction or revised release changes the published monthly readings or data-availability qualification."
+      ],
+      "related_entities": [
+        "Bureau of Labor Statistics",
+        "U.S. inflation",
+        "Federal Reserve"
+      ],
+      "tags": [
+        "cpi",
+        "october-2026",
+        "monthly-inflation",
+        "yoy-unavailable",
+        "appropriations-lapse"
+      ]
+    },
+    {
+      "event_id": "fomc-policy-rate-2026-09-17-and-2026-10-28",
+      "event_type": "macro",
+      "event_name": "Federal Reserve — federal funds target range",
+      "hypothesis_id": "restrictive-policy-rate-and-high-carry-opportunity-cost-vs-future-easing",
+      "domain": "us_monetary_policy",
+      "hypothesis": "The federal funds target range was raised to 3.75%–4.00% effective September 17 and maintained at the October 28 meeting, preserving a restrictive cash/yield alternative to speculative assets.",
+      "counter_hypothesis": "A high policy rate does not mechanically determine XRP returns; future inflation, employment, liquidity, risk appetite and expected policy changes can dominate the current target range.",
+      "claim": "The FOMC raised the target range by 25 basis points to 3.75%–4.00%, effective September 17, 2026. The October 28, 2026 statement maintained the same target range. This is macro context, not a causal attribution for the XRP decline.",
+      "source_id": "fomc_2026_policy_rate_sep17_oct28",
+      "source_name": "Federal Reserve Board and FOMC",
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm",
+      "related_source_urls": [
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+        "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm"
+      ],
+      "independence_group": "federal-reserve-fomc-primary-policy",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-09-17T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The event time is the effective date of the target range; exact source publication time is not used as an event timestamp.",
+        "The October hold is separately supported by the October 28 FOMC statement."
+      ],
+      "falsification_conditions": [
+        "A corrected FOMC statement or implementation note changes the target range or effective date."
+      ],
+      "related_entities": [
+        "Federal Reserve",
+        "FOMC",
+        "U.S. Treasury",
+        "XRP"
+      ],
+      "tags": [
+        "fed",
+        "federal-funds-rate",
+        "restrictive-policy",
+        "macro-context"
+      ]
+    },
+    {
+      "event_id": "treasury-par-yield-curve-2026-11-13",
+      "event_type": "macro",
+      "event_name": "U.S. Department of the Treasury — November 13 daily par yield curve",
+      "hypothesis_id": "elevated-nominal-treasury-yields-as-risk-asset-opportunity-cost-vs-term-premium",
+      "domain": "us_rates",
+      "hypothesis": "The November 13 nominal Treasury par curve reported 2-year 4.88%, 10-year 5.15% and 30-year 5.47%, a high nominal-yield alternative that may compete with speculative-asset allocations.",
+      "counter_hypothesis": "Nominal yields combine expected real rates, inflation expectations and term premium; one daily observation does not establish a causal XRP outflow or the real yield investors face.",
+      "claim": "The U.S. Treasury Daily Treasury Par Yield Curve Rates table reports November 13, 2026 values of 4.88% at two years, 5.15% at ten years and 5.47% at thirty years. These are nominal par yields, not real yields.",
+      "source_id": "us_treasury_daily_par_yield_20261113",
+      "source_name": "U.S. Department of the Treasury",
+      "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
+      "independence_group": "us-treasury-daily-par-yield-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-13T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "2026-11-13T00:00:00Z is a date-only observation anchor; the exact publication time was not captured.",
+        "Par yields are nominal and must not be substituted for TIPS real yields."
+      ],
+      "falsification_conditions": [
+        "A Treasury correction changes the November 13 par-yield values."
+      ],
+      "related_entities": [
+        "U.S. Treasury",
+        "U.S. rates",
+        "Federal Reserve",
+        "XRP"
+      ],
+      "tags": [
+        "treasury-yields",
+        "10-year",
+        "nominal-rates",
+        "macro-context"
+      ]
+    },
+    {
+      "event_id": "clarity-act-senate-procedural-vote-2026-09-15",
+      "event_type": "regulatory",
+      "event_name": "U.S. Senate — Digital Asset Market Clarity Act procedural vote",
+      "hypothesis_id": "clarity-act-procedural-failure-regulatory-delay-vs-later-revision",
+      "domain": "us_digital_asset_market_structure",
+      "hypothesis": "The September 15 procedural vote failed to advance the CLARITY Act, extending uncertainty over U.S. digital-asset market-structure legislation.",
+      "counter_hypothesis": "A failed procedural vote is not permanent rejection of all market-structure legislation; lawmakers may revise, reintroduce or negotiate a later bill. No unverified January 3 deadline is assumed.",
+      "claim": "Senator Dave McCormick's official September 15 statement reports that the Senate failed to advance the CLARITY Act on a 49–50 procedural vote, short of the 60 votes needed. Senator Adam Schiff's statement separately describes his objections and the need for enforceable ethics provisions. The vote is a procedural failure, not enactment or final disposition of every future market-structure proposal.",
+      "source_id": "senate_clarity_act_procedural_vote_20260915",
+      "source_name": "U.S. Senate offices — Senators Dave McCormick and Adam Schiff",
+      "source_url": "https://www.mccormick.senate.gov/news/press-releases/senator-mccormick-releases-statement-on-the-clarity-act/",
+      "related_source_urls": [
+        "https://www.schiff.senate.gov/news/press-releases/statement-sen-schiff-statement-on-the-clarity-act/"
+      ],
+      "independence_group": "us-senate-official-member-statements-clarity-vote",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-09-15T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T02:32:43Z",
+      "captured_at_utc": "2026-11-16T02:32:43Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The event time is a date-only anchor; exact vote time was not captured.",
+        "The official McCormick statement is used for the 49–50 result and 60-vote threshold; secondary articles with reversed ordering are not preferred.",
+        "No January 3, 2027 expiry claim is admitted without primary legislative-calendar evidence."
+      ],
+      "falsification_conditions": [
+        "An official Senate roll-call record or corrected statement materially changes the vote tally or procedural threshold.",
+        "Subsequent enacted legislation changes the regulatory status."
+      ],
+      "related_entities": [
+        "U.S. Senate",
+        "Digital Asset Market Clarity Act",
+        "Dave McCormick",
+        "Adam Schiff",
+        "XRP",
+        "Ripple"
+      ],
+      "tags": [
+        "clarity-act",
+        "senate-vote",
+        "regulatory-uncertainty",
+        "procedural-failure"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -3859,6 +4184,25 @@
     "correction": "Assigned the stale Bybit quote a distinct hypothesis_id because its hypothesis/counter-hypothesis definition differs from the OKX basis-skew event. No market conclusion or model eligibility changed.",
     "previous_hypothesis_id": "xrp-cross-venue-spot-price-divergence-2026-11-16",
     "source_receipt_status": "90 of 90 curated events still lack byte-exact raw publisher SHA-256 receipts; all remain model-ineligible.",
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "run182_update": {
+    "added_event_ids": [
+      "xrp-risk-off-selloff-etf-outflows-stablecoin-contraction-2026-11-15",
+      "xrp-240m-unlabelled-wallet-transfers-2026-11-15",
+      "xrp-cross-venue-spot-ticker-and-usdt-basis-gate-2026-11-16T0232Z",
+      "bls-october-2026-cpi-release-and-yoy-data-gap-2026-11-10",
+      "fomc-policy-rate-2026-09-17-and-2026-10-28",
+      "treasury-par-yield-curve-2026-11-13",
+      "clarity-act-senate-procedural-vote-2026-09-15"
+    ],
+    "corrected_event_ids": [],
+    "note": "Added a descriptive-only XRP risk-off/ETF/stablecoin event; the 240M unlabelled wallet-transfer event; an asynchronous OKX/Kraken/USDT basis-gate snapshot; official BLS October CPI with the year-over-year data gap; Federal Reserve policy range; U.S. Treasury November 13 nominal yields; and the September 15 CLARITY Act procedural vote. Secondary reports are provisional; primary government sources are verified. Date-only event anchors are explicitly disclosed. No exact publisher payload bytes were retained, no raw SHA-256 hashes were invented, and no event is model-eligible.",
+    "source_receipt_status": "97/97 missing byte-exact raw-source SHA-256 receipts",
+    "missing_publisher_timestamps": 53,
+    "independence_groups": 74,
+    "model_eligible": false,
     "forecast_status": "NOT_ISSUED",
     "accuracy_status": "NOT_EVALUATED"
   }

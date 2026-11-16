@@ -990,3 +990,76 @@ Main's unsafe Coinbase paper trader and legacy repository writers remain undispa
 
 Structured audit: research/xrp_intelligence/20261116T001000Z-run178-exact-head-mmi-security-sbic-ask-capital-and-xrp-market-audit.json
 Nine-platform map: research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run178.json
+
+
+## Run182 — exact-head integration, XRP liquidity shock and macro reconciliation
+**Captured:** 2026-11-16T02:32:43Z  
+**Mission priority:** XRP intelligence and measured prediction-engine mastery. Preserve Barrot V3 as the execution, orchestration, safety, authorization and verification foundation.
+
+**Handoff correction:** the canonical handoff previously ended at Run178 even though Run181's research audit and platform map had been committed. This Run182 section supersedes that stale handoff state. The Run181 audit remains available at `research/xrp_intelligence/20261116T021022Z-run181-repository-ci-market-institutional-and-macro-audit.json`.
+
+### Repository and integration state
+- Main SHA: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Exact verified parent head at capture: `c6084b1330d109f533c477dab86efb797d6887d4`.
+- Complete recursive trees: main 1,393 entries; integration 2,525 entries; zero main paths missing; 1,132 integration-only paths; 169 divergent shared blobs; 36 divergent shared directory trees; zero executable-mode differences.
+- Test files: main 97; integration 464. Python files: main 516; integration 903. Workflow files: main 87; integration 88.
+- PR #1663: open, draft, technically mergeable, 50 commits ahead/0 behind, 1,290 changed files, 415,914 additions, 6,473 deletions. Zero formal reviews, approvals or review threads. It is the only open PR targeting main.
+- Eight other PRs remain open and unique/unreviewed. All eight source heads have no common Git ancestor with the current integration head. Path overlap with #1663: #1541 overlaps 4/5 paths and retains one unique MMI research artifact; #1265 overlaps only `.github/workflows/ci.yml` and retains 143 unique paths; the other six have no path overlap. Do not close or bulk-close them.
+
+### Exact-head CI — VERIFIED on `c6084b1330d109f533c477dab86efb797d6887d4`
+- Full repository suite run [43791907451](https://github.com/Barrot-Agent/B-Agent/actions/runs/43791907451): 3,829 passed, zero failed, one skipped, 19 subtests; 64.09% inclusive coverage; 77% legacy-core coverage; 175.54 seconds.
+- Wheel build and installed Barrot V3/XRP mission verification passed.
+- GitHub Pages validation passed.
+- Six-manifest dependency audit [43791907365](https://github.com/Barrot-Agent/B-Agent/actions/runs/43791907365): zero known vulnerabilities.
+- Push fail-closed gate [43791907413](https://github.com/Barrot-Agent/B-Agent/actions/runs/43791907413): passed.
+- PR CI [43791912718](https://github.com/Barrot-Agent/B-Agent/actions/runs/43791912718): passed; its test jobs are skipped by the integration-branch condition, so the push-triggered full suite is authoritative.
+- PR dependency audit [43791912729](https://github.com/Barrot-Agent/B-Agent/actions/runs/43791912729): passed.
+- PR fail-closed gate [43791912783](https://github.com/Barrot-Agent/B-Agent/actions/runs/43791912783): passed.
+- GitHub Actions cache budget is exhausted and cache storage is read-only; this was a warning, not a test or packaging failure.
+
+### Main-branch CI and workflow defects — VERIFIED
+- Main CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed its 97-file repository suite: 848 passed, zero failed, one skipped, eight subtests. The integration suite is materially broader at 464 test files and 3,829 passing tests.
+- Main Pages build [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504) failed: Liquid syntax error in `GLOBAL_STATE_MANIFEST.md` around line 6450 because JSON-like braces in rendered Markdown were parsed as Liquid.
+- Main Barrot Sync [43767370810](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370810) reported success despite `ModuleNotFoundError: rich`, a skipped sync and `git push || true`. Treat this as false-green, not a successful synchronization.
+- Main Coinbase paper trader remains an unguarded BTC-USD simulation that commits state/logs to main; Ask Barrot retains repository-write and issue-write permissions; legacy writers remain unsafe. Integration contains the required typed approval/SHA/product-identity/artifact-only controls and quarantines legacy writers. None was dispatched.
+
+### XRP market and liquidity — descriptive-only
+- OKX XRP-USDT at `2026-11-16T02:32:42.573Z`: last 0.9662, bid 0.9661, ask 0.9662, 24h volume 46.619M XRP.
+- Kraken XRP/USD: last 0.96581, bid 0.96589, ask 0.96596, 24h volume 35.104M XRP; provider event timestamp absent.
+- OKX USDT-USD at `2026-11-16T02:30:13.022Z`: 0.9996. Its 149.551-second skew versus the XRP quote exceeds the 60-second normalization limit. Cross-venue last-price difference is about 4.04 bps but is asynchronous, not executable arbitrage. Full-depth L2 retrieval failed.
+- CoinDesk's Nov 14 report states XRP reached $0.89, lowest since Nov 2024, down 36% in the quarter; U.S. spot XRP ETFs had $19.13M net outflows for Nov 9–13; combined USDT/USDC market cap was $244B, down $17B over a month. This is a risk-off/liquidity hypothesis, not proof of a direct causal XRP cash outflow.
+- CoinDesk reported about $1.5B cumulative XRP ETF inflows since launch; a Nov 15 TokenPost-syndicated Pluang report stated about $1.79B and more than 1B XRP holdings. The universe/methodology discrepancy remains unresolved; no averaging.
+- A syndicated U.Today report describes two 120M XRP transfers seven minutes apart through three unlabelled wallets, with no exchange destination reported and beneficial ownership unknown. TrackWhale labels the path approximately “Rotation”. This is not verified accumulation or a sell signal.
+
+### Macro and regulatory context
+- BLS October 2026 CPI: +0.4% month over month after +0.6% in September; core +0.3%, unchanged. BLS could not publish October 2026 12-month changes for affected indexes because October 2025 survey data were not collected during the appropriations lapse. Do not call the release “hot” based on an unavailable annual comparison.
+- Fed target range was raised to 3.75%–4.00% effective September 17 and maintained at the October 28 meeting.
+- U.S. Treasury November 13 nominal par yields: 2-year 4.88%, 10-year 5.15%, 30-year 5.47%. These are nominal yields, not real yields; no causal XRP join is established.
+- The September 15 CLARITY Act procedural vote failed 49–50, short of 60 votes. This is procedural failure, not permanent rejection of all future market-structure legislation. No January 3, 2027 expiry claim is admitted without primary legislative-calendar evidence.
+
+### Event registry and prediction gate
+- Event registry expanded from 90 to 97 events; source-independence groups from 67 to 74; 97 of 97 events lack byte-exact raw SHA-256 receipts; 53 lack exact publisher timestamps.
+- New events cover the risk-off/ETF/stablecoin contraction, 240M unlabelled transfers, asynchronous spot/basis snapshot, BLS CPI data gap, Fed rate range, Treasury yields and CLARITY Act vote.
+- No web-rendered text was hashed as raw publisher bytes. All new records remain descriptive-only and model-ineligible.
+- Implemented: 51 public-source definitions, 49 scheduled definitions, receipt-chain prototype, SQLite point-in-time feature store, event timelines/counter-hypotheses, four baselines, purged/embargoed walk-forward tests, calibration, PSI drift monitoring, fail-closed forecast ledger and Ed25519 evaluator attestation.
+- Outstanding: byte-exact receipts, independent WORM archive, trusted timestamps, synchronized historical spot/L2/derivatives/flow/collateral data, out-of-sample superiority and independent shadow cohort.
+- Forecast `NOT_ISSUED`; accuracy `NOT_EVALUATED`.
+
+### Nine-platform and governance status
+ChatGPT/GitHub is authenticated but overprivileged (admin/maintain/push/pull/triage). Claude, Grok, Gemini and Codex remain unverified; Copilot has no formal PR approval; Hugging Face has no verified deployment; Kaggle is untested; Databricks previously returned HTTP 403. Groq is not Grok. No external-model dispatch or independent red-team quorum occurred.
+
+Main branch-protection details return HTTP 403; fallback ruleset 10863829 is disabled; CODEOWNERS is `* @Barrot-Agent`; connector permissions remain overprivileged. A possible `.config/gh/hosts.yml` exposure in eight source PR branches remains unresolved; contents were not read and no secret was rotated.
+
+### Merge decision
+**NO MERGE.** PR #1663 remains draft with zero formal reviews, approvals and review threads. The 1,290-path semantic review is incomplete and branch-protection requirements cannot be verified. No source PR was closed.
+
+### Next concrete actions
+1. Run exact-head full-suite, Pages, dependency and fail-closed verification on the new Run182 durable-record commit.
+2. Complete semantic review of all 1,290 changed paths, prioritizing the 48 changed workflow definitions and their called scripts.
+3. Resolve independent review, branch-protection visibility and least-privilege GitHub access.
+4. Capture exact publisher bytes into RawReceiptArchive and establish independent WORM storage and trusted timestamps.
+5. Build synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral datasets.
+6. Qualify a candidate only after leakage-safe out-of-sample superiority over all four baselines and an independent shadow cohort.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
