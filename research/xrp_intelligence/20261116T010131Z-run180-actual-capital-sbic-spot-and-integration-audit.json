@@ -166,7 +166,21 @@
         "separate_ripple_contribution": "126,791,458 XRP contributed by Ripple; the Pathfinder transfer plus Ripple contribution reconciles to 473,276,430 XRP.",
         "non_double_counting": "The $214.1M used for XRP purchases is included in the broader $224.6M private-placement cash component of $272.6M gross closing cash."
       },
-      "sbi_relationship": "The SEC filing states that certain investors affiliated with SBI Holdings received Class C shares in connection with the 39.9% ownership threshold. This is SBI Holdings, not the separate Japanese SBIC East/Central/West companies."
+      "sbi_relationship": "The SEC filing states that certain investors affiliated with SBI Holdings received Class C shares in connection with the 39.9% ownership threshold. This is SBI Holdings, not the separate Japanese SBIC East/Central/West companies.",
+      "coinbase_principal_market": {
+        "selected_market": "Coinbase",
+        "selection_date": "2026-09-30",
+        "purpose": "Principal market for XRP financial-reporting/impairment valuation, not necessarily execution.",
+        "criteria": [
+          "market-based trading volume and activity",
+          "consistency and stability of quoted prices",
+          "accessibility and perceived regulatory/AML/KYC compliance"
+        ],
+        "custody": "The same SEC filing says post-transaction XRP is held with third-party custodians, initially BitGo Trust.",
+        "counter_hypothesis": "The accounting-market selection does not prove Evernorth executed every XRP purchase on Coinbase, that Coinbase custodies the XRP, or that Coinbase is a required settlement venue.",
+        "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm"
+      },
+      "primary_source_note": "The SEC filing also selects Coinbase as Evernorth's principal market for XRP valuation while separately naming BitGo Trust as initial custodian; do not conflate valuation market, execution venue and custodian."
     },
     "sbic_identity": {
       "resolved": true,
@@ -288,10 +302,10 @@
     "implementation_state": "prototype implemented on integration; production evidence gates remain open",
     "public_source_definitions": 51,
     "scheduled_source_definitions": 49,
-    "event_registry_events": 89,
+    "event_registry_events": 90,
     "source_independence_groups": 67,
-    "missing_raw_source_sha256": 89,
-    "missing_publisher_timestamps": 47,
+    "missing_raw_source_sha256": 90,
+    "missing_publisher_timestamps": 48,
     "raw_source_capture_attempt": "Direct byte download was unavailable in this run; no hashes were generated from extracted text.",
     "point_in_time_feature_store": "SQLite prototype present",
     "baselines": [
