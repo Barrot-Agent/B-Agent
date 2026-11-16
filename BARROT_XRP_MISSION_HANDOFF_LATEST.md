@@ -3421,3 +3421,36 @@ The evidence-only Run194 addenda commit that contains this handoff will trigger 
 - #1265 remains **unique/unreviewed** with 143 unique paths; review separately.
 - Other unique PRs remain open; no bulk closure.
 - No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, external model dispatch, force-push, history rewrite or destructive worktree action occurred.
+
+
+---
+
+# Run194 late market and DTCC refresh — 18:20 UTC
+
+**Parent head:** `384d716bab67fa9bdaa26f3d350c52cc6322e624`  
+**Exact-head CI on parent:** [run 43927718490](https://github.com/Barrot-Agent/B-Agent/actions/runs/43927718490) passed **3,843 tests, zero failures, one skip, 11 warnings and 19 subtests** in 166.87 seconds. Inclusive coverage was 66.90%; the legacy-core coverage floor and installed-wheel mission verification passed. Six-manifest dependency audit [43927718180](https://github.com/Barrot-Agent/B-Agent/actions/runs/43927718180) passed with zero known vulnerabilities; fail-closed gate [43927718152](https://github.com/Barrot-Agent/B-Agent/actions/runs/43927718152) passed. This late evidence-only commit will trigger a fresh full suite on its own head; do not transfer the parent result.
+
+## Late market refresh
+
+- Kraken XRP/USD at retrieval 18:20 UTC: **$0.95340 last**, $0.95329 bid, $0.95330 ask, 43.27M XRP 24-hour volume, $0.95557 VWAP, 34,462 trades. The displayed 24-hour open was $0.97373, low $0.94005 and high $0.97742.
+- CoinGlass' live dashboard at retrieval showed **$0.9598 (+1.17%)**, $554.65M spot volume (−52.56%), $2.43B futures volume, $1.98B open interest, $3.78M liquidations and funding −0.0065%/8h. Its price direction conflicts with the Kraken ticker and the SwiftEdge perp snapshot.
+- SwiftEdge at 14:36 UTC showed a **$0.9506 perpetual price (−2.36%)**, $73M OI (−7.8%) and −0.0031%/8h funding. Its 14:06 UTC perp book showed bids at $0.9460/$0.9445/$0.9305 and asks at $0.9635/$0.9535/$0.9545. This is not spot depth; resting orders can be cancelled.
+- Open-interest totals still conflict: CoinGlass $1.98B, OptimistFi $1.2–$1.7B, Liqwall $981M, TradRadar $1.33B, SwiftEdge $73M and Kraken Futures approximately $9.87M. These have different venue/contract scopes and are not averaged.
+- ETF flows remain negative in the five-fund SoSoValue series for Nov 2–13 (−$19.66M), while cumulative net inflows remain about $1.79B. Alpha Finance's page shows a $1.1M outflow with a 14 Nov label even though Nov 14 was Saturday, and also shows a 13 Nov row; this session/timezone duplication must be resolved against issuer files. CryptoKeyhole's issuer-file aggregation shows Nov 13 only partially populated (3 of 4 expected funds), while XRP Insights includes BITW and excludes GXRP from flow calculations during a data-gap correction. Do not combine these series.
+- RWA.xyz's Nov 16 XRPL row shows $5.851B total RWA value excluding stablecoins, $642.84M distributed and $5.208B represented (11% distributed), plus $806.02M stablecoin market capitalization. These are asset-value metrics; Transfer Volume is separate and does not validate a $3.5B/30-day settlement claim.
+
+These snapshots disagree on price direction and OI scope. They are descriptive-only, not model-eligible, and do not justify a directional forecast.
+
+## DTCC live-service correction to the creator claim review
+
+DTCC's tokenization service is **live as of October 28, 2026**, with 34 securities available to tokenize at launch, 20 DTC Participants signed for access, and 24/7 intra-chain peer-to-peer transfers between DTC-registered wallets. The live service is currently integrated with Canton and DTCC's private Besu network. DTCC's November 12 announcement says Solana availability is planned for 2H 2027.
+
+The distinction around Ripple Prime is important: DTCC's May 4 Industry Working Group list includes Ripple Prime, Goldman Sachs and J.P. Morgan. The October 28 list of 20 DTC Participants that signed service-access agreements does **not** include Ripple Prime. The reviewed live-service network list does not include XRP or XRPL. Therefore, "Ripple Prime is in the DTCC working group" is supported; "Ripple Prime operates the live service using XRP/XRPL" is not.
+
+This supersedes the earlier Run194 creator-audit line mentioning a Stellar 1H 2027 plan. The latest DTCC primary announcement reviewed here specifies Solana in 2H 2027. Do not carry the older timeline forward as current.
+
+## Final prediction and integration status
+
+No directional forecast was issued. Raw-source SHA receipts remain zero for this late web refresh; these observations are not admitted to the event registry or feature store. The prediction gate remains closed.
+
+PR #1663 remains draft and blocked pending independent review and complete semantic review of its 1,330 changed paths, including 49 workflows. The parent-head full suite, dependency audit and fail-closed gate passed, but this new evidence commit triggers its own exact-head checks. No merge or external action was performed.
