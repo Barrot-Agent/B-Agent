@@ -2909,3 +2909,77 @@ No deployment, secret rotation, Space restart, Databricks write, Kaggle submissi
 5. Reconcile RLUSD issuer obligations, returns/burns and cross-chain supply at identical ledger indices.
 6. Acquire synchronized per-venue XRP spot trades, spot books, derivatives, funding, OI and liquidations.
 7. Preserve NOT_ISSUED until leakage-safe walk-forward, baselines, calibration, drift and shadow-sample gates pass.
+
+
+---
+
+## Run191 supplemental verification — 2026-11-16 15:46 UTC
+
+### Post-handoff commit and exact-head verification
+
+The first Run191 evidence/handoff commit is 55fc66bdf7d8cc376470c964513614f115306c8a. After that commit, PR #1663 is 88 commits ahead of main with 1,319 changed files, 483,124 additions and 6,726 deletions. It remains open, draft and mergeable. The first Run191 evidence commit changed the existing handoff and added the market-evidence JSON and nine-platform map; no code was changed by that commit.
+
+Exact-head checks on 55fc66bdf7d8cc376470c964513614f115306c8a completed:
+
+- Full repository suite [43899347417](https://github.com/Barrot-Agent/B-Agent/actions/runs/43899347417): 3,830 passed, zero failed, one skipped, 19 subtests passed; inclusive coverage 64.09%; legacy-core coverage 77%.
+- Dependency audit [43899347468](https://github.com/Barrot-Agent/B-Agent/actions/runs/43899347468): passed.
+- Fail-closed gate [43899347415](https://github.com/Barrot-Agent/B-Agent/actions/runs/43899347415): passed; merge remained disabled.
+- Pages validation and core tests passed.
+
+The earlier Run191 PR-size figures (1,317 files, 87 commits) describe the integration head before the first evidence/handoff commit. The current pre-supplemental head is 55fc66bdf7d8cc376470c964513614f115306c8a. This supplemental commit adds one additional research JSON and updates the existing handoff; its exact-head workflows must be checked separately.
+
+### Evernorth — SEC primary-source capital and XRP reconciliation
+
+The November 13, 2026 Form 10-Q and accompanying 424B3 supplement materially improve the answer to the “actual capital” question. There is no single interchangeable capital number; cash, in-kind XRP, debt, warrants and a discretionary equity line must remain separate.
+
+- **Cash at business-combination closing:** approximately $272.6M gross, comprising approximately $224.6M from private-placement investments and approximately $48.0M released from the SPAC trust account after redemptions, before transaction expenses.
+- **Cash-funded XRP purchase:** $214,049,995 of advance-funding cash was used to buy 84,365,876 XRP. This is the disclosed cash-to-XRP conversion, not an additional cash balance.
+- **Other subscription cash:** an additional $10.5M cash commitment and 200,000 XRP were due at closing. The filing does not say that the delayed $10.5M was all used to buy XRP.
+- **In-kind XRP:** the filing reports approximately 388,910,554 XRP contributed in kind at closing. This includes the subscription contributions and Ripple's separate 126,791,458 XRP contribution to Pathfinder. Do not label all of it as outside third-party investor cash.
+- **XRP holdings/ownership:** Evernorth reported 346,284,972 XRP at September 30, 2026. Following closing it transferred 346,484,972 XRP to Pathfinder. Ripple separately contributed 126,791,458 XRP to Pathfinder, which the filing says may be liquidated to fund operating costs. The gross Pathfinder-level total from those two reported transfers is 473,276,430 XRP, but Pubco disclosed that it owns approximately 71.5% of Pathfinder. Therefore 473.3M is not the same as XRP fully attributable to public shareholders; reconcile unit-level economics before calculating attributable XRP per share.
+- **Convertible debt:** a $30M 4.00% Convertible Senior PIK Note was issued October 13; net cash proceeds were approximately $29M after a $1M advisory fee. Proceeds are intended for general corporate purposes, including XRP acquisition and other XRP-ecosystem activities. The note accrues 4% PIK, matures in 2031 unless earlier converted/redeemed, and has an 8% yield-to-put provision on default/fundamental transaction.
+- **Warrant cash actually received:** between October 12 and November 9, holders exercised 3,073,366 warrants for cash and Evernorth received $35.3M gross. 8,666,279 warrants remained. Exercise price is $11.50 per share. This is actual gross cash proceeds; it is not proof the proceeds were spent on XRP.
+- **ELOC is not cash raised:** the October 23 Cantor facility permits Pubco, at its sole discretion, to direct purchases of up to 5,218,935 shares at 97% of applicable VWAP, subject to trading-volume and ownership caps. Proceeds depend on how often and at what prices shares are sold. The reviewed filing does not quantify ELOC draws or proceeds. Treat facility capacity as potential financing, not capital already raised.
+- **Warrant prospectus distinction:** the November 13 supplement covers up to 11,499,992 shares issuable on exercise of public warrants at $11.50. The company says it receives no proceeds from sales of stock under the prospectus except amounts received when public warrants are exercised. A resale registration or secondary shareholder sale is not a new cash raise for Evernorth.
+- **Liquidity and accounting caveat:** the $91,397 unrestricted cash balance and $10.0M net working-capital deficit are September 30 pre-closing historical figures, not a current post-closing cash balance. Evernorth reported no operating revenue as of the filing and describes future XRP acquisition, sales, secured financing/collateral and yield strategies as possible business activities. Those permissions are not evidence that sales or collateral transactions have occurred.
+- **Market/custody links:** Evernorth identifies Coinbase as its principal market for XRP financial-reporting valuation and BitGo Trust as its initial post-transaction XRP custodian. Principal-market selection is an accounting determination, not proof that all Evernorth XRP trades execute on Coinbase.
+
+This is the current primary-source capital ledger. It supersedes any shorthand that treats the whole XRP treasury as cash-funded or the ELOC as cash already raised.
+
+### ASK Coin exact-phrase resolution
+
+The exact phrase “ASK Coin” now has a concrete candidate match: Permission Coin (ASK), an ERC-20-style token on Polygon, contract address 0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff. PolygonScan labels that contract “Permission: ASK Token.” No Ripple, XRP Ledger or SBI connection was established. Keep it as a candidate match to the phrase, not proof that it is the intended ASK Coin from every prior reference.
+
+### Camilla/Kamilah Stevenson — identity corroboration and public video inventory
+
+Identity confidence is now **high but not absolute** for the YouTube channel handle @drkamilahstevenson:
+
+- A recorded interview with Dr Kamilah Stevenson contains her self-identification and her statement that her YouTube presence is under “doctor Camilla Stevenson”; the interview video and search results identify the creator channel as Kamilah Stevenson / @drkamilahstevenson.
+- The handle is corroborated by public channel search results and creator-uploaded videos. This is sufficient to inventory the following public material, but it is not a claim that every similarly named channel is authentic.
+- Channel: https://www.youtube.com/@drkamilahstevenson
+- Creator upload, April 7, 2026: https://www.youtube.com/watch?v=Y5rESnxoSIA — “The New XRP Ledger Demand Curve: $24M to $1.8B.” The title/description's RWA-growth and institutional-demand figures are creator claims, not independently verified facts.
+- Creator upload, May 12, 2026: https://www.youtube.com/watch?v=pFru4idBTMA — “XRPL RWA Settlement Volume Explodes: $3.5B in 30 Days, $900M in One Day.” The description also claims RLUSD above $1B, daily XRPL payments above 1.7M and a $1B Archax commitment. Those claims require separate primary-source/ledger verification.
+- Guest appearance, June 11, 2026: https://www.youtube.com/watch?v=Sulo54IlQ60 — Paul Barron Podcast interview with Dr Kamilah Stevenson. This is a guest appearance on the podcast channel, not an upload to her own channel.
+
+This is a partial public-video inventory from verified/corroborated attribution, not an exhaustive archive. Exclude similarly named accounts unless channel ownership is independently corroborated.
+
+### RWA.xyz current XRPL balance split — direct dashboard snapshot
+
+RWA.xyz's Networks dashboard, dated November 16, 2026, reports for XRP Ledger:
+
+- 456 RWA assets.
+- $642.84M distributed asset value.
+- $5.208B represented asset value.
+- $5.851B total RWA value excluding stablecoins.
+- 11.0% distributed.
+- 2,950 RWA holders.
+- Seven stablecoin assets with approximately $806.02M stablecoin market capitalization.
+
+The May 12 video’s “$3.5B settled in 30 days” is a transfer-volume claim. RWA.xyz's values above are asset-balance/representation measures, not 30-day settlement volume. The dashboard offers a separate transfer-volume metric, but the video claim was not independently reconciled to that metric in this run. The correct conclusion is not that the creator claim is false; it remains unverified. The 11% distributed versus 89% represented split also means the $5.851B headline is not $5.851B of freely transferable investor float.
+
+### Supplemental source and evidence file
+
+The detailed source ledger, exact SEC amounts, channel/video references, RWA.xyz snapshot and all limitations are recorded in:
+
+research/xrp_intelligence/20261116T154625Z-run191-evernorth-ask-coin-kamilah-rwa-verification.json
+
