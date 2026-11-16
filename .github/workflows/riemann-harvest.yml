@@ -24,8 +24,8 @@ jobs:
         run: python barrot_agent/ingestion/build_riemann_a2a_corpus.py
       - name: Validate harvesting subsystem
         run: |
-          # pytest's shared conftest imports AppConfig, which requires pydantic-settings.
-          python -m pip install --quiet pytest pydantic-settings
+          # pytest.ini enables pytest-cov; shared conftest imports AppConfig via pydantic-settings.
+          python -m pip install --quiet pytest pytest-cov pydantic-settings
           python -m pytest tests/test_riemann_harvest.py -q
       - name: Preserve results as a workflow artifact
         uses: actions/upload-artifact@v7
