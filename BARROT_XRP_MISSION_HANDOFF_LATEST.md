@@ -3792,3 +3792,106 @@ PR #1663 remains draft and unreviewed. The Run197 evidence commit passed its exa
 - The XRPL Dashboard current page cross-check remains 22/35 LendingProtocol, 22/35 LendingProtocolV1_1 and 23/35 SingleAssetVault, versus 29 required; none is enabled. [XRPL Dashboard](https://xrpldashboard.com/amendments)
 - MMI reconciliation: #1540 and #1542 are closed without merge. #1541 remains open and its description's reference to #1542 as a fresh-main candidate is stale. The current #1663 integration contains the canonical claim fingerprint and additional claim-bound corroboration tests; two files are byte-identical to #1541, the evidence JSON is parsed-equivalent with a newline difference, and two files materially differ. Keep #1541 open until #1663 is merged and its MMI content is verified on main.
 - This final handoff-only commit will require its own exact-head CI. No code changes, merges, PR closures or external actions were made in this update.
+
+
+## Run198 — current-head verification and XRP research refresh (2026-11-16T21:07:00Z)
+
+### Repository state and exact-head CI
+
+- Main: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; pre-Run198 head: `846f9f5b8a235876411174669aeb821d91d8aad4`.
+- Main is an ancestor; integration is 120 commits ahead and zero behind. Recursive trees: main 1,393 entries; integration 2,563 entries; zero main paths are missing.
+- PR [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663) is open, draft, mergeable metadata true, 1,335 changed paths, zero formal reviews and zero review threads. Its PR description contains older head figures; this handoff is the current state.
+- Changed-path inventory: 49 workflow files, 396 test paths, 766 research paths, 77 other Python/source paths, 10 web paths, 22 documentation paths and 15 other paths.
+- Exact-head push CI [43952503279](https://github.com/Barrot-Agent/B-Agent/actions/runs/43952503279), full-suite job 133598408267: **3,844 passed, 1 skipped, 11 warnings, 19 subtests passed** in 166.62 seconds. Inclusive coverage **66.90%**; legacy core-package coverage **77%**. Both configured coverage floors passed. Wheel build, packaged primary mission resource, installed-wheel V3/XRP mission smoke test and Pages validation passed.
+- Six-manifest dependency audit [43952503247](https://github.com/Barrot-Agent/B-Agent/actions/runs/43952503247) passed; each of six audited manifests reported no known vulnerabilities. Fail-closed gate [43952503278](https://github.com/Barrot-Agent/B-Agent/actions/runs/43952503278) passed.
+- PR-event CI [43952514668](https://github.com/Barrot-Agent/B-Agent/actions/runs/43952514668) passed Pages validation but skipped test jobs under the integration-branch condition. The push-triggered full suite above is the authoritative exact-head result.
+
+### Workflow and external-side-effect review
+
+All 49 changed workflow paths were inventoried and statically scanned for triggers, permissions, secrets, deployments, external writes and paper-trading behavior. Direct main-versus-integration comparisons established:
+
+1. `.github/workflows/table-freshness-check.yml`: main's manual workflow reads Databricks credentials and ran a diagnostic that exposed sampled private rows in public logs. Integration has empty permissions and a false job; no credential/query access.
+2. `.github/workflows/coinbase-paper-trader.yml`: main's manual simulation commits and pushes simulated state to main. Integration is manual, exact-main-SHA checked, explicit-YES gated, contents-read-only and artifact-only. Not dispatched.
+3. `.github/workflows/deploy-a2a-worker.yml`: main auto-deploys on pushes to `a2a/**` and uploads Cloudflare/Groq/brain secrets. Integration removes the push trigger and requires main dispatch, exact main SHA, explicit deployment YES and a separate secret-rotation YES. Not dispatched. Cloudflare action remains tag-pinned at `cloudflare/wrangler-action@v4`, not a full commit SHA; pin and review before enabling.
+4. `.github/workflows/sync-huggingface.yml`: main can upload Space code and propagate/replace secrets. Integration quarantines it with empty permissions and a false job.
+5. `.github/workflows/sync-self-hosted-brain.yml`: main has a push-triggered Space deployment and optional secret update. Integration quarantines it with a false job.
+6. `.github/workflows/xrp-public-ingestion.yml`: exists on integration only; absent from main. Schedules at minute 3 hourly and 00:15 UTC daily, uses public/authorized sources, actions/contents read, finite-retention GitHub artifacts/cache and a main-only job guard. It has not run on integration and is not active on main. Ninety-day artifacts/cache are not WORM storage or independent timestamp anchoring.
+7. `.github/workflows/barrot-ops.yml`: integration adds exact-main-SHA validation and separate Databricks-import/Kaggle-download approvals. It can overwrite `/Shared/barrot_databricks_job` or download a named Kaggle dataset when specifically approved. Neither action was run.
+8. `.github/workflows/databricks-bundle.yml`, `barrot-self-upgrade.yml`, `barrot-sync.yml` and other legacy paths are disabled/quarantined on integration.
+9. `cross-analysis`, `riemann-harvest`, `hover_bike_updates` and XRP ingestion are artifact-oriented in the reviewed definitions. External-model workflows are main-only/manual/confirmation-gated; no external-model task was dispatched.
+
+The safer workflow versions are not on main. Main still contains the older private-row diagnostic, main-pushing Coinbase paper-trader, push-triggered A2A deployment and push-triggered self-hosted Space deployment until a safe integration is merged. The 49-file static scan is not complete semantic review of every script/action.
+
+A separate pre-existing `barrot_agent/trading/coinbase_trader.py` path remains on main, defaults to dry-run, but can enable live orders if `BARROT_TRADING_DRY_RUN=false` and Coinbase credentials are present. Earlier call-site review found tests but no production caller; the sell path lacks the same position-size ceiling as buys. No live order was submitted. Keep this path disabled and require a second live-authorization gate plus symmetric risk limits before any future use.
+
+### XRP market and capital research — descriptive only
+
+- Swiftedge's November 16 brief displayed XRP at **$0.9538**, 24-hour range **$0.9418–$0.9773**, value area **$0.9514–$0.9707**, volume point-of-control **$0.9592**, reported taker net flow **+$7.4M**, volume **0.5× normal**, funding **−0.0115%/8h**, OI change **−12.1%**, and roughly **$4.6M** resting at both the $0.9500 bid and $0.9600 ask. Third-party aggregate, no exact publisher timestamp, resting orders can cancel; not executable depth or a model feature. [Swiftedge](https://swiftedge.uk/markets/today)
+- Liqwall reported all-exchange XRP futures OI **$973M at 18:22 UTC Nov 16**, down **3.9% over 24h**; 30-day range $995M (Nov 14) to $1.49B (Nov 4). This differs from CoinGecko/CoinGlass/Kodexius/OptimistFi universes and is not averaged. [Liqwall](https://liqwall.com/open-interest/xrp)
+- Five-fund SoSoValue-derived coverage through Nov 13 shows roughly **$19.1M weekly net outflows (Nov 9–13)** and about **$19.7M November outflows through Nov 13**. [Coindaro](https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/) and [BlockchainReporter](https://blockchainreporter.net/xrp-etf-guide-all-7-tickers-explained-xrpi-xrpc-gxrp-more/).
+- Alpha Finance's five-fund page shows **−$20.2M over seven sessions through Nov 14**, but Nov 14 was Saturday and its row is anomalous; retain as a provider discrepancy, not an ordinary trading session. [Alpha Finance](https://alphafinance.io/etf/xrp/).
+- CryptoKeyhole issuer-file aggregation's latest complete day is Nov 12 at **+4,337,131 XRP**; Nov 13 is partial at **−9,967 XRP from 3/4 funds**. Different fund universe; do not sum with the five-fund USD series. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/).
+- Evernorth's November SEC filing remains the primary actual-capital source: cash proceeds, in-kind XRP, debt, warrant proceeds and undrawn ELOC capacity are separate. It reports $35.3M gross proceeds from exercised warrants; the ELOC's 5,218,935-share ceiling is capacity, not proceeds. [SEC filing](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+### SBI / Ripple / Circle / Coinbase
+
+- SBI VC Trade began offering RLUSD on June 24, 2026, describing its Japanese-law classification as a category-four electronic payment instrument. This is distribution/listing, not evidence of XRP purchases or settlement volume. [SBI/Ripple](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html).
+- JPYSC is separate: SBI Shinsei Trust & Banking is issuer; SBI VC Trade distributes; Startale co-developed it. SBI reported on Nov 2 that JPYSC lending balances exceeded **¥10B** and handled balances exceeded **¥30B**. These are JPYSC metrics, not XRP collateral or XRP liquidity. [SBI Nov 2](https://www.sbigroup.co.jp/news/2026/1102_16704.html) · [JPYSC launch](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+- On Oct 27, SBI Holdings, Startale and BlackRock signed an MOU to explore a tokenized money-market fund/JPYSC ecosystem. Agreement to explore, not a live integration. [SBI/BlackRock/Startale](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+- On Oct 16, SBI and Startale joined the Open Standard and said they would explore JPYSC/OUSD interoperability. This does not establish live settlement on OUSD or XRP. [SBI/Startale](https://www.sbigroup.co.jp/news/2026/1016_16665.html).
+- SBI VC Trade's RLUSD and JPYSC activity is separate from USDC distribution/lending and Circle Arc. SBI's Circle relationship and Arc validator role establish a parallel stablecoin/settlement rail, not XRP settlement on Arc.
+- Ripple/Coinbase announced RLUSD availability on Coinbase Prime, Exchange and retail across XRPL, Base and Ethereum on Oct 28. Coinbase Global Exchange collateral use was described as future availability, not verified live. [Ripple/Coinbase](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- BNY's Oct 27 announcement says it supports XRP and RLUSD custody for eligible clients, building on RLUSD reserve custody and Ripple Prime custody. Custody availability does not establish disclosed balances or incremental XRP purchases. [BNY](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- Regional SBIC East/Central/West remain distinct from SBI Holdings. The SBIC East ChatGPT event was a seminar; no OpenAI partnership was established. ASK Coin remains ambiguous; Permission Coin (ASK) is only a lexical candidate with no verified XRP/Ripple relationship. Kamilah Stevenson person identity is high-confidence from a first-person interview, but exact YouTube channel handle/ownership remains unverified; attributed candidate videos are not a complete official inventory.
+
+### Prediction-engine gate
+
+- Registry `research/xrp_intelligence/event_registry_current.json`: Run192 follow-up, **125 events**.
+- Raw-source SHA-256 receipts present: **0**; missing: **125**.
+- Exact publisher timestamps: **48**; missing: **77**.
+- Model-eligible events: **0**.
+- `web/latest_signal.json`: `NOT_ISSUED`; `web/signal_accuracy.json`: `NOT_EVALUATED`.
+- Run198 web observations are descriptive only. No search result or rendered page was promoted to a point-in-time feature because byte-exact publisher payloads and durable receipts were not captured.
+- No directional forecast was issued. No candidate has demonstrated out-of-sample superiority over all four baselines and independent shadow evaluation.
+
+### PR backlog and reconciliation
+
+Nine PRs remain open; no source PR was closed:
+
+- #1663 — blocked: draft, zero formal reviews, full semantic review incomplete.
+- #1541 — superseded-candidate/reconciliation-required: all five paths overlap #1663. `mmi_adapter.py` and `test_mmi_integration.py` are byte-identical; `mmi_v1.py` and `test_mmi_v1.py` differ materially; the JSON artifact differs by one byte. It is stacked on a security parent branch whose PR #1540 is closed unmerged. Preserve until reconciled and successor content is verified on main.
+- #1450 (116 files), #1460 (8), #1440 (64), #1436 (24), #1437 (5), #1353 (1,084) — unique/unreviewed research branches; no changed paths overlap #1663.
+- #1265 (144 files) — unique/unreviewed; one non-identical overlap at `.github/workflows/ci.yml`, 143 paths unique.
+- XRP ledger archive stack remains #1265 → #1353 → #1436, with #1437/#1440 repairs and #1450/#1460 successors. These are research-only, not main-targeting integration PRs.
+
+### Governance and merge decision
+
+- Main branch reports protected=true; detailed branch-protection read returns HTTP 403.
+- Visible repository ruleset 10863829 remains disabled.
+- `.github/CODEOWNERS` assigns `*` only to `@Barrot-Agent`; no independent code owner is configured.
+- Connector permissions remain admin, maintain, push, pull and triage; least privilege is not satisfied.
+- PR #1663 remains draft with zero independent reviews/approvals/review threads; complete semantic review of 1,335 paths remains incomplete.
+- **NO MERGE.** Exact-head tests and dependency/security gates passed, but independent review, complete semantic review and branch-protection verification remain unresolved.
+
+### Nine-platform coordination
+
+ChatGPT's GitHub connector is authenticated and verified for repository reads/writes on the integration branch, but permissions are overbroad. Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks remain unverified/untested; Copilot has historical one-off activity but no current authenticated data flow. Groq is separate from Grok; a configured secret is not proof of a tested connection. No external-model task was dispatched and no live connection was claimed for the other eight platforms.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** scheduled public XRP ingestion, raw-source receipt chain, point-in-time feature store, four baselines, chronological walk-forward evaluator, calibration, drift checks and fail-closed forecast ledger exist on integration.
+- **EXECUTED:** fetched current main/integration trees, open PR inventory, ancestry, PR metadata, changed paths, reviews/threads, workflow runs/logs, dependency audit and security metadata; scanned all 49 changed workflow paths and directly compared critical workflows with main; refreshed public XRP and institutional research.
+- **VERIFIED:** exact-head 846f9f5 full suite passed; six-manifest audit reported no known vulnerabilities; fail-closed gate passed; main is an ancestor; zero main paths are missing; forecast remains disabled.
+- **NOT VERIFIED:** scheduled ingestion on main, WORM/external timestamp anchoring, raw receipt admission for current web research, external platform authentication except ChatGPT/GitHub, predictive superiority, independent shadow performance, branch-protection requirements and complete semantic review.
+
+### Next concrete actions
+
+1. Complete independent semantic review of all 1,335 changed paths, prioritizing 49 workflows, 396 test paths, live-trading path, external-action gates and dependency/permission changes.
+2. Obtain an independent reviewer and correct self-only CODEOWNERS before removing draft status.
+3. Obtain authorized branch-protection/ruleset read evidence; do not bypass protection.
+4. Pin `cloudflare/wrangler-action` to a reviewed full commit SHA and rerun exact-head checks.
+5. Reconcile #1541's two materially divergent MMI files; retain the PR until successor content is verified on main.
+6. Capture byte-exact publisher responses, SHA-256 receipts and independent WORM/timestamp anchors; 125 registry events still have zero raw receipts.
+7. After safe merge, verify merge commit, fetch main again, run main CI, then verify scheduled ingestion on main. Do not dispatch paper-trading, deployment, secret-rotation, Databricks or Kaggle workflows without the specific approval.
+8. Keep forecasts disabled until point-in-time data, leakage-safe OOS superiority, calibration, drift and independent shadow validation pass.

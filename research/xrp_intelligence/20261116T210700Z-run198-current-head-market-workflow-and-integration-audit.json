@@ -1,0 +1,329 @@
+{
+  "schema_version": "barrot.xrp-intelligence-run-audit.v1",
+  "run_id": "run198",
+  "captured_at_utc": "2026-11-16T21:07:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+  "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+  "integration_head_before_run": "846f9f5b8a235876411174669aeb821d91d8aad4",
+  "pr_number": 1663,
+  "execution_classification": {
+    "designed": [
+      "XRP public-data ingestion, raw-source receipts, point-in-time features, four baselines, walk-forward evaluation, calibration, drift monitoring and fail-closed forecast ledger on integration.",
+      "Nine-platform capability/authentication/permission/data-flow map."
+    ],
+    "executed": [
+      "Fetched main/integration trees, PR inventory, ancestry, changed paths, reviews/threads, workflow runs/logs, dependency audit, rulesets and CODEOWNERS.",
+      "Scanned 49 changed workflow files and compared critical workflows with main.",
+      "Refreshed public XRP market and institutional research."
+    ],
+    "verified": [
+      "Exact-head 846f9f5 full suite passed: 3844 passed, 1 skipped, 11 warnings, 19 subtests; 66.90% inclusive and 77% legacy-core coverage.",
+      "Six-manifest dependency audit reported no known vulnerabilities; fail-closed gate passed.",
+      "Main is ancestor; 120 ahead, zero behind; zero main paths missing.",
+      "PR remains draft with zero formal reviews/threads; forecast NOT_ISSUED."
+    ],
+    "not_verified": [
+      "Scheduled ingestion on main; workflow absent from main.",
+      "Byte-exact raw-source receipts and independent WORM/timestamp anchoring.",
+      "Predictive superiority and independent shadow cohort.",
+      "Eight external platform authentication/data flows.",
+      "Branch-protection requirements and complete semantic review of 1335 paths."
+    ]
+  },
+  "repository_state": {
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2563,
+    "main_paths_missing_from_integration": 0,
+    "integration_ahead_by": 120,
+    "integration_behind_by": 0,
+    "pr_changed_paths": 1335,
+    "changed_workflow_files": 49,
+    "changed_test_paths": 396,
+    "changed_research_paths": 766,
+    "changed_other_python_paths": 77,
+    "changed_web_paths": 10,
+    "changed_documentation_paths": 22,
+    "changed_other_paths": 15
+  },
+  "pull_request_1663": {
+    "state": "open",
+    "draft": true,
+    "mergeable_metadata": true,
+    "head_sha": "846f9f5b8a235876411174669aeb821d91d8aad4",
+    "base_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "changed_files": 1335,
+    "formal_reviews": 0,
+    "review_threads": 0,
+    "merge_decision": "NO_MERGE",
+    "blockers": [
+      "Draft state",
+      "No independent formal review or approval",
+      "Full semantic review incomplete",
+      "Main branch-protection details return HTTP 403",
+      "Visible ruleset 10863829 disabled",
+      "CODEOWNERS self-only",
+      "Connector permissions admin/maintain/push/pull/triage"
+    ]
+  },
+  "exact_head_ci": {
+    "push_ci_run": 43952503279,
+    "full_suite_job": 133598408267,
+    "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests in 166.62 seconds",
+    "inclusive_coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
+    "wheel_build": "passed",
+    "packaged_mission_resource": "verified",
+    "installed_v3_xrp_mission": "passed",
+    "pages_validation": "passed",
+    "pr_ci_run": 43952514668,
+    "pr_ci_tests": "skipped by integration-branch condition",
+    "dependency_audit_run": 43952503247,
+    "dependency_audit": "six manifests; no known vulnerabilities reported for each audited manifest",
+    "fail_closed_gate_run": 43952503278,
+    "fail_closed_gate": "passed"
+  },
+  "workflow_review": {
+    "changed_workflows": 49,
+    "critical_diffs": [
+      "table-freshness-check: main Databricks private-row diagnostic; integration disabled with empty permissions.",
+      "coinbase-paper-trader: main commits/pushes state; integration exact-SHA, explicit-YES, artifact-only.",
+      "deploy-a2a-worker: main push-triggered deploy/secrets; integration manual exact-SHA and separate secret-rotation approval; action remains @v4 tag-pinned.",
+      "sync-huggingface: main code/secret propagation; integration quarantined.",
+      "sync-self-hosted-brain: main push deployment; integration quarantined.",
+      "xrp-public-ingestion: integration-only, main-only guard, hourly/daily schedule, public read-only sources, finite 90-day artifact/cache retention.",
+      "barrot-ops: separate exact-SHA Databricks/Kaggle approvals; not executed."
+    ],
+    "main_risks_until_merge": [
+      "Private Databricks diagnostic",
+      "Main-pushing Coinbase paper-trader",
+      "Push-triggered A2A deployment and secret upload",
+      "Push-triggered self-hosted Space deployment/secret update"
+    ],
+    "full_semantic_review": "incomplete",
+    "no_workflow_dispatched": true
+  },
+  "market_research": {
+    "spot": {
+      "source": "Swiftedge",
+      "url": "https://swiftedge.uk/markets/today",
+      "retrieved_at_utc": "2026-11-16T21:07:00Z",
+      "publisher_timestamp": null,
+      "price_usd": 0.9538,
+      "range_24h": [
+        0.9418,
+        0.9773
+      ],
+      "value_area": [
+        0.9514,
+        0.9707
+      ],
+      "volume_poc": 0.9592,
+      "taker_net_flow_usd": 7400000,
+      "volume_vs_normal": 0.5,
+      "funding_8h_pct": -0.0115,
+      "oi_change_24h_pct": -12.1,
+      "bid_wall_0_9500_usd": 4600000,
+      "ask_wall_0_9600_usd": 4600000,
+      "raw_source_sha256": null,
+      "model_eligible": false,
+      "limitation": "Third-party aggregate, no exact publisher timestamp; resting depth can cancel."
+    },
+    "derivatives": [
+      {
+        "source": "Liqwall",
+        "url": "https://liqwall.com/open-interest/xrp",
+        "as_of_utc": "2026-11-16T18:22:00Z",
+        "open_interest_usd": 973000000,
+        "change_24h_pct": -3.9,
+        "high_30d_usd": 1490000000,
+        "high_date": "2026-11-04",
+        "low_30d_usd": 995000000,
+        "low_date": "2026-11-14",
+        "raw_source_sha256": null,
+        "model_eligible": false
+      }
+    ],
+    "etf_flows": [
+      {
+        "source": "Coindaro/SoSoValue",
+        "url": "https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/",
+        "window": "2026-11-09 to 2026-11-13",
+        "net_flow_usd": -19100000
+      },
+      {
+        "source": "Alpha Finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "through": "2026-11-14",
+        "seven_sessions_usd": -20200000,
+        "thirty_sessions_usd": -1700000,
+        "nov14_usd": -1100000,
+        "limitation": "Nov 14 Saturday row anomalous."
+      },
+      {
+        "source": "CryptoKeyhole",
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "latest_complete_day": "2026-11-12",
+        "latest_complete_xrp": 4337131,
+        "nov13_partial_xrp": -9967,
+        "nov13_funds": "3/4"
+      }
+    ],
+    "institutional": [
+      {
+        "entity": "SBI VC Trade/Ripple",
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "fact": "RLUSD distribution from June 24 under Japanese-law category-four classification; not XRP demand."
+      },
+      {
+        "entity": "SBI Shinsei Trust/SBI VC Trade/Startale",
+        "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "fact": "JPYSC issuer/distributor/co-developer roles are distinct; separate yen stablecoin."
+      },
+      {
+        "entity": "SBI VC Trade",
+        "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+        "fact": "JPYSC lending >¥10B and handled balances >¥30B on Nov 2; not XRP collateral."
+      },
+      {
+        "entity": "SBI/Startale/BlackRock",
+        "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+        "fact": "MOU to explore tokenized MMF and JPYSC; not live integration."
+      },
+      {
+        "entity": "SBI/Startale/Open Standard",
+        "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+        "fact": "Exploring JPYSC/OUSD interoperability; not a live XRP rail."
+      },
+      {
+        "entity": "Ripple/Coinbase",
+        "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "fact": "RLUSD on Coinbase Prime/Exchange/retail across XRPL/Base/Ethereum; Coinbase Global Exchange collateral planned, not verified live."
+      },
+      {
+        "entity": "Ripple/BNY",
+        "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+        "fact": "BNY supports XRP/RLUSD custody; custody does not prove new XRP purchases."
+      }
+    ],
+    "protocol": "Run197 amendment snapshot retained: LendingProtocol 22/35, V1_1 22/35, SingleAssetVault 23/35 versus 29 required; none enabled; proposed borrower loans are uncollateralized at protocol level."
+  },
+  "prediction_gate": {
+    "registry_path": "research/xrp_intelligence/event_registry_current.json",
+    "version": "run192-followup",
+    "captured_at_utc": "2026-11-16T16:11:30Z",
+    "events": 125,
+    "raw_sha256_receipts": 0,
+    "missing_raw_sha256": 125,
+    "exact_publisher_timestamps": 48,
+    "missing_timestamps": 77,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "run198_web_observations_admitted": 0
+  },
+  "backlog": [
+    {
+      "number": 1663,
+      "classification": "blocked",
+      "files": 1335
+    },
+    {
+      "number": 1541,
+      "classification": "superseded-candidate/reconciliation-required",
+      "files": 5,
+      "overlap": 5,
+      "identical": [
+        "barrot_agent/mmi_adapter.py",
+        "tests/test_mmi_integration.py"
+      ],
+      "materially_different": [
+        "barrot_agent/mmi_v1.py",
+        "tests/test_mmi_v1.py"
+      ],
+      "one_byte_difference": [
+        "research/operations/20261103T005800Z-mmi-canonical-claim-fingerprint.json"
+      ]
+    },
+    {
+      "number": 1450,
+      "classification": "unique/unreviewed",
+      "files": 116
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "files": 8
+    },
+    {
+      "number": 1440,
+      "classification": "unique/unreviewed",
+      "files": 64
+    },
+    {
+      "number": 1436,
+      "classification": "unique/unreviewed",
+      "files": 24
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "files": 5
+    },
+    {
+      "number": 1353,
+      "classification": "unique/unreviewed",
+      "files": 1084
+    },
+    {
+      "number": 1265,
+      "classification": "unique/unreviewed",
+      "files": 144,
+      "overlap": 1,
+      "overlap_path": ".github/workflows/ci.yml",
+      "identical": false
+    }
+  ],
+  "nine_platform_coordination": {
+    "verified": [
+      "ChatGPT GitHub connector"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "copilot": "Historical one-off activity; no current authenticated data flow.",
+    "groq": "Configured secret is not proof of live request; Groq is separate from Grok.",
+    "least_privilege": false,
+    "independent_tasks_dispatched": false,
+    "structured_evidence_exchange": false,
+    "minority_objections_preserved": true,
+    "red_team_quorum": false
+  },
+  "external_actions": {
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "external_model_dispatch": false
+  },
+  "next_actions": [
+    "Complete semantic review of 1335 paths, prioritizing 49 workflows and 396 tests.",
+    "Obtain independent reviewer and correct self-only CODEOWNERS.",
+    "Obtain authorized branch-protection read evidence; do not bypass.",
+    "Pin Cloudflare action to a full commit SHA.",
+    "Reconcile #1541 material MMI differences.",
+    "Capture byte-exact source payloads and independent WORM/timestamp receipts.",
+    "After safe merge, verify merge commit and main CI, then validate scheduled ingestion on main.",
+    "Keep forecasts disabled until OOS superiority, calibration, drift and shadow gates pass."
+  ]
+}
