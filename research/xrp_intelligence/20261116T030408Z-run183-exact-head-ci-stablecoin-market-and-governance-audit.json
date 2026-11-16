@@ -1,0 +1,355 @@
+{
+  "schema_version": "barrot.xrp.run_audit.v1",
+  "run_id": "Run183",
+  "captured_at_utc": "2026-11-16T03:04:08Z",
+  "mission": {
+    "priority": 1,
+    "topic": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety, authorization and verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_code_head": "b64c16819c854709ad8ba18c350da934cd65447f",
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2529,
+    "main_tree_truncated": false,
+    "integration_tree_truncated": false,
+    "main_paths_missing_from_integration": 0,
+    "shared_paths_with_different_blobs": 205,
+    "commits_ahead": 54,
+    "commits_behind": 0,
+    "pull_request": {
+      "number": 1663,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "merged": false,
+      "changed_files": 1294,
+      "additions": 418273,
+      "deletions": 6473,
+      "formal_reviews": 0,
+      "review_threads": 0
+    },
+    "open_prs": [
+      {
+        "number": 1663,
+        "classification": "blocked",
+        "reason": "sole main-targeting integration PR; draft and unapproved"
+      },
+      {
+        "number": 1541,
+        "classification": "unique/unreviewed",
+        "base": "security/mmi-claim-bound-source-provenance-20261103-run11",
+        "head": "security/mmi-canonical-claim-fingerprint-20261103-run11",
+        "commits": 7,
+        "changed_files": 5
+      },
+      {
+        "number": 1450,
+        "classification": "unique/unreviewed",
+        "base": "research/binance-xrp-hack-graph-20261101T0108Z",
+        "head": "verify/xrp-ledger-archive-20261101T070712Z",
+        "commits": 74,
+        "changed_files": 116
+      },
+      {
+        "number": 1460,
+        "classification": "unique/unreviewed",
+        "base": "verify/xrp-ledger-archive-20261101T070712Z",
+        "head": "verify/xrp-ledger-coinbase-circle-sbi-kamilah-binance-20261101T101003Z",
+        "commits": 14,
+        "changed_files": 8
+      },
+      {
+        "number": 1440,
+        "classification": "unique/unreviewed",
+        "base": "research/binance-xrp-hack-graph-20261101T0108Z",
+        "head": "verify/xrp-ledger-archive-20261101T031615Z",
+        "commits": 42,
+        "changed_files": 64
+      },
+      {
+        "number": 1436,
+        "classification": "unique/unreviewed",
+        "base": "research/xrp-ledger-shard-migration-20261029T2210Z",
+        "head": "research/binance-xrp-hack-graph-20261101T0108Z",
+        "commits": 18,
+        "changed_files": 24
+      },
+      {
+        "number": 1437,
+        "classification": "unique/unreviewed",
+        "base": "research/xrp-ledger-shard-migration-20261029T2210Z",
+        "head": "repair/xrp-ledger-validator-20261101T0115Z",
+        "commits": 5,
+        "changed_files": 5
+      },
+      {
+        "number": 1353,
+        "classification": "unique/unreviewed",
+        "base": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+        "head": "research/xrp-ledger-shard-migration-20261029T2210Z",
+        "commits": 1119,
+        "changed_files": 1084
+      },
+      {
+        "number": 1265,
+        "classification": "unique/unreviewed",
+        "base": "research/xrp-ledger-fresh-main-20261028-1217z",
+        "head": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+        "commits": 270,
+        "changed_files": 144
+      }
+    ]
+  },
+  "ci": {
+    "exact_head": "b64c16819c854709ad8ba18c350da934cd65447f",
+    "full_suite": {
+      "run_id": 43795396503,
+      "conclusion": "success",
+      "passed": 3829,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "pytest_seconds": 154.29,
+      "inclusive_coverage_percent": 64.09,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission": "passed"
+    },
+    "dependency_audit": {
+      "push_run_id": 43795396308,
+      "pr_run_id": 43795401030,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed": {
+      "push_run_id": 43795396637,
+      "pr_run_id": 43795400948,
+      "conclusion": "success"
+    },
+    "pr_ci": {
+      "run_id": 43795400945,
+      "conclusion": "success",
+      "pages": "passed",
+      "test_jobs": "skipped by integration-branch condition"
+    },
+    "cache": "GitHub Actions cache budget exhausted; cache is read-only. Tests and packaging succeeded.",
+    "packaging_warnings": [
+      "deprecated project.license metadata",
+      "setuptools warns data.research is absent from package configuration; required primary mission resource was verified in wheel and installed V3/XRP mission loads"
+    ]
+  },
+  "market": {
+    "xrp_low": {
+      "value_usd": 0.89,
+      "reported_by": "CoinDesk",
+      "publication_time": "2026-11-14T21:50:00-05:00",
+      "updated_time": "2026-11-14T22:44:00-05:00",
+      "classification": "secondary reported intraday low; no raw exchange candle captured in this run"
+    },
+    "coinglass_capture": {
+      "retrieved_on": "2026-11-16",
+      "event_timestamp": "not exposed in rendered page",
+      "price_usd": 0.9715,
+      "change_24h_percent": 3.16,
+      "low_24h_usd": 0.9427,
+      "high_24h_usd": 0.9789,
+      "spot_volume_24h_usd": 657150000,
+      "spot_volume_change_percent": -46.1,
+      "futures_volume_24h_usd": 2610000000,
+      "futures_volume_change_percent": -45.8,
+      "open_interest_usd": 1980000000,
+      "open_interest_change_percent": 0.32,
+      "funding_rate_8h_percent": -0.0074,
+      "funding_annualized_percent": -8.16,
+      "futures_to_spot_volume_ratio": 4,
+      "liquidations_24h_usd": 4500000,
+      "long_share_percent": 45,
+      "etf_daily_flow_2026_11_13_usd": -1100000,
+      "fear_greed_index": 11
+    },
+    "provider_disagreement": {
+      "coinglass_open_interest_usd": 1980000000,
+      "liqwall_prior_observation_usd": 999000000,
+      "ratio_approx": 1.98,
+      "note": "Different timestamps and venue universes; never average or treat as a common synchronized aggregate."
+    },
+    "orderbook": "No synchronized full-depth L2 admitted; current rendered page does not supply exchange event-time receipts."
+  },
+  "liquidity_and_etfs": {
+    "coindesk_weekly_us_xrp_etf_flow_usd": -19130000,
+    "coindesk_source_method": "SoSoValue as cited by CoinDesk; week ended 2026-11-13; secondary report",
+    "coinglass_daily_etf_flow_usd": -1100000,
+    "coinglass_daily_flow_date": "2026-11-13",
+    "note": "Daily and weekly windows differ; other tracker universes differ. Do not average."
+  },
+  "stablecoins": {
+    "defillama_as_of": "2026-11-16",
+    "total_market_cap_usd": 284954000000,
+    "total_change_30d_percent": -5.15,
+    "usdt": {
+      "market_cap_usd": 175368000000,
+      "change_30d_percent": -4.42
+    },
+    "usdc": {
+      "market_cap_usd": 69318000000,
+      "change_30d_percent": -4.7
+    },
+    "usdt_plus_usdc_market_cap_usd": 244686000000,
+    "rlusd": {
+      "market_cap_usd": 2799000000,
+      "change_30d_percent": 15.01
+    },
+    "usds": {
+      "market_cap_usd": 5355000000,
+      "change_30d_percent": -22.02
+    },
+    "disagreement": "CoinDesk quotes Glassnode's $17B one-month stablecoin-supply decline and reports USDT+USDC near $244B. DeFiLlama's Nov16 30-day fields imply a smaller USDT+USDC contraction (~$11.5B) and total stablecoin contraction (~$15.5B). These are different providers/windows/universes. Supply contraction is not equivalent to net fiat outflow or an exact loss of crypto buying power.",
+    "interpretation": "Broad stablecoin contraction coincides with RLUSD growth, showing compositional change rather than a uniform decline across every issuer."
+  },
+  "institutional": {
+    "evernorth": "Run182 SEC reconciliation remains the latest primary-source capital audit: 84,365,876 XRP cash-purchased for $214.05M; 388,910,554 XRP contributed in kind; arithmetic post-close treasury 473,276,430 XRP assuming no intervening movement. No actual sale disclosed. Pathfinder's $9.7M Ripple-related facility repayment was not confirmed in the reviewed filing. Coinbase was principal valuation market; BitGo Trust initial custodian.",
+    "cbxrp": "Run182 Coinbase proof-of-reserves snapshot: 153,008,338.56 XRP reserves against 153,006,092.03 cbXRP supply (~100.001468% displayed coverage). Morpho Base cbXRP/USDC market: $48.08M loans, 90.59% utilization, 8.05% borrow rate, 62.5% LLTV, 12.67% liquidation penalty. CryptoSlate reported 883 liquidation logs, 4.016M USDC repaid and 4.182M cbXRP seized; no native XRP redemption or sale traced. Morpho UI oracle 0.971 vs displayed Chainlink feed 0.960902 remains unresolved.",
+    "xrpl_lending": "Last verified Run179 validator snapshot: SingleAssetVault 23/35, LendingProtocol 22/35, LendingProtocolV1_1 22/35, ConfidentialTransfer 21/35. More than 80% for 14 consecutive days requires 29/35; no activation countdown at that snapshot. XLS-66 lending is uncollateralized at the borrower level; do not model proposed vault capacity as XRP collateral demand."
+  },
+  "prediction_engine": {
+    "source_definitions": 51,
+    "scheduled_source_definitions": 49,
+    "curated_event_registry_version": "run182",
+    "events": 102,
+    "independence_groups": 79,
+    "missing_raw_source_sha256": 102,
+    "missing_exact_publisher_timestamps": 57,
+    "model_eligible_events": 0,
+    "implemented": [
+      "read-only public source adapters",
+      "raw-source receipt/hash prototype",
+      "cross-run receipt chain",
+      "SQLite point-in-time feature store",
+      "event timelines and counter-hypotheses",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "purged/embargoed walk-forward evaluation",
+      "probability calibration",
+      "PSI drift monitoring",
+      "fail-closed forecast ledger",
+      "Ed25519 evaluator-attestation verification"
+    ],
+    "blockers": [
+      "No verified scheduled run on main",
+      "GitHub artifacts retain 7/90 days and are not independent WORM",
+      "102 curated events lack publisher-byte receipts",
+      "No mature synchronized multi-venue historical dataset",
+      "No candidate has demonstrated out-of-sample superiority to all four baselines",
+      "No independent shadow cohort",
+      "No independently configured trusted Ed25519 evaluator"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub connector verified; permissions admin/maintain/push/pull/triage, overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "historical one-off activity; no formal PR review or approval",
+    "Codex": "unverified",
+    "HuggingFace": "unverified; prior BUILD_ERROR",
+    "Kaggle": "untested",
+    "Databricks": "unverified; prior HTTP 403",
+    "coordination": "No authenticated nine-platform dispatch, structured evidence exchange or independent red-team quorum."
+  },
+  "governance": {
+    "branch_protection": "Read returned HTTP 403 (resource not accessible by integration)",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "merge_decision": "NO_MERGE",
+    "reason": "PR #1663 is draft, has zero formal reviews/approvals/review threads, and 1,294 changed files have not received complete semantic review. Exact-head CI is green, but governance and semantic review requirements remain unmet."
+  },
+  "main_safety": {
+    "main_ci_run": {
+      "id": 43767370808,
+      "conclusion": "success",
+      "passed": 848,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 8
+    },
+    "pages_run": {
+      "id": 43767370504,
+      "conclusion": "failure",
+      "error": "Liquid syntax error in GLOBAL_STATE_MANIFEST.md around line 6450"
+    },
+    "barrot_sync_run": {
+      "id": 43767370810,
+      "conclusion": "success",
+      "classification": "false green: missing rich dependency, sync skipped, git push failure suppressed with || true"
+    },
+    "unsafe_workflows": [
+      "Coinbase paper trader without typed approval/exact SHA/product identity validation and with main commit behavior",
+      "Ask Barrot and other legacy repository writers with write permissions"
+    ],
+    "integration_protection": "typed approval, exact main SHA, product identity preflight, read-only repository permissions and artifact-only output; legacy writers quarantined"
+  },
+  "sources": [
+    {
+      "name": "CoinDesk XRP market report",
+      "url": "https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto",
+      "published_at": "2026-11-14T21:50:00-05:00",
+      "updated_at": "2026-11-14T22:44:00-05:00",
+      "independence_group": "coindesk-reporting"
+    },
+    {
+      "name": "DeFiLlama stablecoin dashboard",
+      "url": "https://defillama.com/stablecoins",
+      "as_of": "2026-11-16",
+      "independence_group": "defillama-aggregator"
+    },
+    {
+      "name": "CoinGlass XRP futures dashboard",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "retrieved_on": "2026-11-16",
+      "event_timestamp": "not exposed in rendered page",
+      "independence_group": "coinglass-aggregator"
+    },
+    {
+      "name": "Evernorth SEC filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "independence_group": "sec-edgar-evernorth"
+    },
+    {
+      "name": "Coinbase cbXRP proof of reserves",
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "independence_group": "coinbase-primary"
+    },
+    {
+      "name": "Morpho Base cbXRP/USDC market",
+      "url": "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "independence_group": "morpho-primary"
+    },
+    {
+      "name": "CryptoSlate Morpho liquidation analysis",
+      "url": "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/",
+      "independence_group": "cryptoslate-reporting"
+    }
+  ],
+  "limitations": [
+    "Web-rendered observations are not byte-exact publisher payloads and received no raw-source SHA-256 receipt.",
+    "CoinGlass rendered page did not expose event timestamps for its current aggregate values.",
+    "CoinDesk's stablecoin figure is a Glassnode quote; DeFiLlama uses a different provider and 30-day window.",
+    "No current directional forecast or investment recommendation was issued."
+  ]
+}
