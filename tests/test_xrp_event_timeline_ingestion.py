@@ -140,6 +140,8 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "flare-fxrp-one-year-2026-09-24",
         "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
         "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
+        "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
+        "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
     }
     by_id = {event["event_id"]: event for event in registry["events"]}
     assert expected <= set(by_id)
@@ -206,7 +208,15 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert "no OpenAI contract" in sbic["claim"]
     assert sbic["source_status"] == "verified"
     assert sbic["raw_source_sha256"] is None
-    assert registry["source_receipt_status"].startswith("87 of 87")
+    okx = by_id["xrp-okx-spot-basis-gate-2026-11-16T0058Z"]
+    assert "63.905 seconds" in okx["claim"]
+    assert "USD normalization is rejected" in okx["claim"]
+    assert okx["raw_source_sha256"] is None
+    bybit = by_id["xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z"]
+    assert "3,607.157 seconds" in bybit["claim"]
+    assert "300-second freshness gate" in bybit["claim"]
+    assert bybit["raw_source_sha256"] is None
+    assert registry["source_receipt_status"].startswith("89 of 89")
     timeline = _capture_event_timeline_registry(path, registry["captured_at_utc"])
     assert timeline["registry_status"] == "LOADED"
     assert timeline["event_count"] == len(registry["events"])
