@@ -1,8 +1,8 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run180-20261116",
-  "captured_at_utc": "2026-11-16T01:18:22Z",
+  "registry_version": "run181",
+  "captured_at_utc": "2026-11-16T02:03:17Z",
   "source_receipt_status": "90 of 90 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
@@ -3725,7 +3725,7 @@
       "event_id": "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
       "event_type": "market",
       "event_name": "Bybit XRPUSDT ticker is stale relative to Run180 capture",
-      "hypothesis_id": "xrp-cross-venue-spot-price-divergence-2026-11-16",
+      "hypothesis_id": "xrp-bybit-stale-quote-freshness-2026-11-16",
       "domain": "spot_structure",
       "hypothesis": "The observed Bybit XRPUSDT quote may indicate a cross-venue price difference.",
       "counter_hypothesis": "The provider timestamp is 3,607.157 seconds before capture, exceeding the 300-second freshness gate; the quote cannot support a synchronized spread or arbitrage inference.",
@@ -3850,5 +3850,16 @@
       "evernorth-coinbase-principal-market-xrp-valuation-2026-09-30"
     ],
     "note": "Added the November 13 SEC Evernorth filing reconciliation (cash warrant exercises, convertible-note proceeds and optional ELOC separated from XRP purchases) and primary SBIC East ChatGPT seminar identity evidence. Both records retain source_date precision without inventing a publisher time; raw_source_sha256 remains null, so no event is model-eligible. Added synchronized-time-aware OKX and Bybit spot observations; OKX USD basis skew exceeds 60 seconds, Bybit quote is older than 300 seconds, and no full-depth L2 payload was obtained. Both remain model-ineligible. Added Evernorth's SEC-disclosed selection of Coinbase as its principal XRP valuation market, explicitly separated from trade execution and BitGo Trust custody. The registry capture time was advanced to the Run180 final reconciliation timestamp; the OKX/Bybit event records retain their earlier 01:01:31Z market-capture time so their quote-age calculations remain consistent."
+  },
+  "run181_update": {
+    "added_event_ids": [],
+    "corrected_event_ids": [
+      "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z"
+    ],
+    "correction": "Assigned the stale Bybit quote a distinct hypothesis_id because its hypothesis/counter-hypothesis definition differs from the OKX basis-skew event. No market conclusion or model eligibility changed.",
+    "previous_hypothesis_id": "xrp-cross-venue-spot-price-divergence-2026-11-16",
+    "source_receipt_status": "90 of 90 curated events still lack byte-exact raw publisher SHA-256 receipts; all remain model-ineligible.",
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
   }
 }
