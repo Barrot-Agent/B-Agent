@@ -3167,3 +3167,46 @@ No source PR was closed. No duplicate/superseded classification is asserted with
 Next actions: (1) refresh the PR #1663 description and request independent review only after full semantic review; (2) complete semantic review of all 1,326 changed paths, prioritizing 49 workflows, invoked scripts, 396 test paths, security boundaries and external side effects; (3) resolve CODEOWNERS, branch-protection visibility and least-privilege GitHub access; (4) reconcile the divergent MMI and ledger-index overlaps without overwriting unique artifacts; (5) establish externally anchored raw receipts/WORM storage and verify scheduled ingestion after a safe merge; (6) acquire synchronized per-venue XRP spot, depth, derivatives, ETF and exchange-flow data; (7) keep forecast issuance disabled until leakage-safe walk-forward superiority, calibration, drift and independent shadow evaluation pass.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+## Run193-A — synchronized market microstructure addendum and source-PR overlap reconciliation
+
+**Captured:** 2026-11-16T17:30:00Z
+**Integration head before this addendum:** `918f1f8fb6402bd31df6737951ab5c8562457228`
+
+### Exact-head verification on the preceding handoff commit
+
+- Exact head `918f1f8fb6402bd31df6737951ab5c8562457228` completed [full CI](https://github.com/Barrot-Agent/B-Agent/actions/runs/43917927549): **3,843 passed, 1 skipped, 11 warnings, 19 subtests passed**, 3,844 collected, 107.50 seconds. Inclusive coverage **66.90%**; legacy core coverage **77%**; configured 62% floor passed. The installed wheel loaded Barrot V3, the XRP mission and canonical data assets.
+- Exact-head dependency audit [43917939153](https://github.com/Barrot-Agent/B-Agent/actions/runs/43917939153) passed six manifests with no known vulnerabilities. Fail-closed gate [43917939028](https://github.com/Barrot-Agent/B-Agent/actions/runs/43917939028) passed and kept merge disabled.
+- Non-blocking warnings remain: 11 legacy tests return booleans instead of None; setuptools warns that `barrot_agent.data.missions` is not explicitly listed in package configuration even though the installed wheel verification found the mission resource; GitHub Actions cache budget is exhausted/read-only, so no new cache was saved.
+
+### Spot order-book depth — 17:00 UTC, November 16
+
+- Fuelmaps reported XRP spot mid **$0.9617** across six venues (Coinbase, OKX, Kraken, Bitstamp, Bitfinex, Gemini): ±0.5% bids **$5.7M** / asks **$5.1M** (52.6% bid share); ±1% **$10.5M / $8.2M** (56.2%); ±2% **$16.4M / $9.2M** (64.1%); ±5% **$19.2M / $11.8M** (61.9%); ±10% **$25.2M / $13.4M** (65.3%). Largest displayed rows included a $1.7M ask at $0.963, $1.7M bids at $0.920 and $0.955, and a $1.5M ask at $0.994.
+- Fuelmaps excludes Binance and Bitget; it averages minute snapshots into hourly columns and explicitly warns that displayed resting orders can be cancelled. This is a six-venue spot-book observation, not a complete market-wide depth measure or a price signal. Source: https://fuelmaps.io/order-book/
+- Basis' Binance XRP perpetual snapshot at 16:05 UTC reported a different mid (**$0.9499**), 1.05 bps spread, approximately **$33.8M bids / $33.5M asks** total, and 50% bid share within ±1%. This is a derivatives book and must not be combined with Fuelmaps spot depth. Source: https://basis.markets/asset/xrp
+- Investing.com displayed a November 16 daily row near **$0.9553**. The $0.9553 daily reference, $0.9617 six-venue spot mid and $0.9499 Binance perpetual mid are different venue/time/instrument observations; do not average them or backfill one as another.
+
+### XRP exchange-wallet balances — XRPL read, 08:00 UTC November 16
+
+- XRP Insights reports **22.24B XRP** in 707 XRP Ledger wallets attributed by XRPSCAN labels to 24 exchanges. This is **32.3%** of its 68.89B circulating-supply denominator. Same-wallet balance change was **−126.3M XRP over 7 days** and **−344.3M over 30 days**. The naive total change was **+177.3M** over 30 days because newly tracked wallets added 521.6M XRP; same-wallet comparison is the correct displayed flow method.
+- Largest attributed balances: Upbit **6.47B** (+22.9M 7d), Coinbase **5.83B** (+36.6M; includes 150.6M cbXRP reserve), Binance **2.61B** (−129.0M; includes 327.4M Binance-Peg reserve and Binance US grouping), Bithumb **1.79B** (−25.0M), Uphold **1.70B** (+2.7M), Kraken **961.3M** (−21.7M), SBI VC Trade **56.2M** (−567K).
+- Regional attributed-wallet concentration: South Korea **8.57B (38.6%)**, United States **8.49B (38.2%)**, Japan **1.38B (6.2%)**. These are wallet-attribution totals, not customer balances or exchange sellable inventory.
+- The provider reads balances from the XRP Ledger via rippled `account_info` and uses XRPSCAN public labels. Its own methodology warns that exchange omnibus wallets include cold custody and institutional balances; 48.4% is cold-labeled, 12% hot-labeled and 39.8% unclassified. It identifies 481.6M XRP of wrapped-token/insurance reserves, known exchange coverage gaps (including OKX, Korbit and Coins.ph) and roughly 323M XRP in untracked exchange wallets from a September 29 audit. A same-wallet decline cannot distinguish customer withdrawal from an exchange's transfer to an unlabeled wallet. It is not tradable float or proof of spot buying.
+- Source and methodology: https://xrp-insights.com/exchange-balances
+
+### Collateral pathway distinction
+
+- Coinbase's Global Exchange documentation lists XRP as eligible cross-collateral for perpetual futures, subject to asset-specific collateral weights/haircuts and position limits. This establishes eligibility, not posted XRP collateral, utilization, borrowing demand or market impact. Source: https://help.coinbase.com/en/coinbase/derivatives/cross-collateral
+- Coinbase's separate Morpho retail USDC-loan route uses wrapped XRP collateral and has different product/jurisdiction conditions; it must not be conflated with native XRP collateral on Global Exchange. No outstanding utilization total was established in this capture. Source: https://www.coindesk.com/business/2026/02/11/coinbase-expands-morpho-backed-usdc-loans-to-xrp-holders
+
+### PR overlap reconciliation — corrected classifications
+
+- **#1541:** five paths overlap #1663. `barrot_agent/mmi_adapter.py` and `tests/test_mmi_integration.py` are blob-identical. `barrot_agent/mmi_v1.py` and `tests/test_mmi_v1.py` differ because #1663 contains the same canonical claim fingerprint plus additional validation and tests. The 57-line canonical-claim evidence artifact parses to the same semantic JSON in both branches. The feature and evidence are therefore preserved in #1663. Reclassify #1541 as **superseded pending #1663 merge/main verification**; do not close it until the successor is merged and verified on main.
+- **#1265:** four paths overlap #1663; one is blob-identical and three differ. The unique ledger-index compaction workstream remains outside #1663 and is **unique/unreviewed**, not superseded. Keep it open; do not merge its divergent paths or close it.
+- No source PR was closed. The open inventory remains nine.
+
+### Prediction gate unchanged
+
+- This addendum's web-rendered order-book and exchange-wallet observations were not captured as raw bytes or appended to the model event registry. They remain descriptive research only.
+- The registry remains 125 events with zero verified raw-byte SHA-256 receipts, 48 exact publisher timestamps and 77 missing timestamps. Model-eligible count remains zero. Forecast status **NOT_ISSUED**; accuracy **NOT_EVALUATED**.
+- No directional forecast, paper trade or real-money action was issued or performed.
