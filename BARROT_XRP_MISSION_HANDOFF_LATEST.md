@@ -1,3 +1,30 @@
+# Run186 public forecast-contract follow-up
+
+**Observed:** 2026-11-16T06:23:06Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Pre-test follow-up head:** `b3226417bf8e2850f3f692e90bc51f7bf2db6dce`  
+**Verified code head before this test-only change:** `b9a9ff76e25f5408f97ceb8d2378492c5290718d`
+
+The exact full repository suite passed on b9a9ff7: 3,830 passed, zero failed, one skipped, 19 subtests; 64.09% inclusive coverage and 77% legacy-core coverage; wheel build and installed V3/XRP mission passed; Pages, six-manifest dependency audit and fail-closed checks passed.
+
+The subsequent b322641 commit updated only the canonical handoff, public `latest_signal.json`, public `signal_accuracy.json` and a structured research audit. CI's path filter ran the fail-closed workflow but did not schedule the full suite for that documentation/JSON-only commit.
+
+This follow-up adds explicit regression assertions that the public XRP signal has null target, horizon and data cutoff, and that public accuracy has null checked/correct counts. This ensures the updated public artifacts cannot accidentally imply a directional forecast or a measured accuracy result. The test is fail-closed; it does not weaken or fabricate evaluation.
+
+The next exact-head full suite is pending for this test-bearing commit. The previous b9a9ff7 pass remains valid for its exact code head, not automatically for this new head.
+
+The public artifacts now state:
+- `web/latest_signal.json`: `NOT_ISSUED`, target/horizon/data cutoff/probabilities null.
+- `web/signal_accuracy.json`: `NOT_EVALUATED`, accuracy and checked/correct counts null.
+- Current event registry: 106 events, 106 missing raw-source SHA-256 receipts, 61 missing exact publisher timestamps, zero model-eligible events.
+
+No new event-registry entries were added from rendered web excerpts; byte-exact publisher payloads were not captured. The current XRP observations remain descriptive-only and are preserved in the Run186 audit. The table-freshness private-row workflow remains quarantined on integration; main is unchanged.
+
+No merge, deployment, secret rotation, Databricks access/write, Kaggle submission, paper trade, funds transfer, external-model dispatch, force-push, history rewrite or source-PR closure occurred.
+
+
+---
+
 # Run186 final — exact code-head full suite passed; XRP evidence and privacy gate reconciled
 
 **Status recorded:** 2026-11-16T06:20:20Z  

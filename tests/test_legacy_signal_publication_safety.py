@@ -56,11 +56,16 @@ def test_public_json_artifacts_do_not_expose_a_directional_forecast():
     assert latest["status"] == "NOT_ISSUED"
     assert latest["forecast_issued"] is False
     assert latest["probabilities"] is None
+    assert latest["target"] is None
+    assert latest["horizon_seconds"] is None
+    assert latest["data_cutoff_utc"] is None
     assert "score" not in latest
     assert latest["legacy_sentiment_observation"]["forecast_eligible"] is False
 
     assert accuracy["status"] == "NOT_EVALUATED"
     assert accuracy["accuracy_pct"] is None
+    assert accuracy["checked_count"] is None
+    assert accuracy["correct_count"] is None
     assert accuracy["forecast_eligible"] is False
     assert "legacy_observation" not in accuracy
 
