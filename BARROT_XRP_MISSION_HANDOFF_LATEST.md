@@ -2532,3 +2532,27 @@ All eight source PRs remain open and preserved. No source PR was closed. Main br
 - Latest signal remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model transfer, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+## Run188 post-capture verification and exact-phrase correction
+
+Verified at 2026-11-16T07:27:05Z. The Run188 evidence commit `7641621ea702a87586de1a9849eb40623df541f0` passed its own exact-head full repository suite: [43823342018](https://github.com/Barrot-Agent/B-Agent/actions/runs/43823342018), job 133151267630, 3,830 passed, zero failed, one skipped, 19 subtests, 178.25 seconds, 64.09% inclusive coverage and 77% legacy-core coverage. Wheel build, installed V3/XRP mission and Pages validation passed. Six-manifest dependency audit [43823342108](https://github.com/Barrot-Agent/B-Agent/actions/runs/43823342108) passed with zero known vulnerabilities; PR dependency audit [43823348494](https://github.com/Barrot-Agent/B-Agent/actions/runs/43823348494), push fail-closed [43823342036](https://github.com/Barrot-Agent/B-Agent/actions/runs/43823342036), PR fail-closed [43823348500](https://github.com/Barrot-Agent/B-Agent/actions/runs/43823348500) and PR CI [43823348453](https://github.com/Barrot-Agent/B-Agent/actions/runs/43823348453) passed. PR-event test jobs remain skipped by branch condition; the push full suite is authoritative.
+
+The subsequent finalization commit is documentation/JSON only and triggers its own exact-head suite. No Python, workflow or dependency code changes are included.
+
+### Exact-phrase corrections
+
+- ASK Coin remains ambiguous between (1) Permission Coin (ASK), the official Permission ecosystem token on Base/Polygon, and (2) an Ask Coin exchange listing associated with askcoin.net that CoinMarketCap treats as untracked/inactive. No unique intended entity, XRPL issuer or Ripple relationship is established.
+- Permission announced on September 22, 2026 that its ASK wallet moved to Coinbase Embedded Wallet infrastructure. Coinbase holds the key on the user's behalf and the Permission login authorizes transactions. This is a direct Permission-Coinbase wallet infrastructure relationship, not an XRP/Ripple relationship: [Permission announcement](https://www.permission.ai/blog/ask-wallet-update).
+- The exact phrase `SBIC, ChatGPT SBIC` returned no exact indexed match. SBIC also means Social Bias Inference Corpus in AI bias research; this is distinct from Japan's regional SBIC companies and SBI Holdings. Japanese SBIC ChatGPT references found remain educational, not evidence of an OpenAI partnership.
+- Kamilah video inventory correction: one verified public video featuring her is the 2018 TEDxWillowCreek talk [Thinking Your Way Into Health](https://www.youtube.com/watch?v=VSgeDgOCexs). The June 11, 2026 Paul Barron podcast is a verified guest appearance, not a personal-channel upload. Zero personal YouTube channels are verified; 21 candidate seed-video references remain unattributed because candidate channels lack a first-party cross-link and the speaker warns about fake pages.
+
+### Later market-source timestamp correction
+
+- A later CoinGecko page refresh at 07:23:27 UTC displayed $0.9615; the 07:07 snapshot had shown $0.9636. Both pages showed the same $0.9006-$0.9784 24-hour range; neither supplied a precise exchange event timestamp.
+- CryptoKeyhole's page metadata says updated November 15 at 10:30 UTC, while the page also labels an issuer file November 16 and says it was read at 05:30 UTC November 14. Treat this as an internal timestamp inconsistency. Its data remain a partial November 13 reading from three of four funds and a complete November 12 reading; do not promote the issuer-file date label to a verified cutoff.
+- Alpha Finance's $20.2M seven-session flow is derived by summing the seven daily rows November 8-14; the dashboard separately displays a $1.1M November 14 outflow, $1.7M 30-session outflow and $1.71B cumulative inflow. Keep the derivation explicit.
+
+### Branch-protection clarification
+
+The branch object reports main protection enabled with enforcement level `non_admins` and no required status contexts. The detailed protection endpoint still returns HTTP 403. Fallback ruleset 10863829 is disabled. The GitHub connector has admin, maintain, push, pull and triage permissions; it could potentially bypass non-admin-only protections. No bypass was used. The merge decision remains **NO MERGE** because PR #1663 is draft, has zero independent reviews/approvals, the semantic review is incomplete, and least-privilege/independent governance is not satisfied.

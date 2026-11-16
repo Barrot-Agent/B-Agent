@@ -89,7 +89,24 @@
         "pull",
         "triage"
       ],
-      "least_privilege": false
+      "least_privilege": false,
+      "branch_protection": {
+        "enabled": true,
+        "enforcement_level": "non_admins",
+        "required_status_contexts": [],
+        "detailed_protection_endpoint": "HTTP 403",
+        "fallback_ruleset_id": 10863829,
+        "fallback_ruleset_enforcement": "disabled",
+        "codeowners": "* @Barrot-Agent",
+        "connector_permissions": [
+          "admin",
+          "maintain",
+          "push",
+          "pull",
+          "triage"
+        ],
+        "note": "The connector is admin and can potentially bypass non-admin-only branch protection; no bypass was used. No required status contexts are configured."
+      }
     }
   },
   "ci": {
@@ -128,7 +145,45 @@
       "test_jobs": "skipped by integration-branch condition",
       "pages_validation": "passed"
     },
-    "cache_warning": "Actions cache budget exhausted/read-only; non-fatal."
+    "cache_warning": "Actions cache budget exhausted/read-only; non-fatal.",
+    "post_capture_verification": {
+      "head_sha": "7641621ea702a87586de1a9849eb40623df541f0",
+      "full_suite": {
+        "run_id": 43823342018,
+        "job_id": 133151267630,
+        "conclusion": "success",
+        "passed": 3830,
+        "failed": 0,
+        "skipped": 1,
+        "subtests": 19,
+        "duration_seconds": 178.25,
+        "inclusive_coverage_percent": 64.09,
+        "legacy_core_coverage_percent": 77,
+        "wheel_build": "passed",
+        "installed_v3_xrp_mission": "passed",
+        "pages_validation": "passed"
+      },
+      "dependency_audit": {
+        "push_run_id": 43823342108,
+        "pr_run_id": 43823348494,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed": {
+        "push_run_id": 43823342036,
+        "pr_run_id": 43823348500,
+        "conclusion": "success",
+        "merge_enabled": false
+      },
+      "pr_ci": {
+        "run_id": 43823348453,
+        "conclusion": "success",
+        "test_jobs": "skipped by integration-branch condition",
+        "pages_validation": "passed"
+      },
+      "cache_warning": "Actions cache budget exhausted/read-only; non-fatal."
+    }
   },
   "main_workflows": {
     "ci_run": {
@@ -199,6 +254,35 @@
         "funds_reported": 3,
         "funds_expected": 4,
         "nov12_complete_flow_xrp": 4337131
+      },
+      "later_refresh": {
+        "captured_at_utc": "2026-11-16T07:23:27Z",
+        "coingecko": {
+          "price_usd": 0.9615,
+          "range_24h_usd": [
+            0.9006,
+            0.9784
+          ],
+          "exact_provider_event_time": null
+        },
+        "cryptokeyhole": {
+          "page_updated_at_utc": "2026-11-15T10:30:00Z",
+          "nov13_partial_flow_xrp": -9967,
+          "funds_reported": 3,
+          "funds_expected": 4,
+          "nov12_complete_flow_xrp": 4337131,
+          "last_five_complete_sessions_xrp": -5665115,
+          "timestamp_note": "Page also labels a latest issuer file dated 2026-11-16 but says it was read at 05:30 UTC on 2026-11-14; retain as a source timestamp inconsistency, not a verified data cutoff."
+        },
+        "alpha_finance": {
+          "through_date": "2026-11-14",
+          "funds": 5,
+          "seven_session_flow_usd": -20200000,
+          "seven_session_method": "sum of the seven daily rows Nov 8-14",
+          "nov14_flow_usd": -1100000,
+          "thirty_session_flow_usd": -1700000,
+          "cumulative_inflow_usd": 1710000000
+        }
       }
     },
     "evernorth_sec": {
@@ -241,6 +325,53 @@
       "money_market_outflows_usd": 37480000000,
       "qualification": "Broad weekly fund flows, not XRP-specific capital flows.",
       "url": "https://www.reuters.com/business/finance/global-markets-flows-graphic-2026-11-13/"
+    },
+    "exact_phrase_research": {
+      "ask_coin": {
+        "resolution": "No unique entity identified by the exact phrase.",
+        "candidates": [
+          {
+            "entity": "Permission Coin (ASK)",
+            "networks": [
+              "Base",
+              "Polygon"
+            ],
+            "status": "official token candidate",
+            "xrp_relation": "none verified"
+          },
+          {
+            "entity": "Ask Coin exchange listing",
+            "website": "https://askcoin.net",
+            "status": "CoinMarketCap untracked/inactive listing; legal operator and live reserves not verified",
+            "xrp_relation": "none verified"
+          }
+        ],
+        "coinbase_relationship": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase Embedded Wallet infrastructure; Coinbase holds the private key on behalf of the user and Permission login authorizes transactions. This is a direct wallet-infrastructure integration, not an XRP or Ripple relationship.",
+        "no_ripple_or_xrpl_relationship_verified": true
+      },
+      "sbic_chatgpt": {
+        "exact_phrase": "SBIC, ChatGPT SBIC",
+        "exact_indexed_match": "none returned",
+        "disambiguations": [
+          "Japan's SBIC East, SBIC Central and SBIC West are separate regional investment/consultation companies.",
+          "SBI Holdings is a separate corporate group and must not be conflated with the regional SBIC companies.",
+          "In AI bias research, SBIC also means Social Bias Inference Corpus, a dataset used in language-model bias evaluation."
+        ],
+        "official_japanese_sbic_chatgpt_references": "SBIC East investee-company AI/ML training (2025-06-12/13) and an SBIC West ChatGPT seminar flyer (2024-10-23) are educational references, not an OpenAI partnership.",
+        "inference_permitted": false
+      },
+      "actual_capital": {
+        "exact_phrase_hit": "CBC Globe used the phrase 'actual capital' in secondary commentary dated 2026-10-12; it is not a primary capital record.",
+        "eloc_max_illustrative_gross_usd": 80684735.1,
+        "eloc_reference_price_usd": 15.46,
+        "eloc_reference_price_date": "2026-10-22",
+        "eloc_maximum_new_shares": 5218935,
+        "eloc_upfront_commitment_fee_usd": 521893.5,
+        "eloc_cash_received_verified": false,
+        "eloc_shares_sold_verified": false,
+        "eloc_xrp_purchases_funded_verified": false,
+        "rule": "Illustrative maximum capacity and commitment fee are not proceeds. Trace actual shares sold and cash received before counting capital; trace actual use before counting XRP purchases."
+      }
     }
   },
   "prediction": {
@@ -317,6 +448,45 @@
     "https://www.sbic.co.jp/training/20250612co/",
     "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
     "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
-    "https://www.reuters.com/business/finance/global-markets-flows-graphic-2026-11-13/"
-  ]
+    "https://www.reuters.com/business/finance/global-markets-flows-graphic-2026-11-13/",
+    "https://www.permission.ai/blog/ask-wallet-update",
+    "https://www.permission.ai/",
+    "https://docs.permission.ai/ask-token",
+    "https://www.youtube.com/watch?v=VSgeDgOCexs",
+    "https://www.youtube.com/watch?v=Sulo54IlQ60",
+    "https://huggingface.co/datasets/allenai/social_bias_frames",
+    "https://www.arxiv.org/abs/1911.03891",
+    "https://www.coinmarketcap.com/vi/exchanges/ask-coin/"
+  ],
+  "people_and_videos": {
+    "identity": "The June 11, 2026 iHeart episode identifies guest Dr. Kamilah Stevenson; the guest says her YouTube name is Doctor Camilla Stevenson at approximately 40:07 and warns of fake pages.",
+    "verified_public_video_count": 1,
+    "verified_public_videos": [
+      {
+        "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+        "youtube_url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+        "published_at": "2018-05-18",
+        "publisher": "TEDx Talks",
+        "identity_basis": "TEDx video title and description plus first-party Kamilah Stevenson website reference",
+        "attribution": "verified video featuring her; not an upload from a verified personal channel"
+      }
+    ],
+    "verified_guest_appearances": [
+      {
+        "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+        "publisher": "The XRP Podcast with Paul Barron",
+        "date": "2026-06-11",
+        "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+        "attribution": "verified guest appearance; not a personal-channel upload"
+      }
+    ],
+    "verified_personal_channels": 0,
+    "candidate_channel_handles": [
+      "@drkamilahstevenson",
+      "@KamilahStevensonXrpStocks"
+    ],
+    "candidate_seed_video_references": 21,
+    "candidate_videos_attributed": 0,
+    "identity_caveat": "Neither candidate channel has a sufficiently strong first-party cross-link to the exact speaker identity; do not attribute candidate uploads."
+  }
 }
