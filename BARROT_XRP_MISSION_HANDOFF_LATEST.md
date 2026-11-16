@@ -3342,3 +3342,14 @@ Main is marked protected by the branch API, but detailed protection access retur
 8. Keep directional forecasts disabled until mature point-in-time data, leakage-safe walk-forward superiority, baseline comparison, calibration, drift, independent evaluator attestation and shadow evaluation pass.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model dispatch, force-push, history rewrite or destructive worktree operation occurred.
+
+
+---
+
+## Run194 correction — canonical nine-platform map preserved
+
+The earlier Run194 note saying that `nine_platform_capability_authentication_dataflow_map_current.json` was empty was incorrect. The Contents API response omitted the decoded content for this large file, but its existing blob was intact in Git history. The original 2.7 MB historical map (blob `1a4310a29b1b16640f8841410708ec1403c16141`, captured November 15) is restored byte-for-byte at the original path in this fast-forward commit.
+
+The compact Run194 capability/authentication/permission/data-flow snapshot is stored separately at `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run194.json`. The historical map was not discarded, rewritten or replaced. The earlier Run194 sentence claiming the old path had been populated with the new map should be read as superseded by this correction.
+
+The branch update is a normal fast-forward from `aa9713f8d8ea6b4661423fdef0e09e2208cd288a`; no force-push or history rewrite was used.
