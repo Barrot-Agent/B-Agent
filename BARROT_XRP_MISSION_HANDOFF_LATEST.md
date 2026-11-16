@@ -1520,3 +1520,55 @@ All eight source PRs remain open/draft. No source PR was closed. No merge occurr
 6. Continue synchronized historical XRP spot, L2, derivatives, exchange-flow and collateral ingestion; do not issue a directional forecast until out-of-sample and shadow gates pass.
 
 No merge, deployment, secret rotation, Space restart, external-model transfer, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite, destructive worktree operation or source-PR closure occurred.
+
+
+---
+
+## Run184 follow-up — full-suite regression failure, correction and current market snapshot
+
+**Captured:** 2026-11-16T04:14:12Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head at follow-up capture:** `909262e12b0306be322e0d4048546c99aee667b2`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft, not merged.
+
+### Exact-head test failure and correction
+
+The full repository suite on `909262e12b0306be322e0d4048546c99aee667b2` failed during collection after **3,826 items were collected and one collection error occurred**. The failure was an unmatched closing brace at line 49 of `tests/test_riemann_harvest.py`, introduced by the Run184 regression-test edit. The core test job passed, Pages validation passed, push and PR dependency audits passed, and both fail-closed gates passed. The full-suite job correctly failed closed; no test result was inferred from the core subset.
+
+[Failed full-suite run 43802643373](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802643373) · [Push dependency audit 43802643650](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802643650) · [PR dependency audit 43802648568](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802648568) · [PR CI 43802648596](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802648596) · [Push fail-closed 43802643380](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802643380) · [PR fail-closed 43802648543](https://github.com/Barrot-Agent/B-Agent/actions/runs/43802648543).
+
+The corrective edit removes only the unmatched brace. No assertions or production behavior are weakened or removed. A new exact-head CI run is required; until it passes, the integration remains unverified and unmergeable.
+
+
+
+### Run184 market snapshot addendum (descriptive-only)
+
+Fresh rendered pages observed during this run show substantial market-provider and contract-universe disagreement:
+
+| Source | Observation | Timestamp limitation |
+|---|---|---|
+| CoinGecko | XRP $0.9595; 24h range $0.9433–$0.9784 | Page date November 16; no exact event time |
+| CoinMarketCap | XRP $0.9628; 24h range $0.9444–$0.9771; market cap $61.15B; 24h volume $2.12B | No exact event time |
+| CoinGlass | XRP $0.9477; 24h low/high $0.8922/$0.9789; spot volume $1.18B; futures volume $4.31B; OI $1.97B (-5.74%); funding -0.0068%/8h; 24h liquidations $33.42M, 86% long; futures/spot volume 3.7x | Rendered live page lacks one unified event timestamp; FAQ separately cites OI at 2026-11-15 17:37 UTC |
+| Liqwall | OI $997M, -2.5%/24h, 30-day range $995M–$1.49B | Explicitly as of 2026-11-16 03:02 UTC |
+
+CoinGlass and Liqwall open-interest values differ by roughly 2x. CoinGlass lists more than 30 exchanges and includes CME; the providers' contract/venue universes and methodologies are not reconciled. Do not average them. CoinGecko, CoinMarketCap and CoinGlass spot quotes are asynchronous; no executable cross-venue spread is established.
+
+ETF context: Coindaro's November 14 report using SoSoValue says five US spot XRP ETFs had 11 sessions without net inflow since October 29, November outflows of $19.66M through November 13, net assets about $1.15B and cumulative inflows about $1.79B. Its CoinGlass cross-check uses the same underlying five daily prints and is not independent confirmation. [Coindaro report](https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/).
+
+Exchange-balance context: XRP Insights' November 15 08:00 UTC ledger snapshot shows 22.25B XRP across 707 attributed wallets at 24 exchanges, including cold storage; same-wallet change -97.9M over seven days. Coinbase includes 150.1M cbXRP reserves and Binance includes 327.4M Binance-Peg XRP reserves. This is not beneficial ownership or tradable float. [Exchange balance methodology/data](https://xrp-insights.com/exchange-balances).
+
+Sources: [CoinGecko](https://www.coingecko.com/en/coins/xrp/historical_data), [CoinMarketCap](https://coinmarketcap.com/currencies/xrp/), [CoinGlass](https://www.coinglass.com/currencies/XRP/futures), [Liqwall](https://liqwall.com/open-interest/xrp).
+
+No market observation was admitted as a point-in-time model feature: exact provider timestamps and raw publisher bytes are missing, and full-depth L2 was unavailable.
+
+### Kamilah Stevenson channel-attribution boundary
+
+The June 11 iHeart interview transcript identifies Dr. Kamilah Stevenson; at 40:07 she says her YouTube name is “Doctor Camilla Stevenson” and warns that fake pages exist. She also identifies her X/Instagram names. A YouTube result for channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`, handle `@KamilahStevensonXrpStocks`, lists a May 12 video `pFru4idBTMA` by “Kamilah Stevenson” (28,264 views, 2,000 likes in the indexed result). The channel handle has not been cross-linked to the exact first-party YouTube identity she spoke; therefore the video remains a candidate, not a confirmed attribution. Do not expand the confirmed inventory until that cross-link is established. [Interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/) · [Candidate video](https://www.youtube.com/watch?v=pFru4idBTMA).
+
+Exact-phrase follow-up: no new canonical XRPL ASK issuer or Ripple relationship was established for “ASK Coin”; Permission ASK remains a plausible but unconfirmed referent. “Actual capital” remains split into cash proceeds, cash-funded XRP purchases, in-kind XRP contributions, debt and undrawn equity capacity. The Cantor ELOC's headline value is financing capacity, not proceeds absent a disclosed draw. SBIC East's official ChatGPT training course remains educational, not an OpenAI commercial partnership.
+
+
+### Current state
+
+The preceding verified full-suite head remains `18a51be` with 3,829 passed, zero failed, one skipped and 19 subtests. It does not verify `909262e` or the corrective successor. The new correction triggers a fresh full suite and security gates. PR #1663 remains draft with zero approvals/reviews; no merge or source-PR closure occurred.

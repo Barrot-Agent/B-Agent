@@ -1,10 +1,10 @@
 {
   "schema_version": "1.3.0",
-  "snapshot_id": "run184-20261116T040843Z",
-  "captured_at_utc": "2026-11-16T04:08:43Z",
+  "snapshot_id": "run184-followup-20261116T041412Z",
+  "captured_at_utc": "2026-11-16T04:14:12Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
-  "integration_head_at_capture": "8db2aaef5d96c433ecf677da05843981bad108b1",
+  "integration_head_at_capture": "909262e12b0306be322e0d4048546c99aee667b2",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -101,27 +101,27 @@
     ],
     "least_privilege_satisfied": false,
     "merge_decision": "NO_MERGE",
-    "pr1663_changed_files_at_capture": 1296,
-    "pr1663_commits_ahead": 60,
+    "pr1663_changed_files_at_capture": 1298,
+    "pr1663_commits_ahead": 61,
     "pr1663_commits_behind": 0,
     "blockers": [
       "PR #1663 remains draft",
       "zero formal reviews, approvals and review threads",
-      "1,296 changed paths require complete semantic review, prioritizing 48 workflow definitions and called scripts",
+      "1,298 changed paths require complete semantic review, prioritizing 48 workflow definitions and called scripts",
       "main branch-protection detail endpoint returns HTTP 403; branch object reports protected=true but no required status contexts are visible",
       "fallback ruleset 10863829 is disabled",
       "CODEOWNERS assigns all paths to @Barrot-Agent",
       "GitHub connector permissions remain admin/maintain/push/pull/triage and are overprivileged",
-      "exact-head full repository suite and dependency audit on 8db2aaef are still running at Run184 capture",
-      "main Riemann Research Harvest scheduled workflow failed because its validation installs pytest without pytest-cov although pytest.ini globally enables --cov options; integration branch now installs pytest-cov and pydantic-settings and adds a regression test, but no manual workflow dispatch was performed"
+      "exact-head full repository suite on 909262e failed during collection because tests/test_riemann_harvest.py contained an unmatched closing brace at line 49; a corrective commit removes the stray brace and triggers a fresh exact-head run",
+      "main Riemann Research Harvest scheduled workflow failed because its validation installs pytest without pytest-cov while pytest.ini globally enables --cov options; integration workflow dependency correction is present but actual scheduled/manual execution has not been verified"
     ],
-    "pr1663_head_sha": "8db2aaef5d96c433ecf677da05843981bad108b1",
+    "pr1663_head_sha": "909262e12b0306be322e0d4048546c99aee667b2",
     "main_tree_entries": 1393,
-    "integration_tree_entries": 2531,
+    "integration_tree_entries": 2533,
     "main_paths_missing": 0,
     "shared_blob_differences": 205,
     "shared_tree_differences": 36,
-    "integration_only_paths": 1138,
+    "integration_only_paths": 1140,
     "main_test_files": 94,
     "integration_test_files": 460,
     "pr1663_additions": 415914,
@@ -144,7 +144,7 @@
       "wheel_build": "passed",
       "installed_v3_xrp_mission": "passed",
       "pages_validation": "passed",
-      "note": "Exact push run on 18a51be; does not verify later head 8db2aaef."
+      "note": "Exact push run on 18a51be; does not verify later heads."
     },
     "last_verified_dependency_audit": {
       "head_sha": "18a51be5e7b3f8cb999c4ffb8b4673d9ca3fa843",
@@ -168,20 +168,24 @@
       "pages_validation": "passed"
     },
     "current_branch_head": {
-      "head_sha": "8db2aaef5d96c433ecf677da05843981bad108b1",
-      "full_suite": "in_progress",
-      "full_suite_run_id": 43802183416,
-      "core_tests": "in_progress",
-      "push_dependency_audit": "in_progress",
-      "push_dependency_audit_run_id": 43802183421,
-      "pr_ci": "success",
-      "pr_ci_run_id": 43802186871,
-      "pr_dependency_audit": "in_progress",
-      "pr_dependency_audit_run_id": 43802186855,
-      "push_fail_closed": "success",
-      "push_fail_closed_run_id": 43802183414,
-      "pr_fail_closed": "success",
-      "pr_fail_closed_run_id": 43802186851
+      "head_sha": "909262e12b0306be322e0d4048546c99aee667b2",
+      "full_suite": "failed",
+      "full_suite_run_id": 43802643373,
+      "full_suite_failure": "Collection error: SyntaxError: unmatched '}' in tests/test_riemann_harvest.py line 49, introduced by Run184 regression-test edit.",
+      "core_tests": "passed",
+      "pages_validation": "passed",
+      "push_dependency_audit": "passed",
+      "push_dependency_audit_run_id": 43802643650,
+      "pr_ci": "passed",
+      "pr_ci_run_id": 43802648596,
+      "pr_dependency_audit": "passed",
+      "pr_dependency_audit_run_id": 43802648568,
+      "push_fail_closed": "passed",
+      "push_fail_closed_run_id": 43802643380,
+      "pr_fail_closed": "passed",
+      "pr_fail_closed_run_id": 43802648543,
+      "corrective_change": "Remove the single unmatched closing brace; no runtime or assertion semantics changed.",
+      "corrective_commit_status": "committed by Run184 follow-up; exact-head CI pending"
     },
     "main_ci": {
       "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
@@ -246,13 +250,14 @@
       "job_id": 133072626996,
       "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
       "conclusion": "failure",
-      "root_cause": "The workflow installs pytest but not pytest-cov; pytest.ini adds --cov=barrot_agent, --cov-report and --cov-fail-under, so pytest exits before test collection with unrecognized arguments. tests/conftest.py also imports AppConfig through pydantic-settings, which must be installed for the test to collect.",
+      "root_cause": "The workflow installs pytest but not pytest-cov; pytest.ini adds --cov options, causing argument parsing to fail. tests/conftest.py also imports AppConfig through pydantic-settings.",
       "integration_fix_commits": [
         "3b2b4f1bd8564cf1076fb61ddac28b9dfa94cda4",
         "8db2aaef5d96c433ecf677da05843981bad108b1"
       ],
-      "integration_fix": "The integration workflow installs pytest, pytest-cov and pydantic-settings; a regression test asserts all three dependencies are present.",
-      "manual_dispatch_performed": false
+      "integration_fix": "Install pytest, pytest-cov and pydantic-settings; a regression test asserts all three dependencies.",
+      "manual_dispatch_performed": false,
+      "actual_workflow_execution_verified": false
     }
   },
   "workflow_audit": {
@@ -350,6 +355,24 @@
     "source_independence_groups": 81,
     "missing_raw_receipts": 104,
     "missing_publisher_timestamps": 59,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "run184_followup": {
+    "captured_at_utc": "2026-11-16T04:14:12Z",
+    "failed_head_sha": "909262e12b0306be322e0d4048546c99aee667b2",
+    "failed_full_suite_run_id": 43802643373,
+    "failure": "SyntaxError unmatched '}' at tests/test_riemann_harvest.py:49",
+    "correction": "Removed the single trailing unmatched brace; no test assertions or production behavior changed.",
+    "current_research": {
+      "coingecko_xrp": "$0.9595; 24h range $0.9433-$0.9784; page has no exact event timestamp.",
+      "coinmarketcap_xrp": "$0.9628; 24h range $0.9444-$0.9771; page has no exact event timestamp.",
+      "coinglass_xrp": "$0.9477; 24h low/high $0.8922/$0.9789; 24h spot volume $1.18B; futures volume $4.31B; OI $1.97B (-5.74%); funding -0.0068%/8h; liquidations $33.42M, 86% longs; page snapshot lacks a unified event timestamp.",
+      "liqwall_oi": "$997M as of 2026-11-16 03:02 UTC, -2.5%/24h, 30-day range $995M-$1.49B.",
+      "etf_flows": "SoSoValue five-fund tracker reported 11 sessions without a net inflow since Oct 29 and November net outflows of $19.66M through Nov 13; not independent from trackers using the same issuer files.",
+      "exchange_balances": "22.25B XRP in 707 labeled wallets across 24 exchanges as of Nov 15 08:00 UTC; same-wallet 7d change -97.9M XRP; cold storage included."
+    },
+    "market_feature_admission": "Rejected: provider timestamps are absent or asynchronous; CoinGlass and Liqwall OI differ by roughly 2x under different venue/contract coverage; no byte-exact receipts or synchronized full-depth L2 were captured.",
     "forecast_status": "NOT_ISSUED",
     "accuracy_status": "NOT_EVALUATED"
   }

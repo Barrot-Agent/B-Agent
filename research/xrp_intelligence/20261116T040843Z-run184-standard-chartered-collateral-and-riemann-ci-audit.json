@@ -260,5 +260,127 @@
     "history_rewrites": 0,
     "destructive_worktree_operations": 0,
     "source_pr_closures": 0
+  },
+  "run184_followup": {
+    "captured_at_utc": "2026-11-16T04:14:12Z",
+    "failed_head_sha": "909262e12b0306be322e0d4048546c99aee667b2",
+    "failed_full_suite_run_id": 43802643373,
+    "failure": {
+      "file": "tests/test_riemann_harvest.py",
+      "line": 49,
+      "type": "SyntaxError",
+      "message": "unmatched '}'",
+      "collection": "3826 items collected / 1 collection error"
+    },
+    "cause": "A stray closing brace was included in the Run184 test-file update. This was introduced by the integration edit, not an existing repository failure.",
+    "correction": "Remove only the unmatched closing brace. Preserve all test assertions and workflow dependency checks.",
+    "new_exact_head_ci_required": true,
+    "market_snapshot": {
+      "observed_at_utc": "2026-11-16T04:14:12Z",
+      "spot": [
+        {
+          "source": "CoinGecko",
+          "price_usd": 0.9595,
+          "range_24h_usd": [
+            0.9433,
+            0.9784
+          ],
+          "provider_event_time": null,
+          "url": "https://www.coingecko.com/en/coins/xrp/historical_data"
+        },
+        {
+          "source": "CoinMarketCap",
+          "price_usd": 0.9628,
+          "range_24h_usd": [
+            0.9444,
+            0.9771
+          ],
+          "market_cap_usd": 61150000000,
+          "volume_24h_usd": 2120000000,
+          "provider_event_time": null,
+          "url": "https://coinmarketcap.com/currencies/xrp/"
+        },
+        {
+          "source": "CoinGlass",
+          "price_usd": 0.9477,
+          "range_24h_usd": [
+            0.8922,
+            0.9789
+          ],
+          "spot_volume_24h_usd": 1180000000,
+          "futures_volume_24h_usd": 4310000000,
+          "open_interest_usd": 1970000000,
+          "open_interest_change_24h_pct": -5.74,
+          "funding_8h_pct": -0.0068,
+          "liquidations_24h_usd": 33420000,
+          "long_liquidation_share_pct": 86,
+          "futures_to_spot_volume": 3.7,
+          "provider_event_time": null,
+          "url": "https://www.coinglass.com/currencies/XRP/futures"
+        }
+      ],
+      "derivatives_disagreement": [
+        {
+          "source": "CoinGlass",
+          "open_interest_usd": 1970000000,
+          "provider_event_time": null,
+          "coverage": "30+ exchanges; includes CME",
+          "url": "https://www.coinglass.com/currencies/XRP/futures"
+        },
+        {
+          "source": "Liqwall",
+          "open_interest_usd": 997000000,
+          "as_of_utc": "2026-11-16T03:02:00Z",
+          "change_24h_pct": -2.5,
+          "range_30d_usd": [
+            995000000,
+            1490000000
+          ],
+          "url": "https://liqwall.com/open-interest/xrp"
+        }
+      ],
+      "etf_flows": {
+        "source": "SoSoValue figures reported by Coindaro",
+        "five_us_spot_funds": true,
+        "no_net_inflow_sessions": 11,
+        "since": "2026-10-29",
+        "november_net_outflow_usd": 19660000,
+        "through": "2026-11-13",
+        "net_assets_usd": 1150000000,
+        "cumulative_inflows_usd": 1790000000,
+        "url": "https://www.coindaro.com/xrp-below-1-xrp-etf-inflows-stall/",
+        "independence_note": "CoinGlass cross-check uses the same five daily prints; not independent confirmation."
+      },
+      "exchange_balances": {
+        "source": "XRP Insights",
+        "as_of_utc": "2026-11-15T08:00:00Z",
+        "xrp_total": 22250000000,
+        "wallets": 707,
+        "exchanges": 24,
+        "same_wallet_change_7d_xrp": -97900000,
+        "cold_storage_included": true,
+        "cbxrp_reserve_xrp": 150100000,
+        "binance_peg_reserve_xrp": 327400000,
+        "url": "https://xrp-insights.com/exchange-balances",
+        "limitation": "Attributed balances are not beneficial ownership or tradable float."
+      },
+      "admission": "Descriptive-only; no model feature because provider event timestamps are absent/asynchronous, raw publisher bytes and SHA-256 receipts were not captured, and synchronized full-depth L2 was unavailable."
+    },
+    "kamilyah_channel_attribution": {
+      "person_identity": "verified through the June 11, 2026 iHeart interview",
+      "first_party_youtube_name_spoken": "Doctor Camilla Stevenson",
+      "first_party_warning": "She warned that fake pages exist.",
+      "candidate_channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "candidate_handle": "@KamilahStevensonXrpStocks",
+      "candidate_video_id": "pFru4idBTMA",
+      "candidate_video_date": "2026-05-12",
+      "candidate_video_byline": "Kamilah Stevenson",
+      "candidate_views": 28264,
+      "candidate_likes": 2000,
+      "channel_to_first_party_crosslink": "not established",
+      "attribution": "provisional; do not treat candidate video as confirmed until cross-link is established",
+      "interview_url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "candidate_video_url": "https://www.youtube.com/watch?v=pFru4idBTMA"
+    }
   }
 }

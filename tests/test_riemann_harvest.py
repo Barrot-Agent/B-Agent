@@ -46,4 +46,3 @@ def test_scheduled_validation_installs_shared_config_dependencies():
     assert "pytest" in install_line
     assert "pytest-cov" in install_line
     assert "pydantic-settings" in install_line
-}
