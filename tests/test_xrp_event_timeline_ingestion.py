@@ -115,6 +115,9 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert registry["captured_at_utc"].endswith("Z")
     assert registry["model_eligible"] is False
     assert registry["forecast_status"] == "NOT_ISSUED"
+    validated = _capture_event_timeline_registry(path, registry["captured_at_utc"])
+    assert validated["registry_status"] == "LOADED"
+    assert validated["event_count"] > 0
     expected = {
         "sbi-remit-xrp-odl-corridors-2023-09-06",
         "sbi-remit-nium-fiat-alternative-rail-2025-06-30",
