@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "registry_version": "run180-20261116",
   "captured_at_utc": "2026-11-16T01:01:31Z",
-  "source_receipt_status": "87 of 87 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
+  "source_receipt_status": "89 of 89 curated events have null raw_source_sha256 because publisher bytes were not captured into RawReceiptArchive; all events remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -3639,7 +3639,7 @@
       "domain": "entity_identity",
       "hypothesis": "The reviewed SBIC/ChatGPT reference is an educational event rather than evidence of an OpenAI commercial relationship.",
       "counter_hypothesis": "The seminar materials do not rule out separate agreements; they establish only the scope of the documented event and do not prove the absence of every possible relationship.",
-      "claim": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan) lists a February 26, 2025 seminar on generative AI/ChatGPT. Its official flyer names Tokyo SBIC and the Tokyo Chamber of Commerce Taito Branch as co-hosts and identifies the speaker as Nishiwaki Satoshi, a Microsoft Japan executive officer and evangelist. The materials discuss ChatGPT and OpenAI educationally; they identify no OpenAI contract, sponsorship, commercial partnership or investment.",
+      "claim": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan) lists a February 26, 2025 seminar on generative AI/ChatGPT. Its official flyer names Tokyo SBIC and the Tokyo Chamber of Commerce Taito Branch as co-hosts and identifies the speaker as 西脇 資哲氏, a Microsoft Japan executive officer and evangelist. The materials discuss ChatGPT and OpenAI educationally; they identify no OpenAI contract, sponsorship, commercial partnership or investment.",
       "source_id": "sbic_east_official_chatgpt_seminar_2025_02_26",
       "source_name": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
       "source_url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
@@ -3677,6 +3677,91 @@
       ],
       "source_date": "2025-02-26",
       "publisher_timestamp_precision": "date-only; exact publication timestamp not captured"
+    },
+    {
+      "event_id": "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
+      "event_type": "market",
+      "event_name": "OKX XRP-USDT and USDT-USD quote refresh fails the 60-second basis-skew gate",
+      "hypothesis_id": "xrp-cross-venue-spot-price-divergence-2026-11-16",
+      "domain": "spot_structure",
+      "hypothesis": "Cross-venue quote differences may reflect a transient XRP spot-price dislocation.",
+      "counter_hypothesis": "Bybit's quote is more than one hour older, Kraken has no provider event timestamp, and OKX's USDT/USD reference is 63.905 seconds newer than the XRP quote; asynchronous timing and currency basis prevent an executable dislocation conclusion.",
+      "claim": "OKX XRP-USDT ticker timestamp 2026-11-16T00:58:31.855Z: last $0.9641, bid $0.9640, ask $0.9642, 24-hour volume 55.452M XRP, high $0.9795, low $0.8993, rolling open $0.9231. OKX USDT-USD ticker timestamp 2026-11-16T00:59:35.760Z, bid $0.99960 and ask $0.99961. The same-venue timestamp skew is 63.905 seconds, exceeding the 60-second normalization gate. USD normalization is rejected. The full-depth order-book endpoint was inaccessible in this capture.",
+      "source_id": "okx_xrp_usdt_ticker_20261116T005831Z",
+      "source_name": "OKX public spot market API",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "independence_group": "okx",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T00:58:31.855Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T01:01:31Z",
+      "captured_at_utc": "2026-11-16T01:01:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The provider timestamp and ticker fields in the public API response are accurate.",
+        "Ticker data is top-of-book/last-trade context, not a full-depth liquidity measure.",
+        "The OKX USDT-USD response timestamp is 2026-11-16T00:59:35.760Z."
+      ],
+      "falsification_conditions": [
+        "A retained raw response and contemporaneous USDT-USD quote demonstrate basis skew at or below 60 seconds.",
+        "A synchronized full-depth snapshot establishes executable cross-venue depth and transfer/fee-adjusted arbitrage."
+      ],
+      "related_entities": [
+        "OKX",
+        "XRP",
+        "USDT"
+      ],
+      "tags": [
+        "market",
+        "spot",
+        "basis-skew",
+        "asynchronous-quotes",
+        "no-full-depth"
+      ]
+    },
+    {
+      "event_id": "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z",
+      "event_type": "market",
+      "event_name": "Bybit XRPUSDT ticker is stale relative to Run180 capture",
+      "hypothesis_id": "xrp-cross-venue-spot-price-divergence-2026-11-16",
+      "domain": "spot_structure",
+      "hypothesis": "The observed Bybit XRPUSDT quote may indicate a cross-venue price difference.",
+      "counter_hypothesis": "The provider timestamp is 3,607.157 seconds before capture, exceeding the 300-second freshness gate; the quote cannot support a synchronized spread or arbitrage inference.",
+      "claim": "Bybit XRPUSDT spot ticker timestamp 2026-11-16T00:01:23.843Z: last $0.9737, bid $0.9737, ask $0.9738 and 24-hour volume 36.2665M XRP. At the Run180 capture time 2026-11-16T01:01:31Z, quote age is 3,607.157 seconds, above the 300-second freshness gate. No full-depth order-book response was obtained.",
+      "source_id": "bybit_xrpusdt_ticker_20261116T000123Z",
+      "source_name": "Bybit public V5 spot market API",
+      "source_url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "independence_group": "bybit",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T00:01:23.843Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-16T01:01:31Z",
+      "captured_at_utc": "2026-11-16T01:01:31Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The provider timestamp and ticker fields in the public API response are accurate.",
+        "The quote age is measured against the Run180 capture time, not a later page-render time."
+      ],
+      "falsification_conditions": [
+        "A new raw Bybit ticker response with a fresh provider timestamp replaces this observation.",
+        "A synchronized full-depth response confirms or rejects the reported cross-venue spread."
+      ],
+      "related_entities": [
+        "Bybit",
+        "XRP",
+        "USDT"
+      ],
+      "tags": [
+        "market",
+        "spot",
+        "stale-quote",
+        "cross-venue",
+        "no-full-depth"
+      ]
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -3711,8 +3796,10 @@
     "captured_at_utc": "2026-11-16T01:01:31Z",
     "added_event_ids": [
       "evernorth-actual-capital-warrant-note-eloc-2026-11-13",
-      "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26"
+      "sbic-east-chatgpt-seminar-microsoft-speaker-2025-02-26",
+      "xrp-okx-spot-basis-gate-2026-11-16T0058Z",
+      "xrp-bybit-spot-stale-cross-venue-observation-2026-11-16T0001Z"
     ],
-    "note": "Added the November 13 SEC Evernorth filing reconciliation (cash warrant exercises, convertible-note proceeds and optional ELOC separated from XRP purchases) and primary SBIC East ChatGPT seminar identity evidence. Both records retain source_date precision without inventing a publisher time; raw_source_sha256 remains null, so no event is model-eligible."
+    "note": "Added the November 13 SEC Evernorth filing reconciliation (cash warrant exercises, convertible-note proceeds and optional ELOC separated from XRP purchases) and primary SBIC East ChatGPT seminar identity evidence. Both records retain source_date precision without inventing a publisher time; raw_source_sha256 remains null, so no event is model-eligible. Added synchronized-time-aware OKX and Bybit spot observations; OKX USD basis skew exceeds 60 seconds, Bybit quote is older than 300 seconds, and no full-depth L2 payload was obtained. Both remain model-ineligible."
   }
 }
