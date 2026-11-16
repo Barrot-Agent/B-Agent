@@ -2573,7 +2573,7 @@ The Run189 evidence commit is a child of `9147eacb1c5a11cc103266f797a40056d786a2
 
 ### XRP market and flows — descriptive only
 
-CoinGlass at 12:07 UTC displayed XRP **$0.9524**, -1.01% 24h, range $0.9418-$0.9777; spot volume $497.66M (-62.10%), futures volume $2.16B (-56.06%), OI $1.97B, funding -0.0045%/8h and $3.59M liquidations ($2.41M long, $1.18M short; 67% long). Futures/spot volume 4.3x; 30+ exchanges including CME. Its OI 24h change conflicts internally: -2.15% headline versus -1.15% narrative. No raw API bytes or full-depth L2 captured. [CoinGlass](https://www.coinglass.com/currencies/XRP)
+CoinGlass at 12:07 UTC displayed XRP **$0.9524**, -1.01% 24h, range $0.9418-$0.9777; spot volume $497.66M (-62.10%), futures volume $2.16B (-56.06%), OI $1.97B, funding -0.0045%/8h and $3.59M liquidations ($2.41M long, $1.18M short; 72.7% long). Futures/spot volume 4.3x; 30+ exchanges including CME. Its OI 24h change conflicts internally: -2.15% headline versus -1.15% narrative. No raw API bytes or full-depth L2 captured. [CoinGlass](https://www.coinglass.com/currencies/XRP)
 
 Provider disagreement is preserved, not averaged: Liqwall at 10:52 UTC reported $980M OI (-3.4%); its current value is below its stated 30-day low of $995M, an internal range inconsistency. [Liqwall](https://liqwall.com/open-interest/xrp) TradRadar's November 15 16:00 UTC seven-exchange snapshot reported $1.33B OI (-6.53%), funding -0.0027%/8h and at least $37.51M liquidations (75.9% long accounts). [TradRadar](https://tradradar.io/markets/xrp)
 
@@ -2720,3 +2720,55 @@ SBIC East's official 2025 training included ChatGPT and Copilot; that is educati
 The Cross Analysis run [43882016050](https://github.com/Barrot-Agent/B-Agent/actions/runs/43882016050) succeeded, but XRP recent and prior 24-hour sentiment windows both remain empty. All-history XRP/Ripple sentiment scores are not current sentiment.
 
 **Prediction gate unchanged:** 111 events, 111 missing raw-source SHA-256 receipts, 64 missing exact publisher timestamps, zero model-eligible events; forecast `NOT_ISSUED`, accuracy `NOT_EVALUATED`. No merge or external action occurred.
+
+
+### Run190 relationship-graph addendum — Circle, Coinbase, Ripple, SBI and XRPL stablecoin activity
+
+**Captured:** 2026-11-16 14:19:14 UTC  
+**Evidence file:** `research/xrp_intelligence/20261116T141914Z-run190-circle-sbi-ripple-coinbase-and-xrpl-stablecoin-graph.json`
+
+#### Relationship graph: SBI is multi-rail, not exclusive
+
+- **SBI ↔ Ripple:** SBI's June 9, 2025 corporate release says it invested in Ripple in 2016, held approximately 9% as its largest external shareholder at that time, and established the SBI Ripple Asia joint venture. The 9% is a dated company disclosure, not a current cap-table verification.
+- **SBI ↔ Circle:** SBI Holdings and SBI Shinsei Bank acquired $25M each of Circle shares at its 2025 IPO ($50M total). SBI and Circle established a 50/50 SBI Circle Holdings joint venture to promote USDC in Japan. SBI Group also participated in the ARC token presale through a consolidated subsidiary (its allocation amount is undisclosed) and is a founding validator of Circle's Arc mainnet.
+- **SBI ↔ Arc:** Arc launched public mainnet on Sept 16, 2026. Circle describes it as a separate L1 with a permissioned validator set, USDC-denominated gas, StableFX/Payments Network integration and day-one tokenized collateral/trading assets including USYC, BUIDL, private credit and cirBTC. SBI Group says it will participate in Arc operation and governance. The launch asset list does not name XRP or RLUSD.
+- **Circle ↔ Ripple:** Circle-issued USDC launched natively on XRPL in June 2025. Ripple stated it intended to use USDC alongside RLUSD in Ripple Payments. Circle remains the USDC issuer.
+- **Circle ↔ Coinbase:** Coinbase took an equity stake in Circle and the companies retained USDC reserve/distribution revenue sharing. Coinbase's Q3 2026 results report $22B average USDC held in Coinbase products, about 30% of average USDC market cap, up 49% year over year; Coinbase said it captured about 50% of USDC economics over the past year.
+- **Coinbase ↔ Ripple:** Coinbase distributes RLUSD on Prime, Exchange and retail. Global Exchange collateral support was a future rollout at launch, not verified live.
+- **BNY ↔ Circle/Ripple:** Circle's Reserve Fund is managed by BlackRock and custodied at BNY; BNY is also Ripple's primary RLUSD reserve custodian and supports XRP/RLUSD custody and Ripple Prime custody.
+- **Standard Chartered ↔ Circle/Ripple:** Standard Chartered is an Arc founding validator and supports RLUSD custody on XRPL; its Ripple/LMAX collateral integration was announced as planned.
+
+**Interpretation:** SBI has direct strategic exposure to both Ripple/XRP and Circle/USDC/Arc, plus its own JPYSC initiative. This is a multi-rail strategy, not proof of exclusive XRP alignment. Circle both integrates USDC into XRPL and builds a separate Arc network. Treat Arc as a parallel rail that could complement or compete with XRPL, not as proof of displacement.
+
+#### Important network distinction in SBI's Japanese distribution
+
+SBI VC Trade's VCTRADE service accepts **Ethereum-chain USDC only** and **Ethereum-chain RLUSD only** for deposits/withdrawals. The fact that Circle USDC and Ripple RLUSD are available on XRPL does not mean SBI's VCTRADE distribution uses XRPL. The SBI VC Trade/Aplus merchant pilot describes a USDC-wallet-to-JPY-to-merchant flow, but its announcement does not specify the blockchain; do not label it an XRP or XRPL payment.
+
+JPYSC is issued by SBI Shinsei Trust and developed with Startale. It was initially available only inside VCTRADE accounts; public-chain distribution was conditional on legal/tax issues. Do not assume JPYSC is live on Arc or XRPL.
+
+#### XRPL stablecoin snapshot and disagreement
+
+- xrpl.fi, a non-affiliated analytics dashboard reading issuer/ledger data, showed $944.8M tracked XRPL RWA TVL, $762.3M stablecoin TVL, 697M RLUSD (68.3K holders), 3.7M USDC (10.5K holders), and $5.1M 24h DEX volume. Its page says “updated moments ago” but provides no exact event timestamp.
+- StableRadar's on-chain snapshot at Nov 13 12:43 UTC showed 754.15M RLUSD on XRPL, 1.918B on Ethereum and 2.688B total across official chains, implying about 28.1% on XRPL at that time.
+- Circle's USDC page showed $67.9B global USDC supply as of Nov 12. The 3.7M XRPL USDC reading is roughly 0.0054% of that global total. This is a scale comparison across different cutoffs, not a synchronized flow.
+- These dashboards disagree on XRPL RLUSD supply (697M vs 754.15M, with an older separate dashboard showing 907.26M). Do not average. Reconcile using direct issuer `gateway_balances` and transaction-history snapshots at identical ledger indices.
+
+A third-party on-chain analysis reports a 284.4M RLUSD XRPL supply decline on Oct 30, with one wallet making large returns to the issuer; prior month-end supply drops often rebounded. The author notes that an issuer return/burn does not prove USD redemption and Ripple had not explained the event. Treat it as an unresolved event candidate until the ledger transactions and any chain-transfer counterparts are independently reproduced.
+
+#### Competing hypotheses retained
+
+1. **XRPL utility:** Native USDC/RLUSD, DEX/auto-bridging and RWA collateral may increase XRPL activity and XRP bridge usage, but this requires measured XRP-routed volume.
+2. **No automatic XRP value capture:** Stablecoins can move directly; increased stablecoin supply does not necessarily create material XRP demand.
+3. **Arc competition:** Circle Arc may attract institutional stablecoin/collateral flows without XRP, but no displacement is established.
+4. **SBI multi-rail:** SBI's Ripple and Circle investments/JVs/validator roles point to a portfolio strategy across networks.
+5. **RLUSD rebalancing:** XRPL supply contractions may reflect issuer inventory, redemption, treasury management or chain rebalancing; transaction-level evidence is required.
+
+#### Correction to Run190 supplemental market prose
+
+The earlier prose said “67% long” for the Liqwall Binance account positioning. The source and structured audit record show **72.7% long**. The prose is corrected here; no other metric is changed.
+
+#### Exact-head CI and packaging warnings
+
+Code head `003e65e61dec8816d171cafb328cc9a26e535119` passed [full repository suite 43883681688](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883681688), job 133355975476: **3,830 passed, zero failed, one skipped, 19 subtests**, 106.56 seconds; 64.09% inclusive and 77% legacy-core coverage. Wheel and mission verification passed. Six-manifest dependency audits [43883680311](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883680311) and [43883690801](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883690801) passed with zero known vulnerabilities; fail-closed gates [43883680300](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883680300) and [43883690797](https://github.com/Barrot-Agent/B-Agent/actions/runs/43883690797) passed. Non-failing follow-ups: deprecated TOML license-table metadata, package-discovery warnings for `barrot_agent.data.missions` and `data.research`, and GitHub Actions cache budget now read-only.
+
+**Prediction gate remains closed:** no raw-byte receipts admitted, no model-eligible observations, no directional forecast.
