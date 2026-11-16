@@ -1,13 +1,118 @@
-# Current mission status — Run179
+# Current mission status — Run180
 
-**Captured:** 2026-11-16T00:26:10Z  
+**Captured:** 2026-11-16T01:01:31Z  
 **Mission priority:** 1 — XRP intelligence and measured prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution, orchestration, safety, authorization and verification.  
 **Main:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
-**Integration parent/head inspected:** `1a706ef65d116f2db773a8fe20f98b84ca24a452`  
+**Integration head inspected at Run180 start:** `33c065122acf34d3e746aef7add76dcd650d8a98`  
+**Latest Run180 evidence head before this handoff:** `e2324e4517b0ddf938e8cebb42bedfcc2557379f` (exact-head CI in progress)  
 **Integration PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open and draft  
 
-## Run179 — verified work
+## Run180 — current verification and findings
+
+### Repository integration and exact-head CI
+
+- Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`. The integration branch is `integration/xrp-v3-mainline-successor-20261115T2101Z`, based directly on main.
+- At the Run180 source-code audit head `33c065122acf34d3e746aef7add76dcd650d8a98`: complete recursive trees were retrieved without truncation; main 1,393 entries, integration 2,521; zero main paths missing; 205 shared blobs differed; 1,128 integration-only paths. GitHub compare reports 27 commits ahead, zero behind, with main as merge base.
+- PR #1663 is the sole open PR targeting main. After Run180 registry/test/map/audit updates it has 30 commits, 27 commits ahead/zero behind, 1,288 changed files, and remains draft/open.
+- Open PR inventory is nine: #1663 plus eight preserved research/security PRs. No source PR was closed. PR #1662 remains closed unmerged; no merge occurred.
+- The last fully verified exact code head is `c1a5238c2d98b8446693acdf01f15ab4916bf10f`: [full suite 43780970657](https://github.com/Barrot-Agent/B-Agent/actions/runs/43780970657) passed 3,829 tests, zero failures, one skipped, 19 subtests, 64.09% inclusive coverage, 77% legacy-core coverage, wheel build and installed V3/XRP mission verification. Six-manifest dependency audit [43780970615](https://github.com/Barrot-Agent/B-Agent/actions/runs/43780970615) passed with zero known vulnerabilities; fail-closed gate [43780970662](https://github.com/Barrot-Agent/B-Agent/actions/runs/43780970662) passed.
+- Run180 added four event records, regression assertions, a nine-platform map and this handoff. The latest pre-handoff evidence head `e2324e4517b0ddf938e8cebb42bedfcc2557379f` has its own CI in progress: [full CI 43784933027](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784933027), [dependency audit 43784932982](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784932982) pending, and fail-closed gate [43784933001](https://github.com/Barrot-Agent/B-Agent/actions/runs/43784933001) passed. Do not transfer the c1a test result to the newer head. This handoff commit will create a still newer head and must be verified separately.
+- Main latest CI [43767370808](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370808) passed; Pages [43767370504](https://github.com/Barrot-Agent/B-Agent/actions/runs/43767370504) failed; scheduled Cross Analysis [43783770404](https://github.com/Barrot-Agent/B-Agent/actions/runs/43783770404) passed.
+
+### Workflow and called-script audit
+
+- All 48 changed workflow definitions were inspected: 27 have explicit false job guards; 21 remain active. Fourteen high-impact workflows and 13 called Python scripts were inspected.
+- No explicit contents/issues/pull-requests/Actions write grant was found in the 48 changed workflow definitions. Repository-level default Actions token permissions could not be read through the connector, so least-privilege is not certified.
+- Eight Groq-backed research/design workflows require typed confirmation, `refs/heads/main`, a full expected main SHA, and read-only repository permissions where declared. Groq is not Grok.
+- Coinbase paper-trader requires typed YES, exact main SHA, existing-position product identity preflight, read-only repository permissions and artifact-only output. It was not dispatched.
+- Barrot Ops requires separate Databricks and Kaggle approvals plus exact source SHA. A2A deployment requires separate deployment and secret-rotation confirmations plus exact main SHA. Neither was dispatched.
+- XRP public ingestion is read-only, main-ref guarded and has no provider secrets. Its GitHub artifact retention is 90 days, not independent WORM storage. No scheduled main ingestion is verified.
+- Main's legacy Coinbase paper trader, Ask Barrot and Barrot Sync remain unsafe and were not dispatched. No external operations occurred.
+
+### Fresh spot observations — descriptive only
+
+Capture cutoff: 2026-11-16T01:01:31Z.
+
+- OKX XRP-USDT: $0.9641 last, $0.9640/$0.9642 bid/ask, event time 00:58:31.855 UTC; 24-hour volume 55.452M XRP; high $0.9795, low $0.8993, rolling open $0.9231.
+- OKX USDT-USD: $0.99961 last, event time 00:59:35.760 UTC. The XRP/USDT and USDT/USD timestamp skew is 63.905 seconds, above the 60-second normalization gate. USD normalization is rejected.
+- Bybit XRPUSDT: $0.9737 last, $0.9737/$0.9738 bid/ask, event time 00:01:23.843 UTC. It was 3,607.157 seconds old at capture, exceeding the 300-second freshness gate.
+- Kraken XRP/USD: $0.96198 last, $0.96164/$0.96174 bid/ask, no provider event timestamp. The cross-venue price differences are asynchronous and not executable arbitrage evidence.
+- OKX books/books5, Kraken Depth and Bybit orderbook endpoints were inaccessible through this capture. No full-depth L2 data was admitted. Direct raw-byte download was unavailable; no hash was computed from extracted web text. These observations remain descriptive-only and model-ineligible.
+
+### Evernorth — actual capital reconciliation
+
+Primary source: [SEC Form 424B3 supplement and Q3 2026 Form 10-Q, dated November 13](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm).
+
+- **Cash-funded XRP purchase:** $214.1M cash was used to purchase 84,365,876 XRP. This is an actual historical cash-to-XRP purchase.
+- **In-kind XRP:** 388,910,554 XRP was contributed in kind. It is not cash capital.
+- **Closing gross cash:** approximately $272.6M before transaction expenses, comprising $224.6M private-placement cash plus $48.0M released SPAC trust cash. The $214.1M used for XRP purchases is part of the broader private-placement cash; do not double count it.
+- **Post-close warrant exercises:** between October 12 and November 9, holders exercised 3,073,366 warrants for cash at $11.50, producing $35.3M gross proceeds; 8,666,279 warrants remained. The November 12 XRPN close was $8.97, below the $11.50 strike. Remaining warrant proceeds are not guaranteed.
+- **Convertible note:** $30.0M principal, $29.0M net cash after a $1.0M advisor fee, 4% PIK interest, due 2031. Proceeds are for general corporate purposes, including potential XRP acquisition and other XRP-ecosystem activity. This is debt, not equity and not proof of a specific XRP purchase.
+- **Cantor ELOC:** up to 5,218,935 new shares at 97% of applicable VWAP, subject to a 20% volume limit, 4.99% beneficial-ownership cap and purchase-price threshold. Registration became effective October 30. The non-refundable commitment fee is $0.5M, with up to $0.5M reimbursable expenses. The reviewed supplement does not disclose an ELOC draw. Capacity is not cash received.
+- **Pre-close September 30 condition:** unrestricted cash $91,397, restricted cash $49,995, net working-capital deficit $10.0M, nine-month operating loss $273.2M and net loss $32.9M. Q3 net income of $155.3M includes a $162.8M non-cash fair-value gain on refundable investor advances. Evernorth reported no revenue yet. These are pre-close figures, not post-close current cash.
+- **XRP reconciliation:** 84,365,876 cash-purchased XRP + 388,910,554 in-kind XRP = 473,276,430 XRP. The 346,484,972 XRP transfer to Pathfinder reconciles to the 346,284,972 pre-close balance plus 200,000 delayed-funding XRP; Ripple separately contributed 126,791,458 XRP. The transfer is not a new market purchase.
+- The SEC filing says certain investors affiliated with **SBI Holdings** received Class C shares under a 39.9% ownership threshold. This is SBI Holdings, not SBIC East/Central/West.
+
+### Japan SBIC identity and ChatGPT phrase
+
+Primary company profiles:
+- [Tokyo Small and Medium Business Investment & Consultation Co. — SBIC East Japan](https://www.sbic.co.jp/company/profile/): established 1963-11-15; capital ¥6.6734B.
+- [Nagoya Small and Medium Business Investment & Consultation Co. — SBIC Central Japan](https://www.sbic-cj.co.jp/company/about/): established 1963-11-18; capital ¥4.308B.
+- [Osaka Small and Medium Business Investment & Consultation Co. — SBIC West Japan](https://www.sbic-wj.co.jp/profiles/profile/): established 1963-11-20; capital ¥6.822B.
+
+Their official profiles cross-link them as sister companies under Japan's Small and Medium Business Investment & Consultation Companies Act, with separate regional territories. They are not SBI Holdings subsidiaries; no SBI Holdings ownership relationship was established in the reviewed official profiles.
+
+The February 26, 2025 SBIC seminar [official flyer](https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf) identifies Tokyo SBIC and the Tokyo Chamber of Commerce Taito Branch as co-hosts. The speaker is 西脇 資哲氏, a Microsoft Japan executive officer and evangelist. ChatGPT/OpenAI are seminar topics; no OpenAI contract, sponsorship, commercial partnership or investment is stated. The phrase “SBIC, ChatGPT SBIC” is not a verified corporate identity or partnership.
+
+### ASK Coin and Kamilah Stevenson
+
+- [Permission's official ASK contract documentation](https://docs.permission.ai/ask-token/contract-addresses) identifies LayerZero OFT-20 contracts on Base (`0xBB146326778227A8498b105a18f84E0987A684b4`) and Polygon (`0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`). No official XRPL ASK issuer is listed. Permission ASK is a plausible candidate for “ASK Coin”; the intended referent remains unconfirmed.
+- Dr. Kamilah Stevenson is person-verified through the June 11, 2026 [interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/). The candidate YouTube channel is not fully cross-linked from a first-party account. Video `pFru4idBTMA` remains unassigned; no new video attribution was made.
+
+### Prediction and nine-platform status
+
+- Implemented on integration: 51 public-source definitions, 49 scheduled definitions, SQLite point-in-time feature-store prototype, event timelines, counter-hypotheses, naive/momentum/mean-reversion/volatility baselines, purged/embargoed walk-forward evaluation, block bootstrap, calibration, PSI drift monitoring, fail-closed forecast ledger and evaluator attestation.
+- Event registry after Run180: 89 events, 67 independence groups, 89 missing raw-source SHA-256 receipts and 47 missing publisher timestamps. All 89 remain model-ineligible. Direct byte capture was unavailable; extracted web text was not hashed.
+- Independent WORM archival and trusted timestamp anchoring remain unverified. GitHub artifact retention is 90 days.
+- Forecast remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No directional forecast was issued.
+- Nine-platform map: ChatGPT/GitHub connector authenticated but overprivileged; Claude, Grok, Gemini and Codex unverified; Copilot historical one-off only; Hugging Face no verified deployment; Kaggle untested; Databricks prior HTTP 403. Groq is not Grok. OpenCode GitHub MCP remains unverified. No external-model dispatch, structured nine-platform exchange or independent red-team quorum.
+
+### PR backlog and merge decision
+
+- #1663: blocked, sole main-targeting consolidated successor; draft, zero formal reviews/approvals/review threads.
+- #1541: unique/unreviewed security work; four paths overlap integration and one unique artifact remains. Preserve until exact blob/semantic reconciliation and successor verification.
+- #1460: eight unique paths, no overlap with integration.
+- #1450: 116 unique paths, no overlap.
+- #1440: 64 unique paths, no overlap.
+- #1437: five unique paths, no overlap.
+- #1436: 24 unique paths, no overlap.
+- #1353: 1,084 unique XRP-ledger archive paths, no overlap.
+- #1265: 144 paths, one overlap with `.github/workflows/ci.yml`; remaining 143 paths are unique.
+- GitHub compare returned no merge-base result (HTTP 404) for the eight source PR heads against integration. Preserve their histories; do not infer semantic duplication from branch ancestry.
+- Main branch metadata reports protected=true, but detailed branch-protection access returns HTTP 403. Fallback ruleset 10863829 is disabled; `.github/CODEOWNERS` is `* @Barrot-Agent`; connector permissions remain admin/maintain/push/pull/triage. No independent approvals exist.
+- **NO MERGE.** The PR remains draft; full semantic review of all 1,288 changed paths is incomplete; exact-head CI on the latest evidence head is still running; governance and least-privilege blockers remain.
+
+### Durable Run180 records
+
+- Structured audit: `research/xrp_intelligence/20261116T010131Z-run180-actual-capital-sbic-spot-and-integration-audit.json`
+- Nine-platform map: `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run180.json`
+- Current event registry: `research/xrp_intelligence/event_registry_current.json`
+- Regression coverage: `tests/test_xrp_event_timeline_ingestion.py`
+
+### Next concrete actions
+
+1. Complete exact-head full-suite, dependency audit, fail-closed and Pages verification on the latest Run180 head after this handoff commit.
+2. Complete semantic review of all 1,288 changed paths, prioritizing 48 workflows and their 13 called scripts.
+3. Resolve independent reviewers, branch-protection visibility and least-privilege permissions.
+4. Capture byte-exact source payloads through an authorized raw-source ingestion path; do not hash extracted web text.
+5. Establish independent WORM archival and trusted timestamp anchoring.
+6. Continue synchronized historical XRP spot/L2/derivatives/exchange-flow/collateral ingestion and independent shadow evaluation.
+7. Keep forecasts `NOT_ISSUED` until an XRP candidate beats all four baselines out of sample and meets independent shadow requirements.
+
+---
+
+## Historical Run179 archive — verified work
 
 ### Repository and CI
 
