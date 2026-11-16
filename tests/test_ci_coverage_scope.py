@@ -17,6 +17,12 @@ def test_full_repository_suite_measures_all_distributable_packages():
     assert "--cov-report=term-missing:skip-covered" in full_suite
     assert "fail_under = 62" in full_suite
     assert "--cov-fail-under=62" in full_suite
+    for active_test_path in (
+        "legacy/tests/test_email_integration.py",
+        "legacy/tests/test_transformative_insights.py",
+        ".barrot/autonomous_tasks/test_math_task.py",
+    ):
+        assert active_test_path in full_suite
     assert "--no-cov" not in full_suite
     core_gate_marker = "      - name: Preserve legacy core-package coverage floor"
     assert core_gate_marker in full_suite
