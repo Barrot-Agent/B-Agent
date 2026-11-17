@@ -4621,3 +4621,54 @@ No deployment, secret rotation, Space restart, Databricks write, Kaggle submissi
 ### Next action
 
 Verify exact-head full-suite CI, dependency audit and fail-closed gate on the new action-pinning commit. Then complete the remaining action-pin inventory and workflow semantic review, reconcile the stacked research PRs, obtain independent review and authorized branch-protection evidence. Keep scheduled ingestion and all forecasts inactive on main until a compliant merge is possible.
+
+
+---
+
+## Run202 supplemental — Swell 2026, tokenized funds, corporate treasury, lending and parallel rails
+
+**Captured:** 2026-11-17T00:12Z  
+**Parent head:** `14cdf58d9892cdeca22b7e0d01eda4b7c1e46bcf`  
+**Classification:** Descriptive research only. Web-rendered sources were not retained as byte-exact raw payloads; no observation below is model-eligible.
+
+### Ripple Swell 2026 — company claims versus independent evidence
+
+Ripple's November 16 recap says Swell had more than 1,500 attendees, Ripple expects to exit 2026 approaching a $900M annualized product-revenue run rate, more than 1,700 institutions/corporates/enterprises use Ripple, and customers using multiple Ripple solutions grew 3x. These are company-reported and partly forward-looking figures, not independently audited revenue or XRP demand. The customer count does not disclose active payment volumes, XRP settlement share, XRP balances or net token purchases. [Ripple Swell recap](https://ripple.com/insights/ripple-swell-2026-recap/).
+
+### Aviva tokenized Sterling Liquidity Fund on XRPL
+
+Aviva Investors' October 26 joint announcement confirms a new GBP tokenized share class on XRPL for its approximately £22B Irish-domiciled UCITS Sterling Liquidity Fund. Aviva reports over £86M invested across its USD and GBP tokenized share classes and a £50M Aviva investment in the new GBP class. The structure is a digital twin/access layer over the existing off-chain fund. BNY is the fund custodian; Komainu and Licuido support custody and tokenization infrastructure. The £86M is tokenized fund-share investment, not XRP holdings, XRP ETF flows or open-market XRP purchases. [Aviva primary announcement](https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/).
+
+### Ripple Treasury 24/7 Returns
+
+Ripple's October 26 announcement describes 24/7 Returns for eligible corporate customers, allowing qualifying digital assets held in Ripple wallets, including RLUSD, to earn returns subject to program conditions. Ripple Treasury also combines cash positioning, forecasting, reconciliation, liquidity and payments with GSmart orchestration. Actual customer balances, yield paid, utilization and XRP-specific activity were not disclosed. Ripple describes GSmart as human-supervised; proposals require approval. [Ripple Treasury announcement](https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/).
+
+### C2FO Instant Pay
+
+Ripple's October 27 announcement describes an initiative to use participating capital providers to fund early payment of approved invoices and settle instantly on XRPL using RLUSD. Businesses were directed to a waitlist. No production volume, active customer count or net settlement flow is disclosed. Treat this as an announced initiative, not a verified production payment corridor. RLUSD settlement is not automatically XRP bridge-asset demand. [Ripple/C2FO announcement](https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/).
+
+### DBS / Franklin Templeton / Ripple and competing institutional rails
+
+DBS's September 18, 2025 announcement describes an MOU to list Franklin Templeton's sgBENJI token alongside RLUSD on DBS Digital Exchange and for Franklin to tokenize sgBENJI on XRPL. DBS said repo or third-party credit against sgBENJI would be explored in a later phase. No independent production status or realized collateral lending volume was verified in this run. [DBS primary announcement](https://www.dbs.com/newsroom/DBS_and_Franklin_Templeton_to_launch_trading_and_lending_solutions_powered_by_tokenised_money_market_funds_and_Ripples_RLUSD_stablecoin).
+
+By contrast, DBS's November 16, 2026 announcement says a commercially ready USD transfer solution between DBS Token Services and Kinexys by J.P. Morgan is live for institutions, with Ant International as first client. This is a permissioned tokenized-bank-deposit corridor between the United States and Singapore, not XRPL, XRP or RLUSD. The release discloses a Saturday three-hour legacy-account in/out downtime. [DBS/Kinexys primary announcement](https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers).
+
+### XRPL lending and collateral boundary
+
+Current XRPL developer documentation defines the Lending Protocol as fixed-term, uncollateralized loans funded from Single Asset Vaults, with off-chain underwriting and risk management. First-loss capital is optional. The documented implementation does not include automated on-chain collateral or liquidation management. Required amendments include LendingProtocol, LendingProtocolV1_1 and SingleAssetVault. A fresh validator vote snapshot was not obtained in this run, so activation status remains unresolved; do not infer activation from documentation or conference discussion. [XRPL Lending Protocol](https://xrpl.org/docs/concepts/tokens/lending-protocol) · [Single Asset Vaults](https://xrpl.org/docs/concepts/tokens/single-asset-vaults).
+
+### OCC charter status
+
+The OCC Corporate Applications Search record for Ripple National Trust Bank, control 2025-Charter-342347, lists filing status as **Consummated/Effective on October 26, 2026**. This is a regulator primary record. It is distinct from proving that every approved service is already operational. Ripple says RLUSD remains issued by Standard Custody & Trust Company, while the national trust bank adds federal supervision and approved trust/custody activities. [OCC application record](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2).
+
+### ETF data-quality conflict
+
+Maketo's XRP ETF dashboard, updated November 16 at 02:27 UTC, identifies November 13 as the latest session and reports approximately $1.09M net outflow. Alpha Finance displays a November 14 Saturday row of approximately $1.1M outflow. The Saturday row is anomalous and remains excluded pending issuer-level reconciliation. [Maketo](https://maketo.com/etf/xrp/flows) · [Alpha Finance](https://alphafinance.io/etf/xrp/).
+
+### Prediction admission
+
+No source bytes or independent durable receipts were retained for these web observations. All have null raw-source hashes and remain outside the point-in-time feature store. Forecast status remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. The distinction between XRPL activity, RLUSD settlement, tokenized fund value and actual XRP bridge demand is mandatory in future feature definitions.
+
+### Run202 workflow-test regression
+
+The first action-pinning commit `14cdf58d` triggered CI. The pinned actions executed successfully: checkout, setup-python and GitHub Pages build all completed. The core Tests job then failed two repository assertions (747 passed, 2 failed, 8 subtests passed) because tests hard-coded mutable major tags such as `actions/setup-python@v7` and `actions/checkout@v7`. This is a stale test-contract failure caused by the intended pinning, not an action download or runtime failure. The full-suite job and dependency audit were still running at capture time. The next commit updates the tests to assert the approved immutable SHAs and pins the dependency-audit workflow as well. Exact-head CI must pass on that corrected commit before any merge consideration.

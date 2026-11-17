@@ -46,11 +46,21 @@ def test_full_repository_suite_measures_all_distributable_packages():
 
     audit = (ROOT / ".github" / "workflows" / "dependency-audit.yml").read_text(encoding="utf-8")
     ingestion = (ROOT / ".github" / "workflows" / "xrp-public-ingestion.yml").read_text(encoding="utf-8")
+    setup_python_sha = "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
+    checkout_sha = "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    upload_artifact_sha = "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    cache_sha = "0057852bfaa89a56745cba8c7296529d2fc39830"
     for workflow in (content, audit, ingestion):
-        assert "actions/setup-python@v7" in workflow
-        assert "actions/setup-python@v5" not in workflow
-    assert "actions/checkout@v7" in ingestion
-    assert "actions/checkout@v4" not in ingestion
+        assert f"actions/setup-python@{setup_python_sha}" in workflow
+        assert "actions/setup-python@v7" not in workflow
+        assert f"actions/checkout@{checkout_sha}" in workflow
+        assert "actions/checkout@v7" not in workflow
+    assert f"actions/upload-artifact@{upload_artifact_sha}" in ingestion
+    assert "actions/upload-artifact@v7" not in ingestion
+    assert f"actions/cache/restore@{cache_sha}" in ingestion
+    assert f"actions/cache/save@{cache_sha}" in ingestion
+    assert "actions/cache/restore@v4" not in ingestion
+    assert "actions/cache/save@v4" not in ingestion
 
 
 def test_integration_full_suite_runs_once_on_push_not_duplicate_pull_request():

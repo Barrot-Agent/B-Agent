@@ -350,36 +350,67 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
 
 
  
-def test_shared_workflows_use_supported_checkout_and_artifact_action_majors() -> None:
+def test_shared_workflows_use_supported_action_versions_or_reviewed_sha_pins() -> None:
+    approved = {
+        "actions/checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+    }
+
+    def refs(content: str, action: str) -> list[str]:
+        return re.findall(
+            rf"^[ \\t]*(?:-[ \\t]*)?uses:\\s*{re.escape(action)}@([^\\s#]+)",
+            content,
+            flags=re.MULTILINE,
+        )
+
+    def supported(values: list[str], action: str, minimum_major: int) -> bool:
+        if not values:
+            return False
+        approved_sha = approved[action]
+        for value in values:
+            if value == approved_sha:
+                continue
+            match = re.fullmatch(r"v(\\d+)", value)
+            if not match or int(match.group(1)) < minimum_major:
+                return False
+        return True
+
     checkout_workflows = (
         "barrot-bundle-operational-smoke.yml",
         "barrot-controlled-feature-validation.yml",
         "ci.yml",
         "dependency-audit.yml",
         "formal-verification-benchmarks.yml",
+        "xrp-public-ingestion.yml",
     )
     for name in checkout_workflows:
         content = _read(name)
-        match = re.search(r"uses:\s*actions/checkout@v(\d+)", content)
-        assert match and int(match.group(1)) >= 7, name
+        assert supported(refs(content, "actions/checkout"), "actions/checkout", 7), name
+    for name in ("ci.yml", "dependency-audit.yml", "xrp-public-ingestion.yml"):
+        content = _read(name)
+        assert set(refs(content, "actions/checkout")) == {approved["actions/checkout"]}, name
 
     upload_workflows = (
         "barrot-controlled-feature-validation.yml",
         "cross-analysis.yml",
         "formal-verification-benchmarks.yml",
         "signal-summary.yml",
+        "xrp-public-ingestion.yml",
     )
     for name in upload_workflows:
         content = _read(name)
-        match = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", content)
-        assert match and int(match.group(1)) >= 7, name
+        assert supported(refs(content, "actions/upload-artifact"), "actions/upload-artifact", 7), name
+    assert set(refs(_read("xrp-public-ingestion.yml"), "actions/upload-artifact")) == {
+        approved["actions/upload-artifact"]
+    }
 
     webmcp = _read("webmcp-monetization-enrich.yml")
-    match = re.search(r"uses:\s*actions/download-artifact@v(\d+)", webmcp)
-    assert match and int(match.group(1)) >= 8
-
-
-
+    download_refs = refs(webmcp, "actions/download-artifact")
+    assert download_refs
+    assert all(
+        (match := re.fullmatch(r"v(\\d+)", value)) and int(match.group(1)) >= 8
+        for value in download_refs
+    )
 
 def test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation() -> None:
     for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):
