@@ -11,12 +11,12 @@ cannot, and the flaw found inside the last output becomes the next Y-query.
 
 | Field | Value |
 |---|---|
-| Iteration | 7b |
+| Iteration | 7c |
 | Last Y-query transmuted | "Build an auto workflow that targets accessible paying issues, forever" |
-| Transmuted target | A read-only hunter that scores paid issues every 6 hours and never claims one |
+| Transmuted target | A 6-hour hunter that cannot write, plus a workflow_run publisher that can |
 | Method | 7 GitHub searches, line-scoped amount parsing, label difficulty, activity filter, markdown output |
 | Grade | Q on the schedule and read-only proof; 0 priced issues, and the 8 platform rows were false positives |
-| Artifact | .github/workflows/paid-issue-hunter.yml, PAID-ISSUES.md |
+| Artifact | .github/workflows/paid-issue-hunter.yml, .github/workflows/paid-issue-publish.yml, PAID-ISSUES.md |
 | Next Y-query queued | "No issue-level bounty exists yet. Which platform can be queried for a real amount, and does its API answer?" |
 
 ## Why each iteration followed the last
@@ -61,5 +61,6 @@ verified.
 | 6 | transmute workflows, pull components | licence gate, pinned fetch, 3 money workflows | Q 58 / 10 refused / 3 pulled / 8 tests | see git log | docs/money/TRANSMUTE.md |
 | 7 | paid issue hunter, every 6h forever | 7 searches, strict amount parsing, 8 tests | Q on schedule; 0 priced | see git log | PAID-ISSUES.md |
 | 7b | are the 8 platform rows real bounties | fetched each issue body, checked the platform URLs | X: all 8 were repo-level sponsor links or docs links; 0 rows | see git log | PAID-ISSUES.md |
+| 7c | can a scheduled workflow commit its own output | read the governance gate, split hunt from publish | Q: CI 485 core tests local, hunter and publish both green, bot commit 7c25a1e1e | see git log | paid-issue-publish.yml |
 
 Every future STATUS PUSHED appends a row here and states the next queued Y-query.
