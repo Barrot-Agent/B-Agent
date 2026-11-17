@@ -1,3 +1,89 @@
+# Canonical Barrot XRP Mission Handoff — Run221
+
+**This is the sole current handoff.** Older handoff files remain historical copies and are not updated in parallel.
+
+**Captured:** 2026-11-17T16:54:18Z  
+**Main SHA:** `482f611e8500d1ce88d5e2bdee969eac7e3133dd`  
+**Integration head before this handoff commit:** `a968eaf8e35983d580b386f722db6d92970fb268`  
+**Integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**PR:** [#1663 — Barrot V3 + XRP Intelligence, consolidated mainline successor](https://github.com/Barrot-Agent/B-Agent/pull/1663) — draft; not merged.
+
+## Run221 — verified work
+
+### Repository integration and preservation
+
+- Re-fetched current `main`, PR #1663, full recursive trees, open-PR inventory, branch ancestry, workflow runs, dependencies, CODEOWNERS and available security settings.
+- Integration branch was exactly based on current main `482f611`: 203 commits ahead and zero behind at the tested code head `b963098`. The subsequent Run221 research artifact adds one commit.
+- Main tree: 1,592 entries / 1,445 blobs. Integration tree before the Run221 artifact: 2,799 entries / 2,638 blobs. Every main blob path is present in the integration tree; 189 shared main paths have intentional integration-branch content differences. No main path was missing.
+- PR #1663 currently carries 1,382 changed files, 505,226 additions and 6,478 deletions. It remains one consolidated integration workstream; no successor PR was created.
+- No main changes, force-push, branch rewrite, reset, clean, stash or destructive file operation was performed.
+
+### Exact-head test evidence
+
+- The stale publisher-timestamp assertion in `tests/test_xrp_event_timeline_ingestion.py` selected the older `run192_update` metadata because Run220 used the newer `missing_exact_publisher_timestamp_count` field. The test now checks the canonical `publisher_timestamp_coverage` object and accepts both historical run-metadata field names.
+- Exact push run [44129834440](https://github.com/Barrot-Agent/B-Agent/actions/runs/44129834440), code head `b963098f00aaa1b6e0c0603f869d6b2e42283c12`: **4,102 passed, 1 skipped, 11 warnings, 19 subtests passed in 178.51 seconds; 77% total coverage.**
+- The same exact-head job built the wheel and verified the installed wheel loads Barrot V3, the XRP mission and canonical data assets.
+- Push dependency audit [44129834395](https://github.com/Barrot-Agent/B-Agent/actions/runs/44129834395) passed. Push fail-closed gate [44129834407](https://github.com/Barrot-Agent/B-Agent/actions/runs/44129834407) passed. Core tests and Pages validation-only checks passed.
+- PR-triggered CI [44129847470](https://github.com/Barrot-Agent/B-Agent/actions/runs/44129847470) skipped its test jobs under the path/branch filter; do not count it as the full-suite result. The passing full-suite evidence above is the push run on the exact code head `b963098`.
+- Main's full-suite run [44116900319](https://github.com/Barrot-Agent/B-Agent/actions/runs/44116900319) failed test collection because main's `requirements-dev.txt` omits SciPy, required by `tests/test_cymatics_modes.py`. The integration branch adds `scipy>=1.13.0`; this fixes the observed dependency gap on the integration branch, not on main.
+
+### Security, workflow and merge blockers
+
+- Main's `Barrot Sync` workflow currently runs `python b_agent.py --sync || echo ...` and `git push || true`; its green run does not prove that sync or push succeeded. The integration branch quarantines this workflow with empty permissions and a disabled job.
+- Sixty-two changed workflow definitions were triaged. High-risk write/deploy workflows inspected include Databricks deployment, Cloudflare A2A deployment, Space restart, Hugging Face model upload, Kaggle submissions, Databricks/Kaggle operations, and self-hosted Space sync. External actions are manually gated with explicit confirmation and/or exact-main-SHA checks; the self-hosted brain sync is fully disabled. No deployment, restart, secret rotation, Kaggle submission, external model upload, transfer, trade or paper trade was executed.
+- The integration's scheduled XRP ingestion workflow is designed for main and uses public sources, read-only repository/actions permissions and GitHub artifacts. It has not become a live scheduled production ingestion until merged to main. Its 90-day GitHub artifact retention is not WORM storage.
+- Repository metadata reports Pages enabled. Main push run [44116896562](https://github.com/Barrot-Agent/B-Agent/actions/runs/44116896562) failed during Jekyll build and its deploy job was skipped. A merge to main can trigger the Pages build/deployment pipeline again; the user has not authorized deployment. Do not merge while this side effect remains unresolved.
+- Main is marked protected, but the branch endpoint reports no required status-check contexts; the visible fallback ruleset is disabled. The branch-protection detail endpoint returned 403. CODEOWNERS names only `@Barrot-Agent`; PR #1663 has zero formal reviews and zero review threads. Independent review and enforceable required-check evidence remain absent.
+- PR #1663 remains draft. No merge is authorized by the current evidence.
+
+### Run221 XRP market and institutional research
+
+Research artifact: `research/xrp_intelligence/20261117T165418Z-run221-market-and-institutional-reconciliation.json`.
+
+- Spot reference: Investing.com showed $0.9696 on Nov 17, +1.51%, with a $0.9505–$0.9788 intraday range; its displayed time-zone label is unspecified.
+- Derivatives are materially inconsistent: AlertaChart $605.04M OI, Liqwall $965M, OptimistFi $1.4B and $1.8B in two snapshots 15 minutes apart, and TradRadar $1.31B on the prior day. Funding sign also differs. These are not averaged.
+- Basis Charts' $33.7M bid / $29.0M offer book is Binance XRPUSDT perpetual depth, not consolidated spot liquidity. It is not used as a spot-liquidity proxy.
+- Nov 16 ETF flow sign remains unresolved: CryptoKeyhole showed a partial -5.197M XRP with 2/4 funds reported; XRP Insights showed +158.148K XRP across a different six-spot-fund-plus-BITW universe with a provisional row; Maketo showed $0. Missing issuer reports are not zero. No aggregate is accepted.
+- Reuters described a stronger dollar near 103.61, up about 2.1% over six sessions, with hawkish Fed expectations and weaker risk appetite. This is a macro risk factor, not an XRP-specific forecast.
+- Coinbase/Circle: Circle's Q3 2026 SEC filing reports $331.3M Q3 and $986.6M nine-month distribution costs connected with Coinbase agreements. Coinbase's USDC platform-balance and ecosystem economics are direct financial links.
+- Coinbase/Ripple: Coinbase launched RLUSD on Prime, Exchange and retail across XRPL, Base and Ethereum. Global Exchange collateral availability was described as a future rollout, not live at launch.
+- SBI/Circle: SBI Holdings and SBI Shinsei Bank announced $50M of Circle equity ($25M each) and established a Circle JV to promote USDC in Japan. This is Circle exposure, not XRP capital.
+- SBI/Ripple: SBI VC Trade distributes RLUSD in Japan; SBI Remit documented XRP-as-bridge corridors to the Philippines, Vietnam and Indonesia in 2023. SBI Ripple Asia's tokenized-deposit PoC contemplates XRPL but does not identify XRP as the bridge asset.
+- SBI/Startale/BlackRock: JPYSC is issued by SBI Shinsei Trust and distributed by SBI VC Trade; SBI reported more than ¥30B in handling balance and more than ¥10B in lending balance on Nov 2. The Oct 27 BlackRock/Startale/SBI announcement is an MOU, not proof of a launched tokenized-MMF rail.
+- BNY custody support for XRP/RLUSD is custody capability, not proof of new XRP purchases. Circle USDC on XRPL is not proof of XRP bridge usage. PNC/Coinbase USDC pilot evidence is on Ethereum.
+
+### Prediction readiness and nine-platform map
+
+- Existing event registry remains Run220: 140 curated events; 54 exact publisher timestamps; 86 missing; zero byte-exact raw-source receipts; zero model-eligible events; zero forecasts.
+- Run221 observations are rendered-page research only. All source raw hashes remain null. Do not hash rendered text as if it were original publisher bytes.
+- No directional forecast, paper trade or real-money action was issued or executed.
+- ChatGPT/GitHub connector read and integration-branch write were tested. Claude, Gemini and Codex were not tested. Grok, Copilot, Hugging Face, Kaggle and Databricks have workflow references only; no separate live authentication/data-flow verification was performed. No nine-platform quorum is claimed.
+
+### Open-PR backlog
+
+| PR | Classification | Reason |
+|---|---|---|
+| #1663 | blocked | Sole consolidated integration; draft; Pages deployment risk; no independent review; required-check configuration unresolved |
+| #1541 | blocked | Unique MMI claim-fingerprint security follow-up stacked on its parent security branch |
+| #1450 | blocked | Binance/escrow research successor stacked on #1436 research branch |
+| #1460 | blocked | Unique institutional multirail/Kamilah research stacked on #1450 |
+| #1440 | blocked | Validator-trigger repair stacked on #1436 |
+| #1436 | unique/unreviewed | Binance theft/freeze and attacker-wallet research |
+| #1437 | blocked | Source-addenda repair stacked on #1353 archive branch |
+| #1353 | blocked | Lossless XRP ledger sharding stacked on #1265 |
+| #1265 | blocked | Compact ledger index stacked on an older research branch |
+
+No source PR was closed. These branches are not treated as duplicates merely because they are old or stacked.
+
+### Next concrete action
+
+1. Verify exact-head CI for the final Run221 handoff commit after this documentation/artifact update.
+2. Obtain an independent review of PR #1663 and verify actual branch-protection required checks.
+3. Resolve the GitHub Pages deployment side effect without performing an unapproved deployment.
+4. Continue public-source byte capture and point-in-time receipt-chain validation; do not enable directional forecasts until model eligibility and leakage-safe out-of-sample evaluation are demonstrated.
+
+---
+
 # Canonical Barrot XRP Mission Handoff — Run220
 
 **This is the sole current handoff.** The older `BARROT_XRP_MISSION_HANDOFF_CURRENT.md` and root `BARROT_XRP_MISSION_HANDOFF.md` are preserved historical copies and are not updated in parallel.
