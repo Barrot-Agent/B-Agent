@@ -6308,3 +6308,93 @@ The current map remains in the repository. Only the ChatGPT/GitHub path was auth
 - NOT VERIFIED: independent reviewer approval, branch-protection/required-check configuration, WORM raw-source retention, scheduled production ingestion, live XRP order-book depth, and model out-of-sample superiority.
 - Decision: DO NOT MERGE #1663 while it remains draft, has zero independent reviews, CODEOWNERS is self-only, and branch protection cannot be inspected. Do not close source PRs.
 - Next action: obtain independent security/code review and verify repository branch-protection settings; then run the full suite and all security gates on the resulting exact PR head. Continue public-source research and preserve dissenting market-data observations. No new PR, deployment, secret rotation, Kaggle submission, paper trade, transfer or real-money action is authorized by this run.
+
+
+# Run 215 — 2026-11-17 — exact-head verification, workflow audit and backlog reconciliation
+
+## 1. Current refs and repository inventory
+
+- Main: `d9270465829ff166b29f40587e126583cebea9cb` (latest main commit 2026-11-17 12:23:36 UTC).
+- Integration head before this handoff append: `cbd310a92f3a7bcb14673f0909b2e46120c6a033`.
+- PR #1663 branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; compare against current main reports **187 commits ahead, 0 behind**, with current main as the merge base.
+- PR #1663 is open/draft, GitHub reports mergeable, **1,379 changed files, +501,907 / -6,476**, zero formal reviews, zero review threads and no requested reviewers.
+- Complete recursive trees were read without truncation: main tree 1,582 entries; integration tree 2,786 entries; integration contains 80 workflow YAML files and 830 XRP-related paths. The book project and current-main additions are present in the integration tree.
+- No main write, branch rewrite, reset, clean, stash, force-push or source-PR closure occurred.
+
+## 2. Exact-head verification on cbd310
+
+Push CI run [44087258169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087258169), head `cbd310a92f3a7bcb14673f0909b2e46120c6a033):
+
+- Full repository job 134052807296: **4,094 passed, 1 skipped, 11 warnings, 19 subtests passed in 170.10 seconds**.
+- Inclusive package coverage: **68.09%**, above the 62% gate; legacy-core coverage: **77%**, above its 70% gate.
+- All active repository tests, including runnable legacy and hidden task tests, ran. Wheel build and installed-wheel smoke verification passed; the installed package loaded Barrot V3, the XRP mission and canonical data assets.
+- GitHub Pages validation passed on push CI and PR CI [44087267157](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087267157).
+- Push dependency audit [44087258491](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087258491) and PR dependency audit [44087267188](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087267188) passed across root runtime, development, supplemental integrations, Hugging Face Space, legacy and PEP 621 dependency manifests.
+- Push fail-closed gate [44087258379](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087258379) and PR fail-closed gate [44087267160](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087267160) passed. Both explicitly state automatic merge is disabled.
+- The PR-triggered CI job skips the full-suite jobs for the integration branch by workflow condition. The exact-head push CI above did execute the full suite; the PR core subset is not being substituted for it.
+- Non-failing warnings: legacy tests return booleans instead of None; setuptools reports deprecated license-table metadata and package-discovery warnings; GitHub Actions cache is read-only because the configured cache budget is exhausted. These are recorded, not silently treated as test failures.
+
+This handoff append is metadata-only. It will create a new PR head and trigger another exact-head validation; no result from cbd310 is transferred to that successor head.
+
+## 3. Current-main workflow side effects
+
+Main remained at `d927046` during this audit.
+
+- Main CI [44082753771](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753771): **1,091 passed, 1 skipped, 8 subtests, 78.13% coverage**. This smaller main suite does not validate the integration-only packages.
+- Main Pages run [44082753727](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753727) failed at `GLOBAL_STATE_MANIFEST.md:6450` because Liquid parsed a literal double-brace template as an unterminated expression. Deployment was skipped. The integration Pages validation passes with the raw/endraw correction.
+- Main Barrot Sync run [44082754152](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082754152) was green at the workflow level, but its log shows `b_agent.py --sync` failed with `ModuleNotFoundError: rich`; the shell fallback printed “sync skipped” and masked the inner failure. No sync commit was pushed. The integration version of this workflow is quarantined.
+- Main Cross Analysis [44087123263](https://github.com/Barrot-Agent/B-Agent/actions/runs/44087123263) completed successfully using read-only analysis and artifact upload.
+- Main Pillars Consistency Check [44088686769](https://github.com/Barrot-Agent/B-Agent/actions/runs/44088686769) failed its read-only capability checks: missing GitHub App ID/private key/installation ID, Databricks HTTP 403, and Hugging Face Space build error. These are external authentication/provider blockers, not a passing integration test. No credentials were changed or rotated.
+
+## 4. Security, workflow and merge assessment
+
+- The main branch object reports `protected=true`, but its visible required-status-check contexts/checks arrays are empty. The detailed branch-protection endpoint returns 403 (“Resource not accessible by integration”). The only visible repository ruleset, “Fall Back” (ID 10863829), is **disabled**. Full protection/bypass and review enforcement remain unverified.
+- `.github/CODEOWNERS` assigns `*` only to `@Barrot-Agent`; this is not independent approval.
+- PR #1663 has zero formal reviews and zero review threads, and remains draft. “Mergeable” is not equivalent to approval or authorization.
+- Main still contains high-write automation paths: Barrot Agent has contents/pull-request/issue write permissions and Groq credentials; Barrot Sync reads GH_TOKEN and can commit/push to main; Sync to Hugging Face can upload code and use Hugging Face, Groq and Databricks credentials; the main Coinbase paper-trader can commit/push its paper state without the new explicit confirmation gate. The integration branch quarantines the first three and changes the paper-trader to explicit YES + exact-main-SHA + artifact-only behavior. These containments are not active on main until a future reviewed merge.
+- Integration manual external-action workflows remain separately gated; no deployment, secret rotation, Space restart, Kaggle submission, Databricks deployment, paper-trader dispatch, transfer or real-money action was performed.
+- Test-coverage gap found during semantic review: `tests/test_automation_containment.py` verifies many quarantined workflows but its explicit `QUARANTINED_WORKFLOWS` tuple omits `barrot-sync.yml` and `barrot-self-upgrade.yml`, even though both files are quarantined on the integration branch. Add regression assertions for these before merge. The auto-merge workflow is a read-only fail-closed notice, but should also receive a direct regression assertion.
+- The integration is 1,379 files and more than 500,000 additions. Passing CI does not replace independent semantic/security review of this large change set.
+
+**Decision: DO NOT MERGE #1663.** The branch is functionally green on cbd310, but the independent-review, draft-state, branch-protection and high-risk-mainline governance blockers remain.
+
+## 5. Open PR inventory and overlap classification
+
+Nine PRs remain open; no PR was created or closed.
+
+| PR | Classification | Verified relationship to #1663 |
+|---|---|---|
+| #1663 | Active consolidated integration; draft | Main XRP/V3 integration workstream |
+| #1541 | Potentially superseded; preserve pending final review | 5/5 paths overlap. `mmi_adapter.py` and `test_mmi_integration.py` are exact blob matches; `mmi_v1.py`, its test and the research JSON differ. Both heads contain `canonical_claim_id`; integration has a longer implementation/test surface. Not an exact duplicate yet. |
+| #1265 | Unique/unreviewed | 1/144 paths overlap (`.github/workflows/ci.yml`), and the blobs differ. Its ledger/index work is not established as duplicated. |
+| #1460 | Unique/unreviewed | 8 changed paths; zero overlap with #1663 |
+| #1450 | Unique/unreviewed | 116 changed paths; zero overlap |
+| #1440 | Unique/unreviewed | 64 changed paths; zero overlap |
+| #1437 | Unique/unreviewed | 5 changed paths; zero overlap |
+| #1436 | Unique/unreviewed | 24 changed paths; zero overlap |
+| #1353 | Unique/unreviewed | 1,084 changed paths; zero overlap |
+
+Each of the eight source PR heads was compared with current main; GitHub reports no common ancestor for those branch heads. Do not merge these stale branches directly. Preserve their unique work. Close only exact duplicate/superseded PRs after a successor has merged and its content is verified on main.
+
+## 6. XRP research and prediction boundary
+
+- The latest Run214 market snapshot remains descriptive: Kraken single-venue XRP/USD around 0.96833 in the 12:30–12:33 UTC capture, with only top-of-book level-one sizes; Liqwall and OptimistFi open-interest estimates materially disagree by venue coverage and timestamp; November 16 ETF flow remained partial at 2/4 tracked funds. Do not average provider totals or fill missing ETF issuers with zero.
+- These web observations do not have raw HTTP byte receipts and are not model-eligible.
+- Curated events: 125; exact publisher timestamps: 48; missing exact timestamps: 77; raw byte receipts: 0; model-eligible events: 0; forecasts issued: 0.
+- The ingestion adapter uses allowlisted public HTTPS endpoints without credentials, validates redirects/cache age and records content hashes/receipts. The scheduled workflow is read-only (`actions: read`, `contents: read`), gated to main, and scheduled hourly plus a daily full-horizon run. It has not run on main because it is not merged.
+- Local append-only SQLite point-in-time feature storage, event timeline, four baselines, chronological walk-forward, Brier/log-loss calibration, drift monitoring and forecast ledger are implemented/tested on the integration branch. Readiness requires at least 100 OOS observations, 100 shadow observations, five independent source groups, calibration error no greater than 0.05, stable drift, beating all four baselines on both Brier and log loss, horizon embargo and independent Ed25519 evaluator attestation.
+- GitHub Actions artifacts expire (90 days; feature-store checkpoint 7 days) and are not WORM. Independent immutable retention remains unverified.
+- No directional XRP forecast is justified.
+
+## 7. Nine-platform coordination
+
+Only the ChatGPT-to-GitHub connector path was authenticated and exercised. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks were not independently authenticated or tested for data flow. No live nine-platform quorum is claimed.
+
+## 8. Next concrete actions
+
+1. Add regression assertions for the quarantined Barrot Sync and Self-Upgrade workflows and the read-only auto-merge notice; rerun the entire repository suite on the resulting exact head.
+2. Obtain independent security/code review of the 1,379-file integration.
+3. Verify enforceable main branch-protection settings, required checks and independent approval through an authorized inspection path; do not infer them from “mergeable”.
+4. Continue source research and immutable raw capture; keep forecasts disabled until the full OOS/shadow and provenance criteria are actually met.
+
+No merge, source-PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
