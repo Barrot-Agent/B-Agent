@@ -592,3 +592,22 @@
   assert_supported 24.59 -> 13.63ms, same ledger bytes, tamper still caught.
 - tests/test_witness_loop.py 10/10 before and after. scripts/witness_loop.py = V3.
 - Next step: results/mmi_mastery_wishlist.md (Top 50).
+
+## 2026-11-17 — PHASE 4 SECTION 2: MMI Top-50 wishlist written
+- results/mmi_mastery_wishlist.md: 50 items, each with Why / Data / Transmutation
+  / Proof of mastery, in 4 groups (market data, execution+risk, paradigm sync,
+  loop integrity) + an order of attack.
+- All "Why" lines are measured facts, not textbook. Key ones:
+  * web/signal_accuracy.json: 772/1697 = 45.5% directional accuracy.
+  * web/latest_signal.json publishes confidence 0.0 with score 44, and is 18.6
+    days old; scripts/signal_summary.py:135 itself requires 0 < confidence.
+  * web/paper_trading_state.json: position_product null + avg_entry_price
+    80436.84 + 126 trades -> corrupt book nobody caught.
+  * trading/ has no fee, no slippage, no drawdown, no stop; RiskManager checks
+    one thing ($25 cap); client_order_id is a fresh uuid per call.
+  * two signal ledgers disagree: data/signal_ledger.jsonl 45 lines vs
+    web/signal_history.jsonl 1697 records.
+- Two claims corrected after checking: prompt_hash DOES exist in
+  barrot_agent/barrot_brain.py:121 (so item 33 says it never reaches signals),
+  and patch_add_btc_tool.py reads signals rather than writing them (item 31).
+- Next step: results/gap_fill_log.json + scripts/verify_artifacts.py (fill item 30).
