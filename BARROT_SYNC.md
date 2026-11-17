@@ -1051,3 +1051,61 @@ Governance remains blocked: PR #1663 draft, zero formal reviews, zero review thr
 - TIME: ~22 min wall clock vs 15-min cap — OVER. R1 6m, R2 2m, R3 5m; the rest is
   full-suite proof (3m55s) plus reverting 36 files of pytest timestamp churn. Cost
   $0.00 (free models only; no external AI is wired in this runtime).
+
+## 2026-11-17 — Meta: RE method written down + full snapshot run
+- Generated the full snapshot exactly as scripted: /tmp/FULL_SNAPSHOT.md,
+  10437 lines / 563235 bytes. Not committed (lives in /tmp).
+- Two defects in the snapshot script itself (not the repo):
+  1. section 2 uses `git ls-files` without `-c core.quotePath=false`, so the
+     tracked file `data/millennium_problem_7_poincaré_conjecture.json` comes back
+     quoted (`"...poincar\303\251..."`) and is reported as `0 bytes | 0 lines`;
+  2. section 6 runs `find . -type f -name "*ch-*" -o -name "*chapter*"` without
+     parentheses, so `-type f` binds only to the first branch; the chapter loop
+     walks non-chapter files and its headings pollute the section index. The
+     `$(find ...)` is also unquoted, so any path with a space breaks it.
+- Wrote results/RE_METHOD.md (1 page): the actual order (pin claim -> split atoms
+  -> cheapest authority -> quote and diff -> smallest fix -> before/after proof ->
+  revert side effects -> receipt), first-vs-last, done-vs-guessing (witness_loop
+  SUPPORTED/REFUTED/CONTRADICTED, 10 tests), three recurring mistakes, and an
+  11-line checklist that needs no human in the loop.
+- Evidence used, not memory: scripts/witness_loop.py:33-35,95-96, `mcp_config.json`
+  :94 pointing at a missing `barrot_agent/mcp_registry.json`, 36 tracked files
+  rewritten per full pytest run (measured twice), ch-08's invented token ceiling.
+- Not done: the 5-tool MCP server. The spec arrived truncated at tool 4
+  (`reverse_engineer` -> `"steps_used": ["1.",`) and tool 5 is absent entirely.
+  Two of the three fully specified tools also have no real data source:
+  run_foundry_cycle (no Foundry code exists; Sean has not authorised building it)
+  and flight_recorder_replay (recorder holds one mission, 3 records, so there is no
+  second run of the same task to replay). check_capability does have real data
+  (barrot_capability_audit.json: 122 capabilities, evidence, gaps).
+
+## 2026-11-17 — Field track accepted, parked behind GO FIELDS
+- Ch 8 confirmed pushed: ceda46a37. HEAD 443deb3a9, main in sync with origin,
+  working tree clean except one untracked test artifact.
+- Field track contract recorded in MEMORY.md: 8 topics in order, 3-layer tagging
+  (L1 Established / L2 Applied / L3 Speculative), six required fields per topic,
+  one reverse-engineered example each, prediction-before-promotion gate, $2/15min,
+  2 rounds, Flight Recorder per topic. Not started: waiting for GO FIELDS.
+- Pre-registered conflict: pillars_check.py bans "free energy" and "Planck-scale",
+  but scans only hf_space/app.py. Layer 3 prose is safe in docs, never in the
+  deployed surface.
+- Dependency that does not exist: Foundry (0 hits in *.py). Track will run on
+  RE_METHOD + Flight Recorder until Foundry is real.
+
+## 2026-11-17 — Track 1 Cymatics shipped (prediction gate passed on frequency)
+- docs/fields/track-01-cymatics.md: 3-layer tagged page, six required fields, one
+  reverse-engineered example, L3 section with its own falsifier.
+- New: scripts/cymatics_mode_check.py. Predictions written BEFORE the run, then
+  measured on a 60x60 FD Laplacian (lowest 10 eigenpairs, 2.87 s). Predicted ratios
+  1.5811/1.5811/2.0000/2.2361 vs measured 1.5807/1.5807/1.9993/2.2343, worst error
+  0.16 percent. Tests: tests/test_cymatics_modes.py, 4 passed.
+- Partial failure kept in the page: per-axis nodal-count predictions held only for
+  (2,2), the one non-degenerate mode. Degenerate pairs mix, so the same frequency
+  yields two patterns. That is a result (it is why pattern is not a function of
+  frequency alone), not a bug to delete.
+- Corrected category error before it shipped: ultrasonic cleaning is cavitation,
+  not cymatics.
+- Prediction gate result: PASS on frequency ordering, PARTIAL on nodal counts.
+  Skill promotion still blocked until one physical plate test is run.
+- Caps: $0.00, 12 min of 15. Flight Recorder:
+  results/flight_recorder/2026-11-17-track01-cymatics.jsonl

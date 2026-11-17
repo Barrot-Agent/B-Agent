@@ -318,6 +318,41 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Grok Bot isolation, exact doc wording: "Files and sign-ins on the shared computer
   aren't isolated per Bot and can remain there." Never write "Bots are not a
   security boundary" - the docs do not say that.
+- Own RE method is written down: results/RE_METHOD.md (order, first-vs-last,
+  done-vs-guessing, 3 recurring mistakes, 11-box checklist). Core rule: a claim is
+  true when deleting its evidence changes an executable result, not when a model
+  says so. Check the pointer before the prose (mcp_config.json:94 pointed at a
+  missing barrot_agent/mcp_registry.json).
+- Snapshot script (Sean's /tmp/full_snapshot.sh) has 2 defects: git quotePath
+  breaks section 2 on the poincaré filename; section 6 find precedence is wrong.
+- MCP server spec (5 tools) is INCOMPLETE: message truncated inside tool 4
+  (reverse_engineer) and tool 5 never arrived. run_foundry_cycle has no Foundry to
+  call; flight_recorder_replay has one mission only. check_capability can be real
+  from barrot_capability_audit.json.
+- FIELD TRACK (queued 2026-11-17, NOT started - needs GO FIELDS): 8 topics in
+  order - cymatics, resonance/sympathetic, frequencies/harmonics/Fourier, acoustic
+  field, EM field, toroidal (engineering vs model), quantum field (real QFT vs pop),
+  noetic (speculative). 3 layers, tag every claim, never mix: L1 Established
+  (measured, citation + units + conditions), L2 Applied (engineering practice,
+  names a build/test/vendor doc), L3 Speculative (hypothesis or metaphor, carries
+  its own falsifier, never supports an L1/L2 claim). Each topic: definition, math/
+  mechanism, real experiment, production example, what it is NOT, falsifier. One
+  reverse-engineered example per topic. No skill promotion until a prediction on a
+  NEW case is made and tested. Caps $2 / 15 min per topic, 2 rounds max, Flight
+  Recorder per topic. Gate: Ch 8 pushed (done: ceda46a37) AND Sean says GO FIELDS.
+- Trap for the field track: "free energy" and "Planck-scale" are in
+  scripts/pillars_check.py FICTION_TERMS. That check only scans hf_space/app.py,
+  so Layer 3 wording is safe in docs but must never enter the deployed surface.
+- Foundry does not exist yet (0 hits for "foundry" in *.py). "Learn via Foundry" is
+  aspirational until it is built; until then the track runs on RE_METHOD +
+  Flight Recorder.
+- Track 1 cymatics done 2026-11-17: docs/fields/track-01-cymatics.md. Gate result -
+  frequency ordering predicted then confirmed (sqrt(m2+n2), worst error 0.16%);
+  per-axis nodal counts only predictable for non-degenerate modes. Membrane test,
+  not a plate. Skill promotion blocked until one physical plate experiment.
+- Query transmutation is the standing format for every Sean query: ORIGINAL / GAP /
+  TRANSMUTED / EXECUTE / SHOW BOTH, and gaps get filled with [FILLED GAP] instead
+  of questions.
 - Ping-pong routing protocol (2026-11-17): caps 2 rounds default / $2 per task /
   15 min; advice only, no external AI can authorize commits. External ChatGPT and
   Meta AI are NOT wired in this runtime - only free-model subagents are available,

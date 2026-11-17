@@ -42,6 +42,8 @@ integrations = [
     "cdp-sdk>=1.0.0",
 ]
 
+science = ["scipy>=1.13.0"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["barrot_agent", "barrot_agent.*", "data", "directive_platform", "directive_platform.*"]
