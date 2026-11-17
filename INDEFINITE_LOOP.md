@@ -11,13 +11,13 @@ cannot, and the flaw found inside the last output becomes the next Y-query.
 
 | Field | Value |
 |---|---|
-| Iteration | 6 |
-| Last Y-query transmuted | "Transmute all workflows on GitHub, pull useful components, build a money stack" |
-| Transmuted target | 58 licence-checked workflows mapped to money versions, 3 components pulled, 3 workflows shipped |
-| Method | search by query, licence gate via GitHub API, pinned fetch, YAML parse grading |
-| Grade | Q 58 workflows, 10 BLOCKED-LICENSE, 3 components Q, 8 tests |
-| Artifact | docs/money/TRANSMUTE.md, ATTRIBUTIONS.md, vendor/workflow-patterns/ |
-| Next Y-query queued | "Run money workflow 1 for real: a paid issue needs a Q-grade, and Q is still zero." |
+| Iteration | 7 |
+| Last Y-query transmuted | "Build an auto workflow that targets accessible paying issues, forever" |
+| Transmuted target | A read-only hunter that scores paid issues every 6 hours and never claims one |
+| Method | 7 GitHub searches, line-scoped amount parsing, label difficulty, activity filter, markdown output |
+| Grade | Q on the schedule and read-only proof; 0 priced issues found, 8 platform-linked rows |
+| Artifact | .github/workflows/paid-issue-hunter.yml, PAID-ISSUES.md |
+| Next Y-query queued | "Auto-fix workflow for the top issue, but the top issue still has no stated amount." |
 
 ## Why each iteration followed the last
 
@@ -59,5 +59,6 @@ verified.
 | 4 | who calls the probe | denylist enforcement in validate() | Q, 3 enforcement tests | see git log | data/research/retracted_dois.json |
 | 5 | money cycle: products and paid issues | market scan, bounty scan, WebMCP check | Q counts / E payment signal / 0 verified bounties | see git log | docs/money/PRODUCTS.md |
 | 6 | transmute workflows, pull components | licence gate, pinned fetch, 3 money workflows | Q 58 / 10 refused / 3 pulled / 8 tests | see git log | docs/money/TRANSMUTE.md |
+| 7 | paid issue hunter, every 6h forever | 7 searches, strict amount parsing, 8 tests | Q on schedule; 0 priced | see git log | PAID-ISSUES.md |
 
 Every future STATUS PUSHED appends a row here and states the next queued Y-query.

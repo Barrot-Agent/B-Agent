@@ -1,0 +1,186 @@
+{
+  "built_at": "2026-11-17T21:11:21+00:00",
+  "queries": [
+    "label:bounty",
+    "bounty in:body",
+    "algora in:body",
+    "polar.sh in:body",
+    "issuehunt in:body",
+    "gitcoin in:body",
+    "opire in:body"
+  ],
+  "limit": 10,
+  "rows": [
+    {
+      "url": "https://github.com/k3d-io/k3d/issues/1689",
+      "title": "[BUG] install.sh does not allow user to specify which release",
+      "repo": "k3d-io/k3d",
+      "number": 1689,
+      "amount_usd": null,
+      "platform_link": "issuehunt.io",
+      "labels": [
+        "bug"
+      ],
+      "skills": [
+        "test",
+        "workflow"
+      ],
+      "difficulty": 2.0,
+      "score": null,
+      "stars": 6627,
+      "last_push": "2026-11-14",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/autokey/autokey/issues/1326",
+      "title": "X11 client connection leak: __initMappings() creates a new Display on every MappingNotify without closing the previous one",
+      "repo": "autokey/autokey",
+      "number": 1326,
+      "amount_usd": null,
+      "platform_link": "opire.dev",
+      "labels": [],
+      "skills": [
+        "cli",
+        "python"
+      ],
+      "difficulty": 2.5,
+      "score": null,
+      "stars": 3906,
+      "last_push": "2026-11-11",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/bk138/droidVNC-NG/issues/372",
+      "title": "memory leak bug",
+      "repo": "bk138/droidVNC-NG",
+      "number": 372,
+      "amount_usd": null,
+      "platform_link": "issuehunt.io",
+      "labels": [
+        "bug"
+      ],
+      "skills": [
+        "cli"
+      ],
+      "difficulty": 2.0,
+      "score": null,
+      "stars": 2448,
+      "last_push": "2026-11-17",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/LibVNC/libvncserver/issues/729",
+      "title": "Exports conflicting turbojpeg functions",
+      "repo": "LibVNC/libvncserver",
+      "number": 729,
+      "amount_usd": null,
+      "platform_link": "issuehunt.io",
+      "labels": [
+        "bug",
+        "building",
+        "component-server"
+      ],
+      "skills": [
+        "test"
+      ],
+      "difficulty": 2.0,
+      "score": null,
+      "stars": 1377,
+      "last_push": "2026-11-17",
+      "quote": "readelf -Ws /usr/lib/libvncserver.so | awk '$7 != \"UND\" && $8 ~ /^tj/'",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/LibVNC/libvncserver/issues/704",
+      "title": "Crash on rfbShutdownServer() when no client has connected",
+      "repo": "LibVNC/libvncserver",
+      "number": 704,
+      "amount_usd": null,
+      "platform_link": "issuehunt.io",
+      "labels": [
+        "bug",
+        "component-server"
+      ],
+      "skills": [
+        "cli"
+      ],
+      "difficulty": 2.0,
+      "score": null,
+      "stars": 1377,
+      "last_push": "2026-11-17",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/bk138/multivnc/issues/309",
+      "title": "Modifier keys not sent from OSK (Codeboard)",
+      "repo": "bk138/multivnc",
+      "number": 309,
+      "amount_usd": null,
+      "platform_link": "issuehunt.io",
+      "labels": [
+        "bug",
+        "platform-android"
+      ],
+      "skills": [
+        "cli",
+        "go"
+      ],
+      "difficulty": 2.0,
+      "score": null,
+      "stars": 676,
+      "last_push": "2026-11-05",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/bk138/multivnc/issues/293",
+      "title": "High CPU Usage on MacOS Client",
+      "repo": "bk138/multivnc",
+      "number": 293,
+      "amount_usd": null,
+      "platform_link": "issuehunt.io",
+      "labels": [
+        "bug",
+        "platform-mac"
+      ],
+      "skills": [
+        "cli"
+      ],
+      "difficulty": 2.0,
+      "score": null,
+      "stars": 676,
+      "last_push": "2026-11-05",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    },
+    {
+      "url": "https://github.com/davidgasquez/handbook/issues/51",
+      "title": "Link Checker Report",
+      "repo": "davidgasquez/handbook",
+      "number": 51,
+      "amount_usd": null,
+      "platform_link": "gitcoin.co",
+      "labels": [
+        "report",
+        "automated issue"
+      ],
+      "skills": [
+        "github action"
+      ],
+      "difficulty": 2.5,
+      "score": null,
+      "stars": 191,
+      "last_push": "2026-11-17",
+      "quote": "",
+      "status": "READY-UNPRICED"
+    }
+  ],
+  "status_values": [
+    "READY-UNPRICED"
+  ],
+  "mutations_performed": 0
+}
