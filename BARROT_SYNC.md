@@ -838,3 +838,30 @@
 - TIME: ~22 min wall clock vs 15-min cap — OVER. R1 6m, R2 2m, R3 5m; the rest is
   full-suite proof (3m55s) plus reverting 36 files of pytest timestamp churn. Cost
   $0.00 (free models only; no external AI is wired in this runtime).
+
+## 2026-11-17 — Meta: RE method written down + full snapshot run
+- Generated the full snapshot exactly as scripted: /tmp/FULL_SNAPSHOT.md,
+  10437 lines / 563235 bytes. Not committed (lives in /tmp).
+- Two defects in the snapshot script itself (not the repo):
+  1. section 2 uses `git ls-files` without `-c core.quotePath=false`, so the
+     tracked file `data/millennium_problem_7_poincaré_conjecture.json` comes back
+     quoted (`"...poincar\303\251..."`) and is reported as `0 bytes | 0 lines`;
+  2. section 6 runs `find . -type f -name "*ch-*" -o -name "*chapter*"` without
+     parentheses, so `-type f` binds only to the first branch; the chapter loop
+     walks non-chapter files and its headings pollute the section index. The
+     `$(find ...)` is also unquoted, so any path with a space breaks it.
+- Wrote results/RE_METHOD.md (1 page): the actual order (pin claim -> split atoms
+  -> cheapest authority -> quote and diff -> smallest fix -> before/after proof ->
+  revert side effects -> receipt), first-vs-last, done-vs-guessing (witness_loop
+  SUPPORTED/REFUTED/CONTRADICTED, 10 tests), three recurring mistakes, and an
+  11-line checklist that needs no human in the loop.
+- Evidence used, not memory: scripts/witness_loop.py:33-35,95-96, `mcp_config.json`
+  :94 pointing at a missing `barrot_agent/mcp_registry.json`, 36 tracked files
+  rewritten per full pytest run (measured twice), ch-08's invented token ceiling.
+- Not done: the 5-tool MCP server. The spec arrived truncated at tool 4
+  (`reverse_engineer` -> `"steps_used": ["1.",`) and tool 5 is absent entirely.
+  Two of the three fully specified tools also have no real data source:
+  run_foundry_cycle (no Foundry code exists; Sean has not authorised building it)
+  and flight_recorder_replay (recorder holds one mission, 3 records, so there is no
+  second run of the same task to replay). check_capability does have real data
+  (barrot_capability_audit.json: 122 capabilities, evidence, gaps).

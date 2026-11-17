@@ -304,6 +304,17 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Grok Bot isolation, exact doc wording: "Files and sign-ins on the shared computer
   aren't isolated per Bot and can remain there." Never write "Bots are not a
   security boundary" - the docs do not say that.
+- Own RE method is written down: results/RE_METHOD.md (order, first-vs-last,
+  done-vs-guessing, 3 recurring mistakes, 11-box checklist). Core rule: a claim is
+  true when deleting its evidence changes an executable result, not when a model
+  says so. Check the pointer before the prose (mcp_config.json:94 pointed at a
+  missing barrot_agent/mcp_registry.json).
+- Snapshot script (Sean's /tmp/full_snapshot.sh) has 2 defects: git quotePath
+  breaks section 2 on the poincaré filename; section 6 find precedence is wrong.
+- MCP server spec (5 tools) is INCOMPLETE: message truncated inside tool 4
+  (reverse_engineer) and tool 5 never arrived. run_foundry_cycle has no Foundry to
+  call; flight_recorder_replay has one mission only. check_capability can be real
+  from barrot_capability_audit.json.
 - Ping-pong routing protocol (2026-11-17): caps 2 rounds default / $2 per task /
   15 min; advice only, no external AI can authorize commits. External ChatGPT and
   Meta AI are NOT wired in this runtime - only free-model subagents are available,
