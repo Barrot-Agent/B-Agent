@@ -1,3 +1,58 @@
+# Run221 Post-Handoff Verification Addendum
+
+**Captured:** 2026-11-17T17:03:10.277Z  
+**Main SHA:** `482f611e8500d1ce88d5e2bdee969eac7e3133dd`  
+**Integration head tested:** `700ec8afc12fc57b5211e6dbfc538c62f5c83f40`  
+**Integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`
+
+## Final Run221 exact-head verification
+
+- PR #1663 is still draft/open/mergeable, 205 commits ahead of main and zero behind.
+- Current PR diff: 1,383 files, 506,048 additions, 6,478 deletions.
+- Exact push CI [44131462707](https://github.com/Barrot-Agent/B-Agent/actions/runs/44131462707) passed on `700ec8afc12fc57b5211e6dbfc538c62f5c83f40`: **4,102 passed, 1 skipped, 11 warnings, 19 subtests; 177.19 seconds; 68.09% inclusive coverage and 77% legacy-core coverage.** Wheel build and installed-wheel verification of Barrot V3, the XRP mission and canonical data assets passed.
+- Push dependency audit [44131462769](https://github.com/Barrot-Agent/B-Agent/actions/runs/44131462769) passed. Push fail-closed gate [44131462893](https://github.com/Barrot-Agent/B-Agent/actions/runs/44131462893) passed. PR dependency audit [44131481387](https://github.com/Barrot-Agent/B-Agent/actions/runs/44131481387) passed. PR CI [44131481219](https://github.com/Barrot-Agent/B-Agent/actions/runs/44131481219) passed Pages validation but skipped both test jobs; use the push full-suite run as the exact-head test evidence.
+- No code changes followed `700ec8` before this documentation-only addendum. The addendum commit triggers another push CI run; do not merge until that final run is checked.
+
+## Safety review additions
+
+- Active `scripts/transmute.py` is a fail-closed 1,202-character stub. Calling its API raises `TRANSMUTE QUARANTINED`; its CLI exits 2. Tests verify the target, candidate and log remain unchanged. The former destructive implementation (which overwrote targets and deleted losing variants) is preserved only under `archive/quarantined/` for historical review; it was not executed.
+- `coinbase-paper-trader.yml` is manual-only, requires exact `YES` plus an unchanged full main SHA, and is configured for BTC-USD artifact-only simulation. It also reads a Groq secret. No dispatch or paper trade occurred.
+- `signal-summary.yml` is manual-only, requires `YES` and an exact main SHA before sending data to Groq; it is summary-only, not a forecast. No provider call occurred. Legacy signal emitter, knowledge-signal cycle, accuracy checker, Databricks token rotation, force-deploy and autonomous self-deploy workflows are disabled.
+- Databricks deployment, A2A deployment, Space restart, Hugging Face upload, Kaggle submission and operations workflows remain manually gated by explicit confirmation and/or exact-SHA checks. No external write, deployment, restart, token rotation or submission occurred.
+- The scheduled XRP ingestion workflow is absent from main (main content lookup returns 404) and exists only on this integration branch. Its job is explicitly restricted to `refs/heads/main`; therefore there is no live scheduled XRP ingestion run yet. Its design uses allowlisted public HTTPS sources, no provider credentials, redirect rejection, raw-byte SHA-256 receipts, write-once content-addressed paths, per-run and cross-run hash chains, and GitHub artifacts with 90-day retention. That retention is not WORM durability; no ingestion workflow was dispatched.
+- Repository Pages is enabled. Main's Pages build failed and its deployment job was skipped. A merge can trigger the Pages deployment pipeline again; deployment remains unauthorized.
+
+## Open-PR overlap reconciliation
+
+- PR #1541's five changed paths overlap #1663. The canonical claim-text fingerprint, adapter enforcement, corroboration enforcement, tests and evidence artifact are already present in #1663. PR #1541 is stacked on #1540, which is closed unmerged. Classify #1541 as **superseded pending #1663 merge**; do not close it until #1663 is merged and the content is verified on main.
+- PR #1265 overlaps #1663 only on `.github/workflows/ci.yml`. Its unique `tests/test_xrp_ledger_index.py` is not present in #1663, so the ledger-index feature remains **unique/unreviewed** and is not superseded by the full-suite job.
+- #1450, #1460, #1440, #1436, #1437 and #1353 have no changed-path overlap with #1663. They remain unique research/repair/archive work, mostly blocked by stacked branch ancestry. No PRs were closed.
+- PR #1663 has zero formal reviews and zero review threads. Main is marked protected, but visible required-status-check contexts are empty; the fallback ruleset is disabled and CODEOWNERS names only `@Barrot-Agent`. Independent review and enforceable required-check evidence are still absent.
+
+## Updated backlog classification
+
+| PR | Classification | Reason |
+|---|---|---|
+| #1663 | blocked | Sole integration PR; draft; Pages deployment risk; independent review and required-check configuration unresolved |
+| #1541 | superseded | Its claim-fingerprint implementation is already in #1663; close only after successor merge and main verification |
+| #1450 | blocked | Unique research successor stacked on #1436 |
+| #1460 | blocked | Unique institutional multirail research stacked on #1450 |
+| #1440 | blocked | Unique validator/trigger repair stacked on #1436 |
+| #1436 | unique/unreviewed | Binance theft/freeze and attacker-wallet research |
+| #1437 | blocked | Unique source-addenda repair stacked on #1353 |
+| #1353 | blocked | Unique lossless XRP ledger sharding stacked on #1265 |
+| #1265 | unique/unreviewed | Unique compact ledger index; its test is absent from #1663 and its branch is stacked on an older research branch |
+
+## Next action
+
+1. Check the push CI run triggered by this addendum commit on its exact resulting head.
+2. Obtain an independent review and verify actual branch-protection requirements.
+3. Resolve the Pages deployment side effect without performing an unapproved deployment.
+4. Preserve #1541 until #1663 is merged and its claim-fingerprint content is verified on main; preserve all other unique PRs.
+5. Keep forecast issuance disabled until original-byte receipts, eligible point-in-time data, leakage-safe walk-forward lift over all baselines, calibration, stable drift and independent shadow evidence satisfy the mission policy.
+
+---
+
 # Canonical Barrot XRP Mission Handoff — Run221
 
 **This is the sole current handoff.** Older handoff files remain historical copies and are not updated in parallel.
