@@ -275,3 +275,21 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   (`git checkout -- .` + rm the new feedback_loop file). Backup of one such churn:
   ~/barrot/backup-20261117/test-run-churn-0909.patch.
 - Open fix (not done): point those writers at tmp_path. Own transmute run.
+
+### Book project — grok-100k-business (started 2026-11-17)
+- Location: book/grok-100k-business/. Contract is toc.yaml; build_book.py measures
+  320 words/page (code + HTML comments excluded), emits dist/book.md +
+  dist/build_report.json.
+- Stated 297 pages; supplied TOC units total 216; the 81-page difference is
+  explicitly assigned to `proposed` Part Six (35p) + appendices A-F (46p).
+  Sean has NOT confirmed those; labeled proposed everywhere.
+- Drafted: front matter + Part One = 35.4/45 pages (79%). Outlined: ch7-29.
+- Grok facts verified 2026-11-17 (docs.x.ai): Grok Bot = cloud computer + multi-bot
+  handoffs + routines + memory + MCP/API; Grok Build = TUI/headless/ACP,
+  `grok -p`, `grok inspect`, install via x.ai/cli/install.sh; pricing grok-4.7
+  $2/$6 per M (<200K), grok-build-0.1 $1/$2 (256K), tools $5/1k search + $5/1k
+  code exec, collections $2.50/1k, batch -20%, cached input $0.50/M.
+- "Grok Swarm" is not a documented product; written as a pattern, not a SKU.
+- Foreword attribution pending; test enforces the ATTRIBUTION PENDING block.
+- INCIDENT 2026-11-17: `git ls-files --others | xargs rm` deleted the untracked
+  project. Recovered from dist/book.md. Never bulk-delete untracked files here.
