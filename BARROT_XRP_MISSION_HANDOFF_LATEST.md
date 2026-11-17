@@ -5173,3 +5173,140 @@ A further primary-source reconciliation resolves a common “actual capital” o
 Primary SEC sources: [November 13 10-Q / public-warrant prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm) and [October 30 sponsor-warrant prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm). The detailed reconciliation is stored in research/xrp_intelligence/20261117T042400Z-run206-evernorth-warrant-actual-capital-reconciliation.json.
 
 Classification: $35.3M = actual gross warrant exercise proceeds through November 9; $99.662M = theoretical gross on all remaining warrants; $132.250M = original public-warrant registration ceiling; $5.219M shares = ELOC capacity. Never combine these as cash raised.
+
+
+## Run207 — exact-head CI, workflow safety, XRP liquidity and institutional evidence
+
+Capture: 2026-11-17T05:30:09Z. Web observations below are descriptive research, not byte-exact raw-source receipts. No web observation was admitted to the point-in-time feature store.
+
+### Repository state
+
+- Main: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration head before this handoff commit: `ebed7181ef7ba9e469be7f486c1ff10b963a518a`.
+- PR #1663: open, draft, mergeable, 159 commits ahead of main, zero behind.
+- Diff: 1,364 changed files; +497,110 / -6,809; 62 changed workflow files; 396 changed test paths.
+- Main tree: 1,393 entries; integration tree: 2,579. Every main path exists on integration; 226 existing paths have changed blobs and 1,186 are integration-only. No main path was missing.
+- Full semantic review of all 1,364 changed paths is incomplete.
+
+### Exact-head CI
+
+All evidence below is for `ebed7181ef7ba9e469be7f486c1ff10b963a518a`:
+
+| Check | Run | Result |
+|---|---:|---|
+| Push full CI | [44022821751](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022821751) | PASS |
+| Push dependency audit | [44022821714](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022821714) | PASS |
+| Push fail-closed gate | [44022821767](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022821767) | PASS |
+| PR CI | [44022828942](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022828942) | PASS; integration-head test jobs skipped by explicit guard; Pages validation passed |
+| PR dependency audit | [44022828960](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022828960) | PASS |
+| PR fail-closed gate | [44022828971](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022828971) | PASS |
+
+Full-suite job [133836004143](https://github.com/Barrot-Agent/B-Agent/actions/runs/44022821751/job/133836004143): **3,847 passed, 1 skipped, 11 warnings, 19 subtests passed**, 177.97 seconds. Inclusive coverage 66.90%; legacy core-package coverage 77%. Wheel build, packaged XRP mission resource, installed-wheel smoke test and Pages validation passed.
+
+All six dependency manifest audits passed with no known vulnerabilities: root runtime, development, integrations, Hugging Face Space, legacy requirements and PEP 621 project dependencies. This is pip-audit evidence, not a full code-security or supply-chain attestation.
+
+Non-failing caveats: legacy pytest return-value warnings; package metadata deprecation/package-discovery warnings; pip cache save failed because the configured cache budget was exhausted and the cache was read-only. The PR event's Tests and Full repository test suite jobs were skipped by the integration-head guard; the exact-head push run above is the actual full-suite evidence.
+
+### Workflow side-effect review
+
+Patch-level review covered all 62 changed workflow paths; CI includes immutable-action-reference checks. High-impact gates inspected:
+
+- Automatic PR merge is disabled: `barrot-pr-automerge.yml` is notice-only; `barrot-gated-merge.yml` is audit-only; duplicate `barrot-merge-manual.yml` is disabled.
+- Token rotation, force deployment, Hugging Face sync, Databricks bundle deployment, private table-freshness diagnostics and self-hosted-brain sync are disabled/quarantined.
+- Coinbase paper simulation is manual-only, requires typed YES and exact main SHA, and uploads artifacts only. Not dispatched.
+- Kaggle submission requires typed approval, exact competition allowlist and exact main SHA. Not dispatched.
+- Databricks deployment and Barrot Ops require per-run approval and exact main SHA; Barrot Ops separates Databricks import from Kaggle download approval. Not dispatched.
+- Hugging Face Space restart requires explicit approval and exact main SHA. Not dispatched.
+- A2A Worker deployment requires explicit deployment approval plus separate secret-rotation approval and exact main SHA. Not dispatched.
+- Hugging Face model merge/upload requires explicit approval and exact main SHA. Not dispatched.
+- No deployment, restart, secret rotation, Databricks write, Kaggle download/submission, paper trade, model upload, funds transfer or real-money action occurred.
+
+The new `xrp-public-ingestion.yml` schedule is hourly at minute 3 and daily at 00:15 UTC, guarded to run only from main. It performs public-source reads and writes GitHub Actions artifacts/cache. This is not independent WORM storage. A compliant merge activates scheduled public-data ingestion; it does not trade or issue forecasts.
+
+### Open PRs and overlap
+
+Nine PRs remain open; none was closed:
+
+| PR | Classification |
+|---|---|
+| #1663 | blocked consolidated integration; draft, zero formal reviews |
+| #1541 | partial overlap / unique remainder; draft stacked MMI security work |
+| #1460 | unique/unreviewed institutional multirail, Binance and Kamilah research |
+| #1450 | unique research successor: Binance phase-one, escrow and PR audit |
+| #1440 | stacked validator-trigger/source-pointer repair |
+| #1436 | unique Binance XRP theft, issuer-freeze and attacker-wallet graph research |
+| #1437 | parallel XRP ledger source-addenda/snapshot-pointer repair |
+| #1353 | unique lossless XRP ledger sharding/archive work |
+| #1265 | unique compact XRP index work; one `ci.yml` path overlap |
+
+PR #1541's five paths were compared by blob SHA against #1663: `barrot_agent/mmi_adapter.py` and `tests/test_mmi_integration.py` are identical; `barrot_agent/mmi_v1.py`, its canonical evidence JSON and `tests/test_mmi_v1.py` differ. It is not an exact duplicate. Retain it until the three divergent paths are reconciled. Do not close any source PR before a successor is merged and verified on main.
+
+### XRP spot, liquidity and derivatives snapshot
+
+Observed during this run on November 17; providers did not expose a common synchronized event timestamp. Descriptive only.
+
+- CoinGlass: XRP about $0.9606, +0.49% over 24h; 24h range $0.9415–$0.9767; 7d -9.00%, 30d -26.39%, YTD -47.79%, 1y -55.57%.
+- CoinGlass: spot volume about $518.13M (-3.76%); futures volume $2.30B (-0.48%); open interest $1.99B (+0.76%); OI/market cap 3.25%; OI-weighted funding -0.0048% per 8h; 24h liquidations $3.34M, 62% long-side; futures/spot volume about 4.4x.
+- CoinMarketCap's German-localized page showed a Nov. 17 daily value of $0.9638 and live conversion near $0.9641; another localized result showed values around $0.9559. These are asynchronous aggregator snapshots, not independent venue executions. Do not average them.
+- CoinGlass showed ETF net flow of $0 on Nov. 16; this may be no-flow or an unavailable/settlement state, not a verified issuer-level zero.
+
+Sources: [CoinGlass XRP](https://www.coinglass.com/currencies/XRP), [CoinGlass XRP futures](https://www.coinglass.com/currencies/XRP/futures), [CoinMarketCap XRP/USD](https://coinmarketcap.com/de/currencies/xrp/xrp/usd/).
+
+A modest intraday rebound remains inside a large weekly/monthly drawdown. Negative funding, slightly higher OI and long-side liquidations coexist. These asynchronous aggregates are not sufficient for a directional forecast.
+
+### ETF-flow reconciliation
+
+For the week ending November 13:
+
+- SoSoValue's reported aggregate was -$19.13M and included approximately -$12.71M from Grayscale GXRP. Removing GXRP leaves about -$6.42M in that series.
+- XRP Insights' issuer-holdings method reported -6.1M XRP (about -$6.5M), excluded GXRP because its holdings history was interrupted by a scrape block, and included REX-Osprey and the XRP portion of BITW. Its dated article and downloadable daily dollar entries differ slightly: about -$6.5M versus -$6.64M.
+- Friday illustrates the coverage effect: SoSoValue five-fund total -$1.09M; removing GXRP changes that subset to +$4.45M; XRP Insights' included-fund daily dollar entries sum to +$3.23M. The remaining approximately $1.22M is unreconciled.
+- The reports do not establish investor switching. They use different fund universes and valuation/holdings conventions. XRP Insights reported 1.19B XRP held and about $1.22B combined assets for its covered funds at the Nov. 13 settled close.
+
+Sources: [XRP Insights week 46 issuer-holdings report](https://xrp-insights.com/news/xrp-supply-report-2026-11-14), [AllAboutXRP reconciliation, Nov. 16](https://allaboutxrp.com/news/xrp-etf-weekly-outflows-grayscale-tracker-gap), [SoSoValue ETF history definitions](https://sosovalue.com/developer/docs/reference/etf-summary-history).
+
+### Primary institutional disclosure: EP Wealth Advisors
+
+SEC accession 0001398344-26-020069 is EP Wealth Advisors LLC's Form 13F-HR, filed November 13 for the period ended September 30, 2026. The information table lists **18,400 shares** of VOLATILITY SHS TR / XRP ETF, CUSIP 92864M780, valued at **$147,936**. Q2 had 13,425 shares, so Q3's share count increased about 37%.
+
+XRPI is a futures-based XRP ETF, not a spot fund and not direct XRP custody. The position is less than 0.01% of EP Wealth's approximately $24.38B reportable securities portfolio. A 13F is a historical quarter-end snapshot, not current holdings or evidence of investment rationale.
+
+Primary sources: [SEC filing detail](https://www.sec.gov/Archives/edgar/data/1540569/000139834426020069/0001398344-26-020069-index.htm), [SEC information table](https://www.sec.gov/Archives/edgar/data/1540569/000139834426020069/xslForm13F_X02/fp0101718-1_13fhr-table.xml). The SEC states it has not necessarily reviewed the filing or determined its accuracy/completeness.
+
+### Stablecoin liquidity, exchange balances and XRPL utility
+
+- The Block reported Glassnode's 30-day major-stablecoin contraction of about $14.2B through Nov. 9, largest since the 2022 bear market. A separate Nov. 16 DefiLlama-based secondary report put the 30-day contraction near $15.6B. Different token universes/methodologies; the earlier $17B headline is not adopted as settled. Broad liquidity context, not proof of XRP-specific causation.
+- XRP Insights' Nov. 14 snapshot reports 22.26B XRP in publicly attributed exchange wallets. Balances at 23 exchanges with unchanged tracked-wallet sets rose 25.7M XRP over the week; Binance is excluded because its wallet set changed. This is a coverage-limited balance change, not complete exchange flows or proof of net deposits/sales.
+- Ripple escrow: 31.10B XRP; operational wallets: 4.74B. Next unlock window opens Dec. 1 for up to 1B XRP; unused amounts have historically been re-locked. Unlock is not equivalent to sale.
+- RLUSD: $2.76B total, about $763M on XRPL and $2.00B on Ethereum. Stablecoin liquidity/settlement, not direct XRP spot demand.
+- XRPL tokenized assets: $276M distributed transferable investor float versus $4.06B platform-locked registry notionals. Do not combine as freely transferable market value.
+
+Sources: [The Block / Glassnode, Nov. 11](https://www.theblock.co/news/ecosystems/2026-11-11-stablecoin-supply-drops-14-2-billion-largest-contraction-since-2022-bear-market-437907), [The Block / DefiLlama dashboard](https://www.theblock.co/data/stablecoins), [DefiLlama-based Nov. 16 update](https://cryptocoinweek.com/2026/11/16/stablecoin-supply-falls-biggest-drop-since-2022/), [XRP Insights week 46](https://xrp-insights.com/news/xrp-supply-report-2026-11-14).
+
+### Competing hypotheses and disconfirming evidence
+
+1. **Broad risk-off/liquidity contraction:** supported by stablecoin-supply decline and broader crypto weakness. Disconfirm if stablecoin supply stabilizes/grows while XRP continues to underperform.
+2. **XRP-specific marginal supply/positioning pressure:** supported by ETF outflows, coverage-limited exchange-balance increase and long-side liquidations. Disconfirm with consistent issuer-level inflows, falling attributed exchange balances on unchanged wallet sets and spot-led demand recovery.
+3. **Short positioning/technical rebound:** negative funding, modest OI growth and the rebound from the Nov. 15 low are consistent with shorts paying longs or short covering. Not proof of a durable reversal; futures turnover remains much larger than spot.
+4. **Institutional access without material spot demand:** EP Wealth's small XRPI 13F confirms futures exposure; Evernorth's Coinbase principal-market designation and ETF holdings show institutional infrastructure. Neither establishes a corresponding spot purchase; EP's filing is stale at Sep. 30 and the position is tiny.
+
+CoinGlass and CoinMarketCap are aggregators; SoSoValue and XRP Insights have different coverage but overlapping issuer observations; stablecoin reports reuse Glassnode/DefiLlama data. No disagreement was averaged away.
+
+### Prediction gate and nine-platform coordination
+
+- Event registry: 125 curated events, zero byte-exact raw-source SHA-256 receipts, 77 missing exact publisher timestamps, zero model-eligible events.
+- Forecasts: zero. Accuracy: `NOT_EVALUATED`. Status: `NOT_ISSUED`.
+- Walk-forward code implements four deterministic baselines (class prior, momentum sign, mean-reversion sign, volatility-normal) and leakage controls. It does not prove a learned candidate model has been trained or has beaten the baselines.
+- Forecast ledger requires a candidate to beat all four baselines on Brier and log loss, pass calibration/drift gates, source-clustered uncertainty checks and independent Ed25519 attestation. No empirical eligibility condition is met.
+- Feature drift is univariate PSI, not label/concept drift. Event timelines assemble supplied scenarios/counter-hypotheses but do not infer causality or probabilities. Local hash chains are not independent WORM anchors.
+- GitHub access was tested. No live authentication/data-flow was tested for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks; no external model dispatch occurred. The nine-platform map is a capability/permission plan, not nine live connections.
+
+### Governance and merge decision
+
+**NO MERGE.** PR #1663 remains draft with zero formal reviews. Branch-protection retrieval returns HTTP 403; visible ruleset 10863829 is disabled; CODEOWNERS is self-only; connector permissions include admin/maintain/push/pull/triage; code-scanning and secret-scanning alert status remains unknown. Exact-head CI does not substitute for independent review, branch-protection evidence or full semantic/security review.
+
+DESIGNED/IMPLEMENTED on integration: public XRP ingestion, content-addressed receipt/hash-chain code, point-in-time feature store, event timeline/counter-hypothesis assembly, four-baseline chronological evaluator, calibration/drift diagnostics and fail-closed forecast ledger. EXECUTED: current main/tree/PR/workflow inspection, exact-head full suite/dependency audit, workflow side-effect review, SEC 13F verification and fresh market/ETF/liquidity research. VERIFIED: exact-head `ebed7181ef7ba9e469be7f486c1ff10b963a518a` push full suite, wheel smoke, six-manifest dependency audit and fail-closed push/PR gates. NOT VERIFIED: production scheduled ingestion on main, independent WORM anchoring, nonzero model-eligible dataset, candidate-model superiority, shadow evaluation, independent review quorum or branch-protection enforcement.
+
+Next: verify this handoff commit's exact-head full suite and dependency audit; finish semantic/security review of all 1,364 changed paths and invoked scripts; reconcile the three divergent #1541 paths without closing the source PR; obtain independent review and authorized branch-protection evidence; then merge only if every criterion passes and verify main afterward. Keep forecast issuance disabled.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
