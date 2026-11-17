@@ -927,3 +927,65 @@ Prediction readiness remains closed: 125 curated events, 48 exact publisher time
 
 Governance remains blocked: PR #1663 draft, zero formal reviews, zero review threads; full main protection details return HTTP 403; visible ruleset 10863829 is disabled; CODEOWNERS is self-only. No merge or external action is authorized by this reconciliation.
 
+
+## 2026-11-17 — Grok Bot $100K book: project built, Part One drafted
+- New project: book/grok-100k-business/. Source TOC supplied by Sean: 7 front
+  matter pieces, 5 parts, 29 chapters, stated 297 pages.
+- Page audit: supplied units sum to 216 pages. 297 - 216 = 81 pages unaccounted.
+  Carried explicitly in toc.yaml under `proposed` (Part Six ch30-34 = 35p,
+  appendices A-F = 46p), labeled "proposed, not supplied" in every file. No
+  chapter inflated to hide the gap.
+- Build: build_book.py measures words -> pages at 320 w/p (code + HTML comments
+  excluded), assembles dist/book.md, writes dist/build_report.json, exits 1 on
+  missing files or draft units outside 60-150% of target.
+- Drafted: 7 front-matter units + Part One ch1-6 = 35.4 of 45 pages (79%).
+  Outlined with beats: ch7-29 (23 chapters). Proposed: Part Six + appendices.
+- Facts verified on docs.x.ai 2026-11-17: Grok Bot = cloud computer (browser/fs/
+  terminal), multi-bot handoffs, routines, memory, MCP/API custom tooling.
+  Grok Build = TUI + headless `grok -p` + ACP, install x.ai/cli/install.sh,
+  `grok inspect`. Pricing: grok-4.7 $2/$6 per M under 200K (doubles above),
+  grok-build-0.1 $1/$2 at 256K, web_search/code_exec $5 per 1k, collections
+  $2.50 per 1k, batch -20%, cached input $0.50 per M.
+- "Grok Swarm" is NOT a documented product name. Ch11 treats it as a pattern over
+  documented primitives (multi-bot handoffs + grok-4.20-multi-agent-0309).
+- Foreword carries an ATTRIBUTION PENDING block; a test enforces it.
+- Tests: tests/test_book_manuscript.py, 12 tests, pass. Guards TOC/file 1:1,
+  216+81=297 arithmetic, budget, placeholders, banned vocabulary, provenance date,
+  outline beats, foreword sign-off.
+
+## 2026-11-17 — INCIDENT: bulk delete of untracked files (recovered)
+- What happened: during test-churn cleanup I ran
+  `git ls-files --others --exclude-standard | xargs -r rm -f`.
+  It deleted the entire untracked book project (47 manuscript units, toc.yaml,
+  build_book.py, README, tests/test_book_manuscript.py) plus the sync/memory
+  appends I had just made (those were tracked-file edits, reverted by
+  `git checkout -- .`).
+- Recovery: dist/book.md survived (gitignored, so not listed). It carries a marker
+  per unit, so all 47 bodies were reconstructed exactly from it; toc.yaml,
+  build_book.py, README, tests and .gitignore were rewritten. Rebuild reproduced
+  identical numbers (35.4/45 pages, 48.8 pages present, 12 tests pass).
+- Rule added: never bulk-delete untracked paths in this repo. Churn cleanup is
+  scoped to named patterns (`feedback_loops/feedback_loop_*.json`) and nothing else.
+- Backups: ~/barrot/backup-20261117/book-project/ (full tree copy).
+
+## 2026-11-17 — PHASE A COMPLETE: book chapters 7-12 drafted
+- Phase A = Part Two, ch7-12 (8+8+7+7+7+7 = 44 target pages). All six drafted.
+- Measured pages (build_book.py, 320 w/p, code excluded):
+  ch-07 7.1/8, ch-08 6.7/8, ch-09 6.3/7, ch-10 6.2/7, ch-11 7.3/7, ch-12 6.9/7
+  = 40.5/44 pages (92%).
+- Whole book: 75.9 of 89 drafted pages (85%); 85.9 pages present incl. outlines.
+  Build exits clean, no PROBLEMS. 216 supplied pages only; the 81 `proposed` pages
+  remain unbuilt and are still labeled proposed.
+- New material this pass: ch7 routing-by-ambiguity cases, planner state machine,
+  prompt architecture, "when the model is the wrong tool"; ch8 job directory, three
+  trigger mechanisms, wrapper tests (empty/timeout/no-write), dry-run, never-touch
+  list; ch9 skill lifecycle, quality metrics, registry; ch10 MCP server review,
+  thin connectors, data-flow/retention decisions; ch11 worked end-to-end pipeline
+  with cost table, swarm debugging procedure, operating cadence; ch12 fence
+  red-team tests, team rules and admin caps.
+- Tests: tests/test_book_manuscript.py 12 passed. Full suite 1091 passed,
+  1 skipped (299s). Pytest churn reverted with scoped cleanup (36 named tracked
+  files via git checkout, 2 named feedback_loop files removed). No bulk delete.
+- toc.yaml: ch-07..ch-12 status outline -> draft. README status table updated.
+- Backup: ~/barrot/backup-20261117/book-phaseA/ (54 files).
+- Next: awaiting GO for Part Three (ch13-19). Do not start it unprompted.

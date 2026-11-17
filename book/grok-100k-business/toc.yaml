@@ -1,0 +1,115 @@
+# Source table of contents, as supplied by the Orchestrator on 2026-11-17.
+# Do not edit stated page counts: they are the contract. The build reports the
+# difference between stated pages and drafted pages instead of hiding it.
+slug: grok-100k-business
+title: "How to Build a $100K/Month Business With Zero Employees Using Grok Bot"
+subtitle: "The Grok Bot Builder's Guide. No employees. No payroll. Just agents that do the work."
+source_document: grok-bot-100k-business.md
+stated_pages: 297
+
+# House page standard. 320 words/page is a business-book page at 11pt with
+# generous leading; it is the divisor used for every estimate in this project.
+words_per_page: 320
+
+# Product claims in this book are checked against these pages, on this date.
+# Anything not covered here is labeled as an assumption in the text.
+verified_against:
+  - https://docs.x.ai/docs/overview
+  - https://docs.x.ai/grok-bot/overview
+  - https://docs.x.ai/build/overview
+  - https://docs.x.ai/developers/pricing
+verified_on: "2026-11-17"
+
+front_matter:
+  - {id: dedication, title: "Dedication", pages: 1, file: manuscript/00-front-matter/00-dedication.md, status: draft}
+  - {id: acknowledgement, title: "Acknowledgement", pages: 2, file: manuscript/00-front-matter/01-acknowledgement.md, status: draft}
+  - {id: foreword, title: "Foreword by @irongiantXBT: Why This Moment Changes Everything", pages: 1, file: manuscript/00-front-matter/02-foreword.md, status: draft}
+  - {id: preface, title: "Preface: From Using Grok Bot to Building a Company That Runs on It", pages: 1, file: manuscript/00-front-matter/03-preface.md, status: draft}
+  - {id: what-this-guide-is, title: "What This Guide Is (And What It Will Make You Build)", pages: 2, file: manuscript/00-front-matter/04-what-this-guide-is.md, status: draft}
+  - {id: how-to-use, title: "How to Use This Guide", pages: 1, file: manuscript/00-front-matter/05-how-to-use.md, status: draft}
+  - {id: tldr, title: "The TLDR: A $100K/Month Company in One Page", pages: 1, file: manuscript/00-front-matter/06-tldr.md, status: draft}
+
+parts:
+  - id: part-1
+    number: 1
+    title: "THE FOUNDER ESCAPE"
+    subtitle: "Stop Hiring, Start Delegating"
+    chapters:
+      - {id: ch-01, number: 1, title: "The Hiring Trap — Why More Work Used to Mean More People", pages: 6, file: manuscript/part-1/ch-01.md, status: draft}
+      - {id: ch-02, number: 2, title: "The Grok Bot Era — The Moment Software Started Doing the Job", pages: 6, file: manuscript/part-1/ch-02.md, status: draft}
+      - {id: ch-03, number: 3, title: "Grok-Native Really Means Agents That Actually Act", pages: 6, file: manuscript/part-1/ch-03.md, status: draft}
+      - {id: ch-04, number: 4, title: "The $100K/Month Math — 50 Customers, One System, No Payroll", pages: 6, file: manuscript/part-1/ch-04.md, status: draft}
+      - {id: ch-05, number: 5, title: "Real One-Person Companies Used to Need Teams", pages: 6, file: manuscript/part-1/ch-05.md, status: draft}
+      - {id: ch-06, number: 6, title: "What Every Founder Needs to Know Before Replacing Headcount", pages: 6, file: manuscript/part-1/ch-06.md, status: draft}
+
+  - id: part-2
+    number: 2
+    title: "THE GROK BOT WORKFORCE STACK"
+    subtitle: "Build the Employee, Not the Demo"
+    chapters:
+      - {id: ch-07, number: 7, title: "Grok Bot — Put a Brain Behind the Business", pages: 8, file: manuscript/part-2/ch-07.md, status: draft}
+      - {id: ch-08, number: 8, title: "Grok Build — Give the Brain Hands and Let It Actually Work", pages: 8, file: manuscript/part-2/ch-08.md, status: draft}
+      - {id: ch-09, number: 9, title: "Skills — Encode Your Company's Best Employees Once", pages: 7, file: manuscript/part-2/ch-09.md, status: draft}
+      - {id: ch-10, number: 10, title: "MCP — Give Your Agent Keys to Systems That Matter", pages: 7, file: manuscript/part-2/ch-10.md, status: draft}
+      - {id: ch-11, number: 11, title: "Grok Swarm — Scale With Multiple Agents", pages: 7, file: manuscript/part-2/ch-11.md, status: draft}
+      - {id: ch-12, number: 12, title: "Memory, Governance, and Approvals — The Fence Around Autonomy", pages: 7, file: manuscript/part-2/ch-12.md, status: draft}
+
+  - id: part-3
+    number: 3
+    title: "BUILD YOUR FIRST GROK BOT EMPLOYEE"
+    subtitle: "Then Make It Dangerous to Competitors"
+    chapters:
+      - {id: ch-13, number: 13, title: "Your First Employee — Pick One Expensive Job to Automate", pages: 8, file: manuscript/part-3/ch-13.md, status: outline}
+      - {id: ch-14, number: 14, title: "Sales Agent — Find Leads, Research Them, Write Outreach, Book Calls", pages: 9, file: manuscript/part-3/ch-14.md, status: outline}
+      - {id: ch-15, number: 15, title: "Research Agent — Turn the Web Into a Research Department", pages: 9, file: manuscript/part-3/ch-15.md, status: outline}
+      - {id: ch-16, number: 16, title: "Content Agent — Write, Design, Publish, Repurpose, Repeat", pages: 7, file: manuscript/part-3/ch-16.md, status: outline}
+      - {id: ch-17, number: 17, title: "Operations Agent — Keep the Business Running Without Constant Supervision", pages: 9, file: manuscript/part-3/ch-17.md, status: outline}
+      - {id: ch-18, number: 18, title: "Finance Agent — Track Money, Generate Reports, Catch Weirdness Early", pages: 11, file: manuscript/part-3/ch-18.md, status: outline}
+
+  - id: part-4
+    number: 4
+    title: "THE PRODUCT"
+    subtitle: "Sell the Outcome, Not the Bot"
+    chapters:
+      - {id: ch-19, number: 19, title: "Stop Selling Grok Bot — Sell the Finished Job", pages: 7, file: manuscript/part-4/ch-19.md, status: outline}
+      - {id: ch-20, number: 20, title: "Find the Market — Where Businesses Already Bleed Time and Money", pages: 7, file: manuscript/part-4/ch-20.md, status: outline}
+      - {id: ch-21, number: 21, title: "Packaging & Pricing — Charge for Results, Not Tokens", pages: 6, file: manuscript/part-4/ch-21.md, status: outline}
+      - {id: ch-22, number: 22, title: "Delivery — Let Agents Do the Work While You Watch Exceptions", pages: 6, file: manuscript/part-4/ch-22.md, status: outline}
+      - {id: ch-23, number: 23, title: "Customer Support Without a Support Team — Let the Agents Take the Queue", pages: 7, file: manuscript/part-4/ch-23.md, status: outline}
+      - {id: ch-24, number: 24, title: "The $100K/Month Run Rate — The Numbers That Make This Model Work", pages: 6, file: manuscript/part-4/ch-24.md, status: outline}
+
+  - id: part-5
+    number: 5
+    title: "THE COMPANY OS"
+    subtitle: "Turn a Few Agents Into an Actual Business"
+    chapters:
+      - {id: ch-25, number: 25, title: "The Real Tech Stack — What You Need and What You Don't", pages: 7, file: manuscript/part-5/ch-25.md, status: outline}
+      - {id: ch-26, number: 26, title: "Data, Memory & Long-Term Context — Stop Making Agents Forget", pages: 7, file: manuscript/part-5/ch-26.md, status: outline}
+      - {id: ch-27, number: 27, title: "Security, Privacy & Risk — Don't Let Your Grok Bot Become a $50K Mistake", pages: 7, file: manuscript/part-5/ch-27.md, status: outline}
+      - {id: ch-28, number: 28, title: "Monitoring & Evaluation — Catch Failures Before Customers Do", pages: 7, file: manuscript/part-5/ch-28.md, status: outline}
+      - {id: ch-29, number: 29, title: "Cost Optimization — Never Burn Model Calls Where Code Can Solve", pages: 7, file: manuscript/part-5/ch-29.md, status: outline}
+
+# NOT IN THE SUPPLIED TOC. The supplied units sum to 216 pages; the source is
+# stated as 297. The 81-page difference is closed here, explicitly, rather than
+# by inflating chapters. Replace or delete this block when the real Part Six
+# arrives — it is labeled proposed everywhere it appears.
+proposed:
+  reason: "supplied units total 216 pages; stated length is 297; 81 pages unaccounted"
+  parts:
+    - id: part-6
+      number: 6
+      title: "THE 30-DAY BUILD"
+      subtitle: "Proposed — closes 35 of the 81 unaccounted pages"
+      chapters:
+        - {id: ch-30, number: 30, title: "Day 0: The Job Inventory", pages: 7, file: manuscript/part-6/ch-30.md, status: proposed}
+        - {id: ch-31, number: 31, title: "Week 1: One Employee, One Outcome", pages: 7, file: manuscript/part-6/ch-31.md, status: proposed}
+        - {id: ch-32, number: 32, title: "Week 2: The Fence — Approvals, Budgets, Rollback", pages: 7, file: manuscript/part-6/ch-32.md, status: proposed}
+        - {id: ch-33, number: 33, title: "Week 3: Delivery and the Exception Queue", pages: 7, file: manuscript/part-6/ch-33.md, status: proposed}
+        - {id: ch-34, number: 34, title: "Week 4: Price It, Prove It, Repeat It", pages: 7, file: manuscript/part-6/ch-34.md, status: proposed}
+  appendices:
+    - {id: app-a, title: "Appendix A — Prompt Library", pages: 12, file: appendix/a-prompt-library.md, status: proposed}
+    - {id: app-b, title: "Appendix B — Skill Templates", pages: 8, file: appendix/b-skill-templates.md, status: proposed}
+    - {id: app-c, title: "Appendix C — Approval Matrix Template", pages: 6, file: appendix/c-approval-matrix.md, status: proposed}
+    - {id: app-d, title: "Appendix D — Pricing Calculator", pages: 6, file: appendix/d-pricing-calculator.md, status: proposed}
+    - {id: app-e, title: "Appendix E — Incident Playbook", pages: 8, file: appendix/e-incident-playbook.md, status: proposed}
+    - {id: app-f, title: "Appendix F — Sources, Pricing Log, Glossary", pages: 6, file: appendix/f-sources-glossary.md, status: proposed}

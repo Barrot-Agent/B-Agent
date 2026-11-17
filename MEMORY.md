@@ -291,3 +291,25 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 
 ## Current provider-authentication status — 2026-11-17
 - Current authentication and end-to-end data flow for the nine-platform coordination matrix are not yet verified in this run. Historical OpenCode/GitHub MCP notes above are historical evidence only; they are not proof of current live authentication or current permissions.
+
+### Book project — grok-100k-business (started 2026-11-17)
+- Location: book/grok-100k-business/. Contract is toc.yaml; build_book.py measures
+  320 words/page (code + HTML comments excluded), emits dist/book.md +
+  dist/build_report.json.
+- Stated 297 pages; supplied TOC units total 216; the 81-page difference is
+  explicitly assigned to `proposed` Part Six (35p) + appendices A-F (46p).
+  Sean has NOT confirmed those; labeled proposed everywhere.
+- Drafted: front matter + Part One = 35.4/45 pages (79%). Phase A (Part Two,
+  ch7-12) drafted = 40.5/44 pages (92%). Whole book 75.9/89 drafted pages (85%).
+  Outlined: ch13-29. Proposed (unbuilt): Part Six + appendices A-F.
+- Phase A completed 2026-11-17; ch-07..ch-12 status=draft in toc.yaml. Test guard:
+  12 book tests pass; full suite 1091 passed / 1 skipped. Awaiting GO for Part Three.
+- Grok facts verified 2026-11-17 (docs.x.ai): Grok Bot = cloud computer + multi-bot
+  handoffs + routines + memory + MCP/API; Grok Build = TUI/headless/ACP,
+  `grok -p`, `grok inspect`, install via x.ai/cli/install.sh; pricing grok-4.7
+  $2/$6 per M (<200K), grok-build-0.1 $1/$2 (256K), tools $5/1k search + $5/1k
+  code exec, collections $2.50/1k, batch -20%, cached input $0.50/M.
+- "Grok Swarm" is not a documented product; written as a pattern, not a SKU.
+- Foreword attribution pending; test enforces the ATTRIBUTION PENDING block.
+- INCIDENT 2026-11-17: `git ls-files --others | xargs rm` deleted the untracked
+  project. Recovered from dist/book.md. Never bulk-delete untracked files here.
