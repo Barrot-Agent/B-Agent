@@ -182,6 +182,22 @@ Two or more failed checks tag the record `HYPE` and block refinement.
 - Separate "funding is real" from "intent is proven".
 - Ask who benefits from the emotional framing.
 
+### Calibration evidence (2026-11-15)
+
+Permanent regression test against two real transcripts:
+
+| Source | ID | Verdict | Applicable checks | Failed checks |
+|---|---|---|---|---|
+| Better Stack — Memorilla | `lNpDxKfBlf8` | `OK` | 3 | none |
+| Julia McCoy — "AGI is here" | `us_pnC6ETNA` | `HYPE` | 5 | `benchmark_caveat`, `funding_vs_intent` |
+
+The second video is the calibration case: it quotes "isn't proof of AGI" and then
+claims AGI is here, and it converts grant funding into a proven motive ("built to make
+you afraid"). Two applicable failures cross the threshold. The first video keeps its
+benchmark caveat and states costs, so it passes. Non-applicable checks return
+`passed=None` and never count toward the verdict. Both verdicts are deterministic and
+carry the matched evidence spans in `checks[].evidence`.
+
 ---
 
 ## What was implemented in Barrot

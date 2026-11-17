@@ -9,7 +9,7 @@
   "EVIDENCE_PATH": "/root/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
   "EVIDENCE_SCOPE": "HARNESS_ONLY",
   "EXECUTION_STATUS": "EXECUTED",
-  "EXECUTION_TIMESTAMP": "2026-11-14T21:58:45Z",
+  "EXECUTION_TIMESTAMP": "2026-11-17T08:54:14Z",
   "LIMITATIONS": [
     "Lean execution in this environment is unavailable for the current repository inputs.",
     "Result is verified through injected formal-runner failure behavior, not live Lean execution."
@@ -30,7 +30,7 @@
           "lake",
           "build"
         ],
-        "completed_at": 1794693526.2000604,
+        "completed_at": 1794905657.3687553,
         "elapsed_seconds": 0.0,
         "environment": {
           "cwd": "",
@@ -39,7 +39,7 @@
         "errors": [],
         "exit_code": 1,
         "phase": "build",
-        "started_at": 1794693526.20005,
+        "started_at": 1794905657.3686802,
         "stderr": "lean failed",
         "stdout": "",
         "success": false,
@@ -57,7 +57,7 @@
       ],
       "dependency_graph": {},
       "dependency_manifest": {},
-      "execution_timestamp": 1794693526.2000341,
+      "execution_timestamp": 1794905657.3685005,
       "external_checker_configuration": {},
       "failed_attempts": [
         {
@@ -118,7 +118,7 @@
         "main_theorem"
       ],
       "theorem_statement": "",
-      "timestamp": 1794693526.2000296,
+      "timestamp": 1794905657.3684769,
       "toolchain_version": "lean4",
       "verification_id": "formal-1",
       "verification_scripts": {}

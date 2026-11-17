@@ -664,3 +664,29 @@
 - gap_fill_log.json: 20 gaps — 4 applied, 5 detected, 11 logged, 10 critical.
 - Not fixed: adding product identity touches the emitter, both signal files, the
   accuracy scorer and the trader in one cycle. Own transmute run required.
+
+## 2026-11-17 — origin/work audit: 0 commits ported, main-wip restored
+- Requested: "port real commits from work to main". Result: 0 commits, 0 files.
+  Evidence in results/port_log.md.
+- Why: origin/work is an unrelated lineage. merge-base = none. 841 commits,
+  245 files, 2025-11-19..2026-11-16 vs main 861 commits, 1352 files,
+  2026-10-27..2026-11-17. Not ahead/behind: diverged.
+- Commit taxonomy of the 841: 393 ping-pong automation cycles, 89 pulse
+  snapshots, 76 merges, 157 workflow/manifest churn, 126 PR-feature/plan
+  commits. No commit survives real + non-duplicate + safe.
+- File taxonomy: 90 shared paths (73 byte-identical, 17 differ and every one is
+  a stub on work: transmute.py 1131B vs 15144B, transmute_log.json 70B vs 33378B).
+  155 paths only on work, 17 of them moved copies, 138 with content nowhere in
+  main. Of the 33 unique .py, 30 already exist under barrot_agent/; the other 3
+  are the abandoned coin-app presale and a superseded pingpong_emitter.py.
+- Governance block: 5 of the 138 carry flagged vocabulary (glyphs/*_glyph.yml,
+  memory-bundles/shrm-v2-config.json, simulation-stack/shrm-v2-config.yml).
+  Never ported. delete-main-branch.sh also never ported (destructive).
+- Stash cycle: stash@{0} "main-wip-before-work-merge-20261117" (62 paths) created,
+  verified, popped clean — 0 conflicts. Backup outside git kept at
+  ~/barrot/backup-20261117/ (untracked.tar.gz 31 entries, tracked.patch 2854 lines).
+- Gate after restore: 1079 passed, 1 skipped, 47 warnings in 476.59s, cov 78%.
+- origin/work untouched. Branch work left at 0732187 as placeholder. Not deleted.
+- Still open: barrot_agent/geometry, phoenix.py, sandbox/, experiments/ are
+  untracked-but-live. Commit only restores them to disk+git; they are unverified
+  against the deployed path.

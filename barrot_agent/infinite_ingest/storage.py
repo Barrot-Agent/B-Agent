@@ -231,6 +231,30 @@ class Store:
             self._write_json(self.queue_path, queue)
         return added
 
+    def requeue(self, items: Iterable[IngestItem]) -> int:
+        """Put retry items back, updating attempts instead of dropping them.
+
+        Unlike :meth:`push_queue`, an item already in the queue is replaced
+        with the newer copy so ``attempts`` and ``last_error`` survive.
+        """
+        queue = self.queue()
+        known = set(self.ledger())
+        position = {entry.get("url"): index for index, entry in enumerate(queue)}
+        changed = 0
+        for item in items:
+            if item.url in known:
+                continue
+            payload = item.as_dict()
+            if item.url in position:
+                queue[position[item.url]] = payload
+            else:
+                position[item.url] = len(queue)
+                queue.append(payload)
+            changed += 1
+        if changed:
+            self._write_json(self.queue_path, queue)
+        return changed
+
     def take_queue(self, limit: int, capability: str = "") -> list[IngestItem]:
         """Remove and return up to ``limit`` items, optionally for one capability."""
         queue = self.queue()

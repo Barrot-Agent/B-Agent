@@ -14,6 +14,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from barrot_agent.infinite_ingest.cross_analyzer import CrossAnalyzer
+from barrot_agent.infinite_ingest.continuous import ContinuousRunner
 from barrot_agent.infinite_ingest.ingestor import Ingestor
 from barrot_agent.infinite_ingest.models import (
     Document,
@@ -80,6 +81,21 @@ def raw_record(text: str = "placeholder", url: str = "https://example.org/a") ->
         text=text,
         fetched_at=utc_now(),
     )
+
+
+class FlakyFetcher:
+    """Fails a fixed number of times before returning the document."""
+
+    def __init__(self, document: Document, failures: int):
+        self.document = document
+        self.failures = failures
+        self.calls = 0
+
+    def fetch(self, item: IngestItem) -> Document:
+        self.calls += 1
+        if self.calls <= self.failures:
+            raise FetchError(f"temporary failure {self.calls}")
+        return self.document
 
 
 class StorageTests(unittest.TestCase):
@@ -215,7 +231,53 @@ class IngestorTests(unittest.TestCase):
         report = ingestor.ingest_queue()
         self.assertTrue(report.stopped_on_rate_limit)
         self.assertEqual(report.ingested, 1)
-        self.assertEqual(self.store.queue_size(), 1)
+        self.assertEqual(self.store.queue_size(), 2)
+        queued = {item["url"] for item in self.store.queue()}
+        self.assertEqual(queued, {urls[1], urls[2]})
+
+    def test_transient_failure_is_requeued_with_attempts(self):
+        fetcher = FlakyFetcher(paper_document(self.url), failures=2)
+        ingestor = self._ingestor(fetcher, max_attempts=3)
+        self.store.push_queue([IngestItem(url=self.url, kind="paper")])
+
+        first = ingestor.ingest_queue()
+        self.assertEqual(first.ingested, 0)
+        self.assertEqual(len(first.retrying), 1)
+        self.assertEqual(self.store.queue()[0]["attempts"], 1)
+
+        second = ingestor.ingest_queue()
+        self.assertEqual(second.ingested, 0)
+        self.assertEqual(len(second.retrying), 1)
+        self.assertEqual(self.store.queue()[0]["attempts"], 2)
+
+        third = ingestor.ingest_queue()
+        self.assertEqual(third.ingested, 1)
+        self.assertEqual(self.store.queue_size(), 0)
+        self.assertEqual(fetcher.calls, 3)
+
+    def test_retry_is_capped_and_reported_as_failed(self):
+        fetcher = FlakyFetcher(paper_document(self.url), failures=5)
+        ingestor = self._ingestor(fetcher, max_attempts=2)
+        self.store.push_queue([IngestItem(url=self.url, kind="paper")])
+
+        first = ingestor.ingest_queue()
+        self.assertEqual(len(first.retrying), 1)
+        second = ingestor.ingest_queue()
+        self.assertEqual(second.ingested, 0)
+        self.assertEqual(second.retrying, [])
+        self.assertEqual(second.failed[0]["attempts"], 2)
+        self.assertFalse(second.failed[0]["retry"])
+        self.assertEqual(self.store.queue_size(), 0)
+
+    def test_rate_limit_does_not_increment_attempts(self):
+        fetcher = FakeFetcher(
+            {self.url: paper_document(self.url)}, rate_limit_urls={self.url}
+        )
+        ingestor = self._ingestor(fetcher, max_attempts=3)
+        self.store.push_queue([IngestItem(url=self.url, kind="paper")])
+        report = ingestor.ingest_queue()
+        self.assertTrue(report.stopped_on_rate_limit)
+        self.assertEqual(self.store.queue()[0]["attempts"], 0)
 
     def test_oversized_document_is_rejected(self):
         fetcher = FakeFetcher({self.url: paper_document(self.url, "x" * 500)})
@@ -224,6 +286,8 @@ class IngestorTests(unittest.TestCase):
         )
         self.assertEqual(report.ingested, 0)
         self.assertIn("too large", report.skipped[0]["reason"])
+        self.assertEqual(report.retrying, [])
+        self.assertEqual(self.store.queue_size(), 0)
 
 
 class TransmuterTests(unittest.TestCase):
@@ -451,6 +515,108 @@ class RefinerTests(unittest.TestCase):
         result = score_capability(capability, [])
         self.assertEqual(result.recall, 0.0)
         self.assertEqual(result.missing, ["42"])
+
+
+class ContinuousTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.store = Store(Path(self.tmp.name))
+        self.urls = [f"https://example.org/continuous/{index}" for index in range(2)]
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _queue(self):
+        self.store.push_queue(
+            [
+                IngestItem(url=url, kind="paper", capability="long_context_memory")
+                for url in self.urls
+            ]
+        )
+
+    def test_two_cycles_ingest_and_transmute(self):
+        fetcher = FakeFetcher(
+            {
+                url: paper_document(url, PAPER_TEXT + f" Distinct item {index}.")
+                for index, url in enumerate(self.urls)
+            }
+        )
+        runner = ContinuousRunner(
+            self.store,
+            Ingestor(self.store, fetcher=fetcher),
+            transmute=True,
+            refine=False,
+        )
+        self._queue()
+        report = runner.run(cycles=2, max_minutes=1.0, idle_cycles=1)
+        self.assertEqual(report.ingested, 2)
+        self.assertGreater(report.memory_added, 0)
+        self.assertEqual(self.store.queue_size(), 0)
+        self.assertEqual(report.stop_reason, "idle")
+        self.assertEqual(len(report.cycles), 2)
+
+    def test_rate_limit_stops_continuous(self):
+        fetcher = FakeFetcher(
+            {
+                url: paper_document(url, PAPER_TEXT + f" Distinct item {index}.")
+                for index, url in enumerate(self.urls)
+            },
+            rate_limit_urls={self.urls[1]},
+        )
+        runner = ContinuousRunner(
+            self.store,
+            Ingestor(self.store, fetcher=fetcher),
+            transmute=False,
+            refine=False,
+        )
+        self._queue()
+        report = runner.run(cycles=3, max_minutes=1.0)
+        self.assertEqual(report.stop_reason, "rate_limit")
+        self.assertEqual(report.ingested, 1)
+        self.assertEqual(
+            {item["url"] for item in self.store.queue()}, {self.urls[1]}
+        )
+
+    def test_refinement_is_skipped_when_the_test_has_no_gap(self):
+        record = MemoryRecord.build(
+            statement="Alpha memory keeps the first fact.",
+            kind="fact",
+            source_url="https://example.org/alpha",
+            retrieved_at=utc_now(),
+            document_sha256="x",
+            capability="long_context_memory",
+        )
+        self.store.append_memory([record])
+        self.store.save_capability(
+            "long_context_memory",
+            {
+                "name": "long_context_memory",
+                "questions": [
+                    {
+                        "id": "q",
+                        "question": "What does alpha keep?",
+                        "expect": ["first fact"],
+                    }
+                ],
+                "memory_ids": [record.id],
+                "sources": [],
+                "history": [],
+            },
+        )
+        runner = ContinuousRunner(
+            self.store,
+            Ingestor(self.store, fetcher=FakeFetcher({})),
+            transmute=False,
+            refine=True,
+        )
+        report = runner.run(
+            cycles=1,
+            max_minutes=1.0,
+            capability="long_context_memory",
+            idle_cycles=1,
+        )
+        self.assertIsNone(report.cycles[0].refinement)
+        self.assertEqual(report.stop_reason, "idle")
 
 
 class SearchTests(unittest.TestCase):

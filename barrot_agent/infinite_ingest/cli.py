@@ -16,6 +16,7 @@ import json
 from pathlib import Path
 
 from .cross_analyzer import CrossAnalyzer
+from .continuous import ContinuousRunner
 from .ingestor import Ingestor
 from .models import IngestItem
 from .refiner import Refiner
@@ -150,6 +151,39 @@ def cmd_refine(args) -> int:
     return 0
 
 
+def cmd_continuous(args) -> int:
+    store, ingestor = _build(args)
+    runner = ContinuousRunner(
+        store,
+        ingestor,
+        transmute=not args.no_transmute,
+        refine=not args.no_refine,
+    )
+    report = runner.run(
+        cycles=args.cycles,
+        max_minutes=args.minutes,
+        capability=args.capability,
+        idle_cycles=args.idle_cycles,
+    )
+    print(report.summary())
+    for cycle in report.cycles:
+        print(json.dumps(cycle.as_dict(), ensure_ascii=False))
+    from ..phoenix import Phoenix
+
+    state = Phoenix(store=store).record_continuous(
+        {
+            "command": "python -m barrot_agent.infinite_ingest.cli continuous",
+            "capability": args.capability,
+            "cycles": args.cycles,
+            "max_minutes": args.minutes,
+            "max_ingests_per_run": args.max,
+            "last_run": report.as_dict(),
+        }
+    )
+    print(json.dumps(state, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Infinite ingestion + transmutation")
     parser.add_argument("--data-root", default=str(DEFAULT_DATA_ROOT))
@@ -187,6 +221,17 @@ def build_parser() -> argparse.ArgumentParser:
     refine.add_argument("--capability", required=True)
     refine.add_argument("--run-id", default=None)
     refine.set_defaults(func=cmd_refine)
+
+    continuous = sub.add_parser(
+        "continuous", help="bounded ingest -> transmute -> connect -> refine cycles"
+    )
+    continuous.add_argument("--cycles", type=int, default=2)
+    continuous.add_argument("--minutes", type=float, default=10.0)
+    continuous.add_argument("--idle-cycles", type=int, default=2)
+    continuous.add_argument("--capability", default="")
+    continuous.add_argument("--no-transmute", action="store_true")
+    continuous.add_argument("--no-refine", action="store_true")
+    continuous.set_defaults(func=cmd_continuous)
     return parser
 
 

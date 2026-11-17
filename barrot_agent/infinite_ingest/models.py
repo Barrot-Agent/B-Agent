@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -16,7 +16,11 @@ MAX_STATEMENT_CHARS = 400
 
 
 class FetchError(RuntimeError):
-    """A source could not be fetched or parsed."""
+    """A source could not be fetched or parsed. Retryable by default."""
+
+
+class PermanentFetchError(FetchError):
+    """A deterministic fetch failure: retrying cannot change the outcome."""
 
 
 class RateLimitStop(RuntimeError):
@@ -72,6 +76,8 @@ class IngestItem:
         capability: Capability this source is intended to help.
         path: Optional local file used instead of the network (offline replay).
         added_at: Queue insertion time.
+        attempts: Failed fetch attempts so far (retry cap is enforced by the ingestor).
+        last_error: Most recent fetch error, kept for the queue audit trail.
     """
 
     url: str
@@ -80,6 +86,12 @@ class IngestItem:
     capability: str = ""
     path: str = ""
     added_at: str = field(default_factory=utc_now)
+    attempts: int = 0
+    last_error: str = ""
+
+    def with_failure(self, error: str) -> "IngestItem":
+        """Return a copy with one more failed attempt recorded."""
+        return replace(self, attempts=self.attempts + 1, last_error=error)
 
     def as_dict(self) -> dict:
         """JSON-safe representation."""
@@ -90,6 +102,8 @@ class IngestItem:
             "capability": self.capability,
             "path": self.path,
             "added_at": self.added_at,
+            "attempts": self.attempts,
+            "last_error": self.last_error,
         }
 
     @classmethod
@@ -102,6 +116,8 @@ class IngestItem:
             capability=data.get("capability", ""),
             path=data.get("path", ""),
             added_at=data.get("added_at") or utc_now(),
+            attempts=int(data.get("attempts", 0) or 0),
+            last_error=data.get("last_error", ""),
         )
 
 

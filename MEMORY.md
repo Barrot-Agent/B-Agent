@@ -246,3 +246,20 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 
 ### Test baseline
 - 1080 collected, 1079 passed, 1 skipped (real-runtime tier). exit 0, ~4m24s.
+
+### origin/work — audited 2026-11-17, NOT merged, 0 commits ported
+- origin/work is an UNRELATED lineage: merge-base = none. 841 commits, 245 files,
+  2025-11-19..2026-11-16. main: 861 commits, 1352 files. Diverged, not ahead/behind.
+- 841 commits = 393 ping-pong cycles + 89 pulse snapshots + 76 merges + 157
+  workflow churn + 126 PR plans. Nothing real and non-duplicate.
+- 155 paths only on work; 138 with content nowhere in main. 33 unique .py: 30
+  already exist under barrot_agent/, 3 unwanted (coin-app presale, superseded
+  pingpong_emitter.py). 17 shared files differ and work always holds the stub
+  (transmute.py 1131B vs 15144B).
+- Never port: delete-main-branch.sh (destructive) and 5 flagged-vocabulary files
+  (glyphs/*_glyph.yml, memory-bundles/shrm-v2-config.json,
+  simulation-stack/shrm-v2-config.yml).
+- Work is an ARCHIVE. Local branch `work` = 0732187, tracks nothing, kept as
+  placeholder until Sean says delete. Full evidence: results/port_log.md.
+- Backup of main-wip kept outside git: ~/barrot/backup-20261117/
+  (untracked.tar.gz 31 entries, tracked.patch 2854 lines).

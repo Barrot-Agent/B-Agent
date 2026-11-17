@@ -234,8 +234,21 @@ class Refiner:
         self.max_memory_records = max_memory_records
         self._refined: set[str] = set()
 
-    def run_once(self, capability_name: str, run_id: str | None = None) -> RefinementResult:
-        """Execute the full loop once for ``capability_name``."""
+    def run_once(
+        self,
+        capability_name: str,
+        run_id: str | None = None,
+        reset_ingest_budget: bool = True,
+    ) -> RefinementResult:
+        """Execute the full loop once for ``capability_name``.
+
+        Args:
+            capability_name: Capability definition to refine.
+            run_id: Optional id used in the log.
+            reset_ingest_budget: Reset the ingestor's per-run counter.  Standalone
+                refinement is its own run; a continuous run passes ``False`` so
+                the outer ingest cap still applies.
+        """
         if capability_name in self._refined:
             raise RuntimeError(
                 f"capability {capability_name!r} already refined in this run "
@@ -245,7 +258,8 @@ class Refiner:
         if not capability:
             raise ValueError(f"unknown capability: {capability_name!r}")
         self._refined.add(capability_name)
-        self.ingestor.reset_run()
+        if reset_ingest_budget:
+            self.ingestor.reset_run()
         run_id = run_id or utc_now()
 
         memory = self.store.load_memory()
