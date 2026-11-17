@@ -5403,3 +5403,101 @@ The immediately preceding handoff commit, `a57a02fba3b8784191f7702d5c853f23e97b7
 - The June 10 deposit-interest pilot is secondary-reported and redemption amounts remain unknown.
 - Kamilah Stevenson is identified as the iHeart guest, but the specific YouTube channel remains unverified; no video inventory until a first-party cross-link is found.
 - Continue exact-phrase searches for "actual capital" and "SBIC, ChatGPT SBIC"; verify Permission buybacks on-chain; obtain the bank's primary pilot terms/redemption data; monitor the FIEA commencement order; and keep the forecast gate closed until raw receipts and out-of-sample evidence exist.
+
+
+## Run208 — XRP market structure, institutional rails, regulatory status and integration verification
+
+Capture: 2026-11-17T06:01:54Z. The structured observation record is `research/xrp_intelligence/20261117T060154Z-run208-market-liquidity-institutional-update.json`. All web observations are descriptive research only. No publisher response bytes were captured in this run; no raw-source SHA-256 values were fabricated and no new feature was admitted to the point-in-time store.
+
+### Repository state and integration-first audit
+
+- Main: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Head at capture: `7716b33539c45d6ec17834ad37e6669ed3bbc38a`, 162 commits ahead and zero behind main.
+- PR #1663: open, draft, mergeable; 1,365 changed files; +497,891 / -6,809; 62 changed workflow paths; 396 changed test paths.
+- Main tree: 1,393 entries. Integration tree: 2,579 entries. Every main path exists on integration; 1,186 paths are integration-only. No main path is missing.
+- The two commits after the Run207 code-verification head changed only the handoff; Run208 added one research JSON. No production Python or workflow code changed after the Run207 62-workflow patch review.
+- Full semantic/security review of all 1,365 changed paths remains incomplete.
+
+### Exact-head CI
+
+The exact code head immediately before Run208's evidence-only JSON commit, `f6e7f570ea98d52b2c2ed22f058a6de642e474c3`, passed:
+
+| Check | Run | Result |
+|---|---:|---|
+| Push full CI | [44027227749](https://github.com/Barrot-Agent/B-Agent/actions/runs/44027227749) | PASS |
+| Push dependency audit | [44027227741](https://github.com/Barrot-Agent/B-Agent/actions/runs/44027227741) | PASS |
+| Push fail-closed gate | [44027227753](https://github.com/Barrot-Agent/B-Agent/actions/runs/44027227753) | PASS |
+| PR CI | [44027232194](https://github.com/Barrot-Agent/B-Agent/actions/runs/44027232194) | PASS; PR event test jobs skipped by integration-head guard; Pages validation passed |
+| PR dependency audit | [44027232174](https://github.com/Barrot-Agent/B-Agent/actions/runs/44027232174) | PASS |
+| PR fail-closed gate | [44027232092](https://github.com/Barrot-Agent/B-Agent/actions/runs/44027232092) | PASS |
+
+The full-suite job reported **3,847 passed, 1 skipped, 11 warnings, 19 subtests passed**, 141.21 seconds; inclusive coverage 66.90%, legacy-core coverage 77%. Wheel build, installed V3/XRP mission smoke test and Pages validation passed. Six dependency manifests passed pip-audit with no known vulnerabilities reported. This is dependency-audit evidence, not a code-scanning or supply-chain attestation.
+
+After the Run208 research artifact commit, exact-head checks for `7716b33539c45d6ec17834ad37e6669ed3bbc38a` started:
+- Push CI [44029764564](https://github.com/Barrot-Agent/B-Agent/actions/runs/44029764564): in progress at capture.
+- Push dependency audit [44029764814](https://github.com/Barrot-Agent/B-Agent/actions/runs/44029764814): in progress.
+- Push fail-closed [44029764452](https://github.com/Barrot-Agent/B-Agent/actions/runs/44029764452): passed.
+- PR CI [44029770908](https://github.com/Barrot-Agent/B-Agent/actions/runs/44029770908): passed; integration-head test jobs skipped.
+- PR dependency audit [44029770872](https://github.com/Barrot-Agent/B-Agent/actions/runs/44029770872): in progress.
+- PR fail-closed [44029770877](https://github.com/Barrot-Agent/B-Agent/actions/runs/44029770877): passed.
+
+Do not transfer the `f6e7f57` full-suite result to `7716b33` or any later handoff commit. The current exact-head push CI and dependency audit must finish separately.
+
+### Fresh spot, depth, derivatives and exchange-balance observations
+
+Providers did not expose one synchronized snapshot; values are deliberately not averaged.
+
+- CoinGlass's XRP spot page reports a 03:14 UTC snapshot with approximately **$519.29M** 24-hour spot volume, down 18.81%; **$17.36M** 24-hour and **$184.45M** seven-day net taker outflow; **$2.28B** futures volume, about 4.4x spot. Its venue table shows 1% depth of about $3.81M Binance, $6.10M Coinbase, $2.79M Upbit, $0.56M Gate, $6.70M Kraken and $3.00M OKX. The table's per-row timestamp is not exact. [CoinGlass spot and venue table](https://www.coinglass.com/currencies/XRP/spot).
+- CoinGlass's later live page capture displayed XRP at **$0.9624**, 24-hour range $0.9415–$0.9767, spot volume $508.77M, futures volume $2.28B, open interest $1.99B, funding -0.0042% per 8h and $3.06M liquidations, 58% long-side. The page did not expose an exact event timestamp for this displayed snapshot.
+- Liqwall explicitly timestamps its snapshot at **05:42 UTC**: XRP $0.9654, $3.1M liquidations ($1.9M longs/$1.2M shorts), average funding -0.0051% per 8h, OI $965M (-3.3% 24h), and 73.3% of Binance accounts with XRP positions long. Its OI is about half CoinGlass's displayed OI. This is a source-universe disagreement, not a reason to average the values. [Liqwall XRP](https://liqwall.com/coins/xrp).
+- Basis's **02:27 UTC Binance XRPUSDT perpetual** snapshot shows 1.05 bps spread, $12.2M bids/$10.5M offers within 1%, and $8.1M/$5.3M within 0.5%. This is one perpetual book, not consolidated spot depth. [Basis heatmap](https://www.basischarts.com/liquidity-heatmap/xrp-usdt).
+- Coinfuty displayed $52.88M/$44.79M within 1% and $76.18M/$68.87M within 2% across its purported multi-venue futures book, but the page showed **0/5 live exchange feeds** and no event timestamp. It is retained as stale/incomplete comparison only, not a current liquidity feature. [Coinfuty order book](https://www.coinfuty.com/orderbook/xrp).
+- XRP Insights' **Nov 16, 08:00 UTC** XRPL read reports 22.24B XRP across 707 publicly attributed wallets at 24 exchanges; same-wallet balances fell 126.3M XRP over seven days and 344.3M over 30 days. This includes cold storage and provider-labeled non-customer reserves such as cbXRP/Base and Binance-Peg XRP/BNB Chain. It is not complete exchange-transfer flow or executable sell-side depth. [Exchange-balance methodology and table](https://xrp-insights.com/exchange-balances).
+- XRP Insights' issuer-holdings aggregation reports **-6,078,606 XRP** (about -$6.6M) for Nov 9–13 and 1.1891B XRP held on Nov 13. Its Nov 16 row is provisional. CoinGlass's $0 Nov 16 ETF field and another dashboard's one-of-five-funds status are not verified issuer-complete zero flows. [ETF data and status](https://xrp-insights.com/data).
+- XRP Insights' pinned XRPL read at ledger **108,382,065**, 04:52 UTC Nov 17, shows 31.1B Ripple-owned escrow and the next 1B XRP release becoming eligible Dec 1 at 00:00 UTC. The last 12 releases averaged 70% re-escrowed, approximately 300M net monthly release. An unlock is not a sale. [Escrow objects and history](https://xrp-insights.com/xrp-radar/escrow).
+
+### Institutional relationship and product-scope corrections
+
+- **Coinbase / Ripple:** Ripple and Coinbase's Oct 28 announcement makes RLUSD available through Coinbase Prime, Coinbase Exchange and the retail app in supported regions, with transfers on XRPL, Base and Ethereum. Coinbase Global Exchange access and RLUSD collateral use were stated as future availability, not live launch functionality. Ripple says it will provide Base liquidity. [Ripple/Coinbase primary announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/) and [Coinbase announcement](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase).
+- **Circle / Coinbase:** Coinbase's Q3 2026 10-Q says it renewed its Circle arrangement on the same terms and records an investment in Circle. Circle's Q3 2026 10-Q reports $331.3M distribution costs to Coinbase in Q3 and $986.6M for the first nine months of 2026. Circle's 2025 S-1 records the Centre equity transaction and Coinbase's minority equity stake; the reviewed 2026 filings do not state the current percentage. Coinbase's RLUSD listing is additive evidence of a multi-stablecoin strategy, not proof that the USDC relationship ended. [Coinbase Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm), [Circle Q3 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), [Circle S-1](https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm).
+- **SBI / Ripple:** SBI Holdings' June 24 joint release identifies SBI VC Trade as its consolidated subsidiary and confirms RLUSD availability in VCTRADE. Critical network correction: the same release says VCTRADE supports **Ethereum only** for RLUSD deposits/withdrawals; XRPL deposits/withdrawals are not supported there. SBI VC Trade had already supported USDC since March 2025. This is a genuine subsidiary-level distribution relationship, not evidence of RLUSD liquidity on XRPL or XRP bridge demand. [SBI Holdings/SBI VC Trade/Ripple primary release](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html).
+- **Robinhood / Ripple:** Ripple's Oct 27 announcement says RLUSD was live on Robinhood Chain and Bitstamp by Robinhood, with Robinhood-app availability expected later in 2026; Robinhood intends to use RLUSD on XRPL for institutional settlement and integrate Ripple Treasury for corporate cash/liquidity management. Ripple Prime provides Bitstamp lending/margin financing across roughly 20 digital assets; perpetual futures were described as a later phase. This is broader than a listing, but the announcement does not disclose XRP purchases, XRP bridge usage or actual settlement throughput. [Ripple/Robinhood primary announcement](https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/).
+- **BNY / Ripple:** BNY's Oct 27 joint release says BNY is RLUSD's primary reserve custodian, already has a custody relationship with Ripple Prime, and now supports XRP and RLUSD on its Digital Asset Custody platform. Direct mint/redeem through BNY, broader tokenized-asset support and trade-finance work remain intended or conditional. [BNY primary announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- **C2FO / Ripple:** The Oct 27 Instant Pay initiative describes financing and settlement on XRPL using RLUSD, funded by participating capital providers. The stated **$520B** is historical working capital across C2FO's existing Early Pay programs, not XRPL throughput, RLUSD volume or capital committed to the new initiative. The source offered a waitlist; no deployed volume was disclosed. [C2FO/Ripple announcement](https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/).
+- **Ripple National Trust Bank:** OCC Corporate Applications Search lists Ripple National Trust Bank, proposed charter 25364, application 2025-Charter-342347, approved Dec 12, 2025 and **consummated/effective Oct 26, 2026**. The OCC's earlier conditional approval describes a national trust bank with proposed RLUSD reserve-management, collateral-trustee and digital-asset custody functions. This is a trust-bank charter, not proof of a full-service insured deposit bank or FDIC insurance for RLUSD. [OCC application record](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2) and [OCC Conditional Approval #1359](https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf).
+- **U.S. stablecoin regulation:** OCC Bulletin 2026-50, dated Oct 21, finalizes the OCC GENIUS Act rule effective Jan 18, 2027. BSA/AML and OFAC requirements are subject to separate rulemaking. This is broad payment-stablecoin regulation, not an XRP-specific approval. [OCC Bulletin 2026-50](https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-50.html).
+- **Macro:** The recent $14.2B Glassnode/30-day stablecoin contraction and higher DefiLlama-based estimates remain broad-liquidity context. Different universes and revisions explain the range; do not average them or infer XRP causation.
+
+### Competing hypotheses and disconfirming evidence
+
+1. **Spot-demand weakness:** supported by net taker outflows, weekly spot outflows, futures turnover about 4.4x spot and settled ETF outflows. Counter-evidence: same-wallet tracked exchange balances declined, Binance perpetual near-book was modestly bid-heavy, and negative funding may support a short-covering rebound. Disconfirm with sustained positive multi-venue taker flow, spot-led volume/depth recovery and issuer-complete ETF inflows.
+2. **Fragile derivatives positioning:** negative funding and long-heavy liquidations indicate positioning stress. Counter-evidence: CoinGlass OI and Liqwall OI differ by about 2x and move in different directions; their coverage is unreconciled. Require synchronized exchange-level OI/funding/liquidation payloads before drawing a stronger conclusion.
+3. **Institutional infrastructure growth without proven native-XRP demand:** BNY custody, Coinbase distribution, Robinhood institutional settlement, SBI distribution and C2FO's XRPL initiative expand the rails. Counter-evidence: several capabilities remain planned, SBI's RLUSD rail is Ethereum-only, Coinbase collateral was future availability, C2FO's new initiative had no published live volume, and no partner disclosed XRP bridge purchases. Require actual settlement volumes, native-XRP bridge evidence and collateral balances.
+
+### Prediction gate and nine-platform coordination
+
+- Event registry remains 125 events: 48 exact publisher timestamps, 77 missing, zero byte-exact raw-source SHA-256 receipts, zero model-eligible events.
+- Forecasts: zero. Accuracy: `NOT_EVALUATED`. Status: `NOT_ISSUED`.
+- No directional forecast or probability was produced. No new web observation was admitted to the point-in-time feature store.
+- GitHub access was tested and works. The nine-platform capability/data-flow map exists, but no live authentication/data-flow test was performed for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. No external model dispatch occurred.
+
+### Governance, source PRs and merge decision
+
+- PR #1663 remains draft/open with zero formal reviews and zero review threads.
+- Integration branch is not protected. Main branch-protection retrieval returns HTTP 403; visible fallback ruleset 10863829 is disabled and only describes deletion/non-fast-forward rules. CODEOWNERS is self-only. Repository connector permissions include broad admin/maintain/push/pull/triage access. Code-scanning and secret-scanning alert status remains unknown through this connector.
+- Main still has active high-write workflows: `.github/workflows/barrot-agent.yml` has contents/pull-request/issues write permissions and issue-label/scheduled task automation; `ask-barrot.yml` can create issues and push generated memory directly to main; `barrot-sync.yml` runs on main pushes and can push generated sync updates. The integration branch quarantines these three workflows with no permissions and a false job guard. Main's `check-signal-accuracy.yml` is already disabled; main Cross Analysis is read-only, while the integration version labels checked-in input freshness explicitly.
+- The 62 changed workflow paths were patch-reviewed in Run207. No workflow file changed after that review. The XRP public ingestion workflow remains only on integration; it is guarded to run on main, has read-only GitHub permissions, and writes 90-day GitHub artifacts/cache. This is not independent WORM storage and no production scheduled ingestion has run on main.
+- Open PR backlog: #1663 blocked consolidated integration; #1541 partial overlap/unique remainder (all five paths overlap #1663, two blobs identical and three divergent); #1460 unique/unreviewed (8 paths); #1450 unique research successor (116); #1440 stacked validator/source-pointer repair (64); #1437 parallel source-addenda repair (5); #1436 unique Binance theft/freeze graph (24); #1353 unique lossless archive (1,084); #1265 unique compact index (144, one `.github/workflows/ci.yml` overlap). Do not close any source PR until a successor is merged and verified on main; do not bulk-close unique research.
+- **Merge decision: NO MERGE.** Exact-head tests do not replace independent review, branch-protection evidence or full semantic/security review. PR #1663 remains draft and unapproved. No source PR was closed.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** scheduled public XRP source adapters, raw receipt/hash-chain code, point-in-time feature store, event timeline/counter-hypothesis assembly, four-baseline chronological evaluator, calibration/drift diagnostics and fail-closed forecast ledger.
+- **EXECUTED:** current main/tree/PR/ancestry/workflow/security inspection; exact-head CI and dependency checks on prior code head; fresh market-depth/derivatives/ETF/exchange-balance/escrow research; primary-source checks of SBI, Coinbase, Circle, Ripple, Robinhood, BNY, C2FO and OCC relationships.
+- **VERIFIED:** exact-head `f6e7f57` full suite, wheel smoke, six-manifest dependency audit and push/PR fail-closed gates. The subsequent evidence-only head `7716b33` has its own CI running as listed above; no result is transferred.
+- **NOT VERIFIED:** full semantic/security review of all changed paths and invoked scripts; independent review quorum; enforceable branch protection; production scheduled ingestion on main; external WORM anchoring; nonzero model-eligible dataset; candidate-model superiority; calibration/drift and shadow evaluation; live nine-platform authentication.
+
+### Next concrete action
+
+Finish push full-suite CI and dependency audit on the evidence head, then on the handoff-update head. Diagnose any failures without weakening gates. Complete the semantic/security review of all 1,365 changed paths and invoked scripts; obtain independent review and authorized branch-protection evidence; reconcile the three divergent #1541 paths while preserving the source branch; only then reconsider merge. Keep forecast issuance disabled.
