@@ -183,7 +183,7 @@ def test_validation_fails_closed_when_retraction_denylist_is_missing(tmp_path, m
     import scripts.re_v2 as re_v2
 
     path = _write_claims_for_retraction_validation(tmp_path, "10.1137/0204037")
-    monkeypatch.setattr(re_v2, "DENYLIST", tmp_path / "missing.json")
+    monkeypatch.setattr(re_v2, "DENYLIST", tmp_path / "retracted_dois.json")
     problems = re_v2.validate(path)
     assert any("retraction denylist unavailable" in item for item in problems)
     assert any("missing retracted_dois.json" in item for item in problems)
@@ -206,7 +206,19 @@ def test_validation_fails_closed_when_retraction_denylist_omits_verified_fixture
 
     path = _write_claims_for_retraction_validation(tmp_path, "10.1137/0204037")
     denylist = tmp_path / "retracted_dois.json"
-    denylist.write_text(json.dumps({"retracted": []}), encoding="utf-8")
+    denylist.write_text(
+        json.dumps(
+            {
+                "retracted": [
+                    {
+                        "doi": "10.1177/1758835919874651",
+                        "notices": ["10.1177/17588359211061903"],
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
     monkeypatch.setattr(re_v2, "DENYLIST", denylist)
     problems = re_v2.validate(path)
     assert any("does not cover verified fixture DOIs" in item for item in problems)
