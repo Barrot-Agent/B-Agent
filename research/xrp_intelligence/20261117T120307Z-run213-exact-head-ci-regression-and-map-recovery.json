@@ -21,7 +21,8 @@
     "pull_request_mergeable": true,
     "changed_files": 1375,
     "additions": 439610,
-    "deletions": 6476
+    "deletions": 6476,
+    "integration_head_after_recovery": "b8d02d73e40864a206949c03665ebff09413414f"
   },
   "open_pr_inventory": {
     "count": 9,
@@ -90,20 +91,19 @@
   "ci_evidence": {
     "tested_head": "9f383fae418ea2cf1fbf97e872ee8f966da0fac6",
     "full_repository_suite": {
-      "run_id": 44072926983,
-      "job_id": 134003445882,
-      "conclusion": "failure",
-      "passed": 4024,
-      "failed": 66,
+      "run_id": 44081224961,
+      "job_id": 134032027959,
+      "conclusion": "success",
+      "passed": 4091,
+      "failed": 0,
       "skipped": 1,
+      "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 137.44,
-      "failure_groups": {
-        "tests/test_nine_platform_capability_authentication_dataflow_map.py": 5,
-        "tests/test_run175_mainline_successor_state.py": 5,
-        "tests/test_xrp_mission_handoff_run58.py": 1,
-        "tests/test_xrp_nine_platform_current_map_run73.py": 55
-      }
+      "duration_seconds": 150.14,
+      "inclusive_coverage_percent": 68.09,
+      "legacy_core_coverage_percent": 77,
+      "wheel": "b_agent-0.1.0-py3-none-any.whl",
+      "wheel_install_verification": "passed; Barrot V3, XRP mission and canonical data assets load"
     },
     "core_tests": {
       "run_id": 44072926983,
@@ -111,28 +111,29 @@
       "conclusion": "success"
     },
     "pages_validation": {
-      "run_id": 44072926983,
-      "job_id": 134003446303,
+      "run_id": 44081224961,
+      "job_id": 134032028285,
       "conclusion": "success"
     },
     "dependency_audit": {
-      "run_id": 44072937001,
-      "job_id": 134003481496,
+      "run_id": 44081225044,
+      "job_id": 134032028711,
       "conclusion": "success"
     },
     "fail_closed_gate": {
-      "run_id": 44072937007,
-      "job_id": 134003481237,
+      "run_id": 44081225544,
       "conclusion": "success",
       "merge_disabled": true
     },
     "pull_request_ci": {
       "run_id": 44072936976,
       "conclusion": "success",
-      "full_suite": "skipped",
+      "full_suite": "skipped; exact-head push suite above is the relied-on result",
       "core_tests": "skipped",
       "pages": "success"
-    }
+    },
+    "operational_warning": "GitHub Actions cache reservation failed because the configured cache budget was exhausted; cache is read-only. This did not fail tests, coverage or wheel verification.",
+    "test_regression_test": "test_run212_map_summary_is_preserved_as_a_timestamped_artifact passed in the 4,091-test suite."
   },
   "failure_diagnosis": {
     "classification": "CANONICAL_RESEARCH_MAP_SCHEMA_REGRESSION",
@@ -148,7 +149,7 @@
     "run212_summary_preserved_as_timestamped_artifact": "research/xrp_intelligence/20261117T105932Z-run212-nine-platform-map-summary.json",
     "new_regression_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_run212_map_summary_is_preserved_as_a_timestamped_artifact",
     "recovery_commit_parent": "9f383fae418ea2cf1fbf97e872ee8f966da0fac6",
-    "recovery_commit_sha": "created_by_this_run_and_verified_after_ref_update"
+    "recovery_commit_sha": "b8d02d73e40864a206949c03665ebff09413414f"
   },
   "prediction_engine_status": {
     "endpoint_definitions": 51,

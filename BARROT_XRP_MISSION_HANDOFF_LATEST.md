@@ -6019,3 +6019,53 @@ Nine PRs remain open. PR #1663 is the sole consolidated integration workstream a
 **NO MERGE.** The canonical map regression is repaired on the existing branch, but the recovery head has not yet passed its own full suite, Pages validation, dependency audit and fail-closed gate. Independent semantic/security review, enforceable branch-protection verification and approval remain blockers.
 
 No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action or external-model data transfer occurred.
+
+
+---
+
+## Run213 research reconciliation — market, institutions and SBIC identity
+
+**Research cutoff:** 2026-11-17T12:03:07Z. These are public rendered-page/search observations, not raw HTTP receipts. No SHA-256 raw-source receipts were captured, so none is admitted to the point-in-time feature store or model training.
+
+### Current market context — no forecast
+
+- Investing.com’s 17 November partial daily row showed XRP at $0.9566, open $0.9552, high $0.9680, low $0.9505 and reported volume $337.53M. CoinMarketCap’s page showed approximately $0.9579 at its displayed 10:41:48 page-local time. These are asynchronous aggregate quotes, not one synchronized exchange print.
+- Basis Charts’ 08:11 UTC snapshot was Binance XRPUSDT perpetual depth, not spot: mid $0.9599, 1.04 bps spread, $35.2M bids versus $33.4M offers and $14.0M depth within 0.5%.
+- Swiftedge’s 07:39 UTC perpetual snapshot showed open interest +2%, funding -0.0031% per eight hours, 60.4% long accounts and vendor-estimated whale flow of -$307K. Liqwall showed $965M open interest, -3.3% over 24 hours at 05:52 UTC. TradRadar showed $1.31B, -5.04% at its earlier 16 November 15:30 UTC seven-venue cutoff. These are different venue sets, cutoffs and metrics; do not average them.
+- ETF flow aggregators disagree because they use different cohorts and reporting cutoffs. CryptoKeyhole reported a partial 16 November outflow of 5.197M XRP with two of four daily funds reported. XRP Insights reported +158,148 XRP across six spot funds plus BITW. Alpha Finance and Maketo showed zero for their five-fund cohorts at their respective cutoffs. Preserve the fund universes and partial status; do not average.
+- Counter-hypotheses remain open: falling OI may be position closure rather than new shorting; visible bid walls may be cancelled; stablecoin settlement growth does not mechanically imply proportional XRP buying; a partial ETF cohort is not total institutional flow.
+
+### Japan SBIC identity — resolved from primary sources
+
+The acronym refers to the three regional **Small and Medium Business Investment & Consultation** companies created under Japan’s Small and Medium Business Investment & Consultation Companies Act, Act No. 101 of 1963. Article 2 names the Tokyo, Nagoya and Osaka companies.
+
+| Designation | Legal company | Established | Coverage |
+|---|---|---:|---|
+| SBIC East Japan | Tokyo Small and Medium Business Investment & Consultation Co., Ltd. | 15 Nov 1963 | 18 prefectures east of Shizuoka, Nagano and Niigata |
+| SBIC Central Japan | Nagoya Small and Medium Business Investment & Consultation Co., Ltd. | 18 Nov 1963 | Aichi, Gifu, Mie, Toyama and Ishikawa |
+| SBIC West Japan | Osaka Small and Medium Business Investment & Consultation Co., Ltd. | 20 Nov 1963 | 24 prefectures west of Fukui, Shiga, Nara and Wakayama |
+
+These are distinct statutory companies and sister companies to one another. They are not SBI Holdings, Inc. The reviewed primary records show no SBI Holdings ownership or group affiliation for these three SBIC entities; that is a scoped negative finding, not a claim that no indirect commercial contact could ever exist. No XRP, Ripple, Circle or Coinbase relationship was identified for the SBIC companies.
+
+### Coinbase, Circle, Ripple and SBI — dated relationship graph
+
+- **Coinbase ↔ Circle:** Coinbase and Circle jointly launched USDC through Centre. In August 2023, Circle retained sole USDC issuance/governance responsibility, Coinbase took an equity stake in Circle, and the parties continued reserve-income sharing by platform balances plus equal sharing of broader distribution/usage interest income. Coinbase’s current help documentation says it receives revenue based on USDC held on Coinbase and third-party platforms.
+- **Circle ↔ XRPL:** USDC has been native on XRPL mainnet since 12 June 2025; Circle Mint and APIs support it without bridging.
+- **Circle ↔ SBI Holdings:** 2023 MOU, 2025 SBI Circle Holdings joint venture, USDC distribution through SBI VC Trade, and a combined $50M Circle equity investment at IPO ($25M each from SBI Holdings and SBI Shinsei Bank).
+- **Circle Arc ↔ SBI:** Arc public mainnet launched 16 September 2026. SBI Group is in the founding validator cohort and said it would participate in network operation and governance. SBI Holdings separately disclosed participation by consolidated subsidiaries in the ARC token presale; its amount was not disclosed. Arc’s ecosystem list also names Coinbase as an exchange participant. This is Circle/Arc infrastructure participation, not evidence of Ripple participation in Arc.
+- **SBI yen rail:** JPYSC is a trust-type yen stablecoin issued by SBI Shinsei Trust and distributed by SBI VC Trade. Its 24 June 2026 announcement described initial account-limited availability; public-chain circulation was conditional on legal and tax treatment.
+- **Ripple ↔ SBI Holdings/SBI VC Trade:** the companies describe a relationship dating to 2016. RLUSD received Japanese regulatory approval and launched for retail and institutional users through SBI VC Trade on 24 June 2026.
+- **Ripple ↔ Coinbase:** RLUSD launched on Coinbase Prime, Exchange and Retail on 28 October 2026. Ripple’s announcement said Coinbase Global Exchange collateral support would follow; it was not established as live in that announcement.
+- **BNY ↔ Ripple:** BNY announced expanded XRP/RLUSD custody support and reserve-custody work in October 2026; the related invoice-finance work with C2FO was exploratory.
+- **Circle ↔ Ripple:** both USDC and RLUSD exist on XRPL, but no direct Circle–Ripple strategic partnership was verified in this pass. Treat them as separate issuers whose stablecoins coexist on a common ledger.
+
+The important distinction is that SBI Holdings has parallel relationships with Circle and Ripple. Neither relationship should be attributed to SBIC East/Central/West. Coinbase also has parallel USDC and RLUSD relationships; it is not exclusive to either issuer.
+
+### Exact-phrase and identity checks
+
+- **ASK Coin:** Permission.io’s ASK/Permission Coin is a consent-based advertising/data-reward token. No XRP or XRPL relationship was established.
+- **“actual capital”:** the phrase appears in commentary around Evernorth financing; it is not a named XRP asset or product. Continue distinguishing cash actually received, XRP actually purchased, in-kind XRP contributions and optional financing capacity using the SEC filings already catalogued.
+- **“SBIC, ChatGPT SBIC”:** no verified exact-phrase match, partnership or entity relationship was found in indexed public sources searched.
+- **Camilla/Kamilah Stevenson:** Dr. Kamilah Stevenson’s identity is supported by her official web presence, but no official YouTube channel link was verified. No videos are attributed without that identity link.
+
+The complete structured observation and source register is committed as `research/xrp_intelligence/20261117T120307Z-run213-xrp-market-and-entity-reconciliation.json`. All market observations remain model-ineligible and forecast status remains **NOT_ISSUED**.
