@@ -6668,3 +6668,95 @@ The identity question is now resolved by the statute itself, not name similarity
 - The consolidated PR remains draft. The 1,380-file / 62-workflow diff has no formal review or independent semantic/security sign-off. Passing CI and GitHub's mergeable flag do not satisfy the merge standard.
 
 **Decision unchanged: DO NOT MERGE #1663.** Keep it draft. Next action remains independent security/code review and authorized verification of effective main branch protection, then a fresh exact-head full-suite and all-gates run after any change. Preserve all eight other open source PRs; do not close #1541 or #1265 based only on partial path overlap.
+
+
+---
+
+## Run218 institutional supplement — SBI/Ripple/Circle capital and payment rails
+
+**Research cutoff:** 2026-11-17. All evidence below is public corporate, exchange or SEC material. These rendered-page observations are research-only until raw response bytes and SHA-256 receipts are ingested.
+
+### 1. SBI Holdings is a direct Ripple equity and operating partner
+
+- SBI Holdings' FY2025 results presentation (published May 1, 2026) identifies Ripple as an SBI Group investee and reports SBI Group holds approximately **9% of Ripple**, described as the largest external shareholder. This is SBI's company-reported equity stake, not an XRP token holding and not an independently verified current shareholder-register extract.
+- SBI Ripple Asia was established May 18, 2016 as a joint venture between SBI Holdings and Ripple. SBI's current group profile reports SBI Group at **60%** voting rights; SBI's FY2024/25 materials describe the joint venture as SBI 60% / Ripple 40%.
+- SBI Group's FY2025 presentation describes Ripple's holdings as approximately **5.10 billion XRP outside escrow** and **33.20 billion XRP under escrow**, with the figures dated **April 27, 2026**. The presentation labels the 5.10B category “Actual XRP”; this means Ripple-held XRP outside escrow, not “actual capital,” cash, or SBI-owned XRP.
+- Sources:
+  - https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf (pp. 58–60)
+  - https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+  - https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf
+
+### 2. SBI Remit has a disclosed operational XRP bridge route
+
+- SBI Remit began using Ripple's DLT for Japan–Thailand remittances in 2017; SBI's corporate profile also records Japan–Vietnam DLT remittances beginning in 2019. Those statements alone do not establish XRP use in each corridor.
+- The 2021 XRP bridge service initially routed Japan-origin remittances to Philippine digital wallets. The September 6, 2023 SBI release says the XRP-using service was expanded to bank-account destinations in the Philippines, Vietnam and Indonesia.
+- The disclosed transaction path: SBI Remit receives the customer request; **SBI VC Trade sends XRP in real time**; Tranglo is the overseas payout partner; the recipient receives local fiat. This is actual operational use of XRP as a bridge asset, not merely XRPL experimentation.
+- The release does not disclose corridor-level transaction count, XRP turnover, average holding time, inventory, slippage, net XRP demand or share of SBI Remit's total remittance volume. Do not extrapolate from SBI Remit's overall remittance totals.
+- Sources:
+  - https://www.sbigroup.co.jp/news/2023/0906_14052.html
+  - https://www.sbigroup.co.jp/english/company/group/sbiremit.html
+
+### 3. Distinguish XRP bridge use from Ripple DLT and XRPL research
+
+- SBI Remit / SBI LY HOUR Bank / SBI Ripple Asia announced a Japan–Cambodia DLT-based fiat remittance service on October 28, 2025. The announcement describes Ripple DLT and local fiat payout but does **not** identify XRP as the bridge asset. Classify as Ripple-DLT use, not confirmed XRP flow: https://www.sbigroup.co.jp/news/pr/2025/1028_15848.html
+- On February 24, 2026, SBI Ripple Asia and DSRV began a Japan–Korea remittance/payment research project that considers XRPL. The release explicitly says the work is research into future implementation possibilities, not a specific commercial service or launch: https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html
+- On February 26, 2026, SBI Ripple Asia announced a conceptual proof of a low-cost model for tokenized deposits and deposit-backed digital money using MoneyTap, an SBI token-issuance platform and XRPL. It is a concept proof and future social-implementation study, not production transaction volume: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- These distinctions are mandatory: Ripple software use ≠ XRPL use; XRPL use ≠ XRP bridge use; a PoC ≠ a production flow.
+
+### 4. Evernorth: actual capital, in-kind XRP and cash-funded purchases must not be combined
+
+- SBI Holdings' October 21, 2025 announcement says SBI Group would contribute **USD 200 million in cash** to Evernorth's PIPE, with proceeds intended primarily for open-market XRP purchases: https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+- SBI's May 1, 2026 FY2025 results presentation subsequently describes the Evernorth PIPE investment as executed, identifies Evernorth as an XRP treasury business and repeats the USD 200 million SBI cash investment.
+- Evernorth's SEC Form 424B3 dated October 19, 2026 says the business combination closed **October 9, 2026**, and XRPN began Nasdaq trading on October 12, 2026. It reports approximately **473 million XRP held as of October 9, 2026**.
+- The SEC filing separates the sources:
+  - **USD 214.05 million cash + 600,000 XRP** under the aggregate Advance Funding Subscription Agreements.
+  - Evernorth used the USD 214.05 million cash proceeds to purchase **84,365,876 XRP**.
+  - **USD 10.5 million cash + 200,000 XRP** under separate Delayed Funding Subscription Agreements.
+  - **261,919,096 XRP** related to private-placement subscription agreements.
+  - Ripple separately contributed **126,791,458 XRP** to Pathfinder, which became an Evernorth subsidiary.
+  - As of June 30, 2026, Evernorth held **346,284,972 XRP** and Pathfinder held **126,791,458 XRP**; the combined amount is approximately 473.1 million XRP.
+- SBI's USD 200 million commitment is part of the Evernorth financing structure; the SEC's USD 214.05 million is the aggregate advance-funding cash amount across subscribers. **Do not add USD 200 million and USD 214.05 million as if they were independent cash inflows.** The exact subscriber-level allocation should be reconciled from the signed subscription agreements before attributing the full 84.366M cash-funded XRP purchase to SBI.
+- SEC filing identifies four SBI-controlled entities as “SBI Stockholders”: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. A **39.9% Class A ownership threshold** was applied to SBI's subscription; excess shares were issued as Class C. The filing describes Class C as carrying economic rights but no ordinary voting rights except as required by law. This is not a statement that SBI's total economic interest is capped at 39.9%.
+- Ripple's 126.791M XRP contribution is an in-kind contribution, not a cash purchase. The 261.919M XRP private-placement amount is also not equivalent to open-market demand. The 84.366M XRP bought with cash is the clearly disclosed cash-funded purchase.
+- Primary sources:
+  - https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm
+  - https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf (pp. 58–60)
+  - https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+
+### 5. SBI/Ripple RLUSD distribution is real, but SBI's initial rail was Ethereum-only
+
+- Ripple and SBI announced an RLUSD distribution MOU on August 22, 2025. On June 24, 2026, SBI VC Trade announced Japan's first Type 4 electronic payment instrument treatment and launched RLUSD in VCTRADE following JFSA approval.
+- SBI VC Trade's own launch notice states VCTRADE initially supports **Ethereum only** for RLUSD deposits and withdrawals; XRPL support was a future expansion, not live at launch. The notice sets a 1 million yen per-withdrawal cap and daily deposit limits, and allows deposits to be paused if RLUSD diverges from USD or if customer deposits exceed SBI VC Trade's redemption capacity.
+- This is a direct SBI/Ripple commercial distribution relationship, but **the SBI launch itself did not create XRPL-mainnet RLUSD flows**. Do not count SBI RLUSD balances as XRPL activity unless the supported chain changes and on-chain transfers confirm it.
+- SBI VC Trade's July 15, 2026 educational report estimates global RLUSD supply around **USD 1.58 billion**. It reports that, by June 2026, XRPL supply (about USD 850M) exceeded Ethereum supply (about USD 730M), based on DefiLlama, XRPScan and Blockscout. The same report says SBI VC Trade initially supports Ethereum RLUSD only. The chain-supply shift therefore cannot be attributed to SBI's Japanese listing; issuer mint/burn and cross-venue transfer data are needed to explain it.
+- Sources:
+  - https://ripple.com/ripple-press/ripple-and-sbi-plan-to-distribute-rlusd-in-japan/
+  - https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+  - https://www.sbivc.co.jp/newsview/bsqs09vn_yzv
+  - https://www.sbivc.co.jp/columns/content/hn3klagt3
+
+### 6. SBI/Circle is a separate stablecoin and equity relationship
+
+- SBI and Circle signed a strategic MOU in November 2023, formed Circle SBI Japan KK in 2025, and SBI VC Trade began offering USDC in March 2025.
+- SBI's May 12, 2026 filing confirms participation in Circle's ARC token presale. The accessible filing extract does not disclose the investment amount.
+- SBI's FY2025 presentation and the Circle presale filing report a **USD 50 million** SBI Group strategic equity investment in Circle at its NYSE listing. This is a corporate equity investment, not an XRP purchase.
+- SBI's domestic yen stablecoin JPYSC is a separate rail: SBI's November 2, 2026 release reports more than **JPY 30 billion** in JPYSC handling balances and more than **JPY 10 billion** in JPYSC lending balances. On November 13, 2026, SBI Remit and the National Bank of Cambodia signed an MOU for a stablecoin remittance PoC with JPYSC handled on the Japan side. This is a PoC/alternative rail, not XRP bridge volume.
+- Sources:
+  - https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf
+  - https://www.sbigroup.co.jp/news/2026/1102_16704.html
+  - https://www.sbigroup.co.jp/news/2026/1113_16737.html
+
+### 7. Coinbase, BNY and Ripple distribution/custody links
+
+- Ripple's October 28, 2026 release confirms RLUSD launched on Coinbase Prime, Coinbase Exchange and retail, with XRPL, Base and Ethereum support. Coinbase Global Exchange collateral use was described as a later rollout; no activation was verified in this capture: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+- BNY's October 27, 2026 announcement names BNY as primary RLUSD reserve custodian and describes institutional support for XRP and RLUSD on its Digital Asset Custody platform. No client balances, XRP collateral utilization, RLUSD custody balances or transaction volumes were disclosed: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-selects-bny-to-custody-ripple-usd-reserves.html
+- Coinbase/Circle's historical equity and USDC revenue-sharing arrangement is separate from Coinbase's RLUSD distribution agreement with Ripple. Current post-IPO Circle ownership was not established in this evidence set.
+- The institutional graph now has distinct, evidenced edges: SBI–Ripple equity/JV/remittance/RLUSD; SBI–Circle JV/equity/USDC/ARC; Coinbase–Circle historical USDC/equity economics; Coinbase–Ripple RLUSD distribution; BNY–Ripple RLUSD reserve custody and XRP/RLUSD institutional custody support. None of these relationships alone proves a net XRP purchase or a measured price effect.
+
+### 8. Prediction and evidence controls
+
+- SBI Remit's XRP bridge route is an operational-use fact, but corridor volumes and inventory are not disclosed; it is not a numeric training feature yet.
+- Evernorth's XRP holdings and cash-funded purchases are primary evidence, but the cash and in-kind components must remain separate. Use filing dates and as-of dates, not publication date as event date.
+- RLUSD's XRPL/Ethereum supply split is a secondary on-chain aggregation. Preserve chain, contract, timestamp, source methodology and mint/burn uncertainty. SBI's initial Ethereum-only listing is a disconfirming fact against attributing XRPL supply growth to SBI.
+- JPYSC, USDC and RLUSD are separate stablecoin rails. Their use can expand digital settlement without requiring XRP as a bridge. Treat that as a competing hypothesis when estimating XRP demand.
+- No source in this supplement included byte-exact raw HTTP receipts or a point-in-time feature-store admission record. **All findings remain research-only and model-ineligible; no directional forecast is issued.**
