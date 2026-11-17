@@ -111,7 +111,9 @@ jobs:
       - name: Verify the global mission manifest remains excluded from public Pages
         run: |
           test -s ./GLOBAL_STATE_MANIFEST.md
-          grep -Eq '^[[:space:]]*-[[:space:]]*GLOBAL_STATE_MANIFEST\.md
+          grep -Eq '^[[:space:]]*-[[:space:]]*GLOBAL_STATE_MANIFEST\.md$' _config.yml
+          test ! -e ./_site/GLOBAL_STATE_MANIFEST.html
+          test ! -e ./_site/GLOBAL_STATE_MANIFEST.md
 
   full-suite:
     if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'integration/')

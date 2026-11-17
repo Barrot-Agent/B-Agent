@@ -309,8 +309,8 @@ RETRACTION_FIXTURES = ROOT / "data" / "research" / "retraction_fixtures.json"
 def _normalize_doi(value: object) -> str:
     """Normalize DOI strings and DOI URLs to one comparison key."""
     identifier = str(value or "").strip().lower()
-    identifier = re.sub(r"^https?://(?:dx\\.)?doi\\.org/", "", identifier)
-    identifier = re.sub(r"^doi:\\s*", "", identifier)
+    identifier = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", identifier)
+    identifier = re.sub(r"^doi:\s*", "", identifier)
     return identifier.strip().rstrip(".,;)")
 
 

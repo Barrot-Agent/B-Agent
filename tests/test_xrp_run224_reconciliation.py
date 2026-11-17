@@ -78,7 +78,7 @@ def test_run224_sbi_start_bond_distinguishes_real_debt_capital_from_xrp_rewards(
 
 
 def test_run224_doppler_sbi_partnership_is_not_mislabeled_as_deployed_capital():
-    item = data = _data()["capital_and_institutional"]["doppler_sbi_digital_finance"]
+    item = _data()["capital_and_institutional"]["doppler_sbi_digital_finance"]
     assert item["announcement_date"] == "2026-07-13"
     assert item["financial_terms"] == "NOT_DISCLOSED"
     assert item["production_launch_date"] == "NOT_DISCLOSED"
