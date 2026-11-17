@@ -5945,3 +5945,77 @@ Captured: 2026-11-17T10:59:32Z
 - Existing dataset status remains 125 curated events, 48 exact publisher timestamps, 77 missing exact timestamps, zero byte-exact raw-source SHA-256 receipts, zero model-eligible events, zero forecasts, accuracy NOT_EVALUATED. New Run212 observations are descriptive only and not admitted to the point-in-time feature store.
 - Forecast status: NOT_ISSUED. No directional claim, paper trade, real-money action, deployment, secret rotation, Kaggle submission or external provider write occurred.
 - Next action: verify the non-force branch ref update, then wait for exact-head full suite, Pages, dependency/security and fail-closed checks on the new integration head. Keep PR #1663 draft until independent review and enforceable protection are verified. Preserve all eight unique/unreviewed source PRs; close none.
+
+
+---
+
+## Run213 — exact-head full-suite diagnosis and canonical-map recovery
+
+**Captured:** 2026-11-17T12:03:07Z
+
+### Repository and branch state
+
+- Current main: `9753132cd2c7b8d5fd88fc265c731f4fc5b11087`.
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Pre-recovery head: `9f383fae418ea2cf1fbf97e872ee8f966da0fac6`.
+- PR #1663 is open, draft, and mergeable; 182 commits ahead, zero behind main; 1,375 changed files, 439,610 additions and 6,476 deletions.
+- Recursive tree inspection: main 1,582 entries; integration 2,782 entries. The branch has no deleted main paths in the inspected tree comparison.
+- No branch or PR was created. No source PR was closed.
+
+### Exact-head CI result
+
+The push-triggered full repository suite on `9f383fae418ea2cf1fbf97e872ee8f966da0fac6` completed:
+
+- **4,024 passed, 66 failed, 1 skipped, 19 subtests passed** in 137.44 seconds.
+- Core test job passed.
+- GitHub Pages validation passed.
+- Dependency audit run 44072937001 passed.
+- Fail-closed gate run 44072937007 passed and kept merge disabled.
+- PR-triggered run 44072936976 passed its wrapper but skipped both full-suite and core-test jobs. It is not full-suite evidence.
+
+All 66 failures are concentrated in four historical map-contract test files: five in the nine-platform map tests, five in Run175 preservation tests, one in the Run58 handoff test and 55 in the Run73 current-map tests.
+
+### Root cause and corrective action
+
+Run212 replaced the 2,747,877-character canonical nine-platform map blob, schema 1.1.0, with a 4,729-character summary map, schema 1.0.0, at the path consumed by historical regression tests. The resulting missing historical snapshots and fields caused the 66 failures. The application/runtime tests did not identify a separate runtime defect in this run.
+
+Correction on the existing integration branch:
+
+1. Restored the canonical map from its pre-Run212 Git blob SHA `1a4310a29b1b16640f8841410708ec1403c16141`. Historical Run175, Run173, Run172 and earlier evidence is preserved byte-for-byte.
+2. Preserved the Run212 nine-platform summary at `research/xrp_intelligence/20261117T105932Z-run212-nine-platform-map-summary.json`.
+3. Added a regression test proving the timestamped Run212 summary remains present, includes exactly the nine requested platforms and does not claim external provider dispatch.
+4. Added this Run213 execution record and updated this canonical handoff.
+
+No tests were removed or weakened. The recovery commit is a normal fast-forward child of the inspected integration head; main is unchanged.
+
+### Open-PR and overlap classification
+
+Nine PRs remain open. PR #1663 is the sole consolidated integration workstream and remains blocked pending exact-head verification and independent review.
+
+- #1541: five of five changed paths overlap with #1663, but the branches have no common ancestor and semantic equivalence is not verified. PR #1542 is closed unmerged. Preserve #1541 as unique/unreviewed; do not close it as a duplicate.
+- #1265: one of 144 paths overlaps with #1663; no common ancestor. Preserve as unique/unreviewed.
+- #1450, #1460, #1440, #1436, #1437 and #1353 have no changed-path overlap with #1663 in the fetched inventories. They remain unique/unreviewed research or archive work.
+- No source PR was closed.
+
+### Security and workflow review
+
+- Main branch-protection details remain inaccessible with HTTP 403. The only visible ruleset, 10863829, is disabled. CODEOWNERS is self-only. PR #1663 has zero formal approvals and zero review threads. Enforceable required checks and independent approval rules are not verified.
+- Main still contains active high-write Barrot Agent and Ask Barrot workflows, a push-triggered Barrot Sync with shell fallbacks that can mask failures, and a push-triggered A2A deployment workflow. Main's self-upgrade, Hugging Face sync, paper-trader, Databricks and Kaggle workflows also require a separate review of their exact authorization and side effects.
+- The integration branch quarantines Barrot Agent, Ask Barrot, self-upgrade, Barrot Sync and Hugging Face sync with empty permissions and disabled jobs. The integration A2A workflow is manual, exact-main-SHA-bound and requires explicit deployment and secret-rotation confirmation. Databricks, Kaggle and paper-simulation flows remain manual and gated; none was dispatched.
+- Dependency audit passed on the current pre-recovery head. The exact recovery head still requires fresh CI.
+
+### Prediction-engine implementation status
+
+- The integration code defines 51 public endpoints, 46 scheduled sources and three weekly sources.
+- The scheduled XRP ingestion workflow is present only on the integration branch. It is configured for hourly and daily captures, uses read-only Actions/Contents permissions, and runs only on main. It has not been activated or verified on main.
+- The workflow retains raw-source and receipt-chain artifacts for 90 days. GitHub Actions artifact retention is not an independently controlled WORM archive.
+- Point-in-time feature validation, source-group checks, version/revision handling, naive/momentum/mean-reversion/volatility baselines, chronological walk-forward evaluation, calibration diagnostics and PSI feature-distribution drift monitoring exist in integration code.
+- Forecast readiness requires at least 100 out-of-sample samples, 100 shadow samples, five independent source groups, a horizon-to-observation multiple of ten, weighted calibration error no greater than 0.05 and an Ed25519 attestation from a trusted independent evaluator.
+- The drift monitor is feature-distribution PSI; it does not establish label drift or concept drift. No trusted production evaluator key or independent WORM store is verified.
+- The current curated event count remains 125, with 48 exact publisher timestamps and 77 missing exact timestamps. Zero model-eligible events. Accuracy remains NOT_EVALUATED. Forecast status remains **NOT_ISSUED**.
+
+### Decision and next action
+
+**NO MERGE.** The canonical map regression is repaired on the existing branch, but the recovery head has not yet passed its own full suite, Pages validation, dependency audit and fail-closed gate. Independent semantic/security review, enforceable branch-protection verification and approval remain blockers.
+
+No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action or external-model data transfer occurred.

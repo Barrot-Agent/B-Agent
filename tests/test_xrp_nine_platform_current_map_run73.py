@@ -1304,3 +1304,18 @@ def test_run173_current_map_records_exact_head_ci_and_preserves_prediction_gates
     assert data["run173_forecast_status"]["forecast_status"] == "NOT_ISSUED"
     assert data["run173_forecast_status"]["accuracy_status"] == "NOT_EVALUATED"
     assert all(value is False for value in data["run173_no_external_actions"].values())
+
+
+def test_run212_map_summary_is_preserved_as_a_timestamped_artifact():
+    path = ROOT / "research/xrp_intelligence/20261117T105932Z-run212-nine-platform-map-summary.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    expected = {
+        "ChatGPT", "Claude", "Grok", "Gemini", "Copilot",
+        "Codex", "Hugging Face", "Kaggle", "Databricks",
+    }
+    assert data["schema_version"] == "1.0.0"
+    assert data["captured_at_utc"] == "2026-11-17T10:59:32Z"
+    assert data["coordination_status"] == "NO_NINE_PLATFORM_LIVE_QUORUM"
+    assert {item["platform"] for item in data["platforms"]} == expected
+    assert all(item["external_provider_dispatch"] is False for item in data["platforms"])
+    assert data["least_privilege"].startswith("NOT_VERIFIED")
