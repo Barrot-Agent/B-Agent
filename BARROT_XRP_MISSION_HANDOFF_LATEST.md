@@ -1,3 +1,20 @@
+# Run225 status refresh — 2026-11-17 20:50 UTC
+
+The current repository state supersedes the earlier Run225 mainline checkpoint below.
+
+- **Current main:** `d59b2ff5d6901365b5bd78254bd0e9e38fca8140`.
+- **Current integration head:** `301a400a9d6377513afcd488ce2ec9ede314a9c3`.
+- **Latest normal mainline reconciliation:** `301a400a9d6377513afcd488ce2ec9ede314a9c3`, with parents `90a9b398fd660a24f66924de41ae4238fe3a06db` and `d59b2ff5d6901365b5bd78254bd0e9e38fca8140`. The main commit only regenerated `docs/INDEX.md`; the integration tree already contained all main docs entries plus two integration-only entries. The merge commit preserved both histories without changing the tree.
+- **PR #1663:** open, draft, mergeable, 230 commits ahead, 0 behind, 1,393 changed files, 509,673 additions and 6,504 deletions. Zero formal reviews and zero review threads.
+- **Exact-head CI on `301a400`:** push run [44173327305](https://github.com/Barrot-Agent/B-Agent/actions/runs/44173327305) has the full repository suite and core tests running; Pages validation is running. Push dependency audit [44173335938](https://github.com/Barrot-Agent/B-Agent/actions/runs/44173335938) is pending. Push fail-closed gate [44173335886](https://github.com/Barrot-Agent/B-Agent/actions/runs/44173335886) passed. The pull-request run skipped test jobs because the PR is draft; it is not accepted as full-suite evidence.
+- **Main CI on `d59b2ff`:** core tests passed; full-suite run [44173200958](https://github.com/Barrot-Agent/B-Agent/actions/runs/44173200958) was still running at last inspection. Main Pages deployment [44173199850](https://github.com/Barrot-Agent/B-Agent/actions/runs/44173199850) succeeded automatically. No deployment was initiated by this run.
+- The mainline fixture exclusion is now `pytest.ini: norecursedirs = tests/fixtures`; the temporary branch-only `tests/conftest.py` exclusion was reverted. The invalid-import fixture remains available to repo_guard but is not collected by pytest.
+- **Merge remains withheld.** The PR is draft, independent review is absent, enforceable required-check evidence is unavailable, and a merge to main would trigger automatic Pages publication without specific deployment authorization.
+
+No PRs were merged or closed. No main files were changed by this run.
+
+---
+
 # Run225 — 2026-11-17 XRP market microstructure, flow and repository reconciliation
 
 **Priority:** XRP intelligence and prediction-engine mastery. **Foundation:** preserve Barrot V3 for execution, orchestration, safety and verification.
