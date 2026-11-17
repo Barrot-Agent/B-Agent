@@ -99,6 +99,9 @@ PERMANENT MUSCLE MEMORY (Sean's 7 laws - apply every session, never re-ask):
 
 ## XRP intelligence and integration execution contract
 - Highest-priority mission: XRP intelligence and measured prediction-engine mastery. Barrot V3 remains the execution, orchestration, authorization, safety, and verification foundation.
+- Highest priority: XRP intelligence and prediction-engine mastery; preserve Barrot V3 as the execution, orchestration, safety, and verification foundation.
+- Deployment context: offline phone deployment in Termux is supported; do not infer network access from that local mode.
+- `scripts/transmute.py` is QUARANTINED; do not execute or replace it unless its quarantine gate is explicitly cleared and verified.
 - At the start of every repository run, inspect current main, the complete main and integration trees, current code, every open PR, branch ancestry, overlapping diffs, CI/workflow runs, dependency manifests, security settings, and the latest durable handoff.
 - Treat the repository as one integrated product. Prefer completing the existing coherent integration PR. Keep at most one active integration PR per workstream. Search open PRs and overlapping paths before creating any branch or PR.
 - Preserve every mainline and integration-only user change. Never reset, clean, stash, restore over, overwrite, discard, force-push, or rewrite branch history. Use non-force fast-forward updates only.

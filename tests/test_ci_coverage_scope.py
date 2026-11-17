@@ -39,7 +39,9 @@ def test_full_repository_suite_measures_all_distributable_packages():
 
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert 'source = ["barrot_agent", "directive_platform", "data"]' in pyproject
-    assert "fail_under = 62" in pyproject
+    # Keep local/scoped pytest runs ungated; CI enforces the 62% full-suite floor.
+    assert "fail_under = 0" in pyproject
+    assert "Do not reintroduce fail_under here." in pyproject
     package_discovery = pyproject.split("[tool.setuptools.packages.find]", 1)[1]
     for package in ('"barrot_agent"', '"directive_platform"', '"data"'):
         assert package in package_discovery

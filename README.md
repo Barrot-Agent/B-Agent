@@ -30,7 +30,7 @@ Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durab
 
 | Server | Transport | What it adds | Prerequisite |
 |---|---|---|---|
-| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` set to a GitHub personal access token (stored in the OpenCode service environment) |
+| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` must be configured in the OpenCode service environment; presence and validity are not verified here |
 | `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
 | `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
 
@@ -54,7 +54,7 @@ service environment, because MCP connections are opened at startup:
 opencode service restart
 ```
 
-The `github` server authenticates with a personal access token read from `GITHUB_MCP_TOKEN`. It is already stored in the OpenCode service environment on this machine:
+The `github` server reads a personal access token from `GITHUB_MCP_TOKEN`. Authentication is not yet verified by this repository configuration; the variable's presence, validity, and end-to-end data flow must be tested before treating this connection as live:
 
 ```bash
 opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"

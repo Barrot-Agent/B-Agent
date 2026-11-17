@@ -93,9 +93,18 @@ def test_run175_preserves_verified_opencode_default_and_disables_unverified_luna
     assert "git add -A" in prompt
 
 
-def test_run175_gitignore_preserves_current_main_rules_byte_for_byte() -> None:
+def test_run175_historical_gitignore_digest_is_retained_and_current_rules_remain() -> None:
     data = _load_map()
-    payload = (ROOT / ".gitignore").read_bytes()
-    header = b"blob " + str(len(payload)).encode("ascii") + bytes([0])
-    actual = hashlib.sha1(header + payload).hexdigest()
-    assert actual == data["run175_snapshot"]["preservation"]["main_gitignore_blob_sha1"]
+    # Run175's digest is historical evidence. Main has since advanced; do not
+    # compare the current .gitignore against an obsolete snapshot.
+    assert data["run175_snapshot"]["preservation"]["main_gitignore_blob_sha1"] == (
+        "f63d4ea6c01a6dbeb72cd80d8f5fcdac93ea66d4"
+    )
+    ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    for required in (
+        ".config/gh/hosts.yml",
+        ".config/gh/",
+        "data/xrp_intelligence/forecast_ledger.sqlite3",
+        "data/xrp_intelligence/feature_store.sqlite3",
+    ):
+        assert required in ignore
