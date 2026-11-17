@@ -304,5 +304,293 @@
       "memory_cluster"
     ],
     "artifact": "results/re_wishlist.md"
+  },
+  {
+    "timestamp": "20261117_021450",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 609,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 8192,
+        "test_jitter_ms": 2061,
+        "score": 991598.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.80s\n"
+      },
+      {
+        "name": "v_noop.py",
+        "compile_ok": true,
+        "compile_ms": 494,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 6227,
+        "test_jitter_ms": 1317,
+        "score": 993563.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.69s\n"
+      },
+      {
+        "name": "v_break.py",
+        "compile_ok": true,
+        "compile_ms": 541,
+        "lines": 210,
+        "test_ok": false,
+        "test_rate": 0.9861111111111112,
+        "test_passed": 71,
+        "test_total": 72,
+        "test_wall_ms": 9093,
+        "test_jitter_ms": 2295,
+        "score": 976808.11,
+        "tail": ":128: in canonical_form\n    tuple(_quantize(coordinate, tolerance) for coordinate in vertex)\nbarrot_agent/geometry/signature.py:128: in <genexpr>\n    tuple(_quantize(coordinate, tolerance) for coordinate in vertex)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nvalue = 0.0, tolerance = 0.0\n\n    def _quantize(value: float, tolerance: float) -> int:\n>       scaled = value / tolerance\n                 ^^^^^^^^^^^^^^^^^\nE       ZeroDivisionError: float division by zero\n\nbarrot_agent/geometry/signature.py:71: ZeroDivisionError\n=========================== short test summary info ============================\nFAILED tests/test_geometry_signature.py::test_tolerance_must_be_positive_and_finite\n1 failed, 71 passed in 4.30s\n"
+      }
+    ],
+    "winner": "v_noop.py",
+    "applied": true,
+    "losers_deleted": [
+      "v_break.py"
+    ]
+  },
+  {
+    "timestamp": "20261117_021713",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 389,
+        "lines": 210,
+        "test_ok": false,
+        "test_rate": 0.0,
+        "test_passed": 0,
+        "test_total": 0,
+        "test_wall_ms": 3596,
+        "test_jitter_ms": 0,
+        "score": -3806.0,
+        "tail": "\nno tests ran in 0.00s\nERROR: file or directory not found: test_geometry_states.py\n\n"
+      },
+      {
+        "name": "v_noop2.py",
+        "compile_ok": true,
+        "compile_ms": 495,
+        "lines": 210,
+        "test_ok": false,
+        "test_rate": 0.0,
+        "test_passed": 0,
+        "test_total": 0,
+        "test_wall_ms": 3347,
+        "test_jitter_ms": 0,
+        "score": -3557.0,
+        "tail": "\nno tests ran in 0.00s\nERROR: file or directory not found: test_geometry_states.py\n\n"
+      }
+    ],
+    "winner": "v_noop2.py",
+    "applied": true,
+    "losers_deleted": []
+  },
+  {
+    "timestamp": "20261117_021724",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 388,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 3979,
+        "test_jitter_ms": 0,
+        "score": 995811.0,
+        "tail": "........................................................................ [100%]\n72 passed in 0.98s\n"
+      },
+      {
+        "name": "v_noop2.py",
+        "compile_ok": true,
+        "compile_ms": 467,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 4315,
+        "test_jitter_ms": 0,
+        "score": 995475.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.27s\n"
+      }
+    ],
+    "winner": "baseline",
+    "applied": false,
+    "losers_deleted": []
+  },
+  {
+    "timestamp": "20261117_021819",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 387,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 3948,
+        "test_jitter_ms": 3242,
+        "score": 995842.0,
+        "tail": "........................................................................ [100%]\n72 passed in 0.95s\n"
+      },
+      {
+        "name": "v_noop2.py",
+        "compile_ok": true,
+        "compile_ms": 463,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 4137,
+        "test_jitter_ms": 2218,
+        "score": 995653.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.04s\n"
+      }
+    ],
+    "winner": "v_noop2.py",
+    "applied": true,
+    "losers_deleted": []
+  },
+  {
+    "timestamp": "20261117_021847",
+    "kind": "phase1_scoring_fix",
+    "target": "pytest.ini + pyproject.toml + scripts/transmute.py + .github/workflows/ci.yml",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "v0_current",
+        "desc": "pytest.ini addopts active: --cov + --cov-fail-under=70 + -v",
+        "rc": 1,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 32724,
+        "jitter_ms": 578,
+        "coverage_xml": true,
+        "score": 967076.0
+      },
+      {
+        "name": "v1_no_cov",
+        "desc": "scoped run with --no-cov (and -o addopts= in transmute)",
+        "rc": 0,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 7108,
+        "jitter_ms": 517,
+        "coverage_xml": false,
+        "score": 992692.0
+      },
+      {
+        "name": "v2_split_gate",
+        "desc": "keep --cov, drop --cov-fail-under via -o addopts",
+        "rc": 1,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 21750,
+        "jitter_ms": 2173,
+        "coverage_xml": true,
+        "score": 978050.0
+      },
+      {
+        "name": "v3_scorer_ignores_gate",
+        "desc": "keep addopts, make scorer ignore exit code",
+        "rc": 1,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 35252,
+        "jitter_ms": 7167,
+        "coverage_xml": true,
+        "score": 964548.0
+      }
+    ],
+    "winner": "v1_no_cov",
+    "applied": true,
+    "losers_deleted": [],
+    "root_cause": "coverage gate was declared TWICE for every invocation: pytest.ini --cov-fail-under=70 AND pyproject.toml [tool.coverage.report] fail_under=70. A scoped run therefore exits 1 with 72/72 passing.",
+    "changes": [
+      "pytest.ini: removed --cov-fail-under=70 from addopts (kept --cov and reports)",
+      "pyproject.toml: [tool.coverage.report] fail_under 70 -> 0 with explicit warning comment",
+      ".github/workflows/ci.yml: full-suite step now enforces --cov-fail-under=70 (the only gate)",
+      "scripts/transmute.py: pytest cmd gains --no-cov; tie band is now max(TIE_EPS, measured jitter); missing --tests path aborts instead of scoring 0%"
+    ],
+    "proof": {
+      "scoped_rc_before": 1,
+      "scoped_rc_after": 0,
+      "scoped_wall_ms_before": 32724,
+      "scoped_wall_ms_after": 17720,
+      "transmute_candidate_wall_ms_before": 32724,
+      "transmute_candidate_wall_ms_after": 3948,
+      "score_spread_before_ms": 7167,
+      "tie_band_before": 100,
+      "full_suite_passed": 1027,
+      "full_suite_skipped": 1,
+      "full_suite_coverage_pct": 77.57,
+      "full_suite_wall_s": 418.17,
+      "gate_satisfiable_on_full_suite": true,
+      "negative_control": "v_break.py (one geometry test failing) parsed 71/72 = 99%, score 976808 vs 993563 -> rejected"
+    },
+    "corrected_earlier_claim": "The wishlist said the gate makes a passing variant score worse than a failing baseline. Measured: false. rate parses 72/72 = 1.0 even when the gate exits 1, so score was never zeroed. The real damage is (a) rc=1 on green tests, (b) 4.6x wall inflation (32.7s vs 7.1s), (c) 7.2s jitter against a 100ms tie band, which makes winner selection noise-dominated.",
+    "gate_preserved": "70% on full suite only; measured 77.57% so the gate is satisfiable",
+    "artifact": "/tmp/opencode/phase1_bench.json"
   }
 ]

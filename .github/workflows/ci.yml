@@ -85,6 +85,9 @@ jobs:
             tests/test_automation_containment.py \
             tests/test_external_action_gates.py \
             -v --no-cov
+            # subset run: coverage gate intentionally off (a subset cannot
+            # measure repo coverage; measured 14% on 4 files). The 70% gate
+            # runs on the full suite only, in the full-suite job below.
 
   full-suite:
     name: Full repository test suite
@@ -102,4 +105,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
       - name: Run every repository test
-        run: python -m pytest tests -v --no-cov
+        run: python -m pytest tests -v --cov=barrot_agent --cov-report=term-missing --cov-fail-under=70
+          # The 70% coverage gate lives HERE and only here. Measured baseline:
+          # 1027 passed, 1 skipped, 77.57% coverage. Scoped/local runs are not
+          # gated (see pyproject.toml [tool.coverage.report]).

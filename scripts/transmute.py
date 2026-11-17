@@ -36,8 +36,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LOG = REPO_ROOT / "results" / "transmute_log.json"
 OUTPUT_TAIL_CHARS = 2000
 SCORE_TEST_WEIGHT = 1_000_000  # 1% of lost tests can never be bought back by speed.
-TIE_EPS = 100.0  # score points (~100ms): sub-100ms deltas are timing noise; on a
-# near-tie the VARIANT wins over baseline (rule 1: never settle for the first version).
+TIE_EPS = 100.0  # score points (~100ms): floor for the tie band. The band grows to
+# the measured jitter when the suite is slow (see _tie_eps); on a near-tie the
+# VARIANT wins over baseline (rule 1: never settle for the first version).
 
 
 # ---------------------------------------------------------------- primitives
@@ -84,7 +85,8 @@ def run_tests(runner: str, test_paths: list[Path], cwd: Path, target_dir: Path,
     if runner in ("auto", "pytest") and pytest_available():
         cmd = [
             sys.executable, "-m", "pytest", "-o", "addopts=", "-q",
-            "--no-header", "-p", "no:cacheprovider", *[str(p) for p in test_paths],
+            "--no-header", "--no-cov", "-p", "no:cacheprovider",
+            *[str(p) for p in test_paths],
         ]
         parser = _parse_pytest
     elif runner in ("auto", "pytest"):
@@ -109,7 +111,9 @@ def run_tests(runner: str, test_paths: list[Path], cwd: Path, target_dir: Path,
         rate = (passed / total) if total else (1.0 if ok else 0.0)
         runs.append({"ok": ok, "rate": rate, "passed": passed, "total": total,
                      "wall_ms": wall_ms, "cmd": " ".join(cmd), "tail": tail})
-    return max(runs, key=lambda r: (r["rate"], -r["wall_ms"]))
+    best = max(runs, key=lambda r: (r["rate"], -r["wall_ms"]))
+    best["jitter_ms"] = max(r["wall_ms"] for r in runs) - best["wall_ms"]
+    return best
 
 
 def _unittest_cmd(test_paths: list[Path]) -> list[str]:
@@ -167,6 +171,17 @@ def score(rate, wall_ms, lines) -> float | None:
     return round(rate * SCORE_TEST_WEIGHT - wall_ms - lines, 2)
 
 
+def _tie_eps(candidates: list[dict]) -> float:
+    """Tie band = max(fixed floor, measured timing jitter).
+
+    A 100ms band is meaningless when a suite takes 33s and jitters 7s: two
+    identical variants would be separated by noise. The band grows to the
+    observed spread, so a variant still wins ties but never wins on noise.
+    """
+    jitter = max((c.get("test_jitter_ms") or 0) for c in candidates)
+    return max(TIE_EPS, float(jitter))
+
+
 # ----------------------------------------------------------------- main loop
 
 
@@ -194,6 +209,12 @@ def transmute(target: Path, variants: list[Path], tests: list[Path], runner: str
         variants = _ask_for_variants()
     if not variants:
         raise ValueError("no variants supplied (rule 1: never settle for the first version)")
+
+    missing_tests = [str(t) for t in tests if not Path(t).exists()]
+    if missing_tests:
+        # A mistyped --tests path yields 0 passed / 0 total, which _parse_pytest
+        # turns into rate 0.0: every candidate would score as a total failure.
+        raise FileNotFoundError(f"test path not found: {', '.join(missing_tests)}")
 
     baseline_bytes = target.read_bytes()
     candidates: list[dict] = []
@@ -223,9 +244,10 @@ def transmute(target: Path, variants: list[Path], tests: list[Path], runner: str
     # it (rule 1: never settle for the first version).
     base = next(c for c in scored if c["name"] == "baseline")
     best_score = max(c["score"] for c in scored)
+    eps = _tie_eps(scored)
     variant_ties = [c for c in scored
                     if c["name"] != "baseline"
-                    and c["score"] >= best_score - TIE_EPS]
+                    and c["score"] >= best_score - eps]
     if variant_ties:
         winner = max(variant_ties, key=lambda c: c["score"])
     else:
@@ -277,6 +299,7 @@ def _metrics(ev: dict) -> dict:
         "test_passed": t.get("passed"),
         "test_total": t.get("total"),
         "test_wall_ms": t.get("wall_ms"),
+        "test_jitter_ms": t.get("jitter_ms"),
         "score": ev.get("score"),
         "tail": (ev.get("tail") or "")[-800:],
     }
