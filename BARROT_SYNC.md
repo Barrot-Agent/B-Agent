@@ -776,3 +776,25 @@
 - toc.yaml: ch-07..ch-12 status outline -> draft. README status table updated.
 - Backup: ~/barrot/backup-20261117/book-phaseA/ (54 files).
 - Next: awaiting GO for Part Three (ch13-19). Do not start it unprompted.
+
+## 2026-11-17 — Ch 7 evidence audit + repair (Phase A polish)
+- Re-verified every numeric claim in ch-07 against docs.x.ai/docs/models (fetched
+  this session) and the Grok Bot overview.
+- Confirmed correct: grok-4.7 context 500K, grok-build-0.1 256K, $2/$6 and $1/$2,
+  cached input $0.50 / $0.20 per M, whole-request doubling at 200K prompt tokens.
+- Fixed 4 defects:
+  1. table omitted cached-input column and the fact that grok-build-0.1 also
+     doubles above 200K;
+  2. "output is 3x input" was stated as universal (true for 4.7, 2x for build);
+  3. worked case said "two-tenths of a cent per account"; arithmetic gives
+     $0.0028 = three-tenths;
+  4. closing budget paragraph claimed "$3 vs $30 per thousand" — unreproducible
+     from the price table. Replaced with explicit arithmetic: 1K-in/250-out =
+     $3.50 per 1,000 calls; 30K-in/2K-out = $72 per 1,000; 96% vs 28% on $100.
+- Also corrected two cross-references: ch-28 "entirely about this" -> operating
+  discipline; ch-09 "starts with these four fields" was false (ch-09 uses
+  WHEN/INPUTS/ACCESS/STEPS/VALIDATE/RETURN/APPROVAL) -> names inputs, artifact,
+  approval boundary.
+- ch-07: 7.1 -> 7.4 of 8 pages (93%). Build exit 0, no PROBLEMS. Book tests 12
+  pass, full suite 1091 passed / 1 skipped. Churn reverted scoped (36 files + 1
+  named feedback_loop json). No other chapter touched.
