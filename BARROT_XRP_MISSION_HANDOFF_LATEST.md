@@ -5502,3 +5502,71 @@ Providers did not expose one synchronized snapshot; values are deliberately not 
 ### Next concrete action
 
 Finish push full-suite CI and dependency audit on the evidence head, then on the handoff-update head. Diagnose any failures without weakening gates. Complete the semantic/security review of all 1,365 changed paths and invoked scripts; obtain independent review and authorized branch-protection evidence; reconcile the three divergent #1541 paths while preserving the source branch; only then reconsider merge. Keep forecast issuance disabled.
+
+
+## Run209 — exact-head integration verification, current XRP market structure, SBIC resolution and capital reconciliation
+
+Capture: 2026-11-17T07:07:39Z. Structured evidence: `research/xrp_intelligence/20261117T070739Z-run209-market-identity-and-exact-head-ci.json`. The source pages were reviewed as public research. No external publisher response bytes were captured; raw-source SHA-256 remains null and all new market observations remain descriptive-only.
+
+### Repository and exact-head CI
+
+- Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration branch before this evidence commit: `232f25e0acaeefff4bf97bb64fcfdce7130d2a14`, 164 commits ahead and zero behind.
+- Main tree: 1,393 entries; integration tree: 2,580. Zero main paths are missing; 1,187 integration-only paths.
+- PR #1663 remains draft/open/clean, with 1,365 changed files (+497,990 / -6,809), 62 workflow paths and 398 test paths. It has zero formal reviews and zero review threads.
+- Exact-head push CI for `232f25e` passed: **3,847 passed, 1 skipped, 11 warnings, 19 subtests**, 141.95 seconds; 66.90% inclusive coverage and 77% legacy-core coverage. Six dependency manifests reported no known vulnerabilities. Push and PR fail-closed gates passed. PR CI passed but its integration-head test jobs were skipped by the guard; Pages validation passed.
+- These CI results apply to `232f25e`, not the evidence commit created by this run. The new evidence commit requires its own exact-head CI before any merge decision.
+- Main `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`. The only repository ruleset returned is “Fall Back” (ID 10863829), enforcement disabled. Direct branch-protection retrieval returns HTTP 403. Code-scanning and secret-scanning alert state remains unknown because the connector rejected those endpoints.
+
+### Fresh market structure — snapshots are not synchronized
+
+- CoinGlass displayed XRP at **$0.9567**, +0.59% over 24 hours, with a $0.9415–$0.9767 range; spot volume **$505.44M** (-3.32%), futures volume **$2.31B** (+3.04%), open interest **$1.98B** (+0.65%), $3.16M liquidations (59% long) and funding of -0.0037% per eight hours. Its page showed Fear & Greed 13 (Extreme Fear). The displayed Nov 16 ETF flow of $0 is not settled issuer-complete evidence. [CoinGlass](https://www.coinglass.com/currencies/XRP/spot)
+- Liqwall's explicit **06:52 UTC** snapshot showed XRP at $0.9553, **$951M** all-exchange open interest (-3.6%/24h), average funding -0.0045%/8h, $3.0M liquidations ($1.7M longs/$1.2M shorts), and 73.7% of Binance XRP-position accounts long. Its Hyperliquid map estimated $4.0M long liquidation exposure within 10% below and $541K short exposure within 10% above. [Liqwall](https://liqwall.com/coins/xrp)
+- CoinGlass and Liqwall open-interest figures differ by approximately **2.08x**. Their venue/contract universes are not reconciled; do not average them. Their price snapshots also differ in time.
+- CoinGlass's 05:50 UTC search-rendered flow snapshot showed -$13.53M net taker flow over 24 hours and -$184.45M over seven days, with futures volume about 4.5x spot. Taker flow is not exchange-wallet netflow and the page does not provide synchronized raw bytes.
+- Basis's Binance XRPUSDT perpetual book snapshot is explicitly dated **02:27 UTC**: 1.05 bps spread, $35.4M bids/$33.3M offers across 1,000 levels each side, and $12.2M/$10.5M within ±1%. It is more than four hours old at capture, is one perpetual book, and is not consolidated spot liquidity. [Basis](https://www.basischarts.com/liquidity-heatmap/xrp-usdt)
+- XRP Insights' dataset was generated at 04:52:13 UTC, with settled data through Nov 13 and a provisional Nov 16 row. Its Nov 9–13 issuer-holdings-derived flow is **-6,078,606 XRP**; Nov 13 holdings are 1,189,102,081 XRP. These flows are computed from issuer-reported holdings changes, not direct creation/redemption reports; the latest row may be revised. [XRP Insights dataset and methodology](https://xrp-insights.com/data)
+- No new market observation was admitted to the point-in-time feature store.
+
+### Evernorth — actual cash, XRP in-kind and post-close financing
+
+The Nov 13 SEC Form 10-Q resolves the pre-close and closing totals without double counting:
+
+- As of Sep 30, Evernorth held **346,284,972 XRP**: 84,365,876 XRP bought using $214,049,995 in cash plus 261,919,096 XRP subscribed in kind. Its XRP carrying value was $341,887,231 after $271,037,170 of nine-month impairment. Unrestricted cash was only $91,397 and restricted cash $49,995 at that pre-close date.
+- At the Oct 9 closing, the company reported **$272.6M gross cash proceeds** ($224.6M private-placement cash plus $48.0M SPAC trust cash, before transaction expenses) and **388,910,554 XRP in kind**. The in-kind total includes the 261,919,096 XRP already in the pre-close subtotal, plus Ripple's 126,791,458 XRP contribution and 200,000 delayed-funding XRP.
+- The post-close **473,276,430 XRP** total is 84,365,876 cash-purchased XRP plus 388,910,554 XRP in kind. Do not add the entire in-kind amount to the pre-close 346,284,972 subtotal; that double-counts 261,919,096 XRP.
+- Subsequent financing is separate: $30M convertible-note principal ($29M net cash), $35.3M gross warrant proceeds through Nov 9, and a 5,218,935-share ELOC at 97% of VWAP whose actual draw was not quantified in the reviewed filing. Capacity is not proceeds.
+- The filing does not itemize the exact cash attributable to SBI-affiliated subscribers. SBI's announced commitment and the 39.9% ownership threshold do not prove that the entire commitment was funded by SBI.
+- Evernorth's possible XRP sales, secured financing against XRP and yield strategies are strategy disclosures, not evidence of actual collateral pledges or deployed yield. Coinbase is its principal market for financial-reporting valuation, not proof of custody or all executions; initial third-party custody was BitGo Trust.
+
+Primary filing: [Evernorth Form 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm).
+
+### Japan SBIC and exact-phrase research
+
+- **SBIC East:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; official company profile lists corporate number 9011001030621, founded Nov 15, 1963, and shareholders including local governments across 18 prefectures, chambers of commerce, financial institutions and companies. [Official profile](https://www.sbic.co.jp/company/profile/)
+- **SBIC Central:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd., established Nov 18, 1963, serving Aichi, Gifu, Mie, Toyama and Ishikawa. [Official profile](https://www.sbic-cj.co.jp/company/about/)
+- **SBIC West:** Osaka Small and Medium Business Investment & Consultation Co., Ltd., established Nov 20, 1963, serving 24 western prefectures. [Official profile](https://www.sbic-wj.co.jp/profiles/profile/)
+- These are three separate Japanese policy-investment companies under the Small and Medium Business Investment & Consultation Companies Act, described by their official sites as sister companies. They are not SBI Holdings subsidiaries.
+- SBIC East's June 12, 2025 manufacturing-sector generative-AI/ML training included ChatGPT and Copilot usage. That is an educational event, not evidence of an OpenAI partnership. [Official course page](https://www.sbic.co.jp/training/20250612co/)
+- The strongest “ASK Coin” match remains Permission Coin (ASK), shown on Base and Polygon. CoinGecko's current page reports only about $10.37 in 24-hour volume; no XRP/Ripple/XRPL relationship was found. [Permission Coin](https://www.coingecko.com/en/coins/permission-coin)
+- “Actual capital” is resolved through the SEC capital reconciliation above. Do not mix announced commitments, funded cash, cash already used to buy XRP, in-kind XRP, debt, warrant proceeds or undrawn equity-line capacity.
+- Dr. Kamilah Stevenson is corroborated by her first-party professional site and June 11, 2026 iHeart interview. The guest says her YouTube display name is “doctor Camilla Stevenson” and warns about fake pages. No first-party cross-link to a specific YouTube channel ID was found; no video inventory was attributed. [First-party site](https://learn.kamilahstevenson.com/) · [iHeart interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/)
+
+### Workflow and open-PR safety
+
+- A patch-level risk scan covered all **62 changed workflow files**. It is not a full semantic review of all workflow files and invoked scripts.
+- The integration branch quarantines Ask Barrot, Barrot Agent, Barrot Sync, Databricks Bundle Deploy and Hugging Face sync workflows.
+- Additional explicit external-action paths remain in the diff: Databricks workspace import/Kaggle dataset download in `barrot-ops.yml`; a paper-trading simulation in `coinbase-paper-trader.yml`; Cloudflare deployment/secret rotation in `deploy-a2a-worker.yml`; and a false-guarded Hugging Face deployment path in `sync-self-hosted-brain.yml`. None was executed.
+- `xrp-public-ingestion.yml` exists only on the integration branch. It is main-ref guarded, requests only actions/contents read permissions, and writes GitHub artifacts/cache; the 90-day raw/event artifacts and 7-day per-run feature checkpoint are not WORM storage.
+- PR #1541 overlaps all five of its paths with #1663: two blobs are identical (`mmi_adapter.py`, `test_mmi_integration.py`); three diverge (`mmi_v1.py`, the canonical fingerprint evidence JSON, and `test_mmi_v1.py`). Preserve and reconcile rather than close it.
+- Other open PRs remain unique/unreviewed or blocked as recorded in the structured artifact. No source PR was closed.
+
+### Prediction gate and decision
+
+The curated event registry remains at 125 events: 48 exact publisher timestamps, 77 missing, zero byte-exact raw-source receipts and zero model-eligible events. Forecast count remains zero; accuracy remains `NOT_EVALUATED`. No directional XRP forecast was issued.
+
+**NO MERGE.** PR #1663 is still draft, has no independent formal review, and main branch-protection/required-check enforcement could not be verified. The complete semantic/security review of all 1,365 changed paths remains unfinished.
+
+### Next concrete action
+
+Verify exact-head CI for the new Run209 evidence commit, then complete the remaining semantic/security review and obtain enforceable independent review/branch-protection evidence. Keep the prediction gate closed until byte-exact receipts, point-in-time eligibility and leakage-safe out-of-sample performance are demonstrated.
