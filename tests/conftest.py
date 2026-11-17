@@ -17,7 +17,3 @@ def model_config() -> ModelConfig:
 def app_config() -> AppConfig:
     """Provide a default AppConfig for tests."""
     return AppConfig(environment=Environment.DEVELOPMENT, debug=True)
-
-# This deliberately invalid module is a static fixture for repo_guard tests.
-# Keep it available as data, but never import it during pytest collection.
-collect_ignore = ["fixtures/guard/root/tests/test_bad_import.py"]

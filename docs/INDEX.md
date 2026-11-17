@@ -99,6 +99,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 ## docs/ops
 
+- docs/ops/CI-FIX-2026-11-17.md - CI failure: fixture collected as a test
 - docs/ops/BLOCKERS.md - Blocker re-audit
 - docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
 - docs/ops/MCP-SERVER.md - MCP server: spec fetched, five tools, three real
