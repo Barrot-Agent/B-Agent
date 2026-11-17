@@ -314,6 +314,7 @@ def test_current_research_archive_timestamp_corrections_reconcile_in_memory_with
     assert result["forecast_issued"] is False
     assert "research/xrp_intelligence/20261107T204153Z-kamilah-stevenson-video-capture-window-correction.json" in result["capture_window_correction_artifacts"]
     assert "research/xrp_intelligence/20261107T181119Z-xrpc-retrieval-window-timestamp-correction.json" in result["legacy_untyped_correction_artifacts"]
+    assert "research/xrp_intelligence/20261107T181119Z-coinbase-circle-q3-stablecoin-metric-correction.json" in result["legacy_untyped_correction_artifacts"]
     assert any(
         item.get("correction_id") == "XRP_CAPTURE_TIME_INTERVAL_20261105T220437Z"
         for item in result["application_manifests"]
