@@ -14,6 +14,7 @@ from scripts.paid_issue_hunter import MAX_PLAUSIBLE, amount_of, difficulty_of, p
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "paid-issue-hunter.yml"
+PUBLISH = ROOT / ".github" / "workflows" / "paid-issue-publish.yml"
 
 
 def test_amount_requires_a_bounty_word_in_the_same_line():
@@ -58,7 +59,8 @@ def test_workflow_runs_every_six_hours_and_forever():
     payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
     assert payload["on"]["schedule"][0]["cron"] == "17 */6 * * *"
     assert "workflow_dispatch" in payload["on"]
-    assert payload["permissions"]["contents"] == "write"
+    # Governance: a scheduled workflow may not hold a write permission.
+    assert payload["permissions"]["contents"] == "read"
     assert payload["permissions"]["issues"] == "read"
 
 
@@ -67,6 +69,26 @@ def test_workflow_never_comments_or_claims():
     for forbidden in ("gh issue comment", "gh issue edit", "gh issue close", "gh pr create"):
         assert forbidden not in text
     assert "mutations_performed" in text
+
+
+def test_scheduled_hunter_cannot_push():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "git push" not in text
+    assert "contents: write" not in text
+
+
+def test_publish_workflow_is_triggered_by_the_hunter_and_only_on_main():
+    payload = yaml.load(PUBLISH.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    trigger = payload["on"]["workflow_run"]
+    assert trigger["workflows"] == ["Paid issue hunter"]
+    assert trigger["types"] == ["completed"]
+    assert trigger["branches"] == ["main"]
+    assert payload["permissions"]["contents"] == "write"
+    text = PUBLISH.read_text(encoding="utf-8")
+    assert "github.event.workflow_run.conclusion == 'success'" in text
+    assert "git push origin main" in text
+    assert "gh pr merge" not in text
+    assert "gh issue" not in text
 
 
 def test_record_file_claims_zero_mutations():

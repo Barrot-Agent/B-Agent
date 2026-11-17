@@ -1,10 +1,13 @@
 name: Paid issue hunter
 
-# Runs every 6 hours, indefinitely, until the user says stop. Read-only against
-# GitHub issues: it writes PAID-ISSUES.md and data/money/paid_issues.json, and it
-# never comments, claims, labels or assigns anything.
+# Runs every 6 hours, indefinitely, until the user says stop.
 #
-# Disabling this schedule is the only way to stop it. That is deliberate.
+# Read-only by governance: this repository forbids a scheduled workflow from
+# holding a write permission or pushing commits (test_external_action_gates).
+# So the hunt writes nothing back. It produces an artifact, and
+# paid-issue-publish.yml commits that artifact on workflow_run.
+#
+# Disabling the schedule below is the only way to stop it.
 
 on:
   schedule:
@@ -12,7 +15,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   issues: read
 
 concurrency:
@@ -25,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
@@ -48,14 +51,12 @@ jobs:
           assert data["mutations_performed"] == 0, "the hunter must stay read-only"
           PY
 
-      - name: Commit the evidence when it changed
-        run: |
-          git config user.name "barrot-hunter"
-          git config user.email "barrot-hunter@users.noreply.github.com"
-          git add PAID-ISSUES.md data/money/paid_issues.json
-          if git diff --cached --quiet; then
-            echo "no change this run"
-            exit 0
-          fi
-          git commit -m "hunter: paid issue scan $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push
+      - name: Upload the evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: paid-issues
+          path: |
+            PAID-ISSUES.md
+            data/money/paid_issues.json
+          if-no-files-found: error
+          retention-days: 7
