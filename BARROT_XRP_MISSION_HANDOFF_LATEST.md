@@ -5072,3 +5072,18 @@ The research stack and all source histories remain preserved. No source PR was c
 Next: complete the remaining semantic/security review, obtain independent review and authorized branch-protection evidence, reconcile the MMI/research stack without discarding unique artifacts, and preserve forecast issuance as fail-closed. After a future compliant merge only, refetch main, verify the merge commit, run main CI and verify scheduled XRP ingestion on main.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
+
+
+---
+
+## Run205 final evidence pointer
+
+The Run205 structured audit was committed at:
+
+`research/xrp_intelligence/20261117T030357Z-run205-exact-head-ci-x402-attribution-and-integration-audit.json`
+
+Artifact commit: `9c211ed6de234158e083a394abf7f573e35be557`.
+
+The exact full-suite result recorded above belongs to parent evidence head `170a9904fd2f6e842d0ae31895d6963813be68c7`. The Run205 audit artifact and this final handoff-pointer update are evidence-only changes; their resulting head must receive its own exact-head CI. Do not transfer the parent test result to the new head. The latest PR head and Actions runs are the authority for the next continuation.
+
+The x402 correction is already represented by the existing Run97 regression test and structured artifact: SourceTag is merchant-endpoint attribution, not payer-agent identity; new rendered web observations remain unreceipted and are not admitted to the point-in-time feature store.
