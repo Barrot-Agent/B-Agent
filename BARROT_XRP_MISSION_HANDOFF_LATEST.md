@@ -5854,7 +5854,7 @@ This is a direct SBI Holdings relationship and must not be confused with the sep
 ## CI provenance correction and current exact-head status
 
 - Correction to Run211b: run `44061330752` was the dependency audit for integration head `1788c963`, not a main-branch audit. It passed on that integration head. No separate main dependency-audit run for `002486e` was identified in the inspected run inventory.
-- Main `002486e` CI [44061318896](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318896) passed its main test suite: 1,091 passed, 1 skipped, 8 subtests in 32.96 seconds. Main Pages [44061319059](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061319059) failed Jekyll parsing of an unescaped Liquid `{{` example at `GLOBAL_STATE_MANIFEST.md:6450`; deploy was skipped.
+- Main `002486e` CI [44061318896](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318896) passed its main test suite: 1,091 passed, 1 skipped, 8 subtests in 32.96 seconds. Main Pages [44061319059](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061319059) failed Jekyll parsing of an unescaped Liquid opening-brace example at `GLOBAL_STATE_MANIFEST.md:6450`; deploy was skipped.
 - Main push commit `002486e` has no associated PR in the GitHub commit-to-PR query. GitHub reports main protected, but protection detail is inaccessible (403); whether the direct push was permitted by an admin/bypass path cannot be verified. Do not infer a branch-protection bypass without the missing settings evidence.
 - Barrot Sync run [44061318838](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318838) remains a confirmed false-green: `b_agent.py --sync` failed with `ModuleNotFoundError: rich`, then shell fallbacks masked the failure. The integration version is fully quarantined with `permissions: {}` and an always-disabled job.
 - Current integration head at this addendum: `a74b6a7c9863d91e5d0ede9b69bae9243e8f5b5f`. Push CI [44061820573](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061820573): Pages validation passed, core tests passed, full suite still in progress at handoff capture. Dependency audit [44061820470](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061820470) passed; fail-closed gate [44061820494](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061820494) passed. No full-suite pass is claimed for this head.
@@ -5867,3 +5867,35 @@ This is a direct SBI Holdings relationship and must not be confused with the sep
 - No merge, force-push, branch rewrite, source-PR closure, deployment, real-money action or external provider dispatch occurred.
 
 **Next concrete action:** complete the exact-head full suite on the current integration head; then reconcile current main's book project and both overlapping documents without rewriting either history. Only after exact-head tests, full semantic/security review, independent approval and enforceable branch-protection evidence should PR #1663 be considered for merge. No directional XRP forecast is supported by the current receipt/eligibility dataset.
+
+
+---
+
+# Run211d — Pages validation correction and final exact-head evidence
+
+## CI correction
+
+- Exact head `a74b6a7` passed the complete repository suite: 4,078 passed, 1 skipped, 11 warnings, 19 subtests in 179.64 seconds; inclusive coverage 68%, legacy-core coverage 77%; wheel build and packaged mission verification passed. Pages validation also passed on this head. Dependency audit and fail-closed gate passed.
+- Exact head `193dd55` introduced a Jekyll error in this handoff itself: the Run211c prose contained an unmatched literal Liquid opening token on line 5,857. This was not the integration branch's `GLOBAL_STATE_MANIFEST.md` error. The line is corrected here to say “Liquid opening-brace example” without a raw token. The separate main-branch Pages failure at `GLOBAL_STATE_MANIFEST.md:6450` remains a distinct issue.
+- Exact-head `193dd55` full-suite job was still running at capture; no full-suite result is claimed for that head. Its Pages validation failed because of the handoff token above. The new head created by this correction must pass its own full suite and Pages validation.
+- The earlier main CI result remains 1,091 passed, 1 skipped, 8 subtests. The dependency audit run `44061330752` belongs to integration head `1788c96`, not main. Current integration dependency audit `44062555516` and CI `44062555498` were in progress at this capture; fail-closed `44062555482` passed.
+
+## Evernorth initial XRP holdings — primary SEC transaction breakdown
+
+The October 23, 2026 SEC S-4/A describes initial corporate XRP holdings of 473,276,430 XRP at the October 9, 2026 closing, comprising distinct sources:
+
+- 600,000 XRP from Advance Funding subscribers;
+- 200,000 XRP from Delayed Funding subscribers;
+- 211,319,096.061435 XRP from the Series C sponsor/New Sponsor;
+- 50,000,000 XRP from the Ripple-affiliated Larsen Lam Children's Remainder Trust;
+- 126,791,458 XRP contributed directly by Ripple;
+- 84,365,876.3625 XRP purchased with approximately $214M in aggregate Advance Funding cash, at an average price of $2.53657058 per XRP.
+
+This is a historical closing inventory, not a current XRP balance. The cash-funded purchase is an actual market acquisition; the other amounts are in-kind contributions or subscriber/sponsor transfers. Do not sum the 473.276M holdings with the 84.366M purchase again. The $214.05M pooled funding included multiple subscribers; SEC filings identify SBI-controlled entities among them but do not itemize the exact SBI-only cash amount. SBI's separate October 21, 2025 official announcement stated a $200M cash contribution. Keep the announcement, pooled cash receipt, actual XRP purchase and SBI shareholding as separate evidence fields.
+
+Primary SEC source: https://www.sec.gov/Archives/edgar/data/2092592/000119312526302124/d944435ds4a.htm
+SBI announcement: https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+
+## Current decision
+
+No merge. PR #1663 remains the single integration workstream, draft/open, 179 commits ahead and one behind main, with `mergeable_state=dirty`. Main's book project and both overlapping documents remain to be reconciled without history rewrite. The integration branch is not protected; main protection details remain inaccessible; independent review is absent. No source PR was closed, no main files were changed, and no real-money or external write action occurred.
