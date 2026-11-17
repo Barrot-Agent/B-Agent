@@ -11,13 +11,13 @@ cannot, and the flaw found inside the last output becomes the next Y-query.
 
 | Field | Value |
 |---|---|
-| Iteration | 7 |
+| Iteration | 7b |
 | Last Y-query transmuted | "Build an auto workflow that targets accessible paying issues, forever" |
 | Transmuted target | A read-only hunter that scores paid issues every 6 hours and never claims one |
 | Method | 7 GitHub searches, line-scoped amount parsing, label difficulty, activity filter, markdown output |
-| Grade | Q on the schedule and read-only proof; 0 priced issues found, 8 platform-linked rows |
+| Grade | Q on the schedule and read-only proof; 0 priced issues, and the 8 platform rows were false positives |
 | Artifact | .github/workflows/paid-issue-hunter.yml, PAID-ISSUES.md |
-| Next Y-query queued | "Auto-fix workflow for the top issue, but the top issue still has no stated amount." |
+| Next Y-query queued | "No issue-level bounty exists yet. Which platform can be queried for a real amount, and does its API answer?" |
 
 ## Why each iteration followed the last
 
@@ -60,5 +60,6 @@ verified.
 | 5 | money cycle: products and paid issues | market scan, bounty scan, WebMCP check | Q counts / E payment signal / 0 verified bounties | see git log | docs/money/PRODUCTS.md |
 | 6 | transmute workflows, pull components | licence gate, pinned fetch, 3 money workflows | Q 58 / 10 refused / 3 pulled / 8 tests | see git log | docs/money/TRANSMUTE.md |
 | 7 | paid issue hunter, every 6h forever | 7 searches, strict amount parsing, 8 tests | Q on schedule; 0 priced | see git log | PAID-ISSUES.md |
+| 7b | are the 8 platform rows real bounties | fetched each issue body, checked the platform URLs | X: all 8 were repo-level sponsor links or docs links; 0 rows | see git log | PAID-ISSUES.md |
 
 Every future STATUS PUSHED appends a row here and states the next queued Y-query.

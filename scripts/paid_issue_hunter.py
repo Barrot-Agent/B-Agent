@@ -62,7 +62,17 @@ SPAM_TITLE = ("bounty-watcher", "radar", "bounty alert", "bounty plaza", "[bount
 DENY_REPOS = {"zhangjiayang6835-cyber/bounty-plaza"}
 # Most real bounties keep the amount on the platform, not in the issue text. Those
 # rows are listed with amount UNKNOWN, never invented.
-PLATFORM_LINKS = ("algora.io", "polar.sh", "issuehunt.io", "gitcoin.co", "opire.dev", "bountysource.com")
+#
+# A platform mention is not a bounty. The first run of this rule matched a bug
+# template that says "consider sponsoring this issue via issuehunt.io/r/owner/repo"
+# and a documentation link. Both are repo-level or docs-level, not issue-level. Only
+# an issue-specific URL counts, and only the shapes below are accepted.
+PLATFORM_PATTERNS = (
+    re.compile(r"https?://algora\.io/[\w.-]+/[\w.-]+/issue/\d+"),
+    re.compile(r"https?://issuehunt\.io/r/[\w.-]+/[\w.-]+/issues/\d+"),
+    re.compile(r"https?://opire\.dev/bounty/[\w.-]+"),
+    re.compile(r"https?://polar\.sh/[\w.-]+/[\w.-]+/issues?/\d+"),
+)
 
 
 def full_name_from(item: dict) -> str:
@@ -106,6 +116,15 @@ def repo_meta(full_name: str, cache: dict) -> dict:
     except Exception:
         cache[full_name] = {"stars": 0, "pushed": "", "archived": True, "open_issues": 0}
     return cache[full_name]
+
+
+def platform_bounty_link(body: str) -> str:
+    """Return an issue-specific bounty URL, or empty. Repo-level and docs links are noise."""
+    for pattern in PLATFORM_PATTERNS:
+        match = pattern.search(body)
+        if match:
+            return match.group(0)
+    return ""
 
 
 def amount_of(text: str) -> int | None:
@@ -168,7 +187,7 @@ def collect(limit: int) -> list[dict]:
                 continue
             body = item["body"] or ""
             amount = amount_of(item["title"] + "\n" + body)
-            platform_link = next((link for link in PLATFORM_LINKS if link in body.lower()), "")
+            platform_link = platform_bounty_link(body)
             if amount is None and not platform_link:
                 continue
             labels = item["labels"]
@@ -215,6 +234,7 @@ def render(rows: list[dict]) -> str:
         "- amount must sit in the same line as a bounty word, exceed $50 and not exceed $50,000",
         "- repository must be active: pushed within 120 days, not archived, at least 20 stars",
         "- at least one skill keyword must appear: Go, Python, workflow, Actions, MCP, audit, CLI, test",
+        "- a platform link counts only if it is issue-specific; repo-level sponsor links and docs links are noise",
         "- score = amount / difficulty, difficulty from labels (docs 1.0, bug 2.0, feature 3.0, else 2.5)",
         "",
         f"Rows: {len(rows)}. Every row is READY. Nothing here is claimed or verified escrow.",

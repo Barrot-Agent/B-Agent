@@ -10,7 +10,7 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.paid_issue_hunter import MAX_PLAUSIBLE, amount_of, difficulty_of, render
+from scripts.paid_issue_hunter import MAX_PLAUSIBLE, amount_of, difficulty_of, platform_bounty_link, render
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "paid-issue-hunter.yml"
@@ -74,3 +74,19 @@ def test_record_file_claims_zero_mutations():
     assert data["mutations_performed"] == 0
     assert set(data["status_values"]) <= {"READY", "READY-UNPRICED"}
     assert len(data["rows"]) <= data["limit"]
+
+
+def test_repo_level_sponsorship_link_is_not_a_bounty():
+    # Real body text from k3d-io/k3d#1689, a bug template, not a bounty.
+    body = "Need this fixed urgently? Consider sponsoring this issue via https://issuehunt.io/r/k3d-io/k3d"
+    assert platform_bounty_link(body) == ""
+
+
+def test_documentation_and_blog_links_are_not_bounties():
+    assert platform_bounty_link("see https://docs.opire.dev for setup") == ""
+    assert platform_bounty_link("https://coordinationmechanisms.gitcoin.co/") == ""
+
+
+def test_issue_specific_platform_links_are_accepted():
+    assert platform_bounty_link("https://algora.io/acme/app/issue/42") == "https://algora.io/acme/app/issue/42"
+    assert platform_bounty_link("https://issuehunt.io/r/acme/app/issues/9182") == "https://issuehunt.io/r/acme/app/issues/9182"
