@@ -11,7 +11,7 @@ def test_run225_provenance_and_prediction_boundary():
     captured = datetime.fromisoformat(data["captured_at_utc"].replace("Z", "+00:00"))
     assert captured >= cutoff
     sources = {item["id"]: item for item in data["source_registry"]}
-    assert len(sources) == 14
+    assert len(sources) == 19
     for source in sources.values():
         assert source["raw_content_sha256"] is None
         assert source["raw_receipt_id"] is None
@@ -37,16 +37,24 @@ def test_run225_preserves_etf_universe_disagreement():
     etf = data["market_snapshot"]["etf_flows"]
     assert etf[0]["partial"] is True and etf[0]["reported"] < etf[0]["expected"]
     assert etf[0]["partial_flow_xrp"] < 0
-    assert etf[1]["provisional"] is True and etf[1]["flow_xrp"] > 0
+    assert etf[1]["coverage_complete"] is False and etf[1]["flow_xrp"] > 0
 
 def test_run225_limits_exchange_wallet_and_institutional_claims():
     data = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     wallet = data["market_snapshot"]["exchange_wallets"]
     assert wallet["wallets"] == 707 and wallet["exchanges"] == 24
     assert "not tradable float" in wallet["limitation"]
+    assert "cbXRP" in wallet["limitation"] and "Binance-Peg XRP" in wallet["limitation"]
     bny = data["market_snapshot"]["bny_custody"]
     assert set(bny["assets"]) == {"XRP", "RLUSD"}
     assert bny["model_eligible"] is False
+    escrow = data["market_snapshot"]["escrow"]
+    assert escrow["ledger_index"] == 108395459
+    assert escrow["re_escrowed_pct_last_12_releases"] == 70
+    assert escrow["net_release_estimate_xrp_per_month"] == 300000000
+    latest_oi = [x for x in data["market_snapshot"]["open_interest"] if x.get("as_of_utc") == "2026-11-17T20:22:00Z"]
+    assert latest_oi and latest_oi[0]["open_interest_usd"] == 956000000
+    assert len(data["market_snapshot"]["spot"]["locale_snapshots"]) == 2
 
 def test_run225_nine_platform_map_does_not_overstate_authentication():
     data = json.loads(ARTIFACT.read_text(encoding="utf-8"))

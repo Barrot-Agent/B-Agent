@@ -1,3 +1,30 @@
+# Run225 market-evidence refresh — 2026-11-17 20:50:34 UTC
+
+This refresh supersedes the earlier Run225 market values where newer source timestamps are available. Main and integration references below were rechecked before this update.
+
+## Latest repository state
+- Main: `d59b2ff5d6901365b5bd78254bd0e9e38fca8140`.
+- Integration head before this refresh: `fe4d70a9d7abf629e701360713588b2bebf2f3c4`.
+- Latest main reconciliation commit: `301a400a9d6377513afcd488ce2ec9ede314a9c3`, parents `90a9b398fd660a24f66924de41ae4238fe3a06db` and `d59b2ff5d6901365b5bd78254bd0e9e38fca8140`.
+- PR #1663 remains draft and mergeable; 231 commits ahead, zero behind, 1,393 changed files. No formal reviews or review threads.
+- Exact-head push CI on `fe4d70a`: core tests and Pages validation passed; full suite still running; fail-closed gate passed; dependency audit still running. The PR-event run skipped test jobs because the PR is draft.
+- Main CI on `d59b2ff` passed its full suite: 1,181 passed, 2 skipped, 8 subtests, 78.10% inclusive coverage. Main Pages deployment succeeded automatically; this run did not initiate it.
+- Merge remains withheld: draft status, no independent review, no enforceable required-check evidence, and an automatic Pages deployment side effect on merge.
+
+## Updated XRP observations
+- Investing.com’s Nov 17 daily bar is still live. The English page shows `$0.9636`, +0.88%, volume `338.67M`; the Malay locale shows `$0.9564`, +0.13%, volume `341.30M`. Both show open `$0.9552`, high `$0.9788`, low `$0.9469`. An earlier 20:34 UTC capture showed `$0.9562`. Exact source timestamps and volume units are not supplied; do not average locale pages or treat this as a finalized close. https://www.investing.com/crypto/xrp/historical-data https://ms.investing.com/crypto/xrp/historical-data
+- Liqwall’s later 20:22 UTC page read shows `$956M` OI, down `2.7%` over 24 hours; its 30-day high was `$1.49B` on Nov 4 and low `$968M` on Nov 16. The earlier `$965M` snapshot at 05:52 UTC is retained as a separate observation. https://liqwall.com/open-interest/xrp
+- Basis’ Binance XRPUSDT **perpetual** book at 13:49 UTC: mid `$0.9722`, 1.03 bps spread, `$13.9M` within ±0.5%, 49% bid share, `$33.7M` bids and `$29.0M` asks across 1,000 levels. Its separate 11:06 UTC Binance perpetual footprint showed `$570M` 24h volume, 17 trades/s, `$386` average trade, `$13.0M` depth within ±0.5%, last funding -0.0050% and `$252M` single-venue OI. These are different time snapshots and one venue; not spot or cross-market aggregates. https://www.basischarts.com/liquidity-heatmap/xrp-usdt https://www.basischarts.com/order-flow/xrp-usdt
+- ETF coverage remains unresolved. CryptoKeyhole updated at 20:45 UTC and still reports a partial Nov 16 outflow of `5,196,983 XRP` from 2/4 daily reporters, waiting for Bitwise XRP and Franklin Templeton XRPZ. XRP Insights reports `+158,148 XRP` for Nov 16 across its included universe, but explicitly excludes GXRP from flow totals while correcting a data gap. It therefore is not a complete six-spot-fund flow total. Do not average or declare a complete aggregate sign. https://cryptokeyhole.com/etf-flows/xrp/ https://xrp-insights.com/
+- XRP Insights’ exchange attribution shows `22.20B XRP` across 707 wallets and 24 exchanges; same-wallet 7d change is `-139.2M XRP`. Coinbase attribution includes `150.9M cbXRP` on Base reserve; Binance includes `327.4M Binance-Peg XRP` on BNB Chain reserve and Binance Charity; Binance US is separate. Cold storage is included. This is not tradable float or customer net flow. https://xrp-insights.com/exchange-balances
+- XRPL escrow page reads ledger `108,395,459` at 19:41 UTC: `31.1B XRP` in 99 escrow objects across 8 owner accounts; next scheduled unlock is `1B XRP` at Dec 1, 2026 00:00 UTC across four objects. The tracker reports 70% re-escrowed over the last 12 monthly releases, implying about `300M XRP/month` net release, not a 1B net supply shock. https://xrp-insights.com/xrp-radar/escrow
+- Ripple’s Oct 28 release reports 85 licenses, over `$16T` of transactions enabled across its products in 2025, 1,700+ institutions/corporates/enterprises and a near-`$900M` annualized product-revenue run-rate, with 3x growth in multi-solution customers. These are issuer-reported corporate/product metrics, not XRP settlement volume or token demand. https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/
+- BNY’s Oct 27 release says its custody platform supports XRP and RLUSD and builds on its RLUSD reserve-custody and Ripple Prime relationships; it does not disclose client balances, XRP buying, collateral usage or throughput. https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+
+All new observations are rendered extracts. No raw HTTP byte receipts or SHA-256 source receipts were captured. They remain model-ineligible. No directional forecast issued.
+
+---
+
 # Run225 status refresh — 2026-11-17 20:50 UTC
 
 The current repository state supersedes the earlier Run225 mainline checkpoint below.
