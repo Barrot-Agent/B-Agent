@@ -5570,3 +5570,95 @@ The curated event registry remains at 125 events: 48 exact publisher timestamps,
 ### Next concrete action
 
 Verify exact-head CI for the new Run209 evidence commit, then complete the remaining semantic/security review and obtain enforceable independent review/branch-protection evidence. Keep the prediction gate closed until byte-exact receipts, point-in-time eligibility and leakage-safe out-of-sample performance are demonstrated.
+
+
+## Run210 — exact-head CI, full test-scope audit and workflow security review
+
+**Captured:** 2026-11-17T07:36:40Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head:** `da58bcf8ab2739f2f16d2633b974920d1b770ed8`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft/open.  
+**Structured evidence and nine-platform map:** [Run210 audit](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-mainline-successor-20261115T2101Z/research/xrp_intelligence/20261117T073640Z-run210-exact-head-ci-workflow-and-nine-platform-audit.json)
+
+### Repository and PR state
+
+- Current main is unchanged at `1f30e5c18f151f75ad5d157ddde175723584ec69`.
+- Integration is **165 commits ahead, zero behind**. Main tree: 1,393 entries; integration tree: 2,581 entries; no main path is missing from integration.
+- PR #1663 reports **1,366 changed files**, +498,546 / -6,809 lines, 62 changed workflow files and 396 test paths.
+- PR remains draft/open and technically mergeable, but has **zero formal reviews, zero review threads and zero requested reviewers**. Copilot is assigned; assignment is not an approval.
+- The integration branch itself is unprotected. Main branch-protection detail remains inaccessible (HTTP 403); the only visible ruleset, ID 10863829 “Fall Back,” is disabled. CODEOWNERS remains self-only (`* @Barrot-Agent`).
+
+### Exact-head CI — verified
+
+The current head `da58bcf8ab2739f2f16d2633b974920d1b770ed8` has its own completed push and PR workflow results. No parent-head result is being transferred.
+
+- [Push CI 44038681522](https://github.com/Barrot-Agent/B-Agent/actions/runs/44038681522): **3,847 passed, zero failed, one skipped, 11 warnings, 19 subtests**, 151.19 seconds; 3,848 collected. Inclusive coverage **66.90%**; legacy-core coverage **77%**.
+- Full repository test job passed. Wheel built, installed, and loaded Barrot V3, the XRP mission and canonical data assets. GitHub Pages validation passed.
+- [Push dependency audit 44038681413](https://github.com/Barrot-Agent/B-Agent/actions/runs/44038681413): all six manifests passed pip-audit; no known vulnerabilities reported.
+- [Push fail-closed gate 44038681481](https://github.com/Barrot-Agent/B-Agent/actions/runs/44038681481): passed; the workflow explicitly states automatic merge is disabled and no repository content was changed.
+- [PR CI 44038689319](https://github.com/Barrot-Agent/B-Agent/actions/runs/44038689319): Pages passed; PR-event full-suite/core jobs were skipped by the integration-branch guard. The push full-suite run above is authoritative.
+- [PR dependency audit 44038689317](https://github.com/Barrot-Agent/B-Agent/actions/runs/44038689317) and [PR fail-closed gate 44038689745](https://github.com/Barrot-Agent/B-Agent/actions/runs/44038689745) passed.
+
+The full-suite log also reports the GitHub Actions cache budget is exhausted and cache is read-only; tests were unaffected. Setuptools emitted packaging warnings for the deprecated license-table form and package-discovery declarations for `barrot_agent.data.missions` and `data.research`; the wheel and installed-mission smoke nevertheless passed. Resolve these warnings before release.
+
+### Test-scope audit
+
+The integration tree contains 472 Python files matching a test filename pattern. The full-suite workflow covers 465 of them. The seven exceptions were inspected:
+
+- Four are under `.barrot/disabled_tests/` and are explicitly disabled.
+- `apex_lattice/analyzers/test_quality_analyzer.py` is a production analyzer class with no pytest test functions.
+- `legacy/tests/test_merge_conflict_integration.py` is a manual simulation, not a pytest test module; it writes generated knowledge-base files and prints synthetic merge/readiness claims. It should not be executed automatically.
+- `scripts/barrot_defensive_self_test.py` is an operational diagnostic that can dispatch GitHub workflows and mutate local state. It is not safe as an automated test.
+
+The CI full-suite command covers the active `tests/` tree, both active legacy pytest modules and the .barrot autonomous-task test. **No runnable pytest suite was found outside the current full-suite command.** The operational/simulation files remain excluded intentionally.
+
+### Workflow and security review
+
+A trigger/permission/secret/action/command surface scan covered all 62 changed workflow YAML files. Detailed script review covered selected sensitive paths; this is not yet a complete semantic review of every workflow and invoked script.
+
+- Legacy free-form writers/dispatchers remain quarantined with empty permissions and false job guards, including Ask Barrot, Barrot Agent, Barrot Sync, Databricks bundle deployment, Hugging Face sync and the private-data table-freshness check.
+- High-impact manual workflows generally require explicit YES confirmation and exact main SHA. Databricks/Kaggle operations, Hugging Face upload/restart, Cloudflare deployment/secret rotation and paper-trading simulation were not dispatched.
+- `content-pipeline.yml` and `entity-relations.yml` require manual YES before Groq calls and write artifacts only, but lack the exact-main-SHA gate used by other research workflows. Tighten or quarantine before merge.
+- `pillars-check.yml` is a scheduled/manual health workflow. It injects a GitHub App private key and Databricks token; its Databricks call is `SELECT 1`, while Hugging Face checks are unauthenticated public GETs. No matching run was found in the latest 100 Actions runs, so credentials configured in YAML are not proof of a successful live connection.
+- `xrp-public-ingestion.yml` is read-only at the GitHub permission layer, main-ref guarded and public-data-only. It is integration-only, so its scheduled production path is not active on main.
+- Main's `pillars-check.yml` uses floating action tags; the integration version pins action commit SHAs.
+
+### Prediction readiness
+
+The collector, content-addressed raw-receipt archive, per-run and cross-run hash chains, point-in-time feature store, four baselines, chronological walk-forward evaluation, temporal calibration, PSI drift monitoring and fail-closed forecast ledger are implemented on the integration branch. GitHub artifacts are not WORM storage; the local SQLite store is not adversarially tamper-proof.
+
+The curated registry remains at **125 events**, with **48 exact publisher timestamps**, **77 missing**, **zero byte-exact raw-source receipts**, **zero model-eligible events**, **zero forecasts** and accuracy **NOT_EVALUATED**. The public ingestion workflow is not yet active on main. No new market observation was admitted in Run210; Run209 remains the latest descriptive market snapshot.
+
+### Nine-platform map
+
+- ChatGPT: current GitHub connector session verified; permissions are admin/maintain/push/pull/triage and are not least-privilege.
+- Claude, Grok, Gemini and Codex: unverified.
+- Copilot: assigned to PR #1663, but no formal review or authenticated data flow.
+- Hugging Face: public runtime GET configured; no authenticated deployment verified.
+- Kaggle: manual, exact-SHA/allowlist-gated submission workflow exists; no authentication test or submission.
+- Databricks: token is configured in a scheduled `SELECT 1` health check, but no recent successful run was observed; no write performed.
+- Groq is referenced by manual workflows but is not Grok; no external request was made in Run210.
+
+No independent nine-platform task exchange or red-team quorum was established.
+
+### Open PR classification
+
+- #1663 — **blocked** consolidated integration.
+- #1541 — **unique/unreviewed with overlapping divergent content**; two identical blobs and three divergent files across five overlapping paths. Preserve and reconcile.
+- #1450, #1460, #1440, #1436, #1437, #1353 and #1265 — **unique/unreviewed**. Preserve; do not bulk-close.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED / implemented on integration:** V3 foundation, public XRP ingestion, receipts/hash chains, point-in-time features, baseline evaluation, calibration, drift and forecast readiness gates.
+- **EXECUTED:** current main/tree/PR/ancestry audit, full test-scope audit, 62-workflow surface scan, selected workflow/script review, exact-head CI, six-manifest dependency audit and fail-closed gates.
+- **VERIFIED:** exact-head `da58bcf8ab2739f2f16d2633b974920d1b770ed8` full suite, wheel build/installed mission smoke, Pages, push/PR dependency audits and push/PR fail-closed checks.
+- **NOT VERIFIED:** complete semantic/security review of all changed paths and invoked scripts; independent review; enforceable main branch protection; production ingestion on main; external WORM archive; model-eligible dataset; candidate superiority; independent shadow evaluation; nine-platform authentication quorum.
+
+### Merge decision and next action
+
+**NO MERGE.** Passing exact-head CI does not resolve the draft state, zero independent reviews, incomplete semantic/security review, inaccessible branch-protection evidence, disabled visible ruleset, self-only CODEOWNERS or overbroad connector permissions.
+
+Next: finish the remaining workflow-to-script review, prioritize the two Groq workflows lacking exact-SHA gates and the scheduled credentialed pillars probe, reconcile #1541's three divergent files without rewriting history, and obtain independent review plus verifiable branch protection. Only then reconsider merge. Keep forecasts disabled until receipt-backed point-in-time data and leakage-safe out-of-sample plus independent shadow evidence qualify a candidate.
+
+No merge, source-PR closure, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
