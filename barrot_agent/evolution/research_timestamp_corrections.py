@@ -251,7 +251,76 @@ _TIMESTAMP_OVERLAY_TYPES = {
     "append_only_source_timestamp_semantics_correction",
     _CAPTURE_TIME_OVERLAY_TYPE,
 }
+_CAPTURE_WINDOW_CORRECTION_TYPE = "append_only_capture_timestamp_correction"
 _MISSING = object()
+
+
+def _validate_capture_window_correction_addendum(
+    document: Mapping[str, Any],
+    relative_path: str,
+    repository_root: Path,
+    archive_resolved: Path,
+) -> str:
+    """Validate a non-applying, preimage-bound capture-window correction."""
+    if document.get("schema_version") != "1.0.0":
+        raise ResearchEligibilityError(f"unsupported capture-window correction schema in {relative_path}")
+    artifact_id = document.get("artifact_id")
+    if not isinstance(artifact_id, str) or not artifact_id.strip():
+        raise ResearchEligibilityError(f"capture-window correction {relative_path} needs a stable ID")
+    if document.get("supersession_scope") != "TIMESTAMP_ONLY":
+        raise ResearchEligibilityError(f"capture-window correction {relative_path} must be timestamp-only")
+    if any(key in document for key in ("target_artifact", "target_artifact_blob_sha", "field_corrections")):
+        raise ResearchEligibilityError(f"capture-window correction {relative_path} may not patch source fields")
+
+    supersedes = _repo_path(document.get("supersedes_artifact"), f"{relative_path}.supersedes_artifact")
+    if not supersedes.startswith("research/xrp_intelligence/"):
+        raise ResearchEligibilityError("capture-window correction target must remain inside research/xrp_intelligence")
+    declared_sha = document.get("superseded_artifact_git_blob_sha")
+    if not isinstance(declared_sha, str) or not _SHA1.fullmatch(declared_sha):
+        raise ResearchEligibilityError("capture-window correction needs a Git blob SHA-1 for its superseded artifact")
+    source_path = repository_root.joinpath(*supersedes.split("/"))
+    if source_path.is_symlink():
+        raise ResearchEligibilityError(f"capture-window correction source {supersedes} must not be a symlink")
+    try:
+        resolved_source = source_path.resolve(strict=True)
+        resolved_source.relative_to(archive_resolved)
+    except (OSError, ValueError) as exc:
+        raise ResearchEligibilityError(f"capture-window correction source {supersedes} is missing or escapes the archive") from exc
+    if not resolved_source.is_file():
+        raise ResearchEligibilityError(f"capture-window correction source {supersedes} is not a regular file")
+    try:
+        source_bytes = resolved_source.read_bytes()
+    except OSError as exc:
+        raise ResearchEligibilityError(f"cannot read capture-window correction source {supersedes}") from exc
+    if git_blob_sha1(source_bytes) != declared_sha:
+        raise ResearchEligibilityError("capture-window correction SHA-1 does not match exact superseded artifact bytes")
+
+    correction = document.get("correction")
+    if not isinstance(correction, Mapping):
+        raise ResearchEligibilityError("capture-window correction needs a correction object")
+    previous = _utc_timestamp(correction.get("previous_captured_at_utc"), "previous_captured_at_utc")
+    start = _utc_timestamp(correction.get("capture_window_start_exclusive_utc"), "capture_window_start_exclusive_utc")
+    end = _utc_timestamp(correction.get("capture_window_end_inclusive_utc"), "capture_window_end_inclusive_utc")
+    created = _utc_timestamp(document.get("created_at_utc"), "created_at_utc")
+    if start != previous or end != created or end <= start:
+        raise ResearchEligibilityError("capture-window correction must preserve a strictly ordered, source-bound UTC interval")
+    if correction.get("corrected_exact_capture_at_utc") is not None:
+        raise ResearchEligibilityError("capture-window correction may not invent an exact retrieval timestamp")
+    if correction.get("exact_fetch_arrival_timestamp_exposed") is not False:
+        raise ResearchEligibilityError("capture-window correction must preserve the unknown exact fetch-arrival state")
+    if not isinstance(correction.get("previous_field_status"), str) or not correction["previous_field_status"].strip():
+        raise ResearchEligibilityError("capture-window correction needs the previous field status")
+    if not isinstance(correction.get("semantics"), str) or not correction["semantics"].strip():
+        raise ResearchEligibilityError("capture-window correction needs its timestamp semantics")
+    if document.get("evidence_content_changed") is not False:
+        raise ResearchEligibilityError("capture-window correction may not change evidence content")
+    if document.get("identity_and_video_decisions_unchanged") is not True:
+        raise ResearchEligibilityError("capture-window correction must preserve identity and video decisions")
+    if document.get("raw_source_excerpt_hashes_unchanged") is not True:
+        raise ResearchEligibilityError("capture-window correction must preserve raw-source excerpt hashes")
+    if document.get("model_admission") is not False or document.get("forecast_status") != "NOT_ISSUED":
+        raise ResearchEligibilityError("capture-window correction must remain research-only with no forecast")
+    return artifact_id.strip()
 
 
 def _nested_value(document: Mapping[str, Any], dotted_path: str) -> Any:
@@ -551,9 +620,9 @@ def apply_capture_time_interval_correction_overlay(
 def apply_research_timestamp_correction_overlays(repository_root: str | Path) -> dict[str, Any]:
     """Discover and apply supported timestamp overlays to in-memory archive views.
 
-    Only the two explicitly supported machine-readable timestamp overlay
-    schemas are applied. Narrative correction addenda are reported but not
-    interpreted as field patches. Unknown timestamp-correction schemas,
+    The two machine-readable field-overlay schemas are applied in memory.
+    Preimage-bound capture-window corrections are validated and reported but
+    never applied as field patches. Unknown timestamp-correction schemas,
     missing targets, duplicate targets, duplicate IDs and symlink/path escapes
     fail closed. No repository file is modified and no source becomes eligible.
     """
@@ -573,6 +642,7 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
 
     overlays: list[tuple[str, bytes, dict[str, Any]]] = []
     narrative_only: list[str] = []
+    capture_window_corrections: list[str] = []
     unbound_timestamp_corrections: list[str] = []
     artifact_ids: set[str] = set()
     for path in sorted(archive.rglob("*.json")):
@@ -609,6 +679,14 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
                 unbound_timestamp_corrections.append(relative_path)
                 continue
             overlays.append((relative_path, content, document))
+        elif artifact_type == _CAPTURE_WINDOW_CORRECTION_TYPE:
+            artifact_id = _validate_capture_window_correction_addendum(
+                document, relative_path, root, archive_resolved
+            )
+            if artifact_id in artifact_ids:
+                raise ResearchEligibilityError("research archive contains duplicate timestamp correction IDs")
+            artifact_ids.add(artifact_id)
+            capture_window_corrections.append(relative_path)
         elif isinstance(artifact_type, str) and "timestamp" in artifact_type.lower() and "correction" in artifact_type.lower():
             raise ResearchEligibilityError(f"unsupported timestamp correction schema in {relative_path}")
         elif isinstance(artifact_type, str) and "correction" in artifact_type.lower():
@@ -668,6 +746,7 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
         "corrected_artifacts": corrected_artifacts,
         "application_manifests": application_manifests,
         "narrative_only_correction_artifacts": sorted(narrative_only),
+        "capture_window_correction_artifacts": sorted(capture_window_corrections),
         "unbound_timestamp_correction_artifacts": sorted(unbound_timestamp_corrections),
         "source_artifacts_modified": False,
         "model_eligible": False,

@@ -219,3 +219,79 @@ def test_overlay_rejects_non_string_fields_and_non_utc_timestamp_offsets():
     overlay["target_artifact_blob_sha"] = git_blob_sha1(source_bytes)
     with pytest.raises(ResearchEligibilityError, match="UTC timezone offset"):
         _apply(source_bytes, _bytes(overlay))
+
+
+def _capture_window_fixture(tmp_path):
+    from barrot_agent.evolution.research_timestamp_corrections import apply_research_timestamp_correction_overlays
+
+    archive = tmp_path / "research" / "xrp_intelligence"
+    archive.mkdir(parents=True)
+    source_path = archive / "kamilah-identity.json"
+    source_bytes = _bytes({
+        "artifact_id": "kamilah-identity-source",
+        "artifact_type": "public_video_attribution_and_identity_verification",
+        "identity_decision": "unchanged",
+    })
+    source_path.write_bytes(source_bytes)
+    correction = {
+        "schema_version": "1.0.0",
+        "artifact_id": "capture-window-correction-fixture",
+        "artifact_type": "append_only_capture_timestamp_correction",
+        "created_at_utc": "2026-11-07T20:41:53Z",
+        "supersedes_artifact": "research/xrp_intelligence/kamilah-identity.json",
+        "superseded_artifact_git_blob_sha": git_blob_sha1(source_bytes),
+        "supersession_scope": "TIMESTAMP_ONLY",
+        "correction": {
+            "previous_captured_at_utc": "2026-11-07T20:34:31Z",
+            "previous_field_status": "INCORRECT_AS_EXACT_CAPTURE_TIME",
+            "capture_window_start_exclusive_utc": "2026-11-07T20:34:31Z",
+            "capture_window_end_inclusive_utc": "2026-11-07T20:41:53Z",
+            "corrected_exact_capture_at_utc": None,
+            "exact_fetch_arrival_timestamp_exposed": False,
+            "semantics": "Exact retrieval time is unknown; preserve only the bounded capture interval.",
+        },
+        "evidence_content_changed": False,
+        "identity_and_video_decisions_unchanged": True,
+        "raw_source_excerpt_hashes_unchanged": True,
+        "model_admission": False,
+        "forecast_status": "NOT_ISSUED",
+    }
+    correction_path = archive / "capture-window-correction.json"
+    correction_path.write_bytes(_bytes(correction))
+    return apply_research_timestamp_correction_overlays, source_path, source_bytes, correction_path, correction
+
+
+def test_capture_window_correction_is_validated_but_never_applied(tmp_path):
+    apply, source_path, source_bytes, correction_path, _ = _capture_window_fixture(tmp_path)
+    result = apply(tmp_path)
+    relative = "research/xrp_intelligence/capture-window-correction.json"
+    assert result["overlay_count"] == 0
+    assert result["capture_window_correction_artifacts"] == [relative]
+    assert result["source_artifacts_modified"] is False
+    assert source_path.read_bytes() == source_bytes
+    assert correction_path.is_file()
+    assert result["model_eligible"] is False
+    assert result["forecast_issued"] is False
+
+
+def test_capture_window_correction_rejects_wrong_superseded_preimage(tmp_path):
+    apply, _, _, correction_path, correction = _capture_window_fixture(tmp_path)
+    correction["superseded_artifact_git_blob_sha"] = "0" * 40
+    correction_path.write_bytes(_bytes(correction))
+    with pytest.raises(ResearchEligibilityError, match="does not match exact superseded artifact bytes"):
+        apply(tmp_path)
+
+
+def test_capture_window_correction_rejects_invented_exact_time_and_invalid_interval(tmp_path):
+    apply, _, _, correction_path, correction = _capture_window_fixture(tmp_path)
+    correction["correction"]["corrected_exact_capture_at_utc"] = "2026-11-07T20:38:00Z"
+    correction_path.write_bytes(_bytes(correction))
+    with pytest.raises(ResearchEligibilityError, match="may not invent an exact retrieval timestamp"):
+        apply(tmp_path)
+
+    apply, _, _, correction_path, correction = _capture_window_fixture(tmp_path)
+    correction["correction"]["capture_window_end_inclusive_utc"] = "2026-11-07T20:30:00Z"
+    correction["created_at_utc"] = "2026-11-07T20:30:00Z"
+    correction_path.write_bytes(_bytes(correction))
+    with pytest.raises(ResearchEligibilityError, match="strictly ordered"):
+        apply(tmp_path)

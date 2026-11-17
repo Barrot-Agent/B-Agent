@@ -19,6 +19,7 @@ def build_audit_payload(repository_root: str | Path) -> dict[str, Any]:
         "application_manifests": result["application_manifests"],
         "corrected_artifacts": result["corrected_artifacts"],
         "narrative_only_correction_artifacts": result["narrative_only_correction_artifacts"],
+        "capture_window_correction_artifacts": result["capture_window_correction_artifacts"],
         "unbound_timestamp_correction_artifacts": result["unbound_timestamp_correction_artifacts"],
         "source_artifacts_modified": False,
         "model_eligible": False,
@@ -59,6 +60,7 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit("audit output already exists; refusing to overwrite") from exc
     print(json.dumps({
         "overlay_count": payload["overlay_count"],
+        "capture_window_correction_count": len(payload["capture_window_correction_artifacts"]),
         "source_artifacts_modified": False,
         "model_eligible": False,
         "forecast_issued": False,
