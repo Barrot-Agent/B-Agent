@@ -1,0 +1,287 @@
+{
+  "method": "literal keyword scan over string leaves of every data/**/*.json",
+  "built_at": "2026-11-17",
+  "terms": [
+    "general relativity",
+    "quantum mechanics",
+    "consciousness",
+    "measurement",
+    "observer",
+    "decoherence",
+    "entanglement",
+    "time",
+    "information theory",
+    "ternary",
+    "transformer",
+    "transistor",
+    "algorithm",
+    "logarithm"
+  ],
+  "files_scanned": 62,
+  "disclosure": "A keyword hit is not evidence of a claim. It says a stored record mentions the term. Grades come only from records that already carry one.",
+  "grades_in_scanned_records": {
+    "Q": 23,
+    "E": 5,
+    "X": 2
+  },
+  "hits": {
+    "general relativity": {
+      "files": {
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 6,
+          "grades": {}
+        }
+      },
+      "records": 6,
+      "file_count": 1
+    },
+    "quantum mechanics": {
+      "files": {
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 5,
+          "grades": {}
+        },
+        "data/domains/eight_domains.json": {
+          "matches": 2,
+          "grades": {}
+        }
+      },
+      "records": 7,
+      "file_count": 2
+    },
+    "consciousness": {
+      "files": {
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 10,
+          "grades": {}
+        },
+        "data/character_capabilities_database.json": {
+          "matches": 2,
+          "grades": {}
+        },
+        "data/character_capabilities_unified.json": {
+          "matches": 2,
+          "grades": {}
+        }
+      },
+      "records": 14,
+      "file_count": 3
+    },
+    "measurement": {
+      "files": {
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 8,
+          "grades": {}
+        },
+        "data/xrp_intelligence/snapshots/2026-10-28T2312Z-correction.json": {
+          "matches": 6,
+          "grades": {}
+        },
+        "data/domains/eight_domains.json": {
+          "matches": 2,
+          "grades": {}
+        }
+      },
+      "records": 16,
+      "file_count": 3
+    },
+    "observer": {
+      "files": {},
+      "records": 0,
+      "file_count": 0
+    },
+    "decoherence": {
+      "files": {
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 10,
+          "grades": {}
+        },
+        "data/domains/eight_domains.json": {
+          "matches": 1,
+          "grades": {}
+        }
+      },
+      "records": 11,
+      "file_count": 2
+    },
+    "entanglement": {
+      "files": {
+        "data/domains/eight_domains.json": {
+          "matches": 7,
+          "grades": {}
+        },
+        "data/pingpong_request.json": {
+          "matches": 2,
+          "grades": {}
+        },
+        "data/integration_report.json": {
+          "matches": 1,
+          "grades": {}
+        }
+      },
+      "records": 10,
+      "file_count": 3
+    },
+    "time": {
+      "files": {
+        "data/xrp_intelligence/snapshots/2026-10-28T2312Z-correction.json": {
+          "matches": 217,
+          "grades": {}
+        },
+        "data/connections.json": {
+          "matches": 12,
+          "grades": {}
+        },
+        "data/character_capabilities_unified.json": {
+          "matches": 11,
+          "grades": {}
+        },
+        "data/character_capabilities_database.json": {
+          "matches": 10,
+          "grades": {}
+        },
+        "data/research/navier_stokes_research_bundle.json": {
+          "matches": 9,
+          "grades": {}
+        },
+        "data/xrp_intelligence/sources/kamilah_stevenson_channel.json": {
+          "matches": 8,
+          "grades": {}
+        },
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 6,
+          "grades": {}
+        },
+        "data/barrot_capability_audit.json": {
+          "matches": 3,
+          "grades": {}
+        }
+      },
+      "records": 300,
+      "file_count": 23
+    },
+    "information theory": {
+      "files": {
+        "data/research/consciousness_gr_qm.json": {
+          "matches": 5,
+          "grades": {}
+        },
+        "data/millennium_problem_3_riemann_hypothesis.json": {
+          "matches": 1,
+          "grades": {}
+        },
+        "data/millennium_problems_unified.json": {
+          "matches": 1,
+          "grades": {}
+        }
+      },
+      "records": 7,
+      "file_count": 3
+    },
+    "ternary": {
+      "files": {
+        "data/domains/eight_domains.json": {
+          "matches": 15,
+          "grades": {}
+        },
+        "data/evolution/outcome_ledger.json": {
+          "matches": 4,
+          "grades": {}
+        }
+      },
+      "records": 19,
+      "file_count": 2
+    },
+    "transformer": {
+      "files": {
+        "data/domains/eight_domains.json": {
+          "matches": 4,
+          "grades": {}
+        },
+        "data/connections.json": {
+          "matches": 1,
+          "grades": {}
+        },
+        "data/evolution/intelligence_corpus.json": {
+          "matches": 1,
+          "grades": {}
+        }
+      },
+      "records": 6,
+      "file_count": 3
+    },
+    "transistor": {
+      "files": {
+        "data/domains/eight_domains.json": {
+          "matches": 3,
+          "grades": {}
+        }
+      },
+      "records": 3,
+      "file_count": 1
+    },
+    "algorithm": {
+      "files": {
+        "data/character_capabilities_unified.json": {
+          "matches": 6,
+          "grades": {}
+        },
+        "data/millennium_problems_unified.json": {
+          "matches": 6,
+          "grades": {}
+        },
+        "data/character_capabilities_database.json": {
+          "matches": 4,
+          "grades": {}
+        },
+        "data/domains/eight_domains.json": {
+          "matches": 3,
+          "grades": {}
+        },
+        "data/millennium_problem_1_p_vs_np_problem.json": {
+          "matches": 3,
+          "grades": {}
+        },
+        "data/millennium_problems_search_summaries.json": {
+          "matches": 3,
+          "grades": {}
+        },
+        "data/mmi_monetization_unified.json": {
+          "matches": 3,
+          "grades": {}
+        },
+        "data/discovered_capabilities.json": {
+          "matches": 2,
+          "grades": {}
+        }
+      },
+      "records": 38,
+      "file_count": 13
+    },
+    "logarithm": {
+      "files": {
+        "data/domains/eight_domains.json": {
+          "matches": 6,
+          "grades": {}
+        },
+        "data/research/riemann_hypothesis_harvest.json": {
+          "matches": 4,
+          "grades": {}
+        },
+        "data/millennium/claims/hodge_conjecture.json": {
+          "matches": 1,
+          "grades": {}
+        },
+        "data/millennium/claims/p_vs_np.json": {
+          "matches": 1,
+          "grades": {}
+        }
+      },
+      "records": 12,
+      "file_count": 4
+    }
+  },
+  "zero_hit_terms": [
+    "observer"
+  ]
+}

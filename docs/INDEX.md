@@ -97,6 +97,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/phoenix/PROGRAM.md - Phoenix program: fiction mapped to utility
 - docs/phoenix/cycle-02.md - Phoenix cycle 02: KPI proof, gap, upgrade
 
+## docs/research
+
+- docs/research/CONSCIOUSNESS-BRIDGE.md - Consciousness as a bridge between GR and QM: TRACE-5 verdict
+
 ## docs/synthesis
 
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
