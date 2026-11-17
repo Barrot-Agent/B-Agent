@@ -5105,3 +5105,56 @@ New primary-source findings:
 This improves the Coinbase/Ripple/SBI/Evernorth relationship graph and the “actual capital” model. Keep cash proceeds, in-kind XRP, debt, warrant proceeds, facility capacity, financing fees and custody counterparties as separate typed facts. Do not infer XRP market buys from the principal-market accounting selection.
 
 Source evidence is from the SEC filing, especially lines 875-880 (closing cash/in-kind XRP and note proceeds), 765-768 and 894-901 (ELOC/fee), 781-783 (warrant exercises), 938-941 (Coinbase principal market), 989-991 (BitGo custody), and 1017-1022 (71.5% Pathfinder ownership). Raw filing bytes were not archived in this run; the filing URL and page/line evidence are preserved, but no SHA-256 receipt is claimed.
+
+
+## Run206 — integration-first verification and XRP intelligence update
+
+Captured: 2026-11-17T03:59:15Z. Main SHA: 1f30e5c18f151f75ad5d157ddde175723584ec69. Integration code head verified: d06038de8e27be975ee1d927d0becda0c04da215. PR #1663 remains open and draft.
+
+### Repository and exact-head verification
+
+The complete main and integration trees were fetched. Main has 1,393 tree entries; integration has 2,575. All main paths are present. The integration branch is 154 commits ahead and zero behind main. PR #1663 has 1,347 changed files, including 49 workflow paths and 395 test paths; zero formal reviews and zero review threads.
+
+Exact-head full-suite run 44008305459 on d06038de8e27be975ee1d927d0becda0c04da215 passed: 3,846 passed, zero failed, one skipped, 11 warnings, 19 subtests; 147.14 seconds. Inclusive coverage 66.90%; legacy-core coverage 77%. Wheel build and installed-wheel mission smoke test passed. Push and PR dependency audits 44008305479 and 44008311676 passed across six manifests with no known vulnerabilities reported. Push and PR fail-closed gates 44008305483 and 44008311736 passed. PR CI 44008311802 passed Pages validation but skipped core/full-suite jobs by branch condition; push full-suite run is authoritative. GitHub Actions cache budget is exhausted; cache storage is read-only, tests unaffected.
+
+### Market and derivatives
+
+Kraken XRP/USD: last $0.96652; bid $0.96638; ask $0.96639; spread 0.1035 bp; 24h volume 45.645M XRP; VWAP $0.95453; high $0.97648; low $0.94005. No provider event timestamp and no byte-exact raw HTTP receipt; descriptive only.
+
+OKX XRP-USDT: last 0.9659 USDT; bid 0.9658; ask 0.9659; spread 1.0354 bp; 24h volume 37.783M XRP; provider timestamp 03:50:27.566Z, 527 seconds old at capture. No synchronized USDT/USD conversion; no parity feature admitted.
+
+Last available Fuelmaps six-venue depth snapshot at 02:00 UTC: midpoint $0.9580; bid share 50.4% within 0.5%, 53.8% within 1%, 60.3% within 2%, 58.2% within 5%, 59.7% within 10%. About two hours old; Binance and Bitget excluded; resting orders can be cancelled.
+
+Derivatives providers disagree materially: TokenPost $258.7M OI at 23:02 UTC Nov 16, -6.28%, funding -0.0047%/8h; Liqwall $968M at 02:32 UTC Nov 17, -2.1%, funding -0.0128%/8h; TradRadar $1.31B at 15:30 UTC Nov 16, -5.04%, funding -0.0063%/8h. Contract universes and timestamps differ; no averaging or directional inference. Reuters' November 16 dollar/yield/gold and Iran-energy risk reporting is macro context only.
+
+### Institutional and identity findings
+
+Circle Q3 2026 SEC filing: average USDC circulation $73.3B; Q3 on-chain volume $13.9T; Coinbase distribution costs $331.3M in Q3 and $986.6M over nine months. Coinbase Q3 release: $22B average USDC held on Coinbase products, about 30% of average USDC market cap and about 50% of USDC economics over the prior year. These are USDC distribution economics, not XRP flows.
+
+SBI's June 9, 2025 primary announcement confirms $50M Circle equity investment ($25M SBI Holdings, $25M SBI Shinsei Bank), a 2016 Ripple investment and approximately 9% Ripple equity stake, plus SBI Ripple Asia JV. Circle's Q3 SEC filing separately reports Circle's 50% interest in Circle SBI Japan K.K. with no significant operating results through September 30. SBI Group is a founding validator of Circle Arc; Arc is a separate USDC rail, not XRPL settlement.
+
+Ripple/Coinbase's October 28 RLUSD partnership supports Prime, Exchange and retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral use was future availability at announcement, not verified live. Evernorth's November 13 SEC filing names Coinbase as principal market for XRP valuation/impairment reporting but says Evernorth does not actively trade XRP on digital-asset markets; BitGo Trust was its initial XRP custodian.
+
+SBIC East's March 5, 2026 ChatGPT seminar was an educational event organized by Tokyo Small and Medium Business Investment & Consultation Co., Ltd., co-hosted with Hamamatsu Iwata Shinkin, with a Microsoft Japan speaker. SBIC East/Central/West are regional SME investment companies distinct from SBI Holdings; no OpenAI partnership evidence.
+
+ASK Coin remains unresolved; Permission Coin (ASK) is only a lexical candidate and has no established XRP/Ripple relationship. Kamilah Stevenson person identity is high confidence from a first-person iHeart interview; she identifies her own channels and warns of fake pages. Candidate YouTube channel @KamilahStevensonXrpStocks and its May 20 video lack first-party cross-link verification and remain outside the official video inventory.
+
+### Prediction gate and production status
+
+Event registry remains Run192-followup, captured 2026-11-16T16:11:30Z: 125 curated events, zero byte-exact SHA-256 receipts, 77 missing exact publisher timestamps, zero model-eligible events. latest_signal.json is refreshed to Run206 descriptive-only status; signal_accuracy.json remains NOT_EVALUATED. No directional forecast issued; no new market observations admitted to the point-in-time feature store.
+
+The public XRP ingestion module and scheduled workflow are integration-only, not on main. The workflow is scheduled hourly at minute 3 and daily at 00:15 UTC, but its job is main-ref guarded. A compliant merge activates public-data requests and GitHub artifact/cache writes; it does not trade or publish forecasts. Artifacts are not WORM storage. SQLite is append-only at the application layer but requires external signed/checkpointed anchoring for adversarial tamper resistance.
+
+### Governance, backlog and merge decision
+
+NO MERGE. PR #1663 remains draft with zero independent reviews. Branch-protection access returns HTTP 403; visible ruleset 10863829 is disabled; CODEOWNERS is * @Barrot-Agent; GitHub connector permissions are admin/maintain/push/pull/triage; code-scanning and secret-scanning alert state is unknown. Semantic/security review of 1,347 changed paths remains incomplete.
+
+Nine PRs remain open: #1663 blocked; #1541 unique MMI security work with partial overlap and unique tests/evidence; #1460 unique/unreviewed; #1450, #1440, #1436, #1353 and #1265 stacked research; #1437 parallel repair. No source PR was closed.
+
+Main's manual table-freshness workflow queries workspace.barrot.brain and prints sampled private rows to Actions logs; integration quarantines it. Main's issue-label Barrot Agent workflow has repository/PR/issue write permissions; integration quarantines it. Integration Barrot Ops adds separate Databricks-import and Kaggle-download approvals plus exact-main-SHA validation. Integration quarantines Hugging Face deployment/secret propagation pending private-target and separate secret-rotation controls. None was dispatched.
+
+DESIGNED/IMPLEMENTED on integration: public XRP ingestion, content-addressed receipts/hash chains, point-in-time SQLite feature store, event timelines/counter-hypotheses, chronological walk-forward evaluation, four baselines, calibration/drift monitoring and fail-closed forecast ledger with independent Ed25519 attestation. EXECUTED: full repository/PR/workflow/security inspection, direct Kraken/OKX reads, primary-source institutional research and exact-head CI. VERIFIED: full suite, wheel smoke, dependency audits and fail-closed gates on d06038d. NOT VERIFIED: production scheduled ingestion on main, WORM anchoring, model eligibility, predictive superiority, shadow cohort, independent review quorum and branch-protection enforcement.
+
+Next actions: finish semantic/security review of all 49 workflow paths and invoked scripts; reconcile the nine-PR backlog without closing unique work; obtain independent review ownership and authorized branch-protection evidence; complete mutable action-reference/dependency provenance audit; after compliant merge verify merge commit, refetch main, run main CI and confirm scheduled ingestion; add external signed/WORM anchoring; keep forecast issuance disabled until out-of-sample superiority, calibration, drift, shadow evaluation and independent attestation pass.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.

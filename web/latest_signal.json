@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
-  "run_id": "run199",
+  "run_id": "run206",
   "asset": "XRP/USD",
   "status": "NOT_ISSUED",
   "forecast_status": "NOT_ISSUED",
   "forecast_issued": false,
   "reason_code": "RAW_RECEIPTS_AND_POINT_IN_TIME_EVALUATION_INCOMPLETE",
-  "explanation": "No directional XRP forecast is permitted. The curated registry remains at 125 events, with zero byte-exact raw-source SHA-256 receipts, 77 missing exact publisher timestamps, and zero model-eligible events. Main Cross Analysis runs successfully but its XRP and BTC sentiment windows are empty because the checked-in logs stop on 2026-10-29; its cumulative entity profile is not current sentiment. The scheduled deterministic XRP market-ingestion workflow exists only on integration and is not active on main. Exact-head tests and safety gates passed, but predictive superiority and independent shadow validation remain unverified.",
-  "status_as_of_utc": "2026-11-16T22:14:05.105Z",
-  "integration_head_before_commit": "d0bb7e196bbb7f8d288b83741fe6df502ba48a69",
+  "explanation": "No directional XRP forecast is permitted. The curated event registry remains at 125 events, with zero byte-exact raw-source SHA-256 receipts, 77 missing exact publisher timestamps and zero model-eligible events. Run206 market snapshots are descriptive only: Kraken has no provider event timestamp, OKX is older than the five-minute live-age gate and uses a USDT quote without synchronized USD normalization. Scheduled ingestion is not active on main.",
+  "status_as_of_utc": "2026-11-17T03:59:15Z",
+  "integration_head_before_commit": "d06038de8e27be975ee1d927d0becda0c04da215",
   "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
   "data_cutoff_utc": null,
   "target": null,
@@ -17,32 +17,24 @@
   "latest_descriptive_snapshot": {
     "source": "Kraken public REST Ticker API",
     "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
-    "retrieved_at_utc": "2026-11-16T22:14:05.105Z",
+    "retrieved_at_utc": "2026-11-17T03:59:15Z",
     "publisher_timestamp_utc": null,
     "admission": "DESCRIPTIVE_ONLY",
     "raw_source_sha256": null,
     "raw_http_bytes_captured": false,
     "point_in_time_eligible": false,
-    "last_usd": 0.9579,
-    "bid_usd": 0.95787,
-    "ask_usd": 0.95792,
-    "spread_usd": 0.00005,
-    "spread_basis_points": 0.52198,
-    "top_bid_size_xrp": 485,
-    "top_ask_size_xrp": 784,
-    "volume_24h_xrp": 44673460.95089964,
-    "vwap_24h_usd": 0.9555694,
-    "volume_24h_approx_usd": 42688592.28,
-    "high_24h_usd": 0.97742,
+    "last_usd": 0.96652,
+    "bid_usd": 0.96638,
+    "ask_usd": 0.96639,
+    "spread_basis_points": 0.10348,
+    "top_bid_size_xrp": 776,
+    "top_ask_size_xrp": 2383,
+    "volume_24h_xrp": 45645340.28932165,
+    "vwap_24h_usd": 0.95453032,
+    "high_24h_usd": 0.97648,
     "low_24h_usd": 0.94005,
-    "open_24h_usd": 0.97373,
-    "change_from_open_pct": -1.6257,
-    "limitations": [
-      "Single venue only.",
-      "Top-of-book only; not full depth.",
-      "No provider timestamp or byte-exact source receipt.",
-      "Not admitted to the point-in-time feature store."
-    ]
+    "open_24h_usd": 0.95476,
+    "change_from_open_pct": 1.23172
   },
   "other_market_observations": [
     {
@@ -880,7 +872,13 @@
       }
     }
   ],
-  "latest_descriptive_snapshot_freshness": "Run199 descriptive-only Kraken snapshot captured 2026-11-16T22:14:05Z; provider timestamp and raw bytes unavailable.",
+  "latest_descriptive_snapshot_freshness": {
+    "captured_at_utc": "2026-11-17T03:59:15Z",
+    "provider_timestamp_utc": null,
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256": null,
+    "status": "DESCRIPTIVE_ONLY_NOT_MODEL_ELIGIBLE"
+  },
   "latest_data_quality_observation": {
     "captured_at_utc": "2026-11-16T22:14:05.105Z",
     "main_cross_analysis_run": 43964350423,
@@ -896,5 +894,52 @@
     "entity_sentiment_profile_admission": "historical corpus only; no time filter",
     "scheduled_xrp_ingestion_active_on_main": false,
     "admission": "QUALITY_DIAGNOSTIC_ONLY"
+  },
+  "run206_market_observations": {
+    "okx": {
+      "timestamp_utc": "2026-11-17T03:50:27.566Z",
+      "age_seconds": 527.4,
+      "last_usdt": 0.9659,
+      "bid_usdt": 0.9658,
+      "ask_usdt": 0.9659,
+      "spread_basis_points": 1.03536,
+      "volume_24h_xrp": 37783005.034916,
+      "raw_source_sha256": null,
+      "point_in_time_eligible": false
+    },
+    "derivatives_disagreement": {
+      "tokenpost_oi_usd": 258700000,
+      "liqwall_oi_usd": 968000000,
+      "tradradar_oi_usd": 1310000000,
+      "aggregation": "not permitted; timestamps and contract universes differ"
+    }
+  },
+  "run206_integration_verification": {
+    "exact_head": "d06038de8e27be975ee1d927d0becda0c04da215",
+    "full_suite_run": 44008305459,
+    "full_suite_conclusion": "success",
+    "full_suite": "3846 passed, 0 failed, 1 skipped, 11 warnings, 19 subtests; 147.14 seconds",
+    "inclusive_coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit_push_run": 44008305479,
+    "dependency_audit_pr_run": 44008311676,
+    "fail_closed_push_run": 44008305483,
+    "fail_closed_pr_run": 44008311736,
+    "pr_ci_run": 44008311802
+  },
+  "run206_identity_summary": {
+    "sbic": "SBIC East/Central/West are regional SME investment companies distinct from SBI Holdings; SBIC East ChatGPT event was educational, not an OpenAI partnership",
+    "ask_coin": "Permission Coin (ASK) remains an unverified lexical candidate with no XRP/Ripple link",
+    "kamilah": "person identity high confidence from first-person interview; exact YouTube channel remains unverified because she warns of fake pages"
+  },
+  "run206_evidence_quality": {
+    "event_registry_version": "run192-followup",
+    "captured_at_utc": "2026-11-16T16:11:30Z",
+    "curated_events": 125,
+    "raw_source_sha256_receipts": 0,
+    "missing_exact_publisher_timestamps": 77,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
   }
 }
