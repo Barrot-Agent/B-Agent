@@ -87,6 +87,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/millennium/RE-V2.md - Reverse-engineering v2: what v1 actually did, and what replaced it
 - docs/millennium/hodge-cycle.md - Hodge under TRACE-5: four quoted claims, one excluded assertion
 
+## docs/ops
+
+- docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
+
 ## docs/phoenix
 
 - docs/phoenix/PROGRAM.md - Phoenix program: fiction mapped to utility

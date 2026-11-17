@@ -15,7 +15,13 @@ import math
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+# CI installs no scipy. The check is numerical, so it must skip, not error out at
+# collection time. Local runs still execute it.
+pytest.importorskip("scipy")
 
 from scripts.cymatics_mode_check import measured_ratios
 
