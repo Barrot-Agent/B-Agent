@@ -90,8 +90,9 @@ outcome, and v1 would have hidden it.
 
 Consequence for the ledger: data/millennium/ledger.json now carries an `evidence`
 block for P vs NP, with grade counts and the rule that only Q records may support a
-claim. The other six rows still have no evidence block, which is now a visible
-statement rather than an omission.
+claim. At the time of writing the other rows had no evidence block, which is a
+visible statement rather than an omission; Hodge has since gained one under the same
+method.
 
 ## What v2 still cannot do
 

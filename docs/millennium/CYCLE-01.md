@@ -119,6 +119,6 @@ was touched in this cycle.
 
 The "none fetched" anchors in the table above were produced by the method audited in
 docs/millennium/RE-V2.md. The P vs NP row has since moved to two quoted primary
-claims plus one secondary attribution check under reverse-engineering v2. Hodge,
-Yang-Mills and BSD remain unfetched, and that is now recorded in the ledger.
+claims plus one secondary attribution check under reverse-engineering v2. Yang-Mills
+and BSD remain unfetched, and that is now recorded in the ledger.
 

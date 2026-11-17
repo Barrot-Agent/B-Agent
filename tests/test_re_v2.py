@@ -69,4 +69,4 @@ def test_ledger_carries_the_evidence_and_only_quoted_claims_are_usable():
     assert pnp["evidence"]["usable_claims"] == 3
     assert pnp["evidence"]["grades"]["E"] == 1
     assert "only Q" in pnp["evidence"]["rule"]
-    assert sum(1 for p in problems if "evidence" in p) == 1
+    assert {p["name"] for p in problems if "evidence" in p} == {"P vs NP", "Hodge Conjecture"}

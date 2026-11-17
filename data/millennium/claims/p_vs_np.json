@@ -29,7 +29,10 @@
       ],
       "falsifier": "a relativizing argument that separates P from NP, i.e. a proof stable under every oracle",
       "does_not_show": "that non-relativizing techniques must also fail; only that relativizing ones cannot decide the question",
-      "affirmed": true
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
     },
     {
       "id": "natural-proofs-barrier",
@@ -53,7 +56,10 @@
       "quotes": [],
       "falsifier": "a natural proof that separates P from NP while pseudorandom function candidates remain secure",
       "does_not_show": "anything yet: no abstract was retrievable, so this record is existence only and the claim above is not affirmed",
-      "affirmed": false
+      "affirmed": false,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
     },
     {
       "id": "algebrization-barrier",
@@ -80,7 +86,10 @@
       ],
       "falsifier": "a proof of an algebrizing separation for P versus NP, which would show the barrier is not binding",
       "does_not_show": "that no non-algebrizing technique exists; only that the current toolbox does not contain one",
-      "affirmed": true
+      "affirmed": true,
+      "single_source": false,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
     },
     {
       "id": "negative-control-arxiv-id-from-memory",
@@ -101,7 +110,10 @@
       "quotes": [],
       "falsifier": "n/a, this record exists to prove the title check fires",
       "does_not_show": "nothing; it shows the recalled identifier was wrong",
-      "affirmed": false
+      "affirmed": false,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
     },
     {
       "id": "negative-control-doi-from-memory",
@@ -124,10 +136,13 @@
       "quotes": [],
       "falsifier": "n/a, this record exists to prove the title check fires",
       "does_not_show": "nothing; it shows the recalled identifier was wrong",
-      "affirmed": false
+      "affirmed": false,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
     },
     {
-      "id": "cross-check-algebrization-authorship",
+      "id": "cross-check-algebrization-barrier",
       "problem": "P vs NP",
       "claim": "an independent 2025 paper attributes the algebrization barrier to Aaronson and Wigderson, corroborating authorship and venue",
       "status": "Q",
@@ -146,8 +161,11 @@
         "proposed by Aaronson and Wigderson"
       ],
       "falsifier": "a primary source stating the barrier is not due to Aaronson and Wigderson",
-      "does_not_show": "that the barrier is correct; only who proposed it",
-      "affirmed": true
+      "does_not_show": "that the original result is correct; this checks attribution only",
+      "affirmed": true,
+      "single_source": false,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
     }
   ]
 }

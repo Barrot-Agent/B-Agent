@@ -159,14 +159,24 @@ def main() -> int:
             continue
         payload = load_json(path)
         grades: dict[str, int] = {}
+        usable = 0
+        excluded = 0
         for record in payload.get("records", []):
-            grades[record.get("status", "?")] = grades.get(record.get("status", "?"), 0) + 1
+            status = record.get("status", "?")
+            grades[status] = grades.get(status, 0) + 1
+            if record.get("excluded_from_evidence"):
+                excluded += 1
+            elif status == "Q":
+                usable += 1
         problem["evidence"] = {
             "file": str(path.relative_to(ROOT)),
             "method": payload.get("method"),
             "grades": grades,
-            "usable_claims": grades.get("Q", 0),
-            "rule": "only Q (quoted primary) records may support a claim",
+            "usable_claims": usable,
+            "excluded_claims": excluded,
+            "rule": "only Q (quoted primary) records that are not excluded may support a claim",
+            "unsourced_fields": ["blocking_gap", "transmuted_approach"],
+            "unsourced_note": "these two fields are analysis carried from the v1 audit; no source is quoted for them",
         }
 
     ledger = {
