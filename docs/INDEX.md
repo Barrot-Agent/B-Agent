@@ -80,6 +80,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 ## docs/millennium
 
 - docs/millennium/CYCLE-01.md - Millennium cycle 01: database audit, Poincare verified, six gaps
+- docs/millennium/RE-V2.md - Reverse-engineering v2: what v1 actually did, and what replaced it
 
 ## docs/phoenix
 

@@ -66,7 +66,18 @@
       "status": "open",
       "blocking_gap": "Three barrier theorems (relativization, natural proofs, algebrization) rule out every known technique; current circuit lower bounds do not reach NP.",
       "transmuted_approach": "Borrow the Poincare pattern - a deformation with a monotone quantity and controlled singularities - as an analogy only, then pursue geometric complexity theory (representation-theoretic obstructions), which is deliberately non-relativizing and non-naturalizing. Dead end to check first: occurrence obstructions already block the simplest GCT programme.",
-      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full.",
+      "evidence": {
+        "file": "data/millennium/claims/p_vs_np.json",
+        "method": "reverse-engineering v2 (TRACE-5)",
+        "grades": {
+          "Q": 3,
+          "E": 1,
+          "X": 2
+        },
+        "usable_claims": 3,
+        "rule": "only Q (quoted primary) records may support a claim"
+      }
     },
     {
       "number": 2,
@@ -110,5 +121,5 @@
     }
   ],
   "conflicts": [],
-  "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired database."
+  "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired files. data/millennium/claims is new work under reverse-engineering v2 and is graded separately; only Q records there may support a claim."
 }

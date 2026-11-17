@@ -1,0 +1,153 @@
+{
+  "problem": "P vs NP",
+  "method": "reverse-engineering v2 (TRACE-5)",
+  "built_at": "2026-11-17",
+  "records": [
+    {
+      "id": "relativization-barrier",
+      "problem": "P vs NP",
+      "claim": "Oracle separations exist in both directions, so any technique invariant under relativization cannot settle P versus NP.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1137/0204037",
+        "title": "Relativizations of the $\\mathcal{P} = ?\\mathcal{NP}$ Question",
+        "year": 1975,
+        "venue": "SIAM Journal on Computing",
+        "authors": [
+          "Baker",
+          "Gill",
+          "Solovay"
+        ],
+        "http_status": 200,
+        "abstract": "We investigate relativized versions of the open question of whether every language accepted nondeterministically in polynomial time can be recognized deterministically in polynomial time. For any set X, let $\\mathcal{P}^X (\\text{resp. }\\mathcal{NP}^X )$ be the class of languages accepted in polynomial time by deterministic (resp. nondeterministic) query machines with oracle X. We construct a recursive set A such that $\\mathcal{P}^A = \\mathcal{NP}^A $. On the other hand, we construct a recursive set B such that $\\mathcal{P}^B \\ne \\mathcal{NP}^B $. Oracles X are constructed to realize all consistent set inclusion relations between the relativized classes $\\mathcal{P}^X $, $\\mathcal{NP}^X $, and co $\\mathcal{NP}^X $, the family of complements of languages in $\\mathcal{NP}^X $. Several related open problems are described."
+      },
+      "quotes": [
+        "We construct a recursive set A such that",
+        "On the other hand, we construct a recursive set B such that"
+      ],
+      "falsifier": "a relativizing argument that separates P from NP, i.e. a proof stable under every oracle",
+      "does_not_show": "that non-relativizing techniques must also fail; only that relativizing ones cannot decide the question",
+      "affirmed": true
+    },
+    {
+      "id": "natural-proofs-barrier",
+      "problem": "P vs NP",
+      "claim": "Razborov and Rudich show that natural proofs cannot prove strong enough circuit lower bounds to separate P from NP without breaking pseudorandom functions.",
+      "status": "E",
+      "grade_reason": "no abstract retrievable; existence verified, content not verified",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1006/jcss.1997.1494",
+        "title": "Natural Proofs",
+        "year": 1997,
+        "venue": "Journal of Computer and System Sciences",
+        "authors": [
+          "Razborov",
+          "Rudich"
+        ],
+        "http_status": 200,
+        "abstract": ""
+      },
+      "quotes": [],
+      "falsifier": "a natural proof that separates P from NP while pseudorandom function candidates remain secure",
+      "does_not_show": "anything yet: no abstract was retrievable, so this record is existence only and the claim above is not affirmed",
+      "affirmed": false
+    },
+    {
+      "id": "algebrization-barrier",
+      "problem": "P vs NP",
+      "claim": "A third barrier, algebrization, sits beyond relativization and natural proofs, and P versus NP will require non-algebrizing techniques.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1145/1490270.1490272",
+        "title": "Algebrization",
+        "year": 2009,
+        "venue": "ACM Transactions on Computation Theory",
+        "authors": [
+          "Aaronson",
+          "Wigderson"
+        ],
+        "http_status": 200,
+        "abstract": "Any proof of P \u2260 NP will have to overcome two barriers: relativization and natural proofs . Yet over the last decade, we have seen circuit lower bounds (e.g., that PP does not have linear-size circuits) that overcome both barriers simultaneously. So the question arises of whether there is a third barrier to progress on the central questions in complexity theory. In this article, we present such a barrier, which we call algebraic relativization or algebrization . The idea is that, when we relativize some complexity class inclusion, we should give the simulating machine access not only to an oracle A , but also to a low-degree extension of A over a finite field or ring. We systematically go through basic results and open problems in complexity theory to delineate the power of the new algebrization barrier. First, we show that all known nonrelativizing results based on arithmetization---both inclusions such as IP = PSPACE and MIP = NEXP, and separations such as MA EXP \u2284 P/poly---do indeed algebrize. Second, we show that almost all of the major open problems---including P versus NP, P versus RP, and NEXP versus P/poly---will require non-algebrizing techniques . In some cases, algebrization seems to explain exactly why progress stopped where it did: for example, why we have superlinear circuit lower bounds for PromiseMA but not for NP. Our second set of results follows from lower bounds in a new model of algebraic query complexity , which we introduce in this article and which is interesting in its own right. Some of our lower bounds use direct combinatorial and algebraic arguments, while others stem from a surprising connection between our model and communication complexity. Using this connection, we are also able to give an MA-protocol for the Inner Product function with O (\u221an log n ) communication (essentially matching a lower bound of Klauck), as well as a communication complexity conjecture whose truth would imply NL \u2260 NP."
+      },
+      "quotes": [
+        "we present such a barrier, which we call algebraic relativization or algebrization",
+        "will require non-algebrizing techniques"
+      ],
+      "falsifier": "a proof of an algebrizing separation for P versus NP, which would show the barrier is not binding",
+      "does_not_show": "that no non-algebrizing technique exists; only that the current toolbox does not contain one",
+      "affirmed": true
+    },
+    {
+      "id": "negative-control-arxiv-id-from-memory",
+      "problem": "P vs NP",
+      "claim": "control: an arXiv id recalled from memory for the algebrization paper",
+      "status": "X",
+      "grade_reason": "title mismatch: wanted 'Algebrization', got 'Transseries for beginners'",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "0801.4877",
+        "title": "Transseries for beginners",
+        "year": "2008",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "From the simplest point of view, transseries are a new kind of expansion for real-valued functions. But transseries constitute much more than that--they have a very rich (algebraic, combinatorial, analytic) structure. The set of transseries is a large ordered field, extending the real number field, and endowed with additional operations such as exponential, logarithm, derivative, integral, composition. Over the course of the last 20 years or so, transseries have emerged in several areas of mathematics: asymptotic analysis, model theory, computer algebra, surreal numbers. This paper is an exposition for the non-specialist mathematician. All a mathematician needs to know in order to apply transseries."
+      },
+      "quotes": [],
+      "falsifier": "n/a, this record exists to prove the title check fires",
+      "does_not_show": "nothing; it shows the recalled identifier was wrong",
+      "affirmed": false
+    },
+    {
+      "id": "negative-control-doi-from-memory",
+      "problem": "P vs NP",
+      "claim": "control: a DOI recalled from memory for the algebrization paper",
+      "status": "X",
+      "grade_reason": "title mismatch: wanted 'Algebrization', got 'Evolvability'",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1145/1462153.1462156",
+        "title": "Evolvability",
+        "year": 2009,
+        "venue": "Journal of the ACM",
+        "authors": [
+          "Valiant"
+        ],
+        "http_status": 200,
+        "abstract": "Living organisms function in accordance with complex mechanisms that operate in different ways depending on conditions. Darwin's theory of evolution suggests that such mechanisms evolved through variation guided by natural selection. However, there has existed no theory that would explain quantitatively which mechanisms can so evolve in realistic population sizes within realistic time periods, and which are too complex. In this article, we suggest such a theory. We treat Darwinian evolution as a form of computational learning from examples in which the course of learning is influenced only by the aggregate fitness of the hypotheses on the examples, and not otherwise by specific examples. We formulate a notion of evolvability that distinguishes function classes that are evolvable with polynomially bounded resources from those that are not. We show that in a single stage of evolution monotone Boolean conjunctions and disjunctions are evolvable over the uniform distribution, while Boolean parity functions are not. We suggest that the mechanism that underlies biological evolution overall is \u201cevolvable target pursuit\u201d, which consists of a series of evolutionary stages, each one inexorably pursuing an evolvable target in the technical sense suggested above, each such target being rendered evolvable by the serendipitous combination of the environment and the outcomes of previous evolutionary stages."
+      },
+      "quotes": [],
+      "falsifier": "n/a, this record exists to prove the title check fires",
+      "does_not_show": "nothing; it shows the recalled identifier was wrong",
+      "affirmed": false
+    },
+    {
+      "id": "cross-check-algebrization-authorship",
+      "problem": "P vs NP",
+      "claim": "an independent 2025 paper attributes the algebrization barrier to Aaronson and Wigderson, corroborating authorship and venue",
+      "status": "Q",
+      "grade_reason": "secondary document quote matched",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2511.14038",
+        "title": "New Algebrization Barriers to Circuit Lower Bounds via Communication Complexity of Missing-String",
+        "year": "2025",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "The *algebrization barrier*, proposed by Aaronson and Wigderson (STOC '08, ToCT '09), captures the limitations of many complexity-theoretic techniques based on arithmetization. Notably, several circuit lower bounds that overcome the relativization barrier (Buhrman--Fortnow--Thierauf, CCC '98; Vinodchandran, TCS '05; Santhanam, STOC '07, SICOMP '09) remain subject to the algebrization barrier. In this work, we establish several new algebrization barriers to circuit lower bounds by studying the communication complexity of the following problem, called XOR-Missing-String: For $m &lt; 2^{n/2}$, Alice gets a list of $m$ strings $x_1, \\dots, x_m\\in\\{0, 1\\}^n$, Bob gets a list of $m$ strings $y_1, \\dots, y_m\\in\\{0, 1\\}^n$, and the goal is to output a string $s\\in\\{0, 1\\}^n$ that is not equal to $x_i\\oplus y_j$ for any $i, j\\in [m]$. 1. We construct an oracle $A_1$ and its multilinear extension $\\widetilde{A_1}$ such that ${\\sf PostBPE}^{\\widetilde{A_1}}$ has linear-size $A_1$-oracle circuits on infinitely many input lengths. 2. We construct an oracle $A_2$ and its multilinear extension $\\widetilde{A_2}$ such that ${\\sf BPE}^{\\widetilde{A_2}}$ has linear-size $A_2$-oracle circuits on all input lengths. 3. Finally, we study algebrization barriers to circuit lower bounds for $\\sf MA_E$. Buhrman, Fortnow, and Thierauf proved a *sub-half-exponential* circuit lower bound for $\\sf MA_E$ via algebrizing techniques. Toward understanding whether the half-exponential bound can be improved, we define a natural subclass of $\\sf MA_E$ that includes their hard $\\sf MA_E$ language, and prove the following result: For every *super-half-exponential* function $h(n)$, we construct an oracle $A_3$ and its multilinear extension $\\widetilde{A_3}$ such that this natural subclass of ${\\sf MA}_{\\sf E}^{\\widetilde{A_3}}$ has $h(n)$-size $A_3$-oracle circuits on all input lengths."
+      },
+      "quotes": [
+        "proposed by Aaronson and Wigderson"
+      ],
+      "falsifier": "a primary source stating the barrier is not due to Aaronson and Wigderson",
+      "does_not_show": "that the barrier is correct; only who proposed it",
+      "affirmed": true
+    }
+  ]
+}

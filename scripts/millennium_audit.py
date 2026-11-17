@@ -139,6 +139,36 @@ def main() -> int:
             if value and short in normalize(filename) and status == "resolved" and not resolved_like(str(value)):
                 conflicts.append(f"{name}: overview status says {value!r}")
 
+    problems = [
+        {
+            "number": number,
+            "name": name,
+            "status": status,
+            "blocking_gap": BLOCKING_GAP.get(name, "Resolved."),
+            "transmuted_approach": TRANSMUTED_APPROACH.get(name, "Reference only; no new approach proposed."),
+            "kpi_gate": KPI_GATE[status],
+        }
+        for number, name, status in CANONICAL
+    ]
+
+    claims_dir = DATA / "millennium" / "claims"
+    for problem in problems:
+        slug = normalize(problem["name"]).replace(" ", "_").replace("-", "_")
+        path = claims_dir / f"{slug}.json"
+        if not path.exists():
+            continue
+        payload = load_json(path)
+        grades: dict[str, int] = {}
+        for record in payload.get("records", []):
+            grades[record.get("status", "?")] = grades.get(record.get("status", "?"), 0) + 1
+        problem["evidence"] = {
+            "file": str(path.relative_to(ROOT)),
+            "method": payload.get("method"),
+            "grades": grades,
+            "usable_claims": grades.get("Q", 0),
+            "rule": "only Q (quoted primary) records may support a claim",
+        }
+
     ledger = {
         "generated_at": "2026-11-17",
         "database": {
@@ -148,19 +178,9 @@ def main() -> int:
             "seed_error": seed_error,
             "bundles": bundles,
         },
-        "problems": [
-            {
-                "number": number,
-                "name": name,
-                "status": status,
-                "blocking_gap": BLOCKING_GAP.get(name, "Resolved."),
-                "transmuted_approach": TRANSMUTED_APPROACH.get(name, "Reference only; no new approach proposed."),
-                "kpi_gate": KPI_GATE[status],
-            }
-            for number, name, status in CANONICAL
-        ],
+        "problems": problems,
         "conflicts": conflicts,
-        "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired database.",
+        "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired files. data/millennium/claims is new work under reverse-engineering v2 and is graded separately; only Q records there may support a claim.",
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
