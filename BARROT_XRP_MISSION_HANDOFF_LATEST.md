@@ -7456,3 +7456,93 @@ No directional forecast, paper trade, real-money action or external provider dis
 ## 6. Next action
 
 Continue source-receipt capture and point-in-time feature history for actual ODL corridor flows, stablecoin supply by chain, BNY custody scope, Coinbase/PNC pilot throughput and SBI JPYSC/USDC/RLUSD usage. Keep these as separate rails. Do not issue a directional forecast until chronological out-of-sample tests beat baselines and calibration is measured. Keep PR #1663 unmerged pending independent review, enforceable required checks and explicit resolution of automatic Pages publication.
+
+
+# Run223 — 2026-11-17 integration, CI and XRP evidence update
+
+## Repository state and ancestry
+
+- Current main at inspection: `1320334f177c124e0f28f6f1ceb8c8c9e5bd35a5`.
+- Integration branch code/test head before this handoff-only commit: `a4fce51774989e10c7d3132bb50c43afbe5601ac`.
+- PR #1663 remains the sole consolidated integration PR: https://github.com/Barrot-Agent/B-Agent/pull/1663
+- The integration branch is 214 commits ahead of main, zero behind at this snapshot; 1,387 changed files, 507,539 additions and 6,501 deletions. PR remains draft/open/mergeable. No PR has been merged.
+- Main advanced with three unrelated TRACE-5 research commits since base `5b47ac5`: P-vs-NP, Hodge, and eight-domain research. Both mainline snapshots were reconciled into the integration branch using normal two-parent merge commits: `062c968368a4e6e710aa5eb150ce88c5d1f08c65` (parents `26ad3d1`, `37055f7`) and `a4fce51774989e10c7d3132bb50c43afbe5601ac` (parents `062c968`, `1320334`). All main-side paths were preserved. The docs index was merged by union, retaining the integration docs and adding the P-vs-NP, Hodge and eight-domain entries.
+- Main tree: 1,645 entries. Integration tree: 2,856 entries. No main ref was changed by this work. No force-push, reset, clean, stash, destructive restore or branch-history rewrite occurred.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+### DESIGNED
+- XRP mission configuration remains priority 1 and keeps Barrot V3 as the execution, orchestration, safety and verification foundation.
+- Forecast admission remains fail-closed: candidate must beat naive/class-prior, momentum, mean-reversion and volatility baselines on Brier score and log loss; use chronological leakage-safe evaluation, overlap-adjusted effective sample sizes, temporal/source-clustered bootstrap uncertainty, calibration, stable drift, shadow evaluation and independent Ed25519 attestation.
+- Public ingestion workflow, source receipts, point-in-time feature store, event/scenario registry, baselines, calibration, drift monitor and forecast/outcome ledger exist on the integration branch. A scheduled main-branch run has not been verified.
+
+### EXECUTED
+- Reconciled current main's P-vs-NP, Hodge and eight-domain additions into the integration branch; preserved both sides of the docs index.
+- Re-inspected open PRs, branch ancestry, complete current main/integration trees, current CI runs, dependencies, workflow permissions, rulesets, CODEOWNERS, PR reviews and the durable handoff.
+- No new PR was created. No PR was closed. No deployment, secret rotation, Space restart, external provider write, Kaggle submission, paper trade or real-money action was performed.
+- The current integration's `requirements-dev.txt` includes `scipy>=1.13.0`; main's corresponding file does not.
+
+### VERIFIED
+- Predecessor integration head `26ad3d14a7b40b458a9845b8610b674ce042fb63` passed the full repository suite: **4,127 passed, 1 skipped, 11 warnings, 19 subtests passed in 181.77s; 68.10% inclusive coverage and 77% legacy-core coverage**. Wheel build and installed-wheel verification passed. Exact run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44152755363
+- On the current integration head `a4fce51774989e10c7d3132bb50c43afbe5601ac`, the fail-closed push gate passed (run 44155597023), PR fail-closed gate passed (44155613606), and Pages validation-only job passed. The exact-head full repository suite (run 44155597083) and push/PR dependency audits (44155596967, 44155613613) were still running at the last inspection. Do not transfer the predecessor's 4,127-test result to this head.
+- Main full-suite CI on `1320334f177c124e0f28f6f1ceb8c8c9e5bd35a5` failed during collection: `tests/test_cymatics_modes.py` raises `ModuleNotFoundError: scipy`. The core Tests job passed. Main's `requirements-dev.txt` still omits SciPy.
+- Main Pages build run 44155383066 failed on Liquid syntax at `GLOBAL_STATE_MANIFEST.md` line 6450, where a JSON example contains unescaped `{{`. Its deploy job was skipped. The integration branch contains `{% raw %}` guards around the affected planner/JSON code samples, and its validation-only Pages job passed. A successful main Pages build could trigger automatic deployment; deployment is not authorized.
+- Main Barrot Sync run 44155383325 is green at the job level, but its log shows `ModuleNotFoundError: No module named 'rich'`, then masks it with `|| echo`; the push is also masked with `git push || true` and reports `Everything up-to-date`. Green status is not proof that sync executed. The integration branch quarantines this unsafe workflow.
+- The repository ruleset named `Fall Back` is disabled. Classic branch-protection details were not available through the current connector. CODEOWNERS names only `@Barrot-Agent`. PR #1663 has zero formal reviews and zero review threads. Independent review and enforceable required-check evidence remain missing.
+
+## Fresh XRP evidence — 2026-11-17
+
+All observations below are provider-rendered public data, not original HTTP wire bytes. Exact retrieval headers and byte-exact source receipts were not captured; none is promoted to a model feature.
+
+### Spot liquidity and order book
+- Fuelmaps' 11:00 UTC multi-venue snapshot reported XRP mid-price `$0.9562` across six of six venues. Resting bid/ask depth: within ±0.5%, `$7.9M/$5.7M`; ±1%, `$11.6M/$7.8M`; ±2%, `$14.0M/$11.1M`; ±5%, `$16.8M/$14.3M`; ±10%, `$22.6M/$15.5M` but only five of six venues. These are displayed resting orders, not guaranteed executable liquidity or a forecast. https://fuelmaps.io/order-book/
+- Largest displayed resting levels within 10%: ask `$0.994 / $2.2M`; bids `$0.948 / $2.0M`, `$0.954 / $1.8M`, `$0.953 / $1.7M`; ask `$0.958 / $1.6M`. Snapshot time and venue coverage must remain attached.
+
+### Derivatives
+- Liqwall reported aggregate XRP open interest of `$965M`, down `3.3%` over 24 hours, at 05:52 UTC on November 17. Its 30-day range was `$968M–$1.49B`. https://liqwall.com/open-interest/xrp
+- A separate Coinalyze-derived venue snapshot at 13:00 UTC reported Binance XRPUSDT OI `$257.04M`, funding `-0.00274%`, and 72.93% long accounts; Bybit XRPUSDT OI `$197.63M`, funding `-0.006121%`, and 79.01% long accounts. Funding settlement intervals differ by venue. These two contracts do not represent the same coverage as Liqwall's aggregate. Do not average them. https://bitcoinleverage.com/xrp/funding-rate
+
+### ETF flows — unresolved reporting disagreement
+- CryptoKeyhole's issuer-file tracker, updated 07:25 UTC November 17, reports a provisional November 16 net outflow of `5,196,983 XRP` (about `$5.0M`) from two of four daily-reporting funds; Bitwise and Franklin had not reported. Its latest complete day, November 13, showed a net outflow of `9,967 XRP`. It uses issuer daily holdings files and does not work around Grayscale's bot challenge. https://cryptokeyhole.com/etf-flows/xrp/
+- Crypto ETF's separate table shows November 16 as zero for XRPC and TOXR, with dashes for the other funds; it explicitly defines dash as not reported, not zero. Its data vintage/coverage differs from CryptoKeyhole. https://cryptoetf.today/en/xrp-etf-flows
+- Maketo reports `$1.07B` of five US XRP funds' holdings, about `1.13B XRP`, on November 16, down `$412.91M` versus October 16. That is marked-to-market holdings value, not net flow; price changes contribute. https://maketo.com/etf/xrp
+- Preserve all three vintages and definitions. Do not infer a complete November 16 aggregate or a directional signal.
+
+### Exchange-wallet attribution and escrow
+- XRP Insights reports `22.20B XRP` across 707 publicly labeled wallets attributed to 24 exchanges at 08:00 UTC November 17; its same-wallet set declined `139.2M XRP` over seven days and `374.7M XRP` over 30 days. It explicitly includes cold storage and is a broad attributed-wallet total, not customer balances or tradable float. Wallet additions, missing labels and movements to untracked wallets can change coverage. https://xrp-insights.com/exchange-balances
+- Its companion XRPL radar reports `31.10B XRP` in live escrow objects on November 17 and a next scheduled release of up to 1B XRP on December 1. Historical releases often have portions re-escrowed; the maximum scheduled unlock is not net circulating supply. https://xrp-insights.com/xrp-radar
+
+### Institutional and regulatory relationships
+- BNY's October 27 announcement says its Digital Asset Custody platform now supports XRP and RLUSD, building on BNY's role as primary custodian of RLUSD reserves and its custody relationship with Ripple Prime. It also says tokenized trade-finance use cases are being explored. This is custody capability and exploration, not proof of client balances, proprietary XRP buying, collateral utilization or transaction throughput. https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+- Coinbase's October 28 announcement confirms RLUSD availability through Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum. Coinbase Global Exchange availability and RLUSD collateral use were described as following later; they were not live in the launch announcement. https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- SBI Holdings and Startale joined Open Standard on October 16, alongside more than 140 participants including Coinbase, Visa, Stripe, Mastercard and BlackRock. SBI/Startale said they were considering an interoperability proof of concept between JPYSC and OUSD. Participation and a proposed PoC do not establish production interoperability or XRP use. https://www.sbigroup.co.jp/news/2026/1016_16665.html
+- SBI VC Trade and Ripple launched RLUSD in Japan on June 24, 2026. SBI's release says SBI VC Trade treated RLUSD as a Type 4 electronic payment instrument under Japanese law; this is a distribution/regulatory classification, not XRP collateral or XRP demand. https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+- OCC Corporate Applications Search record 2025-Charter-342347 identifies Ripple National Trust Bank, proposed charter 25364, with status Approved on December 12, 2025 and Consummated/Effective on October 26, 2026. This is primary regulator status evidence. The detailed intended scope described by Ripple should remain issuer-attributed unless separately verified in OCC conditions. https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+
+## Research identity and phrase work
+
+- Japan's SBIC East, Central and West remain distinct regional SME investment/consultation companies under Japan's governing framework, not SBI Holdings subsidiaries. The ChatGPT reference was a training course, not a corporate partnership.
+- ASK Coin remains associated with Permission.io's consent-based advertising/data-reward token; no verified XRP/XRPL relationship has been established.
+- "Actual capital" continues to require separation of received cash, completed XRP purchases, in-kind transfers, optional facilities and uncalled commitments.
+- No new primary-source match was found for the exact phrase "SBIC, ChatGPT SBIC".
+- Dr. Kamilah/Camilla Stevenson identity remains partially verified, but no official YouTube channel cross-link was established; no candidate video was attributed without that link.
+
+## Prediction readiness and platform map
+
+- Last recorded event registry: 140 curated events, 54 exact publisher timestamps, 86 missing exact timestamps, zero byte-exact raw-source receipts, zero model-eligible events and zero forecasts. This run added public observations to the research handoff only; it did not admit them as features.
+- Forecast issuance remains disabled. No directional forecast, paper trade or real-money action was issued.
+- The scheduled public-ingestion workflow is on the integration branch only and has no verified scheduled main-branch run. GitHub artifact retention is finite and is not WORM storage.
+- Nine-platform map: ChatGPT GitHub access is the only currently tested connection. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks were not authenticated in this run. No nine-platform live quorum is claimed.
+
+## Open PR backlog
+
+- **#1663 — blocked / sole integration workstream.** Draft, zero reviews, zero threads; do not merge until exact-head full suite and audits pass, independent review and enforceable checks exist, and automatic Pages deployment is explicitly controlled.
+- **#1541 — superseded pending #1663 merge.** Canonical MMI claim fingerprint work is present in #1663; do not close until the successor is merged and verified on main.
+- **#1450, #1460, #1440, #1437, #1436, #1353 — unique research/repair/archive work, mostly blocked by stacked ancestry.** Preserve; do not bulk-close.
+- **#1265 — unique/unreviewed.** Its `tests/test_xrp_ledger_index.py` is not present in #1663; do not classify it as superseded.
+
+## Merged PRs, blockers and next action
+
+- Merged PRs this run: none. Main was not modified.
+- Blockers: exact-head full-suite and dependency-audit results for `a4fce517`; independent review; verifiable branch-protection/required-check configuration; and the automatic GitHub Pages deployment side effect. Main still lacks SciPy in development requirements, main Pages still fails on Liquid parsing, and main Barrot Sync still reports success while masking its missing-`rich` failure.
+- Next action: finish the full suite and dependency audits on the exact current integration head, diagnose any failure, then obtain independent review and resolve Pages deployment authorization. Keep PR #1663 draft and unmerged until all gates are real and exact-head verified.
