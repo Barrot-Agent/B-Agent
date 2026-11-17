@@ -283,7 +283,11 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Stated 297 pages; supplied TOC units total 216; the 81-page difference is
   explicitly assigned to `proposed` Part Six (35p) + appendices A-F (46p).
   Sean has NOT confirmed those; labeled proposed everywhere.
-- Drafted: front matter + Part One = 35.4/45 pages (79%). Outlined: ch7-29.
+- Drafted: front matter + Part One = 35.4/45 pages (79%). Phase A (Part Two,
+  ch7-12) drafted = 40.5/44 pages (92%). Whole book 75.9/89 drafted pages (85%).
+  Outlined: ch13-29. Proposed (unbuilt): Part Six + appendices A-F.
+- Phase A completed 2026-11-17; ch-07..ch-12 status=draft in toc.yaml. Test guard:
+  12 book tests pass; full suite 1091 passed / 1 skipped. Awaiting GO for Part Three.
 - Grok facts verified 2026-11-17 (docs.x.ai): Grok Bot = cloud computer + multi-bot
   handoffs + routines + memory + MCP/API; Grok Build = TUI/headless/ACP,
   `grok -p`, `grok inspect`, install via x.ai/cli/install.sh; pricing grok-4.7

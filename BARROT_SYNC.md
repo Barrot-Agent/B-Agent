@@ -754,3 +754,25 @@
 - Rule added: never bulk-delete untracked paths in this repo. Churn cleanup is
   scoped to named patterns (`feedback_loops/feedback_loop_*.json`) and nothing else.
 - Backups: ~/barrot/backup-20261117/book-project/ (full tree copy).
+
+## 2026-11-17 — PHASE A COMPLETE: book chapters 7-12 drafted
+- Phase A = Part Two, ch7-12 (8+8+7+7+7+7 = 44 target pages). All six drafted.
+- Measured pages (build_book.py, 320 w/p, code excluded):
+  ch-07 7.1/8, ch-08 6.7/8, ch-09 6.3/7, ch-10 6.2/7, ch-11 7.3/7, ch-12 6.9/7
+  = 40.5/44 pages (92%).
+- Whole book: 75.9 of 89 drafted pages (85%); 85.9 pages present incl. outlines.
+  Build exits clean, no PROBLEMS. 216 supplied pages only; the 81 `proposed` pages
+  remain unbuilt and are still labeled proposed.
+- New material this pass: ch7 routing-by-ambiguity cases, planner state machine,
+  prompt architecture, "when the model is the wrong tool"; ch8 job directory, three
+  trigger mechanisms, wrapper tests (empty/timeout/no-write), dry-run, never-touch
+  list; ch9 skill lifecycle, quality metrics, registry; ch10 MCP server review,
+  thin connectors, data-flow/retention decisions; ch11 worked end-to-end pipeline
+  with cost table, swarm debugging procedure, operating cadence; ch12 fence
+  red-team tests, team rules and admin caps.
+- Tests: tests/test_book_manuscript.py 12 passed. Full suite 1091 passed,
+  1 skipped (299s). Pytest churn reverted with scoped cleanup (36 named tracked
+  files via git checkout, 2 named feedback_loop files removed). No bulk delete.
+- toc.yaml: ch-07..ch-12 status outline -> draft. README status table updated.
+- Backup: ~/barrot/backup-20261117/book-phaseA/ (54 files).
+- Next: awaiting GO for Part Three (ch13-19). Do not start it unprompted.

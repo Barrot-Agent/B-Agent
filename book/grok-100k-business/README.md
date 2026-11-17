@@ -27,12 +27,14 @@ the word count so a code-heavy chapter is not flattered.
 |---|---|
 | Front matter (7 units) | drafted |
 | Part One, Chapters 1–6 | drafted |
-| Part Two–Five, Chapters 7–29 | outline (beats written, prose pending) |
+| Part Two, Chapters 7–12 (Phase A) | drafted |
+| Part Three–Five, Chapters 13–29 | outline (beats written, prose pending) |
 | Part Six, Chapters 30–34 | proposed — not in the supplied TOC |
 | Appendices A–F | proposed — not in the supplied TOC |
 
-Measured at the last build: **35.4 drafted pages of 45 targeted (79%)**, 48.8 pages
-of content present in the repo including outlines.
+Measured at the last build: **75.9 drafted pages of 89 targeted (85%)**, 85.9 pages
+of content present in the repo including outlines. Phase A (Chapters 7–12) measures
+40.5 of 44 target pages (92%).
 
 ## Evidence policy
 
