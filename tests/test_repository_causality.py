@@ -73,7 +73,7 @@ def test_cross_analysis_workflow_is_read_only_and_artifact_based() -> None:
     assert "permissions:" in workflow
     assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
-    assert "actions/upload-artifact@v7" in workflow
+    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in workflow
     assert "retention-days: 30" in workflow
     assert "if-no-files-found: error" in workflow
     assert "schedule:" in workflow

@@ -151,8 +151,7 @@ def test_signal_summary_workflow_is_manual_read_only_and_artifact_based():
     assert "workflow_run:" not in workflow
     assert "permissions:" in workflow
     assert "contents: read" in workflow
-    upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", workflow)
-    assert upload_ref and int(upload_ref.group(1)) >= 7
+    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in workflow
     assert "retention-days: 7" in workflow
     assert "inputs.confirm == 'YES'" in workflow
     assert "expected_main_sha" in workflow

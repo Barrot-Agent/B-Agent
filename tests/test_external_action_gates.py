@@ -165,7 +165,10 @@ def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
         content = _read(name)
         assert "contents: read" in content, name
         assert "persist-credentials: false" in content, name
-        assert "upload-artifact@v7" in content, name
+        if name == "barrot-transparency-audit.yml":
+            assert "upload-artifact@v7" in content, name
+        else:
+            assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content, name
         assert "git push" not in content, name
         assert "contents: write" not in content, name
 
@@ -186,7 +189,7 @@ def test_hover_bike_simulation_uses_read_only_repository_access() -> None:
     assert "contents: write" not in content
     assert "persist-credentials: false" in content
     assert "git push" not in content
-    assert "upload-artifact@v7" in content
+    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content
 
 
 def test_pillars_check_uses_read_only_github_installation_lookup() -> None:
@@ -221,7 +224,7 @@ def test_content_and_entity_workflows_require_confirmation_and_preserve_artifact
         assert "contents: read" in content, name
         assert "contents: write" not in content, name
         assert "persist-credentials: false" in content, name
-        assert "upload-artifact@v7" in content, name
+        assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content, name
         assert "git push" not in content, name
 
 
@@ -281,8 +284,7 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
     assert "github.event.workflow_run.conclusion == 'success'" in content
     assert "actions: read" in content
     assert "contents: read" in content
-    download_ref = re.search(r"uses:\s*actions/download-artifact@v(\d+)", content)
-    assert download_ref and int(download_ref.group(1)) >= 8
+    assert "uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8" in content
     assert "github.event.workflow_run.id" in content
     assert "github.event.workflow_run.run_number" in content
     assert "webmcp-trend-digest-${{ github.run_number }}" in trend
@@ -413,10 +415,7 @@ def test_shared_workflows_use_supported_action_versions_or_reviewed_sha_pins() -
     webmcp = _read("webmcp-monetization-enrich.yml")
     download_refs = refs(webmcp, "actions/download-artifact")
     assert download_refs
-    assert all(
-        value.startswith("v") and value[1:].isdigit() and int(value[1:]) >= 8
-        for value in download_refs
-    )
+    assert set(download_refs) == {"9000827ccba6bdab643e8b6fd33ac0654aef8333"}
 
 def test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation() -> None:
     for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):

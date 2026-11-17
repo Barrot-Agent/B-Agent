@@ -698,8 +698,7 @@ def test_cross_analysis_workflow_is_read_only_and_does_not_write_main() -> None:
 
     assert "contents: read" in lowered
     assert "persist-credentials: false" in lowered
-    upload_ref = re.search(r"uses:\s*actions/upload-artifact@v(\d+)", lowered)
-    assert upload_ref and int(upload_ref.group(1)) >= 7
+    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in lowered
     assert "retention-days: 30" in lowered
     assert "if-no-files-found: error" in lowered
     assert "schedule:" in lowered
