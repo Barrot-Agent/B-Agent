@@ -6892,3 +6892,104 @@ Nine open PRs were rechecked:
 - **NOT VERIFIED:** this new handoff-only commit's exact-head CI; independent review; effective required-check/bypass configuration; safe handling of GitHub Pages publication; successful scheduled ingestion on main; byte-complete WORM retention; mature synchronized XRP dataset; out-of-sample model superiority; independent evaluator attestation; nine-platform authentication.
 
 Next action: verify exact-head CI for the handoff-only commit, then continue independent security review and resolve the Pages publication side effect and branch-protection uncertainty. Do not merge #1663 or close source PRs until those conditions are satisfied. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push or history rewrite occurred.
+
+
+---
+
+# Run219A — Evernorth Q3 SEC filing reconciliation (primary-source addendum)
+
+**Research cutoff:** 2026-11-17 14:55 UTC. This addendum supersedes any earlier unqualified description of Evernorth cash, XRP holdings or “actual capital.” SEC filings below are issuer disclosures from one filing family; do not count the 10-Q, its XBRL schedule and the 8-K/A as independent corroborating sources.
+
+## Primary filings
+
+- [Evernorth Form 10-Q for quarter ended September 30, 2026, filed November 13](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm).
+- [Digital-assets XBRL schedule](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R10.htm).
+- [Evernorth Form 8-K/A, Amendment No. 1, dated November 16](https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/xrpn-20261009.htm).
+- [Pathfinder September 30 financial statements in Exhibit 99.1](https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-8xka.htm).
+- [Updated unaudited pro forma combined balance sheet, Exhibit 99.4](https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm).
+- [Evernorth November 13 424B3 resale prospectus supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm).
+
+## 1. Entity and reporting-date boundary
+
+The September 30 10-Q explicitly describes the pre-combination company. Evernorth was then a wholly owned Ripple subsidiary. The business combination closed on **October 9, 2026**; after closing, Evernorth became the publicly traded parent of the combined entities and a related party to Ripple, no longer wholly owned or controlled by Ripple.
+
+Therefore:
+- September 30 cash, working capital and accumulated-deficit figures are **pre-close balances**, not the company's current November 17 liquidity.
+- The pro forma balance sheet is an unaudited transaction-accounting illustration as if the combination had occurred on September 30. It is not a later actual cash statement.
+- The 10-Q, 8-K/A and pro forma statements are related issuer disclosures, not independent source confirmations.
+
+## 2. XRP quantity and contribution reconciliation
+
+The filing family now reconciles the principal XRP quantities:
+
+| Component | XRP | Classification |
+|---|---:|---|
+| Cash-funded XRP purchase | 84,365,876 | Purchased with $214,049,995 advance cash |
+| Investor/affiliate in-kind subscriptions | 261,919,096 | Contributed XRP, not cash |
+| Ripple direct contribution to Pathfinder | 126,791,458 | In-kind contribution; common-control carrying value was zero |
+| Delayed-funding XRP | 200,000 | In-kind at closing |
+| **Total in-kind XRP** | **388,910,554** | Sum of 261,919,096 + 126,791,458 + 200,000 |
+| **Combined XRP represented across Evernorth/Pathfinder** | **473,276,430** | 84,365,876 cash-purchased + 388,910,554 in-kind |
+
+The 261,919,096 investor/affiliate contribution includes 211,319,096 XRP contributed by RippleWorks to Arrington XRP Capital Fund, 50,000,000 XRP from a Ripple-affiliated contributor entity, and 600,000 XRP from advance-funding investors. The additional 200,000 XRP came from delayed-funding investors. Ripple separately contributed 126,791,458 XRP directly to Pathfinder.
+
+The 10-Q reports **346,284,972 XRP** held by Evernorth at September 30. Following the October 9 close, Evernorth transferred **346,484,972 XRP** to Pathfinder; the 200,000 difference is the delayed-funding XRP delivered at closing. Pathfinder separately held Ripple's 126,791,458 XRP contribution. These two post-close amounts reconcile to **473,276,430 XRP** across the combined entities.
+
+Do not describe all 473.276M XRP as open-market buying. Only 84.365876M is explicitly identified as purchased with the $214.05M cash advance. The rest is in-kind subscription/contribution capital.
+
+## 3. Cash, debt, warrants and optional financing — actual versus potential
+
+### Cash actually received or reported
+
+- **$214,049,995 advance cash** was received in October 2025 and contractually used to purchase 84,365,876 XRP. It is actual cash-funded XRP acquisition, not cash still available for operating liquidity.
+- **$10.5M delayed cash** was committed for delivery at closing.
+- The 10-Q reports **$272.6M gross closing cash proceeds**: approximately $224.6M from private-placement investments and $48.0M released from the SPAC trust after redemptions, before transaction expenses. Do not add this mechanically to the earlier $214.05M advance; the advance was used to acquire XRP and is part of the transaction's funding history, not an additional free-cash balance.
+- On October 13, the $30.0M principal convertible note was issued and Evernorth received **$29.0M net cash** after a $1.0M capital-markets advisory fee. It is debt, not equity proceeds.
+- From October 12 through November 9, holders cash-exercised **3,073,366 warrants** at $11.50 and Evernorth received **$35.3M gross cash proceeds**. **8,666,279 warrants** remained outstanding after those exercises.
+- The 10-Q's updated unaudited pro forma combined balance sheet shows **$76,026,881 pro forma cash** as if the transaction had closed on September 30. It includes transaction adjustments, the $48M trust release, delayed funding and the net convertible-note proceeds. It is not an actual November 17 cash balance; the later $35.3M warrant exercises and subsequent operating uses must be tracked separately.
+
+### Debt and related-party support
+
+- Evernorth's separate Ripple revolving facility had a $1.0M limit; Evernorth had not borrowed under it as of September 30.
+- Pathfinder's Ripple-related credit facility had a $10.0M limit after the October 7 amendment. The Pathfinder statements show a $7.0M related-party note payable at September 30; the filing says $9.7M had been borrowed under the facility by October 7. These are related-party borrowings/third-party payments, not XRP purchases.
+- Pathfinder reported $1.491M cash, $2.256M related-party payable, $7.0M note payable and $10.179M total liabilities at September 30. Its nine-month net cash used in operations was $1.432M.
+- Evernorth's pre-close September 30 unrestricted cash was $91,397, with a $10.0M net working-capital deficit and $185.587M accumulated deficit. Those are historical pre-close balances, not the current combined company's cash position.
+
+### ELOC is capacity, not cash received
+
+The October 23 Cantor/CF Principal Investments equity-line agreement allows Evernorth, at its option, to direct purchases of up to **5,218,935 Class A shares**. Purchases are generally priced at 97% of VWAP, subject to volume and ownership limits. The resale registration became effective October 30. Evernorth owed a non-refundable $0.5M commitment fee, with additional fee/expense provisions. The filings reviewed here do **not** establish an ELOC draw, proceeds received from Cantor or an XRP purchase funded by the ELOC. Classify the ELOC as available financing capacity, not actual capital raised.
+
+## 4. Impairment is not a cash loss or a current market-value statement
+
+The filing's digital-asset schedule reports:
+- 2025 impairment: **$233,650,642**.
+- Nine-month 2026 impairment: **$271,037,170**, of which **$6,891,073** occurred in Q3.
+- Cumulative impairment: **$504,687,812**.
+- September 30 carrying value: **$341,887,231**, against historical cost of **$846,575,043** for 346,284,972 XRP.
+
+Evernorth accounts for XRP as an indefinite-lived intangible asset at historical cost less accumulated impairment. Its impairment test uses the lowest observable intraday XRP price on Coinbase, identified as its principal market, since acquisition of each lot. Once written down, the new cost basis is not increased when the market price later recovers.
+
+Thus the $504.688M cumulative impairment is an accounting write-down, not evidence of a $504.688M cash outflow, realized sale or current market value. The nine-month net loss of $32.870M also includes a non-cash $240.311M gain from changes in the fair value of refundable investor advances offset by the $271.037M impairment. Q3 reported net income was substantially affected by a $162.834M fair-value gain on refundable investor advances. Neither figure is operating revenue.
+
+## 5. Ownership and relationship graph
+
+- SBI Holdings-affiliated investors were subject to a **39.9% ownership threshold**. Shares otherwise above the threshold were issued as Class C; Class C remains convertible under the governing documents. The October 12 8-K/A lists **9,431,914 Class A** and **2,359,038 Class C** shares for SBI Holdings, Inc. This is a direct SBI Holdings/Evernorth equity relationship; it is not a relationship with SBIC East, SBIC Central or SBIC West.
+- Arrington XRP Capital Fund's Series C investment included RippleWorks-originated XRP; the Sponsor's voting ownership was limited to 19.9%, with additional Class C shares.
+- Ripple's direct contribution and the separate Ripple-affiliated contributor entity are subject to a combined 9.9% ownership threshold in Pubco, with excess interests represented through Pathfinder units.
+- Ripple's 126.791458M XRP contribution to Pathfinder was accounted for at Ripple's historical carrying value of zero under common-control accounting. It is not a $X market purchase or cash contribution.
+- Coinbase is Evernorth's stated principal market for accounting fair-value measurement. That is not proof that Coinbase is its exclusive execution venue or custodian.
+- Pathfinder's financial statements say its XRP was contributed by Ripple and can be liquidated to fund operating costs. This creates a possible future XRP-sale/supply channel; it does not establish that any such sale has occurred.
+
+## 6. Competing interpretations and disconfirming evidence
+
+**Potentially supportive:** 84.366M XRP was acquired with $214.05M cash; combined entities report approximately 473.276M XRP after close; the transaction created a public institutional vehicle; $29M net note proceeds and $35.3M gross warrant exercises added actual financing.
+
+**Counter-hypothesis / risks:** much of the XRP position is in-kind rather than open-market demand; the contributed XRP can fund operations if liquidated; historical impairment is large; operating cash needs and related-party debt matter; the convertible note can create future cash or dilution obligations; the ELOC and remaining warrants can dilute shareholders; no ELOC draw or XRP sale is established by these filings.
+
+**Neutrality controls:** accounting impairment is not realized cash loss; the September 30 balance sheet is pre-close; pro forma cash is illustrative, not current; an available financing facility is not proceeds; an XRP contribution is not an open-market purchase; and custody, ownership, collateral eligibility, sale, bridge use and net market demand are distinct events.
+
+## 7. Forecast eligibility
+
+This filing materially improves the capital/ownership event timeline and counter-hypothesis set. It does not create a directional trading feature by itself. SEC issuer filings are not independent confirmations of one another; the figures must be point-in-time aligned with market price, actual ELOC draws, warrant exercises, XRP custody/transfer receipts and subsequent cash balances before model admission. No forecast is issued.
+
+**Source-independence note:** the 10-Q, XBRL schedule, 8-K/A, Pathfinder statements and pro forma balance sheet are all issuer/SEC filings from the same reporting chain. Treat them as one primary-source family, not five independent confirmations.
