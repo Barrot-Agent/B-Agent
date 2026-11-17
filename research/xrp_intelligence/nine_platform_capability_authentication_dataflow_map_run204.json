@@ -1,0 +1,206 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.9.0",
+  "snapshot_id": "run204-20261117T023304Z",
+  "captured_at_utc": "2026-11-17T02:33:04Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "repository_state": {
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head": "479ca7e0892c7b20378fb3a9e2ea38925f81cc34",
+    "integration_pr": 1663,
+    "integration_ahead_by": 145,
+    "integration_behind_by": 0,
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2571,
+    "main_paths_missing_from_integration": 0,
+    "pr_changed_files": 1343,
+    "changed_workflow_files": 49,
+    "changed_test_paths": 395,
+    "pr_state": "open",
+    "pr_draft": true,
+    "formal_reviews": 0,
+    "review_threads": 0
+  },
+  "platforms": {
+    "ChatGPT": {
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "data_flow": {
+        "verified": true,
+        "description": "ChatGPT session -> GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent repository; current main, complete recursive trees, PR inventory, current branch, commit checks, workflow jobs/logs and repository files were read in this run.",
+        "persistent_connection": "current ChatGPT GitHub connector session only"
+      },
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false,
+      "evidence": [
+        "Repository metadata read in Run204.",
+        "Main and integration recursive trees fetched; no main paths missing.",
+        "PR #1663 metadata, all 1,343 changed filenames, review records, exact-head checks and full-suite logs read.",
+        "Current integration evidence files and mission configuration read."
+      ]
+    },
+    "Claude": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data flow tested."
+      },
+      "permissions": [],
+      "least_privilege": null
+    },
+    "Grok": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data flow tested."
+      },
+      "permissions": [],
+      "least_privilege": null,
+      "notes": "Groq is a separate provider and is not evidence of a Grok connection."
+    },
+    "Gemini": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data flow tested."
+      },
+      "permissions": [],
+      "least_privilege": null
+    },
+    "Copilot": {
+      "authentication_status": "HISTORICAL_ONE_OFF_ACTIVITY_ONLY",
+      "data_flow": {
+        "verified": false,
+        "persistent_connection": false,
+        "description": "Historical one-off GitHub review activity; no current authenticated persistent data flow verified."
+      },
+      "permissions": [],
+      "least_privilege": null,
+      "notes": "A COMMENT review is not an APPROVE review."
+    },
+    "Codex": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data flow tested."
+      },
+      "permissions": [],
+      "least_privilege": null
+    },
+    "Hugging Face": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No current authenticated request, Space health check or deployment verified."
+      },
+      "permissions": [],
+      "least_privilege": null
+    },
+    "Kaggle": {
+      "authentication_status": "NOT_TESTED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated API request or submission tested."
+      },
+      "permissions": [],
+      "least_privilege": null,
+      "submission_performed": false
+    },
+    "Databricks": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No current authenticated read or write tested in Run204."
+      },
+      "permissions": [],
+      "least_privilege": null,
+      "write_performed": false,
+      "notes": "Configured secrets are not proof of authentication; private data was not accessed."
+    }
+  },
+  "adjacent_integrations": {
+    "Groq": {
+      "authentication_status": "SECRET_CONFIGURATION_NOT_TESTED",
+      "data_flow_verified": false,
+      "notes": "Not Grok; no external request dispatched."
+    },
+    "OpenCode": {
+      "authentication_status": "UNVERIFIED",
+      "data_flow_verified": false
+    }
+  },
+  "coordination_status": {
+    "independent_tasks_assigned_across_nine_platforms": false,
+    "structured_evidence_exchange_across_nine_platforms": false,
+    "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
+    "independent_red_team_quorum": false,
+    "minority_objections_preserved": true,
+    "live_connections_claimed_without_test": false,
+    "fallback": "Deterministic repository inspection and lawful public read-only research."
+  },
+  "primary_brain_declared_by_repository": {
+    "name": "LunaRoute",
+    "status": "DECLARED_NOT_AUTHENTICATED",
+    "verified": false,
+    "note": "Repository declaration is not a successful authenticated health check."
+  },
+  "governance": {
+    "main_branch_protection_read": "HTTP 403 — Resource not accessible by integration",
+    "visible_rulesets": [
+      {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      }
+    ],
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege": false,
+    "code_scanning_and_secret_scanning_alert_state": "UNKNOWN — alert endpoints not available through current read allowlist",
+    "pr1663_draft": true,
+    "pr1663_formal_reviews": 0,
+    "pr1663_review_threads": 0
+  },
+  "verification": {
+    "exact_head": "479ca7e0892c7b20378fb3a9e2ea38925f81cc34",
+    "full_suite_run": 44002297187,
+    "full_suite": "3846 passed, 0 failed, 1 skipped, 11 warnings, 19 subtests; 140.71 seconds",
+    "inclusive_coverage_percent": 66.9,
+    "dependency_audit_run": 44002297161,
+    "dependency_audit": "six manifests; pip-audit strict passed; no known vulnerabilities reported",
+    "push_fail_closed_run": 44002297317,
+    "pr_fail_closed_run": 44002304594,
+    "pr_ci_run": 44002304585,
+    "pr_ci_note": "PR-event core and full-suite jobs were skipped by integration-branch workflow conditions; push-triggered full-suite run is authoritative.",
+    "cache_warning": "GitHub Actions cache budget reached; cache became read-only. Tests and artifact publication still completed."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "accuracy_status": "NOT_EVALUATED",
+  "no_external_actions": {
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "external_model_dispatch": false,
+    "main_branch_write": false
+  }
+}
