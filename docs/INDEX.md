@@ -73,6 +73,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/research.md - Research & Science Domains
 - docs/system.md - System Architecture & Operations
 
+## docs/domains
+
+- docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
+
 ## docs/fields
 
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
