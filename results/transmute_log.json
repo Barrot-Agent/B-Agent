@@ -220,5 +220,89 @@
     ],
     "winner": "threads",
     "note": "Live 8-server benchmark; only 1 remote reachable, so deltas are within the ~100ms noise band. tests/test_mcp_sync.py proves 4-server concurrency (async < 0.75x sequential). CLI lines: 113."
+  },
+  {
+    "timestamp": "20261117_001207",
+    "kind": "meta_analysis",
+    "target": "RE_WISHLIST",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "none",
+    "tests": [],
+    "candidates": [
+      {
+        "name": "loop_original",
+        "stages": 10,
+        "defined_stages": 7,
+        "checkable_artifacts": 1,
+        "self_reported_numbers": 2,
+        "score": 37.0
+      },
+      {
+        "name": "loop_v1_ablation",
+        "stages": 5,
+        "defined_stages": 5,
+        "checkable_artifacts": 3,
+        "self_reported_numbers": 0,
+        "score": 69.0
+      },
+      {
+        "name": "loop_v2_witness",
+        "stages": 3,
+        "defined_stages": 3,
+        "checkable_artifacts": 3,
+        "self_reported_numbers": 0,
+        "score": 82.0
+      },
+      {
+        "name": "loop_v3_ledger",
+        "stages": 7,
+        "defined_stages": 7,
+        "checkable_artifacts": 7,
+        "self_reported_numbers": 0,
+        "score": 95.0
+      }
+    ],
+    "winner": "loop_v3_ledger",
+    "applied": false,
+    "losers_deleted": [],
+    "rubric": {
+      "checkable_artifacts": 40,
+      "information_preservation": 30,
+      "failure_containment": 30,
+      "note": "judgment rubric, NOT measured"
+    },
+    "evidence": {
+      "loop_implementations_in_py": 0,
+      "tracked_files": 1324,
+      "tracked_py": 532,
+      "collected_tests": 1028,
+      "test_functions": 632,
+      "identical_duplicate_pairs": 10,
+      "near_clone_pairs": 3,
+      "scripts_total": 120,
+      "scripts_without_test_reference": 95,
+      "untested_top_level_modules": 21,
+      "sys_path_hacks": 31,
+      "bare_except_files": 8,
+      "zero_byte_root_files": 16,
+      "coverage_gate": 70,
+      "subset_coverage_measured": 14.15,
+      "full_suite": {
+        "command": "python -m pytest -o addopts= -q -p no:cacheprovider",
+        "passed": 1027,
+        "skipped": 1,
+        "subtests_passed": 8,
+        "wall_s": 299.69,
+        "status": "green",
+        "note": "green with coverage gate disabled; with pytest.ini addopts the same run exits non-zero at 70% gate"
+      },
+      "known_non_test_failures": 0
+    },
+    "recommend_first": [
+      "loop",
+      "pytest_ini+transmute_scoring",
+      "memory_cluster"
+    ],
+    "artifact": "results/re_wishlist.md"
   }
 ]
