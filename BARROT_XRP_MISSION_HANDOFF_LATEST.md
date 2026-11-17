@@ -5828,3 +5828,42 @@ These remain **candidate attributions, not a verified official-channel inventory
 ## Current decision
 
 **NO MERGE.** Main advanced independently, the integration PR is one commit behind and dirty, two shared documentation files require reconciliation, and the new book project must be preserved. The Barrot Sync false-green must be fixed or quarantined before the integration can be considered safe. Continue using the existing #1663 workstream; do not create a duplicate PR merely to bypass the conflict. After exact-head tests, reconcile the two documentation overlaps and all 54 main-side project paths without deleting or rewriting either history. Independent review and enforceable branch-protection evidence remain mandatory.
+
+
+---
+
+# Run211c — direct SBI Holdings/Evernorth capital path and CI provenance correction
+
+## Primary-source SBI Holdings ↔ Evernorth ↔ Ripple relationship
+
+This is a direct SBI Holdings relationship and must not be confused with the separate SBIC East/Central/West companies.
+
+- SBI Holdings' October 21, 2025 official announcement says SBI invested in Evernorth's PIPE alongside Ripple and other investors, and that SBI Group would contribute $200M cash. The announced use was primarily open-market XRP purchases; validator and institutional DeFi activity were stated strategy, not proof of execution. https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+- Evernorth's November 9, 2026 SEC prospectus defines the four “SBI Stockholders” as SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.; it says each is controlled by SBI Holdings. The prospectus identifies SBI Holdings USA as holding 6,529,787 Class A plus 1,633,180 convertible Class C shares; SBI Venture Fund 2023A as 198,065 Class A plus 49,538 Class C; SBI Venture Fund 2023B as 285,623 Class A plus 71,438 Class C; and SBI PE Holdings as 2,418,439 Class A plus 604,882 Class C. Together these are 9,431,914 Class A plus 2,359,038 Class C = 11,790,952 total shares. Class C is convertible under the charter. https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+- The 39.9% threshold is an allocation limit on SBI's Class A shares at closing; excess shares were issued as Class C. Do not describe 39.9% as SBI's total economic ownership. The pro forma share table reports 11,790,952 SBI shares out of 55,031,628 total Class A+Class C shares (about 21.4% by share count). Voting rights and conversion terms are separate from that economic share count.
+- The November 13 SEC Form 10-Q says the pooled Advance Funding subscribers contributed $214.05M cash and 600,000 XRP; cash was used by Evernorth to buy 84,365,876 XRP, received between October 31 and November 6, 2025. It also says SBI-affiliated investors amended their subscription agreements and were allocated Class A/Class C shares subject to the 39.9% threshold. The filing does not isolate the precise dollar amount contributed by each SBI entity. Therefore: SBI's $200M is an official announced commitment; the $214.05M/$600,000 XRP is the pooled subscriber total; do not attribute the entire pooled amount to SBI without a subscriber-level reconciliation. https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+- The same 10-Q says Evernorth was wholly owned by Ripple as of September 30, 2026. The October 9, 2026 business combination made Evernorth the public parent of the combined entities; after closing it was a related party to Ripple but no longer wholly owned or controlled by Ripple. Ripple separately contributed 126,791,458 XRP to Pathfinder; a Ripple-affiliated Larsen Lam Children's Remainder Trust contributed 50,000,000 XRP; RippleWorks contributed 211,319,096 XRP to the Arrington sponsor under an obligation to invest it for Evernorth shares. These are distinct flows and must not be double-counted as new market purchases.
+- SBI Holdings' official announcement also confirms the separate SBI Ripple Asia joint venture. The Evernorth PIPE, SBI Ripple Asia JV, SBI VC Trade RLUSD distribution and the three Japanese SBIC investment companies are four distinct relationships/entities.
+
+## “Actual capital” evidence boundary
+
+- Actual proceeds disclosed: $35.3M gross from 3,073,366 cash warrant exercises between October 12 and November 9, 2026; $29.0M net cash from the October 13, 2026 convertible note after a $1.0M advisor fee.
+- Optional Cantor ELOC capacity remains a separate instrument. Evernorth can choose whether and when to sell up to 5,218,935 shares, subject to conditions; the 97%-of-VWAP pricing and volume/ownership caps do not mean the facility was drawn. The November 13 filing does not disclose an ELOC draw or XRP purchase funded by it.
+- The $200M SBI announcement, pooled $214.05M subscriber funding, $35.3M warrant proceeds, $29.0M note proceeds, and potential ELOC capacity are separate amounts and periods. Never sum them as if all were new XRP purchases.
+
+## CI provenance correction and current exact-head status
+
+- Correction to Run211b: run `44061330752` was the dependency audit for integration head `1788c963`, not a main-branch audit. It passed on that integration head. No separate main dependency-audit run for `002486e` was identified in the inspected run inventory.
+- Main `002486e` CI [44061318896](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318896) passed its main test suite: 1,091 passed, 1 skipped, 8 subtests in 32.96 seconds. Main Pages [44061319059](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061319059) failed Jekyll parsing of an unescaped Liquid `{{` example at `GLOBAL_STATE_MANIFEST.md:6450`; deploy was skipped.
+- Main push commit `002486e` has no associated PR in the GitHub commit-to-PR query. GitHub reports main protected, but protection detail is inaccessible (403); whether the direct push was permitted by an admin/bypass path cannot be verified. Do not infer a branch-protection bypass without the missing settings evidence.
+- Barrot Sync run [44061318838](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318838) remains a confirmed false-green: `b_agent.py --sync` failed with `ModuleNotFoundError: rich`, then shell fallbacks masked the failure. The integration version is fully quarantined with `permissions: {}` and an always-disabled job.
+- Current integration head at this addendum: `a74b6a7c9863d91e5d0ede9b69bae9243e8f5b5f`. Push CI [44061820573](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061820573): Pages validation passed, core tests passed, full suite still in progress at handoff capture. Dependency audit [44061820470](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061820470) passed; fail-closed gate [44061820494](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061820494) passed. No full-suite pass is claimed for this head.
+- The prior integration full-suite run `44060485880` on `8255660` failed only because `MEMORY.md` lacked the current-status disclaimer. The current integration head adds that disclaimer; its exact-head full suite is still pending.
+
+## Current branch/merge state
+
+- Main remains `002486e09cb0ad6702e1858e2428c4dcb10fe2a8`; integration branch is `a74b6a7c9863d91e5d0ede9b69bae9243e8f5b5f`.
+- The PR is still the single integration PR #1663, draft/open, 178 commits ahead and 1 behind; GitHub reports `mergeable=false`, `mergeable_state=dirty`. The new main book project and the two shared documentation files (`BARROT_SYNC.md`, `MEMORY.md`) still require a non-destructive merge reconciliation. No main-side work was overwritten.
+- No merge, force-push, branch rewrite, source-PR closure, deployment, real-money action or external provider dispatch occurred.
+
+**Next concrete action:** complete the exact-head full suite on the current integration head; then reconcile current main's book project and both overlapping documents without rewriting either history. Only after exact-head tests, full semantic/security review, independent approval and enforceable branch-protection evidence should PR #1663 be considered for merge. No directional XRP forecast is supported by the current receipt/eligibility dataset.
