@@ -81,14 +81,23 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
 
+## docs/mcp
+
+- docs/mcp/LISTING.md - Listing Barrot as a server: what WebMCP is, and what to actually publish
+
 ## docs/millennium
 
 - docs/millennium/CYCLE-01.md - Millennium cycle 01: database audit, Poincare verified, six gaps
 - docs/millennium/RE-V2.md - Reverse-engineering v2: what v1 actually did, and what replaced it
 - docs/millennium/hodge-cycle.md - Hodge under TRACE-5: four quoted claims, one excluded assertion
 
+## docs/money
+
+- docs/money/PRODUCTS.md - Money cycle: products, bounties, listing
+
 ## docs/ops
 
+- docs/ops/BLOCKERS.md - Blocker re-audit
 - docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
 - docs/ops/MCP-SERVER.md - MCP server: spec fetched, five tools, three real
 

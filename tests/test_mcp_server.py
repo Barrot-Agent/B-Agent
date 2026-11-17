@@ -41,17 +41,17 @@ def test_registered_in_opencode_config():
     assert (ROOT / server["command"][1]).exists()
 
 
-def test_tools_list_has_five_named_tools():
+def test_tools_list_contains_the_original_five():
     response = handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
     names = {tool["name"] for tool in response["result"]["tools"]}
-    assert names == {
+    assert {
         "check_capability",
         "run_foundry_cycle",
         "flight_recorder_replay",
         "reverse_engineer",
         "trace5_validate",
-    }
-    assert len(TOOLS) == 5
+    } <= names
+    assert len(TOOLS) == 7
     for tool in TOOLS:
         assert tool["inputSchema"]["type"] == "object"
 
@@ -119,4 +119,44 @@ def test_stdio_transport_answers_two_requests():
     lines = [json.loads(line) for line in completed.stdout.splitlines() if line.strip()]
     assert completed.returncode == 0
     assert lines[0]["result"]["protocolVersion"] == "2025-06-18"
-    assert len(lines[1]["result"]["tools"]) == 5
+    assert len(lines[1]["result"]["tools"]) == 7
+
+
+def test_tools_list_has_seven_tools_now():
+    response = handle({"jsonrpc": "2.0", "id": 21, "method": "tools/list"})
+    names = {tool["name"] for tool in response["result"]["tools"]}
+    assert names == {
+        "check_capability",
+        "run_foundry_cycle",
+        "flight_recorder_replay",
+        "reverse_engineer",
+        "trace5_validate",
+        "verdict_check",
+        "repo_guard",
+    }
+
+
+def test_verdict_check_passes_the_real_verdict_and_fails_a_fixture():
+    good = call("verdict_check", {"verdict_file": "docs/research/CONSCIOUSNESS-BRIDGE.md"})["result"]
+    assert good["structuredContent"]["passes"] is True
+    bad = call("verdict_check", {"verdict_file": "tests/fixtures/verdicts/missing_upgrade.md"})["result"]
+    assert bad["structuredContent"]["passes"] is False
+    assert bad["structuredContent"]["problems"]
+
+
+def test_repo_guard_is_clean_on_this_repository():
+    result = call("repo_guard", {})["result"]["structuredContent"]
+    assert result["clean"] is True
+    assert result["liquid_hostile"] == []
+    assert result["unguarded_optional_imports"] == []
+
+
+def test_repo_guard_flags_both_failure_classes_in_a_fixture_root():
+    result = call("repo_guard", {"root": "tests/fixtures/guard/root"})["result"]["structuredContent"]
+    assert result["clean"] is False
+    files = {item["file"] for item in result["liquid_hostile"]}
+    assert "tests/fixtures/guard/root/note.md" in files
+    assert "tests/fixtures/guard/root/docs/bad.md" in files
+    assert result["unguarded_optional_imports"] == [
+        {"file": "tests/fixtures/guard/root/tests/test_bad_import.py", "module": "scipy"}
+    ]
