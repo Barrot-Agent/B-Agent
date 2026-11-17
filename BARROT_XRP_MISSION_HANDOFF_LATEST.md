@@ -6503,3 +6503,114 @@ The eight source branches have no common ancestor with current main. Do not merg
 - Next: obtain an independent security/code reviewer; inspect/repair branch protection through an authorized admin path; review the remaining large-diff semantics; verify WORM receipt storage; then run scheduled public ingestion only after a compliant merge and evaluate all four baselines chronologically. Keep forecast issuance disabled until every ledger gate passes.
 
 No merge, source-PR closure, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper-trader dispatch, funds transfer, real-money action, force-push, reset, clean, stash or discard occurred.
+
+
+---
+
+## Run218 — current mainline reconciliation, exact-head full suite and XRP market update
+
+**Observed:** 2026-11-17 (UTC; current run)  
+**Current main SHA:** `d9270465829ff166b29f40587e126583cebea9cb`  
+**Current integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**Current integration head before this handoff append:** `618a129f81a6f3e8bfe93571939f5911dd615b0c`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open/draft; GitHub mergeable=true is not approval.
+
+### 1. Repository and ancestry
+
+- Repository metadata was fetched successfully. Connector reports admin/maintain/push/pull/triage permissions; this does not establish effective branch-protection settings or least-privilege token scope.
+- Current main is `d9270465829ff166b29f40587e126583cebea9cb`; integration head is `618a129f81a6f3e8bfe93571939f5911dd615b0c`.
+- GitHub compare: integration is **192 commits ahead, 0 behind** main. Main is the integration merge base.
+- Complete recursive trees were fetched without truncation: main **1,582** entries; integration **2,787** entries. Every main path exists in integration; 228 existing paths have different blob hashes because the integration changes them. No main-only path was found.
+- PR #1663 currently changes **1,380 files** (+502,653 / -6,476). Integration contains 80 workflow YAML files; **62 workflow paths** are changed in this PR.
+- Latest integration commit `618a129` adds Run217 primary SBI/Circle, BNY/Ripple and Coinbase/RLUSD relationship evidence. Its artifact explicitly says rendered public pages were used, raw HTTP bytes and raw-source hashes were not captured, and the observations are not model-eligible.
+- No main write, merge, force-push, reset, clean, stash, restore or user-work discard occurred.
+
+### 2. Exact-head verification — 618a129
+
+Authoritative push run: [CI 44093905693](https://github.com/Barrot-Agent/B-Agent/actions/runs/44093905693), exact head `618a129f81a6f3e8bfe93571939f5911dd615b0c).
+
+- Full repository suite: **4,095 passed, 1 skipped, 11 warnings, 19 subtests passed in 168.74 seconds**.
+- Inclusive coverage: **68.09%**, above the 62% threshold.
+- Legacy-core coverage: **77%**, above the 70% threshold.
+- Wheel build and installed-wheel verification passed; installed package loaded Barrot V3, the primary XRP mission and canonical data assets.
+- GitHub Pages validation passed in the same push run.
+- Six-manifest push dependency audit [44093905686](https://github.com/Barrot-Agent/B-Agent/actions/runs/44093905686) passed.
+- Push fail-closed gate [44093905657](https://github.com/Barrot-Agent/B-Agent/actions/runs/44093905657) passed. PR fail-closed gate [44093916528](https://github.com/Barrot-Agent/B-Agent/actions/runs/44093916528) passed. Both retain automatic merge disabled.
+- PR CI [44093916442](https://github.com/Barrot-Agent/B-Agent/actions/runs/44093916442) passed its workflow, but core/full-suite jobs were skipped by the integration-branch condition. The push run above is the authoritative exact-head full-suite result.
+- Non-failing warnings: 11 legacy pytest functions return booleans; setuptools reports deprecated license-table metadata and ambiguous package-discovery entries; GitHub Actions cache reservation failed because the configured cache budget is exhausted. The cache is read-only; this did not fail tests, coverage, wheel build or mission verification.
+
+The next handoff append creates a new commit and therefore a new head. **No 618a129 test result transfers to that successor.** Re-run exact-head push CI, full suite, dependency audit and fail-closed gate after this append.
+
+### 3. XRP market observation — descriptive only
+
+- Kraken public `/0/public/Ticker?pair=XRPUSD` returned last **$0.97596**, best bid **$0.97592 × 1,863 XRP**, best ask **$0.97596 × 4,993 XRP**, 24-hour volume **42.743M XRP**, 24-hour low/high **$0.94178–$0.97648**, and open **$0.95476**.
+- Quoted spread is $0.00004 (about 0.41 bp at the midpoint). The top ask quantity is about 2.68× the top bid quantity. This is one Kraken ticker/top-of-book snapshot, not a multi-level book, executable-depth estimate, consolidated market or persistent order-flow signal. The endpoint supplied no provider event timestamp. Rendered web retrieval did not preserve raw HTTP bytes or a SHA-256 receipt; **do not admit it to the feature store**.
+- [Bitcoin.com News, published Nov 16](https://news.bitcoin.com/market-updates/xrp-etfs-19-million-weekly-outflows-grayscale/) reports **$19.13M** U.S. spot XRP ETF net outflows for Nov 9–13, with Grayscale GXRP at -$12.71M, Bitwise at -$9.40M and Franklin XRPZ at +$4.45M; it reports $1.79B cumulative net inflows and $1.15B combined net assets as of Nov 15. This is secondary reporting of SoSoValue data; the linked SoSoValue page returned HTTP 403 in this retrieval. Keep its fund universe, dates and source lineage explicit; do not treat it as raw issuer holdings or a byte-backed receipt.
+- [Mitrade republishing FXStreet, Nov 17](https://www.mitrade.com/au/insights/news/live-news/article-5-2259529-20261117) reports approximately $21M of XRP withdrawals from Binance on Monday and $127M net withdrawals since Nov 10, attributed to CryptoQuant analyst Darkfost. The same report warns some movements may be Binance internal transfers associated with the exchange's replenishment after its hack. Withdrawals could also reflect self-custody accumulation; they are not automatically selling, buying or net external capital. This is one reporting lineage, not multiple independent confirmations.
+- These observations describe a rebound from the reported Nov 14 low near $0.90 toward the current Kraken quote, while reported weekly ETF outflows and exchange withdrawals have competing interpretations. They are asynchronous and not a synchronized training row. No directional forecast is issued.
+
+### 4. Primary institutional relationship update — Run217
+
+Source artifact: `research/xrp_intelligence/20261117T133323Z-run217-xrp-primary-institutional-relationship-and-platform-coordination-addendum.json` (verify exact path against the current tree if renamed).
+
+- **SBI Holdings / Circle:** SBI's official release confirms the Japanese-market JV to promote USDC and digital-finance use cases. SBI Holdings and SBI Shinsei Bank separately disclosed USD 25M each of Circle equity at listing (USD 50M combined). SBI VC Trade's official release confirms Japanese USDC handling registration/services. None of these sources discloses an XRP allocation or bridge-currency volume.
+- **BNY / Ripple:** BNY's official Oct 27 release says BNY is primary RLUSD reserve custodian, has a Ripple Prime custody relationship and announced XRP/RLUSD support on its institutional Digital Asset Custody platform for eligible clients. Direct RLUSD mint/redeem is an intended future capability subject to final BNY/regulatory approvals. No client XRP balances, net deposits, collateral utilization or transaction volume were disclosed.
+- **Coinbase / RLUSD:** Coinbase's Oct 28 release announced RLUSD availability on Prime, Exchange and retail in supported regions, with XRPL, Base and Ethereum deposit/withdrawal support at launch. Global Exchange collateral support was described as a future rollout in that announcement; no later official activation was verified in this capture.
+- **Coinbase / Circle:** historical Coinbase equity and USDC reserve-income/distribution economics are documented in primary Circle/Coinbase disclosures. The 3.5% fully diluted equity figure is historical at the 2023 transaction; current post-IPO ownership percentage is not established by those older documents.
+- These are corporate, distribution and custody relationships—not proof of XRP purchases, XRP bridge share or net capital entering XRP. Circle's direct agreement with Ripple was not established by this artifact.
+- The Run217 source registry uses official public sources but only rendered content. Every receipt has `raw_http_bytes_captured=false`, `raw_content_sha256=null` and `model_eligible=false`.
+
+### 5. Identity and exact-phrase status
+
+- Japan's SBIC East (Tokyo), SBIC Central (Nagoya) and SBIC West (Osaka) remain distinct statutory SME investment-development companies, not SBI Holdings or SBI Group. The official SBIC East profile and seminar pages establish ChatGPT/generative-AI educational events, not an OpenAI partnership. No XRP/Ripple/Circle/Coinbase relationship was established for the three SBIC entities.
+- “ASK Coin” remains resolved to Permission.io's consent-based advertising/data-reward token; no XRP/XRPL link verified.
+- “Actual capital” is not an XRP asset class. Preserve distinctions among cash received, cash-funded XRP purchases, in-kind XRP contributions, closing proceeds, note/warrant proceeds and optional financing capacity.
+- “SBIC, ChatGPT SBIC” has no verified formal partnership result.
+- Dr. Kamilah/Camilla/Kamilla Stevenson identity is supported by her official site and the previously recorded interview evidence. No official YouTube channel was cross-linked; no public video inventory is attributed to her without that identity link.
+
+### 6. Prediction engine and scheduled ingestion
+
+- Implemented/tested on this integration: allowlisted public ingestion adapters; byte-level raw receipt creation and content-addressed SHA-256 archive; per-run receipt chain; point-in-time SQLite feature store; timestamp/cache/staleness and source-independence controls; event timeline; scenario and counter-hypothesis records; naive/class-prior, momentum, mean-reversion and volatility baselines; chronological purged/embargoed walk-forward evaluation; Brier/log-loss calibration; drift monitoring; fail-closed forecast ledger and independent Ed25519 readiness-attestation interface.
+- `.github/workflows/xrp-public-ingestion.yml` defines hourly capture and a daily horizon evaluation, but the capture job is restricted to `refs/heads/main`. The workflow exists only on this unmerged integration branch; it has **not** run as a scheduled production job on main. Do not claim scheduled ingestion is operational.
+- The workflow uses read-only Actions/Contents permissions, checks out with `persist-credentials: false`, and stores artifacts with 90-day raw/receipt retention and a shorter feature-store checkpoint. GitHub Actions artifacts/cache are not WORM or independent immutable storage. Cache writes are currently blocked by the repository cache budget; the artifact restore fallback is not equivalent to WORM.
+- Latest handoff registry baseline: **125 curated events; 48 exact publisher timestamps; 77 missing exact publisher timestamps; 0 byte-complete raw-source receipts; 0 model-eligible events; 0 forecasts**. Run217 adds rendered corporate relationship evidence only and does not improve these market-data eligibility counts.
+- No mature synchronized historical XRP spot/depth/derivatives/collateral dataset, validated XRP candidate, measured out-of-sample superiority, sufficient shadow outcomes or independent trusted evaluator-key custody is established.
+- Forecast issuance remains disabled. No paper trade or real-money action occurred.
+
+### 7. Nine-platform authentication and data flow
+
+Only the ChatGPT session-to-GitHub connector path was tested; repository read and integration-branch write succeeded. Effective token scopes are not independently exposed, so least privilege is not verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain `NOT_TESTED` for authenticated data flow. Groq access does not prove Grok access. No nine-platform quorum, external-provider dispatch or inter-model transfer occurred. Minority objections and counter-hypotheses remain in the research artifacts.
+
+### 8. Current open-PR inventory and overlap reconciliation
+
+Nine open PRs; no PR was closed in this run:
+
+| PR | Current classification | Exact changed-path comparison with #1663 |
+|---|---|---|
+| #1663 | Sole consolidated XRP/V3 integration; blocked, draft | 1,380 files |
+| #1541 | Potentially superseded; preserve, not an exact duplicate | 5/5 paths overlap; 2 identical blobs, 3 differ (`mmi_v1.py`, research artifact, `test_mmi_v1.py`) |
+| #1265 | Unique/unreviewed; preserve | 1/144 overlaps (`ci.yml` blob differs); 143 source-only paths |
+| #1460 | Unique/unreviewed; preserve | 0/8 overlap |
+| #1450 | Unique/unreviewed; preserve | 0/116 overlap |
+| #1440 | Unique/unreviewed; preserve | 0/64 overlap |
+| #1437 | Unique/unreviewed; preserve | 0/5 overlap |
+| #1436 | Unique/unreviewed; preserve | 0/24 overlap |
+| #1353 | Unique/unreviewed; preserve | 0/1,084 overlap |
+
+GitHub compare against current main returned “no common ancestor” for all eight source PR heads. Do not merge those stacked/stale branches directly. #1541 is only a potential supersession candidate: reconcile its three differing blobs and lineage before any closure. #1265 retains 143 unique paths. Preserve all unique research and feature work. Close exact duplicate/superseded PRs only after a reviewed successor is merged, main is fetched again, the merged content is verified and the source PR is explicitly cross-referenced.
+
+### 9. Governance, merge decision and next action
+
+- PR #1663 remains open/draft, 192 commits, 1,380 changed files, GitHub mergeable=true. Formal reviews: **0**. Review threads: **0**. Requested reviewers: **none**. The CodeRabbit bot comment says draft PRs are not automatically reviewed; it is not a formal independent security approval.
+- Main branch-protection endpoint returned HTTP 403 (“Resource not accessible by integration”). Repository metadata indicates main is protected, but effective required checks, dismissal rules and bypass permissions cannot be verified. Repository ruleset “Fall Back” ID 10863829 is **disabled**. `.github/CODEOWNERS` assigns ownership only to `@Barrot-Agent`; independent ownership review is not established.
+- The 1,380-file / 62-workflow change set has not received independent semantic/security review. CI success and a mergeable flag do not satisfy this requirement.
+- **Decision: DO NOT MERGE #1663. Keep draft.** Exact-head full suite, Pages, six-manifest dependency audit and fail-closed checks passed, but independent review and enforceable branch-protection verification remain blockers.
+- **Next concrete action:** obtain independent security/code review of the consolidated diff and workflow side effects; verify effective main branch protection through an authorized admin route; reconcile the three differing #1541 blobs without closing that PR; then re-run exact-head full suite and all gates after any change. Only after all stated conditions pass may the PR be made ready and merged. After merge, fetch main, verify the merge commit and merged paths, run main CI, then close only exact superseded duplicates.
+- No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper-trader dispatch, funds transfer, real-money action, force-push or branch-history rewrite occurred.
+
+### 10. Execution labels
+
+- **DESIGNED:** XRP-first mission and Barrot V3 foundation; scheduled public-source ingestion; raw receipts/hash chain; point-in-time features; source/event quality; four baselines; leakage-safe evaluation; calibration, drift, shadow and forecast gates.
+- **EXECUTED:** fetched current main and complete trees; fetched all nine open PRs; compared branch ancestry and source-path overlaps; inspected current workflows/dependencies/security metadata and canonical handoff; verified exact-head push/PR checks; retrieved fresh Kraken ticker and current public institutional/flow reports; appended this durable handoff.
+- **VERIFIED:** main SHA `d927046`; integration pre-append SHA `618a129`; 192 ahead/0 behind; complete trees 1,582/2,787; no main-only paths; 4,095 passed/1 skipped; 68.09% inclusive and 77% legacy-core coverage; wheel, Pages, six-manifest dependency audit and fail-closed gates passed on exact head `618a129`.
+- **NOT VERIFIED:** independent review; enforceable required checks/bypass policy; scheduled production ingestion on main; WORM retention; mature synchronized XRP dataset; model superiority/calibration on independent outcomes; trusted evaluator key custody; nine-platform authentication.
