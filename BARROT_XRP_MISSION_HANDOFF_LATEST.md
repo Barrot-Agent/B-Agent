@@ -6614,3 +6614,57 @@ GitHub compare against current main returned “no common ancestor” for all ei
 - **EXECUTED:** fetched current main and complete trees; fetched all nine open PRs; compared branch ancestry and source-path overlaps; inspected current workflows/dependencies/security metadata and canonical handoff; verified exact-head push/PR checks; retrieved fresh Kraken ticker and current public institutional/flow reports; appended this durable handoff.
 - **VERIFIED:** main SHA `d927046`; integration pre-append SHA `618a129`; 192 ahead/0 behind; complete trees 1,582/2,787; no main-only paths; 4,095 passed/1 skipped; 68.09% inclusive and 77% legacy-core coverage; wheel, Pages, six-manifest dependency audit and fail-closed gates passed on exact head `618a129`.
 - **NOT VERIFIED:** independent review; enforceable required checks/bypass policy; scheduled production ingestion on main; WORM retention; mature synchronized XRP dataset; model superiority/calibration on independent outcomes; trusted evaluator key custody; nine-platform authentication.
+
+
+---
+
+## Run218 follow-up — c475 exact-head CI and statutory SBIC identity
+
+**Verification head:** `c475bf69fdb726cea22bb8d541dfd516f8a8202f`  
+**Main:** `d9270465829ff166b29f40587e126583cebea9cb`  
+**Branch comparison:** 194 commits ahead, 0 behind; merge base is current main.  
+**PR #1663:** open/draft, 194 commits, 1,380 files (+502,764 / -6,476), GitHub mergeable=true. Formal reviews 0; review threads 0; no reviewers requested.
+
+### Exact-head verification on c475
+
+Push CI [44095709798](https://github.com/Barrot-Agent/B-Agent/actions/runs/44095709798), exact head `c475bf69fdb726cea22bb8d541dfd516f8a8202f`:
+
+- Full repository suite: **4,095 passed, 1 skipped, 11 warnings, 19 subtests passed in 128.54 seconds**.
+- Inclusive coverage **68.09%** (62% minimum passed); legacy-core coverage **77%** (70% floor passed).
+- Wheel build and installed-wheel verification passed, including Barrot V3, the primary XRP mission and canonical data assets.
+- GitHub Pages validation passed.
+- Push dependency audit [44095709855](https://github.com/Barrot-Agent/B-Agent/actions/runs/44095709855) passed all six manifests.
+- Push fail-closed gate [44095709792](https://github.com/Barrot-Agent/B-Agent/actions/runs/44095709792) passed. PR fail-closed gate [44095716353](https://github.com/Barrot-Agent/B-Agent/actions/runs/44095716353) passed; automatic merge remains disabled.
+- PR CI [44095716332](https://github.com/Barrot-Agent/B-Agent/actions/runs/44095716332) passed its workflow, but its core and full-suite jobs were skipped by the integration-branch condition. The exact-head push run is authoritative.
+- This validates c475. Any later code or handoff commit is a new head and requires its own exact-head checks.
+
+### Primary statutory resolution of Japan SBIC
+
+The identity question is now resolved by the statute itself, not name similarity:
+
+- The official Osaka SBIC reproduction of the **Small and Medium Business Investment & Consultation Companies Act, Act No. 101 of June 10, 1963**, states in Article 1 that the companies invest in SMEs to strengthen their equity and healthy development. Article 2 names exactly three companies: **Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and Osaka Small and Medium Business Investment & Consultation Co., Ltd.** Article 10 places supervision with the Minister of Economy, Trade and Industry. Source: https://www.sbic-wj.co.jp/disclose/law/
+- METI's official English guideline identifies the three statutory companies and their areas: Tokyo/eastern Japan (18 prefectures), Nagoya/central Japan (five prefectures), and Osaka/western Japan (24 prefectures). Source: https://www.meti.go.jp/policy/investment/pdf/02guidline.pdf (page 14).
+- The official Tokyo company profile identifies **SBIC East Japan**, established 1963-11-15: https://www.sbic.co.jp/company/profile/
+- The official Nagoya profile identifies **SBIC Central Japan**, established 1963-11-18, covering Aichi, Gifu, Mie, Toyama and Ishikawa: https://www.sbic-cj.co.jp/company/about/
+- The official Osaka profile identifies **SBIC West Japan**, established 1963-11-20, covering 24 western prefectures: https://www.sbic-wj.co.jp/profiles/profile/
+- These are three separate companies created under the 1963 statute. **They are not SBI Holdings, SBI Group, SBI VC Trade or SBI Securities.** The Act's Article 2 enumerates the statutory companies and does not name SBI Holdings.
+- Nagoya SBIC's July 31, 2026 investee-company salon was a closed discussion among investee-company executives about practical generative-AI use. The notice does not name ChatGPT/OpenAI and does not announce a technology partnership: https://www.sbic-cj.co.jp/news/5077/
+- No official YouTube channel or video attribution for Dr. Kamilah/Camilla/Kamilla Stevenson was verified in this capture; exact-name YouTube searches returned no results. No videos are attributed by name alone.
+
+### Cross-venue spot and quote-currency quality
+
+- Kraken XRP/USD ticker: last **$0.97596**; bid **$0.97592 × 1,863 XRP**; ask **$0.97596 × 4,993 XRP**; 24-hour volume **42.743M XRP**; 24-hour low/high **$0.94178–$0.97648**. Public endpoint: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+- OKX XRP/USDT ticker at provider timestamp **2026-11-17 13:16:36.965 UTC**: last **0.9751 USDT**; bid **0.9749 × 4,713.043 XRP**; ask **0.9750 × 1,635.9 XRP**; 24-hour volume **37.073M XRP**. Public endpoint: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+- Kraken USDT/USD ticker showed **0.99892 USD**; OKX USDT/USD later showed **0.99903 USD** at **13:45:25.073 UTC**. The quote observations are not synchronous, so do not use them to calculate an arbitrage spread or normalize the earlier XRP/USDT ticker.
+- Top-of-book size imbalance reverses between Kraken and OKX. These are one-level snapshots, not full L2 depth or evidence of directional order flow. Coinbase and Binance public ticker endpoints were inaccessible to this web retrieval. No consolidated spot book, raw HTTP bytes or SHA-256 receipts were captured; all these observations remain research-only and model-ineligible.
+- Secondary reporting remains: $19.13M U.S. spot XRP ETF net outflows for Nov 9–13 (SoSoValue-linked report; direct page returned 403) and approximately $127M net Binance XRP withdrawals since Nov 10 (FXStreet/CryptoQuant lineage, with possible internal transfers and self-custody accumulation as counter-hypotheses). Do not treat either as a clean buy/sell signal.
+- Forecast status unchanged: **0 forecasts issued**. Existing curated-event/timestamp/receipt/model-eligibility counts remain 125 / 48 / 77 / 0 / 0; no directional model is justified.
+
+### Main governance recheck
+
+- GitHub branch metadata reports `main.protected=true`, but its exposed required-status-check contexts and checks arrays are empty. The detailed branch-protection endpoint still returns HTTP 403 to this integration.
+- Repository ruleset “Fall Back” ID 10863829 remains **disabled** and contains only deletion/non-fast-forward rules.
+- `.github/CODEOWNERS` contains only `* @Barrot-Agent`; it does not provide an independent reviewer.
+- The consolidated PR remains draft. The 1,380-file / 62-workflow diff has no formal review or independent semantic/security sign-off. Passing CI and GitHub's mergeable flag do not satisfy the merge standard.
+
+**Decision unchanged: DO NOT MERGE #1663.** Keep it draft. Next action remains independent security/code review and authorized verification of effective main branch protection, then a fresh exact-head full-suite and all-gates run after any change. Preserve all eight other open source PRs; do not close #1541 or #1265 based only on partial path overlap.
