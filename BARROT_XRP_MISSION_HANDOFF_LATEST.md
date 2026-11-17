@@ -5899,3 +5899,49 @@ SBI announcement: https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
 ## Current decision
 
 No merge. PR #1663 remains the single integration workstream, draft/open, 179 commits ahead and one behind main, with `mergeable_state=dirty`. Main's book project and both overlapping documents remain to be reconciled without history rewrite. The integration branch is not protected; main protection details remain inaccessible; independent review is absent. No source PR was closed, no main files were changed, and no real-money or external write action occurred.
+
+
+---
+
+# Run212 — current-main merge, XRP microstructure, macro and capital reconciliation
+
+Captured: 2026-11-17T10:59:32Z
+
+## Repository reconciliation
+
+- Current main at capture: `9753132cd2c7b8d5fd88fc265c731f4fc5b11087` (two commits after PR #1663's prior base `2c454f245296a23d3b4f180ca15ce63f3735319a`). Current integration parent: `c1dad99fa17423f6c4296545de4c7fb3eef14f2a`.
+- Created normal two-parent merge commit `c06388c05ac9800ef8463a48421df692e039cd84`, with first parent integration and second parent current main. The tree preserves the integration branch and adds main's `book/grok-100k-business/` tree and `tests/test_book_manuscript.py` blob.
+- `BARROT_SYNC.md` and `MEMORY.md` were append-merged. Their common-base contents were verified as exact prefixes of both descendants; both main-side append tails and both integration-side append tails are preserved. No existing content was overwritten.
+- Main's book update is retained: Phase A chapters 7–12 drafted (40.5/44 target pages); whole supplied manuscript 75.9/89 drafted pages; 81 of the stated 297 pages remain explicitly proposed, not supplied. The 12 book tests passed in main's exact-head full suite. No Part Three drafting was initiated.
+- The merge commit object is the first parent of the Run212 evidence commit. The final branch ref is updated only with a non-force expected-SHA compare-and-swap. No PR merge or main write occurs in this reconciliation.
+
+## Exact-head CI provenance before the new merge head
+
+- Integration parent `c1dad99fa17423f6c4296545de4c7fb3eef14f2a`: CI [44062926187](https://github.com/Barrot-Agent/B-Agent/actions/runs/44062926187) passed 4,078 tests, 1 skipped, 11 warnings and 19 subtests; inclusive coverage 68.09%, legacy-core coverage 77%. Dependency audit [44062926315](https://github.com/Barrot-Agent/B-Agent/actions/runs/44062926315) and fail-closed gate [44062926199](https://github.com/Barrot-Agent/B-Agent/actions/runs/44062926199) passed. Pages validation passed on this parent head. These results do not transfer to the new merge head.
+- Main `9753132cd2c7b8d5fd88fc265c731f4fc5b11087`: CI [44063960137](https://github.com/Barrot-Agent/B-Agent/actions/runs/44063960137) passed 1,091 tests, 1 skipped and 8 subtests; coverage 78.13%. This is the full repository suite on main, not the larger integration suite.
+- Main Pages [44063957443](https://github.com/Barrot-Agent/B-Agent/actions/runs/44063957443) failed at `GLOBAL_STATE_MANIFEST.md:6450` because a literal JSON opening brace was parsed as Liquid. Deployment was skipped. The integration branch's Liquid-safe validation fix passed on its parent head.
+- Main Barrot Sync [44063960140](https://github.com/Barrot-Agent/B-Agent/actions/runs/44063960140) concluded green while `b_agent.py --sync` failed with `ModuleNotFoundError: rich`; `|| echo` and `git push || true` masked the failure. No successful sync was established. Integration keeps the sync workflow quarantined with `permissions: {}` and a disabled job.
+- Main auto-PR [44063960161](https://github.com/Barrot-Agent/B-Agent/actions/runs/44063960161) validated setup without creating a PR. Main Cross Analysis [44068687438](https://github.com/Barrot-Agent/B-Agent/actions/runs/44068687438) completed read-only analysis and uploaded artifacts; no repository mutation or external write was observed.
+- The new merge/evidence head still requires its own full repository suite, Pages validation, dependency/security audit and fail-closed gate.
+
+## Workflow and security review
+
+- Main still has high-write automation surfaces: Barrot Agent requests contents/pull-request/issue write and a Groq secret; self-upgrade can create branches/PRs after an explicit YES; Barrot Sync has the confirmed false-green; the main Coinbase paper-trader writes BTC-USD state/log files and pushes; Hugging Face sync uses HF/Groq/Databricks secrets after manual confirmation. Integration quarantines Barrot Agent, self-upgrade, Hugging Face sync and Barrot Sync; its Coinbase paper workflow is exact-SHA-bound, explicit-YES-gated, read-only and artifact-only. None was dispatched in this run.
+- Databricks deployment remains manual, exact-main-SHA and explicit-YES gated; token rotation is disabled. Kaggle submission requires an explicit competition allowlist and confirmation; no submission occurred. Autonomous self-deployment is disabled.
+- Main branch-protection details remain inaccessible (HTTP 403). The only visible ruleset 10863829 is disabled; CODEOWNERS is self-only. Protection and independent approval requirements cannot be verified. PR #1663 remains draft with zero formal reviews and zero review threads. NO MERGE.
+
+## Fresh XRP market and institutional observations — descriptive only
+
+- Kraken public XRP/USD ticker retrieved at 2026-11-17T10:59:32Z: last 0.95688, bid 0.95693, ask 0.95694, 24-hour high 0.97648, low 0.94178, open 0.95476 and 24-hour volume 42,729,481.39 XRP. Top quote showed 79 XRP bid versus 5,226 XRP ask; this is a single-venue instantaneous top-of-book observation, not consolidated depth. The exact response text hash is recorded in the Run212 JSON, but raw HTTP bytes and a trusted timestamp receipt were not captured.
+- Liqwall reported XRP futures OI $949M at 10:42 UTC, down 3.8% in 24 hours; its daily closed series showed $1.49B on Nov 4 and $968M on Nov 16. OptimistFi reported $1.9B across 39 venues (CME about $462.5M, 25% of its total) as of Nov 16 19:44 ET. These are different times and coverage universes; do not average. TradRadar's older seven-venue $1.31B observation is also not interchangeable.
+- CryptoKeyhole's issuer-file dashboard reported Nov 16 ETF flows of -5.197M XRP / -$5.0M with only 2 of 4 daily-tracked funds reported; Bitwise and Franklin were still pending at its 10:40 UTC update. Its Nov 13 complete four-fund figure was -9,967 XRP. A separate five-fund SoSoValue-derived report showed about -$1.09M on Nov 13. Coverage and holdings/flow methodology differ; preserve the disagreement and partial-day status.
+- CryptoSlate's Nov 17 article, using DefiLlama and NOSHASHI measurements, reported XRP-paired XRPL DEX turnover of $62.6M for Nov 9–15, +99.9% week over week. Its matched-ledger static model showed funded RLUSD offers to XRP sellers rising from about 19,392 to 111,951 within 10% of midpoint, while the XRP/RLUSD AMM RLUSD reserve fell from 2.165M to 1.861M. The modeled 100,000-XRP sale shortfall narrowed from 3.57% to 0.48%. This is a venue/pair-specific static execution model, not a completed fill, all-market liquidity measure, fresh net buying proof or bank-dollar cash-out proof. Turnover can recycle inventory.
+- Macro primary data: October CPI +0.4% month over month and core CPI +0.3% (BLS, Nov 10); the Oct 28 FOMC held the target range at 3.75–4.00%, with two dissenters preferring a 25 bp hike; Treasury's Nov 16 10-year par yield was 5.12%; September PCE was +0.5% month over month and core PCE +0.3%; October PCE is scheduled for Nov 25. FOMC minutes for the Oct 27–28 meeting are scheduled Nov 18 at 2 p.m. ET. A secondary market article's phrase that the Fed is “still hiking” is not a description of the Oct 28 decision; it refers to future hike expectations, not an actual hike at that meeting. Its geopolitical channel claims remain secondary and unverified here.
+- Evernorth's Nov 13 SEC 10-Q distinguishes actual receipts from capacity: $29.0M net convertible-note cash proceeds on Oct 13; $35.3M gross cash proceeds from 3,073,366 warrant exercises through Nov 9; and an optional Cantor ELOC for up to 5,218,935 shares, exercisable at Evernorth's discretion after effectiveness and subject to conditions. The ELOC is not cash received and no ELOC draw or XRP purchase funded by it was disclosed in the filing. Do not add this capacity to actual proceeds or to the SBI/pooled PIPE figures.
+- ASK Coin exact-phrase research continues to identify Permission.io's ASK/Permission Coin, a consent-based advertising/data-reward token; no XRP/XRPL link was established. “SBIC, ChatGPT SBIC” returned no verified exact-phrase partnership evidence. The official Kamilah Stevenson site identifies Dr. Kamilah Stevenson / “The Wealth Doctor” but does not link a YouTube channel; third-party directories list multiple similar/duplicate handles. No channel or video inventory is promoted as verified.
+
+## Prediction gate and next action
+
+- Existing dataset status remains 125 curated events, 48 exact publisher timestamps, 77 missing exact timestamps, zero byte-exact raw-source SHA-256 receipts, zero model-eligible events, zero forecasts, accuracy NOT_EVALUATED. New Run212 observations are descriptive only and not admitted to the point-in-time feature store.
+- Forecast status: NOT_ISSUED. No directional claim, paper trade, real-money action, deployment, secret rotation, Kaggle submission or external provider write occurred.
+- Next action: verify the non-force branch ref update, then wait for exact-head full suite, Pages, dependency/security and fail-closed checks on the new integration head. Keep PR #1663 draft until independent review and enforceable protection are verified. Preserve all eight unique/unreviewed source PRs; close none.
