@@ -5,13 +5,14 @@ on:
     - cron: '3 * * * *'
     - cron: '15 0 * * *'
   # This scoped push trigger performs a read-only integration capture when the workflow
-  # or its timestamp-audit dependency changes. Production schedules remain main-only.
+  # or its ingestion/timestamp-audit code changes. Production schedules remain main-only.
   push:
     branches:
       - 'integration/**'
     paths:
       - .github/workflows/xrp-public-ingestion.yml
       - barrot_agent/evolution/research_timestamp_corrections.py
+      - barrot_agent/evolution/xrp_public_ingestion.py
   workflow_dispatch:
     inputs:
       coinbase_backfill_days:

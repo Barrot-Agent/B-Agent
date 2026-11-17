@@ -1266,7 +1266,7 @@ def _parse_binance_klines(payload: Any, *, source_id: str, url: str, digest: str
                     unit=unit,
                     event_time_utc=open_s,
                     source_data_as_of_utc=close_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1418,7 +1418,7 @@ def _parse_binance_funding_history(payload: Any, *, source_id: str, url: str, di
                     unit="USDT/XRP",
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1478,7 +1478,7 @@ def _parse_binance_open_interest_history(payload: Any, *, source_id: str, url: s
                     unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1556,7 +1556,7 @@ def _parse_binance_global_long_short_ratio(payload: Any, *, source_id: str, url:
                     unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1925,7 +1925,7 @@ def _parse_coinbase_candles(
                     unit=unit,
                     event_time_utc=open_s,
                     source_data_as_of_utc=close_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -3804,7 +3804,7 @@ def _parse_bybit_linear_open_interest_history(
                     unit="XRP (venue-reported single-side open-interest size)",
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -3976,7 +3976,7 @@ def _parse_cftc_tff(
                     unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -4964,14 +4964,25 @@ def _walk_forward_report(
     }
     return report, history
 
+def _response_received_at(response: Mapping[str, Any], fallback: datetime) -> datetime:
+    """Use the local response-completion time; deterministic fetchers fall back to run start."""
+    received_at = response.get("received_at_utc")
+    if received_at is None:
+        return fallback
+    parsed = _from_iso8601(received_at, "fetcher received_at_utc")
+    return max(fallback, parsed)
+
+
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
     if source_id in XRPL_NODE_SOURCES:
-        return fetch_public_rpc(source_id, url)
-    if source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"}:
-        return fetch_public_html(source_id, url)
-    if source_id == "xrp_etf_flows_csv":
-        return fetch_public_csv(source_id, url)
-    return fetch_public_json(source_id, url)
+        response = fetch_public_rpc(source_id, url)
+    elif source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"}:
+        response = fetch_public_html(source_id, url)
+    elif source_id == "xrp_etf_flows_csv":
+        response = fetch_public_csv(source_id, url)
+    else:
+        response = fetch_public_json(source_id, url)
+    return {**response, "received_at_utc": _iso(datetime.now(timezone.utc))}
 
 
 def _run_coinbase_candle_backfill(
@@ -5044,7 +5055,7 @@ def _run_coinbase_candle_backfill(
                 receipt = archive.store(
                     source_id=page_source_id,
                     source_uri=page_url,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     raw_bytes=raw_bytes,
                     source_data_as_of_utc=None,
                     model_eligible=False,
@@ -5214,7 +5225,10 @@ def run_ingestion(
         raise XRPIngestionError(f"coinbase_backfill_days must be an integer from 0 to {MAX_COINBASE_BACKFILL_DAYS}")
     normalized_walk_forward_horizons = _normalize_walk_forward_horizons(walk_forward_horizons)
     captured = now or datetime.now(timezone.utc)
-    captured_s = _iso(captured)
+    run_started_at = captured
+    run_started_s = _iso(run_started_at)
+    captured_s = run_started_s
+    latest_source_capture = captured
     selected_endpoints = list(SCHEDULED_ENDPOINTS)
     if include_noncommercial_xrpl_nodes:
         selected_endpoints.extend(
@@ -5241,8 +5255,13 @@ def run_ingestion(
     for source_id, url in selected_endpoints:
         response: Mapping[str, Any] | None = None
         raw_bytes: bytes | None = None
+        source_captured = captured
+        source_captured_s = captured_s
         try:
             response = fetcher(source_id, url)
+            source_captured = _response_received_at(response, captured)
+            source_captured_s = _iso(source_captured)
+            latest_source_capture = max(latest_source_capture, source_captured)
             raw_bytes = response["raw_bytes"]
             payload = response["payload"]
             if not isinstance(raw_bytes, bytes):
@@ -5253,7 +5272,7 @@ def run_ingestion(
                 "source_id": source_id,
                 "url": url,
                 "digest": digest,
-                "captured": captured,
+                "captured": source_captured,
             }
             if source_id in {"coinbase_spot_ticker", "coinbase_spot_book", "binance_spot_depth", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
                 parser_kwargs["http_date"] = response.get("http_date")
@@ -5290,7 +5309,7 @@ def run_ingestion(
             if source_id in XRPL_NODE_SOURCES and source_as_of is not None:
                 xrpl_node_payloads[source_id] = payload
         except Exception as exc:
-            failure = _source_failure_record(source_id, url, captured_s, exc)
+            failure = _source_failure_record(source_id, url, source_captured_s, exc)
             # A successfully captured response remains evidence even when its
             # parser or schema validation fails. Preserve the exact bytes as a
             # raw-only receipt; never infer a data-as-of time from failed parsing.
@@ -5299,7 +5318,7 @@ def run_ingestion(
                 receipt = archive.store(
                     source_id=source_id,
                     source_uri=url,
-                    captured_at_utc=captured_s,
+                    captured_at_utc=source_captured_s,
                     raw_bytes=raw_bytes,
                     source_data_as_of_utc=None,
                     model_eligible=False,
@@ -5349,7 +5368,7 @@ def run_ingestion(
                         "raw_content_sha256": receipt["raw_content_sha256"],
                         "receipt_id": receipt["receipt_id"],
                         "raw_bytes_retained": receipt["raw_bytes_retained"],
-                        "captured_at_utc": captured_s,
+                        "captured_at_utc": source_captured_s,
                     }
                 )
             records.extend(parsed_records)
@@ -5364,7 +5383,7 @@ def run_ingestion(
                         "raw_content_sha256": receipt["raw_content_sha256"],
                         "receipt_id": receipt["receipt_id"],
                         "raw_bytes_retained": receipt["raw_bytes_retained"],
-                        "captured_at_utc": captured_s,
+                        "captured_at_utc": source_captured_s,
                         "metadata_generated_at_utc": metadata.get("generated_at"),
                     }
                 )
@@ -5378,7 +5397,7 @@ def run_ingestion(
                     "raw_content_sha256": receipt["raw_content_sha256"],
                     "receipt_id": receipt["receipt_id"],
                     "raw_bytes_retained": receipt["raw_bytes_retained"],
-                    "captured_at_utc": captured_s,
+                    "captured_at_utc": source_captured_s,
                     "source_data_as_of_utc": source_as_of,
                     "reports_dated": status["reports_dated"],
                     "futures_only_added": status["futures_only_added"],
@@ -5401,7 +5420,7 @@ def run_ingestion(
                     "raw_content_sha256": receipt["raw_content_sha256"],
                     "receipt_id": receipt["receipt_id"],
                     "raw_bytes_retained": receipt["raw_bytes_retained"],
-                    "captured_at_utc": captured_s,
+                    "captured_at_utc": source_captured_s,
                     "source_data_as_of_utc": source_as_of,
                     "timestamp_precision": "date_only",
                     "model_eligible": False,
@@ -5442,7 +5461,7 @@ def run_ingestion(
                     "raw_content_sha256": receipt["raw_content_sha256"],
                     "receipt_id": receipt["receipt_id"],
                     "raw_bytes_retained": receipt["raw_bytes_retained"],
-                    "captured_at_utc": captured_s,
+                    "captured_at_utc": source_captured_s,
                     "source_data_as_of_utc": source_as_of,
                     "timestamp_precision": "date_only",
                     "reporting_status": contract["reporting_status"],
@@ -5494,6 +5513,8 @@ def run_ingestion(
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
 
+    captured = latest_source_capture
+    captured_s = _iso(captured)
     quote_basis_records, quote_basis_diagnostics = _derive_okx_usd_normalized_features(records, captured)
     records.extend(quote_basis_records)
 
@@ -5654,6 +5675,7 @@ def run_ingestion(
         "artifact_type": "xrp_public_market_ingestion_run",
         "adapter_version": ADAPTER_VERSION,
         "parser_version": PARSER_VERSION,
+        "run_started_at_utc": run_started_s,
         "captured_at_utc": captured_s,
         "data_cutoff_utc": captured_s,
         "feature_store_cutoff_utc": store_cutoff_s,

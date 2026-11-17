@@ -3257,3 +3257,25 @@ def test_sbi_vc_trade_lending_page_receipt_retains_digest_but_not_restricted_htm
     assert receipt["raw_payload_path"] is None
     assert archive.verify()["digest_only_receipt_count"] == 1
     assert not list((tmp_path / "raw" / "sha256").glob("*"))
+
+
+def test_ingestion_uses_per_source_response_completion_time_for_known_at_and_receipts(tmp_path):
+    captured = datetime(2026, 11, 17, 22, 0, tzinfo=timezone.utc)
+    received_at = captured + timedelta(seconds=8)
+    base_fetcher = _fake_fetcher(captured)
+
+    def received_fetcher(source_id: str, url: str):
+        response = base_fetcher(source_id, url)
+        response["received_at_utc"] = _iso(received_at)
+        return response
+
+    output = tmp_path / "per-source-capture"
+    summary = run_ingestion(output, fetcher=received_fetcher, now=captured)
+    receipts = json.loads((output / "receipt_manifest.json").read_text(encoding="utf-8"))
+    snapshot = json.loads((output / "snapshot.json").read_text(encoding="utf-8"))
+
+    assert summary["run_started_at_utc"] == _iso(captured)
+    assert summary["captured_at_utc"] == _iso(received_at)
+    assert summary["data_cutoff_utc"] == _iso(received_at)
+    assert all(item["captured_at_utc"] == _iso(received_at) for item in receipts)
+    assert all(item["known_at_utc"] == _iso(received_at) for item in snapshot["records"])
