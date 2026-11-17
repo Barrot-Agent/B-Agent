@@ -300,7 +300,7 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   explicitly assigned to `proposed` Part Six (35p) + appendices A-F (46p).
   Sean has NOT confirmed those; labeled proposed everywhere.
 - Drafted: front matter + Part One = 35.4/45 pages (79%). Phase A (Part Two,
-  ch7-12) drafted = 40.5/44 pages (92%). Whole book 75.9/89 drafted pages (85%).
+  ch7-12) drafted = 40.5/44 pages (92%). Whole book 76.9/89 drafted pages (86%).
   Outlined: ch13-29. Proposed (unbuilt): Part Six + appendices A-F.
 - Phase A completed 2026-11-17; ch-07..ch-12 status=draft in toc.yaml. Test guard:
   12 book tests pass; full suite 1091 passed / 1 skipped. Awaiting GO for Part Three.
@@ -309,6 +309,19 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   `grok -p`, `grok inspect`, install via x.ai/cli/install.sh; pricing grok-4.7
   $2/$6 per M (<200K), grok-build-0.1 $1/$2 (256K), tools $5/1k search + $5/1k
   code exec, collections $2.50/1k, batch -20%, cached input $0.50/M.
+- Grok Build controls verified 2026-11-17: `--max-turns N` is the only documented
+  run bound (no token budget flag, no documented non-zero exit on limit);
+  `--sandbox workspace|devbox|read-only|strict` (off by default, Landlock/Seatbelt,
+  child network blocked only in read-only/strict and only on Linux, no allowlist);
+  `--allow`/`--deny` (deny wins), `--always-approve`/`--yolo`, `--tools`/`--disallowed-tools`,
+  `--no-auto-update` for CI, `grok agent stdio` = ACP.
+- Grok Bot isolation, exact doc wording: "Files and sign-ins on the shared computer
+  aren't isolated per Bot and can remain there." Never write "Bots are not a
+  security boundary" - the docs do not say that.
+- Ping-pong routing protocol (2026-11-17): caps 2 rounds default / $2 per task /
+  15 min; advice only, no external AI can authorize commits. External ChatGPT and
+  Meta AI are NOT wired in this runtime - only free-model subagents are available,
+  and they cost $0. Log every round to results/flight_recorder/.
 - "Grok Swarm" is not a documented product; written as a pattern, not a SKU.
 - Foreword attribution pending; test enforces the ATTRIBUTION PENDING block.
 - INCIDENT 2026-11-17: `git ls-files --others | xargs rm` deleted the untracked
