@@ -16,13 +16,16 @@
     "pr_number": 1663,
     "pr_state": "open",
     "pr_draft": true,
-    "pr_changed_files": 1343,
+    "pr_changed_files": 1345,
     "changed_workflow_files": 49,
     "changed_test_paths": 395,
     "formal_reviews": 0,
     "review_threads": 0,
     "mergeable_metadata": true,
-    "mergeable_metadata_caveat": "GitHub mergeability is not approval, branch-protection verification or merge authorization."
+    "mergeable_metadata_caveat": "GitHub mergeability is not approval, branch-protection verification or merge authorization.",
+    "current_evidence_head": "3e54d1ef1b8d0c02103f514948f0a40008c7e565",
+    "current_evidence_head_ahead_by": 148,
+    "current_evidence_head_behind_by": 0
   },
   "exact_head_ci": {
     "head": "479ca7e0892c7b20378fb3a9e2ea38925f81cc34",
@@ -119,7 +122,8 @@
     "byte_exact_raw_source_receipts": 0,
     "missing_exact_publisher_timestamps": 77,
     "model_eligible_events": 0,
-    "next_required_action": "Capture original public publisher response bytes, provider event timestamps and independently verifiable receipts; only then admit eligible events to the point-in-time store."
+    "next_required_action": "Capture original public publisher response bytes, provider event timestamps and independently verifiable receipts; only then admit eligible events to the point-in-time store.",
+    "registry_freshness": "Run204 still uses Run192 follow-up registry captured 2026-11-16T16:11:30Z; no newer receipt-backed registry verified. Follow-up spot, derivatives, exchange-wallet, RWA, RLUSD and agentic-payment observations remain descriptive only."
   },
   "market_observations": [
     {
@@ -355,6 +359,7 @@
     "external_actions_performed": false
   },
   "next_actions": [
+    "Reconcile t54 x402 counters against raw XRPL transaction hashes and SourceTag 804681468; separate XRP from RLUSD values, deduplicate service retries and verify intent/settlement status before considering an agentic-payment feature.",
     "Complete full semantic and security review of all changed workflow and test paths; recent SHA pinning is only partial hardening.",
     "Reconcile the MMI/research PR stack bottom-up, retaining unique evidence and avoiding duplicate successors.",
     "Obtain independent review and authorized branch-protection/ruleset evidence; do not bypass required checks.",
@@ -371,6 +376,245 @@
       "XRP Insights is one publisher group; multiple pages from that publisher are not independent confirmations.",
       "Swiftedge market walls are a single vendor's aggregate, not exchange-native order-book receipts."
     ],
-    "no_new_web_observations_admitted_to_feature_store": true
+    "no_new_web_observations_admitted_to_feature_store": true,
+    "agentic_payment_lineage": [
+      {
+        "publisher": "Ripple",
+        "independence_group": "product announcement",
+        "url": "https://ripple.com/insights/xrpl-ai-starter-kit/",
+        "claim": "x402 support on XRPL for XRP and RLUSD"
+      },
+      {
+        "publisher": "t54 Labs",
+        "independence_group": "index operator",
+        "url": "https://xrpl-ai.org/",
+        "claim": "live transaction and value counters"
+      },
+      {
+        "publisher": "CoinDesk",
+        "independence_group": "journalism quoting t54",
+        "url": "https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million",
+        "claim": "October 14 t54 counter snapshot; same underlying index, not independent volume corroboration"
+      },
+      {
+        "publisher": "XRP Insights",
+        "independence_group": "third-party rollup",
+        "url": "https://xrp-insights.com/xrp-radar",
+        "claim": "14-day and asset-unit rollup; requires reconciliation"
+      }
+    ],
+    "followup_raw_source_bytes_captured": false,
+    "followup_raw_source_sha256": null,
+    "followup_admitted_to_feature_store": false
+  },
+  "exact_head_ci_after_documentation_commit": {
+    "head": "3e54d1ef1b8d0c02103f514948f0a40008c7e565",
+    "push_full_suite_run": 44004451209,
+    "conclusion": "success",
+    "passed": 3846,
+    "failed": 0,
+    "skipped": 1,
+    "warnings": 11,
+    "subtests_passed": 19,
+    "duration_seconds": 135.16,
+    "inclusive_coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit_push_run": 44004451224,
+    "dependency_audit_pr_run": 44004457229,
+    "dependency_audit": "both passed; six manifests; no known vulnerabilities reported",
+    "push_fail_closed_run": 44004451249,
+    "pr_fail_closed_run": 44004457175,
+    "pr_ci_run": 44004457212,
+    "pr_ci": "success; PR-event tests skipped by branch condition",
+    "wheel_build": "passed",
+    "installed_wheel_smoke": "passed",
+    "cache_warning": "cache read-only due configured budget; test suite unaffected",
+    "packaging_warnings": [
+      "project.license table deprecated",
+      "setuptools package-discovery warnings for barrot_agent.data.missions and data.research; installed wheel smoke test verified mission resources"
+    ]
+  },
+  "market_followup": {
+    "spot_orderbook": {
+      "source": "Fuelmaps six-venue XRPL spot map",
+      "url": "https://fuelmaps.io/order-book/",
+      "publisher_time_utc": "2026-11-17T02:00:00Z",
+      "midpoint_usd": 0.958,
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "depth_usd": {
+        "0.5pct": {
+          "bids": 7000000,
+          "asks": 6900000,
+          "bid_share_pct": 50.4,
+          "venue_count": 6
+        },
+        "1pct": {
+          "bids": 11600000,
+          "asks": 9900000,
+          "bid_share_pct": 53.8,
+          "venue_count": 6
+        },
+        "2pct": {
+          "bids": 17800000,
+          "asks": 11700000,
+          "bid_share_pct": 60.3,
+          "venue_count": 6
+        },
+        "5pct": {
+          "bids": 20700000,
+          "asks": 14800000,
+          "bid_share_pct": 58.2,
+          "venue_count": 6
+        },
+        "10pct": {
+          "bids": 26500000,
+          "asks": 17900000,
+          "bid_share_pct": 59.7,
+          "venue_count": 5
+        }
+      },
+      "limitations": [
+        "Spot aggregate; excludes Binance and Bitget.",
+        "Hourly snapshot; resting orders can be cancelled.",
+        "No raw source receipt; descriptive only."
+      ]
+    },
+    "derivatives_disagreement": [
+      {
+        "source": "Liqwall",
+        "url": "https://liqwall.com/coins/xrp",
+        "publisher_time_utc": "2026-11-17T02:32:00Z",
+        "price_usd": 0.9554,
+        "open_interest_usd": 968000000,
+        "oi_change_24h_pct": -2.1,
+        "funding_pct_per_8h": -0.0128,
+        "liquidations_24h_usd": 3100000,
+        "long_liquidations_usd": 2000000,
+        "short_liquidations_usd": 1100000,
+        "binance_accounts_long_pct": 73.7
+      },
+      {
+        "source": "TradRadar",
+        "url": "https://tradradar.io/markets/xrp",
+        "publisher_time_utc": "2026-11-16T15:30:00Z",
+        "open_interest_usd": 1310000000,
+        "oi_change_24h_pct": -5.04,
+        "funding_pct_per_8h": -0.0063,
+        "liquidations_24h_min_usd": 3500000,
+        "long_accounts_pct": 77.1,
+        "venue_count": 7
+      }
+    ],
+    "exchange_wallets": {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "publisher_time_utc": "2026-11-16T08:00:00Z",
+      "attributed_xrp": 22240000000,
+      "wallets": 707,
+      "exchanges": 24,
+      "same_wallet_change_7d_xrp": -126300000,
+      "same_wallet_change_30d_xrp": -344300000,
+      "limitations": [
+        "Cold storage included.",
+        "Coinbase balance includes cbXRP reserve; Binance includes Binance-Peg reserve.",
+        "Not tradable float or proof of customer flows."
+      ]
+    },
+    "exchange_wallet_disagreement": {
+      "source": "XRPSONAR",
+      "url": "https://xrpsonar.com/xrp-today",
+      "publisher_date": "2026-11-16",
+      "attributed_exchange_xrp": 24680000000,
+      "inflows_xrp": 109300000,
+      "outflows_xrp": 126100000,
+      "caveat": "Different wallet coverage and attribution from XRP Insights; not averaged."
+    },
+    "rwa_split": {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "tracked_assets": 18,
+      "total_usd": 4330000000,
+      "distributed_transferable_usd": 276000000,
+      "represented_platform_locked_usd": 4060000000,
+      "per_asset_last_verified_from": "2026-07-03",
+      "per_asset_last_verified_to": "2026-10-23",
+      "caveat": "Represented value is issuer-reported contracted/appraised notional, not freely transferable investor float; timestamps are not synchronized."
+    },
+    "rlusd_supply": {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "publisher_date": "2026-11-16",
+      "xrpl_supply_usd": 757100000,
+      "ethereum_supply_usd": 2020000000,
+      "combined_usd": 2770000000,
+      "caveat": "Small L2/XRPL EVM supply excluded; not directly comparable with Ripple's November 12 global transparency figure without matching date and chain perimeter."
+    }
+  },
+  "agentic_payments": {
+    "official_product_support": {
+      "source": "Ripple XRPL AI Starter Kit",
+      "url": "https://ripple.com/insights/xrpl-ai-starter-kit/",
+      "publisher_date": "2026-06-09",
+      "facts": [
+        "XRPL AI Starter Kit supports x402 payments using XRP and RLUSD.",
+        "XRPL agentic transaction controls include multi-signature, DepositAuth, escrow and SourceTag."
+      ]
+    },
+    "reported_activity": {
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million",
+      "publisher_date": "2026-10-14",
+      "transactions": 14300000,
+      "registered_merchants": 169,
+      "reported_payments": {
+        "xrp": 6991,
+        "rlusd": 12752
+      },
+      "caveat": "CoinDesk cites t54's XRPL AI Hub; same upstream index, not independent corroboration of the Hub's counts. The approximately 25% ledger-activity claim is attributed to a RippleX executive."
+    },
+    "current_t54_index": {
+      "source": "t54 XRPL AI Hub",
+      "url": "https://xrpl-ai.org/",
+      "home_counters": {
+        "all_time_value_settled_usd": 89020.41,
+        "volume_settled_counter": 15912170,
+        "registered_merchants": 198,
+        "live_services": 5426
+      },
+      "ledger_history_counter": 15910935,
+      "sample_transaction": {
+        "hash": "AFA68BD6CAE37E0CED4388B1638FFE727070405C4898B6230E9831BF33DA3778",
+        "ledger_index": 108379349,
+        "timestamp_utc": "2026-11-17T01:51:51Z",
+        "amount": "0.001 RLUSD",
+        "source_tag": 804681468,
+        "facilitator": "t54 XRPL Facilitator",
+        "intent_status": "Unverified"
+      },
+      "caveats": [
+        "Home and ledger-history counters differ by 1,235 and may update at different times.",
+        "Sample detail provides hash, ledger index and SourceTag but labels intent Unverified.",
+        "Independent XRPL Explorer/API verification was not completed.",
+        "High transaction count is not high economic value; displayed samples are micro-payments."
+      ]
+    },
+    "xrp_insights_rollup": {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "last_14d_settlements": 18465,
+      "all_time_reported_amounts": {
+        "xrp": 7034,
+        "rlusd": 77880
+      },
+      "caveat": "Different rollup and time window from t54; reconcile transaction hashes and SourceTag before adopting."
+    },
+    "interpretation": "Agentic commerce is a real XRPL use case, but the current evidence points to micro-payments and predominantly RLUSD in the reported asset-unit rollup, not large XRP-value transfers. XRP account-reserve and network-fee effects require separate measurement. No agentic-payment metric is admitted to the feature store."
   }
 }

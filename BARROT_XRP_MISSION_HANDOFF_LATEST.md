@@ -4911,3 +4911,48 @@ Nine PRs remain open. #1663 is the sole main-targeting integration draft; #1541 
 6. Keep forecasts disabled until the full XRP-specific walk-forward, baseline, calibration, drift, shadow and independent-attestation gates pass.
 
 **No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.**
+
+---
+
+## Run204 market-structure and agentic-payment follow-up
+
+### Spot order-book depth — 17 November, 02:00 UTC
+
+Fuelmaps' six-venue spot map reported XRP midpoint $0.9580. Within ±0.5%, bids were $7.0M and asks $6.9M (50.4% bid share). Within ±1%, bids were $11.6M and asks $9.9M (53.8%); within ±2%, $17.8M versus $11.7M (60.3%); within ±5%, $20.7M versus $14.8M (58.2%); within ±10%, $26.5M and $17.9M (59.7%, five venues). The venues were Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance and Bitget were excluded. This is hourly resting spot depth, not executable liquidity; orders can be cancelled. Source: https://fuelmaps.io/order-book/
+
+### Derivatives cross-provider disagreement
+
+- Liqwall at 02:32 UTC November 17: XRP $0.9554, OI $968M (-2.1%/24h), average funding -0.0128%/8h, 24-hour liquidations $3.1M ($2.0M longs, $1.1M shorts), and 73.7% of Binance XRP accounts long. Source: https://liqwall.com/coins/xrp
+- TradRadar at 15:30 UTC November 16: OI $1.31B across seven venues (-5.04%/24h), funding -0.0063%/8h, at least $3.5M liquidations and 77.1% long accounts. Source: https://tradradar.io/markets/xrp
+
+The $968M and $1.31B readings have different snapshot times and provider coverage. They are not averaged. Negative funding alongside a majority of long accounts is possible because funding and account-count ratios measure different things.
+
+### Exchange wallets and supply
+
+XRP Insights reports 22.24B XRP in 707 wallets attributed to 24 exchanges at November 16 08:00 UTC. Its same-wallet method reports -126.3M XRP over seven days and -344.3M over 30 days. Cold storage is included; Coinbase's figure includes cbXRP reserves and Binance's includes Binance-Peg reserves. It is not tradable float or proof of customer withdrawals. Source: https://xrp-insights.com/exchange-balances
+
+XRPSONAR reports 24.68B XRP in known exchange wallets with 109.3M inflows and 126.1M outflows for November 16. The 2.44B balance difference is a wallet-coverage/methodology disagreement, not something to average. Source: https://xrpsonar.com/xrp-today
+
+### Tokenized RWA and RLUSD split
+
+XRP Insights reports 18 tracked XRPL RWA assets worth $4.33B, but only $276M is categorized as distributed/transferable. The remaining $4.06B is represented platform-locked registry value based on issuer-reported contracted/appraised notionals. Per-asset timestamps range from July 3 to October 23, so this is not a synchronized current market valuation. Source: https://xrp-insights.com/xrp-radar
+
+The same dashboard reports $757.1M RLUSD on XRPL and $2.02B on Ethereum, with small L2/XRPL EVM balances excluded. Its $2.78B combined figure is not directly comparable with Ripple's November 12 global transparency figure without matching the date and chain perimeter.
+
+### Agentic payments — real XRPL activity, limited demonstrated XRP demand
+
+Ripple's June 9 XRPL AI Starter Kit announcement confirms x402 support for agent payments using XRP and RLUSD. The official XRPL docs describe agentic transactions and native multi-currency transfers. Sources: https://ripple.com/insights/xrpl-ai-starter-kit/ and https://xrpl.org/docs/agents/agentic-transactions
+
+CoinDesk reported on October 14 that t54's XRPL AI Hub showed 14.3M cumulative transactions across 169 registered merchants, but the dashboard's cumulative payments were only 6,991 XRP and 12,752 RLUSD. CoinDesk noted that transaction count overstated economic scale. Stripe-owned Privy wallet integration can let apps and agents hold and spend XRP/RLUSD; new XRPL accounts still require a 1 XRP reserve. Source: https://www.coindesk.com/tech/2026/10/14/ripple-adds-stripe-owned-wallets-to-xrp-ledger-as-ai-payments-pass-14-million
+
+The current t54 Hub reports $89,020.41 all-time value settled, a 15,912,170 volume counter, 198 registered merchants and 5,426 live services. Its ledger-history page shows 15,910,935 transactions; the counters differ by 1,235 and are not synchronized. A sampled record shows 0.001 RLUSD, SourceTag 804681468, ledger index 108,379,349 and a transaction hash, but its intent status is Unverified. Independent XRPL Explorer/API verification was not completed.
+
+XRP Insights separately reports 18,465 settlements over the last 14 days and cumulative 7,034 XRP plus 77,880 RLUSD. This is a different rollup and time window. Do not treat t54, CoinDesk and XRP Insights as independent confirmations of the same metric.
+
+**Research conclusion:** Agentic commerce is a real XRPL use case and an important telemetry stream. Current evidence points to many micro-payments, predominantly RLUSD in the reported asset-unit rollup, rather than large XRP-value transfers. Transaction count, RLUSD settlement, XRP account reserves and XRP network fees must be separate features. No agentic-payment metric is admitted to the prediction feature store until transaction hashes, SourceTag, asset, amount, ledger timestamp, intent/settlement status and deduplication are independently verified.
+
+### Exact-head verification
+
+The full repository suite passed on integration head 3e54d1ef1b8d0c02103f514948f0a40008c7e565: 3,846 passed, zero failed, one skipped, 11 warnings and 19 subtests in 135.16 seconds; 66.90% inclusive coverage and 77% legacy-core coverage. Wheel build and installed Barrot V3/XRP mission smoke test passed. Push and PR dependency audits passed on six manifests; push and PR fail-closed gates passed. The cache budget is exhausted and cache is read-only, but this did not affect test results.
+
+The current integration PR remains draft with zero formal reviews. No merge or external action occurred.
