@@ -224,6 +224,12 @@ def test_content_and_entity_workflows_require_confirmation_and_preserve_artifact
         assert "contents: read" in content, name
         assert "contents: write" not in content, name
         assert "persist-credentials: false" in content, name
+        assert "expected_main_sha" in content, name
+        assert "github.ref == 'refs/heads/main'" in content, name
+        assert "ref: ${{ inputs.expected_main_sha }}" in content, name
+        assert "EXPECTED_MAIN_SHA" in content, name
+        assert "git rev-parse FETCH_HEAD" in content, name
+        assert content.index("Verify exact approved main revision") < content.index("GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}"), name
         assert re.search(r"^\s*(?:-\s*)?uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
         assert "git push" not in content, name
 
