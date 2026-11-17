@@ -1,6 +1,7 @@
 """Preimage-bound timestamp corrections for append-only XRP research artifacts."""
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
