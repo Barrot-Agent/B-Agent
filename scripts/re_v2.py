@@ -303,28 +303,82 @@ def build(name: str) -> int:
 
 
 DENYLIST = ROOT / "data" / "research" / "retracted_dois.json"
+RETRACTION_FIXTURES = ROOT / "data" / "research" / "retraction_fixtures.json"
 
 
-def _retracted_dois() -> set[str]:
-    """DOIs with a stored retraction notice, built by scripts/retraction_probe.py.
+def _normalize_doi(value: object) -> str:
+    """Normalize DOI strings and DOI URLs to one comparison key."""
+    identifier = str(value or "").strip().lower()
+    identifier = re.sub(r"^https?://(?:dx\\.)?doi\\.org/", "", identifier)
+    identifier = re.sub(r"^doi:\\s*", "", identifier)
+    return identifier.strip().rstrip(".,;)")
 
-    This is the scheduler problem solved offline: validation does not ask the
-    network, it checks the list that the probe already refreshed. A missing list is
-    not an error, it is reported as no check performed.
+
+def _retracted_dois() -> tuple[set[str], str | None]:
+    """Load the offline retraction denylist and fail closed on integrity gaps.
+
+    The denylist is a verified local set, not a claim that every DOI on the
+    internet has been checked. Its known retracted entries must remain covered
+    by the checked-in fixture set. Validation never performs network requests.
     """
-    if not DENYLIST.exists():
-        return set()
+    if not DENYLIST.is_file():
+        return set(), f"missing {DENYLIST.name}"
     try:
         payload = json.loads(DENYLIST.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return set()
-    return {str(entry["doi"]).lower() for entry in payload.get("retracted", [])}
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        return set(), f"cannot read {DENYLIST.name}: {type(exc).__name__}"
+
+    entries = payload.get("retracted") if isinstance(payload, dict) else None
+    if not isinstance(entries, list):
+        return set(), f"{DENYLIST.name} has no retracted list"
+
+    identifiers: set[str] = set()
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            return set(), f"{DENYLIST.name} entry {index} is not an object"
+        doi = _normalize_doi(entry.get("doi"))
+        notices = entry.get("notices")
+        if not doi or not isinstance(notices, list) or not notices:
+            return set(), f"{DENYLIST.name} entry {index} lacks a DOI or notice"
+        if any(not _normalize_doi(notice) for notice in notices):
+            return set(), f"{DENYLIST.name} entry {index} has an empty notice DOI"
+        identifiers.add(doi)
+
+    if not identifiers:
+        return set(), f"{DENYLIST.name} contains no verified retracted DOI entries"
+
+    if not RETRACTION_FIXTURES.is_file():
+        return set(), f"missing {RETRACTION_FIXTURES.name}"
+    try:
+        fixture_payload = json.loads(RETRACTION_FIXTURES.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        return set(), f"cannot read {RETRACTION_FIXTURES.name}: {type(exc).__name__}"
+
+    fixture_entries = (
+        fixture_payload.get("entries") if isinstance(fixture_payload, dict) else None
+    )
+    if not isinstance(fixture_entries, list):
+        return set(), f"{RETRACTION_FIXTURES.name} has no entries list"
+    expected = {
+        _normalize_doi(item.get("doi"))
+        for item in fixture_entries
+        if isinstance(item, dict) and item.get("expected") == "retracted"
+    }
+    if not expected or not expected.issubset(identifiers):
+        missing = sorted(expected - identifiers)
+        return set(), (
+            f"{DENYLIST.name} does not cover verified fixture DOIs"
+            + (f": {', '.join(missing)}" if missing else "")
+        )
+    return identifiers, None
 
 
 def validate(path: Path) -> list[str]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     problems: list[str] = []
-    retracted = _retracted_dois()
+    retracted, denylist_error = _retracted_dois()
+    if denylist_error:
+        problems.append(f"retraction denylist unavailable: {denylist_error}")
     for record in payload["records"]:
         abstract = record["evidence"]["abstract"]
         if record["evidence"]["http_status"] != 200:
@@ -343,7 +397,7 @@ def validate(path: Path) -> list[str]:
             problems.append(f"{record['id']}: unknown status")
         if record["excluded_from_evidence"] and not record["exclusion_reason"]:
             problems.append(f"{record['id']}: excluded without a reason")
-        identifier = str(record["evidence"].get("identifier", "")).lower()
+        identifier = _normalize_doi(record["evidence"].get("identifier", ""))
         if identifier in retracted:
             problems.append(f"{record['id']}: cites a retracted source ({identifier})")
     return problems

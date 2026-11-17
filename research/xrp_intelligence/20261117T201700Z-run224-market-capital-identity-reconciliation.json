@@ -1,0 +1,1034 @@
+{
+  "artifact_type": "xrp_run224_market_capital_identity_reconciliation",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "run_id": "run224",
+  "captured_at_utc": "2026-11-17T20:20:45.974Z",
+  "data_cutoff_utc": "2026-11-17T18:39:00Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "repository_state": {
+    "inspected_main_sha": "83cead57b3e75eee369db9ed73d33287e91fdda2",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_parent_head": "b4468a34e8ed6004335ea4012feaafe0ae7227a8",
+    "mainline_merge_commit": "b4468a34e8ed6004335ea4012feaafe0ae7227a8",
+    "mainline_merge_parents": [
+      "7d3a13a62fff42e4c9eab630bab89726c468d15a",
+      "83cead57b3e75eee369db9ed73d33287e91fdda2"
+    ],
+    "commits_ahead_of_main": 218,
+    "commits_behind_main": 0,
+    "integration_pr": 1663,
+    "integration_pr_state": "open_draft",
+    "integration_pr_mergeable": true,
+    "merge_decision": "WITHHELD",
+    "merge_blockers": [
+      "PR remains draft",
+      "No independent formal review",
+      "Pages validation failed because main intentionally excludes GLOBAL_STATE_MANIFEST.md while branch CI expected it to be published",
+      "Merge to main would trigger GitHub Pages deployment",
+      "Required-check enforcement could not be fully inspected"
+    ]
+  },
+  "market_snapshot": {
+    "xrp_perpetual_reference": {
+      "provider": "Swiftedge",
+      "market_type": "perpetual_futures",
+      "as_of_utc": "2026-11-17T17:30:00Z",
+      "price_usd": 0.9566,
+      "change_24h_pct": -0.56,
+      "change_7d_pct": -8.39,
+      "change_30d_pct": -24.7,
+      "low_24h_usd": 0.9446,
+      "high_24h_usd": 0.9788,
+      "change_since_new_york_open_pct": -1.7,
+      "model_eligible": false,
+      "limitation": "Not spot. The provider explicitly labels this XRP/USD perpetual-futures reference."
+    },
+    "xrp_spot_order_book": {
+      "provider": "Fuelmaps",
+      "market_type": "spot",
+      "as_of_utc": "2026-11-17T11:00:00Z",
+      "mid_usd": 0.9562,
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "resting_depth_usd": {
+        "within_0_5_pct": {
+          "bids": 7900000,
+          "asks": 5700000,
+          "bid_share_pct": 58.2,
+          "venues_covering": 6
+        },
+        "within_1_pct": {
+          "bids": 11600000,
+          "asks": 7800000,
+          "bid_share_pct": 59.8,
+          "venues_covering": 6
+        },
+        "within_2_pct": {
+          "bids": 14000000,
+          "asks": 11100000,
+          "bid_share_pct": 55.7,
+          "venues_covering": 6
+        },
+        "within_5_pct": {
+          "bids": 16800000,
+          "asks": 14300000,
+          "bid_share_pct": 54,
+          "venues_covering": 6
+        },
+        "within_10_pct": {
+          "bids": 22600000,
+          "asks": 15500000,
+          "bid_share_pct": 59.2,
+          "venues_covering": 5
+        }
+      },
+      "model_eligible": false,
+      "limitation": "Resting orders can be cancelled. This snapshot is five-plus hours older than the later perpetual references and is not executed flow."
+    },
+    "xrp_perpetual_market_brief": {
+      "provider": "Swiftedge",
+      "as_of_utc": "2026-11-17T13:10:00Z",
+      "price_usd": 0.9762,
+      "change_24h_pct": 3.01,
+      "taker_flow_24h_usd": 1400000,
+      "taker_flow_24h_direction": "net_buy",
+      "large_order_flow_24h_usd": 1400000,
+      "open_interest_change_24h_pct": 1.1,
+      "funding_per_8h_pct": 0.0099,
+      "volume_vs_normal": 0.4,
+      "model_eligible": false,
+      "limitation": "Provider-reported perpetual-futures data; same publisher as later Swiftedge snapshots, not independent confirmation."
+    },
+    "xrp_perpetual_levels": {
+      "provider": "Swiftedge",
+      "as_of_utc": "2026-11-17T14:25:00Z",
+      "price_usd": 0.9748,
+      "bid_wall": {
+        "price_usd": 0.972,
+        "size_xrp": 5973470
+      },
+      "ask_wall": {
+        "price_usd": 0.988,
+        "size_xrp": 5803790
+      },
+      "positioning_flip_usd": 0.975,
+      "model_eligible": false,
+      "limitation": "Resting walls and positioning estimates are not guaranteed support/resistance."
+    },
+    "xrp_perpetual_later": {
+      "provider": "OptimistFi",
+      "market_type": "perpetual_futures",
+      "as_of_utc": "2026-11-17T18:39:00Z",
+      "price_usd": 0.9579,
+      "change_24h_pct": 0.11,
+      "change_7d_pct": -9.1,
+      "change_30d_pct": -26.7,
+      "open_interest_usd": 1800000000,
+      "open_interest_change_24h_pct": -1.5,
+      "volume_24h_usd": 1100000000,
+      "funding_annualized_pct": -7.6,
+      "funding_venue_spread_pct": 38.5,
+      "venues": 38,
+      "cme_open_interest_usd": 363000000,
+      "cme_open_interest_share_pct": 21,
+      "taker_flow_24h_usd": 7500000,
+      "taker_flow_7d_usd": -116000000,
+      "liquidation_24h_usd": 3400000,
+      "depth_within_1_pct_usd": {
+        "bids": 6800000,
+        "asks": 5900000,
+        "total": 12700000
+      },
+      "price_dispersion_bps": 25.4,
+      "model_eligible": false,
+      "limitation": "Perpetual aggregate; 38-venue coverage and provider methodology differ from other OI aggregators. Funding is annualized."
+    },
+    "xrp_perpetual_comparison": {
+      "provider": "TradRadar",
+      "market_type": "perpetual_futures",
+      "as_of_utc": "2026-11-17T15:35:00Z",
+      "mark_price_usd": 0.9659,
+      "change_24h_pct": 2.31,
+      "open_interest_usd": 1310000000,
+      "open_interest_change_24h_pct": -0.98,
+      "venues": 7,
+      "funding_oi_weighted_pct_per_8h": 0.0011,
+      "liquidation_24h_minimum_usd": 1910000,
+      "longs_liquidated_usd": 932920,
+      "shorts_liquidated_usd": 981590,
+      "model_eligible": false,
+      "limitation": "Seven-venue aggregation; funding units and venue scope are not comparable to OptimistFi's 38-venue annualized rate."
+    },
+    "xrp_options": {
+      "provider": "Fuelmaps, Deribit public API",
+      "as_of_utc": "2026-11-17T00:01:00Z",
+      "reference_price_usd": 0.9541,
+      "expiries": [
+        {
+          "expiry_utc": "2026-11-17T08:00:00Z",
+          "atm_iv_pct": 82.9,
+          "one_sigma_move_pct": 2.5
+        },
+        {
+          "expiry_utc": "2026-11-18T08:00:00Z",
+          "atm_iv_pct": 79.8,
+          "one_sigma_move_pct": 4.82
+        },
+        {
+          "expiry_utc": "2026-11-20T08:00:00Z",
+          "atm_iv_pct": 81.9,
+          "one_sigma_move_pct": 7.81
+        },
+        {
+          "expiry_utc": "2026-11-27T08:00:00Z",
+          "atm_iv_pct": 71.6,
+          "one_sigma_move_pct": 11.98
+        },
+        {
+          "expiry_utc": "2026-12-25T08:00:00Z",
+          "atm_iv_pct": 67.7,
+          "one_sigma_move_pct": 21.61
+        }
+      ],
+      "historical_tail_check": {
+        "three_sigma_breaches": 20,
+        "observations": 928,
+        "observed_rate_pct": 2.2,
+        "normal_reference_pct": 0.27
+      },
+      "model_eligible": false,
+      "limitation": "Options-implied distribution and provider backtest, not a directional forecast; USDC-settled XRP contracts have thinner strike/expiry coverage."
+    },
+    "xrp_liquidation_map": {
+      "provider": "OptimistFi",
+      "as_of_utc": "2026-11-17T16:00:00Z",
+      "market_type": "Hyperliquid account subset",
+      "reference_price_usd": 0.9628,
+      "accounts": 596,
+      "long_position_value_usd": 26700000,
+      "short_position_value_usd": 31800000,
+      "at_plus_5_pct_shorts_liquidated_usd": 344300,
+      "at_minus_5_pct_longs_liquidated_usd": 15900,
+      "model_eligible": false,
+      "limitation": "Only 596 accounts with positions above the provider's threshold; not market-wide liquidation exposure."
+    },
+    "xrp_etf_flows": {
+      "provider": "CryptoKeyhole",
+      "as_of_utc": "2026-11-17T07:25:00Z",
+      "flow_date": "2026-11-16",
+      "reported_funds": 2,
+      "expected_funds": 4,
+      "partial_net_flow_xrp": -5196983,
+      "partial_net_flow_usd_approx": -5000000,
+      "last_complete_day": "2026-11-13",
+      "last_complete_day_net_flow_xrp": -9967,
+      "last_complete_day_fund_count": 4,
+      "model_eligible": false,
+      "limitation": "Partial reporting only. Missing issuer files are not zero; do not infer a complete aggregate."
+    }
+  },
+  "capital_and_institutional": {
+    "sbi_start_bonds": {
+      "issuer": "SBI Holdings, Inc.",
+      "total_issue_amount_jpy": 10000000000,
+      "status": "ISSUED_AND_SOLD_OUT",
+      "issue_date": "2026-03-24",
+      "trading_started": "2026-03-25",
+      "coupon_pct_annual": 2.15,
+      "maturity": "2029-03-23",
+      "blockchain_infrastructure": "ibet for Fin (BOOSTRY)",
+      "not_xrpl": true,
+      "xrp_subscription_reward_jpy_per_100000_face": 200,
+      "eligibility": "Eligible offering-period purchasers meeting SBI Securities and SBI VC Trade account/claim conditions",
+      "issuer_stated_xrp_purchase_plan": "SBI Holdings/SBI Securities disclosure says XRP would be purchased through SBI VC Trade and distributed by 2026-05-15 using the 2026-05-13 06:59 JST buy-price reference.",
+      "potential_reward_value_if_entire_issue_eligible_jpy": 20000000,
+      "potential_reward_value_pct_of_issue": 0.2,
+      "actual_xrp_quantity_purchased_or_distributed": "NOT_VERIFIED_FROM_SOURCES_INSPECTED",
+      "later_coupon_reward_terms": "NOT_DETERMINED_IN_2026-02-20_PRODUCT_DISCLOSURE",
+      "classification": "REAL_JPY_BOND_CAPITAL_RAISE_WITH_SMALL_XRP_REWARD_PROGRAM_NOT_A_10BN_JPY_XRP_PURCHASE",
+      "model_eligible": false,
+      "limitations": [
+        "The 20M JPY figure is a conditional upper bound assuming the entire 10BN JPY issue qualified at 200 JPY per 100,000 JPY face value.",
+        "No executed total XRP purchase or distribution quantity was verified.",
+        "Bond ledger infrastructure is ibet for Fin, not XRPL."
+      ]
+    },
+    "doppler_sbi_digital_finance": {
+      "announcement_date": "2026-07-13",
+      "parties": [
+        "Doppler Finance",
+        "SBI Digital Finance Inc."
+      ],
+      "stated_scope": [
+        "Institutional XRP and digital-asset infrastructure in Japan",
+        "XRP and tokenized-asset solutions",
+        "Liquidity",
+        "Financing",
+        "Collateral management",
+        "Capital efficiency"
+      ],
+      "financial_terms": "NOT_DISCLOSED",
+      "named_clients": "NOT_DISCLOSED",
+      "production_launch_date": "NOT_DISCLOSED",
+      "live_product_confirmed": false,
+      "committed_capital_confirmed": false,
+      "classification": "ANNOUNCED_STRATEGIC_DEVELOPMENT_PARTNERSHIP_NOT_VERIFIED_DEPLOYED_CAPITAL",
+      "model_eligible": false
+    },
+    "separate_sbi_entities": [
+      {
+        "entity": "SBI Ripple Asia",
+        "relationship": "Separate 2025 MOU with Doppler Finance for XRP yield/RWA tokenization exploration."
+      },
+      {
+        "entity": "SBI Digital Markets",
+        "relationship": "Separate institutional custody role in the 2025 SBI Ripple Asia/Doppler initiative."
+      },
+      {
+        "entity": "SBI Digital Finance",
+        "relationship": "Separate Japanese crypto-asset lending company associated with HashHub Lending; party to the July 2026 Doppler partnership."
+      },
+      {
+        "entity": "SBI VC Trade",
+        "relationship": "Japanese crypto exchange named as the planned XRP purchase/distribution venue for the SBI START Bond reward."
+      }
+    ]
+  },
+  "identity_and_exact_phrase_research": {
+    "sbic_chatgpt": {
+      "status": "ENTITY_RESOLVED_TRAINING_ONLY",
+      "observation": "SBIC West Japan's official 2024 seminar flyer advertises a generative-AI/ChatGPT introductory seminar for accounting firms and support organizations, taught by an external lawyer. This is training, not an OpenAI partnership or corporate integration.",
+      "distinction": "SBIC East/Tokyo, SBIC Central/Nagoya and SBIC West/Osaka are regional SME investment and consultation companies; they are not SBI Holdings.",
+      "model_eligible": false
+    },
+    "ask_coin": {
+      "identity": "Permission Coin (ASK), created by Permission.io for permission-based advertising/data-reward use cases.",
+      "chain_context": "Polygon and Base listings; no XRP Ledger or Ripple relationship established in the sources inspected.",
+      "xrp_relationship": "NOT_ESTABLISHED",
+      "exact_phrase_result": "No verified XRP or SBI capital relationship from the exact-phrase searches in this run.",
+      "model_eligible": false
+    },
+    "actual_capital": {
+      "exact_phrase_result": "No verified exact-phrase source tying 'actual capital' to Kamilah Stevenson, SBI Digital Finance or an XRP deployment was located.",
+      "verified_capital_event": "SBI Holdings' JPY 10BN SBI START Bond was issued and sold out; it is debt capital raised by SBI Holdings, not an XRP treasury allocation.",
+      "xrp_reward_distinction": "The issuer disclosed a planned XRP reward purchase worth 200 JPY per 100,000 JPY of eligible bond face value; maximum conditional value is 20M JPY if the full issue qualifies. Executed total purchase/distribution was not verified.",
+      "model_eligible": false
+    },
+    "camilla_kamilah_stevenson": {
+      "person_identity_status": "CONFIRMED_DR_KAMILAH_STEVENSON",
+      "evidence": "The official Wealth Doctor site identifies Dr. Kamilah Stevenson; the June 11, 2026 XRP Podcast episode is titled 'Crypto Panics! with Dr. Kamilah Stevenson'. The episode transcript renders the guest name as Camila/Camilla, likely an automated transcript variation, not proof of a second person.",
+      "candidate_youtube_channel": "https://www.youtube.com/@drkamilahstevenson",
+      "channel_identity_status": "PROBABLE_CANDIDATE_NOT_FIRST_PARTY_VERIFIED",
+      "first_party_crosslink_found": false,
+      "verified_personal_channel_upload_count": 0,
+      "inventory_complete": false,
+      "vidIQ_status": "Search unavailable in this run because the connected vidIQ tool returned zero remaining credits.",
+      "attribution_rule": "Do not attribute videos from the candidate channel to Dr. Kamilah Stevenson until an official first-party cross-link or equivalent verified identity evidence is found."
+    },
+    "japanese_bank_pilot_claims": {
+      "claims_reported": "60% lower cost and settlement in under four seconds for Japanese bank XRP pilots.",
+      "primary_bank_evidence": "NOT_FOUND",
+      "named_banks": "NOT_DISCLOSED_IN_SECONDARY_REPORT",
+      "performance_data": "NOT_INDEPENDENTLY_VERIFIED",
+      "status": "UNVERIFIED_MARKETING_OR_VIDEO_CLAIM"
+    }
+  },
+  "source_registry": [
+    {
+      "id": "swiftedge_xrp_price_20261117_1730z",
+      "publisher": "Swiftedge",
+      "source_type": "perpetual-futures market page",
+      "url": "https://swiftedge.uk/xrp-price-today",
+      "source_as_of_utc": "2026-11-17T17:30:00Z",
+      "independence_group": "swiftedge",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "swiftedge_xrp_market_brief_20261117_1310z",
+      "publisher": "Swiftedge",
+      "source_type": "perpetual-futures market brief",
+      "url": "https://swiftedge.uk/markets/today",
+      "source_as_of_utc": "2026-11-17T13:10:00Z",
+      "independence_group": "swiftedge",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "swiftedge_xrp_levels_20261117_1425z",
+      "publisher": "Swiftedge",
+      "source_type": "perpetual-futures resting-wall snapshot",
+      "url": "https://swiftedge.uk/xrp/levels",
+      "source_as_of_utc": "2026-11-17T14:25:00Z",
+      "independence_group": "swiftedge",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "fuelmaps_xrp_spot_book_20261117_1100z",
+      "publisher": "Fuelmaps",
+      "source_type": "six-venue spot order-book snapshot",
+      "url": "https://fuelmaps.io/order-book/",
+      "source_as_of_utc": "2026-11-17T11:00:00Z",
+      "independence_group": "fuelmaps",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "optimistfi_xrp_perps_20261117_1839z",
+      "publisher": "OptimistFi",
+      "source_type": "38-venue perpetual-futures aggregate",
+      "url": "https://optimistfi.com/perps/markets/xrp",
+      "source_as_of_utc": "2026-11-17T18:39:00Z",
+      "independence_group": "optimistfi",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "tradradar_xrp_perps_20261117_1535z",
+      "publisher": "TradRadar",
+      "source_type": "seven-exchange perpetual-futures aggregate",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_as_of_utc": "2026-11-17T15:35:00Z",
+      "independence_group": "tradradar",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "fuelmaps_xrp_options_20261117_0001z",
+      "publisher": "Fuelmaps / Deribit public API",
+      "source_type": "options implied-volatility and historical-tail summary",
+      "url": "https://fuelmaps.io/options/",
+      "source_as_of_utc": "2026-11-17T00:01:00Z",
+      "independence_group": "fuelmaps",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "optimistfi_xrp_liquidation_map_20261117_1600z",
+      "publisher": "OptimistFi",
+      "source_type": "Hyperliquid account-subset liquidation map",
+      "url": "https://optimistfi.com/perps/liquidations/xrp",
+      "source_as_of_utc": "2026-11-17T16:00:00Z",
+      "independence_group": "optimistfi",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_flows_20261117_0725z",
+      "publisher": "CryptoKeyhole",
+      "source_type": "issuer-file ETF flow tracker",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_as_of_utc": "2026-11-17T07:25:00Z",
+      "independence_group": "cryptokeyhole",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "sbi_start_bond_issuance_20260220",
+      "publisher": "SBI Holdings / SBI Securities",
+      "source_type": "issuer/distributor primary announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0220_16126.html",
+      "published_at": "2026-02-20",
+      "independence_group": "sbi_group",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "sbi_start_bond_product_terms_2026",
+      "publisher": "SBI Securities",
+      "source_type": "official product terms and sold-out notice",
+      "url": "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html",
+      "published_at": "2026-02-20",
+      "independence_group": "sbi_group",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "sbi_start_bond_trading_20260325",
+      "publisher": "SBI Holdings",
+      "source_type": "issuer progress notice",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0325_c_en.pdf",
+      "published_at": "2026-03-25",
+      "independence_group": "sbi_group",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "doppler_sbi_digital_finance_20260713",
+      "publisher": "Doppler Finance",
+      "source_type": "official partner announcement",
+      "url": "https://blog.doppler.finance/blog/doppler-finance-and-sbi-digital-finance-announce-strategic-partnership-to-expand-institutional-xrp-finance-in-japan",
+      "published_at": "2026-07-13",
+      "independence_group": "doppler",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "sbic_west_chatgpt_seminar_20241023",
+      "publisher": "SBIC West Japan",
+      "source_type": "official regional company seminar flyer",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "published_at": "2024-10-23",
+      "independence_group": "sbic_west",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "permission_io_ask_coin_20210824",
+      "publisher": "Permission.io",
+      "source_type": "issuer press release",
+      "url": "https://www.prnewswire.com/news-releases/permissionio-announces-availability-on-google-cloud-marketplace-to-accelerate-permission-based-advertising-301360920.html",
+      "published_at": "2021-08-24",
+      "independence_group": "permission_io",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "coingecko_permission_coin_ask_20261117",
+      "publisher": "CoinGecko",
+      "source_type": "token profile and market listing",
+      "url": "https://www.coingecko.com/en/coins/permission-coin",
+      "source_as_of_utc": null,
+      "independence_group": "coingecko",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "kamilah_wealth_doctor_site",
+      "publisher": "Dr. Kamilah Stevenson / The Wealth Doctor",
+      "source_type": "first-party biography site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "source_as_of_utc": null,
+      "independence_group": "kamilah_first_party",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "xrp_podcast_kamilah_20260611",
+      "publisher": "The XRP Podcast with Paul Barron / iHeart",
+      "source_type": "public podcast episode and transcript",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_at": "2026-06-11",
+      "independence_group": "iheart_podcast",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "edgex_japanese_bank_pilot_claim",
+      "publisher": "edgeX",
+      "source_type": "secondary article reporting video claims",
+      "url": "https://pro.edgex.exchange/en-US/news/article/japanese-banks-xrp-remittance-pilots",
+      "published_at": null,
+      "independence_group": "edgex",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    },
+    {
+      "id": "vling_kamilah_channel_candidate",
+      "publisher": "Vling",
+      "source_type": "third-party channel directory",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "source_as_of_utc": null,
+      "independence_group": "vling",
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-R224-SPOT-BOOK-01",
+      "class": "spot_resting_liquidity",
+      "claim": "Fuelmaps reported bid-heavy resting depth across six named spot venues at 11:00 UTC.",
+      "evidence": [
+        "fuelmaps_xrp_spot_book_20261117_1100z"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Resting orders can be cancelled or layered.",
+        "A later price move below previously reported perpetual bid walls shows a static bid-heavy snapshot is not proof of durable demand."
+      ]
+    },
+    {
+      "id": "OBS-R224-PERP-PRICE-01",
+      "class": "perpetual_reference_price",
+      "claim": "Swiftedge's 17:30 UTC reference was $0.9566, down 0.56% over 24 hours and 8.39% over seven days; the page explicitly labels the market perpetual futures.",
+      "evidence": [
+        "swiftedge_xrp_price_20261117_1730z"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Not a spot quote.",
+        "A different Swiftedge page earlier in the day showed positive 24-hour flow and a higher price; snapshots use different rolling windows."
+      ]
+    },
+    {
+      "id": "OBS-R224-OI-DISAGREEMENT-01",
+      "class": "derivatives_provider_disagreement",
+      "claim": "OptimistFi reported $1.8B OI across 38 venues at 18:39 UTC, while TradRadar reported $1.31B across seven exchanges at 15:35 UTC.",
+      "evidence": [
+        "optimistfi_xrp_perps_20261117_1839z",
+        "tradradar_xrp_perps_20261117_1535z"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Different venue universes and timestamps.",
+        "Funding units and weighting differ; do not average or infer one canonical OI from these snapshots."
+      ]
+    },
+    {
+      "id": "OBS-R224-FUNDING-SIGN-01",
+      "class": "derivatives_funding_disagreement",
+      "claim": "OptimistFi's 38-venue OI-weighted funding was -7.6% annualized, while TradRadar's seven-venue OI-weighted funding was +0.0011% per eight hours.",
+      "evidence": [
+        "optimistfi_xrp_perps_20261117_1839z",
+        "tradradar_xrp_perps_20261117_1535z"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Different venue sets, weighting, update times and rate units prevent direct sign comparison without normalization."
+      ]
+    },
+    {
+      "id": "OBS-R224-OPTIONS-01",
+      "class": "options_implied_volatility",
+      "claim": "Fuelmaps' Deribit snapshot showed ATM implied volatility near 80% for near expiries and its 928-day backtest summary reported 20 three-sigma breaches (2.2%) versus a 0.27% normal reference.",
+      "evidence": [
+        "fuelmaps_xrp_options_20261117_0001z"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Provider's historical backtest is not independently reproduced.",
+        "Options sample and settlement convention differ from spot/linear perps."
+      ]
+    },
+    {
+      "id": "OBS-R224-ETF-FLOW-01",
+      "class": "partial_spot_etf_flow",
+      "claim": "CryptoKeyhole showed a partial 16 November outflow of 5.197M XRP with only two of four daily reporters received.",
+      "evidence": [
+        "cryptokeyhole_xrp_etf_flows_20261117_0725z"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Not a complete daily total.",
+        "Missing issuer files are not zero."
+      ]
+    },
+    {
+      "id": "OBS-R224-SBI-START-CAPITAL-01",
+      "class": "confirmed_debt_capital_issuance",
+      "claim": "SBI Holdings issued and sold out a JPY 10BN, 2.15% three-year security-token bond using ibet for Fin; this is actual JPY debt capital, not a JPY 10BN XRP purchase.",
+      "evidence": [
+        "sbi_start_bond_issuance_20260220",
+        "sbi_start_bond_product_terms_2026",
+        "sbi_start_bond_trading_20260325"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Bond proceeds are issuer financing, not automatically XRP demand or collateral.",
+        "The issuance blockchain is ibet for Fin, not XRPL."
+      ]
+    },
+    {
+      "id": "OBS-R224-SBI-XRP-REWARD-01",
+      "class": "issuer_disclosed_xrp_reward_plan",
+      "claim": "SBI disclosed an XRP reward of JPY 200 per JPY 100,000 of eligible bond face value and a plan to purchase XRP through SBI VC Trade for distribution by 15 May 2026.",
+      "evidence": [
+        "sbi_start_bond_issuance_20260220",
+        "sbi_start_bond_product_terms_2026"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "A conditional maximum of JPY 20M assumes the entire JPY 10BN issue qualifies.",
+        "The actual XRP amount purchased and distributed was not verified in this run."
+      ]
+    },
+    {
+      "id": "OBS-R224-DOPPLER-SBI-01",
+      "class": "announced_institutional_development_partnership",
+      "claim": "Doppler Finance announced a strategic development partnership with SBI Digital Finance for institutional XRP and tokenized-asset infrastructure in Japan.",
+      "evidence": [
+        "doppler_sbi_digital_finance_20260713"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "No financial terms, committed capital, named clients or production launch date disclosed.",
+        "SBI Digital Finance is distinct from SBI Ripple Asia and SBI Digital Markets."
+      ]
+    },
+    {
+      "id": "OBS-R224-SBIC-CHATGPT-01",
+      "class": "regional_company_training_event",
+      "claim": "SBIC West Japan's official flyer advertises a 2024 ChatGPT/Generative-AI seminar for accounting firms; it is a training event, not an OpenAI partnership.",
+      "evidence": [
+        "sbic_west_chatgpt_seminar_20241023"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "This source identifies SBIC West Japan only; it does not establish any SBI Holdings relationship."
+      ]
+    },
+    {
+      "id": "OBS-R224-ASK-01",
+      "class": "token_identity_disambiguation",
+      "claim": "ASK Coin is Permission Coin associated with Permission.io's consent-based advertising/data-reward model; no XRP relationship was established.",
+      "evidence": [
+        "permission_io_ask_coin_20210824",
+        "coingecko_permission_coin_ask_20261117"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Token listings and historical issuer descriptions do not prove current project activity or liquidity."
+      ]
+    },
+    {
+      "id": "OBS-R224-KAMILAH-PERSON-01",
+      "class": "person_identity_confirmation",
+      "claim": "Dr. Kamilah Stevenson is identified by a first-party Wealth Doctor site and a June 11, 2026 XRP Podcast episode; the episode transcript's Camila/Camilla rendering is likely transcription variation.",
+      "evidence": [
+        "kamilah_wealth_doctor_site",
+        "xrp_podcast_kamilah_20260611"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "A first-party YouTube channel cross-link was not found.",
+        "A transcript spelling is not sufficient to identify separate people."
+      ]
+    },
+    {
+      "id": "OBS-R224-KAMILAH-CHANNEL-01",
+      "class": "unverified_channel_candidate",
+      "claim": "@drkamilahstevenson is a plausible candidate channel but remains unverified as the first-party channel of the podcast guest.",
+      "evidence": [
+        "vling_kamilah_channel_candidate",
+        "kamilah_wealth_doctor_site",
+        "xrp_podcast_kamilah_20260611"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "Third-party directory only; no official site cross-link or direct channel ownership proof.",
+        "No videos are attributed in this artifact."
+      ]
+    },
+    {
+      "id": "OBS-R224-BANK-PILOT-01",
+      "class": "unverified_performance_claim",
+      "claim": "The reported 60% lower-cost and under-four-second Japanese-bank XRP pilot claim remains unverified.",
+      "evidence": [
+        "edgex_japanese_bank_pilot_claim"
+      ],
+      "model_eligible": false,
+      "disconfirming_or_limiting": [
+        "No named banks, primary documents or independently reproducible benchmark were found."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings, Inc.",
+      "to": "SBI START Bonds",
+      "relation": "issuer",
+      "status": "confirmed_issued",
+      "evidence": [
+        "sbi_start_bond_issuance_20260220",
+        "sbi_start_bond_trading_20260325"
+      ]
+    },
+    {
+      "from": "SBI Securities",
+      "to": "SBI START Bonds",
+      "relation": "lead_manager_and_distributor",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_start_bond_issuance_20260220"
+      ]
+    },
+    {
+      "from": "SBI START Bonds",
+      "to": "ibet for Fin",
+      "relation": "tokenized_bond_ledger",
+      "status": "confirmed_not_xrpl",
+      "evidence": [
+        "sbi_start_bond_trading_20260325"
+      ]
+    },
+    {
+      "from": "SBI START Bonds",
+      "to": "XRP",
+      "relation": "eligible_purchaser_reward",
+      "status": "issuer_disclosed_plan_actual_total_not_verified",
+      "evidence": [
+        "sbi_start_bond_issuance_20260220",
+        "sbi_start_bond_product_terms_2026"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relation": "planned_purchase_and_reward_distribution",
+      "status": "plan_disclosed_execution_quantity_unverified",
+      "evidence": [
+        "sbi_start_bond_product_terms_2026"
+      ]
+    },
+    {
+      "from": "Doppler Finance",
+      "to": "SBI Digital Finance",
+      "relation": "institutional_XRP_finance_development_partnership",
+      "status": "announced_no_production_or_capital_terms",
+      "evidence": [
+        "doppler_sbi_digital_finance_20260713"
+      ]
+    },
+    {
+      "from": "SBI Ripple Asia",
+      "to": "Doppler Finance",
+      "relation": "separate_2025_MOU",
+      "status": "exploratory_not_same_entity_as_SBI_Digital_Finance",
+      "evidence": [
+        "doppler_sbi_digital_finance_20260713"
+      ]
+    },
+    {
+      "from": "SBI Digital Markets",
+      "to": "Doppler Finance",
+      "relation": "separate_2025_custody_role",
+      "status": "not_SBI_Digital_Finance",
+      "evidence": [
+        "doppler_sbi_digital_finance_20260713"
+      ]
+    },
+    {
+      "from": "SBIC West Japan",
+      "to": "ChatGPT",
+      "relation": "2024_training_seminar",
+      "status": "training_only_no_OpenAI_partnership",
+      "evidence": [
+        "sbic_west_chatgpt_seminar_20241023"
+      ]
+    },
+    {
+      "from": "Permission.io",
+      "to": "ASK / Permission Coin",
+      "relation": "token_issuer_and_use_case",
+      "status": "confirmed",
+      "evidence": [
+        "permission_io_ask_coin_20210824",
+        "coingecko_permission_coin_ask_20261117"
+      ]
+    },
+    {
+      "from": "Dr. Kamilah Stevenson",
+      "to": "The XRP Podcast with Paul Barron",
+      "relation": "guest_appearance",
+      "status": "confirmed_episode_title_first_party_bio_transcript_name_variant",
+      "evidence": [
+        "kamilah_wealth_doctor_site",
+        "xrp_podcast_kamilah_20260611"
+      ]
+    },
+    {
+      "from": "Dr. Kamilah Stevenson",
+      "to": "@drkamilahstevenson",
+      "relation": "candidate_YouTube_channel",
+      "status": "probable_not_first_party_verified",
+      "evidence": [
+        "vling_kamilah_channel_candidate",
+        "kamilah_wealth_doctor_site"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "R224-H1-resting-bids-not-durable",
+      "claim": "Bid-heavy resting spot depth is not sufficient evidence of durable demand or near-term price support.",
+      "support": [
+        "fuelmaps_xrp_spot_book_20261117_1100z",
+        "swiftedge_xrp_levels_20261117_1425z",
+        "swiftedge_xrp_price_20261117_1730z"
+      ],
+      "disconfirming_or_missing": [
+        "No raw order-level add/cancel/trade tape captured.",
+        "Different providers and spot/perpetual market types."
+      ],
+      "test": "Capture timestamped multi-venue order-book deltas and executed trades; measure wall survival and price impact."
+    },
+    {
+      "id": "R224-H2-open-interest-scope",
+      "claim": "OI divergence is predominantly explained by venue universe, instrument coverage and timestamp differences rather than a single provider being necessarily wrong.",
+      "support": [
+        "optimistfi_xrp_perps_20261117_1839z",
+        "tradradar_xrp_perps_20261117_1535z"
+      ],
+      "disconfirming_or_missing": [
+        "No common venue-by-venue synchronized extract or contract-level reconciliation."
+      ],
+      "test": "Normalize identical venues, contract types, currencies, timestamps and mark-price conventions."
+    },
+    {
+      "id": "R224-H3-funding-sign-dispersion",
+      "claim": "Funding sign disagreement is driven by venue dispersion and provider weighting/cadence; aggregate funding should not be treated as one market-wide sentiment value.",
+      "support": [
+        "optimistfi_xrp_perps_20261117_1839z",
+        "tradradar_xrp_perps_20261117_1535z"
+      ],
+      "disconfirming_or_missing": [
+        "Provider methodologies are not fully independently reproduced."
+      ],
+      "test": "Capture venue-level funding at synchronized timestamps and recompute common-weight aggregates."
+    },
+    {
+      "id": "R224-H4-etf-partial-reporting",
+      "claim": "The apparent ETF flow disagreement is a reporting-completeness problem until all issuer files for the same fund universe and date are reconciled.",
+      "support": [
+        "cryptokeyhole_xrp_etf_flows_20261117_0725z"
+      ],
+      "disconfirming_or_missing": [
+        "Only two of four expected daily reporters had published in the cited snapshot."
+      ],
+      "test": "Reconcile each issuer's daily holdings file and the same fund universe after publication."
+    },
+    {
+      "id": "R224-H5-bond-reward-small-not-treasury",
+      "claim": "SBI START Bonds create a real JPY debt issuance and a separate, much smaller XRP reward purchase program; the bond amount must not be classified as XRP capital.",
+      "support": [
+        "sbi_start_bond_issuance_20260220",
+        "sbi_start_bond_product_terms_2026",
+        "sbi_start_bond_trading_20260325"
+      ],
+      "disconfirming_or_missing": [
+        "Actual XRP purchase and distribution quantity is not disclosed in the inspected sources."
+      ],
+      "test": "Find issuer confirmation of the XRP purchased/distributed and reconcile recipient eligibility."
+    },
+    {
+      "id": "R224-H6-doppler-partnership-not-deployed",
+      "claim": "The SBI Digital Finance/Doppler agreement may enable future institutional XRP collateral and lending, but no current deployed capital or live product is established by the announcement.",
+      "support": [
+        "doppler_sbi_digital_finance_20260713"
+      ],
+      "disconfirming_or_missing": [
+        "No financial terms, named institutions, product launch or live lending metrics disclosed."
+      ],
+      "test": "Require product documentation, custody/segregation details, executed transactions and independently verified AUM."
+    },
+    {
+      "id": "R224-H7-bank-pilot-claim-unverified",
+      "claim": "The 60%-cheaper/under-four-second Japanese bank pilot claim is not yet reliable evidence of production XRP payment throughput.",
+      "support": [
+        "edgex_japanese_bank_pilot_claim"
+      ],
+      "disconfirming_or_missing": [
+        "No named banks or primary performance records."
+      ],
+      "test": "Obtain named bank, corridor, baseline, sample size, transaction logs and independently audited latency/cost methodology."
+    },
+    {
+      "id": "R224-H8-channel-attribution-unresolved",
+      "claim": "The Dr. Kamilah Stevenson person is confirmed, but the candidate YouTube channel is not first-party verified and must not be attributed yet.",
+      "support": [
+        "kamilah_wealth_doctor_site",
+        "xrp_podcast_kamilah_20260611",
+        "vling_kamilah_channel_candidate"
+      ],
+      "disconfirming_or_missing": [
+        "No first-party link from her official site or verified social account to the candidate channel."
+      ],
+      "test": "Find a first-party cross-link or verified account post explicitly linking the channel."
+    }
+  ],
+  "data_quality": {
+    "raw_wire_bytes_available": false,
+    "raw_content_sha256_receipts_created": false,
+    "raw_receipt_ids_created": false,
+    "model_eligible": false,
+    "no_averaging_policy": "Do not average spot and perpetual prices, provider OI aggregates, funding rates with different units, or partial ETF flows.",
+    "source_independence_policy": "Publisher identity is recorded; common upstream exchange feeds or data vendors have not been ruled out. Multiple dashboards from one publisher count as one source family.",
+    "timestamp_policy": "Use the explicit provider timestamp. If no exact timestamp is shown, preserve null and do not synthesize one.",
+    "source_limitations": [
+      "Search/rendered-page extracts only; no original HTTP response bytes or SHA-256 receipts.",
+      "Market data aggregators may share upstream venue feeds.",
+      "Resting order books are cancellable and are not executed volume.",
+      "ETF flow snapshot is partial.",
+      "SBI XRP reward execution quantity remains unverified.",
+      "YouTube channel ownership remains unverified."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "The observations are web-rendered extracts without immutable raw-byte receipts, common synchronized venue coverage, or leakage-safe out-of-sample evaluation. They are descriptive only."
+  },
+  "blockers": [
+    "No immutable raw-source byte receipts for this addendum.",
+    "Spot and perpetual series must remain separate.",
+    "OI and funding provider scopes need common-venue reconciliation.",
+    "ETF issuer reporting remains partial at the cited cutoff.",
+    "SBI START Bond's executed XRP purchase/distribution quantity is not verified.",
+    "Doppler/SBI Digital Finance production launch and committed capital are not disclosed.",
+    "Japanese bank pilot cost/latency claim lacks named primary evidence.",
+    "Kamilah candidate YouTube channel lacks first-party cross-link.",
+    "vidIQ search credits exhausted; no channel video inventory was performed."
+  ],
+  "next_actions": [
+    "Add the official SBI START Bond XRP reward disclosure and 10BN JPY capital taxonomy to the institutional event graph.",
+    "Seek issuer confirmation of actual XRP purchased/distributed under the bond reward.",
+    "Track the Doppler/SBI Digital Finance partnership for production terms, collateral policy and executed capital.",
+    "Continue common-venue derivatives and spot-book capture with raw byte receipts.",
+    "Reconcile 16 November ETF flows after all issuer files are published.",
+    "Find a first-party Kamilah YouTube cross-link before attributing uploads.",
+    "Run leakage-safe chronological walk-forward tests only after model-eligible feature data exists."
+  ]
+}
