@@ -114,3 +114,11 @@ prose is produced.
 arXiv API metadata, fetched 2026-11-17, HTTP 200 recorded per item in
 data/millennium/poincare_sources.json. No full text redistributed. No other source
 was touched in this cycle.
+
+## Superseded
+
+The "none fetched" anchors in the table above were produced by the method audited in
+docs/millennium/RE-V2.md. The P vs NP row has since moved to two quoted primary
+claims plus one secondary attribution check under reverse-engineering v2. Yang-Mills
+and BSD remain unfetched, and that is now recorded in the ledger.
+

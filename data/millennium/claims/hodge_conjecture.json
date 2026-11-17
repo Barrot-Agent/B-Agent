@@ -1,0 +1,139 @@
+{
+  "problem": "Hodge Conjecture",
+  "method": "reverse-engineering v2 (TRACE-5)",
+  "built_at": "2026-11-17",
+  "records": [
+    {
+      "id": "hodge-open-status",
+      "problem": "Hodge Conjecture",
+      "claim": "As of 2021, the Hodge conjecture is an open problem, not a settled result.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2105.04695",
+        "title": "Known cases of the Hodge conjecture",
+        "year": "2021",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "The Hodge conjecture is a major open problem in complex algebraic geometry. In this survey, we discuss the main cases where the conjecture is known, and also explain an approach by Griffiths-Green to solve the problem."
+      },
+      "quotes": [
+        "The Hodge conjecture is a major open problem in complex algebraic geometry"
+      ],
+      "falsifier": "a refereed proof accepted by the community, after which surveys stop calling it open",
+      "does_not_show": "how much is known, or which cases are settled; only the general status as of 2021",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "integral-hodge-atiyah-hirzebruch",
+      "problem": "Hodge Conjecture",
+      "claim": "Atiyah and Hirzebruch (1962) produced the torsion obstruction that makes the integral form of the Hodge conjecture false.",
+      "status": "E",
+      "grade_reason": "no abstract retrievable; existence verified, content not verified",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1016/0040-9383(62)90094-0",
+        "title": "Analytic cycles on complex manifolds",
+        "year": 1962,
+        "venue": "Topology",
+        "authors": [
+          "Atiyah",
+          "Hirzebruch"
+        ],
+        "http_status": 200,
+        "abstract": ""
+      },
+      "quotes": [],
+      "falsifier": "a proof that every integral Hodge class is algebraic, which would remove the torsion obstruction",
+      "does_not_show": "content is unverified: Topology 1962 is paywalled and exposes no abstract, so this is an existence record only",
+      "affirmed": false,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "integral-hodge-counterexamples",
+      "problem": "Hodge Conjecture",
+      "claim": "Further counterexamples to the integral Hodge conjecture have been constructed in codimension 2 and 3 for approximations to the classifying space of groups of type A.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "1601.06170",
+        "title": "Further counterexamples to the integral Hodge conjecture",
+        "year": "2016",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "We study the integral Hodge conjecture in complex codimension $2$ and $3$ for approximations to the classifying space of groups of type A. In degree two, we prove a conjecture of Ben Antieau, extending his two counterexamples to a general family of groups. In particular, when reduced to a finite field, these spaces extend Antieau's counterexamples to the integral $\\ell$-adic Tate conjecture from the cases $\\ell = 2, 3$ to all primes $\\ell$."
+      },
+      "quotes": [
+        "We study the integral Hodge conjecture in complex codimension $2$ and $3$",
+        "extending his two counterexamples to a general family of groups"
+      ],
+      "falsifier": "a theorem that all integral Hodge classes in codimension 2 are algebraic on these spaces",
+      "does_not_show": "the full classification of such counterexamples, nor whether the rational form fails",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "lefschetz-one-one",
+      "problem": "Hodge Conjecture",
+      "claim": "There is a Lefschetz (1,1) theorem characterizing classes of Cartier divisors, and it has an analogue for normal projective complex varieties.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "math/9904086",
+        "title": "A Lefschetz (1,1) Theorem for normal projective complex varieties",
+        "year": "1999",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "We prove an analogue of the Lefschetz (1,1) Theorem characterizing cohomology classes of Cartier divisors (or equivalently first Chern classes of line bundles) in the second integral cohomology. Let $X$ be a normal complex projective variety. We show that the classes of Cartier divisors in $H^2(X,Z)$ are precisely the classes $x$ such that (i) the image of $x$ in $H^2(X,C)$ (cohomology with complex coefficients) lies in $F^1 H^2(X,C)$ (first level of the Hodge filtration for Deligne's mixed Hodge structure), and (ii) $x$ is Zariski-locally trivial, i.e., there is a covering of $X$ by Zariski open sets $U$ such that $x$ has zero image in $H^2(U,Z)$. For normal quasi-projective varieties, this positively answers a question of Barbieri-Viale and Srinivas (J. Reine Ang. Math. 450 (1994)), where examples are given to show that divisor classes are not characterized by either one of the above conditions (i), (ii), taken by itself, unlike in the case of non-singular varieties. The present paper also contains an example of a non-normal projective variety for which (i) and (ii) do not suffice to characterize divisor classes."
+      },
+      "quotes": [
+        "We prove an analogue of the Lefschetz (1,1) Theorem characterizing cohomology classes of Cartier divisors"
+      ],
+      "falsifier": "a smooth projective variety with a (1,1) class that is not algebraic",
+      "does_not_show": "nothing about codimension 2 and higher, which is where the conjecture is open",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "hypersurface-assertion",
+      "problem": "Hodge Conjecture",
+      "claim": "A 2023 arXiv preprint asserts a proof of the Hodge conjecture for smooth projective hypersurfaces.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2312.09268",
+        "title": "Hodge conjecture for projective hypersurface",
+        "year": "2023",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "We show that a Hodge class of a complex smooth projective hypersurface is an analytic logarithmic De Rham class. On the other hand we show that for a complex smooth projective variety an analytic logarithmic De Rham class of of type $(d,d)$ is the class of codimension $d$ algebraic cycle. We deduce the Hodge conjecture for smooth projective hypersurfaces."
+      },
+      "quotes": [
+        "We deduce the Hodge conjecture for smooth projective hypersurfaces"
+      ],
+      "falsifier": "refereeing or independent replication that fails to reproduce the argument",
+      "does_not_show": "whether the argument is correct. Unrefereed assertion, no replication fetched, therefore excluded from evidence",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": true,
+      "exclusion_reason": "unrefereed preprint asserting a solution to an open problem; excluded until independent verification exists"
+    }
+  ]
+}

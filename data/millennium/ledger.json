@@ -66,7 +66,24 @@
       "status": "open",
       "blocking_gap": "Three barrier theorems (relativization, natural proofs, algebrization) rule out every known technique; current circuit lower bounds do not reach NP.",
       "transmuted_approach": "Borrow the Poincare pattern - a deformation with a monotone quantity and controlled singularities - as an analogy only, then pursue geometric complexity theory (representation-theoretic obstructions), which is deliberately non-relativizing and non-naturalizing. Dead end to check first: occurrence obstructions already block the simplest GCT programme.",
-      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full.",
+      "evidence": {
+        "file": "data/millennium/claims/p_vs_np.json",
+        "method": "reverse-engineering v2 (TRACE-5)",
+        "grades": {
+          "Q": 3,
+          "E": 1,
+          "X": 2
+        },
+        "usable_claims": 3,
+        "excluded_claims": 0,
+        "rule": "only Q (quoted primary) records that are not excluded may support a claim",
+        "unsourced_fields": [
+          "blocking_gap",
+          "transmuted_approach"
+        ],
+        "unsourced_note": "these two fields are analysis carried from the v1 audit; no source is quoted for them"
+      }
     },
     {
       "number": 2,
@@ -74,7 +91,23 @@
       "status": "open",
       "blocking_gap": "The integral form is false (Atiyah-Hirzebruch torsion, Kollar); the rational form has no general construction of algebraic cycles in codimension two and higher.",
       "transmuted_approach": "Use Poincare-style reduction to a normal form: replace cycle construction with a deformation of the Hodge structure (variation of Hodge structure) and ask which classes are invariant under monodromy. Test on the known counterexamples before general claims.",
-      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full.",
+      "evidence": {
+        "file": "data/millennium/claims/hodge_conjecture.json",
+        "method": "reverse-engineering v2 (TRACE-5)",
+        "grades": {
+          "Q": 4,
+          "E": 1
+        },
+        "usable_claims": 3,
+        "excluded_claims": 1,
+        "rule": "only Q (quoted primary) records that are not excluded may support a claim",
+        "unsourced_fields": [
+          "blocking_gap",
+          "transmuted_approach"
+        ],
+        "unsourced_note": "these two fields are analysis carried from the v1 audit; no source is quoted for them"
+      }
     },
     {
       "number": 3,
@@ -110,5 +143,5 @@
     }
   ],
   "conflicts": [],
-  "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired database."
+  "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired files. data/millennium/claims is new work under reverse-engineering v2 and is graded separately; only Q records there may support a claim."
 }
