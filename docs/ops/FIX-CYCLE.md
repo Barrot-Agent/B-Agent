@@ -56,6 +56,10 @@ so Liquid emits it verbatim.
 Structural gap, recorded rather than fixed: nothing in CI scans tracked markdown for
 Liquid-hostile sequences, so this can recur. That check is the next repair.
 
+Verified 2026-11-17 after the raw-tag fix: CI run 44157714643 conclusion success,
+pages-build-deployment run 44157714268 conclusion success. Grades: CI Q, pages Q.
+The first two pages attempts are X and stay in the log as controls.
+
 ## Part 2: go audit
 
 Every "go" or deferred task found in the conversation and the repo, with a status
