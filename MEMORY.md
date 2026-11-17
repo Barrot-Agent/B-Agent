@@ -176,3 +176,15 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - scripts/pillars_check.py: hf_space stage=BUILD_ERROR as of 2026-11-17 (live
   Space), deploy_sync OK, system_prompt_fiction clean. It flags, it does not
   strip — corrected the wording in barrot.md.
+
+## 2026-11-17 — CORRECTION: signal asset != traded asset
+- The 45.5% accuracy is XRP sentiment (check_signal_accuracy.py:13 prices
+  'ripple'). The paper trader is BTC-USD (coinbase_paper_trader.py:14) and never
+  reads latest_signal.json (grep = 0 hits). It makes its own Groq call from the
+  ticker + last 20 trades.
+- Neither latest_signal.json nor latest_signal_btc.json has a product field.
+  Asset identity lives only in prose text.
+- Therefore: three parallel market models (XRP sentiment, BTC tape, BTC state
+  file) with no wire. This is the #1 paradigm-sync defect — wishlist item 0.
+- verify_artifacts.py now reports 5 errors on the live repo: position without
+  product, confidence 0.0, stale 18.6 days, product missing, accuracy 45.5%.
