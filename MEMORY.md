@@ -188,3 +188,61 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   file) with no wire. This is the #1 paradigm-sync defect — wishlist item 0.
 - verify_artifacts.py now reports 5 errors on the live repo: position without
   product, confidence 0.0, stale 18.6 days, product missing, accuracy 45.5%.
+
+## 2026-11-17 — PHASE 1-4 CHECKPOINT (pre-BPE-v1)
+
+### Rules now permanent
+- TRANSMUTE RULE (already in MEMORY.md above): 2-3 variants, measure, keep winner,
+  delete losers, git checkpoint first, report What/Why/Proof.
+- QUERY GAP-FILL RULE: every user message is transmuted before answering.
+  Line 1 is exactly `[Original] <asked> -> [Transmuted + Gap-Filled] <will do>`.
+  Six gap-fill categories: missing input data, missing test/proof, missing failure
+  path, missing cost/risk, missing rollback, missing verification.
+  Conflict rule: original wins, conflict stated. Money/secrets/live state: stop
+  for approval, do not act. Written into .opencode/agent/barrot.md.
+
+### Phase 1 — scorer fix (commit 5792fa8)
+- Root cause was TWO coverage gates: pytest.ini --cov-fail-under=70 AND
+  pyproject.toml [tool.coverage.report] fail_under = 70.
+- Fix: gate removed from pytest.ini; fail_under = 0 in pyproject; CI full-suite
+  step owns --cov-fail-under=70 (measured 77.57%).
+- transmute.py gained --no-cov, adaptive tie band max(TIE_EPS, jitter), and abort
+  on missing --tests path. Scoped run rc 1 -> 0; transmute wall 32724 -> 3948ms.
+
+### Phase 2 — dedupe (commit 96b8258)
+- 10 byte-identical pairs -> 8 groups: 5 shimmed, 2 hash-locked, 1 structural.
+- Shims: scripts/ + tools/mem_palace -> barrot_agent/mem_palace;
+  scripts/granite_model_config -> barrot_agent/tools;
+  utils/score_to_signal -> barrot_agent/analysis;
+  scripts/deploy_huggingface -> barrot_agent/orchestration (CLI delegate);
+  barrot_agent/tools/trial_tracker -> barrot_agent/monetization.
+- NOT shimmed: core/hrm_ternary vs hf_space/hrm_ternary (standalone Space,
+  app.py imports bare hrm_ternary); grant_generator x2 (prints on import).
+  Both hash-locked in tests/test_duplicate_shims.py.
+- Cost: +5 sys.path.insert guards (26 pre-existing -> 31 total). Die with
+  `pip install -e .`.
+
+### Phase 3 — cleanup (commit f109189)
+- 16 zero-byte root files moved to archive/debris-20261116/ (1 git mv, 15 mv).
+  Nothing deleted. Root zero-byte count 16 -> 0. 1048 tests still collect.
+- Inventories in results/re_wishlist.md (listed, not fixed): 31 sys.path.insert,
+  8 bare except, 94 of 121 scripts with no test reference.
+
+### Phase 4 — meta RE + MMI + gap fill + rule (commits e0496f4, 388fff8, 2a8a790, 3fed755, 8e9e468)
+- Loop: anti-cheat replaced by executed ablation + hash-chained ledger
+  (scripts/witness_loop.py, V3, 10 tests). 10-stage loop was prose only.
+- results/mmi_mastery_wishlist.md: 51 items (item 0 + 50), every Why measured.
+- Key market facts: accuracy 45.5% (772/1697, XRP only); confidence 0.0 published;
+  signal 18.6 days stale; paper book position without product; no fee/slippage/
+  stop/drawdown; $25 is the only risk rule; two ledgers disagree (45 vs 1697).
+- ITEM 0: signal measures XRP, paper trader trades BTC-USD, zero coupling.
+  Neither signal file has a product field. Three parallel market models.
+- scripts/verify_artifacts.py: 22 tests, reports 5 errors on the live repo.
+
+### Gap fill summary — results/gap_fill_log.json
+- 20 gaps total: 4 applied, 5 detected, 11 logged. 10 critical, 8 high, 2 medium.
+- NOTE: the "19 gaps / 4 applied / 4 detected / 11 logged" figure was correct
+  before the product_missing gap was added in commit 8e9e468. Current truth is 20.
+
+### Test baseline
+- 1080 collected, 1079 passed, 1 skipped (real-runtime tier). exit 0, ~4m24s.
