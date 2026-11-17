@@ -630,3 +630,20 @@
   never reaches signals; patch_add_btc_tool.py reads signals, does not write them.
 - Next step: SECTION 4 — write the permanent query-transmutation rule into
   .opencode/agent/barrot.md, run scripts/pillars_check.py, SHOW THE DIFF, commit.
+
+## 2026-11-17 — PHASE 4 SECTION 4 COMPLETE: permanent query-transmutation rule
+- .opencode/agent/barrot.md: added QUERY TRANSMUTATION (permanent) section —
+  line 1 of every response = [Original] ... -> [Transmuted + Gap-Filled] ...;
+  six gap-fill categories; original wins on conflict; stop for approval before
+  money/secrets/live-state gap-fills.
+- Also corrected one false claim already in the file: it said pillars_check.py
+  "strips" fiction vocabulary. It only flags it (check_system_prompt_fiction,
+  FICTION_TERMS list) and checks the deployed hf_space/app.py, not this file.
+- Verification: local FICTION_TERMS scan of barrot.md = none. pillars_check.py
+  run for real: deploy_sync OK, system_prompt_fiction clean, github_app and
+  databricks FAIL (no creds in this env), hf_space stage=BUILD_ERROR (live Space
+  is broken right now — reported, not touched).
+- MEMORY.md: added the permanent rule + the measured market facts, and corrected
+  my earlier judgment-rubric scores (37/69/82/95) to the measured transmute
+  scores (93881 / 996389 / 994393).
+- Phase 4 done: meta loop, Top-50 wishlist, gap fill log, permanent rule.

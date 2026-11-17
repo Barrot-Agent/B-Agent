@@ -138,9 +138,41 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Biggest hole in the loop: Anti-Cheat is self-interrogation, not an executed
   ablation. Second: Second-Order promotes to Universal on an unmeasured "improves".
 - Loop variants scored: original 37, V1 Ablation 69, V2 Witness 82, V3 Ledger 95
-  (judgment rubric: checkability 40 / preservation 30 / containment 30).
+  (those were judgment-rubric numbers, checkability 40 / preservation 30 /
+  containment 30 — NOT measured). Superseded 2026-11-17 by real transmute
+  scores: V1 ablation-only 1/10 tests 93881, V2 witness+chain 10/10 996389,
+  V3 durable ledger 10/10 994393 (applied). Use the measured numbers.
 - Repo has NO `work` branch. Only main.
 - Repo-wide: 1028 collected tests, 95/120 scripts with no test reference,
   10 byte-identical duplicate pairs, 16 zero-byte root files, 31 sys.path hacks.
 - pytest.ini --cov-fail-under=70 corrupts every scoped run AND transmute scoring.
   That is rank 2 on the wishlist and should be fixed before any transmutation.
+
+## 2026-11-17 — PERMANENT RULE: query transmutation
+- Sean's standing instruction: every user message gets transmuted, not answered
+  literally. Line 1 of every response is exactly:
+    [Original] <what was asked> -> [Transmuted + Gap-Filled] <what you will do>
+- Gap-fill categories, checked every time: missing input data, missing test or
+  proof, missing failure path, missing cost/risk, missing rollback, missing
+  verification that the change did what it claims.
+- Bound: gap-fill is additive. If it contradicts the original, the original wins
+  and the conflict is stated. If it would touch money, secrets, live state or the
+  live publish path: name it and stop for approval, do not do it.
+- Written into .opencode/agent/barrot.md (QUERY TRANSMUTATION section) so it
+  survives sessions. Local fiction-term scan: clean.
+
+## 2026-11-17 — measured market facts (do not re-derive, do not forget)
+- Signal accuracy 45.5% (772/1697) in web/signal_accuracy.json. Below chance.
+- web/latest_signal.json publishes confidence 0.0 with score 44, 18.6 days old.
+  scripts/signal_summary.py:135 requires 0 < confidence, so the writer is not
+  validating.
+- web/paper_trading_state.json: position_size 0.0124, position_product null,
+  avg_entry_price 80436.84, 126 trades. Corrupt book, shipped unnoticed.
+- trading/ has no fee, slippage, drawdown, stop or kelly code. RiskManager has
+  exactly one rule ($25 cap). client_order_id = fresh uuid per call.
+- Two ledgers disagree: data/signal_ledger.jsonl (45 lines) vs
+  web/signal_history.jsonl (1697 records).
+- scripts/verify_artifacts.py now catches all of the above; exit 1 with 4 errors.
+- scripts/pillars_check.py: hf_space stage=BUILD_ERROR as of 2026-11-17 (live
+  Space), deploy_sync OK, system_prompt_fiction clean. It flags, it does not
+  strip — corrected the wording in barrot.md.
