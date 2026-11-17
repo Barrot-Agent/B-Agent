@@ -6551,7 +6551,7 @@ The next handoff append creates a new commit and therefore a new head. **No 618a
 
 ### 4. Primary institutional relationship update — Run217
 
-Source artifact: `research/xrp_intelligence/20261117T133323Z-run217-xrp-primary-institutional-relationship-and-platform-coordination-addendum.json` (verify exact path against the current tree if renamed).
+Source artifact: `research/xrp_intelligence/20261117T133323Z-run217-primary-institutional-relationship-and-platform-addendum.json`.
 
 - **SBI Holdings / Circle:** SBI's official release confirms the Japanese-market JV to promote USDC and digital-finance use cases. SBI Holdings and SBI Shinsei Bank separately disclosed USD 25M each of Circle equity at listing (USD 50M combined). SBI VC Trade's official release confirms Japanese USDC handling registration/services. None of these sources discloses an XRP allocation or bridge-currency volume.
 - **BNY / Ripple:** BNY's official Oct 27 release says BNY is primary RLUSD reserve custodian, has a Ripple Prime custody relationship and announced XRP/RLUSD support on its institutional Digital Asset Custody platform for eligible clients. Direct RLUSD mint/redeem is an intended future capability subject to final BNY/regulatory approvals. No client XRP balances, net deposits, collateral utilization or transaction volume were disclosed.
