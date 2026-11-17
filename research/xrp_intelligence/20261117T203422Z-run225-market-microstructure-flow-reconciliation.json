@@ -1,0 +1,613 @@
+{
+  "artifact_type": "xrp_run225_market_microstructure_and_flow_reconciliation",
+  "schema_version": "1.0.0",
+  "repository": "Barrot-Agent/B-Agent",
+  "run_id": "run225",
+  "captured_at_utc": "2026-11-17T20:34:22Z",
+  "data_cutoff_utc": "2026-11-17T18:41:00Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "repository_state": {
+    "inspected_main_sha": "d287fdddaf4417a145f63ec599cc08bef9252114",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_parent_head": "afe8ce24c1f4c9e19c0c6192124f6ab8770b5d50",
+    "mainline_merge_commit": "afe8ce24c1f4c9e19c0c6192124f6ab8770b5d50",
+    "mainline_merge_parents": [
+      "09eccd7967be2da8c6cdfe78e48989313c588cdc",
+      "d287fdddaf4417a145f63ec599cc08bef9252114"
+    ],
+    "integration_pr": 1663,
+    "integration_pr_state": "open_draft",
+    "merge_decision": "WITHHELD"
+  },
+  "source_registry": [
+    {
+      "id": "investing_xrp_daily_20261117",
+      "publisher": "Investing.com",
+      "url": "https://www.investing.com/crypto/xrp/historical-data",
+      "source_as_of_date": "2026-11-17",
+      "source_as_of_utc": null,
+      "independence_group": "investing.com",
+      "limitations": [
+        "Daily row; exact intraday time and volume unit not supplied."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "basis_binance_xrpusdt_perp_book_20261117_1349z",
+      "publisher": "Basis Charts",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T13:49:00Z",
+      "independence_group": "basischarts.com",
+      "limitations": [
+        "Binance perpetual book, not spot; resting orders can be cancelled."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "liqwall_xrp_oi_20261117_0552z",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/open-interest/xrp",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T05:52:00Z",
+      "independence_group": "liqwall.com",
+      "limitations": [
+        "Provider venue scope differs from other aggregators."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "tradradar_xrp_perps_20261117_1535z",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T15:35:00Z",
+      "independence_group": "tradradar.io",
+      "limitations": [
+        "Seven-venue aggregate, 15-minute delay."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "costdepth_xrp_funding_20261117_031158z",
+      "publisher": "CostDepth",
+      "url": "https://www.costdepth.io/funding-rates/xrp",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T03:11:58Z",
+      "independence_group": "costdepth.io",
+      "limitations": [
+        "Earlier snapshot; settlement intervals differ."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "sharpe_xrp_funding_20261117_1425z",
+      "publisher": "Sharpe Terminal",
+      "url": "https://www.sharpe.ai/funding-rates/ripple",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T14:25:00Z",
+      "independence_group": "sharpe.ai",
+      "limitations": [
+        "Venue-specific rates normalized to eight hours."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "countroom_xrp_funding_20261117_1841z",
+      "publisher": "Countroom",
+      "url": "https://countroom.org/funding-rates/XRP",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T18:41:00Z",
+      "independence_group": "countroom.org",
+      "limitations": [
+        "Predicted next-settlement venue APR extremes, not consensus."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_20261117_0725z",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T07:25:00Z",
+      "independence_group": "cryptokeyhole.com",
+      "limitations": [
+        "November 16 partial; two of four daily reporters."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "xrpinsights_xrp_etf_20261116",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "source_as_of_date": "2026-11-16",
+      "source_as_of_utc": null,
+      "independence_group": "xrp-insights.com",
+      "limitations": [
+        "November 16 row provisional; different fund universe."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "xrpinsights_exchange_wallets_20261117_0800z",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "source_as_of_date": null,
+      "source_as_of_utc": "2026-11-17T08:00:00Z",
+      "independence_group": "xrp-insights.com",
+      "limitations": [
+        "Includes cold storage and only publicly labeled wallets."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "xrpinsights_escrow_20261117",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_as_of_date": "2026-11-17",
+      "source_as_of_utc": null,
+      "independence_group": "xrp-insights.com",
+      "limitations": [
+        "Date-only extract; max unlock is not net new circulation."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "ripple_swell_recap_20261116",
+      "publisher": "Ripple",
+      "url": "https://ripple.com/insights/ripple-swell-2026-recap/",
+      "source_as_of_date": "2026-11-16",
+      "source_as_of_utc": null,
+      "independence_group": "ripple.com",
+      "limitations": [
+        "Issuer-reported, forward-looking corporate metrics."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "bny_ripple_custody_20261027",
+      "publisher": "BNY",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "source_as_of_date": "2026-10-27",
+      "source_as_of_utc": null,
+      "independence_group": "bny.com",
+      "limitations": [
+        "Custody capability, not proof of XRP purchases or throughput."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    },
+    {
+      "id": "reuters_macro_20261117",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/africa/us-dollar-hits-19-month-peak-fed-hike-bets-aussie-dips-2026-11-17/",
+      "source_as_of_date": "2026-11-17",
+      "source_as_of_utc": null,
+      "independence_group": "reuters.com",
+      "limitations": [
+        "Macro context, not XRP causal evidence."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null,
+      "raw_capture_status": "web_rendered_extract_only",
+      "model_eligible": false,
+      "retrieved_at_utc": "2026-11-17T20:34:22Z"
+    }
+  ],
+  "market_snapshot": {
+    "spot": {
+      "provider": "Investing.com",
+      "market_type": "spot_daily_reference",
+      "date": "2026-11-17",
+      "price_usd": 0.9562,
+      "open_usd": 0.9552,
+      "high_usd": 0.9788,
+      "low_usd": 0.9469,
+      "reported_volume": "341.22M",
+      "volume_unit": "not established",
+      "change_pct": 0.1,
+      "exact_time_utc": null,
+      "model_eligible": false
+    },
+    "perp_book": {
+      "provider": "Basis Charts",
+      "market_type": "perpetual_futures",
+      "venue": "Binance XRPUSDT",
+      "as_of_utc": "2026-11-17T13:49:00Z",
+      "mid_usd": 0.9722,
+      "spread_bps": 1.03,
+      "depth_within_0_5_pct_usd": 13900000,
+      "bid_share_pct": 49,
+      "all_1000_levels_bids_usd": 33700000,
+      "all_1000_levels_asks_usd": 29000000,
+      "model_eligible": false
+    },
+    "open_interest": [
+      {
+        "provider": "Liqwall",
+        "as_of_utc": "2026-11-17T05:52:00Z",
+        "open_interest_usd": 965000000,
+        "change_24h_pct": -3.3,
+        "coverage": "provider all-exchange"
+      },
+      {
+        "provider": "TradRadar",
+        "as_of_utc": "2026-11-17T15:35:00Z",
+        "open_interest_usd": 1310000000,
+        "change_24h_pct": -0.98,
+        "coverage": "7 exchanges"
+      }
+    ],
+    "funding": [
+      {
+        "provider": "CostDepth",
+        "as_of_utc": "2026-11-17T03:11:58Z",
+        "venues": 18,
+        "typical_pct_per_8h": -0.0095
+      },
+      {
+        "provider": "Sharpe",
+        "as_of_utc": "2026-11-17T14:25:00Z",
+        "venues": 34,
+        "binance_pct_per_8h": 0.0034
+      },
+      {
+        "provider": "Countroom",
+        "as_of_utc": "2026-11-17T18:41:00Z",
+        "markets": 43,
+        "highest_predicted_apr_pct": 63.07,
+        "lowest_predicted_apr_pct": -34.89
+      }
+    ],
+    "etf_flows": [
+      {
+        "provider": "CryptoKeyhole",
+        "date": "2026-11-16",
+        "partial_flow_xrp": -5196983,
+        "reported": 2,
+        "expected": 4,
+        "partial": true
+      },
+      {
+        "provider": "XRP Insights",
+        "date": "2026-11-16",
+        "universe": "six spot funds plus BITW",
+        "flow_xrp": 158148,
+        "provisional": true,
+        "holdings_xrp": 1190000000,
+        "net_assets_usd": 777730000
+      }
+    ],
+    "exchange_wallets": {
+      "provider": "XRP Insights",
+      "as_of_utc": "2026-11-17T08:00:00Z",
+      "exchanges": 24,
+      "wallets": 707,
+      "balance_xrp": 22200000000,
+      "same_wallet_7d_change_xrp": -139200000,
+      "same_wallet_30d_change_xrp": -374700000,
+      "model_eligible": false,
+      "limitation": "Includes cold storage; not tradable float or verified customer net flow."
+    },
+    "escrow": {
+      "provider": "XRP Insights",
+      "date": "2026-11-17",
+      "live_escrow_xrp": 31100000000,
+      "next_unlock_date": "2026-12-01",
+      "maximum_unlock_xrp": 1000000000,
+      "model_eligible": false,
+      "limitation": "Unused releases may be re-escrowed."
+    },
+    "ripple_swell": {
+      "provider": "Ripple",
+      "date": "2026-11-16",
+      "institutions_claimed": 1700,
+      "annualized_product_revenue_run_rate_approx_usd": 900000000,
+      "multi_solution_customer_growth_multiple": 3,
+      "model_eligible": false,
+      "limitation": "Issuer-reported and forward-looking; not XRP-specific demand."
+    },
+    "bny_custody": {
+      "provider": "BNY",
+      "date": "2026-10-27",
+      "assets": [
+        "XRP",
+        "RLUSD"
+      ],
+      "rlusd_primary_reserve_custodian": true,
+      "trade_finance_status": "exploration",
+      "model_eligible": false,
+      "limitation": "Custody capability does not establish client balances, XRP buying or throughput."
+    },
+    "macro": {
+      "provider": "Reuters",
+      "date": "2026-11-17",
+      "usd_index": 103.44,
+      "usd_daily_change_pct": -0.1,
+      "usd_5_session_change_pct_approx": 2,
+      "december_fed_hike_expectations": true,
+      "bitcoin_daily_change_pct": -2.5,
+      "model_eligible": false
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS225-SPOT",
+      "claim": "Nov 17 daily spot reference is $0.9562, range $0.9469-$0.9788; reported volume 341.22M with unit/timezone not established.",
+      "evidence": [
+        "investing_xrp_daily_20261117"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-PERP-BOOK",
+      "claim": "Binance XRPUSDT perpetual book showed $13.9M within ±0.5%, 1.03 bps spread, 49% bid share.",
+      "evidence": [
+        "basis_binance_xrpusdt_perp_book_20261117_1349z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-OI-DISAGREEMENT",
+      "claim": "OI snapshots are $965M and $1.31B at different times and venue scopes; do not average.",
+      "evidence": [
+        "liqwall_xrp_oi_20261117_0552z",
+        "tradradar_xrp_perps_20261117_1535z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-FUNDING-DIVERGENCE",
+      "claim": "Funding snapshots differ in sign and method; no single market consensus.",
+      "evidence": [
+        "costdepth_xrp_funding_20261117_031158z",
+        "sharpe_xrp_funding_20261117_1425z",
+        "countroom_xrp_funding_20261117_1841z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-ETF-DISAGREEMENT",
+      "claim": "Nov 16 partial outflow and provisional inflow conflict by universe and finality.",
+      "evidence": [
+        "cryptokeyhole_xrp_etf_20261117_0725z",
+        "xrpinsights_xrp_etf_20261116"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-EXCHANGE-WALLETS",
+      "claim": "Same-wallet exchange-labeled balances declined 139.2M XRP over seven days and 374.7M over 30 days.",
+      "evidence": [
+        "xrpinsights_exchange_wallets_20261117_0800z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-ESCROW",
+      "claim": "Provider reports 31.10B XRP in live escrow and a maximum 1B unlock on Dec 1.",
+      "evidence": [
+        "xrpinsights_escrow_20261117"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-RIPPLE",
+      "claim": "Ripple claims >1,700 institutional/corporate users and a near-$900M annualized product-revenue run-rate.",
+      "evidence": [
+        "ripple_swell_recap_20261116"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-BNY",
+      "claim": "BNY says its custody platform supports XRP and RLUSD.",
+      "evidence": [
+        "bny_ripple_custody_20261027"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS225-MACRO",
+      "claim": "Reuters reports a strong dollar, increased December hike expectations and bitcoin weakness.",
+      "evidence": [
+        "reuters_macro_20261117"
+      ],
+      "model_eligible": false
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relation": "XRP/RLUSD custody support and RLUSD reserve custody",
+      "status": "announced",
+      "evidence": [
+        "bny_ripple_custody_20261027"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Swell 2026 institutional customer base",
+      "relation": ">1,700 users claimed by Ripple",
+      "status": "issuer-reported",
+      "evidence": [
+        "ripple_swell_recap_20261116"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "claim": "OI decline reflects leverage reduction.",
+      "support": [
+        "Two providers show negative 24-hour changes."
+      ],
+      "disconfirming_or_missing": [
+        "Coverage and times differ."
+      ],
+      "test": "Build timestamp-matched venue-level OI and liquidation history."
+    },
+    {
+      "claim": "Exchange wallet decline reflects customer withdrawals or custody migration.",
+      "support": [
+        "Same-wallet attributed balances fell."
+      ],
+      "disconfirming_or_missing": [
+        "Cold wallets, internal rotations and untracked destinations."
+      ],
+      "test": "Reconcile exchange deposit/withdrawal and known wallet migration data."
+    },
+    {
+      "claim": "Complete Nov 16 ETF flow sign is unknown.",
+      "support": [
+        "Partial outflow versus provisional inflow."
+      ],
+      "disconfirming_or_missing": [
+        "Different fund universe and missing issuer files."
+      ],
+      "test": "Reconcile every issuer file by effective date and publication time."
+    },
+    {
+      "claim": "Perpetual positioning is fragmented by venue.",
+      "support": [
+        "Negative typical funding and positive Binance funding coexist."
+      ],
+      "disconfirming_or_missing": [
+        "Methods and intervals differ."
+      ],
+      "test": "Normalize native venue funding and OI to matched intervals."
+    },
+    {
+      "claim": "Custody adoption may not create XRP demand.",
+      "support": [
+        "BNY supports XRP and RLUSD custody."
+      ],
+      "disconfirming_or_missing": [
+        "No client balances or XRP purchases disclosed."
+      ],
+      "test": "Seek custody AUC, collateral usage, on-ledger flows and throughput."
+    },
+    {
+      "claim": "Macro risk may weigh on crypto including XRP.",
+      "support": [
+        "Strong dollar and bitcoin weakness."
+      ],
+      "disconfirming_or_missing": [
+        "No causal XRP estimate."
+      ],
+      "test": "Run leakage-safe event studies against BTC, DXY and yields."
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average OI, funding, ETF flow or order-book observations unless timestamp, market type, venue universe, units and methodology align.",
+    "raw_receipt_status": "No byte-exact raw HTTP receipts; rendered extracts only.",
+    "model_eligibility": "All Run225 observations remain model-ineligible."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "No byte-exact receipts, synchronized point-in-time history or completed leakage-safe out-of-sample evaluation."
+  },
+  "platform_map": [
+    {
+      "platform": "ChatGPT",
+      "status": "tested_current_runtime",
+      "authentication": "Current GitHub connector tested."
+    },
+    {
+      "platform": "Claude",
+      "status": "not_tested",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Grok",
+      "status": "not_tested",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Gemini",
+      "status": "not_tested",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Copilot",
+      "status": "not_tested",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Codex",
+      "status": "not_tested",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Hugging Face",
+      "status": "workflow_reference_only",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Kaggle",
+      "status": "not_tested",
+      "authentication": "No authenticated live data flow verified."
+    },
+    {
+      "platform": "Databricks",
+      "status": "workflow_reference_only",
+      "authentication": "No authenticated live data flow verified."
+    }
+  ]
+}

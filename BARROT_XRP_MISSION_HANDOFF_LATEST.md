@@ -1,3 +1,52 @@
+# Run225 — 2026-11-17 XRP market microstructure, flow and repository reconciliation
+
+**Priority:** XRP intelligence and prediction-engine mastery. **Foundation:** preserve Barrot V3 for execution, orchestration, safety and verification.
+
+## Repository — EXECUTED
+- Main inspected: `d287fdddaf4417a145f63ec599cc08bef9252114`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Normal two-parent merge commit `afe8ce24c1f4c9e19c0c6192124f6ab8770b5d50` has parents `09eccd7` and `d287fdd`. It carries the latest main commit, including `pytest.ini` exclusion of `tests/fixtures` and `docs/ops/CI-FIX-2026-11-17.md`. The docs index now includes the new CI-fix page. The earlier redundant `collect_ignore` edit in `tests/conftest.py` was reverted; main's broader pytest.ini rule is the single collection control.
+- The prior main full-suite failure came from pytest importing the deliberately invalid repo_guard fixture `tests/fixtures/guard/root/tests/test_bad_import.py`, not from an application dependency. Main's new CI-fix doc reports 1,185 passed/1 skipped locally; this is not treated as GitHub exact-head CI evidence.
+- Main Pages deployment run 44172618336 succeeded automatically on `d287fdddaf4417a145f63ec599cc08bef9252114`. This run did not initiate a deployment.
+
+## CI
+- On the previous integration head `0014da28`: core tests, Pages validation, fail-closed gates and dependency audits passed; full-suite was not accepted because the fixture-collection defect remained.
+- Final Run225 commit will include the new market artifact/test/handoff. Exact-head full-suite and all gates remain pending until that final commit's workflow completes.
+- PR #1663 remains draft with zero formal reviews and zero review threads. Main is protected, but required-check details are inaccessible; fallback ruleset is disabled and CODEOWNERS is self-only. Independent review and enforceable checks remain blockers.
+
+## Fresh market evidence — cutoff 2026-11-17 18:41 UTC
+Fourteen publisher records were captured as rendered extracts at 20:34:22 UTC. No raw HTTP bytes or SHA-256 receipts were captured; all observations remain model-ineligible.
+
+- **Spot daily:** Investing.com Nov 17 row: `$0.9562`, open `$0.9552`, high `$0.9788`, low `$0.9469`, reported volume `341.22M`, +0.10%. Exact intraday cutoff, timezone and volume unit are not established. https://www.investing.com/crypto/xrp/historical-data
+- **Perpetual order book, not spot:** Basis Charts Binance XRPUSDT at 13:49 UTC: mid `$0.9722`, spread `1.03 bps`, depth ±0.5% `$13.9M`, bid share 49%, all displayed levels `$33.7M` bids/`$29.0M` asks. Resting orders can be pulled. https://www.basischarts.com/liquidity-heatmap/xrp-usdt
+- **Open interest:** Liqwall `$965M`, -3.3% at 05:52 UTC; TradRadar `$1.31B`, -0.98% across seven venues at 15:35 UTC. Different coverage/times; do not average. https://liqwall.com/open-interest/xrp https://tradradar.io/markets/xrp
+- **Funding:** CostDepth typical -0.0095%/8h at 03:11:58 UTC; Sharpe Binance +0.0034%/8h at 14:25 UTC; Countroom predicted venue APR extremes +63.07% to -34.89% at 18:41 UTC. Methods, venues and settlement semantics differ. https://www.costdepth.io/funding-rates/xrp https://www.sharpe.ai/funding-rates/ripple https://countroom.org/funding-rates/XRP
+- **ETF flow conflict:** CryptoKeyhole partial Nov 16 outflow -5,196,983 XRP from two of four daily reporters. XRP Insights provisional +158,148 XRP across six spot funds plus BITW. Different universes and provisional/partial states; no aggregate sign accepted. https://cryptokeyhole.com/etf-flows/xrp/ https://xrp-insights.com/
+- **Exchange wallets:** XRP Insights attributes 22.20B XRP to 707 labeled wallets/24 exchanges; same-wallet balances -139.2M XRP over seven days and -374.7M over 30 days. Includes cold storage; not tradable float or verified customer outflow. https://xrp-insights.com/exchange-balances
+- **Escrow:** 31.10B XRP live escrow; maximum 1B unlock scheduled Dec 1. Unused amounts can be re-escrowed. https://xrp-insights.com/xrp-radar
+- **Institutional:** Ripple's Nov 16 Swell recap claims >1,700 institutional/corporate users, near-$900M annualized product revenue run-rate and 3x growth in multi-solution customers. Issuer-reported, forward-looking and not XRP-specific demand. https://ripple.com/insights/ripple-swell-2026-recap/
+- **Custody:** BNY says its Digital Asset Custody platform supports XRP and RLUSD; this does not prove client balances, XRP purchases, collateral use or throughput. https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+- **Macro:** Reuters Nov 17 reports a strong dollar, increased December Fed-hike expectations and bitcoin weakness. Context only, no XRP causal estimate. https://www.reuters.com/world/africa/us-dollar-hits-19-month-peak-fed-hike-bets-aussie-dips-2026-11-17/
+
+## Prediction and platforms
+Run225 adds 14 publisher records and 10 observations; all have null raw hashes/receipts and are excluded from the feature store. No forecast issued. ChatGPT GitHub access is tested; Claude, Grok, Gemini, Copilot, Codex and Kaggle remain unauthenticated; Hugging Face and Databricks have workflow references only. No nine-platform quorum.
+
+## PR backlog
+- #1663: sole integration PR; blocked, draft, zero reviews/threads; exact-head full suite after latest mainline fix pending.
+- #1541: all five paths overlap; claim fingerprint and adapter enforcement are present in #1663 with added source-independence hardening. Treat as superseded only after #1663 merges and verifies; do not close now.
+- #1265: one overlap (`.github/workflows/ci.yml`); its ledger-index test remains unique.
+- #1450, #1460, #1440, #1437, #1436, #1353: zero changed-path overlap; preserve as unique research/repair/archive work.
+- No PRs merged or closed. Main was not modified by this run. No deployment, secret rotation, Space restart, Kaggle submission, paper trade or real-money action initiated.
+
+## Next
+1. Complete exact-head full-suite, Pages validation, fail-closed and dependency audits on the Run225 commit.
+2. Fix remaining failures in the existing integration branch.
+3. Obtain independent review and verify required-check enforcement.
+4. Resolve automatic Pages publication before merge.
+5. Continue issuer-level ETF reconciliation and raw-byte exchange-data capture; keep forecasts disabled until point-in-time and out-of-sample gates pass.
+
+---
+
 # Run221 Post-Handoff Verification Addendum
 
 **Captured:** 2026-11-17T17:03:10.277Z  
