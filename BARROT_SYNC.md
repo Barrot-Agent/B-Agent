@@ -576,3 +576,19 @@
   scan; tracked-only was 26 then. Both read 31 now — verified, not assumed.
 - Next step: PHASE 4 (META + MMI + market mastery). Section 4 rewrites
   .opencode/agent/barrot.md — show the diff before committing.
+
+## 2026-11-17 — PHASE 4 SECTION 1: loop reverse-engineered, V3 applied
+- Loop is prose only (BARROT-12AM-MASTER.md, 95 lines). 0 .py hits for
+  TRANSFER_SUCCESS / anti_cheat_passed / AXIOM_FORGE / NOVELTY_SCORE.
+  Stages 8-10 (Plugin/Skill/Phoenix) are named at line 25 and never specified.
+- Two structural defects: D1 the loop grades itself (stages 2-6 ask the
+  generator to be the judge); D2 nothing is durable (JSON blob in a transcript).
+- Built 3 variants, scored by scripts/transmute.py (3 repeats, 10 tests):
+  V1 ablation-only 1/10 -> deleted; V2 witness+chain 10/10 182 lines 996389;
+  V3 durable ledger 10/10 195 lines 994393 -> APPLIED.
+- Honest caveat: baseline jitter was 21726ms, so the tie band decided the
+  transmute. Speed was settled by a 1000-record benchmark instead:
+  append 7350.7 -> 5103.4ms (-31%, O(n^2) -> O(n)), verify 59.7 -> 48.5ms,
+  assert_supported 24.59 -> 13.63ms, same ledger bytes, tamper still caught.
+- tests/test_witness_loop.py 10/10 before and after. scripts/witness_loop.py = V3.
+- Next step: results/mmi_mastery_wishlist.md (Top 50).

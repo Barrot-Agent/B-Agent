@@ -819,5 +819,123 @@
       "scripts_total": 121
     },
     "artifact": "results/re_wishlist.md#phase-3-inventory-listed-not-fixed"
+  },
+  {
+    "timestamp": "20261117_024944",
+    "target": "/root/barrot/Barrot-Agent/scripts/witness_loop.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_witness_loop.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 585,
+        "lines": 182,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 10,
+        "test_total": 10,
+        "test_wall_ms": 3429,
+        "test_jitter_ms": 21726,
+        "score": 996389.0,
+        "tail": "..........                                                               [100%]\n10 passed in 0.45s\n"
+      },
+      {
+        "name": "witness_v1_ablation_only.py",
+        "compile_ok": true,
+        "compile_ms": 556,
+        "lines": 71,
+        "test_ok": false,
+        "test_rate": 0.1,
+        "test_passed": 1,
+        "test_total": 10,
+        "test_wall_ms": 6048,
+        "test_jitter_ms": 4711,
+        "score": 93881.0,
+        "tail": "hort test summary info ============================\nFAILED tests/test_witness_loop.py::test_claim_requires_witness - AttributeErr...\nFAILED tests/test_witness_loop.py::test_flipped_witness_is_supported - Attrib...\nFAILED tests/test_witness_loop.py::test_unflipped_witness_is_refuted_but_recorded\nFAILED tests/test_witness_loop.py::test_rule_that_hurts_is_contradicted - Att...\nFAILED tests/test_witness_loop.py::test_witness_for_another_rule_is_refused\nFAILED tests/test_witness_loop.py::test_witness_for_another_task_is_refused\nFAILED tests/test_witness_loop.py::test_chain_links_records - AttributeError:...\nFAILED tests/test_witness_loop.py::test_tampered_record_is_detected - Attribu...\nFAILED tests/test_witness_loop.py::test_assert_supported_fails_closed - Attri...\n9 failed, 1 passed in 2.79s\n"
+      },
+      {
+        "name": "witness_v3_durable_ledger.py",
+        "compile_ok": true,
+        "compile_ms": 604,
+        "lines": 195,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 10,
+        "test_total": 10,
+        "test_wall_ms": 5412,
+        "test_jitter_ms": 850,
+        "score": 994393.0,
+        "tail": "..........                                                               [100%]\n10 passed in 0.98s\n"
+      }
+    ],
+    "winner": "witness_v3_durable_ledger.py",
+    "applied": true,
+    "losers_deleted": [
+      "witness_v1_ablation_only.py"
+    ]
+  },
+  {
+    "timestamp": "20261117_025247",
+    "kind": "phase4_meta_re_loop",
+    "target": "scripts/witness_loop.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_witness_loop.py"
+    ],
+    "candidates": [
+      {
+        "name": "V1_ablation_only",
+        "tests_passed": "1/10",
+        "lines": 71,
+        "score": 93881.0,
+        "outcome": "deleted"
+      },
+      {
+        "name": "V2_witness_plus_chain",
+        "tests_passed": "10/10",
+        "lines": 182,
+        "score": 996389.0,
+        "outcome": "superseded"
+      },
+      {
+        "name": "V3_durable_ledger",
+        "tests_passed": "10/10",
+        "lines": 195,
+        "score": 994393.0,
+        "outcome": "applied"
+      }
+    ],
+    "winner": "V3_durable_ledger",
+    "applied": true,
+    "losers_deleted": [
+      "witness_v1_ablation_only.py"
+    ],
+    "detail": "Anti-cheat stage replaced: introspection ('if I delete this rule, does it work?') -> executed ablation run(True) vs run(False), recorded in a hash-chained ledger with states SUPPORTED/REFUTED/CONTRADICTED. Winner chosen inside a 21726ms jitter tie band, so speed was settled by a dedicated 1000-record benchmark, not by pytest wall time.",
+    "proof": {
+      "tests": "10 passed (before and after)",
+      "benchmark_1000_records": {
+        "append_ms": {
+          "V2": 7350.7,
+          "V3": 5103.4
+        },
+        "verify_ms": {
+          "V2": 59.7,
+          "V3": 48.5
+        },
+        "assert_supported_ms": {
+          "V2": 24.59,
+          "V3": 13.63
+        },
+        "ledger_bytes_identical": 550670,
+        "tamper_detected": true
+      },
+      "artifact": "results/meta_re_loop.md",
+      "loop_was_prose": "BARROT-12AM-MASTER.md 95 lines; 0 .py hits for TRANSFER_SUCCESS/anti_cheat_passed/AXIOM_FORGE/NOVELTY_SCORE; stages 8-10 (Plugin/Skill/Phoenix) named at line 25, never specified."
+    }
   }
 ]
