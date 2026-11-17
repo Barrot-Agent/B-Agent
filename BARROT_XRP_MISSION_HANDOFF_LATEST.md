@@ -5307,6 +5307,99 @@ CoinGlass and CoinMarketCap are aggregators; SoSoValue and XRP Insights have dif
 
 DESIGNED/IMPLEMENTED on integration: public XRP ingestion, content-addressed receipt/hash-chain code, point-in-time feature store, event timeline/counter-hypothesis assembly, four-baseline chronological evaluator, calibration/drift diagnostics and fail-closed forecast ledger. EXECUTED: current main/tree/PR/workflow inspection, exact-head full suite/dependency audit, workflow side-effect review, SEC 13F verification and fresh market/ETF/liquidity research. VERIFIED: exact-head `ebed7181ef7ba9e469be7f486c1ff10b963a518a` push full suite, wheel smoke, six-manifest dependency audit and fail-closed push/PR gates. NOT VERIFIED: production scheduled ingestion on main, independent WORM anchoring, nonzero model-eligible dataset, candidate-model superiority, shadow evaluation, independent review quorum or branch-protection enforcement.
 
-Next: verify this handoff commit's exact-head full suite and dependency audit; finish semantic/security review of all 1,364 changed paths and invoked scripts; reconcile the three divergent #1541 paths without closing the source PR; obtain independent review and authorized branch-protection evidence; then merge only if every criterion passes and verify main afterward. Keep forecast issuance disabled.
+Verified on follow-on handoff commit a57a02fba3b8784191f7702d5c853f23e97b76f6: exact-head full suite and six-manifest dependency audit passed; finish semantic/security review of all 1,364 changed paths and invoked scripts; reconcile the three divergent #1541 paths without closing the source PR; obtain independent review and authorized branch-protection evidence; then merge only if every criterion passes and verify main afterward. Keep forecast issuance disabled.
 
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
+
+
+## Run207 research addendum — ASK, SBIC identity, SBI capital links, Japan regulation and Kamilah Stevenson
+
+Research date: 2026-11-17. This addendum records public-source research and source disagreements. Web observations are not raw-source SHA-256 receipts and are not model-eligible features.
+
+### ASK Coin identity and XRP relationship
+
+The best-supported match for the exact phrase "ASK Coin" is **Permission's ASK token**. Permission's current official documentation describes ASK as its native token for rewards, consent/permissioned participation and agent-to-agent value exchange. The issuer's docs list a fixed supply of 100 billion and say the token is deployed as a LayerZero OFT on Base and Polygon:
+
+- Base current official contract: `0xBB146326778227A8498b105a18f84E0987A684b4`.
+- Polygon current official contract: `0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff`.
+- The official contract-address page says these are the only authorized ASK contracts and lists Base and Polygon, not XRPL.
+- Permission's own tokenomics page claims subscription revenue is used in part to buy ASK from the open market and recycle it into rewards. This is an issuer claim; no buyback wallet, transaction set or independent on-chain reconciliation was completed in this run.
+
+The January 15, 2025 launch announcement circulated an earlier Base address, `0x79322cee6c90735b967d2396b9adc392915aebb6`. Current official documentation no longer lists that address. Treat it as historical/legacy, not the current official Base contract; do not use it without an authoritative migration record.
+
+The Permission FAQ mentions Coinbase Wallet as one compatible external wallet. ASK is deployed on Base, the Coinbase-associated Ethereum L2. These facts establish ecosystem adjacency, not a Coinbase investment, endorsement or commercial partnership. No XRPL contract, Ripple issuance, XRP bridge or direct XRP utility was found in Permission's current official documentation. The ASK/Permission result should therefore be kept separate from XRP.
+
+Sources: [Permission ASK token](https://docs.permission.ai/ask-token), [official contract addresses](https://docs.permission.ai/ask-token/contract-addresses), [Permission tokenomics and buyback claim](https://docs.permission.ai/ask-token/ask-tokenomics), [Permission FAQ / Coinbase Wallet compatibility](https://docs.permission.ai/resources/faqs), [January 2025 launch announcement](https://www.globenewswire.com/news-release/2025/01/15/3009792/0/en/Permission-Launches-ASK-Token-on-Base.html).
+
+The exact phrase "actual capital" produced no relevant primary-source match in the XRP/ASK/SBIC context. Permission's claimed subscription-funded ASK buybacks are not counted as realized capital until transaction-level proof is captured and reconciled.
+
+### Japan SBIC identity resolution
+
+Primary company pages distinguish three separate regional policy-investment companies:
+
+| English shorthand | Legal company name | Official source |
+|---|---|---|
+| SBIC East | Tokyo Small and Medium Business Investment & Consultation Co., Ltd. / 東京中小企業投資育成株式会社 | [Company disclosure/profile](https://www.sbic.co.jp/company/disclosure/) |
+| SBIC Central | Nagoya Small and Medium Business Investment & Consultation Co., Ltd. / 名古屋中小企業投資育成株式会社 | [Official company site](https://www.sbic-cj.co.jp/) |
+| SBIC West | Osaka Small and Medium Business Investment & Consultation Co., Ltd. / 大阪中小企業投資育成株式会社 | [Official company site](https://www.sbic-wj.co.jp/) |
+
+Their official materials describe them as policy-implementation entities established under Japan's Small and Medium Business Investment & Consultation Companies Act. The regional companies identify one another as sister organizations and publish separate company profiles, shareholders, officers and service territories. They are not interchangeable with **SBI Holdings, Inc.**; no primary evidence was found that SBIC East/Central/West are divisions or subsidiaries of SBI Holdings.
+
+Important name collision: **SBI Shinsei Bank** is a bank within the SBI Group and is connected to SBI Holdings. It is not one of the regional SBIC investment companies.
+
+Official SBIC pages and PDFs show ordinary generative-AI/ChatGPT seminars (for example, SBIC West's 2024/2025 training material and SBIC Central's 2026 generative-AI salon). These are training events hosted or co-hosted by an SBIC entity and third-party instructors, not evidence of an OpenAI partnership. Exact-phrase search for "SBIC, ChatGPT SBIC" found no authoritative occurrence or corporate relationship.
+
+Sources: [Tokyo SBIC disclosure](https://www.sbic.co.jp/company/disclosure/), [Nagoya SBIC](https://www.sbic-cj.co.jp/), [Osaka SBIC](https://www.sbic-wj.co.jp/), [SBIC West ChatGPT/GenAI seminar PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf), [SBI Holdings corporate profile](https://www.sbigroup.co.jp/english/company/information/profile.html).
+
+### SBI, Ripple, Circle, Coinbase and actual capital
+
+New primary-source relationship edges:
+
+1. **SBI Holdings + SBI Shinsei Bank → Circle:** on June 9, 2025, SBI Holdings and SBI Shinsei Bank disclosed a combined **$50 million strategic investment** in Circle Internet Group, **$25 million each**, in connection with Circle's NYSE listing. This is actual disclosed capital into Circle, not XRP.
+2. **SBI Holdings + Circle → Japan USDC joint venture:** an August 22, 2025 SBI Holdings release announced a joint venture with Circle Holdings to promote USDC circulation in Japan and create Web3/digital-finance use cases. The JV's capital contribution was not quantified in the reviewed announcement.
+3. **SBI Holdings + Ripple → SBI Ripple Asia:** the joint venture was established in May 2016. SBI Holdings' current group-company profile lists SBI Group with 60% of voting rights as of March 31, 2026. This is a direct corporate relationship, distinct from the SBIC regional companies.
+4. **SBI VC Trade → RLUSD:** on June 24, 2026, SBI VC Trade (identified by SBI Holdings as a consolidated subsidiary) began handling Ripple's RLUSD as a Japanese category-four electronic payment instrument. The same release says VCTRADE's supported RLUSD chain is **Ethereum only**; do not imply that the Japanese SBI VC Trade listing is an XRPL-native RLUSD rail. SBI VC Trade had already handled USDC since March 2025.
+5. **SBI Shinsei Bank retail crypto rewards:** official SBI Shinsei Bank releases document a September 2025 SBI Hyper Deposit XRP-voucher campaign and a February 2026 fixed-deposit XRP-voucher campaign. The latter required at least ¥300,000 and offered XRP vouchers up to ¥20,000; its entry period ended March 31, 2026. These are customer incentives, not conversion of deposit principal into XRP.
+6. **SBI Visa Crypto Card:** the May 1, 2026 official SBI release from SBI VC Trade, Aplus and Visa describes card points automatically converted into a selected BTC, ETH or XRP reward. This is a consumer reward mechanism, not a disclosed institutional spot purchase.
+
+A separate June 10, 2026 SBI Shinsei Bank three-month pilot is reported by The Block citing Nikkei and Coinpost: vouchers worth about 20% of deposit interest, redeemable for BTC, ETH or XRP through SBI VC Trade, with an exchange account required. The Block said it had contacted the bank and SBI VC Trade for comment. Its headline says the broader program was planned for fall 2026, while the article body attributes a June 10 pilot date to Coinpost. No direct official bank announcement or redemption-volume disclosure was found in this run. Treat it as reported, not primary-confirmed. Even if accurate, it is a voucher equal to a portion of earned interest, not a conversion of deposit principal; the actual XRP redemption share, hedge, execution venue and net spot demand remain unknown.
+
+Primary sources: [SBI/Circle $50M investment](https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf), [SBI/Circle JV](https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf), [SBI Ripple Asia group profile and ownership](https://www.sbigroup.co.jp/company/group/sbirippleasia.html), [SBI/Ripple RLUSD listing, chain support and USDC history](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html), [SBI Shinsei 2026 XRP-voucher campaign](https://www.sbishinseibank.co.jp/lp/cam_2509_xrp_trade/), [SBI Visa Crypto Card](https://www.sbigroup.co.jp/news/2026/0501_16304.html). Secondary pilot report: [The Block, June 9, 2026](https://www.theblock.co/news/business/2026-06-09-japan-sbi-shinsei-bank-plans-crypto-rewards-program-404080).
+
+### Japan's FIEA reform — correction to the interview claim
+
+The June 11, 2026 iHeart interview with Dr. Kamilah Stevenson included the claim that Japan had approved reclassifying XRP and more than 100 other crypto-assets as financial instruments. The direction was real, but the wording and timing were imprecise:
+
+- The FSA's Crypto-asset Systems Working Group report (December 10, 2025; English publication February 16, 2026, updated August 3) recommended moving the core crypto-asset trading framework to the Financial Instruments and Exchange Act (FIEA). It explicitly says the reform is **not an official endorsement of investing in crypto-assets**.
+- Cabinet approved the amendment bill on April 10, 2026. The House of Representatives passed it on June 11; the House of Councillors passed it on July 15; it was promulgated July 23 as **Act No. 64 of 2026**.
+- The amendment moves crypto-asset trading regulation from the Payment Services Act framework into the FIEA framework and establishes crypto-asset disclosure, business and market-abuse rules. It is a category-level regime, not a law naming XRP plus a whitelist of 100 tokens.
+- The reform should not be described as declaring XRP or every crypto-asset a security. The FSA report describes a financial-instrument framework tailored to crypto-assets' characteristics and distinguishes that from official investment endorsement.
+- The crypto-specific provisions commence on a date set by Cabinet Order within one year of promulgation (statutory backstop: July 22, 2027). No official commencement order/date was located in this run.
+
+Thus, on the interview date (June 11), the House of Representatives had passed the bill but the full Diet process was not complete. As of this research date, the Act is promulgated, but the operative date for its principal crypto provisions remains a separate implementation question.
+
+Primary sources: [FSA working-group report](https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf), [FSA minister statement on Cabinet approval, April 10](https://www.fsa.go.jp/en/conference/minister/2026/20260410.html), [House of Representatives bill history](https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm), [House of Representatives plenary record, June 11](https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/000122120260611024.htm), [House of Councillors bill record](https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221057.htm), [Act No. 64 translation and commencement provisions](https://japanlaw.org/en/financial-instruments-and-exchange-act/amendments/20270722_508AC0000000064/from/art-27-57).
+
+### Kamilah Stevenson identity and YouTube attribution
+
+The public iHeart episode "Crypto Panics! with Dr. Kamilah Stevenson" (June 11, 2026) contains a first-person channel-identification statement: the guest gives spoken X/Instagram names and says her YouTube display name is "doctor Camilla Stevenson"; she also warns listeners that fake pages exist. The transcript is automatically generated, so exact spelling/handle should not be inferred from the spoken words alone.
+
+The guest identity is corroborated by her public professional site, which identifies Dr. Kamilah Stevenson / The Wealth Doctor. Third-party channel directories list possible YouTube candidates, but no first-party site/social link to a specific channel ID or handle was verified. Given her explicit warning about fake pages, do not attribute videos from those candidates to her yet. No YouTube video inventory was produced in this run; the verified public appearance is the iHeart interview, which is not itself a YouTube upload.
+
+The interview's claims about Japan, SBI, XRP utility, the Clarity Act and institutional adoption are speaker/host opinions or reports and must be checked against primary sources. The FIEA and SBI Shinsei Bank sections above record those checks.
+
+Sources: [iHeart episode and transcript](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/), [Dr. Kamilah Stevenson professional site](https://learn.kamilahstevenson.com/), [third-party channel directory — discovery only, not attribution proof](https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA).
+
+### Exact-head verification before this addendum
+
+The immediately preceding handoff commit, `a57a02fba3b8784191f7702d5c853f23e97b76f6`, passed its exact-head push full suite: 3,847 passed, 1 skipped, 11 warnings, 19 subtests passed; 66.90% inclusive coverage and 77% legacy core coverage. The six-manifest dependency audit reported no known vulnerabilities. Push fail-closed gate passed; PR CI, PR dependency audit and PR fail-closed gate passed. PR-event test jobs were skipped by the integration-head guard; the full suite ran on the exact same push SHA.
+
+### New conclusions and next actions
+
+- ASK is a separate Permission/AI-agent ecosystem token on Base and Polygon, not XRP. Verify any claimed buyback with transaction-level evidence before treating it as actual capital.
+- SBIC East/Central/West are distinct policy-investment companies. SBI Shinsei Bank, SBI Holdings, SBI VC Trade and SBI Ripple Asia are separate SBI Group entities and relationships.
+- The disclosed $50M SBI investment is into Circle; it is not XRP capital. The RLUSD retail listing on SBI VC Trade is Ethereum-only.
+- Japan's FIEA crypto reform is enacted but its main crypto provisions await a Cabinet commencement date; do not describe XRP as newly declared a security.
+- The June 10 deposit-interest pilot is secondary-reported and redemption amounts remain unknown.
+- Kamilah Stevenson is identified as the iHeart guest, but the specific YouTube channel remains unverified; no video inventory until a first-party cross-link is found.
+- Continue exact-phrase searches for "actual capital" and "SBIC, ChatGPT SBIC"; verify Permission buybacks on-chain; obtain the bank's primary pilot terms/redemption data; monitor the FIEA commencement order; and keep the forecast gate closed until raw receipts and out-of-sample evidence exist.
